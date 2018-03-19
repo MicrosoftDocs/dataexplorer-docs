@@ -3,7 +3,7 @@
 
 <br/>
 >[!Note]
->Before you start...<br/>
+>Before you start...
 >If you haven't completed [Getting started with the Analytics portal](~/learn/tutorials/getting_started_with_analytics_portal.md) yet, we recommend that you do so. 
 
 In this tutorial you will learn to write Azure Log Analytics queries. When completing this tutorial you will know how to:
