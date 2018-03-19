@@ -28,7 +28,7 @@ Returns an estimate of the number of distinct values of *Expr* in the group.
 PageViewLog | summarize countries=dcount(country) by continent
 ```
 
-<p><img src="~/queryLanguage/images/aggregations/dcount.png"></p>
+<p><img src="~/query/images/aggregations/dcount.png"></p>
 
 **Tip: Listing distinct values**
 
@@ -62,7 +62,7 @@ dcount uses a variant of [HyperLogLog (HLL) algorithm](https://en.wikipedia.org/
 So the stated error actually specifies the standard deviation of error distribution (sigma), 99.7% of estimation will have a relative error of under 3*sigma
 The following depicts probability distribution function of relative estimation error (in percents) for all dcount's accuracy settings:
 
-<p><img src="~/queryLanguage/images/aggregations/hll-error-distribution.png"></p>
+<p><img src="~/query/images/aggregations/hll-error-distribution.png"></p>
 
 
  

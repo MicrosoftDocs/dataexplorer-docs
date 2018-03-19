@@ -10,13 +10,13 @@
 Need to work with dates and times? This tutorial will walk you through the different functions available options in the query language for you to do so.
 
 Relevant functions:   
-[ago](~/queryLanguage/query_language_agofunction.md)  
-[now](~/queryLanguage/query_language_nowfunction.md)  
-[todatetime](~/queryLanguage/query_language_todatetimefunction.md) | [totimespan](~/queryLanguage/query_language_totimespanfunction.md)  
-[bin](~/queryLanguage/query_language_binfunction.md)  
-[datepart](~/queryLanguage/query_language_datetime_partfunction.md) | [getmonth](~/queryLanguage/query_language_getmonthfunction.md) | [monthofyear](~/queryLanguage/query_language_monthofyearfunction.md) | [getyear](~/queryLanguage/query_language_getyearfunction.md)  
-[dayofmonth](~/queryLanguage/query_language_dayofmonthfunction.md) | [dayofweek](~/queryLanguage/query_language_dayofweekfunction.md) | [dayofyear](~/queryLanguage/query_language_dayofyearfunction.md) | [weekofyear](~/queryLanguage/query_language_weekofyearfunction.md)   
-[endofday](~/queryLanguage/query_language_endofdayfunction.md) | [endofweek](~/queryLanguage/query_language_endofweekfunction.md) | [endofmonth](~/queryLanguage/query_language_endofmonthfunction.md) | [endofyear](~/queryLanguage/query_language_endofyearfunction.md) | [startofday](~/queryLanguage/query_language_startofdayfunction.md) | [startofweek](~/queryLanguage/query_language_startofweekfunction.md) | [startofmonth](~/queryLanguage/query_language_startofmonthfunction.md) | [startofyear](~/queryLanguage/query_language_startofyearfunction.md)
+[ago](~/query/query_language_agofunction.md)  
+[now](~/query/query_language_nowfunction.md)  
+[todatetime](~/query/query_language_todatetimefunction.md) | [totimespan](~/query/query_language_totimespanfunction.md)  
+[bin](~/query/query_language_binfunction.md)  
+[datepart](~/query/query_language_datetime_partfunction.md) | [getmonth](~/query/query_language_getmonthfunction.md) | [monthofyear](~/query/query_language_monthofyearfunction.md) | [getyear](~/query/query_language_getyearfunction.md)  
+[dayofmonth](~/query/query_language_dayofmonthfunction.md) | [dayofweek](~/query/query_language_dayofweekfunction.md) | [dayofyear](~/query/query_language_dayofyearfunction.md) | [weekofyear](~/query/query_language_weekofyearfunction.md)   
+[endofday](~/query/query_language_endofdayfunction.md) | [endofweek](~/query/query_language_endofweekfunction.md) | [endofmonth](~/query/query_language_endofmonthfunction.md) | [endofyear](~/query/query_language_endofyearfunction.md) | [startofday](~/query/query_language_startofdayfunction.md) | [startofweek](~/query/query_language_startofweekfunction.md) | [startofmonth](~/query/query_language_startofmonthfunction.md) | [startofyear](~/query/query_language_startofyearfunction.md)
 
 ## Basics
 The query language has two main data types associated with dates and times: datetime and timespan. 
@@ -35,7 +35,7 @@ Timespans are expressed as a decimal followed by a time unit:
 |microsecond | microsecond  |
 |tick        | nanosecond   |
 
-Datetimes can be created by casting a string using the todatetime operator. For example, imagine we had an incident that we were investigating exceptions for. We want to define our start and end time as parameters so that we can reuse them in multiple places in the query. Note the convenient [between operator](~/queryLanguage/query_language_betweenoperator.md) available to us. Also note that we can to do basic arithmetic such as subtracting and adding datetimes, in this case to create a new column called *timeFromStart* that will show us how long after the incident started a given exception took place.
+Datetimes can be created by casting a string using the todatetime operator. For example, imagine we had an incident that we were investigating exceptions for. We want to define our start and end time as parameters so that we can reuse them in multiple places in the query. Note the convenient [between operator](~/query/query_language_betweenoperator.md) available to us. Also note that we can to do basic arithmetic such as subtracting and adding datetimes, in this case to create a new column called *timeFromStart* that will show us how long after the incident started a given exception took place.
 ```AIQL
 let startDatetime = todatetime("2015-12-31 20:12:42.9");
 let endDatetime = todatetime("2016-01-02 06:32:27.2");

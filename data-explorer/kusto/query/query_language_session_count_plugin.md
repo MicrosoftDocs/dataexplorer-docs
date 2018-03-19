@@ -96,4 +96,4 @@ _data
 | render linechart 
 ```
 
-<p><img src="~/queryLanguage/images/queries/example_session_count.png"></p>
+<p><img src="~/query/images/queries/example_session_count.png"></p>

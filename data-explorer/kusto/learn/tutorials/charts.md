@@ -6,7 +6,7 @@
 > Before you start...<br/>
 > If you haven't completed the [Advanced Aggregation functions](~/learn/tutorials/advanced_aggregations.md) tutorial yet, we recommend that you do so.
 
-This tutorial reviews various visualizations Azure Log Analytics offers to display your data in a clear way. You can also use [render](~/queryLanguage/query_language_renderoperator.md) operator to embed the visualization within the querty itself.
+This tutorial reviews various visualizations Azure Log Analytics offers to display your data in a clear way. You can also use [render](~/query/query_language_renderoperator.md) operator to embed the visualization within the querty itself.
 
 ## Charting the results
 Let's review how many computers we have per operating system, according the last hour:

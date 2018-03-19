@@ -27,7 +27,7 @@ footer{
     <div style="font-size: 20px;">Powering Azure Log Analytics and Application Insights</div>
     <div class="buttons-unit">
       <a href="~/learn/tutorials/getting_started_with_analytics_portal.md" class="button">Getting Started</a>
-      <a href="~/queryLanguage/query_language.md" class="button">Language Reference</a>
+      <a href="~/query/query_language.md" class="button">Language Reference</a>
     </div>
   </div>
 </div>

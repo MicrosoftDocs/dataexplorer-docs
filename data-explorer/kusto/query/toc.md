@@ -1,4 +1,4 @@
-﻿# [Change log](~/queryLanguage/query_language.md)
+﻿# [Change log](~/query/query_language.md)
 # [Data types](~/concepts/concepts_datatypes.md)
 ## [bool](~/concepts/concepts_datatypes_bool.md)
 ## [datetime](~/concepts/concepts_datatypes_datetime.md)

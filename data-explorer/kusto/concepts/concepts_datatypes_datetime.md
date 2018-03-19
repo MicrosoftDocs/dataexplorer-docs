@@ -31,7 +31,7 @@ to a `timespan` value of zero.)
 ## Supported formats
 
 There are several formats for `datetime` that are supported as [datetime() literals](#datetime-literals)
-and the [todatetime()](../queryLanguage/query_language_todatetimefunction.md) function.
+and the [todatetime()](../query/query_language_todatetimefunction.md) function.
 
 <p class="warning">It is **strongly recommended** to use only the ISO 8601 formats.</p>        
 

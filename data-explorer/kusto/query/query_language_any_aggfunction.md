@@ -31,18 +31,18 @@ Show Random Continent:
 
     Continents | summarize any(Continent)
 
-<p><img src="~/queryLanguage/images/aggregations/any1.png"></p>
+<p><img src="~/query/images/aggregations/any1.png"></p>
 
 
 Show all the details for a random row:
 
     Continents | summarize any(*) 
 
-<p><img src="~/queryLanguage/images/aggregations/any2.png"></p>
+<p><img src="~/query/images/aggregations/any2.png"></p>
 
 
 Show all the details for each random continent:
 
    Continents | summarize any(*) by Continent
 
-<p><img src="~/queryLanguage/images/aggregations/any3.png"></p>
+<p><img src="~/query/images/aggregations/any3.png"></p>

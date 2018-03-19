@@ -36,7 +36,7 @@ Find the southernmost city in each continent, with its country:
     | summarize (latitude, City, country)=argmin(latitude, City, country) 
       by continent
 
-<p><img src="~/queryLanguage/images/aggregations/argmin.png"></p>
+<p><img src="~/query/images/aggregations/argmin.png"></p>
  
  **Notes**
 

@@ -3,7 +3,7 @@
 Calculates the variance of *Expr* across the group, considering the group as a [population](https://en.wikipedia.org/wiki/Statistical_population). 
 
 * Used formula:
-<p><img src="~/queryLanguage/images/aggregations/variance_population.png"></p>
+<p><img src="~/query/images/aggregations/variance_population.png"></p>
 
 * Can be used only in context of aggregation inside [summarize](query_language_summarizeoperator.md)
 

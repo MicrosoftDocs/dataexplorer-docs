@@ -43,7 +43,7 @@ footer{
 			<p><a class="btn btn-primary" href="learn/tutorials/getting_started_with_analytics_portal.md" role="button">Let's start »</a></p>
 		</div>
         <div class="col-md-4">
-			<h1><a href="~/queryLanguage/query_language.md" style="font-weight: 300;">Language reference</a></h1>
+			<h1><a href="~/query/query_language.md" style="font-weight: 300;">Language reference</a></h1>
 			<p>Every command, every operator, right here.</p>
 			<p><a class="btn btn-primary" href="queryLanguage/query_language.md" role="button">View details »</a></p>
 		</div>

@@ -30,6 +30,6 @@ PageViewLog
 | summarize countries=makeset(country) by continent
 ```
 
-<p><img src="~/queryLanguage/images/aggregations/makeset.png"></p>
+<p><img src="~/query/images/aggregations/makeset.png"></p>
 
 See also the [`mvexpand` operator](./query_language_mvexpandoperator.md) for the opposite function.

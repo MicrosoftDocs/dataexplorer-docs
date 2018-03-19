@@ -7,8 +7,8 @@ This value is called the **null value**, or simply **null**.
 
 The null value does not compare equal to any other value of the data type,
 including itself. (That is, `null == null` is false.) To determine if some
-value is the null value, use the [isnull()](../queryLanguage/query_language_isnullfunction.md) function
-and the [isnotnull()](../queryLanguage/query_language_isnotnullfunction.md) function.
+value is the null value, use the [isnull()](../query/query_language_isnullfunction.md) function
+and the [isnotnull()](../query/query_language_isnotnullfunction.md) function.
 
 ## Binary operations on null
 

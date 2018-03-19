@@ -3,7 +3,7 @@
 Calculates the standard deviation of *Expr* across the group, considering the group as a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29). 
 
 * Used formula:
-<p><img src="~/queryLanguage/images/aggregations/stdev_sample.png"></p>
+<p><img src="~/query/images/aggregations/stdev_sample.png"></p>
 
 * Can be used only in context of aggregation inside [summarize](query_language_summarizeoperator.md)
 

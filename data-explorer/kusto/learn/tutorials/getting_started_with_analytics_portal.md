@@ -143,7 +143,7 @@ Click *Stacked Column* and select *Pie* to show another view of the results:
 
 Different properties of the view, such as x and y axes, or grouping and splitting preferences, can be changed manually from the control bar.
 
-You can also set the preferred view in the query itself, using the [render operator](~/queryLanguage/query_language_renderoperator.md).
+You can also set the preferred view in the query itself, using the [render operator](~/query/query_language_renderoperator.md).
 
 ### Smart diagnostics
 

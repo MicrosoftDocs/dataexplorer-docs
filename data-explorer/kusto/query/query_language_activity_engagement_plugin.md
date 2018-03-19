@@ -54,7 +54,7 @@ range _day from _start to _end  step 1d
 | render timechart 
 ```
 
-<p><img src="~/queryLanguage/images/queries/activity_engagement_dau_wau.png"></p>
+<p><img src="~/query/images/queries/activity_engagement_dau_wau.png"></p>
 
 ### DAU/MAU calculation
 
@@ -76,7 +76,7 @@ range _day from _start to _end  step 1d
 | render timechart 
 ```
 
-<p><img src="~/queryLanguage/images/queries/activity_engagement_dau_mau.png"></p>
+<p><img src="~/query/images/queries/activity_engagement_dau_mau.png"></p>
 
 ### DAU/MAU calculation with additional dimensions
 
@@ -99,5 +99,5 @@ range _day from _start to _end  step 1d
 | render timechart 
 ```
 
-<p><img src="~/queryLanguage/images/queries/activity_engagement_dau_mau_mod3.png"></p>
+<p><img src="~/query/images/queries/activity_engagement_dau_mau_mod3.png"></p>
 

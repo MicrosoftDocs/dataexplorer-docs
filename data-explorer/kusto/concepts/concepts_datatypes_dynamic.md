@@ -120,8 +120,8 @@ Cast functions are:
 |[`extractjson(`path,object`)`](#extractjson)|Uses path to navigate into object.
 |[`parsejson(`source`)`](#parsejson)| Turns a JSON string into a dynamic object.
 |[`range(`from,to,step`)`](#range)| An array of values
-|[`mvexpand` listColumn](../queryLanguage/query_language_mvexpandoperator.md) | Replicates a row for each value in a list in a specified cell.
-|[`summarize buildschema(`column`)`](../queryLanguage/query_language_buildschema_aggfunction.md) |Infers the type schema from column content
-|[`summarize makelist(`column`)` ](../queryLanguage/query_language_makelist_aggfunction.md)| Flattens groups of rows and puts the values of the column in an array.
-|[`summarize makeset(`column`)`](../queryLanguage/query_language_makeset_aggfunction.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
+|[`mvexpand` listColumn](../query/query_language_mvexpandoperator.md) | Replicates a row for each value in a list in a specified cell.
+|[`summarize buildschema(`column`)`](../query/query_language_buildschema_aggfunction.md) |Infers the type schema from column content
+|[`summarize makelist(`column`)` ](../query/query_language_makelist_aggfunction.md)| Flattens groups of rows and puts the values of the column in an array.
+|[`summarize makeset(`column`)`](../query/query_language_makeset_aggfunction.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
 
