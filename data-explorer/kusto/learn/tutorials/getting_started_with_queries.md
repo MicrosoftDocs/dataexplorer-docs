@@ -1,8 +1,7 @@
 # Getting Started with Queries
 #### (20 min to read)
 
-<br/>
->[!Note]
+>[!NOTE]
 >Before you start...
 >If you haven't completed [Getting started with the Analytics portal](~/learn/tutorials/getting_started_with_analytics_portal.md) yet, we recommend that you do so. 
 
