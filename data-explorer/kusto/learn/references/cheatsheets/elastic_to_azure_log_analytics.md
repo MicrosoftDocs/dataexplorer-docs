@@ -1,0 +1,3 @@
+## Elastic Search to Azure Log Analytics query language cheat sheet 
+
+Coming soon...

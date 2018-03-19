@@ -1,0 +1,42 @@
+# hash()
+
+Returns a hash value for the input value.
+
+**Syntax**
+
+`hash(`*source* [`,` *mod*]`)`
+
+**Arguments**
+
+* *source*: The value to be hashed.
+* *mod*: An optional module value to be applied to the hash result, so that
+  the output value is between `0` and *mod* - 1
+
+**Returns**
+
+The hash value of the given scalar, modulo the given mod value (if specified).
+
+<div class='warning'>The algorithm used to calculate the hash is xxhash.
+This algorithm might change in the future; callers are only guaranteed that
+within a single query all invocations of this method will use the same
+algorithm.</div>
+
+**Examples**
+
+<!-- csl -->
+```
+hash("World")                   // 1846988464401551951
+hash("World", 100)              // 51 (1846988464401551951 % 100)
+hash(datetime("2015-01-01"))    // 1380966698541616202
+```
+
+The following example uses the hash function to run a query on 10% of the data,
+It is helpful to use the hash function for sampling the data when assuming the value is uniformly distributed (In this example StartTime value)
+
+
+```
+StormEvents 
+| where hash(StartTime, 10) == 0
+| summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State 
+| top 5 by StormCount desc
+```

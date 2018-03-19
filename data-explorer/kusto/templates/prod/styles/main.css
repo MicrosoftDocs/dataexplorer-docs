@@ -1,0 +1,402 @@
+/* Copyright (c) Microsoft Corporation. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
+/* Colors */
+button, a, .btn-primary {
+  color: #337ab7;
+}
+
+button:hover, button:focus, a:hover, a:focus, .toc .nav > li.active > a:hover, .toc .nav > li.active > a:focus, .toc .nav > li > a:hover, .toc .nav > li > a:focus {
+  color: #7fd0cd;
+}
+
+a.disable, a.disable:hover{
+  color: #90ABB9;
+}
+.hero {
+    color: #cfe9d7;
+    background-color: #417377;
+    background-image: -webkit-gradient(linear,left top,right bottom,color-stop(0%,#3f71af),color-stop(90%,#397b78));
+    background-image: -webkit-linear-gradient(150deg,#3f71af 0%,#397b78 90%);
+    background-image: -moz-linear-gradient(150deg,#3f71af 0%,#397b78 90%);
+    background-image: -ms-linear-gradient(150deg,#3f71af 0%,#397b78 90%);
+    background-image: -o-linear-gradient(150deg,#3f71af 0%,#397b78 90%);
+    background-image: linear-gradient(150deg,#3f71af 0%,#397b78 90%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3f71af', endColorstr='#397b78', GradientType=1);
+
+}
+
+.h1 {
+  font-size: 26px;
+  margin: 15px 0px 5px 0px;
+  border-bottom: 5px solid black;
+  width:200px;
+}
+
+.hero strong {
+    color: #e7e7e7;
+	font-weight: 300;
+}
+
+.buttons-unit .button:active {
+    background: #304550;
+}
+
+.navbar-default {
+    background-color: #3c7596;
+    border-color: #3c7596;
+}
+
+.navbar-brand {
+	padding-top: 10px;
+    padding-bottom: 10px;	
+}
+
+.navbar-inverse{
+	border-color:#ffffff;
+	background-color: #ffffff;	
+}
+
+.navbar-inverse .navbar-collapse,.navbar-inverse .navbar-form{
+	border-color:#ffffff;
+	background-color: #ffffff;
+}
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-text {
+	font-size: 16px;
+	color: #385361
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #385361;
+    background-color: #ffffff;
+	font-weight: 500;
+}
+
+.navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:active, .navbar-inverse .navbar-nav>.active>a:visited {
+    color: #385361;
+    background-color: #ffffff;
+	font-weight: 500;
+}
+
+.navbar-inverse .navbar-nav>.active>a {
+	color: #385361;
+    background-color: #ffffff;
+	font-weight: 500;
+}
+
+.navbar-inverse {
+    color: #385361;
+    background-color: #ffffff;
+}
+
+.breadcrumb {
+  background: #3c7596;
+  color: #e5f3e9;
+  margin-left: 5px;
+}
+
+.breadcrumb > li a{
+	color: #e5f3e9;
+}
+
+.sidetoc {
+  background: #304550;
+}
+
+.sidefilter {
+  background: #304550;
+}
+
+body .toc {
+	background-color: #304550;	
+}
+
+.toc {
+  background: #304550;
+}
+
+.toc .nav > li.active > a, .affix ul > li.active > a, .affix ul > li.active > a:before {
+  color: #7fd0cd
+}
+
+.toc .nav > li > a, .affix ul > li > a, .affix ul > li > a:hover {
+  color: #dedede;
+}
+
+.nav .container{
+	background-color: #304550;
+}
+
+.btn-primary {
+    color: #f5f5f5;
+	background-color: #385361;
+	font-weight: 400;
+	margin-top: 6px;
+}
+
+.btn-primary:hover {
+	color: #f5f5f5;
+    background-color: #385361;
+	font-weight: 500;
+}
+
+.affix ul > li > a:before {
+  color: #cccccc;
+}
+
+svg:hover path {
+    fill: #ffffff;
+}
+
+.counter-key-section{
+  border: 2px solid #7fd0cd;
+  -webkit-border-image-source: -webkit-gradient(linear, left, right, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(50%, #385361), color-stop(100%, rgba(0, 0, 0, 0)));
+  -webkit-border-image-source: -webkit-linear-gradient(90deg, rgba(0, 0, 0, 0), #385361 50%, rgba(0, 0, 0, 0));
+  -moz-border-image-source: -moz-linear-gradient(90deg, rgba(0, 0, 0, 0), #385361 50%, rgba(0, 0, 0, 0));
+  -ms-border-image-source: -ms-linear-gradient(90deg, rgba(0, 0, 0, 0), #385361 50%, rgba(0, 0, 0, 0));
+  -o-border-image-source: -o-linear-gradient(90deg, rgba(0, 0, 0, 0), #385361 50%, rgba(0, 0, 0, 0));
+  border-image-source: linear-gradient(90deg, rgba(0, 0, 0, 0), #385361 50%, rgba(0, 0, 0, 0));
+  border-image-slice: 1;
+}
+
+/* End Colors */
+
+
+body {
+	font-size: 15px;
+    line-height: 26px;	
+}
+
+.value-prop-heading {
+  font-size: 22px;
+}
+
+#vp-container{
+  margin-top: 30px;
+}
+
+.hero {
+    height: 350px;
+    margin-top: 50px;
+	margin-bottom: 50px;
+    padding-top: 70px;
+    font-weight: 300;
+    text-align: center;
+	height: 400px;
+}
+
+.toc .level1 a {
+    font-weight: 300;
+    margin-top: 13px;
+    position: relative;
+    font-size: 16px;
+}
+
+.toc .level1 li.active>a {
+    font-weight: 500;
+    margin-top: 13px;
+    position: relative;
+    font-size: 16px;
+}
+
+.key-section{
+  padding: 30px 0;
+}
+
+.counter-key-section{
+  padding: 30px 0;
+}
+
+.buttons-unit-small{
+  font-size: 16px;
+}
+
+.version-link, .github-link{
+  margin: 5px;
+}
+
+.hero .text {
+	margin-top: 20px;
+    font-size: 48px;
+    text-align: center;
+}
+
+.hero .minitext {
+	margin-top: 40px;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.affix ul > li > a {
+  padding: 5px 12px;
+  color: #666666;
+}
+
+.buttons-unit {
+    margin-top: 70px;
+    text-align: center;
+}
+
+.hero .button {
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin: 0 12px;
+    box-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+}
+
+svg:hover {
+	display: block; 
+}
+
+.buttons-unit .button {
+	font-size: 22px;
+    color: #e5f3e9;
+    background: #304550;
+}
+
+.toc ul{
+  font-size: 12px;
+  margin: 0 0 0 3px;
+  color: #dedede;
+}
+
+.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{font-family:inherit;font-weight:400;line-height:1.1;color: #017c8a;}
+h1>a, h1>a:hover, h1>a:focus{font-family:inherit;font-weight:400;line-height:1.1;color: #017c8a;}
+
+h1:before {
+    content: '';
+    display: block;
+    position: relative;
+    width: 0;
+    height: 50px;
+    margin-top: -50px;
+}
+
+h2 { font-size: 30px}
+
+.key-section {
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+table {border: 1px solid gray; }
+thead {background-color: lightgray}
+tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.zero-clipboard {
+    position: relative;
+}
+
+pre {
+	padding: 15px;
+	font-size: 14px;
+}
+
+.btn-clipboard {
+	position: absolute;
+    top: -4px;
+    right: 0;
+    z-index: 10;
+    display: block;
+    padding: 5px 8px;
+	font-family: "Segoe UI", Tahoma, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #e1e1e8;
+    border-radius: 0 4px 4px 0;
+}
+
+.btn-clipboard:hover {
+	font-weight: 500;
+}
+
+.btn-clipboard:active {
+	background-color: #e7e7e7;
+	font-weight: 500;
+}
+
+.btn-run-query {
+	position: absolute;
+    top: -4px;
+    right: 45px;
+    z-index: 10;
+    display: block;
+    padding: 5px 8px;
+	font-family: "Segoe UI", Tahoma, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #e1e1e8;
+    border-radius: 4px 0 0 4px;
+}
+
+.btn-run-query:hover {
+	font-weight: 500;
+}
+
+.btn-run-query:active {
+	background-color: #e7e7e7;
+	font-weight: 500;
+}
+
+.col-md-4 {
+	padding-right: 50px;
+    padding-left: 50px;
+}
+
+tr:last-child
+{
+   border-bottom: 1px solid gray;
+}
+
+th, td {
+    border-left: 1px solid gray;
+    padding: 5px;
+    vertical-align: top;
+}
+
+.warning {
+    color: black;
+    background-color: yellow;
+    padding: 5px
+}
+
+/* bootstrap defaults to 1170 (that's why all sites on the internet look the same). 
+   We wanted a wider default to take advantate of more screen real estate.
+   Didn't increase it more since this can compromise how this looks on smaller screens.
+   another options was to move to container-fluid thus expanding the display across all
+   screen width - but was ruled out so not to deviate to much for docfx template to make
+   future merges with new versions easier.
+*/
+.container {
+	width: 1480px;
+}
+
+.container .row {
+	padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.toc .level3 {
+	margin-left: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+  .hero {
+    height: 500px;
+    margin-top: 0px;
+  }
+  .hero .button {
+    display: block;
+    margin: 12px;
+  }
+}
+
+@media (min-width: 768px)
+  .zero-clipboard {
+    display: block;
+}
