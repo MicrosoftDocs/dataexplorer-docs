@@ -1,6 +1,5 @@
 ---
 title: Home
-documentType: index
 ---
 <style type="text/css">
 footer{
