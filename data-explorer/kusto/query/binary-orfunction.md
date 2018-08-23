@@ -1,0 +1,17 @@
+# binary-or()
+
+Returns a result of the bitwise `or` operation of the two values 
+
+    binary-or(x,y)
+
+**Syntax**
+
+`binary-or(`*num1*`,` *num2* `)`
+
+**Arguments**
+
+* *num1*, *num2*: long numbers.
+
+**Returns**
+
+Returns logical OR operation on a pair of numbers: num1 | num2.
