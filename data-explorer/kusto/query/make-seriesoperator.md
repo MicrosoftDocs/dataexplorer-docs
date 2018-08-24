@@ -83,16 +83,14 @@ Although you can provide arbitrary expressions for both the aggregation and grou
 
 ## Examples
   
-<!-- csl -->
-```
+```kusto
 T | make-series PriceAvg=avg(Price) default=0
 on Purchase in range(datetime(2016-09-10), datetime(2016-09-12), 1d) by Supplier, Fruit
 ```
   
 ![](./Images/aggregations/makeseries.png)
   
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let data=datatable(timestamp:datetime, metric: real)
 [
   datetime(2016-12-31T06:00), 50,
@@ -120,4 +118,6 @@ data
 |avg-metric|timestamp|
 |---|---|
 |[ 4.0, 3.0, 5.0, 0.0, 10.5, 4.0, 3.0, 8.0, 6.5 ]|[ "2017-01-01T00:00:00.0000000Z", "2017-01-02T00:00:00.0000000Z", "2017-01-03T00:00:00.0000000Z", "2017-01-04T00:00:00.0000000Z", "2017-01-05T00:00:00.0000000Z", "2017-01-06T00:00:00.0000000Z", "2017-01-07T00:00:00.0000000Z", "2017-01-08T00:00:00.0000000Z", "2017-01-09T00:00:00.0000000Z" ]|  
+
+
 

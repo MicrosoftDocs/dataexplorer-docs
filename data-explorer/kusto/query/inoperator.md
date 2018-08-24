@@ -45,8 +45,7 @@ Rows in *T* for which the predicate is `true`
 
 **A simple usage of 'in' operator:**  
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where State in ("FLORIDA", "GEORGIA", "NEW YORK") 
 | count
@@ -59,8 +58,7 @@ StormEvents
 
 **A simple usage of 'in~' operator:**  
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where State in~ ("Florida", "Georgia", "New York") 
 | count
@@ -72,8 +70,7 @@ StormEvents
 
 **A simple usage of '!in' operator:**  
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where State !in ("FLORIDA", "GEORGIA", "NEW YORK") 
 | count
@@ -85,8 +82,7 @@ StormEvents
 
 
 **Using dynamic array:**
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let states = dynamic(['FLORIDA', 'ATLANTIC SOUTH', 'GEORGIA']);
 StormEvents 
 | where State in (states)
@@ -100,8 +96,7 @@ StormEvents
 
 **A subquery example:**  
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 // Using subquery
 let Top-5-States = 
 StormEvents
@@ -114,8 +109,7 @@ StormEvents
 
 The same query can be written as:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 // Inline subquery 
 StormEvents 
 | where State in (
@@ -132,8 +126,7 @@ StormEvents
 
 **Top with other example:**  
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let Death-By-State = materialize(StormEvents | summarize deaths = sum(DeathsDirect) by State);
 let Top-5-States = Death-By-State | top 5 by deaths | project State; 
 Death-By-State
@@ -155,8 +148,7 @@ Death-By-State
 
 **Using a static list returned by a function:**  
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents | where State in (InterestingStates()) | count
 
 ```
@@ -168,8 +160,7 @@ StormEvents | where State in (InterestingStates()) | count
 
 Here is the function definition:  
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 .show function InterestingStates
 
 ```
@@ -177,4 +168,6 @@ Here is the function definition:
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
 |InterestingStates|()|{ dynamic(["WASHINGTON", "FLORIDA", "GEORGIA", "NEW YORK"]) }
+
+
 

@@ -18,8 +18,7 @@ URL (string) converted into a format that can be transmitted over the Internet.
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 let url = @'https://www.bing.com/';
 print original = url, encoded = url-encode(url)
 ```
@@ -30,3 +29,5 @@ print original = url, encoded = url-encode(url)
 
 
  
+
+

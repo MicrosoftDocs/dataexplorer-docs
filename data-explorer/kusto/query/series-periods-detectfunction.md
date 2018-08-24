@@ -30,8 +30,7 @@ The function takes as input a column containing a dynamic array of time series (
 
 The following query embeds a snapshot of a month of an application’s traffic, aggregated twice a day (i.e. the bin size is 12 hours).
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 range x from 1 to 1 step 1
 | project y=dynamic([80,139,87,110,68,54,50,51,53,133,86,141,97,156,94,149,95,140,77,61,50,54,47,133,72,152,94,148,105,162,101,160,87,63,53,55,54,151,103,189,108,183,113,175,113,178,90,71,62,62,65,165,109,181,115,182,121,178,114,170])
 | project x=range(1, arraylength(y), 1), y  
@@ -42,8 +41,7 @@ range x from 1 to 1 step 1
 
 Running `series-periods-detect()` on this series results in the weekly period (14 points long):
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 range x from 1 to 1 step 1
 | project y=dynamic([80,139,87,110,68,54,50,51,53,133,86,141,97,156,94,149,95,140,77,61,50,54,47,133,72,152,94,148,105,162,101,160,87,63,53,55,54,151,103,189,108,183,113,175,113,178,90,71,62,62,65,165,109,181,115,182,121,178,114,170])
 | project x=range(1, arraylength(y), 1), y  
@@ -56,3 +54,5 @@ range x from 1 to 1 step 1
 
 
 Note that the daily period that can be also seen in the chart was not found since the sampling is too coarse (12h bin size) so a daily period of 2 bins is bellow the minimum period size of 4 points required by the algorithm.
+
+

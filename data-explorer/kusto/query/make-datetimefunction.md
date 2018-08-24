@@ -27,8 +27,7 @@ If creation is successful, result will be a [datetime](./scalar-data-types/datet
  
 **Example**
 
-<!-- csl -->
-```
+```kusto
 print year-month-day = make-datetime(2017,10,01)
 ```
 
@@ -39,8 +38,7 @@ print year-month-day = make-datetime(2017,10,01)
 
 
 
-<!-- csl -->
-```
+```kusto
 print year-month-day-hour-minute = make-datetime(2017,10,01,12,10)
 ```
 
@@ -51,13 +49,14 @@ print year-month-day-hour-minute = make-datetime(2017,10,01,12,10)
 
 
 
-<!-- csl -->
-```
+```kusto
 print year-month-day-hour-minute-second = make-datetime(2017,10,01,12,11,0.1234567)
 ```
 
 |year-month-day-hour-minute-second|
 |---|
 |2017-10-01 12:11:00.1234567|
+
+
 
 

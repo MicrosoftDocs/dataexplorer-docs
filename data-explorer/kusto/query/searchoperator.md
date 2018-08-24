@@ -87,8 +87,7 @@ and views of the database in scope.
 
 ## Examples
 
-<!-- csl -->
-```
+```kusto
 // 1. Simple term search over all unrestricted tables and views of the database in scope
 search "billg"
 
@@ -113,3 +112,5 @@ search in (C*, TF) "billg" or "davec" or "steveb"
 // 8. A different way to say (7)
 union C*, TF | search "billg" or "davec" or "steveb"
 ```
+
+

@@ -23,17 +23,17 @@ the default (and currently only) flavor of the operator tries to return an answe
 
 **Examples**  
 Get 10 distinct values from a population
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents | sample-distinct 10 of EpisodeId
 
 ```
 
 Sample a population and do further computation knowing the summarize won't exceed query limits. 
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let sampleEpisodes = toscalar(StormEvents | sample-distinct 10 of EpisodeId);
 StormEvents | where EpisodeId in (sampleEpisodes) | summarize totalInjuries=sum(InjuriesDirect) by EpisodeId
 
 ```
+
+

@@ -22,3 +22,5 @@ materialize this column at ingestion time. This way - you will pay only once for
 -	If you find that you're applying conversions (JSON, string, etc) over 1B+ records - reshape your query to reduce amount of data fed into the conversion
 -	Don't use tolower(Col) == "lowercasestring" to do case insensitive comparisons. Kusto has an operator for that. Please use Col =~ "lowercasestring" instead.
 -   Don't filter on a calculated column, if you can filter on a table column. In other words: Don't do this `T | extend _value = <expression> | where predicate(_value)`, instead do: `T | where predicate(expression(_value))`
+
+

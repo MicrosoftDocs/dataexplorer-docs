@@ -11,3 +11,5 @@ There are several special literal forms:
 * `real(nan)`: Not-a-Number (NaN). For example, the result of dividing a `0.0` by another `0.0`.
 * `real(+inf)`: Positive infinity. For example, the result of dividing `1.0` by `0.0`.
 * `real(-inf)`: Negative infinity. For example, the result of dividing `-1.0` by `0.0`.
+
+

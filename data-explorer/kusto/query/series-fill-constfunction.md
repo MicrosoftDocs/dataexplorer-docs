@@ -18,15 +18,13 @@ Takes an expression containing dynamic numerical array as input, replaces all in
 **Notes**
 * It is possible to create a series with constant fill in one call using `default = ` *DefaultValue* syntax (or just omitting which will assume 0). See [make-series](make-seriesoperator.md) for more information.
 
-<!-- csl -->
-```
+```kusto
 make-series num=count() default=-1 on TimeStamp in range(ago(1d), ago(1h), 1h) by Os, Browser
 ```
   
 * In order to apply any interpolation functions after [make-series](make-seriesoperator.md) it is recommended to specify *null* as a default value: 
 
-<!-- csl -->
-```
+```kusto
 make-series num=count() default=long(null) on TimeStamp in range(ago(1d), ago(1h), 1h) by Os, Browser
 ```
   
@@ -35,8 +33,7 @@ make-series num=count() default=long(null) on TimeStamp in range(ago(1d), ago(1h
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let data = datatable(arr: dynamic)
 [
     dynamic([111,null,36,41,23,null,16,61,33,null,null])   
@@ -50,3 +47,5 @@ data
 |arr|fill-const1|fill-const2|
 |---|---|---|
 |[111,null,36,41,23,null,16,61,33,null,null]|[111,0.0,36,41,23,0.0,16,61,33,0.0,0.0]|[111,-1,36,41,23,-1,16,61,33,-1,-1]|
+
+

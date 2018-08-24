@@ -46,3 +46,5 @@ Show all the details for each random continent:
    Continents | summarize any(*) by Continent
 
 ![](./images/aggregations/any3.png)
+
+

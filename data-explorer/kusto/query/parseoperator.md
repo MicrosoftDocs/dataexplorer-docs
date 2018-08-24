@@ -44,8 +44,7 @@ provided to the operator.
   are handeled internally.
   So for example, this parse statement :
   
-	<!-- csl -->
-	```
+	```kusto
 	parse kind=regex Col with * <regex1> var1:string <regex2> var2:long
 	```
 
@@ -80,8 +79,7 @@ The operation below will extend the table with 6 columns: `resourceName` , `tota
 |Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:01)|
 |Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)|
 
-<!-- csl -->
-```
+```kusto
 Traces  
 | parse eventText with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previouLockTime:date ")" *  
 | project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previouLockTime
@@ -97,8 +95,7 @@ Traces
 
 for regex mode :
 
-<!-- csl -->
-```
+```kusto
 Traces  
 | parse kind = regex eventText with "(.*?)[a-zA-Z]*=" resourceName @", totalSlices=\s*\d+\s*.*?sliceNumber=" sliceNumber:long  ".*?(previous)?lockTime=" lockTime ".*?releaseTime=" releaseTime ".*?previousLockTime=" previouLockTime:date "\\)"  
 | project resourceName , sliceNumber , lockTime , releaseTime , previouLockTime
@@ -116,8 +113,7 @@ for regex mode using regex flags:
 
 if we are interested in getting the resourceName only and we use this query:
 
-<!-- csl-->
-```
+```kusto
 Traces
 | parse kind = regex  EventText with * "resourceName=" resourceName ',' *
 | project resourceName
@@ -137,8 +133,7 @@ or even if we had few records where the resourceName appears sometimes lower-cas
 get nulls for some values.
 in order to get the wanted result, we may run this one with regex flags ungreedy and disable case-sensitive mode :
 
-<!-- csl-->
-```
+```kusto
 Traces
 | parse kind = regex flags = Ui EventText with * "RESOURCENAME=" resourceName ',' *
 | project resourceName
@@ -157,8 +152,7 @@ Traces
 
 for relaxed mode :
 
-<!-- csl  -->
-```
+```kusto
 range x from 1 to 1 step 1 | parse kind=relaxed "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=NULL, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=NULL, previousLockTime=02/17/2016 08:39:01)" with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previouLockTime:date ")" *  
 | project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previouLockTime
 ```
@@ -166,3 +160,5 @@ range x from 1 to 1 step 1 | parse kind=relaxed "Event: NotifySliceRelease (reso
 |resourceName|totalSlices|sliceNumber|lockTime|releaseTime|previouLockTime|
 |---|---|---|---|---|---|
 |PipelineScheduler||23|02/17/2016 08:40:01||2016-02-17 08:39:01.0000000|
+
+

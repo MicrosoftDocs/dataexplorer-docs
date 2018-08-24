@@ -19,8 +19,7 @@ to delimit operators.
 
 For example:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where State == 'FLORIDA' and StartTime > datetime(2000-01-01)
 | count
@@ -37,3 +36,5 @@ even if it only has one column and one row.
 # Reference: Query operators
 
 > `T` is used in query examples below to denote the preceding pipeline or source table.
+
+

@@ -32,8 +32,7 @@ The Intermediate results of distinct count of *Expr* across the group.
 
 **Examples**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents
 | summarize hll(DamageProperty) by bin(StartTime,10m)
 
@@ -45,4 +44,6 @@ StormEvents
 |2007-09-20 21:50:00.0000000|[[1024,14],[4835649640695509390],[]]|
 |2007-09-29 08:10:00.0000000|[[1024,14],[4246796580750024372],[]]|
 |2007-12-30 16:00:00.0000000|[[1024,14],[4246796580750024372,-8936707700542868125],[]]|
+
+
 

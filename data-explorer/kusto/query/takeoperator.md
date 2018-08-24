@@ -36,3 +36,5 @@ Kusto does not support the complementary `skip` operator. This is intentional, a
 performance impact on the service. Application builders that want to support result
 paging are advised to query for several pages of data (say, 10,000 records at a time)
 and then display a page of data at a time to the user.
+
+

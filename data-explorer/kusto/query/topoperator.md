@@ -20,3 +20,5 @@ Returns the first *N* records sorted by the specified columns.
 
 `top 5 by name` is superficially equivalent to `sort by name | take 5`. However, it runs faster and always returns sorted results, whereas `take` makes no such guarantee.
 [top-nested](topnestedoperator.md) allows to produce hierarchical top results.
+
+

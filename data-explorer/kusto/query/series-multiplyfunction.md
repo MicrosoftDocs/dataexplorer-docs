@@ -16,8 +16,7 @@ Dynamic array of calculated element-wise multiplication operation between the tw
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2
 | extend z = y * 2
@@ -30,3 +29,5 @@ range x from 1 to 3 step 1
 |[1,2,4]	|[4,2,1]|	[4,4,4]|
 |[2,4,8]	|[8,4,2]|	[16,16,16]|
 |[3,6,12]	|[12,6,3]|	[36,36,36]|
+
+

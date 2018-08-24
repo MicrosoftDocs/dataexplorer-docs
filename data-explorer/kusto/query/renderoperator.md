@@ -104,3 +104,5 @@ Where:
 [Rendering examples in the tutorial](./tutorial.md#render-display-a-chart-or-table).
 
 [Anomaly detection](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning)
+
+

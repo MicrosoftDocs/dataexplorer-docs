@@ -17,11 +17,12 @@ Array values, concatenated to a single string.
 
 **Examples**
   
-<!-- csl -->
-```
+```kusto
 print str = strcat-array(dynamic([1, 2, 3]), "->")
 ```
 
 |str|
 |---|
 |1->2->3|
+
+

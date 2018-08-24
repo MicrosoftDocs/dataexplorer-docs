@@ -22,8 +22,7 @@ Dynamic array of the same length as the *series* input containing the calculated
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 print s=dynamic([1,3,5,1,3,5,2,4,6]) 
 | union (print s=dynamic([1,3,5,2,4,6,1,3,5,2,4,6]))
 | extend s-seasonal = series-seasonal(s,3)
@@ -32,3 +31,5 @@ print s=dynamic([1,3,5,1,3,5,2,4,6])
 |---|---|
 |[1,3,5,1,3,5,2,4,6]|[1.0,3.0,5.0,1.0,3.0,5.0,1.0,3.0,5.0]|
 |[1,3,5,2,4,6,1,3,5,2,4,6]|[1.5,3.5,5.5,1.5,3.5,5.5,1.5,3.5,5.5,1.5,3.5,5.5]|
+
+

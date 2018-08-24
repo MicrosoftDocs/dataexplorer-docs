@@ -59,8 +59,7 @@ Available arguments:
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5
 | extend Damage = iff(DamageCrops + DamageProperty > 0 , "YES" , "NO")
@@ -74,8 +73,7 @@ StormEvents
 |2|898|15.3|TEXAS||
 
 **Example with custom wildcards**
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5
 | extend Damage = iff(DamageCrops + DamageProperty > 0 , "YES" , "NO")
@@ -93,3 +91,5 @@ StormEvents
 * AutoCluster is largely based on the Seed-Expand algorithm from the following paper: [Algorithms for Telemetry Data Mining using Discrete Attributes](http://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=d5kcrO+cpEU=&t=1). 
 
 Please send feedback and questions about autocluster to [KustoML](mailto:kustoML@microsoft.com). We'd love to hear from you!
+
+

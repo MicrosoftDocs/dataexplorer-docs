@@ -43,8 +43,7 @@ To get the fastest performance:
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 Traces
 | where Timestamp > ago(1h)
     and Source == "Kuskus"
@@ -58,9 +57,10 @@ Notice that we put the comparison between two columns last, as it can't utilize 
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 Traces | where * has "Kusto"
 ```
 
 All the rows in which the word "Kusto" appears in any column.
+
+

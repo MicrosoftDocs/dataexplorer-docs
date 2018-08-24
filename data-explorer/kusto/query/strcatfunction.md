@@ -18,12 +18,13 @@ Arguments, concatenated to a single string.
 
 **Examples**
   
-   <!-- csl -->
-```
+   ```kusto
 print str = strcat("hello", " ", "world")
 ```
 
 |str|
 |---|
 |hello world|
+
+
 

@@ -19,8 +19,7 @@ An object of type `dynamic` that inculded the path components as listed above.
 **Example**
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
-<!-- csl: http://localhost:80/db1 -->
-```
+```kusto
 datatable(p:string) 
 [
     @"C:\temp\file.txt",
@@ -80,4 +79,6 @@ datatable(p:string)
   "Extension": "txt",
   "AlternateDataStreamName": ""
 }|
+
+
 

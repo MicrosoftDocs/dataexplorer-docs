@@ -48,15 +48,13 @@ Returns an estimate for *Expr* of the specified percentiles in the group.
 
 The value of `Duration` that is larger than 95% of the sample set and smaller than 5% of the sample set:
 
-<!-- csl -->
-```
+```kusto
 CallDetailRecords | summarize percentile(Duration, 95) by continent
 ```
 
 Simultaneously calculate 5, 50 (median) and 95:
 
-<!-- csl -->
-```
+```kusto
 CallDetailRecords 
 | summarize percentiles(Duration, 5, 50, 95) by continent
 ```
@@ -67,8 +65,7 @@ The results show that in Europe, 5% of calls are shorter than 11.55s, 50% of cal
 
 Calculate multiple statistics:
 
-<!-- csl -->
-```
+```kusto
 CallDetailRecords 
 | summarize percentiles(Duration, 5, 50, 95), avg(Duration)
 ```
@@ -105,8 +102,7 @@ number of events in each bucket. In order to compute percentiles from this data,
 we can use the `percentilesw()` function. For example, for the 50,
 75 and 99.9 percentiles, we'll use the following query: 
 
-<!-- csl -->
-```
+```kusto
 Table
 | summarize percentilesw(LatencyBucket, ReqCount, 50, 75, 99.9) 
 ```
@@ -123,8 +119,7 @@ Notice, that the above query corresponds to the function
 ## Getting multiple percentiles in an array
 Multiple percentiles percentiles can be obtained as an array in a single dynamic column instead of multiple columns: 
 
-<!-- csl -->
-```
+```kusto
 CallDetailRecords 
 | summarize percentiles-array(Duration, 5, 25, 50, 75, 95), avg(Duration)
 ```
@@ -135,14 +130,12 @@ Similarily weighted percentiles can be returned as a dynamic array using `percen
 
 Percentiles for `percentiles-array` and `percentilesw-array` can be specified in a dynamic array of integer or floating-point numbers. The array must be constant but does not have to be literal.
 
-<!-- csl -->
-```
+```kusto
 CallDetailRecords 
 | summarize percentiles-array(Duration, dynamic([5, 25, 50, 75, 95])), avg(Duration)
 ```
 
-<!-- csl -->
-```
+```kusto
 CallDetailRecords 
 | summarize percentiles-array(Duration, range(0, 100, 5)), avg(Duration)
 ```
@@ -164,3 +157,5 @@ A few important points:
 * The bounds on the estimation error vary with the value of the requested percentile. The best accuracy is at the ends of [0..100] scale, percentiles 0 and 100 are the exact minimum and maximum values of the distribution. The accuracy gradually decreases towards the middle of the scale. It is worst at the median and is capped at 1%. 
 * Error bounds are observed on the rank, not on the value. Suppose percentile(X, 50) returned value of Xm. The estimation guarantees that at least 49% and at most 51% of the values of X are less or equal to Xm. There is no theoretical limit on the difference  between Xm and actual median value of X.
 * The estimation may sometimes result in a precise value but there are no reliable conditions to define when it will be the case
+
+

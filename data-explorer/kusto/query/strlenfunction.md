@@ -22,8 +22,7 @@ Each Unicode character in the string is equal to `1`, including surrogates.
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 print strlen("hello")
 ```
 
@@ -31,11 +30,12 @@ print strlen("hello")
 |---|
 |5|
 
-<!-- csl -->
-```
+```kusto
 print strlen("⒦⒰⒮⒯⒪")
 ```
 
 |print-0|
 |---|
 |5|
+
+

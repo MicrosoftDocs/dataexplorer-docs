@@ -21,3 +21,5 @@ Returns a count of rows for which *Predicate* evaluates to `true`.
 **Tip**
 
 Use `summarize countif(filter)` instead of `where filter | summarize count()`
+
+

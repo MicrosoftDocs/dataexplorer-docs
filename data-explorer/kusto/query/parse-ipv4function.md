@@ -18,3 +18,5 @@ Converts input to integener (signed 64-bit) number representation.
 If conversion is successful, result will be a long number.
 If conversion is not successful, result will be `null`.
  
+
+

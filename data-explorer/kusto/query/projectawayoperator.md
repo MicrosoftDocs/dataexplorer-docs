@@ -30,8 +30,7 @@ A table that has the columns that were not named as arguments, and as many rows 
 
 The input table `T` has three columns of type `int`: `A`, `B`, and `C`. 
 
-<!-- csl -->
-```
+```kusto
 T | project-away C    // Removes column C from the output
 ```
 
@@ -43,10 +42,11 @@ strings of the form `Event: NotifySliceRelease (resourceName={0}, totalSlices= {
 The operation below will extend the table with 6 columns: `resourceName` , `totalSlices`, `sliceNumber`, `lockTime `, `releaseTime`, `previouLockTime`, 
  `Month` and `Day`, excluding the original 'evenText' column.
 
-<!-- csl -->
-```
+```kusto
 Traces  
 | parse eventText with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previouLockTime:date ")" *  
 | project-away eventText
 ```
+
+
 

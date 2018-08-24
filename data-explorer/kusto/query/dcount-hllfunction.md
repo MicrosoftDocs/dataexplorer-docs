@@ -18,8 +18,7 @@ The distinct count of each value in *Expr*
 
 **Examples**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents
 | summarize hllRes = hll(DamageProperty) by bin(StartTime,10m)
 | summarize hllMerged = hll-merge(hllRes)
@@ -29,3 +28,5 @@ StormEvents
 |dcount-hll-hllMerged|
 |---|
 |315|
+
+

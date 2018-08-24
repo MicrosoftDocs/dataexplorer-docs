@@ -16,8 +16,7 @@ Assume the input table is:
 |1|"hello"|{"key":"value"}|{"key1":"value1", "key2":"value2"}|
 |2|"world"|[0,1,"k","v"]|[2,3,"q"]|
 
-<!-- csl -->
-```
+```kusto
 mvexpand D, D2
 ```
 
@@ -70,3 +69,5 @@ See [bag-unpack()](/queryLanguage/bag-unpackplugin.md) plugin for expanding dyna
 **Examples**
 
 See [Chart count of live activites over time](./samples.md#concurrent-activities).
+
+

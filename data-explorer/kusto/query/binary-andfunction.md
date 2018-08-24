@@ -15,3 +15,5 @@ Returns a result of the bitwise `and` operation between two values
 **Returns**
 
 Returns logical AND operation on a pair of numbers: num1 & num2.
+
+

@@ -27,8 +27,7 @@ Returns an estimate of the number of distinct values of *Expr*  of rows for whic
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 PageViewLog | summarize countries=dcountif(country, country startswith "United") by continent
 ```
 
@@ -36,4 +35,6 @@ PageViewLog | summarize countries=dcountif(country, country startswith "United")
 
 `dcountif()` might result in a one-off error in the edge cases where all rows
 pass, or none of the rows pass, the `Predicate` expression
+
+
 

@@ -18,3 +18,5 @@ If conversion is successful, result will be a decimal number.
 If conversion is not successful, result will be `null`.
  
 *Note*: Prefer using [real()](./scalar-data-types/real.md) when possible.
+
+

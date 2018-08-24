@@ -31,8 +31,9 @@ statements that trail them in program order.
  
 **Example**
 
-<!-- csl -->
-```
+```kusto
 set querytrace;
 Events | take 100
 ```
+
+

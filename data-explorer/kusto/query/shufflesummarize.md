@@ -6,8 +6,7 @@ Shuffle summarize is a semantic-preserving transformation for summarize that dep
 
 Shuffle summarize strategy can be set by the query parameter `hint.strategy = shuffle`:
 
-<!-- csl -->
-```
+```kusto
 T
 | summarize hint.strategy = shuffle count(), avg(price) by supplier
 ```
@@ -18,8 +17,7 @@ Shuffle summarize strategy can provide significant performance benefit when the 
 
 In addition, it is possible to choose the shuffle keys that will be used by the query parameter `hint.shufflekey = key` :
 
-<!-- csl -->
-```
+```kusto
 T
 | summarize sum(price) by supplier, order
 | where sum-price > 100
@@ -28,8 +26,7 @@ T
 
 It is also possible to use more than one shuffle key as in the following example:
 
-<!-- csl -->
-```
+```kusto
 T
 | summarize sum(price) by supplier, order, location
 | where sum-price > 100
@@ -49,8 +46,7 @@ The source table has 150M records and the cardinality of the group by key is 10M
 Running the regular summarize strategy, the query ends after 1:08 and the memory usage preak is ~3GB:
 
 
-<!-- csl -->
-```
+```kusto
 orders
 | summarize arg-max(o-orderdate, o-totalprice) by o-custkey 
 | where o-totalprice < 1000
@@ -64,8 +60,7 @@ orders
 
 While using shuffle summarize strategy, the query ends after ~7 seconds and the memory usage peak is 0.43GB:
 
-<!-- csl -->
-```
+```kusto
 orders
 | summarize hint.strategy = shuffle arg-max(o-orderdate, o-totalprice) by o-custkey 
 | where o-totalprice < 1000
@@ -104,3 +99,5 @@ lineitem
 ```
 
 Please note that setting many partitions may degrade performance and consume more cluster resources so it is recommended to choose the partitions number carefully (starting with the hint.strategy = shuffle and start increasing the partitions gradually).-->
+
+

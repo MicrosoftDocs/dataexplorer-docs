@@ -20,8 +20,9 @@ A `datetime` value specifying the approximate time of ingestion into a table.
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 T 
 | extend ingestionTime = ingestion-time() | top 10 by ingestionTime
 ```
+
+

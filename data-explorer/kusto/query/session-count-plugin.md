@@ -43,8 +43,7 @@ This means that event with `Id==1` will appear at any `Timeline` slot, event wit
 
 Here are few 20 lines of the data:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```
+```kusto
 let _data = range Timeline from 1 to 10000 step 1
 | extend __key = 1
 | join kind=inner (range Id from 1 to 50 step 1 | extend __key=1) on __key
@@ -83,8 +82,7 @@ Let's define a session in next terms: session considered to be active as long as
 
 The next query shows the count of active sessions according to the definition above.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```
+```kusto
 let _data = range Timeline from 1 to 9999 step 1
 | extend __key = 1
 | join kind=inner (range Id from 1 to 50 step 1 | extend __key=1) on __key
@@ -97,3 +95,5 @@ _data
 ```
 
 ![](./images/queries/example-session-count.png)
+
+

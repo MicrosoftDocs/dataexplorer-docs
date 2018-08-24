@@ -42,8 +42,7 @@ Output table schema is:
 
 The next query calculates daily activity counts for the provided input table
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let start=datetime(2017-08-01);
 let end=datetime(2017-08-04);
 let window=1d;
@@ -74,6 +73,8 @@ let T = datatable(UserId:string, Timestamp:datetime)
 |2017-08-02 00:00:00.0000000|3|3|2|6|
 |2017-08-03 00:00:00.0000000|6|5|2|8|
 |2017-08-04 00:00:00.0000000|1|1|0|8|
+
+
 
 
 

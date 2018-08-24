@@ -24,8 +24,7 @@ Most convenient way of using this function is applying it to results of [make-se
 
 **Examples**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 range x from 1 to 1 step 1
 | project id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([2,5,6,8,11,15,17,18,25,26,30,30])
 | extend (RSquare,Slope,Variance,RVariance,Interception,LineFit)=series-fit-line(y)
@@ -37,3 +36,5 @@ range x from 1 to 1 step 1
 | RSquare | Slope | Variance | RVariance | Interception | LineFit                                                                                     |
 |---------|-------|----------|-----------|--------------|---------------------------------------------------------------------------------------------|
 | 0.982   | 2.730 | 98.628   | 1.686     | -1.666       | 1.064, 3.7945, 6.526, 9.256, 11.987, 14.718, 17.449, 20.180, 22.910, 25.641, 28.371, 31.102 |
+
+

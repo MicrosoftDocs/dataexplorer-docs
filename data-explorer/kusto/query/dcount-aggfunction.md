@@ -24,8 +24,7 @@ Returns an estimate of the number of distinct values of *Expr* in the group.
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 PageViewLog | summarize countries=dcount(country) by continent
 ```
 
@@ -50,8 +49,7 @@ aggregation multiple times might result in different values being returned.
   This is shown in the following example; the two expressions are equivalent
   (except that the second one might run out of memory): 
 
-<!-- csl -->
-```
+```kusto
 T | summarize dcount(Key)
 
 T | summarize count() by Key | summarize count()
@@ -67,3 +65,5 @@ The following depicts probability distribution function of relative estimation e
 
 
  
+
+

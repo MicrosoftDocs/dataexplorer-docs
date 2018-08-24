@@ -25,8 +25,7 @@ data in this manner; usually it's preferable that SQL queries will be constructe
 to return the smallest data set possible, as currently the Kusto optimizer
 does not attempt to optimize queries between Kusto and SQL.
 
-<!-- csl -->
-```
+```kusto
 evaluate sql-request(
   'Server=tcp:zivckusto2.database.windows.net,1433;'
     'Authentication="Active Directory Integrated";'
@@ -40,8 +39,7 @@ The following example is identical to the previous one, except that SQL
 authentication is done by username/password. Note that for confidentiality,
 we use obfuscated strings here.
 
-<!-- csl -->
-```
+```kusto
 evaluate sql-request(
   'Server=tcp:zivckusto2.database.windows.net,1433;'
     'Initial Catalog=zivckusto2;'
@@ -87,3 +85,5 @@ certificate.
 **Restrictions**
 
 Kusto service controls allowed sql-request plugin destinations by [Callout policy](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_calloutpolicy.html)
+
+

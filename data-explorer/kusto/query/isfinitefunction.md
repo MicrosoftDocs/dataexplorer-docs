@@ -22,8 +22,7 @@ A non-zero value (true) if x is finite; and zero (false) otherwise.
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 range x from -1 to 1 step 1
 | extend y = 0.0
 | extend div = 1.0*x/y
@@ -35,3 +34,5 @@ range x from -1 to 1 step 1
 |-1|0|-∞|0|
 |0|0|NaN|0|
 |1|0|∞|0|
+
+

@@ -35,8 +35,7 @@ A copy of the input tabular result set, such that:
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 Logs
 | extend
     Duration = CreatedOn - CompletedOn
@@ -45,3 +44,5 @@ Logs
 ```
 
 See [series-stats](series-statsfunction.md) as an example of a function that returns multiple columns
+
+

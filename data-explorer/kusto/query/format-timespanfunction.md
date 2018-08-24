@@ -55,8 +55,9 @@ The string with the format result.
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 format-timespan(time(29.09:00:05.12345), 'dd.hh:mm:ss [FF]')  //'29.09:00:05 [12]'
 format-timespan(time(29.09:00:05.12345), 'ddd.h:mm:ss [fff]') //'029.9:00:05 [123]'
 ```
+
+

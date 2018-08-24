@@ -34,7 +34,8 @@ Expression | Result
 The following expression calculates a histogram of durations,
 with a bucket size of 1 second:
 
-<!-- csl -->
-```
+```kusto
 T | summarize Hits=count() by bin(Duration, 1s)
 ```
+
+

@@ -17,8 +17,7 @@ A datetime representing the start of the year for the given *date* value, with t
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
   range offset from -1 to 1 step 1
  | project yearStart = startofyear(datetime(2017-01-01 10:10:17), offset) 
 ```
@@ -28,3 +27,5 @@ A datetime representing the start of the year for the given *date* value, with t
 |2016-01-01 00:00:00.0000000|
 |2017-01-01 00:00:00.0000000|
 |2018-01-01 00:00:00.0000000|
+
+

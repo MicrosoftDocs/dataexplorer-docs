@@ -16,8 +16,7 @@ Returns the length, in bytes, of the input string.
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 print string-size("hello")
 ```
 
@@ -25,11 +24,12 @@ print string-size("hello")
 |---|
 |5|
 
-<!-- csl -->
-```
+```kusto
 print string-size("⒦⒰⒮⒯⒪")
 ```
 
 |print-0|
 |---|
 |15|
+
+

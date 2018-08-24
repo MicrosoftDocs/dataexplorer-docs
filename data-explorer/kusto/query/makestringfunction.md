@@ -19,8 +19,7 @@ If any argument is not mapped to a Unicode char, the function returns null.
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 print make-string(75, 117, 115, 116, 111)
 ```
 
@@ -28,8 +27,7 @@ print make-string(75, 117, 115, 116, 111)
 |---|
 |Kusto|
     
-<!-- csl -->
-```
+```kusto
 print make-string(dynamic([75, 117, 115, 116, 111]))
 ```
 
@@ -37,8 +35,7 @@ print make-string(dynamic([75, 117, 115, 116, 111]))
 |---|
 |Kusto|
 
-<!-- csl -->
-```
+```kusto
 print make-string(dynamic([75, 117, 115]), 116, 111)
 ```
 
@@ -46,11 +43,12 @@ print make-string(dynamic([75, 117, 115]), 116, 111)
 |---|
 |Kusto|
 
-<!-- csl -->
-```
+```kusto
 print make-string(75, 10, 117, 10, 115, 10, 116, 10, 111)
 ```
 
 |print-0|
 |---|
 |K<br>u<br>s<br>t<br>o|
+
+

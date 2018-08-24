@@ -24,8 +24,7 @@ To just count the distinct values, use [dcount()](dcount-aggfunction.md)
 
 **Example**
 
-<!--csl -->
-```
+```kusto
 PageViewLog 
 | summarize countries=makeset(country) by continent
 ```
@@ -33,3 +32,5 @@ PageViewLog
 ![](./images/aggregations/makeset.png)
 
 See also the [`mvexpand` operator](./mvexpandoperator.md) for the opposite function.
+
+

@@ -21,3 +21,5 @@ Converts input to a hexadecimal string.
 
 If conversion is successful, result will be a string value.
 If conversion is not successful, result will be null.
+
+

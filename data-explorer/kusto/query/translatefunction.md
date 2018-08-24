@@ -25,3 +25,5 @@ The function searches for characters in the 'searchList' and replaces them with 
 |`translate("abc", "", "ab")`| ""
 |`translate("krasp", "otsku", "spark")`| "kusto"
     
+
+

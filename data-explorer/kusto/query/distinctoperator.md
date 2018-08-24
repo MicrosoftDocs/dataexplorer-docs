@@ -25,8 +25,7 @@ using `summarize by ...`:
 * Distinct supports providing an asterisk (`*`) as the group key, making it easier to use for wide tables.
 * Distinct doesn’t have auto-binning of time columns (to `1h`).
 
-<!-- csl -->
-```
+```kusto
 let T=(print t=datetime(2008-05-12 06:45));
 union
   (T | distinct * | extend Title="Distinct"),
@@ -46,3 +45,5 @@ t                            | Title
 2008-05-12 06:45:00.0000000  | Distinct
 2008-05-12 06:00:00.0000000  | Summarize
 2008-05-12 06:45:00.0000000  | Summarize-distinct
+
+

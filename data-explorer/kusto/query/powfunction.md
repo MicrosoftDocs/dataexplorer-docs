@@ -14,3 +14,5 @@ Returns a result of raising to power
 **Returns**
 
 Returns base raised to the power exponent: base ^ exponent.
+
+

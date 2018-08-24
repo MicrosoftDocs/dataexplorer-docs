@@ -26,8 +26,7 @@ it is far more complex to calculate than `hash()`).</div>
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 hash("World")                   // 1846988464401551951
 hash("World", 100)              // 51 (1846988464401551951 % 100)
 hash(datetime("2015-01-01"))    // 1380966698541616202
@@ -36,10 +35,11 @@ hash(datetime("2015-01-01"))    // 1380966698541616202
 The following example uses the hash function to run a query on 10% of the data,
 It is helpful to use the hash function for sampling the data when assuming the value is uniformly distributed (In this example StartTime value)
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where hash(StartTime, 10) == 0
 | summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State 
 | top 5 by StormCount desc
 ```
+
+

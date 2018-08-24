@@ -21,11 +21,12 @@ The maximum value of all argument expressions.
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net/Samples  -->
-```
+```kusto
 print result = max-of(10, 1, -3, 17) 
 ```
 
 |result|
 |---|
 |17|
+
+

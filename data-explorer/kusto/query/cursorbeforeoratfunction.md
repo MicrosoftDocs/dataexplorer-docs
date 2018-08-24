@@ -24,3 +24,5 @@ restrictions, and side-effects.
 
 This function can only be invoked on records of a table which has the
 [IngestionTime policy](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_ingestiontimepolicy.html) enabled.
+
+

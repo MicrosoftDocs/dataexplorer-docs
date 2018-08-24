@@ -13,3 +13,5 @@ Returns the cosine function.
 **Returns**
 
 * The result of `cos(x)`
+
+

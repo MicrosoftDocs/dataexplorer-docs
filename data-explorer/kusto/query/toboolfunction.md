@@ -21,3 +21,5 @@ Converts input to boolean (signed 8-bit) representation.
 If conversion is successful, result will be a boolean.
 If conversion is not successful, result will be `null`.
  
+
+

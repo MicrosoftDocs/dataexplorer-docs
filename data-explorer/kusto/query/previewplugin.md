@@ -24,8 +24,9 @@ or a filter that references most of the source table columns,
 prefer to use [`fork`](forkoperator.md) instead,
 or use the [`materialize`](materializefunction.md) function. For example:
 
-<!-- csl -->
-```
+```kusto
 let MaterializedT = materialize(T);
 MaterializedT | evaluate preview(50)
 ```
+
+

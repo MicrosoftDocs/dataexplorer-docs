@@ -11,3 +11,5 @@ cost of a query without actually delivering the results back to the client.
 is calculated distributively, so `T | consume` will not even deliver the table's
 data between the nodes of the cluster.)
  
+
+

@@ -61,9 +61,10 @@ The string with the format result.
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 format-datetime(datetime(2017-01-29 09:00:05), 'yy-MM-dd [HH:mm:ss]') //'17-01-29 [09:00:05]'
 format-datetime(datetime(2017-01-29 09:00:05), 'yyyy-M-dd [H:mm:ss]') //'2017-1-29 [9:00:05]'
 format-datetime(datetime(2017-01-29 09:00:05), 'yy-MM-dd [hh:mm:ss tt]') //'17-01-29 [09:00:05 AM]'
 ```
+
+

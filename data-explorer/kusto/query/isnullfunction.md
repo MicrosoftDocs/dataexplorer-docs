@@ -27,7 +27,8 @@ True or false depending on the whether the value is null or not null.
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 T | where isnull(PossiblyNull) | count
 ```
+
+

@@ -17,8 +17,7 @@ A datetime representing the start of the month for the given *date* value, with 
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
   range offset from -1 to 1 step 1
  | project monthStart = startofmonth(datetime(2017-01-01 10:10:17), offset) 
 ```
@@ -28,4 +27,6 @@ A datetime representing the start of the month for the given *date* value, with 
 |2016-12-01 00:00:00.0000000|
 |2017-01-01 00:00:00.0000000|
 |2017-02-01 00:00:00.0000000|
+
+
 

@@ -241,3 +241,5 @@
 |-------------------------|--------------------------------------------------------|
 |[point()](pointfunction.md)|Returns a dynamic array representation of a point.|
 |[distance()](pointfunction.md)|Returns the distance between two points in meters.|
+
+

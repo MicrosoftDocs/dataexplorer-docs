@@ -22,9 +22,10 @@ A substring from the given string. The substring starts at startingIndex (zero-b
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 substring("123456", 1)        // 23456
 substring("123456", 2, 2)     // 34
 substring("ABCD", 0, 2)       // AB
 ```
+
+

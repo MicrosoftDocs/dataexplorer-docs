@@ -12,7 +12,8 @@ The current principal FQN as a `string`.
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 .show queries | where Principal == current-principal()
 ```
+
+

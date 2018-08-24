@@ -24,8 +24,7 @@ as fully qualified DNS name or as a stirng that will be suffixied with `.kusto.w
 
 The next query can be run on any of the Kusto clusters.
 
-<!-- csl -->
-```
+```kusto
 cluster('help').database('Samples').StormEvents | count
 
 cluster('help.kusto.windows.net').database('Samples').StormEvents | count  
@@ -40,8 +39,7 @@ cluster('help.kusto.windows.net').database('Samples').StormEvents | count
 The same query as above can be rewritten to use inline function (let statement) that 
 receives a parameter `clusterName` - which is passed into the cluster() function.
 
-<!-- csl -->
-```
+```kusto
 let foo = (clusterName:string)
 {
     cluster(clusterName).database('Samples').StormEvents | count
@@ -58,8 +56,7 @@ foo('help')
 The same query as above can be rewritten to be used in a function that 
 receives a parameter `clusterName` - which is passed into the cluster() function.
 
-<!-- csl -->
-```
+```kusto
 .create function foo(clusterName:string)
 {
     cluster(clusterName).database('Samples').StormEvents | count
@@ -67,3 +64,5 @@ receives a parameter `clusterName` - which is passed into the cluster() function
 ```
 
 **Note:** such functions can be used only locally and not in the cross-cluster query.
+
+

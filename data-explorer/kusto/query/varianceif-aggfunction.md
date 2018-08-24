@@ -19,8 +19,7 @@ The variance value of *Expr* across the group where *Predicate* evaluates to `tr
  
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 range x from 1 to 100 step 1
 | summarize varianceif(x, x%2 == 0)
 
@@ -29,3 +28,5 @@ range x from 1 to 100 step 1
 |varianceif-x|
 |---|
 |850|
+
+

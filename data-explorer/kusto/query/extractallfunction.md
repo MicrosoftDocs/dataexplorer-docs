@@ -33,8 +33,7 @@ If there's no match: `null`.
 ### Extracting single capture group
 The example below returns hex-byte representation (two hex-digits) of the GUID.
 
-<!-- csl -->
-```
+```kusto
 range r from 1 to 1 step 1
 | project Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 | extend guid-bytes = extractall(@"([\da-f]{2})", Id) 
@@ -47,8 +46,7 @@ range r from 1 to 1 step 1
 ### Extracting several capture groups 
 Next example uses a regular expression with 3 capturing groups to split each GUID part into first letter, last letter and whatever in the middle.
 
-<!-- csl -->
-```
+```kusto
 range r from 1 to 1 step 1
 | project Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 | extend guid-bytes = extractall(@"(\w)(\w+)(\w)", Id) 
@@ -63,8 +61,7 @@ range r from 1 to 1 step 1
 Next example shows how to select a subset of capturing groups: in this case the regular expression 
 matches into first letter, last letter and all the rest - while the *captureGroups* parameter is used to select only first and the last part. 
 
-<!-- csl -->
-```
+```kusto
 range r from 1 to 1 step 1
 | project Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 | extend guid-bytes = extractall(@"(\w)(\w+)(\w)", dynamic([1,3]), Id) 
@@ -80,8 +77,7 @@ range r from 1 to 1 step 1
 You can utilize named capture groups of RE2 in extractall(). 
 In the example below - the *captureGroups* uses both capture group indexes and named capture group reference to fetch matching values.
 
-<!-- csl -->
-```
+```kusto
 range r from 1 to 1 step 1
 | project Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 | extend guid-bytes = extractall(@"(?P<first>\w)(?P<middle>\w+)(?P<last>\w)", dynamic(['first',2,'last']), Id) 
@@ -90,3 +86,5 @@ range r from 1 to 1 step 1
 |Id|guid-bytes|
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|[["8","2b8be2","d"],["d","fa","7"],["4","bd","1"],["8","f6","3"],["2","4ad26d3144","9"]]|
+
+

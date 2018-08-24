@@ -16,3 +16,5 @@ cursor of the database in scope.
 
 Please see [Database Cursor](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_databasecursor.html) for additional
 details on database cursors.
+
+

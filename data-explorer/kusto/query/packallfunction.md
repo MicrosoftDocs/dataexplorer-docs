@@ -17,8 +17,7 @@ Given a table SmsMessages
 |555-555-1212 |555-555-1234 | 32 
 
 The following query:
-<!-- csl -->
-```
+```kusto
 SmsMessages | extend Packed=pack-all()
 ``` 
 
@@ -29,3 +28,5 @@ Returns:
 |SmsMessages|555-555-1234 |555-555-1212 | {"SourceNumber":"555-555-1234", "TargetNumber":"555-555-1212", "CharsCount": 46}
 |SmsMessages|555-555-1234 |555-555-1213 | {"SourceNumber":"555-555-1234", "TargetNumber":"555-555-1213", "CharsCount": 50}
 |SmsMessages|555-555-1212 |555-555-1234 | {"SourceNumber":"555-555-1212", "TargetNumber":"555-555-1234", "CharsCount": 32}
+
+

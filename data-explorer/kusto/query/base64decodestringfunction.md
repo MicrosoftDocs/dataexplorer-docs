@@ -16,8 +16,7 @@ Returns UTF-8 string decoded from base64 string.
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 range x from 1 to 1 step 1
 | project base64-decodestring("S3VzdG8=")
 ```
@@ -28,8 +27,7 @@ range x from 1 to 1 step 1
 
 Trying to decode a base64 string which was generated from invalid UTF-8 encoding will return null:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 range x from 1 to 1 step 1
 | project base64-decodestring("U3RyaW5n0KHR0tGA0L7Rh9C60LA=")
 ```
@@ -37,3 +35,5 @@ range x from 1 to 1 step 1
 |Column1|
 |---|
 ||
+
+

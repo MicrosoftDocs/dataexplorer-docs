@@ -19,8 +19,7 @@ Arguments, concatenated to a single string with *delimiter*.
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 print st = strcat-delim('-', 1, '2', 'A', 1s)
 
 ```
@@ -28,3 +27,5 @@ print st = strcat-delim('-', 1, '2', 'A', 1s)
 |st|
 |---|
 |1-2-A-00:00:01|
+
+

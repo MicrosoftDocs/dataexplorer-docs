@@ -18,3 +18,5 @@ If conversion is successful, result will be a [`guid`](./scalar-data-types/guid.
 If conversion is not successful, result will be `null`.
 
 *Note*: Prefer using [guid()](./scalar-data-types/guid.md) when possible.
+
+

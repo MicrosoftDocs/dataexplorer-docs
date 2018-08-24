@@ -32,8 +32,7 @@ If alpha ≤ 0 or beta ≤ 0, beta-cdf() returns the NaN value.
 
 **Examples**
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```
+```kusto
 datatable(x:double, alpha:double, beta:double, comment:string)
 [
     0.9, 10.0, 20.0, "Valid input",
@@ -56,3 +55,5 @@ datatable(x:double, alpha:double, beta:double, comment:string)
 
 * For computing the inverse of the beta cumulative probability density function, see [beta-inv()](./beta-invfunction.md).
 * For computing probability density function, see [beta-pdf()](./beta-pdffunction.md).
+
+

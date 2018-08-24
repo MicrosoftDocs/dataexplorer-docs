@@ -34,8 +34,7 @@ Given a value for probability, beta-inv() seeks that value x such that beta-cdf(
 
 **Examples**
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```
+```kusto
 datatable(p:double, alpha:double, beta:double, comment:string)
 [
     0.1, 10.0, 20.0, "Valid input",
@@ -55,4 +54,6 @@ datatable(p:double, alpha:double, beta:double, comment:string)
 
 * For computing cumulative beta distribution function, see [beta-cdf()](./beta-cdffunction.md).
 * For computing probability beta density function, see [beta-pdf()](./beta-pdffunction.md).
+
+
 

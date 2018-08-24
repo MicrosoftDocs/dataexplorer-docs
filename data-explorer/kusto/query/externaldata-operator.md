@@ -29,10 +29,11 @@ The following example shows how to parse at query time a raw CSV data file
 in Azure Storage Blob. (Please note that in reality the `data.csv` file will
 be appended by a SAS token to authorize the request.)
 
-<!-- csl -->
-```
+```kusto
 externaldata (Date:datetime, Event:string)
 [h@"https://storageaccount.blob.core.windows.net/storagecontainer/data.csv"]
 | where strlen(Event) > 4
 ```
+
+
 

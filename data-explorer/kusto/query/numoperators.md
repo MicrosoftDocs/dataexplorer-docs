@@ -27,8 +27,7 @@ Thus, the modulo of two numbers, *N* % *D*, is such that:
 
 For example, the following query:
 
-<!-- csl -->
-```
+```kusto
 print plusPlus = 14 % 12, minusPlus = -14 % 12, plusMinus = 14 % -12, minusMinus = -14 % -12
 ```
 
@@ -37,3 +36,5 @@ Produces this result:
 |plusPlus  | minusPlus  | plusMinus  | minusMinus|
 |----------|------------|------------|-----------|
 |2         | 10         | 2          | 10        |
+
+

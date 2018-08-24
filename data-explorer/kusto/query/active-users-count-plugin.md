@@ -38,8 +38,7 @@ Output table schema is:
 
 Calculate weekly amount of distinct users that appeared in at least on 3 different days over a period of prior 8 days. Period of analysis: July 2018.
 
-<!-- csl -->
-```
+```kusto
 let Start = datetime(2018-07-01);
 let End = datetime(2018-07-31);
 let LookbackWindow = 8d;
@@ -73,3 +72,5 @@ T | evaluate active-users-count(User, Timestamp, Start, End, LookbackWindow, Per
 A user is considered active if it was seen in at least 3 distinct days (Period = 1d, ActivePeriods=3) in a lookback window of 8d previous to current appearance (including current appearance). In the illustration below, the only appearances that are active according to this criteria, are User A on the 7/20 and User B on the 7/4 (see plugin results above). Note that although the appearances of User B on 6/29-30 are not in the Start-End time range, they are included for the lookback window of User B on the 7/4. 
 
 ![](images/queries/active-users-count.png)
+
+

@@ -52,8 +52,7 @@ Available arguments:
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5
 | extend Damage = iff(DamageCrops + DamageProperty > 0 , "YES" , "NO")
@@ -72,8 +71,7 @@ StormEvents
 |7|1291|21.9||Thunderstorm Wind||
 
 **Example with custom wildcards**
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5
 | extend Damage = iff(DamageCrops + DamageProperty > 0 , "YES" , "NO")
@@ -93,3 +91,5 @@ StormEvents
 
 
 Please send feedback and questions about basket to [KustoML](mailto:kustoML@microsoft.com). We'd love to hear from you!
+
+

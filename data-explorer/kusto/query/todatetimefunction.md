@@ -18,3 +18,5 @@ If conversion is successful, result will be a [datetime](./scalar-data-types/dat
 If conversion is not successful, result will be null.
  
 *Note*: Prefer using [datetime()](./scalar-data-types/datetime.md) when possible.
+
+

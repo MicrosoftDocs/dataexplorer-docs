@@ -15,3 +15,5 @@ Returns a bitwise negation of the input value.
 **Returns**
 
 Returns logical NOT operation on a number: num1.
+
+

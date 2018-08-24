@@ -30,8 +30,7 @@ Rows in *T* for which the predicate of (*expr* >= *leftRange* and *expr* <= *rig
 
 **Filtering numeric values using 'between' operator**  
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 range x from 1 to 100 step 1
 | where x between (50 .. 55)
 ```
@@ -48,8 +47,7 @@ range x from 1 to 100 step 1
 **Filtering datetime using 'between' operator**  
 
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents
 | where StartTime between (datetime(2007-07-27) .. datetime(2007-07-30))
 | count 
@@ -60,8 +58,7 @@ StormEvents
 |476|
 
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents
 | where StartTime between (datetime(2007-07-27) .. 3d)
 | count 
@@ -70,3 +67,5 @@ StormEvents
 |Count|
 |---|
 |476|
+
+

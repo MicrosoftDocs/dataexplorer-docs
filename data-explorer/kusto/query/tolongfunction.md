@@ -18,3 +18,5 @@ If conversion is successful, result will be a long number.
 If conversion is not successful, result will be `null`.
  
 *Note*: Prefer using [long()](./scalar-data-types/long.md) when possible.
+
+

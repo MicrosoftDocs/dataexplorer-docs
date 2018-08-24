@@ -21,8 +21,7 @@ The variance value of *Expr* across the group.
  
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 range x from 1 to 5 step 1
 | summarize makelist(x), variancep(x) 
 ```
@@ -30,3 +29,5 @@ range x from 1 to 5 step 1
 |list-x|variance-x|
 |---|---|
 |[ 1, 2, 3, 4, 5]|2|
+
+

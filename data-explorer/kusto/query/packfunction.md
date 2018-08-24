@@ -15,8 +15,7 @@ Creates a `dynamic` object (property bag) from a list of names and values.
 
 The following example returns `{"Level":"Information","ProcessID":1234,"Data":{"url":"www.bing.com"}}`:
 
-<!-- csl -->
-```
+```kusto
 pack("Level", "Information", "ProcessID", 1234, "Data", pack("url", "www.bing.com"))
 ```
 
@@ -39,8 +38,7 @@ Table MmsMessages
 |555-555-1234 |555-555-1213 | 300 | png | Pic3
 
 The following query:
-<!-- csl -->
-```
+```kusto
 SmsMessages 
 | extend Packed=pack("CharsCount", CharsCount) 
 | union withsource=TableName kind=inner 
@@ -57,3 +55,5 @@ Returns:
 |SmsMessages|555-555-1234 |555-555-1213 | {"CharsCount": 50}
 |MmsMessages|555-555-1234 |555-555-1212 | {"AttachmnetSize": 250, "AttachmnetType": "jpeg", "AttachmnetName": "Pic2"}
 |MmsMessages|555-555-1234 |555-555-1213 | {"AttachmnetSize": 300, "AttachmnetType": "png", "AttachmnetName": "Pic3"}
+
+

@@ -23,8 +23,7 @@ The function returns the cumulative sum of its argument.
 The following example shows how to calculate the cumulative sum of the first
 few odd integers.
 
-<!-- csl -->
-```
+```kusto
 datatable (a:long) [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 ]
@@ -43,8 +42,7 @@ a    | cs
 This example shows how to calculate the cumulative sum (here, of `salary`)
 when the data is partitioned (here, by `name`):
 
-<!-- csl --->
-```
+```kusto
 datatable (name:string, month:int, salary:long)
 [
     "Alice", 1, 1000,
@@ -66,3 +64,5 @@ Alice  | 3      | 1400    | 4400
 Bob    | 1      | 1000    | 1000
 Bob    | 2      | 1950    | 2950
 Bob    | 3      | 1450    | 4400
+
+

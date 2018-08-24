@@ -33,8 +33,7 @@ An integer representing the extracted part.
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 let dt = datetime(2017-10-30 01:02:03.7654321); 
 print 
 year = datetime-part("year", dt),
@@ -55,3 +54,5 @@ nanosecond = datetime-part("nanosecond", dt)
 |year|quarter|month|weekOfYear|day|dayOfYear|hour|minute|second|millisecond|microsecond|nanosecond|
 |---|---|---|---|---|---|---|---|---|---|---|---|
 |2017|4|10|44|30|303|1|2|3|765|765432|765432100|
+
+

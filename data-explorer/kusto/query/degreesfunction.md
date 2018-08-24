@@ -16,8 +16,7 @@ Converts angle value in radians into value in degrees, using formula `degrees = 
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 print degrees0 = degrees(pi()/4), degrees1 = degrees(pi()*1.5), degrees2 = degrees(0)
 
 ```
@@ -25,4 +24,6 @@ print degrees0 = degrees(pi()/4), degrees1 = degrees(pi()*1.5), degrees2 = degre
 |degrees0|degrees1|degrees2|
 |---|---|---|
 |45|270|0|
+
+
 

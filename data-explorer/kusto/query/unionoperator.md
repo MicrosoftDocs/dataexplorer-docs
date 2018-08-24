@@ -2,8 +2,7 @@
 
 Takes two or more tables and returns the rows of all of them. 
 
-<!-- csl -->
-```
+```kusto
 Table1 | union Table2, Table3
 ```
 
@@ -46,8 +45,7 @@ with [view keyword](./letstatement.md)
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 union K* | where * has "Kusto"
 ```
 
@@ -55,8 +53,7 @@ Rows from all tables in the database whose name starts with `K`, and in which an
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 union withsource=SourceTable kind=outer Query, Command
 | where Timestamp > ago(1d)
 | summarize dcount(UserId)
@@ -65,8 +62,7 @@ union withsource=SourceTable kind=outer Query, Command
 The number of distinct users that have produced
 either a `Query` event or a `Command` event over the past day. In the result, the 'SourceTable' column will indicate either "Query" or "Command".
 
-<!-- csl -->
-```
+```kusto
 Query
 | where Timestamp > ago(1d)
 | union withsource=SourceTable kind=outer 
@@ -78,8 +74,7 @@ This more efficient version produces the same result. It filters each table befo
 
 **Example: Using `isfuzzy=true`**
  
-<!-- csl -->
-```     
+```kusto     
 // Using union isfuzzy=true to access non-existing view:                   
 let View-1 = view () { range x from 1 to 1 step 1 };
 let View-2 = view () { range x from 1 to 1 step 1 };
@@ -98,8 +93,7 @@ union isfuzzy=true
 Observing Query Status - the following warning returned:
 `Failed to resolve entity 'View-3'`
 
-<!-- csl -->
-```
+```kusto
 // Using union isfuzzy=true and wildcard access:
 let View-1 = view () { range x from 1 to 1 step 1 };
 let View-2 = view () { range x from 1 to 1 step 1 };
@@ -114,4 +108,6 @@ union isfuzzy=true View*, SomeView*, OtherView*
 
 Observing Query Status - the following warning returned:
 `Failed to resolve entity 'SomeView*'`
+
+
 

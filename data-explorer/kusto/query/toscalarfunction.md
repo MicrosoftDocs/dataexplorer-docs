@@ -32,8 +32,7 @@ In other words, `toscalar()` function cannot be applied on row-level of (for-eac
 The following query evaluates `Start`, `End` and `Step` as scalar constants - and
 use it for `range` evaluation. 
 
-<!-- csl-->
-```
+```kusto
 let Start = toscalar(range x from 1 to 1 step 1); 
 let End = toscalar(range x from 1 to 9 step 1 | count); 
 let Step = toscalar(2);
@@ -47,3 +46,5 @@ range z from Start to End step Step | extend start=Start, end=End, step=Step
 |5|1|9|2|
 |7|1|9|2|
 |9|1|9|2|
+
+

@@ -27,8 +27,7 @@ project (m, mi)=`series-stats(`*x*`)` or extend (m, mi)=`series-stats(`*x*`)`
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 print x=dynamic([23,46,23,87,4,8,3,75,2,56,13,75,32,16,29]) 
 | project series-stats(x)
 
@@ -37,4 +36,6 @@ print x=dynamic([23,46,23,87,4,8,3,75,2,56,13,75,32,16,29])
 |series-stats-x-min|series-stats-x-min-idx|series-stats-x-max|series-stats-x-max-idx|series-stats-x-avg|series-stats-x-stdev|series-stats-x-variance|
 |---|---|---|---|---|---|---|
 |2|8|87|3|32.8|28.5036338535483|812.457142857143|
+
+
 

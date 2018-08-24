@@ -27,8 +27,7 @@ The `bag-unpack` returns a tabular expression where the original dynamic column 
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 datatable(d:dynamic)
 [
     dynamic({"Name": "John", "Age":20}),
@@ -43,3 +42,5 @@ datatable(d:dynamic)
 |John|20|
 |Dave|40|
 |Smitha|30|
+
+

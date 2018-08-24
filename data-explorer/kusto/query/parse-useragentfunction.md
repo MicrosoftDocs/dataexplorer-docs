@@ -26,8 +26,7 @@ Device: Family, Brand, Model
  
 **Example**
 
-<!-- csl -->
-```
+```kusto
 print useragent = "Mozilla/5.0 (Windows; U; en-US) AppleWebKit/531.9 (KHTML, like Gecko) AdobeAIR/2.5.1"
 | extend x = parse-user-agent(useragent, "browser") 
 ```
@@ -43,8 +42,7 @@ Expected result is a dynamic object:
   }
 }
 
-<!-- csl -->
-```
+```kusto
 print useragent = "Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 NokiaN81-3/10.0.032 Profile/MIDP-2.0 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/4"
 | extend x = parse-user-agent(useragent, dynamic(["browser","os","device"])) 
 ```
@@ -71,3 +69,5 @@ Expected result is a dynamic object:
     "Model": "N81-3"
   }
 }
+
+

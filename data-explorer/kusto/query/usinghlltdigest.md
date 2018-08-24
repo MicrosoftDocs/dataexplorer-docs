@@ -12,8 +12,7 @@ Here are few examples which shows how to use hll/tdigest and that using these in
 Assuming that we have the table PageViewsHllTDigest which has the hll values over Pages viewed in each hour.
 now we are interested in getting these values but binned to `12h` so we may merge the hll values using hll-merge() aggregate function by timestamp binned to `12h` and then call the function dcount-hll to get the final dcount value:
 
-<!-- csl: https://demo3.kusto.windows.net:443/Wiki -->
-```
+```kusto
 PageViewsHllTDigest
 | summarize merged-hll = hll-merge(hllPage) by bin(Timestamp, 12h)
 | project Timestamp , dcount-hll(merged-hll)
@@ -31,8 +30,7 @@ PageViewsHllTDigest
 
 Or even for binned timestamp for `1d` :
 
-<!-- csl: https://demo3.kusto.windows.net:443/Wiki -->
-```
+```kusto
 PageViewsHllTDigest
 | summarize merged-hll = hll-merge(hllPage) by bin(Timestamp, 1d)
 | project Timestamp , dcount-hll(merged-hll)
@@ -49,8 +47,7 @@ PageViewsHllTDigest
 
  The samething may be done over the values of tdigest which represents the BytesDelivered in each hour:
 
- <!-- csl: https://demo3.kusto.windows.net:443/Wiki -->
-```
+ ```kusto
 PageViewsHllTDigest
 | summarize merged-tdigests = merge-tdigests(tdigestBytesDel) by bin(Timestamp, 12h)
 | project Timestamp , percentile-tdigest(merged-tdigests, 95, typeof(long))
@@ -77,8 +74,7 @@ Assuming that we have a table PageViews where each day we ingest data, each day 
 Running the follwing query :
 
 
-<!-- csl: https://demo3.kusto.windows.net:443/Wiki -->
-```
+```kusto
 PageViews	
 | where Timestamp > datetime(2016-05-01 18:00:00.0000000)
 | summarize percentile(BytesDelivered, 90), dcount(Page,2) by bin(Timestamp, 1d)
@@ -100,8 +96,7 @@ This query will aggregate all the values each time we run this query (e.g, if we
 if we save the hll and tdigest values (which are the intermediate results of dcount and percentile) into a temp table PageViewsHllTDigest using update policy or set/append commands so we may only merge the values and then use dcount-hll/percentile-tdigest using the following query :
 
 
-<!-- csl: https://demo3.kusto.windows.net:443/Wiki -->
-```
+```kusto
 PageViewsHllTDigest
 | summarize  percentile-tdigest(merge-tdigests(tdigestBytesDel), 90), dcount-hll(hll-merge(hllPage)) by bin(Timestamp, 1d)
 
@@ -125,8 +120,7 @@ what percent of pages reviewed in both date1 and date2 relatively to the pages v
 The trivial way which uses join and summarize operators :
 
 
-<!-- csl: https://demo3.kusto.windows.net:443/Wiki -->
-```
+```kusto
 // get the total pages viewed in each day
 let totalPagesPerDay = PageViewsSample
 | summarize by Page, Day = startofday(Timestamp)
@@ -166,8 +160,7 @@ The query above took ~18 seconds.
 When using the functions of [`hll()`](hll-aggfunction.md), [`hll-merge()`](hll-merge-aggfunction.md) and [`dcount-hll()`](dcount-hllfunction.md), the equivalent query for above will end after ~1.3 seconds and shows that hll functions speeds up 
 the query above by ~14 times:
 
-<!-- csl: https://demo3.kusto.windows.net:443/Wiki -->
-```
+```kusto
 let Stats=PageViewsSample | summarize pagehll=hll(Page, 2) by day=startofday(Timestamp); // saving the hll values (intermediate results of the dcount values)
 let day0=toscalar(Stats | summarize min(day)); // finding the min date over all dates.
 let dayn=toscalar(Stats | summarize max(day)); // finding the max date over all dates.
@@ -197,5 +190,7 @@ Stats
 
 
 Note: the results of the queries are not 100% accurate due to the error of the hll functions.(see [`dcount()`](dcount-aggfunction.md) for further information about the errors).
+
+
 
 

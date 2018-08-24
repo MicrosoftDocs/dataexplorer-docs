@@ -75,14 +75,14 @@ value according to its normal parsing rules for that type.
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 declare query-parameters (UserName:string, Password:string);
 print n=UserName, p=hash(Password)
 ```
 
-<!-- csl -->
-```
+```kusto
 declare query-parameters(amount:long);
 T | where amountColumn == amount
 ```
+
+

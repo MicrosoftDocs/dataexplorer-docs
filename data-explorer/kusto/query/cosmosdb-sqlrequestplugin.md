@@ -25,8 +25,7 @@ Kusto service controls allowed sql-request plugin destinations by [Callout polic
 
 Using SQL query to fetch all rows from Cosmos DB:
 
-<!-- csl -->
-```
+```kusto
 evaluate cosmosdb-sql-request(
   'ConnectionString',
   h@'AuthKey',
@@ -34,3 +33,5 @@ evaluate cosmosdb-sql-request(
   'MyCollectionName',
   'SELECT * from c')
 ```
+
+

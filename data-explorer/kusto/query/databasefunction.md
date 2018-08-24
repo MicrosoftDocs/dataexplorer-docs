@@ -22,8 +22,7 @@ Changes the reference of the query to a specific database within the cluster sco
 
 ### Use database() to access table of other database. 
 
-<!-- csl -->
-```
+```kusto
 database('Samples').StormEvents | count
 ```
 
@@ -36,8 +35,7 @@ database('Samples').StormEvents | count
 The same query as above can be rewritten to use inline function (let statement) that 
 receives a parameter `dbName` - which is passed into the database() function.
 
-<!-- csl -->
-```
+```kusto
 let foo = (dbName:string)
 {
     database(dbName).StormEvents | count
@@ -54,8 +52,7 @@ foo('help')
 The same query as above can be rewritten to be used in a function that 
 receives a parameter `dbName` - which is passed into the database() function.
 
-<!-- csl -->
-```
+```kusto
 .create function foo(dbName:string)
 {
     database(dbName).StormEvents | count
@@ -63,3 +60,5 @@ receives a parameter `dbName` - which is passed into the database() function.
 ```
 
 **Note:** such functions can be used only locally and not in the cross-cluster query.
+
+

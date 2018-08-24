@@ -13,3 +13,5 @@ Returns the angle whose tangent is the specified number (the inverse operation o
 **Returns**
 
 * The value of the arc tangent of `x`
+
+

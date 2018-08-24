@@ -19,10 +19,11 @@ Multiple tables: one for the `with` clause, and one for each column.
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 MyTable 
 | facet by city, eventType 
     with (where timestamp > ago(7d) | take 1000)
 ```
+
+
 

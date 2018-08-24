@@ -7,3 +7,5 @@ Return up to the specified number of rows.
 **Alias**
 
 [take operator](takeoperator.md)
+
+

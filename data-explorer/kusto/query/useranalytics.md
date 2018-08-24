@@ -28,3 +28,5 @@ This section describes Kusto extentions (plugins) for User Analytics scenarios.
 |Funnels: Previous and next state sequence analysis | [funnel-sequence](funnel-sequence-plugin.md)||
 |Funnels: Sequence completion analysis|[funnel-sequence-completion](funnel-sequence-completion-plugin.md)||
 ||||
+
+

@@ -19,8 +19,7 @@ The standard deviation value of *Expr* across the group where *Predicate* evalua
  
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 range x from 1 to 100 step 1
 | summarize stdevif(x, x%2 == 0)
 
@@ -29,3 +28,5 @@ range x from 1 to 100 step 1
 |stdevif-x|
 |---|
 |29.1547594742265|
+
+

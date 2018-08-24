@@ -21,8 +21,7 @@ current database), the first operator is `where` (which filter out records
 from its input according to some per-record predicate), and the second operator
 is `count` (which counts the number of records in its input data set):
 
-<!-- csl -->
-```
+```kusto
 Logs | where Timestamp > ago(1d) | count
 ```
 
@@ -30,8 +29,7 @@ In the following more complex example, the `join` operator is used to combine
 records from two input data sets: one which is a filter on the `Logs` table,
 and another which is a filter on the `Events` table.
 
-<!-- csl -->
-```
+```kusto
 Logs 
 | where Timestamp > ago(1d) 
 | join 
@@ -52,3 +50,5 @@ by **tabular data operators**. Kusto supports a number of these sources:
 * The [print operator](printoperator.md).
 * An invocation of a function that returns a table.
 * A [table literal](datatableoperator.md) ("datatable").
+
+

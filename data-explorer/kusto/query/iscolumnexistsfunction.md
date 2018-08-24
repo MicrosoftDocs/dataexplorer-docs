@@ -16,8 +16,7 @@ Returns a boolean value indicating if the given string argument exists in the sc
 A boolean indicating if the given string argument exists in the schema produced by the preceding tabular operator.
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 .create function with (docstring = "Returns a boolean indicating whether a column exists in a table", folder="My Functions")
 DoesColumnExistInTable(tableName:string, columnName:string)
 {
@@ -26,3 +25,5 @@ DoesColumnExistInTable(tableName:string, columnName:string)
 
 DoesColumnExistInTable("StormEvents", "StartTime")
 ```
+
+

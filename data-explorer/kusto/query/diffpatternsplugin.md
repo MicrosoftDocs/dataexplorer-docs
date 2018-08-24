@@ -76,8 +76,7 @@ All other arguments are optional, but they must be ordered as below. To indicate
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5
 | extend Damage = iff(DamageCrops + DamageProperty > 0 , 1 , 0)
@@ -98,4 +97,6 @@ StormEvents
 
 
 Please send feedback and questions about diffpatterns to [KustoML](mailto:kustoML@microsoft.com). We'd love to hear from you!
+
+
 

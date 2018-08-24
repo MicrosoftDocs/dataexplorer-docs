@@ -9,13 +9,11 @@ Every Kusto query operates in the context of the current cluster and the default
 ## Queries
 To access tables from any database other than the default the *qualified name* syntax must be used:
 To access database in the current cluster:
-<!-- csl -->
-```
+```kusto
 database("<database name>").<table name>
 ```
 Database in remote cluster:
-<!-- csl -->
-```
+```kusto
 cluster("<cluster name>").database("<database name>").<table name>
 ```
 
@@ -37,8 +35,7 @@ are currently blocked.
 *Qualified name* can be used in any context a table name can be.
 All of the following are valid:
 
-<!-- csl -->
-```
+```kusto
 database("OtherDb").Table | where ...
 
 union Table1, cluster("OtherCluster").database("OtherDb").Table2 | project ...
@@ -49,8 +46,7 @@ database("OtherDb1").Table1 | join cluster("OtherCluster").database("OtherDb2").
 When *qualified name* appears as an operand of the [union operator](./unionoperator.md) wildcards can be used to specify multiple tables
 and multiple databases, wildcards are not allowed in cluster names:
 
-<!-- csl -->
-```
+```kusto
 union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster").database("*").*
 ```
 
@@ -61,8 +57,7 @@ including the default.
 
 ## Restriction of Access
 Qualified names or patterns can also be included in [restrict access](./restrictstatement.md) statement (wildcards in cluster names are not allowed)
-<!-- csl -->
-```
+```kusto
 restrict access to (my*, database("MyOther*").*, cluster("OtherCluster").database("my2*").*);
 ```
 
@@ -74,8 +69,7 @@ The above will restrict the query to access the following entites:
 ## Functions and Views
 Functions and views (persistent and created inline) can refernce tables across database and cluster boundaries. The following is valid:
 
-<!-- csl -->
-```
+```kusto
 let MyView = Table1 join database("OtherDb").Table2 on Key | join cluster("OtherCluster").database("SomeDb").Table3 on Key;
 MyView | where ...
 ```
@@ -84,48 +78,41 @@ Persistent functions and views themselves can be accessed from another database 
 
 Tabular function (view) in `OtherDb`:
 
-<!-- csl -->
-```
+```kusto
 .create function MyView(v:string) { Table1 | where Column1 has v ...  }  
 ```
 
 Scalar function in `OtherDb`:
-<!-- csl -->
-```
+```kusto
 .create function MyCalc(a:double, b:double, c:double) { (a + b) / c }  
 ```
 
 In default database:
 
-<!-- csl -->
-```
+```kusto
 database("OtherDb").MyView("exception") | extend CalCol=database("OtherDb").MyCalc(Col1, Col2, Col3) | limit 10
 ```
 
 Tabular functions or views can be referenced across clusters. So this is **valid**:
-<!-- csl -->
-```
+```kusto
 cluster("OtherCluster").database("SomeDb").MyView("exception") | count
 ```
 
 Scalar functions can only be accessed in the same cluster. So the following is **not valid**:
 
-<!-- csl -->
-```
+```kusto
 MyTable | extend CalCol=cluster("OtherCluster").database("OtherDb").MyCalc(Col1, Col2, Col3) | limit 10
 ```
 
 The schema of the remote function being called must be known and invariant of its parameters (see also [Cross-cluster queries and schema changes](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_crossclusterandschemachanges.html)) . So the following is **not valid**:
 
 Tabular function in `OtherDb`:
-<!-- csl -->
-```
+```kusto
 .create function SomeTable(tablename:string) { table(tablename)  }  
 ```
 
 In default database:
-<!-- csl -->
-```
+```kusto
 cluster("OtherCluster").database("OtherDb").SomeTable("MyTable")
 ```
 
@@ -138,4 +125,6 @@ of the `take` operator. To lift this limit, use the `notruncation`
 client request option.
 
 To display data in graphical form, use the [render operator](renderoperator.md).
+
+
 

@@ -8,3 +8,5 @@ Kusto supports a number of bitwise (binary) operators between integers:
 * [binary-shift-left](binary-shift-leftfunction.md)
 * [binary-shift-right](binary-shift-rightfunction.md)
 * [binary-xor](binary-xorfunction.md)
+
+

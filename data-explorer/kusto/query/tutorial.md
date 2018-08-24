@@ -12,8 +12,7 @@ Our example database has a table called StormEvents. To find out how big it is, 
 
 * *Syntax:* A query is: `<data source> { | <operator> }*`
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents | count 
 ```
 
@@ -35,8 +34,7 @@ and [take](./takeoperator.md) operator.
 
 Let's see only the `flood`s in `California` during Feb-2007:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where StartTime > datetime(2007-02-01) and StartTime < datetime(2007-03-01)
 | where EventType == 'Flood' and State == 'CALIFORNIA'
@@ -52,8 +50,7 @@ StormEvents
 
 Let's see some data - what's in a sample 5 rows?
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents | take 5
 | project  StartTime, EndTime, EventType, State, EventNarrative  
 ```
@@ -77,8 +74,7 @@ for [take](./takeoperator.md) and will have the same effect.
 
 Show me the first n rows, ordered by a particular column:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents | top 5 by StartTime desc
 | project  StartTime, EndTime, EventType, State, EventNarrative  
 ```
@@ -94,8 +90,7 @@ StormEvents | top 5 by StartTime desc
 Same can be achived by using [sort](./sortoperator.md) and 
 then [take](./takeoperator.md) operator
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents | sort by StartTime desc  | take 5
 | project  StartTime, EndLat, EventType, EventNarrative 
 ```
@@ -104,8 +99,7 @@ StormEvents | sort by StartTime desc  | take 5
 
 Create a new column by computing a value in every row:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | limit 5
 | extend Duration = EndTime - StartTime 
@@ -124,8 +118,7 @@ StormEvents
 It is possible to reuse column name and assign calculation result to the same column.
 For example
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 range x from 1 to 1 step 1 
 | extend x = x + 1, y = x
 | extend x = x + 1
@@ -144,8 +137,7 @@ operators (`+`, `-`, `*`, `/`, `%`), and there's a range of useful functions.
 
 Count how many events come from each country:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents | summarize event-count = count() by State 
 ```
 
@@ -160,8 +152,7 @@ them in one summarize operator to produce several computed columns.
 For example, we could get the count of storms in each state and also unique number of storms per state, 
 then we could use [top](./topoperator.md) to get the most storm-affected states:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State 
 | top 5 by StormCount desc 
@@ -187,8 +178,7 @@ The result of a summarize has:
 You can use scalar (numeric, time, or interval) values in the by clause, but you'll want to put the values into bins. 
 The [bin()](./binfunction.md) function is useful for this:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where StartTime > datetime(2007-02-14) and StartTime < datetime(2007-02-21)
 | summarize event-count = count() by bin(StartTime, 1d)
@@ -217,8 +207,7 @@ that [summarize](./summarizeoperator.md) can assign the rows to groups.
 
 Project two columns and use them as the x and y axis of a chart:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | summarize event-count=count(), mid = avg(BeginLat) by State 
 | sort by mid
@@ -238,8 +227,7 @@ Strictly speaking, 'render' is a feature of the client rather than part of the q
 
 Going back to numeric bins, let's display a time series:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | summarize event-count=count() by bin(StartTime, 1d)
 | render timechart
@@ -251,8 +239,7 @@ StormEvents
 
 Use multiple values in a `summarize by` clause to create a separate row for each combination of values:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where StartTime > datetime(2007-06-04) and StartTime < datetime(2007-06-10) 
 | where Source in ("Source","Public","Emergency Manager","Trained Spotter","Law Enforcement")
@@ -275,8 +262,7 @@ How does activity vary over the average day?
 
 Count events by the time modulo one day, binned into hours:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents
 | extend hour = floor(StartTime % 1d , 1h)
 | summarize event-count=count() by hour 
@@ -294,8 +280,7 @@ Currently, `render` doesn't label durations properly, but we could use `| render
 
 How does activity vary over the time of day in different states?
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents
 | extend hour= floor( StartTime % 1d , 1h)
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
@@ -307,8 +292,7 @@ StormEvents
 
 Divide by `1h` to turn the x-axis into hour number instead of a duration:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents
 | extend hour= floor( StartTime % 1d , 1h)/ 1h
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
@@ -324,8 +308,7 @@ How to find for two given EventTypes in what state both of them happened?
 
 You can pull storm events with the first EventType and with the second EventType and then join the two sets on State.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where EventType == "Lightning"
 | join (
@@ -343,8 +326,7 @@ How long does each user session last?
 
 By using extend to provide separate aliases for the two timestamps, you can then compute the session duration.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 Events
 | where eventName == "session-started" 
 | project start-time = timestamp, stop-time, country, session-id
@@ -367,8 +349,7 @@ In the same clauses, we rename the timestamp column.
 
 How many storms are there of different lengths?
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents
 | extend  duration = EndTime - StartTime 
 | where duration > 0s
@@ -393,8 +374,7 @@ What ranges of durations cover different percentages of storms?
 
 Use the above query, but replace `render` with:
 
-<!-- csl -->
-```
+```kusto
 | summarize percentiles(duration, 5, 20, 50, 80, 95)
 ```
 
@@ -410,8 +390,7 @@ From which we can see that:
 
 To get a separate breakdown for each state, we just have to bring the state column separately through both summarize operators:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents
 | extend  duration = EndTime - StartTime 
 | where duration > 0s
@@ -428,8 +407,7 @@ StormEvents
 
 Use [let](./letstatement.md) to separate out the parts of the query expression in the 'join' example above. The results are unchanged:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let LightningStorms = 
     StormEvents
     | where EventType == "Lightning";
@@ -449,34 +427,31 @@ See [Cross Database Queries](./syntax.md#queries) for detailed discussion
 
 When you write a query of the style:
 
-<!-- csl -->
-```
+```kusto
 Logs | where ...
 ```
 
 The table named Logs has to be in your default database. If you want to access table from another database use the following syntax:
 
-<!-- csl -->
-```
+```kusto
 database("db").Table
 ```
 
 So if you have databases named *Diagnostics* and *Telemetry* and want to correlate some of their data, you might write (assuming *Diagnostics* is your default database)
 
-<!-- csl -->
-```
+```kusto
 Logs | join database("Telemetry").Metrics on Request MachineId | ...
 ```
 or if your default database is *Telemetry*
 
-<!-- csl -->
-```
+```kusto
 union Requests, database("Diagnostics").Logs | ...
 ```
     
 All of the above assumed that both databases reside in the cluster you are currently connected to. Suppose that *Telemetry* database belonged to another cluster named *TelemetryCluster.kusto.windows.net* then to access it you'll need
-<!-- csl -->
-```
+```kusto
 Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
 ```
 > Note: when the cluster is specified the database is mandatory
+
+

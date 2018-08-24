@@ -23,8 +23,7 @@ to use the function [hash()](./hashfunction.md) instead.</div>
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 hash-sha256("World")                   // 78ae647dc5544d227130a0682a51e30bc7777fbb6d8a8f17007463a3ecd1d524
 hash-sha256(datetime("2015-01-01"))    // e7ef5635e188f5a36fafd3557d382bbd00f699bd22c671c3dea6d071eb59fbf8
 
@@ -32,10 +31,11 @@ hash-sha256(datetime("2015-01-01"))    // e7ef5635e188f5a36fafd3557d382bbd00f699
 
 The following example uses the hash-sha256 function to run a query on SatrtTime column of the data
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where hash-sha256(StartTime) == 0
 | summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State 
 | top 5 by StormCount desc
 ```
+
+

@@ -13,3 +13,5 @@ Calculates the trigonometric cotangent of the specified angle, in radians.
 **Returns**
 
 * The cotangent function value for `x`
+
+

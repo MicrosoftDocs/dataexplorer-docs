@@ -24,9 +24,10 @@ in the system. Without it, one has to resort to tricks such as prepending the
 evaluation with a `range x from 1 to 1 step 1 | project ...` or
 `datatable (print-0:long)[1] | project ...`.
 
-<!-- csl -->
-```
+```kusto
 print 0 + 1 + 2 + 3 + 4 + 5, x = "Wow!"
 
 print banner=strcat("Hello", ", ", "World!")
 ```
+
+

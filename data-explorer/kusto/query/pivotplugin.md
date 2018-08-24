@@ -30,8 +30,7 @@ The output schema of the `pivot` plugin is based on the data and therefore query
 
 For each EventType and States starting with 'AL', count the number of events of this type in this state.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents
 | project State, EventType 
 | where State startswith "AL" 
@@ -51,8 +50,7 @@ StormEvents
 
 For each EventType and States starting with 'AR', display the total number of direct deaths.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where State startswith "AR" 
 | project State, EventType, DeathsDirect 
@@ -74,8 +72,7 @@ StormEvents
 
 Result is identical to previous example.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where State startswith "AR" 
 | project State, EventType, DeathsDirect 
@@ -97,8 +94,7 @@ StormEvents
 
 For each event type, source and state, sum the number of direct deaths.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents 
 | where State startswith "AR" 
 | where DeathsDirect > 0
@@ -115,4 +111,6 @@ StormEvents
 |Flash Flood|Newspaper|0|1|
 |Strong Wind|Law Enforcement|1|0|
 |Heat|Newspaper|3|0|
+
+
 

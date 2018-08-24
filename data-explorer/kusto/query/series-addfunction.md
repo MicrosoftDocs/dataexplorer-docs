@@ -16,8 +16,7 @@ Dynamic array of calculated element-wise add operation between the two inputs. A
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2
 | extend z = y * 2
@@ -30,3 +29,5 @@ range x from 1 to 3 step 1
 |[1,2,4]|[4,2,1]|[5,4,5]|
 |[2,4,8]|[8,4,2]|[10,8,10]|
 |[3,6,12]|[12,6,3]|[15,12,15]|
+
+

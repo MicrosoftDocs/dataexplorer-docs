@@ -71,9 +71,10 @@ and retrieves the value of the `duration` slot
 in the object, and from that it retrieves two slots, `duration.value` and
  `duration.min` (`118.0` and `110.0`, respectively).
 
-<!-- csl -->
-```
+```kusto
 T
 | extend d=parse-xml(context-custom-metrics) 
 | extend duration-value=d.duration.value, duration-min=d["duration"]["min"]
 ```
+
+

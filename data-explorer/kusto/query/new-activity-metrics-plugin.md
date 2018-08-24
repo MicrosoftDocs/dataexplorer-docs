@@ -47,8 +47,7 @@ For definitions of `Retention Rate` and `Churn Rate` - refer to **Notes** sectio
 The next query calculates a retention and churn rate for week-over-week window for `New Users` cohort
 (users that arrived on the first week).
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 // Generate random data of user activities
 let _start = datetime(2017-05-01);
 let _end = datetime(2017-05-31);
@@ -76,8 +75,7 @@ range Day from _start to _end  step 1d
 The next query calculates retention and churn rate for week-over-week window for `New Users` cohort. If the previous
 example calculated the statistics for a single week - the below produces NxN table for each from/to combination.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 // Generate random data of user activities
 let _start = datetime(2017-05-01);
 let _end = datetime(2017-05-31);
@@ -117,8 +115,7 @@ consideration `lookback` period: a tabular query with set of Ids that are used t
 the `New Users` cohort (all IDs that do not appear in this set are `New Users`). The 
 query examines the retention behavior of the `New Users` during the analysis period.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 // Generate random data of user activities
 let _lookback = datetime(2017-02-01);
 let _start = datetime(2017-05-01);
@@ -142,4 +139,6 @@ _data
 |2017-05-01 00:00:00.0000000|2017-05-15 00:00:00.0000000|0.257142857142857|
 |2017-05-01 00:00:00.0000000|2017-05-22 00:00:00.0000000|0.296326530612245|
 |2017-05-01 00:00:00.0000000|2017-05-29 00:00:00.0000000|0.0587755102040816|
+
+
 

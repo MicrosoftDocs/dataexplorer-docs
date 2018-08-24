@@ -17,7 +17,8 @@ This function returns a table with a single record and column of type
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```
+```kusto
 StormEvents | count
 ```
+
+

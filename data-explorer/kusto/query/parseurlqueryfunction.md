@@ -16,8 +16,7 @@ An object of type `dynamic` that includes the query parameters.
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 parse-urlquery("k1=v1&k2=v2&k3=v3")
 ```
 
@@ -33,3 +32,5 @@ will result:
 
 * Input format should follow URL query standards (key=value& ...)
  
+
+

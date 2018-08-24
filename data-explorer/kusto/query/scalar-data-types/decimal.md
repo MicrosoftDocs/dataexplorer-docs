@@ -9,3 +9,5 @@ as .NET's `System.Data.SqlTypes.SqlDecimal`.
 
 There are several special literal forms:
 * `decimal(null)`: The is the [null value](null-values.md).
+
+

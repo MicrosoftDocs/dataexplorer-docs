@@ -27,8 +27,7 @@ In case, if amount of parts is less than 4, all the missing parts are considered
 
  
 **Example**
-<!-- csl -->
-```
+```kusto
 let dt = datatable(v:string)
 ["0.0.0.5","0.0.7.0","0.0.3","0.2","0.1.2.0","1.2.3.4","1","99999999.0.0.0"];
 dt | project v1=v, _key=1 
@@ -68,6 +67,8 @@ dt | project v1=v, _key=1
 |99999999.0.0.0|1.2.3.4|99999999.0.0.0|
 |1.2.3.4|1|1.2.3.4|
 |99999999.0.0.0|1|99999999.0.0.0|
+
+
 
 
 

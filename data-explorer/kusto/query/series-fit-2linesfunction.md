@@ -40,8 +40,7 @@ Most convenient way of using this function is applying it to results of [make-se
 
 **Examples**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 range x from 1 to 1 step 1
 | project id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([1,2.2, 2.5, 4.7, 5.0, 12, 10.3, 10.3, 9, 8.3, 6.2])
 | extend (Slope,Interception,RSquare,Variance,RVariance,LineFit)=series-fit-line(y), (RSquare2, SplitIdx, Variance2,RVariance2,LineFit2)=series-fit-2lines(y)
@@ -50,3 +49,5 @@ range x from 1 to 1 step 1
 ```
 
 ![](./Images/samples/series-fit-2lines.png)
+
+

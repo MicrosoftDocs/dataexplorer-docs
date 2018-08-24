@@ -26,8 +26,7 @@ The percentage rank of value in a dataset.
 
 Getting the percentrank-tdigest() of the damage property that valued 4490$ is ~85%:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents
 | summarize tdigestRes = tdigest(DamageProperty)
 | project percentrank-tdigest(tdigestRes, 4490)
@@ -41,8 +40,7 @@ StormEvents
 
 Using percentile 85 over the damage property should give 4490$:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents
 | summarize tdigestRes = tdigest(DamageProperty)
 | project percentile-tdigest(tdigestRes, 85, typeof(long))
@@ -52,5 +50,7 @@ StormEvents
 |percentile-tdigest-tdigestRes|
 |---|
 |4490|
+
+
 
 

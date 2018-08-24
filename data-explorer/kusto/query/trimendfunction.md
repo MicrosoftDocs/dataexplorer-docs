@@ -19,8 +19,7 @@ Removes trailing match of the specified regular expression.
 
 Statement bellow trims *substring*  from the end of *string-to-trim*:
 
-<!-- csl -->
-```
+```kusto
 let string-to-trim = @"bing.com";
 let substring = ".com";
 range x from 1 to 1 step 1
@@ -33,8 +32,7 @@ range x from 1 to 1 step 1
 
 Next statement trims all non-word characters from the end of the string:
 
-<!-- csl -->
-```
+```kusto
 range x from 1 to 5 step 1
 | project str = strcat("-  ","Te st",x,@"// $")
 | extend trimmed-str = trim-end(@"[^\w]+",str)
@@ -49,3 +47,5 @@ range x from 1 to 5 step 1
 |-  Te st5// $|-  Te st5|
 
  
+
+

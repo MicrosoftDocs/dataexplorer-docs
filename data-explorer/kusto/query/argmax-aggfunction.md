@@ -33,10 +33,11 @@ that are used following that operator, as the optimization rule to automatically
 project-away such columns is currently not implemented. In other words, make sure
 to introduce a projection similar to the marked line below:
 
-<!--- csl --->
-```
+```kusto
 datatable(a:string, b:string, c:string, d:string) [...]
 | project a, b, c // <-- Add this projection to remove d
 | summarize argmax(a, *)
 | project B=max-a-b, C=max-a-c
 ```
+
+

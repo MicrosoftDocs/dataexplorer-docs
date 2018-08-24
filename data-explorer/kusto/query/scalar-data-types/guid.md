@@ -11,9 +11,10 @@ instead.</div>
 
 To represent a literal of type `guid`, use the following format:
 
-<!-- csl -->
-```
+```kusto
 guid(74be27de-1e4e-49d9-b579-fe0b331d3642)
 ```
 
 The special form `guid(null)` represents the [null value](null-values.md).
+
+

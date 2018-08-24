@@ -22,9 +22,10 @@ Indicates whether the argument is an empty string or isnull.
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 T
 | where isempty(fieldName)
 | count
 ```
+
+

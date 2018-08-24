@@ -17,8 +17,7 @@ Calculates the angle, in radians, between the positive x-axis and the ray from t
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 print atan2-0 = atan2(1,1) // Pi / 4 radians (45 degrees)
 | extend atan2-1 = atan2(0,-1) // Pi radians (180 degrees)
 | extend atan2-2 = atan2(-1,0) // - Pi / 2 radians (-90 degrees)
@@ -28,3 +27,5 @@ print atan2-0 = atan2(1,1) // Pi / 4 radians (45 degrees)
 |atan2-0|atan2-1|atan2-2|
 |---|---|---|
 |0.785398163397448|3.14159265358979|-1.5707963267949|
+
+

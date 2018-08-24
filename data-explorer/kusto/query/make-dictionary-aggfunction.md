@@ -25,8 +25,7 @@ See [bag-unpack()](/queryLanguage/bag-unpackplugin.md) plugin for expanding dyna
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 let T = datatable(prop:string, value:string)
 [
     "prop01", "val-a",
@@ -42,3 +41,5 @@ T
 |dict|
 |----|
 |{ "prop01": "val-a", "prop02": "val-b", "prop03": "val-c" } |
+
+

@@ -30,3 +30,5 @@ The number of times that the search string can be matched in the container. Plai
 |`countof("ababa", "aba", "regex")`| 1
 |`countof("abcabc", "a.c", "regex")`| 2
     
+
+

@@ -24,3 +24,5 @@ for the first two forms only. Thus, `123` is a literal of type `long`, as is
 function `-` applied to the literal `2` of type long).
  
 For converting long into hex string - see [tohex() function](../tohexfunction.md).
+
+

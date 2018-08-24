@@ -16,3 +16,5 @@ Retuns the comon (base-10) logarithm function.
 * For natural (base-e) logarithms, see [log()](log-function.md).
 * For base-2 logarithms, see [log2()](log2-function.md)
 * `null` if the argument is negative or null or cannot be converted to a `real` value. 
+
+

@@ -30,3 +30,5 @@ A string representing the runtime type of its single argument.
 |`gettype(123.45)`                   |`real`       |
 |`gettype(guid(12e8b78d-55b4-46ae-b068-26d7a0080254))`|`guid`| 
 |`gettype(parsejson(''))`            |`null`|
+
+

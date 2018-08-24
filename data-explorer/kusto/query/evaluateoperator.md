@@ -8,3 +8,5 @@ rules of query execution, and may have limitation based on the concrete extensio
 For example extensions which output schema changes depending on the data (e.g. bag-unpack, pivot)
 cannot be used in remote functions (cross-cluster query).
 
+
+

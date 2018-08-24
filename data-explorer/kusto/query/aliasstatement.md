@@ -16,14 +16,14 @@ The alias must be defined according to the following syntax where 'clustername' 
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 alias database["wiki"] = cluster("https://somecluster.kusto.windows.net:443").database("somedatabase");
 database("wiki").PageViews | count 
 ```
 
-<!-- csl -->
-```
+```kusto
 alias database Logs = cluster("https://othercluster.kusto.windows.net:443").database("otherdatabase");
 database("Logs").Traces | count 
 ```
+
+

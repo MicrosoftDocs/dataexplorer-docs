@@ -21,21 +21,20 @@ If the longitude value is outside (-180, 180] the value will wrap around.
 
 The following example returns `[1.0, 2.0]`:
 
-<!-- csl -->
-```
+```kusto
 print point(1, 2)
 ```
 
 The following example returns `[0.0, -90.0]`:
 
-<!-- csl -->
-```
+```kusto
 print point(0, 270)
 ```
 
 The following example returns `null`:
 
-<!-- csl -->
-```
+```kusto
 print point(91, 0)
 ```
+
+

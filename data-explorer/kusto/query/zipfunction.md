@@ -16,23 +16,22 @@ Between 2 and 16 dynamic arrays.
 
 The following example returns `[[1,2],[3,4],[5,6]]`:
 
-<!-- csl -->
-```
+```kusto
 print zip(dynamic([1,3,5]), dynamic([2,4,6]))
 ```
 
 The following example returns `[["A",{}], [1,"B"], [1.5, null]]`:
 
-<!-- csl -->
-```
+```kusto
 print zip(dynamic(["A", 1, 1.5]), dynamic([{}, "B"]))
 ```
 
 The following example returns `[[1,"one"],[2,"two"],[3,"three"]]`:
 
-<!-- csl -->
-```
+```kusto
 datatable(a:int, b:string) [1,"one",2,"two",3,"three"]
 | summarize a = makelist(a), b = makelist(b)
 | project zip(a, b)
 ```
+
+

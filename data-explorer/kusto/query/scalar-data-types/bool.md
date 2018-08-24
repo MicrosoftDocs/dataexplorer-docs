@@ -14,3 +14,5 @@ The `bool` data type has the following literals:
 
 The `bool` data type supports the following operators:
 equality (`==`), inequality (`!=`), logical-and (`and`), and logical-or (`or`).
+
+

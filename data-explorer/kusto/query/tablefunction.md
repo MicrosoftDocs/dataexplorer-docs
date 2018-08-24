@@ -21,8 +21,7 @@ References specific table using an query-time evaluated string-expression.
 
 ### Use table() to access table of the current database. 
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```
+```kusto
 table('StormEvent') | count
 ```
 
@@ -35,8 +34,7 @@ table('StormEvent') | count
 The same query as above can be rewritten to use inline function (let statement) that 
 receives a parameter `tableName` - which is passed into the table() function.
 
-<!-- csl:  https://help.kusto.windows.net/Samples -->
-```
+```kusto
 let foo = (tableName:string)
 {
     table(tableName) | count
@@ -53,8 +51,7 @@ foo('help')
 The same query as above can be rewritten to be used in a function that 
 receives a parameter `tableName` - which is passed into the table() function.
 
-<!-- csl -->
-```
+```kusto
 .create function foo(tableName:string)
 {
     table(tableName) | count
@@ -69,8 +66,7 @@ A parameter, which is not scalar constant string can't be passed as parameter to
 
 Below, given an example of workaround for such case.
 
-<!-- csl -->
-```
+```kusto
 let T1 = range x from 1 to 1 step 1;
 let T2 = range x from 2 to 2 step 1;
 let _choose = (_selector:string)
@@ -86,3 +82,5 @@ _choose('T2')
 |x|
 |---|
 |2|
+
+

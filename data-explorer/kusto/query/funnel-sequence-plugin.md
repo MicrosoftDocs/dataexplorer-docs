@@ -50,8 +50,7 @@ Returns 3 output tables, useful for constructing a sankey diagram for the analyz
 
 The following query looks on the table StormEvents (weather statistics for 2007) and shows what event happens before/after all Tornado events occurred in 2007.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 // Looking on StormEvents statistics: 
 // Q1: What happens before Tornado event?
 // Q2: What happens after Tornado event?
@@ -147,8 +146,7 @@ Result includes 3 tables:
 Now, let's try to find out how does the next sequence continues:  
 `Hail` -> `Tornado` -> `Thunderstorm Wind`
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 StormEvents
 | evaluate funnel-sequence(EpisodeId, StartTime, datetime(2007-01-01), datetime(2008-01-01), 1d,365d, EventType, 
 dynamic(['Hail', 'Tornado', 'Thunderstorm Wind']))
@@ -166,3 +164,5 @@ can conclude that sequence `Hail` -> `Tornado` -> `Thunderstorm Wind` in 92 even
 |2007-01-01 00:00:00.0000000|Lightning|2|
 |2007-01-01 00:00:00.0000000|Heavy Rain|1|
 |2007-01-01 00:00:00.0000000|Flood|1|
+
+

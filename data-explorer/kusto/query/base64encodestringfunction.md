@@ -17,8 +17,7 @@ Returns the string encoded as base64 string.
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 range x from 1 to 1 step 1
 | project base64-encodestring("Kusto")
 ```
@@ -26,4 +25,6 @@ range x from 1 to 1 step 1
 |Column1|
 |---|
 |S3VzdG8=|
+
+
 

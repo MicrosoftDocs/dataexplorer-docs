@@ -16,8 +16,7 @@ The number of elements in *array*, or `null` if *array* is not an array.
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 print array-length(parsejson('[1, 2, 3, "four"]')) == 4
 
 print array-length(parsejson('[8]')) == 1
@@ -30,3 +29,5 @@ print array-length(parsejson('{}')) == null
 
 print array-length(parsejson('21')) == null
 ```
+
+

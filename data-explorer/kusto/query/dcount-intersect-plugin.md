@@ -26,8 +26,7 @@ Column names are s0, s1, ... (till n-1).
 
 **Examples**
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```
+```kusto
 // Generate numbers from 1 to 100
 range x from 1 to 100 step 1
 | extend isEven = (x % 2 == 0), isMod3 = (x % 3 == 0), isMod5 = (x % 5 == 0)
@@ -45,3 +44,5 @@ range x from 1 to 100 step 1
 |evenNumbers|even-and-mod3|even-and-mod3-and-mod5|
 |---|---|---|
 |50|16|3|
+
+

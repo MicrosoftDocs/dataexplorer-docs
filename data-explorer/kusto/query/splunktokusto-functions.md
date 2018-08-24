@@ -22,3 +22,5 @@ The following table specifies the Splunk functions and the applicable Kusto func
 
 (1) In Splunk, invoked via eval operator; in Kusto, used as part of `extend`, `project`, etc
 (2) In splunk it is invoked via the 'eval' operator, in Kusto it is a relation operator of the 'where' operator
+
+

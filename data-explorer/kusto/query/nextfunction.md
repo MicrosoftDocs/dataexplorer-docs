@@ -21,8 +21,7 @@ current row in a [serialized row set](./windowsfunctions.md#serialized-row-set).
 
 
 **Examples**
-<!-- csl -->
-```
+```kusto
 Table | serialize | extend nextA = next(A,1)
 | extend diff = A - nextA
 | where diff > 1
@@ -31,3 +30,5 @@ Table | serialize nextA = next(A,1,10)
 | extend diff = A - nextA
 | where diff <= 10
 ```
+
+

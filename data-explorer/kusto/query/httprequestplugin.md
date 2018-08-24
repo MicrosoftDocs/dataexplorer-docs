@@ -66,8 +66,7 @@ Kusto service controls allowed sql-request plugin destinations by [Callout polic
 
 The following example retrieves the a canonical list of country codes:
 
-<!-- csl -->
-```
+```kusto
 evaluate http-request('http://services.groupkt.com/country/get/all')
 | project CC=ResponseBody.RestResponse.result
 | mvexpand CC limit 10000
@@ -107,11 +106,12 @@ Burundi                           | BI           | BDI
 The following example is for a hypothetical HTTPS web service that
 accepts additional request headers and must be authenticated to using AAD:
 
-<!-- csl -->
-```
+```kusto
 let uri='https://example.com/node/js/on/eniac';
 let headers=dynamic({'x-ms-correlation-vector':'abc.0.1.0'});
 let options=dynamic({'Authentication':'Active Directory Integrated',
   'AadResourceId':'https://eniac.to.the.max.example.com/'});
 evaluate http-request-post(uri, headers, options)
 ```
+
+

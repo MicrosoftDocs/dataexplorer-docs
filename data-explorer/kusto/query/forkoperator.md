@@ -32,8 +32,7 @@ The input stream will be cached by materialize and then the cached expression ca
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 KustoLogs
 | where Timestamp > ago(1h)
 | fork
@@ -56,5 +55,7 @@ KustoLogs
     EventsTexts = ( project Timestamp, EventText | top 1000 by Timestamp desc )
     TimeRangePerActivityID = ( summarize min(Timestamp), max(Timestamp) by ActivityID )
 ```
+
+
 
 

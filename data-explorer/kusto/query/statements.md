@@ -17,3 +17,5 @@ Notes:
 not extend beyond that; queries cannot make any durable change to the system.
 
 * Multiple tabular expression statements represent a [batch](batches.md) of queries.
+
+

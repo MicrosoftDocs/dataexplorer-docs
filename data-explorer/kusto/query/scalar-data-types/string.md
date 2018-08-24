@@ -21,15 +21,13 @@ not as an escape character:
 String literals that follow each other in the query text are automatically
 concatenated together. For example, the following yields `13`:
 
-<!-- csl -->
-```
+```kusto
 print strlen("Hello" ', ' @"world!")
 ```
 
 ## Examples
 
-<!-- csl -->
-```
+```kusto
 // Simple string notation
 range x from 1 to 1 step 1 
 | project s1 = 'some string', s2 = "some other string"
@@ -57,10 +55,11 @@ Obfuscated string literals are strings that Kusto will remove when outputting th
 The obfuscation process replaces all obfuscated characters by a star (`*`) character.
 
 To form an obfuscated string literal, prepend `h` or 'H'. For example:
-<!-- csl -->
-```
+```kusto
 h'hello'
 h@'world' 
 h"hello"
 ```
+
+
 

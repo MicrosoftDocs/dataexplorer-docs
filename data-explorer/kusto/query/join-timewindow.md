@@ -21,8 +21,7 @@ schema:
 - `Timestamp`: A column of type `datetime` indicating when the event described
   by the record happened.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let T = datatable(SessionId:string, EventType:string, Timestamp:datetime)
 [
     '0', 'A', datetime(2017-10-01 00:00:00),
@@ -56,8 +55,7 @@ We want our query to answer the following question:
 
 Semantically, the following query answers this question, albait inefficiently:
 
-<!-- csl -->
-```
+```kusto
 T 
 | where EventType == 'A'
 | project SessionId, Start=Timestamp
@@ -85,8 +83,7 @@ The idea is to rewrite the query so that the `datetime` values are
 "discretized" into buckets whose size is half the size of the time window.
 We can then use Kusto's equi-join to compare those bucket IDs.
 
-<!-- csl -->
-```
+```kusto
 let lookupWindow = 1min;
 let lookupBin = lookupWindow / 2.0; // lookup bin = equal to 1/2 of the lookup window
 T 
@@ -118,8 +115,7 @@ T
 
 **Runnable query reference (with table inlined)**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let T = datatable(SessionId:string, EventType:string, Timestamp:datetime)
 [
     '0', 'A', datetime(2017-10-01 00:00:00),
@@ -157,8 +153,7 @@ T
 
 The next query emulates data set of 50M records and ~10M IDs and runs the query with the technique described above.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let T = range x from 1 to 50000000 step 1
 | extend SessionId = rand(10000000), EventType = rand(3), Time=datetime(2017-01-01)+(x * 10ms)
 | extend EventType = case(EventType <= 1, "A",
@@ -187,4 +182,6 @@ T
 |Count|
 |---|
 |1276|
+
+
 

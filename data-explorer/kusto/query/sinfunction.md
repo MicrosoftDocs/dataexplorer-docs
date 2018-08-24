@@ -13,3 +13,5 @@ Returns the sine function.
 **Returns**
 
 * The result of `sin(x)`
+
+

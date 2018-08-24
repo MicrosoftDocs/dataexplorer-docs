@@ -30,8 +30,7 @@ Assuming that we are interested in finding the Retention of Pages views.
 
 Using `materialize()` operator to improve runtime performance:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let totalPagesPerDay = PageViews
 | summarize by Page, Day = startofday(Timestamp)
 | summarize count() by Day;
@@ -64,8 +63,7 @@ on $left.Day1 == $right.Day
 
 Using self-join without caching the mutual sub-query :
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let totalPagesPerDay = PageViews	
 | summarize by Page, Day = startofday(Timestamp)
 | summarize count() by Day;
@@ -98,8 +96,7 @@ The same works for union, for example, getting the Pages which are one of the to
 
 Using `materialize()` :
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let JunkPagesSuffix = ".jpg";
 let materializedScope = PageViews
 | where Timestamp > datetime(2016-05-01 00:00:00.0000000)
@@ -121,8 +118,7 @@ union (cachedResult | top 2 by count- | project Page ), (cachedResult | top 2 by
 
 Using regular union without caching the result:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 let JunkPagesSuffix = ".jpg";
 let subQuery = PageViews
 | where Timestamp > datetime(2016-05-01 00:00:00.0000000)
@@ -141,3 +137,5 @@ union (subQuery | top 2 by count-| project Page ), (subQuery | top 2 by sum-Byte
 |Special:Search|
 |de|
 |ar|
+
+

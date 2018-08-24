@@ -36,8 +36,7 @@ Output table schema is:
 
 Calculate counts and dcounts for users in past week, for every day in the analysis period. 
 
-<!-- csl -->
-```
+```kusto
 let start = datetime(2017 - 08 - 01);
 let end = datetime(2017 - 08 - 07); 
 let lookbackWindow = 3d;  
@@ -74,3 +73,5 @@ T | evaluate sliding-window-counts(UserId, Timestamp, start, end, lookbackWindow
 |2017-08-05 00:00:00.0000000|7|5|
 |2017-08-06 00:00:00.0000000|2|2|
 |2017-08-07 00:00:00.0000000|1|1|
+
+

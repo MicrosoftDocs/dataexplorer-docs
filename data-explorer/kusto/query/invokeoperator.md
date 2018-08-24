@@ -26,8 +26,7 @@ See [let statements](./letstatement.md) for more details how to declare lambda e
 
 The following example shows how to use `invoke` operator to call lambda expression:
 
-<!-- csl: https://help.kusto.windows.net:443/KustoMonitoringPersistentDatabase -->
-```
+```kusto
 // clipped-average(): calculates percentiles limits, and then makes another 
 //                    pass over the data to calcualte average with values inisde the percentiles
 let clipped-average = (T:(x: long), lowPercentile:double, upPercentile:double)
@@ -45,4 +44,6 @@ range x from 1 to 100 step 1
 |avg-x|
 |---|
 |52|
+
+
 

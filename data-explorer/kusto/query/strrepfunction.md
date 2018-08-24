@@ -22,11 +22,12 @@ In case if *multiplier* is more than maximal allowed value (1024), input string 
  
 **Example**
 
-<!-- csl -->
-```
+```kusto
 print from-str = strrep('ABC', 2), from-int = strrep(123,3,'.'), from-time = strrep(3s,2,' ')
 ```
 
 |from-str|from-int|from-time|
 |---|---|---|
 |ABCABC|123.123.123|00:00:03 00:00:03|
+
+

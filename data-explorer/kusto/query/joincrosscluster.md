@@ -4,8 +4,7 @@ For general discussion on cross-cluster queries see [here](syntax.md#queries)
 
 It is possible to perform join operation on datasets residing on different clusters. For example 
 
-<!-- csl -->
-```
+```kusto
 T | ... | join (cluster("SomeCluster").database("SomeDB").T2 | ...) on Col1 // (1)
 
 cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster2").database("SomeDB2").T2 | ...) on Col1 // (2)
@@ -15,8 +14,7 @@ In the examples above join operation is a cross-cluster join assuming that curre
 
 Note that in the following example
 
-<!-- csl -->
-```
+```kusto
 cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster").database("SomeDB2").T2 | ...) on Col1 
 ```
 
@@ -36,8 +34,7 @@ If in example **(1)** it dataset produced by ```T | ...``` is much smaller than 
 
 This can be achieved by giving Kusto join remoting hint. The syntax is:
 
-<!-- csl -->
-```
+```kusto
 T | ... | join hint.remote=<strategy> (cluster("SomeCluster").database("SomeDB").T2 | ...) on Col1
 ```
 
@@ -48,3 +45,5 @@ Following are legal values for *`strategy`*
 * **`auto`** - (default) let Kusto make the automatic remoting decision
 
 **Note:** Join remoting hint will be ignored by Kusto if hinted strategy is not applicable to the join operation.
+
+

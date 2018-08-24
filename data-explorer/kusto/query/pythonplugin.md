@@ -79,8 +79,7 @@ In the Python code, the following symbols are reserved and hold a special meanin
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 range x from 1 to 360 step 1
 | evaluate python(
 //
@@ -100,3 +99,5 @@ range x from 1 to 360 step 1
 
 Please send feedback and questions about this plugin to [Kusto Machine Learning](mailto:kustoML@microsoft.com).
 We'd love to hear from you!
+
+

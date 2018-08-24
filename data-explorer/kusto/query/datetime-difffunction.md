@@ -31,8 +31,7 @@ An integer, which represents amount of `periods` in the result of subtraction (`
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 print
 year = datetime-diff('year',datetime(2017-01-01),datetime(2000-12-31)),
 quarter = datetime-diff('quarter',datetime(2017-07-01),datetime(2017-03-30)),
@@ -50,6 +49,8 @@ nanosecond = datetime-diff('nanosecond',datetime(2017-10-30 23:00:00.0000000),da
 |year|quarter|month|week|day|hour|minute|second|millisecond|microsecond|nanosecond|
 |---|---|---|---|---|---|---|---|---|---|---|
 |17|2|13|5|29|2|5|10|100|100|-700|
+
+
 
 
 

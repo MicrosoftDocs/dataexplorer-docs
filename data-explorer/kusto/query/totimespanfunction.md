@@ -17,3 +17,5 @@ Converts input  to [timespan](./scalar-data-types/timespan.md) scalar.
 If conversion is successful, result will be a [timespan](./scalar-data-types/timespan.md) value.
 If conversion is not successful, result will be null.
  
+
+

@@ -21,8 +21,7 @@ A table that has the columns in the same order as in an existing table, with col
 
 **Examples**
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```
+```kusto
 print a='a', b='b', c='c'
 |  project-rename new-b=b, new-a=a
 ```
@@ -30,3 +29,5 @@ print a='a', b='b', c='c'
 |new-a|new-b|c|
 |---|---|---|
 |a|b|c|
+
+

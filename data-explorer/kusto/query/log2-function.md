@@ -16,3 +16,5 @@ Returns the base-2 logarithm function.
 * For natural (base-e) logarithms, see [log()](log-function.md).
 * For common (base-10) logarithms, see [log10()](log10-function.md)
 * `null` if the argument is negative or null or cannot be converted to a `real` value. 
+
+

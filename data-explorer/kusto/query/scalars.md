@@ -26,3 +26,5 @@ Scalar expressions are distinct from [queries](./queries.md), whose results are 
 # Reference: scalar functions
 
 "Scalar" denotes values that can occupy a single cell in a Kusto table. (Scalar expressions are distinct from [queries](./queries.md), whose results are tables.)
+
+

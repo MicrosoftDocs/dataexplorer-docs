@@ -13,3 +13,5 @@ Returns the tangent function.
 **Returns**
 
 * The result of `tan(x)`
+
+

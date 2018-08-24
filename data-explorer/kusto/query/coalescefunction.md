@@ -22,11 +22,12 @@ The value of the first *expr-i* whose value is not null (or not-empty for string
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net/Samples  -->
-```
+```kusto
 print result=coalesce(tolong("not a number"), tolong("42"), 33)
 ```
 
 |result|
 |---|
 |42|
+
+

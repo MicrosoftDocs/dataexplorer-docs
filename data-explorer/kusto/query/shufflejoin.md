@@ -6,8 +6,7 @@ Shuffle join is a semantic-preserving transformation for join that depending on 
 
 Shuffle join strategy can be set by the query parameter `hint.strategy = shuffle`:
 
-<!-- csl -->
-```
+```kusto
 T | where Event=="Start" | project ActivityId, Started=Timestamp
 | join hint.strategy = shuffle (T | where Event=="End" | project ActivityId, Ended=Timestamp)
   on ActivityId
@@ -20,8 +19,7 @@ It is useful to use the shuffle join strategy when the join key's cardinality is
 
 In addition, it is possible to choose the shuffle keys that will be used by the query parameter `hint.shufflekey = key` :
 
-<!-- csl -->
-```
+```kusto
 customer
 | join kind=leftouter 
 (
@@ -48,8 +46,7 @@ The left table has 15M records where the cardinality of the join key is ~14M, Th
 
 Running the regular strategy of the join, the query ends after ~28 seconds and the memory usage peak is 1.43GB :
 
-<!-- csl-->
-```
+```kusto
 customer
 | join
     orders
@@ -60,8 +57,7 @@ on $left.c-custkey == $right.o-custkey
 
 While using shuffle join strategy, the query ends after ~4 seconds and the memory usage peak is 0.3GB :
 
-<!-- csl-->
-```
+```kusto
 customer
 | join
     hint.strategy = shuffle orders
@@ -111,4 +107,6 @@ on $left.l-partkey == $right.p-partkey
 ```
 
 Please note that setting many partitions may degrade performance and consume more cluster resources so it is recommended to choose the partitions number carefully (starting with the hint.strategy = shuffle and start increasing the partitions gradually).-->
+
+
 

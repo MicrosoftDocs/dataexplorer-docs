@@ -37,8 +37,7 @@ The restrict statement can get one or more parameters that define the permissive
 The entity can be:
 - [let statement](./letstatement.md) appearing before `restrict` statement. 
 
-<!-- csl -->
-```
+```kusto
 // Limit access to 'Test' let statement only
 let Test = () { range x from 1 to 1 step 1 }; 
 restrict access to (Test);
@@ -46,8 +45,7 @@ restrict access to (Test);
 
 - [Tables](https://kusdoc2.azurewebsites.net/docs/controlCommands/controlcommands_tables.html) or [functions](https://kusdoc2.azurewebsites.net/docs/controlCommands/controlcommands_functions.html) that are defined in the database metadata.
 
-<!-- csl -->
-```
+```kusto
 // Assuming that database that query uses has table Table1 and Func1 defined in the metadata, 
 // and other database 'DB2' has Table2 defined in the metadata
  
@@ -56,8 +54,7 @@ restrict access to (database().Table1, database().Func1, database('DB2').Table2)
 
 - Wildcard patterns that can match multiple of [let statements](./letstatement.md) or tables/functions  
 
-<!-- csl -->
-```
+```kusto
 let Test1 = () { range x from 1 to 1 step 1};
 let Test2 = () { range y from 1 to 1 step 1}; 
 restrict access to (*);
@@ -80,8 +77,7 @@ restrict access to (database('DB2').*);
 The following example shows how a middle-tier application can prepend a user's query
 with a logical model that prevents the user from querying any other user's data.
 
-<!-- csl -->
-```
+```kusto
 // Assume the database has a single table, UserData,
 // with a column called UserID and other columns that hold
 // per-user private information.
@@ -97,8 +93,7 @@ restrict access to (RestrictedData);
 RestrictedData | summarize IrsLovesMe=sum(Salary) by Year, Month
 ```
 
-<!-- csl -->
-```
+```kusto
 // Restricting access to Table1 in the current database (database() called without parameters)
 restrict access to (database().Table1);
 Table1 | count
@@ -132,3 +127,5 @@ let View2 = view () { Table2 | project Column1, Column2 };
 restrict access to (View1, View2);
 Table1 |  count
 ```
+
+

@@ -31,8 +31,7 @@ A table that has the columns named as arguments, and as many rows as the input t
 The following example shows several kinds of manipulations that can be done
 using the `project` operator. The input table `T` has three columns of type `int`: `A`, `B`, and `C`. 
 
-<!-- csl -->
-```
+```kusto
 T
 | project
     X=C,                       // Rename column C to X
@@ -42,3 +41,5 @@ T
 ```
 
 See [series-stats](series-statsfunction.md) as an example of a function that returns multiple columns
+
+

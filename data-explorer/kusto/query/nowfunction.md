@@ -25,7 +25,8 @@ The current UTC clock time as a `datetime`.
 
 Determines the interval since the event identified by the predicate:
 
-<!-- csl -->
-```
+```kusto
 T | where ... | extend Elapsed=now() - Timestamp
 ```
+
+

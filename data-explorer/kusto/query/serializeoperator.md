@@ -13,8 +13,7 @@ could be applied to it.
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 Traces
 | where ActivityId == "479671d99b7b"
 | serialize
@@ -23,3 +22,5 @@ Traces
 | where ActivityId == "479671d99b7b"
 | serialize rn = row-number()
 ```
+
+

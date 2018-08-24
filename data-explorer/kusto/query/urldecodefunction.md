@@ -18,8 +18,7 @@ URL (string) in a regular representation.
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 let url = @'https%3a%2f%2fwww.bing.com%2f';
 print original = url, decoded = url-decode(url)
 ```
@@ -31,3 +30,5 @@ print original = url, decoded = url-decode(url)
 
 
  
+
+

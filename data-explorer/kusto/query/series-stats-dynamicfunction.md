@@ -21,8 +21,7 @@ The `series-stats-dynamic()` function takes a column containing dynamic numerica
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 print x=dynamic([23,46,23,87,4,8,3,75,2,56,13,75,32,16,29]) 
 | project stats=series-stats-dynamic(x)
 
@@ -39,6 +38,8 @@ print x=dynamic([23,46,23,87,4,8,3,75,2,56,13,75,32,16,29])
   "stdev": 28.503633853548269,  
   "variance": 812.45714285714291  
 }
+
+
 
 
 

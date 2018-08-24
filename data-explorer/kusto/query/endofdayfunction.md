@@ -17,8 +17,7 @@ A datetime representing the end of the day for the given *date* value, with the 
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
   range offset from -1 to 1 step 1
  | project dayEnd = endofday(datetime(2017-01-01 10:10:17), offset) 
 ```
@@ -28,4 +27,6 @@ A datetime representing the end of the day for the given *date* value, with the 
 |2016-12-31 23:59:59.9999999|
 |2017-01-01 23:59:59.9999999|
 |2017-01-02 23:59:59.9999999|
+
+
 

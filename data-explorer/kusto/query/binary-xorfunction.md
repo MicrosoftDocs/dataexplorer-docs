@@ -15,3 +15,5 @@ Returns a result of the bitwise `xor` operation of the two values
 **Returns**
 
 Returns logical XOR operation on a pair of numbers: num1 ^ num2.
+
+

@@ -25,8 +25,7 @@ If creation is successful, result will be a [timespan](./scalar-data-types/times
  
 **Example**
 
-<!-- csl -->
-```
+```kusto
 print ['timespan'] = make-timespan(1,12,30,55.123)
 
 ```
@@ -34,6 +33,8 @@ print ['timespan'] = make-timespan(1,12,30,55.123)
 |timespan|
 |---|
 |1.12:30:55.1230000|
+
+
 
 
 

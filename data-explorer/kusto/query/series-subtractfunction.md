@@ -16,8 +16,7 @@ Dynamic array of calculated element-wise subtract operation between the two inpu
 
 **Example**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```
+```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2
 | extend z = y * 2
@@ -30,3 +29,5 @@ range x from 1 to 3 step 1
 |[1,2,4]|[4,2,1]|[-3,0,3]|
 |[2,4,8]|[8,4,2]|[-6,0,6]|
 |[3,6,12]|[12,6,3]|[-9,0,9]|
+
+

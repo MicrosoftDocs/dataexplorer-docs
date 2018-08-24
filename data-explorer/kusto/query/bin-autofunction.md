@@ -23,8 +23,7 @@ will be translated into itself.
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 set query-bin-auto-size=1h;
 set query-bin-auto-at=datetime(2017-01-01 00:05);
 range Timestamp from datetime(2017-01-01 00:05) to datetime(2017-01-01 02:00) step 1m
@@ -35,3 +34,5 @@ range Timestamp from datetime(2017-01-01 00:05) to datetime(2017-01-01 02:00) st
 |-----------------------------|-------|
 |2017-01-01 00:05:00.0000000  | 60    |
 |2017-01-01 01:05:00.0000000  | 56    |
+
+

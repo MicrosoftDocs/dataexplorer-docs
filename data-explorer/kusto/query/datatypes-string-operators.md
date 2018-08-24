@@ -42,8 +42,7 @@ a symbol or an alphanumeric word bounded by non-alphanumeric characters or start
 `has` performs faster than `contains`, `startswith`, or `endswith`.
 The first of these queries runs faster:
 
-<!-- csl -->
-```
+```kusto
 EventLog | where continent has "North" | count;
 EventLog | where continent contains "nor" | count
 ```
@@ -87,6 +86,8 @@ a substring index defined on the column (which allows searching for any
 substring, not just a whole term, very quickly), at the cost of increased
 memory footprint of the index. Last, it is possible to disable building
 any index on a column.
+
+
 
 
 

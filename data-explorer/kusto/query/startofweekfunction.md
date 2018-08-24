@@ -19,8 +19,7 @@ A datetime representing the start of the week for the given *date* value, with t
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
   range offset from -1 to 1 step 1
  | project weekStart = startofweek(datetime(2017-01-01 10:10:17), offset) 
 ```
@@ -30,3 +29,5 @@ A datetime representing the start of the week for the given *date* value, with t
 |2016-12-25 00:00:00.0000000|
 |2017-01-01 00:00:00.0000000|
 |2017-01-08 00:00:00.0000000|
+
+

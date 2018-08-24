@@ -21,8 +21,7 @@ the month of November 2007, from that set it keeps only the records for which
 the value of the `State` column is the string `FLORIDA`, and then returns
 the number of the records in the "surviving" set.
 
-<!-- csl -->
-```
+```kusto
 StormEvents 
 | where StartTime >= datetime(2007-11-01) and StartTime < datetime(2007-12-01)
 | where State == "FLORIDA"  
@@ -35,3 +34,6 @@ In this case, the result will be:
 |Count|
 |-----|
 |   28|
+
+
+

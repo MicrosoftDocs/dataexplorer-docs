@@ -26,7 +26,8 @@ for all instantiations.
 
 All rows with a timestamp in the past hour:
 
-<!-- csl -->
-```
+```kusto
 T | where Timestamp > ago(1h)
 ```
+
+

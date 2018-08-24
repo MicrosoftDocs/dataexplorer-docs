@@ -22,11 +22,12 @@ A string array that contains the substrings of the given source string that are 
 
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 split("aa-bb", "_")           // ["aa","bb"]
 split("aaa-bbb-ccc", "_", 1)  // ["bbb"]
 split("", "_")                // [""]
 split("a-_b")                 // ["a","","b"]
 split("aabbcc", "bb")         // ["aa","cc"]
 ```
+
+

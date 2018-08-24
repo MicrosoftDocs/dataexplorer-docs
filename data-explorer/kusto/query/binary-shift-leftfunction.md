@@ -16,3 +16,5 @@ Returns binary shift left operation on a pair of numbers
 
 Returns binary shift left operation on a pair of numbers: num1 << (num2%64).
 If n is negative a NULL value is returned.
+
+

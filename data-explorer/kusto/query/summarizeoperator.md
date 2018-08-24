@@ -143,8 +143,7 @@ When the input of summarize operator that has at least one group-by key is empty
 
 When the input of summarize operator that doesn't have any group-by key is empty, then the result is the default values of the aggregates used in the summarize:
 
-<!-- csl -->
-```
+```kusto
 range x from 1 to 1 step 1
 | where 1 == 2
 | summarize any(x), argmax(x, x), argmin(x, x), avg(x), buildschema(todynamic(tostring(x))), max(x), min(x), percentile(x, 55), hll(x) ,stdev(x), sum(x), sumif(x, x > 0), tdigest(x), variance(x)
@@ -156,8 +155,7 @@ range x from 1 to 1 step 1
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |||||||||||||||||
 
-<!-- csl -->
-```
+```kusto
 range x from 1 to 1 step 1
 | where 1 == 2
 | summarize  count(x), countif(x > 0) , dcount(x), dcountif(x, x > 0)
@@ -167,8 +165,7 @@ range x from 1 to 1 step 1
 |---|---|---|---|
 |0|0|0|0|
 
-<!-- csl -->
-```
+```kusto
 range x from 1 to 1 step 1
 | where 1 == 2
 | summarize  makeset(x), makelist(x)
@@ -180,8 +177,7 @@ range x from 1 to 1 step 1
 
 The aggregate avg sums all the non-nulls and counts only those which participated in the calculation (will not take nulls into account).
 
-<!-- csl -->
-```
+```kusto
 range x from 1 to 2 step 1
 | extend y = iff(x == 1, real(null), real(5))
 | summarize sum(y), avg(y)
@@ -193,8 +189,7 @@ range x from 1 to 2 step 1
 
 The regular count will count nulls: 
 
-<!-- csl -->
-```
+```kusto
 range x from 1 to 2 step 1
 | extend y = iff(x == 1, real(null), real(5))
 | summarize count(y)
@@ -204,8 +199,7 @@ range x from 1 to 2 step 1
 |---|
 |2|
 
-<!-- csl -->
-```
+```kusto
 range x from 1 to 2 step 1
 | extend y = iff(x == 1, real(null), real(5))
 | summarize makeset(y), makeset(y)
@@ -214,3 +208,5 @@ range x from 1 to 2 step 1
 |set-y|set-y1|
 |---|---|
 |[5.0]|[5.0]|
+
+

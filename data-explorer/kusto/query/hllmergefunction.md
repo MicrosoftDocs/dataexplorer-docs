@@ -18,8 +18,7 @@ The result for merging the columns `*Exrp1*`, `*Expr2*`, ... `*ExprN*` to one hl
 
 **Examples**
 
-<!-- csl: https://help.kusto.windows.net:443/KustoMonitoringPersistentDatabase -->
-```
+```kusto
 range x from 1 to 10 step 1 
 | extend y = x + 10
 | summarize hll-x = hll(x), hll-y = hll(y)
@@ -30,3 +29,5 @@ range x from 1 to 10 step 1
 |dcount-hll-merged|
 |---|
 |20|
+
+

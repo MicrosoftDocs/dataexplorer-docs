@@ -16,8 +16,7 @@ tables to be displayed comfortably without the need of horizontal scrolling.
 The following example shows an easy way to read the output of the Kusto
 `.show diagnostics` control command.
 
-<!-- csl -->
-```
+```kusto
 .show diagnostics
  | evaluate narrow()
 ```
@@ -61,3 +60,5 @@ Row  | Column                              | Value
 0    | MaxExtentsInSingleTable             | 64
 0    | TableWithMaxExtents                 | KustoMonitoringPersistentDatabase.KustoMonitoringTable
 0    | WarmExtentSize                      | 1779165230
+
+

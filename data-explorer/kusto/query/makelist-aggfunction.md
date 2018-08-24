@@ -18,3 +18,5 @@ Returns a `dynamic` (JSON) array of all the values of *Expr* in the group.
 Returns a `dynamic` (JSON) array of all the values of *Expr* in the group.
 If the input to the `summarize` operator is not sorted, the order of elements in the resulting array is undefined.
 If the input to the `summarize` operator is sorted, the order of elements in the resulting array tracks that of the input.
+
+

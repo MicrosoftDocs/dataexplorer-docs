@@ -20,8 +20,7 @@ Replace all regex matches with another string.
 
 This statement:
 
-<!-- csl-->
-```
+```kusto
 range x from 1 to 5 step 1
 | extend str=strcat('Number is ', tostring(x))
 | extend replaced=replace(@'is (\d+)', @'was: \1', str)
@@ -37,3 +36,5 @@ Has the following results:
 | 4    | Number is 4.000000  | Number was: 4.000000|
 | 5    | Number is 5.000000  | Number was: 5.000000|
  
+
+

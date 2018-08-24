@@ -19,3 +19,5 @@ If conversion is successful, the result is a value of type `real`.
 If conversion is not successful, the result is the value `real(null)`.
 
 *Note*: Prefer using [double() or real()](./scalar-data-types/real.md) when possible.
+
+

@@ -25,8 +25,7 @@ type. A value of this type can be:
 The external representation of a `dynamic` value is JSON. A literal of type `dynamic`
 wraps the actual JSON representation of the value by `dynamic(` and `)`:
 
-<!-- csl -->
-```
+```kusto
 range x from 1 to 1 step 1
 | project o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})
 | extend a=o.a, b=o.b, c=o.c, d=o.d
@@ -38,8 +37,7 @@ literals, etc.) This extension over JSON is not available when parsing strings
 (such as when using the `parsejson` function or when ingesting data), but it
 allows one to do this:
 
-<!-- csl -->
-```
+```kusto
 print d=dynamic({"a": datetime(1970-05-11)})
 ```
 
@@ -62,8 +60,7 @@ The following example shows how one might define a table that holds a `dynamic` 
 a `datetime` column) and then ingest into it a single record. it also demonstrates how one
 can encode JSON strings in CSV files:
 
-<!-- csl -->
-```
+```kusto
 // dynamic is just like any other type:
 .create table Logs (Timestamp:datetime, Trace:dynamic)
 
@@ -165,4 +162,6 @@ arrays to hold aggregated values:
 |[`summarize makelist(`column`)` ](../makelist-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array.
 |[`summarize makeset(`column`)`](../makeset-aggfunction.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
 |[`summarize make-dictionary(`column`)`](../make-dictionary-aggfunction.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.
+
+
 

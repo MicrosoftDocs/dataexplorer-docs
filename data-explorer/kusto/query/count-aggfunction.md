@@ -13,3 +13,5 @@ summarize `count()`
 **Returns**
 
 Returns a count of the records per summarization group (or in total if summarization is done without grouping).
+
+

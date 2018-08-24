@@ -19,8 +19,7 @@ otherwise - returns the default value.
 If *columnName* exists, then the column it refers to. Otherwise - *defaultValue*.
 **Examples**
 
-<!-- csl -->
-```
+```kusto
 .create function with (docstring = "Wraps a table query that allows querying the table even if columnName doesn't exist ", folder="My Functions")
 ColumnOrDefault(tableName:string, columnName:string)
 {
@@ -30,3 +29,5 @@ ColumnOrDefault(tableName:string, columnName:string)
 
 ColumnOrDefault("StormEvents", "Captial")
 ```
+
+

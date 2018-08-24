@@ -16,8 +16,7 @@ An object of type `dynamic` that inculded the URL components as listed above.
 
 **Example**
 
-<!-- csl -->
-```
+```kusto
 T | extend Result = parse-url("scheme://username:password@host:1234/this/is/a/path?k1=v1&k2=v2#fragment")
 ```
 
@@ -35,3 +34,5 @@ will result
  	"Fragment":"fragment"
  }
 ```
+
+

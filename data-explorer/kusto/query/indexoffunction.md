@@ -24,8 +24,7 @@ Returns -1 if the string is not found in the input.
 In case of irrelevant (less than 0) *start-index* or *length* parameter - returns *null*.
 
 **Examples**
-<!-- csl -->
-```
+```kusto
 range x from 1 to 1 step 1
 | project idx1 = indexof("abcdefg","cde")    // lookup found in input string
 | extend idx2 = indexof("abcdefg","cde",1,4) // lookup found in researched range 
@@ -41,3 +40,5 @@ range x from 1 to 1 step 1
 
 
  
+
+

@@ -2,8 +2,7 @@
 
 Computes the p-value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s-t-test)
 
-<!-- csl -->
-```
+```kusto
 // s1, s2 values are from https://en.wikipedia.org/wiki/Welch%27s-t-test
 range r from 1 to 1 step 1
 | extend s1 = dynamic([27.5, 21.0, 19.0, 23.6, 17.0, 17.9, 16.9, 20.1, 21.9, 22.6, 23.1, 19.6, 19.0, 21.7, 21.4]),
@@ -41,3 +40,5 @@ as they are typically applied when the statistical units underlying the two samp
 being compared are non-overlapping. Given that Welch's t-test has been less popular than 
 Student's t-test and may be less familiar to readers, a more informative name is "Welch's 
 unequal variances t-test" or "unequal variances t-test" for brevity.
+
+

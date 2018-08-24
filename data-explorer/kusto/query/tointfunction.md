@@ -18,3 +18,5 @@ If conversion is successful, result will be a integer number.
 If conversion is not successful, result will be `null`.
  
 *Note*: Prefer using [int()](./scalar-data-types/int.md) when possible.
+
+

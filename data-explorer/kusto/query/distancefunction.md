@@ -20,7 +20,8 @@ The function has an accuracy of 0.5%.
 
 The following example returns `9113818.71527951`:
 
-<!-- csl -->
-```
+```kusto
 print distance(point(32.083770, 34.785037), point(40.730211, -74.000559))
 ```
+
+

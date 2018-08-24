@@ -76,8 +76,7 @@ For best performance:
 
 Get extended activities from a log in which some entries mark the start and end of an activity. 
 
-<!-- csl -->
-```
+```kusto
 let Events = MyLogTable | where type=="Event" ;
 Events
 | where Name == "Start"
@@ -89,8 +88,7 @@ Events
 | project City, ActivityId, StartTime, StopTime, Duration, StopTime, StartTime
 ```
 
-<!-- csl -->
-```
+```kusto
 let Events = MyLogTable | where type=="Event" ;
 Events
 | where Name == "Start"
@@ -162,8 +160,7 @@ the effective left side of the join (table X after de-duplication) would be:
 
 and the result of the join would be: 
 
-<!-- csl -->
-```
+```kusto
 let X = datatable(Key:string, Value1:long)
 [
     'a',1,
@@ -196,8 +193,7 @@ X | join Y on Key
 
 This is the standard inner join as known from the SQL world. Output record is produced whenever a record on the left side has the same join key as the record on the right side. 
  
-<!-- csl -->
-```
+```kusto
 let X = datatable(Key:string, Value1:long)
 [
     'a',1,
@@ -228,8 +224,7 @@ Note that (b,10) coming from the right side was joined twice: with both (b,2) an
 
 The result of a left outer join for tables X and Y always contains all records of the left table (X), even if the join condition does not find any matching record in the right table (Y). 
  
-<!-- csl -->
-```
+```kusto
 let X = datatable(Key:string, Value1:long)
 [
     'a',1,
@@ -260,8 +255,7 @@ X | join kind=leftouter Y on Key
 
 Resembles the left outer join, but the treatment of the tables is reversed. 
  
-<!-- csl -->
-```
+```kusto
 let X = datatable(Key:string, Value1:long)
 [
     'a',1,
@@ -292,8 +286,7 @@ X | join kind=rightouter Y on Key
 
 Conceptually, a full outer join combines the effect of applying both left and right outer joins. Where records in the joined tables do not match, the result set will have NULL values for every column of the table that lacks a matching row. For those records that do match, a single row will be produced in the result set (containing fields populated from both tables). 
  
-<!-- csl -->
-```
+```kusto
 let X = datatable(Key:string, Value1:long)
 [
     'a',1,
@@ -325,8 +318,7 @@ X | join kind=fullouter Y on Key
 
 Left anti join returns all records from the left side that do not match any record from the right side. 
  
-<!-- csl -->
-```
+```kusto
 let X = datatable(Key:string, Value1:long)
 [
     'a',1,
@@ -354,8 +346,7 @@ Anti-join models the "NOT IN" query.
 
 Right anti join returns all records from the right side that do not match any record from the left side. 
  
-<!-- csl -->
-```
+```kusto
 let X = datatable(Key:string, Value1:long)
 [
     'a',1,
@@ -383,8 +374,7 @@ Anti-join models the "NOT IN" query.
 
 Left semi join returns all records from the left side that match a record from the right side. Only columns from the left side are returned. 
 
-<!-- csl -->
-```
+```kusto
 let X = datatable(Key:string, Value1:long)
 [
     'a',1,
@@ -412,8 +402,7 @@ X | join kind=leftsemi Y on Key
 
 Right semi join returns all records from the right side that match a record from the left side. Only columns from the right side are returned. 
 
-<!-- csl -->
-```
+```kusto
 let X = datatable(Key:string, Value1:long)
 [
     'a',1,
@@ -449,4 +438,6 @@ It isn't difficult to simulate this, however, by coming up with a dummy key:
 
 The `join` operator supports a number of hints that control the way a query executes.
 These do not change the semantic of `join`, but may affect its performance.
+
+
 
