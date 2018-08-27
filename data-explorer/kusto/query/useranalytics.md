@@ -1,3 +1,13 @@
+---
+title: User Analytics (Azure Kusto)
+description: This article describes User Analytics in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # User Analytics
 
 This section describes Kusto extentions (plugins) for User Analytics scenarios.
@@ -28,5 +38,3 @@ This section describes Kusto extentions (plugins) for User Analytics scenarios.
 |Funnels: Previous and next state sequence analysis | [funnel-sequence](funnel-sequence-plugin.md)||
 |Funnels: Sequence completion analysis|[funnel-sequence-completion](funnel-sequence-completion-plugin.md)||
 ||||
-
-

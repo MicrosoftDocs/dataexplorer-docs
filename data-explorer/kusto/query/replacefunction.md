@@ -1,3 +1,13 @@
+---
+title: replace() (Azure Kusto)
+description: This article describes replace() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # replace()
 
 Replace all regex matches with another string.
@@ -36,5 +46,3 @@ Has the following results:
 | 4    | Number is 4.000000  | Number was: 4.000000|
 | 5    | Number is 5.000000  | Number was: 5.000000|
  
-
-

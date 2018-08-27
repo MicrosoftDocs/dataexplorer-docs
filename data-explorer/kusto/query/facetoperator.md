@@ -1,3 +1,13 @@
+---
+title: facet operator (Azure Kusto)
+description: This article describes facet operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # facet operator
 
 Returns a set of tables, one for each specified column.
@@ -24,6 +34,3 @@ MyTable
 | facet by city, eventType 
     with (where timestamp > ago(7d) | take 1000)
 ```
-
-
-

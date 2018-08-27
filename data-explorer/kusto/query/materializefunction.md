@@ -1,3 +1,13 @@
+---
+title: materialize() (Azure Kusto)
+description: This article describes materialize() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # materialize()
 
 Allows caching a sub-query result during the time of query execution in a way that other subqueries can reference the partial result.
@@ -137,5 +147,3 @@ union (subQuery | top 2 by count-| project Page ), (subQuery | top 2 by sum-Byte
 |Special:Search|
 |de|
 |ar|
-
-

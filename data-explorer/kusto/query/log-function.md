@@ -1,3 +1,13 @@
+---
+title: log() (Azure Kusto)
+description: This article describes log() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # log()
 
 Returns the natural logarithm function.  
@@ -16,5 +26,3 @@ Returns the natural logarithm function.
 * For common (base-10) logarithms, see [log10()](log10-function.md).
 * For base-2 logarithms, see [log2()](log2-function.md)
 * `null` if the argument is negative or null or cannot be converted to a `real` value. 
-
-

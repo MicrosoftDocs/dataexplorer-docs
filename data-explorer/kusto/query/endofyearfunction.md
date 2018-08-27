@@ -1,3 +1,13 @@
+---
+title: endofyear() (Azure Kusto)
+description: This article describes endofyear() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # endofyear()
 
 Returns the end of the year containing the date, shifted by an offset, if provided.
@@ -27,5 +37,3 @@ A datetime representing the end of the year for the given *date* value, with the
 |2016-12-31 23:59:59.9999999|
 |2017-12-31 23:59:59.9999999|
 |2018-12-31 23:59:59.9999999|
-
-

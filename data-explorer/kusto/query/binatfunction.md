@@ -1,3 +1,13 @@
+---
+title: bin-at() (Azure Kusto)
+description: This article describes bin-at() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # bin-at()
 
 Rounds values down to a fixed-size "bin", with control over the bin's starting point.
@@ -50,6 +60,3 @@ datetime(2018-02-26T15:14),5]
 |2018-02-23 15:14:00.0000000|4|
 |2018-02-24 15:14:00.0000000|3|
 |2018-02-26 15:14:00.0000000|5|
-
-
-

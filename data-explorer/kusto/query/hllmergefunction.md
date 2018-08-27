@@ -1,3 +1,13 @@
+---
+title: hll-merge() (Azure Kusto)
+description: This article describes hll-merge() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # hll-merge()
 
 Merges hll results (scalar version of the aggregate version [`hll-merge()`](hll-merge-aggfunction.md)).
@@ -29,5 +39,3 @@ range x from 1 to 10 step 1
 |dcount-hll-merged|
 |---|
 |20|
-
-

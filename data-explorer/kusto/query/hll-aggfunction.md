@@ -1,3 +1,13 @@
+---
+title: hll() (aggregation function) (Azure Kusto)
+description: This article describes hll() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # hll() (aggregation function)
 
 Calculates the Intermediate results of [dcount](dcount-aggfunction.md) across the group. 
@@ -44,6 +54,3 @@ StormEvents
 |2007-09-20 21:50:00.0000000|[[1024,14],[4835649640695509390],[]]|
 |2007-09-29 08:10:00.0000000|[[1024,14],[4246796580750024372],[]]|
 |2007-12-30 16:00:00.0000000|[[1024,14],[4246796580750024372,-8936707700542868125],[]]|
-
-
-

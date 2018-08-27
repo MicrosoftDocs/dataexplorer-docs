@@ -1,3 +1,13 @@
+---
+title: consume operator (Azure Kusto)
+description: This article describes consume operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # consume operator
 
 Pulls all the data from its source tabular expression without actually doing anything with it.
@@ -11,5 +21,3 @@ cost of a query without actually delivering the results back to the client.
 is calculated distributively, so `T | consume` will not even deliver the table's
 data between the nodes of the cluster.)
  
-
-

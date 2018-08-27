@@ -1,3 +1,13 @@
+---
+title: min-of() (Azure Kusto)
+description: This article describes min-of() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # min-of()
 
 Returns the minimum value of several evaluated numeric expressions.
@@ -28,5 +38,3 @@ print result=min-of(10, 1, -3, 17)
 |result|
 |---|
 |-3|
-
-

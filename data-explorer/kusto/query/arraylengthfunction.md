@@ -1,3 +1,13 @@
+---
+title: array-length() (Azure Kusto)
+description: This article describes array-length() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # array-length()
 
 Calculates the number of elements in a dynamic array.
@@ -29,5 +39,3 @@ print array-length(parsejson('{}')) == null
 
 print array-length(parsejson('21')) == null
 ```
-
-

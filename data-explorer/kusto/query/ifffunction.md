@@ -1,3 +1,13 @@
+---
+title: iff() (Azure Kusto)
+description: This article describes iff() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # iff()
 
 Evaluates the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to `true` (second) or `false` (third).
@@ -25,5 +35,3 @@ or the value of *ifFalse* otherwise.
 T 
 | extend day = iff(floor(Timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 ```
-
-

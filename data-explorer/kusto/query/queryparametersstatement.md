@@ -1,3 +1,13 @@
+---
+title: Query parameters declaration statement (Azure Kusto)
+description: This article describes Query parameters declaration statement in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Query parameters declaration statement
 
 Queries sent to Kusto may include, in addition to the query text itself,
@@ -84,5 +94,3 @@ print n=UserName, p=hash(Password)
 declare query-parameters(amount:long);
 T | where amountColumn == amount
 ```
-
-

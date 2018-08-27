@@ -1,3 +1,13 @@
+---
+title: series-stats-dynamic() (Azure Kusto)
+description: This article describes series-stats-dynamic() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-stats-dynamic()
 
 Returns statistics for a series in dynamic object.  
@@ -38,9 +48,6 @@ print x=dynamic([23,46,23,87,4,8,3,75,2,56,13,75,32,16,29])
   "stdev": 28.503633853548269,  
   "variance": 812.45714285714291  
 }
-
-
-
 
 
 

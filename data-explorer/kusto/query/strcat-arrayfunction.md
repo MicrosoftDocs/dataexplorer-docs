@@ -1,3 +1,13 @@
+---
+title: strcat-array() (Azure Kusto)
+description: This article describes strcat-array() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # strcat-array()
 
 Creates a concatenated string of array values using specified delimeter.
@@ -24,5 +34,3 @@ print str = strcat-array(dynamic([1, 2, 3]), "->")
 |str|
 |---|
 |1->2->3|
-
-

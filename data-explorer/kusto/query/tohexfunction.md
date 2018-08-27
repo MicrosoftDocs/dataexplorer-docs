@@ -1,3 +1,13 @@
+---
+title: tohex() (Azure Kusto)
+description: This article describes tohex() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # tohex()
 
 Converts input to a hexadecimal string.
@@ -21,5 +31,3 @@ Converts input to a hexadecimal string.
 
 If conversion is successful, result will be a string value.
 If conversion is not successful, result will be null.
-
-

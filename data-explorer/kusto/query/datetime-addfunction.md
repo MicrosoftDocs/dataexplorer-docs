@@ -1,3 +1,13 @@
+---
+title: datetime-add() (Azure Kusto)
+description: This article describes datetime-add() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # datetime-add()
 
 Calculates a new [datetime](./scalar-data-types/datetime.md) from a specified datepart multiplied by a specified amount, added to a specified [datetime](./scalar-data-types/datetime.md).
@@ -46,9 +56,6 @@ second = datetime-add('second',1,make-datetime(2017,1,1))
 |year|quarter|month|week|day|hour|minute|second|
 |---|---|---|---|---|---|---|---|
 |2018-01-01 00:00:00.0000000|2017-04-01 00:00:00.0000000|2017-02-01 00:00:00.0000000|2017-01-08 00:00:00.0000000|2017-01-02 00:00:00.0000000|2017-01-01 01:00:00.0000000|2017-01-01 00:01:00.0000000|2017-01-01 00:00:01.0000000|
-
-
-
 
 
 

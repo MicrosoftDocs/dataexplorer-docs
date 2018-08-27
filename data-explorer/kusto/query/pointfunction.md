@@ -1,3 +1,13 @@
+---
+title: point() (Azure Kusto)
+description: This article describes point() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # point()
 
 Returns a dynamic array representation of a point.
@@ -36,5 +46,3 @@ The following example returns `null`:
 ```kusto
 print point(91, 0)
 ```
-
-

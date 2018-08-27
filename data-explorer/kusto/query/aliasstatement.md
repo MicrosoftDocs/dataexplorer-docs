@@ -1,3 +1,13 @@
+---
+title: Alias statement (Azure Kusto)
+description: This article describes Alias statement in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Alias statement
 
 Alias statements allow to define alias for databases which can be used later in the same query.
@@ -25,5 +35,3 @@ database("wiki").PageViews | count
 alias database Logs = cluster("https://othercluster.kusto.windows.net:443").database("otherdatabase");
 database("Logs").Traces | count 
 ```
-
-

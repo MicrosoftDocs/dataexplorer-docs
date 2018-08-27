@@ -1,3 +1,13 @@
+---
+title: series-periods-validate() (Azure Kusto)
+description: This article describes series-periods-validate() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-periods-validate()
 
 Checks whether a time series contains periodic patterns of given lengths.  
@@ -28,7 +38,7 @@ The function outputs 2 columns:
 
 **Example**
 
-The following query embeds a snapshot of a month of an application’s traffic, aggregated twice a day (i.e. the bin size is 12 hours).
+The following query embeds a snapshot of a month of an applicationâ€™s traffic, aggregated twice a day (i.e. the bin size is 12 hours).
 
 ```kusto
 range x from 1 to 1 step 1
@@ -51,5 +61,3 @@ range x from 1 to 1 step 1
 | series\_periods\_validate\_y\_periods  | series\_periods\_validate\_y\_scores |
 |-------------|-------------------|
 | [14.0, 10.0] | [0.84,0.0]  |
-
-

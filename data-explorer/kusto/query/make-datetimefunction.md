@@ -1,3 +1,13 @@
+---
+title: make-datetime() (Azure Kusto)
+description: This article describes make-datetime() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # make-datetime()
 
 Creates a [datetime](./scalar-data-types/datetime.md) scalar value from the specified date and time.
@@ -56,7 +66,4 @@ print year-month-day-hour-minute-second = make-datetime(2017,10,01,12,11,0.12345
 |year-month-day-hour-minute-second|
 |---|
 |2017-10-01 12:11:00.1234567|
-
-
-
 

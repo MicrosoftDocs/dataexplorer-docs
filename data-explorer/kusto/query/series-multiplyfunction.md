@@ -1,3 +1,13 @@
+---
+title: series-multiply() (Azure Kusto)
+description: This article describes series-multiply() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-multiply()
 
 Calculates the element-wise multiplication of two numeric series inputs.
@@ -29,5 +39,3 @@ range x from 1 to 3 step 1
 |[1,2,4]	|[4,2,1]|	[4,4,4]|
 |[2,4,8]	|[8,4,2]|	[16,16,16]|
 |[3,6,12]	|[12,6,3]|	[36,36,36]|
-
-

@@ -1,3 +1,13 @@
+---
+title: make-dictionary() (aggregation function) (Azure Kusto)
+description: This article describes make-dictionary() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # make-dictionary() (aggregation function)
 
 Returns a `dynamic` (JSON) property-bag (dictionary) of all the values of *Expr* in the group.
@@ -6,7 +16,7 @@ Returns a `dynamic` (JSON) property-bag (dictionary) of all the values of *Expr*
 
 **Syntax**
 
-`summarize` `make-dictionary(`*Expr*` [`,` *MaxListSize*]`)`
+`summarize` `make-dictionary(`*Expr* [`,` *MaxListSize*]`)`
 
 **Arguments**
 
@@ -21,7 +31,7 @@ If a key appears in more than one row- an arbitrary value (out of the possible v
 
 **See also**
 
-See [bag-unpack()](/queryLanguage/bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys. 
+See [bag-unpack()](/query/bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys. 
 
 **Examples**
 
@@ -41,5 +51,3 @@ T
 |dict|
 |----|
 |{ "prop01": "val-a", "prop02": "val-b", "prop03": "val-c" } |
-
-

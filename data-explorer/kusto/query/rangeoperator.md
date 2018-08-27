@@ -1,3 +1,13 @@
+---
+title: range operator (Azure Kusto)
+description: This article describes range operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # range operator
 
 
@@ -60,5 +70,3 @@ range TIMESTAMP from ago(4h) to now() step 1m
 | project Count=iff(isnull(Count), 0, Count), TIMESTAMP
 | render timechart  
 ```
-
-

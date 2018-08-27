@@ -1,3 +1,13 @@
+---
+title: series-divide() (Azure Kusto)
+description: This article describes series-divide() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-divide()
 
 Calculates the element-wise division of two numeric series inputs.
@@ -31,5 +41,3 @@ range x from 1 to 3 step 1
 |[1,2,4]	|[4,2,1]|	[0.25,1.0,4.0]|
 |[2,4,8]	|[8,4,2]|	[0.25,1.0,4.0]|
 |[3,6,12]	|[12,6,3]|	[0.25,1.0,4.0]|
-
-

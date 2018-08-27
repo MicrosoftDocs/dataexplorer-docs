@@ -1,3 +1,13 @@
+---
+title: getschema operator  (Azure Kusto)
+description: This article describes getschema operator  in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # getschema operator 
 
 Produce a table that represents a tabular schema of the input.
@@ -23,6 +33,3 @@ StormEvents
 |Page|2|System.String|string|
 |Views|3|System.Int64|long
 |BytesDelivered|4|System.Int64|long
-
-
-

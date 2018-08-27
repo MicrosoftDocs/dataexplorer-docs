@@ -1,3 +1,13 @@
+---
+title: parse-user-agent() (Azure Kusto)
+description: This article describes parse-user-agent() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # parse-user-agent()
 
 Interprets a user-agent string, which identifies the user's browser and provides certain system details to servers hosting the websites the user visits. The result is returned as [`dynamic`](./scalar-data-types/dynamic.md). 
@@ -69,5 +79,3 @@ Expected result is a dynamic object:
     "Model": "N81-3"
   }
 }
-
-

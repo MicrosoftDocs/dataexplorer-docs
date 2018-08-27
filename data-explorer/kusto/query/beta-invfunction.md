@@ -1,3 +1,13 @@
+---
+title: beta-inv() (Azure Kusto)
+description: This article describes beta-inv() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # beta-inv()
 
 Returns the inverse of the beta cumulative probability beta density function.
@@ -26,9 +36,9 @@ The beta distribution can be used in project planning to model probable completi
 
 If any argument is nonnumeric, beta-inv() returns null value.
 
-If alpha ≤ 0 or beta ≤ 0, beta-inv() returns the null value.
+If alpha â‰¤ 0 or beta â‰¤ 0, beta-inv() returns the null value.
 
-If probability ≤ 0 or probability > 1, beta-inv() returns the NaN value.
+If probability â‰¤ 0 or probability > 1, beta-inv() returns the NaN value.
 
 Given a value for probability, beta-inv() seeks that value x such that beta-cdf(x, alpha, beta) = probability.
 
@@ -54,6 +64,3 @@ datatable(p:double, alpha:double, beta:double, comment:string)
 
 * For computing cumulative beta distribution function, see [beta-cdf()](./beta-cdffunction.md).
 * For computing probability beta density function, see [beta-pdf()](./beta-pdffunction.md).
-
-
-

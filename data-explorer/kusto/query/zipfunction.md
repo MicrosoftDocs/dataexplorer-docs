@@ -1,3 +1,13 @@
+---
+title: zip() (Azure Kusto)
+description: This article describes zip() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # zip()
 
 The `zip` function accepts any number of `dynamic` arrays, and returns an
@@ -33,5 +43,3 @@ datatable(a:int, b:string) [1,"one",2,"two",3,"three"]
 | summarize a = makelist(a), b = makelist(b)
 | project zip(a, b)
 ```
-
-

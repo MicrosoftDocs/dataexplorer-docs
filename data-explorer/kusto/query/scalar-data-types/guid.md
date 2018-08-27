@@ -1,3 +1,13 @@
+---
+title: The guid data type (Azure Kusto)
+description: This article describes The guid data type in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # The guid data type
 
 The `guid` (`uuid`, `uniqueid`) data type represents a 128-bit globally-unique
@@ -16,5 +26,3 @@ guid(74be27de-1e4e-49d9-b579-fe0b331d3642)
 ```
 
 The special form `guid(null)` represents the [null value](null-values.md).
-
-

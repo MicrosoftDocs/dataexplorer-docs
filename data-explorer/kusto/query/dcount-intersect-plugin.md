@@ -1,12 +1,22 @@
+---
+title: dcount-intersect plugin (Azure Kusto)
+description: This article describes dcount-intersect plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # dcount-intersect plugin
 
 Calculates intersection between N sets based on hll values (N in range of [2..16]), and returns N dcount values.
 
 Given sets S<sub>1</sub>, S<sub>2</sub>, .. S<sub>n</sub> - returns values will be representing distinct counts of:  
-S<sub>1</sub>, S<sub>1</sub> ∩ S<sub>2</sub>,  
-S<sub>1</sub> ∩ S<sub>2</sub> ∩ S<sub>3</sub>,  
+S<sub>1</sub>, S<sub>1</sub> âˆ© S<sub>2</sub>,  
+S<sub>1</sub> âˆ© S<sub>2</sub> âˆ© S<sub>3</sub>,  
 ... ,  
-S<sub>1</sub> ∩ S<sub>2</sub> ∩ ... ∩ S<sub>n</sub>
+S<sub>1</sub> âˆ© S<sub>2</sub> âˆ© ... âˆ© S<sub>n</sub>
 
     T | evaluate dcount-intersect(hll-1, hll-2, hll-3)
 
@@ -44,5 +54,3 @@ range x from 1 to 100 step 1
 |evenNumbers|even-and-mod3|even-and-mod3-and-mod5|
 |---|---|---|
 |50|16|3|
-
-

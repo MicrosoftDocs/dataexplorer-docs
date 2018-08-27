@@ -1,3 +1,13 @@
+---
+title: parse-path() (Azure Kusto)
+description: This article describes parse-path() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # parse-path()
 
 Parses a file path `string` and returns a [`dynamic`](./scalar-data-types/dynamic.md) object that contains the following parts of the path: 
@@ -79,6 +89,3 @@ datatable(p:string)
   "Extension": "txt",
   "AlternateDataStreamName": ""
 }|
-
-
-

@@ -1,3 +1,13 @@
+---
+title: todatetime() (Azure Kusto)
+description: This article describes todatetime() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # todatetime()
 
 Converts input to [datetime](./scalar-data-types/datetime.md) scalar.
@@ -18,5 +28,3 @@ If conversion is successful, result will be a [datetime](./scalar-data-types/dat
 If conversion is not successful, result will be null.
  
 *Note*: Prefer using [datetime()](./scalar-data-types/datetime.md) when possible.
-
-

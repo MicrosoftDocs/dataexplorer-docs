@@ -1,3 +1,13 @@
+---
+title: case() (Azure Kusto)
+description: This article describes case() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # case()
 
 Evaluates a list of predicates and returns the first result expression whose predicate is satisfied.
@@ -42,6 +52,3 @@ range Size from 1 to 15 step 2
 |11|Large|
 |13|Large|
 |15|Large|
-
-
-

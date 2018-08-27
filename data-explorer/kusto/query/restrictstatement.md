@@ -1,3 +1,13 @@
+---
+title: Restrict statement (Azure Kusto)
+description: This article describes Restrict statement in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Restrict statement
 
 The restrict statement limits the set of table/view entities visiblt to
@@ -127,5 +137,3 @@ let View2 = view () { Table2 | project Column1, Column2 };
 restrict access to (View1, View2);
 Table1 |  count
 ```
-
-

@@ -1,3 +1,13 @@
+---
+title: prev() (Azure Kusto)
+description: This article describes prev() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # prev()
 
 Returns the value of a column in a row that it at some offset prior to the
@@ -30,5 +40,3 @@ Table | serialize prevA = prev(A,1,10)
 | extend diff = A - prevA
 | where diff <= 10
 ```
-
-

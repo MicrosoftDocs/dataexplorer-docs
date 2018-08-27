@@ -1,3 +1,13 @@
+---
+title: activity-metrics plugin (Azure Kusto)
+description: This article describes activity-metrics plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # activity-metrics plugin
 
 Calculates useful activity metrics (distinct count values, distinct count of new values, retention rate, and churn rate) based on the current period window vs. previous period window.
@@ -168,6 +178,3 @@ range _day from _start to _end  step 1d
 |2017-05-29 00:00:00.0000000|960|756|
 
 ![](images/queries/activity-metrics-dcount-and-dcount-newvalues.png)
-
-
-

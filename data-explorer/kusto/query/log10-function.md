@@ -1,3 +1,13 @@
+---
+title: log10() (Azure Kusto)
+description: This article describes log10() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # log10()
 
 Retuns the comon (base-10) logarithm function.  
@@ -16,5 +26,3 @@ Retuns the comon (base-10) logarithm function.
 * For natural (base-e) logarithms, see [log()](log-function.md).
 * For base-2 logarithms, see [log2()](log2-function.md)
 * `null` if the argument is negative or null or cannot be converted to a `real` value. 
-
-

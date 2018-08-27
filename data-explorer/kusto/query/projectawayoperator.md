@@ -1,3 +1,13 @@
+---
+title: project-away operator (Azure Kusto)
+description: This article describes project-away operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # project-away operator
 
 Select what  columns to exclude from the input.
@@ -47,6 +57,3 @@ Traces
 | parse eventText with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previouLockTime:date ")" *  
 | project-away eventText
 ```
-
-
-

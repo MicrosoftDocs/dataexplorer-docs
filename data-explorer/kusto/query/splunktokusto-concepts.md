@@ -1,3 +1,13 @@
+---
+title: #Splunk to Kusto - Structure and concepts (Azure Kusto)
+description: This article describes #Splunk to Kusto - Structure and concepts in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 #Splunk to Kusto - Structure and concepts
 
  | Concept  | Splunk | Kusto |  Comment
@@ -12,5 +22,3 @@
  | Query and search  | search | query |  these are essentially the same
  | Admin commands | admin CLI  | admin commands |  in Kusto these are part of the language prefixed with a ".", in Splunk the user has to use config files and CLI,  in a very few cases the query language can be used for such commands, for example to delete rows
  | Event ingestion time | System Time | ingestion-time() |  In Splunk each event gets a system timestamp of the time that the event was indexed, In Kusto user can define a policy called ingestion-time that exposes a system column that can be referenced through the ingestion-time() function
-
-

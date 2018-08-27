@@ -1,3 +1,13 @@
+---
+title: dcountif() (aggregation function) (Azure Kusto)
+description: This article describes dcountif() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # dcountif() (aggregation function)
 
 Returns an estimate of the number of distinct values of *Expr* of rows for which *Predicate* evaluates to `true`. 
@@ -35,6 +45,3 @@ PageViewLog | summarize countries=dcountif(country, country startswith "United")
 
 `dcountif()` might result in a one-off error in the edge cases where all rows
 pass, or none of the rows pass, the `Predicate` expression
-
-
-

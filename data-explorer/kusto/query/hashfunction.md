@@ -1,3 +1,13 @@
+---
+title: hash() (Azure Kusto)
+description: This article describes hash() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # hash()
 
 Returns a hash value for the input value.
@@ -41,5 +51,3 @@ StormEvents
 | summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State 
 | top 5 by StormCount desc
 ```
-
-

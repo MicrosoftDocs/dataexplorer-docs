@@ -1,3 +1,13 @@
+---
+title: take operator (Azure Kusto)
+description: This article describes take operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # take operator
 
 Return up to the specified number of rows.
@@ -36,5 +46,3 @@ Kusto does not support the complementary `skip` operator. This is intentional, a
 performance impact on the service. Application builders that want to support result
 paging are advised to query for several pages of data (say, 10,000 records at a time)
 and then display a page of data at a time to the user.
-
-

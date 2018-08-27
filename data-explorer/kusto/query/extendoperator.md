@@ -1,3 +1,13 @@
+---
+title: extend operator (Azure Kusto)
+description: This article describes extend operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # extend operator
 
 Create calculated columns and append them to the result set.
@@ -29,9 +39,7 @@ A copy of the input tabular result set, such that:
   the same as an existing table column that has an index, Kusto can automatically
   use the existing index. However, in some complex scenarios this propagation is
   not currently done. In such cases, if the goal is to rename a column,
-  use the [`project` operator](projectoperator.md) instead. (Note that this transformation
-  will require you to list all other columns as well, so don't use it if there's
-  not perceived performance impact.)
+  use the [`project-rename` operator](projectrenameoperator.md) instead.
 
 **Example**
 
@@ -44,5 +52,3 @@ Logs
 ```
 
 See [series-stats](series-statsfunction.md) as an example of a function that returns multiple columns
-
-

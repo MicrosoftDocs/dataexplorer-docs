@@ -1,3 +1,13 @@
+---
+title: toguid() (Azure Kusto)
+description: This article describes toguid() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # toguid()
 
 Converts input to [`guid`](./scalar-data-types/guid.md) representation.
@@ -18,5 +28,3 @@ If conversion is successful, result will be a [`guid`](./scalar-data-types/guid.
 If conversion is not successful, result will be `null`.
 
 *Note*: Prefer using [guid()](./scalar-data-types/guid.md) when possible.
-
-

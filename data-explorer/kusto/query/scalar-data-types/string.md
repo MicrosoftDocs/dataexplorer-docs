@@ -1,3 +1,13 @@
+---
+title: The string data type (Azure Kusto)
+description: This article describes The string data type in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # The string data type
 
 The `string` data type represents a Unicode string. (Kusto strings are encoded in UTF-8 and by default are limited to 1MB.)
@@ -60,6 +70,3 @@ h'hello'
 h@'world' 
 h"hello"
 ```
-
-
-

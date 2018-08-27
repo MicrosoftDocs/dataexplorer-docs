@@ -1,3 +1,13 @@
+---
+title: The decimal data type (Azure Kusto)
+description: This article describes The decimal data type in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # The decimal data type
 
 The `decimal` data type represents a 128-bit wide, decimal number.
@@ -9,5 +19,3 @@ as .NET's `System.Data.SqlTypes.SqlDecimal`.
 
 There are several special literal forms:
 * `decimal(null)`: The is the [null value](null-values.md).
-
-

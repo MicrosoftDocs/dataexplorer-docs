@@ -1,3 +1,13 @@
+---
+title: join operator (Azure Kusto)
+description: This article describes join operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # join operator
 
 Merge the rows of two tables to form a new table by matching values of the specified column(s) from each table.
@@ -438,6 +448,3 @@ It isn't difficult to simulate this, however, by coming up with a dummy key:
 
 The `join` operator supports a number of hints that control the way a query executes.
 These do not change the semantic of `join`, but may affect its performance.
-
-
-

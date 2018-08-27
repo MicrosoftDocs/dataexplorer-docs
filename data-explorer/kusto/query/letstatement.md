@@ -1,3 +1,13 @@
+---
+title: Let statement (Azure Kusto)
+description: This article describes Let statement in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Let statement
 
 Let statements bind names to expressions. For the rest of the scope in which
@@ -165,5 +175,3 @@ on $left.Day1 == $right.Day
 |2016-05-01 00:00:00.0000000|2016-05-02 00:00:00.0000000|34.0645725975255|
 |2016-05-01 00:00:00.0000000|2016-05-03 00:00:00.0000000|16.618368960101|
 |2016-05-02 00:00:00.0000000|2016-05-03 00:00:00.0000000|14.6291376489636|
-
-

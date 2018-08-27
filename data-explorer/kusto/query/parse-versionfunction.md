@@ -1,3 +1,13 @@
+---
+title: parse-version() (Azure Kusto)
+description: This article describes parse-version() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # parse-version()
 
 Converts input string representation of version to a comparable decimal number.
@@ -67,9 +77,6 @@ dt | project v1=v, _key=1
 |99999999.0.0.0|1.2.3.4|99999999.0.0.0|
 |1.2.3.4|1|1.2.3.4|
 |99999999.0.0.0|1|99999999.0.0.0|
-
-
-
 
 
 

@@ -1,3 +1,13 @@
+---
+title: The long data type (Azure Kusto)
+description: This article describes The long data type in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # The long data type
 
 The `long` data type represents a signed, 64-bit wide, integer.
@@ -24,5 +34,3 @@ for the first two forms only. Thus, `123` is a literal of type `long`, as is
 function `-` applied to the literal `2` of type long).
  
 For converting long into hex string - see [tohex() function](../tohexfunction.md).
-
-

@@ -1,3 +1,13 @@
+---
+title: pattern statement (Azure Kusto)
+description: This article describes pattern statement in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # pattern statement
 
 A **pattern** is a named view-like construct that maps predefined
@@ -191,5 +201,3 @@ union (App('a2').Metrics), (App('a3').Metrics)
 Semantic error returned:
 
     SEM0036: One or more pattern references were not declared. Detected pattern references: ["App('a2').['Metrics']","App('a3').['Metrics']"].
-
-

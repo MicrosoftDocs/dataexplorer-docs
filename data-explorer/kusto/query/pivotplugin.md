@@ -1,3 +1,13 @@
+---
+title: pivot plugin (Azure Kusto)
+description: This article describes pivot plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # pivot plugin
 
 Rotates a table by turning the unique values from one column in the input table into multiple columns
@@ -111,6 +121,3 @@ StormEvents
 |Flash Flood|Newspaper|0|1|
 |Strong Wind|Law Enforcement|1|0|
 |Heat|Newspaper|3|0|
-
-
-

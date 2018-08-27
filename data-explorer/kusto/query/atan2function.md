@@ -1,3 +1,13 @@
+---
+title: atan2() (Azure Kusto)
+description: This article describes atan2() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # atan2()
 
 Calculates the angle, in radians, between the positive x-axis and the ray from the origin to the point (y, x).
@@ -27,5 +37,3 @@ print atan2-0 = atan2(1,1) // Pi / 4 radians (45 degrees)
 |atan2-0|atan2-1|atan2-2|
 |---|---|---|
 |0.785398163397448|3.14159265358979|-1.5707963267949|
-
-

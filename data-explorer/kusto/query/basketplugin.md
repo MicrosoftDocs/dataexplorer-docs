@@ -1,3 +1,13 @@
+---
+title: basket plugin (Azure Kusto)
+description: This article describes basket plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # basket plugin
 
     T | evaluate basket()
@@ -91,5 +101,3 @@ StormEvents
 
 
 Please send feedback and questions about basket to [KustoML](mailto:kustoML@microsoft.com). We'd love to hear from you!
-
-

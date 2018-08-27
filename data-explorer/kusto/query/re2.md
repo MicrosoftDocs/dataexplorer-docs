@@ -1,3 +1,13 @@
+---
+title: Regular expressions (Azure Kusto)
+description: This article describes Regular expressions in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Regular expressions
 
 There are a few functions in Kusto perform string matching, selection, and extraction
@@ -400,5 +410,3 @@ character.)
 |(*LF) |(NOT SUPPORTED) 
 |(*BSR-ANYCRLF) |set \R convention (NOT SUPPORTED) PCRE 
 |(*BSR-UNICODE) |(NOT SUPPORTED) PCRE 
-
-

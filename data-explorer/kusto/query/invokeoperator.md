@@ -1,3 +1,13 @@
+---
+title: invoke operator (Azure Kusto)
+description: This article describes invoke operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # invoke operator
 
 Invokes lambda that receives the source of `invoke` as tablular parameter argument.
@@ -44,6 +54,3 @@ range x from 1 to 100 step 1
 |avg-x|
 |---|
 |52|
-
-
-

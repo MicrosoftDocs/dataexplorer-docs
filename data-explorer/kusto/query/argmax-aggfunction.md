@@ -1,3 +1,13 @@
+---
+title: argmax() (aggregation function) (Azure Kusto)
+description: This article describes argmax() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # argmax() (aggregation function)
 
 Finds a row in the group that maximises *ExprToMaximize*, and returns the value of *ExprToReturn* (or `*` to return the entire row).
@@ -39,5 +49,3 @@ datatable(a:string, b:string, c:string, d:string) [...]
 | summarize argmax(a, *)
 | project B=max-a-b, C=max-a-c
 ```
-
-

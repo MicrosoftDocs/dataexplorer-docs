@@ -1,3 +1,13 @@
+---
+title: tostring() (Azure Kusto)
+description: This article describes tostring() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # tostring()
 
 Converts input to a string representation.
@@ -17,5 +27,3 @@ Converts input to a string representation.
 If *Expr* value is non-null result will be a string representation of *Expr*.
 If *Expr* value is null, result will be empty string.
  
-
-

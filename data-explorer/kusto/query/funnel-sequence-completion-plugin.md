@@ -1,3 +1,13 @@
+---
+title: funnel-sequence-completion plugin (Azure Kusto)
+description: This article describes funnel-sequence-completion plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # funnel-sequence-completion plugin
 
 Calculates funnel of completed sequence steps within comparing different time periods.
@@ -72,6 +82,3 @@ StormEvents
 Understanding the results:  
 The outcome it 3 funnels (for periods: 1 hour, 4 hours, and 1 day), while for each funnel step a number 
 of distinct count of EpisodeId is shown. You can see that the more time is given to complete the whole sequence of `Hail` -> `Tornado` -> `Thunderstorm Wind` the higher `dcount` value (meaning more occurences of the sequence reaching the step of the funnel).
-
-
-

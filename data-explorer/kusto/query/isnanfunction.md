@@ -1,3 +1,13 @@
+---
+title: isnan() (Azure Kusto)
+description: This article describes isnan() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # isnan()
 
 Returns whether input is Not-a-Number (NaN) value.  
@@ -34,5 +44,3 @@ range x from -1 to 1 step 1
 |-1|1|-1|0|
 |0|0|NaN|1|
 |1|-1|-1|0|
-
-

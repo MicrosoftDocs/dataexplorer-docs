@@ -1,3 +1,13 @@
+---
+title: iscolumnexists() (Azure Kusto)
+description: This article describes iscolumnexists() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # iscolumnexists()
 
 Returns a boolean value indicating if the given string argument exists in the schema produced by the preceding tabular operator.
@@ -25,5 +35,3 @@ DoesColumnExistInTable(tableName:string, columnName:string)
 
 DoesColumnExistInTable("StormEvents", "StartTime")
 ```
-
-

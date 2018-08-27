@@ -1,3 +1,13 @@
+---
+title: Query best practices  (Azure Kusto)
+description: This article describes Query best practices  in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Query best practices 
 
 There are several DOs and DONTs you can follow to make you query run faster.
@@ -22,5 +32,3 @@ materialize this column at ingestion time. This way - you will pay only once for
 -	If you find that you're applying conversions (JSON, string, etc) over 1B+ records - reshape your query to reduce amount of data fed into the conversion
 -	Don't use tolower(Col) == "lowercasestring" to do case insensitive comparisons. Kusto has an operator for that. Please use Col =~ "lowercasestring" instead.
 -   Don't filter on a calculated column, if you can filter on a table column. In other words: Don't do this `T | extend _value = <expression> | where predicate(_value)`, instead do: `T | where predicate(expression(_value))`
-
-

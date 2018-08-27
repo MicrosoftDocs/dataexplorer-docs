@@ -1,3 +1,13 @@
+---
+title: ago() (Azure Kusto)
+description: This article describes ago() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # ago()
 
 Subtracts the given timespan from the current UTC clock time.
@@ -29,5 +39,3 @@ All rows with a timestamp in the past hour:
 ```kusto
 T | where Timestamp > ago(1h)
 ```
-
-

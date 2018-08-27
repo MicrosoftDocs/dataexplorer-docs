@@ -1,3 +1,13 @@
+---
+title: range() (Azure Kusto)
+description: This article describes range() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # range()
 
 Generates a dynamic array holding a series of equally-spaced values.
@@ -41,5 +51,3 @@ The follwing example returns `["01:00:00","02:00:00","03:00:00","04:00:00","05:0
 ```
 range(1h, 5h)
 ```
-
-

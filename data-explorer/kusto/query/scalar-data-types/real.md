@@ -1,3 +1,13 @@
+---
+title: The real data type (Azure Kusto)
+description: This article describes The real data type in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # The real data type
 
 The `real` data type represents a 64-bit wide, double-precision, floating-point number.
@@ -11,5 +21,3 @@ There are several special literal forms:
 * `real(nan)`: Not-a-Number (NaN). For example, the result of dividing a `0.0` by another `0.0`.
 * `real(+inf)`: Positive infinity. For example, the result of dividing `1.0` by `0.0`.
 * `real(-inf)`: Negative infinity. For example, the result of dividing `-1.0` by `0.0`.
-
-

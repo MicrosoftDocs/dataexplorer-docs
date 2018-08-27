@@ -1,3 +1,13 @@
+---
+title: extract() (Azure Kusto)
+description: This article describes extract() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # extract()
 
 Get a match for a [regular expression](./re2.md) from a text string. 
@@ -40,5 +50,3 @@ This example is equivalent to `substring(Text, 2, 4)`:
 ```kusto
 extract("^.{2,2}(.{4,4})", 1, Text)
 ```
-
-

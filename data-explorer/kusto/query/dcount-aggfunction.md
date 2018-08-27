@@ -1,3 +1,13 @@
+---
+title: dcount() (aggregation function) (Azure Kusto)
+description: This article describes dcount() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # dcount() (aggregation function)
 
 Returns an estimate of the number of distinct values of *Expr* in the group. 
@@ -65,5 +75,3 @@ The following depicts probability distribution function of relative estimation e
 
 
  
-
-

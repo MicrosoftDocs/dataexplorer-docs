@@ -1,3 +1,13 @@
+---
+title: funnel-sequence plugin (Azure Kusto)
+description: This article describes funnel-sequence plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # funnel-sequence plugin
 
 Calculates distinct count of users who've taken a sequence of states, and the distribution of previous/next states that have led to / were followed by the sequence. 
@@ -164,5 +174,3 @@ can conclude that sequence `Hail` -> `Tornado` -> `Thunderstorm Wind` in 92 even
 |2007-01-01 00:00:00.0000000|Lightning|2|
 |2007-01-01 00:00:00.0000000|Heavy Rain|1|
 |2007-01-01 00:00:00.0000000|Flood|1|
-
-

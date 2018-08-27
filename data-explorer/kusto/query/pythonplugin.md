@@ -1,3 +1,13 @@
+---
+title: python plugin (preview) (Azure Kusto)
+description: This article describes python plugin (preview) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # python plugin (preview)
 
 Runs an arbitrary Python script to process the input tabular data source and produce an output tabular data source.
@@ -50,7 +60,7 @@ In the Python code, the following symbols are reserved and hold a special meanin
 **Notes**
 
 * The plugin is disabled by default; to enable it please contact [Kusto Ops](http://aka.ms/kustosupport).
-* For the duration of the preview, the Python service endpoint is on [AML Studio](https://services.azureml.net/quickstart),
+  * For the duration of the preview, the Python service endpoint is on [AML Studio](https://services.azureml.net/quickstart),
   with resources being shared between all Kusto users regardless of the Kusto
   cluster they are using. Consequently, you should avoid overloading it with long-running Pythong
   scripts. It is recommended that the input to the Python script be kept
@@ -99,5 +109,3 @@ range x from 1 to 360 step 1
 
 Please send feedback and questions about this plugin to [Kusto Machine Learning](mailto:kustoML@microsoft.com).
 We'd love to hear from you!
-
-

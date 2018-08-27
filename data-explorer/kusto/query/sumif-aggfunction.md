@@ -1,3 +1,13 @@
+---
+title: sumif() (aggregation function) (Azure Kusto)
+description: This article describes sumif() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # sumif() (aggregation function)
 
 Returns a sum of *Expr* for which *Predicate* evaluates to `true`.
@@ -22,5 +32,3 @@ The sum value of *Expr* for which *Predicate* evaluates to `true`.
 **Tip**
 
 Use `summarize sumif(expr, filter)` instead of `where filter | summarize sum(expr)`
-
-

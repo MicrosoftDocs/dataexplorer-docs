@@ -1,3 +1,13 @@
+---
+title: isinf() (Azure Kusto)
+description: This article describes isinf() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # isinf()
 
 Returns whether input is an infinite (positive or negative) value.  
@@ -31,9 +41,6 @@ range x from -1 to 1 step 1
 
 |x|y|div|isinf|
 |---|---|---|---|
-|-1|0|-∞|1|
+|-1|0|-âˆž|1|
 |0|0|NaN|0|
-|1|0|∞|1|
-
-
-
+|1|0|âˆž|1|

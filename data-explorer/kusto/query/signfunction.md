@@ -1,3 +1,13 @@
+---
+title: sign() (Azure Kusto)
+description: This article describes sign() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # sign()
 
 Sign of a numeric expression
@@ -24,7 +34,4 @@ print s1 = sign(-42), s2 = sign(0), s3 = sign(11.2)
 |s1|s2|s3|
 |---|---|---|
 |-1|0|1|
-
-
-
 

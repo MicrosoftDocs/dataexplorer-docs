@@ -1,3 +1,13 @@
+---
+title: autocluster plugin (Azure Kusto)
+description: This article describes autocluster plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # autocluster plugin
 
     T | evaluate autocluster()
@@ -91,5 +101,3 @@ StormEvents
 * AutoCluster is largely based on the Seed-Expand algorithm from the following paper: [Algorithms for Telemetry Data Mining using Discrete Attributes](http://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=d5kcrO+cpEU=&t=1). 
 
 Please send feedback and questions about autocluster to [KustoML](mailto:kustoML@microsoft.com). We'd love to hear from you!
-
-

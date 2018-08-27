@@ -1,3 +1,13 @@
+---
+title: percentrank-tdigest() (Azure Kusto)
+description: This article describes percentrank-tdigest() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # percentrank-tdigest()
 
 Calculates the approximate rank of the value in a set where rank is expressed as percentage of set's size. 
@@ -50,7 +60,4 @@ StormEvents
 |percentile-tdigest-tdigestRes|
 |---|
 |4490|
-
-
-
 

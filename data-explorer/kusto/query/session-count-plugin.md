@@ -1,3 +1,13 @@
+---
+title: session-count plugin (Azure Kusto)
+description: This article describes session-count plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # session-count plugin
 
 Calculates sessions count based on ID column over a timeline.
@@ -95,5 +105,3 @@ _data
 ```
 
 ![](./images/queries/example-session-count.png)
-
-

@@ -1,3 +1,13 @@
+---
+title: substring() (Azure Kusto)
+description: This article describes substring() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # substring()
 
 Extracts a substring from a source string starting from some index to the end of the string.
@@ -27,5 +37,3 @@ substring("123456", 1)        // 23456
 substring("123456", 2, 2)     // 34
 substring("ABCD", 0, 2)       // AB
 ```
-
-

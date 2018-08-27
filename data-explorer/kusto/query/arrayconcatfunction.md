@@ -1,3 +1,13 @@
+---
+title: array-concat() (Azure Kusto)
+description: This article describes array-concat() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # array-concat()
 
 Concatenates a number of dynamic arrays to a single array.
@@ -29,5 +39,3 @@ range x from 1 to 3 step 1
 |[1,2,4,1,2]|
 |[2,4,8,2,4]|
 |[3,6,12,3,6]|
-
-

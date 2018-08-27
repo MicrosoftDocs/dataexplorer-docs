@@ -1,3 +1,13 @@
+---
+title: reduce operator (Azure Kusto)
+description: This article describes reduce operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # reduce operator
 
 The `reduce` operator groups a set of `string` values together based on similarity.
@@ -79,5 +89,3 @@ Trace | take 10000
 **Notes**
 
 The implementation of `reduce` operator is largely based on the paper [A Data Clustering Algorithm for Mining Patterns From Event Logs](http://ristov.github.io/publications/slct-ipom03-web.pdf), by Risto Vaarandi.
-
-

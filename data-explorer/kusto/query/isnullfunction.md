@@ -1,3 +1,13 @@
+---
+title: isnull() (Azure Kusto)
+description: This article describes isnull() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # isnull()
 
 Evaluates its sole argument and returns a `bool` value indicating if the argument evaluates to a null value.
@@ -30,5 +40,3 @@ True or false depending on the whether the value is null or not null.
 ```kusto
 T | where isnull(PossiblyNull) | count
 ```
-
-

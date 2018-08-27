@@ -1,3 +1,13 @@
+---
+title: Joining within time window (Azure Kusto)
+description: This article describes Joining within time window in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Joining within time window
 
 It is often useful to join between two large data sets on some high-cardinality key
@@ -182,6 +192,3 @@ T
 |Count|
 |---|
 |1276|
-
-
-

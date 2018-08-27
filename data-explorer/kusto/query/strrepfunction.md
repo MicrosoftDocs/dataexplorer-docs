@@ -1,3 +1,13 @@
+---
+title: strrep() (Azure Kusto)
+description: This article describes strrep() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # strrep()
 
 Repeates given [string](./scalar-data-types/string.md) provided amount of times.
@@ -29,5 +39,3 @@ print from-str = strrep('ABC', 2), from-int = strrep(123,3,'.'), from-time = str
 |from-str|from-int|from-time|
 |---|---|---|
 |ABCABC|123.123.123|00:00:03 00:00:03|
-
-

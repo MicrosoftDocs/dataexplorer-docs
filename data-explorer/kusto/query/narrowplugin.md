@@ -1,3 +1,13 @@
+---
+title: narrow plugin (Azure Kusto)
+description: This article describes narrow plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # narrow plugin
 
     T | evaluate narrow()
@@ -60,5 +70,3 @@ Row  | Column                              | Value
 0    | MaxExtentsInSingleTable             | 64
 0    | TableWithMaxExtents                 | KustoMonitoringPersistentDatabase.KustoMonitoringTable
 0    | WarmExtentSize                      | 1779165230
-
-

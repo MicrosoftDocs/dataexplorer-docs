@@ -1,3 +1,13 @@
+---
+title: series-subtract() (Azure Kusto)
+description: This article describes series-subtract() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-subtract()
 
 Calculates the element-wise subtraction of two numeric series inputs.
@@ -29,5 +39,3 @@ range x from 1 to 3 step 1
 |[1,2,4]|[4,2,1]|[-3,0,3]|
 |[2,4,8]|[8,4,2]|[-6,0,6]|
 |[3,6,12]|[12,6,3]|[-9,0,9]|
-
-

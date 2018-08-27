@@ -1,3 +1,13 @@
+---
+title: #Splunk to Kusto - Operators   (Azure Kusto)
+description: This article describes #Splunk to Kusto - Operators   in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 #Splunk to Kusto - Operators  
 
 Note: *For the purpose of this document the splunk field 'rule' maps to a table in kusto and the ingestion-time() column maps to Splunk default timestamp*
@@ -70,5 +80,3 @@ comment: In Kusto only the first column is exposed in Kusto Explorer, you can ge
 Splunk:  **dedup** `Event.Rule=330009.2 | dedup device-id sortby -batterylife`     
 Kusto:  **summarize arg-max()** `Office-Excel-BI-PivotTableCreate | summarize arg-max(batterylife, *) by device-id`  
 comment: to reverse the order of which record gets chosen, one can use **summarize arg-min()** instead.
-
-

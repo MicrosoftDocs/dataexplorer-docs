@@ -1,3 +1,13 @@
+---
+title: activity-engagement plugin (Azure Kusto)
+description: This article describes activity-engagement plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # activity-engagement plugin
 
 Calculates activity engagement ratio based on ID column over a sliding timeline window.
@@ -97,6 +107,3 @@ range _day from _start to _end  step 1d
 ```
 
 ![](./images/queries/activity-engagement-dau-mau-mod3.png)
-
-
-

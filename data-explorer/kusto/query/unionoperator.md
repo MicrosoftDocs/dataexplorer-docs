@@ -1,3 +1,13 @@
+---
+title: union operator (Azure Kusto)
+description: This article describes union operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # union operator
 
 Takes two or more tables and returns the rows of all of them. 
@@ -108,6 +118,3 @@ union isfuzzy=true View*, SomeView*, OtherView*
 
 Observing Query Status - the following warning returned:
 `Failed to resolve entity 'SomeView*'`
-
-
-

@@ -1,3 +1,13 @@
+---
+title: Null Values (Azure Kusto)
+description: This article describes Null Values in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Null Values
 
 All scalar data types in Kusto have a special value that represents a missing value.
@@ -59,5 +69,3 @@ Then:
 
 > Kusto does not offer a way to constrain a table's column from having null
   values (in other words, there's no equivalent to SQL's `NOT NULL` constraint).
-
-

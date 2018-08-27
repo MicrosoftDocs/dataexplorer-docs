@@ -1,3 +1,13 @@
+---
+title: Query statements (Azure Kusto)
+description: This article describes Query statements in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Query statements
 
 A data query is a composition of one or more *statements*, delimited
@@ -17,5 +27,3 @@ Notes:
 not extend beyond that; queries cannot make any durable change to the system.
 
 * Multiple tabular expression statements represent a [batch](batches.md) of queries.
-
-

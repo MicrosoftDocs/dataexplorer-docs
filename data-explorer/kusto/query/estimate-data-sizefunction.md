@@ -1,3 +1,13 @@
+---
+title: estimate-data-size() (Azure Kusto)
+description: This article describes estimate-data-size() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # estimate-data-size()
 
 Returns an estimated data size of the selected columns of the tabular expression.
@@ -32,5 +42,3 @@ range x from 1 to 10 step 1                    // x (long) is 8
 |Total|
 |---|
 |180|
-
-

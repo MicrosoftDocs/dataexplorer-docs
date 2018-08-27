@@ -1,3 +1,13 @@
+---
+title: binary-and() (Azure Kusto)
+description: This article describes binary-and() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # binary-and()
 
 Returns a result of the bitwise `and` operation between two values
@@ -15,5 +25,3 @@ Returns a result of the bitwise `and` operation between two values
 **Returns**
 
 Returns logical AND operation on a pair of numbers: num1 & num2.
-
-

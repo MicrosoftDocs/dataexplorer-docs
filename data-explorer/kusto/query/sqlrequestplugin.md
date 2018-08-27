@@ -1,3 +1,13 @@
+---
+title: sql-request plugin (Azure Kusto)
+description: This article describes sql-request plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # sql-request plugin
 
   `evaluate` `sql-request` `(` *ConnectionString* `,` *SqlQuery* `)`
@@ -85,5 +95,3 @@ certificate.
 **Restrictions**
 
 Kusto service controls allowed sql-request plugin destinations by [Callout policy](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_calloutpolicy.html)
-
-

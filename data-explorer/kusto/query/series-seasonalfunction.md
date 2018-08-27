@@ -1,3 +1,13 @@
+---
+title: series-seasonal() (Azure Kusto)
+description: This article describes series-seasonal() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-seasonal()
 
 Calculates the seasonal component of a series inputs according to the given seasonal period.
@@ -31,5 +41,3 @@ print s=dynamic([1,3,5,1,3,5,2,4,6])
 |---|---|
 |[1,3,5,1,3,5,2,4,6]|[1.0,3.0,5.0,1.0,3.0,5.0,1.0,3.0,5.0]|
 |[1,3,5,2,4,6,1,3,5,2,4,6]|[1.5,3.5,5.5,1.5,3.5,5.5,1.5,3.5,5.5,1.5,3.5,5.5]|
-
-

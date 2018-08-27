@@ -1,3 +1,13 @@
+---
+title: welch-test() (Azure Kusto)
+description: This article describes welch-test() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # welch-test()
 
 Computes the p-value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s-t-test)
@@ -40,5 +50,3 @@ as they are typically applied when the statistical units underlying the two samp
 being compared are non-overlapping. Given that Welch's t-test has been less popular than 
 Student's t-test and may be less familiar to readers, a more informative name is "Welch's 
 unequal variances t-test" or "unequal variances t-test" for brevity.
-
-

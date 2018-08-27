@@ -1,3 +1,13 @@
+---
+title: gettype() (Azure Kusto)
+description: This article describes gettype() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # gettype()
 
 Returns the runtime type of its single argument.
@@ -30,5 +40,3 @@ A string representing the runtime type of its single argument.
 |`gettype(123.45)`                   |`real`       |
 |`gettype(guid(12e8b78d-55b4-46ae-b068-26d7a0080254))`|`guid`| 
 |`gettype(parsejson(''))`            |`null`|
-
-

@@ -1,3 +1,13 @@
+---
+title: table() (scope function) (Azure Kusto)
+description: This article describes table() (scope function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # table() (scope function)
 
 References specific table using an query-time evaluated string-expression. 
@@ -82,5 +92,3 @@ _choose('T2')
 |x|
 |---|
 |2|
-
-

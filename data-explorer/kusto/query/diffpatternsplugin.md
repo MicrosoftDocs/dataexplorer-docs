@@ -1,3 +1,13 @@
+---
+title: diffpatterns plugin (Azure Kusto)
+description: This article describes diffpatterns plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # diffpatterns plugin
 
     T | evaluate diffpatterns(splitColumn)
@@ -27,19 +37,19 @@ When you find an interesting row, you might want to drill into it further by add
 
 **Required Arguments**
 
-`T | evaluate diffpatterns(`SplitColumn, SplitValueA, SplitValueB [, WeightColumn, Threshold, MaxDimensions, CustomWildcard, ...]`)` 
+`T | evaluate diffpatterns(`SplitColumn, SplitValueA, SplitValueB [,Â WeightColumn,Â Threshold, MaxDimensions,Â CustomWildcard, ...]`)` 
 
 * SplitColumn - *column-name*
 
-    Tells the algorithm how to split the query into data sets. According to the specified values for the SplitValueA and SplitValueB arguments (see below), the algorithm splits the query into two data sets, “A” and “B”, and analyze the differences between them. As such, the split column must have at least two distinct values.
+    Tells the algorithm how to split the query into data sets. According to the specified values for the SplitValueA and SplitValueB arguments (see below), the algorithm splits the query into two data sets, â€œAâ€ and â€œBâ€, and analyze the differences between them. As such, the split column must have at least two distinct values.
 
 * SplitValueA - *string*
 
-    A string representation of one of the values in the SplitColumn that was specified. All the rows which have this value in their SplitColumn considered as data set “A”.
+    A string representation of one of the values in the SplitColumn that was specified. All the rows which have this value in their SplitColumn considered as data set â€œAâ€.
 
 * SplitValueB - *string*
 
-    A string representation of one of the values in the SplitColumn that was specified. All the rows which have this value in their SplitColumn considered as data set  “B”.
+    A string representation of one of the values in the SplitColumn that was specified. All the rows which have this value in their SplitColumn considered as data set  â€œBâ€.
 
     Example: `T | extend splitColumn=iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure") `
 
@@ -97,6 +107,3 @@ StormEvents
 
 
 Please send feedback and questions about diffpatterns to [KustoML](mailto:kustoML@microsoft.com). We'd love to hear from you!
-
-
-

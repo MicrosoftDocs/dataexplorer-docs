@@ -1,3 +1,13 @@
+---
+title: bag-unpack plugin (Azure Kusto)
+description: This article describes bag-unpack plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # bag-unpack plugin
 
 Unpacks dynamic column into several columns according to the first level of the dynamic column schema.
@@ -42,5 +52,3 @@ datatable(d:dynamic)
 |John|20|
 |Dave|40|
 |Smitha|30|
-
-

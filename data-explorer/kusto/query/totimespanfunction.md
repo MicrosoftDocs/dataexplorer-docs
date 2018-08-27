@@ -1,3 +1,13 @@
+---
+title: totimespan() (Azure Kusto)
+description: This article describes totimespan() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # totimespan()
 
 Converts input  to [timespan](./scalar-data-types/timespan.md) scalar.
@@ -17,5 +27,3 @@ Converts input  to [timespan](./scalar-data-types/timespan.md) scalar.
 If conversion is successful, result will be a [timespan](./scalar-data-types/timespan.md) value.
 If conversion is not successful, result will be null.
  
-
-

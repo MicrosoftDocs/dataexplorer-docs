@@ -1,3 +1,13 @@
+---
+title: series-stats() (Azure Kusto)
+description: This article describes series-stats() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-stats()
 
 Returns statistics for a series in multiple columns.  
@@ -36,6 +46,3 @@ print x=dynamic([23,46,23,87,4,8,3,75,2,56,13,75,32,16,29])
 |series-stats-x-min|series-stats-x-min-idx|series-stats-x-max|series-stats-x-max-idx|series-stats-x-avg|series-stats-x-stdev|series-stats-x-variance|
 |---|---|---|---|---|---|---|
 |2|8|87|3|32.8|28.5036338535483|812.457142857143|
-
-
-

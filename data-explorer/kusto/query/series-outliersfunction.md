@@ -1,3 +1,13 @@
+---
+title: series-outliers() (Azure Kusto)
+description: This article describes series-outliers() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-outliers()
 
 Scores anomaly points in a series.
@@ -45,5 +55,3 @@ range x from 1 to 100 step 1
 ``` 
 
 ![](./Images/samples/series-outliers.png)
-
-

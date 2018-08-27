@@ -1,3 +1,13 @@
+---
+title: dayofweek() (Azure Kusto)
+description: This article describes dayofweek() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # dayofweek()
 
 Returns the integer number of days since the preceding Sunday, as a `timespan`.
@@ -23,5 +33,3 @@ The `timespan` since midnight at the beginning of the preceding Sunday, rounded 
 dayofweek(1947-11-29 10:00:05)  // time(6.00:00:00), indicating Saturday
 dayofweek(1970-05-11)           // time(1.00:00:00), indicating Monday
 ```
-
-

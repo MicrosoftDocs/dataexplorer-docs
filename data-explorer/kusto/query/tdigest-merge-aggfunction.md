@@ -1,3 +1,13 @@
+---
+title: tdigest-merge() (aggregation function) (Azure Kusto)
+description: This article describes tdigest-merge() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # tdigest-merge() (aggregation function)
 
 Merges tdigest results across the group. 
@@ -24,5 +34,3 @@ The merged tdigest values of *Expr* across the group.
 1) You may use the function [`percentile-tdigest()`] (percentile-tdigestfunction.md).
 
 2) All tdigests that are included in the same group must be of the same type.
-
-

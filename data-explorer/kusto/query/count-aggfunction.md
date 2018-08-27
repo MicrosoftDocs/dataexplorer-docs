@@ -1,3 +1,13 @@
+---
+title: count() (aggregation function) (Azure Kusto)
+description: This article describes count() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # count() (aggregation function)
 
 Returns a count of the records per summarization group (or in total if summarization is done without grouping).
@@ -13,5 +23,3 @@ summarize `count()`
 **Returns**
 
 Returns a count of the records per summarization group (or in total if summarization is done without grouping).
-
-

@@ -1,3 +1,13 @@
+---
+title: trim() (Azure Kusto)
+description: This article describes trim() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # trim()
 
 Removes all leading and trailing matches of the specified regular expression.
@@ -48,5 +58,3 @@ range x from 1 to 5 step 1
 
 
  
-
-

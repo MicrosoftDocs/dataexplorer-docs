@@ -1,3 +1,13 @@
+---
+title: url-encode() (Azure Kusto)
+description: This article describes url-encode() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # url-encode()
 
 The function converts characters of the input URL into a format that can be transmitted over the Internet. 
@@ -29,5 +39,3 @@ print original = url, encoded = url-encode(url)
 
 
  
-
-

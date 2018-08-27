@@ -1,3 +1,13 @@
+---
+title: series-fill-const() (Azure Kusto)
+description: This article describes series-fill-const() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-fill-const()
 
 Replaces missing values in a series with a specified constant value.
@@ -47,5 +57,3 @@ data
 |arr|fill-const1|fill-const2|
 |---|---|---|
 |[111,null,36,41,23,null,16,61,33,null,null]|[111,0.0,36,41,23,0.0,16,61,33,0.0,0.0]|[111,-1,36,41,23,-1,16,61,33,-1,-1]|
-
-

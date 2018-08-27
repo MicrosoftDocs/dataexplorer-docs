@@ -1,3 +1,13 @@
+---
+title: order operator  (Azure Kusto)
+description: This article describes order operator  in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # order operator 
 
 Sort the rows of the input table into order by one or more columns.
@@ -36,5 +46,3 @@ Traces
 | where ActivityId == "479671d99b7b" and isnotnull(Timestamp)
 | sort by Timestamp asc
 ```
-
-

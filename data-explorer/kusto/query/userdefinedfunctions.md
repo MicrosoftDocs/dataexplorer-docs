@@ -1,3 +1,13 @@
+---
+title: User-Defined Functions (Azure Kusto)
+description: This article describes User-Defined Functions in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # User-Defined Functions
 
 Kusto supports user-defined functions, which can be defined as either a part of
@@ -318,5 +328,3 @@ for user-defined functions that are currently not supported:
    The default value for a scalar parameter to a function must be
    a scalar literal (constant). Furthermore, stored functions cannot
    have a default value of type `dynamic`.
-
-

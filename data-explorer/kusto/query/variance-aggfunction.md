@@ -1,3 +1,13 @@
+---
+title: variance() (aggregation function) (Azure Kusto)
+description: This article describes variance() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # variance() (aggregation function)
 
 Calculates the variance of *Expr* across the group, considering the group as a [sample](https://en.wikipedia.org/wiki/Sample-%28statistics%29). 
@@ -29,5 +39,3 @@ range x from 1 to 5 step 1
 |list-x|variance-x|
 |---|---|
 |[ 1, 2, 3, 4, 5]|2.5|
-
-

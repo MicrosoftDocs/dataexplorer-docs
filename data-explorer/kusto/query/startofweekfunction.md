@@ -1,3 +1,13 @@
+---
+title: startofweek() (Azure Kusto)
+description: This article describes startofweek() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # startofweek()
 
 Returns the start of the week containing the date, shifted by an offset, if provided.
@@ -29,5 +39,3 @@ A datetime representing the start of the week for the given *date* value, with t
 |2016-12-25 00:00:00.0000000|
 |2017-01-01 00:00:00.0000000|
 |2017-01-08 00:00:00.0000000|
-
-

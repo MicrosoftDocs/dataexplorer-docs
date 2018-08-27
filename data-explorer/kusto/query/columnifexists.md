@@ -1,3 +1,13 @@
+---
+title: columnifexists() (Azure Kusto)
+description: This article describes columnifexists() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # columnifexists()
 
 Takes a column name as a string and a default value. Returns a reference to the column if it exists, 
@@ -29,5 +39,3 @@ ColumnOrDefault(tableName:string, columnName:string)
 
 ColumnOrDefault("StormEvents", "Captial")
 ```
-
-

@@ -1,3 +1,13 @@
+---
+title: distinct operator (Azure Kusto)
+description: This article describes distinct operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # distinct operator
 
 Produces a table with the distinct combination of the provided columns of the input table. 
@@ -23,7 +33,7 @@ Table | distinct fruit, price
 There are two main semantic differences between the `distinct` operator and
 using `summarize by ...`:
 * Distinct supports providing an asterisk (`*`) as the group key, making it easier to use for wide tables.
-* Distinct doesn’t have auto-binning of time columns (to `1h`).
+* Distinct doesnâ€™t have auto-binning of time columns (to `1h`).
 
 ```kusto
 let T=(print t=datetime(2008-05-12 06:45));
@@ -45,5 +55,3 @@ t                            | Title
 2008-05-12 06:45:00.0000000  | Distinct
 2008-05-12 06:00:00.0000000  | Summarize
 2008-05-12 06:45:00.0000000  | Summarize-distinct
-
-

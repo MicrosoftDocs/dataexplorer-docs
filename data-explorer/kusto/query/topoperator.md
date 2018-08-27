@@ -1,3 +1,13 @@
+---
+title: top operator (Azure Kusto)
+description: This article describes top operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # top operator
 
 Returns the first *N* records sorted by the specified columns.
@@ -20,5 +30,3 @@ Returns the first *N* records sorted by the specified columns.
 
 `top 5 by name` is superficially equivalent to `sort by name | take 5`. However, it runs faster and always returns sorted results, whereas `take` makes no such guarantee.
 [top-nested](topnestedoperator.md) allows to produce hierarchical top results.
-
-

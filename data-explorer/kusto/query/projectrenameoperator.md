@@ -1,3 +1,13 @@
+---
+title: project-rename operator (Azure Kusto)
+description: This article describes project-rename operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # project-rename operator
 
 Renames columns in the result output.
@@ -29,5 +39,3 @@ print a='a', b='b', c='c'
 |new-a|new-b|c|
 |---|---|---|
 |a|b|c|
-
-

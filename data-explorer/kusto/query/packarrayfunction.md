@@ -1,3 +1,13 @@
+---
+title: pack-array() (Azure Kusto)
+description: This article describes pack-array() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # pack-array()
 
 Packs all input values into a dynamic array.
@@ -41,5 +51,3 @@ range x from 1 to 3 step 1
 |[1,"2","00:00:02"]|
 |[2,"4","00:00:04"]|
 |[3,"6","00:00:06"]|
-
-

@@ -1,3 +1,13 @@
+---
+title: bin-auto() (Azure Kusto)
+description: This article describes bin-auto() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # bin-auto()
 
 Rounds values down to a fixed-size "bin", with control over the bin size and starting point provided by a query property.
@@ -34,5 +44,3 @@ range Timestamp from datetime(2017-01-01 00:05) to datetime(2017-01-01 02:00) st
 |-----------------------------|-------|
 |2017-01-01 00:05:00.0000000  | 60    |
 |2017-01-01 01:05:00.0000000  | 56    |
-
-

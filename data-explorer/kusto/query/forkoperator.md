@@ -1,3 +1,13 @@
+---
+title: fork operator (Azure Kusto)
+description: This article describes fork operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # fork operator
 
 Runs multiple consumer operators in parallel.
@@ -55,7 +65,4 @@ KustoLogs
     EventsTexts = ( project Timestamp, EventText | top 1000 by Timestamp desc )
     TimeRangePerActivityID = ( summarize min(Timestamp), max(Timestamp) by ActivityID )
 ```
-
-
-
 

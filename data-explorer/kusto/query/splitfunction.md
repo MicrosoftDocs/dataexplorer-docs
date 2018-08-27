@@ -1,3 +1,13 @@
+---
+title: split() (Azure Kusto)
+description: This article describes split() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # split()
 
 Splits a given string according to a given delimiter and returns a string array with the conatined substrings.
@@ -29,5 +39,3 @@ split("", "_")                // [""]
 split("a-_b")                 // ["a","","b"]
 split("aabbcc", "bb")         // ["aa","cc"]
 ```
-
-

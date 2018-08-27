@@ -1,3 +1,13 @@
+---
+title: The datetime data type (Azure Kusto)
+description: This article describes The datetime data type in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # The datetime data type
 
 The `datetime` (`date`) data type represents an instant in time, typically expressed as a date and time of day.
@@ -93,5 +103,3 @@ and the [todatetime()](../todatetimefunction.md) function.
 |%Y-%n-%eT%H:%M:%s %Z|2014-11-08T15:05:25 GMT|
 |%Y-%n-%eT%H:%M|2014-11-08T15:05|
 |%Y-%n-%eT%H:%M %Z"|2014-11-08T15:05 GMT|
-
-

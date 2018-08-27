@@ -1,3 +1,13 @@
+---
+title: Window functions (Azure Kusto)
+description: This article describes Window functions in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Window functions
 
 Window functions operate on multiple rows (records) in a row set at a time.
@@ -51,5 +61,3 @@ the [project operator](./projectoperator.md), and the
 * [project-rename operator](./projectrenameoperator.md)
 * [take operator](./takeoperator.md)
 * [where operator](./whereoperator.md)
-
-

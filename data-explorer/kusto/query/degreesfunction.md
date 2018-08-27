@@ -1,3 +1,13 @@
+---
+title: degrees() (Azure Kusto)
+description: This article describes degrees() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # degrees()
 
 Converts angle value in radians into value in degrees, using formula `degrees = (180 / PI ) * angle-in-radians`
@@ -24,6 +34,3 @@ print degrees0 = degrees(pi()/4), degrees1 = degrees(pi()*1.5), degrees2 = degre
 |degrees0|degrees1|degrees2|
 |---|---|---|
 |45|270|0|
-
-
-

@@ -1,3 +1,13 @@
+---
+title: extractjson() (Azure Kusto)
+description: This article describes extractjson() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # extractjson()
 
 Get a specified element out of a JSON text using a path expression. 
@@ -50,5 +60,3 @@ T
 * Consider using a regular expression match with [extract](extractfunction.md) instead. This can run very much faster, and is effective if the JSON is produced from a template.
 * Use `parsejson()` if you need to extract more than one value from the JSON.
 * Consider having the JSON parsed at ingestion by declaring the type of the column to be dynamic.
-
-

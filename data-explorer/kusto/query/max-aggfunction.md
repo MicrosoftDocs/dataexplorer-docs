@@ -1,3 +1,13 @@
+---
+title: max() (aggregation function) (Azure Kusto)
+description: This article describes max() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # max() (aggregation function)
 
 Returns the maximum value across the group. 
@@ -21,5 +31,3 @@ The maximum value of *Expr* across the group.
 This gives you the min or max on its own - for example, the highest or lowest price. 
 But if you want other columns in the row - for example, the name of the supplier with the lowest 
 price - use [arg-max](arg-max-aggfunction.md) or [arg-min](arg-min-aggfunction.md).
-
-

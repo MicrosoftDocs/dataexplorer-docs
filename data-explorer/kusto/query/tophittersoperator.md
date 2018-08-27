@@ -1,3 +1,13 @@
+---
+title: top-hitters operator (Azure Kusto)
+description: This article describes top-hitters operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # top-hitters operator
 
 Returns an approximation of the first *N* results (assuming skewed distribution of the input).
@@ -66,5 +76,3 @@ PageViews
 |The-Revenant-(2015-film)|10714263|
 |Star-Wars:_The-Force-Awakens|9770653|
 |Portal:Current-events|9578000|
-
-

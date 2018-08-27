@@ -1,3 +1,13 @@
+---
+title: sample operator (Azure Kusto)
+description: This article describes sample operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # sample operator
 
 Returns up to the specified number of random rows from the input table.
@@ -54,6 +64,3 @@ StormEvents | where rand() < 0.1
 ```kusto
 StormEvents | sample 10
 ```
-
-
-

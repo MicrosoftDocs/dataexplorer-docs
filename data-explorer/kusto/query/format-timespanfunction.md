@@ -1,3 +1,13 @@
+---
+title: format-timespan() (Azure Kusto)
+description: This article describes format-timespan() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # format-timespan()
 
 Formats a timespan parameter based on the format pattern parameter.
@@ -59,5 +69,3 @@ The string with the format result.
 format-timespan(time(29.09:00:05.12345), 'dd.hh:mm:ss [FF]')  //'29.09:00:05 [12]'
 format-timespan(time(29.09:00:05.12345), 'ddd.h:mm:ss [fff]') //'029.9:00:05 [123]'
 ```
-
-

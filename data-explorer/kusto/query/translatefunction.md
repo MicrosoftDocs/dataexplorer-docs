@@ -1,3 +1,13 @@
+---
+title: translate() (Azure Kusto)
+description: This article describes translate() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # translate()
 
 Replaces a set of characters ('searchList') with another set of characters ('replacementList') in a given a string.
@@ -25,5 +35,3 @@ The function searches for characters in the 'searchList' and replaces them with 
 |`translate("abc", "", "ab")`| ""
 |`translate("krasp", "otsku", "spark")`| "kusto"
     
-
-

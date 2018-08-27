@@ -1,3 +1,13 @@
+---
+title: base64-decodestring() (Azure Kusto)
+description: This article describes base64-decodestring() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # base64-decodestring()
 
 Decodes a base64 string to a UTF-8 string
@@ -35,5 +45,3 @@ range x from 1 to 1 step 1
 |Column1|
 |---|
 ||
-
-

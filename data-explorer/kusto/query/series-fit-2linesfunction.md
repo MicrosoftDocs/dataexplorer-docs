@@ -1,3 +1,13 @@
+---
+title: series-fit-2lines() (Azure Kusto)
+description: This article describes series-fit-2lines() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-fit-2lines()
 
 Applies two segments linear regression on a series, returning multiple columns.  
@@ -49,5 +59,3 @@ range x from 1 to 1 step 1
 ```
 
 ![](./Images/samples/series-fit-2lines.png)
-
-

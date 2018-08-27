@@ -1,3 +1,13 @@
+---
+title: row-number() (Azure Kusto)
+description: This article describes row-number() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # row-number()
 
 Returns the current row's index in a [serialized row set](./windowsfunctions.md#serialized-row-set).
@@ -65,5 +75,3 @@ SEA      | LH       | 1           | 2
 SEA      | LY       | 0           | 3
 TLV      | LY       | 100         | 1
 TLV      | LH       | 1           | 2
-
-

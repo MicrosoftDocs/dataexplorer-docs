@@ -1,3 +1,13 @@
+---
+title: The timespan data type (Azure Kusto)
+description: This article describes The timespan data type in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # The timespan data type
 
 The `timespan` (`time`) data type represents a  time interval.
@@ -40,5 +50,3 @@ range x from 1 to 1 step 1
     result2 = time(1d) / time(1s),
     result3 = 24 * 60 * time(00:01:00) / time(1s) 
 ```
-
-

@@ -1,3 +1,13 @@
+---
+title: parse-xml() (Azure Kusto)
+description: This article describes parse-xml() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # parse-xml()
 
 Interprets a `string` as a XML value, converts the value to a [JSON value](http://json.org/) and returns the value as  [`dynamic`](./scalar-data-types/dynamic.md). 
@@ -76,5 +86,3 @@ T
 | extend d=parse-xml(context-custom-metrics) 
 | extend duration-value=d.duration.value, duration-min=d["duration"]["min"]
 ```
-
-

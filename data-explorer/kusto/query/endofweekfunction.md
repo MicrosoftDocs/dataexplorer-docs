@@ -1,3 +1,13 @@
+---
+title: endofweek() (Azure Kusto)
+description: This article describes endofweek() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # endofweek()
 
 Returns the end of the week containing the date, shifted by an offset, if provided.
@@ -30,5 +40,3 @@ A datetime representing the end of the week for the given *date* value, with the
 |2016-12-31 23:59:59.9999999|
 |2017-01-07 23:59:59.9999999|
 |2017-01-14 23:59:59.9999999|
-
-

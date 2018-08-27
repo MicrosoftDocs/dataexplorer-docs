@@ -1,3 +1,13 @@
+---
+title: top-nested operator (Azure Kusto)
+description: This article describes top-nested operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # top-nested operator
 
 Produces hierarchical top results, where each level is a drill-down based on previous level values. 
@@ -172,5 +182,3 @@ StormEvents
 |KANSAS|Public|ASHLAND|446.4218|1|
 |KANSAS|Public|PROTECTION|446.11|2|
 |KANSAS|Public|MEADE STATE PARK|371.1|3|
-
-

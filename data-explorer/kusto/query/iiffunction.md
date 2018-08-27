@@ -1,3 +1,13 @@
+---
+title: iif() (Azure Kusto)
+description: This article describes iif() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # iif()
 
 Evaluates the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to `true` (second) or `false` (third).
@@ -27,5 +37,3 @@ T
 ```
 
 An alias for [`iff()`](ifffunction.md).
-
-

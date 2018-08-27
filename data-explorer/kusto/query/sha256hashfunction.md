@@ -1,3 +1,13 @@
+---
+title: hash-sha256() (Azure Kusto)
+description: This article describes hash-sha256() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # hash-sha256()
 
 Returns a sha256 hash value for the input value.
@@ -37,5 +47,3 @@ StormEvents
 | summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State 
 | top 5 by StormCount desc
 ```
-
-

@@ -1,3 +1,13 @@
+---
+title: url-decode() (Azure Kusto)
+description: This article describes url-decode() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # url-decode()
 
 The function converts encoded URL into a to regular URL representation. 
@@ -30,5 +40,3 @@ print original = url, decoded = url-decode(url)
 
 
  
-
-

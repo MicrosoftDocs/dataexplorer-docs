@@ -1,3 +1,13 @@
+---
+title: Scalar data types (Azure Kusto)
+description: This article describes Scalar data types in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Scalar data types
 
 In Kusto, evry column, expression, and parameter has a related data type.
@@ -35,5 +45,3 @@ whether an expression evaluates to this value by using the `isnull()` function.
 <div class="warning">As of this writing, support for the `guid` type is
 incomplete. We strongly recommend that teams use values of type `string`
 instead.</div>
-
-

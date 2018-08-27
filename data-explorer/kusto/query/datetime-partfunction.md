@@ -1,3 +1,13 @@
+---
+title: datetime-part() (Azure Kusto)
+description: This article describes datetime-part() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # datetime-part()
 
 Extracts the requested date part as an integer value.
@@ -54,5 +64,3 @@ nanosecond = datetime-part("nanosecond", dt)
 |year|quarter|month|weekOfYear|day|dayOfYear|hour|minute|second|millisecond|microsecond|nanosecond|
 |---|---|---|---|---|---|---|---|---|---|---|---|
 |2017|4|10|44|30|303|1|2|3|765|765432|765432100|
-
-

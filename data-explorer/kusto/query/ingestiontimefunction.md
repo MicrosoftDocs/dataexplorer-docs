@@ -1,3 +1,13 @@
+---
+title: ingestion-time() (Azure Kusto)
+description: This article describes ingestion-time() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # ingestion-time()
 
 Retrieves the record's `$IngestionTime` hidden `datetime` column, or null.
@@ -24,5 +34,3 @@ A `datetime` value specifying the approximate time of ingestion into a table.
 T 
 | extend ingestionTime = ingestion-time() | top 10 by ingestionTime
 ```
-
-

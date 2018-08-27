@@ -1,3 +1,13 @@
+---
+title: trim-end() (Azure Kusto)
+description: This article describes trim-end() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # trim-end()
 
 Removes trailing match of the specified regular expression.
@@ -47,5 +57,3 @@ range x from 1 to 5 step 1
 |-  Te st5// $|-  Te st5|
 
  
-
-

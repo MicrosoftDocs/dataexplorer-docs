@@ -1,3 +1,13 @@
+---
+title: percentile(), percentiles(), percentilew(), percentilesw(), percentiles-array(), percentilesw-array() (aggregation function) (Azure Kusto)
+description: This article describes percentile(), percentiles(), percentilew(), percentilesw(), percentiles-array(), percentilesw-array() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # percentile(), percentiles(), percentilew(), percentilesw(), percentiles-array(), percentilesw-array() (aggregation function)
 
 Returns an estimate for the specified [nearest-rank percentile](#nearest-rank-percentile) of the population defined by *Expr*. 
@@ -157,5 +167,3 @@ A few important points:
 * The bounds on the estimation error vary with the value of the requested percentile. The best accuracy is at the ends of [0..100] scale, percentiles 0 and 100 are the exact minimum and maximum values of the distribution. The accuracy gradually decreases towards the middle of the scale. It is worst at the median and is capped at 1%. 
 * Error bounds are observed on the rank, not on the value. Suppose percentile(X, 50) returned value of Xm. The estimation guarantees that at least 49% and at most 51% of the values of X are less or equal to Xm. There is no theoretical limit on the difference  between Xm and actual median value of X.
 * The estimation may sometimes result in a precise value but there are no reliable conditions to define when it will be the case
-
-

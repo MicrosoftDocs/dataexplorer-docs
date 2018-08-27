@@ -1,3 +1,13 @@
+---
+title: datatable operator (Azure Kusto)
+description: This article describes datatable operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # datatable operator
 
 Returns a table whose schema and values are defined in the query itself.
@@ -31,5 +41,3 @@ datatable (Date:datetime, Event:string)
      datetime(1997-06-25), "Died"]
 | where strlen(Event) > 4
 ```
-
-

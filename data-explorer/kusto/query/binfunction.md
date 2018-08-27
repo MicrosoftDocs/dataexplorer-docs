@@ -1,3 +1,13 @@
+---
+title: bin() (Azure Kusto)
+description: This article describes bin() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # bin()
 
 Rounds values down to an integer multiple of a given bin size. 
@@ -37,5 +47,3 @@ with a bucket size of 1 second:
 ```kusto
 T | summarize Hits=count() by bin(Duration, 1s)
 ```
-
-

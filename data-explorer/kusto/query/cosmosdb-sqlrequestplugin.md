@@ -1,3 +1,13 @@
+---
+title: cosmosdb-sql-request plugin (Azure Kusto)
+description: This article describes cosmosdb-sql-request plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # cosmosdb-sql-request plugin
 
   `evaluate` `cosmosdb-sql-request` `(` *ConnectionString* `,` *authorization-key* `,` *database-name* `,` *collection-name* `,` *SqlQuery* `)`
@@ -33,5 +43,3 @@ evaluate cosmosdb-sql-request(
   'MyCollectionName',
   'SELECT * from c')
 ```
-
-

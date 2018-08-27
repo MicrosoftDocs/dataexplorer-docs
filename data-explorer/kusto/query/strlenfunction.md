@@ -1,3 +1,13 @@
+---
+title: strlen() (Azure Kusto)
+description: This article describes strlen() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # strlen()
 
 Returns the length, in characters, of the input string.
@@ -31,11 +41,9 @@ print strlen("hello")
 |5|
 
 ```kusto
-print strlen("⒦⒰⒮⒯⒪")
+print strlen("â’¦â’°â’®â’¯â’ª")
 ```
 
 |print-0|
 |---|
 |5|
-
-

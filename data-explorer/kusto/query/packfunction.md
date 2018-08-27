@@ -1,3 +1,13 @@
+---
+title: pack() (Azure Kusto)
+description: This article describes pack() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # pack()
 
 Creates a `dynamic` object (property bag) from a list of names and values.
@@ -55,5 +65,3 @@ Returns:
 |SmsMessages|555-555-1234 |555-555-1213 | {"CharsCount": 50}
 |MmsMessages|555-555-1234 |555-555-1212 | {"AttachmnetSize": 250, "AttachmnetType": "jpeg", "AttachmnetName": "Pic2"}
 |MmsMessages|555-555-1234 |555-555-1213 | {"AttachmnetSize": 300, "AttachmnetType": "png", "AttachmnetName": "Pic3"}
-
-

@@ -1,3 +1,13 @@
+---
+title: tobool() (Azure Kusto)
+description: This article describes tobool() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # tobool()
 
 Converts input to boolean (signed 8-bit) representation.
@@ -21,5 +31,3 @@ Converts input to boolean (signed 8-bit) representation.
 If conversion is successful, result will be a boolean.
 If conversion is not successful, result will be `null`.
  
-
-

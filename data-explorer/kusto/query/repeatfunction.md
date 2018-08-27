@@ -1,3 +1,13 @@
+---
+title: repeat() (Azure Kusto)
+description: This article describes repeat() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # repeat()
 
 Generates a dynamic array holding a series of equal values.
@@ -20,5 +30,3 @@ The following example returns `[1, 1, 1]`:
 ```kusto
 T | extend r = repeat(1, 3)
 ```
-
-

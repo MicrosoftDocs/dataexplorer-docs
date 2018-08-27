@@ -1,3 +1,13 @@
+---
+title: Cross-Cluster Join (Azure Kusto)
+description: This article describes Cross-Cluster Join in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Cross-Cluster Join
 
 For general discussion on cross-cluster queries see [here](syntax.md#queries)
@@ -45,5 +55,3 @@ Following are legal values for *`strategy`*
 * **`auto`** - (default) let Kusto make the automatic remoting decision
 
 **Note:** Join remoting hint will be ignored by Kusto if hinted strategy is not applicable to the join operation.
-
-

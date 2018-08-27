@@ -1,3 +1,13 @@
+---
+title: makeset() (aggregation function) (Azure Kusto)
+description: This article describes makeset() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # makeset() (aggregation function)
 
 Returns a `dynamic` (JSON) array of the set of distinct values that *Expr* takes in the group. 
@@ -32,5 +42,3 @@ PageViewLog
 ![](./images/aggregations/makeset.png)
 
 See also the [`mvexpand` operator](./mvexpandoperator.md) for the opposite function.
-
-

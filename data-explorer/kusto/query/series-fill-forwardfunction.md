@@ -1,3 +1,13 @@
+---
+title: series-fill-forward() (Azure Kusto)
+description: This article describes series-fill-forward() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-fill-forward()
 
 Performs forward fill interpolation of missing values in a series.
@@ -44,5 +54,3 @@ data
 |[null,null,36,41,null,null,16,61,33,null,null]|[null,null,36,41,41,41,16,61,33,33,33]|
   
 One can use [series-fill-backward](series-fill-backwardfunction.md) or [series-fill-const](series-fill-constfunction.md) in order to complete interpolation of the above array.
-
-

@@ -1,3 +1,13 @@
+---
+title: series-add() (Azure Kusto)
+description: This article describes series-add() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-add()
 
 Calculates the element-wise addition of two numeric series inputs.
@@ -29,5 +39,3 @@ range x from 1 to 3 step 1
 |[1,2,4]|[4,2,1]|[5,4,5]|
 |[2,4,8]|[8,4,2]|[10,8,10]|
 |[3,6,12]|[12,6,3]|[15,12,15]|
-
-

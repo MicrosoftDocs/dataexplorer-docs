@@ -1,3 +1,13 @@
+---
+title: summarize operator (Azure Kusto)
+description: This article describes summarize operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # summarize operator
 
 Produces a table that aggregates the content of the input table. 
@@ -37,7 +47,7 @@ The result has as many rows as there are distinct combinations of `by` values. I
 
 Although you can provide arbitrary expressions for both the aggregation and grouping expressions, it's more efficient to use simple column names, or apply `bin()` to a numeric column.
 
-The automatic hourly bins for datetime columns is no longer supported. Use explicit binning instead – for example `summarize by bin(timestamp, 1h)`.
+The automatic hourly bins for datetime columns is no longer supported. Use explicit binning instead â€“ for example `summarize by bin(timestamp, 1h)`.
 
 ## List of aggregation functions
 
@@ -208,5 +218,3 @@ range x from 1 to 2 step 1
 |set-y|set-y1|
 |---|---|
 |[5.0]|[5.0]|
-
-

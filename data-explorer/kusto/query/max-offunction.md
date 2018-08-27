@@ -1,3 +1,13 @@
+---
+title: max-of() (Azure Kusto)
+description: This article describes max-of() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # max-of()
 
 Returns the maximum value of several evaluated numeric expressions.
@@ -28,5 +38,3 @@ print result = max-of(10, 1, -3, 17)
 |result|
 |---|
 |17|
-
-

@@ -1,3 +1,13 @@
+---
+title: The bool data type (Azure Kusto)
+description: This article describes The bool data type in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # The bool data type
 
 The `bool` (`boolean`) data type can have one of two states: `true` or `false`
@@ -14,5 +24,3 @@ The `bool` data type has the following literals:
 
 The `bool` data type supports the following operators:
 equality (`==`), inequality (`!=`), logical-and (`and`), and logical-or (`or`).
-
-

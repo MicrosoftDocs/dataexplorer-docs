@@ -1,3 +1,13 @@
+---
+title: strcmp() (Azure Kusto)
+description: This article describes strcmp() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # strcmp()
 
 Compares two strings.
@@ -37,7 +47,4 @@ datatable(string1:string, string2:string)
 |abc|ABC|1|
 |ABC|abc|-1|
 |abcde|abc|1|
-
-
-
 

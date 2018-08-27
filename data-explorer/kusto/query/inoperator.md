@@ -1,3 +1,13 @@
+---
+title: in and !in operators (Azure Kusto)
+description: This article describes in and !in operators in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # in and !in operators
 
 Filters a recordset based on the provided set of values.
@@ -168,6 +178,3 @@ Here is the function definition:
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
 |InterestingStates|()|{ dynamic(["WASHINGTON", "FLORIDA", "GEORGIA", "NEW YORK"]) }
-
-
-

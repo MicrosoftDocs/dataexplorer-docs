@@ -1,3 +1,13 @@
+---
+title: tdigest-merge() (Azure Kusto)
+description: This article describes tdigest-merge() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # tdigest-merge()
 
 Merges tdigest results (scalar version of the aggregate version [`tdigest-merge()`](tdigest-merge-aggfunction.md)).
@@ -29,5 +39,3 @@ range x from 1 to 10 step 1
 |percentile-tdigest-merged|
 |---|
 |20|
-
-

@@ -1,3 +1,13 @@
+---
+title: find operator (Azure Kusto)
+description: This article describes find operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # find operator
 
 Finds rows that match a predicate across a set of tables.
@@ -246,5 +256,3 @@ find in (Table1, Table2) where ProcessId == 1001 project Level, Timestamp, Proce
 ```
 
 And the output result schema will be __(Level:string, Timestamp, ProcessId-string)__
-
-

@@ -1,3 +1,13 @@
+---
+title: qScalar types and functions (Azure Kusto)
+description: This article describes qScalar types and functions in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 q# Scalar types and functions
 
 [Kusto](https://kusdoc2.azurewebsites.net/docs/index.html) is a powerful database service optimized for searches over large logs of diagnostic telemetry. Scalar expressions are part of the [Kusto query language](./query-essentials/readme.md). 
@@ -26,5 +36,3 @@ Scalar expressions are distinct from [queries](./queries.md), whose results are 
 # Reference: scalar functions
 
 "Scalar" denotes values that can occupy a single cell in a Kusto table. (Scalar expressions are distinct from [queries](./queries.md), whose results are tables.)
-
-

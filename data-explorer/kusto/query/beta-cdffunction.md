@@ -1,3 +1,13 @@
+---
+title: beta-cdf() (Azure Kusto)
+description: This article describes beta-cdf() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # beta-cdf()
 
 Returns the standard cumulative beta distribution function.
@@ -28,7 +38,7 @@ If any argument is nonnumeric, beta-cdf() returns null value.
 
 If x < 0 or x > 1, beta-cdf() returns NaN value.
 
-If alpha ≤ 0 or beta ≤ 0, beta-cdf() returns the NaN value.
+If alpha â‰¤ 0 or beta â‰¤ 0, beta-cdf() returns the NaN value.
 
 **Examples**
 
@@ -55,5 +65,3 @@ datatable(x:double, alpha:double, beta:double, comment:string)
 
 * For computing the inverse of the beta cumulative probability density function, see [beta-inv()](./beta-invfunction.md).
 * For computing probability density function, see [beta-pdf()](./beta-pdffunction.md).
-
-

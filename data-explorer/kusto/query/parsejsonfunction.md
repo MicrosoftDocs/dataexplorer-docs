@@ -1,3 +1,13 @@
+---
+title: parse-json() (Azure Kusto)
+description: This article describes parse-json() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # parse-json()
 
 Interprets a `string` as a [JSON value](http://json.org/)) and returns the value as [`dynamic`](./scalar-data-types/dynamic.md). 
@@ -65,5 +75,3 @@ because its declared type is `dynamic`:
 let d='{"a":123, "b":"{\\"c\\":456}"}';
 print d-b-c=parse-json(tostring(parse-json(d).b)).c
 ```
-
-

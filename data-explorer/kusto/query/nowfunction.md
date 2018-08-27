@@ -1,3 +1,13 @@
+---
+title: now() (Azure Kusto)
+description: This article describes now() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # now()
 
 Returns the current UTC clock time, optionally offset by a given timespan.
@@ -28,5 +38,3 @@ Determines the interval since the event identified by the predicate:
 ```kusto
 T | where ... | extend Elapsed=now() - Timestamp
 ```
-
-

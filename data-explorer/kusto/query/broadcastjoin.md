@@ -1,3 +1,13 @@
+---
+title: Broadcast Join (Azure Kusto)
+description: This article describes Broadcast Join in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Broadcast Join
 
 Today, the regular joins are executed on a single cluster node.
@@ -17,7 +27,4 @@ lookupTable
 | join hint.strategy = broadcast (factTable) on Key
 | summarize dcount(Messages) by Timestamp, Key
 ```
-
-
-
 

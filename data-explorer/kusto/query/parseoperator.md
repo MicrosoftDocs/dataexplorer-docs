@@ -1,3 +1,13 @@
+---
+title: parse operator (Azure Kusto)
+description: This article describes parse operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # parse operator
 
 Evaluates a string expression and parses its value into one or more calculated columns.
@@ -160,5 +170,3 @@ range x from 1 to 1 step 1 | parse kind=relaxed "Event: NotifySliceRelease (reso
 |resourceName|totalSlices|sliceNumber|lockTime|releaseTime|previouLockTime|
 |---|---|---|---|---|---|
 |PipelineScheduler||23|02/17/2016 08:40:01||2016-02-17 08:39:01.0000000|
-
-

@@ -1,3 +1,13 @@
+---
+title: where operator (has, contains, startswith, endswith, matches regex) (Azure Kusto)
+description: This article describes where operator (has, contains, startswith, endswith, matches regex) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # where operator (has, contains, startswith, endswith, matches regex)
 
 Filters a table to the subset of rows that satisfy a predicate.
@@ -62,5 +72,3 @@ Traces | where * has "Kusto"
 ```
 
 All the rows in which the word "Kusto" appears in any column.
-
-

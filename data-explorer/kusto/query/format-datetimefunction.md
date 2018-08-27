@@ -1,3 +1,13 @@
+---
+title: format-datetime() (Azure Kusto)
+description: This article describes format-datetime() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # format-datetime()
 
 Formats a datetime parameter based on the format pattern parameter.
@@ -66,5 +76,3 @@ format-datetime(datetime(2017-01-29 09:00:05), 'yy-MM-dd [HH:mm:ss]') //'17-01-2
 format-datetime(datetime(2017-01-29 09:00:05), 'yyyy-M-dd [H:mm:ss]') //'2017-1-29 [9:00:05]'
 format-datetime(datetime(2017-01-29 09:00:05), 'yy-MM-dd [hh:mm:ss tt]') //'17-01-29 [09:00:05 AM]'
 ```
-
-

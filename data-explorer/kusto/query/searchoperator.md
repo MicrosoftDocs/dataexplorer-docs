@@ -1,3 +1,13 @@
+---
+title: search operator (Azure Kusto)
+description: This article describes search operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # search operator
 
 The search operator provides a multi-table/multi-column search experience.
@@ -112,5 +122,3 @@ search in (C*, TF) "billg" or "davec" or "steveb"
 // 8. A different way to say (7)
 union C*, TF | search "billg" or "davec" or "steveb"
 ```
-
-

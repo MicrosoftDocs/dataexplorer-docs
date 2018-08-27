@@ -1,3 +1,13 @@
+---
+title: base64-encodestring() (Azure Kusto)
+description: This article describes base64-encodestring() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # base64-encodestring()
 
 Encodes a string as base64 string
@@ -25,6 +35,3 @@ range x from 1 to 1 step 1
 |Column1|
 |---|
 |S3VzdG8=|
-
-
-

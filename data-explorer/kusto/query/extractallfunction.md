@@ -1,3 +1,13 @@
+---
+title: extractall() (Azure Kusto)
+description: This article describes extractall() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # extractall()
 
 Get all matches for a [regular expression](./re2.md) from a text string.
@@ -86,5 +96,3 @@ range r from 1 to 1 step 1
 |Id|guid-bytes|
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|[["8","2b8be2","d"],["d","fa","7"],["4","bd","1"],["8","f6","3"],["2","4ad26d3144","9"]]|
-
-

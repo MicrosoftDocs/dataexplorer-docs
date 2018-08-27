@@ -1,3 +1,13 @@
+---
+title: serialize operator (Azure Kusto)
+description: This article describes serialize operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # serialize operator
 
 Freezes the order of the input row set arbitrarily, so that [window functions](./windowsfunctions.md)
@@ -22,5 +32,3 @@ Traces
 | where ActivityId == "479671d99b7b"
 | serialize rn = row-number()
 ```
-
-

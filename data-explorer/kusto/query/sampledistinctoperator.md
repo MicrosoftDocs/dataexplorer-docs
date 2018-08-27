@@ -1,3 +1,13 @@
+---
+title: sample-distinct operator (Azure Kusto)
+description: This article describes sample-distinct operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # sample-distinct operator
 
 Returns a single column that contains up to the specified number of distinct values of the requested column. 
@@ -35,5 +45,3 @@ let sampleEpisodes = toscalar(StormEvents | sample-distinct 10 of EpisodeId);
 StormEvents | where EpisodeId in (sampleEpisodes) | summarize totalInjuries=sum(InjuriesDirect) by EpisodeId
 
 ```
-
-

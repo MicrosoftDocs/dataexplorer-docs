@@ -1,3 +1,13 @@
+---
+title: row-cumsum() (Azure Kusto)
+description: This article describes row-cumsum() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # row-cumsum()
 
 Calculates the cumulative sum of a column in a [serialized row set](./windowsfunctions.md#serialized-row-set).
@@ -64,5 +74,3 @@ Alice  | 3      | 1400    | 4400
 Bob    | 1      | 1000    | 1000
 Bob    | 2      | 1950    | 2950
 Bob    | 3      | 1450    | 4400
-
-

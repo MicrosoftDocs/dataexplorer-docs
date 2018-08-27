@@ -1,3 +1,13 @@
+---
+title: next() (Azure Kusto)
+description: This article describes next() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # next()
 
 Returns the value of a column in a row that it at some offset following the
@@ -30,5 +40,3 @@ Table | serialize nextA = next(A,1,10)
 | extend diff = A - nextA
 | where diff <= 10
 ```
-
-

@@ -1,3 +1,13 @@
+---
+title: countof() (Azure Kusto)
+description: This article describes countof() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # countof()
 
 Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches do not.
@@ -30,5 +40,3 @@ The number of times that the search string can be matched in the container. Plai
 |`countof("ababa", "aba", "regex")`| 1
 |`countof("abcabc", "a.c", "regex")`| 2
     
-
-

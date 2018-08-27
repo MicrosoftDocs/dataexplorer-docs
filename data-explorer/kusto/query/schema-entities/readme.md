@@ -1,3 +1,13 @@
+---
+title: Schema entities (Azure Kusto)
+description: This article describes Schema entities in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Schema entities
 
 Kusto queries are exposed to stored data arranged in rectangular tables
@@ -49,6 +59,3 @@ database("MyDb").Table
 
 cluster("OtherCluster").database("MyDb").Table
 ```
-
-
-

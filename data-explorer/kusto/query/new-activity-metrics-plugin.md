@@ -1,3 +1,13 @@
+---
+title: new-activity-metrics plugin (Azure Kusto)
+description: This article describes new-activity-metrics plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # new-activity-metrics plugin
 
 Calculates useful activity metrics (distinct count values, distinct count of new values, retention rate, and churn rate) for the cohort of `New Users`.
@@ -139,6 +149,3 @@ _data
 |2017-05-01 00:00:00.0000000|2017-05-15 00:00:00.0000000|0.257142857142857|
 |2017-05-01 00:00:00.0000000|2017-05-22 00:00:00.0000000|0.296326530612245|
 |2017-05-01 00:00:00.0000000|2017-05-29 00:00:00.0000000|0.0587755102040816|
-
-
-

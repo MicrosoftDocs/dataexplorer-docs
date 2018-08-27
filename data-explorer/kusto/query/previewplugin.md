@@ -1,3 +1,13 @@
+---
+title: preview plugin (Azure Kusto)
+description: This article describes preview plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # preview plugin
 
 Returns a table with up to the specified number of rows from the input record set, and the total number of records in the input record set.
@@ -28,5 +38,3 @@ or use the [`materialize`](materializefunction.md) function. For example:
 let MaterializedT = materialize(T);
 MaterializedT | evaluate preview(50)
 ```
-
-

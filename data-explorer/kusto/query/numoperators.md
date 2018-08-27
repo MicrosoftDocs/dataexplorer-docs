@@ -1,3 +1,13 @@
+---
+title: Numerical Operators (Azure Kusto)
+description: This article describes Numerical Operators in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Numerical Operators
 
 The types `int`, `long`, and `real` represent numerical types.
@@ -36,5 +46,3 @@ Produces this result:
 |plusPlus  | minusPlus  | plusMinus  | minusMinus|
 |----------|------------|------------|-----------|
 |2         | 10         | 2          | 10        |
-
-

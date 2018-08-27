@@ -1,3 +1,13 @@
+---
+title: variancep() (aggregation function) (Azure Kusto)
+description: This article describes variancep() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # variancep() (aggregation function)
 
 Calculates the variance of *Expr* across the group, considering the group as a [population](https://en.wikipedia.org/wiki/Statistical-population). 
@@ -29,5 +39,3 @@ range x from 1 to 5 step 1
 |list-x|variance-x|
 |---|---|
 |[ 1, 2, 3, 4, 5]|2|
-
-

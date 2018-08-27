@@ -1,3 +1,13 @@
+---
+title: render operator (Azure Kusto)
+description: This article describes render operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # render operator
 
 Renders results in as graphical output.
@@ -104,5 +114,3 @@ Where:
 [Rendering examples in the tutorial](./tutorial.md#render-display-a-chart-or-table).
 
 [Anomaly detection](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning)
-
-

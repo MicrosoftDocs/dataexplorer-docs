@@ -1,3 +1,13 @@
+---
+title: toscalar() (Azure Kusto)
+description: This article describes toscalar() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # toscalar()
 
 Returns a scalar constant value of the evaluated expression. 
@@ -46,5 +56,3 @@ range z from Start to End step Step | extend start=Start, end=End, step=Step
 |5|1|9|2|
 |7|1|9|2|
 |9|1|9|2|
-
-

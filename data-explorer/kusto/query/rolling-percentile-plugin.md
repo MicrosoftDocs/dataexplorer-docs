@@ -1,3 +1,13 @@
+---
+title: rolling-percentile plugin (Azure Kusto)
+description: This article describes rolling-percentile plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # rolling-percentile plugin
 
 Returns an estimate for the specified percentile of the *ValueColumn* population in a rolling (sliding) *BinsPerWindow* size window per *BinSize*.
@@ -93,5 +103,3 @@ range idx from 0 to 24*10-1 step 1
 |2018-01-08 00:00:00.0000000|	Odd|	155|
 |2018-01-09 00:00:00.0000000|	Odd|	179|
 |2018-01-10 00:00:00.0000000|	Odd|	203|
-
-

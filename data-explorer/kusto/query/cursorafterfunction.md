@@ -1,3 +1,13 @@
+---
+title: cursor-after() (Azure Kusto)
+description: This article describes cursor-after() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # cursor-after()
 
 A predicate over the records of a table to compare their ingestion time
@@ -24,5 +34,3 @@ restrictions, and side-effects.
 
 This function can only be invoked on records of a table which has the
 [IngestionTime policy](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_ingestiontimepolicy.html) enabled.
-
-

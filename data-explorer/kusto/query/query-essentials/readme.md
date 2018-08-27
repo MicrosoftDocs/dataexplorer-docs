@@ -1,3 +1,13 @@
+---
+title: Query essentials (Azure Kusto)
+description: This article describes Query essentials in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Query essentials
 
 A Kusto query is a read-only request to process data and return results.
@@ -34,6 +44,3 @@ In this case, the result will be:
 |Count|
 |-----|
 |   28|
-
-
-

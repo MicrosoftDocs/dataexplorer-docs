@@ -1,3 +1,13 @@
+---
+title: Cross-Database and Cross-Cluster Queries (Azure Kusto)
+description: This article describes Cross-Database and Cross-Cluster Queries in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Cross-Database and Cross-Cluster Queries
 
 Every Kusto query operates in the context of the current cluster and the default database.
@@ -27,10 +37,6 @@ cluster("<cluster name>").database("<database name>").<table name>
 >**Note:** cross-database access is subject to the usual permission checks.
 So to be able to excute query user must have read permission to the default database and
 to every other database referenced in the query (in the current and the remote clusters).
-
->**Note:** cross-cloud queries (for example, a query sent
-to a cluster in the Public cloud which attempts to reference data in a sovereign cloud)
-are currently blocked.
 
 *Qualified name* can be used in any context a table name can be.
 All of the following are valid:
@@ -125,6 +131,3 @@ of the `take` operator. To lift this limit, use the `notruncation`
 client request option.
 
 To display data in graphical form, use the [render operator](renderoperator.md).
-
-
-

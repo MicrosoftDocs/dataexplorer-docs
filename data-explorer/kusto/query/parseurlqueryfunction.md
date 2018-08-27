@@ -1,3 +1,13 @@
+---
+title: parse-urlquery() (Azure Kusto)
+description: This article describes parse-urlquery() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # parse-urlquery()
 
 Parses a url query `string` and returns a [`dynamic`](./scalar-data-types/dynamic.md) object contains the Query parameters.
@@ -32,5 +42,3 @@ will result:
 
 * Input format should follow URL query standards (key=value& ...)
  
-
-

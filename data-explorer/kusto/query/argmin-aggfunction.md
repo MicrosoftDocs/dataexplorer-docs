@@ -1,3 +1,13 @@
+---
+title: argmin() (aggregation function) (Azure Kusto)
+description: This article describes argmin() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # argmin() (aggregation function)
 
 Finds a row in the group that minimizes *ExprToMinimize*, and returns the value of *ExprToReturn* (or `*` to return the entire row).
@@ -52,5 +62,3 @@ datatable(a:string, b:string, c:string, d:string) [...]
 | summarize argmin(a, *)
 | project B=max-a-b, C=max-a-c
 ```
-
-

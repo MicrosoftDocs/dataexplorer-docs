@@ -1,3 +1,13 @@
+---
+title: string-size() (Azure Kusto)
+description: This article describes string-size() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # string-size()
 
 Returns the size, in bytes, of the input string.
@@ -25,11 +35,9 @@ print string-size("hello")
 |5|
 
 ```kusto
-print string-size("⒦⒰⒮⒯⒪")
+print string-size("â’¦â’°â’®â’¯â’ª")
 ```
 
 |print-0|
 |---|
 |15|
-
-

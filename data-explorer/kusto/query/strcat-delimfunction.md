@@ -1,3 +1,13 @@
+---
+title: strcat-delim() (Azure Kusto)
+description: This article describes strcat-delim() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # strcat-delim()
 
 Concatenates between 2 and 64 arguments, with delimiter, provided as first argument.
@@ -27,5 +37,3 @@ print st = strcat-delim('-', 1, '2', 'A', 1s)
 |st|
 |---|
 |1-2-A-00:00:01|
-
-

@@ -1,3 +1,13 @@
+---
+title: As operator (Azure Kusto)
+description: This article describes As operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # As operator
 
 `As` operator temporarily binds a name to the operator's input tabular expression.
@@ -38,5 +48,3 @@ MyLogTable
     | where Name == "Stop"
 ) on ActivityId
 ```
-
-

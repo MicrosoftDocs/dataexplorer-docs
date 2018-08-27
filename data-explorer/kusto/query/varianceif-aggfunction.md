@@ -1,3 +1,13 @@
+---
+title: varianceif() (aggregation function) (Azure Kusto)
+description: This article describes varianceif() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # varianceif() (aggregation function)
 
 Calculates the [variance](variance-aggfunction.md) of *Expr* across the group for which *Predicate* evaluates to `true`.
@@ -28,5 +38,3 @@ range x from 1 to 100 step 1
 |varianceif-x|
 |---|
 |850|
-
-

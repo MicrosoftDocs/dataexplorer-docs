@@ -1,3 +1,13 @@
+---
+title: reverse() (Azure Kusto)
+description: This article describes reverse() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # reverse()
 
 Function makes reverse of input string.
@@ -43,4 +53,3 @@ rdatetime = reverse(['datetime']), rtimespan = reverse(['timespan'])
 
 
  
-

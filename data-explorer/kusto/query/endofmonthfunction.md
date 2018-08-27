@@ -1,3 +1,13 @@
+---
+title: endofmonth() (Azure Kusto)
+description: This article describes endofmonth() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # endofmonth()
 
 Returns the end of the month containing the date, shifted by an offset, if provided.
@@ -27,6 +37,3 @@ A datetime representing the end of the month for the given *date* value, with th
 |2016-12-31 23:59:59.9999999|
 |2017-01-31 23:59:59.9999999|
 |2017-02-28 23:59:59.9999999|
-
-
-

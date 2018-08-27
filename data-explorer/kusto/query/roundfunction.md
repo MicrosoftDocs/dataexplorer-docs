@@ -1,3 +1,13 @@
+---
+title: round() (Azure Kusto)
+description: This article describes round() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # round()
 
 Returns the rounded source to the specified precision.
@@ -28,5 +38,3 @@ round(2.15) (which is the same as round(2.15, 0))                   // 2
 round(-50.55, -2)                   // -100
 round(21.5, -1)                   // 20
 ```
-
-

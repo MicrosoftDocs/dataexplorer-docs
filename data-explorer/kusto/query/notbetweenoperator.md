@@ -1,3 +1,13 @@
+---
+title: notbetween operator (Azure Kusto)
+description: This article describes notbetween operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # !between operator
 
 Matches the input that is outside the inclusive range.
@@ -66,5 +76,3 @@ StormEvents
 |Count|
 |---|
 |58590|
-
-

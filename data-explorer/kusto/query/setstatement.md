@@ -1,3 +1,13 @@
+---
+title: Set statement (Azure Kusto)
+description: This article describes Set statement in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Set statement
 
 The `set` statement is used to set a query option for the duration of the query.
@@ -35,5 +45,3 @@ statements that trail them in program order.
 set querytrace;
 Events | take 100
 ```
-
-

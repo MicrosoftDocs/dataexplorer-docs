@@ -1,3 +1,13 @@
+---
+title: isnotnull() (Azure Kusto)
+description: This article describes isnotnull() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # isnotnull()
 
 Returns `true` if the argument is not null.
@@ -19,5 +29,3 @@ Notice that there are other ways of achieving this effect:
 ```kusto
 T | summarize count(PossiblyNull)
 ```
-
-

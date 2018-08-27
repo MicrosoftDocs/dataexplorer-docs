@@ -1,3 +1,13 @@
+---
+title: Batches (Azure Kusto)
+description: This article describes Batches in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Batches
 
 A query can include multiple tabular expression statements, as long as they
@@ -27,5 +37,3 @@ m | where n < 10
 
 Notes:
 * Prefer batching over using the [fork operator](forkoperator.md).
-
-

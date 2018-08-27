@@ -1,3 +1,13 @@
+---
+title: parse-url() (Azure Kusto)
+description: This article describes parse-url() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # parse-url()
 
 Parses an absolute URL `string` and returns a [`dynamic`](./scalar-data-types/dynamic.md) object contains all parts of the URL (Scheme, Host, Port, Path, Username, Password, Query Parameters, Fragment).
@@ -34,5 +44,3 @@ will result
  	"Fragment":"fragment"
  }
 ```
-
-

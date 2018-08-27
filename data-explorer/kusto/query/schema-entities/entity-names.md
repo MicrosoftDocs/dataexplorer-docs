@@ -1,3 +1,13 @@
+---
+title: Entity names (Azure Kusto)
+description: This article describes Entity names in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Entity names
 
 Kusto schema entities (databases, tables, columns, and stored functions, but not clusters)
@@ -66,9 +76,6 @@ Alternatively, one might want to choose entity names that are guaranteed to neve
 The Kusto query language reserves all identifiers that start or end with a
 sequence of two underscore characters (`__`); users cannot define such names
 for their own use.
-
-
-
 
 
 

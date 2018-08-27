@@ -1,3 +1,13 @@
+---
+title: extent-tags() (Azure Kusto)
+description: This article describes extent-tags() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # extent-tags()
 
 Returns a dynamic array with the [tags](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_extents.html#extent-tagging) of the data shard ("extent") that the current record resides in. 
@@ -40,5 +50,3 @@ T
 | where Tags has-cs 'MyTag' and Tags !has-cs 'drop-by:MyOtherTag'
 | count
 ```
-
-

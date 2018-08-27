@@ -1,3 +1,13 @@
+---
+title: datetime-diff() (Azure Kusto)
+description: This article describes datetime-diff() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # datetime-diff()
 
 Calculates calendarian difference between two [datetime](./scalar-data-types/datetime.md) values.
@@ -49,9 +59,6 @@ nanosecond = datetime-diff('nanosecond',datetime(2017-10-30 23:00:00.0000000),da
 |year|quarter|month|week|day|hour|minute|second|millisecond|microsecond|nanosecond|
 |---|---|---|---|---|---|---|---|---|---|---|
 |17|2|13|5|29|2|5|10|100|100|-700|
-
-
-
 
 
 

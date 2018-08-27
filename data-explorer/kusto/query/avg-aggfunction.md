@@ -1,3 +1,13 @@
+---
+title: avg() (aggregation function) (Azure Kusto)
+description: This article describes avg() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # avg() (aggregation function)
 
 Calculates the average of *Expr* across the group. 
@@ -16,5 +26,3 @@ summarize `avg(`*Expr*`)`
 
 The average value of *Expr* across the group.
  
-
-

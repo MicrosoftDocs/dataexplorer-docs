@@ -1,3 +1,13 @@
+---
+title: http-request plugin / http-request-post plugin (Azure Kusto)
+description: This article describes http-request plugin / http-request-post plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # http-request plugin / http-request-post plugin
 
   `evaluate` `http-request` `(` *Uri* [`,` *RequestHeaders* [`,` *Options*]] `)`
@@ -113,5 +123,3 @@ let options=dynamic({'Authentication':'Active Directory Integrated',
   'AadResourceId':'https://eniac.to.the.max.example.com/'});
 evaluate http-request-post(uri, headers, options)
 ```
-
-

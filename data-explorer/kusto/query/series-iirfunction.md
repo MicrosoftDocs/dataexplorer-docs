@@ -1,3 +1,13 @@
+---
+title: series-iir() (Azure Kusto)
+description: This article describes series-iir() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-iir()
 
 Applies a Infinite Impulse Response filter on a series.  
@@ -17,9 +27,9 @@ Takes an expression containing dynamic numerical array as input and applies an [
 
 **Important note**
 
-* The first element of *a* (i.e. `a[0]`) mustn’t be zero (to avoid division by 0; see the formula below).
+* The first element of *a* (i.e. `a[0]`) mustnâ€™t be zero (to avoid division by 0; see the formula below).
 
-**More about the filter’s recursive formula**
+**More about the filterâ€™s recursive formula**
 
 * Given an input array X and coefficients arrays a, b of lengths n-a and n-b respectively, the transfer function of the filter, generating the output array Y, is defined by (see also in Wikipedia):
 
@@ -62,5 +72,3 @@ print d=dynamic([0, 1, 2, 3, 4])
 |d            |dd  |
 |-------------|----|
 |`[0,1,2,3,4]`|`10`|
-
-

@@ -1,3 +1,13 @@
+---
+title: externaldata operator (Azure Kusto)
+description: This article describes externaldata operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # externaldata operator
 
 Returns a table whose schema is defined in the query itself, and whose data is read from an external raw file.
@@ -34,6 +44,3 @@ externaldata (Date:datetime, Event:string)
 [h@"https://storageaccount.blob.core.windows.net/storagecontainer/data.csv"]
 | where strlen(Event) > 4
 ```
-
-
-

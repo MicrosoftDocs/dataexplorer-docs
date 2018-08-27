@@ -1,3 +1,13 @@
+---
+title: The dynamic data type (Azure Kusto)
+description: This article describes The dynamic data type in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # The dynamic data type
 
 The `dynamic` data type is a scalar type that behaves somewhat like a JSON data
@@ -162,6 +172,3 @@ arrays to hold aggregated values:
 |[`summarize makelist(`column`)` ](../makelist-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array.
 |[`summarize makeset(`column`)`](../makeset-aggfunction.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
 |[`summarize make-dictionary(`column`)`](../make-dictionary-aggfunction.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.
-
-
-

@@ -1,3 +1,13 @@
+---
+title: Tutorial (Azure Kusto)
+description: This article describes Tutorial in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Tutorial
 
 Kusto is a database optimised for diagnostic search through large volumes of related items, and in particular, diagnostic work with telemetry logs.
@@ -453,5 +463,3 @@ All of the above assumed that both databases reside in the cluster you are curre
 Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
 ```
 > Note: when the cluster is specified the database is mandatory
-
-

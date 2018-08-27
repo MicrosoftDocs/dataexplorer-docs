@@ -1,3 +1,13 @@
+---
+title: Tabular expression statements (Azure Kusto)
+description: This article describes Tabular expression statements in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Tabular expression statements
 
 The tabular expression statement is what people usually have in mind when they
@@ -50,5 +60,3 @@ by **tabular data operators**. Kusto supports a number of these sources:
 * The [print operator](printoperator.md).
 * An invocation of a function that returns a table.
 * A [table literal](datatableoperator.md) ("datatable").
-
-

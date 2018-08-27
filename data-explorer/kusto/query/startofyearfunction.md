@@ -1,3 +1,13 @@
+---
+title: startofyear() (Azure Kusto)
+description: This article describes startofyear() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # startofyear()
 
 Returns the start of the year containing the date, shifted by an offset, if provided.
@@ -27,5 +37,3 @@ A datetime representing the start of the year for the given *date* value, with t
 |2016-01-01 00:00:00.0000000|
 |2017-01-01 00:00:00.0000000|
 |2018-01-01 00:00:00.0000000|
-
-

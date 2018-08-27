@@ -1,3 +1,13 @@
+---
+title: radians() (Azure Kusto)
+description: This article describes radians() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # radians()
 
 Converts angle value in degrees into value in radians, using formula `radians = (PI / 180 ) * angle-in-degrees`
@@ -24,6 +34,3 @@ print radians0 = radians(90), radians1 = radians(180), radians2 = radians(360)
 |radians0|radians1|radians2|
 |---|---|---|
 |1.5707963267949|3.14159265358979|6.28318530717959|
-
-
-

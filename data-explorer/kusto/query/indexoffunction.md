@@ -1,3 +1,13 @@
+---
+title: indexof() (Azure Kusto)
+description: This article describes indexof() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # indexof()
 
 Function reports the zero-based index of the first occurrence of a specified string within input string.
@@ -40,5 +50,3 @@ range x from 1 to 1 step 1
 
 
  
-
-

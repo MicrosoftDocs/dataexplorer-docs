@@ -1,3 +1,13 @@
+---
+title: Shuffle Join (Azure Kusto)
+description: This article describes Shuffle Join in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Shuffle Join
 
 Shuffle join is a semantic-preserving transformation for join that depending on the actual data can yield considerably better performance.
@@ -107,6 +117,3 @@ on $left.l-partkey == $right.p-partkey
 ```
 
 Please note that setting many partitions may degrade performance and consume more cluster resources so it is recommended to choose the partitions number carefully (starting with the hint.strategy = shuffle and start increasing the partitions gradually).-->
-
-
-

@@ -1,3 +1,13 @@
+---
+title: buildschema() (aggregation function) (Azure Kusto)
+description: This article describes buildschema() (aggregation function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # buildschema() (aggregation function)
 
 Returns the minimal schema that admits all values of *DynamicExpr*.
@@ -70,5 +80,3 @@ They are equivalent to a subset of the TypeScript type annotations, encoded as a
       z?: { [n:number] : (int | string)},
       t?: { [n:number]: string } 
     }
-
-

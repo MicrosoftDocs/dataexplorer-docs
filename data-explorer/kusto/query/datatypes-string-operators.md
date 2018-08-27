@@ -1,3 +1,13 @@
+---
+title: String operators (Azure Kusto)
+description: This article describes String operators in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # String operators
 
 The following table summarizes operators on strings:
@@ -86,9 +96,6 @@ a substring index defined on the column (which allows searching for any
 substring, not just a whole term, very quickly), at the cost of increased
 memory footprint of the index. Last, it is possible to disable building
 any index on a column.
-
-
-
 
 
 

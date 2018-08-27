@@ -1,3 +1,13 @@
+---
+title: mvexpand operator (Azure Kusto)
+description: This article describes mvexpand operator in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # mvexpand operator
 
 Expands multi-value collection(s) from a [dynamic](./scalar-data-types/dynamic.md)-typed column so that each value in the collection gets a separate row.
@@ -64,10 +74,8 @@ Two modes of property-bag expansions are supported:
 
 **See also**
 
-See [bag-unpack()](/queryLanguage/bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys.
+See [bag-unpack()](/query/bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys.
 
 **Examples**
 
 See [Chart count of live activites over time](./samples.md#concurrent-activities).
-
-

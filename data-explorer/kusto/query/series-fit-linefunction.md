@@ -1,3 +1,13 @@
+---
+title: series-fit-line() (Azure Kusto)
+description: This article describes series-fit-line() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # series-fit-line()
 
 Applies linear regression on a series, returning multiple columns.  
@@ -36,5 +46,3 @@ range x from 1 to 1 step 1
 | RSquare | Slope | Variance | RVariance | Interception | LineFit                                                                                     |
 |---------|-------|----------|-----------|--------------|---------------------------------------------------------------------------------------------|
 | 0.982   | 2.730 | 98.628   | 1.686     | -1.666       | 1.064, 3.7945, 6.526, 9.256, 11.987, 14.718, 17.449, 20.180, 22.910, 25.641, 28.371, 31.102 |
-
-

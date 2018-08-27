@@ -1,3 +1,13 @@
+---
+title: Queries (Azure Kusto)
+description: This article describes Queries in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # Queries
 
 A query is a read-only operation against a Kusto Engine cluster's
@@ -36,5 +46,3 @@ even if it only has one column and one row.
 # Reference: Query operators
 
 > `T` is used in query examples below to denote the preceding pipeline or source table.
-
-

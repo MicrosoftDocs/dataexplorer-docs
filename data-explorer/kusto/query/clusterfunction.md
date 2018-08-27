@@ -1,3 +1,13 @@
+---
+title: cluster() (scope function) (Azure Kusto)
+description: This article describes cluster() (scope function) in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # cluster() (scope function)
 
 Changes the reference of the query to a remote cluster. 
@@ -64,5 +74,3 @@ receives a parameter `clusterName` - which is passed into the cluster() function
 ```
 
 **Note:** such functions can be used only locally and not in the cross-cluster query.
-
-

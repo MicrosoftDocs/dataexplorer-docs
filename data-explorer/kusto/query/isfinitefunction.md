@@ -1,3 +1,13 @@
+---
+title: isfinite() (Azure Kusto)
+description: This article describes isfinite() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # isfinite()
 
 Returns whether input is a finite value (is neither infinite nor NaN).
@@ -31,8 +41,6 @@ range x from -1 to 1 step 1
 
 |x|y|div|isfinite|
 |---|---|---|---|
-|-1|0|-∞|0|
+|-1|0|-âˆž|0|
 |0|0|NaN|0|
-|1|0|∞|0|
-
-
+|1|0|âˆž|0|

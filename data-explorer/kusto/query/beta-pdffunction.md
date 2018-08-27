@@ -1,3 +1,13 @@
+---
+title: beta-pdf() (Azure Kusto)
+description: This article describes beta-pdf() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # beta-pdf()
 
 Returns the probability density beta function.
@@ -24,9 +34,9 @@ The beta distribution is commonly used to study variation in the percentage of s
 
 If any argument is nonnumeric, beta-pdf() returns null value.
 
-If x ≤ 0 or 1 ≤ x, beta-pdf() returns NaN value.
+If x â‰¤ 0 or 1 â‰¤ x, beta-pdf() returns NaN value.
 
-If alpha ≤ 0 or beta ≤ 0, beta-pdf() returns the NaN value.
+If alpha â‰¤ 0 or beta â‰¤ 0, beta-pdf() returns the NaN value.
 
 **Examples**
 
@@ -52,5 +62,3 @@ datatable(x:double, alpha:double, beta:double, comment:string)
 
 * For computing the inverse of the beta cumulative probability density function, see [beta-inv()](./beta-invfunction.md).
 * For the standard cumulative beta distribution function, see [beta-cdf()](./beta-cdffunction.md).
-
-

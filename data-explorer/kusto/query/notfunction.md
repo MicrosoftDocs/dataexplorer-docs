@@ -1,3 +1,13 @@
+---
+title: not() (Azure Kusto)
+description: This article describes not() in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # not()
 
 Reverses the value of its `bool` argument.
@@ -15,6 +25,3 @@ Reverses the value of its `bool` argument.
 **Returns**
 
 Returns the reversed logical value of its `bool` argument.
-
-
-

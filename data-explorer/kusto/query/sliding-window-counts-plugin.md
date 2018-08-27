@@ -1,3 +1,13 @@
+---
+title: sliding-window-counts plugin (Azure Kusto)
+description: This article describes sliding-window-counts plugin in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
 # sliding-window-counts plugin
 
 Calculates counts and distinct count of values in a sliding window over a lookback period.
@@ -73,5 +83,3 @@ T | evaluate sliding-window-counts(UserId, Timestamp, start, end, lookbackWindow
 |2017-08-05 00:00:00.0000000|7|5|
 |2017-08-06 00:00:00.0000000|2|2|
 |2017-08-07 00:00:00.0000000|1|1|
-
-
