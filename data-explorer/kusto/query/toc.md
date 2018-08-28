@@ -383,13 +383,3 @@
 ## [Session Count](session-count-plugin.md)
 ## [Funnel Sequence](funnel-sequence-plugin.md)
 ## [Funnel Sequence Completion](funnel-sequence-completion-plugin.md)
-
-# [Reference material for Kusto Query Language](reference.md)
-## [RE2 syntax](re2.md)
-## [SQL to Kusto Cheat Sheet](sqlcheatsheet.md)
-## [Splunk to Kusto Cheat Sheet](splunktokusto-cheatsheet.md)
-### [Concepts](splunktokusto-concepts.md)
-### [Operators](splunktokusto-operators.md)
-### [Functions](splunktokusto-functions.md) 
-
-
