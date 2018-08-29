@@ -17,11 +17,11 @@ Returns the integer number of days since the preceding Sunday, as a `timespan`.
 
 **Syntax**
 
-`dayofweek(`*a-date*`)`
+`dayofweek(`*a_date*`)`
 
 **Arguments**
 
-* `a-date`: A `datetime`.
+* `a_date`: A `datetime`.
 
 **Returns**
 

@@ -21,7 +21,7 @@ Changes the reference of the query to a remote cluster.
 **Arguments**
 
 * *stringConstant*: Name of the cluster that is referenced. Cluster name can be either 
-as fully qualified DNS name or as a stirng that will be suffixied with `.kusto.windows.net`. Argument has to be _constant- prior of query execution, i.e. cannot come from sub-query evaluation.
+as fully qualified DNS name or as a stirng that will be suffixied with `.kusto.windows.net`. Argument has to be _constant_ prior of query execution, i.e. cannot come from sub-query evaluation.
 
 **Notes**
 

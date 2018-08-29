@@ -1,6 +1,6 @@
 ---
-title: format-timespan() (Azure Kusto)
-description: This article describes format-timespan() in Azure Kusto.
+title: format_timespan() (Azure Kusto)
+description: This article describes format_timespan() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,23 +8,23 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# format-timespan()
+# format_timespan()
 
 Formats a timespan parameter based on the format pattern parameter.
 
-    format-timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') 
+    format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') 
     
     => "2:3:4.1234500"
 
 
 **Syntax**
 
-`format-timespan(`*a-timespan*,*a-format*`)`
+`format_timespan(`*a_timespan*,*a_format*`)`
 
 **Arguments**
 
-* `a-timespan`: a `timespan` to format.
-* `a-format`: a `format` to use.
+* `a_timespan`: a `timespan` to format.
+* `a_format`: a `format` to use.
 
 **Returns**
 
@@ -66,6 +66,6 @@ The string with the format result.
 **Examples**
 
 ```kusto
-format-timespan(time(29.09:00:05.12345), 'dd.hh:mm:ss [FF]')  //'29.09:00:05 [12]'
-format-timespan(time(29.09:00:05.12345), 'ddd.h:mm:ss [fff]') //'029.9:00:05 [123]'
+format_timespan(time(29.09:00:05.12345), 'dd.hh:mm:ss [FF]')  //'29.09:00:05 [12]'
+format_timespan(time(29.09:00:05.12345), 'ddd.h:mm:ss [fff]') //'029.9:00:05 [123]'
 ```

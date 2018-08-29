@@ -20,17 +20,17 @@ Here are few examples which shows how to use hll/tdigest and that using these in
 
 
 Assuming that we have the table PageViewsHllTDigest which has the hll values over Pages viewed in each hour.
-now we are interested in getting these values but binned to `12h` so we may merge the hll values using hll-merge() aggregate function by timestamp binned to `12h` and then call the function dcount-hll to get the final dcount value:
+now we are interested in getting these values but binned to `12h` so we may merge the hll values using hll_merge() aggregate function by timestamp binned to `12h` and then call the function dcount_hll to get the final dcount value:
 
 ```kusto
 PageViewsHllTDigest
-| summarize merged-hll = hll-merge(hllPage) by bin(Timestamp, 12h)
-| project Timestamp , dcount-hll(merged-hll)
+| summarize merged_hll = hll_merge(hllPage) by bin(Timestamp, 12h)
+| project Timestamp , dcount_hll(merged_hll)
 
 
 ```
 
-|Timestamp|dcount-hll-merged-hll|
+|Timestamp|dcount_hll_merged_hll|
 |---|---|
 |2016-05-01 12:00:00.0000000|20056275|
 |2016-05-02 00:00:00.0000000|38797623|
@@ -42,13 +42,13 @@ Or even for binned timestamp for `1d` :
 
 ```kusto
 PageViewsHllTDigest
-| summarize merged-hll = hll-merge(hllPage) by bin(Timestamp, 1d)
-| project Timestamp , dcount-hll(merged-hll)
+| summarize merged_hll = hll_merge(hllPage) by bin(Timestamp, 1d)
+| project Timestamp , dcount_hll(merged_hll)
 
 
 ```
 
-|Timestamp|dcount-hll-merged-hll|
+|Timestamp|dcount_hll_merged_hll|
 |---|---|
 |2016-05-01 00:00:00.0000000|20056275|
 |2016-05-02 00:00:00.0000000|64135183|
@@ -59,13 +59,13 @@ PageViewsHllTDigest
 
  ```kusto
 PageViewsHllTDigest
-| summarize merged-tdigests = merge-tdigests(tdigestBytesDel) by bin(Timestamp, 12h)
-| project Timestamp , percentile-tdigest(merged-tdigests, 95, typeof(long))
+| summarize merged_tdigests = merge_tdigests(tdigestBytesDel) by bin(Timestamp, 12h)
+| project Timestamp , percentile_tdigest(merged_tdigests, 95, typeof(long))
 
 
 ```
 
-|Timestamp|percentile-tdigest-merged-tdigests|
+|Timestamp|percentile_tdigest_merged_tdigests|
 |---|---|
 |2016-05-01 12:00:00.0000000|170200|
 |2016-05-02 00:00:00.0000000|152975|
@@ -76,8 +76,8 @@ PageViewsHllTDigest
 
 
 When having a too large datasets where we need to run a periodic queries over this dataset but running the regular queries to calculate [`percentile()`](percentiles-aggfunction.md) or [`dcount()`](dcount-aggfunction.md) over these big dateset hits kusto limits.
-To solve this problem, Newly added data may be added to a temp table as hll or tdigest values using [`hll()`](hll-aggfunction.md) when the required operation is dcount or [`tdigest()`](tdigest-aggfunction.md) when the required operation is percentile using [`set/append`](https://kusdoc2.azurewebsites.net/docs/controlCommands/controlcommands_dataingestion.html) or [`update policy`](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_updatepolicy.html), In this case, the intermediate results of dcount or tdigest are saved into another dataset which should be smaller than the target big one.
-Then when we need to get the final results of these values, the queries may use hll/tdigest mergers: [`hll-merge()`](hll-merge-aggfunction.md)/[`merge-tdigests()`](merge-tdigests-aggfunction.md), Then, After getting the merged values, [`percentile-tdigest()`](percentile-tdigestfunction.md) / [`dcount-hll()`](dcount-hllfunction.md) may be invoked on these merged values to get the final result of dcount or percentiles.
+To solve this problem, Newly added data may be added to a temp table as hll or tdigest values using [`hll()`](hll-aggfunction.md) when the required operation is dcount or [`tdigest()`](tdigest-aggfunction.md) when the required operation is percentile using [`set/append`](https://kusdoc2.azurewebsites.net/docs/controlCommands/dataingestion.html) or [`update policy`](https://kusdoc2.azurewebsites.net/docs/concepts/updatepolicy.html), In this case, the intermediate results of dcount or tdigest are saved into another dataset which should be smaller than the target big one.
+Then when we need to get the final results of these values, the queries may use hll/tdigest mergers: [`hll-merge()`](hll-merge-aggfunction.md)/[`merge_tdigests()`](merge-tdigests-aggfunction.md), Then, After getting the merged values, [`percentile_tdigest()`](percentile-tdigestfunction.md) / [`dcount_hll()`](dcount-hllfunction.md) may be invoked on these merged values to get the final result of dcount or percentiles.
 
 Assuming that we have a table PageViews where each day we ingest data, each day we want to calculate the distinct count of pages viewed per minuite later than date = datetime(2016-05-01 18:00:00.0000000).
 
@@ -93,7 +93,7 @@ PageViews
 
 ```
 
-|Timestamp|percentile-BytesDelivered-90|dcount-Page|
+|Timestamp|percentile_BytesDelivered_90|dcount_Page|
 |---|---|---|
 |2016-05-01 00:00:00.0000000|83634|20056275|
 |2016-05-02 00:00:00.0000000|82770|64135183|
@@ -103,16 +103,16 @@ PageViews
 
 This query will aggregate all the values each time we run this query (e.g, if we are interested in running it many times a day).
 
-if we save the hll and tdigest values (which are the intermediate results of dcount and percentile) into a temp table PageViewsHllTDigest using update policy or set/append commands so we may only merge the values and then use dcount-hll/percentile-tdigest using the following query :
+if we save the hll and tdigest values (which are the intermediate results of dcount and percentile) into a temp table PageViewsHllTDigest using update policy or set/append commands so we may only merge the values and then use dcount_hll/percentile_tdigest using the following query :
 
 
 ```kusto
 PageViewsHllTDigest
-| summarize  percentile-tdigest(merge-tdigests(tdigestBytesDel), 90), dcount-hll(hll-merge(hllPage)) by bin(Timestamp, 1d)
+| summarize  percentile_tdigest(merge_tdigests(tdigestBytesDel), 90), dcount_hll(hll_merge(hllPage)) by bin(Timestamp, 1d)
 
 ```
 
-|Timestamp|percentile-tdigest-merge-tdigests-tdigestBytesDel|dcount-hll-hll-merge-hllPage|
+|Timestamp|percentile_tdigest_merge_tdigests_tdigestBytesDel|dcount_hll_hll_merge_hllPage|
 |---|---|---|
 |2016-05-01 00:00:00.0000000|84224|20056275|
 |2016-05-02 00:00:00.0000000|83486|64135183|
@@ -153,7 +153,7 @@ on Page
 | join kind = inner
     totalPagesPerDay
 on $left.Day1 == $right.Day
-| project Day1, Day2, Percentage = count-*100.0/count-1
+| project Day1, Day2, Percentage = count_*100.0/count_1
 
 
 ```
@@ -167,7 +167,7 @@ on $left.Day1 == $right.Day
  
 The query above took ~18 seconds.
 
-When using the functions of [`hll()`](hll-aggfunction.md), [`hll-merge()`](hll-merge-aggfunction.md) and [`dcount-hll()`](dcount-hllfunction.md), the equivalent query for above will end after ~1.3 seconds and shows that hll functions speeds up 
+When using the functions of [`hll()`](hll-aggfunction.md), [`hll_merge()`](hll-merge-aggfunction.md) and [`dcount_hll()`](dcount-hllfunction.md), the equivalent query for above will end after ~1.3 seconds and shows that hll functions speeds up 
 the query above by ~14 times:
 
 ```kusto
@@ -179,14 +179,14 @@ Stats
 | project idx=tolong((day-day0)/1d), day, pagehll
 | mvexpand pidx=range(0, daycount) to typeof(long)
 // extending column to get the dcount value from hll'ed values for each date (same as totalPagesPerDay from above query)
-| extend key1=iff(idx < pidx, idx, pidx), key2=iff(idx < pidx, pidx, idx), pages=dcount-hll(pagehll)
+| extend key1=iff(idx < pidx, idx, pidx), key2=iff(idx < pidx, pidx, idx), pages=dcount_hll(pagehll)
 // foreach two dates , merge the hll'ed values to get the total dcount over each two dates, 
-// this will help us to get the pages viewed in both date1 and date2 (see describtion below about the intersection-size)
-| summarize (day1, pages1)=argmin(day, pages), (day2, pages2)=argmax(day, pages), union-size=dcount-hll(hll-merge(pagehll)) by key1, key2
+// this will help us to get the pages viewed in both date1 and date2 (see describtion below about the intersection_size)
+| summarize (day1, pages1)=argmin(day, pages), (day2, pages2)=argmax(day, pages), union_size=dcount_hll(hll_merge(pagehll)) by key1, key2
 | where day2 > day1
 // to get pages viewed in date1 and also date2, we look at the merged dcount of date1 and date2, substract it from pages of date1 + pages on date2.
-| project pages1, day1,day2, intersection-size=(pages1 + pages2 - union-size)
-| project day1, day2, Percentage = intersection-size*100.0 / pages1
+| project pages1, day1,day2, intersection_size=(pages1 + pages2 - union_size)
+| project day1, day2, Percentage = intersection_size*100.0 / pages1
 
 
 
@@ -200,4 +200,3 @@ Stats
 
 
 Note: the results of the queries are not 100% accurate due to the error of the hll functions.(see [`dcount()`](dcount-aggfunction.md) for further information about the errors).
-

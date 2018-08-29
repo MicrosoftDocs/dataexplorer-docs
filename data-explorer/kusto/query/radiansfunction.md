@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # radians()
 
-Converts angle value in degrees into value in radians, using formula `radians = (PI / 180 ) * angle-in-degrees`
+Converts angle value in degrees into value in radians, using formula `radians = (PI / 180 ) * angle_in_degrees`
 
 **Syntax**
 

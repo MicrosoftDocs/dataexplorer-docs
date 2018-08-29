@@ -35,6 +35,6 @@ range x from 1 to 100 step 1
 
 ```
 
-|stdevif-x|
+|stdevif_x|
 |---|
 |29.1547594742265|

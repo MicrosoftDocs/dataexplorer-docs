@@ -1,6 +1,6 @@
 ---
-title: series-multiply() (Azure Kusto)
-description: This article describes series-multiply() in Azure Kusto.
+title: series_multiply() (Azure Kusto)
+description: This article describes series_multiply() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# series-multiply()
+# series_multiply()
 
 Calculates the element-wise multiplication of two numeric series inputs.
 
 **Syntax**
 
-`series-multiply(`*series1*`,` *series2*`)`
+`series_multiply(`*series1*`,` *series2*`)`
 
 **Arguments**
 
@@ -30,11 +30,11 @@ Dynamic array of calculated element-wise multiplication operation between the tw
 range x from 1 to 3 step 1
 | extend y = x * 2
 | extend z = y * 2
-| project s1 = pack-array(x,y,z), s2 = pack-array(z, y, x)
-| extend s1-multiply-s2 = series-multiply(s1, s2)
+| project s1 = pack_array(x,y,z), s2 = pack_array(z, y, x)
+| extend s1_multiply_s2 = series_multiply(s1, s2)
 ```
 
-|s1	        |s2|	    s1-multiply-s2|
+|s1	        |s2|	    s1_multiply_s2|
 |---|---|---|
 |[1,2,4]	|[4,2,1]|	[4,4,4]|
 |[2,4,8]	|[8,4,2]|	[16,16,16]|

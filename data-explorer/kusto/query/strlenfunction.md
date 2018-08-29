@@ -36,7 +36,7 @@ Each Unicode character in the string is equal to `1`, including surrogates.
 print strlen("hello")
 ```
 
-|print-0|
+|print_0|
 |---|
 |5|
 
@@ -44,6 +44,6 @@ print strlen("hello")
 print strlen("â’¦â’°â’®â’¯â’ª")
 ```
 
-|print-0|
+|print_0|
 |---|
 |5|

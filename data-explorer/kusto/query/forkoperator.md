@@ -34,7 +34,7 @@ Multiple result tables, one for each of the subqueries.
 * [`materialize`](materializefunction.md) function can be used as a replacement for using [`join`](joinoperator.md) or [`union`](unionoperator.md) on fork legs.
 The input stream will be cached by materialize and then the cached expression can be used in join/union legs.
 
-* A name, given by the `name` argument or by using [`as`](asoperator.md) operator will be used as the to name the result tab in [`Kusto.Explorer`](https://kusdoc2.azurewebsites.net/docs/tools/tools_kusto_explorer.html) tool.
+* A name, given by the `name` argument or by using [`as`](asoperator.md) operator will be used as the to name the result tab in [`Kusto.Explorer`](https://kusdoc2.azurewebsites.net/docs/tools/kusto-explorer.html) tool.
 
 * Avoid using `fork` with a single subquery.
 
@@ -65,4 +65,3 @@ KustoLogs
     EventsTexts = ( project Timestamp, EventText | top 1000 by Timestamp desc )
     TimeRangePerActivityID = ( summarize min(Timestamp), max(Timestamp) by ActivityID )
 ```
-

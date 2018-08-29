@@ -1,6 +1,6 @@
 ---
-title: url-decode() (Azure Kusto)
-description: This article describes url-decode() in Azure Kusto.
+title: url_decode() (Azure Kusto)
+description: This article describes url_decode() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# url-decode()
+# url_decode()
 
 The function converts encoded URL into a to regular URL representation. 
 
@@ -16,7 +16,7 @@ Detailed information about URL decoding and encoding can be found [here](https:/
 
 **Syntax**
 
-`url-decode(`*encoded url*`)`
+`url_decode(`*encoded url*`)`
 
 **Arguments**
 
@@ -30,7 +30,7 @@ URL (string) in a regular representation.
 
 ```kusto
 let url = @'https%3a%2f%2fwww.bing.com%2f';
-print original = url, decoded = url-decode(url)
+print original = url, decoded = url_decode(url)
 ```
 
 |original|decoded|

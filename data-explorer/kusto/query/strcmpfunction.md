@@ -47,4 +47,3 @@ datatable(string1:string, string2:string)
 |abc|ABC|1|
 |ABC|abc|-1|
 |abcde|abc|1|
-

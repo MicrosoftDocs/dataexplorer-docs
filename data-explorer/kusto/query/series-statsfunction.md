@@ -1,6 +1,6 @@
 ---
-title: series-stats() (Azure Kusto)
-description: This article describes series-stats() in Azure Kusto.
+title: series_stats() (Azure Kusto)
+description: This article describes series_stats() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# series-stats()
+# series_stats()
 
 Returns statistics for a series in multiple columns.  
 
-The `series-stats()` function takes a column containing dynamic numerical array as input and calculates the following columns:
+The `series_stats()` function takes a column containing dynamic numerical array as input and calculates the following columns:
 * `min`: minimum value in the input array
-* `min-idx`: minimum value in the input array
+* `min_idx`: minimum value in the input array
 * `max`: maximum value in the input array
-* `max-idx`: maximum value in the input array
+* `max_idx`: maximum value in the input array
 * `avg`: average value of the input array
 * `variance`: sample variance of input array
 * `stdev`: sample standard deviation of the input array
@@ -25,11 +25,11 @@ The `series-stats()` function takes a column containing dynamic numerical array 
 
 **Syntax**
 
-project `series-stats(`*x*`)` or extend `series-stats(`*x*`)` 
-* Will return all mentioned above columns with the following names: series-stats-x-min, series-stats-x-min-idx and etc.
+project `series_stats(`*x*`)` or extend `series_stats(`*x*`)` 
+* Will return all mentioned above columns with the following names: series_stats_x_min, series_stats_x_min_idx and etc.
  
-project (m, mi)=`series-stats(`*x*`)` or extend (m, mi)=`series-stats(`*x*`)`
-* Will return the following columns: m (min) and mi (min-idx).
+project (m, mi)=`series_stats(`*x*`)` or extend (m, mi)=`series_stats(`*x*`)`
+* Will return the following columns: m (min) and mi (min_idx).
 
 **Arguments**
 
@@ -39,10 +39,10 @@ project (m, mi)=`series-stats(`*x*`)` or extend (m, mi)=`series-stats(`*x*`)`
 
 ```kusto
 print x=dynamic([23,46,23,87,4,8,3,75,2,56,13,75,32,16,29]) 
-| project series-stats(x)
+| project series_stats(x)
 
 ```
 
-|series-stats-x-min|series-stats-x-min-idx|series-stats-x-max|series-stats-x-max-idx|series-stats-x-avg|series-stats-x-stdev|series-stats-x-variance|
+|series_stats_x_min|series_stats_x_min_idx|series_stats_x_max|series_stats_x_max_idx|series_stats_x_avg|series_stats_x_stdev|series_stats_x_variance|
 |---|---|---|---|---|---|---|
 |2|8|87|3|32.8|28.5036338535483|812.457142857143|

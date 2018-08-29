@@ -1,6 +1,6 @@
 ---
-title: sql-request plugin (Azure Kusto)
-description: This article describes sql-request plugin in Azure Kusto.
+title: sql_request plugin (Azure Kusto)
+description: This article describes sql_request plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,11 +8,11 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# sql-request plugin
+# sql_request plugin
 
-  `evaluate` `sql-request` `(` *ConnectionString* `,` *SqlQuery* `)`
+  `evaluate` `sql_request` `(` *ConnectionString* `,` *SqlQuery* `)`
 
-The `sql-request` plugin sends a SQL query to a SQL Server network endpoint
+The `sql_request` plugin sends a SQL query to a SQL Server network endpoint
 and returns the first rowset in the results.
 
 **Arguments**
@@ -36,7 +36,7 @@ to return the smallest data set possible, as currently the Kusto optimizer
 does not attempt to optimize queries between Kusto and SQL.
 
 ```kusto
-evaluate sql-request(
+evaluate sql_request(
   'Server=tcp:zivckusto2.database.windows.net,1433;'
     'Authentication="Active Directory Integrated";'
     'Initial Catalog=zivckusto2;',
@@ -50,7 +50,7 @@ authentication is done by username/password. Note that for confidentiality,
 we use obfuscated strings here.
 
 ```kusto
-evaluate sql-request(
+evaluate sql_request(
   'Server=tcp:zivckusto2.database.windows.net,1433;'
     'Initial Catalog=zivckusto2;'
     h'User ID=USERNAME;'
@@ -62,7 +62,7 @@ evaluate sql-request(
 
 **Authentication**
 
-The sql-request plugin supports two methods of authentication to the
+The sql_request plugin supports two methods of authentication to the
 SQL Server endpoint:
 
 1. **AAD integrated authentication** (`Authentication="Active Directory Integrated"`):
@@ -94,4 +94,4 @@ certificate.
 
 **Restrictions**
 
-Kusto service controls allowed sql-request plugin destinations by [Callout policy](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_calloutpolicy.html)
+Kusto service controls allowed sql-request plugin destinations by [Callout policy](https://kusdoc2.azurewebsites.net/docs/concepts/calloutpolicy.html)

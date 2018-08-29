@@ -1,6 +1,6 @@
 ---
-title: url-encode() (Azure Kusto)
-description: This article describes url-encode() in Azure Kusto.
+title: url_encode() (Azure Kusto)
+description: This article describes url_encode() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# url-encode()
+# url_encode()
 
 The function converts characters of the input URL into a format that can be transmitted over the Internet. 
 
@@ -16,7 +16,7 @@ Detailed information about URL encoding and decoding can be found [here](https:/
 
 **Syntax**
 
-`url-encode(`*url*`)`
+`url_encode(`*url*`)`
 
 **Arguments**
 
@@ -30,7 +30,7 @@ URL (string) converted into a format that can be transmitted over the Internet.
 
 ```kusto
 let url = @'https://www.bing.com/';
-print original = url, encoded = url-encode(url)
+print original = url, encoded = url_encode(url)
 ```
 
 |original|encoded|

@@ -60,7 +60,7 @@ on Page
 | join kind = inner
     totalPagesPerDay
 on $left.Day1 == $right.Day
-| project Day1, Day2, Percentage = count-*100.0/count-1
+| project Day1, Day2, Percentage = count_*100.0/count_1
 
 
 ```
@@ -92,7 +92,7 @@ on Page
 | join kind = inner
     totalPagesPerDay
 on $left.Day1 == $right.Day
-| project Day1, Day2, Percentage = count-*100.0/count-1
+| project Day1, Day2, Percentage = count_*100.0/count_1
 ```
 
 |Day1|Day2|Percentage|
@@ -114,8 +114,8 @@ let materializedScope = PageViews
 | where Page !endswith JunkPagesSuffix
 | where isempty(Page) == false;
 let cachedResult = materialize(materializedScope);
-union (cachedResult | top 2 by count- | project Page ), (cachedResult | top 2 by sum-BytesDelivered | project Page)
-| summarize count() by Page | where count- < 2 | project Page
+union (cachedResult | top 2 by count_ | project Page ), (cachedResult | top 2 by sum_BytesDelivered | project Page)
+| summarize count() by Page | where count_ < 2 | project Page
 ```
 
 |Page|
@@ -135,9 +135,9 @@ let subQuery = PageViews
 | summarize sum(BytesDelivered), count() by Page
 | where Page !endswith JunkPagesSuffix
 | where isempty(Page) == false;
-union (subQuery | top 2 by count-| project Page ), (subQuery | top 2 by sum-BytesDelivered| project Page)
+union (subQuery | top 2 by count_| project Page ), (subQuery | top 2 by sum_BytesDelivered| project Page)
 | summarize count() by Page
-| where count- < 2
+| where count_ < 2
 | project Page
 ```
 

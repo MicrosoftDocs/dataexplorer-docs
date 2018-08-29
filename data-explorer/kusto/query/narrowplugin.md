@@ -64,7 +64,7 @@ Row  | Column                              | Value
 0    | NotHealthyReason                    | [null]
 0    | IsAttentionRequired                 | False
 0    | AttentionRequiredReason             | [null]
-0    | ProductVersion                      | KustoRelease-2017.03.13.2
+0    | ProductVersion                      | KustoRelease_2017.03.13.2
 0    | FailedIngestOperations              | 0
 0    | FailedMergeOperations               | 0
 0    | MaxExtentsInSingleTable             | 64

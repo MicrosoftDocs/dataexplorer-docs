@@ -34,6 +34,6 @@ range x from 1 to 100 step 1
 | summarize avgif(x, x%2 == 0)
 ```
 
-|avgif-x|
+|avgif_x|
 |---|
 |51|

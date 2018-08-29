@@ -36,7 +36,7 @@ Alternative form with no piped input:
 * `withsource`=*ColumnName*: If specified, the output will include a column
 called *ColumnName* whose value indicates which source table has contributed each row.
 If the query effectively (after wildcard matching) references tables from more than one database (default database always counts) the value of this column will have a table name qualified with the database.
-Similarly __cluster and database-_ qualifications will be present in the value if more than one cluster is referenced. 
+Similarly __cluster and database__ qualifications will be present in the value if more than one cluster is referenced. 
 * `isfuzzy=` `true` | `false`: If `isfuzzy` is set to `true` - allows fuzzy resolution of union legs. `Fuzzy` applies to the set of `union` sources. It means that while analyzing the query and preparing for execution, the set of union sources is reduced to the set of table references that exist and are accessible at the time. If at least one such table was found, any resolution failure will yield a warning in the query status results (one for each missing reference), but will not prevent the query execution; if no resolutions were successful - the query will return an error.
 The default is `isfuzzy=` `false`.
 
@@ -47,10 +47,10 @@ A table with as many rows as there are in all the input tables.
 **Notes**
 1. `union` scope can include [let statements](./letstatement.md) if those are 
 attributed with [view keyword](./letstatement.md)
-2. `union` scope will not include [functions](https://kusdoc2.azurewebsites.net/docs/controlCommands/controlcommands_functions.html). To include 
+2. `union` scope will not include [functions](https://kusdoc2.azurewebsites.net/docs/controlCommands/functions.html). To include 
 function in the union scope - define a [let statement](./letstatement.md) 
 with [view keyword](./letstatement.md)
-3. If the `union` input is [tables](https://kusdoc2.azurewebsites.net/docs/controlCommands/controlcommands_tables.html) (as oppose to [tabular expressions](./findoperator.md)), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./syntax.md) for better performance. Please note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
+3. If the `union` input is [tables](https://kusdoc2.azurewebsites.net/docs/controlCommands/tables.html) (as oppose to [tabular expressions](./findoperator.md)), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./syntax.md) for better performance. Please note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
 4. `isfuzzy=` `true` applies only to the phase of the `union` sources resolution. Once the set of source tables was determined, possible additional query failures will not be suppressed.
 
 **Example**
@@ -86,13 +86,14 @@ This more efficient version produces the same result. It filters each table befo
  
 ```kusto     
 // Using union isfuzzy=true to access non-existing view:                   
-let View-1 = view () { range x from 1 to 1 step 1 };
-let View-2 = view () { range x from 1 to 1 step 1 };
-let OtherView-1 = view () { range x from 1 to 1 step 1 };
+// Using union isfuzzy=true to access non-existing view:                   
+let View_1 = view () { range x from 1 to 1 step 1 };
+let View_2 = view () { range x from 1 to 1 step 1 };
+let OtherView_1 = view () { range x from 1 to 1 step 1 };
 union isfuzzy=true
-(View-1 | where x > 0), 
-(View-2 | where x > 0),
-(View-3 | where x > 0)
+(View_1 | where x > 0), 
+(View_2 | where x > 0),
+(View_3 | where x > 0)
 | count 
 ```
 
@@ -101,13 +102,13 @@ union isfuzzy=true
 |2|
 
 Observing Query Status - the following warning returned:
-`Failed to resolve entity 'View-3'`
+`Failed to resolve entity 'View_3'`
 
 ```kusto
 // Using union isfuzzy=true and wildcard access:
-let View-1 = view () { range x from 1 to 1 step 1 };
-let View-2 = view () { range x from 1 to 1 step 1 };
-let OtherView-1 = view () { range x from 1 to 1 step 1 };
+let View_1 = view () { range x from 1 to 1 step 1 };
+let View_2 = view () { range x from 1 to 1 step 1 };
+let OtherView_1 = view () { range x from 1 to 1 step 1 };
 union isfuzzy=true View*, SomeView*, OtherView*
 | count 
 ```

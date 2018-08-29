@@ -16,11 +16,11 @@ Returns the integer number representing the hour number of the given date
 
 **Syntax**
 
-`hourofday(`*a-date*`)`
+`hourofday(`*a_date*`)`
 
 **Arguments**
 
-* `a-date`: A `datetime`.
+* `a_date`: A `datetime`.
 
 **Returns**
 

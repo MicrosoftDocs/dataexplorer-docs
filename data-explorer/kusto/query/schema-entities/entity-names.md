@@ -17,7 +17,7 @@ two tables with the same name). Entity names are **case-sensitive** for resolvin
 (so, for example, you can't refer to a table called `ThisTable` as `thisTABLE`).
 
 Entity names are one example of **identifiers**. Other identifiers include the names of
-parameters to functions and binding a name through a [let statement](../letstatement.md).
+parameters to functions and binding a name through a [let statement](https://kusdoc2.azurewebsites.net/docs/letstatement.html).
 
 ## Entity pretty names
 
@@ -76,8 +76,6 @@ Alternatively, one might want to choose entity names that are guaranteed to neve
 The Kusto query language reserves all identifiers that start or end with a
 sequence of two underscore characters (`__`); users cannot define such names
 for their own use.
-
-
 
 
 

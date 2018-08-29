@@ -21,8 +21,8 @@ Project two or more columns and use them as the x and y axis of a chart:
 ```kusto 
 StormEvents	
 | where isnotempty(EndLocation) 
-| summarize event-count=count() by EndLocation
-| top 10 by event-count
+| summarize event_count=count() by EndLocation
+| top 10 by event_count
 | render columnchart
 ```
 
@@ -97,7 +97,7 @@ The join will match every start time with all the stop times from the same clien
 
 Then we group by start time and ip to get a group for each session. We must supply a `bin` function for the StartTime parameter: if we don't, Kusto will automatically use 1-hour bins, which will match some start times with the wrong stop times.
 
-`argmin` picks out the row with the smallest duration in each group, and the `*` parameter passes through all the other columns, though it prefixes "min-" to each column name. 
+`argmin` picks out the row with the smallest duration in each group, and the `*` parameter passes through all the other columns, though it prefixes "min_" to each column name. 
 
 
 ![](./images/samples/040.png) 
@@ -106,7 +106,7 @@ Then we can add some code to count the durations in conveniently-sized bins. We'
 
 
       // Count the frequency of each duration:
-    | summarize count() by duration=bin(min-duration/1s, 10) 
+    | summarize count() by duration=bin(min_duration/1s, 10) 
       // Cut off the long tail:
     | where duration < 300
       // Display in a bar chart:
@@ -122,7 +122,7 @@ Then we can add some code to count the durations in conveniently-sized bins. We'
 Logs  
 | filter ActivityId == "ActivityId with Blablabla" 
 | summarize max(Timestamp), min(Timestamp)  
-| extend Duration = max-Timestamp - min-Timestamp 
+| extend Duration = max_Timestamp - min_Timestamp 
  
 wabitrace  
 | filter Timestamp >= datetime(2015-01-12 11:00:00Z)  
@@ -137,7 +137,7 @@ wabitrace
 | filter Tenant == 'DevDiv' and Environment == 'RollupDev2'  
 | filter TotalLaunchedMaps > 0 
 | summarize sum(TotalMapsSeconds) by UnitOfWorkId  
-| extend JobMapsSeconds = sum-TotalMapsSeconds * 1 
+| extend JobMapsSeconds = sum_TotalMapsSeconds * 1 
 | project UnitOfWorkId, JobMapsSeconds 
 | join ( 
 wabitrace  
@@ -153,7 +153,7 @@ wabitrace
 | filter Tenant == 'DevDiv' and Environment == 'RollupDev2'  
 | filter TotalLaunchedReducers > 0 
 | summarize sum(TotalReducesSeconds) by UnitOfWorkId  
-| extend JobReducesSeconds = sum-TotalReducesSeconds * 1 
+| extend JobReducesSeconds = sum_TotalReducesSeconds * 1 
 | project UnitOfWorkId, JobReducesSeconds ) 
 on UnitOfWorkId 
 | join ( 
@@ -182,7 +182,7 @@ on UnitOfWorkId
 | extend CurrentLoad = 1536 + (768 * TotalLaunchedMaps) + (1536 * TotalLaunchedMaps) 
 | extend NormalizedLoad = 1536 + (768 * TotalLaunchedMaps * MapsFactor) + (1536 * TotalLaunchedMaps * ReducesFactor) 
 | summarize sum(CurrentLoad), sum(NormalizedLoad) by  JobName  
-| extend SaveFactor = sum-NormalizedLoad / sum-CurrentLoad 
+| extend SaveFactor = sum_NormalizedLoad / sum_CurrentLoad 
 ```
 
 <a name="concurrent-activities"><a/>
@@ -244,7 +244,7 @@ X
 * We need bin() because, for numeric values and dates, summarize always applies a bin function with a default interval if you don't supply one. 
 
 
-| count-SessionId | samples|
+| count_SessionId | samples|
 |---|---|
 | 1 | 10:01:00|
 | 2 | 10:02:00|
@@ -315,7 +315,7 @@ Our journey starts with looking for anomalies in the error rate of a specific Bi
 ```kusto
 Logs
 | where Timestamp >= datetime(2015-08-22) and Timestamp < datetime(2015-08-23) 
-| where Level == "e" and Service == "Inferences.UnusualEvents-Main" 
+| where Level == "e" and Service == "Inferences.UnusualEvents_Main" 
 | summarize count() by bin(Timestamp, 5min)
 | render anomalychart 
 ```
@@ -325,13 +325,13 @@ The service identified few time buckets with suspicious error rate. I'm using Ku
 ```kusto
 Logs
 | where Timestamp >= datetime(2015-08-22 05:00) and Timestamp < datetime(2015-08-22 06:00)
-| where Level == "e" and Service == "Inferences.UnusualEvents-Main"
+| where Level == "e" and Service == "Inferences.UnusualEvents_Main"
 | summarize count() by Message 
-| top 10 by count- 
-| project count-, Message 
+| top 10 by count_ 
+| project count_, Message 
 ```
 
-|count-|Message
+|count_|Message
 |---|---
 |7125|ExecuteAlgorithmMethod for method 'RunCycleFromInterimData' has failed...
 |7125|InferenceHostService call failed..System.NullReferenceException: Object reference not set to an instance of an object...
@@ -349,7 +349,7 @@ This is where the new `reduce` operator comes to help. The `reduce` operator ide
 ```kusto
 Logs
 | where Timestamp >= datetime(2015-08-22 05:00) and Timestamp < datetime(2015-08-22 06:00)
-| where Level == "e" and Service == "Inferences.UnusualEvents-Main"
+| where Level == "e" and Service == "Inferences.UnusualEvents_Main"
 | reduce by Message with threshold=0.35
 | project Count, Pattern
 ```
@@ -371,7 +371,7 @@ Now that I have a good view into the top errors that contributed to the detected
 ```kusto
 Logs
 | where Timestamp >= datetime(2015-08-22 05:00) and Timestamp < datetime(2015-08-22 06:00)
-| where Level == "e" and Service == "Inferences.UnusualEvents-Main"
+| where Level == "e" and Service == "Inferences.UnusualEvents_Main"
 | evaluate autocluster()
 ```
 
@@ -419,7 +419,7 @@ let Source = datatable(DeviceModel:string, Count:long)
   'iPhone5,2', 66,
 ];
 // Query start here
-let phone-mapping = dynamic(
+let phone_mapping = dynamic(
   {
     "iPhone5,1" : "iPhone 5",
     "iPhone3,2" : "iPhone 4",
@@ -427,7 +427,7 @@ let phone-mapping = dynamic(
     "iPhone5,2" : "iPhone5"
   });
 Source 
-| project FriendlyName = phone-mapping[DeviceModel], Count
+| project FriendlyName = phone_mapping[DeviceModel], Count
 ```
 
 |FriendlyName|Count|

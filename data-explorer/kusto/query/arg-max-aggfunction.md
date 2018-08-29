@@ -1,6 +1,6 @@
 ---
-title: arg-max() (aggregation function) (Azure Kusto)
-description: This article describes arg-max() (aggregation function) in Azure Kusto.
+title: arg_max() (aggregation function) (Azure Kusto)
+description: This article describes arg_max() (aggregation function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# arg-max() (aggregation function)
+# arg_max() (aggregation function)
 
 Finds a row in the group that maximises *ExprToMaximize*, and returns the value of *ExprToReturn* (or `*` to return the entire row).
 
@@ -16,7 +16,7 @@ Finds a row in the group that maximises *ExprToMaximize*, and returns the value 
 
 **Syntax**
 
-`summarize` [`(`*NameExprToMaximize* `,` *NameExprToReturn* [`,` ...] `)=`] `arg-max` `(`*ExprToMaximize*, `*` | *ExprToReturn*  [`,` ...]`)`
+`summarize` [`(`*NameExprToMaximize* `,` *NameExprToReturn* [`,` ...] `)=`] `arg_max` `(`*ExprToMaximize*, `*` | *ExprToReturn*  [`,` ...]`)`
 
 **Arguments**
 
@@ -33,4 +33,4 @@ returns the value of *ExprToReturn* (or `*` to return the entire row).
 
 **Examples**
 
-See examples for [arg-min()](arg-min-aggfunction.md) aggregation function
+See examples for [arg_min()](arg-min-aggfunction.md) aggregation function

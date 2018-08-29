@@ -1,6 +1,6 @@
 ---
-title: hll-merge() (Azure Kusto)
-description: This article describes hll-merge() in Azure Kusto.
+title: hll_merge() (Azure Kusto)
+description: This article describes hll_merge() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# hll-merge()
+# hll_merge()
 
-Merges hll results (scalar version of the aggregate version [`hll-merge()`](hll-merge-aggfunction.md)).
+Merges hll results (scalar version of the aggregate version [`hll_merge()`](hll-merge-aggfunction.md)).
 
 Read more about the underlying algorithm (*H*yper*L*og*L*og) and the estimated error [here](dcount-aggfunction.md#estimation-error-of-dcount).
 
 **Syntax**
 
-`hll-merge(` *Expr1*`,` *Expr2*`, ...)`
+`hll_merge(` *Expr1*`,` *Expr2*`, ...)`
 
 **Arguments**
 
@@ -31,11 +31,11 @@ The result for merging the columns `*Exrp1*`, `*Expr2*`, ... `*ExprN*` to one hl
 ```kusto
 range x from 1 to 10 step 1 
 | extend y = x + 10
-| summarize hll-x = hll(x), hll-y = hll(y)
-| project merged = hll-merge(hll-x, hll-y)
-| project dcount-hll(merged)
+| summarize hll_x = hll(x), hll_y = hll(y)
+| project merged = hll_merge(hll_x, hll_y)
+| project dcount_hll(merged)
 ```
 
-|dcount-hll-merged|
+|dcount_hll_merged|
 |---|
 |20|

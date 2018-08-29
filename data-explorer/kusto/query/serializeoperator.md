@@ -13,7 +13,7 @@ ms.date: 09/24/2018
 Freezes the order of the input row set arbitrarily, so that [window functions](./windowsfunctions.md)
 could be applied to it.
 
-    T | serialize rn=row-number()
+    T | serialize rn=row_number()
 
 **Syntax**
 
@@ -30,5 +30,5 @@ Traces
 
 Traces
 | where ActivityId == "479671d99b7b"
-| serialize rn = row-number()
+| serialize rn = row_number()
 ```

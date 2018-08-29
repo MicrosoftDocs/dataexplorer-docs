@@ -1,6 +1,6 @@
 ---
-title: active-users-count plugin (Azure Kusto)
-description: This article describes active-users-count plugin in Azure Kusto.
+title: active_users_count plugin (Azure Kusto)
+description: This article describes active_users_count plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,17 +8,17 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# active-users-count plugin
+# active_users_count plugin
 
 Calculates distinct count of values, where each value has appeared in at least a minimum number of periods in a lookback period.
 
 Useful for calculating distinct counts of "fans" only,  while not including appearances of "non-fans". A user is counted as a "fan" only if it was active during the lookback period. 
 
-    T | evaluate active-users-count(id, datetime-column, startofday(ago(30d)), startofday(now()), 7d, 1d, 2, 7d, dim1, dim2, dim3)
+    T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, 2, 7d, dim1, dim2, dim3)
 
 **Syntax**
 
-*T* `| evaluate` `active-users-count(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *LookbackWindow*`,` *Period*`,` *ActivePeriodsCount*`,` *Bin* `,` [*dim1*`,` *dim2*`,` ...]`)`
+*T* `| evaluate` `active_users_count(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *LookbackWindow*`,` *Period*`,` *ActivePeriodsCount*`,` *Bin* `,` [*dim1*`,` *dim2*`,` ...]`)`
 
 **Arguments**
 
@@ -39,7 +39,7 @@ Returns a table that has the distinct count values for Ids that have appeared in
 
 Output table schema is:
 
-|*TimelineColumn*|dim1|..|dim-n|dcount-values|
+|*TimelineColumn*|dim1|..|dim_n|dcount_values|
 |---|---|---|---|---|
 |type: as of *TimelineColumn*|..|..|..|long|
 
@@ -68,7 +68,7 @@ let T =  datatable(User:string, Timestamp:datetime)
     "A",      datetime(2018-07-20),
     "B",      datetime(2018-07-24)
 ]; 
-T | evaluate active-users-count(User, Timestamp, Start, End, LookbackWindow, Period, ActivePeriods, Bin)
+T | evaluate active_users_count(User, Timestamp, Start, End, LookbackWindow, Period, ActivePeriods, Bin)
 
 
 

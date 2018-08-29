@@ -17,7 +17,7 @@ Produces a table that aggregates the content of the input table.
 A table that shows the number and average price of each fruit from each supplier. There's a row in the output for each distinct combination of fruit and supplier. The output columns show the count, average price, fruit and supplier. All other input columns are ignored.
 
 
-    T | summarize count() by price-range=bin(price, 10.0)
+    T | summarize count() by price_range=bin(price, 10.0)
 
 A table that shows how many items have prices in each interval  [0,10.0], [10.0,20.0], and so on. This example has a column for the count and one for the price range. All other input columns are ignored.
 
@@ -47,7 +47,7 @@ The result has as many rows as there are distinct combinations of `by` values. I
 
 Although you can provide arbitrary expressions for both the aggregation and grouping expressions, it's more efficient to use simple column names, or apply `bin()` to a numeric column.
 
-The automatic hourly bins for datetime columns is no longer supported. Use explicit binning instead â€“ for example `summarize by bin(timestamp, 1h)`.
+The automatic hourly bins for datetime columns is no longer supported. Use explicit binning instead - for example `summarize by bin(timestamp, 1h)`.
 
 ## List of aggregation functions
 
@@ -137,7 +137,7 @@ type. Because `Duration` has many values, we use `bin` to group its values into 
 Activities | summarize count() by ActivityType, length=bin(Duration, 10m)
 ```
 
-|`count-`|`ActivityType`|`length`
+|`count_`|`ActivityType`|`length`
 |---:|---|---
 |`354`| `dancing` | `0:00:00.000`
 |`23`|`singing` | `0:00:00.000`
@@ -161,7 +161,7 @@ range x from 1 to 1 step 1
 
 ```
 
-|any-x|max-x|max-x-x|min-x|min-x-x|avg-x|schema-x|max-x1|min-x1|percentile-x-55|hll-x|stdev-x|sum-x|sumif-x|tdigest-x|variance-x|
+|any_x|max_x|max_x_x|min_x|min_x_x|avg_x|schema_x|max_x1|min_x1|percentile_x_55|hll_x|stdev_x|sum_x|sumif_x|tdigest_x|variance_x|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |||||||||||||||||
 
@@ -171,7 +171,7 @@ range x from 1 to 1 step 1
 | summarize  count(x), countif(x > 0) , dcount(x), dcountif(x, x > 0)
 ```
 
-|count-x|countif-|dcount-x|dcountif-x|
+|count_x|countif_|dcount_x|dcountif_x|
 |---|---|---|---|
 |0|0|0|0|
 
@@ -181,7 +181,7 @@ range x from 1 to 1 step 1
 | summarize  makeset(x), makelist(x)
 ```
 
-|set-x|list-x|
+|set_x|list_x|
 |---|---|
 |[]|[]|
 
@@ -193,7 +193,7 @@ range x from 1 to 2 step 1
 | summarize sum(y), avg(y)
 ```
 
-|sum-y|avg-y|
+|sum_y|avg_y|
 |---|---|
 |5|5|
 
@@ -205,7 +205,7 @@ range x from 1 to 2 step 1
 | summarize count(y)
 ```
 
-|count-y|
+|count_y|
 |---|
 |2|
 
@@ -215,6 +215,6 @@ range x from 1 to 2 step 1
 | summarize makeset(y), makeset(y)
 ```
 
-|set-y|set-y1|
+|set_y|set_y1|
 |---|---|
 |[5.0]|[5.0]|

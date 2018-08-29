@@ -1,6 +1,6 @@
 ---
-title: beta-pdf() (Azure Kusto)
-description: This article describes beta-pdf() in Azure Kusto.
+title: beta_pdf() (Azure Kusto)
+description: This article describes beta_pdf() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,17 +8,17 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# beta-pdf()
+# beta_pdf()
 
 Returns the probability density beta function.
 
-    beta-pdf(0.2, 10.0, 50.0)
+    beta_pdf(0.2, 10.0, 50.0)
 
 The beta distribution is commonly used to study variation in the percentage of something across samples, such as the fraction of the day people spend watching television.
 
 **Syntax**
 
-`beta-pdf(`*x*`, `*alpha*`, `*beta*`)`
+`beta_pdf(`*x*`, `*alpha*`, `*beta*`)`
 
 **Arguments**
 
@@ -28,15 +28,15 @@ The beta distribution is commonly used to study variation in the percentage of s
 
 **Returns**
 
-* The [probability beta density function](https://en.wikipedia.org/wiki/Beta-distribution#Probability-density-function).
+* The [probability beta density function](https://en.wikipedia.org/wiki/Beta_distribution#Probability_density_function).
 
 **Remarks**
 
-If any argument is nonnumeric, beta-pdf() returns null value.
+If any argument is nonnumeric, beta_pdf() returns null value.
 
-If x â‰¤ 0 or 1 â‰¤ x, beta-pdf() returns NaN value.
+If x â‰¤ 0 or 1 â‰¤ x, beta_pdf() returns NaN value.
 
-If alpha â‰¤ 0 or beta â‰¤ 0, beta-pdf() returns the NaN value.
+If alpha â‰¤ 0 or beta â‰¤ 0, beta_pdf() returns the NaN value.
 
 **Examples**
 
@@ -48,7 +48,7 @@ datatable(x:double, alpha:double, beta:double, comment:string)
     double(-10), 10.0, 20.0, "x < 0, yields NaN",
     0.1, double(-1.0), 20.0, "alpha is < 0, yields NaN"
 ]
-| extend r = beta-pdf(x, alpha, beta)
+| extend r = beta_pdf(x, alpha, beta)
 ```
 
 |x|alpha|beta|comment|r|

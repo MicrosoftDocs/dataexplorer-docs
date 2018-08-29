@@ -1,6 +1,6 @@
 ---
-title: percentile(), percentiles(), percentilew(), percentilesw(), percentiles-array(), percentilesw-array() (aggregation function) (Azure Kusto)
-description: This article describes percentile(), percentiles(), percentilew(), percentilesw(), percentiles-array(), percentilesw-array() (aggregation function) in Azure Kusto.
+title: percentile(), percentiles(), percentilew(), percentilesw(), percentiles_array(), percentilesw_array() (aggregation function) (Azure Kusto)
+description: This article describes percentile(), percentiles(), percentilew(), percentilesw(), percentiles_array(), percentilesw_array() (aggregation function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# percentile(), percentiles(), percentilew(), percentilesw(), percentiles-array(), percentilesw-array() (aggregation function)
+# percentile(), percentiles(), percentilew(), percentilesw(), percentiles_array(), percentilesw_array() (aggregation function)
 
 Returns an estimate for the specified [nearest-rank percentile](#nearest-rank-percentile) of the population defined by *Expr*. 
 The accuracy depends on the density of population in the region of the percentile.
@@ -31,17 +31,17 @@ summarize `percentile(`*Expr*`,` *Percentile*`)`
 
 summarize `percentiles(`*Expr*`,` *Percentile1* [`,` *Percentile2*]`)`
 
-summarize `percentiles-array(`*Expr*`,` *Percentile1* [`,` *Percentile2*]`)`
+summarize `percentiles_array(`*Expr*`,` *Percentile1* [`,` *Percentile2*]`)`
 
-summarize `percentiles-array(`*Expr*`,` *Dynamic array*`)`
+summarize `percentiles_array(`*Expr*`,` *Dynamic array*`)`
 
 summarize `percentilew(`*Expr*`,` *WeightExpr*`,` *Percentile*`)`
 
 summarize `percentilesw(`*Expr*`,` *WeightExpr*`,` *Percentile1* [`,` *Percentile2*]`)`
 
-summarize `percentilesw-array(`*Expr*`,` *WeightExpr*`,` *Percentile1* [`,` *Percentile2*]`)`
+summarize `percentilesw_array(`*Expr*`,` *WeightExpr*`,` *Percentile1* [`,` *Percentile2*]`)`
 
-summarize `percentilesw-array(`*Expr*`,` *WeightExpr*`,` *Dynamic array*`)`
+summarize `percentilesw_array(`*Expr*`,` *WeightExpr*`,` *Dynamic array*`)`
 
 **Arguments**
 
@@ -131,26 +131,26 @@ Multiple percentiles percentiles can be obtained as an array in a single dynamic
 
 ```kusto
 CallDetailRecords 
-| summarize percentiles-array(Duration, 5, 25, 50, 75, 95), avg(Duration)
+| summarize percentiles_array(Duration, 5, 25, 50, 75, 95), avg(Duration)
 ```
 
 ![](./images/aggregations/percentiles-array-result.png)
 
-Similarily weighted percentiles can be returned as a dynamic array using `percentilesw-array`
+Similarily weighted percentiles can be returned as a dynamic array using `percentilesw_array`
 
-Percentiles for `percentiles-array` and `percentilesw-array` can be specified in a dynamic array of integer or floating-point numbers. The array must be constant but does not have to be literal.
+Percentiles for `percentiles_array` and `percentilesw_array` can be specified in a dynamic array of integer or floating-point numbers. The array must be constant but does not have to be literal.
 
 ```kusto
 CallDetailRecords 
-| summarize percentiles-array(Duration, dynamic([5, 25, 50, 75, 95])), avg(Duration)
+| summarize percentiles_array(Duration, dynamic([5, 25, 50, 75, 95])), avg(Duration)
 ```
 
 ```kusto
 CallDetailRecords 
-| summarize percentiles-array(Duration, range(0, 100, 5)), avg(Duration)
+| summarize percentiles_array(Duration, range(0, 100, 5)), avg(Duration)
 ```
 ## Nearest-rank percentile
-*P*-th percentile (0 < *P* <= 100) of a list of ordered values (sorted from least to greatest) is the smallest value in the list such that *P* percent of the data is less or equal to that value ([from Wikipedia article on percentiles](https://en.wikipedia.org/wiki/Percentile#The-Nearest-Rank-method))
+*P*-th percentile (0 < *P* <= 100) of a list of ordered values (sorted from least to greatest) is the smallest value in the list such that *P* percent of the data is less or equal to that value ([from Wikipedia article on percentiles](https://en.wikipedia.org/wiki/Percentile#The_Nearest_Rank_method))
 
 We also define *0*-th percentiles to be the smallest member of the population.
 

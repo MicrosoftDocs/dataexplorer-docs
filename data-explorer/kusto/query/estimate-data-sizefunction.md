@@ -1,6 +1,6 @@
 ---
-title: estimate-data-size() (Azure Kusto)
-description: This article describes estimate-data-size() in Azure Kusto.
+title: estimate_data_size() (Azure Kusto)
+description: This article describes estimate_data_size() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,18 +8,18 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# estimate-data-size()
+# estimate_data_size()
 
 Returns an estimated data size of the selected columns of the tabular expression.
 
-    estimate-data-size(*)
-    estimate-data-size(Col1, Col2, Col3)
+    estimate_data_size(*)
+    estimate_data_size(Col1, Col2, Col3)
 
 **Syntax**
 
-`estimate-data-size(*)`
+`estimate_data_size(*)`
 
-`estimate-data-size(`*col1*`, `*col2*`, `...`)`
+`estimate_data_size(`*col1*`, `*col2*`, `...`)`
 
 **Arguments**
 
@@ -31,12 +31,12 @@ Returns an estimated data size of the selected columns of the tabular expression
 
 **Examples**
 
-Calculating total data size using `estimated-data-size()`:
+Calculating total data size using `estimated_data_size()`:
 
 ```kusto
 range x from 1 to 10 step 1                    // x (long) is 8 
 | extend Text = '1234567890'                   // Text length is 10  
-| summarize Total=sum(estimate-data-size(*))   // (8+10)x10 = 180
+| summarize Total=sum(estimate_data_size(*))   // (8+10)x10 = 180
 ```
 
 |Total|

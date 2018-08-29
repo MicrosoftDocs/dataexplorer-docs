@@ -1,6 +1,6 @@
 ---
-title: sliding-window-counts plugin (Azure Kusto)
-description: This article describes sliding-window-counts plugin in Azure Kusto.
+title: sliding_window_counts plugin (Azure Kusto)
+description: This article describes sliding_window_counts plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,17 +8,17 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# sliding-window-counts plugin
+# sliding_window_counts plugin
 
 Calculates counts and distinct count of values in a sliding window over a lookback period.
 
 For instance, for each *day*, calculate count and distinct count of users in previous *week*. 
 
-    T | evaluate sliding-window-counts(id, datetime-column, startofday(ago(30d)), startofday(now()), 7d, 1d, dim1, dim2, dim3)
+    T | evaluate sliding_window_counts(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, dim1, dim2, dim3)
 
 **Syntax**
 
-*T* `| evaluate` `sliding-window-counts(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *LookbackWindow*`,` *Bin* `,` [*dim1*`,` *dim2*`,` ...]`)`
+*T* `| evaluate` `sliding_window_counts(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *LookbackWindow*`,` *Bin* `,` [*dim1*`,` *dim2*`,` ...]`)`
 
 **Arguments**
 
@@ -37,7 +37,7 @@ Returns a table that has the count and distinct count values of Ids in the lookb
 
 Output table schema is:
 
-|*TimelineColumn*|dim1|..|dim-n|Count|Dcount|
+|*TimelineColumn*|dim1|..|dim_n|Count|Dcount|
 |---|---|---|---|---|---|
 |type: as of *TimelineColumn*|..|..|..|long|long|
 
@@ -69,7 +69,7 @@ let T = datatable(UserId:string, Timestamp:datetime)
 'Betsy',    datetime(2017 - 08 - 04), 
 'Bob',      datetime(2017 - 08 - 05), 
 ];
-T | evaluate sliding-window-counts(UserId, Timestamp, start, end, lookbackWindow, bin)
+T | evaluate sliding_window_counts(UserId, Timestamp, start, end, lookbackWindow, bin)
 
 
 ```

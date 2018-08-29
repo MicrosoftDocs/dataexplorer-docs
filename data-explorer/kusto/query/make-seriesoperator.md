@@ -69,25 +69,25 @@ Although you can provide arbitrary expressions for both the aggregation and grou
 
 |Function|Description|
 |--------|-----------|
-|[series-fir()](series-firfunction.md)|Applies [Finite Impulse Response](https://en.wikipedia.org/wiki/Finite-impulse-response) filter|
-|[series-iir()](series-iirfunction.md)|Applies [Infinite Impulse Response](https://en.wikipedia.org/wiki/Infinite-impulse-response) filter||[series-fit-line()](series-fit-linefunction.md)|Finds a straight line that is the best approximation of the input|
-|[series-fit-line()](series-fit-linefunction.md)|Finds a line that is the best approximation of the input|
-|[series-fit-line-dynamic()](series-fit-line-dynamicfunction.md)|Finds a line that is the best approximation of the input, returning dynamic object|
-[series-fit-2lines()](series-fit-2linesfunction.md)|Finds two lines that is the best approximation of the input|
-|[series-fit-2lines-dynamic()](series-fit-2lines-dynamicfunction.md)|Finds two lines that is the best approximation of the input, returning dynamic object|
-|[series-outliers()](series-outliersfunction.md)|Scores anomaly points in a series|
-|[series-periods-detect()](series-periods-detectfunction.md)|Finds the most significant periods that exist in a time series|
-|[series-periods-validate()](series-periods-validatefunction.md)|Checks whether a time series contains periodic patterns of given lengths|
-|[series-stats-dynamic()](series-stats-dynamicfunction.md)|Return multiple columns with the common statistics (min/max/variance/stdev/average)|
-|[series-stats()](series-statsfunction.md)|Generates a dynamic value with the common statistics (min/max/variance/stdev/average)|
+|[series_fir()](series-firfunction.md)|Applies [Finite Impulse Response](https://en.wikipedia.org/wiki/Finite_impulse_response) filter|
+|[series_iir()](series-iirfunction.md)|Applies [Infinite Impulse Response](https://en.wikipedia.org/wiki/Infinite_impulse_response) filter|
+|[series_fit_line()](series-fit-linefunction.md)|Finds a straight line that is the best approximation of the input|
+|[series_fit_line_dynamic()](series-fit-line-dynamicfunction.md)|Finds a line that is the best approximation of the input, returning dynamic object|
+|[series_fit_2lines()](series-fit-2linesfunction.md)|Finds two lines that is the best approximation of the input|
+|[series_fit_2lines_dynamic()](series-fit-2lines-dynamicfunction.md)|Finds two lines that is the best approximation of the input, returning dynamic object|
+|[series_outliers()](series-outliersfunction.md)|Scores anomaly points in a series|
+|[series_periods_detect()](series-periods-detectfunction.md)|Finds the most significant periods that exist in a time series|
+|[series_periods_validate()](series-periods-validatefunction.md)|Checks whether a time series contains periodic patterns of given lengths|
+|[series_stats_dynamic()](series-stats-dynamicfunction.md)|Return multiple columns with the common statistics (min/max/variance/stdev/average)|
+|[series_stats()](series-statsfunction.md)|Generates a dynamic value with the common statistics (min/max/variance/stdev/average)|
   
 ## List of series interpolation functions
 |Function|Description|
 |--------|-----------|
-|[series-fill-backward()](series-fill-backwardfunction.md)|Performs backward fill interpolation of missing values in a series|
-|[series-fill-const()](series-fill-constfunction.md)|Replaces missing values in a series with a specified constant value|
-|[series-fill-forward()](series-fill-forwardfunction.md)|Performs forward fill interpolation of missing values in a series|
-|[series-fill-linear()](series-fill-linearfunction.md)|Performs linear interpolation of missing values in a series|
+|[series_fill_backward()](series-fill-backwardfunction.md)|Performs backward fill interpolation of missing values in a series|
+|[series_fill_const()](series-fill-constfunction.md)|Replaces missing values in a series with a specified constant value|
+|[series_fill_forward()](series-fill-forwardfunction.md)|Performs forward fill interpolation of missing values in a series|
+|[series_fill_linear()](series-fill-linearfunction.md)|Performs linear interpolation of missing values in a series|
 
 * Note: Interpolation functions by default assume `null` as a missing value. Therefore it is recommended to specify `default=`*double*(`null`) in `make-series` if you intend to use interpolation functions for the series. 
 
@@ -125,6 +125,6 @@ data
 | make-series avg(metric) on timestamp in range(stime, etime, interval)  
 ```
   
-|avg-metric|timestamp|
+|avg_metric|timestamp|
 |---|---|
 |[ 4.0, 3.0, 5.0, 0.0, 10.5, 4.0, 3.0, 8.0, 6.5 ]|[ "2017-01-01T00:00:00.0000000Z", "2017-01-02T00:00:00.0000000Z", "2017-01-03T00:00:00.0000000Z", "2017-01-04T00:00:00.0000000Z", "2017-01-05T00:00:00.0000000Z", "2017-01-06T00:00:00.0000000Z", "2017-01-07T00:00:00.0000000Z", "2017-01-08T00:00:00.0000000Z", "2017-01-09T00:00:00.0000000Z" ]|  

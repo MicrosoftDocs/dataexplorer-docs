@@ -16,7 +16,7 @@ and `timespan`:
 * One can subtract (but not add) two `datetime` values to get a `timespan` value
   expressing their difference.
   For example, `datetime(1997-06-25) - datetime(1910-06-11)` is how old was
-  [Jacques-Yves Cousteau](https://en.wikipedia.org/wiki/Jacques-Cousteau) when
+  [Jacques-Yves Cousteau](https://en.wikipedia.org/wiki/Jacques_Cousteau) when
   he died.
 
 * One can add or subtract two `timespan` values to get a `timespan` value

@@ -36,9 +36,9 @@ The Intermediate results of distinct count of *Expr* across the group.
  
 **Tips**
 
-1) You may use the aggregation function [hll-merge](hll-merge-aggfunction.md) to merge more than one hll intermediate results (it works on hll output only).
+1) You may use the aggregation function [hll_merge](hll-merge-aggfunction.md) to merge more than one hll intermediate results (it works on hll output only).
 
-2) You may use the function [dcount-hll] (dcount-hllfunction.md) which will calculate the dcount from hll / hll-merge aggregation functions.
+2) You may use the function [dcount_hll] (dcount-hllfunction.md) which will calculate the dcount from hll / hll_merge aggregation functions.
 
 **Examples**
 
@@ -48,7 +48,7 @@ StormEvents
 
 ```
 
-|StartTime|hll-DamageProperty|
+|StartTime|hll_DamageProperty|
 |---|---|
 |2007-09-18 20:00:00.0000000|[[1024,14],[-5473486921211236216,-6230876016761372746,3953448761157777955,4246796580750024372],[]]|
 |2007-09-20 21:50:00.0000000|[[1024,14],[4835649640695509390],[]]|

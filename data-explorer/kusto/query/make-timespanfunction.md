@@ -1,6 +1,6 @@
 ---
-title: make-timespan() (Azure Kusto)
-description: This article describes make-timespan() in Azure Kusto.
+title: make_timespan() (Azure Kusto)
+description: This article describes make_timespan() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,19 +8,19 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# make-timespan()
+# make_timespan()
 
 Creates a [timespan](./scalar-data-types/timespan.md) scalar value from the specified time period.
 
-    make-timespan(1,12,30,55.123) == time(1.12:30:55.123)
+    make_timespan(1,12,30,55.123) == time(1.12:30:55.123)
 
 **Syntax**
 
-`make-timespan(`*hour*,*minute*`)`
+`make_timespan(`*hour*,*minute*`)`
 
-`make-timespan(`*hour*,*minute*,*second*`)`
+`make_timespan(`*hour*,*minute*,*second*`)`
 
-`make-timespan(`*day*,*hour*,*minute*,*second*`)`
+`make_timespan(`*day*,*hour*,*minute*,*second*`)`
 
 **Arguments**
 
@@ -36,7 +36,7 @@ If creation is successful, result will be a [timespan](./scalar-data-types/times
 **Example**
 
 ```kusto
-print ['timespan'] = make-timespan(1,12,30,55.123)
+print ['timespan'] = make_timespan(1,12,30,55.123)
 
 ```
 

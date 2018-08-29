@@ -1,6 +1,6 @@
 ---
-title: new-activity-metrics plugin (Azure Kusto)
-description: This article describes new-activity-metrics plugin in Azure Kusto.
+title: new_activity_metrics plugin (Azure Kusto)
+description: This article describes new_activity_metrics plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,17 +8,17 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# new-activity-metrics plugin
+# new_activity_metrics plugin
 
 Calculates useful activity metrics (distinct count values, distinct count of new values, retention rate, and churn rate) for the cohort of `New Users`.
 
-Concept of this plugin is similar to [activity-metrics plugin](./activity-metrics-plugin.md), but focuses on `New Users`.
+Concept of this plugin is similar to [activity_metrics plugin](./activity-metrics-plugin.md), but focuses on `New Users`.
 
-    T | evaluate new-activity-metrics(id, datetime-column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
+    T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
 
 **Syntax**
 
-*T* `| evaluate` `new-activity-metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Window* [`,` *Cohort*] [`,` *dim1*`,` *dim2*`,` ...] [`,` *Lookback*] `)`
+*T* `| evaluate` `new_activity_metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Window* [`,` *Cohort*] [`,` *dim1*`,` *dim2*`,` ...] [`,` *Lookback*] `)`
 
 **Arguments**
 
@@ -39,7 +39,7 @@ combination of 'from' and 'to' timeline periods and for each existing dimensions
 
 Output table schema is:
 
-|from-TimelineColumn|to-TimelineColumn|dcount-new-values|dcount-retained-values|dcount-churn-values|retention-rate|churn-rate|dim1|..|dim-n|
+|from_TimelineColumn|to_TimelineColumn|dcount_new_values|dcount_retained_values|dcount_churn_values|retention_rate|churn_rate|dim1|..|dim_n|
 |---|---|---|---|---|---|---|---|---|---|
 |type: as of *TimelineColumn*|same|long|long|double|double|double|..|..|..|
 
@@ -47,7 +47,7 @@ Output table schema is:
 **Notes**
 
 For definitions of `Retention Rate` and `Churn Rate` - refer to **Notes** section in 
-[activity-metrics plugin](./activity-metrics-plugin.md) documentation.
+[activity_metrics plugin](./activity-metrics-plugin.md) documentation.
 
 
 **Examples**
@@ -67,11 +67,11 @@ range Day from _start to _end  step 1d
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1) 
 | mvexpand id=_users to typeof(long) limit 1000000
 // Take only the first week cohort (last parameter)
-| evaluate new-activity-metrics(['id'], Day, _start, _end, 7d, _start)
-| project from-Day, to-Day, retention-rate, churn-rate
+| evaluate new_activity_metrics(['id'], Day, _start, _end, 7d, _start)
+| project from_Day, to_Day, retention_rate, churn_rate
 ```
 
-|from-Day|to-Day|retention-rate|churn-rate|
+|from_Day|to_Day|retention_rate|churn_rate|
 |---|---|---|---|
 |2017-05-01 00:00:00.0000000|2017-05-01 00:00:00.0000000|1|0|
 |2017-05-01 00:00:00.0000000|2017-05-08 00:00:00.0000000|0.544632768361582|0.455367231638418|
@@ -95,11 +95,11 @@ range Day from _start to _end  step 1d
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1) 
 | mvexpand id=_users to typeof(long) limit 1000000
 // Last parameter is omitted - 
-| evaluate new-activity-metrics(['id'], Day, _start, _end, 7d)
-| project from-Day, to-Day, retention-rate, churn-rate
+| evaluate new_activity_metrics(['id'], Day, _start, _end, 7d)
+| project from_Day, to_Day, retention_rate, churn_rate
 ```
 
-|from-Day|to-Day|retention-rate|churn-rate|
+|from_Day|to_Day|retention_rate|churn_rate|
 |---|---|---|---|
 |2017-05-01 00:00:00.0000000|2017-05-01 00:00:00.0000000|1|0|
 |2017-05-01 00:00:00.0000000|2017-05-08 00:00:00.0000000|0.190397350993377|0.809602649006622|
@@ -136,13 +136,13 @@ let _data = range Day from _lookback to _end  step 1d
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1) 
 | mvexpand id=_users to typeof(long) limit 1000000;
 //
-let lookback-data = _data | where Day < _start | project Day, id;
+let lookback_data = _data | where Day < _start | project Day, id;
 _data
-| evaluate new-activity-metrics(id, Day, _start, _end, 7d, _start, lookback-data)
-| project from-Day, to-Day, retention-rate
+| evaluate new_activity_metrics(id, Day, _start, _end, 7d, _start, lookback_data)
+| project from_Day, to_Day, retention_rate
 ```
 
-|from-Day|to-Day|retention-rate|
+|from_Day|to_Day|retention_rate|
 |---|---|---|
 |2017-05-01 00:00:00.0000000|2017-05-01 00:00:00.0000000|1|
 |2017-05-01 00:00:00.0000000|2017-05-08 00:00:00.0000000|0.404081632653061|

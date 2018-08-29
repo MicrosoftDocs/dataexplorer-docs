@@ -16,11 +16,11 @@ Returns the integer number represents the day number of the given year.
 
 **Syntax**
 
-`dayofweek(`*a-date*`)`
+`dayofweek(`*a_date*`)`
 
 **Arguments**
 
-* `a-date`: A `datetime`.
+* `a_date`: A `datetime`.
 
 **Returns**
 

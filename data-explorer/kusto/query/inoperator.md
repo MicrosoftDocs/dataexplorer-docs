@@ -1,6 +1,6 @@
 ---
-title: in and !in operators (Azure Kusto)
-description: This article describes in and !in operators in Azure Kusto.
+title: in and notin operators (Azure Kusto)
+description: This article describes in and notin operators in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -108,12 +108,12 @@ StormEvents
 
 ```kusto
 // Using subquery
-let Top-5-States = 
+let Top_5_States = 
 StormEvents
 | summarize count() by State
-| top 5 by count-; 
+| top 5 by count_; 
 StormEvents 
-| where State in (Top-5-States) 
+| where State in (Top_5_States) 
 | count
 ```
 
@@ -125,7 +125,7 @@ StormEvents
 | where State in (
     ( StormEvents
     | summarize count() by State
-    | top 5 by count- )
+    | top 5 by count_ )
 ) 
 | count
 ```
@@ -137,16 +137,16 @@ StormEvents
 **Top with other example:**  
 
 ```kusto
-let Death-By-State = materialize(StormEvents | summarize deaths = sum(DeathsDirect) by State);
-let Top-5-States = Death-By-State | top 5 by deaths | project State; 
-Death-By-State
-| extend State = iif(State in (Top-5-States), State, "Other")
+let Death_By_State = materialize(StormEvents | summarize deaths = sum(DeathsDirect) by State);
+let Top_5_States = Death_By_State | top 5 by deaths | project State; 
+Death_By_State
+| extend State = iif(State in (Top_5_States), State, "Other")
 | summarize sum(deaths) by State 
 
 
 ```
 
-|State|sum-deaths|
+|State|sum_deaths|
 |---|---|
 |ALABAMA|29|
 |ILLINOIS|29|

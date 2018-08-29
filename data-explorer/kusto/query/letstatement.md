@@ -165,7 +165,7 @@ on Page
 | join kind = inner
     totalPagesPerDay
 on $left.Day1 == $right.Day
-| project Day1, Day2, Percentage = count-*100.0/count-1
+| project Day1, Day2, Percentage = count_*100.0/count_1
 
 
 ```

@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # stdev() (aggregation function)
 
-Calculates the standard deviation of *Expr* across the group, considering the group as a [sample](https://en.wikipedia.org/wiki/Sample-%28statistics%29). 
+Calculates the standard deviation of *Expr* across the group, considering the group as a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29). 
 
 * Used formula:
 ![](./images/aggregations/stdev-sample.png)
@@ -37,6 +37,6 @@ range x from 1 to 5 step 1
 
 ```
 
-|list-x|stdev-x|
+|list_x|stdev_x|
 |---|---|
 |[ 1, 2, 3, 4, 5]|1.58113883008419|

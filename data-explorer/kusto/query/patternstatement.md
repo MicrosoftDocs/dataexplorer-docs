@@ -80,7 +80,7 @@ or a reference to a [let statement](letstatement.md).
 `{`
 &nbsp;&nbsp;&nbsp;&nbsp; `(` *ArgValue1* [`,` *ArgValue2* ... ] `)` [ `.[` *PathValue `]` ] `=` `{`  *expression*  `};`
 &nbsp;&nbsp;&nbsp;&nbsp; [
-&nbsp;&nbsp;&nbsp;&nbsp; `(` *ArgValue1-2* [`,` *ArgValue2-2* ... ] `)` [ `.[` *PathValue-2* `]` ] `=` `{`  *expression-2*  `};`
+&nbsp;&nbsp;&nbsp;&nbsp; `(` *ArgValue1_2* [`,` *ArgValue2_2* ... ] `)` [ `.[` *PathValue_2* `]` ] `=` `{`  *expression_2*  `};`
 &nbsp;&nbsp;&nbsp;&nbsp; ...
 &nbsp;&nbsp;&nbsp;&nbsp; ]
 `}`

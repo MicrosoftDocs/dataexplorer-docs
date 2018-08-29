@@ -1,6 +1,6 @@
 ---
-title: parse-json() (Azure Kusto)
-description: This article describes parse-json() in Azure Kusto.
+title: parse_json() (Azure Kusto)
+description: This article describes parse_json() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# parse-json()
+# parse_json()
 
 Interprets a `string` as a [JSON value](http://json.org/)) and returns the value as [`dynamic`](./scalar-data-types/dynamic.md). 
 It is superior to using [extractjson() function](./extractjsonfunction.md)
@@ -16,7 +16,7 @@ when you need to extract more than one element of a JSON compound object.
 
 **Syntax**
 
-`parse-json(`*json*`)`
+`parse_json(`*json*`)`
 
 Aliases:
 - [todynamic()](./todynamicfunction.md)
@@ -39,7 +39,7 @@ An object of type `dynamic` that is determined by the value of *json*:
 
 **Example**
 
-In the following example, when `context-custom-metrics` is a `string`
+In the following example, when `context_custom_metrics` is a `string`
 that looks like this: 
 
 ```
@@ -52,8 +52,8 @@ in the object, and from that it retrieves two slots, `duration.value` and
 
 ```kusto
 T
-| extend d=parse-json(context-custom-metrics) 
-| extend duration-value=d.duration.value, duration-min=d["duration"]["min"]
+| extend d=parse_json(context_custom_metrics) 
+| extend duration_value=d.duration.value, duration_min=d["duration"]["min"]
 ```
 
 **Notes**
@@ -66,12 +66,12 @@ let d='{"a":123, "b":"{\\"c\\":456}"}';
 print d
 ```
 
-In such cases, it is not only necessary to invoke `parse-json` twice, but also
+In such cases, it is not only necessary to invoke `parse_json` twice, but also
 to make sure that in the second call, `tostring` will be used. Otherwise, the
-second call to `parse-json` will simply pass-on the input to the output as-is,
+second call to `parse_json` will simply pass-on the input to the output as-is,
 because its declared type is `dynamic`:
 
 ```kusto
 let d='{"a":123, "b":"{\\"c\\":456}"}';
-print d-b-c=parse-json(tostring(parse-json(d).b)).c
+print d_b_c=parse_json(tostring(parse_json(d).b)).c
 ```

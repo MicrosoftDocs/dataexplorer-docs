@@ -1,6 +1,6 @@
 ---
-title: rolling-percentile plugin (Azure Kusto)
-description: This article describes rolling-percentile plugin in Azure Kusto.
+title: rolling_percentile plugin (Azure Kusto)
+description: This article describes rolling_percentile plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# rolling-percentile plugin
+# rolling_percentile plugin
 
 Returns an estimate for the specified percentile of the *ValueColumn* population in a rolling (sliding) *BinsPerWindow* size window per *BinSize*.
 
-    T | evaluate rolling-percentile(ValueColumn, Percentile, IndexColumn, BinSize, BinsPerWindow)
+    T | evaluate rolling_percentile(ValueColumn, Percentile, IndexColumn, BinSize, BinsPerWindow)
 
 **Syntax**
 
-*T* `| evaluate` `rolling-percentile(`*ValueColumn*`,` *Percentile*`,` *IndexColumn*`,` *BinSize*`,` *BinsPerWindow*  [`,` *dim1*`,` *dim2*`,` ...] `)`
+*T* `| evaluate` `rolling_percentile(`*ValueColumn*`,` *Percentile*`,` *IndexColumn*`,` *BinSize*`,` *BinsPerWindow*  [`,` *dim1*`,` *dim2*`,` ...] `)`
 
 **Arguments**
 
@@ -36,7 +36,7 @@ time window.
 Output table schema is:
 
 
-|IndexColumn|dim1|...|dim-n|rolling-BinsPerWindow-percentile-ValueColumn-Pct
+|IndexColumn|dim1|...|dim_n|rolling_BinsPerWindow_percentile_ValueColumn_Pct
 |---|---|---|---|---|
 
 
@@ -52,10 +52,10 @@ range idx from 0 to 24*10-1 step 1
 | project Timestamp = datetime(2018-01-01) + 1h*idx, val=idx+1
 | extend EvenOrOdd = iff(val % 2 == 0, "Even", "Odd");
  T  
- | evaluate rolling-percentile(val, 50, Timestamp, 1d, 3)
+ | evaluate rolling_percentile(val, 50, Timestamp, 1d, 3)
 ```
 
-|Timestamp|rolling-3-percentile-val-50|
+|Timestamp|rolling_3_percentile_val_50|
 |---|---|
 |2018-01-01 00:00:00.0000000|	12|
 |2018-01-02 00:00:00.0000000|	24|
@@ -78,10 +78,10 @@ range idx from 0 to 24*10-1 step 1
 | project Timestamp = datetime(2018-01-01) + 1h*idx, val=idx+1
 | extend EvenOrOdd = iff(val % 2 == 0, "Even", "Odd");
  T  
- | evaluate rolling-percentile(val, 50, Timestamp, 1d, 3, EvenOrOdd)
+ | evaluate rolling_percentile(val, 50, Timestamp, 1d, 3, EvenOrOdd)
 ```
 
-|Timestamp|	EvenOrOdd|	rolling-3-percentile-val-50|
+|Timestamp|	EvenOrOdd|	rolling_3_percentile_val_50|
 |---|---|---|
 |2018-01-01 00:00:00.0000000|	Even|	12|
 |2018-01-02 00:00:00.0000000|	Even|	24|

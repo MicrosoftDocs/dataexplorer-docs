@@ -1,6 +1,6 @@
 ---
-title: beta-cdf() (Azure Kusto)
-description: This article describes beta-cdf() in Azure Kusto.
+title: beta_cdf() (Azure Kusto)
+description: This article describes beta_cdf() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,19 +8,19 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# beta-cdf()
+# beta_cdf()
 
 Returns the standard cumulative beta distribution function.
 
-    beta-cdf(0.2, 10.0, 50.0)
+    beta_cdf(0.2, 10.0, 50.0)
 
-If probability = beta-cdf(x,...), then beta-inv(probability,...) = x. 
+If probability = beta_cdf(x,...), then beta_inv(probability,...) = x. 
 
 The beta distribution is commonly used to study variation in the percentage of something across samples, such as the fraction of the day people spend watching television.
 
 **Syntax**
 
-`beta-cdf(`*x*`, `*alpha*`, `*beta*`)`
+`beta_cdf(`*x*`, `*alpha*`, `*beta*`)`
 
 **Arguments**
 
@@ -30,15 +30,15 @@ The beta distribution is commonly used to study variation in the percentage of s
 
 **Returns**
 
-* The [cumulative beta distribution function](https://en.wikipedia.org/wiki/Beta-distribution#Cumulative-distribution-function).
+* The [cumulative beta distribution function](https://en.wikipedia.org/wiki/Beta_distribution#Cumulative_distribution_function).
 
 **Remarks**
 
-If any argument is nonnumeric, beta-cdf() returns null value.
+If any argument is nonnumeric, beta_cdf() returns null value.
 
-If x < 0 or x > 1, beta-cdf() returns NaN value.
+If x < 0 or x > 1, beta_cdf() returns NaN value.
 
-If alpha â‰¤ 0 or beta â‰¤ 0, beta-cdf() returns the NaN value.
+If alpha â‰¤ 0 or beta â‰¤ 0, beta_cdf() returns the NaN value.
 
 **Examples**
 
@@ -50,7 +50,7 @@ datatable(x:double, alpha:double, beta:double, comment:string)
     double(-10), 10.0, 20.0, "x < 0, yields NaN",
     0.1, double(-1.0), 20.0, "alpha is < 0, yields NaN"
 ]
-| extend b = beta-cdf(x, alpha, beta)
+| extend b = beta_cdf(x, alpha, beta)
 ```
 
 |x|alpha|beta|comment|b|
@@ -62,6 +62,7 @@ datatable(x:double, alpha:double, beta:double, comment:string)
 
 
 **See also**
+
 
 * For computing the inverse of the beta cumulative probability density function, see [beta-inv()](./beta-invfunction.md).
 * For computing probability density function, see [beta-pdf()](./beta-pdffunction.md).

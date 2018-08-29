@@ -31,7 +31,7 @@ This algorithm might change in the future, and the only guarantee is that
 within a single query all invocations of this method use the same algorithm.
 Consequently, users are advised to not store the results of `hash()` in a
 table. If persisting hash values is required, consider using
-[hash-sha256()](./sha256hashfunction.md) instead (but note that
+[hash_sha256()](./sha256hashfunction.md) instead (but note that
 it is far more complex to calculate than `hash()`).</div>
 
 **Examples**

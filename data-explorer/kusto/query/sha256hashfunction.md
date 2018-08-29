@@ -1,6 +1,6 @@
 ---
-title: hash-sha256() (Azure Kusto)
-description: This article describes hash-sha256() in Azure Kusto.
+title: hash_sha256() (Azure Kusto)
+description: This article describes hash_sha256() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# hash-sha256()
+# hash_sha256()
 
 Returns a sha256 hash value for the input value.
 
 **Syntax**
 
-`hash-sha256(`*source*`)`
+`hash_sha256(`*source*`)`
 
 **Arguments**
 
@@ -34,16 +34,16 @@ to use the function [hash()](./hashfunction.md) instead.</div>
 **Examples**
 
 ```kusto
-hash-sha256("World")                   // 78ae647dc5544d227130a0682a51e30bc7777fbb6d8a8f17007463a3ecd1d524
-hash-sha256(datetime("2015-01-01"))    // e7ef5635e188f5a36fafd3557d382bbd00f699bd22c671c3dea6d071eb59fbf8
+hash_sha256("World")                   // 78ae647dc5544d227130a0682a51e30bc7777fbb6d8a8f17007463a3ecd1d524
+hash_sha256(datetime("2015-01-01"))    // e7ef5635e188f5a36fafd3557d382bbd00f699bd22c671c3dea6d071eb59fbf8
 
 ```
 
-The following example uses the hash-sha256 function to run a query on SatrtTime column of the data
+The following example uses the hash_sha256 function to run a query on SatrtTime column of the data
 
 ```kusto
 StormEvents 
-| where hash-sha256(StartTime) == 0
+| where hash_sha256(StartTime) == 0
 | summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State 
 | top 5 by StormCount desc
 ```

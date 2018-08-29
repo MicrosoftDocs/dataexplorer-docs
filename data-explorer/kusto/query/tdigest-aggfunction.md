@@ -33,9 +33,9 @@ The Intermediate results of weighted percentiles of *Expr* across the group.
  
 **Tips**
 
-1) You may use the aggregation function [`merge-tdigests()`](merge-tdigests-aggfunction.md) to merge the output of tdigest again across another group.
+1) You may use the aggregation function [`merge_tdigests()`](merge-tdigests-aggfunction.md) to merge the output of tdigest again across another group.
 
-2) You may use the function [`percentile-tdigest()`] (percentile-tdigestfunction.md) to calculate the percentile/percentilew of the tdigest results.
+2) You may use the function [`percentile_tdigest()`] (percentile-tdigestfunction.md) to calculate the percentile/percentilew of the tdigest results.
 
 **Examples**
 
@@ -44,7 +44,7 @@ StormEvents
 | summarize tdigest(DamageProperty) by State
 ```
 
-|State|tdigest-DamageProperty|
+|State|tdigest_DamageProperty|
 |---|---|
 |ATLANTIC SOUTH|[[5],[0],[193]]|
 |FLORIDA|[[5],[250,10,600000,5000,375000,15000000,20000,6000000,0,110000,150000,500,12000,30000,15000,46000000,7000000,6200000,200000,40000,8000,52000000,62000000,1200000,130000,1500000,4000000,7000,250000,875000,3000,100000,10600000,300000,1000000,25000,75000,2000,60000,10000,170000,350000,50000,1000,16000,80000,2500,400000],[9,1,1,22,1,1,9,1,842,1,3,7,2,4,7,1,1,1,2,5,3,3,1,1,1,1,2,2,1,1,9,7,1,1,2,5,2,9,2,27,1,1,7,27,1,1,1,1]]|

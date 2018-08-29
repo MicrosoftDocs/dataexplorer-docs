@@ -1,6 +1,6 @@
 ---
-title: series-stats-dynamic() (Azure Kusto)
-description: This article describes series-stats-dynamic() in Azure Kusto.
+title: series_stats_dynamic() (Azure Kusto)
+description: This article describes series_stats_dynamic() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,22 +8,22 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# series-stats-dynamic()
+# series_stats_dynamic()
 
 Returns statistics for a series in dynamic object.  
 
-The `series-stats-dynamic()` function takes a column containing dynamic numerical array as input and generates a dynamic value with the following content:
+The `series_stats_dynamic()` function takes a column containing dynamic numerical array as input and generates a dynamic value with the following content:
 * `min`: minimum value in the input array
-* `min-idx`: minimum value in the input array
+* `min_idx`: minimum value in the input array
 * `max`: maximum value in the input array
-* `max-idx`: maximum value in the input array
+* `max_idx`: maximum value in the input array
 * `avg`: average value of the input array
 * `variance`: sample variance of input array
 * `stdev`: sample standard deviation of the input array
 
 **Syntax**
 
-`series-stats-dynamic(`*x*`)`
+`series_stats_dynamic(`*x*`)`
 
 **Arguments**
 
@@ -33,7 +33,7 @@ The `series-stats-dynamic()` function takes a column containing dynamic numerica
 
 ```kusto
 print x=dynamic([23,46,23,87,4,8,3,75,2,56,13,75,32,16,29]) 
-| project stats=series-stats-dynamic(x)
+| project stats=series_stats_dynamic(x)
 
 ```
 
@@ -41,9 +41,9 @@ print x=dynamic([23,46,23,87,4,8,3,75,2,56,13,75,32,16,29])
 |---|
 {  
   "min": 2.0,  
-  "min-idx": 8,  
+  "min_idx": 8,  
   "max": 87.0,  
-  "max-idx": 3,  
+  "max_idx": 3,  
   "avg": 32.8,  
   "stdev": 28.503633853548269,  
   "variance": 812.45714285714291  

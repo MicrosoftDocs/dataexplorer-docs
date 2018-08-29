@@ -27,16 +27,16 @@ Removes all leading and trailing matches of the specified regular expression.
 
 **Example**
 
-Statement bellow trims *substring*  from the start and the end of the *string-to-trim*:
+Statement bellow trims *substring*  from the start and the end of the *string_to_trim*:
 
 ```kusto
-let string-to-trim = @"--http://bing.com--";
+let string_to_trim = @"--http://bing.com--";
 let substring = "--";
 range x from 1 to 1 step 1
-| project string-to-trim = string-to-trim, trimmed-string = trim(substring,string-to-trim)
+| project string_to_trim = string_to_trim, trimmed_string = trim(substring,string_to_trim)
 ```
 
-|string-to-trim|trimmed-string|
+|string_to_trim|trimmed_string|
 |---|---|
 |--http://bing.com--|http://bing.com|
 
@@ -45,10 +45,10 @@ Next statement trims all non-word characters from start and end of the string:
 ```kusto
 range x from 1 to 5 step 1
 | project str = strcat("-  ","Te st",x,@"// $")
-| extend trimmed-str = trim(@"[^\w]+",str)
+| extend trimmed_str = trim(@"[^\w]+",str)
 ```
 
-|str|trimmed-str|
+|str|trimmed_str|
 |---|---|
 |-  Te st1// $|Te st1|
 |-  Te st2// $|Te st2|

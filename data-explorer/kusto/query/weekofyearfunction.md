@@ -18,11 +18,11 @@ Aligned with ISO 8601 standards, where first day of the week is Sunday.
 
 **Syntax**
 
-`weekofyear(`*a-date*`)`
+`weekofyear(`*a_date*`)`
 
 **Arguments**
 
-* `a-date`: A `datetime`.
+* `a_date`: A `datetime`.
 
 **Returns**
 

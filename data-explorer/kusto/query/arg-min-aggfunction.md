@@ -1,6 +1,6 @@
 ---
-title: arg-min() (aggregation function) (Azure Kusto)
-description: This article describes arg-min() (aggregation function) in Azure Kusto.
+title: arg_min() (aggregation function) (Azure Kusto)
+description: This article describes arg_min() (aggregation function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# arg-min() (aggregation function)
+# arg_min() (aggregation function)
 
 Finds a row in the group that minimizes *ExprToMinimize*, and returns the value of *ExprToReturn* (or `*` to return the entire row).
 
@@ -16,7 +16,7 @@ Finds a row in the group that minimizes *ExprToMinimize*, and returns the value 
 
 **Syntax**
 
-`summarize` [`(`*NameExprToMinimize* `,` *NameExprToReturn* [`,` ...] `)=`] `arg-min` `(`*ExprToMinimize*, `*` | *ExprToReturn*  [`,` ...]`)`
+`summarize` [`(`*NameExprToMinimize* `,` *NameExprToReturn* [`,` ...] `)=`] `arg_min` `(`*ExprToMinimize*, `*` | *ExprToReturn*  [`,` ...]`)`
 
 **Arguments**
 
@@ -34,16 +34,16 @@ Finds a row in the group that minimizes *ExprToMinimize*, and returns the value 
 
 Show cheapest supplier of each product:
 
-    Supplies | summarize arg-min(Price, Supplier) by Product
+    Supplies | summarize arg_min(Price, Supplier) by Product
 
 Show all the details, not just the supplier name:
 
-    Supplies | summarize arg-min(Price, *) by Product
+    Supplies | summarize arg_min(Price, *) by Product
 
 Find the southernmost city in each continent, with its country:
 
     PageViewLog 
-    | summarize (latitude, min-lat-City, min-lat-country)=arg-min(latitude, City, country) 
+    | summarize (latitude, min_lat_City, min_lat_country)=arg_min(latitude, City, country) 
       by continent
 
 ![](./images/aggregations/argmin.png)
@@ -59,6 +59,6 @@ to introduce a projection similar to the marked line below:
 ```kusto
 datatable(a:string, b:string, c:string, d:string) [...]
 | project a, b, c // <-- Add this projection to remove d
-| summarize arg-min(a, *)
+| summarize arg_min(a, *)
 | project B=b, C=c
 ```

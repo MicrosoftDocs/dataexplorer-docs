@@ -1,6 +1,6 @@
 ---
-title: strcat-array() (Azure Kusto)
-description: This article describes strcat-array() in Azure Kusto.
+title: strcat_array() (Azure Kusto)
+description: This article describes strcat_array() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# strcat-array()
+# strcat_array()
 
 Creates a concatenated string of array values using specified delimeter.
     
 **Syntax**
 
-`strcat-array(`*array*, *delimiter*`)`
+`strcat_array(`*array*, *delimiter*`)`
 
 **Arguments**
 
@@ -28,7 +28,7 @@ Array values, concatenated to a single string.
 **Examples**
   
 ```kusto
-print str = strcat-array(dynamic([1, 2, 3]), "->")
+print str = strcat_array(dynamic([1, 2, 3]), "->")
 ```
 
 |str|

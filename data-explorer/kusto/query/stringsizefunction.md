@@ -1,6 +1,6 @@
 ---
-title: string-size() (Azure Kusto)
-description: This article describes string-size() in Azure Kusto.
+title: string_size() (Azure Kusto)
+description: This article describes string_size() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# string-size()
+# string_size()
 
 Returns the size, in bytes, of the input string.
 		
 **Syntax**
 
-`string-size(`*source*`)`
+`string_size(`*source*`)`
 
 **Arguments**
 
@@ -27,17 +27,17 @@ Returns the length, in bytes, of the input string.
 **Examples**
 
 ```kusto
-print string-size("hello")
+print string_size("hello")
 ```
 
-|print-0|
+|print_0|
 |---|
 |5|
 
 ```kusto
-print string-size("â’¦â’°â’®â’¯â’ª")
+print string_size("â’¦â’°â’®â’¯â’ª")
 ```
 
-|print-0|
+|print_0|
 |---|
 |15|

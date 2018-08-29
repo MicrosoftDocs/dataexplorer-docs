@@ -48,11 +48,11 @@ Available arguments:
 
     Example: `T | evaluate autocluster(0.8)`
 
-* WeightColumn - *column-name*
+* WeightColumn - *column_name*
 
     Considers each row in the input according to the specified weight (by default each row has a weight of '1'). The argument must be a name of a numeric column (e.g. int, long, real). A common usage of a weight column is to take into account sampling or bucketing/aggregation of the data that is already embedded into each row.
     
-    Example: `T | evaluate autocluster('~', sample-Count)` 
+    Example: `T | evaluate autocluster('~', sample_Count)` 
 
 * NumSeeds - *int* [default: 25] 
 
@@ -60,7 +60,7 @@ Available arguments:
 
     Example:  `T | evaluate autocluster('~', '~', 15)`
 
-* CustomWildcard - *"any-value-per-type"*
+* CustomWildcard - *"any_value_per_type"*
 
     Sets the wildcard value for a specific type in the result table that will indicate that the current pattern doesn't have a restriction on this column.
     Default is null, for string default is an empty string. If the default is a viable value in the data, a different wildcard value should be used (e.g. `*`).

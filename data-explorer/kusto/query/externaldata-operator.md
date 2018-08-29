@@ -22,7 +22,7 @@ Note that this operator does not have a pipeline input.
 
 * *ColumnName*, *ColumnType*: These define the schema of the table. The Syntax
   used is precisely the same as the syntax used when defining a table
-  (see [.create table](https://kusdoc2.azurewebsites.net/docs/controlCommands/controlcommands_tables.html#create-table)).
+  (see [.create table](https://kusdoc2.azurewebsites.net/docs/controlCommands/tables.html#create-table)).
 * *DataFileUri*: The URI (including authentication option, if any) for the file
   holding the data.
 * *Prop1*, *Value1*, ...: Additional properties to describe how the data in the raw file

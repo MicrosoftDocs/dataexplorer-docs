@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # variance() (aggregation function)
 
-Calculates the variance of *Expr* across the group, considering the group as a [sample](https://en.wikipedia.org/wiki/Sample-%28statistics%29). 
+Calculates the variance of *Expr* across the group, considering the group as a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29). 
 
 * Used formula:
 ![](./images/aggregations/variance-sample.png)
@@ -36,6 +36,6 @@ range x from 1 to 5 step 1
 | summarize makelist(x), variance(x) 
 ```
 
-|list-x|variance-x|
+|list_x|variance_x|
 |---|---|
 |[ 1, 2, 3, 4, 5]|2.5|

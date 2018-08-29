@@ -1,6 +1,6 @@
 ---
-title: series-subtract() (Azure Kusto)
-description: This article describes series-subtract() in Azure Kusto.
+title: series_subtract() (Azure Kusto)
+description: This article describes series_subtract() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# series-subtract()
+# series_subtract()
 
 Calculates the element-wise subtraction of two numeric series inputs.
 
 **Syntax**
 
-`series-subtract(`*series1*`,` *series2*`)`
+`series_subtract(`*series1*`,` *series2*`)`
 
 **Arguments**
 
@@ -30,11 +30,11 @@ Dynamic array of calculated element-wise subtract operation between the two inpu
 range x from 1 to 3 step 1
 | extend y = x * 2
 | extend z = y * 2
-| project s1 = pack-array(x,y,z), s2 = pack-array(z, y, x)
-| extend s1-subtract-s2 = series-subtract(s1, s2)
+| project s1 = pack_array(x,y,z), s2 = pack_array(z, y, x)
+| extend s1_subtract_s2 = series_subtract(s1, s2)
 ```
 
-|s1|s2|s1-subtract-s2|
+|s1|s2|s1_subtract_s2|
 |---|---|---|
 |[1,2,4]|[4,2,1]|[-3,0,3]|
 |[2,4,8]|[8,4,2]|[-6,0,6]|

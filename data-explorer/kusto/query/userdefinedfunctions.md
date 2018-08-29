@@ -46,7 +46,7 @@ An example for a scalar function:
 ```kusto
 let Add7 = (arg0:long = 5) { arg0 + 7 };
 range x from 1 to 10 step 1
-| extend x-plus-7 = Add7(x), five-plus-seven = Add7()
+| extend x_plus_7 = Add7(x), five_plus_seven = Add7()
 ```
 
 An example for a tabular function that takes no arguments:
@@ -54,7 +54,7 @@ An example for a tabular function that takes no arguments:
 ```kusto
 let tenNumbers = () { range x from 1 to 10 step 1};
 tenNumbers
-| extend x-plus-7 = x + 7
+| extend x_plus_7 = x + 7
 ```
 
 An example for a tabular function that takes a tabular
@@ -200,11 +200,11 @@ the first concrete table argument to the function is the source of the `invoke`
 operator:
 
 ```kusto
-let append-to-column-a=(T:(a:string), what:string) {
+let append_to_column_a=(T:(a:string), what:string) {
     T | extend a=strcat(a, " ", what)
 };
 datatable (a:string) ["sad", "really", "sad"]
-| invoke append-to-column-a(":-)")
+| invoke append_to_column_a(":-)")
 ```
 
 ## Default values
@@ -247,13 +247,13 @@ union
 User-defined functions that take no arguments and return a tabular expression
 can be marked as views. Marking a user-defined function as a **view** means
 that the function behaves like a table whenever wildcard table name resolution
-is done. The following example shows two user-defined functions, `T-view` and
-`T-notview`, and shows how only the first one is resolved by the wildcard
+is done. The following example shows two user-defined functions, `T_view` and
+`T_notview`, and shows how only the first one is resolved by the wildcard
 reference in the `union`:
 
 ```kusto
-let T-view = view () { range x from 1 to 1 step 1 };
-let T-notview = () { range x from 2 to 2 step 1 };
+let T_view = view () { range x from 1 to 1 step 1 };
+let T_notview = () { range x from 2 to 2 step 1 };
 union T*
 ```
 

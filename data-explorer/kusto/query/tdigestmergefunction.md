@@ -1,6 +1,6 @@
 ---
-title: merge-tdigests() (Azure Kusto)
-description: This article describes merge-tdigests() in Azure Kusto.
+title: merge_tdigests() (Azure Kusto)
+description: This article describes merge_tdigests() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,17 +8,17 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# merge-tdigests()
+# merge_tdigests()
 
-Merges tdigest results (scalar version of the aggregate version [`merge-tdigests()`](merge-tdigests-aggfunction.md)).
+Merges tdigest results (scalar version of the aggregate version [`merge_tdigests()`](merge-tdigests-aggfunction.md)).
 
 Read more about the underlying algorithm (T-Digest) and the estimated error [here](percentiles-aggfunction.md#estimation-error-in-percentiles).
 
 **Syntax**
 
-`merge-tdigests(` *Expr1*`,` *Expr2*`, ...)`
+`merge_tdigests(` *Expr1*`,` *Expr2*`, ...)`
 
-`tdigest-merge(` *Expr1*`,` *Expr2*`, ...)` - An alias.
+`tdigest_merge(` *Expr1*`,` *Expr2*`, ...)` - An alias.
 
 **Arguments**
 
@@ -34,10 +34,10 @@ The result for merging the columns `*Exrp1*`, `*Expr2*`, ... `*ExprN*` to one td
 range x from 1 to 10 step 1 
 | extend y = x + 10
 | summarize tdigestX = tdigest(x), tdigestY = tdigest(y)
-| project merged = merge-tdigests(tdigestX, tdigestY)
-| project percentile-tdigest(merged, 100, typeof(long))
+| project merged = merge_tdigests(tdigestX, tdigestY)
+| project percentile_tdigest(merged, 100, typeof(long))
 ```
 
-|percentile-tdigest-merged|
+|percentile_tdigest_merged|
 |---|
 |20|

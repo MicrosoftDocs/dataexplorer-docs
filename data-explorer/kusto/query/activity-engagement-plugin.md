@@ -1,6 +1,6 @@
 ---
-title: activity-engagement plugin (Azure Kusto)
-description: This article describes activity-engagement plugin in Azure Kusto.
+title: activity_engagement plugin (Azure Kusto)
+description: This article describes activity_engagement plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,17 +8,17 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# activity-engagement plugin
+# activity_engagement plugin
 
 Calculates activity engagement ratio based on ID column over a sliding timeline window.
 
-activity-engagement plugin can be used for calculating DAU/WAU/MAU (daily/weekly/monthly activities).
+activity_engagement plugin can be used for calculating DAU/WAU/MAU (daily/weekly/monthly activities).
 
-    T | evaluate activity-engagement(id, datetime-column, 1d, 30d)
+    T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 
 **Syntax**
 
-*T* `| evaluate` `activity-engagement(`*IdColumn*`,` *TimelineColumn*`,` [*Start*`,` *End*`,`] *InnerActivityWindow*`,` *OuterActivityWindow* [`,` *dim1*`,` *dim2*`,` ...]`)`
+*T* `| evaluate` `activity_engagement(`*IdColumn*`,` *TimelineColumn*`,` [*Start*`,` *End*`,`] *InnerActivityWindow*`,` *OuterActivityWindow* [`,` *dim1*`,` *dim2*`,` ...]`)`
 
 **Arguments**
 
@@ -37,7 +37,7 @@ Returns a table that has (distinct count of ID values inside inner-scope window,
 
 Output table schema is:
 
-|TimelineColumn|dcount-activities-inner|dcount-activities-outer|activity-ratio|dim1|..|dim-n|
+|TimelineColumn|dcount_activities_inner|dcount_activities_outer|activity_ratio|dim1|..|dim_n|
 |---|---|---|---|--|--|--|--|--|--|
 |type: as of *TimelineColumn*|long|long|double|..|..|..|
 
@@ -58,8 +58,8 @@ range _day from _start to _end  step 1d
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+100*r-1), 1) 
 | mvexpand id=_users to typeof(long) limit 1000000
 // Calculate DAU/WAU ratio
-| evaluate activity-engagement(['id'], _day, _start, _end, 1d, 7d)
-| project _day, Dau-Wau=activity-ratio*100 
+| evaluate activity_engagement(['id'], _day, _start, _end, 1d, 7d)
+| project _day, Dau_Wau=activity_ratio*100 
 | render timechart 
 ```
 
@@ -79,8 +79,8 @@ range _day from _start to _end  step 1d
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+100*r-1), 1) 
 | mvexpand id=_users to typeof(long) limit 1000000
 // Calculate DAU/MAU ratio
-| evaluate activity-engagement(['id'], _day, _start, _end, 1d, 30d)
-| project _day, Dau-Mau=activity-ratio*100 
+| evaluate activity_engagement(['id'], _day, _start, _end, 1d, 30d)
+| project _day, Dau_Mau=activity_ratio*100 
 | render timechart 
 ```
 
@@ -101,8 +101,8 @@ range _day from _start to _end  step 1d
 | mvexpand id=_users to typeof(long) limit 1000000
 | extend mod3 = strcat("mod3=", id % 3)
 // Calculate DAU/MAU ratio
-| evaluate activity-engagement(['id'], _day, _start, _end, 1d, 30d, mod3)
-| project _day, Dau-Mau=activity-ratio*100, mod3 
+| evaluate activity_engagement(['id'], _day, _start, _end, 1d, 30d, mod3)
+| project _day, Dau_Mau=activity_ratio*100, mod3 
 | render timechart 
 ```
 

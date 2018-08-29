@@ -1,6 +1,6 @@
 ---
-title: bin-at() (Azure Kusto)
-description: This article describes bin-at() in Azure Kusto.
+title: bin_at() (Azure Kusto)
+description: This article describes bin_at() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,14 +8,14 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# bin-at()
+# bin_at()
 
 Rounds values down to a fixed-size "bin", with control over the bin's starting point.
 (See also [`bin function`](./binfunction.md).)
 
 **Syntax**
 
-`bin-at` `(`*Expression*`,` *BinSize*`, ` *FixedPoint*`)`
+`bin_at` `(`*Expression*`,` *BinSize*`, ` *FixedPoint*`)`
 
 **Arguments**
 
@@ -24,8 +24,8 @@ Rounds values down to a fixed-size "bin", with control over the bin's starting p
 * *BinSize*: A scalar constant of the same type as *Expression* indicating
   the size of each bin. 
 * *FixedPoint*: A scalar constant of the same type as *Expression* indicating
-  one value of *Expression* which is a "fixed point" (that is, a value `fixed-point`
-  for which `bin-at(fixed-point, bin-size, fixed-point) == fixed-point`.)
+  one value of *Expression* which is a "fixed point" (that is, a value `fixed_point`
+  for which `bin_at(fixed_point, bin_size, fixed_point) == fixed_point`.)
 
 **Returns**
 
@@ -36,13 +36,13 @@ will be translated into itself.
 
 |Expression                                                                    |Result                           |Comments                   |
 |------------------------------------------------------------------------------|---------------------------------|---------------------------|
-|`bin-at(6.5, 2.5, 7)`                                                         |`4.5`                            ||
-|`bin-at(time(1h), 1d, 12h)`                                                   |`-12h`                           ||
-|`bin-at(datetime(2017-05-15 10:20:00.0), 1d, datetime(1970-01-01 12:00:00.0))`|`datetime(2017-05-14 12:00:00.0)`|All bins will be at noon   |
-|`bin-at(datetime(2017-05-17 10:20:00.0), 7d, datetime(2017-06-04 00:00:00.0))`|`datetime(2017-05-14 00:00:00.0)`|All bins will be on Sundays|
+|`bin_at(6.5, 2.5, 7)`                                                         |`4.5`                            ||
+|`bin_at(time(1h), 1d, 12h)`                                                   |`-12h`                           ||
+|`bin_at(datetime(2017-05-15 10:20:00.0), 1d, datetime(1970-01-01 12:00:00.0))`|`datetime(2017-05-14 12:00:00.0)`|All bins will be at noon   |
+|`bin_at(datetime(2017-05-17 10:20:00.0), 7d, datetime(2017-06-04 00:00:00.0))`|`datetime(2017-05-14 00:00:00.0)`|All bins will be on Sundays|
 
 
-In the following example, notice that the `"fixed point"` arg is returned as one of the bins and the other bins are aligned to it based on the `bin-size`. Also note that each datetime bin represents the starting time of that bin:
+In the following example, notice that the `"fixed point"` arg is returned as one of the bins and the other bins are aligned to it based on the `bin_size`. Also note that each datetime bin represents the starting time of that bin:
 
 ```kusto
 
@@ -50,12 +50,12 @@ datatable(Date:datetime, Num:int)[
 datetime(2018-02-24T15:14),3,
 datetime(2018-02-23T16:14),4,
 datetime(2018-02-26T15:14),5]
-| summarize sum(Num) by bin-at(Date, 1d, datetime(2018-02-24 15:14:00.0000000)) 
+| summarize sum(Num) by bin_at(Date, 1d, datetime(2018-02-24 15:14:00.0000000)) 
 
 
 ```
 
-|Date|sum-Num|
+|Date|sum_Num|
 |---|---|
 |2018-02-23 15:14:00.0000000|4|
 |2018-02-24 15:14:00.0000000|3|

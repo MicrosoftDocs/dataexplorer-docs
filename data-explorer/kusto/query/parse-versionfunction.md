@@ -1,6 +1,6 @@
 ---
-title: parse-version() (Azure Kusto)
-description: This article describes parse-version() in Azure Kusto.
+title: parse_version() (Azure Kusto)
+description: This article describes parse_version() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# parse-version()
+# parse_version()
 
 Converts input string representation of version to a comparable decimal number.
 
-   parse-version("0.0.0.1")
+   parse_version("0.0.0.1")
 
 **Syntax**
 
-`parse-version` `(` *Expr* `)`
+`parse_version` `(` *Expr* `)`
 
 **Arguments**
 
@@ -43,11 +43,11 @@ let dt = datatable(v:string)
 dt | project v1=v, _key=1 
 | join kind=inner (dt | project v2=v, _key = 1) on _key | where v1 != v2
 | summarize v1 = max(v1),v2 = min(v2) by (hash(v1) + hash(v2)) // removing duplications
-| project v1, v2, higher-version = iif(parse-version(v1) > parse-version(v2), v1, v2)
+| project v1, v2, higher_version = iif(parse_version(v1) > parse_version(v2), v1, v2)
 
 ```
 
-|v1|v2|higher-version|
+|v1|v2|higher_version|
 |---|---|---|
 |99999999.0.0.0|0.0.0.5|99999999.0.0.0|
 |1|0.0.0.5|1|

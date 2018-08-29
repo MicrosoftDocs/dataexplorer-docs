@@ -1,6 +1,6 @@
 ---
-title: session-count plugin (Azure Kusto)
-description: This article describes session-count plugin in Azure Kusto.
+title: session_count plugin (Azure Kusto)
+description: This article describes session_count plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# session-count plugin
+# session_count plugin
 
 Calculates sessions count based on ID column over a timeline.
 
-    T | evaluate session-count(id, datetime-column, startofday(ago(30d)), startofday(now()), 1min, 30min, dim1, dim2, dim3)
+    T | evaluate session_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 1min, 30min, dim1, dim2, dim3)
 
 **Syntax**
 
-*T* `| evaluate` `session-count(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Bin*`,` *LookBackWindow* [`,` *dim1*`,` *dim2*`,` ...]`)`
+*T* `| evaluate` `session_count(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Bin*`,` *LookBackWindow* [`,` *dim1*`,` *dim2*`,` ...]`)`
 
 **Arguments**
 
@@ -35,7 +35,7 @@ Returns a table that has the session count values for each timeline period and f
 
 Output table schema is:
 
-|*TimelineColumn*|dim1|..|dim-n|count-sessions|
+|*TimelineColumn*|dim1|..|dim_n|count_sessions|
 |---|---|---|---|---|--|--|--|--|--|--|
 |type: as of *TimelineColumn*|..|..|..|long|
 
@@ -100,7 +100,7 @@ let _data = range Timeline from 1 to 9999 step 1
 | project Timeline, Id;
 // End of data definition
 _data
-| evaluate session-count(Id, Timeline, 1, 10000, 100, 41)
+| evaluate session_count(Id, Timeline, 1, 10000, 100, 41)
 | render linechart 
 ```
 

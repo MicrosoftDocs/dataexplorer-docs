@@ -1,6 +1,6 @@
 ---
-title: row-number() (Azure Kusto)
-description: This article describes row-number() in Azure Kusto.
+title: row_number() (Azure Kusto)
+description: This article describes row_number() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# row-number()
+# row_number()
 
 Returns the current row's index in a [serialized row set](./windowsfunctions.md#serialized-row-set).
 The row index starts by default at `1` for the first row, and is incremented by `1` for each additional row.
@@ -17,7 +17,7 @@ Additionally, the row index may be reset according to some provided predicate.
 
 **Syntax**
 
-`row-number` `(` [*StartingIndex* [`,` *Restart*]] `)`
+`row_number` `(` [*StartingIndex* [`,` *Restart*]] `)`
 
 * *StartingIndex* is a constant expression of type `long` indicating the value
   of the row index to start at (or to restart to). The default value is `1`.
@@ -38,7 +38,7 @@ from `1` up to `10`:
 ```kusto
 range a from 1 to 10 step 1
 | sort by a desc
-| extend rn=row-number()
+| extend rn=row_number()
 ```
 
 The following example is similar to the above, only the second column (`rn`)
@@ -47,7 +47,7 @@ starts at `7`:
 ```kusto
 range a from 1 to 10 step 1
 | sort by a desc
-| extend rn=row-number(7)
+| extend rn=row_number(7)
 ```
 
 The last example shows how one can partition the data and number the rows
@@ -63,7 +63,7 @@ datatable (Airport:string, Airline:string, Departures:long)
   "SEA", "LY", 0
 ]
 | sort by Airport asc, Departures desc
-| extend Rank=row-number(1, prev(Airport) != Airport)
+| extend Rank=row_number(1, prev(Airport) != Airport)
 ```
 
 Running this query produces the following result:

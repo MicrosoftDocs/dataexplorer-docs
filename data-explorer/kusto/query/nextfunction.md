@@ -19,7 +19,7 @@ current row in a [serialized row set](./windowsfunctions.md#serialized-row-set).
 
 `next(column, offset)`
 
-`next(column, offset, default-value)`
+`next(column, offset, default_value)`
 
 **Arguments**
 
@@ -27,7 +27,7 @@ current row in a [serialized row set](./windowsfunctions.md#serialized-row-set).
 
 * `offset`: the offset to go ahead in rows. When no offset is specified a default offset 1 is used.
 
-* `default-value`: the default value to be used when there is no next rows to take the value from. When no default value is specified, null is used.
+* `default_value`: the default value to be used when there is no next rows to take the value from. When no default value is specified, null is used.
 
 
 **Examples**

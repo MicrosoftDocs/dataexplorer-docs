@@ -16,11 +16,11 @@ Returns the integer number represents the month number of the given year.
 
 **Syntax**
 
-`monthofyear(`*a-date*`)`
+`monthofyear(`*a_date*`)`
 
 **Arguments**
 
-* `a-date`: A `datetime`.
+* `a_date`: A `datetime`.
 
 **Returns**
 

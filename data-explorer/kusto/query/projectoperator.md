@@ -50,4 +50,4 @@ T
     B=2*B                      // Calculate a new column B from the old B
 ```
 
-See [series-stats](series-statsfunction.md) as an example of a function that returns multiple columns
+See [series_stats](series-statsfunction.md) as an example of a function that returns multiple columns

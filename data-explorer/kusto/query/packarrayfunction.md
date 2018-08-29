@@ -1,6 +1,6 @@
 ---
-title: pack-array() (Azure Kusto)
-description: This article describes pack-array() in Azure Kusto.
+title: pack_array() (Azure Kusto)
+description: This article describes pack_array() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# pack-array()
+# pack_array()
 
 Packs all input values into a dynamic array.
 
 **Syntax**
 
-`pack-array(`*Expr1*`[`,` *Expr2*]`)`
+`pack_array(`*Expr1*`[`,` *Expr2*]`)`
 
 **Arguments**
 
@@ -30,7 +30,7 @@ Dynamic array which includes the values of Expr1, Expr2, ... , ExprN.
 range x from 1 to 3 step 1
 | extend y = x * 2
 | extend z = y * 2
-| project pack-array(x,y,z)
+| project pack_array(x,y,z)
 ```
 
 |Column1|
@@ -43,7 +43,7 @@ range x from 1 to 3 step 1
 range x from 1 to 3 step 1
 | extend y = tostring(x * 2)
 | extend z = (x * 2) * 1s
-| project pack-array(x,y,z)
+| project pack_array(x,y,z)
 ```
 
 |Column1|

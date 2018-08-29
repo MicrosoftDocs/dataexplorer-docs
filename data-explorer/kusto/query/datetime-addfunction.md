@@ -1,6 +1,6 @@
 ---
-title: datetime-add() (Azure Kusto)
-description: This article describes datetime-add() in Azure Kusto.
+title: datetime_add() (Azure Kusto)
+description: This article describes datetime_add() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# datetime-add()
+# datetime_add()
 
 Calculates a new [datetime](./scalar-data-types/datetime.md) from a specified datepart multiplied by a specified amount, added to a specified [datetime](./scalar-data-types/datetime.md).
 
 **Syntax**
 
-`datetime-add(`*period*`,`*amount*`,`*datetime*`)`
+`datetime_add(`*period*`,`*amount*`,`*datetime*`)`
 
 **Arguments**
 
@@ -42,14 +42,14 @@ A date after a certain time/date interval has been added.
 **Examples**
 
 ```kusto
-print  year = datetime-add('year',1,make-datetime(2017,1,1)),
-quarter = datetime-add('quarter',1,make-datetime(2017,1,1)),
-month = datetime-add('month',1,make-datetime(2017,1,1)),
-week = datetime-add('week',1,make-datetime(2017,1,1)),
-day = datetime-add('day',1,make-datetime(2017,1,1)),
-hour = datetime-add('hour',1,make-datetime(2017,1,1)),
-minute = datetime-add('minute',1,make-datetime(2017,1,1)),
-second = datetime-add('second',1,make-datetime(2017,1,1))
+print  year = datetime_add('year',1,make_datetime(2017,1,1)),
+quarter = datetime_add('quarter',1,make_datetime(2017,1,1)),
+month = datetime_add('month',1,make_datetime(2017,1,1)),
+week = datetime_add('week',1,make_datetime(2017,1,1)),
+day = datetime_add('day',1,make_datetime(2017,1,1)),
+hour = datetime_add('hour',1,make_datetime(2017,1,1)),
+minute = datetime_add('minute',1,make_datetime(2017,1,1)),
+second = datetime_add('second',1,make_datetime(2017,1,1))
 
 ```
 

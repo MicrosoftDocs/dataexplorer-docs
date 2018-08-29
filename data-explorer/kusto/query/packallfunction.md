@@ -1,6 +1,6 @@
 ---
-title: pack-all() (Azure Kusto)
-description: This article describes pack-all() in Azure Kusto.
+title: pack_all() (Azure Kusto)
+description: This article describes pack_all() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# pack-all()
+# pack_all()
 
 Creates a `dynamic` object (property bag) from all the columns of the tabular expression.
 
 **Syntax**
 
-`pack-all()`
+`pack_all()`
 
 **Examples**
 
@@ -28,7 +28,7 @@ Given a table SmsMessages
 
 The following query:
 ```kusto
-SmsMessages | extend Packed=pack-all()
+SmsMessages | extend Packed=pack_all()
 ``` 
 
 Returns:

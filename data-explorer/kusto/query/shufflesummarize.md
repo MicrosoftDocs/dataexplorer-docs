@@ -30,7 +30,7 @@ In addition, it is possible to choose the shuffle keys that will be used by the 
 ```kusto
 T
 | summarize sum(price) by supplier, order
-| where sum-price > 100
+| where sum_price > 100
 | summarize hint.shufflekey = supplier dcount(order) by supplier
 ```
 
@@ -39,7 +39,7 @@ It is also possible to use more than one shuffle key as in the following example
 ```kusto
 T
 | summarize sum(price) by supplier, order, location
-| where sum-price > 100
+| where sum_price > 100
 | summarize hint.shufflekey = supplier hint.shufflekey = location dcount(order) by supplier, location
 ```
 
@@ -58,8 +58,8 @@ Running the regular summarize strategy, the query ends after 1:08 and the memory
 
 ```kusto
 orders
-| summarize arg-max(o-orderdate, o-totalprice) by o-custkey 
-| where o-totalprice < 1000
+| summarize arg_max(o_orderdate, o_totalprice) by o_custkey 
+| where o_totalprice < 1000
 | count
 ```
 
@@ -72,8 +72,8 @@ While using shuffle summarize strategy, the query ends after ~7 seconds and the 
 
 ```kusto
 orders
-| summarize hint.strategy = shuffle arg-max(o-orderdate, o-totalprice) by o-custkey 
-| where o-totalprice < 1000
+| summarize hint.strategy = shuffle arg_max(o_orderdate, o_totalprice) by o_custkey 
+| where o_totalprice < 1000
 | count
 ```
 
@@ -82,7 +82,7 @@ orders
 |1086|
 
 
-<!--###In shuffle query, the default partitions number is the cluster nodes number. This number can be overriden by using the syntax `hint.partitions = total-partitions` which will control the number of partitions.
+<!--###In shuffle query, the default partitions number is the cluster nodes number. This number can be overriden by using the syntax `hint.partitions = total_partitions` which will control the number of partitions.
 
 This hint is useful when the cluster has a small number of cluster nodes where the default partitions number will be small too and the query still fails or takes long execution time.
 
@@ -95,7 +95,7 @@ Running the query without the hint will use only 2 partitions (as cluster nodes 
 <!--###<!-- csl -->
 <!--###```
 lineitem	
-| summarize hint.strategy = shuffle dcount(l-comment), dcount(l-shipdate) by l-partkey 
+| summarize hint.strategy = shuffle dcount(l_comment), dcount(l_shipdate) by l_partkey 
 | consume
 ```
 
@@ -104,7 +104,7 @@ setting partitions number to 10, the query will end after 23 seconds:
 <!-- csl -->
 <!--###```
 lineitem	
-| summarize hint.strategy = shuffle hint.partitions = 10 dcount(l-comment), dcount(l-shipdate) by l-partkey 
+| summarize hint.strategy = shuffle hint.partitions = 10 dcount(l_comment), dcount(l_shipdate) by l_partkey 
 | consume
 ```
 

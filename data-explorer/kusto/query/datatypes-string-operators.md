@@ -20,28 +20,28 @@ Operator       |Description                         |Case-Sensitive|Example (yie
 `!~`           |Not equals                          |No            |`"aBc" !~ "xyz"`
 `has`          |Right-hand-side (RHS) is a whole term in left-hand-side (LHS)|No|`"North America" has "america"`
 `!has`         |RHS is not a full term in LHS       |No            |`"North America" !has "amer"` 
-`has-cs`       |Right-hand-side (RHS) is a whole term in left-hand-side (LHS)|Yes|`"North America" has-cs "America"`
-`!has-cs`      |RHS is not a full term in LHS       |Yes            |`"North America" !has-cs "amer"` 
+`has_cs`       |Right-hand-side (RHS) is a whole term in left-hand-side (LHS)|Yes|`"North America" has_cs "America"`
+`!has_cs`      |RHS is not a full term in LHS       |Yes            |`"North America" !has_cs "amer"` 
 `hasprefix`    |RHS is a term prefix in LHS         |No            |`"North America" hasprefix "ame"`
 `!hasprefix`   |RHS is not a term prefix in LHS     |No            |`"North America" !hasprefix "mer"` 
-`hasprefix-cs`    |RHS is a term prefix in LHS         |Yes            |`"North America" hasprefix-cs "Ame"`
-`!hasprefix-cs`   |RHS is not a term prefix in LHS     |Yes            |`"North America" !hasprefix-cs "CA"` 
+`hasprefix_cs`    |RHS is a term prefix in LHS         |Yes            |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs`   |RHS is not a term prefix in LHS     |Yes            |`"North America" !hasprefix_cs "CA"` 
 `hassuffix`    |RHS is a term suffix in LHS         |No            |`"North America" hassuffix "ica"`
 `!hassuffix`   |RHS is not a term suffix in LHS     |No            |`"North America" !hassuffix "americ"
-`hassuffix-cs`    |RHS is a term suffix in LHS         |Yes            |`"North America" hassuffix-cs "ica"`
-`!hassuffix-cs`   |RHS is not a term suffix in LHS     |Yes            |`"North America" !hassuffix-cs "icA"
+`hassuffix_cs`    |RHS is a term suffix in LHS         |Yes            |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs`   |RHS is not a term suffix in LHS     |Yes            |`"North America" !hassuffix_cs "icA"
 `contains`     |RHS occurs as a subsequence of LHS  |No            |`"FabriKam" contains "BRik"`
 `!contains`    |RHS does not occur in LHS           |No            |`"Fabrikam" !contains "xyz"`
-`contains-cs`   |RHS occurs as a subsequence of LHS  |Yes           |`"FabriKam" contains-cs "Kam"`
-`!contains-cs`  |RHS does not occur in LHS           |Yes           |`"Fabrikam" !contains-cs "Kam"`
+`contains_cs`   |RHS occurs as a subsequence of LHS  |Yes           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |RHS does not occur in LHS           |Yes           |`"Fabrikam" !contains_cs "Kam"`
 `startswith`   |RHS is an initial subsequence of LHS|No            |`"Fabrikam" startswith "fab"`
 `!startswith`  |RHS is not an initial subsequence of LHS|No        |`"Fabrikam" !startswith "kam"`
-`startswith-cs`   |RHS is an initial subsequence of LHS|Yes            |`"Fabrikam" startswith-cs "Fab"`
-`!startswith-cs`  |RHS is not an initial subsequence of LHS|Yes        |`"Fabrikam" !startswith-cs "fab"`
+`startswith_cs`   |RHS is an initial subsequence of LHS|Yes            |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`  |RHS is not an initial subsequence of LHS|Yes        |`"Fabrikam" !startswith_cs "fab"`
 `endswith`     |RHS is a closing subsequence of LHS|No             |`"Fabrikam" endswith "Kam"`
 `!endswith`    |RHS is not a closing subsequence of LHS|No         |`"Fabrikam" !endswith "brik"`
-`endswith-cs`     |RHS is a closing subsequence of LHS|Yes             |`"Fabrikam" endswith "Kam"`
-`!endswith-cs`    |RHS is not a closing subsequence of LHS|Yes         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |RHS is a closing subsequence of LHS|Yes             |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`    |RHS is not a closing subsequence of LHS|Yes         |`"Fabrikam" !endswith "brik"`
 `matches regex`|LHS contains a match for RHS        |Yes           |`"Fabrikam" matches regex "b.*k"`
 `in`           |Equals to one of the elements       |Yes           |`"abc" in ("123", "345", "abc")`
 `!in`          |Not equals to any of the elements   |Yes           |`"bca" !in ("123", "345", "abc")`

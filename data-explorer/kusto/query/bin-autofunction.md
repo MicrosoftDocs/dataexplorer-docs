@@ -1,6 +1,6 @@
 ---
-title: bin-auto() (Azure Kusto)
-description: This article describes bin-auto() in Azure Kusto.
+title: bin_auto() (Azure Kusto)
+description: This article describes bin_auto() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# bin-auto()
+# bin_auto()
 
 Rounds values down to a fixed-size "bin", with control over the bin size and starting point provided by a query property.
 
 **Syntax**
 
-`bin-auto` `(` *Expression* `)`
+`bin_auto` `(` *Expression* `)`
 
 **Arguments**
 
@@ -22,25 +22,25 @@ Rounds values down to a fixed-size "bin", with control over the bin size and sta
 
 **Client Request Properties**
 
-* `query-bin-auto-size`: A numeric literal indicating the size of each bin.
-* `query-bin-auto-at`: A numeric literal indicating one value of *Expression* which is a "fixed point" (that is, a value `fixed-point`
-  for which `bin-auto(fixed-point)` == `fixed-point`.)
+* `query_bin_auto_size`: A numeric literal indicating the size of each bin.
+* `query_bin_auto_at`: A numeric literal indicating one value of *Expression* which is a "fixed point" (that is, a value `fixed_point`
+  for which `bin_auto(fixed_point)` == `fixed_point`.)
 
 **Returns**
 
-The nearest multiple of `query-bin-auto-at` below *Expression*, shifted so that `query-bin-auto-at`
+The nearest multiple of `query_bin_auto_at` below *Expression*, shifted so that `query_bin_auto_at`
 will be translated into itself.
 
 **Examples**
 
 ```kusto
-set query-bin-auto-size=1h;
-set query-bin-auto-at=datetime(2017-01-01 00:05);
+set query_bin_auto_size=1h;
+set query_bin_auto_at=datetime(2017-01-01 00:05);
 range Timestamp from datetime(2017-01-01 00:05) to datetime(2017-01-01 02:00) step 1m
-| summarize count() by bin-auto(Timestamp)
+| summarize count() by bin_auto(Timestamp)
 ```
 
-|Timestamp                    | count-|
+|Timestamp                    | count_|
 |-----------------------------|-------|
 |2017-01-01 00:05:00.0000000  | 60    |
 |2017-01-01 01:05:00.0000000  | 56    |

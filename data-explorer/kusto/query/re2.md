@@ -31,3 +31,4 @@ apply. For example, the regular expression `\A` matches
 the beginning of a line (see the table below), and is specified
 in Kusto as the string literal `"\\A"` (note the "extra" backslash (`\`)
 character.)
+

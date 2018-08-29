@@ -27,4 +27,3 @@ lookupTable
 | join hint.strategy = broadcast (factTable) on Key
 | summarize dcount(Messages) by Timestamp, Key
 ```
-

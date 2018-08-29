@@ -1,6 +1,6 @@
 ---
-title: row-cumsum() (Azure Kusto)
-description: This article describes row-cumsum() in Azure Kusto.
+title: row_cumsum() (Azure Kusto)
+description: This article describes row_cumsum() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# row-cumsum()
+# row_cumsum()
 
 Calculates the cumulative sum of a column in a [serialized row set](./windowsfunctions.md#serialized-row-set).
 
 **Syntax**
 
-`row-cumsum` `(` *Term* [`,` *Restart*] `)`
+`row_cumsum` `(` *Term* [`,` *Restart*] `)`
 
 * *Term* is an expression indicating the value to be summed.
   The expression must be a scalar of one of the following types:
@@ -38,7 +38,7 @@ datatable (a:long) [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 ]
 | where a%2==0
-| serialize cs=row-cumsum(a)
+| serialize cs=row_cumsum(a)
 ```
 
 a    | cs
@@ -63,7 +63,7 @@ datatable (name:string, month:int, salary:long)
     "Bob",   3, 1450,
 ]
 | order by name asc, month asc
-| extend total=row-cumsum(salary, name != prev(name))
+| extend total=row_cumsum(salary, name != prev(name))
 ```
 
 name   | month  | salary  | total

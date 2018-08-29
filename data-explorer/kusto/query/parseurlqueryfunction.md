@@ -1,6 +1,6 @@
 ---
-title: parse-urlquery() (Azure Kusto)
-description: This article describes parse-urlquery() in Azure Kusto.
+title: parse_urlquery() (Azure Kusto)
+description: This article describes parse_urlquery() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# parse-urlquery()
+# parse_urlquery()
 
 Parses a url query `string` and returns a [`dynamic`](./scalar-data-types/dynamic.md) object contains the Query parameters.
 
 **Syntax**
 
-`parse-urlquery(`*query*`)`
+`parse_urlquery(`*query*`)`
 
 **Arguments**
 
@@ -27,7 +27,7 @@ An object of type `dynamic` that includes the query parameters.
 **Example**
 
 ```kusto
-parse-urlquery("k1=v1&k2=v2&k3=v3")
+parse_urlquery("k1=v1&k2=v2&k3=v3")
 ```
 
 will result:

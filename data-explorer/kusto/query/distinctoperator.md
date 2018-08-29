@@ -33,7 +33,7 @@ Table | distinct fruit, price
 There are two main semantic differences between the `distinct` operator and
 using `summarize by ...`:
 * Distinct supports providing an asterisk (`*`) as the group key, making it easier to use for wide tables.
-* Distinct doesnâ€™t have auto-binning of time columns (to `1h`).
+* Distinct doesn't have auto-binning of time columns (to `1h`).
 
 ```kusto
 let T=(print t=datetime(2008-05-12 06:45));

@@ -39,7 +39,7 @@ When you find an interesting row, you might want to drill into it further by add
 
 `T | evaluate diffpatterns(`SplitColumn, SplitValueA, SplitValueB [,Â WeightColumn,Â Threshold, MaxDimensions,Â CustomWildcard, ...]`)` 
 
-* SplitColumn - *column-name*
+* SplitColumn - *column_name*
 
     Tells the algorithm how to split the query into data sets. According to the specified values for the SplitValueA and SplitValueB arguments (see below), the algorithm splits the query into two data sets, â€œAâ€ and â€œBâ€, and analyze the differences between them. As such, the split column must have at least two distinct values.
 
@@ -51,18 +51,18 @@ When you find an interesting row, you might want to drill into it further by add
 
     A string representation of one of the values in the SplitColumn that was specified. All the rows which have this value in their SplitColumn considered as data set  â€œBâ€.
 
-    Example: `T | extend splitColumn=iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure") `
+    Example: `T | extend splitColumn=iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure") `
 
 **Optional Arguments**
 
 All other arguments are optional, but they must be ordered as below. To indicate that the default value should be used, put the string tilde value - '~' (see examples below).
 
-* WeightColumn - *column-name*
+* WeightColumn - *column_name*
 
     Considers each row in the input according to the specified weight (by default each row has a weight of '1'). The argument must be a name of a numeric column (e.g. int, long, real).
     A common usage of a weight column is to take into account sampling or bucketing/aggregation of the data that is already embedded into each row.
     
-    Example: `T | extend splitColumn=iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", sample-Count) `
+    Example: `T | extend splitColumn=iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", sample_Count) `
 
 * Threshold - 0.015 < *double* < 1 [default: 0.05]
 

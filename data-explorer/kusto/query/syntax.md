@@ -11,10 +11,10 @@ ms.date: 09/24/2018
 # Cross-Database and Cross-Cluster Queries
 
 Every Kusto query operates in the context of the current cluster and the default database.
-* In [Kusto Explorer](https://kusdoc2.azurewebsites.net/docs/tools/tools_kusto_explorer.html) the default database is the one selected in the [Connections Panel](https://kusdoc2.azurewebsites.net/docs/tools/tools_kusto_explorer.html#connections-panel) and the current cluster is the connection containing it
-* In [Kusto.Cli](https://kusdoc2.azurewebsites.net/docs/tools/tools_kusto_cli.html) the current cluster is specified by `ConnectionString` command-line argument and the default database is established by `dbcontext` command 
-* When using [Kusto Client Library](https://kusdoc2.azurewebsites.net/docs/api/using_the_kusto_client_library.html) the current cluster and the default database are specified by the `Data Source` and `Initial Catalog` properties of 
-  the [Kusto Connection String](https://kusdoc2.azurewebsites.net/docs/concepts/kusto_connection_strings.html) respectively.
+* In [Kusto Explorer](https://kusdoc2.azurewebsites.net/docs/tools/kusto-explorer.html) the default database is the one selected in the [Connections Panel](https://kusdoc2.azurewebsites.net/docs/tools/kusto-explorer.html#connections-panel) and the current cluster is the connection containing it
+* In [Kusto.Cli](https://kusdoc2.azurewebsites.net/docs/tools/kusto-cli.html) the current cluster is specified by `ConnectionString` command-line argument and the default database is established by `dbcontext` command 
+* When using [Kusto Client Library](https://kusdoc2.azurewebsites.net/docs/api/using-the-kusto-client-library.html) the current cluster and the default database are specified by the `Data Source` and `Initial Catalog` properties of 
+  the [Kusto Connection String](https://kusdoc2.azurewebsites.net/docs/concepts/kusto-connection-strings.html) respectively.
 
 ## Queries
 To access tables from any database other than the default the *qualified name* syntax must be used:
@@ -59,7 +59,7 @@ union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster
 >**Note:** name of the default database is also a potential match, so database("&#42;").* specifies all tables of all databases
 including the default.
 
->**Note:** for the discussion on how shema changes affect cross-cluster queries see [Cross-cluster queries and schema changes](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_crossclusterandschemachanges.html)
+>**Note:** for the discussion on how shema changes affect cross-cluster queries see [Cross-cluster queries and schema changes](https://kusdoc2.azurewebsites.net/docs/concepts/crossclusterandschemachanges.html)
 
 ## Restriction of Access
 Qualified names or patterns can also be included in [restrict access](./restrictstatement.md) statement (wildcards in cluster names are not allowed)
@@ -110,7 +110,7 @@ Scalar functions can only be accessed in the same cluster. So the following is *
 MyTable | extend CalCol=cluster("OtherCluster").database("OtherDb").MyCalc(Col1, Col2, Col3) | limit 10
 ```
 
-The schema of the remote function being called must be known and invariant of its parameters (see also [Cross-cluster queries and schema changes](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_crossclusterandschemachanges.html)) . So the following is **not valid**:
+The schema of the remote function being called must be known and invariant of its parameters (see also [Cross-cluster queries and schema changes](https://kusdoc2.azurewebsites.net/docs/concepts/crossclusterandschemachanges.html)) . So the following is **not valid**:
 
 Tabular function in `OtherDb`:
 ```kusto

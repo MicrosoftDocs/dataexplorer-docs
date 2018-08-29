@@ -12,7 +12,7 @@ ms.date: 09/24/2018
 
 Renames columns in the result output.
 
-    T | project-rename new-column-name = column-name
+    T | project-rename new_column_name = column_name
 
 **Syntax**
 
@@ -33,9 +33,9 @@ A table that has the columns in the same order as in an existing table, with col
 
 ```kusto
 print a='a', b='b', c='c'
-|  project-rename new-b=b, new-a=a
+|  project-rename new_b=b, new_a=a
 ```
 
-|new-a|new-b|c|
+|new_a|new_b|c|
 |---|---|---|
 |a|b|c|

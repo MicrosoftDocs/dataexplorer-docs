@@ -35,6 +35,6 @@ range x from 1 to 100 step 1
 
 ```
 
-|varianceif-x|
+|varianceif_x|
 |---|
 |850|

@@ -19,7 +19,7 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 
 find in (database('*').*) where Fruit == "apple"
 
-find in (cluster('cluster-name').database('MyDB*'.*)) where Fruit == "apple"
+find in (cluster('cluster_name').database('MyDB*'.*)) where Fruit == "apple"
 
 ```
 
@@ -30,8 +30,8 @@ find in (cluster('cluster-name').database('MyDB*'.*)) where Fruit == "apple"
 * `find` *Predicate* [`project-smart` | `project` *ColumnName*[`:`*ColumnType*] [`,` *ColumnName*[`:`*ColumnType*], ...] [`, pack(*)`]] 
 
 ## Arguments
-* `withsource=`*ColumnName*: Optional. By default the output will include a column called *source-* whose values indicates which source table has contributed each row. If specified, *ColumnName* will be used instead of *source-* .
-If the query effectively (after wildcard matching) references tables from more than one database (default database always counts) the value of this column will have a table name qualified with the database. Similarly __cluster and database-_ qualifications will be present in the value if more than one cluster is referenced.
+* `withsource=`*ColumnName*: Optional. By default the output will include a column called *source_* whose values indicates which source table has contributed each row. If specified, *ColumnName* will be used instead of *source_* .
+If the query effectively (after wildcard matching) references tables from more than one database (default database always counts) the value of this column will have a table name qualified with the database. Similarly __cluster and database__ qualifications will be present in the value if more than one cluster is referenced.
 * *Predicate*: [see details](./findoperator.md#predicate-syntax). A `boolean` [expression](./scalar-data-types/bool.md) over the columns of the input tables *Table* [`,` *Table*, ...]. It is evaluated for each row in each input table. 
 * `Table`: Optional. By default *find* will search in all tables in the current database
  *  The name of a table, such as `Events` or
@@ -46,9 +46,9 @@ according to the output schema as described below.
 
 ## Output Schema
 
-**source- column**
+**source_ column**
 
-The find operator output will always include a *source-* column with the source table name. The column can be renamed using the `withsource` parameter.
+The find operator output will always include a *source_* column with the source table name. The column can be renamed using the `withsource` parameter.
 
 **results columns**
 
@@ -57,15 +57,15 @@ Source tables that do not contain any column used by the predicate evaluation wi
 When using `project-smart`, the columns that will appear in the output will be:
 1. Columns that appear explicitly in the predicate
 2. Columns that are common to all the filtered tables
-The rest of the columns will be packed into a property bag and will appear in an additional `pack-` column.
+The rest of the columns will be packed into a property bag and will appear in an additional `pack_` column.
 A column that is referenced explicitly by the predicate and appears in multiple tables with multiple types, will have a different column in the result schema for each such type. Each of the column names will be constructed from the original column name and the type, separated by an underscore.
 
 When using `project` *ColumnName*[`:`*ColumnType*] [`,` *ColumnName*[`:`*ColumnType*], ...][`,` `pack(*)`]:
 1. The result table will include the columns specified in the list. If a source table doesn't contain a certain column, the values in the corresponding rows will be null.
 2. When specifying a *ColumnType* along with a *ColumnName*, this column in the **result** will have the given type, and the values will be casted to that type if needed. Note that this will not have an effect on the column type when evaluating the *Predicate*.
-3. When `pack(*)` is used, the rest of the columns will be packed into a property bag and will appear in an additional `pack-` column
+3. When `pack(*)` is used, the rest of the columns will be packed into a property bag and will appear in an additional `pack_` column
 
-**pack- column**
+**pack_ column**
 
 This column will contain a property bag with the data from all the columns that doesn't appear in the output schema. The source column name will serve as the property name and the column value will serve as the property value.
 
@@ -79,13 +79,13 @@ find operator supports an alternative syntax for `* has` *term* , and using just
 
 * If the project clause references a column that appears in multiple tables and has multiple types, a type must follow this column reference in the project clause
 * When using *project-smart*, changes in the predicate, in the source tables set or in the tables schema may result in a changes to the output schema. If a constant result schema is needed, use *project* instead
-* `find` scope can not include [functions](https://kusdoc2.azurewebsites.net/docs/controlCommands/controlcommands_functions.html). To include a function in the find scope - define a [let statement](./letstatement.md) with [view keyword](./letstatement.md)
+* `find` scope can not include [functions](https://kusdoc2.azurewebsites.net/docs/controlCommands/functions.html). To include a function in the find scope - define a [let statement](./letstatement.md) with [view keyword](./letstatement.md)
 
 ## Performance Tips
 
-* Use [tables](https://kusdoc2.azurewebsites.net/docs/controlCommands/controlcommands_tables.html) as opposed to [tabular expressions](./tabularexpressionstatements.md)- in case of tabular expression the find operator falls back to a `union` query which can result in degraded performance
+* Use [tables](https://kusdoc2.azurewebsites.net/docs/controlCommands/tables.html) as opposed to [tabular expressions](./tabularexpressionstatements.md)- in case of tabular expression the find operator falls back to a `union` query which can result in degraded performance
 * If a column that appears in multiple tables and has multiple types is part of the project clause, prefer adding a *ColumnType* to the project clause over modifying the table before passing it to `find` (see previous tip)
-* Add time based filters to the predicate (using a datetime column value or [ingestion-time()](./ingestiontimefunction.md))
+* Add time based filters to the predicate (using a datetime column value or [ingestion_time()](./ingestiontimefunction.md))
 * Prefer to search in specific columns over full text search 
 * Prefer not to reference explicitly columns that appears in multiple tables and has multiple types. If the predicate is valid when resolving such columns type for more than one type, the query will fallback to union
 
@@ -150,7 +150,7 @@ Assume we have next content of these two tables:
 
 ### EventsTable1
 
-|Session-Id|Level|EventText|Version
+|Session_Id|Level|EventText|Version
 |---|---|---|---|
 |acbd207d-51aa-4df7-bfa7-be70eb68f04e|Information|Some Text1|v1.0.0
 |acbd207d-51aa-4df7-bfa7-be70eb68f04e|Error|Some Text2|v1.0.0
@@ -159,7 +159,7 @@ Assume we have next content of these two tables:
 
 ### EventsTable2
 
-|Session-Id|Level|EventText|EventName
+|Session_Id|Level|EventText|EventName
 |---|---|---|---|
 |f7d5f95f-f580-4ea6-830b-5776c8d64fdd|Information|Some Other Text1|Event1
 |acbd207d-51aa-4df7-bfa7-be70eb68f04e|Information|Some Other Text2|Event2
@@ -171,23 +171,23 @@ Assume we have next content of these two tables:
 
 ```kusto
 find in (EventsTable1, EventsTable2) 
-     where Session-Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e' and Level == 'Error' 
+     where Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e' and Level == 'Error' 
      project EventText, Version, EventName, pack(*)
 ```
 
-|source-|EventText|Version|EventName|pack-
+|source_|EventText|Version|EventName|pack_
 |---|---|---|---|---|
-|EventsTable1|Some Text2|v1.0.0||{"Session-Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error"}
-|EventsTable2|Some Other Text3||Event3|{"Session-Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error"}
+|EventsTable1|Some Text2|v1.0.0||{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error"}
+|EventsTable2|Some Other Text3||Event3|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error"}
 
 
 ### Search in common and uncommon columns
 
 ```kusto
-find Version == 'v1.0.0' or EventName == 'Event1' project Session-Id, EventText, Version, EventName
+find Version == 'v1.0.0' or EventName == 'Event1' project Session_Id, EventText, Version, EventName
 ```
 
-|source-|Session-Id|EventText|Version|EventName|
+|source_|Session_Id|EventText|Version|EventName|
 |---|---|---|---|---|
 |EventsTable1|acbd207d-51aa-4df7-bfa7-be70eb68f04e|Some Text1|v1.0.0
 |EventsTable1|acbd207d-51aa-4df7-bfa7-be70eb68f04e|Some Text2|v1.0.0
@@ -198,10 +198,10 @@ Note: in practice, *EventsTable1* rows will be filtered with ```Version == 'v1.0
 ### Use abbreviated notation to search across all tables in the current database
 
 ```kusto
-find Session-Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'
+find Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'
 ```
 
-|source-|Session-Id|Level|EventText|pack-|
+|source_|Session_Id|Level|EventText|pack_|
 |---|---|---|---|---|
 |EventsTable1|acbd207d-51aa-4df7-bfa7-be70eb68f04e|Information|Some Text1|{"Version":"v1.0.0"}
 |EventsTable1|acbd207d-51aa-4df7-bfa7-be70eb68f04e|Error|Some Text2|{"Version":"v1.0.0"}
@@ -212,15 +212,15 @@ find Session-Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'
 ### Return the results from each row as a property bag
 
 ```kusto
-find Session-Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e' project pack(*)
+find Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e' project pack(*)
 ```
 
-|source-|pack-|
+|source_|pack_|
 |---|---|
-|EventsTable1|{"Session-Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Information", "EventText":"Some Text1", "Version":"v1.0.0"}
-|EventsTable1|{"Session-Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error", "EventText":"Some Text2", "Version":"v1.0.0"}
-|EventsTable2|{"Session-Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Information", "EventText":"Some Other Text2", "EventName":"Event2"}
-|EventsTable2|{"Session-Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error", "EventText":"Some Other Text3", "EventName":"Event3"}
+|EventsTable1|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Information", "EventText":"Some Text1", "Version":"v1.0.0"}
+|EventsTable1|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error", "EventText":"Some Text2", "Version":"v1.0.0"}
+|EventsTable2|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Information", "EventText":"Some Other Text2", "EventName":"Event2"}
+|EventsTable2|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error", "EventText":"Some Other Text3", "EventName":"Event3"}
 
 
 ## Examples of cases where `find` will perform as `union`
@@ -230,7 +230,7 @@ find Session-Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e' project pack(*)
 ```kusto
 let PartialEventsTable1 = view() { EventsTable1 | where Level == 'Error' };
 find in (PartialEventsTable1, EventsTable2) 
-     where Session-Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'
+     where Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'
 ```
 
 ### Referencing a column that appears in multiple tables and has multiple types
@@ -248,11 +248,11 @@ Assume we have created two tables by running:
 find in (Table1, Table2) where ProcessId == 1001
 ```
 
-And the output result schema will be __(Level:string, Timestamp, ProcessId-string, ProcessId-int)__
+And the output result schema will be __(Level:string, Timestamp, ProcessId_string, ProcessId_int)__
 
 * The following query will, as well, be executed as `union` but will produce a different result schema:
 ```kusto
 find in (Table1, Table2) where ProcessId == 1001 project Level, Timestamp, ProcessId:string 
 ```
 
-And the output result schema will be __(Level:string, Timestamp, ProcessId-string)__
+And the output result schema will be __(Level:string, Timestamp, ProcessId_string)__

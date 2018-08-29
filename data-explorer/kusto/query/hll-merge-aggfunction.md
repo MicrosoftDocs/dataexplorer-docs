@@ -1,6 +1,6 @@
 ---
-title: hll-merge() (aggregation function) (Azure Kusto)
-description: This article describes hll-merge() (aggregation function) in Azure Kusto.
+title: hll_merge() (aggregation function) (Azure Kusto)
+description: This article describes hll_merge() (aggregation function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# hll-merge() (aggregation function)
+# hll_merge() (aggregation function)
 
 Merges HLL results across the group into single HLL value.
 
@@ -18,7 +18,7 @@ Read more about the underlying algorithm (*H*yper*L*og*L*og) and the estimated e
 
 **Syntax**
 
-`summarize` `hll-merge(`*Expr*`)`
+`summarize` `hll_merge(`*Expr*`)`
 
 **Arguments**
 
@@ -30,4 +30,4 @@ The merged hll values of *Expr* across the group.
  
 **Tips**
 
-1) You may use the function [dcount-hll] (dcount-hllfunction.md) which will calculate the dcount from hll / hll-merge aggregation functions.
+1) You may use the function [dcount_hll] (dcount-hllfunction.md) which will calculate the dcount from hll / hll-merge aggregation functions.

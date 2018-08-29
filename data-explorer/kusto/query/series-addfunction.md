@@ -1,6 +1,6 @@
 ---
-title: series-add() (Azure Kusto)
-description: This article describes series-add() in Azure Kusto.
+title: series_add() (Azure Kusto)
+description: This article describes series_add() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# series-add()
+# series_add()
 
 Calculates the element-wise addition of two numeric series inputs.
 
 **Syntax**
 
-`series-add(`*series1*`,` *series2*`)`
+`series_add(`*series1*`,` *series2*`)`
 
 **Arguments**
 
@@ -30,11 +30,11 @@ Dynamic array of calculated element-wise add operation between the two inputs. A
 range x from 1 to 3 step 1
 | extend y = x * 2
 | extend z = y * 2
-| project s1 = pack-array(x,y,z), s2 = pack-array(z, y, x)
-| extend s1-add-s2 = series-add(s1, s2)
+| project s1 = pack_array(x,y,z), s2 = pack_array(z, y, x)
+| extend s1_add_s2 = series_add(s1, s2)
 ```
 
-|s1|s2|s1-add-s2|
+|s1|s2|s1_add_s2|
 |---|---|---|
 |[1,2,4]|[4,2,1]|[5,4,5]|
 |[2,4,8]|[8,4,2]|[10,8,10]|

@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # loggamma()
 
-Computes log of absolute value of the [gamma function](https://en.wikipedia.org/wiki/Gamma-function)
+Computes log of absolute value of the [gamma function](https://en.wikipedia.org/wiki/Gamma_function)
 
 **Syntax**
 
@@ -24,4 +24,3 @@ Computes log of absolute value of the [gamma function](https://en.wikipedia.org/
 
 * Returns the natural logarithm of the absolute value of the gamma function of x.
 * For computing gamma function, see [gamma()](gammafunction.md).
-

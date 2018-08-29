@@ -1,6 +1,6 @@
 ---
-title: parse-path() (Azure Kusto)
-description: This article describes parse-path() in Azure Kusto.
+title: parse_path() (Azure Kusto)
+description: This article describes parse_path() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# parse-path()
+# parse_path()
 
 Parses a file path `string` and returns a [`dynamic`](./scalar-data-types/dynamic.md) object that contains the following parts of the path: 
 Scheme, RootPath, DirectoryPath, DirectoryName, FileName, Extension, AlternateDataStreamName.
@@ -16,7 +16,7 @@ In addition to the simple paths with both types of slashes, supports paths with 
 
 **Syntax**
 
-`parse-path(`*path*`)`
+`parse_path(`*path*`)`
 
 **Arguments**
 
@@ -38,11 +38,11 @@ datatable(p:string)
     @"\\shared\users\temp\file.txt.gz",
     "/usr/lib/temp/file.txt"
 ]
-| extend path-parts = parse-path(p)
+| extend path_parts = parse_path(p)
 
 ```
 
-|p|path-parts|
+|p|path_parts|
 |---|---|
 |C:\temp\file.txt|{
   "Scheme": "",

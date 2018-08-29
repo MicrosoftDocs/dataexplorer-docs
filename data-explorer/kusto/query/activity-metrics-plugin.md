@@ -1,6 +1,6 @@
 ---
-title: activity-metrics plugin (Azure Kusto)
-description: This article describes activity-metrics plugin in Azure Kusto.
+title: activity_metrics plugin (Azure Kusto)
+description: This article describes activity_metrics plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# activity-metrics plugin
+# activity_metrics plugin
 
 Calculates useful activity metrics (distinct count values, distinct count of new values, retention rate, and churn rate) based on the current period window vs. previous period window.
 
-    T | evaluate activity-metrics(id, datetime-column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
+    T | evaluate activity_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
 
 **Syntax**
 
-*T* `| evaluate` `activity-metrics(`*IdColumn*`,` *TimelineColumn*`,` [*Start*`,` *End*`,`] *Window* [`,` *dim1*`,` *dim2*`,` ...]`)`
+*T* `| evaluate` `activity_metrics(`*IdColumn*`,` *TimelineColumn*`,` [*Start*`,` *End*`,`] *Window* [`,` *dim1*`,` *dim2*`,` ...]`)`
 
 **Arguments**
 
@@ -34,7 +34,7 @@ Returns a table that has the distinct count values, distinct count of new values
 
 Output table schema is:
 
-|*TimelineColumn*|dcount-values|dcount-newvalues|retention-rate|churn-rate|dim1|..|dim-n|
+|*TimelineColumn*|dcount_values|dcount_newvalues|retention_rate|churn_rate|dim1|..|dim_n|
 |---|---|---|---|---|--|--|--|--|--|--|
 |type: as of *TimelineColumn*|long|long|double|double|..|..|..|
 
@@ -98,12 +98,12 @@ range _day from _start to _end  step 1d
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1) 
 | mvexpand id=_users to typeof(long) limit 1000000
 // 
-| evaluate activity-metrics(['id'], _day, _start, _end, 7d)
-| project _day, retention-rate, churn-rate
+| evaluate activity_metrics(['id'], _day, _start, _end, 7d)
+| project _day, retention_rate, churn_rate
 | render timechart 
 ```
 
-|_day|retention-rate|churn-rate|
+|_day|retention_rate|churn_rate|
 |---|---|---|
 |2017-01-02 00:00:00.0000000|NaN|NaN|
 |2017-01-09 00:00:00.0000000|0.179910044977511|0.820089955022489|
@@ -147,12 +147,12 @@ range _day from _start to _end  step 1d
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1) 
 | mvexpand id=_users to typeof(long) limit 1000000
 // 
-| evaluate activity-metrics(['id'], _day, _start, _end, 7d)
-| project _day, dcount-values, dcount-newvalues
+| evaluate activity_metrics(['id'], _day, _start, _end, 7d)
+| project _day, dcount_values, dcount_newvalues
 | render timechart 
 ```
 
-|_day|dcount-values|dcount-newvalues|
+|_day|dcount_values|dcount_newvalues|
 |---|---|---|
 |2017-01-02 00:00:00.0000000|630|630|
 |2017-01-09 00:00:00.0000000|738|575|

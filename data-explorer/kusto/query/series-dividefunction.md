@@ -1,6 +1,6 @@
 ---
-title: series-divide() (Azure Kusto)
-description: This article describes series-divide() in Azure Kusto.
+title: series_divide() (Azure Kusto)
+description: This article describes series_divide() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# series-divide()
+# series_divide()
 
 Calculates the element-wise division of two numeric series inputs.
 
 **Syntax**
 
-`series-divide(`*series1*`,` *series2*`)`
+`series_divide(`*series1*`,` *series2*`)`
 
 **Arguments**
 
@@ -32,11 +32,11 @@ Note: the result series is of double type, even if the inputs are integers. Divi
 range x from 1 to 3 step 1
 | extend y = x * 2
 | extend z = y * 2
-| project s1 = pack-array(x,y,z), s2 = pack-array(z, y, x)
-| extend s1-divide-s2 = series-divide(s1, s2)
+| project s1 = pack_array(x,y,z), s2 = pack_array(z, y, x)
+| extend s1_divide_s2 = series_divide(s1, s2)
 ```
 
-|s1	        |s2|	    s1-divide-s2|
+|s1	        |s2|	    s1_divide_s2|
 |---|---|---|
 |[1,2,4]	|[4,2,1]|	[0.25,1.0,4.0]|
 |[2,4,8]	|[8,4,2]|	[0.25,1.0,4.0]|

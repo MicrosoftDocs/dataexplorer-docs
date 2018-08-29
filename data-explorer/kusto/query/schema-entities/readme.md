@@ -43,7 +43,7 @@ To summarize:
 
 <!-- TODO: ZIVC: This section needs to be moved outside the query language section completely. -->
 
-Client code that is using [Kusto Client .NET library](https://kusdoc2.azurewebsites.net/docs/api/using_the_kusto_client_library.html) can 
+Client code that is using [Kusto Client .NET library](https://kusdoc2.azurewebsites.net/docs/api/using-the-kusto-client-library.html) can 
 use `Kusto.Data.Common.EntityValidator` class to check if the entity is valid or not.
 
 ## Examples
@@ -51,7 +51,7 @@ use `Kusto.Data.Common.EntityValidator` class to check if the entity is valid or
 <!-- This should be moved out as well -->
 
 Here are two examples for fully-qualified names
-(see [Cross-database queries](../syntax.md#queries) for more information
+(see [Cross-database queries](https://kusdoc2.azurewebsites.net/docs/syntax.html#queries) for more information
 on referencing foreign clusters.)
  
 ```

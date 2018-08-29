@@ -34,5 +34,3 @@ print c1 = ceiling(-1.1), c2 = ceiling(0), c3 = ceiling(0.9)
 |c1|c2|c3|
 |---|---|---|
 |-1|0|1|
-
-

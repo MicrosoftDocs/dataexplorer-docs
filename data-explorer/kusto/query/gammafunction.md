@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # gamma()
 
-Computes [gamma function](https://en.wikipedia.org/wiki/Gamma-function)
+Computes [gamma function](https://en.wikipedia.org/wiki/Gamma_function)
 
 **Syntax**
 
@@ -24,4 +24,3 @@ Computes [gamma function](https://en.wikipedia.org/wiki/Gamma-function)
 
 * Gamma function of x.
 * For computing log-gamma function, see [loggamma()](loggammafunction.md).
-

@@ -1,6 +1,6 @@
 ---
-title: make-dictionary() (aggregation function) (Azure Kusto)
-description: This article describes make-dictionary() (aggregation function) in Azure Kusto.
+title: make_dictionary() (aggregation function) (Azure Kusto)
+description: This article describes make_dictionary() (aggregation function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# make-dictionary() (aggregation function)
+# make_dictionary() (aggregation function)
 
 Returns a `dynamic` (JSON) property-bag (dictionary) of all the values of *Expr* in the group.
 
@@ -16,7 +16,7 @@ Returns a `dynamic` (JSON) property-bag (dictionary) of all the values of *Expr*
 
 **Syntax**
 
-`summarize` `make-dictionary(`*Expr* [`,` *MaxListSize*]`)`
+`summarize` `make_dictionary(`*Expr* [`,` *MaxListSize*]`)`
 
 **Arguments**
 
@@ -31,23 +31,23 @@ If a key appears in more than one row- an arbitrary value (out of the possible v
 
 **See also**
 
-See [bag-unpack()](/query/bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys. 
+See [bag_unpack()](/query/bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys. 
 
 **Examples**
 
 ```kusto
 let T = datatable(prop:string, value:string)
 [
-    "prop01", "val-a",
-    "prop02", "val-b",
-    "prop03", "val-c",
+    "prop01", "val_a",
+    "prop02", "val_b",
+    "prop03", "val_c",
 ];
 T
 | extend p = pack(prop, value)
-| summarize dict=make-dictionary(p)
+| summarize dict=make_dictionary(p)
 
 ```
 
 |dict|
 |----|
-|{ "prop01": "val-a", "prop02": "val-b", "prop03": "val-c" } |
+|{ "prop01": "val_a", "prop02": "val_b", "prop03": "val_c" } |

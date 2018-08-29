@@ -34,13 +34,13 @@ customer
 | join kind=leftouter 
 (
     orders
-	| where not(o-comment matches regex @'.*special.*requests.*')
-    | summarize c=count() by o-custkey
+	| where not(o_comment matches regex @'.*special.*requests.*')
+    | summarize c=count() by o_custkey
 	)
-on $left.c-custkey == $right.o-custkey
-| summarize hint.shufflekey = c-custkey c-count = sum(c) by c-custkey
-| summarize custdist = count() by c-count
-| order by custdist desc, c-count desc
+on $left.c_custkey == $right.o_custkey
+| summarize hint.shufflekey = c_custkey c_count = sum(c) by c_custkey
+| summarize custdist = count() by c_count
+| order by custdist desc, c_count desc
 ```
 
 It is useful when the key is used in more than one different operators that can be shuffled (like the summarize and the join operators above), so in the above case, both the join and summarize will be shuffled and the query will perform better than shuffling the join only.
@@ -60,8 +60,8 @@ Running the regular strategy of the join, the query ends after ~28 seconds and t
 customer
 | join
     orders
-on $left.c-custkey == $right.o-custkey
-| summarize sum(c-acctbal) by c-nationkey
+on $left.c_custkey == $right.o_custkey
+| summarize sum(c_acctbal) by c_nationkey
 
 ```
 
@@ -71,8 +71,8 @@ While using shuffle join strategy, the query ends after ~4 seconds and the memor
 customer
 | join
     hint.strategy = shuffle orders
-on $left.c-custkey == $right.o-custkey
-| summarize sum(c-acctbal) by c-nationkey
+on $left.c_custkey == $right.o_custkey
+| summarize sum(c_acctbal) by c_nationkey
 
 ```
 
@@ -82,7 +82,7 @@ The query with the default join strategy hits kusto limits and timesout after 4 
 
 While using shuffle join strategy, the query ends after ~34 seconds and the memory usage peak is 1.23GB.
 
-<!--###In shuffle query, the default partitions number is the cluster nodes number. This number can be overriden by using the syntax `hint.partitions = total-partitions` which will control the number of partitions.
+<!--###In shuffle query, the default partitions number is the cluster nodes number. This number can be overriden by using the syntax `hint.partitions = total_partitions` which will control the number of partitions.
 
 This hint is useful when the cluster has a small number of cluster nodes where the default partitions number will be small too and the query still fails or takes long execution time.
 
@@ -95,10 +95,10 @@ Running the query without the hint will use only 2 partitions (as cluster nodes 
 <!-- csl -->
 <!--###```
 lineitem
-| summarize dcount(l-comment), dcount(l-shipdate) by l-partkey
+| summarize dcount(l_comment), dcount(l_shipdate) by l_partkey
 | join
-    hint.shufflekey = l-partkey   part
-on $left.l-partkey == $right.p-partkey
+    hint.shufflekey = l_partkey   part
+on $left.l_partkey == $right.p_partkey
 | consume
 
 ```
@@ -108,10 +108,10 @@ setting partitions number to 10, the query will end after 23 seconds:
 <!-- csl -->
 <!--###```
 lineitem
-| summarize dcount(l-comment), dcount(l-shipdate) by l-partkey
+| summarize dcount(l_comment), dcount(l_shipdate) by l_partkey
 | join
-    hint.shufflekey = l-partkey  hint.partitions = 10    part
-on $left.l-partkey == $right.p-partkey
+    hint.shufflekey = l_partkey  hint.partitions = 10    part
+on $left.l_partkey == $right.p_partkey
 | consume
 
 ```

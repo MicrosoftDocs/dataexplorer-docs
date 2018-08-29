@@ -1,6 +1,6 @@
 ---
-title: parse-xml() (Azure Kusto)
-description: This article describes parse-xml() in Azure Kusto.
+title: parse_xml() (Azure Kusto)
+description: This article describes parse_xml() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# parse-xml()
+# parse_xml()
 
 Interprets a `string` as a XML value, converts the value to a [JSON value](http://json.org/) and returns the value as  [`dynamic`](./scalar-data-types/dynamic.md). 
 
 **Syntax**
 
-`parse-xml(`*xml*`)`
+`parse_xml(`*xml*`)`
 
 **Arguments**
 
@@ -40,13 +40,13 @@ XML                                |JSON                                        
 
 **Notes**
 
-* Maximal input `string` length for `parse-xml` is 128 KB. Longer strings interpretation will result in a null object 
+* Maximal input `string` length for `parse_xml` is 128 KB. Longer strings interpretation will result in a null object 
 * Only element nodes, attributes and text nodes will be translated. Everything else will be skipped
 * Translation of XMLs with namespaces is currently not supported 
  
 **Example**
 
-In the following example, when `context-custom-metrics` is a `string`
+In the following example, when `context_custom_metrics` is a `string`
 that looks like this: 
 
 ```
@@ -83,6 +83,6 @@ in the object, and from that it retrieves two slots, `duration.value` and
 
 ```kusto
 T
-| extend d=parse-xml(context-custom-metrics) 
-| extend duration-value=d.duration.value, duration-min=d["duration"]["min"]
+| extend d=parse_xml(context_custom_metrics) 
+| extend duration_value=d.duration.value, duration_min=d["duration"]["min"]
 ```

@@ -1,6 +1,6 @@
 ---
-title: trim-end() (Azure Kusto)
-description: This article describes trim-end() in Azure Kusto.
+title: trim_end() (Azure Kusto)
+description: This article describes trim_end() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# trim-end()
+# trim_end()
 
 Removes trailing match of the specified regular expression.
 
 **Syntax**
 
-`trim-end(`*regex*`,` *text*`)`
+`trim_end(`*regex*`,` *text*`)`
 
 **Arguments**
 
@@ -27,16 +27,16 @@ Removes trailing match of the specified regular expression.
 
 **Example**
 
-Statement bellow trims *substring*  from the end of *string-to-trim*:
+Statement bellow trims *substring*  from the end of *string_to_trim*:
 
 ```kusto
-let string-to-trim = @"bing.com";
+let string_to_trim = @"bing.com";
 let substring = ".com";
 range x from 1 to 1 step 1
-| project string-to-trim = string-to-trim,trimmed-string = trim-end(substring,string-to-trim)
+| project string_to_trim = string_to_trim,trimmed_string = trim_end(substring,string_to_trim)
 ```
 
-|string-to-trim|trimmed-string|
+|string_to_trim|trimmed_string|
 |---|---|
 |bing.com|bing|
 
@@ -45,10 +45,10 @@ Next statement trims all non-word characters from the end of the string:
 ```kusto
 range x from 1 to 5 step 1
 | project str = strcat("-  ","Te st",x,@"// $")
-| extend trimmed-str = trim-end(@"[^\w]+",str)
+| extend trimmed_str = trim_end(@"[^\w]+",str)
 ```
 
-|str|trimmed-str|
+|str|trimmed_str|
 |---|---|
 |-  Te st1// $|-  Te st1|
 |-  Te st2// $|-  Te st2|

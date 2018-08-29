@@ -1,6 +1,6 @@
 ---
-title: array-concat() (Azure Kusto)
-description: This article describes array-concat() in Azure Kusto.
+title: array_concat() (Azure Kusto)
+description: This article describes array_concat() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,17 +8,17 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# array-concat()
+# array_concat()
 
 Concatenates a number of dynamic arrays to a single array.
 
 **Syntax**
 
-`array-concat(`*arr1*`[`,` *arr2*, ...]`)`
+`array_concat(`*arr1*`[`,` *arr2*, ...]`)`
 
 **Arguments**
 
-* *arr1...arrN*: Input arrays to be concatenated into a dynamic array. All arguments must be dynamic arrays (see [pack-array](packarrayfunction.md)). 
+* *arr1...arrN*: Input arrays to be concatenated into a dynamic array. All arguments must be dynamic arrays (see [pack_array](packarrayfunction.md)). 
 
 **Returns**
 
@@ -30,8 +30,8 @@ Dynamic array of arrays with arr1, arr2, ... , arrN.
 range x from 1 to 3 step 1
 | extend y = x * 2
 | extend z = y * 2
-| extend a1 = pack-array(x,y,z), a2 = pack-array(x, y)
-| project array-concat(a1, a2)
+| extend a1 = pack_array(x,y,z), a2 = pack_array(x, y)
+| project array_concat(a1, a2)
 ```
 
 |Column1|

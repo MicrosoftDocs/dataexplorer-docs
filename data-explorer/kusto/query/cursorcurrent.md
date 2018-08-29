@@ -1,6 +1,6 @@
 ---
-title: cursor-current(), current-cursor() (Azure Kusto)
-description: This article describes cursor-current(), current-cursor() in Azure Kusto.
+title: cursor_current(), current_cursor() (Azure Kusto)
+description: This article describes cursor_current(), current_cursor() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,14 +8,14 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# cursor-current(), current-cursor()
+# cursor_current(), current_cursor()
 
-Retrieves the current value of the cursor of the database in scope. (The names `cursor-current`
-and `current-cursor` are synonyms.)
+Retrieves the current value of the cursor of the database in scope. (The names `cursor_current`
+and `current_cursor` are synonyms.)
 
 **Syntax**
 
-`cursor-current()`
+`cursor_current()`
 
 **Returns**
 
@@ -24,5 +24,5 @@ cursor of the database in scope.
 
 **Remarks**
 
-Please see [Database Cursor](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_databasecursor.html) for additional
+Please see [Database Cursor](https://kusdoc2.azurewebsites.net/docs/concepts/databasecursor.html) for additional
 details on database cursors.

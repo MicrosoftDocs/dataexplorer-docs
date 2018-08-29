@@ -1,6 +1,6 @@
 ---
-title: http-request plugin / http-request-post plugin (Azure Kusto)
-description: This article describes http-request plugin / http-request-post plugin in Azure Kusto.
+title: http_request plugin / http_request_post plugin (Azure Kusto)
+description: This article describes http_request plugin / http_request_post plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,18 +8,18 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# http-request plugin / http-request-post plugin
+# http_request plugin / http_request_post plugin
 
-  `evaluate` `http-request` `(` *Uri* [`,` *RequestHeaders* [`,` *Options*]] `)`
+  `evaluate` `http_request` `(` *Uri* [`,` *RequestHeaders* [`,` *Options*]] `)`
 
-  `evaluate` `http-request-post` `(` *Uri* [`,` *RequestHeaders* [`,` *Options* [`,` *Content*]]] `)`
+  `evaluate` `http_request_post` `(` *Uri* [`,` *RequestHeaders* [`,` *Options* [`,` *Content*]]] `)`
 
-The `http-request` plugin sends a `GET` request to an HTTP/HTTPS service
+The `http_request` plugin sends a `GET` request to an HTTP/HTTPS service
 and returns the response as table with one record and two `dynamic` columns:
 * `ResponseHeaders` (a property bag indicating the response header).
 * `ResponseBody` (a parse of the response body as a `dynamic` value).
 
-The `http-request-post` plugin is similar to `http-request`, but does so by
+The `http_request_post` plugin is similar to `http_request`, but does so by
 sending a POST request.
 
 <div class='warning'>Both plugins are disabled by default to prevent a scenario
@@ -45,7 +45,7 @@ is to enable these plugins for testing purposes and testing data only.</div>
 
 **Authentication**
 
-The http-request and http-request-post plugins support the following authentication
+The http_request and http_request_post plugins support the following authentication
 scenarios:
 1. The query can specify authentication parameters as part of the *Uri* argument,
    if that is the way the web service accepts authentication.
@@ -70,24 +70,24 @@ Please see [obfuscated string literals](./scalar-data-types/string.md#obfuscated
 
 **Restrictions**
 
-Kusto service controls allowed sql-request plugin destinations by [Callout policy](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_calloutpolicy.html)
+Kusto service controls allowed sql_request plugin destinations by [Callout policy](https://kusdoc2.azurewebsites.net/docs/concepts/calloutpolicy.html)
 
 **Example**
 
 The following example retrieves the a canonical list of country codes:
 
 ```kusto
-evaluate http-request('http://services.groupkt.com/country/get/all')
+evaluate http_request('http://services.groupkt.com/country/get/all')
 | project CC=ResponseBody.RestResponse.result
 | mvexpand CC limit 10000
 | project
     name        = tostring(CC.name),
-    alpha2-code = tostring(CC.alpha2-code),
-    alpha3-code = tostring(CC.alpha3-code)
+    alpha2_code = tostring(CC.alpha2_code),
+    alpha3_code = tostring(CC.alpha3_code)
 | where name startswith 'b'
 ```
 
-name                              | alpha2-code  | alpha3-code
+name                              | alpha2_code  | alpha3_code
 ----------------------------------|--------------|-------------
 Bahamas                           | BS           | BHS
 Bahrain                           | BH           | BHR
@@ -121,5 +121,5 @@ let uri='https://example.com/node/js/on/eniac';
 let headers=dynamic({'x-ms-correlation-vector':'abc.0.1.0'});
 let options=dynamic({'Authentication':'Active Directory Integrated',
   'AadResourceId':'https://eniac.to.the.max.example.com/'});
-evaluate http-request-post(uri, headers, options)
+evaluate http_request_post(uri, headers, options)
 ```

@@ -1,6 +1,6 @@
 ---
-title: series-periods-validate() (Azure Kusto)
-description: This article describes series-periods-validate() in Azure Kusto.
+title: series_periods_validate() (Azure Kusto)
+description: This article describes series_periods_validate() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,11 +8,11 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# series-periods-validate()
+# series_periods_validate()
 
 Checks whether a time series contains periodic patterns of given lengths.  
 
-Very often a metric measuring the traffic of an application is characterized by a weekly and/or daily periods. This can be confirmed by running `series-periods-validate()` checking for a weekly and daily periods.
+Very often a metric measuring the traffic of an application is characterized by a weekly and/or daily periods. This can be confirmed by running `series_periods_validate()` checking for a weekly and daily periods.
 
 The function takes as input a column containing a dynamic array of time series (typically the resulting output of [make-series](make-seriesoperator.md) operator), and one or more `real` numbers that define the lengths of the periods to validate. 
 
@@ -22,7 +22,7 @@ The function outputs 2 columns:
 
 **Syntax**
 
-`series-periods-validate(`*x*`,` *period1* [ `,` *period2* `,` . . . ] `)`
+`series_periods_validate(`*x*`,` *period1* [ `,` *period2* `,` . . . ] `)`
 
 **Arguments**
 
@@ -49,13 +49,13 @@ range x from 1 to 1 step 1
 
 ![](./Images/samples/series-periods.png)
 
-Running `series-periods-validate()` on this series to validate a weekly period (14 points long) results in a high score,  and with a **0** score  when validating a five days period (10 points long).
+Running `series_periods_validate()` on this series to validate a weekly period (14 points long) results in a high score,  and with a **0** score  when validating a five days period (10 points long).
 
 ```kusto
 range x from 1 to 1 step 1
 | project y=dynamic([80,139,87,110,68,54,50,51,53,133,86,141,97,156,94,149,95,140,77,61,50,54,47,133,72,152,94,148,105,162,101,160,87,63,53,55,54,151,103,189,108,183,113,175,113,178,90,71,62,62,65,165,109,181,115,182,121,178,114,170])
 | project x=range(1, arraylength(y), 1), y  
-| project series-periods-validate(y, 14.0, 10.0)
+| project series_periods_validate(y, 14.0, 10.0)
 ```
 
 | series\_periods\_validate\_y\_periods  | series\_periods\_validate\_y\_scores |

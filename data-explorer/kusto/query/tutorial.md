@@ -148,7 +148,7 @@ operators (`+`, `-`, `*`, `/`, `%`), and there's a range of useful functions.
 Count how many events come from each country:
 
 ```kusto
-StormEvents | summarize event-count = count() by State 
+StormEvents | summarize event_count = count() by State 
 ```
 
 [summarize](./summarizeoperator.md) groups together rows that have 
@@ -191,13 +191,13 @@ The [bin()](./binfunction.md) function is useful for this:
 ```kusto
 StormEvents 
 | where StartTime > datetime(2007-02-14) and StartTime < datetime(2007-02-21)
-| summarize event-count = count() by bin(StartTime, 1d)
+| summarize event_count = count() by bin(StartTime, 1d)
 
 ```
 
 This reduces all the timestamps to intervals of 1 day:
 
-|StartTime|event-count|
+|StartTime|event_count|
 |---|---|
 |2007-02-14 00:00:00.0000000|180|
 |2007-02-15 00:00:00.0000000|66|
@@ -219,10 +219,10 @@ Project two columns and use them as the x and y axis of a chart:
 
 ```kusto
 StormEvents 
-| summarize event-count=count(), mid = avg(BeginLat) by State 
+| summarize event_count=count(), mid = avg(BeginLat) by State 
 | sort by mid
-| where event-count > 1800
-| project State, event-count
+| where event_count > 1800
+| project State, event_count
 | render columnchart
 ```
 
@@ -239,7 +239,7 @@ Going back to numeric bins, let's display a time series:
 
 ```kusto
 StormEvents 
-| summarize event-count=count() by bin(StartTime, 1d)
+| summarize event_count=count() by bin(StartTime, 1d)
 | render timechart
 ```
 
@@ -275,7 +275,7 @@ Count events by the time modulo one day, binned into hours:
 ```kusto
 StormEvents
 | extend hour = floor(StartTime % 1d , 1h)
-| summarize event-count=count() by hour 
+| summarize event_count=count() by hour 
 | sort by hour asc 
 | render timechart
 ```
@@ -294,7 +294,7 @@ How does activity vary over the time of day in different states?
 StormEvents
 | extend hour= floor( StartTime % 1d , 1h)
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
-| summarize event-count=count() by hour, State
+| summarize event_count=count() by hour, State
 | render timechart
 ```
 
@@ -306,7 +306,7 @@ Divide by `1h` to turn the x-axis into hour number instead of a duration:
 StormEvents
 | extend hour= floor( StartTime % 1d , 1h)/ 1h
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
-| summarize event-count=count() by hour, State
+| summarize event_count=count() by hour, State
 | render columnchart 
 ```
 
@@ -338,14 +338,14 @@ By using extend to provide separate aliases for the two timestamps, you can then
 
 ```kusto
 Events
-| where eventName == "session-started" 
-| project start-time = timestamp, stop-time, country, session-id
+| where eventName == "session_started" 
+| project start_time = timestamp, stop_time, country, session_id
 | join ( Events
-    | where eventName == "session-ended"
-    | project stop-time = timestamp, session-id
-    ) on session-id
-| extend duration = stop-time - start-time
-| project start-time, stop-time, country, duration
+    | where eventName == "session_ended"
+    | project stop_time = timestamp, session_id
+    ) on session_id
+| extend duration = stop_time - start_time
+| project start_time, stop_time, country, duration
 | take 10
 ```
 
@@ -364,7 +364,7 @@ StormEvents
 | extend  duration = EndTime - StartTime 
 | where duration > 0s
 | where duration < 3h
-| summarize event-count = count() 
+| summarize event_count = count() 
     by bin(duration, 5m)
 | sort by duration asc
 | render timechart
@@ -405,7 +405,7 @@ StormEvents
 | extend  duration = EndTime - StartTime 
 | where duration > 0s
 | where duration < 3h
-| summarize event-count = count() 
+| summarize event_count = count() 
     by bin(duration, 5m), State
 | sort by duration asc
 | summarize percentiles(duration, 5, 20, 50, 80, 95) by State

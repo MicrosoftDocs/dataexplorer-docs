@@ -37,9 +37,9 @@ See [let statements](./letstatement.md) for more details how to declare lambda e
 The following example shows how to use `invoke` operator to call lambda expression:
 
 ```kusto
-// clipped-average(): calculates percentiles limits, and then makes another 
+// clipped_average(): calculates percentiles limits, and then makes another 
 //                    pass over the data to calcualte average with values inisde the percentiles
-let clipped-average = (T:(x: long), lowPercentile:double, upPercentile:double)
+let clipped_average = (T:(x: long), lowPercentile:double, upPercentile:double)
 {
    let high = toscalar(T | summarize percentiles(x, upPercentile));
    let low = toscalar(T | summarize percentiles(x, lowPercentile));
@@ -48,9 +48,9 @@ let clipped-average = (T:(x: long), lowPercentile:double, upPercentile:double)
    | summarize avg(x) 
 };
 range x from 1 to 100 step 1
-| invoke clipped-average(5, 99)
+| invoke clipped_average(5, 99)
 ```
 
-|avg-x|
+|avg_x|
 |---|
 |52|

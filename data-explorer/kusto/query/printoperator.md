@@ -32,7 +32,7 @@ A single-column, single-row, table whose single cell has the value of the evalua
 The `print` operator is useful as a quick way to test scalar expression evaluation
 in the system. Without it, one has to resort to tricks such as prepending the
 evaluation with a `range x from 1 to 1 step 1 | project ...` or
-`datatable (print-0:long)[1] | project ...`.
+`datatable (print_0:long)[1] | project ...`.
 
 ```kusto
 print 0 + 1 + 2 + 3 + 4 + 5, x = "Wow!"

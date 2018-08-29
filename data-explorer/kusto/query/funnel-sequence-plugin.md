@@ -1,6 +1,6 @@
 ---
-title: funnel-sequence plugin (Azure Kusto)
-description: This article describes funnel-sequence plugin in Azure Kusto.
+title: funnel_sequence plugin (Azure Kusto)
+description: This article describes funnel_sequence plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# funnel-sequence plugin
+# funnel_sequence plugin
 
 Calculates distinct count of users who've taken a sequence of states, and the distribution of previous/next states that have led to / were followed by the sequence. 
 
-    T | evaluate funnel-sequence(id, datetime-column, startofday(ago(30d)), startofday(now()), 10m, 1d, state-column, dynamic(['S1', 'S2', 'S3']))
+    T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofday(now()), 10m, 1d, state_column, dynamic(['S1', 'S2', 'S3']))
 
 **Syntax**
 
-*T* `| evaluate` `funnel-sequence(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *MaxSequenceStepWindow*, *Step*, *StateColumn*, *Sequence*`)`
+*T* `| evaluate` `funnel_sequence(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *MaxSequenceStepWindow*, *Step*, *StateColumn*, *Sequence*`)`
 
 **Arguments**
 
@@ -65,7 +65,7 @@ The following query looks on the table StormEvents (weather statistics for 2007)
 // Q1: What happens before Tornado event?
 // Q2: What happens after Tornado event?
 StormEvents
-| evaluate funnel-sequence(EpisodeId, StartTime, datetime(2007-01-01), datetime(2008-01-01), 1d,365d, EventType, dynamic(['Tornado']))
+| evaluate funnel_sequence(EpisodeId, StartTime, datetime(2007-01-01), datetime(2008-01-01), 1d,365d, EventType, dynamic(['Tornado']))
 ```
 
 Result includes 3 tables:
@@ -158,7 +158,7 @@ Now, let's try to find out how does the next sequence continues:
 
 ```kusto
 StormEvents
-| evaluate funnel-sequence(EpisodeId, StartTime, datetime(2007-01-01), datetime(2008-01-01), 1d,365d, EventType, 
+| evaluate funnel_sequence(EpisodeId, StartTime, datetime(2007-01-01), datetime(2008-01-01), 1d,365d, EventType, 
 dynamic(['Hail', 'Tornado', 'Thunderstorm Wind']))
 ```
 

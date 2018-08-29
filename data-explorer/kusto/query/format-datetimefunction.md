@@ -1,6 +1,6 @@
 ---
-title: format-datetime() (Azure Kusto)
-description: This article describes format-datetime() in Azure Kusto.
+title: format_datetime() (Azure Kusto)
+description: This article describes format_datetime() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,23 +8,23 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# format-datetime()
+# format_datetime()
 
 Formats a datetime parameter based on the format pattern parameter.
 
-    format-datetime(datetime(2015-12-14 02:03:04.12345), 'y-M-d h:m:s.fffffff') 
+    format_datetime(datetime(2015-12-14 02:03:04.12345), 'y-M-d h:m:s.fffffff') 
     
     => "15-12-14 2:3:4.1234500"
 
 
 **Syntax**
 
-`format-datetime(`*a-date*,*a-format*`)`
+`format_datetime(`*a_date*,*a_format*`)`
 
 **Arguments**
 
-* `a-date`: a `datetime` to format.
-* `a-date`: a `format` to use.
+* `a_date`: a `datetime` to format.
+* `a_date`: a `format` to use.
 
 **Returns**
 
@@ -72,7 +72,7 @@ The string with the format result.
 **Examples**
 
 ```kusto
-format-datetime(datetime(2017-01-29 09:00:05), 'yy-MM-dd [HH:mm:ss]') //'17-01-29 [09:00:05]'
-format-datetime(datetime(2017-01-29 09:00:05), 'yyyy-M-dd [H:mm:ss]') //'2017-1-29 [9:00:05]'
-format-datetime(datetime(2017-01-29 09:00:05), 'yy-MM-dd [hh:mm:ss tt]') //'17-01-29 [09:00:05 AM]'
+format_datetime(datetime(2017-01-29 09:00:05), 'yy-MM-dd [HH:mm:ss]') //'17-01-29 [09:00:05]'
+format_datetime(datetime(2017-01-29 09:00:05), 'yyyy-M-dd [H:mm:ss]') //'2017-1-29 [9:00:05]'
+format_datetime(datetime(2017-01-29 09:00:05), 'yy-MM-dd [hh:mm:ss tt]') //'17-01-29 [09:00:05 AM]'
 ```

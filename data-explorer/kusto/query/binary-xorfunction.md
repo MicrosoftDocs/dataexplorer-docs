@@ -1,6 +1,6 @@
 ---
-title: binary-xor() (Azure Kusto)
-description: This article describes binary-xor() in Azure Kusto.
+title: binary_xor() (Azure Kusto)
+description: This article describes binary_xor() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# binary-xor()
+# binary_xor()
 
 Returns a result of the bitwise `xor` operation of the two values 
 
-    binary-xor(x,y)
+    binary_xor(x,y)
 	
 **Syntax**
 
-`binary-xor(`*num1*`,` *num2* `)`
+`binary_xor(`*num1*`,` *num2* `)`
 
 **Arguments**
 

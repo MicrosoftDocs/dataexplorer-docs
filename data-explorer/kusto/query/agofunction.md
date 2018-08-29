@@ -21,16 +21,16 @@ for all instantiations.
 
 **Syntax**
 
-`ago(`*a-timespan*`)`
+`ago(`*a_timespan*`)`
 
 **Arguments**
 
-* *a-timespan*: Interval to subtract from the current UTC clock time
+* *a_timespan*: Interval to subtract from the current UTC clock time
 (`now()`).
 
 **Returns**
 
-`now() - a-timespan`
+`now() - a_timespan`
 
 **Example**
 

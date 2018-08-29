@@ -1,6 +1,6 @@
 ---
-title: binary-or() (Azure Kusto)
-description: This article describes binary-or() in Azure Kusto.
+title: binary_or() (Azure Kusto)
+description: This article describes binary_or() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# binary-or()
+# binary_or()
 
 Returns a result of the bitwise `or` operation of the two values 
 
-    binary-or(x,y)
+    binary_or(x,y)
 
 **Syntax**
 
-`binary-or(`*num1*`,` *num2* `)`
+`binary_or(`*num1*`,` *num2* `)`
 
 **Arguments**
 

@@ -60,5 +60,5 @@ to introduce a projection similar to the marked line below:
 datatable(a:string, b:string, c:string, d:string) [...]
 | project a, b, c // <-- Add this projection to remove d
 | summarize argmin(a, *)
-| project B=max-a-b, C=max-a-c
+| project B=max_a_b, C=max_a_c
 ```

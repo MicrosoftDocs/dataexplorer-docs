@@ -1,6 +1,6 @@
 ---
-title: ingestion-time() (Azure Kusto)
-description: This article describes ingestion-time() in Azure Kusto.
+title: ingestion_time() (Azure Kusto)
+description: This article describes ingestion_time() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,12 +8,12 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# ingestion-time()
+# ingestion_time()
 
 Retrieves the record's `$IngestionTime` hidden `datetime` column, or null.
 
 The `$IngestionTime` column is automatically defined when the table's
-[IngestionTime policy](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_ingestiontimepolicy.html) is set (enabled).
+[IngestionTime policy](https://kusdoc2.azurewebsites.net/docs/concepts/ingestiontimepolicy.html) is set (enabled).
 If the table does not have this policy defined, a null value is returned.
 
 This function must be used in the context of an actual table in order
@@ -22,7 +22,7 @@ if it is invoked following a `summarize` operator).
 
 **Syntax**
 
- `ingestion-time()`
+ `ingestion_time()`
 
 **Returns**
 
@@ -32,5 +32,5 @@ A `datetime` value specifying the approximate time of ingestion into a table.
 
 ```kusto
 T 
-| extend ingestionTime = ingestion-time() | top 10 by ingestionTime
+| extend ingestionTime = ingestion_time() | top 10 by ingestionTime
 ```

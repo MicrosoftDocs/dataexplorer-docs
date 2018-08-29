@@ -1,6 +1,6 @@
 ---
-title: parse-url() (Azure Kusto)
-description: This article describes parse-url() in Azure Kusto.
+title: parse_url() (Azure Kusto)
+description: This article describes parse_url() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# parse-url()
+# parse_url()
 
 Parses an absolute URL `string` and returns a [`dynamic`](./scalar-data-types/dynamic.md) object contains all parts of the URL (Scheme, Host, Port, Path, Username, Password, Query Parameters, Fragment).
 
 **Syntax**
 
-`parse-url(`*url*`)`
+`parse_url(`*url*`)`
 
 **Arguments**
 
@@ -27,7 +27,7 @@ An object of type `dynamic` that inculded the URL components as listed above.
 **Example**
 
 ```kusto
-T | extend Result = parse-url("scheme://username:password@host:1234/this/is/a/path?k1=v1&k2=v2#fragment")
+T | extend Result = parse_url("scheme://username:password@host:1234/this/is/a/path?k1=v1&k2=v2#fragment")
 ```
 
 will result

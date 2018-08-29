@@ -23,8 +23,8 @@ The search operator provides a multi-table/multi-column search experience.
   of a tabular query, etc. Cannot appear together with the optional phrase that includes *TableSources*.
 
 * *CaseSensitivity*: An optional flag that controls the behavior of all `string` scalar operators
-  with respect to case sensitivity. Valid values are the two synonyms `default` and `case-insensitive`
-  (which is the default for operators such as `has`, namely being case-insensitive) and `case-sensitive`
+  with respect to case sensitivity. Valid values are the two synonyms `default` and `case_insensitive`
+  (which is the default for operators such as `has`, namely being case-insensitive) and `case_sensitive`
   (which forces all such operators into case-sensitive matching mode).
 
 * *TableSources*: An optional comma-separated list of "wildcarded" table names to take part in the search.
@@ -81,7 +81,7 @@ and views of the database in scope.
   | 8|`search "Lab*PC"`                      |`where * matches regex @"\bLab\w*PC\b"`||
   | 9|`search *`                             |`where 0==0`                           ||
   |10|`search col matches regex "..."`       |`where col matches regex "..."`        ||
-  |11|`search kind=case-sensitive`           |                                       |All string comparisons are case-sensitive|
+  |11|`search kind=case_sensitive`           |                                       |All string comparisons are case-sensitive|
   |12|`search "abc" and ("def" or "hij")`    |`where * has "abc" and (* has "def" or * has hij")`||
   |13|`search "err" or (A>a and A<b)`        |`where * has "err" or (A>a and A<b)`   ||
 

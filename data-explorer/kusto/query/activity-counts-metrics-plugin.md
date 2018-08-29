@@ -1,6 +1,6 @@
 ---
-title: activity-counts-metrics plugin (Azure Kusto)
-description: This article describes activity-counts-metrics plugin in Azure Kusto.
+title: activity_counts_metrics plugin (Azure Kusto)
+description: This article describes activity_counts_metrics plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# activity-counts-metrics plugin
+# activity_counts_metrics plugin
 
 Calculates useful activity metrics (total count values, distinct count values, distinct count of new values, aggregated distinct count) for each time window compared/aggregated to/with all previous time windows.
 
-    T | evaluate activity-counts-metrics(id, datetime-column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
+    T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
 
 **Syntax**
 
-*T* `| evaluate` `activity-counts-metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Window* [`,` *Cohort*] [`,` *dim1*`,` *dim2*`,` ...] [`,` *Lookback*] `)`
+*T* `| evaluate` `activity_counts_metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Window* [`,` *Cohort*] [`,` *dim1*`,` *dim2*`,` ...] [`,` *Lookback*] `)`
 
 **Arguments**
 
@@ -35,7 +35,7 @@ time window.
 
 Output table schema is:
 
-|TimelineColumn|dim1|...|dim-n|count|dcount|new-dcount|aggregated-count
+|TimelineColumn|dim1|...|dim_n|count|dcount|new_dcount|aggregated_count
 |---|---|---|---|---|---|---|---|---|
 |type: as of *TimelineColumn*|..|..|..|long|long|long|long|long
 
@@ -43,8 +43,8 @@ Output table schema is:
 * *TimelineColumn*: The time window start time.
 * *count*: The total records count in the time window and *dim(s)*
 * *dcount*: The distinct ID values count in the time window and *dim(s)*
-* *new-dcount*: The distinct ID values in the time window and *dim(s)* compared to all previous time windows. 
-* *aggregated-dcount*: The total aggregated distinct ID values of *dim(s)* from 1st time window to current (inclusive).
+* *new_dcount*: The distinct ID values in the time window and *dim(s)* compared to all previous time windows. 
+* *aggregated_dcount*: The total aggregated distinct ID values of *dim(s)* from 1st time window to current (inclusive).
 
 **Examples**
 
@@ -74,10 +74,10 @@ let T = datatable(UserId:string, Timestamp:datetime)
 'S', datetime(2017-08-04),
 ];
  T 
- | evaluate activity-counts-metrics(UserId, Timestamp, start, end, window)
+ | evaluate activity_counts_metrics(UserId, Timestamp, start, end, window)
 ```
 
-|Timestamp|count|dcount|new-dcount|aggregated-dcount|
+|Timestamp|count|dcount|new_dcount|aggregated_dcount|
 |---|---|---|---|---|
 |2017-08-01 00:00:00.0000000|4|4|4|4|
 |2017-08-02 00:00:00.0000000|3|3|2|6|

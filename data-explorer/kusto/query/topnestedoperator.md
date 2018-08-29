@@ -74,7 +74,7 @@ StormEvents
   top-nested 1 of EndLocation by sum(BeginLat)
 ```
 
-|State|aggregated-State|Source|aggregated-Source|EndLocation|aggregated-EndLocation|
+|State|aggregated_State|Source|aggregated_Source|EndLocation|aggregated_EndLocation|
 |---|---|---|---|---|---|
 |KANSAS|87771.2355000001|Law Enforcement|18744.823|FT SCOTT|264.858|
 |KANSAS|87771.2355000001|Public|22855.6206|BUCKLIN|488.2457|
@@ -95,7 +95,7 @@ StormEvents
 
 ```
 
-|State|aggregated-State|Source|aggregated-Source|EndLocation|aggregated-EndLocation|
+|State|aggregated_State|Source|aggregated_Source|EndLocation|aggregated_EndLocation|
 |---|---|---|---|---|---|
 |KANSAS|87771.2355000001|Law Enforcement|18744.823|FT SCOTT|264.858|
 |KANSAS|87771.2355000001|Public|22855.6206|BUCKLIN|488.2457|
@@ -122,7 +122,7 @@ The following query shows the same results for the first level used in the examp
  | summarize sum(BeginLat)
 ```
 
-|sum-BeginLat|
+|sum_BeginLat|
 |---|
 |1149279.5923|
 
@@ -137,7 +137,7 @@ StormEvents
 
 ```
 
-|State|aggregated-State|Source|aggregated-Source|EndLocation|aggregated-EndLocation|EventType|
+|State|aggregated_State|Source|aggregated_Source|EndLocation|aggregated_EndLocation|EventType|
 |---|---|---|---|---|---|---|
 |KANSAS|87771.2355000001|Trained Spotter|21279.7083|SHARON SPGS|388.7404|Thunderstorm Wind|
 |KANSAS|87771.2355000001|Trained Spotter|21279.7083|SHARON SPGS|388.7404|Hail|
@@ -155,8 +155,8 @@ In order to sort the result by the last nested level (in this example by EndLoca
 ```kusto
 StormEvents
 | top-nested 2 of State  by sum(BeginLat),    top-nested 2 of Source by sum(BeginLat),    top-nested 4 of EndLocation by  sum(BeginLat)
-| order by State , Source, aggregated-EndLocation
-| summarize EndLocations = makelist(EndLocation, 10000) , endLocationSums = makelist(aggregated-EndLocation, 10000) by State, Source
+| order by State , Source, aggregated_EndLocation
+| summarize EndLocations = makelist(EndLocation, 10000) , endLocationSums = makelist(aggregated_EndLocation, 10000) by State, Source
 | extend indicies = range(0, arraylength(EndLocations) - 1, 1)
 | mvexpand EndLocations, endLocationSums, indicies
 

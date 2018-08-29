@@ -1,6 +1,6 @@
 ---
-title: extent-tags() (Azure Kusto)
-description: This article describes extent-tags() in Azure Kusto.
+title: extent_tags() (Azure Kusto)
+description: This article describes extent_tags() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# extent-tags()
+# extent_tags()
 
-Returns a dynamic array with the [tags](https://kusdoc2.azurewebsites.net/docs/concepts/concepts_extents.html#extent-tagging) of the data shard ("extent") that the current record resides in. 
+Returns a dynamic array with the [tags](https://kusdoc2.azurewebsites.net/docs/concepts/extents.html#extent-tagging) of the data shard ("extent") that the current record resides in. 
 
 Applying this function to calculated data which is not attached to a data shard returns an empty value.
 
 **Syntax**
 
-`extent-tags()`
+`extent_tags()`
 
 **Returns**
 
@@ -35,7 +35,7 @@ preserve the information about the data shard hosting the record.
 T
 | where Timestamp > ago(1h)
 | where ActivityId == 'dd0595d4-183e-494e-b88e-54c52fe90e5a'
-| extend tags = extent-tags()
+| extend tags = extent_tags()
 | summarize by tostring(tags)
 ```
 
@@ -46,7 +46,7 @@ last hour, which are stored in extents which are tagged with the tag `MyTag`
 ```kusto
 T
 | where Timestamp > ago(1h)
-| extend Tags = extent-tags()
-| where Tags has-cs 'MyTag' and Tags !has-cs 'drop-by:MyOtherTag'
+| extend Tags = extent_tags()
+| where Tags has_cs 'MyTag' and Tags !has_cs 'drop-by:MyOtherTag'
 | count
 ```

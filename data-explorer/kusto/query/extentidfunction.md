@@ -1,6 +1,6 @@
 ---
-title: extent-id() (Azure Kusto)
-description: This article describes extent-id() in Azure Kusto.
+title: extent_id() (Azure Kusto)
+description: This article describes extent_id() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# extent-id()
+# extent_id()
 
 Returns a unique identifier that identifies the data shard ("extent") that the current record resides in. 
 
@@ -16,7 +16,7 @@ Applying this function to calculated data which is not attached to a data shard 
 
 **Syntax**
 
-`extent-id()`
+`extent_id()`
 
 **Returns**
 
@@ -35,6 +35,6 @@ preserve the information about the data shard hosting the record.
 T
 | where Timestamp > ago(1h)
 | where ActivityId == 'dd0595d4-183e-494e-b88e-54c52fe90e5a'
-| extend eid=extent-id()
+| extend eid=extent_id()
 | summarize by eid
 ```

@@ -1,6 +1,6 @@
 ---
-title: bag-unpack plugin (Azure Kusto)
-description: This article describes bag-unpack plugin in Azure Kusto.
+title: bag_unpack plugin (Azure Kusto)
+description: This article describes bag_unpack plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,32 +8,32 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# bag-unpack plugin
+# bag_unpack plugin
 
 Unpacks dynamic column into several columns according to the first level of the dynamic column schema.
 
-    T | evaluate bag-unpack(col1)
+    T | evaluate bag_unpack(col1)
 
 **Syntax**
 
-`T` `|` `evaluate` `bag-unpack(` *column* `,` [ *column-prefix* ] `)`
+`T` `|` `evaluate` `bag_unpack(` *column* `,` [ *column_prefix* ] `)`
 
 **Arguments**
 
 * *column*: Name of the column that will be unpacked. 
-* *column-prefix*: (optional) the prefix name that will be used for producing new columns
+* *column_prefix*: (optional) the prefix name that will be used for producing new columns
 
 
 **Note**
 
 The plugin transposes JSON (dynamic) objects into a table with dynamic column names taken from property bag keys.
-As the output schema of the `bag-unpack` plugin is based on the data and therefore query may produce different
+As the output schema of the `bag_unpack` plugin is based on the data and therefore query may produce different
 schema for any two runs. This also means that query that is referencing unpacked columns may become 'broken' at 
 any time. Due to this reason - it is not advised to use this plugin for automation jobs.
 
 **Returns**
 
-The `bag-unpack` returns a tabular expression where the original dynamic column is replaced with the first-level properties of the unpacked data.
+The `bag_unpack` returns a tabular expression where the original dynamic column is replaced with the first-level properties of the unpacked data.
 
 **Example**
 
@@ -44,7 +44,7 @@ datatable(d:dynamic)
     dynamic({"Name": "Dave", "Age":40}),
     dynamic({"Name": "Smitha", "Age":30}),
 ]
-| evaluate bag-unpack(d)
+| evaluate bag_unpack(d)
 ```
 
 |Name|Age|

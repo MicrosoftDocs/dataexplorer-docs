@@ -1,6 +1,6 @@
 ---
-title: funnel-sequence-completion plugin (Azure Kusto)
-description: This article describes funnel-sequence-completion plugin in Azure Kusto.
+title: funnel_sequence_completion plugin (Azure Kusto)
+description: This article describes funnel_sequence_completion plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,17 +8,17 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# funnel-sequence-completion plugin
+# funnel_sequence_completion plugin
 
 Calculates funnel of completed sequence steps within comparing different time periods.
 
-    T | evaluate funnel-sequence-completion(id, datetime-column, startofday(ago(30d)), startofday(now()), 1d, state-column, dynamic(['S1', 'S2', 'S3']), dynamic([10m, 30min, 1h]))
+    T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, state_column, dynamic(['S1', 'S2', 'S3']), dynamic([10m, 30min, 1h]))
 
 **Syntax**
 
-*T* `| evaluate` `funnel-sequence-completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Step*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindow*`)`
+*T* `| evaluate` `funnel_sequence_completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Step*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindow*`)`
 
-T | evaluate funnel-sequence-completion( 
+T | evaluate funnel_sequence_completion( 
             <IdColumn>: column reference, must be present in the source expression 
             <TimelineColumn>: column reference representing timeline, must be present in the source expression 
             <Start>: scalar constant value of the analysis start period 
@@ -64,7 +64,7 @@ let _windowSize = 365d;
 let _sequence = dynamic(['Hail', 'Tornado', 'Thunderstorm Wind']);
 let _periods = dynamic([1h, 4h, 1d]);
 StormEvents
-| evaluate funnel-sequence-completion(EpisodeId, StartTime, _start, _end, _windowSize, EventType, _sequence, _periods) 
+| evaluate funnel_sequence_completion(EpisodeId, StartTime, _start, _end, _windowSize, EventType, _sequence, _periods) 
 ```
 
 |StartTime|EventType|Period|dcount|

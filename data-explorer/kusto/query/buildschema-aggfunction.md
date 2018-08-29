@@ -27,9 +27,9 @@ summarize `buildschema(`*DynamicExpr*`)`
 The maximum value of *Expr* across the group.
 
 **Tip** 
-If `buildschema(json-column)` gives a syntax error:
-*Is your `json-column` a string rather than a dynamic object?* 
-If so, you need to use `buildschema(parsejson(json-column))`.
+If `buildschema(json_column)` gives a syntax error:
+*Is your `json_column` a string rather than a dynamic object?* 
+If so, you need to use `buildschema(parsejson(json_column))`.
 
 **Example**
 

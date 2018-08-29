@@ -1,6 +1,6 @@
 ---
-title: base64-decodestring() (Azure Kusto)
-description: This article describes base64-decodestring() in Azure Kusto.
+title: base64_decodestring() (Azure Kusto)
+description: This article describes base64_decodestring() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# base64-decodestring()
+# base64_decodestring()
 
 Decodes a base64 string to a UTF-8 string
 
 **Syntax**
 
-`base64-decodestring(`*String*`)`
+`base64_decodestring(`*String*`)`
 
 **Arguments**
 
@@ -28,7 +28,7 @@ Returns UTF-8 string decoded from base64 string.
 
 ```kusto
 range x from 1 to 1 step 1
-| project base64-decodestring("S3VzdG8=")
+| project base64_decodestring("S3VzdG8=")
 ```
 
 |Column1|
@@ -39,7 +39,7 @@ Trying to decode a base64 string which was generated from invalid UTF-8 encoding
 
 ```kusto
 range x from 1 to 1 step 1
-| project base64-decodestring("U3RyaW5n0KHR0tGA0L7Rh9C60LA=")
+| project base64_decodestring("U3RyaW5n0KHR0tGA0L7Rh9C60LA=")
 ```
 
 |Column1|

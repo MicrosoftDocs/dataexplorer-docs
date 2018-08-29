@@ -46,10 +46,10 @@ The example below returns hex-byte representation (two hex-digits) of the GUID.
 ```kusto
 range r from 1 to 1 step 1
 | project Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
-| extend guid-bytes = extractall(@"([\da-f]{2})", Id) 
+| extend guid_bytes = extractall(@"([\da-f]{2})", Id) 
 ```
 
-|Id|guid-bytes|
+|Id|guid_bytes|
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|["82","b8","be","2d","df","a7","4b","d1","8f","63","24","ad","26","d3","14","49"]|
 
@@ -59,10 +59,10 @@ Next example uses a regular expression with 3 capturing groups to split each GUI
 ```kusto
 range r from 1 to 1 step 1
 | project Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
-| extend guid-bytes = extractall(@"(\w)(\w+)(\w)", Id) 
+| extend guid_bytes = extractall(@"(\w)(\w+)(\w)", Id) 
 ```
 
-|Id|guid-bytes|
+|Id|guid_bytes|
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|[["8","2b8be2","d"],["d","fa","7"],["4","bd","1"],["8","f6","3"],["2","4ad26d3144","9"]]|
 
@@ -74,10 +74,10 @@ matches into first letter, last letter and all the rest - while the *captureGrou
 ```kusto
 range r from 1 to 1 step 1
 | project Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
-| extend guid-bytes = extractall(@"(\w)(\w+)(\w)", dynamic([1,3]), Id) 
+| extend guid_bytes = extractall(@"(\w)(\w+)(\w)", dynamic([1,3]), Id) 
 ```
 
-|Id|guid-bytes|
+|Id|guid_bytes|
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|[["8","d"],["d","7"],["4","1"],["8","3"],["2","9"]]|
 
@@ -90,9 +90,9 @@ In the example below - the *captureGroups* uses both capture group indexes and n
 ```kusto
 range r from 1 to 1 step 1
 | project Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
-| extend guid-bytes = extractall(@"(?P<first>\w)(?P<middle>\w+)(?P<last>\w)", dynamic(['first',2,'last']), Id) 
+| extend guid_bytes = extractall(@"(?P<first>\w)(?P<middle>\w+)(?P<last>\w)", dynamic(['first',2,'last']), Id) 
 ```
 
-|Id|guid-bytes|
+|Id|guid_bytes|
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|[["8","2b8be2","d"],["d","fa","7"],["4","bd","1"],["8","f6","3"],["2","4ad26d3144","9"]]|

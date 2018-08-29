@@ -18,20 +18,20 @@ All even arguments (the `then`s) and the last argument (the `else`) must be of t
 
 **Syntax**
 
-`case(`*predicate-1*`,` *then-1*,
-       *predicate-2*`,` *then-2*,
-       *predicate-3*`,` *then-3*,
+`case(`*predicate_1*`,` *then_1*,
+       *predicate_2*`,` *then_2*,
+       *predicate_3*`,` *then_3*,
        *else*`)`
 
 **Arguments**
 
-* *predicate-i*: An expression that evaluates to a `boolean` value.
-* *then-i*: An expression that gets evaluated and its value is returned from the function if *predicate-i* is the first predicate that evaluates to `true`.
-* *else*: An expression that gets evaluated and its value is returned from the function if neither of the *predicate-i* evaluate to `true`.
+* *predicate_i*: An expression that evaluates to a `boolean` value.
+* *then_i*: An expression that gets evaluated and its value is returned from the function if *predicate_i* is the first predicate that evaluates to `true`.
+* *else*: An expression that gets evaluated and its value is returned from the function if neither of the *predicate_i* evaluate to `true`.
 
 **Returns**
 
-The value of the first *then-i* whose *predicate-i* evaluates to `true`, or the value of *else* if neither of the predicates are satisfied.
+The value of the first *then_i* whose *predicate_i* evaluates to `true`, or the value of *else* if neither of the predicates are satisfied.
 
 **Example**
 

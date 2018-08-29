@@ -1,6 +1,6 @@
 ---
-title: base64-encodestring() (Azure Kusto)
-description: This article describes base64-encodestring() in Azure Kusto.
+title: base64_encodestring() (Azure Kusto)
+description: This article describes base64_encodestring() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# base64-encodestring()
+# base64_encodestring()
 
 Encodes a string as base64 string
 
 **Syntax**
 
-`base64-encodestring(`*String*`)`
+`base64_encodestring(`*String*`)`
 
 **Arguments**
 
@@ -29,7 +29,7 @@ Returns the string encoded as base64 string.
 
 ```kusto
 range x from 1 to 1 step 1
-| project base64-encodestring("Kusto")
+| project base64_encodestring("Kusto")
 ```
 
 |Column1|

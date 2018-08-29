@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[binary-and()](binary-andfunction.md)|Returns a result of the bitwise and operation between two values.|
-|[binary-not()](binary-notfunction.md)|Returns a bitwise negation of the input value.|
-|[binary-or()](binary-orfunction.md)|Returns a result of the bitwise or operation of the two values.|
-|[binary-shift-left()](binary-shift-leftfunction.md)|Returns binary shift left operation on a pair of numbers: a << n.|
-|[binary-shift-right()](binary-shift-rightfunction.md)|Returns binary shift right operation on a pair of numbers: a >> n.|
-|[binary-xor()](binary-xorfunction.md)|Returns a result of the bitwise xor operation of the two values.|
+|[binary_and()](binary-andfunction.md)|Returns a result of the bitwise and operation between two values.|
+|[binary_not()](binary-notfunction.md)|Returns a bitwise negation of the input value.|
+|[binary_or()](binary-orfunction.md)|Returns a result of the bitwise or operation of the two values.|
+|[binary_shift_left()](binary-shift-leftfunction.md)|Returns binary shift left operation on a pair of numbers: a << n.|
+|[binary_shift_right()](binary-shift-rightfunction.md)|Returns binary shift right operation on a pair of numbers: a >> n.|
+|[binary_xor()](binary-xorfunction.md)|Returns a result of the bitwise xor operation of the two values.|
 
 ## Conversion Functions
 
@@ -37,9 +37,9 @@ ms.date: 09/24/2018
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[ago()](agofunction.md)|Subtracts the given timespan from the current UTC clock time.|
-|[datetime-add()](datetime-addfunction.md)|Calculates a new datetime from a specified datepart multiplied by a specified amount, added to a specified datetime.|
-|[datetime-part()](datetime-partfunction.md)|Extracts the requested date part as an integer value.|
-|[datetime-diff()](datetime-difffunction.md)|Returns the end of the year containing the date, shifted by an offset, if provided.|
+|[datetime_add()](datetime-addfunction.md)|Calculates a new datetime from a specified datepart multiplied by a specified amount, added to a specified datetime.|
+|[datetime_part()](datetime-partfunction.md)|Extracts the requested date part as an integer value.|
+|[datetime_diff()](datetime-difffunction.md)|Returns the end of the year containing the date, shifted by an offset, if provided.|
 |[dayofmonth()](dayofmonthfunction.md)|Returns the integer number representing the day number of the given month.|
 |[dayofweek()](dayofweekfunction.md)|Returns the integer number of days since the preceding Sunday, as a timespan.|
 |[dayofyear()](dayofyearfunction.md)|Returns the integer number represents the day number of the given year.|
@@ -47,13 +47,13 @@ ms.date: 09/24/2018
 |[endofmonth()](endofmonthfunction.md)|Returns the end of the month containing the date, shifted by an offset, if provided.|
 |[endofweek()](endofweekfunction.md)|Returns the end of the week containing the date, shifted by an offset, if provided.|
 |[endofyear()](endofyearfunction.md)|Returns the end of the year containing the date, shifted by an offset, if provided.|
-|[format-datetime()](format-datetimefunction.md)|Formats a datetime parameter based on the format pattern parameter.|
-|[format-timespan()](format-timespanfunction.md)|Formats a format-timespan parameter based on the format pattern parameter.|
+|[format_datetime()](format-datetimefunction.md)|Formats a datetime parameter based on the format pattern parameter.|
+|[format_timespan()](format-timespanfunction.md)|Formats a format-timespan parameter based on the format pattern parameter.|
 |[getmonth()](getmonthfunction.md)|Get the month number (1-12) from a datetime.|
 |[getyear()](getyearfunction.md)|Returns the year part of the datetime argument.|
 |[hourofday()](hourofdayfunction.md)|Returns the integer number representing the hour number of the given date.|
-|[make-datetime()](make-datetimefunction.md)|Creates a datetime scalar value from the specified date and time.|
-|[make-timespan()](make-timespanfunction.md)|Creates a timespan scalar value from the specified time period.|
+|[make_datetime()](make-datetimefunction.md)|Creates a datetime scalar value from the specified date and time.|
+|[make_timespan()](make-timespanfunction.md)|Creates a timespan scalar value from the specified time period.|
 |[monthofyear()](monthofyearfunction.md)|Returns the integer number represents the month number of the given year.|
 |[now()](nowfunction.md)|Returns the current UTC clock time, optionally offset by a given timespan.|
 |[startofday()](startofdayfunction.md)|Returns the start of the day containing the date, shifted by an offset, if provided.|
@@ -69,11 +69,11 @@ ms.date: 09/24/2018
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[array-concat()](arrayconcatfunction.md)|Concatenates a number of dynamic arrays to a single array.|
-|[array-length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
+|[array_concat()](arrayconcatfunction.md)|Concatenates a number of dynamic arrays to a single array.|
+|[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
 |[pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
-|[pack-all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
-|[pack-array()](packarrayfunction.md)|Packs all input values into a dynamic array.|
+|[pack_all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
+|[pack_array()](packarrayfunction.md)|Packs all input values into a dynamic array.|
 |[repeat()](repeatfunction.md)|Generates a dynamic array holding a series of equal values.|
 |[treepath()](treepathfunction.md)|Enumerates all the path expressions that identify leaves in a dynamic object.|
 |[zip()](zipfunction.md)|The zip function accepts any number of dynamic arrays, and returns an array whose elements are each an array holding the elements of the input arrays of the same index.|
@@ -85,8 +85,8 @@ ms.date: 09/24/2018
 |-------------------------|--------------------------------------------------------|
 |[next()](nextfunction.md)|For the serialized row set, returns a value of a specified column from the later row according to the offset.|
 |[prev()](prevfunction.md)|For the serialized row set, returns a value of a specified column from the earlier row according to the offset.|
-|[row-cumsum()](rowcumsumfunction.md)|Calculates the cumulative sum of a column.|
-|[row-number()](rownumberfunction.md)|Returns a row's number in the serialized row set - consecutive numbers starting from a given index or from 1 by default.|
+|[row_cumsum()](rowcumsumfunction.md)|Calculates the cumulative sum of a column.|
+|[row_number()](rownumberfunction.md)|Returns a row's number in the serialized row set - consecutive numbers starting from a given index or from 1 by default.|
 
 ## Flow Control Functions
 
@@ -102,9 +102,9 @@ ms.date: 09/24/2018
 |[asin()](asinfunction.md)|Returns the angle whose sine is the specified number (the inverse operation of sin()).|
 |[atan()](atanfunction.md)|Returns the angle whose tangent is the specified number (the inverse operation of tan()).|
 |[atan2()](atan2function.md)|Calculates the angle, in radians, between the positive x-axis and the ray from the origin to the point (y, x).|
-|[beta-cdf()](beta-cdffunction.md)|Returns the standard cumulative beta distribution function.|
-|[beta-inv()](beta-invfunction.md)|Returns the inverse of the beta cumulative probability beta density function.|
-|[beta-pdf()](beta-pdffunction.md)|Returns the probability density beta function.|
+|[beta_cdf()](beta-cdffunction.md)|Returns the standard cumulative beta distribution function.|
+|[beta_inv()](beta-invfunction.md)|Returns the inverse of the beta cumulative probability beta density function.|
+|[beta_pdf()](beta-pdffunction.md)|Returns the probability density beta function.|
 |[cos()](cosfunction.md)|Returns the cosine function.|
 |[cot()](cotfunction.md)|Calculates the trigonometric cotangent of the specified angle, in radians.|
 |[degrees()](degreesfunction.md)|Converts angle value in radians into value in degrees, using formula degrees = (180 / PI ) * angle-in-radians.|
@@ -121,7 +121,7 @@ ms.date: 09/24/2018
 |[log2()](log2-function.md)|Returns the base-2 logarithm function.|
 |[loggamma()](loggammafunction.md)|Computes log of absolute value of the gamma function.|
 |[not()](notfunction.md)|Reverses the value of its bool argument.|
-|[pi()](pifunction.md)|Returns the constant value of Pi (Ï€).|
+|[pi()](pifunction.md)|Returns the constant value of Pi (Ã�ÂÃ¢â€šÂ¬).|
 |[pow()](powfunction.md)|Returns a result of raising to power.|
 |[radians()](radiansfunction.md)|Converts angle value in degrees into value in radians, using formula radians = (PI / 180 ) * angle-in-degrees.|
 |[rand()](randfunction.md)|Returns a random number.|
@@ -131,7 +131,7 @@ ms.date: 09/24/2018
 |[sin()](sinfunction.md)|Returns the sine function.|
 |[sqrt()](sqrtfunction.md)|Returns the square root function.|
 |[tan()](tanfunction.md)|Returns the tangent function.|
-|[welch-test()](welch-testfunction.md)|Computes the p-value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s-t-test).|
+|[welch_test()](welch-testfunction.md)|Computes the p-value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s-t-test).|
 
 
 ## Metadata Functions
@@ -139,11 +139,11 @@ ms.date: 09/24/2018
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[columnifexists()](columnifexists.md)|Takes a column name as a string and a default value. Returns a reference to the column if it exists, otherwise - returns the default value.|
-|[current-principal()](current-principalfunction.md)|Returns the current principal running this query.|
-|[cursor-after()](cursorafterfunction.md)|Used to access to the records that were ingested after the previous value of the cursor.|
-|[extent-id()](extentidfunction.md)|Returns a unique identifier that identifies the data shard ("extent") that the current record resides in.|
-|[extent-tags()](extenttagsfunction.md)|Returns a dynamic array with the tags of the data shard ("extent") that the current record resides in.|
-|[ingestion-time()](ingestiontimefunction.md)|Retrieves the record's $IngestionTime hidden datetime column, or null.|
+|[current_principal()](current-principalfunction.md)|Returns the current principal running this query.|
+|[cursor_after()](cursorafterfunction.md)|Used to access to the records that were ingested after the previous value of the cursor.|
+|[extent_id()](extentidfunction.md)|Returns a unique identifier that identifies the data shard ("extent") that the current record resides in.|
+|[extent_tags()](extenttagsfunction.md)|Returns a dynamic array with the tags of the data shard ("extent") that the current record resides in.|
+|[ingestion_time()](ingestiontimefunction.md)|Retrieves the record's $IngestionTime hidden datetime column, or null.|
 
 
 ## Rounding Functions
@@ -151,7 +151,7 @@ ms.date: 09/24/2018
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[bin()](binfunction.md)|Rounds values down to an integer multiple of a given bin size.|
-|[bin-at()](binatfunction.md)|Rounds values down to a fixed-size "bin", with control over the bin's starting point. (See also bin function.)|
+|[bin_at()](binatfunction.md)|Rounds values down to a fixed-size "bin", with control over the bin's starting point. (See also bin function.)|
 |[ceiling()](ceilingfunction.md)|Calculates the smallest integer greater than, or equal to, the specified numeric expression.|
 |[floor()](floorfunction.md)|Rounds values down to an integer multiple of a given bin size.|
 
@@ -163,37 +163,37 @@ ms.date: 09/24/2018
 |[case()](casefunction.md)|Evaluates a list of predicates and returns the first result expression whose predicate is satisfied.|
 |[coalesce()](coalescefunction.md)|Evaluates a list of expressions and returns the first non-null (or non-empty for string) expression.|
 |[iif()](iiffunction.md)|Evaluates the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
-|[max-of()](max-offunction.md)|Returns the maximum value of several evaluated numeric expressions.|
-|[min-of()](min-offunction.md)|Returns the minimum value of several evaluated numeric expressions.|
+|[max_of()](max-offunction.md)|Returns the maximum value of several evaluated numeric expressions.|
+|[min_of()](min-offunction.md)|Returns the minimum value of several evaluated numeric expressions.|
 
 
 ## Series Processing Functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[series-fill-backward()](series-fill-backwardfunction.md)|Performs backward fill interpolation of missing values in a series.|
-|[series-fill-const()](series-fill-constfunction.md)|Replaces missing values in a series with a specified constant value.|
-|[series-fill-forward()](series-fill-forwardfunction.md)|Performs forward fill interpolation of missing values in a series.|
-|[series-fill-linear()](series-fill-linearfunction.md)|Performs linear interpolation of missing values in a series.|
-|[series-fir()](series-firfunction.md)|Applies a Finite Impulse Response filter on a series.|
-|[series-fit-2lines()](series-fit-2linesfunction.md)|Applies two segments linear regression on a series, returning multiple columns.|
-|[series-fit-2lines-dynamic()](series-fit-2lines-dynamicfunction.md)|Applies two segments linear regression on a series, returning dynamic object.|
-|[series-fit-line()](series-fit-linefunction.md)|Applies linear regression on a series, returning multiple columns.|
-|[series-fit-line-dynamic()](series-fit-line-dynamicfunction.md)|Applies linear regression on a series, returning dynamic object.|
-|[series-iir()](series-iirfunction.md)|Applies a Infinite Impulse Response filter on a series.|
-|[series-outliers()](series-outliersfunction.md)|Scores anomaly points in a series.|
-|[series-periods-detect()](series-periods-detectfunction.md)|Finds the most significant periods that exist in a time series.|
-|[series-periods-validate()](series-periods-validatefunction.md)|Checks whether a time series contains periodic patterns of given lengths.|
-|[series-stats()](series-statsfunction.md)|Returns statistics for a series in multiple columns.|
-|[series-stats-dynamic()](series-stats-dynamicfunction.md)|Returns statistics for a series in dynamic object.|
+|[series_fill_backward()](series-fill-backwardfunction.md)|Performs backward fill interpolation of missing values in a series.|
+|[series_fill_const()](series-fill-constfunction.md)|Replaces missing values in a series with a specified constant value.|
+|[series_fill_forward()](series-fill-forwardfunction.md)|Performs forward fill interpolation of missing values in a series.|
+|[series_fill_linear()](series-fill-linearfunction.md)|Performs linear interpolation of missing values in a series.|
+|[series_fir()](series-firfunction.md)|Applies a Finite Impulse Response filter on a series.|
+|[series_fit_2lines()](series-fit-2linesfunction.md)|Applies two segments linear regression on a series, returning multiple columns.|
+|[series_fit_2lines-dynamic()](series-fit-2lines-dynamicfunction.md)|Applies two segments linear regression on a series, returning dynamic object.|
+|[series_fit_line()](series-fit-linefunction.md)|Applies linear regression on a series, returning multiple columns.|
+|[series_fit_line-dynamic()](series-fit-line-dynamicfunction.md)|Applies linear regression on a series, returning dynamic object.|
+|[series_iir()](series-iirfunction.md)|Applies a Infinite Impulse Response filter on a series.|
+|[series_outliers()](series-outliersfunction.md)|Scores anomaly points in a series.|
+|[series_periods_detect()](series-periods-detectfunction.md)|Finds the most significant periods that exist in a time series.|
+|[series_periods_validate()](series-periods-validatefunction.md)|Checks whether a time series contains periodic patterns of given lengths.|
+|[series_stats()](series-statsfunction.md)|Returns statistics for a series in multiple columns.|
+|[series_stats-dynamic()](series-stats-dynamicfunction.md)|Returns statistics for a series in dynamic object.|
 
 
 ## String Functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[base64-decodestring()](base64decodestringfunction.md)|Decodes a base64 string to a UTF-8 string|
-|[base64-encodestring()](base64encodestringfunction.md)|Encodes a string as base64 string.|
+|[base64_decodestring()](base64decodestringfunction.md)|Decodes a base64 string to a UTF-8 string|
+|[base64_encodestring()](base64encodestringfunction.md)|Encodes a string as base64 string.|
 |[countof()](cotfunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches do not.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
 |[extractall()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
@@ -203,16 +203,16 @@ ms.date: 09/24/2018
 |[isnotempty()](isnotemptyfunction.md)|Returns true if the argument is not an empty string nor it is a null.|
 |[isnotnull()](isnotnullfunction.md)|Returns true if the argument is not null.|
 |[isnull()](isnullfunction.md)|Evaluates its sole argument and returns a bool value indicating if the argument evaluates to a null value.|
-|[parse-ipv4()](parse-ipv4function.md)|Converts input to integener (signed 64-bit) number representation.|
-|[parse-json()](parsejsonfunction.md)|Interprets a string as a JSON value) and returns the value as dynamic.|
-|[parse-url()](parseurlfunction.md)|Parses an absolute URL string and returns a dynamic object contains all parts of the URL.|
-|[parse-urlquery()](parseurlqueryfunction.md)|Parses a url query string and returns a dynamic object contains the Query parameters.|
-|[parse-version()](parse-versionfunction.md)|Converts input string representation of version to a comparable decimal number.|
+|[parse_ipv4()](parse-ipv4function.md)|Converts input to integener (signed 64-bit) number representation.|
+|[parse_json()](parsejsonfunction.md)|Interprets a string as a JSON value) and returns the value as dynamic.|
+|[parse_url()](parseurlfunction.md)|Parses an absolute URL string and returns a dynamic object contains all parts of the URL.|
+|[parse_urlquery()](parseurlqueryfunction.md)|Parses a url query string and returns a dynamic object contains the Query parameters.|
+|[parse_version()](parse-versionfunction.md)|Converts input string representation of version to a comparable decimal number.|
 |[replace()](replacefunction.md)|Replace all regex matches with another string.|
 |[reverse()](reversefunction.md)|Function makes reverse of input string.|
 |[split()](splitfunction.md)|Splits a given string according to a given delimiter and returns a string array with the conatined substrings.|
 |[strcat()](strcatfunction.md)|Concatenates between 1 and 64 arguments.|
-|[strcat-delim()](strcat-delimfunction.md)|Concatenates between 2 and 64 arguments, with delimiter, provided as first argument.|
+|[strcat_delim()](strcat-delimfunction.md)|Concatenates between 2 and 64 arguments, with delimiter, provided as first argument.|
 |[strcmp()](strcmpfunction.md)|Compares two strings.|
 |[strlen()](strlenfunction.md)|Returns the length, in characters, of the input string.|
 |[strrep()](strrepfunction.md)|Repeates given string provided amount of times (default - 1).|
@@ -220,10 +220,10 @@ ms.date: 09/24/2018
 |[toupper()](toupperfunction.md)|Converts a string to upper case.|
 |[translate()](translatefunction.md)|Replaces a set of characters ('searchList') with another set of characters ('replacementList') in a given a string.|
 |[trim()](trimfunction.md)|Removes all leading and trailing matches of the specified regular expression.|
-|[trim-end()](trimendfunction.md)|Removes trailing match of the specified regular expression.|
-|[trim-start()](trimstartfunction.md)|Removes leading match of the specified regular expression.|
-|[url-decode()](urldecodefunction.md)|The function converts encoded URL into a to regular URL representation.|
-|[url-encode()](urlencodefunction.md)|The function converts characters of the input URL into a format that can be transmitted over the Internet.|
+|[trim_end()](trimendfunction.md)|Removes trailing match of the specified regular expression.|
+|[trim_start()](trimstartfunction.md)|Removes leading match of the specified regular expression.|
+|[url_decode()](urldecodefunction.md)|The function converts encoded URL into a to regular URL representation.|
+|[url_encode()](urlencodefunction.md)|The function converts characters of the input URL into a format that can be transmitted over the Internet.|
 
 
 ## Type Functions
@@ -237,12 +237,12 @@ ms.date: 09/24/2018
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[dcount-hll()](dcount-hllfunction.md)|Calculates the dcount from hll results (which was generated by hll or hll-merge).|
-|[hll-merge()](hllmergefunction.md)|Merges hll results (scalar version of the aggregate version hll-merge()).|
-|[percentile-tdigest()](percentile-tdigestfunction.md)|Calculates the percentile result from tdigest results (which was generated by tdigest or merge-tdigests).|
-|[percentrank-tdigest()](percentrank-tdigestfunction.md)|Calculates the percentage ranking of a value in a dataset.|
-|[rank-tdigest()](rank-tdigest.md)|Calculates relative rank of a value in a set.|
-|[tdigest-merge()](tdigest-mergefunction.md)|Merges tdigest results (scalar version of the aggregate version tdigest-merge()).|
+|[dcount_hll()](dcount-hllfunction.md)|Calculates the dcount from hll results (which was generated by hll or hll-merge).|
+|[hll_merge()](hllmergefunction.md)|Merges hll results (scalar version of the aggregate version hll-merge()).|
+|[percentile_tdigest()](percentile-tdigestfunction.md)|Calculates the percentile result from tdigest results (which was generated by tdigest or merge-tdigests).|
+|[percentrank_tdigest()](percentrank-tdigestfunction.md)|Calculates the percentage ranking of a value in a dataset.|
+|[rank_tdigest()](rank-tdigest.md)|Calculates relative rank of a value in a set.|
+|[tdigest_merge()](tdigest-mergefunction.md)|Merges tdigest results (scalar version of the aggregate version tdigest-merge()).|
 
 
 ## Spatial functions

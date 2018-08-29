@@ -1,6 +1,6 @@
 ---
-title: make-datetime() (Azure Kusto)
-description: This article describes make-datetime() in Azure Kusto.
+title: make_datetime() (Azure Kusto)
+description: This article describes make_datetime() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,19 +8,19 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# make-datetime()
+# make_datetime()
 
 Creates a [datetime](./scalar-data-types/datetime.md) scalar value from the specified date and time.
 
-    make-datetime(2017,10,01,12,10) == datetime(2017-10-01 12:10)
+    make_datetime(2017,10,01,12,10) == datetime(2017-10-01 12:10)
 
 **Syntax**
 
-`make-datetime(`*year*,*month*,*day*`)`
+`make_datetime(`*year*,*month*,*day*`)`
 
-`make-datetime(`*year*,*month*,*day*,*hour*,*minute*`)`
+`make_datetime(`*year*,*month*,*day*,*hour*,*minute*`)`
 
-`make-datetime(`*year*,*month*,*day*,*hour*,*minute*,*second*`)`
+`make_datetime(`*year*,*month*,*day*,*hour*,*minute*,*second*`)`
 
 **Arguments**
 
@@ -38,10 +38,10 @@ If creation is successful, result will be a [datetime](./scalar-data-types/datet
 **Example**
 
 ```kusto
-print year-month-day = make-datetime(2017,10,01)
+print year_month_day = make_datetime(2017,10,01)
 ```
 
-|year-month-day|
+|year_month_day|
 |---|
 |2017-10-01 00:00:00.0000000|
 
@@ -49,10 +49,10 @@ print year-month-day = make-datetime(2017,10,01)
 
 
 ```kusto
-print year-month-day-hour-minute = make-datetime(2017,10,01,12,10)
+print year_month_day_hour_minute = make_datetime(2017,10,01,12,10)
 ```
 
-|year-month-day-hour-minute|
+|year_month_day_hour_minute|
 |---|
 |2017-10-01 12:10:00.0000000|
 
@@ -60,10 +60,10 @@ print year-month-day-hour-minute = make-datetime(2017,10,01,12,10)
 
 
 ```kusto
-print year-month-day-hour-minute-second = make-datetime(2017,10,01,12,11,0.1234567)
+print year_month_day_hour_minute_second = make_datetime(2017,10,01,12,11,0.1234567)
 ```
 
-|year-month-day-hour-minute-second|
+|year_month_day_hour_minute_second|
 |---|
 |2017-10-01 12:11:00.1234567|
 

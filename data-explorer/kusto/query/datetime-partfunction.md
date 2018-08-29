@@ -1,6 +1,6 @@
 ---
-title: datetime-part() (Azure Kusto)
-description: This article describes datetime-part() in Azure Kusto.
+title: datetime_part() (Azure Kusto)
+description: This article describes datetime_part() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# datetime-part()
+# datetime_part()
 
 Extracts the requested date part as an integer value.
 
-    datetime-part("Day",datetime(2015-12-14))
+    datetime_part("Day",datetime(2015-12-14))
 
 **Syntax**
 
-`datetime-part(`*part*`,`*datetime*`)`
+`datetime_part(`*part*`,`*datetime*`)`
 
 **Arguments**
 
@@ -46,18 +46,18 @@ An integer representing the extracted part.
 ```kusto
 let dt = datetime(2017-10-30 01:02:03.7654321); 
 print 
-year = datetime-part("year", dt),
-quarter = datetime-part("quarter", dt),
-month = datetime-part("month", dt),
-weekOfYear = datetime-part("weekOfYear", dt),
-day = datetime-part("day", dt),
-dayOfYear = datetime-part("dayOfYear", dt),
-hour = datetime-part("hour", dt),
-minute = datetime-part("minute", dt),
-second = datetime-part("second", dt),
-millisecond = datetime-part("millisecond", dt),
-microsecond = datetime-part("microsecond", dt),
-nanosecond = datetime-part("nanosecond", dt)
+year = datetime_part("year", dt),
+quarter = datetime_part("quarter", dt),
+month = datetime_part("month", dt),
+weekOfYear = datetime_part("weekOfYear", dt),
+day = datetime_part("day", dt),
+dayOfYear = datetime_part("dayOfYear", dt),
+hour = datetime_part("hour", dt),
+minute = datetime_part("minute", dt),
+second = datetime_part("second", dt),
+millisecond = datetime_part("millisecond", dt),
+microsecond = datetime_part("microsecond", dt),
+nanosecond = datetime_part("nanosecond", dt)
 
 ```
 

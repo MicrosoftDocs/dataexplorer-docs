@@ -22,7 +22,7 @@ Query parameters have two main uses:
 
 In particular, client applications that combine user-provided input in queries
 that they then send to Kusto should use this mechanism to protect against the
-Kusto equivalent of [SQL Injection](https://en.wikipedia.org/wiki/SQL-injection)
+Kusto equivalent of [SQL Injection](https://en.wikipedia.org/wiki/SQL_injection)
 attacks.
 
 ## Specifying query parameters in a client application
@@ -47,7 +47,7 @@ ask the user for his or her birthday):
 {
     "ns": null,
     "db": "myDB",
-    "csl": "declare query-parameters(birthday:datetime); print strcat(\"Your age is: \", tostring(now() - birthday))",
+    "csl": "declare query_parameters(birthday:datetime); print strcat(\"Your age is: \", tostring(now() - birthday))",
     "properties": "{\"Options\":{},\"Parameters\":{\"birthday\":\"datetime(1970-05-11)\"}}"
 }
 ``` 
@@ -75,7 +75,7 @@ value according to its normal parsing rules for that type.
 
 **Syntax**
 
-`declare` `query-parameters` `(` *Name1* `:` *Type1* [`,`...] `);`
+`declare` `query_parameters` `(` *Name1* `:` *Type1* [`,`...] `);`
 
 * *Name1*: The name of a query parameter used in the query.
 * *Type1*: The the corresponding type (e.g. `string`, `datetime`, etc.)
@@ -86,11 +86,11 @@ value according to its normal parsing rules for that type.
 **Examples**
 
 ```kusto
-declare query-parameters (UserName:string, Password:string);
+declare query_parameters (UserName:string, Password:string);
 print n=UserName, p=hash(Password)
 ```
 
 ```kusto
-declare query-parameters(amount:long);
+declare query_parameters(amount:long);
 T | where amountColumn == amount
 ```

@@ -16,13 +16,13 @@ If lookup or input string is not of string type - forcibly casts the value to st
 
 **Syntax**
 
-`indexof(`*source*`,`*lookup*`[,`*start-index*`[,`*length*`]])`
+`indexof(`*source*`,`*lookup*`[,`*start_index*`[,`*length*`]])`
 
 **Arguments**
 
 * *source*: input string.  
 * *lookup*: string to seek.
-* *start-index*: search start position (optional).
+* *start_index*: search start position (optional).
 * *length*: number of character positions to examine (optional).
 
 **Returns**
@@ -31,7 +31,7 @@ Zero-based index position of *lookup*.
 
 Returns -1 if the string is not found in the input.
 
-In case of irrelevant (less than 0) *start-index* or *length* parameter - returns *null*.
+In case of irrelevant (less than 0) *start_index* or *length* parameter - returns *null*.
 
 **Examples**
 ```kusto

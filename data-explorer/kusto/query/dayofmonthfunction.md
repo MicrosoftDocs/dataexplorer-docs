@@ -16,11 +16,11 @@ Returns the integer number representing the day number of the given month
 
 **Syntax**
 
-`dayofmonth(`*a-date*`)`
+`dayofmonth(`*a_date*`)`
 
 **Arguments**
 
-* `a-date`: A `datetime`.
+* `a_date`: A `datetime`.
 
 **Returns**
 
