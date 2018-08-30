@@ -44,9 +44,8 @@ fractional number of times one value can fit the other.
 The following example calculates how many seconds are in a day in several ways:
 
 ```kusto
-range x from 1 to 1 step 1 
-| extend 
+print
     result1 = 1d / 1s,
     result2 = time(1d) / time(1s),
-    result3 = 24 * 60 * time(00:01:00) / time(1s) 
+    result3 = 24 * 60 * time(00:01:00) / time(1s)
 ```

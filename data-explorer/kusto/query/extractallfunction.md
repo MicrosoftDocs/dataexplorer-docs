@@ -44,8 +44,7 @@ If there's no match: `null`.
 The example below returns hex-byte representation (two hex-digits) of the GUID.
 
 ```kusto
-range r from 1 to 1 step 1
-| project Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
+print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 | extend guid_bytes = extractall(@"([\da-f]{2})", Id) 
 ```
 
@@ -57,8 +56,7 @@ range r from 1 to 1 step 1
 Next example uses a regular expression with 3 capturing groups to split each GUID part into first letter, last letter and whatever in the middle.
 
 ```kusto
-range r from 1 to 1 step 1
-| project Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
+print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 | extend guid_bytes = extractall(@"(\w)(\w+)(\w)", Id) 
 ```
 
@@ -72,8 +70,7 @@ Next example shows how to select a subset of capturing groups: in this case the 
 matches into first letter, last letter and all the rest - while the *captureGroups* parameter is used to select only first and the last part. 
 
 ```kusto
-range r from 1 to 1 step 1
-| project Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
+print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 | extend guid_bytes = extractall(@"(\w)(\w+)(\w)", dynamic([1,3]), Id) 
 ```
 
@@ -88,8 +85,7 @@ You can utilize named capture groups of RE2 in extractall().
 In the example below - the *captureGroups* uses both capture group indexes and named capture group reference to fetch matching values.
 
 ```kusto
-range r from 1 to 1 step 1
-| project Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
+print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 | extend guid_bytes = extractall(@"(?P<first>\w)(?P<middle>\w+)(?P<last>\w)", dynamic(['first',2,'last']), Id) 
 ```
 

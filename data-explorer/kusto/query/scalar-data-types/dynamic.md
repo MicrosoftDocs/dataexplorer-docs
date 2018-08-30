@@ -36,8 +36,7 @@ The external representation of a `dynamic` value is JSON. A literal of type `dyn
 wraps the actual JSON representation of the value by `dynamic(` and `)`:
 
 ```kusto
-range x from 1 to 1 step 1
-| project o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})
+print o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})
 | extend a=o.a, b=o.b, c=o.c, d=o.d
 ```
 

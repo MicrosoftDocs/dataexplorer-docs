@@ -39,20 +39,17 @@ print strlen("Hello" ', ' @"world!")
 
 ```kusto
 // Simple string notation
-range x from 1 to 1 step 1 
-| project s1 = 'some string', s2 = "some other string"
+print s1 = 'some string', s2 = "some other string"
 
 // Strings that include singl- or double-quotes can be defined as next 
-range x from 1 to 1 step 1 
-| project s1 = 'string with " (double quotes)', 
+print s1 = 'string with " (double quotes)', 
           s2 = "string with ' (single quotes)"
           
 // Strings with '\' can be prefixed with '@' (as in c#)
-range x from 1 to 1 step 1
-| project myPath1 = @'C:\Folder\filename.txt'
+print myPath1 = @'C:\Folder\filename.txt'
 
 // Escaping using '\' notation
-range x from 1 to 1 step 1 | project s = '\\n.*(>|\'|=|\")[a-zA-Z0-9/+]{86}=='
+print s = '\\n.*(>|\'|=|\")[a-zA-Z0-9/+]{86}=='
 ```
 
 As can be seen, when a string is enclosed in double-quotes (`"`), the single-quote (`'`)

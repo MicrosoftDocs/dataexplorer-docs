@@ -35,8 +35,7 @@ Most convenient way of using this function is applying it to results of [make-se
 **Examples**
 
 ```kusto
-range x from 1 to 1 step 1
-| project id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([2,5,6,8,11,15,17,18,25,26,30,30])
+print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([2,5,6,8,11,15,17,18,25,26,30,30])
 | extend (RSquare,Slope,Variance,RVariance,Interception,LineFit)=series_fit_line(y)
 | render timechart
 ```

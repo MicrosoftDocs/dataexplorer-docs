@@ -77,8 +77,8 @@ A parameter, which is not scalar constant string can't be passed as parameter to
 Below, given an example of workaround for such case.
 
 ```kusto
-let T1 = range x from 1 to 1 step 1;
-let T2 = range x from 2 to 2 step 1;
+let T1 = print x=1;
+let T2 = print x=2;
 let _choose = (_selector:string)
 {
     union 

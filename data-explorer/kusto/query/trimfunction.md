@@ -32,8 +32,7 @@ Statement bellow trims *substring*  from the start and the end of the *string_to
 ```kusto
 let string_to_trim = @"--http://bing.com--";
 let substring = "--";
-range x from 1 to 1 step 1
-| project string_to_trim = string_to_trim, trimmed_string = trim(substring,string_to_trim)
+print string_to_trim = string_to_trim, trimmed_string = trim(substring,string_to_trim)
 ```
 
 |string_to_trim|trimmed_string|

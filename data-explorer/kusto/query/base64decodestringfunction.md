@@ -27,21 +27,19 @@ Returns UTF-8 string decoded from base64 string.
 **Example**
 
 ```kusto
-range x from 1 to 1 step 1
-| project base64_decodestring("S3VzdG8=")
+print Quine=base64_decodestring("S3VzdG8=")
 ```
 
-|Column1|
-|---|
+|Quine|
+|-----|
 |Kusto|
 
 Trying to decode a base64 string which was generated from invalid UTF-8 encoding will return null:
 
 ```kusto
-range x from 1 to 1 step 1
-| project base64_decodestring("U3RyaW5n0KHR0tGA0L7Rh9C60LA=")
+print Empty=base64_decodestring("U3RyaW5n0KHR0tGA0L7Rh9C60LA=")
 ```
 
-|Column1|
-|---|
+|Empty|
+|-----|
 ||

@@ -35,18 +35,15 @@ In case of irrelevant (less than 0) *start_index* or *length* parameter - return
 
 **Examples**
 ```kusto
-range x from 1 to 1 step 1
-| project idx1 = indexof("abcdefg","cde")    // lookup found in input string
-| extend idx2 = indexof("abcdefg","cde",1,4) // lookup found in researched range 
-| extend idx3 = indexof("abcdefg","cde",1,2) // search starts from index 1, but stops after 2 chars, so full lookup can't be found
-| extend idx4 = indexof("abcdefg","cde",3,4) // search starts after occurrence of lookup
-| extend idx5 = indexof("abcdefg","cde",-1)  // invalid input
-| extend idx6 = indexof(1234567,5,1,4)       // two first parameters were forcibly casted to strings "12345" and "5"
+print
+ idx1 = indexof("abcdefg","cde")    // lookup found in input string
+ , idx2 = indexof("abcdefg","cde",1,4) // lookup found in researched range 
+ , idx3 = indexof("abcdefg","cde",1,2) // search starts from index 1, but stops after 2 chars, so full lookup can't be found
+ , idx4 = indexof("abcdefg","cde",3,4) // search starts after occurrence of lookup
+ , idx5 = indexof("abcdefg","cde",-1)  // invalid input
+ , idx6 = indexof(1234567,5,1,4)       // two first parameters were forcibly casted to strings "12345" and "5"
 ```
 
 |idx1|idx2|idx3|idx4|idx5|idx6|
-|---|---|---|---|---|---|
-|2|2|-1|-1||4|
-
-
- 
+|----|----|----|----|----|----|
+|2   |2   |-1  |-1  |    |4   |

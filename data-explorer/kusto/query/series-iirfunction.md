@@ -45,8 +45,7 @@ Calculating cumulative sum can be performed by iir filter with coefficients *a*=
 
 ```kusto
 let x = range(1.0, 10, 1);
-range t from 1 to 1 step 1
-| project x=x, y = series_iir(x, dynamic([1]), dynamic([1,-1]))
+print x=x, y = series_iir(x, dynamic([1]), dynamic([1,-1]))
 | mvexpand x, y
 ```
 

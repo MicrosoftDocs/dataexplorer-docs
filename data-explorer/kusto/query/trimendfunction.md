@@ -32,28 +32,24 @@ Statement bellow trims *substring*  from the end of *string_to_trim*:
 ```kusto
 let string_to_trim = @"bing.com";
 let substring = ".com";
-range x from 1 to 1 step 1
-| project string_to_trim = string_to_trim,trimmed_string = trim_end(substring,string_to_trim)
+print string_to_trim = string_to_trim,trimmed_string = trim_end(substring,string_to_trim)
 ```
 
 |string_to_trim|trimmed_string|
-|---|---|
-|bing.com|bing|
+|--------------|--------------|
+|bing.com      |bing          |
 
 Next statement trims all non-word characters from the end of the string:
 
 ```kusto
-range x from 1 to 5 step 1
-| project str = strcat("-  ","Te st",x,@"// $")
+print str = strcat("-  ","Te st",x,@"// $")
 | extend trimmed_str = trim_end(@"[^\w]+",str)
 ```
 
-|str|trimmed_str|
-|---|---|
-|-  Te st1// $|-  Te st1|
-|-  Te st2// $|-  Te st2|
-|-  Te st3// $|-  Te st3|
-|-  Te st4// $|-  Te st4|
-|-  Te st5// $|-  Te st5|
-
- 
+|str          |trimmed_str|
+|-------------|-----------|
+|-  Te st1// $|-  Te st1  |
+|-  Te st2// $|-  Te st2  |
+|-  Te st3// $|-  Te st3  |
+|-  Te st4// $|-  Te st4  |
+|-  Te st5// $|-  Te st5  |

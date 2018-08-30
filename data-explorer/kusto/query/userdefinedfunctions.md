@@ -252,8 +252,8 @@ is done. The following example shows two user-defined functions, `T_view` and
 reference in the `union`:
 
 ```kusto
-let T_view = view () { range x from 1 to 1 step 1 };
-let T_notview = () { range x from 2 to 2 step 1 };
+let T_view = view () { print x=1 };
+let T_notview = () { print x=2 };
 union T*
 ```
 

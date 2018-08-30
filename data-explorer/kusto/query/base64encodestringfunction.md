@@ -28,10 +28,9 @@ Returns the string encoded as base64 string.
 **Example**
 
 ```kusto
-range x from 1 to 1 step 1
-| project base64_encodestring("Kusto")
+print Quine=base64_encodestring("Kusto")
 ```
 
-|Column1|
-|---|
+|Quine   |
+|--------|
 |S3VzdG8=|

@@ -129,7 +129,7 @@ It is possible to reuse column name and assign calculation result to the same co
 For example
 
 ```kusto
-range x from 1 to 1 step 1 
+print x=1
 | extend x = x + 1, y = x
 | extend x = x + 1
 

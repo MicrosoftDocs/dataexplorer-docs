@@ -49,7 +49,7 @@ The entity can be:
 
 ```kusto
 // Limit access to 'Test' let statement only
-let Test = () { range x from 1 to 1 step 1 }; 
+let Test = () { print x=1 };
 restrict access to (Test);
 ```
 
@@ -65,8 +65,8 @@ restrict access to (database().Table1, database().Func1, database('DB2').Table2)
 - Wildcard patterns that can match multiple of [let statements](./letstatement.md) or tables/functions  
 
 ```kusto
-let Test1 = () { range x from 1 to 1 step 1};
-let Test2 = () { range y from 1 to 1 step 1}; 
+let Test1 = () { print x=1 };
+let Test2 = () { print y=1 };
 restrict access to (*);
 // Now access is restricted to Test1, Test2  and no tables/functions are accessible
 

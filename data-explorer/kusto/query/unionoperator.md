@@ -87,9 +87,9 @@ This more efficient version produces the same result. It filters each table befo
 ```kusto     
 // Using union isfuzzy=true to access non-existing view:                   
 // Using union isfuzzy=true to access non-existing view:                   
-let View_1 = view () { range x from 1 to 1 step 1 };
-let View_2 = view () { range x from 1 to 1 step 1 };
-let OtherView_1 = view () { range x from 1 to 1 step 1 };
+let View_1 = view () { print x=1 };
+let View_2 = view () { print x=1 };
+let OtherView_1 = view () { print x=1 };
 union isfuzzy=true
 (View_1 | where x > 0), 
 (View_2 | where x > 0),
@@ -106,9 +106,9 @@ Observing Query Status - the following warning returned:
 
 ```kusto
 // Using union isfuzzy=true and wildcard access:
-let View_1 = view () { range x from 1 to 1 step 1 };
-let View_2 = view () { range x from 1 to 1 step 1 };
-let OtherView_1 = view () { range x from 1 to 1 step 1 };
+let View_1 = view () { print x=1 };
+let View_2 = view () { print x=1 };
+let OtherView_1 = view () { print x=1 };
 union isfuzzy=true View*, SomeView*, OtherView*
 | count 
 ```
