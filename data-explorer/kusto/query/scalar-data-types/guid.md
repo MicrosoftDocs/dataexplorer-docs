@@ -13,9 +13,7 @@ ms.date: 09/24/2018
 The `guid` (`uuid`, `uniqueid`) data type represents a 128-bit globally-unique
 value.
 
-> [AZURE.WARNING] As of this writing, support for the `guid` type is
-incomplete. We strongly recommend that teams use values of type `string`
-instead. 
+> [AZURE.WARNING] As of this writing, support for the `guid` type is incomplete. We strongly recommend that teams use values of type `string` instead.
 
 ## guid literals
 
