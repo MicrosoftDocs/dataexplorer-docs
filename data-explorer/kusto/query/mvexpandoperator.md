@@ -74,7 +74,7 @@ Two modes of property-bag expansions are supported:
 
 **See also**
 
-See [bag_unpack()](/query/bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys.
+See [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys.
 
 **Examples**
 

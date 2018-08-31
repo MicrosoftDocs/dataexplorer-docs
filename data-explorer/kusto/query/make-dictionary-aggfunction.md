@@ -31,7 +31,7 @@ If a key appears in more than one row- an arbitrary value (out of the possible v
 
 **See also**
 
-See [bag_unpack()](/query/bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys. 
+See [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys. 
 
 **Examples**
 
