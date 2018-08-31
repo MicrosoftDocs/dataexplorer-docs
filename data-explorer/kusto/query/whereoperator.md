@@ -1,5 +1,5 @@
 ---
-title: where operator (has, contains, startswith, endswith, matches regex) (Azure Kusto)
+title: where operator (has, contains, startswith, endswith, matches regex) - Azure Kusto | Microsoft Docs
 description: This article describes where operator (has, contains, startswith, endswith, matches regex) in Azure Kusto.
 author: orspod
 ms.author: v-orspod

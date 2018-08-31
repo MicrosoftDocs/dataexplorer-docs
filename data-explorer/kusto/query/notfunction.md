@@ -1,5 +1,5 @@
 ---
-title: not() (Azure Kusto)
+title: not() - Azure Kusto | Microsoft Docs
 description: This article describes not() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

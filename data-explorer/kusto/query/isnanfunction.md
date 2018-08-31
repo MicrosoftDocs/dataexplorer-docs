@@ -1,5 +1,5 @@
 ---
-title: isnan() (Azure Kusto)
+title: isnan() - Azure Kusto | Microsoft Docs
 description: This article describes isnan() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

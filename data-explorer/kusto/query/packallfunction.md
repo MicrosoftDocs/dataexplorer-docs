@@ -1,5 +1,5 @@
 ---
-title: pack_all() (Azure Kusto)
+title: pack_all() - Azure Kusto | Microsoft Docs
 description: This article describes pack_all() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

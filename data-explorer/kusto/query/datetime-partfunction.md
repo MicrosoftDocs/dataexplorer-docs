@@ -1,5 +1,5 @@
 ---
-title: datetime_part() (Azure Kusto)
+title: datetime_part() - Azure Kusto | Microsoft Docs
 description: This article describes datetime_part() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: top operator (Azure Kusto)
+title: top operator - Azure Kusto | Microsoft Docs
 description: This article describes top operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

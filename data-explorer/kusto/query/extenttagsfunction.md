@@ -1,5 +1,5 @@
 ---
-title: extent_tags() (Azure Kusto)
+title: extent_tags() - Azure Kusto | Microsoft Docs
 description: This article describes extent_tags() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: hourofday() (Azure Kusto)
+title: hourofday() - Azure Kusto | Microsoft Docs
 description: This article describes hourofday() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

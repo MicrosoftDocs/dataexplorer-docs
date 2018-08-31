@@ -1,5 +1,5 @@
 ---
-title: count() (aggregation function) (Azure Kusto)
+title: count() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes count() (aggregation function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod

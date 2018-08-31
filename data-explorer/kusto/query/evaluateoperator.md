@@ -1,5 +1,5 @@
 ---
-title: evaluate operator (Azure Kusto)
+title: evaluate operator - Azure Kusto | Microsoft Docs
 description: This article describes evaluate operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

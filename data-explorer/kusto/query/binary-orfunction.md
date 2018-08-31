@@ -1,5 +1,5 @@
 ---
-title: binary_or() (Azure Kusto)
+title: binary_or() - Azure Kusto | Microsoft Docs
 description: This article describes binary_or() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

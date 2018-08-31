@@ -1,5 +1,5 @@
 ---
-title: cursor_after() (Azure Kusto)
+title: cursor_after() - Azure Kusto | Microsoft Docs
 description: This article describes cursor_after() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

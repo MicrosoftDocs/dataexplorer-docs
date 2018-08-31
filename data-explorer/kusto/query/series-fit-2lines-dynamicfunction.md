@@ -1,5 +1,5 @@
 ---
-title: series_fit_2lines_dynamic() (Azure Kusto)
+title: series_fit_2lines_dynamic() - Azure Kusto | Microsoft Docs
 description: This article describes series_fit_2lines_dynamic() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

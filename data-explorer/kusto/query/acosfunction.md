@@ -1,5 +1,5 @@
 ---
-title: acos() (Azure Kusto)
+title: acos() - Azure Kusto | Microsoft Docs
 description: This article describes acos() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

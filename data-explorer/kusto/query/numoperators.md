@@ -1,5 +1,5 @@
 ---
-title: Numerical Operators (Azure Kusto)
+title: Numerical Operators - Azure Kusto | Microsoft Docs
 description: This article describes Numerical Operators in Azure Kusto.
 author: orspod
 ms.author: v-orspod

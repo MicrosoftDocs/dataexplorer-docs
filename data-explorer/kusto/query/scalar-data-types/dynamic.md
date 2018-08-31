@@ -1,5 +1,5 @@
 ---
-title: The dynamic data type (Azure Kusto)
+title: The dynamic data type - Azure Kusto | Microsoft Docs
 description: This article describes The dynamic data type in Azure Kusto.
 author: orspod
 ms.author: v-orspod

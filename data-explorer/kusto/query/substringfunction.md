@@ -1,5 +1,5 @@
 ---
-title: substring() (Azure Kusto)
+title: substring() - Azure Kusto | Microsoft Docs
 description: This article describes substring() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

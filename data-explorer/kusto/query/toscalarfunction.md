@@ -1,5 +1,5 @@
 ---
-title: toscalar() (Azure Kusto)
+title: toscalar() - Azure Kusto | Microsoft Docs
 description: This article describes toscalar() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: exp() (Azure Kusto)
+title: exp() - Azure Kusto | Microsoft Docs
 description: This article describes exp() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

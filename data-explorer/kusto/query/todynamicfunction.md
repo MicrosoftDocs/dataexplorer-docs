@@ -1,5 +1,5 @@
 ---
-title: todynamic(), toobject() (Azure Kusto)
+title: todynamic(), toobject() - Azure Kusto | Microsoft Docs
 description: This article describes todynamic(), toobject() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

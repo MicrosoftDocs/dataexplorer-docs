@@ -1,5 +1,5 @@
 ---
-title: strrep() (Azure Kusto)
+title: strrep() - Azure Kusto | Microsoft Docs
 description: This article describes strrep() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: table() (scope function) (Azure Kusto)
+title: table() (scope function) - Azure Kusto | Microsoft Docs
 description: This article describes table() (scope function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod

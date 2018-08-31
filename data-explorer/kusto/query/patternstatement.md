@@ -1,5 +1,5 @@
 ---
-title: pattern statement (Azure Kusto)
+title: pattern statement - Azure Kusto | Microsoft Docs
 description: This article describes pattern statement in Azure Kusto.
 author: orspod
 ms.author: v-orspod

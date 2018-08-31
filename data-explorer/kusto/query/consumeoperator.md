@@ -1,5 +1,5 @@
 ---
-title: consume operator (Azure Kusto)
+title: consume operator - Azure Kusto | Microsoft Docs
 description: This article describes consume operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

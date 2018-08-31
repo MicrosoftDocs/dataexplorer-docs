@@ -1,5 +1,5 @@
 ---
-title: row_cumsum() (Azure Kusto)
+title: row_cumsum() - Azure Kusto | Microsoft Docs
 description: This article describes row_cumsum() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: Query statements (Azure Kusto)
+title: Query statements - Azure Kusto | Microsoft Docs
 description: This article describes Query statements in Azure Kusto.
 author: orspod
 ms.author: v-orspod

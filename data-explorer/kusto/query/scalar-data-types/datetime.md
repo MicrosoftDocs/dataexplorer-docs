@@ -1,5 +1,5 @@
 ---
-title: The datetime data type (Azure Kusto)
+title: The datetime data type - Azure Kusto | Microsoft Docs
 description: This article describes The datetime data type in Azure Kusto.
 author: orspod
 ms.author: v-orspod

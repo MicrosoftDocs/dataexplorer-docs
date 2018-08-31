@@ -1,5 +1,5 @@
 ---
-title: tan() (Azure Kusto)
+title: tan() - Azure Kusto | Microsoft Docs
 description: This article describes tan() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

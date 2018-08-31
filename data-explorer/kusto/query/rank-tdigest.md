@@ -1,5 +1,5 @@
 ---
-title: rank_tdigest() (Azure Kusto)
+title: rank_tdigest() - Azure Kusto | Microsoft Docs
 description: This article describes rank_tdigest() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

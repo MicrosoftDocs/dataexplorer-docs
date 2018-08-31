@@ -1,5 +1,5 @@
 ---
-title: format_datetime() (Azure Kusto)
+title: format_datetime() - Azure Kusto | Microsoft Docs
 description: This article describes format_datetime() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

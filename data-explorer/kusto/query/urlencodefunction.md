@@ -1,5 +1,5 @@
 ---
-title: url_encode() (Azure Kusto)
+title: url_encode() - Azure Kusto | Microsoft Docs
 description: This article describes url_encode() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

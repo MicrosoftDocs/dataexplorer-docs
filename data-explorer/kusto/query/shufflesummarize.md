@@ -1,5 +1,5 @@
 ---
-title: Shuffle Summarize (Azure Kusto)
+title: Shuffle Summarize - Azure Kusto | Microsoft Docs
 description: This article describes Shuffle Summarize in Azure Kusto.
 author: orspod
 ms.author: v-orspod

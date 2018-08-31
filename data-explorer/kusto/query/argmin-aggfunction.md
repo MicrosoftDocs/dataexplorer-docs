@@ -1,5 +1,5 @@
 ---
-title: argmin() (aggregation function) (Azure Kusto)
+title: argmin() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes argmin() (aggregation function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod

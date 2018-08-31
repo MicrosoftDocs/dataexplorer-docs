@@ -1,5 +1,5 @@
 ---
-title: parse_path() (Azure Kusto)
+title: parse_path() - Azure Kusto | Microsoft Docs
 description: This article describes parse_path() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

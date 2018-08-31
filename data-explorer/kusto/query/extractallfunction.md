@@ -1,5 +1,5 @@
 ---
-title: extractall() (Azure Kusto)
+title: extractall() - Azure Kusto | Microsoft Docs
 description: This article describes extractall() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

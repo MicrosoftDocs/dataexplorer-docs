@@ -1,5 +1,5 @@
 ---
-title: union operator (Azure Kusto)
+title: union operator - Azure Kusto | Microsoft Docs
 description: This article describes union operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

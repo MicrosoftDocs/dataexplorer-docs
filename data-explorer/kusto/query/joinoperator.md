@@ -1,5 +1,5 @@
 ---
-title: join operator (Azure Kusto)
+title: join operator - Azure Kusto | Microsoft Docs
 description: This article describes join operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

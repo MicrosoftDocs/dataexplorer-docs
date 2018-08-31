@@ -1,5 +1,5 @@
 ---
-title: series_multiply() (Azure Kusto)
+title: series_multiply() - Azure Kusto | Microsoft Docs
 description: This article describes series_multiply() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

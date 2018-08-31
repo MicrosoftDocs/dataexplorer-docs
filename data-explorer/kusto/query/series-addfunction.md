@@ -1,5 +1,5 @@
 ---
-title: series_add() (Azure Kusto)
+title: series_add() - Azure Kusto | Microsoft Docs
 description: This article describes series_add() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

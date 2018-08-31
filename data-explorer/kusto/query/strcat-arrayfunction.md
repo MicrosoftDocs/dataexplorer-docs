@@ -1,5 +1,5 @@
 ---
-title: strcat_array() (Azure Kusto)
+title: strcat_array() - Azure Kusto | Microsoft Docs
 description: This article describes strcat_array() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

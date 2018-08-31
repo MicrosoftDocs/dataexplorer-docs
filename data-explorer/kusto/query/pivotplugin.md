@@ -1,5 +1,5 @@
 ---
-title: pivot plugin (Azure Kusto)
+title: pivot plugin - Azure Kusto | Microsoft Docs
 description: This article describes pivot plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod

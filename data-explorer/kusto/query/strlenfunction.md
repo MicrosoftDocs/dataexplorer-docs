@@ -1,5 +1,5 @@
 ---
-title: strlen() (Azure Kusto)
+title: strlen() - Azure Kusto | Microsoft Docs
 description: This article describes strlen() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

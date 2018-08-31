@@ -1,5 +1,5 @@
 ---
-title: case() (Azure Kusto)
+title: case() - Azure Kusto | Microsoft Docs
 description: This article describes case() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

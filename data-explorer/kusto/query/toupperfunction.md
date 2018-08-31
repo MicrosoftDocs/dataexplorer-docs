@@ -1,5 +1,5 @@
 ---
-title: toupper() (Azure Kusto)
+title: toupper() - Azure Kusto | Microsoft Docs
 description: This article describes toupper() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

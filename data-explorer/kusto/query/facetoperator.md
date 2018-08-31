@@ -1,5 +1,5 @@
 ---
-title: facet operator (Azure Kusto)
+title: facet operator - Azure Kusto | Microsoft Docs
 description: This article describes facet operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

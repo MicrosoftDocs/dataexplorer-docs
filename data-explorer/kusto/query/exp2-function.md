@@ -1,5 +1,5 @@
 ---
-title: exp2() (Azure Kusto)
+title: exp2() - Azure Kusto | Microsoft Docs
 description: This article describes exp2() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

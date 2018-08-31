@@ -1,5 +1,5 @@
 ---
-title: pack_array() (Azure Kusto)
+title: pack_array() - Azure Kusto | Microsoft Docs
 description: This article describes pack_array() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

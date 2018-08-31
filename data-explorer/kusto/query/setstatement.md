@@ -1,5 +1,5 @@
 ---
-title: Set statement (Azure Kusto)
+title: Set statement - Azure Kusto | Microsoft Docs
 description: This article describes Set statement in Azure Kusto.
 author: orspod
 ms.author: v-orspod

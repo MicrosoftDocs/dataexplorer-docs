@@ -1,5 +1,5 @@
 ---
-title: series_decompose() (Azure Kusto)
+title: series_decompose() - Azure Kusto | Microsoft Docs
 description: This article describes series_decompose() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

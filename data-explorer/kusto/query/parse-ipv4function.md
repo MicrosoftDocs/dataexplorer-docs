@@ -1,5 +1,5 @@
 ---
-title: parse_ipv4() (Azure Kusto)
+title: parse_ipv4() - Azure Kusto | Microsoft Docs
 description: This article describes parse_ipv4() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

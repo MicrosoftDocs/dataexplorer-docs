@@ -1,5 +1,5 @@
 ---
-title: iff() (Azure Kusto)
+title: iff() - Azure Kusto | Microsoft Docs
 description: This article describes iff() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

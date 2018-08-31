@@ -1,5 +1,5 @@
 ---
-title: make-series operator (Azure Kusto)
+title: make-series operator - Azure Kusto | Microsoft Docs
 description: This article describes make-series operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: series_periods_validate() (Azure Kusto)
+title: series_periods_validate() - Azure Kusto | Microsoft Docs
 description: This article describes series_periods_validate() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

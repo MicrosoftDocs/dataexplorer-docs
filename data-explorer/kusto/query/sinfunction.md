@@ -1,5 +1,5 @@
 ---
-title: sin() (Azure Kusto)
+title: sin() - Azure Kusto | Microsoft Docs
 description: This article describes sin() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

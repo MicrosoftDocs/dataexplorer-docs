@@ -1,5 +1,5 @@
 ---
-title: todouble()/toreal() (Azure Kusto)
+title: todouble()/toreal() - Azure Kusto | Microsoft Docs
 description: This article describes todouble()/toreal() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

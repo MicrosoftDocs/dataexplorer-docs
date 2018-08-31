@@ -1,5 +1,5 @@
 ---
-title: tolower() (Azure Kusto)
+title: tolower() - Azure Kusto | Microsoft Docs
 description: This article describes tolower() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

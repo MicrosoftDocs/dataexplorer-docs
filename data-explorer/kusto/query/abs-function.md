@@ -1,5 +1,5 @@
 ---
-title: abs() (Azure Kusto)
+title: abs() - Azure Kusto | Microsoft Docs
 description: This article describes abs() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

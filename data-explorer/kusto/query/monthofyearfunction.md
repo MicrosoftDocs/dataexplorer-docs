@@ -1,5 +1,5 @@
 ---
-title: monthofyear() (Azure Kusto)
+title: monthofyear() - Azure Kusto | Microsoft Docs
 description: This article describes monthofyear() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

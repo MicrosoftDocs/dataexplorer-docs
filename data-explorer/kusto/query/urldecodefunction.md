@@ -1,5 +1,5 @@
 ---
-title: url_decode() (Azure Kusto)
+title: url_decode() - Azure Kusto | Microsoft Docs
 description: This article describes url_decode() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

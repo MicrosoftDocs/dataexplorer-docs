@@ -1,5 +1,5 @@
 ---
-title: dayofyear() (Azure Kusto)
+title: dayofyear() - Azure Kusto | Microsoft Docs
 description: This article describes dayofyear() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: startofmonth() (Azure Kusto)
+title: startofmonth() - Azure Kusto | Microsoft Docs
 description: This article describes startofmonth() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

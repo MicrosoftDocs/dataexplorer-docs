@@ -1,5 +1,5 @@
 ---
-title: cosmosdb_sql_request plugin (Azure Kusto)
+title: cosmosdb_sql_request plugin - Azure Kusto | Microsoft Docs
 description: This article describes cosmosdb_sql_request plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod

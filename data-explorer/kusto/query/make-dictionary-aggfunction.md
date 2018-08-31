@@ -1,5 +1,5 @@
 ---
-title: make_dictionary() (aggregation function) (Azure Kusto)
+title: make_dictionary() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes make_dictionary() (aggregation function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod

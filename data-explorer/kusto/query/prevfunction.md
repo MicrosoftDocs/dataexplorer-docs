@@ -1,5 +1,5 @@
 ---
-title: prev() (Azure Kusto)
+title: prev() - Azure Kusto | Microsoft Docs
 description: This article describes prev() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

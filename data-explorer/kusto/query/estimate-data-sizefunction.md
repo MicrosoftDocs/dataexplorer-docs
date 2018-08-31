@@ -1,5 +1,5 @@
 ---
-title: estimate_data_size() (Azure Kusto)
+title: estimate_data_size() - Azure Kusto | Microsoft Docs
 description: This article describes estimate_data_size() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

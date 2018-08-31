@@ -1,5 +1,5 @@
 ---
-title: variancep() (aggregation function) (Azure Kusto)
+title: variancep() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes variancep() (aggregation function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod

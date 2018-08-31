@@ -1,5 +1,5 @@
 ---
-title: series_fir() (Azure Kusto)
+title: series_fir() - Azure Kusto | Microsoft Docs
 description: This article describes series_fir() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

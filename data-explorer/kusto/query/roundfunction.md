@@ -1,5 +1,5 @@
 ---
-title: round() (Azure Kusto)
+title: round() - Azure Kusto | Microsoft Docs
 description: This article describes round() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

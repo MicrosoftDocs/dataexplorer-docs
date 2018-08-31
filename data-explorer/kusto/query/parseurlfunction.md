@@ -1,5 +1,5 @@
 ---
-title: parse_url() (Azure Kusto)
+title: parse_url() - Azure Kusto | Microsoft Docs
 description: This article describes parse_url() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

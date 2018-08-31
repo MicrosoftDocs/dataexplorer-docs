@@ -1,5 +1,5 @@
 ---
-title: atan2() (Azure Kusto)
+title: atan2() - Azure Kusto | Microsoft Docs
 description: This article describes atan2() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

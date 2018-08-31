@@ -1,5 +1,5 @@
 ---
-title: Query best practices  (Azure Kusto)
+title: Query best practices  - Azure Kusto | Microsoft Docs
 description: This article describes Query best practices  in Azure Kusto.
 author: orspod
 ms.author: v-orspod

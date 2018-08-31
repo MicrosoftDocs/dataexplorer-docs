@@ -1,5 +1,5 @@
 ---
-title: make_datetime() (Azure Kusto)
+title: make_datetime() - Azure Kusto | Microsoft Docs
 description: This article describes make_datetime() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

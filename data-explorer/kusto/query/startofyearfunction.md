@@ -1,5 +1,5 @@
 ---
-title: startofyear() (Azure Kusto)
+title: startofyear() - Azure Kusto | Microsoft Docs
 description: This article describes startofyear() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

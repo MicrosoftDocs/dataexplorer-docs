@@ -1,5 +1,5 @@
 ---
-title: externaldata operator (Azure Kusto)
+title: externaldata operator - Azure Kusto | Microsoft Docs
 description: This article describes externaldata operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

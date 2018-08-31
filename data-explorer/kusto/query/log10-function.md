@@ -1,5 +1,5 @@
 ---
-title: log10() (Azure Kusto)
+title: log10() - Azure Kusto | Microsoft Docs
 description: This article describes log10() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

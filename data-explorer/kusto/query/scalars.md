@@ -1,5 +1,5 @@
 ---
-title: Scalar types and functions (Azure Kusto)
+title: Scalar types and functions - Azure Kusto | Microsoft Docs
 description: This article describes Scalar types and functions in Azure Kusto.
 author: orspod
 ms.author: v-orspod
@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # Scalar types and functions
 
-[Kusto](https://kusdoc2.azurewebsites.net/docs/index.html) is a powerful database service optimized for searches over large logs of diagnostic telemetry. Scalar expressions are part of the [Kusto query language](./query-essentials/overview.md). 
+[Kusto](https://kusdoc2.azurewebsites.net/docs/index.html) is a powerful database service optimized for searches over large logs of diagnostic telemetry. Scalar expressions are part of the [Kusto query language](./essentials/overview.md). 
 
 "Scalar" means values like numbers or strings that can occupy a single cell in a Kusto table. Scalar expressions are built from scalar functions and operators and evaluate to scalar values. `sqrt(score)/100 > target+2` is a scalar expression.
 

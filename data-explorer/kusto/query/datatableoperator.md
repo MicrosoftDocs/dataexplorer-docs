@@ -1,5 +1,5 @@
 ---
-title: datatable operator (Azure Kusto)
+title: datatable operator - Azure Kusto | Microsoft Docs
 description: This article describes datatable operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

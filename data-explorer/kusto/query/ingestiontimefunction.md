@@ -1,5 +1,5 @@
 ---
-title: ingestion_time() (Azure Kusto)
+title: ingestion_time() - Azure Kusto | Microsoft Docs
 description: This article describes ingestion_time() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

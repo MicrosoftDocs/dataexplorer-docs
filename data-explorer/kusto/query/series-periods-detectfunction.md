@@ -1,5 +1,5 @@
 ---
-title: series_periods_detect() (Azure Kusto)
+title: series_periods_detect() - Azure Kusto | Microsoft Docs
 description: This article describes series_periods_detect() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

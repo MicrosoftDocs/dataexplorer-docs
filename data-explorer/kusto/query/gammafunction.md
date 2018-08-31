@@ -1,5 +1,5 @@
 ---
-title: gamma() (Azure Kusto)
+title: gamma() - Azure Kusto | Microsoft Docs
 description: This article describes gamma() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

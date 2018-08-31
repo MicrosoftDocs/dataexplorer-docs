@@ -1,5 +1,5 @@
 ---
-title: point() (Azure Kusto)
+title: point() - Azure Kusto | Microsoft Docs
 description: This article describes point() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: coalesce() (Azure Kusto)
+title: coalesce() - Azure Kusto | Microsoft Docs
 description: This article describes coalesce() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

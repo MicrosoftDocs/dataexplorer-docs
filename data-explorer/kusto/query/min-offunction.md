@@ -1,5 +1,5 @@
 ---
-title: min_of() (Azure Kusto)
+title: min_of() - Azure Kusto | Microsoft Docs
 description: This article describes min_of() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

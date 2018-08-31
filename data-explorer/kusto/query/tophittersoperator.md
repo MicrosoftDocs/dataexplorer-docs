@@ -1,5 +1,5 @@
 ---
-title: top-hitters operator (Azure Kusto)
+title: top-hitters operator - Azure Kusto | Microsoft Docs
 description: This article describes top-hitters operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

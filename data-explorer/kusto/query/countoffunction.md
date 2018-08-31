@@ -1,5 +1,5 @@
 ---
-title: countof() (Azure Kusto)
+title: countof() - Azure Kusto | Microsoft Docs
 description: This article describes countof() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

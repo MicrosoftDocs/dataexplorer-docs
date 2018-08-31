@@ -1,5 +1,5 @@
 ---
-title: Batches (Azure Kusto)
+title: Batches - Azure Kusto | Microsoft Docs
 description: This article describes Batches in Azure Kusto.
 author: orspod
 ms.author: v-orspod

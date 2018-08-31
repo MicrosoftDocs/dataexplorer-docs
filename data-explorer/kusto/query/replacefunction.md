@@ -1,5 +1,5 @@
 ---
-title: replace() (Azure Kusto)
+title: replace() - Azure Kusto | Microsoft Docs
 description: This article describes replace() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

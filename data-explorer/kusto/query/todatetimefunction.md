@@ -1,5 +1,5 @@
 ---
-title: todatetime() (Azure Kusto)
+title: todatetime() - Azure Kusto | Microsoft Docs
 description: This article describes todatetime() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

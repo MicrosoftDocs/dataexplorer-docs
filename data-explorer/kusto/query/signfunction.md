@@ -1,5 +1,5 @@
 ---
-title: sign() (Azure Kusto)
+title: sign() - Azure Kusto | Microsoft Docs
 description: This article describes sign() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

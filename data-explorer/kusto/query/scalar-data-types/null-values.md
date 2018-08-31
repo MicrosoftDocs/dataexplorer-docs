@@ -1,5 +1,5 @@
 ---
-title: Null Values (Azure Kusto)
+title: Null Values - Azure Kusto | Microsoft Docs
 description: This article describes Null Values in Azure Kusto.
 author: orspod
 ms.author: v-orspod

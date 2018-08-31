@@ -1,5 +1,5 @@
 ---
-title: endofday() (Azure Kusto)
+title: endofday() - Azure Kusto | Microsoft Docs
 description: This article describes endofday() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

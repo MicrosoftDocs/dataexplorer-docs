@@ -1,5 +1,5 @@
 ---
-title: binary_xor() (Azure Kusto)
+title: binary_xor() - Azure Kusto | Microsoft Docs
 description: This article describes binary_xor() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

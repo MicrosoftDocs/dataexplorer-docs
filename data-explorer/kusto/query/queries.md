@@ -1,5 +1,5 @@
 ---
-title: Queries (Azure Kusto)
+title: Queries - Azure Kusto | Microsoft Docs
 description: This article describes Queries in Azure Kusto.
 author: orspod
 ms.author: v-orspod
@@ -43,6 +43,6 @@ In a few cases, the parameters are the names of input columns, and in a few case
 the parameter is a second table. The result of a query is always a table,
 even if it only has one column and one row.
 
-# Reference: Query operators
+## Reference: Query operators
 
 > `T` is used in query examples below to denote the preceding pipeline or source table.

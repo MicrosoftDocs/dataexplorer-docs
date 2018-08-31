@@ -1,4 +1,4 @@
-# [Kusto query language](./query-essentials/overview.md)
+# [Kusto query language](./essentials/overview.md)
 
 # [Schema entities](./schema-entities/overview.md)
 ## [Entity names](./schema-entities/entity-names.md)

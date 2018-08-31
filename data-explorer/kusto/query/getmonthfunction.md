@@ -1,5 +1,5 @@
 ---
-title: getmonth() (Azure Kusto)
+title: getmonth() - Azure Kusto | Microsoft Docs
 description: This article describes getmonth() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

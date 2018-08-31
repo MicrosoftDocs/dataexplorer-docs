@@ -1,5 +1,5 @@
 ---
-title: rand() (Azure Kusto)
+title: rand() - Azure Kusto | Microsoft Docs
 description: This article describes rand() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: hash_sha256() (Azure Kusto)
+title: hash_sha256() - Azure Kusto | Microsoft Docs
 description: This article describes hash_sha256() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

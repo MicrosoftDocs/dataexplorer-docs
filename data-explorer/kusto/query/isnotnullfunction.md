@@ -1,5 +1,5 @@
 ---
-title: isnotnull() (Azure Kusto)
+title: isnotnull() - Azure Kusto | Microsoft Docs
 description: This article describes isnotnull() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: next() (Azure Kusto)
+title: next() - Azure Kusto | Microsoft Docs
 description: This article describes next() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

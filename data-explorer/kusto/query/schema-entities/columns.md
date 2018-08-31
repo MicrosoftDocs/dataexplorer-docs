@@ -1,5 +1,5 @@
 ---
-title: Columns (Azure Kusto)
+title: Columns - Azure Kusto | Microsoft Docs
 description: This article describes Columns in Azure Kusto.
 author: orspod
 ms.author: v-orspod

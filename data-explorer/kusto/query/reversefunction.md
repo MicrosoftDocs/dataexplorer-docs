@@ -1,5 +1,5 @@
 ---
-title: reverse() (Azure Kusto)
+title: reverse() - Azure Kusto | Microsoft Docs
 description: This article describes reverse() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

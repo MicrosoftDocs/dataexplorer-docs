@@ -1,5 +1,5 @@
 ---
-title: Datetime / timespan arithmetic (Azure Kusto)
+title: Datetime / timespan arithmetic - Azure Kusto | Microsoft Docs
 description: This article describes Datetime / timespan arithmetic in Azure Kusto.
 author: orspod
 ms.author: v-orspod

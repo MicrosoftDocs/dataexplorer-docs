@@ -1,5 +1,5 @@
 ---
-title: sqrt() (Azure Kusto)
+title: sqrt() - Azure Kusto | Microsoft Docs
 description: This article describes sqrt() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: As operator (Azure Kusto)
+title: As operator - Azure Kusto | Microsoft Docs
 description: This article describes As operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

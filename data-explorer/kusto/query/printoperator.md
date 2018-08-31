@@ -1,5 +1,5 @@
 ---
-title: print operator (Azure Kusto)
+title: print operator - Azure Kusto | Microsoft Docs
 description: This article describes print operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

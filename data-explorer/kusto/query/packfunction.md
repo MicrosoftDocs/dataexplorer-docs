@@ -1,5 +1,5 @@
 ---
-title: pack() (Azure Kusto)
+title: pack() - Azure Kusto | Microsoft Docs
 description: This article describes pack() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

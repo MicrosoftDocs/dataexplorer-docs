@@ -1,5 +1,5 @@
 ---
-title: project-away operator (Azure Kusto)
+title: project-away operator - Azure Kusto | Microsoft Docs
 description: This article describes project-away operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

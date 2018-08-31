@@ -1,5 +1,5 @@
 ---
-title: The int data type (Azure Kusto)
+title: The int data type - Azure Kusto | Microsoft Docs
 description: This article describes The int data type in Azure Kusto.
 author: orspod
 ms.author: v-orspod

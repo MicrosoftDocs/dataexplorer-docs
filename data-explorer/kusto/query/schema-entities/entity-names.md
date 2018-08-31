@@ -1,5 +1,5 @@
 ---
-title: Entity names (Azure Kusto)
+title: Entity names - Azure Kusto | Microsoft Docs
 description: This article describes Entity names in Azure Kusto.
 author: orspod
 ms.author: v-orspod

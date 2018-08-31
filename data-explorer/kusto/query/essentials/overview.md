@@ -1,5 +1,5 @@
 ---
-title: Kusto query language (Azure Kusto)
+title: Kusto query language - Azure Kusto | Microsoft Docs
 description: This article describes Kusto query language in Azure Kusto.
 author: orspod
 ms.author: v-orspod

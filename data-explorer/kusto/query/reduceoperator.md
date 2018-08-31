@@ -1,5 +1,5 @@
 ---
-title: reduce operator (Azure Kusto)
+title: reduce operator - Azure Kusto | Microsoft Docs
 description: This article describes reduce operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

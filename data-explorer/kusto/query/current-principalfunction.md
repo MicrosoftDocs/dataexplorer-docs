@@ -1,5 +1,5 @@
 ---
-title: current_principal() (Azure Kusto)
+title: current_principal() - Azure Kusto | Microsoft Docs
 description: This article describes current_principal() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: Joining within time window (Azure Kusto)
+title: Joining within time window - Azure Kusto | Microsoft Docs
 description: This article describes Joining within time window in Azure Kusto.
 author: orspod
 ms.author: v-orspod

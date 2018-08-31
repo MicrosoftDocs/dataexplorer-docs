@@ -1,5 +1,5 @@
 ---
-title: count operator (Azure Kusto)
+title: count operator - Azure Kusto | Microsoft Docs
 description: This article describes count operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

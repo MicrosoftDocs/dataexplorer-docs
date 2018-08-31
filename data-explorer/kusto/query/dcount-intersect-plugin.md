@@ -1,5 +1,5 @@
 ---
-title: dcount_intersect plugin (Azure Kusto)
+title: dcount_intersect plugin - Azure Kusto | Microsoft Docs
 description: This article describes dcount_intersect plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod

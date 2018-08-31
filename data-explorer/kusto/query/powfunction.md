@@ -1,5 +1,5 @@
 ---
-title: pow() (Azure Kusto)
+title: pow() - Azure Kusto | Microsoft Docs
 description: This article describes pow() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

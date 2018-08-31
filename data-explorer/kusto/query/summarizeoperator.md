@@ -1,5 +1,5 @@
 ---
-title: summarize operator (Azure Kusto)
+title: summarize operator - Azure Kusto | Microsoft Docs
 description: This article describes summarize operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

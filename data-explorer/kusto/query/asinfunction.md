@@ -1,5 +1,5 @@
 ---
-title: asin() (Azure Kusto)
+title: asin() - Azure Kusto | Microsoft Docs
 description: This article describes asin() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

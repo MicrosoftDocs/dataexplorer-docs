@@ -1,5 +1,5 @@
 ---
-title: stdevp() (aggregation function) (Azure Kusto)
+title: stdevp() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes stdevp() (aggregation function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod

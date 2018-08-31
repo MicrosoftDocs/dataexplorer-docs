@@ -1,5 +1,5 @@
 ---
-title: dayofmonth() (Azure Kusto)
+title: dayofmonth() - Azure Kusto | Microsoft Docs
 description: This article describes dayofmonth() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

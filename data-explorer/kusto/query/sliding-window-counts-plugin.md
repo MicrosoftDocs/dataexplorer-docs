@@ -1,5 +1,5 @@
 ---
-title: sliding_window_counts plugin (Azure Kusto)
+title: sliding_window_counts plugin - Azure Kusto | Microsoft Docs
 description: This article describes sliding_window_counts plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod

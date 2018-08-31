@@ -1,5 +1,5 @@
 ---
-title: Broadcast Join (Azure Kusto)
+title: Broadcast Join - Azure Kusto | Microsoft Docs
 description: This article describes Broadcast Join in Azure Kusto.
 author: orspod
 ms.author: v-orspod

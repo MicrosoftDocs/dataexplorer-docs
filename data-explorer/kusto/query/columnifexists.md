@@ -1,5 +1,5 @@
 ---
-title: columnifexists() (Azure Kusto)
+title: columnifexists() - Azure Kusto | Microsoft Docs
 description: This article describes columnifexists() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

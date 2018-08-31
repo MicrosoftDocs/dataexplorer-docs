@@ -1,5 +1,5 @@
 ---
-title: ago() (Azure Kusto)
+title: ago() - Azure Kusto | Microsoft Docs
 description: This article describes ago() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

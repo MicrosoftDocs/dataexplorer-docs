@@ -1,5 +1,5 @@
 ---
-title: project operator (Azure Kusto)
+title: project operator - Azure Kusto | Microsoft Docs
 description: This article describes project operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: argmax() (aggregation function) (Azure Kusto)
+title: argmax() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes argmax() (aggregation function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod

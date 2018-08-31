@@ -1,5 +1,5 @@
 ---
-title: distance() (Azure Kusto)
+title: distance() - Azure Kusto | Microsoft Docs
 description: This article describes distance() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: sample operator (Azure Kusto)
+title: sample operator - Azure Kusto | Microsoft Docs
 description: This article describes sample operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

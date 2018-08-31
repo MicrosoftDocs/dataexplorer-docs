@@ -1,5 +1,5 @@
 ---
-title: isfinite() (Azure Kusto)
+title: isfinite() - Azure Kusto | Microsoft Docs
 description: This article describes isfinite() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

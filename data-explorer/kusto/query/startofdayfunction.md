@@ -1,5 +1,5 @@
 ---
-title: startofday() (Azure Kusto)
+title: startofday() - Azure Kusto | Microsoft Docs
 description: This article describes startofday() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

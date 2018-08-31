@@ -1,5 +1,5 @@
 ---
-title: degrees() (Azure Kusto)
+title: degrees() - Azure Kusto | Microsoft Docs
 description: This article describes degrees() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

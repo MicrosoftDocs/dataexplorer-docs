@@ -1,5 +1,5 @@
 ---
-title: Machine Learning and Time Series Analysis  (Azure Kusto)
+title: Machine Learning and Time Series Analysis  - Azure Kusto | Microsoft Docs
 description: This article describes Machine Learning and Time Series Analysis  in Azure Kusto.
 author: orspod
 ms.author: v-orspod

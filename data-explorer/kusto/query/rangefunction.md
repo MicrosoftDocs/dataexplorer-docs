@@ -1,5 +1,5 @@
 ---
-title: range() (Azure Kusto)
+title: range() - Azure Kusto | Microsoft Docs
 description: This article describes range() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

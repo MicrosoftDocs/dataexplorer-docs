@@ -1,5 +1,5 @@
 ---
-title: activity_counts_metrics plugin (Azure Kusto)
+title: activity_counts_metrics plugin - Azure Kusto | Microsoft Docs
 description: This article describes activity_counts_metrics plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod

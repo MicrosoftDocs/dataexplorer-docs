@@ -1,5 +1,5 @@
 ---
-title: bin() (Azure Kusto)
+title: bin() - Azure Kusto | Microsoft Docs
 description: This article describes bin() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

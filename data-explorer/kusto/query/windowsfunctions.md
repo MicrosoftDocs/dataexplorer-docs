@@ -1,5 +1,5 @@
 ---
-title: Window functions (Azure Kusto)
+title: Window functions - Azure Kusto | Microsoft Docs
 description: This article describes Window functions in Azure Kusto.
 author: orspod
 ms.author: v-orspod

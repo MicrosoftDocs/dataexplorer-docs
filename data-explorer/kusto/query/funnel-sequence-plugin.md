@@ -1,5 +1,5 @@
 ---
-title: funnel_sequence plugin (Azure Kusto)
+title: funnel_sequence plugin - Azure Kusto | Microsoft Docs
 description: This article describes funnel_sequence plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod

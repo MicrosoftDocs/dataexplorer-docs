@@ -1,5 +1,5 @@
 ---
-title: floor() (Azure Kusto)
+title: floor() - Azure Kusto | Microsoft Docs
 description: This article describes floor() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

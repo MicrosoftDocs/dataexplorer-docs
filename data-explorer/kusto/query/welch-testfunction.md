@@ -1,5 +1,5 @@
 ---
-title: welch_test() (Azure Kusto)
+title: welch_test() - Azure Kusto | Microsoft Docs
 description: This article describes welch_test() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

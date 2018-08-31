@@ -1,5 +1,5 @@
 ---
-title: series_fill_backward() (Azure Kusto)
+title: series_fill_backward() - Azure Kusto | Microsoft Docs
 description: This article describes series_fill_backward() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: strcat_delim() (Azure Kusto)
+title: strcat_delim() - Azure Kusto | Microsoft Docs
 description: This article describes strcat_delim() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

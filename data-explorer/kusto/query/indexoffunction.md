@@ -1,5 +1,5 @@
 ---
-title: indexof() (Azure Kusto)
+title: indexof() - Azure Kusto | Microsoft Docs
 description: This article describes indexof() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

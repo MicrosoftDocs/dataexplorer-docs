@@ -1,5 +1,5 @@
 ---
-title: totimespan() (Azure Kusto)
+title: totimespan() - Azure Kusto | Microsoft Docs
 description: This article describes totimespan() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

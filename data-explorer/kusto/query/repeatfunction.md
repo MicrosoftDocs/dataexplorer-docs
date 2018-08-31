@@ -1,5 +1,5 @@
 ---
-title: repeat() (Azure Kusto)
+title: repeat() - Azure Kusto | Microsoft Docs
 description: This article describes repeat() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

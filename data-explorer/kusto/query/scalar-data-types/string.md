@@ -1,5 +1,5 @@
 ---
-title: The string data type (Azure Kusto)
+title: The string data type - Azure Kusto | Microsoft Docs
 description: This article describes The string data type in Azure Kusto.
 author: orspod
 ms.author: v-orspod

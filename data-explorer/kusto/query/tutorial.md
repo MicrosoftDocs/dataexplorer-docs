@@ -1,5 +1,5 @@
 ---
-title: Tutorial (Azure Kusto)
+title: Tutorial - Azure Kusto | Microsoft Docs
 description: This article describes Tutorial in Azure Kusto.
 author: orspod
 ms.author: v-orspod
@@ -12,7 +12,7 @@ ms.date: 09/24/2018
 
 Kusto is a database optimised for diagnostic search through large volumes of related items, and in particular, diagnostic work with telemetry logs.
 
-[More information about the query language](./query-essentials/overview.md).
+[More information about the query language](./essentials/overview.md).
  
 Let's take a walk through some basic queries to get you started.
 

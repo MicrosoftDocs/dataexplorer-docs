@@ -1,5 +1,5 @@
 ---
-title: tobool() (Azure Kusto)
+title: tobool() - Azure Kusto | Microsoft Docs
 description: This article describes tobool() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

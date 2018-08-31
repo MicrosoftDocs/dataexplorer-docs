@@ -1,5 +1,5 @@
 ---
-title: bin_auto() (Azure Kusto)
+title: bin_auto() - Azure Kusto | Microsoft Docs
 description: This article describes bin_auto() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: isinf() (Azure Kusto)
+title: isinf() - Azure Kusto | Microsoft Docs
 description: This article describes isinf() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

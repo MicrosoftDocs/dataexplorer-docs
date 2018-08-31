@@ -1,5 +1,5 @@
 ---
-title: extend operator (Azure Kusto)
+title: extend operator - Azure Kusto | Microsoft Docs
 description: This article describes extend operator in Azure Kusto.
 author: orspod
 ms.author: v-orspod

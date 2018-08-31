@@ -1,5 +1,5 @@
 ---
-title: avg() (aggregation function) (Azure Kusto)
+title: avg() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes avg() (aggregation function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod

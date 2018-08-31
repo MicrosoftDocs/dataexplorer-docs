@@ -1,5 +1,5 @@
 ---
-title: dcountif() (aggregation function) (Azure Kusto)
+title: dcountif() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes dcountif() (aggregation function) in Azure Kusto.
 author: orspod
 ms.author: v-orspod

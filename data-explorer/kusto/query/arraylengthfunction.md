@@ -1,5 +1,5 @@
 ---
-title: array_length() (Azure Kusto)
+title: array_length() - Azure Kusto | Microsoft Docs
 description: This article describes array_length() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

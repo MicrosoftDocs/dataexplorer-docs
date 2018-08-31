@@ -1,5 +1,5 @@
 ---
-title: extractjson() (Azure Kusto)
+title: extractjson() - Azure Kusto | Microsoft Docs
 description: This article describes extractjson() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

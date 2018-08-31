@@ -1,5 +1,5 @@
 ---
-title: zip() (Azure Kusto)
+title: zip() - Azure Kusto | Microsoft Docs
 description: This article describes zip() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

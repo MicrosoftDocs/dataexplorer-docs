@@ -1,5 +1,5 @@
 ---
-title: session_count plugin (Azure Kusto)
+title: session_count plugin - Azure Kusto | Microsoft Docs
 description: This article describes session_count plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: datetime_diff() (Azure Kusto)
+title: datetime_diff() - Azure Kusto | Microsoft Docs
 description: This article describes datetime_diff() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

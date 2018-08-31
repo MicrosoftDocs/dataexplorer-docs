@@ -1,5 +1,5 @@
 ---
-title: preview plugin (Azure Kusto)
+title: preview plugin - Azure Kusto | Microsoft Docs
 description: This article describes preview plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: materialize() (Azure Kusto)
+title: materialize() - Azure Kusto | Microsoft Docs
 description: This article describes materialize() in Azure Kusto.
 author: orspod
 ms.author: v-orspod

@@ -1,5 +1,5 @@
 ---
-title: execute_show_command plugin (Azure Kusto)
+title: execute_show_command plugin - Azure Kusto | Microsoft Docs
 description: This article describes execute_show_command plugin in Azure Kusto.
 author: orspod
 ms.author: v-orspod

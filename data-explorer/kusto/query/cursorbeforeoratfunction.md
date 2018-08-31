@@ -1,5 +1,5 @@
 ---
-title: cursor_before_or_at() (Azure Kusto)
+title: cursor_before_or_at() - Azure Kusto | Microsoft Docs
 description: This article describes cursor_before_or_at() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
