@@ -42,8 +42,6 @@ Expressions bound by let statements can be:
   anonymous function declaration) which is to be bound to the name.
   For example: `let f=(a:int, b:string) { strcat(b, ":", a) }`.
 
-......
-
 Lambda expressions have the following syntax:
 
 [`view`] `(`[*TabularArguments*][`,`][*ScalarArguments*]`)` `{` *FunctionBody* `}`

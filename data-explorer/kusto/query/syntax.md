@@ -110,6 +110,12 @@ Scalar functions can only be accessed in the same cluster. So the following is *
 MyTable | extend CalCol=cluster("OtherCluster").database("OtherDb").MyCalc(Col1, Col2, Col3) | limit 10
 ```
 
+Functions that get one or more table arguments can only be accessed in the same cluster. So the following is **not valid**:
+
+```kusto
+cluster("OtherCluster").database("OtherDb").MyCalc(datatable(x:string, y:string)["x","y"] ) 
+```
+
 The schema of the remote function being called must be known and invariant of its parameters (see also [Cross-cluster queries and schema changes](https://kusdoc2.azurewebsites.net/docs/concepts/crossclusterandschemachanges.html)) . So the following is **not valid**:
 
 Tabular function in `OtherDb`:
