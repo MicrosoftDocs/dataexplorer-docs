@@ -22,9 +22,8 @@ Thus, the following returns a single row full of nulls:
 print bool(null), datetime(null), dynamic(null), guid(null), int(null), long(null), real(null), double(null), time(null)
 ```
 
-<div class='warning'>
-Please note that currently the `string` type doesn't support null values.
-</div>
+> [!WARNING]
+> Please note that currently the `string` type doesn't support null values.
 
 ## Comparing null to something
 

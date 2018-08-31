@@ -26,10 +26,11 @@ The sha256 hash value of the given scalar, encoded as a hex string (a string
 of characters, each two of which represent a single Hex number between 0
 and 255).
 
-<div class='warning'>The algorithm used by this function (SHA256) is guaranteed
-to not be modified in the future, but is very complex to calculate. Users that
-need a "lightweight" hash function for the duration of a single query are advised
-to use the function [hash()](./hashfunction.md) instead.</div>
+> [!WARNING]
+> The algorithm used by this function (SHA256) is guaranteed
+> to not be modified in the future, but is very complex to calculate. Users that
+> need a "lightweight" hash function for the duration of a single query are advised
+> to use the function [hash()](./hashfunction.md) instead.
 
 **Examples**
 

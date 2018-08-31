@@ -75,11 +75,11 @@ SQL Server endpoint:
    cannot be performed, and one should avoid it as much as possible, as secret
    information is sent through Kusto.
 
-<div class='warning'>Connection strings and queries that include confidential
-information or information that should be otherwise guarded should be
-obfuscated so that they'll be ommitted from any Kusto tracing.
-Please see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals) for more details.
-</div>
+> [!WARNING]
+> Connection strings and queries that include confidential
+> information or information that should be otherwise guarded should be
+> obfuscated so that they'll be ommitted from any Kusto tracing.
+> Please see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals) for more details.
 
 **Encryption and server validation**
 

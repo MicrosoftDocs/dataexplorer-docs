@@ -22,13 +22,14 @@ and returns the response as table with one record and two `dynamic` columns:
 The `http_request_post` plugin is similar to `http_request`, but does so by
 sending a POST request.
 
-<div class='warning'>Both plugins are disabled by default to prevent a scenario
-in which somebody sends a Kusto user a link to a query that, when run, sends
-Kusto-stored user data to a foreign web service. Database administrators must
-consider this security aspect before enabling the plugins. In the future Kusto
-will feature a specific policy allowing database admins fine-grained control
-over which external URIs to allow. Until this is done, the recommendation
-is to enable these plugins for testing purposes and testing data only.</div>
+> [!WARNING]
+> Both plugins are disabled by default to prevent a scenario
+> in which somebody sends a Kusto user a link to a query that, when run, sends
+> Kusto-stored user data to a foreign web service. Database administrators must
+> consider this security aspect before enabling the plugins. In the future Kusto
+> will feature a specific policy allowing database admins fine-grained control
+> over which external URIs to allow. Until this is done, the recommendation
+> is to enable these plugins for testing purposes and testing data only.
 
 **Arguments**
 
@@ -61,12 +62,12 @@ scenarios:
    This authentication method mandates HTTPS (Kusto will not send an AAD token
    over an HTTP connection.)
 
-<div class='warning'>Be extra careful not to send secret information such as
-authentication tokens over HTTP connections. Additionally, if the query includes
-such confidential information please make sure that the relevant parts of the
-query text are obfuscated so that they'll be ommitted from any Kusto tracing.
-Please see [obfuscated string literals](./scalar-data-types/string.md#obfuscated-string-literals) for more details.
-</div>
+> [!WARNING]
+> Be extra careful not to send secret information such as
+> authentication tokens over HTTP connections. Additionally, if the query includes
+> such confidential information please make sure that the relevant parts of the
+> query text are obfuscated so that they'll be ommitted from any Kusto tracing.
+> Please see [obfuscated string literals](./scalar-data-types/string.md#obfuscated-string-literals) for more details.
 
 **Restrictions**
 
