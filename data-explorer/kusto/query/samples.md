@@ -14,7 +14,7 @@ ms.date: 09/24/2018
 These samples demonstrate how to use the [Kusto query language](./query-essentials/overview.md). There's also 
 a [tour of the language](./tutorial.md), which is recommended for getting started.
 
-# Display a column chart
+## Display a column chart
 
 Project two or more columns and use them as the x and y axis of a chart:
 
