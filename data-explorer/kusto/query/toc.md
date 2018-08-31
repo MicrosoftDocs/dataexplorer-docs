@@ -1,6 +1,6 @@
-# [Query essentials](./query-essentials/readme.md)
+# [Kusto query language](./query-essentials/overview.md)
 
-# [Schema entities](./schema-entities/readme.md)
+# [Schema entities](./schema-entities/overview.md)
 ## [Entity names](./schema-entities/entity-names.md)
 
 <!-- Enable this section when the actual content is available, blank pages are confusing external customers.
@@ -12,7 +12,7 @@
 ## [Stored functions](./schema-entities/stored-functions.md)
 -->
 
-# [Scalar data types](./scalar-data-types/readme.md)
+# [Scalar data types](./scalar-data-types/overview.md)
 ## [bool](./scalar-data-types/bool.md)
 ## [datetime](./scalar-data-types/datetime.md)
 ## [decimal](./scalar-data-types/decimal.md)

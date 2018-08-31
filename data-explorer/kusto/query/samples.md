@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 # Samples
 
 [Kusto](https://kusdoc2.azurewebsites.net/docs/index.html) is a powerful database service optimized for searches over large logs of diagnostic telemetry. 
-These samples demonstrate how to use the [Kusto query language](./query-essentials/readme.md). There's also 
+These samples demonstrate how to use the [Kusto query language](./query-essentials/overview.md). There's also 
 a [tour of the language](./tutorial.md), which is recommended for getting started.
 
 # Display a column chart

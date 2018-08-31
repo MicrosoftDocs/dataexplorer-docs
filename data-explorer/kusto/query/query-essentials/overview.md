@@ -1,6 +1,6 @@
 ---
-title: Query essentials (Azure Kusto)
-description: This article describes Query essentials in Azure Kusto.
+title: Kusto query language (Azure Kusto)
+description: This article describes Kusto query language in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Query essentials
+# Kusto query language
 
 A Kusto query is a read-only request to process data and return results.
 The request is stated in plain text, using a data-flow model designed to
