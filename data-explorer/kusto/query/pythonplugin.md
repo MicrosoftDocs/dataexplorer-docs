@@ -59,7 +59,7 @@ In the Python code, the following symbols are reserved and hold a special meanin
 
 **Notes**
 
-* The plugin is disabled by default; to enable it please contact [Kusto Ops](http://aka.ms/kustosupport).
+* The plugin is disabled by default; to enable it please contact [Kusto Ops](https://aka.ms/kustosupport).
   
 * For the duration of the preview, the Python service endpoint is on [AML Studio](https://services.azureml.net/quickstart),
   with resources being shared between all Kusto users regardless of the Kusto

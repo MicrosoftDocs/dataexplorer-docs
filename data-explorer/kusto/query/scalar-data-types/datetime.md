@@ -52,7 +52,7 @@ and the [todatetime()](https://kusdoc2.azurewebsites.net/docs/todatetimefunction
 > [!WARNING]
 > It is **strongly recommended** to use only the ISO 8601 formats.
 
-### [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm)
+### [ISO 8601](https://www.iso.org/iso/home/standards/iso8601.htm)
 
 |Format|Example|
 |------|-------|
