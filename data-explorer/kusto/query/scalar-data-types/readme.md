@@ -42,6 +42,7 @@ into an `int` column results in this value.)
 It is not possible to materialize this value explicitly, but one can detect
 whether an expression evaluates to this value by using the `isnull()` function.
 
-<div class="warning">As of this writing, support for the `guid` type is
-incomplete. We strongly recommend that teams use values of type `string`
-instead.</div>
+> [!WARNING]
+> As of this writing, support for the `guid` type is
+> incomplete. We strongly recommend that teams use values of type `string`
+> instead.

@@ -18,13 +18,12 @@ January 1, 0001 A.D. (C.E.) in the GregorianCalendar calendar (excluding ticks t
 For example, a ticks value of 31241376000000000 represents the date, Friday, January 01, 0100 12:00:00 midnight.
 This is sometimes called "a moment in linear time".
 
-<p class="warning">
-A `datetime` value in Kusto is always in the UTC time zone. Displaying `datetime`
-values in other time zones is the responsibility of the user application that
-displays the data, not a property of the data itself. Should time zone values be
-required to be kept as a part of the data, a separate columns should be used
-(providing offset information relative to UTC).
-</p>
+> [!WARNING]
+> A `datetime` value in Kusto is always in the UTC time zone. Displaying `datetime`
+> values in other time zones is the responsibility of the user application that
+> displays the data, not a property of the data itself. Should time zone values be
+> required to be kept as a part of the data, a separate columns should be used
+> (providing offset information relative to UTC).
 
 ## datetime literals
 
@@ -50,7 +49,8 @@ to a `timespan` value of zero.)
 There are several formats for `datetime` that are supported as [datetime() literals](#datetime-literals)
 and the [todatetime()](https://kusdoc2.azurewebsites.net/docs/todatetimefunction.html) function.
 
-<p class="warning">It is **strongly recommended** to use only the ISO 8601 formats.</p>        
+> [!WARNING]
+> It is **strongly recommended** to use only the ISO 8601 formats.
 
 ### [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm)
 

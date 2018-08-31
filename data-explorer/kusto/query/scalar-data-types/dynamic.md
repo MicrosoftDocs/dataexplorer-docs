@@ -60,10 +60,11 @@ value, use the `parsejson` function. For example:
 * `parsejson('{"a":123, "b":"hello", "c":[1,2,3], "d":{}}')` - gives the same
    value as `o` in the example above.
 
-<div class="warning">Note that, unlike JavaScript, JSON mandates the use of double-quote
-(`"`) characters around strings and property-bag property names.
-Therefore, it is generally easier to quote a JSON-encoded string literal by using
-a single-quote (`'`) character.</div>
+> [!WARNING]
+> Note that, unlike JavaScript, JSON mandates the use of double-quote
+> (`"`) characters around strings and property-bag property names.
+> Therefore, it is generally easier to quote a JSON-encoded string literal by using
+> a single-quote (`'`) character.
   
 The following example shows how one might define a table that holds a `dynamic` column (as well as
 a `datetime` column) and then ingest into it a single record. it also demonstrates how one
