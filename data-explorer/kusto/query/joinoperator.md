@@ -112,7 +112,7 @@ Events
 
 [More about this example](./samples.md#activities).
 
-# Join flavors
+## Join flavors
 
 The exact flavor of the join operator is specified with the kind keyword. As of today, Kusto
 supports the following flavors of the join operator: 
@@ -130,7 +130,7 @@ supports the following flavors of the join operator:
 |[`rightsemi`](#right-semi-join)|Right semi join|
 
  
-## Default join flavor
+### Default join flavor
     
     X | join Y on Key
     X | join kind=innerunique Y on Key
@@ -199,7 +199,7 @@ X | join Y on Key
  
 (Historically, this was the first implementation of the join supported by the initial version of Kusto; it is useful in the typical log/trace analysis scenarios where we want to correlate two events (each matching some filtering criterion) under the same correlation ID, and get back all appearances of the phenomenon we're looking for, ignoring multiple appearances of the contributing trace records.)
  
-## Inner join
+### Inner join
 
 This is the standard inner join as known from the SQL world. Output record is produced whenever a record on the left side has the same join key as the record on the right side. 
  
@@ -230,7 +230,7 @@ X | join kind=inner Y on Key
 
 Note that (b,10) coming from the right side was joined twice: with both (b,2) and (b,3) on the left; also (c,4) on the left was joined twice: with both (c,20) and (c,30) on the right. 
 
-## Left outer join 
+### Left outer join 
 
 The result of a left outer join for tables X and Y always contains all records of the left table (X), even if the join condition does not find any matching record in the right table (Y). 
  
@@ -261,7 +261,7 @@ X | join kind=leftouter Y on Key
 |a|1|||
 
  
-## Right outer join 
+### Right outer join 
 
 Resembles the left outer join, but the treatment of the tables is reversed. 
  
@@ -292,7 +292,7 @@ X | join kind=rightouter Y on Key
 |||d|40|
 
  
-## Full outer join 
+### Full outer join 
 
 Conceptually, a full outer join combines the effect of applying both left and right outer joins. Where records in the joined tables do not match, the result set will have NULL values for every column of the table that lacks a matching row. For those records that do match, a single row will be produced in the result set (containing fields populated from both tables). 
  
@@ -324,7 +324,7 @@ X | join kind=fullouter Y on Key
 |a|1|||
 
  
-## Left anti join
+### Left anti join
 
 Left anti join returns all records from the left side that do not match any record from the right side. 
  
@@ -352,7 +352,7 @@ X | join kind=leftanti Y on Key
 
 Anti-join models the "NOT IN" query. 
 
-## Right anti join
+### Right anti join
 
 Right anti join returns all records from the right side that do not match any record from the left side. 
  
@@ -380,7 +380,7 @@ X | join kind=rightanti Y on Key
 
 Anti-join models the "NOT IN" query. 
 
-## Left semi join
+### Left semi join
 
 Left semi join returns all records from the left side that match a record from the right side. Only columns from the left side are returned. 
 
@@ -408,7 +408,7 @@ X | join kind=leftsemi Y on Key
 |b|2|
 |c|4|
 
-## Right semi join
+### Right semi join
 
 Right semi join returns all records from the right side that match a record from the left side. Only columns from the right side are returned. 
 
@@ -437,14 +437,14 @@ X | join kind=rightsemi Y on Key
 |c|30|
 
 
-## Cross join
+### Cross join
 
 Kusto doesn't natively provide a cross-join flavor (i.e., you can't mark the operator with `kind=cross`).
 It isn't difficult to simulate this, however, by coming up with a dummy key:
 
     X | extend dummy=1 | join kind=inner (Y | extend dummy=1) on dummy
 
-# Join hints
+## Join hints
 
 The `join` operator supports a number of hints that control the way a query executes.
 These do not change the semantic of `join`, but may affect its performance.

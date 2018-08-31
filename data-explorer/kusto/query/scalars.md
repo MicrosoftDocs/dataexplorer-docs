@@ -1,6 +1,6 @@
 ---
-title: qScalar types and functions (Azure Kusto)
-description: This article describes qScalar types and functions in Azure Kusto.
+title: Scalar types and functions (Azure Kusto)
+description: This article describes Scalar types and functions in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-q# Scalar types and functions
+# Scalar types and functions
 
 [Kusto](https://kusdoc2.azurewebsites.net/docs/index.html) is a powerful database service optimized for searches over large logs of diagnostic telemetry. Scalar expressions are part of the [Kusto query language](./query-essentials/readme.md). 
 
@@ -18,9 +18,9 @@ q# Scalar types and functions
 
 Scalar expressions are distinct from [queries](./queries.md), whose results are tables.
 
-# Scalar Types
+## Scalar Types
 
-# Scalar comparisons
+## Scalar comparisons
 
 ||
 ---|---
@@ -33,6 +33,6 @@ Scalar expressions are distinct from [queries](./queries.md), whose results are 
 `in`| Right operand is a (dynamic) array and left operand is equal to one of its elements.
 `!in`| Right operand is a (dynamic) array and left operand is not equal to any of its elements.
 
-# Reference: scalar functions
+## Reference: scalar functions
 
 "Scalar" denotes values that can occupy a single cell in a Kusto table. (Scalar expressions are distinct from [queries](./queries.md), whose results are tables.)

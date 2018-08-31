@@ -1,6 +1,6 @@
 ---
-title: #getmonth (Azure Kusto)
-description: This article describes #getmonth in Azure Kusto.
+title: getmonth() (Azure Kusto)
+description: This article describes getmonth() in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-## getmonth
+# getmonth()
 
 Get the month number (1-12) from a datetime.
 

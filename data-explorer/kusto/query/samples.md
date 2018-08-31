@@ -34,9 +34,8 @@ StormEvents
 ![](./Images/samples/060.png) 
 
 
-
 <a name="activities"></a>
-# Get sessions from start and stop events
+## Get sessions from start and stop events
 
 Let's suppose we have a log of events, in which some events mark the start or end of an extended activity or session. 
 
@@ -186,7 +185,7 @@ on UnitOfWorkId
 ```
 
 <a name="concurrent-activities"><a/>
-# Chart concurrent sessions over time
+## Chart concurrent sessions over time
 
 Suppose we have a table of activities with their start and end times.  We'd like to see a chart over time that shows how many are running concurrently at any time.
 
@@ -254,7 +253,7 @@ X
 
 This can be rendered as a bar chart or time chart.
 
-# Introduce null bins into summarize
+## Introduce null bins into summarize
 
 When the `summarize` operator is applied over a group key that consists of a
 `datetime` column, one normally "bins" those values to fixed-width bins.
@@ -306,7 +305,7 @@ Here's a step-by-step explanation of the query above:
    (namely, the null bin rows). This ensure that the output has one row per bin,
    whose value is either zero or the original count.  
 
-# Get more out of your data in Kusto using Machine Learning 
+## Get more out of your data in Kusto using Machine Learning 
 
 There are many interesting use cases for leveraging machine learning algorithms and derive interesting insights out of telemetry data. While often these algorithms require a very structured dataset as their input, the raw log data will usually not match the required structure and size. For example, the anomaly detection service published on Azure ML market place, requires a dataset which contains a fixed interval time series column and a single numeric column to evaluate for anomalies. This is where you can use Kusto powerful query engine to produce the necessary dataset from the raw logs data. 
 
@@ -382,7 +381,7 @@ Logs
 |7124|26.64|InferenceAlgorithmExecutor|DB4|Unexpected Inference System error...
 |5112|19.11|InferenceAlgorithmExecutor|*|Unexpected Inference System error... 
 
-# Mapping values from one set to another
+## Mapping values from one set to another
 
 A common use-case is using static mapping of values that can help in adopting results into more presentable way.  
 For example, consider having next table. DeviceModel  specifies a model of the device, which is not a very convenient form of referencing to the device name.â€¯ 
@@ -405,7 +404,7 @@ A better representation may be:
 
 The two approaches below demonstrate how this can be achieved.â€¯ 
 
-## Mapping using dynamic dictionary
+### Mapping using dynamic dictionary
 
 The approach below shows how the mapping can be achieved using a dynamic dictionary and dynamic accessors.
 
@@ -439,7 +438,7 @@ Source
 
 
 
-## Mapping using static table
+### Mapping using static table
 
 The approach below shows how the mapping can be achieved using a persistent table and join operator.
  
@@ -486,7 +485,7 @@ Result:
 |iPhoneâ€¯6 |55 
 |iPhone5 |66 
 
-# Creating and using query-time dimension tables
+## Creating and using query-time dimension tables
 
 In many cases one wants to join the results of a query with some ad-hoc dimension
 table that is not stored in the database. It is possible to define an expression
@@ -526,7 +525,7 @@ JobHistory
   | project JobName, StartTime, ExecutionTimeSpan, ResultString, ResultMessage
 ```
 
-# Retrieving the latest (by timestamp) records per identity
+## Retrieving the latest (by timestamp) records per identity
 
 Suppose you have a table that includes an `id` column (identifying the entity
 with which each row is associated, such as a User Id or a Node Id) and a `timestamp`
@@ -566,7 +565,7 @@ Notes
 5. Finally, we use the [project-away operator](projectawayoperator.md)
    to remove the "extra" columns introduced by `top-nested`.
 
-# Extending a table with some percent-of-total calculation
+## Extending a table with some percent-of-total calculation
 
 Often, when one has a tabular expression that includes a numeric column, it is
 desireable to present that column to the user alongside its value as a percentage

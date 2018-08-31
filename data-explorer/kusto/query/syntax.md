@@ -129,7 +129,7 @@ cluster("OtherCluster").database("OtherDb").SomeTable("MyTable")
 ```
 
 
-# Displaying data
+## Displaying data
 
 Statements that return data to the client are implicitly limited
 by the number of records returned, even if there's no specific use

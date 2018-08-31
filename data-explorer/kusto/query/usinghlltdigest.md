@@ -1,6 +1,6 @@
 ---
-title: #Partitioning and composing intermediate results of aggregations (Azure Kusto)
-description: This article describes #Partitioning and composing intermediate results of aggregations in Azure Kusto.
+title: Partitioning and composing intermediate results of aggregations (Azure Kusto)
+description: This article describes Partitioning and composing intermediate results of aggregations in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-#Partitioning and composing intermediate results of aggregations
+# Partitioning and composing intermediate results of aggregations
 
 Suppose that you want to calculate the count of distinct users over the last seven days every day. One way to do it would be to run "summarize dcount(user)" once a day with a span filtered to the last seven days. This is inefficient, because each time the calculation is run there's a six-days overlap with the previous calculation. Another option is to calculate some aggregate for each day, and then combine these aggregates in an efficient way. This option requires you to "remember" the last six results, but is much more efficient.
 
