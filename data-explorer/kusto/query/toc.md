@@ -1,4 +1,7 @@
 # [Kusto query language](./essentials/overview.md)
+## [Tutorial](tutorial.md)
+## [Samples](samples.md)
+## [Best practices](bestpractices.md)
 
 # [Schema entities](./schema-entities/overview.md)
 ## [Entity names](./schema-entities/entity-names.md)
@@ -24,9 +27,9 @@
 ## [string](./scalar-data-types/string.md)
 ## [timespan](./scalar-data-types/timespan.md)
 ## [Null values](./scalar-data-types/null-values.md)
+## [Scalar types and function](scalars.md)
 
 # Misc
-## [Tutorial](tutorial.md)
 <!-- TODO: Rename syntax to cross-cluster or something -->
 ## [Syntax](syntax.md)
 ## [User-defined functions](userdefinedfunctions.md)
@@ -368,12 +371,6 @@
 ### [series_stats_dynamic()](series-stats-dynamicfunction.md)
 ### [series_subtract()](series-subtractfunction.md)
 ## [python](pythonplugin.md)
-
-# [Scalar types and function](scalars.md)
-
-# [Query best practices](bestpractices.md)
-
-# [Samples](samples.md)
 
 # [User Analytics](useranalytics.md)
 ## [Activity Counts Metrics (total values, distinct values, new values)](activity-counts-metrics-plugin.md)

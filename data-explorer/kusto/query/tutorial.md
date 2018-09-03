@@ -10,33 +10,45 @@ ms.date: 09/24/2018
 ---
 # Tutorial
 
-Kusto is a database optimised for diagnostic search through large volumes of related items, and in particular, diagnostic work with telemetry logs.
+The best way to learn about the Kusto query language is to look at some simple
+queries to get the "feel" for the language. A database with some sample data
+has been set up at [https://help.kusto.windows.net/Samples](https://help.kusto.windows.net/Samples),
+and all the queries demonstrated below should run on that database. The `StormEvents`
+table in this sample database provides some information about storms that happened
+in the U.S.
 
-[More information about the query language](./essentials/overview.md).
- 
-Let's take a walk through some basic queries to get you started.
+<!--
+  TODO: Provide link to reference data we used originally in StormEvents
+-->
+
+<!--
+  TODO: A few samples below reference non-existent tables, such as Events and Logs.
+        We need to add these tables.
+-->
 
 ## Count rows
 
-Our example database has a table called StormEvents. To find out how big it is, we'll pipe its content into an operator that simply counts the rows:
+Our example database has a table called `StormEvents`.
+To find out how big it is, we'll pipe its content into an operator that simply counts the rows:
 
-* *Syntax:* A query is: `<data source> { | <operator> }*`
+* *Syntax:* A query is a data source (usually a table name), optionally
+  followed by one or more pais of the pipe character and some tabular operator.
 
 ```kusto
-StormEvents | count 
+StormEvents | count
 ```
 
 Here's the result:
 
 |Count|
-|---|
+|-----|
 |59066|
 	
-[Query reference page](./countoperator.md).
+[count operator](./countoperator.md).
 
 ## project: select a subset of columns
 
-Use [project](./projectoperator.md) to pick out just the columns you 
+Use [project](./projectoperator.md) to pick out just the columns you
 want. See example below that uses both [project](./projectoperator.md)
 and [take](./takeoperator.md) operator.
 
@@ -45,11 +57,10 @@ and [take](./takeoperator.md) operator.
 Let's see only the `flood`s in `California` during Feb-2007:
 
 ```kusto
-StormEvents 
+StormEvents
 | where StartTime > datetime(2007-02-01) and StartTime < datetime(2007-03-01)
 | where EventType == 'Flood' and State == 'CALIFORNIA'
-| project StartTime, EndTime , State , EventType , EpisodeNarrative 
-
+| project StartTime, EndTime , State , EventType , EpisodeNarrative
 ```
 
 |StartTime|EndTime|State|EventType|EpisodeNarrative|
@@ -61,7 +72,8 @@ StormEvents
 Let's see some data - what's in a sample 5 rows?
 
 ```kusto
-StormEvents | take 5
+StormEvents
+| take 5
 | project  StartTime, EndTime, EventType, State, EventNarrative  
 ```
 
@@ -85,7 +97,8 @@ for [take](./takeoperator.md) and will have the same effect.
 Show me the first n rows, ordered by a particular column:
 
 ```kusto
-StormEvents | top 5 by StartTime desc
+StormEvents
+| top 5 by StartTime desc
 | project  StartTime, EndTime, EventType, State, EventNarrative  
 ```
 
@@ -101,8 +114,10 @@ Same can be achived by using [sort](./sortoperator.md) and
 then [take](./takeoperator.md) operator
 
 ```kusto
-StormEvents | sort by StartTime desc  | take 5
-| project  StartTime, EndLat, EventType, EventNarrative 
+StormEvents
+| sort by StartTime desc
+| take 5
+| project  StartTime, EndLat, EventType, EventNarrative
 ```
 
 ## extend: compute derived columns
@@ -110,11 +125,10 @@ StormEvents | sort by StartTime desc  | take 5
 Create a new column by computing a value in every row:
 
 ```kusto
-StormEvents 
+StormEvents
 | limit 5
 | extend Duration = EndTime - StartTime 
 | project StartTime, EndTime, Duration, EventType, State
-
 ```
 
 |StartTime|EndTime|Duration|EventType|State|
@@ -126,19 +140,17 @@ StormEvents
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|00:05:00|Thunderstorm Wind|GEORGIA|
 
 It is possible to reuse column name and assign calculation result to the same column.
-For example
+For example:
 
 ```kusto
 print x=1
 | extend x = x + 1, y = x
 | extend x = x + 1
-
 ```
 
 |x|y|
 |---|---|
 |3|1|
-
 
 [Expressions](./scalars.md) can include all the usual 
 operators (`+`, `-`, `*`, `/`, `%`), and there's a range of useful functions.
@@ -148,7 +160,8 @@ operators (`+`, `-`, `*`, `/`, `%`), and there's a range of useful functions.
 Count how many events come from each country:
 
 ```kusto
-StormEvents | summarize event_count = count() by State 
+StormEvents
+| summarize event_count = count() by State
 ```
 
 [summarize](./summarizeoperator.md) groups together rows that have 
@@ -164,8 +177,8 @@ then we could use [top](./topoperator.md) to get the most storm-affected states:
 
 ```kusto
 StormEvents 
-| summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State 
-| top 5 by StormCount desc 
+| summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State
+| top 5 by StormCount desc
 ```
 
 |State|StormCount|TypeOfStorms|
@@ -182,17 +195,15 @@ The result of a summarize has:
 * a column for each computed expression;
 * a row for each combination of `by` values.
 
-
 ## Summarize by scalar values
 
 You can use scalar (numeric, time, or interval) values in the by clause, but you'll want to put the values into bins. 
 The [bin()](./binfunction.md) function is useful for this:
 
 ```kusto
-StormEvents 
+StormEvents
 | where StartTime > datetime(2007-02-14) and StartTime < datetime(2007-02-21)
 | summarize event_count = count() by bin(StartTime, 1d)
-
 ```
 
 This reduces all the timestamps to intervals of 1 day:
@@ -207,9 +218,8 @@ This reduces all the timestamps to intervals of 1 day:
 |2007-02-19 00:00:00.0000000|52|
 |2007-02-20 00:00:00.0000000|60|
 
-
 The [bin()](./binfunction.md) is the same as
-the [floor()](./floorfunction.md) function in many languages. It 
+the [floor()](./floorfunction.md) function in many languages. It
 simply reduces every value to the nearest multiple of the modulus that you supply, so
 that [summarize](./summarizeoperator.md) can assign the rows to groups.
 
@@ -238,14 +248,14 @@ Strictly speaking, 'render' is a feature of the client rather than part of the q
 Going back to numeric bins, let's display a time series:
 
 ```kusto
-StormEvents 
+StormEvents
 | summarize event_count=count() by bin(StartTime, 1d)
 | render timechart
 ```
 
 ![](./images/tour/080.png)
 
-## Multiple series 
+## Multiple series
 
 Use multiple values in a `summarize by` clause to create a separate row for each combination of values:
 
@@ -258,9 +268,7 @@ StormEvents
 
 ![](./images/tour/090.png)
 
-Just add the render term to the above:
-    
-      | render timechart
+Just add the render term to the above: `| render timechart`.
 
 ![](./images/tour/100.png)
 
@@ -275,8 +283,8 @@ Count events by the time modulo one day, binned into hours:
 ```kusto
 StormEvents
 | extend hour = floor(StartTime % 1d , 1h)
-| summarize event_count=count() by hour 
-| sort by hour asc 
+| summarize event_count=count() by hour
+| sort by hour asc
 | render timechart
 ```
 
@@ -307,7 +315,7 @@ StormEvents
 | extend hour= floor( StartTime % 1d , 1h)/ 1h
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
 | summarize event_count=count() by hour, State
-| render columnchart 
+| render columnchart
 ```
 
 ![](./images/tour/140.png)
@@ -319,7 +327,7 @@ How to find for two given EventTypes in what state both of them happened?
 You can pull storm events with the first EventType and with the second EventType and then join the two sets on State.
 
 ```kusto
-StormEvents 
+StormEvents
 | where EventType == "Lightning"
 | join (
     StormEvents 
@@ -338,7 +346,7 @@ By using extend to provide separate aliases for the two timestamps, you can then
 
 ```kusto
 Events
-| where eventName == "session_started" 
+| where eventName == "session_started"
 | project start_time = timestamp, stop_time, country, session_id
 | join ( Events
     | where eventName == "session_ended"
@@ -361,10 +369,10 @@ How many storms are there of different lengths?
 
 ```kusto
 StormEvents
-| extend  duration = EndTime - StartTime 
+| extend  duration = EndTime - StartTime
 | where duration > 0s
 | where duration < 3h
-| summarize event_count = count() 
+| summarize event_count = count()
     by bin(duration, 5m)
 | sort by duration asc
 | render timechart
@@ -394,7 +402,7 @@ In this case, we provided no `by` clause, so the result is a single row:
 
 From which we can see that:
 
-* 5% of storms have a duration of less than 5m; 
+* 5% of storms have a duration of less than 5m;
 * 50% of storms last less than 1h 25m;
 * 5% of storms last at least 2h 50m.
 
@@ -402,10 +410,10 @@ To get a separate breakdown for each state, we just have to bring the state colu
 
 ```kusto
 StormEvents
-| extend  duration = EndTime - StartTime 
+| extend  duration = EndTime - StartTime
 | where duration > 0s
 | where duration < 3h
-| summarize event_count = count() 
+| summarize event_count = count()
     by bin(duration, 5m), State
 | sort by duration asc
 | summarize percentiles(duration, 5, 20, 50, 80, 95) by State

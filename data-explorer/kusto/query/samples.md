@@ -10,16 +10,15 @@ ms.date: 09/24/2018
 ---
 # Samples
 
-[Kusto](https://kusdoc2.azurewebsites.net/docs/index.html) is a powerful database service optimized for searches over large logs of diagnostic telemetry. 
-These samples demonstrate how to use the [Kusto query language](./essentials/overview.md). There's also 
-a [tour of the language](./tutorial.md), which is recommended for getting started.
+Below are a few common query needs and how the Kusto query language can be used
+to meet them.
 
 ## Display a column chart
 
 Project two or more columns and use them as the x and y axis of a chart:
 
 ```kusto 
-StormEvents	
+StormEvents
 | where isnotempty(EndLocation) 
 | summarize event_count=count() by EndLocation
 | top 10 by event_count
@@ -30,9 +29,7 @@ StormEvents
 * Use `where`, `summarize` and `top` to limit the volume of data that you display.
 * Sort the results so as to define the order of the x-axis.
 
-
-![](./Images/samples/060.png) 
-
+![](./Images/samples/060.png)
 
 <a name="activities"></a>
 ## Get sessions from start and stop events
