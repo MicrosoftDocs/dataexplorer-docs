@@ -1,4 +1,4 @@
----
+﻿---
 title: todecimal() - Azure Kusto | Microsoft Docs
 description: This article describes todecimal() in Azure Kusto.
 author: orspod

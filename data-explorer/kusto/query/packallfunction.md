@@ -1,4 +1,4 @@
----
+﻿---
 title: pack_all() - Azure Kusto | Microsoft Docs
 description: This article describes pack_all() in Azure Kusto.
 author: orspod

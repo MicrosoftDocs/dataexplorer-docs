@@ -1,4 +1,4 @@
----
+﻿---
 title: ago() - Azure Kusto | Microsoft Docs
 description: This article describes ago() in Azure Kusto.
 author: orspod

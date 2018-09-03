@@ -1,4 +1,4 @@
----
+﻿---
 title: Columns - Azure Kusto | Microsoft Docs
 description: This article describes Columns in Azure Kusto.
 author: orspod

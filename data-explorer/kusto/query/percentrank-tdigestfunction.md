@@ -1,4 +1,4 @@
----
+﻿---
 title: percentrank_tdigest() - Azure Kusto | Microsoft Docs
 description: This article describes percentrank_tdigest() in Azure Kusto.
 author: orspod

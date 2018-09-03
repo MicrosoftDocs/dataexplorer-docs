@@ -1,4 +1,4 @@
----
+﻿---
 title: User Analytics - Azure Kusto | Microsoft Docs
 description: This article describes User Analytics in Azure Kusto.
 author: orspod

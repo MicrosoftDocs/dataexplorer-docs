@@ -1,4 +1,4 @@
----
+﻿---
 title: avgif() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes avgif() (aggregation function) in Azure Kusto.
 author: orspod

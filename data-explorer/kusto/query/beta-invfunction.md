@@ -1,4 +1,4 @@
----
+﻿---
 title: beta_inv() - Azure Kusto | Microsoft Docs
 description: This article describes beta_inv() in Azure Kusto.
 author: orspod
@@ -36,9 +36,9 @@ The beta distribution can be used in project planning to model probable completi
 
 If any argument is nonnumeric, beta_inv() returns null value.
 
-If alpha â‰¤ 0 or beta â‰¤ 0, beta_inv() returns the null value.
+If alpha ≤ 0 or beta ≤ 0, beta_inv() returns the null value.
 
-If probability â‰¤ 0 or probability > 1, beta_inv() returns the NaN value.
+If probability ≤ 0 or probability > 1, beta_inv() returns the NaN value.
 
 Given a value for probability, beta_inv() seeks that value x such that beta_cdf(x, alpha, beta) = probability.
 

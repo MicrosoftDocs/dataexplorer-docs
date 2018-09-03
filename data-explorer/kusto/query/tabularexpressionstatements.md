@@ -1,4 +1,4 @@
----
+﻿---
 title: Tabular expression statements - Azure Kusto | Microsoft Docs
 description: This article describes Tabular expression statements in Azure Kusto.
 author: orspod

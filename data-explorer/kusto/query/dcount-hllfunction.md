@@ -1,4 +1,4 @@
----
+﻿---
 title: dcount_hll() - Azure Kusto | Microsoft Docs
 description: This article describes dcount_hll() in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
----
+﻿---
 title: bin_at() - Azure Kusto | Microsoft Docs
 description: This article describes bin_at() in Azure Kusto.
 author: orspod

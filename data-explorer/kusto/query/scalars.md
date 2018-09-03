@@ -1,4 +1,4 @@
----
+﻿---
 title: Scalar types and functions - Azure Kusto | Microsoft Docs
 description: This article describes Scalar types and functions in Azure Kusto.
 author: orspod

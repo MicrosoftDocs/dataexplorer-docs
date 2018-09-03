@@ -1,4 +1,4 @@
----
+﻿---
 title: take operator - Azure Kusto | Microsoft Docs
 description: This article describes take operator in Azure Kusto.
 author: orspod

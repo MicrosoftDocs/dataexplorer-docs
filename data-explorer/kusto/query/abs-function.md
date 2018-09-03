@@ -1,4 +1,4 @@
----
+﻿---
 title: abs() - Azure Kusto | Microsoft Docs
 description: This article describes abs() in Azure Kusto.
 author: orspod

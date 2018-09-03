@@ -1,4 +1,4 @@
----
+﻿---
 title: endofday() - Azure Kusto | Microsoft Docs
 description: This article describes endofday() in Azure Kusto.
 author: orspod

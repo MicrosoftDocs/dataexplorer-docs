@@ -1,4 +1,4 @@
----
+﻿---
 title: between operator - Azure Kusto | Microsoft Docs
 description: This article describes between operator in Azure Kusto.
 author: orspod

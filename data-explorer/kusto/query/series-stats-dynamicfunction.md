@@ -1,4 +1,4 @@
----
+﻿---
 title: series_stats_dynamic() - Azure Kusto | Microsoft Docs
 description: This article describes series_stats_dynamic() in Azure Kusto.
 author: orspod

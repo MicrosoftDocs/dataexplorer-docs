@@ -1,4 +1,4 @@
----
+﻿---
 title: not() - Azure Kusto | Microsoft Docs
 description: This article describes not() in Azure Kusto.
 author: orspod

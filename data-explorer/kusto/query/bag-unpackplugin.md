@@ -1,4 +1,4 @@
----
+﻿---
 title: bag_unpack plugin - Azure Kusto | Microsoft Docs
 description: This article describes bag_unpack plugin in Azure Kusto.
 author: orspod

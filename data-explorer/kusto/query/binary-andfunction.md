@@ -1,4 +1,4 @@
----
+﻿---
 title: binary_and() - Azure Kusto | Microsoft Docs
 description: This article describes binary_and() in Azure Kusto.
 author: orspod

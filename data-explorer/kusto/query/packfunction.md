@@ -1,4 +1,4 @@
----
+﻿---
 title: pack() - Azure Kusto | Microsoft Docs
 description: This article describes pack() in Azure Kusto.
 author: orspod

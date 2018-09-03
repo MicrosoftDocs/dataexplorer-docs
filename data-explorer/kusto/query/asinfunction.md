@@ -1,4 +1,4 @@
----
+﻿---
 title: asin() - Azure Kusto | Microsoft Docs
 description: This article describes asin() in Azure Kusto.
 author: orspod

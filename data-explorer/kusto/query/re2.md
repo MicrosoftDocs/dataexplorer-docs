@@ -1,4 +1,4 @@
----
+﻿---
 title: Regular expressions - Azure Kusto | Microsoft Docs
 description: This article describes Regular expressions in Azure Kusto.
 author: orspod

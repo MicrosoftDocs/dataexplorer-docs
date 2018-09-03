@@ -1,4 +1,4 @@
----
+﻿---
 title: datetime_part() - Azure Kusto | Microsoft Docs
 description: This article describes datetime_part() in Azure Kusto.
 author: orspod

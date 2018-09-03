@@ -1,4 +1,4 @@
----
+﻿---
 title: series_periods_detect() - Azure Kusto | Microsoft Docs
 description: This article describes series_periods_detect() in Azure Kusto.
 author: orspod
@@ -12,7 +12,7 @@ ms.date: 09/24/2018
 
 Finds the most significant periods that exist in a time series.  
 
-Very often a metric measuring an applicationâ€™s traffic is characterized by two significant periods: a weekly and a daily. Given such a time series, `series_periods_detect()` shall detect these 2 dominant periods.  
+Very often a metric measuring an application’s traffic is characterized by two significant periods: a weekly and a daily. Given such a time series, `series_periods_detect()` shall detect these 2 dominant periods.  
 The function takes as input a column containing a dynamic array of time series (typically the resulting output of [make-series](make-seriesoperator.md) operator), two `real` numbers defining the minimal and maximal period size (i.e. number of bins, e.g. for 1h bin the size of a daily period would be 24) to search for, and a `long` number defining the total number of periods for the function to search. The function outputs 2 columns:
 * *periods*: a dynamic array containing the periods that have been found (in units of the bin size), ordered by their scores
 * *scores*: a dynamic array containing values between 0 and 1, each measures the significance of a period in its respective position in the *periods* array
@@ -38,7 +38,7 @@ The function takes as input a column containing a dynamic array of time series (
 
 **Example**
 
-The following query embeds a snapshot of a month of an applicationâ€™s traffic, aggregated twice a day (i.e. the bin size is 12 hours).
+The following query embeds a snapshot of a month of an application’s traffic, aggregated twice a day (i.e. the bin size is 12 hours).
 
 ```kusto
 print y=dynamic([80,139,87,110,68,54,50,51,53,133,86,141,97,156,94,149,95,140,77,61,50,54,47,133,72,152,94,148,105,162,101,160,87,63,53,55,54,151,103,189,108,183,113,175,113,178,90,71,62,62,65,165,109,181,115,182,121,178,114,170])

@@ -1,4 +1,4 @@
----
+﻿---
 title: summarize operator - Azure Kusto | Microsoft Docs
 description: This article describes summarize operator in Azure Kusto.
 author: orspod

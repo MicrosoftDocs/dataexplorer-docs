@@ -1,4 +1,4 @@
----
+﻿---
 title: database() (scope function) - Azure Kusto | Microsoft Docs
 description: This article describes database() (scope function) in Azure Kusto.
 author: orspod

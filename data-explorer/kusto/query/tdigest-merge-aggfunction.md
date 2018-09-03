@@ -1,4 +1,4 @@
----
+﻿---
 title: tdigest_merge() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes tdigest_merge() (aggregation function) in Azure Kusto.
 author: orspod

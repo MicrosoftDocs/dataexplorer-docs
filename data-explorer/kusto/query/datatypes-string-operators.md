@@ -1,4 +1,4 @@
----
+﻿---
 title: String operators - Azure Kusto | Microsoft Docs
 description: This article describes String operators in Azure Kusto.
 author: orspod

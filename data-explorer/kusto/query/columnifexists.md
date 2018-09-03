@@ -1,4 +1,4 @@
----
+﻿---
 title: columnifexists() - Azure Kusto | Microsoft Docs
 description: This article describes columnifexists() in Azure Kusto.
 author: orspod

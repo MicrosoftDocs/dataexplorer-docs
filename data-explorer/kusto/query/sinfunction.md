@@ -1,4 +1,4 @@
----
+﻿---
 title: sin() - Azure Kusto | Microsoft Docs
 description: This article describes sin() in Azure Kusto.
 author: orspod

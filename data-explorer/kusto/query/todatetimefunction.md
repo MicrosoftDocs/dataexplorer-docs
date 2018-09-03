@@ -1,4 +1,4 @@
----
+﻿---
 title: todatetime() - Azure Kusto | Microsoft Docs
 description: This article describes todatetime() in Azure Kusto.
 author: orspod

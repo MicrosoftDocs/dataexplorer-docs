@@ -1,4 +1,4 @@
----
+﻿---
 title: Reference material for Kusto Query Language - Azure Kusto | Microsoft Docs
 description: This article describes Reference material for Kusto Query Language in Azure Kusto.
 author: orspod

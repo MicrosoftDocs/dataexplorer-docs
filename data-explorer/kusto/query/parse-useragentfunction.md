@@ -1,4 +1,4 @@
----
+﻿---
 title: parse_user_agent() - Azure Kusto | Microsoft Docs
 description: This article describes parse_user_agent() in Azure Kusto.
 author: orspod

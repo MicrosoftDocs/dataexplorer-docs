@@ -1,4 +1,4 @@
----
+﻿---
 title: pi() - Azure Kusto | Microsoft Docs
 description: This article describes pi() in Azure Kusto.
 author: orspod
@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # pi()
 
-Returns the constant value of Pi (Ï€).
+Returns the constant value of Pi (π).
 
 **Syntax**
 

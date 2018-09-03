@@ -1,4 +1,4 @@
----
+﻿---
 title: substring() - Azure Kusto | Microsoft Docs
 description: This article describes substring() in Azure Kusto.
 author: orspod

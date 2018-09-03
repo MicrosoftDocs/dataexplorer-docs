@@ -1,4 +1,4 @@
----
+﻿---
 title: binary_shift_right() - Azure Kusto | Microsoft Docs
 description: This article describes binary_shift_right() in Azure Kusto.
 author: orspod

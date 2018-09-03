@@ -1,4 +1,4 @@
----
+﻿---
 title: narrow plugin - Azure Kusto | Microsoft Docs
 description: This article describes narrow plugin in Azure Kusto.
 author: orspod

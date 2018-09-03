@@ -1,4 +1,4 @@
----
+﻿---
 title: rand() - Azure Kusto | Microsoft Docs
 description: This article describes rand() in Azure Kusto.
 author: orspod

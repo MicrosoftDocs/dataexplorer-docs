@@ -1,4 +1,4 @@
----
+﻿---
 title: base64_decodestring() - Azure Kusto | Microsoft Docs
 description: This article describes base64_decodestring() in Azure Kusto.
 author: orspod

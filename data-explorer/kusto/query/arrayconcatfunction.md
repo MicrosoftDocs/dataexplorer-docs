@@ -1,4 +1,4 @@
----
+﻿---
 title: array_concat() - Azure Kusto | Microsoft Docs
 description: This article describes array_concat() in Azure Kusto.
 author: orspod

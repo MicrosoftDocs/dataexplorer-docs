@@ -1,4 +1,4 @@
----
+﻿---
 title: hash() - Azure Kusto | Microsoft Docs
 description: This article describes hash() in Azure Kusto.
 author: orspod

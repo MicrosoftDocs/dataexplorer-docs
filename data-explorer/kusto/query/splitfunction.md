@@ -1,4 +1,4 @@
----
+﻿---
 title: split() - Azure Kusto | Microsoft Docs
 description: This article describes split() in Azure Kusto.
 author: orspod

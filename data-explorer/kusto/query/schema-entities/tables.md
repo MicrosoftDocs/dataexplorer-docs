@@ -1,4 +1,4 @@
----
+﻿---
 title: Tables - Azure Kusto | Microsoft Docs
 description: This article describes Tables in Azure Kusto.
 author: orspod

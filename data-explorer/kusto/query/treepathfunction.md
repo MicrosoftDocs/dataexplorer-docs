@@ -1,4 +1,4 @@
----
+﻿---
 title: treepath() - Azure Kusto | Microsoft Docs
 description: This article describes treepath() in Azure Kusto.
 author: orspod

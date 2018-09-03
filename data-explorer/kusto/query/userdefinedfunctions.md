@@ -1,4 +1,4 @@
----
+﻿---
 title: User-Defined Functions - Azure Kusto | Microsoft Docs
 description: This article describes User-Defined Functions in Azure Kusto.
 author: orspod

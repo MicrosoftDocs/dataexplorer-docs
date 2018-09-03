@@ -1,4 +1,4 @@
----
+﻿---
 title: parse operator - Azure Kusto | Microsoft Docs
 description: This article describes parse operator in Azure Kusto.
 author: orspod

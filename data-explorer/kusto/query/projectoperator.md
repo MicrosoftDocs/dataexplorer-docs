@@ -1,4 +1,4 @@
----
+﻿---
 title: project operator - Azure Kusto | Microsoft Docs
 description: This article describes project operator in Azure Kusto.
 author: orspod

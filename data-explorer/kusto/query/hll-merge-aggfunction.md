@@ -1,4 +1,4 @@
----
+﻿---
 title: hll_merge() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes hll_merge() (aggregation function) in Azure Kusto.
 author: orspod

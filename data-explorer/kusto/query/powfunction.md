@@ -1,4 +1,4 @@
----
+﻿---
 title: pow() - Azure Kusto | Microsoft Docs
 description: This article describes pow() in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
----
+﻿---
 title: variance() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes variance() (aggregation function) in Azure Kusto.
 author: orspod

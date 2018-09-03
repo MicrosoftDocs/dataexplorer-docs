@@ -1,4 +1,4 @@
----
+﻿---
 title: strlen() - Azure Kusto | Microsoft Docs
 description: This article describes strlen() in Azure Kusto.
 author: orspod
@@ -41,7 +41,7 @@ print strlen("hello")
 |5|
 
 ```kusto
-print strlen("â’¦â’°â’®â’¯â’ª")
+print strlen("⒦⒰⒮⒯⒪")
 ```
 
 |print_0|

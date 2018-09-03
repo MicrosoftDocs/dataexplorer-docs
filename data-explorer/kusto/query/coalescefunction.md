@@ -1,4 +1,4 @@
----
+﻿---
 title: coalesce() - Azure Kusto | Microsoft Docs
 description: This article describes coalesce() in Azure Kusto.
 author: orspod

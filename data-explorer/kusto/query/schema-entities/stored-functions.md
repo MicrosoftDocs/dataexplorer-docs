@@ -1,4 +1,4 @@
----
+﻿---
 title: Stored functions - Azure Kusto | Microsoft Docs
 description: This article describes Stored functions in Azure Kusto.
 author: orspod

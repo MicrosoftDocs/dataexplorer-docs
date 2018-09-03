@@ -1,4 +1,4 @@
----
+﻿---
 title: Schema entities - Azure Kusto | Microsoft Docs
 description: This article describes Schema entities in Azure Kusto.
 author: orspod

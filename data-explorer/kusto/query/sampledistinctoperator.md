@@ -1,4 +1,4 @@
----
+﻿---
 title: sample-distinct operator - Azure Kusto | Microsoft Docs
 description: This article describes sample-distinct operator in Azure Kusto.
 author: orspod

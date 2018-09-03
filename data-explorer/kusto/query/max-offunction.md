@@ -1,4 +1,4 @@
----
+﻿---
 title: max_of() - Azure Kusto | Microsoft Docs
 description: This article describes max_of() in Azure Kusto.
 author: orspod

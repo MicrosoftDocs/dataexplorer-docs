@@ -1,4 +1,4 @@
----
+﻿---
 title: extend operator - Azure Kusto | Microsoft Docs
 description: This article describes extend operator in Azure Kusto.
 author: orspod

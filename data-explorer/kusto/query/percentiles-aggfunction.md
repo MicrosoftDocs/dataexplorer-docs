@@ -1,4 +1,4 @@
----
+﻿---
 title: percentile(), percentiles(), percentilew(), percentilesw(), percentiles_array(), percentilesw_array() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes percentile(), percentiles(), percentilew(), percentilesw(), percentiles_array(), percentilesw_array() (aggregation function) in Azure Kusto.
 author: orspod

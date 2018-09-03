@@ -1,4 +1,4 @@
----
+﻿---
 title: The guid data type - Azure Kusto | Microsoft Docs
 description: This article describes The guid data type in Azure Kusto.
 author: orspod

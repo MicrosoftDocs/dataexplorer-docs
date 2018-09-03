@@ -1,4 +1,4 @@
----
+﻿---
 title: tohex() - Azure Kusto | Microsoft Docs
 description: This article describes tohex() in Azure Kusto.
 author: orspod

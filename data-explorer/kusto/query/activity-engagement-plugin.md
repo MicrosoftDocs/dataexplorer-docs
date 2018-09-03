@@ -1,4 +1,4 @@
----
+﻿---
 title: activity_engagement plugin - Azure Kusto | Microsoft Docs
 description: This article describes activity_engagement plugin in Azure Kusto.
 author: orspod

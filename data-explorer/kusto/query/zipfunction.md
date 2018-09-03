@@ -1,4 +1,4 @@
----
+﻿---
 title: zip() - Azure Kusto | Microsoft Docs
 description: This article describes zip() in Azure Kusto.
 author: orspod

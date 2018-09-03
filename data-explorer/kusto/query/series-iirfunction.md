@@ -1,4 +1,4 @@
----
+﻿---
 title: series_iir() - Azure Kusto | Microsoft Docs
 description: This article describes series_iir() in Azure Kusto.
 author: orspod
@@ -27,9 +27,9 @@ Takes an expression containing dynamic numerical array as input and applies an [
 
 **Important note**
 
-* The first element of *a* (i.e. `a[0]`) mustnâ€™t be zero (to avoid division by 0; see the formula below).
+* The first element of *a* (i.e. `a[0]`) mustn’t be zero (to avoid division by 0; see the formula below).
 
-**More about the filterâ€™s recursive formula**
+**More about the filter’s recursive formula**
 
 * Given an input array X and coefficients arrays a, b of lengths n_a and n_b respectively, the transfer function of the filter, generating the output array Y, is defined by (see also in Wikipedia):
 

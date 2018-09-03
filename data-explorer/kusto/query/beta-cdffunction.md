@@ -1,4 +1,4 @@
----
+﻿---
 title: beta_cdf() - Azure Kusto | Microsoft Docs
 description: This article describes beta_cdf() in Azure Kusto.
 author: orspod
@@ -38,7 +38,7 @@ If any argument is nonnumeric, beta_cdf() returns null value.
 
 If x < 0 or x > 1, beta_cdf() returns NaN value.
 
-If alpha â‰¤ 0 or beta â‰¤ 0, beta_cdf() returns the NaN value.
+If alpha ≤ 0 or beta ≤ 0, beta_cdf() returns the NaN value.
 
 **Examples**
 

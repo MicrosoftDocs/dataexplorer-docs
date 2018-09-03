@@ -1,4 +1,4 @@
----
+﻿---
 title: series_fill_linear() - Azure Kusto | Microsoft Docs
 description: This article describes series_fill_linear() in Azure Kusto.
 author: orspod

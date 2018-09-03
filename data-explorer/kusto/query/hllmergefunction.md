@@ -1,4 +1,4 @@
----
+﻿---
 title: hll_merge() - Azure Kusto | Microsoft Docs
 description: This article describes hll_merge() in Azure Kusto.
 author: orspod

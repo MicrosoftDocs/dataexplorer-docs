@@ -1,4 +1,4 @@
----
+﻿---
 title: makeset() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes makeset() (aggregation function) in Azure Kusto.
 author: orspod

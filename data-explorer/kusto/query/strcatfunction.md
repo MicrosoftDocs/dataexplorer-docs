@@ -1,4 +1,4 @@
----
+﻿---
 title: strcat() - Azure Kusto | Microsoft Docs
 description: This article describes strcat() in Azure Kusto.
 author: orspod

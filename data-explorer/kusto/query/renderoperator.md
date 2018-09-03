@@ -1,4 +1,4 @@
----
+﻿---
 title: render operator - Azure Kusto | Microsoft Docs
 description: This article describes render operator in Azure Kusto.
 author: orspod

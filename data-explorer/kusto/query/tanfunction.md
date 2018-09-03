@@ -1,4 +1,4 @@
----
+﻿---
 title: tan() - Azure Kusto | Microsoft Docs
 description: This article describes tan() in Azure Kusto.
 author: orspod

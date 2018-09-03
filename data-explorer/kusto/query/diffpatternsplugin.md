@@ -1,4 +1,4 @@
----
+﻿---
 title: diffpatterns plugin - Azure Kusto | Microsoft Docs
 description: This article describes diffpatterns plugin in Azure Kusto.
 author: orspod
@@ -37,19 +37,19 @@ When you find an interesting row, you might want to drill into it further by add
 
 **Required Arguments**
 
-`T | evaluate diffpatterns(`SplitColumn, SplitValueA, SplitValueB [,Â WeightColumn,Â Threshold, MaxDimensions,Â CustomWildcard, ...]`)` 
+`T | evaluate diffpatterns(`SplitColumn, SplitValueA, SplitValueB [, WeightColumn, Threshold, MaxDimensions, CustomWildcard, ...]`)` 
 
 * SplitColumn - *column_name*
 
-    Tells the algorithm how to split the query into data sets. According to the specified values for the SplitValueA and SplitValueB arguments (see below), the algorithm splits the query into two data sets, â€œAâ€ and â€œBâ€, and analyze the differences between them. As such, the split column must have at least two distinct values.
+    Tells the algorithm how to split the query into data sets. According to the specified values for the SplitValueA and SplitValueB arguments (see below), the algorithm splits the query into two data sets, “A” and “B”, and analyze the differences between them. As such, the split column must have at least two distinct values.
 
 * SplitValueA - *string*
 
-    A string representation of one of the values in the SplitColumn that was specified. All the rows which have this value in their SplitColumn considered as data set â€œAâ€.
+    A string representation of one of the values in the SplitColumn that was specified. All the rows which have this value in their SplitColumn considered as data set “A”.
 
 * SplitValueB - *string*
 
-    A string representation of one of the values in the SplitColumn that was specified. All the rows which have this value in their SplitColumn considered as data set  â€œBâ€.
+    A string representation of one of the values in the SplitColumn that was specified. All the rows which have this value in their SplitColumn considered as data set  “B”.
 
     Example: `T | extend splitColumn=iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure") `
 

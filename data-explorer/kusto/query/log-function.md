@@ -1,4 +1,4 @@
----
+﻿---
 title: log() - Azure Kusto | Microsoft Docs
 description: This article describes log() in Azure Kusto.
 author: orspod

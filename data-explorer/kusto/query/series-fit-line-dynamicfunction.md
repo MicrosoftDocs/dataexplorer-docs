@@ -1,4 +1,4 @@
----
+﻿---
 title: series_fit_line_dynamic() - Azure Kusto | Microsoft Docs
 description: This article describes series_fit_line_dynamic() in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
----
+﻿---
 title: strcmp() - Azure Kusto | Microsoft Docs
 description: This article describes strcmp() in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
----
+﻿---
 title: now() - Azure Kusto | Microsoft Docs
 description: This article describes now() in Azure Kusto.
 author: orspod

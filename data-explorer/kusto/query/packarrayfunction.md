@@ -1,4 +1,4 @@
----
+﻿---
 title: pack_array() - Azure Kusto | Microsoft Docs
 description: This article describes pack_array() in Azure Kusto.
 author: orspod

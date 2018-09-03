@@ -1,4 +1,4 @@
----
+﻿---
 title: Window functions - Azure Kusto | Microsoft Docs
 description: This article describes Window functions in Azure Kusto.
 author: orspod

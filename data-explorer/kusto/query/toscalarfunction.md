@@ -1,4 +1,4 @@
----
+﻿---
 title: toscalar() - Azure Kusto | Microsoft Docs
 description: This article describes toscalar() in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
----
+﻿---
 title: cos() - Azure Kusto | Microsoft Docs
 description: This article describes cos() in Azure Kusto.
 author: orspod

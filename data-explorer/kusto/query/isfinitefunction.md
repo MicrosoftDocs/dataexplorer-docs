@@ -1,4 +1,4 @@
----
+﻿---
 title: isfinite() - Azure Kusto | Microsoft Docs
 description: This article describes isfinite() in Azure Kusto.
 author: orspod
@@ -41,6 +41,6 @@ range x from -1 to 1 step 1
 
 |x|y|div|isfinite|
 |---|---|---|---|
-|-1|0|-âˆž|0|
+|-1|0|-∞|0|
 |0|0|NaN|0|
-|1|0|âˆž|0|
+|1|0|∞|0|

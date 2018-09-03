@@ -1,4 +1,4 @@
----
+﻿---
 title: series_divide() - Azure Kusto | Microsoft Docs
 description: This article describes series_divide() in Azure Kusto.
 author: orspod

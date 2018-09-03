@@ -1,4 +1,4 @@
----
+﻿---
 title: extract() - Azure Kusto | Microsoft Docs
 description: This article describes extract() in Azure Kusto.
 author: orspod

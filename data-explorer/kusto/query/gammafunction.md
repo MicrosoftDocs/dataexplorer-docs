@@ -1,4 +1,4 @@
----
+﻿---
 title: gamma() - Azure Kusto | Microsoft Docs
 description: This article describes gamma() in Azure Kusto.
 author: orspod

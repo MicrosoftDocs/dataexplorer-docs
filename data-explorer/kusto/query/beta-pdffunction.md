@@ -1,4 +1,4 @@
----
+﻿---
 title: beta_pdf() - Azure Kusto | Microsoft Docs
 description: This article describes beta_pdf() in Azure Kusto.
 author: orspod
@@ -34,9 +34,9 @@ The beta distribution is commonly used to study variation in the percentage of s
 
 If any argument is nonnumeric, beta_pdf() returns null value.
 
-If x â‰¤ 0 or 1 â‰¤ x, beta_pdf() returns NaN value.
+If x ≤ 0 or 1 ≤ x, beta_pdf() returns NaN value.
 
-If alpha â‰¤ 0 or beta â‰¤ 0, beta_pdf() returns the NaN value.
+If alpha ≤ 0 or beta ≤ 0, beta_pdf() returns the NaN value.
 
 **Examples**
 

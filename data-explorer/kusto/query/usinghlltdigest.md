@@ -1,4 +1,4 @@
----
+﻿---
 title: Partitioning and composing intermediate results of aggregations - Azure Kusto | Microsoft Docs
 description: This article describes Partitioning and composing intermediate results of aggregations in Azure Kusto.
 author: orspod

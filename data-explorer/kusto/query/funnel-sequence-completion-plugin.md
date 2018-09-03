@@ -1,4 +1,4 @@
----
+﻿---
 title: funnel_sequence_completion plugin - Azure Kusto | Microsoft Docs
 description: This article describes funnel_sequence_completion plugin in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
----
+﻿---
 title: in and notin operators - Azure Kusto | Microsoft Docs
 description: This article describes in and notin operators in Azure Kusto.
 author: orspod

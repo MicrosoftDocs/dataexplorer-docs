@@ -1,4 +1,4 @@
----
+﻿---
 title: series_subtract() - Azure Kusto | Microsoft Docs
 description: This article describes series_subtract() in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
----
+﻿---
 title: datetime_add() - Azure Kusto | Microsoft Docs
 description: This article describes datetime_add() in Azure Kusto.
 author: orspod

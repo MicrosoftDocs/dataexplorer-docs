@@ -1,4 +1,4 @@
----
+﻿---
 title: format_timespan() - Azure Kusto | Microsoft Docs
 description: This article describes format_timespan() in Azure Kusto.
 author: orspod

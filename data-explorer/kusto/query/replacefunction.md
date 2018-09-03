@@ -1,4 +1,4 @@
----
+﻿---
 title: replace() - Azure Kusto | Microsoft Docs
 description: This article describes replace() in Azure Kusto.
 author: orspod

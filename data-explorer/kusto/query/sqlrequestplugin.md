@@ -1,4 +1,4 @@
----
+﻿---
 title: sql_request plugin - Azure Kusto | Microsoft Docs
 description: This article describes sql_request plugin in Azure Kusto.
 author: orspod

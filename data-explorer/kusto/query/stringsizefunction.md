@@ -1,4 +1,4 @@
----
+﻿---
 title: string_size() - Azure Kusto | Microsoft Docs
 description: This article describes string_size() in Azure Kusto.
 author: orspod
@@ -35,7 +35,7 @@ print string_size("hello")
 |5|
 
 ```kusto
-print string_size("â’¦â’°â’®â’¯â’ª")
+print string_size("⒦⒰⒮⒯⒪")
 ```
 
 |print_0|

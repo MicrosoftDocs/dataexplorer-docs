@@ -1,4 +1,4 @@
----
+﻿---
 title: min() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes min() (aggregation function) in Azure Kusto.
 author: orspod

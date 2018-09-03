@@ -1,4 +1,4 @@
----
+﻿---
 title: dcount_intersect plugin - Azure Kusto | Microsoft Docs
 description: This article describes dcount_intersect plugin in Azure Kusto.
 author: orspod
@@ -13,10 +13,10 @@ ms.date: 09/24/2018
 Calculates intersection between N sets based on hll values (N in range of [2..16]), and returns N dcount values.
 
 Given sets S<sub>1</sub>, S<sub>2</sub>, .. S<sub>n</sub> - returns values will be representing distinct counts of:  
-S<sub>1</sub>, S<sub>1</sub> âˆ© S<sub>2</sub>,  
-S<sub>1</sub> âˆ© S<sub>2</sub> âˆ© S<sub>3</sub>,  
+S<sub>1</sub>, S<sub>1</sub> ∩ S<sub>2</sub>,  
+S<sub>1</sub> ∩ S<sub>2</sub> ∩ S<sub>3</sub>,  
 ... ,  
-S<sub>1</sub> âˆ© S<sub>2</sub> âˆ© ... âˆ© S<sub>n</sub>
+S<sub>1</sub> ∩ S<sub>2</sub> ∩ ... ∩ S<sub>n</sub>
 
     T | evaluate dcount_intersect(hll_1, hll_2, hll_3)
 
