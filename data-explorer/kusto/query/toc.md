@@ -10,7 +10,9 @@
 ## [Entity references](./schema-entities/entity-references.md)
 ## [Clusters](./schema-entities/clusters.md)
 ## [Databases](./schema-entities/databases.md)
+-->
 ## [Tables](./schema-entities/tables.md)
+<!--
 ## [Columns](./schema-entities/columns.md)
 ## [Stored functions](./schema-entities/stored-functions.md)
 -->

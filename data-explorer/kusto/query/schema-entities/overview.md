@@ -10,52 +10,39 @@ ms.date: 09/24/2018
 ---
 # Schema entities
 
-Kusto queries are exposed to stored data arranged in rectangular tables
-that use the relational model (a table is "rectangular" in the sense that
-it has a well-defined ordered set of columns, and every row in the table
-has the same set). Every table "belongs" to a database, and every database
-"belongs" to one cluster.
-
-Kusto also supports entities called stored functions; a stored function
-"belongs" to a database, and provides a mechanism to reuse Kusto query
-(in whole or in parts).
-
-To summarize:
+Kusto queries execute in the context of some Kusto database that is attached
+to a Kusto cluster. Data in the database is arranged in tables, which the query
+may reference, and within the table it is organized as a rectangular grid of
+columns and rows. Additionally, queries may reference stored functions in the
+database, which are query fragments made available for reuse.
 
 * [Clusters](./clusters.md) are entities that hold databases.
-  Clusters are "named" through a URI, such as `https://help.kusto.windows.net`,
-  and referenced by using the `cluster()` function.
+  Clusters have no name, but they can be referenced by using the
+  [cluster() special function](https://kusdoc2.azurewebsites.net/docs/clusterfunction.html) with the cluster's URI.
+  For example, `cluster("https://help.kusto.windows.net")` is a refernce
+  to a cluster that holds the `Samples` database.
 
 * [Databases](./databases.md) are named entities that hold tables
-  and stored functions.
+  and stored functions. All Kusto queries run in the context of some database,
+  and the entities of that database may be referenced by the query with no
+  qualifications. Additionally, other databases of the cluster, or databases
+  or other clusters, may be referenced using the
+  [database() special function](https://kusdoc2.azurewebsites.net/docs/databasefunction.html). For example,
+  `cluster("https://help.kusto.windows.net").database("Samples")`
+  is a universal reference to a specific database.
 
-* [Tables](./tables.md) are named entities that have an ordered set
-  of columns, and zero or more rows of data that provide values
-  according to those columns.
+* [Tables](./tables.md) are named entities that hold data. A table has an ordered set
+  of columns, and zero or more rows of data, each row holding one data value
+  for each of the columns of the table. Tables may be referenced by name only
+  if they are in the database in context of the query, or by qualifying them
+  with a database reference otherwise. For example,
+  `cluster("https://help.kusto.windows.net").database("Samples").StormEvents` is
+  a universal reference to a particular table in the `Samples` database.
+  Tables may also be referenced by using the [table() special function](https://kusdoc2.azurewebsites.net/docs/tablefunction.html).
 
-* [Columns](./columns.md) are named entities that have a data type.
-  The data type of a column is one of the supported scalar data types.
+* [Columns](./columns.md) are named entities that have a [scalar data type](https://kusdoc2.azurewebsites.net/docs/scalar-data-types/overview.html).
+  Columns are referenced in the query relative to the tabular data stream
+  that is in context of the specific operator referencing them.
 
 * [Stored functions](./stored-functions.md) are named entities that
   allow reuse of Kusto queries or query parts.
-
-## Client-side entity validation
-
-<!-- TODO: ZIVC: This section needs to be moved outside the query language section completely. -->
-
-Client code that is using [Kusto Client .NET library](https://kusdoc2.azurewebsites.net/docs/api/using-the-kusto-client-library.html) can 
-use `Kusto.Data.Common.EntityValidator` class to check if the entity is valid or not.
-
-## Examples
-
-<!-- This should be moved out as well -->
-
-Here are two examples for fully-qualified names
-(see [Cross-database queries](https://kusdoc2.azurewebsites.net/docs/syntax.html#queries) for more information
-on referencing foreign clusters.)
- 
-```
-database("MyDb").Table
-
-cluster("OtherCluster").database("MyDb").Table
-```
