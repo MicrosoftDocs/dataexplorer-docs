@@ -12,7 +12,6 @@ ms.date: 09/24/2018
 
 The following table summarizes operators on strings:
 
-
 Operator        |Description                                                       |Case-Sensitive|Example (yields `true`)
 ----------------|------------------------------------------------------------------|--------------|-----------------------
 `==`            |Equals                                                            |Yes           |`"aBc" == "aBc"`

@@ -1,6 +1,6 @@
 ---
-title: Extents (Data shards) - Azure Kusto | Microsoft Docs
-description: This article describes Extents (Data shards) in Azure Kusto.
+title: Extents, Extent Tags, Extent Containers - Azure Kusto | Microsoft Docs
+description: This article describes Extents, Extent Tags, Extent Containers in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,12 +8,14 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Extents (Data shards)
+# Extents, Extent Tags, Extent Containers
+
+## Extents (Data shards)
 
 Data shards are called **extents** in Kusto, and all commands use "extent"
 or "extents" as a synonym.
 
-## .show extents
+### .show extents
 
 **Cluster Level**
 
@@ -120,7 +122,7 @@ the results of a cluster-level command.
 .show tables (TaggingGames1,TaggingGames2) extents where tags has 'tag1' and tags has 'tag2'
 ``` 
  
-## .merge extents
+### .merge extents
 
 **Syntax**
 
@@ -163,7 +165,7 @@ Merges two specific extents in `MyTable`, performed synchronously
      - The source extents have been moved to a different table.
      - The source table has been entirely dropped or renamed.
 
-## .move extents
+### .move extents
 
 **Syntax**
 
@@ -229,13 +231,13 @@ Moves all extents from 2 specific tables (`MyTable1`, `MyTable2`) to table `MyOt
 |4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f
 |2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df 
 
-## .drop extents
+### .drop extents
 
 Drops extents from specified database / table. 
 This command has several variants: In one variant the extents to be dropped are specified by a Kusto query, whereas in 
 the other variants extents are specified using a mini-language described below. 
  
-### Specifying Extents with a Query
+#### Specifying Extents with a Query
 
 Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/principal-roles.html) foreach of the tables which have extents returned by the provided query.
 
@@ -247,7 +249,7 @@ Drops extents (or just reports them without actually dropping if `whatif` is use
 
 The extents are specified using a Kusto query that returns a recordset with a column called "ExtentId". 
  
-### Dropping a specific extent
+#### Dropping a specific extent
 
 Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/principal-roles.html) in case table name is specified.
 
@@ -257,7 +259,7 @@ Requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/conc
 
 `.drop` `extent` *ExtentId* [`from` *TableName*]
 
-### Dropping specific multiple extents
+#### Dropping specific multiple extents
 
 Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/principal-roles.html) in case table name is specified.
 
@@ -267,7 +269,7 @@ Requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/conc
 
 `.drop` `extents` `(`*ExtentId1*`,`...*ExtentIdN*`)` [`from` *TableName*]
 
-### Specifying Extents by Properties
+#### Specifying Extents by Properties
 
 Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/principal-roles.html) in case table name is specified.
 
@@ -322,7 +324,7 @@ Removes all extents from 'TestTable':
 |---|---|---
 |43c6e03f-1713-4ca7-a52a-5db8a4e8b87d |TestTable |2015-01-12 12:48:49.4298178 
 
-## .replace extents
+### .replace extents
 
 **Syntax**
 
@@ -378,7 +380,7 @@ tagged with `drop-by:MyTag`:
 |4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f
 |2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df 
 
-## .attach extents by metadata
+### .attach extents by metadata
 
 **Syntax**
 
@@ -449,9 +451,9 @@ Attaches the last 10 extents dropped from any table in `MyDatabase` back to the 
 |MyDatabase |MyTable2 | 6
 |MyDatabase |MyTable3 | 1
 
-# Extent Tags
+## Extent Tags
 
-## .drop extent tags
+### .drop extent tags
 
 **Syntax**
 
@@ -532,7 +534,7 @@ Drops all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from 
 |4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f | Partition001 Partition002
 |2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df | 
 
-## .alter extent tags
+### .alter extent tags
 
 **Syntax**
 
@@ -577,9 +579,9 @@ Alters tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` t
 |4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f | drop-by:MyNewTag MyOtherNewTag
 |2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df | drop-by:MyNewTag MyOtherNewTag
 
-# Extent Containers
+## Extent Containers
 
-## .show extentcontainers
+### .show extentcontainers
 
 ```kusto
 .show extentcontainers [with(state='<ReadWrite|ReadOnly|SoftDelete>', isrecyclable='<true|false>')]
@@ -629,7 +631,7 @@ IsRecyclable |Boolean |Indicates whether or not the container can be periodicall
 StoresDatabaseMetadata |Boolean |Indicates whether or not the container stores the database's metadata (there is exactly one container per database which has this set to `true`).
 HardDeletePeriod |TimeSpan |Indicates the time span after which the extent container will get hard deleted from storage. 
 
-## .drop extentcontainers
+### .drop extentcontainers
 
 ```kusto
 .alter extentcontainers [DatabaseName] drop [ContainerId]  
@@ -664,7 +666,7 @@ Output parameter |Type |Description
 DatabaseName |String |The name of the database the containers were dropped from.
 Result |String |Upon success - the number of extent containers which were dropped from the database. Upon failure - a database-specific error message.
 
-## .add extentcontainers
+### .add extentcontainers
 
 ```kusto
 .alter extentcontainers [DatabaseName] add [BlobContainerUrl;Key]|[Network Path]|[Local Path] [HardDeletePeriod]
@@ -705,7 +707,7 @@ IsRecyclable |Boolean |Indicates whether or not the container can be periodicall
 StoresDatabaseMetadata |Boolean |Indicates whether or not the container stores the database's metadata (there is exactly one container per database which has this set to `true`).
 HardDeletePeriod |TimeSpan |Indicates the time span after which the extent container will get hard deleted from storage. 
 
-## .recycle extentcontainers
+### .recycle extentcontainers
 
  `Recycle` is an operation which consists of:
  * Setting the state of an existing container to `ReadOnly`.
@@ -747,7 +749,7 @@ Output parameter |Type |Description
 DatabaseName |String |The name of the database the containers were recycled in.
 Result |String |Upon success - the number of extent containers which were recycled in the database. Upon failure - a database-specific error message.
  
-## .alter extentcontainers
+### .alter extentcontainers
 
 Alters the state of an extent container in a database.
  

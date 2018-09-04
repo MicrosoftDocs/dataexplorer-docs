@@ -15,7 +15,7 @@ Generally, using Kusto.Ingest library should be preferred whenever ingesting dat
 When this is not an option (usually due to OS constratints), with some effort one can achieve almost the same functionality.<BR>
 This article shows how to implement **Queued Ingestion** to Kusto without taking dependency on the Kusto.Ingest package.
 
->**Note:** The code below is written in C# making use of Azure Storage SDK, ADAL Authentication library, and NewtonSoft.JSON package in order to simplify the sample code.<BR>If needed, the corresponding code can be replaced with appropriate [Azure Storage REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference) calls, [non-.NET ADAL package](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-authentication-libraries) and any available JSON handling package.
+>**Note:** The code below is written in C# making use of Azure Storage SDK, ADAL Authentication library, and NewtonSoft.JSON package in order to simplify the sample code.<BR>If needed, the corresponding code can be replaced with appropriate [Azure Storage REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api) calls, [non-.NET ADAL package](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-authentication-libraries) and any available JSON handling package.
 
 ## Overview
 The following code sample demonstrates Queued (going via Kusto Data Management service) data ingestion to Kusto without the use of Kusto.Ingest library.<BR>

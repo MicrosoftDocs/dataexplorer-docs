@@ -31,7 +31,7 @@ The CM is accessible at [https://manage-kusto.kusto.windows.net](https://manage-
 You can connect to it using any [Kusto client tool](https://kusdoc2.azurewebsites.net/docs/tools/tools.html).
 
 
-# show commands - query service information
+## show commands - query service information
 
 These queries extract information regarding the cloud service, its instances status and the ability to scale its resources. 
 
@@ -46,7 +46,7 @@ These queries extract information regarding the cloud service, its instances sta
 For these commands, access permissions are required according to the [authorization model](https://kusdoc2.azurewebsites.net/docs/concepts/principal-roles.html).
 
     
-## show operations 
+### show operations 
 
 Returns operation status for specific operations which were executed in the last 12 hours
 
@@ -76,7 +76,7 @@ Returns operation status for specific operations which were executed in the last
 |--|--|--|--|--|--|--|--
 |841fafa4-076a-4cba-9300-4836da0d9c75 |ServiceCreate |Kusto.Azure.Svc_IN_1 |2015-01-06 08:47:02.0000000 |2015-01-06 08:48:19.0000000 |0001-01-01 00:01:17.0000000 |InProgress |Started deployment of service 'Engine-NewService'| 
   
-# management commands - service creation and maintenance
+## management commands - service creation and maintenance
 
 These queries extract information regarding the cloud service, its instances status and the ability to scale its resources. 
 
@@ -100,11 +100,11 @@ The following diagram shows the transistion between service's states as a result
 
 ![alt text](./images/services-fsm.png "services-fsm")
 
-# Cluster Management Limits
+## Cluster Management Limits
 
 This section lists the limits of cluster management service. When a limit  is reached, the caller receives the HTTP status code 429 Too many requests. 
 
-## Concurrent Requests Limits
+### Concurrent Requests Limits
 
 The limits are applied in the scope of a service and an operation (for example, create database for KustoLab service). 
 

@@ -131,7 +131,7 @@ ms.date: 09/24/2018
 |[sin()](sinfunction.md)|Returns the sine function.|
 |[sqrt()](sqrtfunction.md)|Returns the square root function.|
 |[tan()](tanfunction.md)|Returns the tangent function.|
-|[welch_test()](welch-testfunction.md)|Computes the p-value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s-t-test).|
+|[welch_test()](welch-testfunction.md)|Computes the p-value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s_t-test).|
 
 
 ## Metadata Functions
