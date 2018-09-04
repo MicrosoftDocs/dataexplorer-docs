@@ -98,7 +98,7 @@ T | make-series PriceAvg=avg(Price) default=0
 on Purchase in range(datetime(2016-09-10), datetime(2016-09-12), 1d) by Supplier, Fruit
 ```
   
-![](./Images/aggregations/makeseries.png)
+![alt text](./Images/aggregations/makeseries.png "makeseries")
   
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)

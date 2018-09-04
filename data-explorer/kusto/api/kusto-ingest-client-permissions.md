@@ -24,7 +24,7 @@ Implemented by [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-
 
 The following diagram outlines the Queued ingestion client interaction with Kusto:<BR>
 
-![](images/queued-ingest.jpg)
+![alt text](images/queued-ingest.jpg "queued-ingest")
 
 ### Permissions on the Engine Service
 In order to qualify for data ingestion into table `T1` on database `DB1` the principal performing the ingest operation must be authorized for that.

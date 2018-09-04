@@ -57,4 +57,4 @@ print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([1,2.2,
 | render timechart
 ```
 
-![](./Images/samples/series-fit-2lines.png)
+![alt text](./Images/samples/series-fit-2lines.png "series-fit-2lines")

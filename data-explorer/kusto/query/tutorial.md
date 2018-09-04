@@ -236,7 +236,7 @@ StormEvents
 | render columnchart
 ```
 
-![](./images/tour/060.png)
+![alt text](./images/tour/060.png "060")
 
 Although we removed `mid` in the project operation, we still need it if we want the chart to display the countries in that order.
 
@@ -253,7 +253,7 @@ StormEvents
 | render timechart
 ```
 
-![](./images/tour/080.png)
+![alt text](./images/tour/080.png "080")
 
 ## Multiple series
 
@@ -266,11 +266,11 @@ StormEvents
 | summarize count() by bin(StartTime, 10h), Source
 ```
 
-![](./images/tour/090.png)
+![alt text](./images/tour/090.png "090")
 
 Just add the render term to the above: `| render timechart`.
 
-![](./images/tour/100.png)
+![alt text](./images/tour/100.png "100")
 
 Notice that `render timechart` uses the first column as the x-axis, and then displays the other columns as separate lines.
 
@@ -288,11 +288,11 @@ StormEvents
 | render timechart
 ```
 
-![](./images/tour/120.png)
+![alt text](./images/tour/120.png "120")
 
 Currently, `render` doesn't label durations properly, but we could use `| render columnchart` instead:
 
-![](./images/tour/110.png)
+![alt text](./images/tour/110.png "110")
 
 ## Compare multiple daily series
 
@@ -306,7 +306,7 @@ StormEvents
 | render timechart
 ```
 
-![](./images/tour/130.png)
+![alt text](./images/tour/130.png "130")
 
 Divide by `1h` to turn the x-axis into hour number instead of a duration:
 
@@ -318,7 +318,7 @@ StormEvents
 | render columnchart
 ```
 
-![](./images/tour/140.png)
+![alt text](./images/tour/140.png "140")
 
 ## join
 
@@ -336,7 +336,7 @@ StormEvents
 | distinct State
 ```
 
-![](./images/tour/145.png)
+![alt text](./images/tour/145.png "145")
 
 Assume you have a data that includes events marking the start and end of each session, with a unique id for each session. 
 
@@ -357,7 +357,7 @@ Events
 | take 10
 ```
 
-![](./images/tour/150.png)
+![alt text](./images/tour/150.png "150")
 
 It's good practice to use `project` to select just the columns we need before performing the join.
 In the same clauses, we rename the timestamp column.
@@ -379,12 +379,12 @@ StormEvents
 ```
 
 
-![](./images/tour/170.png)
+![alt text](./images/tour/170.png "170")
 
 Or use `| render columnchart`:
 
 
-![](./images/tour/160.png)
+![alt text](./images/tour/160.png "160")
 
 ## Percentiles
 
@@ -398,7 +398,7 @@ Use the above query, but replace `render` with:
 
 In this case, we provided no `by` clause, so the result is a single row:
 
-![](./images/tour/180.png)
+![alt text](./images/tour/180.png "180")
 
 From which we can see that:
 
@@ -419,7 +419,7 @@ StormEvents
 | summarize percentiles(duration, 5, 20, 50, 80, 95) by State
 ```
 
-![](./images/tour/190.png)
+![alt text](./images/tour/190.png "190")
 
 ## Let: Assign a result to a variable
 

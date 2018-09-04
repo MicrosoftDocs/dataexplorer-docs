@@ -81,4 +81,4 @@ T | evaluate active_users_count(User, Timestamp, Start, End, LookbackWindow, Per
 
 A user is considered active if it was seen in at least 3 distinct days (Period = 1d, ActivePeriods=3) in a lookback window of 8d previous to current appearance (including current appearance). In the illustration below, the only appearances that are active according to this criteria, are User A on the 7/20 and User B on the 7/4 (see plugin results above). Note that although the appearances of User B on 6/29-30 are not in the Start-End time range, they are included for the lookback window of User B on the 7/4. 
 
-![](images/queries/active-users-count.png)
+![alt text](images/queries/active-users-count.png "active-users-count")

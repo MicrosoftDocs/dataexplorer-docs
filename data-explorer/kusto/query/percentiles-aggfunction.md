@@ -69,7 +69,7 @@ CallDetailRecords
 | summarize percentiles(Duration, 5, 50, 95) by continent
 ```
 
-![](./images/aggregations/percentiles.png)
+![alt text](./images/aggregations/percentiles.png "percentiles")
 
 The results show that in Europe, 5% of calls are shorter than 11.55s, 50% of calls are shorter than 3 minutes 18.46 seconds, and 95% of calls are shorter than 40 minutes 48 seconds.
 
@@ -99,7 +99,7 @@ In order to reduce bandwidth and storage, the custmer performs pre-aggregation t
 following buckets: `{ 10, 20, 30, 40, 50, 100 }`, and counts the number of events in each bucket,
 which gives the following Kusto table:
 
-![](./images/aggregations/percentilesw-table.png)
+![alt text](./images/aggregations/percentilesw-table.png "percentilesw-table")
 
 Which can be read as:
  - 8 events in the 10ms bucket (corresponding to subset `{ 1, 1, 2, 2, 2, 5, 7, 7 }`)
@@ -119,12 +119,12 @@ Table
 
 The result for the above query is:
 
-![](./images/aggregations/percentilesw-result.png)
+![alt text](./images/aggregations/percentilesw-result.png "percentilesw-result")
 
 Notice, that the above query corresponds to the function
 `percentiles(LatencyBucket, 50, 75, 99.9)` if the data was expended to the following form:
 
-![](./images/aggregations/percentilesw-rawtable.png)
+![alt text](./images/aggregations/percentilesw-rawtable.png "percentilesw-rawtable")
 
 ## Getting multiple percentiles in an array
 Multiple percentiles percentiles can be obtained as an array in a single dynamic column instead of multiple columns: 
@@ -134,7 +134,7 @@ CallDetailRecords
 | summarize percentiles_array(Duration, 5, 25, 50, 75, 95), avg(Duration)
 ```
 
-![](./images/aggregations/percentiles-array-result.png)
+![alt text](./images/aggregations/percentiles-array-result.png "percentiles-array-result")
 
 Similarily weighted percentiles can be returned as a dynamic array using `percentilesw_array`
 

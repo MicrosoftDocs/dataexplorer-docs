@@ -35,13 +35,13 @@ Implemented by [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-
 
 The following diagram outlines the Queued ingestion client interaction with Kusto:<BR>
 
-![](images/queued-ingest.jpg)
+![alt text](images/queued-ingest.jpg "queued-ingest")
 
 ### Direct Ingestion
 Implemented by [KustoDirectIngestClient](kusto-ingest-client-reference.md#class-kustodirectingestclient), this mode forces direct interaction with the Kusto Engine service. In this mode Kusto Ingestion service plays no moderative or managerial role. Every ingestion request in Direct mode is eventually translated into `.ingest` command executed directly on Kusto Engine service.<BR>
 The following diagram outlines the Direct ingestion client interaction with Kusto:<BR>
 
-![](images/direct-ingest.jpg)
+![alt text](images/direct-ingest.jpg "direct-ingest")
 
 >The Direct mode is not recommended for production grade ingestion solutions.
 

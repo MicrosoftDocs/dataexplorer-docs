@@ -54,4 +54,4 @@ range x from 1 to 100 step 1
 | render linechart
 ``` 
 
-![](./Images/samples/series-outliers.png)
+![alt text](./Images/samples/series-outliers.png "series-outliers")

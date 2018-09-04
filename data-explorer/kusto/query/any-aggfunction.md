@@ -41,18 +41,18 @@ Show Random Continent:
 
     Continents | summarize any(Continent)
 
-![](./images/aggregations/any1.png)
+![alt text](./images/aggregations/any1.png "any1")
 
 
 Show all the details for a random row:
 
     Continents | summarize any(*) 
 
-![](./images/aggregations/any2.png)
+![alt text](./images/aggregations/any2.png "any2")
 
 
 Show all the details for each random continent:
 
    Continents | summarize any(*) by Continent
 
-![](./images/aggregations/any3.png)
+![alt text](./images/aggregations/any3.png "any3")

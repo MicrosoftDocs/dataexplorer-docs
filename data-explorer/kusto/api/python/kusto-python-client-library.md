@@ -28,7 +28,7 @@ including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/e
 
 * [GitHub Repository](https://github.com/Azure/azure-kusto-python)
 
-    [![](https://travis-ci.org/Azure/azure-kusto-python.svg?branch=master)](https://travis-ci.org/Azure/azure-kusto-python)
+    [![alt text](https://travis-ci.org/Azure/azure-kusto-python.svg?branch=master "azure-kusto-python")](https://travis-ci.org/Azure/azure-kusto-python)
 
 * Pypi packages:
 

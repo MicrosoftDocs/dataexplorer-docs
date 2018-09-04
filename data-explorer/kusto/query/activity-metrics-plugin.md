@@ -129,7 +129,7 @@ range _day from _start to _end  step 1d
 |2017-05-29 00:00:00.0000000|0.063468992248062|0.936531007751938|
 
 
-![](images/queries/activity-metrics-churn-and-retention.png)
+![alt text](images/queries/activity-metrics-churn-and-retention.png "activity-metrics-churn-and-retention")
 
 
 ### Distinct values and distinct 'new' values 
@@ -177,4 +177,4 @@ range _day from _start to _end  step 1d
 |2017-05-22 00:00:00.0000000|1740|1017|
 |2017-05-29 00:00:00.0000000|960|756|
 
-![](images/queries/activity-metrics-dcount-and-dcount-newvalues.png)
+![alt text](images/queries/activity-metrics-dcount-and-dcount-newvalues.png "activity-metrics-dcount-and-dcount-newvalues")

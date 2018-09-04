@@ -104,4 +104,4 @@ _data
 | render linechart 
 ```
 
-![](./images/queries/example-session-count.png)
+![alt text](./images/queries/example-session-count.png "example-session-count")

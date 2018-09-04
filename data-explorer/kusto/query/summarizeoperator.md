@@ -84,7 +84,7 @@ Operator       |Default value
 
 ## Examples
 
-![](./Images/aggregations/01.png)
+![alt text](./Images/aggregations/01.png "01")
 
 **Example**
 

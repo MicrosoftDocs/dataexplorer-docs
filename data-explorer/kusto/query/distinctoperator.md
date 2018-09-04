@@ -26,7 +26,7 @@ Shows the distinct combination of fruit and price.
 Table | distinct fruit, price
 ```
 
-![](./Images/aggregations/distinct.PNG)
+![alt text](./Images/aggregations/distinct.PNG "distinct")
 
 **Remarks**
 

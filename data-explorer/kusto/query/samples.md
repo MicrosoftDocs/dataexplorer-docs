@@ -29,7 +29,7 @@ StormEvents
 * Use `where`, `summarize` and `top` to limit the volume of data that you display.
 * Sort the results so as to define the order of the x-axis.
 
-![](./Images/samples/060.png)
+![alt text](./Images/samples/060.png "060")
 
 <a name="activities"></a>
 ## Get sessions from start and stop events
@@ -96,7 +96,7 @@ Then we group by start time and ip to get a group for each session. We must supp
 `argmin` picks out the row with the smallest duration in each group, and the `*` parameter passes through all the other columns, though it prefixes "min_" to each column name. 
 
 
-![](./images/samples/040.png) 
+![alt text](./images/samples/040.png "040") 
 
 Then we can add some code to count the durations in conveniently-sized bins. We've a slight preference for a bar chart, so we divide by `1s` to convert the timespans to numbers. 
 
@@ -109,7 +109,7 @@ Then we can add some code to count the durations in conveniently-sized bins. We'
     | sort by duration asc | render barchart 
 
 
-![](./images/samples/050.png) 
+![alt text](./images/samples/050.png "050") 
 
 
 ### Real example

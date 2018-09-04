@@ -98,7 +98,7 @@ For these commands, admin permissions are required according to the [authorizati
 
 The following diagram shows the transistion between service's states as a result of invoking the commands:
 
-![](./images/services-fsm.png)
+![alt text](./images/services-fsm.png "services-fsm")
 
 # Cluster Management Limits
 

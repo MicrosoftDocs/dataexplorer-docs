@@ -13,7 +13,7 @@ ms.date: 09/24/2018
 Calculates the variance of *Expr* across the group, considering the group as a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29). 
 
 * Used formula:
-![](./images/aggregations/variance-sample.png)
+![alt text](./images/aggregations/variance-sample.png "variance-sample")
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
 

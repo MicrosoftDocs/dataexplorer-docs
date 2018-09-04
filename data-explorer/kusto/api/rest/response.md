@@ -41,4 +41,4 @@ table is a JSON property bag with:
 
 This is best explained by using the following diagram:
 
-![JSON Response Representation](../images/rest-json-representation.png)
+![JSON Response Representation](../images/rest-json-representation.png "rest-json-representation")

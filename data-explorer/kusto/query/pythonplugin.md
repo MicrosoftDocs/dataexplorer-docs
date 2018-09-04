@@ -106,7 +106,7 @@ range x from 1 to 360 step 1
 )
 | render linechart 
 ```
-![](./images/samples/sine-demo.png)
+![alt text](./images/samples/sine-demo.png "sine-demo")
 
 Please send feedback and questions about this plugin to [Kusto Machine Learning](mailto:kustoML@microsoft.com).
 We'd love to hear from you!

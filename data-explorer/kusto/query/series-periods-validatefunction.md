@@ -46,7 +46,7 @@ print y=dynamic([80,139,87,110,68,54,50,51,53,133,86,141,97,156,94,149,95,140,77
 | render linechart 
 ```
 
-![](./Images/samples/series-periods.png)
+![alt text](./Images/samples/series-periods.png "series-periods")
 
 Running `series_periods_validate()` on this series to validate a weekly period (14 points long) results in a high score,  and with a **0** score  when validating a five days period (10 points long).
 
