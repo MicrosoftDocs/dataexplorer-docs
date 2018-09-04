@@ -27,9 +27,9 @@ Operator        |Description                                                    
 `hasprefix_cs`  |RHS is a term prefix in LHS                                       |Yes           |`"North America" hasprefix_cs "Ame"`
 `!hasprefix_cs` |RHS is not a term prefix in LHS                                   |Yes           |`"North America" !hasprefix_cs "CA"` 
 `hassuffix`     |RHS is a term suffix in LHS                                       |No            |`"North America" hassuffix "ica"`
-`!hassuffix`    |RHS is not a term suffix in LHS                                   |No            |`"North America" !hassuffix "americ"
+`!hassuffix`    |RHS is not a term suffix in LHS                                   |No            |`"North America" !hassuffix "americ"`
 `hassuffix_cs`  |RHS is a term suffix in LHS                                       |Yes           |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs` |RHS is not a term suffix in LHS                                   |Yes           |`"North America" !hassuffix_cs "icA"
+`!hassuffix_cs` |RHS is not a term suffix in LHS                                   |Yes           |`"North America" !hassuffix_cs "icA"`
 `contains`      |RHS occurs as a subsequence of LHS                                |No            |`"FabriKam" contains "BRik"`
 `!contains`     |RHS does not occur in LHS                                         |No            |`"Fabrikam" !contains "xyz"`
 `contains_cs`   |RHS occurs as a subsequence of LHS                                |Yes           |`"FabriKam" contains_cs "Kam"`
