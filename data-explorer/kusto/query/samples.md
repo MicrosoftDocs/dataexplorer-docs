@@ -383,12 +383,14 @@ Logs
 A common use-case is using static mapping of values that can help in adopting results into more presentable way.  
 For example, consider having next table. DeviceModel  specifies a model of the device, which is not a very convenient form of referencing to the device name.  
 
+
 |DeviceModel |Count 
 |---|---
 |iPhone5,1 |32 
 |iPhone3,2 |432 
 |iPhone7,2 |55 
 |iPhone5,2 |66 
+
   
 A better representation may be:  
 
@@ -456,7 +458,8 @@ Content of Devices now:
 |iPhone3,2 |iPhone 4 
 |iPhone7,2 |iPhone 6 
 |iPhone5,2 |iPhone5 
-  
+
+
 Same trick for creating test table Source:
 
 ```kusto
@@ -464,6 +467,7 @@ Same trick for creating test table Source:
 
 .ingest inline into table Source ["iPhone5,1",32]["iPhone3,2",432]["iPhone7,2",55]["iPhone5,2",66]
 ```
+
 
 Join and project:
 
@@ -481,6 +485,7 @@ Result:
 |iPhone 4 |432 
 |iPhone 6 |55 
 |iPhone5 |66 
+
 
 ## Creating and using query-time dimension tables
 
