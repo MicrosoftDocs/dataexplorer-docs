@@ -12,6 +12,7 @@ ms.date: 09/24/2018
 
 The following table summarizes operators on strings:
 
+
 Operator       |Description                         |Case-Sensitive|Example (yields `true`)
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Equals                              |Yes           |`"aBc" == "aBc"`
@@ -96,7 +97,3 @@ a substring index defined on the column (which allows searching for any
 substring, not just a whole term, very quickly), at the cost of increased
 memory footprint of the index. Last, it is possible to disable building
 any index on a column.
-
-
-
-
