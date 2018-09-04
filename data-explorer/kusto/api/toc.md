@@ -37,7 +37,7 @@
 ### [Examples](kusto-ingest-client-examples.md)
 ### [Queued ingestion example](kusto-ingest-queued-ingest-sample.md)
 ### [REST API example](kusto-ingest-client-rest.md)
-## [Kusto.ClusterManagement](kusto-management-client-library.md)
+
 
 # Python Client Library
 ## [azure-kusto-python](python/kusto-python-client-library.md)
