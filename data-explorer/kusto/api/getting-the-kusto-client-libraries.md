@@ -12,22 +12,17 @@ ms.date: 09/24/2018
 
 ## The "official" NuGet feed
 
-The Kusto client libraries are published as NuGet packages through VSTS.
-The official feed is [the 'Kusto' VSTS feed (in the '1ESSharedAssets' account)](https://1essharedassets.visualstudio.com/1esPkgs/_packaging?feed=Kusto&_a=feed).
 
 
-
-For external customers using the Kusto platform as part of the preview program, the packages can be found on [nuget.org](https://www.nuget.org/packages?q=kusto).
+The Kusto client libraries are published as NuGet packages and can be found on [nuget.org](https://www.nuget.org/packages?q=kusto).
 
 The following packages are available at this feed:
 
 |Package               |Main assembly name|Runtime             |Description              |
 |----------------------|------------------|--------------------|-------------------------|
-|Kusto.Rest.Client     |Kusto.Rest.Client |.NET Standard 2.0   |Kusto Client Library.    |
 |Microsoft.Kusto.Client|Kusto.Data        |.NET Framework 4.5.1|Kusto Client Library.    |
 |Microsoft.Kusto.Ingest|Kusto.Ingest      |.NET Framework 4.5.1|Kusto Ingestion Library. |
-|Microsoft.Kusto.Manage|Kusto.Manage      |.NET Framework 4.5.1|Kusto Management Library.|
-|Microsoft.Kusto.Tools |                  |                    |Command-line tools |
+
 
 **Accessing the official NuGet feed from Visual Studio**
 

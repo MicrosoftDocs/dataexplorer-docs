@@ -14,7 +14,7 @@
 ## [Authentication Overview](authentication-overview.md)
 ## [Kusto Authentication](kusto-authentication.md)
 ## [AAD](https://kusdoc2.azurewebsites.net/docs/concepts/security-authn-aad.html)
-## [dSTS](https://kusdoc2.azurewebsites.net/docs/concepts/security-authn-dsts.html)
+
 ## [Basicauth](https://kusdoc2.azurewebsites.net/docs/concepts/security-authn-basicauth.html)
 ## [Kusto Connection Strings](https://kusdoc2.azurewebsites.net/docs/concepts/kusto-connection-strings.html)
 ## [Supported Principals](https://kusdoc2.azurewebsites.net/docs/concepts/principals-and-identity-providers.html)
