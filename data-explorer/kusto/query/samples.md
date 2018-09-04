@@ -446,9 +446,9 @@ Create the mapping table (just once):
 
 .ingest inline into table Devices 
     ["iPhone5,1","iPhone 5"]["iPhone3,2","iPhone 4"]["iPhone7,2","iPhone 6"]["iPhone5,2","iPhone5"]
-``` 
-  
-Content of Devices now: 
+```
+
+Content of Devices now:
 
 |DeviceModel |FriendlyName 
 |---|---
@@ -460,18 +460,18 @@ Content of Devices now:
 Same trick for creating test table Source:
 
 ```kusto
-.create table Source (DeviceModel: string, Count: int) 
+.create table Source (DeviceModel: string, Count: int)
 
 .ingest inline into table Source ["iPhone5,1",32]["iPhone3,2",432]["iPhone7,2",55]["iPhone5,2",66]
-``` 
-  
+```
+
 Join and project:
 
 ```kusto
 Devices  
 | join (Source) on DeviceModel  
 | project FriendlyName, Count
-``` 
+```
 
 Result:
 
