@@ -45,18 +45,19 @@ Please see [this page](tds/tds.md) for details.
 This is the recommended way to invoke Kusto functionality programmatically.
 A number of different libraries are provided:
 
-1. [**Kusto.Data (Kusto Client Library)**](./using-the-kusto-client-library.md), which can be used to query data, query metadata, and alter it.
-2. [**Kusto.Ingest (Kusto Ingestion Library)**](./kusto-ingest-client-library.md), which makes use of Kusto.Data and extends it to facilitate
+- [**Kusto.Data (Kusto Client Library)**](./using-the-kusto-client-library.md), which can be used to query data, query metadata, and alter it.
+- [**Kusto.Ingest (Kusto Ingestion Library)**](./kusto-ingest-client-library.md), which makes use of Kusto.Data and extends it to facilitate
    data ingestion.
-3. [**Kusto.Manage (Kusto Management Library)**](./kusto-management-client-library.md), which also makes use of Kusto.Data and extends it to
-   make it easier to manage Kusto clusters.
-4. **Kusto.IntelliSense**, which provides functionality of query tokenization for Syntax Highlighting and IntelliSense rules.
+
 
 The **Kusto Client Library** (Kusto.Data) is built on top of the Kusto REST API,
-and sends HTTPS requests to the target Kusto cluster. The **Kusto Ingestion Library**
-(Kusto.Ingest) and **Kusto Management Library** (Kusto.Manage) both utilize
-Kusto.Data. All three libraries make use of the Azure APIs (e.g. Azure Storage API,
-Azure Active Directory API).
+and sends HTTPS requests to the target Kusto cluster. 
+
+The **Kusto Ingestion Library** (Kusto.Ingest) utilizes Kusto.Data.
+
+
+
+All of the above libraries make use of the Azure APIs (e.g. Azure Storage API, Azure Active Directory API).
 
 ## Python Libraries
 

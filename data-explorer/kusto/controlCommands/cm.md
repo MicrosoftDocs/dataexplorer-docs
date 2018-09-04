@@ -29,7 +29,7 @@ Access to the CM is granted to principals that are registered as
 
 The CM is accessible at [https://manage-kusto.kusto.windows.net](https://manage-kusto.kusto.windows.net).
 You can connect to it using any [Kusto client tool](https://kusdoc2.azurewebsites.net/docs/tools/tools.html).
-This can also be done programmatically by using the [Kusto Management Client Library](../api/kusto-management-client-library.md) 
+
 
 # show commands - query service information
 
