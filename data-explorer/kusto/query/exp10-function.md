@@ -1,4 +1,4 @@
-﻿---
+---
 title: exp10() - Azure Kusto | Microsoft Docs
 description: This article describes exp10() in Azure Kusto.
 author: orspod

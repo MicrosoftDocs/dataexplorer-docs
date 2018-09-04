@@ -1,4 +1,4 @@
-﻿---
+---
 title: percentile_tdigest() - Azure Kusto | Microsoft Docs
 description: This article describes percentile_tdigest() in Azure Kusto.
 author: orspod

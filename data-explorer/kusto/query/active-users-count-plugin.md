@@ -1,4 +1,4 @@
-﻿---
+---
 title: active_users_count plugin - Azure Kusto | Microsoft Docs
 description: This article describes active_users_count plugin in Azure Kusto.
 author: orspod

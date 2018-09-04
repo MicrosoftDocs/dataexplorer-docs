@@ -1,4 +1,4 @@
-﻿---
+---
 title: union operator - Azure Kusto | Microsoft Docs
 description: This article describes union operator in Azure Kusto.
 author: orspod

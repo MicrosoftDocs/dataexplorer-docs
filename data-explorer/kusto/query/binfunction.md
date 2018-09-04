@@ -1,4 +1,4 @@
-﻿---
+---
 title: bin() - Azure Kusto | Microsoft Docs
 description: This article describes bin() in Azure Kusto.
 author: orspod

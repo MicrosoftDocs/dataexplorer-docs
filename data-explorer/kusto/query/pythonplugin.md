@@ -1,4 +1,4 @@
-﻿---
+---
 title: python plugin (preview) - Azure Kusto | Microsoft Docs
 description: This article describes python plugin (preview) in Azure Kusto.
 author: orspod

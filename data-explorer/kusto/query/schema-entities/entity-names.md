@@ -1,4 +1,4 @@
-﻿---
+---
 title: Entity names - Azure Kusto | Microsoft Docs
 description: This article describes Entity names in Azure Kusto.
 author: orspod

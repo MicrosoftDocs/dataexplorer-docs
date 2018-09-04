@@ -1,4 +1,4 @@
-﻿---
+---
 title: beta_pdf() - Azure Kusto | Microsoft Docs
 description: This article describes beta_pdf() in Azure Kusto.
 author: orspod

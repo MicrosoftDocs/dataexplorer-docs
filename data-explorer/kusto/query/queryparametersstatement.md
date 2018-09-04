@@ -1,4 +1,4 @@
-﻿---
+---
 title: Query parameters declaration statement - Azure Kusto | Microsoft Docs
 description: This article describes Query parameters declaration statement in Azure Kusto.
 author: orspod

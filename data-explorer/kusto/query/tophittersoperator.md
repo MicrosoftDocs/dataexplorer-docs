@@ -1,4 +1,4 @@
-﻿---
+---
 title: top-hitters operator - Azure Kusto | Microsoft Docs
 description: This article describes top-hitters operator in Azure Kusto.
 author: orspod

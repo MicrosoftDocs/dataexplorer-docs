@@ -1,4 +1,4 @@
-﻿---
+---
 title: diffpatterns plugin - Azure Kusto | Microsoft Docs
 description: This article describes diffpatterns plugin in Azure Kusto.
 author: orspod

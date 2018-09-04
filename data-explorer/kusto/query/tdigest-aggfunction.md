@@ -1,4 +1,4 @@
-﻿---
+---
 title: tdigest() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes tdigest() (aggregation function) in Azure Kusto.
 author: orspod

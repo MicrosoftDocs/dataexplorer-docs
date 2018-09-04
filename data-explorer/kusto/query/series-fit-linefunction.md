@@ -1,4 +1,4 @@
-﻿---
+---
 title: series_fit_line() - Azure Kusto | Microsoft Docs
 description: This article describes series_fit_line() in Azure Kusto.
 author: orspod

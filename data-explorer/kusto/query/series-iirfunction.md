@@ -1,4 +1,4 @@
-﻿---
+---
 title: series_iir() - Azure Kusto | Microsoft Docs
 description: This article describes series_iir() in Azure Kusto.
 author: orspod

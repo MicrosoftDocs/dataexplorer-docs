@@ -1,4 +1,4 @@
-﻿---
+---
 title: sign() - Azure Kusto | Microsoft Docs
 description: This article describes sign() in Azure Kusto.
 author: orspod

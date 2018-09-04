@@ -1,4 +1,4 @@
-﻿---
+---
 title: extent_id() - Azure Kusto | Microsoft Docs
 description: This article describes extent_id() in Azure Kusto.
 author: orspod

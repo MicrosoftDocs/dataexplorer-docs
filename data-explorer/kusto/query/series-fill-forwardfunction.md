@@ -1,4 +1,4 @@
-﻿---
+---
 title: series_fill_forward() - Azure Kusto | Microsoft Docs
 description: This article describes series_fill_forward() in Azure Kusto.
 author: orspod

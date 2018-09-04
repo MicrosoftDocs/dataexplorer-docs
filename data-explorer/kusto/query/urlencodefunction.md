@@ -1,4 +1,4 @@
-﻿---
+---
 title: url_encode() - Azure Kusto | Microsoft Docs
 description: This article describes url_encode() in Azure Kusto.
 author: orspod

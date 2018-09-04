@@ -1,4 +1,4 @@
-﻿---
+---
 title: cursor_current(), current_cursor() - Azure Kusto | Microsoft Docs
 description: This article describes cursor_current(), current_cursor() in Azure Kusto.
 author: orspod

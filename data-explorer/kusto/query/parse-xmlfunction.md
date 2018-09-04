@@ -1,4 +1,4 @@
-﻿---
+---
 title: parse_xml() - Azure Kusto | Microsoft Docs
 description: This article describes parse_xml() in Azure Kusto.
 author: orspod

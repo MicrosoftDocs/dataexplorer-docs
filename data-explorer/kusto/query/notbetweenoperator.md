@@ -1,4 +1,4 @@
-﻿---
+---
 title: notbetween operator - Azure Kusto | Microsoft Docs
 description: This article describes notbetween operator in Azure Kusto.
 author: orspod

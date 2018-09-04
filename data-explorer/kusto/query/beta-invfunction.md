@@ -1,4 +1,4 @@
-﻿---
+---
 title: beta_inv() - Azure Kusto | Microsoft Docs
 description: This article describes beta_inv() in Azure Kusto.
 author: orspod

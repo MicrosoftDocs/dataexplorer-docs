@@ -1,4 +1,4 @@
-﻿---
+---
 title: Restrict statement - Azure Kusto | Microsoft Docs
 description: This article describes Restrict statement in Azure Kusto.
 author: orspod

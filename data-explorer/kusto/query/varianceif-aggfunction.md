@@ -1,4 +1,4 @@
-﻿---
+---
 title: varianceif() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes varianceif() (aggregation function) in Azure Kusto.
 author: orspod

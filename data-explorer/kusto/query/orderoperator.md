@@ -1,4 +1,4 @@
-﻿---
+---
 title: order operator  - Azure Kusto | Microsoft Docs
 description: This article describes order operator  in Azure Kusto.
 author: orspod

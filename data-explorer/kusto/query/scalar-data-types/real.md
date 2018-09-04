@@ -1,4 +1,4 @@
-﻿---
+---
 title: The real data type - Azure Kusto | Microsoft Docs
 description: This article describes The real data type in Azure Kusto.
 author: orspod

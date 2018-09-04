@@ -1,4 +1,4 @@
-﻿---
+---
 title: tolong() - Azure Kusto | Microsoft Docs
 description: This article describes tolong() in Azure Kusto.
 author: orspod

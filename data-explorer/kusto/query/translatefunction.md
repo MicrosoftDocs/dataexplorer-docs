@@ -1,4 +1,4 @@
-﻿---
+---
 title: translate() - Azure Kusto | Microsoft Docs
 description: This article describes translate() in Azure Kusto.
 author: orspod

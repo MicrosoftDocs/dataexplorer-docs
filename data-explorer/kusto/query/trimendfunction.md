@@ -1,4 +1,4 @@
-﻿---
+---
 title: trim_end() - Azure Kusto | Microsoft Docs
 description: This article describes trim_end() in Azure Kusto.
 author: orspod

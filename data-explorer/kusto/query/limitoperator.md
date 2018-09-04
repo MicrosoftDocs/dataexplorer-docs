@@ -1,4 +1,4 @@
-﻿---
+---
 title: limit operator - Azure Kusto | Microsoft Docs
 description: This article describes limit operator in Azure Kusto.
 author: orspod

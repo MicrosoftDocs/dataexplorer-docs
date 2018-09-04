@@ -1,4 +1,4 @@
-﻿---
+---
 title: endofweek() - Azure Kusto | Microsoft Docs
 description: This article describes endofweek() in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
-﻿---
+---
 title: pi() - Azure Kusto | Microsoft Docs
 description: This article describes pi() in Azure Kusto.
 author: orspod

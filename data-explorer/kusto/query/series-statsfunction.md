@@ -1,4 +1,4 @@
-﻿---
+---
 title: series_stats() - Azure Kusto | Microsoft Docs
 description: This article describes series_stats() in Azure Kusto.
 author: orspod

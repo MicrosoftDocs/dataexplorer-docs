@@ -1,4 +1,4 @@
-﻿---
+---
 title: invoke operator - Azure Kusto | Microsoft Docs
 description: This article describes invoke operator in Azure Kusto.
 author: orspod

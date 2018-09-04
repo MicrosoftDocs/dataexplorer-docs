@@ -1,4 +1,4 @@
-﻿---
+---
 title: make_string() - Azure Kusto | Microsoft Docs
 description: This article describes make_string() in Azure Kusto.
 author: orspod

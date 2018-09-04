@@ -1,4 +1,4 @@
-﻿---
+---
 title: tostring() - Azure Kusto | Microsoft Docs
 description: This article describes tostring() in Azure Kusto.
 author: orspod

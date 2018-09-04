@@ -1,4 +1,4 @@
-﻿---
+---
 title: Shuffle Join - Azure Kusto | Microsoft Docs
 description: This article describes Shuffle Join in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
-﻿---
+---
 title: monthofyear() - Azure Kusto | Microsoft Docs
 description: This article describes monthofyear() in Azure Kusto.
 author: orspod

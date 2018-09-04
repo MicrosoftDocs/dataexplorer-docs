@@ -1,4 +1,4 @@
-﻿# [Kusto query language](./essentials/overview.md)
+# [Kusto query language](./essentials/overview.md)
 ## [Tutorial](tutorial.md)
 ## [Samples](samples.md)
 ## [Best practices](bestpractices.md)

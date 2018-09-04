@@ -1,4 +1,4 @@
-﻿---
+---
 title: isempty() - Azure Kusto | Microsoft Docs
 description: This article describes isempty() in Azure Kusto.
 author: orspod

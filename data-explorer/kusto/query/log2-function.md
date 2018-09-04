@@ -1,4 +1,4 @@
-﻿---
+---
 title: log2() - Azure Kusto | Microsoft Docs
 description: This article describes log2() in Azure Kusto.
 author: orspod

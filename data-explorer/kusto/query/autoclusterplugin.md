@@ -1,4 +1,4 @@
-﻿---
+---
 title: autocluster plugin - Azure Kusto | Microsoft Docs
 description: This article describes autocluster plugin in Azure Kusto.
 author: orspod

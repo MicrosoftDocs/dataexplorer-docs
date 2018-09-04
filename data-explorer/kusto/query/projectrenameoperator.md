@@ -1,4 +1,4 @@
-﻿---
+---
 title: project-rename operator - Azure Kusto | Microsoft Docs
 description: This article describes project-rename operator in Azure Kusto.
 author: orspod

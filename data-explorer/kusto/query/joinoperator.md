@@ -1,4 +1,4 @@
-﻿---
+---
 title: join operator - Azure Kusto | Microsoft Docs
 description: This article describes join operator in Azure Kusto.
 author: orspod

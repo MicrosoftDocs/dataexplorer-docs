@@ -1,4 +1,4 @@
-﻿---
+---
 title: dayofweek() - Azure Kusto | Microsoft Docs
 description: This article describes dayofweek() in Azure Kusto.
 author: orspod

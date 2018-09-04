@@ -1,4 +1,4 @@
-﻿---
+---
 title: round() - Azure Kusto | Microsoft Docs
 description: This article describes round() in Azure Kusto.
 author: orspod

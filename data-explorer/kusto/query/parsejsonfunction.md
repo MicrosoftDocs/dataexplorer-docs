@@ -1,4 +1,4 @@
-﻿---
+---
 title: parse_json() - Azure Kusto | Microsoft Docs
 description: This article describes parse_json() in Azure Kusto.
 author: orspod

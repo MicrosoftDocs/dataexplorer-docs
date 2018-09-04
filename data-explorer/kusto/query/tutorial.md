@@ -1,4 +1,4 @@
-﻿---
+---
 title: Tutorial - Azure Kusto | Microsoft Docs
 description: This article describes Tutorial in Azure Kusto.
 author: orspod

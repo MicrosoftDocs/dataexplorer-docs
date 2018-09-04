@@ -1,4 +1,4 @@
-﻿---
+---
 title: next() - Azure Kusto | Microsoft Docs
 description: This article describes next() in Azure Kusto.
 author: orspod

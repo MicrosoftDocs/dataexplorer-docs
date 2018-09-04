@@ -1,4 +1,4 @@
-﻿---
+---
 title: http_request plugin / http_request_post plugin - Azure Kusto | Microsoft Docs
 description: This article describes http_request plugin / http_request_post plugin in Azure Kusto.
 author: orspod

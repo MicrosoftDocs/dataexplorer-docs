@@ -1,4 +1,4 @@
-﻿---
+---
 title: gettype() - Azure Kusto | Microsoft Docs
 description: This article describes gettype() in Azure Kusto.
 author: orspod

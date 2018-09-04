@@ -1,4 +1,4 @@
-﻿---
+---
 title: series_fir() - Azure Kusto | Microsoft Docs
 description: This article describes series_fir() in Azure Kusto.
 author: orspod

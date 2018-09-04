@@ -1,4 +1,4 @@
-﻿---
+---
 title: Scalar data types - Azure Kusto | Microsoft Docs
 description: This article describes Scalar data types in Azure Kusto.
 author: orspod

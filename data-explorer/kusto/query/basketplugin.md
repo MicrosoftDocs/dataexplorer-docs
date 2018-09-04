@@ -1,4 +1,4 @@
-﻿---
+---
 title: basket plugin - Azure Kusto | Microsoft Docs
 description: This article describes basket plugin in Azure Kusto.
 author: orspod

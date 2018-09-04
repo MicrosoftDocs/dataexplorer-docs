@@ -1,4 +1,4 @@
-﻿---
+---
 title: parse_url() - Azure Kusto | Microsoft Docs
 description: This article describes parse_url() in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
-﻿---
+---
 title: isnotnull() - Azure Kusto | Microsoft Docs
 description: This article describes isnotnull() in Azure Kusto.
 author: orspod

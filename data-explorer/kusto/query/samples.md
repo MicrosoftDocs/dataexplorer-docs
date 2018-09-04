@@ -1,4 +1,4 @@
-﻿---
+---
 title: Samples - Azure Kusto | Microsoft Docs
 description: This article describes Samples in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
-﻿---
+---
 title: trim() - Azure Kusto | Microsoft Docs
 description: This article describes trim() in Azure Kusto.
 author: orspod

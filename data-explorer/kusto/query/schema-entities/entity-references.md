@@ -1,4 +1,4 @@
-﻿---
+---
 title: Entity references - Azure Kusto | Microsoft Docs
 description: This article describes Entity references in Azure Kusto.
 author: orspod

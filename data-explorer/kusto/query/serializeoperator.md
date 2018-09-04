@@ -1,4 +1,4 @@
-﻿---
+---
 title: serialize operator - Azure Kusto | Microsoft Docs
 description: This article describes serialize operator in Azure Kusto.
 author: orspod

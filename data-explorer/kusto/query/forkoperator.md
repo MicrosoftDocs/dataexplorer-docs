@@ -1,4 +1,4 @@
-﻿---
+---
 title: fork operator - Azure Kusto | Microsoft Docs
 description: This article describes fork operator in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
-﻿---
+---
 title: ceiling() - Azure Kusto | Microsoft Docs
 description: This article describes ceiling() in Azure Kusto.
 author: orspod

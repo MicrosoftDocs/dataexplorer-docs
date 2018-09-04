@@ -1,4 +1,4 @@
-﻿---
+---
 title: series_outliers() - Azure Kusto | Microsoft Docs
 description: This article describes series_outliers() in Azure Kusto.
 author: orspod

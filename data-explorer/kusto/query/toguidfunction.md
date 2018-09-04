@@ -1,4 +1,4 @@
-﻿---
+---
 title: toguid() - Azure Kusto | Microsoft Docs
 description: This article describes toguid() in Azure Kusto.
 author: orspod

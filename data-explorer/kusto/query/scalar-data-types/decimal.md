@@ -1,4 +1,4 @@
-﻿---
+---
 title: The decimal data type - Azure Kusto | Microsoft Docs
 description: This article describes The decimal data type in Azure Kusto.
 author: orspod

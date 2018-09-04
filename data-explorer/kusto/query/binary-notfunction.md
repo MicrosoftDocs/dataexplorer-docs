@@ -1,4 +1,4 @@
-﻿---
+---
 title: binary_not() - Azure Kusto | Microsoft Docs
 description: This article describes binary_not() in Azure Kusto.
 author: orspod

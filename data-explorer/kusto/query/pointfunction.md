@@ -1,4 +1,4 @@
-﻿---
+---
 title: point() - Azure Kusto | Microsoft Docs
 description: This article describes point() in Azure Kusto.
 author: orspod

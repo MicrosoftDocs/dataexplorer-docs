@@ -1,4 +1,4 @@
-﻿---
+---
 title: range operator - Azure Kusto | Microsoft Docs
 description: This article describes range operator in Azure Kusto.
 author: orspod

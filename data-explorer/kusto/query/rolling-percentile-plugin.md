@@ -1,4 +1,4 @@
-﻿---
+---
 title: rolling_percentile plugin - Azure Kusto | Microsoft Docs
 description: This article describes rolling_percentile plugin in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
-﻿---
+---
 title: iscolumnexists() - Azure Kusto | Microsoft Docs
 description: This article describes iscolumnexists() in Azure Kusto.
 author: orspod

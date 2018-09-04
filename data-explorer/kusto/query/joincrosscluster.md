@@ -1,4 +1,4 @@
-﻿---
+---
 title: Cross-Cluster Join - Azure Kusto | Microsoft Docs
 description: This article describes Cross-Cluster Join in Azure Kusto.
 author: orspod

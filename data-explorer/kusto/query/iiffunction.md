@@ -1,4 +1,4 @@
-﻿---
+---
 title: iif() - Azure Kusto | Microsoft Docs
 description: This article describes iif() in Azure Kusto.
 author: orspod

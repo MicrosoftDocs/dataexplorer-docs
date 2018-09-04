@@ -1,4 +1,4 @@
-﻿---
+---
 title: beta_cdf() - Azure Kusto | Microsoft Docs
 description: This article describes beta_cdf() in Azure Kusto.
 author: orspod

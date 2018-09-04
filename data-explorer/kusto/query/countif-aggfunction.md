@@ -1,4 +1,4 @@
-﻿---
+---
 title: countif() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes countif() (aggregation function) in Azure Kusto.
 author: orspod

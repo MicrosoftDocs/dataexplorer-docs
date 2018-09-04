@@ -1,4 +1,4 @@
-﻿---
+---
 title: series_seasonal() - Azure Kusto | Microsoft Docs
 description: This article describes series_seasonal() in Azure Kusto.
 author: orspod

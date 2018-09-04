@@ -1,4 +1,4 @@
-﻿---
+---
 title: tdigest_merge() - Azure Kusto | Microsoft Docs
 description: This article describes tdigest_merge() in Azure Kusto.
 author: orspod

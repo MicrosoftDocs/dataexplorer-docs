@@ -1,4 +1,4 @@
-﻿---
+---
 title: Bitwise (Binary) Operators - Azure Kusto | Microsoft Docs
 description: This article describes Bitwise (Binary) Operators in Azure Kusto.
 author: orspod

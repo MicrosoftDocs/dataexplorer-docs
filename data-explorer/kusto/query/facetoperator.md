@@ -1,4 +1,4 @@
-﻿---
+---
 title: facet operator - Azure Kusto | Microsoft Docs
 description: This article describes facet operator in Azure Kusto.
 author: orspod

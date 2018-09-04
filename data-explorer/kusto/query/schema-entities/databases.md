@@ -1,4 +1,4 @@
-﻿---
+---
 title: Databases - Azure Kusto | Microsoft Docs
 description: This article describes Databases in Azure Kusto.
 author: orspod

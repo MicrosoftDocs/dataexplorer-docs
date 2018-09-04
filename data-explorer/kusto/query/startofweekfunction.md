@@ -1,4 +1,4 @@
-﻿---
+---
 title: startofweek() - Azure Kusto | Microsoft Docs
 description: This article describes startofweek() in Azure Kusto.
 author: orspod

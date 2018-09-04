@@ -1,4 +1,4 @@
-﻿---
+---
 title: radians() - Azure Kusto | Microsoft Docs
 description: This article describes radians() in Azure Kusto.
 author: orspod

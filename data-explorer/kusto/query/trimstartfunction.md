@@ -1,4 +1,4 @@
-﻿---
+---
 title: trim_start() - Azure Kusto | Microsoft Docs
 description: This article describes trim_start() in Azure Kusto.
 author: orspod

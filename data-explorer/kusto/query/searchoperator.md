@@ -1,4 +1,4 @@
-﻿---
+---
 title: search operator - Azure Kusto | Microsoft Docs
 description: This article describes search operator in Azure Kusto.
 author: orspod

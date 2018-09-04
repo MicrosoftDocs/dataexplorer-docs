@@ -1,4 +1,4 @@
-﻿---
+---
 title: arg_min() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes arg_min() (aggregation function) in Azure Kusto.
 author: orspod

@@ -1,4 +1,4 @@
-﻿---
+---
 title: string_size() - Azure Kusto | Microsoft Docs
 description: This article describes string_size() in Azure Kusto.
 author: orspod

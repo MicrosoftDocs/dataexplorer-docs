@@ -1,4 +1,4 @@
-﻿---
+---
 title: The timespan data type - Azure Kusto | Microsoft Docs
 description: This article describes The timespan data type in Azure Kusto.
 author: orspod

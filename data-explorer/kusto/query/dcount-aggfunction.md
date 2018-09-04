@@ -1,4 +1,4 @@
-﻿---
+---
 title: dcount() (aggregation function) - Azure Kusto | Microsoft Docs
 description: This article describes dcount() (aggregation function) in Azure Kusto.
 author: orspod

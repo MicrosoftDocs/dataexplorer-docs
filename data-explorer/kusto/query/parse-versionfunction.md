@@ -1,4 +1,4 @@
-﻿---
+---
 title: parse_version() - Azure Kusto | Microsoft Docs
 description: This article describes parse_version() in Azure Kusto.
 author: orspod

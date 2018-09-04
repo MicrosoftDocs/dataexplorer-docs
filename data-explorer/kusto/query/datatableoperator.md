@@ -1,4 +1,4 @@
-﻿---
+---
 title: datatable operator - Azure Kusto | Microsoft Docs
 description: This article describes datatable operator in Azure Kusto.
 author: orspod

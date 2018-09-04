@@ -1,4 +1,4 @@
-﻿---
+---
 title: Alias statement - Azure Kusto | Microsoft Docs
 description: This article describes Alias statement in Azure Kusto.
 author: orspod

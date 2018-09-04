@@ -1,4 +1,4 @@
-﻿---
+---
 title: Let statement - Azure Kusto | Microsoft Docs
 description: This article describes Let statement in Azure Kusto.
 author: orspod

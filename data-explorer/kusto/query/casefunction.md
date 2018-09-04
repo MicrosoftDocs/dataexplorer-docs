@@ -1,4 +1,4 @@
-﻿---
+---
 title: case() - Azure Kusto | Microsoft Docs
 description: This article describes case() in Azure Kusto.
 author: orspod

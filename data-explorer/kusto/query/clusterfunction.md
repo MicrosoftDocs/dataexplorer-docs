@@ -1,4 +1,4 @@
-﻿---
+---
 title: cluster() (scope function) - Azure Kusto | Microsoft Docs
 description: This article describes cluster() (scope function) in Azure Kusto.
 author: orspod

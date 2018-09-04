@@ -1,4 +1,4 @@
-﻿---
+---
 title: toupper() - Azure Kusto | Microsoft Docs
 description: This article describes toupper() in Azure Kusto.
 author: orspod

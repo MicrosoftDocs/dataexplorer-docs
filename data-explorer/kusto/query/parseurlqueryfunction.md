@@ -1,4 +1,4 @@
-﻿---
+---
 title: parse_urlquery() - Azure Kusto | Microsoft Docs
 description: This article describes parse_urlquery() in Azure Kusto.
 author: orspod

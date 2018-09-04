@@ -1,4 +1,4 @@
-﻿---
+---
 title: cot() - Azure Kusto | Microsoft Docs
 description: This article describes cot() in Azure Kusto.
 author: orspod
