@@ -479,7 +479,7 @@ Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concept
 
 The extents and the tags to drop are specified using a Kusto query that returns a recordset with a column called "ExtentId" and a column called "Tags". 
 
-*NOTE*: When using the [Kusto client library](https://kusdoc2.azurewebsites.net/docs/api/using-the-kusto-client-library.html), you can use the following methods in order to generate the desired command:
+*NOTE*: When using the [Kusto client library](../api/using-the-kusto-client-library.md), you can use the following methods in order to generate the desired command:
 - `CslCommandGenerator.GenerateExtentTagsDropByRegexCommand(string tableName, string regex)`
 - `CslCommandGenerator.GenerateExtentTagsDropBySubstringCommand(string tableName, string substring)`
 

@@ -28,4 +28,4 @@ All metadata query commands start with the `.show` keyword.
 
 Metadata query commands produce a data table that can serve as a (temporary) source for follow-up queries. For example, one can apply the data query count operator to pretty much any metadata query command, which counts the number of records in the resulting record set, use the filter operator to filter out unwanted records, etc.
 
-For many of these commands, [access permissions](https://kusdoc2.azurewebsites.net/docs/controlCommands/permissions.html) are required according to the [authorization model](https://kusdoc2.azurewebsites.net/docs/concepts/principal-roles.html).
+For many of these commands, [access permissions](../controlCommands/permissions.md) are required according to the [authorization model](https://kusdoc2.azurewebsites.net/docs/concepts/principal-roles.html).

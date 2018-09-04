@@ -79,11 +79,11 @@ find operator supports an alternative syntax for `* has` *term* , and using just
 
 * If the project clause references a column that appears in multiple tables and has multiple types, a type must follow this column reference in the project clause
 * When using *project-smart*, changes in the predicate, in the source tables set or in the tables schema may result in a changes to the output schema. If a constant result schema is needed, use *project* instead
-* `find` scope can not include [functions](https://kusdoc2.azurewebsites.net/docs/controlCommands/functions.html). To include a function in the find scope - define a [let statement](./letstatement.md) with [view keyword](./letstatement.md)
+* `find` scope can not include [functions](../controlCommands/functions.md). To include a function in the find scope - define a [let statement](./letstatement.md) with [view keyword](./letstatement.md)
 
 ## Performance Tips
 
-* Use [tables](https://kusdoc2.azurewebsites.net/docs/controlCommands/tables.html) as opposed to [tabular expressions](./tabularexpressionstatements.md)- in case of tabular expression the find operator falls back to a `union` query which can result in degraded performance
+* Use [tables](../controlCommands/tables.md) as opposed to [tabular expressions](./tabularexpressionstatements.md)- in case of tabular expression the find operator falls back to a `union` query which can result in degraded performance
 * If a column that appears in multiple tables and has multiple types is part of the project clause, prefer adding a *ColumnType* to the project clause over modifying the table before passing it to `find` (see previous tip)
 * Add time based filters to the predicate (using a datetime column value or [ingestion_time()](./ingestiontimefunction.md))
 * Prefer to search in specific columns over full text search 

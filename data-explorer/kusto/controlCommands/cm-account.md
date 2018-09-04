@@ -18,7 +18,7 @@ ms.date: 09/24/2018
 ```
 
 Shows the status for the collection of Kusto clusters (or configuration only, if specified) which relate to the given account name.
-The status is comprised of the results of [.show service](https://kusdoc2.azurewebsites.net/docs/controlCommands/CM-service.html#show-service) for each of the services in the account.
+The status is comprised of the results of [.show service](../controlCommands/CM-service.md#show-service) for each of the services in the account.
 Requires [AccountAdmin permissions](https://kusdoc2.azurewebsites.net/docs/concepts/principal-roles.html). 
 
 **Examples**

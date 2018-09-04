@@ -14,13 +14,13 @@ ms.date: 09/24/2018
 The Kusto Management Library is a .NET library which is meant to provide account admins with programmatic cluster management capabilities.
 
 The Kusto.Manage.dll assembly provides the `ClusterManagementClient` type, implementing the `IClusterManagementClient` interface:
-1. The interface exposed in the library interacts with the Kusto Cluster Management Service, by sending [CSL commands](https://kusdoc2.azurewebsites.net/docs/controlCommands/cluster.html) as strings, and getting results back via an IDataReader).
+1. The interface exposed in the library interacts with the Kusto Cluster Management Service, by sending [CSL commands](../controlCommands/cluster.md) as strings, and getting results back via an IDataReader).
 2. For each long-running operation, the interface provides with a both synchronous and asynchronous methods, which can be used per the user's preference.
   * Async operations allow the user's flow to continue, without blocking. 
   * Sync operations use the timeout set when initializing the `ClusterManagementClient` (or the default timeout of 30 minutes, if it is not set during initialization).
     * Up until this timeout, polling is done in the background against the Cluster Management service in order to track the operation's status, until completion.   
 
-**Note**: *running operations against the Cluster Management service is a privileged action, one is required to be an AccountAdmin and potentially a TargetClusterAdmin in order to pass authorization checks. For this reason, using the Kusto Management library also requires special permissions. For further details, see [Cluster Management Authorization Model](https://kusdoc2.azurewebsites.net/docs/controlCommands/roles.html)*
+**Note**: *running operations against the Cluster Management service is a privileged action, one is required to be an AccountAdmin and potentially a TargetClusterAdmin in order to pass authorization checks. For this reason, using the Kusto Management library also requires special permissions. For further details, see [Cluster Management Authorization Model](../controlCommands/roles.md)*
 
 ## The Interface
 ```csharp

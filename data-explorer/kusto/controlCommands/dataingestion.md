@@ -141,7 +141,7 @@ Example of the CSV mapping:
 ]
 ```      
 
- Csv mapping can be [precreated](https://kusdoc2.azurewebsites.net/docs/controlCommands/tables.html#create-ingestion-mapping) and be referenced from the ingest command `csvMappingReference` parameter.
+ Csv mapping can be [precreated](../controlCommands/tables.md#create-ingestion-mapping) and be referenced from the ingest command `csvMappingReference` parameter.
  
  * Note: When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string: `.ingest into Table123 (@"source1", @"source2") with @'{"csvMapping": "[{\"Name\":\"rownumber\",\"Ordinal\":0},{\"Name\":\"rowguid\",\"Ordinal\":1},...]","format":"csv"}'`
  
@@ -198,7 +198,7 @@ Example of the JSON Mapping:
 ]
 ```      
 
-Json mapping can be [precreated](https://kusdoc2.azurewebsites.net/docs/controlCommands/tables.html#create-ingestion-mapping) and be referenced from the ingest command `jsonMappingReference` parameter.
+Json mapping can be [precreated](../controlCommands/tables.md#create-ingestion-mapping) and be referenced from the ingest command `jsonMappingReference` parameter.
 
 * Note: When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string: `.ingest into Table123 (@"source1", @"source2") with @'{"jsonMapping" : "[{\"column\":\"rownumber\",\"path\":\"$.rownumber\"},{\"column\":\"rowguid\",\"path\":\"$.rowguid\"},...]","format":"json"}'`
 
@@ -241,7 +241,7 @@ Example of the AVRO mapping:
 
 * Note: When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string: `.ingest into Table123 (@"source1", @"source2") with @'{"avroMapping": "[{\"column\":\"rownumber\",\"field\":\"RowNumber\"},{\"column\":\"rowguid\",\"field\":\"RowGuid\"},...]","format":"avro"}'`
 
-Avro mapping can be [precreated](https://kusdoc2.azurewebsites.net/docs/controlCommands/tables.html#create-ingestion-mapping) and be referenced from the ingest command `avroMappingReference` parameter.
+Avro mapping can be [precreated](../controlCommands/tables.md#create-ingestion-mapping) and be referenced from the ingest command `avroMappingReference` parameter.
 
 ## Ingestion failures
 
