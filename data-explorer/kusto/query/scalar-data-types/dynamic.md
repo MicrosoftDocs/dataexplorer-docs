@@ -144,18 +144,18 @@ Cast functions are:
 
 Several functions allow one to create new `dynamic` objects:
 
-* [pack()](https://kusdoc2.azurewebsites.net/docs/packfunction.html) creates a property bag from name/value pairs.
-* [pack_array()](https://kusdoc2.azurewebsites.net/docs/packarrayfunction.html) creates an array from name/value pairs.
-* [range()](https://kusdoc2.azurewebsites.net/docs/rangefunction.html) creates an array with an arithmetic series of numbers.
-* [zip()](https://kusdoc2.azurewebsites.net/docs/zipfunction.html) pairs "parallel" values from two arrays into a single array.
-* [repeat()](https://kusdoc2.azurewebsites.net/docs/repeatfunction.html) creates an array with a repeated value.
+* [pack()](../packfunction.md) creates a property bag from name/value pairs.
+* [pack_array()](../packarrayfunction.md) creates an array from name/value pairs.
+* [range()](../rangefunction.md) creates an array with an arithmetic series of numbers.
+* [zip()](../zipfunction.md) pairs "parallel" values from two arrays into a single array.
+* [repeat()](../repeatfunction.md) creates an array with a repeated value.
 
 Additionally, there are several aggregate functions which create `dynamic`
 arrays to hold aggregated values:
 
-* [buildschema()](https://kusdoc2.azurewebsites.net/docs/buildschema-aggfunction.html) returns the aggregate schema of multiple `dynamic` values.
-* [makelist()](https://kusdoc2.azurewebsites.net/docs/makelist-aggfunction.html) returns an array holding all values, in sequence.
-* [makeset()](https://kusdoc2.azurewebsites.net/docs/makeset-aggfunction.html) returns an array holding all unique values.
+* [buildschema()](../buildschema-aggfunction.md) returns the aggregate schema of multiple `dynamic` values.
+* [makelist()](../makelist-aggfunction.md) returns an array holding all values, in sequence.
+* [makeset()](../makeset-aggfunction.md) returns an array holding all unique values.
 
 ## Operators and functions over dynamic types
 
@@ -163,12 +163,12 @@ arrays to hold aggregated values:
 |---|---|
 | *value* `in` *array*| True if there is an element of *array* that == *value*<br/>`where City in ('London', 'Paris', 'Rome')`
 | *value* `!in` *array*| True if there is no element of *array* that == *value*
-|[`arraylength(`array`)`](https://kusdoc2.azurewebsites.net/docs/arraylengthfunction.html)| Null if it isn't an array
-|[`extractjson(`path,object`)`](https://kusdoc2.azurewebsites.net/docs/extractjsonfunction.html)|Uses path to navigate into object.
-|[`parse_json(`source`)`](https://kusdoc2.azurewebsites.net/docs/parsejsonfunction.html)| Turns a JSON string into a dynamic object.
-|[`range(`from,to,step`)`](https://kusdoc2.azurewebsites.net/docs/rangefunction.html)| An array of values
-|[`mvexpand` listColumn](https://kusdoc2.azurewebsites.net/docs/mvexpandoperator.html) | Replicates a row for each value in a list in a specified cell.
-|[`summarize buildschema(`column`)`](https://kusdoc2.azurewebsites.net/docs/buildschema-aggfunction.html) |Infers the type schema from column content
-|[`summarize makelist(`column`)` ](https://kusdoc2.azurewebsites.net/docs/makelist-aggfunction.html)| Flattens groups of rows and puts the values of the column in an array.
-|[`summarize makeset(`column`)`](https://kusdoc2.azurewebsites.net/docs/makeset-aggfunction.html) | Flattens groups of rows and puts the values of the column in an array, without duplication.
-|[`summarize make_dictionary(`column`)`](https://kusdoc2.azurewebsites.net/docs/make-dictionary-aggfunction.html) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.
+|[`arraylength(`array`)`](../arraylengthfunction.md)| Null if it isn't an array
+|[`extractjson(`path,object`)`](../extractjsonfunction.md)|Uses path to navigate into object.
+|[`parse_json(`source`)`](../parsejsonfunction.md)| Turns a JSON string into a dynamic object.
+|[`range(`from,to,step`)`](../rangefunction.md)| An array of values
+|[`mvexpand` listColumn](../mvexpandoperator.md) | Replicates a row for each value in a list in a specified cell.
+|[`summarize buildschema(`column`)`](../buildschema-aggfunction.md) |Infers the type schema from column content
+|[`summarize makelist(`column`)` ](../makelist-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array.
+|[`summarize makeset(`column`)`](../makeset-aggfunction.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
+|[`summarize make_dictionary(`column`)`](../make-dictionary-aggfunction.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.

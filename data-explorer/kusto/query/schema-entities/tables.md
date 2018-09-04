@@ -14,7 +14,7 @@ Tables are named entities that hold data. A table has an ordered set
 of [columns](./columns.md), and zero or more rows of data, each row holding one data value
 for each of the columns of the table. The order of rows in the table is unknown
 and does not in general affect queries, except for some tabular operators (such as
-the [top operatpr](https://kusdoc2.azurewebsites.net/docs/topoperator.html)) that are inherently indetermined.
+the [top operatpr](../topoperator.md)) that are inherently indetermined.
 
 Tables occupy the same namespace as [stored functions](./stored-functions.md),
 so if a stored function and a table both have the same name, the stored function
@@ -52,7 +52,7 @@ cluster("https://help.kusto.windows.net").database("Samples").StormEvents
 | count
 ```
 
-It is also possible to reference a table by using the [table() special function](https://kusdoc2.azurewebsites.net/docs/tablefunction.html),
+It is also possible to reference a table by using the [table() special function](../tablefunction.md),
 as long as the argument to that function evaluates to a constant. For example:
 
 ```kusto

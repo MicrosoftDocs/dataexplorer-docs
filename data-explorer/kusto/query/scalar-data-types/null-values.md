@@ -29,8 +29,8 @@ print bool(null), datetime(null), dynamic(null), guid(null), int(null), long(nul
 
 The null value does not compare equal to any other value of the data type,
 including itself. (That is, `null == null` is false.) To determine if some
-value is the null value, use the [isnull()](https://kusdoc2.azurewebsites.net/docs/isnullfunction.html) function
-and the [isnotnull()](https://kusdoc2.azurewebsites.net/docs/isnotnullfunction.html) function.
+value is the null value, use the [isnull()](../isnullfunction.md) function
+and the [isnotnull()](../isnotnullfunction.md) function.
 
 ## Binary operations on null
 

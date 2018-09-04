@@ -18,7 +18,7 @@ database, which are query fragments made available for reuse.
 
 * [Clusters](./clusters.md) are entities that hold databases.
   Clusters have no name, but they can be referenced by using the
-  [cluster() special function](https://kusdoc2.azurewebsites.net/docs/clusterfunction.html) with the cluster's URI.
+  [cluster() special function](../clusterfunction.md) with the cluster's URI.
   For example, `cluster("https://help.kusto.windows.net")` is a refernce
   to a cluster that holds the `Samples` database.
 
@@ -27,7 +27,7 @@ database, which are query fragments made available for reuse.
   and the entities of that database may be referenced by the query with no
   qualifications. Additionally, other databases of the cluster, or databases
   or other clusters, may be referenced using the
-  [database() special function](https://kusdoc2.azurewebsites.net/docs/databasefunction.html). For example,
+  [database() special function](../databasefunction.md). For example,
   `cluster("https://help.kusto.windows.net").database("Samples")`
   is a universal reference to a specific database.
 
@@ -38,9 +38,9 @@ database, which are query fragments made available for reuse.
   with a database reference otherwise. For example,
   `cluster("https://help.kusto.windows.net").database("Samples").StormEvents` is
   a universal reference to a particular table in the `Samples` database.
-  Tables may also be referenced by using the [table() special function](https://kusdoc2.azurewebsites.net/docs/tablefunction.html).
+  Tables may also be referenced by using the [table() special function](../tablefunction.md).
 
-* [Columns](./columns.md) are named entities that have a [scalar data type](https://kusdoc2.azurewebsites.net/docs/scalar-data-types/overview.html).
+* [Columns](./columns.md) are named entities that have a [scalar data type](../scalar-data-types/overview.md).
   Columns are referenced in the query relative to the tabular data stream
   that is in context of the specific operator referencing them.
 

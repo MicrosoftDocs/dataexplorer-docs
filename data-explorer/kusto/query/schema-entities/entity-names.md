@@ -17,7 +17,7 @@ two tables with the same name). Entity names are **case-sensitive** for resolvin
 (so, for example, you can't refer to a table called `ThisTable` as `thisTABLE`).
 
 Entity names are one example of **identifiers**. Other identifiers include the names of
-parameters to functions and binding a name through a [let statement](https://kusdoc2.azurewebsites.net/docs/letstatement.html).
+parameters to functions and binding a name through a [let statement](../letstatement.md).
 
 ## Entity pretty names
 
