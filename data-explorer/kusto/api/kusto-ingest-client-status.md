@@ -165,14 +165,17 @@ Pay special attention to the `Status` property of the returned `IngestionStatus`
 
 ### Ingestion Status in Azure Queue
 The `IKustoIngestionResult` methods are only relevant for checking a status in an Azure Table. To query statuses that were reported to an Azure Queue, use the following methods of [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient):
+
 |Method |Purpose |
 |------------|------------|
 |PeekTopIngestionFailures |Async method that returns information regarding the earliest ingestion failures that have not been discarded, according to the requested messages limit |
 |GetAndDiscardTopIngestionFailures |Async method that returns and discards the earliest ingestion failures that have not been discarded, according to the requested messages limit |
 |GetAndDiscardTopIngestionSuccesses |Async method that returns and discards the earliest ingestion successes that have not been discarded, according to the requested messages limit (only relevant if the `IngestionReportLevel` is set to `FailuresAndSuccesses` |
 
+
 ### Ingestion Failures Retrieved From Azure Queue
 The ingestion failures are represented by `IngestionFailure` object that contains useful information regarding the failure:
+
 |Property |Meaning |
 |------------|------------|
 |Database & Table |The intended database and table names |
