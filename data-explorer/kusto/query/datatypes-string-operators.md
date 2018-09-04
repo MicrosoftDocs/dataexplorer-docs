@@ -13,39 +13,39 @@ ms.date: 09/24/2018
 The following table summarizes operators on strings:
 
 
-Operator       |Description                         |Case-Sensitive|Example (yields `true`)
----------------|------------------------------------|--------------|-----------------------
-`==`           |Equals                              |Yes           |`"aBc" == "aBc"`
-`!=`           |Not equals                          |Yes           |`"abc" != "ABC"`
-`=~`           |Equals                              |No            |`"abc" =~ "ABC"`
-`!~`           |Not equals                          |No            |`"aBc" !~ "xyz"`
-`has`          |Right-hand-side (RHS) is a whole term in left-hand-side (LHS)|No|`"North America" has "america"`
-`!has`         |RHS is not a full term in LHS       |No            |`"North America" !has "amer"` 
-`has_cs`       |Right-hand-side (RHS) is a whole term in left-hand-side (LHS)|Yes|`"North America" has_cs "America"`
-`!has_cs`      |RHS is not a full term in LHS       |Yes            |`"North America" !has_cs "amer"` 
-`hasprefix`    |RHS is a term prefix in LHS         |No            |`"North America" hasprefix "ame"`
-`!hasprefix`   |RHS is not a term prefix in LHS     |No            |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`    |RHS is a term prefix in LHS         |Yes            |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs`   |RHS is not a term prefix in LHS     |Yes            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |RHS is a term suffix in LHS         |No            |`"North America" hassuffix "ica"`
-`!hassuffix`   |RHS is not a term suffix in LHS     |No            |`"North America" !hassuffix "americ"
-`hassuffix_cs`    |RHS is a term suffix in LHS         |Yes            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |RHS is not a term suffix in LHS     |Yes            |`"North America" !hassuffix_cs "icA"
-`contains`     |RHS occurs as a subsequence of LHS  |No            |`"FabriKam" contains "BRik"`
-`!contains`    |RHS does not occur in LHS           |No            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |RHS occurs as a subsequence of LHS  |Yes           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |RHS does not occur in LHS           |Yes           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |RHS is an initial subsequence of LHS|No            |`"Fabrikam" startswith "fab"`
-`!startswith`  |RHS is not an initial subsequence of LHS|No        |`"Fabrikam" !startswith "kam"`
-`startswith_cs`   |RHS is an initial subsequence of LHS|Yes            |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`  |RHS is not an initial subsequence of LHS|Yes        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |RHS is a closing subsequence of LHS|No             |`"Fabrikam" endswith "Kam"`
-`!endswith`    |RHS is not a closing subsequence of LHS|No         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |RHS is a closing subsequence of LHS|Yes             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |RHS is not a closing subsequence of LHS|Yes         |`"Fabrikam" !endswith "brik"`
-`matches regex`|LHS contains a match for RHS        |Yes           |`"Fabrikam" matches regex "b.*k"`
-`in`           |Equals to one of the elements       |Yes           |`"abc" in ("123", "345", "abc")`
-`!in`          |Not equals to any of the elements   |Yes           |`"bca" !in ("123", "345", "abc")`
+Operator        |Description                                                       |Case-Sensitive|Example (yields `true`)
+----------------|------------------------------------------------------------------|--------------|-----------------------
+`==`            |Equals                                                            |Yes           |`"aBc" == "aBc"`
+`!=`            |Not equals                                                        |Yes           |`"abc" != "ABC"`
+`=~`            |Equals                                                            |No            |`"abc" =~ "ABC"`
+`!~`            |Not equals                                                        |No            |`"aBc" !~ "xyz"`
+`has`           |Right-hand-side (RHS) is a whole term in left-hand-side (LHS)     |No            |`"North America" has "america"`
+`!has`          |RHS is not a full term in LHS                                     |No            |`"North America" !has "amer"` 
+`has_cs`        |Right-hand-side (RHS) is a whole term in left-hand-side (LHS)     |Yes           |`"North America" has_cs "America"`
+`!has_cs`       |RHS is not a full term in LHS                                     |Yes           |`"North America" !has_cs "amer"` 
+`hasprefix`     |RHS is a term prefix in LHS                                       |No            |`"North America" hasprefix "ame"`
+`!hasprefix`    |RHS is not a term prefix in LHS                                   |No            |`"North America" !hasprefix "mer"` 
+`hasprefix_cs`  |RHS is a term prefix in LHS                                       |Yes           |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs` |RHS is not a term prefix in LHS                                   |Yes           |`"North America" !hasprefix_cs "CA"` 
+`hassuffix`     |RHS is a term suffix in LHS                                       |No            |`"North America" hassuffix "ica"`
+`!hassuffix`    |RHS is not a term suffix in LHS                                   |No            |`"North America" !hassuffix "americ"
+`hassuffix_cs`  |RHS is a term suffix in LHS                                       |Yes           |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs` |RHS is not a term suffix in LHS                                   |Yes           |`"North America" !hassuffix_cs "icA"
+`contains`      |RHS occurs as a subsequence of LHS                                |No            |`"FabriKam" contains "BRik"`
+`!contains`     |RHS does not occur in LHS                                         |No            |`"Fabrikam" !contains "xyz"`
+`contains_cs`   |RHS occurs as a subsequence of LHS                                |Yes           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |RHS does not occur in LHS                                         |Yes           |`"Fabrikam" !contains_cs "Kam"`
+`startswith`    |RHS is an initial subsequence of LHS                              |No            |`"Fabrikam" startswith "fab"`
+`!startswith`   |RHS is not an initial subsequence of LHS                          |No            |`"Fabrikam" !startswith "kam"`
+`startswith_cs` |RHS is an initial subsequence of LHS                              |Yes           |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`|RHS is not an initial subsequence of LHS                          |Yes           |`"Fabrikam" !startswith_cs "fab"`
+`endswith`      |RHS is a closing subsequence of LHS                               |No            |`"Fabrikam" endswith "Kam"`
+`!endswith`     |RHS is not a closing subsequence of LHS                           |No            |`"Fabrikam" !endswith "brik"`
+`endswith_cs`   |RHS is a closing subsequence of LHS                               |Yes           |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`  |RHS is not a closing subsequence of LHS                           |Yes           |`"Fabrikam" !endswith "brik"`
+`matches regex` |LHS contains a match for RHS                                      |Yes           |`"Fabrikam" matches regex "b.*k"`
+`in`            |Equals to one of the elements                                     |Yes           |`"abc" in ("123", "345", "abc")`
+`!in`           |Not equals to any of the elements                                 |Yes           |`"bca" !in ("123", "345", "abc")`
 
 
 Use `has` or `in` if you're testing for the presence of a whole lexical term - that is,
