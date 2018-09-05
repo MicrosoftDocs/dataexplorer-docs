@@ -10,5 +10,5 @@ ms.date: 09/24/2018
 ---
 # Management
 
-[!WARNING]
-This is a placeholder. Come back -- 1 week.
+> [!WARNING]
+> This is a placeholder. Come back -- 1 week.
