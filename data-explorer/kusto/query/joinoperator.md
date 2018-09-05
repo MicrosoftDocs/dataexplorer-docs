@@ -26,6 +26,7 @@ Merge the rows of two tables to form a new table by matching values of the speci
 
 * *Attributes*: One or more (comma-separated) rules that describe how rows from
   *LeftTable* are matched to rows from *RightTable*. A rule can be one of:
+
   |Rule kind        |Syntax                                          |Predicate                                                      |
   |-----------------|------------------------------------------------|---------------------------------------------------------------|
   |Equality by name |*ColumnName*                                    |`where` *LeftTable*.*ColumnName* `==` *RightTable*.*ColumnName*|
@@ -38,11 +39,11 @@ Merge the rows of two tables to form a new table by matching values of the speci
   *Name* `=` *Value* that control the behavior
   of the row-match operation and execution plan. The following parameters are supported: 
 
-  |Name  |Values|Description|
-  |------|---------------------------------------------------------------------------|-----------|
-  |`kind`|Join flavors|See [Join Flavors](#join-flavors)|
-  |`hint.remote`|`auto`, `left`, `local`, `right`|See [Cross-Cluster Join](joincrosscluster.md)|
-  |`hint.strategy`|Execution hints|See [Join hints](#join-hints)|
+  |Name           |Values                                        |Description                                  |
+  |---------------|----------------------------------------------|---------------------------------------------|
+  |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|                                             |
+  |`hint.remote`  |`auto`, `left`, `local`, `right`              |See [Cross-Cluster Join](joincrosscluster.md)|
+  |`hint.strategy`|Execution hints|See [Join hints](#join-hints) |                                             |
 
 **Returns**
 

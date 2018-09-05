@@ -42,50 +42,10 @@ datatable(p:string)
 
 ```
 
-|p|path_parts|
-|---|---|
-|C:\temp\file.txt|{
-  "Scheme": "",
-  "RootPath": "C:",
-  "DirectoryPath": "C:\\temp",
-  "DirectoryName": "temp",
-  "Filename": "file.txt",
-  "Extension": "txt",
-  "AlternateDataStreamName": ""
-}|
-|temp\file.txt|{
-  "Scheme": "",
-  "RootPath": "",
-  "DirectoryPath": "temp",
-  "DirectoryName": "temp",
-  "Filename": "file.txt",
-  "Extension": "txt",
-  "AlternateDataStreamName": ""
-}|
-|file://C:/temp/file.txt:some.exe|{
-  "Scheme": "file",
-  "RootPath": "C:",
-  "DirectoryPath": "C:/temp",
-  "DirectoryName": "temp",
-  "Filename": "file.txt",
-  "Extension": "txt",
-  "AlternateDataStreamName": "some.exe"
-}|
-|\\shared\users\temp\file.txt.gz|{
-  "Scheme": "",
-  "RootPath": "",
-  "DirectoryPath": "\\\\shared\\users\\temp",
-  "DirectoryName": "temp",
-  "Filename": "file.txt.gz",
-  "Extension": "gz",
-  "AlternateDataStreamName": ""
-}|
-|/usr/lib/temp/file.txt|{
-  "Scheme": "",
-  "RootPath": "",
-  "DirectoryPath": "/usr/lib/temp",
-  "DirectoryName": "temp",
-  "Filename": "file.txt",
-  "Extension": "txt",
-  "AlternateDataStreamName": ""
-}|
+|p|path_parts
+|---|---
+|C:\temp\file.txt|{"Scheme":"","RootPath":"C:","DirectoryPath":"C:\\temp","DirectoryName":"temp","Filename":"file.txt","Extension":"txt","AlternateDataStreamName":""}
+|temp\file.txt|{"Scheme":"","RootPath":"","DirectoryPath":"temp","DirectoryName":"temp","Filename":"file.txt","Extension":"txt","AlternateDataStreamName":""}
+|file://C:/temp/file.txt:some.exe|{"Scheme":"file","RootPath":"C:","DirectoryPath":"C:/temp","DirectoryName":"temp","Filename":"file.txt","Extension":"txt","AlternateDataStreamName":"some.exe"}
+|\\shared\users\temp\file.txt.gz|{"Scheme":"","RootPath":"","DirectoryPath":"\\\\shared\\users\\temp","DirectoryName":"temp","Filename":"file.txt.gz","Extension":"gz","AlternateDataStreamName":""}
+|/usr/lib/temp/file.txt|{"Scheme":"","RootPath":"","DirectoryPath":"/usr/lib/temp","DirectoryName":"temp","Filename":"file.txt","Extension":"txt","AlternateDataStreamName":""}

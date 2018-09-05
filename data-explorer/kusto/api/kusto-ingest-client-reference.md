@@ -252,7 +252,9 @@ public class KustoDirectIngestClient : IKustoIngestClient
 ```
 
 ### Class KustoIngestionProperties
+
 KustoIngestionProperties class encapsulates basic ingestion properties that allow fine control over the ingestion process and its handling by the Kusto engine:
+
 |Property   |Meaning    |
 |-----------|-----------|
 |DatabaseName |Name of the database to ingest into |
@@ -422,7 +424,9 @@ public class KustoQueuedIngestClient : IKustoIngestClient
 ```
 
 ### Class KustoQueuedIngestionProperties
+
 KustoQueuedIngestionProperties class extends KustoIngestionProperties with several control knobs that can be used to fine-tune the ingestion behavior:
+
 |Property   |Meaning    |
 |-----------|-----------|
 |FlushImmediately |Defaults to `false`. If set to `true`, will bypass aggregation mechanism of the Data Management service |

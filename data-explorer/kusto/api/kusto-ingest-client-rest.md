@@ -306,8 +306,9 @@ The message that Kusto Data Management service expects to read from the input Az
 }
 ```
 
+
 |Property | Description |
-|---------|-------------
+|---------|-------------|
 |Id |Message identifier (GUID) |
 |BlobPath |Blob URI, including the SAS key granting Kusto permissions to read/write/delete it (write/delete permissions are required if Kusto is to delete the blob once it has completed ingesting the data) |
 |RawDataSize |Size of the uncompressed data in bytes. Providing this value allows Kusto to optimize ingestion by potentially aggregating multiple blobs together. This property is optional, but if not provided, Kusto will access the blob just to retrieve the size |
@@ -319,7 +320,6 @@ The message that Kusto Data Management service expects to read from the input Az
 |ReportLevel |Success/Error reporting level: 0-Failures, 1-None, 2-All |
 |ReportMethod |Reporting mechanism: 0-Queue, 1-Table |
 |AdditionalProperties |Any additional properties (tags, etc.) |
-<BR>
 
 
 ## Appendix B: Ingestion Failure Message Structure
