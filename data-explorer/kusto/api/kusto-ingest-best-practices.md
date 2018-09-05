@@ -38,22 +38,21 @@ Multiple factors can affect ingestion throughput. When planning your Kusto inges
 * Ingestion pattern - ingestion is in its optimum when the cluster is served with batches of up to 1GB (taken care by using `KustoQueuedIngestClient`)
 
 ## Optimizing for COGS
-While using Kusto client libraries in order to ingest data into Kusto remains the cheapest and the most robust option, we urge our customers to review their ingestion tactics and take into cosideration the recent (Fall 2017) changes in Azure Storage pricing, that made blob transactions significantly (~x100) more expensive.
+While using Kusto client libraries in order to ingest data into Kusto remains the cheapest and the most robust option, we urge our customers to review their ingestion tactics and take into consideration the recent (Fall 2017) changes in Azure Storage pricing, that made blob transactions significantly (~x100) more expensive.
 <BR>
 It is important to understand that the more chunks of data (files/blobs/streams) you send to Kusto, the larger your monthly bill will get.
 If you follow the following recommendations, you will be able to better control your Kusto ingestion costs:
 * **Prefer ingesting larger chunks of data (up to 1GB of uncompressed data)**<br>
     Many teams attempt to achieve low latency by ingesting tens of millions of tiny chunks of data, which is extremely inefficient and very costly.<br>
-    Any batching on the client side would help; if you are not sure what to do, ask [KustoDiscussions DL](mailto:KusTalk@microsoft.com) or contact our Ops team at [http://aka.ms/gaia](http://aka.ms/gaia).
+    Any batching on the client side would help; if you are not sure what to do, ask [KustoDiscussions DL](mailto:KusTalk@microsoft.com) or contact our Ops team at [https://aka.ms/kustosupport](https://aka.ms/kustosupport).
 * **Make sure you provide the Kusto.Ingest client with accurate uncompressed data size**<br>
     Not doing so may cause Kusto to perform extra transactions.
 * **Avoid** sending data for ingestion with the `FlushImmediately` flag set to `true`, or sending small chunks with `ingest-by`/`drop-by` tags set.<br>
     Using these prevents the Kusto service from properly aggregating the data during ingestion, and causes unnecessary storage transactions following the ingestion, affecting COGS.<br>
     Moreover, using these excessively could result with degraded ingestion and/or query performance in your cluster.<br>
-    If you are not sure what to do, ask [KustoDiscussions DL](mailto:KusTalk@microsoft.com) or contact our Ops team at [http://aka.ms/gaia](http://aka.ms/gaia).
+    If you are not sure what to do, ask [KustoDiscussions DL](mailto:KusTalk@microsoft.com) or contact our Ops team at [https://aka.ms/kustosupport](https://aka.ms/kustosupport).
 * If you have custom AggregationSettings on your cluster, please take time to review it and adjust it considering the new pricing model.<br>
-    Please contact our Ops team at [http://aka.ms/gaia](http://aka.ms/gaia) for assistance if needed.
-
+    Please contact our Ops team at [https://aka.ms/kustosupport](https://aka.ms/kustosupport) for assistance if needed.
 <BR>
 For our customers who ingest data into Kusto using Geneva Warm path or Aria, we are heavily investing in ingestion COGs reduction with those teams:
 * **Geneva Warm path** – we are working with the Geneva team on reducing the number of storage transactions on Geneva-to-Kusto pipeline.

@@ -1,6 +1,6 @@
 ---
-title: The Kusto REST API Request Object - Azure Kusto | Microsoft Docs
-description: This article describes The Kusto REST API Request Object in Azure Kusto.
+title: The Kusto REST API Response Object - Azure Kusto | Microsoft Docs
+description: This article describes The Kusto REST API Response Object in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# The Kusto REST API Request Object
+# The Kusto REST API Response Object
 
 ## Status Codes
 
