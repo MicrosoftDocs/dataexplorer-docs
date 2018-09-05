@@ -76,3 +76,12 @@ See [Calling Kusto from PowerShell](powershell/powershell.md) for an example.
 
 `monaco-kusto` package supports integrating with monaco-editor which is a web editor developed by microsoft, and the basis for vscode.
 see [monaco-kusto](monaco/monaco-kusto.md) for details.
+
+<!-- We need to formalize the following content and introduce it into the overview page
+
+API kind: {query, control-command, streaming-ingestion, ping, redirect-to-client, ??other?? }
+API provider: {Kusto.Svc, Kusto.DM, Kusto.CM, ARM, Kusto.Explorer, Kusto.WebExplorer, Kusto.WebExplorer2, ??other?? }
+Transport/protocol: {MS-TDS, MS-KUSTO-QUERY-OR-CONTROL-V1, MS-KUSTO-QUERY-OR-CONTROL-V2, MS-KUSTO-STREAMING-INGESTION, MS-KUSTO-QUEUED-INGESTION-XSTORE, MS-KUSTO-QUEUED-INGESTION-EVENTHUB}
+SDK library: {.NET Framework, .NET Standard, Java, JavaScript, Python, PowerShell, Monaco}
+
+-->
