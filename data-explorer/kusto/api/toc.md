@@ -42,14 +42,10 @@
 # Python Client Library
 ## [azure-kusto-python](python/kusto-python-client-library.md)
 
-# Java Client Library
-## [azure-kusto-java](java/kusto-java-client-library.md)
 
-# JavaScript Client Library
-## [Kusto.IntelliSense](javascript/kusto-javascript-intellisense.md)
+
+
 
 # PowerShell
 ## [Calling Kusto from PowerShell](powershell/powershell.md)
 
-# Monaco IDE integration
-## [monaco-kusto overview](monaco/monaco-kusto.md)

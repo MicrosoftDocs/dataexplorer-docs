@@ -72,7 +72,3 @@ Kusto provides a JavaScript client library that allows callers to send data quer
 The Kusto .NET Framework Libraries can be used by PowerShell scripts.
 See [Calling Kusto from PowerShell](powershell/powershell.md) for an example.
 
-## IDE integration
-
-`monaco-kusto` package supports integrating with monaco-editor which is a web editor developed by microsoft, and the basis for vscode.
-see [monaco-kusto](monaco/monaco-kusto.md) for details.
