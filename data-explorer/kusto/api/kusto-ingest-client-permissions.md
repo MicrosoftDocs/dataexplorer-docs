@@ -14,7 +14,7 @@ This article explains what permissions need to be set up on your service in orde
 >Note: if you are using Geneva or Aria ingestion pipelines, no extra setup is required.
 
 ## Prerequisites
-* This article instructs how to use [Kusto control commands](../controlCommands/roles.md) to view and modify authorization settings on Kusto services and databases
+* This article instructs how to use [Kusto control commands](https://kusdoc2.azurewebsites.net/docs/controlCommands/roles.html) to view and modify authorization settings on Kusto services and databases
 * The following AAD Applications are used as sample principals in examples below:
     * [DataGrid SQLizer](http://datagrid/egress) AAD App (2a904276-4e97-45ed-b9e6-66fc53add60b)
     * Kusto Internal Ingestion AAD App (76263cdb-2183-4596-8949-545644e9c404)

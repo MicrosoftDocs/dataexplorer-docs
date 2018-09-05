@@ -18,7 +18,7 @@ This is a collection of short code snippets demonstrating various techniques of 
 * [Kusto.Ingest Operation Status](kusto-ingest-client-errors.md)
 * [Kusto.Ingest Exceptions](kusto-ingest-client-errors.md)
 * [Kusto Connection Strings](https://kusdoc2.azurewebsites.net/docs/concepts/kusto-connection-strings.html)
-* [Kusto Authorization Model](../controlCommands/roles.md)
+* [Kusto Authorization Model](https://kusdoc2.azurewebsites.net/docs/controlCommands/roles.html)
 * Additional examples at [Kusto Code Samples](https://kusdoc2.azurewebsites.net/docs/code/codesamples.html)
 
 
