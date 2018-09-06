@@ -107,7 +107,8 @@ The same works for union, for example, getting the Pages which are one of the to
 Using `materialize()` :
 
 ```kusto
-let JunkPagesSuffix = ".jpg "let JunkPagesSuffix = """;
+let JunkPagesSuffix = ".jpg";
+let JunkPagesSuffix = "";
 let materializedScope = PageViews
 | where Timestamp > datetime(2016-05-01 00:00:00.0000000)
 | summarize sum(BytesDelivered), count() by Page
@@ -129,7 +130,8 @@ union (cachedResult | top 2 by count_ | project Page ), (cachedResult | top 2 by
 Using regular union without caching the result:
 
 ```kusto
-let JunkPagesSuffix = ".jpg "let JunkPagesSuffix = """;
+let JunkPagesSuffix = ".jpg";
+let JunkPagesSuffix = "";
 let subQuery = PageViews
 | where Timestamp > datetime(2016-05-01 00:00:00.0000000)
 | summarize sum(BytesDelivered), count() by Page
