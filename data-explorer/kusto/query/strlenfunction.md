@@ -33,17 +33,17 @@ Each Unicode character in the string is equal to `1`, including surrogates.
 **Examples**
 
 ```kusto
-print strlen("hello")
+print length = strlen("hello")
 ```
 
-|print_0|
+|length|
 |---|
 |5|
 
 ```kusto
-print strlen("⒦⒰⒮⒯⒪")
+print length = strlen("⒦⒰⒮⒯⒪")
 ```
 
-|print_0|
+|length|
 |---|
 |5|

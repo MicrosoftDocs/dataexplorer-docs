@@ -30,33 +30,33 @@ If any argument is not mapped to a Unicode char, the function returns null.
 **Examples**
 
 ```kusto
-print make_string(75, 117, 115, 116, 111)
+print str = make_string(75, 117, 115, 116, 111)
 ```
 
-|print_0|
+|str|
 |---|
 |Kusto|
     
 ```kusto
-print make_string(dynamic([75, 117, 115, 116, 111]))
+print str = make_string(dynamic([75, 117, 115, 116, 111]))
 ```
 
-|print_0|
+|str|
 |---|
 |Kusto|
 
 ```kusto
-print make_string(dynamic([75, 117, 115]), 116, 111)
+print str = make_string(dynamic([75, 117, 115]), 116, 111)
 ```
 
-|print_0|
+|str|
 |---|
 |Kusto|
 
 ```kusto
-print make_string(75, 10, 117, 10, 115, 10, 116, 10, 111)
+print str = make_string(75, 10, 117, 10, 115, 10, 116, 10, 111)
 ```
 
-|print_0|
+|str|
 |---|
 |K<br>u<br>s<br>t<br>o|

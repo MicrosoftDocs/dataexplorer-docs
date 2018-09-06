@@ -27,17 +27,17 @@ Returns the length, in bytes, of the input string.
 **Examples**
 
 ```kusto
-print string_size("hello")
+print size = string_size("hello")
 ```
 
-|print_0|
+|size|
 |---|
 |5|
 
 ```kusto
-print string_size("⒦⒰⒮⒯⒪")
+print size = string_size("⒦⒰⒮⒯⒪")
 ```
 
-|print_0|
+|size|
 |---|
 |15|
