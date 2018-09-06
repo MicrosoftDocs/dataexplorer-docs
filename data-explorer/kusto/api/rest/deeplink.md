@@ -10,7 +10,6 @@ ms.date: 09/24/2018
 ---
 # Kusto UI (Deep Link) REST API
 
-
 The UI REST API provides a way to craft a simple URL that, when clicked by users
 (for example, in an email message or through a browser), opens up a Kusto UI tool
 and preconfigures it for a specific cluster, database, and query. This API is not
@@ -21,11 +20,12 @@ In the most simple way, issuing a `GET /` operation against this endpoint result
 in a redirect that opens Kusto.Explorer with the cluster that was the target of
 the request being the connection scope. Additionally, one can point at the relevant
 database name by appending it to the path. For example, the URL
-(https://help.kusto.windows.net/Samples)[https://help.kusto.windows.net/Samples] will have 
+(https://help.kusto.windows.net/Samples)[https://help.kusto.windows.net/Samples] will have
 the browser send a `GET /Samples` command to the `help` cluster and will result
 in a redirect that opens Kusto.Explorer with this database as default.
 
 The UI REST API also supports a number of query parameters:
+
 * The `query` query parameter, if provided, causes the UI to automatically execute
   the specified query. The query can appear unencoded (other than the necessary
   HTTP query parameter encoding of course), or it can be gzipped and base64-encoded.
@@ -62,7 +62,7 @@ This action redirects the user's browser to start Kusto.Explorer on the local ma
 
 Similar to deep-linking to Kusto.Explorer, it is possible to deep-link
 to Kusto.WebExplorer (that is, create a URL that starts up Kusto.WebExplorer
-and runs a specific query on the specified Kusto cluster).
+in the default browser and runs the query in the specified cluster/database context).
 
 In the following:
 
@@ -72,17 +72,18 @@ In the following:
   and (b) then it is encoded using base64 encoding.
 * *Query* is the query text (no encoding other than the one required by the HTTP protocol).
 
-To open Kusto.WebExplorer in a specific cluster/database context, issue an HTTP `GET` for:
+To open Kusto.WebExplorer in a specific cluster/database context, issue an HTTP `GET` for either:
 
-- `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName*
+* `https://kusto.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName*
+* `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName*
 
 To open Kusto.WebExplorer in a specific cluster/database context and run a query, issue
 an HTTP `GET` for any of the following:
 
-- `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&q=` *EncodedQuery*
-- `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&query=` *Query*
-- `https://web.kusto.windows.net/clusters/` *Cluster* `/databases/` *DatabaseName* `?q=` *EncodedQuery*
-- `https://web.kusto.windows.net/clusters/` *Cluster* `/databases/` *DatabaseName* `?query=` *Query*
+* `https://kusto.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName* `?query=` *EncodedQuery*
+* `https://kusto.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName* `?query=` *Query*
+* `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&q=` *EncodedQuery*
+* `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&query=` *Query*
 
 ## Deep linking to Lens Explorer
 

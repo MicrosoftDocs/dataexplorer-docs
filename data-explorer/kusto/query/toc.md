@@ -3,7 +3,7 @@
 ## [Samples](samples.md)
 ## [Best practices](bestpractices.md)
 
-# [Schema entities](./schema-entities/overview.md)
+# [Entities](./schema-entities/overview.md)
 ## [Entity names](./schema-entities/entity-names.md)
 
 <!-- Enable this section when the actual content is available, blank pages are confusing external customers.
@@ -17,7 +17,7 @@
 ## [Stored functions](./schema-entities/stored-functions.md)
 -->
 
-# [Scalar data types](./scalar-data-types/overview.md)
+# [Data types](./scalar-data-types/overview.md)
 ## [bool](./scalar-data-types/bool.md)
 ## [datetime](./scalar-data-types/datetime.md)
 ## [decimal](./scalar-data-types/decimal.md)

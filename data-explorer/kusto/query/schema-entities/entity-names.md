@@ -10,10 +10,15 @@ ms.date: 09/24/2018
 ---
 # Entity names
 
-Kusto schema entities (databases, tables, columns, and stored functions, but not clusters)
-have an **entity name** (or just "name"). The name of the entity uniquely
-identifies the entity in the scope of its container (so, for example, a database cannot have
-two tables with the same name). Entity names are **case-sensitive** for resolving purposes
+Kusto entities (databases, tables, columns, and stored functions; clusters
+are an exception) are named. The name of an entity identifies the entity,
+and is guaranteed to be unique in the scope of its container given its type.
+(So, for example, two tables in the same database can't have the same name,
+but a table and a database may have the same name because they are not in
+the same scope, and a table and a stored function may have the same name
+because they are not of the same entity type.)
+
+Entity names are **case-sensitive** for resolving purposes
 (so, for example, you can't refer to a table called `ThisTable` as `thisTABLE`).
 
 Entity names are one example of **identifiers**. Other identifiers include the names of
@@ -34,7 +39,7 @@ Pretty names allow middle-tier applications to map automatically-create entity n
 
 <!-- TODO: This section should be reviewed and moved to its own page -->
 
-Identifiers are used to name various entities (schema entities or otherwise).
+Identifiers are used to name various entities (entities or otherwise).
 Valid identifier names follow these rules:
 * They have between 1 and 1024 characters long.
 * They may contains letters, digits, underscores (`_`), dollar signs (`$`),

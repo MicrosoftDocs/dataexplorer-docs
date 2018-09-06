@@ -82,7 +82,7 @@ orders
 |1086|
 
 
-<!--###In shuffle query, the default partitions number is the cluster nodes number. This number can be overriden by using the syntax `hint.partitions = total_partitions` which will control the number of partitions.
+In shuffle query, the default partitions number is the cluster nodes number. This number can be overriden by using the syntax `hint.num_partitions = total_partitions` which will control the number of partitions.
 
 This hint is useful when the cluster has a small number of cluster nodes where the default partitions number will be small too and the query still fails or takes long execution time.
 
@@ -90,10 +90,9 @@ This hint is useful when the cluster has a small number of cluster nodes where t
 
 The following example shows the improvement on a cluster which has 2 cluster nodes, the table has 60M records and the cardinality of the group by key is 2M.
 
-Running the query without the hint will use only 2 partitions (as cluster nodes number) and the following query will take ~1:10 mins : -->
+Running the query without the hint will use only 2 partitions (as cluster nodes number) and the following query will take ~1:10 mins :
 
-<!--###<!-- csl -->
-<!--###```
+```kusto
 lineitem	
 | summarize hint.strategy = shuffle dcount(l_comment), dcount(l_shipdate) by l_partkey 
 | consume
@@ -101,11 +100,10 @@ lineitem
 
 setting partitions number to 10, the query will end after 23 seconds: 
 
-<!-- csl -->
-<!--###```
+```kusto
 lineitem	
-| summarize hint.strategy = shuffle hint.partitions = 10 dcount(l_comment), dcount(l_shipdate) by l_partkey 
+| summarize hint.strategy = shuffle hint.num_partitions = 10 dcount(l_comment), dcount(l_shipdate) by l_partkey 
 | consume
 ```
 
-Please note that setting many partitions may degrade performance and consume more cluster resources so it is recommended to choose the partitions number carefully (starting with the hint.strategy = shuffle and start increasing the partitions gradually).-->
+Please note that setting many partitions may degrade performance and consume more cluster resources so it is recommended to choose the partitions number carefully (starting with the hint.strategy = shuffle and start increasing the partitions gradually).

@@ -1,6 +1,6 @@
 ---
-title: Schema entities - Azure Kusto | Microsoft Docs
-description: This article describes Schema entities in Azure Kusto.
+title: Entities - Azure Kusto | Microsoft Docs
+description: This article describes Entities in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Schema entities
+# Entities
 
 Kusto queries execute in the context of some Kusto database that is attached
 to a Kusto cluster. Data in the database is arranged in tables, which the query

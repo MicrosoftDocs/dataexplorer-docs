@@ -10,9 +10,12 @@ ms.date: 09/24/2018
 ---
 # Scalar data types
 
-In Kusto, evry column, expression, and parameter has a related data type.
-A data type is an attribute that specifies the type of the data that the
-object can hold: integer data, text (string) data, date and time data, and so on.
+Every data value (such as the value of an expression, or the parameter to a function,
+or the value of an expression) has a **data type**. A data type is broadly
+categorized as either being a **scalar data type**
+(one of the buit-in predefined types listed below), or be a **user-defined record**
+(an ordered sequence of name/scalar-data-type pairs, such as the data type of a
+row of a table).
 
 Kusto supplies a set of system data types that define all the types of data
 that can be used with Kusto.
