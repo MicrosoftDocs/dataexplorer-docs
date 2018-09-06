@@ -27,12 +27,12 @@ Alternative form with no piped input:
 **Arguments**
 
 * `Table`:
- *  The name of a table, such as `Events`; or
- *  A query expression that must be enclosed with parenthesis, such as `(Events | where id==42)` or `(cluster("https://help.kusto.windows.net:443").database("Samples").table("*"))`
- *  A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.
+    *  The name of a table, such as `Events`; or
+    *  A query expression that must be enclosed with parenthesis, such as `(Events | where id==42)` or `(cluster("https://help.kusto.windows.net:443").database("Samples").table("*"))`; or
+    *  A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.
 * `kind`: 
- * `inner` - The result has the subset of columns that are common to all of the input tables.
- * `outer` - The result has all the columns that occur in any of the inputs. Cells that were not defined by an input row are set to `null`.
+    * `inner` - The result has the subset of columns that are common to all of the input tables.
+    * `outer` - The result has all the columns that occur in any of the inputs. Cells that were not defined by an input row are set to `null`.
 * `withsource`=*ColumnName*: If specified, the output will include a column
 called *ColumnName* whose value indicates which source table has contributed each row.
 If the query effectively (after wildcard matching) references tables from more than one database (default database always counts) the value of this column will have a table name qualified with the database.

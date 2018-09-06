@@ -1,6 +1,6 @@
 ---
-title: Kusto query language - Azure Kusto | Microsoft Docs
-description: This article describes Kusto query language in Azure Kusto.
+title: Overview - Azure Kusto | Microsoft Docs
+description: This article describes Overview in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Kusto query language
+# Overview
 
 A Kusto query is a read-only request to process data and return results.
 The request is stated in plain text, using a data-flow model designed to
