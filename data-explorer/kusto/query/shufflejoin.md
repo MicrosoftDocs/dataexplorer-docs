@@ -86,7 +86,7 @@ In shuffle query, the default partitions number is the cluster nodes number. Thi
 
 This hint is useful when the cluster has a small number of cluster nodes where the default partitions number will be small too and the query still fails or takes long execution time.
 
-** Examples **
+**Examples**
 
 The following example shows the improvement on a cluster which has 2 cluster nodes, the table has 60M records and the cardinality of the join key is 2M.
 
