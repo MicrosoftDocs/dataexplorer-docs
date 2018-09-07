@@ -237,10 +237,10 @@ union
   (print x=f(12, c=7))    // "12-b.default-7"
 ```
 
-|`x`|
+|x|
 |---|
-|`12-b.default-7`|
-|`12-b.default-7`|
+|12-b.default-7|
+|12-b.default-7|
 
 ## View functions
 
