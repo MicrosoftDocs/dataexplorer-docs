@@ -39,4 +39,4 @@ as the password then the HTTP header would be:
 Authorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l
 ```
 
-For full documentation on Kusto Authentication refer to [Kusto Security and Compliance](https://kusdoc2.azurewebsites.net/docs/concepts/security.html) and [Kusto Authentication](../kusto-authentication.md) 
+For full documentation on Kusto Authentication refer to [Kusto Security and Compliance](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/security.html) and [Kusto Guide to AAD Authentication](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/programmatic-aad-authentication.html)

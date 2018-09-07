@@ -10,17 +10,6 @@
 
 # [MS SQL (TDS)](tds/tds.md)
 
-# Access Control
-## [Authentication Overview](authentication-overview.md)
-## [Kusto Authentication](kusto-authentication.md)
-## [AAD](https://kusdoc2.azurewebsites.net/docs/concepts/security-authn-aad.html)
-
-## [Basicauth](https://kusdoc2.azurewebsites.net/docs/concepts/security-authn-basicauth.html)
-## [Kusto Connection Strings](https://kusdoc2.azurewebsites.net/docs/concepts/kusto-connection-strings.html)
-## [Supported Principals](https://kusdoc2.azurewebsites.net/docs/concepts/principals-and-identity-providers.html)
-## [HowTo: Create an AAD application](https://kusdoc2.azurewebsites.net/docs/concepts/security-create-aad-app.html)
-## [Authorization](https://kusdoc2.azurewebsites.net/docs/concepts/principal-roles.html)
-
 # .NET Framework Client Libraries
 ## Overview
 ### [Getting Kusto Client Libraries](getting-the-kusto-client-libraries.md)
@@ -42,7 +31,8 @@
 # Python Client Library
 ## [azure-kusto-python](python/kusto-python-client-library.md)
 
-
+# Java Client Library
+## [azure-kusto-java](java/kusto-java-client-library.md)
 
 
 

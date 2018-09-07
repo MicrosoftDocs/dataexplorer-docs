@@ -63,9 +63,7 @@ All of the above libraries make use of the Azure APIs (e.g. Azure Storage API, A
 
 Kusto provides a Python client library that allows callers to send data queries and control commands.
 
-## JavaScript Libraries
 
-Kusto provides a JavaScript client library that allows callers to send data queries and control commands.
 
 ## Using Kusto from PowerShell
 
