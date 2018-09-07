@@ -41,13 +41,9 @@ $packagesRoot = "C:\Kusto.Tools\Tools"
 try {
     Add-Type -Path "$packagesRoot\Newtonsoft.Json.dll"
     Add-Type -Path "$packagesRoot\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    Add-Type -Path "$packagesRoot\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"
     Add-Type -Path "$packagesRoot\System.Collections.Immutable.dll"
     Add-Type -Path "$packagesRoot\Microsoft.IO.RecyclableMemoryStream.dll"
     Add-Type -Path "$packagesRoot\Microsoft.IdentityModel.dll"
-    Add-Type -Path "$packagesRoot\Microsoft.WindowsAzure.Security.Authentication.dll"
-    Add-Type -Path "$packagesRoot\Microsoft.WindowsAzure.Security.Authentication.Contracts.dll"
-    Add-Type -Path "$packagesRoot\Microsoft.WindowsAzure.Security.Authentication.Logging.dll"
     Add-Type -Path "$packagesRoot\Kusto.Cloud.Platform.dll"
     Add-Type -Path "$packagesRoot\Kusto.Data.dll"
 } catch {
@@ -63,18 +59,18 @@ try {
 $clusterUrl = "https://help.kusto.windows.net;Fed=True" 
 $databaseName = "Samples" 
 
-#   Example A: using AAD User Authentication
+#   Option A: using AAD User Authentication
 $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder ($clusterUrl, $databaseName)
  
-#   Example B: using AAD application Authentication
-$applicationId = "application ID goes here"
-$applicationKey = "application key goes here"
-$kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKey)
+#   Option B: using AAD application Authentication
+#     $applicationId = "application ID goes here"
+#     $applicationKey = "application key goes here"
+#     $kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKey)
 
 # Running queries and commands
 #   EXAMPLE 1: Running an admin command - e.g. ".show diagnostics"
 $adminProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslAdminProvider($kcsb)
-$command = [Kusto.Data.Common.CslCommandGenerator]::GenerateShowDiagnosticsCommand()
+$command = [Kusto.Data.Common.CslCommandGenerator]::GenerateDiagnosticsShowCommand()
 Write-Host "Executing command: '$command' with connection string: '$($kcsb.ToString())'"
 $reader = $adminProvider.ExecuteControlCommand($command)
 $reader.Read() # this reads a single row/record. If you have multiple ones returned, you can read in a loop 
@@ -96,5 +92,5 @@ $reader = $queryProvider.ExecuteQuery($query, $crp)
 # Do something with the result datatable, for example: print it formatted as a table, sorted by the "EndTime" column, in descending order
 $dataTable = [Kusto.Cloud.Platform.Data.ExtendedDataReader]::ToDataSet($reader).Tables[0]
 $dataView = New-Object System.Data.DataView($dataTable)
-$dataView | Sort Timestamp -Descending | Format-Table -AutoSize 
+$dataView | Sort Timestamp -Descending | Format-Table -AutoSize
 ```
