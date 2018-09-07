@@ -52,7 +52,8 @@ try {
     }
     throw
 }
-# Debugging: if any of the `Add-Type` invocations fails, try looking into the value of `$error[0].Exception.InnerException`
+# Debugging: if any of the `Add-Type` invocations fails, try looking into the value of 
+# `$error[0].Exception.InnerException`
 
 # Initialization - 3/3
 # Defining the connection to your cluster / database
@@ -89,7 +90,8 @@ $crp.SetOption([Kusto.Data.Common.ClientRequestProperties]::OptionServerTimeout,
 #   Execute the query
 $reader = $queryProvider.ExecuteQuery($query, $crp)
 
-# Do something with the result datatable, for example: print it formatted as a table, sorted by the "EndTime" column, in descending order
+# Do something with the result datatable, for example: print it formatted as a table, sorted by the 
+# "EndTime" column, in descending order
 $dataTable = [Kusto.Cloud.Platform.Data.ExtendedDataReader]::ToDataSet($reader).Tables[0]
 $dataView = New-Object System.Data.DataView($dataTable)
 $dataView | Sort Timestamp -Descending | Format-Table -AutoSize
