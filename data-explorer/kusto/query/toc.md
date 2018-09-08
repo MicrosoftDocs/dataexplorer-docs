@@ -5,6 +5,8 @@
 
 # [Entities](./schema-entities/overview.md)
 ## [Entity names](./schema-entities/entity-names.md)
+## [Querying external entities](cross-cluster-or-database-queries.md)
+## [User-defined functions](userdefinedfunctions.md)
 
 <!-- Enable this section when the actual content is available, blank pages are confusing external customers.
 ## [Entity references](./schema-entities/entity-references.md)
@@ -12,8 +14,8 @@
 ## [Databases](./schema-entities/databases.md)
 -->
 ## [Tables](./schema-entities/tables.md)
-<!--
 ## [Columns](./schema-entities/columns.md)
+<!--
 ## [Stored functions](./schema-entities/stored-functions.md)
 -->
 
@@ -29,18 +31,12 @@
 ## [string](./scalar-data-types/string.md)
 ## [timespan](./scalar-data-types/timespan.md)
 ## [Null values](./scalar-data-types/null-values.md)
-## [Scalar types and function](scalars.md)
-
-# Misc
-<!-- TODO: Rename syntax to cross-cluster or something -->
-## [Syntax](syntax.md)
-## [User-defined functions](userdefinedfunctions.md)
 
 # [Query statements](statements.md)
 ## [Alias statement](aliasstatement.md)
 ## [Let statement](letstatement.md)
 ## [Pattern statement](patternstatement.md)
-## [Query Parameters statement](queryparametersstatement.md)
+## [Query parameters statement](queryparametersstatement.md)
 ## [Restrict statement](restrictstatement.md)
 ## [Set statement](setstatement.md)
 ## [Tabular expression statements](tabularexpressionstatements.md)

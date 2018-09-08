@@ -26,7 +26,7 @@ as fully qualified DNS name or as a stirng that will be suffixied with `.kusto.w
 **Notes**
 
 * For accessing database within the same cluster - use [database()](databasefunction.md) function.
-* More information about cross-cluster and cross-database queries available [here](syntax.md)  
+* More information about cross-cluster and cross-database queries available [here](cross-cluster-or-database-queries.md)  
 
 ## Examples
 

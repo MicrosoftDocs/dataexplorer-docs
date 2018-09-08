@@ -53,7 +53,7 @@ let Test = () { print x=1 };
 restrict access to (Test);
 ```
 
-- [Tables](https://kusdoc2.azurewebsites.net/docs/controlCommands/tables.html) or [functions](https://kusdoc2.azurewebsites.net/docs/controlCommands/functions.html) that are defined in the database metadata.
+- [Tables](../management/tables.md) or [functions](../management/functions.md) that are defined in the database metadata.
 
 ```kusto
 // Assuming that database that query uses has table Table1 and Func1 defined in the metadata, 

@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # Cross-Cluster Join
 
-For general discussion on cross-cluster queries see [here](syntax.md#queries)
+For general discussion on cross-cluster queries see [here](cross-cluster-or-database-queries.md)
 
 It is possible to perform join operation on datasets residing on different clusters. For example 
 

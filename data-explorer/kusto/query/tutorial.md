@@ -152,7 +152,7 @@ print x=1
 |---|---|
 |3|1|
 
-[Expressions](./scalars.md) can include all the usual 
+[Scalar expressions](./scalar-data-types/overview.md) can include all the usual 
 operators (`+`, `-`, `*`, `/`, `%`), and there's a range of useful functions.
 
 ## summarize: aggregate groups of rows
@@ -441,7 +441,7 @@ LightningStorms
 
 ## Combining data from several databases in a query
 
-See [Cross Database Queries](./syntax.md#queries) for detailed discussion
+See [cross-database queries](./cross-cluster-or-database-queries.md) for detailed discussion
 
 When you write a query of the style:
 

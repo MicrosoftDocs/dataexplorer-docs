@@ -26,7 +26,7 @@ Changes the reference of the query to a specific database within the cluster sco
 **Notes**
 
 * For accessing remote cluster and remote database, see [cluster()](clusterfunction.md) scope function.
-* More information about cross-cluster and cross-database queries available [here](syntax.md)
+* More information about cross-cluster and cross-database queries available [here](cross-cluster-or-database-queries.md)
 
 ## Examples
 

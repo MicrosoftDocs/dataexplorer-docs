@@ -47,10 +47,10 @@ A table with as many rows as there are in all the input tables.
 **Notes**
 1. `union` scope can include [let statements](./letstatement.md) if those are 
 attributed with [view keyword](./letstatement.md)
-2. `union` scope will not include [functions](https://kusdoc2.azurewebsites.net/docs/controlCommands/functions.html). To include 
+2. `union` scope will not include [functions](../management/functions.md). To include 
 function in the union scope - define a [let statement](./letstatement.md) 
 with [view keyword](./letstatement.md)
-3. If the `union` input is [tables](https://kusdoc2.azurewebsites.net/docs/controlCommands/tables.html) (as oppose to [tabular expressions](./findoperator.md)), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./syntax.md) for better performance. Please note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
+3. If the `union` input is [tables](../management/tables.md) (as oppose to [tabular expressions](./findoperator.md)), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./cross-cluster-or-database-queries.md) for better performance. Please note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
 4. `isfuzzy=` `true` applies only to the phase of the `union` sources resolution. Once the set of source tables was determined, possible additional query failures will not be suppressed.
 
 **Example**

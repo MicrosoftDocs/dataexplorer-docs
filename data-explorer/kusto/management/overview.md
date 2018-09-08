@@ -10,5 +10,6 @@ ms.date: 09/24/2018
 ---
 # Management
 
-> [!WARNING]
-> This is a placeholder. Come back -- 1 week.
+This section describes Kusto engine's control commands that are language constructs for managing Kusto. 
+
+For example, they allow one to discover the schema, define new tables and functions, check diagnostics information, or ingest data.
