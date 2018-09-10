@@ -46,9 +46,8 @@ Kusto will then scrub these secrets so that they do not appear in any
 trace it emits internally.
 
 Additionally, passwords and similar secrets should be stored securely
-and "pulled" by the application only when needed. For example, users of the
-Geneva Analytics ([CAS Job Scheduler](https://casjobscheduler) can have the password stored in KeyVault
-and retrieved just-in-time; see the section [KeyVault Parameters](https://microsoft.sharepoint.com/teams/WAG/EngSys/DataStudio/DSWiki/Kusto%20Commands.aspx).
+and "pulled" by the application only when needed.
+
 
 ## Exporting data to Azure Blob Storage 
 
@@ -188,7 +187,7 @@ There are a number of limitations and restrictions when exporting data to a SQL 
    Alternatively, Kusto also supports providing the credentials for the SQL
    database as part of the connection string. Other methods of authentication
    are not supported. In particular, the identity being presented to the SQL
-   database always eminates from the command caller; it is never the Kusto service
+   database always emanates from the command caller; it is never the Kusto service
    identity itself.
 
 3. If the target table in the SQL database exists, it must match the query result

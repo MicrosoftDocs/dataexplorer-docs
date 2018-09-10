@@ -202,7 +202,7 @@ Tips: You can use [getschema](../query/getschemaoperator.md) operator on the tar
   * *RecreateSchemaSpecification* is an optional boolean value which specifies whether or not the command
   could recreate the schema of the target table (defaults to `false`). Applicable only for set-or-replace command.
       * Any schema changes are allowed with this option. The schema changes are not transactional with the data ingestion. 
-      If both options extend_schema and recreate_schema are set, extend_schema option is ignorred.
+      If both options extend_schema and recreate_schema are set, extend_schema option is ignored.
       * Example: `recreate_schema=true`
 
 **Examples** 

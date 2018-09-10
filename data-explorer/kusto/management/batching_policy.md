@@ -14,7 +14,7 @@ The [ingestionBatching policy](https://kusdoc2.azurewebsites.net/docs/concepts/b
 when data aggregation should stop during data ingestion according to the specified time.
 
 The policy can be set to `null`, in which case the default values are used, setting
-the maximum batching time span to 5 minutes or the default cluster value set by kusto.
+the maximum batching time span to 5 minutes or the default cluster value set by Kusto.
 
 If the policy is not set for a certain entity, it will look for a higher hierarchy level policy,
 if all are set to null the default value will be used. 
@@ -45,7 +45,7 @@ IngestionBatching policy:
 ```
 
 * `entity_type` : table, database
-* `database_or_table`: if entity is table or database, its name should be specifieid in the command as follows - 
+* `database_or_table`: if entity is table or database, its name should be specified in the command as follows - 
   - `database_name` or 
   - `database_name.table_name` or 
   - `table_name` (when running in the specific database's context)

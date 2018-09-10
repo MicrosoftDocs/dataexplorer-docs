@@ -29,7 +29,7 @@ This command returns a table with the following columns:
 |Column    |Type    |Description
 |---|---|---
 |PolicyName|`string`|The policy name - RowStorePolicy
-|EntityName|`string`|Empty                         
+|EntityName|`string`|Empty
 |Policy    |`string`|A JSON object that defines the row stores policy, formatted as [row stores policy object](#row-stores-policy-object)
 
 **Example**

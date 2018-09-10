@@ -29,7 +29,7 @@ Shows all policies of the given entity type (database or table) if the given nam
 
 |Policy Name | Entity Name | Policy | Child entities | Entity Type
 |---|---|---|---|---
-|ExtentsMergePolicy | Database / Table name | Json format string that represents the policy | A list of tables (for a database)|Database &#124; Table
+|ExtentsMergePolicy | Database / Table name | a JSON-formatted string that represents the policy | A list of tables (for a database)|Database &#124; Table
 
 
 ## alter policy of merge

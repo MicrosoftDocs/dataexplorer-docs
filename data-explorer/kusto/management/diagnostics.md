@@ -138,7 +138,7 @@ Returns a table with all administrative operations since the new Admin node was 
 |NodeId |String |If the command has a remote execution (e.g. DataIngestPull) - NodeId will contain the id of the executing remote node 
 |StartedOn |DateTime |Date/time (in UTC) when the operation has started 
 |LastUpdatedOn |DateTime |Date/time (in UTC) when the operation last updated (can be either a step inside the operation, or a completion step) 
-|Duration |DateTime |Timespan between LastUpdateOn and StartedOn 
+|Duration |DateTime |TimeSpan between LastUpdateOn and StartedOn 
 |State |String |Command state: can have values of "InProgress", "Completed" or "Failed" 
 |Status |String |Additional help string that either holds errors for failed operations 
  

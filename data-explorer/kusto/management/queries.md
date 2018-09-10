@@ -59,33 +59,3 @@ query previously started by the same user.
 .cancel query "KE.RunQuery;8f70e9ab-958f-4955-99df-d2a288b32b2c"
 ```
 
-## .show queryplan
-
-The `.show` `queryplan` command creates a query plan for the provided
-query, and returns information about the generated plan without actually
-executing it. This is mostly useful for Kusto developers.
-
-> [!WARNING]
-> Query plan structure is a subject to frequent and breaking changes,
-> and no dependency can be taken on the returned data structure.
-
-**Syntax**
-
-`.show` `queryplan` `<|` *query*
-
-**Example**
-
-Running the following command:
-
-```kusto
-.show queryplan <| range x from 1 to 10 step 1 | extend r=rand()
-```
-
-Provides the next output (cut short for presentation purposes):
-
-|ResultType|Format|Content|
-|----------|------|-------|
-|QueryText |text  |range x from 1 to 10 step 1 ...|
-|RelopTree |json  |{"type":"Extension","output":["x:Int64","r:Double"],"bindi...|
-|QueryPlan |json  |{"QueryType":0,"RootOperator":{"$type":"Kusto.DataNode.Ext...|
-|Stats     |json  |{"Duration":"00:00:00.0085478","PlanSize":3002}|

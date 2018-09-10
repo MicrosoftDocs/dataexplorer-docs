@@ -38,7 +38,7 @@ are sent to Kusto's Data Engine service) will not appear in the result set of th
 |Table |String |Table on which the failure was encountered
 |FailedOn |DateTime |Date/time (in UTC) when the failure was registered 
 |IngestionSourcePath |String |Identifies the ingestion source (usually, an Azure Blob URI) 
-|Details |String |Failure details. Proivides insight into the actual ingestion failure root cause
+|Details |String |Failure details. Provides insight into the actual ingestion failure root cause
 |FailureKind |String |Type of the failure (Permanent/Transient)
 |RootActivityId |String |Root Activity ID. This parameter can be used to query Kuskus (Kusto-on-Kusto) as RootActivityId to observe the entire flow
 |OperationKind |String |The ingestion operation type (phase) during which the failure was registered

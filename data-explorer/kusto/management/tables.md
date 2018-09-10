@@ -140,52 +140,6 @@ Requires [Database user permission](https://kusdoc2.azurewebsites.net/docs/conce
 |Folder |String |Table's folder.
 |DocString |String |Table's docstring.
 
-## .show freshness
-
-> Note: This command is deprecated. It is recommended that teams express the logic they require for calculating freshness as a Kusto query instead.
-
-```kusto
-.show freshness Table_Identifier [column Timestamp_column_name>] [threshold freshness_threshold_in_seconds] 
-```
-
-Returns a table whose most important column is a field that indicates whether the table has fresh data (defined as the timespan between `UTC Now`
-and the maximum value of a predefied DateTime-typed column in the table)
-
-Requires [Database user permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
-
-Assuming table freshness settings are defined for table `T` with a DateTime column `DT`, the results for the following command and query are equivalent:
-
- ```kusto
-.show freshness T column DT | project Freshness 
-```
-
-```kusto
-T | summarize Freshness = now() - max(DT)
-```
-
- 
-**Notes**
- - Depending on the data in the table, it could be that max(DT) is actually delayed or even in the future - the values for DT are the ones in 
- the original Data and hence are set by the pipeline / customer.
- - Applying an [IngestionTime policy](https://kusdoc2.azurewebsites.net/docs/concepts/ingestiontimepolicy.html) and/or [Freshness metrics](https://kusdoc2.azurewebsites.net/docs/ops/monitoring.html#metrics)
-  in Kusto's monitoring could be considered used as alternatives for this command. 
-
-|Output parameter |Type |Description 
-|---|---|---
-|Last Time Stamp UTC |DateTime |The timestamp of the row with latest timestamp in the table, by the specified DateTime column
-|Freshness |TimeSpan |Amount of time passed since latest timestamp in the table, by the specified DateTime column 
-|Threshold in seconds |Int32 |The threshold that determines whether the table is considered fresh or not. This is the threshold supplied in the command, or a default value of 3600 seconds (60 minutes) if not. 
-|Is Fresh |Boolean |True if the table is fresh. It will be considered fresh if the freshness is less than the threshold. 
- 
-**Example**
-
-```kusto
-.show freshness Events Timestamp
-```
- 
-|Last Time Stamp UTC |Freshness |Threshold in seconds |IsFresh 
-|---|---|---|---
-|1/11/2015 3:07:56PM |00:07:29 |3600 |False 
 
 
 ## .create table 

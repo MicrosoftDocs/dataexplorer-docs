@@ -12,7 +12,7 @@ ms.date: 09/24/2018
 
 ### CSV Mapping
 
-When the source file is a csv and its schema doesn't match the current Kusto table schema, csvMapping maps from the file schema to the Kusto table schema. If the table doesn't exist in Kusto, it will be created according to this mapping. If some fields in the mapping are missing in Kusto table, they will be added. 
+When the source file is in CSV format and its schema doesn't match the current Kusto table schema, a CSV mapping maps from the file schema to the Kusto table schema. If the table doesn't exist in Kusto, it will be created according to this mapping. If some fields in the mapping are missing in the table, they will be added. 
 
 Each element in the list describes a single column as a dictionary: 
 
@@ -51,11 +51,11 @@ Example of the CSV mapping:
 ]
 ```      
 
- Csv mapping can be [precreated](tables.md#create-ingestion-mapping) and be referenced from the ingest command `csvMappingReference` parameter.
+a CSV mapping can be [pre-created](tables.md#create-ingestion-mapping) and be referenced from the ingest command `csvMappingReference` parameter.
  
- * Note: When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string: `.ingest into Table123 (@"source1", @"source2") with @'{"csvMapping": "[{\"Name\":\"rownumber\",\"Ordinal\":0},{\"Name\":\"rowguid\",\"Ordinal\":1},...]","format":"csv"}'`
+* Note: When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string: `.ingest into Table123 (@"source1", @"source2") with @'{"csvMapping": "[{\"Name\":\"rownumber\",\"Ordinal\":0},{\"Name\":\"rowguid\",\"Ordinal\":1},...]","format":"csv"}'`
  
- Csv mapping can be applied on all the delimiter-separated formats, meaning : CSV, TSV, PSV, SCSV, SOHsv.
+a CSV mapping can be applied on all the delimiter-separated formats, meaning : CSV, TSV, PSV, SCSV, SOHsv.
 
 ### JSON Mapping
 
@@ -68,14 +68,14 @@ Each element in the list describes a single or multiple columns as a dictionary:
  * Can be used instead of `Column` (or in addition to `Column`)
 * `DataType`: the datatype with which to create the mapped column if not already exists in the Kusto table (optional)
 * `Path`  
- * If starts with `$`: json path to the content of the column in the json document 
+ * If starts with `$`: JSON path to the content of the column in the JSON document 
  * Otherwise a constant value is used. 
 * `Transform` (optional): the transformation that should be applied on the content:
  * Path dependent transform:
    * `PropertyBagArrayToDictionary` - creating a dictionary from the array content of the field and serializes it to JSON.
    * `GetPathElement(index)` - Extract an element from the given path according to the given index (e.g. Path: $.a.b.c, GetPathElement(0) == "c", GetPathElement(-1) == "b", type string.
  * Path independent transform:
-   * `SourceLocation` - Name of the storage artifact that provided the data, type string (e.g. the blob's "BaseUri" field).
+   * `SourceLocation` - Name of the storage artifact that provided the data, type string (e.g. the blob's "BaseUri" field).
    * `SourceLineNumber` - Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).
 
  
@@ -108,13 +108,13 @@ Example of the JSON Mapping:
 ]
 ```      
 
-Json mapping can be [precreated](tables.md#create-ingestion-mapping) and be referenced from the ingest command `jsonMappingReference` parameter.
+a JSON mapping can be [pre-created](tables.md#create-ingestion-mapping) and be referenced from the ingest command `jsonMappingReference` parameter.
 
 * Note: When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string: `.ingest into Table123 (@"source1", @"source2") with @'{"jsonMapping" : "[{\"column\":\"rownumber\",\"path\":\"$.rownumber\"},{\"column\":\"rowguid\",\"path\":\"$.rowguid\"},...]","format":"json"}'`
 
 ### AVRO Mapping
 
-When the source file is in AVRO format, this maps the Avro file content to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. 
+When the source file is in Avro format, this maps the Avro file content to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. 
 The columns mapped in the Avro Mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
 
 Each element in the list describes a single or multiple columns as a dictionary: 
@@ -151,4 +151,4 @@ Example of the AVRO mapping:
 
 * Note: When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string: `.ingest into Table123 (@"source1", @"source2") with @'{"avroMapping": "[{\"column\":\"rownumber\",\"field\":\"RowNumber\"},{\"column\":\"rowguid\",\"field\":\"RowGuid\"},...]","format":"avro"}'`
 
-Avro mapping can be [precreated](tables.md#create-ingestion-mapping) and be referenced from the ingest command `avroMappingReference` parameter.
+an Avro mapping can be [pre-created](tables.md#create-ingestion-mapping) and be referenced from the ingest command `avroMappingReference` parameter.

@@ -36,11 +36,13 @@ commands:
 ```kusto
 .alter <entity_type> <database_or_table_name> policy caching hot = <timespan>
 ```
+
 Altering policy of Caching for multiple tables (in the same database context):
 
 ```kusto
 .alter tables (table_name [, ...]) policy caching hot = <timespan>
 ```
+
 Cache policy:
 ```
 {
@@ -54,7 +56,7 @@ Cache policy:
 ```
 
 * `entity_type` : table, database or cluster
-* `database_or_table`: if entity is table or database, its name should be specifieid in the command as follows - 
+* `database_or_table`: if entity is table or database, its name should be specified in the command as follows - 
   - `database_name` or 
   - `database_name.table_name` or 
   - `table_name` (when running in the specific database's context)
