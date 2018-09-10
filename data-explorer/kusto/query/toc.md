@@ -15,9 +15,7 @@
 -->
 ## [Tables](./schema-entities/tables.md)
 ## [Columns](./schema-entities/columns.md)
-<!--
 ## [Stored functions](./schema-entities/stored-functions.md)
--->
 
 # [Data types](./scalar-data-types/overview.md)
 ## [bool](./scalar-data-types/bool.md)

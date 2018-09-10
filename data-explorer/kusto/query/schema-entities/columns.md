@@ -38,3 +38,5 @@ datatable (c:int) [-1, 0, 1, 2, 3]
 > As is often common in the relational databases world,
   rows are sometimes called **records** and columns are sometimes called
   **attributes**.
+
+Details on managing columns can be found under [managing columns](..\..\management\columns.md).
