@@ -13,7 +13,7 @@ ms.date: 09/24/2018
 ## .show ingestion failures
 
 This command returns a result set which includes all ingestion failures that were encountered during execution of 
-[data ingestion control commands](data_ingest.md).
+[data ingestion control commands](data-ingest.md).
 
 *Notes*: 
 - Ingestion failures which are encountered during other parts of the ingestion flow (e.g. before data ingestion control commands
@@ -42,7 +42,7 @@ are sent to Kusto's Data Engine service) will not appear in the result set of th
 |FailureKind |String |Type of the failure (Permanent/Transient)
 |RootActivityId |String |Root Activity ID. This parameter can be used to query Kuskus (Kusto-on-Kusto) as RootActivityId to observe the entire flow
 |OperationKind |String |The ingestion operation type (phase) during which the failure was registered
-|OriginatesFromUpdatePolicy |Boolean | Indicates whether the failure was registered while executing an [Update Policy](update_policy.md)
+|OriginatesFromUpdatePolicy |Boolean | Indicates whether the failure was registered while executing an [Update Policy](update-policy.md)
  
 **Example**
  

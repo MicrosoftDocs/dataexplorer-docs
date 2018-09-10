@@ -16,7 +16,7 @@ This topic discusses the lifecycle of tables and associated control commands:
 |----------------------------------------|--------------------------------|
 |Enumerate tables in a database          |`.show tables`                  |
 |Create/modify/drop tables               |`.create tables`, `.create table`, `.altert table`, `.alter-merge table`, `.drop tables`, `.drop table`, `.undo drop table`, `.rename table`|
-|Data ingestion into a table             |`.ingest`, `.set`, `.append`, `.set-or-append` (see [Data Ingestion](./data_ingest.md) for details).)
+|Data ingestion into a table             |`.ingest`, `.set`, `.append`, `.set-or-append` (see [Data Ingestion](./data-ingest.md) for details).)
 |Manage ingestion mapping                |`.create ingestion mapping`, `.show ingestion mappings`, `.alter ingestion mapping`, `.drop ingestion mapping`|
 |Manage table display properties         |`.alter table docstring`, `.alter table folder`|
 
