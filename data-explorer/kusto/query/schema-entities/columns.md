@@ -39,4 +39,4 @@ datatable (c:int) [-1, 0, 1, 2, 3]
   rows are sometimes called **records** and columns are sometimes called
   **attributes**.
 
-Details on managing columns can be found under [managing columns](..\..\management\columns.md).
+Details on managing columns can be found under [managing columns](../../management/columns.md).
