@@ -15,5 +15,5 @@ entities (similar to, for example, tables) called **stored functions**. Function
 also be created in an ad-hoc fashion inside queries using a [let statement](../letstatement.md)
 through a mechanism called **lambda expressions**.
 
-See [user-defined functions](../userdefinedfunctions.md) for additional details on the function invocation syntax and rules.
+See [user-defined functions](../functions/user-defined-functions.md) for additional details on the function invocation syntax and rules.
 Details on how to create and manage store functions can be found under [managing functions](../../management/functions.md).

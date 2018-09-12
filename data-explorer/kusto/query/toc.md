@@ -6,7 +6,6 @@
 # [Entities](./schema-entities/overview.md)
 ## [Entity names](./schema-entities/entity-names.md)
 ## [Querying external entities](cross-cluster-or-database-queries.md)
-## [User-defined functions](userdefinedfunctions.md)
 
 <!-- Enable this section when the actual content is available, blank pages are confusing external customers.
 ## [Entity references](./schema-entities/entity-references.md)
@@ -29,6 +28,9 @@
 ## [string](./scalar-data-types/string.md)
 ## [timespan](./scalar-data-types/timespan.md)
 ## [Null values](./scalar-data-types/null-values.md)
+
+# [Functions](./functions/overview.md)
+## [User-defined functions](./functions/user-defined-functions.md)
 
 # [Query statements](statements.md)
 ## [Alias statement](aliasstatement.md)

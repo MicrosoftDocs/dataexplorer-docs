@@ -11,8 +11,8 @@ ms.date: 09/24/2018
 # Stored Functions
 
 Stored functions are reusable queries that are stored as part of
-a database. Stored functions are a kind of 
-[user-defined functions](../query/userdefinedfunctions.md),
+a database. Stored functions are a kind of
+[user-defined functions](../query/functions/user-defined-functions.md),
 and have the same invocation syntax and rules. Unlike ad-hoc
 user-defined functions (whose scope is that of a query), stored
 functions are full-fledged durable database entities, similar
