@@ -27,7 +27,7 @@ Common scenarios for using Azure Kusto Flow include:
 3. Flow works best on Internet Explorer and Chrome.
 4. Kusto Flow connector is currently in preview, therefore its support will be only during business hours.
 
-# Azure Kusto Flow Actions
+## Azure Kusto Flow Actions
 
 When searching for the Azure Kusto connector in Flow, you will see 3 possible actions you can add to your flow.
 
@@ -36,7 +36,7 @@ The following section describes the capabilites and needed parameters for each A
 ![alt text](./Images/KustoTools-Flow/flow-actions.png "flow-actions")
 
 
-## Azure Kusto - Run query and visualize results
+### Azure Kusto - Run query and visualize results
 
 > Note: In case your query starts with a dot (meaning it's a [control command](../management/overview.md)) please use [Run control command and visualize results](./flow.md#azure-kusto---run-control-command-and-visualize-results)
 
@@ -49,7 +49,7 @@ In this example the results of the query are returned as an HTML table.
 
 For a detailed example of 'Azure Kusto - Run query and visualize results' see [Example 1 - Email Kusto query results](./flow.md#example-1---email-kusto-query-results)
 
-## Azure Kusto - Run control command and visualize results
+### Azure Kusto - Run control command and visualize results
 
 Similar to the 'Azure Kusto - Run query and visualize results' action, you can also run a [control command](../management/overview.md) using the 'Azure Kusto - Run control command and visualize results' action.
 The results of this action can be later sent over email as a table or a chart.
@@ -58,7 +58,7 @@ The results of this action can be later sent over email as a table or a chart.
 
 In this example the results of the control command are rendered as a pie chart.
 
-## Azure Kusto - Run query and list results
+### Azure Kusto - Run query and list results
 
 > Note: In case your query starts with a dot (meaning it's a [control command](../management/overview.md)) please use [Run control command and visualize results](./flow.md#azure-kusto---run-control-command-and-visualize-results)
 
@@ -71,9 +71,9 @@ The following example triggers a query every minute and sends an email based on 
 
 Note that in case the column has several lines, the following connector would run for each line in the column.
 
-# FAQ
+## FAQ
 
-## How to make sure flow succeeded?
+### How to make sure flow succeeded?
 
 Go to [Microsoft Flow Home Page](https://flow.microsoft.com/), click on [My flows](https://flow.microsoft.com/manage/flows) and then click on the i button.
 
@@ -94,7 +94,7 @@ Some errors can be easily solved on your own, for example query syntax errors:
 
 In case you are unable to solve an error on your own, please send the error description to [Kusto Discussions](mailto:kustalk@microsoft.com).
 
-## Having trouble finding the Azure Kusto connector?
+### Having trouble finding the Azure Kusto connector?
 
 To use the Azure Kusto connector you need to first add a trigger. 
 A trigger can be defined based on a recurring time period or as response to a previous flow action.
@@ -108,20 +108,9 @@ Now you should be able to see 'Azure Kusto' as seen in the image below.
 
 ![alt text](./Images/KustoTools-Flow/flow-actions.png "flow-actions")
 
-## Having trouble querying Aria Proxy?
-
-1. Make sure the cluster name you are using contains "kusto.aria" string (and not just "aria" which is a valid cluster name) which is how we identify the user wants to execute a query on AriaProxy endpoint. 
-2. Make sure you do not direct your query to run on a specific cluster, as it's not needed and will again direct the query to a specific cluster and not AriaProxy. For instance, if your query starts with "cluster('Aria').database('OasysResults')" remove it. 
-3. Make sure you are using the database name and not the database pretty name. For instance do not use OasysResults which is the database pretty name, use de9b599503654d50ba07b5a40adf6afa.
-You can find the database name in kusto explorer:
-![alt text](./Images/KustoTools-Flow/flow-ariadatabasename.png "flow-ariadatabasename")
-
-Here's an example:
-
-![alt text](./Images/KustoTools-Flow/flow-ariaexample.png "flow-ariaexample")
 
 
-# Authentication
+## Authentication
 
 When connecting to Azure Kusto Flow for the first time, you will be prompted to sign in.
 
@@ -133,7 +122,7 @@ Authentication to Azure Kusto Flow can be done with user credentials or an AAD a
 Authentication via dSTS is not supported, which means that one cannot query Kusto clusters in national clouds from Flow.
 Service accounts are also no longer supported.
 
-## AAD Application Authentication
+### AAD Application Authentication
 
 You can authenticate to Azure Kusto Flow with an AAD application using the following steps.
 
@@ -156,11 +145,11 @@ Once authentication is completed, you would be able to see that your flow is usi
 
 From now on this flow will run using the application credentials.
 
-# Usage Examples
+## Usage Examples
 
 This section contains several common examples of using the Azure Kusto Flow connector.
 
-## Example 1 - Email Kusto query results
+### Example 1 - Email Kusto query results
 
 The following example is a flow which sends an email report every 15 minutes of a Kusto query.
 The flow must start with a trigger, which can be a 'Schedule - Recurrence' trigger for instance.
@@ -175,7 +164,7 @@ To send email reports add another action 'Office 365 Outlook - Send an email'.
 
 Add the 'Body' result from the dynamic content to the email body, and under 'advanced options' section add 'Attachment Name', 'Attachment Content' and choose 'Yes' under 'Is HTML'. 
 
-#####Detailed steps
+#### Detailed steps
 
 1. Login to [Microsoft Flow](https://flow.microsoft.com/).
 2. Click [My flows](https://flow.microsoft.com/manage/flows) then [Create from blank](https://flow.microsoft.com/manage/flows/new).
@@ -193,14 +182,14 @@ Add the 'Body' result from the dynamic content to the email body, and under 'adv
 14. Click 'Create flow' and you're done!
 15. [Make sure your flow ran successfully](./flow.md#how-to-make-sure-flow-succeeded)
 
-## Example 2 - Azure Kusto Flow and SQL
+### Example 2 - Azure Kusto Flow and SQL
 
 You can use Azure Kusto flow to query the data and then accumulate it into an SQL DB. 
 > Note: SQL insert is being  done seperately per row, please use this only for low amounts of output data. 
 
 ![alt text](./Images/KustoTools-Flow/flow-sqlexample.png "flow-sqlexample")
 
-## Example 3 - Push data to Power BI dataset
+### Example 3 - Push data to Power BI dataset
 
 Azure Kusto Flow connector can be used together with the Power BI connector to push data from Kusto queries to Power BI streaming datasets.
 
@@ -221,7 +210,7 @@ Note that Flow will automatically apply the Power BI action for each row of the 
 
 ![alt text](./Images/KustoTools-Flow/flow-powerbiforeach.png "flow-powerbiforeach")
 
-## Example 4 - Conditional Queries
+### Example 4 - Conditional Queries
 
 The results of Kusto queries can be used as input or conditions for the next Flow actions.
 
@@ -261,7 +250,7 @@ We visualize this information as a pie chart and email it to our team.
 
 ![alt text](./Images/KustoTools-Flow/flow-conditionemail.png "flow-conditionemail")
 
-## Example 5 - Email multiple Azure Kusto Flow charts
+### Example 5 - Email multiple Azure Kusto Flow charts
 
 Currently, Microsoft Flow email connector does not support sending multiple attachements in a single email.
 To overcome that, we suggest the following workaround for sending multiple Azure Kusto Flow charts.
@@ -294,7 +283,7 @@ Make sure to select 'true' under 'is HTML'.
 
 ![alt text](./Images/KustoTools-Flow/flow-emailmultiplecharts.png "flow-emailmultiplecharts")
 
-## Example 6 - Send a different email to different contacts
+### Example 6 - Send a different email to different contacts
 
 You can leverage Azure Kusto Flow to send different customized emails to different contacts. The email addresses as well as the email contents are a result of a Kusto query.
 
@@ -304,17 +293,7 @@ See below example:
 
 ![alt text](./Images/KustoTools-Flow/flow-dynamicemail.png "flow-dynamicemail")
 
-## Example 7 - Using Aria Proxy
-
-You can leverage Azure Kusto Flow to send different customized emails to different contacts. The email addresses as well as the email contents are a result of a Kusto query.
-
-See below example:
-
-![alt text](./Images/KustoTools-Flow/flow-dynamicemailkusto.png "flow-dynamicemailkusto")
-
-![alt text](./Images/KustoTools-Flow/flow-dynamicemail.png "flow-dynamicemail")
-
-## Example 8 - Create Custom HTML Table
+### Example 7 - Create Custom HTML Table
 
 You can leverage Azure Kusto Flow to create and use custom HTML elements such as a custom HTML table.
 
@@ -345,3 +324,4 @@ Finally, create the full HTML content. Add a new action outside 'Apply to each'.
 and here is the result:
 
 ![alt text](./Images/KustoTools-Flow/flow-customhtmltableresult.png "flow-customhtmltableresult")
+

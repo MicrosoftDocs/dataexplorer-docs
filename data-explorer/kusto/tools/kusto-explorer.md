@@ -44,15 +44,7 @@ If you are using Chrome as your default browser - make sure to install the Click
 <!-- The following link used to work but it no longer does. it could be it's not actually required * [http://www.clickoncechrome.com/install.html](http://www.clickoncechrome.com/install.html) -->
 * [https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US](https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US)
 
-## Kusto.Explorer on SAW
 
-Kusto.Explorer is available on SAW v2 machines.
-
-* For more infrmation on SAW, please visit [http://aka.ms/SAW](http://aka.ms/SAW).
-* Kusto.Explorer version for SAW is updated as often as the public / stable version.
-* Latest Kusto.Explorer version available for SAW users is downloadable from [http://kusto-us/ke-saw/kusto.explorer.application](http://kusto-us/ke-saw/kusto.explorer.application).
-  The location is whitelisted for SAW machines.
-* Kusto.Explorer for SAW supports dSTS Authentication (requires version 1.0.3.487 or later).
 
 ## Overview of user experience
 
@@ -66,7 +58,7 @@ Kusto Explorer window has several UI parts:
 
 ![Kusto.Explorer startup](./Images/KustoTools-KustoExplorer/ke-start.png "ke-start")
 
-## Ribbon menus
+### Ribbon menus
 
 Kusto.Explorer menu has several areas:
 
@@ -81,7 +73,7 @@ Kusto.Explorer menu has several areas:
 * [Management Menu](#management-menu)
 * [Help Menu](#help-menu)
 
-## Explore Menu
+### Explore Menu
 
 ![Kusto.Explorer explore tab](./Images/KustoTools-KustoExplorer/menu-explore.png "menu-explore")
 
@@ -92,7 +84,7 @@ Kusto.Explorer menu has several areas:
 |Search (beta)|Allows searching for a term using Search syntax across one or more tables. See more at using [Search Beta Mode](kusto-explorer.md#search-beta-mode)|
 |Query |Switches Query Window into a script mode: commands can be loaded and saved as scripts.|
 
-## Connections Menu
+### Connections Menu
 
 ![Kusto.Explorer connections tab](./Images/KustoTools-KustoExplorer/menu-connections.png "menu-connections")
 
@@ -107,7 +99,7 @@ Kusto.Explorer menu has several areas:
 |Remove connection|Removes the existing connection to Kusto Server|
 |Refresh|Refreshes properties of Kusto server connection|
 
-## Export Menu
+### Export Menu
 
 ![Kusto.Explorer export tab](./Images/KustoTools-KustoExplorer/menu-export.png "menu-export")
 
@@ -120,7 +112,7 @@ Kusto.Explorer menu has several areas:
 |Query to Power BI|	Exports Kusto query in format of PowerBI M-Language query |
 |Query to Clipboard| Exports Query to clipboard|
 
-## Save Data Menu
+### Save Data Menu
 
 ![alt text](./Images/KustoTools-KustoExplorer/menu-savedata.png "menu-savedata")
 
@@ -133,7 +125,7 @@ Kusto.Explorer menu has several areas:
 |To CSL Script|	Exports Query to a script file| 
 |To Results   |	Exports Query and data to Results (QRES) file| 
 
-## Load Data Menu
+### Load Data Menu
 
 ![alt text](./Images/KustoTools-KustoExplorer/menu-loaddata.png "menu-loaddata")
 
@@ -141,7 +133,7 @@ Kusto.Explorer menu has several areas:
 |----|----------|
 |From Results|	Loads Query and data from Results (QRES) file| 
 
-## Visualizations Menu
+### Visualizations Menu
 
 ![alt text](./Images/KustoTools-KustoExplorer/menu-visualizations.png "menu-visualizations")
 
@@ -166,7 +158,7 @@ The algorithm is expecting time series data which consists of 2 columns:
 2. Numeric value for anomaly detection
 To produce that in Kusto.Explorer, you should summarize by the time field and specify the time bucket bin.
 
-## View Menu
+### View Menu
 
 ![alt text](./Images/KustoTools-KustoExplorer/menu-view.png "menu-view")
 
@@ -185,7 +177,7 @@ so when columns are reordered/removed - the data view is saved and will be reuse
 whenever the data with the same columns is retrieved. To reset the view to its defaults,
 use `Reset View` menu item. 
 
-## Monitor Menu
+### Monitor Menu
 
 ![alt text](./Images/KustoTools-KustoExplorer/menu-health.png "menu-health")
 
@@ -197,7 +189,7 @@ use `Reset View` menu item.
 |Latest data: All tables| Shows summary of what is the latest data in all tables of the currently selected database|
 |Latest data: Selected table|Shows in the status bar what is the latest data in selected table|
 
-## Management Menu
+### Management Menu
 
 ![alt text](./Images/KustoTools-KustoExplorer/menu-management.png "menu-management")
 
@@ -208,7 +200,7 @@ use `Reset View` menu item.
 |Manage Table Authorized Principals | When in context of table, enables managing its principals for authorized users| 
 |Manage Function Authorized Principals | When in context of a function, enables managing its principals for authorized users| 
 
-## Help Menu
+### Help Menu
 
 ![alt text](./Images/KustoTools-KustoExplorer/menu-help.png "menu-help")
 
@@ -220,7 +212,7 @@ use `Reset View` menu item.
 |Suggest Feature  | Opens a link to the Kusto feedback forum | 
 |Report Issue     | Opens html file with the details that should be send with the issue report | 
 
-# Connections Panel
+## Connections Panel
 
 ![alt text](./Images/KustoTools-KustoExplorer/connectionsPanel.png "connectionsPanel") 
 
@@ -245,7 +237,7 @@ as usual, you'll have to run each line using `F5` or similar):
 StormEvents | count
 ```
 
-# Search Beta Mode
+## Search Beta Mode
 
 1.  In the ribbon's Home -> Explore tab, click "Search (beta)"
 2. Choose "Multiple tables" and then under "Choose tables" you can define which tables to search
@@ -255,13 +247,13 @@ StormEvents | count
 
 ![alt text](./Images/KustoTools-KustoExplorer/ke-search-beta.jpg "ke-search-beta") 
 
-# Query Mode
+## Query Mode
 
 Kusto.Explorer has powerful script mode - that allows you write, edit and run ad-hoc queries. 
 It comes with syntax highlighting and IntelliSense - so you can ramp-up to Kusto CSL
 language very fast.
 
-## Basic Queries
+### Basic Queries
 Assume you have table Logs. You can start exploring it by typing next:
 
 ```kusto
@@ -285,7 +277,7 @@ StormEvents
 | limit 10
 ```
 
-# Importing a local CSV file into a Kusto table
+## Importing a local CSV file into a Kusto table
 
 Kusto.Explorer provides a convenient way to upload a files from your machine to a Kusto table.
 
@@ -318,7 +310,7 @@ Once the above are verified, follow these steps:
 
 5. Query the data in your table (double-click on the table in the [Connections panel](#connections-panel)).
 
-# Managing Authorized Principals
+## Managing Authorized Principals
 
 Kusto.Explorer provides a convenient way to manage cluster, database, table or function authorized principals.
 
@@ -341,7 +333,7 @@ Please note that only [admins](https://kusdoc2.azurewebsites.net/docs/concepts/a
 
     ![alt text](./Images/KustoTools-KustoExplorer/confirm-drop-authorized-principals.png "confirm-drop-authorized-principals")
 
-# Sharing Queries and Results over Email
+## Sharing Queries and Results over Email
 
 Kusto.Explorer provides a convenient way to share queries and query results over email -- Simply click "Export to Clipboard", and the tool will copy to the clipboard:
 1. Your query
@@ -364,7 +356,8 @@ Here's how it works:
 
 ![alt text](./Images/KustoTools-KustoExplorer/share-results-2.png "share-results-2")
 
-# Parametrized Queries
+## Parametrized Queries
+
 If you plan to use same value in multiple queries or in multiple tabs, it is going to 
 be hard to change it. Luckily, Kusto.Explorer supports having Query parameters. Parameters 
 are denoted with {} brackets. For example: `{parameter1}`
@@ -390,13 +383,13 @@ Buttons, "Add new" and "Delete current" manipulate list of Parameters "sets"
 
 Note that Query parameters are shared among tabs, so that they can be easily reused.
 
-# Deep-linking queries
+## Deep-linking queries
 
-## Overview
+### Overview
 It is possible to create a URI that, when opened in a browser, will have Kusto.Explorer 
 start locally and run a specified query on the specified Kusto database.
 
-## Limitation:
+### Limitations
 The queries are limited to ~2000 chars due to IE limitation (the limitation is approximate because it is dependent on the cluster and Database name length)
 https://support.microsoft.com/en-us/kb/208427 
 To reduce chances you will hit this limitation - see the Getting Shorter Links paragraph on this page.
@@ -411,13 +404,9 @@ This URI will open new Kusto.Explorer, connect to the ARIA Kusto cluster, and ru
 
 **Security note**: For security reasons, deep-linking is disabled for control commands.
 
-## Creating SAW-compatible Deep-Links
-Deep-links can be made compatible with [SAW devices](kusto-explorer.md#kustoexplorer-on-saw) by appending `saw=1` query parameter to the deep-link URI.
 
-For example:
-    https://help.kusto.windows.net/Samples?query=StormEvents+%7c+limit+10`&web=0&saw=1`
 
-## Creating a Deep-Link: the Easy Way
+### Creating a Deep-Link: the Easy Way
 The easiest way to create a deep-link is to author your query in Kusto.Explorer, and then use
 the Export to Clipboard button to copy the query (plus the deep link and results) to the clipboard,
 ready for sharing via Outlook:
@@ -432,14 +421,14 @@ and press CTRL-K, you can see the actual URL:
 
 https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
 
-## Deep-link and Parametrized Queries
+### Deep-link and Parametrized Queries
 It is possible to use Parametrized Queries with deep-linking.
 First, make a query to be formed as Parametrized Query (e.g. KustoLogs | where Timestamp > ago({Period}) | count) 
 Second, provide a parameter for every Query Parameter in the URI
 In this case
 https://kuskus.kusto.windows.net/Kuskus?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h
 
-## Getting Shorter Links
+### Getting Shorter Links
 Queries may become longer - and in order to reduce the chance query exceeds maximum length - you 
 can use 
 `String Kusto.Data.Common.CslCommandGenerator.EncodeQueryAsBase64Url(string query)` method 
@@ -455,7 +444,7 @@ The query is made more compact by applying next transformation:
  UrlEncode(Base64Encode(GZip(original query)))
 ```
 
-# Kusto.Explorer command-line arguments
+## Kusto.Explorer command-line arguments
 
 Kusto.Explorer supports accepting several command-line arguments in the following syntax (order matters):
 
@@ -489,13 +478,13 @@ Kusto.Explorer.exe c:\temp\script.csl uri=https://help.kusto.windows.net/Samples
 |`group`   |The name of the connection group.                                         |
 |`filename`|The local file holding the connection group.                              |
 
-# Kusto.Explorer connection files
+## Kusto.Explorer connection files
 
 Kusto.Explorer keeps its connections settings under `%LOCALAPPDATA%\Kusto.Explorer` folder.
 List of Connection Groups is kept inside `%LOCALAPPDATA%\Kusto.Explorer\UserConnectionGroups.xml`,
 and each Connection Group is kept inside dedicated file under `%LOCALAPPDATA%\Kusto.Explorer\Connections\`.
 
-## Format of Connection Group file
+### Format of Connection Group file
 
 File location is at `%LOCALAPPDATA%\Kusto.Explorer\UserConnectionGroups.xml`:  
 
@@ -508,7 +497,7 @@ This is an XML serialization of an array of the `ServerGroupDescription` objects
   </ServerGroupDescription>
 ```
 
-### Example of Connection Group file
+#### Example of Connection Group file
 
 ```
 <?xml version="1.0"?>
@@ -520,8 +509,7 @@ This is an XML serialization of an array of the `ServerGroupDescription` objects
 </ArrayOfServerGroupDescription>  
 ```
 
-
-## Format of Connection list file
+### Format of Connection list file
 
 File location is under `%LOCALAPPDATA%\Kusto.Explorer\Connections\`:  
 
@@ -535,7 +523,7 @@ This is an XML serialization of an array of the `ServerDescriptionBase` objects 
   </ServerDescriptionBase>
 ```
 
-### Example of Connection list file
+#### Example of Connection list file
 
 ```
 <?xml version="1.0"?>
@@ -548,7 +536,7 @@ This is an XML serialization of an array of the `ServerDescriptionBase` objects 
 </ArrayOfServerDescriptionBase>
 ```
 
-# Resetting Kusto.Explorer
+## Resetting Kusto.Explorer
 
 In some cases you might need to completely reset Kusto.Explorer. The following procedure can be used to progressively reset Kusto.Explorer deployed on your computer, until it is completely removed and must be installed from scratch.
 
@@ -562,11 +550,11 @@ In some cases you might need to completely reset Kusto.Explorer. The following p
 
 3. Delete the folder `%APPDATA%\Kusto`. (NOTE: This removes the Kusto.Explorer token cache; you will need to re-authenticate to all cluster.)
 
-# Troubleshooting 
+## Troubleshooting 
 
-## Kusto.Explorer fails to start 
+### Kusto.Explorer fails to start 
 
-### Kusto.Explorer shows error dialog during or after start-up
+#### Kusto.Explorer shows error dialog during or after start-up
 
 *Symptoms:*
 - Kusto.Explorer shows error dialog at start-up with error containing: `InvalidOperationException` 
@@ -577,8 +565,7 @@ This error may suggest that OS system became corrupted or missing some of the es
 To check missing or corrupted system files - use steps described here:   
 [https://support.microsoft.com/en-us/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system](https://support.microsoft.com/en-us/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system)
 
-
-### ClickOnce error: Cannot Start Application
+#### ClickOnce error: Cannot Start Application
 
 *Symptoms:*  
 - Program fails to start with error containing: `External component has thrown an exception`
@@ -641,7 +628,7 @@ Try installing again from one of the [installation mirrors](#getting-the-tool)
 `HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Deployment`, repro it again, and send the verbose output to 
 KustoOps@microsoft.com. 
 
-### ClickOnce error: Your administrator has blocked this application because it potentially poses a security risk to your computer
+#### ClickOnce error: Your administrator has blocked this application because it potentially poses a security risk to your computer
 
 *Symptom:*  
 Program fails to install with either of the following errors:
