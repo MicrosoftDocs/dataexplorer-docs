@@ -17,7 +17,7 @@ Following shortcuts are applicable for the application-level scope and can be in
 
 |Hot Key|Description|
 |-------|-----------|
-|`F1`     | Opens a help URL: [http://aka.ms/csl](http://aka.ms/csl)|
+|`F1`     | Opens a help URL: [https://aka.ms/csl](https://aka.ms/csl)|
 |`F11`    | Toggle full-view mode|
 |`Ctrl`+`F1` | Toggle ribbon appearance |
 |`Ctrl`+`+`| Increases query and data results font|
@@ -66,7 +66,7 @@ The following shortcuts operate inside Query Editor.
 
 |Hot Key|Description|
 |-------|-----------|
-|`F1`|When cursor points to an operator or function - opens a help window with information about the operator or function. If help topic is not present - opens a help URL: [http://aka.ms/csl](http://aka.ms/csl)|
+|`F1`|When cursor points to an operator or function - opens a help window with information about the operator or function. If help topic is not present - opens a help URL: [https://aka.ms/csl](https://aka.ms/csl)|
 |`F5`|Run currently selected query|
 |`Shift`+`Enter`|Run currently selected query|
 |`F8`|Fetch query results from the local cache. If results are not present - run currently selected query|

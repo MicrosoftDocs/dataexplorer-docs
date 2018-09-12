@@ -107,7 +107,7 @@ public static System.Data.IDataReader QueryKusto(
         Console.WriteLine(
             "Failed invoking query '{0}' against Kusto."
             + " To have the Kusto team investigate this failure,"
-            + " please open a ticket @ http://aka.ms/kustosupport,"
+            + " please open a ticket @ https://aka.ms/kustosupport,"
             + " and provide: ClientRequestId={1}",
             query, clientRequestProperties.ClientRequestId);
         return null;

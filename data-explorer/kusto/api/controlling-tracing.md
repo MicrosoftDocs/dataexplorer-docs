@@ -90,7 +90,3 @@ Once the tracing for the Kusto client libraries are enabled, so are the tracing
 emitted by the AAD client libraries (the Kusto client libraries automatically
 configure ADAL tracing; isn't it neat?)
 
-## How to enable the dSTS client libraries tracing
-
-Please refer to the [Instructions to collect authentication traces](http://sharepoint/sites/CIS/fabric/SitePages/Collecting%20Authentication%20Traces.aspx)
-page for enabling and collecting traces from the dSTS client libraries.

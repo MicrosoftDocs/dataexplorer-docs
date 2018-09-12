@@ -49,4 +49,4 @@ There are two primary ways to use Kusto.WebExplorer with your cluster/database:
 For example, the following link queries Kusto.WebExplorer with no sidebar
 and runs an initial query:
 
-  [http://aka.ms/kwe?cluster=help&database=Samples&query=StormEvents%7Ccount&sidebar=0](http://aka.ms/kwe?cluster=help&database=Samples&query=StormEvents%7Ccount&sidebar=0)
+  [https://aka.ms/kwe?cluster=help&database=Samples&query=StormEvents%7Ccount&sidebar=0](https://aka.ms/kwe?cluster=help&database=Samples&query=StormEvents%7Ccount&sidebar=0)

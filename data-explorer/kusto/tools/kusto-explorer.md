@@ -25,7 +25,7 @@ You can also install Kusto.Explorer from one of next locations:
 
 | Version| Locaction     | Link  |
 |--------|---------------|------|
-|Stable  |Public CDN     |[http://aka.ms/Kusto.Explorer](http://aka.ms/Kusto.Explorer)|
+|Stable  |Public CDN     |[https://aka.ms/Kusto.Explorer](https://aka.ms/Kusto.Explorer)|
 |Stable  |Public CDN     |[https://kusto.blob.core.windows.net/kustoexplorer/Kusto.Explorer.application](https://kusto.blob.core.windows.net/kustoexplorer/Kusto.Explorer.application)|
 |Dogfood |Redmond corpnet|[http://kusto-us/ke/Kusto.Explorer.application](http://kusto-us/ke/Kusto.Explorer.application)|
 |Dogfood |ILDC corpnet   |[http://kusto/ke/Kusto.Explorer.application](http://kusto/ke/Kusto.Explorer.application)|
