@@ -14,8 +14,8 @@ Kusto supports a number of methods to export the results of queries:
 
 * **Client-side export**: Several tools that provide the ability
   to query Kusto offer the means to save that data to local files:
-  * [Kusto.Explorer](https://kusdoc2.azurewebsites.net/docs/tools/kusto-explorer.html)
-  * [Kusto.Cli](https://kusdoc2.azurewebsites.net/docs/tools/kusto-cli.html)
+  * [Kusto.Explorer](../tools/kusto-explorer.md)
+  * [Kusto.Cli](../tools/kusto-cli.md)
   
   **Service-side export (push)**: Kusto provides an `.export` control
   command which can be used to instruct the Kusto service to "push"

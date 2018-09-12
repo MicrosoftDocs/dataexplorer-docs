@@ -9,3 +9,6 @@
 - name: API
   href: api/
   homepage: api/overview.md
+- name: Tools
+  href: tools/
+  homepage: tools/tools.md

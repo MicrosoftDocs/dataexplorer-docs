@@ -13,3 +13,4 @@ ms.date: 09/24/2018
 * [Query Language](./query/essentials/overview.md) section provides a detailed query language reference. The best place to start is the [tour](./query/tutorial.md) page
 * [Management](./management/overview.md) explains how to manage your Kusto database.
 * [API](./api/overview.md) explains how to emit queries and control commands to Kusto programmatically.
+* [Tools](./tools/tools.md) lists some of the accompanying tools one can use with Kusto.

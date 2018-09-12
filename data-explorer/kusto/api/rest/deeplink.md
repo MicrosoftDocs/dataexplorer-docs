@@ -12,7 +12,7 @@ ms.date: 09/24/2018
 
 The UI REST API provides a way to craft a simple URL that, when clicked by users
 (for example, in an email message or through a browser), opens up a Kusto UI tool
-and preconfigures it for a specific cluster, database, and query. This API is not
+and pre-configures it for a specific cluster, database, and query. This API is not
 authenticated (no need to send the `Authorization` HTTP header) as authentication
 happens after following the redirect.
 
@@ -49,7 +49,7 @@ and execute a query against that cluster.
 
 - Path: `/[`*DatabaseName*`][?[query=`*Query*`][&uri=`*Uri*`][&name=`*ConnectionName*`]]`
 - Verb: `GET`
-- Actions: Open Kusto.Explorer with context and auto-run query (see [Deep-linking with Kusto.Explorer](https://kusdoc2.azurewebsites.net/docs/tools/kusto-explorer.html#deep-linking-queries))
+- Actions: Open Kusto.Explorer with context and auto-run query (see [Deep-linking with Kusto.Explorer](../../tools/kusto-explorer.md#deep-linking-queries))
 - Arguments: The URI may include the following optional arguments:
 	* The name of the database that Kusto.Explorer sets as the default (*DatabaseName*)
 	* The URI of the Kusto service that Kusto.Explorer should connect-to; by default, it is set to the cluster's URI (*Uri*)
@@ -85,25 +85,7 @@ an HTTP `GET` for any of the following:
 * `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&q=` *EncodedQuery*
 * `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&query=` *Query*
 
-## Deep linking to Lens Explorer
 
-[Lens Explorer](https://kusdoc2.azurewebsites.net/docs/tools/lens.html) supports deep links as well.
-For full documentation of this feature, please see [this link](https://microsoft.sharepoint.com/teams/WAG/EngSys/Monitor/AmdWiki/Lens%20V2%20Query%20Deep%20Link.aspx).
-
-The base URI to `GET` is `https://lens/msftcloudes.com/v2/#/discover/query//results`,
-with the following HTTP query parameters supports:
-
-- `datasource`: Indicates the kind of data source, its URI and database. For example,
-  the `https://lens.kusto.windows.net/LensDb2` Kusto cluster/database is encoded
-  as `datasource=(cluster:lens.kusto.windows.net,database:LensDb2,type:Kusto)`.
-  (The format is [Rison](https://github.com/Nanonid/rison))
-- `plaintextquery`: The Kusto query to run, in plain-text. For example:
-  `plaintextquery=CalculatedKpiDetailsTest%20%7C%20limit%20500%0A`.
-- `query`: Alternative to `plaintextquery`, this parameter provides the query
-  as a base64 encoding of the gzipped query text.
-- `runquery`: Whether to run the query and display the results. For example:
-  `runquery=1`.
-- `originator`: An optional parameter indicating the source that generated the link .
 
 ## Deep Linking to Application Insights Analytics
 

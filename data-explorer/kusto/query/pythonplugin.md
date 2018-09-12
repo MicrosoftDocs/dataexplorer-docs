@@ -82,7 +82,7 @@ In the Python code, the following symbols are reserved and hold a special meanin
 * In order to generate multi-line strings containing the Python script in Kusto.Explorer, copy your Python script from your favorite Python editor (e.g. Jupyter, Visual Studio Code, PyCharm etc.), then either:
     * Press F2 to open "Edit in Python" window. Paste the script into this window. Once you press the Ok button, the script will be decorated with quotes & newlines (to make it valid in Kusto) and automatically pasted into the query tab
     * Paste the Python code directly into the query tab, then select these lines and press Ctrl+K,Ctrl+S hot key to decorate them as above (to reverse it press Ctrl+K, Ctrl+M hot key).
-    [Here](https://kusdoc2.azurewebsites.net/docs/tools/kusto-explorer-shortcuts.html#query-editor-shortcuts) is the full list of Query Editor shortcuts
+    [Here](../tools/kusto-explorer-shortcuts.md#query-editor-shortcuts) is the full list of Query Editor shortcuts
 
 * To avoid interference between Kusto string delimiters and Python's ones, we recommend using single quote characters (`'`) for Kusto string
   literals in Kusto queries, and double quote characters (`"`) for
