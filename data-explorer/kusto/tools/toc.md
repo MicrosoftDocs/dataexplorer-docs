@@ -1,4 +1,4 @@
-# [Tools overview](tools.md)
+# [Tools overview](overview.md)
 
 # Ad-hoc query
 ## [Kusto.Cli](kusto-cli.md)
