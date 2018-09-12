@@ -88,4 +88,4 @@ Trace | take 10000
 
 **Notes**
 
-The implementation of `reduce` operator is largely based on the paper [A Data Clustering Algorithm for Mining Patterns From Event Logs](http://ristov.github.io/publications/slct-ipom03-web.pdf), by Risto Vaarandi.
+The implementation of `reduce` operator is largely based on the paper [A Data Clustering Algorithm for Mining Patterns From Event Logs](https://ristov.github.io/publications/slct-ipom03-web.pdf), by Risto Vaarandi.

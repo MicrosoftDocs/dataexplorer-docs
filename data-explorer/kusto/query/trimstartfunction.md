@@ -30,14 +30,14 @@ Removes leading match of the specified regular expression.
 Statement bellow trims *substring*  from the start of *string_to_trim*:
 
 ```kusto
-let string_to_trim = @"http://bing.com";
-let substring = "http://";
+let string_to_trim = @"https://bing.com";
+let substring = "https://";
 print string_to_trim = string_to_trim,trimmed_string = trim_start(substring,string_to_trim)
 ```
 
 |string_to_trim|trimmed_string|
 |---|---|
-|http://bing.com|bing.com|
+|https://bing.com|bing.com|
 
 Next statement trims all non-word characters from the beginning of the string:
 

@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # parse_xml()
 
-Interprets a `string` as a XML value, converts the value to a [JSON value](http://json.org/) and returns the value as  [`dynamic`](./scalar-data-types/dynamic.md). 
+Interprets a `string` as a XML value, converts the value to a [JSON value](https://json.org/) and returns the value as  [`dynamic`](./scalar-data-types/dynamic.md). 
 
 **Syntax**
 

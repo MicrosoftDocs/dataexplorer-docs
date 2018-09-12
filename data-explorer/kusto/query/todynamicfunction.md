@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # todynamic(), toobject()
 
-Interprets a `string` as a [JSON value](http://json.org/) and returns the value as [`dynamic`](./scalar-data-types/dynamic.md). 
+Interprets a `string` as a [JSON value](https://json.org/) and returns the value as [`dynamic`](./scalar-data-types/dynamic.md). 
 
 It is superior to using [extractjson() function](./extractjsonfunction.md)
 when you need to extract more than one element of a JSON compound object.

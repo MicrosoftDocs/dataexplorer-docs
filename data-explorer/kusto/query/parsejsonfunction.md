@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # parse_json()
 
-Interprets a `string` as a [JSON value](http://json.org/)) and returns the value as [`dynamic`](./scalar-data-types/dynamic.md). 
+Interprets a `string` as a [JSON value](https://json.org/)) and returns the value as [`dynamic`](./scalar-data-types/dynamic.md). 
 It is superior to using [extractjson() function](./extractjsonfunction.md)
 when you need to extract more than one element of a JSON compound object.
 
@@ -31,9 +31,9 @@ Aliases:
 
 An object of type `dynamic` that is determined by the value of *json*:
 * If *json* is of type `dynamic`, its value is used as-is.
-* If *json* is of type `string`, and is a [properly-formatted JSON string](http://json.org/),
+* If *json* is of type `string`, and is a [properly-formatted JSON string](https://json.org/),
   the string is parsed and the value produced is returned.
-* If *json* is of type `string`, but it is **not** a [properly-formatted JSON string](http://json.org/),
+* If *json* is of type `string`, but it is **not** a [properly-formatted JSON string](https://json.org/),
   then the returned value is an object of type `dynamic` that holds the original
   `string` value.
 

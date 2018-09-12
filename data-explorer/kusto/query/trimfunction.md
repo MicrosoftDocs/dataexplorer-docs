@@ -30,14 +30,14 @@ Removes all leading and trailing matches of the specified regular expression.
 Statement bellow trims *substring*  from the start and the end of the *string_to_trim*:
 
 ```kusto
-let string_to_trim = @"--http://bing.com--";
+let string_to_trim = @"--https://bing.com--";
 let substring = "--";
 print string_to_trim = string_to_trim, trimmed_string = trim(substring,string_to_trim)
 ```
 
 |string_to_trim|trimmed_string|
 |---|---|
-|--http://bing.com--|http://bing.com|
+|--https://bing.com--|https://bing.com|
 
 Next statement trims all non-word characters from start and end of the string:
 

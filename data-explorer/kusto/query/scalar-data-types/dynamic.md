@@ -28,7 +28,7 @@ type. A value of this type can be:
   `dynamic` values into a JSON representation, Kusto will use a string to serialize
   values that JSON does not support. Conversely, Kusto will parse some strings
   as strongly-typed values if they can be parsed as such (for example, `datetime`
-  values). For more about the JSON object model, see See [json.org](http://json.org/).
+  values). For more about the JSON object model, see See [json.org](https://json.org/).
 
 ## dynamic literals
 
