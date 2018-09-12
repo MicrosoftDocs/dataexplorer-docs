@@ -19,7 +19,7 @@ A user-defined function has:
 2. A a strongly-typed list of input parameters
 3. A strongly-typed return value
 
-The name of a user-defined function must follow the [identifier naming rules](schema-entities/entity-names.md#identifier-naming-rules).
+The name of a user-defined function must follow the [identifier naming rules](../schema-entities/entity-names.md#identifier-naming-rules).
 It must be unique in the scope of definition.
 
 Input parameters to the function may be either scalar or tabular expressions.
@@ -262,7 +262,7 @@ union T*
 The following restricts apply:
 
 1. User-defined functions cannot pass into a 
-   [toscalar()](./toscalarfunction.md) invocation
+   [toscalar()](../toscalarfunction.md) invocation
    information that depends on the row-context in which the
    function is called.
 
