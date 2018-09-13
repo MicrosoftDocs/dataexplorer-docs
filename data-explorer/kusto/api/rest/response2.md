@@ -73,7 +73,7 @@ Where:
         "ColumnType": string,
     }
 ```
-Supported column types are described [here](../../query/scalar-data-types/overview.md).
+Supported column types are described [here](../../query/scalar-data-types/index.md).
 
 ### TableFragment
 This frame contains a rectangular data fragment of the table. In addition to the actual data, this frame contains a `TableFragmentType` property, which tells the client what to do with the fragment (it can either be appended to existing fragments, or replace them all together).

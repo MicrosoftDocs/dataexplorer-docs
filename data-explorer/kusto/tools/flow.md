@@ -38,7 +38,7 @@ The following section describes the capabilites and needed parameters for each A
 
 ### Azure Kusto - Run query and visualize results
 
-> Note: In case your query starts with a dot (meaning it's a [control command](../management/overview.md)) please use [Run control command and visualize results](./flow.md#azure-kusto---run-control-command-and-visualize-results)
+> Note: In case your query starts with a dot (meaning it's a [control command](../management/index.md)) please use [Run control command and visualize results](./flow.md#azure-kusto---run-control-command-and-visualize-results)
 
 In case you would like to visualize Kusto query result as a table or as a chart, you can use the 'Azure Kusto - Run query and visualize results' action. 
 The results of this action can be later sent over email. You could use this flow, for instance, in case you would like to get daily ICM reports. 
@@ -51,7 +51,7 @@ For a detailed example of 'Azure Kusto - Run query and visualize results' see [E
 
 ### Azure Kusto - Run control command and visualize results
 
-Similar to the 'Azure Kusto - Run query and visualize results' action, you can also run a [control command](../management/overview.md) using the 'Azure Kusto - Run control command and visualize results' action.
+Similar to the 'Azure Kusto - Run query and visualize results' action, you can also run a [control command](../management/index.md) using the 'Azure Kusto - Run control command and visualize results' action.
 The results of this action can be later sent over email as a table or a chart.
 
 ![alt text](./Images/KustoTools-Flow/flow-runcontrolcommand.png "flow-runcontrolcommand")
@@ -60,7 +60,7 @@ In this example the results of the control command are rendered as a pie chart.
 
 ### Azure Kusto - Run query and list results
 
-> Note: In case your query starts with a dot (meaning it's a [control command](../management/overview.md)) please use [Run control command and visualize results](./flow.md#azure-kusto---run-control-command-and-visualize-results)
+> Note: In case your query starts with a dot (meaning it's a [control command](../management/index.md)) please use [Run control command and visualize results](./flow.md#azure-kusto---run-control-command-and-visualize-results)
 
 This action sends a query to Kusto cluster. The actions that are added afterwards iterate over each line of the results of the query.
 

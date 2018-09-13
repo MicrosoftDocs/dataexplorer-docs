@@ -107,7 +107,7 @@ There are two options:
 There are two options:
 
 1. You can [use Kusto.Explorer to create your query](powerbi.md#create-a-power-bi-dashboard-based-on-kusto-data), and then copy it to Power BI. Use this option if you prefer working in [Kusto Explorer](../tools/kusto-explorer.md) and writing
-[Kusto queries](../query/essentials/overview.md) yourself.
+[Kusto queries](../query/essentials/index.md) yourself.
 2. You can [use the Power BI Kusto Connector (Preview)](powerbi-connector.md) to retrieve and manipulate your data
 from within Power BI. Use this option if you prefer working in Power BI, without having to write Kusto queries.
 

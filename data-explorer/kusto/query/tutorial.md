@@ -152,7 +152,7 @@ print x=1
 |---|---|
 |3|1|
 
-[Scalar expressions](./scalar-data-types/overview.md) can include all the usual 
+[Scalar expressions](./scalar-data-types/index.md) can include all the usual 
 operators (`+`, `-`, `*`, `/`, `%`), and there's a range of useful functions.
 
 ## summarize: aggregate groups of rows

@@ -38,7 +38,7 @@ StormEvents
 Each filter prefixed by the pipe character `|` is an instance of an *operator*,
 with some parameters. The input to the operator is the table that is the result
 of the preceding pipeline. In most cases, any parameters are 
-[scalar expressions](./scalar-data-types/overview.md) over the columns of the input.
+[scalar expressions](./scalar-data-types/index.md) over the columns of the input.
 In a few cases, the parameters are the names of input columns, and in a few cases,
 the parameter is a second table. The result of a query is always a table,
 even if it only has one column and one row.

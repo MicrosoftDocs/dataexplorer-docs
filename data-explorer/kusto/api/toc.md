@@ -1,6 +1,6 @@
-# [Overview](overview.md)
+# [Overview](index.md)
 
-# [REST API](rest/overview.md)
+# [REST API](rest/index.md)
 ## [Authentication](rest/authentication.md)
 ## [HTTP Request](rest/request.md)
 ## [HTTP Response](rest/response.md)

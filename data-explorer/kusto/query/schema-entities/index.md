@@ -40,7 +40,7 @@ database, which are query fragments made available for reuse.
   a universal reference to a particular table in the `Samples` database.
   Tables may also be referenced by using the [table() special function](../tablefunction.md).
 
-* [Columns](./columns.md) are named entities that have a [scalar data type](../scalar-data-types/overview.md).
+* [Columns](./columns.md) are named entities that have a [scalar data type](../scalar-data-types/index.md).
   Columns are referenced in the query relative to the tabular data stream
   that is in context of the specific operator referencing them.
 

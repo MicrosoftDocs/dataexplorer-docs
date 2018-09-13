@@ -13,7 +13,7 @@ ms.date: 09/24/2018
 Every table in Kusto, and every tabular data stream, is a rectangular grid
 of columns and rows. Every column in the table has a name (which must
 follow the rules of [entity names](./entity-names.md)) and a specific
-[scalar data type](../scalar-data-types/overview.md). The columns of a table
+[scalar data type](../scalar-data-types/index.md). The columns of a table
 or a tabular data stream are ordered, so a column also has a specific position
 in the table's collection of columns.
 

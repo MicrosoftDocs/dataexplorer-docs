@@ -1,9 +1,9 @@
-# [Overview](./essentials/overview.md)
+# [Overview](./essentials/index.md)
 ## [Tutorial](tutorial.md)
 ## [Samples](samples.md)
 ## [Best practices](bestpractices.md)
 
-# [Entities](./schema-entities/overview.md)
+# [Entities](./schema-entities/index.md)
 ## [Entity names](./schema-entities/entity-names.md)
 ## [Querying external entities](cross-cluster-or-database-queries.md)
 
@@ -16,7 +16,7 @@
 ## [Columns](./schema-entities/columns.md)
 ## [Stored functions](./schema-entities/stored-functions.md)
 
-# [Data types](./scalar-data-types/overview.md)
+# [Data types](./scalar-data-types/index.md)
 ## [bool](./scalar-data-types/bool.md)
 ## [datetime](./scalar-data-types/datetime.md)
 ## [decimal](./scalar-data-types/decimal.md)
@@ -29,7 +29,7 @@
 ## [timespan](./scalar-data-types/timespan.md)
 ## [Null values](./scalar-data-types/null-values.md)
 
-# [Functions](./functions/overview.md)
+# [Functions](./functions/index.md)
 ## [User-defined functions](./functions/user-defined-functions.md)
 
 # [Query statements](statements.md)

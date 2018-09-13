@@ -2,13 +2,13 @@
   href: index.md
 - name: Query Language
   href: query/
-  homepage: query/essentials/overview.md
+  homepage: query/essentials/index.md
 - name: Management
   href: management/
-  homepage: management/overview.md
+  homepage: management/index.md
 - name: API
   href: api/
-  homepage: api/overview.md
+  homepage: api/index.md
 - name: Tools
   href: tools/
-  homepage: tools/overview.md
+  homepage: tools/index.md
