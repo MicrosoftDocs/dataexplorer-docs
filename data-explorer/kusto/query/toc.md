@@ -380,7 +380,7 @@
 ### [series_stats()](series-statsfunction.md)
 ### [series_stats_dynamic()](series-stats-dynamicfunction.md)
 ### [series_subtract()](series-subtractfunction.md)
-## [python](pythonplugin.md)
+
 
 # [User Analytics](useranalytics.md)
 ## [Activity Counts Metrics (total values, distinct values, new values)](activity-counts-metrics-plugin.md)
