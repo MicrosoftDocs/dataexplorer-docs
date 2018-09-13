@@ -359,15 +359,6 @@ The `.undo` `drop` `table` command reverts a drop table operation to a specific 
 
 `.undo` `drop` `table` *TableName* [`as` *NewTableName*] `version=v` *DB_MajorVersion.DB_MinorVersion*
 
-// Recovered TestTable table to database version 24.3
-
-.undo drop table TestTable version="v24.3"
-
-// Recovered TestTable table to database version 10.3 with new table name, NewTestTable (can be used if table with the same name already created since the dropped)  
-
-.undo drop table TestTable as NewTestTable version="v10.3"
-
-
 The command must be executed with database context.
 
 **Returns**
@@ -384,7 +375,9 @@ ef296c9e-d75d-44bc-985c-b93dd2519691 | 100  | Recovered                |
 
 You can find the database version before the drop operation was executed by using `.show` `journal` command :
 
-.show journal | where Event == "DROP-TABLE" and EntityName == "TestTable" and Database == "TestDB"  | project OriginalEntityVersion 
+```kusto
+.show database TestDB journal | where Event == "DROP-TABLE" and EntityName == "TestTable" | project OriginalEntityVersion 
+```
 
 |OriginalEntityVersion|
 |---------------------|
@@ -397,6 +390,17 @@ If Purge command was executed on this database, undo drop table command can't be
 Extent can be recovered only if the hard delete period of the extent container it resides in wasn't reached yet.
 
 The command requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+
+**Examples**
+```kusto
+// Recover TestTable table to database version 24.3
+.undo drop table TestTable version="v24.3"
+```
+
+```kusto
+// Recover TestTable table to database version 10.3 with new table name, NewTestTable (can be used if table with the same name already created since the dropped)  
+.undo drop table TestTable as NewTestTable version="v10.3"
+```
 
 ## .drop tables
 

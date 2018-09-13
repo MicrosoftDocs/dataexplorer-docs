@@ -53,7 +53,11 @@ Example of the CSV mapping:
 
 a CSV mapping can be [pre-created](tables.md#create-ingestion-mapping) and be referenced from the ingest command `csvMappingReference` parameter.
  
-* Note: When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string: `.ingest into Table123 (@"source1", @"source2") with @'{"csvMapping": "[{\"Name\":\"rownumber\",\"Ordinal\":0},{\"Name\":\"rowguid\",\"Ordinal\":1},...]","format":"csv"}'`
+* Note: When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string:
+    ```kusto
+    .ingest into Table123 (@"source1", @"source2")
+     with @'{"csvMapping": "[{\"Name\":\"rownumber\",\"Ordinal\":0},{\"Name\":\"rowguid\",\"Ordinal\":1},...]","format":"csv"}'
+    ```
  
 a CSV mapping can be applied on all the delimiter-separated formats, meaning : CSV, TSV, PSV, SCSV, SOHsv.
 
@@ -110,8 +114,12 @@ Example of the JSON Mapping:
 
 a JSON mapping can be [pre-created](tables.md#create-ingestion-mapping) and be referenced from the ingest command `jsonMappingReference` parameter.
 
-* Note: When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string: `.ingest into Table123 (@"source1", @"source2") with @'{"jsonMapping" : "[{\"column\":\"rownumber\",\"path\":\"$.rownumber\"},{\"column\":\"rowguid\",\"path\":\"$.rowguid\"},...]","format":"json"}'`
-
+* Note: When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string:
+    ```kusto
+    .ingest into Table123 (@"source1", @"source2") 
+     with @'{"jsonMapping" : "[{\"column\":\"rownumber\",\"path\":\"$.rownumber\"},{\"column\":\"rowguid\",\"path\":\"$.rowguid\"},...]","format":"json"}'
+    ```
+    
 ### AVRO Mapping
 
 When the source file is in Avro format, this maps the Avro file content to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. 
@@ -149,6 +157,10 @@ Example of the AVRO mapping:
 ]
 ``` 
 
-* Note: When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string: `.ingest into Table123 (@"source1", @"source2") with @'{"avroMapping": "[{\"column\":\"rownumber\",\"field\":\"RowNumber\"},{\"column\":\"rowguid\",\"field\":\"RowGuid\"},...]","format":"avro"}'`
-
+* Note: When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string: 
+    ```kusto
+    .ingest into Table123 (@"source1", @"source2") 
+     with @'{"avroMapping": "[{\"column\":\"rownumber\",\"field\":\"RowNumber\"},{\"column\":\"rowguid\",\"field\":\"RowGuid\"},...]","format":"avro"}'
+    ```
+    
 an Avro mapping can be [pre-created](tables.md#create-ingestion-mapping) and be referenced from the ingest command `avroMappingReference` parameter.

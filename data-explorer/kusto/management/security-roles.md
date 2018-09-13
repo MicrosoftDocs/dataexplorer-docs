@@ -34,11 +34,6 @@ Example result:
 
 |Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN 
 |---|---|---|---|---
-
-|Cluster User |AAD User |Mike Senior |a8e71651-8e89-931be58ba189 |aaduser=imikeoein@fabrikam.com 
-|Cluster User |AAD Group |Fabrikam: All Staff |ddd4410-b5a1-8e200fc7409e |aadgroup=dd5a7f9f-b5a1-8e200fc7409e 
-|Cluster Admin |AAD User |Mike Senior |a8e71651-8e89-f31be58ba189 |aaduser=mikeoein@fabrikam.com 
-|Cluster Viewer |AAD User |Nitzan Parness |2ff79583-f835-b7c4-599e1575f9b0 |aaduser=nparness@fabrikam.com
 |Database Apsty Admin |AAD User |Ido Eynath |a8e71651-8885-f31be58ba189 |aaduser=iduipn@fabrikam.com 
 |Database Apsty User |AAD User |Liron Eizenman |94752274-4314-ff226ac7ef3a |aaduser=fabdev01@fabrikam.com 
 |Database Apsty Viewer |AAD User |ido | |aaduser=idoein@fabrikam.com
@@ -56,8 +51,6 @@ These commands modify the lists of role access principals of a database:
 
 .add database database_name viewers Principal ,...) ['Description']
 
-
-
 .add database database_name ingestors (Principal ,...) ['Description']
 
 .add database database_name monitors (Principal ,...) ['Description']
@@ -69,8 +62,6 @@ These commands modify the lists of role access principals of a database:
 .drop database <DatabaseName> admins (Principal, ...) 
 
 .drop database <DatabaseName> users (Principal, ...)
-
-
 
 .drop database <DatabaseName> viewers (Principal, ...)
 
@@ -86,8 +77,6 @@ These commands modify the lists of role access principals of a database:
 .set database database_name users none 
 
 .set database database_name viewers none
-
-
 
 .set database database_name ingestors none
 ```
@@ -110,7 +99,6 @@ These commands modify the lists of role access principals of a database:
 |dSTS              |User           |`dstsuser=`*UserEmailAddress*
 |dSTS              |Group          |`dstsgroup=`*Domain*\\*GroupName*
 |dSTS              |App            |`dstsapp=`*ApplicationId*
-
  
 **Examples**
 
@@ -199,7 +187,6 @@ principal kind, and principal identity (see below for the syntax).
 |dSTS              |Group          |`dstsgroup=`*Domain*\\*GroupName*
 |dSTS              |App            |`dstsapp=`*ApplicationId*
 
-
 **Examples**
 
 ```kusto
@@ -252,7 +239,6 @@ These commands modify the lists of role access principals of a table (only "Admi
 |dSTS              |User           |`dstsuser=`*UserEmailAddress*
 |dSTS              |Group          |`dstsgroup=`*GroupName* 
 |dSTS              |App            |`dstsapp=`*ApplicationId*
-
  
 **Example**
 
@@ -294,7 +280,6 @@ These commands modify the lists of role access principals of a function:
 |dSTS              |User           |`dstsuser=`*UserEmailAddress*
 |dSTS              |Group          |`dstsgroup=`*GroupName* 
 |dSTS              |App            |`dstsapp=`*ApplicationId*
-
  
 **Example**
 
