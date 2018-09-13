@@ -196,7 +196,7 @@ You can use Query Parameters to in any query step that supports it. For example,
 ## Supported functions
 
 The following operations are supported by the connector, and will be translated to
-the [Kusto Query Language](../query/essentials/index.md). Functions and
+the [Kusto Query Language](../query/index.md). Functions and
 operations that are not supported will be handled by the Power BI client.
 
 > **Note**: This list of functions is not complete, and some Power BI, which are

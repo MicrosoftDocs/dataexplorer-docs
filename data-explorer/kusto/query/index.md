@@ -17,7 +17,7 @@ entities that are organized in a hierarchy similar to SQL's: databases, tables,
 and columns.
 
 The query consists of a sequence of query statements, delimited by a semicolon
-(`;`), with at least one statement being a [tabular expression statement](../tabularexpressionstatements.md)
+(`;`), with at least one statement being a [tabular expression statement](tabularexpressionstatements.md)
 which is a statement that produces data arranged in a table-like mesh of
 columns and rows. The query's tabular expression statements produce the results of the
 query.

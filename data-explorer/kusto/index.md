@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # Home
 * [Homepage](./index.md) is this page. Click to stay here :-)
-* [Query Language](./query/essentials/index.md) section provides a detailed query language reference. The best place to start is the [tour](./query/tutorial.md) page
+* [Query Language](./query/index.md) section provides a detailed query language reference. The best place to start is the [tour](./query/tutorial.md) page
 * [Management](./management/index.md) explains how to manage your Kusto database.
 * [API](./api/index.md) explains how to emit queries and control commands to Kusto programmatically.
 * [Tools](./tools/index.md) lists some of the accompanying tools one can use with Kusto.
