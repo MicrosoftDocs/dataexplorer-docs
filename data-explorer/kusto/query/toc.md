@@ -64,7 +64,7 @@
 <!--### [nmvalues](nmvaluesplugin.md)-->
 ### [pivot](pivotplugin.md)
 ### [preview](previewplugin.md)
-### [python](pythonplugin.md)
+
 ### [rolling_percentile](rolling-percentile-plugin.md)
 ### [sql_request](sqlrequestplugin.md)
 <!--### [tsabasket](tsabasketplugin.md)-->

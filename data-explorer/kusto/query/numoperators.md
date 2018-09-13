@@ -15,10 +15,10 @@ The following operators can be used between pairs of these types:
 
 Operator       |Description                         |Example
 ---------------|------------------------------------|-----------------------
-`+`	           |Add                                 | '3.14 + 3.14', 'ago(5m) + 5m' 
+`+`	           |Add                                 |`3.14 + 3.14`, `ago(5m) + 5m`
 `-`	           |Subtract                            |`0.23 - 0.22`,
-`*`            |Multiply                            |`1s * 5`, '2 * 2'
-`/`	           |Divide                              |`10m / 1s`, '4 / 2'
+`*`            |Multiply                            |`1s * 5`, `2 * 2`
+`/`	           |Divide                              |`10m / 1s`, `4 / 2`
 `%`            |Modulo                              |`4 % 2`
 `<`	           |Less                                |`1 < 10`, `10sec < 1h`, `now() < datetime(2100-01-01)`
 `>`	           |Greater                             |`0.23 > 0.22`, `10min > 1sec`, `now() > ago(1d)`

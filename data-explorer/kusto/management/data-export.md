@@ -200,7 +200,7 @@ There are a number of limitations and restrictions when exporting data to a SQL 
    for more details.
 
 6. The SQL table name is restricted to a name consisting of letters, digits,
-   as well as any of `_`, `.`, `-`, and ` ` characters.
+   as well as spaces, underscores (`_`), dots (`.`) and hyphens (`-`).
 
 7. The SQL connection string is restricted as follows: `Persist Security Info`
    is explicitly set to `false`, `Encrypt` is set to `true`, and `Trust Server Certificate`

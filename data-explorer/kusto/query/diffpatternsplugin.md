@@ -12,7 +12,7 @@ ms.date: 09/24/2018
 
     T | evaluate diffpatterns(splitColumn)
 
-Diffpatterns compares two data sets of the same structure and finds patterns of discrete attributes (dimensions) that characterize differences between the two data sets. Diffpatterns was developed to help analyze failures (e.g. by comparing failures to non-failures in a given time frame) but can potentially find differences between any two data sets of the same structure. The Diffpatterns algorithm was developed by the Developer Analytics research team (KustoML@microsoft.com).
+Diffpatterns compares two data sets of the same structure and finds patterns of discrete attributes (dimensions) that characterize differences between the two data sets. Diffpatterns was developed to help analyze failures (e.g. by comparing failures to non-failures in a given time frame) but can potentially find differences between any two data sets of the same structure. The Diffpatterns algorithm was developed by the Developer Analytics research team.
 
 **Syntax**
 
@@ -105,5 +105,3 @@ StormEvents
 |7|150|117|3.28|8.93|5.65||Flood|||
 |8|362|176|7.91|13.44|5.52|||Emergency Manager||
 
-
-Please send feedback and questions about diffpatterns to [KustoML](mailto:kustoML@microsoft.com). We'd love to hear from you!

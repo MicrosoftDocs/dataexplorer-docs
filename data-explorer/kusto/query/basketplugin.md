@@ -99,5 +99,3 @@ StormEvents
 |6|1310|22.3|\*|\*|YES|-1
 |7|1291|21.9|\*|Thunderstorm Wind|\*|-1
 
-
-Please send feedback and questions about basket to [KustoML](mailto:kustoML@microsoft.com). We'd love to hear from you!
