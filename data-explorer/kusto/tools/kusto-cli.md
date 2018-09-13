@@ -24,10 +24,10 @@ that would have normally required to write some code.
 
 ## Getting the tool
 
-Kusto.Cli is shipped as an executable (`Kusto.Cli.exe`) and associated libraries. 
-The tool requires no installation.
-
-Extract the contents, and run the executable.
+Kusto.Cli is shipped as an executable (`Kusto.Cli.exe`) and associated libraries.
+The tool requires no installation and can be downloaded as part of the `Microsoft.Azure.Kusto.Tools`
+NuGet package [here](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
+- Once you have the the package downloaded, extract the contents of the *tools* directory in it.
 
 
 ## Running the tool
