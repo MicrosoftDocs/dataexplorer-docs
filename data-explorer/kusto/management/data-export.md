@@ -94,52 +94,49 @@ In this example, Kusto runs the query and then exports the first recordset produ
 Column name labels are added as the first row in the first file. 
 
 ```kusto 
-    .export 
-      async compressed 
-      to csv ( 
-        h@"https://storage1.blob.core.windows.net/containerName;secretKey", 
-        h@"https://storage1.blob.core.windows.net/containerName2;secretKey" 
-      ) with ( 
-        sizeLimit=100000, 
-        namePrefix=export,
-        includeHeaders=FirstFile,
-		encoding =UTF8NoBOM	
-      ) 
-      <| myLogs | where id == "moshe" | limit 10000 
-
+.export 
+  async compressed 
+  to csv ( 
+    h@"https://storage1.blob.core.windows.net/containerName;secretKey", 
+    h@"https://storage1.blob.core.windows.net/containerName2;secretKey" 
+  ) with ( 
+    sizeLimit=100000, 
+    namePrefix=export,
+    includeHeaders=FirstFile,
+encoding =UTF8NoBOM	
+  ) 
+  <| myLogs | where id == "moshe" | limit 10000 
 ```
 In this example, Kusto runs the query and then exports the first recordset produced by the query to one or more compressed TSV files.
 Column name labels are added as the first row in the first file. 
 
 ```kusto 
-    .export 
-      async compressed 
-      to tsv ( 
-        h@"https://storage1.blob.core.windows.net/containerName;secretKey", 
-        h@"https://storage1.blob.core.windows.net/containerName2;secretKey" 
-      ) with ( 
-        sizeLimit=100000, 
-        namePrefix=export,
-        includeHeaders=FirstFile,
-		encoding =UTF8BOM			
-      ) 
-      <| myLogs | where id == "moshe" | limit 10000 
-
+.export 
+  async compressed 
+  to tsv ( 
+    h@"https://storage1.blob.core.windows.net/containerName;secretKey", 
+    h@"https://storage1.blob.core.windows.net/containerName2;secretKey" 
+  ) with ( 
+    sizeLimit=100000, 
+    namePrefix=export,
+    includeHeaders=FirstFile,
+encoding =UTF8BOM			
+  ) 
+  <| myLogs | where id == "moshe" | limit 10000 
 ```
 In this example, Kusto runs the query and then exports the first recordset produced by the query to one or more compressed JSON files. 
 
 ```kusto 
-    .export
-      async compressed
-      to json (
-        h@"https://storage1.blob.core.windows.net/containerName;secretKey",
-        h@"https://storage1.blob.core.windows.net/containerName2;secretKey"
-      ) with (
-        sizeLimit=100000,
-        namePrefix=export
-      )
-      <| myLogs | where id == "moshe" | limit 10000
-
+.export
+  async compressed
+  to json (
+    h@"https://storage1.blob.core.windows.net/containerName;secretKey",
+    h@"https://storage1.blob.core.windows.net/containerName2;secretKey"
+  ) with (
+    sizeLimit=100000,
+    namePrefix=export
+  )
+  <| myLogs | where id == "moshe" | limit 10000
 ```
 
 ## Exporting data to a SQL Database
