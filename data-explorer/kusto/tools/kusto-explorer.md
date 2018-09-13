@@ -525,15 +525,15 @@ In some cases you might need to completely reset Kusto.Explorer. The following p
    then select every item whose name starts with `Kusto.Explorer` and hit `Uninstall`.
 
    If this fails to uninstall the application (a known issue sometimes with
-   ClickOnce applications), please see [this](http://stackoverflow.com/questions/10896223/how-do-i-completely-uninstall-a-clickonce-application-from-my-computer).
+   ClickOnce applications), please see [this](https://stackoverflow.com/questions/10896223/how-do-i-completely-uninstall-a-clickonce-application-from-my-computer).
 
 2. Delete the folder `%LOCALAPPDATA%\Kusto.Explorer`. (NOTE: This removed all connections that you might have, history, etc..)
 
 3. Delete the folder `%APPDATA%\Kusto`. (NOTE: This removes the Kusto.Explorer token cache; you will need to re-authenticate to all cluster.)
 
-## Troubleshooting 
+## Troubleshooting
 
-### Kusto.Explorer fails to start 
+### Kusto.Explorer fails to start
 
 #### Kusto.Explorer shows error dialog during or after start-up
 

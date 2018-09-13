@@ -11,13 +11,13 @@ ms.date: 09/24/2018
 # Kusto.Ingest Reference - Ingestion Permissions
 This article explains what permissions need to be set up on your service in order for `Native` ingestion to work.
 
->Note: if you are using Geneva or Aria ingestion pipelines, no extra setup is required.
+
 
 ## Prerequisites
 * This article instructs how to use [Kusto control commands](../management/security-roles.md) to view and modify authorization settings on Kusto services and databases
 * The following AAD Applications are used as sample principals in examples below:
-    * [DataGrid SQLizer](http://datagrid/egress) AAD App (2a904276-4e97-45ed-b9e6-66fc53add60b)
-    * Kusto Internal Ingestion AAD App (76263cdb-2183-4596-8949-545644e9c404)
+    * DataGrid AAD App (2a904276-1234-5678-9012-66fc53add60b)
+    * Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404)
 
 ## Ingestion Permission Model for Queued Ingestion
 Implemented by [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient), this mode limits the client code dependency on the Kusto service. Ingestion is performed by posting a Kusto ingestion message to an Azure queue, which, in turn is acquired from Kusto Data Management (a.k.a. Ingestion) service. Any intermediate storage artifacts will be created by the ingest client using the resources allocated by Kusto Data Management service.<BR>
@@ -33,15 +33,15 @@ Minimal required permission levels are `Database Ingestor` that can also create 
 
 |Role |PrincipalType	|PrincipalDisplayName
 |--------|------------|------------
-|Database *** Ingestor |AAD Application |DataGrid SQLizer (app id: 2a904276-4e97-45ed-b9e6-66fc53add60b)
-|Table *** Ingestor |AAD Application |DataGrid SQLizer (app id: 2a904276-4e97-45ed-b9e6-66fc53add60b)
+|Database *** Ingestor |AAD Application |DataGrid (app id: 2a904276-1234-5678-9012-66fc53add60b)
+|Table *** Ingestor |AAD Application |DataGrid (app id: 2a904276-1234-5678-9012-66fc53add60b)
 
->`Kusto Internal Ingestion AAD App (76263cdb-2183-4596-8949-545644e9c404)` principal (Kusto internal Ingestion App) is immutably mapped to the `Cluster Admin` role and thus authorized to ingest data to any table (that is what's happening on Kusto-managed ingestion pipelines).
+>`Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404)` principal (Kusto internal Ingestion App) is immutably mapped to the `Cluster Admin` role and thus authorized to ingest data to any table (that is what's happening on Kusto-managed ingestion pipelines).
 
-Granting required permissions on database `DB1` or table `T1` to AAD App `DataGrid SQLizer (76263cdb-2183-4596-8949-545644e9c404)` would look as follows (on the Engine cluster):
+Granting required permissions on database `DB1` or table `T1` to AAD App `DataGrid (76263cdb-1234-5678-9012-545644e9c404)` would look as follows (on the Engine cluster):
 ```kusto
-.add database DB1 ingestors ('aadapp=76263cdb-2183-4596-8949-545644e9c404') 'DataGrid SQLizer AAD App'
-.add table T1 ingestors ('aadapp=76263cdb-2183-4596-8949-545644e9c404') 'DataGrid SQLizer AAD App'
+.add database DB1 ingestors ('aadapp=76263cdb-1234-5678-9012-545644e9c404') 'DataGrid AAD App'
+.add table T1 ingestors ('aadapp=76263cdb-1234-5678-9012-545644e9c404') 'DataGrid AAD App'
 ```
 
 ### Permissions on the Data Management Service

@@ -15,7 +15,7 @@ ms.date: 09/24/2018
 *Kusto Python Client* Library provides the capability to query Kusto clusters using Python. It is Python 2.x/3.x compatible and supports
 all data types through familiar Python DB API interface.
 
-It's possible to use the library, for instance, from [Jupyter Notebooks](http://jupyter.org/) which are attached to Spark clusters,
+It's possible to use the library, for instance, from [Jupyter Notebooks](https://jupyter.org/) which are attached to Spark clusters,
 including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/en-us/services/databricks/) instances.
 
 *Kusto Python Ingest Client* is a python library that allows to send data to Kusto service - i.e. ingest data. 
