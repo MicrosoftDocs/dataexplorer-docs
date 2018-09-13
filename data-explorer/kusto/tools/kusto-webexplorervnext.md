@@ -9,5 +9,4 @@ ms.topic: reference
 ms.date: 09/24/2018
 ---
 # Kusto Web Explorer
-[link will go here]()
-
+Read more about it here: [Quickstart: Explore data in Azure Kusto](https://docs.microsoft.com/azure/data-explorer/query-editor)
