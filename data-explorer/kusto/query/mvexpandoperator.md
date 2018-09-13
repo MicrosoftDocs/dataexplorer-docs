@@ -10,36 +10,56 @@ ms.date: 09/24/2018
 ---
 # mvexpand operator
 
-Expands multi-value collection(s) from a [dynamic](./scalar-data-types/dynamic.md)-typed column so that each value in the collection gets a separate row.
-All the other column in an expanded row are duplicated. 
+Expands multi-value collection(s) from a [dynamic](./scalar-data-types/dynamic.md)-typed column so that each value in the collection gets a separate row. Note that the default expansion is up to 128 rows.
+All the other columns in an expanded row are duplicated. 
 
     T | mvexpand listColumn [, listColumn2 ...] 
 
 (See also [`summarize makelist`](makelist-aggfunction.md) which performs the opposite function.)
 
-**Example**
+**Examples**
 
-Assume the input table is:
+A simple expansion of a single column:
+ ```kusto
+datatable (a:int, b:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"})]
+| mvexpand b 
 
-|A:int|B:string|D:dynamic|D2:dynamic|
-|---|---|---|---|
-|1|"hello"|{"key":"value"}|{"key1":"value1", "key2":"value2"}|
-|2|"world"|[0,1,"k","v"]|[2,3,"q"]|
 
-```kusto
-mvexpand D, D2
 ```
 
-Result is:
+|a|b|
+|---|---|
+|1|{"prop1":"a"}|
+|1|{"prop2":"b"}|
 
-|A:int|B:string|D:dynamic|D2:dynamic|
-|---|---|---|---|
-|1|"hello"|{"key":"value"}|{"key1":"value1"}|
-|1|"hello"||{"key2":"value2"}|
-|2|"world"|0|2|
-|2|"world"|1|3|
-|2|"world"|"k"|"q"|
-|2|"world"|"v"||
+
+Expanding two columns will first 'zip' the applicable columns and then expand them:
+
+```kusto
+datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), dynamic([5])]
+| mvexpand b, c 
+
+
+```
+
+|a|b|c|
+|---|---|---|
+|1|{"prop1":"a"}|5|
+|1|{"prop2":"b"}||
+
+If you want to get a Cartesian product of expanding two columns, expand one after the other:
+```kusto
+datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), dynamic([5])]
+| mvexpand b 
+| mvexpand c
+
+
+```
+
+|a|b|c|
+|---|---|---|
+|1|{"prop1":"a"}|5|
+|1|{"prop2":"b"}|5|
 
 
 **Syntax**

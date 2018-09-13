@@ -16,19 +16,10 @@ Kusto.Explorer is a rich desktop application that allows you to explore your dat
 
 Installation is simple as accessing your Kusto cluster with Internet Explorer at:
 [https://your_cluster.kusto.windows.net](https://your_cluster.kusto.windows.net)
-(`Stable` version is installed - see list of locations below).
 
-You can also install Kusto.Explorer from one of next locations:
+Alternatively, you can obtain a Kusto.Explorer tool from this URL: [https://aka.ms/Kusto.Explorer](https://aka.ms/Kusto.Explorer)
 
-* Stable versions are updated once a week.
-* Dogfood versions may be updated frequently (few times a day at most).
 
-| Version| Locaction     | Link  |
-|--------|---------------|------|
-|Stable  |Public CDN     |[https://aka.ms/Kusto.Explorer](https://aka.ms/Kusto.Explorer)|
-|Stable  |Public CDN     |[https://kusto.blob.core.windows.net/kustoexplorer/Kusto.Explorer.application](https://kusto.blob.core.windows.net/kustoexplorer/Kusto.Explorer.application)|
-|Dogfood |Redmond corpnet|[http://kusto-us/ke/Kusto.Explorer.application](http://kusto-us/ke/Kusto.Explorer.application)|
-|Dogfood |ILDC corpnet   |[http://kusto/ke/Kusto.Explorer.application](http://kusto/ke/Kusto.Explorer.application)|
 
 ## Using Edge and Kusto.Explorer
 
@@ -69,7 +60,7 @@ Kusto.Explorer menu has several areas:
 * [Data Load Menu](#load-data-menu)
 * [Data Visualization Menu](#visualizations-menu)
 * [Data View  Menu](#view-menu)
-* [Monitor Menu](#monitor-menu)
+
 * [Management Menu](#management-menu)
 * [Help Menu](#help-menu)
 
@@ -177,17 +168,7 @@ so when columns are reordered/removed - the data view is saved and will be reuse
 whenever the data with the same columns is retrieved. To reset the view to its defaults,
 use `Reset View` menu item. 
 
-### Monitor Menu
 
-![alt text](./Images/KustoTools-KustoExplorer/menu-health.png "menu-health")
-
-|Menu             | Behavior|
-|-----------------|---------| 
-|Cluster health (Geneva) | Opens MDM based Health dashboard for the currently selected (in Connections Panel) Service| 
-|Health dashboard | Shows health summary for the currently selected (in Connections Panel) Server Group| 
-|Purge metrics (Geneva) | Opens MDM based purge operations dashboard for the currently selected (in Connections Panel) Service| 
-|Latest data: All tables| Shows summary of what is the latest data in all tables of the currently selected database|
-|Latest data: Selected table|Shows in the status bar what is the latest data in selected table|
 
 ### Management Menu
 
