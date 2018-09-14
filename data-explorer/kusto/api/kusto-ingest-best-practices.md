@@ -50,10 +50,3 @@ If you follow the following recommendations, you will be able to better control 
 * **Avoid** sending data for ingestion with the `FlushImmediately` flag set to `true`, or sending small chunks with `ingest-by`/`drop-by` tags set.<br>
     Using these prevents the Kusto service from properly aggregating the data during ingestion, and causes unnecessary storage transactions following the ingestion, affecting COGS.<br>
     Moreover, using these excessively could result with degraded ingestion and/or query performance in your cluster.<br>
-    If you are not sure what to do, ask [KustoDiscussions DL](mailto:KusTalk@microsoft.com) or contact our Ops team at [https://aka.ms/kustosupport](https://aka.ms/kustosupport).
-* If you have custom AggregationSettings on your cluster, please take time to review it and adjust it considering the new pricing model.<br>
-    Please contact our Ops team at [https://aka.ms/kustosupport](https://aka.ms/kustosupport) for assistance if needed.
-<BR>
-For our customers who ingest data into Kusto using Geneva Warm path or Aria, we are heavily investing in ingestion COGs reduction with those teams:
-* **Geneva Warm path** – we are working with the Geneva team on reducing the number of storage transactions on Geneva-to-Kusto pipeline.
-* **Aria** – we are working with the Aria team and have recently completed a series of improvements significantly reducing the number of storage transactions on Aria-to-Kusto pipeline.

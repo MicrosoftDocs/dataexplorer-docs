@@ -88,5 +88,5 @@ trace listener class may be used as well.)
 
 Once the tracing for the Kusto client libraries are enabled, so are the tracing
 emitted by the AAD client libraries (the Kusto client libraries automatically
-configure ADAL tracing; isn't it neat?)
+configure ADAL tracing)
 

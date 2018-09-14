@@ -25,7 +25,7 @@ Base Class: [Exception](https://msdn.microsoft.com/en-us/library/system.exceptio
 
 Fields:
 
-|Name|Type|Meaning       
+|Name|Type|Meaning
 |-----------|----|------------------------------|
 |Error| `String`| The error that occurred while attempting to retrieve queues from the DM
                             
@@ -173,18 +173,13 @@ Additional information
 
 For more information regarding the IngestClientAggregateException please refer [here](kusto-ingest-client-errors.md).
 
-
-## HTTP Error Status Codes
-
-> TODO
-
 ## Errors in Native Code
 
 The Kusto engine is written in native code, and reports errors
 by using negative `HRESULT` values. While normally these are not
 surfaces through a programmatic API, one might catch a rare
 sighting of them; for example, operation failures might have
-a status of "Exception from HRESULT:` *HRESULT-CODE*".
+a status of "`Exception from HRESULT:` *HRESULT-CODE*".
 
 Kusto native error codes are defined using Windows'
 `MAKE-HRESULT` macro with:
