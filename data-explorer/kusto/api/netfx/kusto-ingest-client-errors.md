@@ -230,34 +230,3 @@ Fields:
 |IngestionErrors| `IList<IngestClientException>`| The errors that occurred while attempting to ingest and the sources related to them
 |IsGlobalError| `bool`| Indicates whether the exception occurred for all sources
 
-<#idfef MICROSOFT>
-## Errors in Native Code
-
-The Kusto engine is written in native code, and reports errors
-by using negative `HRESULT` values. While normally these are not
-surfaces through a programmatic API, one might catch a rare
-sighting of them; for example, operation failures might have
-a status of "`Exception from HRESULT:` *HRESULT-CODE*".
-
-Kusto native error codes are defined using Windows'
-`MAKE-HRESULT` macro with:
-* Severity set to `1`
-* Facility set to `0xDA`
-  
-The following error codes are defined:
-
-|Manifest constant             |Code|Value       |Meaning                                                            |
-|------------------------------|----|------------|-------------------------------------------------------------------|
-|`E_EXTENT_LOAD_FAILED`        | `0` |`0x80DA0000`|A data shard could not be loaded                                   |
-|`E_RUNAWAY_QUERY`             | `1` |`0x80DA0001`|Query execution aborted as it exceeded its allowed resources       |
-|`E_STREAM_FORMAT`             | `2` |`0x80DA0002`|A data stream cannot be parsed as it is badly formatted            |
-|`E_QUERY_RESULT_SET_TOO_LARGE`| `3` |`0x80DA0003`|The result set for this query exceed its allowed record/size limits|
-|`E_STREAM_ENCODING_VERSION`   | `4` |`0x80DA0004`|A result stream cannot be parsed as its version is unknown         |
-|`E_KVDB_ERROR`                | `5` |`0x80DA0005`|Failure to perform a key/value database operation                  |
-|`E_QUERY_CANCELLED`           | `6` |`0x80DA0006`|Query was cancelled                                                |
-|`E_LOW_MEMORY_CONDITION`      | `7` |`0x80DA0007`|Operation was aborted due to process' available memory running low |
-|`E_WRONG_NUMBER_OF_FIELDS`    | `8` |`0x80DA0008`|A CSV document submitted for ingestion has a record with the wrong number of fields (relative to other records)|
-|`E_INPUT_STREAM_TOO_LARGE`    | `9` |`0x80DA0009`|The document submitted for ingestion has exceeded the allowed length|
-|`E_ENTITY_NOT_FOUND`          | `10`|`0x80DA000A`|The requested entity was not found|
-|`E_CLOSING_QUOTE_MISSING`     | `11`|`0x80DA000B`|A CSV document submitted for ingestion has a field with a missing quote|
-|`E_OVERFLOW`                  | `12`|`0x80DA000C`|Represents an arithmetic overflow error (the result of a computation is too large for the destination type)|
