@@ -91,7 +91,7 @@ $crp.SetOption([Kusto.Data.Common.ClientRequestProperties]::OptionServerTimeout,
 $reader = $queryProvider.ExecuteQuery($query, $crp)
 
 # Do something with the result datatable, for example: print it formatted as a table, sorted by the 
-# "EndTime" column, in descending order
+# "Timestamp" column, in descending order
 $dataTable = [Kusto.Cloud.Platform.Data.ExtendedDataReader]::ToDataSet($reader).Tables[0]
 $dataView = New-Object System.Data.DataView($dataTable)
 $dataView | Sort Timestamp -Descending | Format-Table -AutoSize
