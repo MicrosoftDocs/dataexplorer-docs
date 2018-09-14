@@ -21,7 +21,7 @@ This article shows how to implement **Queued Ingestion** to Kusto without taking
 The following code sample demonstrates Queued (going via Kusto Data Management service) data ingestion to Kusto without the use of Kusto.Ingest library.<BR>
 This may be useful if full .NET is inaccessible or unavailable due to environment or other restrictions.<BR>
 
-> This article deals with the recommended mode of ingestion for production-grade pipelines, which is also referred to as **Queued Ingestion** (in terms of the Kusto.Ingest library, the corresponding entity is the [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient) class). In this mode the client code interacts with the Kusto service by posting ingestion notification messages to an Azure queue, reference to which is obtained from the Kusto Data Management (a.k.a. Ingestion) service. Interaction with the Data Management service must be authenticated with **AAD** or **dSTS**.
+> This article deals with the recommended mode of ingestion for production-grade pipelines, which is also referred to as **Queued Ingestion** (in terms of the Kusto.Ingest library, the corresponding entity is the [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient) class). In this mode the client code interacts with the Kusto service by posting ingestion notification messages to an Azure queue, reference to which is obtained from the Kusto Data Management (a.k.a. Ingestion) service. Interaction with the Data Management service must be authenticated with **AAD**.
 
 The outline of this flow is described in the code sample below and is comprised of the following:
 1. Create an Azure Storage client and upload the data to a blob

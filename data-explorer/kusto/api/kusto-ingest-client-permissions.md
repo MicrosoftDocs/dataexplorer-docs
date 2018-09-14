@@ -46,18 +46,3 @@ Granting required permissions on database `DB1` or table `T1` to AAD App `DataGr
 
 ### Permissions on the Data Management Service
 In order for the `KustoQueuedIngestClient` to interact with the Data Management service, and be able to successfully ingest data, the principal running the client only needs to be properly authorized on the Engine service (no additional setup is required).
-
-**Example**:
-
-|Cluster |Database |Table |
-|--------|---------|------
-|C1      |DB1, DB2 |T1, T2|
-|C2      |DB1, DB2 |T1, T2|
-
-|Role on DM      |Role on the Engine |Target table     |Ingestion Authorized? |
-|----------------|-------------------|-----------------|----------------
-|Cluster Admin   |`DON'T CARE`       |`ANY`            |True (This is a Kusto internal flow)
-|N/A             |C1.DB1.T1 Ingestor |C1.DB1.T1        |True
-|N/A             |C1.DB1 User        |C1.DB1.T1        |False
-|N/A             |C1.DB1 Ingestor    |Any table in DB1 |True
-|N/A             |C1.DB1 Ingestor    |Any table in DB2 |False

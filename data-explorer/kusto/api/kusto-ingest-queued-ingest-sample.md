@@ -14,7 +14,7 @@ This article presents sample code that makes use of Kusto.Ingest client library.
 ## Overview
 The following code sample demonstrates Queued (going via Kusto Data Management service) data ingestion to Kusto with the use of Kusto.Ingest library.
 
-> This article deals with the recommended mode of ingestion for production-grade pipelines, which is also referred to as **Queued Ingestion** (in terms of the Kusto.Ingest library, the corresponding entity is the [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient) class). In this mode the client code interacts with the Kusto service by posting ingestion notification messages to an Azure queue, reference to which is obtained from the Kusto Data Management (a.k.a. Ingestion) service. Interaction with the Data Management service must be authenticated with **AAD** or **dSTS**.
+> This article deals with the recommended mode of ingestion for production-grade pipelines, which is also referred to as **Queued Ingestion** (in terms of the Kusto.Ingest library, the corresponding entity is the [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient) class). In this mode the client code interacts with the Kusto service by posting ingestion notification messages to an Azure queue, reference to which is obtained from the Kusto Data Management (a.k.a. Ingestion) service. Interaction with the Data Management service must be authenticated with **AAD**.
 
 ## Dependencies
 This sample code requires the following NuGet packages:
