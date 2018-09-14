@@ -25,9 +25,9 @@ are sent to Kusto's Data Engine service) will not appear in the result set of th
 
 |||
 |---|---| 
-|`.show` `ingestion failures`                           |Returns all recorded ingestion failures  
-|<code>.show ingestion failures &#124; where FailedOn > ago(1hr)</code> |Returns ingestion failures in the last hour
-|`.show` `ingestion failures with(OperationId="f412da70-35bf-41f9-a8ab-e8216f5bb0f6")` |Returns ingestion failure for specific Operation ID
+|`.show` `ingestion` `failures`                                       |Returns all recorded ingestion failures  
+|`.show` `ingestion` `failures` <code>&#124;</code> `where` ...       |Returns a filtered set of ingestion failures
+|`.show` `ingestion` `failures` `with(OperationId="`*OperationId*`")` |Returns ingestion failure for specific Operation ID
 
 **Results**
  
