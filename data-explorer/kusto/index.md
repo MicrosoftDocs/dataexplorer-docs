@@ -1,5 +1,5 @@
 ---
-title: Azure Kusto | Microsoft Docs
+title: Home - Azure Kusto | Microsoft Docs
 description: This is the landing page for Azure Kusto.
 author: orspod
 ms.author: v-orspod

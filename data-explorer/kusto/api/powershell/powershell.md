@@ -38,27 +38,13 @@ $packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\Tools"
 
 #  Initialization - 2/3
 #  Loading the Kusto.Client library and its dependencies
-try {
-    Add-Type -Path "$packagesRoot\Newtonsoft.Json.dll"
-    Add-Type -Path "$packagesRoot\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    Add-Type -Path "$packagesRoot\System.Collections.Immutable.dll"
-    Add-Type -Path "$packagesRoot\Microsoft.IO.RecyclableMemoryStream.dll"
-    Add-Type -Path "$packagesRoot\Microsoft.IdentityModel.dll"
-    Add-Type -Path "$packagesRoot\Kusto.Cloud.Platform.dll"
-    Add-Type -Path "$packagesRoot\Kusto.Data.dll"
-} catch {
-    foreach($ex in $_.Exception.LoaderExceptions) {
-        Write-Warning $ex
-    }
-    throw
-}
-# Debugging: if any of the `Add-Type` invocations fails, try looking into the value of 
-# `$error[0].Exception.InnerException`
+dir $packagesRoot\* | Unblock-File
+[System.Reflection.Assembly]::LoadFrom("$packagesRoot\Kusto.Data.dll")
 
-# Initialization - 3/3
-# Defining the connection to your cluster / database
-$clusterUrl = "https://help.kusto.windows.net;Fed=True" 
-$databaseName = "Samples" 
+#  Initialization - 3/3
+#  Defining the connection to your cluster / database
+$clusterUrl = "https://help.kusto.windows.net;Fed=True"
+$databaseName = "Samples"
 
 #   Option A: using AAD User Authentication
 $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder ($clusterUrl, $databaseName)
