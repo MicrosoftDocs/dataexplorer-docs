@@ -10,7 +10,9 @@ ms.date: 09/24/2018
 ---
 # basket plugin
 
-    T | evaluate basket()
+```kusto
+T | evaluate basket()
+```
 
  Basket finds all frequent patterns of discrete attributes (dimensions) in the data and will return all frequent patterns that passed the frequency threshold in the original query. Basket is guaranteed to find all frequent patterns in the data but is not guaranteed to have polynomial run-time, the run-time of the query is linear in the number of rows but in some cases might be exponential in the number of columns (dimensions). Basket is based on the Apriori algorithm originally developed for basket analysis data mining.
 

@@ -32,9 +32,9 @@ with the same name in the documentation.
 
 ```powershell
 #  Initialization - 1/3
-#  Packages location - This is an example to the location where you extract the Kusto.Tools package.
+#  Packages location - This is an example to the location where you extract the Microsoft.Azure.Kusto.Tools package.
 #  Please make sure you load the types from a local directory and not from a remote share.
-$packagesRoot = "C:\Kusto.Tools\Tools"
+$packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\Tools"
 
 #  Initialization - 2/3
 #  Loading the Kusto.Client library and its dependencies

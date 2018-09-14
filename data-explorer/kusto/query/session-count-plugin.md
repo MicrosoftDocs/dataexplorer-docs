@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Calculates sessions count based on ID column over a timeline.
 
-    T | evaluate session_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 1min, 30min, dim1, dim2, dim3)
+```kusto
+T | evaluate session_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 1min, 30min, dim1, dim2, dim3)
+```
 
 **Syntax**
 

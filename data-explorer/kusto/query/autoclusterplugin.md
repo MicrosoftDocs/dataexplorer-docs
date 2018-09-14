@@ -10,7 +10,9 @@ ms.date: 09/24/2018
 ---
 # autocluster plugin
 
-    T | evaluate autocluster()
+```kusto
+T | evaluate autocluster()
+```
 
  AutoCluster finds common patterns of discrete attributes (dimensions) in the data and will reduce the results of the original query (whether it's 100 or 100k rows) to a small number of patterns. AutoCluster was developed to help analyze failures (e.g. exceptions, crashes) but can potentially work on any filtered data set. The AutoCluster algorithm was developed by the Developer Analytics research team. 
 

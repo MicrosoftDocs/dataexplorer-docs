@@ -10,7 +10,9 @@ ms.date: 09/24/2018
 ---
 # diffpatterns plugin
 
-    T | evaluate diffpatterns(splitColumn)
+```kusto
+T | evaluate diffpatterns(splitColumn)
+```
 
 Diffpatterns compares two data sets of the same structure and finds patterns of discrete attributes (dimensions) that characterize differences between the two data sets. Diffpatterns was developed to help analyze failures (e.g. by comparing failures to non-failures in a given time frame) but can potentially find differences between any two data sets of the same structure. The Diffpatterns algorithm was developed by the Developer Analytics research team.
 

@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Calculates funnel of completed sequence steps within comparing different time periods.
 
-    T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, state_column, dynamic(['S1', 'S2', 'S3']), dynamic([10m, 30min, 1h]))
+```kusto
+T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, state_column, dynamic(['S1', 'S2', 'S3']), dynamic([10m, 30min, 1h]))
+```
 
 **Syntax**
 

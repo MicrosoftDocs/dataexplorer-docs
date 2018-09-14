@@ -14,7 +14,9 @@ Calculates counts and distinct count of values in a sliding window over a lookba
 
 For instance, for each *day*, calculate count and distinct count of users in previous *week*. 
 
-    T | evaluate sliding_window_counts(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, dim1, dim2, dim3)
+```kusto
+T | evaluate sliding_window_counts(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, dim1, dim2, dim3)
+```
 
 **Syntax**
 

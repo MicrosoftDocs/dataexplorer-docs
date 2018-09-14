@@ -14,7 +14,9 @@ Calculates distinct count of values, where each value has appeared in at least a
 
 Useful for calculating distinct counts of "fans" only,  while not including appearances of "non-fans". A user is counted as a "fan" only if it was active during the lookback period. 
 
-    T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, 2, 7d, dim1, dim2, dim3)
+```kusto
+T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, 2, 7d, dim1, dim2, dim3)
+```
 
 **Syntax**
 

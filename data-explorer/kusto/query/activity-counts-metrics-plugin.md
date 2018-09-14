@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Calculates useful activity metrics (total count values, distinct count values, distinct count of new values, aggregated distinct count) for each time window compared/aggregated to/with all previous time windows.
 
-    T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
+```kusto
+T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
+```
 
 **Syntax**
 
