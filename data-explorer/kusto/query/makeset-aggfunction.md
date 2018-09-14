@@ -16,7 +16,7 @@ Returns a `dynamic` (JSON) array of the set of distinct values that *Expr* takes
 
 **Syntax**
 
-`summarize` `makeset(`*Expr*` [`,` *MaxListSize*]`)`
+`summarize` `makeset(`*Expr* [`,` *MaxListSize*]`)`
 
 **Arguments**
 

@@ -16,7 +16,7 @@ Returns a `dynamic` (JSON) array of all the values of *Expr* in the group.
 
 **Syntax**
 
-`summarize` `makelist(`*Expr*` [`,` *MaxListSize*]`)`
+`summarize` `makelist(`*Expr* [`,` *MaxListSize*]`)`
 
 **Arguments**
 
