@@ -75,13 +75,13 @@ PageViewsHllTDigest
 **Example**
 
 
-When having a too large datasets where we need to run a periodic queries over this dataset but running the regular queries to calculate [`percentile()`](percentiles-aggfunction.md) or [`dcount()`](dcount-aggfunction.md) over these big dateset hits kusto limits.
+When having a too large datasets where we need to run a periodic queries over this dataset but running the regular queries to calculate [`percentile()`](percentiles-aggfunction.md) or [`dcount()`](dcount-aggfunction.md) over these big dataset hits kusto limits.
 To solve this problem, Newly added data may be added to a temp table as hll or tdigest values using [`hll()`](hll-aggfunction.md) when the required operation is dcount or [`tdigest()`](tdigest-aggfunction.md) when the required operation is percentile using [`set/append`](../management/data-ingest.md) or [`update policy`](https://kusdoc2.azurewebsites.net/docs/concepts/updatepolicy.html), In this case, the intermediate results of dcount or tdigest are saved into another dataset which should be smaller than the target big one.
 Then when we need to get the final results of these values, the queries may use hll/tdigest mergers: [`hll-merge()`](hll-merge-aggfunction.md)/[`merge_tdigests()`](merge-tdigests-aggfunction.md), Then, After getting the merged values, [`percentile_tdigest()`](percentile-tdigestfunction.md) / [`dcount_hll()`](dcount-hllfunction.md) may be invoked on these merged values to get the final result of dcount or percentiles.
 
 Assuming that we have a table PageViews where each day we ingest data, each day we want to calculate the distinct count of pages viewed per minuite later than date = datetime(2016-05-01 18:00:00.0000000).
 
-Running the follwing query :
+Running the following query :
 
 
 ```kusto
@@ -121,7 +121,6 @@ PageViewsHllTDigest
 This should be more performant and the query runs over a smaller table (in this example, The first query runs over ~215M records while the second one runs over 32 records only).
 
 **Example**
-
 
 The Retention Query.
 Assuming that we have a table which summarizes when each wikipedia page was viewed (Sample size is 10M), And we are interested in finding foreach date1 date2
@@ -182,7 +181,7 @@ Stats
 | extend key1=iff(idx < pidx, idx, pidx), key2=iff(idx < pidx, pidx, idx), pages=dcount_hll(pagehll)
 // foreach two dates , merge the hll'ed values to get the total dcount over each two dates, 
 // this will help us to get the pages viewed in both date1 and date2 (see describtion below about the intersection_size)
-| summarize (day1, pages1)=argmin(day, pages), (day2, pages2)=argmax(day, pages), union_size=dcount_hll(hll_merge(pagehll)) by key1, key2
+| summarize (day1, pages1)=arg_min(day, pages), (day2, pages2)=arg_max(day, pages), union_size=dcount_hll(hll_merge(pagehll)) by key1, key2
 | where day2 > day1
 // to get pages viewed in date1 and also date2, we look at the merged dcount of date1 and date2, substract it from pages of date1 + pages on date2.
 | project pages1, day1,day2, intersection_size=(pages1 + pages2 - union_size)
@@ -197,6 +196,5 @@ Stats
 |2016-05-01 00:00:00.0000000|2016-05-02 00:00:00.0000000|33.2298494510578|
 |2016-05-01 00:00:00.0000000|2016-05-03 00:00:00.0000000|16.9773830213667|
 |2016-05-02 00:00:00.0000000|2016-05-03 00:00:00.0000000|14.5160020350006|
-
 
 Note: the results of the queries are not 100% accurate due to the error of the hll functions.(see [`dcount()`](dcount-aggfunction.md) for further information about the errors).

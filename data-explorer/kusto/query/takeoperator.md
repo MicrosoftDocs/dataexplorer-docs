@@ -29,7 +29,7 @@ the source data is sorted.
 **Remarks**
 
 `take` is a simple, quick, and efficient way to view a small sample of records
-when browing data interactively, but be aware that it doesn't guarantee any consistency
+when browsing data interactively, but be aware that it doesn't guarantee any consistency
 in its results when executing multiple times, even if the data set hasn't changed.
 
 Even is the number of rows returned by the query is not explicitly limited

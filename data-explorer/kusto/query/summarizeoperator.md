@@ -56,9 +56,9 @@ The automatic hourly bins for datetime columns is no longer supported. Use expli
 |Function|Description|
 |--------|-----------|
 |[any()](any-aggfunction.md)|Returns random non-empty value for the group|
-|[argmax()](argmax-aggfunction.md)|Returns one or more expressions when argument is maximized|
-|[argmin()](argmin-aggfunction.md)|Returns one or more expressions when argument is minimized|
-|[avg()](avg-aggfunction.md)|Retuns average value across the group|
+|[arg_max()](arg-max-aggfunction.md)|Returns one or more expressions when argument is maximized|
+|[arg_min()](arg-min-aggfunction.md)|Returns one or more expressions when argument is minimized|
+|[avg()](avg-aggfunction.md)|Returns average value across the group|
 |[buildschema()](buildschema-aggfunction.md)|Returns the minimal schema that admits all values of the `dynamic` input|
 |[count()](count-aggfunction.md)|Returns count of the group|
 |[countif()](countif-aggfunction.md)|Returns count with the predicate of the group|
@@ -68,7 +68,7 @@ The automatic hourly bins for datetime columns is no longer supported. Use expli
 |[max()](max-aggfunction.md)|Returns the maximum value across the group|
 |[min()](min-aggfunction.md)|Returns the minimum value across the group|
 |[percentiles()](percentiles-aggfunction.md)|Returns the percentile approximate of the group|
-|[stdev()](stdev-aggfunction.md)|Returns the standard deviateion across the group|
+|[stdev()](stdev-aggfunction.md)|Returns the standard deviation across the group|
 |[sum()](sum-aggfunction.md)|Returns the sum of the elements withing the group|
 |[variance()](variance-aggfunction.md)|Returns the variance across the group|
 
@@ -80,7 +80,7 @@ Operator       |Default value
 ---------------|------------------------------------
  `count()`, `countif()`, `dcount()`, `dcountif()`         |   0                            
  `makeset()`, `makelist()`          |    empty dynamic array              ([])          
- `any()`, `argmax()`. `argmin()`, `avg()`, `buildschema()`, `hll()`, `max()`, `min()`, `percentiles()`, `stdev()`, `sum()`, `sumif()`, `tdigest()`, `variance()`          |   null                           
+ `any()`, `arg_max()`. `arg_min()`, `avg()`, `buildschema()`, `hll()`, `max()`, `min()`, `percentiles()`, `stdev()`, `sum()`, `sumif()`, `tdigest()`, `variance()`          |   null                           
 
  In addition, when using these aggregates over entities which includes null values, the null values will be ignored and won't participate in the calculation (See examples below).
 

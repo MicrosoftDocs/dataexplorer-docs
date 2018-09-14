@@ -96,9 +96,6 @@ These commands modify the lists of role access principals of a database:
 |AAD               |User           |`aaduser=`*UserEmailAddress*
 |AAD               |Group          |`aadgroup=`*GroupObjectId*<br>`aadgroup=`*GroupDisplayName*<br>`aadgroup=`*GroupEmailAddress*
 |AAD               |App            |`aadapp=`*ApplicationId*<br>`aadapp`=*ApplicationDisplayName*
-|dSTS              |User           |`dstsuser=`*UserEmailAddress*
-|dSTS              |Group          |`dstsgroup=`*Domain*\\*GroupName*
-|dSTS              |App            |`dstsapp=`*ApplicationId*
  
 **Examples**
 
@@ -107,8 +104,6 @@ These commands modify the lists of role access principals of a database:
 .add database Test users ('aadgroup=<SG display name or SG group ID or SG Display name>') 'Test group (AAD)'
 .add database Test users ('aadapp=<App display name or App ID>') 'Test app (AAD)'
 .add database Test users ('dstsuser=imikeoein@fabrikam.com ') 'Test user (dSTS)'
-.add database Test users (@'dstsgroup=<Domain>\<GroupName>') 'Test group (dSTS)'
-.add database Test users (@'dstsapp=<App ID>') 'Test app (dSTS)'
 ```
 
 ## List cluster principals
@@ -183,9 +178,6 @@ principal kind, and principal identity (see below for the syntax).
 |AAD               |User           |`aaduser=`*UserEmailAddress*
 |AAD               |Group          |`aadgroup=`*GroupObjectId*<br>`aadgroup=`*GroupDisplayName*<br>`aadgroup=`*GroupEmailAddress*
 |AAD               |App            |`aadapp=`*ApplicationId*<br>`aadapp`=*ApplicationDisplayName*
-|dSTS              |User           |`dstsuser=`*UserEmailAddress*
-|dSTS              |Group          |`dstsgroup=`*Domain*\\*GroupName*
-|dSTS              |App            |`dstsapp=`*ApplicationId*
 
 **Examples**
 
@@ -193,9 +185,6 @@ principal kind, and principal identity (see below for the syntax).
 .add cluster admins ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
 .add cluster admins ('aadgroup=<SG display name or SG group ID or SG Display name>') 'Test group (AAD)'
 .add cluster admins ('aadapp=<App display name or App ID>') 'Test app (AAD)'
-.add cluster admins ('dstsuser=imikeoein@fabrikam.com ') 'Test user (dSTS)'
-.add cluster admins (@'dstsgroup=<Domain>\<GroupName>') 'Test group (dSTS)'
-.add cluster admins (@'dstsapp=<App ID>') 'Test app (dSTS)'
 ```
 
 ## Managing table principals
@@ -236,9 +225,6 @@ These commands modify the lists of role access principals of a table (only "Admi
 |AAD               |User           |`aaduser=`*UserEmailAddress* 
 |AAD               |Group          |`aadgroup=`*GroupObjectId*<br>`aadgroup=`*GroupDisplayName*<br>`aadgroup=`*GroupEmailAddress* 
 |AAD               |App            |`aadapp=`*ApplicationId*<br>`aadapp`=*ApplicationDisplayName*
-|dSTS              |User           |`dstsuser=`*UserEmailAddress*
-|dSTS              |Group          |`dstsgroup=`*GroupName* 
-|dSTS              |App            |`dstsapp=`*ApplicationId*
  
 **Example**
 
@@ -277,9 +263,6 @@ These commands modify the lists of role access principals of a function:
 |AAD               |User           |`aaduser=`*UserEmailAddress* 
 |AAD               |Group          |`aadgroup=`*GroupObjectId*<br>`aadgroup=`*GroupDisplayName*<br>`aadgroup=`*GroupEmailAddress* 
 |AAD               |App            |`aadapp=`*ApplicationId*<br>`aadapp`=*ApplicationDisplayName*
-|dSTS              |User           |`dstsuser=`*UserEmailAddress*
-|dSTS              |Group          |`dstsgroup=`*GroupName* 
-|dSTS              |App            |`dstsapp=`*ApplicationId*
  
 **Example**
 
@@ -304,6 +287,5 @@ Required permissions: cluster user.
 
 ```kusto
 .show principal "aaduser=imikeoein@fabrikam.com" roles
-.show principal @'dstsapp=<App ID>' roles
 ```
 
