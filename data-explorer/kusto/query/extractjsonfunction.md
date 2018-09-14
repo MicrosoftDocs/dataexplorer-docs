@@ -14,8 +14,9 @@ Get a specified element out of a JSON text using a path expression.
 
 Optionally convert the extracted string to a specific type.
 
-    extractjson("$.hosts[1].AvailableMB", EventText, typeof(int))
-
+```kusto
+extractjson("$.hosts[1].AvailableMB", EventText, typeof(int))
+```
 
 **Syntax**
 

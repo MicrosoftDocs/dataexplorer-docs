@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns `true` if the argument is an empty string or is null.
     
-    isempty("") == true
+```kusto
+isempty("") == true
+```
 
 **Syntax**
 

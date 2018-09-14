@@ -12,8 +12,10 @@ ms.date: 09/24/2018
 
 Converts input to integener (signed 64-bit) number representation.
 
-    parse_ipv4("127.0.0.1") == 2130706433
-    parse_ipv4('192.1.168.1') < parse_ipv4('192.1.168.2') == true
+```kusto
+parse_ipv4("127.0.0.1") == 2130706433
+parse_ipv4('192.1.168.1') < parse_ipv4('192.1.168.2') == true
+```
 
 **Syntax**
 

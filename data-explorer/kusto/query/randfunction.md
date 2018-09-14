@@ -12,8 +12,10 @@ ms.date: 09/24/2018
 
 Returns a random number.
 
-    rand()
-    rand(1000)
+```kusto
+rand()
+rand(1000)
+```
 
 **Syntax**
 

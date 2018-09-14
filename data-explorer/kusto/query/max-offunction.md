@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns the maximum value of several evaluated numeric expressions.
 
-    max_of(10, 1, -3, 17) == 17
+```kusto
+max_of(10, 1, -3, 17) == 17
+```
 
 **Syntax**
 

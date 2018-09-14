@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Converts input to [datetime](./scalar-data-types/datetime.md) scalar.
 
-    todatetime("2015-12-24") == datetime(2015-12-24)
+```kusto
+todatetime("2015-12-24") == datetime(2015-12-24)
+```
 
 **Syntax**
 

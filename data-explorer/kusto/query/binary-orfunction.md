@@ -10,9 +10,11 @@ ms.date: 09/24/2018
 ---
 # binary_or()
 
-Returns a result of the bitwise `or` operation of the two values 
+Returns a result of the bitwise `or` operation of the two values. 
 
-    binary_or(x,y)
+```kusto
+binary_or(x,y)
+```
 
 **Syntax**
 

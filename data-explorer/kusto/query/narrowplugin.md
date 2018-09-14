@@ -10,7 +10,9 @@ ms.date: 09/24/2018
 ---
 # narrow plugin
 
-    T | evaluate narrow()
+```kusto
+T | evaluate narrow()
+```
 
 The `narrow` plugin "unpivots" a wide table into a table with just three columns: Row number, column type, and column value (as `string`).
 

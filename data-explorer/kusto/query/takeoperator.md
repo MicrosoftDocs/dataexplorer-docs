@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Return up to the specified number of rows.
 
-     T | take 5
+```kusto
+T | take 5
+```
 
 There is no guarantee which records are returned, unless
 the source data is sorted.

@@ -12,9 +12,11 @@ ms.date: 09/24/2018
 
 Returns the standard cumulative beta distribution function.
 
-    beta_cdf(0.2, 10.0, 50.0)
+```kusto
+beta_cdf(0.2, 10.0, 50.0)
+```
 
-If probability = beta_cdf(x,...), then beta_inv(probability,...) = x. 
+If *probability* = `beta_cdf(`*x*,...`)`, then `beta_inv(`*probability*,...`)` = *x*.
 
 The beta distribution is commonly used to study variation in the percentage of something across samples, such as the fraction of the day people spend watching television.
 

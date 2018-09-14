@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Converts input to a string representation.
 
-    tostring(123) == "123"
+```kusto
+tostring(123) == "123"
+```
 
 **Syntax**
 

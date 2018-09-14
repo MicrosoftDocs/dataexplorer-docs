@@ -12,4 +12,6 @@ ms.date: 09/24/2018
 
 Converts a string to upper case.
 
-    toupper("hello") == "HELLO"
+```kusto
+toupper("hello") == "HELLO"
+```

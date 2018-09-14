@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Sort the rows of the input table into order by one or more columns.
 
-    T | order by country asc, price desc
+```kusto
+T | order by country asc, price desc
+```
 
 **Alias**
 

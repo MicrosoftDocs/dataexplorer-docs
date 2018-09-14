@@ -12,4 +12,6 @@ ms.date: 09/24/2018
 
 Converts input string to lower case.
 
-    tolower("Hello") == "hello"
+```kusto
+tolower("Hello") == "hello"
+```

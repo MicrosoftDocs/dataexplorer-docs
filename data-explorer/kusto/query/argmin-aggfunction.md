@@ -34,17 +34,23 @@ Finds a row in the group that minimizes *ExprToMinimize*, and returns the value 
 
 Show cheapest supplier of each product:
 
-    Supplies | summarize argmin(Price, Supplier) by Product
+```kusto
+Supplies | summarize argmin(Price, Supplier) by Product
+```
 
 Show all the details, not just the supplier name:
 
-    Supplies | summarize argmin(Price, *) by Product
+```kusto
+Supplies | summarize argmin(Price, *) by Product
+```
 
 Find the southernmost city in each continent, with its country:
 
-    PageViewLog 
-    | summarize (latitude, City, country)=argmin(latitude, City, country) 
-      by continent
+```kusto
+PageViewLog 
+| summarize (latitude, City, country)=argmin(latitude, City, country) 
+    by continent
+```
 
 ![alt text](./images/aggregations/argmin.png "argmin")
  

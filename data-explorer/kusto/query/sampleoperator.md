@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns up to the specified number of random rows from the input table.
 
-     T | sample 5
+```kusto
+T | sample 5
+```
 
 **Syntax**
 

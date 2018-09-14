@@ -14,7 +14,9 @@ Calculates useful activity metrics (distinct count values, distinct count of new
 
 Concept of this plugin is similar to [activity_metrics plugin](./activity-metrics-plugin.md), but focuses on `New Users`.
 
-    T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
+```kusto
+T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
+```
 
 **Syntax**
 

@@ -12,15 +12,17 @@ ms.date: 09/24/2018
 
 Produces a table that aggregates the content of the input table. 
 
-    T | summarize count(), avg(price) by fruit, supplier
+```kusto
+T | summarize count(), avg(price) by fruit, supplier
+```
 
 A table that shows the number and average price of each fruit from each supplier. There's a row in the output for each distinct combination of fruit and supplier. The output columns show the count, average price, fruit and supplier. All other input columns are ignored.
 
-
-    T | summarize count() by price_range=bin(price, 10.0)
+```kusto
+T | summarize count() by price_range=bin(price, 10.0)
+```
 
 A table that shows how many items have prices in each interval  [0,10.0], [10.0,20.0], and so on. This example has a column for the count and one for the price range. All other input columns are ignored.
-
 
 **Syntax**
 

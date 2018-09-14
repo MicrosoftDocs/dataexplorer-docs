@@ -12,8 +12,10 @@ ms.date: 09/24/2018
 
 Subtracts the given timespan from the current UTC clock time.
 
-    ago(1h)
-    ago(1d)
+```kusto
+ago(1h)
+ago(1d)
+```
 
 Like `now()`, this function can be used multiple times
 in a statement and the UTC clock time being referenced will be the same

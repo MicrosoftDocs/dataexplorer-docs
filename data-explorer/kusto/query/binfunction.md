@@ -12,7 +12,7 @@ ms.date: 09/24/2018
 
 Rounds values down to an integer multiple of a given bin size. 
 
-Used a lot in the [`summarize by ...`](./summarizeoperator.md) query. 
+Used frequently in combination with [`summarize by ...`](./summarizeoperator.md).
 If you have a scattered set of values, they will be grouped into a smaller set of specific values.
 
 Alias to `floor()` function.
@@ -30,7 +30,9 @@ Alias to `floor()` function.
 
 The nearest multiple of *roundTo* below *value*.  
  
- `(toint((value/roundTo))) * roundTo`
+```kusto
+(toint((value/roundTo))) * roundTo`
+```
 
 **Examples**
 

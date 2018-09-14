@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns the integer number representing the hour number of the given date
 
-    hourofday(datetime(2015-12-14 18:54)) == 18
+```kusto
+hourofday(datetime(2015-12-14 18:54)) == 18
+```
 
 **Syntax**
 

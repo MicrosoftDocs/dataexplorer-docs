@@ -10,11 +10,10 @@ ms.date: 09/24/2018
 ---
 # series_decompose()
 
-Applies a decomomposition transformation on a series.  
+Applies a decomposition transformation on a series.  
 
 Takes an expression containing a series (dynamic numerical array) as input and decompose it to seasonal, trend and residual components.
  
-
 **Syntax**
 
 `series_decompose(`*x* `[,` *seasonality*`,` *trend*`])`

@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns a bitwise negation of the input value.
 
-    binary_not(x)
+```kusto
+binary_not(x)
+```
 
 **Syntax**
 

@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Creates a [timespan](./scalar-data-types/timespan.md) scalar value from the specified time period.
 
-    make_timespan(1,12,30,55.123) == time(1.12:30:55.123)
+```kusto
+make_timespan(1,12,30,55.123) == time(1.12:30:55.123)
+```
 
 **Syntax**
 

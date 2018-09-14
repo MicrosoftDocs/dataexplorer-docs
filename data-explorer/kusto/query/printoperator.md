@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Evaluates one or more scalar expressions and inserts the results (as a single-row table with as many columns as there are expressions) into the output.
 
-	print banner=strcat("Hello", ", ", "World!")
+```kusto
+banner=strcat("Hello", ", ", "World!")
+```
 
 **Syntax**
 

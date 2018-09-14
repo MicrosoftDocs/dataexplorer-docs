@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Reverses the value of its `bool` argument.
 
-    not(false) == true
+```kusto
+not(false) == true
+```
 
 **Syntax**
 

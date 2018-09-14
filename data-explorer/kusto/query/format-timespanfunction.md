@@ -12,10 +12,9 @@ ms.date: 09/24/2018
 
 Formats a timespan parameter based on the format pattern parameter.
 
-    format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') 
-    
-    => "2:3:4.1234500"
-
+```kusto
+format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
+```
 
 **Syntax**
 

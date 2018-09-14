@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # strcat_array()
 
-Creates a concatenated string of array values using specified delimeter.
+Creates a concatenated string of array values using specified delimiter.
     
 **Syntax**
 

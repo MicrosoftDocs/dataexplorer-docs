@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns the first *N* records sorted by the specified columns.
 
-    T | top 5 by Name desc nulls last
+```kusto
+T | top 5 by Name desc nulls last
+```
 
 **Syntax**
 

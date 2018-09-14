@@ -13,9 +13,10 @@ ms.date: 09/24/2018
 Returns the current UTC clock time, optionally offset by a given timespan.
 This function can be used multiple times in a statement and the clock time being referenced will be the same for all instances.
 
-    now()
-    now(-2d)
-
+```kusto
+now()
+now(-2d)
+```
 
 **Syntax**
 

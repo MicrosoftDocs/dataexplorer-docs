@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Creates a [datetime](./scalar-data-types/datetime.md) scalar value from the specified date and time.
 
-    make_datetime(2017,10,01,12,10) == datetime(2017-10-01 12:10)
+```kusto
+make_datetime(2017,10,01,12,10) == datetime(2017-10-01 12:10)
+```
 
 **Syntax**
 

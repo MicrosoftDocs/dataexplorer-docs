@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Converts input to decimal number representation.
 
-    todecimal("123.45678") == decimal(123.45678)
+```kusto
+todecimal("123.45678") == decimal(123.45678)
+```
 
 **Syntax**
 

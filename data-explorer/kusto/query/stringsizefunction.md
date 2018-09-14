@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 # string_size()
 
 Returns the size, in bytes, of the input string.
-		
+
 **Syntax**
 
 `string_size(`*source*`)`

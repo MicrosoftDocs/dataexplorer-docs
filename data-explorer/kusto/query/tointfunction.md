@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Converts input to integener (signed 32-bit) number representation.
 
-    toint("123") == 123
+```kusto
+toint("123") == 123
+```
 
 **Syntax**
 

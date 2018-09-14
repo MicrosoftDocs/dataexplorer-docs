@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Converts the input to a value of type `real`. (`todouble()` and `toreal()` are synonyms.)
 
-    toreal("123.4") == 123.4
+```kusto
+toreal("123.4") == 123.4
+```
 
 **Syntax**
 

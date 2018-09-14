@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Converts input to long (signed 64-bit) number representation.
 
-    tolong("123") == 123
+```kusto
+tolong("123") == 123
+```
 
 **Syntax**
 

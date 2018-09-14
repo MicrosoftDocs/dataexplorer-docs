@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Evaluates a string expression and parses its value into one or more calculated columns.
 
-    T | parse Text with "ActivityName=" name ", ActivityType=" type
+```kusto
+T | parse Text with "ActivityName=" name ", ActivityType=" type
+```
 
 **Syntax**
 

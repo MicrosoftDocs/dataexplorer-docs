@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 # strlen()
 
 Returns the length, in characters, of the input string.
-	
+
 **Syntax**
 
 `strlen(`*source*`)`
@@ -27,7 +27,7 @@ Returns the length, in characters, of the input string.
 **Remarks**
 
 Each Unicode character in the string is equal to `1`, including surrogates.
-(e.g: Chinese charachters will be counted once despite the fact that it requires more than one value in UTF-8 encoding).
+(e.g: Chinese characters will be counted once despite the fact that it requires more than one value in UTF-8 encoding).
 
 
 **Examples**

@@ -12,11 +12,13 @@ ms.date: 09/24/2018
 
 Converts input to a hexadecimal string.
 
-    tohex(256) == '100'
-    tohex(-256) == 'ffffffffffffff00' // 64-bit 2's complement of -256
-    tohex(toint(-256), 8) == 'ffffff00' // 32-bit 2's complement of -256
-    tohex(256, 8) == '00000100'
-    tohex(256, 2) == '100' // Exceeds min length of 2, so min length is ignored.
+```kusto
+tohex(256) == '100'
+tohex(-256) == 'ffffffffffffff00' // 64-bit 2's complement of -256
+tohex(toint(-256), 8) == 'ffffff00' // 32-bit 2's complement of -256
+tohex(256, 8) == '00000100'
+tohex(256, 2) == '100' // Exceeds min length of 2, so min length is ignored.
+```
 
 **Syntax**
 

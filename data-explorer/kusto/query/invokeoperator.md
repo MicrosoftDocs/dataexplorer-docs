@@ -10,9 +10,11 @@ ms.date: 09/24/2018
 ---
 # invoke operator
 
-Invokes lambda that receives the source of `invoke` as tablular parameter argument.
+Invokes lambda that receives the source of `invoke` as tabular parameter argument.
 
-    T | invoke foo(param1, param2)
+```kusto
+T | invoke foo(param1, param2)
+```
 
 **Syntax**
 

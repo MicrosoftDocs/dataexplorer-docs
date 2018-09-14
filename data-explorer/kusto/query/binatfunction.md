@@ -51,8 +51,6 @@ datetime(2018-02-24T15:14),3,
 datetime(2018-02-23T16:14),4,
 datetime(2018-02-26T15:14),5]
 | summarize sum(Num) by bin_at(Date, 1d, datetime(2018-02-24 15:14:00.0000000)) 
-
-
 ```
 
 |Date|sum_Num|

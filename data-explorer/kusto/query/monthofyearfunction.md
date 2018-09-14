@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns the integer number represents the month number of the given year.
 
-    monthofyear(datetime("2015-12-14"))
+```kusto
+monthofyear(datetime("2015-12-14"))
+```
 
 **Syntax**
 

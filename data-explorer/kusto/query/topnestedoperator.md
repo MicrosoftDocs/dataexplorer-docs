@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Produces hierarchical top results, where each level is a drill-down based on previous level values. 
 
-    T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-nested 4 of bin(Timestamp,5m) by sum(MachinesNumber)
+```kusto
+T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-nested 4 of bin(Timestamp,5m) by sum(MachinesNumber)
+```
 
 It is useful for dashboard visualization scenarios, or when it is necessary to answer to a question that 
 sounds like: "find what are top-N values of K1 (using some aggregation); for each of them, find what are the top-M values of K2 (using another aggregation); ..."

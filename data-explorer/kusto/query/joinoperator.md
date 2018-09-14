@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Merge the rows of two tables to form a new table by matching values of the specified column(s) from each table.
 
-    Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
+```kusto
+Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
+```
 
 **Syntax**
 

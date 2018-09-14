@@ -14,7 +14,9 @@ Extracts a substring from a source string starting from some index to the end of
 
 Optionally, the length of the requested substring can be specified.
 
-    substring("abcdefg", 1, 2) == "bc"
+```kusto
+substring("abcdefg", 1, 2) == "bc"
+```
 
 **Syntax**
 

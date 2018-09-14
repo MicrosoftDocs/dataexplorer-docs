@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns a table with up to the specified number of rows from the input record set, and the total number of records in the input record set.
 
-    T | evaluate preview(50)
+```kusto
+T | evaluate preview(50)
+```
 
 **Syntax**
 

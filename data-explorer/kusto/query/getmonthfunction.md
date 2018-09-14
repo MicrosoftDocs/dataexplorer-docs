@@ -19,4 +19,3 @@ T
 | extend month = getmonth(datetime(2015-10-12))
 // month == 10
 ```
-   

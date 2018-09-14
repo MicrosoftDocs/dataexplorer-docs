@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Evaluates its sole argument and returns a `bool` value indicating if the argument evaluates to a null value.
 
-    isnull(parsejson("")) == true
+```kusto
+isnull(parse_json("")) == true
+```
 
 **Syntax**
 

@@ -10,9 +10,11 @@ ms.date: 09/24/2018
 ---
 # binary_and()
 
-Returns a result of the bitwise `and` operation between two values
+Returns a result of the bitwise `and` operation between two values.
 
-    binary_and(x,y)	
+```kusto
+binary_and(x,y)	
+```
 
 **Syntax**
 

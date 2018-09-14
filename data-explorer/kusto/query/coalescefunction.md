@@ -12,16 +12,17 @@ ms.date: 09/24/2018
 
 Evaluates a list of expressions and returns the first non-null (or non-empty for string) expression.
 
-    coalesce(tolong("not a number"), tolong("42"), 33) == 42
+```kusto
+coalesce(tolong("not a number"), tolong("42"), 33) == 42
+```
 
 **Syntax**
 
-`coalesce(`*expr_1*`, `*expr_2`, ...)
+`coalesce(`*expr_1*`, `*expr_2*`,` ...)
 
 **Arguments**
 
 * *expr_i*: A scalar expression, to be evaluated.
-
 - All arguments must be of the same type.
 - Maximum of 64 arguments is supported.
 

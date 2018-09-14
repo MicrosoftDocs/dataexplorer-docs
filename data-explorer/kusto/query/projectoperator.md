@@ -14,7 +14,9 @@ Select the columns to include, rename or drop, and insert new computed columns.
 
 The order of the columns in the result is specified by the order of the arguments. Only the columns specified in the arguments are included in the result: any others in the input are dropped.  (See also `extend`.)
 
-    T | project cost=price*quantity, price
+```kusto
+T | project cost=price*quantity, price
+```
 
 **Syntax**
 

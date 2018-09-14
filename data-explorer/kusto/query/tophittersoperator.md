@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns an approximation of the first *N* results (assuming skewed distribution of the input).
 
-    T | top-hitters 25 of Page by Views 
+```kusto
+T | top-hitters 25 of Page by Views 
+```
 
 **Syntax**
 

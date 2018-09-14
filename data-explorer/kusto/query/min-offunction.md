@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns the minimum value of several evaluated numeric expressions.
 
-    min_of(10, 1, -3, 17) == -3
+```kusto
+min_of(10, 1, -3, 17) == -3
+```
 
 **Syntax**
 

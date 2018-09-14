@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns the probability density beta function.
 
-    beta_pdf(0.2, 10.0, 50.0)
+```kusto
+beta_pdf(0.2, 10.0, 50.0)
+```
 
 The beta distribution is commonly used to study variation in the percentage of something across samples, such as the fraction of the day people spend watching television.
 

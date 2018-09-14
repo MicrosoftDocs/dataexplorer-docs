@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns `true` if the argument is not an empty string nor it is a null.
 
-    isnotempty("") == false
+```kusto
+isnotempty("") == false
+```
 
 **Syntax**
 

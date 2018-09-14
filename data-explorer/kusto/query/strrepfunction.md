@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # strrep()
 
-Repeates given [string](./scalar-data-types/string.md) provided amount of times.
+Repeats given [string](./scalar-data-types/string.md) provided amount of times.
 
 * In case if first or third argument is not of a string type, it will be forcibly converted to string.
 

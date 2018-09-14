@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Select what  columns to exclude from the input.
 
-    T | project-away price, quantity
+```kusto
+T | project-away price, quantity
+```
 
 The order of the columns in the result is specified by their original order in the table. Only the columns that were specified as arguments are dropped: any others are included in the result.  (See also `project`.)
 

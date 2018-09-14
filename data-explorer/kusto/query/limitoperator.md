@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Return up to the specified number of rows.
 
-     T | limit 5
+```kusto
+T | limit 5
+```
 
 **Alias**
 

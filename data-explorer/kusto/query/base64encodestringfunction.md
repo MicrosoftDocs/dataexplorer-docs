@@ -20,7 +20,6 @@ Encodes a string as base64 string
 
 * *String*: Input string to be encoded as base64 string.
 
-
 **Returns**
 
 Returns the string encoded as base64 string.

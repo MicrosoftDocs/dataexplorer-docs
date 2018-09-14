@@ -10,10 +10,12 @@ ms.date: 09/24/2018
 ---
 # binary_xor()
 
-Returns a result of the bitwise `xor` operation of the two values 
+Returns a result of the bitwise `xor` operation of the two values.
 
-    binary_xor(x,y)
-	
+```kusto
+binary_xor(x,y)
+```
+
 **Syntax**
 
 `binary_xor(`*num1*`,` *num2* `)`

@@ -12,8 +12,10 @@ ms.date: 09/24/2018
 
 Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches do not.
 
-    countof("The cat sat on the mat", "at") == 3
-    countof("The cat sat on the mat", @"\b.at\b", "regex") == 3
+```kusto
+countof("The cat sat on the mat", "at") == 3
+countof("The cat sat on the mat", @"\b.at\b", "regex") == 3
+```
 
 **Syntax**
 

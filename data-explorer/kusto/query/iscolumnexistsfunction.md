@@ -12,7 +12,6 @@ ms.date: 09/24/2018
 
 Returns a boolean value indicating if the given string argument exists in the schema produced by the preceding tabular operator.
 
-
 **Syntax**
 
 `iscolumnexists(`*value*`)

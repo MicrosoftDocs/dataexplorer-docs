@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns the integer number represents the day number of the given year.
 
-    dayofyear(datetime(2015-12-14))
+```kusto
+dayofyear(datetime(2015-12-14))
+```
 
 **Syntax**
 

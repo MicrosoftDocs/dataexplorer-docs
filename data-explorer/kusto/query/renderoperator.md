@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Renders results in as graphical output.
 
-    T | render timechart
+```kusto
+T | render timechart
+```
 
 The render operator should be the last operator in the query expression.
 

@@ -39,20 +39,26 @@ When used used with a single parameter (single column) - `any()` will return a n
 
 Show Random Continent:
 
-    Continents | summarize any(Continent)
+```kusto
+Continents | summarize any(Continent)
+```
 
 ![alt text](./images/aggregations/any1.png "any1")
 
 
 Show all the details for a random row:
 
-    Continents | summarize any(*) 
+```kusto
+Continents | summarize any(*) 
+```
 
 ![alt text](./images/aggregations/any2.png "any2")
 
 
 Show all the details for each random continent:
 
-   Continents | summarize any(*) by Continent
+```kusto
+Continents | summarize any(*) by Continent
+```
 
 ![alt text](./images/aggregations/any3.png "any3")

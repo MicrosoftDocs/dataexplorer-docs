@@ -13,7 +13,6 @@ ms.date: 09/24/2018
 Takes a column name as a string and a default value. Returns a reference to the column if it exists, 
 otherwise - returns the default value.
 
-
 **Syntax**
 
 `columnifexists(`*columnName*`, `*defaultValue*`)

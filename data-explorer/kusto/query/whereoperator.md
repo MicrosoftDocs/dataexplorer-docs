@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Filters a table to the subset of rows that satisfy a predicate.
 
-     T | where fruit=="apple"
+```kusto
+T | where fruit=="apple"
+```
 
 **Alias** `filter`
 

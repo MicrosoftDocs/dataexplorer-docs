@@ -14,7 +14,9 @@ Get all matches for a [regular expression](./re2.md) from a text string.
 
 Optionally, a subset of matching groups can be retrieved.
 
-    extractall(@"(\d+)", "a set of numbers: 123, 567 and 789") == dynamic(["123", "567", "789"])
+```kusto
+extractall(@"(\d+)", "a set of numbers: 123, 567 and 789") == dynamic(["123", "567", "789"])
+```
 
 **Syntax**
 

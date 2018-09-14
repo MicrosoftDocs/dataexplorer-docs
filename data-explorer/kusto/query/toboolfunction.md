@@ -12,10 +12,12 @@ ms.date: 09/24/2018
 
 Converts input to boolean (signed 8-bit) representation.
 
-    tobool("true") == true
-    tobool("false") == false
-    tobool(1) == true
-    tobool(123) == true
+```kusto
+tobool("true") == true
+tobool("false") == false
+tobool(1) == true
+tobool(123) == true
+```
 
 **Syntax**
 

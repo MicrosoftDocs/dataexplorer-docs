@@ -18,7 +18,7 @@ thet type of the actual value (how the value is encoded in memory).
 
 **Syntax**
 
-* `gettype(`*Expr*`)`
+`gettype(`*Expr*`)`
 
 **Returns**
 

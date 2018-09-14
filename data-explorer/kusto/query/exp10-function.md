@@ -11,7 +11,6 @@ ms.date: 09/24/2018
 # exp10()
 
 The base-10 exponential function of x, which is 10 raised to the power x: 10^x.  
-
 **Syntax**
 
 `exp10(`*x*`)`

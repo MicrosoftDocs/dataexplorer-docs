@@ -23,13 +23,11 @@ Unpacks dynamic column into several columns according to the first level of the 
 * *column*: Name of the column that will be unpacked. 
 * *column_prefix*: (optional) the prefix name that will be used for producing new columns
 
-
-**Note**
-
-The plugin transposes JSON (dynamic) objects into a table with dynamic column names taken from property bag keys.
-As the output schema of the `bag_unpack` plugin is based on the data and therefore query may produce different
-schema for any two runs. This also means that query that is referencing unpacked columns may become 'broken' at 
-any time. Due to this reason - it is not advised to use this plugin for automation jobs.
+> [!NOTE]
+> The plugin transposes JSON (dynamic) objects into a table with dynamic column names taken from property bag keys.
+> As the output schema of the `bag_unpack` plugin is based on the data, the same query may produce different
+> output schema for any two runs. This also means that a query that references unpacked columns might 'break' as a result. 
+> Therefore - it is not advised to use this plugin for automation jobs.
 
 **Returns**
 

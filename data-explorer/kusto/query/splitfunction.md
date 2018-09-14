@@ -14,7 +14,9 @@ Splits a given string according to a given delimiter and returns a string array 
 
 Optionally, a specific substring can be returned if exists.
 
-    split("aaa_bbb_ccc", "_") == ["aaa","bbb","ccc"]
+```kusto
+split("aaa_bbb_ccc", "_") == ["aaa","bbb","ccc"]
+```
 
 **Syntax**
 

@@ -12,8 +12,10 @@ ms.date: 09/24/2018
 
 Returns an estimated data size of the selected columns of the tabular expression.
 
-    estimate_data_size(*)
-    estimate_data_size(Col1, Col2, Col3)
+```kusto
+estimate_data_size(*)
+estimate_data_size(Col1, Col2, Col3)
+```
 
 **Syntax**
 

@@ -24,7 +24,7 @@ Read more about the underlying algorithm (T-Digest) and the estimated error [her
 
 **Returns**
 
-The result for merging the columns `*Exrp1*`, `*Expr2*`, ... `*ExprN*` to one tdigest.
+The result for merging the columns `*Expr1*`, `*Expr2*`, ... `*ExprN*` to one tdigest.
 
 **Examples**
 

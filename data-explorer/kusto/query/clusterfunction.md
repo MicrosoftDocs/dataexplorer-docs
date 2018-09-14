@@ -15,7 +15,7 @@ Changes the reference of the query to a remote cluster.
 ```kusto
 cluster('help').database('Sample').SomeTable
 ```
- 
+
 **Syntax**
 
 `cluster(`*stringConstant*`)`

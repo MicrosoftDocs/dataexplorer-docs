@@ -12,8 +12,9 @@ ms.date: 09/24/2018
 
 Returns the integer number of days since the preceding Sunday, as a `timespan`.
 
-    dayofweek(datetime(2015-12-14)) == 1d  // Monday
-
+```kusto
+dayofweek(datetime(2015-12-14)) == 1d  // Monday
+```
 
 **Syntax**
 

@@ -10,7 +10,6 @@ ms.date: 09/24/2018
 ---
 # range operator
 
-
 Generates a single-column table of values.
 
 Notice that it doesn't have a pipeline input. 

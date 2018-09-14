@@ -14,8 +14,7 @@ ms.date: 09/24/2018
 T | evaluate autocluster()
 ```
 
- AutoCluster finds common patterns of discrete attributes (dimensions) in the data and will reduce the results of the original query (whether it's 100 or 100k rows) to a small number of patterns. AutoCluster was developed to help analyze failures (e.g. exceptions, crashes) but can potentially work on any filtered data set. The AutoCluster algorithm was developed by the Developer Analytics research team. 
-
+AutoCluster finds common patterns of discrete attributes (dimensions) in the data and will reduce the results of the original query (whether it's 100 or 100k rows) to a small number of patterns. AutoCluster was developed to help analyze failures (e.g. exceptions, crashes) but can potentially work on any filtered data set. The AutoCluster algorithm was developed by the Developer Analytics research team. 
 
 **Syntax**
 
@@ -29,12 +28,10 @@ The first column is the segment Id. The next two columns are the count and perce
 
 Note that the patterns are not distinct: they may be overlapping, and usually do not cover all the original rows. Some rows may not fall under any pattern.
 
-
-**Tips**
-
-Use [where](./whereoperator.md) and [project](./projectoperator.md) in the input pipe to reduce the data to just what you're interested in.
-
-When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
+> [!TIP]
+> Use [where](./whereoperator.md) and [project](./projectoperator.md) in the input pipe to reduce the data to just what you're interested in.
+>
+> When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
 
 **Arguments (all optional)**
 

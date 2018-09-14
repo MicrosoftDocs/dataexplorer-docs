@@ -13,7 +13,9 @@ ms.date: 09/24/2018
 Expands multi-value collection(s) from a [dynamic](./scalar-data-types/dynamic.md)-typed column so that each value in the collection gets a separate row. Note that the default expansion is up to 128 rows.
 All the other columns in an expanded row are duplicated. 
 
-    T | mvexpand listColumn [, listColumn2 ...] 
+```kusto
+T | mvexpand listColumn [, listColumn2 ...] 
+```
 
 (See also [`summarize makelist`](makelist-aggfunction.md) which performs the opposite function.)
 

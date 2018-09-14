@@ -14,7 +14,9 @@ Retunrs the integer number represents the week number.
 
 Aligned with ISO 8601 standards, where first day of the week is Sunday.
 
-    weekofyear(datetime("2015-12-14"))
+```kusto
+weekofyear(datetime("2015-12-14"))
+```
 
 **Syntax**
 

@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Converts input string representation of version to a comparable decimal number.
 
-   parse_version("0.0.0.1")
+```kusto
+parse_version("0.0.0.1")
+```
 
 **Syntax**
 

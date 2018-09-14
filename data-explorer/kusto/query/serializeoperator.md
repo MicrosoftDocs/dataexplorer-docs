@@ -13,7 +13,9 @@ ms.date: 09/24/2018
 Freezes the order of the input row set arbitrarily, so that [window functions](./windowsfunctions.md)
 could be applied to it.
 
-    T | serialize rn=row_number()
+```kusto
+T | serialize rn=row_number()
+```
 
 **Syntax**
 

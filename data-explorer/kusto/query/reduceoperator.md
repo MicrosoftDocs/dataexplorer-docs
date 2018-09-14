@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 The `reduce` operator groups a set of `string` values together based on similarity.
 
-    T | reduce by LogMessage with threshold=0.1
+```kusto
+T | reduce by LogMessage with threshold=0.1
+```
 
 For each such group, it outputs a **pattern** that best describes the group (possibly using the
 asterix (`*`) character to represent wildcards), a **count** of the number of values in the group,

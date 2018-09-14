@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Converts input  to [timespan](./scalar-data-types/timespan.md) scalar.
 
-    totimespan("0.00:01:00") == time(1min)
+```kusto
+totimespan("0.00:01:00") == time(1min)
+```
 
 **Syntax**
 

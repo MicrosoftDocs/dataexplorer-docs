@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Renames columns in the result output.
 
-    T | project-rename new_column_name = column_name
+```kusto
+T | project-rename new_column_name = column_name
+```
 
 **Syntax**
 

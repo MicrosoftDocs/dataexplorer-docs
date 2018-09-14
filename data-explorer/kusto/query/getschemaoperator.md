@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Produce a table that represents a tabular schema of the input.
 
-    T | summarize MyCount=count() by Country | getschema 
+```kusto
+T | summarize MyCount=count() by Country | getschema 
+```
 
 **Syntax**
 

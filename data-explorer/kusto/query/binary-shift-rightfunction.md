@@ -10,9 +10,11 @@ ms.date: 09/24/2018
 ---
 # binary_shift_right()
 
-eturns binary shift right operation on a pair of numbers
+Returns binary shift right operation on a pair of numbers.
 
-    binary_shift_right(x,y)	
+```kusto
+binary_shift_right(x,y)	
+```
 
 **Syntax**
 

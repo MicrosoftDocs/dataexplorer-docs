@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Returns the integer number representing the day number of the given month
 
-    dayofmonth(datetime(2015-12-14)) == 14
+```kusto
+dayofmonth(datetime(2015-12-14)) == 14
+```
 
 **Syntax**
 

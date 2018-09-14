@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Pulls all the data from its source tabular expression without actually doing anything with it.
 
-  T | consume
+```kusto
+T | consume
+```
 
 The `consume` operator pulls all the data from its source tabular expression
 without actually doing anything with it. It can be used for estimating the

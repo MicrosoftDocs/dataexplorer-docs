@@ -20,7 +20,7 @@ Concatenates between 2 and 64 arguments, with delimiter, provided as first argum
 
 **Arguments**
 
-* *delimiter*: string expression, which will be used as seperator.
+* *delimiter*: string expression, which will be used as separator.
 * *argument1* ... *argumentN* : expressions to be concatenated.
 
 **Returns**

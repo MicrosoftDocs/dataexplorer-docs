@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Create calculated columns and append them to the result set.
 
-     T | extend duration = endTime - startTime
+```kusto
+T | extend duration = endTime - startTime
+```
 
 **Syntax**
 
