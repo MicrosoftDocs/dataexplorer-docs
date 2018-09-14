@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # makeset() (aggregation function)
 
-Returns a `dynamic` (JSON) array of the set of distinct values that *Expr* takes in the group. 
+Returns a `dynamic` (JSON) array of the set of distinct values that *Expr* takes in the group.
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
 
@@ -40,4 +40,4 @@ PageViewLog
 
 ![alt text](./images/aggregations/makeset.png "makeset")
 
-See also the [`mvexpand` operator](./mvexpandoperator.md) for the opposite function.
+See also the [`mvexpand` operator](mvexpandoperator.md) for the opposite function.
