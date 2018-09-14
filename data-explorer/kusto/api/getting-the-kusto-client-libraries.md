@@ -18,13 +18,13 @@ The Kusto client libraries are published as NuGet packages and can be found on [
 
 The following packages are available at this feed:
 
-|Package               |Main assembly name|Runtime             |Description              |
-|----------------------|------------------|--------------------|-------------------------|
-|Microsoft.Kusto.Client|Kusto.Data        |.NET Framework 4.5.1|Kusto Client Library.    |
-|Microsoft.Kusto.Ingest|Kusto.Ingest      |.NET Framework 4.5.1|Kusto Ingestion Library. |
+|Package                     |Main assembly name|Runtime             |Description              |
+|----------------------------|------------------|--------------------|-------------------------|
+|Microsoft.Azure.Kusto.Client|Kusto.Data        |.NET Framework 4.5.1|Kusto Client Library.    |
+|Microsoft.Azure.Kusto.Ingest|Kusto.Ingest      |.NET Framework 4.5.1|Kusto Ingestion Library. |
+|Microsoft.Azure.Kusto.Tools |                  |                    |Command-line tools.      |
 
-
-**Accessing the official NuGet feed from Visual Studio**
+**Accessing the NuGet feed from Visual Studio**
 
 - See [Consume NuGet packages in Visual Studio](https://www.visualstudio.com/en-us/docs/package/get-started/nuget/consume)
 - Note that instructions are different, depending on which version of Visual Studio you're using:
@@ -39,36 +39,32 @@ The following packages are available at this feed:
       Then restart Visual Studio and continue.
 
 
-**Accessing the official NuGet feed using the NuGet Package Manager console**
+**Accessing the NuGet feed using the NuGet Package Manager console**
 
 1. First read [Authenticating to feeds with NuGet](https://www.visualstudio.com/en-us/docs/package/get-started/nuget/auth).
 2. Then make sure that the NuGet client version is 3.2 or above.
 3. Now execute the following PowerShell commands in the Package Manager console.
   - Make sure you replace `<package name>` with either of the following:
-    - Microsoft.Kusto.Client
-    - Microsoft.Kusto.Ingest
-    - Microsoft.Kusto.Manage
-    - Microsoft.Kusto.IntelliSense
+    - Microsoft.Azure.Kusto.Client
+    - Microsoft.Azure.Kusto.Ingest
 
 ```powershell
 Install-Package <package name>
-  -Source https://1essharedassets.pkgs.visualstudio.com/_packaging/Kusto/nuget/v3/index.json
+  -Source https://api.nuget.org/v3/index.json
 ```
 
-**Accessing the official NuGet feed using the NuGet command-line tool**
+**Accessing the NuGet feed using the NuGet command-line tool**
 
 1. First read [Authenticating to feeds with NuGet](https://www.visualstudio.com/en-us/docs/package/get-started/nuget/auth).
 2. Then make sure that the NuGet client version is 3.2 or above.
-3. Now execute the following PowerShell commands from a command propmpt:
+3. Now execute the following PowerShell commands from a command prompt:
   - Make sure you replace `<package name>` with either of the following:
-    - Microsoft.Kusto.Client
-    - Microsoft.Kusto.Ingest
-    - Microsoft.Kusto.Manage
-    - Microsoft.Kusto.IntelliSense
+    - Microsoft.Azure.Kusto.Client
+    - Microsoft.Azure.Kusto.Ingest
 
 ```cmd
 nuget.exe Install <package name> 
-  -Source https://1essharedassets.pkgs.visualstudio.com/_packaging/Kusto/nuget/v3/index.json
+  -Source https://api.nuget.org/v3/index.json
 ```
 
 

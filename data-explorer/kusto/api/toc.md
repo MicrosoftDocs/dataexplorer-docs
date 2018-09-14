@@ -12,7 +12,7 @@
 
 # .NET Framework Client Libraries
 ## Overview
-### [Getting Kusto Client Libraries](getting-the-kusto-client-libraries.md)
+### [Getting the Kusto client libraries](getting-the-kusto-client-libraries.md)
 ### [Errors and Exceptions](errors-and-exceptions.md)
 ### [Controlling Tracing](controlling-tracing.md)
 ## [Kusto.Data](using-the-kusto-client-library.md)
