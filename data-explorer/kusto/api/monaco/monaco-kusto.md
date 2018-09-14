@@ -8,9 +8,9 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-Monaco-kusto
+# Monaco-kusto
 
-Monaco-kusto provides kusto language support for the [Monaco editor](https://microsoft.github.io/monaco-editor/) available on [GitHub](https://github.com/Azure/monaco-kusto) and on NPM.
+Monaco-kusto provides Kusto language support for the [Monaco editor](https://microsoft.github.io/monaco-editor/) available on [GitHub](https://github.com/Azure/monaco-kusto) and on NPM.
 
 * [GitHub Repository](https://github.com/Azure/monaco-kusto)
 

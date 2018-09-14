@@ -92,7 +92,7 @@ Some errors can be easily solved on your own, for example query syntax errors:
 
 ![alt text](./Images/KustoTools-Flow/flow-syntaxerror.png "flow-syntaxerror")
 
-In case you are unable to solve an error on your own, please send the error description to [Kusto Discussions](mailto:kustalk@microsoft.com).
+
 
 ### Having trouble finding the Azure Kusto connector?
 

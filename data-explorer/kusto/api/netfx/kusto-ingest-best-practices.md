@@ -44,7 +44,7 @@ It is important to understand that the more chunks of data (files/blobs/streams)
 If you follow the following recommendations, you will be able to better control your Kusto ingestion costs:
 * **Prefer ingesting larger chunks of data (up to 1GB of uncompressed data)**<br>
     Many teams attempt to achieve low latency by ingesting tens of millions of tiny chunks of data, which is extremely inefficient and very costly.<br>
-    Any batching on the client side would help. If you are not sure what to do, ask [KustoDiscussions DL](mailto:KusTalk@microsoft.com) or contact our Ops team at [https://aka.ms/kustosupport](https://aka.ms/kustosupport).
+    Any batching on the client side would help. 
 * **Make sure you provide the Kusto.Ingest client with accurate uncompressed data size**<br>
     Not doing so may cause Kusto to perform extra storage transactions.
 * **Avoid** sending data for ingestion with the `FlushImmediately` flag set to `true`, or sending small chunks with `ingest-by`/`drop-by` tags set.<br>
