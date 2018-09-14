@@ -258,7 +258,7 @@ StormEvents
 | limit 10
 ```
 
-## Importing a local CSV file into a Kusto table
+## Importing a local file into a Kusto table
 
 Kusto.Explorer provides a convenient way to upload a files from your machine to a Kusto table.
 
