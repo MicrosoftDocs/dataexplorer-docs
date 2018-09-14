@@ -28,9 +28,8 @@ Returns a `dynamic` (JSON) array of the set of distinct values that *Expr* takes
 Returns a `dynamic` (JSON) array of the set of distinct values that *Expr* takes in the group.
 The array's sort order is undefined.
 
-**Tip**
-
-To just count the distinct values, use [dcount()](dcount-aggfunction.md)
+> [!TIP]
+> To just count the distinct values, use [dcount()](dcount-aggfunction.md)
 
 **Example**
 

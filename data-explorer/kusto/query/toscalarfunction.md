@@ -29,8 +29,8 @@ that exceed certain percent of all events.
 A scalar constant value of the evaluated expression.
 If expression result is a tabular, then the first column and first row will be taken for conversion.
 
-**Tip**
-You can use [`let` statement](letstatement.md) for readability of the query when using `toscalar()`. 
+> [!TIP]
+> You can use a [let statement](letstatement.md) for readability of the query when using `toscalar()`.
 
 **Notes**
 

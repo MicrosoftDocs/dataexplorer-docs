@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 Changes the reference of the query to a remote cluster. 
 
-    cluster('help').database('Sample').SomeTable
+```kusto
+cluster('help').database('Sample').SomeTable
+```
  
 **Syntax**
 

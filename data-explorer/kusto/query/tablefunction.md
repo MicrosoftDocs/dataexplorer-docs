@@ -12,7 +12,9 @@ ms.date: 09/24/2018
 
 References specific table using an query-time evaluated string-expression. 
 
-    table('StormEvent')
+```kusto
+table('StormEvent')
+```
 
 **Syntax**
 

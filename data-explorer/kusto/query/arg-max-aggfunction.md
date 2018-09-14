@@ -28,7 +28,7 @@ Finds a row in the group that maximises *ExprToMaximize*, and returns the value 
 
 **Returns**
 
-Finds a row in the group that maximises *ExprToMaximize*, and 
+Finds a row in the group that maximizes *ExprToMaximize*, and 
 returns the value of *ExprToReturn* (or `*` to return the entire row).
 
 **Examples**

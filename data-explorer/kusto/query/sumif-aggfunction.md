@@ -29,6 +29,5 @@ summarize `sumif(`*Expr*`,`*Predicate*`)`
 
 The sum value of *Expr* for which *Predicate* evaluates to `true`.
 
-**Tip**
-
-Use `summarize sumif(expr, filter)` instead of `where filter | summarize sum(expr)`
+> [!TIP]
+> Use `summarize sumif(expr, filter)` instead of `where filter | summarize sum(expr)`

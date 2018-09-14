@@ -12,8 +12,10 @@ ms.date: 09/24/2018
 
 Changes the reference of the query to a specific database within the cluster scope. 
 
-    database('Sample').StormEvents
-    cluster('help').database('Sample').StormEvents
+```kusto
+database('Sample').StormEvents
+cluster('help').database('Sample').StormEvents
+```
 
 **Syntax**
 

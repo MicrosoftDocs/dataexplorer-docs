@@ -12,8 +12,10 @@ ms.date: 09/24/2018
 
 Matches the input that is inside the inclusive range.
 
-    Table1 | where Num1 between (1 .. 10)
-    Table1 | where Time between (datetime(2017-01-01) .. datetime(2017-01-01))
+```kusto
+Table1 | where Num1 between (1 .. 10)
+Table1 | where Time between (datetime(2017-01-01) .. datetime(2017-01-01))
+```
 
 `between` can operate on any numeric, datetime, or timespan expression.
  

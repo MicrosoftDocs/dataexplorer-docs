@@ -12,8 +12,9 @@ ms.date: 09/24/2018
 
 Filters a recordset based on the provided set of values.
 
-    Table1 | where col in ('value1', 'value2')
-
+```kusto
+Table1 | where col in ('value1', 'value2')
+```
 
 **Syntax**
 
@@ -172,7 +173,6 @@ Here is the function definition:
 
 ```kusto
 .show function InterestingStates
-
 ```
 
 |Name|Parameters|Body|Folder|DocString|
