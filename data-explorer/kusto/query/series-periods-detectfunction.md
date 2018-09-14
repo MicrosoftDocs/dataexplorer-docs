@@ -29,11 +29,12 @@ The function takes as input a column containing a dynamic array of time series (
 * *max_period*: A `real` number specifying the maximal period to search for.
 * *num_periods*: A `long` number specifying the maximum required number of periods. This will be the length of the output dynamic arrays.
 
-**Important notes**
-
-* The algorithm can detect periods containing at least 4 points and at most half of the series length. 
-* You should set the *min_period* a little below and *max_period* a little above the periods you expect to find in the time series. For example, if you have an hourly-aggregated signal, and you look for both daily and weekly periods (that would be 24 & 168 respectively) you can set *min_period*=0.8\*24, *max_period*=1.2\*168, leaving 20% margins around these periods.
-* The input time series must be regular, i.e. aggregated in constant bins (which is always the case if it has been created using [make-series](make-seriesoperator.md)). Otherwise, the output is meaningless.
+> [!IMPORTANT]
+> * The algorithm can detect periods containing at least 4 points and at most half of the series length. 
+>
+> * You should set the *min_period* a little below and *max_period* a little above the periods you expect to find in the time series. For example, if you have an hourly-aggregated signal, and you look for both daily > and weekly periods (that would be 24 & 168 respectively) you can set *min_period*=0.8\*24, *max_period*=1.2\*168, leaving 20% margins around these periods.
+>
+> * The input time series must be regular, i.e. aggregated in constant bins (which is always the case if it has been created using [make-series](make-seriesoperator.md)). Otherwise, the output is meaningless.
 
 
 **Example**

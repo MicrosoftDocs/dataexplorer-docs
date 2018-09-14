@@ -39,9 +39,8 @@ This operator is similar to [series_fit_2lines](series-fit-2linesfunction.md), b
 
 * *x*: Dynamic array of numeric values.  
 
-**Important note**
-
-Most convenient way of using this function is applying it to results of [make-series](make-seriesoperator.md) operator.
+> [!TIP]
+> The most convenient way of using this function is applying it to the results of [make-series](make-seriesoperator.md) operator.
 
 **Examples**
 

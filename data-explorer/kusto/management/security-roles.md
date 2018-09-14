@@ -10,9 +10,9 @@ ms.date: 09/24/2018
 ---
 # Role Based Authorization Model 
 
-
-> IMPORTANT: Before altering authorization rules on your Kusto cluster(s), please make sure you reviewed [Kusto Access Control Overview](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/security.html) and [Role Based Authorization](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
-These articles will help you understand what Identity Providers are supported and recommended by Kusto for authentication, as well as how Role based authorization works in Kusto. 
+> [!IMPORTANT]
+> Before altering authorization rules on your Kusto cluster(s), please make sure you reviewed [Kusto Access Control Overview](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/security.html) and [Role Based Authorization](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+> These articles will help you understand what Identity Providers are supported and recommended by Kusto for authentication, as well as how Role based authorization works in Kusto. 
 
 
 ## List principals

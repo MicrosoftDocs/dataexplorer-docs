@@ -25,11 +25,10 @@ Takes an expression containing dynamic numerical array as input and applies an [
 * *b*: A constant expression containing the numerator coefficients of the filter (stored as a dynamic array of numeric values).
 * *a*: A constant expression, like *b*. Containing the denominator coefficients of the filter.
 
-**Important note**
+> [!IMPORTANT]
+> The first element of `a` (i.e. `a[0]`) mustn't be zero (to avoid division by 0; see the formula below).
 
-* The first element of *a* (i.e. `a[0]`) mustn’t be zero (to avoid division by 0; see the formula below).
-
-**More about the filter’s recursive formula**
+**More about the filter's recursive formula**
 
 * Given an input array X and coefficients arrays a, b of lengths n_a and n_b respectively, the transfer function of the filter, generating the output array Y, is defined by (see also in Wikipedia):
 

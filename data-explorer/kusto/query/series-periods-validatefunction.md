@@ -29,11 +29,12 @@ The function outputs 2 columns:
 * *x*: Dynamic array scalar expression which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [makelist](makelist-aggfunction.md) operators.
 * *period1*, *period2*, etc.: `real` numbers specifying the periods to validate, in units of the bin size. For example, if the series is in 1h bins, a weekly period is 168 bins.
 
-**Important notes**
-
-* The minimal value for each of the *period* arguments is **4** and the maximal is half of the length of the input series; for a *period* argument outside these bounds, the output score will be **0**.
-* The input time series must be regular, i.e. aggregated in constant bins (which is always the case if it has been created using [make-series](make-seriesoperator.md)). Otherwise, the output is meaningless.
-* The function accepts up to 16 periods to validate.
+> [!IMPORTANT]
+> * The minimal value for each of the *period* arguments is **4** and the maximal is half of the length of the input series; for a *period* argument outside these bounds, the output score will be **0**.
+>
+> * The input time series must be regular, i.e. aggregated in constant bins (which is always the case if it has been created using [make-series](make-seriesoperator.md)). Otherwise, the output is meaningless.
+> 
+> * The function accepts up to 16 periods to validate.
 
 
 **Example**
