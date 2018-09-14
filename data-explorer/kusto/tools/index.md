@@ -14,7 +14,7 @@ ms.date: 09/24/2018
 
 * [Kusto.Cli](./kusto-cli.md) - A command-line interface tool for querying and controlling Kusto
 * [Kusto.Explorer](./kusto-explorer.md) - The primary desktop tool for querying and controlling Kusto
-* [Kusto.WebExplorer (v2)](./kusto-webexplorervnext.md) - Web UX for querying Kusto
+* [Kusto.WebExplorer](./kusto-webexplorervnext.md) - Web UX for querying Kusto
 
 
 ## Visualizations, dashboards, and reporting tools

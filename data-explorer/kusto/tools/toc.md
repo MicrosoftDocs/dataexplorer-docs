@@ -3,7 +3,7 @@
 # Ad-hoc query
 ## [Kusto.Cli](kusto-cli.md)
 ## [Kusto.Explorer](kusto-explorer.md)
-## [Kusto.WebExplorer (v2)](kusto-webexplorervnext.md)
+## [Kusto.WebExplorer](kusto-webexplorervnext.md)
 
 
 

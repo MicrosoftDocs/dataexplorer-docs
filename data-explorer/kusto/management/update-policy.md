@@ -43,7 +43,7 @@ with the following columns:
 
 |EntityName        |Policies                                                                                                                                    |
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-|`[Kuskus].[Usage]`|`[{"IsEnabled": true, "Source": "KustoLogs","Query": "ExtractQueryUsage()","IsTransactional": false,"PropagateIngestionProperties": false}]`|
+|[Kuskus].[Usage]|[{"IsEnabled": true, "Source": "KustoLogs","Query": "ExtractQueryUsage()","IsTransactional": false,"PropagateIngestionProperties": false}]|
 
 ## .alter table TABLE policy update
 
@@ -131,7 +131,7 @@ command.
 
 **Example**
 
-``` 
+```kusto
 .alter-merge table DerivedTableX policy update 
 @'[{"IsEnabled": true, "Source": "MyTableY", "Query": "MyUpdateFunction()", "IsTransactional": false}]'  
 ``` 
