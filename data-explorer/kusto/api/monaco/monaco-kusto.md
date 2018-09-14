@@ -1,0 +1,19 @@
+---
+title: Monaco-kusto - Azure Kusto | Microsoft Docs
+description: This article describes Monaco-kusto in Azure Kusto.
+author: orspod
+ms.author: v-orspod
+ms.reviewer: mblythe
+ms.service: kusto
+ms.topic: reference
+ms.date: 09/24/2018
+---
+Monaco-kusto
+
+Monaco-kusto provides kusto language support for the [Monaco editor](https://microsoft.github.io/monaco-editor/) available on [GitHub](https://github.com/Azure/monaco-kusto) and on NPM.
+
+* [GitHub Repository](https://github.com/Azure/monaco-kusto)
+
+* [Setting up dev environment](https://github.com/Azure/monaco-kusto#setting-up-a-dev-environment)
+
+* [Usage](https://github.com/Azure/monaco-kusto#usage)

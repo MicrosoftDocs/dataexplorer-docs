@@ -45,11 +45,11 @@ JSON document that is the POST request body to provide request properties. Note 
 of the properties (such as the "client request ID", which is the correlation ID
 that the client provides to the service for identifying the request) can be provided
 in the HTTP header, and so can also be set if HTTP GET is used.
-See [the Kusto REST API request object](rest/request.md) for additional information.
+See [the Kusto REST API request object](../rest/request.md) for additional information.
 
 ## Providing values for query parametrization as request properties
 
-Kusto queries can refer to query parameters by using a specialized [declare query-parameters](../query/queryparametersstatement.md)
+Kusto queries can refer to query parameters by using a specialized [declare query-parameters](../../query/queryparametersstatement.md)
 statement in the query text. This allows client applications to parametrize Kusto queries
 based on user input in a secure manner (without fear of injection attacks.)
 

@@ -35,13 +35,13 @@ Implemented by [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-
 
 The following diagram outlines the Queued ingestion client interaction with Kusto:<BR>
 
-![alt text](images/queued-ingest.jpg "queued-ingest")
+![alt text](../images/queued-ingest.jpg "queued-ingest")
 
 ### Direct Ingestion
 Implemented by [KustoDirectIngestClient](kusto-ingest-client-reference.md#class-kustodirectingestclient), this mode forces direct interaction with the Kusto Engine service. In this mode Kusto Ingestion service plays no moderative or managerial role. Every ingestion request in Direct mode is eventually translated into `.ingest` command executed directly on Kusto Engine service.<BR>
 The following diagram outlines the Direct ingestion client interaction with Kusto:<BR>
 
-![alt text](images/direct-ingest.jpg "direct-ingest")
+![alt text](../images/direct-ingest.jpg "direct-ingest")
 
 >The Direct mode is not recommended for production grade ingestion solutions.
 
@@ -57,7 +57,7 @@ The following diagram outlines the Direct ingestion client interaction with Kust
 ## Ingestion Best Practices
 
 ### General
-[Ingestion best practices](../api/kusto-ingest-best-practices.md) provides COGs and throughput POV on ingestion.
+[Ingestion best practices](kusto-ingest-best-practices.md) provides COGs and throughput POV on ingestion.
 
 ### Thread Safety
 > Kusto Ingest Client implementations are thread-safe and intended to be reused. There is no need to create an instance of `KustoQueuedIngestClient` class for each or even several ingest operations. A single instance of `KustoQueuedIngestClient` is required per target Kusto cluster per user process. In fact, running multiple instances is counter productive and may DoS the Data Management cluster.
@@ -84,7 +84,7 @@ When using native ingestion, the data to be ingested is be uploaded (if not alre
 ### Data Ingestion REST APIs
 [Data Ingestion without Kusto.Ingest Library](kusto-ingest-client-rest.md) explains how to implement Queued Kusto ingestion utilizing Kusto REST APIs and without taking dependency on Kusto.Ingest library.
 
-## Changelog
+<#idfef MICROSOFT>## Changelog
 ```text
 Version 4.0.2-beta (05 AUG 2018)
 * Use priority ranked resources in ingest client

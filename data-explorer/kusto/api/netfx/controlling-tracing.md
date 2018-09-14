@@ -1,6 +1,6 @@
 ---
-title: Controlling or suppressing client library tracing - Azure Kusto | Microsoft Docs
-description: This article describes Controlling or suppressing client library tracing in Azure Kusto.
+title: Controlling or suppressing Kusto SDK client side tracing - Azure Kusto | Microsoft Docs
+description: This article describes Controlling or suppressing Kusto SDK client side tracing in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Controlling or suppressing client library tracing
+# Controlling or suppressing Kusto SDK client side tracing
 
 The Kusto Client Libraries use a common platform for tracing. The platform uses a large number
 of trace sources (`System.Diagnostics.TraceSource`), each connected to the default set of

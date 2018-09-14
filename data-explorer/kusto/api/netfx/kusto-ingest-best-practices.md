@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 # Kusto Ingest Client Library - Best Practices
 
 ## Choosing the right IngestClient flavor
-Using [KustoQueuedIngestClient](../api/kusto-ingest-client-reference.md#class-kustoqueuedingestclient) is the recommended native data ingestion mode. Here's why:
+Using [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient) is the recommended native data ingestion mode. Here's why:
 * Direct ingestion is impossible during Kusto Engine downtime (e.g. during deployment), while in the Queued ingestion mode the requests are persisted to Azure queue and the Data Management service will retry as needed.
 * Data Management service is responsible to not overload the engine with ingestion requests. Overriding this control (e.g. using Direct ingestion) might severely affect engine performance, both ingestion and query.
 * Data Management aggregates multiple ingestion requests to optimize the size of the initial shard (extent) to be created.
@@ -44,9 +44,10 @@ It is important to understand that the more chunks of data (files/blobs/streams)
 If you follow the following recommendations, you will be able to better control your Kusto ingestion costs:
 * **Prefer ingesting larger chunks of data (up to 1GB of uncompressed data)**<br>
     Many teams attempt to achieve low latency by ingesting tens of millions of tiny chunks of data, which is extremely inefficient and very costly.<br>
-    Any batching on the client side would help; if you are not sure what to do, ask [KustoDiscussions DL](mailto:KusTalk@microsoft.com) or contact our Ops team at [https://aka.ms/kustosupport](https://aka.ms/kustosupport).
+    Any batching on the client side would help. If you are not sure what to do, ask [KustoDiscussions DL](mailto:KusTalk@microsoft.com) or contact our Ops team at [https://aka.ms/kustosupport](https://aka.ms/kustosupport).
 * **Make sure you provide the Kusto.Ingest client with accurate uncompressed data size**<br>
-    Not doing so may cause Kusto to perform extra transactions.
+    Not doing so may cause Kusto to perform extra storage transactions.
 * **Avoid** sending data for ingestion with the `FlushImmediately` flag set to `true`, or sending small chunks with `ingest-by`/`drop-by` tags set.<br>
     Using these prevents the Kusto service from properly aggregating the data during ingestion, and causes unnecessary storage transactions following the ingestion, affecting COGS.<br>
     Moreover, using these excessively could result with degraded ingestion and/or query performance in your cluster.<br>
+    

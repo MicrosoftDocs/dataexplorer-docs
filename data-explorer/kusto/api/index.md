@@ -45,8 +45,8 @@ Please see [this page](tds/tds.md) for details.
 This is the recommended way to invoke Kusto functionality programmatically.
 A number of different libraries are provided:
 
-- [**Kusto.Data (Kusto Client Library)**](./using-the-kusto-client-library.md), which can be used to query data, query metadata, and alter it.
-- [**Kusto.Ingest (Kusto Ingestion Library)**](./kusto-ingest-client-library.md), which makes use of Kusto.Data and extends it to facilitate
+- [**Kusto.Data (Kusto Client Library)**](./netfx/about-kusto-data.md), which can be used to query data, query metadata, and alter it.
+- [**Kusto.Ingest (Kusto Ingestion Library)**](netfx/about-kusto-ingest.md), which makes use of Kusto.Data and extends it to facilitate
    data ingestion.
 
 
@@ -70,3 +70,7 @@ Kusto provides a Python client library that allows callers to send data queries 
 The Kusto .NET Framework Libraries can be used by PowerShell scripts.
 See [Calling Kusto from PowerShell](powershell/powershell.md) for an example.
 
+## IDE integration
+
+`monaco-kusto` package supports integrating with monaco-editor which is a web editor developed by microsoft, and the basis for vscode.
+see [monaco-kusto](monaco/monaco-kusto.md) for details.

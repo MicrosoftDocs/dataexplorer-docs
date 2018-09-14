@@ -1,6 +1,6 @@
 ---
-title: Kusto Python Client Library - Azure Kusto | Microsoft Docs
-description: This article describes Kusto Python Client Library in Azure Kusto.
+title: Kusto Python SDK - Azure Kusto | Microsoft Docs
+description: This article describes Kusto Python SDK in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Kusto Python Client Library
+# Kusto Python SDK
 
 ## Overview
 

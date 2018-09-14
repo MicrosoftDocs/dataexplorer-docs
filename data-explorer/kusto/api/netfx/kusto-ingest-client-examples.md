@@ -18,7 +18,7 @@ This is a collection of short code snippets demonstrating various techniques of 
 * [Kusto.Ingest Operation Status](kusto-ingest-client-errors.md)
 * [Kusto.Ingest Exceptions](kusto-ingest-client-errors.md)
 * [Kusto Connection Strings](https://kusdoc2.azurewebsites.net/docs/concepts/kusto-connection-strings.html)
-* [Kusto Authorization Model](../management/security-roles.md)
+* [Kusto Authorization Model](../../management/security-roles.md)
 
 
 ### Ingest from Azure Blob(s) using KustoQueuedIngestClient with (optional) RetryPolicy:

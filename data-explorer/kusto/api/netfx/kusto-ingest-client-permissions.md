@@ -14,17 +14,17 @@ This article explains what permissions need to be set up on your service in orde
 
 
 ## Prerequisites
-* This article instructs how to use [Kusto control commands](../management/security-roles.md) to view and modify authorization settings on Kusto services and databases
+* This article instructs how to use [Kusto control commands](../../management/security-roles.md) to view and modify authorization settings on Kusto services and databases
 * The following AAD Applications are used as sample principals in examples below:
-    * DataGrid AAD App (2a904276-1234-5678-9012-66fc53add60b)
-    * Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404)
+    * Test AAD App (2a904276-1234-5678-9012-66fc53add60b;microsoft.com)
+    * Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404;microsoft.com)
 
 ## Ingestion Permission Model for Queued Ingestion
 Implemented by [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient), this mode limits the client code dependency on the Kusto service. Ingestion is performed by posting a Kusto ingestion message to an Azure queue, which, in turn is acquired from Kusto Data Management (a.k.a. Ingestion) service. Any intermediate storage artifacts will be created by the ingest client using the resources allocated by Kusto Data Management service.<BR>
 
 The following diagram outlines the Queued ingestion client interaction with Kusto:<BR>
 
-![alt text](images/queued-ingest.jpg "queued-ingest")
+![alt text](../images/queued-ingest.jpg "queued-ingest")
 
 ### Permissions on the Engine Service
 In order to qualify for data ingestion into table `T1` on database `DB1` the principal performing the ingest operation must be authorized for that.
@@ -33,16 +33,14 @@ Minimal required permission levels are `Database Ingestor` that can also create 
 
 |Role |PrincipalType	|PrincipalDisplayName
 |--------|------------|------------
-|Database *** Ingestor |AAD Application |DataGrid (app id: 2a904276-1234-5678-9012-66fc53add60b)
-|Table *** Ingestor |AAD Application |DataGrid (app id: 2a904276-1234-5678-9012-66fc53add60b)
+|Database *** Ingestor |AAD Application |Test App (app id: 2a904276-1234-5678-9012-66fc53add60b)
+|Table *** Ingestor |AAD Application |Test App (app id: 2a904276-1234-5678-9012-66fc53add60b)
 
 >`Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404)` principal (Kusto internal Ingestion App) is immutably mapped to the `Cluster Admin` role and thus authorized to ingest data to any table (that is what's happening on Kusto-managed ingestion pipelines).
 
-Granting required permissions on database `DB1` or table `T1` to AAD App `DataGrid (76263cdb-1234-5678-9012-545644e9c404)` would look as follows (on the Engine cluster):
+Granting required permissions on database `DB1` or table `T1` to AAD App `Test App (2a904276-1234-5678-9012-66fc53add60b in AAD tenant microsoft.com)` would look as follows:
 ```kusto
-.add database DB1 ingestors ('aadapp=76263cdb-1234-5678-9012-545644e9c404') 'DataGrid AAD App'
-.add table T1 ingestors ('aadapp=76263cdb-1234-5678-9012-545644e9c404') 'DataGrid AAD App'
+.add database DB1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test AAD App'
+.add table T1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test AAD App'
 ```
 
-### Permissions on the Data Management Service
-In order for the `KustoQueuedIngestClient` to interact with the Data Management service, and be able to successfully ingest data, the principal running the client only needs to be properly authorized on the Engine service (no additional setup is required).

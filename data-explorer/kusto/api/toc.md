@@ -10,28 +10,29 @@
 
 # [MS SQL (TDS)](tds/tds.md)
 
-# .NET Framework Client Libraries
-## Overview
-### [Getting the Kusto client libraries](getting-the-kusto-client-libraries.md)
-### [Errors and Exceptions](errors-and-exceptions.md)
-### [Controlling Tracing](controlling-tracing.md)
-## [Kusto.Data](using-the-kusto-client-library.md)
-### [Request Properties and ClientRequestProperties](request-properties.md)
-## [Kusto.Ingest](kusto-ingest-client-library.md)
-### [Best Practices](kusto-ingest-best-practices.md)
-### [Permissions](kusto-ingest-client-permissions.md)
-### [Client Reference](kusto-ingest-client-reference.md)
-### [Operation Status](kusto-ingest-client-status.md)
-### [Exceptions](kusto-ingest-client-errors.md)
-### [Examples](kusto-ingest-client-examples.md)
-### [Queued ingestion example](kusto-ingest-queued-ingest-sample.md)
-### [REST API example](kusto-ingest-client-rest.md)
+# .NET SDK
+## General
+### [About the SDK](netfx/about-the-sdk.md)
+### [Controlling Tracing](netfx/controlling-tracing.md)
+
+## [Kusto.Data](netfx/about-kusto-data.md)
+### [Request Properties and ClientRequestProperties](netfx/request-properties.md)
+
+## [Kusto.Ingest](netfx/about-kusto-ingest.md)
+### [Permissions](netfx/kusto-ingest-client-permissions.md)
+### [Client Reference](netfx/kusto-ingest-client-reference.md)
+### [Exceptions](netfx/kusto-ingest-client-errors.md)
+### [Operation Status](netfx/kusto-ingest-client-status.md)
+### [Best Practices](netfx/kusto-ingest-best-practices.md)
+### [Code Samples](netfx/kusto-ingest-client-examples.md)
+### [HowTo: Data Ingestion](netfx/kusto-ingest-queued-ingest-sample.md)
+### [HowTo: Data Ingestion with REST API](netfx/kusto-ingest-client-rest.md)
 
 
-# Python Client Library
+# Python SDK
 ## [azure-kusto-python](python/kusto-python-client-library.md)
 
-# Java Client Library
+# Java SDK
 ## [azure-kusto-java](java/kusto-java-client-library.md)
 
 
@@ -39,3 +40,5 @@
 # PowerShell
 ## [Calling Kusto from PowerShell](powershell/powershell.md)
 
+# Monaco IDE integration
+## [monaco-kusto overview](monaco/monaco-kusto.md)

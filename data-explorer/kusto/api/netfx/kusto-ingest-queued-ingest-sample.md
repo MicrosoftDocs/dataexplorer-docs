@@ -38,7 +38,7 @@ using Kusto.Ingest;
 ## Code
 The code presented below performs the following:
 1. Creates a table on `KustoLab` shared Kusto cluster under `KustoIngestClientDemo` database
-2. Provisions a [JSON column mapping object](../management/tables.md#create-ingestion-mapping) on that table
+2. Provisions a [JSON column mapping object](../../management/tables.md#create-ingestion-mapping) on that table
 3. Creates a [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient) for the `Ingest-KustoLab` Data Management service
 4. Sets up [KustoQueuedIngestionProperties](kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) with appropriate ingestion options
 5. Creates a MemoryStream filled with some generated data to be ingested

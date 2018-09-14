@@ -18,8 +18,8 @@ This command returns a result set which includes all ingestion failures that wer
 *Notes*: 
 - Ingestion failures which are encountered during other parts of the ingestion flow (e.g. before data ingestion control commands
 are sent to Kusto's Data Engine service) will not appear in the result set of this command.
-- For monitoring failures which occur in flows that involve [queued ingestion](../api/kusto-ingest-client-library.md#queued-ingestion), it is recommended to follow
-[this guide](../api/kusto-ingest-client-status.md).
+- For monitoring failures which occur in flows that involve [queued ingestion](../api/netfx/about-kusto-ingest.md#queued-ingestion), it is recommended to follow
+[this guide](../api/netfx/kusto-ingest-client-status.md).
 
 **Syntax**
 

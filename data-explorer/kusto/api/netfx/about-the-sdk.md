@@ -1,6 +1,6 @@
 ---
-title: Getting the Kusto client libraries - Azure Kusto | Microsoft Docs
-description: This article describes Getting the Kusto client libraries in Azure Kusto.
+title: About Kusto .NET SDK - Azure Kusto | Microsoft Docs
+description: This article describes About Kusto .NET SDK in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,7 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Getting the Kusto client libraries
+# About Kusto .NET SDK
 
 ## The "official" NuGet feed
 
@@ -16,13 +16,15 @@ ms.date: 09/24/2018
 
 The Kusto client libraries are published as NuGet packages and can be found on [nuget.org](https://www.nuget.org/packages?q=kusto).
 
-The following packages are available at this feed:
+The following packages are available from this feed:
+
 
 |Package                     |Main assembly name|Runtime             |Description              |
 |----------------------------|------------------|--------------------|-------------------------|
-|Microsoft.Azure.Kusto.Client|Kusto.Data        |.NET Framework 4.5.1|Kusto Client Library.    |
+|Microsoft.Azure.Kusto.Data  |Kusto.Data        |.NET Framework 4.5.1|Kusto Client Library.    |
 |Microsoft.Azure.Kusto.Ingest|Kusto.Ingest      |.NET Framework 4.5.1|Kusto Ingestion Library. |
 |Microsoft.Azure.Kusto.Tools |                  |                    |Command-line tools.      |
+
 
 **Accessing the NuGet feed from Visual Studio**
 
