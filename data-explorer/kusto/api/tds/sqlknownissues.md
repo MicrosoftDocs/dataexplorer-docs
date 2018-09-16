@@ -1,6 +1,6 @@
 ---
-title: MS SQL compatibility known issues - Azure Kusto | Microsoft Docs
-description: This article describes MS SQL compatibility known issues in Azure Kusto.
+title: MS-TDS/T-SQL Differences between Kusto Microsoft SQL Server - Azure Kusto | Microsoft Docs
+description: This article describes MS-TDS/T-SQL Differences between Kusto Microsoft SQL Server in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,51 +8,63 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# MS SQL compatibility known issues
+# MS-TDS/T-SQL Differences between Kusto Microsoft SQL Server
 
-Below is partial list of the MS-SQL functionality that is NOT supported in Kusto.
+Below is partial list of the main differences between Kusto
+and SQL Server's implementation of T-SQL.
 
 ## CREATE, INSERT, DROP, ALTER statements
 
-Any data modifications are not allowed in Kusto.
+Kusto doesn't support schema modifications or data modifications through MS-TDS,
+nor does it support the above T-SQL statements.
 
 ## Correlated sub-queries
 
-Correlated subquries in SELECT, WHERE and JOIN clauses are not suppported.
+Kusto doesn't support correlated subquries in `SELECT`, `WHERE`, and `JOIN` clauses.
 
 ## Cursors
 
-SQL cursors are not supported.
+Kusto doesn't support SQL cursors.
 
-## Control of flow
+## Flow control
 
-Control of flow statements are not supported except limitted cases, like IF THEN ELSE clause with the same schema for THEN and ELSE batches.
+Kusto doesn't support flow control statements, except for a few limited cases,
+such as `IF` `THEN` `ELSE` clause that has the identical schema for the `THEN`
+and `ELSE` batches.
 
 ## Data types
 
-Depending on a query, the data may return in different type than in SQL server. This especially applicable to TINYINT adn SMALLINT types that do not have support in Kusto query language. Clients that expect byte or int16, may get int32 or int64 values.
+Depending on the query, the data returned may have a different type than in SQL Server.
+An obvious example here are types such as `TINYINT` and `SMALLINT` that have no
+equivalent in Kusto. Therefore, clients that expect a value of type `BYTE` or `INT16`
+might get an `INT32` or an `INT64` value instead.
 
-## Columns' order
+## Column order in results
 
-When asterix is used in SELECT, the order of tables may be different in Kusto. Client that use column names would work better in these cases.
-If there is no asterix character in SELECT, the column ordinals would be preserved.
+When asterix is used in the `SELECT` statement, the order of columns in each result set
+may differ between Kusto and SQL Server. Client that use column names would work better in these cases.
+If there is no asterix character in the `SELECT` statement, the column ordinals would be preserved.
 
-## Columns' names
+## Columns name in results
 
-In SQL, multiple columns may have the same name. This is not allowed in Kusto. In case of name collision, the names of the columns might be different in Kusto. However, the original name would be preserved, at least for one of colliding columns.
+In T-SQL, multiple columns may have the same name. This is not allowed in Kusto.
+In case of a collision in names, the names of the columns might be different in Kusto.
+However, the original name would be preserved, at least for one of the columns.
 
-## `ANY`, `ALL`, `EXIST` predicates
+## ANY, ALL, and EXISTS predicates
 
-ANY, ALL, and EXISTS predicates are not supported.
+Kusto doesn't support the predicates `ANY`, `ALL`, and `EXISTS`.
 
 ## Kusto stored functions 
 
-Kusto exposes stored functions as SQL views. However, it doesn't allow using parameters with stored functions. Stored function can also be referred as stored procedure (via EXEC), but also, parameters are not supported yet.
+Kusto exposes stored functions as SQL views.
+However, it doesn't allow using parameters with stored functions.
+Stored function can also be referred as stored procedure (via `EXEC`), but also, parameters are not supported yet.
 
 ## Recursive CTEs
 
-Recursive Common Table Expressions are not supported.
+Kusto doesn't support recursive common table expressions.
 
 ## Dynamic SQL
 
-Dynamic SQL statements are not supported.
+Kusto doesn't support dynamic SQL statements.

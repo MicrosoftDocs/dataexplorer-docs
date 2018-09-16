@@ -1,5 +1,9 @@
 # [Overview](index.md)
 
+## [Connection strings](./connection-strings/index.md)
+### [Kusto connection strings](./connection-strings/kusto.md)
+
+
 # [REST API](rest/index.md)
 ## [Authentication](rest/authentication.md)
 ## [HTTP Request](rest/request.md)
@@ -8,7 +12,10 @@
 ## [UI (Deep Links)](rest/deeplink.md)
 ## [Ping](rest/ping.md)
 
-# [MS SQL (TDS)](tds/tds.md)
+# [MS-TDS](tds/index.md)
+## [T-SQL](tds/t-sql.md)
+## [Clients](tds/clients.md)
+## [Known issues](tds/sqlknownissues.md)
 
 # .NET SDK
 ## General

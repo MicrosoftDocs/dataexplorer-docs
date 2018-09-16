@@ -1,6 +1,6 @@
 ---
-title: MS SQL (TDS) - Azure Kusto | Microsoft Docs
-description: This article describes MS SQL (TDS) in Azure Kusto.
+title: MS-TDS clients and Kusto - Azure Kusto | Microsoft Docs
+description: This article describes MS-TDS clients and Kusto in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,18 +8,7 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# MS SQL (TDS)
-
-Kusto supports the Microsoft SQL Server communication protocol (MS-TDS)
-and includes a limited support for running T-SQL queries. This allows users
-to run queries on Kusto using a well-known query syntax (T-SQL) and their
-familiar database client tools (e.g. LINQPad, sqlcmd, Tableau, Excel, Power BI, ...)
-
-## Known issues
-
-Kusto SQL emulation aims to reflect Kusto as SQL server. However, there are certain limitations that are result of Kusto being different in many aspects.
-
-Please see [this page](sqlknownissues.md) for details.
+# MS-TDS clients and Kusto
 
 ## .NET SQL client
 
@@ -49,7 +38,6 @@ Kusto supports authentication with already obtained access token:
         await connection.OpenAsync();
     }
 ```
-
 
 
 
@@ -109,3 +97,12 @@ Connect like you connect to SQL Azure Database.
 10. Click on your database. Click "New Query" option to open query window.
 11. Can execute custom SQL queries from the query window.
 
+
+
+## Sending T-SQL queries over the REST API
+
+The [Kusto REST API](../rest/index.md) can accept and execute T-SQL queries.
+To do this, send the request to the query endpoint with the `csl` property
+set to the text of the T-SQL query itself, and the
+[request property](../netfx/request-properties.md) `OptionQueryLanguage`
+set to the value `sql`.

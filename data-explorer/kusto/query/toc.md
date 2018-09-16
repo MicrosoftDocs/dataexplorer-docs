@@ -239,7 +239,8 @@
 ## [reverse()](reversefunction.md)
 ## [round()](roundfunction.md)
 ## [series_add()](series-addfunction.md)
-<!--## [series-decompose()](series-decomposefunction.md)-->
+<!--## [series_decompose()](series-decomposefunction.md)-->
+<!--## [series_decompose_anomalies()](series-decompose-anomaliesfunction.md)-->
 ## [series_divide()](series-dividefunction.md)
 ## [series_equals()](series-equalsfunction.md)
 ## [series_fill_backward()](series-fill-backwardfunction.md)
@@ -354,7 +355,8 @@
 ## [time series analysis](machine-learning-and-tsa.md)
 ### [make-series operator](make-seriesoperator.md)
 ### [series_add()](series-addfunction.md)
-<!--### [series-decompose()](series-decomposefunction.md)-->
+<!--### [series_decompose()](series-decomposefunction.md)-->
+<!--### [series_decompose_anomalies()](series-decompose-anomaliesfunction.md)-->
 ### [series_divide()](series-dividefunction.md)
 ### [series_equals()](series-equalsfunction.md)
 ### [series_fill_backward()](series-fill-backwardfunction.md)

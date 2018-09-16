@@ -14,7 +14,7 @@ Every Kusto query operates in the context of the current cluster and the default
 * In [Kusto Explorer](../tools/kusto-explorer.md) the default database is the one selected in the [Connections Panel](../tools/kusto-explorer.md#connections-panel) and the current cluster is the connection containing it
 * In [Kusto.Cli](../tools/kusto-cli.md) the current cluster is specified by `ConnectionString` command-line argument and the default database is established by `dbcontext` command 
 * When using [Kusto Client Library](../api/netfx/about-kusto-data.md) the current cluster and the default database are specified by the `Data Source` and `Initial Catalog` properties of 
-  the [Kusto Connection String](https://kusdoc2.azurewebsites.net/docs/concepts/kusto-connection-strings.html) respectively.
+  the [Kusto connection strings](../api/connection-strings/kusto.md) respectively.
 
 ## Queries
 To access tables from any database other than the default the *qualified name* syntax must be used:

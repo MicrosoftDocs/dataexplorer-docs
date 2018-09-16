@@ -34,7 +34,7 @@ NuGet package [here](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/
 
 Kusto.Cli requires at least one command-line argument to run. Usually, that argument
 is the connection string to the Kusto cluster that the tool should connect to;
-see [Kusto Connection Strings](https://kusdoc2.azurewebsites.net/docs/concepts/kusto-connection-strings.html). Running
+see [Kusto connection strings](../api/connection-strings/kusto.md). Running
 the tool with no command-line arguments, or with an unknown set of arguments, or with 
 the `/help` switch, results in a help message being emitted to the console.
 

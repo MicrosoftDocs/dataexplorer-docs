@@ -10,6 +10,26 @@ ms.date: 09/24/2018
 ---
 # Kusto API Overview
 
+The Kusto cloud service supports the following communication endpoints:
+
+1. A [REST API](#rest-api) endpoint, through which one can query the data in Kusto and manage it.
+   This endpoint supports the [Kusto query language](../query/index.md) for queries
+   and the [Kusto management language](../management/index.md) for control
+   commands.
+2. A [MS-TDS](#ms-tds) endpoint, which implements a subset of the Microsoft
+   Tabular Data Stream (TDS) protocol, used by the Microsoft SQL Server products.
+   This endpoint is primarily useful for existing tools that know how to communicate
+   with a SQL Server endpoint for queries.
+3. An Azure Resource Management (ARM) endpoint, which is the standard means for
+   Azure services to manage resources such as Kusto clusters.
+
+Kusto provides a number of client libraries that make use of the
+endpoints above to make programmatic access easy:
+
+1. .NET Framework Libraries
+2. Python
+3. PowerShell
+
 ## REST API
 
 The primary means of communicating with any Kusto service
@@ -30,7 +50,7 @@ REST API, the Kusto team also provides and supports a number of
 client libraries, to make it easier for callers to use the service
 without dealing with the details of the REST API protocol.
 
-## MS SQL (TDS)
+## MS-TDS
 
 As an alternative means of connecting to Kusto and querying its data, Kusto
 supports the Microsoft SQL Server communication protocol (MS-TDS)
@@ -38,7 +58,7 @@ and includes a limited support for running T-SQL queries. This allows users
 to run queries on Kusto using a well-known query syntax (T-SQL) and their
 familiar database client tools (e.g. LINQPad, sqlcmd, Tableau, Excel, Power BI, ...)
 
-Please see [this page](tds/tds.md) for details.
+Please see [this page](tds/index.md) for details.
 
 ## .NET Framework Libraries
 

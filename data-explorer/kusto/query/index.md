@@ -26,7 +26,7 @@ The syntax of the tabular expression statement has tabular data flow from one
 tabular query operator to another, starting with data source (e.g. a table
 in a database, or an operator that produces data) and then flowing through
 a set of data transformation operators that are bound together through the
-use of the pipe (`|`) delimeter.
+use of the pipe (`|`) delimiter.
 
 For example, the following Kusto query has a single statement, which is a
 tabular expression statement. The statement starts with a reference to a table
