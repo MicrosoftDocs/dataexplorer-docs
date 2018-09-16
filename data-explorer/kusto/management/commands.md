@@ -23,30 +23,31 @@ Currently only some of the Admin commands are covered by the Commands table (.in
 **Syntax**
 
 `.show` `commands`
-
  
 **Example**
  
 |ClientActivityId |CommandType |Text |Database |StartedOn |LastUpdatedOn |Duration |State |RootActivityId |User |FailureReason |Application |Principal |TotalCpu |ResourceUtilization
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
-|KD2RunCommand;a069f9e3-6062-4a0e-aa82-75a1b5e16fb4	|ExtentsMerge	|.merge async Operations ...    |$systemdb	|2017-09-05 11:08:07.5738569	|2017-09-05 11:08:09.1051161	|00:00:01.5312592	|Completed	|b965d809-3f3e-4f44-bd2b-5e1f49ac46c5	|AAD app id=76263cdb-2183-4596-8949-545644e9c404	|	|Kusto.Azure.DM.Svc	|aadapp=76263cdb-2183-4596-8949-545644e9c404	|00:00:03.5781250   |{ "ScannedExtentsStatistics": {    "MinDataScannedTime": null,    "MaxDataScannedTime": null  },  "CacheStatistics": {    Memory": {      "Misses": 2,      "Hits": 20    },    "Disk": {      "Misses": 2,      "Hits": 0    }  },  "MemoryPeak": 159620640,  "TotalCpu": "00:00:03.5781250" } 
-|KE.RunCommand;710e08ca-2cd3-4d2d-b7bd-2738d335aa50	|DataIngestPull	|.ingest into MyTableName ...   |TestDB	|2017-09-04 16:00:37.0915452	|2017-09-04 16:04:37.2834555	|00:04:00.1919103	|Failed	|a9b14ece-7b2b-486b-852e-e8aacc50b604	|tomersch@microsoft.com	|The socket connection has been disposed.	|Kusto.Explorer	|aaduser=...	|00:00:00	|{ "ScannedExtentsStatistics": {    "MinDataScannedTime": null,    "MaxDataScannedTime": null  },  "CacheStatistics": {    "Memory": {      "Misses": 0,      Hits": 0    },    "Disk": {      "Misses": 0,      "Hits": 0    }  },  "MemoryPeak": 0,  "TotalCpu": "00:00:00"} 
-|KD2RunCommand;97db47e6-93e2-4306-8b7d-670f2c3307ff	|ExtentsRebuild	|.merge async Operations ...    |$systemdb	|2017-09-18 13:29:38.5945531	|2017-09-18 13:29:39.9451163	|00:00:01.3505632	|Completed	|d5ebb755-d5df-4e94-b240-9accdf06c2d1	|AAD app id=76263cdb-2183-4596-8949-545644e9c404	|	|Kusto.Azure.DM.Svc	|aadapp=76263cdb-2183-4596-8949-545644e9c404	|00:00:00.8906250	|{ "ScannedExtentsStatistics": {    "MinDataScannedTime": null,    "MaxDataScannedTime": null  },  "CacheStatistics": {    Memory": {      "Misses": 0,      "Hits": 1    },    "Disk": {      "Misses": 0,      "Hits": 0    }  },  "MemoryPeak": 88828560,  "TotalCpu": "00:00:00.8906250"} 
+|KD2RunCommand;a069f9e3-6062-4a0e-aa82-75a1b5e16fb4	|ExtentsMerge	|.merge async Operations ...    |DB1	|2017-09-05 11:08:07.5738569	|2017-09-05 11:08:09.1051161	|00:00:01.5312592	|Completed	|b965d809-3f3e-4f44-bd2b-5e1f49ac46c5	|AAD app id=5ba8cec2-9a70-e92c98cad651	|	|Kusto.Azure.DM.Svc	|aadapp=5ba8cec2-9a70-e92c98cad651	|00:00:03.5781250   |{ "ScannedExtentsStatistics": {    "MinDataScannedTime": null,    "MaxDataScannedTime": null  },  "CacheStatistics": {    Memory": {      "Misses": 2,      "Hits": 20    },    "Disk": {      "Misses": 2,      "Hits": 0    }  },  "MemoryPeak": 159620640,  "TotalCpu": "00:00:03.5781250" } 
+|KE.RunCommand;710e08ca-2cd3-4d2d-b7bd-2738d335aa50	|DataIngestPull	|.ingest into MyTableName ...   |TestDB	|2017-09-04 16:00:37.0915452	|2017-09-04 16:04:37.2834555	|00:04:00.1919103	|Failed	|a8986e9e-943f-81b0270d6fae4	|cooper@fabrikam.com	|The socket connection has been disposed.	|Kusto.Explorer	|aaduser=...	|00:00:00	|{ "ScannedExtentsStatistics": {    "MinDataScannedTime": null,    "MaxDataScannedTime": null  },  "CacheStatistics": {    "Memory": {      "Misses": 0,      Hits": 0    },    "Disk": {      "Misses": 0,      "Hits": 0    }  },  "MemoryPeak": 0,  "TotalCpu": "00:00:00"} 
+|KD2RunCommand;97db47e6-93e2-4306-8b7d-670f2c3307ff	|ExtentsRebuild	|.merge async Operations ...    |DB2	|2017-09-18 13:29:38.5945531	|2017-09-18 13:29:39.9451163	|00:00:01.3505632	|Completed	|d5ebb755-d5df-4e94-b240-9accdf06c2d1	|AAD app id=5ba8cec2-9a70-e92c98cad651	|	|Kusto.Azure.DM.Svc	|aadapp=5ba8cec2-9a70-e92c98cad651	|00:00:00.8906250	|{ "ScannedExtentsStatistics": {    "MinDataScannedTime": null,    "MaxDataScannedTime": null  },  "CacheStatistics": {    Memory": {      "Misses": 0,      "Hits": 1    },    "Disk": {      "Misses": 0,      "Hits": 0    }  },  "MemoryPeak": 88828560,  "TotalCpu": "00:00:00.8906250"} 
 
 
 **An example for extracting specific data out of the ResourceUtilization column**
 
-accessing one of the properties within the ResourceUtilization column, is done by calling ResourcesUtilization.xxx (where xxx is the property name).
-Note that the ResourceUtilization is a dynamic column, and hence in order to work with its values, one should first convert it into a specific data type (using a convertion function such as: tolong, toint, totimespan, ...).
-For instance:
+Accessing one of the properties within the ResourceUtilization column, is done by calling ResourcesUtilization.xxx (where xxx is the property name).
+Note that the ResourceUtilization is a dynamic column, and hence in order to work with its values, one should first convert it into a specific data type (using a convertion function such as: tolong, toint, totimespan, ...).  
 
+For example:
+
+```kusto
 .show commands
 | where CommandType == "TableAppend"
 | where StartedOn > ago(1h)
 | extend MemoryPeak = tolong(ResourcesUtilization.MemoryPeak)
 | top 3 by MemoryPeak desc
 | project StartedOn, MemoryPeak, TotalCpu, Text
-
+```
 
 |StartedOn |MemoryPeak |TotalCpu |Text
 |--|--|--|--
@@ -79,6 +80,7 @@ All queries in the last 10 hours which their TotalCpu has crossed the 3 minutes:
 ```
 
 All queries in the last 24 hours which their TotalCpu was above 5 minutes, grouped by User and Principal:
+
 ```kusto
 .show commands  
 | where StartedOn > ago(24h)

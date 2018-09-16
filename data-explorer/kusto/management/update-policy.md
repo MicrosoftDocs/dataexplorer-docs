@@ -14,7 +14,7 @@ The [update policy](https://kusdoc2.azurewebsites.net/docs/concepts/updatepolicy
 is a table-level policy object to automatically
 run a query and ingest its results when data is ingested into another table.
 
-## .show table TABLE policy update
+## Show update policy
 
 This command returns the update policy of the specified table,
 or all tables in the default database if `*` is used as a table name.
@@ -38,14 +38,14 @@ with the following columns:
 **Example**
 
 ```kusto
-.show table Kuskus.Usage policy update 
+.show table DerivedTableX policy update 
 ```
 
 |EntityName        |Policies                                                                                                                                    |
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-|[Kuskus].[Usage]|[{"IsEnabled": true, "Source": "KustoLogs","Query": "ExtractQueryUsage()","IsTransactional": false,"PropagateIngestionProperties": false}]|
+|[TestDB].[DerivedTableX]|[{"IsEnabled": true, "Source": "MyTableX","Query": "MyUpdateFunction()","IsTransactional": false,"PropagateIngestionProperties": false}]|
 
-## .alter table TABLE policy update
+## Alter update policy
 
 This command sets the update policy of the specified table.
 
@@ -73,7 +73,7 @@ This command sets the update policy of the specified table.
 **Returns**
 
 The command sets the table's update policy object (overriding any current
-policy defined, if any) and then returns the output of the corresponding [.show table TABLE update policy](#show-table-table-policy-update)
+policy defined, if any) and then returns the output of the corresponding [.show table TABLE update policy](#show-update-policy)
 command.
 
 **Example**
@@ -126,7 +126,7 @@ This command modifies the update policy of the specified table.
 **Returns**
 
 The command appends to the table's update policy object (overriding any current
-policy defined, if any) and then returns the output of the corresponding [.show table TABLE update policy](#show-table-table-policy-update)
+policy defined, if any) and then returns the output of the corresponding [.show table TABLE update policy](#show-update-policy)
 command.
 
 **Example**
@@ -148,11 +148,11 @@ Deletes the update policy of the specified table.
 **Returns**
 
 The command deletes the table's update policy object and then returns 
-the output of the corresponding [.show table TABLE update policy](#show-table-table-policy-update)
+the output of the corresponding [.show table TABLE update policy](#show-update-policy)
 command.
 
 **Example**
 
 ```kusto
-.delete table Kuskus.Usage policy update 
+.delete table DerivedTableX policy update 
 ```

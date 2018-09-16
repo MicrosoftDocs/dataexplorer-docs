@@ -133,7 +133,7 @@ Returns a table with all administrative operations since the new Admin node was 
  
 |Output parameter |Type |Description 
 |---|---|---
-|Id |String |Operation Identifier. This parameter can be used to query Kuskus (Kusto-on-Kusto) as RootActivityId to observe the whole flow. 
+|Id |String |Operation Identifier. 
 |Operation |String |Admin command alias 
 |NodeId |String |If the command has a remote execution (e.g. DataIngestPull) - NodeId will contain the id of the executing remote node 
 |StartedOn |DateTime |Date/time (in UTC) when the operation has started 

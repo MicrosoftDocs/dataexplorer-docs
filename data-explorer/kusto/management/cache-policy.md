@@ -10,18 +10,7 @@ ms.date: 09/24/2018
 ---
 # Cache policy
 
-The [cache policy](https://kusdoc2.azurewebsites.net/docs/concepts/cachepolicy.html) is a policy object that determines
-which data should be preferred when caching data on local SSD. Such data is called "hot".
-
-The policy can be set to `null`, in which case all the data will be considered as viable
-for caching on SSD (of course, if the total amount of SSD is smaller than that of hot data,
-the cache might need to evict data constantly.)
-
-When setting the hot data in the cache policy to a specific period, the data is kept
-on the cluster's machine SSDs only for that period, and the rest of the data
-(up to the period that is defined as `SoftDeletePeriod` in the [retention policy](https://kusdoc2.azurewebsites.net/docs/concepts/retentionpolicy.html))
-is kept in Azure blob storage. To be clear, **all** the data in the period that
-is specified in the soft retention period is available for querying. 
+This article describes commands used for creation and altering [cache policy](https://kusdoc2.azurewebsites.net/docs/concepts/cachepolicy.html) 
 
 ## Displaying the cache policy
 
@@ -37,7 +26,7 @@ commands:
 .alter <entity_type> <database_or_table_name> policy caching hot = <timespan>
 ```
 
-Altering policy of Caching for multiple tables (in the same database context):
+Altering cache policy for multiple tables (in the same database context):
 
 ```kusto
 .alter tables (table_name [, ...]) policy caching hot = <timespan>
@@ -69,13 +58,13 @@ Cache policy:
 
 **Examples**
 
-Show policy of caching for table `MyTable` in database `MyDatabase`:
+Show cache policy for table `MyTable` in database `MyDatabase`:
 
 ```kusto
 .show table MyDatabase.MyTable policy caching 
 ```
 
-Setting policy of caching of table `MyTable` (in database context) to 3 days:
+Setting cache policy of table `MyTable` (in database context) to 3 days:
 
 ```kusto
 .alter table MyTable policy caching hot = 3d

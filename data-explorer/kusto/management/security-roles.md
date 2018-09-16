@@ -34,15 +34,13 @@ Example result:
 
 |Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN 
 |---|---|---|---|---
-|Database Apsty Admin |AAD User |Ido Eynath |a8e71651-8885-f31be58ba189 |aaduser=iduipn@fabrikam.com 
-|Database Apsty User |AAD User |Liron Eizenman |94752274-4314-ff226ac7ef3a |aaduser=fabdev01@fabrikam.com 
-|Database Apsty Viewer |AAD User |ido | |aaduser=idoein@fabrikam.com
+|Cluster User |AAD User |Julia Ilyana |6dbe4cc3-dbe0-76946a820502 |aaduser=jil@fabrikam.com
+|Cluster User |AAD User |Mike White |48476cb0-ce38-57ee135b1fdf |aaduser=mike@fabrikam.com 
+|Cluster User |AAD Group |Fabrikam: All Staff |ddd441d-b5a1-8e200fc7409e |aadgroup=dd5a7f9f-b5a1-8e200fc7409e 
+|Cluster Admin |AAD User |Mike White |48476cb0-ce38-57ee135b1fdf |aaduser=mikeoein@fabrikam.com 
+|Database Apsty Admin |AAD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com 
 
-## Managing database principals
-
-These commands modify the lists of role access principals of a database: 
-
-### Adding one or more principals
+## Adding one or more principals
 
 ```kusto
 .add database database_name admins (Principal ,...) ['Description'] 
@@ -56,7 +54,7 @@ These commands modify the lists of role access principals of a database:
 .add database database_name monitors (Principal ,...) ['Description']
 ```
 
-### Removing one or more principals
+## Removing one or more principals
 
 ```kusto
 .drop database <DatabaseName> admins (Principal, ...) 
@@ -100,10 +98,10 @@ These commands modify the lists of role access principals of a database:
 **Examples**
 
 ```kusto
-.add database Test users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
+.add database Test users ('aaduser=imike@fabrikam.com') 'Test user (AAD)'
 .add database Test users ('aadgroup=<SG display name or SG group ID or SG Display name>') 'Test group (AAD)'
 .add database Test users ('aadapp=<App display name or App ID>') 'Test app (AAD)'
-.add database Test users ('dstsuser=imikeoein@fabrikam.com ') 'Test user (dSTS)'
+.add database Test users ('dstsuser=imike@fabrikam.com ') 'Test user (dSTS)'
 ```
 
 ## List cluster principals
@@ -119,7 +117,7 @@ Example result:
 |Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN 
 |---|---|---|---|---
 |Cluster Admin |AAD User |Julia Ilyana |94752274-2397-bf226ac7ef3a |aaduser=sigwjs@fabrikam.com 
-|Cluster Admin |AAD User |Mike Senior |a8e71651-8e89-931be58ba189 |aaduser=imikeoein@fabrikam.com 
+|Cluster Admin |AAD User |Mike Senior |48476cb0-ce38-41b1-b646-57ee135b1fdf |aaduser=imike@fabrikam.com 
 |Cluster Admin |AAD Group |Fabrikam: All Staff |ddd4410-b5a1-8e200fc7409e |aadgroup=dd5a7f9f-b5a1-8e200fc7409e 
 |Cluster Admin |AAD User |Mike Senior |a8e71651-8e89-f31be58ba189 |aaduser=mikeoein@fabrikam.com 
 
@@ -182,7 +180,7 @@ principal kind, and principal identity (see below for the syntax).
 **Examples**
 
 ```kusto
-.add cluster admins ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
+.add cluster admins ('aaduser=imike@fabrikam.com') 'Test user (AAD)'
 .add cluster admins ('aadgroup=<SG display name or SG group ID or SG Display name>') 'Test group (AAD)'
 .add cluster admins ('aadapp=<App display name or App ID>') 'Test app (AAD)'
 ```
@@ -229,7 +227,7 @@ These commands modify the lists of role access principals of a table (only "Admi
 **Example**
 
 ```kusto
-.add table Test admins ('aaduser=imikeoein@fabrikam.com ')
+.add table Test admins ('aaduser=imike@fabrikam.com ')
 ```
 
 ## Manage function principals
@@ -267,7 +265,7 @@ These commands modify the lists of role access principals of a function:
 **Example**
 
 ```kusto
-.add function MyFunction admins ('aaduser=imikeoein@fabrikam.com ')
+.add function MyFunction admins ('aaduser=imike@fabrikam.com ')
 ```
 
 ## List user roles
@@ -286,6 +284,6 @@ Required permissions: cluster user.
 **Examples**
 
 ```kusto
-.show principal "aaduser=imikeoein@fabrikam.com" roles
+.show principal "aaduser=imike@fabrikam.com" roles
 ```
 

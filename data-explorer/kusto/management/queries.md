@@ -29,13 +29,12 @@ by the user, or by another user, or by all users.
 
 **Syntax**
 
-1. `.show` `running` `queries`
-2. `.show` `running` `queries` `by` `user` *User*
-3. `.show` `running` `queries` `by` `*`
+```kusto
+.show running queries
+```
 
-(1) returns the currently-executing queries by the invoking user (requires read access). 
-(2) returns the currently-executing queries by the specified user (requires cluster admin access).
-(3) returns the currently-executing queries by all users (requires cluster admin access).
+* (1) returns the currently-executing queries by the invoking user (requires read access).
+
 
 ## .cancel query
 

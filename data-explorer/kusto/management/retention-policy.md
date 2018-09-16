@@ -10,13 +10,52 @@ ms.date: 09/24/2018
 ---
 # Retention policy
 
+This article describes control commands used for creating and altering [retention policy](https://kusdoc2.azurewebsites.net/docs/concepts/retentionpolicy.html).
+
+## Show retention policy
+
 ```kusto
 .show <entity_type> <database_or_table> policy retention
 
 .show <entity_type> *  policy retention
+```
 
-.delete <entity_type> <database_or_table> policy retention
+* `entity_type` : table or database
+* `database_or_table`: `database_name` or `database_name.table_name` or `table_name` (in database context)
 
+**Example**
+
+Show the retention policy for the database named `MyDatabase`:
+
+```kusto
+.show database MyDatabase policy retention
+```
+
+## Delete retention policy
+
+Deleting data retention policy is affectively setting unlimitted data retention.
+
+Dropping table data retention policy will cause table to derive retetion policy from database level.
+
+```kusto
+.drop <entity_type> <database_or_table> policy retention
+```
+
+* `entity_type` : table or database
+* `database_or_table`: `database_name` or `database_name.table_name` or `table_name` (in database context)
+
+**Example**
+
+Drop the retention policy for the table named `MyTable1`:
+
+```kusto
+.drop table MyTable policy retention
+```
+
+
+## Alter retention policy
+
+```kusto
 .alter <entity_type> <database_or_table> policy retention <retention_policy>
 
 .alter tables (<table_name> [, ...]) policy retention <retention_policy>
@@ -36,8 +75,6 @@ ms.date: 09/24/2018
         \"SoftDeletePeriod\": \"10.00:00:00\", 
         \"HardDeletePeriod\": \"30.00:00:00\", 
         \"ContainerRecyclingPeriod\": \"1.00:00:00\" 
-        \"ExtentsDataSizeLimitInBytes\": 0,
-        \"OriginalDataSizeLimitInBytes\": 0
     }" 
 ```
 
@@ -49,41 +86,28 @@ Show the retention policy for the database named `MyDatabase`:
 .show database MyDatabase policy retention
 ```
 
-Sets a retention policy with a 10 day soft-delete period and a 30 day hard-delete period:
+Sets a retention policy with a 10 day soft-delete period:
 
 ```kusto
-.alter-merge table Table1 policy retention softdelete = 10d harddelete = 30d
+.alter-merge table Table1 policy retention softdelete = 10d
 ```
 
-Sets the soft-delete period to 20 days. hard-delete is (implicitly) set to 27d:
+Sets a retention policy with a 10 day soft-delete period:
 
 ```kusto
-.alter-merge table Table1 policy retention softdelete = 20d
-```
-
-Sets the hard-delete period to 30 days:
-
-```kusto
-.alter-merge table Table1 policy retention harddelete = 30d
-```
-
-Sets a retention policy with a 10 day soft-delete period and a 30 day hard-delete period:
-
-```kusto
-.alter table Table1 policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\", \"HardDeletePeriod\": \"30.00:00:00\"}"
+.alter table Table1 policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\"}"
 ```
 
 Sets the same retention policy as above, but this time for multiple tables (Table1, Table2 and Table3):
 
 ```kusto
-.alter tables (Table1, Table2, Table3) policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\", \"HardDeletePeriod\": \"30.00:00:00\"}"
+.alter tables (Table1, Table2, Table3) policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\"}"
 ```
 
 Sets a retention policy with a 10 GB data size limit on the extents size:
 
 ```kusto
 .alter table Table1 policy retention "{\"ExtentsDataSizeLimitInBytes\": 10737418240}"
-
 ```
 
 Sets a retention policy with a 10 GB data size limit on the original size:
@@ -92,7 +116,7 @@ Sets a retention policy with a 10 GB data size limit on the original size:
 .alter table Table1 policy retention "{\"OriginalDataSizeLimitInBytes\": 107374182400}"
 ```
 
-Sets a retention policy with the default values: 100 years as the soft-delete period, and 100 years and 7 days as the hard-delete period:
+Sets a retention policy with the default values: 100 years as the soft-delete period:
 
 ```kusto
 .alter table Table1 policy retention "{}"

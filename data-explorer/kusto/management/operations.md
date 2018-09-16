@@ -28,7 +28,7 @@ ms.date: 09/24/2018
  
 |Output parameter |Type |Description 
 |---|---|---
-|Id |String |Operation Identifier. This parameter can be used to query Kuskus (Kusto-on-Kusto) as RootActivityId to observe the entire flow 
+|Id |String |Operation Identifier.
 |Operation |String |Admin command alias 
 |NodeId |String |If the command has a remote execution (e.g. DataIngestPull) - NodeId will contain the id of the executing remote node 
 |StartedOn |DateTime |Date/time (in UTC) when the operation has started 

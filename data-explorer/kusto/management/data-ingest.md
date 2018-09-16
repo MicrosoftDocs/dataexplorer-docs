@@ -13,7 +13,8 @@ ms.date: 09/24/2018
 Data ingestion is the process by which data records from one or more data sources
 are appended to a Kusto table.
 
-This page discusses data ingestion commands: The `.ingest` control command
+This page discusses data ingestion commands:  
+The `.ingest` control command
 (which has several variants, as discussed below), as well as the `.set`,
 `.append`, and `.set-or-append` commands. There are other options for data ingestion,
 such as data ingestion through a dedicated REST API (streaming ingestion)
@@ -207,12 +208,11 @@ Tips: You can use [getschema](../query/getschemaoperator.md) operator on the tar
 
 **Examples** 
 
-Create a new table called "RecentErrors" in the current database that has the same schema as "KustoLogs" 
-and holds all the error records of the last hour:
+Create a new table called "RecentErrors" in the current database that has the same schema as "LogsTable" and holds all the error records of the last hour:
 
 ```kusto
 .set RecentErrors <| 
-   KustoLogs 
+   LogsTable
    | where Level == "Error" and Timestamp > now() - time(1h)
 ```
 
@@ -279,45 +279,3 @@ Returns information on the extent/s created as a result of the `.set` or `.appen
 |--|--|--|--|--|--|
 |23a05ed6-376d-4119-b1fc-6493bcb05563 |1291 |5882 |1568 |4314 |10 |
 
-## Duplicate next ingestion
-
-**Syntax**
-
-`.dup-next-ingest` `into` *TableName* `to` *h@'Path to Azure blob container'* 
-
-`.dup-next-failed-ingest` `into` *TableName* `to` *h@'Path to Azure blob container'* 
-
-
-The command is meant for on-demand troubleshooting the data ingestion 'pull' flow.
-
-Invoking the command causes the next (and only the next) data-pull ingestion into the specified table to be *duplicated* to the specified storage container.
-* *duplicate* - upload the source files which were successfully downloaded, and an additional file containing metadata on the ingestion request.
-* `.dup-next-ingest` duplicates the next ingestion regardless of its outcome, while `dup-next-failed-ingest` duplicates the next ingestion only in case of failure.
-
-**Notes**
-
-- The command requires `ClusterAdmin` permissions
-- The command runs in the context of a specific database.
-- All file uploads to the target storage container are done by the node doing the actual downloads and ingestion.
-- The "duplication configuration" is not persisted, and is gone upon admin node changes (which would require re-running the command).
-- Only azure blob containers are currently supported.
-
-**Result**
-
-|Output parameter         |Type   |Description                                                                                                                                                            |
-|-------------------------|-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
-|TableName                |String | The name of the table which the next ingestion to will be duplicated.                                                                                                 |
-|StorageContainerPath     |String | The path to the storage container to which the next ingestion will be duplicated to (source files and a file with the ingestion file request will be uploaded to it). |
-|IngestionCommandFilePath |String | The path to file with the ingestion file request within the storage container.                                                                                        |
-
-**Example** 
-
-```kusto
-.dup-next-ingest into PerfCounter to h@'https://kustorenginsomecluster.blob.core.windows.net/ingestion-duplication-perf-counter;storagekey...==' 
-```
-
-**Example Result**
-
-|TableName   |StorageContainerPath                                                                    |IngestionCommandFilePath                                                   |
-|------------|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-|PerfCounter |https://kustorenginsomecluster.blob.core.windows.net/ingestion-duplication-perf-counter | ingestionrequest-KustoEH-PerfCounter-083736db-8cf7-4166-85fd-74ef54e491d1 |
