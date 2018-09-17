@@ -22,7 +22,6 @@ Common scenarios for using Azure Kusto Flow include:
 
 ## Limitations
 
-> Note: 
 1. Azure Kusto Flow results returned to the client are limited to 500,000 records and the overall memory for those records cannot exceed 64 MB, and 7 minutes execution time.
 2. Currently the connector does not support the [fork](../query/forkoperator.md) and [facet](../query/facetoperator.md) operators.
 3. Flow works best on Internet Explorer and Chrome.

@@ -82,7 +82,7 @@ Kusto.Explorer menu has several areas:
 
 |Menu|Behavior|
 |----|----------|
-|Add gourp|Adds a new Kusto Server group| 
+|Add group|Adds a new Kusto Server group| 
 |Rename group|Renames the existing Kusto Server group|
 |Remove group|Removes the existing  Kusto Server group|
 |Import connections|Imports connections from a file specifying connections|
@@ -161,7 +161,7 @@ To produce that in Kusto.Explorer, you should summarize by the time field and sp
 |Decrease Font  | Decreases fonts of the query tab and of the results data grid| 
 |Reset View     | Resets data view settings (*)|
 |Hide Duplicates| Removes duplicate results from the data grid|
-|Hide Empty COlumns| Removes empty columns from the data grid |
+|Hide Empty Columns| Removes empty columns from the data grid |
 
 (*) Data View Settings:
 Kusto.Explorer keeps track of what settings are used per unique set of the columns, 
@@ -252,7 +252,7 @@ Some more queries:
 StormEvents | limit 10 
 ```
 ```kusto
-// Filter by EventType == 'Flood' and State == 'California' (=~ means case insensative) 
+// Filter by EventType == 'Flood' and State == 'California' (=~ means case insensitive) 
 // and take sample of 10 lines
 StormEvents 
 | where EventType == 'Flood' and State =~ 'California'
@@ -358,8 +358,8 @@ Script editor also has IntelliSense for Query parameters that are already define
 
 ![alt text](./Images/KustoTools-KustoExplorer/parametrized-query-4.png "parametrized-query-4")
 
-There can be multiple "sets" of parameters (listed in Parameters Set combo box).
-Buttons, "Add new" and "Delete current" manipulate list of Parameters "sets".
+There can be multiple "sets" of parameters (listed in Parameters Set combo box).
+Buttons, "Add new" and "Delete current" manipulate list of Parameters "sets".
 
 ![alt text](./Images/KustoTools-KustoExplorer/parametrized-query-5.png "parametrized-query-5")
 
