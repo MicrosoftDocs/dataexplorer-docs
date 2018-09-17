@@ -1,4 +1,4 @@
-# [Getting started](getting-started-with-kusto.md)
+# [Getting started](index.md)
 
 
 

@@ -3,6 +3,9 @@
 - name: Query Language
   href: query/
   homepage: query/index.md
+- name: Concepts
+  href: concepts/
+  homepage: concepts/index.md
 - name: Management
   href: management/
   homepage: management/index.md

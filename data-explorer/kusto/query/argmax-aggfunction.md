@@ -34,18 +34,3 @@ returns the value of *ExprToReturn* (or `*` to return the entire row).
 **Examples**
 
 See examples for [argmin()](argmin-aggfunction.md) aggregation function
-
-**Notes**
-
-When using a wildcard (`*`) as *ExprToReturn*, it is **strongly recommended** that
-the input to the `summarize` operator will be restricted to include only the columns
-that are used following that operator, as the optimization rule to automatically 
-project-away such columns is currently not implemented. In other words, make sure
-to introduce a projection similar to the marked line below:
-
-```kusto
-datatable(a:string, b:string, c:string, d:string) [...]
-| project a, b, c // <-- Add this projection to remove d
-| summarize argmax(a, *)
-| project B=max_a_b, C=max_a_c
-```

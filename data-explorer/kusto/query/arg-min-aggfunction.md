@@ -53,18 +53,3 @@ PageViewLog
 ```
 
 ![alt text](./images/aggregations/argmin.png "argmin")
- 
- **Notes**
-
-When using a wildcard (`*`) as *ExprToReturn*, it is **strongly recommended** that
-the input to the `summarize` operator will be restricted to include only the columns
-that are used following that operator, as the optimization rule to automatically 
-project-away such columns is currently not implemented. In other words, make sure
-to introduce a projection similar to the marked line below:
-
-```kusto
-datatable(a:string, b:string, c:string, d:string) [...]
-| project a, b, c // <-- Add this projection to remove d
-| summarize arg_min(a, *)
-| project B=b, C=c
-```

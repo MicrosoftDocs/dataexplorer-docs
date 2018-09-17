@@ -15,13 +15,8 @@ There are several DOs and DONTs you can follow to make you query run faster.
 **DOs**
 
 -	Use time filters first. Kusto is highly optimized to utilize time filters.
--	Put filters that are expected to get rid most of the data in the beginning of the query (right after time filters)
--	Check that most of your filters are appearing in the beginning of the query (before you start using 'extend') 
 -	Prefer 'has' keyword over 'contains' when looking for full tokens. 'has' is more performant as it doesn't have to look-up for substrings.
 -	Prefer looking in specific column rather than using '*' (full text search across all columns)
--	When using [join](./joinoperator.md) - choose the table with less rows to be the first one (left-most). 
--   When [joining](./joinoperator.md) data across clusters - run the query on the "right" side of the join (where most of the data is located).
--   When using [join](./joinoperator.md) - project only needed columns from both sides of the join (this will reduce payload pulled from one machine to another)
 -   If you find that most of your queries deal with extracting fields from [dynamic objects](./scalar-data-types/dynamic.md) across millions of rows, consider
 materialize this column at ingestion time. This way - you will pay only once for column extraction.  
 
@@ -32,3 +27,75 @@ materialize this column at ingestion time. This way - you will pay only once for
 -	If you find that you're applying conversions (JSON, string, etc) over 1B+ records - reshape your query to reduce amount of data fed into the conversion
 -	Don't use tolower(Col) == "lowercasestring" to do case insensitive comparisons. Kusto has an operator for that. Please use Col =~ "lowercasestring" instead.
 -   Don't filter on a calculated column, if you can filter on a table column. In other words: Don't do this `T | extend _value = <expression> | where predicate(_value)`, instead do: `T | where predicate(expression(_value))`
+
+**Summarize Operator**
+
+-	When the group by keys of the summarize operator are with high cardinality (best practice: above 1 million) then it is recommended to use the [hint.strategy=shuffle](./shufflesummarize.md).
+
+**Join Operator**
+
+-	When using [join operator](./joinoperator.md) - choose the table with less rows to be the first one (left-most). 
+-	When using [join operator](./joinoperator.md) data across clusters - run the query on the "right" side of the join (where most of the data is located).
+-	When left side is small (up to 100K records) and right side is big then it is recommended to use the [hint.strategy=broadcast](./broadcastjoin.md).
+-	When both sides of the join are too big and the join key is with high cardinality, then it is recommeneded to use the [hint.strategy=shuffle](./shufflejoin.md).
+    
+**Parse Operator and Extract function**
+
+-	[parse operator](./parseoperator.md) (simple mode) is useful when the parsed column has strings which has the same pattern which fits the pattern passed to the parse operator.
+for example, for a column which all the strings looks like  `"Time = <time>, ResourceId = <resourceId>, Duration = <duration>, ...."` and we are interested in extracting the values of each field, then defintely parse operator is better than few extract statements (for each field we need an extract function call).
+    
+-	[extract() function](./extractfunction.md) is useful when the parsed strings do not have the same format then the only way to get the required values is using a regex (in this case, there is no mutual pattern for all the strings in that column and parse can't be used). 
+for example, when we want to extract all numeric values from a Text.
+
+**Materialize function**
+
+-	When using [materialize() function](./materializefunction.md), try to push all possible operators that will reduce the materialized data set and still keeps the semantics of the query. e.g: filters, project only needed columns ... etc.
+    in this example:
+
+    ```kusto
+    let materializedData = materialize(Table
+    | where Timestamp > ago(1d));
+    union (materializedData
+    | where Text !has "somestring"
+    | summarize dcount(Resource1)), (materializedData
+    | where Text !has "somestring"
+    | summarize dcount(Resource2))
+    ```
+
+-	The filter on Text is mutual and can be pushed to the materialize expression.
+    In addition, the query needs only these columns `Timestamp`, `Text`, `Resource1` and `Resource2` columns so it is recommended to project these columns inside the materialized expression.
+    
+    ```kusto
+    let materializedData = materialize(Table
+    | where Timestamp > ago(1d)
+    | where Text !has "somestring"
+    | project Timestamp, Resource1, Resource2, Text);
+    union (materializedData
+    | summarize dcount(Resource1)), (materializedData
+    | summarize dcount(Resource2))
+    ```
+    
+-	if the filters are not identical like in this query:  
+
+    ```kusto
+    let materializedData = materialize(Table
+    | where Timestamp > ago(1d));
+    union (materializedData
+    | where Text has "String1"
+    | summarize dcount(Resource1)), (materializedData
+    | where Text has "String2"
+    | summarize dcount(Resource2))
+    ```
+-	It might be worthy (when the combined filter reduces the materialized result drastically) to combine both filters on the materialized result by a logical `or` expression as in this query below but we should keep the filtes in each union leg to preserve the semantics of the query:
+     
+    ```kusto
+    let materializedData = materialize(Table
+    | where Timestamp > ago(1d)
+    | where Text has "String1" or Text has "String2"
+    | project Timestamp, Resource1, Resource2, Text);
+    union (materializedData
+    | where Text has "String1"
+    | summarize dcount(Resource1)), (materializedData
+    | where Text has "String2"
+    | summarize dcount(Resource2))
+    ```
