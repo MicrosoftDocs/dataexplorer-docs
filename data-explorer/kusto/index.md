@@ -1,10 +1,11 @@
 ---
-title: Home - Azure Kusto | Microsoft Docs
-description: This is the landing page for Azure Kusto.
+title: Home - Azure Data Explorer | Microsoft Docs
+description: This is the landing page for Azure Data Explorer.
+services: azure-data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: azure-data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
