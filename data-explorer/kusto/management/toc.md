@@ -1,10 +1,12 @@
 # [Overview](index.md)
+
 # [Schema](schema.md)
 ## [Databases](databases.md)
 ## [Tables](tables.md)
 ## [Columns](columns.md)
 ## [Mappings](mappings.md)
 ## [Functions](functions.md)
+
 # [Policies](policies.md)
 ## [Caching](cache-policy.md)
 ## [IngestionTime](ingestiontime-policy.md)
@@ -15,6 +17,7 @@
 # [Security Roles](security-roles.md)
 # [Data Ingestion](data-ingest.md)
 # [Data Export](data-export.md)
+# [Database Cursors](databasecursor.md)
 # [System Information](systeminfo.md)
 ## [Diagnostics](diagnostics.md)
 ## [Journal](journal.md)
@@ -22,3 +25,17 @@
 ## [Commands](commands.md)
 ## [Ingestion Failures](ingestionfailures.md)
 
+
+# [Access Control](access-control/index.md)
+## [Identities](access-control/principals-and-identity-providers.md)
+## [AAD](access-control/aad.md)
+
+
+## [Principal roles](access-control/role-based-authorization.md)
+
+## [How-To: AAD Authentication](access-control/how-to-authenticate-with-aad.md)
+## [How-To: Provision AAD Application](access-control/how-to-provision-aad-app.md)
+
+# Advanced Data Management
+## [Extents (Data Shards) Overview](extents-overview.md)
+## [Extents Commands](extents-commands.md)

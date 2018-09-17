@@ -295,7 +295,7 @@ Once the above are verified, follow these steps:
 
 Kusto.Explorer provides a convenient way to manage cluster, database, table or function authorized principals.
 
-Please note that only [admins](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) can add or drop authorized principals in their own scope.
+Please note that only [admins](../management/access-control/role-based-authorization.md) can add or drop authorized principals in their own scope.
 
 1. Right-click on the target entity in the [Connections panel](#connections-panel), and select `Manage Authorized Principals`
     (also available via the [Management Menu](#management-menu)).

@@ -24,5 +24,5 @@ cursor of the database in scope.
 
 **Remarks**
 
-Please see [Database Cursor](https://kusdoc2.azurewebsites.net/docs/concepts/databasecursor.html) for additional
+See [database cursors](../management/databasecursor.md) for additional
 details on database cursors.

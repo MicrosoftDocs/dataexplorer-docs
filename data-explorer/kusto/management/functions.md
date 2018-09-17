@@ -21,7 +21,7 @@ This article describes control commands used for creating and altering [user-def
 The `.show functions` command lists all the stored functions
 in the currently-selected database.
 
-Requires [Database user permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [Database user permission](../management/access-control/role-based-authorization.md).
  
 |Output parameter |Type |Description
 |---|---|--- 
@@ -65,7 +65,7 @@ see [.show functions](#show-functions).
  
 **Notes:** 
 - If function does not exist - error is returned.
-- Requires [Database user permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+- Requires [Database user permission](../management/access-control/role-based-authorization.md).
  
 **Example** 
 
@@ -106,7 +106,7 @@ Rules for parameter types and CSL-statements are the same as for [`let` statemen
     * If `ifnotexists` flag is specified - command is ignored (no change applied).
     * If `ifnotexists` flag is NOT specificed - error is returned. 
     > For altering existing function - see [.alter function](#alter-function)
-- Requires [Database user permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+- Requires [Database user permission](../management/access-control/role-based-authorization.md).
 - Not all data types are currently supported in let statements. supported types are: boolean, string, long, datetime, timespan, double, dynamic.
 - Use 'skipvalidation' to skip semantic validation of the function. Useful when functions are created in a wrong order and F1 that uses F2 is created earlier.
 
@@ -155,8 +155,8 @@ Rules for parameter types and CSL-statements are the same as for [`let` statemen
 
 **Notes:** 
 - If function does not exist - error is returned. For creating new function - see [.create function](#create-function)
-- Requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html)
-- Modification of the function is also allowed to [Database user](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) who originally created the function
+- Requires [Database admin permission](../management/access-control/role-based-authorization.md)
+- Modification of the function is also allowed to [Database user](../management/access-control/role-based-authorization.md) who originally created the function
 - Not all kusto types are currently supported in let statements. supported types are: string, long, datetime, timespan, double.
 - Use 'skipvalidation' to skip semantic validation of the function. Useful when functions are created in a wrong order and F1 that uses F2 is created earlier.
 
@@ -205,8 +205,8 @@ The `.drop` `function` command drops a function from the database.
   not fail for a non-existent function.
 
 **Notes:**
-- Requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
-- Deletion of the function is also allowed to [Database user](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) who originally created the function  
+- Requires [Database admin permission](../management/access-control/role-based-authorization.md).
+- Deletion of the function is also allowed to [Database user](../management/access-control/role-based-authorization.md) who originally created the function  
     
 |Output parameter |Type |Description
 |---|---|--- 
@@ -225,8 +225,8 @@ The `.drop` `function` command drops a function from the database.
 Alters the DocString value of an existing function. 
 
 **Notes:** 
-- Requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html)
-- Modification of the function is also allowed to [Database user](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) who originally created the function 
+- Requires [Database admin permission](../management/access-control/role-based-authorization.md)
+- Modification of the function is also allowed to [Database user](../management/access-control/role-based-authorization.md) who originally created the function 
 - If the function does not exist - error is returned. For creating new function - see [.create function](#create-function)
 
 |Output parameter |Type |Description
@@ -256,8 +256,8 @@ Alters the DocString value of an existing function.
 Alters the Folder value of an existing function. 
 
 **Notes:** 
-- Requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html)
-- Modification of the function is also allowed to [Database user](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) who originally created the function 
+- Requires [Database admin permission](../management/access-control/role-based-authorization.md)
+- Modification of the function is also allowed to [Database user](../management/access-control/role-based-authorization.md) who originally created the function 
 - If the function does not exist - error is returned. For creating new function - see [.create function](#create-function)
 
 |Output parameter |Type |Description

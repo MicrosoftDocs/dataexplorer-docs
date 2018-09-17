@@ -55,7 +55,7 @@ manipulate it in Power BI, as seen in the following steps.
 > ```
 
 7. If promted, use you Organizational account to sign in (you need to have access to the relevant
-Kusto cluster in order to query it in Power BI - see [Authorization and Roles Based Access Control](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) for details)
+Kusto cluster in order to query it in Power BI - see [Authorization and Roles Based Access Control](../management/access-control/role-based-authorization.md) for details)
 
 ![alt text](./Images/KustoTools-PowerBIConnector/step7.png "step7")
 

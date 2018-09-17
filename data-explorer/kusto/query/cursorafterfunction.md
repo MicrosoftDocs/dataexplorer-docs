@@ -28,9 +28,8 @@ after the database cursor *RHS* (`true`) or not (`false`).
 
 **Comments**
 
-See [Database Cursor](https://kusdoc2.azurewebsites.net/docs/concepts/databasecursor.html) for a detailed
-explanation of this function, the scenario in which it should be used, its
-restrictions, and side-effects.
+See [database cursors](../management/databasecursor.md) for additional
+details on database cursors.
 
 This function can only be invoked on records of a table which has the
 [IngestionTime policy](https://kusdoc2.azurewebsites.net/docs/concepts/ingestiontimepolicy.html) enabled.

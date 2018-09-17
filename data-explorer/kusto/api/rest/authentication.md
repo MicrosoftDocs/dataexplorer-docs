@@ -18,5 +18,5 @@ Kusto supports AAD authentication for users and applications.
 When authenticating via AAD, the authorization method is `Bearer` and the value is the token retrieved from the AAD service.
 The token request to AAD should request access for `https://<Your Kusto cluster URL>` resource, and the request should be made against the AAD endpoint at `https://login.microsoftonline.com/<your AAD tenant name or ID>/`, or, in case of user authentication, against `https://login.microsoftonline.com/common/`.
 
-For full documentation on Kusto Authentication refer to [Kusto Authentication Overview](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/authentication-overview.html) and [Kusto Guide to AAD Authentication](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/programmatic-aad-authentication.html)
+For complete documentation on Kusto Authentication refer to [Kusto Authentication overview](../../management/access-control/index.md) and [Kusto Guide to AAD Authentication](../../management/access-control/how-to-authenticate-with-aad.md)
 

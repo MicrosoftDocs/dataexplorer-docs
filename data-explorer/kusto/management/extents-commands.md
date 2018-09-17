@@ -1,6 +1,6 @@
 ---
-title: Extents, Extent Tags, Extent Containers - Azure Kusto | Microsoft Docs
-description: This article describes Extents, Extent Tags, Extent Containers in Azure Kusto.
+title: Extents (Data shards) Management - Azure Kusto | Microsoft Docs
+description: This article describes Extents (Data shards) Management in Azure Kusto.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,9 +8,9 @@ ms.service: kusto
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Extents, Extent Tags, Extent Containers
+# Extents (Data shards) Management
 
-## Extents (Data shards)
+## Extents Commands 
 
 Data shards are called **extents** in Kusto, and all commands use "extent"
 or "extents" as a synonym.
@@ -128,7 +128,7 @@ the results of a cluster-level command.
 
 `.merge` `[async | dryrun]` *TableName* `(` *GUID1* [`,` *GUID2* ...] `)` `[with(rebuild=true)]`
 
-This command merges the extents (See: [Extents (Data Shards)](https://kusdoc2.azurewebsites.net/docs/concepts/extents.html)) indicated by their IDs in the specified table.
+This command merges the extents (See: [Extents (Data Shards) Overview](extents-overview.md)) indicated by their IDs in the specified table.
 
 There are 2 flavors for merge operations: *Merge* (which rebuilds indexes), and *Rebuild* (which completely reingests the data).
 
@@ -176,7 +176,7 @@ Merges two specific extents in `MyTable`, performed synchronously
 `.move` `[async]` `extents` `to` `table` *DestinationTableName* <| *query*
 
 This command runs in the context of a specific database, and moves the specified extents from the source table to the destination table transactionally.
-Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) for the source and destination tables.
+Requires [Table admin permission](../management/access-control/role-based-authorization.md) for the source and destination tables.
 
 * `async` (optional) specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned,
   and the operation's status can be monitored using the [.show operations](./diagnostics.md#show-operations) command).
@@ -239,7 +239,7 @@ the other variants extents are specified using a mini-language described below.
  
 #### Specifying Extents with a Query
 
-Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) foreach of the tables which have extents returned by the provided query.
+Requires [Table admin permission](../management/access-control/role-based-authorization.md) foreach of the tables which have extents returned by the provided query.
 
 Drops extents (or just reports them without actually dropping if `whatif` is used):
 
@@ -251,9 +251,9 @@ The extents are specified using a Kusto query that returns a recordset with a co
  
 #### Dropping a specific extent
 
-Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) in case table name is specified.
+Requires [Table admin permission](../management/access-control/role-based-authorization.md) in case table name is specified.
 
-Requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) in case table name isn't specified.
+Requires [Database admin permission](../management/access-control/role-based-authorization.md) in case table name isn't specified.
 
 **Syntax**
 
@@ -261,9 +261,9 @@ Requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/conc
 
 #### Dropping specific multiple extents
 
-Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) in case table name is specified.
+Requires [Table admin permission](../management/access-control/role-based-authorization.md) in case table name is specified.
 
-Requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) in case table name isn't specified.
+Requires [Database admin permission](../management/access-control/role-based-authorization.md) in case table name isn't specified.
 
 **Syntax**
 
@@ -271,9 +271,9 @@ Requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/conc
 
 #### Specifying Extents by Properties
 
-Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) in case table name is specified.
+Requires [Table admin permission](../management/access-control/role-based-authorization.md) in case table name is specified.
 
-Requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) in case table name isn't specified.
+Requires [Database admin permission](../management/access-control/role-based-authorization.md) in case table name isn't specified.
 
 `.drop` `extents` [`older` *N* (`days` | `hours`)] `from` (*TableName* | `all` `tables`) [`trim` `by` (`extentsize` | `datasize`) *N* (`MB` | `GB` | `bytes`)] [`limit` *LimitCount*]
 
@@ -336,7 +336,7 @@ moves the specified extents from their source tables to the destination table,
 and drops the specified extents from the destination table.
 All of the drop and move operations are done transactionally.
 
-Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) for the source and destination tables.
+Requires [Table admin permission](../management/access-control/role-based-authorization.md) for the source and destination tables.
 
 * `async` (optional) specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned,
   and the operation's status can be monitored using the [.show operations](./diagnostics.md#show-operations) command).
@@ -404,7 +404,7 @@ and attaches the specified extents to the destination table(s), according to the
   - A [purge](https://kusdoc2.azurewebsites.net/docs/concepts/compliance-gdpr.html) command hasn't been run on any table in the database since.
 
 
-Requires [Cluster admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [Cluster admin permission](../management/access-control/role-based-authorization.md).
 
 **Restrictions**
 - All extents specified by *Query to obtain extents metadata* are expected to reside in extent containers which are managed by the target database.
@@ -461,7 +461,7 @@ Attaches the last 10 extents dropped from any table in `MyDatabase` back to the 
 
 `.drop` `extent` `tags` <| *query*
 
-The command runs in the context of a specific database, and drops the provided [extent tag(s)](https://kusdoc2.azurewebsites.net/docs/concepts/extents.html#extent-tagging) from any extent in the provided database and table, which includes any of the tags.  
+The command runs in the context of a specific database, and drops the provided [extent tag(s)](extents-overview.md#extent-tagging) from any extent in the provided database and table, which includes any of the tags.  
 
 There are two ways to specify which tags should be removed from which extents:
 
@@ -473,7 +473,7 @@ There are two ways to specify which tags should be removed from which extents:
 
 **Specifying Extents with a Query**
 
-Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) for all involved source and destination tables.
+Requires [Table admin permission](../management/access-control/role-based-authorization.md) for all involved source and destination tables.
 
 ```kusto 
 .drop extent tags <| ...query... 
@@ -540,12 +540,12 @@ Drops all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from 
 
 `.alter` `extent` `tags` `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)` <| *query*
 
-The command runs in the context of a specific database, and alters the [extent tag(s)](https://kusdoc2.azurewebsites.net/docs/concepts/extents.html#extent-tagging)
+The command runs in the context of a specific database, and alters the [extent tag(s)](extents-overview.md#extent-tagging)
 of all of the extents returned by the specified query, to the provided set of tags.
 
 The extents and the tags to alter are specified using a Kusto query that returns a recordset with a column called "ExtentId".
 
-Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) for all involved tables.
+Requires [Table admin permission](../management/access-control/role-based-authorization.md) for all involved tables.
 
 **Restrictions**
 - All extents must be in the context database, and must belong to the same table. 

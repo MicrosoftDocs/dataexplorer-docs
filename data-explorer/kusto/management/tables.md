@@ -52,7 +52,7 @@ This topic discusses the lifecycle of tables and associated control commands:
 
 Returns a set that contains all tables in the database (optionally - with a detailed summary of the tables' properties).
 
-Requires [Database viewer permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [Database viewer permission](../management/access-control/role-based-authorization.md).
 
 **Output (w/o details)**
 
@@ -114,7 +114,7 @@ ServiceOperations |Operations | | |1109 |76588803 |91553069 |110125 |27 |2635742
 
 Gets the schema to use in create/alter commands and additional table metadata.
 
-Requires [Database user permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [Database user permission](../management/access-control/role-based-authorization.md).
 
 |Output parameter|Type|Description
 |---|---|---
@@ -130,7 +130,7 @@ Requires [Database user permission](https://kusdoc2.azurewebsites.net/docs/conce
 
 Gets the schema in JSON format and additional table metadata.
 
-Requires [Database user permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [Database user permission](../management/access-control/role-based-authorization.md).
 
 |Output parameter|Type|Description
 |---|---|---
@@ -165,7 +165,7 @@ If the table exists:
 * If the passed schema doesn't contain some table columns they won't be deleted.
 * If you specified an existing column with a different type, the command will fail.
 
-Requires [Database user permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [Database user permission](../management/access-control/role-based-authorization.md).
  
 **Example** 
 
@@ -195,7 +195,7 @@ Creates new empty tables as a bulk operation.
 The command must run in context of a specific database. 
 If any table already exists the command will return success.
 
-Requires [Database user permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [Database user permission](../management/access-control/role-based-authorization.md).
  
 **Example** 
 
@@ -219,7 +219,7 @@ These commands modify the column schema of an existing table (they can't be used
 Like `.create table`, both commands must run in the context of a specific database which scopes the table name. 
 
 
-Requires [Database user permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [Database user permission](../management/access-control/role-based-authorization.md).
 
 **Syntax**
 
@@ -273,7 +273,7 @@ The `.rename` `table` command changes the name of an existing table.
 
 `.rename` `table` *OldName* `to` *NewName*
 
-Requires [Database  admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [Database  admin permission](../management/access-control/role-based-authorization.md).
 
 ## .rename tables
 
@@ -299,7 +299,7 @@ as well, in which case that table *also* be renamed. In other words, this
 command doesn't create new tables nor does it remove existing tables, and the
 transofmration must be such that the number of tables remains the same.
 
-Requires [Database  admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [Database  admin permission](../management/access-control/role-based-authorization.md).
 
 **Examples**
 
@@ -349,7 +349,7 @@ This command returns a list of the remaining tables in the database.
 |TableName  |String |The name of the table. 
 |DatabaseName  |String |The database that the table belongs to. 
  
-Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [Table admin permission](../management/access-control/role-based-authorization.md).
 
 ## .undo drop table
 
@@ -389,7 +389,7 @@ If Purge command was executed on this database, undo drop table command can't be
 
 Extent can be recovered only if the hard delete period of the extent container it resides in wasn't reached yet.
 
-The command requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+The command requires [Database admin permission](../management/access-control/role-based-authorization.md).
 
 **Examples**
 ```kusto
@@ -419,7 +419,7 @@ This command returns a list of the remaining tables in the database.
 |TableName  |String |The name of the table. 
 |DatabaseName  |String |The database that the table belongs to. 
  
-Requires [Table admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [Table admin permission](../management/access-control/role-based-authorization.md).
 
 **Example** 
  
@@ -520,8 +520,8 @@ Drops the ingestion mapping from the database.
 Alters the DocString value of an existing table. 
 
 **Notes:** 
-- Requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html)
-- Modification of the table is also allowed to [Database user](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) who originally created the table 
+- Requires [Database admin permission](../management/access-control/role-based-authorization.md)
+- Modification of the table is also allowed to [Database user](../management/access-control/role-based-authorization.md) who originally created the table 
 - If the table does not exist - error is returned. For creating new table - see [.create table](#create-table)
 
 **Example** 
@@ -537,8 +537,8 @@ Alters the DocString value of an existing table.
 Alters the Folder value of an existing table. 
 
 **Notes:** 
-- Requires [Database admin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html)
-- Modification of the table is also allowed to [Database user](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html) who originally created the table 
+- Requires [Database admin permission](../management/access-control/role-based-authorization.md)
+- Modification of the table is also allowed to [Database user](../management/access-control/role-based-authorization.md) who originally created the table 
 - If the table does not exist - error is returned. For creating new table - see [.create table](#create-table)
 
 **Example** 

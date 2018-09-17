@@ -2,7 +2,7 @@
 
 ## [Connection strings](./connection-strings/index.md)
 ### [Kusto connection strings](./connection-strings/kusto.md)
-
+### [Storage connection strings](./connection-strings/storage.md)
 
 # [REST API](rest/index.md)
 ## [Authentication](rest/authentication.md)

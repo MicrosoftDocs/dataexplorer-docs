@@ -128,7 +128,7 @@ be included.
 
 Alters a database's pretty (friendly) name.
 
-Requires [DatabaseAdmin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [DatabaseAdmin permission](../management/access-control/role-based-authorization.md).
  
 **Return output**
  
@@ -143,7 +143,7 @@ Requires [DatabaseAdmin permission](https://kusdoc2.azurewebsites.net/docs/conce
 
 Drops a database's pretty (friendly) name.
 
-Requires [DatabaseAdmin permission](https://kusdoc2.azurewebsites.net/docs/concepts/accesscontrol/principal-roles.html).
+Requires [DatabaseAdmin permission](../management/access-control/role-based-authorization.md).
  
 **Return output**
  

@@ -18,7 +18,8 @@ There are a number of connection string formats:
 
 * [Kusto connection strings](./kusto.md) describe how to communicate with a Kusto service endpoint.
   Kusto connection strings are modeled after [ADO.NET connection strings model](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/connection-string-syntax).
-
+* [Storage connection strings](./storage.md) describe how to point Kusto at an external storage service
+  such as Azure Blob Storage and Azure Data Lake Storage.
 * SQL connection strings - used by Kusto [sql_request plugin](../../query/sqlrequestplugin.md) to issue requests to
   Azure DB service and by [export to SQL command](../../management/data-export.md#exporting-data-to-a-sql-database).  
   These connection strings adhere to [SqlClient connection strings](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings) specification.

@@ -21,16 +21,6 @@ Note that Kusto does not support any DDL command in this manner -- only T-SQL
 details on the main differences between SQL Server and Kusto with regards to
 T-SQL.
 
-## Querying Kusto from Kusto.Explorer with T-SQL
-
-The Kusto.Explorer tool supports sending T-SQL queries to Kusto.
-In order to instruct Kusto.Explorer to execute a query in this mode,
-prepend the query an empty T-SQL comment line. For example:
-
-```sql
---
-select * from StormEvents
-```
 
 
 ## From T-SQL to Kusto query language

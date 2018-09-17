@@ -181,7 +181,7 @@ Tips: You can use [getschema](../query/getschemaoperator.md) operator on the tar
   * *IngestIfNotExistsDefinition* are optional 'ingestIfNotExists' values to use with the extent
     being created - allows preventing data from being ingested if there's already an extent with 
     this specific `ingest-by:` tag in the target table 
-    (see: [Extent Tagging](https://kusdoc2.azurewebsites.net/docs/concepts/extents.html#extent-tagging)).
+    (see: [Extent Tagging](extents-overview.md#extent-tagging)).
     * Example: `ingestIfNotExists='["Tag1", "Tag2"]'`
   * *FolderSpecification* is an optional string value which specifies the folder name to set for the table.
     * For an `.append` or `.set-or-append` command that doesn't create the table, the current folder name gets overridden.

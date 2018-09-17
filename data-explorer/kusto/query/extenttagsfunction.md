@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # extent_tags()
 
-Returns a dynamic array with the [tags](https://kusdoc2.azurewebsites.net/docs/concepts/extents.html#extent-tagging) of the data shard ("extent") that the current record resides in. 
+Returns a dynamic array with the [tags](../management/extents-overview.md#extent-tagging) of the data shard ("extent") that the current record resides in. 
 
 Applying this function to calculated data which is not attached to a data shard returns an empty value.
 
