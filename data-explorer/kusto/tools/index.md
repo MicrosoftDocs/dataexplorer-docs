@@ -15,7 +15,7 @@ ms.date: 09/24/2018
 
 
 * [Kusto.Explorer](./kusto-explorer.md) - The primary desktop tool for querying and controlling Kusto
-* [Kusto.WebExplorer](https://docs.microsoft.com/azure/data-explorer/query-editor) - Web UX for querying Kusto
+* [Web UI](https://docs.microsoft.com/azure/data-explorer/query-editor) - Web UI for querying Kusto
 
 ## Visualizations, dashboards, and reporting tools
 
