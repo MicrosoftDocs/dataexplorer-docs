@@ -15,13 +15,13 @@ In this walkthrough, we will be using the [Kusto.Ingest client library](../api/n
 Specifically, queued ingestion is done using the [KustoQueuedIngestClient](../api/netfx/kusto-ingest-client-reference.md#class-kustoqueuedingestclient).
 
 ## Prerequisites
-* Please make sure you install [Kusto Web Explorer](http://aka.ms/nkwe) or [Kusto Explorer](http://aka.ms/Kusto.Explorer)
+* Please make sure you install [Kusto Web Explorer](https://aka.ms/nkwe) or [Kusto Explorer](https://aka.ms/Kusto.Explorer)
 
 ## Step 1: Create database and table
 * The first step is to create a database for your ingestion experiments on your cluster. This can be done via [Azure Portal](https://portal.azure.com)
 
 * Next you should create the table for your data. Please see the documentation on [Create Table command](../management/tables.md#create-table).
-This operation can be performed either with [Kusto Web Explorer](http://aka.ms/nkwe) or [Kusto Explorer](http://aka.ms/Kusto.Explorer)
+This operation can be performed either with [Kusto Web Explorer](https://aka.ms/nkwe) or [Kusto Explorer](https://aka.ms/Kusto.Explorer)
 
 ## Step 2: Set up user/app access
 * Now that you succeeded and you now have created table `Table001` in your DB `TestDB001` (names are just an example) on your cluster,
