@@ -1,11 +1,11 @@
 ---
 title: Extents (Data shards) Management - Azure Data Explorer | Microsoft Docs
 description: This article describes Extents (Data shards) Management in Azure Data Explorer.
-services: data-explorer
+services: azure-data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: data-explorer
+ms.service: azure-data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
