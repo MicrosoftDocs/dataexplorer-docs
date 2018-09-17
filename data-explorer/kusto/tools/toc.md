@@ -1,7 +1,7 @@
 # [Tools overview](index.md)
 
 # Ad-hoc query
-## [Kusto.Cli](kusto-cli.md)
+
 ## [Kusto.Explorer](kusto-explorer.md)
 ## [Kusto.WebExplorer](kusto-webexplorervnext.md)
 
@@ -22,17 +22,5 @@
 
 ## [Microsoft Flow (Preview)](flow.md)
 ## [Microsoft Logic Apps (Preview)](logicapps.md)
-
-
-# Data ingestion
-
-
-
-
-## [LightIngest](lightingest.md)
-
-
-
-
 
 
