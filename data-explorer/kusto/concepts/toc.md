@@ -27,7 +27,7 @@
 
 ## [Update policy](updatepolicy.md)
 # Misc and Errors
-## [Scripts](scripts.md)
+
 ## [Query limits](querylimits.md)
 ## [Partial query failures](partialqueryfailures.md)
 ### [Result truncation](resulttruncation.md)
