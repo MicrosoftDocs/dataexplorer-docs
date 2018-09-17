@@ -1,10 +1,11 @@
 ---
-title: url_encode() - Azure Kusto | Microsoft Docs
-description: This article describes url_encode() in Azure Kusto.
+title: url_encode() - Azure Data Explorer | Microsoft Docs
+description: This article describes url_encode() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

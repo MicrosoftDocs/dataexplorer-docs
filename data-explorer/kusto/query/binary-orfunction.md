@@ -1,10 +1,11 @@
 ---
-title: binary_or() - Azure Kusto | Microsoft Docs
-description: This article describes binary_or() in Azure Kusto.
+title: binary_or() - Azure Data Explorer | Microsoft Docs
+description: This article describes binary_or() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

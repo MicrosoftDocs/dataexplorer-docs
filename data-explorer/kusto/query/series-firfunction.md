@@ -1,10 +1,11 @@
 ---
-title: series_fir() - Azure Kusto | Microsoft Docs
-description: This article describes series_fir() in Azure Kusto.
+title: series_fir() - Azure Data Explorer | Microsoft Docs
+description: This article describes series_fir() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

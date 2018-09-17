@@ -1,10 +1,11 @@
 ---
-title: row_cumsum() - Azure Kusto | Microsoft Docs
-description: This article describes row_cumsum() in Azure Kusto.
+title: row_cumsum() - Azure Data Explorer | Microsoft Docs
+description: This article describes row_cumsum() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

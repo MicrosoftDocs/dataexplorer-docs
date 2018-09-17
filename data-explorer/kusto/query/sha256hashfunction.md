@@ -1,10 +1,11 @@
 ---
-title: hash_sha256() - Azure Kusto | Microsoft Docs
-description: This article describes hash_sha256() in Azure Kusto.
+title: hash_sha256() - Azure Data Explorer | Microsoft Docs
+description: This article describes hash_sha256() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

@@ -1,10 +1,11 @@
 ---
-title: Overflows - Azure Kusto | Microsoft Docs
-description: This article describes Overflows in Azure Kusto.
+title: Overflows - Azure Data Explorer | Microsoft Docs
+description: This article describes Overflows in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

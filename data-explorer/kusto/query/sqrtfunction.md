@@ -1,10 +1,11 @@
 ---
-title: sqrt() - Azure Kusto | Microsoft Docs
-description: This article describes sqrt() in Azure Kusto.
+title: sqrt() - Azure Data Explorer | Microsoft Docs
+description: This article describes sqrt() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

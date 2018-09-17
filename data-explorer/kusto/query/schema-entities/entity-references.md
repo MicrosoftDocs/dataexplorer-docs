@@ -1,10 +1,11 @@
 ---
-title: Entity references - Azure Kusto | Microsoft Docs
-description: This article describes Entity references in Azure Kusto.
+title: Entity references - Azure Data Explorer | Microsoft Docs
+description: This article describes Entity references in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

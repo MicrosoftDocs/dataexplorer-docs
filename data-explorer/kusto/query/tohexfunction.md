@@ -1,10 +1,11 @@
 ---
-title: tohex() - Azure Kusto | Microsoft Docs
-description: This article describes tohex() in Azure Kusto.
+title: tohex() - Azure Data Explorer | Microsoft Docs
+description: This article describes tohex() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

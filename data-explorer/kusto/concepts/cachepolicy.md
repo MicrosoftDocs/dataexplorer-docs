@@ -1,10 +1,11 @@
 ---
-title: Cache policy (hot and cold cache) - Azure Kusto | Microsoft Docs
-description: This article describes Cache policy (hot and cold cache) in Azure Kusto.
+title: Cache policy (hot and cold cache) - Azure Data Explorer | Microsoft Docs
+description: This article describes Cache policy (hot and cold cache) in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

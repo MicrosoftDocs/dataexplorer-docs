@@ -1,10 +1,11 @@
 ---
-title: activity_engagement plugin - Azure Kusto | Microsoft Docs
-description: This article describes activity_engagement plugin in Azure Kusto.
+title: activity_engagement plugin - Azure Data Explorer | Microsoft Docs
+description: This article describes activity_engagement plugin in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

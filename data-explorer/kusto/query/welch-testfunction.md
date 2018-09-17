@@ -1,10 +1,11 @@
 ---
-title: welch_test() - Azure Kusto | Microsoft Docs
-description: This article describes welch_test() in Azure Kusto.
+title: welch_test() - Azure Data Explorer | Microsoft Docs
+description: This article describes welch_test() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

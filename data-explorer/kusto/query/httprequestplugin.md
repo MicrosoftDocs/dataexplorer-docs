@@ -1,10 +1,11 @@
 ---
-title: http_request plugin / http_request_post plugin - Azure Kusto | Microsoft Docs
-description: This article describes http_request plugin / http_request_post plugin in Azure Kusto.
+title: http_request plugin / http_request_post plugin - Azure Data Explorer | Microsoft Docs
+description: This article describes http_request plugin / http_request_post plugin in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

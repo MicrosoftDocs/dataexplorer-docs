@@ -1,10 +1,11 @@
 ---
-title: table() (scope function) - Azure Kusto | Microsoft Docs
-description: This article describes table() (scope function) in Azure Kusto.
+title: table() (scope function) - Azure Data Explorer | Microsoft Docs
+description: This article describes table() (scope function) in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

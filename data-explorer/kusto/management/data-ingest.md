@@ -1,10 +1,11 @@
 ---
-title: Data ingestion - Azure Kusto | Microsoft Docs
-description: This article describes Data ingestion in Azure Kusto.
+title: Data ingestion - Azure Data Explorer | Microsoft Docs
+description: This article describes Data ingestion in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

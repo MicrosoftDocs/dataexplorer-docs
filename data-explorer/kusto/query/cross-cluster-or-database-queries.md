@@ -1,10 +1,11 @@
 ---
-title: Cross-Database and Cross-Cluster Queries - Azure Kusto | Microsoft Docs
-description: This article describes Cross-Database and Cross-Cluster Queries in Azure Kusto.
+title: Cross-Database and Cross-Cluster Queries - Azure Data Explorer | Microsoft Docs
+description: This article describes Cross-Database and Cross-Cluster Queries in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

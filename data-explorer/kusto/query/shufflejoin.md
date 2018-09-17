@@ -1,10 +1,11 @@
 ---
-title: Shuffle Join - Azure Kusto | Microsoft Docs
-description: This article describes Shuffle Join in Azure Kusto.
+title: Shuffle Join - Azure Data Explorer | Microsoft Docs
+description: This article describes Shuffle Join in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

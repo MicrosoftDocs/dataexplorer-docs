@@ -1,10 +1,11 @@
 ---
-title: percentile_tdigest() - Azure Kusto | Microsoft Docs
-description: This article describes percentile_tdigest() in Azure Kusto.
+title: percentile_tdigest() - Azure Data Explorer | Microsoft Docs
+description: This article describes percentile_tdigest() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

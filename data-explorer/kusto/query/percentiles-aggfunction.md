@@ -1,10 +1,11 @@
 ---
-title: percentile(), percentiles(), percentilew(), percentilesw(), percentiles_array(), percentilesw_array() (aggregation function) - Azure Kusto | Microsoft Docs
-description: This article describes percentile(), percentiles(), percentilew(), percentilesw(), percentiles_array(), percentilesw_array() (aggregation function) in Azure Kusto.
+title: percentile(), percentiles(), percentilew(), percentilesw(), percentiles_array(), percentilesw_array() (aggregation function) - Azure Data Explorer | Microsoft Docs
+description: This article describes percentile(), percentiles(), percentilew(), percentilesw(), percentiles_array(), percentilesw_array() (aggregation function) in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

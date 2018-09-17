@@ -1,10 +1,11 @@
 ---
-title: arg_max() (aggregation function) - Azure Kusto | Microsoft Docs
-description: This article describes arg_max() (aggregation function) in Azure Kusto.
+title: arg_max() (aggregation function) - Azure Data Explorer | Microsoft Docs
+description: This article describes arg_max() (aggregation function) in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

@@ -1,10 +1,11 @@
 ---
-title: Controlling or suppressing Kusto SDK client side tracing - Azure Kusto | Microsoft Docs
-description: This article describes Controlling or suppressing Kusto SDK client side tracing in Azure Kusto.
+title: Controlling or suppressing Kusto SDK client side tracing - Azure Data Explorer | Microsoft Docs
+description: This article describes Controlling or suppressing Kusto SDK client side tracing in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

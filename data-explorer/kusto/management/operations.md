@@ -1,10 +1,11 @@
 ---
-title: Operations - Azure Kusto | Microsoft Docs
-description: This article describes Operations in Azure Kusto.
+title: Operations - Azure Data Explorer | Microsoft Docs
+description: This article describes Operations in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

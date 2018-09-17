@@ -1,10 +1,11 @@
 ---
-title: series_fit_2lines() - Azure Kusto | Microsoft Docs
-description: This article describes series_fit_2lines() in Azure Kusto.
+title: series_fit_2lines() - Azure Data Explorer | Microsoft Docs
+description: This article describes series_fit_2lines() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

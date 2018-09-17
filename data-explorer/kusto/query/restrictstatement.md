@@ -1,10 +1,11 @@
 ---
-title: Restrict statement - Azure Kusto | Microsoft Docs
-description: This article describes Restrict statement in Azure Kusto.
+title: Restrict statement - Azure Data Explorer | Microsoft Docs
+description: This article describes Restrict statement in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

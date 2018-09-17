@@ -1,10 +1,11 @@
 ---
-title: extractjson() - Azure Kusto | Microsoft Docs
-description: This article describes extractjson() in Azure Kusto.
+title: extractjson() - Azure Data Explorer | Microsoft Docs
+description: This article describes extractjson() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

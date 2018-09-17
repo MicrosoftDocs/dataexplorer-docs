@@ -1,10 +1,11 @@
 ---
-title: ingestion_time() - Azure Kusto | Microsoft Docs
-description: This article describes ingestion_time() in Azure Kusto.
+title: ingestion_time() - Azure Data Explorer | Microsoft Docs
+description: This article describes ingestion_time() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

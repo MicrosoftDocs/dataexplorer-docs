@@ -1,10 +1,11 @@
 ---
-title: make_timespan() - Azure Kusto | Microsoft Docs
-description: This article describes make_timespan() in Azure Kusto.
+title: make_timespan() - Azure Data Explorer | Microsoft Docs
+description: This article describes make_timespan() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

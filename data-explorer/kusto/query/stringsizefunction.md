@@ -1,10 +1,11 @@
 ---
-title: string_size() - Azure Kusto | Microsoft Docs
-description: This article describes string_size() in Azure Kusto.
+title: string_size() - Azure Data Explorer | Microsoft Docs
+description: This article describes string_size() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

@@ -1,10 +1,11 @@
 ---
-title: Kusto Ping REST API - Azure Kusto | Microsoft Docs
-description: This article describes Kusto Ping REST API in Azure Kusto.
+title: Kusto Ping REST API - Azure Data Explorer | Microsoft Docs
+description: This article describes Kusto Ping REST API in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

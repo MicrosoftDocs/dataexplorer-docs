@@ -1,10 +1,11 @@
 ---
-title: Kusto.Ingest Reference - Errors and Exceptions - Azure Kusto | Microsoft Docs
-description: This article describes Kusto.Ingest Reference - Errors and Exceptions in Azure Kusto.
+title: Kusto.Ingest Reference - Errors and Exceptions - Azure Data Explorer | Microsoft Docs
+description: This article describes Kusto.Ingest Reference - Errors and Exceptions in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

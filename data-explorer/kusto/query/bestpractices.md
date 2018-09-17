@@ -1,10 +1,11 @@
 ---
-title: Query best practices  - Azure Kusto | Microsoft Docs
-description: This article describes Query best practices  in Azure Kusto.
+title: Query best practices  - Azure Data Explorer | Microsoft Docs
+description: This article describes Query best practices  in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

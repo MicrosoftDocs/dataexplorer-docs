@@ -1,10 +1,11 @@
 ---
-title: How-To -  Set up Batched (queued) Ingestion with Kusto .NET SDK - Azure Kusto | Microsoft Docs
-description: This article describes How-To -  Set up Batched (queued) Ingestion with Kusto .NET SDK in Azure Kusto.
+title: How-To -  Set up Batched (queued) Ingestion with Kusto .NET SDK - Azure Data Explorer | Microsoft Docs
+description: This article describes How-To -  Set up Batched (queued) Ingestion with Kusto .NET SDK in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

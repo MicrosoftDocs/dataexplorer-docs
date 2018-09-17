@@ -1,10 +1,11 @@
 ---
-title: Reference material for Kusto Query Language - Azure Kusto | Microsoft Docs
-description: This article describes Reference material for Kusto Query Language in Azure Kusto.
+title: Reference material for Kusto Query Language - Azure Data Explorer | Microsoft Docs
+description: This article describes Reference material for Kusto Query Language in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

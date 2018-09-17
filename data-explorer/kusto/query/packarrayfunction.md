@@ -1,10 +1,11 @@
 ---
-title: pack_array() - Azure Kusto | Microsoft Docs
-description: This article describes pack_array() in Azure Kusto.
+title: pack_array() - Azure Data Explorer | Microsoft Docs
+description: This article describes pack_array() in Azure Data Explorer.
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: kusto
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
