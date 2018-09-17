@@ -33,7 +33,7 @@ Extents are *immutable*. Once created, an extent is never modified,
 and the extent may only be queried, reassigned to a different node,
 or dropped out of the table. Data modification happens by creating
 one or more new extents and transactionally swapping old extent(s)
-with new extent(s). 
+with new extent(s).
 
 Extents hold a collection of records, physically arranged in columns.
 This technique (called **columnar store**) makes it possible to efficiently
@@ -54,9 +54,10 @@ merging stops once an extent reaches certain limits, such as size,
 as beyond a certain point merging extents reduces rather than increases
 efficiency.
 
-> Note that the process of merging extents does not modify existing extents.
-  Rather, a new extent is created as a merge of multiple existing extents, and
-  then the merged extent replaces its forefathers in a single transaction.
+> [!NOTE]
+> The process of merging extents does not modify existing extents.
+> Rather, a new extent is created as a merge of multiple existing extents, and
+> then the merged extent replaces its forefathers in a single transaction.
 
 The common "lifecycle" of an extent therefore is:
 1. The extent is created by an **ingestion** operation.
@@ -117,9 +118,8 @@ Kusto assigns a special meaning to all extent tags whose value has the
 format *prefix* *suffix*, where *prefix* is one of:
 * `drop-by:`
 * `ingest-by:`
-* `aggregate-by:`
 
-## `drop-by` extent tags
+## 'drop-by:' extent tags
 Tags that start with a **`drop-by:`** prefix can be used to control which other
 extents to merge with; extents that have a given `drop-by:` tag can be merged
 together, but they won't be merged with other extents. This allows the user
@@ -143,7 +143,7 @@ performance.
 it's recommended to [drop the tags](extents-commands.md#drop-extent-tags).
 
 
-## `ingest-by` extent tags
+## 'ingest-by:' extent tags
 Tags that start with an **`ingest-by:`** prefix can be used to ensure that data
 is only ingested once. The user can issue an ingest command that prevents
 the data from being ingested if there's already an extent with this specific
@@ -159,12 +159,13 @@ The following example ingests data only once (the second command will do nothing
 .ingest ... with @'{"ingestIfNotExists":"[\"2016-02-17\]"}'
 ``` 
 
-> Note that in the common case, an ingest command is likely to include
-  both an `ingest-by:` tag and an `ingestIfNotExists` property,
-  set to the same value. 
+> [!NOTE] 
+> In the common case, an ingest command is likely to include
+>  both an `ingest-by:` tag and an `ingestIfNotExists` property,
+>  set to the same value. 
 
 **Performance notes:**
-- Over-using `ingest-by` tags is not recommended.
+- Overusing `ingest-by` tags is not recommended.
 If the pipeline feeding Kusto is known to have data duplications, it's recommended
 to solve these as much as possible before ingesting the data into Kusto,
 and use `ingest-by` tags in Kusto only for cases where the part which ingests to Kusto
