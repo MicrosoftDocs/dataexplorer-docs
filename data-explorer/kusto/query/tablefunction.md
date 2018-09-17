@@ -25,7 +25,7 @@ table('StormEvent')
 * *stringConstant*: Name of the table that is referenced. Argument has to be _constant_ prior of query execution, i.e. cannot come from sub-query evaluation.
 
 * *query_data_scope*: An optional parameter that controls the tables's datascope -- whether the query applies to all data or just part of it. Possible values:
-    - `"hotcache"`: Table scope is data that is covered by [cache policy](https://kusdoc2.azurewebsites.net/docs/concepts/cachepolicy.html)
+    - `"hotcache"`: Table scope is data that is covered by [cache policy](../concepts/cachepolicy.md)
     - `"all"`: Table scope is all data, hot or cold.
     - `"default"`: Table scope is default (cluster default policy)
 

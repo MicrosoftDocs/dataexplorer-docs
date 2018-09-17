@@ -63,10 +63,10 @@ The following diagram outlines the Direct ingestion client interaction with Kust
 > Kusto Ingest Client implementations are thread-safe and intended to be reused. There is no need to create an instance of `KustoQueuedIngestClient` class for each or even several ingest operations. A single instance of `KustoQueuedIngestClient` is required per target Kusto cluster per user process. In fact, running multiple instances is counter productive and may DoS the Data Management cluster.
 
 ### Supported Data Formats
-When using native ingestion, the data to be ingested is be uploaded (if not already there) to  one or more Azure Storage Blobs. Currently supported blob formats are documented in the [Supported Data Formats](https://kusdoc2.azurewebsites.net/docs/concepts/data-ingestion.html#supported-data-formats) section.
+When using native ingestion, the data to be ingested is be uploaded (if not already there) to  one or more Azure Storage Blobs. Currently supported blob formats are documented in the [Supported Data Formats](../../concepts/data-ingestion.md#supported-data-formats) section.
 
 ### Schema Mapping
-[Schema mappings](https://kusdoc2.azurewebsites.net/docs/concepts/data-ingestion.html#schema-mapping) help deterministically bind source data fields to destination table columns.
+[Schema mappings](../../concepts/data-ingestion.md#schema-mapping) help deterministically bind source data fields to destination table columns.
 
 ## Usage and Further Reading
 * As described above, the recommended basis for sustainable and high scale ingestion solutions for Kusto should be the **KustoQueuedIngestClient**.

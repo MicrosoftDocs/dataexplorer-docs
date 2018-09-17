@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # Cache policy
 
-This article describes commands used for creation and altering [cache policy](https://kusdoc2.azurewebsites.net/docs/concepts/cachepolicy.html) 
+This article describes commands used for creation and altering [cache policy](../concepts/cachepolicy.md) 
 
 ## Displaying the cache policy
 

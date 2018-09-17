@@ -385,7 +385,7 @@ v24.3 |
 
 **Limitations**
 
-If Purge command was executed on this database, undo drop table command can't be executed to a version earlier to the purge execution. See [GDPR](https://kusdoc2.azurewebsites.net/docs/concepts/compliance.html#gdpr) 
+If Purge command was executed on this database, undo drop table command can't be executed to a version earlier to the purge execution.
 
 Extent can be recovered only if the hard delete period of the extent container it resides in wasn't reached yet.
 

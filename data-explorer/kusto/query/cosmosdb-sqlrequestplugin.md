@@ -29,7 +29,7 @@ and returns the first rowset in the results.
 
 **Restrictions**
 
-Kusto service controls allowed sql_request plugin destinations by [Callout policy](https://kusdoc2.azurewebsites.net/docs/concepts/calloutpolicy.html)
+Kusto service controls allowed sql_request plugin destinations by [Callout policy](../concepts/calloutpolicy.md)
 
 **Examples**
 

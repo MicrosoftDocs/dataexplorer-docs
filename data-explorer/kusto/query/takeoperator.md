@@ -34,7 +34,7 @@ in its results when executing multiple times, even if the data set hasn't change
 
 Even is the number of rows returned by the query is not explicitly limited
 by the query (no `take` operator is used), Kusto limits that number by default.
-Please see [Kusto query limits](https://kusdoc2.azurewebsites.net/docs/concepts/querylimits.html) for details.
+Please see [Kusto query limits](../concepts/querylimits.md) for details.
 
 See:
 [sort operator](sortoperator.md)

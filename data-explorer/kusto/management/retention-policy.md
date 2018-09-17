@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # Retention policy
 
-This article describes control commands used for creating and altering [retention policy](https://kusdoc2.azurewebsites.net/docs/concepts/retentionpolicy.html).
+This article describes control commands used for creating and altering [retention policy](../concepts/retentionpolicy.md).
 
 ## Show retention policy
 

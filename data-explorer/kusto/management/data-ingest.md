@@ -20,10 +20,10 @@ The `.ingest` control command
 such as data ingestion through a dedicated REST API (streaming ingestion)
 and using external tools.
 
-Please see [data ingestion](https://kusdoc2.azurewebsites.net/docs/concepts/data-ingestion.html) for an overview
+Please see [data ingestion](../concepts/data-ingestion.md) for an overview
 of the data ingestion process and the various options of ingesting data.
 
-The transactional guarantees of the different commands listed below appear [here](https://kusdoc2.azurewebsites.net/docs/concepts/data-ingestion-transactional-guarantees.html).
+The transactional guarantees of the different commands listed below appear [here](../concepts/data-ingestion-transactional-guarantees.md).
 
 ## .ingest
 
@@ -187,7 +187,7 @@ Tips: You can use [getschema](../query/getschemaoperator.md) operator on the tar
     * For an `.append` or `.set-or-append` command that doesn't create the table, the current folder name gets overridden.
     * Example: `folder='MyFolder'`
   * *IngestionTimePolicySpecification* is an optional value which specifies a value for the 
-  table's [Ingestion Time Policy](https://kusdoc2.azurewebsites.net/docs/concepts/ingestiontimepolicy.html), that should be
+  table's [Ingestion Time Policy](../concepts/ingestiontimepolicy.md), that should be
   set as part of the execution of a command which creates a new table (if not specified,
   policy is not set).
       * This won't have an effect for commands which are executed against already existing tables.

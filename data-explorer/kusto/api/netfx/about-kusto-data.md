@@ -59,7 +59,7 @@ using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
 }
 ```
 
-Additional examples can be found in the [Kusto Code Samples](https://kusdoc2.azurewebsites.net/docs/code/codesamples.html) project.
+
 
 ## The KustoClientFactory client factory
 

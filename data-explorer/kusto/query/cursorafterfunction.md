@@ -32,4 +32,4 @@ See [database cursors](../management/databasecursor.md) for additional
 details on database cursors.
 
 This function can only be invoked on records of a table which has the
-[IngestionTime policy](https://kusdoc2.azurewebsites.net/docs/concepts/ingestiontimepolicy.html) enabled.
+[IngestionTime policy](../concepts/ingestiontimepolicy.md) enabled.

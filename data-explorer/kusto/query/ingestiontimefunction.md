@@ -13,7 +13,7 @@ ms.date: 09/24/2018
 Retrieves the record's `$IngestionTime` hidden `datetime` column, or null.
 
 The `$IngestionTime` column is automatically defined when the table's
-[IngestionTime policy](https://kusdoc2.azurewebsites.net/docs/concepts/ingestiontimepolicy.html) is set (enabled).
+[IngestionTime policy](../concepts/ingestiontimepolicy.md) is set (enabled).
 If the table does not have this policy defined, a null value is returned.
 
 This function must be used in the context of an actual table in order

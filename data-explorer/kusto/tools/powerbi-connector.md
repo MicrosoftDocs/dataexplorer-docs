@@ -147,7 +147,7 @@ only supports anonymous HTTP POST requests.)
 ### Reaching Kusto query limits 
 
 If running a query in Power BI results in an error of: _"[Expression.Error] We cannot convert a value of type Record to type List"_, 
-most likely your query returns more data that Kusto's default limits (500,000 rows or 64MB, as described in the [Query Limits](https://kusdoc2.azurewebsites.net/docs/concepts/querylimits.html) section).
+most likely your query returns more data that Kusto's default limits (500,000 rows or 64MB, as described in the [Query Limits](../concepts/querylimits.md) section).
 
 This limit is currently not configurable, but we are working on improving this scenario.
 

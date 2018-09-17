@@ -12,7 +12,7 @@ ms.date: 09/24/2018
 
 ## Ad-hoc query tools
 
-* [Kusto.Cli](./kusto-cli.md) - A command-line interface tool for querying and controlling Kusto
+
 * [Kusto.Explorer](./kusto-explorer.md) - The primary desktop tool for querying and controlling Kusto
 * [Kusto.WebExplorer](./kusto-webexplorervnext.md) - Web UX for querying Kusto
 
@@ -30,6 +30,3 @@ ms.date: 09/24/2018
 * [Microsoft Logic App](./logicapps.md) - Execute Kusto queries automatically as part of [Microsoft Logic App](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-what-are-logic-apps)
 
 
-## Data ingestion tools
-
-* [LightIngest](./lightingest.md) - Help utility for ad-hoc data ingesting into Kusto

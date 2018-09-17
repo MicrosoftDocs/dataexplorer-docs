@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ---
 # RowOrder policy 
 
-This article describes control commands used for creating and altering [row order policy](https://kusdoc2.azurewebsites.net/docs/concepts/roworderpolicy.html).
+This article describes control commands used for creating and altering [row order policy](../concepts/roworderpolicy.md).
 
 ## Show RowOrder policy
 

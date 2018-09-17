@@ -59,7 +59,7 @@ union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster
 >**Note:** name of the default database is also a potential match, so database("&#42;").* specifies all tables of all databases
 including the default.
 
->**Note:** for the discussion on how shema changes affect cross-cluster queries see [Cross-cluster queries and schema changes](https://kusdoc2.azurewebsites.net/docs/concepts/crossclusterandschemachanges.html)
+>**Note:** for the discussion on how shema changes affect cross-cluster queries see [Cross-cluster queries and schema changes](../concepts/crossclusterandschemachanges.md)
 
 ## Restriction of Access
 Qualified names or patterns can also be included in [restrict access](./restrictstatement.md) statement (wildcards in cluster names are not allowed)
@@ -116,7 +116,7 @@ Functions that get one or more table arguments can only be accessed in the same 
 cluster("OtherCluster").database("OtherDb").MyCalc(datatable(x:string, y:string)["x","y"] ) 
 ```
 
-The schema of the remote function being called must be known and invariant of its parameters (see also [Cross-cluster queries and schema changes](https://kusdoc2.azurewebsites.net/docs/concepts/crossclusterandschemachanges.html)) . So the following is **not valid**:
+The schema of the remote function being called must be known and invariant of its parameters (see also [Cross-cluster queries and schema changes](../concepts/crossclusterandschemachanges.md)) . So the following is **not valid**:
 
 Tabular function in `OtherDb`:
 ```kusto

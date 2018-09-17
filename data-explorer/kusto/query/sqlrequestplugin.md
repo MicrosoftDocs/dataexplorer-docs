@@ -94,4 +94,4 @@ certificate.
 
 **Restrictions**
 
-Kusto service controls allowed sql-request plugin destinations by [Callout policy](https://kusdoc2.azurewebsites.net/docs/concepts/calloutpolicy.html)
+Kusto service controls allowed sql-request plugin destinations by [Callout policy](../concepts/calloutpolicy.md)

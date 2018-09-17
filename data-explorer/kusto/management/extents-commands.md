@@ -339,76 +339,7 @@ tagged with `drop-by:MyTag`:
 |4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f
 |2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df 
 
-### .attach extents by metadata
 
-**Syntax**
-
-`.attach` [`async`] `extents` `by` `metadata` `<|` *Query to obtain extents metadata*
-
-`.attach` [`async`] `extents` `into` `table` *DestinationTableName* `by` `metadata` `<|` *Query to obtain extents metadata*
-
-- `async` (optional): specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned,
-  and the operation's status can be monitored using the [.show operations](./diagnostics.md#show-operations) command).
-
-- *Query to obtain extents metadata*: a query or command which should have the following output schema:
-  - *ExtentId*: `string`
-  - *ExtentMetadata*: `string`
-  - *TableName*: `string` (this column should exist with non-empty values in case *DestinationTableName* isn't explicitly specified in the command)
-
-- This command runs in the context of a specific database, 
-and attaches the specified extents to the destination table(s), according to the extents' metadata, as returned by 
-*Query to obtain extents metadata*.
-- The command can be used for restoring extents which have been soft-deleted, in case:
-  - The extent container(s) the extents reside in have not yet been hard-deleted (according to the effective [retention policy](https://kusdoc2.azurewebsites.net/docs/concepts/retentionpolicy.html)).
-  - A [purge](https://kusdoc2.azurewebsites.net/docs/concepts/compliance-gdpr.html) command hasn't been run on any table in the database since.
-
-
-Requires [Cluster admin permission](../management/access-control/role-based-authorization.md).
-
-**Restrictions**
-- All extents specified by *Query to obtain extents metadata* are expected to reside in extent containers which are managed by the target database.
-- All extents are expected to have at least a single common column with the destination table (a column is identified by its ID (GUID) in this case).
-
-**Return output** (for sync execution)
-
-Output parameter |Type |Description 
----|---|---
-DatabaseName |string |The name of the destination database.
-TableName |string |The name of the destination table.
-ExtentsAttached |int |The number of extents which have been attached.
-
-**Examples**
-
-Attaches the last 10 extents dropped from `MyTable` in `MyDatabase` back to the table:
-
-```kusto
-.attach extents into table MyTable by metadata <|
-    .show database MyDatabase journal
-    | where Event == 'DROP-EXTENT-BY-RETENTION'
-    | parse EntityContainerName with * 'Table=' TableName
-    | where TableName == 'MyTable'
-    | top 10 by EventTimestamp desc
-    | project ExtentId = EntityName, ExtentMetadata = OriginalEntityState
-```
-
-Attaches the last 10 extents dropped from any table in `MyDatabase` back to the table(s):
-
-```kusto
-.attach extents into table MyTable by metadata <|
-    .show database MyDatabase journal
-    | where Event == 'DROP-EXTENT-BY-RETENTION'
-    | parse EntityContainerName with * 'Table=' TableName
-    | top 10 by EventTimestamp desc
-    | project ExtentId = EntityName, ExtentMetadata = OriginalEntityState, TableName
-```
-
-**Example output** 
-
-|DatabaseName |TableName |ExtentsAttached
-|---|---|---
-|MyDatabase |MyTable1 | 3
-|MyDatabase |MyTable2 | 6
-|MyDatabase |MyTable3 | 1
 
 ## Extent Tags
 
