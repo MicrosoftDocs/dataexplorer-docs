@@ -22,6 +22,8 @@ ms.date: 09/24/2018
 * [Azure Notebooks](azurenotebooks.md) - Query Kusto from an Azure Notebooks notebook (preview)
 * [Excel](./excel.md) - Add Kusto query as Excel data source
 * [PowerBI](./powerbi.md) - Build reports and dashboards in Power BI on top of Kusto data
+* [PowerBI Connector](./powerbi-connector.md) - a Power BI Desktop connector for Kusto
+
 
 
 ## Orchestration tools
