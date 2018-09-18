@@ -75,14 +75,14 @@ In the following:
 
 To open Kusto.WebExplorer in a specific cluster/database context, issue an HTTP `GET` for either:
 
-* `https://kusto.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName*
+* `https://dataexplorer.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName*
 * `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName*
 
 To open Kusto.WebExplorer in a specific cluster/database context and run a query, issue
 an HTTP `GET` for any of the following:
 
-* `https://kusto.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName* `?query=` *EncodedQuery*
-* `https://kusto.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName* `?query=` *Query*
+* `https://dataexplorer.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName* `?query=` *EncodedQuery*
+* `https://dataexplorer.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName* `?query=` *Query*
 * `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&q=` *EncodedQuery*
 * `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&query=` *Query*
 
