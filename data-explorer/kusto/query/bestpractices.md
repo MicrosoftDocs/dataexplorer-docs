@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # Query best practices 
 
-There are several DOs and DONTs you can follow to make you query run faster.
+There are several DOs and DONT's you can follow to make you query run faster.
 
 ## DOs
 
