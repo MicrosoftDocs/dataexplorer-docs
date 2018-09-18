@@ -20,8 +20,8 @@ To start working with the Kusto .NET client libraries using PowerShell:
 
 1. Download the `Microsoft.Azure.Kusto.Tools` NuGet package from [here](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
 2. Extract the contents of the 'tools' directory in the package (using 7-zip, for example).
-3. Use the PowerShell `Add-Type` command to load the desired library.
-   The `-Path` parameter to the command should by used to indicate the location
+3. Call `[System.Reflection.Assembly]::LoadFrom("path")` from powershell, to load the required library. 
+    - The `"path"` parameter to the command should indicate the location
    of the extracted files.
 4. Once all dependent .NET assemblies are loaded, create a Kusto connection string,
    instantiate a *query provider* or an *admin provider*, and run the queries or commands (as shown in the [example](powershell.md#example) below).
