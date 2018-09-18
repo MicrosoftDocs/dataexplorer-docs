@@ -13,34 +13,34 @@ ms.date: 09/24/2018
 
 There are several DOs and DONTs you can follow to make you query run faster.
 
-**DOs**
+## DOs
 
 -	Use time filters first. Kusto is highly optimized to utilize time filters.
 -	Prefer 'has' keyword over 'contains' when looking for full tokens. 'has' is more performant as it doesn't have to look-up for substrings.
 -	Prefer looking in specific column rather than using '*' (full text search across all columns)
 -   If you find that most of your queries deal with extracting fields from [dynamic objects](./scalar-data-types/dynamic.md) across millions of rows, consider
-materialize this column at ingestion time. This way - you will pay only once for column extraction.  
+materializing this column at ingestion time. This way - you will pay only once for column extraction.  
 
-**DON'Ts**
+## DON'Ts
 
--	Trying new queries without 'limit [small number]' or 'count' at the end. 
+-	Trying new queries without `limit [small number]` or `count` at the end. 
     Running unbound queries over unknown data set may yield GBs of results to be returned to the client, resulting in slow response and cluster being busy.
 -	If you find that you're applying conversions (JSON, string, etc) over 1B+ records - reshape your query to reduce amount of data fed into the conversion
 -	Don't use tolower(Col) == "lowercasestring" to do case insensitive comparisons. Kusto has an operator for that. Please use Col =~ "lowercasestring" instead.
 -   Don't filter on a calculated column, if you can filter on a table column. In other words: Don't do this `T | extend _value = <expression> | where predicate(_value)`, instead do: `T | where predicate(expression(_value))`
 
-**Summarize Operator**
+## summarize Operator
 
 -	When the group by keys of the summarize operator are with high cardinality (best practice: above 1 million) then it is recommended to use the [hint.strategy=shuffle](./shufflesummarize.md).
 
-**Join Operator**
+## join Operator
 
 -	When using [join operator](./joinoperator.md) - choose the table with less rows to be the first one (left-most). 
 -	When using [join operator](./joinoperator.md) data across clusters - run the query on the "right" side of the join (where most of the data is located).
 -	When left side is small (up to 100K records) and right side is big then it is recommended to use the [hint.strategy=broadcast](./broadcastjoin.md).
 -	When both sides of the join are too big and the join key is with high cardinality, then it is recommeneded to use the [hint.strategy=shuffle](./shufflejoin.md).
     
-**Parse Operator and Extract function**
+## parse operator and extract() function
 
 -	[parse operator](./parseoperator.md) (simple mode) is useful when the parsed column has strings which has the same pattern which fits the pattern passed to the parse operator.
 for example, for a column which all the strings looks like  `"Time = <time>, ResourceId = <resourceId>, Duration = <duration>, ...."` and we are interested in extracting the values of each field, then defintely parse operator is better than few extract statements (for each field we need an extract function call).
@@ -48,9 +48,9 @@ for example, for a column which all the strings looks like  `"Time = <time>, Res
 -	[extract() function](./extractfunction.md) is useful when the parsed strings do not have the same format then the only way to get the required values is using a regex (in this case, there is no mutual pattern for all the strings in that column and parse can't be used). 
 for example, when we want to extract all numeric values from a Text.
 
-**Materialize function**
+## materialize() function
 
--	When using [materialize() function](./materializefunction.md), try to push all possible operators that will reduce the materialized data set and still keeps the semantics of the query. e.g: filters, project only needed columns ... etc.
+-	When using the [materialize() function](./materializefunction.md), try to push all possible operators that will reduce the materialized data set and still keeps the semantics of the query. e.g: filters, project only needed columns ... etc.
     in this example:
 
     ```kusto
