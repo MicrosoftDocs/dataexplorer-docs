@@ -53,13 +53,12 @@
 ### [bag_unpack](bag-unpackplugin.md)
 ### [basket](basketplugin.md)
 <!--### [diagnose](diagnoseplugin.md)-->
-### [cosmosdb_sql_request](cosmosdb-sqlrequestplugin.md)
+
 ### [dcount_intersect](dcount-intersect-plugin.md)
 ### [diffpatterns](diffpatternsplugin.md)
 <!--### [fold](foldplugin.md)-->
 <!--### [forecast](forecastplugin.md)-->
-### [http_request](httprequestplugin.md)
-### [http_request_post](httprequestplugin.md)
+
 ### [narrow](narrowplugin.md)
 <!--### [nmvalues](nmvaluesplugin.md)-->
 ### [pivot](pivotplugin.md)
