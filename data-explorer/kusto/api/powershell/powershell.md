@@ -24,7 +24,7 @@ To start working with the Kusto .NET client libraries using PowerShell:
     - The `"path"` parameter to the command should indicate the location
    of the extracted files.
 4. Once all dependent .NET assemblies are loaded, create a Kusto connection string,
-   instantiate a *query provider* or an *admin provider*, and run the queries or commands (as shown in the [example](powershell.md#example) below).
+   instantiate a *query provider* or an *admin provider*, and run the queries or commands (as shown in the [examples](powershell.md#examples) below).
 
 For detailed information about using the Kusto Client Libraries, see the topic
 with the same name in the documentation.
@@ -82,7 +82,7 @@ IsHealthy = True
 
 ```powershell
 $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvider($kcsb)
-$query = "StormEvents | limit 10"
+$query = "StormEvents | limit 5"
 Write-Host "Executing query: '$query' with connection string: '$($kcsb.ToString())'"
 #   Optional: set a client request ID and set a client request property (e.g. Server Timeout)
 $crp = New-Object Kusto.Data.Common.ClientRequestProperties
@@ -96,20 +96,15 @@ $reader = $queryProvider.ExecuteQuery($query, $crp)
 # "Timestamp" column, in descending order
 $dataTable = [Kusto.Cloud.Platform.Data.ExtendedDataReader]::ToDataSet($reader).Tables[0]
 $dataView = New-Object System.Data.DataView($dataTable)
-$dataView | Sort Timestamp -Descending | Format-Table -AutoSize
+$dataView | Sort StartTime -Descending | Format-Table -AutoSize
 ```
 
 And the output is:
 
-|StartTime          |EndTime            |EpisodeId|EventId|State         |EventType         |InjuriesDirect |InjuriesIndirect |DeathsDirect |DeathsIndirect
-|-------------------|-------------------|---------|-------|--------------|------------------|---------------|-----------------|-------------|--------------
-|2007-09-29 08:11:00|2007-09-29 08:11:00|    11091|  61032|ATLANTIC SOUTH|Waterspout        |             0 |               0 |           0 |             0
-|2007-09-18 20:00:00|2007-09-19 18:00:00|    11074|  60904|FLORIDA       |Heavy Rain        |             0 |               0 |           0 |             0
-|2007-09-20 21:57:00|2007-09-20 22:05:00|    11078|  60913|FLORIDA       |Tornado           |             0 |               0 |           0 |             0
-|2007-12-30 16:00:00|2007-12-30 16:05:00|    11749|  64588|GEORGIA       |Thunderstorm Wind |             0 |               0 |           0 |             0
-|2007-12-20 07:50:00|2007-12-20 07:53:00|    12554|  68796|MISSISSIPPI   |Thunderstorm Wind |             0 |               0 |           0 |             0
-|2007-12-20 10:32:00|2007-12-20 10:36:00|    12554|  68814|MISSISSIPPI   |Tornado           |             2 |               0 |           0 |             0
-|2007-12-20 08:47:00|2007-12-20 08:48:00|    12554|  68834|MISSISSIPPI   |Thunderstorm Wind |             0 |               0 |           0 |             0
-|2007-12-28 02:03:00|2007-12-28 02:11:00|    12561|  68846|MISSISSIPPI   |Hail              |             0 |               0 |           0 |             0
-|2007-12-07 14:00:00|2007-12-08 04:00:00|    13183|  73241|AMERICAN SAMOA|Flash Flood       |             0 |               0 |           0 |             0
-|2007-12-13 09:02:00|2007-12-13 10:30:00|    11780|  64725|KENTUCKY      |Flood             |             0 |               0 |           0 |             0
+|StartTime           |EndTime             |EpisodeId |EventId |State          |EventType         |InjuriesDirect |InjuriesIndirect |DeathsDirect |DeathsIndirect
+|---------           |-------             |--------- |------- |-----          |---------         |-------------- |---------------- |------------ |--------------
+|2007-12-30 16:00:00 |2007-12-30 16:05:00 |    11749 |  64588 |GEORGIA        |Thunderstorm Wind |             0 |               0 |           0 |             0
+|2007-12-20 07:50:00 |2007-12-20 07:53:00 |    12554 |  68796 |MISSISSIPPI    |Thunderstorm Wind |             0 |               0 |           0 |             0
+|2007-09-29 08:11:00 |2007-09-29 08:11:00 |    11091 |  61032 |ATLANTIC SOUTH |Waterspout        |             0 |               0 |           0 |             0
+|2007-09-20 21:57:00 |2007-09-20 22:05:00 |    11078 |  60913 |FLORIDA        |Tornado           |             0 |               0 |           0 |             0
+|2007-09-18 20:00:00 |2007-09-19 18:00:00 |    11074 |  60904 |FLORIDA        |Heavy Rain        |             0 |               0 |           0 |             0
