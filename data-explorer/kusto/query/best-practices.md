@@ -11,9 +11,9 @@ ms.date: 09/24/2018
 ---
 # Query best practices 
 
-There are several DOs and DONT's you can follow to make you query run faster.
-
 ## General "do"s and "don't"s
+
+There are several "Dos and Don'ts" you can follow to make you query run faster.
 
 ### Do
 
@@ -25,10 +25,10 @@ materializing this column at ingestion time. This way - you will pay only once f
 
 ### Don't
 
--	Try new queries without `limit [small number]` or `count` at the end.
+-   Try new queries without `limit [small number]` or `count` at the end.
     Running unbound queries over unknown data set may yield GBs of results to be returned to the client, resulting in slow response and cluster being busy.
--	If you find that you're applying conversions (JSON, string, etc) over 1 billion records - reshape your query to reduce amount of data fed into the conversion
--	Don't use `tolower(Col) == "lowercasestring"` to do case insensitive comparisons. Kusto has an operator for that. Please use `Col =~ "lowercasestring"` instead.
+-   If you find that you're applying conversions (JSON, string, etc) over 1 billion records - reshape your query to reduce amount of data fed into the conversion
+-   Don't use `tolower(Col) == "lowercasestring"` to do case insensitive comparisons. Kusto has an operator for that. Please use `Col =~ "lowercasestring"` instead.
 -   Don't filter on a calculated column, if you can filter on a table column. In other words: Don't do this `T | extend _value = <expression> | where predicate(_value)`, instead do: `T | where predicate(expression(_value))`
 
 ## summarize operator
@@ -37,10 +37,10 @@ materializing this column at ingestion time. This way - you will pay only once f
 
 ## join operator
 
--	When using [join operator](./joinoperator.md) - choose the table with less rows to be the first one (left-most). 
--	When using [join operator](./joinoperator.md) data across clusters - run the query on the "right" side of the join (where most of the data is located).
--	When left side is small (up to 100,000 records) and right side is big then it is recommended to use the [hint.strategy=broadcast](./broadcastjoin.md).
--	When both sides of the join are too big and the join key is with high cardinality, then it is recommeneded to use the [hint.strategy=shuffle](./shufflejoin.md).
+-   When using [join operator](./joinoperator.md) - choose the table with less rows to be the first one (left-most). 
+-   When using [join operator](./joinoperator.md) data across clusters - run the query on the "right" side of the join (where most of the data is located).
+-   When left side is small (up to 100,000 records) and right side is big then it is recommended to use the [hint.strategy=broadcast](./broadcastjoin.md).
+-   When both sides of the join are too big and the join key is with high cardinality, then it is recommeneded to use the [hint.strategy=shuffle](./shufflejoin.md).
     
 ## parse operator and extract() function
 
@@ -52,7 +52,7 @@ for example, when we want to extract all numeric values from a Text.
 
 ## materialize() function
 
--	When using the [materialize() function](./materializefunction.md), try to push all possible operators that will reduce the materialized data set and still keeps the semantics of the query. e.g: filters, project only needed columns ... etc.
+When using the [materialize() function](./materializefunction.md), try to push all possible operators that will reduce the materialized data set and still keeps the semantics of the query. e.g: filters, project only required columns, etc.
     in this example:
 
     ```kusto

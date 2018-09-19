@@ -1,4 +1,5 @@
 # [Overview](index.md)
+## [Best practices](best-practices.md)
 
 # [Schema](schema.md)
 ## [Databases](databases.md)

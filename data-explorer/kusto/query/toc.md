@@ -1,7 +1,7 @@
 # [Overview](./index.md)
 ## [Tutorial](tutorial.md)
 ## [Samples](samples.md)
-## [Best practices](bestpractices.md)
+## [Best practices](best-practices.md)
 
 # [Entities](./schema-entities/index.md)
 ## [Entity names](./schema-entities/entity-names.md)
