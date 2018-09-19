@@ -54,12 +54,12 @@ use of the `with` keyword. The supported properties are:
 |----------------------|--------------------------------------------------------|-----------|
 |`format`              |Data format                                             |Indicates the data format: `csv`, `tsv`, `json`, etc.|
 |`zipPattern`          |Regular-expression                                      |Indicates the names of files/blobs in ZIP archive format to ingest data from.| 
-|`csvMapping`          |Json serialization of `List<Dictionary<string, string>>`|CSV mapping - see below|
-|`csvMappingReference` |A reference to a csv mapping stored on the table		|CSV mapping - see below|
-|`jsonMapping`         |Json serialization of `List<Dictionary<string, string>>`|JSON mapping - see below| 
-|`jsonMappingReference`|A reference to a json mapping stored on the table 		|JSON mapping - see below| 
-|`avroMapping`         |Json serialization of `List<Dictionary<string, string>>`|Avro mapping - see below| 
-|`avroMappingReference`|A reference to a avro mapping stored on the table 		|Avro mapping - see below| 
+|`csvMapping`          |Json serialization of `List<Dictionary<string, string>>`|[CSV mapping](mappings.md#csv-mapping)|
+|`csvMappingReference` |A reference to a csv mapping stored on the table		|[CSV mapping](mappings.md#csv-mapping)|
+|`jsonMapping`         |Json serialization of `List<Dictionary<string, string>>`|[JSON mapping](mappings.md#json-mapping)| 
+|`jsonMappingReference`|A reference to a json mapping stored on the table 		|[JSON mapping](mappings.md#json-mapping)| 
+|`avroMapping`         |Json serialization of `List<Dictionary<string, string>>`|[Avro mapping](mappings.md#avro-mapping)| 
+|`avroMappingReference`|A reference to a avro mapping stored on the table 		|[Avro mapping](mappings.md#avro-mapping)| 
 |`ValidationPolicy`    |`{"ValidationOptions":`*opt*, <br/>`"ValidationImplications":`*implic*`}` |*opt*=<br/>0 = no validation<br/>1 = verify all rows in the csv have the same number of columns <br/>2 = [reserved for internal use] ignores fields that are not enclosed properly with double quotes <br/>*implic* =<br/> 0 = fail<br/>1 = ignore<br/>If not specified, the default validation policy is: {"ValidationOptions":1, "ValidationImplications":1}
 |`tags`                |Json serialization of `HashSet<string>`                 |Short strings which can be used to describe and identify the extent or it's data.|
 |`ingestIfNotExists`   |Boolean                                                 |Before ingesting data Kusto will check if one of the extents in the table contains "ingest-by:" match to one of the given tags.  If so the ingest operation will return without ingesting the data.|

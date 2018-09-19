@@ -125,7 +125,7 @@ JSON mapping can be [pre-created](tables.md#create-ingestion-mapping) and be ref
   with @'{"jsonMapping" : "[{\"column\":\"rownumber\",\"path\":\"$.rownumber\"},{\"column\":\"rowguid\",\"path\":\"$.rowguid\"},...]","format":"json"}'
 ```
     
-## AVRO Mapping
+## Avro Mapping
 
 When the source file is in Avro format, this maps the Avro file content to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. 
 The columns mapped in the Avro Mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
