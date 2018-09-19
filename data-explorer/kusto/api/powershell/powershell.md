@@ -29,20 +29,25 @@ To start working with the Kusto .NET client libraries using PowerShell:
 For detailed information about using the Kusto Client Libraries, see the topic
 with the same name in the documentation.
 
-## Example
+## Examples
+
+### Initialization
 
 ```powershell
-#  Initialization - 1/3
+#  Part 1 of 3
+#  ------------
 #  Packages location - This is an example to the location where you extract the Microsoft.Azure.Kusto.Tools package.
 #  Please make sure you load the types from a local directory and not from a remote share.
 $packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\Tools"
 
-#  Initialization - 2/3
+#  Part 2 of 3
+#  ------------
 #  Loading the Kusto.Client library and its dependencies
 dir $packagesRoot\* | Unblock-File
 [System.Reflection.Assembly]::LoadFrom("$packagesRoot\Kusto.Data.dll")
 
-#  Initialization - 3/3
+#  Part 3 of 3
+#  ------------
 #  Defining the connection to your cluster / database
 $clusterUrl = "https://help.kusto.windows.net;Fed=True"
 $databaseName = "Samples"
@@ -54,9 +59,11 @@ $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder ($clusterUrl, $databa
 #     $applicationId = "application ID goes here"
 #     $applicationKey = "application key goes here"
 #     $kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKey)
+```
 
-# Running queries and commands
-#   EXAMPLE 1: Running an admin command - e.g. ".show diagnostics"
+### Example: Running an admin command
+
+```powershell
 $adminProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslAdminProvider($kcsb)
 $command = [Kusto.Data.Common.CslCommandGenerator]::GenerateDiagnosticsShowCommand()
 Write-Host "Executing command: '$command' with connection string: '$($kcsb.ToString())'"
@@ -64,8 +71,16 @@ $reader = $adminProvider.ExecuteControlCommand($command)
 $reader.Read() # this reads a single row/record. If you have multiple ones returned, you can read in a loop 
 $isHealthy = $Reader.GetBoolean(0)
 Write-Host "IsHealthy = $isHealthy"
- 
-#   EXAMPLE 2: Running a query - e.g. against the "StormEvents" table in the "Samples" database
+```
+
+And the output is:
+```
+IsHealthy = True
+```
+
+### Example: Running a query
+
+```powershell
 $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvider($kcsb)
 $query = "StormEvents | limit 10"
 Write-Host "Executing query: '$query' with connection string: '$($kcsb.ToString())'"
@@ -83,3 +98,18 @@ $dataTable = [Kusto.Cloud.Platform.Data.ExtendedDataReader]::ToDataSet($reader).
 $dataView = New-Object System.Data.DataView($dataTable)
 $dataView | Sort Timestamp -Descending | Format-Table -AutoSize
 ```
+
+And the output is:
+
+|StartTime          |EndTime            |EpisodeId|EventId|State         |EventType         |InjuriesDirect |InjuriesIndirect |DeathsDirect |DeathsIndirect
+|-------------------|-------------------|---------|-------|--------------|------------------|---------------|-----------------|-------------|--------------
+|2007-09-29 08:11:00|2007-09-29 08:11:00|    11091|  61032|ATLANTIC SOUTH|Waterspout        |             0 |               0 |           0 |             0
+|2007-09-18 20:00:00|2007-09-19 18:00:00|    11074|  60904|FLORIDA       |Heavy Rain        |             0 |               0 |           0 |             0
+|2007-09-20 21:57:00|2007-09-20 22:05:00|    11078|  60913|FLORIDA       |Tornado           |             0 |               0 |           0 |             0
+|2007-12-30 16:00:00|2007-12-30 16:05:00|    11749|  64588|GEORGIA       |Thunderstorm Wind |             0 |               0 |           0 |             0
+|2007-12-20 07:50:00|2007-12-20 07:53:00|    12554|  68796|MISSISSIPPI   |Thunderstorm Wind |             0 |               0 |           0 |             0
+|2007-12-20 10:32:00|2007-12-20 10:36:00|    12554|  68814|MISSISSIPPI   |Tornado           |             2 |               0 |           0 |             0
+|2007-12-20 08:47:00|2007-12-20 08:48:00|    12554|  68834|MISSISSIPPI   |Thunderstorm Wind |             0 |               0 |           0 |             0
+|2007-12-28 02:03:00|2007-12-28 02:11:00|    12561|  68846|MISSISSIPPI   |Hail              |             0 |               0 |           0 |             0
+|2007-12-07 14:00:00|2007-12-08 04:00:00|    13183|  73241|AMERICAN SAMOA|Flash Flood       |             0 |               0 |           0 |             0
+|2007-12-13 09:02:00|2007-12-13 10:30:00|    11780|  64725|KENTUCKY      |Flood             |             0 |               0 |           0 |             0
