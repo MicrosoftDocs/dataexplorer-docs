@@ -30,7 +30,7 @@ There are several "Dos and Don'ts" you can follow to make your management comman
 2. Don't Run `.show schema` command on a cluster which a large schema (e.g. with more than 100 databases). Instead, use [`.show databases schema`](../management/databases.md#show-databases-schema).
 3. Don't run *command-then-query* operations too frequently.
     - *command-then-query*: means piping the result set of the control command and applying filters/aggregations on it.
-        - For example: `.show ... | where | summarize ...`
+        - For example: `.show ... | where ... | summarize ...`
     - When running something like: `.show cluster extents | count` (emphasis on the `| count`), Kusto first prepares a data table holding all details on all extents in the cluster, and then sends that in-memory only table to the Kusto engine in order to do the count. This means that Kusto actually works very hard in an un-optimized path to give you back such a trivial answer.
 4. Excessively using extent tags as part of data ingestion. Especially when using `drop-by:` tags, which limit the system's ability to perform performance-oriented grooming processes in the background.
     - See performance notes [here](../management/extents-overview.md#extent-tagging).

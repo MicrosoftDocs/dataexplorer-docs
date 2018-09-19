@@ -13,10 +13,9 @@ ms.date: 09/24/2018
 
 Kusto supports a number of methods to export the results of queries:
 
-* **Client-side export**: Several tools that provide the ability
-  to query Kusto offer the means to save that data to local files:
+* **Client-side export**: Tools that provide the ability
+  to query Kusto may offer the means to save that data to local files. For example:
   * [Kusto.Explorer](../tools/kusto-explorer.md)
-  * [Kusto.Cli](../tools/kusto-cli.md)
   
   **Service-side export (push)**: Kusto provides an `.export` control
   command which can be used to instruct the Kusto service to "push"
@@ -87,7 +86,7 @@ h@"https://ACCOUNT_NAME.blob.core.windows.net/CONTAINER_NAME/virtual_directory?S
 ```
  
 Note: It is highly recommended to export data to Azure Blob Storage that is co-located
-with the exporting Kusto cluter in the same region.
+with the exporting Kusto cluster in the same region.
  
 **Examples** 
 

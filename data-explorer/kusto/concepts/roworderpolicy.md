@@ -17,4 +17,4 @@ the majority of data queries filter on specific values of a specific large-dimen
 (such as an application ID or a tenant ID) and the data ingested into the table is unlikely
 to be pre-ordered according to this column.
 
-Control commands which allow to manage policy of Row Order [destinated here](../management/roworder-policy.md). 
+Control commands for managing Row Order policies can be found [here](../management/roworder-policy.md). 
