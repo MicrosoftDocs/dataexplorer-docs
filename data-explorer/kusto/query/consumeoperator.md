@@ -28,7 +28,7 @@ T | consume
   property `perftrace` is set), the operator will return a single
   row with a single column called `Stats` of type `dynamic` holding the statistics
   of the data source fed to the `consume` operator.
-* **DecodeBlocks**: A constant Boolean value. If set to `true` (or if *PerfTrace*
+* *DecodeBlocks*: A constant Boolean value. If set to `true` (or if *PerfTrace*
   is `true`), the operator will decode all the data it gets as input.
 
 The `consume` operator can be used for estimating the

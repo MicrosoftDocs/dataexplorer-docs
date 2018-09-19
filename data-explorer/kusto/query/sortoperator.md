@@ -13,7 +13,9 @@ ms.date: 09/24/2018
 
 Sort the rows of the input table into order by one or more columns.
 
-    T | sort by strlen(country) asc, price desc
+```kusto
+T | sort by strlen(country) asc, price desc
+```
 
 **Alias**
 

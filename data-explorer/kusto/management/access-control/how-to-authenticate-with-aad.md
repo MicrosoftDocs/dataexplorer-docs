@@ -68,7 +68,7 @@ WebRequest request = WebRequest.Create(new Uri("https://your_cluster_name.kusto.
 AuthenticationContext authContext = new AuthenticationContext("AAD Authority URL");
 
 // Acquire application token for Kusto:
-ClientCredential applicationCredentials = new ClientCredential("your applciation client ID", "your application key");
+ClientCredential applicationCredentials = new ClientCredential("your application client ID", "your application key");
 AuthenticationResult result =
         authContext.AcquireTokenAsync("https://your_cluster_name.kusto.windows.net", applicationCredentials).GetAwaiter().GetResult();
 
@@ -81,7 +81,7 @@ AAD also supports Application authentication with an X509v2 certificate (require
 
 ## Reuse existing AAD tokens to access Kusto
 
-Let's say you already have your own authentication scenario against AAD for your own application - and thus you already have an AAD access token at tyour disposal.
+Let's say you already have your own authentication scenario against AAD for your own application - and thus you already have an AAD access token at your disposal.
 In that case you can use the [OAuth2 token exchange flow](https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-04) to procure a token for Kusto by providing AAD with token you have at your disposal.
 
 ### Step 1: Establish trust relationship between your application and Kusto service

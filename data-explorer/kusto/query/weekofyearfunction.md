@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # weekofyear()
 
-Retunrs the integer number represents the week number.
+Returns the integer number represents the week number.
 
 Aligned with ISO 8601 standards, where first day of the week is Sunday.
 

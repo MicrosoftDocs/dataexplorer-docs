@@ -79,7 +79,7 @@ SQL Server endpoint:
 > [!WARNING]
 > Connection strings and queries that include confidential
 > information or information that should be otherwise guarded should be
-> obfuscated so that they'll be ommitted from any Kusto tracing.
+> obfuscated so that they'll be omitted from any Kusto tracing.
 > Please see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals) for more details.
 
 **Encryption and server validation**

@@ -111,7 +111,7 @@ StormEvents
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|North to northeast winds gusting to around 58 mph were reported in the mountains of Ventura county.|
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|The Warm Springs RAWS sensor reported northerly winds gusting to 58 mph.|
 
-Same can be achived by using [sort](./sortoperator.md) and 
+Same can be achieved by using [sort](./sortoperator.md) and 
 then [take](./takeoperator.md) operator
 
 ```kusto

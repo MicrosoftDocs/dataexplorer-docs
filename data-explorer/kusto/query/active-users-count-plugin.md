@@ -33,7 +33,7 @@ T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), start
 * *LookbackWindow*: A sliding time window defining a period where user appearance is checked. Lookback period starts at ([current appearance] - [lookback window]) and ends on ([current appearance]). 
 * *Period*: Scalar constant timespan to count as single appearance (a user will be counted as active if it appears in at least distinct ActivePeriodsCount of this timespan.
 * *ActivePeriodsCount*: Minimal number of distinct active periods to decide if user is active. Active users are those who appeared in at least (equal or greater than) active periods count.
-* *Bin*: Scalar constanct  value of the analysis step period.
+* *Bin*: Scalar constant value of the analysis step period.
 * *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
 
 **Returns**

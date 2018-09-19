@@ -16,7 +16,7 @@ This topic discusses the lifecycle of tables and associated control commands:
 |Operation                               |Relevant commands               |
 |----------------------------------------|--------------------------------|
 |Enumerate tables in a database          |`.show tables`                  |
-|Create/modify/drop tables               |`.create tables`, `.create table`, `.altert table`, `.alter-merge table`, `.drop tables`, `.drop table`, `.undo drop table`, `.rename table`|
+|Create/modify/drop tables               |`.create tables`, `.create table`, `.alter table`, `.alter-merge table`, `.drop tables`, `.drop table`, `.undo drop table`, `.rename table`|
 |Data ingestion into a table             |`.ingest`, `.set`, `.append`, `.set-or-append` (see [Data Ingestion](./data-ingest.md) for details).)
 |Manage ingestion mapping                |`.create ingestion mapping`, `.show ingestion mappings`, `.alter ingestion mapping`, `.drop ingestion mapping`|
 |Manage table display properties         |`.alter table docstring`, `.alter table folder`|
@@ -434,7 +434,7 @@ Requires [Table admin permission](../management/access-control/role-based-author
 
 `.create` `table` *TableName* `ingestion` `json` `mapping` *MappingName* *MappingInJsonFormat*
 
-This mapping can be referenced from the ingestion command instead of sending the mapping iteself inside the command.
+This mapping can be referenced from the ingestion command instead of sending the mapping itself as part of the command.
  
 **Example** 
  
@@ -456,7 +456,7 @@ This mapping can be referenced from the ingestion command instead of sending the
 
 `.alter` `table` *TableName* `ingestion` `json` `mapping` *MappingName* *MappingInJsonFormat*
 
-Alters an existing mapping (full mapping replace). This mapping can be referenced from the ingestion command instead of sending the mapping iteself inside the command.
+Alters an existing mapping (full mapping replace). This mapping can be referenced from the ingestion command instead of sending the mapping itself as part of the command.
  
 **Example** 
  

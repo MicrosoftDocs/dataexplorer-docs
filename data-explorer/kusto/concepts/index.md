@@ -65,7 +65,7 @@ table with two columns, `Level` and `Text`:
 
 Control commands have their own syntax (which is not part of the Kusto query
 language syntax, although the two share many concepts). In particular, control
-commnads are distinguished from queries by having the first character in the
+commands are distinguished from queries by having the first character in the
 text of the command be the dot (`.`) character (which cannot start a query).
 This distinction prevents many kinds of security attacks, simply because this
 prevents embedding control commands inside queries.

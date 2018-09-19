@@ -92,7 +92,7 @@ The token returned by ADAL to the Kusto Client Library has the appropriate Kusto
 
 All authenticated principals, regardless of the method used to authenticate, also undergo
 an authorization check before they are allowed to perform an action on a Kusto resource.
-Kusto uses a [role-based authorization model](role-based-authorization.md): princiapsl are ascribed to one or more
+Kusto uses a [role-based authorization model](role-based-authorization.md): principals are ascribed to one or more
 **security roles**, and authorization succeeds as long as one of the principal's roles is authorized.
 
 For example, the **database user role** grants security principals (users or services) the right to

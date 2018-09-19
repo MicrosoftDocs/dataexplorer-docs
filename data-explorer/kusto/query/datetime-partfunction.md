@@ -13,7 +13,9 @@ ms.date: 09/24/2018
 
 Extracts the requested date part as an integer value.
 
-    datetime_part("Day",datetime(2015-12-14))
+```kusto
+datetime_part("Day",datetime(2015-12-14))
+```
 
 **Syntax**
 

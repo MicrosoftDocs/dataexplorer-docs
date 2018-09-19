@@ -37,7 +37,7 @@ well (see examples section).
 If *regex* finds a match in *text*: 
 returns dynamic array including all matches against the indicated capture groups *captureGroups* (or all of capturing groups in the *regex*).
 If number of *captureGroups* is 1: the returned array has a single dimension of matched values.
-If number of *captureGroups* is more than 1: the returned array is two-dimensionaly - collection of multi-value matches per *captureGroups* selection (or all capture groups present in the *regex* if *captureGroups* is omitted) 
+If number of *captureGroups* is more than 1: the returned array is a two-dimensional collection of multi-value matches per *captureGroups* selection (or all capture groups present in the *regex* if *captureGroups* is omitted) 
 
 If there's no match: `null`. 
 

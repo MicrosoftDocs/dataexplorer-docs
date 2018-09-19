@@ -90,9 +90,9 @@ Connect like you connect to SQL Azure Database.
 2. Specify name of Kusto cluster as a server name, e.g. `mykusto.kusto.windows.net`
 3. Use "Active Directory - Integrated" option for authentication.
 4. Click "Options".
-5. In "Connect to database" combo, you can browse avaialble databases via "Browse Server" option.
+5. In "Connect to database" combo, you can browse available databases via "Browse Server" option.
 6. Click "Yes" to proceed with browsing.
-7. The dialog displays tree view with all avialable databases. Can click on one to proceed with connection to the database.
+7. The dialog displays tree view with all available databases. Can click on one to proceed with connection to the database.
 8. Alternatively, in "Connect to database" combo, can choose "default". Click "Connect". Object Explorer would show all databases.
 9. Browsing database objects via SSMS is not supported yet.
 10. Click on your database. Click "New Query" option to open query window.

@@ -90,7 +90,7 @@ or a reference to a [let statement](letstatement.md).
 * *ArgName*: Name of the pattern argument. Patterns allow one or more argument names.
 * *ArgType*: Type of the pattern argument (currently only `string` is allowed)
 * *PathName*: Name of the path argument. Patterns allow zero or one path name.
-* *PathType*: Type of the path argument (currentlyonly `string` is allowed)
+* *PathType*: Type of the path argument (currently only `string` is allowed)
 * *ArgValue1*, *ArgValue2*, ... - values of the pattern arguments (currently only `string` literals are allowed)
 * *PathValue* - value of the pattern path (currently only `string` literals are allowed)
 * *expression*: The *expression* - a tabular expression (for example, `Logs | where Timestamp > ago(1h)`),

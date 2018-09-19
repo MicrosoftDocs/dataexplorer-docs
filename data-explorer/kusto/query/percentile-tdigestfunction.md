@@ -34,7 +34,7 @@ The percentiles/percentilesw value of each value in *Expr*.
 
 **Tips**
 
-1) The function must recieve at least one percent (and maybe more, see the syntax above: *Percentile1* [`,` *Percentile2*] ...[`,` *PercentileN*]) and the result will be
+1) The function must receive at least one percent (and maybe more, see the syntax above: *Percentile1* [`,` *Percentile2*] ...[`,` *PercentileN*]) and the result will be
   a dynamic array which includes the results. (such like [`percentiles()`](percentiles-aggfunction.md))
   
 2) if only one percent was provided and the type was provided also then the result will be a column of the same type provided with the results of that percent (all tdigests must be of that type in this case).

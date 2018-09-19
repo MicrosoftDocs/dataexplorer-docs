@@ -16,7 +16,7 @@ This is achieved by provisioning an [Azure Event Grid](https://docs.microsoft.co
 
 ## Data Format
 * Blobs can be in any of the [formats supported by Kusto](https://kusto.azurewebsites.net/docs/concepts/data-ingestion.html#supported-data-formats).
-* To provide data size information to Kusto on compressed blobs, we strongly recomend that customers will set `rawSizeBytes` property on the blob metadata to uncompressed data size in bytes.
+* To provide data size information to Kusto on compressed blobs, we strongly recommend that customers will set `rawSizeBytes` property on the blob metadata to uncompressed data size in bytes.
 
 **Example in C#**
 
@@ -30,7 +30,7 @@ blob.UploadFromFile(@"C:\somepath\file.csv.gz");
 ## Events Routing
 The transport chosen for streaming Event Grid notification events to Kusto is Event Hub.
 In Kusto there is a 1:1 mapping from an Event Hub to the ingestion properties {Database, Table, Format, IngestionMappingReference}.
-These settings (as reqiured) need to be specified during onboarding for each Event Hub pipeline that is set up.
+These settings (as required) need to be specified during onboarding for each Event Hub pipeline that is set up.
  
 ## How to sign up?
 * Set up an Event Hub to serve as the notifications broker for the Event Grid subscription
@@ -103,7 +103,7 @@ These settings (as reqiured) need to be specified during onboarding for each Eve
 
 * Fill in the details of your Event Grid subscription:
   * Set Endpoint Type to `Event Hubs`
-  * Set Endpoint to event hub created previosly
+  * Set Endpoint to event hub created previously
   * Create name for this subscription, select `Event Grid Schema` as the event schema
   * Set filters for the notifications
   * `Subject Begins With` field is the *literal* prefix of the blob container (as the pattern applied is *startswith* it can span multiple containers). No wildcards allowed.

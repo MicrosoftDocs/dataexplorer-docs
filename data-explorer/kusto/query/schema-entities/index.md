@@ -20,7 +20,7 @@ database, which are query fragments made available for reuse.
 * [Clusters](./clusters.md) are entities that hold databases.
   Clusters have no name, but they can be referenced by using the
   [cluster() special function](../clusterfunction.md) with the cluster's URI.
-  For example, `cluster("https://help.kusto.windows.net")` is a refernce
+  For example, `cluster("https://help.kusto.windows.net")` is a reference
   to a cluster that holds the `Samples` database.
 
 * [Databases](./databases.md) are named entities that hold tables

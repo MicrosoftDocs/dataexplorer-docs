@@ -18,7 +18,7 @@ Takes an expression containing dynamic numerical array as input, replaces all in
 **Syntax**
 
 `series_fill_forward(`*x*`[, `*missing_value_placeholder*`])`
-* Will return series *x* with all instances of *missing_value_placeholder* filled forward.
+* Will return series *x* with all instances of *missing_value_placeholder* filled forwards.
 
 **Arguments**
 

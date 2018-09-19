@@ -25,7 +25,7 @@ to the source table to fail as well. (Care must be used when this is done,
 however, as some user errors such as defining an incorrect query in the update
 policy might prevent **any** data from being ingested into the source table.)
 Data being ingested in the "boundary"
-of transactional update policies beomes available for query in a single transaction.
+of transactional update policies becomes available for query in a single transaction.
 
 The update policy's query is run in a special mode, in which it "sees" only the
 newly ingested data to the source table. It is not possible to query the source
@@ -34,7 +34,7 @@ quadratic-time ingestions.
 
 As the update policy is defined on the destination table, ingesting data into one
 source table might result in multiple queries being run on that data. The order
-of execution of update policites is undefined.
+of execution of update policies is undefined.
 
 As an example for the user of this mechanism, suppose the source table be a high-rate
 trace table with interesting data formatted as a free-text column, while the target

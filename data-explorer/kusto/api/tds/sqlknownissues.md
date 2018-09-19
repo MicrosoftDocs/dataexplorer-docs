@@ -21,7 +21,7 @@ nor does it support the above T-SQL statements.
 
 ## Correlated sub-queries
 
-Kusto doesn't support correlated subquries in `SELECT`, `WHERE`, and `JOIN` clauses.
+Kusto doesn't support correlated sub-queries in `SELECT`, `WHERE`, and `JOIN` clauses.
 
 ## Cursors
 

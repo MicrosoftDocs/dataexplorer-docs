@@ -126,7 +126,7 @@ Where:
 
 ### DataTable
 
-Queries which are issued with the `EnableProgressiveQuery` flag set to false will not include any of the previous 4 frames (`TableHeader`, `TableFragment`, `TableProgress` and `TableCompletion`). Instead, each table in the data set will be tranmistted using a single frame, the `DataTable` frame, which contains all the information the client needs in order to read the table.
+Queries which are issued with the `EnableProgressiveQuery` flag set to false will not include any of the previous 4 frames (`TableHeader`, `TableFragment`, `TableProgress` and `TableCompletion`). Instead, each table in the data set will be transmitted using a single frame, the `DataTable` frame, which contains all the information the client needs in order to read the table.
 
 ```json
     {

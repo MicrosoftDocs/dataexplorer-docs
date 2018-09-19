@@ -15,7 +15,7 @@ ms.date: 09/24/2018
 
 **Syntax**
 
-`T | as *name*`
+*T* `|` `as` *name*
 
 **Arguments**
 

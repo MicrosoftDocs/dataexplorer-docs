@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # parse_ipv4()
 
-Converts input to integener (signed 64-bit) number representation.
+Converts input to integer (signed 64-bit) number representation.
 
 ```kusto
 parse_ipv4("127.0.0.1") == 2130706433

@@ -40,7 +40,7 @@ hash_sha256("World")                   // 78ae647dc5544d227130a0682a51e30bc7777f
 hash_sha256(datetime("2015-01-01"))    // e7ef5635e188f5a36fafd3557d382bbd00f699bd22c671c3dea6d071eb59fbf8
 ```
 
-The following example uses the hash_sha256 function to run a query on SatrtTime column of the data
+The following example uses the hash_sha256 function to run a query on StartTime column of the data
 
 ```kusto
 StormEvents 

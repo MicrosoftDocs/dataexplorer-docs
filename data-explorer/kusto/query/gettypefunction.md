@@ -34,10 +34,10 @@ A string representing the runtime type of its single argument.
 |`gettype(1==1)`                     |`bool`       |
 |`gettype(now())`                    |`datetime`   |
 |`gettype(1s)`                       |`timespan`   |
-|`gettype(parsejson('1'))`           |`int`        |
-|`gettype(parsejson(' "abc" '))`     |`string`     |
-|`gettype(parsejson(' {"abc":1} '))` |`dictionary` | 
-|`gettype(parsejson(' [1, 2, 3] '))` |`array`      |
+|`gettype(parse_json('1'))`           |`int`        |
+|`gettype(parse_json(' "abc" '))`     |`string`     |
+|`gettype(parse_json(' {"abc":1} '))` |`dictionary` | 
+|`gettype(parse_json(' [1, 2, 3] '))` |`array`      |
 |`gettype(123.45)`                   |`real`       |
 |`gettype(guid(12e8b78d-55b4-46ae-b068-26d7a0080254))`|`guid`| 
-|`gettype(parsejson(''))`            |`null`|
+|`gettype(parse_json(''))`            |`null`|

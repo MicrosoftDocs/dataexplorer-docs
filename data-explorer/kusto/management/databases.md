@@ -70,7 +70,7 @@ The default call without any options specified is equal to 'identity' option.
 |MergePolicy |String | The database's Extents Merge policy (serialized in JSON format).
 |CachingPolicy |String | The database's Caching policy (serialized in JSON format).
 |ShardingPolicy |String | The database's Sharding policy (serialized in JSON format).
-|StreaminIngestionPolicy |String | The database's Streaming Ingestion policy (serialized in JSON format).
+|StreamingIngestionPolicy |String | The database's Streaming Ingestion policy (serialized in JSON format).
 |IngestionBatchingPolicy |String | The database's Ingestion Batching policy (serialized in JSON format).
 
 **Output for 'datastats' option**

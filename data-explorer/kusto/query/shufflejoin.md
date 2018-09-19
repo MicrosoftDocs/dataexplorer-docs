@@ -79,11 +79,11 @@ on $left.c_custkey == $right.o_custkey
 
 Trying the same queries on a larger dataset where left side of the join is 150M and the cardinality of the key is 148M, Right side of the join is 1.5B and the cardinality of the key is ~100M :
 
-The query with the default join strategy hits kusto limits and timesout after 4 mins.
+The query with the default join strategy hits kusto limits and times-out after 4 mins.
 
 While using shuffle join strategy, the query ends after ~34 seconds and the memory usage peak is 1.23GB.
 
-In shuffle query, the default partitions number is the cluster nodes number. This number can be overriden by using the syntax `hint.num_partitions = total_partitions` which will control the number of partitions.
+In shuffle query, the default partitions number is the cluster nodes number. This number can be overridden by using the syntax `hint.num_partitions = total_partitions` which will control the number of partitions.
 
 This hint is useful when the cluster has a small number of cluster nodes where the default partitions number will be small too and the query still fails or takes long execution time.
 

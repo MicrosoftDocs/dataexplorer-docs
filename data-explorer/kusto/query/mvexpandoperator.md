@@ -85,7 +85,7 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 **Returns**
 
 Multiple rows for each of the values in any array in the named column or in the array expression.
-If several columns or expressions are specified they are expanded in parallel so for each input row there will be as many output rows as there are elements in the longest expanded expression (shorter lists are padded with null's). If the value in a row is an empty array, the row expands to nothing (will not show in the result set). If the value in a row is not an array, the row is kept as is in the result set. 
+If several columns or expressions are specified they are expanded in parallel so for each input row there will be as many output rows as there are elements in the longest expanded expression (shorter lists are padded with nulls). If the value in a row is an empty array, the row expands to nothing (will not show in the result set). If the value in a row is not an array, the row is kept as is in the result set. 
 
 The expanded column always has dynamic type. Use a cast such as `todatetime()` or `toint()` if you want to compute or aggregate values.
 
@@ -101,4 +101,4 @@ See [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON object
 
 **Examples**
 
-See [Chart count of live activites over time](./samples.md#concurrent-activities).
+See [Chart count of live activities over time](./samples.md#concurrent-activities).

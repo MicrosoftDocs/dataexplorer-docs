@@ -61,7 +61,7 @@ the prescribed time, but it can take the cluster some time before it actually de
 5. A soft-delete period of 0 can be set as part of a table-level policy (but not as part of a database-level policy).
     - This could be beneficial in case that a transactional [update policy](updatepolicy.md) is being used to transform incoming data at 
 ingestion time, and redirect the output it into a different table.
-    - Using this option will prevent ingested data from being committed to the source table and from being persisted as part of the ingesteion 
+    - Using this option will prevent ingested data from being committed to the source table and from being persisted as part of the ingestion 
 operation. As a result, it will contribute to overall better performance of the operation.
 
 

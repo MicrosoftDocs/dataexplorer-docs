@@ -60,5 +60,5 @@ T
 
 * Apply where-clauses before using `extractjson()`
 * Consider using a regular expression match with [extract](extractfunction.md) instead. This can run very much faster, and is effective if the JSON is produced from a template.
-* Use `parsejson()` if you need to extract more than one value from the JSON.
+* Use `parse_json()` if you need to extract more than one value from the JSON.
 * Consider having the JSON parsed at ingestion by declaring the type of the column to be dynamic.

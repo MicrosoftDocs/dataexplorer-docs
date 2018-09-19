@@ -93,7 +93,7 @@ MyDistinct((range x from 1 to 3 step 1))
 ## Declaring user-defined functions
 
 The declaration of a user-defined function provides the name
-of the function, its schema (what paramters, if any, it accepts),
+of the function, its schema (what parameters, if any, it accepts),
 and the body of the function. Lambda functions do not have a name,
 but must be immediately bound to a name via a `let` statement, so
 they can be regarded the same as user-defined stored functions.

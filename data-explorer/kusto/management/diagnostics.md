@@ -41,7 +41,7 @@ Returns a set having one record per node currently active in the cluster.
 .show cluster
 ```
 
-NodeId|Address|Name|StartTime|IsAdmin|MachineTotalMemory|MachineAvalableMemory|ProcessorCount|EnvironmentDescription
+NodeId|Address|Name|StartTime|IsAdmin|MachineTotalMemory|MachineAvailableMemory|ProcessorCount|EnvironmentDescription
 ---|---|---|---|---|---|---|---|---
 Kusto.Azure.Svc_IN_1|net.tcp://100.112.150.30:23107/|Kusto.Azure.Svc_IN_4/RD000D3AB1E9BD/WaWorkerHost/3820|2016-01-15 02:00:22.6522152|True|274877435904|247797796864|16|{"UpdateDomain":0, "FaultDomain":0}
 Kusto.Azure.Svc_IN_3|net.tcp://100.112.154.34:23107/|Kusto.Azure.Svc_IN_3/RD000D3AB1E062/WaWorkerHost/2760|2016-01-15 05:52:52.1434683|False|274877435904|258740346880|16|{"UpdateDomain":1, "FaultDomain":1}
@@ -86,7 +86,7 @@ Returns an information about Kusto cluster health state.
 |MergesSuccessRate|Double|The percentage of merges operations that completed successfully in past 10 minutes.
 |NotHealthyReason|String|String specifying the reason for cluster not being healthy	
 |IsAttentionRequired|Boolean|Whether cluster requires Operation team attention
-|AttentionRequiredReason|String|String specifying the reason for cluster requirng attention
+|AttentionRequiredReason|String|String specifying the reason for cluster requiring attention
 |ProductVersion|String|String with product information (branch, version, etc)
 |FailedIngestOperations|Int64|Number of failed ingestion operations past 10 minutes
 |FailedMergeOperations|Int64|Number of failed merge operations past 1 hour

@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # toint()
 
-Converts input to integener (signed 32-bit) number representation.
+Converts input to integer (signed 32-bit) number representation.
 
 ```kusto
 toint("123") == 123

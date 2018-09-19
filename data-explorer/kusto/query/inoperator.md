@@ -51,7 +51,7 @@ Rows in *T* for which the predicate is `true`
 * The expression list can produce up to `1,000,000` values    
 * Nested arrays are flattened into a single list of values, for example `x in (dynamic([1,[2,3]]))` turns into `x in (1,2,3)` 
 * In case of tabular expressions, the first column of the result set is selected   
-* Adding '~' to operator makes values' search case insensitive: `x in~ (expresion)` or `x !in~ (expression)`.
+* Adding '~' to operator makes values' search case insensitive: `x in~ (expression)` or `x !in~ (expression)`.
 
 **Examples:**  
 

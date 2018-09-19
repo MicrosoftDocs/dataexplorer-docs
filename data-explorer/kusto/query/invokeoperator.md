@@ -41,7 +41,7 @@ The following example shows how to use `invoke` operator to call lambda expressi
 
 ```kusto
 // clipped_average(): calculates percentiles limits, and then makes another 
-//                    pass over the data to calcualte average with values inisde the percentiles
+//                    pass over the data to calculate average with values inside the percentiles
 let clipped_average = (T:(x: long), lowPercentile:double, upPercentile:double)
 {
    let high = toscalar(T | summarize percentiles(x, upPercentile));

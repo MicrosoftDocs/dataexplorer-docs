@@ -11,13 +11,6 @@ ms.date: 09/24/2018
 ---
 # The Kusto REST API Response Object
 
-## Status Codes
-
-> TODO
-
-## Headers
-
-> TODO: Document the headers (x-ms-client-request-id and...)
 
 ## Body
 

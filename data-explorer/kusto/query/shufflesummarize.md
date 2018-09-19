@@ -54,7 +54,7 @@ The following example shows how shuffle summarize improves performance considera
 
 The source table has 150M records and the cardinality of the group by key is 10M which is spread over 10 cluster nodes.
 
-Running the regular summarize strategy, the query ends after 1:08 and the memory usage preak is ~3GB:
+Running the regular summarize strategy, the query ends after 1:08 and the memory usage peak is ~3GB:
 
 
 ```kusto

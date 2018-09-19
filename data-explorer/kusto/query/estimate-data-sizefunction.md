@@ -26,7 +26,7 @@ estimate_data_size(Col1, Col2, Col3)
 
 **Arguments**
 
-* *col1*, *col2*: Selection of column refereces in the source tabular expression that are used for data size estimation. To include all columns, use `*` (asterisk) syntax.
+* *col1*, *col2*: Selection of column references in the source tabular expression that are used for data size estimation. To include all columns, use `*` (asterisk) syntax.
 
 **Returns**
 

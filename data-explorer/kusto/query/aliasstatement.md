@@ -14,7 +14,7 @@ ms.date: 09/24/2018
 Alias statements allow to define alias for databases which can be used later in the same query.
 
 This is useful when working with several clusters while trying to appear as working on less clusters or only on one cluster.
-The alias must be defined according to the following syntax where 'clustername' and 'databasename' must be an existing and valid entities.
+The alias must be defined according to the following syntax where *clustername* and *databasename* must be an existing and valid entities.
 
 **Syntax**
 

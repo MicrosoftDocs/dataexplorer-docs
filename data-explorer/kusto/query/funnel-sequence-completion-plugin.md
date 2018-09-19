@@ -84,4 +84,4 @@ StormEvents
 
 Understanding the results:  
 The outcome it 3 funnels (for periods: 1 hour, 4 hours, and 1 day), while for each funnel step a number 
-of distinct count of EpisodeId is shown. You can see that the more time is given to complete the whole sequence of `Hail` -> `Tornado` -> `Thunderstorm Wind` the higher `dcount` value (meaning more occurences of the sequence reaching the step of the funnel).
+of distinct count of EpisodeId is shown. You can see that the more time is given to complete the whole sequence of `Hail` -> `Tornado` -> `Thunderstorm Wind` the higher `dcount` value (meaning more occurrences of the sequence reaching the step of the funnel).

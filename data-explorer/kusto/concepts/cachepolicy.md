@@ -106,10 +106,10 @@ This means that the last 28 days of data will be on the cluster SSD and
 ## Cache policy does not make Kusto a cold storage technology
 
 Note: Customers sometimes assume wrongly that they can replace cold storage query technologies
-such as Cosmos and Hadoop by using Kusto with a very long retention period and a small amount
+such as Data Lake Analytics and Hadoop by using Kusto with a very long retention period and a small amount
 of hot cache. This doesn't work, however -- while the Kusto cold data cache can enable great
 performance over cold storage data for point queries, it is not designed for large cold-span
-queries that process huge data sets as do Cosmos and Hadoop. In particular:
+queries that process huge data sets as do Data Lake Analytics and Hadoop. In particular:
 1. Kusto sacrifices some aspects such as resilience to node failures during a long query for excellent ad-hoc performance
 2. Kusto is tuned for ad-hoc queries with intermediate result sets fitting the cluster's total
    RAM, rather than tuning its algorithms for storing intermediate results in persistent storage (SSD

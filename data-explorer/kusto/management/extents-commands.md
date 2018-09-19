@@ -294,7 +294,7 @@ Removes all extents from 'TestTable':
 This command runs in the context of a specific database, 
 moves the specified extents from their source tables to the destination table,
 and drops the specified extents from the destination table.
-All of the drop and move operations are done transactionally.
+All of the drop and move operations are done in a single transaction.
 
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) for the source and destination tables.
 

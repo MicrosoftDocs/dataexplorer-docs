@@ -47,7 +47,8 @@ The following standard HTTP headers can be used.
 |`Expect`         |Can be set to `100-Continue`.                                                                                                  |
 |`Host`           |Should be set to the DNS name used when sending the request (e.g., `help.kusto.windows.net`).                                  |
 
-**(1)** Currently supported are `basic` (for basicauth authentication) and `bearer` (for AAD and dSTS).
+
+**(1)** Use `bearer` (for AAD authentication).
 
 ### Extension HTTP headers
 

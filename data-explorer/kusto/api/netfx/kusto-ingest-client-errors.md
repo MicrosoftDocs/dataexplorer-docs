@@ -15,10 +15,10 @@ Any error during the ingestion handling on the client side is exposed to the use
 ## Failures Overview
 
 ### KustoDirectIngestClient Exceptions
-While attempting to ingest from multiple sources, errors might occur during the ingestion of some of those surces, while others may be ingested successfully. 
+While attempting to ingest from multiple sources, errors might occur during the ingestion of some of those sources, while others may be ingested successfully. 
 If an ingestion fails for a particular source, it is logged and the client continues to ingest the remaining sources for the ingestion. 
 After going over all sources for ingestion, an `IngestClientAggregateException` is thrown, containing a member `IList<IngestClientException> IngestionErrors`.
-`IngestClientException` and its derived classes contain a field `IngestionSource` and an `Error` field that together form a mapping from the source that failed to be ingested to the error that occured while attempting to ingest it. One can use the information in the IngestionErrors list to investigate which sources failed to be ingested and why. `IngestClientAggregateException` exception also contains a boolean property `GlobalError`, that indicates whether an error occurred for all sources.
+`IngestClientException` and its derived classes contain a field `IngestionSource` and an `Error` field that together form a mapping from the source that failed to be ingested to the error that occurred while attempting to ingest it. One can use the information in the IngestionErrors list to investigate which sources failed to be ingested and why. `IngestClientAggregateException` exception also contains a boolean property `GlobalError`, that indicates whether an error occurred for all sources.
 
 ### Failures Ingesting From Files or Blobs 
 If an ingestion failure occurred while attempting to ingest from blob\file, the ingestion sources are not deleted, even if the `deleteSourceOnSuccess` flag is set to `true`.
@@ -32,7 +32,7 @@ In the `IngestFromDataReader` and `IngestFromDataReaderAsync` methods, the `reta
 
 ## KustoQueuedIngestClient Exceptions
 KustoQueuedIngestClient ingests data by uploading messages to an Azure queue. If any error occurs before and during the queueing process, an `IngestClientAggregateException`
-is thrown at the end of the execution with a collection of `IngestClientException` that contains the source that was not posted to the queue (for every failure) and the error that occured 
+is thrown at the end of the execution with a collection of `IngestClientException` that contains the source that was not posted to the queue (for every failure) and the error that occurred 
 while attempting to post the message.
 
 ### Posting to Queue Failures With File or Blob as a Source
@@ -62,7 +62,7 @@ To help handle ingestion failures programmatically, failure information is enric
 
 |ErrorCode|Reason|
 |-----------|-------|
-|Unknown| Unknown error occured|
+|Unknown| Unknown error occurred|
 |Stream_LowMemoryCondition| Operation ran out of memory|
 |Stream_WrongNumberOfFields| CSV document has inconsistent number of fields|
 |Stream_InputStreamTooLarge| The document submitted for ingestion has exceeded the allowed size|
@@ -76,8 +76,8 @@ To help handle ingestion failures programmatically, failure information is enric
 |Download_UnknownError| Failed to download source from Azure storage - unknown error|
 |UpdatePolicy_QuerySchemaDoesNotMatchTableSchema| Failed to invoke update policy. Query schema does not match table schema|
 |UpdatePolicy_FailedDescendantTransaction| Failed to invoke update policy. Failed descendant transactional update policy|
-|UpdatePolicy_IngestionError| Failed to invoke update policy. Ingestion Error occured|
-|UpdatePolicy_UnknownError| Failed to invoke update policy. Unknown error occured|
+|UpdatePolicy_IngestionError| Failed to invoke update policy. Ingestion Error occurred|
+|UpdatePolicy_UnknownError| Failed to invoke update policy. Unknown error occurred|
 |BadRequest_MissingJsonMappingtFailure| Json pattern did not ingested with jsonMapping parameter|
 |BadRequest_InvalidOrEmptyBlob| Blob is invalid or empty zip archive|
 |BadRequest_DatabaseNotExist| Database does not exist|
@@ -89,7 +89,7 @@ To help handle ingestion failures programmatically, failure information is enric
 |BadRequest_TableAccessDenied| Access to table is denied|
 |BadRequest_MessageExhausted| Message is exhausted|
 |General_BadRequest| General bad request (may hint for ingestion to non existing Database/Table)|
-|General_InternalServerError| Internal server error occured|
+|General_InternalServerError| Internal server error occurred|
 
 ## Detailed Kusto.Ingest Exceptions Reference
 
@@ -200,7 +200,7 @@ Fields:
 
 Additional information:
 
-If an ingestion source exceeds the maximal size of 4GB, the exception is thrown. The size validation can be overriden by the IgnoreSizeLimit
+If an ingestion source exceeds the maximal size of 4GB, the exception is thrown. The size validation can be overridden by the IgnoreSizeLimit
 flag in the [IngestionProperties class](kusto-ingest-client-reference.md#class-kustoingestionproperties), however it is not recommended 
 [to ingest single sources larger than 1 GB](about-kusto-ingest.md#ingestion-best-practices).
 

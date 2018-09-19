@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # System information
 
-This section summarizes commands that are avialble to `Database Admins` and `Database Monitors` roles to explore usage, track operations and investigate ingestion failures.
+This section summarizes commands that are available to `Database Admins` and `Database Monitors` roles to explore usage, track operations and investigate ingestion failures.
 
 * [.show queries](queries.md) - displays information on completed and running queries.
 * [.show commands](commands.md) - displays information on completed commands and their resources utilization.

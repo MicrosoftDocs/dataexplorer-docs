@@ -31,7 +31,7 @@ cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster")
 
 join operation is not a cross-cluster join because both its operands originate on the same cluster.
 
-When Kusto encounters cross-cluster join it will automatically decide where to execute the join opertion itself. This decision can have one of the three possible outcomes:
+When Kusto encounters cross-cluster join it will automatically decide where to execute the join operation itself. This decision can have one of the three possible outcomes:
 * Execute join operation on the cluster of the left operand, right operand will be first fetched by this cluster. (join in example **(1)** will be executed on the local cluster)
 * Execute join operation on the cluster of the right operand, left operand will be first fetched by this cluster. (join in example **(2)** will be executed on the "SomeCluster2")
 * Execute join operation locally (meaning on the cluster that received the query), both operands will be first fetched by local cluster

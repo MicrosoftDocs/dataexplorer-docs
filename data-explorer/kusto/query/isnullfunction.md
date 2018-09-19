@@ -34,9 +34,9 @@ True or false depending on the whether the value is null or not null.
 |-----------------|-----------|
 |`""`             |`false`    |
 |`"x"`            |`false`    |
-|`parsejson("")`  |`true`     |
-|`parsejson("[]")`|`false`    |
-|`parsejson("{}")`|`false`    |
+|`parse_json("")`  |`true`     |
+|`parse_json("[]")`|`false`    |
+|`parse_json("{}")`|`false`    |
 
 **Example**
 

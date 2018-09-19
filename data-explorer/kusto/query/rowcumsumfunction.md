@@ -22,7 +22,7 @@ Calculates the cumulative sum of a column in a [serialized row set](./windowsfun
   `decimal`, `int`, `long`, or `real`. Null *Term* values do not affect the
   sum.
 * *Restart* is an optional argument of type `bool` that indicates when the
-  accummulation operation should be restarted (set back to 0). It can be
+  accumulation operation should be restarted (set back to 0). It can be
   used to indicate partitions of the data; see the second example below.
 
 **Returns**

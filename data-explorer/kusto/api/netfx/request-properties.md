@@ -21,7 +21,7 @@ request, and much more. A full list of supported properties can be found at the 
 It is recommended the clients will always set at least one property for every request, the
 `ClientRequestId` programmatic property (equivalently, the `x-ms-client-request-id` HTTP header).
 This property attaches the provided string (which should be unique for every request) to the request,
-so as to allow correlation of client activities and service activties.
+so as to allow correlation of client activities and service activities.
 
 The content of this property can be any printable unique string, such as a GUID. It is recommended,
 however, that it follow this format:
@@ -51,7 +51,7 @@ See [the Kusto REST API request object](../rest/request.md) for additional infor
 ## Providing values for query parametrization as request properties
 
 Kusto queries can refer to query parameters by using a specialized [declare query-parameters](../../query/queryparametersstatement.md)
-statement in the query text. This allows client applications to parametrize Kusto queries
+statement in the query text. This allows client applications to parameterize Kusto queries
 based on user input in a secure manner (without fear of injection attacks.)
 
 Programmatically, one may set properties values by using the `ClearParameter`, `SetParameter`, and `HasParameter`
@@ -144,10 +144,10 @@ OptionNoRequestTimeout                      | norequesttimeout                  
 OptionServerTimeout                         | servertimeout                              | Overrides the default request timeout. [TimeSpan]                                                                                                                                                                  
 OptionNoTruncation                          | notruncation                               | Enables suppressing truncation of the query results returned to the caller. [Boolean]                                                                                                                              
 OptionTruncationMaxRecords                  | truncationmaxrecords                       | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). [Long]                                                                                                    
-OptionTruncationMaxSize                     | truncationmaxsize                          | Overrides the dfefault maximum data size a query is allowed to return to the caller (truncation). [Long]                                                                                                           
+OptionTruncationMaxSize                     | truncationmaxsize                          | Overrides the default maximum data size a query is allowed to return to the caller (truncation). [Long]                                                                                                           
 OptionTakeMaxRecords                        | query_take_max_records                     | Enables limiting query results to this number of records. [Long]                                                                                                                                                   
 OptionQueryFanoutThreadsPercent             | query_fanout_threads_percent               | The percentage of threads to fanout execution to. [Int]                                                                                                                                                            
-OptionQueryFanoutNodesPercent               | query_fanout_nodes_percent                 | The percentage of nodes to fanour execution to. [Int]                                                                                                                                                              
+OptionQueryFanoutNodesPercent               | query_fanout_nodes_percent                 | The percentage of nodes to fanout execution to. [Int]                                                                                                                                                              
 OptionQueryDistributionNodesSpanSize        | query_distribution_nodes_span              | If set, controls the way sub-query merge behaves: the executing node will introduce an additional level in the query hierarchy for each sub-group of nodes; the size of the sub-group is set by this option. [Int] 
 OptionDeferPartialQueryFailures             | deferpartialqueryfailures                  | If true, disables reporting partial query failures as part of the result set. [Boolean]                                                                                                                            
 OptionResponseDynamicSerialization          | response_dynamic_serialization             | Controls the serialization of 'dynamic' values in result sets. ['string', 'json']                                                                                                                                  

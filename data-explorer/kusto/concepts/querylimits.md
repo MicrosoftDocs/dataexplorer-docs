@@ -129,7 +129,7 @@ In many cases, exceeding this limit can be avoided by sampling the
 data set to 10%. The two queries below show how one might perform this
 sampling; the first is statistical sampling (using a random number
 generator), while the second is deterministic sampling (by hashing
-some column from the data set, usuall some ID):
+some column from the data set, usually some ID):
 
 ```kusto
 T | where rand() < 0.1 | ...

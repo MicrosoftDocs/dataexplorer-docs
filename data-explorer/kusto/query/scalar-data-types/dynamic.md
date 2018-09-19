@@ -20,16 +20,17 @@ type. A value of this type can be:
 * A property bag mapping unique `string` to `dynamic` values (possibly empty)
 * A null value of the `dynamic` type
 
+> [!NOTE]
 > Values of type `dynamic` are limited to 1MB bytes (2^20).
-
+>
 > Although the `dynamic` type appears JSON-like, it can hold values that the JSON
-  model does not represent, as the Kusto model is more-detailed than JSON's
-  (for example, it differentiates between `long` and `real` numbers, has explicit
-  support for `datetime` and `timespan` values, etc.) Therefore, in serializing
-  `dynamic` values into a JSON representation, Kusto will use a string to serialize
-  values that JSON does not support. Conversely, Kusto will parse some strings
-  as strongly-typed values if they can be parsed as such (for example, `datetime`
-  values). For more about the JSON object model, see See [json.org](https://json.org/).
+> model does not represent, as the Kusto model is more-detailed than JSON's
+> (for example, it differentiates between `long` and `real` numbers, has explicit
+> support for `datetime` and `timespan` values, etc.) Therefore, in serializing
+> `dynamic` values into a JSON representation, Kusto will use a string to serialize
+> values that JSON does not support. Conversely, Kusto will parse some strings
+> as strongly-typed values if they can be parsed as such (for example, `datetime`
+> values). For more about the JSON object model, see See [json.org](https://json.org/).
 
 ## dynamic literals
 
@@ -44,7 +45,7 @@ print o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})
 For convenience, `dynamic` literals that appear in the query text itself may
 also include other Kusto literals (such as `datetime` literals, `timespan`
 literals, etc.) This extension over JSON is not available when parsing strings
-(such as when using the `parsejson` function or when ingesting data), but it
+(such as when using the `parse_json` function or when ingesting data), but it
 allows one to do this:
 
 ```kusto
@@ -52,13 +53,13 @@ print d=dynamic({"a": datetime(1970-05-11)})
 ```
 
 To parse a `string` value that follows the JSON encoding rules into a `dynamic`
-value, use the `parsejson` function. For example:
+value, use the `parse_json` function. For example:
 
-* `parsejson('[43, 21, 65]')` - an array of numbers
-* `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')` - a dictionary
-* `parsejson('21')` - a single value of dynamic type containing a number
-* `parsejson('"21"')` - a single value of dynamic type containing a string
-* `parsejson('{"a":123, "b":"hello", "c":[1,2,3], "d":{}}')` - gives the same
+* `parse_json('[43, 21, 65]')` - an array of numbers
+* `parse_json('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')` - a dictionary
+* `parse_json('21')` - a single value of dynamic type containing a number
+* `parse_json('"21"')` - a single value of dynamic type containing a string
+* `parse_json('{"a":123, "b":"hello", "c":[1,2,3], "d":{}}')` - gives the same
    value as `o` in the example above.
 
 > [!WARNING]
@@ -123,12 +124,12 @@ of the cast function listed below to cast it to the actual type.
 
 |Expression | Value | Type|
 |---|---|---|
-| X | parsejson('[100,101,102]')| array|
-|X[0]|parsejson('100')|dynamic|
+| X | parse_json('[100,101,102]')| array|
+|X[0]|parse_json('100')|dynamic|
 |toint(X[1])|101| int|
-| Y | parsejson('{"a1":100, "a b c":"2015-01-01"}')| dictionary|
-|Y.a1|parsejson('100')|dynamic|
-|Y["a b c"]| parsejson("2015-01-01")|dynamic|
+| Y | parse_json('{"a1":100, "a b c":"2015-01-01"}')| dictionary|
+|Y.a1|parse_json('100')|dynamic|
+|Y["a b c"]| parse_json("2015-01-01")|dynamic|
 |todate(Y["a b c"])|datetime(2015-01-01)| datetime|
 
 Cast functions are:

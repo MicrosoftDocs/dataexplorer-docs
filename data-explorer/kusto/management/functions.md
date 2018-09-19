@@ -159,7 +159,7 @@ Rules for parameter types and CSL-statements are the same as for [`let` statemen
 - Requires [Database admin permission](../management/access-control/role-based-authorization.md)
 - Modification of the function is also allowed to [Database user](../management/access-control/role-based-authorization.md) who originally created the function
 - Not all kusto types are currently supported in let statements. supported types are: string, long, datetime, timespan, double.
-- Use 'skipvalidation' to skip semantic validation of the function. Useful when functions are created in a wrong order and F1 that uses F2 is created earlier.
+- Use `skipvalidation` to skip semantic validation of the function. Useful when functions are created in a wrong order and F1 that uses F2 is created earlier.
 
  
 **Example** 

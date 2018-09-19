@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # log10()
 
-Retuns the comon (base-10) logarithm function.  
+Returns the common (base-10) logarithm function.  
 
 **Syntax**
 

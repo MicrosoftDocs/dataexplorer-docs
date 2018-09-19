@@ -19,7 +19,7 @@ Using [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueu
 * There is a convenient way to get feedback about each ingestion - whether succeeded or not.
 
 ## Tracking ingest operation status
-[Tracking ingest operation status](kusto-ingest-client-status.md#tracking-ingestion-status-kustoqueuedingestclient) is a uesful feature in Kusto, however, turning it on for success reporting can be easily abused to the extent where it will cripple your service.<BR>
+[Tracking ingest operation status](kusto-ingest-client-status.md#tracking-ingestion-status-kustoqueuedingestclient) is a useful feature in Kusto, however, turning it on for success reporting can be easily abused to the extent where it will cripple your service.<BR>
 
 > [!WARNING]
 > Turning on positive notifications for every ingestion request for large volume data streams should be avoided, as this puts extreme load on the underlying xStore resources, > which might lead to increased ingestion latency and even complete cluster non-responsiveness.

@@ -16,7 +16,7 @@ Interprets a `string` as a [JSON value](https://json.org/) and returns the value
 It is superior to using [extractjson() function](./extractjsonfunction.md)
 when you need to extract more than one element of a JSON compound object.
 
-Aliases to [parsejson()](./parsejsonfunction.md) function.
+Aliases to [parse_json()](./parsejsonfunction.md) function.
 
 **Syntax**
 

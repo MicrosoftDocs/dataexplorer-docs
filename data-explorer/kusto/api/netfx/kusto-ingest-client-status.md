@@ -120,7 +120,7 @@ public class IngestionStatus
 |PartiallySucceeded |Permanent. Part of the data has been successfully ingested while some failed |
 
 ## Tracking Ingestion Status (KustoQueuedIngestClient)
-[KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient) is a 'fire-and-forget' client - the ingestion operation on the client side ends by posting a message to an Azure Queue, after which the client job is done. For the client user convinience, KustoQueuedIngestClient provides a mechanism for tracking the individual ingestion status. This is not intended for mass usage on high-throughput ingestion pipelines, but rather for 'precision' ingestion when the rate is relatively low and the tracking requirements are very strict.
+[KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient) is a 'fire-and-forget' client - the ingestion operation on the client side ends by posting a message to an Azure Queue, after which the client job is done. For the client user convenience, KustoQueuedIngestClient provides a mechanism for tracking the individual ingestion status. This is not intended for mass usage on high-throughput ingestion pipelines, but rather for 'precision' ingestion when the rate is relatively low and the tracking requirements are very strict.
 
 > [!WARNING]
 > Turning on positive notifications for every ingestion request for large volume data streams should be avoided, as this puts extreme load on the underlying xStore resources, > which might lead to increased ingestion latency and even complete cluster non-responsiveness.

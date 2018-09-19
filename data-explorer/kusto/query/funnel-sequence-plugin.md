@@ -166,7 +166,7 @@ dynamic(['Hail', 'Tornado', 'Thunderstorm Wind']))
 ```
 
 Skipping `Table #1` and `Table #2`, and looking  on `Table #3` - we 
-can conclude that sequence `Hail` -> `Tornado` -> `Thunderstorm Wind` in 92 events ended with this sequence, continued as `Hail` in 41 evetns, and turned back to `Tornado` in 14.
+can conclude that sequence `Hail` -> `Tornado` -> `Thunderstorm Wind` in 92 events ended with this sequence, continued as `Hail` in 41 events, and turned back to `Tornado` in 14.
 
 |StartTime|next|Dcount|
 |---------|-----|------|

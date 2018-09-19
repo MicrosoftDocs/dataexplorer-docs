@@ -18,7 +18,7 @@ The metadata operations could be a result of control command executed by user or
 **Notes:**
 
 - Metadata operations which encompass *adding* new extents (like `.ingest`, `.append`, `.move` and others) will not have matching events shown in the `Journal`.
-- The data in the columns of the result-set, as well as the format in which it is presented, are *not* contractcual, and thus taking a dependency on them is *not* recommended.
+- The data in the columns of the result-set, as well as the format in which it is presented, are *not* contractual, and thus taking a dependency on them is *not* recommended.
 
 |Event        |EventTimestamp     |Database  |EntityName|UpdatedEntityName|EntityVersion|EntityContainerName|
 |-------------|-------------------|----------|----------|-----------------|-------------|-------------------|

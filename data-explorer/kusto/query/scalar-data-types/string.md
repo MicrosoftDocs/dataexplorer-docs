@@ -42,7 +42,7 @@ print strlen("Hello" ', ' @"world!")
 // Simple string notation
 print s1 = 'some string', s2 = "some other string"
 
-// Strings that include singl- or double-quotes can be defined as next 
+// Strings that include single or double-quotes can be defined as follows 
 print s1 = 'string with " (double quotes)', 
           s2 = "string with ' (single quotes)"
           

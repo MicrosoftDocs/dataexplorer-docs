@@ -18,7 +18,6 @@ The function takes as input a column containing a dynamic array of time series (
 * *periods*: a dynamic array containing the periods that have been found (in units of the bin size), ordered by their scores
 * *scores*: a dynamic array containing values between 0 and 1, each measures the significance of a period in its respective position in the *periods* array
  
-
 **Syntax**
 
 `series_periods_detect(`*x*`,` *min_period*`,` *max_period*`,` *num_periods*`)`

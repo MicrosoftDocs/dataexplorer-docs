@@ -29,7 +29,7 @@ The UI REST API also supports a number of query parameters:
 
 * The `query` query parameter, if provided, causes the UI to automatically execute
   the specified query. The query can appear unencoded (other than the necessary
-  HTTP query parameter encoding of course), or it can be gzipped and base64-encoded.
+  HTTP query parameter encoding of course), or it can be g-zipped and base64-encoded.
 * The `uri` query parameter, if provided, can be used to override the cluster URI
   that is automatically generated otherwise.
 * The `web` query parameter, if provided, can be used to determine to which UI

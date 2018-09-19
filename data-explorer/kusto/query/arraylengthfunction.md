@@ -28,15 +28,15 @@ The number of elements in *array*, or `null` if *array* is not an array.
 **Examples**
 
 ```kusto
-print array_length(parsejson('[1, 2, 3, "four"]')) == 4
+print array_length(parse_json('[1, 2, 3, "four"]')) == 4
 
-print array_length(parsejson('[8]')) == 1
+print array_length(parse_json('[8]')) == 1
 
-print array_length(parsejson('[{}]')) == 1
+print array_length(parse_json('[{}]')) == 1
 
-print array_length(parsejson('[]')) == 0
+print array_length(parse_json('[]')) == 0
 
-print array_length(parsejson('{}')) == null
+print array_length(parse_json('{}')) == null
 
-print array_length(parsejson('21')) == null
+print array_length(parse_json('21')) == null
 ```

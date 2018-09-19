@@ -56,7 +56,7 @@ Available arguments:
 
 * NumSeeds - *int* [default: 25] 
 
-    The number of seeds determines the number of initial local search points of the algorithm. In some cases, depending on the structure of the data, increasing the number of seeds increases the number (or quality) of the results through increased search space at slower query tradeoff. The value has diminishing results in both directions so decreasing it below 5 will achieve negligible performance improvents and increasing above 50 will rarely generate additional patterns.
+    The number of seeds determines the number of initial local search points of the algorithm. In some cases, depending on the structure of the data, increasing the number of seeds increases the number (or quality) of the results through increased search space at slower query tradeoff. The value has diminishing results in both directions so decreasing it below 5 will achieve negligible performance improvements and increasing above 50 will rarely generate additional patterns.
 
     Example:  `T | evaluate autocluster('~', '~', 15)`
 

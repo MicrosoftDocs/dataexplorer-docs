@@ -14,7 +14,7 @@ ms.date: 09/24/2018
 The ping REST API is provided to allow network devices such as load balancers
 to verify simple network responsiveness of the cluster's stateless front-end
 components. When a GET verb is applied to this endpoint the cluster responds
-by returing a 200 OK HTTP response. The REST API is unauthenticated (theh caller
+by returning a 200 OK HTTP response. The REST API is unauthenticated (the caller
 does not need to send an HTTP `Authorization` header).
 
 - Path: `/v1/rest/ping`

@@ -40,15 +40,14 @@ materializing this column at ingestion time. This way - you will pay only once f
 -   When using [join operator](./joinoperator.md) - choose the table with less rows to be the first one (left-most). 
 -   When using [join operator](./joinoperator.md) data across clusters - run the query on the "right" side of the join (where most of the data is located).
 -   When left side is small (up to 100,000 records) and right side is big then it is recommended to use the [hint.strategy=broadcast](./broadcastjoin.md).
--   When both sides of the join are too big and the join key is with high cardinality, then it is recommeneded to use the [hint.strategy=shuffle](./shufflejoin.md).
+-   When both sides of the join are too big and the join key is with high cardinality, then it is recommended to use the [hint.strategy=shuffle](./shufflejoin.md).
     
 ## parse operator and extract() function
 
--	[parse operator](./parseoperator.md) (simple mode) is useful when the parsed column has strings which has the same pattern which fits the pattern passed to the parse operator.
-for example, for a column which all the strings looks like  `"Time = <time>, ResourceId = <resourceId>, Duration = <duration>, ...."` and we are interested in extracting the values of each field, then defintely parse operator is better than few extract statements (for each field we need an extract function call).
-    
--	[extract() function](./extractfunction.md) is useful when the parsed strings do not have the same format then the only way to get the required values is using a regex (in this case, there is no mutual pattern for all the strings in that column and parse can't be used). 
-for example, when we want to extract all numeric values from a Text.
+-	[parse operator](./parseoperator.md) (simple mode) is useful when the valued in the target column contain strings which all share the same format or pattern.
+For example, for a column whose values look like  `"Time = <time>, ResourceId = <resourceId>, Duration = <duration>, ...."`, when we are interested in extracting the values of each field, using `parse` operator would be better than using several `extract()` statements.
+-	[extract() function](./extractfunction.md) is useful when the parsed strings do not all follow the same format or pattern.
+In such cases, it is possible to extract the required values by using a regex.
 
 ## materialize() function
 

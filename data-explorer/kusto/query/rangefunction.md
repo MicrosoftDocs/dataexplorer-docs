@@ -48,7 +48,7 @@ The following example returns `[1,2,3]`:
 range(1, 3)
 ```
 
-The follwing example returns `["01:00:00","02:00:00","03:00:00","04:00:00","05:00:00"]`:
+The following example returns `["01:00:00","02:00:00","03:00:00","04:00:00","05:00:00"]`:
 ```
 range(1h, 5h)
 ```

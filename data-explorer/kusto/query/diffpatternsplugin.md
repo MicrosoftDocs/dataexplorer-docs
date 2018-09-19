@@ -27,7 +27,7 @@ Diffpatterns returns a (usually small) set of patterns that capture different po
 
 The first column is the segment Id. The following four columns are the count and percentage of rows out of the original query that are captured by the pattern in each set, the sixth column is the difference (in absolute percentage points) between the two sets. The remaining columns are from the original query.
 
-For each pattern, columns that are not set in the pattern (i.e. without restricition on a specific value) will contain a wildcard value which is null by default (see in the Arguments section below how wildcards can be manually changed).
+For each pattern, columns that are not set in the pattern (i.e. without restriction on a specific value) will contain a wildcard value which is null by default (see in the Arguments section below how wildcards can be manually changed).
 
 
 Note that the patterns are not distinct: they may be overlapping, and usually do not cover all the original rows. Some rows may not fall under any pattern.

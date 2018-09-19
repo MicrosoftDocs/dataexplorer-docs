@@ -84,7 +84,7 @@ In this example we add a trend to the series from the previous example. First, w
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 
-| extend y = 2*rand() + iff((t/24)%7>=5, 5.0, 15.0) - (((t%24)/10)*((t%24)/10)) + t/72.0 // generate a series with weekly seasonality and onlgoing trend
+| extend y = 2*rand() + iff((t/24)%7>=5, 5.0, 15.0) - (((t%24)/10)*((t%24)/10)) + t/72.0 // generate a series with weekly seasonality and ongoing trend
 | extend y=iff(t==150 or t==200 or t==780, y-8.0, y) // add some dip outliers
 | extend y=iff(t==300 or t==400 or t==600, y+8.0, y) // add some spike outliers
 | summarize Timestamp=makelist(Timestamp, 10000),y=makelist(y, 10000);
@@ -99,7 +99,7 @@ Next, we run the same example but since we are expecting a trend in the series, 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 
-| extend y = 2*rand() + iff((t/24)%7>=5, 5.0, 15.0) - (((t%24)/10)*((t%24)/10)) + t/72.0 // generate a series with weekly seasonality and onlgoing trend
+| extend y = 2*rand() + iff((t/24)%7>=5, 5.0, 15.0) - (((t%24)/10)*((t%24)/10)) + t/72.0 // generate a series with weekly seasonality and ongoing trend
 | extend y=iff(t==150 or t==200 or t==780, y-8.0, y) // add some dip outliers
 | extend y=iff(t==300 or t==400 or t==600, y+8.0, y) // add some spike outliers
 | summarize Timestamp=makelist(Timestamp, 10000),y=makelist(y, 10000);

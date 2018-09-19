@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # split()
 
-Splits a given string according to a given delimiter and returns a string array with the conatined substrings.
+Splits a given string according to a given delimiter and returns a string array with the contained substrings.
 
 Optionally, a specific substring can be returned if exists.
 
@@ -25,7 +25,7 @@ split("aaa_bbb_ccc", "_") == ["aaa","bbb","ccc"]
 
 **Arguments**
 
-* *source*: The source string that will be splitted according to the given delimiter.
+* *source*: The source string that will be split according to the given delimiter.
 * *delimiter*: The delimiter that will be used in order to split the source string.
 * *requestedIndex*: An optional zero-based index `int`. If provided, the returned string array will contain the requested substring if exists. 
 

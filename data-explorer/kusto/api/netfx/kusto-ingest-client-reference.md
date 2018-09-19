@@ -302,7 +302,7 @@ public class JsonColumnMapping
     /// The column name (in the Kusto table)
     public string ColumnName { get; set; }
 
-    /// The JsonPath to the desired porperty in the JSON document
+    /// The JsonPath to the desired property in the JSON document
     public string JsonPath { get; set; }
 }
 ```

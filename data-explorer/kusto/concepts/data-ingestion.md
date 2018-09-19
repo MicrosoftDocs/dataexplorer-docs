@@ -127,7 +127,7 @@ Kusto generally expects the extensions to be appended in the following way: `MyD
 ## Schema Mapping
 
 Schema mapping helps deterministically bind source data fields to destination table columns.
-While being optional for CSV and TSV-like formats, shema mapping for JSON and Avro data is mandatory.
+While being optional for CSV and TSV-like formats, schema mapping for JSON and Avro data is mandatory.
 
 * [Csv Mapping](https://kusto.azurewebsites.net/docs/controlCommands/dataingestion.html#csv-mapping) works with all ordinal-based formats and can be passed as the ingest command parameter or [precreated on the table](https://kusto.azurewebsites.net/docs/controlCommands/tables.html#create-ingestion-mapping) and be referenced from the ingest command parameter.
 * [Json Mapping](https://kusto.azurewebsites.net/docs/controlCommands/dataingestion.html#json-mapping) can be passed as the ingest command parameter or [precreated on the table](https://kusto.azurewebsites.net/docs/controlCommands/tables.html#create-ingestion-mapping) and be referenced from the ingest command parameter.

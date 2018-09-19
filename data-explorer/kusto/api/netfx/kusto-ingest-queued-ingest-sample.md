@@ -97,7 +97,7 @@ static void Main(string[] args)
         // Usually the recommended level is IngestionReportLevel.FailuresOnly
         ingestProps.ReportLevel = IngestionReportLevel.FailuresAndSuccesses;
         ingestProps.ReportMethod = IngestionReportMethod.Queue;
-        // Setting FlushImmediately to 'true' overrides any aggregation preceeding the ingestion.
+        // Setting FlushImmediately to 'true' overrides any aggregation preceding the ingestion.
         // Not recommended unless you are certain you know what you are doing
         ingestProps.FlushImmediately = true;
         ingestProps.JSONMappingReference = mappingName;

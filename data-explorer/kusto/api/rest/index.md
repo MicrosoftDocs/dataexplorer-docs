@@ -35,10 +35,9 @@ does not support the query API.
 Recently, an additional query endpoint was added (`/v2/rest/query`). <br> 
 The only difference between the two query endpoints is the response structure. <br>
 Note that this endpoint is still being peer reviewed and is subjected to (breaking!) changes. <br>
-The response structure is described [here](response2.md), if you decide to try it out (especially if you're developing a programmatic client for Kusto), please send any feedbacks or suggestions to [KustoDev](mailto:kustodev@microsoft.com).
+The response structure is described [here](response2.md).
 
-
-##  Sample REST Query Request & Response
+## Sample REST Query Request & Response
 
 Request:
 

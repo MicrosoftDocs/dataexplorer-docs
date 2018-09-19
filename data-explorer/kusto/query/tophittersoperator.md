@@ -27,7 +27,7 @@ T | top-hitters 25 of Page by Views
 * *sort_key*: The name of the column by which to sort the rows.
 * *expression*: (optional) An expression which will be used for the top-hitters estimation. 
     * *expression*: top-hitters will return *NumberOfRows* rows which have an approximated maximum of sum(*expression*). Expression can be a column, or any other expression that evaluates to a number. 
-    *  If *expression* is not mentioned, top-hitters algorithm will count the occurences of the *sort-key*.  
+    *  If *expression* is not mentioned, top-hitters algorithm will count the occurrences of the *sort-key*.  
 
 **Notes**
 

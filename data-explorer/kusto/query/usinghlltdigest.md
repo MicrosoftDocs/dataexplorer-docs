@@ -184,7 +184,7 @@ Stats
 // this will help us to get the pages viewed in both date1 and date2 (see describtion below about the intersection_size)
 | summarize (day1, pages1)=arg_min(day, pages), (day2, pages2)=arg_max(day, pages), union_size=dcount_hll(hll_merge(pagehll)) by key1, key2
 | where day2 > day1
-// to get pages viewed in date1 and also date2, we look at the merged dcount of date1 and date2, substract it from pages of date1 + pages on date2.
+// to get pages viewed in date1 and also date2, we look at the merged dcount of date1 and date2, subtract it from pages of date1 + pages on date2.
 | project pages1, day1,day2, intersection_size=(pages1 + pages2 - union_size)
 | project day1, day2, Percentage = intersection_size*100.0 / pages1
 

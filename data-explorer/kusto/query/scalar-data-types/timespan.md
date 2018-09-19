@@ -36,7 +36,7 @@ The special form `time(null)` is the [null value](null-values.md).
 
 ## timespan operators
 
-Two values of type `timespan` may be added, substracted, and divided.
+Two values of type `timespan` may be added, subtracted, and divided.
 The last operation returns a value of type `real` representing the
 fractional number of times one value can fit the other.
 

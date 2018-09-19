@@ -11,8 +11,8 @@ ms.date: 09/24/2018
 ---
 # Restrict statement
 
-The restrict statement limits the set of table/view entities visiblt to
-query statements that follow it. For example, in a database that
+The restrict statement limits the set of table/view entities which are
+visible to query statements that follow it. For example, in a database that
 includes two tables (`A`, `B`), the application can prevent the rest
 of the query from accessing `B` and only "see" a limited form of the
 table `A` by using a view.

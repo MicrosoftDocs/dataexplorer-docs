@@ -23,7 +23,7 @@ Parses an absolute URL `string` and returns a [`dynamic`](./scalar-data-types/dy
 
 **Returns**
 
-An object of type `dynamic` that inculded the URL components as listed above.
+An object of type `dynamic` that included the URL components as listed above.
 
 **Example**
 

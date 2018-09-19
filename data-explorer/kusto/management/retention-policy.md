@@ -34,9 +34,9 @@ Show the retention policy for the database named `MyDatabase`:
 
 ## Delete retention policy
 
-Deleting data retention policy is affectively setting unlimitted data retention.
+Deleting data retention policy is affectively setting unlimited data retention.
 
-Dropping table data retention policy will cause table to derive retetion policy from database level.
+Dropping table data retention policy will cause table to derive retention policy from database level.
 
 ```kusto
 .drop <entity_type> <database_or_table> policy retention

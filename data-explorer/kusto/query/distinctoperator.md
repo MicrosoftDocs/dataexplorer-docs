@@ -46,11 +46,6 @@ union
   (T | distinct * | extend Title="Distinct"),
   (T | summarize by t | extend Title="Summarize"),
   (T | summarize by bin(t, 1tick) | extend Title="Summarize-distinct")
-		
-	t	Title
-	2008-05-12 06:00:00.0000000	Summarize
-	2008-05-12 06:45:00.0000000	Distinct
-	2008-05-12 06:45:00.0000000	Summarize-distinct
 ```
 
 This query produces the following table:

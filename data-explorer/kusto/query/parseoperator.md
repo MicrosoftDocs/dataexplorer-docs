@@ -54,7 +54,7 @@ provided to the operator.
 * If regex mode is used, there is an option to add regex flags in order to control the whole regex used in parse.
 
 * In regex mode, parse will translate the pattern to a regex and use [RE2 syntax](re2.md) in order to do the matching using numbered captured groups which 
-  are handeled internally.
+  are handled internally.
   So for example, this parse statement :
   
 	```kusto
@@ -144,7 +144,7 @@ Traces
 we don't get the expected results since the default mode is greedy.
 or even if we had few records where the resourceName appears sometimes lower-case sometimes upper-case so we may
 get nulls for some values.
-in order to get the wanted result, we may run this one with regex flags ungreedy and disable case-sensitive mode :
+in order to get the wanted result, we may run this one with the non-greedy (`U`) and disable case-sensitive (`i`) regex flags:
 
 ```kusto
 Traces

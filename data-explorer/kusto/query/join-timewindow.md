@@ -64,7 +64,7 @@ We want our query to answer the following question:
 
 (In the sample data above, the only such session ID is `0`.)
 
-Semantically, the following query answers this question, albait inefficiently:
+Semantically, the following query answers this question, albeit inefficiently:
 
 ```kusto
 T 
@@ -100,7 +100,7 @@ let lookupBin = lookupWindow / 2.0; // lookup bin = equal to 1/2 of the lookup w
 T 
 | where EventType == 'A'
 | project SessionId, Start=Timestamp,
-          // TimeKey on the left side of the join is mapped to a descrete time axis for the join purpose
+          // TimeKey on the left side of the join is mapped to a discrete time axis for the join purpose
           TimeKey = bin(Timestamp, lookupBin)
 | join kind=inner
     (

@@ -29,7 +29,7 @@ T | evaluate session_count(id, datetime_column, startofday(ago(30d)), startofday
 * *Start*: Scalar with value of the analysis start period.
 * *End*: Scalar with value of the analysis end period.
 * *Bin*:  scalar constant value of session analysis step period.
-* *LookBackWindow*: scalar constant value representing session lookback period. If the id from `IdColumn` appears in a time window within `LookBackWindow` - the session is considred to be an existing, if it does not - the session is considered to be new.
+* *LookBackWindow*: scalar constant value representing session lookback period. If the id from `IdColumn` appears in a time window within `LookBackWindow` - the session is considered to be an existing, if it does not - the session is considered to be new.
 * *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the session count calculation.
 
 **Returns**

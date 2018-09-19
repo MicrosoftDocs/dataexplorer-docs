@@ -29,7 +29,7 @@ parameters to functions and binding a name through a [let statement](../letstate
 
 Some entities (such as databases) may have, in addition to their entity name,
 a **pretty name**. Pretty names can be used to reference the entity in queries
-(like entity names), but, unlike rentity names, pretty names aren't necessarily unique
+(like entity names), but, unlike entity names, pretty names aren't necessarily unique
 in the context of their container. When a container has multiple entities with the
 same pretty name, the pretty name can't be used to reference the entity.
 

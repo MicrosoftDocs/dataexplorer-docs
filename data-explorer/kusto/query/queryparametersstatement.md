@@ -19,7 +19,7 @@ type through a **query parameters declaration statement**.
 Query parameters have two main uses:
 
 1. As a protection mechanism against **injection attacks**.
-2. As a way to parametrize queries.
+2. As a way to parameterize queries.
 
 In particular, client applications that combine user-provided input in queries
 that they then send to Kusto should use this mechanism to protect against the

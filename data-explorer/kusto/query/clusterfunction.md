@@ -24,7 +24,8 @@ cluster('help').database('Sample').SomeTable
 **Arguments**
 
 * *stringConstant*: Name of the cluster that is referenced. Cluster name can be either 
-as fully qualified DNS name or as a stirng that will be suffixied with `.kusto.windows.net`. Argument has to be _constant_ prior of query execution, i.e. cannot come from sub-query evaluation.
+a fully qualified DNS name, or a string that will be suffixed with `.kusto.windows.net`. Argument has to be _constant_ prior to the query's execution,
+i.e. cannot come from sub-query evaluation.
 
 **Notes**
 

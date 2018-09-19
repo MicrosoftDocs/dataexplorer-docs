@@ -13,7 +13,7 @@ ms.date: 09/24/2018
 
 ## When to Consider Not Using Kusto.Ingest library?
 Generally, using Kusto.Ingest library should be preferred whenever ingesting data to Kusto is considered.<BR>
-When this is not an option (usually due to OS constratints), with some effort one can achieve almost the same functionality.<BR>
+When this is not an option (usually due to OS constraints), with some effort one can achieve almost the same functionality.<BR>
 This article shows how to implement **Queued Ingestion** to Kusto without taking dependency on the Kusto.Ingest package.
 
 >**Note:** The code below is written in C# making use of Azure Storage SDK, ADAL Authentication library, and NewtonSoft.JSON package in order to simplify the sample code.<BR>If needed, the corresponding code can be replaced with appropriate [Azure Storage REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api) calls, [non-.NET ADAL package](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-authentication-libraries) and any available JSON handling package.
@@ -115,7 +115,7 @@ internal static string AuthenticateInteractiveUser(string resource)
 ```
 
 ## 2. Retrieve Kusto Ingestion Resources
-This is where the things get interesting. Here we maually construct an HTTP POST request to Kusto Data Management service, requesting to return the ingestion resources.
+This is where the things get interesting. Here we manually construct an HTTP POST request to Kusto Data Management service, requesting to return the ingestion resources.
 These include queues that the DM service is listening on, as well as blob containers for data uploading.
 The Data Management service will process any message containing ingestion requests that arrives on one of those queues.
 ```csharp
@@ -187,7 +187,7 @@ internal static WebResponse SendPostRequest(string uriString, string authToken, 
 ## Obtaining Kusto Identity Token
 An important step in authorizing data ingestion is obtaining an identity token and attaching it to every ingest message. As ingest messages are handed off to Kusto via a non-direct channel (Azure queue), there is no way to perform in-band authorization validation. The identity token mechanism allows this by issuing a Kusto-signed identity evidence that can be validated by the Kusto service once it receives the ingestion message.
 ```csharp
-// Retieves a Kusto identity token that will be added to every ingest message
+// Retrieves a Kusto identity token that will be added to every ingest message
 internal static string RetrieveKustoIdentityToken(string ingestClusterBaseUri, string accessToken)
 {
     string ingestClusterUri = $"{ingestClusterBaseUri}/v1/rest/mgmt";

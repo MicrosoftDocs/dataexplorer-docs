@@ -41,7 +41,7 @@ Column names are s0, s1, ... (till n-1).
 // Generate numbers from 1 to 100
 range x from 1 to 100 step 1
 | extend isEven = (x % 2 == 0), isMod3 = (x % 3 == 0), isMod5 = (x % 5 == 0)
-// Calculate conditional HLL values (note that '0' is included in each of them as additional value, so we will substract it later)
+// Calculate conditional HLL values (note that '0' is included in each of them as additional value, so we will subtract it later)
 | summarize hll_even = hll(iif(isEven, x, 0), 2),
             hll_mod3 = hll(iif(isMod3, x, 0), 2),
             hll_mod5 = hll(iif(isMod5, x, 0), 2) 
