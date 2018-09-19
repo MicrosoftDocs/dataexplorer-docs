@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # Query best practices 
 
-## General "do"s and "don't"s
+## General
 
 There are several "Dos and Don'ts" you can follow to make you query run faster.
 

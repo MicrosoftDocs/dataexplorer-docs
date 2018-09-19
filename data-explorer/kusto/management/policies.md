@@ -11,4 +11,4 @@ ms.date: 09/24/2018
 ---
 # Policies
 
-This section contains references to control commands that are helpful exploring, creating, and altering various policies.
+This section contains references to control commands that are helpful for exploring, creating, and altering various policies.

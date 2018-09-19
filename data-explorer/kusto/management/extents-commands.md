@@ -372,7 +372,7 @@ Requires [Table admin permission](../management/access-control/role-based-author
 
 The extents and the tags to drop are specified using a Kusto query that returns a recordset with a column called "ExtentId" and a column called "Tags". 
 
-*NOTE*: When using the [Kusto client library](../api/netfx/about-kusto-data.md), you can use the following methods in order to generate the desired command:
+*NOTE*: When using the [Kusto .NET client library](../api/netfx/about-kusto-data.md), you can use the following methods in order to generate the desired command:
 - `CslCommandGenerator.GenerateExtentTagsDropByRegexCommand(string tableName, string regex)`
 - `CslCommandGenerator.GenerateExtentTagsDropBySubstringCommand(string tableName, string substring)`
 
@@ -400,7 +400,7 @@ Drops all `drop-by` tags from extents in table `MyTable`.
 ```kusto
 .drop extent tags <| 
   .show table MyTable extents 
-  | where Tags != '' 
+  | where isnotempty(Tags)
   | extend Tags = split(Tags, '\r\n') 
   | mvexpand Tags 
   | where Tags startswith 'drop-by'
@@ -410,7 +410,7 @@ Drops all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from 
 ```kusto
 .drop extent tags <| 
   .show table MyTable extents 
-  | where Tags != '' 
+  | where isnotempty(Tags)
   | extend Tags = split(Tags, '\r\n')
   | mvexpand Tags 
   | where Tags matches regex @"drop-by:StreamCreationTime_20160915(\d{6})"

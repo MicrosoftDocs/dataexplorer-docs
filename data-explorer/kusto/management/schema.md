@@ -11,4 +11,4 @@ ms.date: 09/24/2018
 ---
 # Schema
 
-This section contains references to control commands that are helpful exploring, creating and altering tables.
+This section contains references to control commands that are in helpful for exploring, creating and altering tables.
