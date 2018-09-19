@@ -29,7 +29,7 @@ Where:
 
 **Remarks**
 
-Syntactically, `evaluate behaves similarly
+Syntactically, `evaluate` behaves similarly
 to the [invoke operator](./invokeoperator.md), which invokes tabular functions.
 
 Plugins provided through the evaluate operator are not bound by the regular

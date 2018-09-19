@@ -1,6 +1,6 @@
 ---
-title: percentile(), percentiles(), percentilew(), percentilesw(), percentiles_array(), percentilesw_array() (aggregation function) - Azure Data Explorer | Microsoft Docs
-description: This article describes percentile(), percentiles(), percentilew(), percentilesw(), percentiles_array(), percentilesw_array() (aggregation function) in Azure Data Explorer.
+title: percentile(), percentiles() - Azure Data Explorer | Microsoft Docs
+description: This article describes percentile(), percentiles() in Azure Data Explorer.
 services: azure-data-explorer
 author: orspod
 ms.author: v-orspod
@@ -9,7 +9,7 @@ ms.service: azure-data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# percentile(), percentiles(), percentilew(), percentilesw(), percentiles_array(), percentilesw_array() (aggregation function)
+# percentile(), percentiles()
 
 Returns an estimate for the specified [nearest-rank percentile](#nearest-rank-percentile) of the population defined by *Expr*. 
 The accuracy depends on the density of population in the region of the percentile.
