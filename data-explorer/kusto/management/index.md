@@ -51,10 +51,10 @@ part of the text (they can't precede the command itself).
 
 **AdminThenQuery** is indicated in one of two ways:
 
-1. By using a pipe (`|`) character, which then has the query treat the results of the
+1. By using a pipe (`|`) character, the query therefore treats the results of the
    control command as if it were any other data-producing query operator.
 2. By using a semicolon (`;`) character, which then introduces the results of the
-   control command into a special symbol called `$command_results` that one may then
+   control command into a special symbol called `$command_results`, that one may then
    use in the query any number of times.
 
 For example:

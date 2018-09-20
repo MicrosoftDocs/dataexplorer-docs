@@ -42,92 +42,69 @@ If you are using Chrome as your default browser - make sure to install the Click
 
 Kusto Explorer window has several UI parts:
 
-1. Menu options - for details look at [ribbon menus](#ribbon-menus)
-2. Connections Panel - for details look at [connections](#connections-panel)
-3. Script window
-4. Results window
-5. Check the [list of hot-keys (shortcuts)](kusto-explorer-shortcuts.md) for truely mastering Kusto.Explorer
+1. [Menu panel](#menu-panel)
+2. [Connections panel](#connections-panel)
+3. Script panel
+4. Results panel
+
+* Check the [list of hot-keys (shortcuts)](kusto-explorer-shortcuts.md) for truely mastering Kusto.Explorer
 
 ![Kusto.Explorer startup](./Images/KustoTools-KustoExplorer/ke-start.png "ke-start")
 
-### Ribbon menus
+### Menu Panel
 
-Kusto.Explorer menu has several areas:
+Kusto.Explorer Menu panel has several tabs:
 
-* [Query Explore Menu](#explore-menu)
-* [Kusto Connections Menu](#connections-menu)
-* [Data Export Menu](#export-menu)
-* [Data Save Menu](#save-data-menu)
-* [Data Load Menu](#load-data-menu)
-* [Data Visualization Menu](#visualizations-menu)
-* [Data View  Menu](#view-menu)
+* [Home](#home-tab)
+* [File](#file-tab)
+* [Connections](#connections-tab)
+* [View](#view-tab)
+* [Tools](#tools-tab)
 
-* [Management Menu](#management-menu)
-* [Help Menu](#help-menu)
+* [Management](#management-tab)
+* [Help](#help-tab)
 
-### Explore Menu
+### Home Tab
 
-![Kusto.Explorer explore tab](./Images/KustoTools-KustoExplorer/menu-explore.png "menu-explore")
+![Kusto.Explorer Home](./Images/KustoTools-KustoExplorer/home-tab.png "home-tab")
 
-|Menu|	Behavior|
-|----|----------|
-|New Tab Window|Opens a new tab window for querying Kusto |
-|Search|Single query mode: each command being entered is processed immediately and presents a result in the Result Window|
-|Search (beta)|Allows searching for a term using Search syntax across one or more tables. See more at using [Search Beta Mode](kusto-explorer.md#search-beta-mode)|
-|Query |Switches Query Window into a script mode: commands can be loaded and saved as scripts.|
+Home Tab accumulates most recently used functionality, splitted by menus:
 
-### Connections Menu
+* [Query](#query-menu)
+* [Share](#share-menu)
+* [Visualizations](#visualizations-menu)
+* [View](#view-menu)
+* [Help](#help-tab)
 
-![Kusto.Explorer connections tab](./Images/KustoTools-KustoExplorer/menu-connections.png "menu-connections")
+#### Query Menu
 
-|Menu|Behavior|
-|----|----------|
-|Add group|Adds a new Kusto Server group| 
-|Rename group|Renames the existing Kusto Server group|
-|Remove group|Removes the existing  Kusto Server group|
-|Import connections|Imports connections from a file specifying connections|
-|Add connection|Adds a new Kusto Server connection| 
-|Edit connection|Opens a dialog for Kusto Server connection properties editing|
-|Remove connection|Removes the existing connection to Kusto Server|
-|Refresh|Refreshes properties of Kusto server connection|
-
-### Export Menu
-
-![Kusto.Explorer export tab](./Images/KustoTools-KustoExplorer/menu-export.png "menu-export")
+![Kusto.Explorer query menu](./Images/KustoTools-KustoExplorer/home-query-menu.png "query-menu")
 
 |Menu|	Behavior|
 |----|----------|
-|To CSV|	Exports data to CSV (comma-separated-values) file| 
-|To Excel|	Exports data to XLSX (Excel) file|
-|To Text|	Exports data to TXT (text) file| 
+|New Tab Window| Opens a new tab window for querying Kusto |
+|Mode: Query | Switches Query Window into a [script mode](#query-mode): commands can be loaded and saved as scripts (default)|
+|Mode: Search| Single query mode: each command being entered is processed immediately and presents a result in the Result Window|
+|Mode: Search (beta)|Allows searching for a term using Search syntax across one or more tables. See more at using [Search Beta Mode](kusto-explorer.md#search-beta-mode)|
+|Caching scope: Hot Data| Execute queries only on [hot data cache](../concepts/cachepolicy.md)|
+|Caching scope: All Data| Execute queries on all available data (default)|
+|DateTime Column| Name of column which may be used for time pre-filter|
+|Time Filter| Value of time pre-filter|
+
+#### Share Menu
+
+![Kusto.Explorer share menu](./Images/KustoTools-KustoExplorer/home-share-menu.png "share-menu")
+
+|Menu|	Behavior|
+|----|----------|
 |Data To Clipboard|	Exports Query and data set to a clipboard. In case chart is presented - exports the chart as bitmap| 
-|Query to Power BI|	Exports Kusto query in format of PowerBI M-Language query |
+|Result To Clipboard| Exports data set to a clipboard. In case chart is presented - exports the chart as bitmap| 
 |Query to Clipboard| Exports Query to clipboard|
 
-### Save Data Menu
+#### Visualizations Menu
 
-![alt text](./Images/KustoTools-KustoExplorer/menu-savedata.png "menu-savedata")
-
-|Menu         |	Behavior|
-|-------------|----------|
-|To CSV       | Exports data to CSV (comma-separated-values) file| 
-|To JSON      | Exports data to JSON formatted file|
-|To Excel     | Exports data to XLSX (Excel) file|
-|To Text      |	Exports data to TXT (text) file| 
-|To CSL Script|	Exports Query to a script file| 
-|To Results   |	Exports Query and data to Results (QRES) file| 
-
-### Load Data Menu
-
-![alt text](./Images/KustoTools-KustoExplorer/menu-loaddata.png "menu-loaddata")
-
-|Menu|	Behavior|
-|----|----------|
-|From Results|	Loads Query and data from Results (QRES) file| 
-
-### Visualizations Menu
-
-![alt text](./Images/KustoTools-KustoExplorer/menu-visualizations.png "menu-visualizations")
+![alt text](./Images/KustoTools-KustoExplorer/home-visualizations-menu
+.png "menu-visualizations")
 
 |Menu         | Behavior|
 |-------------|---------|
@@ -150,18 +127,18 @@ The algorithm is expecting time series data which consists of 2 columns:
 2. Numeric value for anomaly detection
 To produce that in Kusto.Explorer, you should summarize by the time field and specify the time bucket bin.
 
-### View Menu
+#### View Menu
 
-![alt text](./Images/KustoTools-KustoExplorer/menu-view.png "menu-view")
+![alt text](./Images/KustoTools-KustoExplorer/home-view-menu.png "view-menu")
 
 |Menu           | Behavior|
 |---------------|---------|
 |Full View Mode | Maximizes the work space by hiding ribbon menu and Connection Panel|
 |Increase Font  | Increases fonts of the query tab and of the results data grid|  
 |Decrease Font  | Decreases fonts of the query tab and of the results data grid| 
-|Reset View     | Resets data view settings (*)|
-|Hide Duplicates| Removes duplicate results from the data grid|
-|Hide Empty Columns| Removes empty columns from the data grid |
+|Hide Empty Columns| Removes empty columns from the data grid|
+|Collapse Singular Columns| Collapses columns with singular value|
+|Explore Column Values| Shows column values distribution|
 
 (*) Data View Settings:
 Kusto.Explorer keeps track of what settings are used per unique set of the columns, 
@@ -169,25 +146,114 @@ so when columns are reordered/removed - the data view is saved and will be reuse
 whenever the data with the same columns is retrieved. To reset the view to its defaults,
 use `Reset View` menu item. 
 
+### File Tab
+
+![Kusto.Explorer File](./Images/KustoTools-KustoExplorer/file-tab.png "file-tab")
+
+|Menu| Behavior|
+|---------------|---------|
+||---------*Query Srcipt*---------|
+|New Tab Window| Opens a new tab window for querying Kusto |
+|Open File| Loads data from provided *.csl file to active script panel|
+|Save To File| Saves content of active script panel to *.csl file|
+|Query Srcipt|Close Tab| Closes current tab window|
+||---------*Save Data*---------|
+|To CSV       | Exports data to CSV (comma-separated-values) file| 
+|To JSON      | Exports data to JSON formatted file|
+|To Excel     | Exports data to XLSX (Excel) file|
+|To Text      |	Exports data to TXT (text) file| 
+|To CSL Script|	Exports Query to a script file| 
+|To Results   |	Exports Query and data to Results (QRES) file|
+||---------*Load Data*---------|
+|From Results|	Loads Query and data from Results (QRES) file| 
+||---------*Clipboard*---------|
+|Data To Clipboard|	Exports Query and data set to a clipboard. In case chart is presented - exports the chart as bitmap| 
+|Result To Clipboard| Exports data set to a clipboard. In case chart is presented - exports the chart as bitmap| 
+|Query to Clipboard| Exports Query to clipboard|
+||---------*Results*---------|
+|Clear results cache| Clears cached results of previously executed queries| 
+
+### Connections Tab
+
+![Kusto.Explorer connections tab](./Images/KustoTools-KustoExplorer/connections-tab.png "connections-tab")
+
+|Menu|Behavior|
+|----|----------|
+||---------*Groups*---------|
+|Add gourp| Adds a new Kusto Server group| 
+|Rename group| Renames the existing Kusto Server group|
+|Remove group| Removes the existing  Kusto Server group|
+||---------*Clusters*---------|
+|Import connections| Imports connections from a file specifying connections|
+|Export connections| Exports connections to file|
+|Add connection| Adds a new Kusto Server connection| 
+|Edit connection| Opens a dialog for Kusto Server connection properties editing|
+|Remove connection| Removes the existing connection to Kusto Server|
+|Refresh| Refreshes properties of Kusto server connection|
+||---------*Identity Providers*---------|
+|Inspect Connection Principal| Shows currents active user details|
+|Sign-out From AAD| Signs-out current user from connection to AAD|
+
+### View Tab
+
+![view tab](./Images/KustoTools-KustoExplorer/view-tab.png "view-tab")
+
+|Menu|Behavior|
+|----|----------|
+||---------*Appearance*---------|
+|Full View Mode | Maximizes the work space by hiding ribbon menu and Connection Panel|
+|Increase Font  | Increases fonts of the query tab and of the results data grid|  
+|Decrease Font  | Decreases fonts of the query tab and of the results data grid|
+||---------*Data View*---------|
+|Reset View| Resets data view settings (*)|
+|Hide Duplicates| Removes duplicate results from the data grid|
+|Filter Rows in Search| Allows to filter rows during search in query result|
+|Hide Empty Columns| Removes empty columns from the data grid|
+|Collapse Singular Columns| Collapses columns with singular value|
+|Explore Column Values| Shows column values distribution|
+
+(*) Data View Settings: Kusto.Explorer keeps track of what settings are used per unique set of the columns, so when columns are reordered/removed - the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, use Reset View menu item. 
+
+### Tools Tab
+
+![tools tab](./Images/KustoTools-KustoExplorer/tools-tab.png "tools-tab")
+
+|Menu|Behavior|
+|----|----------|
+||---------*IntelliSense*---------|
+|Enable IntelliSense| Enables/Disables IntelliSense on Script Panel)|
+||---------*Analyze*---------|
+|Query Analyzer| Launches Query Analyzer tool|
+|Calculator| Launches Calculator|
+||---------*Analytics*---------|
+|Analytical Reports| Opens dashboard with multiple pre-built reports for data analysis|
+||---------*Translate*---------|
+|Query to Power BI| Translates query to format suitable for using in Power BI|
+||---------*Options*---------|
+|Reset Options| Sets application settings to default values|
+|Options| Opens tool for application settings edit|
 
 
-### Management Menu
 
-![alt text](./Images/KustoTools-KustoExplorer/menu-management.png "menu-management")
+### Management Tab
+
+![management tab](./Images/KustoTools-KustoExplorer/management-tab.png "management-tab")
 
 |Menu             | Behavior|
 |-----------------|---------|
+||---------*Authorized Principals*---------|
 |Manage Cluster Authorized Principals | When in context of a cluster, enables managing its principals for authorized users| 
 |Manage Database Authorized Principals | When in context of a database, enables managing its principals for authorized users| 
 |Manage Table Authorized Principals | When in context of table, enables managing its principals for authorized users| 
 |Manage Function Authorized Principals | When in context of a function, enables managing its principals for authorized users| 
 
-### Help Menu
+### Help Tab
 
-![alt text](./Images/KustoTools-KustoExplorer/menu-help.png "menu-help")
+![help tab](./Images/KustoTools-KustoExplorer/help-tab.png "help-tab")
 
 |Menu             | Behavior|
 |-----------------|---------|
+||---------*Documentation*---------|
 |Help             | Opens a link to the Kusto online documentation  | 
 |What's new       | Opens a document that lists all Kusto.Explorer changes|
 |Get support      | Opens a link to the support-ticket web page | 
@@ -196,7 +262,7 @@ use `Reset View` menu item.
 
 ## Connections Panel
 
-![alt text](./Images/KustoTools-KustoExplorer/connectionsPanel.png "connectionsPanel") 
+![alt text](./Images/KustoTools-KustoExplorer/connectionsPanel.png "connections-panel") 
 
 The left pane of Kusto.Explorer shows all the cluster connections that the client
 is configured with, and for each cluster -- the databases, tables, and attributes (columns) 
@@ -299,7 +365,7 @@ Kusto.Explorer provides a convenient way to manage cluster, database, table or f
 Please note that only [admins](../management/access-control/role-based-authorization.md) can add or drop authorized principals in their own scope.
 
 1. Right-click on the target entity in the [Connections panel](#connections-panel), and select `Manage Authorized Principals`
-    (also available via the [Management Menu](#management-menu)).
+    (also available via the Management Menu).
 
     ![alt text](./Images/KustoTools-KustoExplorer/right-click-manage-authorized-principals.png "right-click-manage-authorized-principals")
 
@@ -359,7 +425,7 @@ Script editor also has IntelliSense for Query parameters that are already define
 ![alt text](./Images/KustoTools-KustoExplorer/parametrized-query-4.png "parametrized-query-4")
 
 There can be multiple "sets" of parameters (listed in Parameters Set combo box).
-Buttons, "Add new" and "Delete current" manipulate list of Parameters "sets".
+Buttons, "Add new" and "Delete current" manipulate list of Parameters "sets".
 
 ![alt text](./Images/KustoTools-KustoExplorer/parametrized-query-5.png "parametrized-query-5")
 

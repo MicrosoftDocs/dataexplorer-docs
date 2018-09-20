@@ -166,7 +166,7 @@
 ## [dayofyear()](dayofyearfunction.md)
 ## [dcount_hll()](dcount-hllfunction.md)
 ## [degrees()](degreesfunction.md)
-## [distance()](distancefunction.md)
+
 ## [endofday()](endofdayfunction.md)
 ## [endofmonth()](endofmonthfunction.md)
 ## [endofweek()](endofweekfunction.md)
@@ -227,7 +227,7 @@
 ## [percentile_tdigest()](percentile-tdigestfunction.md)
 ## [percentrank_tdigest()](percentrank-tdigestfunction.md)
 ## [pi()](pifunction.md)
-## [point()](pointfunction.md)
+
 ## [pow()](powfunction.md)
 ## [radians()](radiansfunction.md)
 ## [rand()](randfunction.md)

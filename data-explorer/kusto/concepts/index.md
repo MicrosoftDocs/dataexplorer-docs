@@ -14,15 +14,15 @@ ms.date: 09/24/2018
 Kusto is a service for storing and running interactive analytics
 over Big Data.
 
-It is modeled after relational database management systems, supporting entities
-such as databases, tables, and columns, as providing complex analytics
+It is based on relational database management systems, supporting entities
+such as databases, tables, and columns, as well as providing complex analytics
 query operators (such as calculated columns, searching and filtering or rows,
-group by-aggregates, joins, and many others).
+group by-aggregates, joins).
 
 Kusto offers excellent data ingestion and query performance by "sacrificing"
 the ability to perform in-place updates of individual rows and cross-table
-constraints/transactions. Therefore, is supplants, rather than replaces,
-traditional RDBMS systems for scenarios such as OLTP and date warehousing.
+constraints/transactions. Therefore, it supplants, rather than replaces,
+traditional RDBMS systems for scenarios such as OLTP and data warehousing.
 
 As a Big Data service, Kusto handles structured, semi-structured (e.g. JSON-like
 nested types), and unstructured (free-text) data equally well.
