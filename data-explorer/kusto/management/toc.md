@@ -24,6 +24,7 @@
 ## [Journal](journal.md)
 ## [Queries](queries.md)
 ## [Commands](commands.md)
+
 ## [Ingestion Failures](ingestionfailures.md)
 
 

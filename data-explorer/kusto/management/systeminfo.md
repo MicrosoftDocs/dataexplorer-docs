@@ -15,5 +15,6 @@ This section summarizes commands that are available to `Database Admins` and `Da
 
 * [.show queries](queries.md) - displays information on completed and running queries.
 * [.show commands](commands.md) - displays information on completed commands and their resources utilization.
+
 * [.show journal](journal.md) - displays history of the metadata operations.
 

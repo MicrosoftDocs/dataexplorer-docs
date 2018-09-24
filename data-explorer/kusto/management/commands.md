@@ -13,7 +13,7 @@ ms.date: 09/24/2018
 
 ## .show commands 
 
-`.show` `commands` command returns a table with Admin commands completed in the last two weeks (the current retention period configuration).
+`.show` `commands` command returns a table with Admin commands completed in the last month.
 The Commands table has two columns with resources consumption details of every completed command:
 * TotalCpu: The total CPU clock time (User mode + Kernel mode) consumed by this command.
 * ResourceUtilization: An object containing all resource utilization information related to that command (including the TotalCpu).
