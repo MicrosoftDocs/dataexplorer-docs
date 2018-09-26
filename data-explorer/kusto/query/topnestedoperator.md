@@ -160,7 +160,7 @@ StormEvents
 | top-nested 2 of State  by sum(BeginLat),    top-nested 2 of Source by sum(BeginLat),    top-nested 4 of EndLocation by  sum(BeginLat)
 | order by State , Source, aggregated_EndLocation
 | summarize EndLocations = makelist(EndLocation, 10000) , endLocationSums = makelist(aggregated_EndLocation, 10000) by State, Source
-| extend indicies = range(0, arraylength(EndLocations) - 1, 1)
+| extend indicies = range(0, array_length(EndLocations) - 1, 1)
 | mvexpand EndLocations, endLocationSums, indicies
 
 

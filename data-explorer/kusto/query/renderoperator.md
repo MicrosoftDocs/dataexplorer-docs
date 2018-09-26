@@ -27,6 +27,10 @@ The render operator should be the last operator in the query expression.
 
   [`xcolumn` `=` *xColumn*],
 
+  [`xaxis` `=` *xAxis*],
+
+  [`yaxis` `=` *yAxis*],
+
   [`series` `=` *Series*],
 
   [`ycolumns` `=` *yColumns*],
@@ -66,6 +70,10 @@ Where:
 * *title* is an optional `string` value that holds the title for the results.
 
 * *xColumn* is an optional column identifier, that defines data from which column will be used as x-axis.
+
+* *xAxis* is an optional parameter which defines scale type for axis X - linear or logarithmic (can be set to either `linear` (the default) or `log`)
+
+* *yAxis* is an optional parameter which defines scale type for axis Y - linear or logarithmic (can be set to either `linear` (the default) or `log`)
 
 * *series* is an optional list of columns to control which "axis" is driven by which column in the data.
 

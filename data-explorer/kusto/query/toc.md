@@ -55,12 +55,11 @@
 <!--### [diagnose](diagnoseplugin.md)-->
 
 ### [dcount_intersect](dcount-intersect-plugin.md)
-### [diffpatterns](diffpatternsplugin.md)
+
 <!--### [fold](foldplugin.md)-->
 <!--### [forecast](forecastplugin.md)-->
 
 ### [narrow](narrowplugin.md)
-<!--### [nmvalues](nmvaluesplugin.md)-->
 ### [pivot](pivotplugin.md)
 ### [preview](previewplugin.md)
 
