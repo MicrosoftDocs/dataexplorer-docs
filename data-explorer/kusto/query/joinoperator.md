@@ -133,6 +133,110 @@ supports the following flavors of the join operator:
 |[`leftsemi`](#left-semi-join)|Left semi join|
 |[`rightsemi`](#right-semi-join)|Right semi join|
 
+### inner and innerunique join operator flavors
+
+-	When using **inner join flavor**, there will be a row in the output for every combination of matching rows from left and right without left keys deduplications. The output will be a cartesian product of left and right keys.
+	Example of **inner join**:
+
+```kusto
+let t1 = datatable(key:long, value:string)  
+[
+1, "val1.1",  
+1, "val1.2"  
+];
+let t2 = datatable(key:long, value:string)  
+[  
+1, "val1.3", 
+1, "val1.4"  
+];
+t1
+| join kind = inner
+    t2
+on key
+```
+
+|key|value|key1|value1|
+|---|---|---|---|
+|1|val1.2|1|val1.3|
+|1|val1.1|1|val1.3|
+|1|val1.2|1|val1.4|
+|1|val1.1|1|val1.4|
+
+-	Using **innerunique join flavor** will deduplicate keys from left side and there will be a row in the output from every combination of deduplicated left keys and right keys.
+	Example of **innerunique join** for the same datasets used above, Please note that **innerunique flavor** for this case may yield two possible outputs and both are correct.
+	In the first output, the join operator randomly picked the first key which appears in t1 with the value "val1.1" and matched it with t2 keys while in the second one, the join operator randomly picked the second key appears in t1 which has the value "val1.2" and matched it with t2 keys:
+
+```kusto
+let t1 = datatable(key:long, value:string)  
+[
+1, "val1.1",  
+1, "val1.2"  
+];
+let t2 = datatable(key:long, value:string)  
+[  
+1, "val1.3", 
+1, "val1.4"  
+];
+t1
+| join kind = innerunique
+    t2
+on key
+```
+
+|key|value|key1|value1|
+|---|---|---|---|
+|1|val1.1|1|val1.3|
+|1|val1.1|1|val1.4|
+
+```kusto
+let t1 = datatable(key:long, value:string)  
+[
+1, "val1.1",  
+1, "val1.2"  
+];
+let t2 = datatable(key:long, value:string)  
+[  
+1, "val1.3", 
+1, "val1.4"  
+];
+t1
+| join kind = innerunique
+    t2
+on key
+```
+
+|key|value|key1|value1|
+|---|---|---|---|
+|1|val1.2|1|val1.3|
+|1|val1.2|1|val1.4|
+
+
+-	Kusto is optimized to push filters that come after the `join` towards the appropriate join side left or right when possible.
+	Sometimes, when the flavor used is **innerunique** and the filter can be propagated to the left side of the join, then it will be propagated automatically and the keys which applies to that filter will always appear in the output.
+	for example, using the example above and adding filter ` where value == "val1.2" ` will always give the second result and will never give the first result for the used datasets :
+
+```kusto
+let t1 = datatable(key:long, value:string)  
+[
+1, "val1.1",  
+1, "val1.2"  
+];
+let t2 = datatable(key:long, value:string)  
+[  
+1, "val1.3", 
+1, "val1.4"  
+];
+t1
+| join kind = innerunique
+    t2
+on key
+| where value == "val1.2"
+```
+
+|key|value|key1|value1|
+|---|---|---|---|
+|1|val1.2|1|val1.3|
+|1|val1.2|1|val1.4|
  
 ### Default join flavor
     

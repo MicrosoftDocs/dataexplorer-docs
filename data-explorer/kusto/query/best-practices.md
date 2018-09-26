@@ -51,7 +51,7 @@ In such cases, it is possible to extract the required values by using a regex.
 
 ## materialize() function
 
-When using the [materialize() function](./materializefunction.md), try to push all possible operators that will reduce the materialized data set and still keeps the semantics of the query. e.g: filters, project only required columns, etc.
+-	When using the [materialize() function](./materializefunction.md), try to push all possible operators that will reduce the materialized data set and still keeps the semantics of the query. e.g: filters, project only required columns, etc.
     in this example:
 
     ```kusto
