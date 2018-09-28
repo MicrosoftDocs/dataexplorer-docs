@@ -16,7 +16,7 @@ This is achieved by provisioning an [Azure Event Grid](https://docs.microsoft.co
 
 ## Data Format
 * Blobs can be in any of the [formats supported by Kusto](https://kusto.azurewebsites.net/docs/concepts/data-ingestion.html#supported-data-formats).
-* To provide data size information to Kusto on compressed blobs, we strongly recommend that customers will set `rawSizeBytes` property on the blob metadata to uncompressed data size in bytes.
+* To provide data size information to Kusto on compressed blobs, we strongly recommend that you set the `rawSizeBytes` property on the blob metadata to **uncompressed** data size in bytes.
 
 **Example in C#**
 
