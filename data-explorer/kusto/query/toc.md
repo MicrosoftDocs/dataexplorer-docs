@@ -71,7 +71,6 @@
 ## [externaldata operator](externaldata-operator.md)
 ## [facet operator](facetoperator.md)
 ## [find operator](findoperator.md)
-## [fork operator](forkoperator.md)
 ## [getschema operator](getschemaoperator.md)
 ## [invoke operator](invokeoperator.md)
 ## [join operator](joinoperator.md)
