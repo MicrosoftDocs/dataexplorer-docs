@@ -26,8 +26,6 @@ Allows caching a sub-query result during the time of query execution in a way th
 
 * Use materialize when you have join/union where their operands has mutual sub-queries that can be executed once (see the examples below).
 
-* Useful also in scenarios when we need to join/union fork legs.
-
 * Materialize is allowed to be used only in let statements by giving the cached result a name.
 
 * Materialize has a cache size limit which is **5 GB**. 

@@ -32,10 +32,7 @@ The `preview` plugin returns two result tables:
 
 **Tips**
 
-If `evaluate` is preceded by a tabular source that includes a complex filter,
-or a filter that references most of the source table columns,
-prefer to use [`fork`](forkoperator.md) instead,
-or use the [`materialize`](materializefunction.md) function. For example:
+If `evaluate` is preceded by a tabular source that includes a complex filter, or a filter that references most of the source table columns then it is recommended to use the [`materialize`](materializefunction.md) function. For example:
 
 ```kusto
 let MaterializedT = materialize(T);
