@@ -11,7 +11,48 @@ ms.date: 09/24/2018
 ---
 # Retention policy
 
-Each Kusto table and/or database can have an optional retention policy defined for it, specifying how data should be dropped based on considerations of size and/or time.
+The retntion policy controls the mechanism by which data is removed from tables automatically.
+Such removal is usually useful for data that flows into a table continuously, and whose relevance
+is age-based. For example, the retention policy can be used for a table that holds diagnostics
+events that become uninteresing after (say) two weeks since they are raised.
+
+The retention policy can be configured for a specific table, or for a whole database
+(in which case it applies to all tables in the database that don't override the policy).
+
+Setting up a retention policy is important for clusters that are concinuously ingesting
+data, to limit costs.
+
+Data that is "outside" the retention policy is eligible for removal. Kusto does not
+guarantee when such removal happens (so data may "linger" a bit even if the retention policy
+has it removed).
+
+The retention policy is most commonly set to limit the age of the data since ingestion
+(see **SoftDeletePeriod** and **HardDeletePeriod** below).
+
+[!WARNING]
+The retention policy may limit the overall data size (as measured in storage footprint
+of the compressed data, its indexes, etc.) Using this feature is discouraged when applied
+at the database level, as size-based data removal is non-deterministic in which tables
+are chosen to get trimmed.
+
+**Notes:**
+1. If the retention policy has both time-based and size-based limits, both are taken
+   into account (the first limit that gets exceeded will trigger data removal).
+
+2. The retention process first soft-deletes the data (makes it unavailable for queries,
+   but doesn't remove it from persistent storage) and then hard-deletes it (removes it
+   from persistent storage without support for recovering it).
+
+3. The precise deletion time is imprecise. The system guarantees that data will not be
+   deleted before the limit is exceeded, but deletion is not immediate following that.
+
+4. A soft-delete period of 0 can be set as part of a table-level retention policy
+   (but not as part of a database-level retention policy).
+   - When this is done, the ingested data will not be committed to the source table
+    at all, avoiding the need to persiste the data.
+   - Such configuration is useful mainly when the data gets ingested into a table
+     simply to have a transactional [update policy](updatepolicy.md) used to transform
+     it and redirect the output into another table.
 
 ## The policy object
 A retention policy includes the following properties:
@@ -45,25 +86,6 @@ A retention policy includes the following properties:
     with "ReadWrite" state are created instead of them).
     - This value affects an internal storage partitioning process, and it's recommended *not* to change it.
     - Defaults to `1 day`.
-
-**Notes:**
-1. In case a retention policy specifies both time-based and size-based soft-delete criterias, whichever is reached first applies.
-
-2. Data that is soft-deleted is still kept in persistent storage (for example, for legal reasons) but is not available
-for queries (in fact, it's invisible to Kusto). Data that is hard-deleted is removed from persistent storage and there's 
-no way to restore it.
-
-3. Actual deletion time (either soft-deletion and hard-deletion) is imprecise - Kusto guarantees that data will not be deleted before 
-the prescribed time, but it can take the cluster some time before it actually deletes the data past its deletion time.
-
-4. Tables for which there's no retention policy set inherit the database's retention policy, if such is defined.
-
-5. A soft-delete period of 0 can be set as part of a table-level policy (but not as part of a database-level policy).
-    - This could be beneficial in case that a transactional [update policy](updatepolicy.md) is being used to transform incoming data at 
-ingestion time, and redirect the output it into a different table.
-    - Using this option will prevent ingested data from being committed to the source table and from being persisted as part of the ingestion 
-operation. As a result, it will contribute to overall better performance of the operation.
-
 
 ## Control commands
 * Use [.show policy retention](../management/retention-policy.md) to show current retention
