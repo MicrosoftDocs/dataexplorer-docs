@@ -82,15 +82,6 @@ For the syntax of the control commands used for ingestion, please see the [data 
 
 
 
-## Managed Ingestion Pipelines
-
-Kusto can connect to the following Azure messaging services:
-
-* [Azure Event Hub](./data-ingestion-eventhub.md) - allows to stream data directly into Kusto
-* [Azure IoT Hub](./data-ingestion-eventhub.md) - allows to stream IoT data directly into Kusto
-* [Azure Event Grid](./data-ingestion-eventgrid.md) - allows to set up notifications on blob creation events under specified storage account.
-    These notifications will be delivered to Kusto via an Event Hub, and Kusto will ingest the blobs according to those notifications
-
 ## SDKs and OSS components
 
 Kusto offers client SDK that can be used both to ingest and query data with Kusto:
