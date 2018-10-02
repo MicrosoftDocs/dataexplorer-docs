@@ -56,12 +56,6 @@ However, the original name would be preserved, at least for one of the columns.
 
 Kusto doesn't support the predicates `ANY`, `ALL`, and `EXISTS`.
 
-## Kusto stored functions 
-
-Kusto exposes stored functions as SQL views.
-However, it doesn't allow using parameters with stored functions.
-Stored function can also be referred as stored procedure (via `EXEC`), but also, parameters are not supported yet.
-
 ## Recursive CTEs
 
 Kusto doesn't support recursive common table expressions.

@@ -21,10 +21,7 @@ The `.ingest` control command
 such as data ingestion through a dedicated REST API (streaming ingestion)
 and using external tools.
 
-Please see [data ingestion](../concepts/data-ingestion.md) for an overview
-of the data ingestion process and the various options of ingesting data.
 
-The transactional guarantees of the different commands listed below appear [here](../concepts/data-ingestion-transactional-guarantees.md).
 
 ## .ingest
 

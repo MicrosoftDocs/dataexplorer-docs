@@ -605,3 +605,76 @@ datatable (SomeInt:int, SomeSeries:string) [
 // "X | summarize sum(SomeInt)":
 | extend Pct = 100 * bin(todouble(SomeInt) / toscalar(X | summarize sum(SomeInt)), 0.001)
 ```
+
+## Performing aggregations over a sliding window
+The following example shows how to summarize columns using a sliding window. Lets take, for example, the table below, which contains prices of fruits by timestamps. Suppose we would like to calculate the min, max and sum cost of each fruit per day, using a sliding window of 7 days. In other words, each record in the result set aggregates the past 7 days, and the result contains a record per day in the analysis period.  
+
+Fruits table: 
+
+|Timestamp|Fruit|Price|
+|---|---|---|
+|2018-09-24 21:00:00.0000000|Bananas|3|
+|2018-09-25 20:00:00.0000000|Apples|9|
+|2018-09-26 03:00:00.0000000|Bananas|4|
+|2018-09-27 10:00:00.0000000|Plums|8|
+|2018-09-28 07:00:00.0000000|Bananas|6|
+|2018-09-29 21:00:00.0000000|Bananas|8|
+|2018-09-30 01:00:00.0000000|Plums|2|
+|2018-10-01 05:00:00.0000000|Bananas|0|
+|2018-10-02 02:00:00.0000000|Bananas|0|
+|2018-10-03 13:00:00.0000000|Plums|4|
+|2018-10-04 14:00:00.0000000|Apples|8|
+|2018-10-05 05:00:00.0000000|Bananas|2|
+|2018-10-06 08:00:00.0000000|Plums|8|
+|2018-10-07 12:00:00.0000000|Bananas|0|
+
+Sliding window aggreation query (explanation is provided below query results): 
+
+```
+let _start = datetime(2018-09-24);
+let _end = _start + 13d; 
+Fruits 
+| extend _bin = bin_at(Timestamp, 1d, _start) // #1 
+| extend _endRange = iif(_bin + 7d > _end, _end, 
+                            iff( _bin + 7d - 1d < _start, _start,
+                                iff( _bin + 7d - 1d < _bin, _bin,  _bin + 7d - 1d)))  // #2
+| extend _range = range(_bin, _endRange, 1d) // #3
+| mvexpand _range to typeof(datetime) limit 1000000 // #4
+| summarize min(Price), max(Price), sum(Price) by Timestamp=bin_at(_range, 1d, _start) ,  Fruit // #5
+| where Timestamp >= _start + 7d; // #6
+
+```
+
+|Timestamp|Fruit|min_Price|max_Price|sum_Price|
+|---|---|---|---|---|
+|2018-10-01 00:00:00.0000000|Apples|9|9|9|
+|2018-10-01 00:00:00.0000000|Bananas|0|8|18|
+|2018-10-01 00:00:00.0000000|Plums|2|8|10|
+|2018-10-02 00:00:00.0000000|Bananas|0|8|18|
+|2018-10-02 00:00:00.0000000|Plums|2|8|10|
+|2018-10-03 00:00:00.0000000|Plums|2|8|14|
+|2018-10-03 00:00:00.0000000|Bananas|0|8|14|
+|2018-10-04 00:00:00.0000000|Bananas|0|8|14|
+|2018-10-04 00:00:00.0000000|Plums|2|4|6|
+|2018-10-04 00:00:00.0000000|Apples|8|8|8|
+|2018-10-05 00:00:00.0000000|Bananas|0|8|10|
+|2018-10-05 00:00:00.0000000|Plums|2|4|6|
+|2018-10-05 00:00:00.0000000|Apples|8|8|8|
+|2018-10-06 00:00:00.0000000|Plums|2|8|14|
+|2018-10-06 00:00:00.0000000|Bananas|0|2|2|
+|2018-10-06 00:00:00.0000000|Apples|8|8|8|
+|2018-10-07 00:00:00.0000000|Bananas|0|2|2|
+|2018-10-07 00:00:00.0000000|Plums|4|8|12|
+|2018-10-07 00:00:00.0000000|Apples|8|8|8|
+
+Query details: 
+
+The query "stretches" (duplicates) each record in the input table throughout 7 days post its actual appearance, such that each record actually appears 7 times. As a result, when performing the aggregation per each day, the aggregation includes all records of previous 7 days.
+
+Step-by-step explanation (numbers refer to the numbers in query inline comments):
+1. Bin each record to 1d (relative to _start). 
+2. Determine the end of the range per record - _bin + 7d, unless this is out of the _(start, end)_ range, in which case it is adjusted. 
+3. For each record, create an array of 7 days (timestamps), starting at current record's day. 
+4. mvexpand the array, thus duplicating each record to 7 records, 1 day apart from each other. 
+5. Perform the aggregation function for each day. Due to #4, this actually summarizes the _past_ 7 days. 
+6. Finally, since the data for the first 7d is incomplete (there's no 7d lookback period for the first 7 days), we exclude the first 7 days from the final result (they only participate in the aggregation for the 2018-10-01). 
