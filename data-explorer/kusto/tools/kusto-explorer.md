@@ -474,7 +474,7 @@ It is possible to use Parametrized Queries with deep-linking.
 First, make a query to be formed as Parametrized Query (e.g. KustoLogs | where Timestamp > ago({Period}) | count) 
 Second, provide a parameter for every Query Parameter in the URI
 In this case
-https://kuskus.kusto.windows.net/Kuskus?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h
+https://mycluster.kusto.windows.net/MyDatabase?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h
 
 ### Getting Shorter Links
 Queries may become longer - and in order to reduce the chance query exceeds maximum length - you 

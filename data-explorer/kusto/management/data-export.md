@@ -62,14 +62,15 @@ tuning properties:
 
 |Property        |Type    |Description                                                                                                  |
 |----------------|--------|-------------------------------------------------------------------------------------------------------------|
-|`async`         |        |Indicates that the command runs in asynchronous mode. (Cannot be specified in a `with` clause.)              |
+|`async`         |        |Indicates that the command runs in asynchronous mode. (Cannot be specified in a `with` clause.) If the command is executed asynchronouly, its results are persisted and can be retrieved when export is complete using the [show operation details](../management/operations.md#show-operation-details) command.               |
 |`compressed`    |`bool`  |If set, the output blobs are compressed as `.gz` files.                                                      |
 |`sizeLimit`     |`long`  |The size limit at which to switch to the next blob (before compression). The default value is 100MB, max 1GB.|
 |`includeHeaders`|`string`|For CSV or TSV output, controls the generation of column headers; `none`: Do not generate a header line (default). `firstFile`: Emit a header line into the first file only, does not work well with distributed mode. `all`: Emit a header line for all files.|
 |`fileExtension` |`string`|Indicates the file format: `csv` (the default), `tsv`, `json` or `parquet (preview)`. (Compression might add `gz`.)              |
 |`namePrefix`    |`string`|Indicates a prefix to add to each generated blob name. A random prefix will be used if left unspecified.     |
 |`encoding`      |`string`|Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`.                                        |
-|`distributed`   |`bool`  |Indicated that the export writes from all nodes in parallel if possible. (Defaults to `true`.)               |
+|`distributed`   |`bool`  |Indicates that the export writes from all nodes in parallel if possible. (Defaults to `true`.)               |
+|`persistDetails`|`bool`  |Indicates that the command should persist its results in asynchronous runs (see `async` flag). (Defaults to `true` in async runs, but can be turned off if the caller does not require the results). The property is not supported in synchronous runs of the command.  |
 
 One or more path prefixes should be provided with the command. These are valid URIs
 for Azure Blob Storage blob containers (or virtual folders under blob containers)
@@ -138,6 +139,21 @@ In this example, Kusto runs the query and then exports the first recordset produ
   )
   <| myLogs | where id == "moshe" | limit 10000
 ```
+
+**Results**
+
+The command returns the paths of all blobs exported and their respective record count. If command is executed asynchronously, results can be retrieved using the [show operation details](../management/operations.md#show-operation-details) command, providing it with the operation id returned by the async command.
+
+```
+.show operation f008dc1e-2710-47d8-8d34-0d562f5f8615 details 
+```
+
+|Path|NumRecords|
+|---|---|
+|http://storage1.blob.core.windows.net/containerName/export_1_d08afcae2f044c1092b279412dcb571b.csv|10|
+|http://storage1.blob.core.windows.net/containerName/export_2_454c0f1359e24795b6529da8a0101330.csv|15|
+
+
 
 ## Exporting data to a SQL Database
 

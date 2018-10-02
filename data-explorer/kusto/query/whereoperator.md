@@ -59,12 +59,12 @@ To get the fastest performance:
 ```kusto
 Traces
 | where Timestamp > ago(1h)
-    and Source == "Kuskus"
+    and Source == "MyCluster"
     and ActivityId == SubActivityId 
 ```
 
 Records that are no older than 1 hour,
-and come from the Source called "Kuskus", and have two columns of the same value. 
+and come from the Source called "MyCluster", and have two columns of the same value. 
 
 Notice that we put the comparison between two columns last, as it can't utilize the index and forces a scan.
 

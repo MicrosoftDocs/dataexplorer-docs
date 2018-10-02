@@ -55,8 +55,8 @@ The table lists additional property names that are aliases, as well as a program
 |Property name                      |Alternative names|Programmatic name  |Description                                                   |
 |-----------------------------------|-----------------|-------------------|--------------------------------------------------------------|
 |Client Version for Tracing         |                                      |TraceClientVersion|When tracing the client version, use this value                                          |
-|Data Source                        |Addr, Address, Network Address, Server|DataSource        |The URI specifying the Kusto service endpoint. For example, https://kuskus.kusto.windows.net or net.tcp://localhost
-|Initial Catalog                    |Database                              |InitialCatalog    |The name of the database to be used by default. For example, Kuskus|
+|Data Source                        |Addr, Address, Network Address, Server|DataSource        |The URI specifying the Kusto service endpoint. For example, https://mycluster.kusto.windows.net or net.tcp://localhost
+|Initial Catalog                    |Database                              |InitialCatalog    |The name of the database to be used by default. For example, MyDatabase|
 |Query Consistency                  |QueryConsistency                      |QueryConsistency  |Set to either `strongconsistency` or `weakconsistency` to determine if the query should synchronize with the metadata before running|
 
 
