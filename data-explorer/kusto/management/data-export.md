@@ -72,9 +72,8 @@ tuning properties:
 |`distributed`   |`bool`  |Indicates that the export writes from all nodes in parallel if possible. (Defaults to `true`.)               |
 |`persistDetails`|`bool`  |Indicates that the command should persist its results in asynchronous runs (see `async` flag). (Defaults to `true` in async runs, but can be turned off if the caller does not require the results). The property is not supported in synchronous runs of the command.  |
 
-One or more path prefixes should be provided with the command. These are valid URIs
-for Azure Blob Storage blob containers (or virtual folders under blob containers)
-which must include the credentials. See [Azure Storage Blob connection strings](https://kusto.azurewebsites.net/docs/concepts/persistent-storage-connection-strings.html#azure-storage-blob).
+One or more path prefixes should be provided with the command. These are valid URIs for Azure Blob Storage blob containers (or virtual folders under blob containers) which must include the credentials. Credentials can be either an account key, an account SAS key, or a service SAS key to the specific container. The SAS key should include (at least) the following permissions: SharedAccessBlobPermissions.List | SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read. See [Azure Storage Blob connection strings](https://kusto.azurewebsites.net/docs/concepts/persistent-storage-connection-strings.html#azure-storage-blob).
+
 Kusto will "spread out" across multiple path prefixes if more than one is provided,
 so as not to reduce the concurrent operations against a single blob container.
 For example:

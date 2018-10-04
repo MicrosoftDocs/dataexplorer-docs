@@ -65,7 +65,7 @@ In this example the results of the control command are rendered as a pie chart.
 This action sends a query to Kusto cluster. The actions that are added afterwards iterate over each line of the results of the query.
 
 
-The following example triggers a query every minute and sends an email based on the query results. The query checks the number of lines in Kuskus database, and then sends an email only if the number of lines is greater than 0. 
+The following example triggers a query every minute and sends an email based on the query results. The query checks the number of lines in the database, and then sends an email only if the number of lines is greater than 0. 
 
 ![alt text](./Images/KustoTools-Flow/flow-runquerylistresults.png "flow-runquerylistresults")
 

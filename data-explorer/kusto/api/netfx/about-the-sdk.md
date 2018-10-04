@@ -11,11 +11,11 @@ ms.date: 09/24/2018
 ---
 # About Kusto .NET SDK
 
-## The "official" NuGet feed
+## NuGet feed
 
 
 
-The Kusto client libraries are published as NuGet packages and can be found on [nuget.org](https://www.nuget.org/packages?q=kusto).
+Kusto client libraries are published as NuGet packages and can be found on [nuget.org](https://www.nuget.org/packages?q=kusto).
 
 The following packages are available from this feed:
 

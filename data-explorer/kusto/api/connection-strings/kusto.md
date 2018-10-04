@@ -62,20 +62,19 @@ The table lists additional property names that are aliases, as well as a program
 
 ### User Authentication properties
 
+
 |Property name                      |Alternative names|Programmatic name  |Description                                                   |
 |-----------------------------------|-----------------|-------------------|--------------------------------------------------------------|
 |AAD Federated Security             |Federated Security, Federated, Fed, AADFed|FederatedSecurity    |A Boolean value that instructs the client to perform AAD federated authentication|
-
 |Enforce MFA                        |MFA,EnforceMFA                            |EnforceMfa           |A Boolean value that instructs the client to force acquiring a multifactor-authentication token regardless of the service endpoint connecting to|
-
-
 |User ID                            |UID, User                                 |UserID               |Username hint for AAD Federated AuthN|
 |User Name for Tracing              |                                          |TraceUserName        |When tracing the user name, use this value                                               |
 |User Token                         |UsrToken, UserToken                       |UserToken            |AAD-issued user token to use for authentication when AAD Federated authentication is used. Overrides ApplicationClientId, ApplicationKey and ApplicationToken. (Used rarely, if the caller has already authenticated against AAD and wants to use the token to communicate with Kusto)|
-|Namespace                          |NS                                        |Namespace            |(For future use)|
+
 
 
 ### Application Authentication properties
+
 
 |Property name                      |Alternative names|Programmatic name  |Description                                                   |
 |-----------------------------------|-----------------|-------------------|--------------------------------------------------------------|
@@ -86,10 +85,6 @@ The table lists additional property names that are aliases, as well as a program
 |Application Name for Tracing                      |                                          |TraceAppName                                  |When tracing the application name, use this value                                        |
 |Application Token                                 |AppToken                                  |ApplicationToken                              |The application token to use for authentication when federated authentication is used. Overrides ApplicationClientId and ApplicationKey. (Used rarely, if the caller has already authenticated against AAD and wants to use the token to communicate with Kusto)|
 |Authority Id                                      |TenantId                                  |AuthorityId                                   |The ID of the AAD tenant where the application is configured (should be supplied only for non-Microsoft tenant)|
-
-
-
-
 
 
 
