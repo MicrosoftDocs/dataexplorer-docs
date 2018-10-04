@@ -75,7 +75,146 @@ The table lists additional property names that are aliases, as well as a program
 
 ### Application Authentication properties
 
-|Managed Service Identity                          |ManagedServiceIdentity, dMSI              |ManagedServiceIdentity                        |TODO|
-|Application Certificate Subject Distinguished Name|Application Certificate Subject           |ApplicationCertificateSubjectDistinguishedName|TODO|
-|Application Certificate Issuer Distinguished Name |Application Certificate Issuer            |ApplicationCertificateIssuerDistinguishedName |TODO|
-|Application Certificate Send Public Certificate   |Application Certificate SendX5c, SendX5c  |ApplicationCertificateSendPublicCertificate   |TODO|
+
+|Property name                      |Alternative names|Programmatic name  |Description                                                   |
+|-----------------------------------|-----------------|-------------------|--------------------------------------------------------------|
+|AAD Federated Security                            |Federated Security, Federated, Fed, AADFed|AadFederatedSecurity                          |A Boolean value that instructs the client to perform AAD federated authentication|
+|Application Certificate Thumbprint                |AppCert                                   |ApplicationCertificateThumbprint              |The thumbprint of the certificate to use for AAD or dSTS application authentication when federated authentication is used|
+|Application Client Id                             |AppClientId                               |ApplicationClientId                           |The application client id to use for authentication when federated authentication is used|
+|Application Key                                   |AppKey                                    |ApplicationKey                                |The application key to use for authentication when federated authentication is used      |
+|Application Name for Tracing                      |                                          |TraceAppName                                  |When tracing the application name, use this value                                        |
+|Application Token                                 |AppToken                                  |ApplicationToken                              |The application token to use for authentication when federated authentication is used. Overrides ApplicationClientId and ApplicationKey. (Used rarely, if the caller has already authenticated against AAD and wants to use the token to communicate with Kusto)|
+|Authority Id                                      |TenantId                                  |AuthorityId                                   |The ID of the AAD tenant where the application is configured (should be supplied only for non-Microsoft tenant)|
+
+
+
+### Client communication properties
+
+|Property name                      |Alternative names|Programmatic name  |Description                                                   |
+|-----------------------------------|-----------------|-------------------|--------------------------------------------------------------|
+|Accept      ||Accept      |A Boolean value that requests detailed error objects to be returned on failures.|
+|Streaming   ||Streaming   |A Boolean value that requests the client will not accumulate data before providing it to the caller.|
+|Uncompressed||Uncompressed|A Boolean value that requests the client will not ask for transport-level compression.|
+
+## Authentication properties (details)
+
+One of the important tasks of the connection string is to tell the client how to authenticate to the service.
+The following algorithm is generally used by clients for authentication against HTTP/HTTPS endpoints:
+
+1. If AadFederatedSecurity is true:
+    1. If UserToken is specified, use AAD federated authentication with the specified token
+    2. Otherwise, If ApplicationToken is specified, perform federated authentication with the specified token
+    3. Otherwise, if ApplicationClientId and ApplicationKey are specified, perform federated authentication with the specified application client id and key
+    4. Otherwise, if ApplicationClientId and ApplicationCertificateThumbprint are specified, perform federated authentication with the specified application client id and certificate
+    5. Otherwise, perform federated authentication with the current logged-on user's identity (user will be prompted if this is the first authentication in the session)
+
+2. Otherwise do not authenticate
+
+
+
+
+
+### AAD federated application authentication with application certificate:
+
+1. Authentication based on application's certificate if supported only for web applications (and not for native client applications).
+2. The web application should be configured to accept the given certificate. [How to authentication based-on AAD application's certificate](https://azure.microsoft.com/en-in/documentation/samples/active-directory-dotnet-daemon-certificate-credential/)
+3. The web application should be configured as an authorized principal in the relevant Kusto's cluster.
+4. The certificate with the given thumbprint should be installed (in Local Machine store or in Current User store).
+5. The certificate's public key should contain at least 2048 bits.
+
+## AAD-based authentication examples
+
+**AAD Federated authentication based-on the current logged-on user's identity (user will be prompted if required)**
+
+```csharp
+// Option 1
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://<ServiceName>.kusto.windows.net")
+	.WithAadUserPromptAuthentication();
+
+// Option 2
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://<ServiceName>.kusto.windows.net")
+{
+    FederatedSecurity = true,
+    InitialCatalog = "NetDefaultDB",
+    AuthorityId = "<AAD TenantId or name>",
+};
+
+// Equivalent Kusto connection string: "Data Source=https://<ServiceName>.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;AuthorityId=<AAD TenantId or name>"
+```
+
+**AAD Federated application authentication based-on a given ApplicationClientId and ApplicationKey**
+
+```csharp
+// Option 1
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://<ServiceName>.kusto.windows.net")
+	.WithAadApplicationKeyAuthentication("<ApplicationClientId>","<ApplicationKey>");
+
+// Option 2
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://<ServiceName>.kusto.windows.net")
+{
+    FederatedSecurity = true,
+    InitialCatalog = "NetDefaultDB",
+    ApplicationClientId = "<ApplicationClientId>",
+    ApplicationKey = "<ApplicationKey>"
+    AuthorityId = "<AAD TenantId or name>",
+};
+
+// Equivalent Kusto connection string: "Data Source=https://<ServiceName>.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;AppClientId=<ApplicationClientId>;AppKey=<ApplicationKey>;AuthorityId=<AAD TenantId or name>"
+```
+
+**AAD Federated authentication based-on a given user's / application's token**
+
+```csharp
+// AAD User - Option 1
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://<ServiceName>.kusto.windows.net")
+	.WithAadUserTokenAuthentication("<UserToken>");
+
+// AAD User - Option 2
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://<ServiceName>.kusto.windows.net")
+{
+    FederatedSecurity = true,
+    InitialCatalog = "NetDefaultDB",
+    UserToken = "<UserToken>"
+    AuthorityId = "<AAD TenantId or name>",
+};
+
+// Equivalent Kusto connection string: "Data Source=https://<ServiceName>.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;UserToken=<UserToken>;;AuthorityId=<AAD TenantId or name>"
+
+// AAD Application - Option 1
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://<ServiceName>.kusto.windows.net")
+	.WithAadApplicationTokenAuthentication("<ApplicationToken>");
+
+// AAD Application - Option 2
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://<ServiceName>.kusto.windows.net")
+{
+    FederatedSecurity = true,
+    InitialCatalog = "NetDefaultDB",
+    ApplicationToken = "<ApplicationToken>"
+    AuthorityId = "<AAD TenantId or name>",
+};
+
+// Equivalent Kusto connection string: "Data Source=https://<ServiceName>.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;AppToken=<ApplicationToken>;AuthorityId=<AAD TenantId or name>"
+```
+
+**Using certificate thumbprint (client will attempt to load the certificate from local store)**
+
+```csharp
+string applicationClientId = "<applicationClientId>";
+string applicationCertificateThumbprint = "<ApplicationCertificateThumbprint>";
+ 
+// Option 1
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://<EngineServiceName>.kusto.windows.net")
+	.WithAadApplicationThumbprintAuthentication(applicationClientId, applicationCertificateThumbprint);
+
+// Option 2
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://<EngineServiceName>.kusto.windows.net")
+{
+    FederatedSecurity = true,
+    ApplicationClientId = applicationClientId,
+    ApplicationCertificateThumbprint = applicationCertificateThumbprint
+    AuthorityId = "<AAD TenantId or name>",
+};
+
+// Equivalent Kusto connection string: "Data Source=https://<ServiceName>.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;AppClientId=<ApplicationClientId>;AppCert=<Application certificate thumbprint>;AuthorityId=<AAD TenantId or name>" 
+```
+
