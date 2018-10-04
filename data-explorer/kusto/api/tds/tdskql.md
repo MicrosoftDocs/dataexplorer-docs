@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # KQL over TDS
 
-Kusto allows to utilize TDS endpoint for executing queries authored in the native [KQL](../../query/index.md) query language. This functionality offers smoother migiration towards Kusto. For example, it is possible to create `SSIS` job to query Kusto with KQL query.
+Kusto allows to utilize TDS endpoint for executing queries authored in the native [KQL](../../query/index.md) query language. This functionality offers smoother migiration towards Kusto. For example, it is possible to create SSIS job to query Kusto with KQL query.
 
 ## Executing Kusto stored functions
 
