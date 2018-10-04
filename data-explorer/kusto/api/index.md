@@ -27,9 +27,10 @@ The Kusto cloud service supports the following communication endpoints:
 Kusto provides a number of client libraries that make use of the
 endpoints above to make programmatic access easy:
 
-1. .NET Framework Libraries
-2. Python
-3. PowerShell
+1. .NET SDK
+2. Python SDK
+3. Java SDK 
+4. PowerShell
 
 ## REST API
 
