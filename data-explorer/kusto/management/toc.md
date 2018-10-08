@@ -8,6 +8,7 @@
 ## [Mappings](mappings.md)
 ## [Functions](functions.md)
 
+
 # [Policies](policies.md)
 ## [Caching](cache-policy.md)
 ## [IngestionTime](ingestiontime-policy.md)

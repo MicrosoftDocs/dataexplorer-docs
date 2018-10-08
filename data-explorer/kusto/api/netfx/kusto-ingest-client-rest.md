@@ -212,7 +212,8 @@ This step is about uploading a local file to an Azure Blob which will later be h
 // Uploads a single local file to an Azure Blob container, returns blob URI and original data size
 internal static string UploadFileToBlobContainer(string filePath, string blobContainerUri, string containerName, string blobName, out long blobSize)
 {
-    CloudBlobContainer blobContainer = new CloudBlobContainer(new Uri(blobContainerUri));
+    var blobUri = new Uri(blobContainerUri);
+    CloudBlobContainer blobContainer = new CloudBlobContainer(blobUri);
     CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(blobName);
 
     using (Stream stream = File.OpenRead(filePath))
@@ -221,7 +222,7 @@ internal static string UploadFileToBlobContainer(string filePath, string blobCon
         blobSize = blockBlob.Properties.Length;
     }
 
-    return blockBlob.Uri.ToString();
+    return string.Format("{0}{1}", blockBlob.Uri.AbsoluteUri, blobUri.Query);
 }
 ```
 

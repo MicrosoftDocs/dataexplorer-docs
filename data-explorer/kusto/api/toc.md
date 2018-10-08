@@ -14,7 +14,7 @@
 
 # [MS-TDS](tds/index.md)
 ## [T-SQL](tds/t-sql.md)
-## [KQL over TDS](tds/tdskql.md)
+## [CSL over TDS](tds/tdscsl.md)
 ## [Clients](tds/clients.md)
 ## [Known issues](tds/sqlknownissues.md)
 

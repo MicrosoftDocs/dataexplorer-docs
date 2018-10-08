@@ -21,7 +21,7 @@ Azure Active Directory integrated authentication.
 
 See [T-SQL](./t-sql.md) for more details on the T-SQL query language as implemented
 by Kusto. See [MS-TDS clients and Kusto](./clients.md) for examples of how to
-use Kusto from some well-known clients using MS-TDS/T-SQL. See [KQL over TDS](./tdskql.md) for
-information about executing native KQL queries via TDS endpoint. 
+use Kusto from some well-known clients using MS-TDS/T-SQL. See [CSL over TDS](./tdscsl.md) for
+information about executing native CSL queries via TDS endpoint. 
 Finally, see [this](./sqlknownissues.md) for some of the main differences between SQL Server's
 implementation of T-SQL and Kusto.
