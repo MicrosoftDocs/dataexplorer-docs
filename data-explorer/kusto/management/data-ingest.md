@@ -1,11 +1,11 @@
 ---
 title: Data ingestion - Azure Data Explorer | Microsoft Docs
 description: This article describes Data ingestion in Azure Data Explorer.
-services: azure-data-explorer
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: azure-data-explorer
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
@@ -154,56 +154,30 @@ Tips: You can use [getschema](../query/getschemaoperator.md) operator on the tar
  
 **Syntax** 
  
-`.set` [`async`] *TableName* [`with(`*Specifications*`)`] `<|` *QueryOrCommand*
+`.set` [`async`] *TableName* [`with` `(`*property_name* `=` *value*`,`...`)`] `<|` *QueryOrCommand*
 
-`.append` [`async`] *TableName* [`with(`*Specifications*`)`] `<|` *QueryOrCommand*
+`.append` [`async`] *TableName* [`with` `(`*property_name* `=` *value*`,`...`)`] `<|` *QueryOrCommand*
 
-`.set-or-append` [`async`] *TableName* [`with(`*Specifications*`)`] `<|` *QueryOrCommand*
+`.set-or-append` [`async`] *TableName* [`with` `(`*property_name* `=` *value*`,`...`)`] `<|` *QueryOrCommand*
 
-`.set-or-replace` [`async`] *TableName* [`with(`*Specifications*]`)`] `<|` *QueryOrCommand*
+`.set-or-replace` [`async`] *TableName* [`with` `(`*property_name* `=` *value*`,`...`)`] `<|` *QueryOrCommand*
 
-* `async` (optional) specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned,
-  and the operation's status can be monitored using the [.show operations](./operations.md#show-operations) command).
-* *TableName* is the name of the table into which data is added.
-  The table must not exist prior to running the `.set` command,
-  and must exist prior to the `.append` command.
-* *QueryOrCommand* is the data query, metadata query, or metadata control command to run. 
-  * *Note*: When using control commands, only `.show` control commands are allowed.
-* *Specifications* is a comma-separated list of the following *optional* definitions:
-  * *TagsDefinitions* are optional extent tags to use with the extent/s
-    being created.
-    * Example: `tags='["Tag1","Tag2"]'`
-  * *CreationTimeDefinition* is an optional DateTime value in ISO8601 format as string,
-    which can be used to force a specific value for the ingested data's creation time indicator (used for retention).
-    * Example: `creationTime='2017-02-13T11:09:36.7992775Z'`
-  * *IngestIfNotExistsDefinition* are optional 'ingestIfNotExists' values to use with the extent
-    being created - allows preventing data from being ingested if there's already an extent with 
-    this specific `ingest-by:` tag in the target table 
-    (see: [Extent Tagging](extents-overview.md#extent-tagging)).
-    * Example: `ingestIfNotExists='["Tag1", "Tag2"]'`
-  * *FolderSpecification* is an optional string value which specifies the folder name to set for the table.
-    * For an `.append` or `.set-or-append` command that doesn't create the table, the current folder name gets overridden.
-    * Example: `folder='MyFolder'`
-  * *IngestionTimePolicySpecification* is an optional value which specifies a value for the 
-  table's [Ingestion Time Policy](../concepts/ingestiontimepolicy.md), that should be
-  set as part of the execution of a command which creates a new table (if not specified,
-  policy is not set).
-      * This won't have an effect for commands which are executed against already existing tables.
-      * Example: `policy_ingestiontime=true`
-  * *ExtendSchemaSpecification* is an optional boolean value which specifies whether or not the command
-  could extend the schema of the target table (defaults to `false`).
-      * Allowed schema changes are only ones which **add** new column(s) at the **end** of the existing schema.
-        * Examples: 
-          - Having *Original table schema* = `(a:string, b:int)` and *Result table schema* = `(a:string, b:int, c:datetime, d:string)` is **valid** (as columns `c` and `d` are
-          added at the end).
-          - Having *Original table schema* = `(a:string, b:int)` and *Result table schema* = `(a:string, c:datetime, d:string)` is **not valid** (as column `b` is removed).
-      * Example: `extend_schema=true`
-  * *RecreateSchemaSpecification* is an optional boolean value which specifies whether or not the command
-  could recreate the schema of the target table (defaults to `false`). Applicable only for set-or-replace command.
-      * Any schema changes are allowed with this option. The schema changes are not transactional with the data ingestion. 
-      If both options extend_schema and recreate_schema are set, extend_schema option is ignored.
-      * Example: `recreate_schema=true`
+**Properties** 
 
+|Property |Type |Description|Example  
+|--------|-----------|--------|-------
+|`TableName`  |`string`  |The name of the table into which data is added. The table must not exist prior to running the `.set` command, and must exist prior to the `.append` command.|
+|`QueryOrCommand`  |`string`  |The data query, metadata query, or metadata control command to run. <br>* *Note*: When using control commands, only `.show` control commands are allowed.|
+|`async`  |`bool`  |Specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned, and the operation's status can be monitored using the [.show operations](./operations.md#show-operations) command).|
+|`tags`  |`string`  |Optional extent tags to use with the extent/s being created.|`tags='["Tag1","Tag2"]'`|
+|`creationTime`  |`DateTime`  |Optional DateTime value in ISO8601 format as string, which can be used to force a specific value for the ingested data's creation time indicator (used for retention).| `creationTime='2017-02-13T11:09:36.7992775Z'`|
+|`ingestIfNotExists`  |`string`  |Optional 'ingestIfNotExists' values to use with the extent being created - allows preventing data from being ingested if there's already an extent with this specific `ingest-by:` tag in the target table (see: [Extent Tagging](extents-overview.md#extent-tagging)). | `ingestIfNotExists='["Tag1", "Tag2"]'`|
+|`folder`  |`string`  |Specifies the folder name to set for the table.<br>* For an `.append` or `.set-or-append` command that doesn't create the table, the current folder name gets overridden. |`folder='MyFolder'`|
+|`policy_ingestiontime`|`bool`  |Specifies a value for the table's [Ingestion Time Policy](../concepts/ingestiontimepolicy.md), that should be set as part of the execution of a command which creates a new table (if not specified, policy is set to true by default). <br> * This won't have an effect for commands which are executed against already existing tables. | `policy_ingestiontime=false`|
+|`extend_schema`  |`bool`  |Specifies whether or not the command could extend the schema of the target table (defaults to `false`). <br>* Allowed schema changes are only ones which **add** new column(s) at the **end** of the existing schema. <br> Examples: <br>  - Having *Original table schema* = `(a:string, b:int)` and *Result table schema* = `(a:string, b:int, c:datetime, d:string)` is **valid** (as columns `c` and `d` are added at the end). <br> - Having *Original table schema* = `(a:string, b:int)` and *Result table schema* = `(a:string, c:datetime, d:string)` is **not valid** (as column `b` is removed). | `extend_schema=true`|
+|`recreate_schema`|`bool`  |Specifies whether or not the command could recreate the schema of the target table (defaults to `false`). Applicable only for set-or-replace command. <br> * Any schema changes are allowed with this option. The schema changes are not transactional with the data ingestion. <br> If both options extend_schema and recreate_schema are set, extend_schema option is ignored.|  `recreate_schema=true`|
+|`persistDetails`|`bool`  |Indicates that the command should persist its results. Defaults to `false`. If turned on, results are persisted and can be retrieved when the operation is complete using the [show operation details](../management/operations.md#show-operation-details) command. |  `persistDetails=true`|
+ 
 **Examples** 
 
 Create a new table called "RecentErrors" in the current database that has the same schema as "LogsTable" and holds all the error records of the last hour:

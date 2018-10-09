@@ -1,11 +1,11 @@
 ---
 title: cursor_current(), current_cursor() - Azure Data Explorer | Microsoft Docs
 description: This article describes cursor_current(), current_cursor() in Azure Data Explorer.
-services: azure-data-explorer
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: azure-data-explorer
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

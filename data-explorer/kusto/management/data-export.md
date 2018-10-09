@@ -1,11 +1,11 @@
 ---
 title: Data export - Azure Data Explorer | Microsoft Docs
 description: This article describes Data export in Azure Data Explorer.
-services: azure-data-explorer
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: azure-data-explorer
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
@@ -62,7 +62,7 @@ tuning properties:
 
 |Property        |Type    |Description                                                                                                  |
 |----------------|--------|-------------------------------------------------------------------------------------------------------------|
-|`async`         |        |Indicates that the command runs in asynchronous mode. (Cannot be specified in a `with` clause.) If the command is executed asynchronouly, its results are persisted and can be retrieved when export is complete using the [show operation details](../management/operations.md#show-operation-details) command.               |
+|`async`         |`bool`|Indicates that the command runs in asynchronous mode. (Cannot be specified in a `with` clause.) If the command is executed asynchronouly, its results are persisted by default and can be retrieved when export is complete using the [show operation details](../management/operations.md#show-operation-details) command.               |
 |`compressed`    |`bool`  |If set, the output blobs are compressed as `.gz` files.                                                      |
 |`sizeLimit`     |`long`  |The size limit at which to switch to the next blob (before compression). The default value is 100MB, max 1GB.|
 |`includeHeaders`|`string`|For CSV or TSV output, controls the generation of column headers; `none`: Do not generate a header line (default). `firstFile`: Emit a header line into the first file only, does not work well with distributed mode. `all`: Emit a header line for all files.|
@@ -70,7 +70,7 @@ tuning properties:
 |`namePrefix`    |`string`|Indicates a prefix to add to each generated blob name. A random prefix will be used if left unspecified.     |
 |`encoding`      |`string`|Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`.                                        |
 |`distributed`   |`bool`  |Indicates that the export writes from all nodes in parallel if possible. (Defaults to `true`.)               |
-|`persistDetails`|`bool`  |Indicates that the command should persist its results in asynchronous runs (see `async` flag). (Defaults to `true` in async runs, but can be turned off if the caller does not require the results). The property is not supported in synchronous runs of the command.  |
+|`persistDetails`|`bool`  |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller does not require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
 
 One or more path prefixes should be provided with the command. These are valid URIs for Azure Blob Storage blob containers (or virtual folders under blob containers) which must include the credentials. Credentials can be either an account key, an account SAS key, or a service SAS key to the specific container. The SAS key should include (at least) the following permissions: SharedAccessBlobPermissions.List | SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read. See [Azure Storage Blob connection strings](https://kusto.azurewebsites.net/docs/concepts/persistent-storage-connection-strings.html#azure-storage-blob).
 

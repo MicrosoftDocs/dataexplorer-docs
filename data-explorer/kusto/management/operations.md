@@ -1,11 +1,11 @@
 ---
 title: Operations - Azure Data Explorer | Microsoft Docs
 description: This article describes Operations in Azure Data Explorer.
-services: azure-data-explorer
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: azure-data-explorer
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
@@ -50,14 +50,13 @@ ms.date: 09/24/2018
 
 ## .show operation details
 
-Operations which are executed in an asynchronous manner can (optionally) persist their results, and these can be retrieved when the operation is complete using the `.show` `operation` `details` command. 
+Operations can (optionally) persist their results, and these can be retrieved when the operation is complete using the `.show` `operation` `details` 
 
 **Notes:**
 
-1. Not all control commands persist their results. Please search the documentation for the specific command and check if it does (see, for example [export command](../management/data-export.md#exporting-data-to-azure-blob-storage)). 
-2. The results are only persisted on _asynchronous_ executions of the control command.
-3. The output schema of the `.show` `operations` `details` command is the same schema returned from the synchronous execution of the command. 
-4. The `.show` `operation` `details` command can only be invoked after the operation completed successfully. Use the [show operations command](#show-operations)) to check the State of the operation prior to invoking this command. 
+* Not all control commands persist their results, and those that do usually do so by default on asynchronous executions only (using the `async` keyword). Please search the documentation for the specific command and check if it does (see, for example [export command](data-export.md#exporting-data-to-azure-blob-storage)). 
+* The output schema of the `.show` `operations` `details` command is the same schema returned from the synchronous execution of the command. 
+* The `.show` `operation` `details` command can only be invoked after the operation completed successfully. Use the [show operations command](#show-operations)) to check the State of the operation prior to invoking this command. 
 
 **Syntax**
 
