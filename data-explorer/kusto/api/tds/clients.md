@@ -84,7 +84,7 @@ Connect like you connect to SQL Azure Database.
 
 
 
-## Microsoft SQL Server Management Studio (v17.x)
+## Microsoft SQL Server Management Studio (v18.x)
 
 1. In "Object Explorer", "Connect", "Database Engine".
 2. Specify name of Kusto cluster as a server name, e.g. `mykusto.kusto.windows.net`

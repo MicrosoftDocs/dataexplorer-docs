@@ -16,6 +16,7 @@
 ## [Columns](./schema-entities/columns.md)
 ## [Stored functions](./schema-entities/stored-functions.md)
 
+
 # [Data types](./scalar-data-types/index.md)
 ## [bool](./scalar-data-types/bool.md)
 ## [datetime](./scalar-data-types/datetime.md)

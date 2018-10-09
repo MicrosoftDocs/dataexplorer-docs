@@ -245,3 +245,4 @@ If the target table does not exist in the target database, it is created.
     with (createifnotexists="true", primarykey="Id")
     <| print Message = "Hello World!", Timestamp = now(), Id=12345678
 ```
+

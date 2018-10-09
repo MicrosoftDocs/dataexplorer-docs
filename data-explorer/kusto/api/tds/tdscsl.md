@@ -1,6 +1,6 @@
 ---
-title: KQL over TDS - Azure Data Explorer | Microsoft Docs
-description: This article describes KQL over TDS in Azure Data Explorer.
+title: CSL over TDS - Azure Data Explorer | Microsoft Docs
+description: This article describes CSL over TDS in Azure Data Explorer.
 services: azure-data-explorer
 author: orspod
 ms.author: v-orspod
@@ -9,9 +9,9 @@ ms.service: azure-data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# KQL over TDS
+# CSL over TDS
 
-Kusto allows to utilize TDS endpoint for executing queries authored in the native [KQL](../../query/index.md) query language. This functionality offers smoother migiration towards Kusto. For example, it is possible to create SSIS job to query Kusto with KQL query.
+Kusto allows to utilize TDS endpoint for executing queries authored in the native [CSL](../../query/index.md) query language. This functionality offers smoother migiration towards Kusto. For example, it is possible to create SSIS job to query Kusto with CSL query.
 
 ## Executing Kusto stored functions
 
@@ -46,11 +46,11 @@ can be called like this:
 Please notice that stored functions should be called with explicit schema named `kusto`, to distinguish between Kusto stored functions and emulated
 SQL system stored procedures.
 
-## Executing KQL query
+## Executing CSL query
 
-Similarly to SQL server `sp_executesql`, Kusto introduced stored procedure `sp_execute_kql` for executing [KQL](../../query/index.md) queries, including parameterized queries.
+Similarly to SQL server `sp_executesql`, Kusto introduced stored procedure `sp_execute_csl` for executing [CSL](../../query/index.md) queries, including parameterized queries.
 
-The 1st parameter of `sp_execute_kql` is the KQL query. Additional parameters can be introduced and they will act like [query parameters](../../query/queryparametersstatement.md).
+The 1st parameter of `sp_execute_csl` is the CSL query. Additional parameters can be introduced and they will act like [query parameters](../../query/queryparametersstatement.md).
 
 For example:
 
@@ -58,10 +58,10 @@ For example:
   using (var connection = new SqlConnection(csb.ToString()))
   {
     await connection.OpenAsync();
-    using (var command = new SqlCommand("sp_execute_kql", connection))
+    using (var command = new SqlCommand("sp_execute_csl", connection))
     {
       command.CommandType = CommandType.StoredProcedure;
-      var query = new SqlParameter("@kql_query", SqlDbType.NVarChar);
+      var query = new SqlParameter("@csl_query", SqlDbType.NVarChar);
       command.Parameters.Add(query);
       var parameter = new SqlParameter("mylimit", SqlDbType.Int);
       command.Parameters.Add(parameter);

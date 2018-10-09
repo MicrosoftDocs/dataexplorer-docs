@@ -40,7 +40,8 @@ A function's inputs and output determine how and where it can be used:
   tables (and views) that are in the accessible schema.
 * A function taking no inputs, or taking at least one tabular input,
   and producing a tabular output, is called a **tabular function** and it may be
-  used whenever a tabular expression is allowed.
+  used whenever a tabular expression is allowed. 
+  Note, all tabular parameters must appear before scalar parameters.
 
 An example for a scalar function:
 
@@ -59,7 +60,7 @@ tenNumbers
 ```
 
 An example for a tabular function that takes a tabular
-input and a scalar input:
+input and a scalar input (all tabular parameters must appear before scalar parameters):
 
 ```kusto
 let MyFilter = (T:(x:long), v:long) {
