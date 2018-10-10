@@ -1,11 +1,11 @@
 ---
 title: series_outliers() - Azure Data Explorer | Microsoft Docs
 description: This article describes series_outliers() in Azure Data Explorer.
-services: azure-data-explorer
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: azure-data-explorer
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
@@ -23,7 +23,7 @@ Takes an expression containing dynamic numerical array as input and generates a 
 
 * *x*: Dynamic array cell which is an array of numeric values
 * *kind*: Algorithm of outlier detection. Currently supports `"tukey"` (traditional Tukey) and  `"ctukey"` (custom Tukey). Default is `"ctukey"`
-* *ignore_val*: numeric value indicating missing values in the series, default is double(null)
+* *ignore_val*: numeric value indicating missing values in the series, default is double(null). The score of nulls and ignore values is set to `0`.
 * *min_percentile*: for calulation of the normal inter quantile range, default is 10, custom values supported are in range `[2.0, 98.0]` (`ctukey` only) 
 * *max_percentile*: same, default is 90, custom values supported are in range `[2.0, 98.0]` (ctukey only) 
 

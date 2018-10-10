@@ -1,11 +1,11 @@
 ---
 title: series_fit_2lines_dynamic() - Azure Data Explorer | Microsoft Docs
 description: This article describes series_fit_2lines_dynamic() in Azure Data Explorer.
-services: azure-data-explorer
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: azure-data-explorer
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---

@@ -1,11 +1,11 @@
 ---
 title: Kusto UI (Deep Link) REST API - Azure Data Explorer | Microsoft Docs
 description: This article describes Kusto UI (Deep Link) REST API in Azure Data Explorer.
-services: azure-data-explorer
+services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: azure-data-explorer
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
@@ -72,6 +72,7 @@ In the following:
 * *EncodedQuery* is the query, encoded in the following way: (a) first it is compressed via gzip,
   and (b) then it is encoded using base64 encoding.
 * *Query* is the query text (no encoding other than the one required by the HTTP protocol).
+* *QueryUrl* is a url for a file hosted somewhere on the web (for example, azure blob storage), that contains the text of a single kusto query. If the url contains query parameters (for example an azure blob SAS url) it needs to be url-encoded.
 
 To open Kusto.WebExplorer in a specific cluster/database context, issue an HTTP `GET` for either:
 
@@ -85,6 +86,19 @@ an HTTP `GET` for any of the following:
 * `https://dataexplorer.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName* `?query=` *Query*
 * `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&q=` *EncodedQuery*
 * `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&query=` *Query*
+
+To open Kusto.WebExplorer in a specific cluster/database context, and run a query **from a file**, issue an HTTP GET for any of the following:
+* `https://dataexplorer.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName* `?querysrc=` *FileUrl*
+* `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&querysrc=` *FileUrl*
+
+> [!NOTE]
+> the web UI doesn't do any authentication in the `GET` request to querysrc. So the URL needs to contain all authentication information in order to access the file (for example, an azure blob SAS url)
+
+> [!IMPORTANT]
+> The server hosting `querysrc` needs to have `CORS` enabled for  `dataexplorer.azure.com`. 
+> For example, if this is an azure blob url, this can be done from [the azure portal](https://portal.azure.com) / [azure storage explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) and also by using the azure api. please see [CORS documentation](https://docs.microsoft.com/en-us/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) for more details.
+
+
 
 
 
