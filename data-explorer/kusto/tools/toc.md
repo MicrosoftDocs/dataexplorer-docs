@@ -22,3 +22,6 @@
 ## [Microsoft Logic Apps (Preview)](logicapps.md)
 
 
+# Data ingestion
+
+## [LightIngest](lightingest.md)
