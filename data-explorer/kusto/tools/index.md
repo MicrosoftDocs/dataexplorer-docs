@@ -32,3 +32,6 @@ ms.date: 09/24/2018
 * [Microsoft Logic App](./logicapps.md) - Execute Kusto queries automatically as part of [Microsoft Logic App](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-what-are-logic-apps)
 
 
+## Data ingestion tools
+
+* [LightIngest](./lightingest.md) - Help utility for ad-hoc data ingesting into Kusto
