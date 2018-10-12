@@ -38,11 +38,9 @@ The following table describes differences between `"tukey"` and `"ctukey"`:
 > [!TIP]
 > The most convenient way of using this function is applying it to the results of [make-series](make-seriesoperator.md) operator.
 
-**Examples**
+**Example**
 
-* For the following input `[30,28,5,27,31,38,29,80,25,37,30]` the series_outliers() returns `[0.0,0.0,-3.206896551724138,-0.1724137931034483,0.0,2.6666666666666667,0.0,16.666666666666669,-0.4482758620689655,2.3333333333333337,0.0]`, meaning the `5` is an anomaly on decline and `80` is an anomaly on rise compared to the rest of the series.
-
-* Suppose you have a time series with some noise that creates outliers and you would like to replace those outliers (noise) with the average value, you could use series_outliers() to detect the outliers then replace them:
+Suppose you have a time series with some noise that creates outliers and you would like to replace those outliers (noise) with the average value, you could use series_outliers() to detect the outliers then replace them:
 
 ```kusto
 range x from 1 to 100 step 1 
