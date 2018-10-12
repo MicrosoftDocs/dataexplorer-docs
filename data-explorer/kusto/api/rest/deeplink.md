@@ -1,6 +1,6 @@
 ---
-title: Kusto UI (Deep Link) REST API - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto UI (Deep Link) REST API in Azure Data Explorer.
+title: UI deep links - Azure Data Explorer | Microsoft Docs
+description: This article describes UI deep links in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
@@ -9,121 +9,115 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Kusto UI (Deep Link) REST API
+# UI deep links
 
-The UI REST API provides a way to craft a simple URL that, when clicked by users
-(for example, in an email message or through a browser), opens up a Kusto UI tool
-and pre-configures it for a specific cluster, database, and query. This API is not
-authenticated (no need to send the `Authorization` HTTP header) as authentication
-happens after following the redirect.
+The REST API provides a deep link functionality that allows HTTP `GET` requests
+to redirect the caller to a UI tool. For example, one can craft a URI that opens
+up the Kusto.Explorer tool, auto-configures it for a specific cluster and database,
+then runs a specific query and displays its results to the user.
 
-In the most simple way, issuing a `GET /` operation against this endpoint results
-in a redirect that opens Kusto.Explorer with the cluster that was the target of
-the request being the connection scope. Additionally, one can point at the relevant
-database name by appending it to the path. For example, the URL
-(https://help.kusto.windows.net/Samples)[https://help.kusto.windows.net/Samples] will have
-the browser send a `GET /Samples` command to the `help` cluster and will result
-in a redirect that opens Kusto.Explorer with this database as default.
+The UI deep links REST API allows one to provide:
 
-The UI REST API also supports a number of query parameters:
+* The cluster (mandatory) is commonly defined implicitly, as the service that
+  implements the REST API, but can also be overridden by specifying the URI query
+  parameter `uri`.
 
-* The `query` query parameter, if provided, causes the UI to automatically execute
-  the specified query. The query can appear unencoded (other than the necessary
-  HTTP query parameter encoding of course), or it can be g-zipped and base64-encoded.
-* The `uri` query parameter, if provided, can be used to override the cluster URI
-  that is automatically generated otherwise.
-* The `web` query parameter, if provided, can be used to determine to which UI
-  redirection should happen. By default, redirection is done to Kusto.Explorer.
-  Setting this query parameter to `1` will redirect to Kusto.WebExplorer.
-* The `name` query parameter, if provided, controls the name assigned to the
-  UI's display of the connection. The name is generated automatically from the
-  cluster URI if unspecified.
+* The database (optional) is specified as the first and only fragment of the URI
+  path. The database is mandatory for queries, and optional for control commands.
 
-**Security note**: For security reasons, deep-linking is disabled for control commands.
+* The query or control command (optional) is specified by either using the
+  URI query parameter `query`, or the URI query parameter `querysrc` (which
+  points at a web resource that holds the query; see below).
+  If `query` is used, it can be the text of the query or control command itself (encoded
+  using the HTTP query parameter encoding), or it can be the base64 encoding of the
+  gzip of the text of the query or control command (making it possible to compress
+  long queries so that they fit the default browser URI length limits).
 
-## Deep Linking to Kusto.Explorer REST API
+* The name of the cluster connection (optional) is specified by using the
+  URI query parameter `name`.
+
+* The UI tool (optional) is specified by using the `web` URI query parameter.
+  `web=0` indicates the desktop application Kusto.Explorer. `web=1` indicates
+  the Kusto.WebExplorer web application.
+  Additionally, `web=2` is the old version of Kusto.WebExplorer
+  (which is based in Application Insights Analytics).
+  Alternatively, one can provide `saw=1` for the SAW version of Kusto.Explorer.
+
+Here are a few examples for links:
+
+* `https://help.kusto.windows.net/`: When a user agent (such as a browser) issues
+  a `GET /` request it'll be redirected to the default UI tool configured
+  to query the `help` cluster.
+* `https://help.kusto.windows.net/Samples`: When a user agent (such as a browser) issues
+  a `GET /Samples` request it'll be redirected to the default UI tool configured
+  to query the `help` cluster, `Samples` database.
+* `http://help.kusto.windows.net/Samples?query=StormEvents`: When a user (such as a browser) issues
+  a `GET /Samples?query=StormEvents` request it'll be redirected to the default UI tool configured
+  to query the `help` cluster, `Samples` database, and issue the `StormEvents` query.
+
+> [!NOTE]
+> The deep link URIs do not require authentication information, as authentication
+> if performed by the UI tool being redirected to.
+> Any `Authorization` HTTP header, if provided, is ignored.
+
+> [!IMPORTANT]
+> For security reasons, UI tools do not automatically execute control commands,
+> even if `query` or `querysrc` are specified in the deep link.
+
+## Deep linking to Kusto.Explorer
 
 This REST API performs redirection that installs and runs the
 Kusto.Explorer desktop client tool with specially-crafted startup
 parameters that open a connection to a specific Kusto engine cluster
 and execute a query against that cluster.
 
-- Path: `/[`*DatabaseName*`][?[query=`*Query*`][&uri=`*Uri*`][&name=`*ConnectionName*`]]`
-- Verb: `GET`
-- Actions: Open Kusto.Explorer with context and auto-run query (see [Deep-linking with Kusto.Explorer](../../tools/kusto-explorer.md#deep-linking-queries))
-- Arguments: The URI may include the following optional arguments:
-	* The name of the database that Kusto.Explorer sets as the default (*DatabaseName*)
-	* The URI of the Kusto service that Kusto.Explorer should connect-to; by default, it is set to the cluster's URI (*Uri*)
-	* The query to run on startup (*Query*)
-	* The name of the connection in Kusto.Explorer (*ConnectionName*).
+* Path: `/` [*DatabaseName*`]
+* Verb: `GET`
+* Query string: `web=0`
 
-This action redirects the user's browser to start Kusto.Explorer on the local machine
+> [!INFO]
+> See [Deep-linking with Kusto.Explorer](../../tools/kusto-explorer.md#deep-linking-queries)
+> for a description of the redirect URI syntax for starting up Kusto.Explorer.
 
-## Deep Linking to Kusto.WebExplorer
+## Deep linking to Kusto.WebExplorer
 
-Similar to deep-linking to Kusto.Explorer, it is possible to deep-link
-to Kusto.WebExplorer (that is, create a URL that starts up Kusto.WebExplorer
-in the default browser and runs the query in the specified cluster/database context).
+This REST API performs redirection to Kusto.WebExplorer, a web application.
 
-In the following:
+* Path: `/` [*DatabaseName*`]
+* Verb: `GET`
+* Query string: `web=1`
 
-* *Cluster* is the DNS host name of the cluster (for example: `help.kusto.windows.net`)
-* *DatabaseName* is the name of the database (note that it is case-sensitive).
-* *EncodedQuery* is the query, encoded in the following way: (a) first it is compressed via gzip,
-  and (b) then it is encoded using base64 encoding.
-* *Query* is the query text (no encoding other than the one required by the HTTP protocol).
-* *QueryUrl* is a url for a file hosted somewhere on the web (for example, azure blob storage), that contains the text of a single kusto query. If the url contains query parameters (for example an azure blob SAS url) it needs to be url-encoded.
+## Specifying the query or control command in the URI
 
-To open Kusto.WebExplorer in a specific cluster/database context, issue an HTTP `GET` for either:
+When the URI query string parameter `query` is specified, it must be encoded
+according to the URI query string encoding HTML rules. Alternatively, the text of
+the query or control command can be (a) compressed by gzip, and then (b) encoded
+via base64 encoding. This makes it possible to send longer queries or control
+commands (since commonly the latter encoding method results in shorter URIs).
 
-* `https://dataexplorer.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName*
-* `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName*
+## Specifying the query or control command by indirection
 
-To open Kusto.WebExplorer in a specific cluster/database context and run a query, issue
-an HTTP `GET` for any of the following:
+If the query or control command length is very large, it might be that even
+encoding it using gzip/base64 will exceed the maximum URI length of the user
+agent. An alternative mechanism is supported in which the URI query string parameter
+`querysrc` is provided, and its value is a short URI pointing at a web resource
+that holds the query or control command text.
 
-* `https://dataexplorer.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName* `?query=` *EncodedQuery*
-* `https://dataexplorer.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName* `?query=` *Query*
-* `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&q=` *EncodedQuery*
-* `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&query=` *Query*
+For example, this can be the URI for a file hosted by Azure Blob Storage.
 
-To open Kusto.WebExplorer in a specific cluster/database context, and run a query **from a file**, issue an HTTP GET for any of the following:
-* `https://dataexplorer.azure.com/clusters/` *Cluster* `/databases/` *DatabaseName* `?querysrc=` *FileUrl*
-* `https://aka.ms/kwe?cluster=` *Cluster* `&database=` *DatabaseName* `&querysrc=` *FileUrl*
+> [!INFO]
+> If the deep link is to the web application UI tool, the web service providing
+> the query or control command (that is, the service providing the `querysrc` URI)
+> must be configured to support CORS for `dataexplorer.azure.com`.
+>
+> Additionally, if authentication/authorization information is required by that
+> service, it must be provided as part of the URI itself.
+>
+> For example, if `querysrc` points at a blob in Azure Blob Storage, one must
+> configure the storage account to support CORS, and either make the blob itself
+> public (so it can be downloaded without security claims) or add an appropriate
+> Azure Storage SAS to the URI. CORS configuration can be done from the
+> [Azure portal](https://portal.azure.com/) or from
+> [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/).
+> See [CORS support in Azure Storage](https://docs.microsoft.com/en-us/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
 
-> [!NOTE]
-> the web UI doesn't do any authentication in the `GET` request to querysrc. So the URL needs to contain all authentication information in order to access the file (for example, an azure blob SAS url)
-
-> [!IMPORTANT]
-> The server hosting `querysrc` needs to have `CORS` enabled for  `dataexplorer.azure.com`. 
-> For example, if this is an azure blob url, this can be done from [the azure portal](https://portal.azure.com) / [azure storage explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) and also by using the azure api. please see [CORS documentation](https://docs.microsoft.com/en-us/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) for more details.
-
-
-
-
-
-## Deep Linking to Application Insights Analytics
-
-Teams that use Application Insights Analytics get an experience similar to Kusto.WebExplorer's,
-but tailored for the Application Insights schema. Application Insights Analytics supports a
-deep-linking REST API similar (but not identical) to Kusto.WebExplorer's:
-
-* `https://analytics.applicationinsights.io/subscriptions/` *SubscriptionId* `/resourcegroups/` *ResourceGroup* 
-`/components/` *ApplicationName* `?source=` *ApplicationScenario* `&q=` *EncodedQuery*
-
-Where:
-
-* *SubscriptionId* is the Azure subscription the Application Insights application
-  belongs to.
-* *ResourceGroup* is the Azure resource group the Application Insights application
-  belongs to.
-* *ApplicationName* is the application name.
-* *ApplicationScenario* is an arbitrary string that the caller can send to
-  identify the scenario in which the query is executed. This string is used
-  primarily for telemetry by the Application Insights team itself.
-* *EncodedQuery* is the query, encoded in the following way: (a) first it is compressed via gzip,
-  and (b) then it is encoded using base64 encoding.
-
-  Sample code that generates *EncodedQuery* is available for [Javascript](https://mseng.visualstudio.com/AppInsights/AppAnalytics%20UX%20Team/_git/MASI-LogAnalyticsUX?path=%2FLogAnalyticsPortalWebRole%2FScripts%2Fdev%2Futils%2Fcompression.js&version=GBmaster&_a=contents)
-  and [C#](https://mseng.visualstudio.com/DefaultCollection/Kusto/_versionControl?path=%24%2FKusto%2FStgExt%2FSrc%2FClient%2FKusto.Data%2FCommon%2FCslCommandGenerator.cs&version=T&_a=contents)
-  (search for the function `EncodedQueryAsBase64Url`).

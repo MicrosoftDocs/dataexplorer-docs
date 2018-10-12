@@ -1,6 +1,6 @@
 ---
-title: Extents (Data shards) Management - Azure Data Explorer | Microsoft Docs
-description: This article describes Extents (Data shards) Management in Azure Data Explorer.
+title: Extents (Data shards) management - Azure Data Explorer | Microsoft Docs
+description: This article describes Extents (Data shards) management in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
@@ -9,14 +9,11 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Extents (Data shards) Management
+# Extents (Data shards) management
 
-## Extents Commands 
+Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 
-Data shards are called **extents** in Kusto, and all commands use "extent"
-or "extents" as a synonym.
-
-### .show extents
+## .show extents
 
 **Cluster Level**
 
@@ -125,7 +122,7 @@ the results of a cluster-level command.
  
 
 
-### .move extents
+## .move extents
 
 **Syntax**
 
@@ -191,13 +188,13 @@ Moves all extents from 2 specific tables (`MyTable1`, `MyTable2`) to table `MyOt
 |4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f
 |2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df 
 
-### .drop extents
+## .drop extents
 
 Drops extents from specified database / table. 
 This command has several variants: In one variant the extents to be dropped are specified by a Kusto query, whereas in 
 the other variants extents are specified using a mini-language described below. 
  
-#### Specifying Extents with a Query
+### Specifying Extents with a Query
 
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) foreach of the tables which have extents returned by the provided query.
 
@@ -209,7 +206,7 @@ Drops extents (or just reports them without actually dropping if `whatif` is use
 
 The extents are specified using a Kusto query that returns a recordset with a column called "ExtentId". 
  
-#### Dropping a specific extent
+### Dropping a specific extent
 
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) in case table name is specified.
 
@@ -219,7 +216,7 @@ Requires [Database admin permission](../management/access-control/role-based-aut
 
 `.drop` `extent` *ExtentId* [`from` *TableName*]
 
-#### Dropping specific multiple extents
+### Dropping specific multiple extents
 
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) in case table name is specified.
 
@@ -229,7 +226,7 @@ Requires [Database admin permission](../management/access-control/role-based-aut
 
 `.drop` `extents` `(`*ExtentId1*`,`...*ExtentIdN*`)` [`from` *TableName*]
 
-#### Specifying Extents by Properties
+### Specifying Extents by Properties
 
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) in case table name is specified.
 
@@ -284,7 +281,7 @@ Removes all extents from 'TestTable':
 |---|---|---
 |43c6e03f-1713-4ca7-a52a-5db8a4e8b87d |TestTable |2015-01-12 12:48:49.4298178 
 
-### .replace extents
+## .replace extents
 
 **Syntax**
 
@@ -342,9 +339,7 @@ tagged with `drop-by:MyTag`:
 
 
 
-## Extent Tags
-
-### .drop extent tags
+## .drop extent tags
 
 **Syntax**
 
@@ -425,7 +420,7 @@ Drops all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from 
 |4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f | Partition001 Partition002
 |2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df | 
 
-### .alter extent tags
+## .alter extent tags
 
 **Syntax**
 
