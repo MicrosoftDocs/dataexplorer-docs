@@ -339,8 +339,6 @@ tagged with `drop-by:MyTag`:
 
 
 
-## Extent Tags
-
 ## .drop extent tags
 
 **Syntax**
