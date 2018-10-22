@@ -7,12 +7,6 @@
 
 
 
-
-
-
-
-
-
 # Policies
 ## [Cache policy](cachepolicy.md)
 

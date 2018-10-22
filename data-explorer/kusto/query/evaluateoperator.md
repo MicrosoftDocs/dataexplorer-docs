@@ -11,7 +11,9 @@ ms.date: 09/24/2018
 ---
 # evaluate operator
 
-The evaluate operator is a tabular operator that provides a mechanism to invoke
+Invokes service-side query extension (plugin).
+
+The `evaluate` operator is a tabular operator that provides a mechanism to invoke
 query functionality which is non-relational by nature (for example, because it
 does not have a predefined output schema). This functionality is exposed to the
 user under the name of **plugin**.

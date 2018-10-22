@@ -11,8 +11,9 @@ ms.date: 09/24/2018
 ---
 # serialize operator
 
-Freezes the order of the input row set arbitrarily, so that [window functions](./windowsfunctions.md)
-could be applied to it.
+Marks that order of the input row set is safe for window functions usage.
+
+Operator has declarative meaning, and it marks input row set as serialized (ordered) so [window functions](./windowsfunctions.md) could be applied to it.
 
 ```kusto
 T | serialize rn=row_number()

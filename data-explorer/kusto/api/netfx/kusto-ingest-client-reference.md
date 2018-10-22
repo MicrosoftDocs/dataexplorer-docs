@@ -269,7 +269,7 @@ KustoIngestionProperties class encapsulates basic ingestion properties that allo
 |AvroMapping |For each column, defines the name of the field in Avro record. **Mandatory for AVRO ingestion** |
 |ValidationPolicy |Data validation definitions. See [TODO] for details |
 |Format |Format of the data being ingested |
-|AdditionalProperties | Other properties that will be passed as [Ingestion Properties](../../management/data-ingest.md#ingestion-properties) to the ingestion command, as not all the Ingestion Properties are represented in a separate member of this class|
+|AdditionalProperties | Other properties that will be passed as [Ingestion Properties](../../management/data-ingestion/index.md#ingestion-properties) to the ingestion command, as not all the Ingestion Properties are represented in a separate member of this class|
 
 ```csharp
 public class KustoIngestionProperties

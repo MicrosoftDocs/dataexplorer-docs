@@ -88,7 +88,7 @@ The default capacity policy has the following JSON representation:
 
 Kusto limits the amount of concurrent requests for the following commands.
 
-  1. Ingestions (includes all the commands that are listed [here](../management/data-ingest.md))
+  1. Ingestions (includes all the commands that are listed [here](../management/data-ingestion/index.md))
   2. Merges
   3. Purges
 

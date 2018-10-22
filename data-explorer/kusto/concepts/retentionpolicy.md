@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # Retention policy
 
-The retntion policy controls the mechanism by which data is removed from tables automatically.
+The retention policy controls the mechanism by which data is removed from tables automatically.
 Such removal is usually useful for data that flows into a table continuously, and whose relevance
 is age-based. For example, the retention policy can be used for a table that holds diagnostics
 events that become uninteresing after (say) two weeks since they are raised.

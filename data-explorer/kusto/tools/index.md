@@ -25,7 +25,6 @@ ms.date: 09/24/2018
 * [PowerBI Connector](./powerbi-connector.md) - a Power BI Desktop connector for Kusto
 
 
-
 ## Orchestration tools
 
 * [Microsoft Flow](./flow.md) - Execute Kusto queries automatically as part of [Microsoft Flow](https://flow.microsoft.com/)
