@@ -14,7 +14,7 @@ ms.date: 09/24/2018
 ## .show ingestion failures
 
 This command returns a result set which includes all ingestion failures that were encountered during execution of 
-[data ingestion control commands](data-ingest.md).
+[data ingestion control commands](data-ingestion/index.md).
 
 *Notes*: 
 - Ingestion failures which are encountered during other parts of the ingestion flow (e.g. before data ingestion control commands

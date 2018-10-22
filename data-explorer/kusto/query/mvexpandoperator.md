@@ -11,59 +11,9 @@ ms.date: 09/24/2018
 ---
 # mvexpand operator
 
-Expands multi-value collection(s) from a [dynamic](./scalar-data-types/dynamic.md)-typed column so that each value in the collection gets a separate row. Note that the default expansion is up to 128 rows.
-All the other columns in an expanded row are duplicated. 
+Expands multi-value array or property bag.
 
-```kusto
-T | mvexpand listColumn [, listColumn2 ...] 
-```
-
-(See also [`summarize makelist`](makelist-aggfunction.md) which performs the opposite function.)
-
-**Examples**
-
-A simple expansion of a single column:
- ```kusto
-datatable (a:int, b:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"})]
-| mvexpand b 
-
-
-```
-
-|a|b|
-|---|---|
-|1|{"prop1":"a"}|
-|1|{"prop2":"b"}|
-
-
-Expanding two columns will first 'zip' the applicable columns and then expand them:
-
-```kusto
-datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), dynamic([5])]
-| mvexpand b, c 
-
-
-```
-
-|a|b|c|
-|---|---|---|
-|1|{"prop1":"a"}|5|
-|1|{"prop2":"b"}||
-
-If you want to get a Cartesian product of expanding two columns, expand one after the other:
-```kusto
-datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), dynamic([5])]
-| mvexpand b 
-| mvexpand c
-
-
-```
-
-|a|b|c|
-|---|---|---|
-|1|{"prop1":"a"}|5|
-|1|{"prop2":"b"}|5|
-
+`mvexpand` is applied on a [dynamic](./scalar-data-types/dynamic.md)-typed column so that each value in the collection gets a separate row. Note that the default expansion is up to 128 rows. All the other columns in an expanded row are duplicated. 
 
 **Syntax**
 
@@ -95,10 +45,49 @@ Two modes of property-bag expansions are supported:
   allowing uniform access to keys and values (as well as, for example, running a distinct-count aggregation
   over property names). 
 
-**See also**
-
-See [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys.
-
 **Examples**
 
+A simple expansion of a single column:
+ ```kusto
+datatable (a:int, b:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"})]
+| mvexpand b 
+```
+
+|a|b|
+|---|---|
+|1|{"prop1":"a"}|
+|1|{"prop2":"b"}|
+
+
+Expanding two columns will first 'zip' the applicable columns and then expand them:
+
+```kusto
+datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), dynamic([5])]
+| mvexpand b, c 
+```
+
+|a|b|c|
+|---|---|---|
+|1|{"prop1":"a"}|5|
+|1|{"prop2":"b"}||
+
+If you want to get a Cartesian product of expanding two columns, expand one after the other:
+```kusto
+datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), dynamic([5])]
+| mvexpand b 
+| mvexpand c
+```
+
+|a|b|c|
+|---|---|---|
+|1|{"prop1":"a"}|5|
+|1|{"prop2":"b"}|5|
+
+**More examples**
+
 See [Chart count of live activities over time](./samples.md#concurrent-activities).
+
+**See also**
+
+- [`summarize makelist`](makelist-aggfunction.md) which performs the opposite function.
+- [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys.

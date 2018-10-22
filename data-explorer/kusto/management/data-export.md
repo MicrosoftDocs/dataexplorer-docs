@@ -23,7 +23,7 @@ Kusto supports a number of methods to export the results of queries:
   Azure SQL Database). See below for the details.
 * **Service-side import (pull)**: Kusto also supports the ability to execute
   a query (locally or on another database or cluster), and ingest the query results.
-  See [data ingestion](data-ingest.md) for a detailed
+  See [data ingestion](data-ingestion/index.md) for a detailed
   description of the `.set`, `.append`, `.set-or-append`, and `.set-or-replace`
   commands.
 * **Data movement tools**: External scheduler tools may also be used

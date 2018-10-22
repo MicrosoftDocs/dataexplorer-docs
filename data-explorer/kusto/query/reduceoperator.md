@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # reduce operator
 
-The `reduce` operator groups a set of `string` values together based on similarity.
+Groups a set of strings together based on values similarity.
 
 ```kusto
 T | reduce by LogMessage with threshold=0.1
@@ -20,7 +20,6 @@ T | reduce by LogMessage with threshold=0.1
 For each such group, it outputs a **pattern** that best describes the group (possibly using the
 asterix (`*`) character to represent wildcards), a **count** of the number of values in the group,
 and a **representative** of the group (one of the original values in the group).
-
 
 **Syntax**
 

@@ -72,6 +72,7 @@ ms.date: 09/24/2018
 |-------------------------|--------------------------------------------------------|
 |[array_concat()](arrayconcatfunction.md)|Concatenates a number of dynamic arrays to a single array.|
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
+|[array_slice()](arrayslicefunction.md)|Extracts a slice of a dynamic array.|
 |[pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[pack_all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
 |[pack_array()](packarrayfunction.md)|Packs all input values into a dynamic array.|

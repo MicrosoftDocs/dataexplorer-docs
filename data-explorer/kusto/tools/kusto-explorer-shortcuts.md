@@ -24,6 +24,7 @@ Following shortcuts are applicable for the application-level scope and can be in
 |`Ctrl`+`+`| Increases query and data results font|
 |`Ctrl`+`-`| Decreases query and data results font|
 |`Ctrl`+`0`| Resets query and data results font|
+|`Ctrl`+`1` .. `7`| Switches to Query document panel with respective number (1..7)|
 |`Ctrl`+`N` |Opens a new query editor|
 |`Ctrl`+`O` |Open query editor script in a new query editor|
 |`Ctrl`+`W` |Closes active query editor|
@@ -59,6 +60,9 @@ Following shortcuts work on Query Editor and Results View.
 |`Ctrl`+`R`|Toggles appearance of the result panel|
 |`Ctrl`+`E`|Toggles appearance of the query editor and result panel in cycle of: `Query Editor and Results` -> `Query Editor` -> `Query Editor and Results` -> `Results` |
 |`Ctrl`+`Shift`+`E`|Toggles appearance of the query editor and result panel in cycle of: `Query Editor and Results` -> `Results` -> `Query Editor and Results` -> `Query Editor` |
+|`Ctrl`+`Shift`+`R` | Focuses on Results panel |
+|`Ctrl`+`Shift`+`Y` | Focuses on Query editor |
+|`Ctrl`+`Shift`+`T` | Focuses on Connections panel |
 |`Alt`+`Ctrl`+`L`|Locks current connection context to the Query Editor, so changing selected row in the Connetion panel has no effect on the Query Editor context. |
 
 ## Query Editor shortcuts

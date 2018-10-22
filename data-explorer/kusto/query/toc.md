@@ -127,6 +127,7 @@
 ## [acos()](acosfunction.md)
 ## [ago()](agofunction.md)
 ## [array_concat()](arrayconcatfunction.md)
+## [array_slice()](arrayslicefunction.md)
 ## [array_length()](arraylengthfunction.md)
 ## [asin()](asinfunction.md)
 ## [atan()](atanfunction.md)

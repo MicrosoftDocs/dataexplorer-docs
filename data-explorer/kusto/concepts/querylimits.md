@@ -19,7 +19,7 @@ in the form of default query limits.
 
 ## Limit on result set size
 
-Result truncation is a limit set by default on the main (first)
+Result truncation is a limit set by default on the
 result set returned by the query. Kusto limits the number of records
 returned to the client to **500,000**, and the overall memory for those
 records to **64 MB**. When either of these limits is exceeded, the
@@ -36,14 +36,30 @@ Exceeding the number of records will fail with an exception that says:
 The Kusto DataEngine has failed to execute a query: 'Query result set has exceeded the internal record count limit 500000 (E_QUERY_RESULT_SET_TOO_LARGE).'
 ```
 
-In most cases, sending that much data back to the client is unwarranted.
-For such cases, we recommend:
-1. Using the `summarize` operator to group and aggregate over
+There are a number of strategies for dealing with this error:
+
+1. Reducing the result set size by modifying the query to not
+   return uninstetersting data. This is commonly useful when
+   the initial (failing) query is too "wide" (e.g. does not
+   project away data columns that are no needed.)
+2. Reducing the result set size by shifting post-query processing
+   (such as aggregations) into the query itself. This is useful
+   in scenario where the output of the query is fed to another
+   processing system which then performs additional aggregations. 
+3. Switching from queries to using [data export](../management/data-export.md).
+   This is appropriate when one does want to export large sets
+   of data from the service.
+4. Instruct the service to suppress this query limit.
+
+Common methods for reducing the result set size produced by the
+query are:
+
+1. Using the [summarize operator](../query/summarizeoperator.md) group and aggregate over
    similar records in the query output, potentially sampling some
-   columns using the `any()` aggregation function.
-2. Using a `take` operator (a.k.a. `limit` operator) to sample the query output.
-3. Using the `substring()` function to trim wide free-text columns.
-4. Using the `project` operator to drop any uninteresting column
+   columns using the [any aggregation function](../query/any-aggfunction.md).
+2. Using a [take operator](../query/takeoperator.md) to sample the query output.
+3. Using the [substring function](../query/substringfunction.md) to trim wide free-text columns.
+4. Using the [project operator](../query/projectoperator.md) to drop any uninteresting column
    from the result set.
 
 One can disable result truncation by using the `notruncation` request

@@ -38,7 +38,7 @@ time window.
 
 Output table schema is:
 
-|TimelineColumn|dim1|...|dim_n|count|dcount|new_dcount|aggregated_count
+|TimelineColumn|dim1|...|dim_n|count|dcount|new_dcount|aggregated_dcount
 |---|---|---|---|---|---|---|---|---|
 |type: as of *TimelineColumn*|..|..|..|long|long|long|long|long
 

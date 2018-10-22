@@ -1,6 +1,6 @@
 ---
-title: Role Based Authorization Model  - Azure Data Explorer | Microsoft Docs
-description: This article describes Role Based Authorization Model  in Azure Data Explorer.
+title: Role Based Authorization Model - Azure Data Explorer | Microsoft Docs
+description: This article describes Role Based Authorization Model in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
@@ -9,37 +9,79 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Role Based Authorization Model 
+# Role Based Authorization Model
 
-> [!IMPORTANT]
-> Before altering authorization rules on your Kusto cluster(s), please make sure you reviewed [Kusto Access Control Overview](../management/access-control/index.md) and [Role Based Authorization](../management/access-control/role-based-authorization.md).
-> These articles will help you understand what Identity Providers are supported and recommended by Kusto for authentication, as well as how Role based authorization works in Kusto. 
+[!IMPORTANT]
+Before altering authorization rules on your Kusto cluster(s), please review the
+[Kusto access control overview](../management/access-control/index.md) and
+[role based authorization](../management/access-control/role-based-authorization.md) topics.
 
+This topic describes the control commands used to manage security roles.
+Every securable object (e.g. a database, or a table) has a number of security roles
+which are groups of security groups and security principals, alongside a set of
+permissions that are associated with the security role. When a principal attempts
+to make an operation on a securable object Kusto checks that the principal is
+a member of at least one role that grants permission for the operation on the object.
 
-## List principals
+For example, the database admin security role is associated with every database,
+and grants the principals in it (either directly or through them being a part
+of a security group that is in the role) the permission to modify the database
+and objects in it.
 
+The commands to manage security roles generally have this syntax:
 
-List all the principals on this database, including cluster admins, users and viewers which have permissions on this database:
+*Verb* *SecurableObjectType* *SecurableObjectName* *Role* [`(` *ListOfPrincipals* `)` [*Description*]]
+
+*Verb* indicates the kind of action to perform: `.show`, `.add`, `.drop`, and `.set`.
+
+|*Verb* |Description                                  |
+|-------|---------------------------------------------|
+|`.show`|Returns the current value or values.         |
+|`.add` |Adds one or more principals to the role.     |
+|`.drop`|Removes one or more principals from the role.|
+|`.set` |Sets the role to the specific list of principals, removing all previous ones (if any).|
+
+*SecurableObjectType* is the kind of object whose role is specified:
+
+|*SecurableObjectType*|Description|
+|---------------------|-----------|
+|`database`|The specified database|
+|`table`|The specified table|
+
+*SecurableObjectName* is the name of the object.
+
+*Role* is the name of the relevant role:
+
+|*Role*      |Description|
+|------------|-----------|
+|`principals`|Can appear only as part of a `.show` verb; returns the list of principals that can affect the securable object.|
+|`admins`    |Have control over the securable object, including the ability to view, modify it, and remove the object and all sub-objects.|
+|`users`     |Can view the securable object, and create new objects underneath it.|
+|`viewers`   |Can view the securable object.|
+|`ingestors` |At the database level only, allow data ingestion into all tables.|
+|`monitors`  ||
+
+*ListOfPrincipals* is an optional, comma-delimited, list of security principals
+identifiers (values of type `string`).
+
+*Description* is an optional value of type `string` ********
+
+## Examples
+
+The following control command lists all security principals which have some
+access to the table `StormEvents` in the database in scope:
 
 ```kusto
-.show database DatabaseName principals 
+.show table StormEvents principals
 ```
 
-Show all the principals on this table, including cluster/database admins, users and viewers which have permissions on this table:
-
-```kusto
-.show table TableName principals
-```
-
-Example result:
+Here are potential results from this command:
 
 |Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN 
 |---|---|---|---|---
-|Cluster User |AAD User |Julia Ilyana |6dbe4cc3-dbe0-76946a820502 |aaduser=jil@fabrikam.com
-|Cluster User |AAD User |Mike White |48476cb0-ce38-57ee135b1fdf |aaduser=mike@fabrikam.com 
-|Cluster User |AAD Group |Fabrikam: All Staff |ddd441d-b5a1-8e200fc7409e |aadgroup=dd5a7f9f-b5a1-8e200fc7409e 
-|Cluster Admin |AAD User |Mike White |48476cb0-ce38-57ee135b1fdf |aaduser=mikeoein@fabrikam.com 
-|Database Apsty Admin |AAD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com 
+|Database Apsty Admin |AAD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
+
+The following control command 
 
 ## Adding one or more principals
 

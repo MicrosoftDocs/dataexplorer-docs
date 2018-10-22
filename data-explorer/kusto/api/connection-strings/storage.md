@@ -46,6 +46,12 @@ two supported mechanisms of providing credentials:
 * By providing the storage account key (`;ljkAkl...==`). This method should be used
   when Kusto needs to access the resource on an ongoing basis.
 
+Examples (note that this is showing obfuscated string literals, so as not to expose
+the account key or SAS):
+
+`h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;account_key=="` 
+`h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"` 
+
 ## Azure Data Lake Store
 
 This provider supports accessing files and directories in Azure Data Lake Store.
