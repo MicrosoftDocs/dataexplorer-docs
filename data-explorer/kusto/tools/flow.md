@@ -31,7 +31,7 @@ Common scenarios for using Azure Kusto Flow include:
 
 When searching for the Azure Kusto connector in Flow, you will see 3 possible actions you can add to your flow.
 
-The following section describes the capabilites and needed parameters for each Azure Kusto Flow action.
+The following section describes the capabilities and needed parameters for each Azure Kusto Flow action.
 
 ![alt text](./Images/KustoTools-Flow/flow-actions.png "flow-actions")
 
@@ -119,8 +119,6 @@ Click on the 'Sign in' button and enter your credentials to start using Azure Ku
 ![alt text](./Images/KustoTools-Flow/flow-signin.png "flow-signin")
 
 Authentication to Azure Kusto Flow can be done with user credentials or an AAD application.
-Authentication via dSTS is not supported, which means that one cannot query Kusto clusters in national clouds from Flow.
-Service accounts are also no longer supported.
 
 ### AAD Application Authentication
 

@@ -47,9 +47,12 @@ Kusto Explorer window has several UI parts:
 3. Script panel
 4. Results panel
 
-* Check the [list of hot-keys (shortcuts)](kusto-explorer-shortcuts.md) for truely mastering Kusto.Explorer
-
 ![Kusto.Explorer startup](./Images/KustoTools-KustoExplorer/ke-start.png "ke-start")
+
+### Keyboard shortcuts
+
+Please study this [list of Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md)
+to truly become a Kusto.Explorer ninja master.
 
 ### Menu Panel
 

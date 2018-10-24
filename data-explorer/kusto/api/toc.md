@@ -16,6 +16,7 @@
 ## [T-SQL](tds/t-sql.md)
 ## [CSL over TDS](tds/tdscsl.md)
 ## [Clients](tds/clients.md)
+## [AAD](tds/aad.md)
 ## [Known issues](tds/sqlknownissues.md)
 
 # .NET SDK
@@ -40,8 +41,12 @@
 # Python SDK
 ## [azure-kusto-python](python/kusto-python-client-library.md)
 
+
 # Java SDK
 ## [azure-kusto-java](java/kusto-java-client-library.md)
+
+# Node SDK
+## [azure-kusto-node](node/kusto-node-client-library.md)
 
 
 

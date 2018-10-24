@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # series_less()
 
-Calculates the element-wise less [ `<` ] logic operation of two numeric series inputs.
+Calculates the element-wise less (`<`) logic operation of two numeric series inputs.
 
 **Syntax**
 

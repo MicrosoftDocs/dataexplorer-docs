@@ -17,7 +17,7 @@ Expands multi-value array or property bag.
 
 **Syntax**
 
-*T* `| mvexpand ` [`bagexpansion=`(`bag` | `array`)] *ColumnName* [`,` *ColumnName* ...] [`limit` *Rowlimit*]
+*T* `| mvexpand ` [`bagexpansion=`(`bag` | `array`)] [`with_itemindex=`*IndexColumnName*] *ColumnName* [`,` *ColumnName* ...] [`limit` *Rowlimit*]
 
 *T* `| mvexpand ` [`bagexpansion=`(`bag` | `array`)] [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] [, [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
 
@@ -31,6 +31,7 @@ Expands multi-value array or property bag.
     Note that values in the array that do not conform to this type will
     not be converted; rather, they will take on a `null` value.
 * *RowLimit:* The maximum number of rows generated from each original row. The default is 128.
+* *IndexColumnName:* If `with_itemindex` is specified, the output will include an additional column (named *IndexColumnName*), which contains the index (starting at 0) of the item in the original expanded collection. 
 
 **Returns**
 
@@ -82,6 +83,22 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 |---|---|---|
 |1|{"prop1":"a"}|5|
 |1|{"prop2":"b"}|5|
+
+
+Expansion of an array with `with_itemIndex`:
+```kusto
+range x from 1 to 4 step 1 
+| summarize x = makelist(x) 
+| mvexpand with_itemindex=Index  x 
+```
+
+|x|Index|
+|---|---|
+|1|0|
+|2|1|
+|3|2|
+|4|3|
+
 
 **More examples**
 

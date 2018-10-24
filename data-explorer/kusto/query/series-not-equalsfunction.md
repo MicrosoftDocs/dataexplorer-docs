@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # series_not_equals()
 
-Calculates the element-wise not equal [ `!=` ] logic operation of two numeric series inputs.
+Calculates the element-wise not equals (`!=`) logic operation of two numeric series inputs.
 
 **Syntax**
 

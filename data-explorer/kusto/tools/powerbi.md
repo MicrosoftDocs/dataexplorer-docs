@@ -163,12 +163,6 @@ using Power BI to query Kusto:
    <br>(Why isn't HTTP POST used instead? Turns out Power Query currently
    only supports anonymous HTTP POST requests.)
 
-3. **Power BI doesn't support dSTS authentication.**
-   Use AAD when configuring Power BI to query Kusto.
-
-4. **Power BI support sovereign clouds but it cannot be accesses with public cloud AAD identities**
-   AAD is used for authentication with the sovereign cloud identities. There are currently no known workarounds to this limitation. 
-
 
 
 

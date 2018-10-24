@@ -1,6 +1,6 @@
 ---
-title: Kusto.Explorer shortcuts (hot-keys) - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto.Explorer shortcuts (hot-keys) in Azure Data Explorer.
+title: Kusto.Explorer keyboard shortcuts (hot-keys) - Azure Data Explorer | Microsoft Docs
+description: This article describes Kusto.Explorer keyboard shortcuts (hot-keys) in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
@@ -9,16 +9,15 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Kusto.Explorer shortcuts (hot-keys)
+# Kusto.Explorer keyboard shortcuts (hot-keys)
 
-## Kusto.Explorer application-level shortcuts
+## Application-level
 
-
-Following shortcuts are applicable for the application-level scope and can be invoked at any context.
+The following keyboard shortcuts can be used from any context:
 
 |Hot Key|Description|
 |-------|-----------|
-|`F1`     | Opens a help URL: [https://aka.ms/csl](https://aka.ms/csl)|
+|`F1`     | Opens the help|
 |`F11`    | Toggle full-view mode|
 |`Ctrl`+`F1` | Toggle ribbon appearance |
 |`Ctrl`+`+`| Increases query and data results font|
@@ -33,9 +32,10 @@ Following shortcuts are applicable for the application-level scope and can be in
 |`Ctrl`+`F12`| Opens embedded calculator window|
 |`Ctrl`+`Shift`+`O`|Opens Kusto.Explorer options and settings dialog|
 
-## Query and Results View shortcuts
+## Query and results view
 
-Following shortcuts work on Query Editor and Results View. 
+The following keyboard shortcuts can be used when editing a query in the query editor
+or when the context is in the results view:
 
 |Hot Key|Description|
 |-------|-----------|
@@ -65,13 +65,13 @@ Following shortcuts work on Query Editor and Results View.
 |`Ctrl`+`Shift`+`T` | Focuses on Connections panel |
 |`Alt`+`Ctrl`+`L`|Locks current connection context to the Query Editor, so changing selected row in the Connetion panel has no effect on the Query Editor context. |
 
-## Query Editor shortcuts
+## Query editor
 
-The following shortcuts operate inside Query Editor.
+The following keyboard shortcuts can be used when editing a query in the query editor:
 
 |Hot Key|Description|
 |-------|-----------|
-|`F1`|When cursor points to an operator or function - opens a help window with information about the operator or function. If help topic is not present - opens a help URL: [https://aka.ms/csl](https://aka.ms/csl)|
+|`F1`|When cursor points to an operator or function - opens a help window with information about the operator or function. If help topic is not present - opens a help URL|
 |`F5`|Run currently selected query|
 |`Shift`+`Enter`|Run currently selected query|
 |`F8`|Fetch query results from the local cache. If results are not present - run currently selected query|
@@ -104,10 +104,10 @@ The following shortcuts operate inside Query Editor.
 |`Ctrl`+`K`, `Ctrl`+`S` | Turn current line or selected lines into multi-line string literal |
 |`Ctrl`+`K`, `Ctrl`+`M` | Remove multi-line stirng literal marks (reverse of `Ctrl`+`K`, `Ctrl`+`S`) |
 
+## JSON viewer
 
-## JSON Viewer shortcuts
-
-The following shorcuts are active inside Results JSON Viewer (opened when a JSON-like cell in Results View is double-clicked)
+The following keyboard shorcuts can be used from within the results JSON viewer
+(displayed when one double-clicks on a JSON-like value in the results view cell):
 
 |Hot Key|Description|
 |-------|-----------|

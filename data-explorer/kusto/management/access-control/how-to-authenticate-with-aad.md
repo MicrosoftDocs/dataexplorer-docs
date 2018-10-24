@@ -11,31 +11,119 @@ ms.date: 09/24/2018
 ---
 # How-To: Authenticate with AAD for Kusto Access
 
-This article explains how to obtain an AAD Access Token for Kusto service access. 
- 
-The recommended way to authenticate to Kusto is by authenticating an interactive user (or an application) to AAD as the authentication provider, and then presenting the user (or application) token received from AAD to Kusto. In this case, all actions will be executed on-behalf-of the logged-in user, and authorization will be based on the user identity.
+The recommended way to access Kusto is by authenticating to the
+**Azure Active Directory** service (sometimes also called **Azure AD**, or simply
+**AAD**). Doing so guarantees that Kusto never sees the accessing principal's
+directory credentials, by using a two-stage process:
 
-[Kusto Client Library (Kusto.Data)](../../api/netfx/about-kusto-data.md) provides an abstraction over interaction with AAD by allowing the caller to specify the authentication schema and parameters in Kusto Connection String.
-Please see the [Kusto connection strings](../../api/connection-strings/kusto.md) reference for guidance and examples.
+1. In the first step, the client communicates with the AAD service, authenticates
+   to it, and requests an access token issued specifically for the particular Kusto
+   endpoint the client intends to access.
+2. In the second step the client issues requests to Kusto, providing the access
+   token acquired in the first step as a proof of identity to Kusto.
+
+Kusto then executes the request on behalf of the security principal for which AAD
+issued the access token, and all authorization checks are performed using
+this identity.
+
+In most cases, the recommendation is to use one of Kusto SDKs to access the
+service programmatically, as they remove much of the hassle of implementing the
+flow above (and much else). See, for example, the [.NET SDK](../../api/netfx/about-the-sdk.md).
+The authentication properties are then set by the [Kusto connection string](../../api/connection-strings/kusto.md).
+If that is not possible, please read on for detailed information on how to
+implement this flow yourself.
+
+The main authenticating scenarios are:
+
+* **A client application authenticating a signed-in user**.
+  In this scenario, an interactive (client) application triggers an AAD prompt
+  to the user for credentials (such as username and password).
+  See [user authentication](#user-authentication),
+
+* **A "headless" application**.
+  In this scenario an application is running with no user present to provide
+  credentials, and instead the application authenticates as "itself" to AAD
+  using some credentials it has been configured with.
+  See [application authentication](#application-authentication).
+
+* **On-behalf-of authentication**.
+  In this scenario, sometimes called the "web service" or "web app" scenario,
+  the application gets an AAD access token from another application, and then
+  "converts" it to an another AAD access token that can be used with Kusto.
+  In other words, the application acts as a mediator between the user or application
+  that provided credentials and the Kusto service.
+  See [on-behalf-of authentication](#on-behalf-of-authentication).
+
+## Specifying the AAD resource for Kusto
+
+When acquiring an access token from AAD, the client must tell AAD which **AAD resource**
+the token should be issued to. The AAD resource of a Kusto endpoint is the
+URI of the endpoint, barring the port information and the path. For example:
+
+```txt
+https://help.kusto.windows.net
+```
 
 
-## AAD User Authentication
 
-An interactive application that uses the Kusto Client Libraries can indicate this form of authentication simply by setting the "Federated Authentication" property of the Kusto Connection String to "true". The client library will display the necessary login form to the user and cache the token in a local secure store.
+## Specifying the AAD tenant ID
 
-Applications that do not use the Kusto Client Libraries (such as JavaScript applications) can acquire a user token by using the AAD client library (ADAL).
-For an example of how to do so, please see: https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet
+AAD is a multi-tenant service, and every organization can create an object called
+**directory** in AAD. The directory object holds security-related objects such
+as user accounts, applications, and groups. AAD often refers to the directory
+as a **tenant**. AAD tenants are identifies by a GUID (**tenant ID**). In many
+cases, AAD tenants can also be identified by the domain name of the organization.
 
-Please note that if an application wishes to authenticate users for Kusto access, it needs to be granted delegated permissions to `Access Kusto`,
-as documented in [Kusto guide to AAD Applications provisioning](how-to-provision-aad-app.md#set-up-delegated-permissions-for-the-kusto-service-application).
+For example, an organization called "Contoso" might have the tenant ID
+`4da81d62-e0a8-4899-adad-4349ca6bfe24` and the domain name `contoso.com`.
 
-Resource id should be **your Kusto cluster URL**, e.g. `https://mycluster.kusto.windows.net` or `https://mycluster.kustomfa.windows.net`.
+## Specifying the AAD authority
 
-In all the examples below, the term `AAD Authority URL` denotes the AAD endpoint to be contacted for authentication ans expands into one of the following:
-* In order to access the `common` endpoint and to authenticate based on the principal's default AAD tenant: `https://login.microsoftonline.com/common/oauth2/authorize`
-* In order to specify the AAD tenant for the authentication: `https://login.microsoftonline.com/<tenantId>/oauth2/authorize`
+AAD has a number of endpoints for authentication:
 
-The following brief code snippet demonstrates using ADAL to acquire an AAD user token to access Kusto (launches logon UI):
+* When the tenant hosting the principal being authenticated is known
+  (in other words, when one knows which AAD directory the user or application
+  are in), the AAD endpoint is `https://login.microsoftonline.com/{tenantId}/oauth2/authorize`.
+  Here, `{tenantId}` is either the organization's tenant ID in AAD, or its
+  domain name (e.g. `contoso.com`).
+
+* When the tenant hosting the principal being authenticated is not known,
+  the "common" endpoint can be used by replacing the `{tenantId}` above
+  with the value `common`.
+
+> [!NOTE]
+> The AAD endpoint used for authentication is also called **AAD authority URL**
+> or simply **AAD authority**.
+
+## AAD token cache
+
+When using the Kusto SDK, the AAD tokens are stored on the local machine in a
+per-user token cache (a file called `%APPDATA%\Kusto\tokenCache.data` which can
+only be accessed or decrypted by the signed-in user.) The cache is inspected
+for tokens before prompting the user for credentials, thus greatly reducing the
+number of times a user has to enter credentials.
+
+
+
+## User authentication
+
+The easiest way to access Kusto with user authentication is to use the Kusto SDK
+and set the `Federated Authentication` property of the Kusto connection string to
+`true`. The first time the SDK is used to send a request to the service the user
+will be presented with a sign-in form to enter the AAD credentials, and on
+successful authentication the request will be sent.
+
+Applications that do not use the Kusto SDK can still use the AAD client library
+(ADAL) instead of implementing the AAD service security protocol client. Please
+see [https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet]
+for an example of doing so from a .NET application.
+
+To authenticate users for Kusto access, an application must first be granted the
+`Access Kusto` delegated permission. Please see [Kusto guide to AAD applications provisioning](how-to-provision-aad-app.md#set-up-delegated-permissions-for-the-kusto-service-application)
+for details.
+
+The following brief code snippet demonstrates using ADAL to acquire an AAD user
+token to access Kusto (launches logon UI):
 
 ```csharp
 // Create an HTTP request
@@ -53,12 +141,13 @@ string bearerToken = result.AccessToken;
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
-## AAD Application Authentication
+## Application authentication
 
-### Explicit AAD Application Authentication
- 
-Applications that do not use the Kusto Client Libraries (such as JavaScript applications) can acquire an application token using the AAD client library ADAL.
-The following brief code snippet demonstrates using ADAL to acquire an AAD app token to access Kusto (requires application to be registered with AAD):
+The following brief code snippet demonstrates using ADAL to acquire an
+AAD application token to access Kusto. In this flow no prompt is presented, and
+the application must be registered with AAD and equipped with credentials needed
+to perform application authentication (such as an app key issued by AAD,
+or an X509v2 certificate that has been pre-registered with AAD).
 
 ```csharp
 // Create an HTTP request
@@ -77,14 +166,16 @@ string bearerToken = result.AccessToken;
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
-AAD also supports Application authentication with an X509v2 certificate (requires preregistration of the certificate with AAD).
+## On-behalf-of authentication
 
-## Reuse existing AAD tokens to access Kusto
+In this scenario an application has some AAD access token for some arbitrary
+resource, and it uses that token to get a new AAD access token that can be used
+with Kusto. This flow iis called the
+[OAuth2 token exchange flow](https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-04).
+Due to its complexity, here are the steps required to do this registration:
 
-Let's say you already have your own authentication scenario against AAD for your own application - and thus you already have an AAD access token at your disposal.
-In that case you can use the [OAuth2 token exchange flow](https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-04) to procure a token for Kusto by providing AAD with token you have at your disposal.
+**Step 1: Establish trust relationship between your application and Kusto service**
 
-### Step 1: Establish trust relationship between your application and Kusto service
 1. Go to the(old) Azure portal => Active Directory => Applications and find your AAD application
 2. Click on the **Configure** tab
 3. Go to the **permissions to other applications** section
@@ -92,7 +183,7 @@ In that case you can use the [OAuth2 token exchange flow](https://tools.ietf.org
 5. Go to delegated permission and add **Access Kusto**
 6. Click save
 
-### Step 2: Perform token exchange in your server code
+**Step 2: Perform token exchange in your server code**
 
 ```csharp
 // Create Auth Context for AAD (common or tenant-specific endpoint):
@@ -106,7 +197,8 @@ var tokenForKusto = authContext.AcquireTokenAsync(
     new UserAssertion(customerAadWebApplicationToken)).GetAwaiter().GetResult();
 ```
 
-### Step 3: Provide the token to Kusto client library and execute queries
+**Step 3: Provide the token to Kusto client library and execute queries**
+
 ```csharp
 var kcsb = new KustoConnectionStringBuilder(string.Format(
     "https://{0}.kusto.windows.net;fed=true;UserToken={1}", 
@@ -116,15 +208,20 @@ var client = KustoClientFactory.CreateCslQueryProvider(kcsb);
 var queryResult = client.ExecuteQuery(clusterName, query, null);
 ```
 
-
-## Web Client (JavaScript) Authentication and Authorization
-
+## Web Client (JavaScript) authentication and authorization
 
 
-### AAD application configuration
->Note that in addition to the standard [steps](./how-to-provision-aad-app.md) you need to follow in order to setup an AAD app, you should also enable oauth implicit flow in your AAD application. You can achieve that by selecting manifest from your application page in the azure portal, and set oauth2AllowImplicitFlow to true
 
-### Details
+**AAD application configuration**
+
+> [!NOTE]
+> In addition to the standard [steps](./how-to-provision-aad-app.md) you need to
+> follow in order to setup an AAD app, you should also enable oauth implicit flow
+> in your AAD application. You can achieve that by selecting manifest from your
+>application page in the azure portal, and set oauth2AllowImplicitFlow to true.
+
+**Details**
+
 When the client is a JavaScript code running in the user's browser, the implicit grant flow is used. The token granting the client application
 access to the Kusto service is provided immediately following a successful authentication as part of the redirect URI (in a URI
 fragment); no refresh token is given in this flow, so the client can't cache the token for prolonged periods of time and reuse it.
@@ -135,7 +232,7 @@ AdalJs requires getting an id_token before any access_token calls are made.
 
 Access token is obtains by calling the `AuthenticationContext.login()` method, and access_tokens are obtained by calling `Authenticationcontext.acquireToken()`.
 
-- Create an AuthenticationContext with the right configuration:
+* Create an AuthenticationContext with the right configuration:
 
 ```javascript
 var config = {
@@ -148,13 +245,15 @@ var config = {
 var authContext = new AuthenticationContext(config);
 ```
 
-- Call `authContext.login()` before trying to `acquireToken()` if you are not logged in. a good way ot know if you're logged in or not is to call `authContext.getCachedUser()` and see if it returns `false`)
-- Call `authContext.handleWindowCallback()` whenever your page loads. This is the piece of code that intercepts the redirect back from AAD and pulls the token out of the fragment URL and caches it.
-- Call `authContext.acquireToken()` to get the actual access token, now that you have a valid ID token. The first parameter to acquireToken will be the Kusto server AAD application resource URL.  
+* Call `authContext.login()` before trying to `acquireToken()` if you are not logged in. a good way ot know if you're logged in or not is to call `authContext.getCachedUser()` and see if it returns `false`)
+* Call `authContext.handleWindowCallback()` whenever your page loads. This is the piece of code that intercepts the redirect back from AAD and pulls the token out of the fragment URL and caches it.
+* Call `authContext.acquireToken()` to get the actual access token, now that you have a valid ID token. The first parameter to acquireToken will be the Kusto server AAD application resource URL.  
+
 ```javascript
  authContext.acquireToken("<Kusto cluster URL>", callbackThatUsesTheToken);
  ```
-- in the callbackThatUsesTheToken you can use the token as a bearer token in the kusto request. for example:
+
+* in the callbackThatUsesTheToken you can use the token as a bearer token in the kusto request. for example:
 
 ```javascript
 var settings = {
@@ -189,12 +288,4 @@ $.ajax(settings).then(function(data) {/* do something wil the data */});
 > Warning - if you get the following or similar exception when authenticating: 
 `ReferenceError: AuthenticationContext is not defined` 
 it's probably because you don't have AuthenticationContext in the global namespace. 
-Unfortunately AdalJS currently has an undocumented requirement that the authentication context will be defined in the global namespace.   
-
-## AAD token cache
-
-So as not to require users to repeatedly enter their credentials, Kusto caches
-AAD tokens. The token cache is stored locally on the machine (`%APPDATA%\Kusto\tokenCache.data`)
-and is bound to the logged-on user identity so it can't be decrypted by other
-users on that machine.
-
+Unfortunately AdalJS currently has an undocumented requirement that the authentication context will be defined in the global namespace.
