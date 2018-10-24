@@ -45,9 +45,6 @@
 # Java SDK
 ## [azure-kusto-java](java/kusto-java-client-library.md)
 
-# Node SDK
-## [azure-kusto-node](node/kusto-node-client-library.md)
-
 
 
 # PowerShell
