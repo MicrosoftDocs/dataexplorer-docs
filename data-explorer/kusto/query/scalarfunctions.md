@@ -94,7 +94,6 @@ ms.date: 09/24/2018
 
 |[toscalar()](toscalarfunction.md)|Returns a scalar constant value of the evaluated expression.|
 
-
 ## Mathematical Functions
 
 |Function Name     |Description                                          |
@@ -168,6 +167,20 @@ ms.date: 09/24/2018
 |[max_of()](max-offunction.md)|Returns the maximum value of several evaluated numeric expressions.|
 |[min_of()](min-offunction.md)|Returns the minimum value of several evaluated numeric expressions.|
 
+## Series Element-wise Functions
+
+|Function Name     |Description                                          |
+|-------------------------|--------------------------------------------------------|
+|[series_add()](series-addfunction.md)|Calculates the element-wise addition of two numeric series inputs.|
+|[series_divide()](series-dividefunction.md)|Calculates the element-wise division of two numeric series inputs.|
+|[series_equals()](series-equalsfunction.md)|Calculates the element-wise equals (`==`) logic operation of two numeric series inputs.|
+|[series_greater()](series-greaterfunction.md)|Calculates the element-wise greater (`>`) logic operation of two numeric series inputs.|
+|[series_greater_equals()](series-greater-equalsfunction.md)|Calculates the element-wise greater or equals (`>=`) logic operation of two numeric series inputs.|
+|[series_less()](series-lessfunction.md)|Calculates the element-wise less (`<`) logic operation of two numeric series inputs.|
+|[series_less_equals()](series-less-equalsfunction.md)|Calculates the element-wise less or equal (`<=`) logic operation of two numeric series inputs.|
+|[series_multiply()](series-multiplyfunction.md)|Calculates the element-wise multiplication of two numeric series inputs.|
+|[series_not_equals()](series-not-equalsfunction.md)|Calculates the element-wise not equals (`!=`) logic operation of two numeric series inputs.|
+|[series_subtract()](series-subtractfunction.md)|Calculates the element-wise subtraction of two numeric series inputs.|
 
 ## Series Processing Functions
 
@@ -188,7 +201,6 @@ ms.date: 09/24/2018
 |[series_periods_validate()](series-periods-validatefunction.md)|Checks whether a time series contains periodic patterns of given lengths.|
 |[series_stats()](series-statsfunction.md)|Returns statistics for a series in multiple columns.|
 |[series_stats-dynamic()](series-stats-dynamicfunction.md)|Returns statistics for a series in dynamic object.|
-
 
 ## String Functions
 
@@ -226,7 +238,6 @@ ms.date: 09/24/2018
 |[trim_start()](trimstartfunction.md)|Removes leading match of the specified regular expression.|
 |[url_decode()](urldecodefunction.md)|The function converts encoded URL into a to regular URL representation.|
 |[url_encode()](urlencodefunction.md)|The function converts characters of the input URL into a format that can be transmitted over the Internet.|
-
 
 ## Type Functions
 

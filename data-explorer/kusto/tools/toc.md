@@ -3,6 +3,7 @@
 # Ad-hoc query
 
 ## [Kusto.Explorer](kusto-explorer.md)
+### [Keyboard shortcuts](kusto-explorer-shortcuts.md)
 ## [Web UI](https://docs.microsoft.com/azure/data-explorer/web-query-data)
 
 # Visualizations, dashboards, and reporting

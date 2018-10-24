@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # series_greater()
 
-Calculates the element-wise greater [ `>` ] logic operation of two numeric series inputs.
+Calculates the element-wise greater (`>`) logic operation of two numeric series inputs.
 
 **Syntax**
 

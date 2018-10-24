@@ -144,7 +144,6 @@ The following control command
 .add database Test users ('aaduser=imike@fabrikam.com') 'Test user (AAD)'
 .add database Test users ('aadgroup=<SG display name or SG group ID or SG Display name>') 'Test group (AAD)'
 .add database Test users ('aadapp=<App display name or App ID>') 'Test app (AAD)'
-.add database Test users ('dstsuser=imike@fabrikam.com ') 'Test user (dSTS)'
 ```
 
 ## List cluster principals

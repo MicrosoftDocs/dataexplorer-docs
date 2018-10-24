@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # series_less_equals()
 
-Calculates the element-wise less or equal [ `<=` ] logic operation of two numeric series inputs.
+Calculates the element-wise less or equal (`<=`) logic operation of two numeric series inputs.
 
 **Syntax**
 

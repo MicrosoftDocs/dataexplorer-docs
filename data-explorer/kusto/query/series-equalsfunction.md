@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # series_equals()
 
-Calculates the element-wise equal [ `==` ] logic operation of two numeric series inputs.
+Calculates the element-wise equals (`==`) logic operation of two numeric series inputs.
 
 **Syntax**
 

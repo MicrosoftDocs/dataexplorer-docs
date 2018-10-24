@@ -11,45 +11,29 @@ ms.date: 09/24/2018
 ---
 # render operator
 
-Renders results in as graphical output.
+Instructs the user agent to render the results of the query in a particular way.
 
 ```kusto
-T | render timechart
+range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 ```
 
-The render operator should be the last operator in the query expression.
+> [!NOTE]
+> The render operator should be the last operator in the query, and used only
+> with queries that produce a single tabular data stream result.
+>
+> The render operator has no impact on the results returned for the query,
+> other than to inject a annotation (called "Visualization") that contains
+> the rendering information provided in the query.
+> User agents might not render results as instructed, depending on their
+> support for the required rendering instructions.
 
 **Syntax**
 
-*T* `|` `render` *Visualization* [`with` (
-
-  [`title` `=` *Title*],
-
-  [`xcolumn` `=` *xColumn*],
-
-  [`xaxis` `=` *xAxis*],
-
-  [`yaxis` `=` *yAxis*],
-
-  [`series` `=` *Series*],
-
-  [`ycolumns` `=` *yColumns*],
-
-  [`kind` `=` *VisualizationKind*],
-
-  [`xtitle` `=` *xTitle*],
-
-  [`ytitle` `=` *yTitle*],
-
-  [`legend` `=` *Legend*],
-
-  [`ysplit` `=` *ySplit*],
-
-  [`accumulate` `=` *Accumulate*]
-)]
+*T* `|` `render` *Visualization* [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
 
 Where:
-* *Visualization* indicates the kind of visualization to perform. Supported values are:
+
+* *Visualization* indicates the kind of visualization to use. The supported values are:
 
 |*Visualization*     |Description|
 |--------------------|-|
@@ -67,61 +51,84 @@ Where:
 | `timechart`        | Line graph. First column is x-axis, and should be datetime. Other columns are y-axes.|
 | `timepivot`        | Interactive navigation over the events time-line (pivoting on time axis)|
 
-* *title* is an optional `string` value that holds the title for the results.
+* *PropertyName*/*PropertyValue* indicate additional information to use when rendeing.
+  All properties are optional. The supported properties are:
 
-* *xColumn* is an optional column identifier, that defines data from which column will be used as x-axis.
+|*PropertyName*|*PropertyValue*                                                                   |
+|--------------|----------------------------------------------------------------------------------|
+|`accumulate`  |Whether the value of each measure gets added to all its predecessors. (`true` or `false`)|
+|`kind`        |Further elaboration of the visualization kind. See below.                         |
+|`legend`      |Whether to display a legend or not (`visible` or `hidden`).                       |
+|`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
+|`title`       |The title of the visualization (of type `string`).                                |
+|`xaxis`       |How to scale the x-axis (`linear` or `log`).                                      |
+|`xcolumn`     |Which column in the result is used for the x-axis.                                |
+|`xtitle`      |The title of the x-axis (of type `string`).                                       |
+|`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
+|`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
+|`ysplit`      |How to split multiple the visualization. See below.                               |
+|`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
-* *xAxis* is an optional parameter which defines scale type for axis X - linear or logarithmic (can be set to either `linear` (the default) or `log`)
+Some visualizations can be further elaborated by providing the `kind` property.
+These are:
 
-* *yAxis* is an optional parameter which defines scale type for axis Y - linear or logarithmic (can be set to either `linear` (the default) or `log`)
+|*Visualization*|`kind`             |Description                        |
+|---------------|-------------------|-----------------------------------|
+|`areachart`    |`default`          |Each "area" stands on its own.     |
+|               |`unstacked`        |Same as `default`.                 |
+|               |`stacked`          |Stack "areas" to the right.        |
+|               |`stacked100`       |Stack "areas" to the right and stretch each one to the same width as the others.|
+|`barchart`     |`default`          |Each "bar" stands on its own.      |
+|               |`unstacked`        |Same as `default`.                 |
+|               |`stacked`          |Stack "bars".                      |
+|               |`stacked100`       |Stack "bard" and stretch each one to the same width as the others.|
+|`columnchart`  |`default`          |Each "column" stands on its own.   |
+|               |`unstacked`        |Same as `default`.                 |
+|               |`stacked`          |Stack "columns" one atop the other.|
+|               |`stacked100`       |Stacl "columns" and stretch each one to the same height as the others.|
 
-* *series* is an optional list of columns to control which "axis" is driven by which column in the data.
+Some visualizations support splitting into multiple y-axis values:
 
-* *yColumns* is an optional list of columns, data from which will be used as y-values.
+|`ysplit`  |Description                                                       |
+|----------|------------------------------------------------------------------|
+|`none`    |A single y-axis is displayed for all series data. (Default)       |
+|`axes`    |A single chart is displayed with multiple y-axis (one per series).|
+|`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
 
-* *kind* is an optional identifier that chooses between the available kinds of the
-  chosen *Visualization* (such as `barchart` and `columnchart`), if more than one kind is supported:
+**Remarks**
 
-|*Visualization*|*kind*|Description                     |
-|---------------|-------------------|--------------------------------|
-|`areachart`    |`default`          |Default, same as `unstacked`    |
-|               |`unstacked`        |Each "area" to its own          |
-|               |`stacked`          |"Areas" are stacked to the right|
-|               |`stacked100`       |"Areas" are stacked to the right, and stretched to the same width|
-|`barchart`     |`default`          |Default, same as `unstacked`    |
-|               |`unstacked`        |Each bar to its own             |
-|               |`stacked`          |Bars are stacked to the right   |
-|               |`stacked100`       |Bars are stacked to the right, and stretched to the same width|
-|`columnchart`  |`default`          |Default, same as `unstacked`    |
-|               |`unstacked`        |Each column to its own          |
-|               |`stacked`          |Columns are stacked upwards     |
-|               |`stacked100`       |Columns are stacked upwards, and stretched to the same height|
+The data model of the render operator looks at the tabular data as if it has
+three kinds of columns:
 
-* *xTitle* is an optional `string` value that holds the title for the X-Axis.
-
-* *yTitle* is an optional `string` value that holds the title for the Y-Axis.
-
-* *legend* is an optional value that can be set to either `visible` (the default) or `hidden`, which defines whether to display chart legend or not.
-
-* *ySplit* is an optional identifier that chooses between the available options of Y-Axis visualization:
-
-|*ySplit*|Description               |
-|---------------|-------------------|
-|`none`         |Default, chart displayed with single Y-Axis for all series |
-|`axes`         |Displayed single chart with separate Y-Axis for each serie |
-|`panels`       |For every column, defined as Y, generated separate panel, with binding to the same X-Axis (maximal panels amount is 5)|
-
-* *accumulate* is an optional value that can be set to either `true` or `false` (the default),
-  and indicates whether to accumulate y-axis numeric values for presentation.
+* The x axis column (indicated by the `xcolumn` property).
+* The series columns (any number of columns indicated by the `series` property.)
+  For each record, the combines values of these columns defines a single series,
+  and the chart has as many series as there are distinct combines values.
+* The y axis columns (any number of columns indicated by the `ycolumns`
+  property).
+  For each record, the series has as many measurements ("points" in the chart)
+  as there are y axis columns.
 
 **Tips**
 
 * Only positive values are displayed.
 * Use `where`, `summarize` and `top` to limit the volume that you display.
 * Sort the data to define the order of the x-axis.
+* User agents are free to "guess" the value of properties that are not specified
+  by the query. In particular, having "uninteresting" columns in the schema of
+  the result might translate into them guessing wrong. Try projecting-away such
+  columns when that happens. 
 
 **Examples**
 
 [Rendering examples in the tutorial](./tutorial.md#render-display-a-chart-or-table).
 
 [Anomaly detection](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning)
+
+```kusto
+range x from -2 to 2 step 0.1
+| extend sin = sin(x), cos = cos(x)
+| extend x_sign = iif(x > 0, "x_pos", "x_neg")
+| extend sum_sign = iif(sin + cos > 0, "sum_pos", "sum_neg")
+| render linechart with  (ycolumns = sin, cos, series = x_sign, sum_sign)
+```

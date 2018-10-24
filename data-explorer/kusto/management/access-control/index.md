@@ -99,6 +99,6 @@ For example, the **database user role** grants security principals (users or ser
 read the data of a particular database, create tables in the database, as well as create functions in it.
 
 The association of security principals to security roles can be defined individually,
-or by using security groups (defined in AAD or dSTS). The individual commands for doing so
+or by using security groups (defined in AAD). The individual commands for doing so
 are defined in [Setting Role Based Authorization rules](../security-roles.md).
 
