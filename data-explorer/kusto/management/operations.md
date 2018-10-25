@@ -54,7 +54,7 @@ Operations can (optionally) persist their results, and these can be retrieved wh
 
 **Notes:**
 
-* Not all control commands persist their results, and those that do usually do so by default on asynchronous executions only (using the `async` keyword). Please search the documentation for the specific command and check if it does (see, for example [export command](data-export.md#exporting-data-to-azure-blob-storage)). 
+* Not all control commands persist their results, and those that do usually do so by default on asynchronous executions only (using the `async` keyword). Please search the documentation for the specific command and check if it does (see, for example [data export](data-export/index.md)). 
 * The output schema of the `.show` `operations` `details` command is the same schema returned from the synchronous execution of the command. 
 * The `.show` `operation` `details` command can only be invoked after the operation completed successfully. Use the [show operations command](#show-operations)) to check the State of the operation prior to invoking this command. 
 
@@ -68,7 +68,8 @@ The result is different per type of operation and matches the schema of the oper
 
 **Examples**
 
-The *OperationId* in this example is one returned from an asynchronous execution of an [export command](../management/data-export.md#exporting-data-to-azure-blob-storage).
+The *OperationId* in this example is one returned from an asynchronous execution of one
+of the [data export](../management/data-export/index.md) commands.
 
 ```kusto 
 .export 
