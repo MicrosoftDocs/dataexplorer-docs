@@ -35,7 +35,7 @@ There are several methods to do data export:
   as the query or another), it's possible to do it by using the "ingest from query"
   flow on the target table. In this flow a query is run and its results are immediately
   ingested into a Kusto table. See [data ingestion](../data-ingestion/index.md)
-  for a details description of the [relevant commands](../data-ingestion/index.html#set-append-set-or-append-set-or-replace).
+  for a details description of the [relevant commands](../data-ingestion/index.md#set-append-set-or-append-set-or-replace).
 
 
 
