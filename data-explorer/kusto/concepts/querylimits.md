@@ -46,7 +46,7 @@ There are a number of strategies for dealing with this error:
    (such as aggregations) into the query itself. This is useful
    in scenario where the output of the query is fed to another
    processing system which then performs additional aggregations. 
-3. Switching from queries to using [data export](../management/data-export.md).
+3. Switching from queries to using [data export](../management/data-export/index.md).
    This is appropriate when one does want to export large sets
    of data from the service.
 4. Instruct the service to suppress this query limit.

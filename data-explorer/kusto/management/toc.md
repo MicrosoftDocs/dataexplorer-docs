@@ -27,7 +27,9 @@
 
 
 
-# [Data Export](data-export.md)
+# [Data Export](data-export/index.md)
+## [To a SQL table](data-export/export-data-to-sql.md)
+
 
 # [Database Cursors](databasecursor.md)
 

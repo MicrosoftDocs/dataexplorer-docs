@@ -13,4 +13,4 @@ ms.date: 09/24/2018
 
 * [RE2 regular expression syntax](./re2.md) describes the syntax 
   of the regular expression library used by Kusto (re2) in details.
-
+* [SQL to Kusto Cheat Sheet](./sqlcheatsheet.md) gives examples of common SQL queries translated into Kusto queries

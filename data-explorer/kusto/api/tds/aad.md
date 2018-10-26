@@ -21,7 +21,7 @@ AAD application provisioned for Kusto can use SQL client libraries that support 
 
 ### .NET SQL Client
 
-Assuming you have provision AAD application with *ApplicationClientId* and *ApplicationKey* and granted it permissions to access database *DatabaseName* on cluster *ClusterDnsName*, the following sample demonstrates who to use .NET SQL Client for queries from this AAD application.
+Assuming you have provisioned AAD application with *ApplicationClientId* and *ApplicationKey* and granted it permissions to access database *DatabaseName* on cluster *ClusterDnsName*, the following sample demonstrates how to use .NET SQL Client for queries from this AAD application.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
