@@ -28,11 +28,11 @@ guarantee when removal occurs (so data may "linger" even if the retention policy
 The retention policy is most commonly set to limit the age of the data since ingestion
 (see **SoftDeletePeriod** and **HardDeletePeriod** below).
 
-[!WARNING]
-The retention policy may limit the overall data size (as measured in the storage footprint
-of the compressed data, its indexes, etc.) Using this feature is discouraged when applied
-at the database level, as size-based data removal is non-deterministic regarding which tables
-are chosen to be trimmed.
+> [!WARNING]
+> The retention policy may limit the overall data size (as measured in the storage footprint
+> of the compressed data, its indexes, etc.) Using this feature is discouraged when applied
+> at the database level, as size-based data removal is non-deterministic regarding which tables
+> are chosen to be trimmed.
 
 **Notes:**
 	- If the retention policy has time-based and size-based limits, both are taken 
