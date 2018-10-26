@@ -396,3 +396,4 @@
 
 # [Reference material for Kusto Query Language](reference.md)
 ## [RE2 syntax](re2.md)
+## [SQL to Kusto Cheat Sheet](sqlcheatsheet.md)
