@@ -1,6 +1,6 @@
 # [Overview](./index.md)
 ## [Tutorial](tutorial.md)
-## [Samples](samples.md)
+## [Samples](samples.md) 
 ## [Best practices](best-practices.md)
 
 # [Entities](./schema-entities/index.md)
@@ -72,6 +72,7 @@
 ## [externaldata operator](externaldata-operator.md)
 ## [facet operator](facetoperator.md)
 ## [find operator](findoperator.md)
+## [fork operator](forkoperator.md)
 ## [getschema operator](getschemaoperator.md)
 ## [invoke operator](invokeoperator.md)
 ## [join operator](joinoperator.md)
@@ -127,8 +128,9 @@
 ## [acos()](acosfunction.md)
 ## [ago()](agofunction.md)
 ## [array_concat()](arrayconcatfunction.md)
-## [array_slice()](arrayslicefunction.md)
 ## [array_length()](arraylengthfunction.md)
+## [array_slice()](arrayslicefunction.md)
+<!--## [array_split()](arraysplitfunction.md)-->
 ## [asin()](asinfunction.md)
 ## [atan()](atanfunction.md)
 ## [atan2()](atan2function.md)

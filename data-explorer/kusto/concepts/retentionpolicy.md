@@ -35,23 +35,18 @@ The retention policy is most commonly set to limit the age of the data since ing
 > are chosen to be trimmed.
 
 **Notes:**
-	- If the retention policy has time-based and size-based limits, both are taken 
-	into account (the first limit that gets exceeded will trigger data removal).
-
-	- The retention process first soft-deletes the data (makes it unavailable for queries
-   but doesn't remove it from persistent storage) 
-   It then hard-deletes it (removes it from persistent storage without support for data recovery).
-
-	- The deletion time is imprecise. The system guarantees that data will not be
-   deleted before the limit is exceeded, but deletion is not immediate following that point.
-
-	- A soft-delete period of 0 can be set as part of a table-level retention policy
-   (but not as part of a database-level retention policy).
-		- When this is done, the ingested data will not be committed to the source table, 
-		avoiding the need to persist the data.
-		- Such configuration is useful mainly when the data gets ingested into a table.
-		A transactional [update policy](updatepolicy.md) is used to transform 
-		it and redirect the output into another table.
+- If the retention policy has time-based and size-based limits, both are taken 
+into account (the first limit that gets exceeded will trigger data removal).
+- The retention process first soft-deletes the data (makes it unavailable for queries
+ but doesn't remove it from persistent storage). It then hard-deletes it (removes it from persistent storage without support for data recovery).
+- The deletion time is imprecise. The system guarantees that data will not be
+deleted before the limit is exceeded, but deletion is not immediate following that point.
+- A soft-delete period of 0 can be set as part of a table-level retention policy (but not as part of a database-level retention policy).
+	- When this is done, the ingested data will not be committed to the source table, 
+	avoiding the need to persist the data.
+	- Such configuration is useful mainly when the data gets ingested into a table.
+	A transactional [update policy](updatepolicy.md) is used to transform 
+	it and redirect the output into another table.
 
 ## The policy object
 A retention policy includes the following properties:

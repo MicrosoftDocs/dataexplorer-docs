@@ -80,6 +80,7 @@ ms.date: 09/24/2018
 |[treepath()](treepathfunction.md)|Enumerates all the path expressions that identify leaves in a dynamic object.|
 |[zip()](zipfunction.md)|The zip function accepts any number of dynamic arrays, and returns an array whose elements are each an array holding the elements of the input arrays of the same index.|
 
+<!-- |[array_split()](arraysplitfunction.md)|Builds an array of arrays splitted from the input array.|-->
 
 ## Window Scalar Functions
 
@@ -192,15 +193,15 @@ ms.date: 09/24/2018
 |[series_fill_linear()](series-fill-linearfunction.md)|Performs linear interpolation of missing values in a series.|
 |[series_fir()](series-firfunction.md)|Applies a Finite Impulse Response filter on a series.|
 |[series_fit_2lines()](series-fit-2linesfunction.md)|Applies two segments linear regression on a series, returning multiple columns.|
-|[series_fit_2lines-dynamic()](series-fit-2lines-dynamicfunction.md)|Applies two segments linear regression on a series, returning dynamic object.|
+|[series_fit_2lines_dynamic()](series-fit-2lines-dynamicfunction.md)|Applies two segments linear regression on a series, returning dynamic object.|
 |[series_fit_line()](series-fit-linefunction.md)|Applies linear regression on a series, returning multiple columns.|
-|[series_fit_line-dynamic()](series-fit-line-dynamicfunction.md)|Applies linear regression on a series, returning dynamic object.|
+|[series_fit_line_dynamic()](series-fit-line-dynamicfunction.md)|Applies linear regression on a series, returning dynamic object.|
 |[series_iir()](series-iirfunction.md)|Applies a Infinite Impulse Response filter on a series.|
 |[series_outliers()](series-outliersfunction.md)|Scores anomaly points in a series.|
 |[series_periods_detect()](series-periods-detectfunction.md)|Finds the most significant periods that exist in a time series.|
 |[series_periods_validate()](series-periods-validatefunction.md)|Checks whether a time series contains periodic patterns of given lengths.|
 |[series_stats()](series-statsfunction.md)|Returns statistics for a series in multiple columns.|
-|[series_stats-dynamic()](series-stats-dynamicfunction.md)|Returns statistics for a series in dynamic object.|
+|[series_stats_dynamic()](series-stats-dynamicfunction.md)|Returns statistics for a series in dynamic object.|
 
 ## String Functions
 

@@ -39,6 +39,9 @@ Kusto supports authentication with already obtained access token:
         await connection.OpenAsync();
     }
 ```
+## JDBC
+
+Microsoft JDBC driver can be used to connect to Kusto with AAD application authentication. For details see [JDBC with AAD](./aad.md#jdbc).
 
 
 

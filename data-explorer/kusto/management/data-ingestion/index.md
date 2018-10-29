@@ -33,14 +33,8 @@ ingestion modes for this command:
 * *Push mode*, in which the data is "pushed" as part of the `.ingest` command
   itself into Kusto. This is primarily used by manual tests and scripts. 
 
-**Syntax**
-
-* `.ingest` [`async`] `into` 'table' *TableName* *SourceDataLocator* [`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
-* `.ingest` `inline` `into` 'table' *TableName* `[` *Data* `]` ...
-* `.ingest` [`compressed`] `csv` `stream` `into` 'table' *TableName* `[` *Data* `]` ...
-
-The first form indicates a pull-mode ingestion. The second and third forms indicate a
-push-mode ingestion.
+For pull-mode ingestion syntax, see [ingest from storage](./ingest-from-storage.md).
+For push-mode ingestion syntax, see [ingest inline](./ingest-inline.md).
 
 ## Ingestion properties
 
@@ -72,64 +66,6 @@ use of the `with` keyword. The supported properties are:
 - SOHsv - SOH (ASCII 1) separated values (used by Hive on HDInsight) (`format` = "sohsv")
 - JSON - JavaScript Object Notation. See [Json Mapping](../mappings.md#json-mapping) below. (`format` = "json")
 - AVRO - Avro (binary data serialization). Supported codecs: `null`, `deflate`. See [Avro Mapping](../mappings.md#avro-mapping) below. (`format` = "avro") 
-
-## Pull-mode ingestion
-
-The `.ingest into` command appends data to an existing table in the database in context.
-The table's schema is not modified on ingestion (columns that exist in the data but not
-in the table are ignored), and existing table data is unaffected. The ingested data's schema
-is adjusted to match the table schema by a process called "mapping".
-
-**Syntax**
-
-`.ingest` [`async`] `into` *TableName* *SourceDataReference* [`with` `(` *PropertyName* `=` *PropertyValue*` [`,` ...] `)`]
-
-`.ingest` [`async`] `into` *TableName* `(` *SourceDataReference* [`,` ...] `)` [`with` `(` *PropertyName* `=` *PropertyValue*` [`,` ...] `)`]
-
-* `async`: If specified, instructs that the command return immediately and do its processing in the background.
-  The results of the command then in clude an OperationId that can be used in a `.show operation` command
-  to get the completion status.
-
-* *TableName*: The name of an existing table in the database in context to which data is appended.
-
-* *SourceDataPointer*: A path to persistent storage (such as Azure Blob Storage) that holds
-  the data, including credentials needed to read it. See [persistent storage connection strings](../../api/connection-strings/storage.md).
-
-> [!NOTE]
-> It is strongly recommended to use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals)
-> for the *SourceDataPointer* that includes actual credentials in it. The service will be sure to scrub credentials
-> in its internal traces, error messages, etc.
-
-* *PropertyName*, *PropertyValue*: Can be used to set additional ingestion properties, such as `format`
-  (used to indicate the data format of the data being ingested; for example, `.csv`)
-
-
-## Ingest inline
-
-The .ingest command can take the data to be ingested as part of the command text itself. 
-This is appropriate only for small amounts of data, but is very useful for testing purposes and when coming up with your Blob Storage account is impossible or hard. 
-The data being specified in the command must be written as CSV. Optionally, it can be compressed (using ZIP) and then base-64-encoded to reduce its size.
-No ingestion properties are supported by this command. 
-
-```kusto
-.ingest inline into table <tableName> '[' <record1> ']' '[' <record2> ']'
- 
-.ingest compressed csv stream into table <tableName> '[' <encoded stream> ']'
-```
-
-**Example**
-
-Ingest two records into a table called TABLE that has two columns, 'str' (string) and 'num' (int): 
-
-```kusto
-.ingest inline into table TABLE [This is an unquoted string,123]["This is a string with ""quotes"", and commas",321]
-```
-
-Note that the general rules for CSV apply. Fields that include commas and double-quotes must be double-quoted in their entirety, and any embedded double-quote must be doubled. Adding strings with newlines is not supported. 
-
-It is possible to generate inline ingests commands using the Kusto.Data client library. (Note that compression does allow one to embed newlines in quoted fields) 
-
-    Kusto.Data.Common.CslCommandGenerator.GenerateTableIngestPushCommand(tableName, compressed: true, csvData: csvStream);
 
 ## .set, .append, .set-or-append, .set-or-replace
 

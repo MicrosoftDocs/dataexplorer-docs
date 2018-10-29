@@ -39,7 +39,7 @@ The input stream will be cached by materialize and then the cached expression ca
 
 * Avoid using `fork` with a single subquery.
 
-* Prefer using [batch](batches.md) of tabular expression statements over `fork` operator.
+* Prefer using [batch](batches.md) with [`materialize`](materializefunction.md) of tabular expression statements over `fork` operator.
 
 **Examples**
 

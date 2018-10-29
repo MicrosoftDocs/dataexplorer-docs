@@ -35,9 +35,15 @@ namespace Sample
   {
     private static async Task<string> ObtainToken()
     {
-      var authContext = new AuthenticationContext("https://login.microsoftonline.com/<your AAD tenant>");
-      var applicationCredentials = new ClientCredential("<your application client ID>", "<your application key>");
-      var result = await authContext.AcquireTokenAsync("https://<your cluster DNS name>", applicationCredentials);
+      var authContext = new AuthenticationContext(
+        // Can also use tenant ID.
+        "https://login.microsoftonline.com/<your AAD tenant name>");
+      var applicationCredentials = new ClientCredential(
+        "<your application client ID>", 
+        "<your application key>");
+      var result = await authContext.AcquireTokenAsync(
+        "https://<your cluster DNS name>", 
+        applicationCredentials);
       return result.AccessToken;
     }
 
@@ -52,7 +58,9 @@ namespace Sample
       {
         connection.AccessToken = await ObtainToken();
         await connection.OpenAsync();
-        using (var command = new SqlCommand("<your T-SQL query>", connection))
+        using (var command = new SqlCommand(
+          "<your T-SQL query>", 
+          connection))
         {
           var reader = await command.ExecuteReaderAsync();
           /*
@@ -61,6 +69,47 @@ namespace Sample
         }
       }
     }
+  }
+}
+```
+
+### JDBC
+
+Microsoft JDBC driver can be used with AAD application authentication ADAL4j.
+
+```java
+import java.sql.*;
+import com.microsoft.sqlserver.jdbc.*;
+import com.microsoft.aad.adal4j.*;
+
+public class Sample {
+  public static void main(String[] args) throws Throwable {
+    ExecutorService service = Executors.newFixedThreadPool(1);
+    String url = "https://login.microsoftonline.com/"
+      // Can also use tenant name.
+      + "<your AAD tenant ID>" 
+      + "/oauth2/authorize";
+    AuthenticationContext authenticationContext = 
+      new AuthenticationContext(url, false, service);
+    ClientCredential  clientCredential = new ClientCredential(
+      "<your application client ID>", 
+      "<your application key>");
+    Future<AuthenticationResult> futureAuthenticationResult = 
+      authenticationContext.acquireToken(
+        "https://<your cluster DNS name>", 
+        clientCredential, 
+        null);
+    AuthenticationResult authenticationResult = futureAuthenticationResult.get();
+    SQLServerDataSource ds = new SQLServerDataSource();
+    ds.setServerName("<your cluster DNS name>");
+    ds.setDatabaseName("<your database name>");
+    ds.setAccessToken(authenticationResult.getAccessToken());
+    connection = ds.getConnection();
+    statement = connection.createStatement();
+    ResultSet rs = statement.executeQuery("<your T-SQL query>");
+    /*
+    Read query result.
+    */
   }
 }
 ```
