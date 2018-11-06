@@ -73,6 +73,7 @@ ms.date: 09/24/2018
 |[array_concat()](arrayconcatfunction.md)|Concatenates a number of dynamic arrays to a single array.|
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
 |[array_slice()](arrayslicefunction.md)|Extracts a slice of a dynamic array.|
+|[array_split()](arraysplitfunction.md)|Builds an array of arrays splitted from the input array.|
 |[pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[pack_all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
 |[pack_array()](packarrayfunction.md)|Packs all input values into a dynamic array.|
@@ -192,15 +193,15 @@ ms.date: 09/24/2018
 |[series_fill_linear()](series-fill-linearfunction.md)|Performs linear interpolation of missing values in a series.|
 |[series_fir()](series-firfunction.md)|Applies a Finite Impulse Response filter on a series.|
 |[series_fit_2lines()](series-fit-2linesfunction.md)|Applies two segments linear regression on a series, returning multiple columns.|
-|[series_fit_2lines-dynamic()](series-fit-2lines-dynamicfunction.md)|Applies two segments linear regression on a series, returning dynamic object.|
+|[series_fit_2lines_dynamic()](series-fit-2lines-dynamicfunction.md)|Applies two segments linear regression on a series, returning dynamic object.|
 |[series_fit_line()](series-fit-linefunction.md)|Applies linear regression on a series, returning multiple columns.|
-|[series_fit_line-dynamic()](series-fit-line-dynamicfunction.md)|Applies linear regression on a series, returning dynamic object.|
+|[series_fit_line_dynamic()](series-fit-line-dynamicfunction.md)|Applies linear regression on a series, returning dynamic object.|
 |[series_iir()](series-iirfunction.md)|Applies a Infinite Impulse Response filter on a series.|
 |[series_outliers()](series-outliersfunction.md)|Scores anomaly points in a series.|
 |[series_periods_detect()](series-periods-detectfunction.md)|Finds the most significant periods that exist in a time series.|
 |[series_periods_validate()](series-periods-validatefunction.md)|Checks whether a time series contains periodic patterns of given lengths.|
 |[series_stats()](series-statsfunction.md)|Returns statistics for a series in multiple columns.|
-|[series_stats-dynamic()](series-stats-dynamicfunction.md)|Returns statistics for a series in dynamic object.|
+|[series_stats_dynamic()](series-stats-dynamicfunction.md)|Returns statistics for a series in dynamic object.|
 
 ## String Functions
 
@@ -210,7 +211,7 @@ ms.date: 09/24/2018
 |[base64_encodestring()](base64encodestringfunction.md)|Encodes a string as base64 string.|
 |[countof()](cotfunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches do not.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
-|[extractall()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
+|[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
 |[extractjson()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
 |[indexof()](indexoffunction.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
 |[isempty()](isemptyfunction.md)|Returns true if the argument is an empty string or is null.|

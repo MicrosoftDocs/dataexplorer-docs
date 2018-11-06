@@ -1,6 +1,6 @@
 ---
-title: Kusto REST API Authentication - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto REST API Authentication in Azure Data Explorer.
+title: Authentication over HTTPS - Azure Data Explorer | Microsoft Docs
+description: This article describes Authentication over HTTPS in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
@@ -9,15 +9,39 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Kusto REST API Authentication
+# Authentication over HTTPS
+
+When using HTTPS the service supports the standard HTTP `Authorization` header
+for performing authentication.
+
+The supported HTTP authentication methods are:
+
+* **Azure Active Directory**, through the `bearer` method.
+
+When authenticating using Azure Active Directory, the `Authorization` header has
+the format:
+
+```txt
+Authorization: bearer TOKEN
+```
+
+Where `TOKEN` is the access token that the caller acquires by communicating with
+the Azure Active Directory service, with the following properties:
+
+* The resource is the service URI (e.g., `https://help.kusto.windows.net`).
+* The Azure Active Directory service endpoint is
+  `https://login.microsoftonline.com/TENANT/`.
+
+Where `TENANT` is the Azure Active Directory tenant ID or name. For example,
+services created under the Microsoft tenant can use
+`https://login.microsoftonline.com/microsoft.com/`. Alternatively, for user
+authentication only, the request can be made to
+`https://login.microsoftonline.com/common/` instead.
+
+> [!NOTE]
+> The Azure Active Directory service endpoint changes when running in national clouds.
 
 
 
-When working with the REST API it is the client responsibility to provide authentication evidence using the standard HTTP `Authorization` header.
-
-Kusto supports AAD authentication for users and applications.
-When authenticating via AAD, the authorization method is `Bearer` and the value is the token retrieved from the AAD service.
-The token request to AAD should request access for `https://<Your Kusto cluster URL>` resource, and the request should be made against the AAD endpoint at `https://login.microsoftonline.com/<your AAD tenant name or ID>/`, or, in case of user authentication, against `https://login.microsoftonline.com/common/`.
-
-For complete documentation on Kusto Authentication refer to [Kusto Authentication overview](../../management/access-control/index.md) and [Kusto Guide to AAD Authentication](../../management/access-control/how-to-authenticate-with-aad.md)
-
+For more details please see the [authentication overview](../../management/access-control/index.md)
+and [guide to Azure Active Directory authentication](../../management/access-control/how-to-authenticate-with-aad.md).

@@ -8,7 +8,6 @@
 ## [Mappings](mappings.md)
 ## [Functions](functions.md)
 
-
 # [Policies](policies.md)
 ## [Caching](cache-policy.md)
 ## [IngestionTime](ingestiontime-policy.md)
@@ -16,20 +15,16 @@
 ## [RowOrder](roworder-policy.md)
 ## [Update](update-policy.md)
 
-
 # [Security Roles](security-roles.md)
 
 # [Data Ingestion](data-ingestion/index.md)
-
-
-
-
-
-
+## [Ingest from storage](data-ingestion/ingest-from-storage.md)
+## [Ingest from query](data-ingestion/ingest-from-query.md)
+## [Inline ingestion](data-ingestion/ingest-inline.md)
 
 # [Data Export](data-export/index.md)
+## [To cloud storage](data-export/export-data-to-storage.md)
 ## [To a SQL table](data-export/export-data-to-sql.md)
-
 
 # [Database Cursors](databasecursor.md)
 
@@ -38,9 +33,7 @@
 ## [Journal](journal.md)
 ## [Queries](queries.md)
 ## [Commands](commands.md)
-
 ## [Ingestion Failures](ingestionfailures.md)
-
 
 # [Access Control](access-control/index.md)
 ## [Identities](access-control/principals-and-identity-providers.md)

@@ -1,6 +1,6 @@
 ---
-title: The Kusto REST API Request Object - Azure Data Explorer | Microsoft Docs
-description: This article describes The Kusto REST API Request Object in Azure Data Explorer.
+title: Query/management HTTP request - Azure Data Explorer | Microsoft Docs
+description: This article describes Query/management HTTP request in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
@@ -9,82 +9,118 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# The Kusto REST API Request Object
+# Query/management HTTP request
 
-## Verb and URI
+## Request verb and resource
 
-The REST API verb for admin commands is always `POST`, and the
-URI is `/v1/rest/mgmt`. For example:
+|Action    |HTTP verb|HTTP resource   |
+|----------|---------|----------------|
+|Query     |GET      |`/v1/rest/query`|
+|Query     |POST     |`/v1/rest/query`|
+|Query v2  |GET      |`/v2/rest/query`|
+|Query v2  |POST     |`/v2/rest/query`|
+|Management|POST     |`/v1/rest/mgmt` |
+
+For example, to send a control command ("management") to a service endpoint,
+use the following request line:
 
 ```
-POST https://help.kusto.windows.net/v1/rest/mgmt HTTP/1.1 
+POST https://help.kusto.windows.net/v1/rest/mgmt HTTP/1.1
 ```
 
-The REST API verb for queries is either `POST` or `GET`. The
-URI is `/v1/rest/query`. For example:
+(See below for the request headers and body to include.)
 
-```
-POST https://help.kusto.windows.net/v1/rest/query HTTP/1.1 
-```
+## Request headers
 
-If `GET` is used, the query parameters specify the values that
-appear in the `POST` body (`db`, `csl`, and `properties`) -- see
-below.
+The following table contains the common headers used to perform query and management
+operations.
 
-## Headers
+|Standard header  |Description                                                                                                             |
+|-----------------|------------------------------------------------------------------------------------------------------------------------|
+|`Accept`         |**Required**. Set this to `application/json`.                                                                           |
+|`Accept-Encoding`|**Optional**. Supported encodings are `gzip` and `deflate`.                                                             |
+|`Authorization`  |**Required**. See [authentication](./authentication.md).                                                                |
+|`Connection`     |**Optional**. It is recommended that `Keep-Alive` be enabled.                                                           |
+|`Content-Length` |**Optional**. It is recommended taht the request body length be specified when known.                                   |
+|`Content-Type`   |**Optional**. Set this to `application/json` with `charset=utf-8`.                                                      |
+|`Expect`         |**Optional**. Can be set to `100-Continue`.                                                                             |
+|`Host`           |**Required**. Set this to the fully-qualified domain name that the request was sent to (e.g., `help.kusto.windows.net`).|
 
-### Standard HTTP headers
+The following table contains the common custom headers used when performing query
+and management operations. Unless indicated otherwise, these headers are used
+for telemetry purposes only, and have no functionality impact.
 
-The following standard HTTP headers can be used.
-
-|Header           |Description                                                                                                                    |
-|-----------------|-------------------------------------------------------------------------------------------------------------------------------|
-|`Accept-Encoding`|Kusto currently supports `gzip` and `deflate`.                                                                                 |
-|`Authorization`  |Must be provided for requests to production clusters, according to the authentication methods supported by the cluster **(1)**.|
-|`Connection`     |It is recommended that `Keep-Alive` be enabled.                                                                                |
-|`Content-Length` |It is recommended that the request body length be provided when known.                                                         |
-|`Content-Type`   |Should be set to `application/json` with `charset=utf-8`.                                                                      |
-|`Expect`         |Can be set to `100-Continue`.                                                                                                  |
-|`Host`           |Should be set to the DNS name used when sending the request (e.g., `help.kusto.windows.net`).                                  |
+All headers are **optional**. It is **strongly-recommended** however that the
+`x-ms-client-request-id` custom header be specified. In some scenarios (e.g.,
+cancelling a running query) this header is **mandatory** as it is used to identify
+the request.
 
 
-**(1)** Use `bearer` (for AAD authentication).
+|Custom header           |Description                                                                                               |
+|------------------------|----------------------------------------------------------------------------------------------------------|
+|`x-ms-app`              |The (friendly) name of the application making the request.                                                |
+|`x-ms-user`             |The (friendly) name of the user making the request.                                                       |
+|`x-ms-user-id`          |Same as `x-ms-user`.                                                                                      |
+|`x-ms-client-request-id`|A unique identifier for the request.                                                                      |
+|`x-ms-client-version`   |The (friendly) version identifier for the client making the request.                                      |
+|`x-ms-readonly`         |If specified, forces the request to run in readonly mode (preventing it from making long-lasting changes).|
 
-### Extension HTTP headers
+## Request parameters
 
-The following non-standard HTTP optional headers can be used. Unless specified otherwise,
-all headers are used for **telemetry purposes only**, and have no impact on
-functionality.
+The following parameters can be passed in the request. They are encoded in the
+request as query parameters or part of the body, depending on whether GET or
+POST is used.
 
-|Header                  |Description                                                                                           |
-|------------------------|------------------------------------------------------------------------------------------------------|
-|`x-ms-app`              |A string identifying the application issuing the request.                                             |
-|`x-ms-user`             |A string identifying the interactive user.                                                            |
-|`x-ms-user-id`          |                                                                                                      |
-|`x-ms-client-request-id`|A string identifying this request. Can be used for correlating client and service activities. **(1)** |
-|`x-ms-client-version`   |A string identifying the version of the client library making the requests.                           |
-|`x-ms-activity-id`      ||
-|`x-ms-activitycontext`  ||
+* `csl`: This is a **mandatory** parameter. It holds the text of the query
+  or control command to execute.
 
-**(1)**: This header is mandatory if the client wishes to refer to the request
-in a future request. For example, if the client may want to be able to cancel
-the request later on.
+* `db`: This is an **optional** parameter for some control commands, and **mandatory**
+  parameter for other control commands and all queries. It provides the name
+  of the "database in scope" &emdash; the database that is the target of the
+  query or control command.
+
+`properties`: This is an **optional** parameter. It provides various
+  client request properties that modify how the request is processed and its
+  results returned back.
+
+## GET query parameters
+
+When the GET verb is used, the query parameters of the request specify the
+request parameters noted above.
 
 ## Body
 
-The request body for `POST` requests is a single JSON document
-that encodes the database that the request is directed to (`db`), the
-query or command (`csl`), and the client request properties
-(`properties`).
+When the POST verb is used, the body of the request is a single JSON document
+encoded in UTF-8 that provides the values of the request parameters noted
+above.
 
+## Examples
 
-The following examples shows the body of a query that is targetted at the
-`help.kusto.windows.net` cluster:
+The following example shows the HTTP POST request for a query:
+
+```txt
+POST https://help.kusto.windows.net/v2/rest/query HTTP/1.1
+```
+
+Request headers:
+
+```txt
+Accept: application/json
+Authorization: Bearer ...AzureActiveDirectoryAccessToken...
+Accept-Encoding: deflate
+Content-Type: application/json; charset=utf-8
+Host: help.kusto.windows.net
+x-ms-client-request-id: MyApp.Query;e9f884e4-90f0-404a-8e8b-01d883023bf1
+x-ms-user-id: MIDDLEEAST\zivc
+x-ms-app: MyApp
+```
+
+Request body (newlines introduced for clarity; they are not needed):
 
 ```json
 {
   "db":"Samples",
-  "properties":"{\"Options\":{\"queryconsistency\":\"weakconsistency\"}}",
-  "csl":"StormEvents | count"
+  "csl":"print Test=\"Hello, World!\"",
+  "properties":"{\"Options\":{\"queryconsistency\":\"strongconsistency\"},\"Parameters\":{},\"ClientRequestId\":\"MyApp.Query;e9f884e4-90f0-404a-8e8b-01d883023bf1\"}"
 }
 ```

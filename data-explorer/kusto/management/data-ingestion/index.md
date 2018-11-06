@@ -11,249 +11,225 @@ ms.date: 09/24/2018
 ---
 # Data ingestion
 
-Data ingestion is the process by which data records from one or more data sources
-are appended to a Kusto table.
+Data ingestion is the process by which data gets added to a table
+and made available for query.
+Depending on the existence of the table beforehand, the process requires
+[database admin, database ingestor, database user, or table admin permissions](../access-control/role-based-authorization.md).
 
-This page discusses data ingestion commands:  
-The `.ingest` control command
-(which has several variants, as discussed below), as well as the `.set`,
-`.append`, and `.set-or-append` commands. There are other options for data ingestion,
-such as data ingestion through a dedicated REST API (streaming ingestion)
-and using external tools.
+The data ingestion process consists of several steps:
+
+1. Retrieving the data from the data source.
+2. Parsing and validating the data.
+3. Matching the schema of the data to the schema of the target Kusto table,
+   or creating the target table if it doesn't already exists.
+4. Organizing the data in columns.
+5. Indexing the data.
+6. Encoding and compressing the data.
+7. Persisting the resulting Kusto storage artifacts in storage.
+8. Executing all relevant update policies, if any.
+9. "Committing" the data ingest, thus making it available for query.
+
+> [!NOTE]
+> Some of the steps above may be skipped, depending on the specific scenario.
+> For example, data ingested through the streaming ingestion endpoint skips steps
+> 4, 5, 6, and 9 above; these are done in the background as the data is "groomed".
+> As another example, if the data source is the results of a Kusto query to the same
+> cluster, there's no need to parse and validate the data.)
+
+> [!WARNING]
+> Data ingested into a table in Kusto is subject to the table's effective **retention policy**.
+> Unless set on a table explicitly, the effective retention policy is derived from
+> the database's retention policy. Therefore, users ingesting data into Kusto should make sure
+> that the database's retention policy is appropriate for their needs, and explicitly
+> override it at the table level if not. Failure to do so might mean "silent" deletion of
+> their data due to the database's retention policy. See [retention policy](https://kusto.azurewebsites.net/docs/concepts/retentionpolicy.html)
+> for details.
 
 
 
-## .ingest
+## Ingestion methods
 
-Ingestion is done by sending an `.ingest` command to Kusto. There are two main
-ingestion modes for this command:
-* *Pull mode*, in which Kusto pulls the data from the external source
-  (for example, when ingesting data stored as files in Azure Blob Storage),
-  This is the more-common mode of ingestion.
-* *Push mode*, in which the data is "pushed" as part of the `.ingest` command
-  itself into Kusto. This is primarily used by manual tests and scripts. 
+There are a number of methods by which data can be ingested, each with
+its own characteristics:
 
-**Syntax**
+1. **Inline ingestion (push)**: A control command ([.ingest inline](./ingest-inline.md))
+   is sent to the engine, with the data to be ingested being a part of the command
+   text itself.
+   This method is primarily intended for ad-hoc testing
+   purposes, and should not be used for production purposes.
 
-* `.ingest` [`async`] `into` 'table' *TableName* *SourceDataLocator* [`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
-* `.ingest` `inline` `into` 'table' *TableName* `[` *Data* `]` ...
-* `.ingest` [`compressed`] `csv` `stream` `into` 'table' *TableName* `[` *Data* `]` ...
+2. **Ingest from query**: A control command ([.set, .append, .set-or-append, or .set-or-replace](./ingest-from-query.md))
+   is sent to the engine, with the data specified indirectly as the results of a query
+   or a command.
+   This method is useful for generating reporting tables out of raw data tables,
+   or for creating small temporary tables for further analysis.
 
-The first form indicates a pull-mode ingestion. The second and third forms indicate a
-push-mode ingestion.
+3. **Ingest from storage (pull)**: A control command ([.ingest into](./ingest-from-storage.md))
+   is sent to the engine, with the data stored in some external storage (e.g., Azure
+   Blob Storage) accessible by the engine and pointed-to by the command.
+   This method allows efficient bulk ingestion of data, but puts some burden on
+   the client performing the ingestion to not overtax the cluster with concurrent
+   ingeations (or risk consuming all cluster resources by data ingestion, reducing
+   the performance of queries.
+
+4. **Queued ingestion**: Data is uploaded to external storage (e.g., Azure Blob
+   Storage) and then a notification is sent to a queue (e.g., Azure Queue, or Event Hub).
+   This is the primary method used in production, as it has very high availability,
+   doesn't require the client to perform capacity management itself, and handles bulk
+   appends well. This is sometimes called "native ingestion".
+
+
+
+|Method             |Latency                 |Production|Bulk|Availability|Synchronicity|
+|-------------------|------------------------|----------|----|------------|-------------|
+|Inline ingestion   |Seconds + ingest time   |No        |No  |Kusto Engine|Synchronous  |
+|Ingest from query  |Query time + ingest time|Yes       |Yes |Kusto Engine|Synchronous  |
+|Ingest from storage|Seconds + ingest time   |Yes       |Yes |Kusto Engine|Both         |
+|Queued ingestion   |Minutes                 |Yes       |Yes |Storage     |Asynchronous |
 
 ## Ingestion properties
 
-The `.ingest` command accepts zero or more ingestion properties through the
+Ingestion commands may zero or more ingestion properties through the
 use of the `with` keyword. The supported properties are:  
 
-|Property name      |Property value                                          |Description| 
-|----------------------|--------------------------------------------------------|-----------|
-|`format`              |Data format                                             |Indicates the data format: `csv`, `tsv`, `json`, etc.|
-|`zipPattern`          |Regular-expression                                      |Indicates the names of files/blobs in ZIP archive format to ingest data from.| 
-|`csvMapping`          |Json serialization of `List<Dictionary<string, string>>`|[CSV mapping](../mappings.md#csv-mapping)|
-|`csvMappingReference` |A reference to a csv mapping stored on the table		|[CSV mapping](../mappings.md#csv-mapping)|
-|`jsonMapping`         |Json serialization of `List<Dictionary<string, string>>`|[JSON mapping](../mappings.md#json-mapping)| 
-|`jsonMappingReference`|A reference to a json mapping stored on the table 		|[JSON mapping](../mappings.md#json-mapping)| 
-|`avroMapping`         |Json serialization of `List<Dictionary<string, string>>`|[Avro mapping](../mappings.md#avro-mapping)| 
-|`avroMappingReference`|A reference to a avro mapping stored on the table 		|[Avro mapping](../mappings.md#avro-mapping)| 
-|`ValidationPolicy`    |`{"ValidationOptions":`*opt*, <br/>`"ValidationImplications":`*implic*`}` |*opt*=<br/>0 = no validation<br/>1 = verify all rows in the csv have the same number of columns <br/>2 = [reserved for internal use] ignores fields that are not enclosed properly with double quotes <br/>*implic* =<br/> 0 = fail<br/>1 = ignore<br/>If not specified, the default validation policy is: {"ValidationOptions":1, "ValidationImplications":1}
-|`tags`                |Json serialization of `HashSet<string>`                 |Short strings which can be used to describe and identify the extent or it's data.|
-|`ingestIfNotExists`   |Boolean                                                 |Before ingesting data Kusto will check if one of the extents in the table contains "ingest-by:" match to one of the given tags.  If so the ingest operation will return without ingesting the data.|
-|`creationTime`        |Date/time value in ISO8601 format as string             |Force a specific value for the ingest data's creation time indicator (used for retention)| 
-|`ignoreFirstRecord`   |Boolean                                                 |When set to `true`, ignores first record in data represented in tabular format. Used in order to avoid ingestion of headers as part of data.|
+* `avroMapping`, `csvMapping`, `jsonMapping`: A string value that indicates
+  how to map data from the source file to the actual columns in the table.
+  See [data mappings](../mappings.md).
+
+* `avroMappingReference`, `csvMappingReference`, `jsonMappingReference`:
+  A string value that indicates how to map data from the source file to the
+  actual columns in the table, through a named mapping policy object.
+  See [data mappings](../mappings.md).
+
+* `creationTime`: The datetime value (formatted as a ISO8601 string) to use
+  as the creation time of the ingested data extents. If unspecified, the current
+  value (`now()`) will be used. Overriding the default is useful when ingesting
+  older data, so that retention policy will be applied correctly.
+  For example: `with (creationTime="2017-02-13T11:09:36.7992775Z")`.
+
+* `extend_schema`: A Boolean value that, if specified, instructs the command
+  to extend the schema of the table (defaults to `false`). Note that the only
+  allowed schema extensions have additional columns added to the table at the
+  end.<br>
+  For example, if the original table schema is `(a:string, b:int)` then a
+  valid schema extension would be `(a:string, b:int, c:datetime, d:string)`,
+  but `(a:string, c:datetime)` would not.
+
+* `folder`: For [ingest-from-query](./ingest-from-query.md) commands,
+  the folder to assign to the table (if the table already exist this will
+  override the table's folder).
+  For example: `with (folder="Tables/Temporary")`.
+
+* `format`: The data format (see below for supported values and their meaning).
+  For example: `with (format="csv")`.
+
+* `ingestIfNotExists`: A string value that, if specified, prevents ingestion
+  from succeeding if the table already has data tagged an `ingest-by:` tag
+  with the same value. This can be used to ensure idempotent data ingestion;
+  see [ingest-by: tags](../extents-overview.md#ingest-by-extent-tags).
+  For example, the properties `with (ingestIfNotExists="Part0001", tags="['ingest-by:Part0001']")`
+  indicate that if data with the tag `ingest-by:Part0001` already exists, then
+  we should not complete the current ingestion. If it doesn't already exist,
+  then this new ingestion should have this tag set (in case a future ingestion
+  attempts to ingest the same data again in the future.)
+
+* `ignoreFirstRecord`: A Boolean value that, if set to `true`, indicates that
+  ingestion should ignore the first record of every file. This is useful for
+  files formatted in `csv` (and similar formats) if the first record in the file
+  is a header record specifying the column names. By default `false` is assumed.
+  For example: `with (ignoreFirstRecord=false)`.
+
+* `persistDetails`: A Boolean value that, if specified, indicates that the command
+  should persist the detailed results (even if successful) so that the
+  (../operations.md#show-operation-details) command could retrieve them. Defaults
+  to `false`.
+  For example: `with (persistDetails=true)`.
+
+* `policy_ingestiontime`: A Boolean value that, if specified, describes whether
+  to enable the [Ingestion Time Policy](../../concepts/ingestiontimepolicy.md)
+  on a table that is created by this command. (The default is `true`.)
+  For example: `with (policy_ingestiontime=false)`.
+
+* `recreate_schema`: A Boolean value that, if specified, desceribes whether the
+  command may recreate the schema of the table. This option applies only
+  to the `.set-or-replace` command. This takes precedence over the `extend_schema`
+  option if both are set.
+  For example, `with (recreate_schema=true)`.
+
+* `tags`: A list of [tags](../extents-overview.md#extent-tagging) to associate
+  with the ingested data, formatted as a JSON string.
+  For example: `with (tags="['Tag1', 'Tag2']")`.
+
+* `validationPolicy`: A JSON string that indicates what validations to run
+  during ingestion. See below for an explanation of the different options.
+  For example: `with (validationPolicy='{"ValidationOptions":1, "ValidationImplications":1}')`
+  (this is actually the default policy).
+
+* `zipPattern`: When ingesting data from storage that has a ZIP archive,
+  a string value indicating the regular expression to use when selecting which
+  files in the ZIP archive to ingest. All other files in the archive will be
+  ignored.
+  For example: `with (zipPattern="*.csv")`.
+
+<!-- TODO: Fill-in the following
+The following table shows which property applies to each method of ingestion.
+
+|Property|.set|.append|.set-or-append|.set-or-replace|.ingest inline|.ingest (pull)|
+
+-->
 
 ## Supported data formats
 
-- CSV - Comma-separated values (`format` = "csv")
-- TSV - Tab-separated values (`format` = "tsv")   
-- PSV - Pipe (vertical bar) separated values (`format` = "psv")
-- SCSV - Semicolon-separated values (used by Azure Storage Diagnostics) (`format` is in ("scsv","log","storageanalyticslogformat"))
-- SOHsv - SOH (ASCII 1) separated values (used by Hive on HDInsight) (`format` = "sohsv")
-- JSON - JavaScript Object Notation. See [Json Mapping](../mappings.md#json-mapping) below. (`format` = "json")
-- AVRO - Avro (binary data serialization). Supported codecs: `null`, `deflate`. See [Avro Mapping](../mappings.md#avro-mapping) below. (`format` = "avro") 
+For all ingestion methods other than ingest-from-query, the data must be
+formatted in one of the supported data formats:
 
-## Pull-mode ingestion
+|Format     |Extension|Description|
+|-----------|---------|-----------|
+|`csv`      |.csv     |Comma-separated values. See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt)|
+|`tsv`      |.tsv     |Tab-separated values.|
+|`psv`      |.psv     |Pipe-separated values. (Pipe is the vertical bar character.)|
+|`sohv`     |.sohv    |SOH-separated values. (SOH is ASCII codepoint 1; this format is used by Hive on HDInsight.)|
+|`scsv`     |.scsv    |Semicolon-separated values.(This format is unique to Azure Storage Diagnostics logs.)|
+|`json`     |.json    |Text file with multiple lines, each of which is a JSON document.|
+|`multijson`|.multijson|Text file with a JSON array of property bags (each is a record), or one or more property bags with whitespace-separation.|
+|`avro`     |.avro    |Binary file with multiple records, each of which is an Avro record. Supported codecs: `null`, `deflate`. |
+|`txt`      |.txt     |Text file (every line is a single column).|
 
-The `.ingest into` command appends data to an existing table in the database in context.
-The table's schema is not modified on ingestion (columns that exist in the data but not
-in the table are ignored), and existing table data is unaffected. The ingested data's schema
-is adjusted to match the table schema by a process called "mapping".
+Blobs and files can be optionally compressed through any of the following
+compression algorithms:
 
-**Syntax**
+|Compression|Extension|
+|-----------|---------|
+|GZip       |.gz      |
+|Zip        |.zip     |
 
-`.ingest` [`async`] `into` *TableName* *SourceDataReference* [`with` `(` *PropertyName* `=` *PropertyValue*` [`,` ...] `)`]
+The name of the blob or file should indicate compression by appending the extension
+noted above to the name of the blob or file. Thus, `MyData.csv.zip` indicates
+a blob or a file whose format is CSV and that has been compressed via Zip
+(either as an archive or as a single file), and `MyData.csv.gz` indicates
+a blob or a file whose format is CSV and that has been compressed via GZip.
 
-`.ingest` [`async`] `into` *TableName* `(` *SourceDataReference* [`,` ...] `)` [`with` `(` *PropertyName* `=` *PropertyValue*` [`,` ...] `)`]
-
-* `async`: If specified, instructs that the command return immediately and do its processing in the background.
-  The results of the command then in clude an OperationId that can be used in a `.show operation` command
-  to get the completion status.
-
-* *TableName*: The name of an existing table in the database in context to which data is appended.
-
-* *SourceDataPointer*: A path to persistent storage (such as Azure Blob Storage) that holds
-  the data, including credentials needed to read it. See [persistent storage connection strings](../../api/connection-strings/storage.md).
+Blob or file names that do not include the format extension but just compression
+(for example, `MyData.zip`) are also supported, but in this case the file format
+must be specified as an ingestion property as it cannot be inferred.
 
 > [!NOTE]
-> It is strongly recommended to use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals)
-> for the *SourceDataPointer* that includes actual credentials in it. The service will be sure to scrub credentials
-> in its internal traces, error messages, etc.
+> Some compression formats keep track of the original file extension as part
+> of the compressed stream. This extension is generally ignored for the purpose
+> of determining the file format. If this can't be determined from the (compressed)
+> blob or file name, it must be specified through the `format` ingestion property.
 
-* *PropertyName*, *PropertyValue*: Can be used to set additional ingestion properties, such as `format`
-  (used to indicate the data format of the data being ingested; for example, `.csv`)
+## Validation policy during ingestion
 
+When ingesting from storage, the source data gets validates as part of parsing.
+The validation policy indicates how to react to parsing failures. It consists
+of two properties:
 
-## Ingest inline
+* `ValidationOptions`: Here, `0` means that no validation should be performed,
+  `1` validates that all records have the same number of fields (useful for
+  CSV files and similar), and `2` indicates to ignore fields that are not
+  double-quoted.
 
-The .ingest command can take the data to be ingested as part of the command text itself. 
-This is appropriate only for small amounts of data, but is very useful for testing purposes and when coming up with your Blob Storage account is impossible or hard. 
-The data being specified in the command must be written as CSV. Optionally, it can be compressed (using ZIP) and then base-64-encoded to reduce its size.
-No ingestion properties are supported by this command. 
-
-```kusto
-.ingest inline into table <tableName> '[' <record1> ']' '[' <record2> ']'
- 
-.ingest compressed csv stream into table <tableName> '[' <encoded stream> ']'
-```
-
-**Example**
-
-Ingest two records into a table called TABLE that has two columns, 'str' (string) and 'num' (int): 
-
-```kusto
-.ingest inline into table TABLE [This is an unquoted string,123]["This is a string with ""quotes"", and commas",321]
-```
-
-Note that the general rules for CSV apply. Fields that include commas and double-quotes must be double-quoted in their entirety, and any embedded double-quote must be doubled. Adding strings with newlines is not supported. 
-
-It is possible to generate inline ingests commands using the Kusto.Data client library. (Note that compression does allow one to embed newlines in quoted fields) 
-
-    Kusto.Data.Common.CslCommandGenerator.GenerateTableIngestPushCommand(tableName, compressed: true, csvData: csvStream);
-
-## .set, .append, .set-or-append, .set-or-replace
-
-`.set` creates a new table and stores in it the results of a data query command, metadata query command, or a metadata control command, will fail if the table already exists.
- 
-`.append` adds the data to the existing table.
-
-`.set-or-append` adds the data to the table if it exists, or creates it if doesn't exist.
-
-`.set-or-replace` replaces the data of the table if it exists (drops the existing shards of the data), or creates it if doesn't exist. 
-Will preserve the schema of the table unless extend_schema or recreate_schema parameters are set to true. Schema change is not performed in the same transaction with the data replace.
-So, in case the data ingestion fails for some reason, the schema change still will be applied.
-
-**Notes**
-- Refrain from storing huge amounts of data in a table using a single invocation of either of these commands.
-  - When data size surpasses a few GBs, it's recommended that you split the commands to multiple ones, each covering
-    a different subset of the source data.
-  - The latter could be achieved, for example, by using [extent-id()](../../query/extentidfunction.md) 
-    and/or [hash()](../../query/hashfunction.md), and/or any other sensible filtering, in the query 
-    part of your command.
-- Refrain from running a large number of either of these commands concurrently against the same cluster.
-  - Limit the concurrency to a few command invocations at any a given moment.  
-- Test the query part of your command before invoking it as part of the command, To verify that it both returns the data and schema
-  as you expect, as well as that it returns within a reasonable time period.
-- The schema of the query result should fit exactly the target table schema (if the table exists) in terms of the order and the types of the columns.
-The column names in the two schemas don't have to fit and there is no automatic column mapping based on their names.
-Tips: You can use [getschema](../../query/getschemaoperator.md) operator on the target table and the query to compare the schemas. You can use project / project-away commands to get the desired target schema. 
- 
-**Syntax** 
- 
-`.set` [`async`] *TableName* [`with` `(`*property_name* `=` *value*`,`...`)`] `<|` *QueryOrCommand*
-
-`.append` [`async`] *TableName* [`with` `(`*property_name* `=` *value*`,`...`)`] `<|` *QueryOrCommand*
-
-`.set-or-append` [`async`] *TableName* [`with` `(`*property_name* `=` *value*`,`...`)`] `<|` *QueryOrCommand*
-
-`.set-or-replace` [`async`] *TableName* [`with` `(`*property_name* `=` *value*`,`...`)`] `<|` *QueryOrCommand*
-
-**Properties** 
-
-|Property |Type |Description|Example  
-|--------|-----------|--------|-------
-|`TableName`  |`string`  |The name of the table into which data is added. The table must not exist prior to running the `.set` command, and must exist prior to the `.append` command.|
-|`QueryOrCommand`  |`string`  |The data query, metadata query, or metadata control command to run. <br>* *Note*: When using control commands, only `.show` control commands are allowed.|
-|`async`  |`bool`  |Specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned, and the operation's status can be monitored using the [.show operations](../operations.md#show-operations) command).|
-|`tags`  |`string`  |Optional extent tags to use with the extent/s being created.|`tags='["Tag1","Tag2"]'`|
-|`creationTime`  |`DateTime`  |Optional DateTime value in ISO8601 format as string, which can be used to force a specific value for the ingested data's creation time indicator (used for retention).| `creationTime='2017-02-13T11:09:36.7992775Z'`|
-|`ingestIfNotExists`  |`string`  |Optional 'ingestIfNotExists' values to use with the extent being created - allows preventing data from being ingested if there's already an extent with this specific `ingest-by:` tag in the target table (see: [Extent Tagging](../extents-overview.md#extent-tagging)). | `ingestIfNotExists='["Tag1", "Tag2"]'`|
-|`folder`  |`string`  |Specifies the folder name to set for the table.<br>* For an `.append` or `.set-or-append` command that doesn't create the table, the current folder name gets overridden. |`folder='MyFolder'`|
-|`policy_ingestiontime`|`bool`  |Specifies a value for the table's [Ingestion Time Policy](../../concepts/ingestiontimepolicy.md), that should be set as part of the execution of a command which creates a new table (if not specified, policy is set to true by default). <br> * This won't have an effect for commands which are executed against already existing tables. | `policy_ingestiontime=false`|
-|`extend_schema`  |`bool`  |Specifies whether or not the command could extend the schema of the target table (defaults to `false`). <br>* Allowed schema changes are only ones which **add** new column(s) at the **end** of the existing schema. <br> Examples: <br>  - Having *Original table schema* = `(a:string, b:int)` and *Result table schema* = `(a:string, b:int, c:datetime, d:string)` is **valid** (as columns `c` and `d` are added at the end). <br> - Having *Original table schema* = `(a:string, b:int)` and *Result table schema* = `(a:string, c:datetime, d:string)` is **not valid** (as column `b` is removed). | `extend_schema=true`|
-|`recreate_schema`|`bool`  |Specifies whether or not the command could recreate the schema of the target table (defaults to `false`). Applicable only for set-or-replace command. <br> * Any schema changes are allowed with this option. The schema changes are not transactional with the data ingestion. <br> If both options extend_schema and recreate_schema are set, extend_schema option is ignored.|  `recreate_schema=true`|
-|`persistDetails`|`bool`  |Indicates that the command should persist its results. Defaults to `false`. If turned on, results are persisted and can be retrieved when the operation is complete using the [show operation details](../operations.md#show-operation-details) command. |  `persistDetails=true`|
- 
-**Examples** 
-
-Create a new table called "RecentErrors" in the current database that has the same schema as "LogsTable" and holds all the error records of the last hour:
-
-```kusto
-.set RecentErrors <| 
-   LogsTable
-   | where Level == "Error" and Timestamp > now() - time(1h)
-```
-
-Create a new table called "OldExtents" in the current database that has a single column ("ExtentId") 
-and holds the extent IDs of all extents in the database that have been created more than 30 days ago,
-based on an existing table named "MyExtents":
-
-```kusto
-.set async OldExtents <| 
-   MyExtents 
-   | where CreatedOn < now() - time(30d) 
-   | project ExtentId 	
-```
-
-Append data to an existing table called "OldExtents" in the current database that has a single column ("ExtentId") 
-and holds the extent IDs of all extents in the database that have been created more than 30 days ago,
-while tagging the new extent with tags `tagA` and `tagB`, based on an existing table named "MyExtents":
-
-```kusto
-.append OldExtents with(tags='["TagA","TagB"]') <| 
-   MyExtents 
-   | where CreatedOn < now() - time(30d) 
-   | project ExtentId 	
-```
- 
-Append data to the "OldExtents" table in the current database (or create the table if it doesn't already exist), 
-while tagging the new extent with `ingest-by:myTag`. Do so only if the table doesn't already contain an extent 
-tagged with `ingest-by:myTag`, based on an existing table named "MyExtents":
-
-```kusto
-.set-or-append async OldExtents with(tags='["ingest-by:myTag"]', ingestIfNotExists='["myTag"]') <| 
-   MyExtents 
-   | where CreatedOn < now() - time(30d) 
-   | project ExtentId 	
-```
-
-Replace the data in the "OldExtents" table in the current database (or create the table if it doesn't already exist), 
-while tagging the new extent with `ingest-by:myTag`.
-
-```kusto
-.set-or-replace async OldExtents with(tags='["ingest-by:myTag"]', ingestIfNotExists='["myTag"]') <| 
-   MyExtents 
-   | where CreatedOn < now() - time(30d) 
-   | project ExtentId 	
-```
-
-Append data to the "OldExtents" table in the current database, while setting the created extent(s) creation time
-to a specific datetime in the past:
-
-```kusto
-.append async OldExtents with(creationTime='2017-02-13T11:09:36.7992775Z') <| 
-   MyExtents 
-   | where CreatedOn < now() - time(30d) 
-   | project ExtentId 	
-```
-
-**Return output**
- 
-Returns information on the extent/s created as a result of the `.set` or `.append` command.
-
-**Example output**
-
-|ExtentId |OriginalSize |ExtentSize |CompressedSize |IndexSize |RowCount | 
-|--|--|--|--|--|--|
-|23a05ed6-376d-4119-b1fc-6493bcb05563 |1291 |5882 |1568 |4314 |10 |
-
+* `ValidationImplications`: `0` indicates that validation failures should fail
+  the whole ingestion,
+  and `1` indicates that validation failures should be ignored.

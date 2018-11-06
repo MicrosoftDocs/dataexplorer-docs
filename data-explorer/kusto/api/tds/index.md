@@ -27,8 +27,8 @@ use Kusto from some well-known clients using MS-TDS/T-SQL.
 
 See [MS-TDS with Azure Active Directory](./aad.md) for more details on using AAD via TDS for connecting to Kusto.
 
-See [CSL over TDS](./tdscsl.md) for
-information about executing native CSL queries via TDS endpoint. 
+See [KQL over TDS](./tdskql.md) for
+information about executing native KQL queries via TDS endpoint. 
 
 Finally, see [this](./sqlknownissues.md) for some of the main differences between SQL Server's
 implementation of T-SQL and Kusto.

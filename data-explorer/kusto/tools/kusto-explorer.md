@@ -601,6 +601,12 @@ In some cases you might need to completely reset Kusto.Explorer. The following p
 
 3. Delete the folder `%APPDATA%\Kusto`. (NOTE: This removes the Kusto.Explorer token cache; you will need to re-authenticate to all cluster.)
 
+It is also possible to "go back" to a specific version of Kusto.Explorer:
+
+1. Run `appwiz.cpl`
+2. Select `Kusto.Explorer` and hit `Uninstall/Change`
+3. Select `Restore the application to its previous state`
+
 ## Troubleshooting
 
 ### Kusto.Explorer fails to start

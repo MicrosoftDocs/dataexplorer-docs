@@ -35,3 +35,6 @@ let m = materialize(StormEvents | summarize n=count() by State);
 m | where n > 2000;
 m | where n < 10
 ```
+
+Notes:
+* Prefer batching and [`materialize`](materializefunction.md) over using the [fork operator](forkoperator.md).

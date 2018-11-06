@@ -58,9 +58,9 @@ to overall better performance of the operation.
 Update policies take effect when data is ingested/moved to (extents are created in) a table using
 any of the following commands:
 
-- [.ingest (pull)](../management/data-ingestion/index.md#pull-mode-ingestion)
-- [.ingest (inline)](../management/data-ingestion/index.md#ingest-inline)
-- [.set/.append](../management/data-ingestion/index.md#set-append-set-or-append-set-or-replace)
+- [.ingest (pull)](../management/data-ingestion/ingest-from-storage.md)
+- [.ingest (inline)](../management/data-ingestion/ingest-inline.md)
+- [.set/.append/.set-or-append/.set-or-replace](../management/data-ingestion/ingest-from-query.md)
 - [.move extents](../management/extents-commands.md#move-extents)
 - [.replace extents](../management/extents-commands.md#replace-extents)
 
