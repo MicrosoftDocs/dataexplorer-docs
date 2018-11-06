@@ -16,7 +16,7 @@ ms.date: 09/24/2018
 Change the name of an existing column.
 
 ```kusto
-.rename column [database_name.table_name.old_column_name] to [new_column_name]
+.rename column ['database_name'].['table_name'].['old_column_name'] to ['new_column_name']
 ```
 
 ## rename columns
@@ -24,7 +24,7 @@ Change the name of an existing column.
 Currently swaps names of two columns.
 
 ```kusto
-.rename columns column1_name = [database_name.table_name.column2_name], column2_name = [database_name.table_name.column1_name]
+.rename columns column1_name = ['database_name'].['table_name'].['column2_name'], column2_name = ['database_name'].['table_name.column1_name']
 
 ```
 
@@ -33,7 +33,7 @@ Currently swaps names of two columns.
 Modifies the data type of a given column. 
 
 ```kusto
-.alter column [qualified_existing_column_name] type=[new_column_type]  
+.alter column ['qualified_existing_column_name'] type=[new_column_type]  
 ```
 
 > Any existing data in the column which is not of the new data type will be ignored in future queries, and assumed to be null. A future command to "re-set" the column type to the original type will not regain that data. 
@@ -46,7 +46,7 @@ Modifies the data type of a given column.
 **Example** 
 
 ```kusto
-.alter column Table.ColumnX type=string 
+.alter column ['Table'].['ColumnX'] type=string 
 ```
 
 **Changing column type without loosing the data**
@@ -67,7 +67,7 @@ When the command completes, the new data is flowing to `T1` that is now typed co
 ## drop column
 
 ```kusto
-.drop column [Table].[Column]
+.drop column ['Table'].['Column']
 ```
 
 Removes a column.
@@ -75,7 +75,7 @@ Removes a column.
 ## drop table columns
 
 ```kusto
-.drop table [Table] columns ([Column1], [Column2])
+.drop table ['Table'] columns (['Column1'], ['Column2'])
 ```
 
 Removes columns from a table.

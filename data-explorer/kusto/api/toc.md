@@ -6,11 +6,10 @@
 
 # [REST API](rest/index.md)
 ## [Authentication](rest/authentication.md)
-## [HTTP Request](rest/request.md)
-## [HTTP Response](rest/response.md)
-## [HTTP Response (V2)](rest/response2.md)
+## [Query/management HTTP request](rest/request.md)
+## [Query/management HTTP response](rest/response.md)
+## [Query v2 HTTP response](rest/response2.md)
 ## [UI (Deep Links)](rest/deeplink.md)
-## [Ping](rest/ping.md)
 
 # [MS-TDS](tds/index.md)
 ## [T-SQL](tds/t-sql.md)

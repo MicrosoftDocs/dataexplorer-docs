@@ -60,7 +60,7 @@ any of the following commands:
 
 - [.ingest (pull)](../management/data-ingestion/ingest-from-storage.md)
 - [.ingest (inline)](../management/data-ingestion/ingest-inline.md)
-- [.set/.append](../management/data-ingestion/index.md#set-append-set-or-append-set-or-replace)
+- [.set/.append/.set-or-append/.set-or-replace](../management/data-ingestion/ingest-from-query.md)
 - [.move extents](../management/extents-commands.md#move-extents)
 - [.replace extents](../management/extents-commands.md#replace-extents)
 

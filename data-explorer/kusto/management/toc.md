@@ -19,6 +19,7 @@
 
 # [Data Ingestion](data-ingestion/index.md)
 ## [Ingest from storage](data-ingestion/ingest-from-storage.md)
+## [Ingest from query](data-ingestion/ingest-from-query.md)
 ## [Inline ingestion](data-ingestion/ingest-inline.md)
 
 # [Data Export](data-export/index.md)

@@ -73,6 +73,7 @@ ms.date: 09/24/2018
 |[array_concat()](arrayconcatfunction.md)|Concatenates a number of dynamic arrays to a single array.|
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
 |[array_slice()](arrayslicefunction.md)|Extracts a slice of a dynamic array.|
+|[array_split()](arraysplitfunction.md)|Builds an array of arrays splitted from the input array.|
 |[pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[pack_all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
 |[pack_array()](packarrayfunction.md)|Packs all input values into a dynamic array.|
@@ -80,7 +81,6 @@ ms.date: 09/24/2018
 |[treepath()](treepathfunction.md)|Enumerates all the path expressions that identify leaves in a dynamic object.|
 |[zip()](zipfunction.md)|The zip function accepts any number of dynamic arrays, and returns an array whose elements are each an array holding the elements of the input arrays of the same index.|
 
-<!-- |[array_split()](arraysplitfunction.md)|Builds an array of arrays splitted from the input array.|-->
 
 ## Window Scalar Functions
 
@@ -211,7 +211,7 @@ ms.date: 09/24/2018
 |[base64_encodestring()](base64encodestringfunction.md)|Encodes a string as base64 string.|
 |[countof()](cotfunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches do not.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
-|[extractall()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
+|[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
 |[extractjson()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
 |[indexof()](indexoffunction.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
 |[isempty()](isemptyfunction.md)|Returns true if the argument is an empty string or is null.|

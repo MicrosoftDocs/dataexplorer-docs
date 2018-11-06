@@ -16,7 +16,7 @@ by using a regular expression
 
 - [countof()](countoffunction.md)
 - [extract()](extractfunction.md)
-- [extractall()](extractallfunction.md)
+- [extract_all()](extractallfunction.md)
 - [matches regex](datatypes-string-operators.md)
 - [parse operator](parseoperator.md)
 - [replace()](replacefunction.md)

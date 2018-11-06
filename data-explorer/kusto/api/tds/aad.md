@@ -85,10 +85,8 @@ import com.microsoft.aad.adal4j.*;
 public class Sample {
   public static void main(String[] args) throws Throwable {
     ExecutorService service = Executors.newFixedThreadPool(1);
-    String url = "https://login.microsoftonline.com/"
-      // Can also use tenant name.
-      + "<your AAD tenant ID>" 
-      + "/oauth2/authorize";
+    // Can also use tenant name.
+    String url = "https://login.microsoftonline.com/<your AAD tenant ID>"; 
     AuthenticationContext authenticationContext = 
       new AuthenticationContext(url, false, service);
     ClientCredential  clientCredential = new ClientCredential(

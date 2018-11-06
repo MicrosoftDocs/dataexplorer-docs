@@ -70,3 +70,28 @@ If necessary, the data is "coerced" into this schema during ingestion,
 not the other way around (extra columns are ignored, and missing columns
 are treated as null values).
 
+**Examples**
+
+The next example instructs the engine to read two blobs from Azure Blob Storage
+as CSV files, and ingest their contents into table `T`. The `...` represents
+an Azure Storage shared access signature (SAS) which gives read access to each
+blob. Note also the use of obfuscated strings (the `h` in front of the string
+values) to ensure that the SAS is never recorded.
+
+```kusto
+.ingest into table T (
+    h'https://contoso.blob.core.windows.net/container/file1.csv?...',
+    h'https://contoso.blob.core.windows.net/container/file2.csv?...'
+)
+```
+
+The next example ingests a single file from Azure Data Lake Storage (ADLS).
+It uses the user's credentials to access ADLS (so there's no need to treat
+the storage URI as containing a secret). It also shows how to specify ingestion
+properties.
+
+```kusto
+.ingest into table T ('adl://contoso.azuredatalakestore.net/Path/To/File/file1.ext;prompt')
+  with (format='csv')
+```
+
