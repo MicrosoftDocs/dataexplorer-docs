@@ -74,6 +74,7 @@ ms.date: 09/24/2018
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
 |[array_slice()](arrayslicefunction.md)|Extracts a slice of a dynamic array.|
 |[array_split()](arraysplitfunction.md)|Builds an array of arrays splitted from the input array.|
+|[bag_keys()](bagkeysfunction.md)|Enumerates all the root keys in a dynamic property-bag object.|
 |[pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[pack_all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
 |[pack_array()](packarrayfunction.md)|Packs all input values into a dynamic array.|
@@ -187,6 +188,9 @@ ms.date: 09/24/2018
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
+|[series_decompose()](series-decomposefunction.md)|Performs a decomposition of the series into components.|
+|[series_decompose_anomalies()](series-decompose-anomaliesfunction.md)|Finds anomalies in a series based on series decomposition.|
+|[series_decompose_forecast()](series-decompose-forecastfunction.md)|Forecast based on series decomposition.|
 |[series_fill_backward()](series-fill-backwardfunction.md)|Performs backward fill interpolation of missing values in a series.|
 |[series_fill_const()](series-fill-constfunction.md)|Replaces missing values in a series with a specified constant value.|
 |[series_fill_forward()](series-fill-forwardfunction.md)|Performs forward fill interpolation of missing values in a series.|
@@ -200,6 +204,7 @@ ms.date: 09/24/2018
 |[series_outliers()](series-outliersfunction.md)|Scores anomaly points in a series.|
 |[series_periods_detect()](series-periods-detectfunction.md)|Finds the most significant periods that exist in a time series.|
 |[series_periods_validate()](series-periods-validatefunction.md)|Checks whether a time series contains periodic patterns of given lengths.|
+|[series_seasonal()](series-seasonalfunction.md)|Finds the seasonal component of the series.|
 |[series_stats()](series-statsfunction.md)|Returns statistics for a series in multiple columns.|
 |[series_stats_dynamic()](series-stats-dynamicfunction.md)|Returns statistics for a series in dynamic object.|
 

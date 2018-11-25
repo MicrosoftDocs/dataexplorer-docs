@@ -29,8 +29,9 @@ var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(@"https://
 {
     FederatedSecurity = true,
     InitialCatalog = "NetDefaultDB",
+    ApplicationClientId = "…",
     ApplicationKey = "…",
-    ApplicationClientId = "…"
+    Authority = "<AAD TenantId or name>",
 };
 
 // Create an ingest client
@@ -64,8 +65,9 @@ var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(@"https://
 {
     FederatedSecurity = true,
     InitialCatalog = "NetDefaultDB",
+    ApplicationClientId = "…",
     ApplicationKey = "…",
-    ApplicationClientId = "…"
+    Authority = "<AAD TenantId or name>",
 };
 
 // Create an ingest client
@@ -90,8 +92,9 @@ var kustoConnectionStringBuilderEngine = new KustoConnectionStringBuilder(@"http
 {
     FederatedSecurity = true,
     InitialCatalog = "NetDefaultDB",
+    ApplicationClientId = "…",
     ApplicationKey = "…",
-    ApplicationClientId = "…"
+    Authority = "<AAD TenantId or name>",
 };
 
 // Create a disposable client that will execute the ingestion
@@ -119,8 +122,9 @@ var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(@"https://
 {
     FederatedSecurity = true,
     InitialCatalog = "NetDefaultDB",
+    ApplicationClientId = "…",
     ApplicationKey = "…",
-    ApplicationClientId = "…"
+    Authority = "<AAD TenantId or name>",
 };
 
 // Create a disposable client that will execute the ingestion
@@ -155,8 +159,9 @@ var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(@"https://
 {
     FederatedSecurity = true,
     InitialCatalog = "NetDefaultDB",
+    ApplicationClientId = "…",
     ApplicationKey = "…",
-    ApplicationClientId = "…"
+    Authority = "<AAD TenantId or name>",
 };
 
 // Create a disposable client that will execute the ingestion
@@ -206,8 +211,9 @@ var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(@"https://
 {
     FederatedSecurity = true,
     InitialCatalog = "NetDefaultDB",
+    ApplicationClientId = "…",
     ApplicationKey = "…",
-    ApplicationClientId = "…"
+    Authority = "<AAD TenantId or name>",
 };
 
 // Create a disposable client that will execute the ingestion

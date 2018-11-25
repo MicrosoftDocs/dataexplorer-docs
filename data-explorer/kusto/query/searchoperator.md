@@ -73,7 +73,7 @@ and views of the database in scope.
   |# |Syntax                                 |Meaning (equivalent `where`)           |Comments|
   |--|---------------------------------------|---------------------------------------|--------|
   | 1|`search "err"`                         |`where * has "err"`                    ||
-  | 2|`search in (T1,T2,A*) and "err"`       |`union T1,T2,A* | where * has "err"`   ||
+  | 2|`search in (T1,T2,A*) and "err"`       |<code>union T1,T2,A* &#124; where * has "err"<code>   ||
   | 3|`search col:"err"`                     |`where col has "err"`                  ||
   | 4|`search col=="err"`                    |`where col=="err"`                     ||
   | 5|`search "err*"`                        |`where * hasprefix "err"`              ||

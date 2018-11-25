@@ -28,7 +28,8 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 * *RightTable*: The **right** table or tabular expression (sometimes called **inner* table) whose rows are to be merged. Denoted as `$right`.
 
 * *Attributes*: One or more (comma-separated) rules that describe how rows from
-  *LeftTable* are matched to rows from *RightTable*. A rule can be one of:
+  *LeftTable* are matched to rows from *RightTable*. Multiple rules are evaluated using the `and` logical operator.
+  A rule can be one of:
 
   |Rule kind        |Syntax                                          |Predicate                                                      |
   |-----------------|------------------------------------------------|---------------------------------------------------------------|

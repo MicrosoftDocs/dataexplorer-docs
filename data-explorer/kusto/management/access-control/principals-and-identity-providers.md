@@ -37,8 +37,6 @@ Non-Microsoft AAD tenants can be added to the trusted issuers per Kusto service 
 
 
 **Examples for AAD principals**
-
-
 |AAD Tenant |Type |Syntax |
 |-----------|-----|-------|
 |Default  |User  |`aaduser=`*UserEmailAddress*
@@ -58,7 +56,6 @@ Non-Microsoft AAD tenants can be added to the trusted issuers per Kusto service 
 // AAD App on 'fabrikam.com' tenant - by tenant name
 .add database Test users ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;fabrikam.com') 'Test app @fabrikam.com (AAD)'
 ```
-
 
 ### Microsoft Accounts (MSAs)
 Microsoft Accounts (MSAs) is the term for all the Microsoft-managed non-organizational user accounts, e.g. `hotmail.com`, `live.com`, `outlook.com`.

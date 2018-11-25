@@ -407,7 +407,20 @@ Here's how it works:
 
 ![alt text](./Images/KustoTools-KustoExplorer/share-results-2.png "share-results-2")
 
-## Parametrized Queries
+## Client-Side Query Parametrization
+
+> [!WARNING]
+> There are two typed of query parametrization techniques in Kusto:
+> [Language-integrated query parametrization](../query/queryparametersstatement.md) is implemented as part
+> of the query engine and meant to be used by applications that
+> query the service programmatically.
+>
+> Client-side query parametrization, described below, is a feature
+> of the Kusto.Explorer application only. It is equivalent to doing
+> string-replace operations on the queries the user writes before sending
+> them to be executed by the service. The syntax described below is not
+> part of the query language itself, and cannot be used when sending
+> queries to the service by means other than Kusto.Explorer.
 
 If you plan to use same value in multiple queries or in multiple tabs, it is going to 
 be hard to change it. Luckily, Kusto.Explorer supports having Query parameters. Parameters 

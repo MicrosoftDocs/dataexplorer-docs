@@ -57,8 +57,6 @@
 
 ### [dcount_intersect](dcount-intersect-plugin.md)
 
-<!--### [fold](foldplugin.md)-->
-<!--### [forecast](forecastplugin.md)-->
 
 ### [narrow](narrowplugin.md)
 ### [pivot](pivotplugin.md)
@@ -66,8 +64,6 @@
 
 ### [rolling_percentile](rolling-percentile-plugin.md)
 ### [sql_request](sqlrequestplugin.md)
-<!--### [tsabasket](tsabasketplugin.md)-->
-<!--### [tsashapes](tsashapesplugin.md)-->
 ## [extend operator](extendoperator.md)
 ## [externaldata operator](externaldata-operator.md)
 ## [facet operator](facetoperator.md)
@@ -116,8 +112,9 @@
 
 # Scalar operators
 ## [Bitwise (binary) operators](binoperators.md)
-## [Numerical operators](numoperators.md)
 ## [Datetime/timespan arithmetic](datetime-timespan-arithmetic.md)
+## [Logical (binary) operators](logicaloperators.md)
+## [Numerical operators](numoperators.md)
 ## [String operators](datatypes-string-operators.md)
 ## [between operator](betweenoperator.md)
 ## [!between operator](notbetweenoperator.md)
@@ -136,6 +133,7 @@
 ## [atan2()](atan2function.md)
 ## [base64_decodestring()](base64decodestringfunction.md)
 ## [base64_encodestring()](base64encodestringfunction.md)
+## [bag_keys()](bagkeysfunction.md)
 ## [beta_cdf()](beta-cdffunction.md)
 ## [beta_inv()](beta-invfunction.md)
 ## [beta_pdf()](beta-pdffunction.md)
@@ -242,8 +240,9 @@
 ## [reverse()](reversefunction.md)
 ## [round()](roundfunction.md)
 ## [series_add()](series-addfunction.md)
-<!--## [series_decompose()](series-decomposefunction.md)-->
-<!--## [series_decompose_anomalies()](series-decompose-anomaliesfunction.md)-->
+## [series_decompose()](series-decomposefunction.md)
+## [series_decompose_anomalies()](series-decompose-anomaliesfunction.md)
+## [series_decompose_forecast()](series-decompose-forecastfunction.md)
 ## [series_divide()](series-dividefunction.md)
 ## [series_equals()](series-equalsfunction.md)
 ## [series_fill_backward()](series-fill-backwardfunction.md)
@@ -358,8 +357,9 @@
 ## [time series analysis](machine-learning-and-tsa.md)
 ### [make-series operator](make-seriesoperator.md)
 ### [series_add()](series-addfunction.md)
-<!--### [series_decompose()](series-decomposefunction.md)-->
-<!--### [series_decompose_anomalies()](series-decompose-anomaliesfunction.md)-->
+### [series_decompose()](series-decomposefunction.md)
+### [series_decompose_anomalies()](series-decompose-anomaliesfunction.md)
+### [series_decompose_forecast()](series-decompose-forecastfunction.md)
 ### [series_divide()](series-dividefunction.md)
 ### [series_equals()](series-equalsfunction.md)
 ### [series_fill_backward()](series-fill-backwardfunction.md)

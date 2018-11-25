@@ -17,11 +17,12 @@ Takes an expression containing a series (dynamic numerical array) as input and e
 
 **Syntax**
 
-`series_decompose_anomalies (`*Series*`,` *Seasonality*`,` *Trend*`,` *Test_points*`,` *AD_method*`,` *AD_threshold*`)`
+`series_decompose_anomalies (`*Series*`, ` *Threshold*`,` *Seasonality*`,` *Trend*`, ` *Test_points*`, ` *AD_method*`)`
 
 **Arguments**
 
 * *Series*: Dynamic array cell which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [makelist](makelist-aggfunction.md) operators
+* *Threshold*: Anomaly threshold, default 1.5 (k value) for detecting mild or stronger anomalies
 * *Seasonality*: An integer controlling the seasonal analysis, containing either
     * -1: autodetect seasonality (using [series_periods_detect](series-periods-detectfunction.md)) [default] 
     * 0: no seasonality (i.e. skip extracting this component)
@@ -33,7 +34,7 @@ Takes an expression containing a series (dynamic numerical array) as input and e
 * *AD_method*: A string controlling the anomaly detection method (see [series_outliers](series-outliersfunction.md)) on the residual time series, containing either    
     * “ctukey”: [Tukey’s fence test](https://en.wikipedia.org/wiki/Outlier#Tukey's_fences) with custom 10th-90th percentile range [default]
     * “tukey”: [Tukey’s fence test](https://en.wikipedia.org/wiki/Outlier#Tukey's_fences) with standard 25th-75th percentile range
-* *AD_threshold*: Anomaly threshold, default 1.5 (k value) for detecting mild or stronger anomalies
+
 
 
 **Return**
@@ -49,7 +50,7 @@ Takes an expression containing a series (dynamic numerical array) as input and e
 This function follows these steps:
 1. Calls [series_decompose()](series-decomposefunction.md) with the respective parameters to create the baseline and residuals series
 2. Calculates ad_score series by applying [series_outliers()](series-outliersfunction.md) with the chosen anomaly detection method on the residuals series
-3. Calculates the ad_flag series by applying the ad_threshold on the ad_score to mark up/down/no anomaly respectively
+3. Calculates the ad_flag series by applying the threshold on the ad_score to mark up/down/no anomaly respectively
  
 **Examples**
 
@@ -99,7 +100,7 @@ let ts=range t from 1 to 24*7*5 step 1
 | extend y=iff(t==300 or t==400 or t==600, y+8.0, y) // add some spike outliers
 | summarize Timestamp=makelist(Timestamp, 10000),y=makelist(y, 10000);
 ts 
-| extend series_decompose_anomalies(y, -1, 'linefit')
+| extend series_decompose_anomalies(y, 1.5, -1, 'linefit')
 | extend series_decompose_anomalies_y_ad_flag = 
 series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for visualization purposes
 | render timechart  
@@ -113,12 +114,12 @@ In the previous example a few noisy points were detected as anomalies, in this e
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 
-| extend y = 2*rand() + iff((t/24)%7>=5, 5.0, 15.0) - (((t%24)/10)*((t%24)/10)) + t/72.0 // generate a series with weekly seasonality and ongoing trend
+| extend y = 2*rand() + iff((t/24)%7>=5, 5.0, 15.0) - (((t%24)/10)*((t%24)/10)) + t/72.0 // generate a series with weekly seasonality and onlgoing trend
 | extend y=iff(t==150 or t==200 or t==780, y-8.0, y) // add some dip outliers
 | extend y=iff(t==300 or t==400 or t==600, y+8.0, y) // add some spike outliers
 | summarize Timestamp=makelist(Timestamp, 10000),y=makelist(y, 10000);
 ts 
-| extend series_decompose_anomalies(y, -1, 'linefit', "ctukey", 2.5)
+| extend series_decompose_anomalies(y, 2.5, -1, 'linefit')
 | extend series_decompose_anomalies_y_ad_flag = 
 series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for visualization purposes
 | render timechart  

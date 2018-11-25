@@ -39,6 +39,22 @@ Kusto supports authentication with already obtained access token:
         await connection.OpenAsync();
     }
 ```
+## ODBC
+
+Applications that support ODBC can connect to Kusto.
+
+Create ODBC data source:
+1. Launch ODBC Data Source Administrator.
+2. Create new data source (button `Add`).
+3. Select `ODBC Driver 17 for SQL Server`.
+3. Give a name to the data source and specify Kusto cluster name in  `Server` field, e.g. `mykusto.kusto.windows.net`
+4. Select `Active Directory Integrated` authentication option.
+5. Next tab lets to select database.
+7. Can leave defaults for all other settings in the following tabs.
+8. `Finish` button opens data source summary dialog where the connection can be tested.
+9. ODBC source can now be used with applications.
+
+
 ## JDBC
 
 Microsoft JDBC driver can be used to connect to Kusto with AAD application authentication. For details see [JDBC with AAD](./aad.md#jdbc).
@@ -85,7 +101,13 @@ Connect like you connect to SQL Azure Database.
 4. Once signed in, click `Connect`.
 5. The picker shows available databases. Continue just like you would do with real SQL server.
 
+## Tableau
 
+1. Create ODBC data source, see [ODBC](./clients.md#odbc) section.
+2. Connect via `Other Databases (ODBC)`.
+3. Select ODBC data source in `DSN`.
+4. Use `Connect` button to establish connection.
+5. Once `Sign In` button available, login into Kusto.
 
 ## Microsoft SQL Server Management Studio (v18.x)
 
