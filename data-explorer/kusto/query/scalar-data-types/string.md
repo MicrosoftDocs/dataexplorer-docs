@@ -21,7 +21,7 @@ There are several ways to encode literals of the `string` data type:
 * By enclosing the string in single-quotes (`'`): `'Another string literal. Single quote characters (\') require escaping by a backslash (\\). Double quote characters (") do not require escaping.'`
 
 In the two representations above, the backslash (`\`) character indicates escaping.
-It is used to escapte the enclosing quote characters, tab characters (`\t`),
+It is used to escape the enclosing quote characters, tab characters (`\t`),
 newline characters (`\n`), and itself (`\\`).
 
 Verbatim string literals are also supported. In this form, the backslash character (`\`) stands for itself,
@@ -76,7 +76,8 @@ query author may mark specific string literals as **obfuscated string literals**
 Such literals in the query text are automatically replaced by a number of
 star (`*`) characters, so that they are not available for later analysis.
 
-> [!IMPORTANT] It is **strongly recommended** that all string literals that
+> [!IMPORTANT]
+> It is **strongly recommended** that all string literals that
 > contain secret information be marked as obfuscated string literals.
 
 An obfuscated string literal can be formed by taking a "regular" string literal,
@@ -88,7 +89,8 @@ h@'world'
 h"hello"
 ```
 
-> [!NOTE] In many cases only a part of the string literal is secret. It is very
+> [!NOTE]
+> In many cases only a part of the string literal is secret. It is very
 > useful in those cases to split the literal into a non-secret part and a secret
 > part, then only mark the secret part as obfuscated. For example:
 
