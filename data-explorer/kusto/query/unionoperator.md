@@ -51,7 +51,7 @@ attributed with [view keyword](./letstatement.md)
 2. `union` scope will not include [functions](../management/functions.md). To include 
 function in the union scope - define a [let statement](./letstatement.md) 
 with [view keyword](./letstatement.md)
-3. If the `union` input is [tables](../management/tables.md) (as oppose to [tabular expressions](./findoperator.md)), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./cross-cluster-or-database-queries.md) for better performance. Please note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
+3. If the `union` input is [tables](../management/tables.md) (as oppose to [tabular expressions](./tabularexpressionstatements.md)), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./findoperator.md) for better performance. Please note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
 4. `isfuzzy=` `true` applies only to the phase of the `union` sources resolution. Once the set of source tables was determined, possible additional query failures will not be suppressed.
 
 **Example**

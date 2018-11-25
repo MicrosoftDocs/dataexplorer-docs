@@ -82,8 +82,18 @@ If you need the application to be able to perform user or app authentication for
 
 * Click `Done` to complete the process
 
+#### Enable user consent if needed
+your AAD tenant administrator may enact a policy that prevents tenant users from giving consent to applications. This situation will result in an error similar to the following, when a user tries to login to your application:
+
+`AADSTS65001: The user or administrator has not consented to use the application with ID '<App ID>' named 'App Name'`
+
+You will need to contact your AAD administrator to grant consent for all users in the tenant, or enable user consent for your specific application.
+
+
+
+
 ### 2. Set permissions to the application on Kusto cluster
-> Before using your newly provisioned application, verify it resolves from Graph API. You can use [Geneva AAD Lookup tool](https://www.analytics.msftcloudes.com/support/directory).<br>
+> Before using your newly provisioned application, verify it resolves from Graph API.<br>
     Be advised that it usually takes some time (up to several hours) for the AAD changes to propagate.
 
 * Access your database admin to grant permissions to the new app.

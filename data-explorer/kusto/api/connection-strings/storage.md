@@ -33,7 +33,6 @@ necessary to access them (such as security credentials).
 |Azure Storage Blob|`https://`|`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][`?`*SasKey* \| `;`*AccountKey*]|
 |Azure Data Lake   |`adl://`  |`adl://`*Account*.azuredatalakestore.net/*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
 
-
 ## Azure Storage Blob
 
 This provider is the most commonly-used provider, and is supported in all scenarios.
@@ -66,3 +65,6 @@ supported:
   cloud deployments and only enabled in test environments.)
 * By appending `;impersonate` to the URI. Kusto will use the requestor's principal
   identity and impersonate it to access the resource.
+
+
+
