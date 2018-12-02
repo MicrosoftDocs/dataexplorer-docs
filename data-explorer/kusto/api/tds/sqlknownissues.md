@@ -25,7 +25,12 @@ Kusto doesn't support correlated sub-queries in `SELECT`, `WHERE`, and `JOIN` cl
 
 ## PARTITION
 
-Kosto doesn't support `PARTITION` in `OVER` clause.
+Kusto doesn't support `PARTITION` in `OVER` clause.
+
+## TOP flavors
+
+Kusto ignores `WITH TIES` and evaluates query as regular `TOP`.
+Kusto doesn't support `PERCENT`.
 
 ## Cursors
 

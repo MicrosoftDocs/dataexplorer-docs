@@ -53,6 +53,7 @@ function in the union scope - define a [let statement](./letstatement.md)
 with [view keyword](./letstatement.md)
 3. If the `union` input is [tables](../management/tables.md) (as oppose to [tabular expressions](./tabularexpressionstatements.md)), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./findoperator.md) for better performance. Please note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
 4. `isfuzzy=` `true` applies only to the phase of the `union` sources resolution. Once the set of source tables was determined, possible additional query failures will not be suppressed.
+5. When using `outer union`, the result has all the columns that occur in any of the inputs, one column for each name and type occurrences. This means that if a column appears in multiple tables and has multiple types, it will have a corresponding column for each type in the `union`'s result. This column name will be suffixed with a '_' followed by the origin column [type](./scalar-data-types/index.md).
 
 **Example**
 
@@ -86,8 +87,7 @@ This more efficient version produces the same result. It filters each table befo
 **Example: Using `isfuzzy=true`**
  
 ```kusto     
-// Using union isfuzzy=true to access non-existing view:                   
-// Using union isfuzzy=true to access non-existing view:                   
+// Using union isfuzzy=true to access non-existing view:                                     
 let View_1 = view () { print x=1 };
 let View_2 = view () { print x=1 };
 let OtherView_1 = view () { print x=1 };
@@ -120,3 +120,31 @@ union isfuzzy=true View*, SomeView*, OtherView*
 
 Observing Query Status - the following warning returned:
 `Failed to resolve entity 'SomeView*'`
+
+**Example: source columns types mismatch**
+ 
+```kusto     
+let View_1 = view () { print x=1 };
+let View_2 = view () { print x=toint(2) };
+union withsource=TableName View_1, View_2
+```
+
+|TableName|x_long|x_int|
+|---------|------|-----|
+|View_1   |1     |     |
+|View_2   |      |2    |
+
+```kusto     
+let View_1 = view () { print x=1 };
+let View_2 = view () { print x=toint(2) };
+let View_3 = view () { print x_long=3 };
+union withsource=TableName View_1, View_2, View_3 
+```
+
+|TableName|x_long1|x_int |x_long|
+|---------|-------|------|------|
+|View_1   |1      |      |      |
+|View_2   |       |2     |      |
+|View_3   |       |      |3     |
+
+Column `x` from `View_1` received the suffix `_long`, and as a column named `x_long` already exists in the result schema, the column names were de-duplicated, producing a new column- `x_long1`

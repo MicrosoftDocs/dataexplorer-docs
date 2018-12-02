@@ -160,7 +160,7 @@ The extents are specified using a Kusto query that returns a recordset with a co
 Output parameter |Type |Description 
 ---|---|---
 OriginalExtentId |string |A unique identifier (GUID) for the original extent in the source table, which has been moved to the destination table. 
-ResultExtentId |string |A unique identifier (GUID) for the result extent which has been moved from the source table to the destination table. Upon failure - "Failed"
+ResultExtentId |string |A unique identifier (GUID) for the result extent which has been moved from the source table to the destination table. Upon failure - "Failed", potentially followed by failure details.
 
 **Examples**
 
@@ -316,7 +316,7 @@ Both queries should return a recordset with a column called "ExtentId".
 Output parameter |Type |Description 
 ---|---|---
 OriginalExtentId |string |A unique identifier (GUID) for the original extent in the source table, which has been moved to the destination table, or - the extent in the destination table, which has been dropped.
-ResultExtentId |string |A unique identifier (GUID) for the result extent which has been moved from the source table to the destination table, or - empty, in case the extent was dropped from the destination table. Upon failure - "Failed"
+ResultExtentId |string |A unique identifier (GUID) for the result extent which has been moved from the source table to the destination table, or - empty, in case the extent was dropped from the destination table. Upon failure - "Failed", potentially followed by failure details.
 
 **Examples**
 
@@ -376,7 +376,7 @@ The extents and the tags to drop are specified using a Kusto query that returns 
 Output parameter |Type |Description 
 ---|---|---
 OriginalExtentId |string |A unique identifier (GUID) for the original extent whose tags have been modified (and is dropped as part of the operation) 
-ResultExtentId |string |A unique identifier (GUID) for the result extent which has modified tags (and is created and added as part of the operation). Upon failure - "Failed"
+ResultExtentId |string |A unique identifier (GUID) for the result extent which has modified tags (and is created and added as part of the operation). Upon failure - "Failed", potentially followed by failure details.
 ResultExtentTags |string |The collection of tags which the result extent is tagged with (if any remain) 
 
 **Examples**
@@ -441,7 +441,7 @@ Requires [Table admin permission](../management/access-control/role-based-author
 Output parameter |Type |Description 
 ---|---|---
 OriginalExtentId |string |A unique identifier (GUID) for the original extent whose tags have been modified (and is dropped as part of the operation) 
-ResultExtentId |string |A unique identifier (GUID) for the result extent which has modified tags (and is created and added as part of the operation). Upon failure - "Failed"
+ResultExtentId |string |A unique identifier (GUID) for the result extent which has modified tags (and is created and added as part of the operation). Upon failure - "Failed", potentially followed by failure details.
 ResultExtentTags |string |The collection of tags which the result extent is tagged with 
 
 **Examples**
