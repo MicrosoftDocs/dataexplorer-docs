@@ -108,9 +108,9 @@ use of the `with` keyword. The supported properties are:
   For example: `with (creationTime="2017-02-13T11:09:36.7992775Z")`.
 
 * `extend_schema`: A Boolean value that, if specified, instructs the command
-  to extend the schema of the table (defaults to `false`). Note that the only
-  allowed schema extensions have additional columns added to the table at the
-  end.<br>
+  to extend the schema of the table (defaults to `false`). This option applies only
+  to `.append` and `.set-or-append` commands. Note that the only allowed schema extensions
+  have additional columns added to the table at the end.<br>
   For example, if the original table schema is `(a:string, b:int)` then a
   valid schema extension would be `(a:string, b:int, c:datetime, d:string)`,
   but `(a:string, c:datetime)` would not.
@@ -150,7 +150,7 @@ use of the `with` keyword. The supported properties are:
   on a table that is created by this command. (The default is `true`.)
   For example: `with (policy_ingestiontime=false)`.
 
-* `recreate_schema`: A Boolean value that, if specified, desceribes whether the
+* `recreate_schema`: A Boolean value that, if specified, describes whether the
   command may recreate the schema of the table. This option applies only
   to the `.set-or-replace` command. This takes precedence over the `extend_schema`
   option if both are set.

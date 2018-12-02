@@ -93,8 +93,7 @@ and views of the database in scope.
 1. `withsource=`: The output will always include a column called `$table` of type `string` whose value
    is the table name from which each record was retrieved (or some system-generated name if the source
    is not a table but a composite expression).
-2. `project=`, `project-smart`: The output schema is fixed and includes the outer union of all tables
-   being searched, up to a limit of 1000 columns.
+2. `project=`, `project-smart`: The output schema is equivalent to `project-smart` output schema.
 
 ## Examples
 
@@ -120,6 +119,13 @@ search "billg" and Timestamp >= datetime(1981-01-01)
 // 7. Searches over all the higher-ups
 search in (C*, TF) "billg" or "davec" or "steveb"
 
-// 8. A different way to say (7)
+// 8. A different way to say (7). Prefer to use (7) when possible
 union C*, TF | search "billg" or "davec" or "steveb"
 ```
+
+## Performance Tips
+
+  |# |Tip                                                                                  |Prefer                                        |Over                                                                    |
+  |--|-------------------------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------|
+  | 1| Prefer to use a single `search` operator over several consecutive `search` operators|`search "billg" and ("steveb" or "satyan")`   |`search "billg" | search "steveb" or "satyan"`                          ||
+  | 2| Prefer to filter inside the `search` operator                                       |`search "billg" and "steveb"`                 |<code>search * &#124; where * has "billg" and * has "steveb"<code>      ||

@@ -33,6 +33,7 @@
 ## [Journal](journal.md)
 ## [Queries](queries.md)
 ## [Commands](commands.md)
+## [Commands and Queries](commands-and-queries.md)
 ## [Ingestion Failures](ingestionfailures.md)
 
 # [Access Control](access-control/index.md)

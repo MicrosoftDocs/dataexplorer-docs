@@ -52,8 +52,11 @@ ingestion was performed and the extent was created. The extent's ingestion date/
 value (or maximum value, if an extent was built from multiple pre-existing extents)
 is used to evaluate the cache policy.
 
-[!Note] 
-You can specify a value for the ingestion date/time by using the ingestion property `creationTime`. 
+By default, the effective policy is `null`, which means all the data is considered **hot**.
+A non-`null` table-level policy overrides a database-level policy.
+
+> [!Note] 
+> You can specify a value for the ingestion date/time by using the ingestion property `creationTime`. 
 
 ## Scoping queries to hot cache
 

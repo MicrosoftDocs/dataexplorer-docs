@@ -81,6 +81,18 @@ Connect like you connect to Microsoft SQL Server. Notice, LINQPad supports Activ
 10. In the query window, you can run SQL queries. Specify SQL language and pick connection to the database.
 11. In the query window can also run LINQ queries. E.g., right click on a table in the browser window. Pick "Count" option. Let it run.
 
+## Azure Data Studio (1.3.4 and above)
+
+1. New connection.
+2. Select connection type: `Microsoft SQL Server`.
+3. Specify name of Kusto cluster as a server name, e.g. `mykusto.kusto.windows.net`
+4. Select authentication type: `Azure Active Directory - Universal with MFA support`.
+5. Specify account provisioned in AAD, e.g. `myname@contoso.com` (Add account upon the first time).
+6. Database picker can be used to select database.
+7. `Connect` button would bring you to database dashboard.
+8. Right click on connection and select `New Query` to open query tab or click on `New Query` task on the dashboard.
+
+
 ## Power BI Desktop
 
 Connect like you connect to SQL Azure Database.

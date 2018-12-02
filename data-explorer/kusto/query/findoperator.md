@@ -77,7 +77,8 @@ find operator supports an alternative syntax for `* has` *term* , and using just
 
 ## Notes
 
-* If the project clause references a column that appears in multiple tables and has multiple types, a type must follow this column reference in the project clause
+* If the `project` clause references a column that appears in multiple tables and has multiple types, a type must follow this column reference in the project clause
+* If a column appears in multiple tables and has multiple types and `project-smart` is in use, there will be a corresponding column for each type in the `find`'s result, as described in [union](./unionoperator.md)
 * When using *project-smart*, changes in the predicate, in the source tables set or in the tables schema may result in a changes to the output schema. If a constant result schema is needed, use *project* instead
 * `find` scope can not include [functions](../management/functions.md). To include a function in the find scope - define a [let statement](./letstatement.md) with [view keyword](./letstatement.md)
 

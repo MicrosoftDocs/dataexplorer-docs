@@ -58,7 +58,8 @@ $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder ($clusterUrl, $databa
 #   Option B: using AAD application Authentication
 #     $applicationId = "application ID goes here"
 #     $applicationKey = "application key goes here"
-#     $kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKey)
+#     $authority = "authority goes here"
+#     $kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKey, $authority)
 ```
 
 ### Example: Running an admin command
