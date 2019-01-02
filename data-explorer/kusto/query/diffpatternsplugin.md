@@ -15,32 +15,13 @@ ms.date: 09/24/2018
 T | evaluate diffpatterns(splitColumn)
 ```
 
-Diffpatterns compares two data sets of the same structure and finds patterns of discrete attributes (dimensions) that characterize differences between the two data sets. Diffpatterns was developed to help analyze failures (e.g. by comparing failures to non-failures in a given time frame) but can potentially find differences between any two data sets of the same structure. The Diffpatterns algorithm was developed by the Developer Analytics research team.
+Diffpatterns compares two data sets of the same structure and finds patterns of discrete attributes (dimensions) that characterize differences between the two data sets. Diffpatterns was developed to help analyze failures (e.g. by comparing failures to non-failures in a given time frame) but can potentially find differences between any two data sets of the same structure. 
 
 **Syntax**
 
-`T | evaluate diffpatterns(`*SplitColumn*, *SplitValueA*, *SplitValueB*  [, *arguments*] `)`
-
-**Returns**
-
-Diffpatterns returns a (usually small) set of patterns that capture different portions of the data in the two sets (i.e. a pattern capturing a large percentage of the rows in the first data set and low percentage of the rows in the second set). Each pattern is represented by a row in the results.
-
-The first column is the segment Id. The following four columns are the count and percentage of rows out of the original query that are captured by the pattern in each set, the sixth column is the difference (in absolute percentage points) between the two sets. The remaining columns are from the original query.
-
-For each pattern, columns that are not set in the pattern (i.e. without restriction on a specific value) will contain a wildcard value which is null by default (see in the Arguments section below how wildcards can be manually changed).
-
-
-Note that the patterns are not distinct: they may be overlapping, and usually do not cover all the original rows. Some rows may not fall under any pattern.
-
-**Tips**
-
-Use [where](./whereoperator.md) and [project](./projectoperator.md) in the input pipe to reduce the data to just what you're interested in.
-
-When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
+`T | evaluate diffpatterns(`SplitColumn, SplitValueA, SplitValueB [, WeightColumn, Threshold, MaxDimensions, CustomWildcard, ...]`)` 
 
 **Required Arguments**
-
-`T | evaluate diffpatterns(`SplitColumn, SplitValueA, SplitValueB [, WeightColumn, Threshold, MaxDimensions, CustomWildcard, ...]`)` 
 
 * SplitColumn - *column_name*
 
@@ -86,6 +67,39 @@ All other arguments are optional, but they must be ordered as below. To indicate
     See an example below.
 
     Example: `T | extend splitColumn = iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", "~", "~", "~", int(-1), double(-1), long(0), datetime(1900-1-1))`
+
+**Returns**
+
+Diffpatterns returns a (usually small) set of patterns that capture different portions of the data in the two sets (i.e. a pattern capturing a large percentage of the rows in the first data set and low percentage of the rows in the second set). Each pattern is represented by a row in the results.
+
+The result of diffpatterns returns the following columns:
+
+* SegmentId: the id assigned to the pattern in the current query (note: IDs are not guaranteed to be the same in repeating queries).
+
+* CountA: the number of rows captured by the pattern in Set A (Set A is the equivalent of `where tostring(splitColumn) == SplitValueA`).
+
+* CountB: the number of rows captured by the pattern in Set B (Set B is the equivalent of `where tostring(splitColumn) == SplitValueB`).
+
+* PercentA: the percentage of rows in Set A captured by the pattern ( 100.0 * CountA / count(SetA) ).
+
+* PercentB: the percentage of rows in Set B captured by the pattern ( 100.0 * CountB / count(SetB) ).
+
+* PercentDiffAB: the absolute percentage point difference between A and B ( |PercentA - PercentB| ) is the main measure of significance of patterns in describing the difference between the two sets.
+
+* Rest of the columns: are the original schema of the input and describe the pattern, each row (pattern) reresents the intersection of the non-wildcard values of the columns (equivalent of `where col1==val1 and col2==val2 and ... colN=valN` for each non-wildcard value in the row).
+
+For each pattern, columns that are not set in the pattern (i.e. without restriction on a specific value) will contain a wildcard value which is null by default (see in the Arguments section below how wildcards can be manually changed).
+
+* Note: the patterns are usually not distinct, they may be overlapping and usually do not cover all the original rows. Some rows may not fall under any pattern.
+
+
+**Tips**
+
+Use [where](./whereoperator.md) and [project](./projectoperator.md) in the input pipe to reduce the data to just what you're interested in.
+
+When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
+
+* Note: diffpatterns aims to find significant patterns (that capture portions of the data difference between the sets) and is not meant for row-by-row differences.
 
 **Example**
 

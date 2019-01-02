@@ -236,3 +236,27 @@ deployed on Azure D14 nodes, 16 CPUs) to the query, when it is 50% than half of 
 will be used, etc. (The numbers are rounded up to a whole CPU, so it is safe to set it
 to 0.) The second controls how many nodes in the cluster to utilize per sub-query distribution
 operation, and functions in a similar manner.
+
+## Limit on query complexity
+
+## Limit on query complexity
+
+During query execution, the query text is transformed into a tree of relational operators representing the query.
+In case the tree depth exceeds an internal threshold (several thousands of levels), the query is considered too complex for processing and will fail with an error code indicating the relational operators tree exceeds limits.
+In most cases, this is caused by a query which contains a long list of binary operators chained together, for example:
+
+```kusto
+T 
+| where Column == "value1" or 
+        Column == "value2" or 
+        .... or
+        Column == "valueN"
+```
+
+For this specific case - it is recommended to re-write the query using [`in()`](../query/inoperator.md) operator. 
+
+```kusto
+T 
+| where Column in ("value1", "value2".... "valueN")
+```
+

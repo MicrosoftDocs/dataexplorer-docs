@@ -37,7 +37,7 @@ Where:
 
 |*Visualization*     |Description|
 |--------------------|-|
-| `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning) using an external machine-learning service. |
+| `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
 | `areachart`        | Area graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |
 | `barchart`         | First column is x-axis, and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.|
 | `columnchart`      | Like `barchart`, with vertical strips instead of horizontal strips.|
@@ -60,6 +60,8 @@ Where:
 |`kind`        |Further elaboration of the visualization kind. See below.                         |
 |`legend`      |Whether to display a legend or not (`visible` or `hidden`).                       |
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
+|`ymin`        |The minimum value to be displayed on Y-axis.                                      |
+|`ymax`        |The maximum value to be displayed on Y-axis.                                      |
 |`title`       |The title of the visualization (of type `string`).                                |
 |`xaxis`       |How to scale the x-axis (`linear` or `log`).                                      |
 |`xcolumn`     |Which column in the result is used for the x-axis.                                |
@@ -68,6 +70,7 @@ Where:
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
 |`ysplit`      |How to split multiple the visualization. See below.                               |
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
+|`anomalycolumns`|Property relevant only for `anomalychart`. Comma-delimited list of columns which will be considered as anomaly series and displayed as points on the chart|
 
 Some visualizations can be further elaborated by providing the `kind` property.
 These are:

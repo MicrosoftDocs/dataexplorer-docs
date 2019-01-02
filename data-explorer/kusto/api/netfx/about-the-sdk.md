@@ -27,11 +27,13 @@ The following Kusto packages are available for consumption:
 |[Microsoft.Azure.Kusto.Management](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Management/)|                  |.NET Framework 4.5.1|Nuget.org    |Kusto Management Library |
 |[Microsoft.Azure.Kusto.Tools](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)          |                  |.NET Framework 4.5.1|Nuget.org    |Command-line tools       |
 
+
 **.NET Standard 2.0 libraries are available in preview mode:**
 |Package                                 |Main assembly name|Runtime             |Source       |Description              |
 |----------------------------------------|------------------|--------------------|-------------|-------------------------|
 |[Microsoft.Azure.Kusto.Data.NETStandard](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/)|Kusto.Data        |.NET Standard 2.0   |Nuget.org    |Kusto Client Library (.NET Standard 2.0)|
 |[Microsoft.Azure.Kusto.Ingest.NETStandard](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard/)|Kusto.Ingest  |.NET Standard 2.0   |Nuget.org    |Kusto Ingestion Library (.NET Standard 2.0)|
+
 
 **Accessing the NuGet feed from Visual Studio**
 

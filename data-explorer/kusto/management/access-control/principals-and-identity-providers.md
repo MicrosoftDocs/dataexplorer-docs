@@ -31,20 +31,21 @@ Kusto only supports Security Group principals (and not Distribution Group ones).
 #### Non microsoft.com AAD Tenants
 **By default, any Kusto cluster accepts access tokens issued by any Microsoft AAD tenant (MSIT - microsoft.com, AME, GBL) in every Azure cloud**.<br>
 Non-Microsoft AAD tenants can be added to the trusted issuers per Kusto service by filing a support ticket at [https://aka.ms/kustosupport](https://aka.ms/kustosupport).
->Unless AAD tenant is explicitly specified, Kusto will assume MSIT.
-  If your principals are in other tenant, you need to explicitly mention it by appending the tenant ID or name to the principal descriptor.
-  There is no need to append the tenant to UPN, as it already contains it (e.g., `johndoe@fabrikam.com`).
+>If AAD tenant is not explicitly specified, Kusto will attempt to resolve it from the UPN (UniversalPrincipalName, e.g., `johndoe@fabrikam.com`), if provided.
+  If your principal does not include the tenant information (not in UPN form), you must explicitly mention it by appending the tenant ID or name to the principal descriptor.
 
 
 **Examples for AAD principals**
-|AAD Tenant |Type |Syntax |
-|-----------|-----|-------|
-|Default  |User  |`aaduser=`*UserEmailAddress*
-|Other    |User  |`aaduser=`*UserEmailAddress*`;`*TenantId*
-|Default  |Group |`aadgroup=`*GroupObjectId*<br>`aadgroup=`*GroupDisplayName*<br>`aadgroup=`*GroupEmailAddress*
-|Other    |Group |`aadgroup=`*GroupObjectId*`;`*TenantId*<br>`aadgroup=`*GroupDisplayName*`;`*TenantId*<br>`aadgroup=`*GroupEmailAddress*`;`*TenantId*
-|Default  |App   |`aadapp=`*ApplicationId*<br>`aadapp`=*ApplicationDisplayName*
-|Other    |App   |`aadapp=`*ApplicationId*<br>`aadapp`=*ApplicationDisplayName*`;`*TenantId*
+|AAD Tenant |Type |Syntax |Notes
+|-----------|-----|-------|------|
+|Implicit (UPN)  |User  |`aaduser=`*UserEmailAddress*
+|Explicit (ID)   |User  |`aaduser=`*UserEmailAddress*`;`*TenantId* or `aaduser=`*ObjectID*`;`*TenantId*
+|Explicit (Name) |User  |`aaduser=`*UserEmailAddress*`;`*TenantName* or `aaduser=`*ObjectID*`;`*TenantName*
+|Implicit (UPN)  |Group |`aadgroup=`*GroupEmailAddress*
+|Explicit (ID)   |Group |`aadgroup=`*GroupObjectId*`;`*TenantId* or`aadgroup=`*GroupDisplayName*`;`*TenantId*
+|Explicit (Name) |Group |`aadgroup=`*GroupObjectId*`;`*TenantName* or`aadgroup=`*GroupDisplayName*`;`*TenantName*
+|Explicit (UPN)  |App   |`aadapp`=*ApplicationDisplayName*`;`*TenantId*
+|Explicit (Name) |App   |`aadapp=`*ApplicationId*`;`*TenantName*
 
 ```kusto
 // No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself

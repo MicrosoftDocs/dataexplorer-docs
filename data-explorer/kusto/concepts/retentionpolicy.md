@@ -26,19 +26,9 @@ Data that is "outside" the retention policy is eligible for removal. Kusto does 
 guarantee when removal occurs (so data may "linger" even if the retention policy has been triggered).
 
 The retention policy is most commonly set to limit the age of the data since ingestion
-(see **SoftDeletePeriod** and **HardDeletePeriod** below).
-
-> [!WARNING]
-> The retention policy may limit the overall data size (as measured in the storage footprint
-> of the compressed data, its indexes, etc.) Using this feature is discouraged when applied
-> at the database level, as size-based data removal is non-deterministic regarding which tables
-> are chosen to be trimmed.
+(see **SoftDeletePeriod** below).
 
 **Notes:**
-- If the retention policy has time-based and size-based limits, both are taken 
-into account (the first limit that gets exceeded will trigger data removal).
-- The retention process first soft-deletes the data (makes it unavailable for queries
- but doesn't remove it from persistent storage). It then hard-deletes it (removes it from persistent storage without support for data recovery).
 - The deletion time is imprecise. The system guarantees that data will not be
 deleted before the limit is exceeded, but deletion is not immediate following that point.
 - A soft-delete period of 0 can be set as part of a table-level retention policy (but not as part of a database-level retention policy).
@@ -55,31 +45,6 @@ A retention policy includes the following properties:
     - A time span for which it's guaranteed that the data is kept available to query, measured since the time it was ingested.
     - Defaults to `100 years`.
     - `Note:` When altering the soft-delete period of a table or database, the new value applies to both existing and new data.
-
-* **HardDeletePeriod**:
-    - A time span for which it's guaranteed that the data is kept in persistent storage, measured since the time it was ingested.
-    - When not explicitly set, defaults to `SoftDeletePeriod + 7d`.
-        - `HardDeletePeriod` cannot be explicitly set to anything under `SoftDeletePeriod + 1h`.
-    - `Note:` When altering the hard-delete period of a table or database, the new value applies to new data ingested from that moment on.
-    Already existing data will retain the hard-delete period which was set at the time it was ingested.
-
-* **ExtentsDataSizeLimitInBytes**:
-    - A total size of extents (in bytes) for which it's guaranteed that the data is kept available to query.
-    - The total extents size includes the size of the indexes and the compressed data, for all of the extents in the table/database on which
-    the policy is defined.
-    - Non-positive values are ignored.
-    - Defaults to `0` (and is thus ignored)
-    
-* **OriginalDataSizeLimitInBytes**:
-    - A total size of the original data (in bytes) for which it's guaranteed that the data is kept available to query.
-    - Non-positive values are ignored.
-    - Defaults to `0` (and is thus ignored)
-
-* **ContainerRecyclingPeriod**: 
-    - A time span which determines the period after which extent containers are recycled (their state is changed to "ReadOnly", and new containers 
-    with "ReadWrite" state are created instead of them).
-    - This value affects an internal storage partitioning process. It's recommended *not* to change it.
-    - Defaults to `1 day`.
 
 ## Control commands
 * Use [.show policy retention](../management/retention-policy.md) to show current retention
@@ -101,11 +66,7 @@ The default retention policy (with the default values mentioned above) can be ap
 These result with the following policy object applied to the database or table:
 ```kusto
 {
-  "SoftDeletePeriod": "36500.00:00:00",
-  "HardDeletePeriod": "36507.00:00:00",
-  "ContainerRecyclingPeriod": "1.00:00:00",
-  "ExtentsDataSizeLimitInBytes": 0,
-  "OriginalDataSizeLimitInBytes": 0
+  "SoftDeletePeriod": "36500.00:00:00"
 }
 ```
 Clearing the retention policy of a database or table can be done using the following command:

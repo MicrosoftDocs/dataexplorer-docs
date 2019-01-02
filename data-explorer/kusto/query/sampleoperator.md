@@ -60,10 +60,12 @@ union (_sample), (_sample)
 StormEvents | where rand() < 0.1
 ```
 
-* If you want to sample keys rather than rows (for example - sample 100 user ids and get all rows for these user IDS) you can use [`sample-distinct`](./sampledistinctoperator.md) in combination with the `in` operator.
+* If you want to sample keys rather than rows (for example - sample 10 Ids and get all rows for these Ids) you can use [`sample-distinct`](./sampledistinctoperator.md) in combination with the `in` operator.
 
 **Examples**  
 
 ```kusto
-StormEvents | sample 10
+let sampleEpisodes = StormEvents | sample-distinct 10 of EpisodeId;
+StormEvents
+| where EpisodeId in (sampleEpisodes)
 ```

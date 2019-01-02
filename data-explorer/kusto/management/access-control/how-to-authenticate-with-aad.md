@@ -83,7 +83,7 @@ AAD has a number of endpoints for authentication:
 
 * When the tenant hosting the principal being authenticated is known
   (in other words, when one knows which AAD directory the user or application
-  are in), the AAD endpoint is `https://login.microsoftonline.com/{tenantId}/oauth2/authorize`.
+  are in), the AAD endpoint is `https://login.microsoftonline.com/{tenantId}`.
   Here, `{tenantId}` is either the organization's tenant ID in AAD, or its
   domain name (e.g. `contoso.com`).
 
@@ -127,13 +127,13 @@ token to access Kusto (launches logon UI):
 
 ```csharp
 // Create an HTTP request
-WebRequest request = WebRequest.Create(new Uri("https://your_cluster_name.kusto.windows.net"));
+WebRequest request = WebRequest.Create(new Uri("https://{serviceNameAndRegion}.kusto.windows.net"));
 
 // Create Auth Context for AAD (common or tenant-specific endpoint):
 AuthenticationContext authContext = new AuthenticationContext("AAD Authority URL");
 
 // Acquire user token for the interactive user for Kusto:
-AuthenticationResult result = authContext.AcquireTokenAsync("https://your_cluster_name.kusto.windows.net", "your client app id", 
+AuthenticationResult result = authContext.AcquireTokenAsync("https://{serviceNameAndRegion}.kusto.windows.net", "your client app id", 
     new Uri("your client app resource id"), new PlatformParameters(PromptBehavior.Auto)).GetAwaiter().GetResult();
 
 // Extract Bearer access token and set the Authorization header on your request:
@@ -151,7 +151,7 @@ or an X509v2 certificate that has been pre-registered with AAD).
 
 ```csharp
 // Create an HTTP request
-WebRequest request = WebRequest.Create(new Uri("https://your_cluster_name.kusto.windows.net"));
+WebRequest request = WebRequest.Create(new Uri("https://{serviceNameAndRegion}.kusto.windows.net"));
 
 // Create Auth Context for AAD (common or tenant-specific endpoint):
 AuthenticationContext authContext = new AuthenticationContext("AAD Authority URL");
@@ -159,7 +159,7 @@ AuthenticationContext authContext = new AuthenticationContext("AAD Authority URL
 // Acquire application token for Kusto:
 ClientCredential applicationCredentials = new ClientCredential("your application client ID", "your application key");
 AuthenticationResult result =
-        authContext.AcquireTokenAsync("https://your_cluster_name.kusto.windows.net", applicationCredentials).GetAwaiter().GetResult();
+        authContext.AcquireTokenAsync("https://{serviceNameAndRegion}.kusto.windows.net", applicationCredentials).GetAwaiter().GetResult();
 
 // Extract Bearer access token and set the Authorization header on your request:
 string bearerToken = result.AccessToken;
@@ -192,7 +192,7 @@ AuthenticationContext authContext = new AuthenticationContext("AAD Authority URL
 // Exchange your token for for Kusto token.
 // You will need to provide your application's client ID and secret to authenticate your application 
 var tokenForKusto = authContext.AcquireTokenAsync(
-    "https://your_cluster_name.kusto.windows.net",
+    "https://{serviceNameAndRegion}.kusto.windows.net",
     new ClientCredential(customerAadWebApplicationClientId, customerAAdWebApplicationSecret),
     new UserAssertion(customerAadWebApplicationToken)).GetAwaiter().GetResult();
 ```
@@ -257,7 +257,7 @@ var authContext = new AuthenticationContext(config);
 
 ```javascript
 var settings = {
-    url: "https://" + clusterName + ".kusto.windows.net/v1/rest/query",
+    url: "https://" + clusterAndRegionName + ".kusto.windows.net/v1/rest/query",
     type: "POST",
     data: JSON.stringify({
         "db": dbName,

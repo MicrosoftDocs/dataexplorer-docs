@@ -106,7 +106,7 @@ Fields:
                             
 Additional information:
 
-Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#class-kustoqueuedingestclient).
+Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient).
 During the ingestion process several attempts are made to retrieve the Azure Queues linked to the DM. When these attempts fail, the exception is raised containing the
 reason for failure in the 'Error' field and possibly an inner exception in the 'InnerException' field.
 
@@ -124,7 +124,7 @@ Fields:
                             
 Additional information:
 
-Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#class-kustoqueuedingestclient).  
+Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient).  
 When ingesting sources that are NOT already in an Azure container - i.e. files, DataReader or Stream, the data is uploaded to a temporary blob for ingestion. 
 The exception is raised when there are no containers found to upload the data to.
 
@@ -153,7 +153,7 @@ Fields:
                             
 Additional information:
 
-Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#class-kustoqueuedingestclient).  
+Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient).  
 The queued ingest client ingests data by uploading a message to the relevant Azure Queue. In case of a post failure, the exception is raised containing the queue URI, the
 reason for failure in the 'Error' field and possibly an inner exception in the 'InnerException' field.
 

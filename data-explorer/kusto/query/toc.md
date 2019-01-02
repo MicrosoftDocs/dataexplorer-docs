@@ -129,6 +129,7 @@
 ## [array_slice()](arrayslicefunction.md)
 ## [array_split()](arraysplitfunction.md)
 ## [asin()](asinfunction.md)
+## [assert()](assert-function.md)
 ## [atan()](atanfunction.md)
 ## [atan2()](atan2function.md)
 ## [base64_decodestring()](base64decodestringfunction.md)

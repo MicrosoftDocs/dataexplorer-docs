@@ -25,14 +25,11 @@ This is a collection of short code snippets demonstrating various techniques of 
 ### Ingest from Azure Blob(s) using KustoQueuedIngestClient with (optional) RetryPolicy:
 ```csharp
 // Create Kusto connection string with App Authentication
-var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(@"https://ingest-ServiceName.kusto.windows.net")
-{
-    FederatedSecurity = true,
-    InitialCatalog = "NetDefaultDB",
-    ApplicationClientId = "…",
-    ApplicationKey = "…",
-    Authority = "<AAD TenantId or name>",
-};
+var kustoConnectionStringBuilderDM =
+    new KustoConnectionStringBuilder(@"https://ingest-{clusterNameAndRegion}.kusto.windows.net").WithAadApplicationKeyAuthentication(
+        applicationClientId: "{Application Client ID}",
+        applicationKey: "{Application Key (secret)}",
+        authority: "{AAD TenantID or name}");
 
 // Create an ingest client
 // Note, that creating a separate instance per ingestion operation is an anti-pattern. IngestClient classes are thread-safe and intended for reuse
@@ -61,14 +58,11 @@ client.Dispose();
 ### Async Ingestion From a Single Azure Blob using KustoQueuedIngestClient:
 ```csharp
 // Create Kusto connection string with App Authentication
-var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(@"https://ingest-ServiceName.kusto.windows.net")
-{
-    FederatedSecurity = true,
-    InitialCatalog = "NetDefaultDB",
-    ApplicationClientId = "…",
-    ApplicationKey = "…",
-    Authority = "<AAD TenantId or name>",
-};
+var kustoConnectionStringBuilderDM =
+    new KustoConnectionStringBuilder(@"https://ingest-{clusterNameAndRegion}.kusto.windows.net").WithAadApplicationKeyAuthentication(
+        applicationClientId: "{Application Client ID}",
+        applicationKey: "{Application Key (secret)}",
+        authority: "{AAD TenantID or name}");
 
 // Create an ingest client
 // Note, that creating a separate instance per ingestion operation is an anti-pattern.
@@ -88,14 +82,11 @@ client.Dispose();
 ### Ingest From Local File(s) using KustoDirectIngestClient (only for test purposes):
 ```csharp
 // Create Kusto connection string with App Authentication
-var kustoConnectionStringBuilderEngine = new KustoConnectionStringBuilder(@"https://ServiceName.kusto.windows.net")
-{
-    FederatedSecurity = true,
-    InitialCatalog = "NetDefaultDB",
-    ApplicationClientId = "…",
-    ApplicationKey = "…",
-    Authority = "<AAD TenantId or name>",
-};
+var kustoConnectionStringBuilderEngine =
+    new KustoConnectionStringBuilder(@"https://{clusterNameAndRegion}.kusto.windows.net").WithAadApplicationKeyAuthentication(
+        applicationClientId: "{Application Client ID}",
+        applicationKey: "{Application Key (secret)}",
+        authority: "{AAD TenantID or name}");
 
 // Create a disposable client that will execute the ingestion
 using (IKustoIngestClient client = KustoIngestFactory.CreateDirectIngestClient(kustoConnectionStringBuilderEngine))
@@ -118,14 +109,11 @@ using (IKustoIngestClient client = KustoIngestFactory.CreateDirectIngestClient(k
 ### Ingest From Local File(s) using KustoQueuedIngestClient and Ingestion Validation 
 ```csharp
 // Create Kusto connection string with App Authentication
-var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(@"https://ingest-ServiceName.kusto.windows.net")
-{
-    FederatedSecurity = true,
-    InitialCatalog = "NetDefaultDB",
-    ApplicationClientId = "…",
-    ApplicationKey = "…",
-    Authority = "<AAD TenantId or name>",
-};
+var kustoConnectionStringBuilderDM =
+    new KustoConnectionStringBuilder(@"https://ingest-{clusterNameAndRegion}.kusto.windows.net").WithAadApplicationKeyAuthentication(
+        applicationClientId: "{Application Client ID}",
+        applicationKey: "{Application Key (secret)}",
+        authority: "{AAD TenantID or name}");
 
 // Create a disposable client that will execute the ingestion
 IKustoQueuedIngestClient client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
@@ -155,14 +143,11 @@ client.Dispose();
 
 ```csharp
 // Create Kusto connection string with App Authentication
-var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(@"https://ingest-ServiceName.kusto.windows.net")
-{
-    FederatedSecurity = true,
-    InitialCatalog = "NetDefaultDB",
-    ApplicationClientId = "…",
-    ApplicationKey = "…",
-    Authority = "<AAD TenantId or name>",
-};
+var kustoConnectionStringBuilderDM =
+    new KustoConnectionStringBuilder(@"https://ingest-{clusterNameAndRegion}.kusto.windows.net").WithAadApplicationKeyAuthentication(
+        applicationClientId: "{Application Client ID}",
+        applicationKey: "{Application Key (secret)}",
+        authority: "{AAD TenantID or name}");
 
 // Create a disposable client that will execute the ingestion
 IKustoQueuedIngestClient client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
@@ -207,14 +192,11 @@ client.Dispose();
 
 ```csharp
 // Create Kusto connection string with App Authentication
-var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(@"https://ingest-ServiceName.kusto.windows.net")
-{
-    FederatedSecurity = true,
-    InitialCatalog = "NetDefaultDB",
-    ApplicationClientId = "…",
-    ApplicationKey = "…",
-    Authority = "<AAD TenantId or name>",
-};
+var kustoConnectionStringBuilderDM =
+    new KustoConnectionStringBuilder(@"https://ingest-{clusterNameAndRegion}.kusto.windows.net").WithAadApplicationKeyAuthentication(
+        applicationClientId: "{Application Client ID}",
+        applicationKey: "{Application Key (secret)}",
+        authority: "{AAD TenantID or name}");
 
 // Create a disposable client that will execute the ingestion
 IKustoQueuedIngestClient client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);

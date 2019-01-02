@@ -44,7 +44,8 @@ StormEvents | sample-distinct 10 of EpisodeId
 Sample a population and do further computation knowing the summarize won't exceed query limits. 
 
 ```kusto
-let sampleEpisodes = toscalar(StormEvents | sample-distinct 10 of EpisodeId);
-StormEvents | where EpisodeId in (sampleEpisodes) | summarize totalInjuries=sum(InjuriesDirect) by EpisodeId
-
+let sampleEpisodes = StormEvents | sample-distinct 10 of EpisodeId;
+StormEvents 
+| where EpisodeId in (sampleEpisodes) 
+| summarize totalInjuries=sum(InjuriesDirect) by EpisodeId
 ```
