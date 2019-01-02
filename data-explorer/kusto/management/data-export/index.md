@@ -47,7 +47,7 @@ There are several methods for data export:
   a [SQL table](export-data-to-sql.md), or an [external Blob storage](export-data-to-storage.md).
   
   Service side export commands are limited by the cluster's available data export capacity. 
-  You can run [show capacity command](../../controlcommands/cluster.md#show-capacity) to view the cluster's total, consumed and remaining data export capacity.
+  You can run [show capacity command](../../management/diagnostics.md#show-capacity) to view the cluster's total, consumed and remaining data export capacity.
 
 ## Recommendations for secret management when using data export commands
 
