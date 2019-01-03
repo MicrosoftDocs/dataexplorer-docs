@@ -136,7 +136,7 @@ Kusto queries return by default up to 500,000 rows or 64MB, as described in the 
 
 ![alt text](./Images/KustoTools-PowerBIConnector/step4.png "step4")
 
-These options issue [set statements](../query/setstatement) with your query, so change Kusto's query limits:
+These options issue [set statements](../query/setstatement.md) with your query, so change Kusto's query limits:
 
   * **Limit query result record number** generates a `set truncationmaxrecords`
   * **Limit query result data size in Bytes** generates a `set truncationmaxsize`
