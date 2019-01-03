@@ -130,27 +130,17 @@ The query is equivalent to one of the following Kusto's CSL queries:
     StormEvents | where StartTime > ago(5d)
 ```
 
-### Bad Requests when sending long queries
-
-Power BI can only send short (&lt;2000) queries to Kusto.
-
-If running a query in Power BI results in an error of: _"DataSource.Error: Web.Contents failed to get contents from..."_, most likely the reason is that the query is longer than 2000 characters. 
-Power BI uses Power Query to query Kusto, and does so by issuing a HTTP GET
-request which encodes the query as part of the URI being retrieved. This means
-that Kusto queries issued by Power BI are limited to the maximum length of
-a request URI (2000 characters, minus some small offset). The workaround is
-to define a [stored function](../management/functions.md) in Kusto,
-and have Power BI use that function in the query.
-<br>(Why isn't HTTP POST used instead? Turns out Power Query currently
-only supports anonymous HTTP POST requests.)
-
-
 ### Reaching Kusto query limits 
 
-If running a query in Power BI results in an error of: _"[Expression.Error] We cannot convert a value of type Record to type List"_, 
-most likely your query returns more data that Kusto's default limits (500,000 rows or 64MB, as described in the [Query Limits](../concepts/querylimits.md) section).
+Kusto queries return by default up to 500,000 rows or 64MB, as described in the [Query Limits](../concepts/querylimits.md) section). You can override these defaults using the Advances options section of the connection form:
 
-This limit is currently not configurable, but we are working on improving this scenario.
+![alt text](./Images/KustoTools-PowerBIConnector/step4.png "step4")
+
+These options issue [set statements](../query/setstatement) with your query, so change Kusto's query limits:
+
+  * **Limit query result record number** generates a `set truncationmaxrecords`
+  * **Limit query result data size in Bytes** generates a `set truncationmaxsize`
+  * **Disable result-set truncation** generates a `set notruncation`
 
 
 ## Using Query Parameters

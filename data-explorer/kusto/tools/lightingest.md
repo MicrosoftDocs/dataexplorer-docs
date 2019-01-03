@@ -11,58 +11,134 @@ ms.date: 09/24/2018
 ---
 # LightIngest
 
-LightIngest is a command-line utility for ingesting data into a Kusto service.
-The utility can pull source data from a local folder or from a Azure Blob Storage
-container.
+LightIngest is a command-line utility for ad-hoc data ingestion into Kusto.
+The utility can pull source data from a local folder or from an Azure Blob Storage container.
 
 ## Getting the tool
 
-LightIngest is shipped as an executable (`LightIngest.exe`) and associated libraries.
-The tool requires no installation and can be downloaded as part of the `Microsoft.Azure.Kusto.Tools`
-NuGet package [here](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
-- Once you have the the package downloaded, extract the contents of the *tools* directory in it.
-
-Extract the contents, and run the executable.
+* LightIngest is shipped as an executable (`LightIngest.exe`) and associated binaries
+* The tool requires no installation and can be downloaded as part of the [Microsoft.Azure.Kusto.Tools NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)
+* Once you have the the package downloaded, extract the contents of the *tools* directory in it
 
 ## Running the tool
 
 Run `LightIngest.exe /help` to get help on the command-line arguments the tool requires and/or supports.
 
+* First argument to `LightIngest` is the connection string to the Kusto cluster that will manage the ingestion and is mandatory.
+  The connection string should be enclosed in double quotes and follow the [Kusto connection strings specification](../api/connection-strings/kusto.md)
+* `LightIngest` can be configured to work with the ingestion endpoint at `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`,
+  or directly with the engine endpoint (`https://{yourClusterNameAndRegion}.kusto.windows.net`). Ponting `LightIngest` at the ingestion endpoint is resomended,
+  for it allows Kusto service to manage the ingestion load, as well as provides for recovery in case on transient errors.
+* Raw data size (or its accurate estimation) is important for the optimal ingestion performance. `LightIngest` will do its 
+  best to estimate the uncompressed size of local files, but it will have dufficulties correctly estimating raw size of compressed 
+  blobs without downloading them. If you are ingesting compressed blobs and are able to interfere with the blob creation process, 
+  you can help `LightIngest` by setting `rawSizeBytes` property on the blob metadata to **uncompressed** data size in bytes.
+
+
+## Command line arguments reference
+
+|Argument name         |Short name   |Type    |Mandatory |Description                                |
+|----------------------|-------------|--------|----------|-------------------------------------------|
+|                      |             |string  |Mandatory |[Kusto Connection String](../api/connection-strings/kusto.md) specifying the Kusto endpoint that will handle the ingestion. Should be enclosed in double quotes |
+|-database             |-db          |string  |Optional  |Target Kusto database name |
+|-table                |             |string  |Mandatory |Target Kusto table name |
+|-sourcePath           |-source      |string  |Mandatory |Path to source files or root URI of the blob container. If the data is in blobs, must contain storage account key or SAS. Recommended to enclose in double quotes |
+|-prefix               |             |string  |Optional  |Blob name prefix, including the container name. Recommended to enclose in double quotes |
+|-pattern              |             |string  |Optional  |Pattern by which source files/blobs are picked. Supports wildcards. E.g., `"*.csv"`. Recommended to enclose in double quotes |
+|-format               |-f           |string  |Optional  |Source data format. Must be one of the [supported formats](../management/data-ingestion/index.md#supported-data-formats) |
+|-ingestionMappingPath |-mappingPath |string  |Optional  |Path to ingestion column mapping file (mandatory for Json and Avro formats). See [data mappings](../management/mappings.md) |
+|-ingestionMappingRef  |-mappingRef  |string  |Optional  |Name of a pre-created ingestion column mapping (mandatory for Json and Avro formats). See [data mappings](../management/mappings.md) |
+|-ignoreFirstRecord    |-ignoreFirst |bool    |Optional  |If set, first record of each file/blob is ignored (e.g., if the source data has headers) |
+|-compression          |-cr          |double  |Optional  |Compression ratio hint. Useful when ingesting compressed files/blobs to help Kusto assess the raw data size |
+|-tags                 |             |string  |Optional  |[Tags](../extents-overview.md#extent-tagging) to associate with the ingested data. Multiple occurrences are permitted |
+|-limit                |-l           |integer |Optional  |If set, limits the ingestion to first N files |
+|-dontWait             |             |bool    |Optional  |If set, does not wait for ingestion completion. Useful when ingesting large amounts of files/blobs |
+|-ingestTimeout        |             |integer |Optional  |Timeout in minutes for all ingest operations completion. Defaults to `60`|
+|-devTracing           |-trace       |string  |Optional  |If set, diagnostic logs are written to a local directory (by default, `RollingLogs` in the current directory, or can be modified by setting the switch value) |
+
+### Additional arguments for advanced scenarios bypassing the Data Management service
+
+|Argument name         |Short name   |Type    |Mandatory |Description                                |
+|----------------------|-------------|--------|----------|-------------------------------------------|
+|-forceSync            |             |bool    |Optional  |If set, forces syncronous ingestion. Defaults to `false` |
+|-dataBatchSize        |             |integer |Optional  |Sets the total size limit (MB, uncompressed) of each ingest operation |
+|-filesInBatch         |             |integer |Optional  |Sets the file/blob count limit of each ingest operation |
+
+
 ## Usage examples
 
-The following invocation loads all blobs in an Azure Blob Storage container
-`CONTAINER_NAME` in the Azure Storage account `STORAGE_ACCOUNT_NAME` having the key `ACCOUNT_KEY` or `SAS` (Shared Access Signature).
-Data is loaded to the database DATABASE_NAME, table TABLE_NAME in the Kusto cluster CLUSTER.
-Only blobs whose name ends with `.csv` are uploaded, in batches of 100 blobs at a time.
+**Example 1:**
+* Ingest 10 blobs under specified storage account `ACCOUNT`, residing in container `CONT`, matching the pattern `*.csv.gz`
+* Destination is database `DB`, table `TABLE`, and the ingestion mapping `MAPPING` is precreated on the destination
+* The tool will wait until the ingest operations complete
+* Note the different options for specifying the target database and storage account key vs. SAS token
 
 ```
-LightIngest.exe https://ingest-<CLUSTER_NAME>.kusto.windows.net;Fed=True
-  -database:DATABASE_NAME 
-  -table:TABLE_NAME
-  -source:https://STORAGE_ACCOUNT_NAME.blob.core.windows.net/CONTAINER_NAME;ACCOUNT_KEY_OR_SAS
-  -pattern:*.csv
-  -batch:100 
+LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True"
+  -database:DB
+  -table:TABLE
+  -source:"https://ACCOUNT.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}"
+  -prefix:"CONT"
+  -pattern:*.csv.gz
+  -format:csv
+  -mappingRef:MAPPING
+  -limit:10
+
+LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True;Initial Catalog=DB"
+  -table:TABLE
+  -source:"https://ACCOUNT.blob.core.windows.net/{ROOT_CONTAINER}?{SAS token}"
+  -prefix:"CONT"
+  -pattern:*.csv.gz
+  -format:csv
+  -mappingRef:MAPPING
+  -limit:10
 ```
 
-Here is a similar example, but now loading data from a local folder:
+**Example 2:**
+* Ingest all blobs under specified storage account `ACCOUNT`, residing in container `CONT`, matching the pattern `*.csv.gz`
+* Destination is database `DB`, table `TABLE`, and the ingestion mapping `MAPPING` is precreated on the destination
+* Source blobs contain header line, so the tool is instructed to drop the first record of each blob
+* The tool will post the data for ingestion and will not wait for the ingest operations to complete
 
 ```
-LightIngest.exe https://ingest-<CLUSTER_NAME>.kusto.windows.net;Fed=True
-  -database:DATABASE_NAME 
-  -table:TABLE_NAME 
-  -sourceDirectory:D:\Data 
-  -sourcePattern:*.csv -batch:100 
+LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True"
+  -database:DB
+  -table:TABLE
+  -source:"https://ACCOUNT.blob.core.windows.net/{ROOT_CONTAINER}?{SAS token}"
+  -prefix:"CONT"
+  -pattern:*.csv.gz
+  -format:csv
+  -mappingRef:MAPPING
+  -ignoreFirstRecord:true
 ```
 
-In the following example, we ingest all JSON-formatted files in the container, whose filename
-ends with `.json.gz` and using an ingestion mapping named `MAPPING_NAME`.
+**Example 3:**
+* Ingest all files under path `PATH`, matching the pattern `*.json`
+* Destination is database `DB`, table `TABLE`, and the ingestion mapping is defined in local file `MAPPING_FILE_PATH`
+* The tool will post the data for ingestion and will not wait for the ingest operations to complete
 
 ```
-LightIngest https://ingest-<CLUSTER_NAME>.westus.kusto.windows.net;Fed=true
-    -database:DATABASE_NAME
-    -table:TABLE_NAME
-    -sourceDirectory:https://STORAGE_ACCOUNT_NAME.blob.core.windows.net/CONTAINER_NAME;ACCOUNT_KEY_OR_SAS
-    -ingestionMappingName:MAPPING_NAME 
-    -format:json
-    -sourcePattern:*.json.gz
+LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True"
+  -database:DB
+  -table:TABLE
+  -source:"PATH"
+  -pattern:*.json
+  -format:json
+  -mappingPath:"MAPPING_FILE_PATH"
+```
+
+**Example 4:**
+* Ingest all files under path `PATH`, matching the pattern `*.json`
+* Destination is database `DB`, table `TABLE`, and the ingestion mapping is defined in local file `MAPPING_FILE_PATH`
+* The tool will post the data for ingestion and will not wait for the ingest operations to complete
+* Diagnostics tarce files will be written locally under folder `LOGS_PATH`
+
+LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True"
+  -database:DB
+  -table:TABLE
+  -source:"PATH"
+  -pattern:*.json
+  -format:json
+  -mappingPath:"MAPPING_FILE_PATH"
+  -trace:"LOGS_PATH"
 ```
