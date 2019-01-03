@@ -27,10 +27,10 @@ Run `LightIngest.exe /help` to get help on the command-line arguments the tool r
 * First argument to `LightIngest` is the connection string to the Kusto cluster that will manage the ingestion and is mandatory.
   The connection string should be enclosed in double quotes and follow the [Kusto connection strings specification](../api/connection-strings/kusto.md)
 * `LightIngest` can be configured to work with the ingestion endpoint at `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`,
-  or directly with the engine endpoint (`https://{yourClusterNameAndRegion}.kusto.windows.net`). Ponting `LightIngest` at the ingestion endpoint is resomended,
+  or directly with the engine endpoint (`https://{yourClusterNameAndRegion}.kusto.windows.net`). Pointing `LightIngest` at the ingestion endpoint is resomended,
   for it allows Kusto service to manage the ingestion load, as well as provides for recovery in case on transient errors.
 * Raw data size (or its accurate estimation) is important for the optimal ingestion performance. `LightIngest` will do its 
-  best to estimate the uncompressed size of local files, but it will have dufficulties correctly estimating raw size of compressed 
+  best to estimate the uncompressed size of local files, but it will have difficulties correctly estimating raw size of compressed 
   blobs without downloading them. If you are ingesting compressed blobs and are able to interfere with the blob creation process, 
   you can help `LightIngest` by setting `rawSizeBytes` property on the blob metadata to **uncompressed** data size in bytes.
 
@@ -50,7 +50,7 @@ Run `LightIngest.exe /help` to get help on the command-line arguments the tool r
 |-ingestionMappingRef  |-mappingRef  |string  |Optional  |Name of a pre-created ingestion column mapping (mandatory for Json and Avro formats). See [data mappings](../management/mappings.md) |
 |-ignoreFirstRecord    |-ignoreFirst |bool    |Optional  |If set, first record of each file/blob is ignored (e.g., if the source data has headers) |
 |-compression          |-cr          |double  |Optional  |Compression ratio hint. Useful when ingesting compressed files/blobs to help Kusto assess the raw data size |
-|-tags                 |             |string  |Optional  |[Tags](../extents-overview.md#extent-tagging) to associate with the ingested data. Multiple occurrences are permitted |
+|-tags                 |             |string  |Optional  |[Tags](../management/extents-overview.md#extent-tagging) to associate with the ingested data. Multiple occurrences are permitted |
 |-limit                |-l           |integer |Optional  |If set, limits the ingestion to first N files |
 |-dontWait             |             |bool    |Optional  |If set, does not wait for ingestion completion. Useful when ingesting large amounts of files/blobs |
 |-ingestTimeout        |             |integer |Optional  |Timeout in minutes for all ingest operations completion. Defaults to `60`|
@@ -131,7 +131,7 @@ LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True"
 * Ingest all files under path `PATH`, matching the pattern `*.json`
 * Destination is database `DB`, table `TABLE`, and the ingestion mapping is defined in local file `MAPPING_FILE_PATH`
 * The tool will post the data for ingestion and will not wait for the ingest operations to complete
-* Diagnostics tarce files will be written locally under folder `LOGS_PATH`
+* Diagnostics trace files will be written locally under folder `LOGS_PATH`
 
 LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True"
   -database:DB
