@@ -93,6 +93,3 @@ endpoint, for security reasons:
 As a result, the SQL Server must be configured with a valid SSL/TLS server
 certificate.
 
-**Restrictions**
-
-Kusto service controls allowed sql-request plugin destinations by [Callout policy](../concepts/calloutpolicy.md)
