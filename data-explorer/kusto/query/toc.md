@@ -77,6 +77,7 @@
 ### [Broadcast join](broadcastjoin.md)
 ### [Time window join](join-timewindow.md)
 ## [limit operator](limitoperator.md)
+## [lookup operator](lookupoperator.md)
 ## [make-series operator](make-seriesoperator.md)
 ## [mvexpand operator](mvexpandoperator.md)
 ## [order operator](orderoperator.md)
