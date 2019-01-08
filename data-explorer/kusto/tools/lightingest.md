@@ -43,26 +43,26 @@ Run `LightIngest.exe /help` to get help on the command-line arguments the tool r
 |-database             |-db          |string  |Optional  |Target Kusto database name |
 |-table                |             |string  |Mandatory |Target Kusto table name |
 |-sourcePath           |-source      |string  |Mandatory |Path to source files or root URI of the blob container. If the data is in blobs, must contain storage account key or SAS. Recommended to enclose in double quotes |
-|-prefix               |             |string  |Optional  |Blob name prefix, including the container name. Recommended to enclose in double quotes |
+|-prefix               |             |string  |Optional  |When the source data to ingest resides on blob storage, this is the URL prefix shared by all blobs, including the container name. For example, `MyContainer/Dir1/Dir2`. Recommended to enclose in double quotes |
 |-pattern              |             |string  |Optional  |Pattern by which source files/blobs are picked. Supports wildcards. E.g., `"*.csv"`. Recommended to enclose in double quotes |
 |-format               |-f           |string  |Optional  |Source data format. Must be one of the [supported formats](../management/data-ingestion/index.md#supported-data-formats) |
 |-ingestionMappingPath |-mappingPath |string  |Optional  |Path to ingestion column mapping file (mandatory for Json and Avro formats). See [data mappings](../management/mappings.md) |
 |-ingestionMappingRef  |-mappingRef  |string  |Optional  |Name of a pre-created ingestion column mapping (mandatory for Json and Avro formats). See [data mappings](../management/mappings.md) |
-|-ignoreFirstRecord    |-ignoreFirst |bool    |Optional  |If set, first record of each file/blob is ignored (e.g., if the source data has headers) |
-|-compression          |-cr          |double  |Optional  |Compression ratio hint. Useful when ingesting compressed files/blobs to help Kusto assess the raw data size |
-|-tags                 |             |string  |Optional  |[Tags](../management/extents-overview.md#extent-tagging) to associate with the ingested data. Multiple occurrences are permitted |
-|-limit                |-l           |integer |Optional  |If set, limits the ingestion to first N files |
-|-dontWait             |             |bool    |Optional  |If set, does not wait for ingestion completion. Useful when ingesting large amounts of files/blobs |
-|-ingestTimeout        |             |integer |Optional  |Timeout in minutes for all ingest operations completion. Defaults to `60`|
-|-devTracing           |-trace       |string  |Optional  |If set, diagnostic logs are written to a local directory (by default, `RollingLogs` in the current directory, or can be modified by setting the switch value) |
+|-ignoreFirstRow       |-ignoreFirst |bool    |Optional  |If set, first record of each file/blob is ignored (e.g., if the source data has headers) |
+|-tag                  |             |string  |Optional  |[Tags](../management/extents-overview.md#extent-tagging) to associate with the ingested data. Multiple occurrences are permitted |
+|-dontWait             |             |bool    |Optional  |If set to 'true', does not wait for ingestion completion. Useful when ingesting large amounts of files/blobs |
 
-### Additional arguments for advanced scenarios bypassing the Data Management service
+### Additional arguments for advanced scenarios
 
 |Argument name         |Short name   |Type    |Mandatory |Description                                |
 |----------------------|-------------|--------|----------|-------------------------------------------|
+|-compression          |-cr          |double  |Optional  |Compression ratio hint. Useful when ingesting compressed files/blobs to help Kusto assess the raw data size |
+|-limit                |-l           |integer |Optional  |If set, limits the ingestion to first N files |
+|-ingestTimeout        |             |integer |Optional  |Timeout in minutes for all ingest operations completion. Defaults to `60`|
 |-forceSync            |             |bool    |Optional  |If set, forces syncronous ingestion. Defaults to `false` |
 |-dataBatchSize        |             |integer |Optional  |Sets the total size limit (MB, uncompressed) of each ingest operation |
 |-filesInBatch         |             |integer |Optional  |Sets the file/blob count limit of each ingest operation |
+|-devTracing           |-trace       |string  |Optional  |If set, diagnostic logs are written to a local directory (by default, `RollingLogs` in the current directory, or can be modified by setting the switch value) |
 
 
 ## Usage examples
