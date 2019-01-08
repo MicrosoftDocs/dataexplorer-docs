@@ -36,3 +36,36 @@ and `timespan`:
 * Conversely, one can multiple a numeric value (such as `double` and `long`)
   by a `timespan` value to get a `timespan` value.
   For example, one can express an hour and a half as `1.5 * 1h`.
+
+## Example: Unix time
+
+[Unix time](https://en.wikipedia.org/wiki/Unix_time) (also known as POSIX time or UNIX Epoch time)
+is a system for describing a point in time as the number of seconds that have elapsed since 
+00:00:00 Thursday, 1 January 1970, Coordinated Universal Time (UTC), minus leap seconds.
+
+If your data includes representation of Unix time as an integer, or you require converting to it,
+the following functions may come handy:
+
+```kusto
+let fromUnixTime = (t:long)
+{ 
+    datetime(1970-01-01) + t * 1sec 
+};
+print result = fromUnixTime(1546897531)
+```
+
+|result                     |
+|---------------------------|
+|2019-01-07 21:45:31.0000000|
+
+```kusto
+let toUnixTime = (dt:datetime) 
+{ 
+    (dt - datetime(1970-01-01)) / 1s 
+};
+print result = toUnixTime(datetime(2019-01-07 21:45:31.0000000))
+```
+
+|result                     |
+|---------------------------|
+|1546897531                 |
