@@ -12,7 +12,7 @@ ms.date: 09/24/2018
 # Kusto Ingest Client Library - Best Practices
 
 ## Choosing the right IngestClient flavor
-Using [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient) is the recommended native data ingestion mode. Here's why:
+Using [KustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) is the recommended native data ingestion mode. Here's why:
 * Direct ingestion is impossible during Kusto Engine downtime (e.g. during deployment), while in the Queued ingestion mode the requests are persisted to Azure queue and the Data Management service will retry as needed.
 * Data Management service is responsible to not overload the engine with ingestion requests. Overriding this control (e.g. using Direct ingestion) might severely affect engine performance, both ingestion and query.
 * Data Management aggregates multiple ingestion requests to optimize the size of the initial shard (extent) to be created.

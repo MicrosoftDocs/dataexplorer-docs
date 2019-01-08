@@ -305,9 +305,9 @@ Here's a step-by-step explanation of the query above:
 
 ## Get more out of your data in Kusto using Machine Learning 
 
-There are many interesting use cases for leveraging machine learning algorithms and derive interesting insights out of telemetry data. While often these algorithms require a very structured dataset as their input, the raw log data will usually not match the required structure and size. For example, the anomaly detection service published on Azure ML market place, requires a dataset which contains a fixed interval time series column and a single numeric column to evaluate for anomalies. This is where you can use Kusto powerful query engine to produce the necessary dataset from the raw logs data. 
+There are many interesting use cases for leveraging machine learning algorithms and derive interesting insights out of telemetry data. While often these algorithms require a very structured dataset as their input, the raw log data will usually not match the required structure and size. 
 
-Our journey starts with looking for anomalies in the error rate of a specific Bing Inferences service. The Logs table has 65B records, and the simple query below filters 250K errors, and creates a time series data of errors count that is sent to Azure ML anomaly detection service. The anomalies detected by the service, are highlighted as red dots on the time series chart.
+Our journey starts with looking for anomalies in the error rate of a specific Bing Inferences service. The Logs table has 65B records, and the simple query below filters 250K errors, and creates a time series data of errors count that utilizes anomaly detection function[series_decompose_anomalies](series-decompose-anomaliesfunction.md). The anomalies detected by the Kusto service, and are highlighted as red dots on the time series chart.
 
 ```kusto
 Logs
@@ -520,7 +520,7 @@ let TeamFoundationJobResult = datatable(Result:int, ResultString:string)
 ;
 JobHistory
   | where PreciseTimeStamp > ago(1h)
-  | where Service  <> "AX"
+  | where Service  != "AX"
   | where Plugin has "Analytics"
   | sort by PreciseTimeStamp desc
   | join kind=leftouter TeamFoundationJobResult on Result

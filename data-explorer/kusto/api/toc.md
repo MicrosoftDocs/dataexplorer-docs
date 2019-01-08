@@ -11,7 +11,7 @@
 ## [Query v2 HTTP response](rest/response2.md)
 ## [UI (Deep Links)](rest/deeplink.md)
 
-# [MS-TDS (SQL, ADO.NET, ODBC)](tds/index.md)
+# [MS-TDS (SQL, ADO.NET, JDBC, ODBC)](tds/index.md)
 ## [T-SQL](tds/t-sql.md)
 ## [KQL over TDS](tds/tdskql.md)
 ## [Clients](tds/clients.md)

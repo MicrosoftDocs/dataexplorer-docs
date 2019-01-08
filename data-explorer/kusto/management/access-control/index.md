@@ -79,14 +79,30 @@ When an MSA principal is configured on a Kusto resource, Kusto **will not** atte
 When the Kusto client libraries invoke ADAL (the AAD client library) to acquire a token for communicating with Kusto, it provides
 the following information:
 
-1. The AAD Tenant (this is the AAD authority that will authenticate the request)
+1. The Resource (Cluster URI, e.g., `https://ClusterName.kusto.windows.net`)
 2. The AAD Client Application ID (`ad30ae9e-ac1b-4249-8817-d24f5d7ad3de` for the Kusto.Data library)
-3. The AAD Client Resource ID (`http://microsoft/kustoclient`).
-4. The AAD ReplyUrl (the URL that the AAD service will redirect-to after authentication completes successfully;
-   ADAL then captures this redirect and extracts the authorization code from it).
-5. The Cluster url (e.g., `https://ClusterName.kusto.windows.net`).
+3. The AAD Client Application Redirect URI (`http://microsoft/kustoclient` for the Kusto.Data library)
+4. The AAD Tenant (this affects the AAD endpoint used for authentication, e.g., for AAD tenant `microsoft.com` the AAD endpoint would be `https://login.microsoftonline.com/microsoft.com`)
 
 The token returned by ADAL to the Kusto Client Library has the appropriate Kusto cluster URL as the audience, and the "Access Kusto" permission as the scope.
+
+**Example: obtain an AAD User token for a Kusto cluster**
+```csharp
+// Create Auth Context for AAD (common or tenant-specific endpoint):
+AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/{AAD TenantID or name}");
+
+// Provide your Application ID and redirect URI
+var clientAppID = "{your client app id}";
+var redirectUri = new Uri("{your client app redirect uri}");
+
+// acquireTokenTask will receive the bearer token for the authenticated user
+var acquireTokenTask = authContext.AcquireTokenAsync(
+    $"https://{clusterNameAndRegion}.kusto.windows.net",
+    clientAppID,
+    new redirectUri,
+    new PlatformParameters(PromptBehavior.Auto, null)).GetAwaiter().GetResult();
+```
+
 
 ## Authorization
 

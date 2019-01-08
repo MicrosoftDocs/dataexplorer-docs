@@ -63,7 +63,7 @@ Drop the retention policy for the table named `MyTable1`:
 
 .alter-merge <entity_type> <database_or_table> policy retention <retention_policy>
 
-.alter-merge <entity_type> <database_or_table_name> policy retention [softdelete = <timespan>] [harddelete= <timespan>]
+.alter-merge <entity_type> <database_or_table_name> policy retention [softdelete = <timespan>] 
 ```
 
 * `entity_type` : table or database
@@ -73,9 +73,7 @@ Drop the retention policy for the table named `MyTable1`:
 
 ```
     "{ 
-        \"SoftDeletePeriod\": \"10.00:00:00\", 
-        \"HardDeletePeriod\": \"30.00:00:00\", 
-        \"ContainerRecyclingPeriod\": \"1.00:00:00\" 
+        \"SoftDeletePeriod\": \"10.00:00:00\"
     }" 
 ```
 
@@ -103,18 +101,6 @@ Sets the same retention policy as above, but this time for multiple tables (Tabl
 
 ```kusto
 .alter tables (Table1, Table2, Table3) policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\"}"
-```
-
-Sets a retention policy with a 10 GB data size limit on the extents size:
-
-```kusto
-.alter table Table1 policy retention "{\"ExtentsDataSizeLimitInBytes\": 10737418240}"
-```
-
-Sets a retention policy with a 10 GB data size limit on the original size:
-
-```kusto
-.alter table Table1 policy retention "{\"OriginalDataSizeLimitInBytes\": 107374182400}"
 ```
 
 Sets a retention policy with the default values: 100 years as the soft-delete period:

@@ -16,7 +16,7 @@ data ingestion and other data grooming operations (such as merging extents).
 
 ## The capacity policy object
 
-The capacity policy is comprised of an `IngestionCapacity` and an `ExtentsMergeCapacity`.
+The capacity policy is comprised of an `IngestionCapacity`, an `ExtentsMergeCapacity` and an `ExtentsPurgeRebuildCapacity`.
 
 ### Ingestion capacity
 

@@ -1,6 +1,6 @@
 ---
-title: Kusto.Ingest Reference - Ingest Clients and Ingestion Properties - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto.Ingest Reference - Ingest Clients and Ingestion Properties in Azure Data Explorer.
+title: Kusto.Ingest client reference - Azure Data Explorer | Microsoft Docs
+description: This article describes Kusto.Ingest client reference in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
@@ -9,10 +9,20 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Kusto.Ingest Reference - Ingest Clients and Ingestion Properties
+# Kusto.Ingest client reference
+
+The main interfaces and factory classes in the Kusto.Ingest library are:
+
+* [interface IKustoIngestClient](#interface-ikustoingestclient): The main ingestion interface.
+* [class KustoIngestFactory](#class-kustoingestfactory): The main factory for ingestion clients.
+* [class KustoIngestionProperties](#class-kustoingestionproperties): Class used to provide common ingestion properties.
+* [Class JsonColumnMapping](#class-jsoncolumnmapping): Class used to describe the schema mapping to apply when ingesting from a JSON data source.
+* [Class CsvColumnMapping](#class-csvcolumnmapping): Class used to describe the schema mapping to apply when ingesting from a CSV data source.
+* [Enum DataSourceFormat](#enum-datasourceformat): Supported data source formats (e.g. CSV, JSON, etc.)
+* [Interface IKustoQueuedIngestClient](#interface-ikustoqueuedingestclient): Interface describing operations that apply for queued ingestion only.
+* [Class KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): Properties that apply to queued ingestion only.
 
 ## Interface IKustoIngestClient
-IKustoIngestClient interface defines Kusto ingestion methods, allowing data ingestion from Stream, IDataReader, local file(s), and Azure blob(s) in both synchronous and asynchronous modes.
 
 ```csharp
 public interface IKustoIngestClient : IDisposable
@@ -239,20 +249,100 @@ public interface IKustoIngestClient : IDisposable
 }
 ```
 
-## Class KustoDirectIngestClient
-KustoDirectIngestClient implements the Direct ingestion mode and requires an authenticated connection to Kusto Engine service.
-```csharp
-public class KustoDirectIngestClient : IKustoIngestClient
-{
-    // The connection string for creation of the Kusto service connection object that will execute the ingestions
-    public KustoDirectIngestClient(KustoConnectionStringBuilder kustoConnectionString);
+## Class KustoIngestFactory
 
-    // The connection object of the Kusto service that will execute the ingestions
-    public KustoDirectIngestClient(ICslAdminProvider kustoClient)
+```csharp
+/// <summary>
+/// Factory for creating Kusto ingestion objects.
+/// </summary>
+public static class KustoIngestFactory
+{
+    /// <summary>
+    /// Creates an implementation of <see cref="IKustoIngestClient"/> that communicates
+    /// directly with the Kusto engine service.
+    /// </summary>
+    /// <param name="kcsb">Indicates the connection to the Kusto engine service.</param>
+    /// <returns>An implementation of <see cref="IKustoIngestClient"/> that communicates
+    /// directly with the Kusto engine service.</returns>
+    /// <remarks>In most cases, it is preferred that ingestion be done using the
+    /// queued implementation of <see cref="IKustoIngestClient"/>. See <see cref="CreateQueuedIngestClient(KustoConnectionStringBuilder)"/>.</remarks>
+    public static IKustoIngestClient CreateDirectIngestClient(KustoConnectionStringBuilder kcsb);
+
+    /// <summary>
+    /// Creates an implementation of <see cref="IKustoIngestClient"/> that communicates
+    /// directly with the Kusto engine service.
+    /// </summary>
+    /// <param name="connectionString">Indicates the connection to the Kusto engine service.</param>
+    /// <returns>An implementation of <see cref="IKustoIngestClient"/> that communicates
+    /// directly with the Kusto engine service.</returns>
+    /// <remarks>In most cases, it is preferred that ingestion be done using the
+    /// queued implementation of <see cref="IKustoIngestClient"/>. See <see cref="CreateQueuedIngestClient(string)"/>.</remarks>
+    public static IKustoIngestClient CreateDirectIngestClient(string connectionString);
+
+    /// <summary>
+    /// Creates an implementation of <see cref="IKustoQueuedIngestClient"/> that communicates
+    /// with the Kusto ingestion service using a reliable queue.
+    /// </summary>
+    /// <param name="kcsb">Indicates the connection to the Kusto ingestion service.
+    /// Note that the ingestion service generally has a "ingest-" prefix in the
+    /// DNS host name part.</param>
+    /// <returns>An implementation of <see cref="IKustoQueuedIngestClient"/> that communicates
+    /// with the Kusto ingestion service using a reliable queue.</returns>
+    public static IKustoQueuedIngestClient CreateQueuedIngestClient(KustoConnectionStringBuilder kcsb);
+
+    /// <summary>
+    /// Creates an implementation of <see cref="IKustoQueuedIngestClient"/> that communicates
+    /// with the Kusto ingestion service using a reliable queue.
+    /// </summary>
+    /// <param name="connectionString">Indicates the connection to the Kusto ingestion service.
+    /// Note that the ingestion service generally has a "ingest-" prefix in the
+    /// DNS host name part.</param>
+    /// <returns>An implementation of <see cref="IKustoQueuedIngestClient"/> that communicates with the Kusto ingestion service using a reliable queue.</returns>
+    public static IKustoQueuedIngestClient CreateQueuedIngestClient(string connectionString);
+
+    /// <summary>
+    /// Creates an implementation of <see cref="IKustoIngestClient"/> that performs managed streaming ingestion
+    /// </summary>
+    /// <param name="engineKcsb">Indicates the connection to the Kusto engine service.</param>
+    /// <param name="dmKcsb">Indicates the connection to the Kusto data management service.</param>
+    /// <returns>An implementation of <see cref="IKustoIngestClient"/> that performs managed streaming ingestion</returns>
+    /// <remarks>Streaming ingestion is performed directy intto Kusto enginge cluster 
+    /// and is optimized for low-latency ingestion of relatively small chunks of data.
+    /// If the streaming ingset doesn't succeed after several retries, queued ingestion will be performed.</remarks>
+    public static IKustoIngestClient CreateManagedStreamingIngestClient(KustoConnectionStringBuilder engineKcsb, KustoConnectionStringBuilder dmKcsb);
+
+    /// <summary>
+    /// Creates an implementation of <see cref="IKustoIngestClient"/> that performs managed streaming ingestion
+    /// </summary>
+    /// <param name="engineConnectionString">Indicates the connection to the Kusto engine service.</param>
+    /// <param name="dmConnectionString">Indicates the connection to the Kusto data management service.</param>
+    /// <returns>An implementation of <see cref="IKustoIngestClient"/> that performs managed streaming ingestion</returns>
+    /// <remarks>Streaming ingestion is performed directy intto Kusto enginge cluster 
+    /// and is optimized for low-latency ingestion of relatively small chunks of data.
+    /// If the streaming ingset doesn't succeed after several retries, queued ingestion will be performed.</remarks>
+    public static IKustoIngestClient CreateManagedStreamingIngestClient(string engineConnectionString, string dmConnectionString);
+
+    /// <summary>
+    /// Creates an implementation of <see cref="IKustoIngestClient"/> that performs streaming ingestion
+    /// </summary>
+    /// <param name="kcsb">Indicates the connection to the Kusto engine service.</param>
+    /// <returns>An implementation of <see cref="IKustoIngestClient"/> that performs streaming ingestion</returns>
+    /// <remarks>Streaming ingestion is performed directy intto Kusto enginge cluster 
+    /// and is optimized for low-latency ingestion of relatively small chunks of data</remarks>
+    public static IKustoIngestClient CreateStreamingIngestClient(KustoConnectionStringBuilder kcsb);
+
+    /// <summary>
+    /// Creates an implementation of <see cref="IKustoIngestClient"/> that performs streaming ingestion
+    /// </summary>
+    /// <param name="connectionString">Indicates the connection to the Kusto engine service.</param>
+    /// <returns>An implementation of <see cref="IKustoIngestClient"/> that performs streaming ingestion</returns>
+    /// <remarks>Streaming ingestion is performed directy into Kusto enginge cluster 
+    /// and is optimized for low-latency ingestion of relatively small chunks of data</remarks>
+    public static IKustoIngestClient CreateStreamingIngestClient(string connectionString);
 }
 ```
 
-### Class KustoIngestionProperties
+## Class KustoIngestionProperties
 
 KustoIngestionProperties class encapsulates basic ingestion properties that allow fine control over the ingestion process and its handling by the Kusto engine:
 
@@ -292,10 +382,8 @@ public class KustoIngestionProperties
 }
 ```
 
-## Kusto Column Mappings and DataSourceFormat
-Column mappings help Kusto determine what source data fields must go into each target table column. The mapping is mandatory for JSON data.
+## Class JsonColumnMapping
 
-### Class JsonColumnMapping
 ```csharp
 public class JsonColumnMapping
 {
@@ -307,7 +395,8 @@ public class JsonColumnMapping
 }
 ```
 
-### Class CsvColumnMapping
+## Class CsvColumnMapping
+
 ```csharp
 public class CsvColumnMapping
 {
@@ -329,22 +418,27 @@ public class CsvColumnMapping
 }
 ```
 
-### DataSourceFormat enumeration
+## Enum DataSourceFormat
+
 ```csharp
 public enum DataSourceFormat
 {
-    csv,
-    tsv,
-    log,
-    storageanalyticslogformat,
-    scsv,
-    sohsv,
-    json,
-    psv
+    csv,        // Data is in a CSV(-comma-separated values) format
+    tsv,        // Data is in a TSV(-tab-separated values) format
+    scsv,       // Data is in a SCSV(-semicolon-separated values) format
+    sohsv,      // Data is in a SOHSV(-SOH (ASCII 1) separated values) format
+    psv,        // Data is in a PSV (pipe-separated values) format
+    txt,        // Each record is a line and has just one field
+    raw,        // The entire stream/file/blob is a single record having a single field
+    json,       // Data is in a JSON-line format (each line is record with a single JSON value)
+    multijson,  // The data stream is a concatenation of JSON documents (property bags all)
+    avro,       // Data is in a AVRO format
 }
 ```
 
-### Example of KustoIngestionProperties Definition
+
+## Example of KustoIngestionProperties Definition
+
 ```csharp
 var guid = new Guid().ToString();
 var kustoIngestionProperties = new KustoIngestionProperties("TargetDatabase", "TargetTable")
@@ -360,7 +454,9 @@ var kustoIngestionProperties = new KustoIngestionProperties("TargetDatabase", "T
     Format = DataSourceFormat.csv
 };
 ```
+
 ## Interface IKustoQueuedIngestClient
+
 IKustoQueuedIngestClient interface adds tracking methods to follow the ingestion operation result, and exposes RetryPolicy for the ingest client.
 
 ```csharp
@@ -395,36 +491,7 @@ public interface IKustoQueuedIngestClient : IKustoIngestClient
 }
 ```
 
-
-## Class KustoQueuedIngestClient
-KustoQueuedIngestClient implements the Queued ingestion mode and requires an authenticated connection to Kusto Data Management service.<BR>
-
-KustoQueuedIngestClient exposes [IRetryPolicy](https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.retrypolicies.iretrypolicy.aspx) QueueRetryPolicy property, allowing control over the retry policy that is applied to posting ingestion messages to the incoming queue of the Data Management service.
-
-```csharp
-public class KustoQueuedIngestClient : IKustoIngestClient
-{
-    // KustoQueuedIngestClient object created with this constructor will take care about the temporary storage accounts and the ingestion queues details
-    // For high ingestion rates the Data Management service will be configured to use multiple storage accounts and queues to prevent throttling.
-    // kustoDMConnectionString: The connection object of the Kusto Data Management service that will execute the ingestions. 
-    public KustoQueuedIngestClient(KustoConnectionStringBuilder kustoDMConnectionString);
-
-    // KustoQueuedIngestClient object created with this constructor will use the parameters listed below for the temporary storage account and the ingestion queue
-    // It's not scalable and cannot be used for high ingestion rate
-    // queueConnectionString: The queue connection string details to which the ingestion messages will be sent
-    // queueName: The name of the queue to which the ingestion messages will be sent
-    // blobConnectionString: The connection string of the blob account that will be used as a temporary storage to upload the local files for ingestion. 
-    // Can be null if KustoQueuedIngestClient is used only for blob ingestions.
-    // blobContainerName: The name of the blob that will be used as a temporary storage to upload the local files for ingestion. 
-    // Can be null if KustoQueuedIngestClient is used only for blob ingestions.
-    public KustoQueuedIngestClient(string queueConnectionString, string queueName, string blobConnectionString, string blobContainerName)
-
-    // Exposes IRetryPolicy
-    public IRetryPolicy QueueRetryPolicy { get; set; }
-}
-```
-
-### Class KustoQueuedIngestionProperties
+## Class KustoQueuedIngestionProperties
 
 KustoQueuedIngestionProperties class extends KustoIngestionProperties with several control knobs that can be used to fine-tune the ingestion behavior:
 

@@ -130,20 +130,20 @@ The following algorithm is generally used by clients for authentication against 
 // Option 1
 var serviceName = "help";
 var authority = "contoso.com"; // Or the AAD tenant GUID: "..."
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder($"https://{serviceName}.kusto.windows.net")
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder($"https://{serviceNameAndRegion}.kusto.windows.net")
   .WithAadUserPromptAuthentication(authority);
 
 // Option 2
 var serviceName = "help";
 var authority = "contoso.com"; // Or the AAD tenant GUID: "..."
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder($"https://{serviceName}.kusto.windows.net")
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder($"https://{serviceNameAndRegion}.kusto.windows.net")
 {
     FederatedSecurity = true,
     InitialCatalog = "NetDefaultDB",
     Authority = authority,
 };
 
-// Equivalent Kusto connection string: $"Data Source=https://{serviceName}.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;authority={authority}"
+// Equivalent Kusto connection string: $"Data Source=https://{serviceNameAndRegion}.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;authority={authority}"
 ```
 
 **AAD Federated application authentication based-on a given ApplicationClientId and ApplicationKey**
@@ -154,7 +154,7 @@ var serviceName = "help";
 var authority = "contoso.com"; // Or the AAD tenant GUID: "..."
 var applicationClientId = APP_GUID;
 var applicationKey = secret;
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder($"https://{serviceName}.kusto.windows.net")
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder($"https://{serviceNameAndRegion}.kusto.windows.net")
     .WithAadApplicationKeyAuthentication(applicationClientId, applicationKey, authority);
 
 // Option 2
@@ -162,7 +162,7 @@ var serviceName = "help";
 var authority = "contoso.com"; // Or the AAD tenant GUID: "..."
 var applicationClientId = <ApplicationClientId>;
 var applicationKey = <ApplicationKey>;
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://<ServiceName>.kusto.windows.net")
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{serviceNameAndRegion}.kusto.windows.net")
 {
     FederatedSecurity = true,
     InitialCatalog = "NetDefaultDB",
@@ -171,7 +171,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://<S
     Authority = authority,
 };
 
-// Equivalent Kusto connection string: $"Data Source=https://{serviceName}.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;AppClientId={applicationClientId};AppKey={applicationKey};authority={authority}"
+// Equivalent Kusto connection string: $"Data Source=https://{serviceNameAndRegion}.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;AppClientId={applicationClientId};AppKey={applicationKey};authority={authority}"
 ```
 
 **AAD Federated authentication based-on a given user's / application's token**
@@ -180,14 +180,14 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://<S
 // AAD User - Option 1
 var serviceName = "help";
 var userToken = "<UserToken>";
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{serviceName}.kusto.windows.net")
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{serviceNameAndRegion}.kusto.windows.net")
     .WithAadUserTokenAuthentication(userToken);
 
 // AAD User - Option 2
 var serviceName = "help";
 var userToken = "<UserToken>";
 var authority = "contoso.com"; // Or the AAD tenant GUID: "..."
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{serviceName}.kusto.windows.net")
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{serviceNameAndRegion}.kusto.windows.net")
 {
     FederatedSecurity = true,
     InitialCatalog = "NetDefaultDB",
@@ -195,19 +195,19 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{s
     Authority = authority,
 };
 
-// Equivalent Kusto connection string: "Data Source=https://{serviceName}.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;UserToken={user_token};;authority={authority}"
+// Equivalent Kusto connection string: "Data Source=https://{serviceNameAndRegion}.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;UserToken={user_token};;authority={authority}"
 
 // AAD Application - Option 1
 var serviceName = "help";
 var applicationToken = "<ApplicationToken>";
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{serviceName}.kusto.windows.net")
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{serviceNameAndRegion}.kusto.windows.net")
     .WithAadApplicationTokenAuthentication();
 
 // AAD Application - Option 2
 var serviceName = "help";
 var authority = "contoso.com"; // Or the AAD tenant GUID: "..."
 var applicationToken = "<UserToken>";
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{serviceName}.kusto.windows.net")
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{serviceNameAndRegion}.kusto.windows.net")
 {
     FederatedSecurity = true,
     InitialCatalog = "NetDefaultDB",
@@ -215,7 +215,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{s
     Authority = authority,
 };
 
-// Equivalent Kusto connection string: $"Data Source=https://{serviceName}.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;AppToken={applicationToken};authority={authority}"
+// Equivalent Kusto connection string: $"Data Source=https://{serviceNameAndRegion}.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;AppToken={applicationToken};authority={authority}"
 ```
 
 **Using certificate thumbprint (client will attempt to load the certificate from local store)**
@@ -227,13 +227,13 @@ string applicationCertificateThumbprint = "<ApplicationCertificateThumbprint>";
 // Option 1
 var serviceName = "help";
 var authority = "contoso.com"; // Or the AAD tenant GUID: "..."
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{serviceName}.kusto.windows.net")
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{serviceNameAndRegion}.kusto.windows.net")
     .WithAadApplicationThumbprintAuthentication(applicationClientId, applicationCertificateThumbprint, authority);
 
 // Option 2
 var serviceName = "help";
 var authority = "contoso.com"; // Or the AAD tenant GUID: "..."
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{serviceName}.kusto.windows.net")
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{serviceNameAndRegion}.kusto.windows.net")
 {
     FederatedSecurity = true,
     ApplicationClientId = applicationClientId,
@@ -241,6 +241,6 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(@"https://{s
     Authority = authority,
 };
 
-// Equivalent Kusto connection string: $"Data Source=https://{serviceName}.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;AppClientId={applicationClientId};AppCert={applicationCertificateThumbprint};authority={authority}"
+// Equivalent Kusto connection string: $"Data Source=https://{serviceNameAndRegion}.kusto.windows.net:443;Database=NetDefaultDB;Fed=True;AppClientId={applicationClientId};AppCert={applicationCertificateThumbprint};authority={authority}"
 ```
 

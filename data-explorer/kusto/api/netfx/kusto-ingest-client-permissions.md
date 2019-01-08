@@ -21,7 +21,7 @@ This article explains what permissions need to be set up on your service in orde
     * Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404;microsoft.com)
 
 ## Ingestion Permission Model for Queued Ingestion
-Implemented by [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient), this mode limits the client code dependency on the Kusto service. Ingestion is performed by posting a Kusto ingestion message to an Azure queue, which, in turn is acquired from Kusto Data Management (a.k.a. Ingestion) service. Any intermediate storage artifacts will be created by the ingest client using the resources allocated by Kusto Data Management service.<BR>
+Defined in [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient), this mode limits the client code dependency on the Kusto service. Ingestion is performed by posting a Kusto ingestion message to an Azure queue, which, in turn is acquired from Kusto Data Management (a.k.a. Ingestion) service. Any intermediate storage artifacts will be created by the ingest client using the resources allocated by Kusto Data Management service.<BR>
 
 The following diagram outlines the Queued ingestion client interaction with Kusto:<BR>
 

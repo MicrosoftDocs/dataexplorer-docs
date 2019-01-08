@@ -1,6 +1,6 @@
 ---
-title: Diangostics information - Azure Data Explorer | Microsoft Docs
-description: This article describes Diangostics information in Azure Data Explorer.
+title: Diagnostics information - Azure Data Explorer | Microsoft Docs
+description: This article describes Diagnostics information in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2018
 ---
-# Diangostics information
+# Diagnostics information
 
 Next commands can be used to display system diagnostics information.
 

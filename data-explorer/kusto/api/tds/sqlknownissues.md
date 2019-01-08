@@ -76,3 +76,7 @@ Kusto doesn't support dynamic SQL statements (inline execution of SQL script gen
 ## WITHIN GROUP
 
 Kusto doesn't support `WITHIN GROUP` clause.
+
+## TRUNCATE ODBC FUNCTION
+
+TRUNCATE function in Kusto works similarly to ROUND, which means that the result will be the nearest value instead of the lower one returned in SQL.

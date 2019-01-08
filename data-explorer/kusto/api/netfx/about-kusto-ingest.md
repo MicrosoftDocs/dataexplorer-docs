@@ -24,7 +24,7 @@ Kusto ingestion methods are defined by [IKustoIngestClient](kusto-ingest-client-
 Conceptually, there are two basic flavors of Ingest client: Queued and Direct
 
 ### Queued Ingestion
-Implemented by [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient), this mode limits the client code dependency on the Kusto service. Ingestion is performed by posting a Kusto ingestion message to an Azure queue, which, in turn is acquired from Kusto Data Management (a.k.a. Ingestion) service. Any intermediate storage artifacts will be created by the ingest client using the resources allocated by Kusto Data Management service.<BR>
+Defined by [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient), this mode limits the client code dependency on the Kusto service. Ingestion is performed by posting a Kusto ingestion message to an Azure queue, which, in turn is acquired from Kusto Data Management (a.k.a. Ingestion) service. Any intermediate storage artifacts will be created by the ingest client using the resources allocated by Kusto Data Management service.<BR>
 
 **Advantages of the Queued mode** include (but are not limited to):
 * Decoupling of the data ingestion process from the Kusto Engine service
@@ -39,7 +39,7 @@ The following diagram outlines the Queued ingestion client interaction with Kust
 ![alt text](../images/queued-ingest.jpg "queued-ingest")
 
 ### Direct Ingestion
-Implemented by [KustoDirectIngestClient](kusto-ingest-client-reference.md#class-kustodirectingestclient), this mode forces direct interaction with the Kusto Engine service. In this mode Kusto Ingestion service plays no moderative or managerial role. Every ingestion request in Direct mode is eventually translated into `.ingest` command executed directly on Kusto Engine service.<BR>
+Defined by IKustoDirectIngestClient, this mode forces direct interaction with the Kusto Engine service. In this mode Kusto Ingestion service plays no moderative or managerial role. Every ingestion request in Direct mode is eventually translated into `.ingest` command executed directly on Kusto Engine service.<BR>
 The following diagram outlines the Direct ingestion client interaction with Kusto:<BR>
 
 ![alt text](../images/direct-ingest.jpg "direct-ingest")

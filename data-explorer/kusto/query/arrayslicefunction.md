@@ -15,7 +15,7 @@ Extracts a slice of a dynamic array.
 
 **Syntax**
 
-`array_slicet(`*arr*, *start*, *end*]`)`
+`array_slice(`*arr*, *start*, *end*]`)`
 
 **Arguments**
 

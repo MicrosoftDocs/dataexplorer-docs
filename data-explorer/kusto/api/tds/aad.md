@@ -13,13 +13,71 @@ ms.date: 09/24/2018
 
 ## AAD User Authentication
 
-SQL clients that support AAD user authentication can be used with Kusto. See [SQL clients](./clients.md).
+SQL clients that support AAD user authentication can be used with Kusto.
+
+### .NET SQL Client (user)
+
+For example, for integrated AAD:
+```csharp
+    var csb = new SqlConnectionStringBuilder()
+    {
+        InitialCatalog = "mydatabase",
+        Authentication = SqlAuthenticationMethod.ActiveDirectoryIntegrated,
+        DataSource = "mykusto.kusto.windows.net"
+    };
+```
+
+Kusto supports authentication with already obtained access token:
+```csharp
+    var csb = new SqlConnectionStringBuilder()
+    {
+        InitialCatalog = "mydatabase",
+        DataSource = "mykusto.kusto.windows.net"
+    };
+    using (var connection = new SqlConnection(csb.ToString()))
+    {
+        connection.AccessToken = accessToken;
+        await connection.OpenAsync();
+    }
+```
+
+### JDBC (user)
+
+```java
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+import com.microsoft.aad.adal4j.*;
+
+public class Sample {
+  public static void main(String[] args) throws Exception {
+    AuthenticationResult authenticationResult = futureAuthenticationResult.get();
+    SQLServerDataSource ds = new SQLServerDataSource();
+    ds.setServerName("<your cluster DNS name>");
+    ds.setDatabaseName("<your database name>");
+    ds.setHostNameInCertificate("*.kusto.windows.net"); // Or appropriate regional domain.
+    ds.setAuthentication("ActiveDirectoryIntegrated");
+    try (Connection connection = ds.getConnection(); 
+         Statement stmt = connection.createStatement();) {
+      ResultSet rs = stmt.executeQuery("<your T-SQL query>");
+      /* 
+      Read query result. 
+      */
+    } catch (Exception e) {
+      System.out.println();
+      e.printStackTrace();
+    }
+  }
+}
+```
 
 ## AAD Application Authentication
 
 AAD application provisioned for Kusto can use SQL client libraries that support AAD for connecting to Kusto. See [Creating an AAD Application](../../management/access-control/how-to-provision-aad-app.md) for more information about AAD applications.
 
-### .NET SQL Client
+### .NET SQL Client (application)
 
 Assuming you have provisioned AAD application with *ApplicationClientId* and *ApplicationKey* and granted it permissions to access database *DatabaseName* on cluster *ClusterDnsName*, the following sample demonstrates how to use .NET SQL Client for queries from this AAD application.
 
@@ -73,9 +131,7 @@ namespace Sample
 }
 ```
 
-### JDBC
-
-Microsoft JDBC driver can be used with AAD application authentication ADAL4j.
+### JDBC (application)
 
 ```java
 import java.sql.*;

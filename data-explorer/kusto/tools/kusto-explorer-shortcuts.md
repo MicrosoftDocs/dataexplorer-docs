@@ -31,6 +31,8 @@ The following keyboard shortcuts can be used from any context:
 |`Shift`+`F3` | Opens Analytical Report Gallery|
 |`Ctrl`+`F12`| Opens embedded calculator window|
 |`Ctrl`+`Shift`+`O`|Opens Kusto.Explorer options and settings dialog|
+|`Esc`|Cancel running query|
+|`Shift`+`F5`|Cancel running query|
 
 ## Query and results view
 
@@ -46,7 +48,6 @@ or when the context is in the results view:
 |`Ctrl`+`Shift`+`H`|Toggles mode of hiding empty columns in the data view|
 |`Ctrl`+`Shift`+`J`|Toggles mode of collapsing columns with single value in the data view|
 |`Ctrl`+`Shift`+`A`|Opens a Query Analyzer tool in a new query panel|
-|`Ctrl`+`U`  |Opens a panel showing current column values with client-side filtering|
 |`Alt`+`C`  |Renders Column chart over existing data|
 |`Alt`+`T`  |Renders Timeline chart over existing data|
 |`Alt`+`A`  |Renders Anomaly timeline chart over existing data|
@@ -54,16 +55,32 @@ or when the context is in the results view:
 |`Alt`+`L`  |Renders Ladder timeline chart over existing data|
 |`Alt`+`V`  |Renders Pivot chart over existing data|
 |`Ctrl`+`Shift`+`V`|Shows Timeline pivot over existing data|
-|`Ctrl`+`F3`  | Toggles `show only matching rows`/`highlight matching rows` modes for  client text search (`Ctrl`+`F`) behaves in data grid. |
+|`Ctrl`+`F3`  | Toggles `show only matching rows`/`highlight matching rows` modes for  client text search (`Ctrl`+`F`) behavior in data grid. |
 |`Ctrl`+`F`  | Shows search box for the panel that is currently in focus. Supported in `Connetions`, `Data Results`, and `Query Editor` panels|
 |`Ctrl`+`Tab`| Shows Query Editor document selector dialog. You can hold `Ctrl` and swithch between documents with `Tab` |
 |`Ctrl`+`R`|Toggles appearance of the result panel|
 |`Ctrl`+`E`|Toggles appearance of the query editor and result panel in cycle of: `Query Editor and Results` -> `Query Editor` -> `Query Editor and Results` -> `Results` |
 |`Ctrl`+`Shift`+`E`|Toggles appearance of the query editor and result panel in cycle of: `Query Editor and Results` -> `Results` -> `Query Editor and Results` -> `Query Editor` |
 |`Ctrl`+`Shift`+`R` | Focuses on Results panel |
-|`Ctrl`+`Shift`+`Y` | Focuses on Query editor |
 |`Ctrl`+`Shift`+`T` | Focuses on Connections panel |
+|`Ctrl`+`Shift`+`Y` | Focuses on Query editor |
+|`Ctrl`+`Shift`+`U` | Focuses on Chart panel |
+|`Ctrl`+`Shift`+`I` | Focuses on Query Information panel |
+|`Ctrl`+`Shift`+`S` | Focuses on Query Statistics panel |
+|`Ctrl`+`Shift`+`K` | Focuses on Error panel |
 |`Alt`+`Ctrl`+`L`|Locks current connection context to the Query Editor, so changing selected row in the Connetion panel has no effect on the Query Editor context. |
+
+## Results Table Viewer
+
+The following keyboard shortcuts can be used when results view (table) is in active keyboard focus:
+
+|Hot Key|Description|
+|-----------|-----------|
+|`Ctrl`+`Q` |Show current column context menu|
+|`Ctrl`+`S` |Toggle current column sorting|
+|`Ctrl`+`U` |Opens a panel showing current column values with client-side filtering|
+|`Ctrl`+`F` | Shows search box for the results|
+|`Ctrl`+`F3`| Toggles `show only matching rows`/`highlight matching rows` modes for client text search (`Ctrl`+`F`) behavior in data grid. |
 
 ## Query editor
 
@@ -91,7 +108,7 @@ The following keyboard shortcuts can be used when editing a query in the query e
 |`Ctrl`+`Shift`+`Q` | Prettify current query |
 |`Ctrl`+`Shift`+`L` | Make current query or selection lower-case |
 |`Ctrl`+`Shift`+`U` |  Make current query or selection upper-case |
-|`Ctrl`+`Mouse wheel up`| Increases font of the query editor| 
+|`Ctrl`+`Mouse wheel up`| Increases font of the qupery editor| 
 |`Ctrl`+`Mouse wheel down`| Decreases font of the query editor|
 |`Alt`+`P` | Opens query parameters dialog |
 |`F2`|  Open current line / selected text in Phyton editor dialog |
@@ -103,6 +120,8 @@ The following keyboard shortcuts can be used when editing a query in the query e
 |`Ctrl`+`K`, `Ctrl`+`U` | Uncomment current line or selected lines |
 |`Ctrl`+`K`, `Ctrl`+`S` | Turn current line or selected lines into multi-line string literal |
 |`Ctrl`+`K`, `Ctrl`+`M` | Remove multi-line stirng literal marks (reverse of `Ctrl`+`K`, `Ctrl`+`S`) |
+|`Ctrl`+`M`, `Ctrl`+`M` | Toggle outlining expansion of the current query |
+|`Ctrl`+`M`, `Ctrl`+`L` | Toggle outlining expansion of all queries in the document |
 
 ## JSON viewer
 
@@ -114,5 +133,36 @@ The following keyboard shorcuts can be used from within the results JSON viewer
 |`Ctrl`+`Up Arrow`|Navigate to parent|
 |`Ctrl`+`Right Arrow`|Expand current node (one level)|
 |`Ctrl`+`Left Arrow`|Collapse current node (one level)|
-|`Ctrl`+`.`|Toggle expansion of the current node (all levels expanded/collapsed)
-|`Ctrl`+`Shift`+`.`|Toggle expansion of the current node parent (all levels expanded/collapsed)|
+|`Ctrl`+`.`|Toggle expansion of the current node (all child levels expanded/collapsed)
+|`Ctrl`+`Shift`+`.`|Toggle expansion of the current node parent (all child levels expanded/collapsed)|
+
+## Connection panel
+
+The following keyboard shorcuts can be used from within the results JSON viewer
+(displayed when one double-clicks on a JSON-like value in the results view cell):
+
+|Hot Key|Description|
+|-------|-----------|
+|`Ctrl`+`Up` Arrow|Navigate to parent|
+|`Ctrl`+`Right` Arrow|Expand current node (one level)|
+|`Ctrl`+`Left` Arrow|Collapse current node (one level)|
+|`Ctrl`+`Shift`+`L`|Collapse all levels|
+|`Ctrl`+`R`|Refresh currently selected connection|
+|`Insert`|Add a new connection|
+|`Del`|Delete current connection|
+|`Ctrl`+`E`|Edit currently selected connection|
+|`Ctrl`+`T`|Open a new query editor using currently selected connection|
+
+## Charts Panel
+
+The following keyboard shortcuts can be used when charts are present and are in active keyboard focus:
+
+|Hot Key|Description|
+|-----------|-----------|
+| `Ctrl` + `Up` arrow | Chart's diagram is moved up. |
+| `Ctrl` + `Down` arrow | Chart's diagram is moved down. |
+| `Ctrl` + `Left` arrow | Chart's diagram is moved left. |
+| `Ctrl` + `Right` arrow | Chart's diagram is moved right. |
+|`Ctrl`+`+` | Chart's diagram is zoomed in 3 times from the current axes ranges.|
+|`Ctrl`+`-` | Chart's diagram is zoomed out 3 times from the current axes ranges.|
+|`Ctrl`+`Z` | Pressing the CTRL + Z keys returns the previous zoom state of a chart's diagram. All subsequent operations of a similar kind (for instance, multiple "zoom in" operations) are considered as a single transaction. Pressing CTRL + Z returns the zoom state which existed before the first zoom operation in a zoom series. |

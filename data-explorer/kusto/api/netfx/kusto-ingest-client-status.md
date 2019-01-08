@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 09/24/2018
 ---
 # Kusto.Ingest Reference - Ingestion Status Reporting
-This article explains how to utilize [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient) capabilities for tracking the status of an ingestion request.
+This article explains how to utilize [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) capabilities for tracking the status of an ingestion request.
 
 ## SourceDescription, DataReaderDescription, StreamDescription, FileDescription, and BlobDescription
 These various description classes encapsulate important details regarding the source data to be ingested, and may and even should be provided to ingestion operation.
@@ -120,7 +120,7 @@ public class IngestionStatus
 |PartiallySucceeded |Permanent. Part of the data has been successfully ingested while some failed |
 
 ## Tracking Ingestion Status (KustoQueuedIngestClient)
-[KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient) is a 'fire-and-forget' client - the ingestion operation on the client side ends by posting a message to an Azure Queue, after which the client job is done. For the client user convenience, KustoQueuedIngestClient provides a mechanism for tracking the individual ingestion status. This is not intended for mass usage on high-throughput ingestion pipelines, but rather for 'precision' ingestion when the rate is relatively low and the tracking requirements are very strict.
+[IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) is a 'fire-and-forget' client - the ingestion operation on the client side ends by posting a message to an Azure Queue, after which the client job is done. For the client user convenience, KustoQueuedIngestClient provides a mechanism for tracking the individual ingestion status. This is not intended for mass usage on high-throughput ingestion pipelines, but rather for 'precision' ingestion when the rate is relatively low and the tracking requirements are very strict.
 
 > [!WARNING]
 > Turning on positive notifications for every ingestion request for large volume data streams should be avoided, as this puts extreme load on the underlying xStore resources, > which might lead to increased ingestion latency and even complete cluster non-responsiveness.
@@ -148,7 +148,7 @@ public enum IngestionReportMethod
 }
 ```
 
-To be able to track the status of your ingestion, make sure you provide the following to the [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient) you perform the ingest operation with:
+To be able to track the status of your ingestion, make sure you provide the following to the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) you perform the ingest operation with:
 1.	Set `IngestionReportLevel`property to the desired level of report - either FailuresOnly (which is the default value) or FailuresAndSuccesses.
 When set to None, nothing will be reported at the end of the ingestion.
 2.	Specify the desired `IngestionReportMethod` - Queue, Table or both.
@@ -165,7 +165,7 @@ Pay special attention to the `Status` property of the returned `IngestionStatus`
 >Note, that getting a `Queued` status indicates that the `IngestionReportMethod` was left at its default value of 'Queue'. This is a permanent status and re-invoking the GetIngestionStatusBySourceId or GetIngestionStatusCollection functions will always result in the same 'Queued' status.<BR>To be able to check the status of an ingestion in an Azure Table, please verify prior to ingesting that the `IngestionReportMethod` property of the [KustoQueuedIngestionProperties](kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) is set to `Table` (or `QueueAndTable` if you also want the ingestion status to be reported to a queue).
 
 ### Ingestion Status in Azure Queue
-The `IKustoIngestionResult` methods are only relevant for checking a status in an Azure Table. To query statuses that were reported to an Azure Queue, use the following methods of [KustoQueuedIngestClient](kusto-ingest-client-reference.md#class-kustoqueuedingestclient):
+The `IKustoIngestionResult` methods are only relevant for checking a status in an Azure Table. To query statuses that were reported to an Azure Queue, use the following methods of [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient):
 
 |Method |Purpose |
 |------------|------------|

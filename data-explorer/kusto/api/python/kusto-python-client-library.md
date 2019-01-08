@@ -35,3 +35,5 @@ including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/e
     [![PyPI version](https://badge.fury.io/py/azure-kusto-data.svg)](https://badge.fury.io/py/azure-kusto-data)
     * [azure-kusto-ingest](https://pypi.org/project/azure-kusto-ingest/)
     [![PyPI version](https://badge.fury.io/py/azure-kusto-ingest.svg)](https://badge.fury.io/py/azure-kusto-ingest)
+    * [azure-mgmt-kusto](https://pypi.org/project/azure-mgmt-kusto/)
+    [![PyPI version](https://badge.fury.io/py/azure-mgmt-kusto.svg)](https://badge.fury.io/py/azure-mgmt-kusto)

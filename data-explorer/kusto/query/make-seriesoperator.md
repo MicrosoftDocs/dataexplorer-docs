@@ -51,7 +51,10 @@ Note that due to the fill missing bins by default value, the resulting pivot tab
 **Note**
 
 Although you can provide arbitrary expressions for both the aggregation and grouping expressions, it's more efficient to use simple column names.
- 
+
+**Distribution and Shuffle**
+
+`make-series` supports all the `summarize` shuffle hints, for more info see [shuffle summarize](shufflesummarize.md).
 
 ## List of aggregation functions
 

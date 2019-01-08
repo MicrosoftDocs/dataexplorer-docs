@@ -11,34 +11,25 @@ ms.date: 09/24/2018
 ---
 # MS-TDS clients and Kusto
 
+Kusto implements TDS complient endpoint for MS-SQL clients. Since compatibility is on the protocol level, any library or application that can be connected to SQL Azure database with Azure Active Directory authentication, would work with Kusto server, orthogonally to operating system or run-time used. Just use Kusto server domain name like it was SQL Azure server.
+
+On SQL language level, Kusto implements subset of T-SQL and subset of SQL server emulation. See [known issues](./sqlknownissues.md) for some of the main differences between SQL Server's
+implementation of T-SQL and Kusto.
+
 ## .NET SQL client
 
 Kusto supports Azure Active Directory authentication for SQL clients.
 
-For example, AAD connection string may look like:
-```csharp
-    var csb = new SqlConnectionStringBuilder()
-    {
-        InitialCatalog = "mydatabase",
-        Authentication = SqlAuthenticationMethod.ActiveDirectoryIntegrated,
-        DataSource = "mykusto.kusto.windows.net"
-    };
-```
+For details see [.NET SQL Client (user authentication)](./aad.md#net-sql-client-user) and [.NET SQL Client (application authentication)](./aad.md#net-sql-client-application)
 
 
-Kusto supports authentication with already obtained access token:
-```csharp
-    var csb = new SqlConnectionStringBuilder()
-    {
-        InitialCatalog = "mydatabase",
-        DataSource = "mykusto.kusto.windows.net"
-    };
-    using (var connection = new SqlConnection(csb.ToString()))
-    {
-        connection.AccessToken = accessToken;
-        await connection.OpenAsync();
-    }
-```
+
+## JDBC
+
+Microsoft JDBC driver can be used to connect to Kusto with AAD authentication.
+
+For details see [JDBC (user authentication)](./aad.md#jdbc-user) and [JDBC (application authentication)](./aad.md#jdbc-application)
+
 ## ODBC
 
 Applications that support ODBC can connect to Kusto.
@@ -55,11 +46,6 @@ Create ODBC data source:
 9. ODBC source can now be used with applications.
 
 
-## JDBC
-
-Microsoft JDBC driver can be used to connect to Kusto with AAD application authentication. For details see [JDBC with AAD](./aad.md#jdbc).
-
-
 
 ## LINQPad
 
@@ -69,17 +55,17 @@ LINQPad is the recommended tool to explore Kusto TDS (SQL) endpoint.
 
 Connect like you connect to Microsoft SQL Server. Notice, LINQPad supports Active Directory authentication.
 
-1. Click "Add connection".
-2. Choose "Build data context automatically".
-3. Choose LINQPad driver "Default (LINQ to SQL)".
-4. As a provider choose "SQL Azure".
+1. Click `Add connection`.
+2. Choose `Build data context automatically`.
+3. Choose LINQPad driver `Default (LINQ to SQL)`.
+4. As a provider choose `SQL Azure`.
 5. For server specify the name of Kusto cluster, e.g. `mykusto.kusto.windows.net`
-6. For login can choose "Windows Authentication (Active Directory)".
-7. Click on "Test" button to verify connectivity.
-8. Click on "OK" button. The browser window displays tree view with databases.
+6. For login can choose `Windows Authentication (Active Directory)`.
+7. Click on `Test` button to verify connectivity.
+8. Click on `OK` button. The browser window displays tree view with databases.
 9. You can browse through databases, tables and columns.
 10. In the query window, you can run SQL queries. Specify SQL language and pick connection to the database.
-11. In the query window can also run LINQ queries. E.g., right click on a table in the browser window. Pick "Count" option. Let it run.
+11. In the query window can also run LINQ queries. E.g., right click on a table in the browser window. Pick `Count` option. Let it run.
 
 ## Azure Data Studio (1.3.4 and above)
 
@@ -91,7 +77,6 @@ Connect like you connect to Microsoft SQL Server. Notice, LINQPad supports Activ
 6. Database picker can be used to select database.
 7. `Connect` button would bring you to database dashboard.
 8. Right click on connection and select `New Query` to open query tab or click on `New Query` task on the dashboard.
-
 
 ## Power BI Desktop
 
@@ -121,19 +106,101 @@ Connect like you connect to SQL Azure Database.
 4. Use `Connect` button to establish connection.
 5. Once `Sign In` button available, login into Kusto.
 
+## DBeaver (5.2.3)
+
+The recommended version is 5.2.3. Higher versions use correlated sub-quries for database schema browsing. Correlated sub-queries are not supported by Kusto, see [correlated sub-queries](./sqlknownissues.md#correlated-sub-queries). However, for running queries in `SQL Editor`, the higher DBeaver versions will work well.
+
+Setup Active Directory compatibility:
+
+1. Start DBeaver and in the menu `Database`, select the option `Driver manager`.
+2. In the list of drivers, look for `MS SQL Driver`, select the `Microsoft Driver` and edit it (button `Edit` at the right side of the window).
+3. In the lower right part of the new screen, select `Add Artifact` to add the Active Directory artifact.
+4. In the new `Edit Maven Artifact` window, introduce the following data: `Group Id`: `com.microsoft.azure`, `Artifact Id`: `adal4j`, `Version`: `1.6.0`, `Classifier`: leave it empty. Press `OK`.
+5. Use the artifact pressing the `Download/Update` button at the right side of the dialog.
+6. In the new dialog, confirm and press `Download` at the button right of the dialog.
+7. Press `OK` at the bottom of the `Edit Driver` window to confirm and save the changes.
+8. Close the `Driver Manager` window if it is still open.
+
+With the driver configured to support the Active Directory authentication, the connection can be created. The instructions for it are as follows:
+
+1. Create a new database connection (`Database` menu and `New Connection` option).
+2. Look for `MS SQL Driver` and select `Microsoft Driver`. Press `Next`.
+3. Select the `Driver properties` tab at the top and update the values: `authentication`: `ActiveDirectoryPassword`, `trustServerCertificate`: `true`.
+4. Go back to the `General` tab and introduce the connection information and credentials for your AAD user. E.g., `Host`: `mykusto.kusto.windows.net`, `Database/Schema`: `mydb`, `User name`: `myname@contoso.com`. Don't check `Windows Authentication` check box (connecting to Kusto requires AAD authentication).
+5. Press `Test Connection …` to verify the connection details are correct.
+
 ## Microsoft SQL Server Management Studio (v18.x)
 
-1. In "Object Explorer", "Connect", "Database Engine".
+1. In `Object Explorer`, `Connect`, `Database Engine`.
 2. Specify name of Kusto cluster as a server name, e.g. `mykusto.kusto.windows.net`
-3. Use "Active Directory - Integrated" option for authentication.
-4. Click "Options".
-5. In "Connect to database" combo, you can browse available databases via "Browse Server" option.
-6. Click "Yes" to proceed with browsing.
+3. Use `Active Directory - Integrated` option for authentication.
+4. Click `Options`.
+5. In `Connect to database` combo, you can browse available databases via `Browse Server` option.
+6. Click `Yes` to proceed with browsing.
 7. The dialog displays tree view with all available databases. Can click on one to proceed with connection to the database.
-8. Alternatively, in "Connect to database" combo, can choose "default". Click "Connect". Object Explorer would show all databases.
-9. Browsing database objects via SSMS is not supported yet.
-10. Click on your database. Click "New Query" option to open query window.
+8. Alternatively, in `Connect to database` combo, can choose `default`. Click `Connect`. Object Explorer would show all databases.
+9. Browsing database objects via SSMS is not supported yet, since SSMS uses correlate sub-queries to browse database schema. Correlated sub-queries are not supported by Kusto, see [correlated sub-queries](./sqlknownissues.md#correlated-sub-queries).
+10. Click on your database. Click `New Query` option to open query window.
 11. Can execute custom SQL queries from the query window.
+
+## MATLAB (via JDBC)
+
+Add the required JAR-files to the front of MATLAB's static classpath. To do this, create a *"javaclasspath.txt"* file in your preferences directory. Run the following command in Matlab's command window: 
+
+``` s
+edit(fullfile(prefdir,'javaclasspath.txt'))
+```
+
+And add the full paths to the required JAR-files: 
+
+``` s
+<before>
+c:\full\path\to\accessors-smart-1.2.jar
+c:\full\path\to\activation-1.1.jar
+c:\full\path\to\adal4j-1.6.3.jar
+c:\full\path\to\asm-5.0.4.jar
+c:\full\path\to\commons-codec-1.11.jar
+c:\full\path\to\commons-lang3-3.5.jar
+c:\full\path\to\gson-2.8.0.jar
+c:\full\path\to\javax.mail-1.6.1.jar
+c:\full\path\to\jcip-annotations-1.0-1.jar
+c:\full\path\to\json-smart-2.3.jar
+c:\full\path\to\lang-tag-1.4.4.jar
+c:\full\path\to\mssql-jdbc-7.0.0.jre8.jar
+c:\full\path\to\nimbus-jose-jwt-6.5.jar
+c:\full\path\to\oauth2-oidc-sdk-5.64.4.jar
+c:\full\path\to\slf4j-api-1.7.21.jar
+```
+
+> You really need the <*before*> at the top to add this files to the front of the classpath. Further replace "c:\full\path\to" with the actual full paths to these files. 
+
+Restart MATLAB to make sure these classes are in fact loaded.
+
+Before trying to connect run the following command (MATLAB command window):
+
+``` java
+java.lang.System.clearProperty('javax.xml.transform.TransformerFactory')
+```
+
+> This resets the *TransformerFactory* to the default (MATLAB usually overloads this with Saxon, but this is incompatible with ADAL4J).
+
+To connect to the Azure TDS endpoint submit the following command (MATLAB command window):
+
+```s
+conn = database('<<KUSTO_DATABASE>>','<<AAD_USER>>','<<USER_PWD>>','com.microsoft.sqlserver.jdbc.SQLServerDriver',['jdbc:sqlserver://<<MYCLUSTER>>.kusto.windows.net:1433;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword;database='])
+ ```
+
+> It is correct here that this simply ends with *"database="* and then no name, the "database" function will automatically append the first input (the database name) to this string.
+> If you want to use AAD integrated auth mode replace *ActiveDirectoryPassword* with *ActiveDirectoryIntegrated*
+
+Test the connection and run a sample query. Submit die following commands (MATLAB command window):
+
+```s
+data = select(conn, 'SELECT * FROM <<KUSTO_TABLE>>')
+data
+```
+
+> Replace *KUSTO_TABLE* with an existing table in Kusto
 
 
 

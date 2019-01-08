@@ -709,3 +709,11 @@ Program fails to install with either of the following errors:
 1. This could be due to another application overriding the default ClickOnce trust prompt behavior.
 
 2. You can view your default configuration settings, compare them to the actual ones on your machine, and reset them as necessary, as explained [here](https://docs.microsoft.com/en-us/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior).
+
+#### Cleanup application data
+
+Sometimes, when prevoius troubleshooting steps didn't help to start Kusto.Explorer, cleaning of strored locally data can help.
+
+Data stored by Kusto.Explorer application can be found here: C:\Users\\[your alias]\AppData\Local\Kusto.Explorer.
+
+Please, pay attention that cleaning the data will lead to the loss of opened tabs (Recovery folder), saved connections (Connections folder), application settings (UserSettings folder).

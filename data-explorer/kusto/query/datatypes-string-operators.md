@@ -46,6 +46,8 @@ Operator        |Description                                                    
 `matches regex` |LHS contains a match for RHS                                      |Yes           |`"Fabrikam" matches regex "b.*k"`
 `in`            |Equals to one of the elements                                     |Yes           |`"abc" in ("123", "345", "abc")`
 `!in`           |Not equals to any of the elements                                 |Yes           |`"bca" !in ("123", "345", "abc")`
+`in~`           |Equals to one of the elements                                     |No            |`"abc" in~ ("123", "345", "ABC")`
+`!in~`          |Not equals to any of the elements                                 |No            |`"bca" !in~ ("123", "345", "ABC")`
 
 
 Use `has` or `in` if you're testing for the presence of a whole lexical term - that is,
