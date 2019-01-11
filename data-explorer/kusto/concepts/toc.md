@@ -13,7 +13,7 @@
 ## [IngestionTime policy](ingestiontimepolicy.md)
 
 ## [Retention policy](retentionpolicy.md)
-
+## [Restricted view access policy](restrictedviewaccesspolicy.md)
 ## [Row order policy](roworderpolicy.md)
 
 

@@ -17,8 +17,6 @@ Create series of specified aggregated values along specified axis.
 T | make-series sum(amount) default=0, avg(price) default=0 on timestamp in range(datetime(2016-01-01), datetime(2016-01-10), 1d) by fruit, supplier
 ```
 
-A table that shows arrays of the numbers and average prices of each fruit from each supplier ordered by the timestamp with specified range. There's a row in the output for each distinct combination of fruit and supplier. The output columns show the fruit, supplier and arrays of: count, average and the whole time line (from 2016-01-01 until 2016-01-10). All arrays are sorted by the respective timestamp and all gaps are filled with default values (0 in this example). All other input columns are ignored.
-
 **Syntax**
 
 *T* `| make-series`
@@ -97,7 +95,9 @@ Although you can provide arbitrary expressions for both the aggregation and grou
 
 * Note: Interpolation functions by default assume `null` as a missing value. Therefore it is recommended to specify `default=`*double*(`null`) in `make-series` if you intend to use interpolation functions for the series. 
 
-## Examples
+## Example
+  
+ A table that shows arrays of the numbers and average prices of each fruit from each supplier ordered by the timestamp with specified range. There's a row in the output for each distinct combination of fruit and supplier. The output columns show the fruit, supplier and arrays of: count, average and the whole time line (from 2016-01-01 until 2016-01-10). All arrays are sorted by the respective timestamp and all gaps are filled with default values (0 in this example). All other input columns are ignored.
   
 ```kusto
 T | make-series PriceAvg=avg(Price) default=0

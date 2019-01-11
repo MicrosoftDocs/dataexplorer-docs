@@ -28,10 +28,11 @@ Kusto uses a URI format to describe these storage resources and the properties
 necessary to access them (such as security credentials).
 
 
-|Provider          |Scheme    |URI template                          |
-|------------------|----------|--------------------------------------|
-|Azure Storage Blob|`https://`|`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][`?`*SasKey* \| `;`*AccountKey*]|
-|Azure Data Lake   |`adl://`  |`adl://`*Account*.azuredatalakestore.net/*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
+|Provider                   |Scheme    |URI template                          |
+|---------------------------|----------|--------------------------------------|
+|Azure Storage Blob         |`https://`|`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][`?`*SasKey* \| `;`*AccountKey*]|
+|Azure Data Lake Store Gen 2|`abfss://`|`abfssl://`*Filesystem*`@`*Account*`.dfs.core.windows.net/`*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
+|Azure Data Lake Store Gen 1|`adl://`  |`adl://`*Account*.azuredatalakestore.net/*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
 
 ## Azure Storage Blob
 
@@ -51,20 +52,54 @@ the account key or SAS):
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;account_key=="` 
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"` 
 
-## Azure Data Lake Store
+## Azure Data Lake Store Gen 2
+
+This provider supports accessing data in Azure Data Lake Store Gen 2.
+
+The format of the URI is:
+
+`abfss://` *Filesystem* `@` *StorageAccountName* `.dfs.core.windows.net/` *Path* `;` *Credentials*
+
+Where:
+
+* *Filesystem* is the name of the ADLS filesystem object (roughly equivalent
+  to Blob Container).
+* *StorageAccountName* is the name of the storage account.
+* *Path* is the path to the directory or file being accessed.
+  The slash (`/`) character is used as a delimiter.
+* *Credentials* indicates the credentials used to access the service,
+  as described below.
+
+It must be provided with credentials (Kusto doesn't use its own AAD principal to
+access the service). The following methods of providing credentials are
+supported:
+
+* By appending `;sharedkey=`*AccountKey* to the URI, with *AccountKey* being
+  the storage account key.
+* By appending `;impersonate` to the URI. Kusto will use the requestor's principal
+  identity and impersonate it to access the resource.
+* By appending `;token=`*AadToken* to the URI, with *AadToken* being a base-64
+  encoded AAD access token.
+* By appending `;prompt` to the URI. Kusto will ask the user for credentials
+  when it needs to access the resource. (Prompting the user is disabled for
+  cloud deployments and only enabled in test environments.)
+
+
+
+## Azure Data Lake Store Gen 1
 
 This provider supports accessing files and directories in Azure Data Lake Store.
 It must be provided with credentials (Kusto doesn't use its own AAD principal to
 access Azure Data Lake.) The following methods of providing credentials are
 supported:
 
+* By appending `;impersonate` to the URI. Kusto will use the requestor's principal
+  identity and impersonate it to access the resource.
 * By appending `;token=`*AadToken* to the URI, with *AadToken* being a base-64
   encoded AAD access token.
 * By appending `;prompt` to the URI. Kusto will ask the user for credentials
   when it needs to access the resource. (Prompting the user is disabled for
   cloud deployments and only enabled in test environments.)
-* By appending `;impersonate` to the URI. Kusto will use the requestor's principal
-  identity and impersonate it to access the resource.
 
 
 

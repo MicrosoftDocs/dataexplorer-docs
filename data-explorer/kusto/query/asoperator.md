@@ -11,20 +11,31 @@ ms.date: 09/24/2018
 ---
 # as operator
 
-Binds a name to the operator's input tabular expression.
+Binds a name to the operator's input tabular expression, thus allowing the query
+to reference the value of the tabular expression multiple times without breaking
+the query and binding a name through the [let statement](letstatement.md).
 
 **Syntax**
 
-*T* `|` `as` *name*
+*T* `|` `as` [`hint.materialized` `=` `true`] *Name*
 
 **Arguments**
 
 * *T*: A tabular expression.
-* *name*: A temporary name for the tabular expression. 
+* *Name*: A temporary name for the tabular expression.
+* `hint.materialized`: If set to `true`, the value of the tabular expression will be
+  materialized as if it was wrapped by a [materialize()](./materializefunction.md) function
+  call.
 
 **Notes**
-* The name given by `as` will be used in the `withsource=` column of [union](./unionoperator.md), the `source_` column of [find](./findoperator.md) and the `$table` column of [search](./searchoperator.md)
-* The tabular expression named using 'as' in a [join](./joinoperator.md)'s 'left side' can be used when the [join](./joinoperator.md)'s 'right side'
+
+* The name given by `as` will be used in the `withsource=` column of [union](./unionoperator.md),
+  the `source_` column of [find](./findoperator.md),
+  and the `$table` column of [search](./searchoperator.md).
+
+* The tabular expression named using the operator in a [join](./joinoperator.md)'s
+  outer tabular input (`$left`) can also be used in the join's tabular inner input
+  (`$right`).
 
 **Examples**
 
