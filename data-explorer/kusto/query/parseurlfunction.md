@@ -11,7 +11,8 @@ ms.date: 09/24/2018
 ---
 # parse_url()
 
-Parses an absolute URL `string` and returns a [`dynamic`](./scalar-data-types/dynamic.md) object contains all parts of the URL (Scheme, Host, Port, Path, Username, Password, Query Parameters, Fragment).
+Parses an absolute URL `string` and returns a `dynamic` object contains URL parts.
+
 
 **Syntax**
 
@@ -23,7 +24,7 @@ Parses an absolute URL `string` and returns a [`dynamic`](./scalar-data-types/dy
 
 **Returns**
 
-An object of type `dynamic` that included the URL components as listed above.
+An object of type [dynamic](./scalar-data-types/dynamic.md) that included the URL components: Scheme, Host, Port, Path, Username, Password, Query Parameters, Fragment.
 
 **Example**
 

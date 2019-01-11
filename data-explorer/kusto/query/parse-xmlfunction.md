@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # parse_xml()
 
-Interprets a `string` as a XML value, converts the value to a [JSON value](https://json.org/) and returns the value as  [`dynamic`](./scalar-data-types/dynamic.md). 
+Interprets a `string` as a XML value, converts the value to a JSON and returns the value as `dynamic`.
 
 **Syntax**
 
@@ -23,7 +23,7 @@ Interprets a `string` as a XML value, converts the value to a [JSON value](https
 
 **Returns**
 
-An object of type `dynamic` that is determined by the value of *xml*, or null, if the XML format is invalid.
+An object of type [dynamic](./scalar-data-types/dynamic.md) that is determined by the value of *xml*, or null, if the XML format is invalid.
 
 Converting the XML to JSON is done using [xml2json](https://github.com/Cheedoong/xml2json) library.
 

@@ -106,9 +106,7 @@ Connect like you connect to SQL Azure Database.
 4. Use `Connect` button to establish connection.
 5. Once `Sign In` button available, login into Kusto.
 
-## DBeaver (5.2.3)
-
-The recommended version is 5.2.3. Higher versions use correlated sub-quries for database schema browsing. Correlated sub-queries are not supported by Kusto, see [correlated sub-queries](./sqlknownissues.md#correlated-sub-queries). However, for running queries in `SQL Editor`, the higher DBeaver versions will work well.
+## DBeaver (5.3.3 and above)
 
 Setup Active Directory compatibility:
 
@@ -126,7 +124,7 @@ With the driver configured to support the Active Directory authentication, the c
 1. Create a new database connection (`Database` menu and `New Connection` option).
 2. Look for `MS SQL Driver` and select `Microsoft Driver`. Press `Next`.
 3. Select the `Driver properties` tab at the top and update the values: `authentication`: `ActiveDirectoryPassword`, `trustServerCertificate`: `true`.
-4. Go back to the `General` tab and introduce the connection information and credentials for your AAD user. E.g., `Host`: `mykusto.kusto.windows.net`, `Database/Schema`: `mydb`, `User name`: `myname@contoso.com`. Don't check `Windows Authentication` check box (connecting to Kusto requires AAD authentication).
+4. Go back to the `General` tab and introduce the connection information and credentials for your AAD user. E.g., `Host`: `mykusto.kusto.windows.net`, `Database/Schema`: `mydb`, `User name`: `myname@contoso.com`. Don't check `Windows Authentication` check box (connecting to Kusto requires AAD authentication). Don't specify master database. Kusto requires specific database name.
 5. Press `Test Connection …` to verify the connection details are correct.
 
 ## Microsoft SQL Server Management Studio (v18.x)

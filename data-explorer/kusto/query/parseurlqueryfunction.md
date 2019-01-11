@@ -11,7 +11,7 @@ ms.date: 09/24/2018
 ---
 # parse_urlquery()
 
-Parses a url query `string` and returns a [`dynamic`](./scalar-data-types/dynamic.md) object contains the Query parameters.
+Returns a `dynamic` object contains the Query parameters.
 
 **Syntax**
 
@@ -23,7 +23,7 @@ Parses a url query `string` and returns a [`dynamic`](./scalar-data-types/dynami
 
 **Returns**
 
-An object of type `dynamic` that includes the query parameters.
+An object of type [dynamic](./scalar-data-types/dynamic.md) that includes the query parameters.
 
 **Example**
 

@@ -13,6 +13,8 @@ ms.date: 09/24/2018
 
 Creates a `dynamic` object (property bag) from a list of names and values.
 
+Alias to `pack_dictionary()` function.
+
 **Syntax**
 
 `pack(`*key1*`,` *value1*`,` *key2*`,` *value2*`,... )`

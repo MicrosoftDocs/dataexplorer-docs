@@ -63,7 +63,7 @@ Drop the retention policy for the table named `MyTable1`:
 
 .alter-merge <entity_type> <database_or_table> policy retention <retention_policy>
 
-.alter-merge <entity_type> <database_or_table_name> policy retention [softdelete = <timespan>] 
+.alter-merge <entity_type> <database_or_table_name> policy retention [softdelete = <timespan>] [recoverability = disabled|enabled]
 ```
 
 * `entity_type` : table or database
@@ -73,7 +73,7 @@ Drop the retention policy for the table named `MyTable1`:
 
 ```
     "{ 
-        \"SoftDeletePeriod\": \"10.00:00:00\"
+        \"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Disabled\"
     }" 
 ```
 
@@ -85,25 +85,25 @@ Show the retention policy for the database named `MyDatabase`:
 .show database MyDatabase policy retention
 ```
 
-Sets a retention policy with a 10 day soft-delete period:
+Sets a retention policy with a 10 day soft-delete period and disabled data recoverability:
 
 ```kusto
-.alter-merge table Table1 policy retention softdelete = 10d
+.alter-merge table Table1 policy retention softdelete = 10d recoverability = disabled
 ```
 
-Sets a retention policy with a 10 day soft-delete period:
+Sets a retention policy with a 10 day soft-delete period and enabled data recoverability:
 
 ```kusto
-.alter table Table1 policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\"}"
+.alter table Table1 policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Enabled\"}"
 ```
 
 Sets the same retention policy as above, but this time for multiple tables (Table1, Table2 and Table3):
 
 ```kusto
-.alter tables (Table1, Table2, Table3) policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\"}"
+.alter tables (Table1, Table2, Table3) policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Enabled\"}"
 ```
 
-Sets a retention policy with the default values: 100 years as the soft-delete period:
+Sets a retention policy with the default values: 100 years as the soft-delete period and recoverability enabled:
 
 ```kusto
 .alter table Table1 policy retention "{}"

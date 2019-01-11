@@ -85,13 +85,25 @@ values) to ensure that the SAS is never recorded.
 )
 ```
 
+The next example is for ingesting data from Azure Data Lake Storage Gen 2
+(ADLSv2). The credentials used here (`...`) are the storage account credentials
+(shared key), and we use string obfuscation only for the secret part of the
+connection string.
+
+```kusto
+.ingest into table T (
+  'abfss://myfilesystem@contoso.dfs.core.windows.net/path/to/file1.csv;'
+    h'...'
+)
+```
+
 The next example ingests a single file from Azure Data Lake Storage (ADLS).
 It uses the user's credentials to access ADLS (so there's no need to treat
 the storage URI as containing a secret). It also shows how to specify ingestion
 properties.
 
 ```kusto
-.ingest into table T ('adl://contoso.azuredatalakestore.net/Path/To/File/file1.ext;prompt')
+.ingest into table T ('adl://contoso.azuredatalakestore.net/Path/To/File/file1.ext;impersonate')
   with (format='csv')
 ```
 

@@ -60,6 +60,7 @@ The commands to manage security roles generally have this syntax:
 |`admins`    |Have control over the securable object, including the ability to view, modify it, and remove the object and all sub-objects.|
 |`users`     |Can view the securable object, and create new objects underneath it.|
 |`viewers`   |Can view the securable object.|
+|`unrestrictedviewers`|At the database level only, allows viewing of restricted tables (which are not exposed to "normal" `viewers` and `users`).|
 |`ingestors` |At the database level only, allow data ingestion into all tables.|
 |`monitors`  ||
 
@@ -127,7 +128,7 @@ Where:
 
 * *DatabaseName* is the name of the database whose security role is being modified.
 
-* *Role* is one of: `admins`, `ingestors`, `monitors`, `users`, `viewers`.
+* *Role* is one of: `admins`, `ingestors`, `monitors`, `unrestrictedviewers`, `users`, `viewers`.
 
 * *Principal* is one or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md)
   for how to specify these principals.
