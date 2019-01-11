@@ -24,7 +24,6 @@ The following Kusto packages are available for consumption:
 |----------------------------------------------------------------------------------------------------|------------------|--------------------|-------------|-------------------------|
 |[Microsoft.Azure.Kusto.Data](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/)            |Kusto.Data        |.NET Framework 4.5.1|Nuget.org    |Kusto Client Library     |
 |[Microsoft.Azure.Kusto.Ingest](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/)        |Kusto.Ingest      |.NET Framework 4.5.1|Nuget.org    |Kusto Ingestion Library  |
-|[Microsoft.Azure.Kusto.Management](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Management/)|                  |.NET Framework 4.5.1|Nuget.org    |Kusto Management Library |
 |[Microsoft.Azure.Kusto.Tools](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)          |                  |.NET Framework 4.5.1|Nuget.org    |Command-line tools       |
 
 **.NET Standard 2.0 libraries are available in preview mode:**
