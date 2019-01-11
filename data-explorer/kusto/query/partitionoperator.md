@@ -47,7 +47,7 @@ Returns a union of subquery results after it was run on every partition of the s
 
 **Example: top-nested case**
 
-At some cases - it is more performant and easier to write query using `partition` operator rather using [`top-nested` operator](./top-nestedoperator.md)
+At some cases - it is more performant and easier to write query using `partition` operator rather using [`top-nested` operator](topnestedoperator.md)
 The next example runs a sub-query calculating `summarize` and `top` for-each of States starting with `W`: (WYOMING, WASHINGTON, WEST VIRGINIA, WISCONSIN)
 
 ```kusto
