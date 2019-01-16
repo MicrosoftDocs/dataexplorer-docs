@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/24/2018
+ms.date: 01/12/2019
 ---
 # HowTo: Data Ingestion without Kusto.Ingest Library
 
@@ -316,7 +316,7 @@ The message that Kusto Data Management service expects to read from the input Az
 |---------|-------------|
 |Id |Message identifier (GUID) |
 |BlobPath |Blob URI, including the SAS key granting Kusto permissions to read/write/delete it (write/delete permissions are required if Kusto is to delete the blob once it has completed ingesting the data) |
-|RawDataSize |Size of the uncompressed data in bytes. Providing this value allows Kusto to optimize ingestion by potentially aggregating multiple blobs together. This property is optional, but if not provided, Kusto will access the blob just to retrieve the size |
+|RawDataSize |Size of the uncompressed data in bytes. This property is optional, however providing this value enables Kusto to optimize ingestion by potentially aggregating multiple blobs together.
 |DatabaseName |Target database name |
 |TableName |Target table name |
 |RetainBlobOnSuccess |If set to `true`, the blob will not be deleted once ingestion is completed successfully. Defaults to `false` |

@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/24/2018
+ms.date: 01/15/2019
 ---
 # About Kusto .NET SDK
 
@@ -18,13 +18,14 @@ ms.date: 09/24/2018
 Kusto client libraries are published as NuGet packages and can be found on [Nuget.org](https://www.nuget.org/packages?q=microsoft.azure.kusto).
 
 The following Kusto packages are available for consumption:
+`
 
-
-|Package                                                                                             |Main assembly name|Runtime             |Source       |Description              |
-|----------------------------------------------------------------------------------------------------|------------------|--------------------|-------------|-------------------------|
-|[Microsoft.Azure.Kusto.Data](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/)            |Kusto.Data        |.NET Framework 4.5.1|Nuget.org    |Kusto Client Library     |
-|[Microsoft.Azure.Kusto.Ingest](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/)        |Kusto.Ingest      |.NET Framework 4.5.1|Nuget.org    |Kusto Ingestion Library  |
-|[Microsoft.Azure.Kusto.Tools](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)          |                  |.NET Framework 4.5.1|Nuget.org    |Command-line tools       |
+|Package                                                                                                            |Main assembly name|Runtime             |Source       |Description                                |
+|-------------------------------------------------------------------------------------------------------------------|------------------|--------------------|-------------|-------------------------------------------|
+|[Microsoft.Azure.Kusto.Data](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/)                           |Kusto.Data        |.NET Framework 4.5.1|Nuget.org    |Kusto Client Library                       |
+|[Microsoft.Azure.Kusto.Ingest](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/)                       |Kusto.Ingest      |.NET Framework 4.5.1|Nuget.org    |Kusto Ingestion Library                    |
+|[Microsoft.Azure.Management.Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/0.9.0-preview)  |                  |.NET Framework 4.5.1|Nuget.org    |Kusto Management Library for ADX clusters  |
+|[Microsoft.Azure.Kusto.Tools](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)                         |                  |.NET Framework 4.5.1|Nuget.org    |Command-line tools                         |
 
 **.NET Standard 2.0 libraries are available in preview mode:**
 

@@ -304,6 +304,7 @@
 ## [tostring()](tostringfunction.md)
 ## [totimespan()](totimespanfunction.md)
 ## [toupper()](toupperfunction.md)
+## [to_utf8()](toutf8function.md)
 ## [translate()](translatefunction.md)
 ## [treepath()](treepathfunction.md)
 ## [trim()](trimfunction.md)
