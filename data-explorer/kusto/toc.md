@@ -557,7 +557,7 @@
 
 ### [Kusto.Explorer](./tools/kusto-explorer.md)
 #### [Keyboard shortcuts](./tools/kusto-explorer-shortcuts.md)
-### [Web UI](./tools/https://docs.microsoft.com/azure/data-explorer/web-query-data)
+### [Web UI](https://docs.microsoft.com/azure/data-explorer/web-query-data)
 
 ## Visualizations, dashboards, and reporting
 
