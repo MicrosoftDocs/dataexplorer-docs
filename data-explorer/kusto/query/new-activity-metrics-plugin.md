@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/24/2018
+ms.date: 01/15/2019
 ---
 # new_activity_metrics plugin
 
@@ -30,7 +30,7 @@ T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), sta
 * *TimelineColumn*: The name of the column that represent timeline.
 * *Start*: Scalar with value of the analysis start period.
 * *End*: Scalar with value of the analysis end period.
-* *Window*: Scalar with value of the analysis window period.
+* *Window*: Scalar with value of the analysis window period. Can be either a numeric/datetime/timestamp value, or a string which is one of `week`/`month`/`year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) accordingly. 
 * *Cohort*: (optional) a scalar constant indicating specific cohort. If not provided, all cohorts corresponding to the analysis time window are calculated and returned.
 * *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
 * *Lookback*: (optional) a tabular expression with a set of IDs that belong to the 'look back' period

@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/24/2018
+ms.date: 01/15/2019
 ---
 # externaldata operator
 
@@ -27,7 +27,8 @@ Note that this operator does not have a pipeline input.
 * *DataFileUri*: The URI (including authentication option, if any) for the file
   holding the data.
 * *Prop1*, *Value1*, ...: Additional properties to describe how the data in the raw file
-  is to be interpreted. Similar to ingestion properties.
+  is to be interpreted, as listed under [ingestion properties](../management/data-ingestion/index.md).
+  Currently, the only property that is supported is the `format` property.
 
 **Returns**
 

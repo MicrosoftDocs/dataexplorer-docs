@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/24/2018
+ms.date: 01/15/2019
 ---
 # MS-TDS clients and Kusto
 
@@ -108,24 +108,21 @@ Connect like you connect to SQL Azure Database.
 
 ## DBeaver (5.3.3 and above)
 
-Setup Active Directory compatibility:
+Configure DBeaver for handling result sets in a way compatible with Kusto:
 
-1. Start DBeaver and in the menu `Database`, select the option `Driver manager`.
-2. In the list of drivers, look for `MS SQL Driver`, select the `Microsoft Driver` and edit it (button `Edit` at the right side of the window).
-3. In the lower right part of the new screen, select `Add Artifact` to add the Active Directory artifact.
-4. In the new `Edit Maven Artifact` window, introduce the following data: `Group Id`: `com.microsoft.azure`, `Artifact Id`: `adal4j`, `Version`: `1.6.0`, `Classifier`: leave it empty. Press `OK`.
-5. Use the artifact pressing the `Download/Update` button at the right side of the dialog.
-6. In the new dialog, confirm and press `Download` at the button right of the dialog.
-7. Press `OK` at the bottom of the `Edit Driver` window to confirm and save the changes.
-8. Close the `Driver Manager` window if it is still open.
+1. In `Window` menu select `Preferences`.
+2. In `Editors` section select `Data Editor`.
+3. Ensure `Refresh data on next page reading` option is checked.
 
-With the driver configured to support the Active Directory authentication, the connection can be created. The instructions for it are as follows:
+Create connection to Kusto database:
 
 1. Create a new database connection (`Database` menu and `New Connection` option).
-2. Look for `MS SQL Driver` and select `Microsoft Driver`. Press `Next`.
-3. Select the `Driver properties` tab at the top and update the values: `authentication`: `ActiveDirectoryPassword`, `trustServerCertificate`: `true`.
-4. Go back to the `General` tab and introduce the connection information and credentials for your AAD user. E.g., `Host`: `mykusto.kusto.windows.net`, `Database/Schema`: `mydb`, `User name`: `myname@contoso.com`. Don't check `Windows Authentication` check box (connecting to Kusto requires AAD authentication). Don't specify master database. Kusto requires specific database name.
-5. Press `Test Connection …` to verify the connection details are correct.
+2. Look for `Azure` and select `Azure SQL Database`. Press `Next`.
+3. Specify host, e.g. `mykusto.kusto.windows.net` and database, e.g. `mydatabase`. Don't leave master as a database name. Kusto requires connection to a specific database.
+4. For authentication option select `Active Directory - Password`.
+5. Specify credentials of active directory user, e.g. `myname@contoso.com` and corresponding password for this
+user.
+6. Press `Test Connection …` to verify the connection details are correct.
 
 ## Microsoft SQL Server Management Studio (v18.x)
 

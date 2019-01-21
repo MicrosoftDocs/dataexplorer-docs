@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/24/2018
+ms.date: 01/15/2019
 ---
 # datetime_part()
 
@@ -43,6 +43,10 @@ Possible values of *part*:
 **Returns**
 
 An integer representing the extracted part.
+
+**Note**
+
+`WeekOfYear` returns according to ISO 8601 standard, which specifies that the First Week of a year, is the one that includes the first Wednesday (https://en.wikipedia.org/wiki/ISO_8601#Week_dates)
 
 **Examples**
 

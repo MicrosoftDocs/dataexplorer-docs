@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/24/2018
+ms.date: 01/15/2019
 ---
 # Data ingestion
 
@@ -141,8 +141,8 @@ use of the `with` keyword. The supported properties are:
 
 * `persistDetails`: A Boolean value that, if specified, indicates that the command
   should persist the detailed results (even if successful) so that the
-  (../operations.md#show-operation-details) command could retrieve them. Defaults
-  to `false`.
+  [.show operation details](../operations.md#show-operation-details) command could retrieve them.
+  Defaults to `false`.
   For example: `with (persistDetails=true)`.
 
 * `policy_ingestiontime`: A Boolean value that, if specified, describes whether

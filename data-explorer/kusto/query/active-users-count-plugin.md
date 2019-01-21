@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/24/2018
+ms.date: 01/15/2019
 ---
 # active_users_count plugin
 
@@ -33,7 +33,7 @@ T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), start
 * *LookbackWindow*: A sliding time window defining a period where user appearance is checked. Lookback period starts at ([current appearance] - [lookback window]) and ends on ([current appearance]). 
 * *Period*: Scalar constant timespan to count as single appearance (a user will be counted as active if it appears in at least distinct ActivePeriodsCount of this timespan.
 * *ActivePeriodsCount*: Minimal number of distinct active periods to decide if user is active. Active users are those who appeared in at least (equal or greater than) active periods count.
-* *Bin*: Scalar constant value of the analysis step period.
+* *Bin*: Scalar constant value of the analysis step period. Can be either a numeric/datetime/timestamp value, or a string which is one of `week`/`month`/`year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) accordingly.
 * *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
 
 **Returns**
