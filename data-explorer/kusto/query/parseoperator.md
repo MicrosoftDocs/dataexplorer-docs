@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/18/2019
 ---
 # parse operator
 
@@ -26,14 +26,17 @@ T | parse Text with "ActivityName=" name ", ActivityType=" type
 * *T*: The input table.
 * kind: 
 
-	* simple (the default) : StringConstant is a regular string value and the match is strict, extended columns must match the required types.
+	* simple (the default) : StringConstant is a regular string value and the match is strict which means that all string delimiters should appear in the parsed string and all extended columns must match the required types.
 		
-	* regex : StringConstant may be a regular expression.
+	* regex : StringConstant may be a regular expression and the match is strict which means that all string delimiters (which can be a regex for this mode) should appear in the parsed string and all extended columns must match the required types.
 		
-	* relaxed : StringConstant is a regular string value and the match is relaxed, extended columns may match the required types partially.
+	* relaxed : StringConstant is a regular string value and the match is relaxed which means that all string delimiters should appear in the parsed string but extended columns may match the required types partially (extended columns that didn't match the required types will get the value null).
+
 * *Expression*: An expression that evaluates to a string.
+
 * *ColumnName:* The name of a column to assign a value (taken out
   of the string expression) to. 
+  
 * *ColumnType:* should be Optional scalar type that indicates the type to convert the value to (by default it is string type).
 
 **Returns**
@@ -163,12 +166,16 @@ Traces
 
 
 
-for relaxed mode :
+in this example for relaxed mode:
+totalSlices extended column is required to be of type long, but in the parsed string it has the value nonValidLongValue.
+releaseTime extended column has the same issue, the value nonValidDateTime can't be parsed as datetime.
+in this case, these two extended columns will get the value null while the other ones (like sliceNumber) still gets the correct values.
+
+using kind = simple for the same query below gives null for all extended columns because it is strict on extended columns (that's the difference between relaxed and simple mode, in relaxed mode, extended columns can be matched partially).
 
 ```kusto
-print x=1
- parse kind=relaxed "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=NULL, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=NULL, previousLockTime=02/17/2016 08:39:01)"
-     with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previouLockTime:date ")" *  
+print x=1  
+| parse kind=relaxed "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=nonValidLongValue, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=nonValidDateTime, previousLockTime=02/17/2016 08:39:01)"       with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previouLockTime:date ")" *
 | project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previouLockTime
 ```
 

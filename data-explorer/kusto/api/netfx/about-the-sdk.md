@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 01/24/2019
 ---
 # About Kusto .NET SDK
 
@@ -18,7 +18,7 @@ ms.date: 01/15/2019
 Kusto client libraries are published as NuGet packages and can be found on [Nuget.org](https://www.nuget.org/packages?q=microsoft.azure.kusto).
 
 The following Kusto packages are available for consumption:
-`
+
 
 |Package                                                                                                            |Main assembly name|Runtime             |Source       |Description                                |
 |-------------------------------------------------------------------------------------------------------------------|------------------|--------------------|-------------|-------------------------------------------|

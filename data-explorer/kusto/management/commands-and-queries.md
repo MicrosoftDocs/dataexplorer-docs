@@ -1,15 +1,15 @@
 ---
-title: Commands and Queries - Azure Data Explorer | Microsoft Docs
-description: This article describes Commands and Queries in Azure Data Explorer.
+title: Commands and queries - Azure Data Explorer | Microsoft Docs
+description: This article describes Commands and queries in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/02/2018
+ms.date: 01/20/2019
 ---
-# Commands and Queries
+# Commands and queries
 
 ## .show commands-and-queries 
 

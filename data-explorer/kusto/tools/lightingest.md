@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/08/2019
+ms.date: 02/04/2019
 ---
 # LightIngest
 
@@ -133,6 +133,7 @@ LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True"
 * The tool will post the data for ingestion and will not wait for the ingest operations to complete
 * Diagnostics trace files will be written locally under folder `LOGS_PATH`
 
+```
 LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True"
   -database:DB
   -table:TABLE

@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 01/28/2019
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 
@@ -53,21 +53,21 @@ existing or unexisting tables and data:
 
 **Remarks**
 
-* `.set-or-replace` replaces the data of the table if it exists (drops the existing shards of the data),
+* `.set-or-replace` replaces the data of the table if it exists (drops the existing data shards),
   or creates the target table if doesn't already exist.
   The table schema will be preserved unless one of `extend_schema` or `recreate_schema`
   ingestion property is set to `true`. If the schema is modified, this happens before the actual data
   ingestion in its own transaction, so a failure to ingest the data doesn't mean the schema wasn't modified.
 
-* It is **strongly recommended** that the data for ingestion be limits -- up to 1 GB per ingestion
-  operation. Use multiple ingestion commands if necessary.
+* It is **strongly recommended** that the data for ingestion be limited to less than 1 GB per ingestion
+  operation. Multiple ingestion commands may be used if necessary.
 
-* Data ingestion is a resource intensive operation which might affect concurrent activities on the cluster,
+* Data ingestion is a resource-intensive operation that might affect concurrent activities on the cluster,
   including running queries. Avoid running "too many" such commands together at the same time.
 
 * When matching the result set schema to that of the target table, the comparison is based on the
   column types. There is no matching of column names, so one must make sure that the query result
-  schema columns are in the correct order that matches the table's, or data will be ingested into
+  schema columns are in the correct order that matches the table's, otherwise data will be ingested into
   the wrong column.
  
 **Examples** 

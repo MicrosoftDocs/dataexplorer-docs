@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/20/2018
+ms.date: 02/07/2019
 ---
 # Scalar Functions
 
@@ -230,7 +230,7 @@ ms.date: 11/20/2018
 |[parse_version()](parse-versionfunction.md)|Converts input string representation of version to a comparable decimal number.|
 |[replace()](replacefunction.md)|Replace all regex matches with another string.|
 |[reverse()](reversefunction.md)|Function makes reverse of input string.|
-|[split()](splitfunction.md)|Splits a given string according to a given delimiter and returns a string array with the conatined substrings.|
+|[split()](splitfunction.md)|Splits a given string according to a given delimiter and returns a string array with the contained substrings.|
 |[strcat()](strcatfunction.md)|Concatenates between 1 and 64 arguments.|
 |[strcat_delim()](strcat-delimfunction.md)|Concatenates between 2 and 64 arguments, with delimiter, provided as first argument.|
 |[strcmp()](strcmpfunction.md)|Compares two strings.|

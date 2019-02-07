@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/17/2018
+ms.date: 02/05/2019
 ---
 # Query limits
 
@@ -17,9 +17,9 @@ there is an inherent risk that queries will monopolize the service
 resources without bounds. Kusto provides a number of built-in protections
 in the form of default query limits.
 
-## Limit on result set size
+## Limit on result set size (result truncation)
 
-Result truncation is a limit set by default on the
+**Result truncation** is a limit set by default on the
 result set returned by the query. Kusto limits the number of records
 returned to the client to **500,000**, and the overall memory for those
 records to **64 MB**. When either of these limits is exceeded, the
@@ -39,7 +39,7 @@ The Kusto DataEngine has failed to execute a query: 'Query result set has exceed
 There are a number of strategies for dealing with this error:
 
 1. Reducing the result set size by modifying the query to not
-   return uninstetersting data. This is commonly useful when
+   return uninteresting data. This is commonly useful when
    the initial (failing) query is too "wide" (e.g. does not
    project away data columns that are no needed.)
 2. Reducing the result set size by shifting post-query processing
@@ -236,8 +236,6 @@ deployed on Azure D14 nodes, 16 CPUs) to the query, when it is 50% than half of 
 will be used, etc. (The numbers are rounded up to a whole CPU, so it is safe to set it
 to 0.) The second controls how many nodes in the cluster to utilize per sub-query distribution
 operation, and functions in a similar manner.
-
-## Limit on query complexity
 
 ## Limit on query complexity
 

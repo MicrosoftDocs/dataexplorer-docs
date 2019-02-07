@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/28/2019
 ---
 # funnel_sequence_completion plugin
 
@@ -21,17 +21,6 @@ T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)
 
 *T* `| evaluate` `funnel_sequence_completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Step*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindow*`)`
 
-T | evaluate funnel_sequence_completion( 
-            <IdColumn>: column reference, must be present in the source expression 
-            <TimelineColumn>: column reference representing timeline, must be present in the source expression 
-            <Start>: scalar constant value of the analysis start period 
-            <End>: scalar constant value of the analysis end period 
-            <Step>: scalar constant value of the analysis step period (bin) 
-            <StateColumn>: column reference representing the state, must be present in the source expression 
-            <Sequence>: a constant dynamic array with the sequence values (values are looked up in <StateColumn>) 
-            <MaxSequenceWindows>: scalar dynamic array of timespan values 
-            ) 
-
 **Arguments**
 
 * *T*: The input tabular expression.
@@ -42,7 +31,7 @@ T | evaluate funnel_sequence_completion(
 * *Step*: scalar constant value of the analysis step period (bin) 
 * *StateColumn*: column reference representing the state, must be present in the source expression
 * *Sequence*: a constant dynamic array with the sequence values (values are looked up in `StateColumn`)
-* *MaxSequenceStepWindows*: scalar constant value of the max allowed timespan between 2 sequential steps in the sequence
+* *MaxSequenceStepWindows*: scalar constant value of the max allowed timespan between the first and last sequential steps in the sequence
 
 **Returns**
 

@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 01/30/2019
 ---
 # Kusto API Overview
 
@@ -29,9 +29,10 @@ endpoints above to make programmatic access easy:
 
 1. .NET SDK
 2. Python SDK
-3. Java SDK 
+3. Java SDK
 4. Node SDK 
 5. PowerShell
+6. R
 
 ## REST API
 
@@ -85,6 +86,10 @@ All of the above libraries make use of the Azure APIs (e.g. Azure Storage API, A
 ## Python Libraries
 
 Kusto provides a Python client library that allows callers to send data queries and control commands.
+
+## R Library
+
+Kusto provides an R client library that allows callers to send data queries and control commands.
 
 
 

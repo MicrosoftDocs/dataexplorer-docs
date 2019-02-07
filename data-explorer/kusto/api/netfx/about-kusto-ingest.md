@@ -7,12 +7,12 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/10/2019
+ms.date: 02/05/2019
 ---
 # Kusto Ingest Client Library
 
 ## Overview
-Kusto.Ingest library is a .NET 4.5.1 library that allows to send data to Kusto service.
+Kusto.Ingest library is a .NET 4.6.2 library that allows to send data to Kusto service.
 Takes dependencies on the following libraries and SDKs:
 * ADAL for AAD Authentication
 * Azure Storage Client

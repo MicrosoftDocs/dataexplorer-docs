@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/27/2018
+ms.date: 01/23/2019
 ---
 # Kusto.Explorer keyboard shortcuts (hot-keys)
 
@@ -64,7 +64,7 @@ or when the context is in the results view:
 |`Ctrl`+`Shift`+`R` | Focuses on Results panel |
 |`Ctrl`+`Shift`+`T` | Focuses on Connections panel |
 |`Ctrl`+`Shift`+`Y` | Focuses on Query editor |
-|`Ctrl`+`Shift`+`U` | Focuses on Chart panel |
+|`Ctrl`+`Shift`+`P` | Focuses on Chart panel |
 |`Ctrl`+`Shift`+`I` | Focuses on Query Information panel |
 |`Ctrl`+`Shift`+`S` | Focuses on Query Statistics panel |
 |`Ctrl`+`Shift`+`K` | Focuses on Error panel |

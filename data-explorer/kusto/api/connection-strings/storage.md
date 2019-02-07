@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/10/2019
+ms.date: 01/24/2019
 ---
 # Storage connection strings
 
@@ -52,7 +52,9 @@ the account key or SAS):
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;account_key=="` 
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"` 
 
-## Azure Data Lake Store Gen 2
+## Azure Data Lake Store
+
+### Azure Data Lake Store Gen 2
 
 This provider supports accessing data in Azure Data Lake Store Gen 2.
 
@@ -86,7 +88,7 @@ supported:
 
 
 
-## Azure Data Lake Store Gen 1
+### Azure Data Lake Store Gen 1
 
 This provider supports accessing files and directories in Azure Data Lake Store.
 It must be provided with credentials (Kusto doesn't use its own AAD principal to

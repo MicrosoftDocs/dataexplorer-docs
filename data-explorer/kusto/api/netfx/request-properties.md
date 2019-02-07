@@ -1,30 +1,66 @@
 ---
-title: Request properties and ClientRequestProperties - Azure Data Explorer | Microsoft Docs
-description: This article describes Request properties and ClientRequestProperties in Azure Data Explorer.
+title: Request properties, ClientRequestProperties - Azure Data Explorer | Microsoft Docs
+description: This article describes Request properties, ClientRequestProperties in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/03/2019
 ---
-# Request properties and ClientRequestProperties
+# Request properties, ClientRequestProperties
 
-Kusto supports attaching various properties to client requests (such as queries and control commands).
-Such properties may be used to provide additional information to Kusto (for example, for the purpose
-of correlating client/service interaction), may affect what limits and policies get applied to the
-request, and much more. A full list of supported properties can be found at the end of this page.
+When making a request from Kusto through the .NET SDK, one generally provides
+the following values:
 
-## The ClientRequestId (x-ms-client-request-id) property
+1. A connection string indicating the service endpoint to connect to, authentication
+   parameters, and similar connection-related information. Programmatically, the
+   connection string is represented through the `KustoConnectionStringBuilder`
+   class.
 
-It is recommended the clients will always set at least one property for every request, the
-`ClientRequestId` programmatic property (equivalently, the `x-ms-client-request-id` HTTP header).
-This property attaches the provided string (which should be unique for every request) to the request,
-so as to allow correlation of client activities and service activities.
+2. The name of the database that is used to describe the "scope" of the request.
 
-The content of this property can be any printable unique string, such as a GUID. It is recommended,
-however, that it follow this format:
+3. The text of the request (query or command) itself.
+
+4. Additional properties that the client provides the service and are applied to
+   the request. Programmatically, these properties are held by a class called
+   `ClientRequestProperties`.
+
+The client request properties have many uses. Some of them are used to make
+debugging easier (for example, by providing correlation strings that can be
+used to track client/service interactions), others are used to affect what limits
+and policies get applied to the request, while a third category of such properties
+is [query parameters](../../query/queryparametersstatement.md). A full list of supported
+properties appear in this page.
+
+The `Kusto.Data.Common.ClientRequestProperties` class holds three kinds of data:
+
+* Named properties.
+
+* Options (a mapping of an option name to an option value).
+
+* Parameters (a mapping of a query parameter name to a query parameter value).
+
+> [!NOTE]
+> Some named properties are marked as "do not use". Such properties should not
+> be specified by clients, and have no effect on the service.
+
+## The ClientRequestId (x-ms-client-request-id) named property
+
+This named property holds the client-specified identity of the request. It is highly
+recommended that a unique per-request value be specified by clients with each
+request they send, as it makes debugging failures easier (and is required in
+some scenarios, such as query cancellation).
+
+The programmatic name of this property is `ClientRequestId`, and it translates
+into the HTTP header `x-ms-client-request-id`.
+
+This property will be set to a (random) value by the SDK if the client doesn't
+specify its own value.
+
+The content of this property can be any printable unique string, such as a GUID.
+It is recommended, however, that clients use the following template:
 
 *ApplicationName* `.` *ActivityName* `;` *UniqueId*
 
@@ -32,12 +68,26 @@ Where *ApplicationName* identifies the client application making the request, *A
 the kind of activity that the client application is issuing the client request for, and *UniqueId*
 identifies the specific request.
 
-## Programmatically controlling request properties
+## The Application (x-ms-app) named property
 
-Several of the methods in the Kusto client libraries (in particular, those that end-up making REST API
-calls to the Kusto service) take an optional argument of type `Kusto.Data.Common.ClientRequestProperties`.
-This argument allows the caller more control over how Kusto executes 
-the query or control command.
+This named property holds the name of the client application making the request,
+for tracing purposes.
+
+The programmatic name of this property is `Application`, and it translates
+into the HTTP header `x-ms-app`. It can be specified in the
+Kusto connection string as `Application Name for Tracing`.
+
+This property will be set to the name of the process hosting the SDK if the client doesn't
+specify its own value.
+
+## The User (x-ms-user) named property
+
+This named property holds the identity of the user making the request,
+for tracing purposes.
+
+The programmatic name of this property is `User`, and it translates
+into the HTTP header `x-ms-user`. It can be specified in the
+Kusto connection string as `User Name for Tracing`.
 
 ## Controlling request properties using the REST API
 

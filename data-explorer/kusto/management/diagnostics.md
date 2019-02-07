@@ -1,17 +1,17 @@
 ---
-title: Diagnostics information - Azure Data Explorer | Microsoft Docs
-description: This article describes Diagnostics information in Azure Data Explorer.
+title: Diagnostic information - Azure Data Explorer | Microsoft Docs
+description: This article describes Diagnostic information in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/06/2018
+ms.date: 01/20/2019
 ---
-# Diagnostics information
+# Diagnostic information
 
-Next commands can be used to display system diagnostics information.
+Next commands can be used to display system diagnostic information.
 
 ## .show cluster
 

@@ -1,15 +1,15 @@
 ---
-title: Ingestion Failures - Azure Data Explorer | Microsoft Docs
-description: This article describes Ingestion Failures in Azure Data Explorer.
+title: Ingestion failures - Azure Data Explorer | Microsoft Docs
+description: This article describes Ingestion failures in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/20/2019
 ---
-# Ingestion Failures
+# Ingestion failures
 
 ## .show ingestion failures
 
