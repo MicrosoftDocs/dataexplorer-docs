@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/06/2019
+ms.date: 02/07/2019
 ---
 # GDPR and data purge
 
@@ -76,8 +76,6 @@ Issuing a `.purge` command triggers this process, which takes a few days to
 complete. Note that if the "density" of records for which the predicate applies
 is sufficiently large, the process will effectively re-ingest all the data in the
 table, and so it may have a significant impact on performance and COGS.
-
-_A purge code sample is available as part of [Kusto code samples](../code/codesamples.md)_
 
 ## Purge limitations and considerations
 
@@ -295,23 +293,6 @@ Shows purge operations status in the requested time period.
 * ClientRequestId - client activity id of the CM purge request. 
 * Principal - identity of the purge command issuer.
 
-### Monitoring Purge Operations
-Purge requests can be monitored as part of [Kusto monitoring](../ops/monitoring.md) solution in MDM. Purge metrics appear in MdmDataMgmtMetrics namespace within Kusto regional MDM account. 
-
-|Metric Name|Dimensions|Comment
-|---|---|---|
-|PurgeTimeInQueue|TargetCluster|Time since submitting the request to the DM and until the purge was dispatched to engine for execution
-|PurgeTotalProcessingTime|TargetCluster|Total time elapsed from issuing a purge request, up to reaching its final state.
-|PurgePendingRequestsCount|TargetCluster, PendingState|Number of pending purge requests, i.e. requests that haven't reached their final state. 'PendingState' can be either 'Scheduled' or 'InProgress'
-|PurgeFailure|TargetCluster, FailureReason|Number of purge operation failures. 'FailureReason' indicates the failure type
-
-## Using retention policy for GDPR
-If you are planning to use retentiopn policy to comply with GDPR requirements, please note that aside from the retention policy itself, the MaxRangeInHours parameter which is part of the [Merge policy](../concepts/mergepolicy.md) also impacts the time span in which the data becomes inaccesible (soft deleted). 
-The total time guaranteed for a record to be soft-deleted from Kusto is `Soft-Delete-TimeSpan + Merge-Policy MaxRangeInHours + 2 hours` (the latter 2h being the soft delete periodic cycle time span plus an extra 1h as safety measurement). 
-For example, if data needs to be inaccessible after 48 hours, the below settings are advised (all in the effective scope of the relevant table, of course): 
-1. Set MaxRangeInHours to 1h in [Merge policy](../concepts/mergepolicy.md). 
-1. Set soft delete [Retention policy](../concepts/retentionpolicy.md) to 45 hours. 
- 
 ## Purging an entire table
 Purging a table consists of dropping it, and marking it as purged, such that the hard delete process described in [Purge Process](#purge-process) runs on it. Whereas, dropping a table without purging it does not delete all its storage artifacts (they will be deleted according to the hard retention policy initially set on the table). The command is quick and efficient and is much preferable over the purge records process, if applicable for your scenario. 
 Throttling limitation is not applied to purge table allrecords command.

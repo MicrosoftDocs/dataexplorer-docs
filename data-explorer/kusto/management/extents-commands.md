@@ -137,7 +137,7 @@ Requires [Table admin permission](../management/access-control/role-based-author
 
 * `async` (optional) specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned,
   and the operation's status can be monitored using the [.show operations](operations.md#show-operations) command).
-    * In case this option is used, the results of a successful execution can be retrieved the [.show operation details](operations.md#show-operations-details) command).
+    * In case this option is used, the results of a successful execution can be retrieved the [.show operation details](operations.md#show-operation-details) command).
 
 There are three ways to specify which extents to move:
 1. All extents of a specific table are to be moved.
@@ -298,7 +298,7 @@ Requires [Table admin permission](../management/access-control/role-based-author
 
 * `async` (optional) specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned,
   and the operation's status can be monitored using the [.show operations](operations.md#show-operations) command).
-    * In case this option is used, the results of a successful execution can be retrieved the [.show operation details](operations.md#show-operations-details) command).
+    * In case this option is used, the results of a successful execution can be retrieved the [.show operation details](operations.md#show-operation-details) command).
 
 Specifying which extents should be dropped or moved is done by providing 2 queries
 - *query for extents to be dropped from table* - the results of this query specify the extent IDs  
@@ -351,7 +351,7 @@ tagged with `drop-by:MyTag`:
 
 * `async` (optional) specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned,
   and the operation's status can be monitored using the [.show operations](operations.md#show-operations) command).
-    * In case this option is used, the results of a successful execution can be retrieved the [.show operation details](operations.md#show-operations-details) command).
+    * In case this option is used, the results of a successful execution can be retrieved the [.show operation details](operations.md#show-operation-details) command).
 
 The command runs in the context of a specific database, and drops the provided [extent tag(s)](extents-overview.md#extent-tagging) from any extent in the provided database and table, which includes any of the tags.  
 
@@ -439,7 +439,7 @@ The extents and the tags to alter are specified using a Kusto query that returns
 
 * `async` (optional) specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned,
   and the operation's status can be monitored using the [.show operations](operations.md#show-operations) command).
-    * In case this option is used, the results of a successful execution can be retrieved the [.show operation details](operations.md#show-operations-details) command).
+    * In case this option is used, the results of a successful execution can be retrieved the [.show operation details](operations.md#show-operation-details) command).
 
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) for all involved tables.
 

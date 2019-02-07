@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/31/2019
+ms.date: 02/07/2019
 ---
 # bag_unpack plugin
 
@@ -55,7 +55,7 @@ all the rules for a tabular schema. In particular:
    as that will produce two columns with the same name.
 
 2. All slot names, when prefixed by *OutputColumnPrefix*, must be valid
-   entity names and comply with the [identifier naming rules](./schema-entities/entity-names.html#identifier-naming-rules).
+   entity names and comply with the [identifier naming rules](./schema-entities/entity-names.md#identifier-naming-rules).
 
 **Example**
 
