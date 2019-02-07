@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/19/2018
+ms.date: 01/31/2019
 ---
 # Kusto.Explorer tool
 
@@ -696,7 +696,7 @@ Try installing again from one of the [installation mirrors](#getting-the-tool)
 6.	If it still fails, enable verbose ClickOnce logging by creating a LogVerbosityLevel string value of 1 under:
 
 `HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Deployment`, repro it again, and send the verbose output to 
-KustoOps@microsoft.com. 
+KEBugReport@microsoft.com. 
 
 #### ClickOnce error: Your administrator has blocked this application because it potentially poses a security risk to your computer
 

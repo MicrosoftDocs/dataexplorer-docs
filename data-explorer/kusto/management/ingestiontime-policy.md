@@ -7,11 +7,12 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/07/2019
 ---
 # IngestionTime policy
 
-IngestionTime policy is an optional policy set on tables (off by default). Once enabled, it provides the approximate time of ingestion of the records into a table.
+IngestionTime policy is an optional policy set on tables (it is enabled by default).
+it provides the approximate time of ingestion of the records into a table.
 
 Ingestion time value can be accessed at query time using `ingestion_time()` function.
 

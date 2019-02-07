@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/12/2019
+ms.date: 01/24/2019
 ---
 # HowTo: Data Ingestion without Kusto.Ingest Library
 
@@ -51,7 +51,7 @@ internal class IngestionResourcesSnapshot
 public static void IngestSingleFile(string file, string db, string table, string ingestionMappingRef)
 {
     // Your Kusto ingestion service URI, typically ingest-<your cluster name>.kusto.windows.net
-    string DmServiceBaseUri = @"https://ingest-<your_cluster_name>.kusto.windows.net";
+    string DmServiceBaseUri = @"https://ingest-{serviceNameAndRegion}.kusto.windows.net";
 
     // 1. Authenticate the interactive user (or application) to access Kusto ingestion service
     string bearerToken = AuthenticateInteractiveUser(DmServiceBaseUri);
@@ -104,7 +104,7 @@ ADAL is available on [non-Windows platforms](https://docs.microsoft.com/en-us/az
 internal static string AuthenticateInteractiveUser(string resource)
 {
     // Create Auth Context for MSFT AAD:
-    AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/<your AAD tenant name or ID>");
+    AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/{AAD Tenant ID or name}");
 
     // Acquire user token for the interactive user for Kusto:
     AuthenticationResult result =
@@ -316,7 +316,7 @@ The message that Kusto Data Management service expects to read from the input Az
 |---------|-------------|
 |Id |Message identifier (GUID) |
 |BlobPath |Blob URI, including the SAS key granting Kusto permissions to read/write/delete it (write/delete permissions are required if Kusto is to delete the blob once it has completed ingesting the data) |
-|RawDataSize |Size of the uncompressed data in bytes. This property is optional, however providing this value enables Kusto to optimize ingestion by potentially aggregating multiple blobs together.
+|RawDataSize |Size of the uncompressed data in bytes. Providing this value allows Kusto to optimize ingestion by potentially aggregating multiple blobs together. This property is optional, but if not provided, Kusto will access the blob just to retrieve the size |
 |DatabaseName |Target database name |
 |TableName |Target table name |
 |RetainBlobOnSuccess |If set to `true`, the blob will not be deleted once ingestion is completed successfully. Defaults to `false` |

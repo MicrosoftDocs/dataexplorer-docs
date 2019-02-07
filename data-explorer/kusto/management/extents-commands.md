@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 02/07/2019
 ---
 # Extents (Data shards) management
 
@@ -87,12 +87,12 @@ the results of a cluster-level command.
 |ExtentSize |Double |Size of the extent in memory (compressed + index) 
 |CompressedSize |Double |Compressed size of the extent data in memory 
 |IndexSize |Double |Index size of the extent data 
-|Blocks |UInt64 |Amount of data blocks in extent 
-|Segments |UInt64 |Amount of data segment in extent 
+|Blocks |Long |Amount of data blocks in extent 
+|Segments |Long |Amount of data segment in extent 
 |AssignedDataNodes |String | Deprecated (An empty string)
 |LoadedDataNodes |String |Deprecated (An empty string)
 |ExtentContainerId |String | ID of the extent container the extent is in
-|RowCount |UInt64 |Amount of rows in the extent
+|RowCount |Long |Amount of rows in the extent
 |MinCreatedOn |DateTime |Date-time when the extent was created (for a merged extent - the minimum of creation times among source extents) 
 |Tags|String|Tags, if any, defined for the extent 
  
@@ -126,17 +126,18 @@ the results of a cluster-level command.
 
 **Syntax**
 
-`.move` `[async]` `extents` `all` `from` `table` *SourceTableName* `to` `table` *DestinationTableName*
+`.move` [`async`] `extents` `all` `from` `table` *SourceTableName* `to` `table` *DestinationTableName*
 
-`.move` `[async]` `extents` `(` *GUID1* [`,` *GUID2* ...] `)` `from` `table` *SourceTableName* `to` `table` *DestinationTableName* 
+`.move` [`async`] `extents` `(` *GUID1* [`,` *GUID2* ...] `)` `from` `table` *SourceTableName* `to` `table` *DestinationTableName* 
 
-`.move` `[async]` `extents` `to` `table` *DestinationTableName* <| *query*
+`.move` [`async`] `extents` `to` `table` *DestinationTableName* <| *query*
 
 This command runs in the context of a specific database, and moves the specified extents from the source table to the destination table transactionally.
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) for the source and destination tables.
 
 * `async` (optional) specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned,
-  and the operation's status can be monitored using the [.show operations](./diagnostics.md#show-operations) command).
+  and the operation's status can be monitored using the [.show operations](operations.md#show-operations) command).
+    * In case this option is used, the results of a successful execution can be retrieved the [.show operation details](operations.md#show-operations-details) command).
 
 There are three ways to specify which extents to move:
 1. All extents of a specific table are to be moved.
@@ -285,7 +286,7 @@ Removes all extents from 'TestTable':
 
 **Syntax**
 
-`.replace` `[async]` `extents` `in` `table` *DestinationTableName* `<| 
+`.replace` [`async`] `extents` `in` `table` *DestinationTableName* `<| 
 {`*query for extents to be dropped from table*`},{`*query for extents to be moved to table*`}`
 
 This command runs in the context of a specific database, 
@@ -296,7 +297,8 @@ All of the drop and move operations are done in a single transaction.
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) for the source and destination tables.
 
 * `async` (optional) specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned,
-  and the operation's status can be monitored using the [.show operations](./diagnostics.md#show-operations) command).
+  and the operation's status can be monitored using the [.show operations](operations.md#show-operations) command).
+    * In case this option is used, the results of a successful execution can be retrieved the [.show operation details](operations.md#show-operations-details) command).
 
 Specifying which extents should be dropped or moved is done by providing 2 queries
 - *query for extents to be dropped from table* - the results of this query specify the extent IDs  
@@ -343,9 +345,13 @@ tagged with `drop-by:MyTag`:
 
 **Syntax**
 
-`.drop` `extent` `tags` `from` `table` *TableName* `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)`
+`.drop` [`async`] `extent` `tags` `from` `table` *TableName* `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)`
 
-`.drop` `extent` `tags` <| *query*
+`.drop` [`async`] `extent` `tags` <| *query*
+
+* `async` (optional) specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned,
+  and the operation's status can be monitored using the [.show operations](operations.md#show-operations) command).
+    * In case this option is used, the results of a successful execution can be retrieved the [.show operation details](operations.md#show-operations-details) command).
 
 The command runs in the context of a specific database, and drops the provided [extent tag(s)](extents-overview.md#extent-tagging) from any extent in the provided database and table, which includes any of the tags.  
 
@@ -424,12 +430,16 @@ Drops all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from 
 
 **Syntax**
 
-`.alter` `extent` `tags` `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)` <| *query*
+`.alter` [`async`] `extent` `tags` `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)` <| *query*
 
 The command runs in the context of a specific database, and alters the [extent tag(s)](extents-overview.md#extent-tagging)
 of all of the extents returned by the specified query, to the provided set of tags.
 
 The extents and the tags to alter are specified using a Kusto query that returns a recordset with a column called "ExtentId".
+
+* `async` (optional) specifies whether or not the command is executed asynchronously (in which case, an Operation ID (Guid) is returned,
+  and the operation's status can be monitored using the [.show operations](operations.md#show-operations) command).
+    * In case this option is used, the results of a successful execution can be retrieved the [.show operation details](operations.md#show-operations-details) command).
 
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) for all involved tables.
 

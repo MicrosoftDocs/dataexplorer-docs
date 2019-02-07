@@ -1,15 +1,15 @@
 ---
-title: Shuffle Summarize - Azure Data Explorer | Microsoft Docs
-description: This article describes Shuffle Summarize in Azure Data Explorer.
+title: Shuffle summarize - Azure Data Explorer | Microsoft Docs
+description: This article describes Shuffle summarize in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/20/2019
 ---
-# Shuffle Summarize
+# Shuffle summarize
 
 Shuffle summarize is a semantic-preserving transformation for summarize that depending on the actual data can sometimes yield considerably better performance.
 
@@ -107,4 +107,4 @@ lineitem
 | consume
 ```
 
-Please note that setting many partitions may degrade performance and consume more cluster resources so it is recommended to choose the partitions number carefully (starting with the hint.strategy = shuffle and start increasing the partitions gradually).
+Note that setting many partitions may degrade performance and consume more cluster resources so it is recommended to choose the partition number carefully (starting with the hint.strategy = shuffle and start increasing the partitions gradually).

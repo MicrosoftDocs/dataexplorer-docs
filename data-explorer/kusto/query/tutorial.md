@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/07/2019
 ---
 # Tutorial
 
@@ -33,7 +33,7 @@ Our example database has a table called `StormEvents`.
 To find out how big it is, we'll pipe its content into an operator that simply counts the rows:
 
 * *Syntax:* A query is a data source (usually a table name), optionally
-  followed by one or more pais of the pipe character and some tabular operator.
+  followed by one or more pairs of the pipe character and some tabular operator.
 
 ```kusto
 StormEvents | count

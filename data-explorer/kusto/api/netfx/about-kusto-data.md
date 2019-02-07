@@ -1,15 +1,15 @@
 ---
-title: Kusto Client Library - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto Client Library in Azure Data Explorer.
+title: Kusto client library - Azure Data Explorer | Microsoft Docs
+description: This article describes Kusto client library in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/10/2019
+ms.date: 02/05/2019
 ---
-# Kusto Client Library
+# Kusto client library
     
 The Kusto Client SDK (Kusto.Data) exposes a programmatic API
 similar to ADO.NET, so using it should feel
@@ -50,7 +50,7 @@ var reader = client.ExecuteQuery("MyTable | count");
 **Example: Getting diagnostics info from the Kusto cluster**
 
 ```csharp
-var kcsb = new KustoConnectionStringBuilder(cluster URI here);
+var kcsb = new KustoConnectionStringBuilder(cluster URI here). WithAadUserPromptAuthentication();
 using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
 {
     var diagnosticsCommand = CslCommandGenerator.GenerateShowDiagnosticsCommand();

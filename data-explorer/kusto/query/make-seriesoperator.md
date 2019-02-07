@@ -7,21 +7,21 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/09/2019
+ms.date: 02/03/2019
 ---
 # make-series operator
 
 Create series of specified aggregated values along specified axis. 
 
 ```kusto
-T | make-series sum(amount) default=0, avg(price) default=0 on timestamp in range(datetime(2016-01-01), datetime(2016-01-10), 1d) by fruit, supplier
+T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from datetime(2016-01-01) to datetime(2016-01-10) step 1d by fruit, supplier
 ```
 
 **Syntax**
 
 *T* `| make-series`
       [*Column* `=`] *Aggregation* [`default` `=` *DefaultValue*] [`,` ...]
-    `on` *AxisColumn* `in` `range(`*start*`,` *stop*`,` *step*`)`
+    `on` *AxisColumn* `from` *start* `to` *end* `step` *step* 
     [`by`
       [*Column* `=`] *GroupExpression* [`,` ...]]
 
@@ -31,16 +31,16 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp in rang
 * *DefaultValue:* Default value which will be used instead of absent values. If there is no row with specific values of *AxisColumn* and *GroupExpression* then in the results the corresponding element of the array will be assigned with a *DefaultValue*. If `default =` *DefaultValue* is omitted then 0 is assumed. 
 * *Aggregation:* A call to an [aggregation function](make-seriesoperator.md#list-of-aggregation-functions) such as `count()` or `avg()`, with column names as arguments. See the [list of aggregation functions](make-seriesoperator.md#list-of-aggregation-functions). Note that only aggregation functions that return numeric result can be used with `make-series` operator.
 * *AxisColumn:* A column on which the series will be ordered. It could be considered as timeline, but besides `datetime` any numeric types are accepted.
-* *start*: The low bound value of the *AxisColumn* for each the series will be built. Similar to the `range` function *start*, *stop* and *step* are used to build array of *AxisColumn* values within a given range and using specified *step*. All *Aggregation* values are ordered respectively to this array. This *AxisColumn* array is also the last output column in the output with the same name as *AxisColumn*.
-* *stop*: The high bound value of the *AxisColumn* for each the series will be built or the least value that is greater than the last element in the resulting array and within an integer multiple of *step* from *start*.
+* *start*: The low bound value of the *AxisColumn* for each the series will be built. *start*, *end* and *step* are used to build array of *AxisColumn* values within a given range and using specified *step*. All *Aggregation* values are ordered respectively to this array. This *AxisColumn* array is also the last output column in the output with the same name as *AxisColumn*.
+* *end*: The high bound (non-inclusive) value of the *AxisColumn*, the last index of the time series is smaller than this value (and will be *start* plus integer multiple of *step* that is smaller than *end*).
 * *step*: The difference between two consecutive elements of the *AxisColumn* array (i.e. the bin size).
 * *GroupExpression:* An expression over the columns, that provides a set of distinct values. Typically it's a column name that already provides a restricted set of values. 
 
 **Returns**
 
-The input rows are arranged into groups having the same values of the `by` expressions and `bin(`*AxisColumn*`, `*step*`)` expression. Then the specified aggregation functions are computed over each group, producing a row for each group. The result contains the `by` columns, *AxisColumn* column and also at least one column for each computed aggregate. (Aggregation that multiple columns or non-numeric results are not supported.)
+The input rows are arranged into groups having the same values of the `by` expressions and `bin_at(`*AxisColumn*`, `*step*`, `*start*`)` expression. Then the specified aggregation functions are computed over each group, producing a row for each group. The result contains the `by` columns, *AxisColumn* column and also at least one column for each computed aggregate. (Aggregation that multiple columns or non-numeric results are not supported.)
 
-This intermediate result has as many rows as there are distinct combinations of `by` and `bin(`*AxisColumn*`,` *step*`)` values.
+This intermediate result has as many rows as there are distinct combinations of `by` and `bin_at(`*AxisColumn*`, `*step*`, `*start*`)` values.
 
 Finally the rows from the intermediate result arranged into groups having the same values of the `by` expressions and all aggregated values are arranged into arrays (values of `dynamic` type). For each aggregation there is one column containing its array with the same name. The last column in the output of the range function with all *AxisColumn* values. Its value is repeated for all rows. 
 
@@ -49,6 +49,20 @@ Note that due to the fill missing bins by default value, the resulting pivot tab
 **Note**
 
 Although you can provide arbitrary expressions for both the aggregation and grouping expressions, it's more efficient to use simple column names.
+
+**Alternate Syntax**
+
+*T* `| make-series`
+      [*Column* `=`] *Aggregation* [`default` `=` *DefaultValue*] [`,` ...]
+    `on` *AxisColumn* `in` `range(`*start*`,` *stop*`,` *step*`)`
+    [`by`
+      [*Column* `=`] *GroupExpression* [`,` ...]]
+
+The generated series from the alternate syntax differs from the main syntax in 2 aspects:
+* The *stop* value is inclusive.
+* Binning the index axis is generated with bin() and not bin_at() which means that *start* is not guaranteed to be included in the generated series.
+
+It is recommended to use the main syntax of make-series and not the alternate syntax.
 
 **Distribution and Shuffle**
 
@@ -101,7 +115,7 @@ Although you can provide arbitrary expressions for both the aggregation and grou
   
 ```kusto
 T | make-series PriceAvg=avg(Price) default=0
-on Purchase in range(datetime(2016-09-10), datetime(2016-09-12), 1d) by Supplier, Fruit
+on Purchase from datetime(2016-09-10) to datetime(2016-09-13) step 1d by Supplier, Fruit
 ```
   
 ![alt text](./Images/aggregations/makeseries.png "makeseries")
@@ -126,9 +140,9 @@ let data=datatable(timestamp:datetime, metric: real)
 ];
 let interval = 1d;
 let stime = datetime(2017-01-01);
-let etime = datetime(2017-01-09);
+let etime = datetime(2017-01-10);
 data
-| make-series avg(metric) on timestamp in range(stime, etime, interval)  
+| make-series avg(metric) on timestamp from stime to etime step interval 
 ```
   
 |avg_metric|timestamp|

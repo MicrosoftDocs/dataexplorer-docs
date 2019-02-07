@@ -1,15 +1,15 @@
 ---
-title: Numerical Operators - Azure Data Explorer | Microsoft Docs
-description: This article describes Numerical Operators in Azure Data Explorer.
+title: Numerical operators - Azure Data Explorer | Microsoft Docs
+description: This article describes Numerical operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/20/2019
 ---
-# Numerical Operators
+# Numerical operators
 
 The types `int`, `long`, and `real` represent numerical types.
 The following operators can be used between pairs of these types:

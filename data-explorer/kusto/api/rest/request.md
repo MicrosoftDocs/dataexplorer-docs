@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/04/2018
+ms.date: 02/03/2019
 ---
 # Query/management HTTP request
 
@@ -79,9 +79,10 @@ POST is used.
   of the "database in scope" &emdash; the database that is the target of the
   query or control command.
 
-`properties`: This is an **optional** parameter. It provides various
+* `properties`: This is an **optional** parameter. It provides various
   client request properties that modify how the request is processed and its
-  results returned back.
+  results returned back. Please see [client request properties](../netfx/request-properties.md)
+  for a complete description.
 
 ## GET query parameters
 

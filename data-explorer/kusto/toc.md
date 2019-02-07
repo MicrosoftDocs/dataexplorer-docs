@@ -415,6 +415,7 @@
 
 
 
+### [GDPR and data purge](./concepts/compliance-gdpr.md)
 
 
 
@@ -423,25 +424,6 @@
 ## Policies
 ### [Cache policy](./concepts/cachepolicy.md)
 
-### [IngestionTime policy](./concepts/ingestiontimepolicy.md)
-
-### [Retention policy](./concepts/retentionpolicy.md)
-### [Restricted view access policy](./concepts/restrictedviewaccesspolicy.md)
-### [Row order policy](./concepts/roworderpolicy.md)
-
-
-
-
-### [Update policy](./concepts/updatepolicy.md)
-## Misc and Errors
-
-### [Query limits](./concepts/querylimits.md)
-### [Partial query failures](./concepts/partialqueryfailures.md)
-#### [Result truncation](./concepts/resulttruncation.md)
-#### [Runaway queries](./concepts/runawayqueries.md)
-#### [Overflows](./concepts/overflow.md)
-### [Cross-cluster queries and schema changes](./concepts/crossclusterandschemachanges.md)
-### [Query consistency](./concepts/queryconsistency.md)
 # [Management](./management/index.md)
 ## [Overview](./management/index.md)
 ### [Best practices](./management/best-practices.md)
@@ -521,7 +503,7 @@
 #### [Controlling Tracing](./api/netfx/controlling-tracing.md)
 
 ### [Kusto.Data](./api/netfx/about-kusto-data.md)
-#### [Request Properties and ClientRequestProperties](./api/netfx/request-properties.md)
+#### [Request Properties, ClientRequestProperties](./api/netfx/request-properties.md)
 
 ### [Kusto.Ingest](./api/netfx/about-kusto-ingest.md)
 #### [Permissions](./api/netfx/kusto-ingest-client-permissions.md)
@@ -534,8 +516,12 @@
 #### [HowTo: Data Ingestion with REST API](./api/netfx/kusto-ingest-client-rest.md)
 
 
+
 ## Python SDK
 ### [azure-kusto-python](./api/python/kusto-python-client-library.md)
+
+## R SDK
+### [azure-kusto-r](./api/r/kusto-r-client-library.md)
 
 ## Java SDK
 ### [azure-kusto-java](./api/java/kusto-java-client-library.md)

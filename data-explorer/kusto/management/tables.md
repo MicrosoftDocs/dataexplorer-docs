@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/04/2018
+ms.date: 02/03/2019
 ---
 # Tables
 
@@ -21,25 +21,22 @@ This topic discusses the lifecycle of tables and associated control commands:
 |Manage ingestion mapping                |`.create ingestion mapping`, `.show ingestion mappings`, `.alter ingestion mapping`, `.drop ingestion mapping`|
 |Manage table display properties         |`.alter table docstring`, `.alter table folder`|
 
-
 ## CRUD Naming Conventions for table (see full details in the sections below)
  
-|Command syntax |Semantics 
-|---|---
-|`.create entityType entityName ...` |If an entity of that type and name exists, returns the entity. Otherwise, create the entity. 
-|`.create-merge entityType entityName...` |If an entity of that type and name exists, merge the existing entity with the specified entity. Otherwise, create the entity.
-|`.alter entityType entityName ...` |If an entity of that type and name does not exist, error. Otherwise, replace it with the specified entity. 
-|`.alter-merge entityType entityName ...` |If an entity of that type and name does not exist, error. Otherwise, merge it with the specified entity. 
-|`.drop entityType entityName ...` |If an entity of that type and name does not exist, error. Otherwise, drop it. 
-|`.drop entityType entityName ifexists ...`  |If an entity of that type and name does not exist, return. Otherwise, drop it. 
+|Command syntax |Semantics|
+|---|---|
+|`.create entityType entityName ...`       |If an entity of that type and name exists, returns the entity. Otherwise, create the entity.|
+|`.create-merge entityType entityName...`  |If an entity of that type and name exists, merge the existing entity with the specified entity. Otherwise, create the entity.|
+|`.alter entityType entityName ...`        |If an entity of that type and name does not exist, error. Otherwise, replace it with the specified entity.|
+|`.alter-merge entityType entityName ...`  |If an entity of that type and name does not exist, error. Otherwise, merge it with the specified entity.|
+|`.drop entityType entityName ...`         |If an entity of that type and name does not exist, error. Otherwise, drop it.|
+|`.drop entityType entityName ifexists ...`|If an entity of that type and name does not exist, return. Otherwise, drop it.|
  
- 
-"Merge" is a logical merge of two entities: 
+"Merge" is a logical merge of two entities:
 
 1. If a property is defined for one entity but not the other, it appears with its original value in the merged entity.
-2. If a property is defined for both entities and has the same value in both, it appears once with that value in the merged entity. 
+2. If a property is defined for both entities and has the same value in both, it appears once with that value in the merged entity.
 3. If a property is defined for both entities but has different values, an error is raised.
-
 
 ## .show tables
 
@@ -211,14 +208,19 @@ Requires [Database user permission](../management/access-control/role-based-auth
 |MyLogs|TopComparison|||
 |MyUsers|TopComparison|||
 
+## .alter table and .alter-merge table
 
-## .alter table and .alter-merge table 
+The `.alter table` command sets a new column schema, docstring, and folder to an existing table,
+overriding the existing column schema, docsting, and folder. Data in existing columns
+that are "preserved" by the command is preserved (so this command can be used,
+for example, to reorder the columns of a table).
 
-These commands modify the column schema of an existing table (they can't be used to create new tables). 
-Like `.create table`, both commands must run in the context of a specific database which scopes the table name. 
+The `.alter-merge table` command adds new columns, docstring, and folder folder to an existing table.
+Data in existing columns is preserved.
 
+Both commands must run in the context of a specific database that scopes the table name.
 
-Requires [Database user permission](../management/access-control/role-based-authorization.md).
+Require [Database user permission](../management/access-control/role-based-authorization.md).
 
 **Syntax**
 
@@ -226,7 +228,6 @@ Requires [Database user permission](../management/access-control/role-based-auth
 
 `.alter-merge` `table` *TableName* (*columnName*:*columnType*, ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
- 
 Specify the columns the table should have after successful completion. 
 
 > [!WARNING]
@@ -248,11 +249,18 @@ Specify the columns the table should have after successful completion.
 
 > Tip: Use `.show table [TableName] cslschema` to get the existing column schema before you alter it. 
 
- 
-Some points that apply for both commands: 
+Some points that apply for both commands:
 
-1. Existing data is not physically modified by these commands. Data in removed columns is ignored. Data in new columns is assumed to be null. 
-2. Depending on how the cluster is configured, data ingestion might modify the table's column schema even without user interaction. Therefore, when making changes to a table's column schema, one must ensure that ingestion will not add needed columns that the command will then remove. 
+1. Existing data is not physically modified by these commands. Data in removed columns is ignored. Data in new columns is assumed to be null.
+2. Depending on how the cluster is configured, data ingestion might modify the table's column schema even without user interaction. Therefore, when making changes to a table's column schema, one must ensure that ingestion will not add needed columns that the command will then remove.
+
+> [!WARNING]
+> Data ingestion processes into the table that happen in parallel with the
+> `.alter table` command that modifies the table's column schema might be performed
+> in a way that is agnostic to the order of columns in the table, or there is a
+> risk that data will be ingested into the wrong columns. For example, this could
+> be done by stopping ingestion during such commands, or by making sure that such
+> ingestion operations always use a mapping object.
 
 **Examples**
 
