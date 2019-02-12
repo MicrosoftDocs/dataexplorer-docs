@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 02/10/2019
 ---
 # to_utf8()
 
@@ -42,7 +42,7 @@ print arr = to_utf8("קוסטו - Kusto")
 
 |arr|
 |---|
-|[75, 45, 117, 45, 115, 45, 116, 45, 111]|
+|[1511, 1493, 1505, 1496, 1493, 32, 45, 32, 75, 117, 115, 116, 111]|
 
 ```kusto
 print str = make_string(to_utf8("Kusto"))

@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/16/2018
+ms.date: 02/08/2019
 ---
 # join operator
 
@@ -99,8 +99,8 @@ Events
 | join (Events
         | where Name == "Stop"
         | project StopTime=timestamp, ActivityId)
-    on ActivityId
-| project City, ActivityId, StartTime, StopTime, Duration, StopTime, StartTime
+    on 
+| project City, ActivityId, StartTime, StopTime, Duration = StopTime - StartTime
 ```
 
 ```kusto
@@ -112,7 +112,7 @@ Events
         | where Name == "Stop"
         | project StopTime=timestamp, ActivityIdRight = ActivityId)
     on $left.ActivityIdLeft == $right.ActivityIdRight
-| project City, ActivityId, StartTime, StopTime, Duration, StopTime, StartTime
+| project City, ActivityId, StartTime, StopTime, Duration = StopTime - StartTime
 ```
 
 [More about this example](./samples.md#activities).

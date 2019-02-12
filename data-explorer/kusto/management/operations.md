@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/25/2018
+ms.date: 02/07/2019
 ---
 # Operations
 
@@ -19,11 +19,9 @@ ms.date: 10/25/2018
 
 |||
 |---|---| 
-|`.show` `operations`              |Returns all operations that Admin node processed or is processing since 
-|`.show` `running`   `operations`  |Returns all operations that Admin node is processing right now 
-|`.show` `completed` `operations`  |Returns all operations that Admin node processed since  
-|`.show` `operations` *OperationId*|Returns operation status for specific ID 
-|`.show` `operations` `(`*OperationId1*`,` *OperationId2*`,` ...)|Returns operations status for specific IDS 
+|`.show` `operations`              |Returns all operations that the cluster has processed or is processing 
+|`.show` `operations` *OperationId*|Returns operation status for a specific ID 
+|`.show` `operations` `(`*OperationId1*`,` *OperationId2*`,` ...)|Returns operations status for specific IDs
 
 **Results**
  

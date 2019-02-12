@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/06/2018
+ms.date: 02/11/2019
 ---
 # Principals and Identity Providers
 
@@ -28,16 +28,15 @@ AAD is the preferred method for authenticating to Kusto. It supports a number of
 #### AAD Group principals
 Kusto only supports Security Group principals (and not Distribution Group ones). Attempt to set up access for a DG on a Kusto cluster will result in an error.
 
-#### Non microsoft.com AAD Tenants
-**By default, any Kusto cluster accepts access tokens issued by any Microsoft AAD tenant (MSIT - microsoft.com, AME, GBL) in every Azure cloud**.<br>
-Non-Microsoft AAD tenants can be added to the trusted issuers per Kusto service by filing a support ticket at [https://aka.ms/kustosupport](https://aka.ms/kustosupport).
+#### AAD Tenants
+
 >If AAD tenant is not explicitly specified, Kusto will attempt to resolve it from the UPN (UniversalPrincipalName, e.g., `johndoe@fabrikam.com`), if provided.
   If your principal does not include the tenant information (not in UPN form), you must explicitly mention it by appending the tenant ID or name to the principal descriptor.
 
 
 **Examples for AAD principals**
-|AAD Tenant |Type |Syntax |Notes
-|-----------|-----|-------|------|
+|AAD Tenant |Type |Syntax |
+|-----------|-----|-------|
 |Implicit (UPN)  |User  |`aaduser=`*UserEmailAddress*
 |Explicit (ID)   |User  |`aaduser=`*UserEmailAddress*`;`*TenantId* or `aaduser=`*ObjectID*`;`*TenantId*
 |Explicit (Name) |User  |`aaduser=`*UserEmailAddress*`;`*TenantName* or `aaduser=`*ObjectID*`;`*TenantName*
