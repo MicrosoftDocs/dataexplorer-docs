@@ -34,7 +34,7 @@ In other environments, or to make sure that the latest version of KQL magic is
 installed, use:
 
 ```
-3.	!pip install Kqlmagic --no-cache-dir --upgrade
+!pip install Kqlmagic --no-cache-dir --upgrade
 ```
 
 Additional information about getting started with KQL magic:
