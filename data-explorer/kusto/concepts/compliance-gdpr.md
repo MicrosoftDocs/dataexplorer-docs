@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 02/12/2019
 ---
 # GDPR and data purge
 
@@ -126,15 +126,15 @@ Purge command may be invoked in two ways, targeting different usage scenarios:
 1. Programmatic invocation, single-step.
 This version of the command is intended to be invoked by applications. Calling this command directly triggers purge execution sequence.
 
- **Syntax**
+**Syntax**
  ```kusto
  .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
  ```
 
- **Note**
- The recommended way to generate this command is using CslCommandGenerator API, available as part of the [Kusto Client Library](../api/netfx/about-kusto-data.md) NuGet package.
+**Note**
+The recommended way to generate this command is using CslCommandGenerator API, available as part of the [Kusto Client Library](../api/netfx/about-kusto-data.md) NuGet package.
 
-1. Human invocation, two-steps.
+2. Human invocation, two-steps.
 This version of the command requires an explicit confirmation as a separate step. First invocation of the command executes the [engine `whatif` command](#purge-whatif-command) and returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting data due to human error. Note that the whatif command itself may take a long while to complete on large tables (especially ones with significant amount of cold cache data).
 <!-- If query times-out on DM endpoint (default timeout is 10 minutes), it is recommended to use the [engine `whatif` command](#purge-whatif-command) directly againt the engine endpoint while increasing the [server timeout limit](../concepts/querylimits.md#limit-on-request-execution-time-timeout). Only after you have verified the expected results using the engine whatif command, issue the purge command via the DM endpoint using the 'noregrets' option. -->
 
@@ -169,9 +169,10 @@ To initiate a purge in a two-steps activation scenario, run step #1 of the comma
 ```
 
 **Output**
+
 |NumRecordsToPurge |EstimatedPurgeExecutionTime| VerificationToken
 |--|--|--
-|1,596 |00:00:02|e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b
+|1,596 |00:00:02 |e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b
 
 Please make sure to validate the NumRecordsToPurge prior to running step #2. 
 To complete a purge in a two-steps activation scenario, run the following, with the verification token returned from step #1
@@ -183,6 +184,7 @@ with (verificationtoken='e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf6505
 ```
 
 **Output**
+
 |OperationId |DatabaseName |TableName |ScheduledTime |Duration |LastUpdatedOn |EngineOperationId |State |StateDetails |EngineStartTime |EngineDuration |Retries |ClientRequestId |Principal
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--
 |c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
@@ -194,6 +196,7 @@ To trigger a purge in a single-step activation scenario, run the following:
 ```
 
 **Output**
+
 |OperationId |DatabaseName |TableName |ScheduledTime |Duration |LastUpdatedOn |EngineOperationId |State |StateDetails |EngineStartTime |EngineDuration |Retries |ClientRequestId |Principal
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--
 |c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
@@ -209,19 +212,17 @@ It is not guaranteed to succeed, and should not be part of a normal operational 
 It can only be applied to in-queue requests, i.e. requests not yet dispatched to the engine node for execution. 
 The command is executed on Data Management endpoint.
 
- **Syntax**
--->
- <!-- csl -->
- <!--```
+**Syntax**
+
+ ```
  .cancel purge OperationId
  ```
 
 **Examples**
--->
-<!-- csl -->
-<!--```
+
+ ```
  .cancel purge aa894210-1c60-4657-9d21-adb2887993e1
-```
+ ```
 
 **Output**
 
@@ -232,6 +233,7 @@ If the attempt is successful, operation state is updated to 'Abandoned', otherwi
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--
 |c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Abandoned | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
 -->
+
 ## Tracking Purge Operation Status 
 
 Purge operations can be tracked via [show purges](#show-purges-command) command, executed against the Data Management endpoint(**https://ingest-[YourClusterName].kusto.windows.net**).
@@ -293,6 +295,8 @@ Shows purge operations status in the requested time period.
 * ClientRequestId - client activity id of the CM purge request. 
 * Principal - identity of the purge command issuer.
 
+
+
 ## Purging an entire table
 Purging a table consists of dropping it, and marking it as purged, such that the hard delete process described in [Purge Process](#purge-process) runs on it. Whereas, dropping a table without purging it does not delete all its storage artifacts (they will be deleted according to the hard retention policy initially set on the table). The command is quick and efficient and is much preferable over the purge records process, if applicable for your scenario. 
 Throttling limitation is not applied to purge table allrecords command.
@@ -335,6 +339,7 @@ To initiate a purge in a two-steps activation scenario, run step #1 of the comma
 ```
 
 **Output**
+
 | VerificationToken
 |--
 |e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b
@@ -346,6 +351,7 @@ To complete a purge in a two-steps activation scenario, run the following, with 
 with (verificationtoken='eyJTZXJ2aWNlTmFtZSI6IkVuZ2luZS1pdHNhZ3VpIiwiRGF0YWJhc2VOYW1lIjoiQXp1cmVTdG9yYWdlTG9ncyIsIlRhYmxlTmFtZSI6IkF6dXJlU3RvcmFnZUxvZ3MiLCJQcmVkaWNhdGUiOiIgd2hlcmUgU2VydmVyTGF0ZW5jeSA9PSAyNSJ9')
 ```
 The output of this command is the same as the '.show tables' command output which is returned without the purged table.
+
 **Output**
 
 |TableName|DatabaseName|Folder|DocString
@@ -360,6 +366,7 @@ To trigger a purge in a single-step activation scenario, run the following:
 ```
 
 The output of this command is the same as the '.show tables' command output which is returned without the purged table.
+
 **Output**
 
 |TableName|DatabaseName|Folder|DocString
