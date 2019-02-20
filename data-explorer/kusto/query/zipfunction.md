@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/19/2019
 ---
 # zip()
 
@@ -41,6 +41,6 @@ The following example returns `[[1,"one"],[2,"two"],[3,"three"]]`:
 
 ```kusto
 datatable(a:int, b:string) [1,"one",2,"two",3,"three"]
-| summarize a = makelist(a), b = makelist(b)
+| summarize a = make_list(a), b = make_list(b)
 | project zip(a, b)
 ```

@@ -1,25 +1,25 @@
 ---
-title: mvexpand operator - Azure Data Explorer | Microsoft Docs
-description: This article describes mvexpand operator in Azure Data Explorer.
+title: mv-expand operator - Azure Data Explorer | Microsoft Docs
+description: This article describes mv-expand operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 02/20/2019
 ---
-# mvexpand operator
+# mv-expand operator
 
 Expands multi-value array or property bag.
 
-`mvexpand` is applied on a [dynamic](./scalar-data-types/dynamic.md)-typed column so that each value in the collection gets a separate row. Note that the default expansion is up to 128 rows. All the other columns in an expanded row are duplicated. 
+`mv-expand` is applied on a [dynamic](./scalar-data-types/dynamic.md)-typed column so that each value in the collection gets a separate row. Note that the default expansion is up to 128 rows. All the other columns in an expanded row are duplicated. 
 
 **Syntax**
 
-*T* `| mvexpand ` [`bagexpansion=`(`bag` | `array`)] [`with_itemindex=`*IndexColumnName*] *ColumnName* [`,` *ColumnName* ...] [`limit` *Rowlimit*]
+*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] [`with_itemindex=`*IndexColumnName*] *ColumnName* [`,` *ColumnName* ...] [`limit` *Rowlimit*]
 
-*T* `| mvexpand ` [`bagexpansion=`(`bag` | `array`)] [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] [, [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
+*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] [, [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
 
 **Arguments**
 
@@ -30,7 +30,9 @@ Expands multi-value array or property bag.
     which becomes the type of the column produced by the operator.
     Note that values in the array that do not conform to this type will
     not be converted; rather, they will take on a `null` value.
-* *RowLimit:* The maximum number of rows generated from each original row. The default is 128.
+* *RowLimit:* The maximum number of rows generated from each original row. The default is 2147483647. 
+*Note*: 
+    Legacy and obsolete form of the operator `mvexpand` has default row-limit of 128.
 * *IndexColumnName:* If `with_itemindex` is specified, the output will include an additional column (named *IndexColumnName*), which contains the index (starting at 0) of the item in the original expanded collection. 
 
 **Returns**
@@ -51,7 +53,7 @@ Two modes of property-bag expansions are supported:
 A simple expansion of a single column:
  ```kusto
 datatable (a:int, b:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"})]
-| mvexpand b 
+| mv-expand b 
 ```
 
 |a|b|
@@ -64,7 +66,7 @@ Expanding two columns will first 'zip' the applicable columns and then expand th
 
 ```kusto
 datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), dynamic([5])]
-| mvexpand b, c 
+| mv-expand b, c 
 ```
 
 |a|b|c|
@@ -75,8 +77,8 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 If you want to get a Cartesian product of expanding two columns, expand one after the other:
 ```kusto
 datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), dynamic([5])]
-| mvexpand b 
-| mvexpand c
+| mv-expand b 
+| mv-expand c
 ```
 
 |a|b|c|
@@ -88,8 +90,8 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 Expansion of an array with `with_itemIndex`:
 ```kusto
 range x from 1 to 4 step 1 
-| summarize x = makelist(x) 
-| mvexpand with_itemindex=Index  x 
+| summarize x = make_list(x) 
+| mv-expand with_itemindex=Index  x 
 ```
 
 |x|Index|
@@ -106,5 +108,5 @@ See [Chart count of live activities over time](./samples.md#concurrent-activitie
 
 **See also**
 
-- [`summarize makelist`](makelist-aggfunction.md) which performs the opposite function.
+- [`summarize make_list`](makelist-aggfunction.md) which performs the opposite function.
 - [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys.

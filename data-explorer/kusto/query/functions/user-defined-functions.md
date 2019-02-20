@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/19/2019
 ---
 # User-Defined Functions
 
@@ -313,7 +313,7 @@ Table2 | where Column != 123 | project d = f(Column)
 // that expects a scalar value.
 let Table1 = datatable(xdate:datetime)[datetime(1970-01-01)];
 let Table2 = datatable(Column:long)[1235];
-let f = (hours:long) { range x from 1 to hours step 1 | summarize makelist(x) };
+let f = (hours:long) { range x from 1 to hours step 1 | summarize make_list(x) };
 Table2 | where Column != 123 | project d = f(Column)
 ```
 

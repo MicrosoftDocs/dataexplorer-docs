@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/20/2019
 ---
 # top-nested operator
 
@@ -136,8 +136,6 @@ Requesting another column (EventType) to the top-nested result:
 StormEvents
 | top-nested 2 of State by sum(BeginLat),    top-nested 2 of Source by sum(BeginLat),    top-nested 1 of EndLocation by sum(BeginLat), top-nested of EventType  by tmp = max(1)
 | project-away tmp
-
-
 ```
 
 |State|aggregated_State|Source|aggregated_Source|EndLocation|aggregated_EndLocation|EventType|
@@ -159,12 +157,9 @@ In order to sort the result by the last nested level (in this example by EndLoca
 StormEvents
 | top-nested 2 of State  by sum(BeginLat),    top-nested 2 of Source by sum(BeginLat),    top-nested 4 of EndLocation by  sum(BeginLat)
 | order by State , Source, aggregated_EndLocation
-| summarize EndLocations = makelist(EndLocation, 10000) , endLocationSums = makelist(aggregated_EndLocation, 10000) by State, Source
+| summarize EndLocations = make_list(EndLocation, 10000) , endLocationSums = make_list(aggregated_EndLocation, 10000) by State, Source
 | extend indicies = range(0, array_length(EndLocations) - 1, 1)
-| mvexpand EndLocations, endLocationSums, indicies
-
-
-
+| mv-expand EndLocations, endLocationSums, indicies
 ```
 
 |State|Source|EndLocations|endLocationSums|indicies|

@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/20/2019
 ---
 # series_outliers()
 
@@ -45,9 +45,9 @@ Suppose you have a time series with some noise that creates outliers and you wou
 ```kusto
 range x from 1 to 100 step 1 
 | extend y=iff(x==20 or x==80, 10*rand()+10+(50-x)/2, 10*rand()+10) // generate a sample series with outliers at x=20 and x=80
-| summarize x=makelist(x),series=makelist(y)
+| summarize x=make_list(x),series=make_list(y)
 | extend series_stats(series), outliers=series_outliers(series)
-| mvexpand x to typeof(long), series to typeof(double), outliers to typeof(double)
+| mv-expand x to typeof(long), series to typeof(double), outliers to typeof(double)
 | project x, series , outliers_removed=iff(outliers > 1.5 or outliers < -1.5, series_stats_series_avg , series ) // replace outliers with the average
 | render linechart
 ``` 

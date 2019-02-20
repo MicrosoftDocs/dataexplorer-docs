@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/19/2019
 ---
 # stdev() (aggregation function)
 
@@ -34,7 +34,7 @@ The standard deviation value of *Expr* across the group.
 
 ```kusto
 range x from 1 to 5 step 1
-| summarize makelist(x), stdev(x)
+| summarize make_list(x), stdev(x)
 
 ```
 

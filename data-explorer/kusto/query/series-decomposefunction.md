@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/19/2019
 ---
 # series_decompose()
 
@@ -21,7 +21,7 @@ Takes an expression containing a series (dynamic numerical array) as input and d
 
 **Arguments**
 
-* *x*: Dynamic array cell which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [makelist](makelist-aggfunction.md) operators
+* *x*: Dynamic array cell which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators
 * *seasonality*: An integer controlling the seasonal analysis, containing either
     * -1: autodetect seasonality (using [series_periods_detect](series-periods-detectfunction.md) [default] 
     * period: positive integer, specifying the expected period in number of bins unit. For example, if the series is in 1h bins, a weekly period is 168 bins
@@ -70,7 +70,7 @@ let ts=range t from 1 to 24*7*5 step 1
 | extend y = 2*rand() + iff((t/24)%7>=5, 10.0, 15.0) - (((t%24)/10)*((t%24)/10)) // generate a series with weekly seasonality
 | extend y=iff(t==150 or t==200 or t==780, y-8.0, y) // add some dip outliers
 | extend y=iff(t==300 or t==400 or t==600, y+8.0, y) // add some spike outliers
-| summarize Timestamp=makelist(Timestamp, 10000),y=makelist(y, 10000);
+| summarize Timestamp=make_list(Timestamp, 10000),y=make_list(y, 10000);
 ts 
 | extend series_decompose(y)
 | render timechart  
@@ -87,7 +87,7 @@ let ts=range t from 1 to 24*7*5 step 1
 | extend y = 2*rand() + iff((t/24)%7>=5, 5.0, 15.0) - (((t%24)/10)*((t%24)/10)) + t/72.0 // generate a series with weekly seasonality and ongoing trend
 | extend y=iff(t==150 or t==200 or t==780, y-8.0, y) // add some dip outliers
 | extend y=iff(t==300 or t==400 or t==600, y+8.0, y) // add some spike outliers
-| summarize Timestamp=makelist(Timestamp, 10000),y=makelist(y, 10000);
+| summarize Timestamp=make_list(Timestamp, 10000),y=make_list(y, 10000);
 ts 
 | extend series_decompose(y)
 | render timechart  
@@ -102,7 +102,7 @@ let ts=range t from 1 to 24*7*5 step 1
 | extend y = 2*rand() + iff((t/24)%7>=5, 5.0, 15.0) - (((t%24)/10)*((t%24)/10)) + t/72.0 // generate a series with weekly seasonality and ongoing trend
 | extend y=iff(t==150 or t==200 or t==780, y-8.0, y) // add some dip outliers
 | extend y=iff(t==300 or t==400 or t==600, y+8.0, y) // add some spike outliers
-| summarize Timestamp=makelist(Timestamp, 10000),y=makelist(y, 10000);
+| summarize Timestamp=make_list(Timestamp, 10000),y=make_list(y, 10000);
 ts 
 | extend series_decompose(y, -1, 'linefit')
 | render timechart  

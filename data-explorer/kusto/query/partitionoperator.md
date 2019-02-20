@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/11/2019
+ms.date: 02/15/2019
 ---
 # partition operator
 
@@ -25,7 +25,7 @@ T | partition by Col1 ( top 10 by MaxValue )
 
 * *T*: Tabular source of the `partition` operator
 
-* *Column:* Name of the column that will be used for source partitioning. See [Notes](#Notes) for existing limitation on amount of key values used for partitioning.
+* *Column:* Name of the column that will be used for source partitioning. See **Notes** below for existing limitation on amount of key values used for partitioning.
 
 * *Subquery*: Query that will be applied on each of the source partitions. 
 

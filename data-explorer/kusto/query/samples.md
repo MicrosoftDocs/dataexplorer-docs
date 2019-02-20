@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/25/2018
+ms.date: 02/20/2019
 ---
 # Samples
 
@@ -211,10 +211,10 @@ X | extend samples = range(bin(StartTime, 1m), Stop, 1m)
 | b | 10:02:29 | 10:03:45 |          [10:02:00,10:03:00]|
 | c | 10:03:12 | 10:04:30 |                   [10:03:00,10:04:00]|
 
-But instead of keeping those arrays, we'll [expand them](./mvexpandoperator.md):
+But instead of keeping those arrays, we'll expand them using [mv-expand](./mvexpandoperator.md):
 
 ```kusto
-X | mvexpand samples = range(bin(StartTime, 1m), StopTime , 1m)
+X | mv-expand samples = range(bin(StartTime, 1m), StopTime , 1m)
 ```
 
 |SessionId | StartTime | StopTime  | samples|
@@ -233,11 +233,11 @@ We can now group these by sample time, counting the occurrences of each activity
 
 ```kusto
 X
-| mvexpand samples = range(bin(StartTime, 1m), StopTime , 1m)
+| mv-expand samples = range(bin(StartTime, 1m), StopTime , 1m)
 | summarize count(SessionId) by bin(todatetime(samples),1m)
 ```
 
-* We need todatetime() because `mvexpand` yields a column of dynamic type.
+* We need todatetime() because [mv-expand](./mvexpandoperator.md) yields a column of dynamic type.
 * We need bin() because, for numeric values and dates, summarize always applies a bin function with a default interval if you don't supply one. 
 
 
@@ -283,7 +283,7 @@ T
 | where ...
 | union ( // 1
   range x from 1 to 1 step 1 // 2
-  | mvexpand Timestamp=range(StartTime, StopTime, 5m) to typeof(datetime) // 3
+  | mv-expand Timestamp=range(StartTime, StopTime, 5m) to typeof(datetime) // 3
   | extend Count=0 // 4
   )
 | summarize Count=sum(Count) by bin(Timestamp, 5m) // 5 
@@ -294,8 +294,8 @@ Here's a step-by-step explanation of the query above:
 1. Using the `union` operator allows us to add additional rows to a table. Those
    rows are produced by the expression to `union`.
 2. Using the `range` operator to produce a table having a single row/column.
-   The table is not used for anything other than for `mvexpand` to work on.
-3. Using the `mvexpand` operator over the `range` function to create as many
+   The table is not used for anything other than for `mv-expand` to work on.
+3. Using the `mv-expand` operator over the `range` function to create as many
    rows as there are 5-minute bins between `StartTime` and `EndTime`.
 4. All with a `Count` of `0`.
 5. Last, we use the `summarize` operator to group-together bins from the original
@@ -639,7 +639,7 @@ Fruits
                             iff( _bin + 7d - 1d < _start, _start,
                                 iff( _bin + 7d - 1d < _bin, _bin,  _bin + 7d - 1d)))  // #2
 | extend _range = range(_bin, _endRange, 1d) // #3
-| mvexpand _range to typeof(datetime) limit 1000000 // #4
+| mv-expand _range to typeof(datetime) limit 1000000 // #4
 | summarize min(Price), max(Price), sum(Price) by Timestamp=bin_at(_range, 1d, _start) ,  Fruit // #5
 | where Timestamp >= _start + 7d; // #6
 
@@ -675,6 +675,6 @@ Step-by-step explanation (numbers refer to the numbers in query inline comments)
 1. Bin each record to 1d (relative to _start). 
 2. Determine the end of the range per record - _bin + 7d, unless this is out of the _(start, end)_ range, in which case it is adjusted. 
 3. For each record, create an array of 7 days (timestamps), starting at current record's day. 
-4. mvexpand the array, thus duplicating each record to 7 records, 1 day apart from each other. 
+4. mv-expand the array, thus duplicating each record to 7 records, 1 day apart from each other. 
 5. Perform the aggregation function for each day. Due to #4, this actually summarizes the _past_ 7 days. 
 6. Finally, since the data for the first 7d is incomplete (there's no 7d lookback period for the first 7 days), we exclude the first 7 days from the final result (they only participate in the aggregation for the 2018-10-01). 

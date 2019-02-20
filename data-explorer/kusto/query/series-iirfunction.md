@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/20/2019
 ---
 # series_iir()
 
@@ -22,7 +22,7 @@ Takes an expression containing dynamic numerical array as input and applies an [
 
 **Arguments**
 
-* *x*: Dynamic array cell which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [makelist](makelist-aggfunction.md) operators.
+* *x*: Dynamic array cell which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators.
 * *b*: A constant expression containing the numerator coefficients of the filter (stored as a dynamic array of numeric values).
 * *a*: A constant expression, like *b*. Containing the denominator coefficients of the filter.
 
@@ -46,7 +46,7 @@ Calculating cumulative sum can be performed by iir filter with coefficients *a*=
 ```kusto
 let x = range(1.0, 10, 1);
 print x=x, y = series_iir(x, dynamic([1]), dynamic([1,-1]))
-| mvexpand x, y
+| mv-expand x, y
 ```
 
 | x | y |

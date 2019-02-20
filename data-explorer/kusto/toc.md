@@ -82,7 +82,7 @@
 ### [limit operator](./query/limitoperator.md)
 ### [lookup operator](./query/lookupoperator.md)
 ### [make-series operator](./query/make-seriesoperator.md)
-### [mvexpand operator](./query/mvexpandoperator.md)
+### [mv-expand operator](./query/mvexpandoperator.md)
 ### [order operator](./query/orderoperator.md)
 ### [project operator](./query/projectoperator.md)
 ### [project-away operator](./query/projectawayoperator.md)
@@ -332,9 +332,9 @@
 ### [dcountif()](./query/dcountif-aggfunction.md)
 ### [hll()](./query/hll-aggfunction.md)
 ### [hll_merge()](./query/hll-merge-aggfunction.md)
-### [makelist()](./query/makelist-aggfunction.md)
-### [makeset()](./query/makeset-aggfunction.md)
-### [make_dictionary()](./query/make-dictionary-aggfunction.md)
+### [make_bag()](./query/make-bag-aggfunction.md)
+### [make_list()](./query/makelist-aggfunction.md)
+### [make_set()](./query/makeset-aggfunction.md)
 ### [max()](./query/max-aggfunction.md)
 ### [min()](./query/min-aggfunction.md)
 ### [percentiles()](./query/percentiles-aggfunction.md)
@@ -424,6 +424,30 @@
 ## Policies
 ### [Cache policy](./concepts/cachepolicy.md)
 
+
+
+
+### [IngestionTime policy](./concepts/ingestiontimepolicy.md)
+
+
+
+### [Retention policy](./concepts/retentionpolicy.md)
+### [Restricted view access policy](./concepts/restrictedviewaccesspolicy.md)
+### [Row order policy](./concepts/roworderpolicy.md)
+
+
+
+
+### [Update policy](./concepts/updatepolicy.md)
+## Misc and Errors
+
+### [Query limits](./concepts/querylimits.md)
+### [Partial query failures](./concepts/partialqueryfailures.md)
+#### [Result truncation](./concepts/resulttruncation.md)
+#### [Runaway queries](./concepts/runawayqueries.md)
+#### [Overflows](./concepts/overflow.md)
+### [Cross-cluster queries and schema changes](./concepts/crossclusterandschemachanges.md)
+### [Query consistency](./concepts/queryconsistency.md)
 # [Management](./management/index.md)
 ## [Overview](./management/index.md)
 ### [Best practices](./management/best-practices.md)
@@ -565,3 +589,5 @@
 ## Data ingestion
 
 ### [LightIngest](./tools/lightingest.md)
+### [Azure Data Factory](./tools/azure-data-factory.md)
+### [Apache Spark connector](./tools/spark-connector.md)
