@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2019
+ms.date: 02/20/2019
 ---
 # summarize operator
 
@@ -64,7 +64,7 @@ The automatic hourly bins for datetime columns is no longer supported. Use expli
 |[count()](count-aggfunction.md)|Returns count of the group|
 |[countif()](countif-aggfunction.md)|Returns count with the predicate of the group|
 |[dcount()](dcount-aggfunction.md)|Returns approximate distinct count of the group elements|
-|[make_bag()](makebag-aggfunction.md)|Returns a property bag of dynamic values within the group|
+|[make_bag()](make-bag-aggfunction.md)|Returns a property bag of dynamic values within the group|
 |[make_list()](makelist-aggfunction.md)|Returns a list of all the values within the group|
 |[make_set()](makeset-aggfunction.md)|Returns a set of distinct values within the group|
 |[max()](max-aggfunction.md)|Returns the maximum value across the group|
