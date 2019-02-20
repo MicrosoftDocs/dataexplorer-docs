@@ -1,15 +1,15 @@
 ---
-title: makelist() (aggregation function) - Azure Data Explorer | Microsoft Docs
-description: This article describes makelist() (aggregation function) in Azure Data Explorer.
+title: make_list() (aggregation function) - Azure Data Explorer | Microsoft Docs
+description: This article describes make_list() (aggregation function) in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/19/2019
 ---
-# makelist() (aggregation function)
+# make_list() (aggregation function)
 
 Returns a `dynamic` (JSON) array of all the values of *Expr* in the group.
 
@@ -17,12 +17,16 @@ Returns a `dynamic` (JSON) array of all the values of *Expr* in the group.
 
 **Syntax**
 
-`summarize` `makelist(`*Expr* [`,` *MaxListSize*]`)`
+`summarize` `make_list(`*Expr* [`,` *MaxListSize*]`)`
 
 **Arguments**
 
 * *Expr*: Expression that will be used for aggregation calculation.
-* *MaxListSize* is an optional integer limit on the maximum number of elements returned (default is *128*).
+* *MaxListSize* is an optional integer limit on the maximum number of elements returned (default is *1048576*). MaxListSize value cannot exceed 1048576.
+
+**Note**
+
+An legacy and obsolete variant of this function: `makelist()` has a default limit of *MaxListSize* = 128.
 
 **Returns**
 

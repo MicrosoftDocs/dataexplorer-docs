@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/25/2018
+ms.date: 02/16/2019
 ---
 # Export data to SQL
 
@@ -38,7 +38,7 @@ Properties:
 |-------------------|-----------------|-----------|
 |`firetriggers`     |`true` or `false`|If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. (For more information see [BULK INSERT](https://msdn.microsoft.com/en-us/library/ms188365.aspx) and [System.Data.SqlClient.SqlBulkCopy](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlbulkcopy(v=vs.110).aspx))|
 |`createifnotexists`|`true` or `false`|If `true`, the target SQL table will be created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column which is the primary key. The default is `false`.|
-|`primarykey`       |                 |If `createifnotexists` is `true`, indicates the name of the column in the result that will be used as the SQL table's primary key if it is created by this command.|
+|`primarykey`       |                 |If `createifnotexists` is `true`, indicates the name of the column in the result that will be used as the SQL table's primary key if it is created by this command. See limitations and restrictions below.|
 
 **Limitations and restrictions**
 
@@ -75,6 +75,15 @@ There are a number of limitations and restrictions when exporting data to a SQL 
 7. The SQL connection string is restricted as follows: `Persist Security Info`
    is explicitly set to `false`, `Encrypt` is set to `true`, and `Trust Server Certificate`
    is set to `false`.
+
+8. The primary key property on the column must be specified when creating
+   a new SQL table. This is a restriction by Azure SQL Database. If the
+   column is of type `string`, then SQL might refuse to create the
+   table due to other limitations on the primary key column, in which
+   case the workaround is to manually create the table in SQL before
+   exporting data to it. (Technically, the reason is that primary key
+   columns in SQL cannot be of unlimited size, but Kusto table columns
+   have no declared size limitations.)
 
 **Azure DB AAD Integrated Authentication Documentation**
 

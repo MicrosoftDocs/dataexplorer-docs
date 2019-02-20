@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/13/2019
 ---
 # Query statements
 
@@ -27,7 +27,7 @@ application's users, but provide some "logical model" that is different than the
 "physical model" (the schema that actually exists in Kusto). Some statements are useful
 in both scenarios.
 
-[!INFO]
+[!NOTE]
 The effect of the statements in a query begins at the appearance of the statement
 and ends with the end of the query body. In runtime, when a query terminates its
 impact on the system ends (there are no durable changes to the system's data,

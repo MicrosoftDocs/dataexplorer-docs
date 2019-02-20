@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 02/15/2019
 ---
 # Storage connection strings
 

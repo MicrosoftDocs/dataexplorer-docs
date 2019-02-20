@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/20/2019
 ---
 # The dynamic data type
 
@@ -156,8 +156,9 @@ Additionally, there are several aggregate functions which create `dynamic`
 arrays to hold aggregated values:
 
 * [buildschema()](../buildschema-aggfunction.md) returns the aggregate schema of multiple `dynamic` values.
-* [makelist()](../makelist-aggfunction.md) returns an array holding all values, in sequence.
-* [makeset()](../makeset-aggfunction.md) returns an array holding all unique values.
+* [make_bag()](../make-bag-aggfunction.md) returns a property bag of dynamic values within the group.
+* [make_list()](../makelist-aggfunction.md) returns an array holding all values, in sequence.
+* [make_set()](../makeset-aggfunction.md) returns an array holding all unique values.
 
 ## Operators and functions over dynamic types
 
@@ -169,8 +170,8 @@ arrays to hold aggregated values:
 |[`extractjson(`path,object`)`](../extractjsonfunction.md)|Uses path to navigate into object.
 |[`parse_json(`source`)`](../parsejsonfunction.md)| Turns a JSON string into a dynamic object.
 |[`range(`from,to,step`)`](../rangefunction.md)| An array of values
-|[`mvexpand` listColumn](../mvexpandoperator.md) | Replicates a row for each value in a list in a specified cell.
+|[`mv-expand` listColumn](../mvexpandoperator.md) | Replicates a row for each value in a list in a specified cell.
 |[`summarize buildschema(`column`)`](../buildschema-aggfunction.md) |Infers the type schema from column content
-|[`summarize makelist(`column`)` ](../makelist-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array.
-|[`summarize makeset(`column`)`](../makeset-aggfunction.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
-|[`summarize make_dictionary(`column`)`](../make-dictionary-aggfunction.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.
+|[`summarize make_list(`column`)` ](../makelist-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array.
+|[`summarize make_set(`column`)`](../makeset-aggfunction.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
+|[`summarize make_bag(`column`)`](../make-bag-aggfunction.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.

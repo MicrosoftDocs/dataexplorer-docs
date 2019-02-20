@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/05/2018
+ms.date: 02/19/2019
 ---
 # series_decompose_forecast()
 
@@ -22,7 +22,7 @@ trailing points (refer to [series_decompose](series-decomposefunction.md) for mo
 
 **Arguments**
 
-* *x*: Dynamic array cell which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [makelist](makelist-aggfunction.md) operators
+* *x*: Dynamic array cell which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators
 * *points*: Integer specifying the number of points at the end of the series to predict (forecast). These points are excluded from the learning (regression) process
 * *seasonality*: An integer controlling the seasonal analysis, containing either
     * -1: autodetect seasonality (using [series_periods_detect](series-periods-detectfunction.md) [default] 

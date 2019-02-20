@@ -1,15 +1,15 @@
 ---
-title: makeset() (aggregation function) - Azure Data Explorer | Microsoft Docs
-description: This article describes makeset() (aggregation function) in Azure Data Explorer.
+title: make_set() (aggregation function) - Azure Data Explorer | Microsoft Docs
+description: This article describes make_set() (aggregation function) in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/20/2019
 ---
-# makeset() (aggregation function)
+# make_set() (aggregation function)
 
 Returns a `dynamic` (JSON) array of the set of distinct values that *Expr* takes in the group.
 
@@ -17,12 +17,16 @@ Returns a `dynamic` (JSON) array of the set of distinct values that *Expr* takes
 
 **Syntax**
 
-`summarize` `makeset(`*Expr* [`,` *MaxListSize*]`)`
+`summarize` `make_set(`*Expr* [`,` *MaxListSize*]`)`
 
 **Arguments**
 
 * *Expr*: Expression that will be used for aggregation calculation.
-* *MaxListSize* is an optional integer limit on the maximum number of elements returned (default is *128*).
+* *MaxListSize* is an optional integer limit on the maximum number of elements returned (default is *1048576*). MaxListSize value cannot exceed 1048576.
+
+**Note**
+
+An legacy and obsolete variant of this function: `makeset()` has a default limit of *MaxListSize* = 128.
 
 **Returns**
 
@@ -36,9 +40,9 @@ The array's sort order is undefined.
 
 ```kusto
 PageViewLog 
-| summarize countries=makeset(country) by continent
+| summarize countries=make_set(country) by continent
 ```
 
 ![alt text](./images/aggregations/makeset.png "makeset")
 
-See also the [`mvexpand` operator](mvexpandoperator.md) for the opposite function.
+See also the [`mv-expand` operator](mvexpandoperator.md) for the opposite function.

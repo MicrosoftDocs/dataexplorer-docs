@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/15/2019
 ---
 # Kusto Tools
 
@@ -34,3 +34,5 @@ ms.date: 01/25/2019
 ## Data ingestion tools
 
 * [LightIngest](./lightingest.md) - Help utility for ad-hoc data ingesting into Kusto
+* [Azure Data Factory](azure-data-factory.md) - Copy data from source data stores to Kusto, and from Kusto to any supported sink data store
+* [Apache Spark connector](spark-connector.md) - Kusto Data Source and Data Sink Connector for Apache Spark

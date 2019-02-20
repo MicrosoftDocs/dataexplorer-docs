@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/13/2019
 ---
 # UI deep links
 
@@ -75,7 +75,7 @@ and execute a query against that cluster.
 * Verb: `GET`
 * Query string: `web=0`
 
-> [!INFO]
+> [!NOTE]
 > See [Deep-linking with Kusto.Explorer](../../tools/kusto-explorer.md#deep-linking-queries)
 > for a description of the redirect URI syntax for starting up Kusto.Explorer.
 
@@ -105,7 +105,7 @@ that holds the query or control command text.
 
 For example, this can be the URI for a file hosted by Azure Blob Storage.
 
-> [!INFO]
+> [!NOTE]
 > If the deep link is to the web application UI tool, the web service providing
 > the query or control command (that is, the service providing the `querysrc` URI)
 > must be configured to support CORS for `dataexplorer.azure.com`.

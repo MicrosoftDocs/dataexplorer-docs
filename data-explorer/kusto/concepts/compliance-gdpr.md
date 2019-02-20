@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/12/2019
+ms.date: 02/13/2019
 ---
 # GDPR and data purge
 
@@ -77,6 +77,7 @@ complete. Note that if the "density" of records for which the predicate applies
 is sufficiently large, the process will effectively re-ingest all the data in the
 table, and so it may have a significant impact on performance and COGS.
 
+
 ## Purge limitations and considerations
 
 1. **The purge process is final and irreversible**; it is not possible to "undo" this process or recover
@@ -95,7 +96,7 @@ prior to executing the `.purge` command itself and ensure its results match the 
 1. The `.purge` command is executed against the Data Management endpoint: 
    `https://ingest-[YourClusterName].kusto.windows.net`.
    The command requires [Database Admin](../management/access-control/role-based-authorization.md)
-   permissions on the relevant databases.
+   permissions on the relevant databases. 
 
 1. The `predicate` parameter of the [.purge](#purge-table-tablename-records-command) command is used to specify which records to purge. 
 `Predicate` size is limited to 950 KB. It is advised to follow the best practices below when constructing the `predicate`:
@@ -201,7 +202,7 @@ To trigger a purge in a single-step activation scenario, run the following:
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--
 |c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
 
-<!--### Cancel purge operation command
+### Cancel purge operation command
 
 In some cases it may be useful to cancel pending purge requests.
 
@@ -215,7 +216,7 @@ The command is executed on Data Management endpoint.
 **Syntax**
 
  ```
- .cancel purge OperationId
+ .cancel purge <OperationId>
  ```
 
 **Examples**
@@ -232,7 +233,6 @@ If the attempt is successful, operation state is updated to 'Abandoned', otherwi
 |OperationId |DatabaseName |TableName |ScheduledTime |Duration |LastUpdatedOn |EngineOperationId |State |StateDetails |EngineStartTime |EngineDuration |Retries |ClientRequestId |Principal
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--
 |c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Abandoned | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
--->
 
 ## Tracking Purge Operation Status 
 
@@ -283,16 +283,16 @@ Shows purge operations status in the requested time period.
 * Duration - total duration of the purge operation, including the time it was waiting for execution in the DM queue. 
 * EngineOperationId - the operation id of the actual purge executing in the engine. 
 * State - purge state, can be one of the following: 
-  * Scheduled - purge operation is scheduled for execution. If job remains in this state for a long while, this usually means there's a long backlog of purge operations, and you may need to take actions to clear this backlog - see [purge performance](#purge-performance). If a purge operation fails on a transient error, it will be retried by the CM and set to Scheduled again (so you may see an operation transition from Scheduled to InProgress and back to Scheduled).
+  * Scheduled - purge operation is scheduled for execution. If job remains in this state for a long while, this usually means there's a long backlog of purge operations, and you may need to take actions to clear this backlog - see [purge performance](#purge-performance). If a purge operation fails on a transient error, it will be retried by the DM and set to Scheduled again (so you may see an operation transition from Scheduled to InProgress and back to Scheduled).
   * InProgress - the purge operaration is in-progress in the engine. 
   * Completed - purge completed successfully.
   * BadInput - purge failed on bad input and will not be retried. This may be either due to a syntax error in the predicate / an illegal predicate for purge commands / a query that exceeds limits (e.g., over 1M entities in an externaldata operator or over 64MB of total expanded query size) / 404 or 403 errors for externaldata blobs.
   * Failed - purge failed and will not be retried. This could happen if operation is waiting in the queue for too long (over 14 days), due to a long backlog of other purge operations; or due to number of failures that exceeds retry limit. The latter will raise an internal monitoring alert and will be investigated by the Kusto team. 
 * StateDetails - a description of the State.
-* EngineStartTime - the time the command was issued to the engine. If there's a big difference between this time and StartTime, this usually means there's a big backlog of purge operations and cluster is not keeping up with the pace. 
+* EngineStartTime - the time the command was issued to the engine. If there's a big difference between this time and ScheduledTime, this usually means there's a big backlog of purge operations and cluster is not keeping up with the pace. 
 * EngineDuration - time of actual purge execution in the engine. If purge was retried several times, this would be the sum of the duration in all executions. 
 * Retries - number of times the opration retried by the DM service due to a transient error.
-* ClientRequestId - client activity id of the CM purge request. 
+* ClientRequestId - client activity id of the DM purge request. 
 * Principal - identity of the purge command issuer.
 
 
@@ -404,3 +404,4 @@ To experiment with the purge syntax and obtain some info about its outcome (numb
     c. *purge* - show all records that will be *purged* from table *TableName* when running with the provided predicate. 
     
     d. *retain* - show all records that will be *retained* from table *TableName* when running with the provided predicate.
+

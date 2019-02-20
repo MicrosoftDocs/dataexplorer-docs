@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/13/2019
 ---
 # Cross-Database and Cross-Cluster Queries
 
@@ -30,9 +30,9 @@ cluster("<cluster name>").database("<database name>").<table name>
 *database name* is case-sensitive
 
 *cluster name* is case-insensitive and can be of one of the following forms:
-* well-formed URL: example `http://contoso.kusto.windows.net:1234/`, only HTTP and HTTPS schemes are supported.
-* fully qualified domain name (FQDN): example `contoso.kusto.windows.net` which will be equivalent to `https://`**`contoso.kusto.windows.net`**`:443/`
-* short name (host name without the domain part): example `contoso` which is interpreted as `https://`**`contoso`**`.kusto.windows.net:443/`
+* Well-formed URL: example `http://contoso.kusto.windows.net:1234/`, only HTTP and HTTPS schemes are supported.
+* Fully qualified domain name (FQDN): for instance `contoso.kusto.windows.net` - which will be equivalent to `https://`**`contoso.kusto.windows.net`**`:443/`
+* Short name (host name [and region] without the domain part): for instance `contoso` - which is interpreted as `https://`**`contoso`**`.kusto.windows.net:443/`, or `contoso.westus` - which is interpreted as `https://`**`contoso.westus`**`.kusto.windows.net:443/`
 
 >**Note:** cross-database access is subject to the usual permission checks.
 So to be able to excute query user must have read permission to the default database and

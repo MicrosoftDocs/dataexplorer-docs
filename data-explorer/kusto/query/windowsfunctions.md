@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/20/2019
 ---
 # Window functions
 
@@ -55,7 +55,7 @@ the [project operator](./projectoperator.md), and the
 ## Operators that preserve the serialized row set property
 
 * [extend operator](./extendoperator.md)
-* [mvexpand operator](./mvexpandoperator.md)
+* [mv-expand operator](./mvexpandoperator.md)
 * [parse operator](./parseoperator.md)
 * [project operator](./projectoperator.md)
 * [project-away operator](./projectawayoperator.md)

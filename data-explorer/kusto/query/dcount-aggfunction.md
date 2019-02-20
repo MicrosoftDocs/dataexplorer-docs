@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/19/2019
 ---
 # dcount() (aggregation function)
 
@@ -45,7 +45,7 @@ PageViewLog | summarize countries=dcount(country) by continent
 
 To list the distinct values, you can use:
 - `summarize by *Expr*`
-- [`makeset`](makeset-aggfunction.md) : `summarize makeset(`*Expr*`)` 
+- [`make_set`](makeset-aggfunction.md) : `summarize make_set(`*Expr*`)` 
 
 **Tip: Accurate distinct count**
 

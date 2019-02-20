@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/02/2019
+ms.date: 02/20/2019
 ---
 # Partitioning and composing intermediate results of aggregations
 
@@ -177,7 +177,7 @@ let dayn=toscalar(Stats | summarize max(day)); // finding the max date over all 
 let daycount=tolong((dayn-day0)/1d); // finding the range between max and min
 Stats
 | project idx=tolong((day-day0)/1d), day, pagehll
-| mvexpand pidx=range(0, daycount) to typeof(long)
+| mv-expand pidx=range(0, daycount) to typeof(long)
 // extending column to get the dcount value from hll'ed values for each date (same as totalPagesPerDay from above query)
 | extend key1=iff(idx < pidx, idx, pidx), key2=iff(idx < pidx, pidx, idx), pages=dcount_hll(pagehll)
 // foreach two dates , merge the hll'ed values to get the total dcount over each two dates, 

@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/19/2019
 ---
 # series_periods_validate()
 
@@ -27,7 +27,7 @@ The function outputs 2 columns:
 
 **Arguments**
 
-* *x*: Dynamic array scalar expression which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [makelist](makelist-aggfunction.md) operators.
+* *x*: Dynamic array scalar expression which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators.
 * *period1*, *period2*, etc.: `real` numbers specifying the periods to validate, in units of the bin size. For example, if the series is in 1h bins, a weekly period is 168 bins.
 
 > [!IMPORTANT]

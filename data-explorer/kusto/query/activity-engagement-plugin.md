@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/20/2019
 ---
 # activity_engagement plugin
 
@@ -59,7 +59,7 @@ range _day from _start to _end  step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+100*r-1), 1) 
-| mvexpand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) limit 1000000
 // Calculate DAU/WAU ratio
 | evaluate activity_engagement(['id'], _day, _start, _end, 1d, 7d)
 | project _day, Dau_Wau=activity_ratio*100 
@@ -80,7 +80,7 @@ range _day from _start to _end  step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+100*r-1), 1) 
-| mvexpand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) limit 1000000
 // Calculate DAU/MAU ratio
 | evaluate activity_engagement(['id'], _day, _start, _end, 1d, 30d)
 | project _day, Dau_Mau=activity_ratio*100 
@@ -101,7 +101,7 @@ range _day from _start to _end  step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+100*r-1), 1) 
-| mvexpand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) limit 1000000
 | extend mod3 = strcat("mod3=", id % 3)
 // Calculate DAU/MAU ratio
 | evaluate activity_engagement(['id'], _day, _start, _end, 1d, 30d, mod3)

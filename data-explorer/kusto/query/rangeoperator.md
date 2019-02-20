@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/20/2019
 ---
 # range operator
 
@@ -27,7 +27,7 @@ Notice that it doesn't have a pipeline input.
 on the highest value, if *step* steps over this value).
 * *step*: The difference between two consecutive values. 
 
-The arguments must be numeric, date or timespan values. They can't reference the columns of any table. (If you want to compute the range based on an input table, use the range function, maybe with the mvexpand operator.) 
+The arguments must be numeric, date or timespan values. They can't reference the columns of any table. (If you want to compute the range based on an input table, use the range function, maybe with the mv-expand operator.) 
 
 **Returns**
 

@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/31/2019
+ms.date: 02/15/2019
 ---
 # Kusto.Explorer tool
 
@@ -287,6 +287,35 @@ as usual, you'll have to run each line using `F5` or similar):
 
 StormEvents | count
 ```
+
+### Controlling the user identity used for connecting to Kusto
+
+When adding a new connection, the default security model used is
+AAD-Federated security, in which authentication is done through
+Azure Active Directory using the default AAD user experience.
+
+In some cases, one needs finer control over the authentication parameters
+than is available by AAD. In such cases, it is possible to expand the
+"Advanced: Connection Strings" edit box and provide a valid
+[Kusto connection string](../api/connection-strings/kusto.md) value.
+
+For example, users who have presence in
+multiple AAD tenants sometimes need to use a particular "projection"
+of their identities to a specific AAD tenant. This can be done by
+providing a connection string like so (words IN CAPITAL are to be
+replaced by specific values):
+
+```
+Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME;AAD Federated Security=True;Authority Id=AAD_TENANT_OF_CLUSTER;User=USER_DOMAIN
+```
+
+Here, the unique thing is that `AAD_TENANT_OF_CLUSTER` is a domain name
+or AAD tenant ID (a GUID) of the AAD tenant in which the cluster is hosted
+(usually the organization domain name who owns the cluster, such as 
+`contoso.com`), and USER_DOMAIN is the identity of the user who has been
+invited into that tenant (e.g., `joe@fabrikam.com`). Note that the domain
+name of the user is not necessarily the same as that of the tenant hosting
+the cluster.
 
 ## Search Beta Mode
 

@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 02/16/2019
 ---
 # externaldata operator
 
@@ -37,12 +37,16 @@ from the specified URI.
 
 **Example**
 
-The following example shows how to parse at query time a raw CSV data file 
-in Azure Storage Blob. (Please note that in reality the `data.csv` file will
-be appended by a SAS token to authorize the request.)
+The following example shows how to find all records in a table whose
+`UserID` column falls into a known set of IDs, held (one per line)
+in an external blob. Because the set is indirectly referenced by the
+query, it can be very large.
 
 ```kusto
-externaldata (Date:datetime, Event:string)
-[h@"https://storageaccount.blob.core.windows.net/storagecontainer/data.csv"]
-| where strlen(Event) > 4
+Users
+| where UserID in (externaldata (UserID:string) [
+    @"https://storageaccount.blob.core.windows.net/storagecontainer/users.txt"
+      h@"?...SAS..."
+    ])
+| ...
 ```

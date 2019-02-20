@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/20/2019
 ---
 # Joining within time window
 
@@ -112,8 +112,8 @@ T
               TimeKey = range(bin(Timestamp-lookupWindow, lookupBin),
                               bin(Timestamp, lookupBin),
                               lookupBin)
-    // 'mvexpand' translates the TimeKey array range into a column
-    | mvexpand TimeKey to typeof(datetime)
+    // 'mv-expand' translates the TimeKey array range into a column
+    | mv-expand TimeKey to typeof(datetime)
     ) on SessionId, TimeKey 
 | where (End - Start) between (0min .. lookupWindow)
 | project SessionId, Start, End 
@@ -149,7 +149,7 @@ T
               TimeKey = range(bin(Timestamp-lookupWindow, lookupBin),
                               bin(Timestamp, lookupBin),
                               lookupBin)
-    | mvexpand TimeKey to typeof(datetime)
+    | mv-expand TimeKey to typeof(datetime)
     ) on SessionId, TimeKey 
 | where (End - Start) between (0min .. lookupWindow)
 | project SessionId, Start, End 
@@ -183,7 +183,7 @@ T
               TimeKey = range(bin(Time-lookupWindow, lookupBin), 
                               bin(Time, lookupBin),
                               lookupBin)
-    | mvexpand TimeKey to typeof(datetime)
+    | mv-expand TimeKey to typeof(datetime)
     ) on SessionId, TimeKey 
 | where (End - Start) between (0min .. lookupWindow)
 | project SessionId, Start, End 

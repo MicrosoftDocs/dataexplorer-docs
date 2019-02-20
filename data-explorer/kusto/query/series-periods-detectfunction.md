@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/19/2019
 ---
 # series_periods_detect()
 
@@ -24,7 +24,7 @@ The function takes as input a column containing a dynamic array of time series (
 
 **Arguments**
 
-* *x*: Dynamic array scalar expression which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [makelist](makelist-aggfunction.md) operators.
+* *x*: Dynamic array scalar expression which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators.
 * *min_period*: A `real` number specifying the minimal period to search for.
 * *max_period*: A `real` number specifying the maximal period to search for.
 * *num_periods*: A `long` number specifying the maximum required number of periods. This will be the length of the output dynamic arrays.

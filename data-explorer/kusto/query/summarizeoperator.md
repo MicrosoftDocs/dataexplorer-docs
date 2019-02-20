@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/19/2019
 ---
 # summarize operator
 
@@ -64,8 +64,9 @@ The automatic hourly bins for datetime columns is no longer supported. Use expli
 |[count()](count-aggfunction.md)|Returns count of the group|
 |[countif()](countif-aggfunction.md)|Returns count with the predicate of the group|
 |[dcount()](dcount-aggfunction.md)|Returns approximate distinct count of the group elements|
-|[makelist()](makelist-aggfunction.md)|Returns a list of all the values within the group|
-|[makeset()](makeset-aggfunction.md)|Returns a set of distinct values within the group|
+|[make_bag()](makebag-aggfunction.md)|Returns a property bag of dynamic values within the group|
+|[make_list()](makelist-aggfunction.md)|Returns a list of all the values within the group|
+|[make_set()](makeset-aggfunction.md)|Returns a set of distinct values within the group|
 |[max()](max-aggfunction.md)|Returns the maximum value across the group|
 |[min()](min-aggfunction.md)|Returns the minimum value across the group|
 |[percentiles()](percentiles-aggfunction.md)|Returns the percentile approximate of the group|
@@ -80,7 +81,7 @@ The following table summarizes the default values of aggregations
 Operator       |Default value                         
 ---------------|------------------------------------
  `count()`, `countif()`, `dcount()`, `dcountif()`         |   0                            
- `makeset()`, `makelist()`          |    empty dynamic array              ([])          
+ `make_set()`, `make_list()`          |    empty dynamic array              ([])          
  `any()`, `arg_max()`. `arg_min()`, `avg()`, `buildschema()`, `hll()`, `max()`, `min()`, `percentiles()`, `stdev()`, `sum()`, `sumif()`, `tdigest()`, `variance()`          |   null                           
 
  In addition, when using these aggregates over entities which includes null values, the null values will be ignored and won't participate in the calculation (See examples below).
@@ -181,7 +182,7 @@ range x from 1 to 10 step 1
 ```kusto
 range x from 1 to 10 step 1
 | where 1 == 2
-| summarize  makeset(x), makelist(x)
+| summarize  make_set(x), make_list(x)
 ```
 
 |set_x|list_x|
@@ -215,7 +216,7 @@ range x from 1 to 2 step 1
 ```kusto
 range x from 1 to 2 step 1
 | extend y = iff(x == 1, real(null), real(5))
-| summarize makeset(y), makeset(y)
+| summarize make_set(y), make_set(y)
 ```
 
 |set_y|set_y1|
