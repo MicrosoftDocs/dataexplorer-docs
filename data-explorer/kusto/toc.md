@@ -421,6 +421,7 @@
 
 
 
+
 ## Policies
 ### [Cache policy](./concepts/cachepolicy.md)
 
@@ -579,6 +580,7 @@
 
 
 
+### [Grafana](./tools/grafana.md)
 
 ## Orchestration
 

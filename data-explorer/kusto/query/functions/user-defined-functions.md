@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2019
+ms.date: 02/24/2019
 ---
 # User-Defined Functions
 
@@ -93,15 +93,20 @@ MyDistinct((range x from 1 to 3 step 1))
 
 ## Declaring user-defined functions
 
-The declaration of a user-defined function provides the name
-of the function, its schema (what parameters, if any, it accepts),
-and the body of the function. Lambda functions do not have a name,
-but must be immediately bound to a name via a `let` statement, so
+The declaration of a user-defined function provides:
+
+1. The **name** of the function
+2. The **schema** of the function (what parameters, if any, it accepts)
+3. The **body** of the function
+
+Lambda functions do not have a name,
+and are bound to a name via a [let statement](..\letstatement.md), so
 they can be regarded the same as user-defined stored functions.
+
 For example, the following declaration is for a lambda that
 accepts two arguments (a `string` called `s` and a `long` called
-`i`) and returns the product of the first (after converting it
-into a number) and the second; it then binds the lambda to the
+`i`). It returns the product of the first (after converting it
+into a number) and the second. The lambda is bound to the
 name `f`:
 
 ```kusto
@@ -110,10 +115,21 @@ let f=(s:string, i:long) {
 };
 ```
 
-The **function body** must include an expression that returns
-some value (which can be a scalar value or a tabular value).
-Additionally, it may include other `let` statements (preceding
-the result expression) and may even declare other functions.
+The **body** of a function includes:
+
+1. Precisely one expression, which provides the function's
+   return value (which can be a scalar value or a tabular
+   value).
+2. Any number (zero or more) of [let statements](..\letstatement.md),
+   whose scope is that of the function body. If specified,
+   they must precede the expression defining the function's return value.
+3. Any number (zero or more) of [query parameters statements](..\queryparametersstatement.md),
+   which declare query parameters used by the function. If specified,
+   they must precede the expression defining the function's return value.
+
+> [!NOTE]
+> Other kinds of [query statements](../statements.md) (which are supported
+> at the query "top level" are not supported inside a function body.)
 
 **Example: User-defined function that uses a let statement**
 

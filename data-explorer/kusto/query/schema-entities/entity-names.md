@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/24/2019
 ---
 # Entity names
 
@@ -43,16 +43,12 @@ Pretty names allow middle-tier applications to map automatically-create entity n
 Identifiers are used to name various entities (entities or otherwise).
 Valid identifier names follow these rules:
 * They have between 1 and 1024 characters long.
-* They may contains letters, digits, underscores (`_`), dollar signs (`$`),
-  spaces, dots (`.`), and dashes (`-`).
-  * Identifiers consisting only of letters, digits, underscores, and dollar signs
+* They may contain letters, digits, underscores (`_`), spaces, dots (`.`), and dashes (`-`).
+  * Identifiers consisting only of letters, digits, and underscores
     do not require quoting when the identifier is being referenced.
   * Identifiers containing at last one of (spaces, dots, or dashes) do
     require quoting (see below).
 * They are case-sensitive.
-
-Note: Some language-defined identifiers start with a dollar sign (`$`).
-These are not allowed in user-defined identifiers.
 
 ## Identifier quoting
 

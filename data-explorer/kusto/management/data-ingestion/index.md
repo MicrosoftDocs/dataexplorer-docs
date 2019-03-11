@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 03/06/2019
 ---
 # Data ingestion
 
@@ -127,7 +127,7 @@ use of the `with` keyword. The supported properties are:
   from succeeding if the table already has data tagged an `ingest-by:` tag
   with the same value. This can be used to ensure idempotent data ingestion;
   see [ingest-by: tags](../extents-overview.md#ingest-by-extent-tags).
-  For example, the properties `with (ingestIfNotExists="Part0001", tags="['ingest-by:Part0001']")`
+  For example, the properties `with (ingestIfNotExists='["Part0001"]', tags='["ingest-by:Part0001"]')`
   indicate that if data with the tag `ingest-by:Part0001` already exists, then
   we should not complete the current ingestion. If it doesn't already exist,
   then this new ingestion should have this tag set (in case a future ingestion

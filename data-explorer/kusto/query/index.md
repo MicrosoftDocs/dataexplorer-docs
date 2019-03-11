@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 03/07/2019
 ---
 # Overview
 
@@ -43,9 +43,9 @@ StormEvents
 | count 
 ```
 
-To run this query, [click here](https://help.kusto.windows.net/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoz0gtSlUILkksKgnJzE1VsLNVSEksSS0BsjWMDAzMdQ0NdQ0MNRUS81KQVNlgqDICqUIxsCRVwdZWQcnNxz%2fI08VRSQFsXXJ%2baV4JAPfnzX2EAAAA).
+To run this query, [click here](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksKgnJzE1VsLNVSEksSS0BsjWMDAzMdQ0NdQ0MNRUS81KQVNmgKzICKUIxryRVwdZWQcnNxz/I08VRSQFsW3J+aV6JAgAwMx4+hAAAAA==).
 In this case, the result will be:
 
 |Count|
 |-----|
-|   28|
+|   23|

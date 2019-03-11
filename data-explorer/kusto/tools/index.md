@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/15/2019
+ms.date: 02/22/2019
 ---
 # Kusto Tools
 
@@ -24,6 +24,7 @@ ms.date: 02/15/2019
 * [PowerBI](./powerbi.md) - Build reports and dashboards in Power BI on top of Kusto data
 * [PowerBI Connector](./powerbi-connector.md) - a Power BI Desktop connector for Kusto
 
+* [Grafana](grafana.md) - an analytics platform that enables creating and sharing dashboards.
 
 ## Orchestration tools
 

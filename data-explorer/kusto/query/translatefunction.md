@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 03/11/2019
 ---
 # translate()
 
@@ -16,7 +16,7 @@ The function searches for characters in the 'searchList' and replaces them with 
 
 **Syntax**
 
-`translate(`*searchList*`,` *replacementList*,` *text*`)`
+`translate(`*searchList*`,` *replacementList*`,` *text*`)`
 
 **Arguments**
 
@@ -30,9 +30,8 @@ The function searches for characters in the 'searchList' and replaces them with 
 
 **Examples**
 
-|||
-|---|---
-|`translate("abc", "x", "abc")`| "xxx" 
-|`translate("abc", "", "ab")`| ""
-|`translate("krasp", "otsku", "spark")`| "kusto"
-    
+|Input                                 |Output   |
+|--------------------------------------|---------|
+|`translate("abc", "x", "abc")`        |`"xxx"`  |
+|`translate("abc", "", "ab")`          |`""`     |
+|`translate("krasp", "otsku", "spark")`|`"kusto"`|

@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 03/05/2019
 ---
 # Kusto.Ingest Reference - Ingestion Code Examples
 This is a collection of short code snippets demonstrating various techniques of ingesting data into a Kusto table
@@ -21,41 +21,7 @@ This is a collection of short code snippets demonstrating various techniques of 
 * [Kusto connection strings](../connection-strings/kusto.md)
 * [Kusto Authorization Model](../../management/security-roles.md)
 
-
-### Ingest from Azure Blob(s) using KustoQueuedIngestClient with (optional) RetryPolicy:
-```csharp
-// Create Kusto connection string with App Authentication
-var kustoConnectionStringBuilderDM =
-    new KustoConnectionStringBuilder(@"https://ingest-{clusterNameAndRegion}.kusto.windows.net").WithAadApplicationKeyAuthentication(
-        applicationClientId: "{Application Client ID}",
-        applicationKey: "{Application Key (secret)}",
-        authority: "{AAD TenantID or name}");
-
-// Create an ingest client
-// Note, that creating a separate instance per ingestion operation is an anti-pattern. IngestClient classes are thread-safe and intended for reuse
-IKustoIngestClient client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
-
-// Ingest from blobs according to the required properties
-string kustoDatabase = "database";
-string kustoTable = "table";
-var kustoIngestionProperties = new KustoIngestionProperties(databaseName: kustoDatabase, tableName: kustoTable);
-List<string> blobs = new List<string>
-{
-    @"Blob-1-with-SAS",
-    @"Blob-2-with-SAS",
-};
-
-// Create your custom implementation of IRetryPolicy, which will affect how the ingest client handles retrying on transient failures
-IRetryPolicy retryPolicy = new <class that implements IRetryPolicy>;
-// This line sets the retry policy on the ingest client that will be enforced on every ingest call from here on
-client.QueueRetryPolicy = retryPolicy;
-
-client.IngestFromMultipleBlobs(blobUris: blobs, deleteSourcesOnSuccess: true, ingestionProperties: kustoIngestionProperties);
-
-client.Dispose();
-```
-
-### Async Ingestion From a Single Azure Blob using KustoQueuedIngestClient:
+### Async Ingestion From a Single Azure Blob using KustoQueuedIngestClient with (optional) RetryPolicy:
 ```csharp
 // Create Kusto connection string with App Authentication
 var kustoConnectionStringBuilderDM =
@@ -74,12 +40,17 @@ string kustoDatabase = "database";
 string kustoTable = "table";
 var kustoIngestionProperties = new KustoIngestionProperties(databaseName: kustoDatabase, tableName: kustoTable);
 
+// Create your custom implementation of IRetryPolicy, which will affect how the ingest client handles retrying on transient failures
+IRetryPolicy retryPolicy = new <class that implements IRetryPolicy>;
+// This line sets the retry policy on the ingest client that will be enforced on every ingest call from here on
+client.QueueRetryPolicy = retryPolicy;
+
 await client.IngestFromSingleBlobAsync(blobUri: @"BLOB-URI-WITH-SAS-KEY", deleteSourceOnSuccess: true, ingestionProperties: kustoIngestionProperties, rawDataSize: 123);
 
 client.Dispose();
 ```
 
-### Ingest From Local File(s) using KustoDirectIngestClient (only for test purposes):
+### Ingest From Local File using KustoDirectIngestClient (only for test purposes):
 ```csharp
 // Create Kusto connection string with App Authentication
 var kustoConnectionStringBuilderEngine =
@@ -96,17 +67,11 @@ using (IKustoIngestClient client = KustoIngestFactory.CreateDirectIngestClient(k
     string kustoTable = "table";
     var kustoIngestionProperties = new KustoIngestionProperties(databaseName: kustoDatabase, tableName: kustoTable);
 
-    List<string> files = new List<string>
-    {
-        @"C:\Temp\data1.csv",
-        @"C:\Temp\data2.csv",
-    };
-
-    client.IngestFromMultipleFiles(filePaths: files, deleteSourcesOnSuccess: false, ingestionProperties: kustoIngestionProperties);
+    client.IngestFromSingleFile(@"C:\Temp\data1.csv", deleteSourcesOnSuccess: false, ingestionProperties: kustoIngestionProperties);
 }
 ```
 
-### Ingest From Local File(s) using KustoQueuedIngestClient and Ingestion Validation 
+### Ingest From Local Files using KustoQueuedIngestClient and Ingestion Validation 
 ```csharp
 // Create Kusto connection string with App Authentication
 var kustoConnectionStringBuilderDM =
@@ -123,7 +88,8 @@ string kustoDatabase = "database";
 string kustoTable = "table";
 var kustoIngestionProperties = new KustoIngestionProperties(databaseName: kustoDatabase, tableName: kustoTable);
 
-client.IngestFromMultipleFiles(new string[] { "ValidTestFile.csv", "InvalidTestFile.csv" }, false, kustoIngestionProperties);
+client.IngestFromSingleFile("ValidTestFile.csv", false, kustoIngestionProperties);
+client.IngestFromSingleFile("InvalidTestFile.csv", false, kustoIngestionProperties);
 
 // Waiting for the aggregation
 Thread.Sleep(TimeSpan.FromMinutes(8));
@@ -139,7 +105,7 @@ Ensure.IsTrue((ingestionFailures.Count() > 0), "Failures expected");
 client.Dispose();
 ```
 
-### Ingest From a Local File using KustoQueuedIngestClient and report status to a queue
+### Ingest From a Local Files using KustoQueuedIngestClient and report status to a queue
 
 ```csharp
 // Create Kusto connection string with App Authentication
@@ -167,7 +133,8 @@ var kustoIngestionProperties = new KustoQueuedIngestionProperties(databaseName: 
     ReportMethod = IngestionReportMethod.Queue
 };
 
-client.IngestFromMultipleFiles(new string[] { "ValidTestFile.csv", "InvalidTestFile.csv" }, false, kustoIngestionProperties);
+client.IngestFromSingleFile("ValidTestFile.csv", false, kustoIngestionProperties);
+client.IngestFromSingleFile("InvalidTestFile.csv", false, kustoIngestionProperties);
 
 // Waiting for the aggregation
 Thread.Sleep(TimeSpan.FromMinutes(8));
