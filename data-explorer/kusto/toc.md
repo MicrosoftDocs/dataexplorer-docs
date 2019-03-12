@@ -427,7 +427,7 @@
 
 
 
-
+### [Ingestion Batching policy](./concepts/batchingpolicy.md)
 ### [IngestionTime policy](./concepts/ingestiontimepolicy.md)
 
 
