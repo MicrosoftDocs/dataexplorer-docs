@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/24/2019
+ms.date: 03/12/2019
 ---
 # User-Defined Functions
 
@@ -100,7 +100,7 @@ The declaration of a user-defined function provides:
 3. The **body** of the function
 
 Lambda functions do not have a name,
-and are bound to a name via a [let statement](..\letstatement.md), so
+and are bound to a name via a [let statement](../letstatement.md), so
 they can be regarded the same as user-defined stored functions.
 
 For example, the following declaration is for a lambda that
@@ -120,10 +120,10 @@ The **body** of a function includes:
 1. Precisely one expression, which provides the function's
    return value (which can be a scalar value or a tabular
    value).
-2. Any number (zero or more) of [let statements](..\letstatement.md),
+2. Any number (zero or more) of [let statements](../letstatement.md),
    whose scope is that of the function body. If specified,
    they must precede the expression defining the function's return value.
-3. Any number (zero or more) of [query parameters statements](..\queryparametersstatement.md),
+3. Any number (zero or more) of [query parameters statements](../queryparametersstatement.md),
    which declare query parameters used by the function. If specified,
    they must precede the expression defining the function's return value.
 

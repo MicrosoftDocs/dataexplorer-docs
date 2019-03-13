@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/20/2019
+ms.date: 03/12/2019
 ---
 # Kusto connection strings
 

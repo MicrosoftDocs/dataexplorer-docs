@@ -7,15 +7,15 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/25/2019
+ms.date: 03/12/2019
 ---
 # IngestionBatching policy
 
 ## Overview
 
-When using [queued ingestion](../management/data-ingestion/internal.md), Kusto can optimize
-the ingestion process so that small data blobs are batched together as they await
-ingestion. This sort of batching reduces the resources consumed by the ingestion
+During the ingestion process Kusto attempts to optimize for throughput by batching small
+ingress data chunks together as they await ingestion.
+This sort of batching reduces the resources consumed by the ingestion
 process, as well as does not require post-ingestion resources to optimize the
 small data shards produced by non-batched ingestion.
 

@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/10/2019
+ms.date: 03/12/2019
 ---
 # Retention policy
 
@@ -48,6 +48,7 @@ A retention policy includes the following properties:
 * **Recoverability**:
     - Data recoverability (enabled / disabled) after the data was deleted
     - Defaults to `enabled`
+    - If set to `enabled`, the data will be recoverable for 14 days after the deletion
 
 ## Control commands
 * Use [.show policy retention](../management/retention-policy.md) to show current retention
