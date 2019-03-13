@@ -7,11 +7,11 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/25/2018
+ms.date: 03/07/2019
 ---
 # Export data to storage
 
-This `.export` command executes a query and writes the first resultset to an
+The `.export` command executes a query and writes the first result set to an
 external storage, specified by a [storage connection string](../../api/connection-strings/storage.md).
 
 **Syntax**
@@ -25,8 +25,7 @@ external storage, specified by a [storage connection string](../../api/connectio
 **Arguments**
 
 * `async`: If specified, indicates that the command runs in asynchronous mode.
-  (When running asynchronously, the command results are available by using the
-  [.show operation details](../operations.md#show-operation-details) command.
+  See below for more details on the behavior in this mode.
 
 * `compressed`: If specified, the output storage artifacts are compressed
   as `.gz` files.
@@ -71,15 +70,28 @@ artifact and how many data records it holds.
 |http://storage1.blob.core.windows.net/containerName/export_1_d08afcae2f044c1092b279412dcb571b.csv|10|
 |http://storage1.blob.core.windows.net/containerName/export_2_454c0f1359e24795b6529da8a0101330.csv|15|
 
-> [!NOTE]
-> If the command is executed asynchronously, its results is a unique operation
-> identifier. The command results can then be retrieved using the
-> [.show operation details](../operations.md#show-operation-details) command.
+**Asynchronous mode**
+
+If the `async` flag is specified, the command executes in asynchronous mode.
+In this mode, the command returns immediately with an operation ID, and data
+export continues in the background until completion. The operation ID returned
+by the command can be used to track its progress and ultimately its results
+via the [.show operation details](../operations.md#show-operation-details) command.
 
 ```kusto
 .show operation f008dc1e-2710-47d8-8d34-0d562f5f8615 details
 ```
- 
+
+**Limitations**
+
+If the output data format is set to `parquet`, export may produce empty storage
+artifacts (indicating that the node writing the artifact had no records to write).
+As an optional mitigation, one might disable executing the export process in a
+distributed fashion (set `distributed` to `false`). This is not recommended, however,
+as it adds load on the cluster due to the need to write all data from a single
+cluster node. Note also that if the query returns no records at all, a single storage
+artifact will still be produced (even if distribution is disabled).
+
 **Examples** 
 
 In this example, Kusto runs the query and then exports the first recordset produced by the query to one or more compressed CSV blobs.

@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/29/2018
+ms.date: 03/10/2019
 ---
 # Microsoft Flow and Kusto
 
@@ -109,6 +109,28 @@ Now you should be able to see 'Azure Kusto' as seen in the image below.
 ![alt text](./Images/KustoTools-Flow/flow-actions.png "flow-actions")
 
 
+
+### Having a Timeout Exception?
+
+Your flow can fail and return "RequestTimeout" exception if it runs more than 7 minutes.
+
+Notice that 7 minutes is the maximum time flow queries can run before there will be a timeout exception.
+
+[Click here](https://kusto.azurewebsites.net/docs/tools/flow.html#limitations) to see Microsoft Flow limitations.
+
+The same query may run successfully in Kusto Explorer where the time is not limited and can be changed.
+
+The "RequestTimeout" exception is shown in the image below:
+
+![alt text](./Images/KustoTools-Flow/flow-requesttimeout.png "flow-requesttimeout")
+
+To fix the issue you can follow these steps:
+1. Read more about [Query best practices](https://docs.microsoft.com/en-us/azure/kusto/query/best-practices).
+2. Try to make your query more efficient in order to make it run faster, or separate it into chunks, each chunk can run on a different part of the query.
+
+### Does flow support National Cloud Kusto clusters?
+
+Flow infrastructure currently doesn't support dSTS authentication, so unless you are using AAD authentication, national cloud is not supported in Flow.
 
 ## Authentication
 
@@ -250,42 +272,38 @@ We visualize this information as a pie chart and email it to our team.
 
 ### Example 5 - Email multiple Azure Kusto Flow charts
 
-Currently, Microsoft Flow email connector does not support sending multiple attachements in a single email.
-To overcome that, we suggest the following workaround for sending multiple Azure Kusto Flow charts.
+Create a new Flow with "Recurrence" trigger, and define the interval of the Flow and the frequency. 
 
-To use this example you will need an Azure storage account with a blob container for storing charts created in your Flow.
+Add a new step, with one or more 'Kusto - Run query and visualize results' actions. 
 
-Create a new Flow with one or more 'Kusto - Run query and visualize results' actions. 
+![alt text](./Images/KustoTools-Flow/flow-severalqueries.png "flow-severalqueries")
 
-![alt text](./Images/KustoTools-Flow/flow-severalkustoactions.png "flow-severalkustoactions")
+For each 'Kusto - Run query and visualize result' define the following fields:
 
-For each Azure Kusto action create a new 'Azure Blob Storage - Create Blob' action. 
-When first creating this action, you will need to connect to your storage account by entering a connection string, storage account name and storage account key.
+Cluster Name, Database Name, Query and Chart Type (Html Table/ Pie Chart/ Time Chart/ Bar Chart/ Enter Custom Value).
 
-![alt text](./Images/KustoTools-Flow/flow-connectazurestorage.png "flow-connectazurestorage")
+![alt text](./Images/KustoTools-Flow/flow-visualizeresultsmultipleattachments.png "flow-visualizeresultsmultipleattachments")
 
-After connecting to your storage account select under 'Folder path' the container you created for storing Flow charts.
-Under 'Blob name' and 'Blob content', insert the Azure Kusto 'Attachment Name' and 'Attachment Content' objects from the dynamic content window.
+After finishing with 'Kusto - Run query and visualize result' actions, add "Send an email" action. 
 
-![alt text](./Images/KustoTools-Flow/flow-createblob.png "flow-createblob")
+Make sure to insert in the "Body" field the required body, in order to attach the visualize result of the query to the body of the email.
+In addition, in order to add an attachment to the email, add 'Attachment Name' and 'Attachment Content'.
 
-In the Azure Portal generate a SAS Key for your storage account with the required permissions and time limits, then copy the Blob service SAS URL path to Flow.
+Make sure to select "Yes" under "is HTML" field.
 
-![alt text](./Images/KustoTools-Flow/flow-saskey.png "flow-saskey")
+![alt text](./Images/KustoTools-Flow/flow-emailmultipleattachments.png "flow-emailmultipleattachments")
 
-Add an action for sending email and under 'Body' enter HTML image tags for each Azure Kusto chart created in the previous steps, using the following format: &lt;img src="path"&gt;.
+Results:
 
-Paste the Blob service SAS URL inside the HTML tag and insert the 'Path' object created from the 'Create blob' action to indicate container and blob name.
+![alt text](./Images/KustoTools-Flow/flow-resultsmultipleattachments.png "flow-resultsmultipleattachments")
 
-Make sure to select 'true' under 'is HTML'.
-
-![alt text](./Images/KustoTools-Flow/flow-emailmultiplecharts.png "flow-emailmultiplecharts")
+![alt text](./Images/KustoTools-Flow/flow-resultsmultipleattachments2.png "flow-resultsmultipleattachments2")
 
 ### Example 6 - Send a different email to different contacts
 
 You can leverage Azure Kusto Flow to send different customized emails to different contacts. The email addresses as well as the email contents are a result of a Kusto query.
 
-See below example:
+See example below:
 
 ![alt text](./Images/KustoTools-Flow/flow-dynamicemailkusto.png "flow-dynamicemailkusto")
 

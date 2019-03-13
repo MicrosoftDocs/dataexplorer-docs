@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 03/07/2019
 ---
 # MS-TDS clients and Kusto
 
@@ -44,6 +44,19 @@ Create ODBC data source:
 7. Can leave defaults for all other settings in the following tabs.
 8. `Finish` button opens data source summary dialog where the connection can be tested.
 9. ODBC source can now be used with applications.
+
+### PowerShell
+
+Example of PowerShell script that uses ODBC driver:
+
+```powershell
+$conn = [System.Data.Common.DbProviderFactories]::GetFactory("System.Data.Odbc").CreateConnection()
+$conn.ConnectionString = "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated“
+$conn.Open()
+$conn.GetSchema("Tables")
+$conn.Close()  
+
+```
 
 
 

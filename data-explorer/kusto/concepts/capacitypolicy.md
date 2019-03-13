@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/19/2018
+ms.date: 02/26/2019
 ---
 # Capacity policy
 
@@ -88,14 +88,15 @@ The default capacity policy has the following JSON representation:
 
 Kusto limits the amount of concurrent requests for the following commands.
 
-  1. Ingestions (includes all the commands that are listed [here](../management/data-ingestion/index.md))
-  2. Merges
-  3. Purges
+1. Ingestions (includes all the commands that are listed [here](../management/data-ingestion/index.md))
+      * Limit is as defined in the [capacity policy](#capacity-policy).
+2. Merges
+      * Limit is as defined in the [capacity policy](#capacity-policy).
+3. Purges
+      * Global is currently fixed at 1 per cluster.
+      * The purge rebuild capacity is used internally to determine the number of concurrent rebuild operations during purge commands (purge commands will not be blocked/throttled due to this, but will work faster/slower depending on the purge rebuild capacity).
+4. Exports
+      * Global limit is currently fixed at 75% of the number of the cluster's working nodes.
 
-
-The limit of ingestions and merges is set according to their respective capacity policy defined above.
-The limit of the purge operation is currently fixed at 1.
-The purge rebuild capacity is used internally to determine the number of concurrent rebuild operations during purge commands (purge commands will not be blocked/throttled due to this, but will work faster/slower depending on the purge rebuild capacity).
-
-When Kusto detects that some operation has exceeded the allowed concurrent operation,Kusto will respond with a 429 HTTP code.
+When Kusto detects that some operation has exceeded the allowed concurrent operation, Kusto will respond with a 429 HTTP code.
 The client should retry the operation after some backoff. 

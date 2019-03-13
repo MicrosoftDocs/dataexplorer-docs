@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/16/2018
+ms.date: 03/09/2019
 ---
 # KQL over TDS
 
@@ -52,7 +52,7 @@ Kusto stored functions can be also called from T-SQL, just like SQL tabular func
 SELECT * FROM kusto.MyFunction(10)
 ```
 
-It is recommend to created optimized KQL queries and to encapsulate them in stored functions, making the T-SQL query code minimal.
+It is recommend to create optimized KQL queries and to encapsulate them in stored functions, making the T-SQL query code minimal.
 
 ## Executing KQL query
 

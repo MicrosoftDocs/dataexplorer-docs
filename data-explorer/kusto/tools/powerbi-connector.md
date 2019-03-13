@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/03/2019
+ms.date: 03/05/2019
 ---
 # Power BI Kusto Connector
 
@@ -18,12 +18,12 @@ which lets you visually build (efficient) Kusto queries using the Power BI query
 
 ## Using the connector
 
-1. Open Power BI Desktop(download from here: https://powerbi.microsoft.com/desktop). 
+1. Open Power BI Desktop (download from here: https://powerbi.microsoft.com/desktop). 
 2. Click the Get Data button:
 
 ![alt text](./Images/KustoTools-PowerBIConnector/step2.png "step2")
 
-3. Select the Kusto connector:
+3. Select the Azure Data Explorer connector:
 
 ![alt text](./Images/KustoTools-PowerBIConnector/step3.png "step3")
 
@@ -174,7 +174,7 @@ You can use Query Parameters to modify your query dynamically.
 
    And it should be replaced with (notice the 3 double-quotes):
 
-   ```"StormEvents | where State == """ & State """ | take 100"```
+   ```"StormEvents | where State == """ & State & """ | take 100"```
 
 
 ### Using a Query Parameter in the query steps

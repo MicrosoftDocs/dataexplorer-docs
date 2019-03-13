@@ -7,22 +7,29 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/20/2019
+ms.date: 03/06/2019
 ---
 # The dynamic data type
 
 The `dynamic` data type is a scalar type that behaves somewhat like a JSON data
 type. A value of this type can be:
 
-* A value of any of the primitive Kusto data types (`bool`, `datetime`, `guid`, `int`, `long`,
-  `real`, `string`, and `timespan`)
-* An array `dynamic` values (single-dimensional, 0-based, possibly empty)
-* A property bag mapping unique `string` to `dynamic` values (possibly empty)
-* A null value of the `dynamic` type
+* A value of any of the primitive Kusto data types:
+  `bool`, `datetime`, `guid`, `int`, `long`, `real`, `string`, and `timespan`.
+
+* An array of `dynamic` values. The array has zero or more elements,
+  and is indexed starting from zero for the first element.
+
+* A property bag that maps unique `string` values to `dynamic` values.
+  The property bag has zero or more such mappings,
+  and the mappings are unordered.
+
+* A null value of the `dynamic` type.
 
 > [!NOTE]
 > Values of type `dynamic` are limited to 1MB bytes (2^20).
->
+
+> [!NOTE]
 > Although the `dynamic` type appears JSON-like, it can hold values that the JSON
 > model does not represent, as the Kusto model is more-detailed than JSON's
 > (for example, it differentiates between `long` and `real` numbers, has explicit
@@ -31,6 +38,12 @@ type. A value of this type can be:
 > values that JSON does not support. Conversely, Kusto will parse some strings
 > as strongly-typed values if they can be parsed as such (for example, `datetime`
 > values). For more about the JSON object model, see See [json.org](https://json.org/).
+
+> [!NOTE]
+> The system does not attempt to preserve the order of name-to-value mappings in
+> a property bag, and one cannot assume the order to be preserved. It's entirely
+> possible for two property bags with the same set of mappings to yield different
+> results when they are represented as `string` values, for example.
 
 ## dynamic literals
 

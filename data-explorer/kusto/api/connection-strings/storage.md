@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/15/2019
+ms.date: 02/28/2019
 ---
 # Storage connection strings
 
@@ -60,7 +60,7 @@ This provider supports accessing data in Azure Data Lake Store Gen 2.
 
 The format of the URI is:
 
-`abfss://` *Filesystem* `@` *StorageAccountName* `.dfs.core.windows.net/` *Path* `;` *Credentials*
+`abfss://` *Filesystem* `@` *StorageAccountName* `.dfs.core.windows.net/` *Path* `;` *CallerCredentials*
 
 Where:
 
@@ -69,11 +69,11 @@ Where:
 * *StorageAccountName* is the name of the storage account.
 * *Path* is the path to the directory or file being accessed.
   The slash (`/`) character is used as a delimiter.
-* *Credentials* indicates the credentials used to access the service,
+* *CallerCredentials* indicates the credentials used to access the service,
   as described below.
 
-It must be provided with credentials (Kusto doesn't use its own AAD principal to
-access the service). The following methods of providing credentials are
+When accessing Azure Data Lake Store Gen 2, the caller must provide valid
+credentials for accessing the service. The following methods of providing credentials are
 supported:
 
 * By appending `;sharedkey=`*AccountKey* to the URI, with *AccountKey* being
@@ -81,7 +81,7 @@ supported:
 * By appending `;impersonate` to the URI. Kusto will use the requestor's principal
   identity and impersonate it to access the resource.
 * By appending `;token=`*AadToken* to the URI, with *AadToken* being a base-64
-  encoded AAD access token.
+  encoded AAD access token (make sure the token is for the resource `https://storage.azure.com/`).
 * By appending `;prompt` to the URI. Kusto will ask the user for credentials
   when it needs to access the resource. (Prompting the user is disabled for
   cloud deployments and only enabled in test environments.)
@@ -98,7 +98,7 @@ supported:
 * By appending `;impersonate` to the URI. Kusto will use the requestor's principal
   identity and impersonate it to access the resource.
 * By appending `;token=`*AadToken* to the URI, with *AadToken* being a base-64
-  encoded AAD access token.
+  encoded AAD access token (make sure the token is for the resource `https://management.azure.com/`).
 * By appending `;prompt` to the URI. Kusto will ask the user for credentials
   when it needs to access the resource. (Prompting the user is disabled for
   cloud deployments and only enabled in test environments.)

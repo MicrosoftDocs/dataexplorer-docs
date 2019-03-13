@@ -7,11 +7,14 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/15/2019
+ms.date: 03/05/2019
 ---
 # partition operator
 
-Partitions subquery using specific column. 
+The partition operator partitions its input table into multiple sub-tables
+according to the values of the specified column, executes a sub-query over each
+sub-table, and produces a single output table that is the union of the results
+of all sub-queries. 
 
 ```kusto
 T | partition by Col1 ( top 10 by MaxValue )
@@ -19,31 +22,42 @@ T | partition by Col1 ( top 10 by MaxValue )
 
 **Syntax**
 
-*T* `| partition` [*PartitionParameters*] `by` *Column* `(` *Subquery* `)`
+*T* `|` `partition` [*PartitionParameters*] `by` *Column* `(` *Subquery* `)`
 
 **Arguments**
 
-* *T*: Tabular source of the `partition` operator
+* *T*: The tabular source whose data is to be processed by the operator.
 
-* *Column:* Name of the column that will be used for source partitioning. See **Notes** below for existing limitation on amount of key values used for partitioning.
+* *Column*: The name of a column in *T* whose values determine how the input table
+  is to be partitioned. See **Notes** below.
 
-* *Subquery*: Query that will be applied on each of the source partitions. 
+* *Subquery*: A tabular expression that gets evaluated for each partition of the
+  input, and whose output is returned by the operator.
 
-* *PartitionParameters*: Zero or more (space-separated) parameters in the form of: 
+* *PartitionParameters*: Zero or more (space-separated) parameters in the form of:
   *Name* `=` *Value* that control the behavior
-  of the row-match operation and execution plan. The following parameters are supported: 
+  of the operator. The following parameters are supported:
 
-|Name|Values|Description|
-|-------------------|---------------|----------|
-|`hint.materialized`|`true`,`false`|If set to `true` will materialize the source of the `partition` operator (default: `false`)|
+  |Name               |Values         |Description|
+  |-------------------|---------------|-----------|
+  |`hint.materialized`|`true`,`false` |If set to `true` will materialize the source of the `partition` operator (default: `false`)|
 
 **Returns**
 
-Returns a union of subquery results after it was run on every partition of the source data.
+The operator returns a union of the results of applying the subquery to each
+partition of the input data.
 
 **Notes**
 
-* At this stage `partition` operator: supports up-to 64 distinct values of the key column. The query will yield an error if this number is exceeded.
+* The partition operator is currently limited by the number of partitions.
+  Up to 64 distinct partitions may be created.
+  The operator will yield an error if the partition column (*Column*) has more
+  than 64 distinct values.
+
+* The subquery references the input partition implicitly (there's no "name" for
+  the partition in the subquery). To reference the input partition multiple times
+  within the subquery, use the [as operator](asoperator.md), as in
+  **Example: partition-reference** below.
 
 **Example: top-nested case**
 
@@ -77,13 +91,15 @@ StormEvents
 
 **Example: query non-overlapping data partitions**
 
-Sometimes it is useful (perf-wise) to run complex subquery over non-overlapping data partitions (map-reduce style). You can achieve this using `partition` operator. The example below shows how to make manual distribution of aggregation over 10 partitions.
+Sometimes it is useful (perf-wise) to run a complex subquery over non-overlapping
+data partitions in a map/reduce style. The example below shows how to create a
+manual distribution of aggregation over 10 partitions.
 
 ```kusto
 StormEvents
 | extend p = hash(EventId, 10)
 | partition by p
-( 
+(
     summarize Count=count() by Source 
 )
 | summarize Count=sum(Count) by Source
@@ -98,8 +114,24 @@ StormEvents
 |Emergency Manager|4900|
 |COOP Observer|3039|
 
+**Example: partition-reference**
 
-Same technique can be applied with much more complex subqueries. Sometimes it is convenient to wrap subquery into a function call and use `invoke` operator as subquery.
+The following example shows how one can use the [as operator](asoperator.md) to
+give a "name" to each data partition and then reuse that name within the subquery:
+
+```kusto
+T
+| partition by Dim
+(
+    as Partition
+    | extend MetricPct = Metric * 100.0 / toscalar(Partition | summarize sum(Metric))
+)
+```
+
+**Example: complex subquery hidden by a function call**
+
+The same technique can be applied with much more complex subqueries. To simplify
+the syntax, one can wrap the subquery in a function call:
 
 ```kusto
 let partition_function = (T:(Source:string)) 
@@ -110,8 +142,8 @@ let partition_function = (T:(Source:string))
 StormEvents
 | extend p = hash(EventId, 10)
 | partition by p
-( 
-    invoke partition_function() 
+(
+    invoke partition_function()
 )
 | summarize Count=sum(Count) by Source
 | top 5 by Count

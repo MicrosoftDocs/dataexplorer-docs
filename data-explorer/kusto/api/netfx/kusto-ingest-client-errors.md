@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 03/11/2019
 ---
 # Kusto.Ingest Reference - Errors and Exceptions
 Any error during the ingestion handling on the client side is exposed to the user code via a C# exception.
@@ -67,6 +67,7 @@ To help handle ingestion failures programmatically, failure information is enric
 |Stream_WrongNumberOfFields| CSV document has inconsistent number of fields|
 |Stream_InputStreamTooLarge| The document submitted for ingestion has exceeded the allowed size|
 |Stream_NoDataToIngest| Found no data streams to ingest|
+|Stream_DynamicPropertyBagTooLarge| One of the dynamic columns in the ingested data contains too many unique properties|
 |Download_SourceNotFound| Failed to download source from Azure storage - source not found|
 |Download_AccessConditionNotSatisfied| Failed to download source from Azure storage - access denied|
 |Download_Forbidden| Failed to download source from Azure storage - access forbidden|

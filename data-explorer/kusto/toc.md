@@ -421,12 +421,13 @@
 
 
 
+### [Virtual Network deployment](./concepts/vnet-deployment.md)
 ## Policies
 ### [Cache policy](./concepts/cachepolicy.md)
 
 
 
-
+### [Ingestion Batching policy](./concepts/batchingpolicy.md)
 ### [IngestionTime policy](./concepts/ingestiontimepolicy.md)
 
 
@@ -465,6 +466,7 @@
 ### [Retention](./management/retention-policy.md)
 ### [RowOrder](./management/roworder-policy.md)
 ### [Update](./management/update-policy.md)
+### [Batching](./management/batching-policy.md)
 
 ## [Security Roles](./management/security-roles.md)
 
@@ -579,6 +581,7 @@
 
 
 
+### [Grafana](./tools/grafana.md)
 
 ## Orchestration
 
@@ -590,4 +593,4 @@
 
 ### [LightIngest](./tools/lightingest.md)
 ### [Azure Data Factory](./tools/azure-data-factory.md)
-### [Apache Spark connector](./tools/spark-connector.md)
+

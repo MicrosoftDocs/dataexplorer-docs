@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/20/2019
+ms.date: 02/24/2019
 ---
 # mv-expand operator
 
 Expands multi-value array or property bag.
 
-`mv-expand` is applied on a [dynamic](./scalar-data-types/dynamic.md)-typed column so that each value in the collection gets a separate row. Note that the default expansion is up to 128 rows. All the other columns in an expanded row are duplicated. 
+`mv-expand` is applied on a [dynamic](./scalar-data-types/dynamic.md)-typed column so that each value in the collection gets a separate row. All the other columns in an expanded row are duplicated. 
 
 **Syntax**
 
@@ -40,7 +40,7 @@ Expands multi-value array or property bag.
 Multiple rows for each of the values in any array in the named column or in the array expression.
 If several columns or expressions are specified they are expanded in parallel so for each input row there will be as many output rows as there are elements in the longest expanded expression (shorter lists are padded with nulls). If the value in a row is an empty array, the row expands to nothing (will not show in the result set). If the value in a row is not an array, the row is kept as is in the result set. 
 
-The expanded column always has dynamic type. Use a cast such as `todatetime()` or `toint()` if you want to compute or aggregate values.
+The expanded column always has dynamic type. Use a cast such as `todatetime()` or `tolong()` if you want to compute or aggregate values.
 
 Two modes of property-bag expansions are supported:
 * `bagexpansion=bag`: Property bags are expanded into single-entry property bags. This is the default expansion.
@@ -87,7 +87,7 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 |1|{"prop2":"b"}|5|
 
 
-Expansion of an array with `with_itemIndex`:
+Expansion of an array with `with_itemindex`:
 ```kusto
 range x from 1 to 4 step 1 
 | summarize x = make_list(x) 
@@ -108,5 +108,6 @@ See [Chart count of live activities over time](./samples.md#concurrent-activitie
 
 **See also**
 
-- [`summarize make_list`](makelist-aggfunction.md) which performs the opposite function.
+- [mv-apply](./mv-applyoperator.md) operator.
+- [summarize make_list()](makelist-aggfunction.md) which performs the opposite function.
 - [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys.

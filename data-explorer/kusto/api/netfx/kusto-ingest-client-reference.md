@@ -7,13 +7,14 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 03/05/2019
 ---
 # Kusto.Ingest client reference
 
 The main interfaces and factory classes in the Kusto.Ingest library are:
 
 * [interface IKustoIngestClient](#interface-ikustoingestclient): The main ingestion interface.
+* [Class ExtendedKustoIngestClient](#class-extendedkustoingestclient): Extensions to the main ingestion interface.
 * [class KustoIngestFactory](#class-kustoingestfactory): The main factory for ingestion clients.
 * [class KustoIngestionProperties](#class-kustoingestionproperties): Class used to provide common ingestion properties.
 * [Class JsonColumnMapping](#class-jsoncolumnmapping): Class used to describe the schema mapping to apply when ingesting from a JSON data source.
@@ -28,224 +29,199 @@ The main interfaces and factory classes in the Kusto.Ingest library are:
 public interface IKustoIngestClient : IDisposable
 {
     /// <summary>
-    /// Ingest data from <see cref="IDataReader"/>, which is closed and disposed of upon call completion
+    /// Ingests data from <see cref="IDataReader"/>. <paramref name="dataReader"/> will be closed when the call completes.
     /// </summary>
-    /// <param name="dataReader">The data to ingest (only the first record set will be used)</param>
+    /// <param name="dataReader">The <see cref="IDataReader"/> data source to ingest. Only the first record set will be used</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <param name="retainCsvOnFailure">Optional. Indicates if the CSV created from the data reader for ingestion should be kept for further analysis in case of failure.</param>
-    /// <returns><see cref="IKustoIngestionResult"/></returns>
-    IKustoIngestionResult IngestFromDataReader(IDataReader dataReader, KustoIngestionProperties ingestionProperties, bool retainCsvOnFailure = false);
-
-    /// <summary>
-    /// Ingest data from <see cref="IDataReader"/>, which is closed and disposed of upon call completion
-    /// </summary>
-    /// <param name="dataReaderDescription"><see cref="DataReaderDescription"/>Represents the data to ingest (only the first record set will be used)</param>
-    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <param name="retainCsvOnFailure">Optional. Indicates if the CSV created from the data reader for ingestion should be kept for further analysis in case of failure.</param>
-    /// <returns><see cref="IKustoIngestionResult"/></returns>
-    IKustoIngestionResult IngestFromDataReader(DataReaderDescription dataReaderDescription, KustoIngestionProperties ingestionProperties, bool retainCsvOnFailure = false);
-
-    /// <summary>
-    ///  Asynchronously ingest data from <see cref="IDataReader"/>, which is closed and disposed of upon call completion
-    /// </summary>
-    /// <param name="dataReader">The data to ingest (only the first record set will be used)</param>
-    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <param name="retainCsvOnFailure">Optional. Indicates if the CSV created from the data reader for ingestion should be kept for further analysis in case of failure.</param>
+    /// <param name="sourceOptions">Options for the <see cref="IDataReader"/> ingestion source. This is an optional parameter</param>
     /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
-    Task<IKustoIngestionResult> IngestFromDataReaderAsync(IDataReader dataReader, KustoIngestionProperties ingestionProperties, bool retainCsvOnFailure = false);
+    Task<IKustoIngestionResult> IngestFromDataReaderAsync(IDataReader dataReader, KustoIngestionProperties ingestionProperties, DataReaderSourceOptions sourceOptions = null);
 
     /// <summary>
-    ///  Asynchronously ingest data from <see cref="IDataReader"/>, which is closed and disposed of upon call completion
+    /// Ingest data from one of the supported storage providers. Currently the supported providers are: File System, Azure Blob Storage.
     /// </summary>
-    /// <param name="dataReaderDescription"><see cref="DataReaderDescription"/>Represents the data to ingest (only the first record set will be used)</param>
+    /// <param name="uri">The URI of the storage resource to be ingested. Note: This URI may include a storage account key or shared access signature (SAS).
+    ///  See <see href="https://docs.microsoft.com/en-us/azure/kusto/api/connection-strings/storage"/> for the URI format options.</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <param name="retainCsvOnFailure">Optional. Indicates if the CSV created from the data reader for ingestion should be kept for further analysis in case of failure.</param>
+    /// <param name="sourceOptions">Options for the storage ingestion source. This is an optional parameter</param>
     /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
-    Task<IKustoIngestionResult> IngestFromDataReaderAsync(DataReaderDescription dataReaderDescription, KustoIngestionProperties ingestionProperties, bool retainCsvOnFailure = false);
+    Task<IKustoIngestionResult> IngestFromStorageAsync(string uri, KustoIngestionProperties ingestionProperties, StorageSourceOptions sourceOptions = null);
 
     /// <summary>
-    /// Ingest data from <see cref="Stream"/>
+    /// Ingest data from <see cref="Stream"/>.
     /// </summary>
-    /// <param name="stream">The data to ingest</param>
+    /// <param name="stream">The <see cref="Stream"/> data source to ingest</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <param name="leaveOpen">Optional. If set to 'false' (default value), <paramref name="stream"/> will be closed and disposed on call completion</param>
-    /// <returns><see cref="IKustoIngestionResult"/></returns>
-    IKustoIngestionResult IngestFromStream(Stream stream, KustoIngestionProperties ingestionProperties, bool leaveOpen = false);
-
-    /// <summary>
-    /// Ingest data from <see cref="Stream"/>
-    /// </summary>
-    /// <param name="streamDescription"><see cref="StreamDescription"/>Represents the data to ingest</param>
-    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <param name="leaveOpen">Optional. If set to 'false' (default value), streamDescription.Stream will be closed and disposed on call completion</param>
-    /// <returns><see cref="IKustoIngestionResult"/></returns>
-    IKustoIngestionResult IngestFromStream(StreamDescription streamDescription, KustoIngestionProperties ingestionProperties, bool leaveOpen = false);
-
-    /// <summary>
-    /// Ingest data from <see cref="Stream"/> asynchronously
-    /// </summary>
-    /// <param name="stream">The data to ingest</param>
-    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <param name="leaveOpen">Optional. If set to 'false' (default value), <paramref name="stream"/> will be closed and disposed on call completion</param>
+    /// <param name="sourceOptions">Options for the <see cref="Stream"/> ingestion source. This is an optional parameter</param>
     /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
-    Task<IKustoIngestionResult> IngestFromStreamAsync(Stream stream, KustoIngestionProperties ingestionProperties, bool leaveOpen = false);
+    Task<IKustoIngestionResult> IngestFromStreamAsync(Stream stream, KustoIngestionProperties ingestionProperties, StreamSourceOptions sourceOptions = null);
+}
+```
 
-    /// <summary>
-    /// Ingest data from <see cref="Stream"/> asynchronously
-    /// </summary>
-    /// <param name="streamDescription"><see cref="StreamDescription"/>Represents the data to ingest</param>
-    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <param name="leaveOpen">Optional. If set to 'false' (default value), streamDescription.Stream will be closed and disposed on call completion</param>
-    /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
-    Task<IKustoIngestionResult> IngestFromStreamAsync(StreamDescription streamDescription, KustoIngestionProperties ingestionProperties, bool leaveOpen = false);
+## Class ExtendedKustoIngestClient
 
-    /// <summary>
-    /// Ingest data from a single file
-    /// </summary>
-    /// <param name="filePath">Absolute path of the source file to be ingested</param>
-    /// <param name="deleteSourceOnSuccess">Indicates if the source file should be deleted after a successful ingestion</param>
-    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <returns><see cref="IKustoIngestionResult"/></returns>
-    IKustoIngestionResult IngestFromSingleFile(string filePath, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties);
-
-    /// <summary>
-    /// Ingest data from a single file asynchronously
-    /// </summary>
-    /// <param name="filePath">Absolute path of the source file to be ingested</param>
-    /// <param name="deleteSourceOnSuccess">Indicates if the source file should be deleted after a successful ingestion</param>
-    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
-    Task<IKustoIngestionResult> IngestFromSingleFileAsync(string filePath, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties);
-
-    /// <summary>
-    /// Ingest data from a single file
-    /// </summary>
-    /// <param name="fileDescription"><see cref="FileDescription"/> representing the file that will be ingested</param>
-    /// <param name="deleteSourceOnSuccess">Indicates if the source file should be deleted after a successful ingestion</param>
-    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <returns><see cref="IKustoIngestionResult"/></returns>
-    IKustoIngestionResult IngestFromSingleFile(FileDescription fileDescription, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties);
-
-    /// <summary>
-    /// Ingest data from a single file asynchronously
-    /// </summary>
-    /// <param name="fileDescription"><see cref="FileDescription"/> representing the file that will be ingested</param>
-    /// <param name="deleteSourceOnSuccess">Indicates if the source file should be deleted after a successful ingestion</param>
-    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
-    Task<IKustoIngestionResult> IngestFromSingleFileAsync(FileDescription fileDescription, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties);
-
-    /// <summary>
-    /// Ingest data from multiple files
-    /// </summary>
-    /// <param name="filePaths">A list of source file absolute paths</param>
-    /// <param name="deleteSourcesOnSuccess">Indicates if the source files should be deleted after a successful ingestion</param>
-    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <returns><see cref="IKustoIngestionResult"/></returns>
-    IKustoIngestionResult IngestFromMultipleFiles(IEnumerable<string> filePaths, bool deleteSourcesOnSuccess, KustoIngestionProperties ingestionProperties);
-
-    /// <summary>
-    /// Ingest data from multiple files asynchronously
-    /// </summary>
-    /// <param name="filePaths">A list of source file absolute paths</param>
-    /// <param name="deleteSourcesOnSuccess">Indicates if the source files should be deleted after a successful ingestion</param>
-    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
-    Task<IKustoIngestionResult> IngestFromMultipleFilesAsync(IEnumerable<string> filePaths, bool deleteSourcesOnSuccess, KustoIngestionProperties ingestionProperties);
-
-    /// <summary>
-    /// Ingest data from multiple files
-    /// </summary>
-    /// <param name="fileDescriptions">A collection of <see cref="FileDescription"/> representing the files that will be ingested</param>
-    /// <param name="deleteSourcesOnSuccess">Indicates if the source files should be deleted after a successful ingestion</param>
-    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <returns><see cref="IKustoIngestionResult"/></returns>
-    IKustoIngestionResult IngestFromMultipleFiles(IEnumerable<FileDescription> fileDescriptions, bool deleteSourcesOnSuccess, KustoIngestionProperties ingestionProperties);
-
-    /// <summary>
-    /// Ingest data from multiple files asynchronously
-    /// </summary>
-    /// <param name="fileDescriptions">A collection of <see cref="FileDescription"/> representing the files that will be ingested</param>
-    /// <param name="deleteSourcesOnSuccess">Indicates if the source files should be deleted after a successful ingestion</param>
-    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
-    /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
-    Task<IKustoIngestionResult> IngestFromMultipleFilesAsync(IEnumerable<FileDescription> fileDescriptions, bool deleteSourcesOnSuccess, KustoIngestionProperties ingestionProperties);
-
+```csharp
+public static class ExtendedKustoIngestClient
+{
     /// <summary>
     /// Ingest data from a single data blob
     /// </summary>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
     /// <param name="blobUri">The URI of the blob will be ingested</param>
     /// <param name="deleteSourceOnSuccess">Indicates if the source blob should be deleted after a successful ingestion</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
     /// <param name="rawDataSize">The uncompressed raw data size</param>
     /// <returns><see cref="IKustoIngestionResult"/></returns>
-    IKustoIngestionResult IngestFromSingleBlob(string blobUri, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties, long? rawDataSize = null);
+    public static IKustoIngestionResult IngestFromSingleBlob(this IKustoIngestClient client, string blobUri, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties, long? rawDataSize = null);
 
     /// <summary>
     /// Ingest data from a single data blob asynchronously
     /// </summary>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
     /// <param name="blobUri">The URI of the blob will be ingested</param>
     /// <param name="deleteSourceOnSuccess">Indicates if the source blob should be deleted after a successful ingestion</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
     /// <param name="rawDataSize">The uncompressed raw data size</param>
     /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
-    Task<IKustoIngestionResult> IngestFromSingleBlobAsync(string blobUri, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties, long? rawDataSize = null);
+    public static Task<IKustoIngestionResult> IngestFromSingleBlobAsync(this IKustoIngestClient client, string blobUri, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties, long? rawDataSize = null);
 
     /// <summary>
     /// Ingest data from a single data blob
     /// </summary>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
     /// <param name="blobDescription"><see cref="BlobDescription"/> representing the blobs that will be ingested</param>
     /// <param name="deleteSourceOnSuccess">Indicates if the source blob should be deleted after a successful ingestion</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
     /// <param name="rawDataSize">The uncompressed raw data size</param>
     /// <returns><see cref="IKustoIngestionResult"/></returns>
-    IKustoIngestionResult IngestFromSingleBlob(BlobDescription blobDescription, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties, long? rawDataSize = null);
+    public static IKustoIngestionResult IngestFromSingleBlob(this IKustoIngestClient client, BlobDescription blobDescription, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties, long? rawDataSize = null);
 
     /// <summary>
     /// Ingest data from a single data blob asynchronously
     /// </summary>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
     /// <param name="blobDescription"><see cref="BlobDescription"/> representing the blobs that will be ingested</param>
     /// <param name="deleteSourceOnSuccess">Indicates if the source blob should be deleted after a successful ingestion</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
     /// <param name="rawDataSize">The uncompressed raw data size</param>
     /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
-    Task<IKustoIngestionResult> IngestFromSingleBlobAsync(BlobDescription blobDescription, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties, long? rawDataSize = null);
+    public static Task<IKustoIngestionResult> IngestFromSingleBlobAsync(this IKustoIngestClient client, BlobDescription blobDescription, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties, long? rawDataSize = null);
 
     /// <summary>
-    /// Ingest data from multiple data blobs
+    /// Ingest data from <see cref="IDataReader"/>, which is closed and disposed of upon call completion
     /// </summary>
-    /// <param name="blobUris">A collection of blob URIs representing the blobs that will be ingested</param>
-    /// <param name="deleteSourcesOnSuccess">Indicates if the source blobs should be deleted after a successful ingestion</param>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
+    /// <param name="dataReader">The data to ingest (only the first record set will be used)</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
     /// <returns><see cref="IKustoIngestionResult"/></returns>
-    IKustoIngestionResult IngestFromMultipleBlobs(IEnumerable<string> blobUris, bool deleteSourcesOnSuccess, KustoIngestionProperties ingestionProperties);
+    public static IKustoIngestionResult IngestFromDataReader(this IKustoIngestClient client, IDataReader dataReader, KustoIngestionProperties ingestionProperties);
 
     /// <summary>
-    /// Ingest data from multiple data blobs asynchronously
+    ///  Asynchronously ingest data from <see cref="IDataReader"/>, which is closed and disposed of upon call completion
     /// </summary>
-    /// <param name="blobUris">A collection of blob URIs representing the blobs that will be ingested</param>
-    /// <param name="deleteSourcesOnSuccess">Indicates if the source blobs should be deleted after a successful ingestion</param>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
+    /// <param name="dataReader">The data to ingest (only the first record set will be used)</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
     /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
-    Task<IKustoIngestionResult> IngestFromMultipleBlobsAsync(IEnumerable<string> blobUris, bool deleteSourcesOnSuccess, KustoIngestionProperties ingestionProperties);
+    public static Task<IKustoIngestionResult> IngestFromDataReaderAsync(this IKustoIngestClient client, IDataReader dataReader, KustoIngestionProperties ingestionProperties);
 
     /// <summary>
-    /// Ingest data from multiple data blobs
+    /// Ingest data from <see cref="IDataReader"/>, which is closed and disposed of upon call completion
     /// </summary>
-    /// <param name="blobDescriptions">A collection of <see cref="BlobDescription"/> representing the blobs that will be ingested</param>
-    /// <param name="deleteSourcesOnSuccess">Indicates if the source blobs should be deleted after a successful ingestion</param>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
+    /// <param name="dataReaderDescription"><see cref="DataReaderDescription"/>Represents the data to ingest (only the first record set will be used)</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
     /// <returns><see cref="IKustoIngestionResult"/></returns>
-    IKustoIngestionResult IngestFromMultipleBlobs(IEnumerable<BlobDescription> blobDescriptions, bool deleteSourcesOnSuccess, KustoIngestionProperties ingestionProperties);
+    public static IKustoIngestionResult IngestFromDataReader(this IKustoIngestClient client, DataReaderDescription dataReaderDescription, KustoIngestionProperties ingestionProperties);
 
     /// <summary>
-    /// Ingest data from multiple data blobs asynchronously
+    ///  Asynchronously ingest data from <see cref="IDataReader"/>, which is closed and disposed of upon call completion
     /// </summary>
-    /// <param name="blobDescriptions">A collection of <see cref="BlobDescription"/> representing the blobs that will be ingested</param>
-    /// <param name="deleteSourcesOnSuccess">Indicates if the source blobs should be deleted after a successful ingestion</param>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
+    /// <param name="dataReaderDescription"><see cref="DataReaderDescription"/>Represents the data to ingest (only the first record set will be used)</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
     /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
-    Task<IKustoIngestionResult> IngestFromMultipleBlobsAsync(IEnumerable<BlobDescription> blobDescriptions, bool deleteSourcesOnSuccess, KustoIngestionProperties ingestionProperties);
+    public static Task<IKustoIngestionResult> IngestFromDataReaderAsync(this IKustoIngestClient client, DataReaderDescription dataReaderDescription, KustoIngestionProperties ingestionProperties);
+
+    /// <summary>
+    /// Ingest data from a single file
+    /// </summary>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
+    /// <param name="filePath">Absolute path of the source file to be ingested</param>
+    /// <param name="deleteSourceOnSuccess">Indicates if the source file should be deleted after a successful ingestion</param>
+    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
+    /// <returns><see cref="IKustoIngestionResult"/></returns>
+    public static IKustoIngestionResult IngestFromSingleFile(this IKustoIngestClient client, string filePath, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties);
+
+    /// <summary>
+    /// Ingest data from a single file asynchronously
+    /// </summary>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
+    /// <param name="filePath">Absolute path of the source file to be ingested</param>
+    /// <param name="deleteSourceOnSuccess">Indicates if the source file should be deleted after a successful ingestion</param>
+    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
+    /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
+    public static Task<IKustoIngestionResult> IngestFromSingleFileAsync(this IKustoIngestClient client, string filePath, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties);
+
+    /// <summary>
+    /// Ingest data from a single file
+    /// </summary>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
+    /// <param name="fileDescription"><see cref="FileDescription"/> representing the file that will be ingested</param>
+    /// <param name="deleteSourceOnSuccess">Indicates if the source file should be deleted after a successful ingestion</param>
+    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
+    /// <returns><see cref="IKustoIngestionResult"/></returns>
+    public static IKustoIngestionResult IngestFromSingleFile(this IKustoIngestClient client, FileDescription fileDescription, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties);
+
+    /// <summary>
+    /// Ingest data from a single file asynchronously
+    /// </summary>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
+    /// <param name="fileDescription"><see cref="FileDescription"/> representing the file that will be ingested</param>
+    /// <param name="deleteSourceOnSuccess">Indicates if the source file should be deleted after a successful ingestion</param>
+    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
+    /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
+    public static Task<IKustoIngestionResult> IngestFromSingleFileAsync(this IKustoIngestClient client, FileDescription fileDescription, bool deleteSourceOnSuccess, KustoIngestionProperties ingestionProperties);
+
+    /// <summary>
+    /// Ingest data from <see cref="Stream"/>
+    /// </summary>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
+    /// <param name="stream">The data to ingest</param>
+    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
+    /// <param name="leaveOpen">Optional. If set to 'false' (default value), <paramref name="stream"/> will be closed and disposed on call completion</param>
+    /// <returns><see cref="IKustoIngestionResult"/></returns>
+    public static IKustoIngestionResult IngestFromStream(this IKustoIngestClient client, Stream stream, KustoIngestionProperties ingestionProperties, bool leaveOpen = false);
+
+    /// <summary>
+    /// Ingest data from <see cref="Stream"/> asynchronously
+    /// </summary>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
+    /// <param name="stream">The data to ingest</param>
+    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
+    /// <param name="leaveOpen">Optional. If set to 'false' (default value), <paramref name="stream"/> will be closed and disposed on call completion</param>
+    /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
+    public static Task<IKustoIngestionResult> IngestFromStreamAsync(this IKustoIngestClient client, Stream stream, KustoIngestionProperties ingestionProperties, bool leaveOpen = false);
+
+    /// <summary>
+    /// Ingest data from <see cref="Stream"/>
+    /// </summary>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
+    /// <param name="streamDescription"><see cref="StreamDescription"/>Represents the data to ingest</param>
+    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
+    /// <param name="leaveOpen">Optional. If set to 'false' (default value), streamDescription.Stream will be closed and disposed on call completion</param>
+    /// <returns><see cref="IKustoIngestionResult"/></returns>
+    public static IKustoIngestionResult IngestFromStream(this IKustoIngestClient client, StreamDescription streamDescription, KustoIngestionProperties ingestionProperties, bool leaveOpen = false);
+
+    /// <summary>
+    /// Ingest data from <see cref="Stream"/> asynchronously
+    /// </summary>
+    /// <param name="client">The ingest client that will execute the ingestions</param>
+    /// <param name="streamDescription"><see cref="StreamDescription"/>Represents the data to ingest</param>
+    /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
+    /// <param name="leaveOpen">Optional. If set to 'false' (default value), streamDescription.Stream will be closed and disposed on call completion</param>
+    /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
+    public static Task<IKustoIngestionResult> IngestFromStreamAsync(this IKustoIngestClient client, StreamDescription streamDescription, KustoIngestionProperties ingestionProperties, bool leaveOpen = false);
 }
 ```
 

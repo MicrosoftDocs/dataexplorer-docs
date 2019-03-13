@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/03/2019
+ms.date: 02/27/2019
 ---
 # Tables
 
@@ -183,9 +183,7 @@ Note: for multiple table creation, use [.create tables](#create-tables) command 
 
 **Syntax**
 
-`.create` `tables` *TableName1* ([columnName:columnType], ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`] 
-  [`,` *TableName2* ([columnName:columnType], ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
-  ...
+`.create` `tables` *TableName1* ([columnName:columnType], ...) [`,` *TableName2* ([columnName:columnType], ...) ... ]
 
 Creates new empty tables as a bulk operation. 
 The command must run in context of a specific database. 
@@ -207,6 +205,40 @@ Requires [Database user permission](../management/access-control/role-based-auth
 |---|---|---|---|
 |MyLogs|TopComparison|||
 |MyUsers|TopComparison|||
+
+## .create-merge tables
+
+**Syntax**
+
+`.create-merge` `tables` *TableName1* ([columnName:columnType], ...) [`,` *TableName2* ([columnName:columnType], ...) ... ]
+
+This commands allows creating and/or extending the schemas of existing tables in a single bulk operation, in the context of a specific database.
+
+- Specified tables which don't exist will be created.
+- Specified tables which already exist will have their schemas extended:
+    - Non-existing columns will be added at the *end* of the existing table's schema.
+    - Existing columns which aren't specified in the command will not be removed from the existing table's schema.
+    - Existing columns which are specified with a different data type in the command will than in the existing table's schema will lead to a failure (no tables will be created nor extended).
+
+Requires [Database user permission](../management/access-control/role-based-authorization.md), in
+addition to [Table admin permission](../management/access-control/role-based-authorization.md)
+for the extension of existing tables.
+ 
+**Example** 
+
+```kusto
+.create-merge tables 
+  MyLogs (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32),
+  MyUsers (UserId:string, Name:string)
+```
+
+**Return output**
+
+|TableName|DatabaseName|Folder|DocString|
+|---|---|---|---|
+|MyLogs|TopComparison|||
+|MyUsers|TopComparison|||
+
 
 ## .alter table and .alter-merge table
 
