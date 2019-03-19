@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 03/15/2019
 ---
 # Restrict statement
 
@@ -20,9 +20,9 @@ table `A` by using a view.
 The restrict statement's main scenario is for
 middle-tier applications that accept queries from users and want to
 apply a row-level security mechanism over those queries. To do that,
-the middle-tier application can prefix the user's query with a **logical model**
-&mdash; a set of let statements defining views that restrict the user's access
-to data (for example, `T | where UserId == "..."`) &mdash; and as the last statement
+the middle-tier application can prefix the user's query with a **logical model** - 
+a set of let statements defining views that restrict the user's access
+to data (for example, `T | where UserId == "..."`) - and as the last statement
 being added restrict the user's access to the logical model only.
 
 **Syntax**

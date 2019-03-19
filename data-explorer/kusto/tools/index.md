@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/13/2019
+ms.date: 03/15/2019
 ---
 # Kusto Tools
 
@@ -37,3 +37,7 @@ ms.date: 03/13/2019
 * [LightIngest](./lightingest.md) - Help utility for ad-hoc data ingesting into Kusto
 * [Azure Data Factory](azure-data-factory.md) - Copy data from source data stores to Kusto, and from Kusto to any supported sink data store
 
+
+
+## Source control integration tools
+* [Azure Pipelines](./azure-pipelines.md) - Invoke control commands as part of your pipeline

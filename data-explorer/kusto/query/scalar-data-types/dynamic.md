@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/06/2019
+ms.date: 03/18/2019
 ---
 # The dynamic data type
 
@@ -35,9 +35,10 @@ type. A value of this type can be:
 > (for example, it differentiates between `long` and `real` numbers, has explicit
 > support for `datetime` and `timespan` values, etc.) Therefore, in serializing
 > `dynamic` values into a JSON representation, Kusto will use a string to serialize
-> values that JSON does not support. Conversely, Kusto will parse some strings
-> as strongly-typed values if they can be parsed as such (for example, `datetime`
-> values). For more about the JSON object model, see See [json.org](https://json.org/).
+> values that JSON does not support. Conversely, Kusto will parse strings
+> as strongly-typed values if they can be parsed as such.
+> This applies for `datetime`, `real`, `long`, and `guid` types. 
+> For more about the JSON object model, see See [json.org](https://json.org/).
 
 > [!NOTE]
 > The system does not attempt to preserve the order of name-to-value mappings in

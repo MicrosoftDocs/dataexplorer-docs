@@ -7,14 +7,14 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 03/16/2019
 ---
 # print operator
 
-Evaluates one or more scalar expressions and inserts the results (as a single-row table with as many columns as there are expressions) into the output.
+Outputs single-row with one or more scalar expressions.
 
 ```kusto
-banner=strcat("Hello", ", ", "World!")
+print x=1, s=strcat("Hello", ", ", "World!")
 ```
 
 **Syntax**
@@ -38,6 +38,8 @@ For example:
 
 ```kusto
 print 0 + 1 + 2 + 3 + 4 + 5, x = "Wow!"
+```
 
+```kusto
 print banner=strcat("Hello", ", ", "World!")
 ```

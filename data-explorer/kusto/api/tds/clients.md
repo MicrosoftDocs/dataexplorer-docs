@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/07/2019
+ms.date: 03/14/2019
 ---
 # MS-TDS clients and Kusto
 
@@ -51,7 +51,7 @@ Example of PowerShell script that uses ODBC driver:
 
 ```powershell
 $conn = [System.Data.Common.DbProviderFactories]::GetFactory("System.Data.Odbc").CreateConnection()
-$conn.ConnectionString = "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated“
+$conn.ConnectionString = "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
 $conn.Open()
 $conn.GetSchema("Tables")
 $conn.Close()  

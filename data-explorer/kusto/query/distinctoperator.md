@@ -7,7 +7,7 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 03/14/2019
 ---
 # distinct operator
 
@@ -33,25 +33,7 @@ Table | distinct fruit, price
 
 ![alt text](./Images/aggregations/distinct.PNG "distinct")
 
-**Remarks**
+**Notes**
 
-There are two main semantic differences between the `distinct` operator and
-using `summarize by ...`:
-* Distinct supports providing an asterisk (`*`) as the group key, making it easier to use for wide tables.
-* Distinct doesn't have auto-binning of time columns (to `1h`).
-
-```kusto
-let T=(print t=datetime(2008-05-12 06:45));
-union
-  (T | distinct * | extend Title="Distinct"),
-  (T | summarize by t | extend Title="Summarize"),
-  (T | summarize by bin(t, 1tick) | extend Title="Summarize-distinct")
-```
-
-This query produces the following table:
-
-t                            | Title
------------------------------|--------------------
-2008-05-12 06:45:00.0000000  | Distinct
-2008-05-12 06:00:00.0000000  | Summarize
-2008-05-12 06:45:00.0000000  | Summarize-distinct
+* Unlike `summarize by ...`, the `distinct` operator supports providing an asterisk (`*`) as the group key, making it easier to use for wide tables.
+* In cases where the group by keys are of high cardinalities, using `summarize by ...` with the [shuffle strategy](shufflesummarize.md) could be useful.
