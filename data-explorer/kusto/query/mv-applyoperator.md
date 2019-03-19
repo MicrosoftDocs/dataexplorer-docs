@@ -3,7 +3,7 @@ title: mv-apply operator - Azure Data Explorer | Microsoft Docs
 description: This article describes mv-apply operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

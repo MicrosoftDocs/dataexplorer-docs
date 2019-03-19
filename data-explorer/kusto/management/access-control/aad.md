@@ -3,7 +3,7 @@ title: Azure Active Directory (AAD) Authentication - Azure Data Explorer | Micro
 description: This article describes Azure Active Directory (AAD) Authentication in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

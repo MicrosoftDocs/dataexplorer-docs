@@ -3,7 +3,7 @@ title: parse_url() - Azure Data Explorer | Microsoft Docs
 description: This article describes parse_url() in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

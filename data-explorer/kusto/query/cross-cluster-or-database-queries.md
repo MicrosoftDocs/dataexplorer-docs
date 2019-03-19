@@ -3,7 +3,7 @@ title: Cross-Database and Cross-Cluster Queries - Azure Data Explorer | Microsof
 description: This article describes Cross-Database and Cross-Cluster Queries in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

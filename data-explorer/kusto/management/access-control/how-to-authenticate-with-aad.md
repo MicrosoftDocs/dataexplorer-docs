@@ -3,7 +3,7 @@ title: How-To -  Authenticate with AAD for Kusto Access - Azure Data Explorer | 
 description: This article describes How-To -  Authenticate with AAD for Kusto Access in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

@@ -3,7 +3,7 @@ title: Microsoft Logic App and Kusto - Azure Data Explorer | Microsoft Docs
 description: This article describes Microsoft Logic App and Kusto in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

@@ -3,7 +3,7 @@ title: The .ingest into command (pull data from storage) - Azure Data Explorer |
 description: This article describes The .ingest into command (pull data from storage) in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

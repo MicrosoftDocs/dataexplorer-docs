@@ -3,7 +3,7 @@ title: make_bag() (aggregation function) - Azure Data Explorer | Microsoft Docs
 description: This article describes make_bag() (aggregation function) in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
