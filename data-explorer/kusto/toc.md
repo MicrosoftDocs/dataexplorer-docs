@@ -421,7 +421,11 @@
 
 
 
+
+
+
 ### [Virtual Network deployment](./concepts/vnet-deployment.md)
+
 ## Policies
 ### [Cache policy](./concepts/cachepolicy.md)
 
@@ -440,6 +444,7 @@
 
 
 ### [Update policy](./concepts/updatepolicy.md)
+
 ## Misc and Errors
 
 ### [Query limits](./concepts/querylimits.md)
@@ -594,3 +599,7 @@
 ### [LightIngest](./tools/lightingest.md)
 ### [Azure Data Factory](./tools/azure-data-factory.md)
 
+
+
+## Source control integration
+### [Azure Pipelines](./tools/azure-pipelines.md)

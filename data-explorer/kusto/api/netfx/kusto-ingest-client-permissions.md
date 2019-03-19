@@ -3,7 +3,7 @@ title: Kusto.Ingest Reference - Ingestion Permissions - Azure Data Explorer | Mi
 description: This article describes Kusto.Ingest Reference - Ingestion Permissions in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

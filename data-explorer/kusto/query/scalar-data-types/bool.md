@@ -3,7 +3,7 @@ title: The bool data type - Azure Data Explorer | Microsoft Docs
 description: This article describes The bool data type in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

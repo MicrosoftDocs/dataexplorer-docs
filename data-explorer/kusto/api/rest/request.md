@@ -3,11 +3,11 @@ title: Query/management HTTP request - Azure Data Explorer | Microsoft Docs
 description: This article describes Query/management HTTP request in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/03/2019
+ms.date: 03/15/2019
 ---
 # Query/management HTTP request
 
@@ -76,7 +76,7 @@ POST is used.
 
 * `db`: This is an **optional** parameter for some control commands, and **mandatory**
   parameter for other control commands and all queries. It provides the name
-  of the "database in scope" &emdash; the database that is the target of the
+  of the "database in scope" - the database that is the target of the
   query or control command.
 
 * `properties`: This is an **optional** parameter. It provides various

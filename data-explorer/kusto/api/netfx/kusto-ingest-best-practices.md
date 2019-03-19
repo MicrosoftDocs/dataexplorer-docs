@@ -3,7 +3,7 @@ title: Kusto Ingest Client Library - Best Practices - Azure Data Explorer | Micr
 description: This article describes Kusto Ingest Client Library - Best Practices in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

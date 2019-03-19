@@ -3,11 +3,11 @@ title: MS-TDS clients and Kusto - Azure Data Explorer | Microsoft Docs
 description: This article describes MS-TDS clients and Kusto in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/07/2019
+ms.date: 03/14/2019
 ---
 # MS-TDS clients and Kusto
 
@@ -51,7 +51,7 @@ Example of PowerShell script that uses ODBC driver:
 
 ```powershell
 $conn = [System.Data.Common.DbProviderFactories]::GetFactory("System.Data.Odbc").CreateConnection()
-$conn.ConnectionString = "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated“
+$conn.ConnectionString = "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
 $conn.Open()
 $conn.GetSchema("Tables")
 $conn.Close()  

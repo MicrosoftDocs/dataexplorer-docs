@@ -3,7 +3,7 @@ title: make_datetime() - Azure Data Explorer | Microsoft Docs
 description: This article describes make_datetime() in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

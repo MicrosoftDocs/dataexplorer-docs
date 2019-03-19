@@ -3,7 +3,7 @@ title: Partitioning and composing intermediate results of aggregations - Azure D
 description: This article describes Partitioning and composing intermediate results of aggregations in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

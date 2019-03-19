@@ -3,7 +3,7 @@ title: Querying Kusto using Azure Notebooks - Azure Data Explorer | Microsoft Do
 description: This article describes Querying Kusto using Azure Notebooks in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

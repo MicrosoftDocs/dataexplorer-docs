@@ -3,11 +3,11 @@ title: GDPR and data purge - Azure Data Explorer | Microsoft Docs
 description: This article describes GDPR and data purge in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 03/14/2019
 ---
 # GDPR and data purge
 
@@ -97,9 +97,18 @@ prior to executing the `.purge` command itself and ensure its results match the 
    `https://ingest-[YourClusterName].kusto.windows.net`.
    The command requires [Database Admin](../management/access-control/role-based-authorization.md)
    permissions on the relevant databases. 
-
-1. The `predicate` parameter of the [.purge](#purge-table-tablename-records-command) command is used to specify which records to purge. 
-`Predicate` size is limited to 950 KB. It is advised to follow the best practices below when constructing the `predicate`:
+1. Due to the performance impact of using the purge process, and to guarantee that
+   the best practices noted above have been taken into considerations, Kusto throttles
+   the purge process at 50 `.purge` commands per 24 hours window.
+   To meet this limit, the caller is expected to modify the data schema so that
+   the minimal number of tables include data subject to GDPR requirements, and
+   to batch commands together per such table. This throttling helps avoid the
+   fixed per-table overhead in managing the purge process. While it can be increased
+   temporarily, in the long term it is expected that the
+   data schema be modified as explained above, to reduce the COGS impact of the
+   purge process (which is far from non-trivial).
+1. The `predicate` parameter of the [.purge](#purge-table-tablename-records-command) command is used to specify which records to purge.
+`Predicate` size is limited to 63 KB. It is advised to follow the best practices below when constructing the `predicate`:
    * Use the ['in' operator](../query/inoperator.md), e.g. `where [ColumnName] in ('Id1', 'Id2', .. , 'Id1000')`
    * Note the limits of the ['in' operator](../query/inoperator.md) (list can contain up to `1,000,000` values).
    * In case the query size is large, use ['externaldata' operator](../query/externaldata-operator.md), 

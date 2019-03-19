@@ -3,7 +3,7 @@ title: where operator (has, contains, startswith, endswith, matches regex) - Azu
 description: This article describes where operator (has, contains, startswith, endswith, matches regex) in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

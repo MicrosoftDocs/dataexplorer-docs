@@ -3,11 +3,11 @@ title: sql_request plugin - Azure Data Explorer | Microsoft Docs
 description: This article describes sql_request plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/03/2019
+ms.date: 03/14/2019
 ---
 # sql_request plugin
 
@@ -18,9 +18,10 @@ and returns the first rowset in the results.
 
 **Arguments**
 
-* *ConnectionString*: A `string` literal indicating the connection string that 
+* *ConnectionString*: A `string` literal indicating the connection string that
   points at the SQL Server network endpoint. See remarks below for valid
-  methods of authentication.
+  methods of authentication and how to specify the network endpoint to connect to.
+
 * *SqlQuery*: A `string` literal indicating the query that is to be executed
   against the SQL endpoint. Must return one or more rowsets, but only the
   first one is made available for the rest of the Kusto query.
@@ -92,4 +93,22 @@ endpoint, for security reasons:
 
 As a result, the SQL Server must be configured with a valid SSL/TLS server
 certificate.
+
+**Specifying the network endpoint**
+
+Specifying the SQL network endpoint as part of the connection string is mandatory.
+The appropriate syntax is:
+
+`Server` `=` `tcp:` *FQDN* [`,` *Port*]
+
+Where:
+
+* *FQDN* is the fully-qualified domain name of the endpoint.
+
+* *Port* is the TCP port of the endpoint. By default, `1433` is assumed.
+
+> [!NOTE]
+> Other forms of specifying the network endpoint are not supported.
+> One cannot omit, for example, the prefix `tcp:` even though it is possible to
+> do so when using the SQL client libraries programmatically.
 

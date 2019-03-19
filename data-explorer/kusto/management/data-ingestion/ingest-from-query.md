@@ -3,7 +3,7 @@ title: Ingest from query (.set, .append, .set-or-append, .set-or-replace) - Azur
 description: This article describes Ingest from query (.set, .append, .set-or-append, .set-or-replace) in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

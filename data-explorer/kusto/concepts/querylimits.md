@@ -3,11 +3,11 @@ title: Query limits - Azure Data Explorer | Microsoft Docs
 description: This article describes Query limits in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/05/2019
+ms.date: 03/13/2019
 ---
 # Query limits
 
@@ -212,11 +212,13 @@ Notes about timeouts:
    network latencies.
 3. On the service side, not all query operators honor the timeout value.
    We are gradually adding that support.
-4. In addition to setting the client request property `servertimeout`,
-   Kusto also supports specifying the timeout using a [set statement](../query/setstatement.md),
-   and in addition to set it to the maximum value using the `notimeout` flag.
-   It is strongly recommended that only the client request property `servertimeout`
-   be used.
+4. To have Kusto automatically use the maximum allowed request timeout, one can
+   set the client request property `norequesttimeout` to `true`.
+
+<!--
+  Request timeout can also be set using a set statement, but we don't mention
+  it here as it should not be used in production scenarios.
+-->
 
 ## Limit on query CPU resource usage
 

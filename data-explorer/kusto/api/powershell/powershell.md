@@ -3,7 +3,7 @@ title: Using the .NET Client Libraries from PowerShell - Azure Data Explorer | M
 description: This article describes Using the .NET Client Libraries from PowerShell in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

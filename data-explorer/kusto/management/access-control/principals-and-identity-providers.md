@@ -3,11 +3,11 @@ title: Principals and Identity Providers - Azure Data Explorer | Microsoft Docs
 description: This article describes Principals and Identity Providers in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/11/2019
+ms.date: 03/13/2019
 ---
 # Principals and Identity Providers
 

@@ -3,7 +3,7 @@ title: funnel_sequence_completion plugin - Azure Data Explorer | Microsoft Docs
 description: This article describes funnel_sequence_completion plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference

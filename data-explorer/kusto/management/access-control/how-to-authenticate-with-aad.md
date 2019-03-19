@@ -3,11 +3,11 @@ title: How-To -  Authenticate with AAD for Kusto Access - Azure Data Explorer | 
 description: This article describes How-To -  Authenticate with AAD for Kusto Access in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/01/2019
+ms.date: 03/18/2019
 ---
 # How-To: Authenticate with AAD for Kusto Access
 
@@ -170,7 +170,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 In this scenario an application has some AAD access token for some arbitrary
 resource, and it uses that token to get a new AAD access token that can be used
-with Kusto. This flow iis called the
+with Kusto. This flow is called the
 [OAuth2 token exchange flow](https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-04).
 Due to its complexity, here are the steps required to do this registration:
 
@@ -205,7 +205,7 @@ var kcsb = new KustoConnectionStringBuilder(string.Format(
     clusterName, 
     tokenForKusto.AccessToken));
 var client = KustoClientFactory.CreateCslQueryProvider(kcsb);
-var queryResult = client.ExecuteQuery(clusterName, query, null);
+var queryResult = client.ExecuteQuery(databaseName, query, null);
 ```
 
 ## Web Client (JavaScript) authentication and authorization
