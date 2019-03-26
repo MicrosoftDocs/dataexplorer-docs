@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ---
 # join operator
 
@@ -34,8 +34,7 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
   |Rule kind        |Syntax                                          |Predicate                                                      |
   |-----------------|------------------------------------------------|---------------------------------------------------------------|
   |Equality by name |*ColumnName*                                    |`where` *LeftTable*.*ColumnName* `==` *RightTable*.*ColumnName*|
-  |Equality by value|`$left.`*LeftColumn* `==` `$right.`*RightColumn*|`where` `$left.`*LeftColumn* `==` `$right.`*RightColumn        |
-
+  |Equality by value|`$left.`*LeftColumn* `==` `$right.`*RightColumn*|`where` `$left.`*LeftColumn* `==` `$right.`*RightColumn*       |
 
 **Note:** In case of 'equality by value', the column names *must* be qualified with the applicable owner table denoted by `$left` and `$right` notations.
 
@@ -47,7 +46,7 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
   |---------------|----------------------------------------------|---------------------------------------------|
   |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|                                             |
   |`hint.remote`  |`auto`, `left`, `local`, `right`              |See [Cross-Cluster Join](joincrosscluster.md)|
-  |`hint.strategy`|Execution hints|See [Join hints](#join-hints) |                                             |
+  |`hint.strategy`|Execution hints                               |See [Join hints](#join-hints)                |
 
 **Returns**
 
@@ -97,9 +96,9 @@ Events
 | where Name == "Start"
 | project Name, City, ActivityId, StartTime=timestamp
 | join (Events
-        | where Name == "Stop"
+    | where Name == "Stop"
         | project StopTime=timestamp, ActivityId)
-    on 
+    on ActivityId
 | project City, ActivityId, StartTime, StopTime, Duration = StopTime - StartTime
 ```
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/15/2019
+ms.date: 03/19/2019
 ---
 # Kusto Tools
 
@@ -40,4 +40,4 @@ ms.date: 03/15/2019
 
 
 ## Source control integration tools
-* [Azure Pipelines](./azure-pipelines.md) - Invoke control commands as part of your pipeline
+* [Azure Pipelines](./azure-pipelines.md) - Invokes control commands as part of your pipeline

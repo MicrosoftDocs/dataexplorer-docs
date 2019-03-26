@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/06/2019
+ms.date: 03/19/2019
 ---
 # lookup operator
 
@@ -19,7 +19,7 @@ FactTable | lookup kind=leftouter (DimensionTable) on CommonColumn, $left.Col1 =
 ```
 
 Here, the result is a table that extends the `FactTable` table (also called `$left`)
-with new columns of data from the `DimensionTable` table (also called `$left`)
+with new columns of data from the `DimensionTable` table (also called `$right`)
 by performing a lookup of each pair (`CommonColumn`,`Col`) from the former table
 with each pair (`CommonColumn1`,`Col2`) in the latter table.
 
@@ -52,6 +52,7 @@ with the following differences:
 * *Attributes*: A comma-delimited list of one or more rules that describe how rows from
   *LeftTable* are matched to rows from *RightTable*. Multiple rules are evaluated using the `and` logical operator.
   A rule can be one of:
+
   |Rule kind        |Syntax                                          |Predicate                                                      |
   |-----------------|------------------------------------------------|---------------------------------------------------------------|
   |Equality by name |*ColumnName*                                    |`where` *LeftTable*.*ColumnName* `==` *RightTable*.*ColumnName*|

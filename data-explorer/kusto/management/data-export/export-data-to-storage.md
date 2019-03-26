@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/07/2019
+ms.date: 03/25/2019
 ---
 # Export data to storage
 
@@ -51,7 +51,7 @@ external storage, specified by a [storage connection string](../../api/connectio
 
 |Property        |Type    |Description                                                                                                                |
 |----------------|--------|---------------------------------------------------------------------------------------------------------------------------|
-|`sizeLimit`     |`long`  |Limits the size of a single storage artifact being written (prior to compression). Allowed range is 100MB (default) to 1GB.|
+|`sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100MB (default) to 1GB.|
 |`includeHeaders`|`string`|For `csv`/`tsv` output, controls the generation of column headers. Can be one of `none` (default; no header lines emitted), `all` (emit a header line into every storage artifact), or `firstFile` (emit a header line into the first storage artifact only).|
 |`fileExtension` |`string`|Indicates the "extension" part of the storage artifact (e.g. `.csv` or `.tsv`) Note that if compression is used, `.gz` will be appended as well.|
 |`namePrefix`    |`string`|Indicates a prefix to add to each generated storage artifact name. A random prefix will be used if left unspecified.       |
@@ -84,8 +84,8 @@ via the [.show operation details](../operations.md#show-operation-details) comma
 
 **Limitations**
 
-If the output data format is set to `parquet`, export may produce empty storage
-artifacts (indicating that the node writing the artifact had no records to write).
+If the output data format is set to `parquet`, export may produce storage artifacts, containing the schema only but no 
+records (indicating that the node writing the artifact had no records to write).
 As an optional mitigation, one might disable executing the export process in a
 distributed fashion (set `distributed` to `false`). This is not recommended, however,
 as it adds load on the cluster due to the need to write all data from a single
