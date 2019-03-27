@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/14/2019
+ms.date: 03/19/2019
 ---
 # sql_request plugin
 
@@ -19,8 +19,8 @@ and returns the first rowset in the results.
 **Arguments**
 
 * *ConnectionString*: A `string` literal indicating the connection string that
-  points at the SQL Server network endpoint. See remarks below for valid
-  methods of authentication and how to specify the network endpoint to connect to.
+  points at the SQL Server network endpoint. See below for valid
+  methods of authentication and how to specify the network endpoint.
 
 * *SqlQuery*: A `string` literal indicating the query that is to be executed
   against the SQL endpoint. Must return one or more rowsets, but only the
@@ -33,7 +33,7 @@ retrieving all records from `[dbo].[Table]`, and then processes the results
 on the Kusto side. Authentication reuses the calling user's AAD token.
 
 Note: This example should not be taken as a recommendation to filter/project
-data in this manner; usually it's preferable that SQL queries will be constructed
+data in this manner. It's usually preferable that SQL queries will be constructed
 to return the smallest data set possible, as currently the Kusto optimizer
 does not attempt to optimize queries between Kusto and SQL.
 
@@ -67,25 +67,25 @@ evaluate sql_request(
 The sql_request plugin supports two methods of authentication to the
 SQL Server endpoint:
 
-1. **AAD integrated authentication** (`Authentication="Active Directory Integrated"`):
+* **AAD integrated authentication** (`Authentication="Active Directory Integrated"`):
    This is the preferred method, in which the user or application authenticates
    via AAD to Kusto, and the same token is then used to access the SQL Server network
    endpoint.
 
-2. **Username/Password authentication** (`User ID=...; Password=...;`):
-   Support for this method is provided for cases in which AAD integrated authentication
-   cannot be performed, and one should avoid it as much as possible, as secret
+* **Username/Password authentication** (`User ID=...; Password=...;`):
+   Support for this method is provided when AAD integrated authentication
+   cannot be performed. Avoid this method, when possible, as secret
    information is sent through Kusto.
 
 > [!WARNING]
 > Connection strings and queries that include confidential
-> information or information that should be otherwise guarded should be
+> information or information that should be guarded should be
 > obfuscated so that they'll be omitted from any Kusto tracing.
-> Please see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals) for more details.
+> See [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals) for more details.
 
 **Encryption and server validation**
 
-The following connection properties are forced when connection to a SQL Server network
+The following connection properties are forced when connecting to a SQL Server network
 endpoint, for security reasons:
 
 * `Encrypt` is set to `true` unconditionally.

@@ -7,14 +7,14 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/15/2019
+ms.date: 03/19/2019
 ---
 # Azure Pipelines
 
-Azure Pipelines helps you easily implement a build, test, and deployment pipeline.
+Azure Pipelines help you easily implement a build, test, and deployment pipeline.
 
 The "Admin Commands" task for Azure Data Explorer (Kusto) allows you to run multiple control
-commands as part of your pipeline. These can either be specified inline, or as source control
+commands as part of your pipeline. These can be specified inline, or as source control
 paths to `csl` files.
 
-More details can be found [here](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX#overview).
+For more [details](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX#overview).

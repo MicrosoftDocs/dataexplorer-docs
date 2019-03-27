@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/10/2019
+ms.date: 03/21/2019
 ---
 # Retention policy
 
@@ -36,10 +36,10 @@ Show the retention policy for the database named `MyDatabase`:
 
 Deleting data retention policy is affectively setting unlimited data retention.
 
-Dropping table data retention policy will cause table to derive retention policy from database level.
+Deleting the table's data retention policy will cause the table to derive the retention policy from database level.
 
 ```kusto
-.drop <entity_type> <database_or_table> policy retention
+.delete <entity_type> <database_or_table> policy retention
 ```
 
 * `entity_type` : table or database
@@ -50,7 +50,7 @@ Dropping table data retention policy will cause table to derive retention policy
 Drop the retention policy for the table named `MyTable1`:
 
 ```kusto
-.drop table MyTable policy retention
+.delete table MyTable policy retention
 ```
 
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 03/25/2019
 ---
 # split()
 
@@ -36,9 +36,10 @@ A string array that contains the substrings of the given source string that are 
 **Examples**
 
 ```kusto
-split("aa_bb", "_")           // ["aa","bb"]
-split("aaa_bbb_ccc", "_", 1)  // ["bbb"]
-split("", "_")                // [""]
-split("a__b")                 // ["a","","b"]
-split("aabbcc", "bb")         // ["aa","cc"]
+print
+    split("aa_bb", "_"),           // ["aa","bb"]
+    split("aaa_bbb_ccc", "_", 1),  // ["bbb"]
+    split("", "_"),                // [""]
+    split("a__b", "_"),            // ["a","","b"]
+    split("aabbcc", "bb")          // ["aa","cc"]
 ```

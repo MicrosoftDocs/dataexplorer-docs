@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/04/2019
+ms.date: 03/25/2019
 ---
 # LightIngest
 
@@ -56,7 +56,7 @@ Run `LightIngest.exe /help` to get help on the command-line arguments the tool r
 
 |Argument name         |Short name   |Type    |Mandatory |Description                                |
 |----------------------|-------------|--------|----------|-------------------------------------------|
-|-compression          |-cr          |double  |Optional  |Compression ratio hint. Useful when ingesting compressed files/blobs to help Kusto assess the raw data size |
+|-compression          |-cr          |double  |Optional  |Compression ratio hint. Useful when ingesting compressed files/blobs to help Kusto assess the raw data size. Calculated as original size divided by compressed size |
 |-limit                |-l           |integer |Optional  |If set, limits the ingestion to first N files |
 |-ingestTimeout        |             |integer |Optional  |Timeout in minutes for all ingest operations completion. Defaults to `60`|
 |-forceSync            |             |bool    |Optional  |If set, forces syncronous ingestion. Defaults to `false` |

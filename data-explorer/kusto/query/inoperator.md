@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 03/18/2019
 ---
 # in and !in operators
 
@@ -139,24 +139,21 @@ StormEvents
 **Top with other example:**  
 
 ```kusto
-let Death_By_State = materialize(StormEvents | summarize deaths = sum(DeathsDirect) by State);
-let Top_5_States = Death_By_State | top 5 by deaths | project State; 
-Death_By_State
+let Lightning_By_State = materialize(StormEvents | summarize lightning_events = countif(EventType == 'Lightning') by State);
+let Top_5_States = Lightning_By_State | top 5 by lightning_events | project State; 
+Lightning_By_State
 | extend State = iif(State in (Top_5_States), State, "Other")
-| summarize sum(deaths) by State 
-
-
+| summarize sum(lightning_events) by State 
 ```
 
-|State|sum_deaths|
-|---|---|
-|ALABAMA|29|
-|ILLINOIS|29|
-|CALIFORNIA|48|
-|FLORIDA|57|
-|TEXAS|71|
-|Other|286|
-
+| State     | sum_lightning_events |
+|-----------|----------------------|
+| ALABAMA   | 29                   |
+| WISCONSIN | 31                   |
+| TEXAS     | 55                   |
+| FLORIDA   | 85                   |
+| GEORGIA   | 106                  |
+| Other     | 415                  |
 
 **Using a static list returned by a function:**  
 

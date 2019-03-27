@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/01/2018
+ms.date: 03/21/2019
 ---
 # materialize()
 
@@ -39,7 +39,7 @@ Allows caching a sub-query result during the time of query execution in a way th
 
 Assuming that we want to generate a random set of values and we are interested in finding how much distinct values we have, the sum of all these values and the top 3 values.
 
-This can be done using [tdigest](batches.md) and materialize :
+This can be done using [batches](batches.md) and materialize :
 
  ```kusto
 let randomSet = materialize(range x from 1 to 30000000 step 1
