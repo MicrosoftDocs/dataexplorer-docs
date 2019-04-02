@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/25/2019
+ms.date: 03/27/2019
 ---
 # Export data to storage
 
@@ -84,7 +84,7 @@ via the [.show operation details](../operations.md#show-operation-details) comma
 
 **Limitations**
 
-If the output data format is set to `parquet`, export may produce storage artifacts, containing the schema only but no 
+If the output data format is set to `parquet`, export may produce storage artifacts, containing only the schema and no 
 records (indicating that the node writing the artifact had no records to write).
 As an optional mitigation, one might disable executing the export process in a
 distributed fashion (set `distributed` to `false`). This is not recommended, however,

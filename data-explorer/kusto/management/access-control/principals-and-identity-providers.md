@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/13/2019
+ms.date: 03/31/2019
 ---
 # Principals and Identity Providers
 
@@ -30,11 +30,12 @@ Kusto only supports Security Group principals (and not Distribution Group ones).
 
 #### AAD Tenants
 
+
 >If AAD tenant is not explicitly specified, Kusto will attempt to resolve it from the UPN (UniversalPrincipalName, e.g., `johndoe@fabrikam.com`), if provided.
   If your principal does not include the tenant information (not in UPN form), you must explicitly mention it by appending the tenant ID or name to the principal descriptor.
 
-
 **Examples for AAD principals**
+
 |AAD Tenant |Type |Syntax |
 |-----------|-----|-------|
 |Implicit (UPN)  |User  |`aaduser=`*UserEmailAddress*

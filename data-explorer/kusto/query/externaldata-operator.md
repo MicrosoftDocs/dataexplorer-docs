@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/16/2019
+ms.date: 03/28/2019
 ---
 # externaldata operator
 
@@ -28,7 +28,9 @@ Note that this operator does not have a pipeline input.
   holding the data.
 * *Prop1*, *Value1*, ...: Additional properties to describe how the data in the raw file
   is to be interpreted, as listed under [ingestion properties](../management/data-ingestion/index.md).
-  Currently, the only property that is supported is the `format` property.
+    * The only property that is supported at the moment is the `format` property.
+    * Currently supported [data formats](../management/data-ingestion/index.md#supported-data-formats)
+    for this operator are: `csv`, `tsv`, `scsv`, `sohsv`, `psv`, `txt`, `raw`.
 
 **Returns**
 

@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/14/2019
+ms.date: 03/28/2019
 ---
 # GDPR and data purge
 
-As a data platform, Kusto supports the ability to delete individiaul records for
+As a data platform, Kusto supports the ability to delete individual records for
 GDPR purposes, through the use of the `.purge` command and a number of related
 commands noted below. 
 
@@ -32,19 +32,17 @@ to GDPR do so after carefully designing the data schema and policies for GDPR:
 
 1. In a best-case scenario, the retention period on this data is sufficiently short
    that nothing needs to be done to comply with GDPR requirements, as data is
-   automatically deleted. If you are planning to use retention policy to comply with GDPR, please refer to the [Using retention policy for GDPR](#using-retention-policy-for-gdpr) section for how to apply the correct policies to ensure data is not retained for longer than the period that is allowed for your scenario.
-1. If this is not possible, the recommended approach is to isolate all data subject to GDPR in a small number of Kusto tables (optimally,
+   automatically deleted.
+2. If this is not possible, the recommended approach is to isolate all data subject to GDPR in a small number of Kusto tables (optimally,
    just one table) and link to it from all other tables. This allows one to run the
    data purge process described below on a small number of tables holding sensitive
    data, and to avoid doing so for all others.
-1. The caller should make every attempt to batch the execution of `.purge` commands to 1-2 commands per table per day.
+3. The caller should make every attempt to batch the execution of `.purge` commands to 1-2 commands per table per day.
    Do not issue multiple commands, each with its own user identity predicate;
    rather, send a single command whose predicate includes all user identities that
    require purging.
 
-Please carefully consult the
-[GDPR site](https://aka.ms/gdpr), the [summary of GDPR policy for C&E organization](https://aka.ms/cegdpr/scopingpaas), and the related [GDPR export requirements](https://microsoft.sharepoint.com/teams/Azure_Compliance/GDPR/GDPR%20Wiki/Export%20Guidance.aspx). In particular [this document on delinking](https://aka.ms/delink) 
-as the recommended best practices for complying with GDPR requirements. 
+
 
 ## Purge Process
 
