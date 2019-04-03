@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/27/2019
+ms.date: 03/31/2019
 ---
 # Tables
 
@@ -477,9 +477,9 @@ This mapping can be referenced from the ingestion command instead of sending the
 **Example** 
  
 ```kusto
-.create table TempTable ingestion csv mapping "Mapping1" '[{ "Name" : "rownumber", "DataType":"int", "Ordinal" : 0},{ "Name" : "rowguid", "DataType":"string", "Ordinal" : 1 }]'
+.create table MyTable ingestion csv mapping "Mapping1" '[{ "Name" : "rownumber", "DataType":"int", "Ordinal" : 0},{ "Name" : "rowguid", "DataType":"string", "Ordinal" : 1 }]'
 
-.create table TempTable ingestion json mapping "Mapping1" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
+.create table MyTable ingestion json mapping "Mapping1" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
 ```
 **Example output**
 
@@ -499,9 +499,9 @@ Alters an existing mapping (full mapping replace). This mapping can be reference
 **Example** 
  
 ```kusto
-.alter table TempTable ingestion csv mapping "Mapping1" '[{ "Name" : "rownumber", "DataType":"int", "Ordinal" : 0},{ "Name" : "rowguid", "DataType":"string", "Ordinal" : 1 }]'
+.alter table MyTable ingestion csv mapping "Mapping1" '[{ "Name" : "rownumber", "DataType":"int", "Ordinal" : 0},{ "Name" : "rowguid", "DataType":"string", "Ordinal" : 1 }]'
 
-.alter table TempTable ingestion json mapping "Mapping1" '[{ "column" : "rownumber", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
+.alter table MyTable ingestion json mapping "Mapping1" '[{ "column" : "rownumber", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
 ```
 **Example output**
 
@@ -525,9 +525,9 @@ Show the ingestion mappings (all or the one specified by name).
 **Example** 
  
 ```kusto
-.show table TempTable ingestion csv mapping "Mapping1" 
+.show table MyTable ingestion csv mapping "Mapping1" 
 
-.show table TempTable ingestion csv mappings 
+.show table MyTable ingestion csv mappings 
 ```
 **Example output**
 
@@ -547,9 +547,9 @@ Drops the ingestion mapping from the database.
 **Example** 
  
 ```kusto
-.drop table TempTable ingestion csv mapping "Mapping1" 
+.drop table MyTable ingestion csv mapping "Mapping1" 
 
-.drop table TempTable ingestion json mappings "Mapping1" 
+.drop table MyTable ingestion json mappings "Mapping1" 
 ```
 
 ## .alter table docstring

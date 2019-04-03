@@ -1,24 +1,24 @@
 ---
-title: columnifexists() - Azure Data Explorer | Microsoft Docs
-description: This article describes columnifexists() in Azure Data Explorer.
+title: column_ifexists() - Azure Data Explorer | Microsoft Docs
+description: This article describes column_ifexists() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/31/2018
+ms.date: 03/29/2019
 ---
-# columnifexists()
+# column_ifexists()
 
 Takes a column name as a string or its zero based index and a default value. Returns a reference to the column if it exists, 
 otherwise - returns the default value.
 
 **Syntax**
 
-`columnifexists(`*columnName*`, `*defaultValue*)
+`column_ifexists(`*columnName*`, `*defaultValue*)
 
-`columnifexists(`*columnZeroBasedIndex*`, `*defaultValue*)
+`column_ifexists(`*columnZeroBasedIndex*`, `*defaultValue*)
 
 **Arguments**
 
@@ -40,14 +40,14 @@ If *columnZeroBasedIndex* exists, then the column it refers to. Otherwise - *def
 ColumnOrDefault(tableName:string, columnName:string)
 {
 	// There's no column "Capital" in "StormEvents", therefore, the State column will be used instead
-	table(tableName) | project columnifexists(columnName, State)
+	table(tableName) | project column_ifexists(columnName, State)
 }
 
 .create function with (docstring = "Wraps a table query that allows querying the table even if columnIndex doesn't exist ", folder="My Functions")
 ColumnIndexOrDefault(tableName:string, columnIndex:long)
 {
     // There's no column with index 100 in "StormEvents", therefore, the State column will be used instead
-	table(tableName) | project columnifexists(columnIndex, State)
+	table(tableName) | project column_ifexists(columnIndex, State)
 }
 
 

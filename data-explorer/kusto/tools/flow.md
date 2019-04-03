@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/10/2019
+ms.date: 03/28/2019
 ---
 # Microsoft Flow and Kusto
 
@@ -27,6 +27,58 @@ Common scenarios for using Azure Kusto Flow include:
 3. Flow works best on Internet Explorer and Chrome.
 4. Kusto Flow connector is currently in preview, therefore its support will be only during business hours.
 
+# Using Microsoft Flow Azure Kusto Connector 
+
+##  Login and Authentication
+1. Login to [Microsoft Flow](https://flow.microsoft.com/).
+
+1. When connecting to Azure Kusto Flow for the first time, you will be prompted to sign in.
+
+1. Click on the 'Sign in' button and enter your credentials to start using Azure Kusto Flow.
+
+![alt text](./Images/KustoTools-Flow/flow-signin.png "flow-signin")
+
+Authentication to Azure Kusto Flow can be done with user credentials or an AAD application.
+
+
+
+### AAD Application Authentication
+
+You can authenticate to Azure Kusto Flow with an AAD application using the following steps:
+
+> Note: Make sure your application is an AAD application (learn more [here](https://kusto.azurewebsites.net/docs/concepts/security-create-aad-app.html)) and is authorized to execute queries on your cluster.
+
+1. Click the three dots at the top right of the Azure Kusto connector:
+![alt text](./Images/KustoTools-Flow/flow-addconnection.png "flow-addconnection")
+
+1. Select "Add new connection" and then click on 'Connect with Service Principal'.
+![alt text](./Images/KustoTools-Flow/flow-signin.png "flow-signin")
+
+1. Fill in the application ID, application key and tenant ID.
+
+For example, Microsoft tenant ID is: 72f988bf-86f1-41af-91ab-2d7cd011db47.
+The Connection Name value is a string of your choice meant for recognizing the new connection added.
+![alt text](./Images/KustoTools-Flow/flow-appauth.png "flow-appauth")
+
+Once authentication is completed, you would be able to see that your flow is using the new connection added.
+![alt text](./Images/KustoTools-Flow/flow-appauthcomplete.png "flow-appauthcomplete")
+
+From now on this flow will run using the application credentials.
+
+## Find the Azure Kusto connector
+
+To use the Azure Kusto connector you need to first add a trigger. 
+A trigger can be defined based on a recurring time period or as response to a previous flow action.
+
+Use the Azure Kusto connector:
+1. [Create a new flow.](https://flow.microsoft.com/manage/flows/new)
+2. Add 'Schedule - Recurrence' as the first step.
+3. Type 'Azure Kusto' in the search box of the second step.
+
+Now you should be able to see 'Azure Kusto' as seen in the image below.
+
+![alt text](./Images/KustoTools-Flow/flow-actions.png "flow-actions")
+
 ## Azure Kusto Flow Actions
 
 When searching for the Azure Kusto connector in Flow, you will see 3 possible actions you can add to your flow.
@@ -34,7 +86,6 @@ When searching for the Azure Kusto connector in Flow, you will see 3 possible ac
 The following section describes the capabilities and needed parameters for each Azure Kusto Flow action.
 
 ![alt text](./Images/KustoTools-Flow/flow-actions.png "flow-actions")
-
 
 ### Azure Kusto - Run query and visualize results
 
@@ -46,8 +97,6 @@ The results of this action can be later sent over email. You could use this flow
 ![alt text](./Images/KustoTools-Flow/flow-runquery.png "flow-runquery")
 
 In this example the results of the query are returned as an HTML table.
-
-For a detailed example of 'Azure Kusto - Run query and visualize results' see [Example 1 - Email Kusto query results](./flow.md#example-1---email-kusto-query-results)
 
 ### Azure Kusto - Run control command and visualize results
 
@@ -64,16 +113,26 @@ In this example the results of the control command are rendered as a pie chart.
 
 This action sends a query to Kusto cluster. The actions that are added afterwards iterate over each line of the results of the query.
 
-
 The following example triggers a query every minute and sends an email based on the query results. The query checks the number of lines in the database, and then sends an email only if the number of lines is greater than 0. 
 
 ![alt text](./Images/KustoTools-Flow/flow-runquerylistresults.png "flow-runquerylistresults")
 
 Note that in case the column has several lines, the following connector would run for each line in the column.
 
-## FAQ
+## Email Kusto query results
 
-### How to make sure flow succeeded?
+To send email reports do the following steps: 
+
+![alt text](./Images/KustoTools-Flow/flow-sendemail.png "flow-sendemail")
+
+1. Click '+ New step', then 'Add an action'.
+2. In the search box, enter 'Office 365 Outlook - Send an email'.
+3. Set the 'To' to your email address, the 'Subject' to some text, and add 'Body' from dynamic content to the 'Body' field.
+4. Click 'Advanced options' add 'Attachment Name' to the 'Attachments Name' field, 'Attachment Content' to the 'Attachments Content' field and make sure that 'Is HTML' is set to 'Yes'.
+5. At the top bar, set the 'Flow name' for this flow.
+6. Click 'Create flow' and you're done!
+
+## How to make sure flow succeeded?
 
 Go to [Microsoft Flow Home Page](https://flow.microsoft.com/), click on [My flows](https://flow.microsoft.com/manage/flows) and then click on the i button.
 
@@ -94,29 +153,13 @@ Some errors can be easily solved on your own, for example query syntax errors:
 
 
 
-### Having trouble finding the Azure Kusto connector?
-
-To use the Azure Kusto connector you need to first add a trigger. 
-A trigger can be defined based on a recurring time period or as response to a previous flow action.
-
-Here are some sample steps to follow when using the Azure Kusto connector:
-1. [Create a new flow.](https://flow.microsoft.com/manage/flows/new)
-2. Add 'Schedule - Recurrence' as the first step.
-3. Type 'Azure Kusto' in the search box of the second step.
-
-Now you should be able to see 'Azure Kusto' as seen in the image below.
-
-![alt text](./Images/KustoTools-Flow/flow-actions.png "flow-actions")
-
-
-
-### Having a Timeout Exception?
+## Having a Timeout Exception?
 
 Your flow can fail and return "RequestTimeout" exception if it runs more than 7 minutes.
 
 Notice that 7 minutes is the maximum time flow queries can run before there will be a timeout exception.
 
-[Click here](https://kusto.azurewebsites.net/docs/tools/flow.html#limitations) to see Microsoft Flow limitations.
+[Click here](#limitations) to see Microsoft Flow limitations.
 
 The same query may run successfully in Kusto Explorer where the time is not limited and can be changed.
 
@@ -125,91 +168,21 @@ The "RequestTimeout" exception is shown in the image below:
 ![alt text](./Images/KustoTools-Flow/flow-requesttimeout.png "flow-requesttimeout")
 
 To fix the issue you can follow these steps:
-1. Read more about [Query best practices](https://docs.microsoft.com/en-us/azure/kusto/query/best-practices).
+1. Read more about [Query best practices](../query/best-practices.md).
 2. Try to make your query more efficient in order to make it run faster, or separate it into chunks, each chunk can run on a different part of the query.
-
-### Does flow support National Cloud Kusto clusters?
-
-Flow infrastructure currently doesn't support dSTS authentication, so unless you are using AAD authentication, national cloud is not supported in Flow.
-
-## Authentication
-
-When connecting to Azure Kusto Flow for the first time, you will be prompted to sign in.
-
-Click on the 'Sign in' button and enter your credentials to start using Azure Kusto Flow.
-
-![alt text](./Images/KustoTools-Flow/flow-signin.png "flow-signin")
-
-Authentication to Azure Kusto Flow can be done with user credentials or an AAD application.
-
-### AAD Application Authentication
-
-You can authenticate to Azure Kusto Flow with an AAD application using the following steps.
-
-> Note: Make sure your application is an AAD application (learn more [here](https://kusto.azurewebsites.net/docs/concepts/security-create-aad-app.html)) and is authorized to execute queries on your cluster.
-
-Click the three dots at the top right of the Azure Kusto connector:
-![alt text](./Images/KustoTools-Flow/flow-addconnection.png "flow-addconnection")
-
-Select "Add new connection" and then click on 'Connect with Service Principal'.
-![alt text](./Images/KustoTools-Flow/flow-signin.png "flow-signin")
-
-Fill in the application ID, application key and tenant ID.
-
-For example, Microsoft tenant ID is: 72f988bf-86f1-41af-91ab-2d7cd011db47.
-The Connection Name value is a string of your choice meant for recognizing the new connection added.
-![alt text](./Images/KustoTools-Flow/flow-appauth.png "flow-appauth")
-
-Once authentication is completed, you would be able to see that your flow is using the new connection added.
-![alt text](./Images/KustoTools-Flow/flow-appauthcomplete.png "flow-appauthcomplete")
-
-From now on this flow will run using the application credentials.
 
 ## Usage Examples
 
 This section contains several common examples of using the Azure Kusto Flow connector.
 
-### Example 1 - Email Kusto query results
-
-The following example is a flow which sends an email report every 15 minutes of a Kusto query.
-The flow must start with a trigger, which can be a 'Schedule - Recurrence' trigger for instance.
-After setting a trigger you can add the 'Kusto - Run query and visualize results' action.
-
-![alt text](./Images/KustoTools-Flow/flow-triggerrunquery.png "flow-triggerrunquery")
-
-In the 'Kusto - Run query and visualize results' action, fill in the cluster name, the database name, the query itself and choose the chart type.
-To send email reports add another action 'Office 365 Outlook - Send an email'. 
-
-![alt text](./Images/KustoTools-Flow/flow-sendemail.png "flow-sendemail")
-
-Add the 'Body' result from the dynamic content to the email body, and under 'advanced options' section add 'Attachment Name', 'Attachment Content' and choose 'Yes' under 'Is HTML'. 
-
-#### Detailed steps
-
-1. Login to [Microsoft Flow](https://flow.microsoft.com/).
-2. Click [My flows](https://flow.microsoft.com/manage/flows) then [Create from blank](https://flow.microsoft.com/manage/flows/new).
-3. In the search box, enter 'Schedule - Recurrence' and select it.
-4. Change 'Frequency' to 'Day' and 'Interval' to '15'.
-5. Click '+ New step', then 'Add an action'.
-6. In the search box, enter 'Kusto - Run query and visualize results'.
-7. If prompted, sign in again.
-8. Fill in your query details - cluster name, database name, query and chart type.
-9. Click '+ New step', then 'Add an action'.
-10. In the search box, enter 'Office 365 Outlook - Send an email'.
-11. Set the 'To' to your email address, the 'Subject' to some text, and add 'Body' from dynamic content to the 'Body' field.
-12. Click 'Advanced options' add 'Attachment Name' to the 'Attachments Name' field, 'Attachment Content' to the 'Attachments Content' field and make sure that 'Is HTML' is set to 'True'.
-13. At the top bar, set the 'Flow name' for this flow.
-14. Click 'Create flow' and you're done!
-15. [Make sure your flow ran successfully](./flow.md#how-to-make-sure-flow-succeeded)
-
-### Example 2 - Azure Kusto Flow and SQL
+### Example 1 - Azure Kusto Flow and SQL
 
 You can use Azure Kusto flow to query the data and then accumulate it into an SQL DB. 
 > Note: SQL insert is being  done seperately per row, please use this only for low amounts of output data. 
 
 ![alt text](./Images/KustoTools-Flow/flow-sqlexample.png "flow-sqlexample")
 
-### Example 3 - Push data to Power BI dataset
+### Example 2 - Push data to Power BI dataset
 
 Azure Kusto Flow connector can be used together with the Power BI connector to push data from Kusto queries to Power BI streaming datasets.
 
@@ -230,7 +203,7 @@ Note that Flow will automatically apply the Power BI action for each row of the 
 
 ![alt text](./Images/KustoTools-Flow/flow-powerbiforeach.png "flow-powerbiforeach")
 
-### Example 4 - Conditional Queries
+### Example 3 - Conditional Queries
 
 The results of Kusto queries can be used as input or conditions for the next Flow actions.
 
@@ -270,7 +243,7 @@ We visualize this information as a pie chart and email it to our team.
 
 ![alt text](./Images/KustoTools-Flow/flow-conditionemail.png "flow-conditionemail")
 
-### Example 5 - Email multiple Azure Kusto Flow charts
+### Example 4 - Email multiple Azure Kusto Flow charts
 
 Create a new Flow with "Recurrence" trigger, and define the interval of the Flow and the frequency. 
 
@@ -299,7 +272,7 @@ Results:
 
 ![alt text](./Images/KustoTools-Flow/flow-resultsmultipleattachments2.png "flow-resultsmultipleattachments2")
 
-### Example 6 - Send a different email to different contacts
+### Example 5 - Send a different email to different contacts
 
 You can leverage Azure Kusto Flow to send different customized emails to different contacts. The email addresses as well as the email contents are a result of a Kusto query.
 
@@ -309,7 +282,7 @@ See example below:
 
 ![alt text](./Images/KustoTools-Flow/flow-dynamicemail.png "flow-dynamicemail")
 
-### Example 7 - Create Custom HTML Table
+### Example 6 - Create Custom HTML Table
 
 You can leverage Azure Kusto Flow to create and use custom HTML elements such as a custom HTML table.
 
@@ -340,4 +313,9 @@ Finally, create the full HTML content. Add a new action outside 'Apply to each'.
 and here is the result:
 
 ![alt text](./Images/KustoTools-Flow/flow-customhtmltableresult.png "flow-customhtmltableresult")
+
+
+
+
+
 

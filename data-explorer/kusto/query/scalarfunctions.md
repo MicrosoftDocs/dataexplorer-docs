@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 03/29/2019
 ---
 # Scalar Functions
 
@@ -94,6 +94,8 @@ ms.date: 02/07/2019
 
 ## Flow Control Functions
 
+|Function Name            |Description                                             |
+|-------------------------|--------------------------------------------------------|
 |[toscalar()](toscalarfunction.md)|Returns a scalar constant value of the evaluated expression.|
 
 ## Mathematical Functions
@@ -141,7 +143,7 @@ ms.date: 02/07/2019
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[columnifexists()](columnifexists.md)|Takes a column name as a string and a default value. Returns a reference to the column if it exists, otherwise - returns the default value.|
+|[column_ifexists()](columnifexists.md)|Takes a column name as a string and a default value. Returns a reference to the column if it exists, otherwise - returns the default value.|
 |[current_principal()](current-principalfunction.md)|Returns the current principal running this query.|
 |[cursor_after()](cursorafterfunction.md)|Used to access to the records that were ingested after the previous value of the cursor.|
 |[extent_id()](extentidfunction.md)|Returns a unique identifier that identifies the data shard ("extent") that the current record resides in.|

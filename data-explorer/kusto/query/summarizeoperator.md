@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/20/2019
+ms.date: 03/28/2019
 ---
 # summarize operator
 
@@ -160,7 +160,7 @@ When the input of summarize operator that doesn't have any group-by key is empty
 ```kusto
 range x from 1 to 10 step 1
 | where 1 == 2
-| summarize any(x), argmax(x, x), argmin(x, x), avg(x), buildschema(todynamic(tostring(x))), max(x), min(x), percentile(x, 55), hll(x) ,stdev(x), sum(x), sumif(x, x > 0), tdigest(x), variance(x)
+| summarize any(x), arg_max(x, x), arg_min(x, x), avg(x), buildschema(todynamic(tostring(x))), max(x), min(x), percentile(x, 55), hll(x) ,stdev(x), sum(x), sumif(x, x > 0), tdigest(x), variance(x)
 
 
 ```

@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2019
+ms.date: 03/26/2019
 ---
 ## Virtual Network deployment
 
-Azure Data Explorer supports deploying a cluster into a subnet in your VNet, enabling you to:
+Azure Data Explorer supports deploying a cluster into a subnet in your Virtual Network (VNet), enabling you to:
 * Enforce Network Security Group (NSG) rules on your ADX cluster traffic.
 * Connect your on-premise network to ADX cluster's subnet.
 * Secure your Data Connection sources (EventHub/EventGrid) with service endpoints.

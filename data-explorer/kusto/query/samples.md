@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/20/2019
+ms.date: 03/28/2019
 ---
 # Samples
 
@@ -87,14 +87,14 @@ Events
     // Remove matches with earlier stops:
 | where  duration > 0  
     // Pick out the earliest stop for each start and client:
-| summarize argmin(duration, *) by bin(StartTime,1s), ClientIp
+| summarize arg_min(duration, *) by bin(StartTime,1s), ClientIp
 ```
 
 The join will match every start time with all the stop times from the same client IP address. So we first remove matches with earlier stop times.
 
 Then we group by start time and ip to get a group for each session. We must supply a `bin` function for the StartTime parameter: if we don't, Kusto will automatically use 1-hour bins, which will match some start times with the wrong stop times.
 
-`argmin` picks out the row with the smallest duration in each group, and the `*` parameter passes through all the other columns, though it prefixes "min_" to each column name. 
+`arg_min` picks out the row with the smallest duration in each group, and the `*` parameter passes through all the other columns, though it prefixes "min_" to each column name. 
 
 
 ![alt text](./images/samples/040.png "040") 

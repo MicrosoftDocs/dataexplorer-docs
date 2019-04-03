@@ -155,7 +155,7 @@
 ### [case()](./query/casefunction.md)
 ### [ceiling()](./query/ceilingfunction.md)
 ### [coalesce()](./query/coalescefunction.md)
-### [columnifexists()](./query/columnifexists.md)
+### [column_ifexists()](./query/columnifexists.md)
 ### [cos()](./query/cosfunction.md)
 ### [cot()](./query/cotfunction.md)
 ### [countof()](./query/countoffunction.md)
@@ -503,6 +503,7 @@
 
 ### [How-To: AAD Authentication](./management/access-control/how-to-authenticate-with-aad.md)
 ### [How-To: Provision AAD Application](./management/access-control/how-to-provision-aad-app.md)
+
 
 ## Advanced Data Management
 ### [Extents (Data Shards) Overview](./management/extents-overview.md)

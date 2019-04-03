@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/09/2019
+ms.date: 03/26/2019
 ---
 # Role-based Authorization in Kusto
 
