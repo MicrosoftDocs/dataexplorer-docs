@@ -65,6 +65,7 @@
 #### [pivot](./query/pivotplugin.md)
 #### [preview](./query/previewplugin.md)
 
+
 #### [rolling_percentile](./query/rolling-percentile-plugin.md)
 #### [sql_request](./query/sqlrequestplugin.md)
 ### [extend operator](./query/extendoperator.md)

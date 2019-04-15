@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 04/12/2019
 ---
 # arg_min() (aggregation function)
 
@@ -53,4 +53,4 @@ PageViewLog
     by continent
 ```
 
-![alt text](./images/aggregations/argmin.png "argmin")
+![alt text](./images/aggregations/arg-min.png "arg-min")

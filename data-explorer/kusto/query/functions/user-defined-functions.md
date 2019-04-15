@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2019
+ms.date: 04/11/2019
 ---
 # User-Defined Functions
 
@@ -286,6 +286,8 @@ The following restricts apply:
 
 2. User-defined functions that return a tabular expression cannot
    be invoked with an argument that varies with the row context.
+
+3. A function taking at least one tabular input cannot be invoked on a remote cluster.
 
 In fact, the only place a user-defined function may be invoked
 with an argument that varies with the row context is when the

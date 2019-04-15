@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/18/2019
+ms.date: 04/02/2019
 ---
 # How-To: Authenticate with AAD for Kusto Access
 
@@ -119,7 +119,7 @@ see [https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet]
 for an example of doing so from a .NET application.
 
 To authenticate users for Kusto access, an application must first be granted the
-`Access Kusto` delegated permission. Please see [Kusto guide to AAD applications provisioning](how-to-provision-aad-app.md#set-up-delegated-permissions-for-the-kusto-service-application)
+`Access Kusto` delegated permission. Please see [Kusto guide to AAD applications provisioning](how-to-provision-aad-app.md#set-up-delegated-permissions-for-kusto-service-application)
 for details.
 
 The following brief code snippet demonstrates using ADAL to acquire an AAD user
