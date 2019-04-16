@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/06/2019
+ms.date: 04/02/2019
 ---
 # Data ingestion
 
@@ -187,11 +187,11 @@ formatted in one of the supported data formats:
 |-----------|---------|-----------|
 |`csv`      |.csv     |Comma-separated values. See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt)|
 |`tsv`      |.tsv     |Tab-separated values.|
-|`psv`      |.psv     |Pipe-separated values. (Pipe is the vertical bar character.)|
-|`sohv`     |.sohv    |SOH-separated values. (SOH is ASCII codepoint 1; this format is used by Hive on HDInsight.)|
-|`scsv`     |.scsv    |Semicolon-separated values.(This format is unique to Azure Storage Diagnostics logs.)|
-|`json`     |.json    |Text file with multiple lines, each of which is a JSON document.|
-|`multijson`|.multijson|Text file with a JSON array of property bags (each is a record), or one or more property bags with whitespace-separation.|
+|`psv`      |.psv     |Pipe-separated values. (Pipe is the vertical bar character)|
+|`sohv`     |.sohv    |SOH-separated values. (SOH is ASCII codepoint 1; this format is used by Hive on HDInsight)|
+|`scsv`     |.scsv    |Semicolon-separated values.(This format is unique to Azure Storage Diagnostics logs)|
+|`json`     |.json    |Text file in [JSON Lines](http://jsonlines.org/) format. Each line is a valid JSON object, line separator is `'\n'`.|
+|`multijson`|.multijson|Text file with a JSON array of property bags (each is a record), or one or more property bags with whitespace-separation. If you are not sure whether to choose `json` or `multijson`, choose `multijson.|
 |`avro`     |.avro    |Binary file with multiple records, each of which is an Avro record. Supported codecs: `null`, `deflate`. |
 |`txt`      |.txt     |Text file (every line is a single column).|
 

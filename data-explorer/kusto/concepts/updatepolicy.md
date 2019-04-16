@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 04/14/2019
 ---
 # Update policy
 
@@ -79,13 +79,14 @@ Each such object is represented as a JSON property bag, with the following prope
 
 **Notes**
 
-1. The source table and the table for which the update policy is defined **must be in the same database**.
-2. The query can invoke stored functions.
-3. The query is automatically scoped to cover the newly-ingested records only.
-4. Cascading updates are allowed (TableA --`[update]`--> TableB --`[update]`-->  TableC --`[update]`--> ...)
-5. In case update policies are defined over multiple tables in a circular manner, this is detected at runtime and the chain of updates is cut
+* The source table and the table for which the update policy is defined **must be in the same database**.
+* The query may **not** include cross-database nor cross-cluster queries.
+* The query can invoke stored functions.
+* The query is automatically scoped to cover the newly-ingested records only.
+* Cascading updates are allowed (TableA --`[update]`--> TableB --`[update]`-->  TableC --`[update]`--> ...)
+* In case update policies are defined over multiple tables in a circular manner, this is detected at runtime and the chain of updates is cut
    (meaning, data will be ingested only once to each table in the chain of affected tables).
-6. When referencing the `Source` table in the `Query` part of the policy (or in Functions referenced by the latter), make sure you **don't** use the qualified name of the table
+* When referencing the `Source` table in the `Query` part of the policy (or in Functions referenced by the latter), make sure you **don't** use the qualified name of the table
    (meaning, use `TableName` and not `database("DatabaseName").TableName` nor `cluster("ClusterName").database("DatabaseName").TableName`).
  
 

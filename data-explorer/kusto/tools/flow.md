@@ -1,44 +1,44 @@
 ---
-title: Microsoft Flow and Kusto - Azure Data Explorer | Microsoft Docs
-description: This article describes Microsoft Flow and Kusto in Azure Data Explorer.
+title: Microsoft Flow Azure Kusto Connector (Preview) - Azure Data Explorer | Microsoft Docs
+description: This article describes Microsoft Flow Azure Kusto Connector (Preview) in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/28/2019
+ms.date: 04/15/2019
 ---
-# Microsoft Flow and Kusto
+# Microsoft Flow Azure Kusto Connector (Preview)
 
-The Azure Kusto Flow connector allows users to run Kusto queries and commands automatically as part of a scheduled or triggered task, using [Microsoft Flow](https://flow.microsoft.com/).
+The Microsoft Flow Azure Kusto connector allows users to run Kusto queries and commands automatically as part of a scheduled or triggered task, using [Microsoft Flow](https://flow.microsoft.com/).
 
-Common scenarios for using Azure Kusto Flow include:
+Common usage scenarios include:
 
-1.    Sending daily reports containing Kusto tables and charts
-2.    Setting notifications based on Kusto query results
-3.    Scheduling control commands on Kusto clusters
-4.    Exporting and importing data between Kusto and other databases 
+* Sending daily reports containing tables and charts
+* Setting notifications based on query results
+* Scheduling control commands on clusters
+* Exporting and importing data between Azure Data Explorer and other databases 
 
 ## Limitations
 
-1. Azure Kusto Flow results returned to the client are limited to 500,000 records and the overall memory for those records cannot exceed 64 MB, and 7 minutes execution time.
-2. Currently the connector does not support the [fork](../query/forkoperator.md) and [facet](../query/facetoperator.md) operators.
+1. Results returned to the client are limited to 500,000 records. The overall memory for those records cannot exceed 64 MB and 7 minutes execution time.
+2. Currently, the connector does not support the [fork](../query/forkoperator.md) and [facet](../query/facetoperator.md) operators.
 3. Flow works best on Internet Explorer and Chrome.
-4. Kusto Flow connector is currently in preview, therefore its support will be only during business hours.
 
-# Using Microsoft Flow Azure Kusto Connector 
+##  Login 
 
-##  Login and Authentication
 1. Login to [Microsoft Flow](https://flow.microsoft.com/).
 
-1. When connecting to Azure Kusto Flow for the first time, you will be prompted to sign in.
+1. When connecting to the Azure Kusto connector for the first time, you will be prompted to sign in.
 
-1. Click on the 'Sign in' button and enter your credentials to start using Azure Kusto Flow.
+1. Click on the **Sign in** button and enter your credentials to start using Azure Kusto Flow.
 
 ![alt text](./Images/KustoTools-Flow/flow-signin.png "flow-signin")
 
-Authentication to Azure Kusto Flow can be done with user credentials or an AAD application.
+## Authentication
+
+Authentication to Azure Kusto Flow connector can be performed using user credentials or an AAD application.
 
 
 
@@ -46,7 +46,7 @@ Authentication to Azure Kusto Flow can be done with user credentials or an AAD a
 
 You can authenticate to Azure Kusto Flow with an AAD application using the following steps:
 
-> Note: Make sure your application is an AAD application (learn more [here](https://kusto.azurewebsites.net/docs/concepts/security-create-aad-app.html)) and is authorized to execute queries on your cluster.
+> Note: Make sure your application is an [AAD application](../management/access-control/how-to-provision-aad-app.md) and is authorized to execute queries on your cluster.
 
 1. Click the three dots at the top right of the Azure Kusto connector:
 ![alt text](./Images/KustoTools-Flow/flow-addconnection.png "flow-addconnection")
@@ -70,7 +70,6 @@ From now on this flow will run using the application credentials.
 To use the Azure Kusto connector you need to first add a trigger. 
 A trigger can be defined based on a recurring time period or as response to a previous flow action.
 
-Use the Azure Kusto connector:
 1. [Create a new flow.](https://flow.microsoft.com/manage/flows/new)
 2. Add 'Schedule - Recurrence' as the first step.
 3. Type 'Azure Kusto' in the search box of the second step.
@@ -83,15 +82,15 @@ Now you should be able to see 'Azure Kusto' as seen in the image below.
 
 When searching for the Azure Kusto connector in Flow, you will see 3 possible actions you can add to your flow.
 
-The following section describes the capabilities and needed parameters for each Azure Kusto Flow action.
+The following section describes the capabilities and parameters for each Azure Kusto Flow action.
 
 ![alt text](./Images/KustoTools-Flow/flow-actions.png "flow-actions")
 
 ### Azure Kusto - Run query and visualize results
 
-> Note: In case your query starts with a dot (meaning it's a [control command](../management/index.md)) please use [Run control command and visualize results](./flow.md#azure-kusto---run-control-command-and-visualize-results)
+> Note: If your query starts with a dot (meaning it's a [control command](../management/index.md)) please use [Run control command and visualize results](./flow.md#azure-kusto---run-control-command-and-visualize-results)
 
-In case you would like to visualize Kusto query result as a table or as a chart, you can use the 'Azure Kusto - Run query and visualize results' action. 
+To visualize Kusto query result as a table or as a chart, you can use the 'Azure Kusto - Run query and visualize results' action. 
 The results of this action can be later sent over email. You could use this flow, for instance, in case you would like to get daily ICM reports. 
 
 ![alt text](./Images/KustoTools-Flow/flow-runquery.png "flow-runquery")

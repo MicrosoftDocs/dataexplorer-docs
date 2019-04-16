@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/21/2018
+ms.date: 04/02/2019
 ---
 # HowTo: Creating an AAD Application
 
@@ -23,6 +23,7 @@ Client applications and middle-tier applications that have an interactive user c
 application identity instead of user identity, so the calling application will need to implement its own authorization logic to prevent misuse.
 
 ## Application Authentication use cases
+
 We can distinguish two main scenarios that make use of application authentication:
 * Applications that are intended to contact the Kusto service directly and on their own behalf
 * Applications that will authenticate their users to Kusto (delegated authenticaion)
@@ -30,6 +31,7 @@ We can distinguish two main scenarios that make use of application authenticatio
 ## 1. Provisioning a new application
 
 #### Register the new application
+
 * Log in to [Azure portal](https://portal.azure.com) and open the `Azure Active Directory` blade
 
     ![alt text](./images/Aad-create-app-step-0.png "Aad-create-app-step-0")
@@ -64,7 +66,8 @@ We can distinguish two main scenarios that make use of application authenticatio
 * Your application is set up. If all you need is access to Kusto with the newly created application, you are done.
 <P>
 
-#### Set up delegated permissions for the Kusto service application
+#### Set up delegated permissions for Kusto service application
+
 If you need the application to be able to perform user or app authentication for Kusto access, you need to set up trust between your application and Kusto:
 
 * On the `Required permissions` blade, click `Add`
@@ -82,17 +85,8 @@ If you need the application to be able to perform user or app authentication for
 
 * Click `Done` to complete the process
 
-#### Enable user consent if needed
-your AAD tenant administrator may enact a policy that prevents tenant users from giving consent to applications. This situation will result in an error similar to the following, when a user tries to login to your application:
-
-`AADSTS65001: The user or administrator has not consented to use the application with ID '<App ID>' named 'App Name'`
-
-You will need to contact your AAD administrator to grant consent for all users in the tenant, or enable user consent for your specific application.
-
-
-
-
 ### 2. Set permissions to the application on Kusto cluster
+
 > Before using your newly provisioned application, verify it resolves from Graph API.<br>
     Be advised that it usually takes some time (up to several hours) for the AAD changes to propagate.
 
@@ -102,10 +96,33 @@ For setting up ingestion permissions, consult [Ingestion Permissions](../../api/
 * Add a connection to this service in your Kusto Explorer, if you don't have it yet.
 
 ### 3. Application can now access Kusto
+
 When using your newly provisioned application to access Kusto clusters using Kusto client libraries, specify the following connection string (if you chose to authenticate with a shared key):
 <br>
 `https://`*ClusterDnsName*`/;Federated Security=True;Application Client Id=`*ApplicationClientId*`;Application Key=`*ApplicationKey*
 <br>
 
-### Advanced topics and troubleshooting
+### Appendix A: AAD Errors
+
+#### AAD Error AADSTS650057
+
+If your application is used to authenticate users or applications for Kusto access, you must set up delegated permissions for Kusto service applicaiton, i.e. declare that your application can authenticate users or applications for Kusto access.
+Not doing so will result in an error similar to the following, when an authentication attempt is made:
+
+`AADSTS650057: Invalid resource. The client has requested access to a resource which is not listed in the requested permissions in the client's application registration...`
+
+You will need to follow the instructions on [setting up delegated permissions for Kusto service application](#set-up-delegated-permissions-for-kusto-service-application).
+
+#### Enable user consent if needed
+
+Your AAD tenant administrator may enact a policy that prevents tenant users from giving consent to applications. This situation will result in an error similar to the following, when a user tries to login to your application:
+
+`AADSTS65001: The user or administrator has not consented to use the application with ID '<App ID>' named 'App Name'`
+
+You will need to contact your AAD administrator to grant consent for all users in the tenant, or enable user consent for your specific application.
+
+
+
+### Appendix B: Advanced topics and troubleshooting
+
 * See [Kusto connection strings](../../api/connection-strings/kusto.md) documentation for full reference of supported connection strings

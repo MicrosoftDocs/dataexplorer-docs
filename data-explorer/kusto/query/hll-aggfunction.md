@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 04/15/2019
 ---
 # hll() (aggregation function)
 
@@ -15,7 +15,7 @@ Calculates the Intermediate results of [dcount](dcount-aggfunction.md) across th
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md).
 
-Read more about the underlying algorithm (*H*yper*L*og*L*og) and the estimated error [here](dcount-aggfunction.md#estimation-error-of-dcount).
+Read about the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy](dcount-aggfunction.md#estimation-accuracy).
 
 **Syntax**
 

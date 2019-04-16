@@ -7,31 +7,27 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2019
+ms.date: 04/15/2019
 ---
 # dcount() (aggregation function)
 
-Returns an estimate of the number of distinct values of *Expr* in the group. 
-
-* Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
+The `dcount()` aggregation function returns an estimate for the number of
+distinct values taken by a scalar expression in the summary group.
 
 **Syntax**
 
-summarize `dcount(`*Expr* [`,` *Accuracy*]`)`
+... `|` `summarize` `dcount` `(`*Expr* [`,` *Accuracy*]`)` ...
 
 **Arguments**
 
-* *Expr*: Expression that will be used for aggregation calculation.
-* *Accuracy*, if specified, controls the balance between speed and accuracy (see Note).
-    * `0` = the least accurate and fastest calculation. 1.6% error
-    * `1` = the default, which balances accuracy and calculation time; about 0.8% error.
-    * `2` = accurate and slow calculation; about 0.4% error.
-    * `3` = extra accurate and slow calculation; about 0.28% error.
-    * `4` = super accurate and slowest calculation; about 0.2% error.
+* *Expr*: A scalar expression whose distinct values are to be counted.
+* *Accuracy*: An optional `int` literal that defines the requested estimation
+  accuracy. See below for supported values. If unspecified, the default value
+  `1` is used.
 
 **Returns**
 
-Returns an estimate of the number of distinct values of *Expr* in the group. 
+Returns an estimate of the number of distinct values of *Expr* in the group.
 
 **Example**
 
@@ -41,38 +37,53 @@ PageViewLog | summarize countries=dcount(country) by continent
 
 ![alt text](./images/aggregations/dcount.png "dcount")
 
-**Tip: Listing distinct values**
+**Notes**
 
-To list the distinct values, you can use:
-- `summarize by *Expr*`
-- [`make_set`](makeset-aggfunction.md) : `summarize make_set(`*Expr*`)` 
+The `dcount()` aggregation function is primarily useful for estimating the
+cardinality of huge sets. It trades performance for accuracy, and therefore may
+return a result that varies between executions (order of
+inputs may have an effect on its output).
 
-**Tip: Accurate distinct count**
-
-While `dcount()` provides a fast and reliable way to count distinct values,
-it relies on a statistical algorithm to do so. Therefore, invoking this
-aggregation multiple times might result in different values being returned.
-
-* If the accuracy level is `1` and the number of distinct values is smaller than 1000 or so, `dcount()` returns a perfectly-accurate count.
-* If the accuracy level is `2` and the number of distinct values is smaller than 8000 or so, `dcount()` returns a perfectly-accurate count.
-* If the number of distinct values is larger than that, but not very
-  large, one may try to use double-`count()` to calculate a single `dcount()`.
-  This is shown in the following example; the two expressions are equivalent
-  (except that the second one might run out of memory): 
+To get an accurate count of distinct values of `V` grouped by `G`:
 
 ```kusto
-T | summarize dcount(Key)
+T | summarize by V, G | summarize count() by G
+```
 
-T | summarize count() by Key | summarize count()
-```  
+This calculation will require much internal memory since distinct values of `V` are multiplied by the number of distinct values of `G`;
+Therefore, it may result in memory errors or large execution times. `dcount()`provides a fast and reliable alternative:
 
-## Estimation error of dcount
+```kusto
+T | summarize dcount(B) by G | count
+```
 
-dcount uses a variant of [HyperLogLog (HLL) algorithm](https://en.wikipedia.org/wiki/HyperLogLog) which does stochastic estimation of set cardinality. In practice it means that the estimation error is described in terms of probability distribution, not theoretical bounds.
-So the stated error actually specifies the standard deviation of error distribution (sigma), 99.7% of estimation will have a relative error of under 3*sigma
-The following depicts probability distribution function of relative estimation error (in percents) for all dcount's accuracy settings:
+## Estimation accuracy
+
+The `dcount()` aggregate function uses a variant of the
+[HyperLogLog (HLL) algorithm](https://en.wikipedia.org/wiki/HyperLogLog),
+which does a stochastic estimation of set cardinality. The algorithm provides
+a "knob" that can be used to balance accuracy and execution time / memory size:
+
+|Accuracy|Error (%)|Entry count   |
+|--------|---------|--------------|
+|       0|      1.6|2<sup>12</sup>|
+|       1|      0.8|2<sup>14</sup>|
+|       2|      0.4|2<sup>16</sup>|
+|       3|     0.28|2<sup>17</sup>|
+|       4|      0.2|2<sup>18</sup>|
+
+Note: the "entry count" column is the number of 1-byte counters in the HLL
+implementation.
+
+The algorithm includes some provisions for doing a perfect count (zero error)
+if the set cardinality is small enough (1000 values when the accuracy level is `1`,
+and 8000 values if the accuracy level is `2`).
+
+The error bound is probabilistic, not a theoretical bound. The value
+is the standard deviation of error distribution (the sigma), and 99.7%
+of the estimations will have a relative error of under 3 times sigma.
+
+The following depicts the probability distribution function of the relative
+estimation error (in percentages) for all supported accuracy settings:
 
 ![alt text](./images/aggregations/hll-error-distribution.png "hll-error-distribution")
-
-
- 
