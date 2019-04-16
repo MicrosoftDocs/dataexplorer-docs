@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 04/15/2019
 ---
 # dcountif() (aggregation function)
 
@@ -15,7 +15,7 @@ Returns an estimate of the number of distinct values of *Expr* of rows for which
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md).
 
-Read more about the estimated error [here](dcount-aggfunction.md#estimation-error-of-dcount).
+Read about the [estimation accuracy](dcount-aggfunction.md#estimation-accuracy).
 
 **Syntax**
 

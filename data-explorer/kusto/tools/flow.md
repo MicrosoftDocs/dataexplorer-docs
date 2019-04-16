@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/10/2019
+ms.date: 04/15/2019
 ---
 # Microsoft Flow Azure Kusto Connector (Preview)
 
@@ -46,7 +46,7 @@ Authentication to Azure Kusto Flow connector can be performed using user credent
 
 You can authenticate to Azure Kusto Flow with an AAD application using the following steps:
 
-> Note: Make sure your application is an AAD application (learn more [here](../concepts/security-create-aad-app.md)) and is authorized to execute queries on your cluster.
+> Note: Make sure your application is an [AAD application](../management/access-control/how-to-provision-aad-app.md) and is authorized to execute queries on your cluster.
 
 1. Click the three dots at the top right of the Azure Kusto connector:
 ![alt text](./Images/KustoTools-Flow/flow-addconnection.png "flow-addconnection")

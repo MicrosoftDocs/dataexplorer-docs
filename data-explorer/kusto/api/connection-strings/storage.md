@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/28/2019
+ms.date: 04/14/2019
 ---
 # Storage connection strings
 
@@ -31,7 +31,7 @@ necessary to access them (such as security credentials).
 |Provider                   |Scheme    |URI template                          |
 |---------------------------|----------|--------------------------------------|
 |Azure Storage Blob         |`https://`|`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][`?`*SasKey* \| `;`*AccountKey*]|
-|Azure Data Lake Store Gen 2|`abfss://`|`abfssl://`*Filesystem*`@`*Account*`.dfs.core.windows.net/`*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
+|Azure Data Lake Store Gen 2|`abfss://`|`abfss://`*Filesystem*`@`*Account*`.dfs.core.windows.net/`*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
 |Azure Data Lake Store Gen 1|`adl://`  |`adl://`*Account*.azuredatalakestore.net/*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
 
 ## Azure Storage Blob

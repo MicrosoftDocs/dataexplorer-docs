@@ -7,43 +7,38 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/11/2019
+ms.date: 04/15/2019
 ---
 # User-Defined Functions
 
-Kusto supports user-defined functions, which can be defined as either a part of
-the query itself (**ad-hoc functions**) or stored in a persistent manner as part
-of the database metadata (**stored functions**).
+Kusto supports user-defined functions, which are:
+* part of the query itself (**ad-hoc functions**) or 
+* stored in a persistent manner as part of the database metadata (**stored functions**).
 
 A user-defined function has:
-1. A name
-2. A a strongly-typed list of input parameters
-3. A strongly-typed return value
-
-The name of a user-defined function must follow the [identifier naming rules](../schema-entities/entity-names.md#identifier-naming-rules).
-It must be unique in the scope of definition.
-
-Input parameters to the function may be either scalar or tabular expressions.
-Each parameter is uniquely named and has a type specification.
-Furthermore, scalar parameters might be provided with a default value, which will
-be used implicitly when the function's caller does not provide a value for that
-parameter.
-
-The return value may be a scalar or a tabular value.
+* A name
+	* Must follow the [identifier naming rules](../schema-entities/entity-names.md#identifier-naming-rules).
+	* Must be unique in the scope of the definition.
+* A strongly-typed list of input parameters
+	* May be scalar or tabular expressions.
+	* Uniquely named with a type specification.
+	* Scalar parameters may be provided with a default value, used implicitly when the function's caller does not provide a value for the parameter.
+* A strongly-typed return value may be scalar or tabular.
 
 A function's inputs and output determine how and where it can be used:
 
-* A function taking no inputs, or taking scalar inputs only, and producing
-  a scalar output, is called a **scalar function** and it may be used whenever
-  a scalar expression is allowed. In particular, a scalar user-defined function may
-  only use the row context in which it is defined, and can only refer to
-  tables (and views) that are in the accessible schema.
-* A function taking no inputs, or taking at least one tabular input,
-  and producing a tabular output, is called a **tabular function** and it may be
-  used whenever a tabular expression is allowed. 
-  Note, all tabular parameters must appear before scalar parameters.
+* **Scalar function**: 
+	* A function with no inputs, or scalar inputs only, and producing a scalar output
+	* Used wherever a scalar expression is allowed. 
+	* May only use the row context in which it is defined, and can only refer to tables (and views) that are in the accessible schema.
+* **Tabular function**: 
+	* A function with no inputs, or at least one tabular input, and producing a tabular output.
+	* Used wherever a tabular expression is allowed. 
 
-An example for a scalar function:
+> [!NOTE]
+> All tabular parameters must appear before scalar parameters.
+
+Example of scalar function:
 
 ```kusto
 let Add7 = (arg0:long = 5) { arg0 + 7 };
@@ -51,7 +46,7 @@ range x from 1 to 10 step 1
 | extend x_plus_7 = Add7(x), five_plus_seven = Add7()
 ```
 
-An example for a tabular function that takes no arguments:
+Example of tabular function that takes no arguments:
 
 ```kusto
 let tenNumbers = () { range x from 1 to 10 step 1};
@@ -59,8 +54,7 @@ tenNumbers
 | extend x_plus_7 = x + 7
 ```
 
-An example for a tabular function that takes a tabular
-input and a scalar input (all tabular parameters must appear before scalar parameters):
+Example of a tabular function that uses a tabular input and a scalar input (all tabular parameters must appear before scalar parameters):
 
 ```kusto
 let MyFilter = (T:(x:long), v:long) {
@@ -74,9 +68,7 @@ MyFilter((range x from 1 to 10 step 1), 9)
 |9|
 |10|
 
-An example for a tabular function that takes a tabular
-input with no column specified. Any table can be passed
-to a function, no table's column can be referenced inside the function.
+Example of a tabular function that uses a tabular input with no column specified. Any table can be passed to a function, and no table's column can be referenced inside the function.
 
 ```kusto
 let MyDistinct = (T:(*)) {
@@ -95,19 +87,13 @@ MyDistinct((range x from 1 to 3 step 1))
 
 The declaration of a user-defined function provides:
 
-1. The **name** of the function
-2. The **schema** of the function (what parameters, if any, it accepts)
-3. The **body** of the function
+* Function **name**
+* Function **schema** (parameters it accepts, if any)
+* Function **body**
 
-Lambda functions do not have a name,
-and are bound to a name via a [let statement](../letstatement.md), so
-they can be regarded the same as user-defined stored functions.
-
-For example, the following declaration is for a lambda that
-accepts two arguments (a `string` called `s` and a `long` called
-`i`). It returns the product of the first (after converting it
-into a number) and the second. The lambda is bound to the
-name `f`:
+> [!TIP]
+> Lambda functions do not have a name and are bound to a name using a [let statement](../letstatement.md). Therefore, they can be regarded as user-defined stored functions.
+> Example: Declaration for a lambda that accepts two arguments (a `string` called `s` and a `long` called`i`). It returns the product of the first (after converting it into a number) and the second. The lambda is bound to the name `f`:
 
 ```kusto
 let f=(s:string, i:long) {
@@ -115,26 +101,28 @@ let f=(s:string, i:long) {
 };
 ```
 
-The **body** of a function includes:
+The function **body** includes:
 
-1. Precisely one expression, which provides the function's
-   return value (which can be a scalar value or a tabular
-   value).
-2. Any number (zero or more) of [let statements](../letstatement.md),
+* Exactly one expression, which provides the function's
+   return value (scalar or tabular value).
+* Any number (zero or more) of [let statements](../letstatement.md),
    whose scope is that of the function body. If specified,
    they must precede the expression defining the function's return value.
-3. Any number (zero or more) of [query parameters statements](../queryparametersstatement.md),
+* Any number (zero or more) of [query parameters statements](../queryparametersstatement.md),
    which declare query parameters used by the function. If specified,
    they must precede the expression defining the function's return value.
 
 > [!NOTE]
-> Other kinds of [query statements](../statements.md) (which are supported
-> at the query "top level" are not supported inside a function body.)
+> Other kinds of [query statements](../statements.md) which are supported
+> at the query "top level", are not supported inside a function body.
+
+### Examples of user-definted functions
+
 
 **Example: User-defined function that uses a let statement**
 
 The following example binds the name `Test` to a user-defined
-function (lambda) that in its turn makes use of three let
+function (lambda) that makes use of three let
 statements. The output is `70`:
 
 ```kusto
@@ -154,7 +142,7 @@ range x from 1 to Test1(10) step 1
 **Example: User-defined function that defines a default value for a parameter**
 
 The following example shows a function that accepts three arguments, the latter
-two of which have a default value and do not have to be present at the call site.
+two have a default value and do not have to be present at the call site.
 
 ```kusto
 let f = (a:long, b:string = "b.default", c:long = 0) {
@@ -192,7 +180,7 @@ union T, (T())
 ```
 
 A user-defined function that takes one or more scalar arguments can be invoked
-by using the table name, and a concrete argument list in parentheses:
+by using the table name and a concrete argument list in parentheses:
 
 ```kusto
 let f=(a:string, b:string) {
@@ -202,7 +190,7 @@ print f("hello", "world")
 ```
 
 A user-defined function that takes one or more table arguments (and any number
-of scalar arguments) can be invoked by using the table name, and a concrete argument list
+of scalar arguments) can be invoked using the table name and a concrete argument list
 in parentheses:
 
 ```
@@ -213,7 +201,7 @@ MyFilter((range x from 1 to 10 step 1), 9)
 ```
 
 The operator `invoke` can also be used to invoke a user-defined function that
-takes one or more table arguments and returns a table. This comes handy when
+takes one or more table arguments and returns a table. This is useful when
 the first concrete table argument to the function is the source of the `invoke`
 operator:
 
@@ -230,20 +218,20 @@ datatable (a:string) ["sad", "really", "sad"]
 Functions may provide default values to some of their parameters. The following
 rules apply:
 
-1. Default values may be provided for scalar parameters only.
-2. Default values are always literals (constants). They cannot be arbitrary
+* Default values may be provided for scalar parameters only.
+* Default values are always literals (constants). They cannot be arbitrary
    calculations.
-3. Parameters with no default value, if there are any, always preceded parameters
-   that do have a default value, if there are any.
-4. Callers must provide the value of all parameters with no default values,
-   arranged in the same order as in the function declaration.
-5. Callers do not need to provide the value for parameters with default values,
-   but may do so if they elect to.
-6. Callers may provide arguments in an order that does not match the parameters
-   order. To do so, they must name their arguments.
+* Parameters with no default value always precede parameters
+   that do have a default value.
+* Callers must provide the value of all parameters with no default values
+   arranged in the same order as the function declaration.
+* Callers do not need to provide the value for parameters with default values,
+   but may do so.
+* Callers may provide arguments in an order that does not match the parameters
+   order. If so, they must name their arguments.
 
-For example, the following returns a table with two identical records; note how
-in the first invocation of `f` the arguments are completely "scrambled", and
+The following example returns a table with two identical records; Note that
+in the first invocation of `f`, the arguments are completely "scrambled", and
 therefore each one is explicitly given a name:
 
 ```kusto
@@ -275,28 +263,27 @@ let T_notview = () { print x=2 };
 union T*
 ```
 
-## Restrictions on the use of user-defined functions
+## Restrictions user-defined functions usage
 
-The following restricts apply:
+The following restrictions apply:
 
-1. User-defined functions cannot pass into a 
+1 User-defined functions can't pass into
    [toscalar()](../toscalarfunction.md) invocation
    information that depends on the row-context in which the
    function is called.
 
-2. User-defined functions that return a tabular expression cannot
+2. User-defined functions that return a tabular expression can't
    be invoked with an argument that varies with the row context.
+   
+3. A function taking at least one tabular input can't be invoked on a remote cluster.
 
-3. A function taking at least one tabular input cannot be invoked on a remote cluster.
-
-In fact, the only place a user-defined function may be invoked
+The only place a user-defined function may be invoked
 with an argument that varies with the row context is when the
 user-defined function is composed of scalar functions only and
-does not make use of `toscalar()`.
+doesn't make use of `toscalar()`.
 
-These restrictions are best illustrated with some examples.
 
-**Restriction 1**
+**Example of Restriction 1**
 
 ```kusto
 // Supported:
@@ -323,7 +310,7 @@ let f = (hours:long) { toscalar(Table1 | summarize min(xdate) - hours*1h) };
 Table2 | where Column != 123 | project d = f(Column)
 ```
 
-**Restriction 2**
+**Example of Restriction 2**
 
 ```kusto
 // Not supported:
@@ -335,16 +322,12 @@ let f = (hours:long) { range x from 1 to hours step 1 | summarize make_list(x) }
 Table2 | where Column != 123 | project d = f(Column)
 ```
 
-## Features that are currently unsupported by user-defined functions
-
-For completeness, here are some commonly-requested features
-for user-defined functions that are currently not supported:
+## Features unsupported by user-defined functions
 
 1. **Function overloading**:
-   There is currently no way to overload a function (i.e.,
-   create multiple functions with the same name and different
+   Can't overload a function (for example, create multiple functions with the same name and different
    input schema).
 2. **Default values**:
    The default value for a scalar parameter to a function must be
-   a scalar literal (constant). Furthermore, stored functions cannot
+   a scalar literal (constant). Alos, stored functions can't
    have a default value of type `dynamic`.

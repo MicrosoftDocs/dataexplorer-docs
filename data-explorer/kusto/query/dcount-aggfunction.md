@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/07/2019
+ms.date: 04/15/2019
 ---
 # dcount() (aggregation function)
 
@@ -40,20 +40,18 @@ PageViewLog | summarize countries=dcount(country) by continent
 **Notes**
 
 The `dcount()` aggregation function is primarily useful for estimating the
-cardinality of huge sets. It trades performance for accuracy, and may therefore
-return a result that slightly varies between executions (since the order of
-input might have an effect on its output).
+cardinality of huge sets. It trades performance for accuracy, and therefore may
+return a result that varies between executions (order of
+inputs may have an effect on its output).
 
-To get an accurate count of distinct values of `V` grouped by `G`, one might use:
+To get an accurate count of distinct values of `V` grouped by `G`:
 
 ```kusto
 T | summarize by V, G | summarize count() by G
 ```
 
-This calculation, however, will require as much internal memory as there are
-distinct values of `V` multiplied by the number of distinct values of `G`;
-therefore, it might result in memory errors or large execution times. `dcount()`
-provides a fast and reliable alternative:
+This calculation will require much internal memory since distinct values of `V` are multiplied by the number of distinct values of `G`;
+Therefore, it may result in memory errors or large execution times. `dcount()`provides a fast and reliable alternative:
 
 ```kusto
 T | summarize dcount(B) by G | count
@@ -74,18 +72,18 @@ a "knob" that can be used to balance accuracy and execution time / memory size:
 |       3|     0.28|2<sup>17</sup>|
 |       4|      0.2|2<sup>18</sup>|
 
-The algorithm includes some provisions for doing a perfect count (zero error)
-if the set cardinality is small enough -- 1000 values when the accuracy level is `1`,
-and 8000 values if the accuracy level is `2`.
+Note: the "entry count" column is the number of 1-byte counters in the HLL
+implementation.
 
-The error bound above is in itself probabilistic, not a theoretical bound. The value
+The algorithm includes some provisions for doing a perfect count (zero error)
+if the set cardinality is small enough (1000 values when the accuracy level is `1`,
+and 8000 values if the accuracy level is `2`).
+
+The error bound is probabilistic, not a theoretical bound. The value
 is the standard deviation of error distribution (the sigma), and 99.7%
 of the estimations will have a relative error of under 3 times sigma.
 
 The following depicts the probability distribution function of the relative
-estimation error (in percents) for all supported accuracy settings:
+estimation error (in percentages) for all supported accuracy settings:
 
 ![alt text](./images/aggregations/hll-error-distribution.png "hll-error-distribution")
-
-Last, the "entry count" column above is the number of 1-byte counters in the HLL
-implementation.
