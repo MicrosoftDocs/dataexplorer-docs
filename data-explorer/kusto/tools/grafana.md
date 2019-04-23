@@ -1,19 +1,8 @@
----
-title: Kusto and Grafana - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto and Grafana in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: mblythe
-ms.service: data-explorer
-ms.topic: reference
-ms.date: 02/22/2019
----
-# Kusto and Grafana
+# Grafana and Azure Data Explorer
 
-Grafana is an analytics platform that enables you to query and visualize data, then create and share dashboards based on your visualizations.
-Grafana provides an `Azure Data Explorer (Kusto)` plugin, which enables you to connect to and visualize data from Kusto.
+Grafana is an analytics platform that enables you to query and visualize data, and then create and share dashboards based on your visualizations.
+Grafana provides an **Azure Data Explorer (Kusto)** plugin, which enables you to connect to and visualize data from Azure Data Explorer.
 
-- The plugin can be found [here](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation).
+* [Azure Data Explorer plugin for Grafana](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation).
 
-- A complete quick-start guide can be found [here](https://docs.microsoft.com/en-us/azure/data-explorer/grafana).
+* [Visualize data from Azure Data Explorer in Grafana](https://docs.microsoft.com/en-us/azure/data-explorer/grafana).
