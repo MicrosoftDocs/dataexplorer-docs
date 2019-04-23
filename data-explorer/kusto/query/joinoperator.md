@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/20/2019
+ms.date: 04/18/2019
 ---
 # join operator
 
@@ -84,7 +84,6 @@ For best performance:
 
 * Use `where` and `project` to reduce the numbers of rows and columns in the input tables, before the `join`. 
 * If one table is always smaller than the other, use it as the left (piped) side of the join.
-* The columns for the join match must have the same name. Use the project operator if necessary to rename a column in one of the tables.
 
 **Example**
 
