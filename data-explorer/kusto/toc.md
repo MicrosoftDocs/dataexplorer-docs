@@ -416,7 +416,7 @@
 
 
 
-### [GDPR and data purge](./concepts/compliance-gdpr.md)
+### [Data purge](./concepts/compliance-gdpr.md)
 
 
 
