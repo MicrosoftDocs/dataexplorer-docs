@@ -131,6 +131,7 @@
 ### [acos()](./query/acosfunction.md)
 ### [ago()](./query/agofunction.md)
 ### [array_concat()](./query/arrayconcatfunction.md)
+### [array_iif()](./query/arrayifffunction.md)
 ### [array_length()](./query/arraylengthfunction.md)
 ### [array_slice()](./query/arrayslicefunction.md)
 ### [array_split()](./query/arraysplitfunction.md)
@@ -416,7 +417,7 @@
 
 
 
-### [Data purge](./concepts/compliance-gdpr.md)
+### [Data purge](./concepts/data-purge.md)
 
 
 
