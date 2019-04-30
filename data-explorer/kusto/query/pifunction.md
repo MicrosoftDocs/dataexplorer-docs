@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 04/25/2019
 ---
 # pi()
 
-Returns the constant value of Pi (π).
+Returns the constant value of Pi.
 
 **Syntax**
 
@@ -19,4 +19,4 @@ Returns the constant value of Pi (π).
 
 **Returns**
 
-* The value of Pi.
+* The double value of Pi (3.1415926...)

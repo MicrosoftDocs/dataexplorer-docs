@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/29/2019
+ms.date: 04/28/2019
 ---
 # Scalar Functions
 
@@ -71,6 +71,7 @@ ms.date: 03/29/2019
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[array_concat()](arrayconcatfunction.md)|Concatenates a number of dynamic arrays to a single array.|
+|[array_iif()](arrayifffunction.md)|Applies element-wise iif function on arrays.|
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
 |[array_slice()](arrayslicefunction.md)|Extracts a slice of a dynamic array.|
 |[array_split()](arraysplitfunction.md)|Builds an array of arrays splitted from the input array.|
