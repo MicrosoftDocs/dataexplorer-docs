@@ -69,30 +69,30 @@ is sufficiently large, the process will effectively re-ingest all the data in th
 
 ## Purge limitations and considerations
 
-1. **The purge process is final and irreversible**. It isn't possible to "undo" this process or recover
+* **The purge process is final and irreversible**. It isn't possible to "undo" this process or recover
    data that has been purged. Therefore, commands such as [undo table drop](../management/tables.md#undo-drop-table)
    cannot recover purged data, and rollback of the data to a previous version cannot
    go to "before" the latest purge command.
 
-1. To avoid mistakes, it's recommended to perform a dry-run using the [engine `whatif` command](#purge-whatif-command) 
+* To avoid mistakes, it's recommended to perform a dry-run using the [engine `whatif` command](#purge-whatif-command) 
 prior to executing the `.purge` command to ensure that the results match the expected outcome.
 
-1. As a precautionary measure, the purge process is disabled, by default, on all clusters.
+* As a precautionary measure, the purge process is disabled, by default, on all clusters.
    Enabling the purge process is a one-time operation that requires opening a
    [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview); please specify that you want
    the `EnabledForPurge` feature to be turned on.
 
-1. The `.purge` command is executed against the Data Management endpoint: 
+* The `.purge` command is executed against the Data Management endpoint: 
    `https://ingest-[YourClusterName].kusto.windows.net`.
    The command requires [database admin](../management/access-control/role-based-authorization.md)
    permissions on the relevant databases. 
-1. Due to the purge process performance impact, and to guarantee that
+* Due to the purge process performance impact, and to guarantee that
    [purge guidelines](#purge-guidelines) have been followed, Kusto throttles
    the purge process at 50 `.purge` commands per 24 hours.
    Therefore, the caller is expected to modify the data schema so that
    minimal tables include relevant data, and batch commands per table to reduce the significant COGS impact of the
    purge process. The throttling helps avoid the fixed per-table overhead in managing the purge process. 
-1. The `predicate` parameter of the [.purge](#purge-table-tablename-records-command) command is used to specify which records to purge.
+* The `predicate` parameter of the [.purge](#purge-table-tablename-records-command) command is used to specify which records to purge.
 `Predicate` size is limited to 63 KB. When constructing the `predicate`:
 	* Use the ['in' operator](../query/inoperator.md), e.g. `where [ColumnName] in ('Id1', 'Id2', .. , 'Id1000')`. 
 		* Note the limits of the ['in' operator](../query/inoperator.md) (list can contain up to `1,000,000` values).
@@ -186,15 +186,15 @@ Purge command may be invoked in two ways for differing usage scenarios:
 
 To trigger a purge in a single-step activation scenario, run the following command:
 
-	```kusto
-	.purge table MyTable records in database MyDatabase with (noregrets='true') <| where CustomerId in ('X', 'Y')
-	```
+```kusto
+.purge table MyTable records in database MyDatabase with (noregrets='true') <| where CustomerId in ('X', 'Y')
+```
 
-	**Output**
+**Output**
 
-	|OperationId |DatabaseName |TableName |ScheduledTime |Duration |LastUpdatedOn |EngineOperationId |State |StateDetails |EngineStartTime |EngineDuration |Retries |ClientRequestId |Principal
-	|--|--|--|--|--|--|--|--|--|--|--|--|--|--
-	|c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
+|OperationId |DatabaseName |TableName |ScheduledTime |Duration |LastUpdatedOn |EngineOperationId |State |StateDetails |EngineStartTime |EngineDuration |Retries |ClientRequestId |Principal
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+|c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
 
 ### Cancel purge operation command
 
@@ -318,13 +318,12 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 	 .purge table [TableName] in database [DatabaseName] allrecords with (verificationtoken='<verification token from step #1>')
 	 ```
 
-	 |Parameters  |Description  |
+	|Parameters  |Description  |
 	|---------|---------|
 	|**DatabaseName**   |   Name of the database.      |
 	|**TableName**     |     Name of the table.    |
 	|**noregrets**    |     If set, triggers a single-step activation.    |
-	|**verificationtoken**     |  In two-step activation scenario (**noregrets** isn't set), this token can be used to execute the second step and commit the action. 
-	If **verificationtoken** isn't specified, it will trigger the command's first step, in which a token is returned, to pass back to the command and perform the command's step #2.
+	|**verificationtoken**     |  In two-step activation scenario (**noregrets** isn't set), this token can be used to execute the second step and commit the action. If **verificationtoken** isn't specified, it will trigger the command's first step, in which a token is returned, to pass back to the command and perform the command's step #2.|
 
 #### Example: Two-step purge
 
