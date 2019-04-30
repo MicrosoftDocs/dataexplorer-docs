@@ -417,7 +417,7 @@
 
 
 
-### [Data purge](./concepts/compliance-gdpr.md)
+### [Data purge](./concepts/data-purge.md)
 
 
 
