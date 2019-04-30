@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/27/2019
+ms.date: 04/30/2019
 ---
 # Export data to storage
 
@@ -55,7 +55,8 @@ external storage, specified by a [storage connection string](../../api/connectio
 |`includeHeaders`|`string`|For `csv`/`tsv` output, controls the generation of column headers. Can be one of `none` (default; no header lines emitted), `all` (emit a header line into every storage artifact), or `firstFile` (emit a header line into the first storage artifact only).|
 |`fileExtension` |`string`|Indicates the "extension" part of the storage artifact (e.g. `.csv` or `.tsv`) Note that if compression is used, `.gz` will be appended as well.|
 |`namePrefix`    |`string`|Indicates a prefix to add to each generated storage artifact name. A random prefix will be used if left unspecified.       |
-|`encoding`      |`string`|Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`.                                                      |
+|`encoding`      |`string`|Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`.                                                      
+|`compressionType`|`string`|Indicates the type of compression to use: `gzip` (default, if `compressed` is specified) or `snappy` (supported only for `parquet` format).     
 |`distributed`   |`bool`  |Indicates that the export writes from all nodes executing the query in parallel. (Defaults to `true`.)                     |
 |`persistDetails`|`bool`  |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller does not require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
 

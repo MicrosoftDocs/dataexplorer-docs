@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 04/30/2019
 ---
 # Querying Kusto using Azure Notebooks
 
@@ -39,7 +39,7 @@ installed, use:
 
 Additional information about getting started with KQL magic:
 
-* [Getting Started with KQL magic for Kusto](https://mybinder.org/v2/gh/Microsoft/jupyter-KQL magic/master?filepath=notebooks%2FQuickStart.ipynb)
+* [Getting Started with KQL magic for Kusto](https://mybinder.org/v2/gh/Microsoft/jupyter-KQLmagic/master?filepath=notebooks%2FQuickStart.ipynb)
 * [Getting Started with KQL magic for Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb)
 * [Getting Started with KQL magic for Log Analytics](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb)
 * [More information on Jupyter magics](https://ipython.readthedocs.io/en/stable/interactive/magics.html)
