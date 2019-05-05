@@ -64,8 +64,8 @@
 #### [narrow](./query/narrowplugin.md)
 #### [pivot](./query/pivotplugin.md)
 #### [preview](./query/previewplugin.md)
-
-
+#### [python](./query/pythonplugin.md)
+#### [R](./query/rplugin.md)
 #### [rolling_percentile](./query/rolling-percentile-plugin.md)
 #### [sql_request](./query/sqlrequestplugin.md)
 ### [extend operator](./query/extendoperator.md)
@@ -395,7 +395,7 @@
 #### [series_stats()](./query/series-statsfunction.md)
 #### [series_stats_dynamic()](./query/series-stats-dynamicfunction.md)
 #### [series_subtract()](./query/series-subtractfunction.md)
-
+### [Python plugin](./query/pythonplugin.md)
 
 ## [User Analytics](./query/useranalytics.md)
 ### [Activity Counts Metrics (total values, distinct values, new values)](./query/activity-counts-metrics-plugin.md)

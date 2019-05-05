@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 05/02/2019
 ---
 # HowTo: Data Ingestion without Kusto.Ingest Library
 
@@ -138,14 +138,14 @@ internal static IngestionResourcesSnapshot RetrieveIngestionResources(string ing
         tokens = responseJson.SelectTokens("Tables[0].Rows[?(@.[0] == 'SecuredReadyForAggregationQueue')]");
         foreach (var token in tokens)
         {
-            ingestionResources.IngestionQueues.Add((string) token.Last);
+            ingestionResources.IngestionQueues.Add((string) token[1]);
         }
 
         // Temp storage containers
         tokens = responseJson.SelectTokens("Tables[0].Rows[?(@.[0] == 'TempStorage')]");
         foreach (var token in tokens)
         {
-            ingestionResources.TempStorageContainers.Add((string)token.Last);
+            ingestionResources.TempStorageContainers.Add((string)token[1]);
         }
 
         // Failure notifications queue
