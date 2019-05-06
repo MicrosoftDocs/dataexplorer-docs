@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/05/2019
+ms.date: 05/06/2019
 ---
 # Python plugin (Preview)
 
@@ -29,7 +29,7 @@ The plugin's runtime is hosted in  a sandbox, an isolated and secure Python envi
    Python script as the reserved `kargs` dictionary (see [Reserved Python variables](#reserved-python-variables)).
 * *hint.distribution*: An optional hint for the plugin's execution to be distributed across multiple cluster nodes.
    Default: `single`.
-    * `single`: A single instance of the script will run over the entire query data
+    * `single`: A single instance of the script will run over the entire query data.
     * `per_node`: If the query before the Python block is distributed, then an instance of the script will run on each node over the data that it contains.
 
 ### Reserved Python variables

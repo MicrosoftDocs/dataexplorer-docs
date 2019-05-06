@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/05/2019
+ms.date: 05/06/2019
 ---
 # R plugin (Preview)
 
-Runs a user-defined-function (UDF) using an R script. The R script gets tabular data as its input, and is expected to produce a tabular output.
+The R plugin runs a user-defined-function (UDF) using an R script. The R script gets tabular data as its input, and is expected to produce a tabular output.
 The plugin's runtime is hosted in  a sandbox, an isolated and secure environment,  running on the cluster's nodes.
 
 ### Syntax
@@ -22,13 +22,13 @@ The plugin's runtime is hosted in  a sandbox, an isolated and secure environment
 
 * *output_schema*: A `type` literal that defines the output schema of the tabular data, returned by the R code.
     * The format is: `typeof(`*ColumnName*`:` *ColumnType* [, ...]`)`, for example: `typeof(col1:string, col2:long)`.
-    * To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`
+    * To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`.
 * *script*: A `string` literal that is the valid R script to be executed.
 * *script_parameters*: An optional `dynamic` literal which is a property bag of name/value pairs to be passed to the
    R script as the reserved `kargs` dictionary (see [Reserved R variables](#reserved-r-variables)).
 * *hint.distribution*: An optional hint for the plugin's execution to be distributed across multiple cluster nodes.
    Default: `single`.
-    * `single`: A single instance of the script will run over the entire query data
+    * `single`: A single instance of the script will run over the entire query data.
     * `per_node`: If the query before the R block is distributed, an instance of the script will run on each node over the data that it contains.
 
 ### Reserved R variables
@@ -53,7 +53,7 @@ The following variables are reserved for interaction between Kusto query languag
 ### Notes and Limitations
 
 * The R sandbox image is based on *R 3.4.4 for Windows*, and includes packages from [Anaconda's R Essentials bundle](https://docs.anaconda.com/anaconda/packages/r-language-pkg-docs/).
-* The R sandbox limits accessing the network, therefore the R code cannot dynamically install additional packages that are
+* The R sandbox limits accessing the network, therefore the R code can't dynamically install additional packages that are
   not included in the image.Open a **New support request** in the Azure portal  if you need specific packages.
 
 
@@ -107,7 +107,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 * Use [externaldata operator](externaldata-operator.md) to obtain the content of
   a script that you've stored in an external location, such as Azure blob storage, a public GitHub repository, etc.
   
-  Here's an example for doing so:
+  For example:
 
     ```kusto    
     let script = 

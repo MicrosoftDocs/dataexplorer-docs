@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/26/2019
+ms.date: 05/06/2019
 ---
 ## Virtual Network deployment
 
@@ -20,5 +20,6 @@ Azure Data Explorer cluster has the following IP addresses for each service (Eng
 * Private IP: Used for accessing the cluster inside the VNet.
 * Public IP: Used for accessing the cluster from outside the VNet (e.g. management and monitoring) and as a source address for outbound connections initiated from the cluster.
 
-> Note: The feature is still in private preview, please  fill this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6nDlY4aY3NAipxPJw0yfjhUNDRSOFpXQURZTFZDMEhEVk5HTzhJNjZYRi4u)  to deploy ADX cluster into your VNet.
+> [!NOTE]
+> The feature is still in private preview, please  fill this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6nDlY4aY3NAipxPJw0yfjhUNDRSOFpXQURZTFZDMEhEVk5HTzhJNjZYRi4u)  to deploy ADX cluster into your VNet.
 
