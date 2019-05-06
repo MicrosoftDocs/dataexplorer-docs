@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/26/2018
+ms.date: 05/05/2019
 ---
 # HowTo: Data Ingestion with Kusto.Ingest Library
 This article presents sample code that makes use of Kusto.Ingest client library.
@@ -56,10 +56,12 @@ static void Main(string[] args)
     var db = "KustoIngestClientDemo";
     var table = "Table1";
     var mappingName = "Table1_mapping_1";
+    var serviceNameAndRegion = "clusterNameAndRegion"; // For example, "mycluster.westus"
+    var authority = "AAD Tenant or name"; // For example, "microsoft.com"
 
     // Set up table
     var kcsbEngine =
-        new KustoConnectionStringBuilder($"https://{serviceNameAndRegion}.kusto.windows.net").WithAadUserPromptAuthentication(authority: "authority: {AAD TenantID or name}");
+        new KustoConnectionStringBuilder($"https://{serviceNameAndRegion}.kusto.windows.net").WithAadUserPromptAuthentication(authority: $"{authority}");
 
     using (var kustoAdminClient = KustoClientFactory.CreateCslAdminProvider(kcsbEngine))
     {
@@ -89,7 +91,7 @@ static void Main(string[] args)
 
     // Create Ingest Client
     var kcsbDM =
-        new KustoConnectionStringBuilder($"https://ingest-{serviceNameAndRegion}.kusto.windows.net").WithAadUserPromptAuthentication(authority: "authority: {AAD TenantID or name}");
+        new KustoConnectionStringBuilder($"https://ingest-{serviceNameAndRegion}.kusto.windows.net").WithAadUserPromptAuthentication(authority: $"{authority}");
 
     using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(kcsbDM))
     {

@@ -7,12 +7,12 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/30/2019
+ms.date: 05/05/2019
 ---
 # Data purge
 
 >[!Note]
-> This article provides steps for how to delete personal data from the device or service and can be used to support your obligations under the GDPR. If you�re looking for general information about GDPR, see the [GDPR section of the Service Trust portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+> This article provides steps for how to delete personal data from the device or service and can be used to support your obligations under the GDPR. If you're looking for general information about GDPR, see the [GDPR section of the Service Trust portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
 
 
 
@@ -113,7 +113,9 @@ To reduce purge execution time:
 * Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../concepts/capacitypolicy.md#extents-purge-rebuild-capacity). Changing this parameter requires opening a [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 
 ## Trigger the purge process
-Purge execution is invoked by running [purge table *TableName* records](#purge-table-tablename-records-command) command on the Data Management endpoint (**https://ingest-[YourClusterName].kusto.windows.net**).
+
+>[!Note]
+>Purge execution is invoked by running [purge table *TableName* records](#purge-table-tablename-records-command) command on the Data Management endpoint (**https://ingest-[YourClusterName].kusto.windows.net**).
 
 ### Purge table *TableName* records command
 
@@ -206,13 +208,13 @@ It can only be applied to in-queue requests (not yet dispatched to the engine no
 
 **Syntax**
 
- ```
+```kusto
  .cancel purge <OperationId>
  ```
 
 **Example**
 
- ```
+```kusto
  .cancel purge aa894210-1c60-4657-9d21-adb2887993e1
  ```
 
@@ -227,7 +229,8 @@ If the attempt is successful, operation state is updated to 'Abandoned', otherwi
 
 ## Track purge operation status 
 
-Purge operations can be tracked with the [show purges](#show-purges-command) command, executed against the Data Management endpoint(**https://ingest-[YourClusterName].kusto.windows.net**).
+>[!Note]
+>Purge operations can be tracked with the [show purges](#show-purges-command) command, executed against the Data Management endpoint(**https://ingest-[YourClusterName].kusto.windows.net**).
 
 Status = 'Completed' indicates successful completion of the first phase of the purge operation, i.e. records are soft-deleted and are no longer available for querying. Customers are **not** expected to track and verify the second phase (hard-delete) completion. This phase is monitored internally by Kusto.
 
@@ -295,7 +298,9 @@ Purging a table includes dropping the table, and marking it as purged so that th
 Dropping a table without purging it doesn't delete all its storage artifacts (deleted according to the hard retention policy initially set on the table). 
 The `purge table allrecords` command is quick and efficient and is much preferable to the purge records process, if applicable for your scenario. 
 Throttling limitation is not applied to `purge table allrecords` command.
-The command is invoked by running [purge table *TableName* allrecords](#purge-table-tablename-allrecords-command) command on the Data Management endpoint (**https://ingest-[YourClusterName].kusto.windows.net**).
+
+>[!Note]
+>The command is invoked by running [purge table *TableName* allrecords](#purge-table-tablename-allrecords-command) command on the Data Management endpoint (**https://ingest-[YourClusterName].kusto.windows.net**).
 
 ### purge table *TableName* allrecords command
 
