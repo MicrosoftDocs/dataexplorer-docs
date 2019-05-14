@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/14/2019
+ms.date: 05/06/2019
 ---
 # MS-TDS clients and Kusto
 
@@ -44,6 +44,18 @@ Create ODBC data source:
 7. Can leave defaults for all other settings in the following tabs.
 8. `Finish` button opens data source summary dialog where the connection can be tested.
 9. ODBC source can now be used with applications.
+
+If ODBC application can accept connection string instead or in addition to DSN, use the following connection string:
+```powershell
+"Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
+```
+
+Some ODBC applications do not work well with NVARCHAR(MAX) type. The common workaround used for such application is to cast returned data to NVARCHAR(n), with some value for n, e.g. NVARCHAR(4000). Such workaround would not work for Kusto, since Kusto has only one string type and for SQL clients it is encoded as NVARCHAR(MAX). Kusto offers different workaround for such applications. It is possible to configure Kusto to encode all strings as NVARCHAR(n) via connection string. The language feild in connection string can be used to specify tuning options in a format: `language@OptionName1:OptionValue1,OptionName2:OptionValue2`. 
+
+For example, the following connection string will instruct Kusto to encode strings as NVARCHAR(8000):
+```powershell
+"Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated,Language=any@MaxStringSize:8000"
+```
 
 ### PowerShell
 

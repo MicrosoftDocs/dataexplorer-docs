@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/18/2019
+ms.date: 05/11/2019
 ---
 # join operator
 
@@ -36,7 +36,8 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
   |Equality by name |*ColumnName*                                    |`where` *LeftTable*.*ColumnName* `==` *RightTable*.*ColumnName*|
   |Equality by value|`$left.`*LeftColumn* `==` `$right.`*RightColumn*|`where` `$left.`*LeftColumn* `==` `$right.`*RightColumn*       |
 
-**Note:** In case of 'equality by value', the column names *must* be qualified with the applicable owner table denoted by `$left` and `$right` notations.
+> [!NOTE]
+> In case of 'equality by value', the column names *must* be qualified with the applicable owner table denoted by `$left` and `$right` notations.
 
 * *JoinParameters*: Zero or more (space-separated) parameters in the form of
   *Name* `=` *Value* that control the behavior
@@ -47,6 +48,11 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
   |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|                                             |
   |`hint.remote`  |`auto`, `left`, `local`, `right`              |See [Cross-Cluster Join](joincrosscluster.md)|
   |`hint.strategy`|Execution hints                               |See [Join hints](#join-hints)                |
+
+> [!WARNING]
+> The default join flavor, if `kind` is not specified, is `innerunique`. This is different than some other
+> analytics products, which have `inner` as the default flavor. Please read carefully [below](#join-flavors)
+> to understand the differences between the different kinds and to make sure the query yields the intended results.
 
 **Returns**
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/29/2018
+ms.date: 05/06/2019
 ---
 # MS-TDS (T-SQL support)
 
@@ -24,6 +24,8 @@ by Kusto.
 
 See [MS-TDS clients and Kusto](./clients.md) for examples of how to
 use Kusto from some well-known clients using MS-TDS/T-SQL.
+
+See [Kusto as linked server to SQL server](./linkedserver.md) configuring Kusto cluster as linked server to SQL server on-premises.
 
 See [MS-TDS with Azure Active Directory](./aad.md) for more details on using AAD via TDS for connecting to Kusto.
 
