@@ -227,6 +227,7 @@
 ### [pack_all()](./query/packallfunction.md)
 ### [pack_array()](./query/packarrayfunction.md)
 ### [pack_dictionary()](./query/packdictionaryfunction.md)
+### [parse_csv()](./query/parsecsvfunction.md)
 ### [parse_ipv4()](./query/parse-ipv4function.md)
 ### [parse_json()](./query/parsejsonfunction.md)
 ### [parse_path()](./query/parsepathfunction.md)
@@ -529,6 +530,7 @@
 ### [T-SQL](./api/tds/t-sql.md)
 ### [KQL over TDS](./api/tds/tdskql.md)
 ### [Clients](./api/tds/clients.md)
+### [Linked Server](./api/tds/linkedserver.md)
 ### [AAD](./api/tds/aad.md)
 ### [Known issues](./api/tds/sqlknownissues.md)
 
@@ -575,10 +577,10 @@
 ## [Tools overview](./tools/index.md)
 
 ## Ad-hoc query
-
 ### [Kusto.Explorer](./tools/kusto-explorer.md)
 #### [Keyboard shortcuts](./tools/kusto-explorer-shortcuts.md)
 ### [Web UI](https://docs.microsoft.com/azure/data-explorer/web-query-data)
+### [Kusto.Cli](./tools/kusto-cli.md)
 
 ## Visualizations, dashboards, and reporting
 

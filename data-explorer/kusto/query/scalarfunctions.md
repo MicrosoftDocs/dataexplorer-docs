@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/28/2019
+ms.date: 05/12/2019
 ---
 # Scalar Functions
 
@@ -226,6 +226,7 @@ ms.date: 04/28/2019
 |[isnotempty()](isnotemptyfunction.md)|Returns true if the argument is not an empty string nor it is a null.|
 |[isnotnull()](isnotnullfunction.md)|Returns true if the argument is not null.|
 |[isnull()](isnullfunction.md)|Evaluates its sole argument and returns a bool value indicating if the argument evaluates to a null value.|
+|[parse_csv()](parsecsvfunction.md)|Splits a given string representing comma separated values and returns a string array with these values.|
 |[parse_ipv4()](parse-ipv4function.md)|Converts input to integener (signed 64-bit) number representation.|
 |[parse_json()](parsejsonfunction.md)|Interprets a string as a JSON value) and returns the value as dynamic.|
 |[parse_url()](parseurlfunction.md)|Parses an absolute URL string and returns a dynamic object contains all parts of the URL.|
