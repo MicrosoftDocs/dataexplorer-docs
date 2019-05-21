@@ -7,11 +7,12 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 05/21/2019
 ---
 # activity_counts_metrics plugin
 
-Calculates useful activity metrics (total count values, distinct count values, distinct count of new values, aggregated distinct count) for each time window compared/aggregated to/with all previous time windows.
+Calculates useful activity metrics (total count values, distinct count values, distinct count of new values, aggregated distinct count) for each time window compared/aggregated to/with *all* previous time windows 
+(unlike [activity_metrics plugin](activity-metrics-plugin.md) in which every time window is compared to its previous time window only).
 
 ```kusto
 T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)

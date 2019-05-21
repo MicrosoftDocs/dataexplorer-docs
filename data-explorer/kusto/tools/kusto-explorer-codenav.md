@@ -21,4 +21,5 @@ You can navigate to the definition of the current symbol using `F12` or `Alt`+`H
 
 You can obtain all references of the current symbol using `Ctrl`+`F12` short-cut.
 
+
 ![alt text](./Images/KustoTools-KustoExplorer/ke-codenav-references.png "code-navigation-references")

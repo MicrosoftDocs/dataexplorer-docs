@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/17/2019
+ms.date: 05/21/2019
 ---
 # Python plugin (Preview)
 
