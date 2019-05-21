@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/05/2019
+ms.date: 05/20/2019
 ---
 # partition operator
 
@@ -18,11 +18,15 @@ of all sub-queries.
 
 ```kusto
 T | partition by Col1 ( top 10 by MaxValue )
+
+T | partition by Col1 { U | where Col2=toscalar(Col1) }
 ```
 
 **Syntax**
 
-*T* `|` `partition` [*PartitionParameters*] `by` *Column* `(` *Subquery* `)`
+*T* `|` `partition` [*PartitionParameters*] `by` *Column* `(` *ContextualSubquery* `)`
+
+*T* `|` `partition` [*PartitionParameters*] `by` *Column* `{` *Subquery* `}`
 
 **Arguments**
 
@@ -31,8 +35,9 @@ T | partition by Col1 ( top 10 by MaxValue )
 * *Column*: The name of a column in *T* whose values determine how the input table
   is to be partitioned. See **Notes** below.
 
-* *Subquery*: A tabular expression that gets evaluated for each partition of the
-  input, and whose output is returned by the operator.
+* *ContextualSubquery*: A tabular expression, which source is the source of the `partition` operator, scoped for a single *key* value.
+
+* *Subquery*: A tabular expression without source. The *key* value can be obtained via `toscalar()` call.
 
 * *PartitionParameters*: Zero or more (space-separated) parameters in the form of:
   *Name* `=` *Value* that control the behavior
@@ -113,6 +118,28 @@ StormEvents
 |Public|6157|
 |Emergency Manager|4900|
 |COOP Observer|3039|
+
+**Example: query-time partitioning**
+
+The following example shows how query can be partitioned into N=10 partitions,
+where each partition calculates its own Count, and all later summarized into TotalCount.
+
+```kusto
+let N = 10;                 // Number of query-partitions
+range p from 1 to N step 1  // 
+| partition by p            // Run the sub-query partitioned 
+{
+    StormEvents 
+    | where hash(EventId, N) == toscalar(p) // Use toscalar() to fetch partition key value
+    | summarize Count = count()
+}
+| summarize TotalCount=sum(Count) 
+```
+
+|TotalCount|
+|---|
+|53137|
+
 
 **Example: partition-reference**
 

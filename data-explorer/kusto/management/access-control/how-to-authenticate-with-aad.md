@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/02/2019
+ms.date: 05/16/2019
 ---
 # How-To: Authenticate with AAD for Kusto Access
 
@@ -98,10 +98,19 @@ AAD has a number of endpoints for authentication:
 ## AAD token cache
 
 When using the Kusto SDK, the AAD tokens are stored on the local machine in a
-per-user token cache (a file called `%APPDATA%\Kusto\tokenCache.data` which can
+per-user token cache (a file called **%APPDATA%\Kusto\tokenCache.data** which can
 only be accessed or decrypted by the signed-in user.) The cache is inspected
 for tokens before prompting the user for credentials, thus greatly reducing the
 number of times a user has to enter credentials.
+
+> [!NOTE]
+> The AAD token cache reduces the number of interactive prompts that a user would
+> be presented with accessing Kusto, but does not reduce them complete. Additionally,
+> users cannot anticipate in advance when they will be prompted for credentials.
+> This means that one must not attempt to use a user account to access Kusto if
+> there's need to support non-interactive logons (such as when scheduling tasks
+> for example), because when the time comes for prompting the logged on user for
+> credentials that prompt will fail if running under non-interactive logon.
 
 
 

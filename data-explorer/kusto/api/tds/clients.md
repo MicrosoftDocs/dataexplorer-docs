@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/06/2019
+ms.date: 05/15/2019
 ---
 # MS-TDS clients and Kusto
 
@@ -50,7 +50,7 @@ If ODBC application can accept connection string instead or in addition to DSN, 
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
 ```
 
-Some ODBC applications do not work well with NVARCHAR(MAX) type. The common workaround used for such application is to cast returned data to NVARCHAR(n), with some value for n, e.g. NVARCHAR(4000). Such workaround would not work for Kusto, since Kusto has only one string type and for SQL clients it is encoded as NVARCHAR(MAX). Kusto offers different workaround for such applications. It is possible to configure Kusto to encode all strings as NVARCHAR(n) via connection string. The language feild in connection string can be used to specify tuning options in a format: `language@OptionName1:OptionValue1,OptionName2:OptionValue2`. 
+Some ODBC applications do not work well with NVARCHAR(MAX) type (see https://docs.microsoft.com/en-us/sql/relational-databases/native-client/features/using-large-value-types?view=sql-server-2017#sql-server-native-client-odbc-driver for more details). The common workaround used for such application is to cast returned data to NVARCHAR(n), with some value for n, e.g. NVARCHAR(4000). Such workaround would not work for Kusto, since Kusto has only one string type and for SQL clients it is encoded as NVARCHAR(MAX). Kusto offers different workaround for such applications. It is possible to configure Kusto to encode all strings as NVARCHAR(n) via connection string. The language feild in connection string can be used to specify tuning options in a format: `language@OptionName1:OptionValue1,OptionName2:OptionValue2`. 
 
 For example, the following connection string will instruct Kusto to encode strings as NVARCHAR(8000):
 ```powershell
@@ -204,7 +204,7 @@ java.lang.System.clearProperty('javax.xml.transform.TransformerFactory')
 
 > This resets the *TransformerFactory* to the default (MATLAB usually overloads this with Saxon, but this is incompatible with ADAL4J).
 
-To connect to the Azure TDS endpoint submit the following command (MATLAB command window):
+To connect to the Kusto TDS endpoint submit the following command (MATLAB command window):
 
 ```s
 conn = database('<<KUSTO_DATABASE>>','<<AAD_USER>>','<<USER_PWD>>','com.microsoft.sqlserver.jdbc.SQLServerDriver',['jdbc:sqlserver://<<MYCLUSTER>>.kusto.windows.net:1433;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword;database='])

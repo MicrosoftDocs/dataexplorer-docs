@@ -497,6 +497,7 @@
 ### [Commands](./management/commands.md)
 ### [Commands and Queries](./management/commands-and-queries.md)
 ### [Ingestion Failures](./management/ingestionfailures.md)
+### [Operations](./management/operations.md)
 
 ## [Access Control](./management/access-control/index.md)
 ### [Identities](./management/access-control/principals-and-identity-providers.md)
@@ -579,6 +580,9 @@
 ## Ad-hoc query
 ### [Kusto.Explorer](./tools/kusto-explorer.md)
 #### [Keyboard shortcuts](./tools/kusto-explorer-shortcuts.md)
+#### [Code Refactoring](./tools/kusto-explorer-refactor.md)
+#### [Code Navigation](./tools/kusto-explorer-codenav.md)
+#### [Code Analyzer](./tools/kusto-explorer-code-analyzer.md)
 ### [Web UI](https://docs.microsoft.com/azure/data-explorer/web-query-data)
 ### [Kusto.Cli](./tools/kusto-cli.md)
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/12/2019
+ms.date: 05/15/2019
 ---
 # External tables commands (preview)
 
@@ -124,14 +124,16 @@ Returns the properties of the dropped table. See [.show external tables](#show-e
 
 ## External Tables in Azure Storage
 
-The following commands are specific to External Tables located in Azure Storage. 
+The following command describes how to create an External Tables located in Azure Storage / Azure Data Lake. 
+Location can be Azure Blob Storage, Azure Data Lake Store Gen1 and Azure Data Lake Store Gen2. 
+Please refer to [storage connection strings](../api/connection-strings/storage.md) on how to create the connection string for each of these options. 
 
-### .create or alter external blob table
+### .create or alter external table
 
 **Syntax**
 
 (`.create` | `.alter`) `external` `table` *TableName* ([columnName:columnType], ...)<br>
-`kind` `=` `blob` <br>
+`kind` `=` (`blob` | `adl`)  <br>
 [`partition` [`format_datetime` = *DateTimePartitionFormat*] `by` `bin(`*TimestampColumnName*`,` *PartitionByTimeSpan*`)`]<br>
 `dataformat` `=` *Format* <br>
 `(` <br>*StorageConnectionString* [`,` ...] <br>`)`
@@ -151,7 +153,7 @@ e.g., if partition by is 1d, structure would be "yyyy/MM/dd". If it's 1h, struct
 * *TimestampColumnName* - a datetime column, based on which the table is partitioned (optional). Timestamp column must exist both in the external table schema definition, 
 and in the output of the export query, when exporting to the external table. 
 * *PartitionByTimeSpan* - a timespan literal to partition by. 
-* *StorageConnectionString* - One or several paths to Azure Blob Storage blob containers (or virtual folders under blob containers), including credentials. See [storage connection strings](../api/connection-strings/storage.md) for details. It is highly recommended to provide more than a single storage account to avoid storage throttling if [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided. 
+* *StorageConnectionString* - One or several paths to Azure Blob Storage blob containers / Azure Data Lake Store file systems (or virtual directories / folders), including credentials. See [storage connection strings](../api/connection-strings/storage.md) for details. It is highly recommended to provide more than a single storage account to avoid storage throttling if [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided. 
 
 *Optional Properties*:
 
@@ -190,15 +192,15 @@ with
 )  
 ```
 
-A partitioned external table (artifacts reside in directories in the format of "yyyy/MM/dd" under the container(s) defined):
+A partitioned external table (artifacts reside in directories in the format of "yyyy/MM/dd" under the path(s) defined):
 
 ```
-.create external table ExternalBlob (Timestamp:datetime, x:long, s:string) 
-kind=blob
+.create external table ExternalAdlGen2 (Timestamp:datetime, x:long, s:string) 
+kind=adl
 partition by bin(Timestamp, 1d)
 dataformat=csv
 ( 
-   h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
+   @'h"abfss://filesystem@storageaccount.dfs.core.windows.net/path;secretKey'
 )
 with 
 (
@@ -210,46 +212,9 @@ with
 
 **Output**
 
-|TableName|TableType|Folder|DocString|Schema|Properties|
-|---|---|---|---|-------|----------------------------------|
-|ExternalBlob|Blob|ExternalTables|Docs|[{ "Name": "x",  "CslType": "long"},<br> { "Name": "s",  "CslType": "string" }]|{"Format":"Csv","Compressed":false,"FileExtension":"csv", <br>"IncludeHeaders":"None","Encoding":null,"NamePrefix":"Prefix",<br>"PathPatterns":["http://storageaccount.blob.core.windows.net/container1;*******"]}|
-
-### .create or alter external adl table
-
-**Syntax**
-
-(`.create` | `.alter`) `external` `table` *TableName* ([columnName:columnType], ...)<br>
-`kind` `=` `adl` <br>
-[`partition` [`format_datetime` = *DateTimePartitionFormat*] `by` `bin(`*TimestampColumnName*`,` *TimeSpanLiteral*`)`]<br>
-`dataformat` `=` *Format* <br>
-`(` <br>*StorageConnectionString* [`,` ...] <br>`)`
- <br>[`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*], *property_name* `=` *value*`,`...`)`]
-
-Creates or alters a new external table in the database in which the command is executed. 
-
-*Parameters:*
-
-Parameters are identical to the Blob table, but *StorageConnectionString* points to a folder in ADL. See [Azure Data Lake connection strings](../api/connection-strings/storage.md#azure-data-lake-store) for details.
-
-**Example** 
-```kusto
-.create external table ExternalAdl (x:long, s:string) 
-kind=adl
-dataformat=csv
-( 
-   h@'adl://adlaccount.azuredatalakestore.net/folder1;token'
-)
-with 
-(
-   docstring = "Docs",
-   folder = "ADL",
-   namePrefix="Prefix"
-) 
-```
-
-|TableName|TableType|Folder|DocString|Properties|
-|---|---|---|---|---|
-|ExternalAdl|Adl|ADL|Docs|{"Format":"Csv","Compressed":false,"FileExtension":"csv","IncludeHeaders":"None","Encoding":null,"NamePrefix":"Prefix","PathPatterns":["adl://adlaccount.azuredatalakestore.net/folder1;*******"]}|
+|TableName|TableType|Folder|DocString|Properties|ConnectionStrings|
+|---|---|---|---|---|---|
+|ExternalAdlGen2|Adl|ExternalTables|Docs|{"Format":"Csv","Compressed":false,"CompressionType":null,"FileExtension":"csv","IncludeHeaders":"None","Encoding":null,"NamePrefix":"Prefix"}|["abfss://filesystem@storageaccount.dfs.core.windows.net/path;*******"]}|"<br>]|
 
 ## External SQL Table
 

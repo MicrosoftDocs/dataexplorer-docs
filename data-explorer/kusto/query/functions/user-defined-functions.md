@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/15/2019
+ms.date: 05/14/2019
 ---
 # User-Defined Functions
 
@@ -267,7 +267,7 @@ union T*
 
 The following restrictions apply:
 
-1 User-defined functions can't pass into
+1. User-defined functions can't pass into
    [toscalar()](../toscalarfunction.md) invocation
    information that depends on the row-context in which the
    function is called.
@@ -276,6 +276,8 @@ The following restrictions apply:
    be invoked with an argument that varies with the row context.
    
 3. A function taking at least one tabular input can't be invoked on a remote cluster.
+
+4. A scalar function can't be invoked on a remote cluster.
 
 The only place a user-defined function may be invoked
 with an argument that varies with the row context is when the

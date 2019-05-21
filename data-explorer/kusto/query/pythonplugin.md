@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/06/2019
+ms.date: 05/17/2019
 ---
 # Python plugin (Preview)
 
@@ -55,7 +55,7 @@ The following variables are reserved for interaction between Kusto query languag
 
 * The Python sandbox image is based on *Anaconda 5.2.0* distribution with *Python 3.6* engine.
   The list of its packages can be found [here](http://docs.anaconda.com/anaconda/packages/old-pkg-lists/5.3.0/py3.6_win-64/)
-  (note that few packages were excluded as they were incompatible with the limitations enforced by the sandbox in which the plugin is run).
+  (note that a small percentage of packages might be incompatible with the limitations enforced by the sandbox in which the plugin is run).
 * The Python image also contain common ML packages: `tensorflow`, `keras`, `torch`, `hdbscan`, `xgboost` and other useful packages.
 * The plugin imports *numpy* (as `np`) & *pandas* (as `pd`) by default.  You can import other modules as needed.
 * The Python sandbox limits accessing the network, therefore, the Python code can't dynamically install additional Python packages that are
