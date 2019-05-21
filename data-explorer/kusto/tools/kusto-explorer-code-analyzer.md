@@ -13,6 +13,7 @@ ms.date: 05/21/2019
 
 Kusto.Explorer provides code analyzer utility that analyzes the current query and outputs a set of applicable improvement recommendations. 
 
-Use `ctrl+F6` to run the analyzer on the active query.
+Use `Ctrl`+`F6` to run the analyzer on the active query.
 
-![alt text](./Images/KustoTools-KustoExplorer/ke-codeanalyze.gif "code-analyzer-reference")
+
+![alt text](./Images/KustoTools-KustoExplorer/ke-codeanalyze.png "code-analyzer-reference")
