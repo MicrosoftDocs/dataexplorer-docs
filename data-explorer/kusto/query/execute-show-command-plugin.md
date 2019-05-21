@@ -7,23 +7,34 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 05/21/2019
 ---
 # execute_show_command plugin
 
-  `evaluate` `execute_show_command` `(` *ConnectionString* `,` *ShowCommand* `)`
+The `execute_show_command` plugin executes a Kusto `.show` command
+on some cluster and returns its results.
 
-The `execute_show_command` plugin executes the specified Kusto `.show` command
-on the target Kusto cluster/database
-and returns the first rowset in the results.
+**Syntax**
+
+`evaluate` `execute_show_command` `(` *KustoConnectionString* `,` *ShowCommand* `)`
 
 **Arguments**
 
-* *ConnectionString*: A `string` literal indicating the connection string that
-  points at the target Kusto endpoint. See remarks below for limitations.
+* *ConnectionStringKusto*: A `string` literal containing a valid
+  [Kusto connection string](../api/connection-strings/kusto.md) that
+  points at the target Kusto endpoint. See notes below for limitations.
+
 * *ShowCommand*: A `string` literal indicating the `.show` command that is to be executed
-  against the Kusto endpoint. Must return one or more rowsets, but only the
-  first one is made available for the rest of the Kusto query.
+  against the specified Kusto endpoint.
+
+> [!NOTE]
+> The connection string is only used to indicate the target Kusto endpoint
+> (the cluster) and optionally the database in context. Other connection
+> string properties are not used.
+>
+> Authentication against the target endpoint is done with the credentials
+> used to run the query itself. If those credentials cannot be propagated
+> to the target endpoint then the plugin fails.
 
 **Examples**
 
@@ -35,9 +46,3 @@ union
   (evaluate execute_show_command("https://help.kusto.windows.net/$systemdb", ".show queries  | take 2 | project What='Query',   StartedOn, Text")),
   (evaluate execute_show_command("https://help.kusto.windows.net/$systemdb", ".show commands | take 2 | project What='Command', StartedOn, Text"))
 ```
-
-**Limitations**
-
-1. The connection string handed to this plugin can include any valid Kusto
-   connection string argument, but the only values used are the target cluster
-   endpoint, databaqse, and authentication.

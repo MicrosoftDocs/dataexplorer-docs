@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/12/2019
+ms.date: 05/21/2019
 ---
 # Export data to an external table
 
-Another way to export data is by defining an [external table](../externaltables.md) and export data to it. Doing so removes the need to embed the table's properties in the export command; instead, these are specified once when [creating the external table](../externaltables.md#create-or-alter-external-blob-table), export command references the external table by name. 
+Another way to export data is by defining an [external table](../externaltables.md) and export data to it. Doing so removes the need to embed the table's properties in the export command; instead, these are specified once when [creating the external table](../externaltables.md#create-or-alter-external-table), export command references the external table by name. 
 
 Requires [Database admin permission](../access-control/role-based-authorization.md).
 

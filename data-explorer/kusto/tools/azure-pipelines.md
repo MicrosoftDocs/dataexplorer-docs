@@ -1,15 +1,15 @@
 ---
-title: Azure Pipelines - Azure Data Explorer | Microsoft Docs
-description: This article describes Azure Pipelines in Azure Data Explorer.
+title: Azure Pipelines / Azure DevOps integration - Azure Data Explorer | Microsoft Docs
+description: This article describes Azure Pipelines / Azure DevOps integration in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/19/2019
+ms.date: 05/21/2019
 ---
-# Azure Pipelines
+# Azure Pipelines / Azure DevOps integration
 
 Azure Pipelines help you easily implement a build, test, and deployment pipeline.
 

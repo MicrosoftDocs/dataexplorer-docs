@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/12/2019
+ms.date: 05/21/2019
 ---
 # Continuous data export (preview)
 
@@ -16,7 +16,7 @@ defines the destination (for example, Azure Blob Storage) and the schema of the 
 The data to be exported is defined by the results of a query that gets run periodically, and whose results are stored in the external table. 
 The process  guarantees that all records are exported "exactly-once" (excluding dimension tables, in which all records are evaluated in all executions). 
 
-Continuous data export requires one to [create an external table](../externaltables.md#create-or-alter-external-blob-table) 
+Continuous data export requires one to [create an external table](../externaltables.md#create-or-alter-external-table) 
 and then [create a continuous export definition](#create-or-alter-continuous-export) pointing to the external table. 
 
 

@@ -61,6 +61,8 @@
 #### [dcount_intersect](./query/dcount-intersect-plugin.md)
 
 
+
+
 #### [narrow](./query/narrowplugin.md)
 #### [pivot](./query/pivotplugin.md)
 #### [preview](./query/previewplugin.md)
@@ -83,6 +85,7 @@
 ### [limit operator](./query/limitoperator.md)
 ### [lookup operator](./query/lookupoperator.md)
 ### [make-series operator](./query/make-seriesoperator.md)
+### [mv-apply operator](./query/mv-applyoperator.md)
 ### [mv-expand operator](./query/mvexpandoperator.md)
 ### [order operator](./query/orderoperator.md)
 ### [project operator](./query/projectoperator.md)
@@ -612,4 +615,4 @@
 
 
 ## Source control integration
-### [Azure Pipelines](./tools/azure-pipelines.md)
+### [Azure Pipelines/DevOps](./tools/azure-pipelines.md)

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 05/21/2019
 ---
 # Extents (Data Shards)
 
@@ -152,18 +152,20 @@ the data from being ingested if there's already an extent with this specific
 The values for both `tags` and `ingestIfNotExists` are arrays of strings,
 serialized as JSON.
 
-The following example ingests data only once (the second command will do nothing):
+The following example ingests data only once (the 2nd and 3rd commands will do nothing):
 
 ```kusto
-.ingest ... with @'{"tags":"[\"ingest-by:2016-02-17\"]"}'
+.ingest ... with (tags = '["ingest-by:2016-02-17"]')
 
-.ingest ... with @'{"ingestIfNotExists":"[\"2016-02-17\]"}'
-``` 
+.ingest ... with (ingestIfNotExists = '["2016-02-17"]')
+
+.ingest ... with (ingestIfNotExists = '["2016-02-17"]', tags = '["ingest-by:2016-02-17"]')
+```
 
 > [!NOTE] 
 > In the common case, an ingest command is likely to include
 >  both an `ingest-by:` tag and an `ingestIfNotExists` property,
->  set to the same value. 
+>  set to the same value (as shown in the 3rd command above).
 
 **Performance notes:**
 - Overusing `ingest-by` tags is not recommended.
