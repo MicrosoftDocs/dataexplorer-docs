@@ -45,7 +45,6 @@ The following variables are reserved for interaction between Kusto query languag
 
 
 * The plugin is disabled by default.
-    * It is enabled on the  [Help](https://dataexplorer.azure.com/clusters/help) cluster for anyone to try.
     * *Interested in enabling the plugin on your cluster?*
         
 		* In the Azure portal, within your Azure Data Explorer cluster, select **New support request** in the left-hand menu.
