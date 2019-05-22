@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/15/2019
+ms.date: 05/18/2019
 ---
 # Kusto.Explorer tool
 
@@ -656,6 +656,7 @@ It is also possible to "go back" to a specific version of Kusto.Explorer:
 #### Kusto.Explorer shows error dialog during or after start-up
 
 *Symptoms:*
+
 - Kusto.Explorer shows error dialog at start-up with error containing: `InvalidOperationException` 
 
 *Possible solution:*
@@ -664,9 +665,28 @@ This error may suggest that OS system became corrupted or missing some of the es
 To check missing or corrupted system files - use steps described here:   
 [https://support.microsoft.com/en-us/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system](https://support.microsoft.com/en-us/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system)
 
+### Kusto.Explorer always downloads even when there are no updates
+
+*Symptoms:*
+
+- Each time you open Kusto.Explorer it asks you to install a new verison and downloads the entire package, without actually updating the already-installed version.
+
+*Possible solution:*
+
+- This could be a result of corruption in your local ClickOnce store.
+- You can clear the local ClickOnce store, by running the following command, in an elevated command prompt.
+- Note: any ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut.
+  App shortcuts will not be deleted.
+
+    rd /q /s %userprofile%\appdata\local\apps\2.0
+
+- Then, try installing Kusto.Explorer again from one of the [installation mirrors](#getting-the-tool)
+
+
 #### ClickOnce error: Cannot Start Application
 
 *Symptoms:*  
+
 - Program fails to start with error containing: `External component has thrown an exception`
 - Program fails to start with error containing: `Value does not fall within the expected range`
 - Program fails to start with error containing: `The application binding data format is invalid.` 
@@ -741,7 +761,7 @@ Program fails to install with either of the following errors:
 
 #### Cleanup application data
 
-Sometimes, when prevoius troubleshooting steps didn't help to start Kusto.Explorer, cleaning of strored locally data can help.
+Sometimes, when previous troubleshooting steps didn't help with getting Kusto.Explorer to start, cleaning data that is stored locally may help.
 
 Data stored by Kusto.Explorer application can be found here: C:\Users\\[your alias]\AppData\Local\Kusto.Explorer.
 

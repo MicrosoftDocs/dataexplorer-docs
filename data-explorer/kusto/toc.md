@@ -61,6 +61,8 @@
 #### [dcount_intersect](./query/dcount-intersect-plugin.md)
 
 
+
+
 #### [narrow](./query/narrowplugin.md)
 #### [pivot](./query/pivotplugin.md)
 #### [preview](./query/previewplugin.md)
@@ -83,6 +85,7 @@
 ### [limit operator](./query/limitoperator.md)
 ### [lookup operator](./query/lookupoperator.md)
 ### [make-series operator](./query/make-seriesoperator.md)
+### [mv-apply operator](./query/mv-applyoperator.md)
 ### [mv-expand operator](./query/mvexpandoperator.md)
 ### [order operator](./query/orderoperator.md)
 ### [project operator](./query/projectoperator.md)
@@ -497,6 +500,7 @@
 ### [Commands](./management/commands.md)
 ### [Commands and Queries](./management/commands-and-queries.md)
 ### [Ingestion Failures](./management/ingestionfailures.md)
+### [Operations](./management/operations.md)
 
 ## [Access Control](./management/access-control/index.md)
 ### [Identities](./management/access-control/principals-and-identity-providers.md)
@@ -579,6 +583,9 @@
 ## Ad-hoc query
 ### [Kusto.Explorer](./tools/kusto-explorer.md)
 #### [Keyboard shortcuts](./tools/kusto-explorer-shortcuts.md)
+#### [Code Refactoring](./tools/kusto-explorer-refactor.md)
+#### [Code Navigation](./tools/kusto-explorer-codenav.md)
+#### [Code Analyzer](./tools/kusto-explorer-code-analyzer.md)
 ### [Web UI](https://docs.microsoft.com/azure/data-explorer/web-query-data)
 ### [Kusto.Cli](./tools/kusto-cli.md)
 
@@ -608,4 +615,4 @@
 
 
 ## Source control integration
-### [Azure Pipelines](./tools/azure-pipelines.md)
+### [Azure Pipelines/DevOps](./tools/azure-pipelines.md)

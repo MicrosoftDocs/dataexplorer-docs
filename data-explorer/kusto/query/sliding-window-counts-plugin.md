@@ -7,11 +7,12 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/28/2019
+ms.date: 05/21/2019
 ---
 # sliding_window_counts plugin
 
-Calculates counts and distinct count of values in a sliding window over a lookback period.
+Calculates counts and distinct count of values in a sliding window over a lookback period, 
+using the technique described [here](samples.md#performing-aggregations-over-a-sliding-window).
 
 For instance, for each *day*, calculate count and distinct count of users in previous *week*. 
 

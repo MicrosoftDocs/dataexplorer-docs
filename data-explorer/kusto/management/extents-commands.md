@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 05/21/2019
 ---
 # Extents (Data shards) management
 
@@ -161,7 +161,8 @@ The extents are specified using a Kusto query that returns a recordset with a co
 Output parameter |Type |Description 
 ---|---|---
 OriginalExtentId |string |A unique identifier (GUID) for the original extent in the source table, which has been moved to the destination table. 
-ResultExtentId |string |A unique identifier (GUID) for the result extent which has been moved from the source table to the destination table. Upon failure - "Failed", potentially followed by failure details.
+ResultExtentId |string |A unique identifier (GUID) for the result extent which has been moved from the source table to the destination table. Upon failure - "Failed".
+Details |string |Includes the failure details, in case the operation fails.
 
 **Examples**
 
@@ -182,12 +183,12 @@ Moves all extents from 2 specific tables (`MyTable1`, `MyTable2`) to table `MyOt
 
 **Example output** 
 
-|OriginalExtentId |ResultExtentId 
-|---|---
-|e133f050-a1e2-4dad-8552-1f5cf47cab69 |0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687 
-|cdbeb35b-87ea-499f-b545-defbae091b57 |a90a303c-8a14-4207-8f35-d8ea94ca45be 
-|4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f
-|2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df 
+|OriginalExtentId |ResultExtentId| Details
+|---|---|---
+|e133f050-a1e2-4dad-8552-1f5cf47cab69 |0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687| 
+|cdbeb35b-87ea-499f-b545-defbae091b57 |a90a303c-8a14-4207-8f35-d8ea94ca45be| 
+|4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f| 
+|2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df| 
 
 ## .drop extents
 
@@ -318,7 +319,8 @@ Both queries should return a recordset with a column called "ExtentId".
 Output parameter |Type |Description 
 ---|---|---
 OriginalExtentId |string |A unique identifier (GUID) for the original extent in the source table, which has been moved to the destination table, or - the extent in the destination table, which has been dropped.
-ResultExtentId |string |A unique identifier (GUID) for the result extent which has been moved from the source table to the destination table, or - empty, in case the extent was dropped from the destination table. Upon failure - "Failed", potentially followed by failure details.
+ResultExtentId |string |A unique identifier (GUID) for the result extent which has been moved from the source table to the destination table, or - empty, in case the extent was dropped from the destination table. Upon failure - "Failed".
+Details |string |Includes the failure details, in case the operation fails.
 
 **Examples**
 
@@ -332,12 +334,12 @@ tagged with `drop-by:MyTag`:
 
 **Example output** 
 
-|OriginalExtentId |ResultExtentId 
-|---|---
-|e133f050-a1e2-4dad-8552-1f5cf47cab69 |0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687 
-|cdbeb35b-87ea-499f-b545-defbae091b57 |a90a303c-8a14-4207-8f35-d8ea94ca45be 
-|4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f
-|2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df 
+|OriginalExtentId |ResultExtentId |Details
+|---|---|---
+|e133f050-a1e2-4dad-8552-1f5cf47cab69 |0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687| 
+|cdbeb35b-87ea-499f-b545-defbae091b57 |a90a303c-8a14-4207-8f35-d8ea94ca45be| 
+|4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f| 
+|2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df| 
 
 
 
@@ -382,8 +384,9 @@ The extents and the tags to drop are specified using a Kusto query that returns 
 Output parameter |Type |Description 
 ---|---|---
 OriginalExtentId |string |A unique identifier (GUID) for the original extent whose tags have been modified (and is dropped as part of the operation) 
-ResultExtentId |string |A unique identifier (GUID) for the result extent which has modified tags (and is created and added as part of the operation). Upon failure - "Failed", potentially followed by failure details.
-ResultExtentTags |string |The collection of tags which the result extent is tagged with (if any remain) 
+ResultExtentId |string |A unique identifier (GUID) for the result extent which has modified tags (and is created and added as part of the operation). Upon failure - "Failed".
+ResultExtentTags |string |The collection of tags which the result extent is tagged with (if any remain), or "null" in case the operation fails.
+Details |string |Includes the failure details, in case the operation fails.
 
 **Examples**
 
@@ -403,7 +406,7 @@ Drops all `drop-by` tags from extents in table `MyTable`.
   .show table MyTable extents 
   | where isnotempty(Tags)
   | extend Tags = split(Tags, '\r\n') 
-  | mvexpand Tags 
+  | mv-expand Tags to typeof(string)
   | where Tags startswith 'drop-by'
 ```
 
@@ -413,18 +416,18 @@ Drops all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from 
   .show table MyTable extents 
   | where isnotempty(Tags)
   | extend Tags = split(Tags, '\r\n')
-  | mvexpand Tags 
+  | mv-expand Tags to typeof(string)
   | where Tags matches regex @"drop-by:StreamCreationTime_20160915(\d{6})"
 ```
 
 **Example output** 
 
-|OriginalExtentId |ResultExtentId | ResultExtentTags 
-|---|---|---
-|e133f050-a1e2-4dad-8552-1f5cf47cab69 |0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687 | Partition001 
-|cdbeb35b-87ea-499f-b545-defbae091b57 |a90a303c-8a14-4207-8f35-d8ea94ca45be | 
-|4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f | Partition001 Partition002
-|2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df | 
+|OriginalExtentId |ResultExtentId | ResultExtentTags | Details
+|---|---|---|---
+|e133f050-a1e2-4dad-8552-1f5cf47cab69 |0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687 | Partition001 |
+|cdbeb35b-87ea-499f-b545-defbae091b57 |a90a303c-8a14-4207-8f35-d8ea94ca45be | |
+|4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f | Partition001 Partition002 |
+|2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df | |
 
 ## .alter extent tags
 
@@ -451,8 +454,9 @@ Requires [Table admin permission](../management/access-control/role-based-author
 Output parameter |Type |Description 
 ---|---|---
 OriginalExtentId |string |A unique identifier (GUID) for the original extent whose tags have been modified (and is dropped as part of the operation) 
-ResultExtentId |string |A unique identifier (GUID) for the result extent which has modified tags (and is created and added as part of the operation). Upon failure - "Failed", potentially followed by failure details.
-ResultExtentTags |string |The collection of tags which the result extent is tagged with 
+ResultExtentId |string |A unique identifier (GUID) for the result extent which has modified tags (and is created and added as part of the operation). Upon failure - "Failed".
+ResultExtentTags |string |The collection of tags which the result extent is tagged with, or "null" in case the operation fails.
+Details |string |Includes the failure details, in case the operation fails.
 
 **Examples**
 
@@ -468,10 +472,10 @@ Alters tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` t
 
 **Example output** 
 
-|OriginalExtentId |ResultExtentId | ResultExtentTags 
-|---|---|---
-|e133f050-a1e2-4dad-8552-1f5cf47cab69 |0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687 | drop-by:MyNewTag MyOtherNewTag
-|cdbeb35b-87ea-499f-b545-defbae091b57 |a90a303c-8a14-4207-8f35-d8ea94ca45be | drop-by:MyNewTag MyOtherNewTag
-|4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f | drop-by:MyNewTag MyOtherNewTag
-|2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df | drop-by:MyNewTag MyOtherNewTag
+|OriginalExtentId |ResultExtentId | ResultExtentTags | Details
+|---|---|---|---
+|e133f050-a1e2-4dad-8552-1f5cf47cab69 |0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687 | drop-by:MyNewTag MyOtherNewTag| 
+|cdbeb35b-87ea-499f-b545-defbae091b57 |a90a303c-8a14-4207-8f35-d8ea94ca45be | drop-by:MyNewTag MyOtherNewTag| 
+|4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f | drop-by:MyNewTag MyOtherNewTag| 
+|2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df | drop-by:MyNewTag MyOtherNewTag| 
 

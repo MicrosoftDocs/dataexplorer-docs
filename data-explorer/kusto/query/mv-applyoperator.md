@@ -7,44 +7,115 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/26/2019
+ms.date: 05/20/2019
 ---
 # mv-apply operator
 
-Applies a sub-expression on multi-value array.
-
-`mv-apply` applies a sub-query on a [dynamic](./scalar-data-types/dynamic.md)-typed column. In a sense, `mv-apply` extends [mv-expand](./mvexpandoperator.md) operator by allowing applying an arbitrary sub-query on a contextual tabular expression produced by each array exapnsion.
-The output of the operator will include all rows and columns produced by a sub-query, while all other columns in the expanded row are duplicated.
+The mv-apply operator expands each record in its input table into a sub-table,
+applies a sub-query to each sub-table, and returns the union of the results of
+all sub-queries.
 
 > [!IMPORTANT]
-> This operator is in preview mode, meaning it may have performance and stability bugs.
+> This operator is currently in preview mode. Therefore, the semantics of the operator
+> might change in the future.
+
+For example, assume a table `T` has a column `Metric` of type `dynamic`
+whose values are arrays of `real` numbers. The following query will locate the
+two biggest values in each `Metric` value, and return the records corresponding
+to these values.
+
+```kusto
+T | mv-apply Metric to typeof(real) on (top 2 by Metric desc)
+```
+
+In general, the mv-apply operator can be thought of as having the following
+processing steps:
+
+1. It uses the [mv-expand operator](./mvexpandoperator.md) to expand each record
+   in the input into sub-tables.
+2. It applies the sub-query for each of the sub-tables.
+3. It prepends zero or more columns to each resulting sub-table, containing the
+   (repeated if necessary) values of the source columns that are not being expanded.
+4. It returns the union of the results.
+
+The mv-expand operator gets the following inputs:
+
+1. One or more expressions that evaluate into dynamic arrays to expand.
+   The number of records in each expanded sub-table is the maximum length of
+   each of those dynamic arrays. (If multiple expressions are specified,
+   but corresponding arrays are of different lengths, null values are introduced
+   if necessary.)
+
+2. Optionally, the names to assign the values of the expressions, after expansion.
+   These become the names of the columns in the sub-tables.
+   If not specified, the original name of the column is used (if the expression
+   is a column reference), or a random name is used (otherwise).
+
+   > [!NOTE]
+   > It is recommended to use the default column names.
+
+3. The data types of the elements of those dynamic arrays, after expansion.
+   These become the column types of the columns in the sub-tables.
+   If not specified, `dynamic` is used.
+
+4. Optionally, the name of a column to add to the sub-tables which specifies the
+   0-based index of the element in the array that resulted in the sub-table record.
+
+5. Optionally, the maximum number of array elements to expand.
+
+The mv-apply operator can be thought of as a generalization of the
+[mv-expand](./mvexpandoperator.md) operator (in fact, the latter can be implemented
+by the former, if the sub-query includes only projections.)
 
 **Syntax**
 
-*T* `| mv-apply` [`with_itemindex=`*IndexColumnName*] *ColumnName* [`,` *ColumnName* ...] [`limit` *Rowlimit*] `on` `(` *SubQuery* `)`
+*T* `|` `mv-apply` [*ItemIndex*] *ColumnsToExpand* [*RowLimit*] `on` `(` *SubQuery* `)`
 
-*T* `| mv-apply ` [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] [, [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*] `on` `(` *SubQuery* `)` 
+Where *ItemIndex* has the syntax:
+
+`with_itemindex` `=` *IndexColumnName*
+
+*ColumnsToExpand* is a comma-separated list of one or more elements of the form:
+
+[*Name* `=`] *ArrayExpression* [`to` `typeof` `(`*Typename*`)`]
+
+*RowLimit* is simply:
+
+`limit` *RowLimit*
+
+and *SubQuery* has the same syntax of any query statement.
 
 **Arguments**
 
-* *ColumnName:* In the result, arrays in the named column are expanded to multiple rows. 
-* *ArrayExpression:* An expression yielding an array. If this form is used, a new column is added and the existing one is preserved.
-* *Name:* A name for the new column.
-* *Typename:* Indicates the underlying type of the array's elements,
-    which becomes the type of the column produced by the operator.
-    Note that values in the array that do not conform to this type will
-    not be converted; rather, they will take on a `null` value.
-* *RowLimit:* The maximum number of rows generated from each original row. The default is 2147483647. 
-* *SubQuery:* Query that is applied on an expanded input.  
+* *ItemIndex*: If used, indicates the name of a column of type `long` that is appended to the input as part of the array-expansion phase and indicates the 0-based array index of the
+  expanded value.
+
+* *Name*: If used, the name to assign the array-expanded values of each
+  array-expanded expression.
+  (If unspecified, the name of the column will be used if available,
+  or a random name generated if *ArrayExpression* is not a simple column name.)
+
+* *ArrayExpression*: An expression of type `dynamic` whose values will be array-expanded.
+  If the expression is the name of a column in the input, the input column is
+  removed from the input and a new column of the same name (or *ColumnName* if
+  specified) will appear in the output.
+
+* *Typename*: If used, the name of the type that the individual elements of the
+  `dynamic` array *ArrayExpression* takes. Elements that do not conform to this
+  type will be replaced by a null value.
+  (If unspecified, `dynamic` is used by default.)
+
+* *RowLimit*: If used, a limit on the number of records to generate from each
+  record of the input.
+  (If unspecified, 2147483647 is used.)
+
+* *SubQuery*: A tabular query expression with an implicit tabular source that gets
+  applied to each array-expanded sub-table.
 
 **Notes**
 
-* Unlike [mv-expand](./mvexpandoperator.md) operator - `mv-apply` supports expansion of arrays only and not property bags.
-
-**Returns**
-
-Multiple rows for each of the input values as a result of applying sub-query on the input values.
-If the sub-query just projects the expanded values, the output is the same as using [mv-expand](./mvexpandoperator.md) operator.
+* Unlike the [mv-expand](./mvexpandoperator.md) operator, the mv-apply operator
+  supports array expansion only. There's no support for expanding property bags.
 
 **Examples**
 
@@ -61,11 +132,10 @@ _data
 )
 ```
 
-|xMod2|l|element|
-|---|---|---|
-|1|[<br>  1,<br>  3,<br>  5,<br>  7<br>]|7|
-|0|[<br>  2,<br>  4,<br>  6,<br>  8<br>]|8|
-
+|xMod2|l           |element|
+|-----|------------|-------|
+|1    |[1, 3, 5, 7]|7      |
+|0    |[2, 4, 6, 8]|8      |
 
 ## Calculating sum of largest two elments in an array
 
@@ -74,19 +144,42 @@ let _data =
 range x from 1 to 8 step 1
 | summarize l=make_list(x) by xMod2 = x % 2;
 _data
-| mv-apply l to typeof(long) on 
+| mv-apply l to typeof(long) on
 (
    top 2 by l
-   | summarize SumOfTop2=sum(l)   
+   | summarize SumOfTop2=sum(l)
 )
 ```
 
-|xMod2|l|SumOfTop2|
-|---|---|---|
-|1|[<br>  1,<br>  3,<br>  5,<br>  7<br>]|12|
-|0|[<br>  2,<br>  4,<br>  6,<br>  8<br>]|14|
+|xMod2|l        |SumOfTop2|
+|-----|---------|---------|
+|1    |[1,3,5,7]|12       |
+|0    |[2,4,6,8]|14       |
+
+
+## Using `with_itemindex` for working with subset of the array
+
+```kusto
+let _data =
+range x from 1 to 10 step 1
+| summarize l=make_list(x) by xMod2 = x % 2;
+_data
+| mv-apply with_itemindex=index element=l to typeof(long) on 
+(
+   // here you have 'index' column
+   where index >= 3
+)
+| project index, element
+```
+
+|index|element|
+|---|---|
+|3|7|
+|4|9|
+|3|8|
+|4|10|
 
 
 **See also**
 
-- [mv-expand](./mvexpandoperator.md) operator.
+* [mv-expand](./mvexpandoperator.md) operator.

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/23/2019
+ms.date: 05/20/2019
 ---
 # Kusto.Explorer keyboard shortcuts (hot-keys)
 
@@ -29,7 +29,7 @@ The following keyboard shortcuts can be used from any context:
 |`Ctrl`+`W` |Closes active query editor|
 |`Ctrl`+`S` |Saves query into a file|
 |`Shift`+`F3` | Opens Analytical Report Gallery|
-|`Ctrl`+`F12`| Opens embedded calculator window|
+|`Shift`+`F12`| Toggles Light/Dark theme of the application|
 |`Ctrl`+`Shift`+`O`|Opens Kusto.Explorer options and settings dialog|
 |`Esc`|Cancel running query|
 |`Shift`+`F5`|Cancel running query|
@@ -58,7 +58,7 @@ or when the context is in the results view:
 |`Ctrl`+`F3`  | Toggles `show only matching rows`/`highlight matching rows` modes for  client text search (`Ctrl`+`F`) behavior in data grid. |
 |`Ctrl`+`F`  | Shows search box for the panel that is currently in focus. Supported in `Connetions`, `Data Results`, and `Query Editor` panels|
 |`Ctrl`+`Tab`| Shows Query Editor document selector dialog. You can hold `Ctrl` and swithch between documents with `Tab` |
-|`Ctrl`+`R`|Toggles appearance of the result panel|
+|`Ctrl`+`J`|Toggles appearance of the result panel|
 |`Ctrl`+`E`|Toggles appearance of the query editor and result panel in cycle of: `Query Editor and Results` -> `Query Editor` -> `Query Editor and Results` -> `Results` |
 |`Ctrl`+`Shift`+`E`|Toggles appearance of the query editor and result panel in cycle of: `Query Editor and Results` -> `Results` -> `Query Editor and Results` -> `Query Editor` |
 |`Ctrl`+`Shift`+`R` | Focuses on Results panel |
@@ -111,7 +111,13 @@ The following keyboard shortcuts can be used when editing a query in the query e
 |`Ctrl`+`Mouse wheel up`| Increases font of the qupery editor| 
 |`Ctrl`+`Mouse wheel down`| Decreases font of the query editor|
 |`Alt`+`P` | Opens query parameters dialog |
-|`F2`|  Open current line / selected text in Phyton editor dialog |
+|`F2`| Open current line / selected text in Phyton editor dialog |
+|`Ctrl`+`F6`| Runs KQL static query analysis to detect common issues |
+|`F12`| Navigate to the definition of the symbol |
+|`Ctrl`+`F12`| Find all refernces of the current symbol |
+|`Alt`+`Home`| Navigate to the definition of the symbol |
+|`Alt`+`Ctrl`+`M`| Extract currently selected literal or tabular expression as let statement |
+|`Ctrl`+`R`, `Ctrl`+`R` | Renames current symbol |
 |`Ctrl`+`K`, `Ctrl`+`D` | Inserts current timestamp as detatime literal |
 |`Ctrl`+`K`, `Ctrl`+`R` | Inserts `range x from 1 to 1 step 1` snippet |
 |`Ctrl`+`K`, `Ctrl`+`C` | Comment current line or selected lines |
