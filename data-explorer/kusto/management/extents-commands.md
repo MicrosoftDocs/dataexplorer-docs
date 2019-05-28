@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/21/2019
+ms.date: 05/26/2019
 ---
 # Extents (Data shards) management
 
@@ -120,7 +120,48 @@ the results of a cluster-level command.
 .show tables (TaggingGames1,TaggingGames2) extents where tags has 'tag1' and tags has 'tag2'
 ``` 
  
+## .merge extents
 
+**Syntax**
+
+`.merge` `[async | dryrun]` *TableName* `(` *GUID1* [`,` *GUID2* ...] `)` `[with(rebuild=true)]`
+
+This command merges the extents (See: [Extents (Data Shards) Overview](extents-overview.md)) indicated by their IDs in the specified table.
+
+There are 2 flavors for merge operations: *Merge* (which rebuilds indexes), and *Rebuild* (which completely reingests the data).
+
+* `async`: The operation will be performed asynchronously - the result will be an operation ID (GUID), which one can run `.show operations <operation ID>` with, to view the command's state & status.
+* `dryrun`: The operation will only list the extents which should be merged, but won't actually merge them. 
+* `with(rebuild=true)`: the extents will be rebuilt (data will be reingested) instead of merged (indexes will be rebuilt).
+
+**Return output**
+
+Output parameter |Type |Description 
+---|---|---
+OriginalExtentId |string |A unique identifier (GUID) for the original extent in the source table, which has been merged into the target extent. 
+ResultExtentId |string |A unique identifier (GUID) for the result extent which has been created from the source extents. Upon failure - "Failed" or "Abandoned".
+Duration |timespan |The time period it took to complete the merge operation.
+
+**Examples**
+
+Rebuilds two specific extents in `MyTable`, performed asynchronously
+```kusto
+.merge async MyTable (e133f050-a1e2-4dad-8552-1f5cf47cab69, 0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687) with(rebuild=true)
+```
+
+Merges two specific extents in `MyTable`, performed synchronously
+```kusto
+.merge MyTable (12345050-a1e2-4dad-8552-1f5cf47cab69, 98765b2d-9dd2-4d2c-a45e-b24c65aa6687)
+```
+
+**Notes**
+- In General, `.merge` commands should rarely be run manually, and they are continously performed automatically in the background of the Kusto cluster (according to the [Merge Policies](../concepts/mergepolicy.md) defined for tables and databases in it).  
+  - General considerations about the criteria for merging multiple extents into a single one are documented under [Merge Policy](../concepts/mergepolicy.md).
+- `.merge` operations have a possible final state of `Abandoned` (which can be seen when running `.show operations` with the operation ID) - this state suggests the source extents were not merged together, as some of the source extents no longer exist in the source table.
+  - Such a state is expected to occur in cases such as:
+     - The source extents have been dropped as part of the table's retention.
+     - The source extents have been moved to a different table.
+     - The source table has been entirely dropped or renamed.
 
 ## .move extents
 

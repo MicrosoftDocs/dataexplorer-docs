@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/21/2019
+ms.date: 05/25/2019
 ---
 # execute_show_command plugin
 
@@ -43,6 +43,10 @@ that were run on it and two records of commands.
 
 ```
 union
-  (evaluate execute_show_command("https://help.kusto.windows.net/$systemdb", ".show queries  | take 2 | project What='Query',   StartedOn, Text")),
-  (evaluate execute_show_command("https://help.kusto.windows.net/$systemdb", ".show commands | take 2 | project What='Command', StartedOn, Text"))
+  (evaluate execute_show_command(
+    "https://help.kusto.windows.net/$systemdb",
+    ".show queries  | take 2 | project What='Query', StartedOn, Text")),
+  (evaluate execute_show_command(
+    "https://help.kusto.windows.net/$systemdb",
+    ".show commands | take 2 | project What='Command', StartedOn, Text"))
 ```

@@ -70,6 +70,7 @@
 #### [R](./query/rplugin.md)
 #### [rolling_percentile](./query/rolling-percentile-plugin.md)
 #### [sql_request](./query/sqlrequestplugin.md)
+#### [sequence_detect](./query/sequence-detect-plugin.md)
 ### [extend operator](./query/extendoperator.md)
 ### [externaldata operator](./query/externaldata-operator.md)
 ### [facet operator](./query/facetoperator.md)
@@ -440,7 +441,7 @@
 
 ### [Ingestion Batching policy](./concepts/batchingpolicy.md)
 ### [IngestionTime policy](./concepts/ingestiontimepolicy.md)
-
+### [Merge policy](./concepts/mergepolicy.md)
 
 
 ### [Retention policy](./concepts/retentionpolicy.md)
@@ -449,7 +450,7 @@
 
 
 
-
+### [Sharding policy](./concepts/shardingpolicy.md)
 ### [Update policy](./concepts/updatepolicy.md)
 
 ## Misc and Errors
