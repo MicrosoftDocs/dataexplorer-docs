@@ -5,7 +5,7 @@ services: azure-data-explorer
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
-ms.service: azure-data-explorer
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/14/2018
 ---
