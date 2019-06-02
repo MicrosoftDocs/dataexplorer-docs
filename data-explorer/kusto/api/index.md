@@ -1,30 +1,29 @@
 ---
-title: Kusto API Overview - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto API Overview in Azure Data Explorer.
+title: Azure Data Explorer API Overview - Azure Data Explorer | Microsoft Docs
+description: This article describes Azure Data Explorer API Overview in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/30/2019
+ms.date: 05/29/2019
 ---
-# Kusto API Overview
+# Azure Data Explorer API Overview
 
-The Kusto cloud service supports the following communication endpoints:
+The Azure Data Explorer service supports the following communication endpoints:
 
-1. A [REST API](#rest-api) endpoint, through which one can query the data in Kusto and manage it.
+1. A [REST API](#rest-api) endpoint, through which one can query and manage the data in Azure Data Explorer.
    This endpoint supports the [Kusto query language](../query/index.md) for queries
-   and the [Kusto management language](../management/index.md) for control
-   commands.
+   and the [control commands](../management/index.md).
 2. A [MS-TDS](#ms-tds) endpoint, which implements a subset of the Microsoft
    Tabular Data Stream (TDS) protocol, used by the Microsoft SQL Server products.
    This endpoint is primarily useful for existing tools that know how to communicate
    with a SQL Server endpoint for queries.
 3. An Azure Resource Management (ARM) endpoint, which is the standard means for
-   Azure services to manage resources such as Kusto clusters.
+   Azure services to manage resources such as Azure Data Explorer clusters.
 
-Kusto provides a number of client libraries that make use of the
+Azure Data Explorer provides a number of client libraries that make use of the
 endpoints above to make programmatic access easy:
 
 1. .NET SDK
@@ -36,7 +35,7 @@ endpoints above to make programmatic access easy:
 
 ## REST API
 
-The primary means of communicating with any Kusto service
+The primary means of communicating with any Azure Data Explorer service
 is by using the service's REST API. Through this fully-documented
 endpoint, callers may:
 
@@ -46,27 +45,26 @@ endpoint, callers may:
 4. Query the service health status
 5. Manage resources
 
-In fact, the different Kusto services communicate between
+In fact, the different Azure Data Explorer services communicate between
 themselves using the same publicly-available REST API.
 
-In addition to supporting making requests to Kusto using the
-REST API, the Kusto team also provides and supports a number of
-client libraries, to make it easier for callers to use the service
-without dealing with the details of the REST API protocol.
+In addition to supporting making requests to Azure Data Explorer using the
+REST API. In addition, a number of
+client libraries are available to use the service
+without dealing with the REST API protocol.
 
 ## MS-TDS
 
-As an alternative means of connecting to Kusto and querying its data, Kusto
-supports the Microsoft SQL Server communication protocol (MS-TDS)
+As an alternative means of connecting to Azure Data Explorer and querying its data, Azure Data Explorer supports the Microsoft SQL Server communication protocol (MS-TDS)
 and includes a limited support for running T-SQL queries. This allows users
-to run queries on Kusto using a well-known query syntax (T-SQL) and their
+to run queries on Azure Data Explorer using a well-known query syntax (T-SQL) and their
 familiar database client tools (e.g. LINQPad, sqlcmd, Tableau, Excel, Power BI, ...)
 
 Please see [this page](tds/index.md) for details.
 
 ## .NET Framework Libraries
 
-This is the recommended way to invoke Kusto functionality programmatically.
+This is the recommended way to invoke Azure Data Explorer functionality programmatically.
 A number of different libraries are provided:
 
 - [**Kusto.Data (Kusto Client Library)**](./netfx/about-kusto-data.md), which can be used to query data, query metadata, and alter it.
@@ -85,18 +83,18 @@ All of the above libraries make use of the Azure APIs (e.g. Azure Storage API, A
 
 ## Python Libraries
 
-Kusto provides a Python client library that allows callers to send data queries and control commands.
+Azure Data Explorer provides a Python client library that allows callers to send data queries and control commands.
 
 ## R Library
 
-Kusto provides an R client library that allows callers to send data queries and control commands.
+Azure Data Explorer provides an R client library that allows callers to send data queries and control commands.
 
 
 
-## Using Kusto from PowerShell
+## Using Azure Data Explorer from PowerShell
 
-The Kusto .NET Framework Libraries can be used by PowerShell scripts.
-See [Calling Kusto from PowerShell](powershell/powershell.md) for an example.
+The Azure Data Explorer .NET Framework Libraries can be used by PowerShell scripts.
+See [Calling Azure Data Explorer from PowerShell](powershell/powershell.md) for an example.
 
 ## IDE integration
 

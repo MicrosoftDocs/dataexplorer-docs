@@ -1,47 +1,44 @@
 ---
-title: Data Sharding policy - Azure Data Explorer | Microsoft Docs
-description: This article describes Data Sharding policy in Azure Data Explorer.
+title: Data sharding policy - Azure Data Explorer | Microsoft Docs
+description: This article describes Data sharding policy in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/26/2019
+ms.date: 05/30/2019
 ---
-# Data Sharding policy
-The policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the Kusto cluster should be sealed.
+# Data sharding policy
+
+The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster should be sealed.
 
 > [!NOTE]
-> The policy applies to all operations that end up creating new extents,
-> such as commands for [data ingestion](../management/data-ingestion/index.md),
+> The policy applies to all operations that create new extents,
+> such as commands for [data ingestion](../management/data-ingestion/index.md), and
 > [.merge and .rebuild commands](../management/extents-commands.md#merge-extents)
-> etc.
 
 The data sharding policy contains the following properties:
 
 - **MaxRowCount**:
-    - Maximum row count for an extent created by an ingestion operation, or a Rebuild operation.
+    - Maximum row count for an extent created by an ingestion or rebuild operation.
     - Defaults to 750,000.
-    - `Not in effect` for [Merge operations](../concepts/mergepolicy.md).
-        - In case it is required to limit the number of rows in extents created by Merge operations, one is
-          required to adjust the `RowCountUpperBoundForMerge` property in the entity's
-          [extents merge policy](../concepts/mergepolicy.md).
+    - **Not in effect** for [merge operations](../concepts/mergepolicy.md).
+        - If you must limit the number of rows in extents created by merge operations, adjust the `RowCountUpperBoundForMerge` property in the entity's [extents merge policy](../concepts/mergepolicy.md).
 - **MaxExtentSizeInMb**:
-    - Maximum allowed compressed data size (in Megabytes) for an extent created by a Merge operation.
-    - In effect **only for [Merge](../concepts/mergepolicy.md) operations**.
-    - Defaults to 1,024 (i.e. 1GB).
+    - Maximum allowed compressed data size (in megabytes) for an extent created by a merge operation.
+    - In effect **only for [merge](../concepts/mergepolicy.md) operations**.
+    - Defaults to 1,024 (1GB).
 
 - **MaxOriginalSizeInMb**:
-    - Maximum allowed original data size (in Megabytes) for an extent created by a Rebuild operation.
-    - In effect **only for [Rebuild](../concepts/mergepolicy.md) operations**.
-    - Defaults to 2,048 (i.e. 2GB).
+    - Maximum allowed original data size (in megabytes) for an extent created by a rebuild operation.
+    - In effect **only for [rebuild](../concepts/mergepolicy.md) operations**.
+    - Defaults to 2,048 (2GB).
 
 > [!WARNING]
-> It is rarely recommended to alter a Data Sharding Policy without consulting with the Kusto team first.
+> Consult with the Azure Data Explorer team before altering a data sharding policy.
 
-When a database is created it is set with the default Data Sharding policy (a policy with the default values mentioned above).
-By default, that is inherited by all tables created in the database (unless the policy is explicitly overridden at table-level).
+When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
 
-Control commands which allow managing Data Sharding policies for databases and/or tables can be found
-[here](../management/sharding-policy.md).
+Use the [sharding policy control commands]((../management/sharding-policy.md)) to manage data sharding policies for databases and tables.
+ 

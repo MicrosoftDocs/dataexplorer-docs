@@ -225,6 +225,7 @@
 ### [max_of()](./query/max-offunction.md)
 ### [min_of()](./query/min-offunction.md)
 ### [monthofyear()](./query/monthofyearfunction.md)
+### [new_guid()](./query/newguidfunction.md)
 ### [not()](./query/notfunction.md)
 ### [now()](./query/nowfunction.md)
 ### [pack()](./query/packfunction.md)

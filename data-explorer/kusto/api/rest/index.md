@@ -1,15 +1,15 @@
 ---
-title: Kusto REST API - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto REST API in Azure Data Explorer.
+title: Azure Data Explorer REST API - Azure Data Explorer | Microsoft Docs
+description: This article describes Azure Data Explorer REST API in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/04/2018
+ms.date: 05/29/2019
 ---
-# Kusto REST API
+# Azure Data Explorer REST API
 
 This article describes how to interact with Kusto over HTTPS.
 

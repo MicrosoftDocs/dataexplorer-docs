@@ -7,14 +7,12 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 05/29/2019
 ---
 # Tutorial
 
 The best way to learn about the Kusto query language is to look at some simple
-queries to get the "feel" for the language. A database with some sample data
-has been set up at [https://help.kusto.windows.net/Samples](https://help.kusto.windows.net/Samples),
-and all the queries demonstrated below should run on that database. The `StormEvents`
+queries to get the "feel" for the language using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries demonstrated in this article should run on that database. The `StormEvents`
 table in this sample database provides some information about storms that happened
 in the U.S.
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/21/2019
+ms.date: 05/27/2019
 ---
 # Kusto Explorer Code Analyzer
 
@@ -15,5 +15,4 @@ Kusto.Explorer provides code analyzer utility that analyzes the current query an
 
 Use `Ctrl`+`F6` to run the analyzer on the active query.
 
-
-![alt text](./Images/KustoTools-KustoExplorer/ke-codeanalyze.png "code-analyzer-reference")
+![alt text](./Images/KustoTools-KustoExplorer/ke-codeanalyze.gif "code-analyzer-reference")

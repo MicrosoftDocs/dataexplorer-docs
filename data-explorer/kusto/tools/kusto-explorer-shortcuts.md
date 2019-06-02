@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/20/2019
+ms.date: 05/30/2019
 ---
 # Kusto.Explorer keyboard shortcuts (hot-keys)
 
@@ -117,6 +117,7 @@ The following keyboard shortcuts can be used when editing a query in the query e
 |`Ctrl`+`F12`| Find all refernces of the current symbol |
 |`Alt`+`Home`| Navigate to the definition of the symbol |
 |`Alt`+`Ctrl`+`M`| Extract currently selected literal or tabular expression as let statement |
+|`Ctrl`+`.`| Extract currently selected literal or tabular expression as let statement |
 |`Ctrl`+`R`, `Ctrl`+`R` | Renames current symbol |
 |`Ctrl`+`K`, `Ctrl`+`D` | Inserts current timestamp as detatime literal |
 |`Ctrl`+`K`, `Ctrl`+`R` | Inserts `range x from 1 to 1 step 1` snippet |
