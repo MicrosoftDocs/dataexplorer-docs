@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/01/2019
+ms.date: 06/02/2019
 ---
 # Export data to storage
 
@@ -79,7 +79,7 @@ export continues in the background until completion. The operation ID returned
 by the command can be used to track its progress and ultimately its results
 via the following commands:
 
-* [.show operation](../operations.md#show-operation): Track progress.
+* [.show operations](../operations.md#show-operations): Track progress.
 * [.show operation details](../operations.md#show-operation-details): Get completion results.
 
 For example, after a successful completion, one can retrieve the results using:

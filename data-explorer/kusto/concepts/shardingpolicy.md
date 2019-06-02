@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/30/2019
+ms.date: 06/02/2019
 ---
 # Data sharding policy
 
@@ -40,5 +40,5 @@ The data sharding policy contains the following properties:
 
 When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
 
-Use the [sharding policy control commands]((../management/sharding-policy.md)) to manage data sharding policies for databases and tables.
+Use the [sharding policy control commands](../management/sharding-policy.md)) to manage data sharding policies for databases and tables.
  
