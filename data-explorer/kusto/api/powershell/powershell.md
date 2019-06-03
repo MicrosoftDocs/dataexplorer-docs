@@ -7,18 +7,18 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2018
+ms.date: 05/29/2019
 ---
 # Using the .NET Client Libraries from PowerShell
 
-The Kusto .NET client libraries can be used by PowerShell scripts through
+The Azure Data Explorer .NET client libraries can be used by PowerShell scripts through
 PowerShell's built-in integration with arbitrary (non-PowerShell) .NET libraries.
 
 ## Getting the .NET Client Libraries for scripting with PowerShell
 
-To start working with the Kusto .NET client libraries using PowerShell:
+To start working with the Azure Data Explorer .NET client libraries using PowerShell:
 
-1. Download the `Microsoft.Azure.Kusto.Tools` NuGet package from [here](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
+1. Download the [`Microsoft.Azure.Kusto.Tools` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
 2. Extract the contents of the 'tools' directory in the package (using 7-zip, for example).
 3. Call `[System.Reflection.Assembly]::LoadFrom("path")` from powershell, to load the required library. 
     - The `"path"` parameter to the command should indicate the location
@@ -26,8 +26,7 @@ To start working with the Kusto .NET client libraries using PowerShell:
 4. Once all dependent .NET assemblies are loaded, create a Kusto connection string,
    instantiate a *query provider* or an *admin provider*, and run the queries or commands (as shown in the [examples](powershell.md#examples) below).
 
-For detailed information about using the Kusto Client Libraries, see the topic
-with the same name in the documentation.
+For detailed information see the [Azure Data Explorer client libraries](/azure/kusto/api/netfx/about-kusto-data).
 
 ## Examples
 

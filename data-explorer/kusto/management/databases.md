@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/04/2019
+ms.date: 05/23/2019
 ---
 # Databases
 
@@ -28,7 +28,7 @@ The default call without any options specified is equal to 'identity' option.
 |DatabaseName  |String |The name of the database. Note that like all entity names in Kusto, database names are case-sensitive. 
 |PersistentStorage  |String |Indicates the persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.) 
 |Version  |String |The version number of the database. This number is updated for each change operation in the database (such as adding data and changing the schema). 
-|IsCurrent  |Boolean |Indicates whether the database version number that the client has is the most recent one. (This field is for internal use and will generally return "True".) 
+|IsCurrent  |Boolean |True if the database is the one that the current connection points to. 
 |DatabaseAccessMode  |String |Indicates how the cluster is attached to the database. (For example, if the database is attached in ReadOnly mode then the cluster will fail all requests to modify the database in any way.) 
 |PrettyName |String |The database's pretty name.
 |CurrentUserIsUnrestrictedViewer |Boolean | Specifies if the current user is an unrestricted viewer on the database.
@@ -41,7 +41,7 @@ The default call without any options specified is equal to 'identity' option.
 |DatabaseName  |String |The name of the database. Note that like all entity names in Kusto, database names are case-sensitive. 
 |PersistentStorage  |String |Indicates the persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.) 
 |Version  |String |The version number of the database. This number is updated for each change operation in the database (such as adding data and changing the schema). 
-|IsCurrent  |Boolean |Indicates whether the database version number that the client has is the most recent one. (This field is for internal use and will generally return "True".) 
+|IsCurrent  |Boolean |True if the database is the one that the current connection points to. 
 |DatabaseAccessMode  |String |Indicates how the cluster is attached to the database. (For example, if the database is attached in ReadOnly mode then the cluster will fail all requests to modify the database in any way.) 
 |PrettyName |String |The database's pretty name.
 |AuthorizedPrincipals |String | The database's collection of authorized principals (serialized in JSON format).
@@ -61,7 +61,7 @@ The default call without any options specified is equal to 'identity' option.
 |DatabaseName  |String |The name of the database. Note that like all entity names in Kusto, database names are case-sensitive. 
 |PersistentStorage  |String |Indicates the persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.) 
 |Version  |String |The version number of the database. This number is updated for each change operation in the database (such as adding data and changing the schema). 
-|IsCurrent  |Boolean |Indicates whether the database version number that the client has is the most recent one. (This field is for internal use and will generally return "True".) 
+|IsCurrent  |Boolean |True if the database is the one that the current connection points to. 
 |DatabaseAccessMode  |String |Indicates how the cluster is attached to the database. (For example, if the database is attached in ReadOnly mode then the cluster will fail all requests to modify the database in any way.) 
 |PrettyName |String |The database's pretty name.
 |DatabaseId |Guid |The database's unique id.
@@ -80,7 +80,7 @@ The default call without any options specified is equal to 'identity' option.
 |DatabaseName  |String |The name of the database. Note that like all entity names in Kusto, database names are case-sensitive. 
 |PersistentStorage  |String |Indicates the persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.) 
 |Version  |String |The version number of the database. This number is updated for each change operation in the database (such as adding data and changing the schema). 
-|IsCurrent  |Boolean |Indicates whether the database version number that the client has is the most recent one. (This field is for internal use and will generally return "True".) 
+|IsCurrent  |Boolean |True if the database is the one that the current connection points to. 
 |DatabaseAccessMode  |String |Indicates how the cluster is attached to the database. (For example, if the database is attached in ReadOnly mode then the cluster will fail all requests to modify the database in any way.) 
 |PrettyName |String |The database's pretty name.
 |DatabaseId |Guid |The database's unique id.
@@ -115,7 +115,7 @@ be included.
 |DatabaseName  |String |The name of the database. Note that like all entity names in Kusto, database names are case-sensitive. 
 |PersistentStorage  |String |Indicates the persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.) 
 |Version  |String |The version number of the database. This number is updated for each change operation in the database (such as adding data and changing the schema). 
-|IsCurrent  |Boolean |Indicates whether the database version number that the client has is the most recent one. (This field is for internal use and will generally return "True".) 
+|IsCurrent  |Boolean |True if the database is the one that the current connection points to. 
 |DatabaseAccessMode  |String |Indicates how the cluster is attached to the database. (For example, if the database is attached in ReadOnly mode then the cluster will fail all requests to modify the database in any way.) 
 |PrettyName |String |The database's pretty name.
 |CurrentUserIsUnrestrictedViewer |Boolean | Specifies if the current user is an unrestricted viewer on the database.

@@ -1,15 +1,15 @@
 ---
-title: Kusto Tools - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto Tools in Azure Data Explorer.
+title: Azure Data Explorer tools - Azure Data Explorer | Microsoft Docs
+description: This article describes Azure Data Explorer tools in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/19/2019
+ms.date: 05/30/2019
 ---
-# Kusto Tools
+# Azure Data Explorer tools
 
 ## Ad-hoc query tools
 
@@ -19,14 +19,16 @@ ms.date: 03/19/2019
 
 ## Visualizations, dashboards, and reporting tools
 
+
 * [Azure Notebooks](azurenotebooks.md) - Query Kusto from an Azure Notebooks notebook (preview)
 * [Excel](./excel.md) - Add Kusto query as Excel data source
-* [PowerBI](./powerbi.md) - Build reports and dashboards in Power BI on top of Kusto data
-* [PowerBI Connector](./powerbi-connector.md) - a Power BI Desktop connector for Kusto
+* [PowerBI](./powerbi.md) - Build reports and dashboards in Power BI on top of Azure Data Explorer data
+* [PowerBI Connector](./powerbi-connector.md) - a Power BI Desktop connector for Azure Data Explorer
 
 * [Grafana](grafana.md) - an analytics platform that enables creating and sharing dashboards.
 
 ## Orchestration tools
+
 
 * [Microsoft Flow](./flow.md) - Execute Kusto queries automatically as part of [Microsoft Flow](https://flow.microsoft.com/)
 * [Microsoft Logic App](./logicapps.md) - Execute Kusto queries automatically as part of [Microsoft Logic App](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-what-are-logic-apps)
@@ -34,10 +36,12 @@ ms.date: 03/19/2019
 
 ## Data ingestion tools
 
-* [LightIngest](./lightingest.md) - Help utility for ad-hoc data ingesting into Kusto
-* [Azure Data Factory](azure-data-factory.md) - Copy data from source data stores to Kusto, and from Kusto to any supported sink data store
+
+* [LightIngest](./lightingest.md) - Help utility for ad-hoc data ingesting into Azure Data Explorer
+* [Azure Data Factory](azure-data-factory.md) - Copy data from source data stores to Azure Data Explorer, and from Azure Data Explorer to any supported sink data store
 
 
 
 ## Source control integration tools
+
 * [Azure Pipelines](./azure-pipelines.md) - Invokes control commands as part of your pipeline

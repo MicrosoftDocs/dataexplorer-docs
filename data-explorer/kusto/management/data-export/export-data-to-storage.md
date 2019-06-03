@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/30/2019
+ms.date: 06/02/2019
 ---
 # Export data to storage
 
@@ -77,7 +77,12 @@ If the `async` flag is specified, the command executes in asynchronous mode.
 In this mode, the command returns immediately with an operation ID, and data
 export continues in the background until completion. The operation ID returned
 by the command can be used to track its progress and ultimately its results
-via the [.show operation details](../operations.md#show-operation-details) command.
+via the following commands:
+
+* [.show operations](../operations.md#show-operations): Track progress.
+* [.show operation details](../operations.md#show-operation-details): Get completion results.
+
+For example, after a successful completion, one can retrieve the results using:
 
 ```kusto
 .show operation f008dc1e-2710-47d8-8d34-0d562f5f8615 details

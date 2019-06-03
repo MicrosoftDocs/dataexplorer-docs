@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/23/2018
+ms.date: 05/26/2019
 ---
 # diffpatterns plugin
 

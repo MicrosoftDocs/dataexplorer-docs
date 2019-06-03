@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/16/2019
+ms.date: 05/22/2019
 ---
 # How-To: Authenticate with AAD for Kusto Access
 
@@ -177,20 +177,36 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 ## On-behalf-of authentication
 
-In this scenario an application has some AAD access token for some arbitrary
-resource, and it uses that token to get a new AAD access token that can be used
-with Kusto. This flow is called the
+In this scenario an application was sent an AAD access token for some arbitrary
+resource managed by the application, and it uses that token to acquire a new AAD
+access token for the Kusto resource so that the application could access Kusto
+on behalf of the principal indicated by the original AAD access token.
+
+This flow is called the
 [OAuth2 token exchange flow](https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-04).
-Due to its complexity, here are the steps required to do this registration:
+It generally requires multiple configuration steps with AAD, and in some cases
+(depending on the AAD tenant configuration) might require special consent from
+the administrator of the AAD tenant.
+
+
 
 **Step 1: Establish trust relationship between your application and Kusto service**
 
-1. Go to the(old) Azure portal => Active Directory => Applications and find your AAD application
-2. Click on the **Configure** tab
-3. Go to the **permissions to other applications** section
-4. Search for the application named Kusto and select it
-5. Go to delegated permission and add **Access Kusto**
-6. Click save
+1. Open the [Azure portal](https://portal.azure.com/) and make sure that you are
+   signed-in to the correct tenant (see top/right corner for the identity
+   used to sign-in to the portal).
+
+2. On the resources pane, click **Azure Active Directory**, then **App registrations**.
+
+3. Locate the application that uses the on-behalf-of flow and open it.
+
+4. Click **API permissions**, then **Add a permission**.
+
+5. Search for the application named **Azure Data Explorer** and select it.
+
+6. Select **user_impersonation / Access Kusto**.
+
+7. Click **Add permission**.
 
 **Step 2: Perform token exchange in your server code**
 

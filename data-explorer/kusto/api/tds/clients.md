@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/15/2019
+ms.date: 05/28/2019
 ---
 # MS-TDS clients and Kusto
 
@@ -28,7 +28,37 @@ For details see [.NET SQL Client (user authentication)](./aad.md#net-sql-client-
 
 Microsoft JDBC driver can be used to connect to Kusto with AAD authentication.
 
-For details see [JDBC (user authentication)](./aad.md#jdbc-user) and [JDBC (application authentication)](./aad.md#jdbc-application)
+Make application to use one of versions of *mssql-jdbc* JAR and *adal4j* JAR and all their dependecies. For example:
+
+```s
+mssql-jdbc-7.0.0.jre8.jar
+adal4j-1.6.3.jar
+accessors-smart-1.2.jar
+activation-1.1.jar
+asm-5.0.4.jar
+commons-codec-1.11.jar
+commons-lang3-3.5.jar
+gson-2.8.0.jar
+javax.mail-1.6.1.jar
+jcip-annotations-1.0-1.jar
+json-smart-2.3.jar
+lang-tag-1.4.4.jar
+nimbus-jose-jwt-6.5.jar
+oauth2-oidc-sdk-5.64.4.jar
+slf4j-api-1.7.21.jar
+```
+
+Make appliation to use JDBC driver class `com.microsoft.sqlserver.jdbc.SQLServerDriver`
+
+Use connection string like:
+
+```s
+jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database_name>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword
+```
+
+If you want to use AAD integrated auth mode replace *ActiveDirectoryPassword* with *ActiveDirectoryIntegrated*
+
+For more details see [JDBC (user authentication)](./aad.md#jdbc-user) and [JDBC (application authentication)](./aad.md#jdbc-application)
 
 ## ODBC
 
@@ -46,14 +76,14 @@ Create ODBC data source:
 9. ODBC source can now be used with applications.
 
 If ODBC application can accept connection string instead or in addition to DSN, use the following connection string:
-```powershell
+```s
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
 ```
 
 Some ODBC applications do not work well with NVARCHAR(MAX) type (see https://docs.microsoft.com/en-us/sql/relational-databases/native-client/features/using-large-value-types?view=sql-server-2017#sql-server-native-client-odbc-driver for more details). The common workaround used for such application is to cast returned data to NVARCHAR(n), with some value for n, e.g. NVARCHAR(4000). Such workaround would not work for Kusto, since Kusto has only one string type and for SQL clients it is encoded as NVARCHAR(MAX). Kusto offers different workaround for such applications. It is possible to configure Kusto to encode all strings as NVARCHAR(n) via connection string. The language feild in connection string can be used to specify tuning options in a format: `language@OptionName1:OptionValue1,OptionName2:OptionValue2`. 
 
 For example, the following connection string will instruct Kusto to encode strings as NVARCHAR(8000):
-```powershell
+```s
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated,Language=any@MaxStringSize:8000"
 ```
 

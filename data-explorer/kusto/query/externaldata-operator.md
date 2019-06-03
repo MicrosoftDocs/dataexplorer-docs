@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/28/2019
+ms.date: 05/26/2019
 ---
 # externaldata operator
 
@@ -46,9 +46,9 @@ query, it can be very large.
 
 ```kusto
 Users
-| where UserID in (externaldata (UserID:string) [
+| where UserID in ((externaldata (UserID:string) [
     @"https://storageaccount.blob.core.windows.net/storagecontainer/users.txt"
       h@"?...SAS..."
-    ])
+    ]))
 | ...
 ```

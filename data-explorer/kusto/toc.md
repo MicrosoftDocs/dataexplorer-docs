@@ -70,6 +70,7 @@
 #### [R](./query/rplugin.md)
 #### [rolling_percentile](./query/rolling-percentile-plugin.md)
 #### [sql_request](./query/sqlrequestplugin.md)
+#### [sequence_detect](./query/sequence-detect-plugin.md)
 ### [extend operator](./query/extendoperator.md)
 ### [externaldata operator](./query/externaldata-operator.md)
 ### [facet operator](./query/facetoperator.md)
@@ -224,6 +225,7 @@
 ### [max_of()](./query/max-offunction.md)
 ### [min_of()](./query/min-offunction.md)
 ### [monthofyear()](./query/monthofyearfunction.md)
+### [new_guid()](./query/newguidfunction.md)
 ### [not()](./query/notfunction.md)
 ### [now()](./query/nowfunction.md)
 ### [pack()](./query/packfunction.md)
@@ -281,6 +283,9 @@
 ### [series_stats()](./query/series-statsfunction.md)
 ### [series_stats_dynamic()](./query/series-stats-dynamicfunction.md)
 ### [series_subtract()](./query/series-subtractfunction.md)
+### [set_difference()](./query/setdifferencefunction.md)
+### [set_intersect()](./query/setintersectfunction.md)
+### [set_union()](./query/setunionfunction.md)
 ### [sign()](./query/signfunction.md)
 ### [sin()](./query/sinfunction.md)
 ### [split()](./query/splitfunction.md)
@@ -440,7 +445,7 @@
 
 ### [Ingestion Batching policy](./concepts/batchingpolicy.md)
 ### [IngestionTime policy](./concepts/ingestiontimepolicy.md)
-
+### [Merge policy](./concepts/mergepolicy.md)
 
 
 ### [Retention policy](./concepts/retentionpolicy.md)
@@ -449,7 +454,7 @@
 
 
 
-
+### [Sharding policy](./concepts/shardingpolicy.md)
 ### [Update policy](./concepts/updatepolicy.md)
 
 ## Misc and Errors

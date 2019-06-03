@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 05/26/2019
 ---
 # autocluster plugin
 
@@ -15,7 +15,7 @@ ms.date: 10/23/2018
 T | evaluate autocluster()
 ```
 
-AutoCluster finds common patterns of discrete attributes (dimensions) in the data and will reduce the results of the original query (whether it's 100 or 100k rows) to a small number of patterns. AutoCluster was developed to help analyze failures (e.g. exceptions, crashes) but can potentially work on any filtered data set. The AutoCluster algorithm was developed by the Developer Analytics research team. 
+AutoCluster finds common patterns of discrete attributes (dimensions) in the data and will reduce the results of the original query (whether it's 100 or 100k rows) to a small number of patterns. AutoCluster was developed to help analyze failures (e.g. exceptions, crashes) but can potentially work on any filtered data set. 
 
 **Syntax**
 
@@ -95,6 +95,11 @@ StormEvents
 |0|2278|38.7|\*|Hail|NO
 |1|512|8.7|\*|Thunderstorm Wind|YES
 |2|898|15.3|TEXAS|\*|\*
+
+**See also**
+
+* [basket](./basketplugin.md)
+* [reduce](./reduceoperator.md)
 
 **Additional information**
 
