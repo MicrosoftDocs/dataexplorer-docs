@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/02/2019
+ms.date: 06/05/2019
 ---
 # Kusto Explorer Code Navigation
 
@@ -21,5 +21,4 @@ You can navigate to the definition of the current symbol using `F12` or `Alt`+`H
 
 You can obtain all references of the current symbol using `Ctrl`+`F12` short-cut.
 
-
-![alt text](./Images/KustoTools-KustoExplorer/ke-codenav-references.png "code-navigation-references")
+![alt text](./Images/KustoTools-KustoExplorer/ke-codenav-refernces.gif "code-navigation-references")
