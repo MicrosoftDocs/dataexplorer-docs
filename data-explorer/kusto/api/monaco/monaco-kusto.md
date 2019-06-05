@@ -7,14 +7,14 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 06/05/2019
 ---
 # Monaco-kusto
 
-Monaco-kusto provides Kusto language support for the [Monaco editor](https://microsoft.github.io/monaco-editor/) available on [GitHub](https://github.com/Azure/monaco-kusto) and on NPM.
+Azure Data Explorer *Monaco-kusto* provides query language support for the [Monaco editor](https://microsoft.github.io/monaco-editor/) available on [GitHub](https://github.com/Azure/monaco-kusto) and on NPM.
 
 * [GitHub Repository](https://github.com/Azure/monaco-kusto)
 
-* [Setting up dev environment](https://github.com/Azure/monaco-kusto#setting-up-a-dev-environment)
+* [Set up development environment](https://github.com/Azure/monaco-kusto#setting-up-a-dev-environment)
 
 * [Usage](https://github.com/Azure/monaco-kusto#usage)
