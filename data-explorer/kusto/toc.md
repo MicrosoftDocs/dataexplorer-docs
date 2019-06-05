@@ -582,6 +582,7 @@
 
 ## Monaco IDE integration
 ### [monaco-kusto overview](./api/monaco/monaco-kusto.md)
+### [Embed web UX in an iFrame](./api/monaco/host-web-ux-in-iframe.md)
 # [Tools](./tools/index.md)
 ## [Tools overview](./tools/index.md)
 
