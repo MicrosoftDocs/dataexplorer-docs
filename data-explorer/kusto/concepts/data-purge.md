@@ -73,14 +73,11 @@ is sufficiently large, the process will effectively re-ingest all the data in th
    cannot recover purged data, and rollback of the data to a previous version cannot
    go to "before" the latest purge command.
 
-* To avoid mistakes, it's recommended to verify the predicate by running a query prior to purge to ensure that 
-the results match the expected outcome, or to use the [2-step process](#Example:-Two-step-purge) that returns the expected number 
-of records that will be purged. 
+* To avoid mistakes, it's recommended to verify the predicate by running a query prior to purge to ensure that the results match the expected outcome, or use the 2-step process that returns the expected number of records that will be purged. 
 
 * As a precautionary measure, the purge process is disabled, by default, on all clusters.
    Enabling the purge process is a one-time operation that requires opening a
-   [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview); please specify that you want
-   the `EnabledForPurge` feature to be turned on.
+   [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview); please specify that you want the `EnabledForPurge` feature to be turned on.
 
 * The `.purge` command is executed against the Data Management endpoint: 
    `https://ingest-[YourClusterName].kusto.windows.net`.
