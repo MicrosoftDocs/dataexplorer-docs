@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2019
+ms.date: 06/10/2019
 ---
 # IngestionBatching policy
 
@@ -36,12 +36,12 @@ therefore in queued ingestion Kusto will batch such small blobs together. Batchi
 is done until the first condition becomes true:
 
 1. The total size of the batched data reaches the optimal size, or
-2. The maximum delay time allowed by the `IngestionBatching` policy
-   is reached
+2. The maximum delay time, total size, or number of blobs allowed by 
+the `IngestionBatching` policy is reached
 
 The `IngestionBatching` policy can be set on databases, or tables. By default,
 if not policy is defined, Kusto will use a default value of **5 minutes** as the
-maximum delay time for batching.
+maximum delay time, **1000** items, total size of **1G** for batching.
 
 > [!WARNING]
 > It is recommended that customers who want to set this policy to first contact

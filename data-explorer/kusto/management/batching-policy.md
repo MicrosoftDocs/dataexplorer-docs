@@ -7,15 +7,16 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/11/2019
+ms.date: 06/10/2019
 ---
 # IngestionBatching policy
 
 The [ingestionBatching policy](../concepts/batchingpolicy.md) is a policy object that determines
-when data aggregation should stop during data ingestion according to the specified time.
+when data aggregation should stop during data ingestion according to the specified settings.
 
 The policy can be set to `null`, in which case the default values are used, setting
-the maximum batching time span to 5 minutes or the default cluster value set by Kusto.
+the maximum batching time span to: 5 minutes, 1000 items and a total batch size of 1G 
+or the default cluster value set by Kusto.
 
 If the policy is not set for a certain entity, it will look for a higher hierarchy level policy,
 if all are set to null the default value will be used. 
@@ -66,14 +67,14 @@ Show policy of IngestionBatching for table `MyTable` in database `MyDatabase`:
 .show table MyDatabase.MyTable policy ingestionbatching 
 ```
 
-Setting policy of IngestionBatching of table `MyTable` (in database context) to 10 minutes:
+Setting policy of IngestionBatching of table `MyTable` (in database context) to 10 minutes, 500 files and 1G:
 ```
-.alter table MyTable policy ingestionbatching  @"{'MaximumBatchingTimeSpan':'00:10:00'}"
+.alter table MyTable policy ingestionbatching  @"{'MaximumBatchingTimeSpan':'00:10:00', "MaximumNumberOfItems": 500, "MaximumRawDataSizeMB": 1024}"
 ```
 
-Setting policy for multiple tables (in database context), 10 minutes:
+Setting policy for multiple tables (in database context), 10 minutes, 500 files and 1G:
 ```
-.alter tables (MyTable1, MyTable2, MyTable3) ingestionbatching  @"{'MaximumBatchingTimeSpan':'00:10:00'}"
+.alter tables (MyTable1, MyTable2, MyTable3) ingestionbatching  @"{'MaximumBatchingTimeSpan':'00:10:00', "MaximumNumberOfItems": 500, "MaximumRawDataSizeMB": 1024}}"
 ```
 
 Deleting a policy set on an entity:

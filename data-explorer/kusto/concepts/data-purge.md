@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/05/2019
+ms.date: 06/11/2019
 ---
 # Data purge
 
@@ -48,16 +48,15 @@ The process of selectively purging data from Azure Data Explorer happens in the 
    to delete, Kusto scans the table looking to identify data shards that would
    participate in the data purge (have one or more records for which the predicate
    returns true).
-1. **Phase 2: (Soft Delete)**
+2. **Phase 2: (Soft Delete)**
    Replace each data shard in the table (identified in step (1)) with a re-ingested
    version that doesn't have the records for which the predicate returns true.
    As long as no new data is being ingested into the table, by the end of this phase queries will no longer return data for which the predicate returns true. 
    The duration of the purge soft delete phase depends on the number of records that must be purged,
    their distribution across the data shards in the cluster, the number of nodes in the cluster, 
    the spare capacity it has for purge operations, and several other factors. The duration of phase 2 can 
-   vary between a few seconds to many hours. The [engine `whatif` command](#purge-whatif-command) 
-   provides a *rough* estimation for the expected duration of soft delete given a purge predicate.
-1. **Phase 3: (Hard Delete)**
+   vary between a few seconds to many hours.
+3. **Phase 3: (Hard Delete)**
    Work back all storage artifacts that may have the "poison" data, and delete
    them from storage. This phase is performed at least 5 days *after* the completion
    of the previous phase, but no longer than 30 days after the initial command,
@@ -74,13 +73,11 @@ is sufficiently large, the process will effectively re-ingest all the data in th
    cannot recover purged data, and rollback of the data to a previous version cannot
    go to "before" the latest purge command.
 
-* To avoid mistakes, it's recommended to perform a dry-run using the [engine `whatif` command](#purge-whatif-command) 
-prior to executing the `.purge` command to ensure that the results match the expected outcome.
+* To avoid mistakes, it's recommended to verify the predicate by running a query prior to purge to ensure that the results match the expected outcome, or use the 2-step process that returns the expected number of records that will be purged. 
 
 * As a precautionary measure, the purge process is disabled, by default, on all clusters.
    Enabling the purge process is a one-time operation that requires opening a
-   [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview); please specify that you want
-   the `EnabledForPurge` feature to be turned on.
+   [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview); please specify that you want the `EnabledForPurge` feature to be turned on.
 
 * The `.purge` command is executed against the Data Management endpoint: 
    `https://ingest-[YourClusterName].kusto.windows.net`.
@@ -130,7 +127,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 	> [!NOTE]
 	> Generate this command by using the CslCommandGenerator API, available as part of the [Kusto Client Library](../api/netfx/about-kusto-data.md) NuGet package.
 
-1. Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command executes the [engine `whatif` command](#purge-whatif-command) and returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data. The `whatif` command may take time to complete on large tables with significant cold cache data.
+1. Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data. Using this option may take a long time to complete on large tables with significant cold cache data.
 	<!-- If query times-out on DM endpoint (default timeout is 10 minutes), it is recommended to use the [engine `whatif` command](#purge-whatif-command) directly againt the engine endpoint while increasing the [server timeout limit](../concepts/querylimits.md#limit-on-request-execution-time-timeout). Only after you have verified the expected results using the engine whatif command, issue the purge command via the DM endpoint using the 'noregrets' option. -->
 
 	 **Syntax**
@@ -144,16 +141,17 @@ Purge command may be invoked in two ways for differing usage scenarios:
 	
 	|Parameters  |Description  |
 	|---------|---------|
-	|**DatabaseName**   |   Name of the database.      |
-	|**TableName**     |     Name of the table.    |
-	|**Predicate**     |    Identifies the records to purge.   
-	 * The predicate must be a simple selection (e.g. *where [ColumnName] == 'X'* / *where [ColumnName] in ('X', 'Y', 'Z') and [OtherColumn] == 'A'*).
-	 * Multiple filters must be combined with an 'and', rather than separate `where` clauses (e.g. `where [ColumnName] == 'X' and [OtherColumn] == 'Y'` and not `where [ColumnName] == 'X' | where [OtherColumn] == 'Y'`).
-	 * The predicate can't reference tables other than the table being purged (*TableName*). The predicate can only include the selection statement (`where`). It can't project specific columns from the table (output schema when running '*`table` | Predicate*' must match table schema).
-	 * System functions (such as, `ingestion_time()`, `extent_id()`) are not supported as part of the predicate.
-	 * Use the [engine `whatif` command](#purge-whatif-command) to test the supported operators for the predicate.  |
-	|**noregrets**    |     If set, triggers a single-step activation.    |
-	|**verificationtoken**     |  In two-step activation scenario (**noregrets** isn't set), this token can be used to execute the second step and commit the action. If **verificationtoken** isn't specified, it will trigger the command's first step, in which information about the purge is returned and a token, that should be passed back to the command to perform step #2.   |
+	| DatabaseName   |   Name of the database.      |
+	| TableName     |     Name of the table.    |
+	| Predicate    |    Identifies the records to purge. See Purge predicate limitations below. | 
+	| noregrets    |     If set, triggers a single-step activation.    |
+	| verificationtoken     |  In two-step activation scenario (**noregrets** isn't set), this token can be used to execute the second step and commit the action. If **verificationtoken** isn't specified, it will trigger the command's first step, in which information about the purge is returned and a token, that should be passed back to the command to perform step #2.   |
+
+	**Purge predicate limitations**
+	* The predicate must be a simple selection (e.g. *where [ColumnName] == 'X'* / *where [ColumnName] in ('X', 'Y', 'Z') and [OtherColumn] == 'A'*).
+	* Multiple filters must be combined with an 'and', rather than separate `where` clauses (e.g. `where [ColumnName] == 'X' and  OtherColumn] == 'Y'` and not `where [ColumnName] == 'X' | where [OtherColumn] == 'Y'`).
+	* The predicate can't reference tables other than the table being purged (*TableName*). The predicate can only include the selection statement (`where`). It can't project specific columns from the table (output schema when running '*`table` | Predicate*' must match table schema).
+	* System functions (such as, `ingestion_time()`, `extent_id()`) are not supported as part of the predicate.
 
 #### Example: Two-step purge
 
@@ -375,30 +373,4 @@ The output is the same as the '.show tables' command output (returned without th
 |---|---|---|---
 |OtherTable|MyDatabase|---|---
 
-## Engine purge commands
-
-Some aspects of purge execution can only be obtained by running commands on the engine endpoint executing the purge. These commands are not required for standard purge execution flow. These commands may be helpful by providing more detailed visibility of the purge operation.
-
-### purge whatif command
-
-To experiment with the purge syntax and obtain information about its outcome (number of records to purge, estimated execution time, and more.), an Engine `whatif` command is available and requires database user permissions. 
-The `whatif` command performs a dry-run of the purge. No records will be purged when running this command. The command should be executed in the context of the database being purged. 
-
-**Syntax**
-
-`.purge` `whatif`=[`info`|`stats`|`purge`|`retain`] `table` *TableName* `records` <| *Predicate*
-
-**Examples**
-
-```kusto
-.purge whatif=info table Usage records <| where CustomerId in ('X', 'Y')
-```
-
-* **TableName** - name of the table to be purged.
-* **Predicate** - identifies the records to be purged. (see [Purge table `TableName` records command](#purge-table-tablename-records-command)
-* **whatif** options: 
-	**info** - shows the number of records to be purged, and the estimated time purge with the provided predicate will complete.  
-	**stats** - shows extent statistics about the purge operation. Shows all extents that will be impacted when running purge and the count of retained/purged records in each. This is identical to running whatif with no explicit option (`.purge whatif table Usage records <| where CustomerId in ('X', 'Y')`). 
-    **purge** - shows all records that will be *purged* from table *TableName* when running with the provided predicate. 
-    **retain** - shows all records that will be *retained* from table *TableName* when running with the provided predicate.
 
