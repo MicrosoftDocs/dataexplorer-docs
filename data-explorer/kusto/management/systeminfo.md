@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 06/07/2019
 ---
 # System information
 
@@ -15,6 +15,7 @@ This section summarizes commands that are available to `Database Admins` and `Da
 
 * [.show queries](queries.md) - displays information on completed and running queries.
 * [.show commands](commands.md) - displays information on completed commands and their resources utilization.
-
+* [.show commands-and-queries](commands-and-queries.md) - displays information on completed commands and queries, and their resources utilization.
 * [.show journal](journal.md) - displays history of the metadata operations.
-
+* [.show operations](operations.md) - displays administrative operations both running and completed, since Admin node was last elected.
+* [.show failed ingestions](ingestionfailures.md) - displays information on failures encountered during data ingestion to the cluster.

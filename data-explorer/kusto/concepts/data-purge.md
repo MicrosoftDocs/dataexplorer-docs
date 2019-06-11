@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/05/2019
+ms.date: 06/06/2019
 ---
 # Data purge
 
@@ -375,30 +375,4 @@ The output is the same as the '.show tables' command output (returned without th
 |---|---|---|---
 |OtherTable|MyDatabase|---|---
 
-## Engine purge commands
-
-Some aspects of purge execution can only be obtained by running commands on the engine endpoint executing the purge. These commands are not required for standard purge execution flow. These commands may be helpful by providing more detailed visibility of the purge operation.
-
-### purge whatif command
-
-To experiment with the purge syntax and obtain information about its outcome (number of records to purge, estimated execution time, and more.), an Engine `whatif` command is available and requires database user permissions. 
-The `whatif` command performs a dry-run of the purge. No records will be purged when running this command. The command should be executed in the context of the database being purged. 
-
-**Syntax**
-
-`.purge` `whatif`=[`info`|`stats`|`purge`|`retain`] `table` *TableName* `records` <| *Predicate*
-
-**Examples**
-
-```kusto
-.purge whatif=info table Usage records <| where CustomerId in ('X', 'Y')
-```
-
-* **TableName** - name of the table to be purged.
-* **Predicate** - identifies the records to be purged. (see [Purge table `TableName` records command](#purge-table-tablename-records-command)
-* **whatif** options: 
-	**info** - shows the number of records to be purged, and the estimated time purge with the provided predicate will complete.  
-	**stats** - shows extent statistics about the purge operation. Shows all extents that will be impacted when running purge and the count of retained/purged records in each. This is identical to running whatif with no explicit option (`.purge whatif table Usage records <| where CustomerId in ('X', 'Y')`). 
-    **purge** - shows all records that will be *purged* from table *TableName* when running with the provided predicate. 
-    **retain** - shows all records that will be *retained* from table *TableName* when running with the provided predicate.
 
