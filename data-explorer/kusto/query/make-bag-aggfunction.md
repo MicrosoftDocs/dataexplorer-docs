@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2019
+ms.date: 06/12/2019
 ---
 # make_bag() (aggregation function)
 
@@ -56,3 +56,23 @@ T
 |dict|
 |----|
 |{ "prop01": "val_a", "prop02": "val_b", "prop03": "val_c" } |
+
+An exmaple using [bag_unpack()](bag-unpackplugin.md) plugin for transforming the bag keys in the output of make_bag() into columns. 
+
+```kusto
+let T = datatable(prop:string, value:string)
+[
+    "prop01", "val_a",
+    "prop02", "val_b",
+    "prop03", "val_c",
+];
+T
+| extend p = pack(prop, value)
+| summarize bag=make_bag(p)
+| evaluate bag_unpack(bag) 
+
+```
+
+|prop01|prop02|prop03|
+|---|---|---|
+|val_a|val_b|val_c|
