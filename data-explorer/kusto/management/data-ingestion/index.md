@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/02/2019
+ms.date: 06/12/2019
 ---
 # Data ingestion
 
@@ -183,19 +183,19 @@ The following table shows which property applies to each method of ingestion.
 For all ingestion methods other than ingest-from-query, the data must be
 formatted in one of the supported data formats:
 
-
-    |Format     |Extension|Description|
-    |-----------|---------|-----------|
-    |`csv`      |.csv     |Comma-separated values. See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt)|
-    |`tsv`      |.tsv     |Tab-separated values.|
-    |`psv`      |.psv     |Pipe-separated values. (Pipe is the vertical bar character)|
-    |`sohv`     |.sohv    |SOH-separated values. (SOH is ASCII codepoint 1; this format is used by Hive on HDInsight)|
-    |`scsv`     |.scsv    |Semicolon-separated values.(This format is unique to Azure Storage Diagnostics logs)|
-    |`json`     |.json    |Text file in [JSON Lines](http://jsonlines.org/) format. Each line is a valid JSON object, line separator is `\n`.|
-    |`multijson`|.multijson|Text file with a JSON array of property bags (each is a record), or one or more property bags with whitespace-separation. If you are not sure whether to choose `json` or `multijson`, choose `multijson.|
-    |`avro`     |.avro    |Binary file with multiple records, each of which is an Avro record. Supported codecs: `null`, `deflate`. |
-    |`txt`      |.txt     |Text file (every line is a single column).|
-
+|Format   |Extension   |Description|
+|---------|------------|-----------|
+|avro     |`.avro`     |An [Avro container file](https://avro.apache.org/docs/current/). Supported codes: `null`, `deflate`.|
+|csv      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
+|json     |`.json`     |A text file with JSON objects delimited by `\n`. See [JSON Lines](http://jsonlines.org/).|
+|multijson|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace. (This format is to preferred over json, unless the data is non-property bags.)|
+|psv      |`.psv`      |A text file with pipe-separated values (`|`).|
+|raw      |`.raw`      |A text file whose entire contents is a single string value.|
+|scsv     |`.scsv`     |A text file with semicolon-separated values (`;`).|
+|sohsv    |`.sohsv`    |A text file with SOH-separated values. (SOH is ASCII codepoint 1; this format is used by Hive on HDInsight.)|
+|tsv      |`.tsv`      |A text file with tab-separated values (`\t`).|
+|tsve     |`.tsv`      |A text file with tab-separated values (`\t`). A backslash character (`\`) is used for escaping.|
+|txt      |`.txt`      |A text file with lines delimited by `\n`.|
 
 Blobs and files can be optionally compressed through any of the following
 compression algorithms:
