@@ -57,7 +57,7 @@ T
 |----|
 |{ "prop01": "val_a", "prop02": "val_b", "prop03": "val_c" } |
 
-Using [bag_unpack()](bag-unpackplugin.md) plugin for transforming the bag keys in the make_bag()output into columns. 
+Using [bag_unpack()](bag-unpackplugin.md) plugin for transforming the bag keys in the make_bag() output into columns. 
 
 ```kusto
 let T = datatable(prop:string, value:string)
