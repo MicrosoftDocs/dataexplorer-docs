@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/22/2019
+ms.date: 06/17/2019
 ---
 # Scalar Functions
 
@@ -145,6 +145,8 @@ ms.date: 05/22/2019
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[column_ifexists()](columnifexists.md)|Takes a column name as a string and a default value. Returns a reference to the column if it exists, otherwise - returns the default value.|
+|[current_cluster_endpoint()](current-cluster-endpoint-function.md)|Returns the current cluster running the query.|
+|[current_database()](current-database-function.md)|Returns the name of the database in scope.|
 |[current_principal()](current-principalfunction.md)|Returns the current principal running this query.|
 |[cursor_after()](cursorafterfunction.md)|Used to access to the records that were ingested after the previous value of the cursor.|
 |[estimate_data_size()](estimate-data-sizefunction.md)|Returns an estimated data size of the selected columns of the tabular expression.|
