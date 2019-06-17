@@ -11,7 +11,7 @@ ms.date: 06/17/2019
 ---
 # current_database())
 
-Returns the name of the database in scope (i.e., the database that all query
+Returns the name of the database in scope (database that all query
 entities are resolved against if no other database is specified).
 
 **Syntax**
@@ -20,9 +20,7 @@ entities are resolved against if no other database is specified).
 
 **Returns**
 
-The name of the database in scope (i.e., the database that all query
-entities are resolved against if no other database is specified) as a value
-of type `string`.
+The name of the database in scope as a value of type `string`.
 
 **Example**
 
