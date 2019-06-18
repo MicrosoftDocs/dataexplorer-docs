@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/17/2019
+ms.date: 06/12/2019
 ---
 # make_bag() (aggregation function)
 
@@ -57,7 +57,7 @@ T
 |----|
 |{ "prop01": "val_a", "prop02": "val_b", "prop03": "val_c" } |
 
-Using [bag_unpack()](bag-unpackplugin.md) plugin for transforming the bag keys in the make_bag() output into columns. 
+An exmaple using [bag_unpack()](bag-unpackplugin.md) plugin for transforming the bag keys in the output of make_bag() into columns. 
 
 ```kusto
 let T = datatable(prop:string, value:string)
