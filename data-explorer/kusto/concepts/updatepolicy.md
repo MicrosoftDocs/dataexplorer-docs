@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/14/2019
+ms.date: 06/17/2019
 ---
 # Update policy
 
@@ -88,7 +88,8 @@ Each such object is represented as a JSON property bag, with the following prope
    (meaning, data will be ingested only once to each table in the chain of affected tables).
 * When referencing the `Source` table in the `Query` part of the policy (or in Functions referenced by the latter), make sure you **don't** use the qualified name of the table
    (meaning, use `TableName` and not `database("DatabaseName").TableName` nor `cluster("ClusterName").database("DatabaseName").TableName`).
- 
+* A query which is run as part of an update policy does not have read access to tables which have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled.
+
 
 
 ## Failures
