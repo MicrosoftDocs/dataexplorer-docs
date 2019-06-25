@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2019
+ms.date: 06/23/2019
 ---
 # series_decompose_anomalies()
 
@@ -27,8 +27,9 @@ Takes an expression containing a series (dynamic numerical array) as input and e
     * -1: autodetect seasonality (using [series_periods_detect](series-periods-detectfunction.md)) [default] 
     * 0: no seasonality (i.e. skip extracting this component)
     * period: positive integer, specifying the expected period in number of bins unit. For example, if the series is in 1h bins, a weekly period is 168 bins
-* *Trend*: A string controlling the trend analysis, containing either
-    * "none": no trend, skip extracting this component [default]
+* *Trend*: A string controlling the trend analysis, containing either    
+    * "avg": define trend component as average of the series [default]
+    * "none": no trend, skip extracting this component 
     * "linefit": extract trend component using linear regression
 * *Test_points*: 0 [default] or positive integer, specifying the number of points at the end of the series to exclude from the learning (regression) process. This parameter should be set for forecasting purpose
 * *AD_method*: A string controlling the anomaly detection method (see [series_outliers](series-outliersfunction.md)) on the residual time series, containing either    

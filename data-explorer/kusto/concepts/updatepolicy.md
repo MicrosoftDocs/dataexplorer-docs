@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/17/2019
+ms.date: 06/18/2019
 ---
 # Update policy
 
@@ -18,7 +18,7 @@ data being inserted into the source table. This allows, for example, the creatio
 of a one table as the filtered view of another table, possibly with a different
 schema, retention policy, etc.
 
-By default, failure to run the update policy does not affect the ingestion of
+By default, failure to run the update policy doesn't affect the ingestion of
 data to the source table. The update policy can also defined as **transactional**,
 in which case a failure to run the update policy forces the ingestion of data
 to the source table to fail as well. (Care must be used when this is done,
@@ -88,7 +88,7 @@ Each such object is represented as a JSON property bag, with the following prope
    (meaning, data will be ingested only once to each table in the chain of affected tables).
 * When referencing the `Source` table in the `Query` part of the policy (or in Functions referenced by the latter), make sure you **don't** use the qualified name of the table
    (meaning, use `TableName` and not `database("DatabaseName").TableName` nor `cluster("ClusterName").database("DatabaseName").TableName`).
-* A query which is run as part of an update policy does not have read access to tables which have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled.
+* A query which is run as part of an update policy doesn't have read access to tables which have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled.
 
 
 

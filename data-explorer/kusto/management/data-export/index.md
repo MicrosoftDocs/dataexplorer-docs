@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/02/2019
+ms.date: 06/23/2019
 ---
 # Data export
 
@@ -43,7 +43,7 @@ There are several methods for data export:
   "push" export model in which the service running the query also writes its
   results in an optimized manner. This model is exposed through a set of
   `.export` control commands, supporting exporting query results to
-
+ an [external table](export-data-to-an-external-table.md),
   a [SQL table](export-data-to-sql.md), or an [external Blob storage](export-data-to-storage.md).
   
   Service side export commands are limited by the cluster's available data export capacity. 
