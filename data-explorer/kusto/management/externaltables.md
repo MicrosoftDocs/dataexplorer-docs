@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/15/2019
+ms.date: 06/18/2019
 ---
 # External tables commands (preview)
 
@@ -201,6 +201,24 @@ partition by bin(Timestamp, 1d)
 dataformat=csv
 ( 
    @'h"abfss://filesystem@storageaccount.dfs.core.windows.net/path;secretKey'
+)
+with 
+(
+   docstring = "Docs",
+   folder = "ExternalTables",
+   namePrefix="Prefix"
+)  
+```
+
+A partitioned external table with directory format of "year=yyyy/month=MM/day=dd":
+
+```
+.create external table ExternalPartitionedBlob (Timestamp:datetime, x:long, s:string) 
+kind=blob
+partition format_datetime="'year='yyyy/'month='MM/'day='dd" by bin(Timestamp, 1d)
+dataformat=csv
+( 
+   h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
 )
 with 
 (

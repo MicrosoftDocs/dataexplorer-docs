@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/14/2019
+ms.date: 06/24/2019
 ---
 # User-Defined Functions
 
@@ -331,5 +331,5 @@ Table2 | where Column != 123 | project d = f(Column)
    input schema).
 2. **Default values**:
    The default value for a scalar parameter to a function must be
-   a scalar literal (constant). Alos, stored functions can't
+   a scalar literal (constant). Also, stored functions can't
    have a default value of type `dynamic`.

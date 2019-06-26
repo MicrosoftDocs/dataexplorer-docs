@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/21/2019
+ms.date: 06/24/2019
 ---
 # R plugin (Preview)
 
@@ -16,7 +16,8 @@ The plugin's runtime is hosted in  a sandbox, an isolated and secure environment
 
 ### Syntax
 
-*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `r(`*output_schema*`,` *script*[`,` *script_parameters*]`)`
+*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `r(`*output_schema*`,` *script* [`,` *script_parameters*]`)`
+
 
 ### Arguments
 
@@ -30,6 +31,7 @@ The plugin's runtime is hosted in  a sandbox, an isolated and secure environment
    Default: `single`.
     * `single`: A single instance of the script will run over the entire query data.
     * `per_node`: If the query before the R block is distributed, an instance of the script will run on each node over the data that it contains.
+
 
 ### Reserved R variables
 

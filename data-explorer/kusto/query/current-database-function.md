@@ -1,15 +1,15 @@
 ---
-title: current_database()) - Azure Data Explorer | Microsoft Docs
-description: This article describes current_database()) in Azure Data Explorer.
+title: current_database() - Azure Data Explorer | Microsoft Docs
+description: This article describes current_database() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/17/2019
+ms.date: 06/18/2019
 ---
-# current_database())
+# current_database()
 
 Returns the name of the database in scope (database that all query
 entities are resolved against if no other database is specified).

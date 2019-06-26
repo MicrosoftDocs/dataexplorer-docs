@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/18/2019
+ms.date: 06/26/2019
 ---
 # Kusto.Explorer tool
 
-Kusto.Explorer is a rich desktop application that allows you to explore your data with Kusto. 
+Kusto.Explorer is a rich desktop application that allows you to explore your data using Kusto query language. 
 
 ## Getting the tool
 
@@ -117,7 +117,7 @@ Home Tab accumulates most recently used functionality, splitted by menus:
 |Stacked Area chart	  | Display a stacked area chart in which the x-axis is the first column (must be a numeric) and all numeric columns are mapped to different series (Y-axis) |
 |Time Chart   | Display a time chart in which the x-axis is the first column (must be a datetime) and all numeric columns are mapped to different series (Y-axis).|
 |Line Chart   | Display a line chart in which the x-axis is the first column (must be a numeric) and all numeric columns are mapped to different series (Y-axis).|
-|Anomaly Chart|	Similar to timechart - while finding anomalies in time-series data using machine-learning Anomalies algorithm. For anomaly detection, Kusto.Explorer is integrated with Azure ML Anomaly Detection service.(*) 
+|Anomaly Chart|	Similar to timechart - while finding anomalies in time series data using machine learning anomalies algorithm. For anomaly detection, Kusto.Explorer uses [series_decompose_anomalies](../query/series-decompose-anomaliesfunction.md) function.(*) 
 |Pie Chart    |	Display a pie chart in which the color-axis is the first column and the theta-axis (must be a measure, converted to percents) is the second column.|
 |Ladder Chart |	Display a ladder chart in which the x-axis is the last two columns (must be a datetime) and the y-axis is a composite of the other columns.|
 |Scatter Chart| Display a point graph in which the x-axis is the first column (must be a numeric) and all numeric columns are mapped to different series (Y-axis).|

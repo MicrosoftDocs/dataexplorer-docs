@@ -7,26 +7,26 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/30/2019
+ms.date: 06/22/2019
 ---
 # project-away operator
 
 Select what columns in the input to exclude from the output
 
 ```kusto
-T | project-away price, quantity
+T | project-away price, quantity, zz*
 ```
 
 The order of the columns in the result is determined by their original order in the table. Only the columns that were specified as arguments are dropped. The other columns are included in the result.  (See also `project`.)
 
 **Syntax**
 
-*T* `| project-away` *ColumnName* [`,` ...]
+*T* `| project-away` *ColumnNameOrPattern* [`,` ...]
 
 **Arguments**
 
 * *T*: The input table
-* *ColumnName:* The name of a column to remove from the output. 
+* *ColumnNameOrPattern:* The name of the column or column wildcard-pattern to be removed from the output.
 
 **Returns**
 
@@ -34,29 +34,33 @@ A table with columns that were not named as arguments. Contains same number of r
 
 **Tips**
 
-* Use [`project-rename`](projectrenameoperator.md) instead of `project-away` if you also want to rename some of the columns.
+* Use [`project-rename`](projectrenameoperator.md) if your intention is to rename columns.
+* Use [`project-reorder`](projectreorderoperator.md) if your intention is to reorder columns.
 
 * You can `project-away` any columns that are present in the original table or that were computed as part of the query.
 
 
 **Examples**
 
-The input table `T` has three columns of type `int`: `A`, `B`, and `C`.
+The input table `T` has three columns of type `long`: `A`, `B`, and `C`.
 
 ```kusto
-T | project-away C    // Removes column C from the output
+datatable(A:long, B:long, C:long) [1, 2, 3]
+| project-away C    // Removes column C from the output
 ```
 
-This query returns the table with columns `A`, and `B`. 
+|A|B|
+|---|---|
+|1|2|
 
-Consider the example for [`parse`](parseoperator.md). 
-The column `eventText` of table `Traces` contains
-strings of the form `Event: NotifySliceRelease (resourceName={0}, totalSlices= {1}, sliceNumber={2}, lockTime={3}, releaseTime={4}, previousLockTime={5})`.
-The operation below will extend the table with 6 columns: `resourceName` , `totalSlices`, `sliceNumber`, `lockTime `, `releaseTime`, `previouLockTime`, 
- `Month` and `Day`, excluding the original `eventText` column.
+Removing columns starting with 'a'.
 
 ```kusto
-Traces  
-| parse eventText with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previousLockTime:date ")" *  
-| project-away eventText
+print  a2='a2', b = 'b', a3='a3', a1='a1'
+|  project-away a* 
 ```
+
+|b|
+|---|
+|b|
+

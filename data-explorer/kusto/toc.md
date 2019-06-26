@@ -92,6 +92,7 @@
 ### [project operator](./query/projectoperator.md)
 ### [project-away operator](./query/projectawayoperator.md)
 ### [project-rename operator](./query/projectrenameoperator.md)
+### [project-reorder operator](./query/projectreorderoperator.md)
 ### [parse operator](./query/parseoperator.md)
 ### [partition operator](./query/partitionoperator.md)
 ### [print operator](./query/printoperator.md)
@@ -143,8 +144,9 @@
 ### [assert()](./query/assert-function.md)
 ### [atan()](./query/atanfunction.md)
 ### [atan2()](./query/atan2function.md)
-### [base64_decodestring()](./query/base64decodestringfunction.md)
-### [base64_encodestring()](./query/base64encodestringfunction.md)
+### [base64_decode_toarray()](./query/base64_decode_toarrayfunction.md)
+### [base64_decode_tostring()](./query/base64_decode_tostringfunction.md)
+### [base64_encode_tostring()](./query/base64_encode_tostringfunction.md)
 ### [bag_keys()](./query/bagkeysfunction.md)
 ### [beta_cdf()](./query/beta-cdffunction.md)
 ### [beta_inv()](./query/beta-invfunction.md)
@@ -497,6 +499,8 @@
 ## [Data Export](./management/data-export/index.md)
 ### [To cloud storage](./management/data-export/export-data-to-storage.md)
 ### [To a SQL table](./management/data-export/export-data-to-sql.md)
+### [To an external table](./management/data-export/export-data-to-an-external-table.md)
+### [Continuous data export](./management/data-export/continuous-data-export.md)
 
 ## [Database Cursors](./management/databasecursor.md)
 

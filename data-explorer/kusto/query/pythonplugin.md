@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/05/2019
+ms.date: 06/26/2019
 ---
 # Python plugin (Preview)
 
@@ -16,14 +16,14 @@ The plugin's runtime is hosted in  a sandbox, an isolated and secure Python envi
 
 ### Syntax
 
-*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script*[`,` *script_parameters*]`)`
+*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*]`)`
+
 
 ### Arguments
 
 * *output_schema*: A `type` literal that defines the output schema of the tabular data, returned by the Python code.
     * The format is: `typeof(`*ColumnName*`:` *ColumnType* [, ...]`)`, for example: `typeof(col1:string, col2:long)`.
-    * For extending the input schema, use the following syntax:
-  `typeof(*, col1:string, col2:long)`
+    * For extending the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`
 * *script*: A `string` literal that is the valid Python script to be executed.
 * *script_parameters*: An optional `dynamic` literal which is a property bag of name/value pairs to be passed to the
    Python script as the reserved `kargs` dictionary (see [Reserved Python variables](#reserved-python-variables)).
@@ -32,14 +32,14 @@ The plugin's runtime is hosted in  a sandbox, an isolated and secure Python envi
     * `single`: A single instance of the script will run over the entire query data.
     * `per_node`: If the query before the Python block is distributed, then an instance of the script will run on each node over the data that it contains.
 
+
 ### Reserved Python variables
 
 The following variables are reserved for interaction between Kusto query language and the Python code:
 
 * `df`: The input tabular data (the values of `T` above), as a `pandas` DataFrame.
 * `kargs`: The value of the *script_parameters* argument, as a Python dictionary.
-* `result`: A `pandas` DataFrame created by the Python script whose value becomes the tabular data that gets sent to
-            any Kusto query operator that follows the plugin.
+* `result`: A `pandas` DataFrame created by the Python script whose value becomes the tabular data that gets sent to the Kusto query operator that follows the plugin.
 
 ### Onboarding
 
@@ -83,6 +83,8 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 
 ![alt text](./images/samples/sine-demo.png "sine-demo")
 
+
+
 ### Performance tips
 
 * Reduce the plugin's input data set to the minimum amount required (columns/rows).
@@ -92,7 +94,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
     * You can also use the [partition operator](partitionoperator.md) for partitioning the input data set.
 * Use Kusto's query language, whenever possible, to implement the logic of your Python script.
 
-    For example:
+    Example:
 
     ```kusto    
     .show operations
@@ -115,12 +117,11 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
     * Paste the Python code directly into the query tab, select those lines and press *Ctrl+K*, *Ctrl+S* hot key to decorate them as
       above (to reverse it press *Ctrl+K*, *Ctrl+M* hot key). [Here](../tools/kusto-explorer-shortcuts.md#query-editor) is the full list of
       Query Editor shortcuts.
-* To avoid conflicts between Kusto string delimiters and Python's ones, we recommend using single quote characters (`'`) for Kusto string 
+* To avoid conflicts between Kusto string delimiters and Python string literals, we recommend using single quote characters (`'`) for Kusto string 
   literals in Kusto queries, and double quote characters (`"`) for Python string literals in Python scripts.
-* Use [externaldata operator](externaldata-operator.md) to obtain the content of
-  a script that you've stored in an external location, such as Azure Blob storage, a public GitHub repository, etc.
+* Use [externaldata operator](externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage or a public GitHub repository.
   
-	For example:
+	**Example**
 
     ```kusto    
     let script = 
