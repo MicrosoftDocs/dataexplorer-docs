@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/22/2019
+ms.date: 06/26/2019
 ---
 # project-reorder operator
 
@@ -24,25 +24,25 @@ T | project-reorder Col2, Col1, Col* asc
 **Arguments**
 
 * *T*: The input table.
-* *ColumnNameOrPattern:* The name of the column or column wildcard-pattern to be added to the output.
-* For wildcard-patterns: specifying `asc` or `desc` keyword will order columns using thier names ascending or descending. Not specifying either `asc` or `desc` will carry-on the order of the matching columns as they appeared in the source table.
+* *ColumnNameOrPattern:* The name of the column or column wildcard pattern added to the output.
+* For wildcard patterns: specifying `asc` or `desc` orders columns using their names in ascending or descending order. If `asc` or `desc` aren't specified, the order is determined by the matching columns as they appear in the source table.
 
 **Returns**
 
-A table that has the columns in the order specified by the operator arguments. `project-reorder` does not renames or removes columns from the table, this means that all columns that existed in the source table, will appear in the result table.
+A table that contains columns in the order specified by the operator arguments. `project-reorder` doesn't rename or remove columns from the table, therefore, all columns that existed in the source table, appear in the result table.
 
 **Notes**
 
-- In case of abmigous *ColumnNameOrPattern* matching, the column will appear at the earlies position matching the pattern.
-- It is not required to specify all columns for the `project-reorder`. Columns that were not specified explicitely will appear as last columns of the output table.
+- In ambiguous *ColumnNameOrPattern* matching, the column appears in the first position matching the pattern.
+- Specifying columns for the `project-reorder` is optional. Columns that aren't specified explicitly appear as the last columns of the output table.
 
-* Use [`project-away`](projectawayoperator.md) if your intention is to remove columns.
-* Use [`project-rename`](projectrenameoperator.md) if your intention is to rename columns.
+* Use [`project-away`](projectawayoperator.md) to remove columns.
+* Use [`project-rename`](projectrenameoperator.md) to rename columns.
 
 
 **Examples**
 
-Reordering table with three columns (a, b, c) so that second column (b) will appear first.
+Reorder a table with three columns (a, b, c) so the second column (b) will appear first.
 
 ```kusto
 print a='a', b='b', c='c'
@@ -53,7 +53,7 @@ print a='a', b='b', c='c'
 |---|---|---|
 |b|a|c|
 
-Reordering table with three columns (a, b, c) so that second column (b) will appear first.
+Reorder a table with three columns (a, b, c) so the second column (b) will appear first.
 
 ```kusto
 print b = 'b', a2='a2', a3='a3', a1='a1'
