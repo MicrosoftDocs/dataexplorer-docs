@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/14/2019
+ms.date: 06/30/2019
 ---
 # Storage connection strings
 
@@ -85,6 +85,9 @@ supported:
 * By appending `;prompt` to the URI. Kusto will ask the user for credentials
   when it needs to access the resource. (Prompting the user is disabled for
   cloud deployments and only enabled in test environments.)
+* By providing a Shared Access (SAS) key, using the Azure Data Lake Storage Gen 2's standard
+  query (`?sig=...`). This method should be used when Kusto needs to access the
+  resource for a limited duration of time.
 
 
 

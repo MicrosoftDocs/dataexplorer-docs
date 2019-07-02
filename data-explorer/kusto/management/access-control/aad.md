@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 06/30/2019
 ---
 # Azure Active Directory (AAD) Authentication
 

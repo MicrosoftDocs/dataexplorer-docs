@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/09/2019
+ms.date: 06/26/2019
 ---
 # Security roles management
 
@@ -214,3 +214,33 @@ Where:
 .add function MyFunction admins ('aaduser=imike@fabrikam.com') 'This user should have access'
 ```
 
+## Blocking principals manually
+A cluster admin has the capability of blocking a certain user or application from accessing the cluster.
+Once a principal is blocked, all Query and Admin commands will be denied for that principal.
+Being able to manually block principals will allow a cluster admin to handle cases were a certain principal was identified as the source for 
+queries/commands which for some reason consume an excessive amount of resources, and hence should be stopped until a further investigation.
+Note as well that cluster admin is the only one who can unblock a principal.
+
+**Syntax**
+
+```kusto
+.add cluster blockedprincipals` *Principal* ['Application'] ['User'] ['Period'] ['Reason']
+.drop cluster blockedprincipals` *Principal* ['Application'] ['User']
+.show cluster blockedprincipals
+```
+
+Unlike adding and dropping a blocked principals, which require a Cluster Admin privileges, showing the list of blocked principals requires a Cluster User privileges.
+
+* `Application` refers to the optional x-ms-app header sent with the Http request.
+* `User` refers to the optional x-ms-user header sent with the Http request.
+* `Period` indicates the amount of time which the principal should be blocked for. If no value is provided, principal will be blocked permanently (practically for 10 years).
+* `Reason` a note explaining why that principal was blocked.
+
+**Examples**
+
+```kusto
+.add cluster blockedprincipals 'aaduser=imike@fabrikam.com' period 4d reason "Some explanation..."
+.add cluster blockedprincipals 'dstsapp=<App ID>' application '<App name>' user '<User name>' period 30d reason "Some explanation"
+.show cluster blockedprincipals
+.drop cluster blockedprincipals 'aaduser=imike@fabrikam.com'
+```

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/24/2019
+ms.date: 06/30/2019
 ---
 # R plugin (Preview)
 
@@ -77,6 +77,9 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 | render linechart 
 ```
 ![alt text](./images/samples/sine-demo.png "sine-demo")
+
+
+
 
 ### Performance tips
 
