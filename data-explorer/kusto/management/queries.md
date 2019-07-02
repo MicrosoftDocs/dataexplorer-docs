@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/25/2019
+ms.date: 10/23/2018
 ---
 # Queries
 
@@ -15,8 +15,8 @@ ms.date: 06/25/2019
 
 The `.show` `queries` command returns a list of queries for which the user invoking the command has access to see:
 
-
-* A [Database admin or a Database monitor](../management/access-control/role-based-authorization.md) can see any query that was invoked on a database on which the're assigned that role.
+* Cluster admins can see all queries.
+* Database admins can see any query that was invoked on a database they have admin access on.
 * Other users can only see queries that were invoked by them.
 
 **Syntax**

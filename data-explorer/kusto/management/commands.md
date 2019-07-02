@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/25/2019
+ms.date: 10/23/2018
 ---
 # Commands
 
@@ -20,10 +20,6 @@ The Commands table has two columns with resources consumption details of every c
 
 Resource consumption being tracked includes Data Updates, as well as any query associated with the current Admin command.
 Currently only some of the Admin commands are covered by the Commands table (.ingest, .set, .append, .set-or-replace, .set-or-append), and gradually, more commands will be added in the future.
-
-
-* A [Database admin or a Database monitor](../management/access-control/role-based-authorization.md) can see any command that was invoked on a database on which the're assigned that role.
-* Other users can only see commands that were invoked by them.
 
 **Syntax**
 

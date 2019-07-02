@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/26/2019
+ms.date: 06/17/2019
 ---
 # Scalar Functions
 
@@ -218,8 +218,8 @@ ms.date: 06/26/2019
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[base64_decodestring()](base64_decode_tostringfunction.md)|Decodes a base64 string to a UTF-8 string|
-|[base64_encodestring()](base64_encode_tostringfunction.md)|Encodes a string as base64 string.|
+|[base64_decodestring()](base64decodestringfunction.md)|Decodes a base64 string to a UTF-8 string|
+|[base64_encodestring()](base64encodestringfunction.md)|Encodes a string as base64 string.|
 |[countof()](cotfunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches do not.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
 |[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
