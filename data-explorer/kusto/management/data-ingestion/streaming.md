@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/30/2019
+ms.date: 07/05/2019
 ---
 # Streaming ingestion (Preview)
 
@@ -23,30 +23,30 @@ You can enable streaming ingestion on your own cluster.
 > Please review [unsupported features](#unsupported-features) prior to enabling steaming ingestion.
 
  
-Please open [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) to enable streaming ingestion on an existing cluster|
+Open [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) to enable streaming ingestion on an existing cluster|
 
 Once the cluster is ready, [streaming ingestion policy](../../concepts/streamingingestionpolicy.md) must be defined on table(s) or database(s) that will receive streaming data. If the policy is defined at the database level, all tables in the database are enabled for streaming ingestion.
 
 Two ingestion methods are supported:
 
 * **Event Hub** 
-    * Follow the instructions here to establish Event Hub as a data source. 
+    * Establish [Event Hub as a data source](/azure/data-explorer/ingest-data-event-hub). 
     * In the support ticket, specify the Event Hub that you want to enable for streaming ingestion.
-    * Data delay is longer.
+    * Data delay is longer than custom ingestion.
     * Many aspects of the data ingestion are handled by Azure Data Explorer Data Management service.
 
 * **Custom ingestion**
-    * Write an application that uses one of Azure Data Explorer client libraries. Please see StreamingIngestionSample in [Kusto Code Samples](../../code/codesamples.md) for a simple application.
-    *Achieves the shortest delay between initiating the ingestion and the data being available for query. 
-    * Incurs the most development overhead since the application doing custom ingestion must handle errors, ensure data consistency, and more.
+    * Write an application that uses one of Azure Data Explorer client libraries. See [streaming ingestion sample](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) for a simple application.
+    * Achieves the shortest delay between initiating the ingestion and the data being available for query. 
+    * Incurs the most development overhead since the application for custom ingestion must handle errors and ensure data consistency.
 
 ## Unsupported features
 
 Streaming ingestion doesn't currently support the following features:
 
 * [Database cursors](../databasecursor.md).
-* [Follower mode](../../concepts/followercluster.md) (if data is ingested to the leader cluster in streaming ingestion, expect a data lag of up to 24 hours when querying the follower).
-* [Data mapping](../../management/mappings.md) - only [pre-created](../../management/tables.md#create-ingestion-mapping) data mappings are supported. 
+* 
+* [Data mapping](../../management/mappings.md). Only [pre-created](../../management/tables.md#create-ingestion-mapping) data mappings are supported. 
 
 ## Limitations
 

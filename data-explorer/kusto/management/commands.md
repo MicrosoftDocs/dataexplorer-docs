@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/25/2019
+ms.date: 07/05/2019
 ---
 # Commands
 
@@ -22,7 +22,7 @@ Resource consumption being tracked includes Data Updates, as well as any query a
 Currently only some of the Admin commands are covered by the Commands table (.ingest, .set, .append, .set-or-replace, .set-or-append), and gradually, more commands will be added in the future.
 
 
-* A [Database admin or a Database monitor](../management/access-control/role-based-authorization.md) can see any command that was invoked on a database on which the're assigned that role.
+* A [database admin or database monitor](../management/access-control/role-based-authorization.md) can see any command that was invoked on their database.
 * Other users can only see commands that were invoked by them.
 
 **Syntax**
@@ -37,8 +37,7 @@ Currently only some of the Admin commands are covered by the Commands table (.in
 |KE.RunCommand;710e08ca-2cd3-4d2d-b7bd-2738d335aa50	|DataIngestPull	|.ingest into MyTableName ...   |TestDB	|2017-09-04 16:00:37.0915452	|2017-09-04 16:04:37.2834555	|00:04:00.1919103	|Failed	|a8986e9e-943f-81b0270d6fae4	|cooper@fabrikam.com	|The socket connection has been disposed.	|Kusto.Explorer	|aaduser=...	|00:00:00	|{ "ScannedExtentsStatistics": {    "MinDataScannedTime": null,    "MaxDataScannedTime": null  },  "CacheStatistics": {    "Memory": {      "Misses": 0,      Hits": 0    },    "Disk": {      "Misses": 0,      "Hits": 0    }  },  "MemoryPeak": 0,  "TotalCpu": "00:00:00"} 
 |KD2RunCommand;97db47e6-93e2-4306-8b7d-670f2c3307ff	|ExtentsRebuild	|.merge async Operations ...    |DB2	|2017-09-18 13:29:38.5945531	|2017-09-18 13:29:39.9451163	|00:00:01.3505632	|Completed	|d5ebb755-d5df-4e94-b240-9accdf06c2d1	|AAD app id=5ba8cec2-9a70-e92c98cad651	|	|Kusto.Azure.DM.Svc	|aadapp=5ba8cec2-9a70-e92c98cad651	|00:00:00.8906250	|{ "ScannedExtentsStatistics": {    "MinDataScannedTime": null,    "MaxDataScannedTime": null  },  "CacheStatistics": {    Memory": {      "Misses": 0,      "Hits": 1    },    "Disk": {      "Misses": 0,      "Hits": 0    }  },  "MemoryPeak": 88828560,  "TotalCpu": "00:00:00.8906250"} 
 
-
-**An example for extracting specific data out of the ResourceUtilization column**
+**Example: extracting specific data out of the ResourceUtilization column**
 
 Accessing one of the properties within the ResourceUtilization column, is done by calling ResourcesUtilization.xxx (where xxx is the property name).
 Note that the ResourceUtilization is a dynamic column, and hence in order to work with its values, one should first convert it into a specific data type (using a convertion function such as: tolong, toint, totimespan, ...).  
@@ -60,13 +59,12 @@ For example:
 | 2017-09-28 11:21:26.7304547	| 750063056	| 00:00:03.8218750  | .set-or-append WebUsage <\| database('CuratedDB').WebUsage_v2 | summarize ... | project ...
 | 2017-09-28 12:16:17.4762522	| 676289120	| 00:00:00.0625000  | .set-or-append  AtlasClusterEventStats with(..) <\| Atlas_Temp(datetime(2017-09-28 12:13:28.7621737),datetime(2017-09-28 12:14:28.8168492))
 
-
 ## Investigating performance issues
 
 `.show` `commands` can be used in order to investigate performance issues, as they allow to see see the resources consumed by each Control Command.
 The following examples are simple and useful queries for such investigations.
 
-**Querying the TotalCpu column**
+### Querying the TotalCpu column
 
 Top 10 CPU consuming queries in the last day:
 ```kusto
@@ -103,7 +101,7 @@ Timechart: Average CPU vs 95th Percentile vs Max CPU :
 | render timechart
 ```
 
-**Querying the MemoryPeak**
+## Querying the MemoryPeak
 
 Top 10 queries in the last day with the highest MemoryPeak values:
 ```kusto

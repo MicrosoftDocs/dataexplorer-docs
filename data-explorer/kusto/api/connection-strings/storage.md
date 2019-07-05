@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/30/2019
+ms.date: 07/05/2019
 ---
 # Storage connection strings
 
@@ -36,14 +36,14 @@ necessary to access them (such as security credentials).
 
 ## Azure Storage Blob
 
-This provider is the most commonly-used provider, and is supported in all scenarios.
-The provider must be provided credentials when accessing the resource. There are
+This provider is the most commonly-used provider and is supported in all scenarios.
+The provider must be given credentials when accessing the resource. There are
 two supported mechanisms of providing credentials:
 
-* By providing a Shared Access (SAS) key, using the Azure Storage Blob's standard
+* Provide a Shared Access (SAS) key, using the Azure Storage Blob's standard
   query (`?sig=...`). This method should be used when Kusto needs to access the
   resource for a limited duration of time.
-* By providing the storage account key (`;ljkAkl...==`). This method should be used
+* Provide the storage account key (`;ljkAkl...==`). This method should be used
   when Kusto needs to access the resource on an ongoing basis.
 
 Examples (note that this is showing obfuscated string literals, so as not to expose
@@ -76,16 +76,16 @@ When accessing Azure Data Lake Store Gen 2, the caller must provide valid
 credentials for accessing the service. The following methods of providing credentials are
 supported:
 
-* By appending `;sharedkey=`*AccountKey* to the URI, with *AccountKey* being
+* Append `;sharedkey=`*AccountKey* to the URI, with *AccountKey* being
   the storage account key.
-* By appending `;impersonate` to the URI. Kusto will use the requestor's principal
+* Append `;impersonate` to the URI. Kusto will use the requestor's principal
   identity and impersonate it to access the resource.
-* By appending `;token=`*AadToken* to the URI, with *AadToken* being a base-64
+* Append `;token=`*AadToken* to the URI, with *AadToken* being a base-64
   encoded AAD access token (make sure the token is for the resource `https://storage.azure.com/`).
-* By appending `;prompt` to the URI. Kusto will ask the user for credentials
+* Append `;prompt` to the URI. Kusto will ask the user for credentials
   when it needs to access the resource. (Prompting the user is disabled for
   cloud deployments and only enabled in test environments.)
-* By providing a Shared Access (SAS) key, using the Azure Data Lake Storage Gen 2's standard
+* Provide a Shared Access (SAS) key, using the Azure Data Lake Storage Gen 2's standard
   query (`?sig=...`). This method should be used when Kusto needs to access the
   resource for a limited duration of time.
 
@@ -98,11 +98,11 @@ It must be provided with credentials (Kusto doesn't use its own AAD principal to
 access Azure Data Lake.) The following methods of providing credentials are
 supported:
 
-* By appending `;impersonate` to the URI. Kusto will use the requestor's principal
+* Append `;impersonate` to the URI. Kusto will use the requestor's principal
   identity and impersonate it to access the resource.
-* By appending `;token=`*AadToken* to the URI, with *AadToken* being a base-64
+* Append `;token=`*AadToken* to the URI, with *AadToken* being a base-64
   encoded AAD access token (make sure the token is for the resource `https://management.azure.com/`).
-* By appending `;prompt` to the URI. Kusto will ask the user for credentials
+* Append `;prompt` to the URI. Kusto will ask the user for credentials
   when it needs to access the resource. (Prompting the user is disabled for
   cloud deployments and only enabled in test environments.)
 

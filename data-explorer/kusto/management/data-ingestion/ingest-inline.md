@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/29/2018
+ms.date: 07/02/2019
 ---
 # The .ingest inline command (push)
 
@@ -45,8 +45,6 @@ that is embedded inline in the command text itself.
 
 * *IngestionPropertyName*, *IngestionPropertyValue*: Any number of
   [ingestion properties](./index.md#ingestion-properties) that affect the ingestion process.
-  The list of properties supported by the command is limited to
-  the following set: `format`, `compressed`.
 
 **Results**
 
