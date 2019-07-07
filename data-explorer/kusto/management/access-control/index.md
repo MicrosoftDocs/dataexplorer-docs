@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 06/26/2019
 ---
 # Kusto Access Control Overview
 
@@ -31,7 +31,6 @@ of authentication scenarios:
   and applications that have to run/authenticate with no human user being present. 
 
 ### User authentication
-
 User authentication happens when the user presents credentials to AAD (or to some identity provide
 that federates with AAD, such as ADFS), and gets back a security token that can be presented to the
 Kusto service. The Kusto service doesn't care how the security token was obtained, it cares about
@@ -48,7 +47,6 @@ Please see [Kusto connection strings](../../api/connection-strings/kusto.md) for
 to use the Kusto client libraries and authenticate by using AAD to Kusto.
 
 ### Application authentication
-
 When requests are not associated with a specific user, or there's no user available to enter
 credentials, the AAD application authentication flow may be used. In this flow, the application
 authenticates to AAD (or the federated IdP) by presenting some secret information. The following
@@ -64,18 +62,15 @@ scenarios are supported by the various Kusto clients:
 
 
 ### Microsoft Accounts (MSAs)
-
 Microsoft Accounts (MSAs) is the term for all the Microsoft-managed non-organizational user accounts, e.g. `hotmail.com`, `live.com`, `outlook.com`.
 Kusto supports user authentication for MSAs (note, that there is no security groups concept), which are identified by their UPN (Universal Principal Name).
 When an MSA principal is configured on a Kusto resource, Kusto **will not** attempt to resolve the UPN provided.
 
 ### Authenticated SDK or REST calls
-
 * When using the REST API, authentication is performed using the standard HTTP `Authorization` header.
 * When using any of the Kusto .NET libraries, authentication is controlled by specifying the authentication method and parameters in the [Kusto Connection String](../../api/connection-strings/kusto.md), or by setting properties on the [Client Request Properties](https://kusto.azurewebsites.net/docs/api/request-properties.html) object.
 
 ### Kusto Client SDK as an AAD Client Application
-
 When the Kusto client libraries invoke ADAL (the AAD client library) to acquire a token for communicating with Kusto, it provides
 the following information:
 

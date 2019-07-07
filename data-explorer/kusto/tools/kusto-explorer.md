@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/26/2019
+ms.date: 07/02/2019
 ---
 # Kusto.Explorer tool
 
@@ -493,7 +493,7 @@ The format of the URI is this:
 For example: 
     https://help.kusto.windows.net/Samples?query=StormEvents+%7c+limit+10
  
-This URI will open new Kusto.Explorer, connect to the ARIA Kusto cluster, and run the specified query on the specified database (whose name is some object ID in ARIA). (Unless there is an instance of Kusto.Explorer already running, in which case the running instance will open a new tab and run the query in it.)
+This URI will open new Kusto.Explorer, connect to the `help` Kusto cluster, and run the specified query on the specified database (whose name is `Samples`). (Unless there is an instance of Kusto.Explorer already running, in which case the running instance will open a new tab and run the query in it.)
 
 **Security note**: For security reasons, deep-linking is disabled for control commands.
 

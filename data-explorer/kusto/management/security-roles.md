@@ -7,73 +7,75 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/09/2019
+ms.date: 07/05/2019
 ---
 # Security roles management
 
 > [!IMPORTANT]
-> Before altering authorization rules on your Kusto cluster(s), please review the
-> [Kusto access control overview](../management/access-control/index.md) and
-> [role based authorization](../management/access-control/role-based-authorization.md) topics.
+> Before altering authorization rules on your Kusto cluster(s), read the following:
+> [Kusto access control overview](../management/access-control/index.md) 
+> [role based authorization](../management/access-control/role-based-authorization.md) 
 
-This topic describes the control commands used to manage security roles.
-Security roles define which security principals (users and applications) can have
-permissions to operate on a secured resource (such as a database or a table),
+This article describes the control commands used to manage security roles.
+Security roles define which security principals (users and applications) have
+permissions to operate on a secured resource such as a database or a table,
 and what operations are permitted. For example, principals that have the
 `database viewer` security role for a specific database can query and view all
 entities of that database (with the exception of restricted tables).
 
 The security role can be associated with security principals or security groups (which
-can have security principals or other security groups, and so on). When a security
+can have other security principals or other security groups). When a security
 principal attempts to make an operation on a secured resource, the system checks
 that the principal is associated with at least one security role that grants
 permissions to perform this operation on the resource. This is called an
-**authorization check**. Failing that check aborts the operation.
-I
-The commands to manage security roles generally have this syntax:
+**authorization check**. Failing the authorization check aborts the operation.
+
+**Syntax**
+
+Syntax of security roles management commands:
 
 *Verb* *SecurableObjectType* *SecurableObjectName* *Role* [`(` *ListOfPrincipals* `)` [*Description*]]
 
 * *Verb* indicates the kind of action to perform: `.show`, `.add`, `.drop`, and `.set`.
 
-|*Verb* |Description                                  |
-|-------|---------------------------------------------|
-|`.show`|Returns the current value or values.         |
-|`.add` |Adds one or more principals to the role.     |
-|`.drop`|Removes one or more principals from the role.|
-|`.set` |Sets the role to the specific list of principals, removing all previous ones (if any).|
+    |*Verb* |Description                                  |
+    |-------|---------------------------------------------|
+    |`.show`|Returns the current value or values.         |
+    |`.add` |Adds one or more principals to the role.     |
+    |`.drop`|Removes one or more principals from the role.|
+    |`.set` |Sets the role to the specific list of principals, removing all previous ones (if any).|
 
 * *SecurableObjectType* is the kind of object whose role is specified.
 
-|*SecurableObjectType*|Description|
-|---------------------|-----------|
-|`database`|The specified database|
-|`table`|The specified table|
+    |*SecurableObjectType*|Description|
+    |---------------------|-----------|
+    |`database`|The specified database|
+    |`table`|The specified table|
 
 * *SecurableObjectName* is the name of the object.
 
 * *Role* is the name of the relevant role.
 
-|*Role*      |Description|
-|------------|-----------|
-|`principals`|Can appear only as part of a `.show` verb; returns the list of principals that can affect the securable object.|
-|`admins`    |Have control over the securable object, including the ability to view, modify it, and remove the object and all sub-objects.|
-|`users`     |Can view the securable object, and create new objects underneath it.|
-|`viewers`   |Can view the securable object.|
-|`unrestrictedviewers`|At the database level only, allows viewing of restricted tables (which are not exposed to "normal" `viewers` and `users`).|
-|`ingestors` |At the database level only, allow data ingestion into all tables.|
-|`monitors`  ||
+    |*Role*      |Description|
+    |------------|-----------|
+    |`principals`|Can appear only as part of a `.show` verb; returns the list of principals that can affect the securable object.|
+    |`admins`    |Have control over the securable object, including the ability to view, modify it, and remove the object and all sub-objects.|
+    |`users`     |Can view the securable object, and create new objects underneath it.|
+    |`viewers`   |Can view the securable object.|
+    |`unrestrictedviewers`|At the database level only, allows viewing of restricted tables (which are not exposed to "normal" `viewers` and `users`).|
+    |`ingestors` |At the database level only, allow data ingestion into all tables.|
+    |`monitors`  ||
 
-* *ListOfPrincipals* is an optional, comma-delimited, list of security principals
+* *ListOfPrincipals* is an optional, comma-delimited list of security principal
   identifiers (values of type `string`).
 
 * *Description* is an optional value of type `string` that is stored alongside
-  the association for future audit purposes.
+  the association, for future audit purposes.
 
 ## Example
 
 The following control command lists all security principals which have some
-access to the table `StormEvents` in the database in scope:
+access to the table `StormEvents` in the database:
 
 ```kusto
 .show table StormEvents principals
@@ -91,13 +93,12 @@ Here are potential results from this command:
 
 `.show` `principal` *Principal* `roles`
 
-The first variant retrieves all the security roles for the current principal (the one
-who executes the command). Said principal must have access to at least one database
+The first option retrieves all the security roles for the current principal (the one
+who executes the command). The principal must have access to at least one database
 or the command will fail.
 
-The second variant retrieves all the security roles for the security principal
-indicated by the command. See [principals and identity providers](./access-control/principals-and-identity-providers.md)
-for how to specify these principals.
+The second option retrieves all the security roles for the security principal
+indicated by the command. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals.
 
 **Example**
 
@@ -122,16 +123,15 @@ for how to specify these principals.
 The first command removes all principals from the role. The second removes all
 principals from the role, and sets a new set of principals. The third adds new
 principals to the role without removing existing principals. The last removes
-the indicated prinicpals from the roles and keeps the others.
+the indicated principals from the roles and keeps the others.
 
 Where:
 
 * *DatabaseName* is the name of the database whose security role is being modified.
 
-* *Role* is one of: `admins`, `ingestors`, `monitors`, `unrestrictedviewers`, `users`, `viewers`.
+* *Role* is: `admins`, `ingestors`, `monitors`, `unrestrictedviewers`, `users`, or `viewers`.
 
-* *Principal* is one or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md)
-  for how to specify these principals.
+* *Principal* is one or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals.
 
 * `skip-results`, if provided, requests that the command will not return the updated
   list of database principals.
@@ -155,16 +155,15 @@ Where:
 The first command removes all principals from the role. The second removes all
 principals from the role, and sets a new set of principals. The third adds new
 principals to the role without removing existing principals. The last removes
-the indicated prinicpals from the roles and keeps the others.
+the indicated principals from the roles and keeps the others.
 
 Where:
 
 * *TableName* is the name of the table whose security role is being modified.
 
-* *Role* is one of: `admins`, `ingestors`.
+* *Role* is: `admins` or `ingestors`.
 
-* *Principal* is one or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md)
-  for how to specify these principals.
+* *Principal* is one or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals.
 
 * `skip-results`, if provided, requests that the command will not return the updated
   list of table principals.
@@ -191,7 +190,7 @@ Where:
 The first command removes all principals from the role. The second removes all
 principals from the role, and sets a new set of principals. The third adds new
 principals to the role without removing existing principals. The last removes
-the indicated prinicpals from the roles and keeps the others.
+the indicated principals from the roles and keeps the others.
 
 Where:
 
@@ -214,3 +213,30 @@ Where:
 .add function MyFunction admins ('aaduser=imike@fabrikam.com') 'This user should have access'
 ```
 
+## Block principals manually
+
+A cluster admin can block a user or application from accessing the cluster. A cluster admin is also the only one who can unblock a principal. Once a principal is blocked, all query and admin commands will be denied for that principal. A cluster admin manually blocks principals that are identified as the source of queries or commands that consume an excessive amount of resources, and must be stopped until further investigation.
+
+**Syntax**
+
+```kusto
+.add cluster blockedprincipals` *Principal* ['Application'] ['User'] ['Period'] ['Reason']
+.drop cluster blockedprincipals` *Principal* ['Application'] ['User']
+.show cluster blockedprincipals
+```
+
+Unlike add and drop blocked principals, which require cluster admin privileges, show the list of blocked principals, requires cluster user privileges.
+
+* `Application` optional x-ms-app header sent with the Http request.
+* `User` optional x-ms-user header sent with the Http request.
+* `Period` amount of time which the principal should be blocked for. If no value is provided, principal will be blocked permanently (practically for 10 years).
+* `Reason` note explaining why that principal was blocked.
+
+**Examples**
+
+```kusto
+.add cluster blockedprincipals 'aaduser=imike@fabrikam.com' period 4d reason "Some explanation..."
+.add cluster blockedprincipals 'dstsapp=<App ID>' application '<App name>' user '<User name>' period 30d reason "Some explanation"
+.show cluster blockedprincipals
+.drop cluster blockedprincipals 'aaduser=imike@fabrikam.com'
+```

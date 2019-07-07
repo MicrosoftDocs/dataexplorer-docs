@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/04/2018
+ms.date: 06/26/2019
 ---
 # Authentication over HTTPS
 
@@ -40,8 +40,6 @@ authentication only, the request can be made to
 
 > [!NOTE]
 > The Azure Active Directory service endpoint changes when running in national clouds.
-
-
 
 For more details please see the [authentication overview](../../management/access-control/index.md)
 and [guide to Azure Active Directory authentication](../../management/access-control/how-to-authenticate-with-aad.md).

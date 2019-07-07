@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/10/2019
+ms.date: 06/30/2019
 ---
 # IngestionBatching policy
 
@@ -45,6 +45,8 @@ IngestionBatching policy:
 ```
 {
   "MaximumBatchingTimeSpan": "00:05:00",
+  "MaximumNumberOfItems": 500, 
+  "MaximumRawDataSizeMB": 1024
 }
 ```
 
@@ -69,12 +71,12 @@ Show policy of IngestionBatching for table `MyTable` in database `MyDatabase`:
 
 Setting policy of IngestionBatching of table `MyTable` (in database context) to 10 minutes, 500 files and 1G:
 ```
-.alter table MyTable policy ingestionbatching  @"{'MaximumBatchingTimeSpan':'00:10:00', "MaximumNumberOfItems": 500, "MaximumRawDataSizeMB": 1024}"
+.alter table MyTable policy  ingestionbatching  @"{'MaximumBatchingTimeSpan':'00:10:00', 'MaximumNumberOfItems': 500, 'MaximumRawDataSizeMB': 1024}"
 ```
 
 Setting policy for multiple tables (in database context), 10 minutes, 500 files and 1G:
 ```
-.alter tables (MyTable1, MyTable2, MyTable3) ingestionbatching  @"{'MaximumBatchingTimeSpan':'00:10:00', "MaximumNumberOfItems": 500, "MaximumRawDataSizeMB": 1024}}"
+.alter tables (MyTable1, MyTable2, MyTable3) policy  ingestionbatching  @"{'MaximumBatchingTimeSpan':'00:10:00', 'MaximumNumberOfItems': 500, 'MaximumRawDataSizeMB': 1024}"
 ```
 
 Deleting a policy set on an entity:

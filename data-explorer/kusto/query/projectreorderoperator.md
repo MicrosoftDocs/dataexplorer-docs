@@ -53,7 +53,7 @@ print a='a', b='b', c='c'
 |---|---|---|
 |b|a|c|
 
-Reorder a table with three columns (a, b, c) so the second column (b) will appear first.
+Reorder columns of a table so that columns starting with `a` will appear before other columns.
 
 ```kusto
 print b = 'b', a2='a2', a3='a3', a1='a1'

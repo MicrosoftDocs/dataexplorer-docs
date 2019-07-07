@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/11/2019
+ms.date: 06/30/2019
 ---
 # Kusto.Ingest Reference - Errors and Exceptions
 Any error during the ingestion handling on the client side is exposed to the user code via a C# exception.
@@ -232,3 +232,5 @@ Fields:
 |IngestionErrors| `IList<IngestClientException>`| The errors that occurred while attempting to ingest and the sources related to them
 |IsGlobalError| `bool`| Indicates whether the exception occurred for all sources
 
+## Errors in native code
+The Kusto engine is written in native code. For details about errors in native code, please see [Errors in native code](../../concepts/errorsinnativecode.md)

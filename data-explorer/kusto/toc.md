@@ -457,7 +457,7 @@
 ### [Row order policy](./concepts/roworderpolicy.md)
 
 
-
+### [Streaming ingestion policy](./concepts/streamingingestionpolicy.md)
 ### [Sharding policy](./concepts/shardingpolicy.md)
 ### [Update policy](./concepts/updatepolicy.md)
 
@@ -470,6 +470,7 @@
 #### [Overflows](./concepts/overflow.md)
 ### [Cross-cluster queries and schema changes](./concepts/crossclusterandschemachanges.md)
 ### [Query consistency](./concepts/queryconsistency.md)
+### [Errors in native code](./concepts/errorsinnativecode.md)
 # [Management](./management/index.md)
 ## [Overview](./management/index.md)
 ### [Best practices](./management/best-practices.md)
@@ -488,6 +489,7 @@
 ### [RowOrder](./management/roworder-policy.md)
 ### [Update](./management/update-policy.md)
 ### [Batching](./management/batching-policy.md)
+### [Streaming Ingestion](./management/streamingingestion-policy.md)
 
 ## [Security Roles](./management/security-roles.md)
 
@@ -495,6 +497,7 @@
 ### [Ingest from storage](./management/data-ingestion/ingest-from-storage.md)
 ### [Ingest from query](./management/data-ingestion/ingest-from-query.md)
 ### [Inline ingestion](./management/data-ingestion/ingest-inline.md)
+### [Streaming Ingestion (preview)](./management/data-ingestion/streaming.md)
 
 ## [Data Export](./management/data-export/index.md)
 ### [To cloud storage](./management/data-export/export-data-to-storage.md)
@@ -516,7 +519,6 @@
 ## [Access Control](./management/access-control/index.md)
 ### [Identities](./management/access-control/principals-and-identity-providers.md)
 ### [AAD](./management/access-control/aad.md)
-
 
 ### [Principal roles](./management/access-control/role-based-authorization.md)
 
