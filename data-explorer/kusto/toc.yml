@@ -957,9 +957,9 @@
       href: ./management/access-control/aad.md
     - name: Principal roles
       href: ./management/access-control/role-based-authorization.md
-    - name: How-To: AAD Authentication
+    - name: How-To AAD Authentication
       href: ./management/access-control/how-to-authenticate-with-aad.md
-    - name: How-To: Provision AAD Application
+    - name: How-To Provision AAD Application
       href: ./management/access-control/how-to-provision-aad-app.md
   - name: Advanced Data Management
     items:
