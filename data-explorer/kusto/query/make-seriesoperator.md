@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/04/2019
+ms.date: 02/03/2019
 ---
 # make-series operator
 
@@ -66,7 +66,7 @@ It is recommended to use the main syntax of make-series and not the alternate sy
 
 **Distribution and Shuffle**
 
-`make-series` supports `summarize` shufflekey hints, for more info see [shuffle summarize](shufflesummarize.md) and look for the syntax hint.shufflekey.
+`make-series` supports all the `summarize` shuffle hints, for more info see [shuffle summarize](shufflesummarize.md).
 
 ## List of aggregation functions
 
