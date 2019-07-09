@@ -19,14 +19,6 @@
       href: ./query/schema-entities/entity-names.md
     - name: Querying external entities
       href: ./query/cross-cluster-or-database-queries.md
-    - name: <!-- Enable this section when the actual content is available, blank pages are confusing external customers.
-    - name: Entity references
-      href: ./query/schema-entities/entity-references.md
-    - name: Clusters
-      href: ./query/schema-entities/clusters.md
-    - name: Databases
-      href: ./query/schema-entities/databases.md
-    - name: -->
     - name: Tables
       href: ./query/schema-entities/tables.md
     - name: Columns
@@ -104,8 +96,6 @@
         href: ./query/bag-unpackplugin.md
       - name: basket
         href: ./query/basketplugin.md
-      - name: diagnose
-        href: ./query/diagnoseplugin.md
       - name: dcount_intersect
         href: ./query/dcount-intersect-plugin.md
       - name: narrow
