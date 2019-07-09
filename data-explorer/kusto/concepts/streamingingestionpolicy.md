@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/30/2019
+ms.date: 07/07/2019
 ---
 # Streaming ingestion policy
 
@@ -30,13 +30,16 @@ The number of row stores set in the streaming ingestion policy needs to be defin
 The minimum recommended number of row stores for any table is 4. The maximum supported number is 64.
 The higher the streaming data rate for the table, the higher the necessary number of row stores needed in the associated streaming ingestion policy.
 Use the following table for the recommended settings (if in doubt use higher number):
+
 |Estimated Peak Hourly Streaming Data Rate (per table)|Number of Row Stores|
 |----------|------|
 |< 1 Gb/hr |4|
 |1 - 2 GB/hr |4-8|
 |2 - 3 GB/hr |8-12|
 |3 - 4 GB/hr |12-16|
-| > 4 GB/hr | please open [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) for advice|
+| > 4 GB/hr |
+
+ please open [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) for advice|
 
 For optimal query latency, the number of row stores defined per table shouldn't significantly exceed the recommendation above.
 

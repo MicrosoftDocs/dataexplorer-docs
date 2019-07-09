@@ -209,6 +209,7 @@
 ### [hourofday()](./query/hourofdayfunction.md)
 ### [iif()](./query/iiffunction.md)
 ### [indexof()](./query/indexoffunction.md)
+### [indexof_regex()](./query/indexofregexfunction.md)
 ### [ingestion_time()](./query/ingestiontimefunction.md)
 ### [isascii()](./query/isascii.md)
 ### [isempty()](./query/isemptyfunction.md)
