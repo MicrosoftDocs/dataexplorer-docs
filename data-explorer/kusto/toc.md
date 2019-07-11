@@ -18,7 +18,7 @@
 ### [Tables](./query/schema-entities/tables.md)
 ### [Columns](./query/schema-entities/columns.md)
 ### [Stored functions](./query/schema-entities/stored-functions.md)
-
+###[External Tables](./query/schema-entities/externaltables.md)
 
 ## [Data types](./query/scalar-data-types/index.md)
 ### [bool](./query/scalar-data-types/bool.md)
@@ -209,6 +209,7 @@
 ### [hourofday()](./query/hourofdayfunction.md)
 ### [iif()](./query/iiffunction.md)
 ### [indexof()](./query/indexoffunction.md)
+### [indexof_regex()](./query/indexofregexfunction.md)
 ### [ingestion_time()](./query/ingestiontimefunction.md)
 ### [isascii()](./query/isascii.md)
 ### [isempty()](./query/isemptyfunction.md)
