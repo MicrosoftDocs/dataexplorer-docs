@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/23/2019
+ms.date: 07/09/2019
 ---
 # Continuous data export (preview)
 
@@ -80,13 +80,13 @@ to table ExternalBlob
 with
 (intervalBetweenRuns=1h, 
  forcedLatency=10m, 
- sizeLimit=1024)
+ sizeLimit=104857600)
 <| T
 ```
 
 |Name|ExternalTableName|Query|ForcedLatency|IntervalBetweenRuns|CursorScopedTables|ExportProperties|
 |---|---|---|---|---|---|---|
-|MyExport|ExternalBlob|S|00:10:00|01:00:00|[<br>  "['DB'].['S']"<br>]|{<br>  "SizeLimit": 1024<br>}|
+|MyExport|ExternalBlob|S|00:10:00|01:00:00|[<br>  "['DB'].['S']"<br>]|{<br>  "SizeLimit": 104857600<br>}|
 
 ## Show continuous export
 

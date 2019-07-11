@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/18/2019
+ms.date: 07/09/2019
 ---
 # External tables commands (preview)
 
@@ -200,7 +200,7 @@ kind=adl
 partition by bin(Timestamp, 1d)
 dataformat=csv
 ( 
-   @'h"abfss://filesystem@storageaccount.dfs.core.windows.net/path;secretKey'
+   @h'abfss://filesystem@storageaccount.dfs.core.windows.net/path;secretKey'
 )
 with 
 (

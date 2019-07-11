@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/07/2019
+ms.date: 07/10/2019
 ---
 # Streaming ingestion (Preview)
 
-Streaming ingestion is targeted for scenarios in which you have a large number of tables (in one or more databases), and the stream of data into each one is relatively small (few records per sec) but  overall data ingestion volume is high (thousands of records per second).
+Streaming ingestion is targeted for scenarios in which you have requirements for low latency with less than 10 seconds ingestion time of small or big volume data. In addition, it is targeted for optimization of operational processing when you have a large number of tables (in one or more databases), and the stream of data into each one is relatively small (few records per second) but overall data ingestion volume is high (thousands of records per second).
 
 The classic (bulk) ingestion is advised when the amount of data grows to more than 1MB/sec. Read [Data ingestion overview](/azure/data-explorer/ingest-data-overview) for an overview of the various methods of ingestion.
 
@@ -23,7 +23,7 @@ You can enable streaming ingestion on your own cluster.
 > Please review [unsupported features](#unsupported-features) prior to enabling steaming ingestion.
 
  
-Open [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) to enable streaming ingestion on an existing cluster|
+Open [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) to enable streaming ingestion on an existing cluster
 
 Once the cluster is ready, [streaming ingestion policy](../../concepts/streamingingestionpolicy.md) must be defined on table(s) or database(s) that will receive streaming data. If the policy is defined at the database level, all tables in the database are enabled for streaming ingestion.
 
