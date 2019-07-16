@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/04/2019
+ms.date: 07/12/2019
 ---
 # make-series operator
 
@@ -19,7 +19,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 
 **Syntax**
 
-*T* `| make-series`
+*T* `| make-series` [*MakeSeriesParamters*]
       [*Column* `=`] *Aggregation* [`default` `=` *DefaultValue*] [`,` ...]
     `on` *AxisColumn* `from` *start* `to` *end* `step` *step* 
     [`by`
@@ -35,6 +35,12 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 * *end*: The high bound (non-inclusive) value of the *AxisColumn*, the last index of the time series is smaller than this value (and will be *start* plus integer multiple of *step* that is smaller than *end*).
 * *step*: The difference between two consecutive elements of the *AxisColumn* array (i.e. the bin size).
 * *GroupExpression:* An expression over the columns, that provides a set of distinct values. Typically it's a column name that already provides a restricted set of values. 
+* *MakeSeriesParameters*: Zero or more (space-separated) parameters in the form of *Name* `=` *Value* 
+	that control the behavior. The following parameters are supported: 
+  
+  |Name           |Values                                        |Description                                                                                        |
+  |---------------|-------------------------------------|------------------------------------------------------------------------------|
+  |`kind`          |`nonempty`								 |Produces default result when the input of make-series operator is empty|                                
 
 **Returns**
 
@@ -148,3 +154,70 @@ data
 |avg_metric|timestamp|
 |---|---|
 |[ 4.0, 3.0, 5.0, 0.0, 10.5, 4.0, 3.0, 8.0, 6.5 ]|[ "2017-01-01T00:00:00.0000000Z", "2017-01-02T00:00:00.0000000Z", "2017-01-03T00:00:00.0000000Z", "2017-01-04T00:00:00.0000000Z", "2017-01-05T00:00:00.0000000Z", "2017-01-06T00:00:00.0000000Z", "2017-01-07T00:00:00.0000000Z", "2017-01-08T00:00:00.0000000Z", "2017-01-09T00:00:00.0000000Z" ]|  
+
+
+When the input to `make-series` is empty, the default behaviour of `make-series` produces an empty result as well.
+
+```kusto
+let data=datatable(timestamp:datetime, metric: real)
+[
+  datetime(2016-12-31T06:00), 50,
+  datetime(2017-01-01), 4,
+  datetime(2017-01-02), 3,
+  datetime(2017-01-03), 4,
+  datetime(2017-01-03T03:00), 6,
+  datetime(2017-01-05), 8,
+  datetime(2017-01-05T13:40), 13,
+  datetime(2017-01-06), 4,
+  datetime(2017-01-07), 3,
+  datetime(2017-01-08), 8,
+  datetime(2017-01-08T21:00), 8,
+  datetime(2017-01-09), 2,
+  datetime(2017-01-09T12:00), 11,
+  datetime(2017-01-10T05:00), 5,
+];
+let interval = 1d;
+let stime = datetime(2017-01-01);
+let etime = datetime(2017-01-10);
+data
+| limit 0
+| make-series avg(metric) default=1.0 on timestamp from stime to etime step interval 
+| count 
+```
+
+|Count|
+|---|
+|0|
+
+
+Using `kind=nonempty` in `make-series` will produce non empty result of the default values:
+
+```kusto
+let data=datatable(timestamp:datetime, metric: real)
+[
+  datetime(2016-12-31T06:00), 50,
+  datetime(2017-01-01), 4,
+  datetime(2017-01-02), 3,
+  datetime(2017-01-03), 4,
+  datetime(2017-01-03T03:00), 6,
+  datetime(2017-01-05), 8,
+  datetime(2017-01-05T13:40), 13,
+  datetime(2017-01-06), 4,
+  datetime(2017-01-07), 3,
+  datetime(2017-01-08), 8,
+  datetime(2017-01-08T21:00), 8,
+  datetime(2017-01-09), 2,
+  datetime(2017-01-09T12:00), 11,
+  datetime(2017-01-10T05:00), 5,
+];
+let interval = 1d;
+let stime = datetime(2017-01-01);
+let etime = datetime(2017-01-10);
+data
+| limit 0
+| make-series kind=nonempty avg(metric) default=1.0 on timestamp from stime to etime step interval 
+```
+
+|avg_metric|timestamp|
+|---|---|
+|[<br>  1.0,<br>  1.0,<br>  1.0,<br>  1.0,<br>  1.0,<br>  1.0,<br>  1.0,<br>  1.0,<br>  1.0<br>]|[<br>  "2017-01-01T00:00:00.0000000Z",<br>  "2017-01-02T00:00:00.0000000Z",<br>  "2017-01-03T00:00:00.0000000Z",<br>  "2017-01-04T00:00:00.0000000Z",<br>  "2017-01-05T00:00:00.0000000Z",<br>  "2017-01-06T00:00:00.0000000Z",<br>  "2017-01-07T00:00:00.0000000Z",<br>  "2017-01-08T00:00:00.0000000Z",<br>  "2017-01-09T00:00:00.0000000Z"<br>]|

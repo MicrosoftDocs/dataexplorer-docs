@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/27/2019
+ms.date: 07/14/2019
 ---
 # External tables (preview)
 
@@ -19,4 +19,4 @@ and can be referenced by its name. External table names can’t overlap with Kus
 
 > [!NOTE]
 > Kusto supports [exporting data to an external table](../../management/data-export/export-data-to-an-external-table.md).
-> as well as [querying external tables](/azure/data-explorer/data-lake-query-data).
+> as well as [querying external tables](https://docs.microsoft.com/en-us/azure/data-explorer/data-lake-query-data).

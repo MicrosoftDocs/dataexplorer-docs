@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/02/2019
+ms.date: 07/12/2019
 ---
 # Kusto.Explorer tool
 
@@ -21,13 +21,6 @@ Installation is simple as accessing your Kusto cluster with Internet Explorer at
 Alternatively, you can obtain a Kusto.Explorer tool from this URL: [https://aka.ms/Kusto.Explorer](https://aka.ms/Kusto.Explorer)
 
 
-
-## Using Edge and Kusto.Explorer
-
-> [!WARNING]
-> There is a known regression in Windows 10 April 2018 (version 1803) that prevents
-> Edge from opening deep-links to Kusto queries in Kusto.Explorer. The fix is planned
-> to be available in Windows for summer 2018.
 
 ## Using Chrome and Kusto.Explorer
 
@@ -675,10 +668,11 @@ To check missing or corrupted system files - use steps described here:
 
 - This could be a result of corruption in your local ClickOnce store.
 - You can clear the local ClickOnce store, by running the following command, in an elevated command prompt.
-- Note: any ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut.
-  App shortcuts will not be deleted.
-
+    ```
     rd /q /s %userprofile%\appdata\local\apps\2.0
+    ```
+- Note: any ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to
+  the original install location stored in the app shortcut. App shortcuts will not be deleted.
 
 - Then, try installing Kusto.Explorer again from one of the [installation mirrors](#getting-the-tool)
 
