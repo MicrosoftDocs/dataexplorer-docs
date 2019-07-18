@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/30/2018
+ms.date: 07/15/2019
 ---
 # Cache policy (hot and cold cache)
 
@@ -70,12 +70,11 @@ several ways to do this:
 - Add a `datascope=...` text immediately after a table reference in the
    query body. Possible values are `all` and `hotcache`.
 
-The `default` value indicates use of the cluster default settings, which determine that the query should cover all data. 
-[!Note] 
-The cluster admin can configure clusters so the `default` is the same as `hotcache`.)
-Using `hotcache` restricts the query data to the hot cache data only.
+The `default` value indicates use of the cluster default settings, which determine that the query should cover all data.
 
-If there is a discrepency between the different methods: 
+
+
+If there is a discrepancy between the different methods: 
 `set` takes precedence over the client request property, and specifying a value for a table reference
 takes precedence over both.
 
