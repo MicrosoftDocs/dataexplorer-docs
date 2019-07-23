@@ -7,13 +7,14 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/15/2019
+ms.date: 07/17/2019
 ---
 # externaldata operator
 
-Returns a table whose schema is defined in the query itself, and whose data is read from an external raw file.
+The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external raw file.
 
-Note that this operator does not have a pipeline input.
+> [!NOTE]
+> This operator does not have a pipeline input.
 
 **Syntax**
 
@@ -21,28 +22,19 @@ Note that this operator does not have a pipeline input.
 
 **Arguments**
 
-* *ColumnName*, *ColumnType*: These define the schema of the table. The Syntax
-  used is precisely the same as the syntax used when defining a table
-  (see [.create table](../management/tables.md#create-table)).
-* *DataFileUri*: The URI (including authentication option, if any) for the file
-  holding the data.
-* *Prop1*, *Value1*, ...: Additional properties to describe how the data in the raw file
-  is to be interpreted, as listed under [ingestion properties](../management/data-ingestion/index.md).
-    * Only the `format` and `ignoreFirstRecord` properties are supported at the moment.
-    * Currently supported [data formats](../management/data-ingestion/index.md#supported-data-formats)
-    for this operator are: `csv`, `tsv`, `scsv`, `sohsv`, `psv`, `txt`, `raw`.
+* *ColumnName*, *ColumnType*: Define the schema of the table. The syntax is the same as the syntax used when defining a table in [.create table](../management/tables.md#create-table).
+* *DataFileUri*: The URI (including authentication option, if any) for the file holding the data.
+* *Prop1*, *Value1*, ...: Additional properties that describe how to interpret the data in the raw file, as listed under [ingestion properties](../management/data-ingestion/index.md).
+    * Currently supported properties: `format` and `ignoreFirstRecord`.
+    * Currently supported [data formats](../management/data-ingestion/index.md#supported-data-formats) for this operator: `csv`, `tsv`, `scsv`, `sohsv`, `psv`, `txt`, `raw`.
 
 **Returns**
 
-This operator returns a data table of the given schema, whose data was parsed
-from the specified URI.
+The `externaldata` operator returns a data table of the given schema, whose data was parsed from the specified URI.
 
 **Example**
 
-The following example shows how to find all records in a table whose
-`UserID` column falls into a known set of IDs, held (one per line)
-in an external blob. Because the set is indirectly referenced by the
-query, it can be very large.
+The following example shows you how to find all the records in a table whose `UserID` column falls into a known set of IDs, held (one per line) in an external blob. Because the set is indirectly referenced by the query, it can be very large.
 
 ```kusto
 Users

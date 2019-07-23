@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2019
+ms.date: 07/22/2019
 ---
 # series_decompose()
 
@@ -17,19 +17,20 @@ Takes an expression containing a series (dynamic numerical array) as input and d
  
 **Syntax**
 
-`series_decompose(`*x* `[,` *seasonality*`,` *trend*`])`
+`series_decompose(`*Series* `[,` *Seasonality*`,` *Trend*`,` *Test_points*`])`
 
 **Arguments**
 
-* *x*: Dynamic array cell which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators
-* *seasonality*: An integer controlling the seasonal analysis, containing either
+* *Series*: Dynamic array cell which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators
+* *Seasonality*: An integer controlling the seasonal analysis, containing either
     * -1: autodetect seasonality (using [series_periods_detect](series-periods-detectfunction.md) [default] 
     * period: positive integer, specifying the expected period in number of bins unit. For example, if the series is in 1h bins, a weekly period is 168 bins
     * 0: no seasonality (i.e. skip extracting this component)    
-* *trend*: A string controlling the trend analysis, containing either
+* *Trend*: A string controlling the trend analysis, containing either
     * "avg": define trend component as average(x) [default]
     * "linefit": extract trend component using linear regression
     * "none": no trend, skip extracting this component    
+* *Test_points*: 0 [default] or positive integer, specifying the number of points at the end of the series to exclude from the learning (regression) process. This parameter should be set for forecasting purpose
 
 **Return**
 

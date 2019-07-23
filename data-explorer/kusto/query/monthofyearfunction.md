@@ -7,11 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 07/22/2019
 ---
 # monthofyear()
 
 Returns the integer number represents the month number of the given year.
+
+Another alias: getmonth()
 
 ```kusto
 monthofyear(datetime("2015-12-14"))

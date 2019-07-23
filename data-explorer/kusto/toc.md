@@ -117,6 +117,7 @@
 ## Special functions
 ### [cluster()](./query/clusterfunction.md)
 ### [database()](./query/databasefunction.md)
+### [exteral_table()](./query/externaltablefunction.md)
 ### [materialize()](./query/materializefunction.md)
 ### [table()](./query/tablefunction.md)
 ### [toscalar()](./query/toscalarfunction.md)

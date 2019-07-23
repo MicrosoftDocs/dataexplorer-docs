@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/28/2019
+ms.date: 07/17/2019
 ---
 ## Virtual Network deployment
 

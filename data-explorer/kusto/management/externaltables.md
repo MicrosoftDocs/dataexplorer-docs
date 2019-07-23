@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/09/2019
+ms.date: 07/22/2019
 ---
 # External tables commands (preview)
 
@@ -233,6 +233,77 @@ with
 |TableName|TableType|Folder|DocString|Properties|ConnectionStrings|
 |---|---|---|---|---|---|
 |ExternalAdlGen2|Adl|ExternalTables|Docs|{"Format":"Csv","Compressed":false,"CompressionType":null,"FileExtension":"csv","IncludeHeaders":"None","Encoding":null,"NamePrefix":"Prefix"}|["abfss://filesystem@storageaccount.dfs.core.windows.net/path;*******"]}|"<br>]|
+
+## .create mapping
+
+`.create` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* *MappingInJsonFormat*
+
+Creates a new mapping. <br>
+For more information on data mappings see [Data Mappings](./mappings.md#json-mapping)
+
+**Example** 
+ 
+```kusto
+.create external table MyExternalTable json mapping "Mapping1" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
+```
+**Example output**
+
+|Name|Kind|Mapping
+|---|---|---
+|mapping1|JSON|[{"ColumnName":"rownumber","ColumnType":"int","Properties":{"Path":"$.rownumber"}},{"ColumnName":"rowguid","ColumnType":"","Properties":{"Path":"$.rowguid"}}]
+
+## .alter mapping
+
+`.alter` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* *MappingInJsonFormat*
+
+Alters an existing mapping (full mapping replace). 
+ 
+**Example** 
+ 
+```kusto
+.alter external table MyExternalTable json mapping "Mapping1" '[{ "column" : "rownumber", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
+```
+
+**Example output**
+
+|Name|Kind|Mapping
+|---|---|---
+|mapping1|JSON|[{"ColumnName":"rownumber","ColumnType":"","Properties":{"Path":"$.rownumber"}},{"ColumnName":"rowguid","ColumnType":"","Properties":{"Path":"$.rowguid"}}]
+
+## .show mappings
+
+`.show` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* 
+
+`.show` `external` `table` *ExternalTableName* `json` `mappings`
+
+Show the mappings (all or the one specified by name).
+ 
+**Example** 
+ 
+```kusto
+.show external table MyExternalTable json mapping "Mapping1" 
+
+.show external table MyExternalTable json mappings 
+```
+
+**Example output**
+
+|Name|Kind|Mapping
+|---|---|---
+|mapping1|JSON|[{"ColumnName":"rownumber","ColumnType":"","Properties":{"Path":"$.rownumber"}},{"ColumnName":"rowguid","ColumnType":"","Properties":{"Path":"$.rowguid"}}]
+
+
+## .drop mapping
+
+`.drop` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* 
+
+Drops the mapping from the database.
+ 
+**Example** 
+ 
+```kusto
+.drop external table MyExternalTable json mapping "Mapping1" 
+```
 
 ## External SQL Table
 

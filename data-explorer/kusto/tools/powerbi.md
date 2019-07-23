@@ -7,12 +7,12 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/24/2018
+ms.date: 07/22/2019
 ---
 # Power BI and Kusto
 
-Power BI integration with Kusto allows one to use Power BI to query and visualize
-data stored by Kusto, as long as the user has access to that data.
+Power BI integration with Azure Data Explorer allows one to use Power BI to query and visualize
+data stored by Azure Data Explorer, as long as the user has access to that data.
 
 ## Create a Power BI Dashboard based on Kusto data
 

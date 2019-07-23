@@ -1,32 +1,32 @@
 ---
-title: How-To -  Authenticate with AAD for Kusto Access - Azure Data Explorer | Microsoft Docs
-description: This article describes How-To -  Authenticate with AAD for Kusto Access in Azure Data Explorer.
+title: How-To -  Authenticate with AAD for Azure Data Explorer Access - Azure Data Explorer | Microsoft Docs
+description: This article describes How-To -  Authenticate with AAD for Azure Data Explorer Access in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/22/2019
+ms.date: 07/23/2019
 ---
-# How-To: Authenticate with AAD for Kusto Access
+# How-To: Authenticate with AAD for Azure Data Explorer Access
 
-The recommended way to access Kusto is by authenticating to the
+The recommended way to access Azure Data Explorer is by authenticating to the
 **Azure Active Directory** service (sometimes also called **Azure AD**, or simply
-**AAD**). Doing so guarantees that Kusto never sees the accessing principal's
+**AAD**). Doing so guarantees that Azure Data Explorer never sees the accessing principal's
 directory credentials, by using a two-stage process:
 
 1. In the first step, the client communicates with the AAD service, authenticates
-   to it, and requests an access token issued specifically for the particular Kusto
+   to it, and requests an access token issued specifically for the particular Azure Data Explorer
    endpoint the client intends to access.
-2. In the second step the client issues requests to Kusto, providing the access
-   token acquired in the first step as a proof of identity to Kusto.
+2. In the second step the client issues requests to Azure Data Explorer, providing the access
+   token acquired in the first step as a proof of identity to Azure Data Explorer.
 
-Kusto then executes the request on behalf of the security principal for which AAD
+Azure Data Explorer then executes the request on behalf of the security principal for which AAD
 issued the access token, and all authorization checks are performed using
 this identity.
 
-In most cases, the recommendation is to use one of Kusto SDKs to access the
+In most cases, the recommendation is to use one of Azure Data Explorer SDKs to access the
 service programmatically, as they remove much of the hassle of implementing the
 flow above (and much else). See, for example, the [.NET SDK](../../api/netfx/about-the-sdk.md).
 The authentication properties are then set by the [Kusto connection string](../../api/connection-strings/kusto.md).
@@ -49,15 +49,15 @@ The main authenticating scenarios are:
 * **On-behalf-of authentication**.
   In this scenario, sometimes called the "web service" or "web app" scenario,
   the application gets an AAD access token from another application, and then
-  "converts" it to an another AAD access token that can be used with Kusto.
+  "converts" it to an another AAD access token that can be used with Azure Data Explorer.
   In other words, the application acts as a mediator between the user or application
-  that provided credentials and the Kusto service.
+  that provided credentials and the Azure Data Explorer service.
   See [on-behalf-of authentication](#on-behalf-of-authentication).
 
-## Specifying the AAD resource for Kusto
+## Specifying the AAD resource for Azure Data Explorer
 
 When acquiring an access token from AAD, the client must tell AAD which **AAD resource**
-the token should be issued to. The AAD resource of a Kusto endpoint is the
+the token should be issued to. The AAD resource of a Azure Data Explorer endpoint is the
 URI of the endpoint, barring the port information and the path. For example:
 
 ```txt
@@ -97,7 +97,7 @@ AAD has a number of endpoints for authentication:
 
 ## AAD token cache
 
-When using the Kusto SDK, the AAD tokens are stored on the local machine in a
+When using the Azure Data Explorer SDK, the AAD tokens are stored on the local machine in a
 per-user token cache (a file called **%APPDATA%\Kusto\tokenCache.data** which can
 only be accessed or decrypted by the signed-in user.) The cache is inspected
 for tokens before prompting the user for credentials, thus greatly reducing the
@@ -105,10 +105,10 @@ number of times a user has to enter credentials.
 
 > [!NOTE]
 > The AAD token cache reduces the number of interactive prompts that a user would
-> be presented with accessing Kusto, but does not reduce them complete. Additionally,
+> be presented with accessing Azure Data Explorer, but does not reduce them complete. Additionally,
 > users cannot anticipate in advance when they will be prompted for credentials.
-> This means that one must not attempt to use a user account to access Kusto if
-> there's need to support non-interactive logons (such as when scheduling tasks
+> This means that one must not attempt to use a user account to access Azure Data Explorer if
+> there's a need to support non-interactive logons (such as when scheduling tasks
 > for example), because when the time comes for prompting the logged on user for
 > credentials that prompt will fail if running under non-interactive logon.
 
@@ -116,23 +116,23 @@ number of times a user has to enter credentials.
 
 ## User authentication
 
-The easiest way to access Kusto with user authentication is to use the Kusto SDK
-and set the `Federated Authentication` property of the Kusto connection string to
+The easiest way to access Azure Data Explorer with user authentication is to use the Azure Data Explorer SDK
+and set the `Federated Authentication` property of the Azure Data Explorer connection string to
 `true`. The first time the SDK is used to send a request to the service the user
 will be presented with a sign-in form to enter the AAD credentials, and on
 successful authentication the request will be sent.
 
-Applications that do not use the Kusto SDK can still use the AAD client library
+Applications that do not use the Azure Data Explorer SDK can still use the AAD client library
 (ADAL) instead of implementing the AAD service security protocol client. Please
 see [https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet]
 for an example of doing so from a .NET application.
 
-To authenticate users for Kusto access, an application must first be granted the
+To authenticate users for Azure Data Explorer access, an application must first be granted the
 `Access Kusto` delegated permission. Please see [Kusto guide to AAD applications provisioning](how-to-provision-aad-app.md#set-up-delegated-permissions-for-kusto-service-application)
 for details.
 
 The following brief code snippet demonstrates using ADAL to acquire an AAD user
-token to access Kusto (launches logon UI):
+token to access Azure Data Explorer (launches logon UI):
 
 ```csharp
 // Create an HTTP request
@@ -153,7 +153,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 ## Application authentication
 
 The following brief code snippet demonstrates using ADAL to acquire an
-AAD application token to access Kusto. In this flow no prompt is presented, and
+AAD application token to access Azure Data Explorer. In this flow no prompt is presented, and
 the application must be registered with AAD and equipped with credentials needed
 to perform application authentication (such as an app key issued by AAD,
 or an X509v2 certificate that has been pre-registered with AAD).
@@ -179,7 +179,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 In this scenario an application was sent an AAD access token for some arbitrary
 resource managed by the application, and it uses that token to acquire a new AAD
-access token for the Kusto resource so that the application could access Kusto
+access token for the Azure Data Explorer resource so that the application could access Kusto
 on behalf of the principal indicated by the original AAD access token.
 
 This flow is called the
@@ -190,7 +190,7 @@ the administrator of the AAD tenant.
 
 
 
-**Step 1: Establish trust relationship between your application and Kusto service**
+**Step 1: Establish trust relationship between your application and the Azure Data Explorer service**
 
 1. Open the [Azure portal](https://portal.azure.com/) and make sure that you are
    signed-in to the correct tenant (see top/right corner for the identity
@@ -248,7 +248,7 @@ var queryResult = client.ExecuteQuery(databaseName, query, null);
 **Details**
 
 When the client is a JavaScript code running in the user's browser, the implicit grant flow is used. The token granting the client application
-access to the Kusto service is provided immediately following a successful authentication as part of the redirect URI (in a URI
+access to the Azure Data Explorer service is provided immediately following a successful authentication as part of the redirect URI (in a URI
 fragment); no refresh token is given in this flow, so the client can't cache the token for prolonged periods of time and reuse it.
 
 Like in the native client flow, there should be  two AAD applications (Server and Client) with a configured relationship between them. 
@@ -278,7 +278,7 @@ var authContext = new AuthenticationContext(config);
  authContext.acquireToken("<Kusto cluster URL>", callbackThatUsesTheToken);
  ```
 
-* in the callbackThatUsesTheToken you can use the token as a bearer token in the kusto request. for example:
+* in the callbackThatUsesTheToken you can use the token as a bearer token in the Azure Data Explorer request. for example:
 
 ```javascript
 var settings = {
