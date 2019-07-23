@@ -7,10 +7,9 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/26/2018
+ms.date: 07/23/2019
 ---
 # Reference material for Kusto Query Language
 
 * [RE2 regular expression syntax](./re2.md) describes the syntax 
   of the regular expression library used by Kusto (re2) in details.
-* [SQL to Kusto Cheat Sheet](./sqlcheatsheet.md) gives examples of common SQL queries translated into Kusto queries

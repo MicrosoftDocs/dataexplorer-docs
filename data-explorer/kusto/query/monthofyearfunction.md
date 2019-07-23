@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/22/2019
+ms.date: 07/18/2019
 ---
 # monthofyear()
 

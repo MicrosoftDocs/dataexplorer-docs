@@ -260,35 +260,6 @@
 ### [replace()](./query/replacefunction.md)
 ### [reverse()](./query/reversefunction.md)
 ### [round()](./query/roundfunction.md)
-### [series_add()](./query/series-addfunction.md)
-### [series_decompose()](./query/series-decomposefunction.md)
-### [series_decompose_anomalies()](./query/series-decompose-anomaliesfunction.md)
-### [series_decompose_forecast()](./query/series-decompose-forecastfunction.md)
-### [series_divide()](./query/series-dividefunction.md)
-### [series_equals()](./query/series-equalsfunction.md)
-### [series_fill_backward()](./query/series-fill-backwardfunction.md)
-### [series_fill_const()](./query/series-fill-constfunction.md)
-### [series_fill_forward()](./query/series-fill-forwardfunction.md)
-### [series_fill_linear()](./query/series-fill-linearfunction.md)
-### [series_fir()](./query/series-firfunction.md)
-### [series_fit_2lines()](./query/series-fit-2linesfunction.md)
-### [series_fit_2lines_dynamic()](./query/series-fit-2lines-dynamicfunction.md)
-### [series_fit_line()](./query/series-fit-linefunction.md)
-### [series_fit_line_dynamic()](./query/series-fit-line-dynamicfunction.md)
-### [series_greater()](./query/series-greaterfunction.md)
-### [series_greater_equals()](./query/series-greater-equalsfunction.md)
-### [series_iir()](./query/series-iirfunction.md)
-### [series_less()](./query/series-lessfunction.md)
-### [series_less_equals()](./query/series-less-equalsfunction.md)
-### [series_multiply()](./query/series-multiplyfunction.md)
-### [series_not_equals()](./query/series-not-equalsfunction.md)
-### [series_outliers()](./query/series-outliersfunction.md)
-### [series_periods_detect()](./query/series-periods-detectfunction.md)
-### [series_periods_validate()](./query/series-periods-validatefunction.md)
-### [series_seasonal()](./query/series-seasonalfunction.md)
-### [series_stats()](./query/series-statsfunction.md)
-### [series_stats_dynamic()](./query/series-stats-dynamicfunction.md)
-### [series_subtract()](./query/series-subtractfunction.md)
 ### [set_difference()](./query/setdifferencefunction.md)
 ### [set_intersect()](./query/setintersectfunction.md)
 ### [set_union()](./query/setunionfunction.md)
@@ -426,8 +397,6 @@
 
 ## [Reference material for Kusto Query Language](./query/reference.md)
 ### [RE2 syntax](./query/re2.md)
-### [SQL to Kusto Cheat Sheet](./query/sqlcheatsheet.md)
-
 # [Concepts](./concepts/index.md)
 ## [Getting started](./concepts/index.md)
 
@@ -473,6 +442,10 @@
 ### [Cross-cluster queries and schema changes](./concepts/crossclusterandschemachanges.md)
 ### [Query consistency](./concepts/queryconsistency.md)
 ### [Errors in native code](./concepts/errorsinnativecode.md)
+
+## Other Languages
+### [SQL to Kusto Cheat Sheet](./concepts/..\OtherLanguages\sqlcheatsheet.md)
+
 # [Management](./management/index.md)
 ## [Overview](./management/index.md)
 ### [Best practices](./management/best-practices.md)
@@ -632,3 +605,4 @@
 
 ## Source control integration
 ### [Azure Pipelines/DevOps](./tools/azure-pipelines.md)
+### [Sync Kusto](./tools/synckusto.md)
