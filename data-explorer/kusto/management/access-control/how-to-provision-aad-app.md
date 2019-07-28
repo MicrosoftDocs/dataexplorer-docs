@@ -1,15 +1,15 @@
 ---
-title: HowTo -  Creating an AAD Application - Azure Data Explorer | Microsoft Docs
-description: This article describes HowTo -  Creating an AAD Application in Azure Data Explorer.
+title: HowTo Creating an AAD Application - Azure Data Explorer | Microsoft Docs
+description: This article describes HowTo Creating an AAD Application in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/02/2019
+ms.date: 07/25/2019
 ---
-# HowTo: Creating an AAD Application
+# HowTo Creating an AAD Application
 
 While AAD user authentication is very easy (as users are defined in AAD by
 the tenant admin, such as MSIT in case of Microsoft), AAD application authentication

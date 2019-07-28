@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/17/2019
+ms.date: 07/25/2019
 ---
 # external_table()
 
@@ -33,10 +33,10 @@ external_table('StormEvent')
 
 **Remarks**
 
-See [external tables](schema-entities\externaltables.md) for more information
+See [external tables](schema-entities/externaltables.md) for more information
 on external tables.
 
-See also [commands for managing external tables](../management\externaltables.md).
+See also [commands for managing external tables](../management/externaltables.md).
 
 The `external_table` function has similar restrictions
 as the [table](tablefunction.md) function.

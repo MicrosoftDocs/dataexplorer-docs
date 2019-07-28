@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/22/2019
+ms.date: 07/23/2019
 ---
 # Security roles management
 
@@ -217,7 +217,6 @@ Unlike add and drop blocked principals, which require cluster admin privileges, 
 
 ```kusto
 .add cluster blockedprincipals 'aaduser=imike@fabrikam.com' period 4d reason "Some explanation..."
-.add cluster blockedprincipals 'dstsapp=<App ID>' application '<App name>' user '<User name>' period 30d reason "Some explanation"
 .show cluster blockedprincipals
 .drop cluster blockedprincipals 'aaduser=imike@fabrikam.com'
 ```

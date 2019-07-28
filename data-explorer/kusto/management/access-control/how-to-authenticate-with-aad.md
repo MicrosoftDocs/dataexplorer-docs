@@ -1,15 +1,15 @@
 ---
-title: How-To -  Authenticate with AAD for Azure Data Explorer Access - Azure Data Explorer | Microsoft Docs
-description: This article describes How-To -  Authenticate with AAD for Azure Data Explorer Access in Azure Data Explorer.
+title: How-To Authenticate with AAD for Azure Data Explorer Access - Azure Data Explorer | Microsoft Docs
+description: This article describes How-To Authenticate with AAD for Azure Data Explorer Access in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/23/2019
+ms.date: 07/25/2019
 ---
-# How-To: Authenticate with AAD for Azure Data Explorer Access
+# How-To Authenticate with AAD for Azure Data Explorer Access
 
 The recommended way to access Azure Data Explorer is by authenticating to the
 **Azure Active Directory** service (sometimes also called **Azure AD**, or simply
