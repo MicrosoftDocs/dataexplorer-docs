@@ -1,15 +1,15 @@
 ---
-title: #Virtual Network deployment - Azure Data Explorer | Microsoft Docs
-description: This article describes #Virtual Network deployment in Azure Data Explorer.
+title: Virtual Network deployment - Azure Data Explorer | Microsoft Docs
+description: This article describes Virtual Network deployment in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/17/2019
+ms.date: 07/29/2019
 ---
-## Virtual Network deployment
+# Virtual Network deployment
 
 Azure Data Explorer supports deploying a cluster into a subnet in your Virtual Network (VNet), enabling you to:
 * Enforce Network Security Group (NSG) rules on your ADX cluster traffic.
