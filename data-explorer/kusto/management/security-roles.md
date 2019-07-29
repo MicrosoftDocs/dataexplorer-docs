@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/05/2019
+ms.date: 07/23/2019
 ---
 # Security roles management
 
@@ -86,25 +86,6 @@ Here are potential results from this command:
 |Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN 
 |---|---|---|---|---
 |Database Apsty Admin |AAD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
-
-## Retrieving security roles for a principal
-
-`.show` `principal` `roles`
-
-`.show` `principal` *Principal* `roles`
-
-The first option retrieves all the security roles for the current principal (the one
-who executes the command). The principal must have access to at least one database
-or the command will fail.
-
-The second option retrieves all the security roles for the security principal
-indicated by the command. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals.
-
-**Example**
-
-```kusto
-.show principal "aaduser=somebodyimportant@fabrikam.com" roles
-```
 
 
 
@@ -236,7 +217,6 @@ Unlike add and drop blocked principals, which require cluster admin privileges, 
 
 ```kusto
 .add cluster blockedprincipals 'aaduser=imike@fabrikam.com' period 4d reason "Some explanation..."
-.add cluster blockedprincipals 'dstsapp=<App ID>' application '<App name>' user '<User name>' period 30d reason "Some explanation"
 .show cluster blockedprincipals
 .drop cluster blockedprincipals 'aaduser=imike@fabrikam.com'
 ```

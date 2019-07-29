@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/30/2019
+ms.date: 07/23/2019
 ---
 # Azure Data Explorer tools
 
@@ -45,3 +45,4 @@ ms.date: 05/30/2019
 ## Source control integration tools
 
 * [Azure Pipelines](./azure-pipelines.md) - Invokes control commands as part of your pipeline
+* [Sync Kusto](./synckusto.md) - Sync Kusto stored functions to/from Git

@@ -1,15 +1,15 @@
 ---
-title: HowTo -  Data Ingestion without Kusto.Ingest Library - Azure Data Explorer | Microsoft Docs
-description: This article describes HowTo -  Data Ingestion without Kusto.Ingest Library in Azure Data Explorer.
+title: HowTo Data Ingestion without Kusto.Ingest Library - Azure Data Explorer | Microsoft Docs
+description: This article describes HowTo Data Ingestion without Kusto.Ingest Library in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/02/2019
+ms.date: 07/25/2019
 ---
-# HowTo: Data Ingestion without Kusto.Ingest Library
+# HowTo Data Ingestion without Kusto.Ingest Library
 
 ## When to Consider Not Using Kusto.Ingest library?
 Generally, using Kusto.Ingest library should be preferred whenever ingesting data to Kusto is considered.<BR>

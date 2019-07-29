@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/27/2018
+ms.date: 07/25/2019
 ---
 # SQL to Kusto query translation
 

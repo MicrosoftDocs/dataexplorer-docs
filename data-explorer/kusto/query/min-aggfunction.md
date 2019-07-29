@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 07/24/2019
 ---
 # min() (aggregation function)
 
-Returns the minimum value agross the group. 
+Returns the minimum value across the group. 
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
 

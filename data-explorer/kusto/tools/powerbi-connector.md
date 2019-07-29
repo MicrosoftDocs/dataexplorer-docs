@@ -7,14 +7,12 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/05/2019
+ms.date: 07/22/2019
 ---
 # Power BI Kusto Connector
 
-The Power BI Kusto Connector (Preview) is a Power BI Desktop connector for Kusto,
+The Power BI Kusto Connector is a Power BI Desktop connector for Azure Data Explorer,
 which lets you visually build (efficient) Kusto queries using the Power BI query editor. 
-
-
 
 ## Using the connector
 

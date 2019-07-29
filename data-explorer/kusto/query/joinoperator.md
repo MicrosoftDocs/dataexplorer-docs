@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/11/2019
+ms.date: 07/24/2019
 ---
 # join operator
 
@@ -88,7 +88,6 @@ If there are several rows with the same values for those fields, you'll get rows
 
 For best performance:
 
-* Use `where` and `project` to reduce the numbers of rows and columns in the input tables, before the `join`. 
 * If one table is always smaller than the other, use it as the left (piped) side of the join.
 
 **Example**

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2019
+ms.date: 07/16/2019
 ---
 # make_list() (aggregation function)
 
@@ -33,3 +33,7 @@ An legacy and obsolete variant of this function: `makelist()` has a default limi
 Returns a `dynamic` (JSON) array of all the values of *Expr* in the group.
 If the input to the `summarize` operator is not sorted, the order of elements in the resulting array is undefined.
 If the input to the `summarize` operator is sorted, the order of elements in the resulting array tracks that of the input.
+
+**Tips**
+
+Use [mv-apply](./mv-applyoperator.md) operator in order to create an ordered list by some key. see examples [here](./mv-applyoperator.md#using-mv-apply-operator-to-sort-the-output-of-makelist-aggregate-by-some-key).
