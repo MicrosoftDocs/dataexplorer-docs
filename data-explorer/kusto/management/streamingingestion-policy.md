@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/30/2019
+ms.date: 07/30/2019
 ---
 # Streaming ingestion policy control commands
 
@@ -52,7 +52,7 @@ This command returns a table with the following columns:
 |----------|--------|------------------------------------------------------------------|
 |NumberOfRowStores |`int`  |The number of row stores assigned to the entity|
 |SealIntervalLimit|`TimeSpan?`|Optional limit for the intervals between seal operations on the table. The valid range is between 1 to 24 hours. Default: 24 hours.|
-|SealThresholdBytes|`int`|Optional limit for data amount to be taken for a single seal operation on the table. The valid range for the value is between 10 to 200 MBs. Default: 200 MBs.|
+|SealThresholdBytes|`int?`|Optional limit for data amount to be taken for a single seal operation on the table. The valid range for the value is between 10 to 200 MBs. Default: 200 MBs.|
 
 ## .alter policy streamingingestion
 

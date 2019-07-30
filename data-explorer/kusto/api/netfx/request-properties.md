@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/27/2019
+ms.date: 07/30/2019
 ---
 # Request properties, ClientRequestProperties
 
@@ -173,6 +173,8 @@ public static System.Data.IDataReader QueryKusto(
 
 * `block_splitting_enabled` (*OptionBlockSplittingEnabled*): Enables splitting of sequence blocks after aggregation operator. [Boolean]
 * `database_pattern` (*OptionDatabasePattern*): Database pattern overrides database name and picks the 1st database that matches the pattern. '*' means any database that user has access to. [String]
+* `debug_query_externaldata_projection_fusion_disabled` (*OptionDebugQueryDisableExternalDataProjectionFusion*): If set, don't fuse projection into ExternalData operator. [Boolean]
+* `debug_query_fanout_threads_percent_external_data` (*OptionDebugQueryFanoutThreadsPercentExternalData*): The percentage of threads to fanout execution to for external data nodes. [Int]
 * `deferpartialqueryfailures` (*OptionDeferPartialQueryFailures*): If true, disables reporting partial query failures as part of the result set. [Boolean]
 * `max_memory_consumption_per_query_per_node` (*OptionMaxMemoryConsumptionPerQueryPerNode*): Overrides the default maximum amount of memory a whole query may allocate per node. [UInt64]
 * `maxmemoryconsumptionperiterator` (*OptionMaxMemoryConsumptionPerIterator*): Overrides the default maximum amount of memory a query operator may allocate. [UInt64]
@@ -193,29 +195,26 @@ public static System.Data.IDataReader QueryKusto(
 * `query_datetimescope_from` (*OptionQueryDateTimeScopeFrom*): Controls the query's datetime scope (earliest) -- used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
 * `query_datetimescope_to` (*OptionQueryDateTimeScopeTo*): Controls the query's datetime scope (latest) -- used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
 * `query_distribution_nodes_span` (*OptionQueryDistributionNodesSpanSize*): If set, controls the way sub-query merge behaves: the executing node will introduce an additional level in the query hierarchy for each sub-group of nodes; the size of the sub-group is set by this option. [Int]
-* `query_fanout_nodes_percent` (*OptionQueryFanoutNodesPercent*): The percentage of nodes to fanour execution to. [Int]
+* `query_enable_jit_stream` (*OptionEnableJitStream*): If true, enabled JIT streams when sending data from managed code to native code. [Boolean]
+* `query_fanout_nodes_percent` (*OptionQueryFanoutNodesPercent*): The percentage of nodes to fanout execution to. [Int]
 * `query_fanout_threads_percent` (*OptionQueryFanoutThreadsPercent*): The percentage of threads to fanout execution to. [Int]
 * `query_language` (*OptionQueryLanguage*): Controls how the query text is to be interpreted. ['csl','kql' or 'sql']
-* `query_materialize_remote_subquery` (*RemoteMaterializeOperatorInCrossCluster*): Enables remoting materialize operator in cross cluster query.
 * `query_max_entities_in_union` (*OptionMaxEntitiesToUnion*): Overrides the default maximum number of columns a query is allowed to produce. [Long]
 * `query_now` (*OptionQueryNow*): Overrides the datetime value returned by the now(0s) function. [DateTime]
-* `query_optimization_broadcast_build_maxSize` (*CostBasedOptimizerBroadcastJoinBuildMax*): Max Rows count for build in broadcast join.
-* `query_optimization_broadcast_probe_minSize` (*CostBasedOptimizerBroadcastJoinProbeMin*): Min Rows count for probe in broadcast join.
-* `query_optimization_costbased_enabled` (*CostBasedOptimizer*): Enables automatic optimizations.
-* `query_optimization_in_operator` (*OptionOptimizeInOperator*): Optimizes in operands serialization.
-* `query_optimization_shuffling_cardinality` (*CostBasedOptimizerShufflingCardinalityThreshold*): Shuffling Cardinality Threshold.
-* `query_remote_entities_disabled` (*OptionQueryRemoteEntitiesDisabled*): If set, queries cannot access remote databases / clusters. [Boolean]
-* `query_remote_in_operands` (*RemoteInOperandsInQuery*): Enables remoting in operands.
+* `query_results_cache_max_age` (*OptionQueryResultsCacheMaxAge*): If positive, controls the maximum age of the cached query results which Kusto is allowed to return [TimeSpan]
 * `query_results_progressive_row_count` (*OptionProgressiveQueryMinRowCountPerUpdate*): Hint for Kusto as to how many records to send in each update (Takes effect only if OptionProgressiveQueryIsProgressive is set)
 * `query_results_progressive_update_period` (*OptionProgressiveProgressReportPeriod*): Hint for Kusto as to how often to send progress frames (Takes effect only if OptionProgressiveQueryIsProgressive is set)
+* `query_shuffle_broadcast_join` (*ShuffleBroadcastJoin*): Enables shuffling over broadcast join.
 * `query_take_max_records` (*OptionTakeMaxRecords*): Enables limiting query results to this number of records. [Long]
 * `queryconsistency` (*OptionQueryConsistency*): Controls query consistency. ['strongconsistency' or 'normalconsistency' or 'weakconsistency']
-* `request_callout_disabled` (*OptionRequestCalloutDisabled*): If set, callouts to external services are blocked. [Boolean]
+* `request_callout_disabled` (*OptionRequestCalloutDisabled*): If specified, indicates that the request cannot call-out to a user-provided service. [Boolean]
+* `request_external_table_disabled` (*OptionRequestExternalTableDisabled*):  If specified, indicates that the request cannot invoke code in the ExternalTable. [Boolean]
 * `request_readonly` (*OptionRequestReadOnly*): If specified, indicates that the request must not be able to write anything. [Boolean]
+* `request_remote_entities_disabled` (*OptionRequestRemoteEntitiesDisabled*): If specified, indicates that the request cannot access remote databases and clusters. [Boolean]
+* `request_sandboxed_execution_disabled` (*OptionRequestSandboxedExecutionDisabled*): If specified, indicates that the request cannot invoke code in the sandbox. [Boolean]
 * `response_dynamic_serialization` (*OptionResponseDynamicSerialization*): Controls the serialization of 'dynamic' values in result sets. ['string', 'json']
 * `response_dynamic_serialization_2` (*OptionResponseDynamicSerialization_2*): Controls the serialization of 'dynamic' string and null values in result sets. ['legacy', 'current']
 * `results_progressive_enabled` (*OptionResultsProgressiveEnabled*): If set, enables the progressive query stream
-* `sandboxed_execution_disabled` (*OptionSandboxedExecutionDisabled*): If set, using sandboxes as part of query execution is disabled. [Boolean]
 * `servertimeout` (*OptionServerTimeout*): Overrides the default request timeout. [TimeSpan]
 * `truncationmaxrecords` (*OptionTruncationMaxRecords*): Overrides the default maximum number of records a query is allowed to return to the caller (truncation). [Long]
 * `truncationmaxsize` (*OptionTruncationMaxSize*): Overrides the dfefault maximum data size a query is allowed to return to the caller (truncation). [Long]
