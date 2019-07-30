@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/07/2019
+ms.date: 07/30/2019
 ---
 # Streaming ingestion policy
 
@@ -15,7 +15,7 @@ ms.date: 07/07/2019
 
 Streaming ingestion is targeted for scenarios in which you have a large number of tables (in one or more databases), and the stream of data into each one is relatively small (few records per sec) but  overall data ingestion volume is high (thousands of records per second).
 
-The classic (bulk) ingestion is advised when the amount of data grows to more than 1MB/sec.  
+The classic (bulk) ingestion is advised when the amount of data grows to more than 1MB/sec per-table.  
 
 For more information read [Streaming ingestion](../management/data-ingestion/streaming.md).
 
