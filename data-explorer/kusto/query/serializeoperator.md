@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/04/2019
 ---
 # serialize operator
 
@@ -23,7 +23,7 @@ T | serialize rn=row_number()
 
 `serialize` [*Name1* `=` *Expr1* [`,` *Name2* `=` *Expr2*]...]
 
-* The *Name*/*Expr* pairs are similar to those in the [extend operatpr](./extendoperator.md).
+* The *Name*/*Expr* pairs are similar to those in the [extend operator](./extendoperator.md).
 
 **Example**
 
@@ -36,3 +36,15 @@ Traces
 | where ActivityId == "479671d99b7b"
 | serialize rn = row_number()
 ```
+
+The output row set of the following operators is marked as serialized:
+
+[range](./rangeoperator.md), [sort](./sortoperator.md), [order](./orderoperator.md), [top](./topoperator.md), [top-hitters](./tophittersoperator.md), [getschema](./getschemaoperator.md).
+
+The output row set of the following operators is marked as non-serialized:
+
+[sample](./sampleoperator.md), [sample-distinct](./sampledistinctoperator.md), [distinct](./distinctoperator.md), [join](./joinoperator.md), 
+[top-nested](./topnestedoperator.md), [count](./countoperator.md), [summarize](./summarizeoperator.md), [facet](./facetoperator.md), [mv-expand](./mvexpandoperator.md), 
+[evaluate](./evaluateoperator.md), [reduce by](./reduceoperator.md), [make-series](./make-seriesoperator.md)
+
+All other operators preserve the serialization property (if the input row set is serialized, so is the output row set).

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/06/2018
+ms.date: 08/05/2019
 ---
 # String operators
 
@@ -48,7 +48,7 @@ Operator        |Description                                                    
 `!in`           |Not equals to any of the elements                                 |Yes           |`"bca" !in ("123", "345", "abc")`
 `in~`           |Equals to one of the elements                                     |No            |`"abc" in~ ("123", "345", "ABC")`
 `!in~`          |Not equals to any of the elements                                 |No            |`"bca" !in~ ("123", "345", "ABC")`
-
+`has_any`       |Same as `has` but works on any of the elements                    |No            |`"North America" has_any("south", "north")`
 
 Use `has` or `in` if you're testing for the presence of a whole lexical term - that is,
 a symbol or an alphanumeric word bounded by non-alphanumeric characters or start or end of field.

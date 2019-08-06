@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/24/2019
+ms.date: 07/31/2019
 ---
 # External tables commands (preview)
 
@@ -67,7 +67,7 @@ The following commands are relevant to _any_ external table (of any type).
 |Output parameter |Type |Description
 |---|---|---
 |TableName  |string |Name of external table.
-|Schema|string|Table's schema (name, csl type) as json.
+|Schema|string|The table schema in a json format.
 |DatabaseName|string|Table's database name.
 |Folder |string |Table's folder.
 |DocString |string |String documenting the table.
@@ -105,7 +105,7 @@ The following commands are relevant to _any_ external table (of any type).
 * The external table definition can't be restored following this operation.
 * Requires [Database admin permission](../management/access-control/role-based-authorization.md).
 
-**Syntax:** 
+**Syntax:**  
 
 `.drop` `external` `table` *TableName*
 
@@ -131,12 +131,14 @@ See [storage connection strings](../api/connection-strings/storage.md) to create
 
 **Syntax**
 
-(`.create` | `.alter`) `external` `table` *TableName* ([columnName:columnType], ...)<br>
-`kind` `=` (`blob` | `adl`)  <br>
-[`partition` [`format_datetime` = *DateTimePartitionFormat*] `by` `bin(`*TimestampColumnName*`,` *PartitionByTimeSpan*`)`]<br>
-`dataformat` `=` *Format* <br>
-`(` <br>*StorageConnectionString* [`,` ...] <br>`)`
- <br>[`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*], *property_name* `=` *value*`,`...`)`]
+(`.create` | `.alter`) `external` `table` *TableName* ([columnName:columnType], ...)  
+`kind` `=` (`blob` | `adl`)  
+[`partition` [`format_datetime` = *DateTimePartitionFormat*] `by` `bin(`*TimestampColumnName*`,` *PartitionByTimeSpan*`)`]  
+`dataformat` `=` *Format*  
+`(`  
+*StorageConnectionString* [`,` ...]  
+`)`  
+[`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*], *property_name* `=` *value*`,`...`)`]
 
 Creates or alters a new external table in the database in which the command is executed. 
 The external table can be partitioned by `DateTime`. If the table is partitioned, export operations to the external table will write the exported artifacts to separate folders or directories according to a Timestamp column of the exported records as depicted in the examples below. 
@@ -305,11 +307,11 @@ Drops the mapping from the database.
 
 **Syntax**
 
-(`.create` | `.alter`) `external` `table` *TableName* ([columnName:columnType], ...)<br>
-`kind` `=` `sql` <br>
-`table` `=` *SqlTableName* <br>
-`(`*SqlServerConnectionString*`)`
- <br>[`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*], *property_name* `=` *value*`,`...`)`]
+(`.create` | `.alter`) `external` `table` *TableName* ([columnName:columnType], ...)  
+`kind` `=` `sql`  
+`table` `=` *SqlTableName*  
+`(`*SqlServerConnectionString*`)`  
+[`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*], *property_name* `=` *value*`,`...`)`]
 
 Creates or alters an external table of type sql in the database in which the command is executed.  
 

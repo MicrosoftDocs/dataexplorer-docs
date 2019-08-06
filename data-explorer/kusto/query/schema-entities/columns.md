@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 07/31/2019
 ---
 # Columns
 
@@ -31,7 +31,7 @@ Note in particular how the column `c` is referenced by name without a need to
 reference its container (indeed, that container has no name):
 
 ```kusto
-datatable (c:int) [-1, 0, 1, 2, 3]
+datatable (c:int) [int(-1), 0, 1, 2, 3]
 | where c*c >= 2
 | as Result
 ```
