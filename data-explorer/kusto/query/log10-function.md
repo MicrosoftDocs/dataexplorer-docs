@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/09/2019
 ---
 # log10()
 
@@ -24,6 +24,9 @@ Returns the common (base-10) logarithm function.
 **Returns**
 
 * The common logarithm is the base-10 logarithm: the inverse of the exponential function (exp) with base 10.
+* `null` if the argument is negative or null or cannot be converted to a `real` value. 
+
+**See also**
+
 * For natural (base-e) logarithms, see [log()](log-function.md).
 * For base-2 logarithms, see [log2()](log2-function.md)
-* `null` if the argument is negative or null or cannot be converted to a `real` value. 
