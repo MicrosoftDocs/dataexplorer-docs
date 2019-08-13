@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/09/2019
+ms.date: 08/11/2019
 ---
 # array_rotate_right()
 
-Rotates values inside of an array to the right.
+`array_rotate_right()` rotates values inside an array to the right.
 
 **Syntax**
 
@@ -24,33 +24,34 @@ Rotates values inside of an array to the right.
 
 **Returns**
 
-Dynamic array containing the same amount of the elements as in original array, where each element was rotated according to *rotate_count*.
+Dynamic array containing the same amount of the elements as in the original array, where each element was rotated according to *rotate_count*.
 
 **See also**
+
 * For rotating array to the left, see [array_rotate_left()](array_rotate_leftfunction.md).
 * For shifting array to the left, see [array_shift_left()](array_shift_leftfunction.md).
 * For shifting array to the right, see [array_shift_right()](array_shift_rightfunction.md).
 
 **Examples**
 
-1. Rotating to the right by two positions:
+* Rotating to the right by two positions:
 
-```kusto
-print arr=dynamic([1,2,3,4,5]) 
-| extend arr_rotated=array_rotate_right(arr, 2)
-```
+    ```kusto
+    print arr=dynamic([1,2,3,4,5]) 
+    | extend arr_rotated=array_rotate_right(arr, 2)
+    ```
+    
+    |arr|arr_rotated|
+    |---|---|
+    |[1,2,3,4,5]|[4,5,1,2,3]|
 
-|arr|arr_rotated|
-|---|---|
-|[1,2,3,4,5]|[4,5,1,2,3]|
+* Rotating to the left by two positions by using negative rotate_count value:
 
-2. Rotating to the left by two positions by using negative rotate_count value:
-
-```kusto
-print arr=dynamic([1,2,3,4,5]) 
-| extend arr_rotated=array_rotate_right(arr, -2)
-```
-
-|arr|arr_rotated|
-|---|---|
-|[1,2,3,4,5]|[3,4,5,1,2]|
+    ```kusto
+    print arr=dynamic([1,2,3,4,5]) 
+    | extend arr_rotated=array_rotate_right(arr, -2)
+    ```
+    
+    |arr|arr_rotated|
+    |---|---|
+    |[1,2,3,4,5]|[3,4,5,1,2]|

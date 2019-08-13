@@ -7,14 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/08/2019
+ms.date: 08/11/2019
 ---
 # Commands and queries
 
 ## .show commands-and-queries 
 
-`.show` `commands-and-queries` returns a table with admin commands and queries which have reached a final state.
-Such commands and queries are available to query for the duration of 30 days.
+`.show` `commands-and-queries` returns a table with admin commands and queries which have reached a final state. These commands and queries are available to query for 30 days.
 
 The information presented in the output of the command is similar to that presented by [.show commands](commands.md) 
 and [.show queries](queries.md), however it essentially allows to union both result sets in a simple manner.

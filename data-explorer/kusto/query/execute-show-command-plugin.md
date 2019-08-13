@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/25/2019
+ms.date: 08/12/2019
 ---
 # execute_show_command plugin
 
@@ -22,7 +22,10 @@ on some cluster and returns its results.
 
 * *ConnectionStringKusto*: A `string` literal containing a valid
   [Kusto connection string](../api/connection-strings/kusto.md) that
-  points at the target Kusto endpoint. See notes below for limitations.
+  points at the target Kusto endpoint.
+  The literal may be set to a signle dot (`.`), in which case the connection
+  string will be the one used to issue the query (same cluster and database).
+  See notes below for limitations.
 
 * *ShowCommand*: A `string` literal indicating the `.show` command that is to be executed
   against the specified Kusto endpoint.

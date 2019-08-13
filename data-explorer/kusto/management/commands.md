@@ -7,14 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/08/2019
+ms.date: 08/11/2019
 ---
 # Commands
 
 ## .show commands 
 
-`.show` `commands` command returns a table with admin commands which have reached a final state.
-Such commands are available to query for the duration of 30 days.
+`.show` `commands` command returns a table with admin commands which have reached a final state. These commands are available to query for 30 days.
 
 The Commands table has two columns with resources consumption details of every completed command:
 * TotalCpu: The total CPU clock time (User mode + Kernel mode) consumed by this command.

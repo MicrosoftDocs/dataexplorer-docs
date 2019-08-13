@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/30/2019
+ms.date: 08/11/2019
 ---
 # Streaming ingestion policy
 
@@ -15,7 +15,7 @@ ms.date: 07/30/2019
 
 Streaming ingestion is targeted for scenarios in which you have a large number of tables (in one or more databases), and the stream of data into each one is relatively small (few records per sec) but  overall data ingestion volume is high (thousands of records per second).
 
-The classic (bulk) ingestion is advised when the amount of data grows to more than 1MB/sec per-table.  
+The classic (bulk) ingestion is advised when the amount of data grows to more than 1MB/sec per table.  
 
 For more information read [Streaming ingestion](../management/data-ingestion/streaming.md).
 
@@ -42,6 +42,9 @@ Use the following table for the recommended settings (if in doubt use higher num
  please open [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) for advice|
 
 For optimal query latency, the number of row stores defined per table shouldn't significantly exceed the recommendation above.
+
+> [!NOTE]
+> If a table doesn't get direct streaming ingestion, but only via update policy, no streaming ingestion policy has to be defined on this table. 
 
 > [!NOTE]
 > When setting streaming ingestion policy for the database, assign the number of row stores that is needed for the table with the highest data rate. 

@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/09/2019
+ms.date: 08/11/2019
 ---
 # log()
 
-Returns the natural logarithm function.  
+`log()` returns the natural logarithm function.  
 
 **Syntax**
 
@@ -24,7 +24,7 @@ Returns the natural logarithm function.
 **Returns**
 
 * The natural logarithm is the base-e logarithm: the inverse of the natural exponential function (exp).
-* `null` if the argument is negative or null or cannot be converted to a `real` value. 
+* `null` if the argument is negative or null or can't be converted to a `real` value. 
 
 **See also**
 

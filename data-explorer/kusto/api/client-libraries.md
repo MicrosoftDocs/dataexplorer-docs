@@ -1,15 +1,15 @@
 ---
-title: Programmatic Overview - client libraries - Azure Data Explorer | Microsoft Docs
-description: This article describes Programmatic Overview - client libraries in Azure Data Explorer.
+title: Client libraries overview - Azure Data Explorer | Microsoft Docs
+description: This article describes Client libraries overview in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/09/2019
+ms.date: 08/11/2019
 ---
-# Programmatic Overview - client libraries
+# Client libraries overview
 
 The following table lists the different libraries provided for query, ingestion, and ARM/RP management. Using these libraries is the recommended way to make use of Azure APIs and invoke Azure Data Explorer functionality programmatically. 
 
@@ -22,8 +22,8 @@ The following table lists the different libraries provided for query, ingestion,
 |    Javascript    	|         	|         	|    [npm](https://www.npmjs.com/package/@azure/arm-kusto)     	|
 |    NodeJS    	|    [npm](https://www.npmjs.com/package/azure-kusto-data) [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data)    	|    [npm](https://www.npmjs.com/package/azure-kusto-ingest)       [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest)    	|    [npm](https://www.npmjs.com/package/azure-arm-kusto/v/2.0.0)    	|
 |    Python    	|    [Pypi](https://pypi.org/project/azure-kusto-ingest/)    [GitHub](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)    	|    [Pypi](https://pypi.org/project/azure-kusto-data/)      [GitHub](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)    	|    [Pypi](https://pypi.org/project/azure-mgmt-kusto/0.3.0/)    	|
-|    R    	|    [CRAN](https://cran.r-project.org/web/packages/AzureKusto/index.html)        The AzureKusto R library is an open source project which is part of the cloudyr project. It provides the capability to query Kusto clusters using R.    	|         	|    -    	|
-|    Go    	|         	|         	|        [GitHub](github.com/Azure/azure-sdk-for-go/services/kusto/mgmt/2019-01-21/kusto)   in v25.1.0 of the SDK    	|
+|    R    	|    [CRAN](https://cran.r-project.org/web/packages/AzureKusto/index.html)           	|         	|    -    	|
+|    Go    	|         	|         	|        [GitHub](github.com/Azure/azure-sdk-for-go/services/kusto/mgmt/2019-01-21/kusto)    	|
 |    Ruby    	|         	|         	|    [Gems](https://rubygems.org/gems/azure_mgmt_kusto/versions/0.17.1)     	|
 |    Powershell    	|    [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)    	|    [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)    	|    [Package](https://www.powershellgallery.com/packages/Az.Kusto/)     	|
 |    Azure   CLI    	|         	|         	|    [Azure Cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest)     	|

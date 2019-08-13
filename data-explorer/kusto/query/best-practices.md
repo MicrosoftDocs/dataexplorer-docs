@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/23/2019
+ms.date: 08/11/2019
 ---
 # Query best practices 
 
@@ -25,9 +25,9 @@ materializing this column at ingestion time. This way - you will pay only once f
 
 ### Don't
 
--   Try new queries without `limit [small number]` or `count` at the end.
+-   Don't try new queries without `limit [small number]` or `count` at the end.
     Running unbound queries over unknown data set may yield GBs of results to be returned to the client, resulting in slow response and cluster being busy.
--   If you find that you're applying conversions (JSON, string, etc) over 1 billion records - reshape your query to reduce amount of data fed into the conversion
+-   If you find that you're applying conversions (JSON, string, etc) over 1 billion records - reshape your query to reduce amount of data fed into the conversion.
 -   Don't use `tolower(Col) == "lowercasestring"` to do case insensitive comparisons. Kusto has an operator for that. Please use `Col =~ "lowercasestring"` instead.
 -   Don't filter on a calculated column, if you can filter on a table column. In other words: Don't do this `T | extend _value = <expression> | where predicate(_value)`, instead do: `T | where predicate(<expression>)`
 

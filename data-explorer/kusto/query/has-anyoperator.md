@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/05/2019
+ms.date: 08/11/2019
 ---
 # has_any operator
 
-Filters based on the provided set of values.
+`has_any` operator filters based on the provided set of values.
 
 ```kusto
 Table1 | where col has_any ('value1', 'value2')
@@ -24,10 +24,10 @@ Table1 | where col has_any ('value1', 'value2')
  
 **Arguments**
 
-* *T* - The tabular input whose records are to be filtered.
-* *col* - the column to filter.
-* *list of expressions* - a comma separated list of tabular, scalar or literal expressions  
-* *tabular expression* - a tabular expression that has a set of values (in a case expression has multiple columns, the first column is used)
+* *T* - Tabular input whose records are to be filtered.
+* *col* - Column to filter.
+* *list of expressions* - Comma separated list of tabular, scalar, or literal expressions  
+* *tabular expression* - Tabular expression that has a set of values (if expression has multiple columns, the first column is used)
 
 **Returns**
 
@@ -35,20 +35,19 @@ Rows in *T* for which the predicate is `true`
 
 **Notes**
 
-* The expression list can produce up to `10,000` values    
-* In case of tabular expressions, the first column of the result set is selected   
+* The expression list can produce up to `10,000` values.    
+* For tabular expressions, the first column of the result set is selected.   
 
 **Examples:**  
 
-**A simple usage of 'has_any' operator:**  
+**A simple usage of `has_any` operator:**  
 
 ```kusto
 StormEvents 
 | where State has_any ("CAROLINA", "DAKOTA", "NEW") 
 | summarize count() by State
-
-
 ```
+
 |State|count_|
 |---|---|
 |NEW YORK|1750|

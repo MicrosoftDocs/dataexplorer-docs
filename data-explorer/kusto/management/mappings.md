@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/12/2019
 ---
 # Data mappings
 
@@ -76,8 +76,8 @@ Each element in the list describes a single or multiple columns as a dictionary:
  * Can be used instead of `Column` (or in addition to `Column`)
 * `DataType`: the datatype with which to create the mapped column if not already exists in the Kusto table (optional)
 * `Path`  
- * If starts with `$`: JSON path to the content of the column in the JSON document 
- * Otherwise a constant value is used. 
+ * If starts with `$`: JSON path to the field that will become the content of the column in the JSON document (JSON path that denotes the entire document is `$`)
+ * Otherwise a constant value is used
 * `Transform` (optional): the transformation that should be applied on the content:
  * Path dependent transform:
    * `PropertyBagArrayToDictionary` - creating a dictionary from the array content of the field and serializes it to JSON.
@@ -112,7 +112,8 @@ Example of the JSON Mapping:
   { "column" : "xdynamicWithNulls", "path" : "$.xdynamicWithNulls" },
   { "column" : "sourceLocation", "transform" : "SourceLocation" },
   { "column" : "sourceLineNumber", "transform" : "SourceLineNumber" },
-  { "column" : "xanothertext", "path" : "$.xanothertext", "datatype" : "string" }
+  { "column" : "xanothertext", "path" : "$.xanothertext", "datatype" : "string" },
+  { "column" : "event_as_jason_document", "path" : "$", "datatype" : "dynamic" }
 ]
 ```      
 
