@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/26/2019
+ms.date: 08/14/2019
 ---
 # Principals and Identity Providers
 

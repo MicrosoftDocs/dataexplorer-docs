@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/17/2019
+ms.date: 08/13/2019
 ---
 # sql_request plugin
 
@@ -46,9 +46,9 @@ does not attempt to optimize queries between Kusto and SQL.
 
 ```kusto
 evaluate sql_request(
-  'Server=tcp:zivckusto2.database.windows.net,1433;'
+  'Server=tcp:contoso.database.windows.net,1433;'
     'Authentication="Active Directory Integrated";'
-    'Initial Catalog=zivckusto2;',
+    'Initial Catalog=Fabrikam;',
   'select * from [dbo].[Table]')
 | where Id > 0
 | project Name
@@ -60,8 +60,8 @@ we use obfuscated strings here.
 
 ```kusto
 evaluate sql_request(
-  'Server=tcp:zivckusto2.database.windows.net,1433;'
-    'Initial Catalog=zivckusto2;'
+  'Server=tcp:contoso.database.windows.net,1433;'
+    'Initial Catalog=Fabrikam;'
     h'User ID=USERNAME;'
     h'Password=PASSWORD;',
   'select * from [dbo].[Table]')
