@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/25/2019
+ms.date: 08/12/2019
 ---
 # LightIngest
 
@@ -109,7 +109,7 @@ LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True"
   -pattern:*.csv.gz
   -format:csv
   -mappingRef:MAPPING
-  -ignoreFirstRecord:true
+  -ignoreFirstRow:true
 ```
 
 **Example 3:**

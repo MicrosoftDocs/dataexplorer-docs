@@ -7,17 +7,17 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/11/2019
 ---
 # series_stats()
 
-Returns statistics for a series in multiple columns.  
+`series_stats()` returns statistics for a series in multiple columns.  
 
 The `series_stats()` function takes a column containing dynamic numerical array as input and calculates the following columns:
 * `min`: minimum value in the input array
-* `min_idx`: minimum value in the input array
+* `min_idx`: first position of the minimum value in the input array
 * `max`: maximum value in the input array
-* `max_idx`: maximum value in the input array
+* `max_idx`:  first position of the maximum value in the input array
 * `avg`: average value of the input array
 * `variance`: sample variance of input array
 * `stdev`: sample standard deviation of the input array

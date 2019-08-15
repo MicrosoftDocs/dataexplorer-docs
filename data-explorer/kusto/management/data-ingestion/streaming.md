@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/30/2019
+ms.date: 08/11/2019
 ---
 # Streaming ingestion (Preview)
 
 Streaming ingestion is targeted for scenarios in which you have requirements for low latency with less than 10 seconds ingestion time of small or big volume data. In addition, it is targeted for optimization of operational processing when you have a large number of tables (in one or more databases), and the stream of data into each one is relatively small (few records per second) but overall data ingestion volume is high (thousands of records per second).
 
-The classic (bulk) ingestion is advised when the amount of data grows to more than 1MB/sec per-table. Read [Data ingestion overview](/azure/data-explorer/ingest-data-overview) for an overview of the various methods of ingestion.
+The classic (bulk) ingestion is advised when the amount of data grows to more than 1MB/sec per table. Read [Data ingestion overview](/azure/data-explorer/ingest-data-overview) for an overview of the various methods of ingestion.
 
 ## Enabling streaming ingestion on your cluster
 

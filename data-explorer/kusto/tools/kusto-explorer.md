@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/12/2019
+ms.date: 08/12/2019
 ---
 # Kusto.Explorer tool
 
@@ -81,7 +81,7 @@ Home Tab accumulates most recently used functionality, splitted by menus:
 |New Tab Window| Opens a new tab window for querying Kusto |
 |Mode: Query | Switches Query Window into a [script mode](#query-mode): commands can be loaded and saved as scripts (default)|
 |Mode: Search| Single query mode: each command being entered is processed immediately and presents a result in the Result Window|
-|Mode: Search (beta)|Allows searching for a term using Search syntax across one or more tables. See more at using [Search Beta Mode](kusto-explorer.md#search-beta-mode)|
+|Mode: Search++|Allows searching for a term using Search syntax across one or more tables. See more at using [Search++ Mode](kusto-explorer.md#search-mode)|
 |Caching scope: Hot Data| Execute queries only on [hot data cache](../concepts/cachepolicy.md)|
 |Caching scope: All Data| Execute queries on all available data (default)|
 |DateTime Column| Name of column which may be used for time pre-filter|
@@ -310,9 +310,9 @@ invited into that tenant (e.g., `joe@fabrikam.com`). Note that the domain
 name of the user is not necessarily the same as that of the tenant hosting
 the cluster.
 
-## Search Beta Mode
+## Search++ Mode
 
-1.  In the ribbon's Home -> Explore tab, click "Search (beta)"
+1. In the ribbon's Home, in the dropdown, choose "Search++"
 2. Choose "Multiple tables" and then under "Choose tables" you can define which tables to search
 3. In the edit box write your search phrase and hit "Go"
 4. You will get a heat-map of table/time-slot grid showing which term appears where

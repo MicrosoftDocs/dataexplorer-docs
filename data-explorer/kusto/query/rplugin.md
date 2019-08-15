@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/30/2019
+ms.date: 07/31/2019
 ---
 # R plugin (Preview)
 
@@ -93,15 +93,15 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
     For example:
 
     ```kusto    
-    .show operations
-    | where StartedOn > ago(7d) // Filtering out irrelevant records before invoking the plugin
-    | project d_seconds = Duration / 1s // Projecting only a subset of the necessary columns
-    | evaluate hint.distribution = per_node r( // Using per_node distribution, as the script's logic allows it
-        typeof(*, 2d:double),
-        'result <- df\n'
-        'result$2d -< df$d_seconds\n' // Negative example: this logic should have been written using Kusto's query language
-      )
-    | summarize avg = avg(2d)
+	.show operations
+	| where StartedOn > ago(1d) // Filtering out irrelevant records before invoking the plugin
+	| project d_seconds = Duration / 1s // Projecting only a subset of the necessary columns
+	| evaluate hint.distribution = per_node r( // Using per_node distribution, as the script's logic allows it
+		typeof(*, d2:double),
+		'result <- df\n'
+		'result$d2 <- df$d_seconds\n' // Negative example: this logic should have been written using Kusto's query language
+	  )
+	| summarize avg = avg(d2)
     ```
 
 ### Usage tips

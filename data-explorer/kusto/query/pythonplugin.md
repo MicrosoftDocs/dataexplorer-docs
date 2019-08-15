@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/30/2019
+ms.date: 08/01/2019
 ---
 # Python plugin (Preview)
 
@@ -57,8 +57,9 @@ The following variables are reserved for interaction between Kusto query languag
   (note that a small percentage of packages might be incompatible with the limitations enforced by the sandbox in which the plugin is run).
 * The Python image also contain common ML packages: `tensorflow`, `keras`, `torch`, `hdbscan`, `xgboost` and other useful packages.
 * The plugin imports *numpy* (as `np`) & *pandas* (as `pd`) by default.  You can import other modules as needed.
-* The Python sandbox limits accessing the network, therefore, the Python code can't dynamically install additional Python packages that are
-  not included in the image. Open a **New support request** in the Azure portal  if you need specific packages.
+* The Python sandbox limits accessing the network, therefore, the Python code can't install additional Python packages (that are
+  not pre-installed) using the standard "pip install" method. If you need specific package, we recommend openning a **support request** in the Azure portal  to check whether it can be added to the common image.
+  
 
 	
 

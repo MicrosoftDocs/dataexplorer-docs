@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/05/2019
+ms.date: 08/11/2019
 ---
 # Queries
 
 ## .show queries
 
-The `.show` `queries` command returns a list of queries for which the user invoking the command has access to see:
+The `.show` `queries` command returns a list of queries that have reached a final state, and that the user invoking the command has access to see:
 
 
 * A [database admin or database monitor](../management/access-control/role-based-authorization.md) can see any command that was invoked on their database.

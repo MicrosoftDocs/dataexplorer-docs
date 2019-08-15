@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/28/2019
+ms.date: 08/11/2019
 ---
 # summarize operator
 
-Produces a table that aggregates the content of the input table. 
+The `summarize` operator produces a table that aggregates the content of the input table. 
 
 ```kusto
 T | summarize count(), avg(price) by fruit, supplier
@@ -23,7 +23,7 @@ A table that shows the number and average price of each fruit from each supplier
 T | summarize count() by price_range=bin(price, 10.0)
 ```
 
-A table that shows how many items have prices in each interval  [0,10.0], [10.0,20.0], and so on. This example has a column for the count and one for the price range. All other input columns are ignored.
+A table that shows how many items have prices in each interval  [0,10.0[, [10.0,20.0[, and so on. This example has a column for the count and one for the price range. All other input columns are ignored.
 
 **Syntax**
 

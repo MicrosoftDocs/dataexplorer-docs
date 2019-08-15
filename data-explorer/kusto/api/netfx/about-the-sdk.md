@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/18/2019
+ms.date: 08/12/2019
 ---
 # About Kusto .NET SDK
 
@@ -22,11 +22,11 @@ The following Kusto packages are available for consumption:
 
 |Package                                                                                             |Main assembly name|Runtime                                 |Source            |Description        |
 |----------------------------------------------------------------------------------------------------|------------------|----------------------------------------|------------------|-------------------|
-|[Microsoft.Azure.Kusto.Data](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/)            |Kusto.Data        |.NET Framework 4.6.2 / .NET Standard 2.0|Nuget.org         |Client Library     |
-|[Microsoft.Azure.Kusto.Ingest](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/)        |Kusto.Ingest      |.NET Framework 4.6.2 / .NET Standard 2.0|Nuget.org         |Ingestion Library  |
-|[Microsoft.Azure.Management.Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)|                  |.NET Framework 4.6.1 / .NET Standard 2.0|Nuget.org         |Management Library |
+|[Microsoft.Azure.Kusto.Data](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/)            |Kusto.Data        |.NET Framework 4.6.2 / .NET Core 2.0    |Nuget.org         |Client Library     |
+|[Microsoft.Azure.Kusto.Ingest](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/)        |Kusto.Ingest      |.NET Framework 4.6.2 / .NET Core 2.0    |Nuget.org         |Ingestion Library  |
+|[Microsoft.Azure.Management.Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)|                  |.NET Framework 4.6.1 / .NET Core 2.0    |Nuget.org         |Management Library |
 |[Microsoft.Azure.Kusto.Tools](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)          |                  |.NET Framework 4.6.2                    |Nuget.org         |Command-line tools |
-|[Microsoft.Azure.Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/)    |Kusto.Language    |.NET Framework 4.6.2 / .NET Standard 2.0|Nuget.org         |Language service   |
+|[Microsoft.Azure.Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/)    |Kusto.Language    |.NET Framework 4.6.2 / .NET Core 2.0    |Nuget.org         |Language service   |
 
 **Accessing the NuGet feed from Visual Studio**
 

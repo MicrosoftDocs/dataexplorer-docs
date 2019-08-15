@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/15/2019
+ms.date: 08/13/2019
 ---
 # Query/management HTTP request
 
@@ -112,7 +112,7 @@ Accept-Encoding: deflate
 Content-Type: application/json; charset=utf-8
 Host: help.kusto.windows.net
 x-ms-client-request-id: MyApp.Query;e9f884e4-90f0-404a-8e8b-01d883023bf1
-x-ms-user-id: MIDDLEEAST\zivc
+x-ms-user-id: EARTH\davidbg
 x-ms-app: MyApp
 ```
 
