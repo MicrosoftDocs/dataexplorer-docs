@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/14/2019
+ms.date: 08/19/2019
 ---
 # execute_show_command plugin
 
@@ -33,9 +33,10 @@ on some cluster and returns its results.
 
 * *ShowCommand*: A `string` literal indicating the `.show` command that is to be executed
   against the specified Kusto endpoint.
->
+
+> [!NOTE]
 > Authentication against the target endpoint is done with the credentials
-> used to run the query itself. If those credentials can't be propagated
+> used to run the query making use of this plugin. If those credentials can't be propagated
 > to the target endpoint, the plugin fails.
 
 **Examples**

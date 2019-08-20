@@ -1,15 +1,15 @@
 ---
-title: Extents (Data shards) management - Azure Data Explorer | Microsoft Docs
-description: This article describes Extents (Data shards) management in Azure Data Explorer.
+title: Extents (data shards) management - Azure Data Explorer | Microsoft Docs
+description: This article describes Extents (data shards) management in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/26/2019
+ms.date: 08/19/2019
 ---
-# Extents (Data shards) management
+# Extents (data shards) management
 
 Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 

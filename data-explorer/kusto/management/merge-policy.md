@@ -1,15 +1,15 @@
 ---
-title: Merge policy control commands - Azure Data Explorer | Microsoft Docs
-description: This article describes Merge policy control commands in Azure Data Explorer.
+title: Merge policy management - Azure Data Explorer | Microsoft Docs
+description: This article describes Merge policy management in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/26/2019
+ms.date: 08/19/2019
 ---
-# Merge policy control commands
+# Merge policy management
 
 ## show policy
 

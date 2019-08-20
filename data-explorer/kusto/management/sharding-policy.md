@@ -1,15 +1,15 @@
 ---
-title: Sharding policy control commands - Azure Data Explorer | Microsoft Docs
-description: This article describes Sharding policy control commands in Azure Data Explorer.
+title: Sharding policy management - Azure Data Explorer | Microsoft Docs
+description: This article describes Sharding policy management in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/30/2019
+ms.date: 08/19/2019
 ---
-# Sharding policy control commands
+# Sharding policy management
 
 ## show policy
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/05/2019
+ms.date: 08/15/2019
 ---
 # Kusto.Ingest Reference - Ingestion Code Examples
 This is a collection of short code snippets demonstrating various techniques of ingesting data into a Kusto table
@@ -23,7 +23,7 @@ This is a collection of short code snippets demonstrating various techniques of 
 
 ### Async Ingestion From a Single Azure Blob using KustoQueuedIngestClient with (optional) RetryPolicy:
 ```csharp
-// Create Kusto connection string with App Authentication
+//Create Kusto connection string with App Authentication
 var kustoConnectionStringBuilderDM =
     new KustoConnectionStringBuilder(@"https://ingest-{clusterNameAndRegion}.kusto.windows.net").WithAadApplicationKeyAuthentication(
         applicationClientId: "{Application Client ID}",
@@ -36,16 +36,16 @@ var kustoConnectionStringBuilderDM =
 IKustoIngestClient client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
 
 // Ingest from blobs according to the required properties
-string kustoDatabase = "database";
-string kustoTable = "table";
-var kustoIngestionProperties = new KustoIngestionProperties(databaseName: kustoDatabase, tableName: kustoTable);
+var kustoIngestionProperties = new KustoIngestionProperties(databaseName: "myDB", tableName: "myTable");
 
-// Create your custom implementation of IRetryPolicy, which will affect how the ingest client handles retrying on transient failures
-IRetryPolicy retryPolicy = new <class that implements IRetryPolicy>;
-// This line sets the retry policy on the ingest client that will be enforced on every ingest call from here on
-client.QueueRetryPolicy = retryPolicy;
+var sourceOptions = new StorageSourceOptions() { DeleteSourceOnSuccess = true };
 
-await client.IngestFromSingleBlobAsync(blobUri: @"BLOB-URI-WITH-SAS-KEY", deleteSourceOnSuccess: true, ingestionProperties: kustoIngestionProperties, rawDataSize: 123);
+//// Create your custom implementation of IRetryPolicy, which will affect how the ingest client handles retrying on transient failures
+IRetryPolicy retryPolicy = new NoRetry();
+//// This line sets the retry policy on the ingest client that will be enforced on every ingest call from here on
+((IKustoQueuedIngestClient)client).QueueRetryPolicy = retryPolicy;
+
+await client.IngestFromStorageAsync(uri: @"BLOB-URI-WITH-SAS-KEY", ingestionProperties: kustoIngestionProperties, sourceOptions);
 
 client.Dispose();
 ```
@@ -63,11 +63,9 @@ var kustoConnectionStringBuilderEngine =
 using (IKustoIngestClient client = KustoIngestFactory.CreateDirectIngestClient(kustoConnectionStringBuilderEngine))
 {
     //Ingest from blobs according to the required properties
-    string kustoDatabase = "database";
-    string kustoTable = "table";
-    var kustoIngestionProperties = new KustoIngestionProperties(databaseName: kustoDatabase, tableName: kustoTable);
+    var kustoIngestionProperties = new KustoIngestionProperties(databaseName: "myDB", tableName: "myTable");
 
-    client.IngestFromSingleFile(@"C:\Temp\data1.csv", deleteSourcesOnSuccess: false, ingestionProperties: kustoIngestionProperties);
+    client.IngestFromStorageAsync(@"< Path to local file >", ingestionProperties: kustoIngestionProperties).GetAwaiter().GetResult();
 }
 ```
 
@@ -84,12 +82,10 @@ var kustoConnectionStringBuilderDM =
 IKustoQueuedIngestClient client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
 
 // Ingest from files according to the required properties
-string kustoDatabase = "database";
-string kustoTable = "table";
-var kustoIngestionProperties = new KustoIngestionProperties(databaseName: kustoDatabase, tableName: kustoTable);
+var kustoIngestionProperties = new KustoIngestionProperties(databaseName: "myDB", tableName: "myTable");
 
-client.IngestFromSingleFile("ValidTestFile.csv", false, kustoIngestionProperties);
-client.IngestFromSingleFile("InvalidTestFile.csv", false, kustoIngestionProperties);
+client.IngestFromStorageAsync(@"ValidTestFile.csv", kustoIngestionProperties);
+client.IngestFromStorageAsync(@"InvalidTestFile.csv", kustoIngestionProperties);
 
 // Waiting for the aggregation
 Thread.Sleep(TimeSpan.FromMinutes(8));
@@ -119,10 +115,7 @@ var kustoConnectionStringBuilderDM =
 IKustoQueuedIngestClient client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
 
 // Ingest from a file according to the required properties
-string kustoDatabase = "databaseName";
-string kustoTable = "tableName";
-var kustoIngestionProperties = new KustoQueuedIngestionProperties(databaseName: kustoDatabase,
-    tableName: kustoTable)
+var kustoIngestionProperties = new KustoQueuedIngestionProperties(databaseName: "myDB", tableName: "myTable")
 {
     // Setting the report level to FailuresAndSuccesses will cause both successful and failed ingestions to be reported
     // (Rather than the default "FailuresOnly" level - which is demonstrated in the
@@ -133,8 +126,8 @@ var kustoIngestionProperties = new KustoQueuedIngestionProperties(databaseName: 
     ReportMethod = IngestionReportMethod.Queue
 };
 
-client.IngestFromSingleFile("ValidTestFile.csv", false, kustoIngestionProperties);
-client.IngestFromSingleFile("InvalidTestFile.csv", false, kustoIngestionProperties);
+client.IngestFromStorageAsync("ValidTestFile.csv", kustoIngestionProperties);
+client.IngestFromStorageAsync("InvalidTestFile.csv", kustoIngestionProperties);
 
 // Waiting for the aggregation
 Thread.Sleep(TimeSpan.FromMinutes(8));
@@ -169,10 +162,7 @@ var kustoConnectionStringBuilderDM =
 IKustoQueuedIngestClient client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
 
 // Ingest from a file according to the required properties
-string kustoDatabase = "databaseName";
-string kustoTable = "tableName";
-var kustoIngestionProperties = new KustoQueuedIngestionProperties(databaseName: kustoDatabase,
-    tableName: kustoTable)
+var kustoIngestionProperties = new KustoQueuedIngestionProperties(databaseName: "myDB", tableName: "myDB")
 {
     // Setting the report level to FailuresAndSuccesses will cause both successful and failed ingestions to be reported
     // (Rather than the default "FailuresOnly" level)
@@ -181,13 +171,14 @@ var kustoIngestionProperties = new KustoQueuedIngestionProperties(databaseName: 
     ReportMethod = IngestionReportMethod.Table
 };
 
-var filePath = @"pathToValidFile";
+var filePath = @"< Path to file >";
 var fileIdentifier = Guid.NewGuid();
-var fileDescription = new FileDescription() {FilePath = filePath, SourceId = fileIdentifier};
+var fileDescription = new FileDescription() { FilePath = filePath, SourceId = fileIdentifier };
+var sourceOptions = new StorageSourceOptions() { SourceId = fileDescription.SourceId.Value };
 
 // Execute the ingest operation and save the result.
-var clientResult = client.IngestFromSingleFile(fileDescription: fileDescription,
-    deleteSourceOnSuccess: false, ingestionProperties: kustoIngestionProperties);
+var clientResult = await client.IngestFromStorageAsync(fileDescription.FilePath,
+    ingestionProperties: kustoIngestionProperties, sourceOptions);
 
 // Use the fileIdentifier you supplied to get the status of your ingestion 
 var ingestionStatus = clientResult.GetIngestionStatusBySourceId(fileIdentifier);
