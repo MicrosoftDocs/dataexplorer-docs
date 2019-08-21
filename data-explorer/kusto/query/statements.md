@@ -27,8 +27,8 @@ application's users, but provide some "logical model" that is different than the
 "physical model" (the schema that actually exists in Kusto). Some statements are useful
 in both scenarios.
 
-[!NOTE]
-The effect of the statements in a query begins at the appearance of the statement
+>[!NOTE]
+>The effect of the statements in a query begins at the appearance of the statement
 and ends with the end of the query body. In runtime, when a query terminates its
 impact on the system ends (there are no durable changes to the system's data,
 other than the trail records that are left indicating that the query executed, etc.)
