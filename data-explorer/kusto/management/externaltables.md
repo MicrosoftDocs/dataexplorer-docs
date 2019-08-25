@@ -1,15 +1,15 @@
 ---
-title: External tables commands (preview) - Azure Data Explorer | Microsoft Docs
-description: This article describes External tables commands (preview) in Azure Data Explorer.
+title: External tables management (preview) - Azure Data Explorer | Microsoft Docs
+description: This article describes External tables management (preview) in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/14/2019
+ms.date: 08/19/2019
 ---
-# External tables commands (preview)
+# External tables management (preview)
 
 See [external tables](../query/schema-entities/externaltables.md) for an overview of external tables. 
 
@@ -155,13 +155,13 @@ The external table can be partitioned by `DateTime`. If the table is partitioned
 *Optional Properties*:
 
 |Property        |Type    |Description                                                                                                  |
-|----------------|--------|-------------------------------------------------------------------------------------------------------------|
-|`folder` |`string` |Table's folder.
-|`docString` |`string` |String documenting the table.
-|`compressed`|`bool`  |If set, indicates whether the blobs are compressed as `.gz` files.|
-|`includeHeaders`|`string`|For csv or tsv blobs, indicates whether blobs contain a header.|
-|`namePrefix`|`string`|If set, indicates the prefix of the blobs (on write operations, all blobs will be written with this prefix. On read operations, only blobs with this prefix are read).|
-|`encoding`|`string`|Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.|
+|----------------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`folder`        |`string`|Table's folder.                                                                                                                                                       |
+|`docString`     |`string`|String documenting the table.                                                                                                                                         |
+|`compressed`    |`bool`  |If set, indicates whether the blobs are compressed as `.gz` files.                                                                                                    |
+|`includeHeaders`|`string`|For csv or tsv blobs, indicates whether blobs contain a header.                                                                                                       |
+|`namePrefix`    |`string`|If set, indicates the prefix of the blobs (on write operations, all blobs will be written with this prefix. On read operations, only blobs with this prefix are read).|
+|`encoding`      |`string`|Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.                                                                                                |
 
 > [!NOTE]
 > * If the table exists, `.create` command will fail with an error. Use `.alter` to modify existing tables. 

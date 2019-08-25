@@ -1,15 +1,15 @@
 ---
-title: Queries - Azure Data Explorer | Microsoft Docs
-description: This article describes Queries in Azure Data Explorer.
+title: Queries management - Azure Data Explorer | Microsoft Docs
+description: This article describes Queries management in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/11/2019
+ms.date: 08/19/2019
 ---
-# Queries
+# Queries management
 
 ## .show queries
 

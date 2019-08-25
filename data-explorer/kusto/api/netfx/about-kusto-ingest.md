@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/12/2019
+ms.date: 08/22/2019
 ---
 # Kusto Ingest Client Library
 
@@ -32,7 +32,7 @@ Defined by [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface
 * Allows efficient and controllable aggregation of inbound data by the Ingestion service, thus improving performance
 * Allows the Kusto Ingestion service to manage ingestion load on the Kusto Engine service
 * Kusto Ingestion service will retry as needed on transient ingestion failures (e.g., XStore throttling)
-* Provides a convinient mechanism to track the progress and outcome of every ingestion request
+* Provides a convenient mechanism to track the progress and outcome of every ingestion request
 
 The following diagram outlines the Queued ingestion client interaction with Kusto:<BR>
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 08/16/2019
 ---
 # Kusto Ingest Client Library - Best Practices
 
@@ -30,7 +30,7 @@ Using [KustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikust
 * The lower limit on ingested data size is also important, although less critical. Ingesting data in small batches every now and then is perfectly fine, although slightly less efficient than using large batches. `KustoQueuedIngestClient` class also solves the problem for customers who need to ingest large amounts of data and cannot batch them into large chunks before sending them to Kusto
 
 ## Factors impacting ingestion throughput
-Multiple factors can affect ingestion throughput. When planning your Kusto ingestion pipeline, mak esure to evaluate the following points, which can have significant implications on your COGs.
+Multiple factors can affect ingestion throughput. When planning your Kusto ingestion pipeline, make sure to evaluate the following points, which can have significant implications on your COGs.
 * Data format - CSV is the fastest format to ingest, JSON will typically take x2 or x3 longer for the same volume of data
 * Table width - make sure you only ingest data you really need, as the wider the table, the more columns will be encoded and indexed, hence, the lower the throughput.
     You can control which fields get ingested by providing an ingestion mapping.

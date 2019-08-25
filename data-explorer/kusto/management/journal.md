@@ -1,15 +1,15 @@
 ---
-title: Journal - Azure Data Explorer | Microsoft Docs
-description: This article describes Journal in Azure Data Explorer.
+title: Journal management - Azure Data Explorer | Microsoft Docs
+description: This article describes Journal management in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/19/2019
 ---
-# Journal
+# Journal management
 
  `Journal` contains information about metadata operations performed on the Kusto database.
 

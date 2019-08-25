@@ -1,15 +1,15 @@
 ---
-title: Management - Azure Data Explorer | Microsoft Docs
-description: This article describes Management in Azure Data Explorer.
+title: Management (control commands) overview - Azure Data Explorer | Microsoft Docs
+description: This article describes Management (control commands) overview in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/19/2019
 ---
-# Management
+# Management (control commands) overview
 
 This section describes the control commands used to manage Kusto.
 Control commands are requests to the service to retrieve information that is

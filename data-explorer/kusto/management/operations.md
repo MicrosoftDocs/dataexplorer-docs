@@ -1,17 +1,17 @@
 ---
-title: Operations - Azure Data Explorer | Microsoft Docs
-description: This article describes Operations in Azure Data Explorer.
+title: Operations management - Azure Data Explorer | Microsoft Docs
+description: This article describes Operations management in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 08/19/2019
 ---
-# Operations
+# Operations management
 
-## .show operations 
+## .show operations
 
 `.show` `operations` command returns a table with all administrative operations, both running and completed, which were executed in the last two weeks (which is currently the retention period configuration).
 

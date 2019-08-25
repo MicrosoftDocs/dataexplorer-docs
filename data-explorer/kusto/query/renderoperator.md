@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/31/2018
+ms.date: 08/21/2019
 ---
 # render operator
 
@@ -98,7 +98,7 @@ Some visualizations support splitting into multiple y-axis values:
 |`axes`    |A single chart is displayed with multiple y-axis (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
 
-**Remarks**
+**Notes**
 
 The data model of the render operator looks at the tabular data as if it has
 three kinds of columns:

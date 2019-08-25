@@ -1,15 +1,15 @@
 ---
-title: Schema Best Practices - Azure Data Explorer | Microsoft Docs
-description: This article describes Schema Best Practices in Azure Data Explorer.
+title: Best practices for schema design - Azure Data Explorer | Microsoft Docs
+description: This article describes Best practices for schema design in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/19/2019
 ---
-# Schema Best Practices
+# Best practices for schema design
 
 There are several "Dos and Don'ts" you can follow to make your management commands perform better and have a lighter effect on the service.
 

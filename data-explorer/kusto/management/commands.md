@@ -1,15 +1,15 @@
 ---
-title: Commands - Azure Data Explorer | Microsoft Docs
-description: This article describes Commands in Azure Data Explorer.
+title: Commands management - Azure Data Explorer | Microsoft Docs
+description: This article describes Commands management in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/11/2019
+ms.date: 08/19/2019
 ---
-# Commands
+# Commands management
 
 ## .show commands 
 

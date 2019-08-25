@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/20/2019
 ---
 # Kusto data in Excel
 
@@ -19,7 +19,7 @@ Here's how you do it:
 
 (1) Open Kusto.Explorer and type in a query and run it. Make sure the results are what you were looking for.
 
-(2) Click on the `Query to Power BI` button in the top bar.
+(2) Click on the `Query to Power BI` button in the top bar (Tools -> Translate).
 
 ![alt text](./Images/KustoTools-PowerBI/step2.png "step2")
 

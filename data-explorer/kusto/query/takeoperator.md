@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/21/2019
 ---
 # take operator
 
@@ -27,7 +27,7 @@ the source data is sorted.
 
 (`take` and `limit` are synonyms.)
 
-**Remarks**
+**Notes**
 
 `take` is a simple, quick, and efficient way to view a small sample of records
 when browsing data interactively, but be aware that it doesn't guarantee any consistency

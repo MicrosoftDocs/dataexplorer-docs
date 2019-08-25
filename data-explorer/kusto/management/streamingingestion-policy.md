@@ -1,15 +1,15 @@
 ---
-title: Streaming ingestion policy control commands - Azure Data Explorer | Microsoft Docs
-description: This article describes Streaming ingestion policy control commands in Azure Data Explorer.
+title: Streaming ingestion policy management - Azure Data Explorer | Microsoft Docs
+description: This article describes Streaming ingestion policy management in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/30/2019
+ms.date: 08/19/2019
 ---
-# Streaming ingestion policy control commands
+# Streaming ingestion policy management
 
 Streaming ingestion policy can be attached to a database or table to allow streaming ingestion to those locations. The policy also defines the row stores used for the streaming ingestion.
 

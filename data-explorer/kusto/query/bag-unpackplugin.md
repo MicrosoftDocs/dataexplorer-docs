@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 08/21/2019
 ---
 # bag_unpack plugin
 
@@ -41,7 +41,7 @@ the following modifications:
   type is either the type of the slot (if all values of the same slot have the
   same type), or `dynamic` (if the values differ in type).
 
-**Remarks**
+**Notes**
 
 The plugin's output schema depends on the data values, making it as "unpredictable"
 as the data itself. Therefore, multiple executions of the plugin with different
