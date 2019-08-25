@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/21/2019
 ---
 # cursor_before_or_at()
 
@@ -27,7 +27,7 @@ against a database cursor.
 A scalar value of type `bool` that indicates whether the record was ingested
 before or at the database cursor *RHS* (`true`) or not (`false`).
 
-**Comments**
+**Notes**
 
 See [database cursors](../management/databasecursor.md) for additional
 details on database cursors.

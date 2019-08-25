@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/21/2019
 ---
 # cursor_current(), current_cursor()
 
@@ -23,7 +23,7 @@ and `current_cursor` are synonyms.)
 Returns a single value of type `string` which encodes the current value of the
 cursor of the database in scope.
 
-**Remarks**
+**Notes**
 
 See [database cursors](../management/databasecursor.md) for additional
 details on database cursors.
