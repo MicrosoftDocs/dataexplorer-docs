@@ -25,12 +25,12 @@ Two types of query statements:
 
 Some query statements are useful in both scenarios.
 
-> [!NOTE]
-> The "effect" of a query statement starts at the point where the statement
-> appears in the query and ends at the end of the query. Once the query completes,
-> all its resources are released and it has no impact on future queries (other than
-> side-effects, such as having the query recorded in a log of all queries run,
-> or having its results cached.)
+ [!NOTE]
+ The "effect" of a query statement starts at the point where the statement
+ appears in the query and ends at the end of the query. Once the query completes,
+ all its resources are released and it has no impact on future queries (other than
+ side-effects, such as having the query recorded in a log of all queries run,
+ or having its results cached.)
 
 ## User query statements
 
