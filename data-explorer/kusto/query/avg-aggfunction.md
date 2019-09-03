@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/30/2019
 ---
 # avg() (aggregation function)
 
@@ -21,7 +21,7 @@ summarize `avg(`*Expr*`)`
 
 **Arguments**
 
-* *Expr*: Expression that will be used for aggregation calculation. 
+* *Expr*: Expression that will be used for aggregation calculation. Records with `null` values are ignored and not accounted for the calculation.
 
 **Returns**
 

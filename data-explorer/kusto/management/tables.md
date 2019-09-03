@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/19/2019
+ms.date: 08/30/2019
 ---
 # Tables management
 
@@ -468,19 +468,30 @@ Requires [Table admin permission](../management/access-control/role-based-author
 
 ## .create ingestion mapping
 
-`.create` `table` *TableName* `ingestion` `csv` `mapping` *MappingName* *MappingInJsonFormat*
+Creates an ingestion mapping that is associated with a specific table and a specific format.
 
-`.create` `table` *TableName* `ingestion` `json` `mapping` *MappingName* *MappingInJsonFormat*
+**Syntax**
 
-This mapping can be referenced from the ingestion command instead of sending the mapping itself as part of the command.
+`.create` `table` *TableName* `ingestion`  `mapping` *MappingName* *MappingFormattedAsJson*
+
+`.create` `table` *TableName* `ingestion`  `mapping` *MappingName* *MappingFormattedAsJson*
+
+**Notes:** 
+
+* Once created, the mapping can be referenced by its name in ingestion commands, instead of specifying the complete mapping as part of the command.
+* Valid values for *MappingKind* are: `csv`, `json`, `avro`, `parquet`
+* If a mapping by the same name already exists for the table:
+    * `.create` will fail.
+    * `.create-or-alter` will alter the existing mapping.
  
 **Example** 
  
 ```kusto
 .create table MyTable ingestion csv mapping "Mapping1" '[{ "Name" : "rownumber", "DataType":"int", "Ordinal" : 0},{ "Name" : "rowguid", "DataType":"string", "Ordinal" : 1 }]'
 
-.create table MyTable ingestion json mapping "Mapping1" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
+.create-or-alter table MyTable ingestion json mapping "Mapping1" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
 ```
+
 **Example output**
 
 |Name|Kind|Mapping
@@ -490,11 +501,17 @@ This mapping can be referenced from the ingestion command instead of sending the
 
 ## .alter ingestion mapping
 
-`.alter` `table` *TableName* `ingestion` `csv` `mapping` *MappingName* *MappingInJsonFormat*
+Alters an existing ingestion mapping that is associated with a specific table and a specific format (full mapping replace).
 
-`.alter` `table` *TableName* `ingestion` `json` `mapping` *MappingName* *MappingInJsonFormat*
+**Syntax**
 
-Alters an existing mapping (full mapping replace). This mapping can be referenced from the ingestion command instead of sending the mapping itself as part of the command.
+`.alter` `table` *TableName* `ingestion` `csv` `mapping` *MappingName* *MappingFormattedAsJson*
+
+**Notes:**
+
+* This mapping can be referenced by its name by ingestion commands, instead of specifying the complete mapping as part of the command.
+* Valid values for *MappingKind* are: `csv`, `json`, `avro`, `parquet`
+
  
 **Example** 
  
