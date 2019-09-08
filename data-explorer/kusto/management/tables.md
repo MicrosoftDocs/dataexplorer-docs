@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/30/2019
+ms.date: 09/05/2019
 ---
 # Tables management
 
@@ -43,16 +43,13 @@ This topic discusses the lifecycle of tables and associated control commands:
 ```kusto
 .show tables
 .show tables (T1, ..., Tn)
-.show tables (T1, ..., Tn) details
-.show tables details
-.show table T1 details
 ```
 
-Returns a set that contains all tables in the database (optionally - with a detailed summary of the tables' properties).
+Returns a set that contains the specified, or all tables in the database.
 
 Requires [Database viewer permission](../management/access-control/role-based-authorization.md).
 
-**Output (w/o details)**
+**Output**
 
 |Output parameter |Type |Description
 |---|---|---
@@ -61,7 +58,28 @@ Requires [Database viewer permission](../management/access-control/role-based-au
 |Folder |String |The table's folder.
 |DocString |String |A string documenting the table.
 
-**Output (w/ details)**
+**Output example**
+
+|Table Name |Database Name |Folder | DocString
+|---|---|---|---
+|Table1 |DB1 |Logs |Contains services logs
+|Table2 |DB1 | Reporting |
+|Table3 |DB1 | | Extended info |
+|Table4 |DB2 | Metrics| Contains services performance information
+
+## .show table details
+
+```kusto
+.show table T1 details
+.show tables (T1, ..., Tn) details
+.show tables details
+```
+
+Returns a set that contains the specified, or all tables in the database, with a detailed summary of each table's properties.
+
+Requires [Database viewer permission](../management/access-control/role-based-authorization.md).
+
+**Output**
 
 |Output parameter |Type |Description
 |---|---|---
@@ -88,16 +106,7 @@ Requires [Database viewer permission](../management/access-control/role-based-au
 
 `*` *Taking into account policies of parent entities (such as database/cluster).*
 
-**Output example (w/o details)**
-
-|Table Name |Database Name |Folder | DocString
-|---|---|---|---
-|Table1 |DB1 |Logs |Contains services logs
-|Table2 |DB1 | Reporting |
-|Table3 |DB1 | | Extended info |
-|Table4 |DB2 | Metrics| Contains services performance information
-
-**Output example (w/ details)**
+**Output example**
 
 |TableName |DatabaseName |Folder |DocString |TotalExtents |TotalExtentSize |TotalOriginalSize |TotalRowCount |HotExtents |HotExtentSize |HotOriginalSize |HotRowCount |AuthorizedPrincipals |RetentionPolicy |CachingPolicy |ShardingPolicy |MergePolicy |StreamingIngestionPolicy|MinExtentsCreationTime |MaxExtentsCreationTime
 |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |---|--- |---

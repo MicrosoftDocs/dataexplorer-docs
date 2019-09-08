@@ -1,15 +1,15 @@
 ---
-title: Continuous data export (preview) - Azure Data Explorer | Microsoft Docs
-description: This article describes Continuous data export (preview) in Azure Data Explorer.
+title: Continuous data export - Azure Data Explorer | Microsoft Docs
+description: This article describes Continuous data export in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/09/2019
+ms.date: 09/04/2019
 ---
-# Continuous data export (preview)
+# Continuous data export
 
 Continuous data export enables to continuously export data from Kusto to an [external table](../externaltables.md). The external table 
 defines the destination (for example, Azure Blob Storage) and the schema of the exported data. 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 09/04/2019
 ---
 # T-SQL
 
@@ -17,12 +17,21 @@ for Kusto, such support is useful for existing tool that cannot be easily conver
 to use the preferred query language, and for casual use of Kusto by people familiar
 with SQL.
 
-Note that Kusto does not support any DDL command in this manner -- only T-SQL
+Note that Kusto does not support any DDL command in this manner, only T-SQL
 `SELECT` statements are supported. See [this topic](./sqlknownissues.md) for
 details on the main differences between SQL Server and Kusto with regards to
 T-SQL.
 
+## Querying Kusto from Kusto.Explorer with T-SQL
 
+The Kusto.Explorer tool supports sending T-SQL queries to Kusto.
+In order to instruct Kusto.Explorer to execute a query in this mode,
+prepend the query an empty T-SQL comment line. For example:
+
+```sql
+--
+select * from StormEvents
+```
 
 ## From T-SQL to Kusto query language
 
@@ -34,6 +43,7 @@ to some T-SQL `SELECT` statement, simply add `EXPLAIN` before the query.
 For example, the following T-SQL query:
 
 ```sql
+--
 explain
 select top(10) *
 from StormEvents
