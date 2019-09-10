@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 09/09/2019
 ---
 # UI deep links
 
@@ -36,12 +36,14 @@ The UI deep links REST API allows one to provide:
 * The name of the cluster connection (optional) is specified by using the
   URI query parameter `name`.
 
-* The UI tool (optional) is specified by using the `web` URI query parameter.
+* The UI tool is specified by using the `web` optional URI query parameter.
   `web=0` indicates the desktop application Kusto.Explorer. `web=1` indicates
   the Kusto.WebExplorer web application.
-  Additionally, `web=2` is the old version of Kusto.WebExplorer
-  (which is based in Application Insights Analytics).
-  Alternatively, one can provide `saw=1` for the SAW version of Kusto.Explorer.
+`web=2` is the old version of Kusto.WebExplorer
+  (based in Application Insights Analytics). `web=3` is the Kusto.WebExplorer
+  with an empty profile (no previously-open tabs or clusters will be
+  available). Last, the `web` query parameter can be replaced by `saw=1` in
+  order to indicate the SAW version of Kusto.Explorer.
 
 Here are a few examples for links:
 
