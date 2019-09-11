@@ -7,12 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/06/2018
+ms.date: 09/04/2019
 ---
 # MS-TDS/T-SQL Differences between Kusto Microsoft SQL Server
 
-Below is partial list of the main differences between Kusto
-and SQL Server's implementation of T-SQL.
+Below is partial list of the main differences between Kusto and SQL Server's implementation of T-SQL.
 
 ## CREATE, INSERT, DROP, ALTER statements
 
@@ -22,10 +21,6 @@ nor does it support the above T-SQL statements.
 ## Correlated sub-queries
 
 Kusto doesn't support correlated sub-queries in `SELECT`, `WHERE`, and `JOIN` clauses.
-
-## PARTITION
-
-Kusto doesn't support `PARTITION` in `OVER` clause.
 
 ## TOP flavors
 
@@ -77,6 +72,6 @@ Kusto doesn't support dynamic SQL statements (inline execution of SQL script gen
 
 Kusto doesn't support `WITHIN GROUP` clause.
 
-## TRUNCATE ODBC FUNCTION
+## TRUNCATE function
 
-TRUNCATE function in Kusto works similarly to ROUND, which means that the result will be the nearest value instead of the lower one returned in SQL.
+TRUNCATE function (ODBC) in Kusto works similarly to ROUND, which means that the result will be the nearest value instead of the lower one returned in SQL.

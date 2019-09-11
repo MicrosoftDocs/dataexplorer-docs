@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/23/2019
+ms.date: 09/09/2019
 ---
 # Azure Data Explorer tools
 
@@ -15,13 +15,15 @@ ms.date: 07/23/2019
 
 
 * [Kusto.Explorer](./kusto-explorer.md) - The primary desktop tool for querying and controlling Kusto
-* [Web UI](https://docs.microsoft.com/azure/data-explorer/web-query-data) - Web UI for querying Kusto
+* [Web UI](https://docs.microsoft.com/en-us/azure/data-explorer/web-query-data) - Web UI for querying Kusto
 
 ## Visualizations, dashboards, and reporting tools
 
 
 * [Azure Notebooks](azurenotebooks.md) - Query Kusto from an Azure Notebooks notebook (preview)
-* [Excel](./excel.md) - Add Kusto query as Excel data source
+* [Excel blank query](https://docs.microsoft.com/azure/data-explorer/excel-blank-query) - Add Kusto query as Excel data source
+* [Excel connector](https://docs.microsoft.com/en-us/azure/data-explorer/excel-connector) - an Excel connector for Azure Data Explorer 
+
 * [PowerBI](./powerbi.md) - Build reports and dashboards in Power BI on top of Azure Data Explorer data
 * [PowerBI Connector](./powerbi-connector.md) - a Power BI Desktop connector for Azure Data Explorer
 

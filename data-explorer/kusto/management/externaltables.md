@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/19/2019
+ms.date: 08/27/2019
 ---
 # External tables management (preview)
 
@@ -324,6 +324,7 @@ Creates or alters an external table of type sql in the database in which the com
 1. **AAD integrated authentication** (`Authentication="Active Directory Integrated"`): 
 The user or application authenticates via AAD to Kusto, and the same token is then used to access the SQL Server network endpoint.
 
+# ([SuppressMessage\("Microsoft.Security", "CS002:SecretInNextLine", Justification="Approved. False positive."\)])
 2. **Username/Password authentication** (`User ID=...; Password=...;`). If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed by using this method. 
 
 > [!WARNING]

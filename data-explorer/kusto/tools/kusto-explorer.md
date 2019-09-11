@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/12/2019
+ms.date: 08/27/2019
 ---
 # Kusto.Explorer tool
 
@@ -727,7 +727,7 @@ Try installing again from one of the [installation mirrors](#getting-the-tool)
 
 From elevated CMD:
 
-    rd /s/q "C:\Users\clandis\AppData\Local\Temp\Deployment"
+    rd /s/q %userprofile%\AppData\Local\Temp\Deployment
     ren %LOCALAPPDATA%\Kusto.Explorer Kusto.Explorer.bak
 
 Try installing again from one of the [installation mirrors](#getting-the-tool)
