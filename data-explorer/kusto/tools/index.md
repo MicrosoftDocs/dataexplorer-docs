@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/09/2019
+ms.date: 09/11/2019
 ---
 # Azure Data Explorer tools
 
@@ -27,7 +27,7 @@ ms.date: 09/09/2019
 * [PowerBI](./powerbi.md) - Build reports and dashboards in Power BI on top of Azure Data Explorer data
 * [PowerBI Connector](./powerbi-connector.md) - a Power BI Desktop connector for Azure Data Explorer
 
-* [Grafana](grafana.md) - an analytics platform that enables creating and sharing dashboards.
+* [Grafana](https://docs.microsoft.com/en-us/azure/data-explorer/grafana) - an analytics platform that enables creating and sharing dashboards.
 
 ## Orchestration tools
 
