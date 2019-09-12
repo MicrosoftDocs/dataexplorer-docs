@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/27/2019
+ms.date: 09/11/2019
 ---
 # Kusto.Explorer tool
 
@@ -668,11 +668,13 @@ To check missing or corrupted system files - use steps described here:
 
 - This could be a result of corruption in your local ClickOnce store.
 - You can clear the local ClickOnce store, by running the following command, in an elevated command prompt.
+    * Notes:
+        1. If there are any instances of other ClickOnce applications or or `dfsvc.exe`, terminate them before running this command.
+        2. Any ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut. App shortcuts will not be deleted.
+
     ```
     rd /q /s %userprofile%\appdata\local\apps\2.0
     ```
-- Note: any ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to
-  the original install location stored in the app shortcut. App shortcuts will not be deleted.
 
 - Then, try installing Kusto.Explorer again from one of the [installation mirrors](#getting-the-tool)
 

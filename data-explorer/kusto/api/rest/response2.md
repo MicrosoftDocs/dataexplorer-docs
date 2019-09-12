@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 09/12/2019
 ---
 # The Kusto REST API Response Object (V2)
 
@@ -43,7 +43,7 @@ Where:
 
 ### TableHeader
 
-Queries which are issued with the `EnableProgressiveQuery` option set to true may include this frame. Following this table, clients should expect an interleaving  sequence of `TableFragment` and `TableProgress` frames, followed by a `TableCompletion` frame. After which, no more frames related to that table will be sent.
+Queries which are issued with the `results_progressive_enabled` option set to true may include this frame. Following this table, clients should expect an interleaving  sequence of `TableFragment` and `TableProgress` frames, followed by a `TableCompletion` frame. After which, no more frames related to that table will be sent.
 ```json
     {
         "TableId": Number,
