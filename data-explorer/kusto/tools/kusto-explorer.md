@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/11/2019
+ms.date: 09/13/2019
 ---
 # Kusto.Explorer tool
 
@@ -148,7 +148,7 @@ use `Reset View` menu item.
 
 |Menu| Behavior|
 |---------------|---------|
-||---------*Query Srcipt*---------|
+||---------*Query Script*---------|
 |New Tab Window| Opens a new tab window for querying Kusto |
 |Open File| Loads data from provided *.csl file to active script panel|
 |Save To File| Saves content of active script panel to *.csl file|
