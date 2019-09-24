@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 09/17/2019
 ---
 # Cross-Database and Cross-Cluster Queries
 
@@ -99,24 +99,35 @@ In default database:
 database("OtherDb").MyView("exception") | extend CalCol=database("OtherDb").MyCalc(Col1, Col2, Col3) | limit 10
 ```
 
-Tabular functions or views can be referenced across clusters. So this is **valid**:
+## Limitations of cross-cluser function calls
+
+Tabular functions or views can be referenced across clusters, however certain limitations applies:
+1. Remote function must return tabular schema. Scalar functions can only be accessed in the same cluster.
+2. Remote function can accept only scalar parameters. Functions that get one or more table arguments can only be accessed in the same cluster.
+3. The schema of the remote function being called must be known and invariant of its parameters (see also [Cross-cluster queries and schema changes](../concepts/crossclusterandschemachanges.md)).
+
+The following cross-cluster call is **valid**:
+
 ```kusto
 cluster("OtherCluster").database("SomeDb").MyView("exception") | count
 ```
 
-Scalar functions can only be accessed in the same cluster. So the following is **not valid**:
+The following query calling remote scalar function `MyCalc`.
+This is violating rule #1, therefore it is **not valid**:
 
 ```kusto
 MyTable | extend CalCol=cluster("OtherCluster").database("OtherDb").MyCalc(Col1, Col2, Col3) | limit 10
 ```
 
-Functions that get one or more table arguments can only be accessed in the same cluster. So the following is **not valid**:
+The following query calling remote function `MyCalc` and providing it a tabular parameter.
+This is violating rule #2, therefore it is **not valid**:
 
 ```kusto
 cluster("OtherCluster").database("OtherDb").MyCalc(datatable(x:string, y:string)["x","y"] ) 
 ```
 
-The schema of the remote function being called must be known and invariant of its parameters (see also [Cross-cluster queries and schema changes](../concepts/crossclusterandschemachanges.md)) . So the following is **not valid**:
+The following query is calling remote function `SomeTable` that has variable schema output based on the parameter `tablename`.
+This is violating rule #3, therefore it is **not valid**:
 
 Tabular function in `OtherDb`:
 ```kusto
@@ -128,6 +139,18 @@ In default database:
 cluster("OtherCluster").database("OtherDb").SomeTable("MyTable")
 ```
 
+The following query is calling remote function `GetDataPivot` that has variable schema output based on the data ([pivot() plugin](pivotplugin.md) has dynamic output).
+This is violating rule #3, therefore it is **not valid**:
+
+Tabular function in `OtherDb`:
+```kusto
+.create function GetDataPivot() { T | evaluate pivot(PivotColumn) }  
+```
+
+In default database:
+```kusto
+cluster("OtherCluster").database("OtherDb").GetDataPivot()
+```
 
 ## Displaying data
 
