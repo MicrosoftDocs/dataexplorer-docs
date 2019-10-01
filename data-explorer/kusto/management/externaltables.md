@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/23/2019
+ms.date: 09/25/2019
 ---
 # External tables management (preview)
 
@@ -122,7 +122,7 @@ Returns the properties of the dropped table. See [.show external tables](#show-e
 |---|---|---|---|-------|----------------------------------|
 |T|Blob|ExternalTables|Docs|[{ "Name": "x",  "CslType": "long"},<br> { "Name": "s",  "CslType": "string" }]|{}|
 
-## External Tables in Azure Storage or Azure Data Lake
+## External tables in Azure Storage or Azure Data Lake
 
 The following command describes how to create an external table. The table can be located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2. 
 See [storage connection strings](../api/connection-strings/storage.md) to create the connection string for each of these options. 
@@ -149,7 +149,7 @@ Creates or alters a new external table in the database in which the command is e
 * *Format* - The format of blobs. One of `csv` | `tsv` | `json` | `parquet`. 
 * *StorageConnectionString* - One or several paths to Azure Blob Storage blob containers or Azure Data Lake Store file systems (virtual directories or folders), including credentials. See [storage connection strings](../api/connection-strings/storage.md) for details. It is highly recommended to provide more than a single storage account to avoid storage throttling if [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided. 
 
-**Partition Syntax**
+**Partition syntax**
 
 [`format_datetime =` *DateTimePartitionFormat*] `bin(`*TimestampColumnName*, *PartitionByTimeSpan*`)`  
 |   
@@ -172,7 +172,7 @@ Creates or alters a new external table in the database in which the command is e
 |`docString`|`string`|String documenting the table.|
 |`compressed`|`bool`|If set, indicates whether the blobs are compressed as `.gz` files.|
 |`includeHeaders`|`string`|For csv or tsv blobs, indicates whether blobs contain a header.|
-|`namePrefix`|`string`|If set, indicates the prefix of the blobs (on write operations, all blobs will be written with this prefix. On read operations, only blobs with this prefix are read).|
+|`namePrefix`|`string`|If set, indicates the prefix of the blobs (On write operations, all blobs will be written with this prefix. On read operations, only blobs with this prefix are read).|
 |`encoding`|`string`|Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.|
 
 > [!NOTE]
@@ -335,7 +335,7 @@ Drops the mapping from the database.
 .drop external table MyExternalTable json mapping "Mapping1" 
 ```
 
-## External SQL Table
+## External SQL table
 
 ### .create or alter external sql table
 
@@ -376,7 +376,7 @@ The user or application authenticates via AAD to Kusto, and the same token is th
 > [!NOTE]
 > * If the table exists, `.create` command will fail with an error. Use `.alter` to modify existing tables. 
 > * Altering the schema or format of an external sql table is not supported. 
-> * Currently, SQL external table can be used only for [continuous export](data-export/continuous-data-export.md), and cannot be used for querying data.
+> * Currently, SQL external table can only be used for [continuous export](data-export/continuous-data-export.md), and can't be used for querying data.
 
 Requires [Database admin permission](../management/access-control/role-based-authorization.md).
  

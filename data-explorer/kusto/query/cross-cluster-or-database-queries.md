@@ -1,23 +1,23 @@
 ---
-title: Cross-Database and Cross-Cluster Queries - Azure Data Explorer | Microsoft Docs
-description: This article describes Cross-Database and Cross-Cluster Queries in Azure Data Explorer.
+title: Cross-database and cross-cluster queries - Azure Data Explorer | Microsoft Docs
+description: This article describes Cross-database and cross-cluster queries in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/17/2019
+ms.date: 09/25/2019
 ---
-# Cross-Database and Cross-Cluster Queries
+# Cross-database and cross-cluster queries
 
 Every Kusto query operates in the context of the current cluster and the default database.
-* In [Kusto Explorer](../tools/kusto-explorer.md) the default database is the one selected in the [Connections Panel](../tools/kusto-explorer.md#connections-panel) and the current cluster is the connection containing it
+* In [Kusto Explorer](../tools/kusto-explorer.md) the default database is the one selected in the [Connections panel](../tools/kusto-explorer.md#connections-panel) and the current cluster is the connection containing that database
 * When using [Kusto Client Library](../api/netfx/about-kusto-data.md) the current cluster and the default database are specified by the `Data Source` and `Initial Catalog` properties of 
-  the [Kusto connection strings](../api/connection-strings/kusto.md) respectively.
+ the [Kusto connection strings](../api/connection-strings/kusto.md) respectively.
 
 ## Queries
-To access tables from any database other than the default the *qualified name* syntax must be used:
+To access tables from any database other than the default, the *qualified name* syntax must be used:
 To access database in the current cluster:
 ```kusto
 database("<database name>").<table name>
@@ -34,11 +34,12 @@ cluster("<cluster name>").database("<database name>").<table name>
 * Fully qualified domain name (FQDN): for instance `contoso.kusto.windows.net` - which will be equivalent to `https://`**`contoso.kusto.windows.net`**`:443/`
 * Short name (host name [and region] without the domain part): for instance `contoso` - which is interpreted as `https://`**`contoso`**`.kusto.windows.net:443/`, or `contoso.westus` - which is interpreted as `https://`**`contoso.westus`**`.kusto.windows.net:443/`
 
->**Note:** cross-database access is subject to the usual permission checks.
-So to be able to excute query user must have read permission to the default database and
-to every other database referenced in the query (in the current and the remote clusters).
+> [!NOTE]
+> Cross-database access is subject to the usual permission checks.
+> To excute a query, you must have read permission to the default database and
+> to every other database referenced in the query (in the current and remote clusters).
 
-*Qualified name* can be used in any context a table name can be.
+*Qualified name* can be used in any context in which a table name can be used.
 All of the following are valid:
 
 ```kusto
@@ -49,30 +50,32 @@ union Table1, cluster("OtherCluster").database("OtherDb").Table2 | project ...
 database("OtherDb1").Table1 | join cluster("OtherCluster").database("OtherDb2").Table2 on Key | join Table3 on Key | extend ...
 ```
 
-When *qualified name* appears as an operand of the [union operator](./unionoperator.md) wildcards can be used to specify multiple tables
-and multiple databases, wildcards are not allowed in cluster names:
+When *qualified name* appears as an operand of the [union operator](./unionoperator.md), wildcards can be used to specify multiple tables
+and multiple databases. Wildcards are not allowed in cluster names:
 
 ```kusto
 union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster").database("*").*
 ```
 
->**Note:** name of the default database is also a potential match, so database("&#42;").* specifies all tables of all databases
-including the default.
+> [!NOTE]
+>* The name of the default database is also a potential match, so database("&#42;").* specifies all tables of all databases
+> including the default.
+>* How do schema changes affect cross-cluster queries, see [Cross-cluster queries and schema changes](../concepts/crossclusterandschemachanges.md)
 
->**Note:** for the discussion on how shema changes affect cross-cluster queries see [Cross-cluster queries and schema changes](../concepts/crossclusterandschemachanges.md)
-
-## Restriction of Access
-Qualified names or patterns can also be included in [restrict access](./restrictstatement.md) statement (wildcards in cluster names are not allowed)
+## Access restriction 
+Qualified names or patterns can also be included in [restrict access](./restrictstatement.md) statement (wildcards in cluster names aren't allowed)
 ```kusto
 restrict access to (my*, database("MyOther*").*, cluster("OtherCluster").database("my2*").*);
 ```
 
-The above will restrict the query to access the following entites:
-* any entity with name starting with *my...* in the default database 
-* any table in all the databases named *MyOther...* of the current cluster
-* any table in all the databases named *my2...* in the cluster *OtherCluster.kusto.windows.net*
+The above will restrict the query access to the following entites:
+
+* Any entity name starting with *my...* in the default database. 
+* Any table in all the databases named *MyOther...* of the current cluster.
+* Any table in all the databases named *my2...* in the cluster *OtherCluster.kusto.windows.net*.
 
 ## Functions and Views
+
 Functions and views (persistent and created inline) can refernce tables across database and cluster boundaries. The following is valid:
 
 ```kusto
@@ -80,7 +83,7 @@ let MyView = Table1 join database("OtherDb").Table2 on Key | join cluster("Other
 MyView | where ...
 ```
 
-Persistent functions and views themselves can be accessed from another database in the same cluster:
+Persistent functions and views can be accessed from another database in the same cluster:
 
 Tabular function (view) in `OtherDb`:
 
@@ -101,10 +104,11 @@ database("OtherDb").MyView("exception") | extend CalCol=database("OtherDb").MyCa
 
 ## Limitations of cross-cluser function calls
 
-Tabular functions or views can be referenced across clusters, however certain limitations applies:
+Tabular functions or views can be referenced across clusters. The following limitation apply:
+
 1. Remote function must return tabular schema. Scalar functions can only be accessed in the same cluster.
 2. Remote function can accept only scalar parameters. Functions that get one or more table arguments can only be accessed in the same cluster.
-3. The schema of the remote function being called must be known and invariant of its parameters (see also [Cross-cluster queries and schema changes](../concepts/crossclusterandschemachanges.md)).
+3. The schema of the remote function must be known and invariant of its parameters (see also [Cross-cluster queries and schema changes](../concepts/crossclusterandschemachanges.md)).
 
 The following cross-cluster call is **valid**:
 
@@ -112,21 +116,21 @@ The following cross-cluster call is **valid**:
 cluster("OtherCluster").database("SomeDb").MyView("exception") | count
 ```
 
-The following query calling remote scalar function `MyCalc`.
+The following query calls remote scalar function `MyCalc`.
 This is violating rule #1, therefore it is **not valid**:
 
 ```kusto
 MyTable | extend CalCol=cluster("OtherCluster").database("OtherDb").MyCalc(Col1, Col2, Col3) | limit 10
 ```
 
-The following query calling remote function `MyCalc` and providing it a tabular parameter.
+The following query calls remote function `MyCalc` and provides a tabular parameter.
 This is violating rule #2, therefore it is **not valid**:
 
 ```kusto
 cluster("OtherCluster").database("OtherDb").MyCalc(datatable(x:string, y:string)["x","y"] ) 
 ```
 
-The following query is calling remote function `SomeTable` that has variable schema output based on the parameter `tablename`.
+The following query calls remote function `SomeTable` that has variable schema output based on the parameter `tablename`.
 This is violating rule #3, therefore it is **not valid**:
 
 Tabular function in `OtherDb`:
@@ -139,7 +143,7 @@ In default database:
 cluster("OtherCluster").database("OtherDb").SomeTable("MyTable")
 ```
 
-The following query is calling remote function `GetDataPivot` that has variable schema output based on the data ([pivot() plugin](pivotplugin.md) has dynamic output).
+The following query calls remote function `GetDataPivot` that has variable schema output based on the data ([pivot() plugin](pivotplugin.md) has dynamic output).
 This is violating rule #3, therefore it is **not valid**:
 
 Tabular function in `OtherDb`:
@@ -147,7 +151,7 @@ Tabular function in `OtherDb`:
 .create function GetDataPivot() { T | evaluate pivot(PivotColumn) }  
 ```
 
-In default database:
+Tabular function in the default database:
 ```kusto
 cluster("OtherCluster").database("OtherDb").GetDataPivot()
 ```

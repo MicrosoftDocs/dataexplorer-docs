@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/13/2019
+ms.date: 09/23/2019
 ---
 # LightIngest
 
@@ -27,7 +27,7 @@ Run `LightIngest.exe /help` to get help on the command-line arguments the tool r
 * First argument to `LightIngest` is the connection string to the Kusto cluster that will manage the ingestion and is mandatory.
   The connection string should be enclosed in double quotes and follow the [Kusto connection strings specification](../api/connection-strings/kusto.md)
 * `LightIngest` can be configured to work with the ingestion endpoint at `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`,
-  or directly with the engine endpoint (`https://{yourClusterNameAndRegion}.kusto.windows.net`). Pointing `LightIngest` at the ingestion endpoint is resomended,
+  or directly with the engine endpoint (`https://{yourClusterNameAndRegion}.kusto.windows.net`). Pointing `LightIngest` at the ingestion endpoint is recommended,
   for it allows Kusto service to manage the ingestion load, as well as provides for recovery in case on transient errors.
 * Raw data size (or its accurate estimation) is important for the optimal ingestion performance. `LightIngest` will do its 
   best to estimate the uncompressed size of local files, but it will have difficulties correctly estimating raw size of compressed 

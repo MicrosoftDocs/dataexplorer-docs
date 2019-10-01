@@ -7,30 +7,28 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/09/2019
+ms.date: 09/25/2019
 ---
 # UI deep links
 
 The REST API provides a deep link functionality that allows HTTP `GET` requests
-to redirect the caller to a UI tool. For example, one can craft a URI that opens
-up the Kusto.Explorer tool, auto-configures it for a specific cluster and database,
-then runs a specific query and displays its results to the user.
+to redirect the caller to a UI tool. For example, you can craft a URI that opens
+the Kusto.Explorer tool, auto-configures it for a specific cluster and database, runs a specific query and displays its results to the user.
 
-The UI deep links REST API allows one to provide:
+The UI deep links REST API:
 
-* The cluster (mandatory) is commonly defined implicitly, as the service that
-  implements the REST API, but can also be overridden by specifying the URI query
+* Cluster (mandatory) is commonly defined implicitly, as the service that
+  implements the REST API, but can be overridden by specifying the URI query
   parameter `uri`.
 
 * The database (optional) is specified as the first and only fragment of the URI
-  path. The database is mandatory for queries, and optional for control commands.
+  path. The database is mandatory for queries and optional for control commands.
 
-* The query or control command (optional) is specified by either using the
+* The query or control command (optional) is specified by using the
   URI query parameter `query`, or the URI query parameter `querysrc` (which
-  points at a web resource that holds the query; see below).
-  If `query` is used, it can be the text of the query or control command itself (encoded
-  using the HTTP query parameter encoding), or it can be the base64 encoding of the
-  gzip of the text of the query or control command (making it possible to compress
+  points at a web resource that holds the query).
+  `query` can be used in the text of the query or control command itself (encoded
+  using the HTTP query parameter encoding). Alternatively, it can be used in the base64 encoding of the gzip of the query or control command text (making it possible to compress
   long queries so that they fit the default browser URI length limits).
 
 * The name of the cluster connection (optional) is specified by using the
@@ -52,14 +50,14 @@ Here are a few examples for links:
   to query the `help` cluster.
 * `https://help.kusto.windows.net/Samples`: When a user agent (such as a browser) issues
   a `GET /Samples` request it'll be redirected to the default UI tool configured
-  to query the `help` cluster, `Samples` database.
+  to query the `help` cluster `Samples` database.
 * `http://help.kusto.windows.net/Samples?query=StormEvents`: When a user (such as a browser) issues
   a `GET /Samples?query=StormEvents` request it'll be redirected to the default UI tool configured
-  to query the `help` cluster, `Samples` database, and issue the `StormEvents` query.
+  to query the `help` cluster `Samples` database, and issue the `StormEvents` query.
 
 > [!NOTE]
-> The deep link URIs do not require authentication information, as authentication
-> if performed by the UI tool being redirected to.
+> The deep link URIs don't require authentication since authentication
+> is performed by the UI tool used for redirection.
 > Any `Authorization` HTTP header, if provided, is ignored.
 
 > [!IMPORTANT]
@@ -93,15 +91,13 @@ This REST API performs redirection to Kusto.WebExplorer, a web application.
 
 When the URI query string parameter `query` is specified, it must be encoded
 according to the URI query string encoding HTML rules. Alternatively, the text of
-the query or control command can be (a) compressed by gzip, and then (b) encoded
-via base64 encoding. This makes it possible to send longer queries or control
-commands (since commonly the latter encoding method results in shorter URIs).
+the query or control command can be compressed by gzip, and then encoded
+via base64 encoding. This allows you to send longer queries or control
+commands (since the latter encoding method results in shorter URIs).
 
 ## Specifying the query or control command by indirection
 
-If the query or control command length is very large, it might be that even
-encoding it using gzip/base64 will exceed the maximum URI length of the user
-agent. An alternative mechanism is supported in which the URI query string parameter
+If the query or control command is very long, even encoding it using gzip/base64 will exceed the maximum URI length of the user agent. Alternatively, the URI query string parameter
 `querysrc` is provided, and its value is a short URI pointing at a web resource
 that holds the query or control command text.
 

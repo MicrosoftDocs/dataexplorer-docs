@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/05/2019
+ms.date: 09/26/2019
 ---
 # Tables management
 
@@ -21,7 +21,7 @@ This topic discusses the lifecycle of tables and associated control commands:
 |Manage ingestion mapping                |`.create ingestion mapping`, `.show ingestion mappings`, `.alter ingestion mapping`, `.drop ingestion mapping`|
 |Manage table display properties         |`.alter table docstring`, `.alter table folder`|
 
-## CRUD Naming Conventions for table (see full details in the sections below)
+## CRUD naming conventions for table (see full details in the sections below)
  
 |Command syntax |Semantics|
 |---|---|
@@ -45,7 +45,7 @@ This topic discusses the lifecycle of tables and associated control commands:
 .show tables (T1, ..., Tn)
 ```
 
-Returns a set that contains the specified, or all tables in the database.
+Returns a set that contains the specified table or all tables in the database.
 
 Requires [Database viewer permission](../management/access-control/role-based-authorization.md).
 
@@ -75,7 +75,7 @@ Requires [Database viewer permission](../management/access-control/role-based-au
 .show tables details
 ```
 
-Returns a set that contains the specified, or all tables in the database, with a detailed summary of each table's properties.
+Returns a set that contains the specified table or all tables in the database with a detailed summary of each table's properties.
 
 Requires [Database viewer permission](../management/access-control/role-based-authorization.md).
 
