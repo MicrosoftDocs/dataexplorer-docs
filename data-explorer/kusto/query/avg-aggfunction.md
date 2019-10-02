@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/30/2019
+ms.date: 09/26/2019
 ---
 # avg() (aggregation function)
 
 Calculates the average of *Expr* across the group. 
 
-* Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
+* Can only be used in context of aggregation inside [summarize](summarizeoperator.md)
 
 **Syntax**
 
@@ -21,7 +21,7 @@ summarize `avg(`*Expr*`)`
 
 **Arguments**
 
-* *Expr*: Expression that will be used for aggregation calculation. Records with `null` values are ignored and not accounted for the calculation.
+* *Expr*: Expression that will be used for aggregation calculation. Records with `null` values are ignored and not included in the calculation.
 
 **Returns**
 

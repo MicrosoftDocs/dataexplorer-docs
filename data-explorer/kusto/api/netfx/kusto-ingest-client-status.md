@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/29/2019
+ms.date: 09/26/2019
 ---
 # Kusto.Ingest Reference - Ingestion Status Reporting
 This article explains how to utilize [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) capabilities for tracking the status of an ingestion request.
@@ -81,9 +81,9 @@ IngestionStatus encapsulates a complete status of a single ingestion operation.
 ```csharp
 public class IngestionStatus
 {
-    // The ingestion status returned from the service. Status remains 'Pending' during the ingestion process and
+    // The ingestion status returns from the service. Status remains 'Pending' during the ingestion process and
     // is updated by the service once the ingestion completes. When <see cref="IngestionReportMethod"/> is set to 'Queue' the ingestion status
-    // will always be 'Queued' and the caller needs to query the reports queues for ingestion status, as configured. To query statuses that were
+    // will always be 'Queued' and the caller needs to query the report queues for ingestion status, as configured. To query statuses that were
     // reported to queue, see: <see href="https://docs.microsoft.com/en-us/azure/kusto/api/netfx/kusto-ingest-client-status#ingestion-status-in-azure-queue"/>.
     // When <see cref="IngestionReportMethod"/> is set to 'Table', call <see cref="IKustoIngestionResult.GetIngestionStatusBySourceId"/> or
     // <see cref="IKustoIngestionResult.GetIngestionStatusCollection"/> to retrieve the most recent ingestion status.

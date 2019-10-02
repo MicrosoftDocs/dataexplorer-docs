@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/12/2019
+ms.date: 09/23/2019
 ---
 # LightIngest
 
@@ -27,7 +27,7 @@ Run `LightIngest.exe /help` to get help on the command-line arguments the tool r
 * First argument to `LightIngest` is the connection string to the Kusto cluster that will manage the ingestion and is mandatory.
   The connection string should be enclosed in double quotes and follow the [Kusto connection strings specification](../api/connection-strings/kusto.md)
 * `LightIngest` can be configured to work with the ingestion endpoint at `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`,
-  or directly with the engine endpoint (`https://{yourClusterNameAndRegion}.kusto.windows.net`). Pointing `LightIngest` at the ingestion endpoint is resomended,
+  or directly with the engine endpoint (`https://{yourClusterNameAndRegion}.kusto.windows.net`). Pointing `LightIngest` at the ingestion endpoint is recommended,
   for it allows Kusto service to manage the ingestion load, as well as provides for recovery in case on transient errors.
 * Raw data size (or its accurate estimation) is important for the optimal ingestion performance. `LightIngest` will do its 
   best to estimate the uncompressed size of local files, but it will have difficulties correctly estimating raw size of compressed 
@@ -43,7 +43,7 @@ Run `LightIngest.exe /help` to get help on the command-line arguments the tool r
 |-database             |-db          |string  |Optional  |Target Kusto database name |
 |-table                |             |string  |Mandatory |Target Kusto table name |
 |-sourcePath           |-source      |string  |Mandatory |Path to source files or root URI of the blob container. If the data is in blobs, must contain storage account key or SAS. Recommended to enclose in double quotes |
-|-prefix               |             |string  |Optional  |When the source data to ingest resides on blob storage, this is the URL prefix shared by all blobs, including the container name. For example, `MyContainer/Dir1/Dir2`. Recommended to enclose in double quotes |
+|-prefix               |             |string  |Optional  |When the source data to ingest resides on blob storage, this is the URL prefix shared by all blobs, excluding the container name. For example, `MyContainer/Dir1/Dir2`. Recommended to enclose in double quotes |
 |-pattern              |             |string  |Optional  |Pattern by which source files/blobs are picked. Supports wildcards. E.g., `"*.csv"`. Recommended to enclose in double quotes |
 |-format               |-f           |string  |Optional  |Source data format. Must be one of the [supported formats](../management/data-ingestion/index.md#supported-data-formats) |
 |-ingestionMappingPath |-mappingPath |string  |Optional  |Path to ingestion column mapping file (mandatory for Json and Avro formats). See [data mappings](../management/mappings.md) |
@@ -68,7 +68,7 @@ Run `LightIngest.exe /help` to get help on the command-line arguments the tool r
 ## Usage examples
 
 **Example 1:**
-* Ingest 10 blobs under specified storage account `ACCOUNT`, residing in container `CONT`, matching the pattern `*.csv.gz`
+* Ingest 10 blobs under specified storage account `ACCOUNT`, residing in folder `DIR` under container `CONT`, matching the pattern `*.csv.gz`
 * Destination is database `DB`, table `TABLE`, and the ingestion mapping `MAPPING` is precreated on the destination
 * The tool will wait until the ingest operations complete
 * Note the different options for specifying the target database and storage account key vs. SAS token
@@ -78,7 +78,7 @@ LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True"
   -database:DB
   -table:TABLE
   -source:"https://ACCOUNT.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}"
-  -prefix:"CONT"
+  -prefix:"DIR"
   -pattern:*.csv.gz
   -format:csv
   -mappingRef:MAPPING
@@ -87,7 +87,7 @@ LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True"
 LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True;Initial Catalog=DB"
   -table:TABLE
   -source:"https://ACCOUNT.blob.core.windows.net/{ROOT_CONTAINER}?{SAS token}"
-  -prefix:"CONT"
+  -prefix:"DIR"
   -pattern:*.csv.gz
   -format:csv
   -mappingRef:MAPPING
@@ -95,7 +95,7 @@ LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True;In
 ```
 
 **Example 2:**
-* Ingest all blobs under specified storage account `ACCOUNT`, residing in container `CONT`, matching the pattern `*.csv.gz`
+* Ingest all blobs under specified storage account `ACCOUNT`, residing in folder `DIR1/DIR2` under container `CONT`, matching the pattern `*.csv.gz`
 * Destination is database `DB`, table `TABLE`, and the ingestion mapping `MAPPING` is precreated on the destination
 * Source blobs contain header line, so the tool is instructed to drop the first record of each blob
 * The tool will post the data for ingestion and will not wait for the ingest operations to complete
@@ -105,7 +105,7 @@ LightIngest.exe "https://ingest-{clusterAndRegion}.kusto.windows.net;Fed=True"
   -database:DB
   -table:TABLE
   -source:"https://ACCOUNT.blob.core.windows.net/{ROOT_CONTAINER}?{SAS token}"
-  -prefix:"CONT"
+  -prefix:"DIR1/DIR2"
   -pattern:*.csv.gz
   -format:csv
   -mappingRef:MAPPING

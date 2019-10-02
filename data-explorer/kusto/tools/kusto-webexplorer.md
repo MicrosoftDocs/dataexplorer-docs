@@ -7,11 +7,9 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/09/2019
+ms.date: 09/25/2019
 ---
 # Kusto.WebExplorer
-
-## Introduction
 
 Kusto.WebExplorer is a web application that can be used to send queries
 and control commands to a Kusto service. The application is hosted at
@@ -25,11 +23,11 @@ and the Monaco editor it uses.
 ## Connect to multiple clusters 
 
 You can now connect multiple clusters and switch between databases and clusters.
-The tool is designed to identify the cluster and database you are connected to easily.
+The tool is designed to easily identify the cluster and database to which you are connected.
 
 ![alt text](./Images/KustoTools-WebExplorer/AddingCluster.gif "AddingCluster")
 
-## Recall Results
+## Recall results
 
 Often during analysis, we run multiple queries and may have to revisit the
 results of the previous queries. You can use this feature to recall your results
@@ -39,14 +37,14 @@ without having to rerun the query. The data is served from local client-side cac
 
 ## Enhanced results grid control
 
-The table grid allows you to select multiple rows, columns, and cells. Computes
+The table grid allows you to select multiple rows, columns, and cells. Compute
 aggregates by selecting multiple cells (like Excel) and pivot the data.
 
 ![alt text](./Images/KustoTools-WebExplorer/EnhancedGrid.gif "EnhancedGrid")
 
 ## Intellisense & Formatting
 
-You can use pretty-print format by using "Shift + Alt + F" shortcut key, code
+You can use pretty-print format by using the "Shift + Alt + F" shortcut key, code
 folding (outlining), and IntelliSense.
 
 ![alt text](./Images/KustoTools-WebExplorer/Formating.gif "Formating")

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/28/2019
+ms.date: 09/26/2019
 ---
 # Samples
 
@@ -200,16 +200,16 @@ We want a chart in 1-minute bins, so we want to create something that, at each 1
 Here's an intermediate result:
 
 ```kusto
-X | extend samples = range(bin(StartTime, 1m), Stop, 1m)
+X | extend samples = range(bin(StartTime, 1m), StopTime, 1m)
 ```
 
 `range` generates an array of values at the specified intervals:
 
 |SessionId | StartTime | StopTime  | samples|
 |---|---|---|---|
-| a | 10:03:33 | 10:06:31 | [10:01:00,10:02:00,...10:06:00]|
-| b | 10:02:29 | 10:03:45 |          [10:02:00,10:03:00]|
-| c | 10:03:12 | 10:04:30 |                   [10:03:00,10:04:00]|
+| a | 10:01:33 | 10:06:31 | [10:01:00,10:02:00,...10:06:00]|
+| b | 10:02:29 | 10:03:45 | [10:02:00,10:03:00]|
+| c | 10:03:12 | 10:04:30 | [10:03:00,10:04:00]|
 
 But instead of keeping those arrays, we'll expand them using [mv-expand](./mvexpandoperator.md):
 
@@ -219,15 +219,16 @@ X | mv-expand samples = range(bin(StartTime, 1m), StopTime , 1m)
 
 |SessionId | StartTime | StopTime  | samples|
 |---|---|---|---|
-| a | 10:03:33 | 10:06:31 | 10:01:00|
-| a | 10:03:33 | 10:06:31 | 10:02:00|
+| a | 10:01:33 | 10:06:31 | 10:01:00|
+| a | 10:01:33 | 10:06:31 | 10:02:00|
+| a | 10:01:33 | 10:06:31 | 10:03:00|
+| a | 10:01:33 | 10:06:31 | 10:04:00|
+| a | 10:01:33 | 10:06:31 | 10:05:00|
+| a | 10:01:33 | 10:06:31 | 10:06:00|
 | b | 10:02:29 | 10:03:45 | 10:02:00|
-| a | 10:03:33 | 10:06:31 | 10:03:00|
 | b | 10:02:29 | 10:03:45 | 10:03:00|
 | c | 10:03:12 | 10:04:30 | 10:03:00|
-| a | 10:03:33 | 10:06:31 | 10:04:00|
 | c | 10:03:12 | 10:04:30 | 10:04:00|
-|...||||
 
 We can now group these by sample time, counting the occurrences of each activity:
 
@@ -248,6 +249,7 @@ X
 | 3 | 10:03:00|
 | 2 | 10:04:00|
 | 1 | 10:05:00|
+| 1 | 10:06:00|
 
 This can be rendered as a bar chart or time chart.
 
