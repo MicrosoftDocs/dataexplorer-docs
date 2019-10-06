@@ -37,6 +37,7 @@ Where:
 * *Visualization* indicates the kind of visualization to use. The supported values are:
 
 ::: zone pivot="kusto"
+
 |*Visualization*     |Description|
 |--------------------|-|
 | `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
@@ -52,8 +53,11 @@ Where:
 | `table`            | Default - results are shown as a table.|
 | `timechart`        | Line graph. First column is x-axis, and should be datetime. Other columns are y-axes.|
 | `timepivot`        | Interactive navigation over the events time-line (pivoting on time axis)|
+
 ::: zone-end
+
 ::: zone pivot="loganalytics"
+
 |*Visualization*     |Description|
 |--------------------|-|
 | `areachart`        | Area graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |
@@ -63,6 +67,7 @@ Where:
 | `scatterchart`     | Points graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |
 | `table`            | Default - results are shown as a table.|
 | `timechart`        | Line graph. First column is x-axis, and should be datetime. Other columns are y-axes.|
+
 ::: zone-end
 
 * *PropertyName*/*PropertyValue* indicate additional information to use when rendeing.
@@ -137,6 +142,7 @@ three kinds of columns:
   columns when that happens. 
 
 ::: zone pivot="kusto"
+
 **Examples**
 
 [Rendering examples in the tutorial](./tutorial.md#render-display-a-chart-or-table).
@@ -150,8 +156,11 @@ range x from -2 to 2 step 0.1
 | extend sum_sign = iif(sin + cos > 0, "sum_pos", "sum_neg")
 | render linechart with  (ycolumns = sin, cos, series = x_sign, sum_sign)
 ```
+
 ::: zone-end
+
 ::: zone pivot="loganalytics"
+
 **Example**
 
 ```kusto
@@ -161,4 +170,5 @@ range x from -2 to 2 step 0.1
 | extend sum_sign = iif(sin + cos > 0, "sum_pos", "sum_neg")
 | render areachart with  (ycolumns = sin, cos, series = x_sign, sum_sign)
 ```
+
 ::: zone-end
