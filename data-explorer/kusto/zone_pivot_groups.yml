@@ -1,0 +1,11 @@
+# YamlMime:ZonePivotGroups
+# GitHub repository = 'MicrosoftDocs/Kusto'
+groups:
+- id: kql-flavors
+  title: Kusto query language flavors
+  prompt: Choose a Kusto query language flavor
+  pivots:
+  - id: kusto
+    title: Kusto
+  - id: loganalytics
+    title: Log Analytics
