@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/25/2019
+ms.date: 10/06/2019
 ---
 # External tables management (preview)
 
@@ -146,7 +146,7 @@ Creates or alters a new external table in the database in which the command is e
 
 * *TableName* - External table name. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.
 * *Partition* - One or several partition definitions (optional). See partition syntax below.
-* *Format* - The format of blobs. One of `csv` | `tsv` | `json` | `parquet`. 
+* *Format* - The format of blobs. Any of the [ingestion formats](./data-ingestion/index.md#supported-data-formats) are supported, including `csv`, `tsv`, `json`, `parquet`, `avro`.
 * *StorageConnectionString* - One or several paths to Azure Blob Storage blob containers or Azure Data Lake Store file systems (virtual directories or folders), including credentials. See [storage connection strings](../api/connection-strings/storage.md) for details. It is highly recommended to provide more than a single storage account to avoid storage throttling if [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided. 
 
 **Partition syntax**
