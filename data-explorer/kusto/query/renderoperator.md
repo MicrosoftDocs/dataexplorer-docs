@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/06/2019
-zone_pivot_groups: kql-flavors
 ---
 # render operator
 
@@ -70,7 +69,7 @@ Where:
 
 ::: zone-end
 
-* *PropertyName*/*PropertyValue* indicate additional information to use when rendeing.
+* *PropertyName*/*PropertyValue* indicate additional information to use when rendering.
   All properties are optional. The supported properties are:
 
 |*PropertyName*|*PropertyValue*                                                                   |
