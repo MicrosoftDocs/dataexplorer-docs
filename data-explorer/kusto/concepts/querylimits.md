@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/13/2019
+ms.date: 10/08/2019
 ---
 # Query limits
 
@@ -179,7 +179,7 @@ Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too
 There is currently no switch one can use to increase the maximum string set size.
 As a workaround, one can rephrase the query to reduce the amount of data that
 has to be buffered. For example, but projecting-away unneeded columns before
-they "enter" operators such as join and summarize. Or, for example, by using [shuffle summarize](../query/shufflesummarize.md) or [shuffle join](../query/shufflejoin.md) strategies.
+they "enter" operators such as join and summarize. Or, for example, by using [shuffle query](../query/shufflequery.md) strategy.
 
 ## Limit on request execution time (timeout)
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/01/2019
+ms.date: 10/08/2019
 ---
 # join operator
 
@@ -562,6 +562,6 @@ The `join` operator supports a number of hints that control the way a query exec
 These do not change the semantic of `join`, but may affect its performance.
 
 Join hints explained in the following articles: 
-* `hint.shufflekey=<key>` and `hint.strategy=shuffle` - [shuffle join](shufflejoin.md)
+* `hint.shufflekey=<key>` and `hint.strategy=shuffle` - [shuffle query](shufflequery.md)
 * `hint.strategy=broadcast` - [broadcast join](broadcastjoin.md)
 * `hint.remote=<strategy>` - [cross-cluster join](joincrosscluster.md)
