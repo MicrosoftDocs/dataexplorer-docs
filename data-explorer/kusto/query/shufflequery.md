@@ -1,15 +1,15 @@
 ---
-title: #Shuffle Query - Azure Data Explorer | Microsoft Docs
-description: This article describes #Shuffle Query in Azure Data Explorer.
+title: Shuffle query - Azure Data Explorer | Microsoft Docs
+description: This article describes Shuffle query in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/04/2019
+ms.date: 10/07/2019
 ---
-#Shuffle Query
+# Shuffle query
 
 Shuffle query is a semantic-preserving transformation for a set of operators that supports shuffle strategy that depending on the actual data can yield considerably better performance.
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/05/2019
+ms.date: 10/06/2019
 ---
 # Data mappings
 
@@ -194,7 +194,7 @@ Some of the data format mappings support simple and useful ingest-time transform
 
 |Path-dependant transformation|Description|Conditions|
 |--|--|--|
-|`PropertyBagArrayToDictionary`|Transforms array content to dictionary and serializes it to JSON.|Can be applied only when `path` is used|
+|`PropertyBagArrayToDictionary`|Transforms Json array of properties (e.g. {events:[{"n1":"v1"},{"n2":"v2"}]}) to dictionary and serializes it to valid JSON document (e.g. {"n1":"v1","n2":"v2"}).|Can be applied only when `path` is used|
 |`GetPathElement(index)`|Extracts an element from the given path according to the given index (e.g. Path: $.a.b.c, GetPathElement(0) == "c", GetPathElement(-1) == "b", type string|Can be applied only when `path` is used|
 |`SourceLocation`|Name of the storage artifact that provided the data, type string (e.g. the blob's "BaseUri" field).|
 |`SourceLineNumber`|Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).|
