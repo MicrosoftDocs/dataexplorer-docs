@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2019
+ms.date: 10/10/2019
 ---
 # Kusto.Explorer tool
 
@@ -200,13 +200,16 @@ use `Reset View` menu item.
 |Full View Mode | Maximizes the work space by hiding ribbon menu and Connection Panel|
 |Increase Font  | Increases fonts of the query tab and of the results data grid|  
 |Decrease Font  | Decreases fonts of the query tab and of the results data grid|
+|Reset Layout|Resets layout of the tool's docking controls and windows|
 ||---------*Data View*---------|
 |Reset View| Resets data view settings (*)|
-|Hide Duplicates| Removes duplicate results from the data grid|
-|Filter Rows in Search| Allows to filter rows during search in query result|
-|Hide Empty Columns| Removes empty columns from the data grid|
-|Collapse Singular Columns| Collapses columns with singular value|
-|Explore Column Values| Shows column values distribution|
+|Explore Column Values|Shows column values distribution|
+|Focus on query statistics|Changes the focus to query statistics instead of query results upon query completion|
+|Hide Duplicates|Toggles removal of the duplicate rows from the query results|
+|Hide Empty Columns|Toggles removal of empty columns from the query results|
+|Collapse Singular Columns|Toggles collapsing columns with singular value|
+||---------*Data Filtering*---------|
+|Filter Rows in Search|Toggles the option of showing only matching rows in query results search(Ctrl+F)|
 
 (*) Data View Settings: Kusto.Explorer keeps track of what settings are used per unique set of the columns, so when columns are reordered/removed - the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, use Reset View menu item. 
 
@@ -342,6 +345,7 @@ Some more queries:
 // Take 10 lines from the table. Useful to get familiar with the data
 StormEvents | limit 10 
 ```
+
 ```kusto
 // Filter by EventType == 'Flood' and State == 'California' (=~ means case insensitive) 
 // and take sample of 10 lines

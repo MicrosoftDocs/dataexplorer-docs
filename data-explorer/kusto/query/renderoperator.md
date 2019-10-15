@@ -7,8 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/06/2019
-zone_pivot_groups: kql-flavors
+ms.date: 10/14/2019
 ---
 # render operator
 
@@ -38,6 +37,8 @@ Where:
 
 ::: zone pivot="kusto"
 
+For Kusto flavor:
+
 |*Visualization*     |Description|
 |--------------------|-|
 | `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
@@ -51,12 +52,14 @@ Where:
 | `scatterchart`     | Points graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |
 | `stackedareachart` | Stacked area graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |
 | `table`            | Default - results are shown as a table.|
-| `timechart`        | Line graph. First column is x-axis, and should be datetime. Other columns are y-axes.|
+| `timechart`        | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There is one string column whose values are used to “group” the numeric columns and create different lines in the chart (further string columns are ignored).|
 | `timepivot`        | Interactive navigation over the events time-line (pivoting on time axis)|
 
 ::: zone-end
 
 ::: zone pivot="loganalytics"
+
+For Log Analytics flavor:
 
 |*Visualization*     |Description|
 |--------------------|-|
@@ -66,7 +69,7 @@ Where:
 | `piechart`         | First column is color-axis, second column is numeric. |
 | `scatterchart`     | Points graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |
 | `table`            | Default - results are shown as a table.|
-| `timechart`        | Line graph. First column is x-axis, and should be datetime. Other columns are y-axes.|
+| `timechart`        | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There is one string column whose values are used to “group” the numeric columns and create different lines in the chart (further string columns are ignored).|
 
 ::: zone-end
 
@@ -133,7 +136,6 @@ three kinds of columns:
 
 **Tips**
 
-* Only positive values are displayed.
 * Use `where`, `summarize` and `top` to limit the volume that you display.
 * Sort the data to define the order of the x-axis.
 * User agents are free to "guess" the value of properties that are not specified
@@ -160,6 +162,8 @@ range x from -2 to 2 step 0.1
 ::: zone-end
 
 ::: zone pivot="loganalytics"
+
+For Log Analytics flavor:
 
 **Example**
 
