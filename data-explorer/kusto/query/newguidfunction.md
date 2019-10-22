@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/27/2019
-
 ---
 # new_guid()
 

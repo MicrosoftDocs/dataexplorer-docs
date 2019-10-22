@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/12/2019
-
 ---
 # Errors in native code
 

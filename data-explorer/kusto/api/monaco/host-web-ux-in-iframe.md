@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/05/2019
-
 ---
 # Embed Web UI in an iframe
 

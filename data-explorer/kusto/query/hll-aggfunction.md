@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/15/2019
-
 ---
 # hll() (aggregation function)
 

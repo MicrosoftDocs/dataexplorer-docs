@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/25/2018
-
 ---
 # The string data type
 

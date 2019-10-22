@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/23/2019
-
 ---
 # Reference material for Kusto Query Language
 

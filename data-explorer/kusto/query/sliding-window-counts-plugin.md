@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/21/2019
-
 ---
 # sliding_window_counts plugin
 

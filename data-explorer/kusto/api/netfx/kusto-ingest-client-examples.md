@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/15/2019
-
 ---
 # Kusto.Ingest Reference - Ingestion Code Examples
 This is a collection of short code snippets demonstrating various techniques of ingesting data into a Kusto table

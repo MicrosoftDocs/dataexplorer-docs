@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/05/2019
-
 ---
 # Kusto.Ingest client reference
 

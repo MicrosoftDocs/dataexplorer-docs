@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/29/2019
-
 ---
 # Azure Data Explorer Node SDK
 

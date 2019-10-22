@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/24/2019
-
 ---
 # geo_point_to_geohash()
 

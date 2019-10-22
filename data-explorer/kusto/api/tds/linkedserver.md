@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/06/2019
-
 ---
 # Kusto as linked server from SQL server
 

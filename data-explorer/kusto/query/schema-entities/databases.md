@@ -8,6 +8,5 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/17/2018
-
 ---
 # Databases

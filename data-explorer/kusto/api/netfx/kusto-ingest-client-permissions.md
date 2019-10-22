@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/13/2019
-
 ---
 # Kusto.Ingest Reference - Ingestion Permissions
 This article explains what permissions need to be set up on your service in order for `Native` ingestion to work.

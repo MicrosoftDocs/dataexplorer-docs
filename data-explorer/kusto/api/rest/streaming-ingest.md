@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/15/2018
-
 ---
 # Streaming ingestion HTTP request
 

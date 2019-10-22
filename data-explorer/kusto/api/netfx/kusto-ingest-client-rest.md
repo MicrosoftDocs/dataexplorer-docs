@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/25/2019
-
 ---
 # HowTo Data Ingestion without Kusto.Ingest Library
 

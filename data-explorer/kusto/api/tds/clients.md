@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/28/2019
-
 ---
 # MS-TDS clients and Kusto
 

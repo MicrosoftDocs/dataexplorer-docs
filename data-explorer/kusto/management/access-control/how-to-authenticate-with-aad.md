@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/13/2019
-
 ---
 # How-To Authenticate with AAD for Azure Data Explorer Access
 

@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/28/2019
-
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 

@@ -8,7 +8,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/24/2019
-
 ---
 # maxif() (aggregation function)
 
