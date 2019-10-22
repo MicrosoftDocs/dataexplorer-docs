@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/15/2019
+
 ---
 # active_users_count plugin
 

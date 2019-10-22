@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/21/2019
+
 ---
 # cursor_before_or_at()
 

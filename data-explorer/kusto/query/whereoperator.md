@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/10/2019
+
 ---
 # where operator (has, contains, startswith, endswith, matches regex)
 

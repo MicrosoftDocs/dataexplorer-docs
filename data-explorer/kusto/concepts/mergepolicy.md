@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/26/2019
+
 ---
 # Extents merge policy
 The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the Kusto cluster should get merged.

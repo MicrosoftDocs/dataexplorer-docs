@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/13/2019
+
 ---
 # HowTo Data Ingestion with Kusto.Ingest Library
 This article presents sample code that makes use of Kusto.Ingest client library.

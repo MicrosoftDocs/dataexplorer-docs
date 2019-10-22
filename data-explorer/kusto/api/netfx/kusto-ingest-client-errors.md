@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/30/2019
+
 ---
 # Kusto.Ingest Reference - Errors and Exceptions
 Any error during the ingestion handling on the client side is exposed to the user code via a C# exception.

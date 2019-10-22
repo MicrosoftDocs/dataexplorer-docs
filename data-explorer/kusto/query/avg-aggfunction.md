@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/26/2019
+
 ---
 # avg() (aggregation function)
 

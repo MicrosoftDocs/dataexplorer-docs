@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/09/2019
+
 ---
 # RestrictedViewAccess policy
 

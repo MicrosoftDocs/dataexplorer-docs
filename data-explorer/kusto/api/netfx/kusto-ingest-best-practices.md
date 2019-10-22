@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/16/2019
+
 ---
 # Kusto Ingest Client Library - Best Practices
 

@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/28/2019
+
 ---
 # funnel_sequence_completion plugin
 

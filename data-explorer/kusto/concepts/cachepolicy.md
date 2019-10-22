@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/15/2019
+
 ---
 # Cache policy (hot and cold cache)
 

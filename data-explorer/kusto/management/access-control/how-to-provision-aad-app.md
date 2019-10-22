@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/25/2019
+
 ---
 # HowTo Creating an AAD Application
 

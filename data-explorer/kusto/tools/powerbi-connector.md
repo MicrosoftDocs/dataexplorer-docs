@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/22/2019
+
 ---
 # Power BI Kusto Connector
 

@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/20/2019
+
 ---
 # make_set() (aggregation function)
 

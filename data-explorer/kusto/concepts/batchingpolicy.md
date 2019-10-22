@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2019
+
 ---
 # IngestionBatching policy
 

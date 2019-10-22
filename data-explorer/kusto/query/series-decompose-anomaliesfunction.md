@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/28/2019
+
 ---
 # series_decompose_anomalies()
 

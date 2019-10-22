@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/17/2019
+
 ---
 # current_cluster_endpoint()
 

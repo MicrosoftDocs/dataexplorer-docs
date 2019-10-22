@@ -8,6 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/07/2019
+
 ---
 # SQL to Kusto query translation
 
