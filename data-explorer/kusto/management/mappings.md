@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/06/2019
+ms.date: 10/16/2019
 ---
 # Data mappings
 
@@ -198,6 +198,11 @@ Some of the data format mappings support simple and useful ingest-time transform
 |`GetPathElement(index)`|Extracts an element from the given path according to the given index (e.g. Path: $.a.b.c, GetPathElement(0) == "c", GetPathElement(-1) == "b", type string|Can be applied only when `path` is used|
 |`SourceLocation`|Name of the storage artifact that provided the data, type string (e.g. the blob's "BaseUri" field).|
 |`SourceLineNumber`|Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).|
+
+The following transformations are going to be available in the beginning of Nov-2019:
+
+|Path-dependant transformation|Description|Conditions|
+|--|--|--|
 |`DateTimeFromUnixSeconds`|Converts number representing unix-time (seconds since 1970-01-01) to UTC datetime string|
 |`DateTimeFromUnixMilliseconds`|Converts number representing unix-time (milliseconds since 1970-01-01) to UTC datetime string|
 |`DateTimeFromUnixMicroseconds`|Converts number representing unix-time (microseconds since 1970-01-01) to UTC datetime string|
