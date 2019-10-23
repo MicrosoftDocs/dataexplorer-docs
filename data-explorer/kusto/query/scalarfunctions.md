@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/11/2019
+ms.date: 10/18/2019
 ---
 # Scalar Functions
 
@@ -119,6 +119,7 @@ ms.date: 10/11/2019
 |[exp2()](exp2-function.md)|The base-2 exponential function of x, which is 2 raised to the power x: 2^x.|
 |[gamma()](gammafunction.md)|Computes gamma function.|
 |[hash()](hashfunction.md)|Returns a hash value for the input value.|
+|[hash_combine()](hash_combinefunction.md)|Combines two or more hash values.|
 |[isfinite()](isfinitefunction.md)|Returns whether input is a finite value (is neither infinite nor NaN).|
 |[isinf()](isinffunction.md)|Returns whether input is an infinite (positive or negative) value.|
 |[isnan()](isnanfunction.md)|Returns whether input is Not-a-Number (NaN) value.|

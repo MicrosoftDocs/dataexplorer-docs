@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/25/2019
+ms.date: 10/17/2019
 ---
 # Export data to SQL
 
@@ -37,7 +37,8 @@ Properties:
 |`firetriggers`     |`true` or `false`|If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. (For more information see [BULK INSERT](https://msdn.microsoft.com/en-us/library/ms188365.aspx) and [System.Data.SqlClient.SqlBulkCopy](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlbulkcopy(v=vs.110).aspx))|
 |`createifnotexists`|`true` or `false`|If `true`, the target SQL table will be created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column which is the primary key. The default is `false`.|
 |`primarykey`       |                 |If `createifnotexists` is `true`, indicates the name of the column in the result that will be used as the SQL table's primary key if it is created by this command.|
-|`persistDetails`|`bool`  |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results). Defaults to `false` in synchronous executions, but can be turned on. |
+|`persistDetails`   |`bool`           |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results). Defaults to `false` in synchronous executions, but can be turned on. |
+|`token`            |`string`         |The AAD access token that Kusto will forward to the SQL endpoint for authentication. When set, the SQL connection string should not include authentication information like `Authentication`, `User ID`, or `Password`.|
 
 
 **Limitations and restrictions**
