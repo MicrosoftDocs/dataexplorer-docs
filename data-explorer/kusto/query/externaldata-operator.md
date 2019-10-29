@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/06/2019
+ms.date: 07/17/2019
 ---
 # externaldata operator
 
@@ -26,7 +26,7 @@ The `externaldata` operator returns a table whose schema is defined in the query
 * *DataFileUri*: The URI (including authentication option, if any) for the file holding the data.
 * *Prop1*, *Value1*, ...: Additional properties that describe how to interpret the data in the raw file, as listed under [ingestion properties](../management/data-ingestion/index.md).
     * Currently supported properties: `format` and `ignoreFirstRecord`.
-    * Supported data formats: any of the [ingestion data formats](../management/data-ingestion/index.md#supported-data-formats) are supported, including `csv`, `tsv`, `json`, `parquet`, `avro`.
+    * Currently supported [data formats](../management/data-ingestion/index.md#supported-data-formats) for this operator: `csv`, `tsv`, `scsv`, `sohsv`, `psv`, `txt`, `raw`.
 
 **Returns**
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/27/2019
+ms.date: 10/23/2018
 ---
 # row_cumsum()
 
@@ -32,7 +32,7 @@ The function returns the cumulative sum of its argument.
 **Examples**
 
 The following example shows how to calculate the cumulative sum of the first
-few even integers.
+few odd integers.
 
 ```kusto
 datatable (a:long) [

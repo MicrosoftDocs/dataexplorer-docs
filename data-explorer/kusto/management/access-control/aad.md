@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/13/2019
+ms.date: 06/30/2019
 ---
 # Azure Active Directory (AAD) Authentication
 
@@ -79,23 +79,25 @@ authorization to have these permissions. Should the user approve, these
 permissions will be listed in the scope claim of the token that is issued
 to the AAD client application.
 
-
+In Kusto's case, the AAD Server Application for the Kusto service
+(of all types: engine, DM, CM, bridge, etc.) defines just a single
+type of permission: "Access Kusto".
 
 The AAD client application is configured to request the "Access Kusto" permission
 from the user (which AAD calls "the resource owner").
 
-## Kusto Client SDK as an AAD Client Application
+## Kusto Client Libraries as an AAD Client Application
 
 When the Kusto client libraries invoke ADAL (the AAD client library)
 to acquire a token for communicating with Kusto, it provides
 the following information:
 
-1. The AAD Tenant, as received from the caller
-2. The AAD Client Application ID
-3. The AAD Client Resource ID
+1. The AAD Tenant (in our case, `72f988bf-86f1-41af-91ab-2d7cd011db47`).
+2. The AAD Client Application ID (`ad30ae9e-ac1b-4249-8817-d24f5d7ad3de` for the Kusto.Data library)
+3. The AAD Client Resource ID (`http://microsoft/kustoclient`).
 4. The AAD ReplyUrl (the URL that the AAD service will redirect-to after authentication completes successfully;
    ADAL then captures this redirect and extracts the authorization code from it).
-5. The Cluster URI ('https://Cluster-and-region.kusto.windows.net').
+5. The Cluster url ('https://ClusterName.kusto.windows.net').
 
 The token returned by ADAL to the Kusto Client Library has the Kusto AAD Server Application
 as the audience, and the "Access Kusto" permission as the scope.

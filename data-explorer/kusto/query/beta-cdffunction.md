@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/21/2019
+ms.date: 10/23/2018
 ---
 # beta_cdf()
 
@@ -35,7 +35,7 @@ The beta distribution is commonly used to study variation in the percentage of s
 
 * The [cumulative beta distribution function](https://en.wikipedia.org/wiki/Beta_distribution#Cumulative_distribution_function).
 
-**Notes**
+**Remarks**
 
 If any argument is nonnumeric, beta_cdf() returns null value.
 

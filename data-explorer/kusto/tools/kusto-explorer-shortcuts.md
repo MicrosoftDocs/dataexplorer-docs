@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/04/2019
+ms.date: 07/03/2019
 ---
 # Kusto.Explorer keyboard shortcuts (hot-keys)
 
@@ -173,11 +173,3 @@ The following keyboard shortcuts can be used when charts are present and are in 
 |`Ctrl`+`+` | Chart's diagram is zoomed in 3 times from the current axes ranges.|
 |`Ctrl`+`-` | Chart's diagram is zoomed out 3 times from the current axes ranges.|
 |`Ctrl`+`Z` | Pressing the CTRL + Z keys returns the previous zoom state of a chart's diagram. All subsequent operations of a similar kind (for instance, multiple "zoom in" operations) are considered as a single transaction. Pressing CTRL + Z returns the zoom state which existed before the first zoom operation in a zoom series. |
-
-## Diagnostics and Monitoring
-
-The following keyboard shortcuts are available from `Monitoring` ribbon.
-
-|Hot Key|Description|
-|-----------|-----------|
-|`Ctrl`+`Shift`+`F1`|Run cluster diagnostic flow|

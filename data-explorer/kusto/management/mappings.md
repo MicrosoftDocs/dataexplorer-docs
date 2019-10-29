@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 08/12/2019
 ---
 # Data mappings
 
@@ -15,22 +15,18 @@ This article describes data mappings that are used at ingestion time to map inco
 
 ## CSV Mapping
 
-When the source file is in CSV format (or any delimeter-separated format) and its schema doesn't match the current Kusto table schema, a CSV mapping maps from the file schema to the Kusto table schema. If the table doesn't exist in Kusto, it will be created according to this mapping. If some fields in the mapping are missing in the table, they will be added. 
+When the source file is in CSV format and its schema doesn't match the current Kusto table schema, a CSV mapping maps from the file schema to the Kusto table schema. If the table doesn't exist in Kusto, it will be created according to this mapping. If some fields in the mapping are missing in the table, they will be added. 
 
-CSV mapping can be applied on all the delimiter-separated formats, namely: CSV, TSV, PSV, SCSV, SOHsv.
+Each element in the list describes a single column as a dictionary: 
 
-Each element in the mapping list describes a single column as a dictionary with next properties: 
+* `Name`
+* `DataType`
+* `Ordinal` - the column order number in csv
+* `ConstantValue` - the constant value to be used for a column instead of some value inside the csv
 
+`Ordinal` and `ConstantValue` are mutually exclusive.
 
-|Property|Description|
-|----|--|
-|`name`|Target column name in the Kusto table|
-| `datatype`| (Optional) Datatype with which to create the mapped column if not already exists in the Kusto table||`ordinal`|The column order number in csv.|
-|`constantValue`|(Optional) The constant value to be used for a column instead of some value inside the csv|
-
-* Note: `Ordinal` and `ConstantValue` are mutually exclusive.
-
-### Example of the CSV mapping
+Example of the CSV mapping:
 
 ``` json
 [
@@ -66,23 +62,32 @@ CSV mapping can be [pre-created](tables.md#create-ingestion-mapping) and be refe
 .ingest into Table123 (@"source1", @"source2")
   with @'{"csvMapping": "[{\"Name\":\"rownumber\",\"Ordinal\":0},{\"Name\":\"rowguid\",\"Ordinal\":1},...]","format":"csv"}'
 ```
+ 
+CSV mapping can be applied on all the delimiter-separated formats, meaning : CSV, TSV, PSV, SCSV, SOHsv.
 
 ## JSON Mapping
 
 When the source file is in JSON format, this maps the file content to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. The columns mapped in the Json mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
 
-Each element in the list describes a single or multiple columns as a dictionary with next properties: 
+Each element in the list describes a single or multiple columns as a dictionary: 
 
-|Property|Description|
-|----|--|
-|`column`|Target column name in the Kusto table|
-|`columns`|Target columns' names to be mapped to the same property. Can be used instead of or in addition to `column`.|
-| `datatype`| (Optional) Datatype with which to create the mapped column if not already exists in the Kusto table|
-|`path`|If starts with `$`: JSON path to the field that will become the content of the column in the JSON document (JSON path that denotes the entire document is `$`). If the value does not start with `$`: a constant value is used.|
-|`transform`|(Optional) Transformation that should be applied on the content. See [mapping transformations](#mapping-transformations).|
+* `Column`: the target column name 
+* `Columns`: the target columns' names to be mapped to the same property
+ * Can be used instead of `Column` (or in addition to `Column`)
+* `DataType`: the datatype with which to create the mapped column if not already exists in the Kusto table (optional)
+* `Path`  
+ * If starts with `$`: JSON path to the field that will become the content of the column in the JSON document (JSON path that denotes the entire document is `$`)
+ * Otherwise a constant value is used
+* `Transform` (optional): the transformation that should be applied on the content:
+ * Path dependent transform:
+   * `PropertyBagArrayToDictionary` - creating a dictionary from the array content of the field and serializes it to JSON.
+   * `GetPathElement(index)` - Extract an element from the given path according to the given index (e.g. Path: $.a.b.c, GetPathElement(0) == "c", GetPathElement(-1) == "b", type string.
+ * Path independent transform:
+   * `SourceLocation` - Name of the storage artifact that provided the data, type string (e.g. the blob's "BaseUri" field).
+   * `SourceLineNumber` - Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).
 
-
-### Example of the JSON Mapping
+ 
+Example of the JSON Mapping:
 
 ``` json
 [
@@ -126,33 +131,12 @@ JSON mapping can be [pre-created](tables.md#create-ingestion-mapping) and be ref
 When the source file is in Avro format, this maps the Avro file content to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. 
 The columns mapped in the Avro Mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
 
-Each element in the list describes a single or multiple columns as a dictionary with next properties: 
+Each element in the list describes a single or multiple columns as a dictionary: 
 
-|Property|Description|
-|----|--|
-|`column`|Target column name in the Kusto table|
-|`field`|The name of the field in the Avro record|
-|`path`|Alternative of using `field` which allows taking inner part of an Avro record-field if necessarry. The value denotes JSON-path from the root of the record. See Notes section below for more information. |
-|`transform`|(Optional) Transformation that should be applied on the content. See [supported transformations](#mapping-transformations).|
-
-**Notes**
-- `field` and `path` cannot be used together - only one is allowed. 
-- `path` cannot point to root `$` only, it must have at least one level of path.
-- The two alternatives below are equal:
-
-``` json
-[
-  {"column": "rownumber", "field": "RowNumber" }
-]
-```
-
-``` json
-[
-  {"column": "rownumber", "path": "$.RowNumber" }
-]
-```
-
-### Example of the AVRO mapping
+* `column`: the name of the column in Kusto table
+* `field`: the name of the filed in Avro record
+ 
+Example of the AVRO mapping:
 
 ``` json
 [
@@ -187,23 +171,3 @@ Each element in the list describes a single or multiple columns as a dictionary 
 ```
     
 Avro mapping can be [pre-created](tables.md#create-ingestion-mapping) and be referenced from the ingest command `avroMappingReference` parameter.
-
-## Mapping transformations
-
-Some of the data format mappings support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time - one can use [Update policy](update-policy.md), which allows defining a lightweight processing using KQL expression.
-
-|Path-dependant transformation|Description|Conditions|
-|--|--|--|
-|`PropertyBagArrayToDictionary`|Transforms Json array of properties (e.g. {events:[{"n1":"v1"},{"n2":"v2"}]}) to dictionary and serializes it to valid JSON document (e.g. {"n1":"v1","n2":"v2"}).|Can be applied only when `path` is used|
-|`GetPathElement(index)`|Extracts an element from the given path according to the given index (e.g. Path: $.a.b.c, GetPathElement(0) == "c", GetPathElement(-1) == "b", type string|Can be applied only when `path` is used|
-|`SourceLocation`|Name of the storage artifact that provided the data, type string (e.g. the blob's "BaseUri" field).|
-|`SourceLineNumber`|Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).|
-
-The following transformations are going to be available in the beginning of Nov-2019:
-
-|Path-dependant transformation|Description|Conditions|
-|--|--|--|
-|`DateTimeFromUnixSeconds`|Converts number representing unix-time (seconds since 1970-01-01) to UTC datetime string|
-|`DateTimeFromUnixMilliseconds`|Converts number representing unix-time (milliseconds since 1970-01-01) to UTC datetime string|
-|`DateTimeFromUnixMicroseconds`|Converts number representing unix-time (microseconds since 1970-01-01) to UTC datetime string|
-|`DateTimeFromUnixNanoseconds`|Converts number representing unix-time (nanoseconds since 1970-01-01) to UTC datetime string|

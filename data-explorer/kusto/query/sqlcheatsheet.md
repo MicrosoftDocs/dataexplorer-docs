@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/07/2019
+ms.date: 07/25/2019
 ---
 # SQL to Kusto query translation
 
@@ -26,7 +26,7 @@ SELECT COUNT_BIG(*) as C FROM StormEvents
 |---|
 |StormEvents<br>| summarize C=count()<br>| project C|
 
-## SQL to Kusto cheat sheet
+# SQL to Kusto cheat sheet
 
 The table below shows sample queries in SQL and thier KQL equivalients.
 

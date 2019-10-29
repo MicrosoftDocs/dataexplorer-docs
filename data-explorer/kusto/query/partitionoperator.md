@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/01/2019
+ms.date: 05/20/2019
 ---
 # partition operator
 
@@ -126,7 +126,7 @@ where each partition calculates its own Count, and all later summarized into Tot
 
 ```kusto
 let N = 10;                 // Number of query-partitions
-range p from 0 to N-1 step 1  // 
+range p from 1 to N step 1  // 
 | partition by p            // Run the sub-query partitioned 
 {
     StormEvents 
@@ -138,7 +138,7 @@ range p from 0 to N-1 step 1  //
 
 |TotalCount|
 |---|
-|59066|
+|53137|
 
 
 **Example: partition-reference**

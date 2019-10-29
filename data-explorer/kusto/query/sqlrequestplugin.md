@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/11/2019
+ms.date: 08/13/2019
 ---
 # sql_request plugin
 

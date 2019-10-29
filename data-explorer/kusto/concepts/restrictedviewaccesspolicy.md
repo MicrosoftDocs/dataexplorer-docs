@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/23/2019
+ms.date: 01/10/2019
 ---
 # RestrictedViewAccess policy
 
@@ -16,7 +16,7 @@ The *RestrictedViewAccess* policy is an optional policy that can be set (enabled
 When this policy is enabled on a table, data in the table is queryable *only* to principals which have been added 
 to the [UnrestrictedViewer](../management/access-control/role-based-authorization.md) role in the database.
 
-Once a policy is set on a table, any principal (even a table/database/cluster admin) which isn't included in the 
+Once a the policy is set on a table, any principal (even a table/database/cluster admin) which isn't included in the 
 [UnrestrictedViewer](../management/access-control/role-based-authorization.md) database-level role, will not be able to query data in the table.
 
 The [UnrestrictedViewer](../management/access-control/role-based-authorization.md) role grants view permission to *all* tables in the database which have the policy enabled,

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/25/2019
+ms.date: 08/15/2019
 ---
 # Query/management HTTP request
 
@@ -42,7 +42,7 @@ operations.
 |`Authorization`  |**Required**. See [authentication](./authentication.md).                                                                |
 |`Connection`     |**Optional**. It is recommended that `Keep-Alive` be enabled.                                                           |
 |`Content-Length` |**Optional**. It is recommended that the request body length be specified when known.                                   |
-|`Content-Type`   |**Required**. Set this to `application/json` with `charset=utf-8`.                                                      |
+|`Content-Type`   |**Optional**. Set this to `application/json` with `charset=utf-8`.                                                      |
 |`Expect`         |**Optional**. Can be set to `100-Continue`.                                                                             |
 |`Host`           |**Required**. Set this to the fully-qualified domain name that the request was sent to (e.g., `help.kusto.windows.net`).|
 

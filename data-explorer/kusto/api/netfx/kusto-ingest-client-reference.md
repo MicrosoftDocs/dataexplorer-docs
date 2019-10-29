@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/05/2019
+ms.date: 03/05/2019
 ---
 # Kusto.Ingest client reference
 
@@ -409,7 +409,6 @@ public enum DataSourceFormat
     json,       // Data is in a JSON-line format (each line is record with a single JSON value)
     multijson,  // The data stream is a concatenation of JSON documents (property bags all)
     avro,       // Data is in a AVRO format
-    parquet,    // Data is in a Parquet format
 }
 ```
 

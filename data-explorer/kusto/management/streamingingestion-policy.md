@@ -7,14 +7,14 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/09/2019
+ms.date: 08/19/2019
 ---
 # Streaming ingestion policy management
 
 Streaming ingestion policy can be attached to a database or table to allow streaming ingestion to those locations. The policy also defines the row stores used for the streaming ingestion.
 
 
-For more information on streaming ingestion see [Streaming ingestion (preview)](https://docs.microsoft.com/en-us/azure/data-explorer/ingest-data-streaming). To learn more about the streaming ingestion policy, see [Streaming ingestion policy](../concepts/streamingingestionpolicy.md).
+For more information on streaming ingestion see [Streaming ingestion (Preview)](data-ingestion/streaming.md). To learn more about the streaming ingestion policy, see [Streaming ingestion policy](../concepts/streamingingestionpolicy.md).
 
 ## .show policy streamingingestion
 

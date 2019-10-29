@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/21/2019
+ms.date: 10/23/2018
 ---
 # cursor_after()
 
@@ -27,7 +27,7 @@ against a database cursor.
 A scalar value of type `bool` that indicates whether the record was ingested
 after the database cursor *RHS* (`true`) or not (`false`).
 
-**Notes**
+**Comments**
 
 See [database cursors](../management/databasecursor.md) for additional
 details on database cursors.

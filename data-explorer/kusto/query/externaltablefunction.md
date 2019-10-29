@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/21/2019
+ms.date: 07/25/2019
 ---
 # external_table()
 
@@ -31,7 +31,7 @@ external_table('StormEvent')
   fields in the actual (external) data shards to the columns output
   by this function.
 
-**Notes**
+**Remarks**
 
 See [external tables](schema-entities/externaltables.md) for more information
 on external tables.

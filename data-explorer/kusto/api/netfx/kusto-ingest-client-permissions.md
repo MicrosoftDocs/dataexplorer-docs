@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/13/2019
+ms.date: 01/15/2019
 ---
 # Kusto.Ingest Reference - Ingestion Permissions
 This article explains what permissions need to be set up on your service in order for `Native` ingestion to work.
@@ -29,8 +29,7 @@ The following diagram outlines the Queued ingestion client interaction with Kust
 
 ### Permissions on the Engine Service
 In order to qualify for data ingestion into table `T1` on database `DB1` the principal performing the ingest operation must be authorized for that.
-Minimal required permission levels are `Database Ingestor` and `Table Ingestor` that can ingest data into all existing tables in a database or into a specific existing table, accordingly.
-If table creation is required, `Database User` or a higher access role must also be assigned.
+Minimal required permission levels are `Database Ingestor` that can also create tables and `Table Ingestor` that can only ingest data into an existing table.
 
 
 |Role |PrincipalType	|PrincipalDisplayName

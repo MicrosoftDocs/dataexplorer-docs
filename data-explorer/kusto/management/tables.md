@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2019
+ms.date: 08/19/2019
 ---
 # Tables management
 
@@ -21,7 +21,7 @@ This topic discusses the lifecycle of tables and associated control commands:
 |Manage ingestion mapping                |`.create ingestion mapping`, `.show ingestion mappings`, `.alter ingestion mapping`, `.drop ingestion mapping`|
 |Manage table display properties         |`.alter table docstring`, `.alter table folder`|
 
-## CRUD naming conventions for table (see full details in the sections below)
+## CRUD Naming Conventions for table (see full details in the sections below)
  
 |Command syntax |Semantics|
 |---|---|
@@ -43,13 +43,16 @@ This topic discusses the lifecycle of tables and associated control commands:
 ```kusto
 .show tables
 .show tables (T1, ..., Tn)
+.show tables (T1, ..., Tn) details
+.show tables details
+.show table T1 details
 ```
 
-Returns a set that contains the specified table or all tables in the database.
+Returns a set that contains all tables in the database (optionally - with a detailed summary of the tables' properties).
 
 Requires [Database viewer permission](../management/access-control/role-based-authorization.md).
 
-**Output**
+**Output (w/o details)**
 
 |Output parameter |Type |Description
 |---|---|---
@@ -58,28 +61,7 @@ Requires [Database viewer permission](../management/access-control/role-based-au
 |Folder |String |The table's folder.
 |DocString |String |A string documenting the table.
 
-**Output example**
-
-|Table Name |Database Name |Folder | DocString
-|---|---|---|---
-|Table1 |DB1 |Logs |Contains services logs
-|Table2 |DB1 | Reporting |
-|Table3 |DB1 | | Extended info |
-|Table4 |DB2 | Metrics| Contains services performance information
-
-## .show table details
-
-```kusto
-.show table T1 details
-.show tables (T1, ..., Tn) details
-.show tables details
-```
-
-Returns a set that contains the specified table or all tables in the database with a detailed summary of each table's properties.
-
-Requires [Database viewer permission](../management/access-control/role-based-authorization.md).
-
-**Output**
+**Output (w/ details)**
 
 |Output parameter |Type |Description
 |---|---|---
@@ -106,7 +88,16 @@ Requires [Database viewer permission](../management/access-control/role-based-au
 
 `*` *Taking into account policies of parent entities (such as database/cluster).*
 
-**Output example**
+**Output example (w/o details)**
+
+|Table Name |Database Name |Folder | DocString
+|---|---|---|---
+|Table1 |DB1 |Logs |Contains services logs
+|Table2 |DB1 | Reporting |
+|Table3 |DB1 | | Extended info |
+|Table4 |DB2 | Metrics| Contains services performance information
+
+**Output example (w/ details)**
 
 |TableName |DatabaseName |Folder |DocString |TotalExtents |TotalExtentSize |TotalOriginalSize |TotalRowCount |HotExtents |HotExtentSize |HotOriginalSize |HotRowCount |AuthorizedPrincipals |RetentionPolicy |CachingPolicy |ShardingPolicy |MergePolicy |StreamingIngestionPolicy|MinExtentsCreationTime |MaxExtentsCreationTime
 |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |---|--- |---
@@ -477,30 +468,19 @@ Requires [Table admin permission](../management/access-control/role-based-author
 
 ## .create ingestion mapping
 
-Creates an ingestion mapping that is associated with a specific table and a specific format.
+`.create` `table` *TableName* `ingestion` `csv` `mapping` *MappingName* *MappingInJsonFormat*
 
-**Syntax**
+`.create` `table` *TableName* `ingestion` `json` `mapping` *MappingName* *MappingInJsonFormat*
 
-`.create` `table` *TableName* `ingestion`  `mapping` *MappingName* *MappingFormattedAsJson*
-
-`.create` `table` *TableName* `ingestion`  `mapping` *MappingName* *MappingFormattedAsJson*
-
-**Notes:** 
-
-* Once created, the mapping can be referenced by its name in ingestion commands, instead of specifying the complete mapping as part of the command.
-* Valid values for *MappingKind* are: `csv`, `json`, `avro`, `parquet`
-* If a mapping by the same name already exists for the table:
-    * `.create` will fail.
-    * `.create-or-alter` will alter the existing mapping.
+This mapping can be referenced from the ingestion command instead of sending the mapping itself as part of the command.
  
 **Example** 
  
 ```kusto
 .create table MyTable ingestion csv mapping "Mapping1" '[{ "Name" : "rownumber", "DataType":"int", "Ordinal" : 0},{ "Name" : "rowguid", "DataType":"string", "Ordinal" : 1 }]'
 
-.create-or-alter table MyTable ingestion json mapping "Mapping1" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
+.create table MyTable ingestion json mapping "Mapping1" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
 ```
-
 **Example output**
 
 |Name|Kind|Mapping
@@ -510,17 +490,11 @@ Creates an ingestion mapping that is associated with a specific table and a spec
 
 ## .alter ingestion mapping
 
-Alters an existing ingestion mapping that is associated with a specific table and a specific format (full mapping replace).
+`.alter` `table` *TableName* `ingestion` `csv` `mapping` *MappingName* *MappingInJsonFormat*
 
-**Syntax**
+`.alter` `table` *TableName* `ingestion` `json` `mapping` *MappingName* *MappingInJsonFormat*
 
-`.alter` `table` *TableName* `ingestion` `csv` `mapping` *MappingName* *MappingFormattedAsJson*
-
-**Notes:**
-
-* This mapping can be referenced by its name by ingestion commands, instead of specifying the complete mapping as part of the command.
-* Valid values for *MappingKind* are: `csv`, `json`, `avro`, `parquet`
-
+Alters an existing mapping (full mapping replace). This mapping can be referenced from the ingestion command instead of sending the mapping itself as part of the command.
  
 **Example** 
  

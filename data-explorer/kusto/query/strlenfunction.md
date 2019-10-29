@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/21/2019
+ms.date: 10/23/2018
 ---
 # strlen()
 
@@ -25,7 +25,7 @@ Returns the length, in characters, of the input string.
 
 Returns the length, in characters, of the input string.
 
-**Notes**
+**Remarks**
 
 Each Unicode character in the string is equal to `1`, including surrogates.
 (e.g: Chinese characters will be counted once despite the fact that it requires more than one value in UTF-8 encoding).

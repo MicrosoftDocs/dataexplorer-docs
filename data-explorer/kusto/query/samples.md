@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/06/2019
+ms.date: 03/28/2019
 ---
 # Samples
 
@@ -200,16 +200,16 @@ We want a chart in 1-minute bins, so we want to create something that, at each 1
 Here's an intermediate result:
 
 ```kusto
-X | extend samples = range(bin(StartTime, 1m), StopTime, 1m)
+X | extend samples = range(bin(StartTime, 1m), Stop, 1m)
 ```
 
 `range` generates an array of values at the specified intervals:
 
 |SessionId | StartTime | StopTime  | samples|
 |---|---|---|---|
-| a | 10:01:33 | 10:06:31 | [10:01:00,10:02:00,...10:06:00]|
-| b | 10:02:29 | 10:03:45 | [10:02:00,10:03:00]|
-| c | 10:03:12 | 10:04:30 | [10:03:00,10:04:00]|
+| a | 10:03:33 | 10:06:31 | [10:01:00,10:02:00,...10:06:00]|
+| b | 10:02:29 | 10:03:45 |          [10:02:00,10:03:00]|
+| c | 10:03:12 | 10:04:30 |                   [10:03:00,10:04:00]|
 
 But instead of keeping those arrays, we'll expand them using [mv-expand](./mvexpandoperator.md):
 
@@ -219,16 +219,15 @@ X | mv-expand samples = range(bin(StartTime, 1m), StopTime , 1m)
 
 |SessionId | StartTime | StopTime  | samples|
 |---|---|---|---|
-| a | 10:01:33 | 10:06:31 | 10:01:00|
-| a | 10:01:33 | 10:06:31 | 10:02:00|
-| a | 10:01:33 | 10:06:31 | 10:03:00|
-| a | 10:01:33 | 10:06:31 | 10:04:00|
-| a | 10:01:33 | 10:06:31 | 10:05:00|
-| a | 10:01:33 | 10:06:31 | 10:06:00|
+| a | 10:03:33 | 10:06:31 | 10:01:00|
+| a | 10:03:33 | 10:06:31 | 10:02:00|
 | b | 10:02:29 | 10:03:45 | 10:02:00|
+| a | 10:03:33 | 10:06:31 | 10:03:00|
 | b | 10:02:29 | 10:03:45 | 10:03:00|
 | c | 10:03:12 | 10:04:30 | 10:03:00|
+| a | 10:03:33 | 10:06:31 | 10:04:00|
 | c | 10:03:12 | 10:04:30 | 10:04:00|
+|...||||
 
 We can now group these by sample time, counting the occurrences of each activity:
 
@@ -249,7 +248,6 @@ X
 | 3 | 10:03:00|
 | 2 | 10:04:00|
 | 1 | 10:05:00|
-| 1 | 10:06:00|
 
 This can be rendered as a bar chart or time chart.
 
@@ -309,7 +307,7 @@ Here's a step-by-step explanation of the query above:
 
 There are many interesting use cases for leveraging machine learning algorithms and derive interesting insights out of telemetry data. While often these algorithms require a very structured dataset as their input, the raw log data will usually not match the required structure and size. 
 
-Our journey starts with looking for anomalies in the error rate of a specific Bing Inferences service. The Logs table has 65B records, and the simple query below filters 250K errors, and creates a time series data of errors count that utilizes anomaly detection function [series_decompose_anomalies](series-decompose-anomaliesfunction.md). The anomalies are detected by the Kusto service, and are highlighted as red dots on the time series chart.
+Our journey starts with looking for anomalies in the error rate of a specific Bing Inferences service. The Logs table has 65B records, and the simple query below filters 250K errors, and creates a time series data of errors count that utilizes anomaly detection function[series_decompose_anomalies](series-decompose-anomaliesfunction.md). The anomalies detected by the Kusto service, and are highlighted as red dots on the time series chart.
 
 ```kusto
 Logs
@@ -343,7 +341,7 @@ Logs
 |1|Inference System error... SocialGraph.BOSS.OperationResponse...AIS TraceId:8292FC561AC64BED8FA243808FE74EFD...
 |1|Inference System error... SocialGraph.BOSS.OperationResponse...AIS TraceId: 5F79F7587FF943EC9B641E02E701AFBF...
 
-This is where the `reduce` operator comes to help. The `reduce` operator identified 63 different errors as originated by the same trace instrumentation point in the code, and helped me focus on additional meaningful error trace in that time window.
+This is where the new `reduce` operator comes to help. The `reduce` operator identified 63 different errors as originated by the same trace instrumentation point in the code, and helped me focus on additional meaningful error trace in that time window.
 
 ```kusto
 Logs
@@ -365,7 +363,7 @@ Logs
 |  10|Inference System error..Microsoft.Bing.Platform.Inferences.Service.Managers.UserInterimDataManagerException:...
 |  3|InferenceHostService call failed..System.ServiceModel.*: The * object, System.ServiceModel.Channels.*+*, * * * for * * * is * the * *...   at Syst...
 
-Now that I have a good view into the top errors that contributed to the detected anomalies, I want to understand the impact of these errors across my system. The 'Logs' table contains additional dimensional data such as 'Component', 'Cluster', etc... The new 'autocluster' plugin can help me derive that insight with a simple query. In this example below, I can clearly see that each of the top four errors is specific to a component, and while the top three errors are specific to DB4 cluster, the fourth one happens across all clusters.
+Now that I have a good view into the top errors that contributed to the detected anomalies, I want to understand the impact of these errors across my system. The 'Logs' table contains additional dimensional data such as 'Component', 'Cluster', etc... The new 'autocluster' plugin can help me derive that insight with a simple query. In this example below, I can clearly see that each of the top four errors are specific to a component, and while the top three errors are specific to DB4 cluster, the fourth one happens across all clusters.
 
 ```kusto
 Logs
@@ -552,7 +550,7 @@ datatable(id:string, timestamp:datetime, bla:string)           // (1)
   "Donald", datetime(2017-01-19), "6"
   ]
 | top-nested   of id        by dummy0=max(1),                  // (2)
-  top-nested 2 of timestamp by dummy1=max(timestamp),          // (3)
+  top-nested 2 of timestamp by dummy1=max(timestamp),  // (3)
   top-nested   of bla       by dummy2=max(1)                   // (4)
 | project-away dummy0, dummy1, dummy2                          // (5)
 ```

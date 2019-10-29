@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/18/2019
+ms.date: 07/05/2019
 ---
 # Scalar Functions
 
@@ -119,7 +119,6 @@ ms.date: 10/18/2019
 |[exp2()](exp2-function.md)|The base-2 exponential function of x, which is 2 raised to the power x: 2^x.|
 |[gamma()](gammafunction.md)|Computes gamma function.|
 |[hash()](hashfunction.md)|Returns a hash value for the input value.|
-|[hash_combine()](hash_combinefunction.md)|Combines two or more hash values.|
 |[isfinite()](isfinitefunction.md)|Returns whether input is a finite value (is neither infinite nor NaN).|
 |[isinf()](isinffunction.md)|Returns whether input is an infinite (positive or negative) value.|
 |[isnan()](isnanfunction.md)|Returns whether input is Not-a-Number (NaN) value.|
@@ -272,11 +271,3 @@ ms.date: 10/18/2019
 |[rank_tdigest()](rank-tdigest.md)|Calculates relative rank of a value in a set.|
 |[tdigest_merge()](tdigest-mergefunction.md)|Merges tdigest results (scalar version of the aggregate version tdigest-merge()).|
 
-## Spatial functions
-
-|Function Name                                                             |Description                                             |
-|--------------------------------------------------------------------------|--------------------------------------------------------|
-|[geo_distance_2points()](geo-distance-2points-function.md)                ||
-|[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)||
-|[geo_point_in_circle()](geo-point-in-circle-function.md)                  ||
-|[geo_point_to_geohash()](geo-point-to-geohash-function.md)                ||

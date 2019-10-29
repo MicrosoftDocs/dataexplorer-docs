@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/21/2019
+ms.date: 10/23/2018
 ---
 # isnull()
 
@@ -25,7 +25,7 @@ isnull(parse_json("")) == true
 
 True or false depending on the whether the value is null or not null.
 
-**Notes**
+**Comments**
 
 * `string` values cannot be null. Use [isempty](./isemptyfunction.md)
   to determine if a value of type `string` is empty or not.

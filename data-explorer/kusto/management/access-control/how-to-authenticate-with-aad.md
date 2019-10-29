@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/13/2019
+ms.date: 07/25/2019
 ---
 # How-To Authenticate with AAD for Azure Data Explorer Access
 
@@ -111,6 +111,7 @@ number of times a user has to enter credentials.
 > there's a need to support non-interactive logons (such as when scheduling tasks
 > for example), because when the time comes for prompting the logged on user for
 > credentials that prompt will fail if running under non-interactive logon.
+
 
 
 ## User authentication

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/09/2019
+ms.date: 06/23/2019
 ---
 # Data export
 
@@ -23,6 +23,7 @@ There are several methods for data export:
   export, most commonly to the local filesystem where the tool runs. Among tools
   that support this model are [Kusto.Explorer](../../tools/kusto-explorer.md),
   [Web UI](https://docs.microsoft.com/azure/data-explorer/web-query-data), 
+
 
 
  and others.

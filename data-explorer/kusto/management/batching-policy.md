@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/25/2019
+ms.date: 06/30/2019
 ---
 # IngestionBatching policy
 
@@ -64,19 +64,27 @@ IngestionBatching policy:
 
 **Examples**
 
-```kusto
-// Show IngestionBatching policy for table `MyTable` in database `MyDatabase`
+Show policy of IngestionBatching for table `MyTable` in database `MyDatabase`:
+```
 .show table MyDatabase.MyTable policy ingestionbatching 
+```
 
-// Set IngestionBatching policy on table `MyTable` (in database context) to batch ingress data by 30 seconds, 500 files, or 1GB (whatever comes first)
-.alter table MyTable policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:30", "MaximumNumberOfItems": 500, "MaximumRawDataSizeMB": 1024}'
+Setting policy of IngestionBatching of table `MyTable` (in database context) to 10 minutes, 500 files and 1G:
+```
+.alter table MyTable policy  ingestionbatching  @"{'MaximumBatchingTimeSpan':'00:10:00', 'MaximumNumberOfItems': 500, 'MaximumRawDataSizeMB': 1024}"
+```
 
-// Set IngestionBatching policy on multiple tables (in database context) to batch ingress data by 1 minute, 20 files, or 300MB (whatever comes first)
-.alter tables (MyTable1, MyTable2, MyTable3) policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:01:00", "MaximumNumberOfItems": 20, "MaximumRawDataSizeMB": 300}'
+Setting policy for multiple tables (in database context), 10 minutes, 500 files and 1G:
+```
+.alter tables (MyTable1, MyTable2, MyTable3) policy  ingestionbatching  @"{'MaximumBatchingTimeSpan':'00:10:00', 'MaximumNumberOfItems': 500, 'MaximumRawDataSizeMB': 1024}"
+```
 
-// Delete IngestionBatching policy on table `MyTable`
+Deleting a policy set on an entity:
+```
 .delete table MyTable policy ingestionbatching
+```
 
-// Delete IngestionBatching policy on database `MyDatabase`
+Deleting a policy set on a database:
+```
 .delete database MyDatabase policy ingestionbatching
 ```
