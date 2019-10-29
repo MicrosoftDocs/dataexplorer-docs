@@ -1,65 +1,68 @@
 ---
-title: Virtual Network deployment - Azure Data Explorer | Microsoft Docs
-description: This article describes Virtual Network deployment in Azure Data Explorer.
+title: Virtual Network deployment in Azure Data Explorer - Azure Data Explorer | Microsoft Docs
+description: This article describes Virtual Network deployment in Azure Data Explorer in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/07/2019
+ms.date: 10/23/2019
 ---
-# Virtual Network deployment
+# Virtual Network deployment in Azure Data Explorer
 
-Azure Data Explorer supports deploying a cluster into a subnet in your Virtual Network (VNet). This enables you to:
+Azure Data Explorer supports deploying a cluster into a subnet in your [Virtual Network](/azure/virtual-network/virtual-networks-overview) (VNet). This enables you to:
 
-* Enforce Network Security Group (NSG) rules on your Azure Data Explorer cluster traffic.
+* Enforce [Network Security Group](/azure/virtual-network/security-overview) (NSG) rules on your Azure Data Explorer cluster traffic.
 * Connect your on-premise network to Azure Data Explorer cluster's subnet.
-* Secure your data connection sources (Event Hub and Event Grid) with service endpoints.
+* Secure your data connection sources ([Event Hub](/azure/event-hubs/event-hubs-about) and [Event Grid](/azure/event-grid/overview)) with [service endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview).
+
+![alt text](./images/vnet-diagram.png "vnet-diagram")
 
 Azure Data Explorer cluster has the following IP addresses for each service (Engine and Data Management services):
 
 * Private IP: Used for accessing the cluster inside the VNet.
-* Public IP: Used for accessing the cluster from outside the VNet (e.g. management and monitoring) and as a source address for outbound connections initiated from the cluster.
+* Public IP: Used for accessing the cluster from outside the VNet for management and monitoring, and as a source address for outbound connections initiated from the cluster.
 
 The following DNS records are created to access the service: 
-* `[clustername].[geo-region].kusto.windows.net` (Engine) `ingest-[clustername].[geo-region].kusto.windows.net` (Data Management) are mapped to the Public IP for each service. 
 
-* `private-[clustername].[geo-region].kusto.windows.net` (Engine) `private-ingest-[clustername].[geo-region].kusto.windows.net` (Data Management) are mapped to the Private IP for each service. 
+* `[clustername].[geo-region].kusto.windows.net` (Engine) `ingest-[clustername].[geo-region].kusto.windows.net` (Data Management) are mapped to the public IP for each service. 
 
-![alt text](./images/vnet-diagram.png "vnet-diagram")
+* `private-[clustername].[geo-region].kusto.windows.net` (Engine) `private-ingest-[clustername].[geo-region].kusto.windows.net` (Data Management) are mapped to the private IP for each service. 
 
-## Dependencies 
+## Dependencies for VNet deployment
 
-ADX's data plane service can be accessed using HTTPs (443) and TDS endpoint (1433), inbound access must be allowed to work with these endpoints, in addition these NSG rules must be allowed: 
+Azure Data Explorer's data plane service can be accessed using HTTPs (443) and TDS endpoint (1433). Inbound access must be allowed to work with these endpoints. In addition the following [NSG](/azure/virtual-network/security-overview) rules must be allowed:
 
-### **Inbound**
+### Inbound NSG configuration
 
 | **Use**   | **From**   | **To**   | **Protocol**   |
 | --- | --- | --- | --- |
-| Management  | ADX management addresses/AzureDataExplorerManagement(SerivceTag) | ADX subnet:443  | TCP  |
-| Health monitoring  | ADX health monitoring addresses  | ADX subnet:443  | TCP  |
+| Management  |[ADX management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | ADX subnet:443  | TCP  |
+| Health monitoring  | [ADX health monitoring addresses](#health-monitoring-addresses)  | ADX subnet:443  | TCP  |
 | ADX Internal Communication  | ADX subnet: All ports  | ADX subnet:All ports  | All  |
 | Allow Azure load balancer inbound (health probe)  | AzureLoadBalancer  | ADX subnet:80,443  | TCP  |
 
-### **Outbound**
+### Outbound NSG configuration
 
 | **Use**   | **From**   | **To**   | **Protocol**   |
 | --- | --- | --- | --- |
-| Dependency on Storage  | ADX subnet  | Storage:443  | TCP  |
-| Dependency on Data Lake  | ADX subnet  | AzureDataLake:443  | TCP  |
-| EventHub ingestion/service monitoring  | ADX subnet  | EventHub:443,5671  | TCP  |
+| Dependency on Azure Storage  | ADX subnet  | Storage:443  | TCP  |
+| Dependency on Azure Data Lake  | ADX subnet  | AzureDataLake:443  | TCP  |
+| EventHub ingestion and service monitoring  | ADX subnet  | EventHub:443,5671  | TCP  |
 | Publish Metrics  | ADX subnet  | AzureMonitor:443 | TCP  |
-| Azure Monitor configuration download  | ADX subnet  | Azure Monitor Configuration Endpoint Addresses:443 | TCP  |
+| Azure Monitor configuration download  | ADX subnet  | [Azure Monitor configuration endpoint addresses](#azure-monitor-configuration-endpoint-addresses):443 | TCP  |
 | Active Directory (if applicable) | ADX subnet | AzureActiveDirectory:443 | TCP
 
-| Certificate Authority | ADX subnet | Internet:80 | TCP |
-| Internal Communication  | ADX subnet  | ADX Subnet:All Ports  | All  |
-| Ports that are used for sql\_request/http\_request plugins  | ADX subnet  | Internet:Custom  | TCP  |
+| Certificate authority | ADX subnet | Internet:80 | TCP |
+| Internal communication  | ADX subnet  | ADX Subnet:All Ports  | All  |
+| Ports that are used for `sql\_request` and `http\_request` plugins  | ADX subnet  | Internet:Custom  | TCP  |
 
-### Azure Data Explorer Management IP addresses
+### Relevant IP addresses
 
-| Region | Addresses |	
+#### Azure Data Explorer management IP addresses
+
+| Region | Addresses |
 | --- | --- |
 | Australia Central | 20.37.26.134 |
 | Australia Central2 | 20.39.99.177 |
@@ -96,7 +99,7 @@ ADX's data plane service can be accessed using HTTPs (443) and TDS endpoint (143
 | West US | 13.64.38.225 |
 | West US2 | 40.90.219.23 |
 
-### Health Monitoring Addresses
+#### Health monitoring addresses
 
 | Region | Addresses |
 | --- | --- |
@@ -135,7 +138,7 @@ ADX's data plane service can be accessed using HTTPs (443) and TDS endpoint (143
 | West US | 23.99.5.162 |
 | West US 2 | 23.99.5.162 |	
 
-### Azure Monitor Configuration Endpoint Addresses
+#### Azure Monitor configuration endpoint addresses
 
 | Region | Addresses |
 | --- | --- |
@@ -174,32 +177,32 @@ ADX's data plane service can be accessed using HTTPs (443) and TDS endpoint (143
 | West US | 40.78.70.148 |
 | West US 2 | 52.151.20.103 |
 
-## Service Endpoints
+## Service endpoints
 
-Azure Service Endpoints enables you to secure your Azure multi-tenant resoruces to your virtual network.
-<br>
-Deploying Azure Data Explorer cluster into your subnet allows you to setup data connections with EventHub or EventGrid while restricting the underlying resources for ADX subnet.
+Azure Service endpoints enable you to secure your Azure multi-tenant resources to your virtual network.
+Deploying the Azure Data Explorer cluster into your subnet allows you to setup data connections with Event Hub or Event Grid while restricting the underlying resources for the Azure Data Explorer subnet.
 
-## Subnet Size Consideration
+## Subnet size consideration
 
-ADX uses one private IP address for each VM and two private IP addresses for the internal load balancers, In addition, Azure networking reserve 5 IP addresses for each subnet.
-<br>
-ADX provisions two VMs for data management service, engine service scales per user configuration in scale capacity.
-<br>
-In total number of IP addreses :
+[Azure Service Endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview) enables you to secure your Azure multi-tenant resources to your virtual network.
+Deploying Azure Data Explorer cluster into your subnet allows you to setup data connections with [Event Hub](/azure/event-hubs/event-hubs-about) or [Event Grid](/azure/event-grid/overview) while restricting the underlying resources for ADX subnet.
+
+Azure Data Explorer uses one private IP address for each VM and two private IP addresses for the internal load balancers (engine and data management). Azure networking also reserves five IP addresses for each subnet. Azure Data Explorer provisions two VMs for the data management service. Engine service VMs are provisioned per user configuration scale capacity.
+
+In total number of IP addresses :
 | Use | Number of addresses |
 | --- | --- |
-| Engine service |1 per instance |
+| Engine service | 1 per instance |
 | Data management service | 2 |
 | Internal load balancers | 2 |
 | Azure reserved addresses | 5 |
 | **Total** | **#engine_instances + 9** |
 
-As subnet size cannot be changed after ADX is deployed you need to reserve subnet size accordingly.
+Since the subnet size can't be changed after Azure Data Explorer is deployed, reserve needed subnet size accordingly.
 
-## ExpressRoute Setup
+## ExpressRoute setup
 
-It is possible for customer to advertise default route (0.0.0.0/0) through the BGP session, thus forcing traffic coming out of the Virtual Network to be forwarded to customer’s premise network that can drop the traffic, causing outbound flows to break, to overcome this default UDR (0.0.0.0/0) can be configured and next hop will be “Internet”, since the UDR takes precedence over BGP, the traffic will be destined to the internet.
+A customer can advertise the default route (0.0.0.0/0) through the BGP session, therefore forcing traffic coming out of the Virtual Network to be forwarded to the customer’s premise network that can drop the traffic, causing outbound flows to break. To overcome this default, UDR (0.0.0.0/0) can be configured and next hop will be “Internet”, since the UDR takes precedence over BGP, the traffic will be destined to the internet.
 
 ## Securing outbound traffic with firewall
 
@@ -230,17 +233,17 @@ If you want to secure outbound traffic using Azure Firewall or any virtual appli
 * adl.windows.com:80
 * crl3.digicert.com:80
 
-In addition, you need to define route table with on the subnet with the management addresses and health monitoring addresses with next hop "Internet" to prevent asymmetric routes issues.
-<br>
+You define the [route table](/azure/virtual-network/virtual-networks-udr-overview) on the subnet with the management addresses and health monitoring addresses with next hop "Internet" to prevent asymmetric routes issues.
+
 For example, for **West US** region, the following UDRs must be defined:
-<br>
+
 | Name | Address Prefix | Next Hop |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | Internet |
 | ADX_Monitoring | 23.99.5.162/32 | Internet |
 
-## Deploy using ARM template
+## Deploy VNet using an ARM template
 
-To deploy Azure Data Explorer cluster into your virtual network use this template [Deploy Azure Data Explorer cluster into your VNet](https://azure.microsoft.com/en-us/resources/templates/101-kusto-vnet/)
+To deploy Azure Data Explorer cluster into your virtual network use the [Deploy Azure Data Explorer cluster into your VNet](https://azure.microsoft.com/en-us/resources/templates/101-kusto-vnet/) template.
 
-The template creates cluster, virutal network, subnet, network security group, public ip addresses.
+This template creates the cluster, virtual network, subnet, network security group, and public ip addresses.

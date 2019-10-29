@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/23/2019
+ms.date: 10/24/2019
 ---
 # LightIngest
 
@@ -43,7 +43,7 @@ Run `LightIngest.exe /help` to get help on the command-line arguments the tool r
 |-database             |-db          |string  |Optional  |Target Kusto database name |
 |-table                |             |string  |Mandatory |Target Kusto table name |
 |-sourcePath           |-source      |string  |Mandatory |Path to source files or root URI of the blob container. If the data is in blobs, must contain storage account key or SAS. Recommended to enclose in double quotes |
-|-prefix               |             |string  |Optional  |When the source data to ingest resides on blob storage, this is the URL prefix shared by all blobs, excluding the container name. For example, `MyContainer/Dir1/Dir2`. Recommended to enclose in double quotes |
+|-prefix               |             |string  |Optional  |When the source data to ingest resides on blob storage, this is the URL prefix shared by all blobs, excluding the container name. For example, if the data is under `MyContainer/Dir1/Dir2`, then the prefix should be `Dir1/Dir2`. Recommended to enclose in double quotes |
 |-pattern              |             |string  |Optional  |Pattern by which source files/blobs are picked. Supports wildcards. E.g., `"*.csv"`. Recommended to enclose in double quotes |
 |-format               |-f           |string  |Optional  |Source data format. Must be one of the [supported formats](../management/data-ingestion/index.md#supported-data-formats) |
 |-ingestionMappingPath |-mappingPath |string  |Optional  |Path to ingestion column mapping file (mandatory for Json and Avro formats). See [data mappings](../management/mappings.md) |

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/05/2019
+ms.date: 10/28/2019
 ---
 # Embed Web UI in an iframe
 
@@ -41,10 +41,12 @@ Embedding the Azure Data Explorer Web UI, offers you extensive functionality wit
 Add the following code to your website:
 
 ```html
-<iframe src="https://dataexplorer.azure.com/?ibizaPortal=true"></iframe>
+<iframe src="https://dataexplorer.azure.com/clusters/<cluster>?ibizaPortal=true"></iframe>
 ```
 
 The `ibizaPortal` query parameter tells the Azure Data Explorer Web UI *not* to redirect to get an authentication token. This is necessary since the hosting website is responsible for providing an authentication token to the embedded iframe.
+
+Replace `<cluster>` with the hostname of the cluster you want to be loaded into the connection pane (for `example: help.kusto.windows.net`) since by default iframe-embedded mode does not provide a way to add clusters from the UI, since the assumpsion is that the hosting website is aware of the required cluster.
 
 ### Handle authentication
 
