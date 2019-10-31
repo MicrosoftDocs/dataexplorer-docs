@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/25/2019
+ms.date: 10/30/2019
 ---
 # HowTo Data Ingestion without Kusto.Ingest Library
 
@@ -16,7 +16,7 @@ Generally, using Kusto.Ingest library should be preferred whenever ingesting dat
 When this is not an option (usually due to OS constraints), with some effort one can achieve almost the same functionality.<BR>
 This article shows how to implement **Queued Ingestion** to Kusto without taking dependency on the Kusto.Ingest package.
 
->**Note:** The code below is written in C# making use of Azure Storage SDK, ADAL Authentication library, and NewtonSoft.JSON package in order to simplify the sample code.<BR>If needed, the corresponding code can be replaced with appropriate [Azure Storage REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api) calls, [non-.NET ADAL package](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-authentication-libraries) and any available JSON handling package.
+>**Note:** The code below is written in C# making use of Azure Storage SDK, ADAL Authentication library, and NewtonSoft.JSON package in order to simplify the sample code.<BR>If needed, the corresponding code can be replaced with appropriate [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) calls, [non-.NET ADAL package](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) and any available JSON handling package.
 
 ## Overview
 The following code sample demonstrates Queued (going via Kusto Data Management service) data ingestion to Kusto without the use of Kusto.Ingest library.<BR>
@@ -98,7 +98,7 @@ public static void IngestSingleFile(string file, string db, string table, string
 
 ## 1. Obtain Authentication Evidence from AAD
 Here we use ADAL to obtain an AAD token to access the Kusto Data Management service in order to ask for its input queues.
-ADAL is available on [non-Windows platforms](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-authentication-libraries) if needed.
+ADAL is available on [non-Windows platforms](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) if needed.
 ```csharp
 // Authenticates the interactive user and retrieves AAD Access token for specified resource
 internal static string AuthenticateInteractiveUser(string resource)
@@ -207,7 +207,7 @@ internal static string RetrieveKustoIdentityToken(string ingestClusterBaseUri, s
 ```
 
 ## 3. Upload Data to Azure Blob Container
-This step is about uploading a local file to an Azure Blob which will later be handed off for ingestion. This code utilizes Azure Storage SDK, but where this dependency is not possible, one could achieve the same with [Azure Blob Service REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/blob-service-rest-api).
+This step is about uploading a local file to an Azure Blob which will later be handed off for ingestion. This code utilizes Azure Storage SDK, but where this dependency is not possible, one could achieve the same with [Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-rest-api).
 ```csharp
 // Uploads a single local file to an Azure Blob container, returns blob URI and original data size
 internal static string UploadFileToBlobContainer(string filePath, string blobContainerUri, string containerName, string blobName, out long blobSize)
@@ -259,7 +259,7 @@ internal static string PrepareIngestionMessage(string db, string table, string d
 
 ## 5. Post Kusto Ingestion Message to Kusto Ingestion Queue
 And finally, the deed itself - merely post the message we constructed to the Queue we chose.<BR>
-Note: When using .Net storage client, it encodes the message to base64 by default. Please see [storage docs](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage).<BR>
+Note: When using .Net storage client, it encodes the message to base64 by default. Please see [storage docs](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage).<BR>
 If you are NOT using that client, please make sure to encode the message content properly.
 
 ```csharp

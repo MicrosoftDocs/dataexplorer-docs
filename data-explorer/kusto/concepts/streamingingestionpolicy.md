@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/09/2019
+ms.date: 10/30/2019
 ---
 # Streaming ingestion policy
 
@@ -17,7 +17,7 @@ Streaming ingestion is targeted for scenarios in which you have a large number o
 
 The classic (bulk) ingestion is advised when the amount of data grows to more than 1MB/sec per table.  
 
-For more information read [Streaming ingestion](https://docs.microsoft.com/en-us/azure/data-explorer/ingest-data-streaming).
+For more information read [Streaming ingestion](https://docs.microsoft.com/azure/data-explorer/ingest-data-streaming).
 
 ## Streaming ingestion policy definition
 

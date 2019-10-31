@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/05/2019
+ms.date: 10/30/2019
 ---
 # Embed Web UI in an iframe
 
 The Azure Data Explorer Web UI can be embedded in an iframe and hosted in third party websites.
 
-![alt text](../images/web-ux.jpg "Azure Data Explorer web UX")
+![alt text](../images/web-ux.jpg "Azure Data Explorer Web UI")
 
 Embedding the Azure Data Explorer Web UX in your website enables your users to do the following:
 
@@ -28,9 +28,9 @@ Embedding the Azure Data Explorer Web UX in your website enables your users to d
 
 All functionality is tested for accessibility and supports dark and light theme.
 
-## Use Monaco-kusto or embed the Web UI?
+## Use Monaco-Kusto or embed the Web UI?
 
-Monaco-kusto offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition, it requires you to build a solution for authentication, query execution, result display, and schema exploration around it. On the other hand, you get full flexibility to fashion the user experience that fits your needs.
+Monaco-Kusto offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition, it requires you to build a solution for authentication, query execution, result display, and schema exploration around it. On the other hand, you get full flexibility to fashion the user experience that fits your needs.
 
 Embedding the Azure Data Explorer Web UI, offers you extensive functionality with little effort, but contains limited flexibility regarding the user experience. There are a fixed set of query parameters that allow limited control on the look and behavior of the system.
 
@@ -41,10 +41,12 @@ Embedding the Azure Data Explorer Web UI, offers you extensive functionality wit
 Add the following code to your website:
 
 ```html
-<iframe src="https://dataexplorer.azure.com/?ibizaPortal=true"></iframe>
+<iframe src="https://dataexplorer.azure.com/clusters/<cluster>?ibizaPortal=true"></iframe>
 ```
 
 The `ibizaPortal` query parameter tells the Azure Data Explorer Web UI *not* to redirect to get an authentication token. This is necessary since the hosting website is responsible for providing an authentication token to the embedded iframe.
+
+Replace `<cluster>` with the hostname of the cluster you want to load into the connection pane (for `example: help.kusto.windows.net`). By default, iframe-embedded mode doesn't provide a way to add clusters from the UI, since the assumption is that the hosting website is aware of the required cluster.
 
 ### Handle authentication
 

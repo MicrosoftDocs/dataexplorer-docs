@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2019
+ms.date: 10/30/2019
 ---
 # Kusto.Explorer tool
 
@@ -481,7 +481,7 @@ start locally and run a specified query on the specified Kusto database.
 
 ### Limitations
 The queries are limited to ~2000 chars due to IE limitation (the limitation is approximate because it is dependent on the cluster and Database name length)
-https://support.microsoft.com/en-us/kb/208427 
+https://support.microsoft.com/kb/208427 
 To reduce chances you will hit this limitation - see the Getting Shorter Links paragraph on this page.
 
 The format of the URI is this:
@@ -660,7 +660,7 @@ It is also possible to "go back" to a specific version of Kusto.Explorer:
 
 This error may suggest that OS system became corrupted or missing some of the essential modules.
 To check missing or corrupted system files - use steps described here:   
-[https://support.microsoft.com/en-us/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system](https://support.microsoft.com/en-us/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system)
+[https://support.microsoft.com/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system](https://support.microsoft.com/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system)
 
 ### Kusto.Explorer always downloads even when there are no updates
 
@@ -757,7 +757,7 @@ Program fails to install with either of the following errors:
 *Solution:*
 1. This could be due to another application overriding the default ClickOnce trust prompt behavior.
 
-2. You can view your default configuration settings, compare them to the actual ones on your machine, and reset them as necessary, as explained [here](https://docs.microsoft.com/en-us/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior).
+2. You can view your default configuration settings, compare them to the actual ones on your machine, and reset them as necessary, as explained [here](https://docs.microsoft.com/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior).
 
 #### Cleanup application data
 

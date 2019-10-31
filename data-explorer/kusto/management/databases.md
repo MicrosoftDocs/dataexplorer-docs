@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/11/2019
+ms.date: 10/30/2019
 ---
 # Databases management
 
@@ -16,7 +16,7 @@ ms.date: 10/11/2019
 This command returns a table in which every record corresponds to a database in the cluster
 that the user has access to.
 
-** Syntax
+**Syntax**
 
 `.show` `database`
 

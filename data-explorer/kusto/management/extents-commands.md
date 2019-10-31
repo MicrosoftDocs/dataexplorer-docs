@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/19/2019
+ms.date: 10/30/2019
 ---
 # Extents (data shards) management
 
@@ -348,7 +348,7 @@ that should be dropped from the destination table.
 - *query for extents to be moved to table* - the results of this query specify the extent IDs in the source table(s) 
 that should be moved to the destination table.
 
-Both queries should return a recordset with a column called "ExtentId". 
+Both queries should return a recordset with a column called "ExtentId".
 
 **Restrictions**
 - Both source and destination tables must be in the context database. 
@@ -381,6 +381,23 @@ tagged with `drop-by:MyTag`:
 |cdbeb35b-87ea-499f-b545-defbae091b57 |a90a303c-8a14-4207-8f35-d8ea94ca45be| 
 |4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f| 
 |2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df| 
+
+*NOTE*: 
+> [!NOTE]
+> The command will fail if extents returned by the *extents to be dropped from table* query don't exist in the destination table. This may happen if the extents were merged before the replace command was executed. 
+> To make sure the command fails on missing extents, check that the query returns the expected ExtentIds. Example #1 below will fail if the extent to drop doesn't exist in table MyOtherTable. Example #2, however, will succeed even though the extent to drop doesn't exist, since the query to drop didn't return any extent ids. 
+
+Example #1: 
+```kusto
+.replace extents in table MyOtherTable <|
+     { datatable(ExtentId:guid)[ "2cca5844-8f0d-454e-bdad-299e978be5df"] }, { .show table MyTable1 extents }
+```
+
+Example #2:
+```kusto
+.replace extents in table MyOtherTable  <|
+     { .show table MyOtherTable extents | where ExtentId == guid(2cca5844-8f0d-454e-bdad-299e978be5df) }, { .show table MyTable1 extents }
+```
 
 
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/30/2019
+ms.date: 10/30/2019
 ---
 # Kusto.Ingest Reference - Errors and Exceptions
 Any error during the ingestion handling on the client side is exposed to the user code via a C# exception.
@@ -97,7 +97,7 @@ To help handle ingestion failures programmatically, failure information is enric
 ### CloudQueuesNotFoundException
 Raised when no queues were returned from the Data Management cluster
 
-Base Class: [Exception](https://msdn.microsoft.com/en-us/library/system.exception(v=vs.110).aspx)
+Base Class: [Exception](https://msdn.microsoft.com/library/system.exception(v=vs.110).aspx)
 
 Fields:
 
@@ -115,7 +115,7 @@ reason for failure in the 'Error' field and possibly an inner exception in the '
 ### CloudBlobContainersNotFoundException
 Raised when no blob containers were returned from the Data Management cluster
 
-Base Class: [Exception](https://msdn.microsoft.com/en-us/library/system.exception(v=vs.110).aspx)
+Base Class: [Exception](https://msdn.microsoft.com/library/system.exception(v=vs.110).aspx)
 
 Fields:
 
@@ -132,7 +132,7 @@ The exception is raised when there are no containers found to upload the data to
 ### DuplicateIngestionPropertyException
 Raised when an ingestion property is configured more than once
 
-Base Class: [Exception](https://msdn.microsoft.com/en-us/library/system.exception(v=vs.110).aspx)
+Base Class: [Exception](https://msdn.microsoft.com/library/system.exception(v=vs.110).aspx)
 
 Fields:
 
@@ -143,7 +143,7 @@ Fields:
 ### PostMessageToQueueFailedException
 Raised when posting a message to queue failed
 
-Base Class: [Exception](https://msdn.microsoft.com/en-us/library/system.exception(v=vs.110).aspx)
+Base Class: [Exception](https://msdn.microsoft.com/library/system.exception(v=vs.110).aspx)
 
 Fields:
 
@@ -223,7 +223,7 @@ Base Class: IngestClientException
 ### IngestClientAggregateException
 Raised when one or more errors occurred during an ingestion
 
-Base Class: [AggregateException](https://msdn.microsoft.com/en-us/library/system.aggregateexception(v=vs.110).aspx)
+Base Class: [AggregateException](https://msdn.microsoft.com/library/system.aggregateexception(v=vs.110).aspx)
 
 Fields:
 

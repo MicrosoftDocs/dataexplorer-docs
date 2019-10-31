@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/25/2019
+ms.date: 10/30/2019
 ---
 # UI deep links
 
@@ -116,6 +116,6 @@ For example, this can be the URI for a file hosted by Azure Blob Storage.
 > public (so it can be downloaded without security claims) or add an appropriate
 > Azure Storage SAS to the URI. CORS configuration can be done from the
 > [Azure portal](https://portal.azure.com/) or from
-> [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/).
-> See [CORS support in Azure Storage](https://docs.microsoft.com/en-us/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
+> [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+> See [CORS support in Azure Storage](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
 

@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/15/2019
+ms.date: 10/30/2019
 ---
 # Microsoft Logic App and Kusto
 
-The Azure Kusto Logic App connector allows users to run Kusto queries and commands automatically as part of a scheduled or triggered task, using [Microsoft Logic App](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-what-are-logic-apps).
+The Azure Kusto Logic App connector allows users to run Kusto queries and commands automatically as part of a scheduled or triggered task, using [Microsoft Logic App](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
 
 The Logic App and Flow connectors are built on top of the same connector therefore the same [limitations](flow.md#limitations), [actions](flow.md#azure-kusto-flow-actions), [authentication](flow.md#authentication) and [usage examples](flow.md#usage-examples) apply for both as mentioned in the [Flow documentation page](flow.md).
 

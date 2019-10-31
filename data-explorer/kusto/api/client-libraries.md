@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ---
 # Client libraries overview
 
@@ -26,7 +26,7 @@ The following table lists the different libraries provided for query, ingestion,
 |    Go    	|         	|         	|        [GitHub](https://github.com/Azure/azure-sdk-for-go/tree/master/services/kusto/mgmt/2019-01-21/kusto)    	|
 |    Ruby    	|         	|         	|    [Gems](https://rubygems.org/gems/azure_mgmt_kusto/versions/0.17.1)     	|
 |    Powershell    	|    [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)    	|    [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)    	|    [Package](https://www.powershellgallery.com/packages/Az.Kusto/)     	|
-|    Azure   CLI    	|         	|         	|    [Azure Cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest)     	|
+|    Azure   CLI    	|         	|         	|    [Azure Cli](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)     	|
 |    REST   API    	|    [REST](/azure/kusto/api/rest/)    	|    [REST](/azure/kusto/api/rest/)    	|     [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/azure-kusto/resource-manager/Microsoft.Kusto)     	|
 |    TypeScript    	|         	|         	|        [Npm](https://www.npmjs.com/package/@azure/arm-kusto/v/2.0.0)    	|
 |  	|  	|  	|  	|

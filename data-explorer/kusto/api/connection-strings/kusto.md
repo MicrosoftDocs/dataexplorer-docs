@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2019
+ms.date: 10/30/2019
 ---
 # Kusto connection strings
 
@@ -122,7 +122,7 @@ The following algorithm is generally used by clients for authentication against 
 ### AAD federated application authentication with application certificate:
 
 1. Authentication based on application's certificate if supported only for web applications (and not for native client applications).
-2. The web application should be configured to accept the given certificate. [How to authentication based-on AAD application's certificate](https://azure.microsoft.com/en-in/documentation/samples/active-directory-dotnet-daemon-certificate-credential/)
+2. The web application should be configured to accept the given certificate. [How to authentication based-on AAD application's certificate](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-daemon-certificate-credential/)
 3. The web application should be configured as an authorized principal in the relevant Kusto's cluster.
 4. The certificate with the given thumbprint should be installed (in Local Machine store or in Current User store).
 5. The certificate's public key should contain at least 2048 bits.

@@ -7,14 +7,24 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 10/30/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # ingestion_time()
 
 Retrieves the record's `$IngestionTime` hidden `datetime` column, or null.
 
 The `$IngestionTime` column is automatically defined when the table's
+
+
+
 [IngestionTime policy](../concepts/ingestiontimepolicy.md) is set (enabled).
+
+
+
+
+
 If the table does not have this policy defined, a null value is returned.
 
 This function must be used in the context of an actual table in order

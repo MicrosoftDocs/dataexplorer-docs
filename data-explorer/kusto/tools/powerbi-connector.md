@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/22/2019
+ms.date: 10/30/2019
 ---
 # Power BI Kusto Connector
 
@@ -29,7 +29,7 @@ which lets you visually build (efficient) Kusto queries using the Power BI query
 
 ![alt text](./Images/KustoTools-PowerBIConnector/step4.png "step4")
 
-Select the _Data Connectivity mode_ you'd like to use - `Import` or `Direct Query`. You can ready about the differences between the two in the [Power BI Desktop documentation](https://docs.microsoft.com/en-us/power-bi/desktop-directquery-about).
+Select the _Data Connectivity mode_ you'd like to use - `Import` or `Direct Query`. You can ready about the differences between the two in the [Power BI Desktop documentation](https://docs.microsoft.com/power-bi/desktop-directquery-about).
 
 If you provide the database and table name, you can skip to step 7 below, and start
 working with your data. Otherwise, you'll be prompted to select a database and table
@@ -83,7 +83,7 @@ StormEvents | where State == 'ALABAMA'
 ### Import or Direct Query
 
 The Power BI Kusto Connector supports both Import and Direct Query connectiviy modes (You can
-read about the differences between the two modes in the [Power BI Desktop documentation](https://docs.microsoft.com/en-us/power-bi/desktop-directquery-about)).
+read about the differences between the two modes in the [Power BI Desktop documentation](https://docs.microsoft.com/power-bi/desktop-directquery-about)).
 
 You should use **Import** mode when:
 

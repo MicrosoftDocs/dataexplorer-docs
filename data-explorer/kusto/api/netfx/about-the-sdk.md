@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/12/2019
+ms.date: 10/30/2019
 ---
 # About Kusto .NET SDK
 
@@ -30,7 +30,7 @@ The following Kusto packages are available for consumption:
 
 **Accessing the NuGet feed from Visual Studio**
 
-- See [Consume NuGet packages in Visual Studio](https://www.visualstudio.com/en-us/docs/package/get-started/nuget/consume)
+- See [Consume NuGet packages in Visual Studio](https://www.visualstudio.com/docs/package/get-started/nuget/consume)
 - Note that instructions are different, depending on which version of Visual Studio you're using:
   -  It is **strongly recommended** upgrading to Visual Studio 2015 Update 1 or later, as 
   Package Management feeds work *seamlessly* with the NuGet Package Manager for Visual Studio 2015 extension as of 
@@ -39,13 +39,13 @@ The following Kusto packages are available for consumption:
   [NuGet Package Manager extension](https://dist.nuget.org/visualstudio-2015-vsix/latest/NuGet.Tools.vsix) directly.
       - Visual Studio 2013 and earlier versions don't automatically acquire credentials for authenticated feeds. 
       Instead, you need to get a Personal Access Token (PAT) and save it in NuGet's config file. Follow the instructions to
-      [get a PAT and connect to a feed](https://docs.microsoft.com/en-us/vsts/organizations/accounts/use-personal-access-tokens-to-authenticate).
+      [get a PAT and connect to a feed](https://docs.microsoft.com/vsts/organizations/accounts/use-personal-access-tokens-to-authenticate).
       Then restart Visual Studio and continue.
 
 
 **Accessing the NuGet feed using the NuGet Package Manager console**
 
-1. First read [Authenticating to feeds with NuGet](https://www.visualstudio.com/en-us/docs/package/get-started/nuget/auth).
+1. First read [Authenticating to feeds with NuGet](https://www.visualstudio.com/docs/package/get-started/nuget/auth).
 2. Then make sure that the NuGet client version is 3.2 or above.
 3. Now execute the following PowerShell commands in the Package Manager console.
   - Make sure you replace `<package name>` with either of the following:
@@ -59,7 +59,7 @@ Install-Package <package name>
 
 **Accessing the NuGet feed using the NuGet command-line tool**
 
-1. First read [Authenticating to feeds with NuGet](https://www.visualstudio.com/en-us/docs/package/get-started/nuget/auth).
+1. First read [Authenticating to feeds with NuGet](https://www.visualstudio.com/docs/package/get-started/nuget/auth).
 2. Then make sure that the NuGet client version is 3.2 or above.
 3. Now execute the following PowerShell commands from a command prompt:
   - Make sure you replace `<package name>` with either of the following:

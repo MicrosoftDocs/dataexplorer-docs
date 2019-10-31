@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/28/2019
+ms.date: 10/28/2019
 ---
 # Update policy
 
@@ -141,16 +141,16 @@ One can test an update policy's additional performance impact on an ingestion op
 
 The following example assumes:
 
-- The source table name (the `Source` property of the update policy) is `MyTable`.
+- The source table name (the `Source` property of the update policy) is `MySourceTable`.
 - The `Query` property of the update policy calls a function named `MyFunction()`.
 
 Using [.show queries](../management/queries.md), one can evaluate the resource utilization (e.g. CPU, memory) of
 the following query, and/or multiple executions of it.
 
 ```kusto
-.show table MyTable extents;
+.show table MySourceTable extents;
 // The following line provides the extent ID for the largest and most recent not-yet-merged extent in the source table
 let extentId = $command_results | where MaxCreatedOn > ago(1hr) and MinCreatedOn == MaxCreatedOn | top 1 by MaxCreatedOn desc | project ExtentId;
-let MyTable = MyTable | where extent_id() == toscalar(extentId);
+let MySourceTable = MySourceTable | where extent_id() == toscalar(extentId);
 MyFunction()
 ```
