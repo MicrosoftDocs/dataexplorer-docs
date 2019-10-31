@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/11/2019
+ms.date: 08/21/2019
 ---
 # row_window_session()
 
@@ -37,7 +37,7 @@ ms.date: 08/11/2019
 
 The function returns the values at the beginning of each session.
 
-**Comments**
+**Notes**
 
 The function has the following conceptual calculation model:
 

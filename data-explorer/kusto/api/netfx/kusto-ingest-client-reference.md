@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/05/2019
+ms.date: 10/30/2019
 ---
 # Kusto.Ingest client reference
 
@@ -41,7 +41,7 @@ public interface IKustoIngestClient : IDisposable
     /// Ingest data from one of the supported storage providers. Currently the supported providers are: File System, Azure Blob Storage.
     /// </summary>
     /// <param name="uri">The URI of the storage resource to be ingested. Note: This URI may include a storage account key or shared access signature (SAS).
-    ///  See <see href="https://docs.microsoft.com/en-us/azure/kusto/api/connection-strings/storage"/> for the URI format options.</param>
+    ///  See <see href="https://docs.microsoft.com/azure/kusto/api/connection-strings/storage"/> for the URI format options.</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
     /// <param name="sourceOptions">Options for the storage ingestion source. This is an optional parameter</param>
     /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
@@ -409,6 +409,7 @@ public enum DataSourceFormat
     json,       // Data is in a JSON-line format (each line is record with a single JSON value)
     multijson,  // The data stream is a concatenation of JSON documents (property bags all)
     avro,       // Data is in a AVRO format
+    parquet,    // Data is in a Parquet format
 }
 ```
 

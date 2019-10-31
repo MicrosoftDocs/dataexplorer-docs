@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/22/2019
+ms.date: 10/30/2019
 ---
 # Power BI and Kusto
 
@@ -84,13 +84,13 @@ Here's how you do it:
 
 20. Locate your file and click `Open`
 
-21. Congratulations! Now you can create reports and pin tiles to dashboards. For further Power BI reading, we recommend starting [here](https://docs.microsoft.com/en-us/power-bi/service-desktop-files)
+21. Congratulations! Now you can create reports and pin tiles to dashboards. For further Power BI reading, we recommend starting [here](https://docs.microsoft.com/power-bi/service-desktop-files)
 
 22. If you wish to configure scheduled refresh for this dataset then:
 * When asked to choose authentication type choose `oAuth2` and `Sign In`
 * Choose connect directly option in Gateway conenction
 
-    You can find more details on PowerBI scheduled refresh in the [following article](https://powerbi.microsoft.com/en-us/documentation/powerbi-refresh-scheduled-refresh). 
+    You can find more details on PowerBI scheduled refresh in the [following article](https://powerbi.microsoft.com/documentation/powerbi-refresh-scheduled-refresh). 
 
 ![alt text](./Images/KustoTools-PowerBI/step22.png "step22")
 
@@ -126,7 +126,7 @@ and you define a parameter with the name "MyParameter", then you can use it by
 
 It"s easier to use the parameter in steps following the KustoQuery step, for example filtering rows based on the parameter.
 
-For more details on how to use Query Parameters in Power BI Desktop read the [following article](https://powerbi.microsoft.com/en-us/blog/deep-dive-into-query-parameters-and-power-bi-templates/)
+For more details on how to use Query Parameters in Power BI Desktop read the [following article](https://powerbi.microsoft.com/blog/deep-dive-into-query-parameters-and-power-bi-templates/)
 
 ## Change the timeout of a Power BI query
 

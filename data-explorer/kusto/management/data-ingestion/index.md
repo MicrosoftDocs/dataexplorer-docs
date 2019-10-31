@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/12/2019
+ms.date: 10/06/2019
 ---
 # Data ingestion
 
@@ -69,7 +69,7 @@ its own characteristics:
    Blob Storage) accessible by the engine and pointed-to by the command.
    This method allows efficient bulk ingestion of data, but puts some burden on
    the client performing the ingestion to not overtax the cluster with concurrent
-   ingeations (or risk consuming all cluster resources by data ingestion, reducing
+   ingestions (or risk consuming all cluster resources by data ingestion, reducing
    the performance of queries.
 
 4. **Queued ingestion**: Data is uploaded to external storage (e.g., Azure Blob
@@ -89,7 +89,7 @@ its own characteristics:
 
 ## Ingestion properties
 
-Ingestion commands may zero or more ingestion properties through the
+Ingestion commands may zero on more ingestion properties through the
 use of the `with` keyword. The supported properties are:  
 
 * `avroMapping`, `csvMapping`, `jsonMapping`: A string value that indicates
@@ -98,7 +98,7 @@ use of the `with` keyword. The supported properties are:
 
 * `avroMappingReference`, `csvMappingReference`, `jsonMappingReference`:
   A string value that indicates how to map data from the source file to the
-  actual columns in the table, through a named mapping policy object.
+  actual columns in the table using a named mapping policy object.
   See [data mappings](../mappings.md).
 
 * `creationTime`: The datetime value (formatted as a ISO8601 string) to use
@@ -124,9 +124,9 @@ use of the `with` keyword. The supported properties are:
   For example: `with (format="csv")`.
 
 * `ingestIfNotExists`: A string value that, if specified, prevents ingestion
-  from succeeding if the table already has data tagged an `ingest-by:` tag
-  with the same value. This can be used to ensure idempotent data ingestion;
-  see [ingest-by: tags](../extents-overview.md#ingest-by-extent-tags).
+  from succeeding if the table already has data tagged with an `ingest-by:` tag
+  with the same value. This ensure idempotent data ingestion.
+  For more information see [ingest-by: tags](../extents-overview.md#ingest-by-extent-tags).
   For example, the properties `with (ingestIfNotExists='["Part0001"]', tags='["ingest-by:Part0001"]')`
   indicate that if data with the tag `ingest-by:Part0001` already exists, then
   we should not complete the current ingestion. If it doesn't already exist,
@@ -185,10 +185,11 @@ formatted in one of the supported data formats:
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
-|avro     |`.avro`     |An [Avro container file](https://avro.apache.org/docs/current/). Supported codes: `null`, `deflate`.|
+|avro     |`.avro`     |An [Avro container file](https://avro.apache.org/docs/current/). The following codes are supported: `null`, `deflate` (`snappy` is currently not supported).|
 |csv      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
-|json     |`.json`     |A text file with JSON objects delimited by `\n`. See [JSON Lines](http://jsonlines.org/).|
+|json     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
 |multijson|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace. (This format is to preferred over json, unless the data is non-property bags.)|
+|parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet).|
 |psv      |`.psv`      |A text file with pipe-separated values (<code>&#124;</code>).|
 |raw      |`.raw`      |A text file whose entire contents is a single string value.|
 |scsv     |`.scsv`     |A text file with semicolon-separated values (`;`).|
@@ -223,7 +224,7 @@ must be specified as an ingestion property as it cannot be inferred.
 
 ## Validation policy during ingestion
 
-When ingesting from storage, the source data gets validates as part of parsing.
+When ingesting from storage, the source data gets validated as part of parsing.
 The validation policy indicates how to react to parsing failures. It consists
 of two properties:
 

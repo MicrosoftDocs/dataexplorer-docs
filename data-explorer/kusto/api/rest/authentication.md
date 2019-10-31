@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/26/2019
+ms.date: 10/30/2019
 ---
 # Authentication over HTTPS
 
@@ -40,6 +40,7 @@ authentication only, the request can be made to
 
 > [!NOTE]
 > The Azure Active Directory service endpoint changes when running in national clouds.
+> To change the endpoint that will be used, set an environment variable `AadAuthorityUri` to the required URI.
 
-For more details please see the [authentication overview](../../management/access-control/index.md)
+For more informaton, see the [authentication overview](../../management/access-control/index.md)
 and [guide to Azure Active Directory authentication](../../management/access-control/how-to-authenticate-with-aad.md).

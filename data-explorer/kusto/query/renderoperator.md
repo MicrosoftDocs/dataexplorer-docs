@@ -7,7 +7,9 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/31/2018
+ms.date: 10/22/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # render operator
 
@@ -35,6 +37,10 @@ Where:
 
 * *Visualization* indicates the kind of visualization to use. The supported values are:
 
+
+
+For Kusto flavor:
+
 |*Visualization*     |Description|
 |--------------------|-|
 | `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
@@ -48,10 +54,14 @@ Where:
 | `scatterchart`     | Points graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |
 | `stackedareachart` | Stacked area graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |
 | `table`            | Default - results are shown as a table.|
-| `timechart`        | Line graph. First column is x-axis, and should be datetime. Other columns are y-axes.|
+| `timechart`        | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There is one string column whose values are used to “group” the numeric columns and create different lines in the chart (further string columns are ignored).|
 | `timepivot`        | Interactive navigation over the events time-line (pivoting on time axis)|
 
-* *PropertyName*/*PropertyValue* indicate additional information to use when rendeing.
+
+
+
+
+* *PropertyName*/*PropertyValue* indicate additional information to use when rendering.
   All properties are optional. The supported properties are:
 
 |*PropertyName*|*PropertyValue*                                                                   |
@@ -98,7 +108,7 @@ Some visualizations support splitting into multiple y-axis values:
 |`axes`    |A single chart is displayed with multiple y-axis (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
 
-**Remarks**
+**Notes**
 
 The data model of the render operator looks at the tabular data as if it has
 three kinds of columns:
@@ -114,13 +124,14 @@ three kinds of columns:
 
 **Tips**
 
-* Only positive values are displayed.
 * Use `where`, `summarize` and `top` to limit the volume that you display.
 * Sort the data to define the order of the x-axis.
 * User agents are free to "guess" the value of properties that are not specified
   by the query. In particular, having "uninteresting" columns in the schema of
   the result might translate into them guessing wrong. Try projecting-away such
   columns when that happens. 
+
+
 
 **Examples**
 
@@ -135,3 +146,6 @@ range x from -2 to 2 step 0.1
 | extend sum_sign = iif(sin + cos > 0, "sum_pos", "sum_neg")
 | render linechart with  (ycolumns = sin, cos, series = x_sign, sum_sign)
 ```
+
+
+

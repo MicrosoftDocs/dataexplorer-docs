@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/21/2019
+ms.date: 10/29/2019
 ---
 # Export data to an external table
 
@@ -23,7 +23,7 @@ Requires [Database admin permission](../access-control/role-based-authorization.
 It is not possible to override the external table properties through this command (for example, it is not possible to have an external table whose data format is CSV and export data to it in Parquet format). 
 Each type of external table may support different properties in the export command (noted in the External Table Type column below). 
 
-If the external table is partitioned by DateTime, the query putput schema must include a Timestamp column which matches the *TimestampColumnName* defined in the external table partitioning definition.
+If the external table is partitioned by DateTime, the query output schema must include a Timestamp column which matches the *TimestampColumnName* defined in the external table partitioning definition.
 
 |External Table Type|Property|Type|Description                                                                               
 |--------------------|----------------|-------|---|

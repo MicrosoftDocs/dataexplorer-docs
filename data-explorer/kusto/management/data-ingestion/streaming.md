@@ -7,13 +7,16 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/11/2019
+ms.date: 10/31/2019
 ---
 # Streaming ingestion (Preview)
 
-Streaming ingestion is targeted for scenarios in which you have requirements for low latency with less than 10 seconds ingestion time of small or big volume data. In addition, it is targeted for optimization of operational processing when you have a large number of tables (in one or more databases), and the stream of data into each one is relatively small (few records per second) but overall data ingestion volume is high (thousands of records per second).
+Streaming ingestion is targeted for scenarios that require low latency with an ingestion time of less than 10 seconds for varied volume data. It's used for optimization of operational processing of many tables, in one or more databases where the stream of data into each table is relatively small (few records per second) but overall data ingestion volume is high (thousands of records per second).
 
-The classic (bulk) ingestion is advised when the amount of data grows to more than 1MB/sec per table. Read [Data ingestion overview](/azure/data-explorer/ingest-data-overview) for an overview of the various methods of ingestion.
+Use the classic (bulk) ingestion instead of streaming ingestion when the amount of data grows to more than 1 MB per second per table. 
+ 
+Read [Data ingestion overview](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) to learn more about the various methods of ingestion. 
+
 
 ## Enabling streaming ingestion on your cluster
 
@@ -22,35 +25,26 @@ You can enable streaming ingestion on your own cluster.
 > [!WARNING]
 > Please review [unsupported features](#unsupported-features) prior to enabling steaming ingestion.
 
- 
-Open [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) to enable streaming ingestion on an existing cluster
+[How-to - Streaming ingestion](https://docs.microsoft.com/azure/data-explorer/ingest-data-streaming)
 
-Once the cluster is ready, [streaming ingestion policy](../../concepts/streamingingestionpolicy.md) must be defined on table(s) or database(s) that will receive streaming data. If the policy is defined at the database level, all tables in the database are enabled for streaming ingestion.
 
-Two ingestion methods are supported:
-
-* **Event Hub** 
-    * Establish [Event Hub as a data source](/azure/data-explorer/ingest-data-event-hub). 
-    * In the support ticket, specify the Event Hub that you want to enable for streaming ingestion.
-    * Data delay is longer than custom ingestion.
-    * Many aspects of the data ingestion are handled by Azure Data Explorer Data Management service.
-
-* **Custom ingestion**
-    * Write an application that uses one of Azure Data Explorer client libraries. See [streaming ingestion sample](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) for a simple application.
-    * Achieves the shortest delay between initiating the ingestion and the data being available for query. 
-    * Incurs the most development overhead since the application for custom ingestion must handle errors and ensure data consistency.
 
 ## Unsupported features
 
-Streaming ingestion doesn't currently support the following features:
+Streaming ingestion doesn't currently support or supports partially the following features:
 
 * [Database cursors](../databasecursor.md).
 
+* Follower mode (if data is ingested to the leader cluster in streaming ingestion, expect a data lag of up to 24 hours when querying the follower).
 * [Data mapping](../../management/mappings.md). Only [pre-created](../../management/tables.md#create-ingestion-mapping) data mappings are supported. 
+* [Update policy](../../concepts/updatepolicy.md). Queries to be used in streaming ingestion update policicies are allowed to work only on the newly created datathat work. 
 
 ## Limitations
 
+* Streaming ingestion performance and capacity scales with increased VM and cluster sizes. Concurrent ingestions are limited to 6 ingestions per core. For example, for 16 core SKUs, such as D14 and L16, the maximal supported load is 96 concurrent ingestions. For 2 core SKUs, such as D11, the maximal supported load is 12 concurrent ingestions.
 * The data size limitation per ingestion request is 4MB.
 * Schema updates, such as creation and modification of tables and ingestion mappings, may take up to 5 minutes for the streaming ingestion service.
 * Enabling streaming ingestion on a cluster allocates part of the local SSD disk of the cluster machines for streaming ingestion data and reduces the storage available for the hot cache
 (even if no data is actually ingested via streaming).
+
+ 

@@ -1,52 +1,48 @@
 ---
-title: Continuous data export (preview) - Azure Data Explorer | Microsoft Docs
-description: This article describes Continuous data export (preview) in Azure Data Explorer.
+title: Continuous data export - Azure Data Explorer | Microsoft Docs
+description: This article describes Continuous data export in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/09/2019
+ms.date: 09/26/2019
 ---
-# Continuous data export (preview)
+# Continuous data export
 
-Continuous data export enables to continuously export data from Kusto to an [external table](../externaltables.md). The external table 
+Continuous data export enables you to continuously export data from Kusto to an [external table](../externaltables.md). The external table 
 defines the destination (for example, Azure Blob Storage) and the schema of the exported data. 
-The data to be exported is defined by the results of a query that gets run periodically, and whose results are stored in the external table. 
-The process  guarantees that all records are exported "exactly-once" (excluding dimension tables, in which all records are evaluated in all executions). 
+The exported data is defined by a periodically-run query whose results are stored in the external table. 
+The process guarantees that all records are exported "exactly-once" (excluding dimension tables, in which all records are evaluated in all executions). 
 
-Continuous data export requires one to [create an external table](../externaltables.md#create-or-alter-external-table) 
+Continuous data export requires you to [create an external table](../externaltables.md#create-or-alter-external-table) 
 and then [create a continuous export definition](#create-or-alter-continuous-export) pointing to the external table. 
 
-
 > [!NOTE] 
-> * There is currently no support (as part of continuous export) for exporting all historical records, ingested before continuous export was created. This functionality will also be added in the future. In the meanwhile, historical records can be exported separately using the (non-continuous) [export command](export-data-to-an-external-table.md). 
-Please see the [exporting historical data](#exporting-historical-data) for further tips. 
-> * Continuous export does not (currently) work for data ingested using streaming ingestion. 
+> * Currently, there is no support (as part of continuous export) for exporting historical records ingested before continuous export creation. Historical records can be exported separately using the (non-continuous) [export command](export-data-to-an-external-table.md). 
+For more information, see [exporting historical data](#exporting-historical-data). 
+> * Currently, continuous export doesn't work for data ingested using streaming ingestion. 
  
-
 ## Notes
-* In order to guarantee "exactly-once" export, continuous export uses [database cursors](../databasecursor.md). 
+
+* To guarantee "exactly-once" export, continuous export uses [database cursors](../databasecursor.md). 
 [IngestionTime policy](../ingestiontime-policy.md) must therefore be enabled on all tables referenced in the query that should be processed "exactly-once" in the export. The policy is enabled by default on all newly created tables.
-* The output schema of the export query *must* match the schema of the external table exported to. 
-* Continuous export does not support cross-database/cluster calls.
-* Continuous export does *not* guarantee that each record will be written only once to the external table. The external table _may_ contain duplicates, if a failure occurs after export has begun and some of the artifacts were already written to the external table. In such (rare) cases, artifacts are not deleted from the external table but they will *not* be reported in the
+* The output schema of the export query *must* match the schema of the external table to which you export. 
+* Continuous export doesn't support cross-database/cluster calls.
+* Continuous export *doesn't* guarantee that each record will be written only once to the external table. The external table _may_ contain duplicates, if a failure occurs after export has begun and some of the artifacts were already written to the external table. In such (rare) cases, artifacts are not deleted from the external table but they will *not* be reported in the
 [show exported artifacts command](#show-continuous-export-exported-artifacts). Continuous export
 *does* guarantee no duplications when using the show exported-artifacts command to read the exported artifacts. 
-* Continuous export runs periodically, according to the time period configured for it. The recommended value for 
-this interval is at least several minutes or even much longer, depending on the latencies you're willing to accept. 
-Continuous export is *not* designed for constantly streaming data out of Kusto. It runs in a distributed mode, where all nodes export concurrently, 
-so if the range of data queried by each run is small, the output of the continuous export would be many small artifacts (number depends on number of nodes in cluser). 
-* The number of export operations that can run concurrently is limited by the cluster's data export capacity, 
-which is 75% of the number of working nodes in the cluster(see [Throttling](../../concepts/capacitypolicy.md#throttling)). 
-If the cluster does not have sufficient capacity to handle all continuous exports, some will start lagging behind. 
+* Continuous export runs periodically, according to the time period configured for it. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. 
+Continuous export *isn't* designed for constantly streaming data out of Kusto. It runs in a distributed mode, where all nodes export concurrently, so if the range of data queried by each run is small, the output of the continuous export would be many small artifacts (number depends on number of nodes in cluser). 
+* The number of export operations that can run concurrently is limited by the cluster's data export capacity, which is 75% of the number of working nodes in the cluster (see [throttling](../../concepts/capacitypolicy.md#throttling)). 
+If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind. 
  
 * By default, all tables referenced in the export query are assumed to be [fact tables](https://en.wikipedia.org/wiki/Fact_table). 
-As such, they are *scoped* to the database cursor - records included in the export query are only those that joined since the previous export execution. 
+Therefore, they are *scoped* to the database cursor - records included in the export query are only those that joined since the previous export execution. 
 The export query may contain [dimension tables](https://en.wikipedia.org/wiki/Dimension_(data_warehouse)#Dimension_table) as well, in which *all* records of the dimension table are included in *all* export queries. 
-Continuous-export of dimension tables only is not supported, the export query must include at least a single fact table.
-The syntax supports explicitly declaring which are the tables that should be scoped (fact) and which should not (dim). See the `over` parameter in the [create command](#create-or-alter-continuous-export) for details.
+Continuous-export of only dimension tables isn't supported. The export query must include at least a single fact table.
+The syntax explicitly declares which tables are scoped (fact) and which shouldn't (dimension). See the `over` parameter in the [create command](#create-or-alter-continuous-export) for details.
 
 All of the continuous export commands require [Database admin permission](../access-control/role-based-authorization.md).
 
@@ -164,7 +160,7 @@ Returns all artifacts exported by the continuous-export in all runs. It is recom
 
 `.show` `continuous-export` *ContinuousExportName* `failures`
 
-Returns all failures logged as part of the continuous export. It is recommended to filter the results by the Timestamp column in the command to view only time range of interest. 
+Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest. 
 
 **Properties:**
 
@@ -211,7 +207,7 @@ Returns all failures logged as part of the continuous export. It is recommended 
 
 The remaining continuous exports in the database (post deletion). Output schema as in the [show continuous export command](#show-continuous-export).
 
-## Disable/Enable continuous export
+## Disable or enable continuous export
 
 **Syntax:**
 
@@ -219,8 +215,8 @@ The remaining continuous exports in the database (post deletion). Output schema 
 
 `.disable` `continuous-export` *ContinuousExportName* 
 
-Disables / enables the continuous-export job. A disabled continuous-export will not be executed, but its current state is persisted and can be resumed when the continuous-export is enabled. 
-When enabling a continuous-export that has been disabled for a long while, it will continue exporting from where it last left off (when disabled). This may result in a long running export, potentially blocking other exports from running, if there is no sufficient cluster capacity to serve all. 
+You can disable or enable the continuous-export job. A disabled continuous export won't be executed, but its current state is persisted and can be resumed when the continuous export is enabled. 
+When enabling a continuous export that has been disabled for a long time, exporting will continue from where it last stopped, when disabled. This may result in a long running export, blocking other exports from running, if there isn't sufficient cluster capacity to serve all processes. 
 Continuous exports are executed by last run time in ascending order (oldest export will run first, until catch up is complete). 
 
 **Properties:**
@@ -238,10 +234,9 @@ The result of the [show continuous export command](#show-continuous-export) of t
 
 ## Exporting historical data
 
-Continuous export starts exporting data only from the point of its creation. Records ingested prior to that should be exported separately using the (non-continuous) [export command](export-data-to-an-external-table.md). 
-To avoid duplicates with data exported by the continuous export, one can use the StartCursor returned by the 
+Continuous export starts exporting data only from the point of its creation. Records ingested prior to that time should be exported separately using the (non-continuous) [export command](export-data-to-an-external-table.md). To avoid duplicates with data exported by continuous export, use the StartCursor returned by the 
 [show continuous export command](#show-continuous-export) and export only records where cursor_before_or_at the cursor value. See example below. 
-Note that historical data may be too large to be exported in a single export command, in which case it is recommended to partition the query into several smaller batches. 
+Historical data may be too large to be exported in a single export command. Therefore, you should partition the query into several smaller batches. 
 
 ```kusto
 .show continuous-export MyExport | project StartCursor

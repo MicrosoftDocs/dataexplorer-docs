@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/12/2019
+ms.date: 10/30/2019
 ---
 # Kusto.Explorer tool
 
@@ -148,7 +148,7 @@ use `Reset View` menu item.
 
 |Menu| Behavior|
 |---------------|---------|
-||---------*Query Srcipt*---------|
+||---------*Query Script*---------|
 |New Tab Window| Opens a new tab window for querying Kusto |
 |Open File| Loads data from provided *.csl file to active script panel|
 |Save To File| Saves content of active script panel to *.csl file|
@@ -200,13 +200,16 @@ use `Reset View` menu item.
 |Full View Mode | Maximizes the work space by hiding ribbon menu and Connection Panel|
 |Increase Font  | Increases fonts of the query tab and of the results data grid|  
 |Decrease Font  | Decreases fonts of the query tab and of the results data grid|
+|Reset Layout|Resets layout of the tool's docking controls and windows|
 ||---------*Data View*---------|
 |Reset View| Resets data view settings (*)|
-|Hide Duplicates| Removes duplicate results from the data grid|
-|Filter Rows in Search| Allows to filter rows during search in query result|
-|Hide Empty Columns| Removes empty columns from the data grid|
-|Collapse Singular Columns| Collapses columns with singular value|
-|Explore Column Values| Shows column values distribution|
+|Explore Column Values|Shows column values distribution|
+|Focus on query statistics|Changes the focus to query statistics instead of query results upon query completion|
+|Hide Duplicates|Toggles removal of the duplicate rows from the query results|
+|Hide Empty Columns|Toggles removal of empty columns from the query results|
+|Collapse Singular Columns|Toggles collapsing columns with singular value|
+||---------*Data Filtering*---------|
+|Filter Rows in Search|Toggles the option of showing only matching rows in query results search(Ctrl+F)|
 
 (*) Data View Settings: Kusto.Explorer keeps track of what settings are used per unique set of the columns, so when columns are reordered/removed - the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, use Reset View menu item. 
 
@@ -342,6 +345,7 @@ Some more queries:
 // Take 10 lines from the table. Useful to get familiar with the data
 StormEvents | limit 10 
 ```
+
 ```kusto
 // Filter by EventType == 'Flood' and State == 'California' (=~ means case insensitive) 
 // and take sample of 10 lines
@@ -477,7 +481,7 @@ start locally and run a specified query on the specified Kusto database.
 
 ### Limitations
 The queries are limited to ~2000 chars due to IE limitation (the limitation is approximate because it is dependent on the cluster and Database name length)
-https://support.microsoft.com/en-us/kb/208427 
+https://support.microsoft.com/kb/208427 
 To reduce chances you will hit this limitation - see the Getting Shorter Links paragraph on this page.
 
 The format of the URI is this:
@@ -656,7 +660,7 @@ It is also possible to "go back" to a specific version of Kusto.Explorer:
 
 This error may suggest that OS system became corrupted or missing some of the essential modules.
 To check missing or corrupted system files - use steps described here:   
-[https://support.microsoft.com/en-us/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system](https://support.microsoft.com/en-us/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system)
+[https://support.microsoft.com/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system](https://support.microsoft.com/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system)
 
 ### Kusto.Explorer always downloads even when there are no updates
 
@@ -668,11 +672,13 @@ To check missing or corrupted system files - use steps described here:
 
 - This could be a result of corruption in your local ClickOnce store.
 - You can clear the local ClickOnce store, by running the following command, in an elevated command prompt.
+    * Notes:
+        1. If there are any instances of other ClickOnce applications or of `dfsvc.exe`, terminate them before running this command.
+        2. Any ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut. App shortcuts will not be deleted.
+
     ```
     rd /q /s %userprofile%\appdata\local\apps\2.0
     ```
-- Note: any ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to
-  the original install location stored in the app shortcut. App shortcuts will not be deleted.
 
 - Then, try installing Kusto.Explorer again from one of the [installation mirrors](#getting-the-tool)
 
@@ -727,7 +733,7 @@ Try installing again from one of the [installation mirrors](#getting-the-tool)
 
 From elevated CMD:
 
-    rd /s/q "C:\Users\clandis\AppData\Local\Temp\Deployment"
+    rd /s/q %userprofile%\AppData\Local\Temp\Deployment
     ren %LOCALAPPDATA%\Kusto.Explorer Kusto.Explorer.bak
 
 Try installing again from one of the [installation mirrors](#getting-the-tool)
@@ -751,7 +757,7 @@ Program fails to install with either of the following errors:
 *Solution:*
 1. This could be due to another application overriding the default ClickOnce trust prompt behavior.
 
-2. You can view your default configuration settings, compare them to the actual ones on your machine, and reset them as necessary, as explained [here](https://docs.microsoft.com/en-us/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior).
+2. You can view your default configuration settings, compare them to the actual ones on your machine, and reset them as necessary, as explained [here](https://docs.microsoft.com/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior).
 
 #### Cleanup application data
 

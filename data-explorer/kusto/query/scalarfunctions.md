@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/05/2019
+ms.date: 10/31/2019
 ---
 # Scalar Functions
 
@@ -119,6 +119,7 @@ ms.date: 07/05/2019
 |[exp2()](exp2-function.md)|The base-2 exponential function of x, which is 2 raised to the power x: 2^x.|
 |[gamma()](gammafunction.md)|Computes gamma function.|
 |[hash()](hashfunction.md)|Returns a hash value for the input value.|
+|[hash_combine()](hash_combinefunction.md)|Combines two or more hash values.|
 |[isfinite()](isfinitefunction.md)|Returns whether input is a finite value (is neither infinite nor NaN).|
 |[isinf()](isinffunction.md)|Returns whether input is an infinite (positive or negative) value.|
 |[isnan()](isnanfunction.md)|Returns whether input is Not-a-Number (NaN) value.|
@@ -208,6 +209,7 @@ ms.date: 07/05/2019
 |[series_fit_line_dynamic()](series-fit-line-dynamicfunction.md)|Applies linear regression on a series, returning dynamic object.|
 |[series_iir()](series-iirfunction.md)|Applies a Infinite Impulse Response filter on a series.|
 |[series_outliers()](series-outliersfunction.md)|Scores anomaly points in a series.|
+|[series_pearson_correlation()](series-pearson-correlationfunction.md)|Calculates the Pearson correlation coefficient of two series.|
 |[series_periods_detect()](series-periods-detectfunction.md)|Finds the most significant periods that exist in a time series.|
 |[series_periods_validate()](series-periods-validatefunction.md)|Checks whether a time series contains periodic patterns of given lengths.|
 |[series_seasonal()](series-seasonalfunction.md)|Finds the seasonal component of the series.|
@@ -271,3 +273,11 @@ ms.date: 07/05/2019
 |[rank_tdigest()](rank-tdigest.md)|Calculates relative rank of a value in a set.|
 |[tdigest_merge()](tdigest-mergefunction.md)|Merges tdigest results (scalar version of the aggregate version tdigest-merge()).|
 
+## Spatial functions
+
+|Function Name                                                             |Description                                             |
+|--------------------------------------------------------------------------|--------------------------------------------------------|
+|[geo_distance_2points()](geo-distance-2points-function.md)                ||
+|[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)||
+|[geo_point_in_circle()](geo-point-in-circle-function.md)                  ||
+|[geo_point_to_geohash()](geo-point-to-geohash-function.md)                ||

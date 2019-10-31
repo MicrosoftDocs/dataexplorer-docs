@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 09/26/2019
 ---
 # avgif() (aggregation function)
 
 Calculates the [average](avg-aggfunction.md) of *Expr* across the group for which *Predicate* evaluates to `true`.
 
-* Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
+* Can only be used in context of aggregation inside [summarize](summarizeoperator.md)
 
 **Syntax**
 
@@ -21,7 +21,7 @@ summarize `avgif(`*Expr*`, `*Predicate*`)`
 
 **Arguments**
 
-* *Expr*: Expression that will be used for aggregation calculation. 
+* *Expr*: Expression that will be used for aggregation calculation. Records with `null` values are ignored and not included in the calculation.
 * *Predicate*:  predicate that if true, the *Expr* calculated value will be added to the average.
 
 **Returns**

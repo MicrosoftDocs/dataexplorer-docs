@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/25/2019
+ms.date: 09/13/2019
 ---
 # HowTo Data Ingestion with Kusto.Ingest Library
 This article presents sample code that makes use of Kusto.Ingest client library.
@@ -100,9 +100,6 @@ static void Main(string[] args)
         // Usually the recommended level is IngestionReportLevel.FailuresOnly
         ingestProps.ReportLevel = IngestionReportLevel.FailuresAndSuccesses;
         ingestProps.ReportMethod = IngestionReportMethod.Queue;
-        // Setting FlushImmediately to 'true' overrides any aggregation preceding the ingestion.
-        // Not recommended unless you are certain you know what you are doing
-        ingestProps.FlushImmediately = true;
         ingestProps.JSONMappingReference = mappingName;
         ingestProps.Format = DataSourceFormat.json;
 
@@ -125,8 +122,9 @@ static void Main(string[] args)
             ingestClient.IngestFromStream(memStream, ingestProps, leaveOpen: true);
         }
 
-        // Wait a bit (20s) and retrieve all notifications:
-        Thread.Sleep(20000);
+        // Wait and retrieve all notifications
+        //  - Actual duration should be decided based on the effective Ingestion Batching Policy set on the table/database
+        Thread.Sleep(<timespan>);
         var errors = ingestClient.GetAndDiscardTopIngestionFailures().GetAwaiter().GetResult();
         var successes = ingestClient.GetAndDiscardTopIngestionSuccesses().GetAwaiter().GetResult();
 

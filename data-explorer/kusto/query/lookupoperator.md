@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/19/2019
+ms.date: 10/06/2019
 ---
 # lookup operator
 
@@ -98,7 +98,7 @@ let DimTable=datatable(Personal:string,Family:string,Alias:string) [
   "Bill",  "Gates",   "billg",
   "Bill",  "Clinton", "billc",
   "Steve", "Ballmer", "steveb",
-  "Tim",   "Typo",    "timc"
+  "Tim",   "Cook",    "timc"
 ];
 FactTable
 | lookup kind=leftouter DimTable on Personal, Family
@@ -110,4 +110,4 @@ Row     | Personal  | Family   | Alias
 2       | Bill      | Clinton  | billc
 3       | Bill      | Clinton  | billc
 4       | Steve     | Ballmer  | steveb
-5       | Tim       | Cook     |
+5       | Tim       | Cook     | timc

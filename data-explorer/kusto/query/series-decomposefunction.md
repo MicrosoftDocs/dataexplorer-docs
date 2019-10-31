@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/21/2019
+ms.date: 09/26/2019
 ---
 # series_decompose()
 
@@ -17,20 +17,21 @@ Takes an expression containing a series (dynamic numerical array) as input and d
  
 **Syntax**
 
-`series_decompose(`*Series* `[,` *Seasonality*`,` *Trend*`,` *Test_points*`])`
+`series_decompose(`*Series* `[,` *Seasonality*`,` *Trend*`,` *Test_points*`,` *Seasonality_threshold*`])`
 
 **Arguments**
 
 * *Series*: Dynamic array cell which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators
 * *Seasonality*: An integer controlling the seasonal analysis, containing either
-    * -1: autodetect seasonality (using [series_periods_detect](series-periods-detectfunction.md) [default] 
-    * period: positive integer, specifying the expected period in number of bins unit. For example, if the series is in 1h bins, a weekly period is 168 bins
-    * 0: no seasonality (i.e. skip extracting this component)    
-* *Trend*: A string controlling the trend analysis, containing either
-    * "avg": define trend component as average(x) [default]
-    * "linefit": extract trend component using linear regression
-    * "none": no trend, skip extracting this component    
-* *Test_points*: 0 [default] or positive integer, specifying the number of points at the end of the series to exclude from the learning (regression) process. This parameter should be set for forecasting purpose
+    * -1: auto-detect seasonality using [series_periods_detect](series-periods-detectfunction.md) (default).
+    * period: positive integer specifying the expected period in number of bins. For example, if the series is in 1h bins, a weekly period is 168 bins.
+    * 0: no seasonality (skip extracting this component).    
+* *Trend*: A string controlling the trend analysis, containing one of the following:
+    * "avg": define trend component as average(x) (default)
+    * "linefit": extract trend component using linear regression.
+    * "none": no trend, skip extracting this component.    
+* *Test_points*: 0 (default) or positive integer, specifying the number of points at the end of the series to exclude from the learning (regression) process. This parameter should be set for forecasting purposes.
+* *Seasonality_threshold*: The threshold for seasonality score when *Seasonality* is set to auto-detect, the default score threshold is `0.6`. For more information see [series_periods_detect](series-periods-detectfunction.md).
 
 **Return**
 
@@ -46,7 +47,7 @@ Takes an expression containing a series (dynamic numerical array) as input and d
 
 **Notes**
 
-* Components execution order:
+* Component execution order:
     1. Extract the seasonal series
     2. Subtract it from x, generating the deseasonal series
     3. Extract the trend component from the deseasonal series

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 09/25/2019
 ---
 # take operator
 
@@ -27,7 +27,7 @@ the source data is sorted.
 
 (`take` and `limit` are synonyms.)
 
-**Remarks**
+**Notes**
 
 `take` is a simple, quick, and efficient way to view a small sample of records
 when browsing data interactively, but be aware that it doesn't guarantee any consistency
@@ -42,10 +42,19 @@ See:
 [top operator](topoperator.md)
 [top-nested operator](topnestedoperator.md)
 
-## A note on paging through a large resultset (or: the lack of a `skip` operator)
+## Does Kusto support paging of query results?
 
-Kusto does not support the complementary `skip` operator. This is intentional, as
-`take` and `skip` together are mainly used for thin client paging, and have a major
-performance impact on the service. Application builders that want to support result
-paging are advised to query for several pages of data (say, 10,000 records at a time)
-and then display a page of data at a time to the user.
+Kusto doesn't provide a built-in paging mechanism.
+
+Kusto is a complex service that continuously optimizes the data it stores to provide excellent query performance over huge data sets. While paging is a useful mechanism for stateless clients with limited
+resources, it shifts the burden to the backend service which
+has to track client state information. Subsequently, the performance
+and scalability of the backend service is severely limited.
+
+For paging support implement one of the following features:
+
+* Exporting the result of a query to an external storage and paging through the
+   generated data.
+
+* Writing a middle-tier application that provides a stateful paging API by caching
+   the results of a Kusto query.

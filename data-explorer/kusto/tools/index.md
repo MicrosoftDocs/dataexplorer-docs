@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/23/2019
+ms.date: 10/30/2019
 ---
 # Azure Data Explorer tools
 
@@ -21,17 +21,19 @@ ms.date: 07/23/2019
 
 
 * [Azure Notebooks](azurenotebooks.md) - Query Kusto from an Azure Notebooks notebook (preview)
-* [Excel](./excel.md) - Add Kusto query as Excel data source
+* [Excel blank query](https://docs.microsoft.com/azure/data-explorer/excel-blank-query) - Add Kusto query as Excel data source
+* [Excel connector](https://docs.microsoft.com/azure/data-explorer/excel-connector) - an Excel connector for Azure Data Explorer 
+
 * [PowerBI](./powerbi.md) - Build reports and dashboards in Power BI on top of Azure Data Explorer data
 * [PowerBI Connector](./powerbi-connector.md) - a Power BI Desktop connector for Azure Data Explorer
 
-* [Grafana](grafana.md) - an analytics platform that enables creating and sharing dashboards.
+* [Grafana](https://docs.microsoft.com/azure/data-explorer/grafana) - an analytics platform that enables creating and sharing dashboards.
 
 ## Orchestration tools
 
 
 * [Microsoft Flow](./flow.md) - Execute Kusto queries automatically as part of [Microsoft Flow](https://flow.microsoft.com/)
-* [Microsoft Logic App](./logicapps.md) - Execute Kusto queries automatically as part of [Microsoft Logic App](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-what-are-logic-apps)
+* [Microsoft Logic App](./logicapps.md) - Execute Kusto queries automatically as part of [Microsoft Logic App](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)
 
 
 ## Data ingestion tools

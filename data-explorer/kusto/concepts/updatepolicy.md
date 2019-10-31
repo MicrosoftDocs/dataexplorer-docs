@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/18/2019
+ms.date: 10/28/2019
 ---
 # Update policy
 
@@ -38,11 +38,10 @@ of execution of update policies is undefined.
 
 As an example for the user of this mechanism, suppose the source table be a high-rate
 trace table with interesting data formatted as a free-text column, while the target
-table (the table on which the update policy is defined) accept only specific kind
-of trace lines, and with a well-structured schema that is a transformation of the
-original free-text data by using Kusto's parse operator.
+table (on which the update policy is defined) accepts only specific trace lines, and with a well-structured schema that is a transformation of the
+original free-text data by using Kusto's `parse` operator.
 
-Update policy behaves similar to regular ingestion, and is subject to the same
+Update policy behaves similarly to regular ingestion, and is subject to the same
 restrictions and best practices. For example, it scales-out with the size of
 the cluster, and works more efficiently if ingestions are done in large bulks.
 
@@ -75,7 +74,7 @@ Each such object is represented as a JSON property bag, with the following prope
 |Source                        |`string`|Name of the table that triggers update policy to be invoked                                                                                                                                 |
 |Query                         |`string`|A Kusto CSL query that is used to produce the data for the update                                                                                                                           |
 |IsTransactional               |`bool`  |States if the update policy is transactional or not (defaults to false). Failures to run a transactional update policy result with the source table not being updated with new data as well.|
-|PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified for the extents in the source table should apply to the ones in the derived table as well.                         |
+|PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified during the ingestion into the  source table should apply to the ones in the derived table as well.                 |
 
 **Notes**
 
@@ -89,6 +88,8 @@ Each such object is represented as a JSON property bag, with the following prope
 * When referencing the `Source` table in the `Query` part of the policy (or in Functions referenced by the latter), make sure you **don't** use the qualified name of the table
    (meaning, use `TableName` and not `database("DatabaseName").TableName` nor `cluster("ClusterName").database("DatabaseName").TableName`).
 * A query which is run as part of an update policy doesn't have read access to tables which have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled.
+* `PropagateIngestionProperties` only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this
+  option has no effect.
 
 
 
@@ -110,7 +111,7 @@ Failured are treated as follows:
 - **Transactional policy**: The original ingestion operation that triggered the update will fail as well, 
 the source table and the database will not be modified with new data.
   - In case the ingestion method is `pull` (i.e. Kusto's Data Management service is involved in the ingestion
-  process), there's an automated retry on the entire ingestion operation according, orchestrated by Kusto's Data Management
+  process), there's an automated retry on the entire ingestion operation, orchestrated by Kusto's Data Management
   service, according to the following logic:
     - Retries are done until reaching the earliest between `DataImporterMaximumRetryPeriod` (default = 2 days) and
     `DataImporterMaximumRetryAttempts` (default = 10).
@@ -140,16 +141,16 @@ One can test an update policy's additional performance impact on an ingestion op
 
 The following example assumes:
 
-- The source table name (the `Source` property of the update policy) is `MyTable`.
+- The source table name (the `Source` property of the update policy) is `MySourceTable`.
 - The `Query` property of the update policy calls a function named `MyFunction()`.
 
 Using [.show queries](../management/queries.md), one can evaluate the resource utilization (e.g. CPU, memory) of
 the following query, and/or multiple executions of it.
 
 ```kusto
-.show table MyTable extents;
+.show table MySourceTable extents;
 // The following line provides the extent ID for the largest and most recent not-yet-merged extent in the source table
 let extentId = $command_results | where MaxCreatedOn > ago(1hr) and MinCreatedOn == MaxCreatedOn | top 1 by MaxCreatedOn desc | project ExtentId;
-let MyTable = MyTable | where extent_id() == toscalar(extentId);
+let MySourceTable = MySourceTable | where extent_id() == toscalar(extentId);
 MyFunction()
 ```

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/23/2019
+ms.date: 09/11/2019
 ---
 # Security roles management
 
@@ -194,29 +194,3 @@ Where:
 .add function MyFunction admins ('aaduser=imike@fabrikam.com') 'This user should have access'
 ```
 
-## Block principals manually
-
-A cluster admin can block a user or application from accessing the cluster. A cluster admin is also the only one who can unblock a principal. Once a principal is blocked, all query and admin commands will be denied for that principal. A cluster admin manually blocks principals that are identified as the source of queries or commands that consume an excessive amount of resources, and must be stopped until further investigation.
-
-**Syntax**
-
-```kusto
-.add cluster blockedprincipals` *Principal* ['Application'] ['User'] ['Period'] ['Reason']
-.drop cluster blockedprincipals` *Principal* ['Application'] ['User']
-.show cluster blockedprincipals
-```
-
-Unlike add and drop blocked principals, which require cluster admin privileges, show the list of blocked principals, requires cluster user privileges.
-
-* `Application` optional x-ms-app header sent with the Http request.
-* `User` optional x-ms-user header sent with the Http request.
-* `Period` amount of time which the principal should be blocked for. If no value is provided, principal will be blocked permanently (practically for 10 years).
-* `Reason` note explaining why that principal was blocked.
-
-**Examples**
-
-```kusto
-.add cluster blockedprincipals 'aaduser=imike@fabrikam.com' period 4d reason "Some explanation..."
-.show cluster blockedprincipals
-.drop cluster blockedprincipals 'aaduser=imike@fabrikam.com'
-```

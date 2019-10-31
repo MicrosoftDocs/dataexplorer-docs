@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/26/2019
+ms.date: 09/13/2019
 ---
 # Kusto Access Control Overview
 
@@ -74,9 +74,9 @@ When an MSA principal is configured on a Kusto resource, Kusto **will not** atte
 When the Kusto client libraries invoke ADAL (the AAD client library) to acquire a token for communicating with Kusto, it provides
 the following information:
 
-1. The Resource (Cluster URI, e.g., `https://ClusterName.kusto.windows.net`)
-2. The AAD Client Application ID (`ad30ae9e-ac1b-4249-8817-d24f5d7ad3de` for the Kusto.Data library)
-3. The AAD Client Application Redirect URI (`http://microsoft/kustoclient` for the Kusto.Data library)
+1. The Resource (Cluster URI, e.g., `https://Cluster-and-region.kusto.windows.net`)
+2. The AAD Client Application ID
+3. The AAD Client Application Redirect URI
 4. The AAD Tenant (this affects the AAD endpoint used for authentication, e.g., for AAD tenant `microsoft.com` the AAD endpoint would be `https://login.microsoftonline.com/microsoft.com`)
 
 The token returned by ADAL to the Kusto Client Library has the appropriate Kusto cluster URL as the audience, and the "Access Kusto" permission as the scope.
@@ -94,7 +94,7 @@ var redirectUri = new Uri("{your client app redirect uri}");
 var acquireTokenTask = authContext.AcquireTokenAsync(
     $"https://{clusterNameAndRegion}.kusto.windows.net",
     clientAppID,
-    new redirectUri,
+    redirectUri,
     new PlatformParameters(PromptBehavior.Auto, null)).GetAwaiter().GetResult();
 ```
 

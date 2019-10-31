@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 10/30/2019
 ---
 # parse_user_agent()
 
@@ -34,6 +34,11 @@ Browser: Family, MajorVersion, MinorVersion, Patch
 OperatingSystem: Family, MajorVersion, MinorVersion, Patch, PatchMinor             
 
 Device: Family, Brand, Model
+
+> [!WARNING]
+> The function implementation is built on regex checks of the input string against a huge number of predefined patterns. Therefore the expected time and CPU consumption is high.
+When the function is used in a query, make sure it runs in a distributed manner on multiple machines.
+If queries with this function are frequently used, you may want to pre-create the results via [update policy](../concepts/updatepolicy.md), but you need to take into account that using this function inside the update policy will increase the ingestion latency.
  
 **Example**
 

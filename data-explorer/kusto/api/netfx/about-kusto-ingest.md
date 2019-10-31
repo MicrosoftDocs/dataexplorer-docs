@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/15/2019
+ms.date: 10/28/2019
 ---
 # Kusto Ingest Client Library
 

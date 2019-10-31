@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/19/2019
+ms.date: 09/28/2019
 ---
 # Stored functions management
 
@@ -216,7 +216,35 @@ The `.drop` `function` command drops a function from the database.
 **Example** 
 
 ```kusto
-.drop function MyFunction1 
+.drop function MyFunction1
+```
+
+## .drop functions
+
+The `.drop` `functions` command drops functions from the database.
+
+**Syntax**
+
+`.drop` `functions` (*FunctionName1*, *FunctionName2*,..) [ifexists]
+
+**Returns**
+
+This command returns a list of the remaining functions in the database.
+
+|Output parameter |Type |Description
+|---|---|--- 
+|Name  |String |The name of the function. 
+|Parameters  |String |The parameters that are required by the function.
+|Body  |String |(Zero or more) Let statements followed by a valid CSL expression that is evaluated upon function invocation.
+|Folder|String|A folder that is used for UI functions categorization. This parameter does not change the way function is invoked
+|DocString|String|A description of the function - to be shown for UI purposes.
+
+Requires [Function admin permission](../management/access-control/role-based-authorization.md).
+
+**Example** 
+ 
+```kusto
+.drop functions (Function1, Function2, Function3) ifexists
 ```
 
 ## .alter function docstring

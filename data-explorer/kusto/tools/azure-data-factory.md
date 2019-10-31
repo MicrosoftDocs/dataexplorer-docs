@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/14/2019
+ms.date: 10/30/2019
 ---
 # Azure Data Factory
 
@@ -19,4 +19,4 @@ The Kusto connector allows you to do the following:
 * As a source, retrieve data by using a KQL (Kusto) query.
 * As a sink, append data to a destination table.
 
-Additional information can be found [here](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-explorer).
+Additional information can be found [here](https://docs.microsoft.com/azure/data-factory/connector-azure-data-explorer).
