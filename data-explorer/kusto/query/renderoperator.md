@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/22/2019
+ms.date: 11/01/2019
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -46,6 +46,7 @@ For Kusto flavor:
 | `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
 | `areachart`        | Area graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |
 | `barchart`         | First column is x-axis, and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.|
+| `card`             | First result record is treated as set of scalar values and shows as card. |
 | `columnchart`      | Like `barchart`, with vertical strips instead of horizontal strips.|
 | `ladderchart`      | Last two columns are the x-axis, other columns are y-axis.|
 | `linechart`        | Line graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |

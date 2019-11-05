@@ -7,13 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/24/2019
+ms.date: 11/04/2019
 ---
 # geo_point_to_geohash()
 
-Calculates the Geohash string value for a geographic location.
-
-More information on Geohash can be found [here](https://en.wikipedia.org/wiki/Geohash).
+The `geo_point_to_geohash()` function calculates the [Geohash](https://en.wikipedia.org/wiki/Geohash) string value for a geographic location.
 
 **Syntax**
 
@@ -21,17 +19,18 @@ More information on Geohash can be found [here](https://en.wikipedia.org/wiki/Ge
 
 **Arguments**
 
-* *longitude*: Longitude value of a geographic location. Longitude x will be considered valid if x is a real number and x in range [-180, +180]. 
-* *Latitude*: Latitude value of a geographic location. Latitude y will be considered valid if y is a real number and y in range [-90, +90]. 
-* *Accuracy*: An optional `int` literal that defines the requested accuracy. Supported values are in range [1,18]. If unspecified, the default value `5` is used.
+* *longitude*: Longitude value of a geographic location. Longitude x will be considered valid if x is a real number and x is in range [-180, +180]. 
+* *Latitude*: Latitude value of a geographic location. Latitude y will be considered valid if y is a real number and y in in range [-90, +90]. 
+* *Accuracy*: An optional `int` that defines the requested accuracy. Supported values are in the range [1,18]. If unspecified, the default value `5` is used.
 
 **Returns**
 
-The Geohash string value of a given geographic location with requested accuracy length.
+The Geohash string value of a given geographic location with requested accuracy length. If the coordinate or accuracy are invalid, the query will produce an empty result.
 
 
-> [!NOTE]
-> Invoking [geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md) function on geohash string that was calculated on some longitude x and latitude y won't necessairly return x and y.
+**Notes**
+* Invoking the [geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md) function on a geohash string that was calculated on longitude x and latitude y won't necessairly return x and y.
+* Due to the Geohash definition, it's possible that two geographic locations are very close to each other but have different Geohash codes.
 
 **Examples**
 
@@ -52,7 +51,6 @@ print geohash = geo_point_to_geohash(-80.195829, 25.802215, 8)
 |dhwfz15h|
 
 The following example finds groups of coordinates. Every pair of coordinates in the group are no further than 1.22km from each other.
-
 ```kusto
 datatable(location_id:string, longitude:real, latitude:real)
 [
@@ -61,7 +59,7 @@ datatable(location_id:string, longitude:real, latitude:real)
   "C", double(-122.278156), 47.566936,
 ]
 | summarize count = count(),                                          // items per group count
-            locations = make_list(location_id)                        // items in group
+            locations = make_list(location_id)                        // items in the group
          by geohash = geo_point_to_geohash(longitude, latitude, 6)    // geohash of the group
 ```
 
@@ -70,6 +68,11 @@ datatable(location_id:string, longitude:real, latitude:real)
 |c23n8g|2|[<br>  "A",<br>  "B"<br>]|
 |c23n97|1|[<br>  "C"<br>]|
 
+The following example produces an empty result because of the invalid coordinate input.
+```kusto
+print geohash = geo_point_to_geohash(200,1,8)
+```
 
-> [!NOTE]
-> Due to Geohash definition it's possible that 2 geographic locations are very close to each other but they have different Geohash codes.
+|geohash|
+|---|
+||

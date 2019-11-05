@@ -7,13 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/24/2019
+ms.date: 11/04/2019
 ---
 # geo_geohash_to_central_point()
 
-Calculates geospatial coordinates that represents a center of Geohash rectangular area.
-
-More information on Geohash can be found [here](https://en.wikipedia.org/wiki/Geohash).
+The `geo_geohash_to_central_point()` function calculates the geospatial coordinates that represent the center of a [Geohash]((https://en.wikipedia.org/wiki/Geohash)) rectangular area. 
 
 **Syntax**
 
@@ -21,12 +19,11 @@ More information on Geohash can be found [here](https://en.wikipedia.org/wiki/Ge
 
 **Arguments**
 
-* *geohash*: Geohash value for a geographic location. Geohash string can have length of 1 to 18 characters.
-
+*geohash*: Geohash value for a geographic location. The geohash string can be 1 to 18 characters.
 
 **Returns**
 
-The geospatial coordinates value in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a dynamic data type.
+The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the geohash is invalid, the query will produce a null result.
 
 > [!NOTE]
 > The GeoJSON format specifies longitude first and latitude second.
@@ -43,3 +40,13 @@ print point = geo_geohash_to_central_point("sunny")
 |point|coordinates|longitude|latitude|
 |---|---|---|---|
 |{<br>  "type": "Point",<br>  "coordinates": [<br>    42.47314453125,<br>    23.70849609375<br>  ]<br>}|[<br>  42.47314453125,<br>  23.70849609375<br>]|42.47314453125|23.70849609375|
+
+The following example will return a null result because of the invalid geohash input.
+
+```kusto
+print geohash = geo_geohash_to_central_point("a")
+```
+
+|geohash|
+|---|
+||
