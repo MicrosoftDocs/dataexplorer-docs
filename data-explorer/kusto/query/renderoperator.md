@@ -37,7 +37,7 @@ Where:
 
 * *Visualization* indicates the kind of visualization to use. The supported values are:
 
-
+::: zone pivot="kusto"
 
 For Kusto flavor:
 
@@ -58,9 +58,23 @@ For Kusto flavor:
 | `timechart`        | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There is one string column whose values are used to “group” the numeric columns and create different lines in the chart (further string columns are ignored).|
 | `timepivot`        | Interactive navigation over the events time-line (pivoting on time axis)|
 
+::: zone-end
 
+::: zone pivot="loganalytics"
 
+For Log Analytics flavor:
 
+|*Visualization*     |Description|
+|--------------------|-|
+| `areachart`        | Area graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |
+| `barchart`         | First column is x-axis, and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.|
+| `columnchart`      | Like `barchart`, with vertical strips instead of horizontal strips.|
+| `piechart`         | First column is color-axis, second column is numeric. |
+| `scatterchart`     | Points graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |
+| `table`            | Default - results are shown as a table.|
+| `timechart`        | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There is one string column whose values are used to “group” the numeric columns and create different lines in the chart (further string columns are ignored).|
+
+::: zone-end
 
 * *PropertyName*/*PropertyValue* indicate additional information to use when rendering.
   All properties are optional. The supported properties are:
@@ -132,7 +146,7 @@ three kinds of columns:
   the result might translate into them guessing wrong. Try projecting-away such
   columns when that happens. 
 
-
+::: zone pivot="kusto"
 
 **Examples**
 
@@ -148,5 +162,20 @@ range x from -2 to 2 step 0.1
 | render linechart with  (ycolumns = sin, cos, series = x_sign, sum_sign)
 ```
 
+::: zone-end
 
+::: zone pivot="loganalytics"
 
+For Log Analytics flavor:
+
+**Example**
+
+```kusto
+range x from -2 to 2 step 0.1
+| extend sin = sin(x), cos = cos(x)
+| extend x_sign = iif(x > 0, "x_pos", "x_neg")
+| extend sum_sign = iif(sin + cos > 0, "sum_pos", "sum_neg")
+| render areachart with  (ycolumns = sin, cos, series = x_sign, sum_sign)
+```
+
+::: zone-end
