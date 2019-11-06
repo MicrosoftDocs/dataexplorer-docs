@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/10/2019
+ms.date: 11/05/2019
 ---
 # parse_xml()
 
@@ -43,7 +43,6 @@ XML                                |JSON                                        
 
 * Maximal input `string` length for `parse_xml` is 128 KB. Longer strings interpretation will result in a null object 
 * Only element nodes, attributes and text nodes will be translated. Everything else will be skipped
-* Translation of XMLs with namespaces is currently not supported 
  
 **Example**
 

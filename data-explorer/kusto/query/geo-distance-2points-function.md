@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/04/2019
+ms.date: 11/05/2019
 ---
 # geo_distance_2points()
 
-The `geo_distance_2points()` function calculates the distance between two geospatial coordinates on Earth.
+Calculates the distance between two geospatial coordinates on Earth.
 
 **Syntax**
 
@@ -50,13 +50,13 @@ The following example finds all rows in which the distance between two coordinat
 StormEvents
 | extend distance_1_to_11m = geo_distance_2points(BeginLon, BeginLat, EndLon, EndLat)
 | where distance_1_to_11m between (1 .. 11)
-| project Distance = strcat(toint(distance_1_to_11m), " meters"), Description = EventNarrative
+| project distance_1_to_11m
 ```
 
-|Distance|Description|
-|---|---|
-|10 meters|Flooding was reported at Calle Cerezo and 5 in the municipality of Yabucoa.|
-|7 meters|Minor flooding was reported along Route 120 in Rumford.|
+|distance_1_to_11m|
+|---|
+|10.5723100154958|
+|7.92153588248414|
 
 The following example will return a null result because of the invalid coordinate input.
 ```kusto

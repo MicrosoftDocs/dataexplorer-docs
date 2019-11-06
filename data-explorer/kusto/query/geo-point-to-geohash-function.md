@@ -7,11 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/04/2019
+ms.date: 11/05/2019
 ---
 # geo_point_to_geohash()
 
-The `geo_point_to_geohash()` function calculates the [Geohash](https://en.wikipedia.org/wiki/Geohash) string value for a geographic location.
+Calculates the Geohash string value for a geographic location.
+
+For more information about Geohash, click [here](https://en.wikipedia.org/wiki/Geohash).  
 
 **Syntax**
 
@@ -28,9 +30,9 @@ The `geo_point_to_geohash()` function calculates the [Geohash](https://en.wikipe
 The Geohash string value of a given geographic location with requested accuracy length. If the coordinate or accuracy are invalid, the query will produce an empty result.
 
 
-**Notes**
-* Invoking the [geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md) function on a geohash string that was calculated on longitude x and latitude y won't necessairly return x and y.
-* Due to the Geohash definition, it's possible that two geographic locations are very close to each other but have different Geohash codes.
+> [!NOTE]
+>* Invoking the [geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md) function on a geohash string that was calculated on longitude x and latitude y won't necessairly return x and y.
+>* Due to the Geohash definition, it's possible that two geographic locations are very close to each other but have different Geohash codes.
 
 **Examples**
 

@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/04/2019
+ms.date: 11/05/2019
 ---
 # geo_point_in_circle()
 
-The `geo_point_in_circle()` function calculates whether the geospatial coordinates are inside a circle on Earth.
+Calculates whether the geospatial coordinates are inside a circle on Earth.
 
 **Syntax**
 
@@ -30,7 +30,7 @@ The `geo_point_in_circle()` function calculates whether the geospatial coordinat
 Indicates whether the geospatial coordinates are inside a circle. If the coordinates or circle are invalid, the query will produce a null result.
 
 > [!NOTE]
-> * > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
+>* The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
 >* The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used to measure distance on Earth is a sphere and circle is a spherical cap on Earth.
 
 **Examples**
