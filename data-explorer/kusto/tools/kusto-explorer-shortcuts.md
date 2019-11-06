@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/04/2019
+ms.date: 10/31/2019
 ---
 # Kusto.Explorer keyboard shortcuts (hot-keys)
 
@@ -159,20 +159,6 @@ The following keyboard shorcuts can be used from within the results JSON viewer
 |`Del`|Delete current connection|
 |`Ctrl`+`E`|Edit currently selected connection|
 |`Ctrl`+`T`|Open a new query editor using currently selected connection|
-
-## Charts Panel
-
-The following keyboard shortcuts can be used when charts are present and are in active keyboard focus:
-
-|Hot Key|Description|
-|-----------|-----------|
-| `Ctrl` + `Up` arrow | Chart's diagram is moved up. |
-| `Ctrl` + `Down` arrow | Chart's diagram is moved down. |
-| `Ctrl` + `Left` arrow | Chart's diagram is moved left. |
-| `Ctrl` + `Right` arrow | Chart's diagram is moved right. |
-|`Ctrl`+`+` | Chart's diagram is zoomed in 3 times from the current axes ranges.|
-|`Ctrl`+`-` | Chart's diagram is zoomed out 3 times from the current axes ranges.|
-|`Ctrl`+`Z` | Pressing the CTRL + Z keys returns the previous zoom state of a chart's diagram. All subsequent operations of a similar kind (for instance, multiple "zoom in" operations) are considered as a single transaction. Pressing CTRL + Z returns the zoom state which existed before the first zoom operation in a zoom series. |
 
 ## Diagnostics and Monitoring
 

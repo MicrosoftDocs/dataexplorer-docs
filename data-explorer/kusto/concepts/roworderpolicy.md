@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/15/2019
+ms.date: 11/06/2019
 ---
 # Row order policy
 
@@ -26,5 +26,8 @@ Applying the policy is appropriate when:
 While there are no hardcoded limits set on the amount of columns (sort keys) that can be
 defined as part of the policy, every additional column adds some overhead to the ingestion
 process, and as more columns are added - the effective return diminishes.
+
+> [!NOTE]
+> Once the policy is applied to a table, it will affect data ingested from that moment on.
 
 Control commands for managing Row Order policies can be found [here](../management/roworder-policy.md)

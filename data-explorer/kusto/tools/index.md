@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 11/05/2019
 ---
 # Azure Data Explorer tools
 
@@ -21,13 +21,17 @@ ms.date: 10/30/2019
 
 
 * [Azure Notebooks](azurenotebooks.md) - Query Kusto from an Azure Notebooks notebook (preview)
-* [Excel blank query](https://docs.microsoft.com/azure/data-explorer/excel-blank-query) - Add Kusto query as Excel data source
-* [Excel connector](https://docs.microsoft.com/azure/data-explorer/excel-connector) - an Excel connector for Azure Data Explorer 
+* Excel
+    * [Excel blank query](https://docs.microsoft.com/azure/data-explorer/excel-blank-query) - Add Kusto query as Excel data source
+    * [Excel connector](https://docs.microsoft.com/azure/data-explorer/excel-connector) - an Excel connector for Azure Data Explorer 
 
-* [PowerBI](./powerbi.md) - Build reports and dashboards in Power BI on top of Azure Data Explorer data
-* [PowerBI Connector](./powerbi-connector.md) - a Power BI Desktop connector for Azure Data Explorer
+* PowerBI
+    * [PowerBI best practices](https://docs.microsoft.com/azure/data-explorer/power-bi-best-practices)
+    * [PowerBI Connector](https://docs.microsoft.com/azure/data-explorer/power-bi-connector)
+    * [PowerBI imported query](https://docs.microsoft.com/azure/data-explorer/power-bi-imported-query) 
+    * [PowerBI SQL query](https://docs.microsoft.com/azure/data-explorer/power-bi-sql-query)
 
-* [Grafana](https://docs.microsoft.com/azure/data-explorer/grafana) - an analytics platform that enables creating and sharing dashboards.
+* [Grafana](https://docs.microsoft.com/azure/data-explorer/grafana)
 
 ## Orchestration tools
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/06/2019
+ms.date: 11/02/2019
 ---
 # Data ingestion
 
@@ -194,6 +194,7 @@ formatted in one of the supported data formats:
 |raw      |`.raw`      |A text file whose entire contents is a single string value.|
 |scsv     |`.scsv`     |A text file with semicolon-separated values (`;`).|
 |sohsv    |`.sohsv`    |A text file with SOH-separated values. (SOH is ASCII codepoint 1; this format is used by Hive on HDInsight.)|
+
 |tsv      |`.tsv`      |A text file with tab-separated values (`\t`).|
 |tsve     |`.tsv`      |A text file with tab-separated values (`\t`). A backslash character (`\`) is used for escaping.|
 |txt      |`.txt`      |A text file with lines delimited by `\n`.|

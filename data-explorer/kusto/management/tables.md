@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2019
+ms.date: 11/04/2019
 ---
 # Tables management
 
@@ -481,9 +481,7 @@ Creates an ingestion mapping that is associated with a specific table and a spec
 
 **Syntax**
 
-`.create` `table` *TableName* `ingestion`  `mapping` *MappingName* *MappingFormattedAsJson*
-
-`.create` `table` *TableName* `ingestion`  `mapping` *MappingName* *MappingFormattedAsJson*
+`.create` `table` *TableName* `ingestion` *MappingKind* `mapping` *MappingName* *MappingFormattedAsJson*
 
 **Notes:** 
 
@@ -496,9 +494,18 @@ Creates an ingestion mapping that is associated with a specific table and a spec
 **Example** 
  
 ```kusto
-.create table MyTable ingestion csv mapping "Mapping1" '[{ "Name" : "rownumber", "DataType":"int", "Ordinal" : 0},{ "Name" : "rowguid", "DataType":"string", "Ordinal" : 1 }]'
 
-.create-or-alter table MyTable ingestion json mapping "Mapping1" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
+.create table MyTable ingestion csv mapping "Mapping1"
+'['
+'   { "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},'
+'   { "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"}}'
+']'
+
+.create-or-alter table MyTable ingestion json mapping "Mapping1"
+'['
+'    { "column" : "rownumber", "datatype" : "int", "Properties":{"Path":"$.rownumber"}},'
+'    { "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}'
+']'
 ```
 
 **Example output**
@@ -514,7 +521,7 @@ Alters an existing ingestion mapping that is associated with a specific table an
 
 **Syntax**
 
-`.alter` `table` *TableName* `ingestion` `csv` `mapping` *MappingName* *MappingFormattedAsJson*
+`.alter` `table` *TableName* `ingestion` *MappingKind* `mapping` *MappingName* *MappingFormattedAsJson*
 
 **Notes:**
 
@@ -525,9 +532,17 @@ Alters an existing ingestion mapping that is associated with a specific table an
 **Example** 
  
 ```kusto
-.alter table MyTable ingestion csv mapping "Mapping1" '[{ "Name" : "rownumber", "DataType":"int", "Ordinal" : 0},{ "Name" : "rowguid", "DataType":"string", "Ordinal" : 1 }]'
+.alter table MyTable ingestion csv mapping "Mapping1"
+'['
+'	{ "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},'
+'	{ "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"} }'
+']'
 
-.alter table MyTable ingestion json mapping "Mapping1" '[{ "column" : "rownumber", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
+.alter table MyTable ingestion json mapping "Mapping1"
+'['
+'	{ "column" : "rownumber", "Properties":{"Path":"$.rownumber"}},'
+'	{ "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}'
+']'
 ```
 **Example output**
 
@@ -538,15 +553,16 @@ Alters an existing ingestion mapping that is associated with a specific table an
 
 ## .show ingestion mappings
 
-`.show` `table` *TableName* `ingestion` `csv` `mappings`
-
-`.show` `table` *TableName* `ingestion` `csv` `mapping` *MappingName* 
-
-`.show` `table` *TableName* `ingestion` `json` `mappings`
-
-`.show` `table` *TableName* `ingestion` `json` `mapping` *MappingName* 
-
 Show the ingestion mappings (all or the one specified by name).
+
+* `.show` `table` *TableName* `ingestion` *MappingKind*  `mappings`
+
+* `.show` `table` *TableName* `ingestion` *MappingKind*  `mapping` *MappingName* 
+
+Show all ingestion mappings from all mapping kinds:
+
+* `.show` `table` *TableName* `ingestion`  `mapping`
+
  
 **Example** 
  
@@ -554,6 +570,8 @@ Show the ingestion mappings (all or the one specified by name).
 .show table MyTable ingestion csv mapping "Mapping1" 
 
 .show table MyTable ingestion csv mappings 
+
+.show table MyTable ingestion mappings 
 ```
 **Example output**
 
@@ -564,9 +582,7 @@ Show the ingestion mappings (all or the one specified by name).
 
 ## .drop ingestion mapping
 
-`.drop` `table` *TableName* `ingestion` `csv` `mapping` *MappingName* 
-
-`.drop` `table` *TableName* `ingestion` `json` `mapping` *MappingName* 
+`.drop` `table` *TableName* `ingestion` *MappingKind*  `mapping` *MappingName* 
 
 Drops the ingestion mapping from the database.
  
