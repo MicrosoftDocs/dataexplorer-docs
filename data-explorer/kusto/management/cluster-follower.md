@@ -198,26 +198,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 .alter follower database MyDB caching-policies-modification-kind = union
 ```
 
-### .alter follower database prefetch-extents
 
-Alters the follower database configuration of pre-fetching new extents upon each schema refresh. 
-It requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md).
-
-> [!NOTE]
-> Enabling this setting could potentially degrade the freshness of data in the follower database. The default configuration is `false`.
-
-**Syntax**
-
-`.alter` `follower` `database` *DatabaseName* `prefetch-extents` = (`true` | `false`)
-
-
-
-
-**Example**
-
-```kusto
-.alter follower database MyDB prefetch-extents = false
-```
 
 ## Table level commands
 

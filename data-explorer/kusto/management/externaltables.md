@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/06/2019
+ms.date: 11/08/2019
 ---
 # External tables management (preview)
 
@@ -180,9 +180,6 @@ Creates or alters a new external table in the database in which the command is e
 > * Altering the schema, format or partitions definition of an external blob table is not supported. 
 > * Requires [Database user permission](../management/access-control/role-based-authorization.md) for `.create` and [Table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
  
-> [!NOTE]
-> * External table can have multiple partitions. Export is currently supported for tables with a single `DateTime` partition (or no partitions at all) and will write the exported artifacts to separate folders or directories according to a Timestamp column of the exported records as depicted in the examples below. 
-
 **Example** 
 
 A non-partitioned external table (all artifacts are expected to be directly under the container(s) defined):

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/02/2019
+ms.date: 11/08/2019
 ---
 # Export data to storage
 
@@ -59,6 +59,7 @@ external storage, specified by a [storage connection string](../../api/connectio
 |`compressionType`|`string`|Indicates the type of compression to use: `gzip` (default, if `compressed` is specified) or `snappy` (supported only for `parquet` format).     
 |`distributed`   |`bool`  |Indicates that the export writes from all nodes executing the query in parallel. (Defaults to `true`.)                     |
 |`persistDetails`|`bool`  |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller does not require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
+|`parquetRowGroupSize`|`int`  |Relevant only when data format is parquet. Controls the row group size in the exported files. Default row group size is 100000 records.|
 
 **Results**
 
