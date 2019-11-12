@@ -1,16 +1,15 @@
 ---
-title:  - Azure Data Explorer | Microsoft Docs
-description: This article describes  in Azure Data Explorer.
+title: Summarize operator - Azure Data Explorer | Microsoft Docs
+description: This article describes Summarize operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/08/2019
+ms.date: 11/11/2019
 ---
-
-# summarize operator
+# Summarize operator
 
 Produces a table that aggregates the content of the input table. 
 
@@ -152,7 +151,7 @@ Activities | summarize count() by ActivityType, length=bin(Duration, 10m)
 |`2876`|`singing`|`0:20:00.000`
 |...
 
-**Examples for the aggregates default values**
+**Example for the aggregates default values**
 
 When the input of summarize operator that has at least one group-by key is empty then it's result is empty too.
 

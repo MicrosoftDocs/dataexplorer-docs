@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/05/2019
+ms.date: 11/11/2019
 ---
 # geo_point_to_geohash()
 
@@ -33,6 +33,29 @@ The Geohash string value of a given geographic location with requested accuracy 
 > [!NOTE]
 >* Invoking the [geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md) function on a geohash string that was calculated on longitude x and latitude y won't necessairly return x and y.
 >* Due to the Geohash definition, it's possible that two geographic locations are very close to each other but have different Geohash codes.
+
+**Geohash rectangular area coverage per accuracy value**
+
+|Accuracy|Width|Height|
+|---|---|--|
+|1|5000 km|5000 km|
+|2|1250 km|625 km|
+|3|156.25 km|156.25 km|
+|4|39.06 km|19.53 km|
+|5|4.88 km|4.88 km|
+|6|1.22 km|0.61 km|
+|7|152.59 m|152.59 m|
+|8|38.15 m|19.07 m|
+|9|4.77 m|4.77 m|
+|10|1.19 m| 0.59 m|
+|11|149.01 mm|149.01 mm|
+|12|37.25 mm|18.63 mm|
+|13|4.66 mm|4.66 mm|
+|14|1.16 mm|0.58 mm|
+|15|145.52 μ|145.52 μ|
+|16|36.28 μ|18.19 μ|
+|17|4.55 μ|4.55 μ|
+|18|1.14 μ|0.57 μ|
 
 **Examples**
 

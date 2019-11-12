@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/19/2019
+ms.date: 11/11/2019
 ---
 # Extents (data shards)
 
@@ -56,6 +56,8 @@ it allows Kusto to optimize its indexes and improve compression. Extent
 merging stops once an extent reaches certain limits, such as size,
 as beyond a certain point merging extents reduces rather than increases
 efficiency.
+
+
 
 > [!NOTE]
 > The process of merging extents does not modify existing extents.

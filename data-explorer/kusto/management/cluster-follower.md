@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/07/2019
+ms.date: 11/11/2019
 ---
 # Cluster follower commands
 
@@ -65,7 +65,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 
 
-**Examples**
+**Example**
 
 
 
@@ -118,14 +118,14 @@ It requires [DatabaseAdmin permission](../management/access-control/role-based-a
 
 
 
-**Examples**
+**Example**
 
 ```kusto
 .add follower database MyDB viewers ('aadgroup=mygroup@microsoft.com') 'My Group'
 ```
 
 ```kusto
-.add follower database MyDB from h'https://accountname.blob.core.windows.net/containername' viewers ('aadgroup=mygroup@microsoft.com') 'My Group'
+
 ```
 
 ### .drop follower database principals
@@ -165,8 +165,10 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 **Syntax**
 
-`.alter` `follower` `database` *DatabaseName* [`from` `h@'`*path to leader cluster's metadata container*`'`]
+`.alter` `follower` `database` *DatabaseName*
 `principals-modification-kind` = (`none` | `union` | `replace`)
+
+
 
 **Example**
 
@@ -227,7 +229,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 `.alter` `follower` `database` *DatabaseName* tables `(`*TableName1*`,`...`,`*TableNameN*`)` `policy` `caching` `hot` `=` *HotDataSpan*
 
-**Examples**
+**Example**
 
 
 
