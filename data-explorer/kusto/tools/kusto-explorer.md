@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 11/13/2019
 ---
 # Kusto.Explorer tool
 
@@ -99,8 +99,7 @@ Home Tab accumulates most recently used functionality, splitted by menus:
 
 #### Visualizations Menu
 
-![alt text](./Images/KustoTools-KustoExplorer/home-visualizations-menu
-.png "menu-visualizations")
+![alt text](./Images/KustoTools-KustoExplorer/home-visualizations-menu.png "menu-visualizations")
 
 |Menu         | Behavior|
 |-------------|---------|
@@ -765,4 +764,5 @@ Sometimes, when previous troubleshooting steps didn't help with getting Kusto.Ex
 
 Data stored by Kusto.Explorer application can be found here: C:\Users\\[your alias]\AppData\Local\Kusto.Explorer.
 
-Please, pay attention that cleaning the data will lead to the loss of opened tabs (Recovery folder), saved connections (Connections folder), application settings (UserSettings folder).
+> [!NOTE]
+> Cleaning the data will lead to loss of opened tabs (Recovery folder), saved connections (Connections folder),and application settings (UserSettings folder).

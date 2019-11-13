@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/20/2019
+ms.date: 11/13/2019
 ---
 # top-nested operator
 
@@ -53,7 +53,7 @@ This means that the top n values for level i are calculated for each value in le
 
 * Use columns renaming in for *Aggregation* results: T | top-nested 3 of Location by MachinesNumberForLocation = sum(MachinesNumber) ... .
 
-* The number of records returned might be quite large; up to (*N1*+1) * (*N2*+1) * ... * (*Nm*+1) (where m is the number of the levels and *Ni* is the top count for level i).
+* The number of records returned might be quite large; up to (*N1*+1) \* (*N2*+1) \* ... \* (*Nm*+1) (where m is the number of the levels and *Ni* is the top count for level i).
 
 * The Aggregation must receive a numeric column with aggregation function which is one of the mentioned above.
 

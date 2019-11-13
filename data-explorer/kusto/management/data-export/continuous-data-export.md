@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2019
+ms.date: 11/13/2019
 ---
 # Continuous data export
 
@@ -53,8 +53,8 @@ All of the continuous export commands require [Database admin permission](../acc
 `.create-or-alter` `continuous-export` *ContinuousExportName* <br>
 [ `over` `(`*T1*, *T2* `)`] <br>
 `to` `table` *ExternalTableName* <br> 
-[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
-<| *Query*
+[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]<br>
+\<| *Query*
 
 **Properties**:
 
