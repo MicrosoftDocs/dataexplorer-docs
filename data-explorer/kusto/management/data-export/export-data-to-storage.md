@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/02/2019
+ms.date: 11/13/2019
 ---
 # Export data to storage
 
@@ -28,7 +28,7 @@ external storage, specified by a [storage connection string](../../api/connectio
   See below for more details on the behavior in this mode.
 
 * `compressed`: If specified, the output storage artifacts are compressed
-  as `.gz` files.
+  as `.gz` files. See `compressionType` for compressing parquet files as snappy. 
 
 * *OutputDataFormat*: Indicates the data format of the storage artifacts written
   by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`.
@@ -56,9 +56,10 @@ external storage, specified by a [storage connection string](../../api/connectio
 |`fileExtension` |`string`|Indicates the "extension" part of the storage artifact (e.g. `.csv` or `.tsv`) Note that if compression is used, `.gz` will be appended as well.|
 |`namePrefix`    |`string`|Indicates a prefix to add to each generated storage artifact name. A random prefix will be used if left unspecified.       |
 |`encoding`      |`string`|Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`.                                                      
-|`compressionType`|`string`|Indicates the type of compression to use: `gzip` (default, if `compressed` is specified) or `snappy` (supported only for `parquet` format).     
+|`compressionType`|`string`|Indicates the type of compression to use. Possible values are `gzip` or `snappy`. Default is `gzip`, `snappy` can (optionally) be used for `parquet` format.     
 |`distributed`   |`bool`  |Indicates that the export writes from all nodes executing the query in parallel. (Defaults to `true`.)                     |
 |`persistDetails`|`bool`  |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller does not require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
+|`parquetRowGroupSize`|`int`  |Relevant only when data format is parquet. Controls the row group size in the exported files. Default row group size is 100000 records.|
 
 **Results**
 

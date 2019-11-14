@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/17/2019
+ms.date: 11/08/2019
 ---
 # mv-apply operator
 
@@ -27,7 +27,7 @@ T | mv-apply Metric to typeof(real) on (top 2 by Metric desc)
 In general, the mv-apply operator can be thought of as having the following
 processing steps:
 
-1. It uses the [mv-expand operator](./mvexpandoperator.md) to expand each record
+1. It uses the [mv-expand](./mvexpandoperator.md) operator to expand each record
    in the input into sub-tables.
 2. It applies the sub-query for each of the sub-tables.
 3. It prepends zero or more columns to each resulting sub-table, containing the
@@ -196,17 +196,12 @@ datatable(command:string, command_time:datetime, user_id:string)
     | summarize make_list(tostring(command_details['command']))
 )
 | project-away commands_details 
-
-
-
-
 ```
 
 |user_id|list_command_details_command|
 |---|---|
 |user1|[<br>  "ls",<br>  "mkdir",<br>  "chmod",<br>  "dir",<br>  "pwd",<br>  "rm"<br>]|
 |user2|[<br>  "rm",<br>  "pwd"<br>]|
-
 
 
 **See also**

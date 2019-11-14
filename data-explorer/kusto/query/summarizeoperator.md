@@ -1,17 +1,17 @@
 ---
-title: summarize operator - Azure Data Explorer | Microsoft Docs
-description: This article describes summarize operator in Azure Data Explorer.
+title: Summarize operator - Azure Data Explorer | Microsoft Docs
+description: This article describes Summarize operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/11/2019
+ms.date: 11/11/2019
 ---
-# summarize operator
+# Summarize operator
 
-The `summarize` operator produces a table that aggregates the content of the input table. 
+Produces a table that aggregates the content of the input table. 
 
 ```kusto
 T | summarize count(), avg(price) by fruit, supplier
@@ -23,7 +23,7 @@ A table that shows the number and average price of each fruit from each supplier
 T | summarize count() by price_range=bin(price, 10.0)
 ```
 
-A table that shows how many items have prices in each interval  [0,10.0[, [10.0,20.0[, and so on. This example has a column for the count and one for the price range. All other input columns are ignored.
+A table that shows how many items have prices in each interval  [0,10.0], [10.0,20.0], and so on. This example has a column for the count and one for the price range. All other input columns are ignored.
 
 **Syntax**
 
@@ -151,7 +151,7 @@ Activities | summarize count() by ActivityType, length=bin(Duration, 10m)
 |`2876`|`singing`|`0:20:00.000`
 |...
 
-**Examples for the aggregates default values**
+**Example for the aggregates default values**
 
 When the input of summarize operator that has at least one group-by key is empty then it's result is empty too.
 

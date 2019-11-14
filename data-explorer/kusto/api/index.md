@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/29/2019
+ms.date: 11/14/2019
 ---
 # Azure Data Explorer API Overview
 
@@ -20,7 +20,7 @@ The Azure Data Explorer service supports the following communication endpoints:
    Tabular Data Stream (TDS) protocol, used by the Microsoft SQL Server products.
    This endpoint is primarily useful for existing tools that know how to communicate
    with a SQL Server endpoint for queries.
-3. An Azure Resource Management (ARM) endpoint, which is the standard means for
+3. An Azure Resource Manager (ARM) endpoint, which is the standard means for
    Azure services to manage resources such as Azure Data Explorer clusters.
 
 Azure Data Explorer provides a number of client libraries that make use of the
