@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/08/2019
+ms.date: 11/13/2019
 ---
 # Data ingestion
 
@@ -188,7 +188,7 @@ formatted in one of the supported data formats:
 |avro     |`.avro`     |An [Avro container file](https://avro.apache.org/docs/current/). The following codes are supported: `null`, `deflate` (`snappy` is currently not supported).|
 |csv      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
 |json     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
-|multijson|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace. (This format is to preferred over json, unless the data is non-property bags.)|
+|multijson|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace. (This format is to preferred over `json`, unless the data is non-property bags.)|
 |parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet).|
 |psv      |`.psv`      |A text file with pipe-separated values (<code>&#124;</code>).|
 |raw      |`.raw`      |A text file whose entire contents is a single string value.|
@@ -196,7 +196,7 @@ formatted in one of the supported data formats:
 |sohsv    |`.sohsv`    |A text file with SOH-separated values. (SOH is ASCII codepoint 1; this format is used by Hive on HDInsight.)|
 |tsv      |`.tsv`      |A text file with tab-separated values (`\t`).|
 |tsve     |`.tsv`      |A text file with tab-separated values (`\t`). A backslash character (`\`) is used for escaping.|
-|txt      |`.txt`      |A text file with lines delimited by `\n`.|
+|txt      |`.txt`      |A text file with lines delimited by `\n`. Empty lines are skipped.|
 
 
 
