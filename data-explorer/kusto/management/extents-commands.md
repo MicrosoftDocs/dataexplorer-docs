@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 11/14/2019
 ---
 # Extents (data shards) management
 
@@ -369,7 +369,7 @@ Moves all extents from 2 specific tables (`MyTable1`, `MyTable2`) to table `MyOt
 tagged with `drop-by:MyTag`:
 ```kusto
 .replace extents in table MyOtherTable <|
-    {.show table 'MyOtherTable' extents where tags has 'drop-by:MyTag'},
+    {.show table MyOtherTable extents where tags has 'drop-by:MyTag'},
     {.show tables (MyTable1,MyTable2) extents}
 ```
 

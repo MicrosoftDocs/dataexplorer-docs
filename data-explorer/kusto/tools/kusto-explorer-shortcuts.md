@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/31/2019
+ms.date: 11/17/2019
 ---
 # Kusto.Explorer keyboard shortcuts (hot-keys)
 
@@ -56,6 +56,7 @@ or when the context is in the results view:
 |`Alt`+`V`  |Renders Pivot chart over existing data|
 |`Ctrl`+`Shift`+`V`|Shows Timeline pivot over existing data|
 |`Ctrl`+`F9`  | Toggles `show only matching rows`/`highlight matching rows` modes for  client text search (`Ctrl`+`F`) behavior in data grid. |
+|`Ctrl`+`F10` |Shows details panel - where selected row is presented as property  grid|
 |`Ctrl`+`F`  | Shows search box for the panel that is currently in focus. Supported in `Connetions`, `Data Results`, and `Query Editor` panels|
 |`Ctrl`+`Tab`| Shows Query Editor document selector dialog. You can hold `Ctrl` and swithch between documents with `Tab` |
 |`Ctrl`+`J`|Toggles appearance of the result panel|
