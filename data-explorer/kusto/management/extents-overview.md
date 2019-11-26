@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/11/2019
+ms.date: 11/22/2019
 ---
 # Extents (data shards)
 
@@ -44,12 +44,12 @@ spans of data more efficient because just the columns used by the query
 need to be loaded. Internally, each column of data in the extent is 
 subdivided into segments, and the segments into blocks. This division
 (which is not observable to queries) allows Kusto to optimize column
-compression and indexing. 
+compression and indexing.
 
 To maintain query efficiency, smaller extents are merged into larger extents.
 This is performed automatically by Kusto, as a background process, according
-to the configured [merge policy](../concepts/mergepolicy.md) and 
-[sharding policy](../concepts/shardingpolicy.md). 
+to the configured [merge policy](../concepts/mergepolicy.md) and
+[sharding policy](../concepts/shardingpolicy.md).
 Merging extents together reduces the management
 overhead of having a large number of extents to track, but more importantly,
 it allows Kusto to optimize its indexes and improve compression. Extent
@@ -60,11 +60,12 @@ efficiency.
 
 
 > [!NOTE]
-> The process of merging extents does not modify existing extents.
-> Rather, a new extent is created as a merge of multiple existing extents, and
-> then the merged extent replaces its forefathers in a single transaction.
+> Extent-level operations, such as merging, altering extent tags, etc. do not modify existing extents.
+> Rather, new extents are created in these operations based on existing source extents, and
+> then these new extents replace their forefathers in a single transaction.
 
 The common "lifecycle" of an extent therefore is:
+
 1. The extent is created by an **ingestion** operation.
 2. The extent is merged with other extents. When the extents being merged
    are small, Kusto actually performs an ingestion process on them (this
@@ -81,6 +82,7 @@ The common "lifecycle" of an extent therefore is:
 
 One of the more important pieces of information for each extent is its
 ingestion time. This time is used by Kusto for:
+
 1. Retention (extents that were ingested earlier will be dropped earlier).
 2. Caching (extents that have been ingested recently will be hotter).
 3. Sampling (when using query operations such as `take`, recent extents
@@ -92,6 +94,7 @@ extents, the resulting extent's values are the minimum and maximum, respectively
 values over all merged extents.
 
 An extent's ingestion time may be set in one of three ways:
+
 1. Normally, the node performing the ingestion sets this value according to
    its local clock.
 2. If an **ingestion time policy** is set on the table, the node performing
@@ -121,10 +124,12 @@ the extent tags of the extents being merged.
 
 Kusto assigns a special meaning to all extent tags whose value has the
 format *prefix* *suffix*, where *prefix* is one of:
+
 * `drop-by:`
 * `ingest-by:`
 
 ## 'drop-by:' extent tags
+
 Tags that start with a **`drop-by:`** prefix can be used to control which other
 extents to merge with; extents that have a given `drop-by:` tag can be merged
 together, but they won't be merged with other extents. This allows the user
@@ -137,18 +142,19 @@ the following command:
 .drop extents <| .show table MyTable extents where tags has "drop-by:2016-02-17" 
 ```
 
-**Performance notes:** 
-- Over-using `drop-by` tags is not recommended. The support for dropping 
+### Performance notes
+
+* Over-using `drop-by` tags is not recommended. The support for dropping 
 data in the manner mentioned above is meant for rarely-occurring events, is not 
 for replacing record-level data, and critically relies on the fact that the data 
 being tagged in this manner is "bulky". Attempting to give a different tag for 
 each record, or small number of records, might result with a severe impact on 
 performance.
-- In cases where such tags aren't required some period of time after data being ingested,
+* In cases where such tags aren't required some period of time after data being ingested,
 it's recommended to [drop the tags](extents-commands.md#drop-extent-tags).
 
-
 ## 'ingest-by:' extent tags
+
 Tags that start with an **`ingest-by:`** prefix can be used to ensure that data
 is only ingested once. The user can issue an ingest command that prevents
 the data from being ingested if there's already an extent with this specific
@@ -166,12 +172,13 @@ The following example ingests data only once (the 2nd and 3rd commands will do n
 .ingest ... with (ingestIfNotExists = '["2016-02-17"]', tags = '["ingest-by:2016-02-17"]')
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > In the common case, an ingest command is likely to include
->  both an `ingest-by:` tag and an `ingestIfNotExists` property,
->  set to the same value (as shown in the 3rd command above).
+> both an `ingest-by:` tag and an `ingestIfNotExists` property,
+> set to the same value (as shown in the 3rd command above).
 
-**Performance notes:**
+### Performance notes
+
 - Overusing `ingest-by` tags is not recommended.
 If the pipeline feeding Kusto is known to have data duplications, it's recommended
 to solve these as much as possible before ingesting the data into Kusto,

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/25/2019
+ms.date: 11/24/2019
 ---
 # Kusto.WebExplorer
 
@@ -15,12 +15,14 @@ Kusto.WebExplorer is a web application that can be used to send queries
 and control commands to a Kusto service. The application is hosted at
 [https://dataexplorer.azure.com/] and short-linked by [https://aka.ms/kwe].
 
+
+
 Kusto.WebExplorer can also be hosted by other web portals in an HTML IFRAME.
 (For example, this is done by the [Azure portal](https://portal.azure.com).)
 See [Monaco IDE](../api/monaco/monaco-kusto.md) for details on how to host it
 and the Monaco editor it uses.
 
-## Connect to multiple clusters 
+## Connect to multiple clusters
 
 You can now connect multiple clusters and switch between databases and clusters.
 The tool is designed to easily identify the cluster and database to which you are connected.

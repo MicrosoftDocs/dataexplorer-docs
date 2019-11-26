@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/31/2019
+ms.date: 11/22/2019
 ---
 # Scalar Functions
 
@@ -128,7 +128,7 @@ ms.date: 10/31/2019
 |[log2()](log2-function.md)|Returns the base-2 logarithm function.|
 |[loggamma()](loggammafunction.md)|Computes log of absolute value of the gamma function.|
 |[not()](notfunction.md)|Reverses the value of its bool argument.|
-|[pi()](pifunction.md)|Returns the constant value of Pi (Ãâ‚¬).|
+|[pi()](pifunction.md)|Returns the constant value of Pi (π).|
 |[pow()](powfunction.md)|Returns a result of raising to power.|
 |[radians()](radiansfunction.md)|Converts angle value in degrees into value in radians, using formula radians = (PI / 180 ) * angle-in-degrees.|
 |[rand()](randfunction.md)|Returns a random number.|

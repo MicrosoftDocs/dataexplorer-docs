@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/13/2019
+ms.date: 11/25/2019
 ---
 # Kusto Access Control Overview
 
@@ -31,8 +31,8 @@ of authentication scenarios:
   and applications that have to run/authenticate with no human user being present. 
 
 ### User authentication
-User authentication happens when the user presents credentials to AAD (or to some identity provide
-that federates with AAD, such as ADFS), and gets back a security token that can be presented to the
+User authentication happens when the user presents credentials to AAD (or to some identity provider
+that works with AAD, such as ADFS), and receives a security token that can be presented to the
 Kusto service. The Kusto service doesn't care how the security token was obtained, it cares about
 whether the token is valid and what information is put there by AAD (or the federated IdP).
 

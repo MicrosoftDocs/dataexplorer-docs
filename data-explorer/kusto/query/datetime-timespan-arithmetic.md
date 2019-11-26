@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/08/2019
+ms.date: 11/25/2019
 ---
 # Datetime / timespan arithmetic
 
@@ -40,11 +40,11 @@ and `timespan`:
 ## Example: Unix time
 
 [Unix time](https://en.wikipedia.org/wiki/Unix_time) (also known as POSIX time or UNIX Epoch time)
-is a system for describing a point in time as the number of seconds that have elapsed since 
+is a system for describing a point in time as the number of seconds that have elapsed since
 00:00:00 Thursday, 1 January 1970, Coordinated Universal Time (UTC), minus leap seconds.
 
 If your data includes representation of Unix time as an integer, or you require converting to it,
-the following functions may come handy:
+the following functions are available:
 
 ```kusto
 let fromUnixTime = (t:long)
@@ -69,3 +69,6 @@ print result = toUnixTime(datetime(2019-01-07 21:45:31.0000000))
 |result                     |
 |---------------------------|
 |1546897531                 |
+
+> [!NOTE]
+> In addition to the functions above, see dedicated functions for unix-epoch time conversions.
