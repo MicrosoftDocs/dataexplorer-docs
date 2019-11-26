@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 11/19/2019
 ---
 # Entities
 
@@ -47,3 +47,7 @@ database, which are query fragments made available for reuse.
 
 * [Stored functions](./stored-functions.md) are named entities that
   allow reuse of Kusto queries or query parts.
+
+* [External tables](./externaltables.md) are entities that reference data stored outside Kusto database.
+  External tables are used for exporting data from Kusto to external storage as well as for querying
+  external data without ingesting it into Kusto.

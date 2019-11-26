@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/14/2019
+ms.date: 11/18/2019
 ---
 # Data ingestion
 

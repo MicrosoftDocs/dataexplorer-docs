@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 11/19/2019
 ---
 # hash_combine()
 
-The hash_combine() function combines hash values of two or more hashes.
+Combines hash values of two or more hashes.
 
 **Syntax**
 

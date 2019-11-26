@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 11/19/2019
 ---
 # diffpatterns_text plugin
 
-The `diffpatterns_text` plugin compares two data sets of string values and finds text patterns that characterize differences between the two data sets.
+Compares two data sets of string values and finds text patterns that characterize differences between the two data sets.
 
 ```kusto
 T | evaluate diffpatterns_text(TextColumn, BooleanCondition)

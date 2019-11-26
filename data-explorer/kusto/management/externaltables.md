@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/08/2019
+ms.date: 11/20/2019
 ---
 # External tables management (preview)
 
@@ -373,7 +373,6 @@ The user or application authenticates via AAD to Kusto, and the same token is th
 > [!NOTE]
 > * If the table exists, `.create` command will fail with an error. Use `.alter` to modify existing tables. 
 > * Altering the schema or format of an external sql table is not supported. 
-> * Currently, SQL external table can only be used for [continuous export](data-export/continuous-data-export.md), and can't be used for querying data.
 
 Requires [Database admin permission](../management/access-control/role-based-authorization.md).
  
