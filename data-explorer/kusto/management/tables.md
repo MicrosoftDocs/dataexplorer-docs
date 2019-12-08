@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/04/2019
+ms.date: 11/26/2019
 ---
 # Tables management
 
@@ -103,6 +103,7 @@ Requires [Database viewer permission](../management/access-control/role-based-au
 |StreamingIngestionPolicy |String |The table's effective`*` streaming ingestion policy, serialized as JSON.
 |MinExtentsCreationTime |DateTime |The minimum creation time of an extent in the table (or null, if there are no extents).
 |MaxExtentsCreationTime |DateTime |The maximum creation time of an extent in the table (or null, if there are no extents).
+|RowOrderPolicy |String |The table's effective row order policy, serialized as JSON.
 
 `*` *Taking into account policies of parent entities (such as database/cluster).*
 
