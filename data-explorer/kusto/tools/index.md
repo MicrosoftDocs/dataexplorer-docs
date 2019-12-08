@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/05/2019
+ms.date: 12/05/2019
 ---
 # Azure Data Explorer tools
 
@@ -26,10 +26,11 @@ ms.date: 11/05/2019
     * [Excel connector](https://docs.microsoft.com/azure/data-explorer/excel-connector) - an Excel connector for Azure Data Explorer 
 
 * PowerBI
-    * [PowerBI best practices](https://docs.microsoft.com/azure/data-explorer/power-bi-best-practices)
-    * [PowerBI Connector](https://docs.microsoft.com/azure/data-explorer/power-bi-connector)
-    * [PowerBI imported query](https://docs.microsoft.com/azure/data-explorer/power-bi-imported-query) 
-    * [PowerBI SQL query](https://docs.microsoft.com/azure/data-explorer/power-bi-sql-query)
+
+   * [PowerBI best practices](https://docs.microsoft.com/azure/data-explorer/power-bi-best-practices)
+   * [PowerBI Connector](https://docs.microsoft.com/azure/data-explorer/power-bi-connector)
+   * [PowerBI imported query](https://docs.microsoft.com/azure/data-explorer/power-bi-imported-query) 
+   * [PowerBI SQL query](https://docs.microsoft.com/azure/data-explorer/power-bi-sql-query)
 
 * [Grafana](https://docs.microsoft.com/azure/data-explorer/grafana)
 
