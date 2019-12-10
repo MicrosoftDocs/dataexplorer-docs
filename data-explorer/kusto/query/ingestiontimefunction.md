@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 12/10/2019
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -17,13 +17,13 @@ Retrieves the record's `$IngestionTime` hidden `datetime` column, or null.
 
 The `$IngestionTime` column is automatically defined when the table's
 
-::: zone pivot="kusto"
+::: zone pivot="azuredataexplorer"
 
 [IngestionTime policy](../concepts/ingestiontimepolicy.md) is set (enabled).
 
 ::: zone-end
 
-::: zone pivot="loganalytics"
+::: zone pivot="azuremonitor"
 
 IngestionTime policy is set (enabled).
 

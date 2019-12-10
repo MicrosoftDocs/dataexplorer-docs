@@ -7,11 +7,15 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2018
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # find operator
 
 Finds rows that match a predicate across a set of tables.
+
+::: zone pivot="azuredataexplorer"
 
 The scope of the `find` can also be cross-database or cross-cluster.
 
@@ -23,6 +27,16 @@ find in (database('*').*) where Fruit == "apple"
 find in (cluster('cluster_name').database('MyDB*'.*)) where Fruit == "apple"
 ```
 
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+```kusto
+find in (Table1, Table2, Table3) where Fruit=="apple"
+```
+
+::: zone-end
+
 ## Syntax
 
 * `find` [`withsource`=*ColumnName*] [`in` `(`*Table* [`,` *Table*, ...]`)`] `where` *Predicate* [`project-smart` | `project` *ColumnName* [`:`*ColumnType*] [`,` *ColumnName*[`:`*ColumnType*], ...][`,` `pack(*)`]] 
@@ -30,6 +44,9 @@ find in (cluster('cluster_name').database('MyDB*'.*)) where Fruit == "apple"
 * `find` *Predicate* [`project-smart` | `project` *ColumnName*[`:`*ColumnType*] [`,` *ColumnName*[`:`*ColumnType*], ...] [`, pack(*)`]] 
 
 ## Arguments
+
+::: zone pivot="azuredataexplorer"
+
 * `withsource=`*ColumnName*: Optional. By default the output will include a column called *source_* whose values indicates which source table has contributed each row. If specified, *ColumnName* will be used instead of *source_* .
 If the query effectively (after wildcard matching) references tables from more than one database (default database always counts) the value of this column will have a table name qualified with the database. Similarly __cluster and database__ qualifications will be present in the value if more than one cluster is referenced.
 * *Predicate*: [see details](./findoperator.md#predicate-syntax). A `boolean` [expression](./scalar-data-types/bool.md) over the columns of the input tables *Table* [`,` *Table*, ...]. It is evaluated for each row in each input table. 
@@ -38,6 +55,20 @@ If the query effectively (after wildcard matching) references tables from more t
  *  A query expression, such as `(Events | where id==42)`
  *  A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.
 * `project-smart` | `project`: [see details](./findoperator.md#output-schema) if not specified `project-smart` will be used by default
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+* `withsource=`*ColumnName*: Optional. By default the output will include a column called *source_* whose values indicates which source table has contributed each row. If specified, *ColumnName* will be used instead of *source_* .
+* *Predicate*: [see details](./findoperator.md#predicate-syntax). A `boolean` [expression](./scalar-data-types/bool.md) over the columns of the input tables *Table* [`,` *Table*, ...]. It is evaluated for each row in each input table. 
+* `Table`: Optional. By default *find* will search in all tables
+ *  The name of a table, such as `Events` or
+ *  A query expression, such as `(Events | where id==42)`
+ *  A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables whose names begin `E`.
+* `project-smart` | `project`: [see details](./findoperator.md#output-schema) if not specified `project-smart` will be used by default
+
+::: zone-end
 
 ## Returns
 
@@ -94,6 +125,8 @@ find operator supports an alternative syntax for `* has` *term* , and using just
 
 ## Examples
 
+::: zone pivot="azuredataexplorer"
+
 ###  Term lookup across all tables (in current database)
 
 The next query finds all rows from all tables in the current database in which any column includes the word `Kusto`. 
@@ -132,7 +165,6 @@ The resulting records are transformed according to the [output schema](#output-s
 find in (database("B*").K*) where * has "Kusto"
 ```
 
-
 ### Term lookup in several clusters
 
 The next query finds all rows from all tables whose name starts with `K` in all databases whose name start with `B` and 
@@ -143,6 +175,21 @@ The resulting records are transformed according to the [output schema](#output-s
 find in (cluster("cluster1").database("B*").K*, cluster("cluster2").database("C*".*))
 where * has "Kusto"
 ```
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+###  Term lookup across all tables
+
+The next query finds all rows from all tables in which any column includes the word `Kusto`. 
+The resulting records are transformed according to the [output schema](#output-schema). 
+
+```kusto
+find "Kusto"
+```
+
+::: zone-end
 
 ## Examples of `find` output results  
 

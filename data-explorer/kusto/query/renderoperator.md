@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/05/2019
+ms.date: 12/10/2019
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -36,7 +36,7 @@ Where:
 
 * *Visualization* indicates the kind of visualization to use. The supported values are:
 
-::: zone pivot="kusto"
+::: zone pivot="azuredataexplorer"
 
 |*Visualization*     |Description|
 |--------------------|-|
@@ -57,7 +57,7 @@ Where:
 
 ::: zone-end
 
-::: zone pivot="loganalytics"
+::: zone pivot="azuremonitor"
 
 |*Visualization*     |Description|
 |--------------------|-|
@@ -141,7 +141,7 @@ three kinds of columns:
   the result might translate into them guessing wrong. Try projecting-away such
   columns when that happens. 
 
-::: zone pivot="kusto"
+::: zone pivot="azuredataexplorer"
 
 **Examples**
 
@@ -159,7 +159,7 @@ range x from -2 to 2 step 0.1
 
 ::: zone-end
 
-::: zone pivot="loganalytics"
+::: zone pivot="azuremonitor"
 
 **Example**
 

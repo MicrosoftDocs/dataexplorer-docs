@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/01/2019
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # Python plugin (Preview)
+
+::: zone pivot="azuredataexplorer"
 
 The Python plugin runs a user-defined-function (UDF) using a Python script. The Python script gets tabular data as its input, and is expected to produce a tabular output.
 The plugin's runtime is hosted in  a sandbox, an isolated and secure Python environment,  running on the cluster's nodes.
@@ -138,4 +142,12 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
     ```
 
 ---
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end
 

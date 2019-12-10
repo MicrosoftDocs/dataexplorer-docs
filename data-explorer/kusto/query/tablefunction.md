@@ -7,7 +7,9 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # table() (scope function)
 
@@ -23,12 +25,27 @@ table('StormEvent')
 
 **Arguments**
 
+::: zone pivot="azuredataexplorer"
+
 * *stringConstant*: Name of the table that is referenced. Argument has to be _constant_ prior of query execution, i.e. cannot come from sub-query evaluation.
 
 * *query_data_scope*: An optional parameter that controls the tables's datascope -- whether the query applies to all data or just part of it. Possible values:
     - `"hotcache"`: Table scope is data that is covered by [cache policy](../concepts/cachepolicy.md)
     - `"all"`: Table scope is all data, hot or cold.
     - `"default"`: Table scope is default (cluster default policy)
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+* *stringConstant*: Name of the table that is referenced. Argument has to be _constant_ prior of query execution, i.e. cannot come from sub-query evaluation.
+
+* *query_data_scope*: An optional parameter that controls the tables's datascope -- whether the query applies to all data or just part of it. Possible values:
+    - `"hotcache"`: Table scope is data that is covered by cache policy
+    - `"all"`: Table scope is all data, hot or cold.
+    - `"default"`: Table scope is default (cluster default policy)
+
+::: zone-end
 
 ## Examples
 
@@ -71,7 +88,11 @@ receives a parameter `tableName` - which is passed into the table() function.
 };
 ```
 
+::: zone pivot="azuredataexplorer"
+
 **Note:** such functions can be used only locally and not in the cross-cluster query.
+
+::: zone-end
 
 ### Use table() with non-constant parameter
 

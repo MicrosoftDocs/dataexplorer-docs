@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/22/2019
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # execute_query plugin
+
+::: zone pivot="azuredataexplorer"
 
 The `execute_query` plugin executes a query provided as a `string` value and makes
 its first record set available for further processing.
@@ -55,3 +59,11 @@ let Query=toscalar(datatable (Text:string) [
   | project tostring(Candidates[toint(rand(array_length(Candidates)))]));
 evaluate execute_query(".", Query)
 ```
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end
