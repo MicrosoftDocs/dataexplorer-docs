@@ -7,10 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/02/2018
+ms.date: 12/09/2019
 ---
 # Regular expressions
 
+RE2 regular expression syntax describes the syntax of the regular expression library used by Kusto (re2).
 There are a few functions in Kusto perform string matching, selection, and extraction
 by using a regular expression
 

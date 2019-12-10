@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/09/2019
 ---
 # tdigest_merge() (aggregation function)
 
@@ -20,6 +20,8 @@ Read more about the underlying algorithm (T-Digest) and the estimated error [her
 **Syntax**
 
 summarize `tdigest_merge(`*Expr*`)`.
+
+summarize `tdigest_merge(`*Expr*`)` - An alias.
 
 **Arguments**
 

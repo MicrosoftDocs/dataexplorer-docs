@@ -7,13 +7,15 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/09/2019
 ---
 # merge_tdigests() (aggregation function)
 
 Merges tdigest results across the group. 
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
+
+Read more about the underlying algorithm (T-Digest) and the estimated error [here](percentiles-aggfunction.md#estimation-error-in-percentiles).
 
 **Syntax**
 
