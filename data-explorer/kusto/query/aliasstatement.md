@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # Alias statement
+
+::: zone pivot="azuredataexplorer"
 
 Alias statements allow to define alias for databases which can be used later in the same query.
 
@@ -36,3 +40,11 @@ database("wiki").PageViews | count
 alias database Logs = cluster("https://othercluster.kusto.windows.net:443").database("otherdatabase");
 database("Logs").Traces | count 
 ```
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end

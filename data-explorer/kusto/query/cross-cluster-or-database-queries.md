@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/25/2019
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # Cross-database and cross-cluster queries
+
+::: zone pivot="azuredataexplorer"
 
 Every Kusto query operates in the context of the current cluster and the default database.
 * In [Kusto Explorer](../tools/kusto-explorer.md) the default database is the one selected in the [Connections panel](../tools/kusto-explorer.md#connections-panel) and the current cluster is the connection containing that database
@@ -164,3 +168,11 @@ of the `take` operator. To lift this limit, use the `notruncation`
 client request option.
 
 To display data in graphical form, use the [render operator](renderoperator.md).
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end

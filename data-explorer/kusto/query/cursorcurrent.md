@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/21/2019
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # cursor_current(), current_cursor()
+
+::: zone pivot="azuredataexplorer"
 
 Retrieves the current value of the cursor of the database in scope. (The names `cursor_current`
 and `current_cursor` are synonyms.)
@@ -27,3 +31,11 @@ cursor of the database in scope.
 
 See [database cursors](../management/databasecursor.md) for additional
 details on database cursors.
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end

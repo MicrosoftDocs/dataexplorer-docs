@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/19/2019
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # Restrict statement
+
+::: zone pivot="azuredataexplorer"
 
 The restrict statement limits the set of table/view entities which are
 visible to query statements that follow it. For example, in a database that
@@ -138,3 +142,11 @@ let View2 = view () { Table2 | project Column1, Column2 };
 restrict access to (View1, View2);
 Table1 |  count
 ```
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end

@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/08/2019
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # current_principal()
+
+::: zone pivot="azuredataexplorer"
 
 Returns the current principal name running the query.
 
@@ -32,3 +36,11 @@ print fqn=current_principal()
 |fqn|
 |---|
 |aaduser=346e950e-4a62-42bf-96f5-4cf4eac3f11e;72f988bf-86f1-41af-91ab-2d7cd011db47|
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end

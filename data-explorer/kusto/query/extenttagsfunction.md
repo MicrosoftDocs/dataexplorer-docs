@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # extent_tags()
+
+::: zone pivot="azuredataexplorer"
 
 Returns a dynamic array with the [tags](../management/extents-overview.md#extent-tagging) of the data shard ("extent") that the current record resides in. 
 
@@ -51,3 +55,11 @@ T
 | where Tags has_cs 'MyTag' and Tags !has_cs 'drop-by:MyOtherTag'
 | count
 ```
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end

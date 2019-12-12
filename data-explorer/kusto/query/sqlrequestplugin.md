@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/11/2019
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # sql_request plugin
+
+::: zone pivot="azuredataexplorer"
 
   `evaluate` `sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)`
 
@@ -126,3 +130,12 @@ Where:
 > One cannot omit, for example, the prefix `tcp:` even though it is possible to
 > do so when using the SQL client libraries programmatically.
 
+
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end

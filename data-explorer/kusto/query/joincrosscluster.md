@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/11/2019
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # Cross-Cluster Join
+
+::: zone pivot="azuredataexplorer"
 
 For general discussion on cross-cluster queries see [cross-cluster or cross-database queries](cross-cluster-or-database-queries.md)
 
@@ -56,3 +60,11 @@ Following are legal values for *`strategy`*
 * **`auto`** - (default) let Kusto make the automatic remoting decision
 
 **Note:** Join remoting hint will be ignored by Kusto if hinted strategy is not applicable to the join operation.
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end

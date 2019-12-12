@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/27/2019
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # Query parameters declaration statement
+
+::: zone pivot="azuredataexplorer"
 
 Queries sent to Kusto may include, in addition to the query text itself,
 a set of name/value pairs called **query parameters**. The query text may then
@@ -95,3 +99,11 @@ the REST API, as described above. The query text itself must still [declare the 
 ### Kusto.Explorer
 
 Query parameters are currently not supported by Kusto.Explorer.
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end
