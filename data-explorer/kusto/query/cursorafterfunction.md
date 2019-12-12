@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/21/2019
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # cursor_after()
+
+::: zone pivot="azuredataexplorer"
 
 A predicate over the records of a table to compare their ingestion time
 against a database cursor.
@@ -34,3 +38,11 @@ details on database cursors.
 
 This function can only be invoked on records of a table which has the
 [IngestionTime policy](../concepts/ingestiontimepolicy.md) enabled.
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end

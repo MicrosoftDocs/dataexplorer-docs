@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # database() (scope function)
+
+::: zone pivot="azuredataexplorer"
 
 Changes the reference of the query to a specific database within the cluster scope. 
 
@@ -73,3 +77,11 @@ receives a parameter `dbName` - which is passed into the database() function.
 ```
 
 **Note:** such functions can be used only locally and not in the cross-cluster query.
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end

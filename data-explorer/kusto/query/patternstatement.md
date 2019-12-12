@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # pattern statement
+
+::: zone pivot="azuredataexplorer"
 
 A **pattern** is a named view-like construct that maps predefined
 string tuples to parameterless function bodies. Patterns are unique
@@ -202,3 +206,11 @@ union (App('a2').Metrics), (App('a3').Metrics)
 Semantic error returned:
 
     SEM0036: One or more pattern references were not declared. Detected pattern references: ["App('a2').['Metrics']","App('a3').['Metrics']"].
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end

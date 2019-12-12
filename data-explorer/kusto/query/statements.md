@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/22/2019
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # Query statements
+
+::: zone pivot="azuredataexplorer"
 
 A query consists of one or more **query statements**, delimited by a semicolon (`;`).
 At least one of these query statements must be a [tabular expression statement](./tabularexpressionstatements.md).
@@ -64,3 +68,11 @@ Following is a list of application query statements:
 * A [restrict statement](./restrictstatement.md), which is used by applications that are built
   on top of Kusto to restrict queries to a specific subset of data in Kusto (including restricting
   access to specific columns and records.)
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end

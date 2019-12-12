@@ -7,33 +7,32 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 12/12/2019
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # ingestion_time()
 
 Retrieves the record's `$IngestionTime` hidden `datetime` column, or null.
-
 The `$IngestionTime` column is automatically defined when the table's
 
-::: zone pivot="kusto"
+::: zone pivot="azuredataexplorer"
 
 [IngestionTime policy](../concepts/ingestiontimepolicy.md) is set (enabled).
 
 ::: zone-end
 
-::: zone pivot="loganalytics"
+::: zone pivot="azuremonitor"
 
 IngestionTime policy is set (enabled).
 
 ::: zone-end
 
-If the table does not have this policy defined, a null value is returned.
+If the table doesn't have this policy defined, a null value is returned.
 
-This function must be used in the context of an actual table in order
-to return the relevant data. (For example, it will return null for all records
-if it is invoked following a `summarize` operator).
+This function must be used in the context of an actual table
+to return the relevant data. For example, it will return null for all records
+if it's invoked following a `summarize` operator.
 
 **Syntax**
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/12/2019
+ms.date: 12/08/2019
 ---
 # geo_point_in_circle()
 
@@ -48,7 +48,7 @@ datatable(longitude:real, latitude:real, place:string)
     real(-122.443663), 47.247092, 'Tacoma',                    // In exterior of circle
     real(-122.121975), 47.671345, 'Redmond',                   // In circle
 ]
-| where geo_point_in_circle(longitude, latitude, -122.317404, 47.609119, 18000) > 0
+| where geo_point_in_circle(longitude, latitude, -122.317404, 47.609119, 18000)
 | project place
 ```
 

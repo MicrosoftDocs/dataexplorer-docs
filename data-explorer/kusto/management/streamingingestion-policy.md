@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 12/11/2019
 ---
 # Streaming ingestion policy management
 
@@ -62,9 +62,24 @@ The `.alter policy streamingingestion` command sets the streamingingestion polic
 
 * `.alter` `database` MyDatabase `policy` `streamingingestion` *StreamingIngestionPolicyObject*
 
+* `.alter` `database` MyDatabase `policy` `streamingingestion` `enable`
+
+* `.alter` `database` MyDatabase `policy` `streamingingestion` `disable`
+
 * `.alter` `table` MyTable `policy` `streamingingestion` *StreamingIngestionPolicyObject*
 
-*StreamingIngestionPolicyObject* is a JSON object that has the streaming ingestion policy object defined.
+* `.alter` `table` MyTable `policy` `streamingingestion` `enable`
+
+* `.alter` `table` MyTable `policy` `streamingingestion` `disable`
+
+**Notes**
+
+1. *StreamingIngestionPolicyObject* is a JSON object that has the streaming ingestion policy object defined.
+
+2. `enable` - set the streaming ingestion policy to be with 4 rowstores if the policy is not defined or already defined with 0   rowstores, otherwise the command will do nothing.
+
+3. `disable` - set the streaming ingestion policy to be with 0 rowstores if the policy is already defined with positive rowstores,
+otherwise the command will do nothing.
 
 **Example**
 

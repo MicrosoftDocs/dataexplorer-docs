@@ -7,7 +7,9 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/12/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # Null Values
 
@@ -63,9 +65,13 @@ Then:
 |&nbsp;|&nbsp;|false    |false     |1        |true     |
 |a     |1     |false    |false     |1        |false    |
 
-> If you run the query above in Kusto.Explorer, all `true`
+::: zone pivot="azuredataexplorer"
+
+* If you run the query above in Kusto.Explorer, all `true`
   values will be displated as `1`, and all `false` values
   will be displayed as `0`.
 
-> Kusto does not offer a way to constrain a table's column from having null
+::: zone-end
+
+* Kusto does not offer a way to constrain a table's column from having null
   values (in other words, there's no equivalent to SQL's `NOT NULL` constraint).

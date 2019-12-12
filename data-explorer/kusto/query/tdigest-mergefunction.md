@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/09/2019
 ---
 # tdigest_merge()
 
@@ -17,7 +17,9 @@ Read more about the underlying algorithm (T-Digest) and the estimated error [her
 
 **Syntax**
 
-`tdigest_merge(` *Expr1*`,` *Expr2*`, ...)` 
+`merge_tdigests(` *Expr1*`,` *Expr2*`, ...)`
+
+`tdigest_merge(` *Expr1*`,` *Expr2*`, ...)` - An alias.
 
 **Arguments**
 

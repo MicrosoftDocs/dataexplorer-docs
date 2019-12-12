@@ -7,9 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/10/2019
+zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # Set statement
+
+::: zone pivot="azuredataexplorer"
 
 The `set` statement is used to set a query option for the duration of the query.
 Query options control how a query executes and returns results. They can be
@@ -33,3 +37,11 @@ statements that trail them in program order.
 set querytrace;
 Events | take 100
 ```
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This isn't supported in Azure Monitor
+
+::: zone-end
