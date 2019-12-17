@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/11/2019
+ms.date: 12/16/2019
 ---
 # Cluster follower commands
 
@@ -113,7 +113,7 @@ It requires [DatabaseAdmin permission](../management/access-control/role-based-a
 
 **Syntax**
 
-`.add` `follower` `database` *DatabaseName* (`admins` | `users` | `viewers` | `unrestrictedviewers` | `monitors`) Role `(`*principal1*`,`...`,`*principalN*`)` [`'`*notes*`'`]
+`.add` `follower` `database` *DatabaseName* (`admins` | `users` | `viewers` | `monitors`) Role `(`*principal1*`,`...`,`*principalN*`)` [`'`*notes*`'`]
 
 
 
@@ -143,7 +143,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 **Syntax**
 
 `.drop` `follower` `database` *DatabaseName*
-(`admins` | `users` | `viewers` | `unrestrictedviewers` | `monitors`) `(`*principal1*`,`...`,`*principalN*`)`
+(`admins` | `users` | `viewers` | `monitors`) `(`*principal1*`,`...`,`*principalN*`)`
 
 **Example**
 
