@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/16/2019
 ---
 # Update policy
 
@@ -64,7 +64,12 @@ This command sets the update policy of the specified table.
 
 2. The following validations are performed on the update policy when it is being set (in case `IsEnabled` is set to `true`):
     1. `Source`: Table should exist in the target database.
-    2. `Query`: The schema defined by the schema should match the one of the target table.
+    2. `Query`: 
+        * The schema defined by the schema should match the one of the target table. 
+        * The query must reference the `source` table of the update policy. Defining an update policy query which does *not* 
+        reference the source is possible by setting `AllowUnreferencedSourceTable=true` in the with properties (see example below),
+        but is generally not recommended due to performance reasons (it implies that for every ingestion to the source table, 
+        *all* records in a different table are considered for the update policy execution).
     3. The policy doesn't result with a cycle being created in the chain of Update Policies in the target database.
     4. In case `IsTransactional` is set to `true`, `TableAdmin` permissions are verified against `Source` (the source table) as well.
   
@@ -104,6 +109,18 @@ MyUpdateFunction()
   - This "scoping" is done internally and automatically, it should not be handled when defining the `Query`.
   - Only newly ingested records (different in each ingestion operation) will be taken into consideration when ingesting to the derived table (in this case `DerivedTableX`).
 
+
+```kusto
+// The following example will throw an error for not referencing the source table in the update policy query
+// The policy's source table is MyTableX, whereas the query only references MyOtherTable. 
+.alter table DerivedTableX policy update
+@'[{"IsEnabled": true, "Source": "MyTableX", "Query": "MyOtherTable", "IsTransactional": false, "PropagateIngestionProperties": false}]'
+
+// Adding the following properties will suppress the error (but is not recommended)
+.alter table DerivedTableX policy update with (AllowUnreferencedSourceTable=true)
+@'[{"IsEnabled": true, "Source": "MyTableX", "Query": "MyOtherTable", "IsTransactional": false, "PropagateIngestionProperties": false}]'
+
+```
 
 ## .alter-merge table TABLE policy update
 
