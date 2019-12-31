@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/05/2019
+ms.date: 12/18/2019
 ---
 # Storage connection strings
 
@@ -79,7 +79,8 @@ supported:
 * Append `;sharedkey=`*AccountKey* to the URI, with *AccountKey* being
   the storage account key.
 * Append `;impersonate` to the URI. Kusto will use the requestor's principal
-  identity and impersonate it to access the resource.
+  identity and impersonate it to access the resource. Principal needs to have the appropriate RBAC role assignments to be 
+  able to perform the read/write operations, as documented [here](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control). (e.g, the minimal role for read operations is the `Storage Blob Data Reader` role).
 * Append `;token=`*AadToken* to the URI, with *AadToken* being a base-64
   encoded AAD access token (make sure the token is for the resource `https://storage.azure.com/`).
 * Append `;prompt` to the URI. Kusto will ask the user for credentials
