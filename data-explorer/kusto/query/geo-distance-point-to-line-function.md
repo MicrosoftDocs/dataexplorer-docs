@@ -7,14 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/08/2019
+ms.date: 12/30/2019
 ---
 # geo_distance_point_to_line()
 
 Calculates shortest distance between coordinate and line on Earth.
-
-> [!WARNING]
-> This feature may not yet be available on your cluster.
 
 **Syntax**
 

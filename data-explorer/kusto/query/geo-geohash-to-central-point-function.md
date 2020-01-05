@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/11/2019
+ms.date: 12/30/2019
 ---
 # geo_geohash_to_central_point()
 
@@ -21,7 +21,7 @@ For more information about Geohash, click [here](https://en.wikipedia.org/wiki/G
 
 **Arguments**
 
-*geohash*: Geohash value for a geographic location. The geohash string can be 1 to 18 characters.
+*geohash*: Geohash string value as it was calculated by [geo_point_to_geohash()](geo-point-to-geohash-function.md). The geohash string can be 1 to 18 characters.
 
 **Returns**
 
