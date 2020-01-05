@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 01/01/2020
 ---
 # Kusto.Ingest client reference
 
@@ -24,6 +24,10 @@ The main interfaces and factory classes in the Kusto.Ingest library are:
 * [Class KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): Properties that apply to queued ingestion only.
 
 ## Interface IKustoIngestClient
+
+* IngestFromDataReaderAsync
+* IngestFromStorageAsync
+* IngestFromStreamAsync
 
 ```csharp
 public interface IKustoIngestClient : IDisposable
@@ -59,6 +63,15 @@ public interface IKustoIngestClient : IDisposable
 ```
 
 ## Class ExtendedKustoIngestClient
+
+* IngestFromSingleBlob - Deprecated. Please use `IKustoIngestClient.IngestFromStorageAsync` instead.
+* IngestFromSingleBlobAsync - Deprecated. Please use `IKustoIngestClient.IngestFromStorageAsync` instead.
+* IngestFromDataReader - Deprecated. Please use `IKustoIngestClient.IngestFromDataReaderAsync` instead.
+* IngestFromDataReaderAsync
+* IngestFromSingleFile - Deprecated. Please use `IKustoIngestClient.IngestFromStorageAsync` instead.
+* IngestFromSingleFileAsync - Deprecated. Please use `IKustoIngestClient.IngestFromStorageAsync` instead.
+* IngestFromStream - Deprecated. Please use `IKustoIngestClient.IngestFromStreamAsync` instead.
+* IngestFromStreamAsync
 
 ```csharp
 public static class ExtendedKustoIngestClient
@@ -226,6 +239,11 @@ public static class ExtendedKustoIngestClient
 ```
 
 ## Class KustoIngestFactory
+
+* CreateDirectIngestClient
+* CreateQueuedIngestClient
+* CreateManagedStreamingIngestClient
+* CreateStreamingIngestClient
 
 ```csharp
 /// <summary>
@@ -435,6 +453,10 @@ var kustoIngestionProperties = new KustoIngestionProperties("TargetDatabase", "T
 ## Interface IKustoQueuedIngestClient
 
 IKustoQueuedIngestClient interface adds tracking methods to follow the ingestion operation result, and exposes RetryPolicy for the ingest client.
+
+* PeekTopIngestionFailures
+* GetAndDiscardTopIngestionFailures
+* GetAndDiscardTopIngestionSuccesses
 
 ```csharp
 public interface IKustoQueuedIngestClient : IKustoIngestClient

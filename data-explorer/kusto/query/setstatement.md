@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 01/05/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -21,10 +21,10 @@ Boolean flags (off by default), or have some integer value. A query may contain
 zero, one, or more set statements. Set statements affect only the tabular expression
 statements that trail them in program order.
 
-> Query options can also be enabled programmatically, by setting them in the
+* Query options can also be enabled programmatically, by setting them in the
   `ClientRequestProperties` object. See [here](../api/netfx/request-properties.md).
   
-> Query options are not formally a part of the Kusto language, and may be
+* Query options are not formally a part of the Kusto language, and may be
   modified without being considered as a breaking language change.
 
 **Syntax**
