@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/06/2020
 ---
 # Scalar data types
 
@@ -50,3 +50,4 @@ whether an expression evaluates to this value by using the `isnull()` function.
 > As of this writing, support for the `guid` type is
 > incomplete. We strongly recommend that teams use values of type `string`
 > instead.
+
