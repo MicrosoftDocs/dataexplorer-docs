@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/20/2019
+ms.date: 01/07/2020
 ---
 # External tables management (preview)
 
@@ -178,7 +178,8 @@ Creates or alters a new external table in the database in which the command is e
 > [!NOTE]
 > * If the table exists, `.create` command will fail with an error. Use `.alter` to modify existing tables. 
 > * Altering the schema, format or partitions definition of an external blob table is not supported. 
-> * Requires [Database user permission](../management/access-control/role-based-authorization.md) for `.create` and [Table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
+
+Requires [Database user permission](../management/access-control/role-based-authorization.md) for `.create` and [Table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
  
 **Example** 
 
@@ -369,12 +370,11 @@ The user or application authenticates via AAD to Kusto, and the same token is th
 |`createifnotexists`|`true`/ `false`|If `true`, the target SQL table will be created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column which is the primary key. The default is `false`.|
 |`primarykey`|`string`|If `createifnotexists` is `true`, indicates the name of the column in the result that will be used as the SQL table's primary key if it is created by this command.|
 
-
 > [!NOTE]
 > * If the table exists, `.create` command will fail with an error. Use `.alter` to modify existing tables. 
 > * Altering the schema or format of an external sql table is not supported. 
 
-Requires [Database admin permission](../management/access-control/role-based-authorization.md).
+Requires [Database user permission](../management/access-control/role-based-authorization.md) for `.create` and [Table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
  
 **Example** 
 
@@ -400,3 +400,22 @@ with
 |TableName|TableType|Folder|DocString|Properties|
 |---|---|---|---|---|
 |ExternalSql|Sql|ExternalTables|Docs|{<br>  "TargetEntityKind": "sqltable",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=mydatabase;",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>}|
+
+### Querying an external table of type SQL 
+Similarly to other types of external tables, querying an external SQL table is supported - 
+see [querying external tables](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data). 
+However, it is important to note that the SQL external table query implementation will execute a full 'SELECT *' 
+(or select relevant columns) from the SQL table, while the rest of the query will execute on Kusto side. For example, 
+for the following external table query: 
+
+```kusto
+external_table('MySqlExternalTable') | count
+```
+Kusto will execute a 'SELECT * from TABLE' query to the SQL database, followed by a count on Kusto side. 
+In such cases, performance is obviously expected to be better if written in T-SQL directly ('SELECT COUNT(1) FROM TABLE') 
+and executed using the [sql_request plugin](../query/sqlrequestplugin.md), instead of using the external table function. 
+Similarly, filters are not pushed to the SQL query.  
+It is recommended to use the external table to query the SQL table when the query requires 
+reading the entire table (or relevant columns) for further execution on Kusto side anyhow. 
+When SQL query can be significantly optimized in T-SQL, please use the [sql_request plugin](../query/sqlrequestplugin.md).
+

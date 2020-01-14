@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/25/2019
+ms.date: 01/07/2020
 ---
 # Query/management HTTP request
 
@@ -125,3 +125,47 @@ Request body (newlines introduced for clarity; they are not needed):
   "properties":"{\"Options\":{\"queryconsistency\":\"strongconsistency\"},\"Parameters\":{},\"ClientRequestId\":\"MyApp.Query;e9f884e4-90f0-404a-8e8b-01d883023bf1\"}"
 }
 ```
+
+The following example shows how to create a request that sends the query above using [curl](https://curl.haxx.se/):
+
+1. Obtain a token for authentication
+
+* replace `AAD_TENANT_NAME_OR_ID`, `AAD_APPLICATION_ID` and `AAD_APPLICATION_KEY` with the relevant values, after having set up [AAD application authentication](../../management/access-control/how-to-provision-aad-app.md)
+
+```
+curl "https://login.microsoftonline.com/AAD_TENANT_NAME_OR_ID/oauth2/token" \
+  -F "grant_type=client_credentials" \
+  -F "resource=https://help.kusto.windows.net" \
+  -F "client_id=AAD_APPLICATION_ID" \
+  -F "client_secret=AAD_APPLICATION_KEY"
+```
+
+This will provide you with the bearer token:
+
+```
+{
+  "token_type": "Bearer",
+  "expires_in": "3599",
+  "ext_expires_in":"3599", 
+  "expires_on":"1578439805",
+  "not_before":"1578435905",
+  "resource":"https://help.kusto.windows.net",
+  "access_token":"eyJ0...uXOQ"
+}
+```
+
+which you can use in your request to the query endpoint:
+
+```
+curl -d '{"db":"Samples","csl":"print Test=\"Hello, World!\"","properties":"{\"Options\":{\"queryconsistency\":\"strongconsistency\"}}"}"' \
+-H "Accept: application/json" \
+-H "Authorization: Bearer eyJ0...uXOQ" \
+-H "Content-Type: application/json; charset=utf-8" \
+-H "Host: help.kusto.windows.net" \
+-H "x-ms-client-request-id: MyApp.Query;e9f884e4-90f0-404a-8e8b-01d883023bf1" \
+-H "x-ms-user-id: EARTH\davidbg" \
+-H "x-ms-app: MyApp" \
+-X POST https://help.kusto.windows.net/v2/rest/query
+```
+
+and read the response according to [this specification](response.md).

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/24/2019
+ms.date: 01/12/2020
 ---
 # Kusto client library
     
