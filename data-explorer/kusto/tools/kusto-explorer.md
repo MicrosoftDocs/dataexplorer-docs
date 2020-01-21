@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/20/2020
+ms.date: 01/21/2020
 ---
 # Kusto.Explorer tool
 
@@ -15,10 +15,10 @@ Kusto.Explorer is a rich desktop application that allows you to explore your dat
 
 ## Getting the tool
 
-Installation is simple as accessing your Kusto cluster with Internet Explorer at:
-[https://your_cluster.kusto.windows.net](https://your_cluster.kusto.windows.net)
+* Install the [Kusto.Explorer tool](https://aka.ms/Kusto.Explorer)
 
-Alternatively, you can obtain a Kusto.Explorer tool from this URL: [https://aka.ms/Kusto.Explorer](https://aka.ms/Kusto.Explorer)
+* Alternatively, access your Kusto cluster with Internet Explorer at:
+[https://<your_cluster>.kusto.windows.net](https://your_cluster.kusto.windows.net). Replace <your_cluster> with your Azure Data Explorer cluster name.
 
 
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/22/2019
+ms.date: 01/09/2020
 ---
 # make_list() (aggregation function)
 
