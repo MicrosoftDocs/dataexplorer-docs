@@ -7,7 +7,8 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/25/2019
+ms.date: 01/15/2020
+    Docs update
 ---
 # HowTo Creating an AAD Application
 
@@ -84,6 +85,8 @@ If you need the application to be able to perform user or app authentication for
     ![alt text](./images/Aad-create-app-step-7.png "Aad-create-app-step-7")
 
 * Click `Done` to complete the process
+
+
 
 ### 2. Set permissions to the application on Kusto cluster
 

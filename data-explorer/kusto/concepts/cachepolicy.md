@@ -7,29 +7,27 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/15/2019
+ms.date: 01/20/2020
 ---
 # Cache policy (hot and cold cache)
 
-## Overview
-
-Kusto stores its ingested data in reliable storage (most commonly Azure Blob Storage),
+Azure Data Explorer stores its ingested data in reliable storage (most commonly Azure Blob Storage),
 away from its actual processing (e.g. Azure Compute) nodes. To speed-up queries on that
-data, Kusto caches this data (or parts of it) on its processing nodes, SSD or even in
-RAM. Kusto includes a sophisticated cache mechanism designed to make intelligent decisions
-as to which data objects to cache. The cache allows Kusto to describe the data artifacts
+data, Azure Data Explorer caches this data (or parts of it) on its processing nodes, SSD, or even in
+RAM. Azure Data Explorer includes a sophisticated cache mechanism designed to intelligently decide
+which data objects to cache. The cache enables Azure Data Explorer to describe the data artifacts
 that it uses (such as column indexes and column data shards) so that more "important" data
 can take priority.
 
 While best query performance is achieved when all ingested data is cached, often
-certain data does not justify the cost of keeping it "warm" in local SSD storage.
-For example, many teams consider older log records to be of lesser importance (as it is
-rarely accessed), and would prefer to have reduced performance when querying this data,
-rather than pay to keep it warm all the time.
+certain data doesn't justify the cost of keeping it "warm" in local SSD storage.
+For example, many teams consider rarely accessed older log records to be of lesser importance.
+They would prefer to have reduced performance when querying this data, rather than pay to keep
+it warm all the time.
 
-The Kusto cache provides a granular **cache policy** that customers can use to differentiate
-between two data cache policies: **hot data cache** and **cold data cache**. The Kusto cache
-will attempt to keep all data that falls into the hot data cache in local SSD (or RAM),
+Azure Data Explorer cache provides a granular **cache policy** that customers can use to differentiate
+between two data cache policies: **hot data cache** and **cold data cache**. Azure Data Explorer cache
+attempts to keep all data that falls into the hot data cache in local SSD (or RAM),
 up to the defined size of the hot data cache. The remaining local SSD space will be used
 to hold data that is not categorized as hot. One useful implication of this design is that
 queries that load a lot of cold data from reliable storage will not evict data from the hot
@@ -37,17 +35,16 @@ data cache. Therefore there will not be a major impact on queries involving the 
 hot data cache.
 
 The main implications of setting the hot cache policy are:
-* **Cost** The cost of reliable storage can be dramatically cheaper
-  than local SSD (for example, in Azure it is currently about x45 times cheaper).
-* **Performance** Data can be queried faster when it is in local SSD. This is particularly
+* **Cost** The cost of reliable storage can be dramatically lower
+  than local SSD (for example, in Azure it's currently about 45 times cheaper).
+* **Performance** Data can be queried faster when it's in local SSD. This is particularly
   true for range queries, i.e. queries that scan large quantities of data.  
 
-See [here](../management/cache-policy.md)
-for the control commands which allow administrators to manage the cache policy.
+[Control commands](../management/cache-policy.md) enable administrators to manage the cache policy.
 
 ## How the cache policy gets applied
 
-When data is ingested into Kusto, the system keeps track of the date/time at which
+When data is ingested into Azure Data Explorer, the system keeps track of the date/time at which
 ingestion was performed and the extent was created. The extent's ingestion date/time
 value (or maximum value, if an extent was built from multiple pre-existing extents)
 is used to evaluate the cache policy.
@@ -79,7 +76,7 @@ If there is a discrepancy between the different methods:
 takes precedence over both.
 
 For example, in the following query all table references will use
-hotcache data only, except for the second reference to  `T` which is scoped
+hotcache data only, except for the second reference to `T` which is scoped
 to all the data:
 
 ```kusto
@@ -95,10 +92,10 @@ Cache policy is independent of [retention policy](./retentionpolicy.md):
 - Retention policy defines the extent of the queryable
   data in a table/database (specifically, `SoftDeletePeriod`).
 
-Thus, it is recommended to configure this policy to achieve the optimal balance
+It's recommended to configure this policy to achieve the optimal balance
 between cost and performance based on the expected query pattern.
 
-Here is a quick example:
+Example:
 * `SoftDeletePeriod` = 56d
 * `hot cache policy` = 28d
 
@@ -108,11 +105,4 @@ You can run queries on the full 56 days of data.
 
 ## Cache policy does not make Kusto a cold storage technology
 
-At times, customers wrongly assume that they can replace cold storage query technologies
-such as Data Lake Analytics and Hadoop by using Kusto with a very long retention period and a small amount
-of hot cache. However, this doesn't work, while the Kusto cold data cache can enable great
-performance over cold storage data for point queries, it is not designed for large cold-span
-queries that process huge data sets like Data Lake Analytics and Hadoop. In particular:
-- Kusto sacrifices some aspects such as resilience to node failures during a long query for excellent ad-hoc performance
-- Kusto is tuned for ad-hoc queries with intermediate result sets fitting the cluster's total
-  RAM, rather than tuning its algorithms for storing intermediate results in persistent storage (such as SSD) which is often required for large map-reduce-like jobs.
+Azure Data Explorer is designed to perform ad-hoc queries, with intermediate result sets fitting the cluster's total RAM. For large jobs, like map-reduce, where you would want to store intermediate results in persistent storage (such as an SSD) use the continuous export feature. This enables you to do long-running batch queries using services like HDInsight or Azure Databricks.

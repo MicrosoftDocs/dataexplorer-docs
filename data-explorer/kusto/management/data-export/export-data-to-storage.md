@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/13/2019
+ms.date: 01/21/2020
 ---
 # Export data to storage
 
@@ -35,7 +35,7 @@ external storage, specified by a [storage connection string](../../api/connectio
 
 * *StorageConnectionString*: Specifies one or more [storage connection strings](../../api/connection-strings/storage.md)
   that indicate which storage to write the data to. (More than one storage
-  connection string may be specified for scalable writes.) Each such connection
+  connection string may be specified for scalable writes.) Each such connection 
   string must indicate the credentials to use when writing to storage.
   For example, when writing to Azure Blob Storage, the credentials can be the
   storage account key, or a shared access key (SAS) with the permissions to
@@ -57,7 +57,7 @@ external storage, specified by a [storage connection string](../../api/connectio
 |`namePrefix`    |`string`|Indicates a prefix to add to each generated storage artifact name. A random prefix will be used if left unspecified.       |
 |`encoding`      |`string`|Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`.                                                      
 |`compressionType`|`string`|Indicates the type of compression to use. Possible values are `gzip` or `snappy`. Default is `gzip`, `snappy` can (optionally) be used for `parquet` format.     
-|`distributed`   |`bool`  |Indicates that the export writes from all nodes executing the query in parallel. (Defaults to `true`.)                     |
+|`distribution`   |`string`  |Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread will write to storage. Otherwise, export will write from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluateoperator.md). Defaults to `per_shard`.
 |`persistDetails`|`bool`  |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller does not require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
 |`parquetRowGroupSize`|`int`  |Relevant only when data format is parquet. Controls the row group size in the exported files. Default row group size is 100000 records.|
 
@@ -89,16 +89,6 @@ For example, after a successful completion, one can retrieve the results using:
 .show operation f008dc1e-2710-47d8-8d34-0d562f5f8615 details
 ```
 
-**Limitations**
-
-If the output data format is set to `parquet`, export may produce storage artifacts, containing only the schema and no 
-records (indicating that the node writing the artifact had no records to write).
-As an optional mitigation, one might disable executing the export process in a
-distributed fashion (set `distributed` to `false`). This is not recommended, however,
-as it adds load on the cluster due to the need to write all data from a single
-cluster node. Note also that if the query returns no records at all, a single storage
-artifact will still be produced (even if distribution is disabled).
-
 **Examples** 
 
 In this example, Kusto runs the query and then exports the first recordset produced by the query to one or more compressed CSV blobs.
@@ -118,3 +108,14 @@ Column name labels are added as the first row for each blob.
   )
   <| myLogs | where id == "moshe" | limit 10000
 ```
+
+**Known issues**
+
+*Storage errors during export command*
+
+By default, the export command is distributed such that all [extents](../extents-overview.md) that contain data to export, 
+write to storage concurrently. On large exports, when the number of such extents is high, this may lead to high load on 
+storage that results in storage throttling, or transient storage errors. In such cases, it is recommended to try increasing
+the number of storage accounts provided to the export command (the load will be distributed between the accounts) and/or to 
+reduce the concurrency by setting the distribution hint to `per_node` (see command properties). Entirely disabling distribution
+ is also possible, but this may significantly impact the command performance, of course.

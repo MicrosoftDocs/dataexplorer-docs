@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 01/20/2020
 ---
 # External tables management (preview)
 
@@ -224,6 +224,24 @@ An external table partitioned by dateTime with a directory format of "year=yyyy/
 .create external table ExternalPartitionedBlob (Timestamp:datetime, x:long, s:string) 
 kind=blob
 partition by format_datetime="'year='yyyy/'month='MM/'day='dd" bin(Timestamp, 1d)
+dataformat=csv
+( 
+   h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
+)
+with 
+(
+   docstring = "Docs",
+   folder = "ExternalTables",
+   namePrefix="Prefix"
+)
+```
+
+An external table with monthly data partitions and a directory format of "yyyy/MM":
+
+```kusto
+.create external table ExternalPartitionedBlob (Timestamp:datetime, x:long, s:string) 
+kind=blob
+partition by format_datetime="yyyy/MM" bin(Timestamp, 1d)
 dataformat=csv
 ( 
    h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
