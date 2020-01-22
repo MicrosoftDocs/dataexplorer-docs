@@ -8,7 +8,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/15/2020
-    Docs update
+
 ---
 # HowTo Creating an AAD Application
 
