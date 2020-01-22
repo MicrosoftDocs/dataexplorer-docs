@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/26/2019
+ms.date: 01/18/2020
 ---
 # Tables management
 
@@ -327,7 +327,7 @@ Requires [Database  admin permission](../management/access-control/role-based-au
 ## .rename tables
 
 The `.rename` `tables` command changes the name of a number of tables
-as a single atomic transaction.
+of the database in scope as a single atomic transaction.
 
 **Syntax**
 
@@ -343,12 +343,21 @@ as a single atomic transaction.
 * `ifexists`: If specified, modifies the behavior of the command to
   ignore rename parts of non-existent tables.
 
-Note that *NewName* might be the name of an existing table
-as well, in which case that table *also* be renamed. In other words, this
-command doesn't create new tables nor does it remove existing tables, and the
-transofmration must be such that the number of tables remains the same.
-
 Requires [Database  admin permission](../management/access-control/role-based-authorization.md).
+
+**Remarks**
+
+This command operates on tables of the database in scope only.
+Table names cannot be qualified with cluster or database names.
+
+This command doesn't create new tables, nor does it remove existing tables.
+The transformation described by the command must be such that the number
+of tables in the database does not change.
+
+The command does support swapping table names, or more complex
+permutations, as long as they adhere to the rules above. One use
+of this, for example, is to ingest data into multiple staging tables,
+and then swap them with existing tables in a single transaction.
 
 **Examples**
 

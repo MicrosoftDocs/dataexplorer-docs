@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/28/2019
+ms.date: 01/13/2020
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 
@@ -44,6 +44,12 @@ existing or unexisting tables and data:
 
 * *PropertyName*, *PropertyValue*: Any number of
   [ingestion properties](./index.md#ingestion-properties) that affect the ingestion process.
+
+  In addition, there are several properties that control the behavior of the command itself:
+
+|Property        |Type    |Description|
+|----------------|--------|---------------------------------------------------------------------------------------------------------------------------|
+|`distributed`   |`bool`  |Indicates that the command ingests from all nodes executing the query in parallel. (Defaults to `false`.)  
 
 * *QueryOrCommand*: The text of a query or a control command whose results will be used as data
   to ingest.

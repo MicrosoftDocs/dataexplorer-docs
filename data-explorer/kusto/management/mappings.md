@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/05/2019
+ms.date: 01/15/2020
 ---
 # Data mappings
 
@@ -73,7 +73,8 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
-> Deprecated mapping format: The former mapping format allowed different definition for each mapping, where properties could be specified without 'Properties' dictionary. The deprecated format is shown below.
+**Deprecated mapping format** 
+The former mapping format allowed different definition for each mapping, where properties could be specified without `Properties` dictionary. The deprecated format is shown below.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -102,7 +103,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 ### Example of the JSON Mapping
 
-``` json
+```json
 [
   { "column" : "rownumber",   "Properties":{"Path":"$.rownumber"}}, 
   { "column" : "rowguid",     "Properties":{"Path":"$.rowguid"}}, 
@@ -135,7 +136,8 @@ Each element in the list describes a mapping for a specific column, and may cont
   )
 ```
 
-> Deprecated mapping format: previous version's mapping format allowed different definition for each mapping, where properties could be specified without 'Properties' dictionary. The deprecated format is shown below.
+**Deprecated mapping format** 
+Previous version's mapping format allowed different definition for each mapping, where properties could be specified without `Properties` dictionary. The deprecated format is shown below.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2") 
@@ -213,7 +215,8 @@ Each element in the list describes a mapping for a specific column, and may cont
   )
 ```
 
-> Deprecated mapping format: previous version's mapping format allowed different definition for each mapping, where properties could be specified without 'Properties' dictionary. The deprecated format is shown below.
+**Deprecated mapping format**
+Previous version's mapping format allowed different definition for each mapping, where properties could be specified without `Properties` dictionary. The deprecated format is shown below.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2") 

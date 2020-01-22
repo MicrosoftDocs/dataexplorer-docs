@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/12/2020
 ---
 # percentile(), percentiles()
 
@@ -114,7 +114,13 @@ we can use the `percentilesw()` function. For example, for the 50,
 75 and 99.9 percentiles, we'll use the following query: 
 
 ```kusto
-Table
+datatable (ReqCount:long, LatencyBucket:long) 
+[ 
+    8, 10, 
+    6, 20, 
+    3, 30, 
+    1, 40 
+]
 | summarize percentilesw(LatencyBucket, ReqCount, 50, 75, 99.9) 
 ```
 
