@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/21/2020
+ms.date: 01/26/2020
 ---
 # Export data to storage
 
-The `.export` command executes a query and writes the first result set to an
+Executes a query and writes the first result set to an
 external storage, specified by a [storage connection string](../../api/connection-strings/storage.md).
 
 **Syntax**
@@ -43,9 +43,8 @@ external storage, specified by a [storage connection string](../../api/connectio
 
 > [!NOTE]
 > It is highly recommended to export data to storage that is co-located in the
-> same region as the Kusto cluster itself. This includes the case in which data
-> export is done in order to transfer the data to another cloud service in
-> another regions; writes should be done locally, while reads can happen remotely.
+> same region as the Kusto cluster itself. This includes data that is exported so it can be transferred to another cloud service in
+> other regions. Writes should be done locally, while reads can happen remotely.
 
 * *PropertyName*/*PropertyValue*: Zero or more optional export properties:
 
@@ -53,18 +52,18 @@ external storage, specified by a [storage connection string](../../api/connectio
 |----------------|--------|---------------------------------------------------------------------------------------------------------------------------|
 |`sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100MB (default) to 1GB.|
 |`includeHeaders`|`string`|For `csv`/`tsv` output, controls the generation of column headers. Can be one of `none` (default; no header lines emitted), `all` (emit a header line into every storage artifact), or `firstFile` (emit a header line into the first storage artifact only).|
-|`fileExtension` |`string`|Indicates the "extension" part of the storage artifact (e.g. `.csv` or `.tsv`) Note that if compression is used, `.gz` will be appended as well.|
+|`fileExtension` |`string`|Indicates the "extension" part of the storage artifact (e.g. `.csv` or `.tsv`) If compression is used, `.gz` will be appended as well.|
 |`namePrefix`    |`string`|Indicates a prefix to add to each generated storage artifact name. A random prefix will be used if left unspecified.       |
-|`encoding`      |`string`|Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`.                                                      
-|`compressionType`|`string`|Indicates the type of compression to use. Possible values are `gzip` or `snappy`. Default is `gzip`, `snappy` can (optionally) be used for `parquet` format.     
+|`encoding`      |`string`|Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`. |
+|`compressionType`|`string`|Indicates the type of compression to use. Possible values are `gzip` or `snappy`. Default is `gzip`. `snappy` can (optionally) be used for `parquet` format. |
 |`distribution`   |`string`  |Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread will write to storage. Otherwise, export will write from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluateoperator.md). Defaults to `per_shard`.
 |`persistDetails`|`bool`  |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller does not require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
 |`parquetRowGroupSize`|`int`  |Relevant only when data format is parquet. Controls the row group size in the exported files. Default row group size is 100000 records.|
 
 **Results**
 
-The commands returns back a table that describes the generated storage artifacts.
-Each record describes a single artifact, and includes the storage path to the
+The commands returns a table that describes the generated storage artifacts.
+Each record describes a single artifact and includes the storage path to the
 artifact and how many data records it holds.
 
 |Path|NumRecords|
@@ -113,9 +112,10 @@ Column name labels are added as the first row for each blob.
 
 *Storage errors during export command*
 
-By default, the export command is distributed such that all [extents](../extents-overview.md) that contain data to export, 
+By default, the export command is distributed such that all [extents](../extents-overview.md) that contain data to export 
 write to storage concurrently. On large exports, when the number of such extents is high, this may lead to high load on 
 storage that results in storage throttling, or transient storage errors. In such cases, it is recommended to try increasing
 the number of storage accounts provided to the export command (the load will be distributed between the accounts) and/or to 
 reduce the concurrency by setting the distribution hint to `per_node` (see command properties). Entirely disabling distribution
- is also possible, but this may significantly impact the command performance, of course.
+ is also possible, but this may significantly impact the command performance.
+ 

@@ -7,12 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/15/2019
+ms.date: 01/23/2020
 ---
 # dcount() (aggregation function)
 
-The `dcount()` aggregation function returns an estimate for the number of
-distinct values taken by a scalar expression in the summary group.
+Returns an estimate for the number of distinct values taken by a scalar expression in the summary group.
 
 **Syntax**
 
@@ -72,7 +71,8 @@ a "knob" that can be used to balance accuracy and execution time / memory size:
 |       3|     0.28|2<sup>17</sup>|
 |       4|      0.2|2<sup>18</sup>|
 
-Note: the "entry count" column is the number of 1-byte counters in the HLL
+> [!NOTE]
+> The "entry count" column is the number of 1-byte counters in the HLL
 implementation.
 
 The algorithm includes some provisions for doing a perfect count (zero error)

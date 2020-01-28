@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/09/2020
+ms.date: 01/23/2020
 ---
 # Scalar Functions
 
@@ -63,7 +63,7 @@ ms.date: 01/09/2020
 |[startofyear()](startofyearfunction.md)|Returns the start of the year containing the date, shifted by an offset, if provided.|
 |[todatetime()](todatetimefunction.md)|Converts input to datetime scalar.|
 |[totimespan()](totimespanfunction.md)|Converts input to timespan scalar.|
-|[weekofyear()](weekofyearfunction.md)|Retunrs the integer number represents the week number.|
+|[weekofyear()](weekofyearfunction.md)|Returns an integer representing the week number.|
 
 
 ## Dynamic/Array Functions
@@ -72,6 +72,7 @@ ms.date: 01/09/2020
 |-------------------------|--------------------------------------------------------|
 |[array_concat()](arrayconcatfunction.md)|Concatenates a number of dynamic arrays to a single array.|
 |[array_iif()](arrayifffunction.md)|Applies element-wise iif function on arrays.|
+|[array_index_of()](arrayindexoffunction.md)|Searches the array for the specified item, and returns its position.|
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
 |[array_slice()](arrayslicefunction.md)|Extracts a slice of a dynamic array.|
 |[array_split()](arraysplitfunction.md)|Builds an array of arrays splitted from the input array.|
@@ -80,6 +81,10 @@ ms.date: 01/09/2020
 |[pack_all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
 |[pack_array()](packarrayfunction.md)|Packs all input values into a dynamic array.|
 |[repeat()](repeatfunction.md)|Generates a dynamic array holding a series of equal values.|
+|[set_difference()](setdifferencefunction.md)|Returns an array of the set of all distinct values that are in the first array but aren't in other arrays.|
+|[set_has_element()](sethaselementfunction.md)|Determines whether the specified array contains the specified element.|
+|[set_intersect()](setintersectfunction.md)|Returns an array of the set of all distinct values that are in all arrays.|
+|[set_union()](setunionfunction.md)|Returns an array of the set of all distinct values that are in any of provided arrays.|
 |[treepath()](treepathfunction.md)|Enumerates all the path expressions that identify leaves in a dynamic object.|
 |[zip()](zipfunction.md)|The zip function accepts any number of dynamic arrays, and returns an array whose elements are each an array holding the elements of the input arrays of the same index.|
 
