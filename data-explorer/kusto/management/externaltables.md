@@ -1,15 +1,15 @@
 ---
-title: External tables management (preview) - Azure Data Explorer | Microsoft Docs
-description: This article describes External tables management (preview) in Azure Data Explorer.
+title: External tables management - Azure Data Explorer | Microsoft Docs
+description: This article describes External tables management in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/20/2020
+ms.date: 01/27/2020
 ---
-# External tables management (preview)
+# External tables management
 
 See [external tables](../query/schema-entities/externaltables.md) for an overview of external tables. 
 
@@ -36,7 +36,7 @@ The following commands are relevant to _any_ external table (of any type).
 |TableType  |string |Type of external table
 |Folder |string |Table's folder.
 |DocString |string |String documenting the table.
-|Properties|string|Table's json serialized properties (specific to the type of table).
+|Properties|string|Table's JSON serialized properties (specific to the type of table).
 
 
 **Examples:**
@@ -53,7 +53,7 @@ The following commands are relevant to _any_ external table (of any type).
 
 ### .show external table schema
 
-* Returns the schema of the external table, as json or csl. 
+* Returns the schema of the external table, as JSON or CSL. 
 * Requires [Database monitor permission](../management/access-control/role-based-authorization.md).
 
 **Syntax:** 
@@ -67,7 +67,7 @@ The following commands are relevant to _any_ external table (of any type).
 |Output parameter |Type |Description
 |---|---|---
 |TableName  |string |Name of external table.
-|Schema|string|The table schema in a json format.
+|Schema|string|The table schema in JSON format.
 |DatabaseName|string|Table's database name.
 |Folder |string |Table's folder.
 |DocString |string |String documenting the table.
@@ -75,11 +75,11 @@ The following commands are relevant to _any_ external table (of any type).
 **Examples:**
 
 ```kusto
-.show external table T schema as json
+.show external table T schema as JSON
 ```
 
 ```kusto
-.show external table T schema as csl
+.show external table T schema as CSL
 .show external table T cslschema
 ```
 
@@ -98,6 +98,32 @@ The following commands are relevant to _any_ external table (of any type).
 |---|---|---|---|---|
 |T|x:long,s:string|DB|ExternalTables|Docs|
 
+### .show external table artifacts
+
+* Returns list of all artifacts that will be processed when querying given external table.
+* Requires [Database user permission](../management/access-control/role-based-authorization.md).
+
+**Syntax:** 
+
+`.show` `external` `table` *TableName* `artifacts`
+
+**Output**
+
+|Output parameter |Type |Description
+|---|---|---
+|Uri  |string |URI of external storage artifact.
+
+**Examples:**
+
+```kusto
+.show external table T artifacts
+```
+
+**Output:**
+
+|Uri|
+|---|
+|https://storageaccount.blob.core.windows.net/container1/folder/file.csv|
 
 ### .drop external table
 
@@ -125,7 +151,7 @@ Returns the properties of the dropped table. See [.show external tables](#show-e
 ## External tables in Azure Storage or Azure Data Lake
 
 The following command describes how to create an external table. The table can be located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2. 
-See [storage connection strings](../api/connection-strings/storage.md) to create the connection string for each of these options. 
+[Storage connection strings](../api/connection-strings/storage.md) describes creating the connection string for each of these options. 
 
 ### .create or .alter external table
 
@@ -157,7 +183,7 @@ Creates or alters a new external table in the database in which the command is e
 
 *Partition Parameters:*
 
-* *DateTimePartitionFormat* - The format of the desired directory structure in the output path (optional). If partitioning is defined and format isn't specified, the default used is "yyyy/MM/dd/HH/mm", based on the PartitionByTimeSpan. For example, if you partition by 1d, structure will be "yyyy/MM/dd". If it's 1h, structure will be "yyyy/MM/dd/HH".
+* *DateTimePartitionFormat* - The format of the desired directory structure in the output path (optional). If partitioning is defined and format isn't specified, the default used is "yyyy/MM/dd/HH/mm", based on the PartitionByTimeSpan. For example, if you partition by 1d, structure will be "yyyy/MM/dd". If you partition by 1h, structure will be "yyyy/MM/dd/HH".
 * *TimestampColumnName* - Datetime column on which the table is partitioned. Timestamp column must exist in the external table schema definition and output of the export query, when exporting to the external table.
 * *PartitionByTimeSpan* - Timespan literal by which to partition.
 * *StringFormatPrefix* - A constant string literal that will be part of the artifact path, concatenated before the table value (optional).
@@ -171,26 +197,27 @@ Creates or alters a new external table in the database in which the command is e
 |`folder`|`string`|Table's folder.|
 |`docString`|`string`|String documenting the table.|
 |`compressed`|`bool`|If set, indicates whether the blobs are compressed as `.gz` files.|
-|`includeHeaders`|`string`|For csv or tsv blobs, indicates whether blobs contain a header.|
-|`namePrefix`|`string`|If set, indicates the prefix of the blobs (On write operations, all blobs will be written with this prefix. On read operations, only blobs with this prefix are read).|
+|`includeHeaders`|`string`|For CSV or TSV blobs, indicates whether blobs contain a header.|
+|`namePrefix`|`string`|If set, indicates the prefix of the blobs. On write operations, all blobs will be written with this prefix. On read operations, only blobs with this prefix are read.|
+|`fileExtension`|`string`|If set, indicates file extensions of the blobs. On write, blobs names will end with this suffix. On read, only blobs with this file extension will be read.| 
 |`encoding`|`string`|Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.|
 
 > [!NOTE]
 > * If the table exists, `.create` command will fail with an error. Use `.alter` to modify existing tables. 
-> * Altering the schema, format or partitions definition of an external blob table is not supported. 
+> * Altering the schema, format, or the partition definition of an external blob table is not supported. 
 
 Requires [Database user permission](../management/access-control/role-based-authorization.md) for `.create` and [Table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
  
 **Example** 
 
-A non-partitioned external table (all artifacts are expected to be directly under the container(s) defined):
+A non-partitioned external table. All artifacts are expected to be directly under the container(s) defined:
 
 ```kusto
 .create external table ExternalBlob (x:long, s:string) 
 kind=blob
 dataformat=csv
 ( 
-   h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
+   h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
 )
 with 
 (
@@ -200,7 +227,7 @@ with
 )  
 ```
 
-An external table partitioned by dateTime (artifacts reside in directories in the format of "yyyy/MM/dd" under the path(s) defined):
+An external table partitioned by dateTime. Artifacts reside in directories in "yyyy/MM/dd" format under the path(s) defined:
 
 ```kusto
 .create external table ExternalAdlGen2 (Timestamp:datetime, x:long, s:string) 
@@ -226,7 +253,7 @@ kind=blob
 partition by format_datetime="'year='yyyy/'month='MM/'day='dd" bin(Timestamp, 1d)
 dataformat=csv
 ( 
-   h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
+   h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
 )
 with 
 (
@@ -244,7 +271,7 @@ kind=blob
 partition by format_datetime="yyyy/MM" bin(Timestamp, 1d)
 dataformat=csv
 ( 
-   h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
+   h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
 )
 with 
 (
@@ -265,7 +292,7 @@ partition by
    bin(Timestamp, 1d)
 dataformat=csv
 ( 
-   h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
+   h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
 )
 with 
 (
@@ -277,14 +304,14 @@ with
 
 |TableName|TableType|Folder|DocString|Properties|ConnectionStrings|Partitions|
 |---|---|---|---|---|---|---|
-|ExternalMultiplePartitions|Blob|ExternalTables|Docs|{"Format":"Csv","Compressed":false,"CompressionType":null,"FileExtension":"csv","IncludeHeaders":"None","Encoding":null,"NamePrefix":null}|["http://storageaccount.blob.core.windows.net/container1;*******"]}|[{"StringFormat":"CustomerName={0}","ColumnName":"CustomerName","Ordinal":0},PartitionBy":"1.00:00:00","ColumnName":"Timestamp","Ordinal":1}]|
+|ExternalMultiplePartitions|Blob|ExternalTables|Docs|{"Format":"Csv","Compressed":false,"CompressionType":null,"FileExtension":"csv","IncludeHeaders":"None","Encoding":null,"NamePrefix":null}|["https://storageaccount.blob.core.windows.net/container1;*******"]}|[{"StringFormat":"CustomerName={0}","ColumnName":"CustomerName","Ordinal":0},PartitionBy":"1.00:00:00","ColumnName":"Timestamp","Ordinal":1}]|
 
 ## .create mapping
 
 `.create` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* *MappingInJsonFormat*
 
 * Creates a new mapping. 
-* See [Data Mappings](./mappings.md#json-mapping) for more information.
+* For more inforamtion, see [Data Mappings](./mappings.md#json-mapping).
 
 **Example** 
  
@@ -369,7 +396,7 @@ Creates or alters an external table of type sql in the database in which the com
 
 * *TableName* - External table name. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.
 * *SqlTableName* - The name of the SQL table.
-* *SqlServerConnectionString* - The connection string to the sql server. Can be one of: 
+* *SqlServerConnectionString* - The connection string to the SQL server. Can be one of the following: 
 
 1. **AAD integrated authentication** (`Authentication="Active Directory Integrated"`): 
 The user or application authenticates via AAD to Kusto, and the same token is then used to access the SQL Server network endpoint.
@@ -422,18 +449,17 @@ with
 ### Querying an external table of type SQL 
 Similarly to other types of external tables, querying an external SQL table is supported - 
 see [querying external tables](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data). 
-However, it is important to note that the SQL external table query implementation will execute a full 'SELECT *' 
-(or select relevant columns) from the SQL table, while the rest of the query will execute on Kusto side. For example, 
+However, it's important to note that the SQL external table query implementation will execute a full 'SELECT *' 
+(or select relevant columns) from the SQL table, while the rest of the query will execute on the Kusto side. For example, 
 for the following external table query: 
 
 ```kusto
 external_table('MySqlExternalTable') | count
 ```
-Kusto will execute a 'SELECT * from TABLE' query to the SQL database, followed by a count on Kusto side. 
+Kusto will execute a 'SELECT * from TABLE' query to the SQL database, followed by a count on the Kusto side. 
 In such cases, performance is obviously expected to be better if written in T-SQL directly ('SELECT COUNT(1) FROM TABLE') 
 and executed using the [sql_request plugin](../query/sqlrequestplugin.md), instead of using the external table function. 
 Similarly, filters are not pushed to the SQL query.  
 It is recommended to use the external table to query the SQL table when the query requires 
-reading the entire table (or relevant columns) for further execution on Kusto side anyhow. 
-When SQL query can be significantly optimized in T-SQL, please use the [sql_request plugin](../query/sqlrequestplugin.md).
-
+reading the entire table (or relevant columns) for further execution on Kusto side. 
+When an SQL query can be significantly optimized in T-SQL, use the [sql_request plugin](../query/sqlrequestplugin.md).

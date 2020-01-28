@@ -1,15 +1,15 @@
 ---
-title: External tables (preview) - Azure Data Explorer | Microsoft Docs
-description: This article describes External tables (preview) in Azure Data Explorer.
+title: External tables - Azure Data Explorer | Microsoft Docs
+description: This article describes External tables in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/02/2019
+ms.date: 01/22/2020
 ---
-# External tables (preview)
+# External tables
 
 An **external table** is a Kusto schema entity that references data stored outside Kusto database.
 

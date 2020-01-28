@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/09/2020
+ms.date: 01/23/2020
 ---
 # make_bag() (aggregation function)
 
@@ -32,11 +32,11 @@ A legacy and obsolete variant of this function: `make_dictionary()` has a defaul
 
 Returns a `dynamic` (JSON) property-bag (dictionary) of all the values of *Expr* in the group which are property-bags (dictionaries).
 Non-dictionary values will be skipped.
-If a key appears in more than one row- an arbitrary value (out of the possible values for this key) will be chosen.
+If a key appears in more than one row, an arbitrary value (out of the possible values for this key) will be chosen.
 
 **See also**
 
-See [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys. 
+Use the [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys. 
 
 **Examples**
 

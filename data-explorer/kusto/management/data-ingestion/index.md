@@ -7,12 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/18/2019
+ms.date: 01/26/2020
 ---
 # Data ingestion
 
-Data ingestion is the process by which data gets added to a table
-and made available for query.
+The process by which data gets added to a table and is made available for query.
 Depending on the existence of the table beforehand, the process requires
 [database admin, database ingestor, database user, or table admin permissions](../access-control/role-based-authorization.md).
 
@@ -21,13 +20,13 @@ The data ingestion process consists of several steps:
 1. Retrieving the data from the data source.
 2. Parsing and validating the data.
 3. Matching the schema of the data to the schema of the target Kusto table,
-   or creating the target table if it doesn't already exists.
+   or creating the target table if it doesn't already exist.
 4. Organizing the data in columns.
 5. Indexing the data.
 6. Encoding and compressing the data.
 7. Persisting the resulting Kusto storage artifacts in storage.
 8. Executing all relevant update policies, if any.
-9. "Committing" the data ingest, thus making it available for query.
+9. "Committing" the data ingest, making it available for query.
 
 > [!NOTE]
 > Some of the steps above may be skipped, depending on the specific scenario.
@@ -39,10 +38,10 @@ The data ingestion process consists of several steps:
 > [!WARNING]
 > Data ingested into a table in Kusto is subject to the table's effective **retention policy**.
 > Unless set on a table explicitly, the effective retention policy is derived from
-> the database's retention policy. Therefore, users ingesting data into Kusto should make sure
-> that the database's retention policy is appropriate for their needs, and explicitly
-> override it at the table level if not. Failure to do so might mean "silent" deletion of
-> their data due to the database's retention policy. See [retention policy](https://kusto.azurewebsites.net/docs/concepts/retentionpolicy.html)
+> the database's retention policy. Therefore, when you ingest data into Kusto, make sure
+> that the database's retention policy is appropriate for their needs. If not, explicitly
+> override it at the table level. Failure to do so might mean "silent" deletion of
+> your data due to the database's retention policy. See [retention policy](https://kusto.azurewebsites.net/docs/concepts/retentionpolicy.html)
 > for details.
 
 
@@ -70,10 +69,10 @@ its own characteristics:
    This method allows efficient bulk ingestion of data, but puts some burden on
    the client performing the ingestion to not overtax the cluster with concurrent
    ingestions (or risk consuming all cluster resources by data ingestion, reducing
-   the performance of queries.
+   the performance of queries).
 
 4. **Queued ingestion**: Data is uploaded to external storage (e.g., Azure Blob
-   Storage) and then a notification is sent to a queue (e.g., Azure Queue, or Event Hub).
+   Storage). A notification is sent to a queue (e.g., Azure Queue, or Event Hub).
    This is the primary method used in production, as it has very high availability,
    doesn't require the client to perform capacity management itself, and handles bulk
    appends well. This is sometimes called "native ingestion".
@@ -87,19 +86,22 @@ its own characteristics:
 |Ingest from storage|Seconds + ingest time   |Yes       |Yes |Kusto Engine|Both         |
 |Queued ingestion   |Minutes                 |Yes       |Yes |Storage     |Asynchronous |
 
-## Ingestion properties
+## Ingestion properties 
 
 Ingestion commands may zero on more ingestion properties through the
 use of the `with` keyword. The supported properties are:  
 
-* `avroMapping`, `csvMapping`, `jsonMapping`: A string value that indicates
+* `ingestionMapping`: A string value that indicates
   how to map data from the source file to the actual columns in the table.
+  Requires defining the `format` value with the relevant mapping type (see table below).
   See [data mappings](../mappings.md).
+  (deprecated: `avroMapping`, `csvMapping`, `jsonMapping`)
 
-* `avroMappingReference`, `csvMappingReference`, `jsonMappingReference`:
-  A string value that indicates how to map data from the source file to the
+* `ingestionMappingReference`: A string value that indicates how to map data from the source file to the
   actual columns in the table using a named mapping policy object.
+  Requires defining the `format` value with the relevant mapping type (see table below).
   See [data mappings](../mappings.md).
+  (deprecated: `avroMappingReference`, `csvMappingReference`, `jsonMappingReference`)
 
 * `creationTime`: The datetime value (formatted as a ISO8601 string) to use
   as the creation time of the ingested data extents. If unspecified, the current
@@ -160,7 +162,7 @@ use of the `with` keyword. The supported properties are:
   with the ingested data, formatted as a JSON string.
   For example: `with (tags="['Tag1', 'Tag2']")`.
 
-* `validationPolicy`: A JSON string that indicates what validations to run
+* `validationPolicy`: A JSON string that indicates which validations to run
   during ingestion. See below for an explanation of the different options.
   For example: `with (validationPolicy='{"ValidationOptions":1, "ValidationImplications":1}')`
   (this is actually the default policy).
@@ -189,6 +191,7 @@ formatted in one of the supported data formats:
 |csv      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
 |json     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
 |multijson|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace, `\n` or `\r\n`. Each property bag can be spread on multiple lines. (This format is preferred over `json`, unless the data is non-property bags.)|
+|orc      |`.orc`      |An [Orc file](https://en.wikipedia.org/wiki/Apache_ORC).|
 |parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet).|
 |psv      |`.psv`      |A text file with pipe-separated values (<code>&#124;</code>).|
 |raw      |`.raw`      |A text file whose entire contents is a single string value.|

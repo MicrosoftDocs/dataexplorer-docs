@@ -7,21 +7,21 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/14/2020
+ms.date: 01/26/2020
 ---
 # Kusto connection strings
 
 Kusto connection strings can provide the information necessary
 for a Kusto client application to establish a connection to a Kusto service
 endpoint. Kusto connection strings are modeled after the ADO.NET connection
-strings, namely, the connection string is a semicolon-delimited list of name/value
+strings. That is, the connection string is a semicolon-delimited list of name/value
 parameter pairs, optionally prefixed by a single URI. For example:
 
 ```text
 https://help.kusto.windows.net/Samples; Fed=true; Accept=true
 ```
 
-The URI here provides the service endpoint to communicate with:
+The URI provides the service endpoint to communicate with:
 
 * (`https://help.kusto.windows.net`) - value of the `Data Source` property.
 * `Samples`(default database) - value of the`Initial Catalog` property.
@@ -84,10 +84,10 @@ It lists programmatic names (which is the name of the property in the
 |Application Certificate Thumbprint                |AppCert                                   |ApplicationCertificateThumbprint              |A String value that provides the thumbprint of the client certificate to use when using an application client certificate authenticating flow|
 |Application Client Id                             |AppClientId                               |ApplicationClientId                           |A String value that provides the application client ID to use when authenticating|
 |Application Key                                   |AppKey                                    |ApplicationKey                                |A String value that provides the application key to use when authenticating using an application secret flow|
-|Application Name for Tracing                      |                                          |TraceAppName                                  |A String balue that reports to the service which application name to use when tracing the request internally|
+|Application Name for Tracing                      |                                          |TraceAppName                                  |A String value that reports to the service which application name to use when tracing the request internally|
 |Application Token                                 |AppToken                                  |ApplicationToken                              |A String value that instructs the client to perform application authenticating with the specified bearer token|
 |Authority Id                                      |TenantId                                  |Authority                                     |A String value that provides the name or ID of the tenant in which the application is registered|
-|                                                  |                                          |EmbeddedManagedIdentity                       |A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. Note that this property cannot be set with a connection string, only programmatically.|ManagedServiceIdentity                        |TODO|
+|                                                  |                                          |EmbeddedManagedIdentity                       |A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. This property cannot be set with a connection string, only programmatically.|ManagedServiceIdentity                        |TODO|
 |Application Certificate Subject Distinguished Name|Application Certificate Subject           |ApplicationCertificateSubjectDistinguishedName||
 |Application Certificate Issuer Distinguished Name |Application Certificate Issuer            |ApplicationCertificateIssuerDistinguishedName ||
 |Application Certificate Send Public Certificate   |Application Certificate SendX5c, SendX5c  |ApplicationCertificateSendPublicCertificate   ||
@@ -97,7 +97,7 @@ It lists programmatic names (which is the name of the property in the
 
 |Property name                      |Alternative names|Programmatic name  |Description                                                   |
 |-----------------------------------|-----------------|-------------------|--------------------------------------------------------------|
-|Accept      ||Accept      |A Boolean value that requests detailed error objects to be returned on failures.|
+|Accept      ||Accept      |A Boolean value that requests detailed error objects to be returned on failure.|
 |Streaming   ||Streaming   |A Boolean value that requests the client will not accumulate data before providing it to the caller.|
 |Uncompressed||Uncompressed|A Boolean value that requests the client will not ask for transport-level compression.|
 
@@ -113,7 +113,7 @@ The following algorithm is generally used by clients for authentication against 
     4. Otherwise, if ApplicationClientId and ApplicationCertificateThumbprint are specified, perform federated authentication with the specified application client id and certificate
     5. Otherwise, perform federated authentication with the current logged-on user's identity (user will be prompted if this is the first authentication in the session)
 
-2. Otherwise do not authenticate
+2. Otherwise do not authenticate.
 
 
 
@@ -121,7 +121,7 @@ The following algorithm is generally used by clients for authentication against 
 
 ### AAD federated application authentication with application certificate:
 
-1. Authentication based on application's certificate if supported only for web applications (and not for native client applications).
+1. Authentication based on application's certificate is supported only for web applications (and not for native client applications).
 2. The web application should be configured to accept the given certificate. [How to authentication based-on AAD application's certificate](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-daemon-certificate-credential/)
 3. The web application should be configured as an authorized principal in the relevant Kusto's cluster.
 4. The certificate with the given thumbprint should be installed (in Local Machine store or in Current User store).

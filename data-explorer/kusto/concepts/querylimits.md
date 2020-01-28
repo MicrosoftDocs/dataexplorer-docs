@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/06/2019
+ms.date: 01/22/2020
 ---
 # Query limits
 
@@ -20,8 +20,8 @@ in the form of default query limits.
 ## Limit on Query Concurrency
 
 **Query concurrency**  is a limit that a cluster imposes on a number of queries running at the same time.
-The default value of Query Concurrency limit depends on the SKU cluster is running on, and is calculated as: Cores-Per-Node x 10. In other words: for cluster is set-up on D14v2 SKU, where each machine has 16 vCores – the default Query Concurrency limit will be 16 cores x10 = 160.
-The default value can be changed by creating support ticket. In future this control will be also exposed via control command.
+The default value of the Query Concurrency limit depends on the SKU cluster it is running on, and is calculated as: Cores-Per-Node x 10. For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default Query Concurrency limit will be 16 cores x10 = 160.
+The default value can be changed by creating a support ticket. In future, this control will also be exposed via a control command.
 
 ## Limit on result set size (result truncation)
 

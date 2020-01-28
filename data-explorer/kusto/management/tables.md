@@ -7,19 +7,19 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/18/2020
+ms.date: 01/26/2020
 ---
 # Tables management
 
 This topic discusses the lifecycle of tables and associated control commands:
 
-|Operation                               |Relevant commands               |
-|----------------------------------------|--------------------------------|
-|Enumerate tables in a database          |`.show tables`                  |
-|Create/modify/drop tables               |`.create tables`, `.create table`, `.alter table`, `.alter-merge table`, `.drop tables`, `.drop table`, `.undo drop table`, `.rename table`|
-|Data ingestion into a table             |`.ingest`, `.set`, `.append`, `.set-or-append` (see [Data Ingestion](./data-ingestion/index.md) for details).)
-|Manage ingestion mapping                |`.create ingestion mapping`, `.show ingestion mappings`, `.alter ingestion mapping`, `.drop ingestion mapping`|
-|Manage table display properties         |`.alter table docstring`, `.alter table folder`|
+|Commands                                |Operation                          |
+|----------------------------------------|---------------------------------- |
+|`.show tables`                          |Enumerate tables in a database     |
+|`.create tables`, `.create table`, `.alter table`, `.alter-merge table`, `.drop tables`, `.drop table`, `.undo drop table`, `.rename table` |Create/modify/drop tables|
+|`.ingest`, `.set`, `.append`, `.set-or-append` (see [Data Ingestion](./data-ingestion/index.md) for details).)|Data ingestion into a table |
+|`.create ingestion mapping`, `.show ingestion mappings`, `.alter ingestion mapping`, `.drop ingestion mapping` |Manage ingestion mapping  |
+|`.alter table docstring`, `.alter table folder` |Manage table display properties 
 
 ## CRUD naming conventions for table (see full details in the sections below)
  
@@ -127,13 +127,13 @@ Requires [Database user permission](../management/access-control/role-based-auth
 |Output parameter|Type|Description
 |---|---|---
 |TableName |String |The name of the table.
-|Schema |String |The table schema as should be used for table create / alter 
+|Schema |String |The table schema as should be used for table create/alter 
 |DatabaseName |String |The database to which the table belongs
-|Folder |String |Table's folder.
-|DocString |String |Table's docstring.
+|Folder |String |Table's folder
+|DocString |String |Table's docstring
 
 ```kusto
-.show table TableName schema as json
+.show table TableName schema as JSON
 ```
 
 Gets the schema in JSON format and additional table metadata.
@@ -142,11 +142,11 @@ Requires [Database user permission](../management/access-control/role-based-auth
 
 |Output parameter|Type|Description
 |---|---|---
-|TableName |String |The name of the table.
-|Schema |String |The table schema in a json format 
+|TableName |String |The name of the table
+|Schema |String |The table schema in JSON format 
 |DatabaseName |String |The database to which the table belongs
-|Folder |String |Table's folder.
-|DocString |String |Table's docstring.
+|Folder |String |Table's folder
+|DocString |String |Table's docstring
 
 ## .create table 
 
@@ -168,7 +168,7 @@ If the table doesn't exist, functions exactly as ".create table" command.
 If the table exists: 
 
 * New columns you specify will be added at the end of the existing schema.
-* If the passed schema doesn't contain some table columns they won't be deleted.
+* If the passed schema doesn't contain some table columns, they won't be deleted.
 * If you specified an existing column with a different type, the command will fail.
 
 Requires [Database user permission](../management/access-control/role-based-authorization.md).
@@ -187,7 +187,8 @@ Returns the table's schema in JSON format, same as:
 .show table MyLogs schema as json
 ```
 
-Note: for multiple table creation, use [.create tables](#create-tables) command for better performance and lower load on the cluster.
+[!NOTE]
+> For multiple table creation, use [.create tables](#create-tables) command for better performance and lower load on the cluster.
 
 ## .create tables
 
@@ -197,7 +198,7 @@ Note: for multiple table creation, use [.create tables](#create-tables) command 
 
 Creates new empty tables as a bulk operation. 
 The command must run in context of a specific database. 
-If any table already exists the command will return success.
+If any table already exists, the command will return success.
 
 Requires [Database user permission](../management/access-control/role-based-authorization.md).
  
@@ -253,7 +254,7 @@ for the extension of existing tables.
 ## .alter table and .alter-merge table
 
 The `.alter table` command sets a new column schema, docstring, and folder to an existing table,
-overriding the existing column schema, docsting, and folder. Data in existing columns
+overriding the existing column schema, docstring, and folder. Data in existing columns
 that are "preserved" by the command is preserved (so this command can be used,
 for example, to reorder the columns of a table).
 
@@ -274,7 +275,7 @@ Specify the columns the table should have after successful completion.
 
 > [!WARNING]
 > Using the `.alter` command incorrectly may lead to data loss.
-> please carefully read the differences between `.alter` and `.alter-merge` below.
+> Read the differences between `.alter` and `.alter-merge` below.
 
 `.alter-merge`:
 
@@ -335,7 +336,7 @@ of the database in scope as a single atomic transaction.
 
 * *OldName* is the name of an existing table. An error is raised and
   the whole command fails (has no effect) if *OldName* does not name
-  an existing table, unles `ifexists` is specified (in which case
+  an existing table, unless `ifexists` is specified (in which case
   this part of the rename command is ignored).
   is not an existing valid
 * *NewName* is the new name of the existing table that used to be called
@@ -370,7 +371,7 @@ to be called `A_TEMP` will now be called `A` and the other way around), rename
 .rename tables A=A_TEMP, NEWB=B, A_TEMP=A
 ``` 
 
-The following sequence of commands  creates a new temporary table and then have it
+The following sequence of commands creates a new temporary table and then have it
 replace an existing or non-existing table:
 
 ```kusto
@@ -421,7 +422,11 @@ The command must be executed with database context.
 
 **Returns**
 
-This command returns the original table extents list, for each extent it specified the number of records the extent contains, if the recover operation succeeded or failed, and the failure reason if relevant.
+This command:
+* Returns the original table extents list
+* Specifies for each extent the number of records the extent contains
+* Returns if the recover operation succeeded or failed
+* Returns the failure reason, if relevant.
 
 |ExtentId|NumberOfRecords|Status|FailureReason
 |--------|---------------|------|-------------
@@ -443,7 +448,7 @@ v24.3 |
 
 **Limitations**
 
-If Purge command was executed on this database, undo drop table command can't be executed to a version earlier to the purge execution.
+If a Purge command was executed on this database, the undo drop table command can't be executed to a version earlier to the purge execution.
 
 Extent can be recovered only if the hard delete period of the extent container it resides in wasn't reached yet.
 
@@ -496,10 +501,10 @@ Creates an ingestion mapping that is associated with a specific table and a spec
 **Notes:** 
 
 * Once created, the mapping can be referenced by its name in ingestion commands, instead of specifying the complete mapping as part of the command.
-* Valid values for *MappingKind* are: `csv`, `json`, `avro`, `parquet`
+* Valid values for *MappingKind* are: `csv`, `json`, `avro`, `parquet`, `orc`
 * If a mapping by the same name already exists for the table:
-    * `.create` will fail.
-    * `.create-or-alter` will alter the existing mapping.
+    * `.create` will fail
+    * `.create-or-alter` will alter the existing mapping
  
 **Example** 
  
@@ -536,7 +541,7 @@ Alters an existing ingestion mapping that is associated with a specific table an
 **Notes:**
 
 * This mapping can be referenced by its name by ingestion commands, instead of specifying the complete mapping as part of the command.
-* Valid values for *MappingKind* are: `csv`, `json`, `avro`, `parquet`
+* Valid values for *MappingKind* are: `csv`, `json`, `avro`, `parquet`, `orc`
 
  
 **Example** 
@@ -599,9 +604,9 @@ Drops the ingestion mapping from the database.
 **Example** 
  
 ```kusto
-.drop table MyTable ingestion csv mapping "Mapping1" 
+.drop table MyTable ingestion CSV mapping "Mapping1" 
 
-.drop table MyTable ingestion json mappings "Mapping1" 
+.drop table MyTable ingestion JSON mappings "Mapping1" 
 ```
 
 ## .alter table docstring
@@ -610,10 +615,10 @@ Drops the ingestion mapping from the database.
 
 Alters the DocString value of an existing table. 
 
-**Notes:** 
-- Requires [Database admin permission](../management/access-control/role-based-authorization.md)
-- Modification of the table is also allowed to [Database user](../management/access-control/role-based-authorization.md) who originally created the table 
-- If the table does not exist - error is returned. For creating new table - see [.create table](#create-table)
+[!NOTE]
+> Requires [Database admin permission](../management/access-control/role-based-authorization.md)
+> Modification of the table is also allowed to [Database user](../management/access-control/role-based-authorization.md) who originally created the table
+> If the table does not exist, an error is returned. For creating new table, see [.create table](#create-table)
 
 **Example** 
 
@@ -627,10 +632,10 @@ Alters the DocString value of an existing table.
 
 Alters the Folder value of an existing table. 
 
-**Notes:** 
-- Requires [Database admin permission](../management/access-control/role-based-authorization.md)
-- Modification of the table is also allowed to [Database user](../management/access-control/role-based-authorization.md) who originally created the table 
-- If the table does not exist - error is returned. For creating new table - see [.create table](#create-table)
+[!NOTE]
+> Requires [Database admin permission](../management/access-control/role-based-authorization.md)
+> The [database user](../management/access-control/role-based-authorization.md) who originally created the table is also allowed to edit it
+> If the table does not exist, an error is returned. For creating a new table, see [.create table](#create-table)
 
 **Example** 
 
