@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/27/2020
 ---
 # top operator
 
@@ -31,5 +31,5 @@ T | top 5 by Name desc nulls last
 
 **Tips**
 
-`top 5 by name` is superficially equivalent to `sort by name | take 5`. However, it runs faster and always returns sorted results, whereas `take` makes no such guarantee.
-[top-nested](topnestedoperator.md) allows to produce hierarchical top results.
+* `top 5 by name` is equivalent to the expression `sort by name | take 5` both from semantic and performance perspectives..
+* Use [top-nested](topnestedoperator.md) operator to produce hierarchical (nested) top results.

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/01/2020
+ms.date: 01/27/2020
 ---
 # Kusto.Ingest client reference
 
@@ -19,7 +19,7 @@ The main interfaces and factory classes in the Kusto.Ingest library are:
 * [class KustoIngestionProperties](#class-kustoingestionproperties): Class used to provide common ingestion properties.
 * [Class JsonColumnMapping](#class-jsoncolumnmapping): Class used to describe the schema mapping to apply when ingesting from a JSON data source.
 * [Class CsvColumnMapping](#class-csvcolumnmapping): Class used to describe the schema mapping to apply when ingesting from a CSV data source.
-* [Enum DataSourceFormat](#enum-datasourceformat): Supported data source formats (e.g. CSV, JSON, etc.)
+* [Enum DataSourceFormat](#enum-datasourceformat): Supported data source formats (for example, CSV, JSON)
 * [Interface IKustoQueuedIngestClient](#interface-ikustoqueuedingestclient): Interface describing operations that apply for queued ingestion only.
 * [Class KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): Properties that apply to queued ingestion only.
 
@@ -344,16 +344,16 @@ KustoIngestionProperties class encapsulates basic ingestion properties that allo
 |-----------|-----------|
 |DatabaseName |Name of the database to ingest into |
 |TableName |Name of the table to ingest into |
-|DropByTags |Tags that each extent will have. DropByTags are permanant and can be used as follows: `.show table T extents where tags has 'some tag'` or `.drop extents <| .show table T extents where tags has 'some tag'` |
+|DropByTags |Tags that each extent will have. DropByTags are permanent and can be used as follows: `.show table T extents where tags has 'some tag'` or `.drop extents <| .show table T extents where tags has 'some tag'` |
 |IngestByTags |Tags that are written per extent. Later on can be used with `IngestIfNotExists` property to avoid ingesting the same data twice |
 |AdditionalTags |Additional tags as needed |
 |IngestIfNotExists |List of tags that you don't want to ingest again (per table) |
-|CSVMapping |For each column, defines the data type and the ordinal column number. Relevant for csv ingestion only (optional) |
+|CSVMapping |For each column, defines the data type and the ordinal column number. Relevant for CSV ingestion only (optional) |
 |JsonMapping |For each column, defines the JSON path and transformation options. **Mandatory for JSON ingestion** |
 |AvroMapping |For each column, defines the name of the field in Avro record. **Mandatory for AVRO ingestion** |
 |ValidationPolicy |Data validation definitions. See [TODO] for details |
 |Format |Format of the data being ingested |
-|AdditionalProperties | Other properties that will be passed as [Ingestion Properties](../../management/data-ingestion/index.md#ingestion-properties) to the ingestion command, as not all the Ingestion Properties are represented in a separate member of this class|
+|AdditionalProperties | Other properties that will be passed as [Ingestion Properties](../../management/data-ingestion/index.md#ingestion-properties) to the ingestion command, because not all of the Ingestion Properties are represented in a separate member of this class|
 
 ```csharp
 public class KustoIngestionProperties

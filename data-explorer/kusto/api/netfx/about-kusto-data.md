@@ -7,31 +7,31 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/12/2020
+ms.date: 01/27/2020
 ---
 # Kusto client library
     
 The Kusto Client SDK (Kusto.Data) exposes a programmatic API
 similar to ADO.NET, so using it should feel
-natural for people experienced in .NET. Briefly speaking, one creates
+natural for those experienced with .NET. You create
 either a query client (`ICslQueryProvider`) or a control command
 provider (`ICslAdminProvider`) from a connection string object
 pointing at the Kusto engine service, database, authentication
-method, etc. This allows one to then issue data queries or
+method, etc. You can then issue data queries or
 control commands by specifying the appropriate Kusto query language
 string, and get back one or more data tables via the returned
 `IDataReader` object.
 
 More concretely, to create an ADO.NET-like client allowing queries against
-Kusto, one uses static methods on the `Kusto.Data.Net.Client.KustoClientFactory`
+Kusto, use static methods on the `Kusto.Data.Net.Client.KustoClientFactory`
 class. These take the connection string and create a thread-safe, disposable,
-client object. (It is strongly recommended that client code refrains from
-creating "too many" instances of this object, and instead create an
-object per connection string and hold on to it for as long as it is needed.)
+client object. (It's strongly recommended that client code does not
+create "too many" instances of this object. Instead, client code should create an
+object per connection string and hold on to it for as long as necessary.)
 This allows the client object to efficiently cache resources.
 
 In general, all methods on the clients are thread-safe with two exceptions: `Dispose`, 
-and setter properties. For consistent results, one should not invoke either methods
+and setter properties. For consistent results, do not invoke either methods
 concurrently.
 
 The following are a few examples.

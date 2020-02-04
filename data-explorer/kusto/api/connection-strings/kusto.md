@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/26/2020
+ms.date: 02/03/2020
 ---
 # Kusto connection strings
 
@@ -15,7 +15,9 @@ Kusto connection strings can provide the information necessary
 for a Kusto client application to establish a connection to a Kusto service
 endpoint. Kusto connection strings are modeled after the ADO.NET connection
 strings. That is, the connection string is a semicolon-delimited list of name/value
-parameter pairs, optionally prefixed by a single URI. For example:
+parameter pairs, optionally prefixed by a single URI.
+
+**Example:**
 
 ```text
 https://help.kusto.windows.net/Samples; Fed=true; Accept=true
@@ -39,14 +41,14 @@ Two additional properties are provided using the name/value syntax:
 >   must be enclosed between double quotation marks.
 
 Several Kusto client tools support an extension over the URI prefix of the connection
-string, in that they allow the shorthand format `@` *ClusterName* `/` *InitialCatalog* to be used.
+string, in that they allow the shorthand format `@` _ClusterName_ `/` _InitialCatalog_ to be used.
 For example, the connection string `@help/Samples` is translated by these tools
 to `https://help.kusto.windows.net/Samples; Fed=true`, which indicates three
 properties (`Data Source`, `Initial Catalog`, and `AAD Federated Security`).
 
 Programmatically, Kusto connection strings can be parsed and manipulated
 by the C# `Kusto.Data.KustoConnectionStringBuilder` class. This class validates
-all connection strings and will generate a runtime exception if validation fails.
+all connection strings and generates a runtime exception if validation fails.
 This functionality is present in all flavors of Kusto SDK.
 
 ## Connection string properties
@@ -57,29 +59,29 @@ It lists programmatic names (which is the name of the property in the
 
 ### General properties
 
-|Property name                      |Alternative names                     |Programmatic name  |Description                                                  |
-|-----------------------------------|--------------------------------------|------------------|--------------------------------------------------------------|
-|Client Version for Tracing         |                                      |TraceClientVersion|When tracing the client version, use this value                                          |
-|Data Source                        |Addr, Address, Network Address, Server|DataSource        |The URI specifying the Kusto service endpoint. For example, https://mycluster.kusto.windows.net or net.tcp://localhost
-|Initial Catalog                    |Database                              |InitialCatalog    |The name of the database to be used by default. For example, MyDatabase|
-|Query Consistency                  |QueryConsistency                      |QueryConsistency  |Set to either `strongconsistency` or `weakconsistency` to determine if the query should synchronize with the metadata before running|
+| Property name              | Alternative names                      | Programmatic name  | Description                                                                                                                          |
+|----------------------------|----------------------------------------|--------------------|---------------------------------------------------|
+| Client Version for Tracing |                                        | TraceClientVersion | When tracing the client version, use this value   |
+| Data Source                | Addr, Address, Network Address, Server | DataSource         | The URI specifying the Kusto service endpoint. For example, https://mycluster.kusto.windows.net or net.tcp://localhost               |
+| Initial Catalog            | Database                               | InitialCatalog     | The name of the database to be used by default. For example, MyDatabase|
+| Query Consistency          | QueryConsistency                       | QueryConsistency   | Set to either `strongconsistency` or `weakconsistency` to determine if the query should synchronize with the metadata before running |
 
 ### User authentication properties
 
-|Property name                      |Alternative names                         |Programmatic name    |Description                                                                                               |
-|-----------------------------------|------------------------------------------|---------------------|----------------------------------------------------------------------------------------------------------|
-|AAD Federated Security             |Federated Security, Federated, Fed, AADFed|FederatedSecurity    |A Boolean value that instructs the client to perform Azure Active Directory (AAD) federated authentication|
-|Enforce MFA                        |MFA,EnforceMFA                            |EnforceMfa           |A Boolean value that instructs the client to acquire a multifactor-authentication token                   |
-|User ID                            |UID, User                                 |UserID               |A String value that instructs the client to perform user authentication with the indicated user name      |
-|User Name for Tracing              |                                          |TraceUserName        |A String value that reports to the service which user name to use when tracing the request internally     |
-|User Token                         |UsrToken, UserToken                       |UserToken            |A String value that instructs the client to perform user authentication with the specified bearer token.<br/>Overrides ApplicationClientId, ApplicationKey, and ApplicationToken. (If specified, skips the actual client authentication flow in favor of the provided token.)|
-|Namespace                          |NS                                        |Namespace            |(For future use)|
+| Property name          | Alternative names                          | Programmatic name | Description                       |
+|------------------------|--------------------------------------------|-------------------|-----------------------------------|
+| AAD Federated Security | Federated Security, Federated, Fed, AADFed | FederatedSecurity | A Boolean value that instructs the client to perform Azure Active  |
+| Enforce MFA            | MFA,EnforceMFA                             | EnforceMfa        | A Boolean value that instructs the client to acquire a multifactor-authentication token       |
+| User ID                | UID, User                                  | UserID            | A String value that instructs the client to perform user authentication with the indicated user name           |
+| User Name for Tracing  |                                            | TraceUserName     | A String value that reports to the service which user name to use when tracing the request internally         |
+| User Token             | UsrToken, UserToken                        | UserToken         | A String value that instructs the client to perform user authentication with the specified bearer token.<br/>Overrides ApplicationClientId, ApplicationKey, and ApplicationToken. (If specified, skips the actual client authentication flow in favor of the provided token.)       |
+| Namespace              | NS                                         | Namespace         | (For future use)  |
 
 
 ### Application authentication properties
 
-|Property name                                     |Alternative names                         |Programmatic name                             |Description                                                   |
-|--------------------------------------------------|------------------------------------------|----------------------------------------------|--------------------------------------------------------------|
+|Property name                                     |Alternative names                         |Programmatic name                             |Description      |
+|--------------------------------------------------|------------------------------------------|----------------------------------------------|-----------------|
 |AAD Federated Security                            |Federated Security, Federated, Fed, AADFed|FederatedSecurity                             |A Boolean value that instructs the client to perform Azure Active Directory (AAD) federated authentication|
 |Application Certificate Thumbprint                |AppCert                                   |ApplicationCertificateThumbprint              |A String value that provides the thumbprint of the client certificate to use when using an application client certificate authenticating flow|
 |Application Client Id                             |AppClientId                               |ApplicationClientId                           |A String value that provides the application client ID to use when authenticating|
@@ -108,24 +110,24 @@ The following algorithm is generally used by clients for authentication against 
 
 1. If AadFederatedSecurity is true:
     1. If UserToken is specified, use AAD federated authentication with the specified token
-    2. Otherwise, If ApplicationToken is specified, perform federated authentication with the specified token
-    3. Otherwise, if ApplicationClientId and ApplicationKey are specified, perform federated authentication with the specified application client id and key
-    4. Otherwise, if ApplicationClientId and ApplicationCertificateThumbprint are specified, perform federated authentication with the specified application client id and certificate
-    5. Otherwise, perform federated authentication with the current logged-on user's identity (user will be prompted if this is the first authentication in the session)
+    1. Otherwise, if ApplicationToken is specified, perform federated authentication with the specified token
+    1. Otherwise, if ApplicationClientId and ApplicationKey are specified, perform federated authentication with the specified application client ID and key
+    1. Otherwise, if ApplicationClientId and ApplicationCertificateThumbprint are specified, perform federated authentication with the specified application client ID and certificate
+    1. Otherwise, perform federated authentication with the current logged-on user's identity (user will be prompted if this is the first authentication in the session)
 
-2. Otherwise do not authenticate.
-
-
+1. Otherwise do not authenticate.
 
 
 
-### AAD federated application authentication with application certificate:
 
-1. Authentication based on application's certificate is supported only for web applications (and not for native client applications).
-2. The web application should be configured to accept the given certificate. [How to authentication based-on AAD application's certificate](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-daemon-certificate-credential/)
-3. The web application should be configured as an authorized principal in the relevant Kusto's cluster.
-4. The certificate with the given thumbprint should be installed (in Local Machine store or in Current User store).
-5. The certificate's public key should contain at least 2048 bits.
+
+### AAD federated application authentication with application certificate
+
+1. Authentication based on an application's certificate is supported only for web applications (and not for native client applications).
+1. The web application should be configured to accept the given certificate. [How to authentication based-on AAD application's certificate](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-daemon-certificate-credential/)
+1. The web application should be configured as an authorized principal in the relevant Kusto cluster.
+1. The certificate with the given thumbprint should be installed (in Local Machine store or in Current User store).
+1. The certificate's public key should contain at least 2048 bits.
 
 ## AAD-based authentication examples
 

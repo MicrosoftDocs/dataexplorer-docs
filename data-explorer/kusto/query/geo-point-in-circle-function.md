@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/08/2019
+ms.date: 02/03/2020
 ---
 # geo_point_in_circle()
 
@@ -57,6 +57,28 @@ datatable(longitude:real, latitude:real, place:string)
 |Seattle|
 |Kirkland|
 |Redmond|
+
+Storm events in Orlando. The events are filtered by Orlando coordinates, within 100km and aggregated by event type and hash.
+![Storm events in Orlando](./images/queries/geo/orlando_storm_events.png)
+```kusto
+StormEvents
+| project BeginLon, BeginLat, EventType
+| where geo_point_in_circle(BeginLon, BeginLat, real(-81.3891), 28.5346, 1000 * 100)
+| summarize count() by EventType, hash = geo_point_to_s2cell(BeginLon, BeginLat)
+| project geo_s2cell_to_central_point(hash), EventType, count_
+| render piechart with (kind=map) // map rendering available in Kusto Explorer desktop
+```
+
+The following example shows NY Taxi pickups nearby some location and within 10 meters. Relevant pickups are aggregated by hash.
+![NY Taxi nearby Pickups](./images/queries/geo/circle_junction.png)
+```
+nyc_taxi
+| project pickup_longitude, pickup_latitude
+| where geo_point_in_circle( pickup_longitude, pickup_latitude, real(-73.9928), 40.7429, 10)
+| summarize by hash = geo_point_to_s2cell(pickup_longitude, pickup_latitude, 22)
+| project geo_s2cell_to_central_point(hash)
+| render scatterchart with (kind = map) // map rendering available in Kusto Explorer desktop
+```
 
 The following example will return true.
 ```kusto

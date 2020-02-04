@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/23/2020
+ms.date: 02/03/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -109,7 +109,9 @@ These are:
 |`columnchart`  |`default`          |Each "column" stands on its own.   |
 |               |`unstacked`        |Same as `default`.                 |
 |               |`stacked`          |Stack "columns" one atop the other.|
-|               |`stacked100`       |Stacl "columns" and stretch each one to the same height as the others.|
+|               |`stacked100`       |Stack "columns" and stretch each one to the same height as the others.|
+|`piechart`     |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point, color-axis and numeric. Supported in Kusto Explorer desktop.|
+|`scatterchart` |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point. Series column is optional. Supported in Kusto Explorer desktop.|
 
 Some visualizations support splitting into multiple y-axis values:
 

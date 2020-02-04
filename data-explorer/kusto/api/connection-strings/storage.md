@@ -7,23 +7,23 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/05/2020
+ms.date: 02/03/2020
 ---
 # Storage connection strings
 
 A few Kusto commands instruct Kusto to interact with external
-storage services. For example, Kusto can be told to export data to Azure Storage
-Blob, in which case the specific parameters (such as storage account name,
-blob container, etc.) need to be provided.
+storage services. For example, Kusto can be told to export data to an Azure Storage
+Blob, in which case the specific parameters (such as storage account name or
+blob container) need to be provided.
 
 Kusto supports the following storage providers:
 
 
-* Azure Storage Blob storage provider.
-* Azure Data Lake Storage storage provider.
+* Azure Storage Blob storage provider
+* Azure Data Lake Storage storage provider
 
 Each kind of a storage provider defines a connection string format
-that is used to describe the storage resources and how to access them.
+used to describe the storage resources and how to access them.
 Kusto uses a URI format to describe these storage resources and the properties
 necessary to access them (such as security credentials).
 
@@ -36,14 +36,14 @@ necessary to access them (such as security credentials).
 
 ## Azure Storage Blob
 
-This provider is the most commonly-used provider and is supported in all scenarios.
+This provider is the most commonly-used and is supported in all scenarios.
 The provider must be given credentials when accessing the resource. There are
-two supported mechanisms of providing credentials:
+two supported mechanisms for providing credentials:
 
 * Provide a Shared Access (SAS) key, using the Azure Storage Blob's standard
-  query (`?sig=...`). This method should be used when Kusto needs to access the
-  resource for a limited duration of time.
-* Provide the storage account key (`;ljkAkl...==`). This method should be used
+  query (`?sig=...`). Use this method when Kusto needs to access the
+  resource for a limited time.
+* Provide the storage account key (`;ljkAkl...==`). Use this method
   when Kusto needs to access the resource on an ongoing basis.
 
 Examples (note that this is showing obfuscated string literals, so as not to expose
@@ -64,31 +64,31 @@ The format of the URI is:
 
 Where:
 
-* *Filesystem* is the name of the ADLS filesystem object (roughly equivalent
-  to Blob Container).
-* *StorageAccountName* is the name of the storage account.
-* *Path* is the path to the directory or file being accessed.
+* _Filesystem_ is the name of the ADLS filesystem object (roughly equivalent
+  to Blob Container)
+* _StorageAccountName_ is the name of the storage account
+* _Path_ is the path to the directory or file being accessed
   The slash (`/`) character is used as a delimiter.
-* *CallerCredentials* indicates the credentials used to access the service,
+* _CallerCredentials_ indicates the credentials used to access the service,
   as described below.
 
 When accessing Azure Data Lake Store Gen 2, the caller must provide valid
 credentials for accessing the service. The following methods of providing credentials are
 supported:
 
-* Append `;sharedkey=`*AccountKey* to the URI, with *AccountKey* being
-  the storage account key.
+* Append `;sharedkey=`*AccountKey* to the URI, with _AccountKey_ being
+  the storage account key
 * Append `;impersonate` to the URI. Kusto will use the requestor's principal
   identity and impersonate it to access the resource. Principal needs to have the appropriate RBAC role assignments to be 
-  able to perform the read/write operations, as documented [here](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). (e.g, the minimal role for read operations is the `Storage Blob Data Reader` role).
-* Append `;token=`*AadToken* to the URI, with *AadToken* being a base-64
+  able to perform the read/write operations, as documented [here](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). (For example, the minimal role for read operations is the `Storage Blob Data Reader` role).
+* Append `;token=`*AadToken* to the URI, with _AadToken_ being a base-64
   encoded AAD access token (make sure the token is for the resource `https://storage.azure.com/`).
-* Append `;prompt` to the URI. Kusto will ask the user for credentials
+* Append `;prompt` to the URI. Kusto requests user credentials
   when it needs to access the resource. (Prompting the user is disabled for
-  cloud deployments and only enabled in test environments.)
+  cloud deployments and is only enabled in test environments.)
 * Provide a Shared Access (SAS) key, using the Azure Data Lake Storage Gen 2's standard
-  query (`?sig=...`). This method should be used when Kusto needs to access the
-  resource for a limited duration of time.
+  query (`?sig=...`). Use this method when Kusto needs to access the
+  resource for a limited time.
 
 
 
@@ -100,12 +100,12 @@ access Azure Data Lake.) The following methods of providing credentials are
 supported:
 
 * Append `;impersonate` to the URI. Kusto will use the requestor's principal
-  identity and impersonate it to access the resource.
-* Append `;token=`*AadToken* to the URI, with *AadToken* being a base-64
+  identity and impersonate it to access the resource
+* Append `;token=`_AadToken _to the URI, with _AadToken_ being a base-64
   encoded AAD access token (make sure the token is for the resource `https://management.azure.com/`).
-* Append `;prompt` to the URI. Kusto will ask the user for credentials
+* Append `;prompt` to the URI. Kusto will request user credentials
   when it needs to access the resource. (Prompting the user is disabled for
-  cloud deployments and only enabled in test environments.)
+  cloud deployments and is only enabled in test environments.)
 
 
 

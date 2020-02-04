@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 02/03/2020
 ---
 # geo_distance_2points()
 
-Calculates shortest distance between two geospatial coordinates on Earth.
+Calculates the shortest distance between two geospatial coordinates on Earth.
 
 **Syntax**
 
@@ -26,7 +26,7 @@ Calculates shortest distance between two geospatial coordinates on Earth.
 
 **Returns**
 
-The shortest distance in meters between two geographic locations on Earth. If the coordinates are invalid, the query will produce a null result.
+The shortest distance, in meters, between two geographic locations on Earth. If the coordinates are invalid, the query will produce a null result.
 
 > [!NOTE]
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
@@ -45,7 +45,17 @@ print distance_in_meters = geo_distance_2points(-122.407628, 47.578557, -118.275
 |---|
 |1546754.35197381|
 
-The following example finds all rows in which the shortest distance between two coordinates is between 1 to 11 meters.
+Here is an approximation of shortest path from Seattle to London. The line consists of coordinates along the LineString and within 500 meters from it.
+![Seattle to London LineString](./images/queries/geo/line_seattle_london.png)
+```kusto
+range i from 1 to 1000000 step 1
+| project lng = rand() * real(-122), lat = rand() * 90
+| where lng between(real(-122) .. 0) and lat between(47 .. 90)
+| where geo_distance_point_to_line(lng,lat,dynamic({"type":"LineString","coordinates":[[-122,47],[0,51]]})) < 500
+| render scatterchart with (kind=map) // map rendering available in Kusto Explorer desktop
+```
+
+The following example finds all rows in which the shortest distance between two coordinates is between 1 and 11 meters.
 ```kusto
 StormEvents
 | extend distance_1_to_11m = geo_distance_2points(BeginLon, BeginLat, EndLon, EndLat)
