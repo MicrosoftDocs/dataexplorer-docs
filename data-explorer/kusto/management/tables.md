@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/02/2020
+ms.date: 02/04/2020
 ---
 # Tables management
 
@@ -17,10 +17,10 @@ Select the links in the table below for more information about them.
 
 | Commands                                                                                                                 | Operation                       |
 |--------------------------------------------------------------------------------------------------------------------------|---------------------------------|
-| [`.alter table docstring`](altertabledocstring.md), [`.alter table folder`](/altertablefolder.md)                                                                                                                                                                                                   | Manage table display properties |
-| [`.create ingestion mapping`](/createingestionmapping.md), [`.show ingestion mappings`](/showingestionmapping.md), [`.alter ingestion mapping`](/alteringestionmapping.md), [`.drop ingestion mapping`](/dropingestionmapping.md)                                                                    | Manage ingestion mapping        |
-| [`.create tables`](/createtables.md), [`.create table`](/createtable.md), [`.alter table`](/altertable.md), [`.alter-merge table`](altermergetable.md), [`.drop tables`](/droptable.md), [`.drop table`](/droptable.md), [`.undo drop table`](/undodroptable.md), [`.rename table`](/renametable.md) | Create/modify/drop tables       |
-| [`.show tables`](/showtables.md)                                                                                        | Enumerate tables in a database  |
+| [`.alter table docstring`](alter-table-docstring-command.md), [`.alter table folder`](alter-table-folder-command-command.md)                                                                                                                                                                                                   | Manage table display properties |
+| [`.create ingestion mapping`](create-ingestion-mapping-command.md), [`.show ingestion mappings`](show-ingestio-nmapping-command.md), [`.alter ingestion mapping`](alter-ingestion-mapping-command.md), [`.drop ingestion mapping`](drop-ingestion-mapping-command.md)                                                                    | Manage ingestion mapping        |
+| [`.create tables`](create-tables-command.md), [`.create table`](create-table-command.md), [`.alter table`](alter-table-command.md), [`.alter-merge table`](alter-merge-table-command.md), [`.drop tables`](drop-table-command.md), [`.drop table`](drop-table-command.md), [`.undo drop table`](undo-drop-table-command.md), [`.rename table`](rename-table-command.md) | Create/modify/drop tables       |
+| [`.show tables`](show-tables-command.md)                                                                                        | Enumerate tables in a database  |
 | `.ingest`, `.set`, `.append`, `.set-or-append` (see [Data Ingestion](./data-ingestion/index.md) for details).)                                                                                                                                                                                      | Data ingestion into a table     |
 
 ## CRUD naming conventions for tables 

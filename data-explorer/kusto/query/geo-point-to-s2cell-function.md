@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/04/2020
 ---
 # geo_point_to_s2cell()
 
@@ -29,14 +29,14 @@ For more information about S2 Cells, click [here](http://s2geometry.io/devguide/
 
 The S2 Cell Token string value of a given geographic location. If the coordinate or level are invalid, the query will produce an empty result.
 
-**Notes**
-
-* S2Cell can be useful geospatial clustering tool.
-* S2Cell has 31 levels of hierarchy with area coverage ranging from 85,011,012.19km² at the highest level 0 to 00.44cm² at the lowest level 30.
-* S2Cell has good preservness of the cell center during level increase from 0 to 30.
-* S2Cell is a cell on a sphere surface and it's edges are geodesics.
-* Invoking the [geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md) function on a s2cell token string that was calculated on longitude x and latitude y won't necessairly return x and y.
-* It's possible that two geographic locations are very close to each other but have different S2 Cell tokens.
+> [!NOTE]
+>
+> * S2Cell can be a useful geospatial clustering tool.
+> * S2Cell has 31 levels of hierarchy with area coverage ranging from 85,011,012.19km² at the highest level 0 to 00.44cm² at the lowest level 30.
+> * S2Cell preserves the cell center well during level increase from 0 to 30.
+> * S2Cell is a cell on a sphere surface and it's edges are geodesics.
+> * Invoking the [geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md) function on a s2cell token string that was calculated on longitude x and latitude y won't necessarily return x and y.
+> * It's possible that two geographic locations are very close to each other but have different S2 Cell tokens.
 
 **S2 Cell approximate area coverage per level value**
 
@@ -96,9 +96,9 @@ StormEvents
 print s2cell = geo_point_to_s2cell(-80.195829, 25.802215, 8)
 ```
 
-|s2cell|
-|---|
-|88d9b|
+| s2cell |
+|--------|
+| 88d9b  |
 
 The following example finds groups of coordinates. Every pair of coordinates in the group reside in s2cell with maximum area of 1632.45 km².
 ```kusto
@@ -113,34 +113,34 @@ datatable(location_id:string, longitude:real, latitude:real)
             by s2cell = geo_point_to_s2cell(longitude, latitude, 8) // s2 cell of the group
 ```
 
-|s2cell|count|locations|
-|---|---|---|
-|47b1d|2|["A","B"]|
-|47ae3|1|["C"]|
+| s2cell | count | locations |
+|--------|-------|-----------|
+| 47b1d  | 2     | ["A","B"] |
+| 47ae3  | 1     | ["C"]     |
 
 The following example produces an empty result because of the invalid coordinate input.
 ```kusto
 print s2cell = geo_point_to_s2cell(300,1,8)
 ```
 
-|s2cell|
-|---|
-||
+| s2cell |
+|--------|
+|        |
 
 The following example produces an empty result because of the invalid level input.
 ```kusto
 print s2cell = geo_point_to_s2cell(1,1,35)
 ```
 
-|s2cell|
-|---|
-||
+| s2cell |
+|--------|
+|        |
 
 The following example produces an empty result because of the invalid level input.
 ```kusto
 print s2cell = geo_point_to_s2cell(1,1,int(null))
 ```
 
-|s2cell|
-|---|
-||
+| s2cell |
+|--------|
+|        |

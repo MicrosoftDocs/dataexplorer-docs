@@ -1,15 +1,15 @@
 ---
-title: #.create ingestion mapping - Azure Data Explorer | Microsoft Docs
-description: This article describes #.create ingestion mapping in Azure Data Explorer.
+title: .create ingestion mapping - Azure Data Explorer | Microsoft Docs
+description: This article describes .create ingestion mapping in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/02/2020
+ms.date: 02/04/2020
 ---
-## .create ingestion mapping
+# .create ingestion mapping
 
 Creates an ingestion mapping that is associated with a specific table and a specific format.
 

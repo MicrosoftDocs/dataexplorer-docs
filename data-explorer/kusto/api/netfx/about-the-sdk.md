@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 02/04/2020
 ---
 # About Kusto .NET SDK
 
@@ -17,7 +17,7 @@ ms.date: 10/30/2019
 
 Kusto client libraries are published as NuGet packages and can be found on [Nuget.org](https://www.nuget.org/packages?q=microsoft.azure.kusto).
 
-The following Kusto packages are available for consumption:
+The following packages are available:
 
 
 |Package                                                                                             |Main assembly name|Runtime                                 |Source            |Description        |
@@ -28,7 +28,7 @@ The following Kusto packages are available for consumption:
 |[Microsoft.Azure.Kusto.Tools](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)          |                  |.NET Framework 4.6.2                    |Nuget.org         |Command-line tools |
 |[Microsoft.Azure.Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/)    |Kusto.Language    |.NET Framework 4.6.2 / .NET Core 2.0    |Nuget.org         |Language service   |
 
-**Accessing the NuGet feed from Visual Studio**
+### Accessing the NuGet feed from Visual Studio
 
 - See [Consume NuGet packages in Visual Studio](https://www.visualstudio.com/docs/package/get-started/nuget/consume)
 - Note that instructions are different, depending on which version of Visual Studio you're using:
@@ -43,7 +43,7 @@ The following Kusto packages are available for consumption:
       Then restart Visual Studio and continue.
 
 
-**Accessing the NuGet feed using the NuGet Package Manager console**
+### Accessing the NuGet feed using the NuGet Package Manager console
 
 1. First read [Authenticating to feeds with NuGet](https://www.visualstudio.com/docs/package/get-started/nuget/auth).
 2. Then make sure that the NuGet client version is 3.2 or above.
@@ -57,7 +57,7 @@ Install-Package <package name>
   -Source https://api.nuget.org/v3/index.json
 ```
 
-**Accessing the NuGet feed using the NuGet command-line tool**
+### Accessing the NuGet feed using the NuGet command-line tool
 
 1. First read [Authenticating to feeds with NuGet](https://www.visualstudio.com/docs/package/get-started/nuget/auth).
 2. Then make sure that the NuGet client version is 3.2 or above.
@@ -70,8 +70,6 @@ Install-Package <package name>
 nuget.exe Install <package name> 
   -Source https://api.nuget.org/v3/index.json
 ```
-
-
 
 
 

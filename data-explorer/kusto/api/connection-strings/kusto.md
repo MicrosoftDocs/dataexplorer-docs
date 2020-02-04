@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/04/2020
 ---
 # Kusto connection strings
 
@@ -78,6 +78,7 @@ It lists programmatic names (which is the name of the property in the
 | Namespace              | NS                                         | Namespace         | (For future use)  |
 
 
+
 ### Application authentication properties
 
 |Property name                                     |Alternative names                         |Programmatic name                             |Description      |
@@ -93,6 +94,7 @@ It lists programmatic names (which is the name of the property in the
 |Application Certificate Subject Distinguished Name|Application Certificate Subject           |ApplicationCertificateSubjectDistinguishedName||
 |Application Certificate Issuer Distinguished Name |Application Certificate Issuer            |ApplicationCertificateIssuerDistinguishedName ||
 |Application Certificate Send Public Certificate   |Application Certificate SendX5c, SendX5c  |ApplicationCertificateSendPublicCertificate   ||
+
 
 
 ### Client communication properties

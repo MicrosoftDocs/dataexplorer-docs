@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/02/2020
+ms.date: 02/04/2020
 ---
 # .alter table docstring
 
@@ -15,7 +15,7 @@ Alters the DocString value of an existing table.
 
 `.alter` `table` *TableName* `docstring` *Documentation*
 
-[!NOTE]
+> [!NOTE]
 > * Requires [database admin permission](../management/access-control/role-based-authorization.md)
 > * Modification of the table is also allowed to the [database user](../management/access-control/role-based-authorization.md) who originally created the table
 > * If the table does not exist, an error is returned. For creating new table, see [.create table](/createtable.md)

@@ -36,7 +36,7 @@ The shortest distance, in meters, between a coordinate and a line on Earth. If t
 dynamic({"type": "LineString","coordinates": [ [lng_1,lat_1], [lng_2,lat_2] ,..., [lng_N,lat_N] ]})
 
 * LineString coordinates array must contain at least two entries.
-* Coordinates [longitude,latitude] must be valid where longitude is a real number in range [-180, +180] and latitude is a real number in range [-90, +90].
+* Coordinates [longitude,latitude] must be valid where longitude is a real number in the range [-180, +180] and latitude is a real number in the range [-90, +90].
 * Edge length must be less than 180 degrees. The shortest edge between the two vertices will be chosen.
 
 > [!TIP]
@@ -50,9 +50,9 @@ The following example finds the shortest distance between North Las Vegas Airpor
 print distance_in_meters = geo_distance_point_to_line(-115.199625, 36.210419, dynamic({ "type":"LineString","coordinates":[[-115.115385,36.229195],[-115.136995,36.200366],[-115.140252,36.192470],[-115.143558,36.188523],[-115.144076,36.181954],[-115.154662,36.174483],[-115.166431,36.176388],[-115.183289,36.175007],[-115.192612,36.176736],[-115.202485,36.173439],[-115.225355,36.174365]]}))
 ```
 
-|distance_in_meters|
-|---|
-|3797.88887253334|
+| distance_in_meters |
+|--------------------|
+| 3797.88887253334   |
 
 Storm events in south coast US. The events are filtered by maximum distance of 5km from the defined shore line.
 ![Storm events in US south coast](./images/queries/geo/us_south_coast_storm_events.png)
@@ -79,15 +79,15 @@ The following example will return a null result because of the invalid LineStrin
 print distance_in_meters = geo_distance_point_to_line(1,1, dynamic({ "type":"LineString"}))
 ```
 
-|distance_in_meters|
-|---|
-||
+| distance_in_meters |
+|--------------------|
+|                    |
 
 The following example will return a null result because of the invalid coordinate input.
 ```kusto
 print distance_in_meters = geo_distance_point_to_line(300, 3, dynamic({ "type":"LineString","coordinates":[[1,1],[2,2]]}))
 ```
 
-|distance_in_meters|
-|---|
-||
+| distance_in_meters |
+|--------------------|
+|                    |

@@ -1,15 +1,15 @@
 ---
-title: #.alter ingestion mapping - Azure Data Explorer | Microsoft Docs
-description: This article describes #.alter ingestion mapping in Azure Data Explorer.
+title: .alter ingestion mapping - Azure Data Explorer | Microsoft Docs
+description: This article describes .alter ingestion mapping in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/02/2020
+ms.date: 02/04/2020
 ---
-## .alter ingestion mapping
+# .alter ingestion mapping
 
 Alters an existing ingestion mapping that is associated with a specific table and a specific format (full mapping replace).
 
@@ -21,7 +21,6 @@ Alters an existing ingestion mapping that is associated with a specific table an
 > * This mapping can be referenced by its name by ingestion commands, instead of specifying the complete mapping as part of the command.
 > * Valid values for _MappingKind_ are: `CSV`, `JSON`, `avro`, `parquet`, and `orc`.
 
- 
 **Example** 
  
 ```

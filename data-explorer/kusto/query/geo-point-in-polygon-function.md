@@ -19,8 +19,8 @@ Calculates whether the geospatial coordinates are inside a polygon on Earth.
 
 **Arguments**
 
-* *longitude*: Geospatial coordinate, longitude value in degrees. Valid value is a real number and in range [-180, +180].
-* *latitude*: Geospatial coordinate, latitude value in degrees. Valid value is a real number and in range [-90, +90].
+* *longitude*: Geospatial coordinate, longitude value in degrees. Valid value is a real number and in the range [-180, +180].
+* *latitude*: Geospatial coordinate, latitude value in degrees. Valid value is a real number and in the range [-90, +90].
 * *polygon*: Polygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type.
 
 **Returns**
@@ -37,8 +37,8 @@ dynamic({"type": "Polygon","coordinates": [ LinearRingShell, LinearRingHole_1 ,.
 
 * LinearRingShell is required and defined as a `counterclockwise` ordered array of coordinates [[lng_1,lat_1],...,[lng_i,lat_i],...,[lng_j,lat_j],...,[lng_1,lat_1]]. There can be only one shell.
 * LinearRingHole is optional and defined as a `clockwise` ordered array of coordinates [[lng_1,lat_1],...,[lng_i,lat_i],...,[lng_j,lat_j],...,[lng_1,lat_1]]. There can be any number of interior rings and holes.
-* LinearRing vertices must be distinct with at least 3 coordinates. The first coordinate must be equal to the last; therefore, at least four entries are required.
-* Coordinates [longitude,latitude] must be valid where longitude is a real number in range [-180, +180] and latitude is a real number in range [-90, +90].
+* LinearRing vertices must be distinct with at least three coordinates. The first coordinate must be equal to the last; therefore, at least four entries are required.
+* Coordinates [longitude,latitude] must be valid where longitude is a real number in the range [-180, +180] and latitude is a real number inthe range [-90, +90].
 * LinearRingShell encloses at most half of the sphere. LinearRing divides the sphere into two regions. The smaller of the two regions will be chosen.
 * LinearRing edge length must be less than 180 degrees. The shortest edge between the two vertices will be chosen.
 * LinearRings must not cross and must not share edges.LinearRings may share vertices.
@@ -63,9 +63,9 @@ datatable(longitude:real, latitude:real, place:string)
 | project place
 ```
 
-|place|
-|---|
-|Empire State Building|
+| place                 |
+|-----------------------|
+| Empire State Building |
 
 Storm events in California. The events are filtered by california state polygon and aggregated by event type and hash.
 ![Storm events in California](./images/queries/geo/california_storm_events.png)
@@ -118,9 +118,9 @@ The following example will return a null result because of the invalid coordinat
 print in_polygon = geo_point_in_polygon(200,1,dynamic({"type": "Polygon","coordinates": [[[0,0],[10,10],[10,1],[0,0]]]}))
 ```
 
-|in_polygon|
-|---|
-||
+| in_polygon |
+|------------|
+|            |
 
 The following example will return a null result because of the invalid polygon input.
 
@@ -128,6 +128,6 @@ The following example will return a null result because of the invalid polygon i
 print in_polygon = geo_point_in_polygon(1,1,dynamic({"type": "Polygon","coordinates": [[[0,0],[10,10],[10,10],[0,0]]]}))
 ```
 
-|in_polygon|
-|---|
-||
+| in_polygon |
+|------------|
+|            |

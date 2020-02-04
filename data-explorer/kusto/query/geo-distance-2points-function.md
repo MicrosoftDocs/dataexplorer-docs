@@ -19,10 +19,10 @@ Calculates the shortest distance between two geospatial coordinates on Earth.
 
 **Arguments**
 
-* *p1_longitude*: First geospatial coordinate, longitude value in degrees. Valid value is a real number and in range [-180, +180].
-* *p1_latitude*: First geospatial coordinate, latitude value in degrees. Valid value is a real number and in range [-90, +90].
-* *p2_longitude*: Second geospatial coordinate, longitude value in degrees. Valid value is a real number and in range [-180, +180].
-* *p2_latitude*: Second geospatial coordinate, latitude value in degrees. Valid value is a real number and in range [-90, +90].
+* *p1_longitude*: First geospatial coordinate, longitude value in degrees. Valid value is a real number and in the range [-180, +180].
+* *p1_latitude*: First geospatial coordinate, latitude value in degrees. Valid value is a real number and in the range [-90, +90].
+* *p2_longitude*: Second geospatial coordinate, longitude value in degrees. Valid value is a real number and in the range [-180, +180].
+* *p2_latitude*: Second geospatial coordinate, latitude value in degrees. Valid value is a real number and in the range [-90, +90].
 
 **Returns**
 
@@ -41,9 +41,9 @@ The following example finds the shortest distance between Seattle and Los Angele
 print distance_in_meters = geo_distance_2points(-122.407628, 47.578557, -118.275287, 34.019056)
 ```
 
-|distance_in_meters|
-|---|
-|1546754.35197381|
+| distance_in_meters |
+|--------------------|
+| 1546754.35197381   |
 
 Here is an approximation of shortest path from Seattle to London. The line consists of coordinates along the LineString and within 500 meters from it.
 ![Seattle to London LineString](./images/queries/geo/line_seattle_london.png)
@@ -63,16 +63,16 @@ StormEvents
 | project distance_1_to_11m
 ```
 
-|distance_1_to_11m|
-|---|
-|10.5723100154958|
-|7.92153588248414|
+| distance_1_to_11m |
+|-------------------|
+| 10.5723100154958  |
+| 7.92153588248414  |
 
-The following example will return a null result because of the invalid coordinate input.
+The following example returns a null result because of the invalid coordinate input.
 ```kusto
 print distance = geo_distance_2points(300,1,1,1)
 ```
 
-|distance|
-|---|
-||
+| distance |
+|----------|
+|          |
