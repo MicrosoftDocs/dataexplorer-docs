@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/19/2019
+ms.date: 02/05/2020
 ---
 # Best practices for schema design
 
@@ -15,8 +15,8 @@ There are several "Dos and Don'ts" you can follow to make your management comman
 
 ## Do
 
-1. If you need to create multiple tables use the [`.create tables`](../management/tables.md#create-tables) command, instead of issuing many `.create table` commands.
-2. If you need to rename multiple tables, do this with a single call to [`.rename tables`](../management/tables.md#rename-tables), instead of by issuing a separate call for each pair of tables.
+1. If you need to create multiple tables use the [`.create tables`](create-tables-command.md) command, instead of issuing many `.create table` commands.
+2. If you need to rename multiple tables, do this with a single call to [`.rename tables`](rename-table-command.md), instead of by issuing a separate call for each pair of tables.
 3. Use the lowest-scoped `.show` command, instead of applying filters after a pipe (`|`). For example:
     - Use `.show table T extents` instead of `.show cluster extents | where TableName == 'T'`
     - Use `.show database DB schema` instead of `.show schema | where DatabaseName == 'DB'`.

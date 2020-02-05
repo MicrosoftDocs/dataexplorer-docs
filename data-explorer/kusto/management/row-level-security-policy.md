@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/05/2020
 ---
 # RowLevelSecurity policy
 
@@ -54,9 +54,9 @@ This is useful if you want to try various queries for row_level_security, but do
 
 > [!TIP]
 > These functions are often useful for row_level_security queries:
-> * [current_principal()](../query/current-principalfunction.html)
-> * [current_principal_details()](../query/current-principal-detailsfunction.html)
-> * [current_principal_is_member_of()](../query/current-principal-ismemberoffunction.html)
+> * [current_principal()](../query/current-principalfunction.md)
+> * [current_principal_details()](../query/current-principal-detailsfunction.md)
+> * [current_principal_is_member_of()](../query/current-principal-ismemberoffunction.md)
 
 **Example**
 

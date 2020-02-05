@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/15/2018
+ms.date: 02/05/2020
 ---
 # Streaming ingestion HTTP request
 
@@ -31,7 +31,7 @@ Additional paramters are formatted as URL Query: `{name}`=`{value}` pairs separt
 | Parameter    |  Description                                                                                                |
 |--------------|-------------------------------------------------------------------------------------------------------------|
 |`streamFormat`| **Required** Specifies format of the data in the request body. Value should be one of the following: `Csv`,`Tsv`,`Scsv`,`SOHsv`,`Psv`,`Json`,`SingleJson`,`MultiJson`,`Avro`. For more information please see [Supported Data Formats](../../management/data-ingestion/index.md#supported-data-formats).|
-|`mappingName` | **Required** if `streamFormat` is one of `Json`, `SingleJson`, `MultiJson` or `Avro`, **Optional** otherwise. The value shold be the name of the pre-created ingestion mapping defined on the table. For more information on data mappings see [Data Mappings](../../management/mappings.md). The way to manage pre-created mappings on the table is described [here](../../management/tables.md#create-ingestion-mapping) |
+|`mappingName` | **Required** if `streamFormat` is one of `Json`, `SingleJson`, `MultiJson` or `Avro`, **Optional** otherwise. The value shold be the name of the pre-created ingestion mapping defined on the table. For more information on data mappings see [Data Mappings](../../management/mappings.md). The way to manage pre-created mappings on the table is described [here](../../management/create-ingestion-mapping-command.md) |
               
 
 For example to ingest CSV-formatted data into table `Logs` in database `Test`

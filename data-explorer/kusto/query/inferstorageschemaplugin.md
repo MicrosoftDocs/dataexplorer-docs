@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/30/2020
+ms.date: 02/05/2020
 ---
 # infer_storage_schema plugin
 
@@ -36,7 +36,7 @@ a property bag specifying properties of the request:
 |Name                    |Required|Description|
 |------------------------|--------|-----------|
 |`StorageContainers`|Yes|List of [storage connection strings](../api/connection-strings/storage.md) that represent prefix URI for stored data artifacts|
-|`DataFormat`|Yes|One of supported [data formats](./data-ingestion/index.md#supported-data-formats).|
+|`DataFormat`|Yes|One of supported [data formats](../management/data-ingestion/index.md#supported-data-formats).|
 |`FileExtension`|No|Only scan files ending with this file extension. It's not required, but specifying it may speed up the process (or eliminate data reading issues)|
 |`FileNamePrefix`|No|Only scan files starting with this prefix. It's not required, but specifying it may speed up the process|
 |`Mode`|No|Schema inference strategy, one of: `any`, `last`, `all`. Infer data schema from any (first found) file, from last written file or from all files respectively. The default value is `last`.|

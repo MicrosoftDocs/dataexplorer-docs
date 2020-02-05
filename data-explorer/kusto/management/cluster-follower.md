@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/16/2019
+ms.date: 02/05/2020
 ---
 # Cluster follower commands
 
@@ -56,7 +56,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
     * [.show database policy retention](../management/retention-policy.md#show-retention-policy)
     * [.show database details](../management/databases.md#show-databases)
-    * [.show table details](../management/tables.md#show-table-details)
+    * [.show table details](show-tables-command.md)
 * Viewing the override settings on the follower database after the change is made can be done using [.show follower database](#show-follower-database)
 
 **Syntax**
@@ -83,7 +83,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
     * [.show database policy retention](../management/retention-policy.md#show-retention-policy)
     * [.show database details](../management/databases.md#show-databases)
-    * [.show table details](../management/tables.md#show-table-details)
+    * [.show table details](show-tables-command.md)
 * Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
 
 **Syntax**
@@ -184,7 +184,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 **Notes**
 
 * Viewing the effective collection of database/table-level caching policies after the change can be done using the standard `.show` commands:
-    * [.show tables details](../management/tables.md#show-table-details)
+    * [.show tables details](show-tables-command.md)
     * [.show database details](../management/databases.md#show-databases)
 * Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
 
@@ -216,7 +216,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
     * [.show database policy retention](../management/retention-policy.md#show-retention-policy)
     * [.show database details](../management/databases.md#show-databases)
-    * [.show table details](../management/tables.md#show-table-details)
+    * [.show table details](show-tables-command.md)
 * Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
 
 **Syntax**
@@ -247,7 +247,7 @@ Requires [DatabaseAdmin permissions](../management/access-control/role-based-aut
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
     * [.show database policy retention](../management/retention-policy.md#show-retention-policy)
     * [.show database details](../management/databases.md#show-databases)
-    * [.show table details](../management/tables.md#show-table-details)
+    * [.show table details](show-tables-command.md)
 * Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
 
 **Syntax**

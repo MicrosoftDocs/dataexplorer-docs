@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/05/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -27,7 +27,7 @@ Note that this operator does not have a pipeline input.
 
 * *ColumnName*, *ColumnType*: These define the schema of the table. The Syntax
   used is precisely the same as the syntax used when defining a table
-  (see [.create table](../management/tables.md#create-table)).
+  (see [.create table](../management/create-table-command.md)).
 * *ScalarValue*: A constant scalar value to insert into the table. The number of values
   must be an integer multiple of the columns in the table, and the *n*'th value
   must have a type that corresponds to column *n* % *NumColumns*.

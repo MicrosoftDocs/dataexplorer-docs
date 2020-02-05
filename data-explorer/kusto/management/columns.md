@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/19/2019
+ms.date: 02/05/2020
 ---
 # Columns management
 
@@ -58,7 +58,7 @@ The right way to change column type while retaining the historical data is to cr
 For each table `T1` you'd like to change a column type in, execute the following steps:
 
 * Create a table `T1_prime` with the correct schema (the right column types)
-* Swap the tables using [.rename tables](./tables.md#rename-tables) command, which allows swapping table names:
+* Swap the tables using [.rename tables](rename-table-command.md) command, which allows swapping table names:
 
 ```kusto
 .rename tables T_prime=T1, T1=T_prime
