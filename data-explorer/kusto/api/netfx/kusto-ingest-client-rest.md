@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 02/05/2020
 ---
 # HowTo Data Ingestion without Kusto.Ingest Library
 
@@ -231,7 +231,7 @@ Here we use NewtonSoft.JSON package again to compose a valid ingestion request m
 * This is the bare minimum for the ingestion message.
 * Note, that identity token is mandatory and must reside in the `AdditionalProperties` JSON object
 * Whenever needed a `CsvMapping` or a `JsonMapping` properties must be provided as well
-* See [article on ingestion mapping pre-creation](../../management/tables.md#create-ingestion-mapping) for more details
+* See [article on ingestion mapping pre-creation](../../management/create-ingestion-mapping-command.md) for more details
 * [Appendix A](#appendix-a-ingestion-message-internal-structure) provides explanation on the ingestion message structure
 
 ```csharp

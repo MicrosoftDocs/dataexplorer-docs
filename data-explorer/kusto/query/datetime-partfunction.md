@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/23/2020
+ms.date: 01/28/2020
 ---
 # datetime_part()
 
@@ -23,10 +23,10 @@ datetime_part("Day",datetime(2015-12-14))
 
 **Arguments**
 
-* `date`: `datetime`.
-* `part`: `string`. 
+* `date`: `datetime`
+* `part`: `string`
 
-Possible values of *part*: 
+Possible values of `part`: 
 - Year
 - Quarter
 - Month

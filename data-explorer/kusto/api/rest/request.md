@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 01/27/2020
 ---
 # Query/management HTTP request
 
@@ -35,24 +35,24 @@ POST https://help.kusto.windows.net/v1/rest/mgmt HTTP/1.1
 The following table contains the common headers used to perform query and management
 operations.
 
-|Standard header  |Description                                                                                                             |
-|-----------------|------------------------------------------------------------------------------------------------------------------------|
-|`Accept`         |**Required**. Set this to `application/json`.                                                                           |
-|`Accept-Encoding`|**Optional**. Supported encodings are `gzip` and `deflate`.                                                             |
-|`Authorization`  |**Required**. See [authentication](./authentication.md).                                                                |
-|`Connection`     |**Optional**. It is recommended that `Keep-Alive` be enabled.                                                           |
-|`Content-Length` |**Optional**. It is recommended that the request body length be specified when known.                                   |
-|`Content-Type`   |**Required**. Set this to `application/json` with `charset=utf-8`.                                                      |
-|`Expect`         |**Optional**. Can be set to `100-Continue`.                                                                             |
-|`Host`           |**Required**. Set this to the fully-qualified domain name that the request was sent to (e.g., `help.kusto.windows.net`).|
+|Standard header  |Description                                                                                                                    |
+|-----------------|-------------------------------------------------------------------------------------------------------------------------------|
+|`Accept`         |**Required**. Set this to `application/json`.                                                                                  |
+|`Accept-Encoding`|**Optional**. Supported encodings are `gzip` and `deflate`.                                                                    |
+|`Authorization`  |**Required**. See [authentication](./authentication.md).                                                                       |
+|`Connection`     |**Optional**. It is recommended that `Keep-Alive` be enabled.                                                                  |
+|`Content-Length` |**Optional**. It is recommended that the request body length be specified when known.                                          |
+|`Content-Type`   |**Required**. Set this to `application/json` with `charset=utf-8`.                                                             |
+|`Expect`         |**Optional**. Can be set to `100-Continue`.                                                                                    |
+|`Host`           |**Required**. Set this to the fully-qualified domain name that the request was sent to (for example, `help.kusto.windows.net`).|
 
 The following table contains the common custom headers used when performing query
 and management operations. Unless indicated otherwise, these headers are used
 for telemetry purposes only, and have no functionality impact.
 
-All headers are **optional**. It is **strongly-recommended** however that the
-`x-ms-client-request-id` custom header be specified. In some scenarios (e.g.,
-cancelling a running query) this header is **mandatory** as it is used to identify
+All headers are **optional**. It is **strongly-recommended** that you specify the
+`x-ms-client-request-id` custom header. In some scenarios (for example,
+cancelling a running query) this header is **mandatory** because it is used to identify
 the request.
 
 
@@ -63,12 +63,12 @@ the request.
 |`x-ms-user-id`          |Same as `x-ms-user`.                                                                                      |
 |`x-ms-client-request-id`|A unique identifier for the request.                                                                      |
 |`x-ms-client-version`   |The (friendly) version identifier for the client making the request.                                      |
-|`x-ms-readonly`         |If specified, forces the request to run in readonly mode (preventing it from making long-lasting changes).|
+|`x-ms-readonly`         |If specified, forces the request to run in read-only mode (preventing it from making long-lasting changes).|
 
 ## Request parameters
 
 The following parameters can be passed in the request. They are encoded in the
-request as query parameters or part of the body, depending on whether GET or
+request as query parameters or as part of the body, depending on whether GET or
 POST is used.
 
 * `csl`: This is a **mandatory** parameter. It holds the text of the query
@@ -81,17 +81,16 @@ POST is used.
 
 * `properties`: This is an **optional** parameter. It provides various
   client request properties that modify how the request is processed and its
-  results returned back. Please see [client request properties](../netfx/request-properties.md)
-  for a complete description.
+  results. For a complete description, see [client request properties](../netfx/request-properties.md).
 
 ## GET query parameters
 
-When the GET verb is used, the query parameters of the request specify the
+When GET is used, the query parameters of the request specify the
 request parameters noted above.
 
 ## Body
 
-When the POST verb is used, the body of the request is a single JSON document
+When POST is used, the body of the request is a single JSON document
 encoded in UTF-8 that provides the values of the request parameters noted
 above.
 
@@ -128,7 +127,7 @@ Request body (newlines introduced for clarity; they are not needed):
 
 The following example shows how to create a request that sends the query above using [curl](https://curl.haxx.se/):
 
-1. Obtain a token for authentication
+1. Obtain a token for authentication.
 
 * replace `AAD_TENANT_NAME_OR_ID`, `AAD_APPLICATION_ID` and `AAD_APPLICATION_KEY` with the relevant values, after having set up [AAD application authentication](../../management/access-control/how-to-provision-aad-app.md)
 
@@ -154,7 +153,7 @@ This will provide you with the bearer token:
 }
 ```
 
-which you can use in your request to the query endpoint:
+2. Use the bearer token in your request to the query endpoint:
 
 ```
 curl -d '{"db":"Samples","csl":"print Test=\"Hello, World!\"","properties":"{\"Options\":{\"queryconsistency\":\"strongconsistency\"}}"}"' \
@@ -168,4 +167,4 @@ curl -d '{"db":"Samples","csl":"print Test=\"Hello, World!\"","properties":"{\"O
 -X POST https://help.kusto.windows.net/v2/rest/query
 ```
 
-and read the response according to [this specification](response.md).
+3. Read the response according to [this specification](response.md).

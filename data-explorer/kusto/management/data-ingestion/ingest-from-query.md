@@ -7,20 +7,20 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/13/2020
+ms.date: 01/29/2020
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 
 These commands execute a query or a control command, and ingest the results of the query
 into a table. The difference between these commands is how they treat
-existing or unexisting tables and data:
+existing or nonexistent tables and data:
 
-|Command          |If table exists                     |If table doesn't exist                 |
-|-----------------|------------------------------------|---------------------------------------|
-|`.set`           |The command fails.                  |The table is created and data ingested.|
-|`.append`        |Data is appended to the table.      |The command fails.                     |
-|`.set-or-append` |Data is appended to the table.      |The table is created and data ingested.|
-|`.set-or-replace`|Data replaces the data in the table.|The table is created and data ingested.|
+|Command          |If table exists                     |If table doesn't exist                    |
+|-----------------|------------------------------------|------------------------------------------|
+|`.set`           |The command fails.                  |The table is created and data is ingested.|
+|`.append`        |Data is appended to the table.      |The command fails.                        |
+|`.set-or-append` |Data is appended to the table.      |The table is created and data is ingested.|
+|`.set-or-replace`|Data replaces the data in the table.|The table is created and data is ingested.|
 
 **Syntax**
 
@@ -38,18 +38,16 @@ existing or unexisting tables and data:
   ingestion in the background. The results of the command will include
   an `OperationId` value that can then be used with the `.show operation`
   command to retrieve the ingestion completion status and results.
-
 * *TableName*: The name of the table to ingest data to.
   The table name is always relative to the database in context.
-
 * *PropertyName*, *PropertyValue*: Any number of
   [ingestion properties](./index.md#ingestion-properties) that affect the ingestion process.
 
   In addition, there are several properties that control the behavior of the command itself:
 
 |Property        |Type    |Description|
-|----------------|--------|---------------------------------------------------------------------------------------------------------------------------|
-|`distributed`   |`bool`  |Indicates that the command ingests from all nodes executing the query in parallel. (Defaults to `false`.)  
+|----------------|--------|-----------------------------------------------------------------------------------------------------------------------------|
+|`distributed`   |`bool`  |Indicates that the command ingests from all nodes executing the query in parallel. (Defaults to `false`.)  See remarks below.|
 
 * *QueryOrCommand*: The text of a query or a control command whose results will be used as data
   to ingest.
@@ -64,24 +62,26 @@ existing or unexisting tables and data:
   The table schema will be preserved unless one of `extend_schema` or `recreate_schema`
   ingestion property is set to `true`. If the schema is modified, this happens before the actual data
   ingestion in its own transaction, so a failure to ingest the data doesn't mean the schema wasn't modified.
-
 * It is **strongly recommended** that the data for ingestion be limited to less than 1 GB per ingestion
-  operation. Multiple ingestion commands may be used if necessary.
-
+  operation. Multiple ingestion commands may be used, if necessary.
 * Data ingestion is a resource-intensive operation that might affect concurrent activities on the cluster,
   including running queries. Avoid running "too many" such commands together at the same time.
-
 * When matching the result set schema to that of the target table, the comparison is based on the
-  column types. There is no matching of column names, so one must make sure that the query result
-  schema columns are in the correct order that matches the table's, otherwise data will be ingested into
+  column types. There is no matching of column names, so make sure that the query result
+  schema columns are in the same order as the table, otherwise data will be ingested into
   the wrong column.
- 
+* Setting the `distributed` flag to `true` is useful when the amount of data being
+  produced by the query is large (exceeds 1GB of data) **and** the query does not
+  require serialization (so that multiple nodes can produce output in parallel).
+  When the query results are small it's not recommended to use this flag, as it
+  might generate a lot of small data shards needlessly.
+
 **Examples** 
 
 Create a new table called "RecentErrors" in the current database that has the same schema as "LogsTable" and holds all the error records of the last hour:
 
 ```kusto
-.set RecentErrors <| 
+.set RecentErrors <|
    LogsTable
    | where Level == "Error" and Timestamp > now() - time(1h)
 ```
@@ -141,11 +141,10 @@ to a specific datetime in the past:
 
 **Return output**
  
-Returns information on the extent/s created as a result of the `.set` or `.append` command.
+Returns information on the extents created as a result of the `.set` or `.append` command.
 
 **Example output**
 
 |ExtentId |OriginalSize |ExtentSize |CompressedSize |IndexSize |RowCount | 
 |--|--|--|--|--|--|
 |23a05ed6-376d-4119-b1fc-6493bcb05563 |1291 |5882 |1568 |4314 |10 |
-

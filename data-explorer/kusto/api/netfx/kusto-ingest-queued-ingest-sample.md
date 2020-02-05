@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/13/2019
+ms.date: 02/05/2020
 ---
 # HowTo Data Ingestion with Kusto.Ingest Library
 This article presents sample code that makes use of Kusto.Ingest client library.
@@ -42,7 +42,7 @@ using Kusto.Ingest;
 ## Code
 The code presented below performs the following:
 1. Creates a table on `KustoLab` shared Kusto cluster under `KustoIngestClientDemo` database
-2. Provisions a [JSON column mapping object](../../management/tables.md#create-ingestion-mapping) on that table
+2. Provisions a [JSON column mapping object](../../management/create-ingestion-mapping-command.md) on that table
 3. Creates an [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) instance for the `Ingest-KustoLab` Data Management service
 4. Sets up [KustoQueuedIngestionProperties](kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) with appropriate ingestion options
 5. Creates a MemoryStream filled with some generated data to be ingested

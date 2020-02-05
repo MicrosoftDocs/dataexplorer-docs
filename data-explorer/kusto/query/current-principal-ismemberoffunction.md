@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/25/2020
+ms.date: 02/03/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -17,7 +17,7 @@ zone_pivot_groups: kql-flavors
 
 Checks group membership or principal identity of the current principal running the query.
 
-```kusto
+```
 print current_principal_is_member_of(
     'aaduser=user1@fabrikam.com', 
     'aadgroup=group1@fabrikam.com',
@@ -34,25 +34,24 @@ print current_principal_is_member_of(
 * *list of expressions* - a comma separated list of string literals, where each literal is a principal fully-qualified-name (FQN) string formed as:  
 *PrinciplaType*`=`*PrincipalId*`;`*TenantId*
 
-|PrincipalType|FQN Prefix|
-|----|----|
-|AAD User|`aaduser=`|
-|AAD Group|`aadgroup=`|
-|AAD Application|`aadapp=`|
+| PrincipalType   | FQN Prefix  |
+|-----------------|-------------|
+| AAD User        | `aaduser=`  |
+| AAD Group       | `aadgroup=` |
+| AAD Application | `aadapp=`   |
 
 **Returns**
 
 The function returns:
-- `true`: if the current principal running the query was successfully matched for at least one input argument.
-- `false`: if the current principal running the query was not member of any `aadgroup=` FQN arguments and was not equal to any of the `aaduser=` or `aadapp=` FQN arguments.
-- `(null)`: if the current principal running the query was not member of any `aadgroup=` FQN arguments and was not equal to any of the `aaduser=` or `aadapp=` FQN arguments, and at least one FQN argument was not successfully resolved (was not presed in AAD). 
+* `true`: if the current principal running the query was successfully matched for at least one input argument.
+* `false`: if the current principal running the query was not member of any `aadgroup=` FQN arguments and was not equal to any of the `aaduser=` or `aadapp=` FQN arguments.
+* `(null)`: if the current principal running the query was not member of any `aadgroup=` FQN arguments and was not equal to any of the `aaduser=` or `aadapp=` FQN arguments, and at least one FQN argument was not successfully resolved (was not presed in AAD). 
 
-**Note**  
-
-Since the function returns tri-state value (`true`, `false`,  and `null`) - it is important to rely only on positive return values to confirm successfull membership. In other words, the following expressions are NOT the same:
-
-- `where current_principal_is_member_of('non-existing-group')`
-- `where current_principal_is_member_of('non-existing-group') != false` 
+> [!NOTE}]
+> Because the function returns a tri-state value (`true`, `false`,  and `null`), it's important to rely only on positive return values to confirm successful membership. In other words, the following expressions are NOT the same:
+> 
+> * `where current_principal_is_member_of('non-existing-group')`
+> * `where current_principal_is_member_of('non-existing-group') != false` 
 
 
 **Example**
@@ -65,9 +64,9 @@ print result=current_principal_is_member_of(
     )
 ```
 
-|result|
-|---|
-|(null)|
+| result |
+|--------|
+| (null) |
 
 Using dynamic array instead of multple arguments:
 
@@ -80,9 +79,9 @@ print result=current_principal_is_member_of(
     ]))
 ```
 
-|result|
-|---|
-|(null)|
+| result |
+|--------|
+| (null) |
 
 ::: zone-end
 

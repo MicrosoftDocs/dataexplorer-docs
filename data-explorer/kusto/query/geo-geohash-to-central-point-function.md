@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 01/27/2020
 ---
 # geo_geohash_to_central_point()
 
 Calculates the geospatial coordinates that represent the center of a Geohash rectangular area.
 
-For more information about Geohash, click [here](https://en.wikipedia.org/wiki/Geohash).  
+For more information about Geohash, see [Wikipedia](https://en.wikipedia.org/wiki/Geohash).  
 
 **Syntax**
 

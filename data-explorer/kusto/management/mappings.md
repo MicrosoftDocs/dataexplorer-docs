@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/26/2020
+ms.date: 02/05/2020
 ---
 # Data mappings
 
@@ -23,7 +23,7 @@ Each element in the mapping list is constructed from three properties:
 |`Properties`|(Optional) Property-bag containing properties specific for each mapping as described in each section below.
 
 
-All mappings can be [pre-created](tables.md#create-ingestion-mapping) and can be referenced from the ingest command using `ingestionMappingReference` parameters.
+All mappings can be [pre-created](create-ingestion-mapping-command.md) and can be referenced from the ingest command using `ingestionMappingReference` parameters.
 
 ## CSV mapping
 
