@@ -1,75 +1,68 @@
 ---
-title: .rename table and .rename tables - Azure Data Explorer | Microsoft Docs
-description: This article describes .rename table and .rename tables in Azure Data Explorer.
+title: .alter table and .alter-merge table - Azure Data Explorer | Microsoft Docs
+description: This article describes .alter table and .alter-merge table in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/05/2020
 ---
-# .rename table and .rename tables
+# .alter table and .alter-merge table
 
-Changes the name of an existing table.
+The `.alter table` command sets a new column schema, docstring, and folder to an existing table, overriding the existing column schema, docstring, and folder. Data in existing columns
+that are "preserved" by the command is preserved (so this command can be used,
+for example, to reorder the columns of a table).
 
-The `.rename tables` command changes the name of a number of tables in the database as a single transaction.
+The `.alter-merge table` command adds new columns, docstring and folder, to an existing table.
+Data in existing columns is preserved.
 
-Requires [Database  admin permission](../management/access-control/role-based-authorization.md).
+Both commands must run in the context of a specific database that scopes the table name.
+
+Requires [database user permission](../management/access-control/role-based-authorization.md).
 
 **Syntax**
 
-`.rename` `table` *OldName* `to` *NewName*
+`.alter` `table` *TableName* (*columnName*:*columnType*, ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
-`.rename` `tables` *NewName* = *OldName* [`ifexists`] [`,` ...]
+`.alter-merge` `table` *TableName* (*columnName*:*columnType*, ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
-> [!NOTE]
-> * *OldName* is the name of an existing table. An error is raised and
-  the whole command fails (has no effect) if *OldName* does not name
-  an existing table, unless `ifexists` is specified (in which case
-  this part of the rename command is ignored).
-> * *NewName* is the new name of the existing table that used to be called
-  *OldName*.
-> * If `ifexists` is specified, it modifies the behavior of the command to
-  ignore renaming parts of non-existent tables.
+Specify the columns the table should have after successful completion. 
 
-**Remarks**
+> [!WARNING]
+> Using the `.alter` command incorrectly may lead to data loss.
+> Carefully read the differences between `.alter` and `.alter-merge` below.
 
-This command operates on tables of the database in scope only.
-Table names cannot be qualified with cluster or database names.
+`.alter-merge`:
 
-This command doesn't create new tables, nor does it remove existing tables.
-The transformation described by the command must be such that the number
-of tables in the database does not change.
+ * Columns that don't exist and which you specify are added at the end of the existing schema.
+ * If the passed schema doesn't contain some table columns they won't be deleted.
+ * If you specified an existing column with a different type, the command will fail.
 
-The command **does** support swapping table names, or more complex
-permutations, as long as they adhere to the rules above. For example, ingest data into multiple staging tables,
-and then swap them with existing tables in a single transaction.
+`.alter` only (not `.alter-merge`):
+
+ * The table will have exactly the same columns, in the same order, as specified.
+ * Existing columns that are not specified in the command will be dropped (as in
+ `.drop column`) and data in them is lost.
+ * Altering a column type is not supported when altering a table. Use the [.alter column](columns.md#alter-column) command instead.
+
+> [!TIP] 
+> Use `.show table [TableName] cslschema` to get the existing column schema before you alter it. 
+
+The following applies to both commands:
+
+1. Existing data is not physically modified by these commands. Data in removed columns is ignored. Data in new columns is assumed to be null.
+1. Depending on how the cluster is configured, data ingestion might modify the table's column schema, even without user interaction. Therefore, when making changes to a table's column schema, ensure that ingestion will not add needed columns that the command will then remove.
+
+> [!WARNING]
+> Data ingestion processes into the table which modify the table's column schema, that occur in parallel with the `.alter table` command, might be performed agnostic to the order of table columns. There is also a risk that data will be ingested into the wrong columns. Prevent this by stopping ingestion during such commands, or by making sure that such ingestion operations always use a mapping object.
 
 **Examples**
 
-Imagine a database with the following tables: `A`, `B`, `C`, and `A_TEMP`.
-The following command will swap `A` and `A_TEMP` (so that the `A_TEMP` table will now be called `A`, and the other way around), rename
-`B` to `NEWB`, and keep `C` as-is. 
-
 ```
-.rename tables A=A_TEMP, NEWB=B, A_TEMP=A
-``` 
-
-The following sequence of commands:
-1. Creates a new temporary table
-1. Replaces an existing or non-existing table with the new table
-
-```
-// Drop the temporary table if it exists
-.drop table TempTable ifexists
-
-// Create a new table
-.set TempTable <| ...
-
-// Swap the two tables
-.rename tables TempTable=Table ifexists, Table=TempTable
-
-// Drop the temporary table (which used to be Table) if it exists
-.drop table TempTable ifexists
+.alter table MyTable (ColumnX:string, ColumnY:int) 
+.alter table MyTable (ColumnX:string, ColumnY:int) with (docstring = "Some documentation", folder = "Folder1")
+.alter-merge table MyTable (ColumnX:string, ColumnY:int) 
+.alter-merge table MyTable (ColumnX:string, ColumnY:int) with (docstring = "Some documentation", folder = "Folder1")
 ```
