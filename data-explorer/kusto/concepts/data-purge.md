@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/11/2019
+ms.date: 02/05/2020
 ---
 # Data purge
 
@@ -69,7 +69,7 @@ is sufficiently large, the process will effectively re-ingest all the data in th
 ## Purge limitations and considerations
 
 * **The purge process is final and irreversible**. It isn't possible to "undo" this process or recover
-   data that has been purged. Therefore, commands such as [undo table drop](../management/tables.md#undo-drop-table)
+   data that has been purged. Therefore, commands such as [undo table drop](../management/undo-drop-table-command.md)
    cannot recover purged data, and rollback of the data to a previous version cannot
    go to "before" the latest purge command.
 
