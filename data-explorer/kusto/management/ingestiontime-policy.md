@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 02/09/2020
 ---
 # IngestionTime policy
 
@@ -16,28 +16,32 @@ it provides the approximate time of ingestion of the records into a table.
 
 Ingestion time value can be accessed at query time using `ingestion_time()` function.
 
-```kusto
+```
 T | extend ingestionTime = ingestion_time()
 ```
 
 To enable/disable the policy:
-```kusto
+
+```
 .alter table table_name policy ingestiontime true
 ```
 
 To enable/disable the policy of multiple tables:
-```kusto
+
+```
 .alter tables (table_name [, ...]) policy ingestiontime true
 ```
 
 To view the policy:
-```kusto
+
+```
 .show table table_name policy ingestiontime  
 
 .show table * policy ingestiontime  
 ```
 
 To delete the policy (equal to disabling):
-```kusto
+
+```
 .delete table table_name policy ingestiontime  
 ```

@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/02/2019
+ms.date: 02/09/2020
 ---
 # top-hitters operator
 
 Returns an approximation of the first *N* results (assuming skewed distribution of the input).
 
-```kusto
+```
 T | top-hitters 25 of Page by Views 
 ```
 

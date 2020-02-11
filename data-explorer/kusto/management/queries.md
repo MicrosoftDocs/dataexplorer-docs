@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/19/2019
+ms.date: 02/09/2020
 ---
 # Queries management
 
@@ -30,7 +30,7 @@ by the user, or by another user, or by all users.
 
 **Syntax**
 
-```kusto
+```
 .show running queries
 ```
 
@@ -54,7 +54,7 @@ query previously started by the same user.
 
 **Example**
 
-```kusto
+```
 .cancel query "KE.RunQuery;8f70e9ab-958f-4955-99df-d2a288b32b2c"
 ```
 

@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # coalesce()
 
 Evaluates a list of expressions and returns the first non-null (or non-empty for string) expression.
 
-```kusto
+```
 coalesce(tolong("not a number"), tolong("42"), 33) == 42
 ```
 

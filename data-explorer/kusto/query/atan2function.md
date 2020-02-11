@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # atan2()
 
@@ -28,7 +28,7 @@ Calculates the angle, in radians, between the positive x-axis and the ray from t
 
 **Examples**
 
-```kusto
+```
 print atan2_0 = atan2(1,1) // Pi / 4 radians (45 degrees)
 | extend atan2_1 = atan2(0,-1) // Pi radians (180 degrees)
 | extend atan2_2 = atan2(-1,0) // - Pi / 2 radians (-90 degrees)

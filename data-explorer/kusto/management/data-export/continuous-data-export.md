@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/09/2020
 ---
 # Continuous data export
 
@@ -148,7 +148,7 @@ Returns all artifacts exported by the continuous-export in all runs. It is recom
 
 **Example:** 
 
-```kusto
+```
 .show continuous-export MyExport exported-artifacts | where Timestamp > ago(1h)
 ```
 

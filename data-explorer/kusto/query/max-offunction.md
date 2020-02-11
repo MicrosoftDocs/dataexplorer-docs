@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # max_of()
 
 Returns the maximum value of several evaluated numeric expressions.
 
-```kusto
+```
 max_of(10, 1, -3, 17) == 17
 ```
 

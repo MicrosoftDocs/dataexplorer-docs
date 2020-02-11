@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/21/2019
+ms.date: 02/09/2020
 ---
 # beta_inv()
 
 Returns the inverse of the beta cumulative probability beta density function.
 
-```kusto
+```
 beta_inv(0.1, 10.0, 50.0)
 ```
 

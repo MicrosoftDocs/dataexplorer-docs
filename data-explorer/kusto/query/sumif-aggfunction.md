@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/23/2020
+ms.date: 02/09/2020
 ---
 # sumif() (aggregation function)
 
@@ -35,7 +35,7 @@ The sum value of *Expr* for which *Predicate* evaluates to `true`.
 
 **Example**
 
-```kusto
+```
 let T = datatable(name:string, day_of_birth:long)
 [
    "John", 9,

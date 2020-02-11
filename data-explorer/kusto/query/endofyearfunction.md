@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # endofyear()
 
@@ -28,7 +28,7 @@ A datetime representing the end of the year for the given *date* value, with the
 
 **Example**
 
-```kusto
+```
   range offset from -1 to 1 step 1
  | project yearEnd = endofyear(datetime(2017-01-01 10:10:17), offset) 
 ```

@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/27/2019
+ms.date: 02/09/2020
 ---
 # new_guid()
 
 Returns a random GUID (Globally Unique Identifier).
 
-```kusto
+```
 new_guid()
 ```
 

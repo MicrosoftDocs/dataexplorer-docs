@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/06/2020
 ---
 # Streaming ingestion (Preview)
 
@@ -37,7 +37,8 @@ Streaming ingestion doesn't currently support or supports partially the followin
 
 * Follower mode (if data is ingested to the leader cluster in streaming ingestion, expect a data lag of up to 24 hours when querying the follower).
 * [Data mapping](../../management/mappings.md). Only [pre-created](../../management/create-ingestion-mapping-command.md) data mappings are supported. 
-* [Update policy](../../concepts/updatepolicy.md). Queries to be used in streaming ingestion update policicies are allowed to work only on the newly created datathat work. 
+* [Update policy](../../concepts/updatepolicy.md). Queries to be used in streaming ingestion update policicies are allowed to work only on the newly created data. 
+* [Extent tags](../../management/extents-overview.md#extent-tagging). Extent tags cannot be set on the streaming ingestion data.
 
 ## Limitations
 

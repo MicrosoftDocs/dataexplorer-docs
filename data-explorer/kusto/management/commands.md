@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/19/2019
+ms.date: 02/09/2020
 ---
 # Commands management
 
@@ -45,7 +45,8 @@ Note that the ResourceUtilization is a dynamic column, and hence in order to wor
 
 For example:
 
-```kusto
+
+```
 .show commands
 | where CommandType == "TableAppend"
 | where StartedOn > ago(1h)
@@ -68,7 +69,8 @@ The following examples are simple and useful queries for such investigations.
 ### Querying the TotalCpu column
 
 Top 10 CPU consuming queries in the last day:
-```kusto
+
+```
 .show commands
 | where StartedOn > ago(1d)
 | top 10 by TotalCpu
@@ -76,7 +78,8 @@ Top 10 CPU consuming queries in the last day:
 ```
 
 All queries in the last 10 hours which their TotalCpu has crossed the 3 minutes:
-```kusto
+
+```
 .show commands
 | where StartedOn > ago(10h) and TotalCpu > 3m
 | project StartedOn, CommandType, ClientActivityId, TotalCpu 
@@ -85,7 +88,8 @@ All queries in the last 10 hours which their TotalCpu has crossed the 3 minutes:
 
 All queries in the last 24 hours which their TotalCpu was above 5 minutes, grouped by User and Principal:
 
-```kusto
+
+```
 .show commands  
 | where StartedOn > ago(24h)
 | summarize TotalCount=count(), CountAboveThreshold=countif(TotalCpu > 2m), AverageCpu = avg(TotalCpu), MaxTotalCpu=max(TotalCpu), (50th_Percentile_TotalCpu, 95th_Percentile_TotalCpu)=percentiles(TotalCpu, 50, 95) by User, Principal
@@ -95,7 +99,8 @@ All queries in the last 24 hours which their TotalCpu was above 5 minutes, group
 ```
 
 Timechart: Average CPU vs 95th Percentile vs Max CPU :
-```kusto
+
+```
 .show commands 
 | where StartedOn > ago(1d) 
 | summarize MaxCpu_Minutes=max(TotalCpu)/1m, 95th_Percentile_TotalCpu_Minutes=percentile(TotalCpu, 95)/1m, AverageCpu_Minutes=avg(TotalCpu)/1m by bin(StartedOn, 1m)
@@ -105,7 +110,8 @@ Timechart: Average CPU vs 95th Percentile vs Max CPU :
 ## Querying the MemoryPeak
 
 Top 10 queries in the last day with the highest MemoryPeak values:
-```kusto
+
+```
 .show commands
 | where StartedOn > ago(1d)
 | extend MemoryPeak = tolong(ResourcesUtilization.MemoryPeak)
@@ -114,7 +120,8 @@ Top 10 queries in the last day with the highest MemoryPeak values:
 ```
 
 Timechart of Average MemoryPeak vs 95th Percentile vs Max MemoryPeak:
-```kusto
+
+```
 .show commands 
 | where StartedOn > ago(1d)
 | project MemoryPeak = tolong(ResourcesUtilization.MemoryPeak), StartedOn 

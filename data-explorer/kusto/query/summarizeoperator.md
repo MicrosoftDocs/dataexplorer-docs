@@ -7,19 +7,19 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/23/2020
+ms.date: 02/06/2020
 ---
 # Summarize operator
 
 Produces a table that aggregates the content of the input table.
 
-```kusto
+```
 T | summarize count(), avg(price) by fruit, supplier
 ```
 
 A table that shows the number and average price of each fruit from each supplier. There's a row in the output for each distinct combination of fruit and supplier. The output columns show the count, average price, fruit and supplier. All other input columns are ignored.
 
-```kusto
+```
 T | summarize count() by price_range=bin(price, 10.0)
 ```
 
@@ -38,7 +38,12 @@ A table that shows how many items have prices in each interval  [0,10.0], [10.0,
 * *Aggregation:* A call to an [aggregation function](summarizeoperator.md#list-of-aggregation-functions) such as `count()` or `avg()`, with column names as arguments. See the [list of aggregation functions](summarizeoperator.md#list-of-aggregation-functions).
 * *GroupExpression:* An expression over the columns, that provides a set of distinct values. Typically it's either a column name that already provides a restricted set of values, or `bin()` with a numeric or time column as argument. 
 
-If you don't provide a *GroupExpression,* the whole table is summarized in a single output row.
+> [!NOTE]
+> When the input table is empty, the output depends on whether *GroupExpression*
+> is used:
+>
+> * If *GroupExpression* is not provided, the output will be a single (empty) row.
+> * If *GroupExpression* is provided, the output will have no rows.
 
 **Returns**
 
@@ -48,11 +53,11 @@ The result has as many rows as there are distinct combinations of `by` values
 (which may be zero). If there are no group keys provided, the result has a single
 record.
 
-If you want to summarize over ranges of numeric values, use `bin()` to reduce ranges to discrete values.
+To summarize over ranges of numeric values, use `bin()` to reduce ranges to discrete values.
 
 > [!NOTE]
 > * Although you can provide arbitrary expressions for both the aggregation and grouping expressions, it's more efficient to use simple column names, or apply `bin()` to a numeric column.
-> * The automatic hourly bins for datetime columns is no longer supported. Use explicit binning instead - for example `summarize by bin(timestamp, 1h)`.
+> * The automatic hourly bins for datetime columns is no longer supported. Use explicit binning instead. For example, `summarize by bin(timestamp, 1h)`.
 
 ## List of aggregation functions
 
@@ -87,7 +92,7 @@ If you want to summarize over ranges of numeric values, use `bin()` to reduce ra
 
 ## Aggregates default values
 
-The following table summarizes the default values of aggregations
+The following table summarizes the default values of aggregations:
 
 Operator       |Default value                         
 ---------------|------------------------------------
@@ -95,7 +100,7 @@ Operator       |Default value
  `make_bag()`, `make_bag_if()`, `make_list()`, `make_list_if()`, `make_set()`, `make_set_if()` |    empty dynamic array              ([])          
  `any()`, `anyif()`, `arg_max()`. `arg_min()`, `avg()`, `avgif()`, `buildschema()`, `hll()`, `max()`, `maxif()`, `min()`, `minif()`, `percentiles()`, `stdev()`, `sum()`, `sumif()`, `tdigest()`, `variance()`          |   null                           
 
- In addition, when using these aggregates over entities which includes null values, the null values will be ignored and won't participate in the calculation (See examples below).
+ When using these aggregates over entities which includes null values, the null values will be ignored and won't participate in the calculation (see examples below).
 
 ## Examples
 
@@ -104,8 +109,7 @@ Operator       |Default value
 **Example**
 
 Determine what unique combinations of
-`ActivityType` and `CompletionStatus` there are in a table. Note that
-there are no aggregation functions, just group-by keys. The output will just show the columns for those results:
+`ActivityType` and `CompletionStatus` there are in a table. There are no aggregation functions, just group-by keys. The output will just show the columns for those results:
 
 ```
 Activities | summarize by ActivityType, completionStatus
@@ -164,23 +168,21 @@ Activities | summarize count() by ActivityType, length=bin(Duration, 10m)
 
 **Example for the aggregates default values**
 
-When the input of summarize operator that has at least one group-by key is empty, it's result is empty, too.
+When the input of `summarize` operator has at least one empty group-by key, it's result is empty, too.
 
-When the input of summarize operator that doesn't have any group-by key is empty, the result is the default values of the aggregates used in the summarize:
+When the input of `summarize` operator doesn't have an empty group-by key, the result is the default values of the aggregates used in the `summarize`:
 
-```kusto
+```
 range x from 1 to 10 step 1
 | where 1 == 2
 | summarize any(x), arg_max(x, x), arg_min(x, x), avg(x), buildschema(todynamic(tostring(x))), max(x), min(x), percentile(x, 55), hll(x) ,stdev(x), sum(x), sumif(x, x > 0), tdigest(x), variance(x)
-
-
 ```
 
 |any_x|max_x|max_x_x|min_x|min_x_x|avg_x|schema_x|max_x1|min_x1|percentile_x_55|hll_x|stdev_x|sum_x|sumif_x|tdigest_x|variance_x|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |||||||||||||||||
 
-```kusto
+```
 range x from 1 to 10 step 1
 | where 1 == 2
 | summarize  count(x), countif(x > 0) , dcount(x), dcountif(x, x > 0)
@@ -190,7 +192,7 @@ range x from 1 to 10 step 1
 |---|---|---|---|
 |0|0|0|0|
 
-```kusto
+```
 range x from 1 to 10 step 1
 | where 1 == 2
 | summarize  make_set(x), make_list(x)
@@ -202,7 +204,7 @@ range x from 1 to 10 step 1
 
 The aggregate avg sums all the non-nulls and counts only those which participated in the calculation (will not take nulls into account).
 
-```kusto
+```
 range x from 1 to 2 step 1
 | extend y = iff(x == 1, real(null), real(5))
 | summarize sum(y), avg(y)
@@ -214,7 +216,7 @@ range x from 1 to 2 step 1
 
 The regular count will count nulls: 
 
-```kusto
+```
 range x from 1 to 2 step 1
 | extend y = iff(x == 1, real(null), real(5))
 | summarize count(y)
@@ -224,7 +226,7 @@ range x from 1 to 2 step 1
 |---|
 |2|
 
-```kusto
+```
 range x from 1 to 2 step 1
 | extend y = iff(x == 1, real(null), real(5))
 | summarize make_set(y), make_set(y)

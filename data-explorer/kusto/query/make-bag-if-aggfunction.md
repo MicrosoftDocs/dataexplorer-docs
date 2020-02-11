@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/22/2020
+ms.date: 02/09/2020
 ---
 # make_bag_if() (aggregation function)
 
@@ -38,7 +38,7 @@ If a key appears in more than one row, an arbitrary value (out of the possible v
 
 **Examples**
 
-```kusto
+```
 let T = datatable(prop:string, value:string, predicate:bool)
 [
     "prop01", "val_a", true,
@@ -57,7 +57,7 @@ T
 
 Use [bag_unpack()](bag-unpackplugin.md) plugin for transforming the bag keys in the make_bag_if() output into columns. 
 
-```kusto
+```
 let T = datatable(prop:string, value:string, predicate:bool)
 [
     "prop01", "val_a", true,

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/15/2019
+ms.date: 02/09/2020
 ---
 # dcountif() (aggregation function)
 
@@ -38,7 +38,7 @@ Returns an estimate of the number of distinct values of *Expr*  of rows for whic
 
 **Example**
 
-```kusto
+```
 PageViewLog | summarize countries=dcountif(country, country startswith "United") by continent
 ```
 

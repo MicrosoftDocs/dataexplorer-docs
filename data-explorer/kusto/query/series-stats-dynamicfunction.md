@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/22/2019
+ms.date: 02/09/2020
 ---
 # series_stats_dynamic()
 
@@ -24,11 +24,13 @@ The `series_stats_dynamic()` function takes a column containing dynamic numerica
 
 **Syntax**
 
-`series_stats_dynamic(`*x*`)`
+`series_stats_dynamic(`*x* `[,`*ignore_nonfinite*`])`
 
 **Arguments**
 
 * *x*: Dynamic array cell which is an array of numeric values. 
+* *ignore_nonfinite*: Boolean (optional, default: `false`) flag that specifies whether to calculate the statistics while ignoring non-finite values (*null*, *NaN*, *inf*, etc.). If set to `false` the returned result is `null` if non-finite values are present in the array.
+
 
 **Example**
 

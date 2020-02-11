@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/09/2020
 ---
 # RowLevelSecurity policy
 
@@ -45,7 +45,7 @@ This is useful if you want to try various queries for row_level_security, but do
 > The following restrictions apply to the `query`:
 >
 > * The query should produce exactly the same schema as the table on which the policy is defined. That is, the query's result should return exactly the same columns as the original table, in the same order, with the same names and types.
-> * The query can only use the following operators: `extend`, `where`, `project`, `project-away`, `project-rename` and `project-reorder`.
+> * The query can only use the following operators: `extend`, `where`, `project`, `project-away`, `project-rename`, `project-reorder` and `union`.
 > * The query can't reference tables other than the one on which the policy is defined.
 > * The query can be any of the following, or a combination of them:
 >    * Query (for example, `<table_name> | extend CreditCardNumber = "****"`)

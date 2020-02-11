@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # The guid data type
 
@@ -22,7 +22,7 @@ value.
 
 To represent a literal of type `guid`, use the following format:
 
-```kusto
+```
 guid(74be27de-1e4e-49d9-b579-fe0b331d3642)
 ```
 

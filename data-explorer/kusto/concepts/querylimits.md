@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/22/2020
+ms.date: 02/09/2020
 ---
 # Query limits
 
@@ -72,7 +72,7 @@ One can disable result truncation by using the `notruncation` request
 option. It is strongly recommended that in this case some form of
 limitation is still put in place. For example:
 
-```kusto
+```
 set notruncation;
 MyTable | take 1000000
 ```
@@ -83,7 +83,7 @@ defaults to 64 MB) and `truncationmaxrecords` (maximum number of records,
 defaults to 500,000). For example, the following query sets result truncation
 to happen at either 1,105 records or 1MB, whichever is exceeded:
 
-```kusto
+```
 set truncationmaxsize=1048576;
 set truncationmaxrecords=1105;
 MyTable | where User=="Ploni"
@@ -133,7 +133,7 @@ The TopNested operator has exceeded the memory budget during evaluation. Results
 By default, this value is set to 5 GB. One may increase this
 value up to half the physical memory of the machine:
 
-```kusto
+```
 set maxmemoryconsumptionperiterator=68719476736;
 MyTable | ...
 ```
@@ -153,7 +153,7 @@ sampling; the first is statistical sampling (using a random number
 generator), while the second is deterministic sampling (by hashing
 some column from the data set, usually some ID):
 
-```kusto
+```
 T | where rand() < 0.1 | ...
 
 T | where hash(UserId, 10) == 1 | ...
@@ -167,7 +167,7 @@ request option `max_memory_consumption_per_query_per_node`) sets an upper bound
 on the amount of memory that can be allocated on a single node for a specific query. 
 
 
-```kusto
+```
 set max_memory_consumption_per_query_per_node=68719476736;
 MyTable | ...
 ```
@@ -251,7 +251,7 @@ During query execution, the query text is transformed into a tree of relational 
 In case the tree depth exceeds an internal threshold (several thousands of levels), the query is considered too complex for processing and will fail with an error code indicating the relational operators tree exceeds limits.
 In most cases, this is caused by a query which contains a long list of binary operators chained together, for example:
 
-```kusto
+```
 T 
 | where Column == "value1" or 
         Column == "value2" or 
@@ -261,8 +261,7 @@ T
 
 For this specific case - it is recommended to re-write the query using [`in()`](../query/inoperator.md) operator. 
 
-```kusto
+```
 T 
 | where Column in ("value1", "value2".... "valueN")
 ```
-

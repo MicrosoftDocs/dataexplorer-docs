@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 02/09/2020
 ---
 # Databases management
 
@@ -195,7 +195,7 @@ Note the version should only be provided in the "vMM.mm" format. MM represents t
  
  The database 'TestDB' has 1 table called 'Events'.
 
-```kusto
+```
 .show database TestDB schema 
 ```
 **Example output**
@@ -210,10 +210,9 @@ Note the version should only be provided in the "vMM.mm" format. MM represents t
 |TestDB|Events|	City|	System.String|True|	False||		
 |TestDB|Events|	SessionId|	System.Int32|True|	True|| 
 
-
 **Example** 
  
-```kusto
+```
 .show database TestDB schema if_later_than "v1.0" 
 ```
 **Example output**
@@ -228,13 +227,12 @@ Note the version should only be provided in the "vMM.mm" format. MM represents t
 |TestDB|Events|	City|	System.String|True|	False||		
 |TestDB|Events|	SessionId|	System.Int32|True|	True||  
 
-
 Since we provided a version lower than the current database version, the 'TestDB' schema was returned. 
 Had we run the command with an equal (or higher) version, we would have gotten an empty result.
 
 **Example** 
  
-```kusto
+```
 .show database TestDB schema as json
 ```
 

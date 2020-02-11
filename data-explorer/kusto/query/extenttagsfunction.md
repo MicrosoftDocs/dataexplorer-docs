@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/09/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -36,7 +36,7 @@ column `ActivityId`. It demonstrates that some query operators (here,
 the `where` operator, but this is also true for `extend` and `project`)
 preserve the information about the data shard hosting the record.
 
-```kusto
+```
 T
 | where Timestamp > ago(1h)
 | where ActivityId == 'dd0595d4-183e-494e-b88e-54c52fe90e5a'
@@ -48,7 +48,7 @@ The following example shows how to obtain a count of all records from the
 last hour, which are stored in extents which are tagged with the tag `MyTag`
 (and potentially other tags), but not tagged with the tag `drop-by:MyOtherTag`.
 
-```kusto
+```
 T
 | where Timestamp > ago(1h)
 | extend Tags = extent_tags()

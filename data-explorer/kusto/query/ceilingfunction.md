@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # ceiling()
 
@@ -27,7 +27,7 @@ Calculates the smallest integer greater than, or equal to, the specified numeric
 
 **Examples**
 
-```kusto
+```
 print c1 = ceiling(-1.1), c2 = ceiling(0), c3 = ceiling(0.9)
 ```
 

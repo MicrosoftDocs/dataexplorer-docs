@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/04/2019
+ms.date: 02/09/2020
 ---
 # serialize operator
 
@@ -15,7 +15,7 @@ Marks that order of the input row set is safe for window functions usage.
 
 Operator has declarative meaning, and it marks input row set as serialized (ordered) so [window functions](./windowsfunctions.md) could be applied to it.
 
-```kusto
+```
 T | serialize rn=row_number()
 ```
 
@@ -27,7 +27,7 @@ T | serialize rn=row_number()
 
 **Example**
 
-```kusto
+```
 Traces
 | where ActivityId == "479671d99b7b"
 | serialize

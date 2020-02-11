@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # iif()
 
@@ -32,7 +32,7 @@ or the value of *ifFalse* otherwise.
 
 **Example**
 
-```kusto
+```
 T 
 | extend day = iif(floor(Timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 ```

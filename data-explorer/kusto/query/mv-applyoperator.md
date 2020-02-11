@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/08/2019
+ms.date: 02/09/2020
 ---
 # mv-apply operator
 
@@ -20,7 +20,7 @@ whose values are arrays of `real` numbers. The following query will locate the
 two biggest values in each `Metric` value, and return the records corresponding
 to these values.
 
-```kusto
+```
 T | mv-apply Metric to typeof(real) on (top 2 by Metric desc)
 ```
 

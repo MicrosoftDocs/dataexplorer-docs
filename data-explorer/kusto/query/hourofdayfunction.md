@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # hourofday()
 
 Returns the integer number representing the hour number of the given date
 
-```kusto
+```
 hourofday(datetime(2015-12-14 18:54)) == 18
 ```
 

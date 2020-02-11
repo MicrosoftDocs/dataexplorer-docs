@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/21/2019
+ms.date: 02/09/2020
 ---
 # isnull()
 
 Evaluates its sole argument and returns a `bool` value indicating if the argument evaluates to a null value.
 
-```kusto
+```
 isnull(parse_json("")) == true
 ```
 
@@ -40,6 +40,6 @@ True or false depending on the whether the value is null or not null.
 
 **Example**
 
-```kusto
+```
 T | where isnull(PossiblyNull) | count
 ```

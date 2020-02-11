@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/08/2020
 ---
 # Kusto client library
     
@@ -34,15 +34,15 @@ In general, all methods on the clients are thread-safe with two exceptions: `Dis
 and setter properties. For consistent results, do not invoke either methods
 concurrently.
 
-The following are a few examples.
+Following are a few examples. Additional samples can be found [here](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client).
 
 **Example: Counting Rows**
  
-The following code demonstrates counting the rows of a table called MyTable in the database MyDatabase running locally:
+The following code demonstrates counting the rows of a table named `StormEvents` in a database named `Samples`:
 
 ```csharp
 var client = Kusto.Data.Net.Client.KustoClientFactory.CreateCslQueryProvider("https://help.kusto.windows.net/Samples;Fed=true");
-var reader = client.ExecuteQuery("MyTable | count");
+var reader = client.ExecuteQuery("StormEvents | count");
 // Read the first row from reader -- it's 0'th column is the count of records in MyTable
 // Don't forget to dispose of reader when done.
 ```

@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/17/2019
+ms.date: 02/09/2020
 ---
 # parse operator
 
 Evaluates a string expression and parses its value into one or more calculated columns.
 
-```kusto
+```
 T | parse Text with "ActivityName=" name ", ActivityType=" type
 ```
 
@@ -62,7 +62,7 @@ provided to the operator.
   are handled internally.
   So for example, this parse statement :
   
-	```kusto
+	```
 	parse kind=regex Col with * <regex1> var1:string <regex2> var2:long
 	```
 

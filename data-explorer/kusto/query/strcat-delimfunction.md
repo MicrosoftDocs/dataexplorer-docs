@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # strcat_delim()
 
@@ -30,7 +30,7 @@ Arguments, concatenated to a single string with *delimiter*.
 
 **Examples**
 
-```kusto
+```
 print st = strcat_delim('-', 1, '2', 'A', 1s)
 
 ```

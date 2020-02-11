@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # toint()
 
 Converts input to integer (signed 32-bit) number representation.
 
-```kusto
+```
 toint("123") == 123
 ```
 

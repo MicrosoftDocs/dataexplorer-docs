@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # Let statement
 
@@ -83,7 +83,7 @@ Lambda expressions have the following syntax:
 Multiple let statements can be used with `;` delimiter between them as shown in the following example.
 The last statement must be a valid query expression: 
 
-```kusto
+```
 let start = ago(5h); 
 let period = 2h; 
 T | where Time > start and Time < start + period | ...
@@ -92,7 +92,7 @@ T | where Time > start and Time < start + period | ...
 Nested let statements are allowed and can be used inside a lambda expression.
 Let statements and Arguments are visible in the current and inner scope of the Function body.
 
-```kusto
+```
 let start = ago(5h); 
 let period = 2h; 
 T | where Time > start and Time < start + period | ...
@@ -105,21 +105,21 @@ T | where Time > start and Time < start + period | ...
 The following example binds the name `x` to the scalar literal `1`,
 and then uses it in a tabular expression statement:
 
-```kusto
+```
 let x = 1;
 range y from x to x step x
 ```
 
 Same example, but in this case - the name of the let statement is given using `['name']` notion:
 
-```kusto
+```
 let ['x'] = 1;
 range y from x to x step x
 ```
 
 Yet another example that uses let for scalar values:
 
-```kusto
+```
 let n = 10;  // number
 let place = "Dallas";  // string
 let cutoff = ago(62d); // datetime
@@ -133,7 +133,7 @@ Events
 
 The following example defines two let statements where one statement (`foo2`) uses another (`foo1`).
 
-```kusto
+```
 let foo1 = (_start:long, _end:long, _step:long) { range x from _start to _end step _step};
 let foo2 = (_step:long) { foo1(1, 100, _step)};
 foo2(2) | count

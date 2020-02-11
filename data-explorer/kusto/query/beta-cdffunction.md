@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/21/2019
+ms.date: 02/09/2020
 ---
 # beta_cdf()
 
 Returns the standard cumulative beta distribution function.
 
-```kusto
+```
 beta_cdf(0.2, 10.0, 50.0)
 ```
 
@@ -62,7 +62,6 @@ datatable(x:double, alpha:double, beta:double, comment:string)
 |1.5|10|20|x > 1, yields NaN|NaN|
 |-10|10|20|x < 0, yields NaN|NaN|
 |0.1|-1|20|alpha is < 0, yields NaN|NaN|
-
 
 **See also**
 

@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/26/2019
+ms.date: 02/09/2020
 ---
 # autocluster plugin
 
-```kusto
+```
 T | evaluate autocluster()
 ```
 

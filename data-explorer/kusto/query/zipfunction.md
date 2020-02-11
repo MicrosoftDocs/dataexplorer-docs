@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2019
+ms.date: 02/09/2020
 ---
 # zip()
 
@@ -27,19 +27,19 @@ Between 2 and 16 dynamic arrays.
 
 The following example returns `[[1,2],[3,4],[5,6]]`:
 
-```kusto
+```
 print zip(dynamic([1,3,5]), dynamic([2,4,6]))
 ```
 
 The following example returns `[["A",{}], [1,"B"], [1.5, null]]`:
 
-```kusto
+```
 print zip(dynamic(["A", 1, 1.5]), dynamic([{}, "B"]))
 ```
 
 The following example returns `[[1,"one"],[2,"two"],[3,"three"]]`:
 
-```kusto
+```
 datatable(a:int, b:string) [1,"one",2,"two",3,"three"]
 | summarize a = make_list(a), b = make_list(b)
 | project zip(a, b)

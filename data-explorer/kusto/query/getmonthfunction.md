@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/18/2019
+ms.date: 02/09/2020
 ---
 # getmonth()
 
@@ -17,7 +17,7 @@ Another alias: monthoyear()
 
 **Example**
 
-```kusto
+```
 T 
 | extend month = getmonth(datetime(2015-10-12))
 // month == 10

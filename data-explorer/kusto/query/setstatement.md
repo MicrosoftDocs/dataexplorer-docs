@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/27/2020
+ms.date: 02/09/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -33,7 +33,7 @@ statements that trail them in the program order.
 
 **Example**
 
-```kusto
+```
 set querytrace;
 Events | take 100
 ```

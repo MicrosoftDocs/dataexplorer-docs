@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # The timespan data type
 
@@ -44,7 +44,7 @@ fractional number of times one value can fit the other.
 
 The following example calculates how many seconds are in a day in several ways:
 
-```kusto
+```
 print
     result1 = 1d / 1s,
     result2 = time(1d) / time(1s),

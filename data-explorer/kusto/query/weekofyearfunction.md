@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/23/2020
+ms.date: 02/09/2020
 ---
 # weekofyear()
 
@@ -18,7 +18,7 @@ Returns an integer which represents the week number. The week number is calculat
 `Week_Of_Year` returns the First Week of a year (according to the ISO 8601 standard), which is the one that includes the first Thursday (https://en.wikipedia.org/wiki/ISO_8601#Week_dates)
 -->
 
-```kusto
+```
 weekofyear(datetime("2015-12-14"))
 ```
 

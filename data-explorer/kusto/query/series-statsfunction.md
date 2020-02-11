@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/11/2019
+ms.date: 02/09/2020
 ---
 # series_stats()
 
@@ -26,7 +26,7 @@ The `series_stats()` function takes a column containing dynamic numerical array 
 
 **Syntax**
 
-project `series_stats(`*x*`)` or extend `series_stats(`*x*`)` 
+project `series_stats(`*x* `[,`*ignore_nonfinite*`])` or extend `series_stats(`*x*`)` 
 * Will return all mentioned above columns with the following names: series_stats_x_min, series_stats_x_min_idx and etc.
  
 project (m, mi)=`series_stats(`*x*`)` or extend (m, mi)=`series_stats(`*x*`)`
@@ -35,6 +35,7 @@ project (m, mi)=`series_stats(`*x*`)` or extend (m, mi)=`series_stats(`*x*`)`
 **Arguments**
 
 * *x*: Dynamic array cell which is an array of numeric values. 
+* *ignore_nonfinite*: Boolean (optional, default: `false`) flag that specifies whether to calculate the statistics while ignoring non-finite values (*null*, *NaN*, *inf*, etc.). If set to `false` the returned values would be `null` if non-finite values are present in the array.
 
 **Example**
 

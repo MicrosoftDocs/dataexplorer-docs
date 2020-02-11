@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # tohex()
 
 Converts input to a hexadecimal string.
 
-```kusto
+```
 tohex(256) == '100'
 tohex(-256) == 'ffffffffffffff00' // 64-bit 2's complement of -256
 tohex(toint(-256), 8) == 'ffffff00' // 32-bit 2's complement of -256

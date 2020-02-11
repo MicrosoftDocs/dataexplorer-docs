@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 02/09/2020
 ---
 # Diagnostic information
 
@@ -15,7 +15,7 @@ Next commands can be used to display system diagnostic information.
 
 ## .show cluster
 
-```kusto
+```
 .show cluster
 ```
 
@@ -37,7 +37,7 @@ Returns a set having one record per node currently active in the cluster.
 
 **Example**
 
-```kusto
+```
 .show cluster
 ```
 
@@ -51,7 +51,7 @@ Kusto.Azure.Svc_IN_0|net.tcp://100.112.138.15:23107/|Kusto.Azure.Svc_IN_0/RD000D
 
 ## .show diagnostics
 
-```kusto
+```
 .show diagnostics
 ```
 
@@ -97,7 +97,7 @@ Returns an information about Kusto cluster health state.
 
 ## .show capacity 
 
-```kusto
+```
 .show capacity
 ```
 

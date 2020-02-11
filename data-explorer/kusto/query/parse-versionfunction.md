@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # parse_version()
 
 Converts input string representation of version to a comparable decimal number.
 
-```kusto
+```
 parse_version("0.0.0.1")
 ```
 
@@ -40,7 +40,8 @@ In case, if amount of parts is less than 4, all the missing parts are considered
 
  
 **Example**
-```kusto
+
+```
 let dt = datatable(v:string)
 ["0.0.0.5","0.0.7.0","0.0.3","0.2","0.1.2.0","1.2.3.4","1","99999999.0.0.0"];
 dt | project v1=v, _key=1 
@@ -80,7 +81,3 @@ dt | project v1=v, _key=1
 |99999999.0.0.0|1.2.3.4|99999999.0.0.0|
 |1.2.3.4|1|1.2.3.4|
 |99999999.0.0.0|1|99999999.0.0.0|
-
-
-
-

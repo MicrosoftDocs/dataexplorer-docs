@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/20/2019
+ms.date: 02/09/2020
 ---
 # range operator
 
@@ -60,7 +60,7 @@ range Steps from 1 to 8 step 3
 The next example shows how the `range` operator can be used to create
 a small, ad-hoc, dimension table which is then used to introduce zeros where the source data has no values.
 
-```kusto
+```
 range TIMESTAMP from ago(4h) to now() step 1m
 | join kind=fullouter
   (Traces

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/09/2019
+ms.date: 02/09/2020
 ---
 # Capacity policy
 
@@ -75,7 +75,7 @@ therefore `Number of nodes in cluster` is reduced by 1.
 
 The default capacity policy has the following JSON representation:
 
-```kusto 
+``` 
 {
   "IngestionCapacity": {
     "ClusterMaximumConcurrentOperations": 512,
@@ -118,4 +118,4 @@ Kusto limits the amount of concurrent requests for the following commands.
 
 
 When Kusto detects that some operation has exceeded the allowed concurrent operation, Kusto will respond with a 429 HTTP code.
-The client should retry the operation after some backoff. 
+The client should retry the operation after some backoff.

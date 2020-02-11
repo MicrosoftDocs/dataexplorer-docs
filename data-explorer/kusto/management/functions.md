@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/28/2019
+ms.date: 02/09/2020
 ---
 # Stored functions management
 
@@ -15,7 +15,7 @@ This article describes control commands used for creating and altering [user-def
 
 ## .show functions
 
-```kusto
+```
 .show functions
 ```
 
@@ -42,7 +42,7 @@ Requires [Database user permission](../management/access-control/role-based-auth
 
 ## .show function
 
-```kusto
+```
 .show function MyFunc1
 ```
 
@@ -70,7 +70,7 @@ see [.show functions](#show-functions).
  
 **Example** 
 
-```kusto
+```
 .show function MyFunction1 
 ```
     
@@ -113,7 +113,7 @@ Rules for parameter types and CSL-statements are the same as for [`let` statemen
 
 **Examples** 
 
-```kusto
+```
 .create function 
 with (docstring = 'Simple demo function', folder='Demo')
 MyFunction1()  {StormEvents | limit 100}
@@ -124,7 +124,7 @@ MyFunction1()  {StormEvents | limit 100}
 |MyFunction1|()|{StormEvents &#124; limit 100}|Demo|Simple demo function|
 
 
-```kusto
+```
 .create function
 with (docstring = 'Demo function with parameter', folder='Demo')
  MyFunction2(myLimit: long)  {StormEvents | limit myLimit}
@@ -138,7 +138,7 @@ with (docstring = 'Demo function with parameter', folder='Demo')
 
 ## .alter function
 
-```kusto
+```
 .alter function [with (docstring = '<description>', folder='<name>', skipvalidation='true')] [FunctionName] ([paramName:paramType], ...) { CSL-statement }
 ```
 
@@ -164,7 +164,7 @@ Rules for parameter types and CSL-statements are the same as for [`let` statemen
  
 **Example** 
 
-```kusto
+```
 .alter function
 with (docstring = 'Demo function with parameter', folder='MyFolder')
  MyFunction2(myLimit: long)  {StormEvents | limit myLimit}
@@ -176,14 +176,14 @@ with (docstring = 'Demo function with parameter', folder='MyFolder')
 
 ## .create-or-alter function
 
-```kusto
+```
 .create-or-alter function [with (docstring = '<description>', folder='<name>')] [FunctionName] ([paramName:paramType], ...) { CSL-statement }
 ```
 If function with the provided *FunctionName* does not exist in database metadata - command will create a new function. Otherwise (if function already exists) - function will be changed.
 
 **Example**
 
-```kusto
+```
 .create-or-alter function  with (docstring = 'Demo function with parameter', folder='MyFolder') TestFunction(myLimit:int)
 {
     StormEvents | take myLimit 
@@ -215,7 +215,7 @@ The `.drop` `function` command drops a function from the database.
  
 **Example** 
 
-```kusto
+```
 .drop function MyFunction1
 ```
 
@@ -243,7 +243,7 @@ Requires [Function admin permission](../management/access-control/role-based-aut
 
 **Example** 
  
-```kusto
+```
 .drop functions (Function1, Function2, Function3) ifexists
 ```
 
@@ -266,10 +266,9 @@ Alters the DocString value of an existing function.
 |Folder|String|A folder that is used for UI functions categorization. This parameter does not change the way function is invoked
 |DocString|String|A description of the function - to be shown for UI purposes.
 
-
 **Example** 
 
-```kusto
+```
 .alter function MyFunction1 docstring "Updated docstring"
 ```
     
@@ -297,10 +296,9 @@ Alters the Folder value of an existing function.
 |Folder|String|A folder that is used for UI functions categorization. This parameter does not change the way function is invoked
 |DocString|String|A description of the function - to be shown for UI purposes.
 
-
 **Example** 
 
-```kusto
+```
 .alter function MyFunction1 folder "Updated Folder"
 ```
     
@@ -308,11 +306,10 @@ Alters the Folder value of an existing function.
 |---|---|---|---|---
 |MyFunction2 |(myLimit: long)| {StormEvents &#124; limit myLimit}|Updated Folder|Some DocString|
 
-```kusto
+```
 .alter function MyFunction1 folder @"First Level\Second Level"
 ```
     
 |Name |Parameters |Body|Folder|DocString
 |---|---|---|---|---
 |MyFunction2 |(myLimit: long)| {StormEvents &#124; limit myLimit}|First Level\Second Level|Some DocString|
-

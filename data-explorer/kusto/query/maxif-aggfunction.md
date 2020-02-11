@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/24/2019
+ms.date: 02/09/2020
 ---
 # maxif() (aggregation function)
 
@@ -32,7 +32,7 @@ The maximum value of *Expr* across the group for which *Predicate* evaluates to 
 
 **Examples**
 
-```kusto
+```
 range x from 1 to 100 step 1
 | summarize maxif(x, x < 50)
 ```

@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # limit operator
 
 Return up to the specified number of rows.
 
-```kusto
+```
 T | limit 5
 ```
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # url_encode()
 
@@ -29,7 +29,7 @@ URL (string) converted into a format that can be transmitted over the Internet.
 
 **Examples**
 
-```kusto
+```
 let url = @'https://www.bing.com/';
 print original = url, encoded = url_encode(url)
 ```
@@ -37,6 +37,3 @@ print original = url, encoded = url_encode(url)
 |original|encoded|
 |---|---|
 |https://www.bing.com/|https%3a%2f%2fwww.bing.com%2f|
-
-
- 

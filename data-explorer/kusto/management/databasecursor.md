@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/06/2019
+ms.date: 02/09/2020
 ---
 # Database cursors
 
@@ -91,7 +91,7 @@ Assume table `Employees` with schema `[Name, Salary]`.
 To continuously process new records as they are ingested into the table,
 use the following procedure:
 
-```kusto
+```
 // [Once] Enable the IngestionTime policy on table Employees
 .set table Employees policy ingestiontime true
 

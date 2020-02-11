@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # string_size()
 
@@ -27,7 +27,7 @@ Returns the length, in bytes, of the input string.
 
 **Examples**
 
-```kusto
+```
 print size = string_size("hello")
 ```
 
@@ -35,7 +35,7 @@ print size = string_size("hello")
 |---|
 |5|
 
-```kusto
+```
 print size = string_size("⒦⒰⒮⒯⒪")
 ```
 

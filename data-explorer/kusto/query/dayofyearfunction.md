@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # dayofyear()
 
 Returns the integer number represents the day number of the given year.
 
-```kusto
+```
 dayofyear(datetime(2015-12-14))
 ```
 

@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # todouble()/toreal()
 
 Converts the input to a value of type `real`. (`todouble()` and `toreal()` are synonyms.)
 
-```kusto
+```
 toreal("123.4") == 123.4
 ```
 

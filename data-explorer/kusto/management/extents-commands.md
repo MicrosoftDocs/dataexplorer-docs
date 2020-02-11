@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/14/2019
+ms.date: 02/09/2020
 ---
 # Extents (data shards) management
 
@@ -61,19 +61,19 @@ the results of a cluster-level command.
     * Extent `E` in table `T` is tagged with tags `aaa`, `BBB` and `ccc`.
     * This query will return `E`: 
     
-    ```kusto 
+    ``` 
     .show table T extents where tags has 'aaa' and tags contains 'bb' 
     ``` 
     
     * This query will *not* return `E` (as it is not tagged with a tag which is equal to `aa`):
     
-    ```kusto 
+    ``` 
     .show table T extents where tags has 'aa' and tags contains 'bb' 
     ``` 
     
     * This query will return `E`: 
     
-    ```kusto 
+    ``` 
     .show table T extents where tags contains 'aaa' and tags contains 'bb' 
     ``` 
 
@@ -98,7 +98,7 @@ the results of a cluster-level command.
  
 **Examples**
 
-```kusto 
+``` 
 // Show volume of extents being created per hour in a specific database
 .show database MyDatabase extents | summarize count(ExtentId) by MaxCreatedOn bin=time(1h) | render timechart  
 
@@ -145,12 +145,14 @@ Duration |timespan |The time period it took to complete the merge operation.
 **Examples**
 
 Rebuilds two specific extents in `MyTable`, performed asynchronously
-```kusto
+
+```
 .merge async MyTable (e133f050-a1e2-4dad-8552-1f5cf47cab69, 0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687) with(rebuild=true)
 ```
 
 Merges two specific extents in `MyTable`, performed synchronously
-```kusto
+
+```
 .merge MyTable (12345050-a1e2-4dad-8552-1f5cf47cab69, 98765b2d-9dd2-4d2c-a45e-b24c65aa6687)
 ```
 
@@ -191,7 +193,7 @@ There are three ways to specify which extents to move:
 
 **Specifying Extents with a Query**
 
-```kusto 
+``` 
 .move extents to table TableName <| ...query... 
 ```
 
@@ -208,17 +210,20 @@ Details |string |Includes the failure details, in case the operation fails.
 **Examples**
 
 Moves all extents in table `MyTable` to table `MyOtherTable`.
-```kusto
+
+```
 .move extents all from table MyTable to table MyOtherTable
 ```
 
 Moves 2 specific extents (by their extent IDs) from table `MyTable` to table `MyOtherTable`.
-```kusto
+
+```
 .move extents (AE6CD250-BE62-4978-90F2-5CB7A10D16D7,399F9254-4751-49E3-8192-C1CA78020706) from table MyTable to table MyOtherTable
 ```
 
 Moves all extents from 2 specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`.
-```kusto
+
+```
 .move extents to table MyOtherTable <| .show tables (MyTable1,MyTable2) extents
 ```
 
@@ -288,25 +293,25 @@ but without actually executing it.
 
 Remove all extents created more than 10 days ago from all tables in database `MyDatabase`
 
-```kusto
+```
 .drop extents <| .show database MyDatabase extents | where CreatedOn < now() - time(10d)
 ```
 
 Removes all extents in tables `Table1` and `Table2`, whose creation time was over 10 days ago:
 
-```kusto
+```
 .drop extents older 10 days from tables (Table1, Table2)
 ```
 
 Emulation mode: shows which extents would be removed by the command (extent ID parameter is not applicable for this command):
 
-```kusto
+```
 .drop-pretend extents older 10 days from all tables
 ```
 
 Removes all extents from 'TestTable':
 
-```kusto
+```
 .drop extents from TestTable
 ```
  
@@ -367,7 +372,8 @@ Details |string |Includes the failure details, in case the operation fails.
 
 Moves all extents from 2 specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`, and drops all extents in `MyOtherTable` 
 tagged with `drop-by:MyTag`:
-```kusto
+
+```
 .replace extents in table MyOtherTable <|
     {.show table MyOtherTable extents where tags has 'drop-by:MyTag'},
     {.show tables (MyTable1,MyTable2) extents}
@@ -388,13 +394,15 @@ tagged with `drop-by:MyTag`:
 > To make sure the command fails on missing extents, check that the query returns the expected ExtentIds. Example #1 below will fail if the extent to drop doesn't exist in table MyOtherTable. Example #2, however, will succeed even though the extent to drop doesn't exist, since the query to drop didn't return any extent ids. 
 
 Example #1: 
-```kusto
+
+```
 .replace extents in table MyOtherTable <|
      { datatable(ExtentId:guid)[ "2cca5844-8f0d-454e-bdad-299e978be5df"] }, { .show table MyTable1 extents }
 ```
 
 Example #2:
-```kusto
+
+```
 .replace extents in table MyOtherTable  <|
      { .show table MyOtherTable extents | where ExtentId == guid(2cca5844-8f0d-454e-bdad-299e978be5df) }, { .show table MyTable1 extents }
 ```
@@ -427,7 +435,7 @@ There are two ways to specify which tags should be removed from which extents:
 
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) for all involved source and destination tables.
 
-```kusto 
+``` 
 .drop extent tags <| ...query... 
 ```
 
@@ -449,17 +457,20 @@ Details |string |Includes the failure details, in case the operation fails.
 **Examples**
 
 Drops the `drop-by:Partition000` tag from any extent in table `MyOtherTable` which is tagged with it.
-```kusto
+
+```
 .drop extent tags from table MyOtherTable ('drop-by:Partition000')
 ```
 
 Drops the tags `drop-by:20160810104500`, `a random tag`, and/or `drop-by:20160810` from any extent in table `My Table` which is tagged with either of them.
-```kusto
+
+```
 .drop extent tags from table [My Table] ('drop-by:20160810104500','a random tag','drop-by:20160810')
 ```
 
 Drops all `drop-by` tags from extents in table `MyTable`.
-```kusto
+
+```
 .drop extent tags <| 
   .show table MyTable extents 
   | where isnotempty(Tags)
@@ -469,7 +480,8 @@ Drops all `drop-by` tags from extents in table `MyTable`.
 ```
 
 Drops all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from extents in table `MyTable`.
-```kusto
+
+```
 .drop extent tags <| 
   .show table MyTable extents 
   | where isnotempty(Tags)
@@ -519,12 +531,14 @@ Details |string |Includes the failure details, in case the operation fails.
 **Examples**
 
 Alters tags of all the extents in table `MyTable` to `MyTag`.
-```kusto
+
+```
 .alter extent tags ('MyTag') <| .show table MyTable extents
 ```
 
 Alters tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`.
-```kusto
+
+```
 .alter extent tags ('drop-by:MyNewTag','MyOtherNewTag') <| .show table MyTable extents where tags has 'drop-by:MyTag'
 ```
 

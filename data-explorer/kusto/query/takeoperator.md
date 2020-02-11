@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/25/2019
+ms.date: 02/09/2020
 ---
 # take operator
 
 Return up to the specified number of rows.
 
-```kusto
+```
 T | take 5
 ```
 

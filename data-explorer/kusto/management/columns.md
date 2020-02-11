@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/09/2020
 ---
 # Columns management
 
@@ -47,7 +47,7 @@ The `.alter column` command alters the data type of an existing table column.
  
 **Example** 
 
-```kusto
+```
 .alter column ['Table'].['ColumnX'] type=string
 ```
 
@@ -60,7 +60,7 @@ For each table `T1` you'd like to change a column type in, execute the following
 * Create a table `T1_prime` with the correct schema (the right column types)
 * Swap the tables using [.rename tables](rename-table-command.md) command, which allows swapping table names:
 
-```kusto
+```
 .rename tables T_prime=T1, T1=T_prime
 ```
 
@@ -98,7 +98,7 @@ set will have this property removed.
 
 **Example** 
 
-```kusto
+```
 .alter table Table1 column-docstrings (Column1:"DocString1", Column2:"DocString2")
 ```
 
@@ -112,6 +112,6 @@ set will retain their existing value for this property, if they have one.
 
 **Example** 
 
-```kusto
+```
 .alter-merge table Table1 column-docstrings (Column1:"DocString1", Column2:"DocString2")
 ```

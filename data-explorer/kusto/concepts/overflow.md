@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # Overflows
 
@@ -16,7 +16,7 @@ This phenomenon usually leads to a [partial query failure](partialqueryfailures.
 
 For example, the following query will result in an overflow:
 
-```kusto
+```
 let Weight = 92233720368547758;
 range x from 1 to 3 step 1
 | summarize percentilesw(x, Weight * 100, 50)

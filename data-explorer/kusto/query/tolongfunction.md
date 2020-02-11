@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # tolong()
 
 Converts input to long (signed 64-bit) number representation.
 
-```kusto
+```
 tolong("123") == 123
 ```
 

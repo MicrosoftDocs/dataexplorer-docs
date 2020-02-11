@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/26/2020
+ms.date: 02/09/2020
 ---
 # make_set_if() (aggregation function)
 
@@ -39,7 +39,7 @@ The array's sort order is undefined.
 
 **Example**
 
-```kusto
+```
 let T = datatable(name:string, day_of_birth:long)
 [
    "John", 9,

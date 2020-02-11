@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/10/2019
+ms.date: 02/09/2020
 ---
 # to_utf8()
 
@@ -28,7 +28,7 @@ See [`make_string()`](makestringfunction.md))
 
 **Examples**
 
-```kusto
+```
 print arr = to_utf8("⒦⒰⒮⒯⒪")
 ```
 
@@ -36,7 +36,7 @@ print arr = to_utf8("⒦⒰⒮⒯⒪")
 |---|
 |[9382, 9392, 9390, 9391, 9386]|
 
-```kusto
+```
 print arr = to_utf8("קוסטו - Kusto")
 ```
 
@@ -44,7 +44,7 @@ print arr = to_utf8("קוסטו - Kusto")
 |---|
 |[1511, 1493, 1505, 1496, 1493, 32, 45, 32, 75, 117, 115, 116, 111]|
 
-```kusto
+```
 print str = make_string(to_utf8("Kusto"))
 ```
 

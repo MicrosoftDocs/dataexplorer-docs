@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/04/2019
+ms.date: 02/09/2020
 ---
 # parse_csv()
 
 Splits a given string representing a single record of comma separated values and returns a string array with these values.
 
-```kusto
+```
 parse_csv("aaa,bbb,ccc") == ["aaa","bbb","ccc"]
 ```
 
