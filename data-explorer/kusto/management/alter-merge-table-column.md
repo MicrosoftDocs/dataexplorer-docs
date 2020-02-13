@@ -7,14 +7,14 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/13/2020
 ---
 # alter-merge table column-docstrings
 
 Sets the `docstring` property of one or more columns of the specified table. 
 Columns not explicitly set **retain** their existing value for this property, if they have one.
 
-For alter table column-docstring, see [below](#alter-table-column-docstring).
+For alter table column-docstring, see [below](#alter-table-column-docstrings).
 
 **Syntax**
 
