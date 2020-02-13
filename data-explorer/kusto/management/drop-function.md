@@ -7,12 +7,12 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/13/2020
 ---
 # .drop function
 
 Drops a function from the database.
-For dropping multiple functions from the database, see [.drop functions](#.drop-functions)
+For dropping multiple functions from the database, see [.drop functions](#drop-functions).
 
 **Syntax**
 

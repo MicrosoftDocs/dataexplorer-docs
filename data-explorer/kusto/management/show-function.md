@@ -7,12 +7,12 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/13/2020
 ---
 # .show functions
 
 Lists all the stored functions in the currently-selected database.
-To return only one specific function, see [.show function](#.show-function).
+To return only one specific function, see [.show function](#show-function).
 
 ```
 .show functions

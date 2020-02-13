@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/13/2020
 ---
 # .alter table and .alter-merge table
 
@@ -45,7 +45,7 @@ Specify the columns the table should have after successful completion.
  * The table will have exactly the same columns, in the same order, as specified.
  * Existing columns that are not specified in the command will be dropped (as in
  `.drop column`) and data in them is lost.
- * Altering a column type is not supported when altering a table. Use the [.alter column](columns.md#alter-column) command instead.
+ * Altering a column type is not supported when altering a table. Use the [.alter column](alter-column.md) command instead.
 
 > [!TIP] 
 > Use `.show table [TableName] cslschema` to get the existing column schema before you alter it. 
