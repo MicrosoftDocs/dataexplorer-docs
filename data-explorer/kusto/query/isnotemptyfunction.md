@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # isnotempty()
 
 Returns `true` if the argument is not an empty string nor it is a null.
 
-```kusto
+```
 isnotempty("") == false
 ```
 

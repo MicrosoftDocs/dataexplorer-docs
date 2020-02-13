@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/01/2019
+ms.date: 02/09/2020
 ---
 # pivot plugin
 
@@ -15,7 +15,7 @@ Rotates a table by turning the unique values from one column in the input table 
 in the output table, and performs aggregations where they are required on any remaining column values 
 that are wanted in the final output.
 
-```kusto
+```
 T | evaluate pivot(PivotColumn)
 ```
 

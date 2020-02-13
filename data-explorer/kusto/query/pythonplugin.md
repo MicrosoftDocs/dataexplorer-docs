@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/09/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -69,7 +69,7 @@ The following variables are reserved for interaction between Kusto query languag
 
 ### Examples
 
-```kusto
+```
 range x from 1 to 360 step 1
 | evaluate python(
 //
@@ -101,7 +101,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 
     Example:
 
-    ```kusto    
+    ```    
     .show operations
     | where StartedOn > ago(7d) // Filtering out irrelevant records before invoking the plugin
     | project d_seconds = Duration / 1s // Projecting only a subset of the necessary columns
@@ -128,7 +128,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
   
 	**Example**
 
-    ```kusto    
+    ```    
     let script = 
         externaldata(script:string)
         [h'https://raw.githubusercontent.com/yonileibowitz/kusto.blog/master/resources/python/sample_script.py']

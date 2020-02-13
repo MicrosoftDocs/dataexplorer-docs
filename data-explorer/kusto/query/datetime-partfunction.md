@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/28/2020
+ms.date: 02/09/2020
 ---
 # datetime_part()
 
@@ -55,7 +55,7 @@ An integer representing the extracted part.
 
 **Examples**
 
-```kusto
+```
 let dt = datetime(2017-10-30 01:02:03.7654321); 
 print 
 year = datetime_part("year", dt),

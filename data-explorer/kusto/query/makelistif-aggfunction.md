@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/22/2020
+ms.date: 02/09/2020
 ---
 # make_list_if() (aggregation function)
 
@@ -33,7 +33,7 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 **Example**
 
-```kusto
+```
 let T = datatable(name:string, day_of_birth:long)
 [
    "John", 9,

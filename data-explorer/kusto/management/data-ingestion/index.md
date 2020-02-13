@@ -7,40 +7,40 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/26/2020
+ms.date: 02/06/2020
 ---
 # Data ingestion
 
-The process by which data gets added to a table and is made available for query.
+The process by which data is added to a table and is made available for query.
 Depending on the existence of the table beforehand, the process requires
 [database admin, database ingestor, database user, or table admin permissions](../access-control/role-based-authorization.md).
 
 The data ingestion process consists of several steps:
 
 1. Retrieving the data from the data source.
-2. Parsing and validating the data.
-3. Matching the schema of the data to the schema of the target Kusto table,
+1. Parsing and validating the data.
+1. Matching the schema of the data to the schema of the target Kusto table,
    or creating the target table if it doesn't already exist.
-4. Organizing the data in columns.
-5. Indexing the data.
-6. Encoding and compressing the data.
-7. Persisting the resulting Kusto storage artifacts in storage.
-8. Executing all relevant update policies, if any.
-9. "Committing" the data ingest, making it available for query.
+1. Organizing the data in columns.
+1. Indexing the data.
+1. Encoding and compressing the data.
+1. Persisting the resulting Kusto storage artifacts in storage.
+1. Executing all relevant update policies, if any.
+1. "Committing" the data ingest, making it available for query.
 
 > [!NOTE]
 > Some of the steps above may be skipped, depending on the specific scenario.
 > For example, data ingested through the streaming ingestion endpoint skips steps
-> 4, 5, 6, and 9 above; these are done in the background as the data is "groomed".
+> 4, 5, 6, and 9. These are done in the background as the data is "groomed".
 > As another example, if the data source is the results of a Kusto query to the same
-> cluster, there's no need to parse and validate the data.)
+> cluster, there's no need to parse and validate the data.
 
 > [!WARNING]
 > Data ingested into a table in Kusto is subject to the table's effective **retention policy**.
 > Unless set on a table explicitly, the effective retention policy is derived from
 > the database's retention policy. Therefore, when you ingest data into Kusto, make sure
-> that the database's retention policy is appropriate for their needs. If not, explicitly
-> override it at the table level. Failure to do so might mean "silent" deletion of
+> that the database's retention policy is appropriate for your needs. If not, explicitly
+> override it at the table level. Failure to do so might result in a "silent" deletion of
 > your data due to the database's retention policy. See [retention policy](https://kusto.azurewebsites.net/docs/concepts/retentionpolicy.html)
 > for details.
 
@@ -56,27 +56,23 @@ its own characteristics:
    text itself.
    This method is primarily intended for ad-hoc testing
    purposes, and should not be used for production purposes.
-
-2. **Ingest from query**: A control command ([.set, .append, .set-or-append, or .set-or-replace](./ingest-from-query.md))
+1. **Ingest from query**: A control command ([.set, .append, .set-or-append, or .set-or-replace](./ingest-from-query.md))
    is sent to the engine, with the data specified indirectly as the results of a query
    or a command.
    This method is useful for generating reporting tables out of raw data tables,
    or for creating small temporary tables for further analysis.
-
-3. **Ingest from storage (pull)**: A control command ([.ingest into](./ingest-from-storage.md))
-   is sent to the engine, with the data stored in some external storage (e.g., Azure
+1. **Ingest from storage (pull)**: A control command ([.ingest into](./ingest-from-storage.md))
+   is sent to the engine, with the data stored in some external storage (for example, Azure
    Blob Storage) accessible by the engine and pointed-to by the command.
    This method allows efficient bulk ingestion of data, but puts some burden on
    the client performing the ingestion to not overtax the cluster with concurrent
    ingestions (or risk consuming all cluster resources by data ingestion, reducing
    the performance of queries).
-
-4. **Queued ingestion**: Data is uploaded to external storage (e.g., Azure Blob
-   Storage). A notification is sent to a queue (e.g., Azure Queue, or Event Hub).
-   This is the primary method used in production, as it has very high availability,
+1. **Queued ingestion**: Data is uploaded to external storage (for example, Azure Blob
+   Storage). A notification is sent to a queue (such as Azure Queue or Event Hub).
+   This is the primary method used in production because it has very high availability,
    doesn't require the client to perform capacity management itself, and handles bulk
    appends well. This is sometimes called "native ingestion".
-
 
 
 |Method             |Latency                 |Production|Bulk|Availability|Synchronicity|
@@ -88,19 +84,20 @@ its own characteristics:
 
 ## Ingestion properties 
 
-Ingestion commands may zero on more ingestion properties through the
-use of the `with` keyword. The supported properties are:  
+You can add zero or more properties to the Ingestion command after the `with` keyword. The supported properties are:  
 
 * `ingestionMapping`: A string value that indicates
   how to map data from the source file to the actual columns in the table.
-  Requires defining the `format` value with the relevant mapping type (see table below).
+  Requires defining the `format` value with the relevant mapping type (see the table below).
   See [data mappings](../mappings.md).
+  For example: `with (format="json", ingestionMapping = "[{\"column\":\"rownumber\", \"Properties\":{\"Path\":\"$.RowNumber\"}}, {\"column\":\"rowguid\", \"Properties\":{\"Path\":\"$.RowGuid\"}}]")`
   (deprecated: `avroMapping`, `csvMapping`, `jsonMapping`)
-
+ 
 * `ingestionMappingReference`: A string value that indicates how to map data from the source file to the
   actual columns in the table using a named mapping policy object.
-  Requires defining the `format` value with the relevant mapping type (see table below).
+  Requires defining the `format` value with the relevant mapping type (see the table below).
   See [data mappings](../mappings.md).
+  For example:  `with (format="csv", ingestionMappingReference = "Mapping1")`
   (deprecated: `avroMappingReference`, `csvMappingReference`, `jsonMappingReference`)
 
 * `creationTime`: The datetime value (formatted as a ISO8601 string) to use
@@ -111,9 +108,8 @@ use of the `with` keyword. The supported properties are:
 
 * `extend_schema`: A Boolean value that, if specified, instructs the command
   to extend the schema of the table (defaults to `false`). This option applies only
-  to `.append` and `.set-or-append` commands. Note that the only allowed schema extensions
-  have additional columns added to the table at the end.<br>
-  For example, if the original table schema is `(a:string, b:int)` then a
+  to `.append` and `.set-or-append` commands. The only allowed schema extensions
+  have additional columns added to the table at the end. For example, if the original table schema is `(a:string, b:int)` then a
   valid schema extension would be `(a:string, b:int, c:datetime, d:string)`,
   but `(a:string, c:datetime)` would not.
 
@@ -127,17 +123,17 @@ use of the `with` keyword. The supported properties are:
 
 * `ingestIfNotExists`: A string value that, if specified, prevents ingestion
   from succeeding if the table already has data tagged with an `ingest-by:` tag
-  with the same value. This ensure idempotent data ingestion.
+  with the same value. This ensures idempotent data ingestion.
   For more information see [ingest-by: tags](../extents-overview.md#ingest-by-extent-tags).
   For example, the properties `with (ingestIfNotExists='["Part0001"]', tags='["ingest-by:Part0001"]')`
   indicate that if data with the tag `ingest-by:Part0001` already exists, then
-  we should not complete the current ingestion. If it doesn't already exist,
-  then this new ingestion should have this tag set (in case a future ingestion
+  don't complete the current ingestion. If it doesn't already exist,
+  this new ingestion should have this tag set (in case a future ingestion
   attempts to ingest the same data again in the future.)
 
 * `ignoreFirstRecord`: A Boolean value that, if set to `true`, indicates that
   ingestion should ignore the first record of every file. This is useful for
-  files formatted in `csv` (and similar formats) if the first record in the file
+  files formatted in `CSV` (and similar formats) if the first record in the file
   is a header record specifying the column names. By default `false` is assumed.
   For example: `with (ignoreFirstRecord=false)`.
 
@@ -182,15 +178,15 @@ The following table shows which property applies to each method of ingestion.
 
 ## Supported data formats
 
-For all ingestion methods other than ingest-from-query, the data must be
+For all ingestion methods, other than ingest-from-query, the data must be
 formatted in one of the supported data formats:
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
 |avro     |`.avro`     |An [Avro container file](https://avro.apache.org/docs/current/). The following codes are supported: `null`, `deflate` (`snappy` is currently not supported).|
-|csv      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
-|json     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
-|multijson|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace, `\n` or `\r\n`. Each property bag can be spread on multiple lines. (This format is preferred over `json`, unless the data is non-property bags.)|
+|CSV      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
+|JSON     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
+|multijson|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace, `\n` or `\r\n`. Each property bag can be spread on multiple lines. (This format is preferred over `JSON`, unless the data is non-property bags.)|
 |orc      |`.orc`      |An [Orc file](https://en.wikipedia.org/wiki/Apache_ORC).|
 |parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet).|
 |psv      |`.psv`      |A text file with pipe-separated values (<code>&#124;</code>).|
@@ -213,23 +209,23 @@ compression algorithms:
 
 The name of the blob or file should indicate compression by appending the extension
 noted above to the name of the blob or file. Thus, `MyData.csv.zip` indicates
-a blob or a file whose format is CSV and that has been compressed via Zip
+a blob or a file formatted as CSV, compressed via Zip
 (either as an archive or as a single file), and `MyData.csv.gz` indicates
-a blob or a file whose format is CSV and that has been compressed via GZip.
+a blob or a file formatted as CSV, compressed via GZip.
 
-Blob or file names that do not include the format extension but just compression
-(for example, `MyData.zip`) are also supported, but in this case the file format
-must be specified as an ingestion property as it cannot be inferred.
+Blob or file names that don't include the format extensions but just compression
+(for example, `MyData.zip`) are also supported. In this case, the file format
+must be specified as an ingestion property because it cannot be inferred.
 
 > [!NOTE]
 > Some compression formats keep track of the original file extension as part
-> of the compressed stream. This extension is generally ignored for the purpose
-> of determining the file format. If this can't be determined from the (compressed)
+> of the compressed stream. This extension is generally ignored for
+> determining the file format. If the file format can't be determined from the (compressed)
 > blob or file name, it must be specified through the `format` ingestion property.
 
 ## Validation policy during ingestion
 
-When ingesting from storage, the source data gets validated as part of parsing.
+When ingesting from storage, the source data is validated as part of parsing.
 The validation policy indicates how to react to parsing failures. It consists
 of two properties:
 

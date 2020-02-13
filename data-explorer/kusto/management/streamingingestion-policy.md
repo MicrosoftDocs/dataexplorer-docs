@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/11/2019
+ms.date: 02/09/2020
 ---
 # Streaming ingestion policy management
 
@@ -37,7 +37,7 @@ This command returns a table with the following columns:
 
 **Example**
 
-```kusto
+```
 .show database DB1 policy streamingingestion 
 .show table T1 policy streamingingestion 
 ```
@@ -83,7 +83,7 @@ otherwise the command will do nothing.
 
 **Example**
 
-```kusto
+```
 .alter database MyDatabase policy streamingingestion '{  "NumberOfRowStores": 4}'
 
 .alter table MyTable policy streamingingestion '{  "NumberOfRowStores": 4}'
@@ -106,6 +106,6 @@ command.
 
 **Example**
 
-```kusto
+```
 .delete database MyDatabase policy streamingingestion 
 ```

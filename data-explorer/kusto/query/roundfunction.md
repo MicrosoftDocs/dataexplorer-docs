@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # round()
 
@@ -33,7 +33,7 @@ of a given bin size (round(2.15, 1) returns 2.2 while bin(2.15, 1) returns 2).
 
 **Examples**
 
-```kusto
+```
 round(2.15, 1)                   // 2.2
 round(2.15) (which is the same as round(2.15, 0))                   // 2
 round(-50.55, -2)                   // -100

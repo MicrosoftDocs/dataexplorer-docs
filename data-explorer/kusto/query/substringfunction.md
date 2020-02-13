@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/01/2019
+ms.date: 02/09/2020
 ---
 # substring()
 
@@ -15,7 +15,7 @@ Extracts a substring from a source string starting from some index to the end of
 
 Optionally, the length of the requested substring can be specified.
 
-```kusto
+```
 substring("abcdefg", 1, 2) == "bc"
 ```
 
@@ -39,7 +39,7 @@ A substring from the given string. The substring starts at startingIndex (zero-b
 
 **Examples**
 
-```kusto
+```
 substring("123456", 1)        // 23456
 substring("123456", 2, 2)     // 34
 substring("ABCD", 0, 2)       // AB

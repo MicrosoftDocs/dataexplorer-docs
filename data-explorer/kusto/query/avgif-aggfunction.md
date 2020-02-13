@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2019
+ms.date: 02/09/2020
 ---
 # avgif() (aggregation function)
 
@@ -30,7 +30,7 @@ The average value of *Expr* across the group where *Predicate* evaluates to `tru
  
 **Examples**
 
-```kusto
+```
 range x from 1 to 100 step 1
 | summarize avgif(x, x%2 == 0)
 ```

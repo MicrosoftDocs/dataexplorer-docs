@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # varianceif() (aggregation function)
 
@@ -30,7 +30,7 @@ The variance value of *Expr* across the group where *Predicate* evaluates to `tr
  
 **Examples**
 
-```kusto
+```
 range x from 1 to 100 step 1
 | summarize varianceif(x, x%2 == 0)
 

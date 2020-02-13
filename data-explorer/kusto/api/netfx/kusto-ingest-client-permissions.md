@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/13/2019
+ms.date: 02/09/2020
 ---
 # Kusto.Ingest Reference - Ingestion Permissions
 This article explains what permissions need to be set up on your service in order for `Native` ingestion to work.
@@ -41,7 +41,8 @@ If table creation is required, `Database User` or a higher access role must also
 >`Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404)` principal (Kusto internal Ingestion App) is immutably mapped to the `Cluster Admin` role and thus authorized to ingest data to any table (that is what's happening on Kusto-managed ingestion pipelines).
 
 Granting required permissions on database `DB1` or table `T1` to AAD App `Test App (2a904276-1234-5678-9012-66fc53add60b in AAD tenant microsoft.com)` would look as follows:
-```kusto
+
+```
 .add database DB1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test AAD App'
 .add table T1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test AAD App'
 ```

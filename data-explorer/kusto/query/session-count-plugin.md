@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # session_count plugin
 
 Calculates sessions count based on ID column over a timeline.
 
-```kusto
+```
 T | evaluate session_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 1min, 30min, dim1, dim2, dim3)
 ```
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/02/2019
+ms.date: 02/09/2020
 ---
 # The .ingest inline command (push)
 
@@ -62,7 +62,7 @@ with an empty (zero-valued) extent ID.
 The following command ingests data into a table (`Purchases`) with two
 columns, `SKU` (of type `string`) and `Quantity` (of type `long`).
 
-```kusto
+```
 .ingest inline into table Purchases <|
 Shoes,1000
 Wide Shoes,50
@@ -76,5 +76,4 @@ Wide Shoes,50
 It is possible to generate inline ingests commands using the Kusto.Data client library. (Note that compression does allow one to embed newlines in quoted fields) 
 
     Kusto.Data.Common.CslCommandGenerator.GenerateTableIngestPushCommand(tableName, compressed: true, csvData: csvStream);
-
 -->

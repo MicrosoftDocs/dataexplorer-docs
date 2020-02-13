@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # countof()
 
 Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches do not.
 
-```kusto
+```
 countof("The cat sat on the mat", "at") == 3
 countof("The cat sat on the mat", @"\b.at\b", "regex") == 3
 ```

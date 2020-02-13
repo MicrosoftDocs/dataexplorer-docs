@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/06/2020
 ---
 # .create table
 
@@ -37,7 +37,7 @@ Returns the table's schema in JSON format, same as:
 .show table MyLogs schema as json
 ```
 
-[!NOTE]
+> [!NOTE]
 > For creating multiple tables, use the [.create tables](/create-tables.md) command for better performance and lower load on the cluster.
 
 ## .create-merge table

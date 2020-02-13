@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/22/2020
+ms.date: 02/09/2020
 ---
 # where operator (has, contains, startswith, endswith, matches regex)
 
 Filters a table to the subset of rows that satisfy a predicate.
 
-```kusto
+```
 T | where fruit=="apple"
 ```
 
@@ -54,7 +54,7 @@ For more information, refer to the summary of [available String operators](./dat
 
 **Example**
 
-```kusto
+```
 Traces
 | where Timestamp > ago(1h)
     and Source == "MyCluster"
@@ -68,7 +68,7 @@ Notice that we put the comparison between two columns last, as it can't utilize 
 
 **Example**
 
-```kusto
+```
 Traces | where * has "Kusto"
 ```
 

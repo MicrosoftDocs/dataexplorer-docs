@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # strrep()
 
@@ -33,7 +33,7 @@ In case if *multiplier* is more than maximal allowed value (1024), input string 
  
 **Example**
 
-```kusto
+```
 print from_str = strrep('ABC', 2), from_int = strrep(123,3,'.'), from_time = strrep(3s,2,' ')
 ```
 

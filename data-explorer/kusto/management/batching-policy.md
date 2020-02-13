@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/25/2019
+ms.date: 02/09/2020
 ---
 # IngestionBatching policy
 
@@ -33,12 +33,12 @@ commands:
 
 ## Altering the IngestionBatching policy
 
-```kusto
+```
 .alter <entity_type> <database_or_table_name> policy ingestionbatching @'<ingestionbatching policy json>'
 ```
 Altering the IngestionBatching policy for multiple tables (in the same database context):
 
-```kusto
+```
 .alter tables (table_name [, ...]) policy ingestionbatching @'<ingestionbatching policy json>'
 ```
 IngestionBatching policy:
@@ -58,13 +58,13 @@ IngestionBatching policy:
 
 ## Deleting the IngestionBatching policy
 
-```kusto
+```
 .delete <entity_type> <database_or_table_name> policy ingestionbatching
 ```
 
 **Examples**
 
-```kusto
+```
 // Show IngestionBatching policy for table `MyTable` in database `MyDatabase`
 .show table MyDatabase.MyTable policy ingestionbatching 
 

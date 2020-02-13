@@ -7,14 +7,14 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/06/2019
+ms.date: 02/09/2020
 ---
 # lookup operator
 
 The `lookup` operator extends the columns of a fact table with values
 looked-up in a dimension table.
 
-```kusto
+```
 FactTable | lookup kind=leftouter (DimensionTable) on CommonColumn, $left.Col1 == $right.Col2
 ```
 
@@ -86,7 +86,7 @@ A table with:
 
 **Examples**
 
-```kusto
+```
 let FactTable=datatable(Row:string,Personal:string,Family:string) [
   "1", "Bill",   "Gates",
   "2", "Bill",   "Clinton",

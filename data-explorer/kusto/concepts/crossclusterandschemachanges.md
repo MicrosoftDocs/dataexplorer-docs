@@ -7,14 +7,14 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # Cross-cluster queries and schema changes 
 
 When executing cross-cluster query the cluster which is doing the initial query interpretation must have the schema of the entities referenced in remote cluster(s).
 So when the following query sent to *Cluster1*
 
-```kusto
+```
 Table1 | join ( cluster("Cluster2").database("SomeDB").Table2 ) on KeyColumn
 ``` 
 

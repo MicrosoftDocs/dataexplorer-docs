@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # bin_auto()
 
@@ -34,7 +34,7 @@ will be translated into itself.
 
 **Examples**
 
-```kusto
+```
 set query_bin_auto_size=1h;
 set query_bin_auto_at=datetime(2017-01-01 00:05);
 range Timestamp from datetime(2017-01-01 00:05) to datetime(2017-01-01 02:00) step 1m

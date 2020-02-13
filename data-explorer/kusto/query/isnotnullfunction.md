@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # isnotnull()
 
@@ -21,12 +21,12 @@ Returns `true` if the argument is not null.
 
 **Example**
 
-```kusto
+```
 T | where isnotnull(PossiblyNull) | count
 ```
 
 Notice that there are other ways of achieving this effect:
 
-```kusto
+```
 T | summarize count(PossiblyNull)
 ```

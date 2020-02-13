@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # next()
 
@@ -32,7 +32,8 @@ current row in a [serialized row set](./windowsfunctions.md#serialized-row-set).
 
 
 **Examples**
-```kusto
+
+```
 Table | serialize | extend nextA = next(A,1)
 | extend diff = A - nextA
 | where diff > 1

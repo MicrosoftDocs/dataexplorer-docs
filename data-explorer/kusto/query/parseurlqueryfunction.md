@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/10/2019
+ms.date: 02/09/2020
 ---
 # parse_urlquery()
 
@@ -27,7 +27,7 @@ An object of type [dynamic](./scalar-data-types/dynamic.md) that includes the qu
 
 **Example**
 
-```kusto
+```
 parse_urlquery("k1=v1&k2=v2&k3=v3")
 ```
 

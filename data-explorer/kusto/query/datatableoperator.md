@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/09/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -49,7 +49,7 @@ This operator returns a data table of the given schema and data.
 
 **Example**
 
-```kusto
+```
 datatable (Date:datetime, Event:string)
     [datetime(1910-06-11), "Born",
      datetime(1930-01-01), "Enters Ecole Navale",

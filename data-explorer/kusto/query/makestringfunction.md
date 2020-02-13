@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # make_string()
 
@@ -30,7 +30,7 @@ If any argument is not mapped to a Unicode char, the function returns null.
 
 **Examples**
 
-```kusto
+```
 print str = make_string(75, 117, 115, 116, 111)
 ```
 
@@ -38,7 +38,7 @@ print str = make_string(75, 117, 115, 116, 111)
 |---|
 |Kusto|
     
-```kusto
+```
 print str = make_string(dynamic([75, 117, 115, 116, 111]))
 ```
 
@@ -46,7 +46,7 @@ print str = make_string(dynamic([75, 117, 115, 116, 111]))
 |---|
 |Kusto|
 
-```kusto
+```
 print str = make_string(dynamic([75, 117, 115]), 116, 111)
 ```
 
@@ -54,7 +54,7 @@ print str = make_string(dynamic([75, 117, 115]), 116, 111)
 |---|
 |Kusto|
 
-```kusto
+```
 print str = make_string(75, 10, 117, 10, 115, 10, 116, 10, 111)
 ```
 

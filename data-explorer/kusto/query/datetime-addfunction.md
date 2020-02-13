@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # datetime_add()
 
@@ -42,7 +42,7 @@ A date after a certain time/date interval has been added.
 
 **Examples**
 
-```kusto
+```
 print  year = datetime_add('year',1,make_datetime(2017,1,1)),
 quarter = datetime_add('quarter',1,make_datetime(2017,1,1)),
 month = datetime_add('month',1,make_datetime(2017,1,1)),
@@ -57,9 +57,3 @@ second = datetime_add('second',1,make_datetime(2017,1,1))
 |year|quarter|month|week|day|hour|minute|second|
 |---|---|---|---|---|---|---|---|
 |2018-01-01 00:00:00.0000000|2017-04-01 00:00:00.0000000|2017-02-01 00:00:00.0000000|2017-01-08 00:00:00.0000000|2017-01-02 00:00:00.0000000|2017-01-01 01:00:00.0000000|2017-01-01 00:01:00.0000000|2017-01-01 00:00:01.0000000|
-
-
-
-
-
-

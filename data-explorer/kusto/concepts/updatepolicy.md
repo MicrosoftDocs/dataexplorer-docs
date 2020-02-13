@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/10/2020
 ---
 # Update policy
 
@@ -43,15 +43,6 @@ Update policy behaves similarly to regular ingestion and is subject to the same
 restrictions and best practices. For example, it scales-out with the size of
 the cluster, and works more efficiently if ingestions are done in large bulks.
 
-If you don't want to retain the raw data in the source table, set a soft-delete period of 0 in the source
-table's [retention policy](retentionpolicy.md) and set the update policy as
-transactional. This will cause the source data to never get committed to the source table,
-nor would it persist as part of the ingestion operation. This will also contribute
-to overall better performance of the operation.
-
-> [!NOTE]
-> The update policy's query can't reference any table on which [Row Level Security policy](./rowlevelsecuritypolicy.md) is enabled.
-
 ## Commands that trigger the update policy
 
 Update policies take effect when data is ingested or moved to (extents are created in) a table using
@@ -59,7 +50,7 @@ any of the following commands:
 
 * [.ingest (pull)](../management/data-ingestion/ingest-from-storage.md)
 * [.ingest (inline)](../management/data-ingestion/ingest-inline.md)
-* [.set/.append/.set-or-append/.set-or-replace](../management/data-ingestion/ingest-from-query.md)
+* [.set | .append | .set-or-append | .set-or-replace](../management/data-ingestion/ingest-from-query.md)
 * [.move extents](../management/extents-commands.md#move-extents)
 * [.replace extents](../management/extents-commands.md#replace-extents)
 
@@ -68,12 +59,12 @@ any of the following commands:
 A table may have zero, one, or more update policy objects associated with it.
 Each such object is represented as a JSON property bag, with the following properties defined:
 
-|Property                      |Type    |Description                               |
-|------------------------------|----------------------------------------------------------------------------------------------------------------|
+|Property                      |Type    |Description                                                                                                                                                                                 |
+|------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |IsEnabled                     |`bool`  |States if update policy is enabled (true) or disabled (false)                                                                                                                               |
 |Source                        |`string`|Name of the table that triggers update policy to be invoked                                                                                                                                 |
 |Query                         |`string`|A Kusto CSL query that is used to produce the data for the update                                                                                                                           |
-|IsTransactional               |`bool`  |States if the update policy is transactional or not (defaults to false). Failure to run a transactional update policy result in the source table not being updated with new data as well.|
+|IsTransactional               |`bool`  |States if the update policy is transactional or not (defaults to false). Failure to run a transactional update policy result in the source table not being updated with new data as well.   |
 |PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified during the ingestion into the  source table should apply to the ones in the derived table as well.                 |
 
 > [!NOTE]
@@ -86,23 +77,35 @@ Each such object is represented as a JSON property bag, with the following prope
 > * In case update policies are defined over multiple tables in a circular manner, this is detected at runtime and the chain of updates is cut
    (meaning, data will be ingested only once to each table in the chain of affected tables).
 > * When referencing the `Source` table in the `Query` part of the policy (or in Functions referenced by the latter), make sure you **don't** use the qualified name of the table
-   (meaning, use `TableName` and not `database("DatabaseName").TableName` nor `cluster("ClusterName").database("DatabaseName").TableName`).
+   (meaning, use `TableName` and **not** `database("DatabaseName").TableName` nor `cluster("ClusterName").database("DatabaseName").TableName`).
+> * The update policy's query can't reference any table with a [Row Level Security policy](./rowlevelsecuritypolicy.md) which is enabled.
 > * A query which is run as part of an update policy does **not** have read access to tables which have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled.
 > * `PropagateIngestionProperties` only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this
-  option has no effect.
+  option has **no** effect.
 > * When the update policy is invoked as part of a `.set-or-replace` command, default behavior is that data in derived table(s) is also replaced, as it is in the source table.
 
+## Retention policy on the source table
 
+So as not to retain the raw data in the source table, you can set a soft-delete period of 0 in the source
+table's [retention policy](retentionpolicy.md), while setting the update policy as transactional.
+
+This will result with:
+* The source data not being queryable from the source table.
+* The source data not being persisted to durable storage as part of the ingestion operation.
+* Improvement in performance of the operation.
+* Reduction of resources utilized post-ingestion, for background grooming operations done on [extents](../management/extents-overview.md)
+  in the source table.
 
 ## Failures
 
-In some cases, ingestion of data into the source table succeeds, but the update policy fails during ingestion to the target table. 
+In some cases, ingestion of data into the source table succeeds, but the update policy fails during ingestion to the target table.
 
 Failures encountered while the policies are being updated can be retrieved using the
 [.show ingestion failures command](../management/ingestionfailures.md), as follows:
  
 ```
-.show ingestion failures | where FailedOn > ago(1hr) and OriginatesFromUpdatePolicy == true
+.show ingestion failures 
+| where FailedOn > ago(1hr) and OriginatesFromUpdatePolicy == true
 ```
 
 Failures are treated as follows:
@@ -147,8 +150,8 @@ the following query, and/or multiple executions of it.
 
 ```
 .show table MySourceTable extents;
-// The following line provides the extent ID for the largest and most recent not-yet-merged extent in the source table
-let extentId = $command_results | where MaxCreatedOn > ago(1hr) and MinCreatedOn == MaxCreatedOn | top 1 by MaxCreatedOn desc | project ExtentId;
+// The following line provides the extent ID for the not-yet-merged extent in the source table which has the most records
+let extentId = $command_results | where MaxCreatedOn > ago(1hr) and MinCreatedOn == MaxCreatedOn | top 1 by RowCount desc | project ExtentId;
 let MySourceTable = MySourceTable | where extent_id() == toscalar(extentId);
 MyFunction()
 ```

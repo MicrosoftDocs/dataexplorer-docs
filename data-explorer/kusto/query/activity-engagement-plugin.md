@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/20/2019
+ms.date: 02/09/2020
 ---
 # activity_engagement plugin
 
@@ -15,7 +15,7 @@ Calculates activity engagement ratio based on ID column over a sliding timeline 
 
 activity_engagement plugin can be used for calculating DAU/WAU/MAU (daily/weekly/monthly activities).
 
-```kusto
+```
 T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 ```
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/09/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -42,7 +42,7 @@ i.e. cannot come from sub-query evaluation.
 
 The next query can be run on any of the Kusto clusters.
 
-```kusto
+```
 cluster('help').database('Samples').StormEvents | count
 
 cluster('help.kusto.windows.net').database('Samples').StormEvents | count  
@@ -57,7 +57,7 @@ cluster('help.kusto.windows.net').database('Samples').StormEvents | count
 The same query as above can be rewritten to use inline function (let statement) that 
 receives a parameter `clusterName` - which is passed into the cluster() function.
 
-```kusto
+```
 let foo = (clusterName:string)
 {
     cluster(clusterName).database('Samples').StormEvents | count
@@ -74,7 +74,7 @@ foo('help')
 The same query as above can be rewritten to be used in a function that 
 receives a parameter `clusterName` - which is passed into the cluster() function.
 
-```kusto
+```
 .create function foo(clusterName:string)
 {
     cluster(clusterName).database('Samples').StormEvents | count

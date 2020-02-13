@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/14/2019
+ms.date: 02/09/2020
 ---
 # search operator
 
@@ -97,7 +97,7 @@ and views of the database in scope.
 
 ## Examples
 
-```kusto
+```
 // 1. Simple term search over all unrestricted tables and views of the database in scope
 search "billg"
 

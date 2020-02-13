@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/09/2019
+ms.date: 02/09/2020
 ---
 # Extents (data shards)
 
@@ -136,7 +136,7 @@ together, but they won't be merged with other extents. This allows the user
 to issue a command to drop extents according to their `drop-by:` tag, such as
 the following command:
 
-```kusto
+```
 .ingest ... with @'{"tags":"[\"drop-by:2016-02-17\"]"}'
 
 .drop extents <| .show table MyTable extents where tags has "drop-by:2016-02-17" 
@@ -164,7 +164,7 @@ serialized as JSON.
 
 The following example ingests data only once (the 2nd and 3rd commands will do nothing):
 
-```kusto
+```
 .ingest ... with (tags = '["ingest-by:2016-02-17"]')
 
 .ingest ... with (ingestIfNotExists = '["2016-02-17"]')

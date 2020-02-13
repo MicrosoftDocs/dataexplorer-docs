@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # trim_end()
 
@@ -30,7 +30,7 @@ Removes trailing match of the specified regular expression.
 
 Statement bellow trims *substring*  from the end of *string_to_trim*:
 
-```kusto
+```
 let string_to_trim = @"bing.com";
 let substring = ".com";
 print string_to_trim = string_to_trim,trimmed_string = trim_end(substring,string_to_trim)
@@ -42,7 +42,7 @@ print string_to_trim = string_to_trim,trimmed_string = trim_end(substring,string
 
 Next statement trims all non-word characters from the end of the string:
 
-```kusto
+```
 print str = strcat("-  ","Te st",x,@"// $")
 | extend trimmed_str = trim_end(@"[^\w]+",str)
 ```

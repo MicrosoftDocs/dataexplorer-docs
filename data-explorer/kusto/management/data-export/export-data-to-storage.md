@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/26/2020
+ms.date: 02/09/2020
 ---
 # Export data to storage
 
@@ -84,7 +84,7 @@ via the following commands:
 
 For example, after a successful completion, one can retrieve the results using:
 
-```kusto
+```
 .show operation f008dc1e-2710-47d8-8d34-0d562f5f8615 details
 ```
 
@@ -93,7 +93,7 @@ For example, after a successful completion, one can retrieve the results using:
 In this example, Kusto runs the query and then exports the first recordset produced by the query to one or more compressed CSV blobs.
 Column name labels are added as the first row for each blob.
 
-```kusto 
+``` 
 .export
   async compressed
   to csv (

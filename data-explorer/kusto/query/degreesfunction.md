@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # degrees()
 
@@ -27,7 +27,7 @@ Converts angle value in radians into value in degrees, using formula `degrees = 
 
 **Examples**
 
-```kusto
+```
 print degrees0 = degrees(pi()/4), degrees1 = degrees(pi()*1.5), degrees2 = degrees(0)
 
 ```

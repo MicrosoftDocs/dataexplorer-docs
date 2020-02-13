@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # dayofmonth()
 
 Returns the integer number representing the day number of the given month
 
-```kusto
+```
 dayofmonth(datetime(2015-12-14)) == 14
 ```
 

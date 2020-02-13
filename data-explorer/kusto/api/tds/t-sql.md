@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2019
+ms.date: 02/09/2020
 ---
 # T-SQL
 
@@ -53,7 +53,7 @@ order by DamageProperty desc
 
 Produces this output:
 
-```kusto
+```
 StormEvents
 | sort by DamageProperty desc nulls first
 | take 10

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/23/2020
+ms.date: 02/09/2020
 ---
 # dcount() (aggregation function)
 
@@ -30,7 +30,7 @@ Returns an estimate of the number of distinct values of *Expr* in the group.
 
 **Example**
 
-```kusto
+```
 PageViewLog | summarize countries=dcount(country) by continent
 ```
 
@@ -45,14 +45,14 @@ inputs may have an effect on its output).
 
 To get an accurate count of distinct values of `V` grouped by `G`:
 
-```kusto
+```
 T | summarize by V, G | summarize count() by G
 ```
 
 This calculation will require much internal memory since distinct values of `V` are multiplied by the number of distinct values of `G`;
 Therefore, it may result in memory errors or large execution times. `dcount()`provides a fast and reliable alternative:
 
-```kusto
+```
 T | summarize dcount(B) by G | count
 ```
 

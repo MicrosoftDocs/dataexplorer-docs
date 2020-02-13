@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/25/2019
+ms.date: 02/09/2020
 ---
 # split()
 
@@ -15,7 +15,7 @@ Splits a given string according to a given delimiter and returns a string array 
 
 Optionally, a specific substring can be returned if exists.
 
-```kusto
+```
 split("aaa_bbb_ccc", "_") == ["aaa","bbb","ccc"]
 ```
 
@@ -35,7 +35,7 @@ A string array that contains the substrings of the given source string that are 
 
 **Examples**
 
-```kusto
+```
 print
     split("aa_bb", "_"),           // ["aa","bb"]
     split("aaa_bbb_ccc", "_", 1),  // ["bbb"]

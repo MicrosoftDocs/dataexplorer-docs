@@ -7,13 +7,14 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/17/2019
+ms.date: 02/12/2020
 ---
 # parse operator
 
-Evaluates a string expression and parses its value into one or more calculated columns.
+Evaluates a string expression and parses its value into one or more calculated columns. For unsuccessfully parsed strings, calculated columns will have nulls.
+See [parse-where](parsewhereoperator.md) operator which filters out unsuccessfully parsed strings.
 
-```kusto
+```
 T | parse Text with "ActivityName=" name ", ActivityType=" type
 ```
 
@@ -48,7 +49,7 @@ provided to the operator.
 
 **Tips**
 
-* Use [`project`](projectoperator.md) instead, if you also want to drop or rename some columns.
+* Use [`project`](projectoperator.md) if you also want to drop or rename some columns.
 
 * Use * in the pattern in order to skip junk values (can't be used after string column)
 
@@ -62,7 +63,7 @@ provided to the operator.
   are handled internally.
   So for example, this parse statement :
   
-	```kusto
+	```
 	parse kind=regex Col with * <regex1> var1:string <regex2> var2:long
 	```
 

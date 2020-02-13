@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/17/2019
+ms.date: 02/09/2020
 ---
 # active_users_count plugin
 
@@ -18,7 +18,7 @@ The lookback period is only used to determine whether a user is considered `acti
 The aggregation itself does not include users from the lookback window (unlike [sliding_window_counts]
 (sliding-window-counts-plugin.md) in which the aggregation is over the sliding window of the lookback period).
 
-```kusto
+```
 T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, 2, 7d, dim1, dim2, dim3)
 ```
 
@@ -54,7 +54,7 @@ Output table schema is:
 
 Calculate weekly amount of distinct users that appeared in at least on 3 different days over a period of prior 8 days. Period of analysis: July 2018.
 
-```kusto
+```
 let Start = datetime(2018-07-01);
 let End = datetime(2018-07-31);
 let LookbackWindow = 8d;
@@ -75,9 +75,6 @@ let T =  datatable(User:string, Timestamp:datetime)
     "B",      datetime(2018-07-24)
 ]; 
 T | evaluate active_users_count(User, Timestamp, Start, End, LookbackWindow, Period, ActivePeriods, Bin)
-
-
-
 ```
 
 |Timestamp|dcount|

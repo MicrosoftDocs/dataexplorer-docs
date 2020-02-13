@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/09/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -39,7 +39,7 @@ cluster('help').database('Sample').StormEvents
 
 ### Use database() to access table of other database. 
 
-```kusto
+```
 database('Samples').StormEvents | count
 ```
 
@@ -52,7 +52,7 @@ database('Samples').StormEvents | count
 The same query as above can be rewritten to use inline function (let statement) that 
 receives a parameter `dbName` - which is passed into the database() function.
 
-```kusto
+```
 let foo = (dbName:string)
 {
     database(dbName).StormEvents | count
@@ -69,7 +69,7 @@ foo('help')
 The same query as above can be rewritten to be used in a function that 
 receives a parameter `dbName` - which is passed into the database() function.
 
-```kusto
+```
 .create function foo(dbName:string)
 {
     database(dbName).StormEvents | count

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/01/2019
+ms.date: 02/09/2020
 ---
 # repeat()
 
@@ -28,6 +28,6 @@ If *count* is less than zero, a null value is returned.
 
 The following example returns `[1, 1, 1]`:
 
-```kusto
+```
 T | extend r = repeat(1, 3)
 ```

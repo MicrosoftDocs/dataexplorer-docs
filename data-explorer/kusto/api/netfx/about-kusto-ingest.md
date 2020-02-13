@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/06/2020
 ---
 # Kusto Ingest Client Library
 
@@ -22,10 +22,10 @@ Kusto.Ingest takes dependencies on the following libraries and SDKs:
 Kusto ingestion methods are defined by the [IKustoIngestClient](kusto-ingest-client-reference.md#interface-ikustoingestclient) interface and allows data ingestion from Stream, IDataReader, local file(s), and Azure blob(s) in both synchronous and asynchronous modes.
 
 ## Ingest Client Flavors
-Conceptually, there are two basic flavors of Ingest client: Queued and Direct
+Conceptually, there are two basic flavors of the Ingest client: Queued and Direct.
 
 ### Queued Ingestion
-Defined by [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient), this mode limits the client code dependency on the Kusto service. Ingestion is performed by posting a Kusto ingestion message to an Azure queue, which is then acquired from Kusto Data Management (Ingestion) service. Any intermediate storage artifacts will be created by the ingest client using the resources allocated by Kusto Data Management service.
+Defined by [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient), this mode limits the client code dependency on the Kusto service. Ingestion is performed by posting a Kusto ingestion message to an Azure queue, which is then acquired from the Kusto Data Management (Ingestion) service. Any intermediate storage artifacts will be created by the ingest client using the resources allocated by Kusto Data Management service.
 
 **Advantages of the Queued mode** include (but are not limited to):
 
@@ -46,7 +46,7 @@ The following diagram outlines the Direct ingestion client interaction with Kust
 
 ![alt text](../images/direct-ingest.jpg "direct-ingest")
 
->[!NOTE]
+> [!NOTE]
 > The Direct mode is not recommended for production grade ingestion solutions.
 
 **Advantages of the Direct mode** include:

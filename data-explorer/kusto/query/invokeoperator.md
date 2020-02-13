@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/09/2020
 ---
 # invoke operator
 
 Invokes lambda that receives the source of `invoke` as tabular parameter argument.
 
-```kusto
+```
 T | invoke foo(param1, param2)
 ```
 

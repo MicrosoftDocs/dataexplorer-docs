@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/13/2020
 ---
 # Continuous data export
 
@@ -24,6 +24,8 @@ and then [create a continuous export definition](#create-or-alter-continuous-exp
 For more information, see [exporting historical data](#exporting-historical-data). 
 > * Continuous export doesn't work for data ingested using streaming ingestion. 
 > * Currently, continuous export can't be configured on a table on which [Row Level Security policy](../../concepts/rowlevelsecuritypolicy.md) is enabled.
+> * Continuous export is not supported for external tables with `impersonate` in their 
+[connection strings](../../api/connection-strings/storage.md).
  
 ## Notes
 
@@ -148,7 +150,7 @@ Returns all artifacts exported by the continuous-export in all runs. It is recom
 
 **Example:** 
 
-```kusto
+```
 .show continuous-export MyExport exported-artifacts | where Timestamp > ago(1h)
 ```
 

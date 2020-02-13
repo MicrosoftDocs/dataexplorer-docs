@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/10/2019
+ms.date: 02/09/2020
 ---
 # as operator
 
@@ -39,7 +39,7 @@ the query and binding a name through the [let statement](letstatement.md).
 
 **Examples**
 
-```kusto
+```
 // 1. In the following 2 example the union's generated TableName column will consist of 'T1' and 'T2'
 range x from 1 to 10 step 1 
 | as T1 

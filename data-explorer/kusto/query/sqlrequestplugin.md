@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/09/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -48,7 +48,7 @@ data in this manner. It's usually preferable that SQL queries will be constructe
 to return the smallest data set possible, as currently the Kusto optimizer
 does not attempt to optimize queries between Kusto and SQL.
 
-```kusto
+```
 evaluate sql_request(
   'Server=tcp:contoso.database.windows.net,1433;'
     'Authentication="Active Directory Integrated";'
@@ -62,7 +62,7 @@ The following example is identical to the previous one, except that SQL
 authentication is done by username/password. Note that for confidentiality,
 we use obfuscated strings here.
 
-```kusto
+```
 evaluate sql_request(
   'Server=tcp:contoso.database.windows.net,1433;'
     'Initial Catalog=Fabrikam;'

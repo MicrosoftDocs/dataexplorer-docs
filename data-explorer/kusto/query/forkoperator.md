@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/20/2019
+ms.date: 02/09/2020
 ---
 # fork operator
 
@@ -43,7 +43,7 @@ The input stream will be cached by materialize and then the cached expression ca
 
 **Examples**
 
-```kusto
+```
 KustoLogs
 | where Timestamp > ago(1h)
 | fork

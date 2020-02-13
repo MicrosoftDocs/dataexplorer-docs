@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/14/2019
+ms.date: 02/09/2020
 ---
 # Principals and Identity Providers
 
@@ -47,7 +47,7 @@ Kusto only supports Security Group principals (and not Distribution Group ones).
 |Explicit (UPN)  |App   |`aadapp`=*ApplicationDisplayName*`;`*TenantId*
 |Explicit (Name) |App   |`aadapp=`*ApplicationId*`;`*TenantName*
 
-```kusto
+```
 // No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
 .add database Test users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
 
@@ -69,7 +69,7 @@ When an MSA principal is configured on a Kusto resource, Kusto **will not** atte
 |-----|------|-------|
 |Live.com |User  |`msauser=`john.doe@live.com`
 
-```kusto
+```
 .add database Test users ('msauser=john.doe@live.com') 'Test user (live.com)'
 ```
 

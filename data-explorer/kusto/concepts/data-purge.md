@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/09/2020
 ---
 # Data purge
 
@@ -120,7 +120,8 @@ Purge command may be invoked in two ways for differing usage scenarios:
 1. Programmatic invocation: A single-step which is intended to be invoked by applications. Calling this command directly triggers purge execution sequence.
 
 	**Syntax**
-	 ```kusto
+	 
+	 ```
 	 .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
 	 ```
 
@@ -131,7 +132,8 @@ Purge command may be invoked in two ways for differing usage scenarios:
 	<!-- If query times-out on DM endpoint (default timeout is 10 minutes), it is recommended to use the [engine `whatif` command](#purge-whatif-command) directly againt the engine endpoint while increasing the [server timeout limit](../concepts/querylimits.md#limit-on-request-execution-time-timeout). Only after you have verified the expected results using the engine whatif command, issue the purge command via the DM endpoint using the 'noregrets' option. -->
 
 	 **Syntax**
-	 ```kusto
+	 
+	 ```
 	 // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
 	 .purge table [TableName] records in database [DatabaseName] <| [Predicate]
 
@@ -157,7 +159,8 @@ Purge command may be invoked in two ways for differing usage scenarios:
 
 1. To initiate purge in a two-step activation scenario, run step #1 of the command:
 
-	```kusto
+	
+	```
 	.purge table MyTable records in database MyDatabase <| where CustomerId in ('X', 'Y')
 	```
 
@@ -170,7 +173,8 @@ Purge command may be invoked in two ways for differing usage scenarios:
 	Validate the NumRecordsToPurge prior to running step #2. 
 2. To complete a purge in a two-step activation scenario, use the verification token returned from step #1 to run step #2:
 
-	```kusto
+	
+	```
 	.purge table MyTable records in database MyDatabase
 	with (verificationtoken='e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b')
 	<| where CustomerId in ('X', 'Y')
@@ -186,7 +190,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 
 To trigger a purge in a single-step activation scenario, run the following command:
 
-```kusto
+```
 .purge table MyTable records in database MyDatabase with (noregrets='true') <| where CustomerId in ('X', 'Y')
 ```
 
@@ -206,13 +210,13 @@ It can only be applied to in-queue requests (not yet dispatched to the engine no
 
 **Syntax**
 
-```kusto
+ ```
  .cancel purge <OperationId>
  ```
 
 **Example**
 
-```kusto
+ ```
  .cancel purge aa894210-1c60-4657-9d21-adb2887993e1
  ```
 
@@ -236,7 +240,7 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 
 `Show purges` command shows purge operation status by specifying the operation Id within the requested time period. 
 
-```kusto
+```
 .show purges <OperationId>
 .show purges [in database <DatabaseName>]
 .show purges from '<StartDate>' [in database <DatabaseName>]
@@ -256,7 +260,8 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 
 **Examples**
 
-```kusto
+
+```
 .show purges
 .show purges c9651d74-3b80-4183-90bb-bbe9e42eadc4
 .show purges from '2018-01-30 12:00'
@@ -306,14 +311,16 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 1. Programmatic invocation (single-step):
 
 	 **Syntax**
-	 ```kusto
+	 
+	 ```
 	 .purge table [TableName] in database [DatabaseName] allrecords with (noregrets='true')
 	 ```
 
 2. Human invocation (two-steps):
 
 	 **Syntax**
-	 ```kusto
+	 
+	 ```
 	 // Step #1 - retrieve a verification token (the table will not be purged until step #2 is executed)
 	 .purge table [TableName] in database [DatabaseName] allrecords
 
@@ -332,7 +339,8 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 
 1. To initiate purge in a two-step activation scenario, run step #1 of the command: 
 
-	```kusto
+	
+	```
 	.purge table MyTable in database MyDatabase allrecords
 	```
 
@@ -344,7 +352,8 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 
 1.  To complete a purge in a two-step activation scenario, use the verification token returned from step #1 to run step #2:
 
-	```kusto
+	
+	```
 	.purge table MyTable in database MyDatabase allrecords 
 	with (verificationtoken='eyJTZXJ2aWNlTmFtZSI6IkVuZ2luZS1pdHNhZ3VpIiwiRGF0YWJhc2VOYW1lIjoiQXp1cmVTdG9yYWdlTG9ncyIsIlRhYmxlTmFtZSI6IkF6dXJlU3RvcmFnZUxvZ3MiLCJQcmVkaWNhdGUiOiIgd2hlcmUgU2VydmVyTGF0ZW5jeSA9PSAyNSJ9')
 	```
@@ -361,7 +370,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 
 To trigger a purge in a single-step activation scenario, run the following command:
 
-```kusto
+```
 .purge table MyTable in database MyDatabase allrecords with (noregrets='true')
 ```
 
@@ -372,5 +381,4 @@ The output is the same as the '.show tables' command output (returned without th
 |TableName|DatabaseName|Folder|DocString
 |---|---|---|---
 |OtherTable|MyDatabase|---|---
-
 

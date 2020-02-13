@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/28/2019
+ms.date: 02/09/2020
 ---
 # funnel_sequence_completion plugin
 
 Calculates funnel of completed sequence steps within comparing different time periods.
 
-```kusto
+```
 T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, state_column, dynamic(['S1', 'S2', 'S3']), dynamic([10m, 30min, 1h]))
 ```
 

@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/21/2019
+ms.date: 02/09/2020
 ---
 # sample operator
 
 Returns up to the specified number of random rows from the input table.
 
-```kusto
+```
 T | sample 5
 ```
 
