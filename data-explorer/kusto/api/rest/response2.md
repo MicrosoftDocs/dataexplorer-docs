@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/27/2019
+ms.date: 02/11/2020
 ---
 # Query V2 HTTP response
 
@@ -168,7 +168,6 @@ Where:
       * QueryCompletionInformation
       * QueryTraceLog
       * QueryPerfLog
-      * TableOfContents
       * QueryProperties
       * QueryPlan
       * Unknown
@@ -183,6 +182,17 @@ Where:
 ```
 4. `Rows` is a two dimensional array which contains the table's data.
 
+### The meaning of tables in the response
+
+* `PrimaryResult` - The main tabular result of the query. For each [tabular expression statement](../../query/tabularexpressionstatements.md),
+one or more tables are emitted in-order, representing the results produced by the statement (there can be multiple 
+such tables due to [batches](../../query/batches.md) and [fork operators](../../query/forkoperator.md)).
+* `QueryCompletionInformation` - provides additional information regarding the execution of the query itself, such as
+ whether it completed successfully or not, and what were the resources consumed by the query (similar to the QueryStatus table 
+ in the v1 response). 
+* `QueryProperties` - provides additional values such as client visualization instructions (emitted, for example, to reflect the
+ information in the [render operator](../../query/renderoperator.md)) and [database cursor](../../management/databasecursor.md) information).
+* `QueryTraceLog` - performance trace log information (returned when setting perftrace in [client request properties](../netfx/request-properties.md)).
 
 ## DataSetCompletion
 

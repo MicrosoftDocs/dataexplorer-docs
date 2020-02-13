@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/10/2020
 ---
 # Update policy
 
@@ -86,7 +86,7 @@ Each such object is represented as a JSON property bag, with the following prope
 
 ## Retention policy on the source table
 
-In order to not retain the raw data in the source table, one can set a soft-delete period of 0 in the source
+So as not to retain the raw data in the source table, you can set a soft-delete period of 0 in the source
 table's [retention policy](retentionpolicy.md), while setting the update policy as transactional.
 
 This will result with:

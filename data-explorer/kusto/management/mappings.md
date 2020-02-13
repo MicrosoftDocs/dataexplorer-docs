@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/11/2020
 ---
 # Data mappings
 
@@ -61,7 +61,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string.
 
-* When the mapping above is [pre-created](tables.md#create-ingestion-mapping) it can be referenced in the `.ingest` control command:
+* When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
 ```
 .ingest into Table123 (@"source1", @"source2")
     with 
@@ -294,7 +294,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string.
 
-* When the mapping above is [pre-created](tables.md#create-ingestion-mapping) it can be referenced in the `.ingest` control command:
+* When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
 
 ```
 .ingest into Table123 (@"source1", @"source2")
