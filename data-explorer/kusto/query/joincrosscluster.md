@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -19,7 +19,7 @@ For general discussion on cross-cluster queries see [cross-cluster or cross-data
 
 It is possible to perform join operation on datasets residing on different clusters. For example 
 
-```
+```kusto
 T | ... | join (cluster("SomeCluster").database("SomeDB").T2 | ...) on Col1 // (1)
 
 cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster2").database("SomeDB2").T2 | ...) on Col1 // (2)
@@ -29,7 +29,7 @@ In the examples above join operation is a cross-cluster join assuming that curre
 
 Note that in the following example
 
-```
+```kusto
 cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster").database("SomeDB2").T2 | ...) on Col1 
 ```
 
@@ -49,7 +49,7 @@ If in example **(1)** it dataset produced by ```T | ...``` is much smaller than 
 
 This can be achieved by giving Kusto join remoting hint. The syntax is:
 
-```
+```kusto
 T | ... | join hint.remote=<strategy> (cluster("SomeCluster").database("SomeDB").T2 | ...) on Col1
 ```
 

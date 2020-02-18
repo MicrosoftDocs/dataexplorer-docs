@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # parse_xml()
 
@@ -81,7 +81,7 @@ and retrieves the value of the `duration` slot
 in the object, and from that it retrieves two slots, `duration.value` and
  `duration.min` (`118.0` and `110.0`, respectively).
 
-```
+```kusto
 T
 | extend d=parse_xml(context_custom_metrics) 
 | extend duration_value=d.duration.value, duration_min=d["duration"]["min"]

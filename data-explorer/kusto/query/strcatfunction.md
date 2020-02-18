@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # strcat()
 
@@ -29,7 +29,7 @@ Arguments, concatenated to a single string.
 
 **Examples**
   
-```
+   ```kusto
 print str = strcat("hello", " ", "world")
 ```
 

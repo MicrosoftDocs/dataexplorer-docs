@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # reverse()
 
@@ -29,7 +29,7 @@ The reverse order of a string value.
 
 **Examples**
 
-```
+```kusto
 print str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 | extend rstr = reverse(str)
 ```
@@ -38,7 +38,8 @@ print str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 |---|---|
 |ABCDEFGHIJKLMNOPQRSTUVWXYZ|ZYXWVUTSRQPONMLKJIHGFEDCBA|
 
-```
+
+```kusto
 print ['int'] = 12345, ['double'] = 123.45, 
 ['datetime'] = datetime(2017-10-15 12:00), ['timespan'] = 3h
 | project rint = reverse(['int']), rdouble = reverse(['double']), 
@@ -48,4 +49,8 @@ rdatetime = reverse(['datetime']), rtimespan = reverse(['timespan'])
 |rint|rdouble|rdatetime|rtimespan|
 |---|---|---|---|
 |54321|54.321|Z0000000.00:00:21T51-01-7102|00:00:30|
+
+
+
+
  

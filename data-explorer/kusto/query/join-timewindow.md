@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Joining within time window
 
@@ -66,7 +66,7 @@ We want our query to answer the following question:
 
 Semantically, the following query answers this question, albeit inefficiently:
 
-```
+```kusto
 T 
 | where EventType == 'A'
 | project SessionId, Start=Timestamp
@@ -94,7 +94,7 @@ The idea is to rewrite the query so that the `datetime` values are
 "discretized" into buckets whose size is half the size of the time window.
 We can then use Kusto's equi-join to compare those bucket IDs.
 
-```
+```kusto
 let lookupWindow = 1min;
 let lookupBin = lookupWindow / 2.0; // lookup bin = equal to 1/2 of the lookup window
 T 

@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # make_timespan()
 
 Creates a [timespan](./scalar-data-types/timespan.md) scalar value from the specified time period.
 
-```
+```kusto
 make_timespan(1,12,30,55.123) == time(1.12:30:55.123)
 ```
 
@@ -38,7 +38,7 @@ If creation is successful, result will be a [timespan](./scalar-data-types/times
  
 **Example**
 
-```
+```kusto
 print ['timespan'] = make_timespan(1,12,30,55.123)
 
 ```
@@ -46,3 +46,5 @@ print ['timespan'] = make_timespan(1,12,30,55.123)
 |timespan|
 |---|
 |1.12:30:55.1230000|
+
+

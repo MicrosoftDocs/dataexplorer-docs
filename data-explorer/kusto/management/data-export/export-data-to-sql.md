@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Export data to SQL
 
@@ -85,7 +85,7 @@ There are a number of limitations and restrictions when exporting data to a SQL 
 
 In this example, Kusto runs the query and then exports the first record set produced by the query to the `MySqlTable` table in the `MyDatabase` database in server `myserver`.
 
-``` 
+```kusto 
 .export async to sql MySqlTable
     h@"Server=tcp:myserver.database.windows.net,1433;Database=MyDatabase;Authentication=Active Directory Integrated;Connection Timeout=30;"
     <| print Id="d3b68d12-cbd3-428b-807f-2c740f561989", Name="YSO4", DateOfBirth=datetime(2017-10-15)
@@ -94,7 +94,7 @@ In this example, Kusto runs the query and then exports the first record set prod
 In this example, Kusto runs the query and then exports the first record set produced by the query to the `MySqlTable` table in the `MyDatabase` database in server `myserver`.
 If the target table doesn't exist in the target database, it's created.
 
-``` 
+```kusto 
 .export async to sql ['dbo.MySqlTable']
     h@"Server=tcp:myserver.database.windows.net,1433;Database=MyDatabase;Authentication=Active Directory Integrated;Connection Timeout=30;"
     with (createifnotexists="true", primarykey="Id")

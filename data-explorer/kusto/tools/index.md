@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/05/2019
+ms.date: 02/13/2020
 ---
 # Azure Data Explorer tools
 
@@ -39,6 +39,7 @@ ms.date: 12/05/2019
 
 * [Microsoft Flow](./flow.md) - Execute Kusto queries automatically as part of [Microsoft Flow](https://flow.microsoft.com/)
 * [Microsoft Logic App](./logicapps.md) - Execute Kusto queries automatically as part of [Microsoft Logic App](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)
+
 
 
 ## Data ingestion tools

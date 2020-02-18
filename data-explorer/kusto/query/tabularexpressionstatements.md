@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Tabular expression statements
 
@@ -32,7 +32,7 @@ current database), the first operator is `where` (which filter out records
 from its input according to some per-record predicate), and the second operator
 is `count` (which counts the number of records in its input data set):
 
-```
+```kusto
 Logs | where Timestamp > ago(1d) | count
 ```
 
@@ -40,7 +40,7 @@ In the following more complex example, the `join` operator is used to combine
 records from two input data sets: one which is a filter on the `Logs` table,
 and another which is a filter on the `Events` table.
 
-```
+```kusto
 Logs 
 | where Timestamp > ago(1d) 
 | join 

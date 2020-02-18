@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -44,7 +44,7 @@ A `datetime` value specifying the approximate time of ingestion into a table.
 
 **Example**
 
-```
+```kusto
 T 
 | extend ingestionTime = ingestion_time() | top 10 by ingestionTime
 ```

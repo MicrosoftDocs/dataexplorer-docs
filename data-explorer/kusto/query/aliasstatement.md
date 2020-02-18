@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -31,12 +31,12 @@ The alias must be defined according to the following syntax where *clustername* 
 
 **Examples**
 
-```
+```kusto
 alias database["wiki"] = cluster("https://somecluster.kusto.windows.net:443").database("somedatabase");
 database("wiki").PageViews | count 
 ```
 
-```
+```kusto
 alias database Logs = cluster("https://othercluster.kusto.windows.net:443").database("otherdatabase");
 database("Logs").Traces | count 
 ```

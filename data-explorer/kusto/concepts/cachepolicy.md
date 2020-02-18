@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Cache policy (hot and cold cache)
 
@@ -79,7 +79,7 @@ For example, in the following query all table references will use
 hotcache data only, except for the second reference to `T` which is scoped
 to all the data:
 
-```
+```kusto
 set query_datascope="hotcache";
 T | union U | join (T datascope=all | where Timestamp < ago(365d) on X
 ```

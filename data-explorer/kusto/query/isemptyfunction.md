@@ -7,14 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # isempty()
 
 Returns `true` if the argument is an empty string or is null.
     
-
-```
+```kusto
 isempty("") == true
 ```
 
@@ -36,7 +35,7 @@ Indicates whether the argument is an empty string or isnull.
 
 **Example**
 
-```
+```kusto
 T
 | where isempty(fieldName)
 | count

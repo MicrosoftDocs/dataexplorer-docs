@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # String operators
 
@@ -63,7 +63,7 @@ For faster results, if you are testing for the presence of a symbol or alphanume
 
 For example, the first of these queries runs faster:
 
-```
+```kusto
 EventLog | where continent has "North" | count;
 EventLog | where continent contains "nor" | count
 ```

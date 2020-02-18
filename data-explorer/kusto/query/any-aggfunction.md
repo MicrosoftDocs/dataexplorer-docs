@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # any() (aggregation function)
 
@@ -49,7 +49,7 @@ over a single record (per distinct group).
 
 Show Random Continent:
 
-```
+```kusto
 Continents | summarize any(Continent)
 ```
 
@@ -57,7 +57,7 @@ Continents | summarize any(Continent)
 
 Show all the details for a random record:
 
-```
+```kusto
 Continents | summarize any(*)
 ```
 
@@ -65,7 +65,7 @@ Continents | summarize any(*)
 
 Show all the details for each random continent:
 
-```
+```kusto
 Continents | summarize any(*) by Continent
 ```
 

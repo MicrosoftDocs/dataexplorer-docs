@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # endofweek()
 
@@ -30,7 +30,7 @@ A datetime representing the end of the week for the given *date* value, with the
 
 **Example**
 
-```
+```kusto
   range offset from -1 to 1 step 1
  | project weekEnd = endofweek(datetime(2017-01-01 10:10:17), offset)  
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # make_bag() (aggregation function)
 
@@ -40,7 +40,7 @@ Use the [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON ob
 
 **Examples**
 
-```
+```kusto
 let T = datatable(prop:string, value:string)
 [
     "prop01", "val_a",
@@ -59,7 +59,7 @@ T
 
 Use [bag_unpack()](bag-unpackplugin.md) plugin for transforming the bag keys in the make_bag() output into columns. 
 
-```
+```kusto
 let T = datatable(prop:string, value:string)
 [
     "prop01", "val_a",

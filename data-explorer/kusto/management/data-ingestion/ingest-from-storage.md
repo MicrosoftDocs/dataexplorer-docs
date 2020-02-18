@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # The .ingest into command (pull data from storage)
 
@@ -78,7 +78,7 @@ an Azure Storage shared access signature (SAS) which gives read access to each
 blob. Note also the use of obfuscated strings (the `h` in front of the string
 values) to ensure that the SAS is never recorded.
 
-```
+```kusto
 .ingest into table T (
     h'https://contoso.blob.core.windows.net/container/file1.csv?...',
     h'https://contoso.blob.core.windows.net/container/file2.csv?...'
@@ -90,7 +90,7 @@ The next example is for ingesting data from Azure Data Lake Storage Gen 2
 (shared key), and we use string obfuscation only for the secret part of the
 connection string.
 
-```
+```kusto
 .ingest into table T (
   'abfss://myfilesystem@contoso.dfs.core.windows.net/path/to/file1.csv;'
     h'...'
@@ -102,7 +102,7 @@ It uses the user's credentials to access ADLS (so there's no need to treat
 the storage URI as containing a secret). It also shows how to specify ingestion
 properties.
 
-```
+```kusto
 .ingest into table T ('adl://contoso.azuredatalakestore.net/Path/To/File/file1.ext;impersonate')
   with (format='csv')
 ```

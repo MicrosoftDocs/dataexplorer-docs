@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # tobool()
 
 Converts input to boolean (signed 8-bit) representation.
 
-```
+```kusto
 tobool("true") == true
 tobool("false") == false
 tobool(1) == true

@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # extend operator
 
 Create calculated columns and append them to the result set.
 
-```
+```kusto
 T | extend duration = endTime - startTime
 ```
 
@@ -46,7 +46,7 @@ A copy of the input tabular result set, such that:
 
 **Example**
 
-```
+```kusto
 Logs
 | extend
     Duration = CreatedOn - CompletedOn

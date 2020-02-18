@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # array_length()
 
@@ -27,7 +27,7 @@ The number of elements in *array*, or `null` if *array* is not an array.
 
 **Examples**
 
-```
+```kusto
 print array_length(parse_json('[1, 2, 3, "four"]')) == 4
 
 print array_length(parse_json('[8]')) == 1

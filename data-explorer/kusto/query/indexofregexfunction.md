@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # indexof_regex()
 
@@ -36,8 +36,7 @@ In case of irrelevant (less than 0) *start_index*, *occurrence* or (less than -1
 
 
 **Examples**
-
-```
+```kusto
 print
  idx1 = indexof_regex("abcabc", "a.c") // lookup found in input string
  , idx2 = indexof_regex("abcabcdefg", "a.c", 0, 9, 2)  // lookup found in input string

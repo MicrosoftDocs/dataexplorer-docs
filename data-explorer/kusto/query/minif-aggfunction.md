@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # minif() (aggregation function)
 
@@ -32,7 +32,7 @@ The minimum value of *Expr* across the group for which *Predicate* evaluates to 
 
 **Examples**
 
-```
+```kusto
 range x from 1 to 100 step 1
 | summarize minif(x, x > 50)
 ```

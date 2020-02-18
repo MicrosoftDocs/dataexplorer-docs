@@ -150,7 +150,7 @@ Returns all artifacts exported by the continuous-export in all runs. It is recom
 
 **Example:** 
 
-```
+```kusto
 .show continuous-export MyExport exported-artifacts | where Timestamp > ago(1h)
 ```
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # url_decode()
 
@@ -29,7 +29,7 @@ URL (string) in a regular representation.
 
 **Examples**
 
-```
+```kusto
 let url = @'https%3a%2f%2fwww.bing.com%2f';
 print original = url, decoded = url_decode(url)
 ```
@@ -37,3 +37,7 @@ print original = url, decoded = url_decode(url)
 |original|decoded|
 |---|---|
 |https%3a%2f%2fwww.bing.com%2f|https://www.bing.com/|
+
+
+
+ 

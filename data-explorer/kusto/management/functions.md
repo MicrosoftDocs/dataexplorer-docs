@@ -7,12 +7,10 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/13/2020
 ---
 # Stored functions management overview
-
 This section describes control commands used for creating and altering the following [user-defined functions](../query/functions/user-defined-functions.md):
-
 |Function |Description|
 |---------|-----------|
 |[.alter function](alter-function.md) |Alters an existing function and stores it inside the database metadata |

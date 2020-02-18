@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # getschema operator 
 
 Produce a table that represents a tabular schema of the input.
 
-```
+```kusto
 T | summarize MyCount=count() by Country | getschema 
 ```
 

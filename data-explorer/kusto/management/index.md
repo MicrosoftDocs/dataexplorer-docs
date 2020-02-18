@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Management (control commands) overview
 
@@ -59,7 +59,7 @@ part of the text (they can't precede the command itself).
 
 For example:
 
-```
+```kusto
 // 1. Using pipe: Count how many tables are in the database-in-scope:
 .show tables
 | count
@@ -80,7 +80,7 @@ in the following we first execute a query that produces a table with a single
 column (named `str` of type `string`) and a single row, and write it as the table
 name `MyTable` in the database in context:
 
-```
+```kusto
 .set MyTable <|
 let text="Hello, World!";
 print str=Text

@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # totimespan()
 
 Converts input  to [timespan](./scalar-data-types/timespan.md) scalar.
 
-```
+```kusto
 totimespan("0.00:01:00") == time(1min)
 ```
 

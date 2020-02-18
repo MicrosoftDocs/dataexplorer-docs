@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Batches
 
@@ -20,7 +20,7 @@ For example, the following query produces two tabular results. User agent tools
 can then display those results with the appropriate name associated with each
 (`Count of events in Florida` and `Count of events in Guam`, respectively).
 
-```
+```kusto
 StormEvents | where State == "FLORIDA" | count | as ['Count of events in Florida'];
 StormEvents | where State == "GUAM" | count | as ['Count of events in Guam']
 ```
@@ -30,7 +30,7 @@ that is shared by multiple sub-queries, such as for dashboards. If the common
 calculation is complex, it is recommended that one construct the query so that
 it'll be executed only once, using the [materialize() function](./materializefunction.md):
 
-```
+```kusto
 let m = materialize(StormEvents | summarize n=count() by State);
 m | where n > 2000;
 m | where n < 10

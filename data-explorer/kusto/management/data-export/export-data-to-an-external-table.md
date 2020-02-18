@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Export data to an external table
 
@@ -42,8 +42,7 @@ the query output schema must include a Timestamp column that matches the *Timest
 ### Non-partitioned external table example
 
 ExternalBlob is a non-partitioned external table. 
-
-```
+```kusto
 .export to table ExternalBlob <| T
 ```
 

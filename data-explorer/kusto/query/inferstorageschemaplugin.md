@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # infer_storage_schema plugin
 
 This plug-in infers schema of external data, and returns it as CSL schema string that can be used when [creating external tables](../management/externaltables.md#create-or-alter-external-table).
 
-```
+```kusto
 let options = dynamic({
   'StorageContainers': [
     h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
@@ -51,7 +51,7 @@ The `infer_storage_schema` plugin returns a single result table containing a sin
 
 **Example**
 
-```
+```kusto
 let options = dynamic({
   'StorageContainers': [
     h@'https://storageaccount.blob.core.windows.net/MovileEvents/2015;secretKey'

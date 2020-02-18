@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # project-rename operator
 
 Renames columns in the result output.
 
-```
+```kusto
 T | project-rename new_column_name = column_name
 ```
 

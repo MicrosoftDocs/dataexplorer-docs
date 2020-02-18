@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # min_of()
 
 Returns the minimum value of several evaluated numeric expressions.
 
-```
+```kusto
 min_of(10, 1, -3, 17) == -3
 ```
 

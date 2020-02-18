@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -33,7 +33,7 @@ The pattern statement is used to declare or define a pattern.
 For example, the following is a pattern statement that declares `app`
 to be a pattern:
 
-```
+```kusto
 declare pattern app;
 ```
 
@@ -42,7 +42,7 @@ tell Kusto how to resolve the pattern. As a result, any attempt to
 invoke this pattern in the query will result in a specific error
 listing all such invocations. For example:
 
-```
+```kusto
 declare pattern app;
 app("ApplicationX").StartEvents
 | join kind=inner app("ApplicationX").StopEvents on CorrelationId
@@ -65,7 +65,7 @@ out, and the corresponding tabular expression given. When Kusto then executes
 the query, it replaces each pattern invocation with the corresponding pattern
 body. For example:
 
-```
+```kusto
 declare pattern app = (applicationId:string)[eventType:string]
 {
     ("ApplicationX").["StopEvents"] = { database("AppX").Events | where EventType == "StopEvent" };
@@ -132,7 +132,7 @@ prefixing it with the fully-elaborated pattern definition.
 Kusto automatically normalizes the pattern, so for example the following are all
 invocations of the same pattern, and a single one is reported back:
 
-```
+```kusto
 declare pattern app;
 union
   app("ApplicationX").StartEvent,
@@ -149,7 +149,7 @@ to be the same.
 Kusto doesn't treat wildcards in a pattern in any special way. For example,
 in the following query:
 
-```
+```kusto
 declare pattern app;
 union app("ApplicationX").*
 | count
@@ -161,7 +161,7 @@ Kusto will report a single missing pattern invocation: `app("ApplicationX").["*"
 
 Queries over more than a single pattern invocation:
 
-```
+```kusto
 declare pattern A
 {
     // ...
@@ -182,7 +182,7 @@ union (A('a1').Text), (A('a2').Text)
 |App #2|This is a free text: 6|
 |App #2|This is a free text: 5|
 
-```
+```kusto
 declare pattern App;
 union (App('a1').Text), (App('a2').Text)
 ```
@@ -191,7 +191,7 @@ Semantic error:
 
      SEM0036: One or more pattern references were not declared. Detected pattern references: ["App('a1').['Text']","App('a2').['Text']"].
 
-```
+```kusto
 declare pattern App;
 declare pattern App = (applicationId:string)[scope:string]  
 {

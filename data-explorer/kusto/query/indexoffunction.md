@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # indexof()
 
@@ -38,8 +38,7 @@ Returns -1 if the string is not found in the input.
 In case of irrelevant (less than 0) *start_index*, *occurrence* or (less than -1) *length* parameter - returns *null*.
 
 **Examples**
-
-```
+```kusto
 print
  idx1 = indexof("abcdefg","cde")    // lookup found in input string
  , idx2 = indexof("abcdefg","cde",1,4) // lookup found in researched range 

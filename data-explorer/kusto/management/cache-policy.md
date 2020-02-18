@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Cache policy
 
@@ -23,13 +23,13 @@ commands:
 
 ## Altering the cache policy
 
-```
+```kusto
 .alter <entity_type> <database_or_table_name> policy caching hot = <timespan>
 ```
 
 Altering cache policy for multiple tables (in the same database context):
 
-```
+```kusto
 .alter tables (table_name [, ...]) policy caching hot = <timespan>
 ```
 
@@ -53,7 +53,7 @@ Cache policy:
 
 ## Deleting the cache policy
 
-```
+```kusto
 .delete <entity_type> <database_or_table_name> policy caching
 ```
 
@@ -61,30 +61,30 @@ Cache policy:
 
 Show cache policy for table `MyTable` in database `MyDatabase`:
 
-```
+```kusto
 .show table MyDatabase.MyTable policy caching 
 ```
 
 Setting cache policy of table `MyTable` (in database context) to 3 days:
 
-```
+```kusto
 .alter table MyTable policy caching hot = 3d
 ```
 
 Setting policy for multiple tables (in database context), to 3 days:
 
-```
+```kusto
 .alter tables (MyTable1, MyTable2, MyTable3) policy caching hot = 3d
 ```
 
 Deleting a policy set on a table:
 
-```
+```kusto
 .delete table MyTable policy caching
 ```
 
 Deleting a policy set on a database:
 
-```
+```kusto
 .delete database MyDatabase policy caching
 ```

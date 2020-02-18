@@ -7,14 +7,14 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # now()
 
 Returns the current UTC clock time, optionally offset by a given timespan.
 This function can be used multiple times in a statement and the clock time being referenced will be the same for all instances.
 
-```
+```kusto
 now()
 now(-2d)
 ```
@@ -37,6 +37,6 @@ The current UTC clock time as a `datetime`.
 
 Determines the interval since the event identified by the predicate:
 
-```
+```kusto
 T | where ... | extend Elapsed=now() - Timestamp
 ```

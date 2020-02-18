@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # stdevif() (aggregation function)
 
@@ -30,7 +30,7 @@ The standard deviation value of *Expr* across the group where *Predicate* evalua
  
 **Examples**
 
-```
+```kusto
 range x from 1 to 100 step 1
 | summarize stdevif(x, x%2 == 0)
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # consume operator
 
@@ -15,7 +15,7 @@ The `consume` operator consumes the tabular data stream handed to it. It is
 mostly used for triggering the query side-effect without actually returning
 the results back to the caller.
 
-```
+```kusto
 T | consume
 ```
 

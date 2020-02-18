@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # strcat_array()
 
@@ -27,8 +27,8 @@ Creates a concatenated string of array values using specified delimiter.
 Array values, concatenated to a single string.
 
 **Examples**
-
-```
+  
+```kusto
 print str = strcat_array(dynamic([1, 2, 3]), "->")
 ```
 

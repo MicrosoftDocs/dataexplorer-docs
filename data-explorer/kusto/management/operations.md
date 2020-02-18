@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Operations management
 
@@ -69,7 +69,7 @@ The result is different per type of operation and matches the schema of the oper
 The *OperationId* in this example is one returned from an asynchronous execution of one
 of the [data export](../management/data-export/index.md) commands.
 
-``` 
+```kusto 
 .export 
   async 
   to csv ( 

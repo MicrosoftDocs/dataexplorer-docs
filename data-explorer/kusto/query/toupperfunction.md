@@ -7,12 +7,12 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # toupper()
 
 Converts a string to upper case.
 
-```
+```kusto
 toupper("hello") == "HELLO"
 ```

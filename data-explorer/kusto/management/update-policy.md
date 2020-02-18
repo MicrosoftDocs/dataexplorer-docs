@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Update policy
 
@@ -38,7 +38,7 @@ with the following columns:
 
 **Example**
 
-```
+```kusto
 .show table DerivedTableX policy update 
 ```
 
@@ -84,7 +84,7 @@ command.
 
 **Example**
 
-```
+```kusto
 // Creating function that will be used for update
 .create function 
 MyUpdateFunction()
@@ -110,7 +110,7 @@ MyUpdateFunction()
   - Only newly ingested records (different in each ingestion operation) will be taken into consideration when ingesting to the derived table (in this case `DerivedTableX`).
 
 
-```
+```kusto
 // The following example will throw an error for not referencing the source table in the update policy query
 // The policy's source table is MyTableX, whereas the query only references MyOtherTable. 
 .alter table DerivedTableX policy update
@@ -149,7 +149,7 @@ command.
 
 **Example**
 
-```
+```kusto
 .alter-merge table DerivedTableX policy update 
 @'[{"IsEnabled": true, "Source": "MyTableY", "Query": "MyUpdateFunction()", "IsTransactional": false}]'  
 ``` 
@@ -171,6 +171,6 @@ command.
 
 **Example**
 
-```
+```kusto
 .delete table DerivedTableX policy update 
 ```

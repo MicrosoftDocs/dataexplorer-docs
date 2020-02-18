@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # project-away operator
 
 Select what columns in the input to exclude from the output
 
-```
+```kusto
 T | project-away price, quantity, zz*
 ```
 
@@ -63,3 +63,4 @@ print  a2='a2', b = 'b', a3='a3', a1='a1'
 |b|
 |---|
 |b|
+

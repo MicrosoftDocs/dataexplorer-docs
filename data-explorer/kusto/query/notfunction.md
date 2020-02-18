@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # not()
 
 Reverses the value of its `bool` argument.
 
-```
+```kusto
 not(false) == true
 ```
 

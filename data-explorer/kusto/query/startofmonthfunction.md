@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # startofmonth()
 
@@ -28,7 +28,7 @@ A datetime representing the start of the month for the given *date* value, with 
 
 **Example**
 
-```
+```kusto
   range offset from -1 to 1 step 1
  | project monthStart = startofmonth(datetime(2017-01-01 10:10:17), offset) 
 ```

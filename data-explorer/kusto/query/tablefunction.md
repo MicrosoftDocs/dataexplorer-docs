@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -95,7 +95,7 @@ foo('help')
 The same query as above can be rewritten to be used in a function that 
 receives a parameter `tableName` - which is passed into the table() function.
 
-```
+```kusto
 .create function foo(tableName:string)
 {
     table(tableName) | count
@@ -114,7 +114,7 @@ A parameter, which is not scalar constant string can't be passed as parameter to
 
 Below, given an example of workaround for such case.
 
-```
+```kusto
 let T1 = print x=1;
 let T2 = print x=2;
 let _choose = (_selector:string)

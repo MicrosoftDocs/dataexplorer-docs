@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # pack()
 
@@ -28,7 +28,7 @@ Alias to `pack_dictionary()` function.
 
 The following example returns `{"Level":"Information","ProcessID":1234,"Data":{"url":"www.bing.com"}}`:
 
-```
+```kusto
 pack("Level", "Information", "ProcessID", 1234, "Data", pack("url", "www.bing.com"))
 ```
 
@@ -51,8 +51,7 @@ Table MmsMessages
 |555-555-1234 |555-555-1213 | 300 | png | Pic3
 
 The following query:
-
-```
+```kusto
 SmsMessages 
 | extend Packed=pack("CharsCount", CharsCount) 
 | union withsource=TableName kind=inner 

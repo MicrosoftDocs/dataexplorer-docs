@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # isfinite()
 
@@ -33,7 +33,7 @@ A non-zero value (true) if x is finite; and zero (false) otherwise.
 
 **Example**
 
-```
+```kusto
 range x from -1 to 1 step 1
 | extend y = 0.0
 | extend div = 1.0*x/y

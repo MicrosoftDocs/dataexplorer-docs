@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # ago()
 
 Subtracts the given timespan from the current UTC clock time.
 
-```
+```kusto
 ago(1h)
 ago(1d)
 ```
@@ -39,6 +39,6 @@ for all instantiations.
 
 All rows with a timestamp in the past hour:
 
-```
+```kusto
 T | where Timestamp > ago(1h)
 ```

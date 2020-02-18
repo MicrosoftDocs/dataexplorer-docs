@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 
@@ -80,7 +80,7 @@ existing or nonexistent tables and data:
 
 Create a new table called "RecentErrors" in the current database that has the same schema as "LogsTable" and holds all the error records of the last hour:
 
-```
+```kusto
 .set RecentErrors <|
    LogsTable
    | where Level == "Error" and Timestamp > now() - time(1h)
@@ -90,7 +90,7 @@ Create a new table called "OldExtents" in the current database that has a single
 and holds the extent IDs of all extents in the database that have been created more than 30 days ago,
 based on an existing table named "MyExtents":
 
-```
+```kusto
 .set async OldExtents <| 
    MyExtents 
    | where CreatedOn < now() - time(30d) 
@@ -101,7 +101,7 @@ Append data to an existing table called "OldExtents" in the current database tha
 and holds the extent IDs of all extents in the database that have been created more than 30 days ago,
 while tagging the new extent with tags `tagA` and `tagB`, based on an existing table named "MyExtents":
 
-```
+```kusto
 .append OldExtents with(tags='["TagA","TagB"]') <| 
    MyExtents 
    | where CreatedOn < now() - time(30d) 
@@ -112,7 +112,7 @@ Append data to the "OldExtents" table in the current database (or create the tab
 while tagging the new extent with `ingest-by:myTag`. Do so only if the table doesn't already contain an extent 
 tagged with `ingest-by:myTag`, based on an existing table named "MyExtents":
 
-```
+```kusto
 .set-or-append async OldExtents with(tags='["ingest-by:myTag"]', ingestIfNotExists='["myTag"]') <| 
    MyExtents 
    | where CreatedOn < now() - time(30d) 
@@ -122,7 +122,7 @@ tagged with `ingest-by:myTag`, based on an existing table named "MyExtents":
 Replace the data in the "OldExtents" table in the current database (or create the table if it doesn't already exist), 
 while tagging the new extent with `ingest-by:myTag`.
 
-```
+```kusto
 .set-or-replace async OldExtents with(tags='["ingest-by:myTag"]', ingestIfNotExists='["myTag"]') <| 
    MyExtents 
    | where CreatedOn < now() - time(30d) 
@@ -132,7 +132,7 @@ while tagging the new extent with `ingest-by:myTag`.
 Append data to the "OldExtents" table in the current database, while setting the created extent(s) creation time
 to a specific datetime in the past:
 
-```
+```kusto
 .append async OldExtents with(creationTime='2017-02-13T11:09:36.7992775Z') <| 
    MyExtents 
    | where CreatedOn < now() - time(30d) 
