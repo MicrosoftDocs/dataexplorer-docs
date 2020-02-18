@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Getting started with Kusto
 
@@ -45,7 +45,7 @@ can use the [SQL language](../api/tds/t-sql.md), or the [Kusto query language](.
 As an example for the latter, the following query counts how many rows in the
 `Logs` table have the value of the `Level` column equals the string `Critical`:
 
-```
+```kusto
 Logs
 | where Level == "Critical"
 | count
@@ -59,7 +59,7 @@ Control commands are requests to Kusto to process and potentially modify data
 or metadata. For example, the following control command creates a new Kusto
 table with two columns, `Level` and `Text`:
 
-```
+```kusto
 .create table Logs (Level:string, Text:string)
 ```
 

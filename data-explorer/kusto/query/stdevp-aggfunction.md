@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # stdevp() (aggregation function)
 
@@ -32,7 +32,7 @@ The standard deviation value of *Expr* across the group.
  
 **Examples**
 
-```
+```kusto
 range x from 1 to 5 step 1
 | summarize make_list(x), stdevp(x)
 

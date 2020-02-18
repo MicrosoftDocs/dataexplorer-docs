@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # estimate_data_size()
 
 Returns an estimated data size in bytes of the selected columns of the tabular expression.
 
-```
+```kusto
 estimate_data_size(*)
 estimate_data_size(Col1, Col2, Col3)
 ```

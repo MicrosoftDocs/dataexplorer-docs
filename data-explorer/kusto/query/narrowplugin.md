@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # narrow plugin
 
-```
+```kusto
 T | evaluate narrow()
 ```
 
@@ -29,7 +29,7 @@ tables to be displayed comfortably without the need of horizontal scrolling.
 The following example shows an easy way to read the output of the Kusto
 `.show diagnostics` control command.
 
-```
+```kusto
 .show diagnostics
  | evaluate narrow()
 ```

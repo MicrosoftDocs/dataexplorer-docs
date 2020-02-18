@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -57,12 +57,12 @@ value according to its normal parsing rules for that type.
 
 **Examples**
 
-```
+```kusto
 declare query_parameters(UserName:string, Password:string);
 print n=UserName, p=hash(Password)
 ```
 
-```
+```kusto
 declare query_parameters(percentage:long = 90);
 T | where Likelihood > percentage
 ```

@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # binary_shift_left()
 
 Returns binary shift left operation on a pair of numbers.
 
-```
+```kusto
 binary_shift_left(x,y)	
 ```
 

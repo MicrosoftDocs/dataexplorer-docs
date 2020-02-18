@@ -7,19 +7,19 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/16/2020
 ---
 # funnel_sequence_completion plugin
 
 Calculates funnel of completed sequence steps within comparing different time periods.
 
-```
+```kusto
 T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, state_column, dynamic(['S1', 'S2', 'S3']), dynamic([10m, 30min, 1h]))
 ```
 
 **Syntax**
 
-*T* `| evaluate` `funnel_sequence_completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Step*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindow*`)`
+*T* `| evaluate` `funnel_sequence_completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Step*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindows*`)`
 
 **Arguments**
 
@@ -31,7 +31,7 @@ T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)
 * *Step*: scalar constant value of the analysis step period (bin) 
 * *StateColumn*: column reference representing the state, must be present in the source expression
 * *Sequence*: a constant dynamic array with the sequence values (values are looked up in `StateColumn`)
-* *MaxSequenceStepWindows*: scalar constant value of the max allowed timespan between the first and last sequential steps in the sequence
+* *MaxSequenceStepWindows*: scalar constant dynamic array with the values of the max allowed timespan between the first and last sequential steps in the sequence, each Window (period) in the array generates a funnel analysis result
 
 **Returns**
 
@@ -39,7 +39,7 @@ Returns a single table useful for constructing a funnel diagram for the analyzed
 
 * TimelineColumn: the analyzed time window
 * `StateColumn`: the state of the sequence.
-* Period: the next state (may be empty if there were any users which only had events for the searched sequence, but not any events that followed it). 
+* Period: the maximal period (window) allowed for completing steps in the funnel sequence measured from the first step in the sequence. Each value in *MaxSequenceStepWindows* generates a funnel analysis with a separate period. 
 * dcount: distinct count of `IdColumn` in time window that transitioned from first sequence state to the value of `StateColumn`.
 
 **Examples**

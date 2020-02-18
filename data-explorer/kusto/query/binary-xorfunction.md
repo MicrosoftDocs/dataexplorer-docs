@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # binary_xor()
 
 Returns a result of the bitwise `xor` operation of the two values.
 
-```
+```kusto
 binary_xor(x,y)
 ```
 

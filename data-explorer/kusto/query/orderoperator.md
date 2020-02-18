@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # order operator 
 
 Sort the rows of the input table into order by one or more columns.
 
-```
+```kusto
 T | order by country asc, price desc
 ```
 
@@ -34,7 +34,7 @@ T | order by country asc, price desc
 
 **Example**
 
-```
+```kusto
 Traces
 | where ActivityId == "479671d99b7b"
 | sort by Timestamp asc nulls first
@@ -44,7 +44,7 @@ All rows in table Traces that have a specific `ActivityId`, sorted by their time
 
 In order to exclude null values from the result add a filter before the call to sort:
 
-```
+```kusto
 Traces
 | where ActivityId == "479671d99b7b" and isnotnull(Timestamp)
 | sort by Timestamp asc

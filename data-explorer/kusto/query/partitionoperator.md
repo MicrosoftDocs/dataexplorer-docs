@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # partition operator
 
@@ -16,7 +16,7 @@ according to the values of the specified column, executes a sub-query over each
 sub-table, and produces a single output table that is the union of the results
 of all sub-queries. 
 
-```
+```kusto
 T | partition by Col1 ( top 10 by MaxValue )
 
 T | partition by Col1 { U | where Col2=toscalar(Col1) }
@@ -148,7 +148,7 @@ range p from 0 to N-1 step 1  //
 The following example shows how one can use the [as operator](asoperator.md) to
 give a "name" to each data partition and then reuse that name within the subquery:
 
-```
+```kusto
 T
 | partition by Dim
 (

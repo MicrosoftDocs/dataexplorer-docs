@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # strlen()
 
@@ -33,7 +33,7 @@ Each Unicode character in the string is equal to `1`, including surrogates.
 
 **Examples**
 
-```
+```kusto
 print length = strlen("hello")
 ```
 
@@ -41,7 +41,7 @@ print length = strlen("hello")
 |---|
 |5|
 
-```
+```kusto
 print length = strlen("⒦⒰⒮⒯⒪")
 ```
 

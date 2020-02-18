@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/13/2020
 ---
 # Data mappings
 
@@ -143,21 +143,6 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
- *  When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string:
-
-```
-.ingest into Table123 (@"source1", @"source2") 
-  with 
-  (
-      format = "json", 
-      ingestionMapping = 
-      "["
-        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
-        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}"
-      "]"
-  )
-```
-
 **Deprecated mapping format** 
 The previous version's mapping format allowed a different definition for each mapping, where properties could be specified without the `Properties` dictionary. The deprecated format is shown below.
 
@@ -231,20 +216,6 @@ The two alternatives below are equal:
         format="avro", 
         ingestionMappingReference = "Mapping1"
     )
-```
-* When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string: 
-
-```
-.ingest into Table123 (@"source1", @"source2") 
-  with 
-  (
-      format = "avro", 
-      ingestionMapping = 
-      "["
-        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
-        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}"
-      "]"
-  )
 ```
 
 **Deprecated mapping format**

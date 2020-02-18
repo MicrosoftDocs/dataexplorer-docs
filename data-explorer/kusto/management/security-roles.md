@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Security roles management
 
@@ -77,7 +77,7 @@ Syntax of security roles management commands:
 The following control command lists all security principals which have some
 access to the table `StormEvents` in the database:
 
-```
+```kusto
 .show table StormEvents principals
 ```
 
@@ -154,7 +154,7 @@ Where:
 
 **Example**
 
-```
+```kusto
 .add table Test admins ('aaduser=imike@fabrikam.com ')
 ```
 
@@ -190,7 +190,7 @@ Where:
 
 **Example**
 
-```
+```kusto
 .add function MyFunction admins ('aaduser=imike@fabrikam.com') 'This user should have access'
 ```
 

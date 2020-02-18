@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # column_ifexists()
 
@@ -30,7 +30,7 @@ If *columnName* exists, then the column it refers to. Otherwise - *defaultValue*
 
 **Examples**
 
-```
+```kusto
 .create function with (docstring = "Wraps a table query that allows querying the table even if columnName doesn't exist ", folder="My Functions")
 ColumnOrDefault(tableName:string, columnName:string)
 {

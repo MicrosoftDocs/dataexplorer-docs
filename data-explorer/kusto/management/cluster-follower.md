@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/18/2020
 ---
 # Cluster follower commands
 
@@ -55,7 +55,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 * The default `modification kind` for caching policies is `union`. To change the `modification kind` use the [.alter follower database caching-policies-modification-kind](#alter-follower-database-caching-policies-modification-kind) command.
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
     * [.show database policy retention](../management/retention-policy.md#show-retention-policy)
-    * [.show database details](../management/databases.md#show-databases)
+    * [.show database details](../management/show-databases.md)
     * [.show table details](show-tables-command.md)
 * Viewing the override settings on the follower database after the change is made can be done using [.show follower database](#show-follower-database)
 
@@ -69,7 +69,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 
 
-```
+```kusto
 .alter follower database MyDb policy caching hot = 7d
 ```
 
@@ -82,7 +82,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
     * [.show database policy retention](../management/retention-policy.md#show-retention-policy)
-    * [.show database details](../management/databases.md#show-databases)
+    * [.show database details](../management/show-databases.md)
     * [.show table details](show-tables-command.md)
 * Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
 
@@ -92,7 +92,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 **Example**
 
-```
+```kusto
 .delete follower database MyDB policy caching
 ```
 
@@ -108,7 +108,7 @@ It requires [DatabaseAdmin permission](../management/access-control/role-based-a
 * The default `modification kind` for such authorized principals is `none`. To change the `modification kind` use  [alter follower database principals-modification-kind](#alter-follower-database-principals-modification-kind).
 * Viewing the effective collection of principals after the change can be done using the `.show` commands:
     * [.show database principals](../management/security-roles.md#managing-database-security-roles)
-    * [.show database details](../management/databases.md#show-databases)
+    * [.show database details](../management/show-databases.md)
 * Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
 
 **Syntax**
@@ -120,11 +120,11 @@ It requires [DatabaseAdmin permission](../management/access-control/role-based-a
 
 **Example**
 
-```
+```kusto
 .add follower database MyDB viewers ('aadgroup=mygroup@microsoft.com') 'My Group'
 ```
 
-```
+```kusto
 
 ```
 
@@ -137,7 +137,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 * Viewing the effective collection of principals after the change can be done using the `.show` commands:
     * [.show database principals](../management/security-roles.md#managing-database-security-roles)
-    * [.show database details](../management/databases.md#show-databases)
+    * [.show database details](../management/show-databases.md)
 * Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
 
 **Syntax**
@@ -147,7 +147,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 **Example**
 
-```
+```kusto
 .drop follower database MyDB viewers ('aadgroup=mygroup@microsoft.com')
 ```
 
@@ -160,7 +160,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 * Viewing the effective collection of principals after the change can be done using the `.show` commands:
     * [.show database principals](../management/security-roles.md#managing-database-security-roles)
-    * [.show database details](../management/databases.md#show-databases)
+    * [.show database details](../management/show-databases.md)
 * Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
 
 **Syntax**
@@ -172,7 +172,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 **Example**
 
-```
+```kusto
 .alter follower database MyDB principals-modification-kind = union
 ```
 
@@ -185,7 +185,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 * Viewing the effective collection of database/table-level caching policies after the change can be done using the standard `.show` commands:
     * [.show tables details](show-tables-command.md)
-    * [.show database details](../management/databases.md#show-databases)
+    * [.show database details](../management/show-databases.md)
 * Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
 
 **Syntax**
@@ -196,7 +196,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 **Example**
 
-```
+```kusto
 .alter follower database MyDB caching-policies-modification-kind = union
 ```
 
@@ -215,7 +215,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
     * [.show database policy retention](../management/retention-policy.md#show-retention-policy)
-    * [.show database details](../management/databases.md#show-databases)
+    * [.show database details](../management/show-databases.md)
     * [.show table details](show-tables-command.md)
 * Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
 
@@ -233,7 +233,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 
 
-```
+```kusto
 .alter follower database MyDb tables (Table1, Table2) policy caching hot = 7d
 ```
 
@@ -246,7 +246,7 @@ Requires [DatabaseAdmin permissions](../management/access-control/role-based-aut
 
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
     * [.show database policy retention](../management/retention-policy.md#show-retention-policy)
-    * [.show database details](../management/databases.md#show-databases)
+    * [.show database details](../management/show-databases.md)
     * [.show table details](show-tables-command.md)
 * Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
 
@@ -258,7 +258,7 @@ Requires [DatabaseAdmin permissions](../management/access-control/role-based-aut
 
 **Example**
 
-```
+```kusto
 .delete follower database MyDB tables (Table1, Table2) policy caching
 ```
 
@@ -298,7 +298,7 @@ In this example:
 
 1. See the current configuration according to which `MyDatabase` is being followed on `MyFollowerCluster`:
 
-```
+```kusto
 .show follower database MyDatabase
 | evaluate narrow() // just for presentation purposes
 ```
@@ -318,7 +318,7 @@ In this example:
 
 Replace the collection of authorized principals for `MyDatabase` on `MyFollowerCluster` with a collection that includes only one AAD user as the database admin, and one AAD user as a database viewer:
 
-```
+```kusto
 .add follower database MyDatabase admins ('aaduser=jack@contoso.com')
 
 .add follower database MyDatabase viewers ('aaduser=jill@contoso.com')
@@ -328,7 +328,7 @@ Replace the collection of authorized principals for `MyDatabase` on `MyFollowerC
 
 Only those two specific principals are authorized to access `MyDatabase` on `MyFollowerCluster`
 
-```
+```kusto
 .show database MyDatabase principals
 ```
 
@@ -337,7 +337,7 @@ Only those two specific principals are authorized to access `MyDatabase` on `MyF
 | Database MyDatabase Admin  | AAD User      | Jack Kusto    (upn: jack@contoso.com)       | 12345678-abcd-efef-1234-350bf486087b | aaduser=87654321-abcd-efef-1234-350bf486087b;55555555-4444-3333-2222-2d7cd011db47 |       |
 | Database MyDatabase Viewer | AAD User      | Jill Kusto    (upn: jack@contoso.com)       | abcdefab-abcd-efef-1234-350bf486087b | aaduser=54321789-abcd-efef-1234-350bf486087b;55555555-4444-3333-2222-2d7cd011db47 |       |
 
-```
+```kusto
 .show follower database MyDatabase
 | mv-expand parse_json(AuthorizedPrincipalsOverride)
 | project AuthorizedPrincipalsOverride.Principal.FullyQualifiedName
@@ -352,7 +352,7 @@ Only those two specific principals are authorized to access `MyDatabase` on `MyF
 
 Replace the collection of database and table-level caching policies for `MyDatabase` on `MyFollowerCluster` by setting all tables to *not* have their data cached, excluding two specific tables - `MyTable1`, `MyTable2` - that will have their data cached for periods of `1d` and `3d`, respectively:
 
-```
+```kusto
 .alter follower database MyDatabase policy caching hot = 0d
 
 .alter follower database MyDatabase table MyTable1 policy caching hot = 1d
@@ -364,7 +364,7 @@ Replace the collection of database and table-level caching policies for `MyDatab
 
 Only those two specific tables have data cached, and the rest of the tables have a hot data period of `0d`:
 
-```
+```kusto
 .show tables details
 | summarize TableNames = make_list(TableName) by CachingPolicy
 ```
@@ -374,7 +374,7 @@ Only those two specific tables have data cached, and the rest of the tables have
 | {"DataHotSpan":{"Value":"3.00:00:00"},"IndexHotSpan":{"Value":"3.00:00:00"}} | ["MyTable2"]                |
 | {"DataHotSpan":{"Value":"0.00:00:00"},"IndexHotSpan":{"Value":"0.00:00:00"}} | ["MyTable3",...,"MyTableN"] |
 
-```
+```kusto
 .show follower database MyDatabase
 | mv-expand parse_json(TableMetadataOverrides)
 | project TableMetadataOverrides
@@ -389,7 +389,7 @@ Only those two specific tables have data cached, and the rest of the tables have
 
 See the current configuration where `MyDatabase` is being followed on `MyFollowerCluster`:
 
-```
+```kusto
 .show follower database MyDatabase
 | evaluate narrow() // just for presentation purposes
 ```

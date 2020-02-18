@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # anyif() (aggregation function)
 
@@ -44,7 +44,7 @@ return a non-null/non-empty value, if such value is present.
 
 Show random continent which has a population from 300 million to 600 million:
 
-```
+```kusto
 Continents | summarize anyif(Continent, Population between (300000000 .. 600000000))
 ```
 

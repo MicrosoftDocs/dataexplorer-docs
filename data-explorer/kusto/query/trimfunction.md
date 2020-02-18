@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # trim()
 
@@ -30,7 +30,7 @@ Removes all leading and trailing matches of the specified regular expression.
 
 Statement bellow trims *substring*  from the start and the end of the *string_to_trim*:
 
-```
+```kusto
 let string_to_trim = @"--https://bing.com--";
 let substring = "--";
 print string_to_trim = string_to_trim, trimmed_string = trim(substring,string_to_trim)
@@ -42,7 +42,7 @@ print string_to_trim = string_to_trim, trimmed_string = trim(substring,string_to
 
 Next statement trims all non-word characters from start and end of the string:
 
-```
+```kusto
 range x from 1 to 5 step 1
 | project str = strcat("-  ","Te st",x,@"// $")
 | extend trimmed_str = trim(@"[^\w]+",str)
@@ -55,3 +55,6 @@ range x from 1 to 5 step 1
 |-  Te st3// $|Te st3|
 |-  Te st4// $|Te st4|
 |-  Te st5// $|Te st5|
+
+
+ 

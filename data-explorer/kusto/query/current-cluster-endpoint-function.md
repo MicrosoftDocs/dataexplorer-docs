@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # current_cluster_endpoint()
 
@@ -24,6 +24,6 @@ as a value of type `string`.
 
 **Example**
 
-```
+```kusto
 print strcat("This query executed on: ", current_cluster_endpoint())
 ```

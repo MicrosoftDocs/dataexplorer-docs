@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Sharding policy management
 
 ## show policy
 
-```
+```kusto
 .show table [table_name] policy sharding
 
 .show table * policy sharding
@@ -37,21 +37,21 @@ The following examples return the updated extents sharding policy for the entity
 
 #### Setting all properties of the policy explicitly at table level
 
-```
+```kusto
 .alter table [table_name] policy sharding 
 @'{ "MaxRowCount": 750000, "MaxExtentSizeInMb": 1024, "MaxOriginalSizeInMb": 2048}'
 ```
 
 #### Setting all properties of the policy explicitly at database level
 
-```
+```kusto
 .alter database [database_name] policy sharding
 @'{ "MaxRowCount": 750000, "MaxExtentSizeInMb": 1024, "MaxOriginalSizeInMb": 2048}'
 ```
 
 #### Setting the *default* sharding policy at database level
 
-```
+```kusto
 .alter database [database_name] policy sharding @'{}'
 ```
 
@@ -59,7 +59,7 @@ The following examples return the updated extents sharding policy for the entity
 
 Keep all other properties as-is.
 
-```
+```kusto
 .alter-merge database [database_name] policy sharding
 @'{ "MaxExtentSizeInMb": 1024}'
 ```
@@ -68,14 +68,14 @@ Keep all other properties as-is.
 
 Keep all other properties as-is
 
-```
+```kusto
 .alter-merge table [table_name] policy sharding
 @'{ "MaxRowCount": 750000}'
 ```
 
 ## delete policy
 
-```
+```kusto
 .delete table [table_name] policy sharding
 
 .delete database [database_name] policy sharding

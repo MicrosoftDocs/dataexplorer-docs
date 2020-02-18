@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Numerical operators
 
@@ -38,7 +38,7 @@ Thus, the modulo of two numbers, *N* % *D*, is such that:
 
 For example, the following query:
 
-```
+```kusto
 print plusPlus = 14 % 12, minusPlus = -14 % 12, plusMinus = 14 % -12, minusMinus = -14 % -12
 ```
 

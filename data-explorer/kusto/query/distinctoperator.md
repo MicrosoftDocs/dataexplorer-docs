@@ -7,20 +7,19 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # distinct operator
 
 Produces a table with the distinct combination of the provided columns of the input table. 
 
-```
+```kusto
 T | distinct Column1, Column2
 ```
 
 Produces a table with the distinct combination of all columns in the input table.
 
-
-```
+```kusto
 T | distinct *
 ```
 
@@ -28,8 +27,7 @@ T | distinct *
 
 Shows the distinct combination of fruit and price.
 
-
-```
+```kusto
 Table | distinct fruit, price
 ```
 

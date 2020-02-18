@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # isutf8()
 
 Returns `true` if the argument is a valid utf8 string.
-
-```
+    
+```kusto
 isutf8("some string") == true
 ```
 
@@ -26,7 +26,8 @@ isutf8("some string") == true
 Indicates whether the argument is a valid utf8 string.
 
 **Example**
-```
+
+```kusto
 T
 | where isutf8(fieldName)
 | count

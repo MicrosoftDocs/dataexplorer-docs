@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # format_bytes()
 
 Formats a number as a string representing data size in bytes.
 
-```
+```kusto
 format_bytes(1024) == '1 KB'"
 ```
 

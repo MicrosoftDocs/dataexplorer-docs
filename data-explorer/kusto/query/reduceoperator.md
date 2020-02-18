@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # reduce operator
 
 Groups a set of strings together based on values similarity.
 
-```
+```kusto
 T | reduce by LogMessage with threshold=0.1
 ```
 
@@ -72,7 +72,7 @@ range x from 1 to 1000 step 1
 The following example shows how one might apply the `reduce` operator to a "sanitized"
 input, in which GUIDs in the column being reduced are replaced prior to reducing
 
-```
+```kusto
 // Start with a few records from the Trace table.
 Trace | take 10000
 // We will reduce the Text column which includes random GUIDs.

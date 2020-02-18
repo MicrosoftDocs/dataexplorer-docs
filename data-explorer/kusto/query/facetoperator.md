@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # facet operator
 
@@ -30,7 +30,7 @@ Multiple tables: one for the `with` clause, and one for each column.
 
 **Example**
 
-```
+```kusto
 MyTable 
 | facet by city, eventType 
     with (where timestamp > ago(7d) | take 1000)

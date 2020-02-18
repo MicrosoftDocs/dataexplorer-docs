@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # bin()
 
@@ -33,7 +33,7 @@ Alias to `floor()` function.
 
 The nearest multiple of *roundTo* below *value*.  
  
-```
+```kusto
 (toint((value/roundTo))) * roundTo`
 ```
 
@@ -49,6 +49,6 @@ Expression | Result
 The following expression calculates a histogram of durations,
 with a bucket size of 1 second:
 
-```
+```kusto
 T | summarize Hits=count() by bin(Duration, 1s)
 ```

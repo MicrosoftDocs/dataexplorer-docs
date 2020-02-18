@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # top operator
 
 Returns the first *N* records sorted by the specified columns.
 
-```
+```kusto
 T | top 5 by Name desc nulls last
 ```
 

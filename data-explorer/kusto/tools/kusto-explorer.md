@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # Kusto.Explorer tool
 
@@ -277,7 +277,7 @@ that instructs Kusto.Explorer to connect to the cluster/database whose data is b
 queries by the script is possible by using the following syntax (note that,
 as usual, you'll have to run each line using `F5` or similar):
 
-```
+```kusto
 #connect cluster('help').database('Samples')
 
 StormEvents | count

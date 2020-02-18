@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # datetime_diff()
 
@@ -42,7 +42,7 @@ An integer, which represents amount of `periods` in the result of subtraction (`
 
 **Examples**
 
-```
+```kusto
 print
 year = datetime_diff('year',datetime(2017-01-01),datetime(2000-12-31)),
 quarter = datetime_diff('quarter',datetime(2017-07-01),datetime(2017-03-30)),

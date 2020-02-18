@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 02/13/2020
 ---
 # Update policy
 
@@ -103,7 +103,7 @@ In some cases, ingestion of data into the source table succeeds, but the update 
 Failures encountered while the policies are being updated can be retrieved using the
 [.show ingestion failures command](../management/ingestionfailures.md), as follows:
  
-```
+```kusto
 .show ingestion failures 
 | where FailedOn > ago(1hr) and OriginatesFromUpdatePolicy == true
 ```
@@ -148,7 +148,7 @@ The following example assumes:
 Using [.show queries](../management/queries.md), you can evaluate resource usage (CPU, memory, etc.) of
 the following query, and/or multiple executions of it.
 
-```
+```kusto
 .show table MySourceTable extents;
 // The following line provides the extent ID for the not-yet-merged extent in the source table which has the most records
 let extentId = $command_results | where MaxCreatedOn > ago(1hr) and MinCreatedOn == MaxCreatedOn | top 1 by RowCount desc | project ExtentId;

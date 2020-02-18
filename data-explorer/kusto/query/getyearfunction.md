@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/13/2020
 ---
 # getyear()
 
@@ -15,7 +15,7 @@ Returns the year part of the `datetime` argument.
 
 **Example**
 
-```
+```kusto
 T
 | extend year = getyear(datetime(2015-10-12))
 // year == 2015
