@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/03/2020
 ---
 # geo_distance_2points()
 
@@ -44,16 +44,6 @@ print distance_in_meters = geo_distance_2points(-122.407628, 47.578557, -118.275
 | distance_in_meters |
 |--------------------|
 | 1546754.35197381   |
-
-Here is an approximation of shortest path from Seattle to London. The line consists of coordinates along the LineString and within 500 meters from it.
-![Seattle to London LineString](./images/queries/geo/line_seattle_london.png)
-```kusto
-range i from 1 to 1000000 step 1
-| project lng = rand() * real(-122), lat = rand() * 90
-| where lng between(real(-122) .. 0) and lat between(47 .. 90)
-| where geo_distance_point_to_line(lng,lat,dynamic({"type":"LineString","coordinates":[[-122,47],[0,51]]})) < 500
-| render scatterchart with (kind=map) // map rendering available in Kusto Explorer desktop
-```
 
 Here is an approximation of shortest path from Seattle to London. The line consists of coordinates along the LineString and within 500 meters from it.
 ![Seattle to London LineString](./images/queries/geo/line_seattle_london.png)
