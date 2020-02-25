@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/24/2020
 ---
 # Extents (data shards)
 
@@ -48,8 +48,8 @@ compression and indexing.
 
 To maintain query efficiency, smaller extents are merged into larger extents.
 This is performed automatically by Kusto, as a background process, according
-to the configured [merge policy](../concepts/mergepolicy.md) and
-[sharding policy](../concepts/shardingpolicy.md).
+to the configured [merge policy](mergepolicy.md) and
+[sharding policy](shardingpolicy.md).
 Merging extents together reduces the management
 overhead of having a large number of extents to track, but more importantly,
 it allows Kusto to optimize its indexes and improve compression. Extent

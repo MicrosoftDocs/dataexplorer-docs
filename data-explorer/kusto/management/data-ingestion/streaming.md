@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ---
 # Streaming ingestion (Preview)
 
@@ -40,7 +40,7 @@ Streaming ingestion doesn't currently support or supports partially the followin
 
 * [Data mapping](../../management/mappings.md). Only [pre-created](../../management/create-ingestion-mapping-command.md) data mappings are supported.
 
-* [Update policy](../../concepts/updatepolicy.md). The update policy can reference only the newly-ingested data
+* [Update policy](../../management/updatepolicy.md). The update policy can reference only the newly-ingested data
   in the source table and not any other data or tables in the database.
 
 * [Extent tags](../../management/extents-overview.md#extent-tagging). Extent tags cannot be set on the streaming ingestion data.

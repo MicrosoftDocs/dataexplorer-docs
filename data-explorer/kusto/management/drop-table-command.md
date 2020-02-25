@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/19/2020
 ---
 # .drop table and .drop tables
 
@@ -18,7 +18,7 @@ Requires [table admin permission](../management/access-control/role-based-author
 > [!NOTE]
 > The `.drop` `table` command only soft deletes the data (i.e. data cannot be queried,
 but is still recoverable from persistent storage). The underlying storage artifacts are hard-deleted
-according to the `recoverability` property in the [retention policy](../concepts/retentionpolicy.md)
+according to the `recoverability` property in the [retention policy](../management/retentionpolicy.md)
 that was in effect at the time the data was ingested into the table.
 
 **Syntax**

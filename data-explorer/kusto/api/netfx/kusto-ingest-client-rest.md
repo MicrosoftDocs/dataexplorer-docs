@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/19/2020
 ---
 # HowTo Data Ingestion without Kusto.Ingest Library
 
@@ -342,5 +342,5 @@ The following table message that Kusto Data Management service expects to read f
 |ErrorCode |Kusto error code (see all the error codes [here](kusto-ingest-client-errors.md#ingestion-error-codes)) |
 |FailureStatus |Indicates whether the failure is permanent or transient |
 |RootActivityId |Kusto correlation identifier (GUID) that can be used to track the operation on the service side |
-|OriginatesFromUpdatePolicy |Indicates whether the failure was caused by an errorneous [transactional update policy](../../concepts/updatepolicy.md) |
+|OriginatesFromUpdatePolicy |Indicates whether the failure was caused by an errorneous [transactional update policy](../../management/updatepolicy.md) |
 |ShouldRetry | Indicates whether the ingestion may succeed if retried as is |

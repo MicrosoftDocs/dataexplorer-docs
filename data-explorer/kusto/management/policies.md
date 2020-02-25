@@ -7,8 +7,8 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/19/2020
 ---
 # Policies
 
-This section contains references to control commands that are helpful for exploring, creating, and altering various policies.
+This section contains descriptions of policies and references to control commands that are helpful for exploring, creating, and altering various them.

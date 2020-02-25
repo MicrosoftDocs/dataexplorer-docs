@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -18,7 +18,7 @@ The `$IngestionTime` column is automatically defined when the table's
 
 ::: zone pivot="azuredataexplorer"
 
-[IngestionTime policy](../concepts/ingestiontimepolicy.md) is set (enabled).
+[IngestionTime policy](../management/ingestiontimepolicy.md) is set (enabled).
 
 ::: zone-end
 

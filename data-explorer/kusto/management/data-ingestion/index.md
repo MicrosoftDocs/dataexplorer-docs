@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/06/2020
+ms.date: 02/19/2020
 ---
 # Data ingestion
 
@@ -144,7 +144,7 @@ You can add zero or more properties to the Ingestion command after the `with` ke
   For example: `with (persistDetails=true)`.
 
 * `policy_ingestiontime`: A Boolean value that, if specified, describes whether
-  to enable the [Ingestion Time Policy](../../concepts/ingestiontimepolicy.md)
+  to enable the [Ingestion Time Policy](../../management/ingestiontimepolicy.md)
   on a table that is created by this command. (The default is `true`.)
   For example: `with (policy_ingestiontime=false)`.
 

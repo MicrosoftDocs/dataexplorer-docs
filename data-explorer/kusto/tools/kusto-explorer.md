@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ---
 # Kusto.Explorer tool
 
@@ -82,7 +82,7 @@ Home Tab accumulates most recently used functionality, splitted by menus:
 |Mode: Query | Switches Query Window into a [script mode](#query-mode): commands can be loaded and saved as scripts (default)|
 |Mode: Search| Single query mode: each command being entered is processed immediately and presents a result in the Result Window|
 |Mode: Search++|Allows searching for a term using Search syntax across one or more tables. See more at using [Search++ Mode](kusto-explorer.md#search-mode)|
-|Caching scope: Hot Data| Execute queries only on [hot data cache](../concepts/cachepolicy.md)|
+|Caching scope: Hot Data| Execute queries only on [hot data cache](../management/cachepolicy.md)|
 |Caching scope: All Data| Execute queries on all available data (default)|
 |DateTime Column| Name of column which may be used for time pre-filter|
 |Time Filter| Value of time pre-filter|

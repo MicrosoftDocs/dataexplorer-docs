@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/24/2020
 ---
 # Continuous data export
 
@@ -23,7 +23,7 @@ and then [create a continuous export definition](#create-or-alter-continuous-exp
 > * Kusto doesn't support (as part of continuous export) for exporting historical records ingested before continuous export creation. Historical records can be exported separately using the (non-continuous) [export command](export-data-to-an-external-table.md). 
 For more information, see [exporting historical data](#exporting-historical-data). 
 > * Continuous export doesn't work for data ingested using streaming ingestion. 
-> * Currently, continuous export can't be configured on a table on which [Row Level Security policy](../../concepts/rowlevelsecuritypolicy.md) is enabled.
+> * Currently, continuous export can't be configured on a table on which [Row Level Security policy](../../management/rowlevelsecuritypolicy.md) is enabled.
 > * Continuous export is not supported for external tables with `impersonate` in their 
 [connection strings](../../api/connection-strings/storage.md).
  
@@ -38,7 +38,7 @@ For more information, see [exporting historical data](#exporting-historical-data
 *does* guarantee no duplications when using the show exported-artifacts command to read the exported artifacts. 
 * Continuous export runs according to the time period configured for it. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. 
 Continuous export *isn't* designed for constantly streaming data out of Kusto. It runs in a distributed mode, where all nodes export concurrently. So if the range of data queried by each run is small, the output of the continuous export would be many small artifacts (the number depends on the number of nodes in the cluster). 
-* The number of export operations that can run concurrently is limited by the cluster's data export capacity, which is 75% of the number of working nodes in the cluster (see [throttling](../../concepts/capacitypolicy.md#throttling)). 
+* The number of export operations that can run concurrently is limited by the cluster's data export capacity, which is 75% of the number of working nodes in the cluster (see [throttling](../../management/capacitypolicy.md#throttling)). 
 If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind. 
  
 * By default, all tables referenced in the export query are assumed to be [fact tables](https://en.wikipedia.org/wiki/Fact_table). 

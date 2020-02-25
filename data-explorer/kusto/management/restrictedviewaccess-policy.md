@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/24/2020
 ---
 # RestrictedViewAccess policy
 
-The *RestrictedViewAccess* policy is documented [here](../concepts/restrictedviewaccesspolicy.md).
+The *RestrictedViewAccess* policy is documented [here](../management/restrictedviewaccesspolicy.md).
 
 Control commands for enabling or disabling the policy on table(s) in the database are the following:
 

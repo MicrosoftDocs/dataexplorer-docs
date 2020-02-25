@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/24/2020
 ---
 # RowOrder policy
 
-This article describes control commands used for creating and altering [row order policy](../concepts/roworderpolicy.md).
+This article describes control commands used for creating and altering [row order policy](../management/roworderpolicy.md).
 
 ## Show RowOrder policy
 

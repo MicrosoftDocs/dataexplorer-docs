@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/24/2019
+ms.date: 02/24/2020
 ---
 # Kusto.WebExplorer
 

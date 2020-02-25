@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 02/24/2020
 ---
 # Data purge
 
@@ -102,10 +102,10 @@ The purge request queue size must be monitored, and kept within adequate limits 
 
 To reduce purge execution time:
 * Decrease the amount of purged data by following [Purge guidelines](#purge-guidelines)
-* Adjust the [caching policy](../concepts/cachepolicy.md) since purge takes longer on cold data.
+* Adjust the [caching policy](../management/cachepolicy.md) since purge takes longer on cold data.
 * Scale out the cluster
 
-* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../concepts/capacitypolicy.md#extents-purge-rebuild-capacity). Changing this parameter requires opening a [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacitypolicy.md#extents-purge-rebuild-capacity). Changing this parameter requires opening a [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 
 ## Trigger the purge process
 

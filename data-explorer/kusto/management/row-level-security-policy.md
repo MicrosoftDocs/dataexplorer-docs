@@ -7,15 +7,15 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2020
+ms.date: 02/24/2020
 ---
 # RowLevelSecurity policy
 
-This article describes commands used for configuring a [row_level_security policy](../concepts/rowlevelsecuritypolicy.md) for database tables.
+This article describes commands used for configuring a [row_level_security policy](rowlevelsecuritypolicy.md) for database tables.
 
 ## Displaying the policy
 
-Display the policy with the following command:
+To display the policy, use the following command:
 
 ```
 .show table <table_name> policy row_level_security

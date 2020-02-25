@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ---
 # Update policy
 
@@ -59,8 +59,8 @@ any of the following commands:
 A table may have zero, one, or more update policy objects associated with it.
 Each such object is represented as a JSON property bag, with the following properties defined:
 
-|Property                      |Type    |Description                                                                                                                                                                                 |
-|------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Property |Type |Description  |
+|---------|---------|----------------|
 |IsEnabled                     |`bool`  |States if update policy is enabled (true) or disabled (false)                                                                                                                               |
 |Source                        |`string`|Name of the table that triggers update policy to be invoked                                                                                                                                 |
 |Query                         |`string`|A Kusto CSL query that is used to produce the data for the update                                                                                                                           |

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/24/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -15,7 +15,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The R plugin runs a user-defined-function (UDF) using an R script. The R script gets tabular data as its input, and is expected to produce a tabular output.
+The R plugin runs a user-defined-function (UDF) using an R script. The R script gets tabular data as its input, and is expected to produce tabular output.
 The plugin's runtime is hosted in  a sandbox, an isolated and secure environment,  running on the cluster's nodes.
 
 ### Syntax
@@ -39,7 +39,7 @@ The plugin's runtime is hosted in  a sandbox, an isolated and secure environment
 
 ### Reserved R variables
 
-The following variables are reserved for interaction between Kusto query language and the R code:
+The following variables are reserved for interaction between Kusto Query Language and the R code:
 
 * `df`: The input tabular data (the values of `T` above), as an R DataFrame.
 * `kargs`: The value of the *script_parameters* argument, as an R dictionary.
@@ -88,11 +88,11 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 ### Performance tips
 
 * Reduce the plugin's input data set to the minimum amount required (columns/rows).
-    * Use filters on the source data set, when possible, using Kusto's query language.
+    * Use filters on the source data set, when possible, using the Kusto Query Language.
     * To perform a calculation on a subset of the source columns, project only those column before invoking the plugin.
 * Use `hint.distribution = per_node` whenever the logic in your script is distributable.
     * You can also use the [partition operator](partitionoperator.md) for partitioning the input data set.
-* Use Kusto's query language, whenever possible, to implement the logic of your R script.
+* Whenever possible, use the Kusto Query Language to implement the logic of your R script.
 
     For example:
 
@@ -112,7 +112,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 
 * To avoid conflicts between Kusto string delimiters and R's ones, we recommend using single quote characters (`'`) for Kusto string 
   literals in Kusto queries, and double quote characters (`"`) for R string literals in R scripts.
-* Use [externaldata operator](externaldata-operator.md) to obtain the content of
+* Use the [externaldata operator](externaldata-operator.md) to obtain the content of
   a script that you've stored in an external location, such as Azure blob storage, a public GitHub repository, etc.
   
   For example:

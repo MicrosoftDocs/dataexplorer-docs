@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ---
 # IngestionBatching policy
 
-The [ingestionBatching policy](../concepts/batchingpolicy.md) is a policy object that determines
+The [ingestionBatching policy](batchingpolicy.md) is a policy object that determines
 when data aggregation should stop during data ingestion according to the specified settings.
 
 The policy can be set to `null`, in which case the default values are used, setting

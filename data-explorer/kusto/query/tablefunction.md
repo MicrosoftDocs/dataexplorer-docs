@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -34,7 +34,7 @@ table('StormEvent')
 
 * *DataScope*: An optional parameter of type `string` that can be used to restrict
   the table reference to data according to how this data falls under the table's
-  effective [cache policy](../concepts/cachepolicy.md). If used, the actual argument
+  effective [cache policy](../management/cachepolicy.md). If used, the actual argument
   must be a constant `string` expression having one of the following possible values:
 
     - `"hotcache"`: Only data that is categorized as hot cache will be referenced.

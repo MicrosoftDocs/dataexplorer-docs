@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/19/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -128,7 +128,7 @@ Kusto limits are reached with datasets that are too large, where you need to run
 
 ::: zone pivot="azuredataexplorer"
 
-To solve this problem, newly added data may be added to a temp table as hll or tdigest values using [`hll()`](hll-aggfunction.md) when the required operation is dcount or [`tdigest()`](tdigest-aggfunction.md) when the required operation is percentile using [`set/append`](../management/data-ingestion/index.md) or [`update policy`](../concepts/updatepolicy.md), In this case, the intermediate results of dcount or tdigest are saved into another dataset, which should be smaller than the target big one.
+To solve this problem, newly added data may be added to a temp table as hll or tdigest values using [`hll()`](hll-aggfunction.md) when the required operation is dcount or [`tdigest()`](tdigest-aggfunction.md) when the required operation is percentile using [`set/append`](../management/data-ingestion/index.md) or [`update policy`](../management/updatepolicy.md), In this case, the intermediate results of dcount or tdigest are saved into another dataset, which should be smaller than the target big one.
 
 ::: zone-end
 

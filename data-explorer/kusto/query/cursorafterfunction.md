@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/19/2020
 zone_pivot_group_filename: kusto/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -37,7 +37,7 @@ See [database cursors](../management/databasecursor.md) for additional
 details on database cursors.
 
 This function can only be invoked on records of a table which has the
-[IngestionTime policy](../concepts/ingestiontimepolicy.md) enabled.
+[IngestionTime policy](../management/ingestiontimepolicy.md) enabled.
 
 ::: zone-end
 

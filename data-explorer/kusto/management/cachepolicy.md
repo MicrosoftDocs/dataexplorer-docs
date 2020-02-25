@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ---
 # Cache policy (hot and cold cache)
 
@@ -40,7 +40,7 @@ The main implications of setting the hot cache policy are:
 * **Performance** Data can be queried faster when it's in local SSD. This is particularly
   true for range queries, i.e. queries that scan large quantities of data.  
 
-[Control commands](../management/cache-policy.md) enable administrators to manage the cache policy.
+[Control commands](cache-policy.md) enable administrators to manage the cache policy.
 
 ## How the cache policy gets applied
 

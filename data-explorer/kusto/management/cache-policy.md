@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ---
 # Cache policy
 
-This article describes commands used for creation and altering [cache policy](../concepts/cachepolicy.md) 
+This article describes commands used for creation and altering [cache policy](cachepolicy.md) 
 
 ## Displaying the cache policy
 

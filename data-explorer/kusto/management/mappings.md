@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/20/2020
 ---
 # Data mappings
 
@@ -86,8 +86,8 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
-**Deprecated mapping format** 
-A mapping format that allowed a different definition for each mapping, where properties could be specified without the `Properties` dictionary. The deprecated format is shown below.
+**Note:** 
+The following mapping format, without the `Properties` property-bag, is currently supported but may be deprecated in the future.
 
 ```
 .ingest into Table123 (@"source1", @"source2")
@@ -143,8 +143,8 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
-**Deprecated mapping format** 
-The previous version's mapping format allowed a different definition for each mapping, where properties could be specified without the `Properties` dictionary. The deprecated format is shown below.
+**Note:** 
+The following mapping format, without the `Properties` property-bag, is currently supported but may be deprecated in the future.
 
 ```
 .ingest into Table123 (@"source1", @"source2") 
@@ -218,8 +218,8 @@ The two alternatives below are equal:
     )
 ```
 
-**Deprecated mapping format**
-The previous version's mapping format allowed a different definition for each mapping, where properties could be specified without the `Properties` dictionary. The deprecated format is shown below.
+**Note:** 
+The following mapping format, without the `Properties` property-bag, is currently supported but may be deprecated in the future.
 
 ```
 .ingest into Table123 (@"source1", @"source2") 

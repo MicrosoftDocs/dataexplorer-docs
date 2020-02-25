@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/22/2020
 ---
 # getmonth()
 
@@ -18,7 +18,5 @@ Another alias: monthoyear()
 **Example**
 
 ```kusto
-T 
-| extend month = getmonth(datetime(2015-10-12))
-// month == 10
+print month = getmonth(datetime(2015-10-12))
 ```

@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ---
 # Update policy
 
-The [update policy](../concepts/updatepolicy.md)
+The [update policy](updatepolicy.md)
 is a table-level policy object to automatically
 run a query and ingest its results when data is ingested into another table.
 
@@ -34,7 +34,7 @@ with the following columns:
 |Column    |Type    |Description                                                                                                                                                           |
 |----------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |EntityName|`string`|The name of the entity the update policy is defined on                                                                                                                |
-|Policies  |`string`|A JSON array indicating all update policies defined for the entity, formatted as [update policy object](../concepts/updatepolicy.md#the-update-policy-object)|
+|Policies  |`string`|A JSON array indicating all update policies defined for the entity, formatted as [update policy object](updatepolicy.md#the-update-policy-object)|
 
 **Example**
 
@@ -74,7 +74,7 @@ This command sets the update policy of the specified table.
     4. In case `IsTransactional` is set to `true`, `TableAdmin` permissions are verified against `Source` (the source table) as well.
   
 3. Make sure you test your update policy / function for performance before applying it to run on each ingestion to the source table -
-   see [here](../concepts/updatepolicy.md#testing-an-update-policys-performance-impact).
+   see [here](updatepolicy.md#testing-an-update-policys-performance-impact).
 
 **Returns**
 

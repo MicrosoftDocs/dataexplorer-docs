@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/06/2019
+ms.date: 02/19/2020
 ---
 # Row order policy
 

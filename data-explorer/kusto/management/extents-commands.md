@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ---
 # Extents (data shards) management
 
@@ -155,8 +155,8 @@ Merges two specific extents in `MyTable`, performed synchronously
 ```
 
 **Notes**
-- In General, `.merge` commands should rarely be run manually, and they are continously performed automatically in the background of the Kusto cluster (according to the [Merge Policies](../concepts/mergepolicy.md) defined for tables and databases in it).  
-  - General considerations about the criteria for merging multiple extents into a single one are documented under [Merge Policy](../concepts/mergepolicy.md).
+- In General, `.merge` commands should rarely be run manually, and they are continously performed automatically in the background of the Kusto cluster (according to the [Merge Policies](mergepolicy.md) defined for tables and databases in it).  
+  - General considerations about the criteria for merging multiple extents into a single one are documented under [Merge Policy](mergepolicy.md).
 - `.merge` operations have a possible final state of `Abandoned` (which can be seen when running `.show operations` with the operation ID) - this state suggests the source extents were not merged together, as some of the source extents no longer exist in the source table.
   - Such a state is expected to occur in cases such as:
      - The source extents have been dropped as part of the table's retention.

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/02/2019
+ms.date: 02/19/2020
 ---
 # Data sharding policy
 
@@ -23,16 +23,16 @@ The data sharding policy contains the following properties:
 - **MaxRowCount**:
     - Maximum row count for an extent created by an ingestion or rebuild operation.
     - Defaults to 750,000.
-    - **Not in effect** for [merge operations](../concepts/mergepolicy.md).
-        - If you must limit the number of rows in extents created by merge operations, adjust the `RowCountUpperBoundForMerge` property in the entity's [extents merge policy](../concepts/mergepolicy.md).
+    - **Not in effect** for [merge operations](mergepolicy.md).
+        - If you must limit the number of rows in extents created by merge operations, adjust the `RowCountUpperBoundForMerge` property in the entity's [extents merge policy](mergepolicy.md).
 - **MaxExtentSizeInMb**:
     - Maximum allowed compressed data size (in megabytes) for an extent created by a merge operation.
-    - In effect **only for [merge](../concepts/mergepolicy.md) operations**.
+    - In effect **only for [merge](mergepolicy.md) operations**.
     - Defaults to 1,024 (1GB).
 
 - **MaxOriginalSizeInMb**:
     - Maximum allowed original data size (in megabytes) for an extent created by a rebuild operation.
-    - In effect **only for [rebuild](../concepts/mergepolicy.md) operations**.
+    - In effect **only for [rebuild](mergepolicy.md) operations**.
     - Defaults to 2,048 (2GB).
 
 > [!WARNING]
