@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/25/2020
+ms.date: 02/26/2020
 ---
 # Capacity policy
 
-A Kusto cluster defines a capacity policy, for controlling the compute resources which are being used to perform
+An Azure Data Explorer cluster defines a capacity policy, for controlling the compute resources which are being used to perform
 data ingestion and other data grooming operations (such as merging extents).
 
 ## The capacity policy object
@@ -99,9 +99,7 @@ The default capacity policy has the following JSON representation:
 
 ## Control Commands
 * Use [.show cluster policy capacity](../management/diagnostics.md#show-capacity)
-  to show the current capacity policy of the cluster.
-* Use [.alter cluster policy capacity](../controlCommands/capacitypolicy.md#alter-cluster-policy-capacity)
-  to alter the capacity policy of the cluster.
+  to show the current capacity policy of the cluster. 
 
 ## Throttling
 
