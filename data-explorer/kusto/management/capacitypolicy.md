@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 02/25/2020
 ---
 # Capacity policy
 
@@ -100,7 +100,8 @@ The default capacity policy has the following JSON representation:
 ## Control Commands
 * Use [.show cluster policy capacity](../management/diagnostics.md#show-capacity)
   to show the current capacity policy of the cluster.
-
+* Use [.alter cluster policy capacity](../controlCommands/capacitypolicy.md#alter-cluster-policy-capacity)
+  to alter the capacity policy of the cluster.
 
 ## Throttling
 
