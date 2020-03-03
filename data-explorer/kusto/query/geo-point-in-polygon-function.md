@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/21/2020
+ms.date: 02/04/2020
 ---
 # geo_point_in_polygon()
 

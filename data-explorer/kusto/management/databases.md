@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/01/2020
 ---
 # Databases management
 
@@ -21,3 +21,5 @@ This topic describes the following database control commands:
 |[.alter database](alter-database.md) |Alters a database's pretty (friendly) name |
 |[.drop database](drop-database.md) |Drops a database's pretty (friendly) name |
 |[.show database schema](show-schema-database.md) |Returns a flat list of the structure of the selected databases with all their tables and columns in a single table or JSON object |
+|[.attach database](attach-database.md) |Attaches a database from persistent storage. |
+|[.detach database](detach-database.md) |Removes a database from Kusto service.|
