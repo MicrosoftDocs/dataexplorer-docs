@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/03/2020
 ---
 # Export data to storage
 
@@ -57,6 +57,7 @@ external storage, specified by a [storage connection string](../../api/connectio
 |`encoding`      |`string`|Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`. |
 |`compressionType`|`string`|Indicates the type of compression to use. Possible values are `gzip` or `snappy`. Default is `gzip`. `snappy` can (optionally) be used for `parquet` format. |
 |`distribution`   |`string`  |Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread will write to storage. Otherwise, export will write from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluateoperator.md). Defaults to `per_shard`.
+|`distributed`   |`bool`  |Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true.
 |`persistDetails`|`bool`  |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller does not require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
 |`parquetRowGroupSize`|`int`  |Relevant only when data format is parquet. Controls the row group size in the exported files. Default row group size is 100000 records.|
 

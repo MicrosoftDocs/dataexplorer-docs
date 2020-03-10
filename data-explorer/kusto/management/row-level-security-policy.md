@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/25/2020
+ms.date: 03/08/2020
 ---
 # RowLevelSecurity policy (Preview)
 
@@ -17,7 +17,7 @@ This article describes commands used for configuring a [row_level_security polic
 
 To display the policy, use the following command:
 
-```
+```kusto
 .show table <table_name> policy row_level_security
 ```
 
@@ -25,13 +25,13 @@ To display the policy, use the following command:
 
 Enable row_level_security policy on a table:
 
-```
+```kusto
 .alter table <table_name> policy row_level_security enable "<query>"
 ```
 
 Disable row_level_security policy on a table:
 
-```
+```kusto
 .alter table <table_name> policy row_level_security disable "<query>"
 ```
 
@@ -60,7 +60,7 @@ This is useful if you want to try various queries for row_level_security, but do
 
 **Example**
 
-```
+```kusto
 .create-or-alter function with () TrimCreditCardNumbers() {
     let UserCanSeeFullNumbers = current_principal_is_member_of('aadgroup=super_group@domain.com');
     let AllData = Customers | where UserCanSeeFullNumbers;
@@ -74,6 +74,6 @@ This is useful if you want to try various queries for row_level_security, but do
 
 ## Deleting the policy
 
-```
+```kusto
 .delete <table_name> policy row_level_security
 ```

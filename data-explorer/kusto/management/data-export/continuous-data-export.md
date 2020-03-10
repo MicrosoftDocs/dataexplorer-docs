@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/09/2020
 ---
 # Continuous data export
 
@@ -38,14 +38,22 @@ For more information, see [exporting historical data](#exporting-historical-data
 *does* guarantee no duplications when using the show exported-artifacts command to read the exported artifacts. 
 * Continuous export runs according to the time period configured for it. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. 
 Continuous export *isn't* designed for constantly streaming data out of Kusto. It runs in a distributed mode, where all nodes export concurrently. So if the range of data queried by each run is small, the output of the continuous export would be many small artifacts (the number depends on the number of nodes in the cluster). 
-* The number of export operations that can run concurrently is limited by the cluster's data export capacity, which is 75% of the number of working nodes in the cluster (see [throttling](../../management/capacitypolicy.md#throttling)). 
+* The number of export operations that can run concurrently is limited by the cluster's data export capacity (see [throttling](../../management/capacitypolicy.md#throttling)). 
 If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind. 
  
-* By default, all tables referenced in the export query are assumed to be [fact tables](https://en.wikipedia.org/wiki/Fact_table). 
+* By default, all tables referenced in the export query are assumed to be [fact tables](../../concepts/fact-and-dimension-tables.md). 
 Therefore, they are *scoped* to the database cursor. Records included in the export query are only those that joined since the previous export execution. 
-The export query may contain [dimension tables](https://en.wikipedia.org/wiki/Dimension_(data_warehouse)#Dimension_table) in which *all* records of the dimension table are included in *all* export queries. 
+The export query may contain [dimension tables](../../concepts/fact-and-dimension-tables.md) in which *all* records of the dimension table are included in *all* export queries. 
 Continuous-export of only dimension tables isn't supported. The export query must include at least a single fact table.
 The syntax explicitly declares which tables are scoped (fact) and which shouldn't (dimension). See the `over` parameter in the [create command](#create-or-alter-continuous-export) for details.
+
+* The number of files exported in each continuous export iteration depends on how the 
+external table is partitioned. Please refer to the notes section in 
+[export to external table command](export-data-to-an-external-table.md) for further information. 
+Note that each continuous export iteration always writes to *new* files, and never appends 
+to existing ones. As a result, the number of exported files also depends on 
+the frequency in which the continuous export runs (`intervalBetweenRuns` parameter).
+
 
 All of the continuous export commands require [database admin permissions](../access-control/role-based-authorization.md).
 
@@ -68,8 +76,10 @@ All of the continuous export commands require [database admin permissions](../ac
 | Query                | String   | Query to export.  |
 | over (T1, T2)        | String   | An optional comma-separated list of fact tables in the query. If not specified, all tables referenced in the query are assumed to be fact tables. If specified, tables *not* in this list are treated as dimension tables and will not be scoped (all records will participate in all exports). See the [notes section](#notes) for details. |
 | intervalBetweenRuns  | Timespan | The time span between continuous export executions. Must be greater than 1 minute.   |
-| forcedLatency        | Timespan | An optional period of time to limit the query to records that were ingested only prior to this period (relative to current time) This is useful if, for example, the query performs some aggregations/joins and you would like to make sure all relevant records have already been ingested before running the export.                           |
-| sizeLimit            | long     | The size limit (in bytes) at which to switch to the next blob (before compression). The default value is 100MB, max 1GB.                                                                                                                                                                                                                     |
+| forcedLatency        | Timespan | An optional period of time to limit the query to records that were ingested only prior to this period (relative to current time) This is useful if, for example, the query performs some aggregations/joins and you would like to make sure all relevant records have already been ingested before running the export.
+
+In addition to the above, all properties supported in [export to external table command](export-data-to-an-external-table.md) are supported in the 
+continuous export create command. 
 
 **Example:**
 

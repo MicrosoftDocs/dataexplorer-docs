@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/08/2020
 ---
 # Query limits
 
@@ -176,10 +176,16 @@ MyTable | ...
 
 In various query operations, Kusto needs to "gather" string values and buffer
 them internally before it can start producing results. These accumulated string
-sets are limited in size. Exceeding this size will result in the following error:
+sets are limited in size and in how many items they can hold. Additionally, each
+individual string cannot exceed a certain limit.
+Exceeding one of these limits will result in one of the following errors:
 
 ```
-Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large (see https://aka.ms/kustoquerylimits)
+Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the limit of ...GB (see https://aka.ms/kustoquerylimits)')
+
+Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the maximum count of 2G items (see http://aka.ms/kustoquerylimits)')
+
+Runaway query (E_RUNAWAY_QUERY). (message: 'Single string size shouldn't exceed the limit of 2GB (see http://aka.ms/kustoquerylimits)')
 ```
 
 There is currently no switch one can use to increase the maximum string set size.

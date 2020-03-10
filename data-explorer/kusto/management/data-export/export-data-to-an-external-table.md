@@ -7,27 +7,20 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/05/2020
 ---
 # Export data to an external table
 
-You can export data by defining an [external table](../externaltables.md) and exporting data to it. The table properties are specified when [creating the external table](../externaltables.md#create-or-alter-external-table), therefore, you don't need to embed the table's properties in the export command. The export command references the external table by name. Export data requires [database admin permission](../access-control/role-based-authorization.md).
+You can export data by defining an [external table](../externaltables.md) and exporting data to it.
+ The table properties are specified when [creating the external table](../externaltables.md#create-or-alter-external-table), 
+ therefore, you don't need to embed the table's properties in the export command. 
+ The export command references the external table by name.
+  Export data requires [database admin permission](../access-control/role-based-authorization.md).
 
 **Syntax:**
 
 `.export` [`async`] `to` `table` *ExternalTableName* <br>
 [`with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <| *Query*
-
-It isn't possible to override the external table properties using this command. For example, you can't export data in Parquet format to an external table whose data format is CSV. 
-Each type of external table supports different properties in the export command. 
-
-If the external table is partitioned, exported artifacts will be written to their respective directories, according to the partition definitions as seen in the [example](#partitioned-external-table-example). 
-The export query output schema must include all columns defined by the partitions. For example, if the table is partitioned by *DateTime*, 
-the query output schema must include a Timestamp column that matches the *TimestampColumnName* defined in the external table partitioning definition.
-
-|External Table Type|Property|Type|Description                                                                               
-|--------------------|----------------|-------|---|
-|`Blob`|`sizeLimit`|`long`|The size limit at which to switch to the next blob (before compression). The default value is 100MB, max 1GB.|
 
 **Output:**
 
@@ -36,6 +29,35 @@ the query output schema must include a Timestamp column that matches the *Timest
 |ExternalTableName  |String |The name of the external table.
 |Path|String|Output path.
 |NumRecords|String| Number of records exported to path.
+
+**Notes:**
+* The export query output schema must match the schema of the external table, including all 
+columns defined by the partitions. For example, if the table is partitioned by *DateTime*, 
+the query output schema must include a Timestamp column that matches the *TimestampColumnName* 
+defined in the external table partitioning definition.
+
+* It isn't possible to override the external table properties using the export command.
+ For example, you can't export data in Parquet format to an external table whose data format is CSV.
+
+* The following properties are supported as part of the export command. Please see the [export to storage](export-data-to-storage.md) section for details: 
+   * `sizeLimit`, `parquetRowGroupSize`, `distributed`.
+
+* If the external table is partitioned, exported artifacts will be written to their respective directories, according to the partition definitions as seen in the [example](#partitioned-external-table-example). 
+
+* The number of files written per partition depends on the following:
+   * If the external table includes datetime partitions only, or no partitions at all - 
+   the number of files written (for each partition, if exists) should be around the 
+   number of nodes in the cluster (or more, if `sizeLimit` is reached). This is because the export 
+   operation is distributed, such that all nodes in the cluster export concurrently. 
+   To disable distribution, so that only a single node performs the writes, set `distributed` 
+   to false. This will create less files, but will decrease the export performance.
+
+   * If the external table includes a partition by a string column, the number of 
+   exported files should be a single file per partition (or more, if `sizeLimit` is 
+   reached). All nodes still participate in the export (operation is distributed), but 
+   each partition is assigned to a specific node. Setting `distributed` to false in this case, 
+   will cause only a single node to perform the export, but behavior will remain the same 
+   (a single file written per partition).
 
 ## Examples
 

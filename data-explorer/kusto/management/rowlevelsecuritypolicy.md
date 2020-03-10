@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/25/2020
+ms.date: 03/08/2020
 ---
 # Row Level Security (Preview)
 
@@ -44,20 +44,20 @@ columns contains the name of the sales person.
 Instead of giving your sales people access to all records in `Sales`, you can enable
 a Row Level Security policy on this table to only return records where the sales person is the current user:
 
-```
+```kusto
 Sales | where SalesPersonAadUser == current_principal()
 ```
 
 You can also mask the credit card number:
 
-```
+```kusto
 Sales | where SalesPersonAadUser == current_principal() | extend CreditCardNumber = "****"
 ```
 
 If you want every sales person to see all the sales of a specific country, you can define
 a query similar to the following:
 
-```
+```kusto
 let UserToCountryMapping = datatable(User:string, Country:string)
 [
   "john@domain.com", "USA",
@@ -71,7 +71,7 @@ If you have an AAD group that contains the managers of the sales people, you mig
 to have access to all rows. This can be achieved by the following
 query in the Row Level Security policy:
 
-```
+```kusto
 let IsManager = current_principal_is_member_of('aadgroup=sales_managers@domain.com');
 let AllData = Sales | where IsManager;
 let PartialData = Sales | where not(IsManager) and (SalesPersonAadUser == current_principal());
@@ -83,7 +83,7 @@ In general, if you have multiple AAD groups, and you want the members of each gr
 different subset of data, you can follow this structure for an RLS query (assuming a user can
 only belong to a single AAD group):
 
-```
+```kusto
 let IsInGroup1 = current_principal_is_member_of('aadgroup=group1@domain.com');
 let IsInGroup2 = current_principal_is_member_of('aadgroup=group2@domain.com');
 let IsInGroup3 = current_principal_is_member_of('aadgroup=group3@domain.com');

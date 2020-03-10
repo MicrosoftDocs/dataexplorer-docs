@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 03/04/2020
 ---
 # Kusto.Explorer tool
 
@@ -76,7 +76,7 @@ Home Tab accumulates most recently used functionality, splitted by menus:
 
 ![Kusto.Explorer query menu](./Images/KustoTools-KustoExplorer/home-query-menu.png "query-menu")
 
-|Menu|	Behavior|
+|Menu|    Behavior|
 |----|----------|
 |New Tab Window| Opens a new tab window for querying Kusto |
 |Mode: Query | Switches Query Window into a [script mode](#query-mode): commands can be loaded and saved as scripts (default)|
@@ -91,9 +91,9 @@ Home Tab accumulates most recently used functionality, splitted by menus:
 
 ![Kusto.Explorer share menu](./Images/KustoTools-KustoExplorer/home-share-menu.png "share-menu")
 
-|Menu|	Behavior|
+|Menu|    Behavior|
 |----|----------|
-|Data To Clipboard|	Exports Query and data set to a clipboard. In case chart is presented - exports the chart as bitmap| 
+|Data To Clipboard|    Exports Query and data set to a clipboard. In case chart is presented - exports the chart as bitmap| 
 |Result To Clipboard| Exports data set to a clipboard. In case chart is presented - exports the chart as bitmap| 
 |Query to Clipboard| Exports Query to clipboard|
 
@@ -103,15 +103,15 @@ Home Tab accumulates most recently used functionality, splitted by menus:
 
 |Menu         | Behavior|
 |-------------|---------|
-|Area chart	  | Display an area chart in which the x-axis is the first column (must be a numeric) and all numeric columns are mapped to different series (Y-axis) |
+|Area chart      | Display an area chart in which the x-axis is the first column (must be a numeric) and all numeric columns are mapped to different series (Y-axis) |
 |Column Chart | Display a column chart where all numeric columns are mapped to different series (Y-axis) and the text column before numeric is the X-axis (can be controlled in the UI)|
 |Bar Chart    | Display a bar chart where all numeric columns are mapped to different series (X-axis) and the text column before numeric is the Y-axis (can be controlled in the UI)|
-|Stacked Area chart	  | Display a stacked area chart in which the x-axis is the first column (must be a numeric) and all numeric columns are mapped to different series (Y-axis) |
+|Stacked Area chart      | Display a stacked area chart in which the x-axis is the first column (must be a numeric) and all numeric columns are mapped to different series (Y-axis) |
 |Time Chart   | Display a time chart in which the x-axis is the first column (must be a datetime) and all numeric columns are mapped to different series (Y-axis).|
 |Line Chart   | Display a line chart in which the x-axis is the first column (must be a numeric) and all numeric columns are mapped to different series (Y-axis).|
-|Anomaly Chart|	Similar to timechart - while finding anomalies in time series data using machine learning anomalies algorithm. For anomaly detection, Kusto.Explorer uses [series_decompose_anomalies](../query/series-decompose-anomaliesfunction.md) function.(*) 
-|Pie Chart    |	Display a pie chart in which the color-axis is the first column and the theta-axis (must be a measure, converted to percents) is the second column.|
-|Ladder Chart |	Display a ladder chart in which the x-axis is the last two columns (must be a datetime) and the y-axis is a composite of the other columns.|
+|Anomaly Chart|    Similar to timechart - while finding anomalies in time series data using machine learning anomalies algorithm. For anomaly detection, Kusto.Explorer uses [series_decompose_anomalies](../query/series-decompose-anomaliesfunction.md) function.(*) 
+|Pie Chart    |    Display a pie chart in which the color-axis is the first column and the theta-axis (must be a measure, converted to percents) is the second column.|
+|Ladder Chart |    Display a ladder chart in which the x-axis is the last two columns (must be a datetime) and the y-axis is a composite of the other columns.|
 |Scatter Chart| Display a point graph in which the x-axis is the first column (must be a numeric) and all numeric columns are mapped to different series (Y-axis).|
 |Pivot Chart  | Display a pivot table + pivot chart that gives the full flexibility of selecting data, columns, rows and various different chart types.| 
 |Time Pivot   | Interactive navigation over the events time-line (pivoting on time axis)|
@@ -156,13 +156,13 @@ use `Reset View` menu item.
 |To CSV       | Exports data to CSV (comma-separated-values) file| 
 |To JSON      | Exports data to JSON formatted file|
 |To Excel     | Exports data to XLSX (Excel) file|
-|To Text      |	Exports data to TXT (text) file| 
-|To CSL Script|	Exports Query to a script file| 
-|To Results   |	Exports Query and data to Results (QRES) file|
+|To Text      |    Exports data to TXT (text) file| 
+|To CSL Script|    Exports Query to a script file| 
+|To Results   |    Exports Query and data to Results (QRES) file|
 ||---------*Load Data*---------|
-|From Results|	Loads Query and data from Results (QRES) file| 
+|From Results|    Loads Query and data from Results (QRES) file| 
 ||---------*Clipboard*---------|
-|Data To Clipboard|	Exports Query and data set to a clipboard. In case chart is presented - exports the chart as bitmap| 
+|Data To Clipboard|    Exports Query and data set to a clipboard. In case chart is presented - exports the chart as bitmap| 
 |Result To Clipboard| Exports data set to a clipboard. In case chart is presented - exports the chart as bitmap| 
 |Query to Clipboard| Exports Query to clipboard|
 ||---------*Results*---------|
@@ -175,7 +175,7 @@ use `Reset View` menu item.
 |Menu|Behavior|
 |----|----------|
 ||---------*Groups*---------|
-|Add gourp| Adds a new Kusto Server group| 
+|Add group| Adds a new Kusto Server group|
 |Rename group| Renames the existing Kusto Server group|
 |Remove group| Removes the existing  Kusto Server group|
 ||---------*Clusters*---------|
@@ -712,15 +712,15 @@ Following errors were detected during this operation.
 
 *Proposed solution steps:*
  
-1.	Uninstall Kusto.Explorer application using Programs and Features (appwiz.cpl)
+1.    Uninstall Kusto.Explorer application using Programs and Features (appwiz.cpl)
 
-2.	First just try running CleanOnlineAppCache, then try the install again. From elevated CMD: 
+2.    First just try running CleanOnlineAppCache, then try the install again. From elevated CMD: 
 
     rundll32 %windir%\system32\dfshim.dll CleanOnlineAppCache
 
 Try installing again from one of the [installation mirrors](#getting-the-tool)
 
-3.	If it still fails, delete the local ClickOnce store. Any ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut. App shortcuts would not be deleted.
+3.    If it still fails, delete the local ClickOnce store. Any ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut. App shortcuts would not be deleted.
 
 From elevated CMD:
 
@@ -728,7 +728,7 @@ From elevated CMD:
 
 Try installing again from one of the [installation mirrors](#getting-the-tool)
 
-4.	If it still fails, remove temp deployment files and rename the Kusto.Explorer local AppData folder.
+4.    If it still fails, remove temp deployment files and rename the Kusto.Explorer local AppData folder.
 
 From elevated CMD:
 
@@ -737,11 +737,11 @@ From elevated CMD:
 
 Try installing again from one of the [installation mirrors](#getting-the-tool)
 
-5.	To restore your connections from Kusto.Explorer.bak, from elevated CMD, run:
+5.    To restore your connections from Kusto.Explorer.bak, from elevated CMD, run:
 
     copy %LOCALAPPDATA%\Kusto.Explorer.bak\User*.xml %LOCALAPPDATA%\Kusto.Explorer
 
-6.	If it still fails, enable verbose ClickOnce logging by creating a LogVerbosityLevel string value of 1 under:
+6.    If it still fails, enable verbose ClickOnce logging by creating a LogVerbosityLevel string value of 1 under:
 
 `HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Deployment`, repro it again, and send the verbose output to 
 KEBugReport@microsoft.com. 

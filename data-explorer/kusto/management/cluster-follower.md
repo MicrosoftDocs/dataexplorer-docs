@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/18/2020
+ms.date: 03/09/2020
 ---
 # Cluster follower commands
 
@@ -284,8 +284,6 @@ In this example:
 
 > [!IMPORTANT] 
 > Both `MyFollowerCluster` and `MyLeaderCluster` must be in the same region.
-> If you aren't certain in which region your cluster resides, the [support bot](https://aka.ms/kustosupport)
-> provides you with a *Cluster Information* option that will provide you with that information.
 
 ### Steps to execute
 

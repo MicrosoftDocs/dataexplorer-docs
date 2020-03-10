@@ -7,12 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/04/2020
 ---
 # Capacity policy
 
-An Azure Data Explorer cluster defines a capacity policy, for controlling the compute resources which are being used to perform
-data ingestion and other data grooming operations (such as merging extents).
+A capacity policy for controlling the compute resources which are used to perform data ingestion and other data grooming operations (such as merging extents)
 
 ## The capacity policy object
 
@@ -69,7 +68,14 @@ is calculated by:
 - *Note:* In clusters with 3 nodes or above, the admin node doesn't participate in performing export operations, 
 therefore `Number of nodes in cluster` is reduced by 1.
 
+### Extents Partition capacity
 
+|Property                           |Type    |Description                                                                             |
+|-----------------------------------|--------|----------------------------------------------------------------------------------------|
+|ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent extents partition operations in a cluster. |
+
+The cluster's total extents partition capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity))
+is defined by a single property: `ClusterMaximumConcurrentOperations`.
 
 ### Defaults
 
