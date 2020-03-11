@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 03/10/2020
 ---
 # External table management
 
@@ -307,6 +307,31 @@ with
 |TableName|TableType|Folder|DocString|Properties|ConnectionStrings|Partitions|
 |---|---|---|---|---|---|---|
 |ExternalMultiplePartitions|Blob|ExternalTables|Docs|{"Format":"Csv","Compressed":false,"CompressionType":null,"FileExtension":"csv","IncludeHeaders":"None","Encoding":null,"NamePrefix":null}|["https://storageaccount.blob.core.windows.net/container1;*******"]}|[{"StringFormat":"CustomerName={0}","ColumnName":"CustomerName","Ordinal":0},PartitionBy":"1.00:00:00","ColumnName":"Timestamp","Ordinal":1}]|
+
+#### Spark virtual columns support
+
+When data is exported from Spark, partition columns (that are specified in dataframe writer's `partitionBy` method) are not written to data files. 
+This is done to avoid data duplication since the data already present in "folder" names (e.g. `column1=<value>/column2=<value>/`), and Spark can
+recognize it upon read. However, Kusto requires that partition columns are present in data itself. Support for virtual columns in Kusto is planned,
+until then a workaround can be used - when exporting data from Spark, create a copy of all columns that data is partitioned by before writting a dataframe:
+
+```
+df.withColumn("_a", $"a").withColumn("_b", $"b").write.partitionBy("_a", "_b").parquet("...")
+```
+
+When defining an external table in Kusto specify partition columns like in the following example:
+
+```
+.create external table ExternalSparkTable(a:string, b:datetime) 
+kind=blob
+partition by 
+   "_a="a,
+   format_datetime="'_b='yyyyMMdd" bin(b, 1d)
+dataformat=parquet
+( 
+   h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
+)
+```
 
 ## .create mapping
 
