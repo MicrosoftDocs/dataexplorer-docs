@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/04/2020
+ms.date: 03/12/2020
 ---
 # Kusto WPA
 
@@ -18,8 +18,8 @@ Windows Performance Analyzer (WPA). It consists of two major parts:
    `Share` &gt; `Query to Clipboard`) and generate query files (`.kpq`) to be processed
    by WPA.
 
-2. A WPA plugin that can "open" the generated query files (`.kpq`). Opening
+1. A WPA plugin that can "open" the generated query files (`.kpq`). Opening
    such a file automatically sends the query specified in the file to a Kusto
-   cluster and loading the results as-if they came from a "standard" ETL file.
+   cluster and loading the results as if they came from a "standard" ETL file.
 
-Please see [https://aka.ms/kustowpa] for details and download information.
+See [https://aka.ms/kustowpa] for details and download information.

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/17/2019
+ms.date: 03/15/2020
 ---
 # Kusto.Explorer keyboard shortcuts (hot-keys)
 
@@ -42,7 +42,9 @@ or when the context is in the results view:
 |Hot Key|Description|
 |-------|-----------|
 |`Ctrl`+`Shift`+`C`|Copies query, deep-link, and data to the clipboard|
-|`Alt`+`Shift`+`C` |Copies query and deep-link the clipboard|
+|`Alt`+`Shift`+`C` |Copies query and deep-link the clipboard in HTML format|
+|`Alt`+`Shift`+`R` |Copies query, deep-link and data the clipboard in Markdown format|
+|`Alt`+`Shift`+`M` |Copies query and deep-link the clipboard in Markdown format|
 |`Ctrl`+`~` |Copies query and data to the clipboard in markdown format |
 |`Ctrl`+`Shift`+`D`|Toggles mode of hiding duplicate rows in the data view|
 |`Ctrl`+`Shift`+`H`|Toggles mode of hiding empty columns in the data view|

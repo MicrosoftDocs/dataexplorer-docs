@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/10/2020
+ms.date: 03/12/2020
 ---
 # External table management
 
@@ -311,9 +311,8 @@ with
 #### Spark virtual columns support
 
 When data is exported from Spark, partition columns (that are specified in dataframe writer's `partitionBy` method) are not written to data files. 
-This is done to avoid data duplication since the data already present in "folder" names (e.g. `column1=<value>/column2=<value>/`), and Spark can
-recognize it upon read. However, Kusto requires that partition columns are present in data itself. Support for virtual columns in Kusto is planned,
-until then a workaround can be used - when exporting data from Spark, create a copy of all columns that data is partitioned by before writting a dataframe:
+This is done to avoid data duplication because the data already present in "folder" names (for example, `column1=<value>/column2=<value>/`), and Spark can
+recognize it upon read. However, Kusto requires that partition columns are present in the data itself. Support for virtual columns in Kusto is planned. Until then, use the following workaround: when exporting data from Spark, create a copy of all columns that data is partitioned by before writing a dataframe:
 
 ```
 df.withColumn("_a", $"a").withColumn("_b", $"b").write.partitionBy("_a", "_b").parquet("...")

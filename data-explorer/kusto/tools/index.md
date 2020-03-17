@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/11/2020
 ---
 # Azure Data Explorer tools
 
@@ -46,7 +46,7 @@ ms.date: 02/13/2020
 
 
 * [LightIngest](./lightingest.md) - Help utility for ad-hoc data ingesting into Azure Data Explorer
-* [Azure Data Factory](azure-data-factory.md) - Copy data from source data stores to Azure Data Explorer, and from Azure Data Explorer to any supported sink data store
+ 
 
 
 

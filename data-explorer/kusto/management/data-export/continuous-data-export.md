@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/12/2020
 ---
 # Continuous data export
 
@@ -20,10 +20,10 @@ Continuous data export requires you to [create an external table](../externaltab
 and then [create a continuous export definition](#create-or-alter-continuous-export) pointing to the external table. 
 
 > [!NOTE] 
-> * Kusto doesn't support (as part of continuous export) for exporting historical records ingested before continuous export creation. Historical records can be exported separately using the (non-continuous) [export command](export-data-to-an-external-table.md). 
+> * Kusto doesn't support exporting historical records ingested before continuous export creation (as part of continuous export). Historical records can be exported separately using the (non-continuous) [export command](export-data-to-an-external-table.md). 
 For more information, see [exporting historical data](#exporting-historical-data). 
 > * Continuous export doesn't work for data ingested using streaming ingestion. 
-> * Currently, continuous export can't be configured on a table on which [Row Level Security policy](../../management/rowlevelsecuritypolicy.md) is enabled.
+> * Currently, continuous export can't be configured on a table on which a [Row Level Security policy](../../management/rowlevelsecuritypolicy.md) is enabled.
 > * Continuous export is not supported for external tables with `impersonate` in their 
 [connection strings](../../api/connection-strings/storage.md).
  
@@ -35,7 +35,7 @@ For more information, see [exporting historical data](#exporting-historical-data
 * Continuous export doesn't support cross-database/cluster calls.
 * Continuous export doesn't guarantee that each record will be written only once to the external table. If a failure occurs after export has begun and some of the artifacts were already written to the external table, the external table _may_ contain duplicates. In such (rare) cases, artifacts are not deleted from the external table but they will *not* be reported in the
 [show exported artifacts command](#show-continuous-export-exported-artifacts). Continuous export
-*does* guarantee no duplications when using the show exported-artifacts command to read the exported artifacts. 
+*does* guarantee no duplication when using the show exported-artifacts command to read the exported artifacts. 
 * Continuous export runs according to the time period configured for it. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. 
 Continuous export *isn't* designed for constantly streaming data out of Kusto. It runs in a distributed mode, where all nodes export concurrently. So if the range of data queried by each run is small, the output of the continuous export would be many small artifacts (the number depends on the number of nodes in the cluster). 
 * The number of export operations that can run concurrently is limited by the cluster's data export capacity (see [throttling](../../management/capacitypolicy.md#throttling)). 
@@ -45,15 +45,14 @@ If the cluster doesn't have sufficient capacity to handle all continuous exports
 Therefore, they are *scoped* to the database cursor. Records included in the export query are only those that joined since the previous export execution. 
 The export query may contain [dimension tables](../../concepts/fact-and-dimension-tables.md) in which *all* records of the dimension table are included in *all* export queries. 
 Continuous-export of only dimension tables isn't supported. The export query must include at least a single fact table.
-The syntax explicitly declares which tables are scoped (fact) and which shouldn't (dimension). See the `over` parameter in the [create command](#create-or-alter-continuous-export) for details.
+The syntax explicitly declares which tables are scoped (fact) and which are not scoped (dimension). See the `over` parameter in the [create command](#create-or-alter-continuous-export) for details.
 
 * The number of files exported in each continuous export iteration depends on how the 
-external table is partitioned. Please refer to the notes section in 
+external table is partitioned. Refer to the notes section in 
 [export to external table command](export-data-to-an-external-table.md) for further information. 
 Note that each continuous export iteration always writes to *new* files, and never appends 
 to existing ones. As a result, the number of exported files also depends on 
 the frequency in which the continuous export runs (`intervalBetweenRuns` parameter).
-
 
 All of the continuous export commands require [database admin permissions](../access-control/role-based-authorization.md).
 
@@ -76,10 +75,9 @@ All of the continuous export commands require [database admin permissions](../ac
 | Query                | String   | Query to export.  |
 | over (T1, T2)        | String   | An optional comma-separated list of fact tables in the query. If not specified, all tables referenced in the query are assumed to be fact tables. If specified, tables *not* in this list are treated as dimension tables and will not be scoped (all records will participate in all exports). See the [notes section](#notes) for details. |
 | intervalBetweenRuns  | Timespan | The time span between continuous export executions. Must be greater than 1 minute.   |
-| forcedLatency        | Timespan | An optional period of time to limit the query to records that were ingested only prior to this period (relative to current time) This is useful if, for example, the query performs some aggregations/joins and you would like to make sure all relevant records have already been ingested before running the export.
+| forcedLatency        | Timespan | An optional period of time to limit the query to records that were ingested only prior to this period (relative to current time). This is useful if, for example, the query performs some aggregations/joins and you would like to make sure all relevant records have already been ingested before running the export.
 
-In addition to the above, all properties supported in [export to external table command](export-data-to-an-external-table.md) are supported in the 
-continuous export create command. 
+In addition to the above, all properties supported in [export to external table command](export-data-to-an-external-table.md) are supported in the continuous export create command. 
 
 **Example:**
 

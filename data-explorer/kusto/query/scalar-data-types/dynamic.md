@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/12/2020
 ---
 # The dynamic data type
 
 The `dynamic` scalar data type is special in that it can take on any value
 of other scalar data types from the list below, as well as arrays and property bags. Specifically,
-A `dynamic` value can be:
+a `dynamic` value can be:
 
 * Null.
 * A value of any of the primitive scalar data types:
@@ -198,6 +198,7 @@ arrays to hold aggregated values:
 | *value* `in` *array*| True if there is an element of *array* that == *value*<br/>`where City in ('London', 'Paris', 'Rome')`
 | *value* `!in` *array*| True if there is no element of *array* that == *value*
 |[`array_length(`array`)`](../arraylengthfunction.md)| Null if it isn't an array
+|[`bag_keys(`bag`)`](../bagkeysfunction.md)| Enumerates all the root keys in a dynamic property-bag object.
 |[`extractjson(`path,object`)`](../extractjsonfunction.md)|Uses path to navigate into object.
 |[`parse_json(`source`)`](../parsejsonfunction.md)| Turns a JSON string into a dynamic object.
 |[`range(`from,to,step`)`](../rangefunction.md)| An array of values

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/13/2020
 ---
 # Extents (data shards)
 
@@ -57,7 +57,13 @@ merging stops once an extent reaches certain limits, such as size,
 as beyond a certain point merging extents reduces rather than increases
 efficiency.
 
-
+When a [Data partitioning policy](partitioningpolicy.md) is defined
+on a table, extents go through another background process after they are
+created (post-ingestion). This process re-ingests the data from the source extents
+and creates *homogeneous* extents, in which the values of the column that is the
+table's *partition key* all belong to the same partition. If the policy includes a
+*hash partition key*, it is guaranteed that all homogeneous extents that belong to
+the same partition are assigned to the same data node in the cluster.
 
 > [!NOTE]
 > Extent-level operations, such as merging, altering extent tags, etc. do not modify existing extents.
@@ -76,7 +82,7 @@ The common "lifecycle" of an extent therefore is:
    merged extents and so on) is eventually dropped due to a retention
    policy. When extents are dropped based on time (older x hours / days)
    the creation date of the newest extent inside the merged one is
-   taken into the calculation. 
+   taken into the calculation.
 
 ## Extent Ingestion time
 

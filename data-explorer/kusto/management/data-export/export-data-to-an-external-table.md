@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ---
 # Export data to an external table
 
@@ -39,7 +39,7 @@ defined in the external table partitioning definition.
 * It isn't possible to override the external table properties using the export command.
  For example, you can't export data in Parquet format to an external table whose data format is CSV.
 
-* The following properties are supported as part of the export command. Please see the [export to storage](export-data-to-storage.md) section for details: 
+* The following properties are supported as part of the export command. See the [export to storage](export-data-to-storage.md) section for details: 
    * `sizeLimit`, `parquetRowGroupSize`, `distributed`.
 
 * If the external table is partitioned, exported artifacts will be written to their respective directories, according to the partition definitions as seen in the [example](#partitioned-external-table-example). 

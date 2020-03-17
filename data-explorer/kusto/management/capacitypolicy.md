@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/04/2020
+ms.date: 03/12/2020
 ---
 # Capacity policy
 
-A capacity policy for controlling the compute resources which are used to perform data ingestion and other data grooming operations (such as merging extents)
+A capacity policy is used for controlling the compute resources which are used to perform data ingestion and other data grooming operations (such as merging extents).
 
 ## The capacity policy object
 
@@ -27,9 +27,11 @@ and `ExportCapacity`.
 
 The cluster's total ingestion capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity))
 is calculated by:
-- Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
-- *Note:* In clusters with 3 nodes or above, the admin node doesn't participate in performing ingestion operations, therefore `Number of nodes in cluster`
-is reduced by 1.
+
+Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
+
+> [!Note] 
+> In clusters with three nodes or above, the admin node doesn't participate in performing ingestion operations, therefore `Number of nodes in cluster` is reduced by 1.
 
 ### Extents Merge capacity
 
@@ -39,9 +41,11 @@ is reduced by 1.
 
 The cluster's total extents merge capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity))
 is calculated by:
-- `Number of nodes in cluster` x `MaximumConcurrentOperationsPerNode`
-- *Note:* In clusters with 3 nodes or above, the admin node doesn't participate in performing merge operations, therefore `Number of nodes in cluster`
-is reduced by 1.
+
+`Number of nodes in cluster` x `MaximumConcurrentOperationsPerNode`
+
+> [!Note] 
+> In clusters with three nodes or above, the admin node doesn't participate in performing merge operations, therefore `Number of nodes in cluster` is reduced by 1.
 
 ### Extents Purge Rebuild capacity
 
@@ -51,9 +55,11 @@ is reduced by 1.
 
 The cluster's total extents purge rebuild capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity))
 is calculated by:
-- `Number of nodes in cluster` x `MaximumConcurrentOperationsPerNode`
-- *Note:* In clusters with 3 nodes or above, the admin node doesn't participate in performing merge operations, therefore `Number of nodes in cluster`
-is reduced by 1.
+
+`Number of nodes in cluster` x `MaximumConcurrentOperationsPerNode`
+
+> [!Note] 
+> In clusters with three nodes or above, the admin node doesn't participate in performing merge operations, therefore `Number of nodes in cluster` is reduced by 1.
 
 ### Export capacity
 
@@ -64,8 +70,11 @@ is reduced by 1.
 
 The cluster's total export capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity))
 is calculated by:
-- Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
-- *Note:* In clusters with 3 nodes or above, the admin node doesn't participate in performing export operations, 
+
+Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
+
+> [!Note] 
+> In clusters with three nodes or above, the admin node doesn't participate in performing export operations, 
 therefore `Number of nodes in cluster` is reduced by 1.
 
 ### Extents Partition capacity
@@ -101,27 +110,28 @@ The default capacity policy has the following JSON representation:
 ```
 
 > [!WARNING]
-> It is **rarely** recommended to alter a Capacity Policy without consulting with the Kusto team first.
+> It is **rarely** recommended to alter a Capacity Policy without first consulting with the Kusto team.
 
 ## Control Commands
+
 * Use [.show cluster policy capacity](capacity-policy.md#show-cluster-policy-capacity)
   to show the current capacity policy of the cluster.
 * Use [.alter cluster policy capacity](capacity-policy.md#alter-cluster-policy-capacity) to alter the capacity policy of the cluster.
 
 ## Throttling
 
-Kusto limits the amount of concurrent requests for the following commands.
+Kusto limits the number of concurrent requests for the following commands:
 
 1. Ingestions (includes all the commands that are listed [here](../management/data-ingestion/index.md))
       * Limit is as defined in the [capacity policy](#capacity-policy).
-2. Merges
+1. Merges
       * Limit is as defined in the [capacity policy](#capacity-policy).
-3. Purges
-      * Global is currently fixed at 1 per cluster.
+1. Purges
+      * Global is currently fixed at one per cluster.
       * The purge rebuild capacity is used internally to determine the number of concurrent rebuild operations during purge commands (purge commands will not be blocked/throttled due to this, but will work faster/slower depending on the purge rebuild capacity).
-4. Exports
+1. Exports
       * Limit is as defined in the [capacity policy](#capacity-policy).
 
 
 When Kusto detects that some operation has exceeded the allowed concurrent operation, Kusto will respond with a 429 HTTP code.
-The client should retry the operation after some backoff. 
+The client should retry the operation after some backoff.

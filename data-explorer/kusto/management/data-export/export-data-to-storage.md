@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/03/2020
+ms.date: 03/12/2020
 ---
 # Export data to storage
 
@@ -52,7 +52,7 @@ external storage, specified by a [storage connection string](../../api/connectio
 |----------------|--------|---------------------------------------------------------------------------------------------------------------------------|
 |`sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100MB (default) to 1GB.|
 |`includeHeaders`|`string`|For `csv`/`tsv` output, controls the generation of column headers. Can be one of `none` (default; no header lines emitted), `all` (emit a header line into every storage artifact), or `firstFile` (emit a header line into the first storage artifact only).|
-|`fileExtension` |`string`|Indicates the "extension" part of the storage artifact (e.g. `.csv` or `.tsv`) If compression is used, `.gz` will be appended as well.|
+|`fileExtension` |`string`|Indicates the "extension" part of the storage artifact (for example, `.csv` or `.tsv`). If compression is used, `.gz` will be appended as well.|
 |`namePrefix`    |`string`|Indicates a prefix to add to each generated storage artifact name. A random prefix will be used if left unspecified.       |
 |`encoding`      |`string`|Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`. |
 |`compressionType`|`string`|Indicates the type of compression to use. Possible values are `gzip` or `snappy`. Default is `gzip`. `snappy` can (optionally) be used for `parquet` format. |
@@ -83,7 +83,7 @@ via the following commands:
 * [.show operations](../operations.md#show-operations): Track progress.
 * [.show operation details](../operations.md#show-operation-details): Get completion results.
 
-For example, after a successful completion, one can retrieve the results using:
+For example, after a successful completion, you can retrieve the results using:
 
 ```kusto
 .show operation f008dc1e-2710-47d8-8d34-0d562f5f8615 details

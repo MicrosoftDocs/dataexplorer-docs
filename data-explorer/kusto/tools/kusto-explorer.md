@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/04/2020
+ms.date: 03/13/2020
 ---
 # Kusto.Explorer tool
 
@@ -229,7 +229,7 @@ use `Reset View` menu item.
 |Query to Power BI| Translates query to format suitable for using in Power BI|
 ||---------*Options*---------|
 |Reset Options| Sets application settings to default values|
-|Options| Opens tool for application settings edit|
+|Options| Opens tool for application settings. [Details](kusto-explorer-options.md)|
 
 
 

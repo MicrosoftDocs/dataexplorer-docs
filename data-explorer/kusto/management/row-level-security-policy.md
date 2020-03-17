@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/08/2020
+ms.date: 03/16/2020
 ---
 # RowLevelSecurity policy (Preview)
 
@@ -75,5 +75,5 @@ This is useful if you want to try various queries for row_level_security, but do
 ## Deleting the policy
 
 ```kusto
-.delete <table_name> policy row_level_security
+.delete table <table_name> policy row_level_security
 ```

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/15/2020
 ---
 # The guid data type
 
@@ -16,6 +16,8 @@ value.
 
 > [!WARNING]
 > As of this writing, support for the `guid` type is incomplete.
+> The main gap is the lack of an index on columns of this type,
+> affecting the performance of queries that predicate over this type.
 > We strongly recommend that teams use values of type `string` instead.
 
 ## guid literals
