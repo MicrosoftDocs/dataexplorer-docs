@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/13/2020
+ms.date: 03/17/2020
 ---
 # Kusto.Explorer tool
 
-Kusto.Explorer is a rich desktop application that allows you to explore your data using Kusto query language. 
+Kusto.Explorer is a rich desktop application that allows you to explore your data using Kusto query language.
 
 ## Getting the tool
 
@@ -44,7 +44,7 @@ Kusto Explorer window has several UI parts:
 
 ### Keyboard shortcuts
 
-Please study this [list of Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md)
+Study this [list of Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md)
 to truly become a Kusto.Explorer ninja master.
 
 ### Menu Panel
@@ -64,7 +64,7 @@ Kusto.Explorer Menu panel has several tabs:
 
 ![Kusto.Explorer Home](./Images/KustoTools-KustoExplorer/home-tab.png "home-tab")
 
-Home Tab accumulates most recently used functionality, splitted by menus:
+The Home tab accumulates most recently used functionality, split by menus:
 
 * [Query](#query-menu)
 * [Share](#share-menu)

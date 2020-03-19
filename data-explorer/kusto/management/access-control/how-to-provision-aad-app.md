@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/26/2020
+ms.date: 03/18/2020
 ---
 # HowTo: Creating an AAD application
 

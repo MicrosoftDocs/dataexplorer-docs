@@ -7,13 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/18/2020
 ---
 # Cluster follower commands
 
 Control commands for managing the follower cluster configuration are listed below. These commands run synchronously, but are applied on the next periodic schema refresh. Therefore, there may be a few minutes delay until the new configuration is applied.
-
-
 
 The follower commands include [database level commands](#database-level-commands) and [table level commands](#table-level-commands).
 
@@ -287,14 +285,14 @@ In this example:
 
 ### Steps to execute
 
+*Prerequisite:* Setup cluster `MyFollowerCluster` to follow database `MyDatabase` from cluster `MyLeaderCluster`.
+
 > [!NOTE]
 > The principal running the control commands is expected to be a `DatabaseAdmin` on database `MyDatabase`.
 
-#### Setting up the follower cluster
+#### Show the current configuration
 
-
-
-1. See the current configuration according to which `MyDatabase` is being followed on `MyFollowerCluster`:
+See the current configuration according to which `MyDatabase` is being followed on `MyFollowerCluster`:
 
 ```kusto
 .show follower database MyDatabase

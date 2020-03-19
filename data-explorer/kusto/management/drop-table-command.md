@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 03/18/2020
 ---
 # .drop table and .drop tables
 
@@ -33,7 +33,7 @@ that was in effect at the time the data was ingested into the table.
 **Example**
 
 ```
-.drop CustomersTable if exists
+.drop table CustomersTable ifexists
 .drop tables (ProductsTable, ContactsTable, PricesTable) ifexists
 ```
 

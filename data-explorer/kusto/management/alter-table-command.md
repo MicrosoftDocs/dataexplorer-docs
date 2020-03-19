@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/17/2020
 ---
 # .alter table and .alter-merge table
 
@@ -20,7 +20,7 @@ Data in existing columns is preserved.
 
 Both commands must run in the context of a specific database that scopes the table name.
 
-Requires [database user permission](../management/access-control/role-based-authorization.md).
+Requires [Table Admin permission](../management/access-control/role-based-authorization.md).
 
 **Syntax**
 

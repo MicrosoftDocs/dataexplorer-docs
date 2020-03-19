@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2020
+ms.date: 03/17/2020
 ---
 # Fact and dimension tables
 
-When designing the schema for a Kusto database, it is useful to think of tables
+When designing the schema for a Kusto database, it's useful to think of tables
 as broadly belonging to one of two categories:
 * [Fact tables](https://en.wikipedia.org/wiki/Fact_table) and
 * [Dimension tables](https://en.wikipedia.org/wiki/Dimension_(data_warehouse)#Dimension_table).
@@ -45,9 +45,10 @@ table and how the tables is used is what's important.
 > is then retrieved.
 
 
+
 ## Commands that differentiate fact and dimension tables
 
 There are processes in Kusto that differentiate between fact tables and
 dimension tables. For example, [continuous export](../management/data-export/continuous-data-export.md)
 
-<#ifdef MICROSOFT>* [Materialized views](../management/materialized-views.md) is another example.
+<#ifdef MICROSOFT>[Materialized views](../management/materialized-views.md) is another example.
