@@ -1,15 +1,15 @@
 ---
-title: Summarize operator - Azure Data Explorer | Microsoft Docs
-description: This article describes Summarize operator in Azure Data Explorer.
+title: summarize operator - Azure Data Explorer | Microsoft Docs
+description: This article describes summarize operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/20/2020
 ---
-# Summarize operator
+# summarize operator
 
 Produces a table that aggregates the content of the input table.
 

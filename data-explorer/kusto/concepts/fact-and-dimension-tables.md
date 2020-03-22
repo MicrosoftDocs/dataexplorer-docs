@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/17/2020
+ms.date: 03/19/2020
 ---
 # Fact and dimension tables
 
@@ -49,6 +49,6 @@ table and how the tables is used is what's important.
 ## Commands that differentiate fact and dimension tables
 
 There are processes in Kusto that differentiate between fact tables and
-dimension tables. For example, [continuous export](../management/data-export/continuous-data-export.md)
-
-<#ifdef MICROSOFT>[Materialized views](../management/materialized-views.md) is another example.
+dimension tables. 
+* [continuous export](../management/data-export/continuous-data-export.md)
+<#ifdef MICROSOFT>* [Materialized views](../management/materialized-views.md)
