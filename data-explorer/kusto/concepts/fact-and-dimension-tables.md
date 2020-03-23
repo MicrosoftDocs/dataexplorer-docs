@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/19/2020
+ms.date: 03/23/2020
 ---
 # Fact and dimension tables
 
@@ -49,6 +49,18 @@ table and how the tables is used is what's important.
 ## Commands that differentiate fact and dimension tables
 
 There are processes in Kusto that differentiate between fact tables and
-dimension tables. 
+dimension tables.
+
 * [continuous export](../management/data-export/continuous-data-export.md)
-<#ifdef MICROSOFT>* [Materialized views](../management/materialized-views.md)
+
+
+
+
+These processes are guaranteed to process data in fact tables precisely once,
+by relying on the [database cursor](../management/databasecursor.md) mechanism.
+
+For example, every execution of a continuous export job exports all records
+that were ingested since the last update of the database cursor. Therefore,
+continuous export jobs must differentiate between fact tables (process only newly
+ingested data) and dimension tables (being used as lookups, so the entire table
+must be taken into account).

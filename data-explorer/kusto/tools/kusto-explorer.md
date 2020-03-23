@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/19/2020
+ms.date: 03/23/2020
 ---
 # Kusto.Explorer tool
 
@@ -68,7 +68,7 @@ The Home tab shows the most recently used functions, divided into sections:
 * [Share](#share-section)
 * [Visualizations](#visualizations-section)
 * [View](#view-section)
-* [Help](#help-section)
+* [Help](#help-tab)
 
 #### Query section
 

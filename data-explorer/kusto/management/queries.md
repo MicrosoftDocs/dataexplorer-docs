@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/23/2020
 ---
 # Queries management
 
@@ -25,7 +25,7 @@ The `.show` `queries` command returns a list of queries that have reached a fina
 
 ## .show running queries
 
-The `.show` `queries` command returns a list of currently-executing queries
+The `.show` `running` `queries` command returns a list of currently-executing queries
 by the user, or by another user, or by all users.
 
 **Syntax**

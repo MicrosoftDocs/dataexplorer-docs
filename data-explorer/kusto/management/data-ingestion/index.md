@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 03/23/2020
 ---
 # Data ingestion
 
@@ -43,6 +43,9 @@ The data ingestion process consists of several steps:
 > override it at the table level. Failure to do so might result in a "silent" deletion of
 > your data due to the database's retention policy. See [retention policy](https://kusto.azurewebsites.net/docs/concepts/retentionpolicy.html)
 > for details.
+
+For data ingestion properties, see [data ingestion properties](azure/data-explorer/ingestion-properties).
+For a list of supported formats for data ingestion see [data formats](/azure/data-explorer/ingestion-supported-formats).
 
 
 
@@ -81,147 +84,6 @@ its own characteristics:
 |Ingest from query  |Query time + ingest time|Yes       |Yes |Kusto Engine|Synchronous  |
 |Ingest from storage|Seconds + ingest time   |Yes       |Yes |Kusto Engine|Both         |
 |Queued ingestion   |Minutes                 |Yes       |Yes |Storage     |Asynchronous |
-
-## Ingestion properties 
-
-You can add zero or more properties to the Ingestion command after the `with` keyword. The supported properties are:  
-
-* `ingestionMapping`: A string value that indicates
-  how to map data from the source file to the actual columns in the table.
-  Requires defining the `format` value with the relevant mapping type (see the table below).
-  See [data mappings](../mappings.md).
-  For example: `with (format="json", ingestionMapping = "[{\"column\":\"rownumber\", \"Properties\":{\"Path\":\"$.RowNumber\"}}, {\"column\":\"rowguid\", \"Properties\":{\"Path\":\"$.RowGuid\"}}]")`
-  (deprecated: `avroMapping`, `csvMapping`, `jsonMapping`)
- 
-* `ingestionMappingReference`: A string value that indicates how to map data from the source file to the
-  actual columns in the table using a named mapping policy object.
-  Requires defining the `format` value with the relevant mapping type (see the table below).
-  See [data mappings](../mappings.md).
-  For example:  `with (format="csv", ingestionMappingReference = "Mapping1")`
-  (deprecated: `avroMappingReference`, `csvMappingReference`, `jsonMappingReference`)
-
-* `creationTime`: The datetime value (formatted as a ISO8601 string) to use
-  as the creation time of the ingested data extents. If unspecified, the current
-  value (`now()`) will be used. Overriding the default is useful when ingesting
-  older data, so that retention policy will be applied correctly.
-  For example: `with (creationTime="2017-02-13T11:09:36.7992775Z")`.
-
-* `extend_schema`: A Boolean value that, if specified, instructs the command
-  to extend the schema of the table (defaults to `false`). This option applies only
-  to `.append` and `.set-or-append` commands. The only allowed schema extensions
-  have additional columns added to the table at the end. For example, if the original table schema is `(a:string, b:int)` then a
-  valid schema extension would be `(a:string, b:int, c:datetime, d:string)`,
-  but `(a:string, c:datetime)` would not.
-
-* `folder`: For [ingest-from-query](./ingest-from-query.md) commands,
-  the folder to assign to the table (if the table already exist this will
-  override the table's folder).
-  For example: `with (folder="Tables/Temporary")`.
-
-* `format`: The data format (see below for supported values and their meaning).
-  For example: `with (format="csv")`.
-
-* `ingestIfNotExists`: A string value that, if specified, prevents ingestion
-  from succeeding if the table already has data tagged with an `ingest-by:` tag
-  with the same value. This ensures idempotent data ingestion.
-  For more information see [ingest-by: tags](../extents-overview.md#ingest-by-extent-tags).
-  For example, the properties `with (ingestIfNotExists='["Part0001"]', tags='["ingest-by:Part0001"]')`
-  indicate that if data with the tag `ingest-by:Part0001` already exists, then
-  don't complete the current ingestion. If it doesn't already exist,
-  this new ingestion should have this tag set (in case a future ingestion
-  attempts to ingest the same data again in the future.)
-
-* `ignoreFirstRecord`: A Boolean value that, if set to `true`, indicates that
-  ingestion should ignore the first record of every file. This is useful for
-  files formatted in `CSV` (and similar formats) if the first record in the file
-  is a header record specifying the column names. By default `false` is assumed.
-  For example: `with (ignoreFirstRecord=false)`.
-
-* `persistDetails`: A Boolean value that, if specified, indicates that the command
-  should persist the detailed results (even if successful) so that the
-  [.show operation details](../operations.md#show-operation-details) command could retrieve them.
-  Defaults to `false`.
-  For example: `with (persistDetails=true)`.
-
-* `policy_ingestiontime`: A Boolean value that, if specified, describes whether
-  to enable the [Ingestion Time Policy](../../management/ingestiontimepolicy.md)
-  on a table that is created by this command. (The default is `true`.)
-  For example: `with (policy_ingestiontime=false)`.
-
-* `recreate_schema`: A Boolean value that, if specified, describes whether the
-  command may recreate the schema of the table. This option applies only
-  to the `.set-or-replace` command. This takes precedence over the `extend_schema`
-  option if both are set.
-  For example, `with (recreate_schema=true)`.
-
-* `tags`: A list of [tags](../extents-overview.md#extent-tagging) to associate
-  with the ingested data, formatted as a JSON string.
-  For example: `with (tags="['Tag1', 'Tag2']")`.
-
-* `validationPolicy`: A JSON string that indicates which validations to run
-  during ingestion. See below for an explanation of the different options.
-  For example: `with (validationPolicy='{"ValidationOptions":1, "ValidationImplications":1}')`
-  (this is actually the default policy).
-
-* `zipPattern`: When ingesting data from storage that has a ZIP archive,
-  a string value indicating the regular expression to use when selecting which
-  files in the ZIP archive to ingest. All other files in the archive will be
-  ignored.
-  For example: `with (zipPattern="*.csv")`.
-
-<!-- TODO: Fill-in the following
-The following table shows which property applies to each method of ingestion.
-
-|Property|.set|.append|.set-or-append|.set-or-replace|.ingest inline|.ingest (pull)|
-
--->
-
-## Supported data formats
-
-For all ingestion methods, other than ingest-from-query, the data must be
-formatted in one of the supported data formats:
-
-|Format   |Extension   |Description|
-|---------|------------|-----------|
-|avro     |`.avro`     |An [Avro container file](https://avro.apache.org/docs/current/). The following codes are supported: `null`, `deflate` (`snappy` is currently not supported).|
-|CSV      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
-|JSON     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
-|multijson|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace, `\n` or `\r\n`. Each property bag can be spread on multiple lines. (This format is preferred over `JSON`, unless the data is non-property bags.)|
-|orc      |`.orc`      |An [Orc file](https://en.wikipedia.org/wiki/Apache_ORC).|
-|parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet).|
-|psv      |`.psv`      |A text file with pipe-separated values (<code>&#124;</code>).|
-|raw      |`.raw`      |A text file whose entire contents is a single string value.|
-|scsv     |`.scsv`     |A text file with semicolon-separated values (`;`).|
-|sohsv    |`.sohsv`    |A text file with SOH-separated values. (SOH is ASCII codepoint 1; this format is used by Hive on HDInsight.)|
-|tsv      |`.tsv`      |A text file with tab-separated values (`\t`).|
-|tsve     |`.tsv`      |A text file with tab-separated values (`\t`). A backslash character (`\`) is used for escaping.|
-|txt      |`.txt`      |A text file with lines delimited by `\n`. Empty lines are skipped.|
-
-
-
-Blobs and files can be optionally compressed through any of the following
-compression algorithms:
-
-|Compression|Extension|
-|-----------|---------|
-|GZip       |.gz      |
-|Zip        |.zip     |
-
-The name of the blob or file should indicate compression by appending the extension
-noted above to the name of the blob or file. Thus, `MyData.csv.zip` indicates
-a blob or a file formatted as CSV, compressed via Zip
-(either as an archive or as a single file), and `MyData.csv.gz` indicates
-a blob or a file formatted as CSV, compressed via GZip.
-
-Blob or file names that don't include the format extensions but just compression
-(for example, `MyData.zip`) are also supported. In this case, the file format
-must be specified as an ingestion property because it cannot be inferred.
-
-> [!NOTE]
-> Some compression formats keep track of the original file extension as part
-> of the compressed stream. This extension is generally ignored for
-> determining the file format. If the file format can't be determined from the (compressed)
-> blob or file name, it must be specified through the `format` ingestion property.
 
 ## Validation policy during ingestion
 

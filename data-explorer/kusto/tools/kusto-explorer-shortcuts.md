@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/15/2020
+ms.date: 03/22/2020
 ---
 # Kusto.Explorer keyboard shortcuts (hot-keys)
 
@@ -19,11 +19,12 @@ The following keyboard shortcuts can be used from any context:
 |-------|-----------|
 |`F1`     | Opens the help|
 |`F11`    | Toggle full-view mode|
-|`Ctrl`+`F1` | Toggle ribbon appearance |
+|`Ctrl`+`F1`| Toggle ribbon appearance |
 |`Ctrl`+`+`| Increases query and data results font|
 |`Ctrl`+`-`| Decreases query and data results font|
 |`Ctrl`+`0`| Resets query and data results font|
 |`Ctrl`+`1` .. `7`| Switches to Query document panel with respective number (1..7)|
+|`Ctrl`+`F2`|Renames header of the Query Editor panel|
 |`Ctrl`+`N` |Opens a new query editor|
 |`Ctrl`+`O` |Open query editor script in a new query editor|
 |`Ctrl`+`W` |Closes active query editor|
@@ -114,7 +115,7 @@ The following keyboard shortcuts can be used when editing a query in the query e
 |`Ctrl`+`Mouse wheel up`| Increases font of the qupery editor| 
 |`Ctrl`+`Mouse wheel down`| Decreases font of the query editor|
 |`Alt`+`P` | Opens query parameters dialog |
-|`F2`| Open current line / selected text in Phyton editor dialog |
+|`F2`| Open current line / selected text in editor dialog |
 |`Ctrl`+`F6`| Runs KQL static query analysis to detect common issues |
 |`F12`| Navigate to the definition of the symbol |
 |`Ctrl`+`F12`| Find all refernces of the current symbol |
