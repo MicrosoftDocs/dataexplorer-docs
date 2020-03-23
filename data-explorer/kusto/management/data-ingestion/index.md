@@ -44,8 +44,8 @@ The data ingestion process consists of several steps:
 > your data due to the database's retention policy. See [retention policy](https://kusto.azurewebsites.net/docs/concepts/retentionpolicy.html)
 > for details.
 
-For data ingestion properties, see [data ingestion properties](azure/data-explorer/ingestion-properties).
-For a list of supported formats for data ingestion see [data formats](/azure/data-explorer/ingestion-supported-formats).
+For data ingestion properties, see [data ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties).
+For a list of supported formats for data ingestion see [data formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).
 
 
 

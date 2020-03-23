@@ -49,7 +49,7 @@ two supported mechanisms for providing credentials:
 Examples (note that this is showing obfuscated string literals, so as not to expose
 the account key or SAS):
 
-`h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;<storage_account_key_text, ends with '=='>"`  
+`h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;<storage_account_key_text, ends with '=='>"`
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"` 
 
 ## Azure Data Lake Store
