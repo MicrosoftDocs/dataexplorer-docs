@@ -68,7 +68,7 @@ The Home tab shows the most recently used functions, divided into sections:
 * [Share](#share-section)
 * [Visualizations](#visualizations-section)
 * [View](#view-section)
-* [Help](#help-tab) 
+* [Help](#help-tab)
 
 #### Query section
 
