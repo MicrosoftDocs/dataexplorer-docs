@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/24/2020
 ---
 # The .ingest into command (pull data from storage)
 
@@ -46,7 +46,7 @@ without affecting existing records, and without modifying the table's schema.
 > in its internal traces, error messages, etc.
 
 * *IngestionPropertyName*, *IngestionPropertyValue*: Any number of
-  [ingestion properties](./index.md#ingestion-properties) that affect the ingestion process.
+  [ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) that affect the ingestion process.
 
 **Results**
 

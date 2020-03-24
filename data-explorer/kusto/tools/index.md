@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/11/2020
+ms.date: 03/24/2020
 ---
 # Azure Data Explorer tools
 
@@ -45,7 +45,7 @@ ms.date: 03/11/2020
 ## Data ingestion tools
 
 
-* [LightIngest](./lightingest.md) - Help utility for ad-hoc data ingesting into Azure Data Explorer
+* [LightIngest](https://docs.microsoft.com/azure/data-explorer/lightingest) - Help utility for ad-hoc data ingesting into Azure Data Explorer
  
 
 

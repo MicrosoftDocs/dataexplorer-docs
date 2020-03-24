@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/23/2020
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 
@@ -40,10 +40,22 @@ existing or nonexistent tables and data:
   command to retrieve the ingestion completion status and results.
 * *TableName*: The name of the table to ingest data to.
   The table name is always relative to the database in context.
-* *PropertyName*, *PropertyValue*: Any number of
-  [ingestion properties](./index.md#ingestion-properties) that affect the ingestion process.
+* *PropertyName*, *PropertyValue*: Any number of ingestion properties that affect the ingestion process.
 
-  In addition, there are several properties that control the behavior of the command itself:
+ Supported ingestion properties:
+
+|Property        |Description|
+|----------------|-----------------------------------------------------------------------------------------------------------------------------|
+|`creationTime`   | The datetime value (formatted as an ISO8601 string) to use at the creation time of the ingested data extents. If unspecified, the current value (now()) will be used.|
+|`extend_schema`  | A Boolean value that, if specified, instructs the command to extend the schema of the table (defaults to false). This option applies only to .append .set-or-append and set-or-replace commands. The only allowed schema extensions have additional columns added to the table at the end.|
+|`recreate_schema`  | A Boolean value that, if specified, describes whether the command may recreate the schema of the table (defaults to false). This option applies only to set-or-replace command. This option takes precedence over the extend_schema property if both are set.|
+|`folder`         | The folder to assign to the table. If the table already exists, this property will override the table's folder.|
+|`ingestIfNotExists`   | A string value that, if specified, prevents ingestion from succeeding if the table already has data tagged with an ingest-by: tag with the same value.|
+|`policy_ingestiontime`   | A Boolean value that, if specified, describes whether to enable the [Ingestion Time Policy](../../management/ingestiontime-policy.md) on a table that is created by this command. The default is true.|
+|`tags`   | A JSON string that indicates which validations to run during ingestion.|
+|`docstring`   | A string documenting the table.|
+
+  In addition, there is a property that controls the behavior of the command itself:
 
 |Property        |Type    |Description|
 |----------------|--------|-----------------------------------------------------------------------------------------------------------------------------|
@@ -60,6 +72,9 @@ existing or nonexistent tables and data:
 * `.set-or-replace` replaces the data of the table if it exists (drops the existing data shards),
   or creates the target table if doesn't already exist.
   The table schema will be preserved unless one of `extend_schema` or `recreate_schema`
+  ingestion property is set to `true`. If the schema is modified, this happens before the actual data
+  ingestion in its own transaction, so a failure to ingest the data doesn't mean the schema wasn't modified.
+* `.set-or-append` and `.append` commands will preserve the schema unless `extend_schema` 
   ingestion property is set to `true`. If the schema is modified, this happens before the actual data
   ingestion in its own transaction, so a failure to ingest the data doesn't mean the schema wasn't modified.
 * It is **strongly recommended** that the data for ingestion be limited to less than 1 GB per ingestion

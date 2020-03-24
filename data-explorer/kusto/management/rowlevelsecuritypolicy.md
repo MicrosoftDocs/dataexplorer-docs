@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/08/2020
+ms.date: 03/24/2020
 ---
 # Row Level Security (Preview)
 
@@ -105,3 +105,30 @@ query production environments for troubleshooting purposes without violating com
 * A bank can set an RLS policy to restrict access to financial data rows based on an employee's business
 division or role.
 * A multi-tenant application can store data from many tenants in a single tableset (which is very efficient). They would use an RLS policy to enforce a logical separation of each tenant's data rows from every other tenant's rows, so each tenant can see only its data rows.
+
+## Performance impact
+
+When an RLS policy is enabled on a table, there will be some performance impact on queries that access that table. Access to the table will actually be replaced by the RLS query that's defined on that table. The performance impact of an RLS query will normally consist of two parts:
+
+* Membership checks in Azure Active Directory
+* The filters applied on the data
+
+For example:
+
+```kusto
+let IsRestrictedUser = current_principal_is_member_of('aadgroup=some_group@domain.com');
+let AllData = MyTable | where not(IsRestrictedUser);
+let PartialData = MyTable | where IsRestrictedUser and (...);
+union AllData, PartialData
+```
+
+If the user is not part of some_group@domain.com, then `IsRestrictedUser` will be evaluated to `false`,
+so the query that will be evaluated will be similar to this one:
+
+```kusto
+let AllData = MyTable;           // the condition evaluates to `true`, so the filter is dropped
+let PartialData = <empty table>; // the condition evaluates to `false`, so the whole expression is replaced with an empty table
+union AllData, PartialData       // this will just return AllData, as PartialData is empty
+```
+
+Similarly, if `IsRestrictedUser` evaluates to `true`, then only the query for `PartialData` will be evaluated.

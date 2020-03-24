@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2020
+ms.date: 03/24/2020
 ---
 # External table management
 
@@ -174,7 +174,7 @@ Creates or alters a new external table in the database in which the command is e
 * *TableName* - External table name. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.
 * *Schema* - External data schema in format: `ColumnName:ColumnType[, ColumnName:ColumnType ...]`. If the external data schema is unknown, use the [infer_storage_schema](../query/inferstorageschemaplugin.md) plug-in, which can infer the schema based on external file contents.
 * *Partition* - One or several partition definitions (optional). See partition syntax below.
-* *Format* - The data format. Any of the [ingestion formats](./data-ingestion/index.md#supported-data-formats) are supported for querying. Using external table for [export scenario](data-export/export-data-to-an-external-table.md) is limited to the following formats: `CSV`, `TSV`, `JSON`, `Parquet`.
+* *Format* - The data format. Any of the [ingestion formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats) are supported for querying. Using external table for [export scenario](data-export/export-data-to-an-external-table.md) is limited to the following formats: `CSV`, `TSV`, `JSON`, `Parquet`.
 * *StorageConnectionString* - One or several paths to Azure Blob Storage blob containers or Azure Data Lake Store file systems (virtual directories or folders), including credentials. See [storage connection strings](../api/connection-strings/storage.md) for details. It is highly recommended to provide more than a single storage account to avoid storage throttling if [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided. 
 
 **Partition syntax**

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 03/24/2020
 ---
 # Kusto connection strings
 
@@ -87,7 +87,7 @@ It lists programmatic names (which is the name of the property in the
 |Application Certificate Thumbprint                |AppCert                                   |ApplicationCertificateThumbprint              |A String value that provides the thumbprint of the client certificate to use when using an application client certificate authenticating flow|
 |Application Client Id                             |AppClientId                               |ApplicationClientId                           |A String value that provides the application client ID to use when authenticating|
 |Application Key                                   |AppKey                                    |ApplicationKey                                |A String value that provides the application key to use when authenticating using an application secret flow|
-|Application Name for Tracing                      |                                          |TraceAppName                                  |A String value that reports to the service which application name to use when tracing the request internally|
+|Application Name for Tracing                      |TraceAppName                              |ApplicationNameForTracing                     |A String value that reports to the service which application name to use when tracing the request internally|
 |Application Token                                 |AppToken                                  |ApplicationToken                              |A String value that instructs the client to perform application authenticating with the specified bearer token|
 |Authority Id                                      |TenantId                                  |Authority                                     |A String value that provides the name or ID of the tenant in which the application is registered|
 |                                                  |                                          |EmbeddedManagedIdentity                       |A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. This property cannot be set with a connection string, only programmatically.|ManagedServiceIdentity                        |TODO|
