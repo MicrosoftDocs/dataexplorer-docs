@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 03/30/2020
 ---
 # Data mappings
 
@@ -20,7 +20,7 @@ Each element in the mapping list is constructed from three properties:
 |Property|Description|
 |----|--|
 |`column`|Target column name in the Kusto table|
-|`datatype`| (Optional) Datatype with which to create the mapped column if not already exists in the Kusto table|
+|`datatype`| (Optional) Datatype with which to create the mapped column if it doesn't already exist in the Kusto table|
 |`Properties`|(Optional) Property-bag containing properties specific for each mapping as described in each section below.
 
 
@@ -36,10 +36,10 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 |Property|Description|
 |----|--|
-|`ordinal`|The column order number in CSV.|
+|`ordinal`|The column order number in CSV|
 |`constantValue`|(Optional) The constant value to be used for a column instead of some value inside the CSV|
 
-< [!NOTE]
+> [!NOTE]
 > `Ordinal` and `ConstantValue` are mutually exclusive.
 
 ### Example of the CSV mapping

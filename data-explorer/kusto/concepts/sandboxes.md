@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ---
 # Sandboxes
 
@@ -46,7 +46,7 @@ Some of these limitations can be controlled using a cluster-level [sandbox polic
   * Requests which encounter a state where there is no available sandbox will be throttled.
 * **Network:** A sandbox cannot interact with any resource on the VM or outside of it.
   * A sandbox cannot interact with another sandbox.
-* **CPU:** The maximum rate of CPU a sandbox can consume of its host's processors is limited (by default to `%50`).
+* **CPU:** The maximum rate of CPU a sandbox can consume of its host's processors is limited (by default to `50%`).
   * When this limit is reached, the sandbox's CPU use is throttled, but execution continues.
 * **Memory:** The maximum amount of RAM a sandbox can consume of its host's RAM is limited (by default to `20GB`).
   * Reaching this limit will result with termination of the sandbox (and a query execution error).

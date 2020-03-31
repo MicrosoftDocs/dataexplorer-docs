@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/23/2020
+ms.date: 03/30/2020
 ---
 # Data ingestion
 
@@ -45,7 +45,7 @@ The data ingestion process consists of several steps:
 > for details.
 
 For data ingestion properties, see [data ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties).
-For a list of supported formats for data ingestion see [data formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).
+For a list of supported formats for data ingestion, see [data formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).
 
 
 

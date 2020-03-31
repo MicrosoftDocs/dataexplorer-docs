@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/28/2020
+ms.date: 03/30/2020
 ---
 # Data partitioning policy (Preview)
 
@@ -49,11 +49,11 @@ on a specific `string`-typed column of *large-dimension*, such as `application_I
 * `MaxPartitionCount` is the maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period.
   * Supported are values in the range `(1,1024]`.
     * The value is expected to be:
-      * Larger than the amount of nodes in the cluster
+      * Larger than the number of nodes in the cluster
       * Smaller than the cardinality of the column.
-    * The higher the value is, the larger the overhead of the data partitioning process on the cluster's nodes will be, and the higher the amount of extents for each time period will be.
+    * The higher the value is, the larger the overhead of the data partitioning process on the cluster's nodes will be, and the higher the number of extents for each time period will be.
     * A recommended value to start with is `256`.
-      * If required, it can be adjusted (usually upwards), based on the aforementioned considerations, and/or based on measuring the benefit in query query performance 
+      * If required, it can be adjusted (usually upwards), based on the aforementioned considerations, and/or based on measuring the benefit in query performance 
         vs. overhead of partitioning the data post-ingestion.
 * `Seed` is the value to use for randomizing the hash value.
   * The value should be a positive integer.

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 03/31/2020
 ---
 # Blob storage subscription using Event Grid Notifications
 
@@ -92,7 +92,7 @@ blob.UploadFromFile(localFileName);
 
 * [Create a storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
   Event Grid notification subscription can be set on Azure Storage Accounts of kind `BlobStorage` or `StorageV2`. 
-  Enabling [Data Lake Storage Gen2](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction) is also supported.
+  Enabling [Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) is also supported.
 * [Create an event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
 #### Event Grid Subscription

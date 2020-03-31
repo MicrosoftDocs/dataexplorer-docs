@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/23/2020
+ms.date: 03/30/2020
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 
@@ -55,7 +55,7 @@ existing or nonexistent tables and data:
 |`tags`   | A JSON string that indicates which validations to run during ingestion.|
 |`docstring`   | A string documenting the table.|
 
-  In addition, there is a property that controls the behavior of the command itself:
+  In addition, there's a property that controls the behavior of the command itself:
 
 |Property        |Type    |Description|
 |----------------|--------|-----------------------------------------------------------------------------------------------------------------------------|
@@ -77,7 +77,7 @@ existing or nonexistent tables and data:
 * `.set-or-append` and `.append` commands will preserve the schema unless `extend_schema` 
   ingestion property is set to `true`. If the schema is modified, this happens before the actual data
   ingestion in its own transaction, so a failure to ingest the data doesn't mean the schema wasn't modified.
-* It is **strongly recommended** that the data for ingestion be limited to less than 1 GB per ingestion
+* It's **strongly recommended** that the data for ingestion be limited to less than 1 GB per ingestion
   operation. Multiple ingestion commands may be used, if necessary.
 * Data ingestion is a resource-intensive operation that might affect concurrent activities on the cluster,
   including running queries. Avoid running "too many" such commands together at the same time.
@@ -86,7 +86,7 @@ existing or nonexistent tables and data:
   schema columns are in the same order as the table, otherwise data will be ingested into
   the wrong column.
 * Setting the `distributed` flag to `true` is useful when the amount of data being
-  produced by the query is large (exceeds 1GB of data) **and** the query does not
+  produced by the query is large (exceeds 1GB of data) **and** the query doesn't
   require serialization (so that multiple nodes can produce output in parallel).
   When the query results are small it's not recommended to use this flag, as it
   might generate a lot of small data shards needlessly.
@@ -109,7 +109,7 @@ based on an existing table named "MyExtents":
 .set async OldExtents <| 
    MyExtents 
    | where CreatedOn < now() - time(30d) 
-   | project ExtentId 	
+   | project ExtentId     
 ```
 
 Append data to an existing table called "OldExtents" in the current database that has a single column ("ExtentId") 
@@ -120,7 +120,7 @@ while tagging the new extent with tags `tagA` and `tagB`, based on an existing t
 .append OldExtents with(tags='["TagA","TagB"]') <| 
    MyExtents 
    | where CreatedOn < now() - time(30d) 
-   | project ExtentId 	
+   | project ExtentId     
 ```
  
 Append data to the "OldExtents" table in the current database (or create the table if it doesn't already exist), 
@@ -131,7 +131,7 @@ tagged with `ingest-by:myTag`, based on an existing table named "MyExtents":
 .set-or-append async OldExtents with(tags='["ingest-by:myTag"]', ingestIfNotExists='["myTag"]') <| 
    MyExtents 
    | where CreatedOn < now() - time(30d) 
-   | project ExtentId 	
+   | project ExtentId     
 ```
 
 Replace the data in the "OldExtents" table in the current database (or create the table if it doesn't already exist), 
@@ -141,7 +141,7 @@ while tagging the new extent with `ingest-by:myTag`.
 .set-or-replace async OldExtents with(tags='["ingest-by:myTag"]', ingestIfNotExists='["myTag"]') <| 
    MyExtents 
    | where CreatedOn < now() - time(30d) 
-   | project ExtentId 	
+   | project ExtentId     
 ```
 
 Append data to the "OldExtents" table in the current database, while setting the created extent(s) creation time
@@ -151,7 +151,7 @@ to a specific datetime in the past:
 .append async OldExtents with(creationTime='2017-02-13T11:09:36.7992775Z') <| 
    MyExtents 
    | where CreatedOn < now() - time(30d) 
-   | project ExtentId 	
+   | project ExtentId     
 ```
 
 **Return output**

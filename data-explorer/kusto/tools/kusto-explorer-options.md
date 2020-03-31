@@ -1,15 +1,17 @@
 ---
-title: Kusto Explorer options - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto Explorer options in Azure Data Explorer.
+title: ﻿﻿Kusto Explorer options - Azure Data Explorer | Microsoft Docs
+description: This article describes ﻿﻿Kusto Explorer options in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/17/2020
+ms.date: 03/30/2020
 ---
-# Kusto Explorer options
+﻿﻿# Kusto Explorer options
+
+The following tables describe the options available to customize the behavior of Kusto Explorer from the tools/options menu.
 
 ## General Settings
 
@@ -20,7 +22,8 @@ ms.date: 03/17/2020
 | Allow sending telemetry data | When enabled, the application sends telemetry data when errors occur or the application crashes. |
 | Welcome message | When enabled, the application shows the welcome message on start. Default is enabled.|
 | Display Theme | The application UI color scheme: light or dark.|
-
+  
+.
 
 ## Query Editor
 
@@ -38,6 +41,8 @@ ms.date: 03/17/2020
 | Show help inside the application | When enabled, help topics are shown inside the application. When disabled help topics are opened inside a browser.|
 | Query parameter length limit | The maximal length of a string that can be used as a query parameter. Setting this value to more than 128K may cause performance issues. Default is 64K.|
 
+.
+
 ## IntelliSense
 
 | Option | Description |
@@ -48,6 +53,8 @@ ms.date: 03/17/2020
 | Syntax Highlighting | Enables or disables syntax highlighting. Default is enabled.|
 | Tool-tips | Enables or disables the tool-tips that pop up when the mouse hovers over areas of the selected query. Default is enabled.|
 
+.
+
 ## Formatter
 
 | Option | Description |
@@ -57,6 +64,8 @@ ms.date: 03/17/2020
 | Function Braces | The placement of function braces. *Vertical* places open and close curly braces on new lines. *Horizontal* leaves the open brace on its original line and places the close brace on a new line. *None* leaves all braces as is.|
 | Pipe Operator | The placement of the pipe (bar) character that exists between tabular query operators. *New Line* places all pipe characters on a new line. *Smart* places all pipe characters on a new line if the query already spans more than one line. *None* leaves all pipe characters as is.|
 | Semicolons | The placement of semicolons that end query statements. *New Line* places semicolons on a new line, indented. *Smart* places semicolons on a new line if the statement itself spans more than one line.  *None* leaves semicolons as is.
+
+.
 
 ## Results Viewer
 
@@ -71,6 +80,8 @@ ms.date: 03/17/2020
 | Visualize JSON as text | When enabled, JSON values are visualized as text. Default is disabled.|
 | Maximum Text Details Size | The maximum number of characters that will be shown in the detailed information panel when the cell is double-clicked. Default is 32KB.|
 
+.
+
 ## Connections
 
 | Option | Description |
@@ -83,6 +94,8 @@ ms.date: 03/17/2020
 | Query weak consistency | When enabled, weak consistency will be used for queries.|
 | Kusto parser version | The version of the parser used to execute queries. V1 is the classic parser. V2 is the modern parser. Default is V1.|
 
+.
+
 ## Diagnostic Tracing
 
 | Option | Description |
@@ -91,3 +104,4 @@ ms.date: 03/17/2020
 | Trace verbosity | Sets the verbosity of tracing.|
 | Traces location | The location where traces are logged.|
 | Platform trace verbosity | Sets the verbosity of tracing for the platform.|
+
