@@ -4,7 +4,7 @@ description: This article describes cursor_current(), current_cursor() in Azure 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/10/2019

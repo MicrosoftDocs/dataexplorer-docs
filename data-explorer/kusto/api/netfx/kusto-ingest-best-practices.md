@@ -4,7 +4,7 @@ description: This article describes Kusto Ingest Client Library - Best Practices
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/16/2019

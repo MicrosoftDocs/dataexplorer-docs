@@ -4,7 +4,7 @@ description: This article describes Query/management HTTP request in Azure Data 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/27/2020

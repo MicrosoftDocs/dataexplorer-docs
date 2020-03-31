@@ -4,7 +4,7 @@ description: This article describes Querying Kusto using Azure Notebooks in Azur
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/30/2019

@@ -4,7 +4,7 @@ description: This article describes Microsoft Flow Azure Kusto Connector (Previe
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/15/2019

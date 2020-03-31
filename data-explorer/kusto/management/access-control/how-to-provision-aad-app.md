@@ -4,7 +4,7 @@ description: This article describes HowTo -  Creating an AAD application in Azur
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2020

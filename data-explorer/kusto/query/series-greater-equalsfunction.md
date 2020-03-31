@@ -4,7 +4,7 @@ description: This article describes series_greater_equals() in Azure Data Explor
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/15/2019

@@ -4,7 +4,7 @@ description: This article describes Capacity policy control commands in Azure Da
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/02/2020

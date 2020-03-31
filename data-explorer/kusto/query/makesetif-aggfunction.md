@@ -4,7 +4,7 @@ description: This article describes make_set_if() (aggregation function) in Azur
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020

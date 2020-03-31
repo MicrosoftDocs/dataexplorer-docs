@@ -4,7 +4,7 @@ description: This article describes geo_distance_2points() in Azure Data Explore
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/11/2020

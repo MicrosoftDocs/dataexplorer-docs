@@ -4,10 +4,10 @@ description: This article describes Kusto Explorer Code Navigation in Azure Data
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/05/2019
+ms.date: 03/31/2020
 ---
 # Kusto Explorer Code Navigation
 
@@ -17,7 +17,7 @@ Kusto.Explorer provides several features for easy code navigation using query sy
 
 You can navigate to the definition of the current symbol using `F12` or `Alt`+`Home` short-cut.
 
-## List all referenes of a symbol
+## List all references of a symbol
 
 You can obtain all references of the current symbol using `Ctrl`+`F12` short-cut.
 

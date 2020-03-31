@@ -4,7 +4,7 @@ description: This article describes .create ingestion mapping in Azure Data Expl
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/04/2020

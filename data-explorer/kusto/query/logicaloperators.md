@@ -4,7 +4,7 @@ description: This article describes Logical (binary) operators in Azure Data Exp
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/14/2018

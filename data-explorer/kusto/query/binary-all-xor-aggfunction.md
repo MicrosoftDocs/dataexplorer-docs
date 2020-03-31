@@ -4,7 +4,7 @@ description: This article describes binary_all_xor() (aggregation function) in A
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/06/2020

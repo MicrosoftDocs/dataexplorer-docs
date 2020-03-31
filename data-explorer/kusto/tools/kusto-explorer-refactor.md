@@ -4,7 +4,7 @@ description: This article describes Kusto Explorer Code Refactoring in Azure Dat
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/05/2019

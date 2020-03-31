@@ -4,27 +4,27 @@ description: This article describes Blob storage subscription using Event Grid N
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/31/2020
 ---
 # Blob storage subscription using Event Grid Notifications
 
-Kusto offers continuous ingestion from blobs written to blob containers. 
-This is achieved by provisioning an [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) subscription for blob creation events and tunneling those events to Kusto via an Event Hub.
+Azure Data Explorer offers continuous ingestion from blobs written to blob containers. 
+Event Hub provisions an [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) subscription for blob creation events and then tunnels the blob to Azure Data Explorer.
 
-## Data Format
+## Data format
 
-* Blobs can be in any of the [formats supported by Kusto](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).
-* Blobs can be compressed in any of the [compressions supported by Kusto](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats#supported-data-compression-formats)
+* Blobs can be in any [supported formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).
+* Blobs can be compressed in any [supported compressions](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats#supported-data-compression-formats).
 
 > [!NOTE]
-> To achieve the best ingestion performance, it's important to let Kusto know the **uncompressed** size of the compressed blobs submitted for ingestion.
+> To achieve the best ingestion performance, indicate the **uncompressed** size of the blobs submitted for ingestion.
 > Since Event Grid notifications only contain the basic details, the size information needs to be communicated explicitly.
 > Uncompressed size information can be provided by setting the `rawSizeBytes` [property](#ingestion-properties) on the blob metadata to **uncompressed** data size in bytes.
 
-## Ingestion Properties
+## Ingestion properties
 
 You can specify [Ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) of the blob ingestion via the blob metadata.
 You can set the following properties:
@@ -61,10 +61,10 @@ blob.Metadata.Add("kustoCreationTime", "2019-10-18T11:06:06.7992775Z");
 blob.UploadFromFile(localFileName);
 ```
 
-## Events Routing
+## Events routing
 
-When setting up a blob storage connection to Kusto cluster, you specify target table properties (table name, data format and mapping). This is the default routing for your data, also refered to as `static routig`.
-You can also specify target table properties for each blob, using blob metadata. The connection will dynamically route the data as specified by properties.
+When setting up a blob storage connection to Azure Data Explorer cluster, specify target table properties (table name, data format and mapping). This is the default routing for your data, also referred to as `static routing`.
+You can also specify target table properties for each blob, using blob metadata. The data will be dynamically routed as specified by properties.
 
  ```csharp
 // Assuming data connection was set with csv format to `Events` table
@@ -83,10 +83,10 @@ blob.Metadata.Add("kustoIngestionMappingReference", "EventsMappingV2");
 blob.UploadFromFile(localFileName);
 ```
 
-## Create Event Grid Subscription
+## Create Event Grid subscription
 
 > [!Note]
-> For best performance, create all resources in the same Location as the Kusto cluster.
+> For best performance, create all resources in the same region as the Azure Data Explorer cluster.
 
 #### Prerequisites
 
@@ -95,14 +95,14 @@ blob.UploadFromFile(localFileName);
   Enabling [Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) is also supported.
 * [Create an event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
-#### Event Grid Subscription
+#### Event Grid subscription
 
 A detailed walk-through can be found in the how-to [Create an Event Grid subscription in your storage account](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-grid#create-an-event-grid-subscription-in-your-storage-account) guide.
 
 1. In the Azure portal, find your storage account and select **Events** > **Event Subscription**. 
-1. In the **Create Event Subscription** window within the **Basic** tab, set all required properties. Take a speciel care of the following values:
+1. In the **Create Event Subscription** window within the **Basic** tab, set all required properties. Pay special attention to the following values:
     * **Event Schema** is the schema used for notification events. Select `Event Grid schema`.
-    * **Event Types** are the types of events to emit. Select `Blob Created` (other types are ignored by Kusto)
+    * **Event Types** are the types of events to emit. Select `Blob Created` (other types are ignored by Azure Data Explorer)
     * **Endpoint Type** is the channel used for tunneling notification events. Select `Event Hubs` and set the pre-created Event Hub as the endpoint.
 
 1. Select the **Filters** tab if you want to track files from a specific container(s). Set the filters for the notifications as follows:
@@ -110,7 +110,7 @@ A detailed walk-through can be found in the how-to [Create an Event Grid subscri
      It *must* be set as follows: *`/blobServices/default/containers/<prefix>`*. For example: */blobServices/default/containers/StormEvents-2020-*
     * **Subject Ends With** field is the *literal* suffix of the blob. No wildcards are allowed. Useful for filtering file extensions.
 
-#### Data Ingestion Connection to Kusto
+#### Data ingestion connection to Azure Data Explorer
 
 
 
@@ -118,4 +118,4 @@ A detailed walk-through can be found in the how-to [Create an Event Grid subscri
 
 ## Blob lifecycle
 
-Azure Data Explorer won't delete the blobs post ingestion. Retain the blobs for three to five days. Use [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion.
+Azure Data Explorer won't delete the blobs post ingestion, but will retain them for three to five days. Use [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion.

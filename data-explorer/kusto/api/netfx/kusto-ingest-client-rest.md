@@ -4,7 +4,7 @@ description: This article describes HowTo Data Ingestion without Kusto.Ingest Li
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020

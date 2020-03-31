@@ -4,7 +4,7 @@ description: This article describes series_decompose_anomalies() in Azure Data E
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/28/2019

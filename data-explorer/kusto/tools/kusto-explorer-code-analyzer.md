@@ -4,7 +4,7 @@ description: This article describes Kusto Explorer Code Analyzer in Azure Data E
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/05/2019

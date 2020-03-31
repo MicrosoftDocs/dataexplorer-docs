@@ -4,7 +4,7 @@ description: This article describes unixtime_milliseconds_todatetime() in Azure 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/25/2019

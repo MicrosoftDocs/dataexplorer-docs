@@ -4,7 +4,7 @@ description: This article describes Row Level Security (Preview) in Azure Data E
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/25/2020

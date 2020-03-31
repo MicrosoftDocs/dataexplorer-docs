@@ -4,7 +4,7 @@ description: This article describes MS-TDS/T-SQL Differences between Kusto Micro
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/04/2019

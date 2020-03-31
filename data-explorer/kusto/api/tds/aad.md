@@ -4,7 +4,7 @@ description: This article describes MS-TDS with Azure Active Directory in Azure 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/02/2019

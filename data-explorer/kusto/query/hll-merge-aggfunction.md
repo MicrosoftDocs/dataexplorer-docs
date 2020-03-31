@@ -4,7 +4,7 @@ description: This article describes hll_merge() (aggregation function) in Azure 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/15/2019
