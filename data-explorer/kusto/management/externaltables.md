@@ -98,33 +98,6 @@ The following commands are relevant to _any_ external table (of any type).
 |-----------|-----------------|--------------|----------------|-----------|
 | T         | x:long,s:string | DB           | ExternalTables | Docs      |
 
-### .show external table artifacts
-
-* Returns a list of all artifacts that will be processed when querying a given external table.
-* Requires [database user permission](../management/access-control/role-based-authorization.md).
-
-**Syntax:** 
-
-`.show` `external` `table` *TableName* `artifacts`
-
-**Output**
-
-| Output parameter | Type   | Description                       |
-|------------------|--------|-----------------------------------|
-| Uri              | string | URI of external storage artifact |
-
-**Examples:**
-
-```
-.show external table T artifacts
-```
-
-**Output:**
-
-| Uri                                                                     |
-|-------------------------------------------------------------------------|
-| https://storageaccount.blob.core.windows.net/container1/folder/file.csv |
-
 ### .drop external table
 
 * Drops an external table 
@@ -332,7 +305,34 @@ dataformat=parquet
 )
 ```
 
-## .create mapping
+### .show external table artifacts
+
+* Returns a list of all artifacts that will be processed when querying a given external table.
+* Requires [database user permission](../management/access-control/role-based-authorization.md).
+
+**Syntax:** 
+
+`.show` `external` `table` *TableName* `artifacts`
+
+**Output**
+
+| Output parameter | Type   | Description                       |
+|------------------|--------|-----------------------------------|
+| Uri              | string | URI of external storage artifact |
+
+**Examples:**
+
+```
+.show external table T artifacts
+```
+
+**Output:**
+
+| Uri                                                                     |
+|-------------------------------------------------------------------------|
+| https://storageaccount.blob.core.windows.net/container1/folder/file.csv |
+
+### .create external table mapping
 
 `.create` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* *MappingInJsonFormat*
 
@@ -350,7 +350,7 @@ Creates a new mapping. For more information, see [Data Mappings](./mappings.md#j
 |----------|------|-------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName":"rownumber","ColumnType":"int","Properties":{"Path":"$.rownumber"}},{"ColumnName":"rowguid","ColumnType":"","Properties":{"Path":"$.rowguid"}}] |
 
-## .alter mapping
+### .alter external table mapping
 
 `.alter` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* *MappingInJsonFormat*
 
@@ -368,7 +368,7 @@ Alters an existing mapping.
 |----------|------|------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName":"rownumber","ColumnType":"","Properties":{"Path":"$.rownumber"}},{"ColumnName":"rowguid","ColumnType":"","Properties":{"Path":"$.rowguid"}}] |
 
-## .show mappings
+### .show external table mappings
 
 `.show` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* 
 
@@ -390,7 +390,7 @@ Show the mappings (all or the one specified by name).
 |----------|------|---------------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName":"rownumber","ColumnType":"","Properties":{"Path":"$.rownumber"}},{"ColumnName":"rowguid","ColumnType":"","Properties":{"Path":"$.rowguid"}}] |
 
-## .drop mapping
+### .drop external table mapping
 
 `.drop` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* 
 

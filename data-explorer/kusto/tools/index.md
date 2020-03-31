@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 03/27/2020
 ---
 # Azure Data Explorer tools
 

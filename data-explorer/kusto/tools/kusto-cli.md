@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/10/2019
+ms.date: 03/24/2020
 ---
 # Kusto CLI
 
@@ -36,6 +36,8 @@ Kusto.Cli is part of the NuGet package `Microsoft.Azure.Kusto.Tools`,
 which can be downloaded [here](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
 Once downloaded, the package's `tools` folder can be extracted to the target
 folder; no additional installation is required (i.e. it is xcopy-installable).
+
+
 
 ## Running the tool
 

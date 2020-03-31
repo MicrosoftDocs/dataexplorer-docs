@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2020
+ms.date: 03/27/2020
 ---
 # Continuous data export
 
@@ -29,23 +29,35 @@ For more information, see [exporting historical data](#exporting-historical-data
  
 ## Notes
 
+* The guarantee for "exactly-once" export is *only* for files reported in the the [show exported artifacts command](#show-continuous-export-exported-artifacts). 
+Continuous export does *not* guarantee that each record will be written only once to the external table. If a failure occurs after export has begun and some of
+ the artifacts were already written to the external table, the external table _may_ contain duplicates (or even corrupted files, in case a write operation was 
+ aborted before completion). In such cases, artifacts are not deleted from the external table but they will *not* be reported in the
+[show exported artifacts command](#show-continuous-export-exported-artifacts). Consuming the exported files using the `show exported artifacts command` 
+guarantees no duplicates (and not corruptions, of course).
 * To guarantee "exactly-once" export, continuous export uses [database cursors](../databasecursor.md). 
-[IngestionTime policy](../ingestiontime-policy.md) must therefore be enabled on all tables referenced in the query that should be processed "exactly-once" in the export. The policy is enabled by default on all newly created tables.
+[IngestionTime policy](../ingestiontime-policy.md) must therefore be enabled on all tables referenced in the query that should 
+be processed "exactly-once" in the export. The policy is enabled by default on all newly created tables.
 * The output schema of the export query *must* match the schema of the external table to which you export. 
 * Continuous export doesn't support cross-database/cluster calls.
-* Continuous export doesn't guarantee that each record will be written only once to the external table. If a failure occurs after export has begun and some of the artifacts were already written to the external table, the external table _may_ contain duplicates. In such (rare) cases, artifacts are not deleted from the external table but they will *not* be reported in the
-[show exported artifacts command](#show-continuous-export-exported-artifacts). Continuous export
-*does* guarantee no duplication when using the show exported-artifacts command to read the exported artifacts. 
 * Continuous export runs according to the time period configured for it. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. 
-Continuous export *isn't* designed for constantly streaming data out of Kusto. It runs in a distributed mode, where all nodes export concurrently. So if the range of data queried by each run is small, the output of the continuous export would be many small artifacts (the number depends on the number of nodes in the cluster). 
+Continuous export *isn't* designed for constantly streaming data out of Kusto. It runs in a distributed mode, where all nodes export concurrently. 
+If the range of data queried by each run is small, the output of the continuous export would be many small artifacts (the number depends on the number of nodes in the cluster). 
 * The number of export operations that can run concurrently is limited by the cluster's data export capacity (see [throttling](../../management/capacitypolicy.md#throttling)). 
 If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind. 
  
 * By default, all tables referenced in the export query are assumed to be [fact tables](../../concepts/fact-and-dimension-tables.md). 
 Therefore, they are *scoped* to the database cursor. Records included in the export query are only those that joined since the previous export execution. 
-The export query may contain [dimension tables](../../concepts/fact-and-dimension-tables.md) in which *all* records of the dimension table are included in *all* export queries. 
-Continuous-export of only dimension tables isn't supported. The export query must include at least a single fact table.
-The syntax explicitly declares which tables are scoped (fact) and which are not scoped (dimension). See the `over` parameter in the [create command](#create-or-alter-continuous-export) for details.
+The export query may contain [dimension tables](../../concepts/fact-and-dimension-tables.md) in which *all* records of the dimension
+ table are included in *all* export queries. 
+    * When using joins between fact and dimension tables in continuous-export, you must keep in mind 
+that records in the fact table are only processed once - if the export runs while records in the dimension tables are missing for some keys, 
+records for the respective keys will either be missed or include null values for the dimension columns in the 
+exported files (depending on whether the query uses inner or outer join). The forcedLatency property in the continuous-export definition 
+can be useful for such cases, where the fact and dimensions tables are ingested during the same time (for matching records).
+    * Continuous-export of only dimension tables isn't supported. The export query must include at least a single fact table.
+    * The syntax explicitly declares which tables are scoped (fact) and which are not scoped (dimension). See the `over` parameter in the 
+    [create command](#create-or-alter-continuous-export) for details.
 
 * The number of files exported in each continuous export iteration depends on how the 
 external table is partitioned. Refer to the notes section in 

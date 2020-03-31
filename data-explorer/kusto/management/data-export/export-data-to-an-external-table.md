@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2020
+ms.date: 03/27/2020
 ---
 # Export data to an external table
 
@@ -16,6 +16,9 @@ You can export data by defining an [external table](../externaltables.md) and ex
  therefore, you don't need to embed the table's properties in the export command. 
  The export command references the external table by name.
   Export data requires [database admin permission](../access-control/role-based-authorization.md).
+
+> [!NOTE] 
+> * Exporting to an external table with `impersonate` connection string currently isn't supported.
 
 **Syntax:**
 

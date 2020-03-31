@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 03/25/2020
 ---
 # Row Level Security (Preview)
 
@@ -106,7 +106,7 @@ query production environments for troubleshooting purposes without violating com
 division or role.
 * A multi-tenant application can store data from many tenants in a single tableset (which is very efficient). They would use an RLS policy to enforce a logical separation of each tenant's data rows from every other tenant's rows, so each tenant can see only its data rows.
 
-## Performance impact
+## Performance impact on queries
 
 When an RLS policy is enabled on a table, there will be some performance impact on queries that access that table. Access to the table will actually be replaced by the RLS query that's defined on that table. The performance impact of an RLS query will normally consist of two parts:
 
@@ -132,3 +132,7 @@ union AllData, PartialData       // this will just return AllData, as PartialDat
 ```
 
 Similarly, if `IsRestrictedUser` evaluates to `true`, then only the query for `PartialData` will be evaluated.
+
+## Performance impact on ingestion
+
+None.

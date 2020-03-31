@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/04/2020
+ms.date: 03/28/2020
 ---
 # Data partitioning policy (Preview)
 
@@ -16,16 +16,8 @@ The partitioning policy defines if and how [Extents (data shards)](../management
 > [!NOTE]
 > The data partitioning feature is in *preview*.
 
-Applying the policy is appropriate when:
-
-* The majority of queries use equality filters (`==`, `in()`) on a specific `string`-typed column of a specific large-dimension column,
-such as an "application ID" or a "tenant ID", and/or 
-* On a specific `datetime`-typed column, when data ingested into the table is unlikely to be ordered according to this column.
-
-*Future* optimizations will also benefit queries which perform `join` and/or `summarize` when the `shufflekey` is the table's [hash partition key](#hash-partition-key).
-
-The main purpose of the policy is not to improve compression (although it is a potential side-effect),
-but to improve performance of queries which are known to be narrowed to a small subset of values in the partitioned columns.
+The main purpose of the policy is to improve performance of queries which are known to be narrowed to a small subset of values in the partitioned column(s).
+A secondary potential benefit is better compression of the data.
 
 While there are no hard-coded limits set on the amount of tables that can have the policy defined on them, every additional table adds
 overhead to the background data partitioning process running on the cluster's nodes, and may require additional resources from the cluster.
@@ -37,14 +29,18 @@ The following kinds of partition keys are supported:
 |Kind                                                   |Column Type |Partition properties                    |Partition value                                        |
 |-------------------------------------------------------|------------|----------------------------------------|-------------------------------------------------------|
 |[Hash](#hash-partition-key)                            |`string`    |`Function`, `MaxPartitionCount`, `Seed` | `Function`(`ColumnName`, `MaxPartitionCount`, `Seed`) |
-|[uniform range](#uniform-range-datetime-partition-key) |`datetime`  |`RangeSize`, `Reference`                | `bin_at`(`ColumnName`, `RangeSize`, `Reference`)      |
+|[Uniform range](#uniform-range-datetime-partition-key) |`datetime`  |`RangeSize`, `Reference`                | `bin_at`(`ColumnName`, `RangeSize`, `Reference`)      |
 
 ### Hash partition key
+
+Applying a hash partition key on a `string`-typed column in a table is appropriate when the *majority* of queries use equality filters (`==`, `in()`)
+on a specific `string`-typed column of *large-dimension*, such as `application_ID`, `tenant_ID` or `user_ID`.
 
 * A hash-modulo function is used to partition the data.
 * All *homogeneous* (partitioned) extents that belong to the same partition are assigned to the same data node.
 * Data in *homogeneous* (partitioned) extents is ordered by the hash partition key.
   * It's not required include the partition key in a [row order policy](roworderpolicy.md), if one is defined on the table.
+* *Future* optimizations will also benefit queries which perform `join` and/or `summarize` when the `shufflekey` is the table's [hash partition key](#hash-partition-key).
 
 #### Partition properties
 
@@ -52,7 +48,13 @@ The following kinds of partition keys are supported:
   * Supported value: `XxHash64`.
 * `MaxPartitionCount` is the maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period.
   * Supported are values in the range `(1,1024]`.
-  * The number is recommended to be larger than the amount of nodes in the cluster.
+    * The value is expected to be:
+      * Larger than the amount of nodes in the cluster
+      * Smaller than the cardinality of the column.
+    * The higher the value is, the larger the overhead of the data partitioning process on the cluster's nodes will be, and the higher the amount of extents for each time period will be.
+    * A recommended value to start with is `256`.
+      * If required, it can be adjusted (usually upwards), based on the aforementioned considerations, and/or based on measuring the benefit in query query performance 
+        vs. overhead of partitioning the data post-ingestion.
 * `Seed` is the value to use for randomizing the hash value.
   * The value should be a positive integer.
   * The recommended (and default, if unspecified) value is `1`.
@@ -76,6 +78,10 @@ It uses the `XxHash64` hash function, with a `MaxPartitionCount` of `256`, and t
 ```
 
 ### Uniform range datetime partition key
+
+Applying a uniform range datetime partition key on a `datetime`-typed column in a table is appropriate when data ingested into the table is
+*unlikely* to be ordered according to this column. In such cases, it can be helpful to re-shuffle the data between extents so that each extent
+ends up including records from a limited time range, resulting with filters on the `datetime` column at query time being more efficient.
 
 * The partition function used is [bin_at()](../query/binatfunction.md) and isn't customizable.
 
