@@ -13,14 +13,14 @@ ms.date: 04/01/2020
 
 ## Overview
 
-Kusto cluster can communicate with external services in many different scenarios.
+Azure Data Explorer clusters can communicate with external services in many different scenarios.
 Cluster admins can manage the allowed domains for external calls by updating cluster's callout policy.
 
 Callout policies are being managed in cluster-level and are classified into the following types:
-* `kusto` - controls Kusto cross-clusters queries.
+* `kusto` - controls Azure Data Explorer cross-cluster queries.
 * `sql` - controls the [SQL plugin](../query/sqlrequestplugin.md).
-* `cosmosdb` - controls the [CosmosDB plugin](../query/cosmosdb-sqlrequestplugin.md).
-* `genevametrics` - controls the [Geneva Metrics Request plugin](../query/geneva-metrics-requestplugin.md).
+
+
 * `webapi` - controls other external Web calls.
 * `sandbox_artifacts` - controls sandboxed plugins ([python](../query/pythonplugin.md) | [R](../query/rplugin.md)).
 
@@ -30,7 +30,7 @@ Callout policy is comprised of the following components:
 * **CanCall** indicates whether the callout is allows external calls.
 
 ## Predefined Callout policies
-There is a set of predefined callout policies immutably preconfigured on all Kusto clusters to facilitate callouts to select services.
+There is a set of predefined callout policies immutably preconfigured on all Azure Data Explorer clusters to facilitate callouts to select services.
 
 |Service      |Cloud        |Designation  |Allowed domains |
 |-------------|-------------|-------------|-------------|
