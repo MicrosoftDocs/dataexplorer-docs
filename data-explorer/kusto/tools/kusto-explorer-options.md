@@ -1,17 +1,19 @@
 ---
-title: ﻿Kusto Explorer options - Azure Data Explorer | Microsoft Docs
-description: This article describes ﻿Kusto Explorer options in Azure Data Explorer.
+title: ﻿Kusto.Explorer options - Azure Data Explorer | Microsoft Docs
+description: This article describes ﻿Kusto.Explorer options in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/31/2020
+ms.date: 04/01/2020
 ---
-﻿# Kusto Explorer options
+﻿# Kusto.Explorer options
 
-The following tables describe the options available to customize the behavior of Kusto Explorer from the tools/options menu.
+The following tables describe the options for customizing the behavior of Kusto.Explorer from the **Tools** > **Options** dialog box.
+
+![**Tools** > **Options**](\images\Kusto-Tools-Explorer-Options\tools-options.png)
 
 ## General Settings
 
@@ -21,14 +23,14 @@ The following tables describe the options available to customize the behavior of
 | Extended Accessibility | When enabled, the application sends accessibility events used by accessibility tools. May affect performance if enabled. Default is disabled. |
 | Allow sending telemetry data | When enabled, the application sends telemetry data when errors occur or the application crashes. |
 | Welcome message | When enabled, the application shows the welcome message on start. Default is enabled.|
-| Display Theme | The application UI color scheme: light or dark.|
-
+| Display theme | The application UI color scheme: light or dark.|
+  
 ## Query Editor
 
 | Option | Description |
 |---------|--------------|
 | Queries auto-save | When enabled, the application automatically saves open documents. Changing this setting requires restarting the application to take effect. Enabled by default.|
-| Track changes | When enabled, the application tracks changes made to query scripts on disk by other applications. If the query script is changed externally you will be notified and prompted for reloading it. Changing this setting requires restarting the application. Enabled by default.|
+| Track changes | When enabled, the application tracks changes made to query scripts on disk by other applications. If the query script is changed externally you'll be notified and prompted for reloading it. Changing this setting requires restarting the application. Enabled by default.|
 | Use Edit Sessions | When enabled, each application process owns its own set of documents. Disabled by default.|
 | Font Size | The font size used in the query editor.|
 | Select command background | The background color used to highlight the currently selected command.|
@@ -36,7 +38,7 @@ The following tables describe the options available to customize the behavior of
 | Disable function parameter injection | When enabled, function parameter injection from the clipboard is disabled.|
 | Disable query parameter injection | When enabled, query parameter injection is disabled.|
 | Disable query run triggers except F5 | When enabled, only the F5 key will trigger queries to run.|
-| Show help inside the application | When enabled, help topics are shown inside the application. When disabled help topics are opened inside a browser.|
+| Show help inside the application | When enabled, Help topics are shown inside the application. When disabled Help topics are opened inside a browser.|
 | Query parameter length limit | The maximal length of a string that can be used as a query parameter. Setting this value to more than 128K may cause performance issues. Default is 64K.|
 
 ## IntelliSense
@@ -47,17 +49,18 @@ The following tables describe the options available to customize the behavior of
 | IntelliSense: Control Commands | The version of IntelliSense for control commands. *V1* is the classic engine. *V2* is the modern engine. Default is *V2*. | 
 | IntelliSense | Enables or disables IntelliSense. Default is enabled.|
 | Syntax Highlighting | Enables or disables syntax highlighting. Default is enabled.|
-| Tool-tips | Enables or disables the tool-tips that pop up when the mouse hovers over areas of the selected query. Default is enabled.|
+| Tool-tips | Enables or disables the tool-tips that appear when the mouse hovers over areas of the selected query. Default is enabled.|
 
 ## Formatter
 
 | Option | Description |
 |---------|--------------|
 | Version | The version of the formatter used when the Prettify Query tool is applied to the current query. *V1* is the classic formatter. *V2* is the modern formatter. Default is *V2*.|
-| Indentation | The number of spaces that items that need indenting are indented.|
+| Indentation | The number of spaces for indented items.|
 | Function Braces | The placement of function braces. *Vertical* places open and close curly braces on new lines. *Horizontal* leaves the open brace on its original line and places the close brace on a new line. *None* leaves all braces as is.|
 | Pipe Operator | The placement of the pipe (bar) character that exists between tabular query operators. *New Line* places all pipe characters on a new line. *Smart* places all pipe characters on a new line if the query already spans more than one line. *None* leaves all pipe characters as is.|
-| Semicolons | The placement of semicolons that end query statements. *New Line* places semicolons on a new line, indented. *Smart* places semicolons on a new line if the statement itself spans more than one line.  *None* leaves semicolons as is.
+| Semicolon | The placement of semicolons that end query statements. *New Line* places semicolons on a new line, indented. *Smart* places semicolons on a new line if the statement itself spans more than one line.  *None* leaves semicolons as is.
+| Insert Missing Syntax | Adds missing punctuation like (such as commas and semicolons) that you are getting error messages for.|
 
 ## Results Viewer
 
@@ -82,7 +85,7 @@ The following tables describe the options available to customize the behavior of
 | Lazy schema exploration | When enabled, the connections panel will only fetch and display database schema when the database node is expanded.|
 | Show hidden system objects | When enabled, hidden system objects will be shown if the user has appropriate permissions.|
 | Query weak consistency | When enabled, weak consistency will be used for queries.|
-| Kusto parser version | The version of the parser used to execute queries. V1 is the classic parser. V2 is the modern parser. Default is V1.|
+| Kusto parser version | The version of the parser used to execute queries. *V1* is the classic parser. *V2* is the modern parser. Default is *V1*.|
 
 ## Diagnostic Tracing
 
@@ -91,4 +94,4 @@ The following tables describe the options available to customize the behavior of
 | Enable Tracing | Enables tracing.|
 | Trace verbosity | Sets the verbosity of tracing.|
 | Traces location | The location where traces are logged.|
-| Platform trace verbosity | Sets the verbosity of tracing for the platform.|
+| PlatformTraceVerbosity | Sets the verbosity of tracing for the platform.| 

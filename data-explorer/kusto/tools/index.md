@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/27/2020
+ms.date: 04/01/2020
 ---
 # Azure Data Explorer tools
 
@@ -20,7 +20,7 @@ ms.date: 03/27/2020
 ## Visualizations, dashboards, and reporting tools
 
 
-* [Azure Notebooks](azurenotebooks.md) - Query Kusto from an Azure Notebooks notebook (preview)
+* [Azure Notebooks](https://docs.microsoft.com/azure/data-explorer/azure-notebooks) - use Azure Notebooks to analyze data in Azure Data Explorer.
 * Excel
     * [Excel blank query](https://docs.microsoft.com/azure/data-explorer/excel-blank-query) - Add Kusto query as Excel data source
     * [Excel connector](https://docs.microsoft.com/azure/data-explorer/excel-connector) - an Excel connector for Azure Data Explorer 
@@ -37,7 +37,9 @@ ms.date: 03/27/2020
 ## Orchestration tools
 
 
-* [Microsoft Flow](./flow.md) - Execute Kusto queries automatically as part of [Microsoft Flow](https://flow.microsoft.com/)
+* Microsoft Flow
+    * [Microsoft Flow connector](https://docs.microsoft.com/azure/data-explorer/flow)
+    * [Microsoft Flow connector usage examples](https://docs.microsoft.com/azure/data-explorer/flow-usage)
 * [Microsoft Logic App](./logicapps.md) - Execute Kusto queries automatically as part of [Microsoft Logic App](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)
 
 

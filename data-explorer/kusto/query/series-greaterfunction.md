@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/15/2019
+ms.date: 04/01/2020
 ---
 # series_greater()
 
@@ -35,3 +35,9 @@ print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 |s1|s2|s1_greater_s2|
 |---|---|---|
 |[1,2,4]|[4,2,1]|[false,false,true]|
+
+**See also**
+
+For entire series statistics comparisons, see:
+* [series_stats()](series-statsfunction.md)
+* [series_stats_dynamic()](series-stats-dynamicfunction.md)
