@@ -11,18 +11,19 @@ ms.date: 04/01/2020
 ---
 # Ingest from Event Hub
 
-[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Kusto offers continuous ingestion from customer managed Event Hubs. 
+[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer managed Event Hubs. 
 
-## Data Format
+## Data format
+
 * Data is read from the Event Hub in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
-* Event payload can contain one or more records to be ingested, in one of the [formats supported by Kusto](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).
+* Event payload can contain one or more records to be ingested, in one of the [formats supported by Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).
 * Data can be compressed using `GZip` compression algorithm. Must be specified as `Compression` [ingestion property](#ingestion-properties).
 
 > [!Note]
 > * Data compression is not supported for compressed formats (Avro, Parquet, ORC).
 > * Custom encoding and embeded [system properties](#event-system-properties-mapping) are not supported on compressed data.
 
-## Ingestion Properties
+## Ingestion properties
 
 Ingestion properties instructs the ingestion process. Where to route the data and how to process it. You can specify [Ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) of the events ingestion using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
 
@@ -37,9 +38,9 @@ Ingestion properties instructs the ingestion process. Where to route the data an
 <!--| Database | Name of the existing target database.|-->
 <!--| Tags | String representing [tags](https://docs.microsoft.com/azure/kusto/management/extents-overview#extent-tagging) that will be attached to resulting extent. |-->
 
-**Events Routing**
+## Events routing
 
-When setting up an Event Hub connection to Kusto cluster, you specify target table properties (table name, data format, compression and mapping). This is the default routing for your data, also refered to as `static routig`.
+When setting up an Event Hub connection to Azure Data Explorer cluster, you specify target table properties (table name, data format, compression and mapping). This is the default routing for your data, also referred to as `static routing`.
 You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
 
 In the following sample, set event hub details and send weather metric data to table `WeatherMetrics`.
@@ -65,16 +66,16 @@ eventHubClient.Send(eventData);
 eventHubClient.Close();
 ```
 
-## Event System Properties Mapping
+## Event system properties mapping
 
-System properties are a collection used to store properties which are set by the Event Hubs service, on the time the event is enqueued. The Kusto Event Hub connection will embed the selected properties into the data landing in your table.
+System properties are a collection used to store properties which are set by the Event Hubs service, on the time the event is enqueued. The Azure Data Explorer Event Hub connection will embed the selected properties into the data landing in your table.
 
 > [!Note]
 > * System properties are supported for single-record events.
 > * System properties are not supported on compressed data.
 > * For `csv` mapping, properties are added at the beginning of the record in the order listed in the table below. For `json` mapping, properties are added according to property names in the following table.
 
-Event Hub expose the following system properties:
+### Event Hub expose the following system properties
 
 |Property |Data Type |Description|
 |---|---|---|
@@ -126,25 +127,25 @@ Data is added by using the system properties names as they appear in the **Data 
     ']'
 ```
 
-## Create Event Hub Connection
+## Create Event Hub connection
 
 > [!Note]
 > For best performance, create all resources in the same region as the Azure Data Explorer cluster.
 
-#### Create an Event Hub
+### Create an Event Hub
 
 If you don't already have one, [Create an event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create). 
 A template can be found in the how-to [Create an event hub](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub#create-an-event-hub) guide.
 
 > [!Note]
 > * The partition count is not changeable, so you should consider long-term scale when setting partition count.
-> * Consumer gruop *must* be uniqe per consumer. Create a consumer group dedicated to Kusto connection.
+> * Consumer gruop *must* be uniqe per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
 
-#### Data Ingestion Connection to Kusto
+### Data ingestion connection to Azure Data Explorer
 
 * Via Azure Portal: [Connect to the event hub](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub#connect-to-the-event-hub).
-* Using Kusto management .NET SDK: [Add an Event Hub data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-hub-csharp#add-an-event-hub-data-connection)
-* Using Kusto management Python SDK: [Add an Event Hub data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-hub-python#add-an-event-hub-data-connection)
+* Using Azure Data Explorer management .NET SDK: [Add an Event Hub data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-hub-csharp#add-an-event-hub-data-connection)
+* Using Azure Data Explorer management Python SDK: [Add an Event Hub data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-hub-python#add-an-event-hub-data-connection)
 * With ARM template: [Azure Resource Manager template for adding an Event Hub data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-hub-resource-manager#azure-resource-manager-template-for-adding-an-event-hub-data-connection)
 
 > [!Note]
@@ -181,7 +182,7 @@ for (var i = 0; i < 10; i++)
 
         counter = 0;
         data = string.Empty;
-	}
+    }
 }
 
 // Send events

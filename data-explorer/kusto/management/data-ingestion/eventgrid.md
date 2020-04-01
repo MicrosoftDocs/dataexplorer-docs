@@ -13,7 +13,7 @@ ms.date: 04/01/2020
 
 Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) subscription for blob created notifications and streaming these notifications to Kusto via an Event Hub.
 
-## Data Format
+## Data format
 
 * Blobs can be in any of the [supported formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).
 * Blobs can be compressed in any of the [ supported compressions](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats#supported-data-compression-formats)
@@ -24,7 +24,7 @@ Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage
 > Provide original data size by setting the `rawSizeBytes` [property](#ingestion-properties) on the blob metadata to **uncompressed** data size in bytes.
 > Please note that there is an ingestion uncompressed size limit per file of 4GB.
 
-## Ingestion Properties
+## Ingestion properties
 
 You can specify [Ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) of the blob ingestion via the blob metadata.
 You can set the following properties:
@@ -39,10 +39,10 @@ You can set the following properties:
 | kustoExtentTags | String representing [tags](https://docs.microsoft.com/azure/kusto/management/extents-overview#extent-tagging) that will be attached to resulting extent. |
 | kustoCreationTime |  Overrides [$IngestionTime](/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) for the blob, formatted as a ISO 8601 string. Use for backfilling. |
 
-**Events routing**
+## Events routing
 
 When setting up a blob storage connection to Azure Data Explorer cluster, specify target table properties (table name, data format and mapping). This is the default routing for your data, also refered to as `static routig`.
-You can also specify target table properties for each blob, using blob metadata. The data will be dynamically routed as specified by [properties](ingestion-properties).
+You can also specify target table properties for each blob, using blob metadata. The data will be dynamically routed as specified by [ingestion properties](#ingestion-properties).
 
 Following is an example for setting ingestion properties to the blob metadata before uploading it. 
 Blobs are routed to different tables.
@@ -58,19 +58,20 @@ blob.Metadata.Add("kustoDataFormat", "json");
 blob.Metadata.Add("kustoIngestionMappingReference", "EventsMapping");
 blob.UploadFromFile(jsonCompressedLocalFileName);
 ```
+
 ## Create Event Grid subscription
 
 > [!Note]
 > For best performance, create all resources in the same region as the Azure Data Explorer cluster.
 
-#### Prerequisites
+### Prerequisites
 
 * [Create a storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
   Event Grid notification subscription can be set on Azure Storage Accounts of kind `BlobStorage` or `StorageV2`. 
   Enabling [Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) is also supported.
 * [Create an event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
-#### Event Grid subscription
+### Event Grid subscription
 
 * Kusto selected `Event Hub` as the endpoind type, used for transporting blob storage events notifications. `Event Grid schema` is the selected schema for notifications. Note that each Even Hub can serve one connection.
 * The blob storage subscription connection handles notifications of type `Microsoft.Storage.BlobCreated`. Make sure to select it when creating the subscription. Note that other types of notifications, if selected, are ignored.
@@ -82,14 +83,14 @@ When setting up a connection, take a speciel care of the following values:
 
 A detailed walk-through can be found in the how-to [Create an Event Grid subscription in your storage account](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-grid#create-an-event-grid-subscription-in-your-storage-account) guide.
 
-#### Data ingestion connection to Azure Data Explorer
+### Data ingestion connection to Azure Data Explorer
 
 * Via Azure Portal: [Create an Event Grid data connection in Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-grid#create-an-event-grid-data-connection-in-azure-data-explorer).
 * Using Kusto management .NET SDK: [Add an Event Grid data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-grid-csharp#add-an-event-grid-data-connection)
 * Using Kusto management Python SDK: [Add an Event Grid data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-grid-python#add-an-event-grid-data-connection)
 * With ARM template: [Azure Resource Manager template for adding an Event Grid data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-grid-resource-manager#azure-resource-manager-template-for-adding-an-event-grid-data-connection)
 
-#### Generating data
+### Generating data
 
 > [!NOTE]
 > * Use `BlockBlob` to generate data. `AppendBlob` is not supported.

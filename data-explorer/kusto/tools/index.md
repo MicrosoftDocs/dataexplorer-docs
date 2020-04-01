@@ -54,5 +54,5 @@ ms.date: 04/01/2020
 
 ## Source control integration tools
 
-* [Azure Pipelines](./azure-pipelines.md) - Invokes control commands as part of your pipeline
+* [Azure Pipelines](https://docs.microsoft.com/azure/data-explorer/devops) - Invokes control commands as part of your pipeline
 * [Sync Kusto](./synckusto.md) - Sync Kusto stored functions to/from Git
