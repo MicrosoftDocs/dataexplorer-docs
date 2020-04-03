@@ -61,8 +61,8 @@
       "extendBreadcrumb": true,
       "brand": "azure",
       "feedback_system": "GitHub",
-      "feedback_github_repo": "MicrosoftDocs/azure-docs",
-      "feedback_product_url": "https://feedback.azure.com/forums/34192--general-feedback",
+      "feedback_github_repo": "MicrosoftDocs/dataexplorer-docs",
+      "feedback_product_url": "https://feedback.azure.com/forums/915733-azure-data-explorer",
       "recommendations": true,
       "_op_documentIdPathDepotMapping": {
         "./": {
