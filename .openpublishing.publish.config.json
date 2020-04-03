@@ -10,8 +10,10 @@
       "open_to_public_contributors": false,
       "type_mapping": {
         "Conceptual": "Content",
+        "ContextObject": "Toc",
+        "LandingData": "Content",
         "ManagedReference": "Content",
-        "RestApi": "Content"
+        "RestApi": "Content",
         "ZonePivotGroups": "Toc"
       },
       "build_entry_point": "docs",
