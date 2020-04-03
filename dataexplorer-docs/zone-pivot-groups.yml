@@ -1,0 +1,11 @@
+# YamlMime:ZonePivotGroups
+# GitHub repository = 'MicrosoftDocs/dataexplorer-docs-pr'
+groups:
+- id: kql-flavors
+  title: Kusto query language flavors
+  prompt: Select your Azure service
+  pivots:
+  - id: azuredataexplorer
+    title: Azure Data Explorer
+  - id: azuremonitor
+    title: Azure Monitor
