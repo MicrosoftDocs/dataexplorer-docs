@@ -70,7 +70,7 @@
           "folder_relative_path_in_docset": "articles/data-explorer/"
         },
         "./kusto":{
-          "depot_name": "Azure.kusto",
+          "depot_name": "MSDN.kustolang",
           "folder_relative_path_in_docset": "docs/"
         }
       },
