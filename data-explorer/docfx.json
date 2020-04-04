@@ -123,26 +123,26 @@
         "sdwheeler",
         "meganbradley"
       ],
-      "searchScope": [
-        "articles/data-explorer/**/*.md": ["Azure", "Data Explorer", "Azure Data Explorer", "Kusto", "kusto"],
-        "articles/data-explorer/**/*.yml": ["Azure", "Data Explorer", "Azure Data Explorer", "Kusto", "kusto"]
-      ],
-      "author": [
+      "searchScope": {
+        "articles/data-explorer/**/*.md": ["Azure","Data Explorer","Azure Data Explorer","Kusto","kusto"],
+        "articles/data-explorer/**/*.yml": ["Azure","Data Explorer","Azure Data Explorer","Kusto","kusto"]
+      },
+      "author": {
         "articles/data-explorer/**/*.md": "orspod",
         "articles/data-explorer/**/*.yml": "orspod"
-      ],
-      "ms.author":[
+      },
+      "ms.author": {
         "articles/data-explorer/**/*.md": "orspodek",
         "articles/data-explorer/**/*.yml": "orspodek"
-      ],
-      "ms.reviewer":[
+      ",
+      "ms.reviewer": {
         "articles/data-explorer/**/*.md": "rkarlin",
         "articles/data-explorer/**/*.yml": "rkarlin"
-      ],
-      "ms.service":[
+      },
+      "ms.service": {
         "articles/data-explorer/**/*.md": "data-explorer",
         "articles/data-explorer/**/*.yml": "data-explorer"
-      ]
+      }
     },
     "fileMetadata": {},
     "template": [],
