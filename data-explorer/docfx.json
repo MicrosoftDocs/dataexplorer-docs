@@ -124,20 +124,8 @@
         "meganbradley"
       ],
       "searchScope": {
-        "articles/data-explorer/**/*.md": [
-          "Azure",
-          "Data Explorer",
-          "Azure Data Explorer",
-          "Kusto",
-          "kusto"
-        ],
-        "articles/data-explorer/**/*.yml": [
-          "Azure",
-          "Data Explorer",
-          "Azure Data Explorer",
-          "Kusto",
-          "kusto"
-        ]
+        "articles/data-explorer/**/*.md": ["Azure","Data Explorer","Azure Data Explorer","Kusto","kusto"],
+        "articles/data-explorer/**/*.yml": ["Azure","Data Explorer","Azure Data Explorer","Kusto","kusto"]
       },
       "author": {
         "articles/data-explorer/**/*.md": "orspod",
