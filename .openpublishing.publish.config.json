@@ -2,7 +2,7 @@
   "docsets_to_publish": [
     {
       "docset_name": "dataexplorer-docs",
-      "build_source_folder": "dataexplorer-docs",
+      "build_source_folder": "data-explorer",
       "build_output_subfolder": "dataexplorer-docs",
       "locale": "en-us",
       "monikers": [],
