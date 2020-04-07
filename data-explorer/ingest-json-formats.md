@@ -370,23 +370,23 @@ Array data types are an ordered collection of values. Ingestion of a JSON array 
 
 ```json
 {
-	"records": 
-	[
-		{
-			"timestamp": "2019-05-02 15:23:50.0000000",
-			"deviceId": "ddbc1bf5-096f-42c0-a771-bc3dca77ac71",
-			"messageId": "7f316225-839a-4593-92b5-1812949279b3",
-			"temperature": 31.0301639051317,
-			"humidity": 62.0791099602725
-		},
-		{
-			"timestamp": "2019-05-02 15:23:51.0000000",
-			"deviceId": "ddbc1bf5-096f-42c0-a771-bc3dca77ac71",
-			"messageId": "57de2821-7581-40e4-861e-ea3bde102364",
-			"temperature": 33.7529423105311,
-			"humidity": 75.4787976739364
-		}
-	]
+    "records": 
+    [
+        {
+            "timestamp": "2019-05-02 15:23:50.0000000",
+            "deviceId": "ddbc1bf5-096f-42c0-a771-bc3dca77ac71",
+            "messageId": "7f316225-839a-4593-92b5-1812949279b3",
+            "temperature": 31.0301639051317,
+            "humidity": 62.0791099602725
+        },
+        {
+            "timestamp": "2019-05-02 15:23:51.0000000",
+            "deviceId": "ddbc1bf5-096f-42c0-a771-bc3dca77ac71",
+            "messageId": "57de2821-7581-40e4-861e-ea3bde102364",
+            "temperature": 33.7529423105311,
+            "humidity": 75.4787976739364
+        }
+    ]
 }
 ```
 
@@ -422,7 +422,7 @@ Array data types are an ordered collection of values. Ingestion of a JSON array 
 1. Ingest data into the `RawEvents` table.
 
     ```Kusto
-    .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
+    .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
     ```
 
 1. Review data in the `Events` table.
@@ -539,29 +539,29 @@ Dictionary structured JSON contains key-value pairs. Json records undergo ingest
 
 ```json
 {
-	"event": 
-	[
-		{
-			"Key": "timestamp",
-			"Value": "2019-05-02 15:23:50.0000000"
-		},
-		{
-			"Key": "deviceId",
-			"Value": "ddbc1bf5-096f-42c0-a771-bc3dca77ac71"
-		},
-		{
-			"Key": "messageId",
-			"Value": "7f316225-839a-4593-92b5-1812949279b3"
-		},
-		{
-			"Key": "temperature",
-			"Value": 31.0301639051317
-		},
-		{
-			"Key": "humidity",
-			"Value": 62.0791099602725
-		}
-	]
+    "event": 
+    [
+        {
+            "Key": "timestamp",
+            "Value": "2019-05-02 15:23:50.0000000"
+        },
+        {
+            "Key": "deviceId",
+            "Value": "ddbc1bf5-096f-42c0-a771-bc3dca77ac71"
+        },
+        {
+            "Key": "messageId",
+            "Value": "7f316225-839a-4593-92b5-1812949279b3"
+        },
+        {
+            "Key": "temperature",
+            "Value": 31.0301639051317
+        },
+        {
+            "Key": "humidity",
+            "Value": 62.0791099602725
+        }
+    ]
 }
 ```
 
