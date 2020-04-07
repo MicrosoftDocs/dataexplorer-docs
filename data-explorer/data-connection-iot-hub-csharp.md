@@ -28,9 +28,9 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 * Set [database and table policies](database-table-policies-csharp.md) (optional)
 * Create an [IoT Hub with a shared access policy configured](ingest-data-iot-hub.md#create-an-iot-hub).
 
-[!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
+[!INCLUDE [data-explorer-data-connection-install-nuget-csharp](includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
-[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+[!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
 ## Add an IoT Hub data connection 
 
@@ -89,4 +89,4 @@ await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, cl
 | consumerGroup | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
 
-[!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]
+[!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]

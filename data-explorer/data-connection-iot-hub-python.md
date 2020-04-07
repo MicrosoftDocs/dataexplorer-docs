@@ -33,9 +33,9 @@ In this article, you create an IoT Hub data connection for Azure Data Explorer b
 
 * [An IoT Hub with a shared access policy configured](ingest-data-iot-hub.md#create-an-iot-hub).
 
-[!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
+[!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]
 
-[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+[!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
 ## Add an IoT Hub data connection 
 
@@ -99,4 +99,4 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | consumer_group | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
 
-[!INCLUDE [data-explorer-data-connection-clean-resources-python](../../includes/data-explorer-data-connection-clean-resources-python.md)]
+[!INCLUDE [data-explorer-data-connection-clean-resources-python](includes/data-explorer-data-connection-clean-resources-python.md)]

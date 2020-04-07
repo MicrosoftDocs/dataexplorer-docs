@@ -37,21 +37,21 @@ The following example shows an Azure Resource Manager template for adding an IoT
     "parameters": {
         "IotHubs_iothubdemo_name": {
             "type": "string",
-			"defaultValue": "iothubdemo",
+            "defaultValue": "iothubdemo",
             "metadata": {
                 "description": "Specifies the IoT Hub name."
             }
         },
-		"iothubpolices_iothubowner_name": {
+        "iothubpolices_iothubowner_name": {
             "type": "string",
-			"defaultValue": "iothubowner",
+            "defaultValue": "iothubowner",
             "metadata": {
                 "description": "Specifies the shared access policy name."
             }
         },
         "consumergroup_default_name": {
             "type": "string",
-			"defaultValue": "$Default",
+            "defaultValue": "$Default",
             "metadata": {
                 "description": "Specifies the consumer group of the IoT Hub."
             }
@@ -70,42 +70,42 @@ The following example shows an Azure Resource Manager template for adding an IoT
                 "description": "Specifies the name of the database"
             }
         },
-		"tables_kustotable_name": {
+        "tables_kustotable_name": {
             "type": "string",
             "defaultValue": "kustotable",
             "metadata": {
                 "description": "Specifies the name of the table"
             }
         },
-		"mapping_kustomapping_name": {
+        "mapping_kustomapping_name": {
             "type": "string",
             "defaultValue": "kustomapping",
             "metadata": {
                 "description": "Specifies the name of the mapping rule"
             }
         },
-		"dataformat_type": {
+        "dataformat_type": {
             "type": "string",
             "defaultValue": "csv",
             "metadata": {
                 "description": "Specifies the data format"
             }
         },
-		"dataconnections_kustodc_name": {
+        "dataconnections_kustodc_name": {
             "type": "string",
             "defaultValue": "kustodc",
             "metadata": {
                 "description": "Name of the data connection to create"
             }
         },
-		"subscriptionId": {
+        "subscriptionId": {
             "type": "string",
             "defaultValue": "[subscription().subscriptionId]",
             "metadata": {
                 "description": "Specifies the subscriptionId of the IoT Hub"
             }
         },
-		"resourceGroup": {
+        "resourceGroup": {
             "type": "string",
             "defaultValue": "[resourceGroup().name]",
             "metadata": {
@@ -131,7 +131,7 @@ The following example shows an Azure Resource Manager template for adding an IoT
             "properties": {
                 "iotHubResourceId": "[resourceId(parameters('subscriptionId'), parameters('resourceGroup'), 'Microsoft.Devices/IotHubs', parameters('IotHubs_iothubdemo_name'))]",
                 "consumerGroup": "[parameters('consumergroup_default_name')]",
-				"sharedAccessPolicyName": "[parameters('iothubpolices_iothubowner_name')]",
+                "sharedAccessPolicyName": "[parameters('iothubpolices_iothubowner_name')]",
                 "tableName": "[parameters('tables_kustotable_name')]",
                 "mappingRuleName": "[parameters('mapping_kustomapping_name')]",
                 "dataFormat": "[parameters('dataformat_type')]"
@@ -141,4 +141,4 @@ The following example shows an Azure Resource Manager template for adding an IoT
 }
 ```
 
-[!INCLUDE [data-explorer-clean-resources](../../includes/data-explorer-clean-resources.md)]
+[!INCLUDE [data-explorer-clean-resources](includes/data-explorer-clean-resources.md)]

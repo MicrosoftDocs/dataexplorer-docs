@@ -29,7 +29,7 @@ You need the following to complete this article:
 
 ## Get data from Azure Data Explorer
 
-First, you connect to the Azure Data Explorer help cluster, then you bring in a subset of the data from the *StormEvents* table. [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+First, you connect to the Azure Data Explorer help cluster, then you bring in a subset of the data from the *StormEvents* table. [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
 You typically use the native query language with Azure Data Explorer, but it also supports SQL queries, which you'll use here. Azure Data Explorer translates the SQL query into a native query for you.
 
@@ -73,7 +73,7 @@ You typically use the native query language with Azure Data Explorer, but it als
 
 ## Visualize data in a report
 
-[!INCLUDE [data-explorer-power-bi-visualize-basic](../../includes/data-explorer-power-bi-visualize-basic.md)]
+[!INCLUDE [data-explorer-power-bi-visualize-basic](includes/data-explorer-power-bi-visualize-basic.md)]
 
 ## Clean up resources
 

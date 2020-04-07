@@ -30,11 +30,11 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Create an Iot Hub
 
-[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](includes/iot-hub-include-create-hub.md)]
 
 ## Register a device to the IoT Hub
 
-[!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
+[!INCLUDE [iot-hub-get-started-create-device-identity](includes/iot-hub-get-started-create-device-identity.md)]
 
 ## Create a target table in Azure Data Explorer
 
@@ -49,7 +49,7 @@ Now you create a table in Azure Data Explorer to which IoT Hubs will send data. 
     ```Kusto
     .create table TestTable (temperature: real, humidity: real)
     ```
-	
+    
     ![Run create query](media/ingest-data-iot-hub/run-create-query.png)
 
 1. Copy the following command into the window and select **Run** to map the incoming JSON data to the column names and data types of the table (TestTable).
@@ -65,7 +65,7 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
 1. Select **Notifications** on the toolbar to verify that the IoT Hub deployment was successful.
 
 1. Under the cluster you created, select **Databases** then select the database that you created **testdb**.
-	
+    
     ![Select test database](media/ingest-data-iot-hub/select-database.png)
 
 1. Select **Data ingestion** and **Add data connection**. Then fill out the form with the following information. Select **Create** when you're finished.
@@ -80,7 +80,7 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     | IoT Hub | IoT Hub name |
     | Shared access policy | The name of the shared access policy. Must have read permissions |
     | Consumer group |  The consumer group defined in the IoT Hub built-in endpoint |
-	| Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](/azure/kusto/management/create-table-command) or [update](/azure/kusto/management/alter-table-command) table schema and [mapping](/azure/kusto/management/mappings) to include the selected properties. | | | 
+    | Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](/azure/kusto/management/create-table-command) or [update](/azure/kusto/management/alter-table-command) table schema and [mapping](/azure/kusto/management/mappings) to include the selected properties. | | | 
 
     > [!NOTE]
     > In case of a [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover), you must recreate the data connection.
@@ -101,7 +101,7 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     > * Select **My data includes routing info** to use dynamic routing, where your data includes the necessary routing information as seen in the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) comments. If both static and dynamic properties are set, the dynamic properties override the static ones. 
     > * Only events enqueued after you create the data connection are ingested.
 
-[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
+[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
 
 ## Generate sample data for testing
 
@@ -153,7 +153,7 @@ With the app generating data, you can now see the data flow from the IoT hub to 
     ```
 
     The result set:
-	
+    
     ![Show ingested data results](media/ingest-data-iot-hub/show-ingested-data.png)
 
     > [!NOTE]

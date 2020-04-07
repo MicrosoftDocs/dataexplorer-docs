@@ -24,11 +24,11 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
 ## Prerequisites
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](includes/updated-for-az.md)]
 
 If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)]
 
 If you choose to install and use the Azure CLI locally, this article requires the Azure CLI version 2.0.4 or later. Run `az --version` to check your version. If you need to install or upgrade, see [Install the Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -49,7 +49,7 @@ The following steps are not required if you're running commands in Azure Cloud S
     ```
 1. When running Azure CLI locally or in the Azure Cloud Shell, you need to install the Az.Kusto module on your device:
 
-	```azurepowershell-interactive
+    ```azurepowershell-interactive
      Install-Module -Name Az.Kusto
     ```
 

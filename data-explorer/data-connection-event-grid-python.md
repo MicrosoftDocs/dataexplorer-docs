@@ -33,9 +33,9 @@ In this article, you create an Event Grid data connection for Azure Data Explore
 
 * [A storage account with an Event Grid subscription](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account).
 
-[!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
+[!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]
 
-[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+[!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
 ## Add an Event Grid data connection
 
@@ -99,4 +99,4 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | consumer_group | *$Default* | The consumer group of your Event Hub.|
 | location | *Central US* | The location of the data connection resource.|
 
-[!INCLUDE [data-explorer-data-connection-clean-resources-python](../../includes/data-explorer-data-connection-clean-resources-python.md)]
+[!INCLUDE [data-explorer-data-connection-clean-resources-python](includes/data-explorer-data-connection-clean-resources-python.md)]

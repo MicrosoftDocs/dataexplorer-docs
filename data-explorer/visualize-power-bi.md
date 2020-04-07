@@ -32,7 +32,7 @@ In addition to Azure and Power BI subscriptions, you need the following to compl
 
 * [A test cluster and database](create-cluster-database-portal.md)
 
-* [The StormEvents sample data](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+* [The StormEvents sample data](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**)
 

@@ -16,9 +16,9 @@ ms.date: 01/06/2020
 > * [C#](customer-managed-keys-csharp.md)
 > * [Azure Resource Manager template](customer-managed-keys-resource-manager.md)
 
-[!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
+[!INCLUDE [data-explorer-configure-customer-managed-keys](includes/data-explorer-configure-customer-managed-keys.md)]
 
-[!INCLUDE [data-explorer-configure-customer-managed-keys part 2](../../includes/data-explorer-configure-customer-managed-keys-b.md)]
+[!INCLUDE [data-explorer-configure-customer-managed-keys part 2](includes/data-explorer-configure-customer-managed-keys-b.md)]
 
 ## Configure encryption with customer-managed keys
 

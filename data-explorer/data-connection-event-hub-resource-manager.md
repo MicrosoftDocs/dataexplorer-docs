@@ -37,21 +37,21 @@ The following example shows an Azure Resource Manager template for adding an Eve
     "parameters": {
         "namespaces_eventhubns_name": {
             "type": "string",
-			"defaultValue": "eventhubns",
+            "defaultValue": "eventhubns",
             "metadata": {
                 "description": "Specifies the Event Hub Namespace name."
             }
         },
         "EventHubs_eventhubdemo_name": {
             "type": "string",
-			"defaultValue": "eventhubdemo",
+            "defaultValue": "eventhubdemo",
             "metadata": {
                 "description": "Specifies the Event Hub name."
             }
         },
         "consumergroup_default_name": {
             "type": "string",
-			"defaultValue": "$Default",
+            "defaultValue": "$Default",
             "metadata": {
                 "description": "Specifies the consumer group of the Event Hub."
             }
@@ -70,28 +70,28 @@ The following example shows an Azure Resource Manager template for adding an Eve
                 "description": "Specifies the name of the database"
             }
         },
-		"tables_kustotable_name": {
+        "tables_kustotable_name": {
             "type": "string",
             "defaultValue": "kustotable",
             "metadata": {
                 "description": "Specifies the name of the table"
             }
         },
-		"mapping_kustomapping_name": {
+        "mapping_kustomapping_name": {
             "type": "string",
             "defaultValue": "kustomapping",
             "metadata": {
                 "description": "Specifies the name of the mapping rule"
             }
         },
-		"dataformat_type": {
+        "dataformat_type": {
             "type": "string",
             "defaultValue": "csv",
             "metadata": {
                 "description": "Specifies the data format"
             }
         },
-		"dataconnections_kustodc_name": {
+        "dataconnections_kustodc_name": {
             "type": "string",
             "defaultValue": "kustodc",
             "metadata": {
@@ -105,7 +105,7 @@ The following example shows an Azure Resource Manager template for adding an Eve
                 "description": "Specifies the subscriptionId of the Event Hub"
             }
         },
-		"resourceGroup": {
+        "resourceGroup": {
             "type": "string",
             "defaultValue": "[resourceGroup().name]",
             "metadata": {
@@ -140,4 +140,4 @@ The following example shows an Azure Resource Manager template for adding an Eve
 }
 ```
 
-[!INCLUDE [data-explorer-clean-resources](../../includes/data-explorer-clean-resources.md)]
+[!INCLUDE [data-explorer-clean-resources](includes/data-explorer-clean-resources.md)]

@@ -33,9 +33,9 @@ In this article, you create an Event Hub data connection for Azure Data Explorer
 
 * [Event Hub with data for ingestion](ingest-data-event-hub.md#create-an-event-hub).
 
-[!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
+[!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]
 
-[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+[!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
 ## Add an Event Hub data connection
 
@@ -96,4 +96,4 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | consumer_group | *$Default* | The consumer group of your Event Hub.|
 | location | *Central US* | The location of the data connection resource.|
 
-[!INCLUDE [data-explorer-data-connection-clean-resources-python](../../includes/data-explorer-data-connection-clean-resources-python.md)]
+[!INCLUDE [data-explorer-data-connection-clean-resources-python](includes/data-explorer-data-connection-clean-resources-python.md)]

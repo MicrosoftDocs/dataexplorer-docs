@@ -32,7 +32,7 @@ pip install azure-common
 pip install azure-mgmt-kusto
 ```
 
-[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+[!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
 ## Add a database principal
 

@@ -29,9 +29,9 @@ You need the following to complete this article:
 
 * A cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
 
-    [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+    [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
-[!INCLUDE [data-explorer-configure-data-source](../../includes/data-explorer-configure-data-source.md)]
+[!INCLUDE [data-explorer-configure-data-source](includes/data-explorer-configure-data-source.md)]
 
 ### Specify properties and test the connection
 

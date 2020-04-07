@@ -31,7 +31,7 @@ You need the following to complete this article:
 
 ## Get data from Azure Data Explorer
 
-First, you create a query in the Azure Data Explorer desktop app and export it for use in Power BI. Then, you connect to the Azure Data Explorer help cluster, and bring in a subset of the data from the *StormEvents* table. [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+First, you create a query in the Azure Data Explorer desktop app and export it for use in Power BI. Then, you connect to the Azure Data Explorer help cluster, and bring in a subset of the data from the *StormEvents* table. [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
 1. In a browser, go to [https://help.kusto.windows.net/](https://help.kusto.windows.net/) to launch the Azure Data Explorer desktop app.
 
@@ -71,7 +71,7 @@ First, you create a query in the Azure Data Explorer desktop app and export it f
 
 ## Visualize data in a report
 
-[!INCLUDE [data-explorer-power-bi-visualize-basic](../../includes/data-explorer-power-bi-visualize-basic.md)]
+[!INCLUDE [data-explorer-power-bi-visualize-basic](includes/data-explorer-power-bi-visualize-basic.md)]
 
 ## Clean up resources
 

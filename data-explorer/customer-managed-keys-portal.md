@@ -16,7 +16,7 @@ ms.date: 03/26/2020
 > * [C#](customer-managed-keys-csharp.md)
 > * [Azure Resource Manager template](customer-managed-keys-resource-manager.md)
 
-[!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
+[!INCLUDE [data-explorer-configure-customer-managed-keys](includes/data-explorer-configure-customer-managed-keys.md)]
 
 ## Enable encryption with customer-managed keys in the Azure portal
 

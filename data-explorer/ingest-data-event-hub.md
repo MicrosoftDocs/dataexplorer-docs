@@ -136,7 +136,7 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
     > * You can also set the compression type via dynamic properties as seen in the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest).
     > * Avro, ORC and PARQUET formats as well as event system properties aren't supported on GZip compression payload.
 
-[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
+[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
 
 ## Copy the connection string
 

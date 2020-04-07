@@ -18,7 +18,7 @@ ms.date: 11/04/2019
 1. [Create cluster and database](create-cluster-database-portal.md).
 1. Ingest data as explained in [ingest sample data into Azure Data Explorer](ingest-sample-data.md). For more ingestion options, see [ingestion overview](ingest-data-overview.md).
 
-[!INCLUDE [data-explorer-configure-data-source](../../includes/data-explorer-configure-data-source.md)]
+[!INCLUDE [data-explorer-configure-data-source](includes/data-explorer-configure-data-source.md)]
 
 ## Create Azure Data Explorer Connector in Redash 
 
