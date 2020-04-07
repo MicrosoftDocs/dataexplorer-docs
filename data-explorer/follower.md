@@ -49,7 +49,7 @@ var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
 var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
 var resourceManagementClient = new KustoManagementClient(serviceCreds){
-	SubscriptionId = followerSubscriptionId
+    SubscriptionId = followerSubscriptionId
 };
 
 var followerResourceGroupName = "followerResouceGroup";
@@ -63,10 +63,10 @@ var location = "North Central US";
 
 AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new AttachedDatabaseConfiguration()
 {
-	ClusterResourceId = $"/subscriptions/{leaderSubscriptionId}/resourceGroups/{leaderResourceGroup}/providers/Microsoft.Kusto/Clusters/{leaderClusterName}",
-	DatabaseName = databaseName,
-	DefaultPrincipalsModificationKind = defaultPrincipalsModificationKind,
-	Location = location
+    ClusterResourceId = $"/subscriptions/{leaderSubscriptionId}/resourceGroups/{leaderResourceGroup}/providers/Microsoft.Kusto/Clusters/{leaderClusterName}",
+    DatabaseName = databaseName,
+    DefaultPrincipalsModificationKind = defaultPrincipalsModificationKind,
+    Location = location
 };
 
 var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseConfigurations.CreateOrUpdate(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationName, attachedDatabaseConfigurationProperties);
@@ -122,70 +122,70 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### Attach a database using an Azure Resource Manager template
 
-In this section, you learn to attach a database to an existing cluser by using an [Azure Resource Manager template](../azure-resource-manager/management/overview.md). 
+In this section, you learn to attach a database to an existing cluser by using an [Azure Resource Manager template](/azure/azure-resource-manager/management/overview). 
 
 ```json
 {
-	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-	"contentVersion": "1.0.0.0",
-	"parameters": {
-		"followerClusterName": {
-			"type": "string",
-			"defaultValue": "",
-			"metadata": {
-				"description": "Name of the cluster to which the database will be attached."
-			}
-		},
-		"attachedDatabaseConfigurationsName": {
-			"type": "string",
-			"defaultValue": "",
-			"metadata": {
-				"description": "Name of the attached database configurations to create."
-			}
-		},
-		"databaseName": {
-			"type": "string",
-			"defaultValue": "",
-			"metadata": {
-				"description": "The name of the database to follow. You can follow all databases by using '*'."
-			}
-		},
-		"leaderClusterResourceId": {
-			"type": "string",
-			"defaultValue": "",
-			"metadata": {
-				"description": "The resource ID of the leader cluster."
-			}
-		},
-		"defaultPrincipalsModificationKind": {
-			"type": "string",
-			"defaultValue": "Union",
-			"metadata": {
-				"description": "The default principal modification kind."
-			}
-		},
-		"location": {
-			"type": "string",
-			"defaultValue": "",
-			"metadata": {
-				"description": "Location for all resources."
-			}
-		}
-	},
-	"variables": {},
-	"resources": [
-		{
-			"name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
-			"type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
-			"apiVersion": "2019-09-07",
-			"location": "[parameters('location')]",
-			"properties": {
-				"databaseName": "[parameters('databaseName')]",
-				"clusterResourceId": "[parameters('leaderClusterResourceId')]",
-				"defaultPrincipalsModificationKind": "[parameters('defaultPrincipalsModificationKind')]"
-			}
-		}
-	]
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "followerClusterName": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Name of the cluster to which the database will be attached."
+            }
+        },
+        "attachedDatabaseConfigurationsName": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Name of the attached database configurations to create."
+            }
+        },
+        "databaseName": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The name of the database to follow. You can follow all databases by using '*'."
+            }
+        },
+        "leaderClusterResourceId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The resource ID of the leader cluster."
+            }
+        },
+        "defaultPrincipalsModificationKind": {
+            "type": "string",
+            "defaultValue": "Union",
+            "metadata": {
+                "description": "The default principal modification kind."
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Location for all resources."
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
+            "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
+            "apiVersion": "2019-09-07",
+            "location": "[parameters('location')]",
+            "properties": {
+                "databaseName": "[parameters('databaseName')]",
+                "clusterResourceId": "[parameters('leaderClusterResourceId')]",
+                "defaultPrincipalsModificationKind": "[parameters('defaultPrincipalsModificationKind')]"
+            }
+        }
+    ]
 }
 ```
 
@@ -236,7 +236,7 @@ var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
 var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
 var resourceManagementClient = new KustoManagementClient(serviceCreds){
-	SubscriptionId = followerSubscriptionId
+    SubscriptionId = followerSubscriptionId
 };
 
 var followerResourceGroupName = "testrg";
@@ -260,7 +260,7 @@ var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
 var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
 var resourceManagementClient = new KustoManagementClient(serviceCreds){
-	SubscriptionId = leaderSubscriptionId
+    SubscriptionId = leaderSubscriptionId
 };
 
 var leaderResourceGroupName = "testrg";
