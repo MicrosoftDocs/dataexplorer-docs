@@ -66,7 +66,7 @@ To run queries on your own cluster:
 
 ### count
 
-[**count**](https://docs.microsoft.com/azure/kusto/query/countoperator): Returns the count of rows in the table.
+[**count**](kusto/query/countoperator.md): Returns the count of rows in the table.
 
 The following query returns the count of rows in the StormEvents table.
 
@@ -78,7 +78,7 @@ StormEvents | count
 
 ### take
 
-[**take**](https://docs.microsoft.com/azure/kusto/query/takeoperator): Returns up to the specified number of rows of data.
+[**take**](kusto/query/takeoperator.md): Returns up to the specified number of rows of data.
 
 The following query returns five rows from the StormEvents table. The keyword *limit* is an alias for *take.*
 
@@ -93,7 +93,7 @@ StormEvents | take 5
 
 ### project
 
-[**project**](https://docs.microsoft.com/azure/kusto/query/projectoperator):
+[**project**](kusto/query/projectoperator.md):
 Selects a subset of columns.
 
 The following query returns a specific set of columns.
@@ -108,7 +108,7 @@ StormEvents
 
 ### where
 
-[**where**](https://docs.microsoft.com/azure/kusto/query/whereoperator): Filters a table to the subset of rows that satisfy a predicate.
+[**where**](kusto/query/whereoperator.md): Filters a table to the subset of rows that satisfy a predicate.
 
 The following query filters the data by `EventType` and `State`.
 
@@ -123,7 +123,7 @@ StormEvents
 
 ### sort
 
-[**sort**](https://docs.microsoft.com/azure/kusto/query/sortoperator): Sort the rows of the input table into order by one or more columns.
+[**sort**](kusto/query/sortoperator.md): Sort the rows of the input table into order by one or more columns.
 
 The following query sorts the data in descending order by `DamageProperty`.
 
@@ -142,7 +142,7 @@ StormEvents
 
 ### top
 
-[**top**](https://docs.microsoft.com/azure/kusto/query/topoperator): Returns the first *N* records sorted by the specified columns.
+[**top**](kusto/query/topoperator.md): Returns the first *N* records sorted by the specified columns.
 
 The following query returns the same results as above with one less
 operator.
@@ -158,7 +158,7 @@ StormEvents
 
 ### extend
 
-[**extend**](https://docs.microsoft.com/azure/kusto/query/extendoperator): Computes derived columns.
+[**extend**](kusto/query/extendoperator.md): Computes derived columns.
 
 The following query creates a new column by computing a value in every row.
 
@@ -176,7 +176,7 @@ Expressions can include all the usual operators (+, -, *, /, %), and there's a r
 
 ### summarize
 
-[**summarize**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator): Aggregates groups of rows.
+[**summarize**](kusto/query/summarizeoperator.md): Aggregates groups of rows.
 
 The following query returns the count of events by `State`.
 
@@ -209,7 +209,7 @@ The result of a **summarize** operation has:
 
 ### render
 
-[**render**](https://docs.microsoft.com/azure/kusto/query/renderoperator): Renders results as a graphical output.
+[**render**](kusto/query/renderoperator.md): Renders results as a graphical output.
 
 The following query displays a column chart.
 
@@ -267,7 +267,7 @@ This section covers some of the most important scalar operators.
 
 ### bin()
 
-[**bin()**](https://docs.microsoft.com/azure/kusto/query/binfunction): Rounds values down to an integer multiple of a given bin size.
+[**bin()**](kusto/query/binfunction.md): Rounds values down to an integer multiple of a given bin size.
 
 The following query calculates the count with a bucket size of one day.
 
@@ -281,7 +281,7 @@ StormEvents
 
 ### case()
 
-[**case()**](https://docs.microsoft.com/azure/kusto/query/casefunction): Evaluates a list of predicates, and returns the first result expression whose predicate is satisfied, or the final **else** expression. You can use this operator to categorize or group data:
+[**case()**](kusto/query/casefunction.md): Evaluates a list of predicates, and returns the first result expression whose predicate is satisfied, or the final **else** expression. You can use this operator to categorize or group data:
 
 The following query returns a new column `deaths_bucket` and groups the deaths by number.
 
@@ -300,7 +300,7 @@ StormEvents
 
 ### extract()
 
-[**extract()**](https://docs.microsoft.com/azure/kusto/query/extractfunction): Gets a match for a regular expression from a text string.
+[**extract()**](kusto/query/extractfunction.md): Gets a match for a regular expression from a text string.
 
 The following query extracts specific attribute values from a trace.
 
@@ -316,7 +316,7 @@ This query uses a **let** statement, which binds a name (in this case `MyData`) 
 
 ### parse_json()
 
-[**parse_json()**](https://docs.microsoft.com/azure/kusto/query/parsejsonfunction): Interprets a string as a JSON value, and returns the value as dynamic. It is superior to using the **extractjson()** function when you need to extract more than one element of a compound JSON object.
+[**parse_json()**](kusto/query/parsejsonfunction.md): Interprets a string as a JSON value, and returns the value as dynamic. It is superior to using the **extractjson()** function when you need to extract more than one element of a compound JSON object.
 
 The following query extracts the JSON elements from an array.
 
@@ -354,7 +354,7 @@ MyData
 
 ### ago()
 
-[**ago()**](https://docs.microsoft.com/azure/kusto/query/agofunction): Subtracts the given timespan from the current UTC clock time.
+[**ago()**](kusto/query/agofunction.md): Subtracts the given timespan from the current UTC clock time.
 
 The following query returns data for the last 12 hours.
 
@@ -370,7 +370,7 @@ print TimeStamp= range(now(-5d), now(), 1h), SomeCounter = range(1,121)
 
 ### startofweek()
 
-[**startofweek()**](https://docs.microsoft.com/azure/kusto/query/startofweekfunction): Returns the start of the week containing the date, shifted by an offset, if provided
+[**startofweek()**](kusto/query/startofweekfunction.md): Returns the start of the week containing the date, shifted by an offset, if provided
 
 The following query returns the start of the week with different offsets.
 
@@ -382,11 +382,11 @@ range offset from -1 to 1 step 1
 ```
 
 This query uses the **range** operator, which generates a single-column
-table of values. See also: [**startofday()**](https://docs.microsoft.com/azure/kusto/query/startofdayfunction), [**startofweek()**](https://docs.microsoft.com/azure/kusto/query/startofweekfunction), [**startofyear()**](https://docs.microsoft.com/azure/kusto/query/startofyearfunction)), [**startofmonth()**](https://docs.microsoft.com/azure/kusto/query/startofmonthfunction), [**endofday()**](https://docs.microsoft.com/azure/kusto/query/endofdayfunction), [**endofweek()**](https://docs.microsoft.com/azure/kusto/query/endofweekfunction), [**endofmonth()**](https://docs.microsoft.com/azure/kusto/query/endofmonthfunction), and [**endofyear()**](https://docs.microsoft.com/azure/kusto/query/endofyearfunction).
+table of values. See also: [**startofday()**](kusto/query/startofdayfunction.md), [**startofweek()**](kusto/query/startofweekfunction.md), [**startofyear()**](kusto/query/startofyearfunction.md)), [**startofmonth()**](kusto/query/startofmonthfunction.md), [**endofday()**](kusto/query/endofdayfunction.md), [**endofweek()**](kusto/query/endofweekfunction.md), [**endofmonth()**](kusto/query/endofmonthfunction.md), and [**endofyear()**](kusto/query/endofyearfunction.md).
 
 ### between()
 
-[**between()**](https://docs.microsoft.com/azure/kusto/query/betweenoperator):
+[**between()**](kusto/query/betweenoperator.md):
 Matches the input that is inside the inclusive range.
 
 The following query filters the data by a given date range.
@@ -415,7 +415,7 @@ Kusto has many tabular operators, some of which are covered in other sections of
 
 ### parse
 
-[**parse**](https://docs.microsoft.com/azure/kusto/query/parseoperator): Evaluates a string expression and parses its value into one or more calculated columns. There are three ways to parse: simple (the default), regex, and relaxed.
+[**parse**](kusto/query/parseoperator.md): Evaluates a string expression and parses its value into one or more calculated columns. There are three ways to parse: simple (the default), regex, and relaxed.
 
 The following query parses a trace and extracts the relevant values, using a default of simple parsing. The expression (referred to as StringConstant) is a regular string value and the match is strict: extended columns must match the required types.
 
@@ -475,7 +475,7 @@ MyTrace
 
 ### make-series
 
-[**make-series**](https://docs.microsoft.com/azure/kusto/query/make-seriesoperator): aggregates together groups of rows like [summarize](https://docs.microsoft.com/azure/kusto/query/summarizeoperator), but generates a (time) series vector per each combination of by values.
+[**make-series**](kusto/query/make-seriesoperator.md): aggregates together groups of rows like [summarize](kusto/query/summarizeoperator.md), but generates a (time) series vector per each combination of by values.
 
 The following query returns a set of time series for the count of storm events per day. The query covers a three-month period for each state, filling missing bins with the constant 0:
 
@@ -500,7 +500,7 @@ StormEvents
 | render timechart
 ```
 
-For more information, review the full list of [series functions](https://docs.microsoft.com/azure/kusto/query/scalarfunctions#series-processing-functions).
+For more information, review the full list of [series functions](kusto/query/scalarfunctions.md#series-processing-functions).
 
 ## Advanced aggregations
 
@@ -508,7 +508,7 @@ We covered basic aggregations, like **count** and **summarize**, earlier in this
 
 ### top-nested
 
-[**top-nested**](https://docs.microsoft.com/azure/kusto/query/topnestedoperator): Produces hierarchical top results, where each level is a drill-down based on previous level values.
+[**top-nested**](kusto/query/topnestedoperator.md): Produces hierarchical top results, where each level is a drill-down based on previous level values.
 
 This operator is useful for dashboard visualization scenarios, or when it is necessary to answer a question like the following: "Find the top-N values of K1 (using some aggregation); for each of them, find what are the top-M values of K2 (using another aggregation); ..."
 
@@ -526,7 +526,7 @@ top-nested 1 of EndLocation by sum(BeginLat)
 
 ### pivot() plugin
 
-[**pivot() plugin**](https://docs.microsoft.com/azure/kusto/query/pivotplugin): Rotates a table by turning the unique values from one column in the input table into multiple columns in the output table. The operator performs aggregations where they are required on any remaining column values in the final output.
+[**pivot() plugin**](kusto/query/pivotplugin.md): Rotates a table by turning the unique values from one column in the input table into multiple columns in the output table. The operator performs aggregations where they are required on any remaining column values in the final output.
 
 The following query applies a filter and pivots the rows into columns.
 
@@ -542,7 +542,7 @@ StormEvents
 
 ### dcount()
 
-[**dcount()**](https://docs.microsoft.com/azure/kusto/query/dcount-aggfunction): Returns an estimate of the number of distinct values of an expression in the group. Use [**count()**](https://docs.microsoft.com/azure/kusto/query/countoperator) to count all values.
+[**dcount()**](kusto/query/dcount-aggfunction.md): Returns an estimate of the number of distinct values of an expression in the group. Use [**count()**](kusto/query/countoperator.md) to count all values.
 
 The following query counts distinct `Source` by `State`.
 
@@ -555,7 +555,7 @@ StormEvents
 
 ### dcountif()
 
-[**dcountif()**](https://docs.microsoft.com/azure/kusto/query/dcountif-aggfunction): Returns an estimate of the number of distinct values of the expression for rows for which the predicate evaluates to true.
+[**dcountif()**](kusto/query/dcountif-aggfunction.md): Returns an estimate of the number of distinct values of the expression for rows for which the predicate evaluates to true.
 
 The following query counts the distinct values of `Source` where `DamageProperty < 5000`.
 
@@ -569,8 +569,8 @@ StormEvents
 
 ### dcount_hll()
 
-[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction):
-Calculates the **dcount** from HyperLogLog results (generated by [**hll**](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) or [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
+[**dcount_hll()**](kusto/query/dcount-hllfunction.md):
+Calculates the **dcount** from HyperLogLog results (generated by [**hll**](kusto/query/hll-aggfunction.md) or [**hll_merge**](kusto/query/hll-merge-aggfunction.md).
 
 The following query uses the HLL algorithm to generate the count.
 
@@ -585,7 +585,7 @@ StormEvents
 
 ### arg_max()
 
-[**arg_max()**](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction):
+[**arg_max()**](kusto/query/arg-max-aggfunction.md):
 Finds a row in the group that maximizes an expression, and returns the value of another expression (or * to return the entire row).
 
 The following query returns the time of the last flood report in each state.
@@ -601,7 +601,7 @@ StormEvents
 
 ### makeset()
 
-[**makeset()**](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction): Returns a dynamic (JSON) array of the set of distinct values that an expression takes in the group.
+[**makeset()**](kusto/query/makeset-aggfunction.md): Returns a dynamic (JSON) array of the set of distinct values that an expression takes in the group.
 
 The following query returns all the times when a flood was reported by each state and creates an array from the set of distinct values.
 
@@ -616,7 +616,7 @@ StormEvents
 
 ### mv-expand
 
-[**mv-expand**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator):
+[**mv-expand**](kusto/query/mvexpandoperator.md):
 Expands multi-value collection(s) from a dynamic-typed column so that each value in the collection gets a separate row. All the other columns in an expanded row are duplicated. It's the opposite of makelist.
 
 The following query generates sample data by creating a set and then using it to demonstrate the **mv-expand** capabilities.
@@ -634,7 +634,7 @@ FloodDataSet
 
 ### percentiles()
 
-[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): Returns an estimate for the specified [**nearest-rank percentile**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) of the population defined by an expression. The accuracy depends on the density of population in the region of the percentile. Can be used only in the context of aggregation inside [**summarize**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
+[**percentiles()**](kusto/query/percentiles-aggfunction.md): Returns an estimate for the specified [**nearest-rank percentile**](kusto/query/percentiles-aggfunction.md) of the population defined by an expression. The accuracy depends on the density of population in the region of the percentile. Can be used only in the context of aggregation inside [**summarize**](kusto/query/summarizeoperator.md).
 
 The following query calculates percentiles for storm duration.
 
@@ -667,7 +667,7 @@ This section covers elements that enable you to create more complex queries, joi
 
 ### let
 
-[**let**](https://docs.microsoft.com/azure/kusto/query/letstatement): Improves modularity and reuse. The **let** statement allows you to break a potentially complex expression into multiple parts, each bound to a name, and compose those parts together. A **let** statement can also be used to create user-defined functions and views (expressions over tables whose results look like a new table). Expressions bound by a **let** statement can be of scalar type, of tabular type, or user-defined function (lambdas).
+[**let**](kusto/query/letstatement.md): Improves modularity and reuse. The **let** statement allows you to break a potentially complex expression into multiple parts, each bound to a name, and compose those parts together. A **let** statement can also be used to create user-defined functions and views (expressions over tables whose results look like a new table). Expressions bound by a **let** statement can be of scalar type, of tabular type, or user-defined function (lambdas).
 
 The following example creates a tabular type variable and uses it in a subsequent expression.
 
@@ -687,7 +687,7 @@ LightningStorms
 
 ### join
 
-[**join**](https://docs.microsoft.com/azure/kusto/query/joinoperator): Merge the rows of two tables to form a new table by matching values of the specified column(s) from each table. Kusto supports a full range of join types: **fullouter**, **inner**, **innerunique**, **leftanti**, **leftantisemi**, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter**, **rightsemi**.
+[**join**](kusto/query/joinoperator.md): Merge the rows of two tables to form a new table by matching values of the specified column(s) from each table. Kusto supports a full range of join types: **fullouter**, **inner**, **innerunique**, **leftanti**, **leftantisemi**, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter**, **rightsemi**.
 
 The following example joins two tables with an inner join.
 
@@ -717,7 +717,7 @@ X
 
 ### serialize
 
-[**serialize**](https://docs.microsoft.com/azure/kusto/query/serializeoperator): Serializes the row set so you can use functions that require serialized data, like **row_number()**.
+[**serialize**](kusto/query/serializeoperator.md): Serializes the row set so you can use functions that require serialized data, like **row_number()**.
 
 The following query succeeds because the data is serialized.
 
@@ -743,7 +743,7 @@ StormEvents
 
 ### Cross-database and cross-cluster queries
 
-[Cross-database and cross-cluster queries](https://docs.microsoft.com/azure/kusto/query/cross-cluster-or-database-queries): You can query a database on the same cluster by referring it as `database("MyDatabase").MyTable`. You can query a database on a remote cluster by referring to it as `cluster("MyCluster").database("MyDatabase").MyTable`.
+[Cross-database and cross-cluster queries](kusto/query/cross-cluster-or-database-queries.md): You can query a database on the same cluster by referring it as `database("MyDatabase").MyTable`. You can query a database on a remote cluster by referring to it as `cluster("MyCluster").database("MyDatabase").MyTable`.
 
 The following query is called from one cluster and queries data from `MyCluster` cluster. To run this query, use your own cluster name and database name.
 
@@ -759,7 +759,7 @@ This section includes elements and queries that demonstrate how easy it is to pe
 
 ### activity_counts_metrics plugin
 
-[**activity_counts_metrics plugin**](https://docs.microsoft.com/azure/kusto/query/activity-counts-metrics-plugin): Calculates useful activity metrics (total count values, distinct count values, distinct count of new values, and aggregated distinct count). Metrics are calculated for each time window, then they are compared, and aggregated to and with all previous time windows.
+[**activity_counts_metrics plugin**](kusto/query/activity-counts-metrics-plugin.md): Calculates useful activity metrics (total count values, distinct count values, distinct count of new values, and aggregated distinct count). Metrics are calculated for each time window, then they are compared, and aggregated to and with all previous time windows.
 
 The following query analyzes user adoption by calculating daily activity counts.
 
@@ -793,7 +793,7 @@ window)
 
 ### activity_engagement plugin
 
-[**activity_engagement plugin**](https://docs.microsoft.com/azure/kusto/query/activity-engagement-plugin): Calculates activity engagement ratio based on ID column over a sliding timeline window. **activity_engagement plugin** can be used for calculating DAU, WAU, and MAU (daily, weekly, and monthly active users).
+[**activity_engagement plugin**](kusto/query/activity-engagement-plugin.md): Calculates activity engagement ratio based on ID column over a sliding timeline window. **activity_engagement plugin** can be used for calculating DAU, WAU, and MAU (daily, weekly, and monthly active users).
 
 The following query returns the ratio of total distinct users using an application daily compared to total distinct users using the application weekly, on a moving seven-day window.
 
@@ -819,7 +819,7 @@ range _day from _start to _end step 1d
 
 ### activity_metrics plugin
 
-[**activity_metrics plugin**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin):
+[**activity_metrics plugin**](kusto/query/activity-metrics-plugin.md):
 Calculates useful activity metrics (distinct count values, distinct count of new values, retention rate, and churn rate) based on the current period window vs. the previous period window.
 
 The following query calculates the churn and retention rate for a given dataset.
@@ -845,8 +845,8 @@ range _day from _start to _end step 1d
 
 ### new_activity_metrics plugin
 
-[**new_activity_metrics plugin**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin):
-Calculates useful activity metrics (distinct count values, distinct count of new values, retention rate, and churn rate) for the cohort of new users. The concept of this plugin is similar to [**activity_metrics plugin**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), but focuses on new users.
+[**new_activity_metrics plugin**](kusto/query/new-activity-metrics-plugin.md):
+Calculates useful activity metrics (distinct count values, distinct count of new values, retention rate, and churn rate) for the cohort of new users. The concept of this plugin is similar to [**activity_metrics plugin**](kusto/query/activity-metrics-plugin.md), but focuses on new users.
 
 The following query calculates a retention and churn rate with a week-over-week window for the new users cohort (users that arrived on the first week).
 
@@ -868,7 +868,7 @@ range Day from _start to _end step 1d
 
 ### session_count plugin
 
-[**session_count plugin**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin): Calculates the count of sessions based on ID column over a timeline.
+[**session_count plugin**](kusto/query/session-count-plugin.md): Calculates the count of sessions based on ID column over a timeline.
 
 The following query returns the count of sessions. A session is considered active if a user ID appears at least once at a timeframe of 100-time slots, while the session look-back window is 41-time slots.
 
@@ -888,7 +888,7 @@ _data
 
 ### funnel_sequence plugin
 
-[**funnel_sequence plugin**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-plugin):
+[**funnel_sequence plugin**](kusto/query/funnel-sequence-plugin.md):
 Calculates the distinct count of users who have taken a sequence of states; shows the distribution of previous and next states that have led to or were followed by the sequence.
 
 The following query shows what event happens before and after all Tornado events in 2007.
@@ -905,7 +905,7 @@ StormEvents
 
 ### funnel_sequence_completion plugin
 
-[**funnel_sequence_completion plugin**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin): Calculates the funnel of completed sequence steps within different time periods.
+[**funnel_sequence_completion plugin**](kusto/query/funnel-sequence-completion-plugin.md): Calculates the funnel of completed sequence steps within different time periods.
 
 The following query checks the completion funnel of the sequence: `Hail -> Tornado -> Thunderstorm -> Wind` in "overall" times of one hour, four hours, and one day (`[1h, 4h, 1d]`).
 
@@ -923,7 +923,7 @@ StormEvents
 
 ## Functions
 
-This section covers [**functions**](https://docs.microsoft.com/azure/kusto/query/functions): reusable queries that are stored on the server. Functions can be invoked by queries and other functions (recursive functions are not supported).
+This section covers [**functions**](kusto/query/functions.md): reusable queries that are stored on the server. Functions can be invoked by queries and other functions (recursive functions are not supported).
 
 > [!NOTE]
 > You cannot create functions on the help cluster, which is read-only. Use your own test cluster for this part.

@@ -29,7 +29,7 @@ When working with terabytes of fresh raw data, follow these guidelines to keep P
 
    * Increase the number of [concurrent connections in DirectQuery in Power BI](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery).
 
-   * Use [weak consistency to improve parallelism](/azure/kusto/concepts/queryconsistency). This may have an impact on the freshness of the data.
+   * Use [weak consistency to improve parallelism](kusto/concepts/queryconsistency.md). This may have an impact on the freshness of the data.
 
 * **Effective slicers** – Use [sync slicers](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) to prevent reports from loading data before you're ready. After you structure the data set, place all visuals, and mark all the slicers, you can select the sync slicer to load only the data needed.
 
@@ -43,7 +43,7 @@ The following section includes tips and tricks for using Kusto query language wi
 
 ### Complex queries in Power BI
 
-Complex queries are more easily expressed in Kusto than in Power Query. They should be implemented as [Kusto functions](/azure/kusto/query/functions), and invoked in Power BI. This method is required when using **DirectQuery** with `let` statements in your Kusto query. Because Power BI joins two queries, and `let` statements can't be used with the `join` operator, syntax errors may occur. Therefore, save each portion of the join as a Kusto function and allow Power BI to join these two functions together.
+Complex queries are more easily expressed in Kusto than in Power Query. They should be implemented as [Kusto functions](kusto/query/functions), and invoked in Power BI. This method is required when using **DirectQuery** with `let` statements in your Kusto query. Because Power BI joins two queries, and `let` statements can't be used with the `join` operator, syntax errors may occur. Therefore, save each portion of the join as a Kusto function and allow Power BI to join these two functions together.
 
 ### How to simulate a relative date-time operator
 
@@ -69,11 +69,11 @@ in
 
 ### Reaching Kusto query limits 
 
-Kusto queries return, by default, up to 500,000 rows or 64 MB, as described in [query limits](/azure/kusto/concepts/querylimits). You can override these defaults by using **Advanced options** in the  **Azure Data Explorer (Kusto)** connection window:
+Kusto queries return, by default, up to 500,000 rows or 64 MB, as described in [query limits](kusto/concepts/querylimits.md). You can override these defaults by using **Advanced options** in the  **Azure Data Explorer (Kusto)** connection window:
 
 ![advanced options](media/power-bi-best-practices/advanced-options.png)
 
-These options issue [set statements](/azure/kusto/query/setstatement) with your query to change the default query limits:
+These options issue [set statements](kusto/query/setstatement.md) with your query to change the default query limits:
 
   * **Limit query result record number** generates a `set truncationmaxrecords`
   * **Limit query result data size in Bytes** generates a `set truncationmaxsize`
@@ -81,7 +81,7 @@ These options issue [set statements](/azure/kusto/query/setstatement) with your 
 
 ### Using query parameters
 
-You can use [query parameters](/azure/kusto/query/queryparametersstatement) to modify your query dynamically. 
+You can use [query parameters](kusto/query/queryparametersstatement.md) to modify your query dynamically. 
 
 #### Using a query parameter in the connection details
 
@@ -144,7 +144,7 @@ If running a query in Power BI results in the following error:
  _"DataSource.Error: Web.Contents failed to get contents from..."_
 the query is probably longer than 2000 characters. Power BI uses **PowerQuery** to query Kusto by issuing an HTTP GET request that encodes the query as part of the URI being retrieved. Therefore, Kusto queries issued by Power BI are limited to the maximum length of
 a request URI (2000 characters, minus small offset). As a workaround, you can
-define a [stored function](/azure/kusto/query/schema-entities/stored-functions) in Kusto,
+define a [stored function](kusto/query/schema-entities/stored-functions.md) in Kusto,
 and have Power BI use that function in the query.
 
 ## Next steps

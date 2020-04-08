@@ -74,11 +74,11 @@ If you're already using Logstash and have access to your own event stream, skip 
 
     ```ruby
     input {
-    	stdin { }
-    	generator {
-    		message => "Test Message 123"
-    		count => 1000
-    	}
+        stdin { }
+        generator {
+            message => "Test Message 123"
+            count => 1000
+        }
     }
     ```
 
@@ -86,11 +86,11 @@ This configuration also includes the `stdin` input plugin that will enable you t
 
 ## Configure Logstash to send data to Azure Data Explorer
 
-Paste the following settings into the same config file used in the previous step. Replace all the placeholders with the relevant values for your setup. For more information, see [Creating an AAD Application](/azure/kusto/management/access-control/how-to-provision-aad-app). 
+Paste the following settings into the same config file used in the previous step. Replace all the placeholders with the relevant values for your setup. For more information, see [Creating an AAD Application](kusto/management/access-control/how-to-provision-aad-app.md). 
 
 ```ruby
 output {
-	kusto {
+    kusto {
             path => "/tmp/kusto/%{+YYYY-MM-dd-HH-mm-ss}.txt"
             ingest_url => "https://ingest-<cluster name>.kusto.windows.net/"
             app_id => "<application id>"
@@ -99,7 +99,7 @@ output {
             database => "<database name>"
             table => "<target table>" # logs as defined above
             mapping => "<mapping name>" # basicmsg as defined above
-	}
+    }
 }
 ```
 

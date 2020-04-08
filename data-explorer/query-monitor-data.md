@@ -56,7 +56,7 @@ You can run the queries using client tools that support Kusto queries, such as: 
 > * Database name should have the same name as the resource specified in the proxy cluster. Names are case sensitive.
 > * In cross cluster queries, make sure that the naming of Application Insights apps and Log Analytics workspaces is correct.
 >     * If names contain special characters, they're replaced by URL encoding in the proxy cluster name. 
->     * If names include characters that don't meet [KQL identifier name rules](/azure/kusto/query/schema-entities/entity-names), they are replaced by the dash **-** character.
+>     * If names include characters that don't meet [KQL identifier name rules](kusto/query/schema-entities/entity-names.md), they are replaced by the dash **-** character.
 
 ### Direct query from your LA or AI ADX Proxy cluster
 
@@ -84,7 +84,7 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 
    [ ![Cross query from the Azure Data Explorer proxy](media/adx-proxy/cross-query-adx-proxy.png)](media/adx-proxy/cross-query-adx-proxy.png#lightbox)
 
-Using the [`join` operator](/azure/kusto/query/joinoperator), instead of union, may require a [`hint`](/azure/kusto/query/joinoperator#join-hints) to run it on an Azure Data Explorer native cluster (and not on the proxy). 
+Using the [`join` operator](kusto/query/joinoperator.md), instead of union, may require a [`hint`](kusto/query/joinoperator.md#join-hints) to run it on an Azure Data Explorer native cluster (and not on the proxy). 
 
 ## Additional syntax examples
 

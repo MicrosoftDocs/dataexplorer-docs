@@ -43,7 +43,7 @@ The utility can pull source data from a local folder or from an Azure blob stora
     >![Command line Help](media/lightingest/lightingest-cmd-line-help.png)
 
 1. Enter `ingest-` followed by the connection string to the Azure Data Explorer cluster that will manage the ingestion.
-    Enclose the connection string in double quotes and follow the [Kusto connection strings specification](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto).
+    Enclose the connection string in double quotes and follow the [Kusto connection strings specification](kusto/api/connection-strings/kusto.md).
 
     For example:
     ```
@@ -61,7 +61,7 @@ The utility can pull source data from a local folder or from an Azure blob stora
 
 |Argument name         |Short name   |Type    |Mandatory |Description                                |
 |----------------------|-------------|--------|----------|-------------------------------------------|
-|                      |             |string  |Mandatory |[Azure Data Explorer Connection String](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto) specifying the Kusto endpoint that will handle the ingestion. Should be enclosed in double quotes |
+|                      |             |string  |Mandatory |[Azure Data Explorer Connection String](kusto/api/connection-strings/kusto.md) specifying the Kusto endpoint that will handle the ingestion. Should be enclosed in double quotes |
 |-database             |-db          |string  |Optional  |Target Azure Data Explorer database name |
 |-table                |             |string  |Mandatory |Target Azure Data Explorer table name |
 |-sourcePath           |-source      |string  |Mandatory |Path to source files or root URI of the blob container. If the data is in blobs, must contain storage account key or SAS. Recommended to enclose in double quotes |
@@ -69,11 +69,11 @@ The utility can pull source data from a local folder or from an Azure blob stora
 |-pattern              |             |string  |Optional  |Pattern by which source files/blobs are picked. Supports wildcards. For example, `"*.csv"`. Recommended to enclose in double quotes |
 |-zipPattern           |             |string  |Optional  |Regular expression to use when selecting which files in a ZIP archive to ingest.<br>All other files in the archive will be ignored.For example, `"*.csv"`. It's recommended to surround it in double quotes |
 |-format               |-f           |string  |Optional  |Source data format. Must be one of the [supported formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats) |
-|-ingestionMappingPath |-mappingPath |string  |Optional  |Path to ingestion column-mapping file (mandatory for Json and Avro formats). See [data mappings](https://docs.microsoft.com/azure/kusto/management/mappings) |
-|-ingestionMappingRef  |-mappingRef  |string  |Optional  |Name of a pre-created ingestion column mapping (mandatory for Json and Avro formats). See [data mappings](https://docs.microsoft.com/azure/kusto/management/mappings) |
+|-ingestionMappingPath |-mappingPath |string  |Optional  |Path to ingestion column-mapping file (mandatory for Json and Avro formats). See [data mappings](kusto/management/mappings.md) |
+|-ingestionMappingRef  |-mappingRef  |string  |Optional  |Name of a pre-created ingestion column mapping (mandatory for Json and Avro formats). See [data mappings](kusto/management/mappings.md) |
 |-creationTimePattern  |             |string  |Optional  |When set, is used to extract the CreationTime property from the file or blob path. See [Using CreationTimePattern argument](#using-creationtimepattern-argument) |
 |-ignoreFirstRow       |-ignoreFirst |bool    |Optional  |If set, the first record of each file/blob is ignored (for example, if the source data has headers) |
-|-tag                  |             |string  |Optional  |[Tags](https://docs.microsoft.com/azure/kusto/management/extents-overview#extent-tagging) to associate with the ingested data. Multiple occurrences are permitted |
+|-tag                  |             |string  |Optional  |[Tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data. Multiple occurrences are permitted |
 |-dontWait             |             |bool    |Optional  |If set to 'true', doesn't wait for ingestion completion. Useful when ingesting large amounts of files/blobs |
 
 ### Using CreationTimePattern argument

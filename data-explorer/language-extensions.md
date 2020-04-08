@@ -11,7 +11,7 @@ ms.date: 04/01/2020
 
 # Manage language extensions in your Azure Data Explorer cluster (Preview)
 
-The language extensions feature allows you to use language extension plugins to integrate other languages into your Azure Data Explorer KQL queries. When you run a user-defined-function (UDF) using a relevant script, the script gets tabular data as its input and is expected to produce tabular output. The plugin's runtime is hosted in a [sandbox](/azure/kusto/concepts/sandboxes), an isolated and secure environment, running on the cluster's nodes. In this article, you manage the language extensions plugin in your Azure Data Explorer cluster within the Azure portal.
+The language extensions feature allows you to use language extension plugins to integrate other languages into your Azure Data Explorer KQL queries. When you run a user-defined-function (UDF) using a relevant script, the script gets tabular data as its input and is expected to produce tabular output. The plugin's runtime is hosted in a [sandbox](kusto/concepts/sandboxes.md), an isolated and secure environment, running on the cluster's nodes. In this article, you manage the language extensions plugin in your Azure Data Explorer cluster within the Azure portal.
 
 > [!NOTE]
 > Azure Data Explorer language extensions that are currently supported are Python and R.
@@ -40,8 +40,8 @@ Do the following steps to enable language extensions on your cluster:
  
 ## Run language extension-integrated queries
 
-* Learn how to [run Python integrated KQL queries](/azure/kusto/query/pythonplugin).
-* Learn how to [run R integrated KQL queries](/azure/kusto/query/rplugin). 
+* Learn how to [run Python integrated KQL queries](kusto/query/pythonplugin.md).
+* Learn how to [run R integrated KQL queries](kusto/query/rplugin.md). 
 
 ## Disable language extensions on your cluster
 

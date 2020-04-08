@@ -14,7 +14,7 @@ ms.date: 09/15/2019
 
 # Use Azure Data Factory command activity to run Azure Data Explorer control commands
 
-[Azure Data Factory](/azure/data-factory/) (ADF) is a cloud-based data integration service that allows you to perform a combination of activities on the data. Use ADF to create data-driven workflows for orchestrating and automating data movement and data transformation. The **Azure Data Explorer Command** activity in Azure Data Factory enables you to run [Azure Data Explorer control commands](/azure/kusto/concepts/#control-commands) within an ADF workflow. This article teaches you how to create a pipeline with a lookup activity and ForEach activity containing an Azure Data Explorer command activity.
+[Azure Data Factory](/azure/data-factory/) (ADF) is a cloud-based data integration service that allows you to perform a combination of activities on the data. Use ADF to create data-driven workflows for orchestrating and automating data movement and data transformation. The **Azure Data Explorer Command** activity in Azure Data Factory enables you to run [Azure Data Explorer control commands](kusto/concepts/index.md#control-commands) within an ADF workflow. This article teaches you how to create a pipeline with a lookup activity and ForEach activity containing an Azure Data Explorer command activity.
 
 ## Prerequisites
 
@@ -82,7 +82,7 @@ A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrie
     * Select **Test Connection** to test the linked service connection you created. If you can connect to your setup, a green checkmark **Connection successful** will appear.
     * Select **Finish** to complete linked service creation.
 
-1. Once you’ve set up a linked service, In **AzureDataExplorerTable** > **Connection**, add **Table** name. Select **Preview data**, to make sure that the data is presented properly.
+1. Once you've set up a linked service, In **AzureDataExplorerTable** > **Connection**, add **Table** name. Select **Preview data**, to make sure that the data is presented properly.
 
    Your dataset is now ready, and you can continue editing your pipeline.
 
@@ -110,7 +110,7 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
 
         ![ForEach activity](media/data-factory-command-activity/for-each-activity.png)
 
-1.	Select the ForEach activity in the canvas. In the **Settings** tab below:
+1.    Select the ForEach activity in the canvas. In the **Settings** tab below:
     * Check the **Sequential** checkbox for a sequential processing of the Lookup results, or leave it unchecked to create parallel processing.
     * Set **Batch count**.
     * In **Items**, provide the following reference to the output value:
@@ -125,7 +125,7 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
 
     ![Azure Data Explorer command activity](media/data-factory-command-activity/adx-command-activity.png)
 
-1.	In the **Connection** tab, select the same Linked Service previously created.
+1.    In the **Connection** tab, select the same Linked Service previously created.
 
     ![azure data explorer command activity connection tab](media/data-factory-command-activity/adx-command-activity-connection-tab.png)
 
@@ -150,9 +150,9 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
     > The command activity has the following limits:
     > * Size limit: 1 MB response size
     > * Time limit: 20 minutes (default), 1 hour (maximum).
-    > * If needed, you can append a query to the result using [AdminThenQuery](/azure/kusto/management/index#combining-queries-and-control-commands), to reduce resulting size/time.
+    > * If needed, you can append a query to the result using [AdminThenQuery](kusto/management/index.md#combining-queries-and-control-commands), to reduce resulting size/time.
 
-1.	Now the pipeline is ready. You can go back to the main pipeline view by clicking the pipeline name.
+1.    Now the pipeline is ready. You can go back to the main pipeline view by clicking the pipeline name.
 
     ![Azure Data Explorer command pipeline](media/data-factory-command-activity/adx-command-pipeline.png)
 

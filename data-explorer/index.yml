@@ -99,7 +99,7 @@ landingContent:
           - text: KQL quick reference
             url: kql-quick-reference.md
           - text: Kusto Query Language
-            url: https://docs.microsoft.com/azure/kusto/query/
+            url: kusto/query/index.md
 
   # Card
   - title: Visualize data
@@ -163,6 +163,6 @@ landingContent:
       - linkListType: reference
         links:
           - text: Management commands
-            url: https://docs.microsoft.com/azure/kusto/management/
+            url: kusto/management/index.md
           - text: Azure Data Explorer API
-            url: https://docs.microsoft.com/azure/kusto/api/
+            url: kusto/api/index.md

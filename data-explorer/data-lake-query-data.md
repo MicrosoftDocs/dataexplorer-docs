@@ -24,7 +24,7 @@ Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Stora
  > [!NOTE]
  > Currently supported storage accounts are Azure Blob Storage or Azure Data Lake Storage (Gen1 and Gen2).
 
-1. Use the `.create external table` command to create an external table in Azure Data Explorer. Additional external table commands such as `.show`, `.drop`, and `.alter` are documented in [External table commands](/azure/kusto/management/externaltables).
+1. Use the `.create external table` command to create an external table in Azure Data Explorer. Additional external table commands such as `.show`, `.drop`, and `.alter` are documented in [External table commands](kusto/management/externaltables.md).
 
     ```Kusto
     .create external table ArchivedProducts(
@@ -49,7 +49,7 @@ For example, if the table is defined with a DateTime partition in yyyy/MM/dd for
 
 ### Create an external table with json format
 
-You can create an external table with json format. For more information see [External table commands](/azure/kusto/management/externaltables)
+You can create an external table with json format. For more information see [External table commands](kusto/management/externaltables.md)
 
 1. Use the `.create external table` command to create a table named *ExternalTableJson*:
 
@@ -96,12 +96,12 @@ external_table("ArchivedProducts") | take 100
 To query an external table with json format, use the `external_table()` function, and provide both table name and mapping name as the function arguments. In the query below, if *mappingName* is not specified, a mapping that you previously created will be used.
 
 ```kusto
-external_table(‘ExternalTableJson’, ‘mappingName’)
+external_table('ExternalTableJson', 'mappingName')
 ```
 
 ## Query external and ingested data together
 
-You can query both external tables and ingested data tables within the same query. You [`join`](/azure/kusto/query/joinoperator) or [`union`](/azure/kusto/query/unionoperator) the external table with additional data from Azure Data Explorer, SQL servers, or other sources. Use a [`let( ) statement`](/azure/kusto/query/letstatement) to assign a shorthand name to an external table reference.
+You can query both external tables and ingested data tables within the same query. You [`join`](kusto/query/joinoperator.md) or [`union`](kusto/query/unionoperator.md) the external table with additional data from Azure Data Explorer, SQL servers, or other sources. Use a [`let( ) statement`](kusto/query/letstatement.md) to assign a shorthand name to an external table reference.
 
 In the example below, *Products* is an ingested data table and *ArchivedProducts* is an external table that contains data in the Azure Data Lake Storage Gen2:
 
@@ -244,7 +244,7 @@ Optimal file size is hundreds of Mb (up to 1 Gb) per file. Avoid many small file
  
 ### Compression
  
-Use compression to reduce the amount of data being fetched from the remote storage. For Parquet format, use the internal Parquet compression mechanism that compresses column groups separately, thus allowing you to read them separately. To validate use of compression mechanism, check that the files are named as follows: “<filename>.gz.parquet” or “<filename>.snappy.parquet” as opposed to “<filename>.parquet.gz”). 
+Use compression to reduce the amount of data being fetched from the remote storage. For Parquet format, use the internal Parquet compression mechanism that compresses column groups separately, thus allowing you to read them separately. To validate use of compression mechanism, check that the files are named as follows: "<filename>.gz.parquet" or "<filename>.snappy.parquet" as opposed to "<filename>.parquet.gz"). 
  
 ### Partitioning
  

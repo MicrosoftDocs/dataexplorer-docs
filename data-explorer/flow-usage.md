@@ -122,4 +122,4 @@ Results:
 
 ## Next steps
 
-Learn about the [Microsoft Azure Explorer Logic App connector](https://docs.microsoft.com/azure/kusto/tools/logicapps) which is another way to run Kusto queries and commands automatically as part of a scheduled or triggered task.
+Learn about the [Microsoft Azure Explorer Logic App connector](kusto/tools/logicapps.md) which is another way to run Kusto queries and commands automatically as part of a scheduled or triggered task.

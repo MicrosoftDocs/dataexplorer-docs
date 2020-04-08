@@ -202,7 +202,7 @@ You can deploy the Azure Resource Manager template by [using the Azure portal](h
 |Attached Database Configurations Name    |    The name of the attached database configurations object. The name can be any string that is unique at the cluster level.     |
 |Database Name     |      The name of the database to be followed. If you want to follow all the leader's databases, use '*'.   |
 |Leader Cluster Resource ID    |   The resource ID of the leader cluster.      |
-|Default Principals Modification Kind    |   The default principal modification kind. Can be `Union`, `Replace` or `None`. For more information about default principal modification kind, see [principal modification kind control command](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
+|Default Principals Modification Kind    |   The default principal modification kind. Can be `Union`, `Replace` or `None`. For more information about default principal modification kind, see [principal modification kind control command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind).      |
 |Location   |   The location of all the resources. The leader and the follower must be in the same location.       |
  
 ### Verify that the database was successfully attached
@@ -353,7 +353,7 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 
 ### Manage principals
 
-When attaching a database, specify the **"default principals modification kind"**. The default is keeping the leader database collection of [authorized principals](/azure/kusto/management/access-control/index#authorization)
+When attaching a database, specify the **"default principals modification kind"**. The default is keeping the leader database collection of [authorized principals](kusto/management/access-control/index.md#authorization)
 
 |**Kind** |**Description**  |
 |---------|---------|
@@ -361,7 +361,7 @@ When attaching a database, specify the **"default principals modification kind"*
 |**Replace**   |    No inheritance of principals from the original database. New principals must be created for the attached database.     |
 |**None**   |   The attached database principals include only the principals of the original database with no additional principals.      |
 
-For more information about using control commands to configure the authorized principals, see [Control commands for managing a follower cluster](/azure/kusto/management/cluster-follower).
+For more information about using control commands to configure the authorized principals, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
 
 ### Manage permissions
 
@@ -369,7 +369,7 @@ Managing read-only database permission is the same as for all database types. Se
 
 ### Configure caching policy
 
-The follower database administrator can modify the [caching policy](/azure/kusto/management/cache-policy) of the attached database or any of its tables on the hosting cluster. The default is keeping the leader database collection of database and table-level caching policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using control commands to configure the caching policy on the follower database or table, see [Control commands for managing a follower cluster](/azure/kusto/management/cluster-follower).
+The follower database administrator can modify the [caching policy](kusto/management/cache-policy.md) of the attached database or any of its tables on the hosting cluster. The default is keeping the leader database collection of database and table-level caching policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using control commands to configure the caching policy on the follower database or table, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
 
 ## Limitations
 
@@ -382,4 +382,4 @@ The follower database administrator can modify the [caching policy](/azure/kusto
 
 ## Next steps
 
-* For information about follower cluster configuration, see [Control commands for managing a follower cluster](/azure/kusto/management/cluster-follower).
+* For information about follower cluster configuration, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).

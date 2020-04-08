@@ -49,7 +49,7 @@ Use the following command to connect to the *Samples* database hosted on the *He
 
 ## Query and visualize
 
-Query data using the [render operator](/azure/kusto/query/renderoperator) and visualize data using the ploy.ly library. This query and visualization supplies an integrated experience that uses native KQL. Kqlmagic supports most charts except `timepivot`, `pivotchart`, and `ladderchart`. Render is supported with all attributes except `kind`, `ysplit`, and `accumulate`. 
+Query data using the [render operator](kusto/query/renderoperator.md) and visualize data using the ploy.ly library. This query and visualization supplies an integrated experience that uses native KQL. Kqlmagic supports most charts except `timepivot`, `pivotchart`, and `ladderchart`. Render is supported with all attributes except `kind`, `ysplit`, and `accumulate`. 
 
 ### Query and render piechart
 
@@ -76,7 +76,7 @@ StormEvents
 
 ### Customize the chart colors
 
-If you don’t like the default color palette, customize the charts using palette options. The available palettes can be found here: [Choose colors palette for your KQL magic query chart result](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
+If you don't like the default color palette, customize the charts using palette options. The available palettes can be found here: [Choose colors palette for your KQL magic query chart result](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
 
 1. For a list of palettes:
 

@@ -26,7 +26,7 @@ To start working with the Azure Data Explorer .NET client libraries using PowerS
 4. Once all dependent .NET assemblies are loaded, create a Kusto connection string,
    instantiate a *query provider* or an *admin provider*, and run the queries or commands (as shown in the [examples](powershell.md#examples) below).
 
-For detailed information see the [Azure Data Explorer client libraries](/azure/kusto/api/netfx/about-kusto-data).
+For detailed information see the [Azure Data Explorer client libraries](kusto/api/netfx/about-kusto-data.md).
 
 ## Examples
 

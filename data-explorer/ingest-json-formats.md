@@ -25,7 +25,7 @@ Azure Data Explorer supports two JSON file formats:
 
 ### Ingest and map JSON formatted data
 
-Ingestion of JSON formatted data requires you to specify the *format* using [ingestion property](/azure/kusto/management/data-ingestion/index#ingestion-properties). Ingestion of JSON data requires [mapping](/azure/kusto/management/mappings), which maps a JSON source entry to its target column. When ingesting data, use the pre-defined `jsonMappingReference` ingestion property or specify the `jsonMapping`ingestion property. This article will use the `jsonMappingReference` ingestion property, which is pre-defined on the table used for ingestion. In the examples below, we'll start by ingesting JSON records as raw data to a single column table. Then we'll use the mapping to ingest each property to its mapped column. 
+Ingestion of JSON formatted data requires you to specify the *format* using [ingestion property](kusto/management/data-ingestion/index#ingestion-properties.md). Ingestion of JSON data requires [mapping](kusto/management/mappings.md), which maps a JSON source entry to its target column. When ingesting data, use the pre-defined `jsonMappingReference` ingestion property or specify the `jsonMapping`ingestion property. This article will use the `jsonMappingReference` ingestion property, which is pre-defined on the table used for ingestion. In the examples below, we'll start by ingesting JSON records as raw data to a single column table. Then we'll use the mapping to ingest each property to its mapped column. 
 
 ### Simple JSON example
 
@@ -61,7 +61,7 @@ Use Kusto query language to ingest data in a raw JSON format.
     .create table RawEvents (Event: dynamic)
     ```
 
-    This query creates a table with a single `Event` column of a [dynamic](/azure/kusto/query/scalar-data-types/dynamic) data type.
+    This query creates a table with a single `Event` column of a [dynamic](kusto/query/scalar-data-types/dynamic.md) data type.
 
 1. Create the JSON mapping.
 
@@ -152,7 +152,7 @@ Use C# to ingest data in raw JSON format.
     ```
 
 > [!NOTE]
-> Data is aggregated according to [batching policy](/azure/kusto/concepts/batchingpolicy), resulting in a latency of a few minutes.
+> Data is aggregated according to [batching policy](kusto/concepts/batchingpolicy.md), resulting in a latency of a few minutes.
 
 # [Python](#tab/python)
 
@@ -195,7 +195,7 @@ Use Python to ingest data in raw JSON format.
     ```
 
     > [!NOTE]
-    > Data is aggregated according to [batching policy](/azure/kusto/concepts/batchingpolicy), resulting in a latency of a few minutes.
+    > Data is aggregated according to [batching policy](kusto/concepts/batchingpolicy.md), resulting in a latency of a few minutes.
 
 ---
 
@@ -366,7 +366,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 ## Ingest JSON records containing arrays
 
-Array data types are an ordered collection of values. Ingestion of a JSON array is done by an [update policy](/azure/kusto/management/update-policy). The JSON is ingested as-is to an intermediate table. An update policy runs a pre-defined function on the `RawEvents` table, reingesting the results to the target table. We will ingest data with the following structure:
+Array data types are an ordered collection of values. Ingestion of a JSON array is done by an [update policy](kusto/management/update-policy.md). The JSON is ingested as-is to an intermediate table. An update policy runs a pre-defined function on the `RawEvents` table, reingesting the results to the target table. We will ingest data with the following structure:
 
 ```json
 {

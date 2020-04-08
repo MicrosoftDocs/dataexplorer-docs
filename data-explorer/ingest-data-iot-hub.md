@@ -80,7 +80,7 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     | IoT Hub | IoT Hub name |
     | Shared access policy | The name of the shared access policy. Must have read permissions |
     | Consumer group |  The consumer group defined in the IoT Hub built-in endpoint |
-    | Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](/azure/kusto/management/create-table-command) or [update](/azure/kusto/management/alter-table-command) table schema and [mapping](/azure/kusto/management/mappings) to include the selected properties. | | | 
+    | Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. | | | 
 
     > [!NOTE]
     > In case of a [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover), you must recreate the data connection.
@@ -94,7 +94,7 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     |---|---|---|
     | Table | *TestTable* | The table you created in **testdb**. |
     | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE, and TXT. |
-    | Column mapping | *TestMapping* | The [mapping](/azure/kusto/management/mappings) you created in **testdb**, which maps incoming JSON data to the column names and data types of **testdb**. Required for JSON, MULTILINE JSON, and AVRO, and optional for other formats.|
+    | Column mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **testdb**, which maps incoming JSON data to the column names and data types of **testdb**. Required for JSON, MULTILINE JSON, and AVRO, and optional for other formats.|
     | | |
 
     > [!NOTE]
@@ -157,8 +157,8 @@ With the app generating data, you can now see the data flow from the IoT hub to 
     ![Show ingested data results](media/ingest-data-iot-hub/show-ingested-data.png)
 
     > [!NOTE]
-    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes or 500 MB of data, by default, so you may experience a latency. See [batching policy](/azure/kusto/concepts/batchingpolicy) for aggregation options. 
-    > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](/azure/kusto/concepts/streamingingestionpolicy). 
+    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes or 500 MB of data, by default, so you may experience a latency. See [batching policy](kusto/concepts/batchingpolicy.md) for aggregation options. 
+    > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](kusto/concepts/streamingingestionpolicy.md). 
 
 ## Clean up resources
 

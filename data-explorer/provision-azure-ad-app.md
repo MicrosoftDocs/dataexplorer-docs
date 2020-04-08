@@ -100,11 +100,11 @@ Now that your service principal application registration is created, you need to
     > [!NOTE]
     > After creating the application registration, there may be a several minute delay until Azure Data Explorer can reference it. If, when executing the command, you receive an error that the application is not found, wait and try again.
 
-For more information, see [security roles management](/azure/kusto/management/security-roles) and [ingestion permissions](/azure/kusto/api/netfx/kusto-ingest-client-permissions.md).  
+For more information, see [security roles management](kusto/management/security-roles.md) and [ingestion permissions](kusto/api/netfx/kusto-ingest-client-permissions.md).  
 
 ## Using application credentials to access a database
 
-Use the application credentials to programmatically access your database by using the [Azure Data Explorer client library](/azure/kusto/api/netfx/about-kusto-data.md).
+Use the application credentials to programmatically access your database by using the [Azure Data Explorer client library](kusto/api/netfx/about-kusto-data.md).
 
 ```C#
 . . .
@@ -123,7 +123,7 @@ var queryResult = client.ExecuteQuery($"{query}");
    > [!NOTE]
    > Specify the application id and key of the application registration (service principal) created earlier.
 
-For more information, see [authenticate with Azure AD for Azure Data Explorer access](/azure/kusto/management/access-control/how-to-authenticate-with-aad) and [use Azure Key Vault with .NET Core web app](/azure/key-vault/tutorial-net-create-vault-azure-web-app#create-a-net-core-web-app).
+For more information, see [authenticate with Azure AD for Azure Data Explorer access](kusto/management/access-control/how-to-authenticate-with-aad.md) and [use Azure Key Vault with .NET Core web app](/azure/key-vault/tutorial-net-create-vault-azure-web-app#create-a-net-core-web-app).
 
 ## Troubleshooting
 
@@ -145,4 +145,4 @@ You'll need to contact your Azure AD administrator to grant consent for all user
 
 ## Next steps
 
-* See [Kusto connection strings](/azure/kusto/api/connection-strings/kusto.md) for list of supported connection strings.
+* See [Kusto connection strings](kusto/api/connection-strings/kusto.md) for list of supported connection strings.

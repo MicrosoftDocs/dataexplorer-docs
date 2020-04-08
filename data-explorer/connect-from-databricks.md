@@ -26,7 +26,7 @@ ms.date: 11/27/2018
 
 ## Install the Python library on your Azure Databricks cluster
 
-To install the [Python library](/azure/kusto/api/python/kusto-python-client-library) on your Azure Databricks cluster:
+To install the [Python library](kusto/api/python/kusto-python-client-library.md) on your Azure Databricks cluster:
 
 1. Go to your Azure Databricks workspace and [create a library](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library).
 2. [Upload a Python PyPI package or Python Egg](https://docs.azuredatabricks.net/user-guide/libraries.html#upload-a-python-pypi-package-or-python-egg).
@@ -39,7 +39,7 @@ To install the [Python library](/azure/kusto/api/python/kusto-python-client-libr
 
 ## Connect to ADX by using an Azure AD app
 
-1. Create Azure AD app by [provisioning an Azure AD application](/azure/kusto/management/access-control/how-to-provision-aad-app).
+1. Create Azure AD app by [provisioning an Azure AD application](kusto/management/access-control/how-to-provision-aad-app.md).
 1. Grant access to your Azure AD app in your Azure Data Explorer database as follows:
 
     ```kusto

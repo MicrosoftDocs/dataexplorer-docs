@@ -47,28 +47,28 @@ Diagnostic metrics are aggregated with a time grain of 1 minute. Following is an
 
 ```json
 {
-	"records": [
-	{
-    	"count": 14,
-    	"total": 0,
-    	"minimum": 0,
-    	"maximum": 0,
-    	"average": 0,
-    	"resourceId": "/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/<cluster-name>",
-    	"time": "2018-12-20T17:00:00.0000000Z",
-    	"metricName": "QueryDuration",
-    	"timeGrain": "PT1M"
+    "records": [
+    {
+        "count": 14,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/<cluster-name>",
+        "time": "2018-12-20T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
     },
     {
-    	"count": 12,
-    	"total": 0,
-    	"minimum": 0,
-    	"maximum": 0,
-    	"average": 0,
-    	"resourceId": "/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/<cluster-name>",
-    	"time": "2018-12-21T17:00:00.0000000Z",
-    	"metricName": "QueryDuration",
-    	"timeGrain": "PT1M"
+        "count": 12,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/<cluster-name>",
+        "time": "2018-12-21T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
     }
     ]
 }
@@ -81,53 +81,53 @@ Following is an example of an Azure Data Explorer [diagnostic ingestion log](usi
 
 ```json
 {
-	"time": "2019-08-26T13:22:36.8804326Z",
-	"resourceId": "/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/<cluster-name>",
-	"operationName": "MICROSOFT.KUSTO/CLUSTERS/INGEST/ACTION",
-	"operationVersion": "1.0",
-	"category": "FailedIngestion",
-	"resultType": "Failed",
-	"correlationId": "d59882f1-ad64-4fc4-b2ef-d663b6cc1cc5",
-	"properties": {
-		"OperationId": "00000000-0000-0000-0000-000000000000",
-		"Database": "Kusto",
-		"Table": "Table_13_20_prod",
-		"FailedOn": "2019-08-26T13:22:36.8804326Z",
-		"IngestionSourceId": "d59882f1-ad64-4fc4-b2ef-d663b6cc1cc5",
-		"Details":
-		{
-			"error": 
-			{
-				"code": "BadRequest_DatabaseNotExist",
-				"message": "Request is invalid and cannot be executed.",
-				"@type": "Kusto.Data.Exceptions.DatabaseNotFoundException",
-				"@message": "Database 'Kusto' was not found.",
-				"@context": 
-				{
-					"timestamp": "2019-08-26T13:22:36.7179157Z",
-					"serviceAlias": "<cluster-name>",
-					"machineName": "KEngine000001",
-					"processName": "Kusto.WinSvc.Svc",
-					"processId": 5336,
-					"threadId": 6528,
-					"appDomainName": "Kusto.WinSvc.Svc.exe",
-					"clientRequestd": "DM.IngestionExecutor;a70ddfdc-b471-4fc7-beac-bb0f6e569fe8",
-					"activityId": "f13e7718-1153-4e65-bf82-8583d712976f",
-					"subActivityId": "2cdad9d0-737b-4c69-ac9a-22cf9af0c41b",
-					"activityType": "DN.AdminCommand.DataIngestPullCommand",
-					"parentActivityId": "2f65e533-a364-44dd-8d45-d97460fb5795",
-					"activityStack": "(Activity stack: CRID=DM.IngestionExecutor;a70ddfdc-b471-4fc7-beac-bb0f6e569fe8 ARID=f13e7718-1153-4e65-bf82-8583d712976f > DN.Admin.Client.ExecuteControlCommand/5b764b32-6017-44a2-89e7-860eda515d40 > P.WCF.Service.ExecuteControlCommandInternal..IAdminClientServiceCommunicationContract/c2ef9344-069d-44c4-88b1-a3570697ec77 > DN.FE.ExecuteControlCommand/2f65e533-a364-44dd-8d45-d97460fb5795 > DN.AdminCommand.DataIngestPullCommand/2cdad9d0-737b-4c69-ac9a-22cf9af0c41b)"
-				},
-				"@permanent": true
-			}
-		},
-		"ErrorCode": "BadRequest_DatabaseNotExist",
-		"FailureStatus": "Permanent",
-		"RootActivityId": "00000000-0000-0000-0000-000000000000",
-		"OriginatesFromUpdatePolicy": false,
-		"ShouldRetry": false,
-		"IngestionSourcePath": "https://c0skstrldkereneus01.blob.core.windows.net/aam-20190826-temp-e5c334ee145d4b43a3a2d3a96fbac1df/3216_test_3_columns_invalid_8f57f0d161ed4a8c903c6d1073005732_59951f9ca5d143b6bdefe52fa381a8ca.zip"
-	}
+    "time": "2019-08-26T13:22:36.8804326Z",
+    "resourceId": "/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/<cluster-name>",
+    "operationName": "MICROSOFT.KUSTO/CLUSTERS/INGEST/ACTION",
+    "operationVersion": "1.0",
+    "category": "FailedIngestion",
+    "resultType": "Failed",
+    "correlationId": "d59882f1-ad64-4fc4-b2ef-d663b6cc1cc5",
+    "properties": {
+        "OperationId": "00000000-0000-0000-0000-000000000000",
+        "Database": "Kusto",
+        "Table": "Table_13_20_prod",
+        "FailedOn": "2019-08-26T13:22:36.8804326Z",
+        "IngestionSourceId": "d59882f1-ad64-4fc4-b2ef-d663b6cc1cc5",
+        "Details":
+        {
+            "error": 
+            {
+                "code": "BadRequest_DatabaseNotExist",
+                "message": "Request is invalid and cannot be executed.",
+                "@type": "Kusto.Data.Exceptions.DatabaseNotFoundException",
+                "@message": "Database 'Kusto' was not found.",
+                "@context": 
+                {
+                    "timestamp": "2019-08-26T13:22:36.7179157Z",
+                    "serviceAlias": "<cluster-name>",
+                    "machineName": "KEngine000001",
+                    "processName": "Kusto.WinSvc.Svc",
+                    "processId": 5336,
+                    "threadId": 6528,
+                    "appDomainName": "Kusto.WinSvc.Svc.exe",
+                    "clientRequestd": "DM.IngestionExecutor;a70ddfdc-b471-4fc7-beac-bb0f6e569fe8",
+                    "activityId": "f13e7718-1153-4e65-bf82-8583d712976f",
+                    "subActivityId": "2cdad9d0-737b-4c69-ac9a-22cf9af0c41b",
+                    "activityType": "DN.AdminCommand.DataIngestPullCommand",
+                    "parentActivityId": "2f65e533-a364-44dd-8d45-d97460fb5795",
+                    "activityStack": "(Activity stack: CRID=DM.IngestionExecutor;a70ddfdc-b471-4fc7-beac-bb0f6e569fe8 ARID=f13e7718-1153-4e65-bf82-8583d712976f > DN.Admin.Client.ExecuteControlCommand/5b764b32-6017-44a2-89e7-860eda515d40 > P.WCF.Service.ExecuteControlCommandInternal..IAdminClientServiceCommunicationContract/c2ef9344-069d-44c4-88b1-a3570697ec77 > DN.FE.ExecuteControlCommand/2f65e533-a364-44dd-8d45-d97460fb5795 > DN.AdminCommand.DataIngestPullCommand/2cdad9d0-737b-4c69-ac9a-22cf9af0c41b)"
+                },
+                "@permanent": true
+            }
+        },
+        "ErrorCode": "BadRequest_DatabaseNotExist",
+        "FailureStatus": "Permanent",
+        "RootActivityId": "00000000-0000-0000-0000-000000000000",
+        "OriginatesFromUpdatePolicy": false,
+        "ShouldRetry": false,
+        "IngestionSourcePath": "https://c0skstrldkereneus01.blob.core.windows.net/aam-20190826-temp-e5c334ee145d4b43a3a2d3a96fbac1df/3216_test_3_columns_invalid_8f57f0d161ed4a8c903c6d1073005732_59951f9ca5d143b6bdefe52fa381a8ca.zip"
+    }
 }
 ```
 # [Activity logs](#tab/activity-logs)
@@ -137,56 +137,56 @@ Azure activity logs are subscription-level logs that provide insight into the op
 
 ```json
 {
-	"records": [
-	{
+    "records": [
+    {
         "time": "2018-12-26T16:23:06.1090193Z",
         "resourceId": "/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.WEB/SITES/CLNB5F73B70-DCA2-47C2-BB24-77B1A2CAAB4D/PROVIDERS/MICROSOFT.AUTHORIZATION",
-		"operationName": "MICROSOFT.AUTHORIZATION/CHECKACCESS/ACTION",
-		"category": "Action",
-		"resultType": "Start",
-		"resultSignature": "Started.",
-		"durationMs": 0,
-		"callerIpAddress": "13.66.225.188",
-		"correlationId": "0de9f4bc-4adc-4209-a774-1b4f4ae573ed",
-		"identity": {
-			"authorization": {
+        "operationName": "MICROSOFT.AUTHORIZATION/CHECKACCESS/ACTION",
+        "category": "Action",
+        "resultType": "Start",
+        "resultSignature": "Started.",
+        "durationMs": 0,
+        "callerIpAddress": "13.66.225.188",
+        "correlationId": "0de9f4bc-4adc-4209-a774-1b4f4ae573ed",
+        "identity": {
+            "authorization": {
                 ...
             },
             "claims": {
                 ...
             }
-		},
-		"level": "Information",
-		"location": "global",
-		"properties": {
-			...
-		}
-	},
-	{
-		"time": "2018-12-26T16:23:06.3040244Z",
-		"resourceId": "/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.WEB/SITES/CLNB5F73B70-DCA2-47C2-BB24-77B1A2CAAB4D/PROVIDERS/MICROSOFT.AUTHORIZATION",
-		"operationName": "MICROSOFT.AUTHORIZATION/CHECKACCESS/ACTION",
-		"category": "Action",
-		"resultType": "Success",
-		"resultSignature": "Succeeded.OK",
-		"durationMs": 194,
-		"callerIpAddress": "13.66.225.188",
-		"correlationId": "0de9f4bc-4adc-4209-a774-1b4f4ae573ed",
-		"identity": {
-			"authorization": {
+        },
+        "level": "Information",
+        "location": "global",
+        "properties": {
+            ...
+        }
+    },
+    {
+        "time": "2018-12-26T16:23:06.3040244Z",
+        "resourceId": "/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.WEB/SITES/CLNB5F73B70-DCA2-47C2-BB24-77B1A2CAAB4D/PROVIDERS/MICROSOFT.AUTHORIZATION",
+        "operationName": "MICROSOFT.AUTHORIZATION/CHECKACCESS/ACTION",
+        "category": "Action",
+        "resultType": "Success",
+        "resultSignature": "Succeeded.OK",
+        "durationMs": 194,
+        "callerIpAddress": "13.66.225.188",
+        "correlationId": "0de9f4bc-4adc-4209-a774-1b4f4ae573ed",
+        "identity": {
+            "authorization": {
                 ...
             },
             "claims": {
                 ...
             }
-		},
-		"level": "Information",
-		"location": "global",
-		"properties": {
-			"statusCode": "OK",
-			"serviceRequestId": "87acdebc-945f-4c0c-b931-03050e085626"
-		}
-	}]
+        },
+        "level": "Information",
+        "location": "global",
+        "properties": {
+            "statusCode": "OK",
+            "serviceRequestId": "87acdebc-945f-4c0c-b931-03050e085626"
+        }
+    }]
 }
 ```
 ---
@@ -226,7 +226,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
     .create table DiagnosticRawRecords (Records:dynamic)
     ```
 
-1. Set zero [retention policy](/azure/kusto/management/retention-policy) for the intermediate table:
+1. Set zero [retention policy](kusto/management/retention-policy.md) for the intermediate table:
 
     ```kusto
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
@@ -249,7 +249,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
     .create table DiagnosticRawRecords (Records:dynamic)
     ```
 
-1. Set zero [retention policy](/azure/kusto/management/retention-policy) for the intermediate table:
+1. Set zero [retention policy](kusto/management/retention-policy.md) for the intermediate table:
 
     ```kusto
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
@@ -270,7 +270,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
     .create table ActivityLogsRawRecords (Records:dynamic)
     ```
 
-1. Set zero [retention policy](/azure/kusto/management/retention-policy) for the intermediate table:
+1. Set zero [retention policy](kusto/management/retention-policy.md) for the intermediate table:
 
     ```kusto
     .alter-merge table ActivityLogsRawRecords policy retention softdelete = 0d
@@ -305,7 +305,7 @@ To map the activity log data to the table, use the following query:
 # [Diagnostic metrics](#tab/diagnostic-metrics)
 #### Create data update policy for diagnostics metrics
 
-1. Create a [function](/azure/kusto/management/functions) that expands the collection of diagnostic metric records so that each value in the collection receives a separate row. Use the [`mv-expand`](/azure/kusto/query/mvexpandoperator) operator:
+1. Create a [function](kusto/management/functions.md) that expands the collection of diagnostic metric records so that each value in the collection receives a separate row. Use the [`mv-expand`](kusto/query/mvexpandoperator.md) operator:
      ```kusto
     .create function DiagnosticMetricsExpand() {
         DiagnosticRawRecords
@@ -324,7 +324,7 @@ To map the activity log data to the table, use the following query:
     }
     ```
 
-2. Add the [update policy](/azure/kusto/concepts/updatepolicy) to the target table. This policy will automatically run the query on any newly ingested data in the *DiagnosticRawRecords* intermediate data table and ingest its results into the *DiagnosticMetrics* table:
+2. Add the [update policy](kusto/concepts/updatepolicy.md) to the target table. This policy will automatically run the query on any newly ingested data in the *DiagnosticRawRecords* intermediate data table and ingest its results into the *DiagnosticMetrics* table:
 
     ```kusto
     .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
@@ -333,7 +333,7 @@ To map the activity log data to the table, use the following query:
 # [Diagnostic logs](#tab/diagnostic-logs)
 #### Create data update policy for diagnostics logs
 
-1. Create a [function](/azure/kusto/management/functions) that expands the collection of diagnostic logs records so that each value in the collection receives a separate row. You'll enable ingestion logs on an Azure Data Explorer cluster, and use [ingestion logs schema](/azure/data-explorer/using-diagnostic-logs#diagnostic-logs-schema). You'll create one table for succeeded and for failed ingestion, while some of the fields will be empty for succeeded ingestion (ErrorCode for example). Use the [`mv-expand`](/azure/kusto/query/mvexpandoperator) operator:
+1. Create a [function](kusto/management/functions.md) that expands the collection of diagnostic logs records so that each value in the collection receives a separate row. You'll enable ingestion logs on an Azure Data Explorer cluster, and use [ingestion logs schema](/azure/data-explorer/using-diagnostic-logs#diagnostic-logs-schema). You'll create one table for succeeded and for failed ingestion, while some of the fields will be empty for succeeded ingestion (ErrorCode for example). Use the [`mv-expand`](kusto/query/mvexpandoperator.md) operator:
 
     ```kusto
     .create function DiagnosticLogsExpand() {
@@ -357,7 +357,7 @@ To map the activity log data to the table, use the following query:
     }
     ```
 
-2. Add the [update policy](/azure/kusto/concepts/updatepolicy) to the target table. This policy will automatically run the query on any newly ingested data in the *DiagnosticRawRecords* intermediate data table and ingest its results into the *DiagnosticLogs* table:
+2. Add the [update policy](kusto/concepts/updatepolicy.md) to the target table. This policy will automatically run the query on any newly ingested data in the *DiagnosticRawRecords* intermediate data table and ingest its results into the *DiagnosticLogs* table:
 
     ```kusto
     .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
@@ -366,7 +366,7 @@ To map the activity log data to the table, use the following query:
 # [Activity logs](#tab/activity-logs)
 #### Create data update policy for activity logs
 
-1. Create a [function](/azure/kusto/management/functions) that expands the collection of activity log records so that each value in the collection receives a separate row. Use the [`mv-expand`](/azure/kusto/query/mvexpandoperator) operator:
+1. Create a [function](kusto/management/functions.md) that expands the collection of activity log records so that each value in the collection receives a separate row. Use the [`mv-expand`](kusto/query/mvexpandoperator.md) operator:
 
     ```kusto
     .create function ActivityLogRecordsExpand() {
@@ -387,7 +387,7 @@ To map the activity log data to the table, use the following query:
     }
     ```
 
-2. Add the [update policy](/azure/kusto/concepts/updatepolicy) to the target table. This policy will automatically run the query on any newly ingested data in the *ActivityLogsRawRecords* intermediate data table and ingest its results into the *ActivityLogs* table:
+2. Add the [update policy](kusto/concepts/updatepolicy.md) to the target table. This policy will automatically run the query on any newly ingested data in the *ActivityLogsRawRecords* intermediate data table and ingest its results into the *ActivityLogs* table:
 
     ```kusto
     .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True", "IsTransactional": true}]'

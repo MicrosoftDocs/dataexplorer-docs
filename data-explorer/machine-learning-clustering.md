@@ -15,7 +15,7 @@ Azure Data Explorer, a Big Data analytics platform, is used to monitor service h
 
 The diagnosis process is complex and lengthy and done by domain experts. The process includes fetching and joining additional data from different sources for the same time frame, looking for changes in the distribution of values on multiple dimensions, charting additional variables, and other techniques based on domain knowledge and intuition. Since these diagnosis scenarios are common in Azure Data Explorer, machine learning plugins are available to make the diagnosis phase easier and shorten the duration of the RCA.
 
-Azure Data Explorer has three Machine Learning plugins: [`autocluster`](/azure/kusto/query/autoclusterplugin), [`basket`](/azure/kusto/query/basketplugin), and [`diffpatterns`](/azure/kusto/query/diffpatternsplugin). All plugins implement clustering algorithms. The `autocluster` and `basket` plugins cluster a single record set and the `diffpatterns` plugin clusters the differences between two record sets.
+Azure Data Explorer has three Machine Learning plugins: [`autocluster`](kusto/query/autoclusterplugin.md), [`basket`](kusto/query/basketplugin.md), and [`diffpatterns`](kusto/query/diffpatternsplugin.md). All plugins implement clustering algorithms. The `autocluster` and `basket` plugins cluster a single record set and the `diffpatterns` plugin clusters the differences between two record sets.
 
 ## Clustering a single record set
 
@@ -35,7 +35,7 @@ demo_clustering1
 
 The service exception count correlates with the overall service traffic. You can clearly see the daily pattern, for business days of Monday to Friday, with a rise in service exception counts mid-day, and drops in counts during the night. Flat low counts are visible over the weekend. Exception spikes can be detected using [time series anomaly detection](/azure/data-explorer/anomaly-detection?#time-series-anomaly-detection) in Azure Data Explorer.
 
-The second spike in the data occurs on Tuesday afternoon. The following query is used to further diagnose this spike. Use the query to redraw the chart around the spike in higher resolution (eight hours in one-minute bins) to verify whether it’s a sharp spike, and view its borders.
+The second spike in the data occurs on Tuesday afternoon. The following query is used to further diagnose this spike. Use the query to redraw the chart around the spike in higher resolution (eight hours in one-minute bins) to verify whether it's a sharp spike, and view its borders.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXNwQrCMBAE0Hu/YvHUooWkghSl/yDoyUsJyWpCk2xJNnjx403pbeYwbzwyBBdnnoxiZBewHYS89GLshzNIeRWiuzUGA83al8yYXPzI5gdBLdjnWjFDLGHSVCK3HVCEe0LtMj4r9mAVVngnCvsLMO3hOFqo2goyVCxhNJhgu9dWJYavY9uyY4/T4UV1XVm2CEM0kFe34AnkBhXGOs7kCzuKh+4P3/XM5M8AAAA=)**\]**
 
@@ -101,7 +101,7 @@ demo_clustering1
 
 ### Use autocluster() for single record set clustering
 
-Even though there are less than a thousand exceptions, it’s still hard to find common segments, as there are multiple values in each column. You can use [`autocluster()`](/azure/kusto/query/autoclusterplugin) plugin to instantly extract a small list of common segments and find the interesting clusters within the spike's two minutes as seen in the following query:
+Even though there are less than a thousand exceptions, it's still hard to find common segments, as there are multiple values in each column. You can use [`autocluster()`](kusto/query/autoclusterplugin.md) plugin to instantly extract a small list of common segments and find the interesting clusters within the spike's two minutes as seen in the following query:
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQrCMBRF937FG5OhJYkoovQfBN1DbC8aTNqSvlgHP94IQkf3c+65AUzRD3aCe1hue8dgHyGM0rta7WuzIb09KCWPVfii7vUPNQXtEUfbhTwzkh9uunrTckcCnRI6P+NSvDO7ONEVvACDWD80zRqRRcTThVxa5DKPv00hP81KL1+4AAAA)**\]**
 
@@ -127,7 +127,7 @@ Autocluster uses a proprietary algorithm for mining multiple dimensions and extr
 
 ### Use basket() for single record set clustering
 
-You can also use the [`basket()`](/azure/kusto/query/basketplugin) plugin as seen in the following query:
+You can also use the [`basket()`](kusto/query/basketplugin.md) plugin as seen in the following query:
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQ6CMBgGd57iH9sB0tZojMZ3MNG9KfBFG1og7Y84+PDWidH9LncBTNGPdoYbLF96x2AfIYzSh1oda7MjvT8pJc9V+KHu/Q81Be0RJ9uFJTOSHx+6+tD6RAJdEzqfcS/ejV2cqQWvwCi2h6bZIrKIeLmwlBa1Lg9gIb9KJv2TswAAAA==)**\]**
 
@@ -161,7 +161,7 @@ Both plugins are powerful and easy to use, but their significant limitation is t
 
 ## Clustering the difference between two records sets
 
-The [`diffpatterns()`](/azure/kusto/query/diffpatternsplugin) plugin overcomes the limitation of `autocluster` and `basket`. `Diffpatterns` takes two record sets and extracts the main segments that are different between them. One set usually contains the anomalous record set being investigated (one analyzed by `autocluster` and `basket`). The other set contains the reference record set (baseline). 
+The [`diffpatterns()`](kusto/query/diffpatternsplugin.md) plugin overcomes the limitation of `autocluster` and `basket`. `Diffpatterns` takes two record sets and extracts the main segments that are different between them. One set usually contains the anomalous record set being investigated (one analyzed by `autocluster` and `basket`). The other set contains the reference record set (baseline). 
 
 In the query below, we use `diffpatterns` to find interesting clusters within the spike's two minutes, which are different than clusters within the baseline. We define the baseline window as the eight minutes before 15:00 (when the spike started). We also need to extend by a binary column (AB) specifying whether a specific record belongs to the baseline or to the anomalous set. `Diffpatterns` implements a supervised learning algorithm, where the two class labels were generated by the anomalous versus the baseline flag (AB).
 

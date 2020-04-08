@@ -41,7 +41,7 @@ This topic describes how to install and configure the Azure Data Explorer Spark 
 
 ### Build prerequisites
 
-1. Install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](/azure/kusto/api/java/kusto-java-client-library) libraries:
+1. Install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](kusto/api/java/kusto-java-client-library.md) libraries:
     * [Kusto Data Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto Ingest Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 
@@ -121,7 +121,7 @@ Grant the following privileges on an Azure Data Explorer cluster:
 * For reading (data source), the Azure AD identity must have *viewer* privileges on the target database, or *admin* privileges on the target table.
 * For writing (data sink), the Azure AD identity must have *ingestor* privileges on the target database. It must also have *user* privileges on the target database to create new tables. If the target table already exists, you must configure *admin* privileges on the target table.
  
-For more information on Azure Data Explorer principal roles, see [role-based authorization](/azure/kusto/management/access-control/role-based-authorization). For managing security roles, see [security roles management](/azure/kusto/management/security-roles).
+For more information on Azure Data Explorer principal roles, see [role-based authorization](kusto/management/access-control/role-based-authorization.md). For managing security roles, see [security roles management](kusto/management/security-roles.md).
 
 ## Spark sink: writing to Azure Data Explorer
 
@@ -191,7 +191,7 @@ For more information on Azure Data Explorer principal roles, see [role-based aut
 
 ## Spark source: reading from Azure Data Explorer
 
-1. When reading [small amounts of data](/azure/kusto/concepts/querylimits), define the data query:
+1. When reading [small amounts of data](kusto/concepts/querylimits.md), define the data query:
 
     ```scala
     import com.microsoft.kusto.spark.datasource.KustoSourceOptions

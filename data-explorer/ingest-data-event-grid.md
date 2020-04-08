@@ -160,7 +160,7 @@ Save the data into a file and upload it with this script:
 
 ### Ingestion properties
 
-You can specify the [Ingestion properties](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#ingestion-properties) of the blob ingestion via the blob metadata.
+You can specify the [Ingestion properties](kusto/management/data-ingestion/index.md#ingestion-properties) of the blob ingestion via the blob metadata.
 
 These properties can be set:
 
@@ -171,8 +171,8 @@ These properties can be set:
 | `kustoDataFormat` |  Data format. Overrides the `Data format` set on the `Data Connection` blade. |
 | `kustoIngestionMappingReference` |  Name of the existing ingestion mapping to be used. Overrides the `Column mapping` set on the `Data Connection` blade.|
 | `kustoIgnoreFirstRecord` | If set to `true`, Kusto ignores the first row of the blob. Use in tabular format data (CSV, TSV, or similar) to ignore headers. |
-| `kustoExtentTags` | String representing [tags](/azure/kusto/management/extents-overview#extent-tagging) that will be attached to resulting extent. |
-| `kustoCreationTime` |  Overrides [$IngestionTime](/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) for the blob, formatted as a ISO 8601 string. Use for backfilling. |
+| `kustoExtentTags` | String representing [tags](kusto/management/extents-overview.md#extent-tagging) that will be attached to resulting extent. |
+| `kustoCreationTime` |  Overrides [$IngestionTime](kusto/query/ingestiontimefunction.md?pivots=azuredataexplorer) for the blob, formatted as a ISO 8601 string. Use for backfilling. |
 
 > [!NOTE]
 > Azure Data Explorer won't delete the blobs post ingestion.

@@ -114,7 +114,7 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
     | Event hub namespace | A unique namespace name | The name you chose earlier that identifies your namespace. |
     | Event hub | *test-hub* | The event hub you created. |
     | Consumer group | *test-group* | The consumer group defined in the event hub you created. |
-    | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](/azure/kusto/management/create-table-command) or [update](/azure/kusto/management/alter-table-command) table schema and [mapping](/azure/kusto/management/mappings) to include the selected properties. |
+    | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
     | Compression | *None* | The compression type of the Event Hub messages payload. Supported compression types: *None, GZip*.|
     | | |
 
@@ -127,7 +127,7 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
     |---|---|---|
     | Table | *TestTable* | The table you created in **TestDatabase**. |
     | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC and PARQUET. |
-    | Column mapping | *TestMapping* | The [mapping](/azure/kusto/management/mappings) you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**. Required for JSON or MULTILINE JSON, and optional for other formats.|
+    | Column mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**. Required for JSON or MULTILINE JSON, and optional for other formats.|
     | | |
 
     > [!NOTE]
@@ -194,9 +194,9 @@ With the app generating data, you can now see the flow of that data from the eve
     ![Message result set](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes or 500 MB of data, by default, so you may experience a latency. See [batching policy](/azure/kusto/concepts/batchingpolicy) for aggregation options. 
+    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes or 500 MB of data, by default, so you may experience a latency. See [batching policy](kusto/concepts/batchingpolicy.md) for aggregation options. 
     > * Event Hub ingestion includes Event Hub response time of 10 seconds or 1 MB. 
-    > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](/azure/kusto/concepts/streamingingestionpolicy). 
+    > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](kusto/concepts/streamingingestionpolicy.md). 
 
 ## Clean up resources
 

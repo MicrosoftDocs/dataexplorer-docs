@@ -27,7 +27,7 @@ You need the following to complete this article:
 
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**)
 
-* [Azure Data Explorer desktop app](/azure/kusto/tools/kusto-explorer)
+* [Azure Data Explorer desktop app](kusto/tools/kusto-explorer.md)
 
 ## Get data from Azure Data Explorer
 

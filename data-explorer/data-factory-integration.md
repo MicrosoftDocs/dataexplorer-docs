@@ -35,7 +35,7 @@ In addition to the response size limit of 5,000 rows and 2 MB, the activity also
 
 ### Command activity
 
-The Command activity allows the execution of Azure Data Explorer [control commands](/azure/kusto/concepts/#control-commands). Unlike queries, the control commands can potentially modify data or metadata. Some of the control commands are targeted to ingest data into Azure Data Explorer, using commands such as `.ingest`or `.set-or-append`) or copy data from Azure Data Explorer to external data stores using commands such as `.export`.
+The Command activity allows the execution of Azure Data Explorer [control commands](kusto/concepts/index.md#control-commands). Unlike queries, the control commands can potentially modify data or metadata. Some of the control commands are targeted to ingest data into Azure Data Explorer, using commands such as `.ingest`or `.set-or-append`) or copy data from Azure Data Explorer to external data stores using commands such as `.export`.
 For a detailed walk-through of the command activity, see [use Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md).  Using a control command to copy data can, at times, be a faster and cheaper option than the Copy activity. To determine when to use the Command activity versus the Copy activity, see [select between Copy and Command activities when copying data](#select-between-copy-and-azure-data-explorer-command-activities-when-copy-data).
 
 ### Copy in bulk from a database template
@@ -60,7 +60,7 @@ When copying data from or to Azure Data Explorer, there are two available option
 
 ### Copy data from Azure Data Explorer
   
-You can copy data from Azure Data Explorer using the copy activity or the [`.export`](/azure/kusto/management/data-export/) command. The `.export` command executes a query, and then exports the results of the query. 
+You can copy data from Azure Data Explorer using the copy activity or the [`.export`](kusto/management/data-export/index.md) command. The `.export` command executes a query, and then exports the results of the query. 
 
 See the following table for a comparison of the Copy activity and `.export` command for copying data from Azure Data Explorer.
 
@@ -69,14 +69,14 @@ See the following table for a comparison of the Copy activity and `.export` comm
 | **Flow description** | ADF executes a query on Kusto, processes the result, and sends it to the target data store. <br>(**ADX > ADF > sink data store**) | ADF sends an `.export` control command to Azure Data Explorer, which executes the command, and sends the data directly to the target data store. <br>(**ADX > sink data store**) |
 | **Supported target data stores** | A wide variety of [supported data stores](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLSv2, Azure Blob, SQL Database |
 | **Performance** | Centralized | <ul><li>Distributed (default), exporting data from multiple nodes concurrently</li><li>Faster and COGS efficient.</li></ul> |
-| **Server limits** | [Query limits](/azure/kusto/concepts/querylimits) can be extended/disabled. By default, ADF queries contain: <ul><li>Size limit of 500,000 records or 64 MB.</li><li>Time limit of 10 minutes.</li><li>`noTruncation` set to false.</li></ul> | By default, extends or disables the query limits: <ul><li>Size limits are disabled.</li><li>Server timeout is extended to 1 hour.</li><li>`MaxMemoryConsumptionPerIterator` and `MaxMemoryConsumptionPerQueryPerNode` are extended to max (5 GB, TotalPhysicalMemory/2).</li></ul>
+| **Server limits** | [Query limits](kusto/concepts/querylimits.md) can be extended/disabled. By default, ADF queries contain: <ul><li>Size limit of 500,000 records or 64 MB.</li><li>Time limit of 10 minutes.</li><li>`noTruncation` set to false.</li></ul> | By default, extends or disables the query limits: <ul><li>Size limits are disabled.</li><li>Server timeout is extended to 1 hour.</li><li>`MaxMemoryConsumptionPerIterator` and `MaxMemoryConsumptionPerQueryPerNode` are extended to max (5 GB, TotalPhysicalMemory/2).</li></ul>
 
 > [!TIP]
 > If your copy destination is one of the data stores supported by the `.export` command, and if none of the Copy activity features is crucial to your needs, select the `.export` command.
 
 ### Copying data to Azure Data Explorer
 
-You can copy data to Azure Data Explorer using the copy activity or ingestion commands such as [ingest from query](/azure/kusto/management/data-ingestion/ingest-from-query) (`.set-or-append`, `.set-or-replace`, `.set`, `.replace)`, and [ingest from storage](/azure/kusto/management/data-ingestion/ingest-from-storage) (`.ingest`). 
+You can copy data to Azure Data Explorer using the copy activity or ingestion commands such as [ingest from query](kusto/management/data-ingestion/ingest-from-query.md) (`.set-or-append`, `.set-or-replace`, `.set`, `.replace)`, and [ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md) (`.ingest`). 
 
 See the following table for a comparison of the Copy activity, and ingestion commands for copying data to Azure Data Explorer.
 
@@ -98,10 +98,10 @@ The following table lists the required permissions for various steps in the inte
 | Step | Operation | Minimum level of permissions | Notes |
 |---|---|---|---|
 | **Create a Linked Service** | Database navigation | *database viewer* <br>The logged-in user using ADF should be authorized to read database metadata. | User can provide the database name manually. |
-| | Test Connection | *database monitor* or *table ingestor* <br>Service principal should be authorized to execute database level `.show` commands or table level ingestion. | <ul><li>TestConnection verifies the connection to the cluster, and not to the database. It can succeed even if the database doesn’t exist.</li><li>Table admin permissions aren't sufficient.</li></ul>|
+| | Test Connection | *database monitor* or *table ingestor* <br>Service principal should be authorized to execute database level `.show` commands or table level ingestion. | <ul><li>TestConnection verifies the connection to the cluster, and not to the database. It can succeed even if the database doesn't exist.</li><li>Table admin permissions aren't sufficient.</li></ul>|
 | **Creating a Dataset** | Table navigation | *database monitor* <br>The logged in user using ADF, must be authorized to execute database level `.show` commands. | User can provide table name manually.|
 | **Creating a Dataset** or **Copy Activity** | Preview data | *database viewer* <br>Service principal must be authorized to read database metadata. | | 
-|   | Import schema | *database viewer* <br>Service principal must be authorized to read database metadata. | When ADX is the source of a tabular-to-tabular copy, ADF will import schema automatically, even if the user didn’t import schema explicitly. |
+|   | Import schema | *database viewer* <br>Service principal must be authorized to read database metadata. | When ADX is the source of a tabular-to-tabular copy, ADF will import schema automatically, even if the user didn't import schema explicitly. |
 | **ADX as Sink** | Create a by-name column mapping | *database monitor* <br>Service principal must be authorized to execute database level `.show` commands. | <ul><li>All mandatory operations will work with *table ingestor*.</li><li> Some optional operations can fail.</li></ul> |
 |   | <ul><li>Create a CSV mapping on the table</li><li>Drop the mapping</li></ul>| *table ingestor* or *database admin* <br>Service principal must be authorized to make changes to a table. | |
 |   | Ingest data | *table ingestor* or *database admin* <br>Service principal must be authorized to make changes to a table. | | 
@@ -110,7 +110,7 @@ The following table lists the required permissions for various steps in the inte
 
 ## Performance 
 
-If Azure Data Explorer is the source and you use the Lookup, copy, or command activity that contains a query where, refer to [query best practices](/azure/kusto/query/best-practices) for performance information and [ADF documentation for copy activity](/azure/data-factory/copy-activity-performance).
+If Azure Data Explorer is the source and you use the Lookup, copy, or command activity that contains a query where, refer to [query best practices](kusto/query/best-practices.md) for performance information and [ADF documentation for copy activity](/azure/data-factory/copy-activity-performance).
   
 This section addresses the use of copy activity where Azure Data Explorer is the sink. The estimated throughput for Azure Data Explorer sink is 11-13 MBps. The following table details the parameters influencing the performance of the Azure Data Explorer sink.
 
@@ -119,7 +119,7 @@ This section addresses the use of copy activity where Azure Data Explorer is the
 | **Components geographical proximity** | Place all components in the same region:<ul><li>source and sink data stores.</li><li>ADF integration runtime.</li><li>Your ADX cluster.</li></ul>Make sure that at least your integration runtime is in the same region as your ADX cluster. |
 | **Number of DIUs** | 1 VM for every 4 DIUs used by ADF. <br>Increasing the DIUs will help only if your source is a file-based store with multiple files. Each VM will then process a different file in parallel. Therefore, copying a single large file will have a higher latency than copying multiple smaller files.|
 |**Amount and SKU of your ADX cluster** | High number of ADX nodes will boost ingestion processing time.|
-| **Parallelism** |	To copy a very large amount of data from a database, partition your data and then use a ForEach loop that copies each partition in parallel or use the [Bulk Copy from Database to Azure Data Explorer Template](data-factory-template.md). Note: **Settings** > **Degree of Parallelism** in the Copy activity isn't relevant to ADX. |
+| **Parallelism** |    To copy a very large amount of data from a database, partition your data and then use a ForEach loop that copies each partition in parallel or use the [Bulk Copy from Database to Azure Data Explorer Template](data-factory-template.md). Note: **Settings** > **Degree of Parallelism** in the Copy activity isn't relevant to ADX. |
 | **Data processing complexity** | Latency varies according to source file format, column mapping, and compression.|
 | **The VM running your integration runtime** | <ul><li>For Azure copy, ADF VMs and machine SKUs can't be changed.</li><li> For on-prem to Azure copy, determine that the VM hosting your self-hosted IR is strong enough.</li></ul>|
 
@@ -179,7 +179,7 @@ When copying a JSON file to Azure Data Explorer, note that:
 > [!NOTE]
 > This feature is currently available by manually editing the JSON payload. 
 
-Add a single row under the “sink” section of the copy activity as follows:
+Add a single row under the "sink" section of the copy activity as follows:
 
 ```json
 "sink": {

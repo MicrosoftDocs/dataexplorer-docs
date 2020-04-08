@@ -44,7 +44,7 @@ Understand your business requirements and tolerance of duplicate data. Some data
 
 ### Solution #2: Handle duplicate rows during query
 
-Another option is to filter out the duplicate rows in the data during query. The [`arg_max()`](/azure/kusto/query/arg-max-aggfunction) aggregated function can be used to filter out the duplicate records and return the last record based on the timestamp (or another column). The advantage of using this method is faster ingestion since de-duplication occurs during query time. In addition, all records (including duplicates) are available for auditing and troubleshooting. The disadvantage of using the `arg_max` function is the additional query time and load on the CPU every time the data is queried. Depending on the amount of the data being queried, this solution may become non-functional or memory-consuming and will require switching to other options.
+Another option is to filter out the duplicate rows in the data during query. The [`arg_max()`](kusto/query/arg-max-aggfunction.md) aggregated function can be used to filter out the duplicate records and return the last record based on the timestamp (or another column). The advantage of using this method is faster ingestion since de-duplication occurs during query time. In addition, all records (including duplicates) are available for auditing and troubleshooting. The disadvantage of using the `arg_max` function is the additional query time and load on the CPU every time the data is queried. Depending on the amount of the data being queried, this solution may become non-functional or memory-consuming and will require switching to other options.
 
 In the following example, we query the last record ingested for a set of columns that determine the unique records:
 
@@ -96,7 +96,7 @@ The following example depicts this method:
     > [!NOTE]
     > Joins are CPU-bound operations and add an additional load on the system.
 
-1. Set [Update Policy](/azure/kusto/management/update-policy) on `DeviceEventsUnique` table. The update policy is activated when new data goes into the `DeviceEventsAll` table. The Kusto engine will automatically execute the function as new [extents](/azure/kusto/management/extents-overview) are created. The processing is scoped to the newly created data. The following command stitches the source table (`DeviceEventsAll`), destination table (`DeviceEventsUnique`), and the function `RemoveDuplicatesDeviceEvents` together to create the update policy.
+1. Set [Update Policy](kusto/management/update-policy.md) on `DeviceEventsUnique` table. The update policy is activated when new data goes into the `DeviceEventsAll` table. The Kusto engine will automatically execute the function as new [extents](kusto/management/extents-overview.md) are created. The processing is scoped to the newly created data. The following command stitches the source table (`DeviceEventsAll`), destination table (`DeviceEventsUnique`), and the function `RemoveDuplicatesDeviceEvents` together to create the update policy.
 
     ```kusto
     .alter table DeviceEventsUnique policy update

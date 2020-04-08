@@ -37,7 +37,7 @@ For more information, see [Microsoft Flow connector usage examples](flow-usage.m
 You can authenticate with user credentials or an AAD application.
 
 > [!Note]
-> Make sure your application is an [AAD application](https://docs.microsoft.com/azure/kusto/management/access-control/how-to-provision-aad-app) and is authorized to execute queries on your cluster.
+> Make sure your application is an [AAD application](kusto/management/access-control/how-to-provision-aad-app.md) and is authorized to execute queries on your cluster.
 
 1. Select the three dots at the top right of the Microsoft Flow connector:
 ![Add a connection](./media/flow/flow-addconnection.png)
@@ -92,7 +92,7 @@ This section describes the capabilities and parameters for each Microsoft Flow a
 
 ### Run control command and visualize results
 
-Use the Run control command and visualize results action to run a [control command](https://docs.microsoft.com/azure/kusto/management/index).
+Use the Run control command and visualize results action to run a [control command](kusto/management/index.md).
 
 1. Specify the cluster URL. For example, https://clusterName.eastus.kusto.windows.net
 1. Enter the name of the database.
@@ -113,7 +113,7 @@ Use the Run control command and visualize results action to run a [control comma
 ### Run query and list results
 
 > [!Note]
-> If your query starts with a dot (meaning it's a [control command](https://docs.microsoft.com/azure/kusto/management/index)), use [Run control command and visualize results](#run-control-command-and-visualize-results).
+> If your query starts with a dot (meaning it's a [control command](kusto/management/index.md)), use [Run control command and visualize results](#run-control-command-and-visualize-results).
 
 This action sends a query to Kusto cluster. The actions that are added afterwards iterate over each line of the results of the query.
 
@@ -127,7 +127,7 @@ The following example triggers a query every minute and sends an email based on 
 ### Run query and visualize results
         
 > [!Note]
-> If your query starts with a dot (meaning it's a [control command](https://docs.microsoft.com/azure/kusto/management/index)), use [Run control command and visualize results](#run-control-command-and-visualize-results).
+> If your query starts with a dot (meaning it's a [control command](kusto/management/index.md)), use [Run control command and visualize results](#run-control-command-and-visualize-results).
         
 Use the Run query and visualize results action to visualize Kusto query result as a table or chart. For example, use this flow to receive daily ICM reports by email. 
     
@@ -195,14 +195,14 @@ The "RequestTimeout" exception is shown in the image below:
     
 To fix a timeout issue, try to make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query.
 
-For more information, read about [Query best practices](https://docs.microsoft.com/azure/kusto/query/best-practices).
+For more information, read about [Query best practices](kusto/query/best-practices.md).
 
 ## Limitations
 
 * Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and seven-minutes execution time.
-* The connector does not support the [fork](https://docs.microsoft.com/azure/kusto/query/forkoperator) and [facet](https://docs.microsoft.com/azure/kusto/query/facetoperator) operators.
+* The connector does not support the [fork](kusto/query/forkoperator.md) and [facet](kusto/query/facetoperator.md) operators.
 * Flow works best on Microsoft Edge and Chrome.
 
 ## Next steps
 
-Learn about the [Microsoft Azure Explorer Logic App connector](https://docs.microsoft.com/azure/kusto/tools/logicapps) which is another way to run Kusto queries and commands automatically as part of a scheduled or triggered task.
+Learn about the [Microsoft Azure Explorer Logic App connector](kusto/tools/logicapps.md) which is another way to run Kusto queries and commands automatically as part of a scheduled or triggered task.
