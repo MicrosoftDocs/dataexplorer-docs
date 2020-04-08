@@ -364,7 +364,7 @@ User authentication (interactive logon): Used to authenticate human principals.
 
 Application authentication (non-interactive logon): Used to authenticate services and applications that have to run/authenticate with no human user being present.
 
-[Azure Data Explorer Access Control Overview](kusto/management/access-control.md)
+[Azure Data Explorer Access Control Overview](kusto/management/access-control/index.md)
 
 [Authenticating with Azure Active Directory](kusto/management/access-control/aad.md)
 

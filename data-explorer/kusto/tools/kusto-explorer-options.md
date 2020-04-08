@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
 ---
-﻿# Kusto Explorer options
+# Kusto Explorer options
 
 The following tables describe the options for customizing the behavior of Kusto.Explorer from the **Tools** > **Options** dialog box.
 
