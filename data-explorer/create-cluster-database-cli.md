@@ -82,8 +82,8 @@ If the result contains `provisioningState` with the `Succeeded` value, then the 
    | cluster-name | *azureclitest* | The name of your cluster where the database will be created.|
    | name | *clidatabase* | The name of your database.|
    | resource-group | *testrg* | The resource group name where the cluster will be created. |
-   | soft-delete-period | *P365D* | Signifies the amount of time that data will be kept available to query. See [retention policy](kusto/concepts/retentionpolicy.md) for more information. |
-   | hot-cache-period | *P31D* | Signifies the amount of time that data will be kept in cache. See [cache policy](kusto/concepts/cachepolicy.md) for more information. |
+   | soft-delete-period | *P365D* | Signifies the amount of time that data will be kept available to query. See [retention policy](kusto/management/retentionpolicy.md) for more information. |
+   | hot-cache-period | *P31D* | Signifies the amount of time that data will be kept in cache. See [cache policy](kusto/management/cachepolicy.md) for more information. |
 
 1. Run the following command to see the database that you created:
 
