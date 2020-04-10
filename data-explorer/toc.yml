@@ -291,15 +291,15 @@
 - name: Reference
   items:
   - name: Query language
-    href: /azure/kusto/query/
+    href: kusto/query/index.md
   - name: Management commands
-    href: /azure/kusto/management/
+    href: kusto/management/index.md
   - name: APIs
-    href: /azure/kusto/api/
+    href: kusto/api/index.md
   - name: Tools
-    href: /azure/kusto/tools/
+    href: kusto/tools/index.md
   - name: Concepts
-    href: /azure/kusto/concepts/
+    href: kusto/concepts/index.md
 - name: Resources
   items:
   - name: Blog
