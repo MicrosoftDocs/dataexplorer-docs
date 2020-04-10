@@ -1,3 +1,11 @@
-- name: Docs
-  tocHref: /
-  topicHref: /
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Azure Data Explorer
+    tocHref: /azure/data-explorer/
+    topicHref: /azure/data-explorer/
+    items:
+      - name: Reference
+        tocHref: /azure/data-explorer/kusto/
+        topicHref: /azure/data-explorer/kusto/
