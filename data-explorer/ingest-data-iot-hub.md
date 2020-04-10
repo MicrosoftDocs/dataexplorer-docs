@@ -157,8 +157,8 @@ With the app generating data, you can now see the data flow from the IoT hub to 
     ![Show ingested data results](media/ingest-data-iot-hub/show-ingested-data.png)
 
     > [!NOTE]
-    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes or 500 MB of data, by default, so you may experience a latency. See [batching policy](kusto/concepts/batchingpolicy.md) for aggregation options. 
-    > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](kusto/concepts/streamingingestionpolicy.md). 
+    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes or 500 MB of data, by default, so you may experience a latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options. 
+    > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](kusto/management/streamingingestionpolicy.md). 
 
 ## Clean up resources
 
