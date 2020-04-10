@@ -25,7 +25,7 @@ Azure Data Explorer supports two JSON file formats:
 
 ### Ingest and map JSON formatted data
 
-Ingestion of JSON formatted data requires you to specify the *format* using [ingestion property](kusto/management/data-ingestion/index.md#ingestion-properties). Ingestion of JSON data requires [mapping](kusto/management/mappings.md), which maps a JSON source entry to its target column. When ingesting data, use the pre-defined `jsonMappingReference` ingestion property or specify the `jsonMapping`ingestion property. This article will use the `jsonMappingReference` ingestion property, which is pre-defined on the table used for ingestion. In the examples below, we'll start by ingesting JSON records as raw data to a single column table. Then we'll use the mapping to ingest each property to its mapped column. 
+Ingestion of JSON formatted data requires you to specify the *format* using [ingestion property](ingestion-properties.md). Ingestion of JSON data requires [mapping](kusto/management/mappings.md), which maps a JSON source entry to its target column. When ingesting data, use the pre-defined `jsonMappingReference` ingestion property or specify the `jsonMapping`ingestion property. This article will use the `jsonMappingReference` ingestion property, which is pre-defined on the table used for ingestion. In the examples below, we'll start by ingesting JSON records as raw data to a single column table. Then we'll use the mapping to ingest each property to its mapped column. 
 
 ### Simple JSON example
 
@@ -152,7 +152,7 @@ Use C# to ingest data in raw JSON format.
     ```
 
 > [!NOTE]
-> Data is aggregated according to [batching policy](kusto/concepts/batchingpolicy.md), resulting in a latency of a few minutes.
+> Data is aggregated according to [batching policy](kusto/management/batchingpolicy.md), resulting in a latency of a few minutes.
 
 # [Python](#tab/python)
 
@@ -195,7 +195,7 @@ Use Python to ingest data in raw JSON format.
     ```
 
     > [!NOTE]
-    > Data is aggregated according to [batching policy](kusto/concepts/batchingpolicy.md), resulting in a latency of a few minutes.
+    > Data is aggregated according to [batching policy](kusto/management/batchingpolicy.md), resulting in a latency of a few minutes.
 
 ---
 

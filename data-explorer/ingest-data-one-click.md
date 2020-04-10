@@ -65,7 +65,7 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 1. Start the data ingestion process.
 
 > [!Note]
-> If your data source is a container, note that Azure Data Explorer's data ingestion aggregation (batching) policy is designed to optimize the ingestion process. By default, the policy is configured to 5 minutes or 500 MB of data, so you may experience latency. See [batching policy](kusto/concepts/batchingpolicy.md) for aggregation options. When ingesting data from other sources, the ingestion will take immediate effect.
+> If your data source is a container, note that Azure Data Explorer's data ingestion aggregation (batching) policy is designed to optimize the ingestion process. By default, the policy is configured to 5 minutes or 500 MB of data, so you may experience latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options. When ingesting data from other sources, the ingestion will take immediate effect.
 
 ## Next steps
 

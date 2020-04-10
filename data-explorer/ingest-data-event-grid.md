@@ -160,7 +160,7 @@ Save the data into a file and upload it with this script:
 
 ### Ingestion properties
 
-You can specify the [Ingestion properties](kusto/management/data-ingestion/index.md#ingestion-properties) of the blob ingestion via the blob metadata.
+You can specify the [Ingestion properties](ingestion-properties.md) of the blob ingestion via the blob metadata.
 
 These properties can be set:
 

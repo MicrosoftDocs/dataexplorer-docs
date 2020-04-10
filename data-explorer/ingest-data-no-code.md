@@ -324,7 +324,7 @@ To map the activity log data to the table, use the following query:
     }
     ```
 
-2. Add the [update policy](kusto/concepts/updatepolicy.md) to the target table. This policy will automatically run the query on any newly ingested data in the *DiagnosticRawRecords* intermediate data table and ingest its results into the *DiagnosticMetrics* table:
+2. Add the [update policy](kusto/management/updatepolicy.md) to the target table. This policy will automatically run the query on any newly ingested data in the *DiagnosticRawRecords* intermediate data table and ingest its results into the *DiagnosticMetrics* table:
 
     ```kusto
     .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
@@ -357,7 +357,7 @@ To map the activity log data to the table, use the following query:
     }
     ```
 
-2. Add the [update policy](kusto/concepts/updatepolicy.md) to the target table. This policy will automatically run the query on any newly ingested data in the *DiagnosticRawRecords* intermediate data table and ingest its results into the *DiagnosticLogs* table:
+2. Add the [update policy](kusto/management/updatepolicy.md) to the target table. This policy will automatically run the query on any newly ingested data in the *DiagnosticRawRecords* intermediate data table and ingest its results into the *DiagnosticLogs* table:
 
     ```kusto
     .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
@@ -387,7 +387,7 @@ To map the activity log data to the table, use the following query:
     }
     ```
 
-2. Add the [update policy](kusto/concepts/updatepolicy.md) to the target table. This policy will automatically run the query on any newly ingested data in the *ActivityLogsRawRecords* intermediate data table and ingest its results into the *ActivityLogs* table:
+2. Add the [update policy](kusto/management/updatepolicy.md) to the target table. This policy will automatically run the query on any newly ingested data in the *ActivityLogsRawRecords* intermediate data table and ingest its results into the *ActivityLogs* table:
 
     ```kusto
     .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True", "IsTransactional": true}]'

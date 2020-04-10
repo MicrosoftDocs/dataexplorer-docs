@@ -121,7 +121,7 @@ For all ingestion methods other than ingest from query, format the data so that 
 
 ## Ingestion recommendations and limitations
 
-* The effective retention policy of ingested data is derived from the database's retention policy. See [retention policy](kusto/concepts/retentionpolicy.md) for details. Ingesting data requires **Table ingestor** or **Database ingestor** permissions.
+* The effective retention policy of ingested data is derived from the database's retention policy. See [retention policy](kusto/management/retentionpolicy.md) for details. Ingesting data requires **Table ingestor** or **Database ingestor** permissions.
 * Ingestion supports a maximum file size of 5 GB. The recommendation is to ingest files between 100 MB and 1 GB.
 
 ## Schema mapping
