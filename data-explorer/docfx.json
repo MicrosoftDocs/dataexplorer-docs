@@ -1,0 +1,132 @@
+{
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "**/docfx.json",
+          "_repo.en-us/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "**/*.svg",
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.jpeg",
+          "**/*.gif"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "**/docfx.json",
+          "_repo.en-us/**"
+        ]
+      },
+      {
+        "files": [
+          "includes/**/*.svg",
+          "includes/**/*.png",
+          "includes/**/*.jpg",
+          "includes/**/*.jpeg",
+          "includes/**/*.gif"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/_themes/**"
+        ],
+        "src": null,
+        "dest": null
+      }
+    ],
+    "overwrite": [],
+    "externalReference": [],
+    "globalMetadata": {
+      "breadcrumb_path": "/azure/data-explorer/breadcrumb/toc.json",
+      "extendBreadcrumb": true,
+      "brand": "azure",
+      "feedback_system": "GitHub",
+      "feedback_github_repo": "MicrosoftDocs/dataexplorer-docs",
+      "feedback_product_url": "https://feedback.azure.com/forums/915733-azure-data-explorer",
+      "recommendations": true,
+      "_op_documentIdPathDepotMapping": {
+        "./": {
+          "depot_name": "Azure.azure-documents",
+          "folder_relative_path_in_docset": "articles/data-explorer/"
+        },
+        "./kusto": {
+          "depot_name": "MSDN.kustolang",
+          "folder_relative_path_in_docset": "docs/"
+        }
+      },
+      "contributors_to_exclude": [
+        "PRmerger",
+        "PRMerger9",
+        "PRMerger17",
+        "PRMerger5",
+        "PRMerger4",
+        "PRMerger3",
+        "PRMerger-2",
+        "openpublishingbuild",
+        "tysonn",
+        "hexiaokai",
+        "v-anpasi",
+        "kiwhit",
+        "DuncanmaMSFT",
+        "Saisang",
+        "deneha",
+        "atookey",
+        "chbain",
+        "garycentric",
+        "GitHubber17",
+        "itechedit",
+        "Ja-Dunn",
+        "Jak-MS",
+        "jborsecnik",
+        "jomolnar",
+        "KatieCumming",
+        "Kellylorenebaker",
+        "ktoliver",
+        "Lisaco88",
+        "MattGLaBelle",
+        "megvanhuygen",
+        "PMEds28",
+        "rjagiewich",
+        "rmca14",
+        "ShannonLeavitt",
+        "ShawnJackson",
+        "TedA-M",
+        "tfosmark",
+        "tiburd",
+        "trishamc",
+        "ttorble",
+        "v-albemi",
+        "v-dansch",
+        "v-rihow",
+        "v-shils",
+        "v-thepet",
+        "sdwheeler",
+        "meganbradley"
+      ]
+    },
+    "fileMetadata": {},
+    "template": [],
+    "dest": "dataexplorer-docs",
+    "markdownEngineName": "markdig"
+  }
+}
