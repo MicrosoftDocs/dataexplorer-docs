@@ -6,6 +6,6 @@
     tocHref: /azure/data-explorer/
     topicHref: /azure/data-explorer/
     items:
-      - name: Reference
+      - name: Kusto
         tocHref: /azure/data-explorer/kusto/
         topicHref: /azure/data-explorer/kusto/
