@@ -16,6 +16,7 @@ The following control commands can be used for managing a cluster's [capacity po
 The commands require [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
 
 ## show cluster policy capacity
+
 ```kusto
 .show cluster policy capacity
 ```
@@ -35,6 +36,8 @@ Displays the current capacity policy for the cluster.
 .alter cluster policy capacity @'{ ... capacity policy JSON representation ... }'
 .alter-merge cluster policy capacity @'{ ... capacity policy partial-JSON representation ... }'
 ```
+
+**Note**: Changes to the cluster capacity policy could take up to 1 hour to take effect.
 
 **Examples:**
 
