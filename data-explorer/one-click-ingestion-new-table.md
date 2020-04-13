@@ -54,7 +54,7 @@ Select **Edit schema** to view and edit your table column configuration. The sys
         
 1. In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
     
-    ![Table-mapping name](media/one-click-ingestion-new-table/table-mapping.png)
+    ![Table mapping name](media/one-click-ingestion-new-table/table-mapping.png)
 
 ## Copy and paste queries
 
@@ -74,7 +74,7 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 
 > [!Note]
 > For tabular formats, each column can be ingested into one column in Azure Data Explorer.
-> JSON Attributes can be ingested into more than one column. You can create new columns from different JSON levels.
+> JSON attributes can be ingested into more than one column. You can create new columns from different JSON levels.
 
 [![](media/one-click-ingestion-new-table/edit-view.png "One-click ingestion edit view")](media/one-click-ingestion-new-table/edit-view.png#lightbox) 
 

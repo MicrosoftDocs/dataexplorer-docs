@@ -60,7 +60,7 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 1. When you have successfully selected the data source, a preview of the data is displayed. 
     If you are ingesting data from a container, you can filter the data so that only files with specific prefixes or file extensions are ingested. For example, you might only want to ingest files with filenames beginning with the word *Europe*, or only files with the extension *.json*. 
 
-1. Click **Edit schema**. Review and adjust the auto generated schema and ingestion properties (Data Format, mapping name, etc.)
+1. Click **Edit schema**. Review and adjust the auto generated schema and ingestion properties (data format, mapping name, etc.)
 
 1. Start the data ingestion process.
 

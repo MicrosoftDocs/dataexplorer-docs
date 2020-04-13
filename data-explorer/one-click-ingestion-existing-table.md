@@ -54,7 +54,7 @@ Select **Edit schema** to view and edit your table column configuration.
 
     ![Select JSON levels](media/one-click-ingestion-existing-table/json-levels.png)
 
-    * For tabular formats, you can select the check box **Include column names** to ignore the heading row of the file.
+    * For tabular formats, select the check box **Include column names** to ignore the heading row of the file.
         
     ![Select Include column names](media/one-click-ingestion-existing-table/non-json-format.png)
 
@@ -62,7 +62,7 @@ Select **Edit schema** to view and edit your table column configuration.
     > Tabular formats can ingest column data into only one column in an Azure Data Explorer table. 
 
     * New mappings are set automatically, but you can change it to use an existing one. 
-    * You can select the **Map columns** button to open the **Map columns** window. In the **Map columns** window you can attach one or more source columns or attributes to your Azure Data Explorer columns.
+    * Select the **Map columns** button to open the **Map columns** window. In the **Map columns** window you can attach one or more source columns or attributes to your Azure Data Explorer columns.
 
 ## Copy and paste queries
 
