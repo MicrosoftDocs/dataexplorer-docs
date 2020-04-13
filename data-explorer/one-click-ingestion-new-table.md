@@ -15,7 +15,7 @@ One-click ingestion enables you to quickly ingest data in JSON, CSV, and other f
 
 This document describes using the intuitive one-click wizard to ingest CSV data from a container into a new table. You can then edit the table and run queries with the Azure Data Explorer Web UI. You can also set continuous ingestion to automatically ingest data into the table when the source data updates.
 
-One-click ingestion is particularly useful when ingesting data for the first time, or when your data's schema is unfamiliar to you. 
+One-click ingestion is useful when ingesting data for the first time, or when your data's schema is unfamiliar to you. 
 
 For an overview of one-click ingestion and a list of prerequisites, see [One-click ingestion](ingest-data-one-click.md).
 For information about ingesting data into an existing table in Azure Data Explorer, see [One-click ingestion to an existing table](one-click-ingestion-existing-table.md)
@@ -28,7 +28,7 @@ For information about ingesting data into an existing table in Azure Data Explor
  
 1. In the **Ingest new data (Preview)** window, the **Source** tab is selected. 
 
-1. Select **Create new table** and enter a name for the new table. You can use alphanumeric, hyphens and underscores. Special characters aren't supported.
+1. Select **Create new table** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
 ![Create a new table](media/one-click-ingestion-new-table/create-new-table.png) 
 
@@ -54,14 +54,14 @@ Select **Edit schema** to view and edit your table column configuration. The sys
         
 1. In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
     
-    ![Table mapping name](media/one-click-ingestion-new-table/table-mapping.png)
+    ![Table-mapping name](media/one-click-ingestion-new-table/table-mapping.png)
 
 ## Copy and paste queries
 
 1. Above the **Editor** pane, select the **v** button to open the editor. In the editor, you can view and copy the automatic queries generated from your inputs. 
 1. In the table: 
     * Double-click the new column name to edit.
-    * Select new column headers and do any of the following:
+    * Select new column headers and do any of the following actions:
     
 |Action         |Description                                  |
 |-----------------|-------------------------------------------|
@@ -93,14 +93,14 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 
 **Continuous ingestion**
 
-Continuous ingestion enables you to create an event grid that listens to the source container. Any new blob that meets the criteria of the the pre-defined parameters (prefix, suffix, and so on) will be automatically ingested into the destination table.
+Continuous ingestion enables you to create an event grid that listens to the source container. Any new blob that meets the criteria of the pre-defined parameters (prefix, suffix, and so on) will be automatically ingested into the destination table.
 
 > [!Note]
 > Continuous ingestion is only relevant when ingesting from a container.
 
 1. Select **Continuous ingestion** to open the Azure portal. The data connection page opens with the event grid data connector opened and with source and target parameters already entered (source container, tables, and mappings).
 
-1. Select **Create** to create a data connection which will listen for any changes in that container container. 
+1. Select **Create** to create a data connection which will listen for any changes in that container. 
 
 ## Next steps
 
