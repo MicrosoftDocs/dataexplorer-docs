@@ -17,7 +17,7 @@ To see return a table showing the properties of the context database, see [.show
 
 **Syntax**
 
-`.show` `database`
+`.show` `databases`
 
 **Output schema**
 
