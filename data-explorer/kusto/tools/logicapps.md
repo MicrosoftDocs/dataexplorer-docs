@@ -1,36 +1,44 @@
----
-title: Microsoft Logic App and Kusto - Azure Data Explorer | Microsoft Docs
-description: This article describes Microsoft Logic App and Kusto in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
-ms.topic: reference
-ms.date: 10/30/2019
----
-# Microsoft Logic App and Kusto
+# Microsoft Logic App and Azure Data Explorer
 
-The Azure Kusto Logic App connector allows users to run Kusto queries and commands automatically as part of a scheduled or triggered task, using [Microsoft Logic App](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
+The Azure Kusto Logic App connector enables you to run Kusto queries and commands automatically as part of a scheduled or triggered task, using the [Microsoft Logic App](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) connector.
 
-The Logic App and Flow connectors are built on top of the same connector therefore the same [limitations](flow.md#limitations), [actions](flow.md#azure-kusto-flow-actions), [authentication](flow.md#authentication) and [usage examples](flow.md#usage-examples) apply for both as mentioned in the [Flow documentation page](flow.md).
+Logic App and Flow are built on the same connector. Therefore, the [limitations](flow.md#limitations), [actions](flow.md#azure-kusto-flow-actions), [authentication](flow.md#authentication) and [usage examples](flow.md#azure-kusto-flow-actions) that apply to Flow, also apply to Logic Apps, as mentioned on the [Flow documentation page](flow.md).
 
+## How to create a Logic App with Azure Data Explorer
 
-## How to create a Logic App with Azure Kusto
+1. Open the [Microsoft Azure portal](https://ms.portal.azure.com/). 
+1. Search for `logic app` and select it.
 
-Open the Azure portal and click create a new Logic App resource.
-Add the desired name, subscription, resoure group and location and click create.
+    [![](./Images/logicapps/logicapp-search.png "Search for logic app")](./Images/logicapps/logicapp-search.png#lightbox)
 
-![Create logic app](./Images/KustoTools-LogicApp/logicapp-createlogicapp.png "logicapp-createlogicapp")
+1. Select **+Add**.
 
-After the Logic App is created, click the edit button
+    ![Add logic app](./Images/logicapps/logicapp-add.png)
 
-![Edit logic app designer](./Images/KustoTools-LogicApp/logicapp-editdesigner.png "logicapp-editdesigner")
+1. Enter the required details of the form:
+    * Subscription
+    * Resource group
+    * Logic App name
+    * Region or Integration Service Environment
+    * Location
+    * Log analysis on or off
+1. Select **Review + create**.
 
-Create a blank Logic App
+    ![Create logic app](./Images/logicapps/logicapp-create-new.png)
 
-![Logic app blank template](./Images/KustoTools-LogicApp/logicapp-blanktemplate.png "logicapp-blanktemplate")
+1. When the Logic App is created, select **Edit**.
 
-Add recurrence action and then choose 'Azure Kusto'
+    ![Edit logic app designer](./Images/logicapps/logicapp-editdesigner.png "logicapp-editdesigner")
 
-![Logic app Kusto Flow connector](./Images/KustoTools-LogicApp/logicapp-kustoconnector.png "logicapp-kustoconnector")
+1. Create a blank Logic App.
+
+    ![Logic app blank template](./Images/logicapps/logicapp-blanktemplate.png "logicapp-blanktemplate")
+
+1. Add recurrence action and select **Azure Kusto**.
+
+    ![Logic app Kusto Flow connector](./Images/logicapps/logicapp-kustoconnector.png "logicapp-kustoconnector")
+
+## Next steps
+
+* To learn more about configuring a recurrence action, see the [Flow documentation page](flow.md)
+* Take a look at some [usage examples](flow.md#azure-kusto-flow-actions) for ideas on configuring your logic app actions
