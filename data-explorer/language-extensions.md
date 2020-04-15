@@ -42,7 +42,7 @@ Do the following steps to enable language extensions on your cluster:
 
 * Learn how to [run Python integrated KQL queries](kusto/query/pythonplugin.md).
 * Learn how to [run R integrated KQL queries](kusto/query/rplugin.md). 
-
+Enabling language extension on your cluster allocates 20 GB of memory per instance by default
 ## Disable language extensions on your cluster
 
 > [!NOTE]
@@ -61,4 +61,5 @@ Do the following steps to disable language extensions on your cluster:
 
 * The language extensions feature doesn't support [Disk encryption](manage-cluster-security.md). 
 * The language extensions runtime sandbox allocates disk space even if no query runs in the scope of the relevant language.
+* Enabling language extension on your cluster allocates 20 GB of memory per instance by default.
 
