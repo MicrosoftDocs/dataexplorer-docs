@@ -28,9 +28,10 @@ endpoints above to make programmatic access easy:
 1. .NET SDK
 2. Python SDK
 3. Java SDK
-4. Node SDK 
-5. PowerShell
-6. R
+4. Node SDK
+5. Go SDK
+6. PowerShell
+7. R
 
 ## REST API
 
@@ -59,40 +60,6 @@ to run queries on Azure Data Explorer using a well-known query syntax (T-SQL) an
 familiar database client tools (such as LINQPad, sqlcmd, Tableau, Excel, and Power BI)
 
 You can find more details about MS-TDS on [this page](tds/index.md).
-
-## .NET Framework Libraries
-
-.NET Framework Libraries is the recommended way to invoke Azure Data Explorer functionality programmatically.
-A number of different libraries are provided:
-
-- [**Kusto.Data (Kusto Client Library)**](./netfx/about-kusto-data.md), which can be used to query data, query metadata, and alter it.
-- [**Kusto.Ingest (Kusto Ingestion Library)**](netfx/about-kusto-ingest.md), which uses Kusto.Data and extends it to facilitate
-   data ingestion.
-
-
-The **Kusto Client Library** (Kusto.Data) is built on top of the Kusto REST API,
-and sends HTTPS requests to the target Kusto cluster. 
-
-The **Kusto Ingestion Library** (Kusto.Ingest) uses Kusto.Data.
-
-
-
-All of the above libraries use Azure APIs (e.g. Azure Storage API, Azure Active Directory API).
-
-## Python Libraries
-
-Azure Data Explorer provides a Python client library that allows callers to send data queries and control commands.
-
-## R Library
-
-Azure Data Explorer provides an R client library that allows callers to send data queries and control commands.
-
-
-
-## Using Azure Data Explorer from PowerShell
-
-Azure Data Explorer .NET Framework Libraries can be used by PowerShell scripts.
-[Calling Azure Data Explorer from PowerShell](powershell/powershell.md) provides an example.
 
 ## IDE integration
 
