@@ -28,9 +28,10 @@ endpoints above to make programmatic access easy:
 1. .NET SDK
 2. Python SDK
 3. Java SDK
-4. Node SDK 
-5. PowerShell
-6. R
+4. Node SDK
+5. Go SDK
+6. PowerShell
+7. R
 
 ## REST API
 
