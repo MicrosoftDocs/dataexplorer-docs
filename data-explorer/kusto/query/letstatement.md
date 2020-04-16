@@ -93,9 +93,9 @@ Nested let statements are allowed and can be used inside a lambda expression.
 Let statements and Arguments are visible in the current and inner scope of the Function body.
 
 ```kusto
-let start = ago(5h); 
-let period = 2h; 
-T | where Time > start and Time < start + period | ...
+let start_time = ago(5h); 
+let end_time = start_time + 2h; 
+T | where Time > start_time and Time < end_time | ...
 ```
 
 **Examples**
