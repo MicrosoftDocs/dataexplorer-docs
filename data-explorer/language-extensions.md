@@ -61,5 +61,5 @@ Do the following steps to disable language extensions on your cluster:
 
 * The language extensions feature doesn't support [Disk encryption](manage-cluster-security.md). 
 * The language extensions runtime sandbox allocates disk space even if no query runs in the scope of the relevant language.
-* Enabling language extension on your cluster allocates 20 GB of memory per instance by default.
+* More detailed limitations can be found in [Sandboxes concepts page](kusto/concepts/sandboxes.md) 
 
