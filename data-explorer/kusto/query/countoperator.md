@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 04/16/2020
 ---
 # count operator
 
@@ -19,7 +19,7 @@ Returns the number of records in the input record set.
 
 **Arguments**
 
-* *T*: The tabular data whose records are to be counted.
+*T*: The tabular data whose records are to be counted.
 
 **Returns**
 
