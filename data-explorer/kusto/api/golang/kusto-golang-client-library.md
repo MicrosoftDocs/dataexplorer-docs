@@ -1,3 +1,12 @@
+title: Azure Data Explorer Go SDK - Azure Data Explorer | Microsoft Docs
+description: This article describes Azure Data Explorer Go SDK in Azure Data Explorer.
+services: data-explorer
+author: dadubovs
+ms.author: dadubovs
+ms.reviewer: orspodek
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 16/04/2020
 # Azure Data Explorer Golang SDK
 
 Azure Data Explorer Go Client library provides the capability to query, control and ingest into Azure Data Explorer clusters using Go. 
