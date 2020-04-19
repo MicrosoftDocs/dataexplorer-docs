@@ -97,7 +97,7 @@ If you don't like the default color palette, customize the charts using palette 
 
 ## Parameterize a query with Python
 
-kqlmagic allows for simple interchange between Kusto query language and Python. To learn more: [Parameterize your kqlmagic query with Python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
+Kqlmagic allows for simple interchange between Kusto query language and Python. To learn more: [Parameterize your kqlmagic query with Python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
 
 ### Use a Python variable in your KQL query
 
