@@ -85,7 +85,7 @@ ASCII alphanumeric characters, and each of those is made into a term. For exampl
 in the following `string`, the terms are `Kusto`, `WilliamGates3rd`, and
 the following substrings: `ad67d136`, `c1db`, `4f9f`, `88ef`, `d94f3b6b0b5a`:
 
-```
+```kusto
 Kusto:  ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;;WilliamGates3rd
 ```
 
