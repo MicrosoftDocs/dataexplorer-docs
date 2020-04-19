@@ -27,7 +27,7 @@ Basket returns all frequent patterns appearing in above the ratio threshold (def
 
 The first column is the segment Id. The next two columns are the count and percentage of rows out of the original query that are captured by the pattern. The remaining columns are from the original query and their value is either a specific value from the column or a wildcard value (which are by default null) meaning variable values.
 
-**Arguments (all optional)***
+**Arguments (all optional)**
 
 `T | evaluate basket(`[*Threshold*, *WeightColumn*, *MaxDimensions*, *CustomWildcard*, *CustomWildcard*, ...]`)`
 
@@ -61,7 +61,6 @@ Available arguments:
 
     Example: `T | evaluate basket('~', '~', '~', '*', int(-1), double(-1), long(0), datetime(1900-1-1))`
 
-
 **Example**
 
 ```kusto
@@ -71,6 +70,7 @@ StormEvents
 | project State, EventType, Damage, DamageCrops
 | evaluate basket(0.2)
 ```
+
 |SegmentId|Count|Percent|State|EventType|Damage|DamageCrops|
 |---|---|---|---|---|---|---|---|---|
 |0|4574|77.7|||NO|0
@@ -83,6 +83,7 @@ StormEvents
 |7|1291|21.9||Thunderstorm Wind||
 
 **Example with custom wildcards**
+
 ```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5
@@ -90,6 +91,7 @@ StormEvents
 | project State, EventType, Damage, DamageCrops
 | evaluate basket(0.2, '~', '~', '*', int(-1))
 ```
+
 |SegmentId|Count|Percent|State|EventType|Damage|DamageCrops|
 |---|---|---|---|---|---|---|---|---|
 |0|4574|77.7|\*|\*|NO|0
@@ -100,4 +102,3 @@ StormEvents
 |5|2468|41.9|\*|Hail|\*|-1
 |6|1310|22.3|\*|\*|YES|-1
 |7|1291|21.9|\*|Thunderstorm Wind|\*|-1
-
