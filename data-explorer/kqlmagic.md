@@ -29,7 +29,7 @@ Jupyter Notebook is an open-source web application that allows you to create and
     !pip install kqlmagic --no-cache-dir  --upgrade
     ```
     > [!NOTE]
-    > When using Azure Notebooks, this step is not required.
+    > When using Azure Notebooks, this step isn't required.
 
 1. Load kqlmagic:
 
