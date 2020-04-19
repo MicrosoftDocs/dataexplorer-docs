@@ -48,6 +48,7 @@ XML                                |JSON                                        
 
 In the following example, when `context_custom_metrics` is a `string`
 that looks like this: 
+<!--check this code formatting-->
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -63,6 +64,7 @@ that looks like this:
 ```
 
 then the following CSL Fragment translates the XML to the following JSON:
+
 ```
 {
     "duration": {
