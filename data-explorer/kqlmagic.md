@@ -26,7 +26,7 @@ Jupyter Notebook is an open-source web application that allows you to create and
 1. Install kqlmagic:
 
     ```python
-    !pip install kqlmagic --no-cache-dir  --upgrade
+    !pip install Kqlmagic --no-cache-dir  --upgrade
     ```
     > [!NOTE]
     > When using Azure Notebooks, this step isn't required.
@@ -34,7 +34,7 @@ Jupyter Notebook is an open-source web application that allows you to create and
 1. Load kqlmagic:
 
     ```python
-    %reload_ext kqlmagic
+    %reload_ext Kqlmagic
     ```
     > [!NOTE]
     > Change the Kernel version to Python 3.6 by clicking on Kernel > Change Kernel > Python 3.6
@@ -165,7 +165,7 @@ In many analytics scenarios, you may want to create reusable notebooks that cont
     ```
 
 > [!TIP]
-> To receive information about all available configurations use `%config kqlmagic`. To troubleshoot and capture Kusto errors, such as connection issues and incorrect queries, use `%config kqlmagic.short_errors=False`
+> To receive information about all available configurations use `%config Kqlmagic`. To troubleshoot and capture Kusto errors, such as connection issues and incorrect queries, use `%config Kqlmagic.short_errors=False`
 
 ## Next steps
 
