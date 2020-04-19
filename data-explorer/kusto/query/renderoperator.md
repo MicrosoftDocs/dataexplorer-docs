@@ -15,7 +15,7 @@ zone_pivot_groups: kql-flavors
 
 Instructs the user agent to render the results of the query in a particular way.
 
-```
+```kusto
 range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 ```
 
