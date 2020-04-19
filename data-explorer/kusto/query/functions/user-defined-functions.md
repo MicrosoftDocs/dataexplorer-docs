@@ -199,7 +199,7 @@ A user-defined function that takes one or more table arguments (and any number
 of scalar arguments) can be invoked using the table name and a concrete argument list
 in parentheses:
 
-```
+```kusto
 let MyFilter = (T:(x:long), v:long) {
   T | where x >= v 
 };
