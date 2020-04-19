@@ -81,7 +81,7 @@ Replace `<cluster>` with the hostname of the cluster you want to load into the c
 1. The provided token should be a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 
 > [!IMPORTANT]
-> It is the responsibility of the hosting window to refresh the token before expiration and use the same mechanism to provide the updated token to the application. Otherwise, once the token expires, service calls will fail.
+> The hosting window must refresh the token before expiration and use the same mechanism to provide the updated token to the application. Otherwise, once the token expires, service calls will fail.
 
 ### Feature flags
 
