@@ -33,7 +33,7 @@ parse_urlquery("k1=v1&k2=v2&k3=v3")
 
 will result:
 
-```
+```kusto
  {
  	"Query Parameters":"{"k1":"v1", "k2":"v2", "k3":"v3"}",
  }
