@@ -739,8 +739,10 @@
     items:
     - name: rolling_percentile()
       href: ./query/rolling-percentile-plugin.md
-  - name: Time Series Analysis
+  - name: Time series analysis
     items:
+    - name: Time series analysis overview
+      href: ./query/machine-learning-and-tsa.md
     - name: make-series operator
       href: ./query/make-seriesoperator.md
     - name: series_add()
@@ -803,8 +805,6 @@
       href: ./query/series-stats-dynamicfunction.md
     - name: series_subtract()
       href: ./query/series-subtractfunction.md
-    - name: time series analysis overview
-      href: ./query/machine-learning-and-tsa.md
   - name: Machine Learning
     items:
     - name: autocluster
