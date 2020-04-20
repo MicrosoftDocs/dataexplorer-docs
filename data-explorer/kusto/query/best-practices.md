@@ -60,7 +60,7 @@ In such cases, extract the required values by using a REGEX.
     
     **Example:**
 
-    ```
+    ```kusto
     let materializedData = materialize(Table
     | where Timestamp > ago(1d));
     union (materializedData
@@ -73,7 +73,7 @@ In such cases, extract the required values by using a REGEX.
 * The filter on Text is mutual and can be pushed to the materialize expression.
     The query needs only these columns `Timestamp`, `Text`, `Resource1` and `Resource2` so it is recommended to project these columns inside the materialized expression.
     
-    ```
+    ```kusto
     let materializedData = materialize(Table
     | where Timestamp > ago(1d)
     | where Text !has "somestring"
@@ -85,7 +85,7 @@ In such cases, extract the required values by using a REGEX.
     
 *	If the filters are not identical like in this query:  
 
-    ```
+    ```kusto
     let materializedData = materialize(Table
     | where Timestamp > ago(1d));
     union (materializedData
@@ -97,7 +97,7 @@ In such cases, extract the required values by using a REGEX.
 
 *	It might be worthwhile (when the combined filter reduces the materialized result drastically) to combine both filters on the materialized result by a logical `or` expression as in the query below. However, keep the filters in each union leg to preserve the semantics of the query:
      
-    ```
+    ```kusto
     let materializedData = materialize(Table
     | where Timestamp > ago(1d)
     | where Text has "String1" or Text has "String2"

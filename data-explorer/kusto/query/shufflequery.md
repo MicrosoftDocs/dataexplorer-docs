@@ -64,6 +64,7 @@ T | where Event=="Start" | project ActivityId, Started=Timestamp
 | extend Duration=Ended - Started
 | summarize avg(Duration)
 ```
+
 This hint can be used when you are interested in shuffling the data by all the keys of the shuffled operator because the compound key is too unique but each key is not unique enough.
 When the shuffled operator has other shufflable operators like `summarize` or `join`, the query becomes more complex and then hint.strategy=shuffle will not be applied.
 
@@ -153,6 +154,7 @@ orders
 | where o_totalprice < 1000
 | count
 ```
+
 |Count|
 |---|
 |1086|
@@ -165,6 +167,7 @@ orders
 | where o_totalprice < 1000
 | count
 ```
+
 |Count|
 |---|
 |1086|
@@ -178,6 +181,7 @@ lineitem
 | summarize hint.strategy = shuffle dcount(l_comment), dcount(l_shipdate) by l_partkey 
 | consume
 ```
+
 setting partitions number to 10, the query will end after 23 seconds: 
 
 ```kusto
@@ -228,6 +232,7 @@ lineitem
 on $left.l_partkey == $right.p_partkey
 | consume
 ```
+
 setting partitions number to 10, the query will end after 23 seconds: 
 
 ```kusto

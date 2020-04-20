@@ -30,7 +30,7 @@ StormEvents
 * Use `where`, `summarize` and `top` to limit the volume of data that you display.
 * Sort the results so as to define the order of the x-axis.
 
-![alt text](./Images/samples/060.png "060")
+:::image type="content" source="images/samples/060.png" alt-text="060":::
 
 <a name="activities"></a>
 ## Get sessions from start and stop events
@@ -96,8 +96,7 @@ Then we group by start time and ip to get a group for each session. We must supp
 
 `arg_min` picks out the row with the smallest duration in each group, and the `*` parameter passes through all the other columns, though it prefixes "min_" to each column name. 
 
-
-![alt text](./images/samples/040.png "040") 
+:::image type="content" source="images/samples/040.png" alt-text="040"::: 
 
 Then we can add some code to count the durations in conveniently-sized bins. We've a slight preference for a bar chart, so we divide by `1s` to convert the timespans to numbers. 
 
@@ -109,9 +108,7 @@ Then we can add some code to count the durations in conveniently-sized bins. We'
       // Display in a bar chart:
     | sort by duration asc | render barchart 
 
-
-![alt text](./images/samples/050.png "050") 
-
+:::image type="content" source="images/samples/050.png" alt-text="050":::
 
 ### Real example
 
@@ -630,9 +627,9 @@ Fruits table:
 |2018-10-06 08:00:00.0000000|Plums|8|
 |2018-10-07 12:00:00.0000000|Bananas|0|
 
-Sliding window aggreation query (explanation is provided below query results): 
+Sliding window aggregation query (explanation is provided below query results): 
 
-```
+```kusto
 let _start = datetime(2018-09-24);
 let _end = _start + 13d; 
 Fruits 
@@ -687,7 +684,7 @@ The next example demonstrates how to find a preceding event between 2 data sets.
 *Purpose:* : Given 2 data sets, A and B, for each record in B find its preceding event in A (in other words, the arg_max record in A which is still “older” than B). 
 For instance, below is the expected output for the following sample data sets: 
 
-```
+```kusto
 let A = datatable(Timestamp:datetime, Id:string, EventA:string)
 [
     datetime(2019-01-01 00:00:00), "x", "Ax1",
@@ -739,7 +736,7 @@ There are 2 different approaches suggested for this problem. You should test bot
 This suggestion serializes both data sets by Id and timestamp, then groups all B events with all their preceding A events,
  and picks the `arg_max` out of all As in the group. 
 
-```
+```kusto
 A
 | extend A_Timestamp = Timestamp, Kind="A"
 | union (B | extend B_Timestamp = Timestamp, Kind="B")
@@ -758,7 +755,7 @@ B by arg_min(TimestampB – TimestampA). The smaller the lookback period is, the
 
 In the example below, the lookback period is set to 1m, and therefore record with Id 'z' does not have a corresponding 'A' event (since it's 'A' is older by 2m).
 
-```
+```kusto
 let _maxLookbackPeriod = 1m;  
 let _internalWindowBin = _maxLookbackPeriod / 2;
 let B_events = B 
