@@ -42,7 +42,7 @@ Where:
     1. `TableHeader` : Contains general information about the table
     2. `TableFragment` : Contains a rectangular data shard of the table
     3. `TableProgress` : Contains the progress in percent (0-100)
-    4. `TableCompletion` : Indicates that this is the last frame of the table.
+    4. `TableCompletion` : Indicates that this frame is the last one
         
     The four frames above describe a table.
     If the `IsProgressive` flag is not set to true, then every table in the set will be serialized using a single frame:
@@ -83,7 +83,7 @@ Where:
     "ColumnName": string,
     "ColumnType": string,
 }
-```
+``
 Supported column types are described [here](../../query/scalar-data-types/index.md).
 
 ## TableFragment
@@ -106,7 +106,7 @@ Where:
 3. `TableFragmentType` describes what the client should do with this fragment. It is one of the following:
       * DataAppend
       * DataReplace
-4. `Rows` is a two dimensional array that contains the fragment data.
+4. `Rows` is a two-dimensional array that contains the fragment data.
 
 ## TableProgress
 
@@ -208,5 +208,5 @@ This frame is the final one in the data set.
 Where:
 
 1. `HasErrors` is true if there were errors while generating the data set.
-2. `Cancelled` is true if the request that led to the generation of the data set was cancelled before completion. 
+2. `Cancelled` is true if the request that led to the generation of the data set was canceled before completion. 
 3. `OneApiErrors` is only returned if `HasErrors` is true. For a description of the `OneApiErrors` format, see section 7.10.2 [here](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md).
