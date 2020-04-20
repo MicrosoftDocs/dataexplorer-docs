@@ -44,10 +44,10 @@ can be called like this:
 ```
 
 > [!NOTE:]
-> Stored functions should be called with an explicit schema named `kusto`, to distinguish between Kusto stored functions and emulated
+> Call stored functions with an explicit schema named `kusto`, to distinguish between Kusto stored functions and emulated
 > SQL system stored procedures.
 
-Kusto stored functions can also be called from T-SQL (like SQL tabular functions):
+YOu can aslo call Kusto stored functions from T-SQL (like SQL tabular functions):
 
 ```sql
 SELECT * FROM kusto.MyFunction(10)
@@ -57,7 +57,7 @@ We recommend you to create optimized KQL queries and to encapsulate them in stor
 
 ## Executing KQL query
 
-Kusto introduced the stored procedure `sp_execute_kql` for executing [KQL](../../query/index.md) queries (including parameterized queries). This is similarly to SQL server `sp_executesql`.
+Kusto introduced the stored procedure `sp_execute_kql` for executing [KQL](../../query/index.md) queries (including parameterized queries). This is similar to SQL server `sp_executesql`.
 
 The first parameter of `sp_execute_kql` is the KQL query. You can introduce additional parameters, and they'll act like [query parameters](../../query/queryparametersstatement.md).
 
