@@ -21,7 +21,7 @@ group by-aggregates, joins).
 
 Kusto offers excellent data ingestion and query performance by "sacrificing"
 the ability to perform in-place updates of individual rows and cross-table
-constraints/transactions. Therefore, it supplants, rather than replaces,
+constraints/transactions. Therefore, it supplements, rather than replaces,
 traditional RDBMS systems for scenarios such as OLTP and data warehousing.
 
 As a Big Data service, Kusto handles structured, semi-structured (e.g. JSON-like

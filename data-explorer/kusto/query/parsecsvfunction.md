@@ -45,6 +45,7 @@ print result=parse_csv('aa,"b,b,b",cc,"Escaping quotes: ""Title""","line1\nline2
 |[<br>  "aa",<br>  "b,b,b",<br>  "cc",<br>  "Escaping quotes: \"Title\"",<br>  "line1\nline2"<br>]|
 
 CSV payload with multiple records:
+
 ```kusto
 print result_multi_record=parse_csv('record1,a,b,c\nrecord2,x,y,z')
 ```

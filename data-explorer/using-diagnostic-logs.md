@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ---
 
-# Monitor Azure Data Explorer ingestion operations using diagnostic logs (Preview)
+# Monitor Azure Data Explorer ingestion operations using diagnostic logs
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a table in a database so that you can run queries against it. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion successes and failures. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion status. Logs from Azure Storage and Azure Event Hub can be routed to a table in your Azure Data Explorer cluster for further analysis.
 
@@ -49,7 +49,6 @@ Diagnostic logs are disabled by default. To enable diagnostic logs, do the follo
     1. Select logs to be collected: `SucceededIngestion` or `FailedIngestion`.
     1. Select [metrics](using-metrics.md#supported-azure-data-explorer-metrics) to be collected (optional).  
     1. Select **Save** to save the new diagnostic logs settings and metrics.
-    1. Create a **New support request** in the Azure portal to request activation of diagnostic logs.
 
 New settings will be set in a few minutes. Logs then appear in the configured archival target (Storage account, Event Hub, or Log Analytics). 
 

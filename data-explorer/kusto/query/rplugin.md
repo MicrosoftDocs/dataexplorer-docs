@@ -118,7 +118,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
     ```kusto    
     let script = 
         externaldata(script:string)
-        [h'https://raw.githubusercontent.com/yonileibowitz/kusto.blog/master/resources/R/sample_script.r']
+        [h'https://kustoscriptsamples.blob.core.windows.net/samples/R/sample_script.r']
         with(format = raw);
     range x from 1 to 360 step 1
     | evaluate r(

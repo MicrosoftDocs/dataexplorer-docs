@@ -63,6 +63,7 @@ that looks like this:
 ```
 
 then the following CSL Fragment translates the XML to the following JSON:
+
 ```json
 {
     "duration": {
