@@ -11,11 +11,11 @@ ms.date: 03/09/2019
 ---
 # KQL over TDS
 
-Kusto enables TDS endpoints to execute queries authored in the native [KQL](../../query/index.md) query language. This ebables smoother migration towards Kusto. For example, it is possible to create SSIS jobs to query Kusto with a KQL query.
+Kusto enables TDS endpoints to execute queries authored in the native [KQL](../../query/index.md) query language. This enables smoother migration towards Kusto. For example, you can create SSIS jobs to query Kusto with a KQL query.
 
 ## Executing Kusto stored functions
 
-Kusto permits [stored functions](../../query/schema-entities/stored-functions.md) to run. This is like calling SQL stored procedures.
+Kusto permits [stored functions](../../query/schema-entities/stored-functions.md) to run (like calling SQL stored procedures).
 
 For example, the stored function MyFunction:
 
@@ -53,13 +53,13 @@ Kusto stored functions can also be called from T-SQL (like SQL tabular functions
 SELECT * FROM kusto.MyFunction(10)
 ```
 
-It is recommend to create optimized KQL queries and to encapsulate them in stored functions, making the T-SQL query code minimal.
+We recommend you to create optimized KQL queries and to encapsulate them in stored functions, making the T-SQL query code minimal.
 
 ## Executing KQL query
 
 Kusto introduced the stored procedure `sp_execute_kql` for executing [KQL](../../query/index.md) queries (including parameterized queries). This is similarly to SQL server `sp_executesql`.
 
-The first parameter of `sp_execute_kql` is the KQL query. Additional parameters can be introduced and they will act like [query parameters](../../query/queryparametersstatement.md).
+The first parameter of `sp_execute_kql` is the KQL query. You can introduce additional parameters, and they'll act like [query parameters](../../query/queryparametersstatement.md).
 
 For example:
 
