@@ -107,4 +107,4 @@ _data
 | render linechart 
 ```
 
-![alt text](./images/queries/example-session-count.png "example-session-count")
+:::image type="content" source="images/queries/example-session-count.png" alt-text="Example session count":::

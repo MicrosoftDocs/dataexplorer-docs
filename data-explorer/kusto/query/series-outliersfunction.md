@@ -52,4 +52,4 @@ range x from 1 to 100 step 1
 | render linechart
 ``` 
 
-![alt text](./Images/samples/series-outliers.png "series-outliers")
+:::image type="content" border="false" source="images/samples/series-outliers.png" alt-text="Series outliers":::

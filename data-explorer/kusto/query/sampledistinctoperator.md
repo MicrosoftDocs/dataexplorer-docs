@@ -35,7 +35,9 @@ T | sample-distinct 5 of DeviceId
  if you want to sample data rows (rather than values of a specific column), refer to the [sample operator](sampleoperator.md)
 
 **Examples**  
+
 Get 10 distinct values from a population
+
 ```kusto
 StormEvents | sample-distinct 10 of EpisodeId
 
