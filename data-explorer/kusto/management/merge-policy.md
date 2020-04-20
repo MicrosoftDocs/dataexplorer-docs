@@ -96,6 +96,8 @@ Shows all policies of the given entity type (database or table) if the given nam
 
 All of the above returns the updated extents merge policy for the entity (database or table specified as a qualified name) as their output.
 
+Changes to the policy could take up to 1 hour to take effect.
+
 ## delete policy of merge
 
 ```kusto

@@ -39,6 +39,8 @@ The `.alter` command allows changing the partitioning policy that is applied on 
 
 The command requires [DatabaseAdmin](access-control/role-based-authorization.md) permissions.
 
+Changes to the policy could take up to 1 hour to take effect.
+
 ### Examples
 
 #### Setting all properties of the policy explicitly at table level
