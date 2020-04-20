@@ -14,7 +14,7 @@ ms.date: 02/11/2020
 If the status code is 200, the response body is a JSON array.
 Each JSON object in the array is called a _frame_.
 
-There are 7 types of frames:
+There are seven types of frames:
 
 1. DataSetHeader
 2. TableHeader
@@ -26,7 +26,7 @@ There are 7 types of frames:
 
 ## DataSetHeader 
 
-This is always the first frame in the data set and appears exactly once.
+This frame is always the first in the data set and appears exactly once.
 
 ```json
 {
@@ -38,9 +38,9 @@ This is always the first frame in the data set and appears exactly once.
 Where:
 
 1. `Version` is the protocol version. The current version is `v2.0`.
-2. `IsProgressive` is a boolean flag which indicates whether this data set contains progressive frames. A progressive frame is one of the following:
+2. `IsProgressive` is a boolean flag that indicates whether this data set contains progressive frames. A progressive frame is one of the following:
     1. `TableHeader` : Contains general information about the table
-    2. `TableFragment` : Contains a rectangluar data shard of the table
+    2. `TableFragment` : Contains a rectangular data shard of the table
     3. `TableProgress` : Contains the progress in percent (0-100)
     4. `TableCompletion` : Indicates that this is the last frame of the table.
         
@@ -88,7 +88,7 @@ Supported column types are described [here](../../query/scalar-data-types/index.
 
 ## TableFragment
 
-This frame contains a rectangular data fragment of the table. In addition to the actual data, this frame contains a `TableFragmentType` property, which tells the client what to do with the fragment (it can either be appended to existing fragments, or replace them).
+This frame contains a rectangular data fragment of the table. In addition to the actual data, this frame contains a `TableFragmentType` property that tells the client what to do with the fragment - it can either be appended to existing fragments, or replace them.
 
 ```json
 {
@@ -106,7 +106,7 @@ Where:
 3. `TableFragmentType` describes what the client should do with this fragment. It is one of the following:
       * DataAppend
       * DataReplace
-4. `Rows` is a two dimensional array which contains the fragment data.
+4. `Rows` is a two dimensional array that contains the fragment data.
 
 ## TableProgress
 
@@ -143,7 +143,7 @@ Where:
 
 ## DataTable
 
-Queries that are issued with the `EnableProgressiveQuery` flag set to false will not include any of the 4 frames (`TableHeader`, `TableFragment`, `TableProgress` and `TableCompletion`). Instead, each table in the data set will be transmitted using a single frame -  the `DataTable` frame - that contains all the information that the client needs in order to read the table.
+Queries that are issued with the `EnableProgressiveQuery` flag set to false will not include any of the four frames (`TableHeader`, `TableFragment`, `TableProgress`, and `TableCompletion`). Instead, each table in the data set will be transmitted using a single frame -  the `DataTable` frame - that contains all the information that the client needs in order to read the table.
 
 ```json
 {
@@ -180,13 +180,13 @@ Where:
     "ColumnType": string,
 }
 ```
-5. `Rows` is a two dimensional array that contains the table's data.
+5. `Rows` is a two-dimensional array that contains the table's data.
 
 ### The meaning of tables in the response
 
 * `PrimaryResult` - The main tabular result of the query. For each [tabular expression statement](../../query/tabularexpressionstatements.md),
-one or more tables are generated in-order, representing the results produced by the statement (there can be multiple 
-such tables due to [batches](../../query/batches.md) and [fork operators](../../query/forkoperator.md)).
+one or more tables are generated in-order, representing the results produced by the statement. There can be multiple 
+such tables due to [batches](../../query/batches.md) and [fork operators](../../query/forkoperator.md).
 * `QueryCompletionInformation` - Provides additional information regarding the execution of the query itself, such as
  whether it completed successfully or not, and what were the resources consumed by the query (similar to the QueryStatus table 
  in the v1 response). 
@@ -196,7 +196,7 @@ such tables due to [batches](../../query/batches.md) and [fork operators](../../
 
 ## DataSetCompletion
 
-This is the final frame in the data set.
+This frame is the final one in the data set.
 ```json
 {
     "HasErrors": Boolean,
