@@ -17,7 +17,7 @@ zone_pivot_groups: kql-flavors
 
 Checks group membership or principal identity of the current principal running the query.
 
-```
+```kusto
 print current_principal_is_member_of(
     'aaduser=user1@fabrikam.com', 
     'aadgroup=group1@fabrikam.com',

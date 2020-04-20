@@ -239,7 +239,7 @@ StormEvents
 | render columnchart
 ```
 
-![alt text](./images/tour/060.png "060")
+:::image type="content" source="images/tour/060.png" alt-text="060":::
 
 Although we removed `mid` in the project operation, we still need it if we want the chart to display the countries in that order.
 
@@ -256,7 +256,7 @@ StormEvents
 | render timechart
 ```
 
-![alt text](./images/tour/080.png "080")
+:::image type="content" source="images/tour/080.png" alt-text="080":::
 
 ## Multiple series
 
@@ -269,11 +269,11 @@ StormEvents
 | summarize count() by bin(StartTime, 10h), Source
 ```
 
-![alt text](./images/tour/090.png "090")
+:::image type="content" source="images/tour/090.png" alt-text="090":::
 
 Just add the render term to the above: `| render timechart`.
 
-![alt text](./images/tour/100.png "100")
+:::image type="content" source="images/tour/100.png" alt-text="100":::
 
 Notice that `render timechart` uses the first column as the x-axis, and then displays the other columns as separate lines.
 
@@ -291,11 +291,11 @@ StormEvents
 | render timechart
 ```
 
-![alt text](./images/tour/120.png "120")
+:::image type="content" source="images/tour/120.png" alt-text="120":::
 
 Currently, `render` doesn't label durations properly, but we could use `| render columnchart` instead:
 
-![alt text](./images/tour/110.png "110")
+:::image type="content" source="images/tour/110.png" alt-text="110":::
 
 ## Compare multiple daily series
 
@@ -309,7 +309,7 @@ StormEvents
 | render timechart
 ```
 
-![alt text](./images/tour/130.png "130")
+:::image type="content" source="images/tour/130.png" alt-text="130":::
 
 Divide by `1h` to turn the x-axis into hour number instead of a duration:
 
@@ -321,7 +321,7 @@ StormEvents
 | render columnchart
 ```
 
-![alt text](./images/tour/140.png "140")
+:::image type="content" source="images/tour/140.png" alt-text="140":::
 
 ## join
 
@@ -339,7 +339,7 @@ StormEvents
 | distinct State
 ```
 
-![alt text](./images/tour/145.png "145")
+:::image type="content" source="images/tour/145.png" alt-text="145":::
 
 ## User session example of join
 
@@ -364,11 +364,10 @@ Events
 | take 10
 ```
 
-![alt text](./images/tour/150.png "150")
+:::image type="content" source="images/tour/150.png" alt-text="150":::
 
 It's good practice to use `project` to select just the columns we need before performing the join.
 In the same clauses, we rename the timestamp column.
-
 
 ## Plot a distribution
 
@@ -385,13 +384,11 @@ StormEvents
 | render timechart
 ```
 
-
-![alt text](./images/tour/170.png "170")
+:::image type="content" source="images/tour/170.png" alt-text="170":::
 
 Or use `| render columnchart`:
 
-
-![alt text](./images/tour/160.png "160")
+:::image type="content" source="images/tour/160.png" alt-text="160":::
 
 ## Percentiles
 
@@ -405,7 +402,7 @@ Use the above query, but replace `render` with:
 
 In this case, we provided no `by` clause, so the result is a single row:
 
-![alt text](./images/tour/180.png "180")
+:::image type="content" source="images/tour/180.png" alt-text="180":::
 
 From which we can see that:
 
@@ -426,7 +423,7 @@ StormEvents
 | summarize percentiles(duration, 5, 20, 50, 80, 95) by State
 ```
 
-![alt text](./images/tour/190.png "190")
+:::image type="content" source="images/tour/190.png" alt-text="190":::
 
 ## Let: Assign a result to a variable
 
@@ -467,6 +464,7 @@ So if you have databases named *Diagnostics* and *Telemetry* and want to correla
 ```kusto
 Logs | join database("Telemetry").Metrics on Request MachineId | ...
 ```
+
 or if your default database is *Telemetry*
 
 ```kusto
@@ -474,9 +472,11 @@ union Requests, database("Diagnostics").Logs | ...
 ```
     
 All of the above assumed that both databases reside in the cluster you are currently connected to. Suppose that *Telemetry* database belonged to another cluster named *TelemetryCluster.kusto.windows.net* then to access it you'll need
+
 ```kusto
 Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
 ```
+
 > Note: when the cluster is specified the database is mandatory
 
 ::: zone-end

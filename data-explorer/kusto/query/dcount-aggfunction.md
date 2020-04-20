@@ -86,4 +86,4 @@ of the estimations will have a relative error of under 3 times sigma.
 The following depicts the probability distribution function of the relative
 estimation error (in percentages) for all supported accuracy settings:
 
-![alt text](./images/aggregations/hll-error-distribution.png "hll-error-distribution")
+:::image type="content" border="false" source="images/aggregations/hll-error-distribution.png" alt-text="hll error distribution":::
