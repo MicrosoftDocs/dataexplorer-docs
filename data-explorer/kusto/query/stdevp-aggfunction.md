@@ -14,7 +14,8 @@ ms.date: 02/13/2020
 Calculates the standard deviation of *Expr* across the group, considering the group as a [population](https://en.wikipedia.org/wiki/Statistical_population). 
 
 * Used formula:
-![alt text](./images/aggregations/stdev-population.png "stdev-population")
+
+:::image type="content" source="images/aggregations/stdev-population.png" alt-text="Stdev population":::
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
 

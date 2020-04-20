@@ -37,7 +37,8 @@ Indicates whether the geospatial coordinates are inside a circle. If the coordin
 **Examples**
 
 The following query finds all the places in the area defined by a circle with a radius of 18 km whose center is at [-122.317404, 47.609119] coordinates.
-![Places near Seattle](./images/queries/geo/circle_seattle.png)
+
+:::image type="content" source="images/queries/geo/circle_seattle.png" alt-text="Places near Seattle":::
 
 ```kusto
 datatable(longitude:real, latitude:real, place:string)
@@ -59,7 +60,9 @@ datatable(longitude:real, latitude:real, place:string)
 |Redmond|
 
 Storm events in Orlando. The events are filtered by Orlando coordinates, within 100km and aggregated by event type and hash.
-![Storm events in Orlando](./images/queries/geo/orlando_storm_events.png)
+
+:::image type="content" source="images/queries/geo/orlando_storm_events.png" alt-text="Storm events in Orlando":::
+
 ```kusto
 StormEvents
 | project BeginLon, BeginLat, EventType
@@ -70,8 +73,10 @@ StormEvents
 ```
 
 The following example shows NY Taxi pickups nearby some location and within 10 meters. Relevant pickups are aggregated by hash.
-![NY Taxi nearby Pickups](./images/queries/geo/circle_junction.png)
-```
+
+:::image type="content" source="images/queries/geo/circle_junction.png" alt-text="NY Taxi nearby Pickups":::
+
+```kusto
 nyc_taxi
 | project pickup_longitude, pickup_latitude
 | where geo_point_in_circle( pickup_longitude, pickup_latitude, real(-73.9928), 40.7429, 10)
