@@ -23,15 +23,15 @@ This article explains what permissions need to be set up on your service, for `N
     * Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404;microsoft.com)
 
 ## Ingestion permission model for queued ingestion
-This mode - defined in [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) - limits the client code dependency on the Kusto service. Ingestion is performed by posting a Kusto ingestion message to an Azure queue, which, in turn is acquired from Kusto Data Management (a.k.a. Ingestion) service. Any intermediate storage artifacts will be created by the ingest client using the resources allocated by the Kusto Data Management service.<BR>
+This mode - defined in [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) - limits the client code dependency on the Kusto service. Ingestion is done by posting a Kusto ingestion message to an Azure queue. The queue is acquired from the Kusto Data Management (also known as Ingestion) service. Any intermediate storage artifacts will be created by the ingest client using the resources allocated by the Kusto Data Management service.<BR>
 
 The following diagram outlines the queued ingestion client interaction with Kusto:<BR>
 
 ![alt text](../images/queued-ingest.jpg "queued-ingest")
 
 ### Permissions on the Engine Service
-In order to qualify for data ingestion into table `T1` on database `DB1` the principal performing the ingest operation must be authorized for that.
-Minimal required permission levels are `Database Ingestor` and `Table Ingestor` that can ingest data into all existing tables in a database or into a specific existing table, accordingly.
+To qualify for data ingestion into table `T1` on database `DB1`, the principal doing the ingest operation must have authorization.
+Minimal required permission levels are `Database Ingestor` and `Table Ingestor` that can ingest data into all existing tables in a database or into a specific existing table.
 If table creation is required, `Database User` or a higher access role must also be assigned.
 
 
