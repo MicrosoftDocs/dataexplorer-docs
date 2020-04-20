@@ -64,6 +64,7 @@
       "feedback_github_repo": "MicrosoftDocs/dataexplorer-docs",
       "feedback_product_url": "https://feedback.azure.com/forums/915733-azure-data-explorer",
       "recommendations": true,
+      "searchScope": ["Azure", "Data Explorer", "Azure Data Explorer", "Kusto", "kusto"],
       "_op_documentIdPathDepotMapping": {
         "./": {
           "depot_name": "Azure.azure-documents",
