@@ -50,7 +50,7 @@ In the following example, when `context_custom_metrics` is a `string`
 that looks like this: 
 <!--check this code formatting-->
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <duration>
     <value>118.0</value>
@@ -65,7 +65,7 @@ that looks like this:
 
 then the following CSL Fragment translates the XML to the following JSON:
 
-```
+```json
 {
     "duration": {
         "value": 118.0,
