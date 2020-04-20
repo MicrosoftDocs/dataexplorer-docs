@@ -53,4 +53,4 @@ PageViewLog
     by continent
 ```
 
-![alt text](./images/aggregations/arg-min.png "arg-min")
+:::image type="content" source="images/aggregations/arg-min.png" alt-text="Arg min":::

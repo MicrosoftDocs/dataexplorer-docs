@@ -45,7 +45,9 @@ dynamic({"type": "LineString","coordinates": [ [lng_1,lat_1], [lng_2,lat_2] ,...
 **Examples**
 
 The following example finds the shortest distance between North Las Vegas Airport and a nearby road.
-![Distance between North Las Vegas Airport and road](./images/queries/geo/distance_point_to_line.png)
+
+:::image type="content" source="images/queries/geo/distance_point_to_line.png" alt-text="Distance between North Las Vegas Airport and road":::
+
 ```kusto
 print distance_in_meters = geo_distance_point_to_line(-115.199625, 36.210419, dynamic({ "type":"LineString","coordinates":[[-115.115385,36.229195],[-115.136995,36.200366],[-115.140252,36.192470],[-115.143558,36.188523],[-115.144076,36.181954],[-115.154662,36.174483],[-115.166431,36.176388],[-115.183289,36.175007],[-115.192612,36.176736],[-115.202485,36.173439],[-115.225355,36.174365]]}))
 ```
@@ -55,7 +57,9 @@ print distance_in_meters = geo_distance_point_to_line(-115.199625, 36.210419, dy
 | 3797.88887253334   |
 
 Storm events in south coast US. The events are filtered by a maximum distance of 5 km from the defined shore line.
-![Storm events in US south coast](./images/queries/geo/us_south_coast_storm_events.png)
+
+:::image type="content" source="images/queries/geo/us_south_coast_storm_events.png" alt-text="Storm events in the US south coast":::
+
 ```kusto
 let southCoast = dynamic({"type":"LineString","coordinates":[[-97.18505859374999,25.997549919572112],[-97.58056640625,26.96124577052697],[-97.119140625,27.955591004642553],[-94.04296874999999,29.726222319395504],[-92.98828125,29.82158272057499],[-89.18701171875,29.11377539511439],[-89.384765625,30.315987718557867],[-87.5830078125,30.221101852485987],[-86.484375,30.4297295750316],[-85.1220703125,29.6880527498568],[-84.00146484374999,30.14512718337613],[-82.6611328125,28.806173508854776],[-82.81494140625,28.033197847676377],[-82.177734375,26.52956523826758],[-80.9912109375,25.20494115356912]]});
 StormEvents
@@ -65,8 +69,10 @@ StormEvents
 ```
 
 NY taxi pickups. Pickups are filtered by maximum distance of 0.1 m from the defined line.
-![Storm events in US South Coast](./images/queries/geo/park_ave_ny_road.png)
-```
+
+:::image type="content" source="images/queries/geo/park_ave_ny_road.png" alt-text="Storm events in US south coast":::
+
+```kusto
 nyc_taxi
 | project pickup_longitude, pickup_latitude
 | where geo_distance_point_to_line(pickup_longitude, pickup_latitude, dynamic({"type":"LineString","coordinates":[[-73.97583961486816,40.75486445336327],[-73.95215034484863,40.78743027428638]]})) <= 0.1

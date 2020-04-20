@@ -180,7 +180,7 @@ where * has "Kusto"
 
 ::: zone pivot="azuremonitor"
 
-###  Term lookup across all tables
+### Term lookup across all tables
 
 The next query finds all rows from all tables in which any column includes the word `Kusto`. 
 The resulting records are transformed according to the [output schema](#output-schema). 

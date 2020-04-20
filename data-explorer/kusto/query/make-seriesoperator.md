@@ -123,8 +123,8 @@ It is recommended to use the main syntax of make-series and not the alternate sy
 T | make-series PriceAvg=avg(Price) default=0
 on Purchase from datetime(2016-09-10) to datetime(2016-09-13) step 1d by Supplier, Fruit
 ```
-  
-![alt text](./Images/aggregations/makeseries.png "makeseries")
+
+:::image type="content" source="images/aggregations/makeseries.png" alt-text="Makeseries":::  
   
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)

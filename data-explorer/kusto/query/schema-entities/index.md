@@ -17,9 +17,9 @@ may reference, and within the table it is organized as a rectangular grid of
 columns and rows. Additionally, queries may reference stored functions in the
 database, which are query fragments made available for reuse.
 
-* [Clusters](./clusters.md) are entities that hold databases.
+* Clusters are entities that hold databases.
   Clusters have no name, but they can be referenced by using the
-  [cluster() special function](../clusterfunction.md) with the cluster's URI.
+  `cluster()` special function with the cluster's URI.
   For example, `cluster("https://help.kusto.windows.net")` is a reference
   to a cluster that holds the `Samples` database.
 
