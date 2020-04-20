@@ -57,6 +57,7 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
+      "searchScope": ["Azure", "Data Explorer", "Azure Data Explorer", "Kusto", "kusto"],
       "breadcrumb_path": "/azure/data-explorer/breadcrumb/toc.json",
       "extendBreadcrumb": true,
       "brand": "azure",
