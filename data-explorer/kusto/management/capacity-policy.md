@@ -16,6 +16,7 @@ The following control commands can be used for managing a cluster's [capacity po
 The commands require [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
 
 ## show cluster policy capacity
+
 ```kusto
 .show cluster policy capacity
 ```
