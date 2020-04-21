@@ -17,8 +17,8 @@ Operators that supports shuffling in Kusto are [join](joinoperator.md), [summari
 
 Shuffle query strategy can be set by the query parameter `hint.strategy = shuffle` or `hint.shufflekey = <key>`.
 
-You can also look into definining a [data partitioning policy](../management/partitioningpolicy.md) on your table. 
-Queries in which the `shufflekey` is the hash partition key are expected to perform better, as the amount of data required to move across cluster nodes is significantly reduced.
+You can also look into defining a [data partitioning policy](../management/partitioningpolicy.md) on your table. 
+Queries in which the `shufflekey` is also the table's hash partition key are expected to perform better, as the amount of data required to move across cluster nodes is significantly reduced.
 
 **Syntax**
 
