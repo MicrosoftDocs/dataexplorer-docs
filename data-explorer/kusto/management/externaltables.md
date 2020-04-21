@@ -41,7 +41,7 @@ The following commands are relevant to _any_ external table (of any type).
 
 **Examples:**
 
-```
+```kusto
 .show external tables
 .show external table T
 ```
@@ -74,11 +74,11 @@ The following commands are relevant to _any_ external table (of any type).
 
 **Examples:**
 
-```
+```kusto
 .show external table T schema as JSON
 ```
 
-```
+```kusto
 .show external table T schema as CSL
 .show external table T cslschema
 ```
@@ -114,7 +114,7 @@ Returns the properties of the dropped table. See [.show external tables](#show-e
 
 **Examples:**
 
-```
+```kusto
 .drop external table ExternalBlob
 ```
 
@@ -187,7 +187,7 @@ Requires [Database user permission](../management/access-control/role-based-auth
 
 A non-partitioned external table. All artifacts are expected to be directly under the container(s) defined:
 
-```
+```kusto
 .create external table ExternalBlob (x:long, s:string) 
 kind=blob
 dataformat=csv
@@ -204,7 +204,7 @@ with
 
 An external table partitioned by dateTime. Artifacts reside in directories in "yyyy/MM/dd" format under the path(s) defined:
 
-```
+```kusto
 .create external table ExternalAdlGen2 (Timestamp:datetime, x:long, s:string) 
 kind=adl
 partition by bin(Timestamp, 1d)
@@ -222,7 +222,7 @@ with
 
 An external table partitioned by dateTime with a directory format of "year=yyyy/month=MM/day=dd":
 
-```
+```kusto
 .create external table ExternalPartitionedBlob (Timestamp:datetime, x:long, s:string) 
 kind=blob
 partition by format_datetime="'year='yyyy/'month='MM/'day='dd" bin(Timestamp, 1d)
@@ -240,7 +240,7 @@ with
 
 An external table with monthly data partitions and a directory format of "yyyy/MM":
 
-```
+```kusto
 .create external table ExternalPartitionedBlob (Timestamp:datetime, x:long, s:string) 
 kind=blob
 partition by format_datetime="yyyy/MM" bin(Timestamp, 1d)
@@ -259,7 +259,7 @@ with
 An external table with two partitions. The directory structure is the concatenation of both partitions: formatted CustomerName followed by default dateTime format. 
 For example "CustomerName=softworks/2011/11/11":
 
-```
+```kusto
 .create external table ExternalMultiplePartitions (Timestamp:datetime, CustomerName:string) 
 kind=blob
 partition by 
@@ -275,6 +275,7 @@ with
    folder = "ExternalTables"   
 )
 ```
+
 **Output**
 
 |TableName|TableType|Folder|DocString|Properties|ConnectionStrings|Partitions|
@@ -287,13 +288,13 @@ When data is exported from Spark, partition columns (that are specified in dataf
 This is done to avoid data duplication because the data already present in "folder" names (for example, `column1=<value>/column2=<value>/`), and Spark can
 recognize it upon read. However, Kusto requires that partition columns are present in the data itself. Support for virtual columns in Kusto is planned. Until then, use the following workaround: when exporting data from Spark, create a copy of all columns that data is partitioned by before writing a dataframe:
 
-```
+```kusto
 df.withColumn("_a", $"a").withColumn("_b", $"b").write.partitionBy("_a", "_b").parquet("...")
 ```
 
 When defining an external table in Kusto specify partition columns like in the following example:
 
-```
+```kusto
 .create external table ExternalSparkTable(a:string, b:datetime) 
 kind=blob
 partition by 
@@ -322,7 +323,7 @@ dataformat=parquet
 
 **Examples:**
 
-```
+```kusto
 .show external table T artifacts
 ```
 
@@ -340,7 +341,7 @@ Creates a new mapping. For more information, see [Data Mappings](./mappings.md#j
 
 **Example** 
  
-```
+```kusto
 .create external table MyExternalTable JSON mapping "Mapping1" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
 ```
 
@@ -358,7 +359,7 @@ Alters an existing mapping.
  
 **Example** 
  
-```
+```kusto
 .alter external table MyExternalTable JSON mapping "Mapping1" '[{ "column" : "rownumber", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]'
 ```
 
@@ -378,7 +379,7 @@ Show the mappings (all or the one specified by name).
  
 **Example** 
  
-```
+```kusto
 .show external table MyExternalTable JSON mapping "Mapping1" 
 
 .show external table MyExternalTable JSON mappings 
@@ -398,7 +399,7 @@ Drops the mapping from the database.
  
 **Example** 
  
-```
+```kusto
 .drop external table MyExternalTable JSON mapping "Mapping1" 
 ```
 
@@ -446,7 +447,7 @@ Requires [database user permission](../management/access-control/role-based-auth
  
 **Example** 
 
-```
+```kusto
 .create external table ExternalSql (x:long, s:string) 
 kind=sql
 table=MySqlTable
@@ -474,9 +475,10 @@ Similarl to other types of external tables, querying an external SQL table is su
 Note that the SQL external table query implementation will execute a full 'SELECT *' 
 (or select relevant columns) from the SQL table, while the rest of the query will execute on the Kusto side. Consider the following external table query: 
 
-```
+```kusto
 external_table('MySqlExternalTable') | count
 ```
+
 Kusto will execute a 'SELECT * from TABLE' query to the SQL database, followed by a count on Kusto side. 
 In such cases, performance is expected to be better if written in T-SQL directly ('SELECT COUNT(1) FROM TABLE') 
 and executed using the [sql_request plugin](../query/sqlrequestplugin.md), instead of using the external table function. 
