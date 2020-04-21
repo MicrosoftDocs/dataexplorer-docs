@@ -18,15 +18,15 @@ This article explains what permissions to set up on your service, for `Native` i
 
 ## References
 * The following AAD applications are used as sample principals in the examples below:
-    * Test AAD App (2a904276-1234-5678-9012-66fc53add60b;microsoft.com)
-    * Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404;microsoft.com)
+    * Test AAD App (2a904276-1234-5678-9012-66fc53add60b; microsoft.com)
+    * Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404; microsoft.com)
 
 ## Ingestion permission model for queued ingestion
-This mode - defined in [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) - limits the client code dependency on the Kusto service. Ingestion is done by posting a Kusto ingestion message to an Azure queue. The queue is acquired from the Kusto Data Management (also known as Ingestion) service. Any intermediate storage artifacts will be created by the ingest client using the resources allocated by the Kusto Data Management service.<BR>
+This mode - defined in [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) - limits the client code dependency on the Azure Data Explorer service. Ingestion is done by posting a Kusto ingestion message to an Azure queue. The queue is acquired from the Azure Data Explorer (also known as Ingestion) service. Any intermediate storage artifacts will be created by the ingest client using the resources allocated by the Azure Data Explorer service.<BR>
 
 The following diagram outlines the queued ingestion client interaction with Kusto:<BR>
 
-![alt text](../images/queued-ingest.jpg "queued-ingest")
+:::image type="content" source="../images/queued-ingest.jpg" alt-text="queued-ingest":::
 
 ### Permissions on the Engine Service
 To qualify for data ingestion into table `T1` on database `DB1`, the principal doing the ingest operation must have authorization.
@@ -36,8 +36,8 @@ If table creation is required, `Database User` or a higher access role must also
 
 |Role |PrincipalType	|PrincipalDisplayName
 |--------|------------|------------
-|`Database Ingestor` |AAD Application |Test App (app id: 2a904276-1234-5678-9012-66fc53add60b)
-|`Table Ingestor` |AAD Application |Test App (app id: 2a904276-1234-5678-9012-66fc53add60b)
+|`Database Ingestor` |AAD Application |`Test App (app id: 2a904276-1234-5678-9012-66fc53add60b)`
+|`Table Ingestor` |AAD Application |`Test App (app id: 2a904276-1234-5678-9012-66fc53add60b)`
 
 >`Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404)` principal (Kusto internal Ingestion App) is immutably mapped to the `Cluster Admin` role and thus authorized to ingest data to any table (this is what's happening on the Kusto-managed ingestion pipelines).
 
