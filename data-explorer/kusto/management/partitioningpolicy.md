@@ -89,6 +89,7 @@ ends up including records from a limited time range, resulting with filters on t
 
 * `RangeSize` is a `timespan` scalar constant that indicates the size of each datetime partition.
 * `Reference` is a `datetime` scalar constant of type that indicates a fixed point in time according to which datetime partitions are aligned.
+  * If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`.
 
 #### Example
 
