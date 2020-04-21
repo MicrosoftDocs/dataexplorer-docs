@@ -83,7 +83,7 @@
       href: ./query/batches.md
   - name: Tabular operators
     items:
-    - name: tablular data
+    - name: tabular data
       href: ./query/queries.md
     - name: as operator
       href: ./query/asoperator.md
