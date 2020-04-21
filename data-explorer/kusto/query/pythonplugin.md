@@ -89,8 +89,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 )
 | render linechart 
 ```
-
-![alt text](./images/samples/sine-demo.png "sine-demo")
+:::image type="content" source="images/samples/sine-demo.png" alt-text="sine demo":::
 
 ```kusto
 print "This is an example for using 'external_artifacts'"
@@ -155,7 +154,7 @@ print "This is an example for using 'external_artifacts'"
   
     **Example**
 
-    ```kusto    
+    ```kusto
     let script = 
         externaldata(script:string)
         [h'https://kustoscriptsamples.blob.core.windows.net/samples/python/sample_script.py']

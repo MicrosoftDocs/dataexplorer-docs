@@ -80,10 +80,8 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 )
 | render linechart 
 ```
-![alt text](./images/samples/sine-demo.png "sine-demo")
 
-
-
+:::image type="content" source="images/samples/sine-demo.png" alt-text="Sine demo":::
 
 ### Performance tips
 

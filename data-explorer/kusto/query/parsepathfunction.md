@@ -30,6 +30,7 @@ An object of type `dynamic` that inculded the path components as listed above.
 **Example**
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
+
 ```kusto
 datatable(p:string) 
 [
