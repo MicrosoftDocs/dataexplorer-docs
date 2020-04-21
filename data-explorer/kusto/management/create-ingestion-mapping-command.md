@@ -26,7 +26,7 @@ Creates an ingestion mapping that is associated with a specific table and a spec
  
 **Example** 
  
-```
+```kusto
 .create table MyTable ingestion csv mapping "Mapping1"
 '['
 '   { "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},'
