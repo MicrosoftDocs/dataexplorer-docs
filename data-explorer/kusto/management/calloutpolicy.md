@@ -30,6 +30,7 @@ Callout policy is comprised of the following components:
 * **CanCall** indicates whether the callout is allows external calls.
 
 ## Predefined Callout policies
+
 There is a set of predefined callout policies immutably preconfigured on all Azure Data Explorer clusters to facilitate callouts to select services.
 
 |Service      |Cloud        |Designation  |Allowed domains |
@@ -50,21 +51,25 @@ There is a set of predefined callout policies immutably preconfigured on all Azu
 The commands require [AllDatabasesAdmin](access-control/role-based-authorization.md) permissions.
 
 **Show all configured callout policies**
+
 ```kusto
 .show cluster policy callout
 ```
 
 **Alter exiting callout policies**
+
 ```kusto
 .alter cluster policy callout @'[{"CalloutType": "webapi","CalloutUriRegex": "en\\.wikipedia\\.org","CanCall": true}]'
 ```
 
 **Add a set of allowed callouts**
+
 ```kusto
 .alter-merge cluster policy callout @'[{"CalloutType": "webapi","CalloutUriRegex": "en\\.wikipedia\\.org","CanCall": true}, {"CalloutType": "webapi","CalloutUriRegex": "bing\\.com","CanCall": true}]'
 ```
 
 **Delete all non-immutable callout policies**
+
 ```kusto
 .delete cluster policy callout
 ```
