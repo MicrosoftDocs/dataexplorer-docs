@@ -8,7 +8,7 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # Partitioning and composing intermediate results of aggregations
