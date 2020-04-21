@@ -367,6 +367,7 @@ Details |string |Includes the failure details, in case the operation fails.
 
 Moves all extents from 2 specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`, and drops all extents in `MyOtherTable` 
 tagged with `drop-by:MyTag`:
+
 ```kusto
 .replace extents in table MyOtherTable <|
     {.show table MyOtherTable extents where tags has 'drop-by:MyTag'},
@@ -388,12 +389,14 @@ tagged with `drop-by:MyTag`:
 > To make sure the command fails on missing extents, check that the query returns the expected ExtentIds. Example #1 below will fail if the extent to drop doesn't exist in table MyOtherTable. Example #2, however, will succeed even though the extent to drop doesn't exist, since the query to drop didn't return any extent ids. 
 
 Example #1: 
+
 ```kusto
 .replace extents in table MyOtherTable <|
      { datatable(ExtentId:guid)[ "2cca5844-8f0d-454e-bdad-299e978be5df"] }, { .show table MyTable1 extents }
 ```
 
 Example #2:
+
 ```kusto
 .replace extents in table MyOtherTable  <|
      { .show table MyOtherTable extents | where ExtentId == guid(2cca5844-8f0d-454e-bdad-299e978be5df) }, { .show table MyTable1 extents }
@@ -449,16 +452,19 @@ Details |string |Includes the failure details, in case the operation fails.
 **Examples**
 
 Drops the `drop-by:Partition000` tag from any extent in table `MyOtherTable` which is tagged with it.
+
 ```kusto
 .drop extent tags from table MyOtherTable ('drop-by:Partition000')
 ```
 
 Drops the tags `drop-by:20160810104500`, `a random tag`, and/or `drop-by:20160810` from any extent in table `My Table` which is tagged with either of them.
+
 ```kusto
 .drop extent tags from table [My Table] ('drop-by:20160810104500','a random tag','drop-by:20160810')
 ```
 
 Drops all `drop-by` tags from extents in table `MyTable`.
+
 ```kusto
 .drop extent tags <| 
   .show table MyTable extents 
@@ -469,6 +475,7 @@ Drops all `drop-by` tags from extents in table `MyTable`.
 ```
 
 Drops all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from extents in table `MyTable`.
+
 ```kusto
 .drop extent tags <| 
   .show table MyTable extents 
@@ -519,11 +526,13 @@ Details |string |Includes the failure details, in case the operation fails.
 **Examples**
 
 Alters tags of all the extents in table `MyTable` to `MyTag`.
+
 ```kusto
 .alter extent tags ('MyTag') <| .show table MyTable extents
 ```
 
 Alters tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`.
+
 ```kusto
 .alter extent tags ('drop-by:MyNewTag','MyOtherNewTag') <| .show table MyTable extents where tags has 'drop-by:MyTag'
 ```

@@ -32,7 +32,7 @@ that was in effect at the time the data was ingested into the table.
 
 **Example**
 
-```
+```kusto
 .drop table CustomersTable ifexists
 .drop tables (ProductsTable, ContactsTable, PricesTable) ifexists
 ```
