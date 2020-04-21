@@ -229,8 +229,6 @@ azureprofilerfrontdoor.cloudapp.net:443
 *.servicebus.windows.net:443
 shoebox2.metrics.nsatc.net:443
 prod-dsts.dsts.core.windows.net:443
-*.identity.azure.net:443
-*.vault.azure.net:443
 ocsp.msocsp.com:80
 *.windowsupdate.com:80
 ocsp.digicert.com:80
