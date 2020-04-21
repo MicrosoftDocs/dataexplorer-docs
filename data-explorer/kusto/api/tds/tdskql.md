@@ -47,7 +47,7 @@ can be called like this:
 > Call stored functions with an explicit schema named `kusto`, to distinguish between Kusto stored functions and emulated
 > SQL system stored procedures.
 
-YOu can aslo call Kusto stored functions from T-SQL (like SQL tabular functions):
+You can also call Kusto stored functions from T-SQL (like SQL tabular functions):
 
 ```sql
 SELECT * FROM kusto.MyFunction(10)
