@@ -30,10 +30,10 @@ Additional parameters are formatted as URL query `{name}={value}` pairs, separat
 
 | Parameter    |  Description                                                                                                |
 |--------------|-------------------------------------------------------------------------------------------------------------|
-|`streamFormat`| **Required** - Specifies the format of the data in the request body. The value should be one of: `Csv`,`Tsv`,`Scsv`,`SOHsv`,`Psv`,`Json`,`SingleJson`,`MultiJson`,`Avro`. For more information please see [Supported Data Formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).|
+|`streamFormat`| **Required** - Specifies the format of the data in the request body. The value should be one of: `Csv`,`Tsv`,`Scsv`,`SOHsv`,`Psv`,`Json`,`SingleJson`,`MultiJson`,`Avro`. For more information, see [Supported Data Formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).|
 |`mappingName` | **Required** - If `streamFormat` is one of `Json`, `SingleJson`, `MultiJson`, or `Avro`
                  **Optional** - Otherwise. 
-                 The value must be the name of the pre-created ingestion mapping defined on the table. For more information on data mappings see [Data Mappings](../../management/mappings.md). The way to manage pre-created mappings on the table is described [here](../../management/create-ingestion-mapping-command.md).|
+                 The value must be the name of the pre-created ingestion mapping defined on the table. For more information on data mappings, see [Data Mappings](../../management/mappings.md). The way to manage pre-created mappings on the table is described [here](../../management/create-ingestion-mapping-command.md).|
               
 
 For example, to ingest CSV-formatted data into table `Logs` in database `Test`, use:
@@ -52,22 +52,22 @@ POST https://help.kusto.windows.net/v1/rest/ingest/Test/Logs?streamFormat=Json&m
 
 ## Request headers
 
-The following table contains the common headers used to perform query and management operations.
+The following table contains the common headers for query and management operations.
 
 |Standard header   |Description                                                                                                     |
 |------------------|----------------------------------------------------------------------------------------------------------------|
-|`Accept`          |**Optional**. Set this to `application/json`.                                                                   |
+|`Accept`          |**Optional**. Set this value to `application/json`.                                                             |
 |`Accept-Encoding` |**Optional**. Supported encodings are `gzip` and `deflate`.                                                     |
 |`Authorization`   |**Required**. See [authentication](./authentication.md).                                                        |
 |`Connection`      |**Optional**. We recommended that you enable `Keep-Alive`.                                                      |
 |`Content-Length`  |**Optional**. We recommended that you specify the request body length, when known.                              |
 |`Content-Encoding`|**Optional**. Can be set to `gzip` but the body must be gzip-compressed                                         |
 |`Expect`          |**Optional**. Can be set to `100-Continue`.                                                                     |
-|`Host`            |**Required**. Set this to the fully-qualified domain name that the request was sent to (e.g., `help.kusto.windows.net`).|
+|`Host`            |**Required**. Set this value to the domain name that you sent the request to (such as, `help.kusto.windows.net`).|
 
 The following table contains the common custom headers for query and management operations. Unless otherwise indicated, the headers are for telemetry purposes only, and have no functionality impact.
 
-All headers are **optional**. We **strongly-recommend** that you specify the `x-ms-client-request-id` custom header. In some scenarios (such as cancelling a running query) this header is **mandatory**, since it is used to identify the request.
+All headers are **optional**. We **strongly recommend** that you specify the `x-ms-client-request-id` custom header. In some scenarios (such as canceling a running query) this header is **mandatory**, since it's used to identify the request.
 
 |Custom header           |Description                                                                                               |
 |------------------------|----------------------------------------------------------------------------------------------------------|
