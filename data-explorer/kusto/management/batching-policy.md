@@ -36,13 +36,16 @@ commands:
 ```kusto
 .alter <entity_type> <database_or_table_name> policy ingestionbatching @'<ingestionbatching policy json>'
 ```
+
 Altering the IngestionBatching policy for multiple tables (in the same database context):
 
 ```kusto
 .alter tables (table_name [, ...]) policy ingestionbatching @'<ingestionbatching policy json>'
 ```
+
 IngestionBatching policy:
-```
+
+```kusto
 {
   "MaximumBatchingTimeSpan": "00:05:00",
   "MaximumNumberOfItems": 500, 

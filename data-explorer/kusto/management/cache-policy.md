@@ -34,7 +34,8 @@ Altering cache policy for multiple tables (in the same database context):
 ```
 
 Cache policy:
-```
+
+```kusto
 {
   "DataHotSpan": {
     "Value": "3.00:00:00"
