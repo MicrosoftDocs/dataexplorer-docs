@@ -45,7 +45,7 @@ Where:
     4. `TableCompletion` : Indicates that this is the last frame
         
     The frames above describe a table.
-    If the `IsProgressive` flag is not set to true, then every table in the set will be serialized using a single frame:
+    If the `IsProgressive` flag isn't set to true, then every table in the set will be serialized using a single frame:
       1. `DataTable`: Contains all the information that the client needs about a single table in the data set.
 
 
@@ -65,7 +65,7 @@ Queries that are made with the `results_progressive_enabled` option set to true 
 Where:
 
 1. `TableId` is the table's unique ID.
-2. `TableKind` is one of the following:
+2. `TableKind` is one of:
 
       * PrimaryResult
       * QueryCompletionInformation
@@ -104,7 +104,7 @@ Where:
 1. `TableId` is the table's unique ID.
 2. `FieldCount` is the number of columns in the table.
 3. `TableFragmentType` describes what the client should do with this fragment. 
-    It is one of:
+    `TableFragmentType` is one of:
       * DataAppend
       * DataReplace
 4. `Rows` is a two-dimensional array that contains the fragment data.
@@ -144,7 +144,7 @@ Where:
 
 ## DataTable
 
-Queries that are issued with the `EnableProgressiveQuery` flag set to false will not include any of the frames (`TableHeader`, `TableFragment`, `TableProgress`, and `TableCompletion`). Instead, each table in the data set will be transmitted using a single frame -  the `DataTable` frame that contains all the information that the client needs in order to read the table.
+Queries that are issued with the `EnableProgressiveQuery` flag set to false won't include any of the frames (`TableHeader`, `TableFragment`, `TableProgress`, and `TableCompletion`). Instead, each table in the data set will be transmitted using a single frame -  the `DataTable` frame that contains all the information that the client needs to read the table.
 
 ```json
 {
