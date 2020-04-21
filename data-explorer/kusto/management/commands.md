@@ -68,6 +68,7 @@ The following examples are simple and useful queries for such investigations.
 ### Querying the TotalCpu column
 
 Top 10 CPU consuming queries in the last day:
+
 ```kusto
 .show commands
 | where StartedOn > ago(1d)
@@ -76,6 +77,7 @@ Top 10 CPU consuming queries in the last day:
 ```
 
 All queries in the last 10 hours which their TotalCpu has crossed the 3 minutes:
+
 ```kusto
 .show commands
 | where StartedOn > ago(10h) and TotalCpu > 3m
@@ -95,6 +97,7 @@ All queries in the last 24 hours which their TotalCpu was above 5 minutes, group
 ```
 
 Timechart: Average CPU vs 95th Percentile vs Max CPU :
+
 ```kusto
 .show commands 
 | where StartedOn > ago(1d) 
@@ -105,6 +108,7 @@ Timechart: Average CPU vs 95th Percentile vs Max CPU :
 ## Querying the MemoryPeak
 
 Top 10 queries in the last day with the highest MemoryPeak values:
+
 ```kusto
 .show commands
 | where StartedOn > ago(1d)
@@ -114,6 +118,7 @@ Top 10 queries in the last day with the highest MemoryPeak values:
 ```
 
 Timechart of Average MemoryPeak vs 95th Percentile vs Max MemoryPeak:
+
 ```kusto
 .show commands 
 | where StartedOn > ago(1d)

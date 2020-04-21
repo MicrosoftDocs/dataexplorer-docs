@@ -25,7 +25,7 @@ If any table already exists, the command will return success.
  
 **Example** 
 
-```
+```kusto
 .create tables 
   MyLogs (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32),
   MyUsers (UserId:string, Name:string)

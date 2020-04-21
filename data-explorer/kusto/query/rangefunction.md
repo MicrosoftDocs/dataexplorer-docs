@@ -44,11 +44,12 @@ T | extend r = range(datetime(2015-01-01), datetime(2015-12-31), 1d)
 
 The following example returns `[1,2,3]`:
 
-```
+```kusto
 range(1, 3)
 ```
 
 The following example returns `["01:00:00","02:00:00","03:00:00","04:00:00","05:00:00"]`:
-```
+
+```kusto
 range(1h, 5h)
 ```

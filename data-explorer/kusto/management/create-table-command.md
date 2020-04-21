@@ -25,7 +25,7 @@ If the table already exists the command will return success.
 
 **Example** 
 
-```
+```kusto
 .create table MyLogs ( Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32 ) 
 ```
  
@@ -33,7 +33,7 @@ If the table already exists the command will return success.
 
 Returns the table's schema in JSON format, same as:
 
-```
+```kusto
 .show table MyLogs schema as json
 ```
 

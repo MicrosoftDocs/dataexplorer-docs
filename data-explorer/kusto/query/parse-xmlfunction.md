@@ -48,7 +48,6 @@ XML                                |JSON                                        
 
 In the following example, when `context_custom_metrics` is a `string`
 that looks like this: 
-<!--check this code formatting-->
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

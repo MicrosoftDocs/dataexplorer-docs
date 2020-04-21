@@ -44,7 +44,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 
 **Examples** 
 
-```
+```kusto
 .create function 
 with (docstring = 'Simple demo function', folder='Demo')
 MyFunction1()  {StormEvents | limit 100}
@@ -54,7 +54,7 @@ MyFunction1()  {StormEvents | limit 100}
 |---|---|---|---|---|
 |MyFunction1|()|{StormEvents &#124; limit 100}|Demo|Simple demo function|
 
-```
+```kusto
 .create function
 with (docstring = 'Demo function with parameter', folder='Demo')
  MyFunction2(myLimit: long)  {StormEvents | limit myLimit}
