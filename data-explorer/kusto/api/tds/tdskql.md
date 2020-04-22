@@ -15,7 +15,7 @@ Kusto enables TDS endpoints to execute queries authored in the native [KQL](../.
 
 ## Executing Kusto stored functions
 
-Kusto permits [stored functions](../../query/schema-entities/stored-functions.md) to run (like calling SQL stored procedures).
+Kusto permits [stored functions](../../query/schema-entities/stored-functions.md) to run, like calling SQL stored procedures.
 
 For example, the stored function MyFunction:
 
@@ -47,17 +47,17 @@ can be called like this:
 > Call stored functions with an explicit schema named `kusto`, to distinguish between Kusto stored functions and emulated
 > SQL system stored procedures.
 
-You can also call Kusto stored functions from T-SQL (like SQL tabular functions):
+You can also call Kusto stored functions from T-SQL, like SQL tabular functions:
 
 ```sql
 SELECT * FROM kusto.MyFunction(10)
 ```
 
-We recommend you to create optimized KQL queries and to encapsulate them in stored functions, making the T-SQL query code minimal.
+Create optimized KQL queries and encapsulate them in stored functions, making the T-SQL query code minimal.
 
 ## Executing KQL query
 
-Kusto introduced the stored procedure `sp_execute_kql` for executing [KQL](../../query/index.md) queries (including parameterized queries). This is similar to SQL server `sp_executesql`.
+The stored procedure `sp_execute_kql` executes [KQL](../../query/index.md) queries (including parameterized queries). This procedure is similar to SQL server `sp_executesql`.
 
 The first parameter of `sp_execute_kql` is the KQL query. You can introduce additional parameters, and they'll act like [query parameters](../../query/queryparametersstatement.md).
 
