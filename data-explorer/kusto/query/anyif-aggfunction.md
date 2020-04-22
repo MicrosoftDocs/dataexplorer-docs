@@ -1,4 +1,4 @@
----
+``---
 title: anyif() (aggregation function) - Azure Data Explorer | Microsoft Docs
 description: This article describes anyif() (aggregation function) in Azure Data Explorer.
 services: data-explorer
@@ -48,4 +48,4 @@ Show random continent which has a population from 300 million to 600 million:
 Continents | summarize anyif(Continent, Population between (300000000 .. 600000000))
 ```
 
-:::image type="content" source="images/aggregations/any1.png" alt-text="Any 1":::
+:::image type="content" source="images/aggfunction/any1.png" alt-text="Any 1":::
