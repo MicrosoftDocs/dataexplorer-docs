@@ -37,16 +37,17 @@ The `DataSetHeader` frame is always the first in the data set and appears exactl
 
 Where:
 
-1. `Version` is the protocol version. The current version is `v2.0`.
-2. `IsProgressive` is a boolean flag that indicates whether this data set contains progressive frames. A progressive frame is one of:
-    1. `TableHeader`     : Contains general information about the table
-    2. `TableFragment`   : Contains a rectangular data shard of the table
-    3. `TableProgress`   : Contains the progress in percent (0-100)
-    4. `TableCompletion` : Indicates that this is the last frame
+* `Version` is the protocol version. The current version is `v2.0`.
+* `IsProgressive` is a boolean flag that indicates whether this data set contains progressive frames. 
+   A progressive frame is one of:
+     | `TableHeader`     | Contains general information about the table   |
+     | `TableFragment`   | Contains a rectangular data shard of the table |
+     | `TableProgress`   | Contains the progress in percent (0-100)       |
+     | `TableCompletion` | Indicates that this is the last frame          |
         
     The frames above describe a table.
     If the `IsProgressive` flag isn't set to true, then every table in the set will be serialized using a single frame:
-      1. `DataTable`: Contains all the information that the client needs about a single table in the data set.
+      * `DataTable`: Contains all the information that the client needs about a single table in the data set.
 
 
 ## TableHeader
@@ -64,8 +65,8 @@ Queries that are made with the `results_progressive_enabled` option set to true 
 
 Where:
 
-1. `TableId` is the table's unique ID.
-2. `TableKind` is one of:
+* `TableId` is the table's unique ID.
+* `TableKind` is one of:
 
       * PrimaryResult
       * QueryCompletionInformation
@@ -75,8 +76,8 @@ Where:
       * QueryProperties
       * QueryPlan
       * Unknown
-3. `TableName` is the table's name.
-4. `Columns` is an array describing the table's schema.
+* `TableName` is the table's name.
+* `Columns` is an array describing the table's schema.
 
 ```json
 {
@@ -101,13 +102,13 @@ The `TableFragment` frame contains a rectangular data fragment of the table. In 
 
 Where:
 
-1. `TableId` is the table's unique ID.
-2. `FieldCount` is the number of columns in the table.
-3. `TableFragmentType` describes what the client should do with this fragment. 
+* `TableId` is the table's unique ID.
+* `FieldCount` is the number of columns in the table.
+* `TableFragmentType` describes what the client should do with this fragment. 
     `TableFragmentType` is one of:
       * DataAppend
       * DataReplace
-4. `Rows` is a two-dimensional array that contains the fragment data.
+* `Rows` is a two-dimensional array that contains the fragment data.
 
 ## TableProgress
 
@@ -123,8 +124,8 @@ Its sole purpose is to notify the client of the query's progress.
 
 Where:
 
-1. `TableId` is the table's unique ID.
-2. `TableProgress` is the progress in percent (0--100).
+* `TableId` is the table's unique ID.
+* `TableProgress` is the progress in percent (0--100).
 
 ## TableCompletion
 
@@ -139,8 +140,8 @@ The `TableCompletion` frame marks the end of the table transmission. No more fra
 
 Where:
 
-1. `TableId` is the table's unique ID.
-2. `RowCount` is the total number of rows in the table.
+* `TableId` is the table's unique ID.
+* `RowCount` is the total number of rows in the table.
 
 ## DataTable
 
@@ -162,8 +163,8 @@ Queries that are issued with the `EnableProgressiveQuery` flag set to false won'
 
 Where:
 
-1. `TableId` is the table's unique ID.
-2. `TableKind` is one of:
+* `TableId` is the table's unique ID.
+* `TableKind` is one of:
 
       * PrimaryResult
       * QueryCompletionInformation
@@ -172,8 +173,8 @@ Where:
       * QueryProperties
       * QueryPlan
       * Unknown
-3. `TableName` is the table's name.
-4. `Columns` is an array describing the table's schema, and includes:
+* `TableName` is the table's name.
+* `Columns` is an array describing the table's schema, and includes:
 
 ```json
 {
@@ -181,7 +182,7 @@ Where:
     "ColumnType": string,
 }
 ```
-5. `Rows` is a two-dimensional array that contains the table's data.
+* `Rows` is a two-dimensional array that contains the table's data.
 
 ### The meaning of tables in the response
 
@@ -207,6 +208,6 @@ The `DataSetCompletion` frame is the final one in the data set.
 
 Where:
 
-1. `HasErrors` is true if there were errors while generating the data set.
-2. `Cancelled` is true if the request that led to the generation of the data set was canceled before completion. 
-3. `OneApiErrors` is only returned if `HasErrors` is true. For a description of the `OneApiErrors` format, see section 7.10.2 [here](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md).
+* `HasErrors` is true if there were errors while generating the data set.
+* `Cancelled` is true if the request that led to the generation of the data set was canceled before completion. 
+* `OneApiErrors` is only returned if `HasErrors` is true. For a description of the `OneApiErrors` format, see section 7.10.2 [here](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md).
