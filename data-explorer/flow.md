@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Explorer flow connector (Preview) 
+title: Microsoft Azure Data Explorer flow connector (preview) 
 description: Learn about using the Microsoft flow connector to create flows of automatically scheduled or triggered tasks.
 author: orspod
 ms.author: orspodek
