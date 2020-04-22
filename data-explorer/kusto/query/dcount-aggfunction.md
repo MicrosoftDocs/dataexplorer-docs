@@ -34,7 +34,7 @@ Returns an estimate of the number of distinct values of *Expr* in the group.
 PageViewLog | summarize countries=dcount(country) by continent
 ```
 
-![alt text](./images/aggregations/dcount.png "dcount")
+:::image type="content" source="images/dcount-aggfunction/dcount.png" alt-text="D count":::
 
 **Notes**
 
@@ -86,4 +86,4 @@ of the estimations will have a relative error of under 3 times sigma.
 The following depicts the probability distribution function of the relative
 estimation error (in percentages) for all supported accuracy settings:
 
-:::image type="content" border="false" source="images/aggregations/hll-error-distribution.png" alt-text="hll error distribution":::
+:::image type="content" border="false" source="images/dcount-aggfunction/hll-error-distribution.png" alt-text="hll error distribution":::
