@@ -66,7 +66,9 @@ See also [geo_point_to_s2cell()](geo-point-to-s2cell-function.md).
 **Examples**
 
 US storm events aggregated by geohash.
-![US Geohash](./images/queries/geo/geohash.png)
+
+:::image type="content" source="images/geo-point-to-geohash-function/geohash.png" alt-text="US Geohash":::
+
 ```kusto
 StormEvents
 | project BeginLon, BeginLat
