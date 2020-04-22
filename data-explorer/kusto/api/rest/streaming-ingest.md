@@ -33,7 +33,7 @@ Additional parameters are formatted as URL query `{name}={value}` pairs, separat
 |`streamFormat`| **Required**        |  Specifies the format of the data in the request body. The value should be one of: `Csv`,`Tsv`,`Scsv`,`SOHsv`,`Psv`,`Json`,`SingleJson`,`MultiJson`,`Avro`. For more information, see [Supported Data Formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).|
 |`mappingName` | **See Description** |  The value must be the name of the pre-created ingestion mapping defined on the table. For more information on data mappings, see [Data Mappings](../../management/mappings.md). The way to manage pre-created mappings on the table is described [here](../../management/create-ingestion-mapping-command.md).
 The name is **Required**, if `streamFormat` is one of `Json`, `SingleJson`, `MultiJson`, or `Avro`
-                 - Otherwise, it is  **Optional**.|
+                 - Otherwise, it's  **Optional**.|
               
 For example, to ingest CSV-formatted data into table `Logs` in database `Test`, use:
 
