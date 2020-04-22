@@ -40,6 +40,10 @@ Where:
 * `Version` is the protocol version. The current version is `v2.0`.
 * `IsProgressive` is a boolean flag that indicates whether this data set contains progressive frames. 
    A progressive frame is one of:
+   
+   
+     | Frame             | Description                                    |
+     |-------------------| -----------------------------------------------|
      | `TableHeader`     | Contains general information about the table   |
      | `TableFragment`   | Contains a rectangular data shard of the table |
      | `TableProgress`   | Contains the progress in percent (0-100)       |
@@ -48,7 +52,6 @@ Where:
     The frames above describe a table.
     If the `IsProgressive` flag isn't set to true, then every table in the set will be serialized using a single frame:
       * `DataTable`: Contains all the information that the client needs about a single table in the data set.
-
 
 ## TableHeader
 
@@ -76,6 +79,7 @@ Where:
       * QueryProperties
       * QueryPlan
       * Unknown
+      
 * `TableName` is the table's name.
 * `Columns` is an array describing the table's schema.
 
@@ -84,7 +88,8 @@ Where:
     "ColumnName": string,
     "ColumnType": string,
 }
-``
+```
+
 Supported column types are described [here](../../query/scalar-data-types/index.md).
 
 ## TableFragment
@@ -106,8 +111,10 @@ Where:
 * `FieldCount` is the number of columns in the table.
 * `TableFragmentType` describes what the client should do with this fragment. 
     `TableFragmentType` is one of:
+    
       * DataAppend
       * DataReplace
+      
 * `Rows` is a two-dimensional array that contains the fragment data.
 
 ## TableProgress
@@ -173,6 +180,7 @@ Where:
       * QueryProperties
       * QueryPlan
       * Unknown
+      
 * `TableName` is the table's name.
 * `Columns` is an array describing the table's schema, and includes:
 
@@ -182,6 +190,7 @@ Where:
     "ColumnType": string,
 }
 ```
+
 * `Rows` is a two-dimensional array that contains the table's data.
 
 ### The meaning of tables in the response
