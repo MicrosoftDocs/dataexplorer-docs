@@ -1,4 +1,4 @@
-``---
+---
 title: anyif() (aggregation function) - Azure Data Explorer | Microsoft Docs
 description: This article describes anyif() (aggregation function) in Azure Data Explorer.
 services: data-explorer
