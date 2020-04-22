@@ -36,6 +36,6 @@ The following table lists the different libraries provided for query, ingestion,
 
 * LightIngest: [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) 
 * One-click Ingestion kit: [GitHub](https://github.com/Azure/azure-kusto-ingestion-tools) 
-* Kafka: [GitHub](https://github.com/Azure/kafka-sink-azure-kustoLogstash)
+* Kafka: [GitHub](https://github.com/Azure/kafka-sink-azure-kusto)
 * Logstash: [GitHub](https://github.com/Azure/logstash-output-kusto) 
 * Spark: [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
