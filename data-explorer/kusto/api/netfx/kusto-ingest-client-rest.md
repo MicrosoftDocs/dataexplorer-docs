@@ -259,7 +259,7 @@ internal static string PrepareIngestionMessage(string db, string table, string d
 
 ## 5. Post Kusto Ingestion Message to Kusto Ingestion Queue
 And finally, the deed itself - merely post the message we constructed to the Queue we chose.<BR>
-Note: When using .Net storage client, it encodes the message to base64 by default. Please see [storage docs](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage).<BR>
+Note: When using .Net storage client, it encodes the message to base64 by default. Please see [storage docs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.encodemessage).<BR>
 If you are NOT using that client, please make sure to encode the message content properly.
 
 ```csharp

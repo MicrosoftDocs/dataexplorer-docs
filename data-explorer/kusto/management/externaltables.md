@@ -331,7 +331,7 @@ dataformat=parquet
 
 | Uri                                                                     |
 |-------------------------------------------------------------------------|
-| https://storageaccount.blob.core.windows.net/container1/folder/file.csv |
+| `https://storageaccount.blob.core.windows.net/container1/folder/file.csv` |
 
 ### .create external table mapping
 

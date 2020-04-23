@@ -176,7 +176,7 @@ Returns all artifacts exported by the continuous-export in all runs. It is recom
 
 | Timestamp                   | ExternalTableName | Path             | NumRecords | SizeInBytes |
 |-----------------------------|-------------------|------------------|------------|-------------|
-| 2018-12-20 07:31:30.2634216 | ExternalBlob      | http://storageaccount.blob.core.windows.net/container1/1_6ca073fd4c8740ec9a2f574eaa98f579.csv | 10                          | 1024              |
+| 2018-12-20 07:31:30.2634216 | ExternalBlob      | `http://storageaccount.blob.core.windows.net/container1/1_6ca073fd4c8740ec9a2f574eaa98f579.csv` | 10                          | 1024              |
 
 ## Show continuous export failures
 

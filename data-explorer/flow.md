@@ -91,7 +91,7 @@ When you open the Azure Data Explorer connector, there are three possible action
 
 Use this action to run a [control command](kusto/management/index.md).
 
-1. Specify the cluster URL (for example, https://clusterName.eastus.kusto.windows.net).
+1. Specify the cluster URL. For example, `https://clusterName.eastus.kusto.windows.net`.
 1. Enter the name of the database.
 1. Specify the control command:
    - Select dynamic content from the apps and connectors used in the flow.
