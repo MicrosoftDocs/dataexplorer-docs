@@ -18,7 +18,7 @@ Kusto.Explorer is a rich desktop application that allows you to explore your dat
 * Install the [Kusto.Explorer tool](https://aka.ms/Kusto.Explorer)
 
 * Alternatively, access your Kusto cluster with your browser at:
-[https://<your_cluster>.kusto.windows.net](https://your_cluster.kusto.windows.net). Replace <your_cluster> with your Azure Data Explorer cluster name.
+`https://<your_cluster>.kusto.windows.net`. Replace <your_cluster> with your Azure Data Explorer cluster name.
 
 
 
@@ -507,7 +507,7 @@ You can use Parametrized Queries with deep-linking.
 2. Provide a parameter for every Query Parameter in the URI
 In this case:
 
-https://mycluster.kusto.windows.net/MyDatabase?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h
+`https://mycluster.kusto.windows.net/MyDatabase?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
 ### Getting shorter links
 

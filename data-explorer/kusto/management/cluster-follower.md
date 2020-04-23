@@ -302,7 +302,7 @@ See the current configuration according to which `MyDatabase` is being followed 
 | Column                              | Value                                                    |
 |-------------------------------------|----------------------------------------------------------|
 |DatabaseName                         | MyDatabase                                               |
-|LeaderClusterMetadataPath            | https://storageaccountname.blob.core.windows.net/cluster |
+|LeaderClusterMetadataPath            | `https://storageaccountname.blob.core.windows.net/cluster` |
 |CachingPolicyOverride                | null                                                     |
 |AuthorizedPrincipalsOverride         | []                                                       |
 |AuthorizedPrincipalsModificationKind | None                                                     |
@@ -393,7 +393,7 @@ See the current configuration where `MyDatabase` is being followed on `MyFollowe
 | Column                              | Value                                                                                                                                                                           |
 |-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |DatabaseName                         | MyDatabase                                                                                                                                                                      |
-|LeaderClusterMetadataPath            | https://storageaccountname.blob.core.windows.net/cluster                                                                                                                        |
+|LeaderClusterMetadataPath            | `https://storageaccountname.blob.core.windows.net/cluster`                                                                                                                        |
 |CachingPolicyOverride                | {"DataHotSpan":{"Value":"00:00:00"},"IndexHotSpan":{"Value":"00:00:00"}}                                                                                                        |
 |AuthorizedPrincipalsOverride         | [{"Principal":{"FullyQualifiedName":"aaduser=87654321-abcd-efef-1234-350bf486087b",...},{"Principal":{"FullyQualifiedName":"aaduser=54321789-abcd-efef-1234-350bf486087b",...}] |
 |AuthorizedPrincipalsModificationKind | Replace                                                                                                                                                                         |
