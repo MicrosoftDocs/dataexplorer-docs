@@ -107,4 +107,4 @@ _data
 | render linechart 
 ```
 
-:::image type="content" source="images/queries/example-session-count.png" alt-text="Example session count":::
+:::image type="content" source="images/session-count-plugin/example-session-count.png" alt-text="Example session count" border="false":::
