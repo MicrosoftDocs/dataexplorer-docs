@@ -40,7 +40,7 @@ on a specific `string`-typed column of *large-dimension*, such as `application_I
 * All *homogeneous* (partitioned) extents that belong to the same partition are assigned to the same data node.
 * Data in *homogeneous* (partitioned) extents is ordered by the hash partition key.
   * It's not required include the partition key in a [row order policy](roworderpolicy.md), if one is defined on the table.
-* *Future* optimizations will also benefit queries which perform `join` and/or `summarize` when the `shufflekey` is the table's [hash partition key](#hash-partition-key).
+* Queries that use the [shuffle strategy](../query/shufflequery.md), and in which the `shuffle key` used in `join`, `summarize` or `make-series` is the table's hash partition key, are expected to perform better, as the amount of data required to move across cluster nodes is significantly reduced.
 
 #### Partition properties
 
@@ -89,6 +89,7 @@ ends up including records from a limited time range, resulting with filters on t
 
 * `RangeSize` is a `timespan` scalar constant that indicates the size of each datetime partition.
 * `Reference` is a `datetime` scalar constant of type that indicates a fixed point in time according to which datetime partitions are aligned.
+  * If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`.
 
 #### Example
 
