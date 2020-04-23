@@ -176,7 +176,7 @@ To check if your flow succeeded, see the flow's run history:
 
     ![Screenshot of Run history full results page](./media/flow/flow-fulldetails.png) 
 
-To see why a run failed, select the run start time. The flow appears, and the step of the flow that failed is indicated by a red exclamation point. Expand the failed step to view its details. The Details pane on the right contains information about the failure so that you can troubleshoot it.
+To see why a run failed, select the run start time. The flow appears, and the step of the flow that failed is indicated by a red exclamation point. Expand the failed step to view its details. The **Details** pane on the right contains information about the failure so that you can troubleshoot it.
 
 ![Screenshot of flow error page](./media/flow/flow-error.png)
 
