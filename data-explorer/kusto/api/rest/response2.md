@@ -14,21 +14,21 @@ ms.date: 02/11/2020
 If the status code is 200, then the response body is a JSON array.
 Each JSON object in the array is called a _frame_.
 
-There are seven types of frames:
+There are several types of frames:
 
-1. DataSetHeader
-2. TableHeader
-3. TableFragment
-4. TableProgress
-5. TableCompletion
-6. DataTable
-7. DataSetCompletion
+* DataSetHeader (#DataSetHeader)
+* TableHeader (#TableHeader)
+* TableFragment (#TableFragment)
+* TableProgress (#TableProgress)
+* TableCompletion (#TableCompletion)
+* DataTable (#DataTable)
+* DataSetCompletion (#DataSetCompletion)
 
 ## DataSetHeader 
 
 The `DataSetHeader` frame is always the first in the data set and appears exactly once.
 
-```json
+```JSON
 {
     "Version": string,
     "IsProgressive": Boolean
@@ -51,13 +51,13 @@ Where:
         
     The frames above describe a table.
     If the `IsProgressive` flag isn't set to true, then every table in the set will be serialized using a single frame:
-      * `DataTable`: Contains all the information that the client needs about a single table in the data set.
+* `DataTable`: Contains all the information that the client needs about a single table in the data set.
 
 ## TableHeader
 
 Queries that are made with the `results_progressive_enabled` option set to true may include this frame. Following this table, clients can expect an interleaving sequence of `TableFragment` and `TableProgress` frames. The final frame of the table is `TableCompletion`.
 
-```json
+```JSON
 {
     "TableId": Number,
     "TableKind": string,
@@ -71,19 +71,19 @@ Where:
 * `TableId` is the table's unique ID.
 * `TableKind` is one of:
 
-      * PrimaryResult
-      * QueryCompletionInformation
-      * QueryTraceLog
-      * QueryPerfLog
-      * TableOfContents
-      * QueryProperties
-      * QueryPlan
-      * Unknown
+    * PrimaryResult
+    * QueryCompletionInformation
+    * QueryTraceLog
+    * QueryPerfLog
+    * TableOfContents
+    * QueryProperties
+    * QueryPlan
+    * Unknown
       
 * `TableName` is the table's name.
 * `Columns` is an array describing the table's schema.
 
-```json
+```JSON
 {
     "ColumnName": string,
     "ColumnType": string,
@@ -96,7 +96,7 @@ Supported column types are described [here](../../query/scalar-data-types/index.
 
 The `TableFragment` frame contains a rectangular data fragment of the table. In addition to the actual data, this frame contains a `TableFragmentType` property that tells the client what to do with the fragment: It can either be appended to existing fragments, or replace them.
 
-```json
+```JSON
 {
     "TableId": Number,
     "FieldCount": Number,
@@ -112,8 +112,8 @@ Where:
 * `TableFragmentType` describes what the client should do with this fragment. 
     `TableFragmentType` is one of:
     
-      * DataAppend
-      * DataReplace
+    * DataAppend
+    * DataReplace
       
 * `Rows` is a two-dimensional array that contains the fragment data.
 
@@ -122,7 +122,7 @@ Where:
 The `TableProgress` frame can interleave with the `TableFragment` frame described above.
 Its sole purpose is to notify the client of the query's progress.
 
-```json
+```JSON
 {
     "TableId": Number,
     "TableProgress": Number,
@@ -138,7 +138,7 @@ Where:
 
 The `TableCompletion` frame marks the end of the table transmission. No more frames related to that table will be sent.
 
-```json
+```JSON
 {
     "TableId": Number,
     "RowCount": Number,
@@ -152,18 +152,14 @@ Where:
 
 ## DataTable
 
-Queries that are issued with the `EnableProgressiveQuery` flag set to false won't include any of the frames (`TableHeader`, `TableFragment`, `TableProgress`, and `TableCompletion`). Instead, each table in the data set will be transmitted using a single frame -  the `DataTable` frame that contains all the information that the client needs to read the table.
+Queries that are issued with the `EnableProgressiveQuery` flag set to false won't include any of the frames (`TableHeader`, `TableFragment`, `TableProgress`, and `TableCompletion`). Instead, each table in the data set will be transmitted using the `DataTable` frame that contains all the information that the client needs, to read the table.
 
-```json
+```JSON
 {
     "TableId": Number,
-
     "TableKind": string,
-
     "TableName": string,
-
     "Columns": Array,
-
     "Rows": Array,
 }
 ```    
@@ -173,18 +169,18 @@ Where:
 * `TableId` is the table's unique ID.
 * `TableKind` is one of:
 
-      * PrimaryResult
-      * QueryCompletionInformation
-      * QueryTraceLog
-      * QueryPerfLog
-      * QueryProperties
-      * QueryPlan
-      * Unknown
+    * PrimaryResult
+    * QueryCompletionInformation
+    * QueryTraceLog
+    * QueryPerfLog
+    * QueryProperties
+    * QueryPlan
+    * Unknown
       
 * `TableName` is the table's name.
 * `Columns` is an array describing the table's schema, and includes:
 
-```json
+```JSON
 {
     "ColumnName": string,
     "ColumnType": string,
@@ -207,7 +203,7 @@ Where:
 
 The `DataSetCompletion` frame is the final one in the data set.
 
-```json
+```JSON
 {
     "HasErrors": Boolean,
     "Cancelled": Boolean,
