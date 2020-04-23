@@ -5,7 +5,7 @@ ms.service: data-explorer
 ms.topic: conceptual
 ---
 
-# Data purge (Preview)
+# Data purge
 
 Use data purge when you want to delete data from your device or service, mostly for data protection, or to support your obligations under the GDPR. If you're looking for general information about GDPR, see the [GDPR section of the Service Trust portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted)
 
@@ -32,7 +32,7 @@ Data deletion through the `.purge` command is designed to be used to protect per
 ## Run purge operations on your cluster
 
     > [!NOTE]
-    > Executing a `.purge` command triggers a process which takes a few days to complete. Note that if the "density" of records for which the `predicate` applies is sufficiently large, the process will effectively re-ingest all the data in the table, therefore, having a significant impact on performance and COGS.
+    > Executing a `.purge` command triggers a process which can take a few days to complete. Note that if the "density" of records for which the `predicate` applies is sufficiently large, the process will effectively re-ingest all the data in the table, therefore, having a significant impact on performance and COGS.
 
 Azure Data Explorer (Kusto) supports both individual records deletion and purging an entire table. Purge command may be invoked in two ways for differing usage scenarios:
 1. Programmatic invocation: A single-step which is intended to be invoked by applications. Calling this command directly triggers purge execution sequence.
