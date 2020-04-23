@@ -179,11 +179,11 @@ You can install packages by following these steps:
 1. One-time prerequisite:
   
   a. Create a blob container to host the package(s), preferably at the same region as your cluster.
-    * For example: https://artifcatswestus.blob.core.windows.net/python (assuming your cluster is in West US)
+    * For example: `https://artifcatswestus.blob.core.windows.net/python` (assuming your cluster is in West US)
   
   b. Alter the cluster's [Callout policy](../management/calloutpolicy.md) to allow accessing that location.
     * This requires [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
-    * For example, to enable access to a blob located in https://artifcatswestus.blob.core.windows.net/python, the command to run is:
+    * For example, to enable access to a blob located in `https://artifcatswestus.blob.core.windows.net/python`, the command to run is:
 
       ```kusto
       .alter-merge cluster policy callout @'[ { "CalloutType": "sandbox_artifacts", "CalloutUriRegex": "artifcatswestus\\.blob\\.core\\.windows\\.net/python/","CanCall": true } ]'
