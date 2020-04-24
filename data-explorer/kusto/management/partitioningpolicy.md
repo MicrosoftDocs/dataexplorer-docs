@@ -203,11 +203,8 @@ The output includes:
 
 #### Capacity
 
-* As the data partitioning process results in the creation of more extents, you might be required to increase the cluster's
-  [Extents merge capacity](../management/capacitypolicy.md#extents-merge-capacity) so that the [extents merging](../management/extents-overview.md) process is able to keep up.
-* If it's required (for instance, in case of high ingestion throughput, and/or a large enough number of tables that require partitioning), the cluster's
-  [Extents partition capacity](../management/capacitypolicy.md#extents-partition-capacity) can be increased to allow running a higher number of
-  concurrent partitioning operations.
+* As the data partitioning process results in the creation of more extents, you might be required to (gradually and linearly) increase the cluster's [Extents merge capacity](../management/capacitypolicy.md#extents-merge-capacity) so that the [extents merging](../management/extents-overview.md) process is able to keep up.
+* If it's required (for instance, in case of high ingestion throughput, and/or a large enough number of tables that require partitioning), the cluster's [Extents partition capacity](../management/capacitypolicy.md#extents-partition-capacity) can be (gradually and linearly) increased to allow running a higher number of concurrent partitioning operations.
   * In case increasing the partitioning causes a significant increase in the use of the cluster's resources, scale the cluster
     up/out, either manually, or by enabling auto-scale.
 
