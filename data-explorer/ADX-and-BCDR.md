@@ -11,7 +11,7 @@ ms.date: 04/26/2020
 
 # Overview
 
-Business continuity and disaster recovery in Azure Data Explorer refers to the mechanisms and procedures that enable your business to continue operating in the face of a true disruption. There are some disruptive events that cannot be handled by ADX automatically such as:
+Business continuity and disaster recovery in Azure Data Explorer refers to the mechanisms and procedures that enable your business to continue operating in the face of a true disruption. There are some disruptive events that cannot be handled by Azure Data Explorer automatically such as:
 
 - User accidentally dropped a table
 - An outage of an Azure zone
@@ -21,7 +21,7 @@ This overview describes the capabilities that Azure Data Explorer provides for b
 
 ## Accidentally dropping a table
 
-Users with table admin permissions or higher are allowed to [drop tables](https://docs.microsoft.com/azure/data-explorer/kusto/management/drop-table-command). If one of those users accidentally drops the table, you can recover it  using the `.undo drop table` [command](https://docs.microsoft.com/azure/data-explorer/kusto/management/undo-drop-table-command). This is successful given the *recoverability* property has been enabled in the [retention policy](https://docs.microsoft.com/azure/data-explorer/kusto/management/retentionpolicy) (data will be recoverable 14 days after its deletion).
+Users with table admin permissions or higher are allowed to [drop tables](https://docs.microsoft.com/azure/data-explorer/kusto/management/drop-table-command). If one of those users accidentally drops the table, you can recover it  using the [.undo drop table](https://docs.microsoft.com/azure/data-explorer/kusto/management/undo-drop-table-command) command. For this to be successful, you must first enable the *recoverability* property in the [retention policy](https://docs.microsoft.com/azure/data-explorer/kusto/management/retentionpolicy) (data will be recoverable 14 days after its deletion).
 
 ## Outage of an Azure Availability Zone
 
@@ -29,11 +29,12 @@ Availability zones are unique physical locations within the same Azure region.
 
 Azure availability zones can protect an Azure Data Explorer cluster and data from partial region failure.
 
-Deploying a new cluster to different availability zones means the underlying compute and storage components are deployed to different zones in the region with independent power, cooling and networking. In a case of a zonal downtime the cluster will continue to work, but it might have performance degradation until the failure will be resolved.
+Deploying a new cluster to different availability zones means the underlying compute and storage components are deployed to different zones in the region, each with independent power, cooling and networking. In a case of a zonal downtime the cluster will continue to work, but may experience performance degradation until the failure is resolved.
 
-In addition, you can use zonal services which means allowing to pin an Azure Data Explorer cluster to the same zone as other Azure resources that are used in conjunction with that cluster.
+In addition, you can use zonal services, which pin an Azure Data Explorer cluster to the same zone as connected Azure resources.
 
-Deployment to various or specific availability zones can be done only during cluster creation and it cannot be modified later.
+> [!Note]
+> Deployment to various or specific availability zones can be done only during cluster creation and cannot be modified later.
 
 For more details on enabling availability zones on Azure Data Explorer please read - [https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal)
 
