@@ -139,7 +139,7 @@ A template can be found in the how-to [Create an event hub](https://docs.microso
 
 > [!Note]
 > * The partition count is not changeable, so you should consider long-term scale when setting partition count.
-> * Consumer gruop *must* be uniqe per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
+> * Consumer group *must* be uniqe per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
 
 ### Data ingestion connection to Azure Data Explorer
 
