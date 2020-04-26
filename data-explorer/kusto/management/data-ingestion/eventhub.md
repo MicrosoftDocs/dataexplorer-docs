@@ -21,7 +21,7 @@ ms.date: 04/01/2020
 
 > [!Note]
 > * Data compression is not supported for compressed formats (Avro, Parquet, ORC).
-> * Custom encoding and embeded [system properties](#event-system-properties-mapping) are not supported on compressed data.
+> * Custom encoding and embedded [system properties](#event-system-properties-mapping) are not supported on compressed data.
 
 ## Ingestion properties
 
