@@ -18,7 +18,7 @@ The supported HTTP authentication methods are:
 
 * **Azure Active Directory**, via the `bearer` method.
 
-When authenticating using the Azure AD, the `Authorization` header has
+When authenticating using Azure AD, the `Authorization` header has
 the format:
 
 ```txt
