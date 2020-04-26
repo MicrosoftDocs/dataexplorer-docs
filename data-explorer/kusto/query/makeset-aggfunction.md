@@ -42,7 +42,7 @@ PageViewLog
 | summarize countries=make_set(country) by continent
 ```
 
-![alt text](./images/aggregations/makeset.png "makeset")
+:::image type="content" source="images/makeset-aggfunction/makeset.png" alt-text="Makeset":::
 
 **See also**
 

@@ -84,7 +84,7 @@ See also [geo_point_to_geohash()](geo-point-to-geohash-function.md).
 
 US storm events aggregated by s2cell.
 
-:::image type="content" source="images/queries/geo/s2cell.png" alt-text="US s2cell":::
+:::image type="content" source="images/geo-point-to-s2cell-function/s2cell.png" alt-text="US s2cell":::
 
 ```kusto
 StormEvents
