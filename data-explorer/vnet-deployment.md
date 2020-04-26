@@ -217,6 +217,7 @@ If you want to secure outbound traffic using [Azure Firewall](/azure/firewall/ov
 
 ```
 prod.warmpath.msftcloudes.com:443
+gcs.prod.monitoring.core.windows.net:443
 production.diagnostics.monitoring.core.windows.net:443
 graph.windows.net:443
 *.update.microsoft.com:443
