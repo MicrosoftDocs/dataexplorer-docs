@@ -21,7 +21,7 @@ This overview describes the capabilities that Azure Data Explorer provides for b
 
 ## Accidentally dropping a table
 
-Users with table admin permissions or higher are allowed to [drop tables](https://docs.microsoft.com/azure/data-explorer/kusto/management/drop-table-command). If one of those users accidentally drops the table, you can recover it  using the [.undo drop table](https://docs.microsoft.com/azure/data-explorer/kusto/management/undo-drop-table-command) command. For this to be successful, you must first enable the *recoverability* property in the [retention policy](https://docs.microsoft.com/azure/data-explorer/kusto/management/retentionpolicy) (data will be recoverable 14 days after its deletion).
+Users with table admin permissions or higher are allowed to [drop tables](https://docs.microsoft.com/azure/data-explorer/kusto/management/drop-table-command). If one of those users accidentally drops the table, you can recover it using the [.undo drop table](https://docs.microsoft.com/azure/data-explorer/kusto/management/undo-drop-table-command) command. For this to be successful, you must first enable the *recoverability* property in the [retention policy](https://docs.microsoft.com/azure/data-explorer/kusto/management/retentionpolicy) (data will be recoverable 14 days after its deletion).
 
 ## Outage of an Azure Availability Zone
 
@@ -29,9 +29,9 @@ Availability zones are unique physical locations within the same Azure region.
 
 Azure availability zones can protect an Azure Data Explorer cluster and data from partial region failure.
 
-Deploying a new cluster to different availability zones means the underlying compute and storage components are deployed to different zones in the region, each with independent power, cooling and networking. In a case of a zonal downtime the cluster will continue to work, but may experience performance degradation until the failure is resolved.
+Deploying a new cluster to different availability zones means the underlying compute and storage components are deployed to different zones in the region, each with independent power, cooling and networking. In a case of zonal downtime, the cluster will continue to work, but may experience performance degradation until the failure is resolved.
 
-In addition, you can use zonal services, which pin an Azure Data Explorer cluster to the same zone as connected Azure resources.
+In addition, you can use zonal services, which pin an Azure Data Explorer cluster to the same zone as its connected Azure resources.
 
 > [!Note]
 > Deployment to various or specific availability zones can be done only during cluster creation and cannot be modified later.
@@ -40,53 +40,56 @@ For more details on enabling availability zones on Azure Data Explorer please re
 
 ## Outage of an Azure Region
 
-Azure Data Explorer currently does not support an automatic protection against the outage of an entire Azure region. Theoretically this can happen in case of a natural disaster like an earthquake. If you require a solution for this situation you must create  **two or more**  independent clusters, and make sure that the clusters are created in  **two**  [Azure paired regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Azure Data Explorer currently does not support automatic protection against the outage of an **entire** Azure region. This could happen during a natural disaster like an earthquake. If you require a solution for this situation you must create  **two or more**  independent clusters, and make sure that the clusters are created in  **two**  [Azure paired regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-Once you have created multiple clusters, you must make sure that:
+Once you have created multiple clusters, do the following steps:
 
-1. All management activities (such as creating new tables or managing user roles) must be replicated on all ADX clusters.
-1. Data is ingested into all clusters in parallel.
+1. Replicate all management activities (such as creating new tables or managing user roles) on each cluster.
+1. Ingest data to each cluster in parallel.
 
-ADX will make sure that maintenance operations (such as upgrades) are never conducted in parallel to two clusters if they are in Azure paired regions.
+Azure Data Explorer will make sure that maintenance operations (such as upgrades) are never conducted in parallel on the clusters which are in Azure paired regions.
 
 ### Conclusion
 
-Azure Data Explorer features a built-in high availability solution, that is deeply integrated with the Azure platform. It is dependent on Azure Blob storage for data protection and on Availability Zones for higher availability. In addition, ADX leverages certain capabilities to undo accidental dropping of tables. However, the mitigation of a disaster on an entire Azure region is not available as a built-in feature.
+Azure Data Explorer features a built-in high availability solution, that is deeply integrated with the Azure platform. It is dependent on Azure Blob storage for data protection and on Availability Zones for higher availability. In addition, ADX leverages certain capabilities to undo accidental dropping of tables. However, the mitigation of a disaster on an entire Azure region is not available as a built-in feature. <!-- Not sure this adds information -->
 
 ## Regional outage - HowTo
 
-Azure Data Explorer currently does not support an automatic protection against the outage of an entire Azure region. Theoretically this can happen in case of a natural disaster like an earthquake. If you require a solution for this situation you must create  **two or more**  independent clusters,
+Azure Data Explorer currently does not support automatic protection against the outage of an entire Azure region. This could happen during a natural disaster, like an earthquake. If you require a solution for this situation you must create  **two or more**  independent clusters.
 
 This HowTo article presents an example how an create an architecture that takes business continuity into account under those heavy conditions.
 
 ### Create independent clusters
 
-In the first step you must create more than one cluster in more than one region in order to protect against regional outages.
+First, create more than one [cluster](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal) in more than one region in order to protect against regional outages.
+
+ Make sure that at least two of these clusters are created in [Azure paired regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 :::image type="content" source="ADX-and-BDCR/1.png" alt-text="Create independent clusters":::
 
-Please take a look on how to [create clusters](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal). Make sure that at least two of them are created in two [Azure paired regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). The drawing is showing three clusters in three different regions. In the rest of the article we are referencing the ADX clusters as replicas.
+The above image shows three clusters in three different regions, which can also be called replicas.
 
 ### Duplicate management activities
 
-In order to have the same cluster configuration in every replica you must replicate the management activities.
+In order to have the same cluster configuration in every replica, you must replicate the management activities.
 
-1. Create the same databases/[tables](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-table-command)/[mappings](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-ingestion-mapping-command)/[policies](https://docs.microsoft.com/azure/data-explorer/kusto/management/policies) on all replicas
-1. Manage the [authentication / authorization](https://docs.microsoft.com/azure/data-explorer/kusto/management/security-roles) on all replicas
+1. Create the same databases/[tables](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-table-command)/[mappings](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-ingestion-mapping-command)/[policies](https://docs.microsoft.com/azure/data-explorer/kusto/management/policies) on each replica
+1. Manage the [authentication / authorization](https://docs.microsoft.com/azure/data-explorer/kusto/management/security-roles) on each replica
 
 :::image type="content" source="ADX-and-BDCR/2.png" alt-text="Duplicate management activities":::
 
-There are various ways how to manage an ADX. You could use the [portal to create a new database](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal#create-a-database) or even one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto).
+There are several ways to manage an ADX. You could use the [portal to create a new database](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal#create-a-database) or even one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto).
 
 ### Setup data ingest
 
-Besides the management activities of the previous step you need to make sure that you configure data ingest on every cluster in the same way.
+In addition to management activities, you need to make sure that you configure data ingestion consistently on every cluster.
 
 Hardening ingestion methods leveraging using advanced business continuity options:
+<!-- I have no idea what that means -->
 
 - Ingest from [IotHub](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr#cross-region-dr) - The recovery options available to customers in such a situation are [Microsoft-initiated failover and manual failover](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr#cross-region-dr).
 - Ingest from [EventHub](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-ingestion/eventhub) - The disaster recovery feature implements metadata disaster recovery and relies on [primary and secondary disaster recovery namespaces](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr).
-- [Ingest from storage using Event Grid subscription](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-ingestion/eventgrid): The ingestion from storage works using Event Grid creating messages and sending them to an EventHub. [So similar measures must be implemented](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr) for the BlobCreated messages which are sent to EventHub. The storage itself can be hardened by implementing the appropriate [disaster recovery and account failover strategy](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance).
+- [Ingest from storage using Event Grid subscription](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-ingestion/eventgrid): The ingestion from storage works using Event Grid to create messages and send them to an EventHub. [Similar measures must be implemented](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr) for the blob-created messages which are sent to EventHub. The storage itself can be hardened by implementing the appropriate [disaster recovery and account failover strategy](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance).
 
 In the following example you are using an ingestion via EventHub. A [failover flow](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#setup-and-failover-flow) has been setup and Azure Data Explorer consumes from the Alias. You need to make sure to [consume from the EventHub](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-ingestion/eventhub) using a unique consumer group per ADX replica. Otherwise you would distribute the traffic instead of replicating it.
 
