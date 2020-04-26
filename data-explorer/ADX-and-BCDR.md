@@ -52,13 +52,13 @@ ADX will make sure that maintenance operations (such as upgrades) are never cond
 
 Azure Data Explorer features a built-in high availability solution, that is deeply integrated with the Azure platform. It is dependent on Azure Blob storage for data protection and on Availability Zones for higher availability. In addition, ADX leverages certain capabilities to undo accidental dropping of tables. However, the mitigation of a disaster on an entire Azure region is not available as a built-in feature.
 
-# Regional outage - HowTo
+## Regional outage - HowTo
 
 Azure Data Explorer currently does not support an automatic protection against the outage of an entire Azure region. Theoretically this can happen in case of a natural disaster like an earthquake. If you require a solution for this situation you must create  **two or more**  independent clusters,
 
 This HowTo article presents an example how an create an architecture that takes business continuity into account under those heavy conditions.
 
-## Create independent clusters
+### Create independent clusters
 
 In the first step you must create more than one cluster in more than one region in order to protect against regional outages.
 
@@ -66,7 +66,7 @@ In the first step you must create more than one cluster in more than one region 
 
 Please take a look on how to [create clusters](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal). Make sure that at least two of them are created in two [Azure paired regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). The drawing is showing three clusters in three different regions. In the rest of the article we are referencing the ADX clusters as replicas.
 
-## Duplicate management activities
+### Duplicate management activities
 
 In order to have the same cluster configuration in every replica you must replicate the management activities.
 
@@ -77,7 +77,7 @@ In order to have the same cluster configuration in every replica you must replic
 
 There are various ways how to manage an ADX. You could use the [portal to create a new database](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal#create-a-database) or even one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto).
 
-## Setup data ingest
+### Setup data ingest
 
 Besides the management activities of the previous step you need to make sure that you configure data ingest on every cluster in the same way.
 
@@ -93,7 +93,7 @@ In the following example you are using an ingestion via EventHub. A [failover fl
 
 The ingestion via EventHub/IoTHub/storage is very robust. In case a cluster is not available for some time it will catch up on the to be inserted messages or blobs. The underlying technology makes use of [checkpointing](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#checkpointing).
 
-## What you get until now
+### What you get until now
 
 With the current state of the business continuity hardening you distributed your data and management to multiple regions and in case of a temporal outage the underlying technology of Azure Data Explorer will be able to catch up in the individual replicas.
 
@@ -109,7 +109,7 @@ The remaining part of this article sheds a light on the following optimizations
 - How to implement a highly available application service
 - How to optimize cost in an active / active architecture
 
-## Architecture for an active / hot standby
+### Architecture for an active / hot standby
 
 Having the exact Azure Data Explorer setup on all replicas including a 24/7 uptime on all of them is linearly increasing the cost by number of replicas. In order to optimize the cost this section explains a variant of the architecture shown which makes a compromise between time to failover and cost.
 
@@ -131,7 +131,7 @@ As you can see in the drawing only one cluster is consuming from the EventHub. T
 
 Now the secondary clusters in Region B and C do not need to be turned on 24/7 which reduces the cost significantly. The drawback of this solution is that the performance on the secondary clusters will not be as good as in the primary cluster for most of the cases.
 
-## How to implement a highly available application service
+### How to implement a highly available application service
 
 This section should demonstrate how to create an [Azure App Service](https://azure.microsoft.com/services/app-service/) which supports a connection to a single primary and multiple secondary Azure Data Explorer cluster. The following picture is illustrating the setup (intentionally removed the management activities and the data ingest).
 
@@ -151,12 +151,12 @@ The Azure Data Explorer cluster have been distributed across West Europe (2xD14v
 
 One last extension to this architecure could be the dynamic or static routing of the requests using [Azure Traffic Manager routing methods](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods). Azure Traffic Manager is a DNS-based traffic load balancer that enables you to distribute the app service traffic optimally to services across global Azure regions, while providing high availability and responsiveness. Alternatively one could use [Azure Front Door based routing](https://docs.microsoft.com/azure/frontdoor/front-door-routing-methods) as well. An excellent comparison between both can be found [here](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite).
 
-## How to optimize cost in an active / active architecture
+### How to optimize cost in an active / active architecture
 
 Adding replicas to an active / active architecture increases the cost linearly. Besides the cost for compute-nodes, storage and markup one needs to take increased networking cost for [bandwidth](https://azure.microsoft.com/pricing/details/bandwidth/) into consideration.
 
 Using the [optimized autoscale](https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale-preview) feature one can configure that the horizontal scaling for the secondary clusters. They should be dimensioned to be able to handle the load of the ingest. Once the primary cluster is not reachable, they will get more traffic and scale out according to the configuration. In my previous example this saved roughly 50% of the cost compared to having the same horizontal and vertical scale on all replicas.
 
-## Conclusion
+### Conclusion
 
 Even if Azure Data Explorer is not offering an out-of-the-box business continuity and disaster recovery solution this article outlined different strategies to mitigate the risk. Depending on the investment the user is able to minimize the impact of a regional outage.
