@@ -47,4 +47,4 @@ Creates an ingestion mapping that is associated with a specific table and a spec
 | mapping1 | CSV  | [{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}] |
 
 ## Next steps
-For more information regarding ingestion mapping see [Data mappings](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/mappings).
+For more information regarding ingestion mapping see [Data mappings](mappings.md).
