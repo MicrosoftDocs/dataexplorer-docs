@@ -79,6 +79,7 @@ of the [data export](../management/data-export/index.md) commands.
   <| myLogs 
 
 ```
+
 The async export command returned the following operation id:
 
 |OperationId|
@@ -87,7 +88,7 @@ The async export command returned the following operation id:
 
 This operation id can be used when the command has completed to query the exported blobs, as follows: 
 
-```
+```kusto
 .show operation 56e51622-eb49-4d1a-b896-06a03178efcd details 
 ```
 
