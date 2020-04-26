@@ -1,8 +1,12 @@
 ---
 title: Use data purge to delete personal data from a device or service in Azure Data Explorer
 description: Learn about how to purge (delete) data from Azure Data Explorer using data purge.
+author: orspod
+ms.author: orspodek
+ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
+ms.date: 04/23/2020
 ---
 
 # Data purge
