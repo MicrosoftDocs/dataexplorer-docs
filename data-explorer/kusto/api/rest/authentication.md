@@ -34,8 +34,8 @@ the Azure Active Directory service. THe token has the following properties:
 
 Where `TENANT` is the Azure Active Directory tenant ID or name. 
 For example, services that are created under the Microsoft tenant can use
-`https://login.microsoftonline.com/microsoft.com/`. Alternatively, for user
-authentication only, the request can instead be made to
+`https://login.microsoftonline.com/microsoft.com/`. 
+Alternatively, for user authentication only, the request can be made to
 `https://login.microsoftonline.com/common/`.
 
 > [!NOTE]
