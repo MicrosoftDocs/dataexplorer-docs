@@ -79,7 +79,7 @@ ExternalBlob is a non-partitioned external table.
 
 PartitionedExternalBlob is an external table, defined as follows: 
 
-```
+```kusto
 .create external table PartitionedExternalBlob (Timestamp:datetime, CustomerName:string) 
 kind=blob
 partition by 
@@ -91,7 +91,7 @@ dataformat=csv
 )
 ```
 
-```
+```kusto
 .export to table PartitionedExternalBlob <| T
 ```
 
