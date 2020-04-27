@@ -14,7 +14,7 @@ Returns a set that contains the specified table or all tables in the database wi
 
 Requires [Database viewer permission](../management/access-control/role-based-authorization.md).
 
-```
+```kusto
 .show table T1 details
 .show tables (T1, ..., Tn) details
 .show tables details

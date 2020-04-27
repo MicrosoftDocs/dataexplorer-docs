@@ -15,9 +15,10 @@ Gets the schema to use in create/alter commands and additional table metadata.
 
 Requires [Database user permission](../management/access-control/role-based-authorization.md).
 
-```
+```kusto
 .show table TableName cslschema 
 ```
+
 | Output parameter | Type   | Description                                               |
 |------------------|--------|-----------------------------------------------------------|
 | TableName        | String | The name of the table.                                    |
@@ -33,7 +34,7 @@ Gets the schema in JSON format and additional table metadata.
 
 Requires [Database user permission](../management/access-control/role-based-authorization.md).
 
-```
+```kusto
 .show table TableName schema as JSON
 ```
 
