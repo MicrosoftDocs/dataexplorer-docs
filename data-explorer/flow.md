@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Explorer flow connector (preview) 
+title: Microsoft Azure Data Explorer flow connector (Preview) 
 description: Learn about using the Microsoft flow connector to create flows of automatically scheduled or triggered tasks.
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ---
 
-# Azure Data Explorer flow connector (preview)
+# Azure Data Explorer flow connector (Preview)
 
 The Azure Data Explorer flow connector allows Azure Data Explorer to use the flow capabilities of [Microsoft Power Automate](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task.
 
@@ -49,7 +49,7 @@ You can authenticate with user credentials, or with an Azure Active Directory (A
    - Connection Name: A descriptive and meaningful name for the new connection.
    - Client ID: Your application ID.
    - Client Secret: Your application key.
-   - Tenant: The ID of the Azure AD directory in which you created the application. For example, the Microsoft tenant ID is 72f988bf-86f1-41af-91ab-2d7cd011db47.
+   - Tenant: The ID of the Azure AD directory in which you created the application.
 
    ![Screenshot of Azure Data Explorer application authentication dialog box](./media/flow/flow-appauth.png)
 
