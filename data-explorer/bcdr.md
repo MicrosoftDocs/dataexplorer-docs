@@ -65,7 +65,7 @@ First, create more than one [cluster](https://docs.microsoft.com/azure/data-expl
 
 Make sure that at least two of these clusters are created in [Azure paired regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
-:::image type="content" source="ADX-and-BDCR/1.png" alt-text="Create independent clusters":::
+:::image type="content" source="bcdr/1.png" alt-text="Create independent clusters":::
 
 The above image shows three clusters in three different regions, which can also be called replicas.
 
@@ -76,7 +76,7 @@ In order to have the same cluster configuration in every replica, you must repli
 1. Create the same databases/[tables](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-table-command)/[mappings](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-ingestion-mapping-command)/[policies](https://docs.microsoft.com/azure/data-explorer/kusto/management/policies) on each replica.
 1. Manage the [authentication/authorization](https://docs.microsoft.com/azure/data-explorer/kusto/management/security-roles) on each replica.
 
-:::image type="content" source="ADX-and-BDCR/2.png" alt-text="Duplicate management activities":::
+:::image type="content" source="bcdr/2.png" alt-text="Duplicate management activities":::
 
 There are several ways to manage your databases. You could use the [portal to create a new database](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal#create-a-database) or even one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto).
 
@@ -99,7 +99,7 @@ The following example uses ingestion via EventHub. A [failover flow](https://doc
 
 Make sure to [ingest from the EventHub](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-ingestion/eventhub) using a unique consumer group per cluster replica. Otherwise, you'll end up distributing the traffic instead of replicating it.
 
-:::image type="content" source="ADX-and-BDCR/3.png" alt-text="Ingestment via EventHub":::
+:::image type="content" source="bcdr/3.png" alt-text="Ingestment via EventHub":::
 
 > [!Note] 
 > Ingestion via EventHub/IoTHub/storage is robust. If a cluster is not available for a period of time, it will later catch up and insert pending messages or blobs. This process relies on [checkpointing](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#checkpointing).
@@ -113,7 +113,7 @@ As shown in the diagram below, your data sources produce events to the failover-
 
 Data visualization components like PowerBI, Grafana, or SDK powered WebApps can query one of the replicas.
 
-:::image type="content" source="ADX-and-BDCR/4.png" alt-text="Data sources to data visualization":::
+:::image type="content" source="bcdr/4.png" alt-text="Data sources to data visualization":::
 
 ## Cost optimization in disaster recovery
 
@@ -127,7 +127,7 @@ Now you're ready to optimize your replicas for the following:
 
 Replicating and updating the Azure Data Explorer setup will linearly increase the cost with the number of replicas. In order to optimize cost, you can implement an architectural variant to balance time, failover, and cost.
 
-:::image type="content" source="ADX-and-BDCR/5.png" alt-text="Architecture for an active/hot standby":::
+:::image type="content" source="bcdr/5.png" alt-text="Architecture for an active/hot standby":::
 
 In this example, cost optimization has been implemented by introducing passive Azure Data Explorer replicas. These replicas are only turned on in case of a disaster in the primary region (for example, region A).
 
@@ -141,7 +141,7 @@ You can start/stop the secondary replicas using one of the following methods:
 - [Flow](https://radennis.github.io/Ravit-Blog/blogs/SaveMoneyUsingFlow.html)
 - The &quot;Stop&quot; button
 
-   :::image type="content" source="ADX-and-BDCR/6.png" alt-text="The stop button":::
+   :::image type="content" source="bcdr/6.png" alt-text="The stop button":::
 
 - Azure CLI: 
 
@@ -152,7 +152,7 @@ You can start/stop the secondary replicas using one of the following methods:
 
 This section shows how to create an [Azure App Service](https://azure.microsoft.com/services/app-service/) that supports a connection to a single primary **and** multiple secondary Azure Data Explorer clusters. The following picture illustrates the setup (management activities and data ingestion have been removed for clarity).
 
-:::image type="content" source="ADX-and-BDCR/7.png" alt-text="Create an Azure App Service":::
+:::image type="content" source="bcdr/7.png" alt-text="Create an Azure App Service":::
 
 Having multiple connections between replicas in the same service gives you increased availability. This is useful not only in instances of regional outages.  
 
@@ -162,11 +162,11 @@ In order to measure the performance, and request distribution to primary/seconda
 
 We ran a test using multiple Azure Data Explorer replicas. After a simulated outage of primary and secondary clusters, you can see that the app service BCDR client is behaving as intended.
 
-:::image type="content" source="ADX-and-BDCR/8.png" alt-text="Verify app service BCDR client":::
+:::image type="content" source="bcdr/8.png" alt-text="Verify app service BCDR client":::
 
 The Azure Data Explorer clusters have been distributed across West Europe (2xD14v2 primary), South East Asia and East US (2xD11v2). Slower response times can be explained by different SKUs and by doing cross planet queries.
 
-:::image type="content" source="ADX-and-BDCR/9.png" alt-text="Cross planet query response time":::
+:::image type="content" source="bcdr/9.png" alt-text="Cross planet query response time":::
 
 One last extension to this architecture could be the dynamic or static routing of the requests using [Azure Traffic Manager routing methods](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods). Azure Traffic Manager is a DNS-based traffic load balancer that enables you to distribute app service traffic. This traffic is optimized to services across global Azure regions, while providing high availability and responsiveness. 
 Alternatively, you can use [Azure Front Door based routing](https://docs.microsoft.com/azure/frontdoor/front-door-routing-methods). 
