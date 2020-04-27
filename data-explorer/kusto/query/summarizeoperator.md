@@ -113,7 +113,7 @@ Operator       |Default value
 
 ## Examples
 
-![alt text](./Images/aggregations/01.png "01")
+:::image type="content" source="images/summarizeoperator/summarize-price-by-supplier.png" alt-text="Summarize price by fruit and supplier":::
 
 **Example**
 
