@@ -111,7 +111,7 @@ A feature flag can be used in the url as a query parameter. For example, if the 
 presets will set a bunch of feature flags at once.
 Currently, there's only a single preset.
 
-`IbizaPortal` - Changes the following flags from the defaults:
+`IbizaPortal` - Changes the following flags from the defaults.
 
 ```json
 ShowOpenNewWindowButton: true,
