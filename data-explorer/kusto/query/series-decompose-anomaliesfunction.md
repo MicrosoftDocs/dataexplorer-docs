@@ -90,6 +90,7 @@ ts
 series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for visualization purposes
 | render timechart   
 ```
+
 :::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-outliers-with-trend.png" alt-text="Weekly seasonality outliers with trend" border="false":::
 
 Next, we run the same example but since we are expecting a trend in the series, we specify `linefit` in the trend parameter. We can see that the baseline is much closer to the input series. All the outliers we inserted are detected, as well as some false positives (see next example on tuning the threshold).
@@ -129,3 +130,4 @@ series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for 
 ```
 
 :::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-higher-threshold.png" alt-text="Weekly series anomalies with higher anomaly threshold" border="false":::
+
