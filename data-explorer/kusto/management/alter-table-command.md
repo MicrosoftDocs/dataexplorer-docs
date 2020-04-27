@@ -60,7 +60,7 @@ The following applies to both commands:
 
 **Examples**
 
-```
+```kusto
 .alter table MyTable (ColumnX:string, ColumnY:int) 
 .alter table MyTable (ColumnX:string, ColumnY:int) with (docstring = "Some documentation", folder = "Folder1")
 .alter-merge table MyTable (ColumnX:string, ColumnY:int) 

@@ -34,11 +34,11 @@ There two main scenarios that make use of application authentication:
 
 1. Log in to [Azure portal](https://portal.azure.com) and open the `Azure Active Directory` blade.
 
-    ![alt text](./images/Aad-create-app-step-0.png "Aad-create-app-step-0")
+    :::image type="content" source="images/aad-create-app-step-0.png" alt-text="Aad create app step 0":::
 
 1. Choose `App registrations` and when the blade loads, select `New application registration`.
 
-    ![alt text](./images/Aad-create-app-step-1.png "Aad-create-app-step-1")
+    :::image type="content" source="images/aad-create-app-step-1.png" alt-text="Aad create app step 1":::
 
 1. Fill in the application details:
     * Name
@@ -48,11 +48,12 @@ There two main scenarios that make use of application authentication:
         enter a URL that belongs to the application (such as https://<APP-CNAME> or https://<CLOUD-SERVICE-NAME>.cloudapp.net).<br>
         You can even provide a value and continue if the application hasn't been written yet.
 
-    ![alt text](./images/Aad-create-app-step-2.png "Aad-create-app-step-2")
+    
+    :::image type="content" source="images/aad-create-app-step-2.png" alt-text="Aad create app step 2":::
 
 1. Once your application is ready, open its `Settings` blade.
 
-    ![alt text](./images/Aad-create-app-step-3.png "Aad-create-app-step-3")
+    :::image type="content" source="images/aad-create-app-step-3.png" alt-text="Aad create step 3":::
 
 1. On the `Keys` blade, set up the authentication for your new application:
     * If you want to use a shared key, select key duration from the drop-down menu and copy the key when it gets generated.
@@ -61,7 +62,7 @@ There two main scenarios that make use of application authentication:
         To do so, select `Upload Public Key` and follow the instructions to upload the public portion of the certificate.
     * Don't forget to select `Save` when you're done.
 
-    ![alt text](./images/Aad-create-app-step-4.png "Aad-create-app-step-4")
+    :::image type="content" source="images/aad-create-app-step-4.png" alt-text="Aad create app step 4":::
 
 Your application is set up. If all you need is access to Kusto with the newly created application, you are done.
 
@@ -71,19 +72,18 @@ If you need the application to be able to perform user or app authentication for
 
 1. On the `Required permissions` blade, select `Add`.
 
-    ![alt text](./images/Aad-create-app-step-5.png "Aad-create-app-step-5")
-
+    :::image type="content" source="images/aad-create-app-step-5.png" alt-text="Aad create app step 5":::
+   
 1. Choose `Select an API`, enter `KustoService` in the filter box and select `KustoService (Kusto)`.
 1. If your Kusto clusters require MFA, enter `KustoMFA` in the filter box and select `KustoServiceMFA (KustoMFA)`.
 
-    ![alt text](./images/Aad-create-app-step-6.png "Aad-create-app-step-6")
+    :::image type="content" source="images/aad-create-app-step-6.png" alt-text="Aad create app step 6":::
 
 1. After confirming your selection, choose delegated permissions for `Access Kusto`.
 
-    ![alt text](./images/Aad-create-app-step-7.png "Aad-create-app-step-7")
+   :::image type="content" source="images/aad-create-app-step-7.png" alt-text="Aad create app step 7":::
 
 1. Select `Done` to complete the process.
-
 
 
 ### 2. Set permissions to the application on Kusto cluster
@@ -121,8 +121,6 @@ Your AAD tenant administrator may enact a policy that prevents tenant users from
 `AADSTS65001: The user or administrator has not consented to use the application with ID '<App ID>' named 'App Name'`
 
 You will need to ask your AAD administrator to grant consent for all users in the tenant, or enable user consent for your specific application.
-
-
 
 ### Appendix B: Advanced topics and troubleshooting
 

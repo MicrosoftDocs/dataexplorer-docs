@@ -29,7 +29,7 @@ When used with a version, the database is only returned if it's a later version 
  
 The database 'TestDB' has 1 table called 'Events'.
 
-```
+```kusto
 .show database TestDB schema 
 ```
 
@@ -47,7 +47,7 @@ The database 'TestDB' has 1 table called 'Events'.
 
 **Example** 
  
-```
+```kusto
 .show database TestDB schema if_later_than "v1.0" 
 ```
 **Example output**
@@ -66,7 +66,7 @@ Because a version lower than the current database version was provided, the 'Tes
 
 **Example** 
  
-```
+```kusto
 .show database TestDB schema as json
 ```
 
