@@ -159,4 +159,4 @@ To deploy your Azure Data Explorer cluster into your virtual network, use the [D
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Deploy Azure Data Explorer into your Virtual Network](vnet-create-cluster-portal.md)
+> [Deploy Azure Data Explorer into your Virtual Network](vnet-deployment.md)
