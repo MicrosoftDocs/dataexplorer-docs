@@ -1,15 +1,15 @@
 ---
 title: Azure Data Explorer and business continuity disaster recovery
 description: This article describes Azure Data Explorer capabilities for recovering from disruptive events.
-services: XXX
 author: orspod
-ms.author: XXX
+ms.author: orspodek
+ms.reviewer: herauch
 ms.service: data-explorer
-ms.topic: XXX
-ms.date: 04/26/2020
+ms.topic: conceptual
+ms.date: 04/27/2020
 ---
 
-# Overview
+# Business continuity and disaster recovery
 
 Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a true disruption. There are some disruptive events that are not automatically handled by Azure Data Explorer, such as:
 
@@ -181,4 +181,4 @@ Use the [optimized autoscale](https://docs.microsoft.com/azure/data-explorer/man
 
 In the previous example, this saved roughly 50% of the cost compared with having the same horizontal and vertical scale on all replicas.
 
-<!-- link to other articles? -->
+## Next steps
