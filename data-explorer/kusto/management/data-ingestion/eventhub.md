@@ -21,7 +21,7 @@ ms.date: 04/01/2020
 
 > [!Note]
 > * Data compression is not supported for compressed formats (Avro, Parquet, ORC).
-> * Custom encoding and embeded [system properties](#event-system-properties-mapping) are not supported on compressed data.
+> * Custom encoding and embedded [system properties](#event-system-properties-mapping) are not supported on compressed data.
 
 ## Ingestion properties
 
@@ -139,7 +139,7 @@ A template can be found in the how-to [Create an event hub](https://docs.microso
 
 > [!Note]
 > * The partition count is not changeable, so you should consider long-term scale when setting partition count.
-> * Consumer gruop *must* be uniqe per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
+> * Consumer group *must* be uniqe per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
 
 ### Data ingestion connection to Azure Data Explorer
 
