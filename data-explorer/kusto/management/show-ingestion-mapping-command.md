@@ -23,7 +23,7 @@ Show all ingestion mappings from all mapping kinds:
  
 **Example** 
  
-```
+```kusto
 .show table MyTable ingestion csv mapping "Mapping1" 
 
 .show table MyTable ingestion csv mappings 

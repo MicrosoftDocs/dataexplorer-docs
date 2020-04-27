@@ -71,7 +71,7 @@ Delete the retention policy for the table named `MyTable1`:
 * `table_name` : name of a table in a database context.  A wildcard (`*` is allowed here).
 * `retention_policy` :
 
-```
+```kusto
     "{ 
         \"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Disabled\"
     }" 

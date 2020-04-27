@@ -70,6 +70,7 @@ This is useful if you want to try various queries for row_level_security, but do
 
 .alter table Customers policy row_level_security enable "TrimCreditCardNumbers"
 ```
+
 **Performance note**: `UserCanSeeFullNumbers` will be evaluated first, and then either `AllData` or `PartialData` will be evaluated, but not both, which is the expected result.
 You can read more about the performance impact of RLS [here](rowlevelsecuritypolicy.md#performance-impact-on-queries).
 

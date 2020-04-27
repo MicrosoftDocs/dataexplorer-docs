@@ -22,7 +22,7 @@ For alter table column-docstring, see [below](#alter-table-column-docstrings).
 
 **Example** 
 
-```
+```kusto
 .alter-merge table Table1 column-docstrings (Column1:"DocString1", Column2:"DocString2")
 ```
 
@@ -37,6 +37,6 @@ Columns not explicitly set will have this property **removed**.
 
 **Example** 
 
-```
+```kusto
 .alter table Table1 column-docstrings (Column1:"DocString1", Column2:"DocString2")
 ```

@@ -89,7 +89,8 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 )
 | render linechart 
 ```
-:::image type="content" source="images/samples/sine-demo.png" alt-text="sine demo":::
+
+:::image type="content" source="images/plugin/sine-demo.png" alt-text="sine demo" border="false":::
 
 ```kusto
 print "This is an example for using 'external_artifacts'"

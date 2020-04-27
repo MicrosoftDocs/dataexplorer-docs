@@ -14,7 +14,7 @@ ms.date: 02/19/2020
 The retention policy controls the mechanism by which data is removed from tables automatically.
 Such removal is usually useful for data that flows into a table continuously whose relevance
 is age-based. For example, the retention policy can be used for a table that holds diagnostics
-events that may become uninteresing after two weeks.
+events that may become uninteresting after two weeks.
 
 The retention policy can be configured for a specific table or for a whole database
 (in which case it applies to all tables in the database that don't override the policy).
