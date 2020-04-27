@@ -117,7 +117,9 @@ datatable (ReqCount:long, LatencyBucket:long)
 
 The result for the above query is:
 
-:::image type="content" source="images/percentiles-aggfunction/percentilesw-result.png" alt-text="Percentilesw result":::
+
+:::image type="content" source="images/percentiles-aggfunction/percentilesw-result.png" alt-text="Percentilesw result" border="false":::
+
 
 Note that the above query corresponds to the function
 `percentiles(LatencyBucket, 50, 75, 99.9)` if the data was expended to the following form:
