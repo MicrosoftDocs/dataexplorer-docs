@@ -20,7 +20,7 @@ This article presents the recommended mode of ingestion for production-grade pip
 > [!NOTE]
 > Interaction with the Data Management service must be authenticated using Azure Active Directory (Azure AD).
 
-The code sample demonstrates Kusto Data Management service queued data ingestion to Kusto, using the Kusto.Ingest library.
+The code sample demonstrates queued data ingestion to Kusto, using the Kusto.Ingest library.
 The sample uses Azure AD user authentication, and runs under the identity of the interactive user.
 
 ## Dependencies
