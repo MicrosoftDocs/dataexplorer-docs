@@ -15,45 +15,54 @@ Business continuity and disaster recovery in Azure Data Explorer enables your bu
 
  1. High availability/fault tolerance <!-- choose preferred term -->
  1. Recovering from human errors
- 1. Azure zone failure
+ 1. Azure availability zone failure
  1. Azure datacenter failure
  1. Outage of an Azure region
 
 <!-- align these names with header titles if changed in either location-->
 
-This overview describes capabilities that Azure Data Explorer provides for business continuity and disaster recovery. Learn how to recover from events that could cause data loss, or cause your database and application to become unavailable.
+This overview describes capabilities that Azure Data Explorer provides for business continuity and disaster recovery. 
+Some basic capabilities are built in, but most rely on users to set up their clusters in an architecture that most suits their disaster recovery objectives. Learn about different solutions and architectures, and how they address events that would otherwise cause data loss or unavailability.
 
 ## Built in fault tolerance
 
 ### Persistence Layer/Storage layer
 <!-- choose preferred term -->
 
-Azure Storage automatically provides fault tolerance, with the default redundancy offering Locally Redundant Storage within a datacenter. Three replicas are persisted, and in the event of loss of a replica in use, another is deployed without disruption.
+Azure Storage automatically provides fault tolerance, with the default setting offering Locally Redundant Storage (LRS) within a datacenter. Three replicas are persisted. If a replica is lost while in use, another is deployed without disruption.
 
-Further resiliency is offered at an additional cost with Zone Redundant Storage. In this setup, replicas are intelligently placed across availability zones for maximum intra-region resiliency. This availability zone configuration selection is only supported at provision-time.
+If you need further resiliency, Zone Redundant Storage places replicas across availability zones. This feature incurs added costs.
+
+> [!Note] 
+> Availability zone configuration selection is only supported at the time of provision.
 
 ### Compute layer/Availability zones
 <!-- choose preferred term -->
 
-Azure Data Explorer is a distributed computing platform and can have two to many nodes depending on scale, and per node role type. At provision time, selecting availability zones distributes the node deployment, intelligently, across zones providing maximum resiliency, intra-region. An availability zone failure, will not result in a complete outage, but performance degradation, until recovery of the zone. Availability zone selection (or not) is an architectural consideration and strictly, a provision-time configuration that cannot be changed post-provisioning.
+Azure Data Explorer is a distributed computing platform and can have two to many nodes depending on scale, and node role type. At provision time, select availability zones to distribute the node deployment, across zones for maximum intra-region resiliency. An availability zone failure will not result in a complete outage. You will, however, experience performance degradation until recovery of the zone. 
+
+> [!Note] 
+> Availability zone selection (or not) is only supported at the time of provision.
 
 ### Leader-Follower cluster configuration
 
-Azure Data Explorer provides an optional but useful [capability](https://docs.microsoft.com/azure/data-explorer/follower) for a cluster (lets call it a leader) to be followed by zero to many clusters (lets call them followers) for read only access to the leader's data and metadata, including automated synchronization (create, append, drop) of changes in the leader to the follower. While the leaders could span Azure regions, it is strongly recommended to host follower clusters in the same region as the leader. In this setup, if the leader cluster is down or databases or tables accidentally dropped, the follower clusters will lose access until recovered in the leader. <!-- what does this protect against? -->
+Azure Data Explorer provides an optional [capability](follower.md)] for a cluster (a 'leader') to be followed by other clusters ('followers') for read-only access to the leader's data and metadata. Changes in the leader (create, append, drop) are automatically synchronized to the follower. While the leaders could span Azure regions, the follower clusters should be hosted in the same region(s) as the leader. If the leader cluster is down or databases/tables are accidentally dropped, the follower clusters will lose access until recovered in the leader. 
 
 ## Recovering from human error- user accidentally dropped a cluster, database, or table
 
 ### Accidental cluster or database deletion
 
-Accidental cluster or database deletion is an irrecoverable action. The Azure Data Explorer resource owner can prevent this by enabling the delete &quot;[lock](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)&quot; capability, available at the Azure resource level.
+Accidental cluster or database deletion is an irrecoverable action. 
+The Azure Data Explorer resource owner can prevent data loss by enabling the delete &quot;[lock](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)&quot; capability, available at the Azure resource level.
 
 ### Accidental table deletion
 
-Users with table admin permissions or higher are allowed to [drop tables](https://docs.microsoft.com/azure/data-explorer/kusto/management/drop-table-command). If one of those users accidentally drops a table, you can recover it using the [.undo drop table](https://docs.microsoft.com/azure/data-explorer/kusto/management/undo-drop-table-command) command. For this command to be successful, you must first enable the *recoverability* property in the [retention policy](https://docs.microsoft.com/azure/data-explorer/kusto/management/retentionpolicy).
+Users with table admin permissions or higher are allowed to [drop tables](kusto/management/drop-table-command.md). If one of those users accidentally drops a table, you can recover it using the [.undo drop table](kusto/management/undo-drop-table-command.md) command. For this command to be successful, you must first enable the *recoverability* property in the [retention policy](kusto/management/retentionpolicy.md).
 
 ### Accidental external table deletion
 
-Deletion of an external table merely deletes the table metadata. You can recover it by re-executing the table creation command. Azure storage offers [soft delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) capability that protects against accidental deletion or overwrite of a file/blob for a user-configured amount of time. 
+[External tables](kusto/query/schema-entities/externaltables.md) are Kusto query schema entities that reference data stored outside the database. 
+Deletion of an external table only deletes the table metadata. You can recover it by re-executing the table creation command. Use the [soft delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) capability to protect against accidental deletion or overwrite of a file/blob for a user-configured amount of time. 
 
 ## Azure availability zone failure
 
@@ -68,23 +77,51 @@ You can also use zonal services, which pin an Azure Data Explorer cluster to the
 > [!Note]
 > Deployment to availability zones can be done only during cluster creation and cannot be modified later.
 
-For more details on enabling availability zones on Azure Data Explorer, read - [https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal)
+Continue reading for more details on [enabling availability zones](create-cluster-database-portal.md) on Azure Data Explorer.
 
 ## Outage of an Azure Datacenter
 
-
-Azure Availability Zones come with a cost and some customers, choose to deploy without zonal redundancy. With such an ADX deployment, a datacenter outage, will result in cluster outage, and is therefore, a disaster recovery scenario, similar to an entire Azure region failure. This is addressed under the next section.
+Dealing with a datacenter outage is similar to the Azure region failure recovery process.
+Azure Availability Zones come with a cost and some customers, choose to deploy without zonal redundancy. With such an ADX deployment, a datacenter outage, will result in cluster outage, and is therefore, a disaster recovery scenario, similar to an entire Azure region failure.
 
 ## Outage of an Azure Region
 
-Azure Data Explorer does not support **automatic** protection against the outage of an **entire** Azure region. This disruption could happen during a natural disaster, like an earthquake. If you require a solution for this type of situation, you must create two or more independent clusters in two [Azure paired regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Azure Data Explorer does not support **automatic** protection against the outage of an **entire** Azure region. To create an architecture that can overcome such an outage, we provide some options and considerations for disaster recovery. For each option, we take into account recovery time objective (RTO), recovery point objective (RPO), effort and cost. Perform cost/and or performance optimizations are with Azure Advisor recommendations and [autoscale](manage-cluster-horizontal-scaling.md) configuration.
 
-Once you have created multiple clusters, do the following steps:
+ You will need to address ingestion, processing and curation as they relate to setting up this architecture. Ingestion refers to data integrated into Azure Data Explorer from sources; processing refers to transformations and similar activities; curation refers to materialized views, exports to the data lake, and such.
 
-1. Replicate all management activities (such as creating new tables or managing user roles) on each cluster.
-1. Ingest data to each cluster in parallel.
+Regardless of which disaster recovery configuration is chosen, use these best practices:
 
-Azure Data Explorer won't perform parallel maintenance operations (such as upgrades) on clusters that are in Azure paired regions.
+ 1. All database objects, policies and configurations should be persisted in source control so they can be released to the cluster from Azure DevOps or your favorite release automation tool. Read more information about [Azure DevOps support for Azure Data Explorer](devops.md). 
+ 1. Design, develop and implement validation routines to ensure all clusters are in-sync from a data perspective. Azure Data Explorer supports [cross cluster joins](https://docs.microsoft.com/azure/data-explorer/kusto/query/cross-cluster-or-database-queries?pivots=azuredataexplorer). A simple count or rows across tables can help validate.
+ 1. Use [continuous export](kusto/management/data-export/continuous-data-export.md) capability, as a best practice, and export data within Azure Data Explorer tables to an Azure Data Lake Store, regardless of DR configuration chosen, and ensure selection of GRS or Geo Redundant Storage for the highest resilience.
+ 1. Release procedures should involve governance checks and balances that ensure mirroring of the clusters
+ 1. Be fully cognizant of what it takes to build a cluster from scratch.
+ 1. Create a checklist of deployment units to build a cluster from scratch. Your list will be unique to your needs, but should include: deployment scripts, ingestion connections, BI tools, and other important configurations. 
+
+<!-- consider adding this checklist in some way but also edit it to be more understandable:
+ **Deployment unit** 
+1. ARM template to create Azure Data Explorer cluster with the required configuration
+1. Command-lets to deploy control plane security - authorization
+1. Database object deployment scripts – databases, tables, user-defined functions
+1. External table deployment scripts with the DR storage configuration
+1. [Policy](kusto/management/policies.md) deployment scripts 
+1. Deployment scripts for processes – e.g. continuous exports, materialized views
+1. Data ingestion connections 
+1. Follower-leader deployments 
+1. Scripts for security at the data plane level- authorization including row level
+1. BI tool related
+1. Over-rides to any default cluster configurations
+1. Scripts for ingestion from storage, backfill factored in, DR region specific SAS URLs
+-->
+
+## Architecture examples and their performance
+
+The following examples show possible architectures for disaster recovery. You will need to balance your recovery objectives with cost and effort to find the most appropriate configuration for your needs. 
+
+Recovery time objective (RTO) refers to the time to recover from a disruption. For example, RTO of 2 hours means the application has to be up and running within two hours of a disruption.
+
+Recovery point objective (RPO) refers to the interval of time that might pass during a disruption before the quantity of data lost during that period is greater than the allowable threshold. For example, if the RPO is 24 hours, and an application has data as of 15 years ago, they are still within the parameters of the agreed-upon RPO.
 
 ### Always-on configuration with zero tolerance for application downtime
 
@@ -121,7 +158,7 @@ This is similar to the &quot;active-active&quot; configuration described above, 
 
 ## On-demand DR cluster configuration
 
-This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there is no DR cluster. Continuous export of &quot;curated&quot; data (unless raw and intermediate data is also required) should be configured to a storage account that is configured GRS or geo redundant. A DR cluster is spun up in the event of a DR scenario and DDLs, configuration and policies, processes etc are applied, data is ingested from storage into. The data needs to be ingested with the ingestion property – &quot;[kustoCreationTime](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-ingestion/eventgrid)&quot; to over-ride the ingestion time that defaults to system time. 
+This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there is no DR cluster. Continuous export of &quot;curated&quot; data (unless raw and intermediate data is also required) should be configured to a storage account that is configured GRS or geo redundant. A DR cluster is spun up in the event of a DR scenario and DDLs, configuration and policies, processes etc are applied, data is ingested from storage into. The data needs to be ingested with the ingestion property – &quot;[[kustoCreationTime](kusto/management/data-ingestion/eventgrid.md)&quot; to over-ride the ingestion time that defaults to system time. 
 
 The diagram below provides a pictorial overview of the configuration.
 
@@ -143,3 +180,6 @@ The diagram below provides a pictorial overview of the configuration.
 
 ## Next steps
 
+Get started with the [business continuity disaster recovery HowTo](bcdr-howto.md).
+
+Read more 
