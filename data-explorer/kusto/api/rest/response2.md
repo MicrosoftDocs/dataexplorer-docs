@@ -57,7 +57,7 @@ Where:
 
 Queries that are made with the `results_progressive_enabled` option set to true may include this frame. Following this table, clients can expect an interleaving sequence of `TableFragment` and `TableProgress` frames. The final frame of the table is `TableCompletion`.
 
-```JSON
+```json
 {
     "TableId": Number,
     "TableKind": string,
@@ -83,7 +83,7 @@ Where:
 * `TableName` is the table's name.
 * `Columns` is an array describing the table's schema.
 
-```JSON
+```json
 {
     "ColumnName": string,
     "ColumnType": string,
@@ -96,7 +96,7 @@ Supported column types are described [here](../../query/scalar-data-types/index.
 
 The `TableFragment` frame contains a rectangular data fragment of the table. In addition to the actual data, this frame contains a `TableFragmentType` property that tells the client what to do with the fragment: It can either be appended to existing fragments, or replace them.
 
-```JSON
+```json
 {
     "TableId": Number,
     "FieldCount": Number,
@@ -122,7 +122,7 @@ Where:
 The `TableProgress` frame can interleave with the `TableFragment` frame described above.
 Its sole purpose is to notify the client of the query's progress.
 
-```JSON
+```json
 {
     "TableId": Number,
     "TableProgress": Number,
@@ -138,7 +138,7 @@ Where:
 
 The `TableCompletion` frame marks the end of the table transmission. No more frames related to that table will be sent.
 
-```JSON
+```json
 {
     "TableId": Number,
     "RowCount": Number,
@@ -154,7 +154,7 @@ Where:
 
 Queries that are issued with the `EnableProgressiveQuery` flag set to false won't include any of the frames (`TableHeader`, `TableFragment`, `TableProgress`, and `TableCompletion`). Instead, each table in the data set will be transmitted using the `DataTable` frame that contains all the information that the client needs, to read the table.
 
-```JSON
+```json
 {
     "TableId": Number,
     "TableKind": string,
@@ -180,7 +180,7 @@ Where:
 * `TableName` is the table's name.
 * `Columns` is an array describing the table's schema, and includes:
 
-```JSON
+```json
 {
     "ColumnName": string,
     "ColumnType": string,
@@ -203,7 +203,7 @@ Where:
 
 The `DataSetCompletion` frame is the final one in the data set.
 
-```JSON
+```json
 {
     "HasErrors": Boolean,
     "Cancelled": Boolean,
