@@ -1,5 +1,5 @@
 ---
-title: Update policy - Azure Data Explorer | Microsoft Docs
+title: Kusto update policy management - Azure Data Explorer
 description: This article describes Update policy in Azure Data Explorer.
 services: data-explorer
 author: orspod
