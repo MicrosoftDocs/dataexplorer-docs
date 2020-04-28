@@ -45,3 +45,6 @@ Creates an ingestion mapping that is associated with a specific table and a spec
 | Name     | Kind | Mapping                                                                                                                                                                          |
 |----------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | mapping1 | CSV  | [{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}] |
+
+## Next steps
+For more information regarding ingestion mapping see [Data mappings](mappings.md).

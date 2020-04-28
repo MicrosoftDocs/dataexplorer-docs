@@ -1,5 +1,5 @@
 ---
-title: Retention policy - Azure Data Explorer | Microsoft Docs
+title: Kusto retention policy management - Azure Data Explorer
 description: This article describes Retention policy in Azure Data Explorer.
 services: data-explorer
 author: orspod

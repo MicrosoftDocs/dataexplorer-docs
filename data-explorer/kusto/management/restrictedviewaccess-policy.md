@@ -1,5 +1,5 @@
 ---
-title: RestrictedViewAccess policy - Azure Data Explorer | Microsoft Docs
+title: Kusto RestrictedViewAccess policy management - Azure Data Explorer
 description: This article describes RestrictedViewAccess policy in Azure Data Explorer.
 services: data-explorer
 author: orspod
