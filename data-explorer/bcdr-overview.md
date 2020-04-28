@@ -136,7 +136,7 @@ In the deployment below, an Azure region outage will not cause an application ou
 | --- | --- | --- | --- | --- |
 | **Active-Active-Active-n** | 0 hours | 0 hours | Lower | Highest |
 
-## Active-Active configuration
+### Active-Active configuration
 
 This is identical to the &quot;Always-on&quot; configuration described above, but only involves two paired Azure regions. Dual ingestion, processing and curation needs to be configured. Users are routed to the nearest region. The cluster SKU typically is the same across regions in this configuration.
 
@@ -146,7 +146,7 @@ This is identical to the &quot;Always-on&quot; configuration described above, bu
 | --- | --- | --- | --- | --- |
 | **Active-Active** | None | None | Lower | High |
 
-## Active-hot standby configuration
+### Active-hot standby configuration
 
 This is similar to the &quot;active-active&quot; configuration described above, in terms of dual ingest, processing and curation. However, the standby cluster is offline to end users, and need not be the same SKU as the primary. The hot standby cluster can also be of a smaller SKU and scale, and is therefore less performant. In the event of a disaster scenario, the standby cluster is brought online, and scaled up.
 
@@ -156,7 +156,7 @@ This is similar to the &quot;active-active&quot; configuration described above, 
 | --- | --- | --- | --- | --- |
 | **Active-Hot Standby** | Low | Low | Medium | Medium |
 
-## On-demand DR cluster configuration
+### On-demand DR cluster configuration
 
 This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there is no DR cluster. Continuous export of &quot;curated&quot; data (unless raw and intermediate data is also required) should be configured to a storage account that is configured GRS or geo redundant. A DR cluster is spun up in the event of a DR scenario and DDLs, configuration and policies, processes etc are applied, data is ingested from storage into. The data needs to be ingested with the ingestion property – &quot;[[kustoCreationTime](kusto/management/data-ingestion/eventgrid.md)&quot; to over-ride the ingestion time that defaults to system time. 
 
