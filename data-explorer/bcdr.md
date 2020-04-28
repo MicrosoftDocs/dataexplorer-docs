@@ -147,9 +147,9 @@ Data visualization components like PowerBI, Grafana, or SDK powered WebApps can 
 
 Now you're ready to optimize your replicas for the following:
 
-- Architecture for an active/hot standby
-- How to implement a highly available application service
-- How to optimize cost in an active/active architecture
+* Architecture for an active/hot standby
+* How to implement a highly available application service
+* How to optimize cost in an active/active architecture
 
 <!-- Some of these architectures are repeating the original text. Should consider where to put them. Also consider graphic consistency-->
 
@@ -222,12 +222,12 @@ The replicas in Regions B and C do not need to be active 24/7, reducing the cost
 
 You can start/stop the secondary replicas using one of the following methods:
 
-- [Flow](https://radennis.github.io/Ravit-Blog/blogs/SaveMoneyUsingFlow.html)
-- The &quot;Stop&quot; button
+* [Flow](https://radennis.github.io/Ravit-Blog/blogs/SaveMoneyUsingFlow.html)
+* The &quot;Stop&quot; button
 
    :::image type="content" source="media/bcdr/6.png" alt-text="The stop button":::
 
-- Azure CLI: 
+* Azure CLI: 
 
   ```kusto
   az kusto cluster stop --name=<clusterName> --resource-group=<rgName> --subscription=<subscriptionId>” ```
