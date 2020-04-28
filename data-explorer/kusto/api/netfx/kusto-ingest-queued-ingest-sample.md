@@ -1,6 +1,6 @@
 ---
 title: HowTo Data Ingestion with Kusto.Ingest Library - Azure Data Explorer | Microsoft Docs
-description: This article describes HowTo Data Ingestion with Kusto.Ingest Library in Azure Data Explorer.
+description: This article describes data ingestion with Azure Data Explorer's Kusto.Ingest library.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,15 +9,18 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/05/2020
 ---
-# HowTo Data Ingestion with Kusto.Ingest Library
+# How to do data ingestion with the Kusto.Ingest library
 
-This article presents sample code that makes use of the Kusto.Ingest client library.
+This article presents sample code that makes use of the Kusto.Ingest client library for data ingestion.
 
 ## Overview
 
-This article presents the recommended mode of ingestion for production-grade pipelines, also referred to as Queued Ingestion. For the Kusto.Ingest library, the corresponding entity is the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) interface. In this mode, the client code interacts with the Kusto service by posting ingestion notification messages to an Azure queue. Reference to the queue is obtained from the Kusto Data Management (also known as Ingestion) service. Interaction with the Data Management service must be authenticated with Azure Active Directory (Azure AD) .
+This article presents the recommended mode of ingestion for production-grade pipelines, also referred to as Queued Ingestion. For the Kusto.Ingest library, the corresponding entity is the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) interface. Here, the client code interacts with the Kusto service by posting ingestion notification messages to an Azure queue. Reference to the queue is obtained from the Kusto Data Management (also known as Ingestion) service. 
 
-The following code sample demonstrates Kusto Data Management service queued data ingestion to Kusto, using the Kusto.Ingest library.
+> [!NOTE]
+> Interaction with the Data Management service must be authenticated using Azure Active Directory (Azure AD).
+
+The code sample demonstrates Kusto Data Management service queued data ingestion to Kusto, using the Kusto.Ingest library.
 The sample uses Azure AD user authentication, and runs under the identity of the interactive user.
 
 ## Dependencies
@@ -43,7 +46,7 @@ using Kusto.Ingest;
 
 ## Code
 
-The code performs the following.
+The code does the following.
 1. Creates a table on the `KustoLab` shared Kusto cluster under the `KustoIngestClientDemo` database
 2. Provisions a [JSON column mapping object](../../management/create-ingestion-mapping-command.md) on that table
 3. Creates an [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) instance for the `Ingest-KustoLab` Data Management service
