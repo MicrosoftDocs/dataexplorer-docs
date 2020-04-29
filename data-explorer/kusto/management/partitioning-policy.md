@@ -73,7 +73,7 @@ Changes to the policy could take up to 1 hour to take effect.
 To set the `EffectiveDateTime` of the policy to a different value, use the following command:
 
 ```kusto
-.alter table [table_name] policy partitioning @'{"EffectiveDateTime":"2020-01-01"}'
+.alter-merge table [table_name] policy partitioning @'{"EffectiveDateTime":"2020-01-01"}'
 ```
 
 ## delete policy
