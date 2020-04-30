@@ -15,7 +15,7 @@ ms.date: 08/16/2019
 
 Using [KustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) is the recommended native data ingestion mode. Here's why:
 * Direct ingestion is impossible during engine downtime (e.g. during deployment), whereas in the queued ingestion mode the requests are persisted to the Azure queue, and the Data Management service will retry as needed.
-* The Data Management service is responsible to not overload the ngine with ingestion requests. Overriding this control (e.g. using Direct ingestion) might severely affect engine performance, both ingestion and query.
+* The Data Management service is responsible to not overload the engine with ingestion requests. Overriding this control (e.g. using Direct ingestion) might severely affect engine performance, both ingestion and query.
 * Data Management aggregates multiple ingestion requests to optimize the size of the initial shard (extent) to be created.
 * Getting feedback about each ingestion is easy to do.
 
