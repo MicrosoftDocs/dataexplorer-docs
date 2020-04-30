@@ -18,7 +18,7 @@ zone_pivot_groups: kql-flavors
 Alias statements allow you to define an alias for databases that can be used later in the same query.
 
 This is useful when you're working with several clusters but want to appear as if you're working on fewer clusters.
-The alias must be defined according to the following syntax where *clustername* and *databasename* are existing and valid entities.
+The alias must be defined according to the following syntax, where *clustername* and *databasename* are existing and valid entities.
 
 **Syntax**
 
