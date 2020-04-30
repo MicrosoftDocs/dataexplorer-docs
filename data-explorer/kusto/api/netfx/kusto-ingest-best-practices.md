@@ -29,10 +29,10 @@ Using [KustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikust
 ## Optimizing for throughput
 
 * Ingestion works best if done in large chunks. It consumes the least resources, produces the most COGS-optimized data shards, and results in the best-performing data artifacts. Generally, we recommend customers who ingest data with the Kusto.Ingest library or directly into the engine, to send data in batches of **100 MB to 1 GB (uncompressed)**
-* The upper limit is important when working directly with the Kusto engine, to help reduce the amount of memory used by the ingestion process 
+* The upper limit is important when working directly with the engine, to help reduce the amount of memory used by the ingestion process 
 
 > [!NOTE]
-> When using the `KustoQueuedIngestClient` class, overly large blocks of data will be split into smaller chunks, and these small chunks will be aggregated, to a certain degree, before reaching the Kusto Engine.
+> When using the `KustoQueuedIngestClient` class, overly large blocks of data will be split into smaller chunks, and these small chunks will be aggregated, to a certain degree, before reaching the Engine.
 
 * The lower limit on ingested data size is also important, although less critical. Ingesting data in small batches every now and then is perfectly fine, although slightly less efficient than using large batches. The `KustoQueuedIngestClient` class also solves the problem for customers who need to ingest large amounts of data and cannot batch them into large chunks before sending them to the Engine.
 
