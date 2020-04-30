@@ -12,6 +12,7 @@ ms.date: 08/16/2019
 # Kusto Ingest Client Library - Best Practices
 
 ## Choosing the right IngestClient flavor
+
 Using [KustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) is the recommended native data ingestion mode. Here's why:
 * Direct ingestion is impossible during Kusto Engine downtime (e.g. during deployment), whereas in the queued ingestion mode the requests are persisted to the Azure queue, and the Data Management service will retry as needed.
 * The Data Management service is responsible to not overload the engine with ingestion requests. Overriding this control (e.g. using Direct ingestion) might severely affect engine performance, both ingestion and query.
@@ -20,7 +21,7 @@ Using [KustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikust
 
 ## Tracking ingest operation status
 
-[Tracking ingest operation status](kusto-ingest-client-status.md#tracking-ingestion-status-kustoqueuedingestclient) is a useful feature in Kusto. However, turning it on for reporting success can be easily abused to the extent that it will cripple your service.<BR>
+[Tracking ingest operation status](kusto-ingest-client-status.md#tracking-ingestion-status-kustoqueuedingestclient) is a useful feature in Kusto. However, turning it on for reporting success can be easily abused to the extent that it will cripple your service.
 
 > [!WARNING]
 > Turning on positive notifications for every ingestion request for large volume data streams should be avoided, since this puts an extreme load on the underlying xStore resources. The extra load can lead to increased ingestion latency and even complete cluster non-responsiveness.
@@ -33,29 +34,32 @@ Using [KustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikust
 > [!NOTE]
 > When using the `KustoQueuedIngestClient` class, overly large blocks of data will be split into smaller chunks, and these small chunks will be aggregated, to a certain degree, before reaching the Kusto Engine.
 
-* The lower limit on ingested data size is also important, although less critical. Ingesting data in small batches every now and then is perfectly fine, although slightly less efficient than using large batches. The `KustoQueuedIngestClient` class also solves the problem for customers who need to ingest large amounts of data and cannot batch them into large chunks before sending them to the Kusto Engine.
+* The lower limit on ingested data size is also important, although less critical. Ingesting data in small batches every now and then is perfectly fine, although slightly less efficient than using large batches. The `KustoQueuedIngestClient` class also solves the problem for customers who need to ingest large amounts of data and cannot batch them into large chunks before sending them to the Engine.
 
 ## Factors impacting ingestion throughput
 
-Multiple factors can affect ingestion throughput. When planning your Kusto ingestion pipeline, make sure to evaluate the following points, which can have significant implications on your COGs.
-* Data format - CSV is the fastest format to ingest, JSON will typically take 2x or 3x longer for the same volume of data.
-* Table width - Make sure that you only ingest data you really need. The wider the table, the more columns will need to be encoded and indexed, hence, the lower the throughput. You can control which fields get ingested, by providing an ingestion mapping.
-* Source data location - Avoid cross-region reads to speed up the ingestion.
-* Load on the cluster - When a cluster experiences a high query load, ingestions will take longer to complete, reducing throughput.
-* Ingestion pattern - Ingestion is at its optimum when the cluster is served with batches of up to 1GB (handled by using `KustoQueuedIngestClient`).
+Multiple factors can affect ingestion throughput. When planning your ingestion pipeline, make sure to evaluate the following points, which can have significant implications on your COGs.
+
+| Factor for Consideration |  Decription                                                                                               |
+|--------------------------|-----------------------------------------------------------------------------------------------------------|
+| Data format              | CSV is the fastest format to ingest, JSON will typically take 2x or 3x longer for the same volume of data.|
+| Table width              | Make sure that you only ingest data you really need. The wider the table, the more columns will need to be encoded and indexed, and hence, the lower the throughput. You can control which fields get ingested, by providing an ingestion mapping.|
+| Source data location     | Avoid cross-region reads to speed up the ingestion.                                                       |
+| Load on the cluster      | When a cluster experiences a high query load, ingestions will take longer to complete, reducing throughput.|
+| Ingestion pattern        | Ingestion is at its optimum when the cluster is served with batches of up to 1GB (handled by using `KustoQueuedIngestClient`). |
 
 ## Optimizing for COGS
 
-Using client libraries to ingest data into Azure Data Explorer is the cheapest and most robust option. Review your ingestion methods and take advantage of the cost effective Azure Storage pricing.
-<BR>
-Understand, that the more chunks of data (files/blobs/streams) that you send to Kusto, the larger your monthly bill will get.
-Therefore, follow our recommendations, and you will be able to better control your Kusto ingestion costs:
-* **Prefer ingesting larger chunks of data (up to 1GB of uncompressed data)**<br>
-    Many teams attempt to achieve low latency by ingesting tens of millions of tiny chunks of data, which is extremely inefficient and very costly.<br>
-    Any amount of batching at the client side would help. 
-* **Make sure that you provide the Kusto.Ingest client with an accurate, uncompressed, data size**<br>
+Using Kusto client libraries to ingest data into Kusto remains the cheapest and the most robust option. We urge our customers to review their ingestion methods and to take advantage of the Azure Storage pricing that will make blob transactions significantly cost effective.
+
+For better control of your Azure Data Explorer ingestion costs and to reduce your monthly bill, limit the number of ingested data chunks (files/blobs/streams).
+
+* **Prefer ingesting larger chunks of data (up to 1GB of uncompressed data)**. 
+    Many teams attempt to achieve low latency by ingesting tens of millions of tiny chunks of data, which is extremely inefficient and very costly. Any amount of batching at the client side would help. 
+* **Make sure that you provide the Kusto.Ingest client with an accurate, uncompressed, data size**.
     Not doing so may cause Kusto to perform extra storage transactions.
-* **Avoid** sending data for ingestion with the `FlushImmediately` flag set to `true`, or sending small chunks with `ingest-by`/`drop-by` tags set.<br>
-    Using these methods prevents the Azure Data Explorer service from properly aggregating the data during ingestion, and causes unnecessary storage transactions following the ingestion, thereby affecting COGS.<br>
-    Moreover, using these excessively could result in degraded ingestion and/or query performance of your cluster.<br>
+* **Avoid** sending data for ingestion with the `FlushImmediately` flag set to `true`, or sending small chunks with `ingest-by`/`drop-by` tags set.
+    Using these methods prevents the Kusto service from properly aggregating the data during ingestion, and causes unnecessary storage transactions following the ingestion, thereby affecting COGS.
+    
+    Moreover, using these excessively could result in degraded ingestion and/or query performance of your cluster.
     
