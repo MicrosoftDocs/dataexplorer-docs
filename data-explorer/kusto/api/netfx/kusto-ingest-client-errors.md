@@ -1,5 +1,5 @@
 ---
-title: 'Kusto.Ingest reference, errors & exceptions - Azure Data Explorer'
+title: 'Kusto.Ingest reference, errors & exceptions in Azure Data Explorer'
 description: This article describes Kusto.Ingest Reference - Errors and Exceptions in Azure Data Explorer.
 services: data-explorer
 author: orspod
