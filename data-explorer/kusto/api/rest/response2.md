@@ -16,13 +16,13 @@ Each JSON object in the array is called a _frame_.
 
 There are several types of frames:
 
-* DataSetHeader (#DataSetHeader)
-* TableHeader (#TableHeader)
-* TableFragment (#TableFragment)
-* TableProgress (#TableProgress)
-* TableCompletion (#TableCompletion)
-* DataTable (#DataTable)
-* DataSetCompletion (#DataSetCompletion)
+* [DataSetHeader](#DataSetHeader)
+* [TableHeader](#TableHeader)
+* TableFragment](#TableFragment)
+* [TableProgress](#TableProgress)
+* [TableCompletion](#TableCompletion)
+* [DataTable](#DataTable)
+* [DataSetCompletion](#DataSetCompletion)
 
 ## DataSetHeader 
 
@@ -40,7 +40,6 @@ Where:
 * `Version` is the protocol version. The current version is `v2.0`.
 * `IsProgressive` is a boolean flag that indicates whether this data set contains progressive frames. 
    A progressive frame is one of:
-   
    
      | Frame             | Description                                    |
      |-------------------| -----------------------------------------------|
