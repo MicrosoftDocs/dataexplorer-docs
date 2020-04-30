@@ -46,7 +46,7 @@ Where:
      | `TableHeader`     | Contains general information about the table   |
      | `TableFragment`   | Contains a rectangular data shard of the table |
      | `TableProgress`   | Contains the progress in percent (0-100)       |
-     | `TableCompletion` | Indicates that this is the last frame          |
+     | `TableCompletion` | Indicates that this frame is the last one      |
         
     The frames above describe a table.
     If the `IsProgressive` flag isn't set to true, then every table in the set will be serialized using a single frame:
