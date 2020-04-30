@@ -17,10 +17,7 @@ Using [KustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikust
 * Direct ingestion is impossible during engine downtime (e.g. during deployment), whereas in the queued ingestion mode the requests are persisted to the Azure queue, and the Data Management service will retry as needed.
 * The Data Management service is responsible to not overload the ngine with ingestion requests. Overriding this control (e.g. using Direct ingestion) might severely affect engine performance, both ingestion and query.
 * Data Management aggregates multiple ingestion requests to optimize the size of the initial shard (extent) to be created.
-* There's a convenient way to get feedback about each ingestion.
-
-* Geting feedback about each ingestion is eady to do, whether it has succeeded or not.
-
+* Getting feedback about each ingestion is easy to do.
 
 ## Tracking ingest operation status
 
