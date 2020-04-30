@@ -28,7 +28,7 @@ There are several types of frames:
 
 The `DataSetHeader` frame is always the first in the data set and appears exactly once.
 
-```JSON
+```json
 {
     "Version": string,
     "IsProgressive": Boolean
