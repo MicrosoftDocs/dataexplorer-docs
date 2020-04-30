@@ -1,5 +1,5 @@
 ---
-title: Microsoft Flow Azure Kusto Connector (Preview) - Azure Data Explorer | Microsoft Docs
+title: Microsoft Flow Azure Kusto connector (Preview) in Azure Data Explorer
 description: This article describes Microsoft Flow Azure Kusto Connector (Preview) in Azure Data Explorer.
 services: data-explorer
 author: orspod

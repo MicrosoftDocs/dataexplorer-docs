@@ -1,5 +1,5 @@
 ---
-title: Partitioning and composing intermediate results of aggregations - Azure Data Explorer | Microsoft Docs
+title: 'Partition & compose intermediate aggregates in Azure Data Explorer'
 description: This article describes Partitioning and composing intermediate results of aggregations in Azure Data Explorer.
 services: data-explorer
 author: orspod
