@@ -101,15 +101,14 @@ There are a number of methods by which data can be ingested by Kusto Query Langu
 
 > [!Note]
 > Depending on the existence of the table beforehand, the process requires
-[database admin, database ingestor, database user, or table admin permissions](../access-control/role-based-authorization.md).
+[database admin, database ingestor, database user, or table admin permissions](kusto/management/access-control/role-based-authorization.md).
 
-  * **Inline ingestion**:  A control command ([.ingest inline](./ingest-inline.md))
-   is sent to the engine, with the data to be ingested being a part of the command
+  * **Inline ingestion**:  A control command [.ingest inline](kusto/management/data-ingestion/ingest-inline.md) is sent to the engine, with the data to be ingested being a part of the command
    text itself. This method is intended for ad hoc testing purposes.
 
-  * **Ingest from query**: A control command ([.set, .append, .set-or-append, or .set-or-replace](./ingest-from-query.md)) is sent to the engine, with the data specified indirectly as the results of a query or a command.
+  * **Ingest from query**: A control command [.set, .append, .set-or-append, or .set-or-replace](kusto/management/data-ingestion/ingest-from-query.md) is sent to the engine, with the data specified indirectly as the results of a query or a command.
 
-  * **Ingest from storage (pull)**: A control command ([.ingest into](./ingest-from-storage.md))
+  * **Ingest from storage (pull)**: A control command [.ingest into](kusto/management/data-ingestion/ingest-from-storage.md)
    is sent to the engine, with the data stored in some external storage (for example, Azure
    Blob Storage) accessible by the engine and pointed-to by the command.
 
