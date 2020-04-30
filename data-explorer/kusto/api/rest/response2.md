@@ -93,7 +93,7 @@ Supported column types are described [here](../../query/scalar-data-types/index.
 
 ## TableFragment
 
-The `TableFragment` frame contains a rectangular data fragment of the table. In addition to the actual data, this frame contains a `TableFragmentType` property that tells the client what to do with the fragment: It can either be appended to existing fragments, or replace them.
+The `TableFragment` frame contains a rectangular data fragment of the table. In addition to the actual data, this frame  also contains a `TableFragmentType` property that tells the client what to do with the fragment. The fragment appended to existing fragments, or replace them.
 
 ```json
 {
