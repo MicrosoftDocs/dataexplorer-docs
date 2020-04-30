@@ -15,8 +15,7 @@ Data ingestion is the process used to load data records from one or more sources
 
 The diagram below shows the end-to-end flow for working in Azure Data Explorer.
 
-![Data flow](media/ingest-data-overview/data-flow.png)
-<!-- update this image -->
+:::image type="content" source="media/data-ingestion-overview/data-management-and-ingestion-overview.png" alt-text="Overview scheme of data ingestion and management":::
 
 The Azure Data Explorer data management service, which is responsible for data ingestion, implements the following process:
 
@@ -24,32 +23,6 @@ Azure Data Explorer pulls data from an external source or reads requests from an
 
 > [!NOTE]
 > The Kusto query language ingest control commands are executed directly to the engine endpoint, in contrast to managed data. In production scenarios, ingestion should be executed to the Data Management service using client libraries or data connections.
-
-## Ingestion commands
-
-There are a number of methods by which data can be ingested by Kusto Query Language (KQL) commands, each with its own characteristics.
-
-Depending on the existence of the table beforehand, the process requires
-[database admin, database ingestor, database user, or table admin permissions](../access-control/role-based-authorization.md).
-
-
-1. **Inline ingestion (push)**: A control command ([.ingest inline](./ingest-inline.md))
-   is sent to the engine, with the data to be ingested being a part of the command
-   text itself.
-   This method is primarily intended for ad-hoc testing
-   purposes, and should not be used for production purposes.
-1. **Ingest from query**: A control command ([.set, .append, .set-or-append, or .set-or-replace](./ingest-from-query.md))
-   is sent to the engine, with the data specified indirectly as the results of a query
-   or a command.
-   This method is useful for generating reporting tables out of raw data tables,
-   or for creating small temporary tables for further analysis.
-1. **Ingest from storage (pull)**: A control command ([.ingest into](./ingest-from-storage.md))
-   is sent to the engine, with the data stored in some external storage (for example, Azure
-   Blob Storage) accessible by the engine and pointed-to by the command.
-   This method allows efficient bulk ingestion of data, but puts some burden on
-   the client performing the ingestion to not overtax the cluster with concurrent
-   ingestions (or risk consuming all cluster resources by data ingestion, reducing
-   the performance of queries).
 
 ## Supported data formats
 
@@ -122,21 +95,33 @@ Kusto offers client SDKs that can be used to ingest and query data with:
 
 * GO API  -- IS THERE A FILE FOR THIS?
 
-**Programmatic ingestion techniques**:
+### Programmatic ingestion techniques:
 
 * Ingesting data through the Azure Data Explorer data management service (high-throughput and reliable ingestion):
 
     [**Queued ingestion**](kusto/api/netfx/kusto-ingest-queued-ingest-sample.md) (provided by SDK): the client uploads the data to Azure Blob storage (chosen by the Azure Data Explorer data management service) and posts a notification to an Azure Queue. Queued ingestion is the recommended technique for high-volume, reliable, and cheap data ingestion.
 
-* Ingesting data directly into the Azure Data Explorer engine (most appropriate for exploration and prototyping):
+* There are a number of methods by which data can be ingested by Kusto Query Language (KQL) commands, each with its own characteristics. This method is most appropriate for exploration and prototyping
 
-  * **Inline ingestion**: control command (.ingest inline) containing in-band data is intended for ad hoc testing purposes.
+> [!Note]
+> Depending on the existence of the table beforehand, the process requires
+[database admin, database ingestor, database user, or table admin permissions](../access-control/role-based-authorization.md).
 
-  * **Ingest from query**: control command (.set, .set-or-append, .set-or-replace) that points to query results is used for generating reports or small temporary tables.
+  * **Inline ingestion**:  A control command ([.ingest inline](./ingest-inline.md))
+   is sent to the engine, with the data to be ingested being a part of the command
+   text itself. This method is intended for ad hoc testing purposes.
 
-  * **Ingest from storage**: control command (.ingest into) with data stored externally (for example, Azure Blob Storage) allows efficient bulk ingestion of data.
+  * **Ingest from query**: A control command ([.set, .append, .set-or-append, or .set-or-replace](./ingest-from-query.md)) is sent to the engine, with the data specified indirectly as the results of a query or a command.
+
+  * **Ingest from storage (pull)**: A control command ([.ingest into](./ingest-from-storage.md))
+   is sent to the engine, with the data stored in some external storage (for example, Azure
+   Blob Storage) accessible by the engine and pointed-to by the command.
 
 For organizations with an existing infrastructure that is based on a messaging service like Event Hub and IoT Hub, using a connector is likely the most appropriate solution. Queued ingestion is appropriate for large data volumes.
+
+## Ingestion properties
+
+For data ingestion properties, see [data ingestion properties](ingestion-properties.md).
 
 ## Comparing ingestion methods:
 
