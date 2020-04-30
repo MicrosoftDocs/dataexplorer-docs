@@ -20,8 +20,8 @@ Extracts a slice of a dynamic array.
 **Arguments**
 
 * *`arr`*: Input array to extract the slice from must be dynamic array.
-* *start*: zero-based (inclusive) start index of the slice, negative values are converted to array_length+start.
-* *end*: zero-based (inclusive) end index of the slice, negative values are converted to array_length+end.
+* *`start`*: zero-based (inclusive) start index of the slice, negative values are converted to array_length+start.
+* *`end`*: zero-based (inclusive) end index of the slice, negative values are converted to array_length+end.
 
 Note: out of bounds indices are ignored.
 
