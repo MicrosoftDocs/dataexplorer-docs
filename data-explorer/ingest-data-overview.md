@@ -120,13 +120,13 @@ Kusto offers client SDKs that can be used to ingest and query data with:
 
 * [REST API](kusto/api/netfx/kusto-ingest-client-rest.md)
 
-<!-- [GO API]  does this exist? -->
+* GO API  -- IS THERE A FILE FOR THIS?
 
 **Programmatic ingestion techniques**:
 
 * Ingesting data through the Azure Data Explorer data management service (high-throughput and reliable ingestion):
 
-    [**Batch ingestion**](kusto/api/netfx/kusto-ingest-queued-ingest-sample.md) (provided by SDK): the client uploads the data to Azure Blob storage (chosen by the Azure Data Explorer data management service) and posts a notification to an Azure Queue. Batch ingestion is the recommended technique for high-volume, reliable, and cheap data ingestion.
+    [**Queued ingestion**](kusto/api/netfx/kusto-ingest-queued-ingest-sample.md) (provided by SDK): the client uploads the data to Azure Blob storage (chosen by the Azure Data Explorer data management service) and posts a notification to an Azure Queue. Queued ingestion is the recommended technique for high-volume, reliable, and cheap data ingestion.
 
 * Ingesting data directly into the Azure Data Explorer engine (most appropriate for exploration and prototyping):
 
@@ -181,7 +181,7 @@ When ingesting from storage, the source data is validated as part of parsing. Th
 
 ## Ingestion recommendations and limitations
 
-* Data ingested into a table in Azure Data Explorer is subject to the table's effective retention policy. Unless set on a table explicitly, the effective retention policy is derived from the database's retention policy. The default retention batching policy is five minutes. 
+* Data ingested into a table in Azure Data Explorer is subject to the table's effective retention policy. Unless set on a table explicitly, the effective retention policy is derived from the database's retention policy. The default retention policy is five minutes. 
 Therefore, when you ingest data into Azure Data Explorer, make sure that the database's retention policy is appropriate for your needs. If not, explicitly override it at the table level. Failure to do so might result in a "silent" deletion of your data due to the database's retention policy. See [retention policy](kusto/management/retentionpolicy.md) for more details. 
 
 * Ingesting data requires **Table ingestor** or **Database ingestor** permissions.
