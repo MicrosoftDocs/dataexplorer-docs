@@ -177,6 +177,8 @@ Creates or alters a new external table in the database in which the command is e
 | `fileExtension`  | `string` | If set, indicates file extensions of the blobs. On write, blobs names will end with this suffix. On read, only blobs with this file extension will be read.           |
 | `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
 
+To learn more about a role that external table parameters play in a query, please refer to the [Artifact filtering logic](#artifact-filtering-logic) section.
+
 > [!NOTE]
 > * If the table exists, `.create` command will fail with an error. Use `.alter` to modify existing tables. 
 > * Altering the schema, format, or the partition definition of an external blob table is not supported. 
@@ -197,8 +199,7 @@ dataformat=csv
 with 
 (
    docstring = "Docs",
-   folder = "ExternalTables",
-   namePrefix="Prefix"
+   folder = "ExternalTables"
 )  
 ```
 
@@ -215,8 +216,7 @@ dataformat=csv
 with 
 (
    docstring = "Docs",
-   folder = "ExternalTables",
-   namePrefix="Prefix"
+   folder = "ExternalTables"
 )  
 ```
 
@@ -233,8 +233,7 @@ dataformat=csv
 with 
 (
    docstring = "Docs",
-   folder = "ExternalTables",
-   namePrefix="Prefix"
+   folder = "ExternalTables"
 )
 ```
 
@@ -251,8 +250,7 @@ dataformat=csv
 with 
 (
    docstring = "Docs",
-   folder = "ExternalTables",
-   namePrefix="Prefix"
+   folder = "ExternalTables"
 )
 ```
 
@@ -281,6 +279,27 @@ with
 |TableName|TableType|Folder|DocString|Properties|ConnectionStrings|Partitions|
 |---|---|---|---|---|---|---|
 |ExternalMultiplePartitions|Blob|ExternalTables|Docs|{"Format":"Csv","Compressed":false,"CompressionType":null,"FileExtension":"csv","IncludeHeaders":"None","Encoding":null,"NamePrefix":null}|["https://storageaccount.blob.core.windows.net/container1;*******"]}|[{"StringFormat":"CustomerName={0}","ColumnName":"CustomerName","Ordinal":0},PartitionBy":"1.00:00:00","ColumnName":"Timestamp","Ordinal":1}]|
+
+#### Artifact filtering logic
+
+When querying an external table, Kusto makes everything possible to filter out irrelevant external storage artifacts (blobs)
+for improving query performance. Here we describe the process of iterating on blobs, and deciding whether a blob should be processed.
+
+First, we build a URI pattern that represents a place where blobs are to be found. Initially, URI pattern equals to a connection string
+provided as part of external table definition. If there are any partitions defined, they and appended to the URI pattern.
+For instance, if a connection string is: `https://storageaccount.blob.core.windows.net/container1` and there's datetime partition defined:
+`partition by format_datetime="yyyy-MM-dd" bin(Timestamp, 1d)`, then the corresponding URI pattern would be:
+`https://storageaccount.blob.core.windows.net/container1/yyyy-MM-dd`, and we'll be looking for blobs under locations that match this pattern.
+If there's an additional string partition `"CustomerId" customerId` defined, then the corresponding URI pattern is:
+`https://storageaccount.blob.core.windows.net/container1/yyyy-MM-dd/CustomerId=*`, etc.
+
+For all *direct* blobs found under the URI patterns(s) that we've created, we check:
+
+ * That partition values match predicates used in a query.
+ * That blob name starts with `NamePrefix`, if such property is defined.
+ * That blob name ends with `FileExtension`, if such property is defined.
+
+Once all the above conditions are met, the blob is fetched and processed by the query engine.
 
 #### Spark virtual columns support
 
