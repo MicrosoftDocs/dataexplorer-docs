@@ -31,7 +31,7 @@ For dropping multiple functions from the database, see [.drop functions](#drop-f
  
 **Example** 
 
-```
+```kusto
 .drop function MyFunction1
 ```
 
@@ -59,6 +59,6 @@ Requires [function admin permission](../management/access-control/role-based-aut
 
 **Example** 
  
-```
+```kusto
 .drop functions (Function1, Function2, Function3) ifexists
 ```

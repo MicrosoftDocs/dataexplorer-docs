@@ -19,8 +19,9 @@ The partitioning policy defines if and how [Extents (data shards)](../management
 The main purpose of the policy is to improve performance of queries which are known to be narrowed to a small subset of values in the partitioned column(s).
 A secondary potential benefit is better compression of the data.
 
-While there are no hard-coded limits set on the amount of tables that can have the policy defined on them, every additional table adds
-overhead to the background data partitioning process running on the cluster's nodes, and may require additional resources from the cluster.
+> [!WARNING]
+> While there are no hard-coded limits set on the amount of tables that can have the policy defined on them, every additional table adds
+overhead to the background data partitioning process running on the cluster's nodes, and may require additional resources from the cluster - See [Capacity](#capacity).
 
 ## Partition keys
 
@@ -40,7 +41,7 @@ on a specific `string`-typed column of *large-dimension*, such as `application_I
 * All *homogeneous* (partitioned) extents that belong to the same partition are assigned to the same data node.
 * Data in *homogeneous* (partitioned) extents is ordered by the hash partition key.
   * It's not required include the partition key in a [row order policy](roworderpolicy.md), if one is defined on the table.
-* *Future* optimizations will also benefit queries which perform `join` and/or `summarize` when the `shufflekey` is the table's [hash partition key](#hash-partition-key).
+* Queries that use the [shuffle strategy](../query/shufflequery.md), and in which the `shuffle key` used in `join`, `summarize` or `make-series` is the table's hash partition key, are expected to perform better, as the amount of data required to move across cluster nodes is significantly reduced.
 
 #### Partition properties
 
@@ -89,6 +90,7 @@ ends up including records from a limited time range, resulting with filters on t
 
 * `RangeSize` is a `timespan` scalar constant that indicates the size of each datetime partition.
 * `Reference` is a `datetime` scalar constant of type that indicates a fixed point in time according to which datetime partitions are aligned.
+  * If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`.
 
 #### Example
 
@@ -201,11 +203,8 @@ The output includes:
 
 #### Capacity
 
-* As the data partitioning process results in the creation of more extents, you might be required to increase the cluster's
-  [Extents merge capacity](../management/capacitypolicy.md#extents-merge-capacity) so that the [extents merging](../management/extents-overview.md) process is able to keep up.
-* If it's required (for instance, in case of high ingestion throughput, and/or a large enough number of tables that require partitioning), the cluster's
-  [Extents partition capacity](../management/capacitypolicy.md#extents-partition-capacity) can be increased to allow running a higher number of
-  concurrent partitioning operations.
+* As the data partitioning process results in the creation of more extents, you might be required to (gradually and linearly) increase the cluster's [Extents merge capacity](../management/capacitypolicy.md#extents-merge-capacity) so that the [extents merging](../management/extents-overview.md) process is able to keep up.
+* If it's required (for instance, in case of high ingestion throughput, and/or a large enough number of tables that require partitioning), the cluster's [Extents partition capacity](../management/capacitypolicy.md#extents-partition-capacity) can be (gradually and linearly) increased to allow running a higher number of concurrent partitioning operations.
   * In case increasing the partitioning causes a significant increase in the use of the cluster's resources, scale the cluster
     up/out, either manually, or by enabling auto-scale.
 

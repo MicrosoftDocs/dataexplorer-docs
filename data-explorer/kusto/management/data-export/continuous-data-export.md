@@ -93,7 +93,7 @@ In addition to the above, all properties supported in [export to external table 
 
 **Example:**
 
-```
+```kusto
 .create-or-alter continuous-export MyExport
 over (T)
 to table ExternalBlob
@@ -176,7 +176,7 @@ Returns all artifacts exported by the continuous-export in all runs. It is recom
 
 | Timestamp                   | ExternalTableName | Path             | NumRecords | SizeInBytes |
 |-----------------------------|-------------------|------------------|------------|-------------|
-| 2018-12-20 07:31:30.2634216 | ExternalBlob      | http://storageaccount.blob.core.windows.net/container1/1_6ca073fd4c8740ec9a2f574eaa98f579.csv | 10                          | 1024              |
+| 2018-12-20 07:31:30.2634216 | ExternalBlob      | `http://storageaccount.blob.core.windows.net/container1/1_6ca073fd4c8740ec9a2f574eaa98f579.csv` | 10                          | 1024              |
 
 ## Show continuous export failures
 
@@ -205,7 +205,7 @@ Returns all failures logged as part of the continuous export. Filter the results
 
 **Example:** 
 
-```
+```kusto
 .show continuous-export MyExport failures 
 ```
 
@@ -260,7 +260,7 @@ Continuous export starts exporting data only from the point of its creation. Rec
 [show continuous export command](#show-continuous-export) and export only records where cursor_before_or_at the cursor value. See the example below. 
 Historical data may be too large to be exported in a single export command. Therefore, partition the query into several smaller batches. 
 
-```
+```kusto
 .show continuous-export MyExport | project StartCursor
 ```
 
@@ -270,7 +270,7 @@ Historical data may be too large to be exported in a single export command. Ther
 
 Followed by: 
 
-```
+```kusto
 .export async to table ExternalBlob
 <| T | where cursor_before_or_at("636751928823156645")
 ```

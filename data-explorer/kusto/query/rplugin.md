@@ -8,7 +8,7 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # R plugin (Preview)
@@ -80,10 +80,8 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 )
 | render linechart 
 ```
-![alt text](./images/samples/sine-demo.png "sine-demo")
 
-
-
+:::image type="content" source="images/plugin/sine-demo.png" alt-text="Sine demo" border="false":::
 
 ### Performance tips
 
@@ -120,7 +118,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
     ```kusto    
     let script = 
         externaldata(script:string)
-        [h'https://raw.githubusercontent.com/yonileibowitz/kusto.blog/master/resources/R/sample_script.r']
+        [h'https://kustoscriptsamples.blob.core.windows.net/samples/R/sample_script.r']
         with(format = raw);
     range x from 1 to 360 step 1
     | evaluate r(

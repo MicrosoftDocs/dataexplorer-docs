@@ -28,7 +28,7 @@ Alters the data type of an existing table column.
  
 **Example** 
 
-```
+```kusto
 .alter column ['Table'].['ColumnX'] type=string
 ```
 
@@ -41,7 +41,7 @@ For each table `T1` you'd like to change a column type in, execute the following
 1. Create a table `T1_prime` with the correct schema (the right column types).
 1. Swap the tables using [.rename tables](rename-table-command.md) command, which allows swapping table names.
 
-```
+```kusto
 .rename tables T_prime=T1, T1=T_prime
 ```
 

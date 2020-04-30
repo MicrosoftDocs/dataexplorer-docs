@@ -62,7 +62,7 @@ It lists programmatic names (which is the name of the property in the
 | Property name              | Alternative names                      | Programmatic name  | Description                                                                                                                          |
 |----------------------------|----------------------------------------|--------------------|---------------------------------------------------|
 | Client Version for Tracing |                                        | TraceClientVersion | When tracing the client version, use this value   |
-| Data Source                | Addr, Address, Network Address, Server | DataSource         | The URI specifying the Kusto service endpoint. For example, https://mycluster.kusto.windows.net or net.tcp://localhost               |
+| Data Source                | Addr, Address, Network Address, Server | DataSource         | The URI specifying the Kusto service endpoint. For example, `https://mycluster.kusto.windows.net` or `net.tcp://localhost`               |
 | Initial Catalog            | Database                               | InitialCatalog     | The name of the database to be used by default. For example, MyDatabase|
 | Query Consistency          | QueryConsistency                       | QueryConsistency   | Set to either `strongconsistency` or `weakconsistency` to determine if the query should synchronize with the metadata before running |
 
@@ -126,7 +126,7 @@ The following algorithm is generally used by clients for authentication against 
 ### AAD federated application authentication with application certificate
 
 1. Authentication based on an application's certificate is supported only for web applications (and not for native client applications).
-1. The web application should be configured to accept the given certificate. [How to authentication based-on AAD application's certificate](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-daemon-certificate-credential/)
+1. The web application should be configured to accept the given certificate. [How to authentication based-on AAD application's certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 1. The web application should be configured as an authorized principal in the relevant Kusto cluster.
 1. The certificate with the given thumbprint should be installed (in Local Machine store or in Current User store).
 1. The certificate's public key should contain at least 2048 bits.

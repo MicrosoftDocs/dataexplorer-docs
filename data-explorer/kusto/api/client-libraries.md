@@ -23,7 +23,7 @@ The following table lists the different libraries provided for query, ingestion,
 |    NodeJS        |    [npm](https://www.npmjs.com/package/azure-kusto-data) [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data)        |    [npm](https://www.npmjs.com/package/azure-kusto-ingest)       [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest)        |    [npm](https://www.npmjs.com/package/azure-arm-kusto/v/2.0.0)        |
 |    Python        |    [Pypi](https://pypi.org/project/azure-kusto-ingest/)    [GitHub](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)        |    [Pypi](https://pypi.org/project/azure-kusto-data/)      [GitHub](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)        |    [Pypi](https://pypi.org/project/azure-mgmt-kusto/0.3.0/)        |
 |    R        |    [CRAN](https://cran.r-project.org/web/packages/AzureKusto/index.html)               |             |            |
-|    Go        |             |             |        [GitHub](https://github.com/Azure/azure-sdk-for-go/tree/master/services/kusto/mgmt/2019-01-21/kusto)        |
+|    Go        |    [GitHub](https://github.com/Azure/azure-kusto-go)        |    [GitHub](https://github.com/Azure/azure-kusto-go/tree/master/kusto/ingest)        |        [GitHub](https://github.com/Azure/azure-sdk-for-go/tree/master/services/kusto/mgmt/2019-01-21/kusto)        |
 |    Ruby        |             |             |    [Gems](https://rubygems.org/gems/azure_mgmt_kusto/versions/0.17.1)         |
 |    Powershell        |    [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)        |    [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)        |    [Package](https://www.powershellgallery.com/packages/Az.Kusto/)         |
 |    Azure   CLI        |             |             |    [Azure Cli](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)         |
@@ -36,6 +36,6 @@ The following table lists the different libraries provided for query, ingestion,
 
 * LightIngest: [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) 
 * One-click Ingestion kit: [GitHub](https://github.com/Azure/azure-kusto-ingestion-tools) 
-* Kafka: [GitHub](https://github.com/Azure/kafka-sink-azure-kustoLogstash)
+* Kafka: [GitHub](https://github.com/Azure/kafka-sink-azure-kusto)
 * Logstash: [GitHub](https://github.com/Azure/logstash-output-kusto) 
 * Spark: [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)

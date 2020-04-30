@@ -60,4 +60,5 @@ ts
 | extend y_forcasted = series_decompose_forecast(y, 24*7)  // forecast a week forward
 | render timechart 
 ```
-![alt text](./Images/samples/series-decompose-forecast.png "series-decompose_forecast")
+
+:::image type="content" source="images/series-decompose-forecastfunction/series-decompose-forecast.png" alt-text="Series decompose forecast":::

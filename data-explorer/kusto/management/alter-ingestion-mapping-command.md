@@ -23,7 +23,7 @@ Alters an existing ingestion mapping that is associated with a specific table an
 
 **Example** 
  
-```
+```kusto
 .alter table MyTable ingestion csv mapping "Mapping1"
 '['
 '	{ "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},'
@@ -36,6 +36,7 @@ Alters an existing ingestion mapping that is associated with a specific table an
 '	{ "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}'
 ']'
 ```
+
 **Example output**
 
 | Name     | Kind | Mapping                                                                                                                                                                          |

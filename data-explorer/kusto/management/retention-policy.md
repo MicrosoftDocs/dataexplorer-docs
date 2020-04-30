@@ -1,5 +1,5 @@
 ---
-title: Retention policy - Azure Data Explorer | Microsoft Docs
+title: Kusto retention policy management - Azure Data Explorer
 description: This article describes Retention policy in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -71,7 +71,7 @@ Delete the retention policy for the table named `MyTable1`:
 * `table_name` : name of a table in a database context.  A wildcard (`*` is allowed here).
 * `retention_policy` :
 
-```
+```kusto
     "{ 
         \"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Disabled\"
     }" 

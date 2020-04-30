@@ -76,8 +76,8 @@ To create the network security group:
 To create the query (Engine) public IP addresses:
 
 1. Select the **+ Create a resource** button in the upper-left corner of the portal.
-1. Search for *Network Security Group*.
-1. Under **Public IP address**, at the bottom of the screen, select **Create**.
+1. Search for *Public IP address*.
+1. Under **Public IP address**, select **Create**.
 1. In the **Create public IP address** pane, complete the following information.
    
    ![Create public IP form](media/vnet-create-cluster-portal/public-ip-blade.png)
@@ -159,4 +159,4 @@ To deploy your Azure Data Explorer cluster into your virtual network, use the [D
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Deploy Azure Data Explorer into your Virtual Network](vnet-create-cluster-portal.md)
+> [Deploy Azure Data Explorer into your Virtual Network](vnet-deployment.md)

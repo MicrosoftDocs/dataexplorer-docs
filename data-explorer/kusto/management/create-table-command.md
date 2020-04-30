@@ -25,7 +25,7 @@ If the table already exists the command will return success.
 
 **Example** 
 
-```
+```kusto
 .create table MyLogs ( Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32 ) 
 ```
  
@@ -33,12 +33,12 @@ If the table already exists the command will return success.
 
 Returns the table's schema in JSON format, same as:
 
-```
+```kusto
 .show table MyLogs schema as json
 ```
 
 > [!NOTE]
-> For creating multiple tables, use the [.create tables](/create-tables.md) command for better performance and lower load on the cluster.
+> For creating multiple tables, use the [.create tables](create-tables-command.md) command for better performance and lower load on the cluster.
 
 ## .create-merge table
 

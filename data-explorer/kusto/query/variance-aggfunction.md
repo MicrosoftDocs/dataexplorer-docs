@@ -14,7 +14,8 @@ ms.date: 02/13/2020
 Calculates the variance of *Expr* across the group, considering the group as a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29). 
 
 * Used formula:
-![alt text](./images/aggregations/variance-sample.png "variance-sample")
+
+:::image type="content" source="images/variance-aggfunction/variance-sample.png" alt-text="Variance sample":::
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
 

@@ -8,7 +8,7 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
-zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # Python plugin
@@ -90,7 +90,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 | render linechart 
 ```
 
-![alt text](./images/samples/sine-demo.png "sine-demo")
+:::image type="content" source="images/plugin/sine-demo.png" alt-text="sine demo" border="false":::
 
 ```kusto
 print "This is an example for using 'external_artifacts'"
@@ -107,8 +107,8 @@ print "This is an example for using 'external_artifacts'"
     "result['Size'] = sizes\n"
     "\n",
     external_artifacts = 
-        dynamic({"this_is_my_first_file":"https://raw.githubusercontent.com/yonileibowitz/kusto.blog/master/resources/R/sample_script.r",
-                 "this_is_a_script":"https://raw.githubusercontent.com/yonileibowitz/kusto.blog/master/resources/python/sample_script.py"})
+        dynamic({"this_is_my_first_file":"https://kustoscriptsamples.blob.core.windows.net/samples/R/sample_script.r",
+                 "this_is_a_script":"https://kustoscriptsamples.blob.core.windows.net/samples/python/sample_script.py"})
 )
 ```
 
@@ -151,14 +151,14 @@ print "This is an example for using 'external_artifacts'"
       Query Editor shortcuts.
 * To avoid conflicts between Kusto string delimiters and Python string literals, we recommend using single quote characters (`'`) for Kusto string 
   literals in Kusto queries, and double quote characters (`"`) for Python string literals in Python scripts.
-* Use the [externaldata operator](externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage or a public GitHub repository.
+* Use the [externaldata operator](externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage.
   
     **Example**
 
-    ```kusto    
+    ```kusto
     let script = 
         externaldata(script:string)
-        [h'https://raw.githubusercontent.com/yonileibowitz/kusto.blog/master/resources/python/sample_script.py']
+        [h'https://kustoscriptsamples.blob.core.windows.net/samples/python/sample_script.py']
         with(format = raw);
     range x from 1 to 360 step 1
     | evaluate python(
@@ -180,11 +180,11 @@ You can install packages by following these steps:
 1. One-time prerequisite:
   
   a. Create a blob container to host the package(s), preferably at the same region as your cluster.
-    * For example: https://artifcatswestus.blob.core.windows.net/python (assuming your cluster is in West US)
+    * For example: `https://artifcatswestus.blob.core.windows.net/python` (assuming your cluster is in West US)
   
   b. Alter the cluster's [Callout policy](../management/calloutpolicy.md) to allow accessing that location.
     * This requires [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
-    * For example, to enable access to a blob located in https://artifcatswestus.blob.core.windows.net/python, the command to run is:
+    * For example, to enable access to a blob located in `https://artifcatswestus.blob.core.windows.net/python`, the command to run is:
 
       ```kusto
       .alter-merge cluster policy callout @'[ { "CalloutType": "sandbox_artifacts", "CalloutUriRegex": "artifcatswestus\\.blob\\.core\\.windows\\.net/python/","CanCall": true } ]'

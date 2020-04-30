@@ -8,14 +8,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/29/2020
-zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # render operator
 
 Instructs the user agent to render the results of the query in a particular way.
 
-```
+```kusto
 range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 ```
 

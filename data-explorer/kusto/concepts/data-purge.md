@@ -118,6 +118,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 1. Programmatic invocation: A single-step which is intended to be invoked by applications. Calling this command directly triggers purge execution sequence.
 
 	**Syntax**
+
 	 ```kusto
 	 .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
 	 ```
@@ -129,6 +130,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 	<!-- If query times-out on DM endpoint (default timeout is 10 minutes), it is recommended to use the [engine `whatif` command](#purge-whatif-command) directly againt the engine endpoint while increasing the [server timeout limit](../concepts/querylimits.md#limit-on-request-execution-time-timeout). Only after you have verified the expected results using the engine whatif command, issue the purge command via the DM endpoint using the 'noregrets' option. -->
 
 	 **Syntax**
+
 	 ```kusto
 	 // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
 	 .purge table [TableName] records in database [DatabaseName] <| [Predicate]
@@ -286,8 +288,6 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 * ClientRequestId - client activity ID of the DM purge request. 
 * Principal - identity of the purge command issuer.
 
-
-
 ## Purging an entire table
 Purging a table includes dropping the table, and marking it as purged so that the hard delete process described in [Purge process](#purge-process) runs on it. 
 Dropping a table without purging it doesn't delete all its storage artifacts (deleted according to the hard retention policy initially set on the table). 
@@ -302,6 +302,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 1. Programmatic invocation (single-step):
 
 	 **Syntax**
+
 	 ```kusto
 	 .purge table [TableName] in database [DatabaseName] allrecords with (noregrets='true')
 	 ```
@@ -309,6 +310,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 2. Human invocation (two-steps):
 
 	 **Syntax**
+
 	 ```kusto
 	 // Step #1 - retrieve a verification token (the table will not be purged until step #2 is executed)
 	 .purge table [TableName] in database [DatabaseName] allrecords
@@ -344,6 +346,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 	.purge table MyTable in database MyDatabase allrecords 
 	with (verificationtoken='eyJTZXJ2aWNlTmFtZSI6IkVuZ2luZS1pdHNhZ3VpIiwiRGF0YWJhc2VOYW1lIjoiQXp1cmVTdG9yYWdlTG9ncyIsIlRhYmxlTmFtZSI6IkF6dXJlU3RvcmFnZUxvZ3MiLCJQcmVkaWNhdGUiOiIgd2hlcmUgU2VydmVyTGF0ZW5jeSA9PSAyNSJ9')
 	```
+	
 	The output is the same as the '.show tables' command output (returned without the purged table).
 
 	**Output**

@@ -8,7 +8,7 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/23/2020
-zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # Tutorial
@@ -239,7 +239,7 @@ StormEvents
 | render columnchart
 ```
 
-![alt text](./images/tour/060.png "060")
+:::image type="content" source="images/tutorial/event-counts-state.png" alt-text="Column chart of storm event counts by state":::
 
 Although we removed `mid` in the project operation, we still need it if we want the chart to display the countries in that order.
 
@@ -256,7 +256,7 @@ StormEvents
 | render timechart
 ```
 
-![alt text](./images/tour/080.png "080")
+:::image type="content" source="images/tutorial/time-series-start-bin.png" alt-text="Line chart events binned by time":::
 
 ## Multiple series
 
@@ -269,11 +269,11 @@ StormEvents
 | summarize count() by bin(StartTime, 10h), Source
 ```
 
-![alt text](./images/tour/090.png "090")
+:::image type="content" source="images/tutorial/table-count-source.png" alt-text="Table count by source":::
 
 Just add the render term to the above: `| render timechart`.
 
-![alt text](./images/tour/100.png "100")
+:::image type="content" source="images/tutorial/line-count-source.png" alt-text="Line chart count by source":::
 
 Notice that `render timechart` uses the first column as the x-axis, and then displays the other columns as separate lines.
 
@@ -291,11 +291,11 @@ StormEvents
 | render timechart
 ```
 
-![alt text](./images/tour/120.png "120")
+:::image type="content" source="images/tutorial/time-count-hour.png" alt-text="Time chart count by hour":::
 
 Currently, `render` doesn't label durations properly, but we could use `| render columnchart` instead:
 
-![alt text](./images/tour/110.png "110")
+:::image type="content" source="images/tutorial/column-count-hour.png" alt-text="Column chart count by hour":::
 
 ## Compare multiple daily series
 
@@ -309,7 +309,7 @@ StormEvents
 | render timechart
 ```
 
-![alt text](./images/tour/130.png "130")
+:::image type="content" source="images/tutorial/time-hour-state.png" alt-text="Time chart by hour and state":::
 
 Divide by `1h` to turn the x-axis into hour number instead of a duration:
 
@@ -321,9 +321,9 @@ StormEvents
 | render columnchart
 ```
 
-![alt text](./images/tour/140.png "140")
+:::image type="content" source="images/tutorial/column-hour-state.png" alt-text="Column chart by hour and state":::
 
-## join
+## Join
 
 How to find for two given EventTypes in what state both of them happened?
 
@@ -339,7 +339,7 @@ StormEvents
 | distinct State
 ```
 
-![alt text](./images/tour/145.png "145")
+:::image type="content" source="images/tutorial/join-events-la.png" alt-text="Join events lightning and avalanche":::
 
 ## User session example of join
 
@@ -364,11 +364,10 @@ Events
 | take 10
 ```
 
-![alt text](./images/tour/150.png "150")
+:::image type="content" source="images/tutorial/user-session-extend.png" alt-text="User session extend":::
 
 It's good practice to use `project` to select just the columns we need before performing the join.
 In the same clauses, we rename the timestamp column.
-
 
 ## Plot a distribution
 
@@ -385,13 +384,11 @@ StormEvents
 | render timechart
 ```
 
-
-![alt text](./images/tour/170.png "170")
+:::image type="content" source="images/tutorial/event-count-duration.png" alt-text="Event count timechart by duration":::
 
 Or use `| render columnchart`:
 
-
-![alt text](./images/tour/160.png "160")
+:::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Column chart event count timechart by duration":::
 
 ## Percentiles
 
@@ -405,7 +402,7 @@ Use the above query, but replace `render` with:
 
 In this case, we provided no `by` clause, so the result is a single row:
 
-![alt text](./images/tour/180.png "180")
+:::image type="content" source="images/tutorial/summarize-percentiles-duration.png" alt-text="Table summarize percentiles by duration":::
 
 From which we can see that:
 
@@ -426,7 +423,7 @@ StormEvents
 | summarize percentiles(duration, 5, 20, 50, 80, 95) by State
 ```
 
-![alt text](./images/tour/190.png "190")
+:::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state":::
 
 ## Let: Assign a result to a variable
 
@@ -467,6 +464,7 @@ So if you have databases named *Diagnostics* and *Telemetry* and want to correla
 ```kusto
 Logs | join database("Telemetry").Metrics on Request MachineId | ...
 ```
+
 or if your default database is *Telemetry*
 
 ```kusto
@@ -474,9 +472,11 @@ union Requests, database("Diagnostics").Logs | ...
 ```
     
 All of the above assumed that both databases reside in the cluster you are currently connected to. Suppose that *Telemetry* database belonged to another cluster named *TelemetryCluster.kusto.windows.net* then to access it you'll need
+
 ```kusto
 Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
 ```
+
 > Note: when the cluster is specified the database is mandatory
 
 ::: zone-end

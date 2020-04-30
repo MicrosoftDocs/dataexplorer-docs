@@ -52,7 +52,7 @@ Imagine a database with the following tables: `A`, `B`, `C`, and `A_TEMP`.
 The following command will swap `A` and `A_TEMP` (so that the `A_TEMP` table will now be called `A`, and the other way around), rename
 `B` to `NEWB`, and keep `C` as-is. 
 
-```
+```kusto
 .rename tables A=A_TEMP, NEWB=B, A_TEMP=A
 ``` 
 
@@ -60,7 +60,7 @@ The following sequence of commands:
 1. Creates a new temporary table
 1. Replaces an existing or non-existing table with the new table
 
-```
+```kusto
 // Drop the temporary table if it exists
 .drop table TempTable ifexists
 

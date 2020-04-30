@@ -18,10 +18,10 @@ Alters the DocString value of an existing table.
 > [!NOTE]
 > * Requires [database admin permission](../management/access-control/role-based-authorization.md)
 > * Modification of the table is also allowed to the [database user](../management/access-control/role-based-authorization.md) who originally created the table
-> * If the table does not exist, an error is returned. For creating new table, see [.create table](/createtable.md)
+> * If the table does not exist, an error is returned. For creating new table, see [.create table](create-table-command.md)
 
 **Example** 
 
-```
+```kusto
 .alter table LyricsAsTable docstring "This is the theme to Garry's show"
 ```
