@@ -6,10 +6,10 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 04/30/2019
 ---
 
-# Azure Data Explorer data ingestion
+# Azure Data Explorer data ingestion overview
 
 Data ingestion is the process used to load data records from one or more sources to create or update a table in Azure Data Explorer. In most cases, the data is managed, then ingested to the engine endpoint. Once ingested, the data becomes available for query.
 
@@ -22,35 +22,57 @@ The Azure Data Explorer data management service, which is responsible for data i
 
 Azure Data Explorer pulls data from an external source or reads requests from an Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. **something about persisting** The Data Manager then commits the data ingest to the engine, where it's available for query.
 
-<!-- should we discuss queue vs streaming here? What to write about persisting?-->
-
 > [!NOTE]
 > The Kusto query language ingest control commands are executed directly to the engine endpoint, in contrast to managed data. In production scenarios, ingestion should be executed to the Data Management service using client libraries or data connections.
+
+## Ingestion commands
+
+There are a number of methods by which data can be ingested by Kusto Query Language (KQL) commands, each with its own characteristics.
+
+Depending on the existence of the table beforehand, the process requires
+[database admin, database ingestor, database user, or table admin permissions](../access-control/role-based-authorization.md).
+
+
+1. **Inline ingestion (push)**: A control command ([.ingest inline](./ingest-inline.md))
+   is sent to the engine, with the data to be ingested being a part of the command
+   text itself.
+   This method is primarily intended for ad-hoc testing
+   purposes, and should not be used for production purposes.
+1. **Ingest from query**: A control command ([.set, .append, .set-or-append, or .set-or-replace](./ingest-from-query.md))
+   is sent to the engine, with the data specified indirectly as the results of a query
+   or a command.
+   This method is useful for generating reporting tables out of raw data tables,
+   or for creating small temporary tables for further analysis.
+1. **Ingest from storage (pull)**: A control command ([.ingest into](./ingest-from-storage.md))
+   is sent to the engine, with the data stored in some external storage (for example, Azure
+   Blob Storage) accessible by the engine and pointed-to by the command.
+   This method allows efficient bulk ingestion of data, but puts some burden on
+   the client performing the ingestion to not overtax the cluster with concurrent
+   ingestions (or risk consuming all cluster resources by data ingestion, reducing
+   the performance of queries).
 
 ## Supported data formats
 
 For all ingestion methods other than ingest from query, format the data so that Azure Data Explorer can parse it. 
 * The supported data formats are: TXT, CSV, TSV, TSVE, PSV, SCSV, SOH​, JSON (line-separated, multi-line), Avro, Orc, and Parquet​. 
 * Supports ZIP and GZIP compression.
+* See [supported formats](ingestion-supported-formats.md) for more information.
 
 > [!NOTE]
 > When data is being ingested, data types are inferred based on the target table columns. If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.
 
-## Ingestion methods
-
-Azure Data Explorer supports several ingestion methods, each with its own target scenarios, advantages, and disadvantages. Azure Data Explorer offers ingestion tools, connectors and plugins to common services, managed pipelines, programmatic ingestion using SDKs, and direct access to the engine.
-
-<!-- unless otherwise indicated, align order with listed order AND image order-->
-
-**Queued vs streaming ingestion**
-
-<!-- location of above - vs after explanation of individual methods-->
+## Queued vs streaming ingestion
 
 * Queued ingestion performs data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. Queued ingestion can be performed with the following ingestion methods:
  <!--check which methods are relevant-->
 
-* Streaming ingestion allows near real-time latency for small sets of data per table.
-Data is initially ingested to row store, then moved to column store extents. Streaming ingestion can be performed using an Azure Data Explorer client library, with Event Hub as a data source.
+* Streaming ingestion is ongoing data ingestion from an automated source. Streaming ingestion allows near real-time latency for small sets of data per table. Data is initially ingested to row store, then moved to column store extents. Streaming ingestion can be performed using an Azure Data Explorer client library, with Event Hub as a data source.
+
+## Ingestion options
+
+Azure Data Explorer supports several ingestion methods, each with its own target scenarios, advantages, and disadvantages. Azure Data Explorer offers ingestion tools, connectors and plugins to common services, managed pipelines, programmatic ingestion using SDKs, and direct access to the engine.
+
+<!-- unless otherwise indicated, align order with listed order AND image order-->
 
 ### Ingestion using managed pipelines
 
@@ -159,7 +181,10 @@ When ingesting from storage, the source data is validated as part of parsing. Th
 
 ## Ingestion recommendations and limitations
 
-* The effective retention policy of ingested data is derived from the database's retention policy. See [retention policy](kusto/management/retentionpolicy.md) for details. Ingesting data requires **Table ingestor** or **Database ingestor** permissions.
+* Data ingested into a table in Azure Data Explorer is subject to the table's effective retention policy. Unless set on a table explicitly, the effective retention policy is derived from the database's retention policy. The default retention batching policy is five minutes. 
+Therefore, when you ingest data into Azure Data Explorer, make sure that the database's retention policy is appropriate for your needs. If not, explicitly override it at the table level. Failure to do so might result in a "silent" deletion of your data due to the database's retention policy. See [retention policy](kusto/management/retentionpolicy.md) for more details. 
+
+* Ingesting data requires **Table ingestor** or **Database ingestor** permissions.
 * Ingestion supports a maximum file size of 5 GB. The recommendation is to ingest files between 100 MB and 1 GB.
 
 ## Next steps
