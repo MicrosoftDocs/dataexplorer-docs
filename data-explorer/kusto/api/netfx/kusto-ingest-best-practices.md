@@ -56,6 +56,6 @@ Therefore, follow our recommendations, and you will be able to better control yo
 * **Make sure that you provide the Kusto.Ingest client with an accurate, uncompressed, data size**<br>
     Not doing so may cause Kusto to perform extra storage transactions.
 * **Avoid** sending data for ingestion with the `FlushImmediately` flag set to `true`, or sending small chunks with `ingest-by`/`drop-by` tags set.<br>
-    Using these methods prevents the Kusto service from properly aggregating the data during ingestion, and causes unnecessary storage transactions following the ingestion, thereby affecting COGS.<br>
+    Using these methods prevents the Azure Data Explorer service from properly aggregating the data during ingestion, and causes unnecessary storage transactions following the ingestion, thereby affecting COGS.<br>
     Moreover, using these excessively could result in degraded ingestion and/or query performance of your cluster.<br>
     
