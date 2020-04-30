@@ -71,7 +71,7 @@ When your cluster approaches a state of under-utilization, scale in to lower cos
     * Number of failed queries are below a defined minimum.
 
 > [!NOTE]
-> The scale in logic currently requires a 1-day evaluation before implementation of optimized scale in. This evaluation takes place once every 6 hours. If a quicker change is needed, use [manual scale](#manual-scale).
+> The scale in logic currently requires a 1-day evaluation before implementation of optimized scale in. This evaluation takes place once every 6 hours. If an immediate change is needed, use [manual scale](#manual-scale).
 
 ### Custom autoscale
 
