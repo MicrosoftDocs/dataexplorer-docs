@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Explorer data ingestion'
+title: 'Azure Data Explorer data ingestion overview'
 description: 'Learn about the different ways you can ingest (load) data in Azure Data Explorer'
 author: orspod
 ms.author: orspodek
@@ -20,7 +20,7 @@ The diagram below shows the end-to-end flow for working in Azure Data Explorer.
 
 The Azure Data Explorer data management service, which is responsible for data ingestion, implements the following process:
 
-Azure Data Explorer pulls data from an external source or reads requests from an Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. **something about persisting** The Data Manager then commits the data ingest to the engine, where it is available for query.
+Azure Data Explorer pulls data from an external source or reads requests from an Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. **something about persisting** The Data Manager then commits the data ingest to the engine, where it's available for query.
 
 <!-- should we discuss queue vs streaming here? What to write about persisting?-->
 
@@ -30,7 +30,7 @@ Azure Data Explorer pulls data from an external source or reads requests from an
 ## Supported data formats
 
 For all ingestion methods other than ingest from query, format the data so that Azure Data Explorer can parse it. 
-* The supported data formats are: TXT, CSV, TSV, TSVE, PSV, SCSV, SOH​, JSON (line-separated, multi-line), Avro, Orc and Parquet​. 
+* The supported data formats are: TXT, CSV, TSV, TSVE, PSV, SCSV, SOH​, JSON (line-separated, multi-line), Avro, Orc, and Parquet​. 
 * Supports ZIP and GZIP compression.
 
 > [!NOTE]
@@ -38,7 +38,7 @@ For all ingestion methods other than ingest from query, format the data so that 
 
 ## Ingestion methods
 
-Azure Data Explorer supports several ingestion methods, each with its own target scenarios, advantages, and disadvantages. Azure Data Explorer offers ingestion tools, connectors and plugins to common services, managed pipelines,  programmatic ingestion using SDKs, and direct access to the engine for exploration purposes.
+Azure Data Explorer supports several ingestion methods, each with its own target scenarios, advantages, and disadvantages. Azure Data Explorer offers ingestion tools, connectors and plugins to common services, managed pipelines, programmatic ingestion using SDKs, and direct access to the engine.
 
 <!-- unless otherwise indicated, align order with listed order AND image order-->
 
@@ -46,7 +46,7 @@ Azure Data Explorer supports several ingestion methods, each with its own target
 
 <!-- location of above - vs after explanation of individual methods-->
 
-* Queued ingestion performs data batching and is optimized for high ingestion throughput. This is the preferred and most performant ingestion method. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. Queued ingestion can be performed with the following ingestion methods:
+* Queued ingestion performs data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. Queued ingestion can be performed with the following ingestion methods:
  <!--check which methods are relevant-->
 
 * Streaming ingestion allows near real-time latency for small sets of data per table.
@@ -68,7 +68,7 @@ Azure Data Explorer currently supports the following pipelines:
 
 * Kafka connector, see [Ingest data from Kafka into Azure Data Explorer](ingest-data-kafka.md).
 
-* Azure Data Factory (ADF), a fully managed data integration service for analytic workloads in Azure, to copy data to and from Azure Data Explorer using [supported data stores and formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats). For more information, see [Copy data from Azure Data Factory to Azure Data Explorer](/azure/data-explorer/data-factory-load-data).
+* Azure Data Factory (ADF), a fully managed data integration service for analytic workloads in Azure. ADF can copy data to and from Azure Data Explorer using [supported data stores and formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats). For more information, see [Copy data from Azure Data Factory to Azure Data Explorer](/azure/data-explorer/data-factory-load-data).
 
 <!-- Need to add more information about the following two: 
 
@@ -85,7 +85,7 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
 **Available SDKs and open-source projects**:
 
-Kusto offers client SDK that can be used to ingest and query data with:
+Kusto offers client SDKs that can be used to ingest and query data with:
 <!-- should this be ADX not Kusto?-->
 
 * [Python SDK](kusto/api/python/kusto-python-client-library.md)
@@ -104,7 +104,7 @@ Kusto offers client SDK that can be used to ingest and query data with:
 
 * Ingesting data through the Azure Data Explorer data management service (high-throughput and reliable ingestion):
 
-    [**Batch ingestion**](kusto/api/netfx/kusto-ingest-queued-ingest-sample.md) (provided by SDK): the client uploads the data to Azure Blob storage (designated by the Azure Data Explorer data management service) and posts a notification to an Azure Queue. Batch ingestion is the recommended technique for high-volume, reliable, and cheap data ingestion.
+    [**Batch ingestion**](kusto/api/netfx/kusto-ingest-queued-ingest-sample.md) (provided by SDK): the client uploads the data to Azure Blob storage (chosen by the Azure Data Explorer data management service) and posts a notification to an Azure Queue. Batch ingestion is the recommended technique for high-volume, reliable, and cheap data ingestion.
 
 * Ingesting data directly into the Azure Data Explorer engine (most appropriate for exploration and prototyping):
 
@@ -114,7 +114,7 @@ Kusto offers client SDK that can be used to ingest and query data with:
 
   * **Ingest from storage**: control command (.ingest into) with data stored externally (for example, Azure Blob Storage) allows efficient bulk ingestion of data.
 
-For organizations with an existing infrastructure that are based on a messaging service like Event Hub and IoT Hub, using a connector is likely the most appropriate solution. Queued ingestion is appropriate for large data volumes.
+For organizations with an existing infrastructure that is based on a messaging service like Event Hub and IoT Hub, using a connector is likely the most appropriate solution. Queued ingestion is appropriate for large data volumes.
 
 ## Comparing ingestion methods:
 
