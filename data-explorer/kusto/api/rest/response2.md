@@ -16,13 +16,13 @@ Each JSON object in the array is called a _frame_.
 
 There are several types of frames:
 
-* [DataSetHeader](#DataSetHeader)
-* [TableHeader](#TableHeader)
-* TableFragment](#TableFragment)
-* [TableProgress](#TableProgress)
-* [TableCompletion](#TableCompletion)
-* [DataTable](#DataTable)
-* [DataSetCompletion](#DataSetCompletion)
+* [DataSetHeader](#datasetheader)
+* [TableHeader](#tableheader)
+* [TableFragment](#tablefragment)
+* [TableProgress](#tableprogress)
+* [TableCompletion](#tablecompletion)
+* [DataTable](#datatable)
+* [DataSetCompletion](#datasetcompletion)
 
 ## DataSetHeader 
 
@@ -190,8 +190,8 @@ Where:
 
 ### The meaning of tables in the response
 
-* `PrimaryResult` - The main tabular result of the query. For each [tabular expression statement](../../query/tabularexpressionstatements.md), one or more tables are generated in-order, representing the results produced by the statement. There can be multiple such tables due to [batches](../../query/batches.md) and [fork operators](../../query/forkoperator.md).
-* `QueryCompletionInformation` - Provides additional information regarding the execution of the query itself, such as
+* `PrimaryResult` - The main tabular result of the query. For each [tabular expression statement](../../query/tabularexpressionstatements.md), one or more tables are generated in-order, representing the results produced by the statement. There can be multiple such tables because of [batches](../../query/batches.md) and [fork operators](../../query/forkoperator.md).
+* `QueryCompletionInformation` - Provides additional information about the execution of the query itself, such as
  whether it completed successfully or not, and what were the resources consumed by the query (similar to the QueryStatus table 
  in the v1 response). 
 * `QueryProperties` - Provides additional values such as client visualization instructions (emitted, for example, to reflect the
