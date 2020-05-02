@@ -1,5 +1,5 @@
 ---
-title: How-To Authenticate with AAD for Azure Data Explorer Access - Azure Data Explorer | Microsoft Docs
+title: Authenticate with AAD for access in Azure Data Explorer
 description: This article describes How-To Authenticate with AAD for Azure Data Explorer Access in Azure Data Explorer.
 services: data-explorer
 author: orspod

@@ -1,5 +1,5 @@
 ---
-title: Query result set has exceeded the internal ... limit - Azure Data Explorer | Microsoft Docs
+title: Query result set exceeds internal limit in Azure Data Explorer
 description: This article describes Query result set has exceeded the internal ... limit in Azure Data Explorer.
 services: data-explorer
 author: orspod
