@@ -56,11 +56,7 @@ The following steps are not required if you're running commands in Azure Cloud S
    |**Setting** | **Suggested value** | **Field description**|
    |---|---|---|
    | name | *azureclitest* | The desired name of your cluster.|
-   | sku | *Standard_D13_v2* | The SKU that will be used for your cluster. 
-    Parameters:
-    name - the name of the sku.
-    tier - the teir of the sku.
-    |
+   | sku | *Standard_D13_v2* | The SKU that will be used for your cluster. Parameters: name- the name of the sku. tier- the teir of the sku. |
    | resource-group | *testrg* | The resource group name where the cluster will be created. |
    | location | *westus* | The location where the cluster will be created. |
 
@@ -88,10 +84,7 @@ If the result contains `provisioningState` with the `Succeeded` value, then the 
    | database-name | *clidatabase* | The name of your database.|
    | resource-group | *testrg* | The resource group name where the cluster will be created. |
    | read-write-database | *P365D* *P31D* *westus* | The type of the database.
-   Parameters: 
-   soft-delete-period: P365D : Signifies the amount of time that data will be kept available to query. See [retention policy](kusto/management/retentionpolicy.md) for more information.
-   hot-cache-period: P31D :  Signifies the amount of time that data will be kept in cache. See [cache policy](kusto/management/cachepolicy.md) for more information.
-   location: westus : The location where the database will be created |
+   Parameters: soft-delete-period- Signifies the amount of time that data will be kept available to query. See [retention policy](kusto/management/retentionpolicy.md) for more information. hot-cache-period- Signifies the amount of time that data will be kept in cache. See [cache policy](kusto/management/cachepolicy.md) for more information. location: westus-The location where the database will be created. |
 
 1. Run the following command to see the database that you created:
 
