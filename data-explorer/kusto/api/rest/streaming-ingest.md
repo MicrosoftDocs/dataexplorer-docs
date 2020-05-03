@@ -70,7 +70,7 @@ The following table contains the common custom headers for query and management 
 |`x-ms-user`             |The (friendly) name of the user making the request.                                   | Optional          |
 |`x-ms-user-id`          |Same as `x-ms-user`.                                                                  | Optional          |
 |`x-ms-client-request-id`|A unique identifier for the request.                                                  | Optional          |
-|`x-ms-client-version`   |The (friendly) version identifier for the client making the request.                  | Optional (Required in some scenarios) |
+|`x-ms-client-version`   |The (friendly) version identifier for the client making the request.                  | Optional (Required in some scenarios - see NOTE) |
 
 > [!NOTE]
 > We strongly recommend that you specify `x-ms-client-version`, since it's required in some scenarios, where it's used to identify the request, such as canceling a running query. 
