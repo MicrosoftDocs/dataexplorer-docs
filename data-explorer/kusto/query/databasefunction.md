@@ -82,6 +82,6 @@ receives a parameter `dbName` - which is passed into the database() function.
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end
