@@ -19,7 +19,7 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accu
 
 **Syntax**
 
-`summarize` `hll(`*`Expr`* `[,` *`Accuracy`*`])`
+`summarize hll(`*`Expr`* `[,` *`Accuracy`*`])`
 
 **Arguments**
 
