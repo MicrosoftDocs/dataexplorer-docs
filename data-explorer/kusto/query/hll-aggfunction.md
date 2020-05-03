@@ -26,13 +26,13 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accu
 * *`Expr`*: Expression that will be used for aggregation calculation. 
 * *`Accuracy`*, if specified, controls the balance between speed and accuracy.
 
-|Value |Accuracy  |Speed  |Error  |
-|---------|---------|---------|---------|
-|`0` | lowest | fastest | 1.6% |
-|`1` | default  | balanced | 0.8% |
-|`2` | high | slow | 0.4%  |
-|`3` | high | slow | 0.28% |
-|`4` | extra high | slowest | 0.2% |
+  |Accuracy Value |Accuracy  |Speed  |Error  |
+  |---------|---------|---------|---------|
+  |`0` | lowest | fastest | 1.6% |
+  |`1` | default  | balanced | 0.8% |
+  |`2` | high | slow | 0.4%  |
+  |`3` | high | slow | 0.28% |
+  |`4` | extra high | slowest | 0.2% |
 	
 **Returns**
 
