@@ -139,7 +139,7 @@ In shuffle query, the default partitions number is the cluster nodes number. Thi
 
 This hint is useful when the cluster has a small number of cluster nodes where the default partitions number will be small too and the query still fails or takes long execution time.
 
-Note that many partitions may degrade performance and consume more cluster resources. Instead, choose the partition number carefully by starting with the hint.strategy = shuffle and start increasing the partitions gradually.
+Note that having many partitions may consume more cluster resources and degrade performance. Instead, choose the partition number carefully by starting with the hint.strategy = shuffle and start increasing the partitions gradually.
 
 **Examples**
 
