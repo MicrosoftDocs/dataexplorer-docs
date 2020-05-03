@@ -19,10 +19,10 @@ The diagram below shows the end-to-end flow for working in Azure Data Explorer.
 
 The Azure Data Explorer data management service, which is responsible for data ingestion, implements the following process:
 
-Azure Data Explorer pulls data from an external source or reads requests from an Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. **something about persisting** The Data Manager then commits the data ingest to the engine, where it's available for query.
+Azure Data Explorer pulls data from an external source or reads requests from an Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. <!-- is this correct?--> The Data Manager then commits the data ingest to the engine, where it's available for query.
 
 > [!NOTE]
-> The Kusto query language ingest control commands are executed directly to the engine endpoint, in contrast to managed data. In production scenarios, ingestion should be executed to the Data Management service using client libraries or data connections.
+> Kusto query language ingest control commands are executed directly to the engine endpoint, in contrast to managed data. In production scenarios, ingestion should be executed to the Data Management service using client libraries or data connections.
 
 ## Supported data formats
 
@@ -41,7 +41,7 @@ For all ingestion methods other than ingest from query, format the data so that 
 
 * Streaming ingestion is ongoing data ingestion from an automated source. Streaming ingestion allows near real-time latency for small sets of data per table. Data is initially ingested to row store, then moved to column store extents. Streaming ingestion can be performed using an Azure Data Explorer client library, with Event Hub as a data source.
 
-## Ingestion options
+## Ingestion methods
 
 Azure Data Explorer supports several ingestion methods, each with its own target scenarios, advantages, and disadvantages. Azure Data Explorer offers ingestion tools, connectors and plugins to common services, managed pipelines, programmatic ingestion using SDKs, and direct access to the engine.
 
@@ -111,30 +111,31 @@ There are a number of methods by which data can be ingested by Kusto Query Langu
 
 For organizations with an existing infrastructure that is based on a messaging service like Event Hub and IoT Hub, using a connector is likely the most appropriate solution. Queued ingestion is appropriate for large data volumes.
 
-## Ingestion properties
+### Ingestion properties 
+<!--I don't think this makes sense here-->
 
 For data ingestion properties, see [data ingestion properties](ingestion-properties.md).
 
-## Comparing ingestion methods:
+## Comparing ingestion methods
 
 | Ingestion name | Data type | Maximum file size | Streaming/batching | Most common scenarios | Considerations |
 | --- | --- | --- | --- | --- | --- |
-| **One click ingestion** | | | | |
-| **LightIngest** | | | | | |
+| **One click ingestion** | *sv, JSON | 1 GB uncompressed | batching to container, local blob in direct ingestion | one-off, create table schema, definition of continuous ingestion with event grid, bulk ingestion with container (up to 10,000 blobs) | 10,000 blobs are randomly selected from container|
+| **LightIngest** | all formats supported | **check** 1 GB uncompressed | batching via DM or direct ingestion to engine |  data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction)| |
 | **ADX Kafka** | | | | |
 | **ADX to Apache Spark** | | | | |
 | **LogStash** | | | | |
-| **Azure Data Factory** | | | | |
-| **Azure Data Flow** | | | | |
-| **IoT Hub** | | | | |
-| **Event Hub** | | | | |
-| **Event Grid** | | | | |
-| **Net Std** | | | | |
-| **Python** | | | | |
-| **Node.js** | | | | |
-| **Java** | | | | |
-| **REST** | | | | |
-| **Go** | | | | |
+| **Azure Data Factory** | all formats supported | unlimited *(some restrictions- maybe up to 200GB) | Batching | Supports usually unsupported formats, large files, copy from over 100 sources, from onperm to cloud | Time of ingestion |
+| **Azure Data Flow** | | | | Ingestion commands as part of flow| Must have high performing response time |
+| **IoT Hub** | all formats supported | N/A | batching and streaming | IoT messages, IoT events | |
+| **Event Hub** | all formats supported | N/A | batching and streaming | Messages, events | |
+| **Event Grid** | all formats supported | 1 GB uncompressed | batching | Continuous ingestion from Azure storage, External data in Azure storage | 100 KB is optimal file size |
+| **Net Std** | all formats supported | 1 GB uncompressed | batching, streaming, direct | Write your own code according to organizational needs |
+| **Python** | all formats supported | 1 GB uncompressed | batching, streaming, direct | Write your own code according to organizational needs |
+| **Node.js** | all formats supported | 1 GB uncompressed | batching, streaming, direct | Write your own code according to organizational needs |
+| **Java** | all formats supported | 1 GB uncompressed | batching, streaming, direct | Write your own code according to organizational needs |
+| **REST** | all formats supported | 1 GB uncompressed | batching, streaming, direct| Write your own code according to organizational needs |
+| **Go** | all formats supported | 1 GB uncompressed | batching, streaming, direct | Write your own code according to organizational needs |
 
 > [!NOTE]
 > When data is being ingested, data types are inferred based on the target table columns. If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.
