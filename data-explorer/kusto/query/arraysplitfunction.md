@@ -1,5 +1,5 @@
 ---
-title: array_split() - Azure Data Explorer | Microsoft Docs
+title: array_split() - Azure Data Explorer
 description: This article describes array_split() in Azure Data Explorer.
 services: data-explorer
 author: orspod

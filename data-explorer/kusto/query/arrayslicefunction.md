@@ -1,5 +1,5 @@
 ---
-title: array_slice() - Azure Data Explorer | Microsoft Docs
+title: array_slice() - Azure Data Explorer
 description: This article describes array_slice() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -36,7 +36,7 @@ Dynamic array of the values in the range [`start..end`] from `arr`.
 print arr=dynamic([1,2,3]) 
 | extend sliced=array_slice(arr, 1, 2)
 ```
-|`arr`|sliced|
+|`arr`|`sliced`|
 |---|---|
 |[1,2,3]|[2,3]|
 
