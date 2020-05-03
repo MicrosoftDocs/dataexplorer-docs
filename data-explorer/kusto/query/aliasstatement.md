@@ -1,5 +1,5 @@
 ---
-title: Alias statement - Azure Data Explorer | Microsoft Docs
+title: Alias statement - Azure Data Explorer
 description: This article describes Alias statement in Azure Data Explorer.
 services: data-explorer
 author: orspod

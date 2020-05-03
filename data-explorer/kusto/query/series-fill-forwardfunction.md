@@ -1,5 +1,5 @@
 ---
-title: series_fill_forward() - Azure Data Explorer | Microsoft Docs
+title: series_fill_forward() - Azure Data Explorer
 description: This article describes series_fill_forward() in Azure Data Explorer.
 services: data-explorer
 author: orspod
