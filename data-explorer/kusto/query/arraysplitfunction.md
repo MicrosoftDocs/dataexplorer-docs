@@ -15,12 +15,12 @@ Splits an array to multiple arrays according to the split indices and packs the 
 
 **Syntax**
 
-`array_split`(`arr`, *indices*)
+`array_split`(*`arr`*, *`indices`*)
 
 **Arguments**
 
-* `arr`: Input array to split, must be dynamic array.
-* *indices*: Integer or dynamic array of integers with the split indices (zero based), negative values are converted to array_length + value.
+* *`arr`*: Input array to split, must be dynamic array.
+* *`indices`*: Integer or dynamic array of integers with the split indices (zero based), negative values are converted to array_length + value.
 
 **Returns**
 
