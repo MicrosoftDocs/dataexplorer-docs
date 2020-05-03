@@ -483,6 +483,6 @@ Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end
