@@ -15,7 +15,7 @@ Searches the array for the specified item, and returns its position.
 
 **Syntax**
 
-`array_index_of(`*`array`*,*`value`*`)`
+`array_index_of(`*array*,*value*`)`
 
 **Arguments**
 
