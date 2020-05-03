@@ -11,9 +11,9 @@ ms.date: 02/13/2020
 ---
 # series_fill_backward()
 
-This function does a backward fill interpolation of missing values in a series.
+Performs a backward fill interpolation of missing values in a series.
 
-An expression containing dynamic numerical array is the input. The function replaces all instances of missing_value_placeholder with the nearest value from its right side, other than missing_value_placeholder, and returns the resulting array. The rightmost instances of missing_value_placeholder are preserved.
+An expression containing dynamic numerical array is the input. The function replaces all instances of missing_value_placeholder with the nearest value from its right side (other than missing_value_placeholder), and returns the resulting array. The rightmost instances of missing_value_placeholder are preserved.
 
 **Syntax**
 

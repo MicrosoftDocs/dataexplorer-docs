@@ -11,7 +11,7 @@ ms.date: 10/23/2018
 ---
 # series_fill_forward()
 
-This function does a forward fill interpolation of missing values in a series.
+Performs a forward fill interpolation of missing values in a series.
 
 An expression containing dynamic numerical array is the input. The function replaces all instances of missing_value_placeholder with the nearest value from its left side other than missing_value_placeholder, and returns the resulting array. The leftmost instances of missing_value_placeholder are preserved.
 

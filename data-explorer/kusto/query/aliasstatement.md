@@ -15,7 +15,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-Alias statements allow you to define an alias for databases that can be used later in the same query.
+Alias statements allow you to define an alias for databases, which can be used later in the same query.
 
 This is useful when you're working with several clusters but want to appear as if you're working on fewer clusters.
 The alias must be defined according to the following syntax, where *clustername* and *databasename* are existing and valid entities.
@@ -26,7 +26,7 @@ The alias must be defined according to the following syntax, where *clustername*
 
 `alias` database *DatabaseAliasName* `=` cluster("https://*clustername*.kusto.windows.net:443").database("*databasename*")
 
-* *'DatabaseAliasName'* can be either en existing name or a new name.
+* *'DatabaseAliasName'* can be either an existing name or a new name.
 * The mapped cluster-uri and the mapped database-name must appear inside double-quotes(") or single-quotes(')
 
 **Examples**
