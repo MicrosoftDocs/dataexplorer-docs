@@ -19,7 +19,7 @@ Set shuffle query strategy using the query parameter `hint.strategy = shuffle` o
 
 Define a [data partitioning policy](../management/partitioningpolicy.md) on your table. 
 
-Queries in which the `shufflekey` is also the table's hash partition key are expected to perform better, as the amount of data required to move across cluster nodes is reduced.
+Set `shufflekey` as the table's hash partition key for better performance, as the amount of data required to move across cluster nodes is reduced.
 
 **Syntax**
 
