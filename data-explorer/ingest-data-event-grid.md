@@ -56,7 +56,7 @@ In this article, you learn how to set an [Azure Event Grid](/azure/event-grid/ov
         * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*. 
         * To define a filter on a blob prefix (or folder in ADLS gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*. 
     * **Subject Ends With** field is the *literal* suffix of the blob. No wildcards are allowed.
-    * See [this article](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-event-overview#filtering-events) for more details about filtering events. 
+    * See [this article](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview#filtering-events) for more details about filtering events. 
     
 ## Create a target table in Azure Data Explorer
 
