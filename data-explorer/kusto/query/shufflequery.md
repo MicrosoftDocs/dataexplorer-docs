@@ -15,9 +15,9 @@ Shuffle query is a semantic-preserving transformation for a set of operators tha
 
 Operators that support shuffling in Kusto are [join](joinoperator.md), [summarize](summarizeoperator.md), and [make-series](make-seriesoperator.md).
 
-Shuffle query strategy can be set by the query parameter `hint.strategy = shuffle` or `hint.shufflekey = <key>`.
+Set shuffle query strategy using the query parameter `hint.strategy = shuffle` or `hint.shufflekey = <key>`.
 
-You can also define a [data partitioning policy](../management/partitioningpolicy.md) on your table. 
+Define a [data partitioning policy](../management/partitioningpolicy.md) on your table. 
 
 Queries in which the `shufflekey` is also the table's hash partition key are expected to perform better, as the amount of data required to move across cluster nodes is reduced.
 
