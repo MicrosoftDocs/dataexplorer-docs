@@ -87,6 +87,6 @@ print result=current_principal_is_member_of(
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end

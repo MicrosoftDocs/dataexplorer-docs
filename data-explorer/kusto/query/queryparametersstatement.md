@@ -113,6 +113,6 @@ use the **Query parameters** "wrench" icon (`ALT` + `P`).
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end
