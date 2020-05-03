@@ -45,6 +45,6 @@ database("Logs").Traces | count
 
 ::: zone pivot="azuremonitor"
 
-This capability isn't supported in Azure Monitor
+This isn't supported in Azure Monitor
 
 ::: zone-end
