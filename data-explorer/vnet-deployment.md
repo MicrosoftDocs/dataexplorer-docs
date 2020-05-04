@@ -92,6 +92,9 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 
 #### Azure Data Explorer management IP addresses
 
+> [!NOTE]
+> For future deployments, use AzureDataExplorer Service Tag
+
 | Region | Addresses |
 | --- | --- |
 | Australia Central | 20.37.26.134 |
@@ -217,6 +220,7 @@ If you want to secure outbound traffic using [Azure Firewall](/azure/firewall/ov
 
 ```
 prod.warmpath.msftcloudes.com:443
+gcs.prod.monitoring.core.windows.net:443
 production.diagnostics.monitoring.core.windows.net:443
 graph.windows.net:443
 *.update.microsoft.com:443
