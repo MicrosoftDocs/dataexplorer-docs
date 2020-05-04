@@ -56,7 +56,7 @@ The following steps are not required if you're running commands in Azure Cloud S
    |**Setting** | **Suggested value** | **Field description**|
    |---|---|---|
    | name | *azureclitest* | The desired name of your cluster.|
-   | sku | *Standard_D13_v2* | The SKU that will be used for your cluster. Parameters: name- the name of the sku. tier- the teir of the sku. |
+   | sku | *Standard_D13_v2* | The SKU that will be used for your cluster. Parameters: name- the name of the sku. tier- the tier of the sku. |
    | resource-group | *testrg* | The resource group name where the cluster will be created. |
    | location | *westus* | The location where the cluster will be created. |
 
