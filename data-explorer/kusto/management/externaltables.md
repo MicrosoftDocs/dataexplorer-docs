@@ -282,8 +282,7 @@ with
 
 #### Artifact filtering logic
 
-When querying an external table, Kusto makes everything possible to filter out irrelevant external storage artifacts (blobs)
-for improving query performance. Here we describe the process of iterating on blobs, and deciding whether a blob should be processed.
+When querying an external table, the query engine filters out irrelevant external storage artifacts (blobs) to improve query performance. The process of iterating on blobs, and deciding whether a blob should be processed is described below.
 
 First, we build a URI pattern that represents a place where blobs are to be found. Initially, URI pattern equals to a connection string
 provided as part of external table definition. If there are any partitions defined, they and appended to the URI pattern.
