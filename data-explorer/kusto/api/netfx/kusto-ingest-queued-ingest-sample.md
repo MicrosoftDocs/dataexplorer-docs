@@ -11,11 +11,7 @@ ms.date: 02/05/2020
 ---
 # Data ingestion with the Kusto.Ingest library
 
-This article presents sample code that uses the Kusto.Ingest client library for data ingestion.
-
-## Overview
-
-This article details the recommended mode of ingestion for production-grade pipelines, known as queued ingestion. For the Kusto.Ingest library, the corresponding entity is the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) interface. The client code interacts with the Azure Data Explorer service by posting ingestion notifications to an Azure queue. Reference to the queue is obtained from the Data Management entity responsible for ingestion. 
+This article presents sample code that uses the Kusto.Ingest client library for data ingestion. The code details the recommended mode of ingestion for production-grade pipelines, known as queued ingestion. For the Kusto.Ingest library, the corresponding entity is the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) interface. The client code interacts with the Azure Data Explorer service by posting ingestion notifications to an Azure queue. Reference to the queue is obtained from the Data Management entity responsible for ingestion. 
 
 > [!NOTE]
 > Interaction with the Data Management service must be authenticated using Azure Active Directory (Azure AD).
