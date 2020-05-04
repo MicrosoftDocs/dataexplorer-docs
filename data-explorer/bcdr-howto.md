@@ -6,12 +6,12 @@ ms.author: orspodek
 ms.reviewer: herauch
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/04/2020
 ---
 
-# Business continuity and disaster recovery- HowTo
+# Create business continuity and disaster recovery solutions with Azure Data Explorer
 
-This HowTo article presents an example how to create several different architectures that take business continuity into account under heavy disruptions. You'll also choose the specific architecture that best balances your needs. For a more in-depth look at architecture considerations and recovery solutions, see the business continuity [overview](bcdr-overview.md).
+This article presents an example how to create several different architectures that take business continuity into account under heavy disruptions. You'll also choose the specific architecture that best balances your needs. For a more in-depth look at architecture considerations and recovery solutions, see the business continuity [overview](bcdr-overview.md).
 
 ## Regional outage
 
@@ -34,7 +34,7 @@ The above image shows three clusters in three different regions, which can also 
 
 ### Duplicate management activities
 
-Replicate the management activities in order to have the same cluster configuration in every replica.
+Replicate the management activities to have the same cluster configuration in every replica.
 
 1. Create the same databases/[tables](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-table-command)/[mappings](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-ingestion-mapping-command)/[policies](https://docs.microsoft.com/azure/data-explorer/kusto/management/policies) on each replica.
 1. Manage the [authentication/authorization](https://docs.microsoft.com/azure/data-explorer/kusto/management/security-roles) on each replica.
@@ -45,10 +45,9 @@ There are several ways to manage your databases. You could use the [portal to cr
 
 ### Align data ingestion
 
-In addition to management activities, you need to configure data ingestion consistently on every cluster.
+Configure data ingestion consistently on every cluster.
 
-Hardening ingestion methods leveraging using advanced business continuity options:
-<!-- I have no idea what that means -->
+Ingestion methods using advanced business continuity options:
 
 |Ingestion method  |Disaster recovery feature  |
 |---------|---------|
@@ -70,11 +69,11 @@ Make sure to [ingest from the EventHub](https://docs.microsoft.com/azure/data-ex
 ### How does the disaster recovery setup work?
 <!-- I think this is meant to be an explanation of what you've now set up -->
 
-Once you've completed the previous steps, your data and management are distributed to multiple regions. If there is an outage in one region, Azure Data Explorer will be able to catch up in the other replicas.
+Once you've completed the previous steps, your data and management are distributed to multiple regions. If there's an outage in one region, Azure Data Explorer will be able to catch up in the other replicas.
 
 As shown in the diagram below, your data sources produce events to the failover-configured EventHub, and each Azure Data Explorer replica consumes the events.
 
-Data visualization components like PowerBI, Grafana, or SDK powered WebApps can query one of the replicas.
+Data visualization components like Power BI, Grafana, or SDK powered WebApps can query one of the replicas.
 
 :::image type="content" source="media/bcdr/data-sources-visualization.png" alt-text="Data sources to data visualization":::
 
@@ -88,15 +87,15 @@ Now you're ready to optimize your replicas using the following examples:
 
 ### Architecture for an active/hot standby
 
-Replicating and updating the Azure Data Explorer setup will linearly increase the cost with the number of replicas. In order to optimize cost, you can implement an architectural variant to balance time, failover, and cost.
+Replicating and updating the Azure Data Explorer setup will linearly increase the cost with the number of replicas. To optimize cost, you can implement an architectural variant to balance time, failover, and cost.
 
 :::image type="content" source="media/bcdr/active-hot-standby-scheme.png" alt-text="Architecture for an active/hot standby":::
 
-In this example, cost optimization has been implemented by introducing passive Azure Data Explorer replicas. These replicas are only turned on in case of a disaster in the primary region (for example, region A).
+In this example, cost optimization has been implemented by introducing passive Azure Data Explorer replicas. These replicas are only turned on if there's a disaster in the primary region (for example, region A).
 
-Only one cluster is ingesting data from the EventHub. The primary cluster in Region A is performing a [continuous export](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-export/continuous-data-export) of all data to a storage account. The secondary replicas have access to the data using [external tables](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/externaltables).
+Only one cluster is ingesting data from the EventHub. The primary cluster in Region A performs [continuous export](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-export/continuous-data-export) of all data to a storage account. The secondary replicas have access to the data using [external tables](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/externaltables).
 
-The replicas in Regions B and C do not need to be active 24/7, reducing the cost significantly. However, the performance of these replicas will not be as good as the primary cluster for most of the cases.
+The replicas in Regions B and C don't need to be active 24/7, reducing the cost significantly. However, the performance of these replicas won't be as good as the primary cluster for most of the cases.
 <!-- clusters vs replicas- consistency not 100% -->
 
 You can start/stop the secondary replicas using one of the following methods:
@@ -119,9 +118,9 @@ This section shows how to create an [Azure App Service](https://azure.microsoft.
 
 Having multiple connections between replicas in the same service gives you increased availability. This setup is useful not only in instances of regional outages.  
 
-You can use this boilerplate code for an app service to github : [https://github.com/Azure/azure-kusto-bcdr-boilerplate](https://github.com/Azure/azure-kusto-bcdr-boilerplate). In order to implement a multi-cluster client, the [AdxBcdrClient](https://github.com/Azure/azure-kusto-bcdr-boilerplate/blob/master/webapp/ADX/AdxBcdrClient.cs) class has been created. Each query that is executed using this client will be sent [first to the primary cluster](https://github.com/Azure/azure-kusto-bcdr-boilerplate/blob/26f8c092982cb8a3757761217627c0e94928ee07/webapp/ADX/AdxBcdrClient.cs#L69). If there is a failure, the query will be sent to secondary replicas.
+You can use this boilerplate code for an app service to GitHub : [https://github.com/Azure/azure-kusto-bcdr-boilerplate](https://github.com/Azure/azure-kusto-bcdr-boilerplate). To implement a multi-cluster client, the [AdxBcdrClient](https://github.com/Azure/azure-kusto-bcdr-boilerplate/blob/master/webapp/ADX/AdxBcdrClient.cs) class has been created. Each query that is executed using this client will be sent [first to the primary cluster](https://github.com/Azure/azure-kusto-bcdr-boilerplate/blob/26f8c092982cb8a3757761217627c0e94928ee07/webapp/ADX/AdxBcdrClient.cs#L69). If there's a failure, the query will be sent to secondary replicas.
 
-In order to measure the performance, and request distribution to primary/secondary cluster [custom application insights metrics](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) can be used. 
+To measure performance, and request distribution to primary/secondary cluster [custom application insights metrics](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) can be used. 
 
 We ran a test using multiple Azure Data Explorer replicas. After a simulated outage of primary and secondary clusters, you can see that the app service BCDR client is behaving as intended.
 
@@ -141,7 +140,7 @@ Compare these two methods [here](https://docs.microsoft.com/azure/frontdoor/fron
 
 Adding replicas to an active/active architecture increases the cost linearly. The cost includes nodes, storage, markup, and increased networking cost for [bandwidth](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-Use the [optimized autoscale](https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale-preview) feature to configure the horizontal scaling for the secondary clusters. They should be dimensioned to be able to handle the load of the ingest. Once the primary cluster is not reachable, the secondary clusters will get more traffic and scale according to the configuration. 
+Use the [optimized autoscale](https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale-preview) feature to configure the horizontal scaling for the secondary clusters. They should be dimensioned so they can handle the ingestion load. Once the primary cluster isn't reachable, the secondary clusters will get more traffic and scale according to the configuration. 
 
 This example saved roughly 50% of the cost in comparison to having the same horizontal and vertical scale on all replicas.
 
