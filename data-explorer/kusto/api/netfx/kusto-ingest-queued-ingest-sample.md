@@ -1,5 +1,5 @@
 ---
-title: HowTo Data Ingestion with Kusto.Ingest Library - Azure Data Explorer
+title: Perform data ingestion with Kusto.Ingest library - Azure Data Explorer
 description: This article describes data ingestion with Azure Data Explorer's Kusto.Ingest library.
 services: data-explorer
 author: orspod
