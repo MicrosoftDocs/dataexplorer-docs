@@ -50,14 +50,15 @@ The following steps are not required if you're running commands in Azure Cloud S
 1. Create your cluster by using the following command:
 
     ```azurecli-interactive
-    az kusto cluster create --name azureclitest --sku D11_v2 --resource-group testrg
+    az kusto cluster create --name azureclitest --sku name="Standard_D13_v2" tier="Standard" --resource-group testrg --location westus
     ```
 
    |**Setting** | **Suggested value** | **Field description**|
    |---|---|---|
    | name | *azureclitest* | The desired name of your cluster.|
-   | sku | *D13_v2* | The SKU that will be used for your cluster. |
+   | sku | *Standard_D13_v2* | The SKU that will be used for your cluster. Parameters: *name* -  The SKU name. *tier* - The SKU tier. |
    | resource-group | *testrg* | The resource group name where the cluster will be created. |
+   | location | *westus* | The location where the cluster will be created. |
 
     There are additional optional parameters that you can use, such as the capacity of the cluster.
 
@@ -74,16 +75,15 @@ If the result contains `provisioningState` with the `Succeeded` value, then the 
 1. Create your database by using the following command:
 
     ```azurecli-interactive
-    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period P365D --hot-cache-period P31D
+    az kusto database create --cluster-name azureclitest --database-name clidatabase --resource-group testrg --read-write-database soft-delete-period=P365D hot-cache-period=P31D location=westus
     ```
 
    |**Setting** | **Suggested value** | **Field description**|
    |---|---|---|
    | cluster-name | *azureclitest* | The name of your cluster where the database will be created.|
-   | name | *clidatabase* | The name of your database.|
+   | database-name | *clidatabase* | The name of your database.|
    | resource-group | *testrg* | The resource group name where the cluster will be created. |
-   | soft-delete-period | *P365D* | Signifies the amount of time that data will be kept available to query. See [retention policy](kusto/management/retentionpolicy.md) for more information. |
-   | hot-cache-period | *P31D* | Signifies the amount of time that data will be kept in cache. See [cache policy](kusto/management/cachepolicy.md) for more information. |
+   | read-write-database | *P365D* *P31D* *westus* | The database type. Parameters: *soft-delete-period* - Signifies the amount of time the data will be kept available to query. See [retention policy](kusto/management/retentionpolicy.md) for more information. *hot-cache-period* - Signifies the amount of time the data will be kept in cache. See [cache policy](kusto/management/cachepolicy.md) for more information. *location* -The location where the database will be created. |
 
 1. Run the following command to see the database that you created:
 
