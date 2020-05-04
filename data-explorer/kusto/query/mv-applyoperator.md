@@ -1,5 +1,5 @@
 ---
-title: mv-apply operator - Azure Data Explorer | Microsoft Docs
+title: mv-apply operator - Azure Data Explorer
 description: This article describes mv-apply operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
