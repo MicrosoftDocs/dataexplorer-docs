@@ -177,7 +177,7 @@ Creates or alters a new external table in the database in which the command is e
 | `fileExtension`  | `string` | If set, indicates file extensions of the blobs. On write, blobs names will end with this suffix. On read, only blobs with this file extension will be read.           |
 | `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
 
-To learn more about a role that external table parameters play in a query, please refer to the [Artifact filtering logic](#artifact-filtering-logic) section.
+For more information about external table parameters in queries, see [artifact filtering logic](#artifact-filtering-logic).
 
 > [!NOTE]
 > * If the table exists, `.create` command will fail with an error. Use `.alter` to modify existing tables. 
