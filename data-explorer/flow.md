@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Data Explorer flow connector (Preview) 
-description: Learn about using the Microsoft flow connector to create flows of automatically scheduled or triggered tasks.
+title: Azure Data Explorer connector to Power Automate (Preview) 
+description: Learn about using Azure Data Explorer connector to Power Automate to create flows of automatically scheduled or triggered tasks.
 author: orspod
 ms.author: orspodek
 ms.reviewer: dorcohen
@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ---
 
-# Azure Data Explorer flow connector (Preview)
+# Azure Data Explorer connector to Power Automate (Preview)
 
 The Azure Data Explorer flow connector allows Azure Data Explorer to use the flow capabilities of [Microsoft Power Automate](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task.
 
