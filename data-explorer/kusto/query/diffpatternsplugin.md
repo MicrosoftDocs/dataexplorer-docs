@@ -101,7 +101,7 @@ Use [where](./whereoperator.md) and [project](./projectoperator.md) in the input
 
 When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
 
-* Note: `diffpatterns` aims to find significant patterns (that capture portions of the data difference between the sets) and is not meant for row-by-row differences.
+* Note: `diffpatterns` aims to find significant patterns (that capture portions of the data difference between the sets) and isn't meant for row-by-row differences.
 
 **Example**
 
@@ -124,4 +124,3 @@ StormEvents
 |6|655|279|14.32|21.3|6.98|||Law Enforcement||
 |7|150|117|3.28|8.93|5.65||Flood|||
 |8|362|176|7.91|13.44|5.52|||Emergency Manager||
-
