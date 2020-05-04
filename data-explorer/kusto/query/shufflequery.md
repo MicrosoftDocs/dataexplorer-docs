@@ -70,7 +70,7 @@ T | where Event=="Start" | project ActivityId, Started=Timestamp
 ```
 
 If the compound key is too unique, but each key is not unique enough, use this `hint` to shuffle the data by all the keys of the shuffled operator.
-When the shuffled operator has other shuffle-able operators, like `summarize` or `join`, the query becomes more complex and then hint.strategy=shuffle will not be applied.
+When the shuffled operator has other shuffle-able operators, like `summarize` or `join`, the query becomes more complex and then hint.strategy=shuffle won't be applied.
 
 for example:
 
@@ -89,7 +89,7 @@ on ActivityId, numeric_column
 | summarize avg(Duration)
 ```
 
-In this case, if we do apply the `hint.strategy=shuffle` (instead of ignoring the strategy during query-planning) and shuffle the data by the compound key [`ActivityId`, `numeric_column`], the result will not be correct.
+If we do apply the `hint.strategy=shuffle` (instead of ignoring the strategy during query-planning) and shuffle the data by the compound key [`ActivityId`, `numeric_column`], the result will not be correct.
 The `summarize` operator is on the left side of the `join` operator. This operator will group by a subset of the `join` keys, which in our case is `ActivityId`. Thus, the `summarize` will group by the key `ActivityId`, while the data is partitioned by the compound key [`ActivityId`, `numeric_column`].
 Shuffling by the compound key [`ActivityId`, `numeric_column`] doesn't necessarily mean that shuffling for the key `ActivityId` is valid, and the results may be incorrect.
 
