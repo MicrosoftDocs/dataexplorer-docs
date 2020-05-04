@@ -118,7 +118,7 @@ For data ingestion properties, see [data ingestion properties](ingestion-propert
 
 ## Comparing ingestion methods
 
-| Ingestion name | Data type | Maximum file size | Streaming/batching | Most common scenarios | Considerations |
+| Ingestion name | Data type | Maximum file size | Streaming or batching | Most common scenarios | Considerations |
 | --- | --- | --- | --- | --- | --- |
 | **One click ingestion** | *sv, JSON | 1 GB uncompressed | batching to container, local blob in direct ingestion | one-off, create table schema, definition of continuous ingestion with event grid, bulk ingestion with container (up to 10,000 blobs) | 10,000 blobs are randomly selected from container|
 | **LightIngest** | all formats supported | **check** 1 GB uncompressed | batching via DM or direct ingestion to engine |  data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction)| |
