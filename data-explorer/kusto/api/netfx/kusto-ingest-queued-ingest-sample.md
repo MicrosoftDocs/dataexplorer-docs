@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/05/2020
 ---
-# How to do data ingestion with the Kusto.Ingest library
+# Perform data ingestion with the Kusto.Ingest library
 
 This article presents sample code that makes use of the Kusto.Ingest client library for data ingestion.
 
