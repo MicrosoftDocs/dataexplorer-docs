@@ -30,19 +30,18 @@ processing steps:
 1. Using the [`mv-expand`](./mvexpandoperator.md) operator to expand each record
    in the input into subtables.
 1. Applying the subquery for each of the subtables.
-1. Adding zero or more columns, containing the values of the source columns that are not expanded, to each resulting subtable. These values are repeated where needed.
+1. Adding zero or more columns to the resulting subtable. These columns contain the values of the source columns that aren't expanded, and are repeated where needed.
 1. Returns the union of the results.
 
 The `mv-expand` operator gets the following inputs:
 
 1. One or more expressions that evaluate into dynamic arrays to expand.
    The number of records in each expanded subtable is the maximum length of
-   each of those dynamic arrays. Null values are introduced where multiple expressions are specified, but the corresponding arrays have different lengths.
+   each of those dynamic arrays. Null values are added where multiple expressions are specified and the corresponding arrays have different lengths.
 
 1. Optionally, the names to assign the values of the expressions after expansion.
    These names become the columns names in the subtables.
-   If not specified, the original name of the column is used (if the expression
-   is a column reference), or a random name is used (otherwise).
+   If not specified, the original name of the column is used when the expression is a column reference. A random name is used otherwise. 
 
    > [!NOTE]
    > It is recommended to use the default column names.
@@ -51,7 +50,7 @@ The `mv-expand` operator gets the following inputs:
    These become the column types of the columns in the subtables.
    If not specified, `dynamic` is used.
 
-1. Optionally, the name of a column to add to the subtables which specifies the
+1. Optionally, the name of a column to add to the subtables that specifies the
    0-based index of the element in the array that resulted in the subtable record.
 
 1. Optionally, the maximum number of array elements to expand.
@@ -85,13 +84,13 @@ and *SubQuery* has the same syntax of any query statement.
 
 * *Name*: If used, the name to assign the array-expanded values of each
   array-expanded expression.
-  (If unspecified, the name of the column will be used if available,
-  or a random name generated if *ArrayExpression* is not a simple column name.)
+  If not specified, the name of the column will be used if available.
+  A random name is generated if *ArrayExpression* is not a simple column name.
 
 * *ArrayExpression*: An expression of type `dynamic` whose values will be array-expanded.
   If the expression is the name of a column in the input, the input column is
   removed from the input and a new column of the same name (or *ColumnName* if
-  specified) will appear in the output.
+  specified) appears in the output.
 
 * *Typename*: If used, the name of the type that the individual elements of the
   `dynamic` array *ArrayExpression* take. Elements that do not conform to this
@@ -130,7 +129,7 @@ _data
 |1    |[1, 3, 5, 7]|7      |
 |0    |[2, 4, 6, 8]|8      |
 
-## Calculating sum of largest two elements in an array
+## Calculating the sum of the largest two elements in an array
 
 ```kusto
 let _data =
@@ -150,7 +149,7 @@ _data
 |0    |[2,4,6,8]|14       |
 
 
-## Using `with_itemindex` for working with subset of the array
+## Using `with_itemindex` for working with a subset of the array
 
 ```kusto
 let _data =
@@ -172,7 +171,7 @@ _data
 |3|8|
 |4|10|
 
-## Using `mv-apply` operator to sort the output of `makelist` aggregate by some key
+## Using the `mv-apply` operator to sort the output of `makelist` aggregate by some key
 
 ```kusto
 datatable(command:string, command_time:datetime, user_id:string)
@@ -192,7 +191,7 @@ datatable(command:string, command_time:datetime, user_id:string)
     order by todatetime(command_details['command_time']) asc
     | summarize make_list(tostring(command_details['command']))
 )
-| project-away commands_details 
+| project-away commands_details
 ```
 
 |`user_id`|`list_command_details_command`|
