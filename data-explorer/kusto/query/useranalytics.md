@@ -16,7 +16,7 @@ This section describes Kusto extensions (plugins) for User Analytics scenarios.
 |Scenario|Plugin|Details|User Experience|
 |--------|------|--------|-------|
 | Counting new users over time | [activity_counts_metrics](activity-counts-metrics-plugin.md)|Returns counts/dcounts/new counts for each time window. Each time window is compared to *all* previous time windows|Kusto.Explorer: Report Gallery|
-| Period-over-period: retention/churn rate and new users | [activity_metrics](activity-metrics-plugin.md)|Returns `dcount`, retention/curn rate for each time window. Each time window is compared to *previous* time window|Kusto.Explorer: Report Gallery|
+| Period-over-period: retention/churn rate and new users | [activity_metrics](activity-metrics-plugin.md)|Returns `dcount`, retention/churn rate for each time window. Each time window is compared to *previous* time window|Kusto.Explorer: Report Gallery|
 | Users count and `dcount` over sliding window | [sliding_window_counts](sliding-window-counts-plugin.md)|For each time window, returns count and `dcount` over a lookback period, in a sliding window manner|
 | New-users cohort: retention/churn rate and new users | [new_activity_metrics](new-activity-metrics-plugin.md)|Compares between cohorts of new users (all users that were first seen in time window). Each cohort is compared to all prior cohorts. Comparison takes into account *all* previous time windows|Kusto.Explorer: Report Gallery|
 |Active Users: distinct counts |[active_users_count](active-users-count-plugin.md)|Returns distinct users for each time window. A user is only considered if it appears in at least X distinct periods in a specified lookback period.|
