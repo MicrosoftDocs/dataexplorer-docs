@@ -33,7 +33,7 @@ The rank foreach value in a data set.
 
 **Examples**
 
-In a sorted list (1-1000), The rank of 685 is its index:
+In a sorted list (1-1000), the rank of 685 is its index:
 
 ```kusto
 range x from 1 to 1000 step 1
