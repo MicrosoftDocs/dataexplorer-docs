@@ -284,21 +284,20 @@ with
 
 When querying an external table, the query engine filters out irrelevant external storage artifacts (blobs) to improve query performance. The process of iterating on blobs, and deciding whether a blob should be processed is described below.
 
-First, we build a URI pattern that represents a place where blobs are to be found. Initially, URI pattern equals to a connection string
-provided as part of external table definition. If there are any partitions defined, they and appended to the URI pattern.
-For instance, if a connection string is: `https://storageaccount.blob.core.windows.net/container1` and there's datetime partition defined:
+1. Build a URI pattern that represents a place where blobs are found. Initially, the URI pattern equals a connection string provided as part of the external table definition. If there are any partitions defined, they are appended to the URI pattern.
+For example, if the connection string is: `https://storageaccount.blob.core.windows.net/container1` and there's datetime partition defined:
 `partition by format_datetime="yyyy-MM-dd" bin(Timestamp, 1d)`, then the corresponding URI pattern would be:
 `https://storageaccount.blob.core.windows.net/container1/yyyy-MM-dd`, and we'll be looking for blobs under locations that match this pattern.
 If there's an additional string partition `"CustomerId" customerId` defined, then the corresponding URI pattern is:
 `https://storageaccount.blob.core.windows.net/container1/yyyy-MM-dd/CustomerId=*`, etc.
 
-For all *direct* blobs found under the URI patterns(s) that we've created, we check:
+2. For all *direct* blobs found under the URI patterns(s) that you've created, check:
 
- * That partition values match predicates used in a query.
- * That blob name starts with `NamePrefix`, if such property is defined.
- * That blob name ends with `FileExtension`, if such property is defined.
+ * Partition values match predicates used in a query.
+ * Blob name starts with `NamePrefix`, if such a property is defined.
+ * Blob name ends with `FileExtension`, if such a property is defined.
 
-Once all the above conditions are met, the blob is fetched and processed by the query engine.
+Once all the conditions are met, the blob is fetched and processed by the query engine.
 
 #### Spark virtual columns support
 
