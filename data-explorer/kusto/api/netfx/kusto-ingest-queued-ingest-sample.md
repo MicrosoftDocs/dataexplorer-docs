@@ -16,7 +16,6 @@ This article presents sample code that uses the Kusto.Ingest client library for 
 > [!NOTE]
 > Interaction with the Data Management service must be authenticated using Azure Active Directory (Azure AD).
 
-The code sample shows you how to use the Kusto.Ingest library for queued data ingestion to Azure Data Explorer.
 The sample uses Azure AD user authentication, and runs under the identity of the interactive user.
 
 ## Dependencies
