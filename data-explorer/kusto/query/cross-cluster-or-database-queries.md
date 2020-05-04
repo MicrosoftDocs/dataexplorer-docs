@@ -72,7 +72,7 @@ Qualified names or patterns can also be included in [restrict access](./restrict
 restrict access to (my*, database("MyOther*").*, cluster("OtherCluster").database("my2*").*);
 ```
 
-The above will restrict the query access to the following entites:
+The above will restrict the query access to the following entities:
 
 * Any entity name starting with *my...* in the default database. 
 * Any table in all the databases named *MyOther...* of the current cluster.
