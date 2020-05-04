@@ -13,9 +13,9 @@ zone_pivot_groups: kql-flavors
 ---
 # Partitioning and composing intermediate results of aggregations
 
-Suppose that you want to calculate the count of distinct users every day over the last seven days. One way to do it would be to run `summarize dcount(user)` once a day with a span filtered to the last seven days. This method is inefficient because each time the calculation is run, there's a six-day overlap with the previous calculation. Another option is to calculate some aggregate for each day, and then combine these aggregates in an efficient way. This option requires you to "remember" the last six results, but it's much more efficient.
+Suppose that you want to calculate the count of distinct users every day over the last seven days. One way to do it would be to run `summarize dcount(user)` once a day with a span filtered to the last seven days. This method is inefficient because each time the calculation is run, there's a six-day overlap with the previous calculation. Another option is to calculate an aggregate for each day, and then combine these aggregates. This option requires you to "remember" the last six results, but it's much more efficient.
 
-Partitioning queries like that is easy for simple aggregates, such as `count()` and `sum()`. Use these queries for more complex aggregates such as `dcount()` and `percentiles()`. This topic explains how Kusto supports such calculations.
+Partitioning queries as described is easy for simple aggregates, such as `count()` and `sum()`. It can also be useful for complex aggregates, such as `dcount()` and `percentiles()`. This topic explains how Kusto supports such calculations.
 
 The following examples show how to use `hll`/`tdigest` and demonstrate that using these commands is highly performant in some scenarios:
 
@@ -49,13 +49,13 @@ MyTable
 |---------|
 | 1       |
 
-To avoid ingesting *null*, use the special encoding policy type `bigobject`, which overrides the MaxValueSize to 2 MB like this:
+To avoid ingesting null, use the special encoding policy type `bigobject`, which overrides the `MaxValueSize` to 2 MB like this:
 
 ```kusto
 .alter column MyTable.hll_x policy encoding type='bigobject'
 ```
 
-So ingesting a value now to the same table above:
+Ingesting a value now to the same table above:
 
 ```kusto
 .set-or-append MyTable <| range x from 1 to 1000000 step 1
@@ -77,7 +77,7 @@ MyTable
 
 **Example**
 
-Assume there is a table, PageViewsHllTDigest, which has the `hll` values over Pages viewed in each hour. You want these values binned to `12h`. Merge the `hll` values using the `hll_merge()` aggregate function, with the timestamp binned to `12h`. Use the function `dcount_hll` to return the final `dcount` value:
+There is a table, `PageViewsHllTDigest`, containing `hll` values of Pages viewed in each hour. You want these values binned to `12h`. Merge the `hll` values using the `hll_merge()` aggregate function, with the timestamp binned to `12h`. Use the function `dcount_hll` to return the final `dcount` value:
 
 ```kusto
 PageViewsHllTDigest
@@ -85,14 +85,14 @@ PageViewsHllTDigest
 | project Timestamp , dcount_hll(merged_hll)
 ```
 
-|Timestamp|dcount_hll_merged_hll|
+|Timestamp|`dcount_hll_merged_hll`|
 |---|---|
 |2016-05-01 12:00:00.0000000|20056275|
 |2016-05-02 00:00:00.0000000|38797623|
 |2016-05-02 12:00:00.0000000|39316056|
 |2016-05-03 00:00:00.0000000|13685621|
 
-Or even for binned timestamp for `1d`:
+To bin timestamp for `1d`:
 
 ```kusto
 PageViewsHllTDigest
@@ -100,13 +100,13 @@ PageViewsHllTDigest
 | project Timestamp , dcount_hll(merged_hll)
 ```
 
-|Timestamp|dcount_hll_merged_hll|
+|Timestamp|`dcount_hll_merged_hll`|
 |---|---|
 |2016-05-01 00:00:00.0000000|20056275|
 |2016-05-02 00:00:00.0000000|64135183|
 |2016-05-03 00:00:00.0000000|13685621|
 
- The same thing may be done over the values of `tdigest`, which represent the BytesDelivered in each hour:
+The same query may be done over the values of `tdigest`, which represent the `BytesDelivered` in each hour:
 
 ```kusto
 PageViewsHllTDigest
@@ -114,7 +114,7 @@ PageViewsHllTDigest
 | project Timestamp , percentile_tdigest(merged_tdigests, 95, typeof(long))
 ```
 
-|Timestamp|percentile_tdigest_merged_tdigests|
+|Timestamp|`percentile_tdigest_merged_tdigests`|
 |---|---|
 |2016-05-01 12:00:00.0000000|170200|
 |2016-05-02 00:00:00.0000000|152975|
@@ -155,22 +155,22 @@ PageViews
 |2016-05-02 00:00:00.0000000|82770|64135183|
 |2016-05-03 00:00:00.0000000|72920|13685621|
 
-This query will aggregate all the values every time you run this query (for example, if you are want to run it many times a day).
+This query will aggregate all the values every time you run this query (for example, if you want to run it many times a day).
 
-If you save the `hll` and `tdigest` values (which are the intermediate results of `dcount` and percentile) into a temp table, PageViewsHllTDigest, using an update policy or set/append commands, you may only merge the values and then use `dcount_hll`/`percentile_tdigest` using the following query:
+If you save the `hll` and `tdigest` values (which are the intermediate results of `dcount` and percentile) into a temp table, `PageViewsHllTDigest`, using an update policy or set/append commands, you may only merge the values and then use `dcount_hll`/`percentile_tdigest` using the following query:
 
 ```kusto
 PageViewsHllTDigest
 | summarize  percentile_tdigest(merge_tdigests(tdigestBytesDel), 90), dcount_hll(hll_merge(hllPage)) by bin(Timestamp, 1d)
 ```
 
-|Timestamp|percentile_tdigest_merge_tdigests_tdigestBytesDel|dcount_hll_hll_merge_hllPage|
+|Timestamp|`percentile_tdigest_merge_tdigests_tdigestBytesDel`|`dcount_hll_hll_merge_hllPage`|
 |---|---|---|
 |2016-05-01 00:00:00.0000000|84224|20056275|
 |2016-05-02 00:00:00.0000000|83486|64135183|
 |2016-05-03 00:00:00.0000000|72247|13685621|
 
-This should be more performant and the query runs over a smaller table (in this example, the first query runs over ~215M records while the second one runs over 32 records only).
+This should be more performant and the query runs over a smaller table (in this example, the first query runs over ~215M records while the second one only runs over 32 records).
 
 **Example**
 
@@ -213,7 +213,7 @@ on $left.Day1 == $right.Day
 |2016-05-02 00:00:00.0000000|2016-05-03 00:00:00.0000000|14.6291376489636|
 
  
-The query above took ~18 seconds.
+The above query took ~18 seconds.
 
 When using the functions of [`hll()`](hll-aggfunction.md), [`hll_merge()`](hll-merge-aggfunction.md) and [`dcount_hll()`](dcount-hllfunction.md), the equivalent query will end after ~1.3 seconds and shows that `hll` functions speeds up the query above by ~14 times:
 
@@ -243,4 +243,4 @@ Stats
 |2016-05-02 00:00:00.0000000|2016-05-03 00:00:00.0000000|14.5160020350006|
 
 > [!NOTE] 
-> The results of the queries are not 100% accurate due to the error of the `hll` functions.(For more information about the errors, see [`dcount()`](dcount-aggfunction.md) ).
+> The results of the queries are not 100% accurate due to the error of the `hll` functions.(For more information about errors, see [`dcount()`](dcount-aggfunction.md) ).
