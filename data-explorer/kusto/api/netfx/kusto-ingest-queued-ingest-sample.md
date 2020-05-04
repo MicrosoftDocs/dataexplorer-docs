@@ -20,7 +20,7 @@ This article details the recommended mode of ingestion for production-grade pipe
 > [!NOTE]
 > Interaction with the Data Management service must be authenticated using Azure Active Directory (Azure AD).
 
-The code sample demonstrates queued data ingestion to Kusto, using the Kusto.Ingest library.
+The code sample demonstrates queued data ingestion to Azure Data Explorer, using the Kusto.Ingest library.
 The sample uses Azure AD user authentication, and runs under the identity of the interactive user.
 
 ## Dependencies
