@@ -56,9 +56,9 @@ The following table contains the common headers for query and management operati
 |`Accept`          | Set this value to `application/json`.                                                     | Optional          |
 |`Accept-Encoding` | Supported encodings are `gzip` and `deflate`.                                             | Optional          | 
 |`Authorization`   | See [authentication](./authentication.md).                                                | Required          |
-|`Connection`      | We recommended that you enable `Keep-Alive`.                                              | Optional          |
-|`Content-Length`  | We recommended that you specify the request body length, when known.                      | Optional          |
-|`Content-Encoding`| Can be set to `gzip` but the body must be gzip-compressed                                 | Optional          |
+|`Connection`      | Enable `Keep-Alive`.                                              | Optional          |
+|`Content-Length`  | Specify the request body length, when known.                      | Optional          |
+|`Content-Encoding`| Set to `gzip` but the body must be gzip-compressed                                 | Optional          |
 |`Expect`          | Set to `100-Continue`.                                                                    | Optional          |
 |`Host`            | Set to the domain name to which you sent the request (such as, `help.kusto.windows.net`). | Required          |
 
@@ -70,10 +70,8 @@ The following table contains the common custom headers for query and management 
 |`x-ms-user`             |The (friendly) name of the user making the request.                                   | Optional          |
 |`x-ms-user-id`          |Same as `x-ms-user`.                                                                  | Optional          |
 |`x-ms-client-request-id`|A unique identifier for the request.                                                  | Optional          |
-|`x-ms-client-version`   |The (friendly) version identifier for the client making the request.                  | Optional (Required in some scenarios - see NOTE) |
+|`x-ms-client-version`   |The (friendly) version identifier for the client making the request. Required in scenarios, where it's used to identify the request, such as canceling a running query.                | Optional/Required  |
 
-> [!NOTE]
-> We strongly recommend that you specify `x-ms-client-version`, since it's required in some scenarios, where it's used to identify the request, such as canceling a running query. 
 
 ## Body
 
