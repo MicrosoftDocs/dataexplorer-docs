@@ -93,7 +93,7 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 #### Azure Data Explorer management IP addresses
 
 > [!NOTE]
-> For future deployments, please use AzureDataExplorer Service Tag
+> For future deployments, use AzureDataExplorer Service Tag
 
 | Region | Addresses |
 | --- | --- |
