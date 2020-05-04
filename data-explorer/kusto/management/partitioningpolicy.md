@@ -16,8 +16,8 @@ The partitioning policy defines if and how [Extents (data shards)](../management
 > [!NOTE]
 > The data partitioning feature is in *preview*.
 
-The main purpose of the policy is to improve performance of queries which are known to be narrowed to a small subset of values in the partitioned column(s).
-A secondary potential benefit is better compression of the data.
+The main purpose of the policy is to improve performance of queries which are known to be narrowed to a small subset of values in the partitioned column(s), and/or aggregate/join on
+a high cardinality string column. A secondary potential benefit is better compression of the data.
 
 > [!WARNING]
 > While there are no hard-coded limits set on the amount of tables that can have the policy defined on them, every additional table adds
