@@ -1,5 +1,5 @@
 ---
-title: tostring() - Azure Data Explorer | Microsoft Docs
+title: tostring() - Azure Data Explorer
 description: This article describes tostring() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -19,14 +19,14 @@ tostring(123) == "123"
 
 **Syntax**
 
-`tostring(`*Expr*`)`
+`tostring(`*`Expr`*`)`
 
 **Arguments**
 
-* *Expr*: Expression that will be converted to string. 
+* *`Expr`*: Expression that will be converted to string. 
 
 **Returns**
 
-If *Expr* value is non-null result will be a string representation of *Expr*.
-If *Expr* value is null, result will be empty string.
+If the *`Expr`* value is non-null, the result will be a string representation of *`Expr`*.
+If the *`Expr`* value is null, the result will be an empty string.
  
