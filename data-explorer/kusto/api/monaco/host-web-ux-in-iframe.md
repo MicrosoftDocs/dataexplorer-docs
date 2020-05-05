@@ -1,5 +1,5 @@
 ---
-title: Embed Web UI in an **iframe** - Azure Data Explorer | Microsoft Docs
+title: Embed Web UI in an **iframe** - Azure Data Explorer
 description: This article describes Embed Web UI in an **iframe** in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -13,13 +13,16 @@ ms.date: 02/19/2020
 
 The Azure Data Explorer Web UI can be embedded in an iframe and hosted in third-party websites.
 
+Delete this line and next 2 lines
 ![alt text](../images/web-ux.jpg "Azure Data Explorer Web UI")
 
-Embedding the Azure Data Explorer Web UX in your website enables your users to do the following:
+:::image type="content" source="../images/web-ux/web-ux.png" alt-text="Azure Data Explorer Web UI":::
+
+Embedding the Azure Data Explorer Web UX in your website lets your users:
 
 - Edit queries (includes all language features such as colorization and intellisense)
 - Explore table schemas visually
-- Authenticate to AAD
+- Authenticate to Azure AD
 - Execute queries
 - Display query execution results
 - Create multiple tabs
@@ -30,9 +33,9 @@ All functionality is tested for accessibility and supports dark and light on-scr
 
 ## Use Monaco-Kusto or embed the Web UI?
 
-Monaco-Kusto offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration, but offers you  full flexibility to fashion the user experience that fits your needs.
+Monaco-Kusto improves you an editing experience with completion, colorization, refactoring, renaming, and go-to-definition. It lets you  build a solution for authentication, query execution, result display, and schema exploration. Monaco-Kusto also gives you full flexibility to fashion the user experience that fits your needs.
 
-Embedding the Azure Data Explorer Web UI offers you extensive functionality with little effort, but contains limited flexibility regarding the user experience. There's a fixed set of query parameters that enable limited control over the system's look and behavior.
+Embedding the Azure Data Explorer Web UI offers you extensive functionality with little effort, but gives limited flexibility in user experience. There's a fixed set of query parameters that give you limited control over the system's look and behavior.
 
 ## How to embed the Web UI in an iframe
 
@@ -85,26 +88,26 @@ Replace `<cluster>` with the hostname of the cluster you want to load into the c
 
 ### Feature flags
 
-The hosting application may want to control certain aspects of the user experience. For example, hide the connection pane, or disable connecting to other clusters.
-For this scenario, the web explorer supports feature flags.
+The hosting application may want to control certain aspects of the user experience, such as hiding the connection pane, or disabling connecting to other clusters.
+In this scenario, the web explorer supports feature flags.
 
 A feature flag can be used in the url as a query parameter. For example, if the hosting application wishes to disable adding other clusters they should use https://dataexplorer.azure.com/?ShowConnectionButtons=false
 
-| setting                 | Description                                                                                                                                                                                                                                                                                       | Default Value |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| ShowShareMenu           | Show the share menu item                                                                                                                                                                                                                                                                          | true          |
-| ShowConnectionButtons   | Show the **add connection** button to add a new cluster                                                                                                                                                                                                                                               | true          |
-| ShowOpenNewWindowButton | Show the **open in web** UI button, that opens a new browser window that will point to https://dataexplorer.azure.com with the right cluster and database in scope                                                                                                                                   | false         |
-| ShowFileMenu            | Show the file menu (**download**, **tab**, **content**, and so on)                                                                                                                                                                                                                                                     | true          |
-| ShowToS                 | Show **link to the terms of service for Azure Data Explorer** from the settings dialog                                                                                                                                                                                                                | true          |
-| ShowPersona             | Show the user name from the settings menu, in the top-right corner                                                                                                                                                                                                                                         | true          |
-| IFrameAuth              | If true, the web explorer will expect the iframe to handle authentication and provide a token via a message. This process will always be true for iframe scenarios                                                                                                                                              | false         |
-| PersistAfterEachRun     | Usually the web explorer will persist in the unload event (Note, when hosting in iframes, it doesn't always fire). This flag will then trigger **persisting local state** after each query run. Therefore, any data loss that occurs, will only affect text that had never been run, thus limiting its impact. | false         |
-| ShowSmoothIngestion     | If true, show the 1-click ingestion experience when right-clicking on a database                                                                                                                                                                                                                  | true          |
-| RefreshConnection       | If true, always refreshes the schema when loading the page and never depends on local storage                                                                                                                                                                                                      | false         |
-| ShowPageHeader          | If true, shows the page header (which includes the Azure Data Explorer title and settings)                                                                                                                                                                                                 | true          |
-| HideConnectionPane      | If true, the left connection pane doesn't display                                                                                                                                                                                                                                               | false         |
-| SkipMonacoFocusOnInit   | Fixes the focus issue when hosting on iframe                                                                                                                                                                                                                                                          | false         |
+| Setting                 | Description                    | Default Value |
+| ----------------------- | ------------------------------ | ------------- |
+| ShowShareMenu           | Show the share menu item       | true          |
+| ShowConnectionButtons   | Show the **add connection** button that adds a new cluster                                                                                                              | true          |
+| ShowOpenNewWindowButton | Show the **open in web** button that opens a new browser window. The window will point to https://dataexplorer.azure.com with the right cluster and database in scope                                                                                                                        | false         |
+| ShowFileMenu            | Show the file menu (**download**, **tab**, **content**, and so on)                                                                                                      | true          |
+| ShowToS                 | Show **link to the terms of service for Azure Data Explorer** from the settings dialog                                                                                  | true          |
+| ShowPersona             | Show the user name from the settings menu, in the top-right corner                                                                                                      | true          |
+| IFrameAuth              | If true, the web explorer will expect the iframe to handle authentication and provide a token via a message. This process will always be true for iframe scenarios      | false         |
+| PersistAfterEachRun     | Usually the web explorer will persist in the unload event (Note, when hosting in iframes, it doesn't always fire). This flag will then trigger **persisting local state** after each query run. Therefore, any data loss that occurs, will only affect text that had never been run, and limit its impact. | false         |
+| ShowSmoothIngestion     | If true, show the 1-click ingestion experience when right-clicking on a database                                                                                        | true          |
+| RefreshConnection       | If true, always refreshes the schema when loading the page and never depends on local storage                                                                          | false         |
+| ShowPageHeader          | If true, shows the page header (which includes the Azure Data Explorer title and settings)                                                                              | true          |
+| HideConnectionPane      | If true, the left connection pane doesn't display                                                                                                                      | false         |
+| SkipMonacoFocusOnInit   | Fixes the focus issue when hosting on iframe                                                                                                                            | false         |
 
 ### Feature flag presets
 
