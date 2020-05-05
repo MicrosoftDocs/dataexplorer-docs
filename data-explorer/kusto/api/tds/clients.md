@@ -1,5 +1,5 @@
 ---
-title: MS-TDS clients and Kusto - Azure Data Explorer | Microsoft Docs
+title: MS-TDS clients and Kusto - Azure Data Explorer
 description: This article describes MS-TDS clients and Kusto in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -52,7 +52,8 @@ Use a connection string like the following.
 jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database_name>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword
 ```
 
-If you want to use the Azure AD integrated auth mode, then replace *ActiveDirectoryPassword* with *ActiveDirectoryIntegrated*. For more information, see [JDBC (user authentication)](./aad.md#jdbc-user) and [JDBC (application authentication)](./aad.md#jdbc-application).
+> [!NOTE]
+> If you want to use the Azure Active Directory integrated authentication mode, then replace *ActiveDirectoryPassword* with *ActiveDirectoryIntegrated*. For more information, see [JDBC (user authentication)](./aad.md#jdbc-user) and [JDBC (application authentication)](./aad.md#jdbc-application).
 
 ## ODBC
 
@@ -256,7 +257,7 @@ conn = database('<<KUSTO_DATABASE>>','<<AAD_USER>>','<<USER_PWD>>','com.microsof
 
 > [!NOTE]
 > It's OK to end with **"database="** and then no value. The *database* function will automatically append the first input, the database name, to this string.
-> If you want to use Azure AD integrated auth mode, then replace *ActiveDirectoryPassword* with *ActiveDirectoryIntegrated*.
+> If you want to use Azure Active Directory integrated authentication mode, then replace *ActiveDirectoryPassword* with *ActiveDirectoryIntegrated*.
 
 6. Test the connection and run a sample query. Submit the following commands (MATLAB command window).
 
