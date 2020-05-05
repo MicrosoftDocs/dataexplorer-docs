@@ -1,5 +1,5 @@
 ---
-title: Azure Data Explorer as linked server from SQL server
+title: Kusto as linked server from SQL server - Azure Data Explorer
 description: This article describes Kusto as a linked server from the SQL server in Azure Data Explorer.
 services: data-explorer
 author: orspod
