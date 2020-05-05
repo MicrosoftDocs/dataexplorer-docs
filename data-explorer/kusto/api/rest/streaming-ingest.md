@@ -1,5 +1,5 @@
 ---
-title: Streaming ingestion HTTP request - Azure Data Explorer | Microsoft Docs
+title: Streaming ingestion HTTP request - Azure Data Explorer
 description: This article describes Streaming ingestion HTTP request in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -30,8 +30,8 @@ Additional parameters are formatted as URL query `{name}={value}` pairs, separat
 
 | Parameter    | Description                                                                          | Required/Optional   |
 |--------------|--------------------------------------------------------------------------------------|---------------------|
-|`streamFormat`| Specifies the format of the data in the request body. The value should be one of: `Csv`,`Tsv`,`Scsv`,`SOHsv`,`Psv`,`Json`,`SingleJson`,`MultiJson`,`Avro`. For more information, see [Supported Data Formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).| Required |
-|`mappingName` | The name of the pre-created ingestion mapping defined on the table. For more information, see [Data Mappings](../../management/mappings.md). The way to manage pre-created mappings on the table is described [here](../../management/create-ingestion-mapping-command.md).| Optional, but Required if `streamFormat` is one of `Json`, `SingleJson`, `MultiJson`, or `Avro`|  |
+|`streamFormat`| Specifies the format of the data in the request body. The value should be one of: `CSV`,`TSV`,`SCsv`,`SOHsv`,`PSV`,`JSON`,`SingleJSON`,`MultiJSON`,`Avro`. For more information, see [Supported Data Formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).| Required |
+|`mappingName` | The name of the pre-created ingestion mapping defined on the table. For more information, see [Data Mappings](../../management/mappings.md). The way to manage pre-created mappings on the table is described [here](../../management/create-ingestion-mapping-command.md).| Optional, but Required if `streamFormat` is one of `JSON`,`SingleJSON`,`MultiJSON`, or `Avro`|  |
               
 For example, to ingest CSV-formatted data into table `Logs` in database `Test`, use:
 
@@ -45,8 +45,6 @@ To ingest JSON-formatted data with pre-created mapping `mylogmapping`, use:
 POST https://help.kusto.windows.net/v1/rest/ingest/Test/Logs?streamFormat=Json&mappingName=mylogmapping HTTP/1.1
 ```
 
-(See below for the request headers and the body you must include)
-
 ## Request headers
 
 The following table contains the common headers for query and management operations.
@@ -56,9 +54,9 @@ The following table contains the common headers for query and management operati
 |`Accept`          | Set this value to `application/json`.                                                     | Optional          |
 |`Accept-Encoding` | Supported encodings are `gzip` and `deflate`.                                             | Optional          | 
 |`Authorization`   | See [authentication](./authentication.md).                                                | Required          |
-|`Connection`      | Enable `Keep-Alive`.                                              | Optional          |
-|`Content-Length`  | Specify the request body length, when known.                      | Optional          |
-|`Content-Encoding`| Set to `gzip` but the body must be gzip-compressed                                 | Optional          |
+|`Connection`      | Enable `Keep-Alive`.                                                                      | Optional          |
+|`Content-Length`  | Specify the request body length, when known.                                              | Optional          |
+|`Content-Encoding`| Set to `gzip` but the body must be gzip-compressed                                        | Optional          |
 |`Expect`          | Set to `100-Continue`.                                                                    | Optional          |
 |`Host`            | Set to the domain name to which you sent the request (such as, `help.kusto.windows.net`). | Required          |
 
@@ -70,8 +68,7 @@ The following table contains the common custom headers for query and management 
 |`x-ms-user`             |The (friendly) name of the user making the request.                                   | Optional          |
 |`x-ms-user-id`          |Same as `x-ms-user`.                                                                  | Optional          |
 |`x-ms-client-request-id`|A unique identifier for the request.                                                  | Optional          |
-|`x-ms-client-version`   |The (friendly) version identifier for the client making the request. Required in scenarios, where it's used to identify the request, such as canceling a running query.                | Optional/Required  |
-
+|`x-ms-client-version`   |The (friendly) version identifier for the client making the request. Required in scenarios, where it's used to identify the request, such as canceling a running query.                                                        | Optional/Required  |
 
 ## Body
 
@@ -101,7 +98,7 @@ x-ms-app: MyApp
 
 Request body:
 
-```json
+```txt
 {"Timestamp":"2018-11-14 11:34","Level":"Info","EventText":"Nothing Happened"}
 {"Timestamp":"2018-11-14 11:35","Level":"Error","EventText":"Something Happened"}
 ```
