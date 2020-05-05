@@ -1,6 +1,6 @@
 ---
-title: Kusto as linked server from SQL server - Azure Data Explorer
-description: This article describes Kusto as linked server from SQL server in Azure Data Explorer.
+title: Azure Data Explorer as linked server from SQL server
+description: This article describes Kusto as a linked server from the SQL server in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -22,7 +22,7 @@ The SQL Server on-premises service needs to use an active directory account (not
 
 :::image type="content" source="../images/linkedserverconnection.png" alt-text="linked server connection":::
 
-1. The Security tab needs to be defined with this setting: 
+1. Define the Security with the setting pointed to by the red arrow. 
 
 :::image type="content" source="../images/linkedserverlogin.png" alt-text="linked server login":::
 
