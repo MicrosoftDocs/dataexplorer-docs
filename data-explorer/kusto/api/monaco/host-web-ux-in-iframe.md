@@ -30,7 +30,7 @@ All functionality is tested for accessibility and supports dark and light on-scr
 
 ## Use Monaco-Kusto or embed the Web UI?
 
-Monaco-Kusto improves you an editing experience with completion, colorization, refactoring, renaming, and go-to-definition. It lets you  build a solution for authentication, query execution, result display, and schema exploration. Monaco-Kusto also gives you full flexibility to fashion the user experience that fits your needs.
+Monaco-Kusto improves your editing experience with completion, colorization, refactoring, renaming, and go-to-definition. It lets you build a solution for authentication, query execution, result display, and schema exploration. Monaco-Kusto also gives you full flexibility to fashion the user experience that fits your needs.
 
 Embedding the Azure Data Explorer Web UI offers you extensive functionality with little effort. However, embedding also results in limited flexibility in the user experience. There's a fixed set of query parameters that give you limited control over the system's look and behavior.
 
