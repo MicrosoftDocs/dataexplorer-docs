@@ -9,19 +9,19 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
 ---
-# MS-TDS clients and Kusto
+# MS-TDS clients and Azure Data Explorer
 
-Kusto implements TDS-compliant endpoints for MS-SQL clients. Compatibility is on the protocol level. Any library or application that can connect to the SQL Azure database with Azure Active Directory (AAD) authentication, will work with the Azure Data Explorer server. Therefore, you can use the Azure Data Explorer server domain name like it was the SQL Azure server.
+Azure Data Explorer implements TDS-compliant endpoints for MS-SQL clients. Compatibility is on the protocol level. Any library or application that can connect to the SQL Azure database with Azure Active Directory (Azure AD) authentication, will work with the Azure Data Explorer server. Therefore, you can use the server domain name like it was the SQL Azure server.
 
-Kusto implements a subset of the T-SQL and a subset of the SQL server emulation. For more information, see [known issues](./sqlknownissues.md) for differences between the SQL Server's implementation of T-SQL and Kusto's.
+Azure Data Explorer implements a subset of the T-SQL and a subset of the SQL server emulation. For more information, see [known issues](./sqlknownissues.md) for differences between the SQL Server's implementation of T-SQL and Azure Data Explorer's.
 
 ## .NET SQL client
 
-Kusto supports Azure Active Directory (AAD) authentication for SQL clients. For more information, see [.NET SQL Client (user authentication)](./aad.md#net-sql-client-user) and [.NET SQL Client (application authentication)](./aad.md#net-sql-client-application)
+Azure Data Explorer supports Azure AD authentication for SQL clients. For more information, see [.NET SQL Client (user authentication)](./aad.md#net-sql-client-user) and [.NET SQL Client (application authentication)](./aad.md#net-sql-client-application)
 
 ## JDBC
 
-The Microsoft JDBC driver can be used to connect to Kusto with Azure Active Directory (AAD) authentication.
+The Microsoft JDBC driver can be used to connect to Azure Data Explorer with Azure AD authentication.
 
 Create an application to use one of the versions of *mssql-jdbc* JAR and *adal4j* JAR, and all their dependencies.
 For example,
@@ -52,17 +52,17 @@ Use a connection string like the following.
 jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database_name>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword
 ```
 
-If you want to use the Azure Active Directory (AAD) integrated auth mode, then replace *ActiveDirectoryPassword* with *ActiveDirectoryIntegrated*. For more information, see [JDBC (user authentication)](./aad.md#jdbc-user) and [JDBC (application authentication)](./aad.md#jdbc-application).
+If you want to use the Azure AD integrated auth mode, then replace *ActiveDirectoryPassword* with *ActiveDirectoryIntegrated*. For more information, see [JDBC (user authentication)](./aad.md#jdbc-user) and [JDBC (application authentication)](./aad.md#jdbc-application).
 
 ## ODBC
 
-Applications that support ODBC can connect to Kusto.
+Applications that support ODBC can connect to Azure Data Explorer.
 
 Create an ODBC data source:
 
 1. Launch the ODBC Data Source Administrator.
 2. Select  **Add** to create a new data source, and set *ODBC Driver 17 for SQL Server*.
-3. Give the data source a name, and specify the Kusto cluster name in the **Server** field. For example, *mykusto.kusto.windows.net*.
+3. Give the data source a name, and specify the Azure Data Explorer cluster name in the **Server** field. For example, *mykusto.kusto.windows.net*.
 4. Set **Active Directory Integrated**, for the authentication option.
 5. Select **Next** to set the database.
 7. You can just leave the defaults for all the other settings in the tabs that follow.
@@ -70,7 +70,7 @@ Create an ODBC data source:
 
 You can now use the ODBC data source with the applications.
 
-If the ODBC application can accept a connection string instead of, or in addition to DSN, then use then following.
+If the ODBC application can accept a connection string instead of, or in addition to DSN, then use the following.
 
 ```s
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
@@ -78,11 +78,11 @@ If the ODBC application can accept a connection string instead of, or in additio
 
 Some ODBC applications don't work well with the `NVARCHAR(MAX)` type. For more information, see https://docs.microsoft.com/sql/relational-databases/native-client/features/using-large-value-types?view=sql-server-2017#sql-server-native-client-odbc-driver. 
 
-The common workaround, is to cast the returned data to *NVARCHAR(n)*, with some value for n. For example, *NVARCHAR(4000)*. Such a workaround, however, won't work for Kusto, since Kusto has only one string type and for SQL clients it's encoded as *NVARCHAR(MAX)*.
+The common workaround, is to cast the returned data to *NVARCHAR(n)*, with some value for n. For example, *NVARCHAR(4000)*. Such a workaround, however, won't work for Azure Data Explorer, since Azure Data Explorer has only one string type and for SQL clients it's encoded as *NVARCHAR(MAX)*.
 
-Kusto offers a different workaround. You can configure Kusto to encode all strings as *NVARCHAR(n)* via a connection string. The language field in the connection string can be used to specify tuning options in the format, *language@OptionName1:OptionValue1,OptionName2:OptionValue2*.
+Azure Data Explorer offers a different workaround. You can configure Azure Data Explorer to encode all strings as *NVARCHAR(n)* via a connection string. The language field in the connection string can be used to specify tuning options in the format, *language@OptionName1:OptionValue1,OptionName2:OptionValue2*.
 
-For example, the following connection string will instruct Kusto to encode strings as *NVARCHAR(8000)*.
+For example, the following connection string will instruct Azure Data Explorer to encode strings as *NVARCHAR(8000)*.
 
 ```s
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated,Language=any@MaxStringSize:8000"
@@ -102,8 +102,8 @@ $conn.Close()
 
 ## LINQPad
 
-A Linq application can be used with Kusto, by connecting it like it's an SQL server.
-Use LINQPad to explore Linq compatibility and to browse Kusto. It can also execute SQL queries, and is the recommended tool to explore Kusto TDS (SQL) endpoints.
+A Linq application can be used with Azure Data Explorer, by connecting it like it's an SQL server.
+Use LINQPad to explore Linq compatibility and to browse Azure Data Explorer. It can also execute SQL queries, and is the recommended tool to explore Azure Data Explorer TDS (SQL) endpoints.
 
 Connect like you do, to the Microsoft SQL Server. LINQPad supports Active Directory authentication.
 
@@ -111,7 +111,7 @@ Connect like you do, to the Microsoft SQL Server. LINQPad supports Active Direct
 2. Set **Build data context automatically**.
 3. Set **Default (LINQ to SQL)**, the LINQPad driver.
 4. Set **SQL Azure**.
-5. For the server, specify the name of the Kusto cluster. For example, *mykusto.kusto.windows.net*.
+5. For the server, specify the name of the Azure Data Explorer cluster. For example, *mykusto.kusto.windows.net*.
 6. Set **Windows Authentication (Active Directory)**, for signing in.
 7. Select **Test** to verify connectivity.
 8. Select **OK**. The browser window displays the tree view with the databases.
@@ -124,7 +124,7 @@ Connect like you do, to the Microsoft SQL Server. LINQPad supports Active Direct
 Make a new connection.
 
 1. Set the connection type to **Microsoft SQL Server**.
-2. Specify the name of the Kusto cluster as a server name. For example, *mykusto.kusto.windows.net*.
+2. Specify the name of the Azure Data Explorer cluster as a server name. For example, *mykusto.kusto.windows.net*.
 3. Set the authentication type **Azure Active Directory - Universal with MFA support**.
 4. Specify the account that is provisioned in the Azure AD. For example, *myname@contoso.com*. Add the account the first time.
 5. Use Database picker to select the database.
@@ -160,17 +160,17 @@ Create an ODBC data source. For more information, see the [ODBC](./clients.md#od
 1. Connect via **Other Databases (ODBC)**.
 2. Set the ODBC data source in **DSN**.
 3. Select **Connect** to establish a connection.
-4. Select **Sign In**, once the button is available, and sign in to Kusto.
+4. Select **Sign In**, once the button is available, and sign in to Azure Data Explorer.
 
 ## DBeaver (5.3.3 and above)
 
-Configure DBeaver for handling result sets in a manner that is compatible with Kusto.
+Configure DBeaver for handling result sets in a manner that is compatible with Azure Data Explorer.
 
 1. Select **Preferences** in the **Window** menu.
 2. Select **Data Editor** in the **Editors** section.
 3. Make sure that **Refresh data on next page reading** is marked.
 
-Create a connection to the Kusto database.
+Create a connection to the Azure Data Explorer database.
 
 1. Select **New Connection** in the **Database** menu.
 2. Look for **Azure** and set **Azure SQL Database**. Select **Next**.
@@ -178,7 +178,7 @@ Create a connection to the Kusto database.
 4. Specify the database. For example, *mydatabase*.
 
 > [!WARNING]
-> Don't use *master* as the database name. Kusto requires a connection to a specific database.
+> Don't use *master* as the database name. Azure Data Explorer requires a connection to a specific database.
 
 5. Set **Active Directory - Password** for *Authentication*.
 6. Specify the credentials of the active directory user. For example, *myname@contoso.com*, and set the corresponding password for this user.
@@ -187,7 +187,7 @@ Create a connection to the Kusto database.
 ## Microsoft SQL Server Management Studio (v18.x)
 
 1. Select **Connect**, and then **Database Engine** under **Object Explorer**.
-2. Specify the name of Kusto cluster as a server name. For example, *mykusto.kusto.windows.net*.
+2. Specify the name of Azure Data Explorer cluster as a server name. For example, *mykusto.kusto.windows.net*.
 3. Set **Active Directory - Integrated** for authentication.
 4. Select **Options**.
 5. Select **Browse Server** under **Connect to database** to browse available databases.
@@ -197,7 +197,7 @@ Create a connection to the Kusto database.
 
 > [!NOTE]
 > Browsing database objects via SSMS is not supported yet, since SSMS uses correlate subqueries to browse database schema.
-> Correlated subqueries are not supported by Kusto. For more information, see [correlated subqueries](./sqlknownissues.md#correlated-sub-queries).
+> Correlated subqueries are not supported by Azure Data Explorer. For more information, see [correlated subqueries](./sqlknownissues.md#correlated-sub-queries).
 
 10. Select **New Query** to open the query window and set your database.
 
@@ -248,7 +248,7 @@ java.lang.System.clearProperty('javax.xml.transform.TransformerFactory')
 > [!NOTE]
 > This resets the **TransformerFactory** to the default (MATLAB usually overloads this with **Saxon**, but this is incompatible with **ADAL4J**).
 
-5. Connect to the Kusto TDS endpoint with the following command (MATLAB command window).
+5. Connect to the Azure Data Explorer TDS endpoint with the following command (MATLAB command window).
 
 ```s
 conn = database('<<KUSTO_DATABASE>>','<<AAD_USER>>','<<USER_PWD>>','com.microsoft.sqlserver.jdbc.SQLServerDriver',['jdbc:sqlserver://<<MYCLUSTER>>.kusto.windows.net:1433;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword;database='])
@@ -266,11 +266,11 @@ data
 ```
 
 > [!NOTE]
-> Replace *KUSTO_TABLE* with an existing table in Kusto.
+> Replace *KUSTO_TABLE* with an existing table in Azure Data Explorer.
 
 ## Sending T-SQL queries over the REST API
 
-The [Kusto REST API](../rest/index.md) can accept and execute T-SQL queries.
+The [Azure Data Explorer REST API](../rest/index.md) can accept and execute T-SQL queries.
 
 1. Send the request to the query endpoint with the **csl** property set to the text of the T-SQL query.
 2. Set **[request property](../netfx/request-properties.md)** **OptionQueryLanguage** to **sql**.
