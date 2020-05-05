@@ -1,5 +1,5 @@
 ---
-title: Kusto where operator in query language - Azure Data Explorer
+title: where operator in Kusto query language - Azure Data Explorer
 description: This article describes where operator (has, contains, startswith, endswith, matches regex) in Azure Data Explorer.
 services: data-explorer
 author: orspod

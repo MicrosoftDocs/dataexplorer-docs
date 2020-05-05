@@ -1,5 +1,5 @@
 ---
-title: Kusto Microsoft Flow Azure Kusto connector (Preview) - Azure Data Explorer
+title: Power Automate Azure Data Explorer connector (Preview)
 description: This article describes Microsoft Flow Azure Kusto Connector (Preview) in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -312,7 +312,6 @@ Finally, create the full HTML content. Add a new action outside 'Apply to each'.
 and here is the result:
 
 ![alt text](./Images/KustoTools-Flow/flow-customhtmltableresult.png "flow-customhtmltableresult")
-
 
 
 
