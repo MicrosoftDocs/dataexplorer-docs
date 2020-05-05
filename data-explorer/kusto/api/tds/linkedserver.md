@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
 ---
-# Azure Data Explorer as a linked server from the SQL server
+# Kusto as a linked server from the SQL server
 
 SQL server on-premises lets you attach a linked server and lets you create queries joining data from the SQL server and from linked servers.
 
