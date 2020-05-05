@@ -1,5 +1,5 @@
 ---
-title: 'Partition & compose intermediate aggregations in Azure Data Explorer'
+title: Kusto partition & compose intermediate aggregation results - Azure Data Explorer
 description: This article describes Partitioning and composing intermediate results of aggregations in Azure Data Explorer.
 services: data-explorer
 author: orspod
