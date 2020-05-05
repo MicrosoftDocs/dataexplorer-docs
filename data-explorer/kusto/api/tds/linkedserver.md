@@ -26,7 +26,7 @@ The SQL Server on-premises service needs to use an active directory account (not
 
 :::image type="content" source="../images/linkedserverlogin.png" alt-text="linked server login":::
 
-To query data from Azure Data Explorer:
+To query data from Kusto:
 
 ```sql
 SELECT * FROM OpenQuery(LINKEDSERVER, 'SELECT * FROM <KustoStoredFunction>[(<Parameters>)]')
