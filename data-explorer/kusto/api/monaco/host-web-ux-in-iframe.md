@@ -13,7 +13,7 @@ ms.date: 02/19/2020
 
 The Azure Data Explorer Web UI can be embedded in an iframe and hosted in third-party websites.
 
-:::image type="content" source="../images/web-ux/web-ux.jpg" alt-text="Azure Data Explorer Web UI":::
+![alt text](../images/web-ux.jpg "Azure Data Explorer Web UI")
 
 Embedding the Azure Data Explorer Web UX in your website lets your users:
 
