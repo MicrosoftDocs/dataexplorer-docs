@@ -11,28 +11,76 @@ ms.date: 03/12/2020
 ---
 # User-Defined Functions
 
-Kusto supports user-defined functions, which are either:
-* Part of the query itself (**ad-hoc functions**) 
-* Stored in a persistent manner as part of the database metadata (**stored functions**)
+**User-defined functions** are reusable sub-queries that can be defined as part of
+the query itself (**ad-hoc functions**), or persisted as part of the database
+metadata (**stored functions**). User-defined functions are invoked through a
+**name**, provided with zero or more **input arguments** (which can be scalar
+or tabular), and produce a single value (which can be scalar or tabular) based
+on the function **body**.
 
-A user-defined function has:
-* A name:
-    * Must follow the [identifier naming rules](../schema-entities/entity-names.md#identifier-naming-rules)
-    * Must be unique in the scope of the definition with a type specification
-* A strongly-typed list of input parameters:
-    * May be scalar or tabular expressions
-    * Scalar parameters may be provided with a default value, used implicitly when the function's caller doesn't provide a value for the parameter (see [Default values](#default-values), below)
-* A strongly-typed return value, which may be scalar or tabular
+Broadly speaking, a user-defined function belong to one of two categories:
+**Scalar functions** or **tabular functions**. The function's input arguments
+and output determine whether it is scalar or tabular, which then establishes
+how it might be used. A scalar function:
 
-A function's inputs and output determine how and where it can be used:
+* Has zero input arguments, or all its input arguments are scalar values
+* Produces a single scalar value
+* Can be used wherever a scalar expression is allowed
+* May only use the row context in which it is defined
+* Can only refer to tables (and views) that are in the accessible schema
 
-* **A scalar function**: 
-    * Is a function with no inputs, or with scalar inputs only, and that produces a scalar output
-    * Can be used wherever a scalar expression is allowed
-    * May only use the row context in which it is defined
-    * Can only refer to tables (and views) that are in the accessible schema
+A tabular function:
 
-Example:
+* Accepts one or more tabular input arguments, and zero or more scalar input arguments, and/or:
+* Produces a single tabular value
+
+## Function names
+
+The name of a user-defined function must follow the same
+[identifier naming rules](../schema-entities/entity-names.md#identifier-naming-rules)
+as other entities.
+
+Additionally, the name must be unique in the scope of definition.
+
+> [!NOTE]
+> Function overloading is not supported. In other words, one cannot
+> define multiple functions "sharing" the same name.
+
+## Input arguments
+
+A user-defined function has a strongly-typed list of zero or more input arguments.
+
+An input argument has a name, a type, and (for scalar arguments) a [default value](#default-values).
+
+The name of an input argument is an identifier.
+
+The type of an input argument is either one of the scalar data types,
+or a tabular schema.
+
+Syntactically, the input arguments list is a comma-separated list of argument
+definitions, wrapped in parenthesis, with each argument definition specified
+as *ArgMame* `:` *ArgType* [`=` *ArgDefaultValue*]. For tabular arguments,
+*ArgType* has the same syntax as the table definition (parenthesis and a list
+of column name/type pairs), with the additional support of a solitary `(*)`
+indicating "any tabular schema".
+
+For example:
+
+|Syntax                        |Input arguments list description                                 |
+|------------------------------|-----------------------------------------------------------------|
+|`()`                          |No arguments|
+|`(s:string)`                  |Single scalar argument called `s` taking a value of type `string`|
+|`(a:long, b:bool=true)`       |Two scalar arguments, the second of which has a default value    |
+|`(T1:(*), T2(r:real), b:bool)`|Three arguments (two tabular arguments and one scalar argument)  |
+
+> [!NOTE]
+> Functions that have both tabular input arguments and scalar input arguments
+> must have all tabular input arguments appear before the scalar input
+> arguments.
+
+## Examples
+
+An example for a scalar function:
 
 ```kusto
 let Add7 = (arg0:long = 5) { arg0 + 7 };
@@ -40,14 +88,7 @@ range x from 1 to 10 step 1
 | extend x_plus_7 = Add7(x), five_plus_seven = Add7()
 ```
 
-* **A tabular function**: 
-    * Is a function with no inputs, or at least one tabular input, and produces a tabular output
-    * Can be used wherever a tabular expression is allowed 
-
-> [!NOTE]
-> All tabular parameters must appear before scalar parameters.
-
-Example of a tabular function that takes no arguments:
+An example for a tabular function taking no arguments:
 
 ```kusto
 let tenNumbers = () { range x from 1 to 10 step 1};
@@ -55,11 +96,11 @@ tenNumbers
 | extend x_plus_7 = x + 7
 ```
 
-Example of a tabular function that uses a tabular input and a scalar input:
+An example of a tabular function taking both a tabular input and a scalar input:
 
 ```kusto
 let MyFilter = (T:(x:long), v:long) {
-  T | where x >= v 
+  T | where x >= v
 };
 MyFilter((range x from 1 to 10 step 1), 9)
 ```
@@ -69,11 +110,12 @@ MyFilter((range x from 1 to 10 step 1), 9)
 |9|
 |10|
 
-Example of a tabular function that uses a tabular input with no column specified. Any table can be passed to a function, and no table's column can be referenced inside the function.
+An example of a tabular function that uses a tabular input with no column specified.
+Any table can be passed to a function, and no table's column can be referenced inside the function.
 
 ```kusto
 let MyDistinct = (T:(*)) {
-  T | distinct * 
+  T | distinct *
 };
 MyDistinct((range x from 1 to 3 step 1))
 ```
