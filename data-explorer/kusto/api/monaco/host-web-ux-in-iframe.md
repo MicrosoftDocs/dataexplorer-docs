@@ -13,10 +13,7 @@ ms.date: 02/19/2020
 
 The Azure Data Explorer Web UI can be embedded in an iframe and hosted in third-party websites.
 
-Delete this line and next 2 lines
-![alt text](../images/web-ux.jpg "Azure Data Explorer Web UI")
-
-:::image type="content" source="../images/web-ux/web-ux.png" alt-text="Azure Data Explorer Web UI":::
+:::image type="content" source="../images/web-ux/web-ux.jpg" alt-text="Azure Data Explorer Web UI":::
 
 Embedding the Azure Data Explorer Web UX in your website lets your users:
 
@@ -35,7 +32,7 @@ All functionality is tested for accessibility and supports dark and light on-scr
 
 Monaco-Kusto improves you an editing experience with completion, colorization, refactoring, renaming, and go-to-definition. It lets you  build a solution for authentication, query execution, result display, and schema exploration. Monaco-Kusto also gives you full flexibility to fashion the user experience that fits your needs.
 
-Embedding the Azure Data Explorer Web UI offers you extensive functionality with little effort, but gives limited flexibility in user experience. There's a fixed set of query parameters that give you limited control over the system's look and behavior.
+Embedding the Azure Data Explorer Web UI offers you extensive functionality with little effort. However, embedding also results in limited flexibility in the user experience. There's a fixed set of query parameters that give you limited control over the system's look and behavior.
 
 ## How to embed the Web UI in an iframe
 
@@ -102,7 +99,7 @@ A feature flag can be used in the url as a query parameter. For example, if the 
 | ShowToS                 | Show **link to the terms of service for Azure Data Explorer** from the settings dialog                                                                                  | true          |
 | ShowPersona             | Show the user name from the settings menu, in the top-right corner                                                                                                      | true          |
 | IFrameAuth              | If true, the web explorer will expect the iframe to handle authentication and provide a token via a message. This process will always be true for iframe scenarios      | false         |
-| PersistAfterEachRun     | Usually the web explorer will persist in the unload event (Note, when hosting in iframes, it doesn't always fire). This flag will then trigger **persisting local state** after each query run. Therefore, any data loss that occurs, will only affect text that had never been run, and limit its impact. | false         |
+| PersistAfterEachRun     | Usually the web explorer will persist in the unload event (Note, when hosting in iframes, it doesn't always fire). This flag will then trigger **persisting local state** after each query run. Any data loss that occurs, will only affect text that had never been run, and limit its impact. | false         |
 | ShowSmoothIngestion     | If true, show the 1-click ingestion experience when right-clicking on a database                                                                                        | true          |
 | RefreshConnection       | If true, always refreshes the schema when loading the page and never depends on local storage                                                                          | false         |
 | ShowPageHeader          | If true, shows the page header (which includes the Azure Data Explorer title and settings)                                                                              | true          |
