@@ -13,7 +13,7 @@ ms.date: 10/30/2019
 
 SQL server on-premises lets you attach a linked server and lets you create queries joining data from the SQL server and from linked servers.
 
-You can use Azure Data Explorer as a linked server via ODBC connectivity.
+You can use Kusto as a linked server via ODBC connectivity.
 The SQL Server on-premises service needs to use an active directory account (not the default Service account) that lets it connect to Azure Data Explorer using Azure Active Directory (Azure AD).
 
 1. Install the latest ODBC Driver for SQL Server 2017 (it also comes with SSMS 18): https://www.microsoft.com/download/details.aspx?id=56567
