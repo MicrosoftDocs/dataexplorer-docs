@@ -61,13 +61,11 @@ For organizations with an existing infrastructure that is based on a messaging s
 
 * Kafka connector, see [Ingest data from Kafka into Azure Data Explorer](ingest-data-kafka.md).
 
-* [Azure Data Flow](https://flow.microsoft.com/)  
-For more information, see [Microsoft Flow Azure Kusto Connector (Preview)](kusto/tools/flow.md)
-<!-- add more links under integrate with other tools - look for this -->
+* [Azure Data Flow](https://flow.microsoft.com/), see [Microsoft Flow Azure Kusto Connector (Preview)](kusto/tools/flow.md)
+<!-- add more links? -->
 
-* Apache Spark connector
-For more information see [Azure Data Explorer Connector for Apache Spark](spark-connector.md)
-<!-- add more links -->
+* Apache Spark connector, see [Azure Data Explorer Connector for Apache Spark](spark-connector.md)
+<!-- add more links> -->
 
 ### Programmatic ingestion using SDKs
 
@@ -128,7 +126,7 @@ There are a number of methods by which data can be ingested directly to the engi
 | [**Node.js**](node-ingest-data.md) | all formats supported | 1 GB uncompressed | batching, streaming, direct | Write your own code according to organizational needs |
 | [**Java**](kusto/api/java/kusto-java-client-library.md) | all formats supported | 1 GB uncompressed | batching, streaming, direct | Write your own code according to organizational needs |
 | [**REST**](kusto/api/netfx/kusto-ingest-client-rest.md) | all formats supported | 1 GB uncompressed | batching, streaming, direct| Write your own code according to organizational needs |
-| *[*Go**](kusto/api/golang/kusto-golang-client-library.md) | all formats supported | 1 GB uncompressed | batching, streaming, direct | Write your own code according to organizational needs |
+| [**Go**](kusto/api/golang/kusto-golang-client-library.md) | all formats supported | 1 GB uncompressed | batching, streaming, direct | Write your own code according to organizational needs |
 
 ## Creating a table
 \\TODO: should we make a section about this?
