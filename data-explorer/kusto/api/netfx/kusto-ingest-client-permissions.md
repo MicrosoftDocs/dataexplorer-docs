@@ -31,11 +31,6 @@ The diagram outlines the queued ingestion client interaction with Kusto.
 
 :::image type="content" source="../images/queued-ingest.jpg" alt-text="queued-ingest":::
 
-
-:::image type="content" source="../images/queued-ingest.jpg" alt-text="queued-ingest":::
-
-:::image type="content" source="../images/queued-ingest.png" alt-text="queued-ingest":::
-
 ### Permissions on the Engine Service
 
 To qualify for data ingestion into table `T1` on database `DB1`, the principal doing the ingest operation must have authorization.
