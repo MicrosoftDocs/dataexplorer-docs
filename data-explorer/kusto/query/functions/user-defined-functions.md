@@ -11,17 +11,19 @@ ms.date: 03/12/2020
 ---
 # User-Defined Functions
 
-**User-defined functions** are reusable sub-queries that can be defined as part of
+**User-defined functions** are reusable subqueries that can be defined as part of
 the query itself (**ad-hoc functions**), or persisted as part of the database
 metadata (**stored functions**). User-defined functions are invoked through a
-**name**, provided with zero or more **input arguments** (which can be scalar
+**name**, are provided with zero or more **input arguments** (which can be scalar
 or tabular), and produce a single value (which can be scalar or tabular) based
 on the function **body**.
 
-Broadly speaking, a user-defined function belong to one of two categories:
+Broadly speaking, a user-defined function belongs to one of two categories:
 **Scalar functions** or **tabular functions**. The function's input arguments
 and output determine whether it is scalar or tabular, which then establishes
-how it might be used. A scalar function:
+how it might be used. 
+
+### A scalar function:
 
 * Has zero input arguments, or all its input arguments are scalar values
 * Produces a single scalar value
@@ -29,7 +31,7 @@ how it might be used. A scalar function:
 * May only use the row context in which it is defined
 * Can only refer to tables (and views) that are in the accessible schema
 
-A tabular function:
+### A tabular function:
 
 * Accepts one or more tabular input arguments, and zero or more scalar input arguments, and/or:
 * Produces a single tabular value
@@ -43,8 +45,7 @@ as other entities.
 Additionally, the name must be unique in the scope of definition.
 
 > [!NOTE]
-> Function overloading is not supported. In other words, one cannot
-> define multiple functions "sharing" the same name.
+> Function overloading is not supported. You can't define multiple functions that use the same name.
 
 ## Input arguments
 
@@ -249,7 +250,7 @@ MyFilter((range x from 1 to 10 step 1), 9)
 ```
 
 You can also use the operator `invoke` to invoke a user-defined function that
-takes one or more table arguments and returns a table. This is useful when
+takes one or more table arguments and returns a table. This function is useful when
 the first concrete table argument to the function is the source of the `invoke`
 operator:
 
@@ -308,7 +309,7 @@ let T_notview = () { print x=2 };
 union T*
 ```
 
-## User-defined functions usage restrictions
+## Restrictions
 
 The following restrictions apply:
 
