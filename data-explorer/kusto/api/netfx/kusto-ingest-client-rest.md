@@ -1,5 +1,5 @@
 ---
-title: 'Data ingestion without Kusto.Ingest library in Azure Data Explorer'
+title: Kusto data ingestion without Ingest library - Azure Data Explorer
 description: This article describes HowTo Data Ingestion without Kusto.Ingest Library in Azure Data Explorer.
 services: data-explorer
 author: orspod

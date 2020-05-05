@@ -1,5 +1,5 @@
 ---
-title: 'Request properties, ClientRequestProperties in Azure Data Explorer'
+title: Kusto Request properties & ClientRequestProperties - Azure Data Explorer
 description: This article describes Request properties, ClientRequestProperties in Azure Data Explorer.
 services: data-explorer
 author: orspod
