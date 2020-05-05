@@ -1,5 +1,5 @@
 ---
-title: Query ingestion (set, append, replace) in Azure Data Explorer
+title: Kusto query ingestion (set, append, replace) - Azure Data Explorer
 description: This article describes Ingest from query (.set, .append, .set-or-append, .set-or-replace) in Azure Data Explorer.
 services: data-explorer
 author: orspod

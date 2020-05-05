@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory (AAD) authentication in Azure Data Explorer
+title: Kusto Azure Active Directory (AAD) authentication - Azure Data Explorer
 description: This article describes Azure Active Directory (AAD) Authentication in Azure Data Explorer.
 services: data-explorer
 author: orspod
