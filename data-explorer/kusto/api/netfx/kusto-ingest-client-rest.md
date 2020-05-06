@@ -29,9 +29,9 @@ Each step is described in greater detail, after the sample code.
     * **[Ingestion resources (queues and blob containers)](#retrieve-azure-data-explorer-ingestion-resources)**
     * **[A Kusto identity token that will be added to every ingestion message](#obtain-a-kusto-identity-token)**
 1. **[Upload data to a blob on one of the blob containers obtained from Kusto in (2)](#upload-data-to-the-azure-blob-container)**
-1. **[Compose an ingestion message that identifies the target database and table and that points to the blob from (3)](#compose-the-kusto-ingestion-message)**
+1. **[Compose an ingestion message that identifies the target database and table and that points to the blob from (3)](#compose-the-azure-data-explorer-ingestion-message)**
 1. **[Post the ingestion message we composed in (4) to an ingestion queue obtained from Azure Data Explorer in (2)](#post-the-azure-data-explorer-ingestion-message-to-the-azure-data-explorer-ingestion-queue)**
-1. **[Retrieve any error found by the service during ingestion](#pop-messages-from-an-azure-queue)**
+1. **[Retrieve any error found by the service during ingestion](#check-for-error-messages-from-the-azure-queue)**
 
 ```csharp
 // A container class for ingestion resources we are going to obtain from Azure Data Explorer
@@ -187,7 +187,7 @@ internal static WebResponse SendPostRequest(string uriString, string authToken, 
 
 ### Obtain a Kusto identity token
 
-Ingest messages are handed off to Azure Data Explorer via a non-direct channel (Azure queue), making it impossible to do in-band authorization validation. The solution is to attach an identity token to every ingest message. The token enables in-band authorization validation. This Kusto-signed token can then be validated by the Azure Data Explorer service when it receives the ingestion message.
+Ingest messages are handed off to Azure Data Explorer via a non-direct channel (Azure queue), making it impossible to do in-band authorization validation for accessing the Azure Data Explorer ingestion service. The solution is to attach an identity token to every ingest message. The token enables in-band authorization validation. This Kusto-signed token can then be validated by the Azure Data Explorer service when it receives the ingestion message.
 
 ```csharp
 // Retrieves a Kusto identity token that will be added to every ingest message
@@ -233,7 +233,8 @@ internal static string UploadFileToBlobContainer(string filePath, string blobCon
 
 ### Compose the Azure Data Explorer ingestion message
 
-Now the NewtonSoft.JSON package will again compose a valid ingestion request. The message will be posted to the Azure Queue that the relevant Kusto Data Management service is listening on.
+The NewtonSoft.JSON package will again compose a valid ingestion request to identify the target database and table, and that points to the blob.
+The message will be posted to the Azure Queue that the relevant Kusto Data Management service is listening on.
 
 Here are some points to consider.
 
@@ -271,10 +272,10 @@ internal static string PrepareIngestionMessage(string db, string table, string d
 
 ### Post the Azure Data Explorer ingestion message to the Azure Data Explorer ingestion queue
 
-And finally, the deed itself. Merely post the message that we constructed to the selected queue.
+And finally, post the message that we constructed, to the selected ingestion queue that we had obtained from Azure Data Explorer.
 
 > [!NOTE]
-> .Net storage client, when used, encodes the message to base64 by default. For more information, see [storage docs](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage).<BR>
+> .Net storage client, when used, encodes the message to base64 by default. For more information, see [storage docs](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage).
 If you are NOT using that client, make sure to properly encode the message content.
 
 ```csharp
@@ -287,9 +288,9 @@ internal static void PostMessageToQueue(string queueUriWithSas, string message)
 }
 ```
 
-### Pop messages from an Azure queue
+### Check for error messages from the Azure queue
 
-After ingestion, we read any failure messages from the relevant queue that the Kusto Data Management service writes to. For more information on the failure message structure, see [Ingestion failure message structure](#ingestion-failure-message-structure). 
+After ingestion, we check for failure messages from the relevant queue that the Kusto Data Management service writes to. For more information on the failure message structure, see [Ingestion failure message structure](#ingestion-failure-message-structure). 
 
 ```csharp
 internal static IEnumerable<string> PopTopMessagesFromQueue(string queueUriWithSas, int count)
