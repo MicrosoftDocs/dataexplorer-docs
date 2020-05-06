@@ -206,7 +206,7 @@ If the attempt is successful, the operation state is updated to 'Abandoned'. Oth
 > [!Note]
 > Purge operations can be tracked with the [show purges](#show-purges-command) command, executed against the Data Management endpoint (**https://ingest-[YourClusterName].kusto.windows.net**).
 
-Status = 'Completed' indicates successful completion of the first phase of the purge operation, that is records are soft-deleted and are no longer available for querying. Customers are **not** expected to track and verify the second phase (hard-delete) completion. This phase is monitored internally by Kusto.
+Status = 'Completed' indicates successful completion of the first phase of the purge operation, that is records are soft-deleted and are no longer available for querying. Customers **aren't** expected to track and verify the second phase (hard-delete) completion. This phase is monitored internally by Kusto.
 
 ### Show purges command
 
@@ -255,8 +255,8 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 	* Scheduled - purge operation is scheduled for execution. If job remains **Scheduled**, there's probably a backlog of purge operations. See [purge performance](#purge-performance) to clear this backlog. If a purge operation fails on a transient error, it will be retried by the DM and set to **Scheduled** again (so you may see an operation transition from **Scheduled** to **InProgress** and back to **Scheduled**).
 	* InProgress - the purge operation is in-progress in the engine. 
 	* Completed - purge completed successfully.
-	* BadInput - purge failed on bad input and will not be retried. This failure may be due to various issues such as a syntax error in the predicate, an illegal predicate for purge commands, a query that exceeds limits (for example, over 1M entities in an `externaldata` operator or over 64 MB of total expanded query size), and 404 or 403 errors for `externaldata` blobs.
-	* Failed - purge failed and will not be retried. This failure may happen if the operation was waiting in the queue for too long (over 14 days), due to a backlog of other purge operations or a number of failures that exceed the retry limit. The latter will raise an internal monitoring alert and will be investigated by the Azure Data Explorer team. 
+	* BadInput - purge failed on bad input and won't be retried. This failure may be due to various issues such as a syntax error in the predicate, an illegal predicate for purge commands, a query that exceeds limits (for example, over 1M entities in an `externaldata` operator or over 64 MB of total expanded query size), and 404 or 403 errors for `externaldata` blobs.
+	* Failed - purge failed and won't be retried. This failure may happen if the operation was waiting in the queue for too long (over 14 days), due to a backlog of other purge operations or a number of failures that exceed the retry limit. The latter will raise an internal monitoring alert and will be investigated by the Azure Data Explorer team. 
 * **`StateDetails`** - a description of the State.
 * **`EngineStartTime`** - the time the command was issued to the engine. If there's a large difference between this time and ScheduledTime, there's usually a significant backlog of purge operations and the cluster is not keeping up with the pace. 
 * **`EngineDuration`** - time of actual purge execution in the engine. If purge was retried several times, it's the sum of all the execution durations. 
@@ -289,7 +289,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 	 **Syntax**
 
 	 ```kusto
-	 // Step #1 - retrieve a verification token (the table will not be purged until step #2 is executed)
+	 // Step #1 - retrieve a verification token (the table won't be purged until step #2 is executed)
 	 .purge table [TableName] in database [DatabaseName] allrecords
 
 	 // Step #2 - input the verification token to execute purge
