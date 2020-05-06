@@ -13,7 +13,7 @@ ms.date: 09/26/2019
 
 Applies a decomposition transformation on a series.  
 
-Takes an expression containing a series (dynamic numerical array) as input and decompose it to seasonal, trend, and residual components.
+Takes an expression containing a series (dynamic numerical array) as input and decomposes it to seasonal, trend, and residual components.
  
 **Syntax**
 
@@ -37,12 +37,12 @@ Takes an expression containing a series (dynamic numerical array) as input and d
 
  The function returns the following respective series:
 
-* `baseline`: the predicted value of the series (sum of seasonal and trend components, see below)
+* `baseline`: the predicted value of the series (sum of seasonal and trend components, see below).
 * `seasonal`: the series of the seasonal component:
-    * if the period isn't detected or is explicitly set to 0: constant 0
+    * if the period isn't detected or is explicitly set to 0: constant 0.
     * if detected or set to positive integer: median of the series points in the same phase
-* `trend`: the series of the trend component
-* `residual`: the series of the residual component (that is, x - baseline)
+* `trend`: the series of the trend component.
+* `residual`: the series of the residual component (that is, x - baseline).
   
 
 **Notes**
@@ -54,7 +54,7 @@ Takes an expression containing a series (dynamic numerical array) as input and d
     4. Create the baseline = seasonal + trend
     5. Create the residual = x - baseline
     
-* Either seasonality and, or trend should be enabled. Otherwise, the function is redundant, and just returns baseline = 0 and residual = x
+* Either seasonality and, or trend should be enabled. Otherwise, the function is redundant, and just returns baseline = 0 and residual = x.
 
 **More about series decomposition**
 
@@ -62,7 +62,7 @@ This method is usually applied to time series of metrics expected to manifest pe
 
 **Examples**
 
-**1. Weekly seasonality**
+**Weekly seasonality**
 
 In the following example, we generate a series with weekly seasonality and without trend, we then add some outliers to it. `series_decompose` finds and automatically detects the seasonality, and generates a baseline that is almost identical to the seasonal component. The outliers we added can be clearly seen in the residuals component.
 
@@ -80,9 +80,9 @@ ts
 
 :::image type="content" source="images/samples/series-decompose1.png" alt-text="Series decompose 1":::
 
-**2. Weekly seasonality with trend**
+**Weekly seasonality with trend**
 
-In this example, we add a trend to the series from the previous example. First, we run `series_decompose` with the default parameters. The trend `avg` default value only takes the average and doesn't compute the trend. The generated baseline doesn't contain the trend. When observing the trend in the residuals, it becomes apparent that this example is less accurate comparing to the previous example.
+In this example, we add a trend to the series from the previous example. First, we run `series_decompose` with the default parameters. The trend `avg` default value only takes the average and doesn't compute the trend. The generated baseline doesn't contain the trend. When observing the trend in the residuals, it becomes apparent that this example is less accurate than the previous example.
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
@@ -98,7 +98,7 @@ ts
 
 :::image type="content" source="images/samples/series-decompose2.png" alt-text="Series decompose 2":::
 
-Next, we run the same example. Since we're expecting a trend in the series, we specify `linefit` in the trend parameter. We can see that the positive trend is detected and the baseline is much closer to the input series. The residuals are close to zero, and only the outliers stand out. We can see all the components on the series in the chart.
+Next, we rerun the same example. Since we're expecting a trend in the series, we specify `linefit` in the trend parameter. We can see that the positive trend is detected and the baseline is much closer to the input series. The residuals are close to zero, and only the outliers stand out. We can see all the components on the series in the chart.
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 

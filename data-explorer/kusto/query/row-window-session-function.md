@@ -45,7 +45,7 @@ The function has the following conceptual calculation model:
 
 1. For every value, determine if it establishes a new session.
 
-1. If it establishes a new session, emit the value of *`Expr`*. Otherwise, omit the previous value of *`Expr`*.
+1. If it establishes a new session, emit the value of *`Expr`*. Otherwise, emit the previous value of *`Expr`*.
 
 The condition that determines if the value represents a new session is
 a logical OR one of the following conditions:
@@ -61,7 +61,7 @@ a logical OR one of the following conditions:
 **Examples**
 
 The following example shows how to calculate the session start values for a table
-with two columns, an `ID` column that identifies a sequence, and a `Timestamp`
+with two columns: an `ID` column that identifies a sequence, and a `Timestamp`
 column that gives the time at which each record occurred. In this example,
 a session can't exceed 1 hour, and it continues as long as records are less than
 5 minutes apart.
