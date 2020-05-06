@@ -11,7 +11,7 @@ ms.date: 03/24/2020
 ---
 # infer_storage_schema plugin
 
-This plug-in infers schema of external data, and returns it as CSL schema string that can be used when [creating external tables](../management/external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table).
+This plug-in infers schema of external data, and returns it as CSL schema string. The string can be used when [creating external tables](../management/external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table).
 
 ```kusto
 let options = dynamic({
@@ -39,7 +39,7 @@ a property bag specifying properties of the request:
 |`DataFormat`|Yes|One of supported [data formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).|
 |`FileExtension`|No|Only scan files ending with this file extension. It's not required, but specifying it may speed up the process (or eliminate data reading issues)|
 |`FileNamePrefix`|No|Only scan files starting with this prefix. It's not required, but specifying it may speed up the process|
-|`Mode`|No|Schema inference strategy, one of: `any`, `last`, `all`. Infer data schema from any (first found) file, from last written file or from all files respectively. The default value is `last`.|
+|`Mode`|No|Schema inference strategy, one of: `any`, `last`, `all`. Infer data schema from any (first found) file, from last written file, or from all files respectively. The default value is `last`.|
 
 **Returns**
 

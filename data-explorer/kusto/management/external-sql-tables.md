@@ -26,13 +26,13 @@ Creates or alters an external SQL table in the database in which the command is 
 
 * *TableName* - External table name. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.
 * *SqlTableName* - The name of the SQL table.
-* *SqlServerConnectionString* - The connection string to the SQL server. Can be one of the following: 
-    * **AAD integrated authentication** (`Authentication="Active Directory Integrated"`): 
+* *SqlServerConnectionString* - The connection string to the SQL server. Can be one of the following methods: 
+    * **AAD-integrated authentication** (`Authentication="Active Directory Integrated"`): 
 The user or application authenticates via AAD to Kusto, and the same token is then used to access the SQL Server network endpoint.
     * **Username/Password authentication** (`User ID=...; Password=...;`). If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed by using this method. 
 
 > [!WARNING]
-> Connection strings and queries that include confidential information should be obfuscated so that they'll be omitted from any Kusto tracing. See [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals) for more information.
+> Connection strings and queries that include confidential information should be obfuscated so that they'll be omitted from any Kusto tracing. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Optional properties
 
@@ -40,9 +40,9 @@ The user or application authenticates via AAD to Kusto, and the same token is th
 |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
 | `folder`            | `string`        | The table's folder.                  |
 | `docString`         | `string`        | A string documenting the table.      |
-| `firetriggers`      | `true`/`false`  | If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. (For more information see [BULK INSERT](https://msdn.microsoft.com/library/ms188365.aspx) and [System.Data.SqlClient.SqlBulkCopy](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy(v=vs.110).aspx)) |
-| `createifnotexists` | `true`/ `false` | If `true`, the target SQL table will be created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column which is the primary key. The default is `false`.  |
-| `primarykey`        | `string`        | If `createifnotexists` is `true`, indicates the name of the column in the result that will be used as the SQL table's primary key if it is created by this command.                  |
+| `firetriggers`      | `true`/`false`  | If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. (For more information, see [BULK INSERT](https://msdn.microsoft.com/library/ms188365.aspx) and [System.Data.SqlClient.SqlBulkCopy](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy(v=vs.110).aspx)) |
+| `createifnotexists` | `true`/ `false` | If `true`, the target SQL table will be created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column that is the primary key. The default is `false`.  |
+| `primarykey`        | `string`        | If `createifnotexists` is `true`, the resulting column name will be used as the SQL table's primary key if it is created by this command.                  |
 
 > [!NOTE]
 > * If the table exists, the `.create` command will fail with an error. Use `.alter` to modify existing tables. 
@@ -73,12 +73,15 @@ with
 
 | TableName   | TableType | Folder         | DocString | Properties                            |
 |-------------|-----------|----------------|-----------|---------------------------------------|
-| ExternalSql | Sql       | ExternalTables | Docs      | {<br>  "TargetEntityKind": "sqltable",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=mydatabase;",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
+| ExternalSql | Sql       | ExternalTables | Docs      | {<br>  "TargetEntityKind": "sqltable`",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=mydatabase;",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
 
 ## Querying an external table of type SQL 
-Similarl to other types of external tables, querying an external SQL table is supported. See [querying external tables](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data). 
-Note that the SQL external table query implementation will execute a full 'SELECT *' 
-(or select relevant columns) from the SQL table, while the rest of the query will execute on the Kusto side. Consider the following external table query: 
+Querying an external SQL table is supported. See [querying external tables](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data). 
+
+> [!Note]
+> SQL external table query implementation will execute a full 'SELECT *' (or select relevant columns) from the SQL table. The rest of the query will execute on the Kusto side. 
+
+Consider the following external table query: 
 
 ```kusto
 external_table('MySqlExternalTable') | count
@@ -88,5 +91,5 @@ Kusto will execute a 'SELECT * from TABLE' query to the SQL database, followed b
 In such cases, performance is expected to be better if written in T-SQL directly ('SELECT COUNT(1) FROM TABLE') 
 and executed using the [sql_request plugin](../query/sqlrequestplugin.md), instead of using the external table function. 
 Similarly, filters are not pushed to the SQL query.  
-It is recommended to use the external table to query the SQL table when the query requires reading the entire table (or relevant columns) for further execution on Kusto side. 
-When an SQL query can be significantly optimized in T-SQL, use the [sql_request plugin](../query/sqlrequestplugin.md).
+Use the external table to query the SQL table when the query requires reading the entire table (or relevant columns) for further execution on Kusto side. 
+When an SQL query can be optimized in T-SQL, use the [sql_request plugin](../query/sqlrequestplugin.md).

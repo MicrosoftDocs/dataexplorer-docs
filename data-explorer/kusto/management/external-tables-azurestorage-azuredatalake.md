@@ -36,7 +36,7 @@ Creates or alters a new external table in the database in which the command is e
 * *Schema* - External data schema in format: `ColumnName:ColumnType[, ColumnName:ColumnType ...]`. If the external data schema is unknown, use the [infer_storage_schema](../query/inferstorageschemaplugin.md) plug-in, which can infer the schema based on external file contents.
 * *Partition* - One or several partition definitions (optional). See partition syntax below.
 * *Format* - The data format. Any of the [ingestion formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats) are supported for querying. Using external table for [export scenario](data-export/export-data-to-an-external-table.md) is limited to the following formats: `CSV`, `TSV`, `JSON`, `Parquet`.
-* *StorageConnectionString* - One or several paths to Azure Blob Storage blob containers or Azure Data Lake Store file systems (virtual directories or folders), including credentials. See [storage connection strings](../api/connection-strings/storage.md) for details. It is highly recommended to provide more than a single storage account to avoid storage throttling if [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided. 
+* *StorageConnectionString* - One or several paths to Azure Blob Storage blob containers or Azure Data Lake Store file systems (virtual directories or folders), including credentials. See [storage connection strings](../api/connection-strings/storage.md) for details. Provide more than a single storage account to avoid storage throttling while [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided. 
 
 **Partition syntax**
 
@@ -46,7 +46,7 @@ Creates or alters a new external table in the database in which the command is e
 
 **Partition Parameters**
 
-* *DateTimePartitionFormat* - The format of the required directory structure in the output path (optional). If partitioning is defined and format isn't specified, the default is "yyyy/MM/dd/HH/mm", based on the PartitionByTimeSpan. For example, if you partition by 1d, structure will be "yyyy/MM/dd". If you partition by 1h, structure will be "yyyy/MM/dd/HH".
+* *DateTimePartitionFormat* - The format of the required directory structure in the output path (optional). If partitioning is defined and format isn't specified, the default is "yyyy/MM/dd/HH/mm". This format is based on the PartitionByTimeSpan. For example, if you partition by 1d, structure will be "yyyy/MM/dd". If you partition by 1 h, structure will be "yyyy/MM/dd/HH".
 * *TimestampColumnName* - Datetime column on which the table is partitioned. Timestamp column must exist in the external table schema definition and output of the export query, when exporting to the external table.
 * *PartitionByTimeSpan* - Timespan literal by which to partition.
 * *StringFormatPrefix* - A constant string literal that will be part of the artifact path, concatenated before the table value (optional).
@@ -91,7 +91,7 @@ with
 )  
 ```
 
-An external table partitioned by dateTime. Artifacts reside in directories in "yyyy/MM/dd" format under the path(s) defined:
+An external table partitioned by dateTime. Artifacts are in directories in "yyyy/MM/dd" format under the path(s) defined:
 
 ```kusto
 .create external table ExternalAdlGen2 (Timestamp:datetime, x:long, s:string) 
@@ -143,7 +143,7 @@ with
 ```
 
 An external table with two partitions. The directory structure is the concatenation of both partitions: formatted CustomerName followed by default dateTime format. 
-For example "CustomerName=softworks/2011/11/11":
+For example, "CustomerName=softworks/2011/11/11":
 
 ```kusto
 .create external table ExternalMultiplePartitions (Timestamp:datetime, CustomerName:string) 
@@ -170,16 +170,16 @@ with
 
 ### Artifact filtering logic
 
-When querying an external table, the query engine filters out irrelevant external storage artifacts (blobs) to improve query performance. The process of iterating on blobs, and deciding whether a blob should be processed is described below.
+When querying an external table, the query engine improves performance by filtering out irrelevant external storage artifacts (blobs). The process of iterating on blobs and deciding whether a blob should be processed is described below.
 
 1. Build a URI pattern that represents a place where blobs are found. Initially, the URI pattern equals a connection string provided as part of the external table definition. If there are any partitions defined, they are appended to the URI pattern.
 For example, if the connection string is: `https://storageaccount.blob.core.windows.net/container1` and there's datetime partition defined:
 `partition by format_datetime="yyyy-MM-dd" bin(Timestamp, 1d)`, then the corresponding URI pattern would be:
 `https://storageaccount.blob.core.windows.net/container1/yyyy-MM-dd`, and we'll be looking for blobs under locations that match this pattern.
 If there's an additional string partition `"CustomerId" customerId` defined, then the corresponding URI pattern is:
-`https://storageaccount.blob.core.windows.net/container1/yyyy-MM-dd/CustomerId=*`, etc.
+`https://storageaccount.blob.core.windows.net/container1/yyyy-MM-dd/CustomerId=*`.
 
-2. For all *direct* blobs found under the URI patterns(s) that you've created, check:
+1. For all *direct* blobs found under the URI patterns(s) that you've created, check:
 
  * Partition values match predicates used in a query.
  * Blob name starts with `NamePrefix`, if such a property is defined.
@@ -190,14 +190,13 @@ Once all the conditions are met, the blob is fetched and processed by the query 
 ### Spark virtual columns support
 
 When data is exported from Spark, partition columns (that are specified in dataframe writer's `partitionBy` method) are not written to data files. 
-This is done to avoid data duplication because the data already present in "folder" names (for example, `column1=<value>/column2=<value>/`), and Spark can
-recognize it upon read. However, Kusto requires that partition columns are present in the data itself. Support for virtual columns in Kusto is planned. Until then, use the following workaround: when exporting data from Spark, create a copy of all columns that data is partitioned by before writing a dataframe:
+This process avoids data duplication because the data already present in "folder" names. For example, `column1=<value>/column2=<value>/`, and Spark can recognize it upon read. However, Kusto requires that partition columns are present in the data itself. Support for virtual columns in Kusto is planned. Until then, use the following workaround: when exporting data from Spark, create a copy of all columns that data is partitioned by before writing a dataframe:
 
 ```kusto
 df.withColumn("_a", $"a").withColumn("_b", $"b").write.partitionBy("_a", "_b").parquet("...")
 ```
 
-When defining an external table in Kusto specify partition columns like in the following example:
+When defining an external table in Kusto, specify partition columns like in the following example:
 
 ```kusto
 .create external table ExternalSparkTable(a:string, b:datetime) 
