@@ -29,11 +29,11 @@ For more information, see [exporting historical data](#exporting-historical-data
  
 ## Notes
 
-* The guarantee for "exactly once" export is *only* for files reported in the [show exported artifacts command](#show-continuous-export-exported-artifacts). 
+* The guarantee for "exactly once" export is *only* for files reported in the [show exported artifacts command](#show-continuous-export-artifacts). 
 Continuous export does *not* guarantee that each record will be written only once to the external table. If a failure occurs after export has begun and some of
  the artifacts were already written to the external table, the external table _may_ contain duplicates (or even corrupted files, in case a write operation was 
  aborted before completion). In such cases, artifacts are not deleted from the external table but they will *not* be reported in the
-[show exported artifacts command](#show-continuous-export-exported-artifacts). Consuming the exported files using the `show exported artifacts command` 
+[show exported artifacts command](#show-continuous-export-artifacts). Consuming the exported files using the `show exported artifacts command`. 
 guarantees no duplicates (and not corruptions).
 * To guarantee "exactly once" export, continuous export uses [database cursors](../databasecursor.md). 
 [IngestionTime policy](../ingestiontime-policy.md) must  be enabled on all tables referenced in the query that should be processed "exactly once" in the export. The policy is enabled by default on all newly created tables.
