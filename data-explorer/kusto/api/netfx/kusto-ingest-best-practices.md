@@ -59,6 +59,5 @@ For better control of your Azure Data Explorer ingestion costs and to reduce you
 * **Make sure that you provide the Kusto.Ingest client with an accurate, uncompressed, data size**.
     Not doing so may cause extra storage transactions.
 * **Avoid** sending data for ingestion with the `FlushImmediately` flag set to `true`, or sending small chunks with `ingest-by`/`drop-by` tags set.
-    If you use these methods, they will prevent the service from properly aggregating the data during ingestion, and will cause unnecessary storage transactions following the ingestion, and thereby affect COGS. 
-Moreover, using these methods excessively could result in degraded ingestion and/or query performance of your cluster.
-    
+    If you use these methods, they will prevent the service from properly aggregating the data during ingestion, will cause unnecessary storage transactions following the ingestion, and will affect COGS. 
+Using these methods excessively could result in degraded ingestion and/or query performance of your cluster.
