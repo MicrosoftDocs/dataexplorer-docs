@@ -956,7 +956,7 @@
       items:
       - name: External tables
         href: ./management/externaltables.md
-      - name: External SQL table
+      - name: External SQL tables
         href: management/external-sql-tables.md
       - name: External tables in Azure Storage or Azure Data Lake
         href: management/external-tables-azurestorage-azuredatalake.md  
