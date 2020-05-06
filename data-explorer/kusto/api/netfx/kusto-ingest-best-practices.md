@@ -1,5 +1,5 @@
 ---
-title: Kusto Ingest Client Library - Best Practices - Azure Data Explorer | Microsoft Docs
+title: Kusto Ingest Client Library - Best Practices - Azure Data Explorer
 description: This article describes Kusto Ingest Client Library - Best Practices in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -14,21 +14,21 @@ ms.date: 08/16/2019
 ## Choosing the right IngestClient flavor
 
 Using [KustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) is the recommended native data ingestion mode. Here's why:
-* Direct ingestion is impossible during engine downtime (e.g. during deployment), whereas in the queued ingestion mode the requests are persisted to the Azure queue, and the Data Management service will retry as needed.
-* The Data Management service is responsible to not overload the engine with ingestion requests. Overriding this control (e.g. using Direct ingestion) might severely affect engine performance, both ingestion and query.
+* Direct ingestion is impossible during engine downtime (for example during deployment), whereas in the queued ingestion mode, the requests are persisted to the Azure queue, and the Data Management service will retry as needed.
+* The Data Management service is responsible to not overload the engine with ingestion requests. Overriding this control (such as using Direct ingestion) can severely affect engine performance, both ingestion and query.
 * Data Management aggregates multiple ingestion requests to optimize the size of the initial shard (extent) to be created.
 * Getting feedback about each ingestion is easy to do.
 
 ## Tracking ingest operation status
 
-[Tracking ingest operation status](kusto-ingest-client-status.md#tracking-ingestion-status-kustoqueuedingestclient) is a useful feature. However, turning it on for reporting success can be easily abused to the extent that it will cripple your service.
+[Tracking ingest operation status](kusto-ingest-client-status.md#tracking-ingestion-status-kustoqueuedingestclient) is a useful feature. However, turning it on for reporting success can be easily abused, to the extent that it will cripple your service.
 
 > [!WARNING]
 > Turning on positive notifications for every ingestion request for large volume data streams should be avoided, since this puts an extreme load on the underlying xStore resources. The extra load can lead to increased ingestion latency and even complete cluster non-responsiveness.
 
 ## Optimizing for throughput
 
-* Ingestion works best if done in large chunks. It consumes the least resources, produces the most COGS-optimized data shards, and results in the best-performing data artifacts. Generally, we recommend customers who ingest data with the Kusto.Ingest library or directly into the engine, to send data in batches of **100 MB to 1 GB (uncompressed)**
+* Ingestion works best if done in large chunks. It consumes the least resources, produces the most COGS-optimized data shards, and results in the best performing data artifacts. Generally, we recommend customers who ingest data with the Kusto.Ingest library or directly into the engine, to send data in batches of **100 MB to 1 GB (uncompressed)**
 * The upper limit is important when working directly with the engine, to help reduce the amount of memory used by the ingestion process 
 
 > [!NOTE]
@@ -42,7 +42,7 @@ Multiple factors can affect ingestion throughput. When planning your ingestion p
 
 | Factor for Consideration |  Decription                                                                                               |
 |--------------------------|-----------------------------------------------------------------------------------------------------------|
-| Data format              | CSV is the fastest format to ingest, JSON will typically take 2x or 3x longer for the same volume of data.|
+| Data format              | CSV is the fastest format to ingest. JSON will typically take 2x or 3x longer for the same volume of data.|
 | Table width              | Make sure that you only ingest data you really need. The wider the table, the more columns will need to be encoded and indexed, and hence, the lower the throughput. You can control which fields get ingested, by providing an ingestion mapping.|
 | Source data location     | Avoid cross-region reads to speed up the ingestion.                                                       |
 | Load on the cluster      | When a cluster experiences a high query load, ingestions will take longer to complete, reducing throughput.|
@@ -59,7 +59,6 @@ For better control of your Azure Data Explorer ingestion costs and to reduce you
 * **Make sure that you provide the Kusto.Ingest client with an accurate, uncompressed, data size**.
     Not doing so may cause extra storage transactions.
 * **Avoid** sending data for ingestion with the `FlushImmediately` flag set to `true`, or sending small chunks with `ingest-by`/`drop-by` tags set.
-    Using these methods prevents the service from properly aggregating the data during ingestion, and causes unnecessary storage transactions following the ingestion, thereby affecting COGS.
-    
-    Moreover, using these excessively could result in degraded ingestion and/or query performance of your cluster.
+    Using these methods prevents the service from properly aggregating the data during ingestion, and causes unnecessary storage transactions following the ingestion, thereby affecting COGS. 
+Moreover, using these methods excessively could result in degraded ingestion and/or query performance of your cluster.
     
