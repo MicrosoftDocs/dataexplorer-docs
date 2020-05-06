@@ -34,7 +34,7 @@ Ingestion properties instructs the ingestion process. Where to route the data an
 | IngestionMappingReference | Name of the existing [ingestion mapping](../create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` blade.|
 | Compression | Data compression, `None` (default) or `GZip` compression.|
 | Encoding |  Data encoding, the default is UTF8. Can be any of [.NET supported encodings](https://docs.microsoft.com/dotnet/api/system.text.encoding?view=netframework-4.8#remarks). |
-| Tags | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a JSON array string. |
+| Tags (Preview) | A list of [tags](https://docs.microsoft.com/azure/data-explorer/kusto/management/extents-overview#extent-tagging) to associate with the ingested data, formatted as a JSON array string. Note the [performance implications](https://docs.microsoft.com/azure/data-explorer/kusto/management/extents-overview#performance-notes-1) of using tags. |
 
 <!--| Database | Name of the existing target database.|-->
 <!--| Tags | String representing [tags](https://docs.microsoft.com/azure/kusto/management/extents-overview#extent-tagging) that will be attached to resulting extent. |-->
