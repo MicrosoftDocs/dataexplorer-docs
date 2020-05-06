@@ -28,7 +28,7 @@ Using [KustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikust
 
 ## Optimizing for throughput
 
-* Ingestion works best if done in large chunks. It consumes the least resources, produces the most COGS-optimized data shards, and results in optimum data transctions. We recommend customers who ingest data with the Kusto.Ingest library or directly into the engine, to send data in batches of **100 MB to 1 GB (uncompressed)**
+* Ingestion works best if done in large chunks. It consumes the least resources, produces the most COGS-optimized data shards, and results in optimum data transactions. We recommend customers who ingest data with the Kusto.Ingest library or directly into the engine, to send data in batches of **100 MB to 1 GB (uncompressed)**
 * The upper limit is important when working directly with the engine, to help reduce the amount of memory used by the ingestion process 
 
 > [!NOTE]
@@ -43,7 +43,7 @@ Multiple factors can affect ingestion throughput. When planning your ingestion p
 | Factor for Consideration |  Description                                                                                              |
 |--------------------------|-----------------------------------------------------------------------------------------------------------|
 | Data format              | CSV is the fastest format to ingest. JSON will typically take 2x or 3x longer for the same volume of data.|
-| Table width              | Make sure that you only ingest data you really need. The wider the table, the more columns will need to be encoded and indexed, and therefore, the lower the throughput. You can control which fields get ingested, by providing an ingestion mapping.|
+| Table width              | Make sure that you only ingest data you really need. The wider the table, the more columns will need to be encoded and indexed, and thus, the lower the throughput. You can control which fields get ingested, by providing an ingestion mapping.|
 | Source data location     | Avoid cross-region reads to speed up the ingestion.                                                       |
 | Load on the cluster      | When a cluster experiences a high query load, ingestions will take longer to complete, reducing throughput.|
 | Ingestion pattern        | Ingestion is at its best, when the cluster is served with batches of up to 1GB (handled by using `KustoQueuedIngestClient`). |
