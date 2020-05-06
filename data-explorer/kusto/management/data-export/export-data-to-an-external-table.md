@@ -1,5 +1,5 @@
 ---
-title: Export data to an external table - Azure Data Explorer | Microsoft Docs
+title: Export data to an external table - Azure Data Explorer
 description: This article describes Export data to an external table in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -12,7 +12,7 @@ ms.date: 03/30/2020
 # Export data to an external table
 
 You can export data by defining an [external table](../externaltables.md) and exporting data to it.
- The table properties are specified when [creating the external table](../externaltables.md#create-or-alter-external-table), 
+ The table properties are specified when [creating the external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table), 
  therefore, you don't need to embed the table's properties in the export command. 
  The export command references the external table by name.
   Export data requires [database admin permission](../access-control/role-based-authorization.md).

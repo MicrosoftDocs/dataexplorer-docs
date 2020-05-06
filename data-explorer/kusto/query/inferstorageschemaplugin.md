@@ -1,5 +1,5 @@
 ---
-title: infer_storage_schema plugin - Azure Data Explorer | Microsoft Docs
+title: infer_storage_schema plugin - Azure Data Explorer
 description: This article describes infer_storage_schema plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,7 +11,7 @@ ms.date: 03/24/2020
 ---
 # infer_storage_schema plugin
 
-This plug-in infers schema of external data, and returns it as CSL schema string that can be used when [creating external tables](../management/externaltables.md#create-or-alter-external-table).
+This plug-in infers schema of external data, and returns it as CSL schema string that can be used when [creating external tables](../management/external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table).
 
 ```kusto
 let options = dynamic({

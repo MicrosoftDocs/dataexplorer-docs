@@ -16,7 +16,7 @@ defines the destination (for example, Azure Blob Storage) and the schema of the 
 The exported data is defined by a periodically-run query. The results are stored in the external table. 
 The process guarantees that all records are exported "exactly-once" (excluding dimension tables, in which all records are evaluated in all executions). 
 
-Continuous data export requires you to [create an external table](../externaltables.md#create-or-alter-external-table) 
+Continuous data export requires you to [create an external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) 
 and then [create a continuous export definition](#create-or-alter-continuous-export) pointing to the external table. 
 
 > [!NOTE] 
