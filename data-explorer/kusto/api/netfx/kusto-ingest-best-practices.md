@@ -50,7 +50,7 @@ Multiple factors can affect ingestion throughput. When planning your ingestion p
 
 ## Optimizing for COGS
 
-Using Kusto client libraries to ingest data into Kusto remains the cheapest and the most robust option. We urge our customers to review their ingestion methods and to take advantage of the Azure Storage pricing that makes blob transactions significantly cost effective.
+Using Kusto client libraries to ingest data into Kusto remains the cheapest and the most robust option. We urge our customers to review their ingestion methods and to take advantage of the Azure Storage pricing that will make your blob transactions significantly cost effective.
 
 For better control of your Azure Data Explorer ingestion costs and to reduce your monthly bill, limit the number of ingested data chunks (files/blobs/streams).
 
