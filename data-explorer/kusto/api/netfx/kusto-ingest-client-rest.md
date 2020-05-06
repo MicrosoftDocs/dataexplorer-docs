@@ -108,7 +108,7 @@ ADAL is available on [non-Windows platforms](https://docs.microsoft.com/azure/ac
 // Authenticates the interactive user and retrieves Azure AD Access token for specified resource
 internal static string AuthenticateInteractiveUser(string resource)
 {
-    // Create Auth Context for MSFT AAD:
+    // Create Auth Context for MSFT Azure AD:
     AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/{AAD Tenant ID or name}");
 
     // Acquire user token for the interactive user for Kusto:
@@ -190,7 +190,7 @@ internal static WebResponse SendPostRequest(string uriString, string authToken, 
 }
 ```
 
-## 2b. Obtaining a Kusto identity token
+## 2b. Obtain a Kusto identity token
 
 Ingest messages are handed off to Kusto via a non-direct channel (Azure queue), making it impossible to do in-band authorization validation. The solution is to attach an identity token to every ingest message. The token enables in-band authorization validation. This Kusto-signed token can then be validated by the Kusto service when it receives the ingestion message.
 
