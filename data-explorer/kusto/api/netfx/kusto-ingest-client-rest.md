@@ -11,31 +11,30 @@ ms.date: 02/19/2020
 ---
 # Ingestion without Kusto.Ingest Library
 
-The Kusto.Ingest library is preferred for ingesting data to Kusto. However, you can still achieve almost the same functionality, without being dependent on the Kusto.Ingest package.
-This article shows you how, by using *Queued Ingestion* to Kusto for production-grade pipelines.
+The Kusto.Ingest library is preferred for ingesting data to Azure Data Explorer. However, you can still achieve almost the same functionality, without being dependent on the Kusto.Ingest package.
+This article shows you how, by using *Queued Ingestion* to Azure Data Explorer for production-grade pipelines.
 
 > [!NOTE]
 > The code below is written in C#, and makes use of the Azure Storage SDK, the ADAL Authentication library, and the NewtonSoft.JSON package, to simplify the sample code. If needed, the corresponding code can be replaced with appropriate [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) calls, [non-.NET ADAL package](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries), and any available JSON handling package.
 
-This article deals with the recommended mode of ingestion. For the Kusto.Ingest library, its corresponding entity is the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) interface. Here, the client code interacts with the Kusto service by posting ingestion notification messages to an Azure queue. References to the messages are obtained from the Kusto Data Management (also known as the Ingestion) service. Interaction with the service must be authenticated with Azure Active Directory (Azure AD).
+This article deals with the recommended mode of ingestion. For the Kusto.Ingest library, its corresponding entity is the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) interface. Here, the client code interacts with the Azure Data Explorer service by posting ingestion notification messages to an Azure queue. References to the messages are obtained from the Kusto Data Management (also known as the Ingestion) service. Interaction with the service must be authenticated with Azure Active Directory (Azure AD).
 
 The following code shows how the Kusto Data Management service handles queued data ingestion without using the Kusto.Ingest library. This example may be useful if full .NET is inaccessible or unavailable because of the environment, or other restrictions.
 
 The code includes the steps to create an Azure Storage client and upload the data to a blob.
-
-1. **[Obtain an authentication token for accessing the Kusto ingestion service] (#obtain-authentication-evidence-from-azure-ad)**
-1. Query the Kusto ingestion service to obtain:
-    * **[Ingestion resources (queues and blob containers)](#retrieve-kusto-ingestion-resources)**
-    * **[A Kusto identity token that will be added to every ingestion message](#obtain-a-kusto-identity-token)**
-1. [Upload data to a blob on one of the blob containers obtained from Kusto in (2)](#upload-data-to-the-azure-blob-container)
-1. **[Compose an ingestion message that identifies the target database and table and that points to the blob from (3)](#compose-the-kusto-ingestion-message)**
-1. **[Post the ingestion message we composed in (4) to an ingestion queue obtained from Kusto in (2)](#post-the-Kusto-ingestion-message-to=the-kusto-ingestion-queue)**
-1. **[Retrieve any error found by the service during ingestion](#pop-messages-from-an-azure-queue)**
-
 Each step is described in greater detail, after the sample code.
 
+1. **[Obtain an authentication token for accessing the Azure Data Explorer ingestion service](#obtain-authentication-evidence-from-azure-ad)**
+1. Query the Azure Data Explorer ingestion service to obtain:
+    * **[Ingestion resources (queues and blob containers)](#retrieve-azure-data-explorer-ingestion-resources)**
+    * **[A Kusto identity token that will be added to every ingestion message](#obtain-a-kusto-identity-token)**
+1. **[Upload data to a blob on one of the blob containers obtained from Kusto in (2)](#upload-data-to-the-azure-blob-container)**
+1. **[Compose an ingestion message that identifies the target database and table and that points to the blob from (3)](#compose-the-kusto-ingestion-message)**
+1. **[Post the ingestion message we composed in (4) to an ingestion queue obtained from Azure Data Explorer in (2)](#post-the-azure-data-explorer-ingestion-message-to-the-azure-data-explorer-ingestion-queue)**
+1. **[Retrieve any error found by the service during ingestion](#pop-messages-from-an-azure-queue)**
+
 ```csharp
-// A container class for ingestion resources we are going to obtain from Kusto
+// A container class for ingestion resources we are going to obtain from Azure Data Explorer
 internal class IngestionResourcesSnapshot
 {
     public IList<string> IngestionQueues { get; set; } = new List<string>();
@@ -47,7 +46,7 @@ internal class IngestionResourcesSnapshot
 
 public static void IngestSingleFile(string file, string db, string table, string ingestionMappingRef)
 {
-    // Your Kusto ingestion service URI, typically ingest-<your cluster name>.kusto.windows.net
+    // Your Azure Data Explorer ingestion service URI, typically ingest-<your cluster name>.kusto.windows.net
     string DmServiceBaseUri = @"https://ingest-{serviceNameAndRegion}.kusto.windows.net";
 
     // 1. Authenticate the interactive user (or application) to access Kusto ingestion service
@@ -59,7 +58,7 @@ public static void IngestSingleFile(string file, string db, string table, string
     // 2b. Retrieve Kusto identity token
     string identityToken = RetrieveKustoIdentityToken(DmServiceBaseUri, bearerToken);
 
-    // 3. Upload file to one of the blob containers we got from Kusto.
+    // 3. Upload file to one of the blob containers we got from Azure Data Explorer.
     // This example uses the first one, but when working with multiple blobs,
     // one should round-robin the containers in order to prevent throttling
     long blobSizeBytes = 0;
@@ -70,7 +69,7 @@ public static void IngestSingleFile(string file, string db, string table, string
     // 4. Compose ingestion command
     string ingestionMessage = PrepareIngestionMessage(db, table, blobUriWithSas, blobSizeBytes, ingestionMappingRef, identityToken);
 
-    // 5. Post ingestion command to one of the ingestion queues we got from Kusto.
+    // 5. Post ingestion command to one of the ingestion queues we got from Azure Data Explorer.
     // This example uses the first one, but when working with multiple blobs,
     // one should round-robin the queues in order to prevent throttling
     PostMessageToQueue(ingestionResources.IngestionQueues.First(), ingestionMessage);
@@ -105,9 +104,9 @@ ADAL is available on [non-Windows platforms](https://docs.microsoft.com/azure/ac
 internal static string AuthenticateInteractiveUser(string resource)
 {
     // Create Auth Context for MSFT Azure AD:
-    AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/{AAD Tenant ID or name}");
+    AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/{Azure AD Tenant ID or name}");
 
-    // Acquire user token for the interactive user for Kusto:
+    // Acquire user token for the interactive user for Azure Data Explorer:
     AuthenticationResult result =
         authContext.AcquireTokenAsync(resource, "<your client app ID>", new Uri(@"<your client app URI>"),
                                         new PlatformParameters(PromptBehavior.Auto), UserIdentifier.AnyUser, "prompt=select_account").Result;
@@ -115,13 +114,13 @@ internal static string AuthenticateInteractiveUser(string resource)
 }
 ```
 
-### Retrieve Kusto ingestion resources
+### Retrieve Azure Data Explorer ingestion resources
 
 This step is where things get interesting. Here we manually construct an HTTP POST request to the Kusto Data Management service, requesting the return of the ingestion resources. These resources include queues that the DM service is listening on, and blob containers for data uploading.
 The Data Management service will process any messages containing ingestion requests that arrive on one of those queues.
 
 ```csharp
-// Retrieve ingestion resources (queues and blob containers) with SAS from specified Kusto Ingestion service using supplied Access token
+// Retrieve ingestion resources (queues and blob containers) with SAS from specified Azure Data Explorer Ingestion service using supplied Access token
 internal static IngestionResourcesSnapshot RetrieveIngestionResources(string ingestClusterBaseUri, string accessToken)
 {
     string ingestClusterUri = $"{ingestClusterBaseUri}/v1/rest/mgmt";
@@ -188,7 +187,7 @@ internal static WebResponse SendPostRequest(string uriString, string authToken, 
 
 ### Obtain a Kusto identity token
 
-Ingest messages are handed off to Kusto via a non-direct channel (Azure queue), making it impossible to do in-band authorization validation. The solution is to attach an identity token to every ingest message. The token enables in-band authorization validation. This Kusto-signed token can then be validated by the Kusto service when it receives the ingestion message.
+Ingest messages are handed off to Azure Data Explorer via a non-direct channel (Azure queue), making it impossible to do in-band authorization validation. The solution is to attach an identity token to every ingest message. The token enables in-band authorization validation. This Kusto-signed token can then be validated by the Azure Data Explorer service when it receives the ingestion message.
 
 ```csharp
 // Retrieves a Kusto identity token that will be added to every ingest message
@@ -232,7 +231,7 @@ internal static string UploadFileToBlobContainer(string filePath, string blobCon
 }
 ```
 
-### Compose the Kusto ingestion message
+### Compose the Azure Data Explorer ingestion message
 
 Now the NewtonSoft.JSON package will again compose a valid ingestion request. The message will be posted to the Azure Queue that the relevant Kusto Data Management service is listening on.
 
@@ -270,7 +269,7 @@ internal static string PrepareIngestionMessage(string db, string table, string d
 }
 ```
 
-### Post the Kusto ingestion message to the Kusto ingestion queue
+### Post the Azure Data Explorer ingestion message to the Azure Data Explorer ingestion queue
 
 And finally, the deed itself. Merely post the message that we constructed to the selected queue.
 
@@ -333,8 +332,8 @@ The message that the Kusto Data Management service expects to read from the inpu
 |Property | Description |
 |---------|-------------|
 |Id |Message identifier (GUID) |
-|BlobPath |Path (URI) to the blob, including the SAS key granting Kusto permissions to read/write/delete it. Permissions are required so that Kusto can delete the blob once it has completed ingesting the data|
-|RawDataSize |Size of the uncompressed data in bytes. Providing this value enables Kusto to optimize ingestion by potentially aggregating multiple blobs. This property is optional, but if not given, Kusto will access the blob just to retrieve the size |
+|BlobPath |Path (URI) to the blob, including the SAS key granting Azure Data Explorer permissions to read/write/delete it. Permissions are required so that Azure Data Explorer can delete the blob once it has completed ingesting the data|
+|RawDataSize |Size of the uncompressed data in bytes. Providing this value enables Azure Data Explorer to optimize ingestion by potentially aggregating multiple blobs. This property is optional, but if not given, Azure Data Explorer will access the blob just to retrieve the size |
 |DatabaseName |Target database name |
 |TableName |Target table name |
 |RetainBlobOnSuccess |If set to `true`, the blob won't be deleted once ingestion is successfully completed. Default is `false` |
@@ -354,11 +353,11 @@ The message that the Kusto Data Management service expects to read from the inpu
 |Database |Target database name |
 |Table |Target table name |
 |FailedOn |Failure timestamp |
-|IngestionSourceId |GUID identifying the data chunk that Kusto failed to ingest |
-|IngestionSourcePath |Path (URI) to the data chunk that Kusto failed to ingest |
+|IngestionSourceId |GUID identifying the data chunk that Azure Data Explorer failed to ingest |
+|IngestionSourcePath |Path (URI) to the data chunk that Azure Data Explorer failed to ingest |
 |Details |Failure message |
-|ErrorCode |Kusto error code (see all the error codes [here](kusto-ingest-client-errors.md#ingestion-error-codes)) |
+|ErrorCode |Azure Data Explorer error code (see all the error codes [here](kusto-ingest-client-errors.md#ingestion-error-codes)) |
 |FailureStatus |Indicates whether the failure is permanent or transient |
-|RootActivityId |Kusto correlation identifier (GUID) that can be used to track the operation on the service side |
+|RootActivityId |Azure Data Explorer correlation identifier (GUID) that can be used to track the operation on the service side |
 |OriginatesFromUpdatePolicy |Indicates whether the failure was caused by an erroneous [transactional update policy](../../management/updatepolicy.md) |
 |ShouldRetry | Indicates whether the ingestion could succeed if retried as is |
