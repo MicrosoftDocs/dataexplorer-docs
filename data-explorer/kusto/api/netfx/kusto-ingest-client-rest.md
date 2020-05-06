@@ -26,11 +26,11 @@ The code includes the steps to create an Azure Storage client and upload the dat
 1. **[Obtain an authentication token for accessing the Kusto ingestion service] (#obtain-authentication-evidence-from-azure-ad)**
 1. Query the Kusto ingestion service to obtain:
     * **[Ingestion resources (queues and blob containers)](#retrieve-kusto-ingestion-resources)**
-    * **[A Kusto identity token that will be added to every ingestion message](#obtain-a-Kusto-identity-token)**
-1. [Upload data to a blob on one of the blob containers obtained from Kusto in (2)](#upload-data-to-the-azure-Blob-container)
-1. **[Compose an ingestion message that identifies the target database and table and that points to the blob from (3)](#compose-the-Kusto-ingestion-message)**
+    * **[A Kusto identity token that will be added to every ingestion message](#obtain-a-kusto-identity-token)**
+1. [Upload data to a blob on one of the blob containers obtained from Kusto in (2)](#upload-data-to-the-azure-blob-container)
+1. **[Compose an ingestion message that identifies the target database and table and that points to the blob from (3)](#compose-the-kusto-ingestion-message)**
 1. **[Post the ingestion message we composed in (4) to an ingestion queue obtained from Kusto in (2)](#post-the-Kusto-ingestion-message-to=the-kusto-ingestion-queue)**
-1. **[Retrieve any error found by the service during ingestion](#pop-messages-from-an-Azure-queue)**
+1. **[Retrieve any error found by the service during ingestion](#pop-messages-from-an-azure-queue)**
 
 Each step is described in greater detail, after the sample code.
 
@@ -95,7 +95,7 @@ public static void IngestSingleFile(string file, string db, string table, string
 
 ## Using Queued Ingestion to Azure Data Explorer for production-grade pipelines
 
-### 1. Obtain authentication evidence from Azure AD
+### Obtain authentication evidence from Azure AD
 
 Here we use ADAL to obtain an Azure AD token to access the Kusto Data Management service and ask for its input queues.
 ADAL is available on [non-Windows platforms](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) if needed.
@@ -115,7 +115,7 @@ internal static string AuthenticateInteractiveUser(string resource)
 }
 ```
 
-### 2a. Retrieve Kusto ingestion resources
+### Retrieve Kusto ingestion resources
 
 This step is where things get interesting. Here we manually construct an HTTP POST request to the Kusto Data Management service, requesting the return of the ingestion resources. These resources include queues that the DM service is listening on, and blob containers for data uploading.
 The Data Management service will process any messages containing ingestion requests that arrive on one of those queues.
@@ -186,7 +186,7 @@ internal static WebResponse SendPostRequest(string uriString, string authToken, 
 }
 ```
 
-### 2b. Obtain a Kusto identity token
+### Obtain a Kusto identity token
 
 Ingest messages are handed off to Kusto via a non-direct channel (Azure queue), making it impossible to do in-band authorization validation. The solution is to attach an identity token to every ingest message. The token enables in-band authorization validation. This Kusto-signed token can then be validated by the Kusto service when it receives the ingestion message.
 
@@ -210,7 +210,7 @@ internal static string RetrieveKustoIdentityToken(string ingestClusterBaseUri, s
 }
 ```
 
-### 3. Upload data to the Azure Blob container
+### Upload data to the Azure Blob container
 
 This step is about uploading a local file to an Azure Blob that will be handed off for ingestion. This code uses the Azure Storage SDK. If dependency isn't possible, it can be achieved with [Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-rest-api).
 
@@ -232,7 +232,7 @@ internal static string UploadFileToBlobContainer(string filePath, string blobCon
 }
 ```
 
-### 4. Compose the Kusto ingestion message
+### Compose the Kusto ingestion message
 
 Now the NewtonSoft.JSON package will again compose a valid ingestion request. The message will be posted to the Azure Queue that the relevant Kusto Data Management service is listening on.
 
@@ -270,7 +270,7 @@ internal static string PrepareIngestionMessage(string db, string table, string d
 }
 ```
 
-### 5. Post the Kusto ingestion message to the Kusto ingestion queue
+### Post the Kusto ingestion message to the Kusto ingestion queue
 
 And finally, the deed itself. Merely post the message that we constructed to the selected queue.
 
@@ -288,7 +288,7 @@ internal static void PostMessageToQueue(string queueUriWithSas, string message)
 }
 ```
 
-### 6. Pop messages from an Azure queue
+### Pop messages from an Azure queue
 
 After ingestion, we read any failure messages from the relevant queue that the Kusto Data Management service writes to. For more information on the failure message structure, see [Ingestion failure message structure](#ingestion-failure-message-structure). 
 
