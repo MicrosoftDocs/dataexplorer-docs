@@ -43,7 +43,7 @@ You can use the flow connector with the Power BI connector to push data from Kus
 
     ![Screenshot of Power BI fields](./media/flow-usage/flow-powerbifields.png)
 
-Flow automatically applies the Power BI action for each row of the Kusto query result table. 
+The flow automatically applies the Power BI action for each row of the Kusto query result table. 
 
 ![Screenshot of the Power BI action for each row](./media/flow-usage/flow-powerbiforeach.png)
 
