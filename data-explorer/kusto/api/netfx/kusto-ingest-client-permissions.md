@@ -20,8 +20,8 @@ This article explains what permissions to set up on your service, for `Native` i
 ## References
 
 * Azure AD applications used as sample principals in the examples below.
-    * Test AAD App (2a904276-1234-5678-9012-66fc53add60b; microsoft.com)
-    * Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404; microsoft.com)
+    * Test Azure AD App (2a904276-1234-5678-9012-66fc53add60b; microsoft.com)
+    * Kusto Internal Ingestion Azure AD App (76263cdb-1234-5678-9012-545644e9c404; microsoft.com)
 
 ## Ingestion permission mode for queued ingestion
 
@@ -43,11 +43,11 @@ If table creation is required, `Database User` or a higher access role must also
 |`Database Ingestor`  |Azure AD Application |`Test App (app id: 2a904276-1234-5678-9012-66fc53add60b)`
 |`Table Ingestor`     |Azure AD Application |`Test App (app id: 2a904276-1234-5678-9012-66fc53add60b)`
 
->`Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404)` principal, the Kusto internal ingestion app, is immutably mapped to the `Cluster Admin` role. It is thus authorized to ingest data to any table. This is what's happening on the Kusto-managed ingestion pipelines.
+>`Kusto Internal Ingestion Azure AD App (76263cdb-1234-5678-9012-545644e9c404)` principal, the Kusto internal ingestion app, is immutably mapped to the `Cluster Admin` role. It is thus authorized to ingest data to any table. This is what's happening on the Kusto-managed ingestion pipelines.
 
-Granting required permissions on database `DB1` or table `T1` to Azure AD App `Test App (2a904276-1234-5678-9012-66fc53add60b in AAD tenant microsoft.com)` would look like this:
+Granting required permissions on database `DB1` or table `T1` to Azure AD App `Test App (2a904276-1234-5678-9012-66fc53add60b in Azure AD tenant microsoft.com)` would look like this:
 
 ```kusto
-.add database DB1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test AAD App'
-.add table T1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test AAD App'
+.add database DB1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test Azure AD App'
+.add table T1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test Azure AD App'
 ```
