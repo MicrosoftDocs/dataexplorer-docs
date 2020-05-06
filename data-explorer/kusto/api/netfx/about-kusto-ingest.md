@@ -7,6 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
+ms.custom: has-adal-ref
 ms.date: 03/24/2020
 ---
 # Kusto Ingest Client Library
@@ -17,7 +18,6 @@ Kusto.Ingest takes dependencies on the following libraries and SDKs:
 
 * ADAL for AAD Authentication
 * Azure Storage Client
-* [TBD: complete list of external dependencies]
 
 Kusto ingestion methods are defined by the [IKustoIngestClient](kusto-ingest-client-reference.md#interface-ikustoingestclient) interface and allows data ingestion from Stream, IDataReader, local file(s), and Azure blob(s) in both synchronous and asynchronous modes.
 
@@ -90,4 +90,3 @@ When using native ingestion, if not already there, upload the data to one or mor
 
 ### Data Ingestion REST APIs
 [Data Ingestion without Kusto.Ingest Library](kusto-ingest-client-rest.md) explains how to implement Queued Kusto ingestion using Kusto REST APIs and without taking dependency on Kusto.Ingest library.
-
