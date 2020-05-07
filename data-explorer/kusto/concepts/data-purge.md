@@ -14,7 +14,7 @@ ms.date: 02/24/2020
 >[!Note]
 > This article provides steps for how to delete personal data from the device or service and can be used to support your obligations under the GDPR. If you're looking for general information about GDPR, see the [GDPR section of the Service Trust portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
 
-As a data platform, Azure Data Explorer (Kusto) supports the ability to delete individual records, through the use of `.purge` and related commands. You can also [purge an entire table](#purging-an-entire-table).  
+As a data platform, Azure Data Explorer supports the ability to delete individual records, through the use of Kusto `.purge` and related commands. You can also [purge an entire table](#purging-an-entire-table).  
 
 > [!WARNING]
 > Data deletion through the `.purge` command is designed to
@@ -348,5 +348,4 @@ The output is the same as the '.show tables' command output (returned without th
 |TableName|DatabaseName|Folder|DocString
 |---|---|---|---
 |OtherTable|MyDatabase|---|---
-
 
