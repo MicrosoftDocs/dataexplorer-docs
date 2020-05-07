@@ -58,7 +58,7 @@ Takes an expression containing a series (dynamic numerical array) as input and d
 
 **More about series decomposition**
 
-This method is usually applied to time series of metrics expected to manifest periodic and/or trend behavior in order to either forecast future metric values and/or detect anomalous values. The implicit assumption of this regression process is that apart from seasonal and trend behavior, the time series is stochastic and randomly distributed. We can forecast future metric values from the seasonal and trend components (ignoring the residual part), while we can detect anomalous values based on outlier detection on the residual part only. Further details can be found in the [Time Series Decomposition chapter](https://www.otexts.org/fpp/6) of this great book.
+This method is usually applied to time series of metrics expected to manifest periodic and/or trend behavior. You can use the method to  forecast future metric values and/or detect anomalous values. The implicit assumption of this regression process is that apart from seasonal and trend behavior, the time series is stochastic and randomly distributed. Forecast future metric values from the seasonal and trend components while ignoring the residual part. Detect anomalous values based on outlier detection only on the residual part only. Further details can be found in the [Time Series Decomposition chapter](https://www.otexts.org/fpp/6).
 
 **Examples**
 

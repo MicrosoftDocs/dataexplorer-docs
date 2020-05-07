@@ -15,7 +15,7 @@ Calculates distinct count of values, where each value has appeared in at least a
 
 Useful for calculating distinct counts of "fans" only,  while not including appearances of "non-fans". A user is counted as a "fan" only if it was active during the lookback period. 
 The lookback period is only used to determine whether a user is considered `active` ("fan") or not. 
-The aggregation itself doesn't include users from the lookback window (unlike [sliding_window_counts](sliding-window-counts-plugin.md) in which the aggregation is over the sliding window of the lookback period).
+The aggregation itself doesn't include users from the lookback window. In comparison, the [sliding_window_counts](sliding-window-counts-plugin.md) aggregation is performed over a sliding window of the lookback period.
 
 ```kusto
 T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, 2, 7d, dim1, dim2, dim3)
