@@ -107,6 +107,8 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 | Central India | 40.81.249.251, 104.211.98.159 |
 | Central US | 40.67.188.68 |
 | Central US EUAP | 40.89.56.69 |
+| China East 2 | 139.217.236.210 |
+| China North 2 | 40.73.6.21 |
 | East Asia | 20.189.74.103 |
 | East US | 52.224.146.56 |
 | East US2 | 52.232.230.201 |
@@ -126,6 +128,11 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 | South India | 40.81.72.110, 104.211.224.189 |
 | UK South | 40.81.154.254 |
 | UK West | 40.81.122.39 |
+| USDoD Central | 52.182.33.66 |
+| USDoD East | 52.181.33.69 |
+| USGov Arizona | 52.244.33.193 |
+| USGov Texas | 52.243.157.34 |
+| USGov Virginia | 52.227.228.88 |
 | West Central US | 52.159.55.120 |
 | West Europe | 51.145.176.215 |
 | West India | 40.81.88.112, 104.211.160.120 |
@@ -146,6 +153,8 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 | Central India | 23.99.5.162 |
 | Central US | 168.61.212.201 |
 | Central US EUAP | 168.61.212.201 |
+| China East 2 | 40.73.96.39 |
+| China North 2 | 40.73.33.105 |
 | East Asia | 168.63.212.33 |
 | East US | 137.116.81.189 |
 | East US 2 | 137.116.81.189 |
@@ -165,6 +174,11 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 | Southeast Asia | 168.63.173.234 |
 | UK South | 23.97.212.5 |
 | UK West | 23.97.212.5 |
+| USDoD Central | 52.238.116.34 |
+| USDoD East | 52.238.116.34 |
+| USGov Arizona | 52.244.48.35 |
+| USGov Texas | 52.238.116.34 |
+| USGov Virginia | 23.97.0.26 |
 | West Central US | 168.61.212.201 |
 | West Europe | 23.97.212.5 |
 | West India | 23.99.5.162 |
