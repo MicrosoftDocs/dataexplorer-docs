@@ -35,7 +35,7 @@ The following kinds of partition keys are supported:
 ### Hash partition key
 
 Applying a hash partition key on a `string`-typed column in a table is appropriate when the *majority* of queries use equality filters (`==`, `in()`)
-on a specific `string`-typed column of *large-dimension* (10M or higher), such as `application_ID`, `tenant_ID` or `user_ID`.
+and/or aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher), such as an `application_ID`, a `tenant_ID` or a `user_ID`.
 
 * A hash-modulo function is used to partition the data.
 * All *homogeneous* (partitioned) extents that belong to the same partition are assigned to the same data node.
