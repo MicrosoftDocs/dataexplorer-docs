@@ -32,7 +32,7 @@ You can export data by defining an [external table](../externaltables.md) and ex
 |NumRecords|String| Number of records exported to path.
 
 **Notes:**
-* The export query output schema must match the schema of the external table, including all columns defined by the partitions. For example, if the table is partitioned by *DateTime*, the query output schema must have a Timestamp column matching the *TimestampColumnName*. This column name was defined in the external table partitioning definition.
+* The export query output schema must match the schema of the external table, including all columns defined by the partitions. For example, if the table is partitioned by *DateTime*, the query output schema must have a Timestamp column matching the *TimestampColumnName*. This column name is defined in the external table partitioning definition.
 
 * It isn't possible to override the external table properties using the export command.
  For example, you can't export data in Parquet format to an external table whose data format is CSV.
