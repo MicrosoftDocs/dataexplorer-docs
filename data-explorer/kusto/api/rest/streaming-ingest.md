@@ -30,8 +30,8 @@ Additional parameters are formatted as URL query `{name}={value}` pairs, separat
 
 | Parameter    | Description                                                                          | Required/Optional   |
 |--------------|--------------------------------------------------------------------------------------|---------------------|
-|`streamFormat`| Specifies the format of the data in the request body. The value should be one of: `CSV`,`TSV`,`SCsv`,`SOHsv`,`PSV`,`JSON`,`SingleJSON`,`MultiJSON`,`Avro`. For more information, see [Supported Data Formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).| Required |
-|`mappingName` | The name of the pre-created ingestion mapping defined on the table. For more information, see [Data Mappings](../../management/mappings.md). The way to manage pre-created mappings on the table is described [here](../../management/create-ingestion-mapping-command.md).| Optional, but Required if `streamFormat` is one of `JSON`,`SingleJSON`,`MultiJSON`, or `Avro`|  |
+|`streamFormat`| Specifies the format of the data in the request body. The value should be one of: `CSV`, `TSV`, `SCsv`, `SOHsv`, `PSV`, `JSON`, `MultiJSON`, `Avro`. For more information, see [Supported Data Formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).| Required |
+|`mappingName` | The name of the pre-created ingestion mapping defined on the table. For more information, see [Data Mappings](../../management/mappings.md). The way to manage pre-created mappings on the table is described [here](../../management/create-ingestion-mapping-command.md).| Optional, but Required if `streamFormat` is one of `JSON`, `MultiJSON`, or `Avro`|  |
               
 For example, to ingest CSV-formatted data into table `Logs` in database `Test`, use:
 
