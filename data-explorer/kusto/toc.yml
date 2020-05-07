@@ -912,8 +912,6 @@
         href: ./management/show-cluster-database.md
       - name: .alter database
         href: ./management/alter-database.md
-      - name: .drop database
-        href: ./management/drop-database.md
       - name: .show database schema
         href: ./management/show-schema-database.md
     - name: Tables

@@ -1,5 +1,5 @@
 ---
-title: Databases management - Azure Data Explorer | Microsoft Docs
+title: Databases management - Azure Data Explorer
 description: This article describes Databases management in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -19,5 +19,4 @@ This topic describes the following database control commands:
 |[.show database](show-database.md) |Returns a table showing the properties of the context database |
 |[.show cluster databases](show-cluster-database.md) |Returns a table showing all databases attached to the cluster and to which the user invoking the command has access |
 |[.alter database](alter-database.md) |Alters a database's pretty (friendly) name |
-|[.drop database](drop-database.md) |Drops a database's pretty (friendly) name |
 |[.show database schema](show-schema-database.md) |Returns a flat list of the structure of the selected databases with all their tables and columns in a single table or JSON object |

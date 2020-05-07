@@ -1,5 +1,12 @@
 {
   "redirections": [
-   
-  ]
-}
+      {
+          "source_path": "data-explorer/kusto/management/drop-database.md",
+          "redirect_url": "databases",
+          "redirect_document_id": false
+       
+  
+      }
+    ]
+  }
+  
