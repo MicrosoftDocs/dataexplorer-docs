@@ -384,6 +384,7 @@ To trigger a purge in a single-step activation scenario, run the following comma
 ```kusto
 // Connect to the Data Management service
 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
+
 .purge table MyTable in database MyDatabase allrecords with (noregrets='true')
 ```
 
