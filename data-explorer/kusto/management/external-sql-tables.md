@@ -27,9 +27,9 @@ Creates or alters an external SQL table in the database in which the command is 
 * *TableName* - External table name. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.
 * *SqlTableName* - The name of the SQL table.
 * *SqlServerConnectionString* - The connection string to the SQL server. Can be one of the following methods: 
-    * *AAD-integrated authentication* (`Authentication="Active Directory Integrated"`): 
+  * *AAD-integrated authentication* (`Authentication="Active Directory Integrated"`): 
 The user or application authenticates via AAD to Kusto, and the same token is then used to access the SQL Server network endpoint.
-    * *Username/Password authentication* (`User ID=...; Password=...;`). If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed by using this method. 
+  * *Username/Password authentication* (`User ID=...; Password=...;`). If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed by using this method. 
 
 > [!WARNING]
 > Connection strings and queries that include confidential information should be obfuscated so that they'll be omitted from any Kusto tracing. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).
