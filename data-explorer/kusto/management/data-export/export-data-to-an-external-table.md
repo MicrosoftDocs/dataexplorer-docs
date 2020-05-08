@@ -17,9 +17,6 @@ You can export data by defining an [external table](../externaltables.md) and ex
  The export command references the external table by name.
   Export data requires [database admin permission](../access-control/role-based-authorization.md).
 
-> [!NOTE] 
-> * Exporting to an external table with `impersonate` connection string isn't currently supported.
-
 **Syntax:**
 
 `.export` [`async`] `to` `table` *ExternalTableName* <br>
