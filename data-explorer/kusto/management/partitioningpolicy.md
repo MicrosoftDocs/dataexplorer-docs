@@ -90,7 +90,7 @@ ends up including records from a limited time range, resulting with filters on t
 
 * `RangeSize` is a `timespan` scalar constant that indicates the size of each datetime partition.
   * A recommended value to start with is `1.00:00:00` (one day).
-  * Setting a value signifincatly shorter than that is *not* recommended, as it may result with the table having a large amount of small extents, that can't be merged together.
+  * Setting a value signifincantly shorter than that is *not* recommended, as it may result with the table having a large amount of small extents, that can't be merged together.
 * `Reference` is a `datetime` scalar constant of type that indicates a fixed point in time according to which datetime partitions are aligned.
   * A recommended value to start with is `1970-01-01 00:00:00`.
   * If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`.
