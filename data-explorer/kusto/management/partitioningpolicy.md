@@ -203,10 +203,13 @@ The output includes:
 
 #### Capacity
 
-* As the data partitioning process results in the creation of more extents, you might be required to (gradually and linearly) increase the cluster's [Extents merge capacity](../management/capacitypolicy.md#extents-merge-capacity) so that the [extents merging](../management/extents-overview.md) process is able to keep up.
-* If it's required (for instance, in case of high ingestion throughput, and/or a large enough number of tables that require partitioning), the cluster's [Extents partition capacity](../management/capacitypolicy.md#extents-partition-capacity) can be (gradually and linearly) increased to allow running a higher number of concurrent partitioning operations.
-  * In case increasing the partitioning causes a significant increase in the use of the cluster's resources, scale the cluster
-    up/out, either manually, or by enabling auto-scale.
+* The data partitioning process results in the creation of more extents. The cluster may gradually increase its [Extents merge capacity](../management/capacitypolicy.md#extents-merge-capacity),
+  so that the process of [merging extents](../management/extents-overview.md) can keep up.
+* In case of high ingestion throughput, and/or a large enough number of tables that have a partitioning policy defined, the cluster may gradually increase its
+  [Extents partition capacity](../management/capacitypolicy.md#extents-partition-capacity), so that [the process of partitioning extents](#the-data-partitioning-process) can keep up.
+* To avoid consuming too many resources, these dynamic increases are capped. You may be required to (gradually and linearly) increase them beyond the cap, if they are maxed out.
+  * If increasing the capacities causes a significant increase in the use of the cluster's resources, you can scale the cluster
+    [up](../../manage-cluster-vertical-scaling.md)/[out](../../manage-cluster-horizontal-scaling.md), either manually, or by enabling auto-scale.
 
 ### Outliers in partitioned columns
 
