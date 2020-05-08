@@ -122,3 +122,10 @@ blob.UploadFromFile(csvCompressedLocalFileName);
 ## Blob lifecycle
 
 Azure Data Explorer won't delete the blobs post ingestion, but will retain them for three to five days. Use [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion.
+
+## Known issues
+
+When using Azure Data Explorer to [export](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-export/export-data-to-storage) the files used for event grid ingestion, the following should be noted: 
+* Event Grid notifications are *not* triggered if the connection string provided to the export command or the connection string provided to an [external table](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-export/export-data-to-an-external-table) is a connecting string in [ADLS Gen2 format](https://docs.microsoft.com/azure/data-explorer/kusto/api/connection-strings/storage#azure-data-lake-store) *but the storage account isn't enabled for hierarchical namespace*. 
+ * If the account is not enabled for hierarchical namespace, connection string must use the [Blob Storage](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/connection-strings/storage#azure-storage-blob) format (e.g., https://accountname.blob.core.windows.net). 
+ * Note that the export will work as expected even when using the ADLS Gen2 connection string in this case, but notifications won't be triggered and thus Event Grid ingestion won't work. 
