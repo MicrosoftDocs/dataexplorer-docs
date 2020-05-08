@@ -134,7 +134,7 @@ format *prefix* *suffix*, where *prefix* is one of:
 * `drop-by:`
 * `ingest-by:`
 
-## 'drop-by:' extent tags
+### 'drop-by:' extent tags
 
 Tags that start with a **`drop-by:`** prefix can be used to control which other
 extents to merge with; extents that have a given `drop-by:` tag can be merged
@@ -148,7 +148,7 @@ the following command:
 .drop extents <| .show table MyTable extents where tags has "drop-by:2016-02-17" 
 ```
 
-### Performance notes
+#### Performance notes
 
 * Over-using `drop-by` tags is not recommended. The support for dropping 
 data in the manner mentioned above is meant for rarely-occurring events, is not 
@@ -159,7 +159,7 @@ performance.
 * In cases where such tags aren't required some period of time after data being ingested,
 it's recommended to [drop the tags](extents-commands.md#drop-extent-tags).
 
-## 'ingest-by:' extent tags
+### 'ingest-by:' extent tags
 
 Tags that start with an **`ingest-by:`** prefix can be used to ensure that data
 is only ingested once. The user can issue an ingest command that prevents
@@ -183,7 +183,7 @@ The following example ingests data only once (the 2nd and 3rd commands will do n
 > both an `ingest-by:` tag and an `ingestIfNotExists` property,
 > set to the same value (as shown in the 3rd command above).
 
-### Performance notes
+#### Performance notes
 
 - Overusing `ingest-by` tags is not recommended.
 If the pipeline feeding Kusto is known to have data duplications, it's recommended
