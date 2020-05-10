@@ -4,7 +4,7 @@ description: This article describes geo_distance_point_to_line() in Azure Data E
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/11/2020

@@ -4,7 +4,7 @@ description: This article describes geo_polygon_to_s2cells() in Azure Data Explo
 services: data-explorer
 author: orspod
 ms.author: orspod
-ms.reviewer: orspodek
+ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/10/2020
