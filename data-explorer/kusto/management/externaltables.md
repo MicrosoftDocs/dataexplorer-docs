@@ -1,6 +1,6 @@
 ---
-title: External table management - Azure Data Explorer
-description: This article describes External table management in Azure Data Explorer.
+title: External table control commands - Azure Data Explorer
+description: This article describes External table control commands in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
 ---
-# External table management
+# External table control commands
 
 See [external tables](../query/schema-entities/externaltables.md) for an overview of external tables. 
 
@@ -17,7 +17,7 @@ See [external tables](../query/schema-entities/externaltables.md) for an overvie
 
 The following commands are relevant to _any_ external table (of any type).
 
-### .show external tables
+## .show external tables
 
 * Returns all external tables in the database (or a specific external table).
 * Requires [Database monitor permission](../management/access-control/role-based-authorization.md).
@@ -51,7 +51,7 @@ The following commands are relevant to _any_ external table (of any type).
 | T         | Blob      | ExternalTables | Docs      | {}         |
 
 
-### .show external table schema
+## .show external table schema
 
 * Returns the schema of the external table, as JSON or CSL. 
 * Requires [Database monitor permission](../management/access-control/role-based-authorization.md).
@@ -98,7 +98,7 @@ The following commands are relevant to _any_ external table (of any type).
 |-----------|-----------------|--------------|----------------|-----------|
 | T         | x:long,s:string | DB           | ExternalTables | Docs      |
 
-### .drop external table
+## .drop external table
 
 * Drops an external table 
 * The external table definition can't be restored following this operation
