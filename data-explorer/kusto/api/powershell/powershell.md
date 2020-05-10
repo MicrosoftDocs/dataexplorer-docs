@@ -19,11 +19,13 @@ PowerShell's built-in integration with arbitrary (non-PowerShell) .NET libraries
 To start working with the Azure Data Explorer .NET client libraries using PowerShell.
 
 1. Download the [`Microsoft.Azure.Kusto.Tools` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
-1. Extract the contents of the 'tools' directory in the package (use an archiving tool like 7-zip).
+1. Extract the contents of the 'tools' directory in the package (use an archiving tool like `7-zip`).
 1. Call `[System.Reflection.Assembly]::LoadFrom("path")` from PowerShell, to load the required library. 
     - The `path` parameter for the command should indicate the location of the extracted files.
-1. Once all dependent .NET assemblies are loaded, create a Kusto connection string,
-   instantiate a *query provider* or an *admin provider*, and run the queries or commands (as shown in the [examples](powershell.md#examples) below).
+1. Once all dependent .NET assemblies are loaded:
+   1. Create a Kusto connection string.
+   1. Instantiate a *query provider* or an *admin provider*.
+   1. Run the queries or commands, as shown in the [examples](powershell.md#examples) below.
 
 For more information, see the [Azure Data Explorer client libraries](../netfx/about-kusto-data.md).
 
@@ -100,10 +102,10 @@ $dataView | Sort StartTime -Descending | Format-Table -AutoSize
 
 And the output is:
 
-|StartTime           |EndTime             |EpisodeId |EventId |State          |EventType         |InjuriesDirect |InjuriesIndirect |DeathsDirect |DeathsIndirect
+|StartTime           |EndTime             |EpisodeID |EventID |State          |EventType         |InjuriesDirect |InjuriesIndirect |DeathsDirect |DeathsIndirect
 |---------           |-------             |--------- |------- |-----          |---------         |-------------- |---------------- |------------ |--------------
 |2007-12-30 16:00:00 |2007-12-30 16:05:00 |    11749 |  64588 |GEORGIA        |Thunderstorm Wind |             0 |               0 |           0 |             0
 |2007-12-20 07:50:00 |2007-12-20 07:53:00 |    12554 |  68796 |MISSISSIPPI    |Thunderstorm Wind |             0 |               0 |           0 |             0
-|2007-09-29 08:11:00 |2007-09-29 08:11:00 |    11091 |  61032 |ATLANTIC SOUTH |Waterspout        |             0 |               0 |           0 |             0
+|2007-09-29 08:11:00 |2007-09-29 08:11:00 |    11091 |  61032 |ATLANTIC SOUTH |Water spout       |             0 |               0 |           0 |             0
 |2007-09-20 21:57:00 |2007-09-20 22:05:00 |    11078 |  60913 |FLORIDA        |Tornado           |             0 |               0 |           0 |             0
 |2007-09-18 20:00:00 |2007-09-19 18:00:00 |    11074 |  60904 |FLORIDA        |Heavy Rain        |             0 |               0 |           0 |             0
