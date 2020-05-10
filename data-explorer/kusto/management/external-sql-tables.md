@@ -76,6 +76,7 @@ with
 | ExternalSql | Sql       | ExternalTables | Docs      | {<br>  "TargetEntityKind": "sqltable`",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=mydatabase;",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
 
 ## Querying an external table of type SQL 
+
 Querying an external SQL table is supported. See [querying external tables](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data). 
 
 > [!Note]
