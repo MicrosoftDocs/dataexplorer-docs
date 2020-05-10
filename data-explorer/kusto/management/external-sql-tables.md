@@ -92,5 +92,6 @@ Kusto will execute a 'SELECT * from TABLE' query to the SQL database, followed b
 In such cases, performance is expected to be better if written in T-SQL directly ('SELECT COUNT(1) FROM TABLE') 
 and executed using the [sql_request plugin](../query/sqlrequestplugin.md), instead of using the external table function. 
 Similarly, filters are not pushed to the SQL query.  
+
 Use the external table to query the SQL table when the query requires reading the entire table (or relevant columns) for further execution on Kusto side. 
 When an SQL query can be optimized in T-SQL, use the [sql_request plugin](../query/sqlrequestplugin.md).
