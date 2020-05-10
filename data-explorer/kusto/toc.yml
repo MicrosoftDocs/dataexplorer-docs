@@ -955,7 +955,6 @@
     - name: External tables
       items:
       - name: External tables control commands
-
         href: ./management/externaltables.md
       - name: External SQL tables
         href: management/external-sql-tables.md
