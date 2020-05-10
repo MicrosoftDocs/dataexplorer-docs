@@ -20,7 +20,7 @@ While attempting to ingest from multiple sources, errors might occur during the 
 If an ingestion fails for one of the sources, it's logged and the client continues to ingest the remaining sources. 
 After going over all sources for ingestion, an `IngestClientAggregateException` is thrown, containing the `IList<IngestClientException> IngestionErrors` member.
 
-`IngestClientException` and its derived classes contain a field `IngestionSource` and an `Error` field. The two fields together create a mapping from the source that failed ingestion, to the error that occurred while the ingestion was attempted. The information can be used in the `IngestionErrors` list to investigate which sources failed ingestion and why. The `IngestClientAggregateException` exception also contains a boolean property `GlobalError`, that indicates whether an error occurred for all sources.
+`IngestClientException` and its derived classes contain a field `IngestionSource` and an `Error` field. The two fields together create a mapping, from the source that failed ingestion, to the error that occurred while attempting the ingestion. The information can be used in the `IngestionErrors` list to investigate which sources failed ingestion and why. The `IngestClientAggregateException` exception also contains a boolean property `GlobalError`, that indicates whether an error occurred for all sources.
 
 ### Failures ingesting from files or blobs
 
@@ -130,7 +130,7 @@ Fields:
 Additional information:
 
 Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient).  
-When ingesting sources that aren't already in an Azure container, such as files, DataReader, or Stream, then the data is uploaded to a temporary blob for ingestion. 
+When ingesting sources that aren't already in an Azure container, such as files, DataReader, or Stream, then the data uploads to a temporary blob for ingestion. 
 The exception is raised when there are no containers found to upload the data to.
 
 ### DuplicateIngestionPropertyException
