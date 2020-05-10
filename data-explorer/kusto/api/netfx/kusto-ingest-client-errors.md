@@ -1,6 +1,6 @@
 ---
 title: Kusto.Ingest Reference - Errors and Exceptions - Azure Data Explorer
-description: This article describes Kusto.Ingest Reference - Errors and Exceptions in Azure Data Explorer.
+description: This article describes `Kusto.Ingest` Reference - Errors and Exceptions in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -19,40 +19,40 @@ Any error during the ingestion handling on the client side is indicated by a C# 
 While attempting to ingest from multiple sources, errors might occur during the ingestion process. 
 If an ingestion fails for one of the sources, it's logged and the client continues to ingest the remaining sources. 
 After going over all sources for ingestion, an `IngestClientAggregateException` is thrown, containing the `IList<IngestClientException> IngestionErrors` member.
-`IngestClientException` and its derived classes contain a field `IngestionSource` and an `Error` field. Together the fields form a mapping from the source that failed to be ingested, to the error that occurred while attempting to ingest it. The information can be used in the `IngestionErrors` list to investigate which sources failed to be ingested and why. The `IngestClientAggregateException` exception also contains a boolean property `GlobalError`, that indicates whether an error occurred for all sources.
+`IngestClientException` and its derived classes contain a field `IngestionSource` and an `Error` field. The 2 fields together create a mapping from the source that failed to be ingested, to the error that occurred while the ingest was attempted. The information can be used in the `IngestionErrors` list to investigate which sources failed to be ingested and why. The `IngestClientAggregateException` exception also contains a boolean property `GlobalError`, that indicates whether an error occurred for all sources.
 
 ### Failures ingesting from files or blobs
 
-If an ingestion failure occurs while attempting to ingest from a blob or file, the ingestion sources will not be deleted, even if the `deleteSourceOnSuccess` flag is set to `true`. The sources are preserved for further analysis. Once the origin of the error is understood, and if the error did not originate from the ingestion source itself, the user of the client may attempt to re-ingest it.
+If an ingestion failure occurs while attempting to ingest from a blob or file, the ingestion sources won't be deleted, even if the `deleteSourceOnSuccess` flag is set to `true`. The sources are preserved for further analysis. Once the origin of the error is understood, and if the error didn't originate from the ingestion source itself, then the user of the client may attempt to reingest it.
 
 ### Failures ingesting from IDataReader
 
 While ingesting from DataReader, the data to ingest is saved to a temporary folder whose default location is `<Temp Path>\Ingestions_<current date and time>`. This default folder is always deleted after a successful ingestion.
 
-In the `IngestFromDataReader` and `IngestFromDataReaderAsync` methods, the `retainCsvOnFailure` flag, whose default value is `false`, determines whether the files should be kept after a failed ingestion. If this flag is set to `false`, data that fails the ingestion will not be persisted, making it hard to understand what went wrong.
+In the `IngestFromDataReader` and `IngestFromDataReaderAsync` methods, the `retainCsvOnFailure` flag, whose default value is `false`, determines whether the files should be kept after a failed ingestion. If this flag is set to `false`, data that fails the ingestion won't be persisted, making it hard to understand what went wrong.
 
 ## KustoQueuedIngestClient exceptions
 
-`KustoQueuedIngestClient` ingests data by uploading messages to an Azure queue. If any error occurs before and during the queueing process, an `IngestClientAggregateException`is thrown at the end of the execution with a collection of `IngestClientException` that contains the source that was not posted to the queue (for every failure). The error that occurred while attempting to post the message is also thrown.
+`KustoQueuedIngestClient` ingests data by uploading messages to an Azure queue. If any error occurs before and during the queueing process, an `IngestClientAggregateException`is thrown at the end of the execution with a collection of `IngestClientException` that contains the source that wasn't posted to the queue (for every failure). The error that occurred while attempting to post the message is also thrown.
 
 ### Posting to queue failures with a file or blob as a source
 
-If an error occurrs while using `KustoQueuedIngestClient`'s `IngestFromFile/IngestFromBlob` methods, the sources are not deleted, even if the `deleteSourceOnSuccess` flag is set to `true`. Instead, the sources are preserved for further analysis. 
+If an error occurs while using the `KustoQueuedIngestClient`'s `IngestFromFile/IngestFromBlob` methods, the sources aren't deleted, even if the `deleteSourceOnSuccess` flag is set to `true`. Instead, the sources are preserved for further analysis. 
 
-Once the origin of the error is understood, and if the error did not originate from the ingestion source itself, the user of the client may attempt to re-queue the data by using the relevant `IngestFromFile/IngestFromBlob` methods with the failed source. 
+Once the origin of the error is understood, and if the error didn't originate from the ingestion source itself, the user of the client may attempt to requeue the data by using the relevant `IngestFromFile/IngestFromBlob` methods with the failed source. 
 
 ### Posting to queue failures with IDataReader as a source
 
 While using a DataReader source, the data to post to the queue is saved to a temporary folder whose default location is `<Temp Path>\Ingestions_<current date and time>`. This folder is always deleted after the data has been successfully posted to the queue.
-In the `IngestFromDataReader` and `IngestFromDataReaderAsync` methods, the `retainCsvOnFailure` flag, whose default value is `false`, determines whether the files should be kept after a failed ingestion. If this flag is set to `false`, data that fails the ingestion will not be persisted, making it hard to understand what went wrong.
+In the `IngestFromDataReader` and `IngestFromDataReaderAsync` methods, the `retainCsvOnFailure` flag, whose default value is `false`, determines whether the files should be kept after a failed ingestion. If this flag is set to `false`, data that fails the ingestion won't be persisted, making it hard to understand what went wrong.
 
 ### Common Failures
 |Error                         |Reason           |Mitigation                                   |
 |------------------------------|-----------------|---------------------------------------------|
 |Database <database name> name doesn't exist| The database doesn't exist|Check the database name at `kustoIngestionProperties`/Create the database |
-|Entity 'table name that doesn't exist' of kind 'Table' was not found.|The table doesn't exist and there is no CSV mapping.| Add CSV mapping / create the required table |
+|Entity 'table name that doesn't exist' of kind 'Table' wasn't found.|The table doesn't exist and there's no CSV mapping.| Add CSV mapping / create the required table |
 |Blob <blob path> excluded for reason: JSON pattern must be ingested with jsonMapping parameter| JSON ingestion when no JSON mapping is provided.|Provide a JSON mapping |
-|Failed to download blob: 'The remote server returned an error: (404) Not Found.'| The blob does not exist.|Verify that the blob exists. If it exists retry and contact the Kusto team |
+|Failed to download blob: 'The remote server returned an error: (404) Not Found.'| The blob doesn't exist.|Verify that the blob exists. If it exists, retry and contact the Kusto team |
 |JSON column mapping is not valid: Two or more mapping elements point to the same column.| JSON mapping has 2 columns with different paths|Fix JSON mapping |
 |EngineError - [UtilsException] `IngestionDownloader.Download`: One or more files failed to download (search KustoLogs for ActivityID:<GUID1>, RootActivityId:<GUID2>)| One or more files failed to download. |Retry |
 |Failed to parse: Stream with ID '<stream name>' has a malformed CSV format, failing per ValidationOptions policy |Malformed CSV file (such as, not having the same number of columns on every line). Fails only when validation policy is set to `ValidationOptions`. ValidateCsvInputConstantColumns |Check your CSV files. This message applies only to CSV/TSV files |
@@ -62,39 +62,39 @@ In the `IngestFromDataReader` and `IngestFromDataReaderAsync` methods, the `reta
 
 To help handle ingestion failures programmatically, failure information is enriched with a numeric error code (`IngestionErrorCode enumeration`).
 
-|ErrorCode                            |Reason |
-|-------------------------------------|-------|
-|Unknown                              | Unknown error occurred|
-|Stream_LowMemoryCondition            | Operation ran out of memory|
-|Stream_WrongNumberOfFields           | CSV document has inconsistent number of fields|
-|Stream_InputStreamTooLarge           | The document submitted for ingestion has exceeded the allowed size|
-|Stream_NoDataToIngest                | Found no data streams to ingest|
-|Stream_DynamicPropertyBagTooLarge    | One of the dynamic columns in the ingested data contains too many unique properties|
-|Download_SourceNotFound              | Failed to download source from Azure storage - source not found|
+|ErrorCode                                      |Reason                                                        |
+|-----------------------------------------------|--------------------------------------------------------------|
+|Unknown                                        | Unknown error occurred|
+|Stream_LowMemoryCondition                      | Operation ran out of memory|
+|Stream_WrongNumberOfFields                     | CSV document has inconsistent number of fields|
+|Stream_InputStreamTooLarge                     | The document submitted for ingestion has exceeded the allowed size|
+|Stream_NoDataToIngest                          | Found no data streams to ingest|
+|Stream_DynamicPropertyBagTooLarge              | One of the dynamic columns in the ingested data contains too many unique properties|
+|Download_SourceNotFound                        | Failed to download source from Azure storage - source not found|
 |Download_AccessConditionNotSatisfied           | Failed to download source from Azure storage - Access denied|
-|Download_Forbidden                             | Failed to download source from Azure storage - Access forbidden|
+|Download_Forbidden                             | Failed to download source from Azure storage - Access not permitted|
 |Download_AccountNotFound                       | Failed to download source from Azure storage - Account not found|
 |Download_BadRequest                            | Failed to download source from Azure storage - Bad request|
 |Download_NotTransient                          | Failed to download source from Azure storage - Not transient error|
 |Download_UnknownError                          | Failed to download source from Azure storage - Unknown error|
-|UpdatePolicy_QuerySchemaDoesNotMatchTableSchema| Failed to invoke update policy. Query schema does not match table schema|
+|UpdatePolicy_QuerySchemaDoesNotMatchTableSchema| Failed to invoke update policy. Query schema doesn't match table schema|
 |UpdatePolicy_FailedDescendantTransaction       | Failed to invoke update policy. Failed descendant transactional update policy|
 |UpdatePolicy_IngestionError                    | Failed to invoke update policy. Ingestion error occurred|
 |UpdatePolicy_UnknownError                      | Failed to invoke update policy. Unknown error occurred|
-|BadRequest_MissingJsonMappingtFailure          | JSON pattern did not ingested with jsonMapping parameter|
+|BadRequest_MissingJsonMappingtFailure          | JSON pattern didn't ingest with the jsonMapping parameter|
 |BadRequest_InvalidOrEmptyBlob                  | Blob is invalid or is an empty zip archive|
-|BadRequest_DatabaseNotExist                    | Database does not exist|
-|BadRequest_TableNotExist                       | Table does not exist|
-|BadRequest_InvalidKustoIdentityToken           | Invalid kusto identity token|
+|BadRequest_DatabaseNotExist                    | Database doesn't exist|
+|BadRequest_TableNotExist                       | Table doesn't exist|
+|BadRequest_InvalidKustoIdentityToken           | Invalid Kusto identity token|
 |BadRequest_UriMissingSas                       | Blob path without SAS from unknown blob storage|
 |BadRequest_FileTooLarge                        | Trying to ingest too large file|
 |BadRequest_NoValidResponseFromEngine           | No valid reply from ingest command|
 |BadRequest_TableAccessDenied                   | Access to table is denied|
 |BadRequest_MessageExhausted                    | Message is exhausted|
-|General_BadRequest                             | General bad request. May hint at ingestion to non-existant Database/Table|
+|General_BadRequest                             | General bad request. May hint at ingestion to non-existent Database/Table|
 |General_InternalServerError                    | Internal server error occurred|
 
-## Detailed Kusto.Ingest exceptions reference
+## Detailed exceptions reference
 
 ### CloudQueuesNotFoundException
 
@@ -111,8 +111,7 @@ Fields:
 Additional information:
 
 Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient).
-During the ingestion process, several attempts are made to retrieve the Azure Queues linked to the DM. When these attempts fail, the exception is raised containing the
-reason for failure in the 'Error' field and possibly an inner exception in the 'InnerException' field.
+During the ingestion process, several attempts are made to retrieve the Azure Queues linked to the DM. When these attempts fail, the exception containing the reason for failure, is raised in the 'Error' field and possibly an inner exception in the 'InnerException' field.
 
 
 ### CloudBlobContainersNotFoundException
@@ -130,7 +129,7 @@ Fields:
 Additional information:
 
 Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient).  
-When ingesting sources that are NOT already in an Azure container, such as files, DataReader, or Stream, then the data is uploaded to a temporary blob for ingestion. 
+When ingesting sources that aren't already in an Azure container, such as files, DataReader, or Stream, then the data is uploaded to a temporary blob for ingestion. 
 The exception is raised when there are no containers found to upload the data to.
 
 ### DuplicateIngestionPropertyException
@@ -161,7 +160,7 @@ Fields:
 Additional information:
 
 Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient).  
-The queued ingest client ingests data by uploading a message to the relevant Azure queue. If there is a post failure, the exception is raised containing the queue URI, the reason for failure in the 'Error' field, and possibly an inner exception in the 'InnerException' field.
+The queued ingest client ingests data by uploading a message to the relevant Azure queue. If there's a post failure, the exception is raised. It will contain the queue URI, the reason for the failure in the 'Error' field, and possibly an inner exception in the 'InnerException' field.
 
 ### DataFormatNotSpecifiedException
 
@@ -171,7 +170,7 @@ Base Class: IngestClientException
 
 Additional information:
 
-When ingesting from a Stream, a data format must be specified in the [IngestionProperties](kusto-ingest-client-reference.md#class-kustoingestionproperties), in order to properly ingest the data. This exception is raised when the `IngestionProperties.Format` is not
+When ingesting from a Stream, a data format must be specified in the [IngestionProperties](kusto-ingest-client-reference.md#class-kustoingestionproperties), to properly ingest the data. This exception is raised when the `IngestionProperties.Format` isn't
 specified.
 
 ### InvalidUriIngestClientException
@@ -188,7 +187,7 @@ Base Class: IngestClientException
 
 Additional information:
 
-Files are compressed prior to their ingestion. The exception is raised when an attempt to compress the file fails.
+Files are compressed before their ingestion. The exception is raised when an attempt to compress the file fails.
 
 ### UploadFileToTempBlobIngestClientException
 
@@ -211,7 +210,7 @@ Fields:
 
 Additional information:
 
-If an ingestion source exceeds the maximal size of 4GB, then the exception is thrown. The size validation can be overridden by the `IgnoreSizeLimit` flag in the [IngestionProperties class](kusto-ingest-client-reference.md#class-kustoingestionproperties). However, it is not recommended [to ingest single sources larger than 1 GB](about-kusto-ingest.md#ingestion-best-practices).
+If an ingestion source exceeds the maximal size of 4GB, then the exception is thrown. The size validation can be overridden by the `IgnoreSizeLimit` flag in the [IngestionProperties class](kusto-ingest-client-reference.md#class-kustoingestionproperties). However, it's not recommended [to ingest single sources larger than 1 GB](about-kusto-ingest.md#ingestion-best-practices).
 
 ### UploadFileToTempBlobIngestClientException
 
@@ -221,13 +220,13 @@ Base Class: IngestClientException
 
 ### DirectIngestClientException
 
-Raised when a general error occurs while performing a direct ingestion
+Raised when a general error occurs while doing a direct ingestion
 
 Base Class: IngestClientException
 
 ### QueuedIngestClientException
 
-Raised when an error occurs while performing a queued ingestion
+Raised when an error occurs while doing a queued ingestion
 
 Base Class: IngestClientException
 
@@ -246,4 +245,4 @@ Fields:
 
 ## Errors in native code
 
-The Kusto engine is written in native code. For more information about errors in native code, please see [Errors in native code](../../concepts/errorsinnativecode.md).
+The Kusto engine is written in native code. For more information about errors in native code, see [Errors in native code](../../concepts/errorsinnativecode.md).
