@@ -26,13 +26,13 @@ T | parse-where Text with "ActivityName=" name ", ActivityType=" type
 
 * *T*: The input table.
 
-* kind: 
+* *kind*: 
 
-	* simple (default): StringConstant is a regular string value, and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types.
+	* *simple* (default): StringConstant is a regular string value, and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types.
 		
-	* regex: StringConstant may be a regular expression, and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types. String delimiters can be a regex for this mode.
+	* *regex*: StringConstant may be a regular expression, and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types. String delimiters can be a regex for this mode.
 	
-	* flags: Flags to be used in regex mode:  `U` (Ungreedy), `m` (multi-line mode), `s` (match new line `\n`), `i` (case-insensitive), More flags can be found in [RE2 flags](re2.md).
+	* *flags*: Flags to be used in regex mode:  `U` (Ungreedy), `m` (multi-line mode), `s` (match new line `\n`), `i` (case-insensitive), More flags can be found in [RE2 flags](re2.md).
 		
 * *Expression*: An expression that evaluates to a string.
 
