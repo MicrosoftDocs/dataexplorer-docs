@@ -35,7 +35,7 @@ T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofd
 
 **Returns**
 
-Returns three output tables, useful for constructing a sankey diagram for the analyzed sequence:
+Returns three output tables, which are useful for constructing a sankey diagram for the analyzed sequence:
 
 * Table #1 - prev-sequence-next `dcount`
     TimelineColumn: the analyzed time window
@@ -61,7 +61,7 @@ Returns three output tables, useful for constructing a sankey diagram for the an
 
 ### Exploring Storm Events 
 
-The following query looks on the table StormEvents (weather statistics for 2007) and shows what event happens before/after all Tornado events occurred in 2007.
+The following query looks at the table StormEvents (weather statistics for 2007) and shows which events happened before/after all Tornado events occurred in 2007.
 
 ```kusto
 // Looking on StormEvents statistics: 
@@ -73,7 +73,7 @@ StormEvents
 
 Result includes three tables:
 
-* Table #1: All possible variants of what happened before and after the sequence. For example, second line tells that there were 87 different events that had next sequence: `Hail` -> `Tornado` -> `Hail`
+* Table #1: All possible variants of what happened before and after the sequence. For example, the second line means that there were 87 different events that had following sequence: `Hail` -> `Tornado` -> `Hail`
 
 
 |`StartTime`|`prev`|`next`|`dcount`|
@@ -124,7 +124,7 @@ Result includes three tables:
 |2007-01-01 00:00:00.0000000|Heavy Snow||1|
 |2007-01-01 00:00:00.0000000|Strong Wind||1|
 
-* Table #2: show all distinct events grouped by previous event. For example, second line shows that there were total 150 events of `Hail` that happened just before `Tornado`
+* Table #2: shows all distinct events grouped by the previous event. For example, the second line shows that there were a total of 150 events of `Hail` that happened just before `Tornado`.
 
 |`StartTime`|`prev`|`dcount`|
 |---------|-----|------|
@@ -142,7 +142,7 @@ Result includes three tables:
 |2007-01-01 00:00:00.0000000|Coastal Flood|1|
 |2007-01-01 00:00:00.0000000|Tropical Storm|1|
 
-* Table #3: show all distinct events grouped by next event. For example, second line shows that there were total 143 events of `Hail` that happened after  `Tornado`
+* Table #3: shows all distinct events grouped by next event. For example, the second line shows that there were a total of 143 events of `Hail` that happened after `Tornado`.
 
 |`StartTime`|`next`|`dcount`|
 |---------|-----|------|
@@ -156,7 +156,7 @@ Result includes three tables:
 |2007-01-01 00:00:00.0000000|Flood|2|
 |2007-01-01 00:00:00.0000000|Hurricane (Typhoon)|1|
 
-Now, let's try to find out how does the next sequence continues:  
+Now, let's try to find out how the following sequence continues:  
 `Hail` -> `Tornado` -> `Thunderstorm Wind`
 
 ```kusto
@@ -165,7 +165,7 @@ StormEvents
 dynamic(['Hail', 'Tornado', 'Thunderstorm Wind']))
 ```
 
-Skipping `Table #1` and `Table #2`, and looking  on `Table #3` - we can conclude that sequence `Hail` -> `Tornado` -> `Thunderstorm Wind` in 92 events ended with this sequence, continued as `Hail` in 41 events, and turned back to `Tornado` in 14.
+Skipping `Table #1` and `Table #2`, and looking at `Table #3`, we can conclude that sequence `Hail` -> `Tornado` -> `Thunderstorm Wind` in 92 events ended with this sequence, continued as `Hail` in 41 events, and turned back to `Tornado` in 14.
 
 |`StartTime`|`next`|`dcount`|
 |---------|-----|------|
