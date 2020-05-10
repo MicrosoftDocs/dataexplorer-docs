@@ -1,5 +1,5 @@
 ---
-title: funnel_sequence plugin - Azure Data Explorer | Microsoft Docs
+title: funnel_sequence plugin - Azure Data Explorer
 description: This article describes funnel_sequence plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,7 +11,7 @@ ms.date: 02/13/2020
 ---
 # funnel_sequence plugin
 
-Calculates distinct count of users who've taken a sequence of states, and the distribution of previous/next states that have led to / were followed by the sequence. 
+Calculates distinct count of users who have taken a sequence of states, and the distribution of previous/next states that have led to/were followed by the sequence. 
 
 ```kusto
 T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofday(now()), 10m, 1d, state_column, dynamic(['S1', 'S2', 'S3']))
@@ -23,38 +23,38 @@ T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofd
 
 **Arguments**
 
-* *T*: The input tabular expression.
-* *IdColum*: column reference, must be present in the source expression
-* *TimelineColumn*: column reference representing timeline, must be present in the source expression
-* *Start*: scalar constant value of the analysis start period
-* *End*: scalar constant value of the analysis end period
-* *MaxSequenceStepWindow*: scalar constant value of the max allowed timespan between 2 sequential steps in the sequence
-* *Step*: scalar constant value of the analysis step period (bin)
-* *StateColumn*: column reference representing the state, must be present in the source expression
-* *Sequence*: a constant dynamic array with the sequence values (values are looked up in `StateColumn`)
+* *T*: the input tabular expression.
+* *IdColum*: column reference, must be present in the source expression.
+* *TimelineColumn*: column reference representing timeline, must be present in the source expression.
+* *Start*: scalar constant value of the analysis start period.
+* *End*: scalar constant value of the analysis end period.
+* *MaxSequenceStepWindow*: scalar constant value of the max allowed timespan between two sequential steps in the sequence.
+* *Step*: scalar constant value of the analysis step period (bin).
+* *StateColumn*: column reference representing the state, must be present in the source expression.
+* *Sequence*: a constant dynamic array with the sequence values (values are looked up in `StateColumn`).
 
 **Returns**
 
-Returns 3 output tables, useful for constructing a sankey diagram for the analyzed sequence:
+Returns three output tables, useful for constructing a sankey diagram for the analyzed sequence:
 
-* Table #1 - prev-sequence-next dcount
+* Table #1 - prev-sequence-next `dcount`
     TimelineColumn: the analyzed time window
-    prev: the prev state (may be empty if there were any users which only had events for the searched sequence, but not any events prior to it). 
-    next: the next state (may be empty if there were any users which only had events for the searched sequence, but not any events that followed it). 
-    dcount: distinct count of <IdColumn> in time window that transitioned [prev] --> <Sequence> --> [next]. 
-    samples: an array of ids (from <IdColumn>) corresponding to the row's sequence (a maximum of 128 ids are returned). 
+    prev: the prev state (may be empty if there were any users that only had events for the searched sequence, but not any events prior to it). 
+    next: the next state (may be empty if there were any users that only had events for the searched sequence, but not any events that followed it). 
+    `dcount`: distinct count of <IdColumn> in time window that transitioned [prev] --> <Sequence> --> [next]. 
+    samples: an array of IDs (from <IdColumn>) corresponding to the row's sequence (a maximum of 128 IDs are returned). 
 
-* Table #2 - prev-sequence dcount
+* Table #2 - prev-sequence `dcount`
     TimelineColumn: the analyzed time window
-    prev: the prev state (may be empty if there were any users which only had events for the searched sequence, but not any events prior to it). 
-    dcount: distinct count of <IdColumn> in time window that transitioned [prev] --> <Sequence> --> [next]. 
-    samples: an array of ids (from <IdColumn>) corresponding to the row's sequence (a maximum of 128 ids are returned). 
+    prev: the prev state (may be empty if there were any users that only had events for the searched sequence, but not any events prior to it). 
+    `dcount`: distinct count of <IdColumn> in time window that transitioned [prev] --> <Sequence> --> [next]. 
+    samples: an array of IDs (from <IdColumn>) corresponding to the row's sequence (a maximum of 128 IDs are returned). 
 
-* Table #3 - sequence-next dcount
+* Table #3 - sequence-next `dcount`
     TimelineColumn: the analyzed time window
-    next: the next state (may be empty if there were any users which only had events for the searched sequence, but not any events that followed it). 
-    dcount: distinct count of <IdColumn> in time window that transitioned [prev] --> <Sequence> --> [next]. 
-    samples: an array of ids (from <IdColumn>) corresponding to the row's sequence (a maximum of 128 ids are returned). 
+    next: the next state (may be empty if there were any users that only had events for the searched sequence, but not any events that followed it). 
+    `dcount`: distinct count of <IdColumn> in time window that transitioned [prev] --> <Sequence> --> [next]. 
+    samples: an array of IDs (from <IdColumn>) corresponding to the row's sequence (a maximum of 128 IDs are returned). 
 
 
 **Examples**
@@ -71,12 +71,12 @@ StormEvents
 | evaluate funnel_sequence(EpisodeId, StartTime, datetime(2007-01-01), datetime(2008-01-01), 1d,365d, EventType, dynamic(['Tornado']))
 ```
 
-Result includes 3 tables:
+Result includes three tables:
 
 * Table #1: All possible variants of what happened before and after the sequence. For example, second line tells that there were 87 different events that had next sequence: `Hail` -> `Tornado` -> `Hail`
 
 
-|StartTime|prev|next|dcount|
+|StartTime|prev|next|`dcount`|
 |---|---|---|---|
 |2007-01-01 00:00:00.0000000|||293|
 |2007-01-01 00:00:00.0000000|Hail|Hail|87|
@@ -126,7 +126,7 @@ Result includes 3 tables:
 
 * Table #2: show all distinct events grouped by previous event. For example, second line shows that there were total 150 events of `Hail` that happened just before `Tornado`
 
-|StartTime|prev|Dcount|
+|StartTime|prev|`dcount`|
 |---------|-----|------|
 |2007-01-01 00:00:00.0000000||331|
 |2007-01-01 00:00:00.0000000|Hail|150|
@@ -144,7 +144,7 @@ Result includes 3 tables:
 
 * Table #3: show all distinct events grouped by next event. For example, second line shows that there were total 143 events of `Hail` that happened after  `Tornado`
 
-|StartTime|next|Dcount|
+|StartTime|next|`dcount`|
 |---------|-----|------|
 |2007-01-01 00:00:00.0000000||332|
 |2007-01-01 00:00:00.0000000|Hail|145|
@@ -168,7 +168,7 @@ dynamic(['Hail', 'Tornado', 'Thunderstorm Wind']))
 Skipping `Table #1` and `Table #2`, and looking  on `Table #3` - we 
 can conclude that sequence `Hail` -> `Tornado` -> `Thunderstorm Wind` in 92 events ended with this sequence, continued as `Hail` in 41 events, and turned back to `Tornado` in 14.
 
-|StartTime|next|Dcount|
+|StartTime|next|`dcount`|
 |---------|-----|------|
 |2007-01-01 00:00:00.0000000||92|
 |2007-01-01 00:00:00.0000000|Hail|41|
