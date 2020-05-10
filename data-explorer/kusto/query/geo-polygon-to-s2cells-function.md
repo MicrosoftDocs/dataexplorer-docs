@@ -3,11 +3,11 @@ title: geo_polygon_to_s2cells() - Azure Data Explorer | Microsoft Docs
 description: This article describes geo_polygon_to_s2cells() in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: orspod,mbrichko
+ms.author: orspod
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/05/2020
+ms.date: 05/10/2020
 ---
 # geo_polygon_to_s2cells()
 

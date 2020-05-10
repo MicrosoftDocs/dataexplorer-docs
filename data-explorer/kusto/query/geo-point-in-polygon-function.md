@@ -2,12 +2,12 @@
 title: geo_point_in_polygon() - Azure Data Explorer | Microsoft Docs
 description: This article describes geo_point_in_polygon() in Azure Data Explorer.
 services: data-explorer
-author: orspod,mbrichko
-ms.author: orspodek,mbrichko
+author: orspod
+ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/05/2020
+ms.date: 05/10/2020
 ---
 # geo_point_in_polygon()
 
