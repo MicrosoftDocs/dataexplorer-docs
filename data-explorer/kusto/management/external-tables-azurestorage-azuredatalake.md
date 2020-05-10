@@ -181,9 +181,9 @@ If there's an additional string partition `"CustomerId" customerId` defined, the
 
 1. For all *direct* blobs found under the URI patterns(s) that you've created, check:
 
- * Partition values match predicates used in a query.
- * Blob name starts with `NamePrefix`, if such a property is defined.
- * Blob name ends with `FileExtension`, if such a property is defined.
+   * Partition values match predicates used in a query.
+   * Blob name starts with `NamePrefix`, if such a property is defined.
+   * Blob name ends with `FileExtension`, if such a property is defined.
 
 Once all the conditions are met, the blob is fetched and processed by the query engine.
 
