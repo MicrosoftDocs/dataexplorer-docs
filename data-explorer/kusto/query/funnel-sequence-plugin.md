@@ -41,20 +41,20 @@ Returns three output tables, useful for constructing a sankey diagram for the an
     TimelineColumn: the analyzed time window
     prev: the prev state (may be empty if there were any users that only had events for the searched sequence, but not any events prior to it). 
     next: the next state (may be empty if there were any users that only had events for the searched sequence, but not any events that followed it). 
-    `dcount`: distinct count of <IdColumn> in time window that transitioned [prev] --> <Sequence> --> [next]. 
-    samples: an array of IDs (from <IdColumn>) corresponding to the row's sequence (a maximum of 128 IDs are returned). 
+    `dcount`: distinct count of `IdColumn` in time window that transitioned `prev` --> `Sequence` --> `next`. 
+    samples: an array of IDs (from `IdColumn`) corresponding to the row's sequence (a maximum of 128 IDs are returned). 
 
 * Table #2 - prev-sequence `dcount`
     TimelineColumn: the analyzed time window
     prev: the prev state (may be empty if there were any users that only had events for the searched sequence, but not any events prior to it). 
-    `dcount`: distinct count of <IdColumn> in time window that transitioned [prev] --> <Sequence> --> [next]. 
-    samples: an array of IDs (from <IdColumn>) corresponding to the row's sequence (a maximum of 128 IDs are returned). 
+    `dcount`: distinct count of `IdColumn` in time window that transitioned `prev` --> `Sequence` --> `next`. 
+    samples: an array of IDs (from `IdColumn`) corresponding to the row's sequence (a maximum of 128 IDs are returned). 
 
 * Table #3 - sequence-next `dcount`
     TimelineColumn: the analyzed time window
     next: the next state (may be empty if there were any users that only had events for the searched sequence, but not any events that followed it). 
-    `dcount`: distinct count of <IdColumn> in time window that transitioned [prev] --> <Sequence> --> [next]. 
-    samples: an array of IDs (from <IdColumn>) corresponding to the row's sequence (a maximum of 128 IDs are returned). 
+    `dcount`: distinct count of `IdColumn` in time window that transitioned `prev` --> `Sequence` --> `next`.
+    samples: an array of IDs (from `IdColumn`) corresponding to the row's sequence (a maximum of 128 IDs are returned). 
 
 
 **Examples**
@@ -76,7 +76,7 @@ Result includes three tables:
 * Table #1: All possible variants of what happened before and after the sequence. For example, second line tells that there were 87 different events that had next sequence: `Hail` -> `Tornado` -> `Hail`
 
 
-|StartTime|prev|next|`dcount`|
+|`StartTime`|`prev`|`next`|`dcount`|
 |---|---|---|---|
 |2007-01-01 00:00:00.0000000|||293|
 |2007-01-01 00:00:00.0000000|Hail|Hail|87|
@@ -126,7 +126,7 @@ Result includes three tables:
 
 * Table #2: show all distinct events grouped by previous event. For example, second line shows that there were total 150 events of `Hail` that happened just before `Tornado`
 
-|StartTime|prev|`dcount`|
+|`StartTime`|`prev`|`dcount`|
 |---------|-----|------|
 |2007-01-01 00:00:00.0000000||331|
 |2007-01-01 00:00:00.0000000|Hail|150|
@@ -144,7 +144,7 @@ Result includes three tables:
 
 * Table #3: show all distinct events grouped by next event. For example, second line shows that there were total 143 events of `Hail` that happened after  `Tornado`
 
-|StartTime|next|`dcount`|
+|`StartTime`|`next`|`dcount`|
 |---------|-----|------|
 |2007-01-01 00:00:00.0000000||332|
 |2007-01-01 00:00:00.0000000|Hail|145|
@@ -165,10 +165,9 @@ StormEvents
 dynamic(['Hail', 'Tornado', 'Thunderstorm Wind']))
 ```
 
-Skipping `Table #1` and `Table #2`, and looking  on `Table #3` - we 
-can conclude that sequence `Hail` -> `Tornado` -> `Thunderstorm Wind` in 92 events ended with this sequence, continued as `Hail` in 41 events, and turned back to `Tornado` in 14.
+Skipping `Table #1` and `Table #2`, and looking  on `Table #3` - we can conclude that sequence `Hail` -> `Tornado` -> `Thunderstorm Wind` in 92 events ended with this sequence, continued as `Hail` in 41 events, and turned back to `Tornado` in 14.
 
-|StartTime|next|`dcount`|
+|`StartTime`|`next`|`dcount`|
 |---------|-----|------|
 |2007-01-01 00:00:00.0000000||92|
 |2007-01-01 00:00:00.0000000|Hail|41|

@@ -51,7 +51,7 @@ The input table, which is extended according to the list of columns that are pro
 
 * `parse-where` parses the strings in the same way as [parse](parseoperator.md), and filters out strings that were not parsed successfully.
 
-* Use [`project`](projectoperator.md) if you also want to drop or rename some columns.
+* Use [project](projectoperator.md) if you also want to drop or rename some columns.
 
 * Use * in the pattern to skip junk values. This value can't be used after string column.
 
