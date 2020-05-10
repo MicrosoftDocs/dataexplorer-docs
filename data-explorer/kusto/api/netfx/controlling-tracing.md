@@ -1,6 +1,6 @@
 ---
-title: Controlling or suppressing Kusto SDK client side tracing - Azure Data Explorer
-description: This article describes Controlling or suppressing Kusto SDK client side tracing in Azure Data Explorer.
+title: Controlling or suppressing Kusto SDK client-side tracing - Azure Data Explorer
+description: This article describes Controlling or suppressing Kusto SDK client-side tracing in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,7 +10,7 @@ ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 10/23/2018
 ---
-# Controlling or suppressing Kusto SDK client side tracing
+# Controlling or suppressing Kusto SDK client-side tracing
 
 The Kusto Client Libraries use a common platform for tracing. The platform uses a large number
 of trace sources (`System.Diagnostics.TraceSource`), and each is connected to the default set of
@@ -46,7 +46,7 @@ modify the file `Kusto.Cloud.Platform.dll.tweaks` (which is included with the `K
 > [!NOTE]
 > For the tweak to take effect, there must not be a minus sign in the value of `key`
 
-An alternative, is to do the following.
+An alternative, is:
 
 ```csharp
 Kusto.Cloud.Platform.Utils.Anchor.Tweaks.SetProgrammaticAppSwitch(
@@ -75,8 +75,8 @@ in your application's *app.config file*. For example, assume that the applicatio
 </configuration>
 ```
 
-The code will configure a trace listener that writes to CSV files in a sub-directory
-called *RollingLogs*, that is located in the process' directory.
+The code will configure a trace listener that writes to CSV files in a subdirectory called *RollingLogs*. 
+The subdirectory is located in the process' directory.
 
 > [!NOTE]
 > Any .NET-compatible trace listener class may be used as well
@@ -84,4 +84,4 @@ called *RollingLogs*, that is located in the process' directory.
 ## How to enable the Azure AD client libraries (ADAL) tracing
 
 Once tracing for the Kusto client libraries is enabled, so is the tracing by the Azure AD 
-client libraries (the Kusto client libraries automatically configure ADAL tracing)
+client libraries. The Kusto client libraries automatically configure ADAL tracing.
