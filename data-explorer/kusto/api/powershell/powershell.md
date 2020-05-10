@@ -1,5 +1,5 @@
 ---
-title: Using the .NET Client Libraries from PowerShell - Azure Data Explorer | Microsoft Docs
+title: Using the .NET Client Libraries from PowerShell - Azure Data Explorer
 description: This article describes Using the .NET Client Libraries from PowerShell in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -9,24 +9,23 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/29/2019
 ---
-# Using the .NET Client Libraries from PowerShell
+# Using the .NET client libraries from PowerShell
 
-The Azure Data Explorer .NET client libraries can be used by PowerShell scripts through
+PowerShell scripts can use Azure Data Explorer .NET client libraries through 
 PowerShell's built-in integration with arbitrary (non-PowerShell) .NET libraries.
 
-## Getting the .NET Client Libraries for scripting with PowerShell
+## Getting the .NET client libraries for scripting with PowerShell
 
-To start working with the Azure Data Explorer .NET client libraries using PowerShell:
+To start working with the Azure Data Explorer .NET client libraries using PowerShell.
 
 1. Download the [`Microsoft.Azure.Kusto.Tools` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
-2. Extract the contents of the 'tools' directory in the package (using 7-zip, for example).
-3. Call `[System.Reflection.Assembly]::LoadFrom("path")` from powershell, to load the required library. 
-    - The `"path"` parameter to the command should indicate the location
-   of the extracted files.
-4. Once all dependent .NET assemblies are loaded, create a Kusto connection string,
+1. Extract the contents of the 'tools' directory in the package (use an archiving tool like 7-zip).
+1. Call `[System.Reflection.Assembly]::LoadFrom("path")` from PowerShell, to load the required library. 
+    - The `path` parameter for the command should indicate the location of the extracted files.
+1. Once all dependent .NET assemblies are loaded, create a Kusto connection string,
    instantiate a *query provider* or an *admin provider*, and run the queries or commands (as shown in the [examples](powershell.md#examples) below).
 
-For detailed information see the [Azure Data Explorer client libraries](../netfx/about-kusto-data.md).
+For more information, see the [Azure Data Explorer client libraries](../netfx/about-kusto-data.md).
 
 ## Examples
 
@@ -35,7 +34,7 @@ For detailed information see the [Azure Data Explorer client libraries](../netfx
 ```powershell
 #  Part 1 of 3
 #  ------------
-#  Packages location - This is an example to the location where you extract the Microsoft.Azure.Kusto.Tools package.
+#  Packages location - This is an example of the location from where you extract the Microsoft.Azure.Kusto.Tools package.
 #  Please make sure you load the types from a local directory and not from a remote share.
 $packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\Tools"
 
@@ -51,10 +50,10 @@ dir $packagesRoot\* | Unblock-File
 $clusterUrl = "https://help.kusto.windows.net;Fed=True"
 $databaseName = "Samples"
 
-#   Option A: using AAD User Authentication
+#   Option A: using Azure AD User Authentication
 $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder ($clusterUrl, $databaseName)
  
-#   Option B: using AAD application Authentication
+#   Option B: using Azure AD application Authentication
 #     $applicationId = "application ID goes here"
 #     $applicationKey = "application key goes here"
 #     $authority = "authority goes here"
