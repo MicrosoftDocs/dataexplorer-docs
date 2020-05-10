@@ -1,5 +1,5 @@
 ---
-title: geo_s2cell_to_central_point() - Azure Data Explorer | Microsoft Docs
+title: geo_s2cell_to_central_point() - Azure Data Explorer
 description: This article describes geo_s2cell_to_central_point() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,9 +11,9 @@ ms.date: 01/27/2020
 ---
 # geo_s2cell_to_central_point()
 
-Calculates the geospatial coordinates that represent the center of S2 Cell.
+Calculates the geospatial coordinates that represent the center of an S2 cell.
 
-For more information about S2 Cells, click [here](http://s2geometry.io/devguide/s2cell_hierarchy).
+For more information about S2 cells, see [this S2 cell guide](https://s2geometry.io/devguide/s2cell_hierarchy).
 
 **Syntax**
 
@@ -21,7 +21,7 @@ For more information about S2 Cells, click [here](http://s2geometry.io/devguide/
 
 **Arguments**
 
-*s2cell*: S2 Cell Token string value as it was calculated by [geo_point_to_s2cell()](geo-point-to-s2cell-function.md). The S2 Cell token maximum string length is 16 characters.
+*s2cell*: S2 cell token string value as it was calculated by [geo_point_to_s2cell()](geo-point-to-s2cell-function.md). The S2 cell token maximum string length is 16 characters.
 
 **Returns**
 

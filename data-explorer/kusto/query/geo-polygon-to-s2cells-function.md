@@ -1,5 +1,5 @@
 ---
-title: geo_polygon_to_s2cells() - Azure Data Explorer | Microsoft Docs
+title: geo_polygon_to_s2cells() - Azure Data Explorer
 description: This article describes geo_polygon_to_s2cells() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,9 +11,9 @@ ms.date: 05/10/2020
 ---
 # geo_polygon_to_s2cells()
 
-Calculates s2 cell tokens that cover polygon or a multipolygon on Earth.
+Calculates S2 cell tokens that cover a polygon or multipolygon on Earth.
 
-For more information about S2 Cells, click [here](http://s2geometry.io/devguide/s2cell_hierarchy).
+For more information about S2 cells, see this [S2 cell hierarchy guide](https://s2geometry.io/devguide/s2cell_hierarchy).
 
 **Syntax**
 
@@ -21,23 +21,23 @@ For more information about S2 Cells, click [here](http://s2geometry.io/devguide/
 
 **Arguments**
 
-* *polygon*: Polygon or MultiPolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. 
-* *level*: An optional `int` that defines the requested cell level. Supported values are in the range [0,30]. If unspecified, the default value `11` is used.
+* *polygon*: Polygon or multiPolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. 
+* *level*: An optional `int` that defines the requested cell level. Supported values are in the range [0, 30]. If unspecified, the default value `11` is used.
 
 **Returns**
 
-Array of s2 cell token strings that cover polygon or a multipolygon. If the polygon or level are invalid or cells count exceed the limit, the query will produce a null result.
+Array of S2 cell token strings that cover a polygon or multipolygon. If either the polygon or level is invalid, or the cell count exceeds the limit, the query will produce a null result.
 
 > [!NOTE]
 >
-> * Covering polygon with s2 cell tokens can be useful in matching coordinates to polygons that might contain them.
-> * The polygon covering tokens are of the same s2 cell level.
-> * Maximum count of tokens per polygon is 65536.
+> * Covering the polygon with S2 cell tokens can be useful in matching coordinates to polygons that might include these coordinates.
+> * The polygon covering tokens are of the same S2 cell level.
+> * The maximum count of tokens per polygon is 65536.
 > * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used for measurements on Earth is a sphere. Polygon edges are geodesics on the sphere.
 
-**Motivation for covering polygons with s2 cell tokens**
+**Motivation for covering polygons with S2 cell tokens**
 
-If we didn't have this function, here is one possible approach we could take in order to classify coordinates into polygons that contain them.
+Without this function, here is one approach we could take in order to classify coordinates into polygons containing these coordinates.
 
 ```kusto
 let Polygons = 
@@ -66,24 +66,29 @@ Polygons | extend dummy=1
 |-122.3|47.6|Seattle|
 |-115.18|36.16|Las Vegas|
 
-This works in some cases, but highly inefficient because what essentially it does is a cross-join, it tries to match every polygon to every point. This consumes loads of memory and compute resources.
-Instead we would like to match every polygon to a point with high probability of containment success and filter out other points.
-This can be achieved by converting polygons to s2 cells of level k, converting points to the same s2 cells level k, joining on s2 cells and filtering by [geo_point_in_polygon()](geo-point-in-polygon-function.md).
+While this method works in some cases, it is inefficient. This method does a cross-join, meaning that it tries to match every polygon to every point. This process consumes a large amount of memory and compute resources.
+Instead, we would like to match every polygon to a point with a high probability of containment success, and filter out other points.
 
-**Choosing s2 cell level**
+This match can be achieved by the following process:
+1. Converting polygons to S2 cells of level k,
+1. Converting points to the same S2 cells level k, 
+1. Joining on S2 cells,
+1. Filtering by [geo_point_in_polygon()](geo-point-in-polygon-function.md).
+
+**Choosing the S2 cell level**
 
 * Ideally we would want to cover every polygon with one or just a few unique cells such that no two polygons share the same cell.
-* In case the polygons close one to another, choose [s2 cell level](geo-point-to-s2cell-function.md) such that its cell edge will be smaller (4/8/12 times smaller) than the edge of the average polygon.
-* In case the polygons far one from another, choose [s2 cell level](geo-point-to-s2cell-function.md) such that its cell edge will be similar to the edge of the average polygon.
-* In practice, covering polygon with more than 10000 cells might not yield good performance.
+* If the polygons are close to each other, choose the [S2 cell level](geo-point-to-s2cell-function.md) such that its cell edge will be smaller (4, 8, 12 times smaller) than the edge of the average polygon.
+* If the polygons are far from each other, choose the [S2 cell level](geo-point-to-s2cell-function.md) such that its cell edge will be similar to the edge of the average polygon.
+* In practice, covering a polygon with more than 10000 cells might not yield good performance.
 * Sample use cases:
-   - s2 cell level 5 might prove to be good for covering countries.
-   - s2 cell level 16 for covering dense and relatively small Manhattan New York neighborhoods.
-   - s2 cell level 11 for covering suburbs of Australia.
-* Query run time and memory consumption might differ due to different s2 cell level values.
+   - S2 cell level 5 might prove to be good for covering countries.
+   - S2 cell level 16 can cover dense and relatively small Manhattan (New York) neighborhoods.
+   - S2 cell level 11 can be used for covering suburbs of Australia.
+* Query run time and memory consumption might differ due to different S2 cell level values.
 
 > [!WARNING]
-> Covering big area polygon with small area cells might lead to a huge amount of covering cells. In that case the query might return null.
+> Covering a large-area polygon with small-area cells can lead to a huge amount of covering cells. As a result, the query might return null.
 
 **Examples**
 
@@ -123,7 +128,7 @@ Polygons
 |-73.995|40.734|Greenwich Village|
 |-73.9584|40.7688|Upper East Side|
 
-Count of cells that will be needed in order to cover some polygon with s2 cells of level 5.
+Count of cells that will be needed in order to cover some polygon with S2 cells of level 5.
 
 ```kusto
 let polygon = dynamic({"type":"Polygon","coordinates":[[[0,0],[0,50],[100,50],[0,0]]]});
@@ -134,7 +139,7 @@ print s2_cell_token_count = array_length(geo_polygon_to_s2cells(polygon, 5));
 |---|
 |286|
 
-Covering big area polygon with small area cells returns null.
+Covering a large-area polygon with small-area cells returns null.
 
 ```kusto
 let polygon = dynamic({"type":"Polygon","coordinates":[[[0,0],[0,50],[100,50],[0,0]]]});
@@ -145,7 +150,7 @@ print geo_polygon_to_s2cells(polygon, 30);
 |---|
 ||
 
-Covering big area polygon with small area cells returns null.
+Covering a large-area polygon with small-area cells returns null.
 
 ```kusto
 let polygon = dynamic({"type":"Polygon","coordinates":[[[0,0],[0,50],[100,50],[0,0]]]});

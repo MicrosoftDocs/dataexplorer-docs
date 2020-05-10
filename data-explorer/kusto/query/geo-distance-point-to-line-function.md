@@ -1,5 +1,5 @@
 ---
-title: geo_distance_point_to_line() - Azure Data Explorer | Microsoft Docs
+title: geo_distance_point_to_line() - Azure Data Explorer
 description: This article describes geo_distance_point_to_line() in Azure Data Explorer.
 services: data-explorer
 author: orspod
