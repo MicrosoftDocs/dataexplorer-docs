@@ -75,7 +75,7 @@ This can be achieved by converting polygons to s2 cells of level k, converting p
 * Ideally we would want to cover every polygon with one or just a few unique cells such that no two polygons share the same cell.
 * In case the polygons close one to another, choose [s2 cell level](geo-point-to-s2cell-function.md) such that its cell edge will be smaller (4/8/12 times smaller) than the edge of the average polygon.
 * In case the polygons far one from another, choose [s2 cell level](geo-point-to-s2cell-function.md) such that its cell edge will be similar to the edge of the average polygon.
-* In practice, covering polgygon with more than 10000 cells might not yield good performance.
+* In practice, covering polygon with more than 10000 cells might not yield good performance.
 * Sample use cases:
    - s2 cell level 5 might prove to be good for covering countries.
    - s2 cell level 16 for covering dense and relatively small Manhattan New York neighborhoods.
