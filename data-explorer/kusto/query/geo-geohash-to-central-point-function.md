@@ -13,7 +13,7 @@ ms.date: 01/27/2020
 
 Calculates the geospatial coordinates that represent the center of a `Geohash` rectangular area.
 
-For more information, see this article about [`Geohash`](https://en.wikipedia.org/wiki/Geohash).  
+Read more about about [`Geohash`](https://en.wikipedia.org/wiki/Geohash).  
 
 **Syntax**
 

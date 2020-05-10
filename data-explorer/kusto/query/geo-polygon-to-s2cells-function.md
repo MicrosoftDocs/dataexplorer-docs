@@ -13,7 +13,7 @@ ms.date: 05/10/2020
 
 Calculates S2 cell tokens that cover a polygon or multipolygon on Earth.
 
-For more information about S2 cells, see this [S2 cell hierarchy guide](https://s2geometry.io/devguide/s2cell_hierarchy).
+Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
 
 **Syntax**
 

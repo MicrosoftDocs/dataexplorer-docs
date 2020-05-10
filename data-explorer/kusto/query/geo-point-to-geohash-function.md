@@ -13,7 +13,7 @@ ms.date: 02/04/2020
 
 Calculates the `Geohash` string value for a geographic location.
 
-For more information about `Geohash`, see [this `Geohash` article](https://en.wikipedia.org/wiki/Geohash).  
+Read more about [`Geohash`](https://en.wikipedia.org/wiki/Geohash).  
 
 **Syntax**
 

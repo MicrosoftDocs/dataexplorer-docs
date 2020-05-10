@@ -13,7 +13,7 @@ ms.date: 02/04/2020
 
 Calculates the S2 cell token string value for a geographic location.
 
-For more information about S2 Cells, see this [S2 cell hierarchy guide](https://s2geometry.io/devguide/s2cell_hierarchy).
+Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
 
 **Syntax**
 
