@@ -13,9 +13,9 @@ ms.date: 10/23/2018
 
 Applies two segments linear regression on a series, returning a dynamic object.  
 
-Takes an expression containing dynamic numerical array as input and applies [two segments linear regression](https://en.wikipedia.org/wiki/Segmented_regression) in order to identify and quantify trend changes in a series. The function iterates on the series indexes. In each iteration, it splits the series to two parts, and fits a separate line using [series_fit_line()](series-fit-linefunction.md) or [series_fit_line_dynamic()](series-fit-line-dynamicfunction.md). The function fits the lines to each of the two parts, and calculates the total r-square. The best split is the one that maximizes r-square. The function returns its parameters in dynamic value with the following content:
+Takes an expression containing dynamic numerical array as input and applies [two segments linear regression](https://en.wikipedia.org/wiki/Segmented_regression) in order to identify and quantify trend changes in a series. The function iterates on the series indexes. In each iteration, it splits the series to two parts, and fits a separate line using [series_fit_line()](series-fit-linefunction.md) or [series_fit_line_dynamic()](series-fit-line-dynamicfunction.md). The function fits the lines to each of the two parts, and calculates the total R-squared value. The best split is the one that maximizes R-squared. The function returns its parameters in dynamic value with the following content:
 
-* `rsquare`: [r-square](https://en.wikipedia.org/wiki/Coefficient_of_determination) is a standard measure of the fit quality. It's a number in the range of [0-1], where 1 - is the best possible fit, and 0 means the data is unordered and do not fit any line.
+* `rsquare`: [R-squared](https://en.wikipedia.org/wiki/Coefficient_of_determination) is a standard measure of the fit quality. It's a number in the range of [0-1], where 1 is the best possible fit, and 0 means the data is unordered and do not fit any line.
 * `split_idx`: the index of breaking point to two segments (zero-based).
 * `variance`: variance of the input data.
 * `rvariance`: residual variance that is the variance between the input data values the approximated ones (by the two line segments).
