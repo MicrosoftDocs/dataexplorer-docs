@@ -78,9 +78,8 @@ is calculated by:
 
 Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
 
-### Notes
-
-* In clusters with three or more nodes, the admin node doesn't participate in doing export operations. The `Number of nodes in cluster` is reduced by one.
+> [!Note]
+> In clusters with three or more nodes, the admin node doesn't participate in doing export operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Extents partition capacity
 
@@ -91,8 +90,7 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 The cluster's total extents partition capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity)) is defined by a single property: `ClusterMaximumConcurrentOperations`.
 
 > [!Note]
-
->* `ClusterMaximumConcurrentOperations` gets automatically adjusted by the system in the range [1,10]
+> `ClusterMaximumConcurrentOperations` gets automatically adjusted by the system in the range [1,10]
 
 ## Defaults
 
@@ -130,13 +128,13 @@ The default capacity policy has the following JSON representation:
 
 Kusto limits the number of concurrent requests for the following user-initiated commands:
 
-1. Ingestions (includes all the commands that are listed [here](../management/data-ingestion/index.md))
-      * Limit is as defined in the [capacity policy](#capacity-policy).
-1. Purges
-      * Global is currently fixed at one per cluster.
-      * The purge rebuild capacity is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands will not be blocked/throttled due to this process, but will work faster or slower depending on the purge rebuild capacity.
-1. Exports
-      * Limit is as defined in the [capacity policy](#capacity-policy).
+* Ingestions (includes all the commands that are listed [here](../management/data-ingestion/index.md))
+   * Limit is as defined in the [capacity policy](#capacity-policy).
+* Purges
+   * Global is currently fixed at one per cluster.
+   * The purge rebuild capacity is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands will not be blocked/throttled due to this process, but will work faster or slower depending on the purge rebuild capacity.
+* Exports
+   * Limit is as defined in the [capacity policy](#capacity-policy).
 
 When the cluster detects that an operation has exceeded the allowed concurrent operation, it will respond with a 429 ("Throttled") HTTP code.
 Retry the operation after some backoff.
