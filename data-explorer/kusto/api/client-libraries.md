@@ -1,6 +1,6 @@
 ---
-title: Client libraries overview - Azure Data Explorer | Microsoft Docs
-description: This article describes Client libraries overview in Azure Data Explorer.
+title: Client libraries overview - Azure Data Explorer
+description: This article lists the Client libraries in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,12 +9,13 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
 ---
-# Client libraries overview
+# Client libraries
 
-The following table lists the different libraries provided for query, ingestion, and ARM/RP management. Using these libraries is the recommended way to make use of Azure APIs and invoke Azure Data Explorer functionality programmatically. 
+The following table lists the different libraries provided for query, ingestion, and ARM/RP management. 
+Use these libraries for Azure APIs and to programmatically invoke Azure Data Explorer functionality. 
 
 
-|    Language\Functionality        |    Query        |    Ingestion        |    ARM/RP Management        |
+|    Language/Functionality        |    Query        |    Ingestion        |    ARM/RP Management        |
 |------------------------------    |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    |--------------------------------------------------------------------------------------------------------------------------------------------------------------------    |------------------------------------------------------------------------------------------------------------------------------    |
 |    .Net        |    [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/)            |    [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/)        |    [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/1.0.0)         |
 |    .Net Standard        |    [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/)        |    [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard/)        |            |
