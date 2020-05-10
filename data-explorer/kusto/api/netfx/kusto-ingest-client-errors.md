@@ -19,7 +19,8 @@ Any error during the ingestion handling on the client side is indicated by a C# 
 While attempting to ingest from multiple sources, errors might occur during the ingestion process. 
 If an ingestion fails for one of the sources, it's logged and the client continues to ingest the remaining sources. 
 After going over all sources for ingestion, an `IngestClientAggregateException` is thrown, containing the `IList<IngestClientException> IngestionErrors` member.
-`IngestClientException` and its derived classes contain a field `IngestionSource` and an `Error` field. The 2 fields together create a mapping from the source that failed to be ingested, to the error that occurred while the ingest was attempted. The information can be used in the `IngestionErrors` list to investigate which sources failed to be ingested and why. The `IngestClientAggregateException` exception also contains a boolean property `GlobalError`, that indicates whether an error occurred for all sources.
+
+`IngestClientException` and its derived classes contain a field `IngestionSource` and an `Error` field. The two fields together create a mapping from the source that failed ingestion, to the error that occurred while the ingestion was attempted. The information can be used in the `IngestionErrors` list to investigate which sources failed ingestion and why. The `IngestClientAggregateException` exception also contains a boolean property `GlobalError`, that indicates whether an error occurred for all sources.
 
 ### Failures ingesting from files or blobs
 
@@ -53,7 +54,7 @@ In the `IngestFromDataReader` and `IngestFromDataReaderAsync` methods, the `reta
 |Entity 'table name that doesn't exist' of kind 'Table' wasn't found.|The table doesn't exist and there's no CSV mapping.| Add CSV mapping / create the required table |
 |Blob <blob path> excluded for reason: JSON pattern must be ingested with jsonMapping parameter| JSON ingestion when no JSON mapping is provided.|Provide a JSON mapping |
 |Failed to download blob: 'The remote server returned an error: (404) Not Found.'| The blob doesn't exist.|Verify that the blob exists. If it exists, retry and contact the Kusto team |
-|JSON column mapping is not valid: Two or more mapping elements point to the same column.| JSON mapping has 2 columns with different paths|Fix JSON mapping |
+|JSON column mapping isn't valid: Two or more mapping elements point to the same column.| JSON mapping has 2 columns with different paths|Fix JSON mapping |
 |EngineError - [UtilsException] `IngestionDownloader.Download`: One or more files failed to download (search KustoLogs for ActivityID:<GUID1>, RootActivityId:<GUID2>)| One or more files failed to download. |Retry |
 |Failed to parse: Stream with ID '<stream name>' has a malformed CSV format, failing per ValidationOptions policy |Malformed CSV file (such as, not having the same number of columns on every line). Fails only when validation policy is set to `ValidationOptions`. ValidateCsvInputConstantColumns |Check your CSV files. This message applies only to CSV/TSV files |
 |`IngestClientAggregateException` with error message 'Missing mandatory parameters for valid Shared Access Signature' |The SAS being used is of the service, and not of the storage account |Use the SAS of the storage account |
@@ -111,7 +112,7 @@ Fields:
 Additional information:
 
 Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient).
-During the ingestion process, several attempts are made to retrieve the Azure Queues linked to the DM. When these attempts fail, the exception containing the reason for failure, is raised in the 'Error' field and possibly an inner exception in the 'InnerException' field.
+During the ingestion process, several attempts are made to retrieve the Azure Queues linked to the DM. When these attempts fail, the exception containing the reason for failure, is raised in the 'Error' field. Possibly an inner exception in the 'InnerException' field is also raised.
 
 
 ### CloudBlobContainersNotFoundException
