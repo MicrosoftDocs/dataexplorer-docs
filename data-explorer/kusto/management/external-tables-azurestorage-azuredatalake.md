@@ -295,7 +295,7 @@ Show the mappings (all or the one specified by name).
 |----------|------|---------------------------------------------------------------------------------|
 | mapping1 | JSON | [{"ColumnName":"rownumber","ColumnType":"","Properties":{"Path":"$.rownumber"}},{"ColumnName":"rowguid","ColumnType":"","Properties":{"Path":"$.rowguid"}}] |
 
-### .drop external table mapping
+## .drop external table mapping
 
 `.drop` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* 
 
