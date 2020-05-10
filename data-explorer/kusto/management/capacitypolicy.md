@@ -35,9 +35,8 @@ is calculated by:
 
 Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
 
-### Notes
-
-* In clusters with three ore more nodes, the admin node doesn't participate in doing ingestion operations. The `Number of nodes in cluster` is reduced by one.
+> [!Note]
+> In clusters with three ore more nodes, the admin node doesn't participate in doing ingestion operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Extents Merge capacity
 
@@ -50,10 +49,9 @@ is calculated by:
 
 `Number of nodes in cluster` x `MaximumConcurrentOperationsPerNode`
 
-### Notes
-
-* `MaximumConcurrentOperationsPerNode` gets automatically adjusted by the system in the range [1,5]
-* In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
+> [!Note]
+> * `MaximumConcurrentOperationsPerNode` gets automatically adjusted by the system in the range [1,5]
+> * In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Extents Purge Rebuild capacity
 
@@ -65,9 +63,8 @@ The cluster's total extents purge rebuild capacity (as shown by [.show capacity]
 
 `Number of nodes in cluster` x `MaximumConcurrentOperationsPerNode`
 
-### Notes
-
-* In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
+> [!Note]
+> In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Export capacity
 
@@ -85,7 +82,7 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 
 * In clusters with three or more nodes, the admin node doesn't participate in doing export operations. The `Number of nodes in cluster` is reduced by one.
 
-## Extents Partition capacity
+## Extents partition capacity
 
 |Property                           |Type    |Description                                                                             |
 |-----------------------------------|--------|----------------------------------------------------------------------------------------|
@@ -93,9 +90,9 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 
 The cluster's total extents partition capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity)) is defined by a single property: `ClusterMaximumConcurrentOperations`.
 
-### Notes
+> [!Note]
 
-* `ClusterMaximumConcurrentOperations` gets automatically adjusted by the system in the range [1,10]
+>* `ClusterMaximumConcurrentOperations` gets automatically adjusted by the system in the range [1,10]
 
 ## Defaults
 
@@ -120,7 +117,7 @@ The default capacity policy has the following JSON representation:
 }
 ```
 
-## Control Commands
+## Control commands
 
 > [!WARNING]
 > It is rarely recommended to alter a Capacity Policy, due to the potential impact on the cluster's available resources.
