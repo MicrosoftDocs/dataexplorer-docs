@@ -13,7 +13,7 @@ zone_pivot_groups: kql-flavors
 ---
 # Partitioning and composing intermediate results of aggregations
 
-Suppose that you want to calculate the count of distinct users every day over the last seven days. One way to do it would be to run `summarize dcount(user)` once a day with a span filtered to the last seven days. This method is inefficient because each time the calculation is run, there's a six-day overlap with the previous calculation. Another option is to calculate an aggregate for each day, and then combine these aggregates. This option requires you to "remember" the last six results, but it's much more efficient.
+If you want to calculate the count of distinct users every day over the last seven days. You can run `summarize dcount(user)` once a day with a span filtered to the last seven days. This method is inefficient because each time the calculation is run, there's a six-day overlap with the previous calculation. You can also calculate an aggregate for each day, and then combine these aggregates. This method requires you to "remember" the last six results, but it's much more efficient.
 
 Partitioning queries as described is easy for simple aggregates, such as `count()` and `sum()`. It can also be useful for complex aggregates, such as `dcount()` and `percentiles()`. This topic explains how Kusto supports such calculations.
 
