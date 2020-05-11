@@ -24,7 +24,7 @@ to these values.
 T | mv-apply Metric to typeof(real) on (top 2 by Metric desc)
 ```
 
-In general, the `mv-apply` operator can be thought of as having the following
+The `mv-apply` operator has the following
 processing steps:
 
 1. Using the [`mv-expand`](./mvexpandoperator.md) operator to expand each record
