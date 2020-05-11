@@ -26,13 +26,13 @@ endpoint is an engine endpoint or a data management endpoint.
 |UI             |GET         |/                      |Yes   |No             |No             |
 |UI             |GET         |/{dbname}              |Yes   |No             |No             |
 
-Where Action represents a group of related activities.
+Where *Action* represents a group of related activities.
 
 * The Query action sends a query to the service and gets back the results of the query.
 * The Management action sends a control command to the service and gets back
   the results of the control command.
-* The UI action can be used to start up a desktop client or web client, through an HTTP Redirect response,
+* The UI action can be used to start up a desktop client or web client. The action is done through an HTTP Redirect response,
 to interact with the service.
 
-For more information on the HTTP request/response of the query and management actions, see [query/management HTTP request](./request.md), [query/management HTTP response](./response.md) and [query v2 HTTP response](./response2.md). 
-For more information on the UI action, see [UI (deeplink)](./deeplink.md) for
+For more information on the HTTP request/response of the query and management actions, see [query management HTTP request](./request.md), [query management HTTP response](./response.md), and [query v2 HTTP response](./response2.md). 
+For more information on the UI action, see [UI (deeplink)](./deeplink.md).
