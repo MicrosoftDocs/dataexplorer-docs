@@ -24,7 +24,7 @@ A user-defined function belongs to one of two categories:
 * May only use the row context in which it is defined
 * Can only refer to tables (and views) that are in the accessible schema
 
-### A tabular function:
+## Tabular function
 
 * Accepts one or more tabular input arguments, and zero or more scalar input arguments, and/or:
 * Produces a single tabular value
