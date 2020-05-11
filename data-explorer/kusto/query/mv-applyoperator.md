@@ -27,10 +27,10 @@ T | mv-apply Metric to typeof(real) on (top 2 by Metric desc)
 In general, the `mv-apply` operator can be thought of as having the following
 processing steps:
 
-1. Using the [`mv-expand`](./mvexpandoperator.md) operator to expand each record
+1. Uses the [`mv-expand`](./mvexpandoperator.md) operator to expand each record
    in the input into subtables.
-1. Applying the subquery for each of the subtables.
-1. Adding zero or more columns to the resulting subtable. These columns contain the values of the source columns that aren't expanded, and are repeated where needed.
+1. Applies the subquery for each of the subtables.
+1. Adds zero or more columns to the resulting subtable. These columns contain the values of the source columns that aren't expanded, and are repeated where needed.
 1. Returns the union of the results.
 
 The `mv-expand` operator gets the following inputs:
