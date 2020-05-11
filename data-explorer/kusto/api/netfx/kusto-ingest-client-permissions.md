@@ -1,6 +1,6 @@
 ---
-title: Kusto.Ingest Reference - Ingestion Permissions - Azure Data Explorer
-description: This article describes Kusto.Ingest Reference - Ingestion Permissions in Azure Data Explorer.
+title: Kusto.Ingest Ingestion Permissions - Azure Data Explorer
+description: This article describes Kusto.Ingest - Ingestion Permissions in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Kusto.Ingest Reference - Ingestion permissions
+# Kusto.Ingest - Ingestion permissions
 
 This article explains what permissions to set up on your service, for `Native` ingestion to work.
 
