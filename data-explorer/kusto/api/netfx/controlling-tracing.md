@@ -55,7 +55,7 @@ Kusto.Cloud.Platform.Utils.Anchor.Tweaks.SetProgrammaticAppSwitch(
     );
 ```
 
-## How to enable the Kusto client libraries tracing
+## Enable the Kusto client libraries tracing
 
 To enable tracing out of the Kusto client libraries, enable .NET tracing
 in your application's *app.config file*. For example, assume that the application
