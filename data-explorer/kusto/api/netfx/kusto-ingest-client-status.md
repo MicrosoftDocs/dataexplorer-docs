@@ -19,7 +19,7 @@ These above description classes contain important details about the source data 
 
 ### Class SourceDescription
 
-When ingesting a large dataset, the data will be split into 1GB chunks and each part will be ingested separately. The same SourceId will then apply to all ingest operations originated from the same dataset.   
+To ingest a large dataset, the data will be split into 1GB chunks, and each part will be ingested separately. The same SourceId will then apply to all ingest operations originated from the same dataset.   
 
 ```csharp
 public abstract class SourceDescription
