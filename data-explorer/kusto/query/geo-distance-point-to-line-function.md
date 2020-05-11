@@ -81,6 +81,7 @@ nyc_taxi
 ```
 
 The following example will return a null result because of the invalid LineString input.
+
 ```kusto
 print distance_in_meters = geo_distance_point_to_line(1,1, dynamic({ "type":"LineString"}))
 ```
@@ -90,6 +91,7 @@ print distance_in_meters = geo_distance_point_to_line(1,1, dynamic({ "type":"Lin
 |                    |
 
 The following example will return a null result because of the invalid coordinate input.
+
 ```kusto
 print distance_in_meters = geo_distance_point_to_line(300, 3, dynamic({ "type":"LineString","coordinates":[[1,1],[2,2]]}))
 ```
