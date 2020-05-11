@@ -11,7 +11,7 @@ ms.date: 08/15/2019
 ---
 # Kusto.Ingest - Ingestion Code Examples
 
-This is a collection of short code snippets demonstrating various techniques of ingesting data into a Kusto table.
+This collection of short code snippets demonstrates various techniques of ingesting data into a Kusto table.
 
 > [!NOTE]
 > These examples look as if the ingest client is destroyed immediately following the ingestion. Do not take this literally.
