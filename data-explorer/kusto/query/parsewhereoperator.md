@@ -77,14 +77,17 @@ The input table, which is extended according to the list of columns that are pro
 		
 	- `long` was translated to `\-\d+`.
 
-**Examples**
+## Examples
 
 The `parse-where` operator provides a streamlined way to `extend` a table by using multiple `extract` applications on the same `string` expression. This is most useful when the table has a `string` column that contains several values that you want to break into individual columns. For example, you can break up a column that was produced by a developer trace ("`printf`"/"`Console.WriteLine`") statement.
+
+### Using `parse`
 
 In the example below, the column `EventText` of table `Traces` contains strings of the form `Event: NotifySliceRelease (resourceName={0}, totalSlices= {1}, sliceNumber={2}, lockTime={3}, releaseTime={4}, previousLockTime={5})`. The operation below will extend the table with six columns: `resourceName` , `totalSlices`, `sliceNumber`, `lockTime `, `releaseTime`, `previouLockTime`, `Month`, and `Day`. 
 
 A few of the strings don't have a full match.
-Using `parse`, the calculated columns will have nulls:
+
+Using `parse`, the calculated columns will have nulls.
 
 ```kusto
 let Traces = datatable(EventText:string)
@@ -108,7 +111,9 @@ Traces
 |PipelineScheduler|27|20|02/17/2016 08:40:01|2016-02-17 08:40:01.0000000|2016-02-17 08:39:01.0000000|
 |PipelineScheduler|27|22|02/17/2016 08:41:01|2016-02-17 08:41:00.0000000|2016-02-17 08:40:01.0000000|
 
-Using `parse-where` will filter-out unsuccessfully parsed strings from the result:
+### Using `parse-where` 
+
+Using 'parse-where' will filter-out unsuccessfully parsed strings from the result.
 
 ```kusto
 let Traces = datatable(EventText:string)
@@ -130,9 +135,9 @@ Traces
 |PipelineScheduler|27|22|02/17/2016 08:41:01|2016-02-17 08:41:00.0000000|2016-02-17 08:40:01.0000000|
 
 
-For regex mode using regex flags:
+### Regex mode using regex flags
 
-To get the resourceName and totalSlices, use this query:
+To get the resourceName and totalSlices, use the following query:
 
 ```kusto
 let Traces = datatable(EventText:string)
@@ -148,11 +153,13 @@ Traces
 | project resourceName, totalSlices
 ```
 
+### `parse-where` with case-insensitive regex flag
+
 In the above query, the default mode was case-sensitive, so the strings were parsed successfully. No result was obtained.
 
 To get the required result, run `parse-where` with a case-insensitive (`i`) regex flag.
 
-Only three strings will be parsed successfully, so the result is three records (some totalSlices hold invalid integers): 
+Only three strings will be parsed successfully, so the result is three records (some totalSlices hold invalid integers).
 
 ```kusto
 let Traces = datatable(EventText:string)
