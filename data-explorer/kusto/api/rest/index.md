@@ -34,5 +34,5 @@ Where *Action* represents a group of related activities.
 * The UI action can be used to start up a desktop client or web client. The action is done through an HTTP Redirect response,
 to interact with the service.
 
-For more information on the HTTP request/response of the query and management actions, see [query management HTTP request](./request.md), [query management HTTP response](./response.md), and [query v2 HTTP response](./response2.md). 
+For more information on the HTTP request and response of the query and management actions, see [query management HTTP request](./request.md), [query management HTTP response](./response.md), and [query v2 HTTP response](./response2.md). 
 For more information on the UI action, see [UI (deeplink)](./deeplink.md).
