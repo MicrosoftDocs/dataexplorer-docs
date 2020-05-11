@@ -17,8 +17,6 @@ This article explains what permissions to set up on your service, for `Native` i
 
 * To view and modify authorization settings on Kusto services and databases, see [Kusto control commands](../../management/security-roles.md).
 
-## References
-
 * Azure AD applications used as sample principals in the examples below.
     * Test Azure AD App (2a904276-1234-5678-9012-66fc53add60b; microsoft.com)
     * Kusto Internal Ingestion Azure AD App (76263cdb-1234-5678-9012-545644e9c404; microsoft.com)
