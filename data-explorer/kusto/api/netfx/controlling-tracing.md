@@ -10,7 +10,7 @@ ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 10/23/2018
 ---
-# Controlling or suppressing Kusto SDK client-side tracing
+# Controlling and suppressing Kusto SDK client-side tracing
 
 The Kusto Client Libraries use a common platform for tracing. The platform uses a large number
 of trace sources (`System.Diagnostics.TraceSource`), and each is connected to the default set of
