@@ -15,11 +15,11 @@ This article explains how to use [IKustoQueuedIngestClient](kusto-ingest-client-
 
 ## SourceDescription, DataReaderDescription, StreamDescription, FileDescription, and BlobDescription
 
-These above description classes contain important details about the source data to be ingested, and should be used in the ingestion operation. The classes are all derived from the abstract class `SourceDescription`, and they're used to instantiate a unique identifier for each data source. Each identifier will be used for later operation status tracking and will show up in all reports, traces, and exceptions related to the appropriate operation.
+These above description classes contain important details about the source data to be ingested, and should be used in the ingestion operation. The classes are all derived from the abstract class `SourceDescription`, and they're used to instantiate a unique identifier for each data source. Each identifier will then be used for status tracking and will show up in all reports, traces, and exceptions related to the relevant operation.
 
 ### Class SourceDescription
 
-When ingesting a large dataset, for example, a DataReader over 1GB, then the data will be split into 1GB chunks and ingested separately. The same SourceId will then apply to all ingest operations originated from the same dataset.   
+When ingesting a large dataset, the data will be split into 1GB chunks and each part will be ingested separately. The same SourceId will then apply to all ingest operations originated from the same dataset.   
 
 ```csharp
 public abstract class SourceDescription
@@ -136,7 +136,7 @@ public class IngestionStatus
 
 ## Tracking Ingestion Status (KustoQueuedIngestClient)
 
-[IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) is a 'fire-and-forget' client. The ingestion operation on the client side ends by posting a message to an Azure Queue. After the posting, the client job is done. For the client user's convenience, KustoQueuedIngestClient provides a mechanism for tracking the individual ingestion status. This mechanism is not intended for mass usage on high-throughput ingestion pipelines. This mechanism is for 'precision' ingestion when the rate is relatively low and the tracking requirements are strict.
+[IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) is a 'fire-and-forget' client. The ingestion operation on the client side ends by posting a message to an Azure queue. After the posting, the client job is done. For the client user's convenience, KustoQueuedIngestClient provides a mechanism for tracking the individual ingestion status. This mechanism isn't intended for mass usage on high-throughput ingestion pipelines. This mechanism is for 'precision' ingestion when the rate is relatively low and the tracking requirements are strict.
 
 > [!WARNING]
 > Turning on positive notifications for every ingestion request for large volume data streams should be avoided, since this places an extreme load on the underlying xStore resources, which might lead to increased ingestion latency and even complete cluster non-responsiveness.
@@ -190,9 +190,9 @@ The `IKustoIngestionResult` methods are only relevant for checking a status in a
 
 |Method                                  |Purpose     |
 |----------------------------------------|------------|
-|PeekTopIngestionFailures                |Async method that returns information about the earliest ingestion failures that haven't been discarded, according to the requested messages limit |
-|GetAndDiscardTopIngestionFailures       |Async method that returns and discards the earliest ingestion failures that haven't been discarded, according to the requested messages limit |
-|GetAndDiscardTopIngestionSuccesses      |Async method that returns and discards the earliest ingestion successes that haven't been discarded, according to the requested messages limit. This method is only relevant if the `IngestionReportLevel` is set to `FailuresAndSuccesses` |
+|PeekTopIngestionFailures                |Async method that returns information about the earliest ingestion failures that haven't been discarded according to the limit for requested messages |
+|GetAndDiscardTopIngestionFailures       |Async method that returns and discards the earliest ingestion failures that haven't been discarded according to the limit for requested messages |
+|GetAndDiscardTopIngestionSuccesses      |Async method that returns and discards the earliest ingestion successes that haven't been discarded according to the limit for requested messages. This method is only relevant if the `IngestionReportLevel` is set to `FailuresAndSuccesses` |
 
 ### Ingestion failures retrieved from the Azure queue
 
