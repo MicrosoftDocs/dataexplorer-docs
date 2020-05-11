@@ -1,6 +1,6 @@
 ---
-title: Kusto.Ingest Reference - Ingestion Permissions - Azure Data Explorer
-description: This article describes Kusto.Ingest Reference - Ingestion Permissions in Azure Data Explorer.
+title: Kusto.Ingest Ingestion Permissions - Azure Data Explorer
+description: This article describes Kusto.Ingest - Ingestion Permissions in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Kusto.Ingest Reference - Ingestion permissions
+# Kusto.Ingest - Ingestion permissions
 
 This article explains what permissions to set up on your service, for `Native` ingestion to work.
 
@@ -17,11 +17,9 @@ This article explains what permissions to set up on your service, for `Native` i
 
 * To view and modify authorization settings on Kusto services and databases, see [Kusto control commands](../../management/security-roles.md).
 
-## References
-
-* Azure AD applications used as sample principals in the examples below.
-    * Test AAD App (2a904276-1234-5678-9012-66fc53add60b; microsoft.com)
-    * Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404; microsoft.com)
+* Azure Active Directory (Azure AD) applications used as sample principals in the following examples:
+    * Test Azure AD App (2a904276-1234-5678-9012-66fc53add60b; microsoft.com)
+    * Kusto Internal Ingestion Azure AD App (76263cdb-1234-5678-9012-545644e9c404; microsoft.com)
 
 ## Ingestion permission mode for queued ingestion
 
@@ -43,11 +41,11 @@ If table creation is required, `Database User` or a higher access role must also
 |`Database Ingestor`  |Azure AD Application |`Test App (app id: 2a904276-1234-5678-9012-66fc53add60b)`
 |`Table Ingestor`     |Azure AD Application |`Test App (app id: 2a904276-1234-5678-9012-66fc53add60b)`
 
->`Kusto Internal Ingestion AAD App (76263cdb-1234-5678-9012-545644e9c404)` principal, the Kusto internal ingestion app, is immutably mapped to the `Cluster Admin` role. It is thus authorized to ingest data to any table. This is what's happening on the Kusto-managed ingestion pipelines.
+>`Kusto Internal Ingestion Azure AD App (76263cdb-1234-5678-9012-545644e9c404)` principal, the Kusto internal ingestion app, is immutably mapped to the `Cluster Admin` role. It is thus authorized to ingest data to any table. This is what's happening on the Kusto-managed ingestion pipelines.
 
-Granting required permissions on database `DB1` or table `T1` to Azure AD App `Test App (2a904276-1234-5678-9012-66fc53add60b in AAD tenant microsoft.com)` would look like this:
+Granting required permissions on database `DB1` or table `T1` to Azure AD App `Test App (2a904276-1234-5678-9012-66fc53add60b in Azure AD tenant microsoft.com)` would look like this:
 
 ```kusto
-.add database DB1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test AAD App'
-.add table T1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test AAD App'
+.add database DB1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test Azure AD App'
+.add table T1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test Azure AD App'
 ```
