@@ -16,7 +16,7 @@ ms.date: 03/12/2020
 A user-defined function belongs to one of two categories:
 **Scalar functions** or **tabular functions**. The function's input arguments and output determine whether it is scalar or tabular, which then establishes how it might be used. 
 
-### A scalar function:
+## Scalar function
 
 * Has zero input arguments, or all its input arguments are scalar values
 * Produces a single scalar value
