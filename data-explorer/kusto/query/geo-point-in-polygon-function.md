@@ -106,7 +106,7 @@ StormEvents
 | render piechart with (kind=map) // map rendering available in Kusto Explorer desktop
 ```
 
-The following example shows how to classify coordinates to polygons with [partition](./partitionoperator.md) operator.
+The following example shows how to classify coordinates to polygons using the [partition](./partitionoperator.md) operator.
 
 ```kusto
 let Polygons = datatable(description:string, polygon:dynamic)
