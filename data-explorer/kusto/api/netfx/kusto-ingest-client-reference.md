@@ -338,7 +338,7 @@ public static class KustoIngestFactory
 
 ## Class KustoIngestionProperties
 
-KustoIngestionProperties class contains basic ingestion properties for fine control over the ingestion process and the way Kusto engine will hanfle it.
+KustoIngestionProperties class contains basic ingestion properties for fine control over the ingestion process and the way Kusto engine will handle it.
 
 |Property   |Meaning    |
 |-----------|-----------|
