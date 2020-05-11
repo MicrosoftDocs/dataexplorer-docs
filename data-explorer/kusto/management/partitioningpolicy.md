@@ -35,7 +35,7 @@ The following kinds of partition keys are supported:
 ### Hash partition key
 
 Applying a hash partition key on a `string`-typed column in a table is appropriate when the *majority* of queries use equality filters (`==`, `in()`)
-on a specific `string`-typed column of *large-dimension* (10M or higher), such as `application_ID`, `tenant_ID` or `user_ID`.
+and/or aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher), such as an `application_ID`, a `tenant_ID` or a `user_ID`.
 
 * A hash-modulo function is used to partition the data.
 * All *homogeneous* (partitioned) extents that belong to the same partition are assigned to the same data node.
@@ -89,7 +89,10 @@ ends up including records from a limited time range, resulting with filters on t
 #### Partition properties
 
 * `RangeSize` is a `timespan` scalar constant that indicates the size of each datetime partition.
+  * A recommended value to start with is `1.00:00:00` (one day).
+  * Setting a value significantly shorter than that is *not* recommended, as it may result with the table having a large amount of small extents, that can't be merged together.
 * `Reference` is a `datetime` scalar constant of type that indicates a fixed point in time according to which datetime partitions are aligned.
+  * A recommended value to start with is `1970-01-01 00:00:00`.
   * If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`.
 
 #### Example
@@ -203,10 +206,13 @@ The output includes:
 
 #### Capacity
 
-* As the data partitioning process results in the creation of more extents, you might be required to (gradually and linearly) increase the cluster's [Extents merge capacity](../management/capacitypolicy.md#extents-merge-capacity) so that the [extents merging](../management/extents-overview.md) process is able to keep up.
-* If it's required (for instance, in case of high ingestion throughput, and/or a large enough number of tables that require partitioning), the cluster's [Extents partition capacity](../management/capacitypolicy.md#extents-partition-capacity) can be (gradually and linearly) increased to allow running a higher number of concurrent partitioning operations.
-  * In case increasing the partitioning causes a significant increase in the use of the cluster's resources, scale the cluster
-    up/out, either manually, or by enabling auto-scale.
+* The data partitioning process results in the creation of more extents. The cluster may gradually increase its [Extents merge capacity](../management/capacitypolicy.md#extents-merge-capacity),
+  so that the process of [merging extents](../management/extents-overview.md) can keep up.
+* In case of high ingestion throughput, and/or a large enough number of tables that have a partitioning policy defined, the cluster may gradually increase its
+  [Extents partition capacity](../management/capacitypolicy.md#extents-partition-capacity), so that [the process of partitioning extents](#the-data-partitioning-process) can keep up.
+* To avoid consuming too many resources, these dynamic increases are capped. You may be required to (gradually and linearly) increase them beyond the cap, if they are maxed out.
+  * If increasing the capacities causes a significant increase in the use of the cluster's resources, you can scale the cluster
+    [up](../../manage-cluster-vertical-scaling.md)/[out](../../manage-cluster-horizontal-scaling.md), either manually, or by enabling auto-scale.
 
 ### Outliers in partitioned columns
 
