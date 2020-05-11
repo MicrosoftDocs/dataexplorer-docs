@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
 ---
-# Kusto.Ingest reference - errors and exceptions
+# Kusto.Ingest errors and exceptions
 Any error during the ingestion handling on the client side is indicated by a C# exception.
 
 ## Failures
