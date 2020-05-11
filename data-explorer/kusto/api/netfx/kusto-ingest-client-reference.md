@@ -64,13 +64,13 @@ public interface IKustoIngestClient : IDisposable
 
 ## Class ExtendedKustoIngestClient
 
-* IngestFromSingleBlob - Deprecated. Please use `IKustoIngestClient.IngestFromStorageAsync` instead.
-* IngestFromSingleBlobAsync - Deprecated. Please use `IKustoIngestClient.IngestFromStorageAsync` instead.
-* IngestFromDataReader - Deprecated. Please use `IKustoIngestClient.IngestFromDataReaderAsync` instead.
+* IngestFromSingleBlob - Deprecated. Use `IKustoIngestClient.IngestFromStorageAsync` instead.
+* IngestFromSingleBlobAsync - Deprecated. Use `IKustoIngestClient.IngestFromStorageAsync` instead.
+* IngestFromDataReader - Deprecated. Use `IKustoIngestClient.IngestFromDataReaderAsync` instead.
 * IngestFromDataReaderAsync
-* IngestFromSingleFile - Deprecated. Please use `IKustoIngestClient.IngestFromStorageAsync` instead.
-* IngestFromSingleFileAsync - Deprecated. Please use `IKustoIngestClient.IngestFromStorageAsync` instead.
-* IngestFromStream - Deprecated. Please use `IKustoIngestClient.IngestFromStreamAsync` instead.
+* IngestFromSingleFile - Deprecated. Use `IKustoIngestClient.IngestFromStorageAsync` instead.
+* IngestFromSingleFileAsync - Deprecated. Use `IKustoIngestClient.IngestFromStorageAsync` instead.
+* IngestFromStream - Deprecated. Use `IKustoIngestClient.IngestFromStreamAsync` instead.
 * IngestFromStreamAsync
 
 ```csharp
@@ -338,7 +338,7 @@ public static class KustoIngestFactory
 
 ## Class KustoIngestionProperties
 
-KustoIngestionProperties class contains basic ingestion properties for fine control over the ingestion process and its handling by the Kusto engine.
+KustoIngestionProperties class contains basic ingestion properties for fine control over the ingestion process and the way Kusto engine will hanfle it.
 
 |Property   |Meaning    |
 |-----------|-----------|
@@ -353,7 +353,7 @@ KustoIngestionProperties class contains basic ingestion properties for fine cont
 |AvroMapping |For each column, defines the name of the field in the Avro record. **Mandatory for AVRO ingestion** |
 |ValidationPolicy |Data validation definitions. See [TODO] for details |
 |Format |Format of the data being ingested |
-|AdditionalProperties | Other properties that will be passed as [ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) to the ingestion command, because not all of the ingestion properties are represented in a separate member of this class|
+|AdditionalProperties | Other properties that will be passed as [ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) to the ingestion command. The properties will be passed because not all of the ingestion properties are represented in a separate member of this class|
 
 ```csharp
 public class KustoIngestionProperties
@@ -497,7 +497,7 @@ KustoQueuedIngestionProperties class extends KustoIngestionProperties with sever
 |Property   |Meaning    |
 |-----------|-----------|
 |FlushImmediately |Defaults to `false`. If set to `true`, will bypass aggregation mechanism of the Data Management service |
-|IngestionReportLevel |Controls the level of ingestion status reporting (defaults to `FailuresOnly`). In terms of performance and storage usage, it's not recommended to set IngestionReportLevel to `FailuresAndSuccesses` |
+|IngestionReportLevel |Controls the level of ingestion status reporting (defaults to `FailuresOnly`). For good performance and storage usage, we recommended you not set IngestionReportLevel to `FailuresAndSuccesses` |
 |IngestionReportMethod |Controls the target of the ingestion status reporting. Available options are: Azure Queue, Azure Table, or both. Defaults to `Queue`.
 
 ```csharp
