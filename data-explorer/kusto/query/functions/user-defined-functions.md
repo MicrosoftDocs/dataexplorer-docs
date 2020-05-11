@@ -14,7 +14,11 @@ ms.date: 03/12/2020
 **User-defined functions** are reusable subqueries that can be defined as part of the query itself (**ad-hoc functions**), or persisted as part of the database metadata (**stored functions**). User-defined functions are invoked through a **name**, are provided with zero or more **input arguments** (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function **body**.
 
 A user-defined function belongs to one of two categories:
-**Scalar functions** or **tabular functions**. The function's input arguments and output determine whether it is scalar or tabular, which then establishes how it might be used. 
+
+* Scalar functions 
+* Tabular functions 
+
+The function's input arguments and output determine whether it is scalar or tabular, which then establishes how it might be used. 
 
 ### A scalar function:
 
