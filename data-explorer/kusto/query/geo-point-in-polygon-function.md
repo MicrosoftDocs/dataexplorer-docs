@@ -48,7 +48,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 
 > [!TIP]
 > * Using literal polygons may result in better performance.
-> * If you want to know if any of the polygons contains a point, fold the collection of polygons into one multipolygon and query it. See the example below. 
+> * If you want to know if any of the polygons contains a point, try the following steps: Fold the collection of polygons into one multipolygon. Then query this multipolygon. This may improve performance. See the example below. 
 
 **Examples**
 
