@@ -33,7 +33,7 @@ Kusto.Cloud.Platform.Utils.TraceSourceManager.SetTraceVerbosityForAll(
     );
 ```
 
-## Suppress tracing by using a config file
+## Use a config file to suppress tracing 
 
 To suppress tracing from the Kusto client libraries through a config file, 
 modify the file `Kusto.Cloud.Platform.dll.tweaks` (which is included with the `Kusto.Data` library).
