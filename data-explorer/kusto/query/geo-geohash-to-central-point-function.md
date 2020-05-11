@@ -11,9 +11,9 @@ ms.date: 01/27/2020
 ---
 # geo_geohash_to_central_point()
 
-Calculates the geospatial coordinates that represent the center of a `Geohash` rectangular area.
+Calculates the geospatial coordinates that represent the center of a `geohash` rectangular area.
 
-Read more about about [`Geohash`](https://en.wikipedia.org/wiki/Geohash).  
+Read more about [`geohash`](https://en.wikipedia.org/wiki/Geohash).  
 
 **Syntax**
 
@@ -48,7 +48,7 @@ The following example returns a null result because of the invalid `geohash` inp
 print geohash = geo_geohash_to_central_point("a")
 ```
 
-|`geohash`|
+|geohash|
 |---|
 ||
 
@@ -71,6 +71,6 @@ print geohash = 'sv8wzvy7'
 | extend url = geohash_to_map_url(geohash, "You are here")
 ```
 
-|`geohash`|`url`|
+|geohash|url|
 |---|---|
 |sv8wzvy7|[https://www.bing.com/maps?sp=point.32.15620994567871_34.80245590209961_You+are+here](https://www.bing.com/maps?sp=point.32.15620994567871_34.80245590209961_You+are+here)|
