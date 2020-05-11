@@ -142,7 +142,7 @@ The function **body** includes:
 * Any number (zero or more) of [query parameters statements](../queryparametersstatement.md), which declare query parameters used by the function. If specified, they must precede the expression defining the function's return value.
 
 > [!NOTE]
-> Other kinds of [query statements](../statements.md) that are supported at the query "top level" are not supported inside a function body.
+> Other kinds of [query statements](../statements.md) that are supported at the query "top level" aren't supported inside a function body.
 
 ### Examples of user-defined functions 
 
