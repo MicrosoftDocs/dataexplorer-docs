@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
 ---
-# User-Defined Functions
+# User-defined functions
 
 **User-defined functions** are reusable subqueries that can be defined as part of the query itself (**ad-hoc functions**), or persisted as part of the database metadata (**stored functions**). User-defined functions are invoked through a **name**, are provided with zero or more **input arguments** (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function **body**.
 
@@ -20,7 +20,7 @@ A user-defined function belongs to one of two categories:
 
 The function's input arguments and output determine whether it is scalar or tabular, which then establishes how it might be used. 
 
-### A scalar function:
+## Scalar function
 
 * Has zero input arguments, or all its input arguments are scalar values
 * Produces a single scalar value
@@ -28,7 +28,7 @@ The function's input arguments and output determine whether it is scalar or tabu
 * May only use the row context in which it is defined
 * Can only refer to tables (and views) that are in the accessible schema
 
-### A tabular function:
+## Tabular function
 
 * Accepts one or more tabular input arguments, and zero or more scalar input arguments, and/or:
 * Produces a single tabular value
@@ -146,7 +146,7 @@ The function **body** includes:
 * Any number (zero or more) of [query parameters statements](../queryparametersstatement.md), which declare query parameters used by the function. If specified, they must precede the expression defining the function's return value.
 
 > [!NOTE]
-> Other kinds of [query statements](../statements.md) that are supported at the query "top level" are not supported inside a function body.
+> Other kinds of [query statements](../statements.md) that are supported at the query "top level" aren't supported inside a function body.
 
 ### Examples of user-defined functions 
 
