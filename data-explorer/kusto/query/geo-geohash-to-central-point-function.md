@@ -11,7 +11,7 @@ ms.date: 01/27/2020
 ---
 # geo_geohash_to_central_point()
 
-Calculates the geospatial coordinates that represent the center of a `geohash` rectangular area.
+Calculates the geospatial coordinates that represent the center of a geohash rectangular area.
 
 Read more about [`geohash`](https://en.wikipedia.org/wiki/Geohash).  
 
@@ -21,11 +21,11 @@ Read more about [`geohash`](https://en.wikipedia.org/wiki/Geohash).
 
 **Arguments**
 
-`geohash`: string value as it was calculated by [geo_point_to_geohash()](geo-point-to-geohash-function.md). The `geohash` string can be 1 to 18 characters.
+*geohash*`*: string value as it was calculated by [geo_point_to_geohash()](geo-point-to-geohash-function.md). The geohash string can be 1 to 18 characters.
 
 **Returns**
 
-The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the `geohash` is invalid, the query will produce a null result.
+The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the geohash is invalid, the query will produce a null result.
 
 > [!NOTE]
 > The GeoJSON format specifies longitude first and latitude second.
@@ -42,7 +42,7 @@ print point = geo_geohash_to_central_point("sunny")
 |---|---|---|---|
 |{<br>  "type": "Point",<br>  "coordinates": [<br>    42.47314453125,<br>    23.70849609375<br>  ]<br>}|[<br>  42.47314453125,<br>  23.70849609375<br>]|42.47314453125|23.70849609375|
 
-The following example returns a null result because of the invalid `geohash` input.
+The following example returns a null result because of the invalid geohash input.
 
 ```kusto
 print geohash = geo_geohash_to_central_point("a")
@@ -54,7 +54,7 @@ print geohash = geo_geohash_to_central_point("a")
 
 ## Example: Creating location deep-links for Bing Maps
 
-You can use the `geohash` value to create a deep-link URL to Bing Maps by pointing to the `geohash` center point:
+You can use the geohash value to create a deep-link URL to Bing Maps by pointing to the geohash center point:
 
 ```kusto
 // Use string concatenation to create Bing Map deep-link URL from a geo-point

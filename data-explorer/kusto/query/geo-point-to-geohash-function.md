@@ -13,7 +13,7 @@ ms.date: 02/04/2020
 
 Calculates the Geohash string value for a geographic location.
 
-Read more about [Geohash](https://en.wikipedia.org/wiki/Geohash).  
+Read more about [geohash](https://en.wikipedia.org/wiki/Geohash).  
 
 **Syntax**
 
@@ -65,7 +65,7 @@ See also [geo_point_to_s2cell()](geo-point-to-s2cell-function.md).
 
 **Examples**
 
-US storm events aggregated by Geohash.
+US storm events aggregated by geohash.
 
 :::image type="content" source="images/geo-point-to-geohash-function/geohash.png" alt-text="US Geohash":::
 
