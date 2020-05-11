@@ -50,7 +50,10 @@ await client.IngestFromStorageAsync(uri: @"BLOB-URI-WITH-SAS-KEY", ingestionProp
 client.Dispose();
 ```
 
-### Ingest From Local File using KustoDirectIngestClient (only for test purposes):
+### Ingest From Local File using KustoDirectIngestClient 
+
+This method is recommended for limited volume and low frequency ingestion.
+
 ```csharp
 // Create Kusto connection string with App Authentication
 var kustoConnectionStringBuilderEngine =

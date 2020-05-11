@@ -7,6 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
+ms.custom: has-adal-ref
 ms.date: 10/23/2018
 ---
 # Controlling or suppressing Kusto SDK client side tracing
@@ -79,15 +80,14 @@ the next time that the application starts:
     </trace>
   </system.diagnostics>
 </configuration>
-``` 
+```
 
 This will configure a trace listener that writes to CSV files in a sub-directory
 called `RollingLogs` located in the process' directory. (Of course, any .NET-compatible
-trace listener class may be used as well.) 
+trace listener class may be used as well.)
 
 ## How to enable the AAD client libraries (ADAL) tracing
 
 Once the tracing for the Kusto client libraries are enabled, so are the tracing
 emitted by the AAD client libraries (the Kusto client libraries automatically
 configure ADAL tracing)
-

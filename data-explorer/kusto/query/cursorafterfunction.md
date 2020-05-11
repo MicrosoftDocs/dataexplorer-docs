@@ -43,6 +43,6 @@ This function can only be invoked on records of a table which has the
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end

@@ -912,8 +912,6 @@
         href: ./management/show-cluster-database.md
       - name: .alter database
         href: ./management/alter-database.md
-      - name: .drop database
-        href: ./management/drop-database.md
       - name: .show database schema
         href: ./management/show-schema-database.md
     - name: Tables
@@ -952,6 +950,14 @@
         href: ./management/show-table-details-command.md
       - name: .show table schema
         href: ./management/show-table-schema-command.md
+    - name: External tables
+      items:
+      - name: External tables control commands
+        href: ./management/externaltables.md
+      - name: External SQL tables
+        href: management/external-sql-tables.md
+      - name: External tables in Azure Storage or Azure Data Lake
+        href: management/external-tables-azurestorage-azuredatalake.md  
     - name: Columns
       items:
       - name: Columns overview
