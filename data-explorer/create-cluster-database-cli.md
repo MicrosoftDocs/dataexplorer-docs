@@ -44,13 +44,19 @@ The following steps are not required if you're running commands in Azure Cloud S
     ```azurecli-interactive
     az account set --subscription MyAzureSub
     ```
+   
+1. Install kusto extenstion to use the latest kusto CLI version:
+
+    ```azurecli-interactive
+    az extension add -n kusto
+    ```
 
 ## Create the Azure Data Explorer cluster
 
 1. Create your cluster by using the following command:
 
     ```azurecli-interactive
-    az kusto cluster create --name azureclitest --sku name="Standard_D13_v2" tier="Standard" --resource-group testrg --location westus
+    az kusto cluster create --cluster-name azureclitest --sku name="Standard_D13_v2" tier="Standard" --resource-group testrg --location westus
     ```
 
    |**Setting** | **Suggested value** | **Field description**|
@@ -65,7 +71,7 @@ The following steps are not required if you're running commands in Azure Cloud S
 1. Run the following command to check whether your cluster was successfully created:
 
     ```azurecli-interactive
-    az kusto cluster show --name azureclitest --resource-group testrg
+    az kusto cluster show --cluster-name azureclitest --resource-group testrg
     ```
 
 If the result contains `provisioningState` with the `Succeeded` value, then the cluster was successfully created.
@@ -88,7 +94,7 @@ If the result contains `provisioningState` with the `Succeeded` value, then the 
 1. Run the following command to see the database that you created:
 
     ```azurecli-interactive
-    az kusto database show --name clidatabase --resource-group testrg --cluster-name azureclitest
+    az kusto database show --database-name clidatabase --resource-group testrg --cluster-name azureclitest
     ```
 
 You now have a cluster and a database.
@@ -99,7 +105,7 @@ You now have a cluster and a database.
 * To clean up resources, delete the cluster. When you delete a cluster, it also deletes all the databases in it. Use the following command to delete your cluster:
 
     ```azurecli-interactive
-    az kusto cluster delete --name azureclitest --resource-group testrg
+    az kusto cluster delete --cluster-name azureclitest --resource-group testrg
     ```
 
 ## Next steps
