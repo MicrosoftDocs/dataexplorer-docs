@@ -132,7 +132,7 @@ Traces
 
 For regex mode using regex flags:
 
-If you want to get the resourceName and totalSlices, and you use this query:
+To get the resourceName and totalSlices, use this query:
 
 ```kusto
 let Traces = datatable(EventText:string)
@@ -150,7 +150,7 @@ Traces
 
 In the above query, the default mode was case-sensitive, so the strings were parsed successfully. No result was obtained.
 
-In order to get the required result, run `parse-where` with a case-insensitive (`i`) regex flag.
+To get the required result, run `parse-where` with a case-insensitive (`i`) regex flag.
 
 Only three strings will be parsed successfully, so the result is three records (some totalSlices hold invalid integers): 
 
@@ -173,5 +173,3 @@ Traces
 |PipelineScheduler|27|
 |PipelineScheduler|27|
 |PipelineScheduler|27|
-
-
