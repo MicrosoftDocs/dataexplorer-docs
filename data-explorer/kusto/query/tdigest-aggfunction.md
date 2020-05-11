@@ -36,7 +36,7 @@ The Intermediate results of weighted percentiles of *Expr* across the group.
 
 1) You may use the aggregation function [tdigest_merge()](tdigest-merge-aggfunction.md) to merge the output of tdigest again across another group.
 
-2) You may use the function [percentile_tdigest()] (percentile-tdigestfunction.md) to calculate the percentile/percentilew of the tdigest results.
+2) You may use the function [percentile_tdigest()](percentile-tdigestfunction.md) to calculate the percentile/percentilew of the tdigest results.
 
 **Examples**
 
