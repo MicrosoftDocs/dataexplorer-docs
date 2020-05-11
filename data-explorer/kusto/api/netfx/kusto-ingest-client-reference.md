@@ -1,6 +1,6 @@
 ---
-title: Kusto.Ingest client reference - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto.Ingest client reference in Azure Data Explorer.
+title: Kusto.Ingest client interfaces and factory classes - Azure Data Explorer | Microsoft Docs
+description: This article describes Kusto.Ingest client interfaces and factory classes in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
 ---
-# Kusto.Ingest client reference
+# Kusto.Ingest client interfaces and factory classes
 
 The main interfaces and factory classes in the Kusto.Ingest library are:
 
@@ -338,22 +338,22 @@ public static class KustoIngestFactory
 
 ## Class KustoIngestionProperties
 
-KustoIngestionProperties class encapsulates basic ingestion properties that allow fine control over the ingestion process and its handling by the Kusto engine:
+KustoIngestionProperties class contains basic ingestion properties for fine control over the ingestion process and its handling by the Kusto engine.
 
 |Property   |Meaning    |
 |-----------|-----------|
 |DatabaseName |Name of the database to ingest into |
 |TableName |Name of the table to ingest into |
 |DropByTags |Tags that each extent will have. DropByTags are permanent and can be used as follows: `.show table T extents where tags has 'some tag'` or `.drop extents <| .show table T extents where tags has 'some tag'` |
-|IngestByTags |Tags that are written per extent. Later on can be used with `IngestIfNotExists` property to avoid ingesting the same data twice |
+|IngestByTags |Tags that are written per extent. Can later be used with the `IngestIfNotExists` property to avoid ingesting the same data twice |
 |AdditionalTags |Additional tags as needed |
 |IngestIfNotExists |List of tags that you don't want to ingest again (per table) |
 |CSVMapping |For each column, defines the data type and the ordinal column number. Relevant for CSV ingestion only (optional) |
 |JsonMapping |For each column, defines the JSON path and transformation options. **Mandatory for JSON ingestion** |
-|AvroMapping |For each column, defines the name of the field in Avro record. **Mandatory for AVRO ingestion** |
+|AvroMapping |For each column, defines the name of the field in the Avro record. **Mandatory for AVRO ingestion** |
 |ValidationPolicy |Data validation definitions. See [TODO] for details |
 |Format |Format of the data being ingested |
-|AdditionalProperties | Other properties that will be passed as [Ingestion Properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) to the ingestion command, because not all of the Ingestion Properties are represented in a separate member of this class|
+|AdditionalProperties | Other properties that will be passed as [ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) to the ingestion command, because not all of the ingestion properties are represented in a separate member of this class|
 
 ```csharp
 public class KustoIngestionProperties
@@ -432,7 +432,7 @@ public enum DataSourceFormat
 ```
 
 
-## Example of KustoIngestionProperties Definition
+## Example of KustoIngestionProperties definition
 
 ```csharp
 var guid = new Guid().ToString();
@@ -452,7 +452,7 @@ var kustoIngestionProperties = new KustoIngestionProperties("TargetDatabase", "T
 
 ## Interface IKustoQueuedIngestClient
 
-IKustoQueuedIngestClient interface adds tracking methods to follow the ingestion operation result, and exposes RetryPolicy for the ingest client.
+IKustoQueuedIngestClient interface adds tracking methods that follow the ingestion operation result and exposes RetryPolicy for the ingest client.
 
 * PeekTopIngestionFailures
 * GetAndDiscardTopIngestionFailures
@@ -492,7 +492,7 @@ public interface IKustoQueuedIngestClient : IKustoIngestClient
 
 ## Class KustoQueuedIngestionProperties
 
-KustoQueuedIngestionProperties class extends KustoIngestionProperties with several control knobs that can be used to fine-tune the ingestion behavior:
+KustoQueuedIngestionProperties class extends KustoIngestionProperties with several control knobs that can be used to fine-tune the ingestion behavior.
 
 |Property   |Meaning    |
 |-----------|-----------|
