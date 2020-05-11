@@ -81,7 +81,7 @@ The subdirectory is located in the process' directory.
 > [!NOTE]
 > Any .NET-compatible trace listener class may be used as well
 
-## How to enable the Azure AD client libraries (ADAL) tracing
+## Enable the Azure AD client libraries (ADAL) tracing
 
 Once tracing for the Kusto client libraries is enabled, so is the tracing by the Azure AD 
 client libraries. The Kusto client libraries automatically configure ADAL tracing.
