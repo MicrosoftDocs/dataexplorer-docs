@@ -132,7 +132,7 @@ Traces
 
 For regex mode using regex flags:
 
-If you want to get the resourceName and totalSlices, and you use this query:
+To get the resourceName and totalSlices, use this query:
 
 ```kusto
 let Traces = datatable(EventText:string)
@@ -173,4 +173,3 @@ Traces
 |PipelineScheduler|27|
 |PipelineScheduler|27|
 |PipelineScheduler|27|
-
