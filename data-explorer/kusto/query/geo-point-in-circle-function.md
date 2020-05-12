@@ -40,6 +40,7 @@ The following query finds all the places in the area defined by the following ci
 
 :::image type="content" source="images/geo-point-in-circle-function/circle-seattle.png" alt-text="Places near Seattle":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(longitude:real, latitude:real, place:string)
 [
@@ -63,6 +64,7 @@ Storm events in Orlando. The events are filtered by 100 km within Orlando coordi
 
 :::image type="content" source="images/geo-point-in-circle-function/orlando-storm-events.png" alt-text="Storm events in Orlando":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | project BeginLon, BeginLat, EventType
@@ -76,6 +78,7 @@ The following example shows NY Taxi pickups within 10 meters of a particular loc
 
 :::image type="content" source="images/geo-point-in-circle-function/circle-junction.png" alt-text="NY Taxi nearby Pickups":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 nyc_taxi
 | project pickup_longitude, pickup_latitude
@@ -87,6 +90,7 @@ nyc_taxi
 
 The following example will return true.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print in_circle = geo_point_in_circle(-122.143564, 47.535677, -122.100896, 47.527351, 3500)
 ```
@@ -97,6 +101,7 @@ print in_circle = geo_point_in_circle(-122.143564, 47.535677, -122.100896, 47.52
 
 The following example will return false.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print in_circle = geo_point_in_circle(-122.137575, 47.630683, -122.100896, 47.527351, 3500)
 ```
@@ -107,6 +112,7 @@ print in_circle = geo_point_in_circle(-122.137575, 47.630683, -122.100896, 47.52
 
 The following example will return a null result because of the invalid coordinate input.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print in_circle = geo_point_in_circle(200, 1, 1, 1, 1)
 ```

@@ -69,6 +69,7 @@ US storm events aggregated by geohash.
 
 :::image type="content" source="images/geo-point-to-geohash-function/geohash.png" alt-text="US geohash":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | project BeginLon, BeginLat
@@ -77,6 +78,7 @@ StormEvents
 | render scatterchart with (kind=map) // map rendering available in Kusto Explorer desktop
 ```
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print geohash = geo_point_to_geohash(139.806115, 35.554128, 12)  
 ```
@@ -85,6 +87,7 @@ print geohash = geo_point_to_geohash(139.806115, 35.554128, 12)
 |--------------|
 | xn76m27ty9g4 |
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print geohash = geo_point_to_geohash(-80.195829, 25.802215, 8)
 ```
@@ -95,6 +98,7 @@ print geohash = geo_point_to_geohash(-80.195829, 25.802215, 8)
 
 The following example finds groups of coordinates. Every pair of coordinates in the group resides in a rectangular area of 4.88 km by 4.88 km.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(location_id:string, longitude:real, latitude:real)
 [
@@ -114,6 +118,7 @@ datatable(location_id:string, longitude:real, latitude:real)
 
 The following example produces an empty result because of the invalid coordinate input.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print geohash = geo_point_to_geohash(200,1,8)
 ```
@@ -124,6 +129,7 @@ print geohash = geo_point_to_geohash(200,1,8)
 
 The following example produces an empty result because of the invalid accuracy input.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print geohash = geo_point_to_geohash(1,1,int(null))
 ```
