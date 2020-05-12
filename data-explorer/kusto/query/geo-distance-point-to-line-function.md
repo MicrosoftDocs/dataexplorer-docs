@@ -48,6 +48,7 @@ The following example finds the shortest distance between North Las Vegas Airpor
 
 :::image type="content" source="images/geo-distance-point-to-line-function/distance-point-to-line.png" alt-text="Distance between North Las Vegas Airport and road":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print distance_in_meters = geo_distance_point_to_line(-115.199625, 36.210419, dynamic({ "type":"LineString","coordinates":[[-115.115385,36.229195],[-115.136995,36.200366],[-115.140252,36.192470],[-115.143558,36.188523],[-115.144076,36.181954],[-115.154662,36.174483],[-115.166431,36.176388],[-115.183289,36.175007],[-115.192612,36.176736],[-115.202485,36.173439],[-115.225355,36.174365]]}))
 ```
@@ -60,6 +61,7 @@ Storm events in south coast US. The events are filtered by a maximum distance of
 
 :::image type="content" source="images/geo-distance-point-to-line-function/us-south-coast-storm-events.png" alt-text="Storm events in the US south coast":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let southCoast = dynamic({"type":"LineString","coordinates":[[-97.18505859374999,25.997549919572112],[-97.58056640625,26.96124577052697],[-97.119140625,27.955591004642553],[-94.04296874999999,29.726222319395504],[-92.98828125,29.82158272057499],[-89.18701171875,29.11377539511439],[-89.384765625,30.315987718557867],[-87.5830078125,30.221101852485987],[-86.484375,30.4297295750316],[-85.1220703125,29.6880527498568],[-84.00146484374999,30.14512718337613],[-82.6611328125,28.806173508854776],[-82.81494140625,28.033197847676377],[-82.177734375,26.52956523826758],[-80.9912109375,25.20494115356912]]});
 StormEvents
@@ -72,6 +74,7 @@ NY taxi pickups. Pickups are filtered by maximum distance of 0.1 m from the defi
 
 :::image type="content" source="images/geo-distance-point-to-line-function/park-ave-ny-road.png" alt-text="Storm events in US south coast":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 nyc_taxi
 | project pickup_longitude, pickup_latitude
@@ -82,6 +85,7 @@ nyc_taxi
 
 The following example will return a null result because of the invalid LineString input.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print distance_in_meters = geo_distance_point_to_line(1,1, dynamic({ "type":"LineString"}))
 ```
