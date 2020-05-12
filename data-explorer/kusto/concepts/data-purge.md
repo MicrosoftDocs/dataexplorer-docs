@@ -81,13 +81,13 @@ To reduce purge execution time:
 ## Trigger the purge process
 
 > [!Note]
-> Purge execution is invoked by running [purge table *TableName* records](#purge-table-tablename-records-command) command on the Data Management endpoint (**https://ingest-[YourClusterName].[Region].kusto.windows.net**).
+> Purge execution is invoked by running [purge table *TableName* records](#purge-table-tablename-records-command) command on the Data Management endpoint https://ingest-[YourClusterName].[Region].kusto.windows.net.
 
 ### Purge table TableName records command
 
 Purge command may be invoked in two ways for differing usage scenarios:
 
-1. Programmatic invocation: A single step that is intended to be invoked by applications. Calling this command directly triggers purge execution sequence.
+* Programmatic invocation: A single step that is intended to be invoked by applications. Calling this command directly triggers purge execution sequence.
 
 	**Syntax**
 
@@ -101,7 +101,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 	> [!NOTE]
 	> Generate this command by using the CslCommandGenerator API, available as part of the [Kusto Client Library](../api/netfx/about-kusto-data.md) NuGet package.
 
-1. Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data. Using this option may take a long time to complete on large tables with significant cold cache data.
+* Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data. Using this option may take a long time to complete on large tables with significant cold cache data.
 	<!-- If query times-out on DM endpoint (default timeout is 10 minutes), it is recommended to use the [engine `whatif` command](#purge-whatif-command) directly againt the engine endpoint while increasing the [server timeout limit](../concepts/querylimits.md#limit-on-request-execution-time-timeout). Only after you have verified the expected results using the engine whatif command, issue the purge command via the DM endpoint using the 'noregrets' option. -->
 
 	 **Syntax**
@@ -126,6 +126,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 	| `verificationtoken`     |  In the two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. Information about the purge will be returned with a token that should be passed back to the command to do step #2.   |
 
 	**Purge predicate limitations**
+
 	* The predicate must be a simple selection (for example, *where [ColumnName] == 'X'* / *where [ColumnName] in ('X', 'Y', 'Z') and [OtherColumn] == 'A'*).
 	* Multiple filters must be combined with an 'and', rather than separate `where` clauses (for example, `where [ColumnName] == 'X' and  OtherColumn] == 'Y'` and not `where [ColumnName] == 'X' | where [OtherColumn] == 'Y'`).
 	* The predicate can't reference tables other than the table being purged (*TableName*). The predicate can only include the selection statement (`where`). It can't project specific columns from the table (output schema when running '*`table` | Predicate*' must match table schema).
@@ -273,6 +274,7 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 * `Principal` - identity of the purge command issuer.
 
 ## Purging an entire table
+
 Purging a table includes dropping the table, and marking it as purged so that the hard delete process described in [Purge process](#purge-process) runs on it. 
 Dropping a table without purging it doesn't delete all its storage artifacts. These artifacts are deleted according to the hard retention policy initially set on the table. 
 The `purge table allrecords` command is quick and efficient and is preferable to the purge records process, if applicable for your scenario. 
