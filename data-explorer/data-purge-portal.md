@@ -3,15 +3,15 @@ title: Use data purge to delete personal data from a device or service in Azure 
 description: Learn about how to purge (delete) data from Azure Data Explorer using data purge.
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: kedamari
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 05/12/2020
 ---
 
-# Data purge
+# Enable data purge on your Azure Data Explorer cluster
 
-Use data purge when you want to delete data from your device or service, mostly for data protection, or to support your obligations under the GDPR. If you're looking for general information about GDPR, see the [GDPR section of the Service Trust portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted)
+[!INCLUDE [gdpr-intro-sentence](includes/gdpr-intro-sentence.md)]
 
 Data deletion through the `.purge` command is designed to be used to protect personal data and should not be used in other scenarios. It is not designed to support frequent delete requests, or deletion of massive quantities of data, and may have a significant performance impact on the service.
 
