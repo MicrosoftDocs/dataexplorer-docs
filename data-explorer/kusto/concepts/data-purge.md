@@ -1,18 +1,17 @@
 ---
-title: Data purge - Azure Data Explorer | Microsoft Docs
+title: Data purge - Azure Data Explorer
 description: This article describes Data purge in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: kedamari
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/12/2020
 ---
 # Data purge
 
-> [!Note]
-> This article provides steps for how to delete personal data from the device or service and can be used to support your obligations under the GDPR. If you're looking for general information about GDPR, see the [GDPR section of the Service Trust portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+[!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
 As a data platform, Azure Data Explorer supports the ability to delete individual records, through the use of Kusto `.purge` and related commands. You can also [purge an entire table](#purging-an-entire-table).  
 
@@ -84,7 +83,6 @@ To reduce purge execution time:
 > [!Note]
 > Purge execution is invoked by running [purge table *TableName* records](#purge-table-tablename-records-command) command on the Data Management endpoint (**https://ingest-[YourClusterName].[Region].kusto.windows.net**).
 
-
 ### Purge table TableName records command
 
 Purge command may be invoked in two ways for differing usage scenarios:
@@ -110,7 +108,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 
 	 ```kusto
 	 // Connect to the Data Management service
-	 #connect "https://ingest-[YourClusterName].[egion].kusto.windows.net" 
+	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
 	 
 	 // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
 	 .purge table [TableName] records in database [DatabaseName] <| [Predicate]
@@ -280,11 +278,12 @@ Dropping a table without purging it doesn't delete all its storage artifacts. Th
 The `purge table allrecords` command is quick and efficient and is preferable to the purge records process, if applicable for your scenario. 
 
 > [!Note]
-> The command is invoked by running the [purge table *TableName* allrecords](#purge-table-tablename-allrecords-command) command on the Data Management endpoint (**https://ingest-[YourClusterName].[Region].kusto.windows.net**).
+> The command is invoked by running the [purge table *TableName* allrecords](#purge-table-tablename-allrecords-command) command on the Data Management endpoint https://ingest-[YourClusterName].[Region].kusto.windows.net.
 
 ### Purge table *TableName* allrecords command
 
 Similar to '[.purge table records ](#purge-table-tablename-records-command)' command, this command can be invoked in a programmatic (single-step) or in a manual (two-step) mode.
+
 1. Programmatic invocation (single-step):
 
 	 **Syntax**
