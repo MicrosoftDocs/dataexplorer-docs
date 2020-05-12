@@ -1,10 +1,10 @@
 ---
-title: geo_distance_2points() - Azure Data Explorer | Microsoft Docs
+title: geo_distance_2points() - Azure Data Explorer
 description: This article describes geo_distance_2points() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/11/2020
@@ -60,6 +60,7 @@ range i from 1 to 1000000 step 1
 ```
 
 The following example finds all rows in which the shortest distance between two coordinates is between 1 and 11 meters.
+
 ```kusto
 StormEvents
 | extend distance_1_to_11m = geo_distance_2points(BeginLon, BeginLat, EndLon, EndLat)
@@ -73,6 +74,7 @@ StormEvents
 | 7.92153588248414  |
 
 The following example returns a null result because of the invalid coordinate input.
+
 ```kusto
 print distance = geo_distance_2points(300,1,1,1)
 ```

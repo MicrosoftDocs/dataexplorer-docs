@@ -1,19 +1,19 @@
 ---
-title: geo_geohash_to_central_point() - Azure Data Explorer | Microsoft Docs
+title: geo_geohash_to_central_point() - Azure Data Explorer
 description: This article describes geo_geohash_to_central_point() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/27/2020
 ---
 # geo_geohash_to_central_point()
 
-Calculates the geospatial coordinates that represent the center of a Geohash rectangular area.
+Calculates the geospatial coordinates that represent the center of a geohash rectangular area.
 
-For more information about Geohash, see [Wikipedia](https://en.wikipedia.org/wiki/Geohash).  
+Read more about [`geohash`](https://en.wikipedia.org/wiki/Geohash).  
 
 **Syntax**
 
@@ -54,7 +54,7 @@ print geohash = geo_geohash_to_central_point("a")
 
 ## Example: Creating location deep-links for Bing Maps
 
-You can use the Geohash value to create a deep-link URL to Bing Maps by pointing to the Geohash center point:
+You can use the geohash value to create a deep-link URL to Bing Maps by pointing to the geohash center point:
 
 ```kusto
 // Use string concatenation to create Bing Map deep-link URL from a geo-point
