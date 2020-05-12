@@ -1,5 +1,5 @@
 ---
-title: parse operator - Azure Data Explorer | Microsoft Docs
+title: parse operator - Azure Data Explorer
 description: This article describes parse operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -89,7 +89,7 @@ strings of the form `Event: NotifySliceRelease (resourceName={0}, totalSlices= {
 The operation below will extend the table with 6 columns: `resourceName` , `totalSlices`, `sliceNumber`, `lockTime `, `releaseTime`, `previouLockTime`, 
  `Month` and `Day`. 
 
-
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [
@@ -114,6 +114,7 @@ Traces
 
 for regex mode :
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [
@@ -141,6 +142,7 @@ for regex mode using regex flags:
 
 if we are interested in getting the resourceName only and we use this query:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [
@@ -168,6 +170,7 @@ or even if we had few records where the resourceName appears sometimes lower-cas
 get nulls for some values.
 in order to get the wanted result, we may run this one with the non-greedy (`U`) and disable case-sensitive (`i`) regex flags:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [
@@ -193,6 +196,7 @@ Traces
 
 If the parsed string has newlines, You should use the flag `s` to parse the text as expected :
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [
@@ -223,6 +227,7 @@ in this case, these two extended columns will get the value null while the other
 
 using kind = simple for the same query below gives null for all extended columns because it is strict on extended columns (that's the difference between relaxed and simple mode, in relaxed mode, extended columns can be matched partially).
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [

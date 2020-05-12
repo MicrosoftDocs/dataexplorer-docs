@@ -1,5 +1,5 @@
 ---
-title: max_of() - Azure Data Explorer | Microsoft Docs
+title: max_of() - Azure Data Explorer
 description: This article describes max_of() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -34,6 +34,7 @@ The maximum value of all argument expressions.
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto
 print result = max_of(10, 1, -3, 17) 
 ```

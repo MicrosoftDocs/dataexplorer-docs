@@ -1,5 +1,5 @@
 ---
-title: partition operator - Azure Data Explorer | Microsoft Docs
+title: partition operator - Azure Data Explorer
 description: This article describes partition operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -71,6 +71,7 @@ partition of the input data.
 At some cases - it is more performant and easier to write query using `partition` operator rather using [`top-nested` operator](topnestedoperator.md)
 The next example runs a sub-query calculating `summarize` and `top` for-each of States starting with `W`: (WYOMING, WASHINGTON, WEST VIRGINIA, WISCONSIN)
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | where State startswith 'W'
@@ -102,6 +103,7 @@ Sometimes it is useful (perf-wise) to run a complex subquery over non-overlappin
 data partitions in a map/reduce style. The example below shows how to create a
 manual distribution of aggregation over 10 partitions.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | extend p = hash(EventId, 10)
@@ -126,6 +128,7 @@ StormEvents
 The following example shows how query can be partitioned into N=10 partitions,
 where each partition calculates its own Count, and all later summarized into TotalCount.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let N = 10;                 // Number of query-partitions
 range p from 0 to N-1 step 1  // 
@@ -162,6 +165,7 @@ T
 The same technique can be applied with much more complex subqueries. To simplify
 the syntax, one can wrap the subquery in a function call:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let partition_function = (T:(Source:string)) 
 {

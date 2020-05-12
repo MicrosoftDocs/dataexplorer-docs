@@ -113,6 +113,7 @@ and *SubQuery* has the same syntax of any query statement.
 
 ## Getting the largest element from the array
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let _data =
 range x from 1 to 8 step 1
@@ -131,6 +132,7 @@ _data
 
 ## Calculating the sum of the largest two elements in an array
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let _data =
 range x from 1 to 8 step 1
@@ -151,6 +153,7 @@ _data
 
 ## Using `with_itemindex` for working with a subset of the array
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let _data =
 range x from 1 to 10 step 1
@@ -173,6 +176,7 @@ _data
 
 ## Using the `mv-apply` operator to sort the output of `makelist` aggregate by some key
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(command:string, command_time:datetime, user_id:string)
 [
