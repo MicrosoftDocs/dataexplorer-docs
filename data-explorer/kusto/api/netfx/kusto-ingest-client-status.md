@@ -1,5 +1,5 @@
 ---
-title: Kusto.Ingest - Ingestion Status Reporting - Azure Data Explorer
+title: Kusto.Ingest ingestion status reporting - Azure Data Explorer
 description: This article describes Kusto.Ingest - Ingestion Status Reporting in Azure Data Explorer.
 services: data-explorer
 author: orspod
