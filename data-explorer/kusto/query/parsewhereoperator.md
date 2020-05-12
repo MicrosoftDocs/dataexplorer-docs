@@ -89,6 +89,7 @@ A few of the strings don't have a full match.
 
 Using `parse`, the calculated columns will have nulls.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [
@@ -115,6 +116,7 @@ Traces
 
 Using 'parse-where' will filter-out unsuccessfully parsed strings from the result.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [
@@ -139,6 +141,7 @@ Traces
 
 To get the resourceName and totalSlices, use the following query:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [
@@ -161,6 +164,7 @@ To get the required result, run `parse-where` with a case-insensitive (`i`) rege
 
 Only three strings will be parsed successfully, so the result is three records (some totalSlices hold invalid integers).
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let Traces = datatable(EventText:string)
 [
