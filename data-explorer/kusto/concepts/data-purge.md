@@ -52,7 +52,7 @@ Issuing a `.purge` command triggers this process, which takes a few days to comp
 * Before running the purge, verify the predicate by running a query and checking that the results match the expected outcome. You can also use the two-step process that returns the expected number of records that will be purged. 
 
 * The `.purge` command is executed against the Data Management endpoint: 
-   `https://ingest-[YourClusterName].kusto.windows.net`.
+  `https://ingest-[YourClusterName].[region].kusto.windows.net`.
    The command requires [database admin](../management/access-control/role-based-authorization.md)
    permissions on the relevant databases. 
 * Due to the purge process performance impact, and to guarantee that
@@ -93,7 +93,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 
 	 ```kusto
 	 // Connect to the Data Management service
-	 #connect "https://ingest-[YourClusterName].[Region].kusto.windows.net" 
+	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
 	 
 	 .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
 	 ```
@@ -213,7 +213,7 @@ If the attempt is successful, the operation state is updated to `Abandoned`. Oth
 ## Track purge operation status 
 
 > [!Note]
-> Purge operations can be tracked with the [show purges](#show-purges-command) command, executed against the Data Management endpoint (**https://ingest-[YourClusterName].[Region].kusto.windows.net**).
+> Purge operations can be tracked with the [show purges](#show-purges-command) command, executed against the Data Management endpoint https://ingest-[YourClusterName].[region].kusto.windows.net.
 
 Status = 'Completed' indicates successful completion of the first phase of the purge operation, that is records are soft-deleted and are no longer available for querying. Customers **aren't** expected to track and verify the second phase (hard-delete) completion. This phase is monitored internally by Azure Data Explorer.
 
@@ -280,7 +280,7 @@ Dropping a table without purging it doesn't delete all its storage artifacts. Th
 The `purge table allrecords` command is quick and efficient and is preferable to the purge records process, if applicable for your scenario. 
 
 > [!Note]
-> The command is invoked by running the [purge table *TableName* allrecords](#purge-table-tablename-allrecords-command) command on the Data Management endpoint https://ingest-[YourClusterName].[Region].kusto.windows.net.
+> The command is invoked by running the [purge table *TableName* allrecords](#purge-table-tablename-allrecords-command) command on the Data Management endpoint https://ingest-[YourClusterName].[region].kusto.windows.net.
 
 ### Purge table *TableName* allrecords command
 
