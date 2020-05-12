@@ -1,5 +1,5 @@
 ---
-title: basket plugin - Azure Data Explorer | Microsoft Docs
+title: basket plugin - Azure Data Explorer
 description: This article describes basket plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -63,6 +63,7 @@ Available arguments:
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5
@@ -84,6 +85,7 @@ StormEvents
 
 **Example with custom wildcards**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5
