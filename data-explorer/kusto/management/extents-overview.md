@@ -90,7 +90,7 @@ One of the more important pieces of information for each extent is its
 creation time. This time is used by Kusto for:
 
 1. Retention (extents that were created earlier will be dropped earlier).
-2. Caching (extents that were created recently will be hotter).
+2. Caching (extents that were created recently will be kept in [hot cache](cachepolicy.md)).
 3. Sampling (when using query operations such as `take`, recent extents
    are favored).
 
