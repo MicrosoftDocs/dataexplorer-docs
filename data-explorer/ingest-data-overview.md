@@ -11,15 +11,15 @@ ms.date: 04/30/2019
 
 # Azure Data Explorer data ingestion overview
 
-Data ingestion is the process used to load data records from one or more sources to create or update a table in Azure Data Explorer. In most cases, the data is managed, then ingested to the engine endpoint. Once ingested, the data becomes available for query.
+Data ingestion is the process used to load data records from one or more sources to load data into a table in Azure Data Explorer. Once ingested, the data becomes available for query.
 
-The diagram below shows the end-to-end flow for working in Azure Data Explorer and depicts different [ingestion methods].
+The diagram below shows the end-to-end flow for working in Azure Data Explorer and shows different ingestion methods.
 
 :::image type="content" source="media/data-ingestion-overview/data-management-and-ingestion-overview.png" alt-text="Overview scheme of data ingestion and management":::
 
 The Azure Data Explorer data management service, which is responsible for data ingestion, implements the following process:
 
-Azure Data Explorer pulls data from an external source or reads requests from an Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. The Data Manager then commits the data ingest to the engine, where it's available for query. 
+Azure Data Explorer pulls data from an external source and reads requests from a pending Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. The Data Manager then commits the data ingest to the engine, where it's available for query. 
 
 There are other ingestion methods that bypass the data manager by using Kusto query language to ingest control commands directly to the engine endpoint. Do not use these methods for production scenarios. 
 
@@ -33,39 +33,35 @@ For all ingestion methods other than [ingest from query](kusto\management\data-i
 
 * Data types are inferred based on the target table columns. If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values. 
 
-## Queued vs streaming ingestion
+## Batching vs streaming ingestion
 
-* Queued ingestion performs data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. Queued ingestion can be performed with the following ingestion methods:
- <!--which methods are relevant-->
+* Batching ingestion performs data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. The [ingestion batching](kusto/management/batchingpolicy.md) policy can be set on databases, or tables. By default, Kusto will use a default value of 5 minutes as the maximum delay time, 1000 items, total size of 500 MB for batching.
 
-* Streaming ingestion is ongoing data ingestion from an automated source. Streaming ingestion allows near real-time latency for small sets of data per table. Data is initially ingested to row store, then moved to column store extents. Streaming ingestion can be performed using an Azure Data Explorer client library, with Event Hub as a data source.
+* Streaming ingestion is ongoing data ingestion from a streaming source. Streaming ingestion allows near real-time latency for small sets of data per table. Data is initially ingested to row store, then moved to column store extents. Streaming ingestion can be performed using an Azure Data Explorer client library, and different supported data pipelines.
 
 ## Ingestion methods
 
-Azure Data Explorer supports several ingestion methods, each with its own target scenarios, advantages, and disadvantages. Azure Data Explorer offers ingestion tools, connectors and plugins to common services, managed pipelines, programmatic ingestion using SDKs, and direct access to the engine.
+Azure Data Explorer supports several ingestion methods, each with its own target scenarios. Azure Data Explorer offers ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion.
 
 ### Ingestion using managed pipelines 
-\\TODO: Ask Tzvia about name of managed pipelines vs messaging service vs something else
 
-For organizations with an existing infrastructure that is based on a messaging service like Event Hub and IoT Hub, using a connector is likely the most appropriate solution. Queued ingestion is appropriate for large data volumes. Azure Data Explorer currently supports the following pipelines:
+For organizations who wish to have management (throttling, retries, monitors, alerts, and more) performed by an external service, using a connector is likely the most appropriate solution. Queued ingestion is appropriate for large data volumes. Azure Data Explorer currently supports the following pipelines:
 
-* [Event Grid](https://azure.microsoft.com/services/event-grid/) pipeline, which can be managed using the management wizard in the Azure portal. For more information, see [Ingest Azure Blobs into Azure Data Explorer](ingest-data-event-grid.md).
+* **[Event Grid](https://azure.microsoft.com/services/event-grid/)**: A pipeline that listens to Azure storage and updates Azure Data Explorer to pull information when subscribed events occur. For more information, see [Ingest Azure Blobs into Azure Data Explorer](ingest-data-event-grid.md).
 
-* [Event Hub](https://azure.microsoft.com/services/event-hubs/) pipeline, which can be managed using the management wizard in the Azure portal. For more information, see [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md).
+* **[Event Hub](https://azure.microsoft.com/services/event-hubs/)**: A pipeline that transfers events from services to Azure Data Explorer. For more information, see [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md).
 
-* [IoT Hub](https://azure.microsoft.com/services/iot-hub/), which can be managed using the management wizard in the Azure portal. For more information, see [Ingest from IoT Hub](ingest-data-iot-hub.md).
+* **[IoT Hub](https://azure.microsoft.com/services/iot-hub/)**: A pipeline use for the transfer of data from supported IoT devices to Azure Data Explorer. For more information, see [Ingest from IoT Hub](ingest-data-iot-hub.md).
 
 ### Ingestion using connectors and plugins
 
-* Logstash plugin, see [Ingest data from Logstash to Azure Data Explorer](ingest-data-logstash.md).
+* **Logstash plugin**, see [Ingest data from Logstash to Azure Data Explorer](ingest-data-logstash.md).
 
-* Kafka connector, see [Ingest data from Kafka into Azure Data Explorer](ingest-data-kafka.md).
+* **Kafka connector**, see [Ingest data from Kafka into Azure Data Explorer](ingest-data-kafka.md).
 
-* [Azure Data Flow](https://flow.microsoft.com/), see [Microsoft Flow Azure Kusto Connector (Preview)](kusto/tools/flow.md)
-<!-- add more links? -->
+* **[Azure Data Flow](https://flow.microsoft.com/)**: An automated pipelines over Azure Data Explorer. For example, Azure Data Flow can be used to execute a query and send emails based on query results. See [Microsoft Flow Azure Kusto Connector (Preview)](kusto/tools/flow.md).
 
-* Apache Spark connector, see [Azure Data Explorer Connector for Apache Spark](spark-connector.md)
-<!-- add more links> -->
+* **Apache Spark connector**:  An open source project that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. You can build fast and scalable applications targeting data driven scenarios. See [Azure Data Explorer Connector for Apache Spark](spark-connector.md).
 
 ### Programmatic ingestion using SDKs
 
@@ -73,7 +69,7 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
 **Available SDKs and open-source projects**:
 
-Client SDKs can be used to ingest and query data with:
+Client SDKs can be used for data ingestion and query data with:
 
 * [Python SDK](kusto/api/python/kusto-python-client-library.md)
 
@@ -89,13 +85,13 @@ Client SDKs can be used to ingest and query data with:
 
 ### Tools
 
-* Azure Data Factory (ADF), a fully managed data integration service for analytic workloads in Azure. 
+* **Azure Data Factory (ADF)**: A fully managed data integration service for analytic workloads in Azure. 
   * [Supported data stores and formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats). 
   * [Copy data from Azure Data Factory to Azure Data Explorer](/azure/data-explorer/data-factory-load-data).
 
-* [One Click Ingestion](ingest-data-one-click.md) enables you to quickly ingest data and automatically suggest tables and mapping structures, based on a data source in Azure Data Explorer.
+* **[One Click Ingestion](ingest-data-one-click.md)**: Enables you to quickly ingest data and automatically suggest tables and mapping structures, based on a data source in Azure Data Explorer.
 
-* [LightIngest](lightingest.md) is a command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
+* **[LightIngest](lightingest.md)**: A command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
 
 ### Kusto Query Language ingest control commands
 
