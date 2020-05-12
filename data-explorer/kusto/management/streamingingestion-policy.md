@@ -13,7 +13,7 @@ ms.date: 02/24/2020
 
 Streaming ingestion policy can be set on a table to allow streaming ingestion into this table. The policy can also be set on a database to apply the same setting to all its present and future tables.
 
-For more information on streaming ingestion see [Streaming ingestion (preview)](../../ingest-data-streaming.md). To learn more about the streaming ingestion policy, see [Streaming ingestion policy](streamingingestionpolicy.md).
+For more information on streaming ingestion see [Streaming ingestion](../../ingest-data-streaming.md). To learn more about the streaming ingestion policy, see [Streaming ingestion policy](streamingingestionpolicy.md).
 
 ## Displaying the policy
 
@@ -67,7 +67,7 @@ The `.alter[-merge] policy streamingingestion` family of commands provides means
 
 **Returns**
 
-The command modifies the table or database streamingingestion policy object and then returns the output of the corresponding [.show policy streamingingestion](#Displaying-the-policy)
+The command modifies the table or database streamingingestion policy object and then returns the output of the corresponding [.show policy streamingingestion](#displaying-the-policy)
 command.
 
 **Examples**
@@ -96,7 +96,7 @@ The `.delete policy streamingingestion` command deletes the streamingingestion p
 
 **Returns**
 
-The command deletes the table or database streamingingestion policy object and then returns the output of the corresponding [.show policy streamingingestion](#Displaying-the-policy)
+The command deletes the table or database streamingingestion policy object and then returns the output of the corresponding [.show policy streamingingestion](#displaying-the-policy)
 command.
 
 **Examples**
