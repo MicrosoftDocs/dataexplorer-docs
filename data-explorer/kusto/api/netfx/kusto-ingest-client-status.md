@@ -27,7 +27,7 @@ The classes are all derived from the abstract class `SourceDescription`, and the
 
 ### Class SourceDescription
 
-To ingest a large dataset, the data will be split into 1GB chunks, and each part will be ingested separately. The same SourceId will then apply to all ingest operations originated from the same dataset.   
+Data from a large dataset will be split into 1GB chunks, and each part will be ingested separately. The same SourceId will then apply to all ingest operations originated from the same dataset.   
 
 ```csharp
 public abstract class SourceDescription
