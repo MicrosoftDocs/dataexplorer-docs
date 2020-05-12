@@ -1,5 +1,5 @@
 ---
-title: format_bytes() - Azure Data Explorer | Microsoft Docs
+title: format_bytes() - Azure Data Explorer
 description: This article describes format_bytes() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -33,6 +33,7 @@ The string with the format result.
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print 
 v1 = format_bytes(564),

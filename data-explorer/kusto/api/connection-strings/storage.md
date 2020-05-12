@@ -101,7 +101,7 @@ supported:
 
 * Append `;impersonate` to the URI. Kusto will use the requestor's principal
   identity and impersonate it to access the resource
-* Append `;token=`_AadToken _to the URI, with _AadToken_ being a base-64
+* Append `;token=`*AadToken* to the URI, with *AadToken* being a base-64
   encoded AAD access token (make sure the token is for the resource `https://management.azure.com/`).
 * Append `;prompt` to the URI. Kusto will request user credentials
   when it needs to access the resource. (Prompting the user is disabled for

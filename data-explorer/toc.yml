@@ -240,6 +240,8 @@
           href: database-table-policies-python.md
     - name: Data
       items:
+      - name: Purge data - Azure portal
+        href: data-purge-portal.md
       - name: Delete data
         href: delete-data.md
       - name: Deal with duplicate data
