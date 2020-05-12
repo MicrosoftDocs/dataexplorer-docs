@@ -45,7 +45,7 @@ The following steps are not required if you're running commands in Azure Cloud S
     az account set --subscription MyAzureSub
     ```
    
-1. Install kusto extenstion to use the latest kusto CLI version:
+1. Install extension to use the latest Kusto CLI version:
 
     ```azurecli-interactive
     az extension add -n kusto
