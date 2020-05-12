@@ -1,15 +1,13 @@
 ---
-title: Time series anomaly detection & forecasting in Azure Data Explorer
-description: Learn how to analyze time series data for anomaly detection and forecasting using Azure Data Explorer.
+title: Dashboards
+description: Learn how to 
 author: orspod
 ms.author: orspodek
-ms.reviewer: adieldar
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
 ---
-
-Azure Data Explorer dashboards
 
 # Visualize data with Azure Data Explorer dashboards
 
@@ -28,9 +26,11 @@ The new navigation bar allows moving from Query to Dashboards and back. Use it t
 
 | Open bar | Closed bar |
 | --- | --- |
-| ![](RackMultipart20200507-4-jfp3et_html_3c046bd329a5b651.png) | ![](RackMultipart20200507-4-jfp3et_html_9e33869c11361df9.png) |
+| 
 
-Click the dashboard button and select a &quot;New dashboard&quot;.
+![](RackMultipart20200507-4-jfp3et_html_3c046bd329a5b651.png) | ![](RackMultipart20200507-4-jfp3et_html_9e33869c11361df9.png) |
+
+Click the dashboard button and select a **New dashboard**.
 
 ![](RackMultipart20200507-4-jfp3et_html_6e05a12abf2f7338.gif)
 
