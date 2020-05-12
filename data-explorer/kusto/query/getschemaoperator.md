@@ -1,5 +1,5 @@
 ---
-title: getschema operator  - Azure Data Explorer | Microsoft Docs
+title: getschema operator  - Azure Data Explorer
 description: This article describes getschema operator  in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -23,6 +23,7 @@ T | summarize MyCount=count() by Country | getschema
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | top 10 by Timestamp

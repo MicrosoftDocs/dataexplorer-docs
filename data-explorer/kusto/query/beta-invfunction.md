@@ -47,6 +47,7 @@ Given a value for probability, beta_inv() seeks that value x such that beta_cdf(
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(p:double, alpha:double, beta:double, comment:string)
 [

@@ -1,5 +1,5 @@
 ---
-title: has_any operator - Azure Data Explorer | Microsoft Docs
+title: has_any operator - Azure Data Explorer
 description: This article describes has_any operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -42,6 +42,7 @@ Rows in *T* for which the predicate is `true`
 
 **A simple usage of `has_any` operator:**  
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where State has_any ("CAROLINA", "DAKOTA", "NEW") 
@@ -62,6 +63,7 @@ StormEvents
 
 **Using dynamic array:**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let states = dynamic(['south', 'north']);
 StormEvents 
