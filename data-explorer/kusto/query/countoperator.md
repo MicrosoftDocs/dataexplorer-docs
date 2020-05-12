@@ -1,5 +1,5 @@
 ---
-title: count operator - Azure Data Explorer | Microsoft Docs
+title: count operator - Azure Data Explorer
 description: This article describes count operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -28,6 +28,7 @@ This function returns a table with a single record and column of type
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents | count
 ```
