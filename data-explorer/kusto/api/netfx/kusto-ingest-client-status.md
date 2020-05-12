@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
 ---
-# Kusto.Ingest - Ingestion Status Reporting
+# Kusto.Ingest ingestion status reporting
 
 This article explains how to use [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) features to track the status of an ingestion request.
 
