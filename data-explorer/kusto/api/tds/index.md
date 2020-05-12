@@ -1,6 +1,6 @@
 ---
 title: MS-TDS T-SQL support - Azure Data Explorer
-description: This article has links to information desribing MS-TDS T-SQL support in Azure Data Explorer.
+description: This article has links to information that describes MS-TDS T-SQL support in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -12,8 +12,10 @@ ms.date: 05/06/2019
 # MS-TDS T-SQL support
 
 Azure Data Explorer supports a subset of the Microsoft SQL Server communication protocol (MS-TDS),
-with a subset of the T-SQL query language. There are many tools that know how to query SQL Server and 
-can work with Azure Data Explorer, including Microsoft Excel and Microsoft Power BI. However, the client must use Azure Active Directory (Azure AD) integrated authentication as the client tool to query Azure Data Explorer through MS-TDS.
+with a subset of the T-SQL query language. Microsoft Excel and Microsoft Power BI are only some of the many tools that know how to query SQL Server and can work with Azure Data Explorer. 
+
+> [!NOTE]
+> The client must use Azure Active Directory (Azure AD) integrated authentication as the client tool to query Azure Data Explorer through MS-TDS.
 
 ## Links to pages discussing SQL, KQL, TDS, and Azure Data Explorer (Kusto)
 
