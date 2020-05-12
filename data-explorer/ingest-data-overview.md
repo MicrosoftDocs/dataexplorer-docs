@@ -11,7 +11,7 @@ ms.date: 04/30/2019
 
 # Azure Data Explorer data ingestion overview
 
-Data ingestion is the process used to load data records from one or more sources to load data into a table in Azure Data Explorer. Once ingested, the data becomes available for query.
+Data ingestion is the process used to load data records from one or more sources to import data into a table in Azure Data Explorer. Once ingested, the data becomes available for query.
 
 The diagram below shows the end-to-end flow for working in Azure Data Explorer and shows different ingestion methods.
 
@@ -21,17 +21,16 @@ The Azure Data Explorer data management service, which is responsible for data i
 
 Azure Data Explorer pulls data from an external source and reads requests from a pending Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. The Data Manager then commits the data ingest to the engine, where it's available for query. 
 
-There are other ingestion methods that bypass the data manager by using Kusto query language to ingest control commands directly to the engine endpoint. Do not use these methods for production scenarios. 
-
 ## Supported data formats, properties, and permissions
 
-For all ingestion methods other than [ingest from query](kusto\management\data-ingestion\ingest-from-query.md), format the data so that Azure Data Explorer can parse it. 
+* **[Supported formats](ingestion-supported-formats.md)** -- LIST FORMATS, embedded list
+Compression formats: LIST FORMATS, embedded list
 
-* See [supported formats](ingestion-supported-formats.md) and [properties](ingestion-properties.md) for more information.
+* **Ingestion [properties](ingestion-properties.md)**: The properties which affect how the data will be ingested (for example, tagging, mapping, creation time).
 
-* Depending on the existence of the table beforehand, the ingestion process may require [database admin, database ingestor, database user, or table admin permissions](kusto/management/access-control/role-based-authorization.md).
+* In order to ingest data, the process requires [database ingestor level permissions](kusto/management/access-control/role-based-authorization.md). Other actions, such as query, may require database admin, database user, or table admin permissions.
 
-* Data types are inferred based on the target table columns. If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values. 
+* **Supported Data types**: See [supported data types] (INSERT LINK) for Azure Data Explorer. If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.
 
 ## Batching vs streaming ingestion
 
@@ -51,7 +50,7 @@ For organizations who wish to have management (throttling, retries, monitors, al
 
 * **[Event Hub](https://azure.microsoft.com/services/event-hubs/)**: A pipeline that transfers events from services to Azure Data Explorer. For more information, see [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md).
 
-* **[IoT Hub](https://azure.microsoft.com/services/iot-hub/)**: A pipeline use for the transfer of data from supported IoT devices to Azure Data Explorer. For more information, see [Ingest from IoT Hub](ingest-data-iot-hub.md).
+* **[IoT Hub](https://azure.microsoft.com/services/iot-hub/)**: A pipeline that is used for the transfer of data from supported IoT devices to Azure Data Explorer. For more information, see [Ingest from IoT Hub](ingest-data-iot-hub.md).
 
 ### Ingestion using connectors and plugins
 
@@ -85,17 +84,17 @@ Client SDKs can be used for data ingestion and query data with:
 
 ### Tools
 
-* **Azure Data Factory (ADF)**: A fully managed data integration service for analytic workloads in Azure. 
+* **Azure Data Factory (ADF)**: A fully managed data integration service for analytic workloads in Azure. ((ADD small paragraph about the function of ADF in connecting to supported sources, pipelines, commands, data transformations, etc)). Can be used as a one-time solution, on a periodic timeline, or triggered by specific events. This supports (( say something about large volume of supported sources and connections))
   * [Supported data stores and formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats). 
-  * [Copy data from Azure Data Factory to Azure Data Explorer](/azure/data-explorer/data-factory-load-data).
+  * [Copy data from supported sources, using Azure Data Factory, to Azure Data Explorer](/azure/data-explorer/data-factory-load-data).
 
-* **[One Click Ingestion](ingest-data-one-click.md)**: Enables you to quickly ingest data and automatically suggest tables and mapping structures, based on a data source in Azure Data Explorer.
+* **[One Click Ingestion](ingest-data-one-click.md)**: Enables you to quickly ingest data and automatically suggest tables and mapping structures, based on a data source in Azure Data Explorer. Supports table creation and adjustment from a wide range of source types. One Click Ingestion can be used for one-time ingestion, or to define continuous ingestion via Event Grid on the container to which the data was ingested. (( CLEAN UP ))
 
 * **[LightIngest](lightingest.md)**: A command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
 
 ### Kusto Query Language ingest control commands
 
-There are a number of methods by which data can be ingested directly to the engine by Kusto Query Language (KQL) commands. This method is most appropriate for exploration and prototyping, and should not be used in production scenarios.
+There are a number of methods by which data can be ingested directly to the engine by Kusto Query Language (KQL) commands. Because this method bypasses the Data Management services, this method is only appropriate for exploration and prototyping, and should not be used in production or high-volume scenarios.
 
   * **Inline ingestion**:  A control command [.ingest inline](kusto/management/data-ingestion/ingest-inline.md) is sent to the engine, with the data to be ingested being a part of the command text itself. This method is intended for ad hoc testing purposes.
 
@@ -107,16 +106,16 @@ There are a number of methods by which data can be ingested directly to the engi
 
 | Ingestion name | Data type | Maximum file size | Streaming, batching, direct | Most common scenarios | Considerations |
 | --- | --- | --- | --- | --- | --- |
-| [**One click ingestion**](ingest-data-one-click.md) | *sv, JSON | 1 GB uncompressed | batching to container, local blob in direct ingestion | one-off, create table schema, definition of continuous ingestion with event grid, bulk ingestion with container (up to 10,000 blobs) | 10,000 blobs are randomly selected from container|
-| [**LightIngest**](lightingest.md) | all formats supported | 1 GB uncompressed | batching via DM or direct ingestion to engine |  data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction)| |
+| [**One click ingestion**](ingest-data-one-click.md) | *sv, JSON | 1 GB uncompressed (see note)| batching to container, local file and blob in direct ingestion | one-off, create table schema, definition of continuous ingestion with event grid, bulk ingestion with container (up to 10,000 blobs) | 10,000 blobs are randomly selected from container|
+| [**LightIngest**](lightingest.md) | all formats supported | 1 GB uncompressed (see note) | batching via DM or direct ingestion to engine |  data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction)| Case-sensitive, space-sensitive |
 | [**ADX Kafka**](ingest-data-kafka.md) | | | | |
 | [**ADX to Apache Spark**](spark-connector.md) | | | | |
 | [**LogStash**](ingest-data-logstash.md) | | | | |
-| [**Azure Data Factory**](kusto/tools/azure-data-factory.md) | all formats supported | unlimited *(some restrictions- maybe up to 200GB) | Batching | Supports usually unsupported formats, large files, can copy from over 100 sources, from onperm to cloud | Time of ingestion |
+| [**Azure Data Factory**](kusto/tools/azure-data-factory.md) | TODO: Link to ADF supported format | unlimited *(per ADF restrictions) | Batching or per ADF trigger | Supports usually unsupported formats, large files, can copy from over 100 sources, from onperm to cloud | Time of ingestion |
 |[ **Azure Data Flow**](kusto/tools/flow.md) | | | | Ingestion commands as part of flow| Must have high-performing response time |
-| [**IoT Hub**](kusto/management/data-ingestion/iothub.md) | all formats supported | N/A | batching, streaming | IoT messages, IoT events | |
-| [**Event Hub**](kusto/management/data-ingestion/eventhub.md) | all formats supported | N/A | batching, streaming | Messages, events | |
-| [**Event Grid**](kusto/management/data-ingestion/eventgrid.md) | all formats supported | 1 GB uncompressed | batching | Continuous ingestion from Azure storage, external data in Azure storage | 100 KB is optimal file size |
+| [**IoT Hub**](kusto/management/data-ingestion/iothub.md) | all formats supported- TODO: link to supported formats | N/A | batching, streaming | IoT messages, IoT events, IoT properties | |
+| [**Event Hub**](kusto/management/data-ingestion/eventhub.md) | all formats supported TODO: link to supported formats| N/A | batching, streaming | Messages, events | |
+| [**Event Grid**](kusto/management/data-ingestion/eventgrid.md) | all formats supported TODO: link to supported formats | 1 GB uncompressed | batching | Continuous ingestion from Azure storage, external data in Azure storage | 100 KB is optimal file size, Used for blob renaming and blob creation |
 | [**Net Std**](net-standard-ingest-data.md) | all formats supported | 1 GB uncompressed | batching, streaming, direct | Write your own code according to organizational needs |
 | [**Python**](python-ingest-data.md) | all formats supported | 1 GB uncompressed | batching, streaming, direct | Write your own code according to organizational needs |
 | [**Node.js**](node-ingest-data.md) | all formats supported | 1 GB uncompressed | batching, streaming, direct | Write your own code according to organizational needs |
@@ -124,35 +123,49 @@ There are a number of methods by which data can be ingested directly to the engi
 | [**REST**](kusto/api/netfx/kusto-ingest-client-rest.md) | all formats supported | 1 GB uncompressed | batching, streaming, direct| Write your own code according to organizational needs |
 | [**Go**](kusto/api/golang/kusto-golang-client-library.md) | all formats supported | 1 GB uncompressed | batching, streaming, direct | Write your own code according to organizational needs |
 
+> [!Note] 
+> In the above table, 
+
 ## Creating a table
-\\TODO: should we make a section about this?
+
+In order to ingest data, a table needs to be created beforehand. Use one of the following options:
+* Create a table [with a command](kusto/management/create-table-command.md). 
+* Create a table using [One Click Ingestion](one-click-ingestion-new-table.md).
 
 ## Schema mapping
-\\TODO: Talk to Tzvia- what does the user choose/change/need to know about this
+TODO: shorten below definitions and add links
 
-[Schema mapping](kusto/management/mappings.md) helps bind source data fields to destination table columns.
+[Schema mapping](kusto/management/mappings.md) helps bind source data fields to destination table columns. This allows you to take data from a variety of different sources to the same table, based on the defined attributes. 
 
-* [CSV Mapping](kusto/management/mappings.md#csv-mapping) (optional) works with all ordinal-based formats. It can be performed using the ingest command parameter or [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
-* [JSON Mapping](kusto/management/mappings.md#json-mapping) (mandatory) and [Avro mapping](kusto/management/mappings.md#avro-mapping) (mandatory) can be performed using the ingest command parameter. They can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
+Kusto supports different types of mappings, both row-oriented (CSV, JSON and AVRO), and column-oriented (Parquet).
+
+Mapping transformations
+
+Some of the data format mappings (Parquet, JSON and Avro) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use Update policy, which allows defining lightweight processing using KQL expression.
+
+* **[CSV Mapping](kusto/management/mappings.md#csv-mapping)** (optional) works with all ordinal-based formats. It can be performed using the ingest command parameter or [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
+* **[JSON Mapping](kusto/management/mappings.md#json-mapping)** (mandatory) and [Avro mapping](kusto/management/mappings.md#avro-mapping) (mandatory) can be performed using the ingest command parameter. They can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
+
+<!--**Avro-Apache**-->
+
+* **Orc mapping**: When the source file is in Orc format, the file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. The columns mapped in the Orc mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns. 
+
+* **Parquet mapping**: When the source file is in Parquet format, the file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. The columns mapped in the Parquet mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
 
 ## Update policy
 
-Set your [update policy](kusto/management/update-policy.md) to automatically run a query and ingest its results when data is ingested into another table.
+The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables. Set your [update policy](kusto/management/update-policy.md).
 
-## Validation policy
-
-When ingesting from storage, the source data is validated as part of parsing. The validation policy indicates how to react to parsing failures. It consists of two properties:
-* `ValidationOptions`: Here, `0` means that no validation should be performed, `1` validates that all records have the same number of fields (useful for CSV files and similar), and `2` indicates to ignore fields that are not double-quoted.
-* `ValidationImplications`: `0` indicates that validation failures should fail the whole ingestion, and `1` indicates that validation failures should be ignored.
-<!-- is this relevant for all ingestion methods from storage? was taken from Kusto doc-->
 
 ## Ingestion recommendations and limitations
 
-* Data ingested into a table in Azure Data Explorer is subject to the table's effective retention policy. Unless set on a table explicitly, the effective retention policy is derived from the database's retention policy. The default retention policy is five minutes. Make sure that the database's retention policy is appropriate for your needs. If not, explicitly override it at the table level. Failure to do so might result in a "silent" deletion of your data due to the database's retention policy. See [retention policy](kusto/management/retentionpolicy.md) for more details. 
+* Data ingested into a table in Azure Data Explorer is subject to the table's effective retention policy. Unless set on a table explicitly, the effective retention policy is derived from the database's retention policy. Hot retention is a function of cluster size and your retention policy. Ingesting more data than you have available space will force the first in data to cold retention.
+Make sure that the database's retention policy is appropriate for your needs. If not, explicitly override it at the table level. See [retention policy](kusto/management/retentionpolicy.md) for more details. 
 * Ingesting data requires **Table ingestor** or **Database ingestor** [permissions](kusto/management/access-control/role-based-authorization.md).
 * Ingestion supports a maximum file size of 5 GB. The recommendation is to ingest files between 100 MB and 1 GB.
 
 ## Next steps
 
 * [Supported data formats](ingestion-supported-formats.md)
-* [Supported data properties](ingestion-properties.md)
+* Supported data properties TODO: add link
+* [Supported ingestion properties](ingestion-properties.md)
