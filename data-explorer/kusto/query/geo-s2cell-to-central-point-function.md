@@ -32,6 +32,7 @@ The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print point = geo_s2cell_to_central_point("1234567")
 | extend coordinates = point.coordinates
@@ -43,6 +44,8 @@ print point = geo_s2cell_to_central_point("1234567")
 |{<br>  "type": "Point",<br>  "coordinates": [<br>    9.86830731850408,<br>    27.468392925827604<br>  ]<br>}|[<br>  9.86830731850408,<br>  27.468392925827604<br>]|9.86830731850408|27.4683929258276|
 
 The following example returns a null result because of the invalid S2 cell token input.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print point = geo_s2cell_to_central_point("a")
 ```

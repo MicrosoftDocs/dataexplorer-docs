@@ -1,5 +1,5 @@
 ---
-title: current_principal_is_member_of() - Azure Data Explorer | Microsoft Docs
+title: current_principal_is_member_of() - Azure Data Explorer
 description: This article describes current_principal_is_member_of() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -56,6 +56,7 @@ The function returns:
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print result=current_principal_is_member_of(
     'aaduser=user1@fabrikam.com', 
@@ -68,8 +69,9 @@ print result=current_principal_is_member_of(
 |--------|
 | (null) |
 
-Using dynamic array instead of multple arguments:
+Using dynamic array instead of multiple arguments:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print result=current_principal_is_member_of(
     dynamic([

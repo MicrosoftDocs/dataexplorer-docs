@@ -36,9 +36,9 @@ The shortest distance, in meters, between two geographic locations on Earth. If 
 
 The following example finds the shortest distance between Seattle and Los Angeles.
 
-
 :::image type="content" source="images/geo-distance-2points-function/distance_2points_seattle_los_angeles.png" alt-text="Distance between Seattle and Los Angeles":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print distance_in_meters = geo_distance_2points(-122.407628, 47.578557, -118.275287, 34.019056)
 ```
@@ -51,6 +51,7 @@ Here is an approximation of shortest path from Seattle to London. The line consi
 
 :::image type="content" source="images/geo-distance-2points-function/line_seattle_london.png" alt-text="Seattle to London LineString":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range i from 1 to 1000000 step 1
 | project lng = rand() * real(-122), lat = rand() * 90
@@ -61,6 +62,7 @@ range i from 1 to 1000000 step 1
 
 The following example finds all rows in which the shortest distance between two coordinates is between 1 and 11 meters.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend distance_1_to_11m = geo_distance_2points(BeginLon, BeginLat, EndLon, EndLat)
@@ -75,6 +77,7 @@ StormEvents
 
 The following example returns a null result because of the invalid coordinate input.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print distance = geo_distance_2points(300,1,1,1)
 ```

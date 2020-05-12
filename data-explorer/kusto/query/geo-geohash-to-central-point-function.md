@@ -32,6 +32,7 @@ The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print point = geo_geohash_to_central_point("sunny")
 | extend coordinates = point.coordinates
@@ -44,6 +45,7 @@ print point = geo_geohash_to_central_point("sunny")
 
 The following example returns a null result because of the invalid geohash input.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print geohash = geo_geohash_to_central_point("a")
 ```
@@ -56,6 +58,7 @@ print geohash = geo_geohash_to_central_point("a")
 
 You can use the geohash value to create a deep-link URL to Bing Maps by pointing to the geohash center point:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 // Use string concatenation to create Bing Map deep-link URL from a geo-point
 let point_to_map_url = (_point:dynamic, _title:string) 
