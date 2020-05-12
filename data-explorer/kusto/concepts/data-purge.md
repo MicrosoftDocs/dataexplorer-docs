@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 05/12/2020
 ---
 # Data purge
 
@@ -52,14 +52,15 @@ Issuing a `.purge` command triggers this process, which takes a few days to comp
 
 * Before running the purge, verify the predicate by running a query and checking that the results match the expected outcome. You can also use the two-step process that returns the expected number of records that will be purged. 
 
-* As a precautionary measure, the purge process is disabled, by default, on all clusters.
-   Enabling the purge process is a one-time operation that requires opening a [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview); specify that you want the `EnabledForPurge` feature to be turned on.
-
-* The `.purge` command is executed against the Data Management endpoint: `https://ingest-[YourClusterName].[Region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-authorization.md) permissions on the relevant databases. 
-* Because of the purge process performance impact, and to guarantee that the [purge guidelines](#purge-guidelines) have been followed, do the following steps: 
-    * Modify the data schema so that minimal tables include relevant data
-	* Batch commands per table to reduce the significant COGS impact of the purge process.
-* The `predicate` parameter of the [`.purge`](#purge-table-tablename-records-command) command is used to specify which records to purge.
+* The `.purge` command is executed against the Data Management endpoint: 
+   `https://ingest-[YourClusterName].kusto.windows.net`.
+   The command requires [database admin](../management/access-control/role-based-authorization.md)
+   permissions on the relevant databases. 
+* Due to the purge process performance impact, and to guarantee that
+   [purge guidelines](#purge-guidelines) have been followed, the caller is expected to modify the data schema so that
+   minimal tables include relevant data, and batch commands per table to reduce the significant COGS impact of the
+   purge process.
+* The `predicate` parameter of the [.purge](#purge-table-tablename-records-command) command is used to specify which records to purge.
 `Predicate` size is limited to 63 KB. When constructing the `predicate`:
 	* Use the ['in' operator](../query/inoperator.md), for example, `where [ColumnName] in ('Id1', 'Id2', .. , 'Id1000')`. 
 	* Note the limits of the ['in' operator](../query/inoperator.md) (list can contain up to `1,000,000` values).
