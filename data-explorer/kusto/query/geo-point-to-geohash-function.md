@@ -1,19 +1,19 @@
 ---
-title: geo_point_to_geohash() - Azure Data Explorer | Microsoft Docs
+title: geo_point_to_geohash() - Azure Data Explorer
 description: This article describes geo_point_to_geohash() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/04/2020
 ---
 # geo_point_to_geohash()
 
-Calculates the Geohash string value for a geographic location.
+Calculates the geohash string value for a geographic location.
 
-For more information about Geohash, see [here](https://en.wikipedia.org/wiki/Geohash).  
+Read more about [geohash](https://en.wikipedia.org/wiki/Geohash).  
 
 **Syntax**
 
@@ -27,16 +27,16 @@ For more information about Geohash, see [here](https://en.wikipedia.org/wiki/Geo
 
 **Returns**
 
-The Geohash string value of a given geographic location with requested accuracy length. If the coordinate or accuracy are invalid, the query will produce an empty result.
+The geohash string value of a given geographic location with requested accuracy length. If the coordinate or accuracy is invalid, the query will produce an empty result.
 
 > [!NOTE]
 >
 > * Geohash can be a useful geospatial clustering tool.
 > * Geohash has 18 accuracy levels with area coverage ranging from 25 Million km² at the highest level 1 to 0.6 μ² at the lowest level 18.
-> * Common prefix of Geohashes indicate on proximity of points to each other. The longer a shared prefix is, the closer the two places are. Accuracy value translates to geohash length.
+> * Common prefixes of geohash indicate proximity of points to each other. The longer a shared prefix is, the closer the two places are. Accuracy value translates to geohash length.
 > * Geohash is a rectangular area on a plane surface.
 > * Invoking the [geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md) function on a geohash string that was calculated on longitude x and latitude y won't necessarily return x and y.
-> * Due to the Geohash definition, it's possible that two geographic locations are very close to each other but have different Geohash codes.
+> * Due to the geohash definition, it's possible that two geographic locations are very close to each other but have different geohash codes.
 
 **Geohash rectangular area coverage per accuracy value:**
 
@@ -67,8 +67,9 @@ See also [geo_point_to_s2cell()](geo-point-to-s2cell-function.md).
 
 US storm events aggregated by geohash.
 
-:::image type="content" source="images/geo-point-to-geohash-function/geohash.png" alt-text="US Geohash":::
+:::image type="content" source="images/geo-point-to-geohash-function/geohash.png" alt-text="US geohash":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | project BeginLon, BeginLat
@@ -77,6 +78,7 @@ StormEvents
 | render scatterchart with (kind=map) // map rendering available in Kusto Explorer desktop
 ```
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print geohash = geo_point_to_geohash(139.806115, 35.554128, 12)  
 ```
@@ -85,6 +87,7 @@ print geohash = geo_point_to_geohash(139.806115, 35.554128, 12)
 |--------------|
 | xn76m27ty9g4 |
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print geohash = geo_point_to_geohash(-80.195829, 25.802215, 8)
 ```
@@ -93,7 +96,9 @@ print geohash = geo_point_to_geohash(-80.195829, 25.802215, 8)
 |---|
 |dhwfz15h|
 
-The following example finds groups of coordinates. Every pair of coordinates in the group reside in a rectangular area of 4.88 km on 4.88 km.
+The following example finds groups of coordinates. Every pair of coordinates in the group resides in a rectangular area of 4.88 km by 4.88 km.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(location_id:string, longitude:real, latitude:real)
 [
@@ -112,6 +117,8 @@ datatable(location_id:string, longitude:real, latitude:real)
 | c23n9   | 1     | ["C"]      |
 
 The following example produces an empty result because of the invalid coordinate input.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print geohash = geo_point_to_geohash(200,1,8)
 ```
@@ -121,6 +128,8 @@ print geohash = geo_point_to_geohash(200,1,8)
 |         |
 
 The following example produces an empty result because of the invalid accuracy input.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print geohash = geo_point_to_geohash(1,1,int(null))
 ```

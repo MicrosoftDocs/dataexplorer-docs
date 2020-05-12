@@ -828,7 +828,9 @@
     - name: geo_point_in_polygon()
       href: ./query/geo-point-in-polygon-function.md
     - name: geo_point_to_geohash()
-      href: ./query/geo-point-to-geohash-function.md
+      href: ./query/geo-point-to-geohash-function.md    
+    - name: geo_polygon_to_s2cells()
+      href: ./query/geo-polygon-to-s2cells-function.md
     - name: geo_point_to_s2cell()
       href: ./query/geo-point-to-s2cell-function.md
     - name: geo_s2cell_to_central_point()

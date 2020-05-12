@@ -1,5 +1,5 @@
 ---
-title: coalesce() - Azure Data Explorer | Microsoft Docs
+title: coalesce() - Azure Data Explorer
 description: This article describes coalesce() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -34,6 +34,7 @@ The value of the first *expr_i* whose value is not null (or not-empty for string
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto
 print result=coalesce(tolong("not a number"), tolong("42"), 33)
 ```

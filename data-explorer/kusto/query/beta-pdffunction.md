@@ -1,5 +1,5 @@
 ---
-title: beta_pdf() - Azure Data Explorer | Microsoft Docs
+title: beta_pdf() - Azure Data Explorer
 description: This article describes beta_pdf() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -43,6 +43,7 @@ If alpha ≤ 0 or beta ≤ 0, beta_pdf() returns the NaN value.
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(x:double, alpha:double, beta:double, comment:string)
 [

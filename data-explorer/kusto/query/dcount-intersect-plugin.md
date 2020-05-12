@@ -37,6 +37,7 @@ Column names are s0, s1, ... (until n-1).
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 // Generate numbers from 1 to 100
 range x from 1 to 100 step 1
