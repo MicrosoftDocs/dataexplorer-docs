@@ -13,9 +13,17 @@ ms.date: 10/30/2019
 
 This article explains how to use [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) features to track the status of an ingestion request.
 
-## SourceDescription, DataReaderDescription, StreamDescription, FileDescription, and BlobDescription
+## Description classes
 
-These above description classes contain important details about the source data to be ingested, and should be used in the ingestion operation. The classes are all derived from the abstract class `SourceDescription`, and they're used to instantiate a unique identifier for each data source. Each identifier will then be used for status tracking and will show up in all reports, traces, and exceptions related to the relevant operation.
+These description classes contain important details about the source data to be ingested, and should be used in the ingestion operation. 
+
+* SourceDescription
+* DataReaderDescription
+* StreamDescription
+* FileDescription
+* BlobDescription
+
+The classes are all derived from the abstract class `SourceDescription`, and they're used to instantiate a unique identifier for each data source. Each identifier will then be used for status tracking and will show up in all reports, traces, and exceptions related to the relevant operation.
 
 ### Class SourceDescription
 
@@ -125,18 +133,18 @@ public class IngestionStatus
 
 ### Status enumeration
 
-|Value              |Meaning     |
-|-------------------|------------|
-|Pending            |Temporary. The value may change during the course of ingestion, based on the outcome of the ingestion operation |
-|Succeeded          |Permanent. The data has been successfully ingested |
-|Failed             |Permanent. Ingestion failed |
-|Queued             |Permanent. The data has been queued for ingestion |
-|Skipped            |Permanent. No data was supplied and the ingest operation was skipped |
-|PartiallySucceeded |Permanent. Part of the data was successfully ingested, while some failed |
+|Value              |Meaning                                                                                     |Temporary/Permanent
+|-------------------|-----------------------------------------------------------------------------------------------------|---------|
+|Pending            |The value may change during the course of ingestion, based on the outcome of the ingestion operation |Temporary|
+|Succeeded          |The data has been successfully ingested                                                              |Permanent| 
+|Failed             |Ingestion failed                                                                                     |Permanent|
+|Queued             |The data has been queued for ingestion                                                               |Permanent|
+|Skipped            |No data was supplied and the ingest operation was skipped                                            |Permanent|
+|PartiallySucceeded |Part of the data was successfully ingested, while some failed                                        |Permanent|
 
 ## Tracking Ingestion Status (KustoQueuedIngestClient)
 
-[IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) is a 'fire-and-forget' client. The ingestion operation on the client side ends by posting a message to an Azure queue. After the posting, the client job is done. For the client user's convenience, KustoQueuedIngestClient provides a mechanism for tracking the individual ingestion status. This mechanism isn't intended for mass usage on high-throughput ingestion pipelines. This mechanism is for 'precision' ingestion when the rate is relatively low and the tracking requirements are strict.
+[IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) is a 'fire-and-forget' client. The ingestion operation on the client side ends by posting a message to an Azure queue. After the posting, the client job is done. For the client user's convenience, KustoQueuedIngestClient provides a mechanism for tracking the individual ingestion status. This mechanism isn't intended for mass usage on high-throughput ingestion pipelines. This mechanism is for precision ingestion when the rate is relatively low and the tracking requirements are strict.
 
 > [!WARNING]
 > Turning on positive notifications for every ingestion request for large volume data streams should be avoided, since this places an extreme load on the underlying xStore resources, which might lead to increased ingestion latency and even complete cluster non-responsiveness.
