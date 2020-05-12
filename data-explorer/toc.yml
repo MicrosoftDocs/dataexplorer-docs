@@ -1245,9 +1245,9 @@
         - name: External tables control commands
           href: ./kusto/management/externaltables.md
         - name: External SQL tables
-          href: management/external-sql-tables.md
+          href: ./kusto/management/external-sql-tables.md
         - name: External tables in Azure Storage or Azure Data Lake
-          href: management/external-tables-azurestorage-azuredatalake.md  
+          href: ./kusto/management/external-tables-azurestorage-azuredatalake.md  
       - name: Columns
         items:
         - name: Columns overview
@@ -1439,7 +1439,7 @@
       - name: Cluster follower
         href: ./kusto/management/cluster-follower.md
       - name: Data purge
-        href: ./kusto/management/../kusto/concepts/data-purge.md
+        href: ./kusto/concepts/data-purge.md
   - name: API
     href: ./kusto/api/index.md
     items:
