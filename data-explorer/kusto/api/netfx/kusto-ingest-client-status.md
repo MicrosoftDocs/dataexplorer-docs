@@ -198,9 +198,9 @@ The `IKustoIngestionResult` methods are only relevant for checking a status in a
 
 |Method                                  |Purpose     |
 |----------------------------------------|------------|
-|PeekTopIngestionFailures                |Async method that returns information about the earliest ingestion failures that haven't been discarded according to the limit for requested messages |
-|GetAndDiscardTopIngestionFailures       |Async method that returns and discards the earliest ingestion failures that haven't been discarded according to the limit for requested messages |
-|GetAndDiscardTopIngestionSuccesses      |Async method that returns and discards the earliest ingestion successes that haven't been discarded according to the limit for requested messages. This method is only relevant if the `IngestionReportLevel` is set to `FailuresAndSuccesses` |
+|PeekTopIngestionFailures                |Async method that returns information about the earliest ingestion failures that haven't already been discarded due to the limit for requested messages |
+|GetAndDiscardTopIngestionFailures       |Async method that returns and discards the earliest ingestion failures that haven't already been discarded due to the limit for requested messages |
+|GetAndDiscardTopIngestionSuccesses      |Async method that returns and discards the earliest ingestion successes that haven't already been discarded due to the limit for requested messages. This method is only relevant if the `IngestionReportLevel` is set to `FailuresAndSuccesses` |
 
 ### Ingestion failures retrieved from the Azure queue
 
