@@ -1,5 +1,5 @@
 ---
-title: pack_array() - Azure Data Explorer | Microsoft Docs
+title: pack_array() - Azure Data Explorer
 description: This article describes pack_array() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -27,6 +27,7 @@ Dynamic array which includes the values of Expr1, Expr2, ... , ExprN.
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2
@@ -40,6 +41,7 @@ range x from 1 to 3 step 1
 |[2,4,8]|
 |[3,6,12]|
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 range x from 1 to 3 step 1
 | extend y = tostring(x * 2)

@@ -45,6 +45,7 @@ We want to generate a random set of values and want to know:
 
 This operation can be done using [batches](batches.md) and materialize:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
  ```kusto
 let randomSet = materialize(range x from 1 to 30000000 step 1
 | project value = rand(10000000));
