@@ -1,6 +1,6 @@
 ---
-title: Kusto.Ingest - Ingestion Code Examples - Azure Data Explorer
-description: This article describes Kusto.Ingest - Ingestion Code Examples in Azure Data Explorer.
+title: Kusto.Ingest ingestion code examples - Azure Data Explorer
+description: This article describes Kusto.Ingest ingestion code examples in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/15/2019
 ---
-# Kusto.Ingest - Ingestion Code Examples
+# Kusto.Ingest ingestion code examples
 
 This collection of short code snippets demonstrates various techniques of ingesting data into a Kusto table.
 
@@ -17,15 +17,9 @@ This collection of short code snippets demonstrates various techniques of ingest
 > These examples look as if the ingest client is destroyed immediately following the ingestion. Do not take this literally.
 > Ingest clients are reentrant snd thread-safe, and should not be created in large numbers. The recommended cardinality of ingest client instances is one per hosting process, per target Kusto cluster.
 
-## Useful References
+## Async ingestion from a single Azure blob
 
-* [Kusto.Ingest Client Reference](kusto-ingest-client-reference.md)
-* [Kusto.Ingest Operation Status](kusto-ingest-client-errors.md)
-* [Kusto.Ingest Exceptions](kusto-ingest-client-errors.md)
-* [Kusto connection strings](../connection-strings/kusto.md)
-* [Kusto Authorization Model](../../management/security-roles.md)
-
-## Async Ingestion from a single Azure blob using KustoQueuedIngestClient with (optional) RetryPolicy
+Use KustoQueuedIngestClient, with optional RetryPolicy, for async ingestion from a single Azure blob.
 
 ```csharp
 //Create Kusto connection string with App Authentication
@@ -55,9 +49,13 @@ await client.IngestFromStorageAsync(uri: @"BLOB-URI-WITH-SAS-KEY", ingestionProp
 client.Dispose();
 ```
 
-## Ingest from local file using KustoDirectIngestClient 
+## Ingest from local file 
 
-This method is recommended for limited volume and low frequency ingestion.
+Use KustoDirectIngestClient to ingest from a local file.
+
+
+> [!NOTE]
+> We recommend this method for limited volume and low frequency ingestion.
 
 ```csharp
 // Create Kusto connection string with App Authentication
@@ -77,7 +75,9 @@ using (IKustoIngestClient client = KustoIngestFactory.CreateDirectIngestClient(k
 }
 ```
 
-## Ingest from local files using KustoQueuedIngestClient and ingestion validation
+## Ingest from local files and validate ingestion
+
+Use KustoQueuedIngestClient to ingest from local files and then validate the ingestion.
 
 ```csharp
 // Create Kusto connection string with App Authentication
@@ -110,7 +110,9 @@ Ensure.IsTrue((ingestionFailures.Count() > 0), "Failures expected");
 client.Dispose();
 ```
 
-### Ingest from local files using KustoQueuedIngestClient and report status to a queue
+### Ingest from local files and report status to a queue
+
+Use KustoQueuedIngestClient to ingest from local files and then report the status to a queue.
 
 ```csharp
 // Create Kusto connection string with App Authentication
@@ -157,7 +159,9 @@ Ensure.ConditionIsMet((ingestionSuccesses.Count() > 0),
 client.Dispose();
 ```
 
-### Ingest from local files using KustoQueuedIngestClient and report status to a table
+### Ingest from local files and report status to a table
+
+Use KustoQueuedIngestClient to ingest from local files and report status to a table.
 
 ```csharp
 // Create Kusto connection string with App Authentication
@@ -206,3 +210,11 @@ Ensure.ConditionIsMet(ingestionStatus.Status == Status.Succeeded,
 // Dispose of the client
 client.Dispose();
 ```
+
+## Next steps
+
+* [Kusto.Ingest client reference](kusto-ingest-client-reference.md)
+* [Kusto.Ingest operation status](kusto-ingest-client-errors.md)
+* [Kusto.Ingest exceptions](kusto-ingest-client-errors.md)
+* [Kusto connection strings](../connection-strings/kusto.md)
+* [Kusto authorization model](../../management/security-roles.md)
