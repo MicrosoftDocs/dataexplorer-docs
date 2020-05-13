@@ -346,7 +346,7 @@ The message that the Kusto Data Management service expects to read from the inpu
 
 ### Ingestion failure message structure
 
-The message that the Kusto Data Management service expects to read from the input Azure Queue is a JSON document in the following format.
+The message that the Data Management expects to read from the input Azure Queue is a JSON document in the following format.
 
 |Property | Description |
 |---------|-------------
