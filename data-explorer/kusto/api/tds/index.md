@@ -29,6 +29,6 @@ The following links present more information about support for SQL, KQL, TDS, an
 
 * [Azure Data Explorer (Kusto) as linked server to SQL server](./linkedserver.md) - Configure the cluster as a linked server to the SQL server on-premises. 
 
-* [MS-TDS with Azure Active Directory](./aad.md) - For information on using Azure AD via TDS, for connecting to Azure Data Explorer.
+* [MS-TDS with Azure Active Directory](./aad.md) - Use Azure AD via TDS, for connecting to Azure Data Explorer.
 
 * [SQL Known Issues](./sqlknownissues.md) - For some of the main differences between SQL Server's implementation of T-SQL and Azure Data Explorer.
