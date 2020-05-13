@@ -1,5 +1,5 @@
 ---
-title: Streaming ingestion policy management - Azure Data Explorer | Microsoft Docs
+title: Kusto streaming ingestion policy management - Azure Data Explorer
 description: This article describes Streaming ingestion policy management in Azure Data Explorer.
 services: data-explorer
 author: orspod
