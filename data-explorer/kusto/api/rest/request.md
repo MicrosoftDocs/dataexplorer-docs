@@ -74,7 +74,7 @@ or as part of the body, depending on whether GET or POST is used.
 
 ## GET query parameters
 
-When GET is used, the query parameters of the request specify the request parameters, as noted above.
+When GET is used, the query parameters of the request specify the request parameters.
 
 ## Body
 
