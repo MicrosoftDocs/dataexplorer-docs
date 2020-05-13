@@ -17,7 +17,7 @@ ms.date: 11/27/2018
 
 ## Prerequisites
 
-- [Create an Azure Data Explorer cluster and database](/azure/data-explorer/create-cluster-database-portal).
+- [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 - [Create an Azure Databricks workspace](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace). Under **Azure Databricks Service**, in the **Pricing Tier** drop-down list, select **Premium**. This selection enables you to use Azure Databricks secrets to store your credentials and reference them in notebooks and jobs.
 
 - [Create a cluster](https://docs.azuredatabricks.net/user-guide/clusters/create.html) in Azure Databricks with the following specifications (minimum settings needed to run the sample notebooks):

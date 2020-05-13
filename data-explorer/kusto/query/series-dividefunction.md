@@ -1,5 +1,5 @@
 ---
-title: series_divide() - Azure Data Explorer | Microsoft Docs
+title: series_divide() - Azure Data Explorer
 description: This article describes series_divide() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -29,6 +29,7 @@ Note: the result series is of double type, even if the inputs are integers. Divi
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2

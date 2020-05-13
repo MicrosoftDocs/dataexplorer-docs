@@ -17,7 +17,7 @@ Streaming ingestion is targeted for scenarios that require low latency with an i
 
 Use the classic (bulk) ingestion instead of streaming ingestion when the amount of data grows to more than 1 MB per second per table. 
 
-* To learn how to implement this feature, see [streaming ingestion](https://docs.microsoft.com/azure/data-explorer/ingest-data-streaming).
+* To learn how to implement this feature, see [streaming ingestion](../../ingest-data-streaming.md).
 * For information about streaming ingestion control commands, see [Control commands are used to manage the streaming ingestion policy](../management/streamingingestion-policy.md)
 
 ## Streaming ingestion policy definition

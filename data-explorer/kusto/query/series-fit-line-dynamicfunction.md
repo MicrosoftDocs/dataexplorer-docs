@@ -1,5 +1,5 @@
 ---
-title: series_fit_line_dynamic() - Azure Data Explorer | Microsoft Docs
+title: series_fit_line_dynamic() - Azure Data Explorer
 description: This article describes series_fit_line_dynamic() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -36,6 +36,7 @@ This operator is similar to [series_fit_line](series-fit-linefunction.md), but u
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([2,5,6,8,11,15,17,18,25,26,30,30])
 | extend fit=series_fit_line_dynamic(y)

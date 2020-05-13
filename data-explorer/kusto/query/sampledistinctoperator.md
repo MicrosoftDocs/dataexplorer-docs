@@ -1,5 +1,5 @@
 ---
-title: sample-distinct operator - Azure Data Explorer | Microsoft Docs
+title: sample-distinct operator - Azure Data Explorer
 description: This article describes sample-distinct operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -38,6 +38,7 @@ T | sample-distinct 5 of DeviceId
 
 Get 10 distinct values from a population
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents | sample-distinct 10 of EpisodeId
 
@@ -45,6 +46,7 @@ StormEvents | sample-distinct 10 of EpisodeId
 
 Sample a population and do further computation knowing the summarize won't exceed query limits. 
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let sampleEpisodes = StormEvents | sample-distinct 10 of EpisodeId;
 StormEvents 

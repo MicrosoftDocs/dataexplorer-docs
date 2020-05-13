@@ -46,7 +46,7 @@ without affecting existing records, and without modifying the table's schema.
 > in its internal traces, error messages, etc.
 
 * *IngestionPropertyName*, *IngestionPropertyValue*: Any number of
-  [ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) that affect the ingestion process.
+  [ingestion properties](../../../ingestion-properties.md) that affect the ingestion process.
 
 **Results**
 
