@@ -69,7 +69,7 @@ or as part of the body, depending on whether GET or POST is used.
 |Parameter   |Description                                                                                 |Required/Optional |
 |------------|--------------------------------------------------------------------------------------------|------------------|
 |`csl`       |Text of the query or control command to execute                                             |Required          |
-|`db`        |Name of the database in scope that is the target of the query or control command            |Optional for some control commands. Required for other commands and all queries.                                                                    |
+|`db`        |Name of the database in scope that is the target of the query or control command            |Optional for some control commands. <br>Required for other commands and all queries. </br>                                                                   |
 |`properties`|Provides client request properties that modify how the request is processed and its results. For more information, see [client request properties](../netfx/request-properties.md)                                               | Optional         |
 
 ## GET query parameters
@@ -89,7 +89,7 @@ This example shows the HTTP POST request for a query.
 POST https://help.kusto.windows.net/v2/rest/query HTTP/1.1
 ```
 
-Request headers:
+Request headers
 
 ```txt
 Accept: application/json
@@ -102,7 +102,7 @@ x-ms-user-id: EARTH\davidbg
 x-ms-app: MyApp
 ```
 
-Request body (newlines introduced for clarity. They're not required).
+Request body
 
 ```json
 {
