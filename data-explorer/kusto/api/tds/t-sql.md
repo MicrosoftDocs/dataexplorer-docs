@@ -9,16 +9,16 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# T-SQL vs. KQL
+# T-SQL vs. Kusto query language (KQL)
 
 [Kusto query language (KQL)](../../query/index.md) is the preferred query language.
-However, T-SQL support is useful for tools that can't be easily converted
-to use KQL, and for casual use by people familiar with SQL.
+T-SQL support, however, is useful for tools that can't be easily converted to use KQL.  
+T-SQL support is also useful for casual use by people familiar with SQL.
 
 Azure Data Explorer can interpret and run T-SQL queries with some language limitations.
 
 > [!NOTE]
-> Azure Data Explorer doesn't support DDL commands. Only T-SQL `SELECT` statements are supported. 
+> Azure Data Explorer doesn't support DDL commands. Only T-SQL `select` statements are supported. 
 > For more information about the main differences with regards to T-SQL, 
 > see [SQL known issues](./sqlknownissues.md).
 
@@ -26,18 +26,18 @@ Azure Data Explorer can interpret and run T-SQL queries with some language limit
 
 The Kusto.Explorer tool supports T-SQL queries to Azure Data Explorer.
 To instruct Kusto.Explorer to execute a query, begin the query with an empty T-SQL comment line (`--`). 
-For example.
+For example:
 
 ```sql
 --
 select * from StormEvents
 ```
 
-## From T-SQL to Kusto query language (KQL)
+## From T-SQL to KQL
 
 Azure Data Explorer supports translating T-SQL queries to Kusto query language (KQL). 
 This translation can help people familiar with SQL to better understand KQL.
-To get back the equivalent KQL from some T-SQL *select* statement, simply add *explain* before the query.
+To get back the equivalent KQL from some T-SQL `select` statement, simply add `explain` before the query.
 
 For example, the following T-SQL query:
 
