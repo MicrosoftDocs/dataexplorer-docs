@@ -45,7 +45,7 @@ The following table contains the common headers used for query and management op
 |`Expect`         |Can be set to `100-Continue`                                                                |Optional          |
 |`Host`           |Set to the qualified domain name that the request was sent to (for example, `help.kusto.windows.net`) |Required|
 
-The following table contains the common custom headers used when for query
+The following table contains the common custom headers used for query
 and management operations. Unless otherwise indicated, these headers are used
 for telemetry purposes only, and have no functionality impact.
 
