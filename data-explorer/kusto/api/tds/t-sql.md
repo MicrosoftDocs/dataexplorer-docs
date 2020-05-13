@@ -24,7 +24,7 @@ Kusto can interpret and run T-SQL queries with some language limitations.
 
 ## Querying from Kusto.Explorer with T-SQL
 
-The Kusto.Explorer tool supports T-SQL queries to Azure Data Explorer.
+The Kusto.Explorer tool supports T-SQL queries to Kusto.
 To instruct Kusto.Explorer to execute a query, begin the query with an empty T-SQL comment line (`--`). 
 For example:
 
