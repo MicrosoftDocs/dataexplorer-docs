@@ -18,7 +18,7 @@ T-SQL support is also useful for casual use by people familiar with SQL.
 Kusto can interpret and run T-SQL queries with some language limitations.
 
 > [!NOTE]
-> Azure Data Explorer doesn't support DDL commands. Only T-SQL `select` statements are supported. 
+> Kusto doesn't support DDL commands. Only T-SQL `select` statements are supported. 
 > For more information about the main differences with regards to T-SQL, 
 > see [SQL known issues](./sqlknownissues.md).
 
