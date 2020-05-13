@@ -1,5 +1,5 @@
 ---
-title: session_count plugin - Azure Data Explorer | Microsoft Docs
+title: session_count plugin - Azure Data Explorer
 description: This article describes session_count plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -56,6 +56,7 @@ This means that event with `Id==1` will appear at any `Timeline` slot, event wit
 
 Here are few 20 lines of the data:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let _data = range Timeline from 1 to 10000 step 1
 | extend __key = 1
@@ -95,6 +96,7 @@ Let's define a session in next terms: session considered to be active as long as
 
 The next query shows the count of active sessions according to the definition above.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let _data = range Timeline from 1 to 9999 step 1
 | extend __key = 1

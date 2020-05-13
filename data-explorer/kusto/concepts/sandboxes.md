@@ -23,7 +23,7 @@ additional latency added for remote calls.
 
 ## Prerequisites
 
-* The data engine must **not** have [disk encryption](https://docs.microsoft.com/azure/data-explorer/security#data-encryption) enabled.
+* The data engine must **not** have [disk encryption](../../security.md#data-encryption) enabled.
   * Support for having both features running side-by-side is expected in the future.
 * The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space in order to run
   * The estimated size is 20GB, which, for example, is roughly 2.5% the SSD capacity of a D14_v2 VM, or 0.7% the SSD capacity of a L16_v1 VM.

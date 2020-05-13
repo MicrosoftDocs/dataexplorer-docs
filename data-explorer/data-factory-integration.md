@@ -48,7 +48,7 @@ The [Copy in bulk from a database to Azure Data Explorer by using the Azure Data
 
 1. Create the [mapping data flow](/azure/data-factory/data-flow-create).
 1. [Export the data into Azure Blob](/azure/data-factory/data-flow-sink). 
-1. Define [Event Grid](/azure/data-explorer/ingest-data-event-grid) or [ADF copy activity](/azure/data-explorer/data-factory-load-data) to ingest the data to Azure Data Explorer.
+1. Define [Event Grid](ingest-data-event-grid.md) or [ADF copy activity](data-factory-load-data.md) to ingest the data to Azure Data Explorer.
 
 ## Select between Copy and Azure Data Explorer Command activities when copy data 
 
@@ -217,7 +217,7 @@ The printed value:
 * Learn how to [copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md).
 * Learn about using [Azure Data Factory template for bulk copy from database to Azure Data Explorer](data-factory-template.md).
 * Learn about using [Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md).
-* Learn about [Azure Data Explorer queries](/azure/data-explorer/web-query-data) for data querying.
+* Learn about [Azure Data Explorer queries](web-query-data.md) for data querying.
 
 
 

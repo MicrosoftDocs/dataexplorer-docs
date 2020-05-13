@@ -33,7 +33,7 @@ Azure Blob Storage).
 * *Prop1*, *Value1*, ...: Additional properties that describe how to interpret
   the data retrieved from storage, as listed under [ingestion properties](../management/data-ingestion/index.md).
     * Currently supported properties: `format` and `ignoreFirstRecord`.
-    * Supported data formats: any of the [ingestion data formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats)
+    * Supported data formats: any of the [ingestion data formats](../../ingestion-supported-formats.md)
       are supported, including `csv`, `tsv`, `json`, `parquet`, `avro`.
 
 **Returns**

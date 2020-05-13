@@ -1,5 +1,5 @@
 ---
-title: series_multiply() - Azure Data Explorer | Microsoft Docs
+title: series_multiply() - Azure Data Explorer
 description: This article describes series_multiply() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -27,6 +27,7 @@ Dynamic array of calculated element-wise multiplication operation between the tw
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2
