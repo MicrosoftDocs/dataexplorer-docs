@@ -23,7 +23,7 @@ The following links present more information about support for SQL, KQL, TDS, an
 
 * [T-SQL](./t-sql.md) - For information on the T-SQL query language as implemented by Azure Data Explorer. 
 
-* [KQL over TDS](./tdskql.md) - For information on executing native KQL queries via TDS endpoints.
+* [KQL over TDS](./tdskql.md) - Learn about executing native KQL queries via TDS endpoints.
 
 * [MS-TDS clients and Kusto](./clients.md) - For examples of how to use Azure Data Explorer from well-known clients that use MS-TDS/T-SQL.
 
