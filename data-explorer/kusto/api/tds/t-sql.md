@@ -35,7 +35,7 @@ select * from StormEvents
 
 ## From T-SQL to Kusto query language
 
-Azure Data Explorer supports translating T-SQL queries to Kusto query language (KQL). 
+Kusto supports translating T-SQL queries to Kusto query language (KQL). 
 This translation can help people familiar with SQL to better understand KQL.
 To get back the equivalent KQL from some T-SQL `select` statement, add `explain` before the query.
 
