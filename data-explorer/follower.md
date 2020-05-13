@@ -24,8 +24,8 @@ Attaching a database to a different cluster using the follower capability is use
 ## Prerequisites
 
 1. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
-1. [Create cluster and DB](/azure/data-explorer/create-cluster-database-portal) for the leader and follower.
-1. [Ingest data](/azure/data-explorer/ingest-sample-data) to leader database using one of various methods discussed in [ingestion overview](/azure/data-explorer/ingest-data-overview).
+1. [Create cluster and DB](create-cluster-database-portal.md) for the leader and follower.
+1. [Ingest data](ingest-sample-data.md) to leader database using one of various methods discussed in [ingestion overview](/azure/data-explorer/ingest-data-overview).
 
 ## Attach a database
 
@@ -365,7 +365,7 @@ For more information about using control commands to configure the authorized pr
 
 ### Manage permissions
 
-Managing read-only database permission is the same as for all database types. See [manage permissions in the Azure portal](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
+Managing read-only database permission is the same as for all database types. See [manage permissions in the Azure portal](manage-database-permissions.md#manage-permissions-in-the-azure-portal).
 
 ### Configure caching policy
 
@@ -374,8 +374,8 @@ The follower database administrator can modify the [caching policy](kusto/manage
 ## Limitations
 
 * The follower and the leader clusters must be in the same region.
-* [Streaming ingestion](/azure/data-explorer/ingest-data-streaming) can't be used on a database that is being followed.
-* Data encryption using [customer managed keys](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault) is not supported on both leader and follower clusters. 
+* [Streaming ingestion](ingest-data-streaming.md) can't be used on a database that is being followed.
+* Data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) is not supported on both leader and follower clusters. 
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
 * You can't stop a cluster that has attached follower or leader database(s). 

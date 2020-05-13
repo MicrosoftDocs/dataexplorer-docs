@@ -1,5 +1,5 @@
 ---
-title: array_shift_right() - Azure Data Explorer | Microsoft Docs
+title: array_shift_right() - Azure Data Explorer
 description: This article describes array_shift_right() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -37,6 +37,7 @@ Dynamic array containing the same amount of the elements as in the original arra
 
 * Shifting to the right by two positions:
 
+    <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
     print arr=dynamic([1,2,3,4,5]) 
     | extend arr_shift=array_shift_right(arr, 2)
@@ -48,6 +49,7 @@ Dynamic array containing the same amount of the elements as in the original arra
 
 * Shifting to the right by two positions and adding a default value:
 
+    <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
     print arr=dynamic([1,2,3,4,5]) 
     | extend arr_shift=array_shift_right(arr, 2, -1)
@@ -60,6 +62,7 @@ Dynamic array containing the same amount of the elements as in the original arra
 
 * Shifting to the left by two positions by using a negative shift_count value:
 
+    <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
     print arr=dynamic([1,2,3,4,5]) 
     | extend arr_shift=array_shift_right(arr, -2, -1)
@@ -68,3 +71,4 @@ Dynamic array containing the same amount of the elements as in the original arra
     |arr|arr_shift|
     |---|---|
     |[1,2,3,4,5]|[3,4,5,-1,-1]|
+    

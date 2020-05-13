@@ -1,5 +1,5 @@
 ---
-title: project-rename operator - Azure Data Explorer | Microsoft Docs
+title: project-rename operator - Azure Data Explorer
 description: This article describes project-rename operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -34,6 +34,7 @@ A table that has the columns in the same order as in an existing table, with col
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print a='a', b='b', c='c'
 |  project-rename new_b=b, new_a=a

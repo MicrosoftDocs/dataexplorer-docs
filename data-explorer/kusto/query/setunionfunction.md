@@ -1,5 +1,5 @@
 ---
-title: set_union() - Azure Data Explorer | Microsoft Docs
+title: set_union() - Azure Data Explorer
 description: This article describes set_union() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -27,6 +27,7 @@ Returns a dynamic array of the set of all distinct values that are in any of arr
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2

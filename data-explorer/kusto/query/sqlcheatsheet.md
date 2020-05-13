@@ -1,5 +1,5 @@
 ---
-title: SQL to Kusto query translation - Azure Data Explorer | Microsoft Docs
+title: SQL to Kusto query translation - Azure Data Explorer
 description: This article describes SQL to Kusto query translation in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -17,6 +17,7 @@ Primary language to interact with Kusto is KQL (Kusto Query Language), and in or
 
 For example:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 EXPLAIN 
 SELECT COUNT_BIG(*) as C FROM StormEvents 

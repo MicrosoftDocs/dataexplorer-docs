@@ -1,5 +1,5 @@
 ---
-title: series_fit_2lines() - Azure Data Explorer | Microsoft Docs
+title: series_fit_2lines() - Azure Data Explorer
 description: This article describes series_fit_2lines() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -50,6 +50,7 @@ extend (rs, si, v)=`series_fit_2lines(`*x*`)`
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([1,2.2, 2.5, 4.7, 5.0, 12, 10.3, 10.3, 9, 8.3, 6.2])
 | extend (Slope,Interception,RSquare,Variance,RVariance,LineFit)=series_fit_line(y), (RSquare2, SplitIdx, Variance2,RVariance2,LineFit2)=series_fit_2lines(y)

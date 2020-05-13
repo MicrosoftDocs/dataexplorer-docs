@@ -90,7 +90,7 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 The cluster's total extents partition capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity)) is defined by a single property: `ClusterMaximumConcurrentOperations`.
 
 > [!Note]
-> `ClusterMaximumConcurrentOperations` gets automatically adjusted by the system in the range [1,10]
+> `ClusterMaximumConcurrentOperations` gets automatically adjusted by the system in the range [1,16]
 
 ## Defaults
 

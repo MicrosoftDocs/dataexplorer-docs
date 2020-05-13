@@ -1,5 +1,5 @@
 ---
-title: make-series operator - Azure Data Explorer | Microsoft Docs
+title: make-series operator - Azure Data Explorer
 description: This article describes make-series operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -106,6 +106,7 @@ It is recommended to use the main syntax of make-series and not the alternate sy
 |[series_stats()](series-statsfunction.md)|Generates a dynamic value with the common statistics (min/max/variance/stdev/average)|
   
 ## List of series interpolation functions
+
 |Function|Description|
 |--------|-----------|
 |[series_fill_backward()](series-fill-backwardfunction.md)|Performs backward fill interpolation of missing values in a series|
@@ -125,7 +126,8 @@ on Purchase from datetime(2016-09-10) to datetime(2016-09-13) step 1d by Supplie
 ```
 
 :::image type="content" source="images/make-seriesoperator/makeseries.png" alt-text="Makeseries":::  
-  
+
+ <!-- csl: https://help.kusto.windows.net:443/Samples --> 
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)
 [
@@ -158,6 +160,7 @@ data
 
 When the input to `make-series` is empty, the default behaviour of `make-series` produces an empty result as well.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)
 [
@@ -192,6 +195,7 @@ data
 
 Using `kind=nonempty` in `make-series` will produce non empty result of the default values:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)
 [

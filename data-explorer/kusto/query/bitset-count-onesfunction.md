@@ -1,5 +1,5 @@
 ---
-title: bitset_count_ones() - Azure Data Explorer | Microsoft Docs
+title: bitset_count_ones() - Azure Data Explorer
 description: This article describes bitset_count_ones() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -31,6 +31,7 @@ Returns the number of set bits in the binary representation of a number.
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 // 42 = 32+8+2 : b'00101010' == 3 bits set
 print ones = bitset_count_ones(42) 

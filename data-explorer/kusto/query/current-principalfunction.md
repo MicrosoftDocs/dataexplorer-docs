@@ -1,5 +1,5 @@
 ---
-title: current_principal() - Azure Data Explorer | Microsoft Docs
+title: current_principal() - Azure Data Explorer
 description: This article describes current_principal() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -29,6 +29,7 @@ The string is formed as:
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print fqn=current_principal()
 ```

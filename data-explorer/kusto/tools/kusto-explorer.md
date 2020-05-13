@@ -1,5 +1,5 @@
 ---
-title: Kusto.Explorer tool - Azure Data Explorer | Microsoft Docs
+title: Kusto.Explorer tool - Azure Data Explorer
 description: This article describes Kusto.Explorer tool in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -333,6 +333,7 @@ Kusto.Explorer has a powerful script mode which enables you to write, edit and r
 
 If you have have table Logs, you can start exploring them by entering:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents | count 
 ```
@@ -341,11 +342,13 @@ When your cursor is positioned on this line it's colored gray. Pressing 'F5' run
 
 Here are some more example queries:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Take 10 lines from the table. Useful to get familiar with the data
 StormEvents | limit 10 
 ```
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Filter by EventType == 'Flood' and State == 'California' (=~ means case insensitive) 
 // and take sample of 10 lines

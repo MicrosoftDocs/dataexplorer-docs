@@ -1,5 +1,5 @@
 ---
-title: parse_path() - Azure Data Explorer | Microsoft Docs
+title: parse_path() - Azure Data Explorer
 description: This article describes parse_path() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -25,12 +25,11 @@ In addition to the simple paths with both types of slashes, supports paths with 
 
 **Returns**
 
-An object of type `dynamic` that inculded the path components as listed above.
+An object of type `dynamic` that included the path components as listed above.
 
 **Example**
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
-
 ```kusto
 datatable(p:string) 
 [

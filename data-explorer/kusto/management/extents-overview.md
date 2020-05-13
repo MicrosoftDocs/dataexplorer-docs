@@ -84,13 +84,13 @@ The common "lifecycle" of an extent therefore is:
    the creation date of the newest extent inside the merged one is
    taken into the calculation.
 
-## Extent Ingestion time
+## Extent Creation time
 
 One of the more important pieces of information for each extent is its
-ingestion time. This time is used by Kusto for:
+creation time. This time is used by Kusto for:
 
-1. Retention (extents that were ingested earlier will be dropped earlier).
-2. Caching (extents that have been ingested recently will be hotter).
+1. Retention (extents that were created earlier will be dropped earlier).
+2. Caching (extents that were created recently will be kept in [hot cache](cachepolicy.md)).
 3. Sampling (when using query operations such as `take`, recent extents
    are favored).
 
@@ -99,17 +99,11 @@ These values start out the same, but when the extent is merged with other
 extents, the resulting extent's values are the minimum and maximum, respectively,
 values over all merged extents.
 
-An extent's ingestion time may be set in one of three ways:
-
-1. Normally, the node performing the ingestion sets this value according to
-   its local clock.
-2. If an **ingestion time policy** is set on the table, the node performing
-   the ingestion sets this value according to the cluster's admin node's
-   local clock, guaranteeing that all later ingestions will have a higher
-   ingestion time value.
-3. The client may set this time. (This is useful, for example, if the
-   client wants to re-ingest data and does not want the re-ingested data to
-   appear as if it had arrived late, for example for retention purposes).    
+Normally, an extent's creation time is set according to the time in which the data in the extent 
+is ingested. Clients can optionally override the extent's creation time, by providing 
+an alternative creation time in the [ingestion properties](../../ingestion-properties.md) 
+(This is useful, for example, if the client wants to re-ingest data and does not want the re-ingested data to
+appear as if it had arrived late, for example for retention purposes).    
 
 ## Extent Tagging
 

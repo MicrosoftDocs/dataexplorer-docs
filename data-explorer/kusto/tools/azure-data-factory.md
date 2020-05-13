@@ -15,9 +15,9 @@ Use Azure Data Factory to copy data from any supported source data store to Azur
 
 For more information on Azure Data Factory integration with Azure Data Explorer see the following documents:
 
-* Learn about [Azure Data Explorer integration with Azure Data Factory](https://docs.microsoft.com/azure/data-explorer/data-factory-integration) 
-* Learn how to [copy data to Azure Data Explorer by using Azure Data Factory](https://docs.microsoft.com/azure/data-explorer/data-factory-load-data).
+* Learn about [Azure Data Explorer integration with Azure Data Factory](../../data-factory-integration.md) 
+* Learn how to [copy data to Azure Data Explorer by using Azure Data Factory](../../data-factory-load-data.md).
 * Learn about the [Azure Data Explorer connector](https://docs.microsoft.com/azure/data-factory/connector-azure-data-explorer) in Azure Data Factory.
-* Learn about using [Azure Data Factory template for bulk copy from database to Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/data-factory-template).
-* Learn about using [Azure Data Factory command activity to run Azure Data Explorer control commands](https://docs.microsoft.com/azure/data-explorer/data-factory-command-activity).
+* Learn about using [Azure Data Factory template for bulk copy from database to Azure Data Explorer](../../data-factory-template.md).
+* Learn about using [Azure Data Factory command activity to run Azure Data Explorer control commands](../../data-factory-command-activity.md).
  

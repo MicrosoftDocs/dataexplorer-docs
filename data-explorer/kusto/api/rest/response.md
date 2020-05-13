@@ -133,11 +133,35 @@ one or more tables are generated in-order, representing the results produced by 
 and [fork operators](../../query/forkoperator.md)).
 
 Three tables are often produced:
-
 * An @ExtendedProperties table that provides additional values, such as client visualization
   instructions. These values are generated, for example, to reflect the information in 
   [render operator](../../query/renderoperator.md)) and [database cursor](../../management/databasecursor.md).
+  
+  This table has a single column of type `string`, holding JSON-like values:
+
+  |Value|
+  |-----|
+  |{"Visualization":"piechart",...}|
+  |{"Cursor":"637239957206013576"}|
+
 * A QueryStatus table that provides additional information about the execution
   of the query itself, such as, if it completed successfully or not,
   and what were the resources consumed by the query.
-* A TableOfContents table, which is created last, and lists the other tables in the results.
+
+  This table has the following structure:
+
+  |Timestamp                  |Severity|SeverityName|StatusCode|StatusDescription            |Count|RequestId|ActivityId|SubActivityId|ClientActivityId|
+  |---------------------------|--------|------------|----------|-----------------------------|-----|---------|----------|-------------|----------------|
+  |2020-05-02 06:09:12.7052077|4       |Info        | 0        | Query completed successfully|1    |...      |...       |...          |...             |
+
+  Severity values of 2 or smaller indicate failure.
+
+* A TableOfContents table, which is created last, and lists the other tables in the results. 
+
+  An example for this table is:
+
+  |Ordinal|Kind            |Name               |Id                                  |PrettyName|
+  |-------|----------------|-------------------|------------------------------------|----------|
+  |0      | QueryResult    |PrimaryResult      |db9520f9-0455-4cb5-b257-53068497605a||
+  |1      | QueryProperties|@ExtendedProperties|908901f6-5319-4809-ae9e-009068c267c7||
+  |2      | QueryStatus    |QueryStatus        |00000000-0000-0000-0000-000000000000||
