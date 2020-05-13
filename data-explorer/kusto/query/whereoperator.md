@@ -1,5 +1,5 @@
 ---
-title: where operator (has, contains, startswith, endswith, matches regex) - Azure Data Explorer | Microsoft Docs
+title: where operator - Azure Data Explorer | Microsoft Docs
 description: This article describes where operator (has, contains, startswith, endswith, matches regex) in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# where operator (has, contains, startswith, endswith, matches regex)
+# where operator
 
 Filters a table to the subset of rows that satisfy a predicate.
 

@@ -14,7 +14,7 @@ ms.date: 04/01/2020
 [Azure Notebooks](https://notebooks.azure.com/) is an Azure cloud service that simplifies creating and sharing [Jupyter Notebooks](https://jupyter.org/). Azure Notebooks makes it easy to combine documentation, code, and the results of running the code.
 
 > [!Note]
-> * The following procedure uses the Python client in the Azure Notebooks environment to query Azure Data Explorer. However, you can also use [KQLmagic](https://docs.microsoft.com/azure/data-explorer/kqlmagic) to query Azure Data Explorer.
+> * The following procedure uses the Python client in the Azure Notebooks environment to query Azure Data Explorer. However, you can also use [KQLmagic](kqlmagic.md) to query Azure Data Explorer.
 > * Some users reported issues authenticating using Edge; until such issues are resolved,
    use a different browser.
 

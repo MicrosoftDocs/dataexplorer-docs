@@ -1,5 +1,5 @@
 ---
-title: tdigest() (aggregation function) - Azure Data Explorer | Microsoft Docs
+title: tdigest() (aggregation function) - Azure Data Explorer
 description: This article describes tdigest() (aggregation function) in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -40,6 +40,7 @@ The Intermediate results of weighted percentiles of *Expr* across the group.
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | summarize tdigest(DamageProperty) by State

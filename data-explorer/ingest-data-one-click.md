@@ -21,7 +21,7 @@ One-click ingestion is particularly useful when ingesting data for the first tim
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
-* Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](/azure/data-explorer/web-query-data#add-clusters).
+* Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 ## File formats
 
@@ -70,5 +70,5 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 ## Next steps
 
 * Decide if you will use one-click ingestion to ingest data into [an existing table](one-click-ingestion-existing-table.md) or [a new table](one-click-ingestion-new-table.md)
-* [Query data in Azure Data Explorer Web UI](/azure/data-explorer/web-query-data)
-* [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/write-queries)
+* [Query data in Azure Data Explorer Web UI](web-query-data.md)
+* [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)
