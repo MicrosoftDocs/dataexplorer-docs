@@ -79,7 +79,7 @@ When GET is used, the query parameters of the request specify the request parame
 ## Body
 
 When POST is used, the body of the request is a single JSON document encoded in UTF-8, with
-the values of the request parameters, as noted above.
+the values of the request parameters.
 
 ## Examples
 
