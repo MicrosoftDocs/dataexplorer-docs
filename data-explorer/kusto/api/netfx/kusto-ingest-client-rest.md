@@ -116,7 +116,7 @@ internal static string AuthenticateInteractiveUser(string resource)
 
 ### Retrieve Azure Data Explorer ingestion resources
 
-This step is where things get interesting. Here we manually construct an HTTP POST request to the Kusto Data Management service, requesting the return of the ingestion resources. These resources include queues that the DM service is listening on, and blob containers for data uploading.
+Manually construct an HTTP POST request to the Data Management service, requesting the return of the ingestion resources. These resources include queues that the DM service is listening on, and blob containers for data uploading.
 The Data Management service will process any messages containing ingestion requests that arrive on one of those queues.
 
 ```csharp
