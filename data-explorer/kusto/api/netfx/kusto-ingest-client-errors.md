@@ -220,6 +220,6 @@ Base Class: [AggregateException](https://msdn.microsoft.com/library/system.aggre
 |IngestionErrors | IList<IngestClientException>    | The errors that occur while attempting to ingest, and the sources related to them
 |IsGlobalError   | bool                            | Indicates whether the exception occurred for all sources
 
-## Errors in native code
+## Next Steps
 
 The Kusto engine is written in native code. For more information about errors in native code, see [Errors in native code](../../concepts/errorsinnativecode.md).
