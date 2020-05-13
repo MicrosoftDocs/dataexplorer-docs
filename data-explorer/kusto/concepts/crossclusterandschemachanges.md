@@ -1,5 +1,5 @@
 ---
-title: Cross-cluster queries and schema changes  - Azure Data Explorer | Microsoft Docs
+title: Kusto cross-cluster queries & schema changes - Azure Data Explorer
 description: This article describes Cross-cluster queries and schema changes  in Azure Data Explorer.
 services: data-explorer
 author: orspod

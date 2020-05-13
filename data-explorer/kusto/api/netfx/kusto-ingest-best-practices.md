@@ -1,5 +1,5 @@
 ---
-title: Kusto ingest client library - Best practices - Azure Data Explorer
+title: Kusto ingest client library best practices - Azure Data Explorer
 description: This article describes best practices for Kusto ingest client library.
 services: data-explorer
 author: orspod
