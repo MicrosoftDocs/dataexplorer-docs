@@ -33,7 +33,7 @@ For example:
 select * from StormEvents
 ```
 
-## From T-SQL to KQL
+## From T-SQL to Kusto query language
 
 Azure Data Explorer supports translating T-SQL queries to Kusto query language (KQL). 
 This translation can help people familiar with SQL to better understand KQL.
