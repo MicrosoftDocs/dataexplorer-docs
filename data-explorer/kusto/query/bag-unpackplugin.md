@@ -1,5 +1,5 @@
 ---
-title: bag_unpack plugin - Azure Data Explorer | Microsoft Docs
+title: bag_unpack plugin - Azure Data Explorer
 description: This article describes bag_unpack plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -59,6 +59,7 @@ all the rules for a tabular schema. In particular:
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 datatable(d:dynamic)
 [

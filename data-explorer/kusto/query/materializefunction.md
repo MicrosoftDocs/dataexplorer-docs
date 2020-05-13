@@ -1,5 +1,5 @@
 ---
-title: materialize() - Azure Data Explorer | Microsoft Docs
+title: materialize() - Azure Data Explorer
 description: This article describes materialize() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,7 +11,7 @@ ms.date: 03/21/2019
 ---
 # materialize()
 
-Allows caching a sub-query result during the time of query execution in a way that other subqueries can reference the partial result.
+Allows caching a subquery result during the time of query execution in a way that other subqueries can reference the partial result.
 
  
 **Syntax**
@@ -24,23 +24,28 @@ Allows caching a sub-query result during the time of query execution in a way th
 
 **Tips**
 
-* Use materialize when you have join/union where their operands has mutual sub-queries that can be executed once (see the examples below).
+* Use materialize with join or union when their operands have mutual subqueries that can be executed once. See the examples below.
 
 * Useful also in scenarios when we need to join/union fork legs.
 
-* Materialize is allowed to be used only in let statements by giving the cached result a name.
+* Materialize can only be used in let statements if you give the cached result a name.
 
-* Materialize has a cache size limit which is **5 GB**. 
+
+* Materialize has a cache size limit of **5 GB**. 
   This limit is per cluster node and is mutual for all queries running concurrently.
-  If a query uses `materialize()` and the cache cannot hold any additional data,
-  the query aborts with an error.
+  If a query uses `materialize()` and the cache can't hold any more data,
+  the query will abort with an error.
 
 **Examples**
 
-Assuming that we want to generate a random set of values and we are interested in finding how much distinct values we have, the sum of all these values and the top 3 values.
+We want to generate a random set of values and want to know: 
+ * how many distinct values we have 
+ * the sum of all these values 
+ * the top three values
 
-This can be done using [batches](batches.md) and materialize :
+This operation can be done using [batches](batches.md) and materialize:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
  ```kusto
 let randomSet = materialize(range x from 1 to 30000000 step 1
 | project value = rand(10000000));

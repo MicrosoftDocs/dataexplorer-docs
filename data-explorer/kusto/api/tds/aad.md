@@ -7,6 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
+ms.custom: has-adal-ref
 ms.date: 01/02/2019
 ---
 # MS-TDS with Azure Active Directory
@@ -59,11 +60,11 @@ public class Sample {
     ds.setDatabaseName("<your database name>");
     ds.setHostNameInCertificate("*.kusto.windows.net"); // Or appropriate regional domain.
     ds.setAuthentication("ActiveDirectoryIntegrated");
-    try (Connection connection = ds.getConnection(); 
+    try (Connection connection = ds.getConnection();
          Statement stmt = connection.createStatement();) {
       ResultSet rs = stmt.executeQuery("<your T-SQL query>");
-      /* 
-      Read query result. 
+      /*
+      Read query result.
       */
     } catch (Exception e) {
       System.out.println();
@@ -97,10 +98,10 @@ namespace Sample
         // Can also use tenant ID.
         "https://login.microsoftonline.com/<your AAD tenant name>");
       var applicationCredentials = new ClientCredential(
-        "<your application client ID>", 
+        "<your application client ID>",
         "<your application key>");
       var result = await authContext.AcquireTokenAsync(
-        "https://<your cluster DNS name>", 
+        "https://<your cluster DNS name>",
         applicationCredentials);
       return result.AccessToken;
     }
@@ -117,7 +118,7 @@ namespace Sample
         connection.AccessToken = await ObtainToken();
         await connection.OpenAsync();
         using (var command = new SqlCommand(
-          "<your T-SQL query>", 
+          "<your T-SQL query>",
           connection))
         {
           var reader = await command.ExecuteReaderAsync();
@@ -142,16 +143,16 @@ public class Sample {
   public static void main(String[] args) throws Throwable {
     ExecutorService service = Executors.newFixedThreadPool(1);
     // Can also use tenant name.
-    String url = "https://login.microsoftonline.com/<your AAD tenant ID>"; 
-    AuthenticationContext authenticationContext = 
+    String url = "https://login.microsoftonline.com/<your AAD tenant ID>";
+    AuthenticationContext authenticationContext =
       new AuthenticationContext(url, false, service);
     ClientCredential  clientCredential = new ClientCredential(
-      "<your application client ID>", 
+      "<your application client ID>",
       "<your application key>");
-    Future<AuthenticationResult> futureAuthenticationResult = 
+    Future<AuthenticationResult> futureAuthenticationResult =
       authenticationContext.acquireToken(
-        "https://<your cluster DNS name>", 
-        clientCredential, 
+        "https://<your cluster DNS name>",
+        clientCredential,
         null);
     AuthenticationResult authenticationResult = futureAuthenticationResult.get();
     SQLServerDataSource ds = new SQLServerDataSource();

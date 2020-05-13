@@ -1,5 +1,5 @@
 ---
-title: series_stats() - Azure Data Explorer | Microsoft Docs
+title: series_stats() - Azure Data Explorer
 description: This article describes series_stats() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -40,6 +40,7 @@ Returns the following columns: m (min) and mi (min_idx).
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print x=dynamic([23,46,23,87,4,8,3,75,2,56,13,75,32,16,29]) 
 | project series_stats(x)

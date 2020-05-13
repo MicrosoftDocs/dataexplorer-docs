@@ -285,5 +285,5 @@ These advanced capabilities combined with ADX fast performance supply a unique a
 
 ## Next steps
 
-* Learn about [Time series anomaly detection and forecasting](/azure/data-explorer/anomaly-detection) in Azure Data Explorer.
-* Learn about [Machine learning capabilities](/azure/data-explorer/machine-learning-clustering) in Azure Data Explorer.
+* Learn about [Time series anomaly detection and forecasting](anomaly-detection.md) in Azure Data Explorer.
+* Learn about [Machine learning capabilities](machine-learning-clustering.md) in Azure Data Explorer.

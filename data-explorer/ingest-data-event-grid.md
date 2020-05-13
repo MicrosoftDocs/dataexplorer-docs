@@ -53,9 +53,11 @@ In this article, you learn how to set an [Azure Event Grid](/azure/event-grid/ov
 
 1. Select the **Filters** tab if you want to track files from a specific container. Set the filters for the notifications as follows:
     * **Subject Begins With** field is the *literal* prefix of the blob container. As the pattern applied is *startswith*, it can span multiple containers. No wildcards are allowed.
-     It *must* be set as follows: *`/blobServices/default/containers/`*[container prefix]
+        * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*. 
+        * To define a filter on a blob prefix (or folder in ADLS gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*. 
     * **Subject Ends With** field is the *literal* suffix of the blob. No wildcards are allowed.
-
+    * See [Blob storage events](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview#filtering-events) for more details about filtering events. 
+    
 ## Create a target table in Azure Data Explorer
 
 Create a table in Azure Data Explorer where Event Hubs will send data. Create the table in the cluster and database prepared in the prerequisites.

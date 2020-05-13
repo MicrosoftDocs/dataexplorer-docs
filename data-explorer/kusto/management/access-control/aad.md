@@ -7,6 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
+ms.custom: has-adal-ref
 ms.date: 09/13/2019
 ---
 # Azure Active Directory (AAD) Authentication
@@ -106,4 +107,3 @@ The following articles explain how to programmatically authenticate to Kusto wit
 
 * [How to provision an AAD Application](./how-to-provision-aad-app.md)
 * [How to perform AAD Authentication](./how-to-authenticate-with-aad.md)
-
