@@ -31,4 +31,4 @@ The following links present more information about support for SQL, KQL, TDS, an
 
 * [MS-TDS with Azure Active Directory](./aad.md) - Use Azure AD via TDS, for connecting to Azure Data Explorer.
 
-* [SQL Known Issues](./sqlknownissues.md) - For some of the main differences between SQL Server's implementation of T-SQL and Azure Data Explorer.
+* [SQL Known Issues](./sqlknownissues.md) - Learn about the main differences between SQL Server's implementation of T-SQL and Azure Data Explorer.
