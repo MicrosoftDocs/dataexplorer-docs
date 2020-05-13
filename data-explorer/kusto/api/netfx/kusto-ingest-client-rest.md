@@ -187,7 +187,7 @@ internal static WebResponse SendPostRequest(string uriString, string authToken, 
 
 ### Obtain a Kusto identity token
 
-Ingest messages are handed off to Azure Data Explorer via a non-direct channel (Azure queue), making it impossible to do in-band authorization validation for accessing the Azure Data Explorer ingestion service. The solution is to attach an identity token to every ingest message. The token enables in-band authorization validation. This Kusto-signed token can then be validated by the Azure Data Explorer service when it receives the ingestion message.
+Ingest messages are handed off to Azure Data Explorer via a non-direct channel (Azure queue), making it impossible to do in-band authorization validation for accessing the Azure Data Explorer ingestion service. The solution is to attach an identity token to every ingest message. The token enables in-band authorization validation. This signed token can then be validated by the Azure Data Explorer service when it receives the ingestion message.
 
 ```csharp
 // Retrieves a Kusto identity token that will be added to every ingest message
