@@ -44,7 +44,7 @@ that is embedded inline in the command text itself.
   as a comment, etc.)
 
 * *IngestionPropertyName*, *IngestionPropertyValue*: Any number of
-  [ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) that affect the ingestion process.
+  [ingestion properties](../../../ingestion-properties.md) that affect the ingestion process.
 
 **Results**
 
