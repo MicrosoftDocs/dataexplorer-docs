@@ -32,26 +32,25 @@ See below for the request headers and body to include.
 
 ## Request headers
 
-The following table contains the common headers used to perform query and management
-operations.
+The following table contains the common headers used for query and management operations.
 
 |Standard header  |Description                                                                                 |Required/Optional |
 |-----------------|--------------------------------------------------------------------------------------------|------------------|
-|`Accept`         |Set this to `application/json`                                                              |Required          |
+|`Accept`         |Set to `application/json`                                                                   |Required          |
 |`Accept-Encoding`|Supported encodings are `gzip` and `deflate`                                                |Optional          |
 |`Authorization`  |See [authentication](./authentication.md)                                                   |Required          |
-|`Connection`     |It is recommended that `Keep-Alive` be enabled                                              |Optional          |
-|`Content-Length` |It is recommended that the request body length be specified when known                      |Optional          |
-|`Content-Type`   |Set this to `application/json` with `charset=utf-8`                                         |Required          |
+|`Connection`     |We recommend that you enable `Keep-Alive`                                                   |Optional          |
+|`Content-Length` |We recommend that you specify the request body length when known                            |Optional          |
+|`Content-Type`   |Set to `application/json` with `charset=utf-8`                                              |Required          |
 |`Expect`         |Can be set to `100-Continue`                                                                |Optional          |
-|`Host`           |Set this to the fully-qualified domain name that the request was sent to (for example, `help.kusto.windows.net`) |Required        |
+|`Host`           |Set to the qualified domain name that the request was sent to (for example, `help.kusto.windows.net`) |Required|
 
-The following table contains the common custom headers used when performing query
+The following table contains the common custom headers used when for query
 and management operations. Unless otherwise indicated, these headers are used
 for telemetry purposes only, and have no functionality impact.
 
 All headers are optional. We recommended that you specify the `x-ms-client-request-id` custom header. 
-In some scenarios, such as cancelling a running query, this header is required because it is used to identify the request.
+In some scenarios, such as canceling a running query, this header is required because it is used to identify the request.
 
 |Custom header           |Description                                                                                               |
 |------------------------|----------------------------------------------------------------------------------------------------------|
@@ -64,13 +63,13 @@ In some scenarios, such as cancelling a running query, this header is required b
 
 ## Request parameters
 
-The following parameters can be passed in the request. They are encoded in the request as query parameters 
+The following parameters can be passed in the request. They're encoded in the request as query parameters 
 or as part of the body, depending on whether GET or POST is used.
 
 |Parameter   |Description                                                                                 |Required/Optional |
 |------------|--------------------------------------------------------------------------------------------|------------------|
 |`csl`       |Text of the query or control command to execute                                             |Required          |
-|`db`        |Name of the "database in scope" that is the target of the query or control command          |Optional for some control commands, and Required for other commands and all queries                                                                    |
+|`db`        |Name of the database in scope that is the target of the query or control command            |Optional for some control commands, and Required for other commands and all queries                                                                    |
 |`properties`|Provides client request properties that modify how the request is processed and its results. For more information, see [client request properties](../netfx/request-properties.md)                                               | Optional         |
 
 ## GET query parameters
@@ -103,7 +102,7 @@ x-ms-user-id: EARTH\davidbg
 x-ms-app: MyApp
 ```
 
-Request body (newlines introduced for clarity. They are not required).
+Request body (newlines introduced for clarity. They're not required).
 
 ```json
 {
@@ -113,46 +112,46 @@ Request body (newlines introduced for clarity. They are not required).
 }
 ```
 
-This example shows how to create a request that sends the query above using [curl](https://curl.haxx.se/).
+This example shows how to create a request that sends the query above, using [curl](https://curl.haxx.se/).
 
 1. Obtain a token for authentication.
 
-Replace `AAD_TENANT_NAME_OR_ID`, `AAD_APPLICATION_ID`, and `AAD_APPLICATION_KEY` with the relevant values, after having set up [AAD application authentication](../../management/access-control/how-to-provision-aad-app.md)
+    Replace `AAD_TENANT_NAME_OR_ID`, `AAD_APPLICATION_ID`, and `AAD_APPLICATION_KEY` with the relevant values, after having set up [AAD application authentication](../../management/access-control/how-to-provision-aad-app.md)
 
-```
-curl "https://login.microsoftonline.com/AAD_TENANT_NAME_OR_ID/oauth2/token" \
-  -F "grant_type=client_credentials" \
-  -F "resource=https://help.kusto.windows.net" \
-  -F "client_id=AAD_APPLICATION_ID" \
-  -F "client_secret=AAD_APPLICATION_KEY"
-```
+    ```
+    curl "https://login.microsoftonline.com/AAD_TENANT_NAME_OR_ID/oauth2/token" \
+      -F "grant_type=client_credentials" \
+      -F "resource=https://help.kusto.windows.net" \
+      -F "client_id=AAD_APPLICATION_ID" \
+      -F "client_secret=AAD_APPLICATION_KEY"
+    ```
 
-This will provide you with the bearer token.
+    This code snippet will provide you with the bearer token.
 
-```
-{
-  "token_type": "Bearer",
-  "expires_in": "3599",
-  "ext_expires_in":"3599", 
-  "expires_on":"1578439805",
-  "not_before":"1578435905",
-  "resource":"https://help.kusto.windows.net",
-  "access_token":"eyJ0...uXOQ"
-}
-```
+    ```
+    {
+      "token_type": "Bearer",
+      "expires_in": "3599",
+      "ext_expires_in":"3599", 
+      "expires_on":"1578439805",
+      "not_before":"1578435905",
+      "resource":"https://help.kusto.windows.net",
+      "access_token":"eyJ0...uXOQ"
+    }
+    ```
 
-1. Use the bearer token in your request to the query endpoint/
+1. Use the bearer token in your request to the query endpoint.
 
-```
-curl -d '{"db":"Samples","csl":"print Test=\"Hello, World!\"","properties":"{\"Options\":{\"queryconsistency\":\"strongconsistency\"}}"}"' \
--H "Accept: application/json" \
--H "Authorization: Bearer eyJ0...uXOQ" \
--H "Content-Type: application/json; charset=utf-8" \
--H "Host: help.kusto.windows.net" \
--H "x-ms-client-request-id: MyApp.Query;e9f884e4-90f0-404a-8e8b-01d883023bf1" \
--H "x-ms-user-id: EARTH\davidbg" \
--H "x-ms-app: MyApp" \
--X POST https://help.kusto.windows.net/v2/rest/query
-```
+    ```
+    curl -d '{"db":"Samples","csl":"print Test=\"Hello, World!\"","properties":"{\"Options\":{\"queryconsistency\":\"strongconsistency\"}}"}"' \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer eyJ0...uXOQ" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Host: help.kusto.windows.net" \
+    -H "x-ms-client-request-id: MyApp.Query;e9f884e4-90f0-404a-8e8b-01d883023bf1" \
+    -H "x-ms-user-id: EARTH\davidbg" \
+    -H "x-ms-app: MyApp" \
+    -X POST https://help.kusto.windows.net/v2/rest/query
+    ```
 
 1. Read the response according to [this specification](response.md).
