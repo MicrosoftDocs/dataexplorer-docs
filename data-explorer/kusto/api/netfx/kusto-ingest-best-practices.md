@@ -23,7 +23,7 @@ Use [KustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoq
 
 [Tracking ingest operation status](kusto-ingest-client-status.md#tracking-ingestion-status-kustoqueuedingestclient) is useful. However, for large volume data streams, turning on positive notifications for every ingestion request should be avoided. Such tracking puts an extreme load on the underlying xStore resources that can lead to increased ingestion latency and even complete cluster non-responsiveness.
 
-## Optimize for throughput
+## Optimizing for throughput
 
 Ingestion works best if done in large chunks. 
 * It consumes the least resources
@@ -48,7 +48,7 @@ Multiple factors can affect ingestion throughput. When planning your ingestion p
 | Source data location     | Avoid cross-region reads to speed up the ingestion.                                                       |
 | Load on the cluster      | When a cluster experiences a high query load, ingestions will take longer to complete, reducing throughput.|
 
-## Optimize for COGS
+## Optimizing for COGS
 
 Using Kusto client libraries to ingest data into Azure Data Explorer remains the cheapest and the most robust option. We urge our customers to review their ingestion methods and to take advantage of the Azure Storage pricing that will make blob transactions significantly cost effective.
 
