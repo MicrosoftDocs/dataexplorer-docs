@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# T-SQL vs. Kusto query language (KQL)
+# T-SQL support
 
 [Kusto query language (KQL)](../../query/index.md) is the preferred query language.
 T-SQL support, however, is useful for tools that can't be easily converted to use KQL.  
