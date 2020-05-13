@@ -29,6 +29,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 |TSV      |`.tsv`      |A text file with tab-separated values (`\t`).|
 |TSVE     |`.tsv`      |A text file with tab-separated values (`\t`). A backslash character (`\`) is used for escaping.|
 |TXT      |`.txt`      |A text file with lines delimited by `\n`. Empty lines are skipped.|
+|W3CLOGFILE |`.log`    |[Web log file](https://www.w3.org/TR/WD-logfile.html) format standardised by the W3C.|
 
 ## Supported data compression formats
 
@@ -56,5 +57,5 @@ must be specified as an ingestion property because it cannot be inferred.
 
 ## Next steps
 
-* Learn more about [data ingestion](/azure/data-explorer/ingest-data-overview)
+* Learn more about [data ingestion](ingest-data-overview.md)
 * Learn more about [Azure Data Explorer data ingestion properties](ingestion-properties.md)

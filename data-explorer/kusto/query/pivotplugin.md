@@ -1,5 +1,5 @@
 ---
-title: pivot plugin - Azure Data Explorer | Microsoft Docs
+title: pivot plugin - Azure Data Explorer
 description: This article describes pivot plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -43,6 +43,7 @@ The output schema of the `pivot` plugin is based on the data and therefore query
 
 For each EventType and States starting with 'AL', count the number of events of this type in this state.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | project State, EventType 
@@ -63,6 +64,7 @@ StormEvents
 
 For each EventType and States starting with 'AR', display the total number of direct deaths.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where State startswith "AR" 
@@ -85,6 +87,7 @@ StormEvents
 
 Result is identical to previous example.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where State startswith "AR" 
@@ -107,6 +110,7 @@ StormEvents
 
 For each event type, source and state, sum the number of direct deaths.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where State startswith "AR" 

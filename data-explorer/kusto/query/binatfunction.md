@@ -1,5 +1,5 @@
 ---
-title: bin_at() - Azure Data Explorer | Microsoft Docs
+title: bin_at() - Azure Data Explorer
 description: This article describes bin_at() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -45,6 +45,7 @@ will be translated into itself.
 
 In the following example, notice that the `"fixed point"` arg is returned as one of the bins and the other bins are aligned to it based on the `bin_size`. Also note that each datetime bin represents the starting time of that bin:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 
 datatable(Date:datetime, Num:int)[

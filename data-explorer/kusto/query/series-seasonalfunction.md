@@ -1,5 +1,5 @@
 ---
-title: series_seasonal() - Azure Data Explorer | Microsoft Docs
+title: series_seasonal() - Azure Data Explorer
 description: This article describes series_seasonal() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -40,6 +40,7 @@ Dynamic array of the same length as the *series* input containing the calculated
 
 In the following example the series' period is automatically detected, the first series' period is detected to be 6 bins and the second 5 bins, the third series' period is too short to be detected and returns a series of zeroes (see next example on how to force the period).
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print s=dynamic([2,5,3,4,3,2,1,2,3,4,3,2,1,2,3,4,3,2,1,2,3,4,3,2,1])
 | union (print s=dynamic([8,12,14,12,10,10,12,14,12,10,10,12,14,12,10,10,12,14,12,10]))
@@ -59,6 +60,7 @@ print s=dynamic([2,5,3,4,3,2,1,2,3,4,3,2,1,2,3,4,3,2,1,2,3,4,3,2,1])
 
 In the following example the series' period is too short to be detected by [series_periods_detect()](series-periods-detectfunction.md) so we force the period explicitly to get the seasonal pattern.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print s=dynamic([1,3,5,1,3,5,2,4,6]) 
 | union (print s=dynamic([1,3,5,2,4,6,1,3,5,2,4,6]))

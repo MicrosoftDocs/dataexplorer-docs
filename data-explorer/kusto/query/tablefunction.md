@@ -1,5 +1,5 @@
 ---
-title: table() (scope function) - Azure Data Explorer | Microsoft Docs
+title: table() (scope function) - Azure Data Explorer
 description: This article describes table() (scope function) in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -65,6 +65,7 @@ table('StormEvent')
 
 ### Use table() to access table of the current database
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 table('StormEvent') | count
 ```
@@ -78,6 +79,7 @@ table('StormEvent') | count
 The same query as above can be rewritten to use inline function (let statement) that 
 receives a parameter `tableName` - which is passed into the table() function.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let foo = (tableName:string)
 {

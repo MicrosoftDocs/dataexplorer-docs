@@ -1,5 +1,5 @@
 ---
-title: sequence_detect plugin - Azure Data Explorer | Microsoft Docs
+title: sequence_detect plugin - Azure Data Explorer
 description: This article describes sequence_detect plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -44,6 +44,7 @@ Returns a single table where each row in the table represents a single sequence 
 
 The following query looks on the table StormEvents (weather statistics for 2007) and shows cases where sequence of 'Excessive Heat' was followed by 'Wildfire' within 5 days.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | evaluate sequence_detect(

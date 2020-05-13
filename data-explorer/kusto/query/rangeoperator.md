@@ -1,5 +1,5 @@
 ---
-title: range operator - Azure Data Explorer | Microsoft Docs
+title: range operator - Azure Data Explorer
 description: This article describes range operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -38,6 +38,7 @@ whose values are *start*, *start* `+` *step*, ... up to and until *stop*.
 
 A table of midnight at the past seven days. The bin (floor) function reduces each time to the start of the day.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range LastWeek from ago(7d) to now() step 1d
 ```
@@ -53,6 +54,7 @@ range LastWeek from ago(7d) to now() step 1d
 A table with a single column called `Steps`
 whose type is `long` and whose values are `1`, `4`, and `7`.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range Steps from 1 to 8 step 3
 ```

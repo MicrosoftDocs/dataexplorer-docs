@@ -15,8 +15,8 @@ Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage
 
 ## Data format
 
-* Blobs can be in any of the [supported formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).
-* Blobs can be compressed in any of the [ supported compressions](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats#supported-data-compression-formats)
+* Blobs can be in any of the [supported formats](../../../ingestion-supported-formats.md).
+* Blobs can be compressed in any of the [supported compressions](../../../ingestion-supported-formats.md#supported-data-compression-formats)
 
 > [!NOTE]
 > Ideally the original uncompressed data size should be part of the blob metadata.
@@ -26,7 +26,7 @@ Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage
 
 ## Ingestion properties
 
-You can specify [Ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) of the blob ingestion via the blob metadata.
+You can specify [Ingestion properties](../../../ingestion-properties.md) of the blob ingestion via the blob metadata.
 You can set the following properties:
 
 |Property | Description|
@@ -81,14 +81,14 @@ When setting up a connection, take a speciel care of the following values:
      It *must* be set as follows: *`/blobServices/default/containers/<prefix>`*. For example: */blobServices/default/containers/StormEvents-2020-*
    * **Subject Ends With** field is the *literal* suffix of the blob. No wildcards are allowed. Useful for filtering file extensions.
 
-A detailed walk-through can be found in the how-to [Create an Event Grid subscription in your storage account](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-grid#create-an-event-grid-subscription-in-your-storage-account) guide.
+A detailed walk-through can be found in the how-to [Create an Event Grid subscription in your storage account](../../../ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account) guide.
 
 ### Data ingestion connection to Azure Data Explorer
 
-* Via Azure Portal: [Create an Event Grid data connection in Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-grid#create-an-event-grid-data-connection-in-azure-data-explorer).
-* Using Kusto management .NET SDK: [Add an Event Grid data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-grid-csharp#add-an-event-grid-data-connection)
-* Using Kusto management Python SDK: [Add an Event Grid data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-grid-python#add-an-event-grid-data-connection)
-* With ARM template: [Azure Resource Manager template for adding an Event Grid data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-grid-resource-manager#azure-resource-manager-template-for-adding-an-event-grid-data-connection)
+* Via Azure Portal: [Create an Event Grid data connection in Azure Data Explorer](../../../ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
+* Using Kusto management .NET SDK: [Add an Event Grid data connection](../../../data-connection-event-grid-csharp.md#add-an-event-grid-data-connection)
+* Using Kusto management Python SDK: [Add an Event Grid data connection](../../../data-connection-event-grid-python.md#add-an-event-grid-data-connection)
+* With ARM template: [Azure Resource Manager template for adding an Event Grid data connection](../../../data-connection-event-grid-resource-manager.md#azure-resource-manager-template-for-adding-an-event-grid-data-connection)
 
 ### Generating data
 

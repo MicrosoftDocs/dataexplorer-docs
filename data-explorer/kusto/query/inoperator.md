@@ -1,5 +1,5 @@
 ---
-title: in and notin operators - Azure Data Explorer | Microsoft Docs
+title: in and notin operators - Azure Data Explorer
 description: This article describes in and notin operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -57,6 +57,7 @@ Rows in *T* for which the predicate is `true`
 
 **A simple usage of 'in' operator:**  
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where State in ("FLORIDA", "GEORGIA", "NEW YORK") 
@@ -70,6 +71,7 @@ StormEvents
 
 **A simple usage of 'in~' operator:**  
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where State in~ ("Florida", "Georgia", "New York") 
@@ -82,6 +84,7 @@ StormEvents
 
 **A simple usage of '!in' operator:**  
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where State !in ("FLORIDA", "GEORGIA", "NEW YORK") 
@@ -94,6 +97,8 @@ StormEvents
 
 
 **Using dynamic array:**
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let states = dynamic(['FLORIDA', 'ATLANTIC SOUTH', 'GEORGIA']);
 StormEvents 
@@ -108,6 +113,7 @@ StormEvents
 
 **A subquery example:**  
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Using subquery
 let Top_5_States = 
@@ -121,6 +127,7 @@ StormEvents
 
 The same query can be written as:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Inline subquery 
 StormEvents 
@@ -138,6 +145,7 @@ StormEvents
 
 **Top with other example:**  
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let Lightning_By_State = materialize(StormEvents | summarize lightning_events = countif(EventType == 'Lightning') by State);
 let Top_5_States = Lightning_By_State | top 5 by lightning_events | project State; 
@@ -157,6 +165,7 @@ Lightning_By_State
 
 **Using a static list returned by a function:**  
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents | where State in (InterestingStates()) | count
 
@@ -169,6 +178,7 @@ StormEvents | where State in (InterestingStates()) | count
 
 Here is the function definition:  
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .show function InterestingStates
 ```

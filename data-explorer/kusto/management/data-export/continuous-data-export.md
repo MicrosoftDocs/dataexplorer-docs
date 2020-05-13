@@ -13,10 +13,10 @@ ms.date: 03/27/2020
 
 Continuously export data from Kusto to an [external table](../externaltables.md). The external table 
 defines the destination (for example, Azure Blob Storage) and the schema of the exported data. 
-The exported data is defined by a periodically-run query. The results are stored in the external table. 
-The process guarantees that all records are exported "exactly-once" (excluding dimension tables, in which all records are evaluated in all executions). 
+The exported data is defined by a periodically run query. The results are stored in the external table. 
+The process guarantees that all records are exported "exactly once" (excluding dimension tables, in which all records are evaluated in all executions). 
 
-Continuous data export requires you to [create an external table](../externaltables.md#create-or-alter-external-table) 
+Continuous data export requires you to [create an external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) 
 and then [create a continuous export definition](#create-or-alter-continuous-export) pointing to the external table. 
 
 > [!NOTE] 
@@ -29,15 +29,14 @@ For more information, see [exporting historical data](#exporting-historical-data
  
 ## Notes
 
-* The guarantee for "exactly-once" export is *only* for files reported in the the [show exported artifacts command](#show-continuous-export-exported-artifacts). 
-Continuous export does *not* guarantee that each record will be written only once to the external table. If a failure occurs after export has begun and some of
+* The guarantee for "exactly once" export is only for files reported in the [show exported artifacts command](#show-continuous-export-artifacts). 
+Continuous export doesn't guarantee that each record will be written only once to the external table. If a failure occurs after export has begun and some of
  the artifacts were already written to the external table, the external table _may_ contain duplicates (or even corrupted files, in case a write operation was 
  aborted before completion). In such cases, artifacts are not deleted from the external table but they will *not* be reported in the
-[show exported artifacts command](#show-continuous-export-exported-artifacts). Consuming the exported files using the `show exported artifacts command` 
-guarantees no duplicates (and not corruptions, of course).
-* To guarantee "exactly-once" export, continuous export uses [database cursors](../databasecursor.md). 
-[IngestionTime policy](../ingestiontime-policy.md) must therefore be enabled on all tables referenced in the query that should 
-be processed "exactly-once" in the export. The policy is enabled by default on all newly created tables.
+[show exported artifacts command](#show-continuous-export-artifacts). Consuming the exported files using the `show exported artifacts command`. 
+guarantees no duplicates (and not corruptions).
+* To guarantee "exactly once" export, continuous export uses [database cursors](../databasecursor.md). 
+[IngestionTime policy](../ingestiontime-policy.md) must  be enabled on all tables referenced in the query that should be processed "exactly once" in the export. The policy is enabled by default on all newly created tables.
 * The output schema of the export query *must* match the schema of the external table to which you export. 
 * Continuous export doesn't support cross-database/cluster calls.
 * Continuous export runs according to the time period configured for it. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. 
@@ -47,7 +46,7 @@ If the range of data queried by each run is small, the output of the continuous 
 If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind. 
  
 * By default, all tables referenced in the export query are assumed to be [fact tables](../../concepts/fact-and-dimension-tables.md). 
-Therefore, they are *scoped* to the database cursor. Records included in the export query are only those that joined since the previous export execution. 
+Therefore, they are *scoped* to the database cursor. The export query includes only the records that joined since the previous export execution. 
 The export query may contain [dimension tables](../../concepts/fact-and-dimension-tables.md) in which *all* records of the dimension
  table are included in *all* export queries. 
     * When using joins between fact and dimension tables in continuous-export, you must keep in mind 
@@ -60,9 +59,8 @@ can be useful for such cases, where the fact and dimensions tables are ingested 
     [create command](#create-or-alter-continuous-export) for details.
 
 * The number of files exported in each continuous export iteration depends on how the 
-external table is partitioned. Refer to the notes section in 
-[export to external table command](export-data-to-an-external-table.md) for further information. 
-Note that each continuous export iteration always writes to *new* files, and never appends 
+external table is partitioned. For more information, see the notes section in [export to external table command](export-data-to-an-external-table.md). 
+Each continuous export iteration always writes to *new* files, and never appends 
 to existing ones. As a result, the number of exported files also depends on 
 the frequency in which the continuous export runs (`intervalBetweenRuns` parameter).
 
@@ -87,7 +85,7 @@ All of the continuous export commands require [database admin permissions](../ac
 | Query                | String   | Query to export.  |
 | over (T1, T2)        | String   | An optional comma-separated list of fact tables in the query. If not specified, all tables referenced in the query are assumed to be fact tables. If specified, tables *not* in this list are treated as dimension tables and will not be scoped (all records will participate in all exports). See the [notes section](#notes) for details. |
 | intervalBetweenRuns  | Timespan | The time span between continuous export executions. Must be greater than 1 minute.   |
-| forcedLatency        | Timespan | An optional period of time to limit the query to records that were ingested only prior to this period (relative to current time). This is useful if, for example, the query performs some aggregations/joins and you would like to make sure all relevant records have already been ingested before running the export.
+| forcedLatency        | Timespan | An optional period of time to limit the query to records that were ingested only prior to this period (relative to current time). This property is useful if, for example, the query performs some aggregations/joins and you would like to make sure all relevant records have already been ingested before running the export.
 
 In addition to the above, all properties supported in [export to external table command](export-data-to-an-external-table.md) are supported in the continuous export create command. 
 
@@ -145,13 +143,13 @@ Returns all continuous exports in the database.
 | Query               | String   | Export query                                                            |
 | StartCursor         | String   | Starting point of the first execution of this continuous export         |
 
-## Show continuous export exported artifacts
+## Show continuous export artifacts
 
 **Syntax:**
 
 `.show` `continuous-export` *ContinuousExportName* `exported-artifacts`
 
-Returns all artifacts exported by the continuous-export in all runs. It is recommended to filter the results by the Timestamp column in the command to view only records of interest. The history of exported artifacts is retained for 14 days. 
+Returns all artifacts exported by the continuous-export in all runs. Filter the results by the Timestamp column in the command to view only records of interest. The history of exported artifacts is retained for 14 days. 
 
 **Properties:**
 
@@ -238,7 +236,7 @@ The remaining continuous exports in the database (post deletion). Output schema 
 `.disable` `continuous-export` *ContinuousExportName* 
 
 You can disable or enable the continuous-export job. A disabled continuous export won't be executed, but its current state is persisted and can be resumed when the continuous export is enabled. 
-When enabling a continuous export that has been disabled for a long time, exporting will continue from where it last stopped, when disabled. This may result in a long running export, blocking other exports from running, if there isn't sufficient cluster capacity to serve all processes. 
+When enabling a continuous export that has been disabled for a long time, exporting will continue from where it last stopped when the exporting disabled. This continuation may result in a long running export, blocking other exports from running, if there isn't sufficient cluster capacity to serve all processes. 
 Continuous exports are executed by last run time in ascending order (oldest export will run first, until catch up is complete). 
 
 **Properties:**

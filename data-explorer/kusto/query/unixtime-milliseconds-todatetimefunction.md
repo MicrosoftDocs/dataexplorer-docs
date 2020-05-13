@@ -1,5 +1,5 @@
 ---
-title: unixtime_milliseconds_todatetime() - Azure Data Explorer | Microsoft Docs
+title: unixtime_milliseconds_todatetime() - Azure Data Explorer
 description: This article describes unixtime_milliseconds_todatetime() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -33,6 +33,7 @@ If the conversion is successful, the result will be a [datetime](./scalar-data-t
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto
 print date_time = unixtime_milliseconds_todatetime(1546300800000)
 ```

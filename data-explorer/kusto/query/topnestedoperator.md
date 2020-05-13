@@ -1,5 +1,5 @@
 ---
-title: top-nested operator - Azure Data Explorer | Microsoft Docs
+title: top-nested operator - Azure Data Explorer
 description: This article describes top-nested operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -70,6 +70,7 @@ top-nested 2 of ...., ..., ..., top-nested of <additionalRequiredColumn1> by max
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | top-nested 2 of State by sum(BeginLat),
@@ -89,6 +90,7 @@ StormEvents
 
 * With others example:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | top-nested 2 of State with others = "All Other States" by sum(BeginLat),
@@ -119,6 +121,7 @@ StormEvents
 
 The following query shows the same results for the first level used in the example above:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
  StormEvents
  | where State !in ('TEXAS', 'KANSAS')
@@ -132,6 +135,7 @@ The following query shows the same results for the first level used in the examp
 
 Requesting another column (EventType) to the top-nested result: 
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | top-nested 2 of State by sum(BeginLat),    top-nested 2 of Source by sum(BeginLat),    top-nested 1 of EndLocation by sum(BeginLat), top-nested of EventType  by tmp = max(1)
@@ -153,6 +157,7 @@ StormEvents
 
 In order to sort the result by the last nested level (in this example by EndLocation) and give an index sort order for each value in this level (per group) :
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | top-nested 2 of State  by sum(BeginLat),    top-nested 2 of Source by sum(BeginLat),    top-nested 4 of EndLocation by  sum(BeginLat)
