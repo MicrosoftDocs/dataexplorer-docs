@@ -77,7 +77,7 @@ with
 
 ## Querying an external table of type SQL 
 
-Querying an external SQL table is supported. See [querying external tables](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data). 
+Querying an external SQL table is supported. See [querying external tables](../../data-lake-query-data.md). 
 
 > [!Note]
 > SQL external table query implementation will execute a full 'SELECT *' (or select relevant columns) from the SQL table. The rest of the query will execute on the Kusto side. 
