@@ -15,7 +15,7 @@ ms.date: 02/13/2020
 T-SQL support, however, is useful for tools that can't be easily converted to use KQL.  
 T-SQL support is also useful for casual use by people familiar with SQL.
 
-Azure Data Explorer can interpret and run T-SQL queries with some language limitations.
+Kusto can interpret and run T-SQL queries with some language limitations.
 
 > [!NOTE]
 > Azure Data Explorer doesn't support DDL commands. Only T-SQL `select` statements are supported. 
