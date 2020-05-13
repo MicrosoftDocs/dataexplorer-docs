@@ -49,8 +49,8 @@ The following table contains the common custom headers used when for query
 and management operations. Unless otherwise indicated, these headers are used
 for telemetry purposes only, and have no functionality impact.
 
-All headers are optional. We recommended that you specify the `x-ms-client-request-id` custom header. 
-In some scenarios, such as canceling a running query, this header is required because it is used to identify the request.
+All headers are optional. We recommend that you specify the `x-ms-client-request-id` custom header. 
+In some scenarios, such as canceling a running query, this header is required because it's used to identify the request.
 
 |Custom header           |Description                                                                                               |
 |------------------------|----------------------------------------------------------------------------------------------------------|
