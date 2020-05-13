@@ -290,7 +290,7 @@ internal static void PostMessageToQueue(string queueUriWithSas, string message)
 
 ### Check for error messages from the Azure queue
 
-After ingestion, we check for failure messages from the relevant queue that the Kusto Data Management service writes to. For more information on the failure message structure, see [Ingestion failure message structure](#ingestion-failure-message-structure). 
+After ingestion, we check for failure messages from the relevant queue that the Data Management writes to. For more information on the failure message structure, see [Ingestion failure message structure](#ingestion-failure-message-structure). 
 
 ```csharp
 internal static IEnumerable<string> PopTopMessagesFromQueue(string queueUriWithSas, int count)
