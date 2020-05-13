@@ -42,4 +42,4 @@ For more information on the HTTP request and response of the query and managemen
  * [Query v2 HTTP response](./response2.md)
 
 For more information on the UI action, see:
- * [UI deeplink](./deeplink.md)
+ * [UI deep link](./deeplink.md)
