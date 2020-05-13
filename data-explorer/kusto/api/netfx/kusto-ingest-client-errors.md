@@ -222,4 +222,4 @@ Base Class: [AggregateException](https://msdn.microsoft.com/library/system.aggre
 
 ## Next Steps
 
-The Kusto engine is written in native code. For more information about errors in native code, see [Errors in native code](../../concepts/errorsinnativecode.md).
+For more information about errors in native code, see [Errors in native code](../../concepts/errorsinnativecode.md).
