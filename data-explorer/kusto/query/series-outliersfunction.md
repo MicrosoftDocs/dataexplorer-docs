@@ -1,5 +1,5 @@
 ---
-title: series_outliers() - Azure Data Explorer | Microsoft Docs
+title: series_outliers() - Azure Data Explorer
 description: This article describes series_outliers() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -42,6 +42,7 @@ The following table describes differences between `"tukey"` and `"ctukey"`:
 
 Suppose you have a time series with some noise that creates outliers and you would like to replace those outliers (noise) with the average value, you could use series_outliers() to detect the outliers then replace them:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 range x from 1 to 100 step 1 
 | extend y=iff(x==20 or x==80, 10*rand()+10+(50-x)/2, 10*rand()+10) // generate a sample series with outliers at x=20 and x=80

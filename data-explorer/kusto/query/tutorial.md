@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Azure Data Explorer | Microsoft Docs
+title: Tutorial - Azure Data Explorer
 description: This article describes Tutorial in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -37,6 +37,7 @@ To find out how big it is, we'll pipe its content into an operator that simply c
 * *Syntax:* A query is a data source (usually a table name), optionally
   followed by one or more pairs of the pipe character and some tabular operator.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents | count
 ```
@@ -59,6 +60,7 @@ and [take](./takeoperator.md) operator.
 
 Let's see only the `flood`s in `California` during Feb-2007:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | where StartTime > datetime(2007-02-01) and StartTime < datetime(2007-03-01)
@@ -74,6 +76,7 @@ StormEvents
 
 Let's see some data - what's in a sample 5 rows?
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | take 5
@@ -99,6 +102,7 @@ for [take](./takeoperator.md) and will have the same effect.
 
 Show me the first n rows, ordered by a particular column:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | top 5 by StartTime desc
@@ -116,6 +120,7 @@ StormEvents
 Same can be achieved by using [sort](./sortoperator.md) and 
 then [take](./takeoperator.md) operator
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | sort by StartTime desc
@@ -127,6 +132,7 @@ StormEvents
 
 Create a new column by computing a value in every row:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | limit 5
@@ -145,6 +151,7 @@ StormEvents
 It is possible to reuse column name and assign calculation result to the same column.
 For example:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print x=1
 | extend x = x + 1, y = x
@@ -162,6 +169,7 @@ operators (`+`, `-`, `*`, `/`, `%`), and there's a range of useful functions.
 
 Count how many events come from each country:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | summarize event_count = count() by State
@@ -178,6 +186,7 @@ them in one summarize operator to produce several computed columns.
 For example, we could get the count of storms in each state and also a sum of the unique type of storms per state,  
 then we could use [top](./topoperator.md) to get the most storm-affected states:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State
@@ -203,6 +212,7 @@ The result of a summarize has:
 You can use scalar (numeric, time, or interval) values in the `by` clause, but you'll want to put the values into bins.  
 The [bin()](./binfunction.md) function is useful for this:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | where StartTime > datetime(2007-02-14) and StartTime < datetime(2007-02-21)
@@ -230,6 +240,7 @@ that [summarize](./summarizeoperator.md) can assign the rows to groups.
 
 Project two columns and use them as the x and y axis of a chart:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | summarize event_count=count(), mid = avg(BeginLat) by State 
@@ -250,6 +261,7 @@ Strictly speaking, 'render' is a feature of the client rather than part of the q
 
 Going back to numeric bins, let's display a time series:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | summarize event_count=count() by bin(StartTime, 1d)
@@ -262,6 +274,7 @@ StormEvents
 
 Use multiple values in a `summarize by` clause to create a separate row for each combination of values:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where StartTime > datetime(2007-06-04) and StartTime < datetime(2007-06-10) 
@@ -283,6 +296,7 @@ How does activity vary over the average day?
 
 Count events by the time modulo one day, binned into hours. Note that we use `floor` instead of bin:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend hour = floor(StartTime % 1d , 1h)
@@ -301,6 +315,7 @@ Currently, `render` doesn't label durations properly, but we could use `| render
 
 How does activity vary over the time of day in different states?
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend hour= floor( StartTime % 1d , 1h)
@@ -313,6 +328,7 @@ StormEvents
 
 Divide by `1h` to turn the x-axis into hour number instead of a duration:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend hour= floor( StartTime % 1d , 1h)/ 1h
@@ -329,6 +345,7 @@ How to find for two given EventTypes in what state both of them happened?
 
 You can pull storm events with the first EventType and with the second EventType and then join the two sets on State.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | where EventType == "Lightning"
@@ -351,6 +368,7 @@ How long does each user session last?
 
 By using `extend` to provide an alias for the two timestamps, you can then compute the session duration.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 Events
 | where eventName == "session_started"
@@ -373,6 +391,7 @@ In the same clauses, we rename the timestamp column.
 
 How many storms are there of different lengths?
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend  duration = EndTime - StartTime
@@ -412,6 +431,7 @@ From which we can see that:
 
 To get a separate breakdown for each state, we just have to bring the state column separately through both summarize operators:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend  duration = EndTime - StartTime
@@ -429,6 +449,7 @@ StormEvents
 
 Use [let](./letstatement.md) to separate out the parts of the query expression in the 'join' example above. The results are unchanged:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let LightningStorms = 
     StormEvents
