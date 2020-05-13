@@ -1,5 +1,5 @@
 ---
-title: series_subtract() - Azure Data Explorer | Microsoft Docs
+title: series_subtract() - Azure Data Explorer
 description: This article describes series_subtract() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -27,6 +27,7 @@ Dynamic array of calculated element-wise subtract operation between the two inpu
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2
