@@ -1,5 +1,5 @@
 ---
-title: Queries - Azure Data Explorer | Microsoft Docs
+title: Queries - Azure Data Explorer
 description: This article describes Queries in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -30,6 +30,7 @@ to delimit operators.
 
 For example:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where State == 'FLORIDA' and StartTime > datetime(2000-01-01)

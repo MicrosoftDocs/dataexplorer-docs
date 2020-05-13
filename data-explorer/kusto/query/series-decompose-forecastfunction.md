@@ -1,5 +1,5 @@
 ---
-title: series_decompose_forecast() - Azure Data Explorer | Microsoft Docs
+title: series_decompose_forecast() - Azure Data Explorer
 description: This article describes series_decompose_forecast() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -49,6 +49,7 @@ trailing points (refer to [series_decompose](series-decomposefunction.md) for mo
 
 In the following example we generate a series of 4 weeks in an hourly grain with weekly seasonality and a small upward trend, we then use `make-series` and add another empty week to the series. `series_decompose_forecast` is called with a week (24*7 points), it automatically detects the seasonality and trend and generates a forecast of the entire 5 weeks period. 
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let ts=range t from 1 to 24*7*4 step 1 // generate 4 weeks of hourly data
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 

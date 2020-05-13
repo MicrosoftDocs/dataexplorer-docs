@@ -1,5 +1,5 @@
 ---
-title: sample operator - Azure Data Explorer | Microsoft Docs
+title: sample operator - Azure Data Explorer
 description: This article describes sample operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -59,6 +59,7 @@ union (_sample), (_sample)
 
 - if you want to sample a certain percentage of your data (rather than a specified number of rows), you can use
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents | where rand() < 0.1
 ```
@@ -67,6 +68,7 @@ StormEvents | where rand() < 0.1
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let sampleEpisodes = StormEvents | sample-distinct 10 of EpisodeId;
 StormEvents

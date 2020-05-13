@@ -1,5 +1,5 @@
 ---
-title: project-away operator - Azure Data Explorer | Microsoft Docs
+title: project-away operator - Azure Data Explorer
 description: This article describes project-away operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -44,6 +44,7 @@ A table with columns that were not named as arguments. Contains same number of r
 
 The input table `T` has three columns of type `long`: `A`, `B`, and `C`.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(A:long, B:long, C:long) [1, 2, 3]
 | project-away C    // Removes column C from the output
@@ -55,6 +56,7 @@ datatable(A:long, B:long, C:long) [1, 2, 3]
 
 Removing columns starting with 'a'.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print  a2='a2', b = 'b', a3='a3', a1='a1'
 |  project-away a* 
