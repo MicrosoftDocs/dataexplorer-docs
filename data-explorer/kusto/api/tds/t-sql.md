@@ -37,7 +37,7 @@ select * from StormEvents
 
 Azure Data Explorer supports translating T-SQL queries to Kusto query language (KQL). 
 This translation can help people familiar with SQL to better understand KQL.
-To get back the equivalent KQL from some T-SQL `select` statement, simply add `explain` before the query.
+To get back the equivalent KQL from some T-SQL `select` statement, add `explain` before the query.
 
 For example, the following T-SQL query:
 
