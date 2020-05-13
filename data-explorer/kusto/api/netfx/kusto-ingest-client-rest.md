@@ -342,7 +342,7 @@ The message that the Kusto Data Management service expects to read from the inpu
 |FlushImmediately |If set to `true`, any aggregation will be skipped. Default is `false` |
 |ReportLevel |Success/Error reporting level: 0-Failures, 1-None, 2-All |
 |ReportMethod |Reporting mechanism: 0-Queue, 1-Table |
-|AdditionalProperties |Additional properties (tags, and so on) |
+|AdditionalProperties |Additional properties such as tags |
 
 ### Ingestion failure message structure
 
