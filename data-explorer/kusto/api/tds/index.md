@@ -25,7 +25,7 @@ The following links present more information about support for SQL, KQL, TDS, an
 
 * [KQL over TDS](./tdskql.md) - Learn about executing native KQL queries via TDS endpoints.
 
-* [MS-TDS clients and Kusto](./clients.md) - For examples of how to use Azure Data Explorer from well-known clients that use MS-TDS/T-SQL.
+* [MS-TDS clients and Kusto](./clients.md) - Use Azure Data Explorer from well-known clients that use MS-TDS/T-SQL.
 
 * [Azure Data Explorer (Kusto) as linked server to SQL server](./linkedserver.md) - For information on configuring the cluster as a linked server to the SQL server on-premises. 
 
