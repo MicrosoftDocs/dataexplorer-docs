@@ -88,7 +88,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 **Note:** 
-The following mapping format, without the `Properties` property-bag, is currently supported but may be deprecated in the future.
+The following mapping format, without the `Properties` property-bag, is deprecated.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -145,7 +145,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 **Note:** 
-The following mapping format, without the `Properties` property-bag, is currently supported but may be deprecated in the future.
+The following mapping format, without the `Properties` property-bag, is deprecated.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2") 
@@ -220,7 +220,7 @@ The two alternatives below are equal:
 ```
 
 **Note:** 
-The following mapping format, without the `Properties` property-bag, is currently supported but may be deprecated in the future.
+The following mapping format, without the `Properties` property-bag, is deprecated.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2") 
