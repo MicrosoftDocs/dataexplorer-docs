@@ -21,26 +21,26 @@ Callout policies are being managed at cluster-level and are classified into the 
 * `webapi` - Controls other external Web calls.
 * `sandbox_artifacts` - Controls sandboxed plugins ([python](../query/pythonplugin.md) | [R](../query/rplugin.md)).
 
-Callout policy is comprised of the following.
+Callout policy is composed of the following.
 
-* **CalloutType** - Defines the type of the callout, and can be one of the following: kusto, sql, or webapi
+* **CalloutType** - Defines the type of the callout, and can be `kusto`, `sql`, or `webapi`
 * **CalloutUriRegex** - Specifies the permitted Regex of the callout's domain
 * **CanCall** - Indicates whether the callout is permitted external calls.
 
 ## Predefined callout policies
 
-The table shows a set of predefined callout policies that are preconfigured on all Azure Data Explorer clusters to facilitate callouts to select services.
+The table shows a set of predefined callout policies that are preconfigured on all Azure Data Explorer clusters to enable callouts to select services.
 
 |Service      |Cloud        |Designation  |Permitted domains |
 |-------------|-------------|-------------|-------------|
-|Kusto |Public Azure |Cross cluster queries |`^[^.]*\.kusto\.windows\.net$` <br> `^[^.]*\.kustomfa\.windows\.net$` |
-|Kusto |Black Forest |Cross cluster queries |`^[^.]*\.kusto\.cloudapi\.de$` <br> `^[^.]*\.kustomfa\.cloudapi\.de$` |
-|Kusto |Fairfax |Cross cluster queries |`^[^.]*\.kusto\.usgovcloudapi\.net$` <br> `^[^.]*\.kustomfa\.usgovcloudapi\.net$` |
-|Kusto |Mooncake |Cross cluster queries |`^[^.]*\.kusto\.chinacloudapi\.cn$` <br> `^[^.]*\.kustomfa\.chinacloudapi\.cn$` |
-|Azure DB |Public Azure |SQL requests |`^[^.]*\.database\.windows\.net$` <br> `^[^.]*\.databasemfa\.windows\.net$` |
-|Azure DB |Black Forest |SQL requests |`^[^.]*\.database\.cloudapi\.de$` <br> `^[^.]*\.databasemfa\.cloudapi\.de$` |
-|Azure DB |Fairfax |SQL requests |`^[^.]*\.database\.usgovcloudapi\.net$` <br> `^[^.]*\.databasemfa\.usgovcloudapi\.net$` |
-|Azure DB |Mooncake |SQL requests |`^[^.]*\.database\.chinacloudapi\.cn$` <br> `^[^.]*\.databasemfa\.chinacloudapi\.cn$` |
+|Kusto |`Public Azure` |Cross cluster queries |`^[^.]*\.kusto\.windows\.net$` <br> `^[^.]*\.kustomfa\.windows\.net$` |
+|Kusto |`Black Forest` |Cross cluster queries |`^[^.]*\.kusto\.cloudapi\.de$` <br> `^[^.]*\.kustomfa\.cloudapi\.de$` |
+|Kusto |`Fairfax` |Cross cluster queries |`^[^.]*\.kusto\.usgovcloudapi\.net$` <br> `^[^.]*\.kustomfa\.usgovcloudapi\.net$` |
+|Kusto |`Mooncake` |Cross cluster queries |`^[^.]*\.kusto\.chinacloudapi\.cn$` <br> `^[^.]*\.kustomfa\.chinacloudapi\.cn$` |
+|Azure DB |`Public Azure` |SQL requests |`^[^.]*\.database\.windows\.net$` <br> `^[^.]*\.databasemfa\.windows\.net$` |
+|Azure DB |`Black Forest` |SQL requests |`^[^.]*\.database\.cloudapi\.de$` <br> `^[^.]*\.databasemfa\.cloudapi\.de$` |
+|Azure DB |`Fairfax` |SQL requests |`^[^.]*\.database\.usgovcloudapi\.net$` <br> `^[^.]*\.databasemfa\.usgovcloudapi\.net$` |
+|Azure DB |`Mooncake` |SQL requests |`^[^.]*\.database\.chinacloudapi\.cn$` <br> `^[^.]*\.databasemfa\.chinacloudapi\.cn$` |
 |Baselining service |Public Azure |Baselining requests |`baseliningsvc-int.azurewebsites.net` <br> `baseliningsvc-ppe.azurewebsites.net` <br> `baseliningsvc-prod.azurewebsites.net` |
 
 ## Control commands
@@ -53,7 +53,7 @@ The commands require [AllDatabasesAdmin](access-control/role-based-authorization
 .show cluster policy callout
 ```
 
-**Alter existing callout policies**
+**Alter callout policies**
 
 ```kusto
 .alter cluster policy callout @'[{"CalloutType": "webapi","CalloutUriRegex": "en\\.wikipedia\\.org","CanCall": true}]'
