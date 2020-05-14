@@ -34,8 +34,8 @@ This command returns a result set that includes any ingestion failures that occu
 |Output parameter           |Type     |Description                                                                              |
 |---------------------------|---------|-----------------------------------------------------------------------------------------|
 |OperationId                |String   |Operation identifier that can be used to view additional operation details via the <br> [.show operations](operations.md) command </br> 
-|Database                   |String   |Database on which the failure was encountered
-|Table                      |String   |Table on which the failure was encountered
+|Database                   |String   |Database on which the failure occurred
+|Table                      |String   |Table on which the failure occurred
 |FailedOn                   |DateTime |Date/time (in UTC) when the failure was registered 
 |IngestionSourcePath        |String   |Identifies the ingestion source (usually, an Azure Blob URI) 
 |Details                    |String   |Failure details. Provides insight into the actual ingestion failure root cause
