@@ -13,13 +13,13 @@ ms.date: 01/20/2019
 
 ## .show ingestion failures
 
-This command returns a result set that includes all ingestion failures that occurred during the running of 
-[data ingestion control commands](data-ingestion/index.md).
+This command returns a result set that includes any ingestion failures that occur when the 
+[data ingestion control commands](data-ingestion/index.md) run.
 
 > [!NOTE]
 > Ingestion failures that occur during other parts of the ingestion flow will not appear in the result set of this command. Such a failure may occur, for example, before data ingestion control commands are sent to the Kusto Data Engine service.
 
->For more information on monitoring failures that occur in flows that involve [queued ingestion](../api/netfx/about-kusto-ingest.md#queued-ingestion), see [this guide](../api/netfx/kusto-ingest-client-status.md).
+> For more information on monitoring failures that occur in flows that involve [queued ingestion](../api/netfx/about-kusto-ingest.md#queued-ingestion), see [this guide](../api/netfx/kusto-ingest-client-status.md).
 
 **Syntax**
 
@@ -33,7 +33,7 @@ This command returns a result set that includes all ingestion failures that occu
  
 |Output parameter           |Type     |Description                                                                              |
 |---------------------------|---------|-----------------------------------------------------------------------------------------|
-|OperationId                |String   |Operation identifier that can be used to view additional operation details via the [.show operations](operations.md) command 
+|OperationId                |String   |Operation identifier that can be used to view additional operation details via the <br> [.show operations](operations.md) command </br> 
 |Database                   |String   |Database on which the failure was encountered
 |Table                      |String   |Table on which the failure was encountered
 |FailedOn                   |DateTime |Date/time (in UTC) when the failure was registered 
