@@ -57,13 +57,12 @@ This property will be set to a (random) value by the SDK if the client doesn't
 specify a value.
 
 The content of this property can be any printable unique string, such as a GUID.
-We recommended, however, that clients use:
-
+However, we recommend that clients use:
 *ApplicationName* `.` *ActivityName* `;` *UniqueId*
 
-Where *ApplicationName* identifies the client application that makes the request, *ActivityName* identifies
-the kind of activity that the client application is issuing the client request for, and *UniqueId*
-identifies the specific request.
+* *ApplicationName* identifies the client application that makes the request.
+* *ActivityName* identifies the kind of activity for which the client application issues the client request.
+* *UniqueId* identifies the specific request.
 
 ## The application (x-ms-app) named property
 
