@@ -31,7 +31,7 @@ print current_principal_is_member_of(
 
 **Arguments**
 
-* *list of expressions* - a comma separated list of string literals, where each literal is a principal fully-qualified-name (FQN) string formed as:  
+* *list of expressions* - a comma-separated list of string literals, where each literal is a principal fully qualified name (FQN) string formed as:  
 *PrinciplaType*`=`*PrincipalId*`;`*TenantId*
 
 | PrincipalType   | FQN Prefix  |
@@ -41,11 +41,11 @@ print current_principal_is_member_of(
 | AAD Application | `aadapp=`   |
 
 **Returns**
-
+  
 The function returns:
 * `true`: if the current principal running the query was successfully matched for at least one input argument.
 * `false`: if the current principal running the query was not member of any `aadgroup=` FQN arguments and was not equal to any of the `aaduser=` or `aadapp=` FQN arguments.
-* `(null)`: if the current principal running the query was not member of any `aadgroup=` FQN arguments and was not equal to any of the `aaduser=` or `aadapp=` FQN arguments, and at least one FQN argument was not successfully resolved (was not presed in AAD). 
+* `(null)`: if the current principal running the query was not member of any `aadgroup=` FQN arguments and was not equal to any of the `aaduser=` or `aadapp=` FQN arguments, and at least one FQN argument was not successfully resolved (was not pressed in AAD). 
 
 > [!NOTE]
 > Because the function returns a tri-state value (`true`, `false`,  and `null`), it's important to rely only on positive return values to confirm successful membership. In other words, the following expressions are NOT the same:
