@@ -18,10 +18,10 @@ ms.date: 02/13/2020
 The commands table has two columns with resources consumption details of every completed command.
 
 * TotalCpu - The total CPU clock time (User mode + Kernel mode) consumed by this command.
-* ResourceUtilization - Ccontains all resource utilization information related to that command, including the TotalCpu.
+* ResourceUtilization - Contains all resource use information related to that command, including the TotalCpu.
 
-Resource consumption that is tracked includes Data Updates, as well as any query associated with the current Admin command.
-Currently, only some of the Admin commands are covered by the Commands table (.ingest, .set, .append, .set-or-replace, .set-or-append), Gradually, more commands will be added to the the Commands table.
+Resource consumption that is tracked includes Data Updates, and any query associated with the current Admin command.
+Currently, only some of the Admin commands are covered by the Commands table (`.ingest`, `.set`, `.append`, `.set-or-replace`, `.set-or-append`). Gradually, more commands will be added to the Commands table.
 
 * A [database admin or database monitor](../management/access-control/role-based-authorization.md) can see any command that was invoked on their database.
 * Other users can only see commands that were invoked by them.
@@ -41,9 +41,10 @@ Currently, only some of the Admin commands are covered by the Commands table (.i
 **Example: Extract specific data from the ResourceUtilization column**
 
 Accessing one of the properties within the ResourceUtilization column, is done by calling ResourcesUtilization.xxx (where xxx is the property name).
-Note that the ResourceUtilization is a dynamic column, and hence in order to work with its values, one should first convert it into a specific data type (using a convertion function such as: tolong, toint, totimespan, ...).  
+> [!NOTE] 
+> The ResourceUtilization is a dynamic column. To work with its values, you should first convert it into a specific data type. Use a conversion function such as `tolong`, `toint`, `totimespan`.  
 
-For example:
+For example,
 
 ```kusto
 .show commands
@@ -56,9 +57,9 @@ For example:
 
 |StartedOn |MemoryPeak |TotalCpu |Text
 |--|--|--|--
-| 2017-09-28 12:11:27.8155381	| 800396032	| 00:00:04.5312500  | .append Server_Boots <\| let bootStartsSourceTable = SessionStarts; ...
-| 2017-09-28 11:21:26.7304547	| 750063056	| 00:00:03.8218750  | .set-or-append WebUsage <\| database('CuratedDB').WebUsage_v2 | summarize ... | project ...
-| 2017-09-28 12:16:17.4762522	| 676289120	| 00:00:00.0625000  | .set-or-append  AtlasClusterEventStats with(..) <\| Atlas_Temp(datetime(2017-09-28 12:13:28.7621737),datetime(2017-09-28 12:14:28.8168492))
+| 2017-09-28 12:11:27.8155381	| 800396032	| 00:00:04.5312500 |.append Server_Boots <\| let bootStartsSourceTable = SessionStarts; ...
+| 2017-09-28 11:21:26.7304547	| 750063056	| 00:00:03.8218750 |.set-or-append WebUsage <\| database('CuratedDB').WebUsage_v2 | summarize ... | project ...
+| 2017-09-28 12:16:17.4762522	| 676289120	| 00:00:00.0625000 |.set-or-append  AtlasClusterEventStats with(..) <\| Atlas_Temp(datetime(2017-09-28 12:13:28.7621737),datetime(2017-09-28 12:14:28.8168492))
 
 ## Investigating performance issues
 
