@@ -28,15 +28,15 @@ Compression formats: LIST FORMATS, embedded list
 
 * **Ingestion [properties](ingestion-properties.md)**: The properties which affect how the data will be ingested (for example, tagging, mapping, creation time).
 
-* In order to ingest data, the process requires [database ingestor level permissions](kusto/management/access-control/role-based-authorization.md). Other actions, such as query, may require database admin, database user, or table admin permissions.
+* **Permissions**: In order to ingest data, the process requires [database ingestor level permissions](kusto/management/access-control/role-based-authorization.md). Other actions, such as query, may require database admin, database user, or table admin permissions.
 
 * **Supported Data types**: See [supported data types] (INSERT LINK) for Azure Data Explorer. If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.
 
 ## Batching vs streaming ingestion
 
-* Batching ingestion performs data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. The [ingestion batching](kusto/management/batchingpolicy.md) policy can be set on databases, or tables. By default, Kusto will use a default value of 5 minutes as the maximum delay time, 1000 items, total size of 500 MB for batching.
+* Batching ingestion performs data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. The [ingestion batching](kusto/management/batchingpolicy.md) policy can be set on databases or tables. By default, Kusto will use a maximum batching value of 5 minutes, 1000 items, or a total size of 500 MB.
 
-* Streaming ingestion is ongoing data ingestion from a streaming source. Streaming ingestion allows near real-time latency for small sets of data per table. Data is initially ingested to row store, then moved to column store extents. Streaming ingestion can be performed using an Azure Data Explorer client library, and different supported data pipelines.
+* Streaming ingestion is ongoing data ingestion from a streaming source. Streaming ingestion allows near real-time latency for small sets of data per table. Data is initially ingested to row store, then moved to column store extents. Streaming ingestion can be performed using an Azure Data Explorer client library or one of the supported data pipelines.
 
 ## Ingestion methods
 
@@ -155,7 +155,6 @@ Some of the data format mappings (Parquet, JSON and Avro) support simple and use
 ## Update policy
 
 The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables. Set your [update policy](kusto/management/update-policy.md).
-
 
 ## Ingestion recommendations and limitations
 
