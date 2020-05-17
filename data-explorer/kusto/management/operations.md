@@ -38,7 +38,7 @@ ms.date: 02/13/2020
  
 **Example**
  
-|Id |Operation |Node Id |Started On |Last Updated On |Duration |State |Status 
+|ID |Operation |Node ID |Started On |Last Updated On |Duration |State |Status 
 |--|--|--|--|--|--|--|--
 |3827def6-0773-4f2a-859e-c02cf395deaf |SchemaShow | |2015-01-06 08:47:01.0000000 |2015-01-06 08:47:01.0000000 |0001-01-01 00:00:00.0000000 |Completed | 
 |841fafa4-076a-4cba-9300-4836da0d9c75 |DataIngestPull |Kusto.Azure.Svc_IN_1 |2015-01-06 08:47:02.0000000 |2015-01-06 08:48:19.0000000 |0001-01-01 00:01:17.0000000 |Completed | 
