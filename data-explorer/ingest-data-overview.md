@@ -56,11 +56,7 @@ For organizations who wish to have management (throttling, retries, monitors, al
 
 * **Logstash plugin**, see [Ingest data from Logstash to Azure Data Explorer](ingest-data-logstash.md).
 
-<<<<<<< HEAD
 * **Kafka connector**, see [Ingest data from Kafka into Azure Data Explorer](ingest-data-kafka.md).
-=======
-* Azure Data Factory (ADF), a fully managed data integration service for analytic workloads in Azure, to copy data to and from Azure Data Explorer using [supported data stores and formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats). For more information, see [Copy data from Azure Data Factory to Azure Data Explorer](data-factory-load-data.md).
->>>>>>> ca86553a296265e7ca304c5cb76950eb11471ca0
 
 * **[Azure Data Flow](https://flow.microsoft.com/)**: An automated pipelines over Azure Data Explorer. For example, Azure Data Flow can be used to execute a query and send emails based on query results. See [Microsoft Flow Azure Kusto Connector (Preview)](kusto/tools/flow.md).
 
