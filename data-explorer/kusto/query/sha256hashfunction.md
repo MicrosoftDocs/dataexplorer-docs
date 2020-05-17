@@ -1,5 +1,5 @@
 ---
-title: hash_sha256() - Azure Data Explorer | Microsoft Docs
+title: hash_sha256() - Azure Data Explorer
 description: This article describes hash_sha256() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -42,6 +42,7 @@ hash_sha256(datetime("2015-01-01"))    // e7ef5635e188f5a36fafd3557d382bbd00f699
 
 The following example uses the hash_sha256 function to run a query on StartTime column of the data
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where hash_sha256(StartTime) == 0

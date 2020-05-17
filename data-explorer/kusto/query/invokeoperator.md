@@ -1,5 +1,5 @@
 ---
-title: invoke operator - Azure Data Explorer | Microsoft Docs
+title: invoke operator - Azure Data Explorer
 description: This article describes invoke operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -39,6 +39,7 @@ See [let statements](./letstatement.md) for more details how to declare lambda e
 
 The following example shows how to use `invoke` operator to call lambda expression:
 
+<!-- csl: https://help.kusto.windows.net:443/KustoMonitoringPersistentDatabase -->
 ```kusto
 // clipped_average(): calculates percentiles limits, and then makes another 
 //                    pass over the data to calculate average with values inside the percentiles

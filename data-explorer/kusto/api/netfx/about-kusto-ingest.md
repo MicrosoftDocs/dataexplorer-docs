@@ -7,6 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
+ms.custom: has-adal-ref
 ms.date: 03/24/2020
 ---
 # Kusto Ingest Client Library
@@ -17,7 +18,6 @@ Kusto.Ingest takes dependencies on the following libraries and SDKs:
 
 * ADAL for AAD Authentication
 * Azure Storage Client
-* [TBD: complete list of external dependencies]
 
 Kusto ingestion methods are defined by the [IKustoIngestClient](kusto-ingest-client-reference.md#interface-ikustoingestclient) interface and allows data ingestion from Stream, IDataReader, local file(s), and Azure blob(s) in both synchronous and asynchronous modes.
 
@@ -69,7 +69,7 @@ The following diagram outlines the Direct ingestion client interaction with Kust
 Kusto Ingest Client implementations are thread-safe and intended to be reused. There is no need to create an instance of `KustoQueuedIngestClient` class for each or even several ingest operations. A single instance of `KustoQueuedIngestClient` is required per target Kusto cluster per user process. Running multiple instances is counter-productive and may DoS the Data Management cluster.
 
 ### Supported Data Formats
-When using native ingestion, if not already there, upload the data to one or more Azure Storage blobs. Currently supported blob formats are documented in the [Supported Data Formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats) topic.
+When using native ingestion, if not already there, upload the data to one or more Azure Storage blobs. Currently supported blob formats are documented in the [Supported Data Formats](../../../ingestion-supported-formats.md) topic.
 
 ### Schema Mapping
 [Schema mappings](../../management/mappings.md) help with deterministically binding source data fields to destination table columns.
@@ -90,4 +90,3 @@ When using native ingestion, if not already there, upload the data to one or mor
 
 ### Data Ingestion REST APIs
 [Data Ingestion without Kusto.Ingest Library](kusto-ingest-client-rest.md) explains how to implement Queued Kusto ingestion using Kusto REST APIs and without taking dependency on Kusto.Ingest library.
-

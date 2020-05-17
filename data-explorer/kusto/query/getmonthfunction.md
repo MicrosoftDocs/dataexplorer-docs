@@ -1,5 +1,5 @@
 ---
-title: getmonth() - Azure Data Explorer | Microsoft Docs
+title: getmonth() - Azure Data Explorer
 description: This article describes getmonth() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -17,6 +17,7 @@ Another alias: monthoyear()
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print month = getmonth(datetime(2015-10-12))
 ```

@@ -24,7 +24,7 @@ The first step includes checking TCP connectivity using Windows or Linux OS.
 # [Windows](#tab/windows)
 
    1. Download [TCping](https://www.elifulkerson.com/projects/tcping.php) to the machine connecting to the cluster.
-   2. Ping the destination from the source machine by using the following command:
+   1. Ping the destination from the source machine by using the following command:
 
     ```cmd
      C:\> tcping -t yourcluster.kusto.windows.net 443 
@@ -42,7 +42,7 @@ The first step includes checking TCP connectivity using Windows or Linux OS.
     $ apt-get install netcat
      ```
 
-   2. Ping the destination from the source machine by using the following command:
+   1. Ping the destination from the source machine by using the following command:
 
      ```bash
      $ netcat -z -v yourcluster.kusto.windows.net 443
@@ -67,7 +67,7 @@ If you're experiencing ingestion issues and you suspect it's related to virtual 
 
 ### Check ingestion health
 
-Check that the [cluster ingestion metrics](/azure/data-explorer/using-metrics#ingestion-health-and-performance-metrics) indicate a healthy state.
+Check that the [cluster ingestion metrics](using-metrics.md#ingestion-health-and-performance-metrics) indicate a healthy state.
 
 ### Check security rules on data source resources
 
@@ -145,7 +145,7 @@ If the *Findings* property shows an empty result, it means that all network test
 
 ### Check Network Security Group (NSG)
 
-Make sure that the [Network Security Group](/azure/virtual-network/security-overview) is configured properly per the instructions in [Dependencies for VNet deployment](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment)
+Make sure that the [Network Security Group](/azure/virtual-network/security-overview) is configured properly per the instructions in [Dependencies for VNet deployment](vnet-deployment.md#dependencies-for-vnet-deployment)
 
 ### Check route table
 
@@ -153,4 +153,4 @@ If the cluster's subnet has force-tunneling set up to firewall (subnet with a [r
 
 ### Check firewall rules
 
-If you force tunnel subnet outbound traffic to a firewall, make sure all dependencies FQDN (for example, *.blob.core.windows.net*) are allowed in the firewall configuration as described in [securing outbound traffic with firewall](/azure/data-explorer/vnet-deployment#securing-outbound-traffic-with-firewall).
+If you force tunnel subnet outbound traffic to a firewall, make sure all dependencies FQDN (for example, *.blob.core.windows.net*) are allowed in the firewall configuration as described in [securing outbound traffic with firewall](vnet-deployment.md#securing-outbound-traffic-with-firewall).

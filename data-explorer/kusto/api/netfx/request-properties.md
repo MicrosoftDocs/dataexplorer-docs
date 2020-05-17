@@ -1,5 +1,5 @@
 ---
-title: Request properties, ClientRequestProperties - Azure Data Explorer | Microsoft Docs
+title: Kusto Request properties & ClientRequestProperties - Azure Data Explorer
 description: This article describes Request properties, ClientRequestProperties in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -98,7 +98,7 @@ that the client provides to the service for identifying the request) can be prov
 in the HTTP header, and so can also be set if HTTP GET is used.
 See [the Kusto REST API request object](../rest/request.md) for additional information.
 
-## Providing values for query parametrization as request properties
+## Providing values for query parameterization as request properties
 
 Kusto queries can refer to query parameters by using a specialized [declare query-parameters](../../query/queryparametersstatement.md)
 statement in the query text. This allows client applications to parameterize Kusto queries
@@ -218,6 +218,6 @@ public static System.Data.IDataReader QueryKusto(
 * `results_progressive_enabled` (*OptionResultsProgressiveEnabled*): If set, enables the progressive query stream
 * `servertimeout` (*OptionServerTimeout*): Overrides the default request timeout. [TimeSpan]
 * `truncationmaxrecords` (*OptionTruncationMaxRecords*): Overrides the default maximum number of records a query is allowed to return to the caller (truncation). [Long]
-* `truncationmaxsize` (*OptionTruncationMaxSize*): Overrides the dfefault maximum data size a query is allowed to return to the caller (truncation). [Long]
+* `truncationmaxsize` (*OptionTruncationMaxSize*): Overrides the default maximum data size a query is allowed to return to the caller (truncation). [Long]
 * `validate_permissions` (*OptionValidatePermissions*): Validates user's permissions to perform the query and doesn't run the query itself. [Boolean]
 

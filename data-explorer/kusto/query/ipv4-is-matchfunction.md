@@ -1,5 +1,5 @@
 ---
-title: ipv4_is_match() - Azure Data Explorer | Microsoft Docs
+title: ipv4_is_match() - Azure Data Explorer
 description: This article describes ipv4_is_match() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -52,6 +52,7 @@ If conversion for one of the two IPv4 strings was not successful, the result wil
 
 The following example compares various IPs using IP-prefix notation specified inside the IPv4 strings.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(ip1_string:string, ip2_string:string)
 [
@@ -72,6 +73,7 @@ datatable(ip1_string:string, ip2_string:string)
 
 The following example compares various IPs using IP-prefix notation specified inside the IPv4 strings and as additional argument of the `ipv4_is_match()` function.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(ip1_string:string, ip2_string:string, prefix:long)
 [
