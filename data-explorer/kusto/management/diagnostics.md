@@ -26,7 +26,7 @@ These commands can be used to display system diagnostic information.
 
 Returns a set that contains one record for each node that is currently active in the cluster.  
 
-### Results
+### Results 
 
 |Output column |Type |Description
 |---|---|---|
