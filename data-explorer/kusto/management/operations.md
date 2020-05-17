@@ -51,7 +51,6 @@ ms.date: 02/13/2020
 Operations can (optionally) persist their results, and the results can be retrieved when the operation is complete, using `.show` `operation` `details`.
 
 > [!NOTE]
-
 > Not all control commands persist their results. Those commands that do, usually do so by default on asynchronous executions only, using the `async` keyword. See the documentation for the specific command and check if it does. For example, see [data export](data-export/index.md)).
 > The output schema of the `.show` `operations` `details` command is the same schema returned from the synchronous execution of the command.
 > The `.show` `operation` `details` command can only be invoked after the operation completed successfully. Use the [show operations command](#show-operations)) to check the state of the operation, before running this command.
