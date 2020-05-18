@@ -13,12 +13,12 @@ ms.date: 02/24/2020
 
 Streaming ingestion policy can be set on a table to allow streaming ingestion into this table. The policy can also be set at the database level to apply the same setting to all its present and future tables.
 
-For more information on streaming ingestion see [Streaming ingestion](../../ingest-data-streaming.md). To learn more about the streaming ingestion policy, see [Streaming ingestion policy](streamingingestionpolicy.md).
+For more information, see [Streaming ingestion](../../ingest-data-streaming.md). To learn more about the streaming ingestion policy, see [Streaming ingestion policy](streamingingestionpolicy.md).
 
 ## Displaying the policy
 
 The `.show policy streamingingestion` command shows the streaming ingestion policy of the database or table.
-
+ 
 **Syntax**
 
 `.show` `{database|table}` &lt;entity name&gt; `policy` `streamingingestion`
@@ -59,7 +59,7 @@ The `.alter[-merge] policy streamingingestion` family of commands provides means
 
 ### Remarks
 
-1. Allows changing enabled/disabled state of streaming ingestion without modifying other properties of the policy (or setting them to default values if the policy was not previously defined on the entity).
+1. Allows changing enabled/disabled state of streaming ingestion without either modifying other properties of the policy or setting the properties to default values if the policy wasn't previously defined on the entity.
 
 2. Allows replacing the entire streaming ingestion policy on the entity. &lt;[streaming ingestion policy object](#streaming-ingestion-policy-object)&gt; must include all mandatory properties.
 
@@ -67,8 +67,7 @@ The `.alter[-merge] policy streamingingestion` family of commands provides means
 
 **Returns**
 
-The command modifies the table or database streamingingestion policy object and then returns the output of the corresponding [.show policy streamingingestion](#displaying-the-policy)
-command.
+The command modifies the table or database `streamingingestion` policy object, and then returns the output of the corresponding [`.show policy` `streamingingestion`](#displaying-the-policy) command.
 
 **Examples**
 
@@ -96,8 +95,7 @@ The `.delete policy streamingingestion` command deletes the streamingingestion p
 
 **Returns**
 
-The command deletes the table or database streamingingestion policy object and then returns the output of the corresponding [.show policy streamingingestion](#displaying-the-policy)
-command.
+The command deletes the table or database streamingingestion policy object and then returns the output of the corresponding [.show policy streamingingestion](#displaying-the-policy) command.
 
 **Examples**
 
@@ -112,4 +110,4 @@ In input and output of management commands streaming ingestion policy object is 
 |Property  |Type    |Description                                                       |
 |----------|--------|------------------------------------------------------------------|
 |IsEnabled |`bool`  |Mandatory: Is streaming ingestion enabled for the entity|
-|HintAllocatedRate|`double?`|Optional: estimated rate of data ingress in Gb/hour|
+|HintAllocatedRate|`double?`|Optional: estimated rate of data ingresses in Gb/hour|
