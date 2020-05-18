@@ -287,7 +287,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
 To map the diagnostic metric and log data to the table, use the following query:
 
 ```kusto
-.create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
+.create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","Properties":{"path":"$.records"}}]'
 ```
 
 # [Activity logs](#tab/activity-logs)
@@ -296,7 +296,7 @@ To map the diagnostic metric and log data to the table, use the following query:
 To map the activity log data to the table, use the following query:
 
 ```kusto
-.create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
+.create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","Properties":{"path":"$.records"}}]'
 ```
 ---
 
