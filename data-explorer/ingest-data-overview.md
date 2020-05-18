@@ -3,13 +3,13 @@ title: 'Azure Data Explorer data ingestion overview'
 description: 'Learn about the different ways you can ingest (load) data in Azure Data Explorer'
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 05/18/2020
 ---
 
-# Azure Data Explorer data ingestion overview
+# Azure Data Explorer data ingestion overview 
 
 Data ingestion is the process used to load data records from one or more sources to import data into a table in Azure Data Explorer. Once ingested, the data becomes available for query.
 
@@ -23,14 +23,13 @@ Azure Data Explorer pulls data from an external source and reads requests from a
 
 ## Supported data formats, properties, and permissions
 
-* **[Supported formats](ingestion-supported-formats.md)** -- LIST FORMATS, embedded list
-Compression formats: LIST FORMATS, embedded list
+* **[Supported formats](ingestion-supported-formats.md)** 
 
 * **Ingestion [properties](ingestion-properties.md)**: The properties that affect how the data will be ingested (for example, tagging, mapping, creation time).
 
 * **Permissions**: To ingest data, the process requires [database ingestor level permissions](kusto/management/access-control/role-based-authorization.md). Other actions, such as query, may require database admin, database user, or table admin permissions.
 
-* **Supported Data types**: See [supported data types] (INSERT LINK) for Azure Data Explorer. If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.
+* **Supported Data types**: See [supported data types] (INSERT LINK) for Azure Data Explorer. 
 
 ## Batching vs streaming ingestion
 
@@ -132,17 +131,12 @@ In order to ingest data, a table needs to be created beforehand. Use one of the 
 * Create a table [with a command](kusto/management/create-table-command.md). 
 * Create a table using [One Click Ingestion](one-click-ingestion-new-table.md).
 
+> [!Note]
+> If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.
+
 ## Schema mapping
 
 [Schema mapping](kusto/management/mappings.md) helps bind source data fields to destination table columns. This allows you to take data from a variety of different sources to the same table, based on the defined attributes. Different types of mappings are supported, both row-oriented (CSV, JSON and AVRO), and column-oriented (Parquet).
-
-### Mapping types
-
-* **[CSV mapping](kusto/management/mappings.md#csv-mapping)** (optional) works with all ordinal-based formats. It can be performed using the ingest command parameter or [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
-* **[JSON mapping](kusto/management/mappings.md#json-mapping)** (mandatory) can be performed using the ingest command parameter. Can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
-* **[Avro mapping](kusto/management/mappings.md#avro-mapping)** (mandatory) can be performed using the ingest command parameter. Can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
-* **[Orc mapping](kusto/management/mappings.md#orc-mapping)**: When the source file is in Orc format, the file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. The columns mapped in the Orc mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns. 
-* **[Parquet mapping](kusto/management/mappings.md#parquet-mapping)**: When the source file is in Parquet format, the file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. The columns mapped in the Parquet mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
 
 ## Update policy
 
