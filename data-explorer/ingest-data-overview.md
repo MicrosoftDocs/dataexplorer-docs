@@ -116,6 +116,12 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
 ## Ingestion process
 
+1. **Set retention policy**
+
+    Data ingested into a table in Azure Data Explorer is subject to the table's effective retention policy. Unless set on a table explicitly, the effective retention policy is derived from the database's retention policy. Hot retention is a function of cluster size and your retention policy. Ingesting more data than you have available space will force the first in data to cold retention.
+    
+    Make sure that the database's retention policy is appropriate for your needs. If not, explicitly override it at the table level. See [retention policy](kusto/management/retentionpolicy.md) for more details. 
+    
 1. **Create a table**
 
     In order to ingest data, a table needs to be created beforehand. Use one of the following options:
@@ -129,15 +135,11 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
     [Schema mapping](kusto/management/mappings.md) helps bind source data fields to destination table columns. This allows you to take data from a variety of different sources to the same table, based on the defined attributes. Different types of mappings are supported, both row-oriented (CSV, JSON and AVRO), and column-oriented (Parquet). In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
 
-1. **Set update policy**
+1. **Set update policy** (optional)
 
    Some of the data format mappings (Parquet, JSON, and Avro) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use update policy, which allows for lightweight processing using Kusto Query Language commands. The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables. Set your [update policy](kusto/management/update-policy.md).
 
-1. **Set retention policy**
 
-    Data ingested into a table in Azure Data Explorer is subject to the table's effective retention policy. Unless set on a table explicitly, the effective retention policy is derived from the database's retention policy. Hot retention is a function of cluster size and your retention policy. Ingesting more data than you have available space will force the first in data to cold retention.
-    
-    Make sure that the database's retention policy is appropriate for your needs. If not, explicitly override it at the table level. See [retention policy](kusto/management/retentionpolicy.md) for more details. 
 
 ## Next steps
 
