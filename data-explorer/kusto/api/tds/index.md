@@ -19,7 +19,6 @@ with a subset of the T-SQL query language. Microsoft Excel and Microsoft Power B
 
 ## Links to pages discussing SQL, KQL, TDS, and Azure Data Explorer (Kusto)
 
-The following links present more information about support for SQL, KQL, TDS, and Azure Data Explorer (Kusto)
 
 * [T-SQL](./t-sql.md) - For information on the T-SQL query language as implemented by Azure Data Explorer. 
 
