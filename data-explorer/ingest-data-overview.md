@@ -89,7 +89,7 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
 * **[LightIngest](lightingest.md)**: A command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
 
-### Kusto Query Language ingest control commands 
+### Kusto Query Language ingest control commands - TODO: discuss placement and depth
 
 There are a number of methods by which data can be ingested directly to the engine by Kusto Query Language (KQL) commands. Because this method bypasses the Data Management services, it is only appropriate for exploration and prototyping. Do not use this method in production or high-volume scenarios.
 
