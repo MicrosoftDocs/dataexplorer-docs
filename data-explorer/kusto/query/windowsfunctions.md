@@ -11,7 +11,7 @@ ms.date: 02/20/2019
 ---
 # Window functions
 
-Window functions operate on multiple rows (records) in a row set at a time. Unlike aggregation functions, window functions require that the rows in the row set be **serialized** (have a specific order to them). Window functions may depend on the order to determine the result.
+Window functions operate on multiple rows (records) in a row set at a time. Unlike aggregation functions, window functions require that the rows in the row set be serialized (have a specific order to them). Window functions may depend on the order to determine the result.
 
 Window functions can only be used on serialized sets. The easiest way to serialize a row set is to use the [serialize operator](./serializeoperator.md). This operator "freezes" the order of rows in an arbitrary manner. If the order of serialized rows is semantically important, use the [sort operator](./sortoperator.md) to force a particular order.
 
