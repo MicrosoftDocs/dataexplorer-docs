@@ -53,7 +53,6 @@ The code does the following.
 ```csharp
 static void Main(string[] args)
 {
-    var clusterName = "KustoLab";
     var db = "KustoIngestClientDemo";
     var table = "Table1";
     var mappingName = "Table1_mapping_1";
@@ -77,17 +76,30 @@ static void Main(string[] args)
         kustoAdminClient.ExecuteControlCommand(databaseName: db, command: command);
 
         // Set up mapping
-        var columnMappings = new List<JsonColumnMapping>();
-        columnMappings.Add(new JsonColumnMapping()
-            { ColumnName = "Column1", JsonPath = "$.Id" });
-        columnMappings.Add(new JsonColumnMapping()
-            { ColumnName = "Column2", JsonPath = "$.Timestamp" });
-        columnMappings.Add(new JsonColumnMapping()
-            { ColumnName = "Column3", JsonPath = "$.Message" });
-
-        command = CslCommandGenerator.GenerateTableJsonMappingCreateCommand(
-                                            table, mappingName, columnMappings);
-        kustoAdminClient.ExecuteControlCommand(databaseName: db, command: command);
+        var columnMappings = new List<ColumnMapping>();
+            columnMappings.Add(new ColumnMapping()
+            {
+                ColumnName = "Column1",
+                Properties = new Dictionary<string, string>() {
+                    { Data.Common.MappingConsts.Path, "$.Id" },
+            } });
+            columnMappings.Add(new ColumnMapping()
+            {
+                ColumnName = "Column2",
+                Properties = new Dictionary<string, string>() {
+                    { Data.Common.MappingConsts.Path, "$.Timestamp" },
+            }
+            });
+            columnMappings.Add(new ColumnMapping()
+            {
+                ColumnName = "Column3",
+                Properties = new Dictionary<string, string>() {
+                    { Data.Common.MappingConsts.Path, "$.Message" },
+            }
+            });
+            var secondCommand = CslCommandGenerator.GenerateTableMappingCreateCommand(
+                Data.Ingestion.IngestionMappingKind.Json, table, mappingName, columnMappings);
+        kustoAdminClient.ExecuteControlCommand(databaseName: db, command: secondCommand);
     }
 
     // Create Ingest Client
@@ -126,8 +138,8 @@ static void Main(string[] args)
         // Wait and retrieve all notifications
         //  - Actual duration should be decided based on the effective Ingestion Batching Policy set on the table/database
         Thread.Sleep(<timespan>);
-        var errors = ingestClient.GetAndDiscardTopIngestionFailures().GetAwaiter().GetResult();
-        var successes = ingestClient.GetAndDiscardTopIngestionSuccesses().GetAwaiter().GetResult();
+        var errors = ingestClient.GetAndDiscardTopIngestionFailuresAsync().GetAwaiter().GetResult();
+        var successes = ingestClient.GetAndDiscardTopIngestionSuccessesAsync().GetAwaiter().GetResult();
 
         errors.ForEach((f) => { Console.WriteLine($"Ingestion error: {f.Info.Details}"); });
         successes.ForEach((s) => { Console.WriteLine($"Ingested: {s.Info.IngestionSourcePath}"); });
