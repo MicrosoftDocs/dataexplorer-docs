@@ -14,21 +14,26 @@ ms.date: 10/23/2018
 Applies two segments linear regression on a series, returning multiple columns.  
 
 Takes an expression containing dynamic numerical array as input and applies [two segments linear regression](https://en.wikipedia.org/wiki/Segmented_regression) in order to identify and quantify a trend change in a series. The function iterates on the series indexes. In each iteration, the function splits the series to two parts, fits a separate line (using [series_fit_line()](series-fit-linefunction.md)) to each part, and calculates the total r-square. The best split is the one that maximized r-square; the function returns its parameters:
-* `rsquare`: [r-square](https://en.wikipedia.org/wiki/Coefficient_of_determination) is a standard measure of the fit quality. It's a number in the range [0-1], where 1 - is the best possible fit, and 0 means the data is unordered and do not fit any line.
-* `split_idx`: the index of breaking point to two segments (zero-based).
-* `variance`: variance of the input data.
-* `rvariance`: residual variance, which is the variance between the input data values the approximated ones (by the two line segments).
-* `line_fit`: numerical array holding a series of values of the best fitted line. The series length is equal to the length of the input array. It's mainly used for charting.
-* `right_rsquare`: r-square of the line on the right side of the split, see [series_fit_line()](series-fit-linefunction.md).
-* `right_slope`: slope of the right approximated line (of the form y=ax+b).
-* `right_interception`: interception of the approximated left line (b from y=ax+b).
-* `right_variance`: variance of the input data on the right side of the split.
-* `right_rvariance`: residual variance of the input data on the right side of the split.
-* `left_rsquare`: r-square of the line on the left side of the split, see [series_fit_line()](series-fit-linefunction.md).
-* `left_slope`: slope of the left approximated line (of the form y=ax+b).
-* `left_interception`: interception of the approximated left line (of the form y=ax+b).
-* `left_variance`: variance of the input data on the left side of the split.
-* `left_rvariance`: residual variance of the input data on the left side of the split.
+
+
+|Parameter  |Description  |
+|---------|---------|
+|`rsquare`     | [R-square](https://en.wikipedia.org/wiki/Coefficient_of_determination) is standard measure of the fit quality. It's a number in the range [0-1], where 1 - is the best possible fit, and 0 means the data is unordered and do not fit any line.        |
+|`split_idx`     |   The index of breaking point to two segments (zero-based).      |
+|`variance`     | Variance of the input data.        |
+|`rvariance`     | Residual variance, which is the variance between the input data values the approximated ones (by the two line segments).        |
+|`line_fit`     | Numerical array holding a series of values of the best fitted line. The series length is equal to the length of the input array. It's mainly used for charting.        |
+|`right_rsquare`     | R-square of the line on the right side of the split, see [series_fit_line()](series-fit-linefunction.md).        |
+|`right_slope`     | Slope of the right approximated line (of the form y=ax+b).         |
+|`right_interception`     |  Interception of the approximated left line (b from y=ax+b).       |
+|`right_variance`    | Variance of the input data on the right side of the split.        |
+|`right_rvariance`     | Residual variance of the input data on the right side of the split.        |
+|`left_rsquare`     | R-square of the line on the left side of the split, see [series_fit_line()](series-fit-linefunction.md).        |
+|`left_slope`    | Slope of the left approximated line (of the form y=ax+b).        |
+|`left_interception`     |   Interception of the approximated left line (of the form y=ax+b).      |
+|`left_variance`     | Variance of the input data on the left side of the split.        |
+|`left_rvariance`     | Residual variance of the input data on the left side of the split.        |
+
 
 > [!Note]
 > This function returns multiple columns an so cannot be used as an argument for another function.
