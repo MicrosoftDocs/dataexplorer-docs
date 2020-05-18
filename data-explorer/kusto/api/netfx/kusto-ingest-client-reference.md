@@ -403,7 +403,14 @@ var kustoIngestionProperties = new KustoIngestionProperties("TargetDatabase", "T
     IngestByTags = new List<string> { guid },
     AdditionalTags = new List<string> { "some tags" },
     IngestIfNotExists = new List<string> { guid },
-    
+    IngestionMapping = new IngestionMapping() {
+        IngestionMappingKind = Data.Ingestion.IngestionMappingKind.Csv,
+        IngestionMappings = new ColumnMapping[] { new ColumnMapping() {
+            ColumnName = "stringColumn",
+            Properties = new Dictionary<string, string>() {
+            { MappingConsts.Ordinal, "1"} }
+        } },
+    },
     ValidationPolicy = new ValidationPolicy { ValidationImplications = ValidationImplications.Fail, ValidationOptions = ValidationOptions.ValidateCsvInputConstantColumns },
     Format = DataSourceFormat.csv
 };
