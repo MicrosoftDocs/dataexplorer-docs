@@ -15,10 +15,9 @@ Azure Data Explorer (Kusto) supports a subset of the Microsoft SQL Server commun
 with a subset of the T-SQL query language. Microsoft Excel and Microsoft Power BI are only some of the many tools that can work with Azure Data Explorer (Kusto). These Microsoft applications also know how to query SQL Server.
 
 > [!NOTE]
-> The client must use Azure Active Directory (Azure AD) integrated authentication as the client tool to query Kusto through MS-TDS.
+> Use Azure Active Directory (Azure AD) integrated authentication as the client tool to query Kusto through MS-TDS.
 
-## Links to pages discussing SQL, KQL, TDS, and Azure Data Explorer (Kusto)
-
+## Next steps
 
 * [T-SQL](./t-sql.md) - Learn about the T-SQL query language as implemented by Kusto. 
 
