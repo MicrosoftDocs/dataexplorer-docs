@@ -13,7 +13,7 @@ ms.date: 08/30/2019
 
 Use streaming ingestion when you require low latency with an ingestion time of less than 10 seconds for varied volume data. It's used to optimize operational processing of many tables, in one or more databases, where the stream of data into each table is relatively small (few records per second) but overall data ingestion volume is high (thousands of records per second). 
 
-Use bulk ingestion instead of streaming ingestion when the amount of data grows to more than 1 MB per second per table. Read [Data ingestion overview](ingest-data-overview.md) to learn more about the various methods of ingestion.
+Use bulk ingestion instead of streaming ingestion when the amount of data grows to more than 4GB per hour per table. Read [Data ingestion overview](ingest-data-overview.md) to learn more about the various methods of ingestion.
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ There are two supported streaming ingestion types:
 
 
 * [**Event Hub**](ingest-data-event-hub.md), which is used as a data source
-* **Custom ingestion** requires you to write an application that uses one of the Azure Data Explorer client libraries. See [streaming ingestion sample](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) for a sample application.
+* **Custom ingestion** requires you to write an application that uses one of the Azure Data Explorer [client libraries](kusto/api/client-libraries.md). See [streaming ingestion sample](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) for a sample application.
 
 ### Choose the appropriate streaming ingestion type
 
@@ -59,7 +59,7 @@ There are two supported streaming ingestion types:
 > Disabling streaming ingestion could take a few hours.
 
 1. Drop [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) from all relevant tables and databases. The streaming ingestion policy removal triggers streaming ingestion data movement from the initial storage to the permanent storage in the column store (extents or shards). The data movement can last between a few seconds to a few hours, depending on the amount of data in the initial storage, and how the CPU and memory is used by the cluster.
-1. In the Azure portal, go to your Azure Data Explorer cluster. In **Settings**, select **Configurations**. 
+1. In the Azure portal, go to your Azure Data Explorer cluster. In **Settings**, select **Configurations**.
 1. In the **Configurations** pane, select **Off** to disable **Streaming ingestion**.
 1. Select **Save**.
 
@@ -67,10 +67,11 @@ There are two supported streaming ingestion types:
 
 ## Limitations
 
-* Streaming ingestion doesn't support [Database cursors](kusto/management/databasecursor.md) or [Data mapping](kusto/management/mappings.md). Only [pre-created](kusto/management/create-ingestion-mapping-command.md) data mapping is supported. 
-* Streaming ingestion performance and capacity scales with increased VM and cluster sizes. Concurrent ingestions are limited to six ingestions per core. For example, for 16 core SKUs, such as D14 and L16, the maximal supported load is 96 concurrent ingestions. For two core SKUs, such as D11, the maximal supported load is 12 concurrent ingestions.
-* The data size limitation per ingestion request is 4 MB.
-* Schema updates, such as creation and modification of tables and ingestion mappings, may take up to five minutes for the streaming ingestion service.
+* [Database cursors](kusto/management/databasecursor.md) are not supported for database if the database itself or any of its tables have streaming ingestion policy defined and enabled (see [Streaming ingestion policy](kusto/management/streamingingestionpolicy.md))
+* [Data mapping](kusto/management/mappings.md) must be [pre-created](kusto/management/create-ingestion-mapping-command.md) for use in streaming ingestion. Individual streaming ingestion request do not accommodate inline data mappings.
+* Streaming ingestion performance and capacity scales with increased VM and cluster sizes. Number of concurrent ingestion requests is limited to six per core. For example, for 16 core SKUs, such as D14 and L16, the maximal supported load is 96 concurrent ingestion requests. For two core SKUs, such as D11, the maximal supported load is 12 concurrent ingestion requests.
+* The data size limit for streaming ingestion request is 4 MB.
+* Schema updates, such as creation and modification of tables and ingestion mappings, may take up to five minutes to become available for the streaming ingestion service.
 * Enabling streaming ingestion on a cluster, even when data isn't ingested via streaming, uses part of the local SSD disk of the cluster machines for streaming ingestion data and reduces the storage available for hot cache.
 * [Extent tags](kusto/management/extents-overview.md#extent-tagging) can't be set on the streaming ingestion data.
 
