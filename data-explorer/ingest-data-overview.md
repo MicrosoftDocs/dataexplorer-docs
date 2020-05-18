@@ -43,7 +43,7 @@ Azure Data Explorer supports several ingestion methods, each with its own target
 
 ### Ingestion using managed pipelines 
 
-For organizations who wish to have management (throttling, retries, monitors, alerts, and more) performed by an external service, using a connector is likely the most appropriate solution. Queued ingestion is appropriate for large data volumes. Azure Data Explorer currently supports the following pipelines:
+For organizations who wish to have management (throttling, retries, monitors, alerts, and more) performed by an external service, using a connector is likely the most appropriate solution. Queued ingestion is appropriate for large data volumes. Azure Data Explorer  supports the following Azure pipelines:
 
 * **[Event Grid](https://azure.microsoft.com/services/event-grid/)**: A pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. For more information, see [Ingest Azure Blobs into Azure Data Explorer](ingest-data-event-grid.md).
 
