@@ -88,7 +88,7 @@ Replace `<cluster>` with the hostname of the cluster you want to load into the c
 The hosting application may want to control certain aspects of the user experience. For example, hide the connection pane, or disable connecting to other clusters.
 For this scenario, the web explorer supports feature flags.
 
-A feature flag can be used in the url as a query parameter. If the hosting application wishes to disable adding other clusters they should use https://dataexplorer.azure.com/?ShowConnectionButtons=false
+A feature flag can be used in the url as a query parameter. If the hosting application wants to disable adding other clusters, it should use https://dataexplorer.azure.com/?ShowConnectionButtons=false
 
 | setting                 | Description                                                                                                        | Default Value |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------- |
@@ -99,7 +99,7 @@ A feature flag can be used in the url as a query parameter. If the hosting appli
 | ShowToS                 | Show **link to the terms of service for Azure Data Explorer** from the settings dialog                             | true          |
 | ShowPersona             | Show the user name from the settings menu, in the top-right corner                                                 | true          |
 | IFrameAuth              | If true, the web explorer will expect the iframe to handle authentication and provide a token via a message. This process will always be true for iframe scenarios                                                                                                                                      | false         |
-| PersistAfterEachRun     | Usually the web explorer will persist in the unload event. Note that when hosting in iframes, it doesn't always fire. This flag will then trigger **persisting local state** after each query run. As a result, any data loss that occurs, will only affect text that had never been run, thus limiting its impact. | false         |
+| PersistAfterEachRun     | Usually the web explorer will persist in the unload event. When hosting in iframes, it doesn't always fire. This flag will then trigger **persisting local state** after each query run. As a result, any data loss that occurs, will only affect text that had never been run, thus limiting its impact          | false         |
 | ShowSmoothIngestion     | If true, show the 1-click ingestion experience when right-clicking on a database                                   | true          |
 | RefreshConnection       | If true, always refreshes the schema when loading the page and never depends on local storage                      | false         |
 | ShowPageHeader          | If true, shows the page header that includes the Azure Data Explorer title and settings                            | true          |
@@ -108,7 +108,7 @@ A feature flag can be used in the url as a query parameter. If the hosting appli
 
 ### Feature flag presets
 
-presets will set a bunch of feature flags at once.
+Presets will set a bunch of feature flags at once.
 Currently, there's only a single preset.
 
 `IbizaPortal` - Changes the following flags from the defaults.
