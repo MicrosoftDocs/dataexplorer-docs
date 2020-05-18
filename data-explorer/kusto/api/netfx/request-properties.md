@@ -40,7 +40,7 @@ The `Kusto.Data.Common.ClientRequestProperties` class holds three kinds of data.
 * Parameters  - A mapping of a query parameter name to a query parameter value.
 
 > [!NOTE]
-> Some named properties are marked "do not use". Such properties should not
+> Some named properties are marked "do not use". Such properties shouldn't
 > be specified by clients, and have no effect on the service.
 
 ## The ClientRequestId (x-ms-client-request-id) named property
