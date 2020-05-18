@@ -1,6 +1,6 @@
 ---
 title: MS-TDS T-SQL support - Azure Data Explorer
-description: This article has links to information that describes MS-TDS T-SQL support in Azure Data Explorer.
+description: This article introduces MS-TDS T-SQL support in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
