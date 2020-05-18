@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Kusto.Ingest - Ingestion permissions
+# Kusto.Ingest - Ingestion permissions 
 
 This article explains what permissions to set up on your service, for `Native` ingestion to work.
 
@@ -27,7 +27,7 @@ Ingestion permission mode is defined in [IKustoQueuedIngestClient](kusto-ingest-
 
 The diagram outlines the queued ingestion client interaction with Kusto.
 
-:::image type="content" source="../images/queued-ingest.jpg" alt-text="queued-ingest":::
+:::image type="content" source="../images/kusto-ingest-client-permissions/queued-ingest.png" alt-text="Queued ingestion":::
 
 ### Permissions on the Engine Service
 
@@ -49,3 +49,4 @@ Granting required permissions on database `DB1` or table `T1` to Azure AD App `T
 .add database DB1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test Azure AD App'
 .add table T1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test Azure AD App'
 ```
+ 
