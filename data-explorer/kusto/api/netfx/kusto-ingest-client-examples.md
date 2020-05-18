@@ -100,10 +100,10 @@ client.IngestFromStorageAsync(@"InvalidTestFile.csv", kustoIngestionProperties);
 Thread.Sleep(TimeSpan.FromMinutes(8));
 
 // Retrieve and validate failures
-var ingestionFailures = client.PeekTopIngestionFailures().GetAwaiter().GetResult();
+var ingestionFailures = client.PeekTopIngestionFailuresAsync().GetAwaiter().GetResult();
 Ensure.IsTrue((ingestionFailures.Count() > 0), "Failures expected");
 // Retrieve, delete and validate failures
-ingestionFailures = client.GetAndDiscardTopIngestionFailures().GetAwaiter().GetResult();
+ingestionFailures = client.GetAndDiscardTopIngestionFailuresAsync().GetAwaiter().GetResult();
 Ensure.IsTrue((ingestionFailures.Count() > 0), "Failures expected");
 
 // Dispose of the client
