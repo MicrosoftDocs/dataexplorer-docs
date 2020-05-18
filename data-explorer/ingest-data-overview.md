@@ -65,9 +65,7 @@ For organizations who wish to have management (throttling, retries, monitors, al
 
 Azure Data Explorer provides SDKs that can be used for query and data ingestion. Programmatic ingestion is optimized for reducing ingestion costs (COGs), by minimizing storage transactions during and following the ingestion process.
 
-**Available SDKs and open-source projects**:
-
-Client SDKs can be used for data ingestion and query data with:
+**Available SDKs and open-source projects**
 
 * [Python SDK](kusto/api/python/kusto-python-client-library.md)
 
@@ -91,15 +89,6 @@ Client SDKs can be used for data ingestion and query data with:
 
 * **[LightIngest](lightingest.md)**: A command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
 
-### Kusto Query Language ingest control commands
-
-There are a number of methods by which data can be ingested directly to the engine by Kusto Query Language (KQL) commands. Because this method bypasses the Data Management services, it is only appropriate for exploration and prototyping. Do not use this method in production or high-volume scenarios.
-
-  * **Inline ingestion**:  A control command [.ingest inline](kusto/management/data-ingestion/ingest-inline.md) is sent to the engine, with the data to be ingested being a part of the command text itself. This method is intended for ad hoc testing purposes.
-
-  * **Ingest from query**: A control command [.set, .append, .set-or-append, or .set-or-replace](kusto/management/data-ingestion/ingest-from-query.md) is sent to the engine, with the data specified indirectly as the results of a query or a command.
-
-  * **Ingest from storage (pull)**: A control command [.ingest into](kusto/management/data-ingestion/ingest-from-storage.md) is sent to the engine, with the data stored in some external storage (for example, Azure Blob Storage) accessible by the engine and pointed-to by the command.
 
 ## Comparing ingestion methods
 
@@ -125,32 +114,33 @@ There are a number of methods by which data can be ingested directly to the engi
 > [!Note] 
 > When referenced in the above table, ingestion supports a maximum file size of 5 GB. The recommendation is to ingest files between 100 MB and 1 GB.
 
-## Creating a table
+## Ingestion process
 
-In order to ingest data, a table needs to be created beforehand. Use one of the following options:
-* Create a table [with a command](kusto/management/create-table-command.md). 
-* Create a table using [One Click Ingestion](one-click-ingestion-new-table.md).
+1. **Create a table**
 
-> [!Note]
-> If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.
+    In order to ingest data, a table needs to be created beforehand. Use one of the following options:
+   * Create a table [with a command](kusto/management/create-table-command.md). 
+   * Create a table using [One Click Ingestion](one-click-ingestion-new-table.md).
 
-## Schema mapping
+    > [!Note]
+    > If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.
 
-[Schema mapping](kusto/management/mappings.md) helps bind source data fields to destination table columns. This allows you to take data from a variety of different sources to the same table, based on the defined attributes. Different types of mappings are supported, both row-oriented (CSV, JSON and AVRO), and column-oriented (Parquet).
+1. **Create schema mapping**
 
-## Update policy
+    [Schema mapping](kusto/management/mappings.md) helps bind source data fields to destination table columns. This allows you to take data from a variety of different sources to the same table, based on the defined attributes. Different types of mappings are supported, both row-oriented (CSV, JSON and AVRO), and column-oriented (Parquet). In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
 
-Some of the data format mappings (Parquet, JSON, and Avro) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use update policy, which allows for lightweight processing using Kusto Query Language commands. The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables. Set your [update policy](kusto/management/update-policy.md).
+1. **Set update policy**
 
-## Ingestion recommendations and limitations
+   Some of the data format mappings (Parquet, JSON, and Avro) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use update policy, which allows for lightweight processing using Kusto Query Language commands. The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables. Set your [update policy](kusto/management/update-policy.md).
 
-* Data ingested into a table in Azure Data Explorer is subject to the table's effective retention policy. Unless set on a table explicitly, the effective retention policy is derived from the database's retention policy. Hot retention is a function of cluster size and your retention policy. Ingesting more data than you have available space will force the first in data to cold retention.
-Make sure that the database's retention policy is appropriate for your needs. If not, explicitly override it at the table level. See [retention policy](kusto/management/retentionpolicy.md) for more details. 
-* Ingesting data requires **Table ingestor** or **Database ingestor** [permissions](kusto/management/access-control/role-based-authorization.md).
-* Ingestion supports a maximum file size of 5 GB. The recommendation is to ingest files between 100 MB and 1 GB.
+1. **Set retention policy**
+
+    Data ingested into a table in Azure Data Explorer is subject to the table's effective retention policy. Unless set on a table explicitly, the effective retention policy is derived from the database's retention policy. Hot retention is a function of cluster size and your retention policy. Ingesting more data than you have available space will force the first in data to cold retention.
+    
+    Make sure that the database's retention policy is appropriate for your needs. If not, explicitly override it at the table level. See [retention policy](kusto/management/retentionpolicy.md) for more details. 
 
 ## Next steps
 
 * [Supported data formats](ingestion-supported-formats.md)
-* Supported data properties TODO: add link
+* Supported data properties TODO: PLEASE ADVISE IF THERE IS A LINK TO DATA PROPERTIES THAT IS DIFFERENT FROM THE DATA FORMAT LINK
 * [Supported ingestion properties](ingestion-properties.md)
