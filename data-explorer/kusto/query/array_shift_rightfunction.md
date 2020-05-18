@@ -15,17 +15,17 @@ ms.date: 08/11/2019
 
 **Syntax**
 
-`array_shift_right(`*arr*, *shift_count* [, *fill_value* ]`)`
+`array_shift_right(`*`arr`*, *`shift_count`* [, *`fill_value`* ]`)`
 
 **Arguments**
 
-* *arr*: Input array to split, must be dynamic array.
-* *shift_count*: Integer specifying the number of positions that array elements will be shifted to the right. If the value is negative, the elements will be shifted to the left.
-* *fill_value*: scalar value that is used for inserting elements instead of the ones that were shifted and removed. Default: null value or empty string (depending on the *arr* type).
+* *`arr`*: Input array to split, must be dynamic array.
+* *`shift_count`*: Integer specifying the number of positions that array elements will be shifted to the right. If the value is negative, the elements will be shifted to the left.
+* *`fill_value`*: scalar value that is used for inserting elements instead of the ones that were shifted and removed. Default: null value or empty string (depending on the *arr* type).
 
 **Returns**
 
-Dynamic array containing the same amount of the elements as in the original array, where each element was shifted according to *shift_count*. New elements that are added instead of the elements that are removed will have value of *fill_value*.
+Dynamic array containing the same amount of the elements as in the original array. Each element has been shifted according to *`shift_count`*. New elements that are added instead of the removed elements will have a value of *`fill_value`*.
 
 **See also**
 
@@ -58,7 +58,6 @@ Dynamic array containing the same amount of the elements as in the original arra
     |arr|arr_shift|
     |---|---|
     |[1,2,3,4,5]|[-1,-1,1,2,3]|
-
 
 * Shifting to the left by two positions by using a negative shift_count value:
 
