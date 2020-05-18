@@ -35,7 +35,7 @@ Gets the schema in JSON format and additional table metadata.
 Requires [Database user permission](../management/access-control/role-based-authorization.md).
 
 ```kusto
-.show table TableName schema as JSON
+.show table TableName schema as json
 ```
 
 | Output parameter | Type   | Description                             |
