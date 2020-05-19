@@ -286,7 +286,7 @@ StormEvents | count
 
 Run each line using `F5`, or similar.
 
-### User identity control for connecting to Kusto.Explorer
+### Control the user identity connecting to Kusto.Explorer
 
 The default security model for new connections is
 AAD-Federated security. Authentication is done through the
