@@ -243,7 +243,7 @@ Right-click the target entity in the [Connections panel](kusto-explorer.md#conne
 ## Next steps
 
 * [Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md)
-* [Kusto.Explorer Options](kusto-explorer-options.md)
+* [Kusto.Explorer options](kusto-explorer-options.md)
 * [Troubleshooting Kusto.Explorer](kusto-explorer-troubleshooting.md)
 
 Learn more about Kusto.Explorer tools and utilities:
