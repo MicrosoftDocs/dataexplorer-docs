@@ -76,7 +76,7 @@ and execute a query against that cluster.
 * Query string: `web=0`
 
 > [!NOTE]
-> See [Deep-linking with Kusto.Explorer](../../tools/kusto-explorer.md#deep-linking-queries)
+> See [Deep-linking with Kusto.Explorer](../../tools/kusto-explorer-share-queries.md#deep-linking-queries) 
 > for a description of the redirect URI syntax for starting up Kusto.Explorer.
 
 ## Deep linking to Kusto.WebExplorer
