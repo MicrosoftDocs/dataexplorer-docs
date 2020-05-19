@@ -4,10 +4,10 @@ description: This article describes Kusto.Ingest client interfaces and factory c
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 05/19/2020
 ---
 # Kusto.Ingest client interfaces and factory classes
 
