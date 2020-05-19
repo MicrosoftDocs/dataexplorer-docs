@@ -20,24 +20,20 @@ ms.date: 11/27/2018
 - [Create an Azure Data Explorer cluster and database](/azure/data-explorer/create-cluster-database-portal).
 - [Create an Azure Databricks workspace](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace). Under **Azure Databricks Service**, in the **Pricing Tier** drop-down list, select **Premium**. This selection enables you to use Azure Databricks secrets to store your credentials and reference them in notebooks and jobs.
 
-- [Create a cluster](https://docs.azuredatabricks.net/user-guide/clusters/create.html) in Azure Databricks with the following specifications (minimum settings needed to run the sample notebooks):
+- [Create a cluster](https://docs.azuredatabricks.net/user-guide/clusters/create.html) in Azure Databricks with the default settings.
 
-   ![Specifications for creating a cluster](media/connect-from-databricks/databricks-create-cluster.png)
+ ## Install the Kusto Spark connector on your Azure Databricks cluster
 
-## Install the Python library on your Azure Databricks cluster
-
-To install the [Python library](kusto/api/python/kusto-python-client-library.md) on your Azure Databricks cluster:
+To install the [spark-kusto-connector](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector) on your Azure Databricks cluster:
 
 1. Go to your Azure Databricks workspace and [create a library](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library).
-2. [Upload a Python PyPI package or Python Egg](https://docs.azuredatabricks.net/user-guide/libraries.html#upload-a-python-pypi-package-or-python-egg).
-   - Upload, install, and attach the library to your Databricks cluster.
-   - Enter the PyPi name: **azure-kusto-data**.
+2. Search for "spark-kusto-connector" package on Maven Central and install the latest version and attache to your cluster. 
 
-## Connect to Azure Data Explorer by using a device login
+## Connect to Azure Data Explorer by using a device authentication
 
-[Import a notebook](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) by using the [Query-ADX-device-login](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-device-login.ipynb) notebook. You can then connect to Azure Data Explorer by using your credentials.
+1. Sample code is available [here](https://github.com/Azure/azure-kusto-spark/blob/master/samples/src/main/python/pyKusto.py).
 
-## Connect to ADX by using an Azure AD app
+## Connect to Azure Data Explorer by using an Azure AD app
 
 1. Create Azure AD app by [provisioning an Azure AD application](kusto/management/access-control/how-to-provision-aad-app.md).
 1. Grant access to your Azure AD app in your Azure Data Explorer database as follows:
@@ -68,7 +64,7 @@ For example, if your domain is *contoso.com*, the URL is: [https://login.windows
 
 Your tenant ID is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. 
 
-### Store and secure your Azure AD app ID and key 
+### (Optional) Store and secure your Azure AD app ID and key 
 
 Store and secure your Azure AD app ID and key by using Azure Databricks [secrets](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) as follows:
 1. [Set up the CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-the-cli).
@@ -84,5 +80,6 @@ Store and secure your Azure AD app ID and key by using Azure Databricks [secrets
 
     ```databricks secrets list --scope adx```
 
-### Import a notebook
-[Import a notebook](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) by using the [Query-ADX-AAD-App](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-AAD-App.ipynb) notebook to connect to Azure Data Explorer. Update the placeholder values with your cluster name, database name, and Azure AD tenant ID.
+### Sample Code
+1. Sample code is available [here](https://github.com/Azure/azure-kusto-spark/blob/master/samples/src/main/python/pyKusto.py). 
+2. Update the placeholder values with your cluster name, database name, table name, Azure AD tenant ID, AAD App ID, and AAD App Key. If you are storing your credentials in databricks secrets store, update the code accordingly to retrieve values from dbutils.
