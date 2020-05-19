@@ -1559,8 +1559,9 @@
     - name: Ad-hoc query
       items:
       - name: Kusto.Explorer
-        href: ./kusto/tools/kusto-explorer.md
         items:
+        - name: Kusto.Explorer installation and user interface
+          href: ./kusto/tools/kusto-explorer.md
         - name: Using Kusto.Explorer
           href: ./kusto/tools/kusto-explorer-using.md
         - name: Kusto.Explorer options

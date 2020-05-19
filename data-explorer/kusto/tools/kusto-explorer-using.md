@@ -248,7 +248,7 @@ Right-click the target entity in the [Connections panel](kusto-explorer.md#conne
 * [Troubleshooting Kusto.Explorer](kusto-explorer-troubleshooting.md)
 
 Learn more about Kusto.Explorer tools and utilities:
-* [Kusto.Explorer Code Analyzer](kusto-explorer-code-analyzer.md)
-* [Kusto.Explorer Code Navigation](kusto-explorer-codenav.md)
-* [Kusto Explorer Code Refactoring](kusto-explorer-refactor.md)
+* [Kusto.Explorer code analyzer](kusto-explorer-code-analyzer.md)
+* [Kusto.Explorer code navigation](kusto-explorer-codenav.md)
+* [Kusto.Explorer code refactoring](kusto-explorer-refactor.md)
 * [Kusto Query Language (KQL)](https://docs.microsoft.com/azure/kusto/query/)
