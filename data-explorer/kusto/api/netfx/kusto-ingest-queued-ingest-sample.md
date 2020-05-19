@@ -113,7 +113,10 @@ static void Main(string[] args)
         // Usually the recommended level is IngestionReportLevel.FailuresOnly
         ingestProps.ReportLevel = IngestionReportLevel.FailuresAndSuccesses;
         ingestProps.ReportMethod = IngestionReportMethod.Queue;
-        ingestProps.JSONMappingReference = mappingName;
+        ingestProps..IngestionMapping = new IngestionMapping()
+        { 
+            IngestionMappingReference = mappingName
+        };
         ingestProps.Format = DataSourceFormat.json;
 
         // Prepare data for ingestion
