@@ -182,7 +182,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 |DateTime Column| Name of column which may be used for time pre-filter|
 |Time Filter| Value of time pre-filter|
 
-## View Tab
+## View tab
 
 :::image type="content" source="images/kusto-explorer/view-tab.png" alt-text="Kusto Explorer view tab":::
 
