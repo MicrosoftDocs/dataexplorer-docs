@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 05/19/2020
 
 # Customer intent: As a .NET Standard SDK developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
