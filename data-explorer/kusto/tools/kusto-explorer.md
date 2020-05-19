@@ -157,7 +157,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 ||---------*Results*---------|
 |Clear results cache| Clears cached results of previously executed queries| 
 
-## Connections Tab
+## Connections tab
 
 :::image type="content" source="images/kusto-explorer/connections-tab.png" alt-text="Kusto Explorer connections tab":::
 
@@ -182,7 +182,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 |DateTime Column| Name of column which may be used for time pre-filter|
 |Time Filter| Value of time pre-filter|
 
-## View Tab
+## View tab
 
 :::image type="content" source="images/kusto-explorer/view-tab.png" alt-text="Kusto Explorer view tab":::
 
@@ -208,7 +208,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 
 (*) Data View Settings: Kusto.Explorer keeps track of the settings used per unique set of columns. When columns are reordered or removed, the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**. 
 
-## Tools Tab
+## Tools tab
 
 :::image type="content" source="images/kusto-explorer/tools-tab.png" alt-text="Kusto Explorer tools tab":::
 
@@ -228,7 +228,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 |Reset Options| Sets application settings to default values|
 |Options| Opens a tool for configuring application settings. Learn more about [Kusto.Explorer options](kusto-explorer-options.md).|
 
-## Monitoring Tab
+## Monitoring tab
 
 :::image type="content" source="images/kusto-explorer/monitoring-tab.png" alt-text="Kusto Explorer monitoring tab":::
 
@@ -239,7 +239,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 |Latest data: All tables| Shows a summary of the latest data in all tables of the currently selected database|
 |Latest data: Selected table|Shows in the status bar the latest data in the selected table| 
 
-## Management Tab
+## Management tab
 
 :::image type="content" source="images/kusto-explorer/management-tab.png" alt-text="Kusto Explorer management tab":::
 
@@ -251,7 +251,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 |Manage Table Authorized Principals | Enables managing a table's principals for authorized users| 
 |Manage Function Authorized Principals | Enables managing a function's principals for authorized users| 
 
-## Help Tab
+## Help tab
 
 :::image type="content" source="images/kusto-explorer/help-tab.png" alt-text="Kusto Explorer help tab":::
 
@@ -286,7 +286,7 @@ StormEvents | count
 
 Run each line using `F5`, or similar.
 
-### User identity control for connecting to Kusto.Explorer
+### Control the user identity connecting to Kusto.Explorer
 
 The default security model for new connections is
 AAD-Federated security. Authentication is done through the
@@ -331,11 +331,11 @@ Learn more about working with Kusto.Explorer:
 
 * [Using Kusto.Explorer](kusto-explorer-using.md)
 * [Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md)
-* [Kusto.Explorer Options](kusto-explorer-options.md)
+* [Kusto.Explorer options](kusto-explorer-options.md)
 * [Troubleshooting Kusto.Explorer](kusto-explorer-troubleshooting.md)
 
 Learn more about Kusto.Explorer tools and utilities:
-* [Kusto.Explorer Code Analyzer](kusto-explorer-code-analyzer.md)
-* [Kusto.Explorer Code Navigation](kusto-explorer-codenav.md)
-* [Kusto Explorer Code Refactoring](kusto-explorer-refactor.md)
+* [Kusto.Explorer code analyzer](kusto-explorer-code-analyzer.md)
+* [Kusto.Explorer code navigation](kusto-explorer-codenav.md)
+* [Kusto.Explorer code refactoring](kusto-explorer-refactor.md)
 * [Kusto Query Language (KQL)](https://docs.microsoft.com/azure/kusto/query/)

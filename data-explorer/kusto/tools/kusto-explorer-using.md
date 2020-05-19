@@ -35,7 +35,7 @@ Kusto.Explorer includes a powerful script mode that enables you to write, edit, 
 
 This document describes how to run basic queries in Kusto.Explorer and how to add parameters to your queries.
 
-## Basic Queries
+## Basic queries
 
 If you have table Logs, you can start exploring them:
 
@@ -145,6 +145,7 @@ This URI will open Kusto.Explorer, connect to the `Help` Kusto cluster, and run 
 > For security reasons, deep-linking is disabled for control commands.
 
 ### Creating a deep-link
+
 The easiest way to create a deep-link is to author your query in Kusto.Explorer and then use
 `Export to Clipboard` to copy the query (including the deep link and results) to the clipboard. You can then share it by email.
         
@@ -159,10 +160,10 @@ https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSs
 
 ### Deep-links and parametrized queries
 
-You can use Parametrized Queries with deep-linking.
+You can use parametrized queries with deep-linking.
 
-1. Create a query to be formed as a Parametrized Query (for example, `KustoLogs | where Timestamp > ago({Period}) | count`) 
-1. Provide a parameter for every Query Parameter in the URI
+1. Create a query to be formed as a parametrized query (for example, `KustoLogs | where Timestamp > ago({Period}) | count`) 
+1. Provide a parameter for every query parameter in the URI
 In this case:
 
 https://mycluster.kusto.windows.net/MyDatabase?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h
@@ -243,7 +244,7 @@ Right-click the target entity in the [Connections panel](kusto-explorer.md#conne
 ## Next steps
 
 * [Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md)
-* [Kusto.Explorer Options](kusto-explorer-options.md)
+* [Kusto.Explorer options](kusto-explorer-options.md)
 * [Troubleshooting Kusto.Explorer](kusto-explorer-troubleshooting.md)
 
 Learn more about Kusto.Explorer tools and utilities:
