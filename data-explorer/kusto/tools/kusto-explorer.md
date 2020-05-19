@@ -251,7 +251,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 |Manage Table Authorized Principals | Enables managing a table's principals for authorized users| 
 |Manage Function Authorized Principals | Enables managing a function's principals for authorized users| 
 
-## Help Tab
+## Help tab
 
 :::image type="content" source="images/kusto-explorer/help-tab.png" alt-text="Kusto Explorer help tab":::
 
