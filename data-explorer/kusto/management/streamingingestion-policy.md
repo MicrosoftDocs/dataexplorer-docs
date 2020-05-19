@@ -85,7 +85,7 @@ The command modifies the table or database `streamingingestion` policy object, a
 .alter-merge table T1 policy streamingingestion '{"HintAllocatedRate": 1.5}'
 ```
 
-## Deleting the policy
+## Delete the policy
 
 The `.delete policy streamingingestion` command deletes the streamingingestion policy from the database or table.
 
