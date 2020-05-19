@@ -6,7 +6,7 @@ ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 05/19/2020
 ---
 
 # End-to-end blob ingestion into Azure Data Explorer through C#
