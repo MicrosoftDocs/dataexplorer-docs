@@ -228,7 +228,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 |Reset Options| Sets application settings to default values|
 |Options| Opens a tool for configuring application settings. Learn more about [Kusto.Explorer options](kusto-explorer-options.md).|
 
-## Monitoring Tab
+## Monitoring tab
 
 :::image type="content" source="images/kusto-explorer/monitoring-tab.png" alt-text="Kusto Explorer monitoring tab":::
 
