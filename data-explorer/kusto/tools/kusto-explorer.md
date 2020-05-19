@@ -208,7 +208,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 
 (*) Data View Settings: Kusto.Explorer keeps track of the settings used per unique set of columns. When columns are reordered or removed, the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**. 
 
-## Tools Tab
+## Tools tab
 
 :::image type="content" source="images/kusto-explorer/tools-tab.png" alt-text="Kusto Explorer tools tab":::
 
