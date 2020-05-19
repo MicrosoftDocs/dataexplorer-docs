@@ -45,7 +45,7 @@ This command returns a table with the following columns:
 |---|---|---|---|---|
 |StreamingIngestionPolicy|DB1|{"IsEnabled": true, "HintAllocatedRate": null}
 
-## Changing the policy
+## Change the policy
 
 The `.alter[-merge] policy streamingingestion` family of commands provides means for modifying streaming ingestion policy of the database or table.
 
