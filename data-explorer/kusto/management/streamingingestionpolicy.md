@@ -22,7 +22,7 @@ Use the classic (bulk) ingestion instead of streaming ingestion when the amount 
  
 ## Streaming ingestion policy definition
 
-Streaming ingestion policy contains the following properties:
+The streaming ingestion policy contains the following properties:
 
 * **IsEnabled**:
   * defines the status of streaming ingestion functionality for the table/database
