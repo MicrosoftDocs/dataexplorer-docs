@@ -148,14 +148,14 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
     kustoClient.ExecuteControlCommand(command);
 
-    command = CslCommandGenerator.GenerateTableCsvMappingCreateCommand(
+    command = CslCommandGenerator.GenerateTableMappingCreateCommand(
+        Data.Ingestion.IngestionMappingKind.Csv,
         kustoTableName,
         kustoColumnMappingName,
-        new[]
-        {
-            new CsvColumnMapping { ColumnName = "EventTime", CslDataType="dateTime", Ordinal = 0 },
-            new CsvColumnMapping { ColumnName = "EventId", CslDataType="int", Ordinal = 1 },
-            new CsvColumnMapping { ColumnName = "EventSummary", CslDataType="string", Ordinal = 2 },
+        new ColumnMapping[] {
+            new ColumnMapping() { ColumnName = "EventTime", ColumnType = "dateTime", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "0" } } },
+            new ColumnMapping() { ColumnName = "EventId", ColumnType = "int", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "1" } } },
+            new ColumnMapping() { ColumnName = "EventSummary", ColumnType = "string", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "2" } } },
         });
     kustoClient.ExecuteControlCommand(command);
 }
