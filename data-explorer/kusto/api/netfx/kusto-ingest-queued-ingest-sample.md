@@ -113,7 +113,7 @@ static void Main(string[] args)
         // Usually the recommended level is IngestionReportLevel.FailuresOnly
         ingestProps.ReportLevel = IngestionReportLevel.FailuresAndSuccesses;
         ingestProps.ReportMethod = IngestionReportMethod.Queue;
-        ingestProps..IngestionMapping = new IngestionMapping()
+        ingestProps.IngestionMapping = new IngestionMapping()
         { 
             IngestionMappingReference = mappingName
         };
