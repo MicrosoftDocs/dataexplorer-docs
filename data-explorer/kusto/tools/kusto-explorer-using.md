@@ -35,7 +35,7 @@ Kusto.Explorer includes a powerful script mode that enables you to write, edit, 
 
 This document describes how to run basic queries in Kusto.Explorer and how to add parameters to your queries.
 
-## Basic Queries
+## Basic queries
 
 If you have table Logs, you can start exploring them:
 
