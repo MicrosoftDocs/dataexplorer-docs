@@ -11,11 +11,11 @@ ms.date: 02/24/2020
 ---
 # Streaming ingestion policy management
 
-Streaming ingestion policy can be set on a table to allow streaming ingestion into this table. The policy can also be set at the database level to apply the same setting to all its present and future tables.
+Streaming ingestion policy can be set on a table to allow streaming ingestion into this table. The policy can also be set at the database level to apply the same setting to both current and future tables.
 
 For more information, see [Streaming ingestion](../../ingest-data-streaming.md). To learn more about the streaming ingestion policy, see [Streaming ingestion policy](streamingingestionpolicy.md).
 
-## Displaying the policy
+## Display the policy
 
 The `.show policy streamingingestion` command shows the streaming ingestion policy of the database or table.
  
@@ -45,7 +45,7 @@ This command returns a table with the following columns:
 |---|---|---|---|---|
 |StreamingIngestionPolicy|DB1|{"IsEnabled": true, "HintAllocatedRate": null}
 
-## Changing the policy
+## Change the policy
 
 The `.alter[-merge] policy streamingingestion` family of commands provides means for modifying streaming ingestion policy of the database or table.
 
@@ -85,7 +85,7 @@ The command modifies the table or database `streamingingestion` policy object, a
 .alter-merge table T1 policy streamingingestion '{"HintAllocatedRate": 1.5}'
 ```
 
-## Deleting the policy
+## Delete the policy
 
 The `.delete policy streamingingestion` command deletes the streamingingestion policy from the database or table.
 
@@ -106,6 +106,7 @@ The command deletes the table or database streamingingestion policy object and t
 ```
 
 ### Streaming ingestion policy object
+
 In input and output of management commands streaming ingestion policy object is a JSON-formatted string that includes the following properties
 |Property  |Type    |Description                                                       |
 |----------|--------|------------------------------------------------------------------|
