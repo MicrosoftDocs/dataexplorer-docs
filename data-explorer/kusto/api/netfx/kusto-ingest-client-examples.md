@@ -4,10 +4,10 @@ description: This article describes Kusto.Ingest ingestion code examples in Azur
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/15/2019
+ms.date: 19/05/2019
 ---
 # Kusto.Ingest ingestion code examples
 
