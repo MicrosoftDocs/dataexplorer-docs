@@ -130,6 +130,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 You can create a URI that, when opened in a browser, opens Kusto.Explorer locally and runs a specific query on a specified Kusto database.
 
 ### Limitations
+
 The queries are limited to ~2000 characters because of browser limitations, HTTP proxies, and tools that validate links, such as Microsoft Outlook. The limitation is approximate because it's dependent on the cluster and Database name length. For more information, see [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427). 
 To reduce the chances of reaching the character limit, see [Getting Shorter Links](#getting-shorter-links), below.
 
