@@ -183,7 +183,10 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
         new KustoQueuedIngestionProperties(database, table)
         {
             Format = DataSourceFormat.csv,
-            CSVMappingReference = tableMapping,
+            IngestionMapping = new IngestionMapping()
+            { 
+                IngestionMappingReference = tableMapping
+            },
             IgnoreFirstRecord = true
         };
 
