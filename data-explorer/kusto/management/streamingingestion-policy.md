@@ -106,6 +106,7 @@ The command deletes the table or database streamingingestion policy object and t
 ```
 
 ### Streaming ingestion policy object
+
 In input and output of management commands streaming ingestion policy object is a JSON-formatted string that includes the following properties
 |Property  |Type    |Description                                                       |
 |----------|--------|------------------------------------------------------------------|
