@@ -14,10 +14,10 @@ ms.date: 05/19/2020
 Kusto.Explorer is a rich desktop application that enables you to explore your data using the Kusto Query Language in an easy-to-use user interface. This overview explains how to get started with setting up your Kusto.Explorer and explains the user interface you will use.
 
 With Kusto.Explorer, you can:
-* [Query your data](kusto-explorer-query-data.md)
-* [Search your data](kusto-explorer-search-mode.md) across tables
-* [Visualize your data](kusto-explorer-user-interface.md#visualizations-section) in a wide variety of graphs
-* [Share queries and results](kusto-explorer-share-queries.md) by email or using deep links
+* [Query your data](kusto-explorer-using.md#query-mode).
+* [Search your data](kusto-explorer-using.md#search++-mode) across tables.
+* [Visualize your data](#visualizations-section) in a wide variety of graphs.
+* [Share queries and results](kusto-explorer-using.md#share-queries-and-results) by email or using deep links.
 
 ## Installing Kusto.Explorer
 
@@ -74,7 +74,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 |Menu|    Behavior|
 |----|----------|
-|Mode dropdown | <ul><li>Query mode: Switches Query Window into a [script mode](kusto-explorer-query-data.md). Commands can be loaded and saved as scripts (default)</li> <li> Search mode: A single query mode where each command entered is processed immediately and presents a result in the Result Window</li> <li>Search++ mode: Allows searching for a term using search syntax across one or more tables. Learn more about using [Search++ Mode](kusto-explorer-search-mode.md)</li></ul> |
+|Mode dropdown | <ul><li>Query mode: Switches Query Window into a [script mode](kusto-explorer-using.md#query-mode). Commands can be loaded and saved as scripts (default)</li> <li> Search mode: A single query mode where each command entered is processed immediately and presents a result in the Result Window</li> <li>Search++ mode: Allows searching for a term using search syntax across one or more tables. Learn more about using [Search++ Mode](kusto-explorer-using.md#search++-mode)</li></ul> |
 |New Tab| Opens a new tab for querying Kusto |
 
 ### Share section

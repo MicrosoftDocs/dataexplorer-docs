@@ -95,8 +95,7 @@ You can easily define and edit existing query parameters:
 
 The script editor also has IntelliSense for query parameters that are already defined:
 
-
-![Parameterized query IntelliSense](./Images/kusto-explorer-query-data/parametrized-query-4.png "parametrized-query-4")
+:::image type="content" source="images/kusto-explorer-using/parametrized-query-4.png" alt-text="Paramaterized query IntelliSense":::
 
 You can have multiple sets of parameters (listed in the **Parameters Set** combo box).
 Select **Add new** or **Delete current** to manipulate the list of parameter sets.
@@ -111,7 +110,7 @@ In Kusto.Explorer, you can share queries and results by email. You can also crea
 
 Kusto.Explorer provides a convenient way to share queries and query results by email.
 
-1. [Run your query](kusto-explorer-query-data.md) in Kusto.Explorer.
+1. [Run your query](#basic-queries) in Kusto.Explorer.
 1. In the Home tab, in the Share section, select **Export to Clipboard** (or press Ctrl+Shift+C).
 
 :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard":::
@@ -186,7 +185,7 @@ The query is made more compact by applying next transformation:
 
 Command-line arguments are used to configure the tool to perform additional functions on start-up. For example, load a script and connect to a cluster. As such, command-line arguments aren't a replacement for any Kusto.Explorer functionality.
 
-Command-line arguments are passed as part of the URL that's used to open the application, in a similar way to [query deep-linking](kusto-explorer-share-queries.md#creating-a-deep-link).
+Command-line arguments are passed as part of the URL that's used to open the application, in a similar way to [query deep-linking](#creating-a-deep-link).
 
 ## Command-line argument syntax
 
@@ -224,7 +223,7 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 > [!Note]
 > Only [admins](../management/access-control/role-based-authorization.md) can add or drop authorized principals in their own scope.
 
-Right-click the target entity in the [Connections panel](kusto-explorer-user-interface.md#connections-tab), and select **Manage Cluster Authorized Principals**. (You can also select this option from the Management Menu.)
+Right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Cluster Authorized Principals**. (You can also select this option from the Management Menu.)
 
 :::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Manage authorized principals":::
 
