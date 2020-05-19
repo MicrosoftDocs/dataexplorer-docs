@@ -15,7 +15,7 @@ Streaming ingestion policy can be set on a table to allow streaming ingestion in
 
 For more information, see [Streaming ingestion](../../ingest-data-streaming.md). To learn more about the streaming ingestion policy, see [Streaming ingestion policy](streamingingestionpolicy.md).
 
-## Displaying the policy
+## Display the policy
 
 The `.show policy streamingingestion` command shows the streaming ingestion policy of the database or table.
  
