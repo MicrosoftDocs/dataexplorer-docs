@@ -11,7 +11,7 @@ ms.date: 02/24/2020
 ---
 # Streaming ingestion policy management
 
-Streaming ingestion policy can be set on a table to allow streaming ingestion into this table. The policy can also be set at the database level to apply the same setting to all its present and future tables.
+Streaming ingestion policy can be set on a table to allow streaming ingestion into this table. The policy can also be set at the database level to apply the same setting to both current and future tables.
 
 For more information, see [Streaming ingestion](../../ingest-data-streaming.md). To learn more about the streaming ingestion policy, see [Streaming ingestion policy](streamingingestionpolicy.md).
 
