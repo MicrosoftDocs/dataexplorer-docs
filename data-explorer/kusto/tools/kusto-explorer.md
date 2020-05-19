@@ -239,7 +239,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 |Latest data: All tables| Shows a summary of the latest data in all tables of the currently selected database|
 |Latest data: Selected table|Shows in the status bar the latest data in the selected table| 
 
-## Management Tab
+## Management tab
 
 :::image type="content" source="images/kusto-explorer/management-tab.png" alt-text="Kusto Explorer management tab":::
 
