@@ -157,7 +157,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 ||---------*Results*---------|
 |Clear results cache| Clears cached results of previously executed queries| 
 
-## Connections Tab
+## Connections tab
 
 :::image type="content" source="images/kusto-explorer/connections-tab.png" alt-text="Kusto Explorer connections tab":::
 
