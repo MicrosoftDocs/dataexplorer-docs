@@ -4,10 +4,10 @@ description: This article describes Data mappings in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 05/19/2020
 ---
 # Data mappings
 
