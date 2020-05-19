@@ -159,7 +159,7 @@ https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSs
 
 ### Deep-links and parametrized queries
 
-You can use Parametrized Queries with deep-linking.
+You can use parametrized queries with deep-linking.
 
 1. Create a query to be formed as a Parametrized Query (for example, `KustoLogs | where Timestamp > ago({Period}) | count`) 
 1. Provide a parameter for every Query Parameter in the URI
