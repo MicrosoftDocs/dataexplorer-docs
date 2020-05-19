@@ -1561,7 +1561,9 @@
       - name: Kusto.Explorer
         href: ./kusto/tools/kusto-explorer.md
         items:
-        - name: Kusto Explorer options
+        - name: Using Kusto.Explorer
+          href: ./kusto/tools/kusto-explorer-using.md
+        - name: Kusto.Explorer options
           href: ./kusto/tools/kusto-explorer-options.md
         - name: Keyboard shortcuts
           href: ./kusto/tools/kusto-explorer-shortcuts.md
@@ -1571,6 +1573,8 @@
           href: ./kusto/tools/kusto-explorer-codenav.md
         - name: Code Analyzer
           href: ./kusto/tools/kusto-explorer-code-analyzer.md
+        - name: Troubleshooting Kusto.Explorer
+          href: ./kusto/tools/kusto-explorer-troubleshooting.md
       - name: Web UI
         href: ./web-query-data.md
       - name: Kusto.Cli
