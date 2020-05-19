@@ -152,7 +152,7 @@ Use C# to ingest data in raw JSON format.
             }
         };
 
-    ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
+    ingestClient.IngestFromStorageAsync(blobPath, properties);
     ```
 
 > [!NOTE]
@@ -286,7 +286,7 @@ In this example, you ingest JSON records data. Each JSON property is mapped to a
             IngestionMappingReference = tableMapping
         };
 
-    ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
+    ingestClient.IngestFromStorageAsync(blobPath, ingestionProperties: properties);
     ```
 
     The file 'simple.json' has a few line-separated JSON records. The format is `json`, and the mapping used in the ingest command is the `FlatEventMapping` you created.
