@@ -145,6 +145,7 @@ This URI will open Kusto.Explorer, connect to the `Help` Kusto cluster, and run 
 > For security reasons, deep-linking is disabled for control commands.
 
 ### Creating a deep-link
+
 The easiest way to create a deep-link is to author your query in Kusto.Explorer and then use
 `Export to Clipboard` to copy the query (including the deep link and results) to the clipboard. You can then share it by email.
         
