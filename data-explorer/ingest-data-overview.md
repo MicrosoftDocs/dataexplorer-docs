@@ -91,7 +91,7 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
 ### Kusto Query Language ingest control commands
 
-There are a number of methods by which data can be ingested directly to the engine by Kusto Query Language (KQL) commands. Because this method bypasses the Data Management services, it is only appropriate for exploration and prototyping. Do not use this method in production or high-volume scenarios.
+There are a number of methods by which data can be ingested directly to the engine by Kusto Query Language (KQL) commands. Because this method bypasses the Data Management services, it is only appropriate for exploration and prototyping. Don't use this method in production or high-volume scenarios.
 
   * **Inline ingestion**:  A control command [.ingest inline](kusto/management/data-ingestion/ingest-inline.md) is sent to the engine, with the data to be ingested being a part of the command text itself. This method is intended for ad hoc testing purposes.
 
