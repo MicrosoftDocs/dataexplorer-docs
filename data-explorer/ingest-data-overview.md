@@ -42,7 +42,7 @@ Azure Data Explorer supports several ingestion methods, each with its own target
 
 ### Ingestion using managed pipelines
 
-For organizations who wish to have management (throttling, retries, monitors, alerts, and more) performed by an external service, using a connector is likely the most appropriate solution. Queued ingestion is appropriate for large data volumes. Azure Data Explorer  supports the following Azure pipelines:
+For organizations who wish to have management (throttling, retries, monitors, alerts, and more) performed by an external service, using a connector is likely the most appropriate solution. Queued ingestion is appropriate for large data volumes. Azure Data Explorer supports the following Azure pipelines:
 
 * **[Event Grid](https://azure.microsoft.com/services/event-grid/)**: A pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. For more information, see [Ingest Azure Blobs into Azure Data Explorer](ingest-data-event-grid.md).
 
@@ -56,7 +56,7 @@ For organizations who wish to have management (throttling, retries, monitors, al
 
 * **Kafka connector**, see [Ingest data from Kafka into Azure Data Explorer](ingest-data-kafka.md).
 
-* **[Power Automate](https://flow.microsoft.com/)**: An automated workflow pipeline to Azure Data Explorer. Power Automate can be used to execute a query and perform preset actions using the query results as a trigger. See [Microsoft Flow Azure Kusto Connector (Preview)](kusto/tools/flow.md).
+* **[Power Automate](https://flow.microsoft.com/)**: An automated workflow pipeline to Azure Data Explorer. Power Automate can be used to execute a query and perform preset actions using the query results as a trigger. See [Azure Data Explorer connector to Power Automate (Preview)](flow.md).
 
 * **Apache Spark connector**:  An open-source project that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. You can build fast and scalable applications targeting data-driven scenarios. See [Azure Data Explorer Connector for Apache Spark](spark-connector.md).
 
@@ -84,8 +84,9 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
   * [Integrate Azure Data Explorer with Azure Data Factory](data-factory-integration.md).
   * [Use Azure Data Factory to copy data from supported sources to Azure Data Explorer](/azure/data-explorer/data-factory-load-data).
   * [Copy in bulk from a database to Azure Data Explorer by using the Azure Data Factory template](data-factory-template.md).
+  * [Use Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md).
 
-* **[One Click Ingestion](ingest-data-one-click.md)**: Enables you to quickly ingest data by creating and adjusting tables from a wide range of source types. One Click Ingestion automatically suggest tables and mapping structures based on the data source in Azure Data Explorer. One Click Ingestion can be used for one-time ingestion, or to define continuous ingestion via Event Grid on the container to which the data was ingested.
+* **[One click ingestion](ingest-data-one-click.md)**: Enables you to quickly ingest data by creating and adjusting tables from a wide range of source types. One click ingestion automatically suggest tables and mapping structures based on the data source in Azure Data Explorer. One click ingestion can be used for one-time ingestion, or to define continuous ingestion via Event Grid on the container to which the data was ingested.
 
 * **[LightIngest](lightingest.md)**: A command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
 
