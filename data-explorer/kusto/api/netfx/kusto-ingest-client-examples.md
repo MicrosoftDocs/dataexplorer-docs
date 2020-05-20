@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 19/05/2019
+ms.date: 05/19/2019
 ---
 # Kusto.Ingest ingestion code examples
 
