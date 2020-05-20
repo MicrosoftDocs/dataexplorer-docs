@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/19/2020
 ---
-# Kusto.Ingest client interfaces and factory classes
+# Kusto.Ingest client interfaces and classes
 
 The main interfaces and classes in the Kusto.Ingest library are:
 
