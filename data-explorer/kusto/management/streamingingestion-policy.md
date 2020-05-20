@@ -111,4 +111,4 @@ In input and output of management commands streaming ingestion policy object is 
 |Property  |Type    |Description                                                       |Required/Optional |
 |----------|--------|------------------------------------------------------------------|-------|
 |IsEnabled |`bool`  |Is streaming ingestion enabled for the entity| Required|
-|HintAllocatedRate|`double?`|Estimated rate of data ingresses in Gb/hour| Optional|
+|HintAllocatedRate|`double`|Estimated rate of data ingresses in Gb/hour| Optional|
