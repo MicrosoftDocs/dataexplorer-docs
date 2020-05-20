@@ -32,6 +32,6 @@ The `timespan` since midnight at the beginning of the preceding Sunday, rounded 
 **Examples**
 
 ```kusto
-dayofweek(1947-11-29 10:00:05)  // time(6.00:00:00), indicating Saturday
+dayofweek(1947-11-30 10:00:05)  // time(0.00:00:00), indicating Sunday
 dayofweek(1970-05-11)           // time(1.00:00:00), indicating Monday
 ```
