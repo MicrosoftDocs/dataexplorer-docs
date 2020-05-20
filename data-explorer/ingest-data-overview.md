@@ -29,7 +29,6 @@ Azure Data Explorer pulls data from an external source and reads requests from a
 
 * **Permissions**: To ingest data, the process requires [database ingestor level permissions](kusto/management/access-control/role-based-authorization.md). Other actions, such as query, may require database admin, database user, or table admin permissions.
 
-* **Supported Data types**: See [supported data types] (INSERT LINK) for Azure Data Explorer. TODO: is this a real link?
 
 ## Batching vs streaming ingestion
 
@@ -126,7 +125,7 @@ There are a number of methods by which data can be ingested directly to the engi
 
 ## Ingestion process
 
-Add intro: this is what you know, now here is what you need to do in this order (TODO: Make sure the order is correct and complete):
+Once you have chosen the most suitable ingestion method for your needs, do the following steps:
 
 1. **Set retention policy**
 
