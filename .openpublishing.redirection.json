@@ -4,9 +4,24 @@
           "source_path": "data-explorer/kusto/management/drop-database.md",
           "redirect_url": "databases",
           "redirect_document_id": false
-       
-  
-      }
+      },
+      {
+          "source_path": "data-explorer/kusto/tools/flow.md",
+          "redirect_url": "/azure/data-explorer/flow",
+          "redirect_document_id": false
+      },
+      {
+        "source_path": "data-explorer/kusto/tools/logicapps.md",
+        "redirect_url": "/azure/data-explorer/logicapps",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "data-explorer/kusto/tools/azure-data-factory.md",
+        "redirect_url": "/azure/data-explorer/data-factory-integration",
+        "redirect_document_id": false 
+      }  
+
+
     ]
   }
   
