@@ -27,7 +27,7 @@ ms.date: 11/27/2018
 To install the [spark-kusto-connector](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector) on your Azure Databricks cluster:
 
 1. Go to your Azure Databricks workspace and [create a library](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library).
-2. Search for "spark-kusto-connector" package on Maven Central and install the latest version and attache to your cluster. 
+2. Search for the *spark-kusto-connector* package on Maven Central, install the latest version, and attach to your cluster. 
 
 ## Connect to Azure Data Explorer by using a device authentication
 
