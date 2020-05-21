@@ -9,7 +9,8 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/20/2020
 ---
-# Clearing cached schema for streaming ingestion
+# Streaming ingestion and schema changes
+## Challenges coordinating schema changes with streaming ingestion
 
 Cluster nodes cache schema of databases that receive data via streaming ingestion. This done in order to achieve best performance and optimize utilization of cluster resources but can cause propagation delays when schema changes.
 
@@ -25,7 +26,7 @@ It is highly recommended that custom ingestion application handle the schema-rel
 
 ## Clearing the schema cache
 It is possible to reduce the effects of propagation delay by explicitly clearing the schema cache on the cluster nodes.
-This is done by issuing one of the .clear cache streaming ingestion schema management commands.
+This is done by issuing one of the [Clear schema cache for streaming ingestion](kusto/management/clear-schema-cache-command.md) management commands.
 If streaming ingestion flow and schema changes can be coordinated it is possible to completely eliminate failures and data distortion associated with them. Here is the example of coordinated flow
 
 1. Suspend streaming ingestion
