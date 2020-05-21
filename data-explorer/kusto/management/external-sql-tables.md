@@ -1,6 +1,6 @@
 ---
-title: External SQL table - Azure Data Explorer
-description: This article describes external SQL table creation in Azure Data Explorer.
+title: Create and alter external SQL tables - Azure Data Explorer
+description: This article describes external SQL table creation and alteration in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 03/24/2020
 ---
 
-# External SQL table
+# Create and alter external SQL tables
 
 Creates or alters an external SQL table in the database in which the command is executed.  
 
@@ -95,3 +95,8 @@ Similarly, filters are not pushed to the SQL query.
 
 Use the external table to query the SQL table when the query requires reading the entire table (or relevant columns) for further execution on Kusto side. 
 When an SQL query can be optimized in T-SQL, use the [sql_request plugin](../query/sqlrequestplugin.md).
+
+## Next steps
+
+* [External table general commands](externaltables.md)
+* [Create and alter tables in storage](external-tables-azurestorage-azuredatalake.md)

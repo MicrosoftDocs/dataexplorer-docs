@@ -1,6 +1,6 @@
 ---
-title: External table control commands - Azure Data Explorer
-description: This article describes External table control commands in Azure Data Explorer.
+title: External table general commands - Azure Data Explorer
+description: This article describes general external table commands in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
 ---
-# External table control commands
+# External table general commands
 
 See [external tables](../query/schema-entities/externaltables.md) for an overview of external tables. 
 
@@ -122,3 +122,7 @@ Returns the properties of the dropped table. See [.show external tables](#show-e
 |-----------|-----------|----------------|-----------|-----------------------------------------------------|------------|
 | T         | Blob      | ExternalTables | Docs      | [{ "Name": "x",  "CslType": "long"},<br> { "Name": "s",  "CslType": "string" }] | {}         |
 
+## Next steps
+
+* [Create and alter tables in storage](external-tables-azurestorage-azuredatalake.md)
+* [Create and alter external SQL tables](external-sql-tables.md)
