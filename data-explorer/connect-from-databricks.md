@@ -31,7 +31,7 @@ To install the [spark-kusto-connector](https://mvnrepository.com/artifact/com.mi
 
 ## Connect to Azure Data Explorer by using a device authentication
 
-1. Sample code is available [here](https://github.com/Azure/azure-kusto-spark/blob/master/samples/src/main/python/pyKusto.py).
+1. [Sample code](https://github.com/Azure/azure-kusto-spark/blob/master/samples/src/main/python/pyKusto.py).
 
 ## Connect to Azure Data Explorer by using an Azure AD app
 
