@@ -64,7 +64,7 @@ For example, if your domain is *contoso.com*, the URL is: [https://login.windows
 
 Your tenant ID is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. 
 
-### (Optional) Store and secure your Azure AD app ID and key 
+### Store and secure your Azure AD app ID and key (optional)  
 
 Store and secure your Azure AD app ID and key by using Azure Databricks [secrets](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) as follows:
 1. [Set up the CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-the-cli).
