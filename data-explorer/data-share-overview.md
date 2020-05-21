@@ -2,8 +2,8 @@
 title: Data Sharing (preview)
 description: Learn about how to share your data with Azure Data Explorer and Azure Data Share.
 author: manojraheja
-ms.author: manojraheja
-ms.reviewer: orspod
+ms.author: maraheja
+ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/23/2020
