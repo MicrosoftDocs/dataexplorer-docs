@@ -1,5 +1,5 @@
 ---
-title: format_timespan() - Azure Data Explorer | Microsoft Docs
+title: format_timespan() - Azure Data Explorer
 description: This article describes format_timespan() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -76,6 +76,7 @@ Format specifier can include following delimeters characters:
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let t = time(29.09:00:05.12345);
 print 

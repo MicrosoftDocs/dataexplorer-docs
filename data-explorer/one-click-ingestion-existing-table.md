@@ -92,5 +92,5 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 
 ## Next steps
 
-* [Query data in Azure Data Explorer Web UI](/azure/data-explorer/web-query-data)
-* [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/write-queries)
+* [Query data in Azure Data Explorer Web UI](web-query-data.md)
+* [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)

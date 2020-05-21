@@ -1,5 +1,5 @@
 ---
-title: array_concat() - Azure Data Explorer | Microsoft Docs
+title: array_concat() - Azure Data Explorer
 description: This article describes array_concat() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -27,6 +27,7 @@ Dynamic array of arrays with arr1, arr2, ... , arrN.
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2

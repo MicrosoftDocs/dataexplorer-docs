@@ -14,7 +14,8 @@ ms.date: 02/13/2020
 Calculates the variance of *Expr* across the group, considering the group as a [population](https://en.wikipedia.org/wiki/Statistical_population). 
 
 * Used formula:
-![alt text](./images/aggregations/variance-population.png "variance-population")
+
+:::image type="content" source="images/variancep-aggfunction/variance-population.png" alt-text="Variance population":::
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
 

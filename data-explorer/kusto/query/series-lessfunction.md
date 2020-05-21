@@ -1,5 +1,5 @@
 ---
-title: series_less() - Azure Data Explorer | Microsoft Docs
+title: series_less() - Azure Data Explorer
 description: This article describes series_less() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -27,6 +27,7 @@ Dynamic array of booleans containing the calculated element-wise less logic oper
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 | extend s1_less_s2 = series_less(s1, s2)

@@ -81,7 +81,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 | render linechart 
 ```
 
-:::image type="content" source="images/samples/sine-demo.png" alt-text="Sine demo":::
+:::image type="content" source="images/plugin/sine-demo.png" alt-text="Sine demo" border="false":::
 
 ### Performance tips
 
@@ -134,7 +134,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end
 

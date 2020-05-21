@@ -1,5 +1,5 @@
 ---
-title: series_decompose_anomalies() - Azure Data Explorer | Microsoft Docs
+title: series_decompose_anomalies() - Azure Data Explorer
 description: This article describes series_decompose_anomalies() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -59,6 +59,7 @@ This function follows these steps:
 
 In the following example we generate a series with weekly seasonality, we then add some outliers to it. `series_decompose_anomalies` auto-detects the seasonality and generates a baseline which captures the repetitive pattern. The outliers we added can be clearly spotted in the ad_score component.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 
@@ -71,12 +72,13 @@ ts
 | render timechart  
 ```
 
-:::image type="content" source="images/samples/series-decompose-anomalies1.png" alt-text="Series decompose anomalies 1":::
+:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-outliers.png" alt-text="Weekly seasonality showing baseline and outliers" border="false":::
 
 **2. Detecting anomalies in Weekly seasonality with trend**
 
 In this example we add a trend to the series from the previous example. First, we run `series_decompose_anomalies` with the default parameters in which the trend `avg` default value only takes the average and doesn't compute the trend, we can see that the generated baseline doesn't contain the trend and is less accurate comparing to the previous example, consequently, some of the outliers we inserted in the data are not detected due to the higher variance.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 
@@ -90,10 +92,12 @@ ts
 series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for visualization purposes
 | render timechart   
 ```
-:::image type="content" source="images/samples/series-decompose-anomalies2.png" alt-text="Series decompose anomalies 2":::
+
+:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-outliers-with-trend.png" alt-text="Weekly seasonality outliers with trend" border="false":::
 
 Next, we run the same example but since we are expecting a trend in the series, we specify `linefit` in the trend parameter. We can see that the baseline is much closer to the input series. All the outliers we inserted are detected, as well as some false positives (see next example on tuning the threshold).
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 
@@ -108,12 +112,13 @@ series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for 
 | render timechart  
 ```
 
-:::image type="content" source="images/samples/series-decompose-anomalies3.png" alt-text="Series decompose anomalies 3":::
+:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-linefit-trend.png" alt-text="Weekly seasonality anomalies with linefit trend" border="false":::
 
 **3. Tweaking the anomaly detection threshold**
 
 In the previous example a few noisy points were detected as anomalies, in this example we increase the anomaly detection threshold from a default of 1.5 to 2.5 the interpercentile range so that only stronger anomalies are detected. We can see that now only the outliers we inserted in the data are detected.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
 | extend Timestamp = datetime(2018-03-01 05:00) + 1h * t 
@@ -128,4 +133,5 @@ series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for 
 | render timechart  
 ```
 
-:::image type="content" source="images/samples/series-decompose-anomalies4.png" alt-text="Series decompose anomalies 4":::
+:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-higher-threshold.png" alt-text="Weekly series anomalies with higher anomaly threshold" border="false":::
+

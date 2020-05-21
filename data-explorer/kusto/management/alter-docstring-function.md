@@ -30,7 +30,7 @@ Alters the DocString value of an existing function.
 
 **Example** 
 
-```
+```kusto
 .alter function MyFunction1 docstring "Updated docstring"
 ```
     

@@ -1,5 +1,5 @@
 ---
-title: render operator - Azure Data Explorer | Microsoft Docs
+title: render operator - Azure Data Explorer
 description: This article describes render operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -159,6 +159,7 @@ three kinds of columns:
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range x from -2 to 2 step 0.1
 | extend sin = sin(x), cos = cos(x)

@@ -1,5 +1,5 @@
 ---
-title: hash_combine() - Azure Data Explorer | Microsoft Docs
+title: hash_combine() - Azure Data Explorer
 description: This article describes hash_combine() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -29,6 +29,7 @@ The combined hash value of the given scalars.
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print value1 = "Hello", value2 = "World"
 | extend h1 = hash(value1), h2=hash(value2)

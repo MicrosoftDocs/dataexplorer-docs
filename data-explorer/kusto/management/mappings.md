@@ -4,10 +4,10 @@ description: This article describes Data mappings in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 05/19/2020
 ---
 # Data mappings
 
@@ -62,7 +62,8 @@ Each element in the list describes a mapping for a specific column, and may cont
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string.
 
 * When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
-```
+
+```kusto
 .ingest into Table123 (@"source1", @"source2")
     with 
     (
@@ -73,7 +74,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 * When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string:
 
-```
+```kusto
 .ingest into Table123 (@"source1", @"source2")
     with 
     (
@@ -87,9 +88,9 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 **Note:** 
-The following mapping format, without the `Properties` property-bag, is currently supported but may be deprecated in the future.
+The following mapping format, without the `Properties` property-bag, is deprecated.
 
-```
+```kusto
 .ingest into Table123 (@"source1", @"source2")
     with 
     (
@@ -134,7 +135,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string.
 
-```
+```kusto
 .ingest into Table123 (@"source1", @"source2")
     with 
     (
@@ -144,9 +145,9 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 **Note:** 
-The following mapping format, without the `Properties` property-bag, is currently supported but may be deprecated in the future.
+The following mapping format, without the `Properties` property-bag, is deprecated.
 
-```
+```kusto
 .ingest into Table123 (@"source1", @"source2") 
   with 
   (
@@ -209,7 +210,7 @@ The two alternatives below are equal:
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string.
 
-```
+```kusto
 .ingest into Table123 (@"source1", @"source2")
     with 
     (
@@ -219,9 +220,9 @@ The two alternatives below are equal:
 ```
 
 **Note:** 
-The following mapping format, without the `Properties` property-bag, is currently supported but may be deprecated in the future.
+The following mapping format, without the `Properties` property-bag, is deprecated.
 
-```
+```kusto
 .ingest into Table123 (@"source1", @"source2") 
   with 
   (
@@ -248,7 +249,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 ### Example of the Parquet mapping
 
-``` json
+```json
 [
   { "column" : "rownumber",   "Properties":{"Path":"$.rownumber"}}, 
   { "column" : "xdouble",     "Properties":{"Path":"$.xdouble"}}, 
@@ -267,7 +268,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 * When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
 
-```
+```kusto
 .ingest into Table123 (@"source1", @"source2")
     with 
     (
@@ -278,7 +279,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 * When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string:
 
-```
+```kusto
 .ingest into Table123 (@"source1", @"source2") 
   with 
   (
@@ -304,7 +305,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 ### Example of Orc mapping
 
-``` json
+```json
 [
   { "column" : "rownumber",   "Properties":{"Path":"$.rownumber"}}, 
   { "column" : "xdouble",     "Properties":{"Path":"$.xdouble"}}, 
@@ -321,7 +322,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string.
 
-```
+```kusto
 .ingest into Table123 (@"source1", @"source2") 
   with 
   (

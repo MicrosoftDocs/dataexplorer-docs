@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Azure Data Explorer | Microsoft Docs
+title: Tutorial - Azure Data Explorer
 description: This article describes Tutorial in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -37,6 +37,7 @@ To find out how big it is, we'll pipe its content into an operator that simply c
 * *Syntax:* A query is a data source (usually a table name), optionally
   followed by one or more pairs of the pipe character and some tabular operator.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents | count
 ```
@@ -59,6 +60,7 @@ and [take](./takeoperator.md) operator.
 
 Let's see only the `flood`s in `California` during Feb-2007:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | where StartTime > datetime(2007-02-01) and StartTime < datetime(2007-03-01)
@@ -74,6 +76,7 @@ StormEvents
 
 Let's see some data - what's in a sample 5 rows?
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | take 5
@@ -99,6 +102,7 @@ for [take](./takeoperator.md) and will have the same effect.
 
 Show me the first n rows, ordered by a particular column:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | top 5 by StartTime desc
@@ -116,6 +120,7 @@ StormEvents
 Same can be achieved by using [sort](./sortoperator.md) and 
 then [take](./takeoperator.md) operator
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | sort by StartTime desc
@@ -127,6 +132,7 @@ StormEvents
 
 Create a new column by computing a value in every row:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | limit 5
@@ -145,6 +151,7 @@ StormEvents
 It is possible to reuse column name and assign calculation result to the same column.
 For example:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print x=1
 | extend x = x + 1, y = x
@@ -162,6 +169,7 @@ operators (`+`, `-`, `*`, `/`, `%`), and there's a range of useful functions.
 
 Count how many events come from each country:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | summarize event_count = count() by State
@@ -178,6 +186,7 @@ them in one summarize operator to produce several computed columns.
 For example, we could get the count of storms in each state and also a sum of the unique type of storms per state,  
 then we could use [top](./topoperator.md) to get the most storm-affected states:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State
@@ -203,6 +212,7 @@ The result of a summarize has:
 You can use scalar (numeric, time, or interval) values in the `by` clause, but you'll want to put the values into bins.  
 The [bin()](./binfunction.md) function is useful for this:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | where StartTime > datetime(2007-02-14) and StartTime < datetime(2007-02-21)
@@ -230,6 +240,7 @@ that [summarize](./summarizeoperator.md) can assign the rows to groups.
 
 Project two columns and use them as the x and y axis of a chart:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | summarize event_count=count(), mid = avg(BeginLat) by State 
@@ -239,7 +250,7 @@ StormEvents
 | render columnchart
 ```
 
-:::image type="content" source="images/tour/060.png" alt-text="060":::
+:::image type="content" source="images/tutorial/event-counts-state.png" alt-text="Column chart of storm event counts by state":::
 
 Although we removed `mid` in the project operation, we still need it if we want the chart to display the countries in that order.
 
@@ -250,18 +261,20 @@ Strictly speaking, 'render' is a feature of the client rather than part of the q
 
 Going back to numeric bins, let's display a time series:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | summarize event_count=count() by bin(StartTime, 1d)
 | render timechart
 ```
 
-:::image type="content" source="images/tour/080.png" alt-text="080":::
+:::image type="content" source="images/tutorial/time-series-start-bin.png" alt-text="Line chart events binned by time":::
 
 ## Multiple series
 
 Use multiple values in a `summarize by` clause to create a separate row for each combination of values:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where StartTime > datetime(2007-06-04) and StartTime < datetime(2007-06-10) 
@@ -269,11 +282,11 @@ StormEvents
 | summarize count() by bin(StartTime, 10h), Source
 ```
 
-:::image type="content" source="images/tour/090.png" alt-text="090":::
+:::image type="content" source="images/tutorial/table-count-source.png" alt-text="Table count by source":::
 
 Just add the render term to the above: `| render timechart`.
 
-:::image type="content" source="images/tour/100.png" alt-text="100":::
+:::image type="content" source="images/tutorial/line-count-source.png" alt-text="Line chart count by source":::
 
 Notice that `render timechart` uses the first column as the x-axis, and then displays the other columns as separate lines.
 
@@ -283,6 +296,7 @@ How does activity vary over the average day?
 
 Count events by the time modulo one day, binned into hours. Note that we use `floor` instead of bin:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend hour = floor(StartTime % 1d , 1h)
@@ -291,16 +305,17 @@ StormEvents
 | render timechart
 ```
 
-:::image type="content" source="images/tour/120.png" alt-text="120":::
+:::image type="content" source="images/tutorial/time-count-hour.png" alt-text="Time chart count by hour":::
 
 Currently, `render` doesn't label durations properly, but we could use `| render columnchart` instead:
 
-:::image type="content" source="images/tour/110.png" alt-text="110":::
+:::image type="content" source="images/tutorial/column-count-hour.png" alt-text="Column chart count by hour":::
 
 ## Compare multiple daily series
 
 How does activity vary over the time of day in different states?
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend hour= floor( StartTime % 1d , 1h)
@@ -309,10 +324,11 @@ StormEvents
 | render timechart
 ```
 
-:::image type="content" source="images/tour/130.png" alt-text="130":::
+:::image type="content" source="images/tutorial/time-hour-state.png" alt-text="Time chart by hour and state":::
 
 Divide by `1h` to turn the x-axis into hour number instead of a duration:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend hour= floor( StartTime % 1d , 1h)/ 1h
@@ -321,14 +337,15 @@ StormEvents
 | render columnchart
 ```
 
-:::image type="content" source="images/tour/140.png" alt-text="140":::
+:::image type="content" source="images/tutorial/column-hour-state.png" alt-text="Column chart by hour and state":::
 
-## join
+## Join
 
 How to find for two given EventTypes in what state both of them happened?
 
 You can pull storm events with the first EventType and with the second EventType and then join the two sets on State.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | where EventType == "Lightning"
@@ -339,7 +356,7 @@ StormEvents
 | distinct State
 ```
 
-:::image type="content" source="images/tour/145.png" alt-text="145":::
+:::image type="content" source="images/tutorial/join-events-la.png" alt-text="Join events lightning and avalanche":::
 
 ## User session example of join
 
@@ -351,6 +368,7 @@ How long does each user session last?
 
 By using `extend` to provide an alias for the two timestamps, you can then compute the session duration.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 Events
 | where eventName == "session_started"
@@ -364,7 +382,7 @@ Events
 | take 10
 ```
 
-:::image type="content" source="images/tour/150.png" alt-text="150":::
+:::image type="content" source="images/tutorial/user-session-extend.png" alt-text="User session extend":::
 
 It's good practice to use `project` to select just the columns we need before performing the join.
 In the same clauses, we rename the timestamp column.
@@ -373,6 +391,7 @@ In the same clauses, we rename the timestamp column.
 
 How many storms are there of different lengths?
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend  duration = EndTime - StartTime
@@ -384,11 +403,11 @@ StormEvents
 | render timechart
 ```
 
-:::image type="content" source="images/tour/170.png" alt-text="170":::
+:::image type="content" source="images/tutorial/event-count-duration.png" alt-text="Event count timechart by duration":::
 
 Or use `| render columnchart`:
 
-:::image type="content" source="images/tour/160.png" alt-text="160":::
+:::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Column chart event count timechart by duration":::
 
 ## Percentiles
 
@@ -402,7 +421,7 @@ Use the above query, but replace `render` with:
 
 In this case, we provided no `by` clause, so the result is a single row:
 
-:::image type="content" source="images/tour/180.png" alt-text="180":::
+:::image type="content" source="images/tutorial/summarize-percentiles-duration.png" alt-text="Table summarize percentiles by duration":::
 
 From which we can see that:
 
@@ -412,6 +431,7 @@ From which we can see that:
 
 To get a separate breakdown for each state, we just have to bring the state column separately through both summarize operators:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend  duration = EndTime - StartTime
@@ -423,12 +443,13 @@ StormEvents
 | summarize percentiles(duration, 5, 20, 50, 80, 95) by State
 ```
 
-:::image type="content" source="images/tour/190.png" alt-text="190":::
+:::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state":::
 
 ## Let: Assign a result to a variable
 
 Use [let](./letstatement.md) to separate out the parts of the query expression in the 'join' example above. The results are unchanged:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let LightningStorms = 
     StormEvents
@@ -483,6 +504,6 @@ Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end

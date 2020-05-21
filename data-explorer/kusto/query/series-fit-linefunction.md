@@ -1,5 +1,5 @@
 ---
-title: series_fit_line() - Azure Data Explorer | Microsoft Docs
+title: series_fit_line() - Azure Data Explorer
 description: This article describes series_fit_line() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -34,13 +34,14 @@ Takes an expression containing dynamic numerical array as input and performs [li
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([2,5,6,8,11,15,17,18,25,26,30,30])
 | extend (RSquare,Slope,Variance,RVariance,Interception,LineFit)=series_fit_line(y)
 | render timechart
 ```
 
-:::image type="content" source="images/samples/series-fit-line.png" alt-text="Series fit line":::
+:::image type="content" source="images/series-fit-line/series-fit-line.png" alt-text="Series fit line":::
 
 | RSquare | Slope | Variance | RVariance | Interception | LineFit                                                                                     |
 |---------|-------|----------|-----------|--------------|---------------------------------------------------------------------------------------------|

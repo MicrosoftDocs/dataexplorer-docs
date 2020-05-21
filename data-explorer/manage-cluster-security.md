@@ -30,4 +30,4 @@ Your cluster security settings allow you to enable disk encryption on your clust
 
 ## Next steps
 
-[Check cluster health](/azure/data-explorer/check-cluster-health)
+[Check cluster health](check-cluster-health.md)

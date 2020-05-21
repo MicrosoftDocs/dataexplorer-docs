@@ -1,5 +1,5 @@
 ---
-title: Update policy - Azure Data Explorer | Microsoft Docs
+title: Kusto update policy for data added to a source - Azure Data Explorer
 description: This article describes Update policy in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -67,22 +67,25 @@ Each such object is represented as a JSON property bag, with the following prope
 |IsTransactional               |`bool`  |States if the update policy is transactional or not (defaults to false). Failure to run a transactional update policy result in the source table not being updated with new data as well.   |
 |PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified during the ingestion into the  source table should apply to the ones in the derived table as well.                 |
 
-> [!NOTE]
->
-> * The source table and the table for which the update policy is defined **must be in the same database**.
-> * The query may **not** include cross-database nor cross-cluster queries.
-> * The query can invoke stored functions.
-> * The query is automatically scoped to cover the newly-ingested records only.
-> * Cascading updates are allowed (TableA --`[update]`--> TableB --`[update]`-->  TableC --`[update]`--> ...)
-> * In case update policies are defined over multiple tables in a circular manner, this is detected at runtime and the chain of updates is cut
-   (meaning, data will be ingested only once to each table in the chain of affected tables).
-> * When referencing the `Source` table in the `Query` part of the policy (or in Functions referenced by the latter), make sure you **don't** use the qualified name of the table
-   (meaning, use `TableName` and **not** `database("DatabaseName").TableName` nor `cluster("ClusterName").database("DatabaseName").TableName`).
-> * The update policy's query can't reference any table with a [Row Level Security policy](./rowlevelsecuritypolicy.md) which is enabled.
-> * A query which is run as part of an update policy does **not** have read access to tables which have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled.
-> * `PropagateIngestionProperties` only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this
-  option has **no** effect.
-> * When the update policy is invoked as part of a `.set-or-replace` command, default behavior is that data in derived table(s) is also replaced, as it is in the source table.
+## Notes
+
+* The query is automatically scoped to cover only the newly-ingested records.
+* The query can invoke stored functions.
+* Cascading updates are allowed (`TableA` → `TableB` → `TableC` → ...)
+* When the update policy is invoked as part of a `.set-or-replace` command, default behavior is that data in derived table(s) is also replaced, as it is in the source table.
+
+## Limitations
+
+* The source table and the table for which the update policy is defined **must be in the same database**.
+* The query may **not** include cross-database nor cross-cluster queries.
+* In case update policies are defined over multiple tables in a circular manner, this is detected at runtime and the chain of updates is cut 
+  (meaning, data will be ingested only once to each table in the chain of affected tables).
+* When referencing the `Source` table in the `Query` part of the policy (or in Functions referenced by the latter), make sure you **don't** use the qualified name of the table
+  (meaning, use `TableName` and **not** `database("DatabaseName").TableName` nor `cluster("ClusterName").database("DatabaseName").TableName`).
+* A query which is run as part of an update policy does **not** have read access to tables which have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled.
+* The update policy's query can't reference any table with a [Row Level Security policy](./rowlevelsecuritypolicy.md) which is enabled.
+* `PropagateIngestionProperties` only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this 
+   option has **no** effect.
 
 ## Retention policy on the source table
 

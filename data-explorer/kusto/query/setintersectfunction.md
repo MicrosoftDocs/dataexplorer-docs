@@ -1,5 +1,5 @@
 ---
-title: set_intersect() - Azure Data Explorer | Microsoft Docs
+title: set_intersect() - Azure Data Explorer
 description: This article describes set_intersect() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -27,6 +27,7 @@ Returns a dynamic array of the set of all distinct values that are in all arrays
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2
@@ -42,6 +43,7 @@ range x from 1 to 3 step 1
 |[2]|
 |[3]|
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print arr = set_intersect(dynamic([1, 2, 3]), dynamic([4,5]))
 ```
