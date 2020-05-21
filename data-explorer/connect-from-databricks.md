@@ -81,5 +81,5 @@ Store and secure your Azure AD app ID and key by using Azure Databricks [secrets
     ```databricks secrets list --scope adx```
 
 ### Sample Code
-1. Sample code is available [here](https://github.com/Azure/azure-kusto-spark/blob/master/samples/src/main/python/pyKusto.py). 
+1. [Sample code](https://github.com/Azure/azure-kusto-spark/blob/master/samples/src/main/python/pyKusto.py). 
 2. Update the placeholder values with your cluster name, database name, table name, Azure AD tenant ID, AAD App ID, and AAD App Key. If you are storing your credentials in databricks secrets store, update the code accordingly to retrieve values from dbutils.
