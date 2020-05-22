@@ -373,7 +373,7 @@ public class KustoIngestionProperties
 
 ## Class IngestionMapping
 
-Holds either a reference to an exiting mapping or a list of column mappings.
+Holds a reference to an existing mapping or a list of column mappings.
 
 |Property   |Meaning    |
 |-----------|-----------|
