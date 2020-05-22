@@ -68,7 +68,7 @@ The merge policy contains the following properties:
 |365 days (8,760 hours)| 250
 
 > [!WARNING]
-> It is rarely recommended to alter an Extents Merge Policy without consulting with the Kusto team first.
+> Consult with the Azure Data Explorer team before altering an extents merge policy.
 
 When a database is created, it is set with the default Merge policy (a policy with the default values mentioned above), which is, by default, inherited by
 all tables created in the database (unless their policies are explicitly overridden at table-level).
