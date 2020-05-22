@@ -17,7 +17,7 @@ The main interfaces and classes in the Kusto.Ingest library are:
 * [Class ExtendedKustoIngestClient](#class-extendedkustoingestclient): Extensions to the main ingestion interface.
 * [class KustoIngestFactory](#class-kustoingestfactory): The main factory for ingestion clients.
 * [class KustoIngestionProperties](#class-kustoingestionproperties): Class used to provide common ingestion properties.
-* [class IngestionMapping](#class-IngestionMapping): Class used to describe the data mapping for the ingestion.
+* [class IngestionMapping](#class-ingestionmapping): Class used to describe the data mapping for the ingestion.
 * [Enum DataSourceFormat](#enum-datasourceformat): Supported data source formats (for example, CSV, JSON)
 * [Interface IKustoQueuedIngestClient](#interface-ikustoqueuedingestclient): Interface describing operations that apply for queued ingestion only.
 * [Class KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): Properties that apply to queued ingestion only.
