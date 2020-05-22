@@ -118,7 +118,7 @@ The default capacity policy has the following JSON representation:
 ## Control commands
 
 > [!WARNING]
-> It is rarely recommended to alter a Capacity Policy, due to the potential impact on the cluster's available resources.
+> Consult with the Azure Data Explorer team before altering a capacity policy.
 
 * Use [.show cluster policy capacity](capacity-policy.md#show-cluster-policy-capacity) to show the current capacity policy of the cluster.
 
