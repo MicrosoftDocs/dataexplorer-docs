@@ -86,6 +86,7 @@ US storm events aggregated by s2cell.
 
 :::image type="content" source="images/geo-point-to-s2cell-function/s2cell.png" alt-text="US s2cell":::
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | project BeginLon, BeginLat
@@ -94,6 +95,7 @@ StormEvents
 | render scatterchart with (kind=map) // map rendering available in Kusto Explorer desktop
 ```
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print s2cell = geo_point_to_s2cell(-80.195829, 25.802215, 8)
 ```
@@ -104,6 +106,7 @@ print s2cell = geo_point_to_s2cell(-80.195829, 25.802215, 8)
 
 The following example finds groups of coordinates. Every pair of coordinates in the group resides in the S2 cell with a maximum area of 1632.45 km².
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(location_id:string, longitude:real, latitude:real)
 [
@@ -123,6 +126,7 @@ datatable(location_id:string, longitude:real, latitude:real)
 
 The following example produces an empty result because of the invalid coordinate input.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print s2cell = geo_point_to_s2cell(300,1,8)
 ```
@@ -133,6 +137,7 @@ print s2cell = geo_point_to_s2cell(300,1,8)
 
 The following example produces an empty result because of the invalid level input.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print s2cell = geo_point_to_s2cell(1,1,35)
 ```
@@ -143,6 +148,7 @@ print s2cell = geo_point_to_s2cell(1,1,35)
 
 The following example produces an empty result because of the invalid level input.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print s2cell = geo_point_to_s2cell(1,1,int(null))
 ```

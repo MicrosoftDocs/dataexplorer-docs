@@ -1,5 +1,5 @@
 ---
-title: set_has_element() - Azure Data Explorer | Microsoft Docs
+title: set_has_element() - Azure Data Explorer
 description: This article describes set_has_element() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -28,6 +28,7 @@ True or false depending on the whether the value exists in the array.
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print arr=dynamic(["this", "is", "an", "example"]) 
 | project Result=set_has_element(arr, "example")

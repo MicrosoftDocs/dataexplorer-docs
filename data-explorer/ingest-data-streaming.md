@@ -13,7 +13,7 @@ ms.date: 08/30/2019
 
 Use streaming ingestion when you require low latency with an ingestion time of less than 10 seconds for varied volume data. It's used to optimize operational processing of many tables, in one or more databases, where the stream of data into each table is relatively small (few records per second) but overall data ingestion volume is high (thousands of records per second). 
 
-Use bulk ingestion instead of streaming ingestion when the amount of data grows to more than 1 MB per second per table. Read [Data ingestion overview](/azure/data-explorer/ingest-data-overview) to learn more about the various methods of ingestion.
+Use bulk ingestion instead of streaming ingestion when the amount of data grows to more than 1 MB per second per table. Read [Data ingestion overview](ingest-data-overview.md) to learn more about the various methods of ingestion.
 
 ## Prerequisites
 
@@ -43,7 +43,7 @@ Use bulk ingestion instead of streaming ingestion when the amount of data grows 
 There are two supported streaming ingestion types:
 
 
-* [**Event Hub**](/azure/data-explorer/ingest-data-event-hub), which is used as a data source
+* [**Event Hub**](ingest-data-event-hub.md), which is used as a data source
 * **Custom ingestion** requires you to write an application that uses one of the Azure Data Explorer client libraries. See [streaming ingestion sample](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) for a sample application.
 
 ### Choose the appropriate streaming ingestion type

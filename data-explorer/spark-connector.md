@@ -24,7 +24,7 @@ This topic describes how to install and configure the Azure Data Explorer Spark 
 
 ## Prerequisites
 
-* [Create an Azure Data Explorer cluster and database](/azure/data-explorer/create-cluster-database-portal) 
+* [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) 
 * Create a Spark cluster
 * Install Azure Data Explorer connector library:
     * Pre-built libraries for [Spark 2.4, Scala 2.11](https://github.com/Azure/azure-kusto-spark/releases) 

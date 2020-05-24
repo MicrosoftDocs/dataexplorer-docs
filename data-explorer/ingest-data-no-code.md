@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 01/29/2020
+ms.date: 05/19/2020
 
 # Customer intent: I want to ingest monitoring data to Azure Data Explorer without one line of code, so that I can explore and analyze my data by using queries.
 ---
@@ -193,7 +193,7 @@ Azure activity logs are subscription-level logs that provide insight into the op
 
 ## Set up an ingestion pipeline in Azure Data Explorer
 
-Setting up an Azure Data Explorer pipeline involves several steps, such as [table creation and data ingestion](/azure/data-explorer/ingest-sample-data#ingest-data). You can also manipulate, map, and update the data.
+Setting up an Azure Data Explorer pipeline involves several steps, such as [table creation and data ingestion](ingest-sample-data.md#ingest-data). You can also manipulate, map, and update the data.
 
 ### Connect to the Azure Data Explorer Web UI
 
@@ -287,7 +287,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
 To map the diagnostic metric and log data to the table, use the following query:
 
 ```kusto
-.create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
+.create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","Properties":{"path":"$.records"}}]'
 ```
 
 # [Activity logs](#tab/activity-logs)
@@ -296,7 +296,7 @@ To map the diagnostic metric and log data to the table, use the following query:
 To map the activity log data to the table, use the following query:
 
 ```kusto
-.create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
+.create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","Properties":{"path":"$.records"}}]'
 ```
 ---
 
@@ -333,7 +333,7 @@ To map the activity log data to the table, use the following query:
 # [Diagnostic logs](#tab/diagnostic-logs)
 #### Create data update policy for diagnostics logs
 
-1. Create a [function](kusto/management/functions.md) that expands the collection of diagnostic logs records so that each value in the collection receives a separate row. You'll enable ingestion logs on an Azure Data Explorer cluster, and use [ingestion logs schema](/azure/data-explorer/using-diagnostic-logs#diagnostic-logs-schema). You'll create one table for succeeded and for failed ingestion, while some of the fields will be empty for succeeded ingestion (ErrorCode for example). Use the [`mv-expand`](kusto/query/mvexpandoperator.md) operator:
+1. Create a [function](kusto/management/functions.md) that expands the collection of diagnostic logs records so that each value in the collection receives a separate row. You'll enable ingestion logs on an Azure Data Explorer cluster, and use [ingestion logs schema](using-diagnostic-logs.md#diagnostic-logs-schema). You'll create one table for succeeded and for failed ingestion, while some of the fields will be empty for succeeded ingestion (ErrorCode for example). Use the [`mv-expand`](kusto/query/mvexpandoperator.md) operator:
 
     ```kusto
     .create function DiagnosticLogsExpand() {

@@ -1,5 +1,5 @@
 ---
-title: base64_decode_tostring() - Azure Data Explorer | Microsoft Docs
+title: base64_decode_tostring() - Azure Data Explorer
 description: This article describes base64_decode_tostring() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,7 +11,7 @@ ms.date: 06/22/2019
 ---
 # base64_decode_tostring()
 
-Decodes a base64 string to a UTF-8 string
+Decodes a base64 string to a UTF-8 string.
 
 **Syntax**
 
@@ -30,6 +30,7 @@ Returns UTF-8 string decoded from base64 string.
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print Quine=base64_decode_tostring("S3VzdG8=")
 ```
@@ -40,6 +41,7 @@ print Quine=base64_decode_tostring("S3VzdG8=")
 
 Trying to decode a base64 string which was generated from invalid UTF-8 encoding will return null:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print Empty=base64_decode_tostring("U3RyaW5n0KHR0tGA0L7Rh9C60LA=")
 ```

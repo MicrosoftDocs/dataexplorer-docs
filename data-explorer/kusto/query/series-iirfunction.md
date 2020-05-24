@@ -1,5 +1,5 @@
 ---
-title: series_iir() - Azure Data Explorer | Microsoft Docs
+title: series_iir() - Azure Data Explorer
 description: This article describes series_iir() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -43,6 +43,7 @@ Y<sub>i</sub> = a<sub>0</sub><sup>-1</sup>(b<sub>0</sub>X<sub>i</sub>
 
 Calculating cumulative sum can be performed by iir filter with coefficients *a*=[1,-1] and *b*=[1]:  
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let x = range(1.0, 10, 1);
 print x=x, y = series_iir(x, dynamic([1]), dynamic([1,-1]))
@@ -58,6 +59,7 @@ print x=x, y = series_iir(x, dynamic([1]), dynamic([1,-1]))
 
 Here's how to wrap it in a function:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let vector_sum=(x:dynamic)
 {

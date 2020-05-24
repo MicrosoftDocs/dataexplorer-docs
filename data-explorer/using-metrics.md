@@ -106,6 +106,6 @@ Additional information about [supported Azure Data Explorer cluster metrics](/az
 
 ## Next steps
 
-* [Tutorial: Ingest and query monitoring data in Azure Data Explorer](/azure/data-explorer/ingest-data-no-code)
-* [Monitor Azure Data Explorer ingestion operations using diagnostic logs](/azure/data-explorer/using-diagnostic-logs)
+* [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md)
+* [Monitor Azure Data Explorer ingestion operations using diagnostic logs](using-diagnostic-logs.md)
 * [Quickstart: Query data in Azure Data Explorer](web-query-data.md)

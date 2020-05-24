@@ -1,5 +1,5 @@
 ---
-title: base64_encode_fromarray() - Azure Data Explorer | Microsoft Docs
+title: base64_encode_fromarray() - Azure Data Explorer
 description: This article describes base64_encode_fromarray() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -31,6 +31,7 @@ Returns the base64 string encoded from the bytes array.
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let bytes_array = toscalar(print base64_decode_toarray("S3VzdG8="));
 print decoded_base64_string = base64_encode_fromarray(bytes_array)
@@ -43,6 +44,7 @@ print decoded_base64_string = base64_encode_fromarray(bytes_array)
 
 Trying to encode a base64 string from an invalid bytes array which was generated from invalid UTF-8 encoded string will return null:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let empty_bytes_array = toscalar(print base64_decode_toarray("U3RyaW5n0KHR0tGA0L7Rh9C60LA"));
 print empty_string = base64_encode_fromarray(empty_bytes_array)

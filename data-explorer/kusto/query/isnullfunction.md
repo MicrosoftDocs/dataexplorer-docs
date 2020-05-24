@@ -1,5 +1,5 @@
 ---
-title: isnull() - Azure Data Explorer | Microsoft Docs
+title: isnull() - Azure Data Explorer
 description: This article describes isnull() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -23,7 +23,7 @@ isnull(parse_json("")) == true
 
 **Returns**
 
-True or false depending on the whether the value is null or not null.
+True or false, depending on whether or not the value is null.
 
 **Notes**
 

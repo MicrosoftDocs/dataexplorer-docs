@@ -363,15 +363,23 @@ OriginalExtentId |string |A unique identifier (GUID) for the original extent in 
 ResultExtentId |string |A unique identifier (GUID) for the result extent which has been moved from the source table to the destination table, or - empty, in case the extent was dropped from the destination table. Upon failure - "Failed".
 Details |string |Includes the failure details, in case the operation fails.
 
+> [!NOTE]
+> The command will fail if extents returned by the *extents to be dropped from table* query don't exist in the destination table. This may happen if the extents were merged before the replace command was executed. 
+> To make sure the command fails on missing extents, check that the query returns the expected ExtentIds. Example #1 below will fail if the extent to drop doesn't exist in table MyOtherTable. Example #2, however, will succeed even though the extent to drop doesn't exist, since the query to drop didn't return any extent ids. 
+
 **Examples**
 
-Moves all extents from 2 specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`, and drops all extents in `MyOtherTable` 
+The following command moves all extents from 2 specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`, and drops all extents in `MyOtherTable` 
 tagged with `drop-by:MyTag`:
 
 ```kusto
 .replace extents in table MyOtherTable <|
-    {.show table MyOtherTable extents where tags has 'drop-by:MyTag'},
-    {.show tables (MyTable1,MyTable2) extents}
+    {
+        .show table MyOtherTable extents where tags has 'drop-by:MyTag'
+    },
+    {
+        .show tables (MyTable1,MyTable2) extents
+    }
 ```
 
 **Example output** 
@@ -383,26 +391,57 @@ tagged with `drop-by:MyTag`:
 |4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f| 
 |2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df| 
 
-*NOTE*: 
-> [!NOTE]
-> The command will fail if extents returned by the *extents to be dropped from table* query don't exist in the destination table. This may happen if the extents were merged before the replace command was executed. 
-> To make sure the command fails on missing extents, check that the query returns the expected ExtentIds. Example #1 below will fail if the extent to drop doesn't exist in table MyOtherTable. Example #2, however, will succeed even though the extent to drop doesn't exist, since the query to drop didn't return any extent ids. 
 
-Example #1: 
+The following commands moves all extents from 1 specific table (`MyTable1`) to table `MyOtherTable`, and drops a specific extent in `MyOtherTable`, by its ID:
+
 
 ```kusto
 .replace extents in table MyOtherTable <|
-     { datatable(ExtentId:guid)[ "2cca5844-8f0d-454e-bdad-299e978be5df"] }, { .show table MyTable1 extents }
+    {
+        print ExtentId = "2cca5844-8f0d-454e-bdad-299e978be5df"
+    },
+    {
+        .show table MyTable1 extents 
+    }
 ```
-
-Example #2:
 
 ```kusto
 .replace extents in table MyOtherTable  <|
-     { .show table MyOtherTable extents | where ExtentId == guid(2cca5844-8f0d-454e-bdad-299e978be5df) }, { .show table MyTable1 extents }
+    {
+        .show table MyOtherTable extents
+        | where ExtentId == guid(2cca5844-8f0d-454e-bdad-299e978be5df) 
+    },
+    {
+        .show table MyTable1 extents 
+    }
 ```
 
+The following command implements an idempotent logic, so that it drops extents from table `t_dest` only in case there are extents to move from table `t_source` to table `t_dest`:
 
+```kusto
+.replace async extents in table t_dest <|
+{
+    let any_extents_to_move = toscalar( 
+        t_source
+        | where extent_tags() has 'drop-by:blue'
+        | summarize count() > 0
+    );
+    let extents_to_drop =
+        t_dest
+        | where any_extents_to_move and extent_tags() has 'drop-by:blue'
+        | summarize by ExtentId = extent_id()
+    ;
+    extents_to_drop
+},
+{
+    let extents_to_move = 
+        t_source
+        | where extent_tags() has 'drop-by:blue'
+        | summarize by ExtentId = extent_id()
+    ;
+    extents_to_move
+}
+```
 
 ## .drop extent tags
 

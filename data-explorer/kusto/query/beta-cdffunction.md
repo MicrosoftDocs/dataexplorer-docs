@@ -1,5 +1,5 @@
 ---
-title: beta_cdf() - Azure Data Explorer | Microsoft Docs
+title: beta_cdf() - Azure Data Explorer
 description: This article describes beta_cdf() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -45,6 +45,7 @@ If alpha ≤ 0 or beta ≤ 0, beta_cdf() returns the NaN value.
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(x:double, alpha:double, beta:double, comment:string)
 [

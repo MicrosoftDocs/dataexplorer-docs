@@ -1,5 +1,5 @@
 ---
-title: parse_ipv4() - Azure Data Explorer | Microsoft Docs
+title: parse_ipv4() - Azure Data Explorer
 description: This article describes parse_ipv4() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -38,6 +38,7 @@ If conversion is not successful, result will be `null`.
  
 **Example**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(ip_string:string)
 [

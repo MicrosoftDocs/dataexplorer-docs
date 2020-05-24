@@ -1,5 +1,5 @@
 ---
-title: Joining within time window - Azure Data Explorer | Microsoft Docs
+title: Joining within time window - Azure Data Explorer
 description: This article describes Joining within time window in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -32,6 +32,7 @@ schema:
 - `Timestamp`: A column of type `datetime` indicating when the event described
   by the record happened.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let T = datatable(SessionId:string, EventType:string, Timestamp:datetime)
 [
@@ -123,9 +124,9 @@ T
 |---|---|---|
 |0|2017-10-01 00:00:00.0000000|2017-10-01 00:01:00.0000000|
 
-
 **Runnable query reference (with table inlined)**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let T = datatable(SessionId:string, EventType:string, Timestamp:datetime)
 [
@@ -164,6 +165,7 @@ T
 
 The next query emulates data set of 50M records and ~10M IDs and runs the query with the technique described above.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let T = range x from 1 to 50000000 step 1
 | extend SessionId = rand(10000000), EventType = rand(3), Time=datetime(2017-01-01)+(x * 10ms)

@@ -1,5 +1,5 @@
 ---
-title: Streaming ingestion policy management - Azure Data Explorer | Microsoft Docs
+title: Kusto streaming ingestion policy management - Azure Data Explorer
 description: This article describes Streaming ingestion policy management in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -13,7 +13,7 @@ ms.date: 02/24/2020
 
 Streaming ingestion policy can be attached to a database or table to allow streaming ingestion to those locations. The policy also defines the row stores used for the streaming ingestion.
 
-For more information on streaming ingestion see [Streaming ingestion (preview)](https://docs.microsoft.com/azure/data-explorer/ingest-data-streaming). To learn more about the streaming ingestion policy, see [Streaming ingestion policy](streamingingestionpolicy.md).
+For more information on streaming ingestion see [Streaming ingestion (preview)](../../ingest-data-streaming.md). To learn more about the streaming ingestion policy, see [Streaming ingestion policy](streamingingestionpolicy.md).
 
 ## .show policy streamingingestion
 

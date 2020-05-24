@@ -65,17 +65,18 @@ The technical specifications for the Azure Data Explorer cluster VMs are describ
 
 |**Name**| **Category** | **SSD size** | **Cores** | **RAM** | **Premium storage disks (1&nbsp;TB)**| **Minimum instance count per cluster** | **Maximum instance count per cluster**
 |---|---|---|---|---|---|---|---
-|D11 v2| compute-optimized | 75&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 1 | 8 (except for dev/test SKU, which is 1)
-|D12 v2| compute-optimized | 150&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
-|D13 v2| compute-optimized | 307&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1,000
-|D14 v2| compute-optimized | 614&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1,000
-|DS13 v2 + 1&nbsp;TB&nbsp;PS| storage-optimized | 1&nbsp;TB | 8 | 56&nbsp;GB | 1 | 2 | 1,000
-|DS13 v2 + 2&nbsp;TB&nbsp;PS| storage-optimized | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1,000
-|DS14 v2 + 3&nbsp;TB&nbsp;PS| storage-optimized | 3&nbsp;TB | 16 | 112&nbsp;GB | 2 | 2 | 1,000
-|DS14 v2 + 4&nbsp;TB&nbsp;PS| storage-optimized | 4&nbsp;TB | 16 | 112&nbsp;GB | 4 | 2 | 1,000
-|L4s v1| storage-optimized | 650&nbsp;GB | 4 | 32&nbsp;GB | 0 | 2 | 16
-|L8s v1| storage-optimized | 1.3&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000
-|L16s_1| storage-optimized | 2.6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
+|Dev(No SLA)_Standard_D11_v2| compute-optimized | 75&nbsp;GB    | 1 | 14&nbsp;GB | 0 | 1 | 1
+|Standard_D11_v2| compute-optimized | 75&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 2 | 8 
+|Standard_D12_v2| compute-optimized | 150&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
+|Standard_D13_v2| compute-optimized | 307&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1,000
+|Standard_D14_v2| compute-optimized | 614&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1,000
+|Standard_DS13_v2 + 1&nbsp;TB&nbsp;PS| storage-optimized | 1&nbsp;TB | 8 | 56&nbsp;GB | 1 | 2 | 1,000
+|Standard_DS13_v2 + 2&nbsp;TB&nbsp;PS| storage-optimized | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1,000
+|Standard_DS14_v2 + 3&nbsp;TB&nbsp;PS| storage-optimized | 3&nbsp;TB | 16 | 112&nbsp;GB | 2 | 2 | 1,000
+|Standard_DS14_v2 + 4&nbsp;TB&nbsp;PS| storage-optimized | 4&nbsp;TB | 16 | 112&nbsp;GB | 4 | 2 | 1,000
+|Standard_L4s| storage-optimized | 650&nbsp;GB | 4 | 32&nbsp;GB | 0 | 2 | 16
+|Standard_L8s| storage-optimized | 1.3&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000
+|Standard_L16s| storage-optimized | 2.6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
 
 * You can view the updated VM SKU list per region by using the Azure Data Explorer [ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet). 
 * Learn more about the [various SKUs](/azure/virtual-machines/windows/sizes). 

@@ -1,5 +1,5 @@
 ---
-title: current_principal_details() - Azure Data Explorer | Microsoft Docs
+title: current_principal_details() - Azure Data Explorer
 description: This article describes current_principal_details() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -23,6 +23,7 @@ The details of the current principal as a `dynamic`.
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print d=current_principal_details()
 ```

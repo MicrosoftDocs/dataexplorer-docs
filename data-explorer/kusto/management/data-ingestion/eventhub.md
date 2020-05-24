@@ -16,7 +16,7 @@ ms.date: 04/01/2020
 ## Data format
 
 * Data is read from the Event Hub in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
-* Event payload can contain one or more records to be ingested, in one of the [formats supported by Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).
+* Event payload can contain one or more records to be ingested, in one of the [formats supported by Azure Data Explorer](../../../ingestion-supported-formats.md).
 * Data can be compressed using `GZip` compression algorithm. Must be specified as `Compression` [ingestion property](#ingestion-properties).
 
 > [!Note]
@@ -25,7 +25,7 @@ ms.date: 04/01/2020
 
 ## Ingestion properties
 
-Ingestion properties instructs the ingestion process. Where to route the data and how to process it. You can specify [Ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) of the events ingestion using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
+Ingestion properties instructs the ingestion process. Where to route the data and how to process it. You can specify [Ingestion properties](../../../ingestion-properties.md) of the events ingestion using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
 
 |Property |Description|
 |---|---|
@@ -137,7 +137,7 @@ Data is added by using the system properties names as they appear in the **Data 
 ### Create an Event Hub
 
 If you don't already have one, [Create an event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create). 
-A template can be found in the how-to [Create an event hub](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub#create-an-event-hub) guide.
+A template can be found in the how-to [Create an event hub](../../../ingest-data-event-hub.md#create-an-event-hub) guide.
 
 > [!Note]
 > * The partition count is not changeable, so you should consider long-term scale when setting partition count.
@@ -145,10 +145,10 @@ A template can be found in the how-to [Create an event hub](https://docs.microso
 
 ### Data ingestion connection to Azure Data Explorer
 
-* Via Azure Portal: [Connect to the event hub](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub#connect-to-the-event-hub).
-* Using Azure Data Explorer management .NET SDK: [Add an Event Hub data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-hub-csharp#add-an-event-hub-data-connection)
-* Using Azure Data Explorer management Python SDK: [Add an Event Hub data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-hub-python#add-an-event-hub-data-connection)
-* With ARM template: [Azure Resource Manager template for adding an Event Hub data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-hub-resource-manager#azure-resource-manager-template-for-adding-an-event-hub-data-connection)
+* Via Azure Portal: [Connect to the event hub](../../../ingest-data-event-hub.md#connect-to-the-event-hub).
+* Using Azure Data Explorer management .NET SDK: [Add an Event Hub data connection](../../../data-connection-event-hub-csharp.md#add-an-event-hub-data-connection)
+* Using Azure Data Explorer management Python SDK: [Add an Event Hub data connection](../../../data-connection-event-hub-python.md#add-an-event-hub-data-connection)
+* With ARM template: [Azure Resource Manager template for adding an Event Hub data connection](../../../data-connection-event-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-event-hub-data-connection)
 
 > [!Note]
 > If **My data includes routing info** selected, you *must* provide the necessary [routing](#events-routing) information as part of the events properties.

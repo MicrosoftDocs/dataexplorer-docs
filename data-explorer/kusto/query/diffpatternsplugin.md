@@ -105,6 +105,7 @@ When you find an interesting row, you might want to drill into it further by add
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5

@@ -216,10 +216,10 @@ The output includes:
 
 ### Outliers in partitioned columns
 
-* If a hash partition key has a large enough percentage of values which aren't populated properly (for example, they are empty, or have a generic value), that could contribute to having
-  a non-balanced distribution of data across the cluster's nodes.
+* If a hash partition key includes values which are significantly more prevalent than others - for example, an empty string, a generic value (e.g. `null` or `N/A`), or they represent an entity (e.g. `tenant_id`)
+  that is more prevalent in the data set - that could contribute to imbalanced distribution of data across the cluster's nodes, and to degraded query performance.
 * If a uniform range datetime partition key has a large enough percentage of values which are "far" from the majority of the values in the column (for example, datetime values from the distant
-  past or future).
+  past or future), that could increase the overhead of the data partitioning process, and lead to many small extents the cluster needs to keep track of.
 
 In both of these cases, you should either "fix" the data, or filter out any irrelevant records in the data before or at ingestion time (for example, using an
 [update policy](updatepolicy.md)), to reduce the overhead of the data partitioning on the cluster).

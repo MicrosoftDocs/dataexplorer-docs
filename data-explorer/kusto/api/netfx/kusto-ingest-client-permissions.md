@@ -1,5 +1,5 @@
 ---
-title: Kusto.Ingest Ingestion Permissions - Azure Data Explorer
+title: Kusto.Ingest permissions - Azure Data Explorer
 description: This article describes Kusto.Ingest - Ingestion Permissions in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -9,25 +9,25 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Kusto.Ingest - Ingestion permissions
+# Kusto.Ingest - Ingestion permissions 
 
 This article explains what permissions to set up on your service, for `Native` ingestion to work.
 
 ## Prerequisites
-
+ 
 * To view and modify authorization settings on Kusto services and databases, see [Kusto control commands](../../management/security-roles.md).
 
 * Azure Active Directory (Azure AD) applications used as sample principals in the following examples:
     * Test Azure AD App (2a904276-1234-5678-9012-66fc53add60b; microsoft.com)
     * Kusto Internal Ingestion Azure AD App (76263cdb-1234-5678-9012-545644e9c404; microsoft.com)
-
+ 
 ## Ingestion permission mode for queued ingestion
 
 Ingestion permission mode is defined in [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient). This mode limits the client code dependency on the Azure Data Explorer service. Ingestion is done by posting a Kusto ingestion message to an Azure queue. The queue, also known as the Ingestion service, is gotten from the Azure Data Explorer service. Intermediate storage artifacts will be created by the ingest client using the resources allocated by the Azure Data Explorer service.
 
 The diagram outlines the queued ingestion client interaction with Kusto.
 
-:::image type="content" source="../images/queued-ingest.jpg" alt-text="queued-ingest":::
+:::image type="content" source="../images/kusto-ingest-client-permissions/queued-ingest.png" alt-text="Queued ingestion":::
 
 ### Permissions on the Engine Service
 
@@ -49,3 +49,4 @@ Granting required permissions on database `DB1` or table `T1` to Azure AD App `T
 .add database DB1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test Azure AD App'
 .add table T1 ingestors ('aadapp=2a904276-1234-5678-9012-66fc53add60b;microsoft.com') 'Test Azure AD App'
 ```
+ 

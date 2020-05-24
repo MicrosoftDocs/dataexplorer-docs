@@ -1,5 +1,5 @@
 ---
-title: Samples - Azure Data Explorer | Microsoft Docs
+title: Samples - Azure Data Explorer
 description: This article describes Samples in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -18,6 +18,7 @@ to meet them.
 
 Project two or more columns and use them as the x and y axis of a chart:
 
+<!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto 
 StormEvents
 | where isnotempty(EndLocation) 
@@ -407,6 +408,7 @@ The two approaches below demonstrate how this can be achieved. 
 
 The approach below shows how the mapping can be achieved using a dynamic dictionary and dynamic accessors.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Data set definition
 let Source = datatable(DeviceModel:string, Count:long)
@@ -493,6 +495,7 @@ In many cases one wants to join the results of a query with some ad-hoc dimensio
 table that is not stored in the database. It is possible to define an expression
 whose result is a table scoped to a single query by doing something like this:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 // Create a query-time dimension table using datatable
 let DimTable = datatable(EventType:string, Code:string)

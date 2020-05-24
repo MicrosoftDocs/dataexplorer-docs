@@ -1,18 +1,17 @@
 ---
-title: Data purge - Azure Data Explorer | Microsoft Docs
+title: Data purge - Azure Data Explorer
 description: This article describes Data purge in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: kedamari
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 05/12/2020
 ---
 # Data purge
 
-> [!Note]
-> This article provides steps for how to delete personal data from the device or service and can be used to support your obligations under the GDPR. If you're looking for general information about GDPR, see the [GDPR section of the Service Trust portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+[!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
 As a data platform, Azure Data Explorer supports the ability to delete individual records, through the use of Kusto `.purge` and related commands. You can also [purge an entire table](#purging-an-entire-table).  
 
@@ -52,14 +51,15 @@ Issuing a `.purge` command triggers this process, which takes a few days to comp
 
 * Before running the purge, verify the predicate by running a query and checking that the results match the expected outcome. You can also use the two-step process that returns the expected number of records that will be purged. 
 
-* As a precautionary measure, the purge process is disabled, by default, on all clusters.
-   Enabling the purge process is a one-time operation that requires opening a [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview); specify that you want the `EnabledForPurge` feature to be turned on.
-
-* The `.purge` command is executed against the Data Management endpoint: `https://ingest-[YourClusterName].[Region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-authorization.md) permissions on the relevant databases. 
-* Because of the purge process performance impact, and to guarantee that the [purge guidelines](#purge-guidelines) have been followed, do the following steps: 
-    * Modify the data schema so that minimal tables include relevant data
-	* Batch commands per table to reduce the significant COGS impact of the purge process.
-* The `predicate` parameter of the [`.purge`](#purge-table-tablename-records-command) command is used to specify which records to purge.
+* The `.purge` command is executed against the Data Management endpoint: 
+  `https://ingest-[YourClusterName].[region].kusto.windows.net`.
+   The command requires [database admin](../management/access-control/role-based-authorization.md)
+   permissions on the relevant databases. 
+* Due to the purge process performance impact, and to guarantee that
+   [purge guidelines](#purge-guidelines) have been followed, the caller is expected to modify the data schema so that
+   minimal tables include relevant data, and batch commands per table to reduce the significant COGS impact of the
+   purge process.
+* The `predicate` parameter of the [.purge](#purge-table-tablename-records-command) command is used to specify which records to purge.
 `Predicate` size is limited to 63 KB. When constructing the `predicate`:
 	* Use the ['in' operator](../query/inoperator.md), for example, `where [ColumnName] in ('Id1', 'Id2', .. , 'Id1000')`. 
 	* Note the limits of the ['in' operator](../query/inoperator.md) (list can contain up to `1,000,000` values).
@@ -81,20 +81,19 @@ To reduce purge execution time:
 ## Trigger the purge process
 
 > [!Note]
-> Purge execution is invoked by running [purge table *TableName* records](#purge-table-tablename-records-command) command on the Data Management endpoint (**https://ingest-[YourClusterName].[Region].kusto.windows.net**).
-
+> Purge execution is invoked by running [purge table *TableName* records](#purge-table-tablename-records-command) command on the Data Management endpoint https://ingest-[YourClusterName].[Region].kusto.windows.net.
 
 ### Purge table TableName records command
 
 Purge command may be invoked in two ways for differing usage scenarios:
 
-1. Programmatic invocation: A single step that is intended to be invoked by applications. Calling this command directly triggers purge execution sequence.
+* Programmatic invocation: A single step that is intended to be invoked by applications. Calling this command directly triggers purge execution sequence.
 
 	**Syntax**
 
 	 ```kusto
 	 // Connect to the Data Management service
-	 #connect "https://ingest-[YourClusterName].[Region].kusto.windows.net" 
+	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
 	 
 	 .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
 	 ```
@@ -102,14 +101,14 @@ Purge command may be invoked in two ways for differing usage scenarios:
 	> [!NOTE]
 	> Generate this command by using the CslCommandGenerator API, available as part of the [Kusto Client Library](../api/netfx/about-kusto-data.md) NuGet package.
 
-1. Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data. Using this option may take a long time to complete on large tables with significant cold cache data.
+* Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data. Using this option may take a long time to complete on large tables with significant cold cache data.
 	<!-- If query times-out on DM endpoint (default timeout is 10 minutes), it is recommended to use the [engine `whatif` command](#purge-whatif-command) directly againt the engine endpoint while increasing the [server timeout limit](../concepts/querylimits.md#limit-on-request-execution-time-timeout). Only after you have verified the expected results using the engine whatif command, issue the purge command via the DM endpoint using the 'noregrets' option. -->
 
 	 **Syntax**
 
 	 ```kusto
 	 // Connect to the Data Management service
-	 #connect "https://ingest-[YourClusterName].[egion].kusto.windows.net" 
+	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
 	 
 	 // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
 	 .purge table [TableName] records in database [DatabaseName] <| [Predicate]
@@ -127,6 +126,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 	| `verificationtoken`     |  In the two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. Information about the purge will be returned with a token that should be passed back to the command to do step #2.   |
 
 	**Purge predicate limitations**
+
 	* The predicate must be a simple selection (for example, *where [ColumnName] == 'X'* / *where [ColumnName] in ('X', 'Y', 'Z') and [OtherColumn] == 'A'*).
 	* Multiple filters must be combined with an 'and', rather than separate `where` clauses (for example, `where [ColumnName] == 'X' and  OtherColumn] == 'Y'` and not `where [ColumnName] == 'X' | where [OtherColumn] == 'Y'`).
 	* The predicate can't reference tables other than the table being purged (*TableName*). The predicate can only include the selection statement (`where`). It can't project specific columns from the table (output schema when running '*`table` | Predicate*' must match table schema).
@@ -213,7 +213,7 @@ If the attempt is successful, the operation state is updated to `Abandoned`. Oth
 ## Track purge operation status 
 
 > [!Note]
-> Purge operations can be tracked with the [show purges](#show-purges-command) command, executed against the Data Management endpoint (**https://ingest-[YourClusterName].[Region].kusto.windows.net**).
+> Purge operations can be tracked with the [show purges](#show-purges-command) command, executed against the Data Management endpoint https://ingest-[YourClusterName].[region].kusto.windows.net.
 
 Status = 'Completed' indicates successful completion of the first phase of the purge operation, that is records are soft-deleted and are no longer available for querying. Customers **aren't** expected to track and verify the second phase (hard-delete) completion. This phase is monitored internally by Azure Data Explorer.
 
@@ -274,16 +274,18 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 * `Principal` - identity of the purge command issuer.
 
 ## Purging an entire table
+
 Purging a table includes dropping the table, and marking it as purged so that the hard delete process described in [Purge process](#purge-process) runs on it. 
 Dropping a table without purging it doesn't delete all its storage artifacts. These artifacts are deleted according to the hard retention policy initially set on the table. 
 The `purge table allrecords` command is quick and efficient and is preferable to the purge records process, if applicable for your scenario. 
 
 > [!Note]
-> The command is invoked by running the [purge table *TableName* allrecords](#purge-table-tablename-allrecords-command) command on the Data Management endpoint (**https://ingest-[YourClusterName].[Region].kusto.windows.net**).
+> The command is invoked by running the [purge table *TableName* allrecords](#purge-table-tablename-allrecords-command) command on the Data Management endpoint https://ingest-[YourClusterName].[region].kusto.windows.net.
 
 ### Purge table *TableName* allrecords command
 
 Similar to '[.purge table records ](#purge-table-tablename-records-command)' command, this command can be invoked in a programmatic (single-step) or in a manual (two-step) mode.
+
 1. Programmatic invocation (single-step):
 
 	 **Syntax**
