@@ -1,5 +1,5 @@
 ---
-title: Connect to Azure Data Explorer from Azure Databricks using Python
+title: Connect to Azure Data Explorer from Azure Databricks
 description: This topic shows you how to use a Python library in Azure Databricks to access data from Azure Data Explorer by using one of two authentication methods.
 author: manojraheja
 ms.author: maraheja
