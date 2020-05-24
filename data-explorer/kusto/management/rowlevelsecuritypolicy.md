@@ -148,7 +148,7 @@ union AllData, PartialData       // this will just return AllData, as PartialDat
 
 Similarly, if `IsRestrictedUser` evaluates to `true`, then only the query for `PartialData` will be evaluated.
 
-### To improve query performance when RLS is used
+### Improve query performance when RLS is used
 
 * If a filter is applied on a high-cardinality column (e.g. DeviceID) - consider using [Partitioning policy](./partitioningpolicy.md) or [Row Order policy](./roworderpolicy.md)
 * If a filter is applied on a low-medium-cardinality column – consider using [Row Order policy](./roworderpolicy.md)
