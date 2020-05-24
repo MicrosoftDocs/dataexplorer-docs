@@ -37,7 +37,7 @@ The data provider can share the data at the database level or at the cluster lev
 1. [Create provider cluster and DB](create-cluster-database-portal.md) for the leader and follower.
 1. [Ingest data](ingest-sample-data.md) to leader database using one of various methods discussed in [ingestion overview](ingest-data-overview.md).
 
-## Data Provider - share data
+## Data provider - share data
 
 Follow the instructions in the video to create a data share account, add a dataset, and send an invitation.
 
