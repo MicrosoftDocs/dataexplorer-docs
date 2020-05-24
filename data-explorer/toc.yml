@@ -256,7 +256,7 @@
     items:
     - name: Using Azure Data Share
       items:
-      - name: Data Share
+      - name: Use Azure Data Share
         href: data-share.md
       - name: Follower databases
         href: follower.md    
