@@ -27,11 +27,11 @@ ms.date: 05/21/2020
 To install the [spark-kusto-connector](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector) on your Azure Databricks cluster:
 
 1. Go to your Azure Databricks workspace and [create a library](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library).
-2. Search for the *spark-kusto-connector* package on Maven Central, install the latest version, and attach to your cluster. 
+1. Search for the *spark-kusto-connector* package on Maven Central, install the latest version, and attach to your cluster. 
 
 ## Connect to Azure Data Explorer by using a device authentication
 
-1. [Sample code](https://github.com/Azure/azure-kusto-spark/blob/master/samples/src/main/python/pyKusto.py).
+[Sample code](https://github.com/Azure/azure-kusto-spark/blob/master/samples/src/main/python/pyKusto.py).
 
 ## Connect to Azure Data Explorer by using an Azure AD app
 
@@ -67,6 +67,7 @@ Your tenant ID is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`.
 ### Store and secure your Azure AD app ID and key (optional)  
 
 Store and secure your Azure AD app ID and key by using Azure Databricks [secrets](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) as follows:
+
 1. [Set up the CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-the-cli).
 1. [Install the CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 1. [Set up authentication](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-authentication).
@@ -81,5 +82,6 @@ Store and secure your Azure AD app ID and key by using Azure Databricks [secrets
     ```databricks secrets list --scope adx```
 
 ### Sample Code
+
 1. [Sample code](https://github.com/Azure/azure-kusto-spark/blob/master/samples/src/main/python/pyKusto.py). 
-2. Update the placeholder values with your cluster name, database name, table name, Azure AD tenant ID, AAD App ID, and AAD App Key. If you are storing your credentials in databricks secrets store, update the code accordingly to retrieve values from dbutils.
+1. Update the placeholder values with your cluster name, database name, table name, Azure AD tenant ID, AAD App ID, and AAD App Key. If you are storing your credentials in databricks secrets store, update the code accordingly to retrieve values from dbutils.
