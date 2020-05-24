@@ -17,7 +17,9 @@ There are many traditional ways to share data, such as through file shares, FTP,
 
 The architecture in Azure Data Explorer decouples the storage and compute. This structure allows customers to run multiple compute (read-only) instances on the same underline storage. Users can attach the database as a [follower database](follower.md), which is a read-only database on a remote cluster.
 
-Configure data sharing using one the following methods:
+## Configure data sharing 
+
+You can configure data sharing using one the following methods:
 
 * Use [Azure Data Share](/azure/data-share/) to send and manage invitations and shares across the company or with external partners and customers. Azure Data Share uses a [follower database](follower.md) to create a symbolic link between the provider and consumer's Azure Data Explorer cluster. This option provides you with a single pane to view and manage all your data shares across Azure Data Explorer clusters and other data services. Azure Data Share also enables you to share data across organizations in different Azure Active Directly tenants.
 * Directly configuring the [follower database](follower.md) only for the scenarios where you need additional compute to scale out for reporting needs and you're admin on both the clusters.
