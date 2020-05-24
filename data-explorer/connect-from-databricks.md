@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/21/2020
 
-# Customer intent: I want to use a Python library in Azure Databricks to access data from Azure Data Explorer.
+# Customer intent: I want to use Azure Databricks to access data from Azure Data Explorer.
 ---
 
 # Connect to Azure Data Explorer from Azure Databricks by using Python
