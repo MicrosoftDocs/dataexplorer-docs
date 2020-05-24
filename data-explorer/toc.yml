@@ -254,6 +254,12 @@
       href: using-metrics.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
+  - name: Share data
+    items:
+    - name: Using Azure Data Share
+      items:
+      - name: Data Share
+        href: data-share-overview.md
   - name: Integrate with other tools
     items:
     - name: Azure Data Factory
