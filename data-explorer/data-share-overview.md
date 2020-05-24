@@ -39,7 +39,7 @@ The data provider can share the data at the database level or at the cluster lev
 
 ## Data Provider - share data
 
-Follow the instructions in the below video to create a data share account, add dataset, and send invitation.
+Follow the instructions in the video to create a data share account, add a dataset, and send an invitation.
 
 [![Data provider - share data](https://img.youtube.com/vi/QmsTnr90_5o/0.jpg)](https://youtu.be/QmsTnr90_5o?&autoplay=1)
 
