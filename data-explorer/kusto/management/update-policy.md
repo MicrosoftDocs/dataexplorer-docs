@@ -11,9 +11,8 @@ ms.date: 02/19/2020
 ---
 # Update policy
 
-The [update policy](updatepolicy.md)
-is a table-level policy object to automatically
-run a query and ingest its results when data is ingested into another table.
+The [update policy](updatepolicy.md) is a table-level policy object that automatically
+runs a query and then ingests the results when data is ingested into another table.
 
 ## Show update policy
 
@@ -60,20 +59,17 @@ This command sets the update policy of the specified table.
 
 > 1. Use a stored function for the the `Query` property of the update policy object.
    You will only need to modify the function definition, instead of the entire policy object.
-
 > 1. If `IsEnabled` is set to `true`, then the following validations are performed on the update policy as it's being set:
-    1. `Source` - Checks that the Table exists in the target database.
-    1. `Query` - 
-        * Checks that the schema defined by the schema matches the one of the target table
-        * Checks that the query references the `source` table of the update policy. 
+>    1. `Source` - Checks that the Table exists in the target database.
+>    1. `Query` - 
+>        * Checks that the schema defined by the schema matches the one of the target table
+>        * Checks that the query references the `source` table of the update policy. 
         Defining an update policy query which does *not* reference the source is possible by setting 
         `AllowUnreferencedSourceTable=true` in the *with* properties (see example below),
         but is generally not recommended due to performance issues. For every ingestion to the source table, 
         *all* records in a different table are considered for the update policy execution.
-    1. Checks that the policy doesn't result in a cycle being created in the chain of Update Policies in the target database.
-
+ >       * Checks that the policy doesn't result in a cycle being created in the chain of Update Policies in the target database.
  > 1. If `IsTransactional` is set to `true`, then checks that the`TableAdmin` permissions are also verified against `Source` (the source table)
-  
  > 1. Make sure that you test your update policy or function for performance, before applying it to run on each ingestion to the source table. For more information, see [here](updatepolicy.md#testing-an-update-policys-performance-impact).
 
 **Returns**
@@ -105,7 +101,7 @@ MyUpdateFunction()
 
 - When an ingestion to the source table occurs - in this case, `MyTableX` - one or more extents (data shards) are created in that table
 - The `Query` that is defined in the update policy object - in this case `MyUpdateFunction()` - will only run on those extents, and won't run on the entire table
-  - "scoping" is done internally and automatically, and should not be handled when defining the `Query`
+  - "scoping" is done internally and automatically, and shouldn't be handled when defining the `Query`
   - Only newly ingested records - that are different in each ingestion operation - will be taken into consideration when ingesting to the `DerivedTableX` derived table.
 
 ```kusto
@@ -135,7 +131,6 @@ This command modifies the update policy of the specified table.
 
 > 1. Use stored functions for the bulk implementation of the query property of the update policy object. 
      You will only need to modify the function definition instead of the entire policy object.
-
 > 1. The validations are the same as those done on an `alter` command
 
 **Returns**
