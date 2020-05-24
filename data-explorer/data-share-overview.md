@@ -15,7 +15,7 @@ There are many traditional ways to share data, such as through file shares, FTP,
 
 [![Azure Friday Video](https://img.youtube.com/vi/Q3MJv90PegE/0.jpg)](https://www.youtube.com/watch?v=Q3MJv90PegE?&autoplay=1)
 
-The architecture in Azure Data Explorer decouples the storage and compute. This structure allows customers to run multiple compute (read-only) instances on the same underline storage. Users can attach the database as a [follower database](follower.md), which is a read-only database on a remote cluster.
+Azure Data Explorer decouples the storage and compute which allows customers to run multiple compute (read-only) instances on the same underlying storage. You can attach a database as a [follower database](follower.md), which is a read-only database on a remote cluster.
 
 ## Configure data sharing 
 
