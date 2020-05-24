@@ -11,10 +11,10 @@ ms.date: 05/21/2020
 # Customer intent: I want to use Azure Databricks to access data from Azure Data Explorer.
 ---
 
-# Connect to Azure Data Explorer from Azure Databricks by using Python
+# Connect to Azure Data Explorer from Azure Databricks
 
-[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) is an Apache Spark-based analytics platform that's optimized for the Microsoft Azure platform. This article shows you how to use a Python library in Azure Databricks to access data from Azure Data Explorer. There are several ways to authenticate with Azure Data Explorer, including a device login and an Azure Active Directory (Azure AD) app.
-
+[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) is an Apache Spark-based analytics platform that's optimized for the Microsoft Azure platform. This article shows you how to use Azure Databricks to access data from Azure Data Explorer. There are several ways to authenticate with Azure Data Explorer, including a device login and an Azure Active Directory (Azure AD) app.
+ 
 ## Prerequisites
 
 - [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
