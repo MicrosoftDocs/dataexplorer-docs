@@ -11,12 +11,13 @@ ms.date: 05/20/2020
 ---
 # Clear schema cache for streaming ingestion
 
-Cluster nodes cache schema of databases that receive data via streaming ingestion. This done in order to achieve best performance and optimize utilization of cluster resources but can cause propagation delays when schema changes.
-In order to guarantee that subsequent streaming ingestion requests see the database or table schema changes the cache needs to be cleared.
-For more information see [Streaming ingestion and schema changes](../../streaming-ingestion-and-schema-changes.md).
+Cluster nodes cache schema of the databases that receive data via streaming ingestion. This process optimizes performance and utilization of cluster resources, but can cause propagation delays when the schema change.
+Clear the cache to guarantee that subsequent streaming ingestion requests incorporate database or table schema changes.
+For more information, see [Streaming ingestion and schema changes](../../streaming-ingestion-and-schema-changes.md).
 
 ## Clear schema cache
-The `.clear cache streamingingestion schema` command flushes cached schema from all cluster nodes
+
+The `.clear cache streamingingestion schema` command flushes cached schema from all cluster nodes.
 
 **Syntax**
 
@@ -33,7 +34,7 @@ This command returns a table with the following columns:
 |NodeId|`string`|Identifier of the cluster node
 |Status|`string`|Succeeded/Failed
 
-**Examples**
+**Example**
 
 ```kusto
 .clear database cache streamingingestion schema
@@ -47,4 +48,4 @@ This command returns a table with the following columns:
 |Node2|Failed
 
 > [!NOTE]
-If the command fails or one of the rows in the returned table contains _Status=**Failed**_ the command can be safely retried.
+> If the command fails or one of the rows in the returned table contains *Status=Failed* the command can be safely retried.
