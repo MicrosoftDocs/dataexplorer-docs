@@ -27,7 +27,7 @@ You can configure data sharing using one the following methods:
 > [!Note] 
 > When the sharing relationship is established, Azure Data Share creates a symbolic link between the provider and consumer's Azure Data Explorer cluster. If the data provider revokes access, the symbolic link is deleted, and the shared database(s) are no longer available to the data consumer.
 
-:::image type="content" source="media/data-share-overview/adx-datashare-image.png" alt-text="Azure Data Explorer data sharing":::
+:::image type="content" source="media/data-share/adx-datashare-image.png" alt-text="Azure Data Explorer data sharing":::
 
 The data provider can share the data at the database level or at the cluster level. The cluster sharing the database is the leader cluster and the cluster receiving the share is the follower cluster. A follower cluster can follow one or more leader cluster databases. The follower cluster periodically synchronizes to check for changes. The lag time between the leader and follower varies from a few seconds to a few minutes, depending on the overall size of the metadata and the data. Data is cached on the consumer cluster and is only available for read or query operations, with an exception to override the hot caching policy and the database permissions. The queries running on the follower cluster use local cache and don't use the resources of the leader cluster.
 

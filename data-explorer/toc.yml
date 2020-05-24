@@ -220,8 +220,6 @@
         href: language-extensions.md
     - name: Database
       items:
-      - name: Follower databases
-        href: follower.md  
       - name: Manage database permissions
         href: manage-database-permissions.md
       - name: Add database principal
@@ -259,7 +257,9 @@
     - name: Using Azure Data Share
       items:
       - name: Data Share
-        href: data-share-overview.md
+        href: data-share.md
+      - name: Follower databases
+        href: follower.md    
   - name: Integrate with other tools
     items:
     - name: Azure Data Factory
