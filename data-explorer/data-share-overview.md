@@ -45,7 +45,7 @@ Follow the instructions in the video to create a data share account, add a datas
 
 ## Data consumer - receive data
 
-Follow the instructions in the below video to accept the invitation, create data share account, and map to the consumer cluster.
+Follow the instructions in the video to accept the invitation, create a data share account, and map to the consumer cluster.
 
 [![Data Consumer - Receiving Data](https://img.youtube.com/vi/vBq6iFaCpdA/0.jpg)](https://youtu.be/vBq6iFaCpdA?&autoplay=1)
 
