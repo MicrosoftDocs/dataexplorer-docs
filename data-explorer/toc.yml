@@ -254,8 +254,6 @@
       href: monitor-with-resource-health.md
   - name: Share data
     items:
-    - name: Using Azure Data Share
-      items:
       - name: Use Azure Data Share
         href: data-share.md
       - name: Follower databases
