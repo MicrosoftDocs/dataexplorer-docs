@@ -136,3 +136,38 @@ Similarly, if `IsRestrictedUser` evaluates to `true`, then only the query for `P
 ## Performance impact on ingestion
 
 None.
+
+## Frequently asked questions
+
+**Question: Is there a limit on the number of tables on which I can configure RLS?**
+
+No limit.
+
+**Question: What's the easiest way to apply the same RLS function on multiple tables?**
+
+First, define a function that receives the table name as a string parameter, and references the table using the `table()` operator. For example:
+
+```
+.create-or-alter function RLSForCustomersTables(TableName: string) {
+    table(TableName)
+    | ...
+}
+```
+
+Then configure RLS on multiple tables this way:
+
+```
+.alter table Customers1 policy row_level_security enable "RLSForCustomersTables('Customers1')"
+.alter table Customers2 policy row_level_security enable "RLSForCustomersTables('Customers2')"
+.alter table Customers3 policy row_level_security enable "RLSForCustomersTables('Customers3')"
+```
+
+**Question: How does RLS behave when there are follower databases?**
+
+The RLS policy that you configure on the production database will also take effect in the follower databases.
+You can’t configure different RLS policies on the production and follower databases.
+
+**Question: How to improve query performance when RLS is used?**
+
+* If a filter is applied on a high-cardinality column (e.g. DeviceID) - consider using [Partitioning policy](./partitioningpolicy.md) or [Row Order policy](./roworderpolicy.md)
+* If a filter is applied on a low-medium-cardinality column – consider using [Row Order policy](./roworderpolicy.md)
