@@ -43,7 +43,7 @@ Follow the instructions in the video to create a data share account, add a datas
 
 [![Data provider - share data](https://img.youtube.com/vi/QmsTnr90_5o/0.jpg)](https://youtu.be/QmsTnr90_5o?&autoplay=1)
 
-## Data Consumer - receiving data
+## Data consumer - receive data
 
 Follow the instructions in the below video to accept the invitation, create data share account, and map to the consumer cluster.
 
