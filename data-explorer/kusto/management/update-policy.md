@@ -28,8 +28,7 @@ or all tables in the default database if `*` is used as a table name.
 
 **Returns**
 
-This command returns a table that has one record per table,
-with the following columns:
+This command returns a table that has one record per table.
 
 |Column    |Type    |Description                                                                                                                                                           |
 |----------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -57,35 +56,35 @@ This command sets the update policy of the specified table.
 
 *ArrayOfUpdatePolicyObjects* is a JSON array that has zero or more update policy objects defined.
 
-**Notes**
+> [!NOTE]
 
-1. It is recommended that one uses a stored function for the the `Query` property of the update policy object.
-   This makes it easy to modify just the function definition instead of the entire policy object.
+> 1. Use a stored function for the the `Query` property of the update policy object.
+   You will only need to modify the function definition, instead of the entire policy object.
 
-2. The following validations are performed on the update policy when it is being set (in case `IsEnabled` is set to `true`):
-    1. `Source`: Table should exist in the target database.
-    2. `Query`: 
-        * The schema defined by the schema should match the one of the target table. 
-        * The query must reference the `source` table of the update policy. Defining an update policy query which does *not* 
-        reference the source is possible by setting `AllowUnreferencedSourceTable=true` in the with properties (see example below),
-        but is generally not recommended due to performance reasons (it implies that for every ingestion to the source table, 
-        *all* records in a different table are considered for the update policy execution).
-    3. The policy doesn't result with a cycle being created in the chain of Update Policies in the target database.
-    4. In case `IsTransactional` is set to `true`, `TableAdmin` permissions are verified against `Source` (the source table) as well.
+> 1. If `IsEnabled` is set to `true`, then the following validations are performed on the update policy as it's being set:
+    1. `Source` - Checks that the Table exists in the target database.
+    1. `Query` - 
+        * Checks that the schema defined by the schema matches the one of the target table
+        * Checks that the query references the `source` table of the update policy. 
+        Defining an update policy query which does *not* reference the source is possible by setting 
+        `AllowUnreferencedSourceTable=true` in the *with* properties (see example below),
+        but is generally not recommended due to performance issues. For every ingestion to the source table, 
+        *all* records in a different table are considered for the update policy execution.
+    1. Checks that the policy doesn't result in a cycle being created in the chain of Update Policies in the target database.
+
+ > 1. If `IsTransactional` is set to `true`, then checks that the`TableAdmin` permissions are also verified against `Source` (the source table)
   
-3. Make sure you test your update policy / function for performance before applying it to run on each ingestion to the source table -
-   see [here](updatepolicy.md#testing-an-update-policys-performance-impact).
+ > 1. Make sure that you test your update policy or function for performance, before applying it to run on each ingestion to the source table. For more information, see [here](updatepolicy.md#testing-an-update-policys-performance-impact).
 
 **Returns**
 
-The command sets the table's update policy object (overriding any current
-policy defined, if any) and then returns the output of the corresponding [.show table TABLE update policy](#show-update-policy)
-command.
+The command sets the table's update policy object, overriding any current policy,
+and then returns the output of the corresponding [.show table TABLE update policy](#show-update-policy) command.
 
 **Example**
 
 ```kusto
-// Creating function that will be used for update
+// Create a function that will be used for update
 .create function 
 MyUpdateFunction()
 {
@@ -96,7 +95,7 @@ MyUpdateFunction()
     | project ColumnB, ColumnZ=OtherColumnZ, Key, MyCount
 }
 
-// Creating the target table (in case it doesn't already exist)
+// Create the target table (if it doesn't already exist)
 .set-or-append DerivedTableX <| MyUpdateFunction() | limit 0
 
 // Use update policy on table DerivedTableX
@@ -104,11 +103,10 @@ MyUpdateFunction()
 @'[{"IsEnabled": true, "Source": "MyTableX", "Query": "MyUpdateFunction()", "IsTransactional": false, "PropagateIngestionProperties": false}]'
 ```
 
-- When an ingestion to the source table (in this case `MyTableX`) occurs, 1 or more extents (data shards) are created in that table.
-- The `Query` which is defined in the update policy object (in this case `MyUpdateFunction()`) will only run on those extents, and will not run on the entire table.
-  - This "scoping" is done internally and automatically, it should not be handled when defining the `Query`.
-  - Only newly ingested records (different in each ingestion operation) will be taken into consideration when ingesting to the derived table (in this case `DerivedTableX`).
-
+- When an ingestion to the source table occurs - in this case, `MyTableX` - one or more extents (data shards) are created in that table
+- The `Query` that is defined in the update policy object - in this case `MyUpdateFunction()` - will only run on those extents, and won't run on the entire table
+  - "scoping" is done internally and automatically, and should not be handled when defining the `Query`
+  - Only newly ingested records - that are different in each ingestion operation - will be taken into consideration when ingesting to the `DerivedTableX` derived table.
 
 ```kusto
 // The following example will throw an error for not referencing the source table in the update policy query
@@ -133,19 +131,17 @@ This command modifies the update policy of the specified table.
 
 *ArrayOfUpdatePolicyObjects* is a JSON array that has zero or more update policy objects defined.
 
-**Notes**
+> [!NOTE]
 
-1. It is recommended that one use stored functions for the bulk implementation
-   of the query property of the update policy object. This makes it easy to
-   modify just the function definition instead of the entire policy object.
+> 1. Use stored functions for the bulk implementation of the query property of the update policy object. 
+     You will only need to modify the function definition instead of the entire policy object.
 
-2. The same validations performed on the update policy in case of an `alter` command are performed for an `alter-merge` command.
+> 1. The validations are the same as those done on an `alter` command
 
 **Returns**
 
-The command appends to the table's update policy object (overriding any current
-policy defined, if any) and then returns the output of the corresponding [.show table TABLE update policy](#show-update-policy)
-command.
+The command appends to the table's update policy object, overriding any current policy, 
+and then returns the output of the corresponding [.show table TABLE update policy](#show-update-policy) command.
 
 **Example**
 
@@ -166,8 +162,7 @@ Deletes the update policy of the specified table.
 **Returns**
 
 The command deletes the table's update policy object and then returns 
-the output of the corresponding [.show table TABLE update policy](#show-update-policy)
-command.
+the output of the corresponding [.show table TABLE update policy](#show-update-policy) command.
 
 **Example**
 
