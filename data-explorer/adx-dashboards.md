@@ -11,85 +11,76 @@ ms.date: 05/24/2020
 
 # Visualize data with Azure Data Explorer dashboards
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data explorer provides a web application that enables you to run queries and build dashboards. Dashboards are available in the stand-alone web application.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data explorer provides a web application that enables you to run queries and build dashboards. Dashboards are available in the stand-alone web application, the [Web UI](web-query-data.md).
 
-Azure Data Explorer is integrated with other dashboard services like Power BI and Grafana – see docs. When making a decision about the BI service of choice for data in Azure Data Explorer, one should consider the specifics of each BI service and the specifics of the integration with Azure Data Explorer.
+Azure Data Explorer is also integrated with other dashboard services like [Power BI](power-bi-connector.md) and [Grafana](grafana.md). To decide about the ideal BI service for data in Azure Data Explorer, consider the features of each service and the integration with Azure Data Explorer.
 
-Azure Data Explorer dashboards provides 2 main advantages:
+Azure Data Explorer dashboards provide two main advantages:
 
-1. Natively export queries from the WEB UI to dashboards and in addition allowing users explore the data in a visual in the WEB UI.
-2. Dashboard rendering performance optimization.
+* Natively export queries from the Web UI to dashboards allows you to explore the data visually in the Web UI.
+* Dashboard rendering performance optimization.
 
-# Creating dashboards
+## Create a  dashboard
 
-The new navigation bar allows moving from Query to Dashboards and back. Use it to navigate to the dashboard area.
+1. Use the new navigation bar to move from **Query** to **Dashboards**. 
 
-| Open bar | Closed bar |
-| --- | --- |
-| 
+:::image type="content" source="media/adx-dashboards/open-left-nav.png" alt-text="Navigation bar":::
 
-![](RackMultipart20200507-4-jfp3et_html_3c046bd329a5b651.png) | ![](RackMultipart20200507-4-jfp3et_html_9e33869c11361df9.png) |
+1. Select the dashboard icon and select a **New dashboard**.
 
-Click the dashboard button and select a **New dashboard**.
+:::image type="content" source="media/adx-dashboards/new-dashboard.png" alt-text="New dashboard":::
 
-![](RackMultipart20200507-4-jfp3et_html_6e05a12abf2f7338.gif)
+1. Select a dashboard name and **Create**.
 
-Select a dashboard name and click the &quot;Create&quot; button.
-
-![](RackMultipart20200507-4-jfp3et_html_9ebfdd7316cfb79.png)
+:::image type="content" source="media/adx-dashboards/new-dashboard-popup.png" alt-text="Create a dashboard":::
 
 ## Data source
 
-Start with adding the required data sources for the dashboards.
+The first steps requires you to add the required data sources for the dashboards.
 
-Click the &quot;Data sources&quot; menu item on the top bar and click the &quot;+ New data source&quot; button on the right pane that opened.
+1. Select **Data sources** menu item on the top bar. Select the **+ New data source** button in the right pane.
 
-![](RackMultipart20200507-4-jfp3et_html_98d1c80139664e3b.gif)
+:::image type="content" source="media/adx-dashboards/data-source.png" alt-text="Data source":::
 
-Enter the cluster full url or partial name (including region) and click the &quot;Connect&quot; button.
+1. Enter the cluster full url or partial name including region and select **Connect**.
+1. Select the data source from the drop-down list and modify the data source name, if needed. select **Apply**.
 
-![](RackMultipart20200507-4-jfp3et_html_6dabc8441da1bae3.gif)
+:::image type="content" source="media/adx-dashboards/data-source-pane.png" alt-text="Data source pane":::
 
-Select the data source from the drop-down list, modify the data source name if needed and click the &quot;Apply&quot;.
+## Use Parameters
 
-![](RackMultipart20200507-4-jfp3et_html_6e1d36a48369604f.gif)
+Parameters are used to improve filtering performance. This feature enables you to use filter values optimally as early as possible in the query.
 
-## Parameters
+1. Select **Parameters** menu item on the top bar. Select the **+ New parameter** button in the right pane.
 
-Parameters are used to improve filtering performance. It allows using filter values just in the right place (optimally as early as possible in the query).
+:::image type="content" source="media/adx-dashboards/parameters.png" alt-text="Select new parameter":::
 
-Click the &quot;Parameters&quot; menu item on the top bar and click the &quot;+ New parameter&quot; button on the right pane that opened.
+1. Enter values for all the mandatory fields and select **Done**. For more information, see [Use parameters]().
 
-![](RackMultipart20200507-4-jfp3et_html_6834f549494ef94f.gif)
+:::image type="content" source="media/adx-dashboards/parameter-pane.png" alt-text="Parameter pane":::
 
-Enter values to all the mandatory fields and click the &quot;Done&quot; button at the bottom.
+## Use Query
 
-For more details on using parameters please visit - url.
+**Query** leverages Kusto query language snippets to retrieve the data that is displayed in the visuals. Each query can support a single visual.
 
-![](RackMultipart20200507-4-jfp3et_html_297f1d443d14708f.png)
+1. Select the new query from the dashboard empty canvas or from the top menu bar.
 
-## Query
+:::image type="content" source="media/adx-dashboards/empty-dashboard-new-query.png" alt-text="New query":::
 
-Queries are leveraging KQL snippets to retrieve the data to be displayed in the visuals.
+1. In the **Query** pane, select the data source, enter the query, and execute it.
 
-Each query can support a single visual.
+:::image type="content" source="media/adx-dashboards/initial-query.png" alt-text="Execute query":::
 
-You start by selecting the new query either from the dashboard empty canvas or from the top menu bar.
+1. Select **+ Add visual** and select the **Query Card** to choose the type of visual.
 
-![](RackMultipart20200507-4-jfp3et_html_b7629961ad16f8b3.gif)
+:::image type="content" source="media/adx-dashboards/add-visual.png" alt-text="Add visual to query":::
 
-In The query screen select the data source, enter the query and execute it.
-
-![](RackMultipart20200507-4-jfp3et_html_6df66845f78c3039.gif)
-
-Select &quot;+ Add visual&quot; and select the visual type (&quot;Query Card&quot;).
-
-![](RackMultipart20200507-4-jfp3et_html_31eb2c7803495141.gif)
-
-Provide the visual with a name and click the &quot;Done editing&quot; button to pin the visual to the dashboard.
-
-![](RackMultipart20200507-4-jfp3et_html_54c0bb42d992c2eb.gif)
-
+1. Name the visual and select **Done editing** to pin the visual to the dashboard.
 You can resize the visual and save the dashboard.
 
-![](RackMultipart20200507-4-jfp3et_html_1008fae8eaded7ed.gif)
+:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Final dashboard":::
+
+## Next Steps
+
+* [MJ doc]()
+* [Query data in Azure Data Explorer](web-query-data.md)
