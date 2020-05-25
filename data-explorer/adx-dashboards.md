@@ -21,11 +21,11 @@ Azure Data Explorer dashboards provide three main advantages:
 
 The following image depicts an Azure Data Explorer dashboard.
 
-    :::image type="content" source="media/adx-dashboards/dash.png" alt-text="Final dashboard":::
+:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Final dashboard":::
 
 ## Create a dashboard
 
-1. In the navigation bar, select the dashboard icon to move from **Query** to **Dashboards** and select **New dashboard**.
+1. In the navigation bar, select **Dashboards** and select **New dashboard**.
 
     :::image type="content" source="media/adx-dashboards/new-dashboard.png" alt-text="New dashboard":::
 
@@ -37,7 +37,7 @@ The following image depicts an Azure Data Explorer dashboard.
 
 Add the required data sources for the dashboards.
 
-1. Select **Data sources** menu item on the top bar. Select the **+ New data source** button in the right pane.
+1. Select **Data sources** menu item on the top bar. Select the **+ New data source** button in the **Data sources** pane.
 
     :::image type="content" source="media/adx-dashboards/data-source.png" alt-text="Data source":::
 
@@ -53,7 +53,7 @@ Add the required data sources for the dashboards.
 
 Parameters enable using dashboard filters. Parameters significantly improve dashboard rendering performance and enable you to use filter values as early as possible in the query.
 
-1. Select **Parameters** menu item on the top bar. Select the **+ New parameter** button in the right pane.
+1. Select **Parameters** on the top bar. Select the **+ New parameter** button in the **Parameters** pane.
 
     :::image type="content" source="media/adx-dashboards/parameters.png" alt-text="Select new parameter":::
 
@@ -65,15 +65,19 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
 **Add Query** uses Kusto query language snippets to retrieve data and render visuals. Each query can support a single visual.
 
-1. Select **Add Query** from the dashboard empty canvas or from the top menu bar.
+1. Select **Add Query** from the dashboard canvas or the top menu bar.
 
     :::image type="content" source="media/adx-dashboards/empty-dashboard-new-query.png" alt-text="New query":::
 
-1. In the **Query** pane, select the data source from the drop-down, type the query, and select **Run**. Select **+ Add visual**. 
+1. In the **Query** pane, 
+    1. Select the data source from the drop-down
+    1. Type the query, and select **Run** 
+    1. Select **+ Add visual**
 
     :::image type="content" source="media/adx-dashboards/initial-query.png" alt-text="Execute query":::
 
-1. In **Visual pane** select **Chart type** to choose the type of visual. Name the visual and select **Apply changes** to pin the visual to the dashboard.
+1. In **Visual pane** on righthand side, select **Chart type** to choose the type of visual. 
+1. Name the visual and select **Apply changes** to pin the visual to the dashboard.
 
     :::image type="content" source="media/adx-dashboards/add-visual.png" alt-text="Add visual to query":::
 
