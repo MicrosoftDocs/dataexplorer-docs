@@ -24,13 +24,13 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 1. In the left menu of the Web UI, right-click a *database* and select **Ingest new data (Preview)**.
 
-    ![Select one-click ingestion in the Web UI](media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png)   
+    :::image type="content" source="media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png" alt-text="":::
  
 1. In the **Ingest new data (Preview)** window, the **Source** tab is selected. 
 
 1. Select **Create new table** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
-![Create a new table](media/one-click-ingestion-new-table/create-new-table.png) 
+:::image type="content" source="media/one-click-ingestion-new-table/create-new-table.png" alt-text="Create a new table one click ingestion":::
 
 [!INCLUDE [data-explorer-one-click-ingestion-types](includes/data-explorer-one-click-ingestion-types.md)]
 
@@ -54,7 +54,7 @@ Select **Edit schema** to view and edit your table column configuration. The sys
         
 1. In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
     
-    ![Table mapping name](media/one-click-ingestion-new-table/table-mapping.png)
+    :::image type="content" source="media/one-click-ingestion-new-table/table-mapping.png" alt-text="Table mapping name One Click Ingestion":::
 
 ## Copy and paste queries
 
@@ -76,18 +76,19 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 > For tabular formats, each column can be ingested into one column in Azure Data Explorer.
 > JSON attributes can be ingested into more than one column. You can create new columns from different JSON levels.
 
-[![](media/one-click-ingestion-new-table/edit-view.png "One-click ingestion edit view")](media/one-click-ingestion-new-table/edit-view.png#lightbox) 
+:::image type="content" source="media/one-click-ingestion-new-table/edit-view.png" alt-text="Edit view":::
 
 ## Start ingestion
 
 Select **Start ingestion** to create a table and mapping and to begin data ingestion.
-![Start ingestion](media/one-click-ingestion-new-table/start-ingestion.png)
+
+:::image type="content" source="media/one-click-ingestion-new-table/start-ingestion.png" alt-text="Start ingestion One Click Ingestion":::
 
 ## Data ingestion completed
 
 In the **Data ingestion completed** window, all three steps will be marked with green check marks if data ingestion finishes successfully.
- 
-![One-click data ingestion complete](media/one-click-ingestion-new-table/one-click-data-ingestion-complete.png)
+
+:::image type="content" source="media/one-click-ingestion-new-table/one-click-data-ingestion-complete.png" alt-text="One click ingestion complete"::: 
 
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
 
