@@ -47,7 +47,7 @@ Add the required data sources for the dashboards.
 
 ## Use Parameters
 
-Parameters enable using dashboard filters. Parameters significantly improve dashboard rendering performance and enable you to use filter values optimally as early as possible in the query.
+Parameters enable using dashboard filters. Parameters significantly improve dashboard rendering performance and enable you to use filter values as early as possible in the query.
 
 1. Select **Parameters** menu item on the top bar. Select the **+ New parameter** button in the right pane.
 
@@ -57,24 +57,28 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
     :::image type="content" source="media/adx-dashboards/parameter-pane.png" alt-text="Parameter pane":::
 
-## Use Query
+## Add Query
 
-**Query** leverages Kusto query language snippets to retrieve the data that is displayed in the visuals. Each query can support a single visual.
+**Add Query** uses Kusto query language snippets to retrieve data and render visuals. Each query can support a single visual.
 
 1. Select the new query from the dashboard empty canvas or from the top menu bar.
 
     :::image type="content" source="media/adx-dashboards/empty-dashboard-new-query.png" alt-text="New query":::
 
-1. In the **Query** pane, select the data source, enter the query, and execute it.
+1. In the **Query** pane, select the data source, enter the query, and run it.
 
     :::image type="content" source="media/adx-dashboards/initial-query.png" alt-text="Execute query":::
 
-1. Select **+ Add visual** and select the **Query Card** to choose the type of visual.
+1. Select **+ Add visual** and select **Chart type** > **Line Chart** to choose the type of visual.
 
     :::image type="content" source="media/adx-dashboards/add-visual.png" alt-text="Add visual to query":::
 
-1. Name the visual and select **Done editing** to pin the visual to the dashboard.
-You can resize the visual and save the dashboard.
+1. Name the visual and select **Apply changes** to pin the visual to the dashboard.
+You can resize the visual and **Save changes** to save the dashboard.
+
+    :::image type="content" source="media/adx-dashboards/save-dashboard.png" alt-text="save dashboard":::
+
+1. Your final dashboard:
 
     :::image type="content" source="media/adx-dashboards/dash.png" alt-text="Final dashboard":::
 
