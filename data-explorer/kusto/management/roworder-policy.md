@@ -37,7 +37,7 @@ This article describes control commands used for creating and altering [row orde
 .alter-merge table <table_name> policy roworder (<row_order_policy>)
 ```
 
-## Examples
+## Examples 
 
 Set the row order policy to be on the `TenantId` column (ascending) as a primary key, 
 and on the `Timestamp` column (ascending) as the secondary key. Then query the policy.
