@@ -40,18 +40,18 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 
 1. In the **Schema** tab:
 
-    1. Select **Data format**:
+    * Select **Data format**:
 
         [!INCLUDE [data-explorer-one-click-ingestion-edit-schema](includes/data-explorer-one-click-ingestion-edit-schema.md)]
 
-    1. If you select  **JSON**, you must also select **JSON levels**, from 1 to 10. The levels affect the table column data depiction. 
+    * If you select  **JSON**, you must also select **JSON levels**, from 1 to 10. The levels affect the table column data depiction. 
 
-    ![Select JSON levels](media/one-click-ingestion-new-table/json-levels.png)
+    :::image type="content" source="media/one-click-ingestion-new-table/json-levels.png" alt-text="Select JSON levels":::
 
     * If you select a format other than JSON, you can select the check box **Include column names** to ignore the heading row of the file.
 
-        ![Select Include column names](media/one-click-ingestion-new-table/non-json-format.png)
-        
+        :::image type="content" source="media/one-click-ingestion-new-table/non-json-format.png" alt-text="Select include column names":::
+
 1. In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
     
     :::image type="content" source="media/one-click-ingestion-new-table/table-mapping.png" alt-text="Table mapping name One Click Ingestion":::
@@ -67,9 +67,9 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 |-----------------|-------------------------------------------|
 |Change data type |Change the data type from the one automatically selected by the service to one of the other [supported data types](#edit-the-schema)|
 |Rename column    |Change the column name |
-|New column       |Add a new column|
+|New column       |Add a new column, For tabular formats, each column can be ingested into one column on ADX. A new column can be created from a different JSON lebel|
 |Delete column    |Delete the selected column|
-|Sort ascending   |Sort the table by the selected column in ascending order (existing columns only)|
+|Sort ascending   |Sort the table by the selected column in ascending order (existing columns only) |
 |Sort descending  |Sort the table by the selected column in descending order (existing columns only) |
 
 > [!Note]
@@ -94,14 +94,14 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 
 **Continuous ingestion**
 
-Continuous ingestion enables you to create an event grid that listens to the source container. Any new blob that meets the criteria of the pre-defined parameters (prefix, suffix, and so on) will be automatically ingested into the destination table.
+Continuous ingestion enables you to create an event grid that listens for changes, updates, or new data in the source container. Any new blob that meets the criteria of the pre-defined parameters (prefix, suffix, and so on) will be automatically ingested into the destination table.
 
 > [!Note]
 > Continuous ingestion is only relevant when ingesting from a container.
 
 1. Select **Continuous ingestion** to open the Azure portal. The data connection page opens with the event grid data connector opened and with source and target parameters already entered (source container, tables, and mappings).
 
-1. Select **Create** to create a data connection which will listen for any changes in that container. 
+1. Select **Create** to create a data connection which will listen for any changes, updates, or new data in that container. 
 
 ## Next steps
 
