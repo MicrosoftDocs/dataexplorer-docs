@@ -1252,7 +1252,7 @@
           href: ./kusto/management/externaltables.md
         - name: Create and alter external SQL tables
           href: ./kusto/management/external-sql-tables.md
-        - name: Create and alter tables in storage
+        - name: Create and alter external tables in Azure Storage or Azure Data Lake
           href: ./kusto/management/external-tables-azurestorage-azuredatalake.md  
       - name: Columns
         items:
