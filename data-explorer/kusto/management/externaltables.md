@@ -7,14 +7,11 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 05/26/2020
 ---
-# External table general commands
+# External table general control commands
 
 See [external tables](../query/schema-entities/externaltables.md) for an overview of external tables. 
-
-## Common external tables control commands
-
 The following commands are relevant to _any_ external table (of any type).
 
 ## .show external tables
