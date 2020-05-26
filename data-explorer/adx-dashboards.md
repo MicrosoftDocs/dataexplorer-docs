@@ -55,7 +55,7 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
 1. Select **Parameters** on the top bar. Select the **+ New parameter** button in the **Parameters** pane.
 
-    :::image type="content" source="media/adx-dashboards/parameter.png" alt-text="Select new parameter":::
+    :::image type="content" source="media/adx-dashboards/parameters.png" alt-text="Select new parameter":::
 
 1. Enter values for all the mandatory fields and select **Done**.
 
