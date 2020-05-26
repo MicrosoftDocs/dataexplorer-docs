@@ -21,7 +21,7 @@ Structured, semi-structured (e.g. JSON-like nested types), and unstructured (fre
 
 ## Interacting with Azure Data Explorer
 
-The main way for users to interact with Azure Data Explorer is by using one of the many available [client tools](../tools/index.md). While [SQL queries](../api/tds/t-sql.md) are supported, the primary means of interaction with Azure Data Explorer is through the use of the [Kusto query language](../query/index.md) to send data queries, and through the use of [control commands](../management/index.md) to manage entities, discover metadata, etc. Both queries and control commands are basically short textual "programs".
+The main way for users to interact with Kusto is by using one of the many available [client tools](../tools/index.md). While [SQL queries](../api/tds/t-sql.md) are supported, the primary means of interaction is through the use of the [Kusto query language](../query/index.md) to send data queries, and through the use of [control commands](../management/index.md) to manage entities, discover metadata, etc. Both queries and control commands are basically short textual "programs".
 
 ## Kusto Queries
 
