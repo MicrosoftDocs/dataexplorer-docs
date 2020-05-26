@@ -24,7 +24,7 @@ Determines whether the specified set contains the specified element.
 
 **Returns**
 
-True or false depending on the whether the value exists in the array.
+True or false depending on if the value exists in the array.
 
 **Example**
 
@@ -40,5 +40,4 @@ print arr=dynamic(["this", "is", "an", "example"])
 
 **See also**
 
-If you are also interested in the position at which the value exists in the array,
-you can use [array_index_of(arr, value)](arrayindexoffunction.md). Both functions are the same, performance-wise.
+Use [`array_index_of(arr, value)`](arrayindexoffunction.md) to find the position at which the value exists in the array. Both functions are equally performant.
