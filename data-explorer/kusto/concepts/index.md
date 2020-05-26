@@ -11,7 +11,7 @@ ms.date: 02/13/2020
 ---
 # Getting started with Azure Data Explorer
 
-Azure Data Explorer is a service for storing and running interactive analytics on Big Data.
+Azure Data Explorer is a service for storing and running interactive analytics on big data.
 
 It is based on relational database management systems, supporting entities such as databases, tables, and columns. Azure Data explorer also provides complex analytics query operators using the Kusto Query Language. Some query operators include calculated columns, searching and filtering or rows, group by-aggregates, and joins.
 
