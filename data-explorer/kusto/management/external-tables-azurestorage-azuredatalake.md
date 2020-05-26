@@ -308,5 +308,5 @@ Drops the mapping from the database.
 ```
 ## Next steps
 
-* [External table general commands](externaltables.md)
+* [External table general control commands](externaltables.md)
 * [Create and alter external SQL tables](external-sql-tables.md)
