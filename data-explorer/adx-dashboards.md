@@ -57,9 +57,19 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
     :::image type="content" source="media/adx-dashboards/parameters.png" alt-text="Select new parameter":::
 
-1. Enter values for all the mandatory fields and select **Done**. For more information, see [Use parameters]().
+1. Enter values for all the mandatory fields and select **Done**.
 
     :::image type="content" source="media/adx-dashboards/parameter-pane.png" alt-text="Parameter pane":::
+
+|Field  |Description |
+|---------|---------|
+|**Parameter display name**    |   The name of the parameter shown on the dashboard or the edit card      |
+|**Parameter type**    |One of the following:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time.Every dashboard has a time range picker by default.</li></ul>    |
+|**Variable name**     |   The name of the parameter to be used in the query      |
+|**Data type**    |    The data type of the parameter values     |
+|**Pin as dashboard filter**   |   pin the parameter-based filter to the dashboard or unpin from the dashboard.       |
+|**Data source**     |    The source of the parameter values: <ul><li>Fixed values: Manually introduced static filter values. </li><li>Query: Dynamically introduced values using a KQL query.  </li></ul>    |
+|**Add a “Select all” value**    |   Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values.      |
 
 ## Add Query
 
@@ -76,7 +86,7 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
     :::image type="content" source="media/adx-dashboards/initial-query.png" alt-text="Execute query":::
 
-1. In **Visual pane** on righthand side, select **Chart type** to choose the type of visual. 
+1. In the **Visual formatting** pane, select **Chart type** to choose the type of visual. 
 1. Name the visual and select **Apply changes** to pin the visual to the dashboard.
 
     :::image type="content" source="media/adx-dashboards/add-visual.png" alt-text="Add visual to query":::
@@ -87,5 +97,4 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
 ## Next Steps
 
-* [MJ doc]()
 * [Query data in Azure Data Explorer](web-query-data.md)
