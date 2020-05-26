@@ -57,15 +57,16 @@ The merge policy contains the following properties:
     *DataHotSpan* (the lower of the two), so that it is between 2-3% of the latter.
 
 **`MaxRangeInHours` examples:**
-|min(SoftDeletePeriod (Retention Policy), DataHotSpan (Cache Policy))|Max Range In Hours (Merge Policy)
-|---|---
-|7 days (168 hours)| 4
-|14 days (336 hours)| 8
-|30 days (720 hours)| 18
-|60 days (1,440 hours)| 36
-|90 days (2,160 hours)| 60
-|180 days (4,320 hours)| 120
-|365 days (8,760 hours)| 250
+
+|min(SoftDeletePeriod (Retention Policy), DataHotSpan (Cache Policy))|Max Range In Hours (Merge Policy)|
+|--------------------------------------------------------------------|---------------------------------|
+|7 days (168 hours)                                                  | 4                               |
+|14 days (336 hours)                                                 | 8                               |
+|30 days (720 hours)                                                 | 18                              |
+|60 days (1,440 hours)                                               | 36                              |
+|90 days (2,160 hours)                                               | 60                              |
+|180 days (4,320 hours)                                              | 120                             |
+|365 days (8,760 hours)                                              | 250                             |
 
 > [!WARNING]
 > Consult with the Azure Data Explorer team before altering an extents merge policy.
