@@ -23,7 +23,7 @@ Structured, semi-structured (e.g. JSON-like nested types), and unstructured (fre
 
 The main way for users to interact with Kusto is by using one of the many available [client tools](../tools/index.md). While [SQL queries](../api/tds/t-sql.md) are supported, the primary means of interaction is through the use of the [Kusto query language](../query/index.md) to send data queries, and through the use of [control commands](../management/index.md) to manage entities, discover metadata, etc. Both queries and control commands are basically short textual "programs".
 
-## Kusto Queries
+## Kusto queries
 
 A query is a read-only request to process data and return the results of this processing, without modifying the data or metadata. Kusto queries 
 can use the [SQL language](../api/tds/t-sql.md), or the [Kusto query language](../query/index.md). As an example for the latter, the following query counts how many rows in the `Logs` table have the value of the `Level` column equals the string `Critical`:
