@@ -1,6 +1,6 @@
 ---
 title: Create and alter external SQL tables - Azure Data Explorer
-description: This article describes how to create and alter external SQL table.
+description: This article describes how to create and alter external SQL tables.
 services: data-explorer
 author: orspod
 ms.author: orspodek
