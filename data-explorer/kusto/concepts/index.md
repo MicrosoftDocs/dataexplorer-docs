@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Getting started with Azure Data Explorer
+# Getting started with Kusto
 
 Azure Data Explorer is a service for storing and running interactive analytics on big data.
 
