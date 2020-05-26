@@ -98,5 +98,5 @@ When an SQL query can be optimized in T-SQL, use the [sql_request plugin](../que
 
 ## Next steps
 
-* [External table general commands](externaltables.md)
+* [External table general control commands](externaltables.md)
 * [Create and alter tables in storage](external-tables-azurestorage-azuredatalake.md)
