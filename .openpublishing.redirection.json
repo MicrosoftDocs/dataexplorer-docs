@@ -7,9 +7,8 @@
       },
       {  
           "source_path": "data-explorer/kusto/management/data-ingestion/index.md",
-          "redirect_url": "azure/data-explorer/ingest-data-overview",
+          "redirect_url": "/azure/data-explorer/ingest-data-overview",
           "redirect_document_id": false
-      
       }
     ]
   }
