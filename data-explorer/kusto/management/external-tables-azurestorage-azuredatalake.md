@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 03/24/2020
 ---
 
-# Create and alter tables in storage
+# Create and alter external tables in Azure Storage or Azure Data Lake
 
 The following command describes how to create an external table. The table can be located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2. 
 [Storage connection strings](../api/connection-strings/storage.md) describes creating the connection string for each of these options. 
