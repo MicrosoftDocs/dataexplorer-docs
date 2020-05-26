@@ -25,7 +25,7 @@ T | ... | join (cluster("SomeCluster").database("SomeDB").T2 | ...) on Col1 // (
 cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster2").database("SomeDB2").T2 | ...) on Col1 // (2)
 ```
 
-In the example above, the join operation is a cross-cluster join, assuming that current cluster is not "SomeCluster" or "SomeCluster2".
+In the example above, the join operation is a cross-cluster join, assuming that current cluster isn't "SomeCluster" or "SomeCluster2".
 
 In the following example:
 
