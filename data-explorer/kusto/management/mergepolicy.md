@@ -28,7 +28,9 @@ being rebuilt, they are attempted to be Merged.
 The merge policy contains the following properties:
 
 - **RowCountUpperBoundForMerge**:
-    - Defaults to 0.
+    - Defaults:
+      - 0 (i.e. unlimited) for policies that were set prior to June 2020.
+      - 16,000,000 for policies that were set starting June 2020.
     - Maximum allowed row count of the merged extent.
     - Applies to Merge operations, not Rebuild.  
 - **MaxExtentsToMerge**:
