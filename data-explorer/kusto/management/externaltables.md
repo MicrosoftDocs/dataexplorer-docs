@@ -1,5 +1,5 @@
 ---
-title: External table general commands - Azure Data Explorer
+title: Kusto External table general control commands - Azure Data Explorer
 description: This article describes general external table commands in Azure Data Explorer.
 services: data-explorer
 author: orspod
