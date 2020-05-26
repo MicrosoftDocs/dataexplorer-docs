@@ -17,7 +17,7 @@ It is based on relational database management systems, supporting entities such 
 
 Azure Data Explorer is able to offer excellent data ingestion and query performance by "sacrificing" the ability to perform in-place updates of individual rows and cross-table constraints/transactions. Therefore, it supplements, rather than replaces, traditional RDBMS systems for scenarios such as OLTP and data warehousing.
 
-As a Big Data service, Azure Data Explorer handles structured, semi-structured (e.g. JSON-like nested types), and unstructured (free-text) data equally well.
+Structured, semi-structured (e.g. JSON-like nested types), and unstructured (free text) data are handled equally well.
 
 ## Interacting with Azure Data Explorer
 
