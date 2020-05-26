@@ -33,6 +33,10 @@ The merge policy contains the following properties:
       - 16,000,000 for policies that were set starting June 2020.
     - Maximum allowed row count of the merged extent.
     - Applies to Merge operations, not Rebuild.  
+- **OriginalSizeMBUpperBoundForMerge**:
+    - Defaults to (i.e. unlimited).
+    - Maximum allowed original size (in MBs) of the merged extent.
+    - Applies to Merge operations, not Rebuild.  
 - **MaxExtentsToMerge**:
     - Defaults to 100.
     - Maximum allowed number of extents to be merged in a single operation.
