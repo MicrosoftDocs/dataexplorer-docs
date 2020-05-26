@@ -4,8 +4,11 @@
           "source_path": "data-explorer/kusto/management/drop-database.md",
           "redirect_url": "databases",
           "redirect_document_id": false
-       
-  
+      },
+      {  
+          "source_path": "data-explorer/kusto/management/data-ingestion/index.md",
+          "redirect_url": "/azure/data-explorer/ingest-data-overview",
+          "redirect_document_id": false
       }
     ]
   }
