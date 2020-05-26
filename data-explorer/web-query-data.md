@@ -173,6 +173,12 @@ Many times, you want to share the queries you create. You can provide a deep lin
 1. Paste the link into a new browser window. The result should look like the following after the query runs.
 
     ![Shared query](media/web-query-data/shared-query.png)
+    
+## Export query results
+
+Just next to the **Share** drop down is the **File** drop down.  Clicking **File** exposes a menu with the available export options, as shown here.
+
+   ![Export results](media/web-query-data/export-results.png)
 
 ## Provide feedback
 
