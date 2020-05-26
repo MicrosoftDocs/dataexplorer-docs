@@ -38,7 +38,7 @@ Queries cannot start with the dot (`.`) character or the hash (`#`) character.
 
 ## Control commands
 
-Control commands are requests to Azure Data Explorer to process and potentially modify data or metadata. For example, the following control command creates a new Kusto table with two columns, `Level` and `Text`:
+Control commands are requests to Kusto to process and potentially modify data or metadata. For example, the following control command creates a new Kusto table with two columns, `Level` and `Text`:
 
 ```kusto
 .create table Logs (Level:string, Text:string)
