@@ -145,7 +145,7 @@
   - name: Visualize data
     items:
     - name: Azure Data Explorer dashboards
-      href: adx-dashboards.md
+      href: azure-data-explorer-dashboards.md
     - name: Power BI
       items:
       - name: Best practices
