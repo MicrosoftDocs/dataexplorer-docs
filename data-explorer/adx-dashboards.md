@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 05/24/2020
+ms.date: 05/26/2020
 ---
 
 # Visualize data with Azure Data Explorer dashboards
@@ -55,7 +55,7 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
 1. Select **Parameters** on the top bar. Select the **+ New parameter** button in the **Parameters** pane.
 
-    :::image type="content" source="media/adx-dashboards/parameters.png" alt-text="Select new parameter":::
+    :::image type="content" source="media/adx-dashboards/parameter.png" alt-text="Select new parameter":::
 
 1. Enter values for all the mandatory fields and select **Done**.
 
@@ -63,12 +63,12 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
 |Field  |Description |
 |---------|---------|
-|**Parameter display name**    |   The name of the parameter shown on the dashboard or the edit card      |
+|**Parameter display name**    |   The name of the parameter shown on the dashboard or the edit card.      |
 |**Parameter type**    |One of the following:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time.Every dashboard has a time range picker by default.</li></ul>    |
-|**Variable name**     |   The name of the parameter to be used in the query      |
-|**Data type**    |    The data type of the parameter values     |
-|**Pin as dashboard filter**   |   pin the parameter-based filter to the dashboard or unpin from the dashboard.       |
-|**Data source**     |    The source of the parameter values: <ul><li>Fixed values: Manually introduced static filter values. </li><li>Query: Dynamically introduced values using a KQL query.  </li></ul>    |
+|**Variable name**     |   The name of the parameter to be used in the query.      |
+|**Data type**    |    The data type of the parameter values.     |
+|**Pin as dashboard filter**   |   Pin the parameter-based filter to the dashboard or unpin from the dashboard.       |
+|**Source**     |    The source of the parameter values: <ul><li>**Fixed values**: Manually introduced static filter values. </li><li>**Query**: Dynamically introduced values using a KQL query.  </li></ul>    |
 |**Add a “Select all” value**    |   Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values.      |
 
 ## Add Query
