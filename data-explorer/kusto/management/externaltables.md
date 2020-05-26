@@ -124,5 +124,5 @@ Returns the properties of the dropped table. See [.show external tables](#show-e
 
 ## Next steps
 
-* [Create and alter tables in storage](external-tables-azurestorage-azuredatalake.md)
+* [Create and alter external tables in Azure Storage or Azure Data Lake](external-tables-azurestorage-azuredatalake.md)
 * [Create and alter external SQL tables](external-sql-tables.md)
