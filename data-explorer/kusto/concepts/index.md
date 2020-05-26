@@ -1,6 +1,6 @@
 ---
-title: Getting started with Azure Data Explorer
-description: This article describes Getting started with Azure Data Explorer.
+title: Getting started with Kusto
+description: This article describes Getting started with Kusto.
 services: data-explorer
 author: orspod
 ms.author: orspodek
