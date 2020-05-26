@@ -99,4 +99,4 @@ When an SQL query can be optimized in T-SQL, use the [sql_request plugin](../que
 ## Next steps
 
 * [External table general control commands](externaltables.md)
-* [Create and alter tables in storage](external-tables-azurestorage-azuredatalake.md)
+* [Create and alter external tables in Azure Storage or Azure Data Lake](external-tables-azurestorage-azuredatalake.md)
