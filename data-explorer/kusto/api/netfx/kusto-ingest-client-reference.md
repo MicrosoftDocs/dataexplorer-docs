@@ -17,7 +17,7 @@ The main interfaces and classes in the Kusto.Ingest library are:
 * [Class ExtendedKustoIngestClient](#class-extendedkustoingestclient): Extensions to the main ingestion interface.
 * [class KustoIngestFactory](#class-kustoingestfactory): The main factory for ingestion clients.
 * [class KustoIngestionProperties](#class-kustoingestionproperties): Class used to provide common ingestion properties.
-* class IngestionMapping: Class used to describe the data mapping for the ingestion.
+* [class IngestionMapping](#class-ingestionmapping): Class used to describe the data mapping for the ingestion.
 * [Enum DataSourceFormat](#enum-datasourceformat): Supported data source formats (for example, CSV, JSON)
 * [Interface IKustoQueuedIngestClient](#interface-ikustoqueuedingestclient): Interface describing operations that apply for queued ingestion only.
 * [Class KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): Properties that apply to queued ingestion only.
@@ -371,6 +371,28 @@ public class KustoIngestionProperties
 }
 ```
 
+## Class IngestionMapping
+
+Holds a reference to an existing mapping or a list of column mappings.
+
+|Property   |Meaning    |
+|-----------|-----------|
+|IngestionMappings | Column mappings, each describing the target column data and its source |
+|IngestionMappingKind | Kind of mapping described in the IngestionMappings property - one of: Csv, Json, Avro, Parquet, SStream, Orc, ApacheAvro or W3CLogFile |
+|IngestionMappingReference | The pre-created mapping name |
+
+```csharp
+public class IngestionMapping
+{
+    public IEnumerable<ColumnMapping> IngestionMappings { get; set; }
+    public IngestionMappingKind IngestionMappingKind { get; set; }
+    public string IngestionMappingReference { get; set; }
+
+    public IngestionMapping()
+    public IngestionMapping(IngestionMapping ingestionMapping)
+}
+```
+
 ## Enum DataSourceFormat
 
 ```csharp
@@ -410,7 +432,6 @@ var kustoIngestionProperties = new KustoIngestionProperties("TargetDatabase", "T
             Properties = new Dictionary<string, string>() {
             { MappingConsts.Ordinal, "1"} }
         } },
-        // IngestionMappingReference = mappingName, the pre-created mapping name
     },
     ValidationPolicy = new ValidationPolicy { ValidationImplications = ValidationImplications.Fail, ValidationOptions = ValidationOptions.ValidateCsvInputConstantColumns },
     Format = DataSourceFormat.csv
