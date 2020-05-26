@@ -25,7 +25,7 @@ The main way for users to interact with Azure Data Explorer is by using one of t
 
 ## Kusto Queries
 
-A query is a read-only request to process data and return the results of this processing, without modifying the data or metadata. Queries on Azure Data Explorer
+A query is a read-only request to process data and return the results of this processing, without modifying the data or metadata. Kusto queries 
 can use the [SQL language](../api/tds/t-sql.md), or the [Kusto query language](../query/index.md). As an example for the latter, the following query counts how many rows in the `Logs` table have the value of the `Level` column equals the string `Critical`:
 
 ```kusto
