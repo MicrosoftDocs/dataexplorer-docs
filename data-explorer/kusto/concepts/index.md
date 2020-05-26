@@ -44,7 +44,7 @@ Control commands are requests to Azure Data Explorer to process and potentially 
 .create table Logs (Level:string, Text:string)
 ```
 
-Control commands have their own syntax (which is not part of the Kusto Query Language syntax, although the two share many concepts). In particular, control commands are distinguished from queries by having the first character in the text of the command be the dot (`.`) character (which cannot start a query).
+Control commands have their own syntax (which isn't part of the Kusto Query Language syntax, although the two share many concepts). In particular, control commands are distinguished from queries by having the first character in the text of the command be the dot (`.`) character (which can't start a query).
 This distinction prevents many kinds of security attacks, simply because this prevents embedding control commands inside queries.
 
 Not all control commands modify data or metadata. A large class of commands, the commands that start with `.show`, are used to display metadata or data. For example, the `.show tables` command returns a list of all tables in the current database.
