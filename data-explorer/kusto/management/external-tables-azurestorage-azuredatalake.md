@@ -1,5 +1,5 @@
 ---
-title: Create and alter tables in storage - Azure Data Explorer
+title: Create and alter external tables in Azure Storage or Azure Data Lake - Azure Data Explorer
 description: This article describes External table management in Azure Data Explorer.
 services: data-explorer
 author: orspod
