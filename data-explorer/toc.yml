@@ -1248,7 +1248,7 @@
           href: ./kusto/management/show-table-schema-command.md
       - name: External tables
         items:
-        - name: External tables general commands
+        - name: External tables general control commands
           href: ./kusto/management/externaltables.md
         - name: Create and alter external SQL tables
           href: ./kusto/management/external-sql-tables.md
