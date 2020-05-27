@@ -38,7 +38,7 @@ For **Ingestion type**, select the following options:
    
  * **from container** - in the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size.
 
-      ![One-click ingestion from container](media/data-explorer-one-click-ingestion-types/from-container.png)
+      :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container":::
 
  > [!Note] 
  > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
@@ -47,9 +47,8 @@ For **Ingestion type**, select the following options:
   
   For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension.
 
-  ![One-click ingestion filter](media/data-explorer-one-click-ingestion-types/from-container-with-filter.png)
-
-
+  :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
+  
 ## Edit the schema
 
 Select **Edit schema** to view and edit your table column configuration. The system will select one of the blobs at random and the schema will be generated based on that blob. By looking at the name of the source, the service automatically identifies if it is compressed or not.
