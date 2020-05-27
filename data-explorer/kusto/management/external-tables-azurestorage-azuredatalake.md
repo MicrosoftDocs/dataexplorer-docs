@@ -122,7 +122,7 @@ The data format, any of the [ingestion formats](../../ingestion-supported-format
 One or more paths to Azure Blob Storage blob containers or Azure Data Lake Store file systems (virtual directories or folders), including credentials.
 See [storage connection strings](../api/connection-strings/storage.md) for details.
 
-> [!Tip]
+> [!TIP]
 > Provide more than a single storage account to avoid storage throttling while [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided. 
 
 <a name="properties"></a>
