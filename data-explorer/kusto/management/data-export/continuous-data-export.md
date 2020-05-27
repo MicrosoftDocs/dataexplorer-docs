@@ -26,8 +26,8 @@ For more information, see [exporting historical data](#exporting-historical-data
 > * Currently, continuous export can't be configured on a table on which a [Row Level Security policy](../../management/rowlevelsecuritypolicy.md) is enabled.
 > * Continuous export is not supported for external tables with `impersonate` in their 
 [connection strings](../../api/connection-strings/storage.md).
-> * If the artifacts used by continuous export are intended to trigger Event Grid notifications, please refer to the known issues section in
- [this article](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-ingestion/eventgrid#known-issues).
+> * If the artifacts used by continuous export are intended to trigger Event Grid notifications, please refer to the
+ [known issues section in the Event Grid documentation](../../management/data-ingestion/eventgrid#known-issues).
 
 ## Notes
 
