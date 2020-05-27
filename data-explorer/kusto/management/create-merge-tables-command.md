@@ -17,7 +17,7 @@ Lets you create and extend the schemas of existing tables in a single bulk opera
 > Requires [Database user permission](../management/access-control/role-based-authorization.md).
 > Requires [table admin permission](../management/access-control/role-based-authorization.md) for extending existing tables.
 
-### Syntax
+**Syntax**
 
 `.create-merge` `tables` *TableName1* ([columnName:columnType], ...) [`,` *TableName2* ([columnName:columnType], ...) ... ]
 
@@ -27,7 +27,7 @@ Lets you create and extend the schemas of existing tables in a single bulk opera
     * Existing columns that aren't specified in the command won't be removed from the existing table's schema.
     * Existing columns that are specified with a data type in the command that is different from the one in the existing table's schemas will lead to a failure. No tables will be created or extended.
 
-### Example
+**Example**
 
 ```kusto
 .create-merge tables 
@@ -35,7 +35,7 @@ Lets you create and extend the schemas of existing tables in a single bulk opera
   MyUsers (UserId:string, Name:string)
 ```
 
-### Return output
+**Return output**
 
 | TableName | DatabaseName  | Folder | DocString |
 |-----------|---------------|--------|-----------|
