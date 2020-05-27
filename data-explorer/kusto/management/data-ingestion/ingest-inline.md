@@ -1,6 +1,6 @@
 ---
 title: The ingest inline command (push) - Azure Data Explorer
-description: This article describes the ingest inline command (push) in Azure Data Explorer.
+description: This article describes the .ingest inline command (push)
 services: data-explorer
 author: orspod
 ms.author: orspodek
