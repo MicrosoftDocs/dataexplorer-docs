@@ -7,6 +7,8 @@ ms.author: orspodek
 ---
 ## Query data
 
+One-click ingestion guides you through the commands in a learning environment. Copy the query commands to take control and start learning how to build queries or alter tables on your own.
+
 1. Select the **v** button to open the query. Copy to the Web UI to edit the query.
 
 1. In the right-hand menu, select **Quick queries** and **Tools**: 

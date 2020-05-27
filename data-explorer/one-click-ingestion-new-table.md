@@ -1,5 +1,5 @@
 ---
-title: Use one-click ingestion to ingest data into a new Azure Data Explorer table
+title: Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer
 description: Ingesting (loading) data into a new Azure Data Explorer table simply, using one-click ingestion.
 author: orspod
 ms.author: orspodek
@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 03/29/2020
 ---
 
-# Use one-click ingestion to ingest data to a new table in Azure Data Explorer
+# Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer
 
-One-click ingestion enables you to quickly ingest data in JSON, CSV, and other formats into a table. Using the Azure Data Explorer Web UI, you can ingest data from storage, from a local file, or from a container. 
+[One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table. Using the Azure Data Explorer Web UI, you can ingest data from storage, from a local file, or from a container. 
 
-This document describes using the intuitive one-click wizard to ingest CSV data from a container into a new table. You can then edit the table and run queries with the Azure Data Explorer Web UI. You can also set continuous ingestion to automatically ingest data into the table when the source data updates.
+This document describes using the intuitive one-click wizard in a specific use case to ingest CSV data from a container into a new table. You can then edit the table and run queries with the Azure Data Explorer Web UI. You can also set continuous ingestion to automatically ingest data into the table when the source data updates.
 
 One-click ingestion is useful when ingesting data for the first time, or when your data's schema is unfamiliar to you. 
 
@@ -44,11 +44,9 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 
         [!INCLUDE [data-explorer-one-click-ingestion-edit-schema](includes/data-explorer-one-click-ingestion-edit-schema.md)]
 
-    * If you select  **JSON**, you must also select **JSON levels**, from 1 to 10. The levels affect the table column data depiction. 
-
-        :::image type="content" source="media/one-click-ingestion-new-table/json-levels.png" alt-text="Select JSON levels":::
-
-    * If you select a format other than JSON, you can select the check box **Include column names** to ignore the heading row of the file.
+    * If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md).
+    
+    * You can select the check box **Include column names** to ignore the heading row of the file.
 
         :::image type="content" source="media/one-click-ingestion-new-table/non-json-format.png" alt-text="Select include column names":::
 
@@ -56,9 +54,9 @@ Select **Edit schema** to view and edit your table column configuration. The sys
     
     :::image type="content" source="media/one-click-ingestion-new-table/table-mapping.png" alt-text="Table mapping name One Click Ingestion":::
 
-## Copy and paste queries
+## Copy and paste queries TODO: RENAME THIS SECTION
 
-1. Above the **Editor** pane, select the **v** button to open the editor. In the editor, you can view and copy the automatic queries generated from your inputs. 
+1. Above the **Editor** pane, select the **v** button to open the editor. In the editor, you can view and copy the automatic commands generated from your inputs. 
 
 1. In the table: 
     * Double-click the new column name to edit.
