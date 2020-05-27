@@ -138,7 +138,7 @@ See [storage connection strings](../api/connection-strings/storage.md) for detai
 | `fileExtension`  | `string` | If set, indicates file extensions of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
 | `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
 
-> [!Tip]
+> [!TIP]
 > To learn more about the role `namePrefix` and `fileExtension` properties play in data file filtering during query, see [file filtering logic](#file-filtering) section.
  
 <a name="examples"></a>
