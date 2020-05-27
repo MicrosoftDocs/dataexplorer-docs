@@ -15,7 +15,7 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 
 > [!NOTE]
 > The policy applies to all operations that create new extents,
-> such as commands for [data ingestion](../management/data-ingestion/index.md), and
+> such as commands for [data ingestion](ingest-data-overview.md), and
 > [.merge and .rebuild commands](../management/extents-commands.md#merge-extents)
 
 The data sharding policy contains the following properties:
