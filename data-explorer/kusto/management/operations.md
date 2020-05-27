@@ -15,7 +15,7 @@ ms.date: 02/13/2020
 
 `.show` `operations` command returns a table with all administrative operations, both running and completed, which were executed in the last two weeks (which is currently the retention period configuration).
 
-### Syntax
+**Syntax**
 
 |||
 |---|---| 
@@ -23,7 +23,7 @@ ms.date: 02/13/2020
 |`.show` `operations` *OperationId*|Returns operation status for a specific ID 
 |`.show` `operations` `(`*OperationId1*`,` *OperationId2*`,` ...)|Returns operations status for specific IDs
 
-### Results
+**Results**
  
 |Output parameter |Type |Description
 |---|---|---
@@ -36,7 +36,7 @@ ms.date: 02/13/2020
 |State |String |Command state - Can have values of "InProgress", "Completed", or "Failed"
 |Status |String |Additional help string that contains errors of failed operations
  
-### Example
+**Example**
  
 |ID |Operation |Node ID |Started On |Last Updated On |Duration |State |Status 
 |--|--|--|--|--|--|--|--
@@ -55,15 +55,15 @@ Operations can (optionally) persist their results, and the results can be retrie
 > The output schema of the `.show` `operations` `details` command is the same schema returned from the synchronous execution of the command.
 > The `.show` `operation` `details` command can only be invoked after the operation completed successfully. Use the [show operations command](#show-operations)) to check the state of the operation, before running this command.
 
-### Syntax
+**Syntax**
 
 `.show` `operation` *OperationId* `details`
 
-### Results
+**Results**
 
 The result is different per type of operation, and matches the schema of the operation result, when executed synchronously.
 
-### Examples
+**Examples**
 
 The *OperationId* in the example, returns from an asynchronous execution of one
 of the [data export](../management/data-export/index.md) commands.
@@ -91,7 +91,7 @@ This operation ID can be used when the command has completed to query the export
 .show operation 56e51622-eb49-4d1a-b896-06a03178efcd details 
 ```
 
-### Results
+**Results**
 
 |Path|NumRecords|
 |---|---|
