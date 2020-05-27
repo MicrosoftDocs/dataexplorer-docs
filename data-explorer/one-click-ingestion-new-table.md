@@ -32,19 +32,35 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 :::image type="content" source="media/one-click-ingestion-new-table/create-new-table.png" alt-text="Create a new table one click ingestion":::
 
-[!INCLUDE [data-explorer-one-click-ingestion-types](includes/data-explorer-one-click-ingestion-types.md)]
+## Select an ingestion type
 
-Select **Edit schema** to view and edit your table column configuration. The system will select one of the blobs at random and the schema will be generated based on that blob. By looking at the name of the source, the service automatically identifies if it is compressed or not.
+For **Ingestion type**, select the following options:
+   
+ * **from container** - in the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size.
+
+      ![One-click ingestion from container](media/data-explorer-one-click-ingestion-types/from-container.png)
+
+ > [!Note] 
+ > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
+
+  A sample of the data appears. If you want to, you can filter it to show only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
+  
+  For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension.
+
+  ![One-click ingestion filter](media/data-explorer-one-click-ingestion-types/from-container-with-filter.png)
+
 
 ## Edit the schema
+
+Select **Edit schema** to view and edit your table column configuration. The system will select one of the blobs at random and the schema will be generated based on that blob. By looking at the name of the source, the service automatically identifies if it is compressed or not.
 
 1. In the **Schema** tab:
 
     * Select **Data format**:
 
-        [!INCLUDE [data-explorer-one-click-ingestion-edit-schema](includes/data-explorer-one-click-ingestion-edit-schema.md)]
+        In this case, the data format is *CSV*
 
-    * If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md).
+    * If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#edit-the-schema).
     
     * You can select the check box **Include column names** to ignore the heading row of the file.
 
