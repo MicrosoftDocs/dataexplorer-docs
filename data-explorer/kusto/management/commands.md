@@ -42,7 +42,7 @@ Currently, only some of the admin commands are covered by the commands table (`.
 
 Accessing one of the properties within the ResourceUtilization column, is done by calling ResourcesUtilization.xxx (where xxx is the property name).
 > [!NOTE] 
-> The ResourceUtilization is a dynamic column. To work with its values, you should first convert it into a specific data type. Use a conversion function such as `tolong`, `toint`, `totimespan`.  
+> `ResourceUtilization` is a dynamic column. To work with its values, you should first convert it into a specific data type. Use a conversion function such as `tolong`, `toint`, `totimespan`.  
 
 For example,
 
