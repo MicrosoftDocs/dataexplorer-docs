@@ -113,7 +113,7 @@ If *PathFormat* is omitted from the external table definition, it's assumed that
 
 The data format, any of the [ingestion formats](../../ingestion-supported-formats.md).
 
-> [!Note]
+> [!NOTE]
 > Using external table for [export scenario](data-export/export-data-to-an-external-table.md) is limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.
 
 <a name="connection-string"></a>
