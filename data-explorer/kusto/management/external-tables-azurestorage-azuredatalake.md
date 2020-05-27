@@ -254,7 +254,7 @@ Once all the conditions are met, the file is fetched and processed by the query 
 
 Returns a list of all files that will be processed when querying a given external table.
 
-> [!Note]
+> [!NOTE]
 > The operation requires [database user permission](../management/access-control/role-based-authorization.md).
 
 **Syntax:** 
