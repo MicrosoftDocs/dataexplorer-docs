@@ -247,7 +247,7 @@ When querying an external table, the query engine improves performance by filter
 
 Once all the conditions are met, the file is fetched and processed by the query engine.
 
-> [!Note]
+> [!NOTE]
 > Initial URI pattern is built using query predicate values. This works best for a limited set of string values as well as for a closed time ranges. 
 
 ## .show external table artifacts
