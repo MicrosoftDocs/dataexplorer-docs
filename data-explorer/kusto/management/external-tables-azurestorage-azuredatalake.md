@@ -49,7 +49,7 @@ External data schema is described using the following format:
 
 where *ColumnName* adheres to [entity naming](../query/schema-entities/entity-names.md) rules, and *ColumnType* is one of [supported data types](../query/scalar-data-types/index.md).
 
-> [!Tip]
+> [!TIP]
 > If the external data schema is unknown, use the [infer\_storage\_schema](../query/inferstorageschemaplugin.md) plug-in, which helps infer the schema based on external file contents.
 
 <a name="partitions"></a>
