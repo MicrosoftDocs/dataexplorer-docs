@@ -1385,7 +1385,6 @@
     - name: Security Roles
       href: ./kusto/management/security-roles.md
     - name: Data Ingestion
-      href: ./kusto/management/data-ingestion/index.md
       items:
       - name: Ingest from storage
         href: ./kusto/management/data-ingestion/ingest-from-storage.md
@@ -1440,8 +1439,6 @@
         href: ./kusto/management/access-control/role-based-authorization.md
       - name: How-To AAD Authentication
         href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
-      - name: How-To Provision AAD Application
-        href: ./kusto/management/access-control/how-to-provision-aad-app.md
     - name: Advanced Data Management
       items:
       - name: Extents (Data Shards) Overview
