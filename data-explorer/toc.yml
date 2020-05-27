@@ -1385,7 +1385,6 @@
     - name: Security Roles
       href: ./kusto/management/security-roles.md
     - name: Data Ingestion
-      href: ./kusto/management/data-ingestion/index.md
       items:
       - name: Ingest from storage
         href: ./kusto/management/data-ingestion/ingest-from-storage.md
