@@ -1440,8 +1440,6 @@
         href: ./kusto/management/access-control/role-based-authorization.md
       - name: How-To AAD Authentication
         href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
-      - name: How-To Provision AAD Application
-        href: ./kusto/management/access-control/how-to-provision-aad-app.md
     - name: Advanced Data Management
       items:
       - name: Extents (Data Shards) Overview
