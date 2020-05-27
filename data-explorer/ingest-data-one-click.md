@@ -11,9 +11,9 @@ ms.date: 03/29/2020
 
 # What is one-click ingestion? 
 
-One-click ingestion enables you to quickly ingest data and automatically suggest tables and mapping structures, based on a data source in Azure Data Explorer. 
+One-click ingestion enables you to quickly ingest data and automatically create tables and mapping structures, based on a data source in Azure Data Explorer. 
 
-Using the Azure Data Explorer Web UI, you can ingest data from storage (blob file), a local file, or a container (up to 10,000 blobs). You can also define an event grid on a container for continuous ingestion. The data can be ingested into an existing or new table in JSON, CSV, and [other formats](#file-formats). One click ingestion can suggest a structure for a new table and table mapping, based on the data source, and provide an intuitive platform to adjust table mapping and the table structure of an existing or new table. One click ingestion will ingest the data into the table within only a few minutes.
+Using the Azure Data Explorer Web UI, you can ingest data from storage (blob file), a local file, or a container (up to 10,000 blobs). You can also define an event grid on a container for continuous ingestion. The data can be ingested into a new or existing table, in JSON, CSV, and [other formats](#file-formats). One-click ingestion suggests a structure for a new table and table mapping based on your data source. The platform helps you intuitively adjust this table mapping and the table structure of a new or existing table. One-click ingestion ingests data into the table in only a few minutes.
 
 One-click ingestion is particularly useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
 
@@ -40,14 +40,15 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
 > [!Note]
 > This section describes the wizard in general. The options you select depend on what data format you are ingesting, what kind of data source you are ingesting from, and whether you are ingesting into a new or existing table. 
+>
 > For sample scenarios, see:
-    > * Ingest into [a new table](one-click-ingestion-new-table.md)
-    > * Ingest into an [existing table](one-click-ingestion-existing-table.md) 
+> * Ingest into [a new table](one-click-ingestion-new-table.md)
+> * Ingest into an [existing table](one-click-ingestion-existing-table.md) 
     
-1. To access the wizard, right-click the *database* or *table* row in left menu of the Azure Data Explorer web UI and select **Ingest new data (preview)**.
+1. To access the wizard, right-click the **database** or **table** row in left menu of the Azure Data Explorer web UI and select **Ingest new data (preview)**.
 
-    ![Select one-click ingestion in the Web UI](media/ingest-data-one-click/one-click-ingestion-in-webui.png)   
-
+    :::image type="content" source="media/ingest-data-one-click/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
+    
 1. The wizard guides you through the following options:
     * Ingest into an [existing table](one-click-ingestion-existing-table.md)
     * Ingest into [a new table](one-click-ingestion-new-table.md)
