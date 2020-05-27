@@ -270,7 +270,7 @@ where *MaxResults* is an optional parameter, which can be set to limit the numbe
 | Uri              | string | URI of external storage data file |
 
 > [!TIP]
-> Iterating on all files referenced by an external table can be quite costly, depending on the number of files. Make sure to use `limit` parameter in case you just want to peek at some URI examples.
+> Iterating on all files referenced by an external table can be quite costly, depending on the number of files. Make sure to use `limit` parameter if you just want to see some URI examples.
 
 **Examples:**
 
