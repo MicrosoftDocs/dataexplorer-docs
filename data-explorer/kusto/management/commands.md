@@ -21,7 +21,7 @@ The commands table has two columns with resources consumption details of every c
 * ResourceUtilization - Contains all resource use information related to that command, including the TotalCpu.
 
 Resource consumption that is tracked includes Data Updates, and any query associated with the current Admin command.
-Currently, only some of the Admin commands are covered by the Commands table (`.ingest`, `.set`, `.append`, `.set-or-replace`, `.set-or-append`). Gradually, more commands will be added to the Commands table.
+Currently, only some of the admin commands are covered by the commands table (`.ingest`, `.set`, `.append`, `.set-or-replace`, `.set-or-append`). Gradually, more commands will be added to the commands table.
 
 * A [database admin or database monitor](../management/access-control/role-based-authorization.md) can see any command that was invoked on their database.
 * Other users can only see commands that were invoked by them.
