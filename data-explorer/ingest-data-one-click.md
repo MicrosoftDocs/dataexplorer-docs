@@ -11,9 +11,7 @@ ms.date: 03/29/2020
 
 # What is one-click ingestion? 
 
-One-click ingestion enables you to quickly ingest data and automatically create tables and mapping structures, based on a data source in Azure Data Explorer. 
-
-Using the Azure Data Explorer Web UI, you can ingest data from storage (blob file), a local file, or a container (up to 10,000 blobs). You can also define an event grid on a container for continuous ingestion. The data can be ingested into a new or existing table, in JSON, CSV, and [other formats](#file-formats). One-click ingestion suggests a structure for a new table and table mapping based on your data source. The platform helps you intuitively adjust this table mapping and the table structure of a new or existing table. One-click ingestion ingests data into the table in only a few minutes.
+Ingesting data can be a confusing process, but one-click ingestion makes the process easy, fast, and intuitive. You can ingest data in a matter of minutes using the Azure Data Explorer Web UI. Choose from a number of data sources (local file, blob, and container up to 10,000 blobs) in a variety of [formats](#file-formats), and ingest into new or existing tables. Table creation and mapping are suggested to you based on your data and navigated through a wizard. The process also provides automatic definition of Event Grid for continuous ingestion from a container in only four clicks. 
 
 One-click ingestion is particularly useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
 
@@ -57,11 +55,11 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
       * A local file
       * A container
        
-1. If you are ingesting data from a container, you can filter the data so that only files with specific prefixes or file extensions are ingested. For example, you might only want to ingest files with filenames beginning with the word *Europe*, or only files with the extension *.json*. 
+1. If you're ingesting data from a container, you can filter the data so that only files with specific prefixes or file extensions are ingested. For example, you might only want to ingest files with filenames beginning with the word *Europe*, or only files with the extension *.json*. 
 
-1. For other sources (not a container), when you have successfully selected the data source, a preview of the data is displayed. 
+1. For other sources (not a container), when you've successfully selected the data source, a preview of the data is displayed. 
 
-1. Click **Edit schema**. Review and adjust the auto generated schema and ingestion properties (data format, mapping name, etc.). The service automatically identifies if the source is compressed or not by looking at its name.
+1. Click **Edit schema**. Review and adjust the auto-generated schema and ingestion properties (data format, mapping name, etc.). The service automatically identifies if the source is compressed or not by looking at its name.
 
 1. Start the data ingestion process.
 
@@ -71,6 +69,6 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
 ## Next steps
 
-* Decide if you will use one-click ingestion to ingest data into [an existing table](one-click-ingestion-existing-table.md) or [a new table](one-click-ingestion-new-table.md)
+* Decide if you'll use one-click ingestion to ingest data into [an existing table](one-click-ingestion-existing-table.md) or [a new table](one-click-ingestion-new-table.md)
 * [Query data in Azure Data Explorer Web UI](web-query-data.md)
 * [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)
