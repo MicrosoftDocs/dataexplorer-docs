@@ -1,13 +1,13 @@
 ---
 title: parse_ipv4_mask() - Azure Data Explorer | Microsoft Docs
-description: This article describes parse_ipv4_mask() in Azure Data Explorer.
+description: This article describes parse_ipv4_mask() function in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 05/27/2020
 ---
 # parse_ipv4_mask()
 
@@ -15,7 +15,6 @@ Converts the input string of IPv4 and netmask to long number representation (sig
 
 ```kusto
 parse_ipv4_mask("127.0.0.1", 24) == 2130706432
-
 parse_ipv4_mask('192.1.168.2', 31) == parse_ipv4_mask('192.1.168.3', 31) 
 ```
 
@@ -32,3 +31,4 @@ parse_ipv4_mask('192.1.168.2', 31) == parse_ipv4_mask('192.1.168.3', 31)
 
 If conversion is successful, the result will be a long number.
 If conversion is not successful, the result will be `null`.
+
