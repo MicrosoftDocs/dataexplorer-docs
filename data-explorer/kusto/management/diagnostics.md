@@ -26,7 +26,7 @@ These commands can be used to display system diagnostic information.
 
 Returns a set that contains one record for each node that is currently active in the cluster.  
 
-### Results 
+**Results** 
 
 |Output column |Type |Description
 |---|---|---|
@@ -40,7 +40,7 @@ Returns a set that contains one record for each node that is currently active in
 |ProcessorCount  |Int32 |The number of processors on the node.
 |EnvironmentDescription  |string |Additional information about the node's environment serialized as JSON. For example, as Upgrade/Fault Domains
 
-### Example
+**Example**
 
 ```kusto
 .show cluster
@@ -62,7 +62,7 @@ Kusto.Azure.Svc_IN_0|net.tcp://100.112.138.15:23107/|Kusto.Azure.Svc_IN_0/RD000D
 
 Returns information about the Kusto cluster state of health.
  
-### Returns
+**Returns**
 
 |Output parameter |Type |Description|
 |-----------------|-----|-----------| 
@@ -108,7 +108,7 @@ Returns information about the Kusto cluster state of health.
 
 Returns the results of a calculation for an estimated cluster capacity for each resource.
  
-### Results
+**Results**
 
 |Output parameter |Type |Description 
 |---|---|---
@@ -117,7 +117,7 @@ Returns the results of a calculation for an estimated cluster capacity for each 
 |Consumed |Int64 |The amount of resources of type 'Resource' consumed right now
 |Remaining |Int64 |The amount of remaining resources of type 'Resource'
  
-### Example
+**Example**
 
 |Resource |Total |Consumed |Remaining
 |---|---|---|---
@@ -133,7 +133,7 @@ This command returns a table containing all the administrative operations since 
 |`.show` `operations` *OperationId*|Returns the operation status for a specific ID
 |`.show` `operations` `(`*OperationId1*`,` *OperationId2*`,` ...)|Returns operations status for specific IDs
 
-### Results
+**Results**
  
 |Output parameter |Type |Description
 |---|---|---
@@ -146,7 +146,7 @@ This command returns a table containing all the administrative operations since 
 |State |String |Command state, with values "InProgress", "Completed", or "Failed"
 |Status |String |Additional help string that contains the errors for failed operations
  
-### Example
+**Example**
  
 |ID |Operation |Node ID |Started On |Last Updated On |Duration |State |Status 
 |--|--|--|--|--|--|--|--
