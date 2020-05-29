@@ -84,7 +84,7 @@ T | evaluate active_users_count(User, Timestamp, Start, End, LookbackWindow, Per
 |2018-07-01 00:00:00.0000000|1|
 |2018-07-15 00:00:00.0000000|1|
 
-A user is considered active if it fulfills one of the following criteria: 
+A user is considered active if it fulfills both of the following criteria: 
 * The user was seen in at least three distinct days (Period = 1d, ActivePeriods=3).
 * The user was seen in a lookback window of 8d before and including their current appearance.
 
