@@ -13,7 +13,7 @@ ms.date: 08/19/2019
 
  `Journal` contains information about metadata operations that are done on the Kusto database.
 
-The metadata operations could be a result of a control command that a user executed, or internal control commands that the system executed, such as drop extents by retention.
+The metadata operations can result from a control command that a user executed, or internal control commands that the system executed, such as drop extents by retention.
 
 > [!NOTE]
 
