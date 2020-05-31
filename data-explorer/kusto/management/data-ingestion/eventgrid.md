@@ -125,7 +125,7 @@ Azure Data Explorer won't delete the blobs post ingestion, but will retain them 
 
 ## Known issues
 
-When using Azure Data Explorer to [export](../../management/data-export/export-data-to-storage) the files used for event grid ingestion, the following should be noted: 
-* Event Grid notifications are *not* triggered if the connection string provided to the export command or the connection string provided to an [external table](../../management/data-export/export-data-to-an-external-table) is a connecting string in [ADLS Gen2 format](../../api/connection-strings/storage#azure-data-lake-store)(e.g., `abfss://filesystem@accountname.dfs.core.windows.net`) *but the storage account isn't enabled for hierarchical namespace*. 
- * If the account is not enabled for hierarchical namespace, connection string must use the [Blob Storage](../../api/connection-strings/storage#azure-storage-blob) format (e.g., `https://accountname.blob.core.windows.net`). 
+When using Azure Data Explorer to [export](../data-export/export-data-to-storage.md) the files used for event grid ingestion, the following should be noted: 
+* Event Grid notifications are *not* triggered if the connection string provided to the export command or the connection string provided to an [external table](../data-export/export-data-to-an-external-table.md) is a connecting string in [ADLS Gen2 format](../../api/connection-strings/storage.md#azure-data-lake-store)(e.g., `abfss://filesystem@accountname.dfs.core.windows.net`) *but the storage account isn't enabled for hierarchical namespace*. 
+ * If the account is not enabled for hierarchical namespace, connection string must use the [Blob Storage](../../api/connection-strings/storage.md#azure-storage-blob) format (e.g., `https://accountname.blob.core.windows.net`). 
  * Note that the export will work as expected even when using the ADLS Gen2 connection string in this case, but notifications won't be triggered and thus Event Grid ingestion won't work. 
