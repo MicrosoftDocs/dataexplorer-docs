@@ -40,7 +40,7 @@ This article describes control commands used for creating and altering [row orde
 **Examples** 
 
 the following example sets the row order policy on the `TenantId` column (ascending) as a primary key, 
-and on the `Timestamp` column (ascending) as the secondary key. Then query the policy.
+and on the `Timestamp` column (ascending) as the secondary key. The policy is then queried.
 
 ```kusto
 .alter table events policy roworder (TenantId asc, Timestamp desc)
