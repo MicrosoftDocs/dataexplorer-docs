@@ -41,7 +41,7 @@ Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Stora
     > * When you define an external table with partitions, the storage structure is expected to be identical.
 For example, if the table is defined with a DateTime partition in yyyy/MM/dd format (default), the URI storage file path should be *container1/yyyy/MM/dd/all_exported_blobs*. 
     > * If the external table is partitioned by a datetime column, always include a time filter for a closed range in your query (for example, the query - `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` - should perform better than this (opened range) one - `ArchivedProducts | where Timestamp > ago(1h)` ). 
-    > * All [supported ingestion formats](ingest-data-overview.md#supported-data-formats) can be queried using external tables.
+    > * All [supported ingestion formats](ingestion-supported-formats.md) can be queried using external tables.
 
 1. The external table is visible in the left pane of the Web UI
 

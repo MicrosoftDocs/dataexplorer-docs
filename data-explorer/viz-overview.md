@@ -24,11 +24,11 @@ The Kusto query language [`render operator`](kusto/query/renderoperator.md) offe
 
 Azure Data Explorer provides the capability to connect to [Power BI](https://powerbi.microsoft.com) using various methods: 
 
-  * [Built-in native Power BI connector](/azure/data-explorer/power-bi-connector)
+  * [Built-in native Power BI connector](power-bi-connector.md)
 
-  * [Query import from Azure Data Explorer into Power BI](/azure/data-explorer/power-bi-imported-query)
+  * [Query import from Azure Data Explorer into Power BI](power-bi-imported-query.md)
  
-  * [SQL query](/azure/data-explorer/power-bi-sql-query)
+  * [SQL query](power-bi-sql-query.md)
 
 ## Microsoft Excel
 
@@ -36,11 +36,11 @@ Azure Data Explorer provides the capability to connect to [Microsoft Excel](http
 
 ## Grafana
 
-[Grafana](https://grafana.com) provides an Azure Data Explorer plugin that enables you to visualize data from Azure Data Explorer. You [set up Azure Data Explorer as a data source for Grafana, and then visualize the data](/azure/data-explorer/grafana). 
+[Grafana](https://grafana.com) provides an Azure Data Explorer plugin that enables you to visualize data from Azure Data Explorer. You [set up Azure Data Explorer as a data source for Grafana, and then visualize the data](grafana.md). 
 
 ## Kibana
 
-Azure Data Explorer provides the capability to connect to [Kibana (the Discover page)](https://www.elastic.co/guide/en/kibana/6.8/discover.html) using K2Bridge, an open source connector. You [set up Azure Data Explorer as a data source for Kibana, and then visualize the data](/azure/data-explorer/k2bridge).
+Azure Data Explorer provides the capability to connect to [Kibana (the Discover page)](https://www.elastic.co/guide/en/kibana/6.8/discover.html) using K2Bridge, an open source connector. You [set up Azure Data Explorer as a data source for Kibana, and then visualize the data](k2bridge.md).
 
 ## ODBC connector
 
@@ -49,18 +49,18 @@ Azure Data Explorer provides an [Open Database Connectivity (ODBC) connector](co
 ## Tableau
 
 Azure Data Explorer provides the capability to connect to [Tableau](https://www.tableau.com)
- using the [ODBC connector](/azure/data-explorer/connect-odbc) and then [visualize the data in Tableau](tableau.md).
+ using the [ODBC connector](connect-odbc.md) and then [visualize the data in Tableau](tableau.md).
 
 ## Qlik
 
-Azure Data Explorer provides the capability to connect to [Qlik](https://www.qlik.com) using the [ODBC connector](/azure/data-explorer/connect-odbc) and then create Qlik Sense dashboards and visualize the data. Using the following video, you can learn to visualize Azure Data Explorer data with Qlik. 
+Azure Data Explorer provides the capability to connect to [Qlik](https://www.qlik.com) using the [ODBC connector](connect-odbc.md) and then create Qlik Sense dashboards and visualize the data. Using the following video, you can learn to visualize Azure Data Explorer data with Qlik. 
 
 > [!VIDEO https://www.youtube.com/embed/nhWIiBwxjjU]  
 
 ## Sisense
 
-Azure Data Explorer provides the capability to connect to [Sisense](https://www.sisense.com) using the JDBC connector. You [set up Azure Data Explorer as a data source for Sisense, and then visualize the data](/azure/data-explorer/sisense).
+Azure Data Explorer provides the capability to connect to [Sisense](https://www.sisense.com) using the JDBC connector. You [set up Azure Data Explorer as a data source for Sisense, and then visualize the data](sisense.md).
 
 ## Redash
 
-You can use [Redash](https://redash.io/) to build dashboards and visualize data. [Set up Azure Data Explorer as a data source for Redash, and then visualize the data](/azure/data-explorer/redash).
+You can use [Redash](https://redash.io/) to build dashboards and visualize data. [Set up Azure Data Explorer as a data source for Redash, and then visualize the data](redash.md).

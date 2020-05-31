@@ -22,16 +22,13 @@ There are several methods for data export:
   somewhere). This form of data export depends on the client tool to do the
   export, most commonly to the local filesystem where the tool runs. Among tools
   that support this model are [Kusto.Explorer](../../tools/kusto-explorer.md),
-  [Web UI](https://docs.microsoft.com/azure/data-explorer/web-query-data), 
-
-
- and others.
+  [Web UI](../../../web-query-data.md), and others.
 
 * **Service-side export (pull)**:
   If the target of the export is a Kusto table (on the same cluster/database
   as the query or another), use the "ingest from query"
   flow on the target table. In this flow a query is run and its results are immediately
-  ingested into a Kusto table. See [data ingestion](../data-ingestion/index.md).
+  ingested into a Kusto table. See [data ingestion](../../../ingest-data-overview.md).
 
 
 

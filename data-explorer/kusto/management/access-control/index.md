@@ -7,6 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
+ms.custom: has-adal-ref
 ms.date: 11/25/2019
 ---
 # Kusto Access Control Overview
@@ -28,7 +29,7 @@ AAD is the preferred method for authenticating to Kusto in Microsoft. It support
 of authentication scenarios:
 * **User authentication** (interactive logon): Used to authenticate human principals.
 * **Application authentication** (non-interactive logon): Used to authenticate services
-  and applications that have to run/authenticate with no human user being present. 
+  and applications that have to run/authenticate with no human user being present.
 
 ### User authentication
 User authentication happens when the user presents credentials to AAD (or to some identity provider
@@ -112,4 +113,3 @@ read the data of a particular database, create tables in the database, as well a
 The association of security principals to security roles can be defined individually,
 or by using security groups (defined in AAD). The individual commands for doing so
 are defined in [Setting Role Based Authorization rules](../security-roles.md).
-

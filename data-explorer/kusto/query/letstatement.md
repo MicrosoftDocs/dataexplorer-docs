@@ -1,5 +1,5 @@
 ---
-title: Let statement - Azure Data Explorer | Microsoft Docs
+title: Let statement - Azure Data Explorer
 description: This article describes Let statement in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -144,6 +144,7 @@ foo2(2) | count
 
 [`materialize`](materializefunction.md) function allows caching sub-query results during the time of query execution. 
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let totalPagesPerDay = PageViews
 | summarize by Page, Day = startofday(Timestamp)

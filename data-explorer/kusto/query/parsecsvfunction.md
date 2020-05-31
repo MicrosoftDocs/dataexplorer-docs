@@ -1,5 +1,5 @@
 ---
-title: parse_csv() - Azure Data Explorer | Microsoft Docs
+title: parse_csv() - Azure Data Explorer
 description: This article describes parse_csv() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -36,6 +36,7 @@ This function does not support multiple records per row (only the first record i
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print result=parse_csv('aa,"b,b,b",cc,"Escaping quotes: ""Title""","line1\nline2"')
 ```
@@ -46,6 +47,7 @@ print result=parse_csv('aa,"b,b,b",cc,"Escaping quotes: ""Title""","line1\nline2
 
 CSV payload with multiple records:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print result_multi_record=parse_csv('record1,a,b,c\nrecord2,x,y,z')
 ```

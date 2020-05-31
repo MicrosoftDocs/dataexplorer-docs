@@ -1,5 +1,5 @@
 ---
-title: format_datetime() - Azure Data Explorer | Microsoft Docs
+title: format_datetime() - Azure Data Explorer
 description: This article describes format_datetime() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -83,6 +83,7 @@ Format specifier can include following delimeters characters:
 
 **Examples**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let dt = datetime(2017-01-29 09:00:05);
 print 

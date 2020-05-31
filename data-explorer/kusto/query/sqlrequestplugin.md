@@ -73,6 +73,22 @@ evaluate sql_request(
 | project Name
 ```
 
+The following example sends a SQL query to an Azure SQL DB database
+retrieving all records from `[dbo].[Table]`, while appending another `datetime` column,
+and then processes the results on the Kusto side.
+It specifies a SQL parameter (`@param0`) to be used in the SQL query.
+
+```kusto
+evaluate sql_request(
+  'Server=tcp:contoso.database.windows.net,1433;'
+    'Authentication="Active Directory Integrated";'
+    'Initial Catalog=Fabrikam;',
+  'select *, @param0 as dt from [dbo].[Table]',
+  dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)}))
+| where Id > 0
+| project Name
+```
+
 **Authentication**
 
 The sql_request plugin supports three methods of authentication to the
@@ -136,6 +152,6 @@ Where:
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end

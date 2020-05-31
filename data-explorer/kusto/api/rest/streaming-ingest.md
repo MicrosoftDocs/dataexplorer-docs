@@ -1,5 +1,5 @@
 ---
-title: Streaming ingestion HTTP request - Azure Data Explorer | Microsoft Docs
+title: Streaming ingestion HTTP request - Azure Data Explorer
 description: This article describes Streaming ingestion HTTP request in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -19,78 +19,64 @@ ms.date: 03/24/2020
 
 ## Request parameters
 
-| Parameter    |  Description                                                                                                |
-|--------------|-------------------------------------------------------------------------------------------------------------|
-| `{database}` | **Required** Name of the target database for the ingestion request                                          |
-| `{table}`    | **Required** Name of the target table for the ingestion request                                             |
+| Parameter    | Description                                                                 | Required/Optional |
+|--------------|-----------------------------------------------------------------------------|-------------------|
+| `{database}` |   Name of the target database for the ingestion request                     |  Required         |
+| `{table}`    |   Name of the target table for the ingestion request                        |  Required         |
 
 ## Additional parameters
-Additional paramters are formatted as URL Query: `{name}`=`{value}` pairs separted by & character
 
+Additional parameters are formatted as URL query `{name}={value}` pairs, separated by the & character.
 
-| Parameter    |  Description                                                                                                |
-|--------------|-------------------------------------------------------------------------------------------------------------|
-|`streamFormat`| **Required** Specifies format of the data in the request body. Value should be one of the following: `Csv`,`Tsv`,`Scsv`,`SOHsv`,`Psv`,`Json`,`SingleJson`,`MultiJson`,`Avro`. For more information please see [Supported Data Formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).|
-|`mappingName` | **Required** if `streamFormat` is one of `Json`, `SingleJson`, `MultiJson` or `Avro`, **Optional** otherwise. The value shold be the name of the pre-created ingestion mapping defined on the table. For more information on data mappings see [Data Mappings](../../management/mappings.md). The way to manage pre-created mappings on the table is described [here](../../management/create-ingestion-mapping-command.md) |
+| Parameter    | Description                                                                          | Required/Optional   |
+|--------------|--------------------------------------------------------------------------------------|---------------------|
+|`streamFormat`| Specifies the format of the data in the request body. The value should be one of: `CSV`, `TSV`, `SCsv`, `SOHsv`, `PSV`, `JSON`, `MultiJSON`, `Avro`. For more information, see [Supported Data Formats](../../../ingestion-supported-formats.md).| Required |
+|`mappingName` | The name of the pre-created ingestion mapping defined on the table. For more information, see [Data Mappings](../../management/mappings.md). The way to manage pre-created mappings on the table is described [here](../../management/create-ingestion-mapping-command.md).| Optional, but Required if `streamFormat` is one of `JSON`, `MultiJSON`, or `Avro`|  |
               
-
-For example to ingest CSV-formatted data into table `Logs` in database `Test`
-use the following request line:
+For example, to ingest CSV-formatted data into table `Logs` in database `Test`, use:
 
 ```
 POST https://help.kusto.windows.net/v1/rest/ingest/Test/Logs?streamFormat=Csv HTTP/1.1
 ```
 
-to ingest JSON-formatted data with pre-created mapping `mylogmapping`
+To ingest JSON-formatted data with pre-created mapping `mylogmapping`, use:
 
 ```
 POST https://help.kusto.windows.net/v1/rest/ingest/Test/Logs?streamFormat=Json&mappingName=mylogmapping HTTP/1.1
 ```
 
-
-(See below for the request headers and body to include.)
-
 ## Request headers
 
-The following table contains the common headers used to perform query and management
-operations.
+The following table contains the common headers for query and management operations.
 
-|Standard header  |Description                                                                                                              |
-|------------------|------------------------------------------------------------------------------------------------------------------------|
-|`Accept`          |**Optional**. Set this to `application/json`.                                                                           |
-|`Accept-Encoding` |**Optional**. Supported encodings are `gzip` and `deflate`.                                                             |
-|`Authorization`   |**Required**. See [authentication](./authentication.md).                                                                |
-|`Connection`      |**Optional**. It is recommended that `Keep-Alive` be enabled.                                                           |
-|`Content-Length`  |**Optional**. It is recommended taht the request body length be specified when known.                                   |
-|`Content-Encoding`|**Optional**. Can be set to `gzip` in which case body is required to be gzip-compressed                                 |
-|`Expect`          |**Optional**. Can be set to `100-Continue`.                                                                             |
-|`Host`            |**Required**. Set this to the fully-qualified domain name that the request was sent to (e.g., `help.kusto.windows.net`).|
+|Standard header   | Description                                                                               | Required/Optional | 
+|------------------|-------------------------------------------------------------------------------------------|-------------------|
+|`Accept`          | Set this value to `application/json`.                                                     | Optional          |
+|`Accept-Encoding` | Supported encodings are `gzip` and `deflate`.                                             | Optional          | 
+|`Authorization`   | See [authentication](./authentication.md).                                                | Required          |
+|`Connection`      | Enable `Keep-Alive`.                                                                      | Optional          |
+|`Content-Length`  | Specify the request body length, when known.                                              | Optional          |
+|`Content-Encoding`| Set to `gzip` but the body must be gzip-compressed                                        | Optional          |
+|`Expect`          | Set to `100-Continue`.                                                                    | Optional          |
+|`Host`            | Set to the domain name to which you sent the request (such as, `help.kusto.windows.net`). | Required          |
 
-The following table contains the common custom headers used when performing query
-and management operations. Unless indicated otherwise, these headers are used
-for telemetry purposes only, and have no functionality impact.
+The following table contains the common custom headers for query and management operations. Unless otherwise indicated, the headers are for telemetry purposes only, and have no functionality impact.
 
-All headers are **optional**. It is **strongly-recommended** however that the
-`x-ms-client-request-id` custom header be specified. In some scenarios (e.g.,
-cancelling a running query) this header is **mandatory** as it is used to identify
-the request.
-
-
-|Custom header           |Description                                                                                               |
+|Custom header           |Description                                                                           | Required/Optional |
 |------------------------|----------------------------------------------------------------------------------------------------------|
-|`x-ms-app`              |The (friendly) name of the application making the request.                                                |
-|`x-ms-user`             |The (friendly) name of the user making the request.                                                       |
-|`x-ms-user-id`          |Same as `x-ms-user`.                                                                                      |
-|`x-ms-client-request-id`|A unique identifier for the request.                                                                      |
-|`x-ms-client-version`   |The (friendly) version identifier for the client making the request.                                      |
+|`x-ms-app`              |The (friendly) name of the application making the request.                            | Optional          |
+|`x-ms-user`             |The (friendly) name of the user making the request.                                   | Optional          |
+|`x-ms-user-id`          |Same as `x-ms-user`.                                                                  | Optional          |
+|`x-ms-client-request-id`|A unique identifier for the request.                                                  | Optional          |
+|`x-ms-client-version`   |The (friendly) version identifier for the client making the request. Required in scenarios, where it's used to identify the request, such as canceling a running query.                                                        | Optional/Required  |
 
 ## Body
 
-The body is the actual data to be ingested. The textual formats shoud use UTF-8 encoding.
+The body is the actual data to be ingested. The textual formats should use UTF-8 encoding.
 
 ## Examples
 
-The following example shows the HTTP POST request for a ingesting JSON content:
+The following example shows the HTTP POST request for ingesting JSON content:
 
 ```txt
 POST https://help.kusto.windows.net/v1/rest/ingest/Test/Logs?streamFormat=Json&mappingName=mylogmapping HTTP/1.1
@@ -117,7 +103,7 @@ Request body:
 {"Timestamp":"2018-11-14 11:35","Level":"Error","EventText":"Something Happened"}
 ```
 
-The following example shows the HTTP POST request for ingesting the same data compressed
+The following example shows the HTTP POST request for ingesting the same compressed data.
 
 ```txt
 POST https://help.kusto.windows.net/v1/rest/ingest/Test/Logs?streamFormat=Json&mappingName=mylogmapping HTTP/1.1
