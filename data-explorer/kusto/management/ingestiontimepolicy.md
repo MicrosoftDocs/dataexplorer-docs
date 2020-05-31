@@ -35,7 +35,7 @@ The IngestionTime policy is designed for two main scenarios:
   you can estimate the latency for getting the data in. 
   
   > [!NOTE]
-  The calculated value is only an estimate, because the source and Kusto don't necessarily
+  > The calculated value is only an estimate, because the source and Kusto don't necessarily
   have their clocks synchronized.
   
 * To support [Database Cursors](../management/databasecursor.md) that let users 
