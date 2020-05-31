@@ -32,32 +32,23 @@ The metadata operations can result from a control command that a user executed, 
 |.          		|The database properties (too long to be displayed here)         |.create database TestDB persist (@"https://imfbkm.blob.core.windows.net/md", @"https://imfbkm.blob.core.windows.net/data")|Azure AD app id=76263cdb-abcd-545644e9c404
 |Name: MyTable1, Attributes: Name='[MyTable1].[col1]', Type='I32'|Name: MyTable2, Attributes: Name='[MyTable1].[col1]', Type='I32'|.rename table MyTable1 to MyTable2|rdmik@fabrikam.com
 
-
-Event - The metadata event name.
-
-EventTimestamp - The event timestamp.
-
-Database - Metadata of this database was changed following the event.
-
-EntityName - The entity name that the operation was executed on, before the change.
-
-UpdatedEntityName - The new entity name after the change.
-
-EntityVersion - The new metadata version (db/cluster) following the change.
-
-EntityContainerName - The entity container name (entity=column, container=table).
-
-OriginalEntityState - The state of the entity (entity properties) before the change.
-
-UpdatedEntityState - The new state after the change.
-
-ChangeCommand - The executed control command that triggered the metadata change.
-
-Principal - The principal (user/app) that executed the control command.
-					
+|Item                 |Description                                                              |                                
+|---------------------|-------------------------------------------------------------------------|
+|Event                |The metadata event name                                                  |
+|EventTimestamp       |The event timestamp                                                      |                        
+|Database             |Metadata of this database was changed following the event                |
+|EntityName           |The entity name that the operation was executed on, before the change    |
+|UpdatedEntityName    |The new entity name after the change                                     |
+|EntityVersion        |The new metadata version (db/cluster) following the change               |
+|EntityContainerName  |The entity container name (entity=column, container=table)               |
+|OriginalEntityState  |The state of the entity (entity properties) before the change            |
+|UpdatedEntityState   |The new state after the change                                           |
+|ChangeCommand        |The executed control command that triggered the metadata change          |
+|Principal            |The principal (user/app) that executed the control command               |
+	
 ## .show journal
 
-The `.show journal` command returns a list of metadata changes on databases/cluster that the user has admin access to.
+The `.show journal` command returns a list of metadata changes on databases or the cluster that the user has admin access to.
 
 **Permissions**
 
