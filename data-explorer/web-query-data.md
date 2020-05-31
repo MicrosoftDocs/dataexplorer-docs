@@ -174,6 +174,24 @@ Many times, you want to share the queries you create. You can provide a deep lin
 
     ![Shared query](media/web-query-data/shared-query.png)
 
+## Pin cards to dashboards
+
+When you complete adhoc data exploration using KQL queries and find the data you need, you might want to pin it to a dashboard for continous monitoring. 
+
+1. In the query window, select the first query you copied in.
+
+1. At the top of the query window, select **Share**.
+
+1. Select **Pin to dashboard**.
+
+1. Provide a **query name**.
+
+1. Select **Use existing** or **Create new**.
+
+1. If you selected and existing dashboard you will need to provide it's name and if you selected to create a new dashboard you will need to provide it a name.
+
+1. Once you fill all properties you can open the dashboard either by clicking the link in the notification message or by checking the ** View dashboard after creation" checkbox (in case this is a new dashboard).
+
 ## Provide feedback
 
 Data Explorer is currently in preview, and we welcome feedback on your experience. You can do this now or wait until you've spent more time with it.
