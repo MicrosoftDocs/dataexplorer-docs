@@ -38,7 +38,7 @@ The IngestionTime policy is designed for two main scenarios:
   The calculated value is only an estimate, because the source and Kusto don't necessarily
   have their clocks synchronized.
   
-* To support [Database Cursors](../management/databasecursor.md) that lets users 
+* To support [Database Cursors](../management/databasecursor.md) that let users 
   issue consecutive queries. The query is limited to the data that was ingested since the previous query.
 
 For more information. see the [control commands for managing the IngestionTime policy](../management/ingestiontime-policy.md).
