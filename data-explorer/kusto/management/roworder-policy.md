@@ -39,7 +39,7 @@ This article describes control commands used for creating and altering [row orde
 
 **Examples** 
 
-Set the row order policy to be on the `TenantId` column (ascending) as a primary key, 
+the following example sets the row order policy on the `TenantId` column (ascending) as a primary key, 
 and on the `Timestamp` column (ascending) as the secondary key. Then query the policy.
 
 ```kusto
