@@ -37,7 +37,6 @@ Defining this policy at the database level applies the same settings to all exis
 > [!NOTE]
 > If a table doesn't get streaming ingestion directly, but only via an update policy, no streaming ingestion policy has to be defined on this table.
 
-The streaming ingestion policy can provide a hint about the hourly volume of data expected for the table. This hint will help the system adjust the amount of resources allocated for this table in support of streaming ingestion.
 
 ## Set the data rate hint
 The streaming ingestion policy can provide a hint about the hourly volume of data expected for the table. This hint will help the system adjust the amount of resources allocated for this table in support of streaming ingestion.
