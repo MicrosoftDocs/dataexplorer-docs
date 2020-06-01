@@ -84,5 +84,5 @@ For example:
   }
 ```
 
-> [!NOTE:]
+> [!NOTE]
 > There is no need to declare parameters when calling via TDS, since parameter types are set via protocol.

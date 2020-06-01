@@ -13,8 +13,10 @@ ms.date: 04/01/2020
 
 ## Ad-hoc query tools
 
-
-* [Kusto.Explorer](./kusto-explorer.md) - The primary desktop tool for querying and controlling Kusto
+* Kusto.Explorer
+   * [Kusto.Explorer installation and user interface](./kusto-explorer.md) - The primary desktop tool for querying and controlling Kusto
+   * [Using Kusto.Explorer](./kusto-explorer-using.md)
+   * [Kusto.Explorer troubleshooting](kusto-explorer-troubleshooting.md)
 * [Web UI](../../web-query-data.md) - Web UI for querying Kusto
 
 ## Visualizations, dashboards, and reporting tools
@@ -33,6 +35,7 @@ ms.date: 04/01/2020
    * [PowerBI SQL query](../../power-bi-sql-query.md)
 
 * [Grafana](../../grafana.md)
+* [K2Bridge open-source connector](../../k2bridge.md) - Visualize data from Azure Data Explorer in Kibana
 
 ## Orchestration tools
 
@@ -48,8 +51,8 @@ ms.date: 04/01/2020
 
 
 * [LightIngest](../../lightingest.md) - Help utility for ad-hoc data ingesting into Azure Data Explorer
- 
-
+* [One-click ingestion](../../ingest-data-one-click.md) - Tool to quickly ingest data and automatically suggest tables and mapping structures
+* [Azure Data Factory](azure-data-factory.md)
 
 
 ## Source control integration tools
