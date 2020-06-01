@@ -129,7 +129,7 @@ rather than being sent to the service for processing:
 |`#cls`                         |Clear the console screen.|
 |`#connect` *[ConnectionString*]|Connects to a different Kusto service (if *ConnectionString* is omitted, the current one will be displayed.)|
 |`#crp` [*Name* [`=` *Value*]]   |Sets the value of a client request property (or just displays it, or displays all values).|
-|`#crp` (`-list` | `-doc`) [*Prefix*]|Lists client request properties (by prefix, or all).|
+|`#crp` (`-list` \| `-doc`) [*Prefix*]|Lists client request properties (by prefix, or all).|
 |`#dbcontext` [*DatabaseName*]  |Changes the "context" database used by queries and commands to *DatabaseName* (if omitted, the current context will be displayed.)|
 |`ke` *Text*                    |Sends the specified text to a running Kusto.Explorer process.|
 |`#loop` *Count* *Text*         |Executes the text a number of times.|
