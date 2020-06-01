@@ -1,8 +1,8 @@
 ---
 title: Configure customer-managed-keys using Azure CLI
 description: This article describes how to configure customer-managed keys encryption on your data in Azure Data Explorer using Azure CLI.
-author: AssafTaubenfeldMSFT
-ms.author: AssafTaubenfeldMSFT
+author: orspod
+ms.author: orspodek
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
@@ -41,7 +41,6 @@ with the cluster.
     ```azurecli-interactive
     az kusto cluster show --cluster-name "mytestcluster" --resource-group "mytestrg"
     ```
-
 
 
 
