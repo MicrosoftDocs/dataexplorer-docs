@@ -1,5 +1,5 @@
 ---
-title: .alter ingestion mapping - Azure Data Explorer | Microsoft Docs
+title: .alter ingestion mapping - Azure Data Explorer
 description: This article describes .alter ingestion mapping in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -37,7 +37,7 @@ Alters an existing ingestion mapping that is associated with a specific table an
 ']'
 ```
 
-**Example output**
+**Sample output**
 
 | Name     | Kind | Mapping                                                                                                                                                                          |
 |----------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
