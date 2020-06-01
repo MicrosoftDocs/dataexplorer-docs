@@ -1,4 +1,4 @@
-----
+---
 title: Cache policy (hot and cold cache) - Azure Data Explorer
 description: This article describes Cache policy (hot and cold cache) in Azure Data Explorer.
 services: data-explorer
@@ -18,7 +18,8 @@ The best query performance is achieved when all ingested data is cached. Sometim
 For example, many teams consider that rarely accessed older log records are of lesser importance.
 They prefer to have reduced performance when querying this data, rather than pay to keep it warm all the time.
 
-Azure Data Explorer cache provides a granular **cache policy** that customers can use to differentiate between: **hot data cache** and **cold data cache**. Azure Data Explorer cache attempts to keep all data that falls into the hot data cache category, in local SSD (or RAM), up to the defined size of the hot data cache. The remaining local SSD space will be used to hold data that isn't categorized as hot. One useful implication of this design is that queries that load lots of cold data from reliable storage won't evict data from the hot data cache. As a result, there won't be a major impact on queries involving the data in the hot data cache.
+Azure Data Explorer cache provides a granular **cache policy** that customers can use to differentiate between: **hot data cache** and **cold data cache**. Azure Data Explorer cache attempts to keep all data that falls into the hot data cache category, in local SSD (or RAM), up to the defined size of the hot data cache. 
+The remaining local SSD space will be used to hold data that isn't categorized as hot. One useful implication of this design is that queries that load lots of cold data from reliable storage won't evict data from the hot data cache. As a result, there won't be a major impact on queries involving the data in the hot data cache.
 
 The main implications of setting the hot cache policy are:
 * **Cost**: The cost of reliable storage can be dramatically lower
