@@ -28,7 +28,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 1. Select **Create new table** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
-:::image type="content" source="media/one-click-ingestion-new-table/create-new-table.png" alt-text="Create a new table one click ingestion":::
+![Create a new table](media/one-click-ingestion-new-table/create-new-table.png) 
 
 ## Select an ingestion type
 
@@ -66,7 +66,7 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 
 1. In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
     
-    :::image type="content" source="media/one-click-ingestion-new-table/table-mapping.png" alt-text="Table mapping name One Click Ingestion":::
+    ![Table mapping name](media/one-click-ingestion-new-table/table-mapping.png)
 
 ## Copy and paste queries TODO: RENAME THIS SECTION
 
@@ -88,13 +88,12 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 > [!Note]
 > For tabular formats, each column can be ingested into one column in Azure Data Explorer.
 
-:::image type="content" source="media/one-click-ingestion-new-table/edit-view.png" alt-text="Edit view":::
+[![](media/one-click-ingestion-new-table/edit-view.png "One-click ingestion edit view")](media/one-click-ingestion-new-table/edit-view.png#lightbox) 
 
 ## Start ingestion
 
 Select **Start ingestion** to create a table and mapping and to begin data ingestion.
-
-:::image type="content" source="media/one-click-ingestion-new-table/start-ingestion.png" alt-text="Start ingestion One Click Ingestion":::
+![Start ingestion](media/one-click-ingestion-new-table/start-ingestion.png)
 
 ## Data ingestion completed
 
