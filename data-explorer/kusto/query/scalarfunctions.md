@@ -4,10 +4,10 @@ description: This article describes Scalar Functions in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/06/2020
+ms.date: 05/27/2020
 ---
 # Scalar Functions
 
@@ -243,6 +243,9 @@ ms.date: 03/06/2020
 |[isnull()](isnullfunction.md)|Evaluates its sole argument and returns a bool value indicating if the argument evaluates to a null value.|
 |[parse_csv()](parsecsvfunction.md)|Splits a given string representing comma separated values and returns a string array with these values.|
 |[parse_ipv4()](parse-ipv4function.md)|Converts input to long (signed 64-bit) number representation.|
+|[parse_ipv4_mask()](parse-ipv4-maskfunction.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
+|[parse_ipv6()](parse-ipv6function.md)|Converts IPv6 or IPv4 string to a canonical IPv6 string representation.|
+|[parse_ipv6_mask()](parse-ipv6-maskfunction.md)|Converts IPv6 or IPv4 string and netmask to a canonical IPv6 string representation.|
 |[parse_json()](parsejsonfunction.md)|Interprets a string as a JSON value) and returns the value as dynamic.|
 |[parse_url()](parseurlfunction.md)|Parses an absolute URL string and returns a dynamic object contains all parts of the URL.|
 |[parse_urlquery()](parseurlqueryfunction.md)|Parses a url query string and returns a dynamic object contains the Query parameters.|
@@ -264,7 +267,7 @@ ms.date: 03/06/2020
 |[url_decode()](urldecodefunction.md)|The function converts encoded URL into a to regular URL representation.|
 |[url_encode()](urlencodefunction.md)|The function converts characters of the input URL into a format that can be transmitted over the Internet.|
 
-## IP v4 functions
+## IPv4/IPv6 functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -272,13 +275,16 @@ ms.date: 03/06/2020
 |[ipv4_is_match()](ipv4-is-matchfunction.md)|Matches two IPv4 strings.|
 |[parse_ipv4()](parse-ipv4function.md)|Converts input string to long (signed 64-bit) number representation.|
 |[parse_ipv4_mask()](parse-ipv4-maskfunction.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
+|[ipv6_compare()](ipv6-comparefunction.md)|Compares two IPv4 or IPv6 strings.|
+|[ipv6_is_match()](ipv6-is-matchfunction.md)|Matches two IPv4 or IPv6 strings.|
+|[parse_ipv6()](parse-ipv6function.md)|Converts IPv6 or IPv4 string to a canonical IPv6 string representation.|
+|[parse_ipv6_mask()](parse-ipv6-maskfunction.md)|Converts IPv6 or IPv4 string and netmask to a canonical IPv6 string representation.|
 
 ## Type Functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[gettype()](gettypefunction.md)|Returns the runtime type of its single argument.|
-
 
 ## Scalar Aggregation Functions
 

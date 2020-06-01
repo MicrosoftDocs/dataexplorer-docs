@@ -739,10 +739,14 @@
         href: ./kusto/query/indexofregexfunction.md
       - name: ingestion_time()
         href: ./kusto/query/ingestiontimefunction.md
-      - name: ipv4_compare
+      - name: ipv4_compare()
         href: ./kusto/query/ipv4-comparefunction.md
-      - name: ipv4_is_match
+      - name: ipv4_is_match()
         href: ./kusto/query/ipv4-is-matchfunction.md
+      - name: ipv6_compare()
+        href: ./kusto/query/ipv6-comparefunction.md
+      - name: ipv6_is_match()
+        href: ./kusto/query/ipv6-is-matchfunction.md
       - name: isascii()
         href: ./kusto/query/isascii.md
       - name: isempty()
@@ -801,6 +805,10 @@
         href: ./kusto/query/parse-ipv4function.md
       - name: parse_ipv4_mask()
         href: ./kusto/query/parse-ipv4-maskfunction.md
+      - name: parse_ipv6()
+        href: ./kusto/query/parse-ipv6function.md
+      - name: parse_ipv6_mask()
+        href: ./kusto/query/parse-ipv6-maskfunction.md
       - name: parse_json()
         href: ./kusto/query/parsejsonfunction.md
       - name: parse_path()
