@@ -74,19 +74,19 @@ Select **Edit schema** to view and edit your table column configuration.
     > * You can't update the name and datatype for existing tables.
     > * Drop commands will only revert the changes that were made by his ingestion flow (new extents and columns). Nothing else will be dropped.
 
-:::image type="content" source="media/one-click-ingestion-existing-table/edit-view.png" alt-text="One click ingestion edit view":::
+[![](media/one-click-ingestion-existing-table/edit-view.png "One-click ingestion edit view")](media/one-click-ingestion-existing-table/edit-view.png#lightbox) 
 
 ## Start ingestion
 
 Select **Start ingestion** to create a table and mapping and to begin data ingestion.
 
-:::image type="content" source="media/one-click-ingestion-existing-table/start-ingestion.png" alt-text="Start ingestion":::
+![Start ingestion](media/one-click-ingestion-existing-table/start-ingestion.png)
 
 ## Data ingestion completed
 
 In the **Data ingestion completed** window, all three steps will be marked with green check marks if data ingestion finishes successfully.
  
-:::image type="content" source="media/one-click-ingestion-existing-table/one-click-data-ingestion-complete.png" alt-text="One click ingestion completed":::
+![One-click data ingestion complete](media/one-click-ingestion-existing-table/one-click-data-ingestion-complete.png)
 
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
 

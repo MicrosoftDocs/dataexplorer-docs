@@ -55,7 +55,7 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
       * Blob storage
       * A local file
       * A container
-          * Enter the sample size, from 1 to 10,000 rows (optional, container only)
+    * Enter the sample size, from 1 to 10,000 rows (from container only)
        
 1. If you are ingesting data from a container, you can filter the data so that only files with specific prefixes or file extensions are ingested. For example, you might only want to ingest files with filenames beginning with the word *Europe*, or only files with the extension *.json*. 
 

@@ -13,11 +13,11 @@ For **Ingestion type**, select one of the following options:
    
       ![One-click ingestion from storage](media/data-explorer-one-click-ingestion-types/from-storage-blob.png)
 
-  * **from file** - select **Browse** to locate the file, or drag the file into the field.
+    * **from file** - select **Browse** to locate the file, or drag the file into the field.
   
       ![One-click ingestion from file](media/data-explorer-one-click-ingestion-types/from-file.png)
 
- * **from container** - in the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size.
+    * **from container** - in the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size.
 
       ![One-click ingestion from container](media/data-explorer-one-click-ingestion-types/from-container.png)
 
