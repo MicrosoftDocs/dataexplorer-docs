@@ -4,7 +4,7 @@ description: This article describes Continuous data export in Azure Data Explore
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/27/2020
@@ -21,12 +21,14 @@ and then [create a continuous export definition](#create-or-alter-continuous-exp
 
 > [!NOTE] 
 > * Kusto doesn't support exporting historical records ingested before continuous export creation (as part of continuous export). Historical records can be exported separately using the (non-continuous) [export command](export-data-to-an-external-table.md). 
-For more information, see [exporting historical data](#exporting-historical-data). 
+For more information, see [exporting historical data](#exporting-historical-data).
 > * Continuous export doesn't work for data ingested using streaming ingestion. 
 > * Currently, continuous export can't be configured on a table on which a [Row Level Security policy](../../management/rowlevelsecuritypolicy.md) is enabled.
 > * Continuous export is not supported for external tables with `impersonate` in their 
 [connection strings](../../api/connection-strings/storage.md).
- 
+> * If the artifacts used by continuous export are intended to trigger Event Grid notifications, please refer to the 
+[known issues section in the Event Grid documentation](../data-ingestion/eventgrid.md#known-issues).
+
 ## Notes
 
 * The guarantee for "exactly once" export is only for files reported in the [show exported artifacts command](#show-continuous-export-artifacts). 
