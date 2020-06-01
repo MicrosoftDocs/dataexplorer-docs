@@ -38,8 +38,9 @@ For **Ingestion type**, select the following option:
 
   * **from file** - select **Browse** to locate the file, or drag the file into the field.
   
-      :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file":::
-      
+      ![One-click ingestion from file](media/data-explorer-one-click-ingestion-types/from-file.png)
+
+
  > [!Note] 
  > For ingestion **from container**, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#select-an-ingestion-type)
 
@@ -47,7 +48,7 @@ For **Ingestion type**, select the following option:
   
   For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension.
 
-  :::image type="content" source="media/one-click-ingestion-existing-table/from-container-with-filter.png" alt-text="One-click ingestion filter":::
+  ![One-click ingestion filter](media/data-explorer-one-click-ingestion-types/from-container-with-filter.png)
 
 ## Edit the schema
 
