@@ -37,7 +37,9 @@ You can export data by defining an [external table](../externaltables.md) and ex
 * The following properties are supported as part of the export command. See the [export to storage](export-data-to-storage.md) section for details: 
    * `sizeLimit`, `parquetRowGroupSize`, `distributed`.
 
-   * If the external table is partitioned, exported artifacts will be written to their respective directories, according to the partition definitions as seen in the [example](#partitioned-external-table-example). 
+* If the external table is partitioned, exported artifacts will be written to their respective directories, according to the partition definitions as seen in the [example](#partitioned-external-table-example). 
+  * If a partition value is null/empty or is an invalid directory value, per the definitions of the target storage, it is replaced with
+   a default value of `__DEFAULT_PARTITION__`. 
 
 * The number of files written per partition depends on the  settings:
    * If the external table includes datetime partitions only, or no partitions at all - the number of files written (for each partition, if exists) should be around the number of nodes in the cluster (or more, if `sizeLimit` is reached). When the export operation is distributed, all nodes in the cluster export concurrently. To disable distribution, so that only a single node performs the writes, set `distributed` to false. This process will create fewer files, but will decrease the export performance.
