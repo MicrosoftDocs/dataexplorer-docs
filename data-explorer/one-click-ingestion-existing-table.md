@@ -32,27 +32,11 @@ For different types or sources of data, see [Use one-click ingestion to ingest C
     > [!TIP]
     > If you select **Ingest new data (Preview)** on a *table* row, the selected table name will appear in the **Project Details**.
 
-## Select an ingestion type
-
-For **Ingestion type**, select the following option:
-
-  * **from file** - select **Browse** to locate the file, or drag the file into the field.
-  
-      ![One-click ingestion from file](media/data-explorer-one-click-ingestion-types/from-file.png)
-
-
- > [!Note] 
- > For ingestion **from container**, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#select-an-ingestion-type)
-
-  A sample of the data appears. If you want to, you can filter it to show only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
-  
-  For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension.
-
-  ![One-click ingestion filter](media/data-explorer-one-click-ingestion-types/from-container-with-filter.png)
+[!INCLUDE [data-explorer-one-click-ingestion-types](includes/data-explorer-one-click-ingestion-types.md)]
+    
+Select **Edit schema** to view and edit your table column configuration.
 
 ## Edit the schema
-
-Select **Edit schema** to view and edit your table column configuration.
 
 1. The **Map columns** dialog opens and you can map source data columns to target table columns. 
     * In the **Source columns** fields, enter column names to map with the **Target columns**.
@@ -62,14 +46,14 @@ Select **Edit schema** to view and edit your table column configuration.
     
 1. Select **Update**.
 1. In the **Schema** tab:
-    * **Compression type** will be selected automatically by the source file name. In this case, the compression type is *JSON*
+    * **Compression type** will be selected automatically by the source file name.
+
+        [!INCLUDE [data-explorer-one-click-ingestion-edit-schema](includes/data-explorer-one-click-ingestion-edit-schema.md)]
         
-    * When you select  **JSON**, you must also select **JSON levels**, from 1 to 10. The levels determine the table column data depiction.
+    * If you select  **JSON**, you must also select **JSON levels**, from 1 to 10. The levels determine the table column data depiction.
 
     :::image type="content" source="media/one-click-ingestion-existing-table/json-levels.png" alt-text="Select JSON levels":::
     
-    * If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
-
     * New mappings are set automatically, but you can change it to use an existing one. 
     * Select the **Map columns** button to open the **Map columns** window. In the **Map columns** window you can attach one or more source columns or attributes to your Azure Data Explorer columns.
 
