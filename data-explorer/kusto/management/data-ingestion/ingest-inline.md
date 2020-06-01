@@ -1,6 +1,6 @@
 ---
 title: The ingest inline command (push) - Azure Data Explorer
-description: This article describes the .ingest inline command (push)
+description: This article describes the .ingest inline command (push).
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -12,7 +12,7 @@ ms.date: 03/24/2020
 # .ingest inline command (push)
 
 This command ingests data into a table by "pushing" the data
-that is embedded inline, into the command text itself.
+that is embedded inline, in the command text itself.
 
 > [!NOTE]
 > This command's used for manual ad-hoc testing.
@@ -36,9 +36,9 @@ that is embedded inline, into the command text itself.
 * *Data* is the data content to ingest. Unless otherwise modified
   by the ingestion properties, this content is parsed as CSV.
  
-> [!NOTE]
-> Unlike most control commands and queries, the text of the *Data* part of the command doesn't have to follow the syntactic conventions of the language. 
- For example, whitespace characters are important, or the `//` combination is not treated as a comment.
+ > [!NOTE]
+ > Unlike most control commands and queries, the text of the *Data* part of the command doesn't have to follow the syntactic conventions of the language. 
+ For example, whitespace characters are important, or the `//` combination isn't treated as a comment.
 
 * *IngestionPropertyName*, *IngestionPropertyValue*: Any number of
   [ingestion properties](../../../ingestion-properties.md) that affect the ingestion process.
@@ -69,7 +69,7 @@ Wide Shoes,50
 
 <!--
 You can generate inline ingests commands using the Kusto.Data client library. 
-(Note that compression does let you embed new lines in quoted fields) 
+Compression lets you embed new lines in quoted fields.
 
     Kusto.Data.Common.CslCommandGenerator.GenerateTableIngestPushCommand(tableName, compressed: true, csvData: csvStream);
 
