@@ -57,7 +57,7 @@ The `.alter[-merge] policy streamingingestion` family of commands provides means
 
 * `.alter-merge` `{database|table}` &lt;entity name&gt; `policy` `streamingingestion` &lt;[streaming ingestion policy object](#streaming-ingestion-policy-object)&gt;
 
-> [!Notes]
+> [!Note]
 >
 > * Allows changing enabled/disabled state of streaming ingestion without modifying other properties of the policy or setting the properties to default values if the policy wasn't previously defined on the entity.
 >
