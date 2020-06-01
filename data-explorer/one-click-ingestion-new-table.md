@@ -15,6 +15,8 @@ ms.date: 03/29/2020
 
 This document describes using the intuitive one-click wizard in a specific use case to ingest CSV data from a container into a new table. You can then edit the table and run queries with the Azure Data Explorer Web UI. You can also set continuous ingestion to automatically ingest data into the table when the source data updates.
 
+One-click ingestion is useful when ingesting data for the first time, or when your data's schema is unfamiliar to you. 
+
 For an overview of one-click ingestion and a list of prerequisites, see [One-click ingestion](ingest-data-one-click.md).
 For information about ingesting data into an existing table in Azure Data Explorer, see [One-click ingestion to an existing table](one-click-ingestion-existing-table.md)
 

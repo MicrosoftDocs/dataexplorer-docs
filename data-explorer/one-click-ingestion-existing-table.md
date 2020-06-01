@@ -15,6 +15,8 @@ ms.date: 03/29/2020
 
 This document describes using the intuitive one-click wizard in a specific use case to ingest JSON data from a file into an existing table. You can then edit the table and run queries with the Azure Data Explorer Web UI.
 
+One-click ingestion is particularly useful when ingesting data for the first time, or when your data's schema is unfamiliar to you. 
+
 For an overview of one-click ingestion and a list of prerequisites, see [One-click ingestion](ingest-data-one-click.md).
 For different types or sources of data, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md).
 
@@ -101,7 +103,7 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
 
 > [!Note]
-> If you want to set up continuous ingestion from a container, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#continuous-ingestion---container-only)
+> If you want to set up continuous ingestion from a container, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#continuous-ingestion-container-only)
 
 ## Next steps
 
