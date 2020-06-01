@@ -59,7 +59,7 @@ The `.alter[-merge] policy streamingingestion` family of commands provides means
 
 ### Remarks
 
-1. Allows changing enabled/disabled state of streaming ingestion without either modifying other properties of the policy or setting the properties to default values if the policy wasn't previously defined on the entity.
+* Allows changing enabled/disabled state of streaming ingestion without modifying other properties of the policy or setting the properties to default values if the policy wasn't previously defined on the entity.
 
 2. Allows replacing the entire streaming ingestion policy on the entity. &lt;[streaming ingestion policy object](#streaming-ingestion-policy-object)&gt; must include all mandatory properties.
 
