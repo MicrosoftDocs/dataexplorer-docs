@@ -118,7 +118,7 @@ The default capacity policy has the following JSON representation:
 ## Control commands
 
 > [!WARNING]
-> It is rarely recommended to alter a Capacity Policy, due to the potential impact on the cluster's available resources.
+> Consult with the Azure Data Explorer team before altering a capacity policy.
 
 * Use [.show cluster policy capacity](capacity-policy.md#show-cluster-policy-capacity) to show the current capacity policy of the cluster.
 
@@ -128,7 +128,7 @@ The default capacity policy has the following JSON representation:
 
 Kusto limits the number of concurrent requests for the following user-initiated commands:
 
-* Ingestions (includes all the commands that are listed [here](../management/data-ingestion/index.md))
+* Ingestions (includes all the commands that are listed [here](../../ingest-data-overview.md))
    * Limit is as defined in the [capacity policy](#capacity-policy).
 * Purges
    * Global is currently fixed at one per cluster.

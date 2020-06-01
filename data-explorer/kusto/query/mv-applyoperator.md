@@ -11,8 +11,7 @@ ms.date: 02/13/2020
 ---
 # mv-apply operator
 
-The `mv-apply` operator expands each record in its input table into a subtable,
-applies a subquery to each subtable, and returns the union of the results of
+Applies a subquery to each record, and returns the union of the results of
 all subqueries.
 
 For example, assume a table `T` has a column `Metric` of type `dynamic`
@@ -21,7 +20,10 @@ two biggest values in each `Metric` value, and return the records corresponding
 to these values.
 
 ```kusto
-T | mv-apply Metric to typeof(real) on (top 2 by Metric desc)
+T | mv-apply Metric to typeof(real) on 
+(
+   top 2 by Metric desc
+)
 ```
 
 The `mv-apply` operator has the following
