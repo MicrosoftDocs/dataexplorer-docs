@@ -31,8 +31,8 @@ The streaming ingestion policy contains the following properties:
   * if set provides a hint on the hourly volume of data in gigabytes expected for the table. This hint helps the system adjust the amount of resources that are allocated for a table in support of streaming ingestion.
   * default value *null* (unset)
 
-To enable streaming ingestion on a table, define the streaming ingestion policy with *IsEnabled* set to *true*. This definition can be set either on a table itself or on the containing database.
-Defining this policy at the database level applies the same settings to all existing and future tables in the database. If the streaming ingestion policy is set at both table and database levels, the table level setting takes precedence. This setting means that streaming ingestion can be generally enabled for the database but specifically disabled for certain tables, or the other way around.
+To enable streaming ingestion on a table, define the streaming ingestion policy with *IsEnabled* set to *true*. This definition can be set on a table itself or on the database.
+Defining this policy at the database level applies the same settings to all existing and future tables in the database. If the streaming ingestion policy is set at both the table and database levels, the table level setting takes precedence. This setting means that streaming ingestion can be generally enabled for the database but specifically disabled for certain tables, or the other way around.
 
 > [!NOTE]
 > If a table doesn't get streaming ingestion directly, but only via an update policy, no streaming ingestion policy has to be defined on this table.
