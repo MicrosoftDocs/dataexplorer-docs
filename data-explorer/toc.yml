@@ -144,6 +144,8 @@
         href: machine-learning-clustering.md
   - name: Visualize data
     items:
+    - name: Azure Data Explorer dashboards
+      href: azure-data-explorer-dashboards.md
     - name: Power BI
       items:
       - name: Best practices
@@ -220,8 +222,6 @@
         href: language-extensions.md
     - name: Database
       items:
-      - name: Follower databases
-        href: follower.md  
       - name: Manage database permissions
         href: manage-database-permissions.md
       - name: Add database principal
@@ -254,6 +254,12 @@
       href: using-metrics.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
+  - name: Share data
+    items:
+      - name: Use Azure Data Share
+        href: data-share.md
+      - name: Follower databases
+        href: follower.md    
   - name: Integrate with other tools
     items:
     - name: Azure Data Factory
@@ -1248,11 +1254,11 @@
           href: ./kusto/management/show-table-schema-command.md
       - name: External tables
         items:
-        - name: External tables control commands
+        - name: External tables general control commands
           href: ./kusto/management/externaltables.md
-        - name: External SQL tables
+        - name: Create and alter external SQL tables
           href: ./kusto/management/external-sql-tables.md
-        - name: External tables in Azure Storage or Azure Data Lake
+        - name: Create and alter external tables in Azure Storage or Azure Data Lake
           href: ./kusto/management/external-tables-azurestorage-azuredatalake.md  
       - name: Columns
         items:
@@ -1379,7 +1385,6 @@
     - name: Security Roles
       href: ./kusto/management/security-roles.md
     - name: Data Ingestion
-      href: ./kusto/management/data-ingestion/index.md
       items:
       - name: Ingest from storage
         href: ./kusto/management/data-ingestion/ingest-from-storage.md
@@ -1434,8 +1439,6 @@
         href: ./kusto/management/access-control/role-based-authorization.md
       - name: How-To AAD Authentication
         href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
-      - name: How-To Provision AAD Application
-        href: ./kusto/management/access-control/how-to-provision-aad-app.md
     - name: Advanced Data Management
       items:
       - name: Extents (Data Shards) Overview
@@ -1561,9 +1564,12 @@
     - name: Ad-hoc query
       items:
       - name: Kusto.Explorer
-        href: ./kusto/tools/kusto-explorer.md
         items:
-        - name: Kusto Explorer options
+        - name: Kusto.Explorer installation and user interface
+          href: ./kusto/tools/kusto-explorer.md
+        - name: Using Kusto.Explorer
+          href: ./kusto/tools/kusto-explorer-using.md
+        - name: Kusto.Explorer options
           href: ./kusto/tools/kusto-explorer-options.md
         - name: Keyboard shortcuts
           href: ./kusto/tools/kusto-explorer-shortcuts.md
@@ -1573,6 +1579,8 @@
           href: ./kusto/tools/kusto-explorer-codenav.md
         - name: Code Analyzer
           href: ./kusto/tools/kusto-explorer-code-analyzer.md
+        - name: Troubleshooting Kusto.Explorer
+          href: ./kusto/tools/kusto-explorer-troubleshooting.md
       - name: Web UI
         href: ./web-query-data.md
       - name: Kusto.Cli
