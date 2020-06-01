@@ -24,7 +24,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 1. In the left menu of the Web UI, right-click a *database* and select **Ingest new data (Preview)**.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png" alt-text="":::
+    ![Select one-click ingestion in the Web UI](media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png)   
  
 1. In the **Ingest new data (Preview)** window, the **Source** tab is selected. 
 
@@ -86,8 +86,8 @@ Select **Start ingestion** to create a table and mapping and to begin data inges
 ## Data ingestion completed
 
 In the **Data ingestion completed** window, all three steps will be marked with green check marks if data ingestion finishes successfully.
-
-:::image type="content" source="media/one-click-ingestion-new-table/one-click-data-ingestion-complete.png" alt-text="One click ingestion complete"::: 
+ 
+![One-click data ingestion complete](media/one-click-ingestion-new-table/one-click-data-ingestion-complete.png)
 
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
 

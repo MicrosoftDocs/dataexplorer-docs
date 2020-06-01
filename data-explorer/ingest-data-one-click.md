@@ -57,11 +57,10 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
       * A container
     * Enter the sample size, from 1 to 10,000 rows (from container only)
        
-1. If you are ingesting data from a container, you can filter the data so that only files with specific prefixes or file extensions are ingested. For example, you might only want to ingest files with filenames beginning with the word *Europe*, or only files with the extension *.json*. 
+1. When you have successfully selected the data source, a preview of the data is displayed. 
+    If you are ingesting data from a container, you can filter the data so that only files with specific prefixes or file extensions are ingested. For example, you might only want to ingest files with filenames beginning with the word *Europe*, or only files with the extension *.json*. 
 
-1. For other sources (not a container), when you have successfully selected the data source, a preview of the data is displayed. 
-
-1. Click **Edit schema**. Review and adjust the auto generated schema and ingestion properties (data format, mapping name, etc.). The service automatically identifies if the source is compressed or not by looking at its name.
+1. Click **Edit schema**. Review and adjust the auto generated schema and ingestion properties (data format, mapping name, etc.)
 
 1. Start the data ingestion process.
 
