@@ -16,6 +16,7 @@ ms.date: 04/01/2020
 * Kusto.Explorer
    * [Kusto.Explorer installation and user interface](./kusto-explorer.md) - The primary desktop tool for querying and controlling Kusto
    * [Using Kusto.Explorer](./kusto-explorer-using.md)
+   * [Kusto.Explorer troubleshooting](./kusto-explorer-troubleshooting)
 * [Web UI](../../web-query-data.md) - Web UI for querying Kusto
 
 ## Visualizations, dashboards, and reporting tools
