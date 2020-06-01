@@ -13,9 +13,6 @@ ms.date: 03/30/2020
 
 The partitioning policy defines if and how [Extents (data shards)](../management/extents-overview.md) should be partitioned, for a specific table.
 
-> [!NOTE]
-> The data partitioning feature is in *preview*.
-
 The main purpose of the policy is to improve performance of queries which are known to be narrowed to a small subset of values in the partitioned column(s), and/or aggregate/join on
 a high cardinality string column. A secondary potential benefit is better compression of the data.
 
