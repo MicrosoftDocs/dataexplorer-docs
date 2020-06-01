@@ -26,10 +26,10 @@ parse_ipv6(":fe80::85d:e82c:9446:7994") == 'fe80:0000:0000:0000:085d:e82c:9446:7
 
 * *`Expr`*: String expression representing IPv6/IPv4 network address that will be converted to canonical IPv6 representation. String may include net-mask using [IP-prefix notation](#ip-prefix-notation).
 
-## IP-prefix notation
-
-It's a common practice to define IP addresses using `IP-prefix notation` using a slash (`/`) character.
-The IP address to the LEFT of the slash (`/`) is the base IP address, and the number (1 to 127) to the RIGHT of the slash (`/`) is the number of contiguous 1 bits in the netmask.
+> [!Note] **IP-prefix notation**
+>
+>It's a common practice to define IP addresses using `IP-prefix notation` using a slash (`/`) character.
+>The IP address to the LEFT of the slash (`/`) is the base IP address, and the number (1 to 127) to the RIGHT of the slash (`/`) is the number of contiguous 1 bits in the netmask.
 
 **Returns**
 

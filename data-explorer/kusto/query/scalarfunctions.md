@@ -296,7 +296,7 @@ ms.date: 05/27/2020
 |[rank_tdigest()](rank-tdigest.md)|Calculates relative rank of a value in a set.|
 |[tdigest_merge()](tdigest-mergefunction.md)|Merges tdigest results (scalar version of the aggregate version tdigest-merge()).|
 
-## Geo-Spatial functions
+## Geospatial functions
 
 |Function Name|Description|
 |--------------------------------------------------------------------------|--------------------------------------------------------|

@@ -11,7 +11,7 @@ ms.date: 05/27/2020
 ---
 # ipv6_is_match()
 
-Matches two IPv6 or IPv4 network address strings.
+Matches two IPv6 or IPv4 network address strings. The two IPv6/IPv4 strings are parsed and compared while accounting for the combined IP-prefix mask calculated from argument prefixes, and the optional `PrefixMask` argument.
 
 ```kusto
 ipv6_is_match('::ffff:7f00:1', '127.0.0.1') == true
@@ -30,34 +30,26 @@ ipv6_is_match('fe80::85d:e82c:9446:7994', 'fe80::85d:e82c:9446:7995', 127) == tr
 * *Expr1*, *Expr2*: A string expression representing an IPv6 or IPv4 address. IPv6 and IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).
 * *PrefixMask*: An integer from 0 to 128 representing the number of most-significant bits that are taken into account.
 
-## IP-prefix notation
-
-It's a common practice to define IP addresses using `IP-prefix notation` using a slash (`/`) character.
-The IP address to the LEFT of the slash (`/`) is the base IP address, and the number (1 to 127) to the RIGHT of the slash (`/`) is the number of contiguous 1 bits in the netmask. 
-
-**Example**
-
-fe80::85d:e82c:9446:7994/120 will have an associated net/subnetmask containing 120 contiguous bits.
+> [!Note] **IP-prefix notation**
+> 
+>It's a common practice to define IP addresses using `IP-prefix notation` using a slash (`/`) character.
+>The IP address to the LEFT of the slash (`/`) is the base IP address, and the number (1 to 127) to the RIGHT of the slash (`/`) is the number of contiguous 1 bits in the netmask. 
+>
+> **Example**:
+> fe80::85d:e82c:9446:7994/120 will have an associated net/subnetmask containing 120 contiguous bits.
 
 **Returns**
 
-The two IPv6/IPv4 strings are parsed and compared while accounting for the combined IP-prefix mask calculated from argument prefixes, and the optional `PrefixMask` argument.
-
-Returns:
 * `true`: If the long representation of the first IPv6/IPv4 string argument is equal to the second IPv6/IPv4 string argument.
 * `false`: Otherwise.
+* `null`: If conversion for one of the two IPv6/IPv4 strings wasn't successful.
 
-If conversion for one of the two IPv6/IPv4 strings wasn't successful, the result will be `null`.
+> [!Note]
+> The function can accept and compare arguments representing both IPv6 and IPv4 network addresses. If the caller knows that arguments are in IPv4 format, use the [ipv4_is_match()](./ipv4-is-matchfunction.md) function. This function will result in better runtime performance.
 
-**Notes**
+## Examples
 
-The function can accept and compare arguments representing both IPv6 and IPv4 network addresses. If the caller knows that arguments are in IPv4 format, use the [ipv4_is_match()](./ipv4-is-matchfunction.md) function. This function will result in better runtime performance.
-
-**Examples**
-
-## IPv6/IPv4 comparison equality cases
-
-The following example compares various IPs using IP-prefix notation specified inside the IPv6/IPv4 strings.
+### IPv6/IPv4 comparison equality case - IP-prefix notation specified inside the IPv6/IPv4 strings
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -97,7 +89,8 @@ datatable(ip1_string:string, ip2_string:string)
 |::ffff:c0a8:0101|192.168.1.255/24|1|
 |::192.168.1.1/30|192.168.1.255/24|1|
 
-The following example compares various IPs using IP-prefix notation specified inside the IPv6/IPv4 strings and as additional argument of the `ipv6_is_match()` function.
+
+### IPv6/IPv4 comparison equality case- IP-prefix notation specified inside the IPv6/IPv4 strings and as additional argument of the `ipv6_is_match()` function
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
