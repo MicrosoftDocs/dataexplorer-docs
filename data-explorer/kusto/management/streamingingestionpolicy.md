@@ -40,6 +40,6 @@ Defining this policy at the database level applies the same settings to all exis
 The streaming ingestion policy can provide a hint about the hourly volume of data expected for the table. This hint will help the system adjust the amount of resources allocated for this table in support of streaming ingestion.
 
 ## Set the data rate hint
-
+The streaming ingestion policy can provide a hint about the hourly volume of data expected for the table. This hint will help the system adjust the amount of resources allocated for this table in support of streaming ingestion.
 Set the hint if the rate of streaming data ingress into the table will exceed 1 Gb/hour.
 If setting _HintAllocatedRate_ in the streaming ingestion policy for the database, set it by the table with the highest expected data rate. It isn't recommended to set the effective hint for a table to a value much higher than the expected peak hourly data rate. This setting may have an adverse effect on the query performance.
