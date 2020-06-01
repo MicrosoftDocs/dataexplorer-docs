@@ -57,8 +57,7 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 
         In this case, the data format is **CSV**
 
-    > [!Note]
-    > If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#edit-the-schema).
+    * If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#edit-the-schema).
     
     * You can select the check box **Include column names** to ignore the heading row of the file.
 
