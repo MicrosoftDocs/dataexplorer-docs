@@ -5,15 +5,25 @@
           "redirect_url": "databases",
           "redirect_document_id": false
       },
+      {
+          "source_path": "data-explorer/kusto/tools/flow.md",
+          "redirect_url": "/azure/data-explorer/flow",
+          "redirect_document_id": false
+      },
+      {
+          "source_path": "data-explorer/kusto/tools/azure-data-factory.md",
+          "redirect_url": "/azure/data-explorer/data-factory-integration",
+          "redirect_document_id": false 
+      },  
       {  
           "source_path": "data-explorer/kusto/management/data-ingestion/index.md",
           "redirect_url": "/azure/data-explorer/ingest-data-overview",
           "redirect_document_id": false
       },
       {  
-        "source_path": "data-explorer/kusto/management/access-control/how-to-provision-aad-app.md",
-        "redirect_url": "/azure/data-explorer/provision-azure-ad-app",
-        "redirect_document_id": false
+          "source_path": "data-explorer/kusto/management/access-control/how-to-provision-aad-app.md",
+          "redirect_url": "/azure/data-explorer/provision-azure-ad-app",
+          "redirect_document_id": false
     }
     ]
   }
