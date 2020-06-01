@@ -46,11 +46,11 @@ Select **Edit schema** to view and edit your table column configuration.
 
 1. Select **Update**.
 1. In the **Schema** tab:
-    * **Compression type** will be selected automatically by the source file name.
+    1. **Compression type** will be selected automatically by the source file name.
 
         [!INCLUDE [data-explorer-one-click-ingestion-edit-schema](includes/data-explorer-one-click-ingestion-edit-schema.md)]
         
-    * If you select  **JSON**, you must also select **JSON levels**, from 1 to 10. The levels determine the table column data depiction.
+    1. If you select  **JSON**, you must also select **JSON levels**, from 1 to 10. The levels affect the table column data depiction.
 
     ![Select JSON levels](media/one-click-ingestion-existing-table/json-levels.png)
 
@@ -72,7 +72,7 @@ Select **Edit schema** to view and edit your table column configuration.
 
     > [!Note]
     > * You can't update the name and datatype for existing tables.
-    > * Drop commands will only revert the changes that were made by this ingestion flow (new extents and columns). Nothing else will be dropped.
+    > * Drop commands will only revert the changes that were made by his ingestion flow (new extents and columns). Nothing else will be dropped.
 
 :::image type="content" source="media/one-click-ingestion-existing-table/edit-view.png" alt-text="One click ingestion edit view":::
 
@@ -84,7 +84,7 @@ Select **Start ingestion** to create a table and mapping and to begin data inges
 
 ## Data ingestion completed
 
-In the **Data ingestion completed** window, all three steps will be marked with green check marks when data ingestion finishes successfully.
+In the **Data ingestion completed** window, all three steps will be marked with green check marks if data ingestion finishes successfully.
  
 :::image type="content" source="media/one-click-ingestion-existing-table/one-click-data-ingestion-complete.png" alt-text="One click ingestion completed":::
 
