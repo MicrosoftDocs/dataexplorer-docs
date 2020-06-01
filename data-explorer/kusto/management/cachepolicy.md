@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 ---
-# Cache policy (hot and cold cache)
+# Cache policy (hot and cold cache) 
 
 Azure Data Explorer stores its ingested data in reliable storage (most commonly Azure Blob Storage),
 away from its actual processing (such as Azure Compute) nodes. To speed up queries on that data, Azure Data Explorer caches it, or parts of it, on its processing nodes, SSD, or even in RAM. Azure Data Explorer includes a sophisticated cache mechanism designed to intelligently decide which data objects to cache. The cache enables Azure Data Explorer to describe the data artifacts that it uses, so that more important data can take priority. For example, column indexes and column data shards,
@@ -84,3 +84,4 @@ You can run queries on the full 56 days of data.
 Azure Data Explorer is designed for ad-hoc queries with intermediate result sets fitting the cluster's total RAM.
 For large jobs, like map-reduce, where you want to store intermediate results in persistent storage such as an SSD, use the continuous export feature.
 This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
+ 
