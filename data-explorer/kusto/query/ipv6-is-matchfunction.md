@@ -27,10 +27,11 @@ ipv6_is_match('fe80::85d:e82c:9446:7994', 'fe80::85d:e82c:9446:7995', 127) == tr
 
 **Arguments**
 
-* *Expr1*, *Expr2*: A string expression representing an IPv6 or IPv4 address. IPv6 and IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).
+* *Expr1*, *Expr2*: A string expression representing an IPv6 or IPv4 address. IPv6 and IPv4 strings can be masked using IP-prefix notation (see note).
 * *PrefixMask*: An integer from 0 to 128 representing the number of most-significant bits that are taken into account.
 
-> [!Note] **IP-prefix notation**
+> [!Note] 
+>**IP-prefix notation**
 > 
 >It's a common practice to define IP addresses using `IP-prefix notation` using a slash (`/`) character.
 >The IP address to the LEFT of the slash (`/`) is the base IP address, and the number (1 to 127) to the RIGHT of the slash (`/`) is the number of contiguous 1 bits in the netmask. 

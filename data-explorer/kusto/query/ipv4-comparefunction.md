@@ -26,10 +26,11 @@ ipv4_compare('192.168.1.1', '192.168.1.255', 24) == 0
 
 **Arguments**
 
-* *Expr1*, *Expr2*: A string expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).
+* *Expr1*, *Expr2*: A string expression representing an IPv4 address. IPv4 strings can be masked using IP-prefix notation (see note).
 * *PrefixMask*: An integer from 0 to 32 representing the number of most-significant bits that are taken into account.
 
-> [!Note] **IP-prefix notation**
+> [!Note] 
+> **IP-prefix notation**
 > 
 >It is a common practice to define IP addresses using `IP-prefix notation` using a slash (`/`) character.
 >The IP address to the LEFT of the slash (`/`) is the base IP address, and the number (1 to 32) to the RIGHT of the slash (`/`) is the number of contiguous 1 bits in the netmask. 
