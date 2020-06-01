@@ -63,7 +63,7 @@ The `.alter[-merge] policy streamingingestion` family of commands provides means
 
 2. Allows replacing the entire streaming ingestion policy on the entity. &lt;[streaming ingestion policy object](#streaming-ingestion-policy-object)&gt; must include all mandatory properties.
 
-3. Allows replacing only specified properties of the streaming ingestion policy on the entity. &lt;[streaming ingestion policy object](#streaming-ingestion-policy-object)&gt; can include some or none of the mandatory properties.
+* Allows replacing only specified properties of the streaming ingestion policy on the entity. [Streaming ingestion policy object](#streaming-ingestion-policy-object) can include some or none of the mandatory properties.
 
 **Returns**
 
