@@ -28,7 +28,7 @@ The main implications of setting the hot cache policy are:
 
 [Control commands](cache-policy.md) enable administrators to manage the cache policy.
 
-## How the cache policy gets applied
+## How cache policy is applied
 
 When data is ingested into Azure Data Explorer, the system keeps track of the date and time of the ingestion, and of the extent that was created. The extent's ingestion date and time value (or maximum value, if an extent was built from multiple pre-existing extents), is used to evaluate the cache policy.
 
