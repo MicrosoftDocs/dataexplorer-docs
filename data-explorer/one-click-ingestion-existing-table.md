@@ -24,7 +24,7 @@ For information about ingesting data into a new table in Azure Data Explorer, se
 
 1. In the left menu of the Web UI, right-click a *database* or *table* and select **Ingest new data (Preview)**.
 
-    ![Select one-click ingestion in the Web UI](media/one-click-ingestion-existing-table/one-click-ingestion-in-webui.png)  
+    ![Select one-click ingestion in the Web UI](media/one-click-ingestion-existing-table/one-click-ingestion-in-webui.png)   
  
 1. In the **Ingest new data (Preview)** window, the **Source** tab is selected.
 
