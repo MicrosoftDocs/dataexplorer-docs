@@ -91,9 +91,9 @@ This operator returns a table that has two columns for each aggregation clause:
 Input columns that aren't specified as *Expr* values aren't outputted.
 To get all values at a certain level, add an aggregation count that:
 
-1. Omits the value of *N*
-2. Uses the column name as the value of *Expr*
-3. Uses `Ignore=max(1)` as the aggregation, and then ignore (or project-away)
+* Omits the value of *N*
+* Uses the column name as the value of *Expr*
+* Uses `Ignore=max(1)` as the aggregation, and then ignore (or project-away)
    the column `Ignore`.
 
 The number of records may grow exponentially with the number of aggregation clauses
@@ -123,7 +123,7 @@ StormEvents
 |TEXAS|123400.5101|Law Enforcement|37228.5966|PERRYTON|289.3178|
 |TEXAS|123400.5101|Trained Spotter|13997.7124|CLAUDE|421.44|
 
-With others example:
+Use the option 'with others':
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
