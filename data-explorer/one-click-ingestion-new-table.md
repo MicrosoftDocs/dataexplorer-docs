@@ -57,7 +57,7 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 
     * Select **Data format**:
 
-        In this case, the data format is **CSV**
+        In this case, the data format is *CSV*
 
     * If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#edit-the-schema).
     
@@ -88,6 +88,7 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 
 > [!Note]
 > For tabular formats, each column can be ingested into one column in Azure Data Explorer.
+> JSON attributes can be ingested into more than one column. You can create new columns from different JSON levels.
 
 [![](media/one-click-ingestion-new-table/edit-view.png "One-click ingestion edit view")](media/one-click-ingestion-new-table/edit-view.png#lightbox) 
 

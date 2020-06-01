@@ -61,7 +61,7 @@ Select **Edit schema** to view and edit your table column configuration.
     
 1. Select **Update**.
 1. In the **Schema** tab:
-    * **Compression type** will be selected automatically by the source file name. In this case, the compression type is **JSON**
+    * **Compression type** will be selected automatically by the source file name. In this case, the compression type is *JSON*
         
     * When you select  **JSON**, you must also select **JSON levels**, from 1 to 10. The levels determine the table column data depiction.
 
@@ -101,9 +101,6 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 :::image type="content" source="media/one-click-ingestion-existing-table/one-click-data-ingestion-complete.png" alt-text="One click ingestion completed":::
 
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
-
-> [!Note]
-> If you want to set up continuous ingestion from a container, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#continuous-ingestion-container-only)
 
 ## Next steps
 
