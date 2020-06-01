@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/06/2020
+ms.date: 06/01/2020
 ---
 
 # Configure customer-managed keys using Azure CLI
@@ -41,6 +41,5 @@ with the cluster.
     ```azurecli-interactive
     az kusto cluster show --cluster-name "mytestcluster" --resource-group "mytestrg"
     ```
-
 
 
