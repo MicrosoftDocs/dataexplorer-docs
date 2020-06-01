@@ -11,22 +11,22 @@ ms.date: 02/13/2020
 ---
 # top-nested operator
 
-Produces a hierarchical aggregation plus top values selection, where each level is a refinement of the previous one.
+Produces a hierarchical aggregation and top values selection, where each level is a refinement of the previous one.
 
 ```kusto
 T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-nested 4 of bin(Timestamp,5m) by sum(MachinesNumber)
 ```
 
 The `top-nested` operator accepts tabular data as input, and one or more aggregation clauses.
-The first aggregation clause (left-most) subdivides the input records into partitions according
-to the unique values of some expression over those records; it then retains a certain number of records
-that maximize (or minimize) some expression over the records. The next aggregation clause then
-applies a similar function in a nested fashion (it gets applied to each partition produced
-by the first clause). This process continues for all aggregation clauses.
+The first aggregation clause (left-most) subdivides the input records into partitions, according
+to the unique values of some expression over those records. The clause then keeps a certain number of records
+that maximize (or minimize) this expression over the records. The next aggregation clause then
+applies a similar function, in a nested fashion. Each following clause is applied to the partition produced
+by the previous clause. This process continues for all aggregation clauses.
 
-As an example, the operator can be used to answer questions such as "for a table containing sales
+As an example, the `top-nested` operator can be used to answer the following question: "For a table containing sales
 figures (country, salesperson, and amount sold), what are the top five countries by sales, and what are the top
-three salespersons in each of them."
+three salespersons in each of these countries."
 
 **Syntax**
 
@@ -52,26 +52,26 @@ For each *TopNestedClause*:
   Typically it's a column reference for the tabular input (*T*), or some
   calculation (such as `bin()`) over such a column.
 
-* *ConstExpr*: If specified, then for each hierarchy level it will add one record
-  with this value that is the aggregation over all records that did not
+* *ConstExpr*: If specified, for each hierarchy level it will add one record
+  with the value that is the aggregation over all records that didn't
   "make it to the top".
 
-* *AggName*: If specified, this is an identifier that sets the column name
+* *AggName*: If specified, this identifier sets the column name
   in the output for the value of *Aggregation*.
 
 * *Aggregation*: A numeric expression indicating the aggregation to apply
-  to all records sharing the same value of *Expr*; the value of this aggregation
+  to all records sharing the same value of *Expr*. The value of this aggregation
   determines which of the resulting records are "top".
+  
   The following aggregation functions are supported:
-  [sum()](sum-aggfunction.md),
-  [count()](count-aggfunction.md),
-  [max()](max-aggfunction.md),
-  [min()](min-aggfunction.md),
-  [dcount()](dcountif-aggfunction.md),
-  [avg()](avg-aggfunction.md),
-  [percentile()](percentiles-aggfunction.md), and
-  [percentilew()](percentiles-aggfunction.md). In addition, any algebraic combination
-  of these aggregations is also supported.
+   * [sum()](sum-aggfunction.md),
+   * [count()](count-aggfunction.md),
+   * [max()](max-aggfunction.md),
+   * [min()](min-aggfunction.md),
+   * [dcount()](dcountif-aggfunction.md),
+   * [avg()](avg-aggfunction.md),
+   * [percentile()](percentiles-aggfunction.md), and
+   * [percentilew()](percentiles-aggfunction.md). Any algebraic combination of the aggregations is also supported.
 
 * `asc` or `desc` (the default) may appear to control whether selection is actually from the "bottom" or "top" of the range
   of aggregated values.
@@ -88,8 +88,8 @@ This operator returns a table that has two columns for each aggregation clause:
 
 **Comments**
 
-Input columns that are not specified as *Expr* values are not outputted.
-To get all values at a certain level, simply add an aggregation count that:
+Input columns that aren't specified as *Expr* values aren't outputted.
+To get all values at a certain level, add an aggregation count that:
 
 1. Omits the value of *N*
 2. Uses the column name as the value of *Expr*
@@ -97,15 +97,14 @@ To get all values at a certain level, simply add an aggregation count that:
    the column `Ignore`.
 
 The number of records may grow exponentially with the number of aggregation clauses
-((N1+1) \* (N2+1) \* ...), and even faster if no *N* limit is specified. This should
-be taken into account as this operator may consume a considerably amount of resources.
+((N1+1) \* (N2+1) \* ...). Record growth is even faster if no *N* limit is specified. Take into account that this operator may consume a considerable amount of resources.
 
 For cases in which the distribution of the aggregation is considerably non-uniform,
 limit the number of distinct values to return (by using *N*) and use the
 `with others=` *ConstExpr* option to get an indication for the "weight" of all other
 cases.
 
-**Example**
+**Examples**
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -124,7 +123,7 @@ StormEvents
 |TEXAS|123400.5101|Law Enforcement|37228.5966|PERRYTON|289.3178|
 |TEXAS|123400.5101|Trained Spotter|13997.7124|CLAUDE|421.44|
 
-* With others example:
+With others example:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -169,7 +168,7 @@ The following query shows the same results for the first level used in the examp
 |1149279.5923|
 
 
-Requesting another column (EventType) to the top-nested result: 
+Request another column (EventType) to the top-nested result: 
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -191,7 +190,7 @@ StormEvents
 |TEXAS|123400.5101|Law Enforcement|37228.5966|PERRYTON|289.3178|Flood|
 |TEXAS|123400.5101|Law Enforcement|37228.5966|PERRYTON|289.3178|Flash Flood|
 
-In order to sort the result by the last nested level (in this example by EndLocation) and give an index sort order for each value in this level (per group) :
+Give an index sort order for each value in this level (per group) to sort the result by the last nested level (in this example by EndLocation):
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
