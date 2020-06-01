@@ -26,20 +26,24 @@ uses Microsoft-managed keys. Configure your Azure Data Explorer cluster to use c
 with the cluster.
 
 1. Run the following command to sign in to Azure:
+
     ```azurecli-interactive
     az login
     ```
-1. Set the subscription where your cluster is registered. Replace MyAzureSub with the name of the Azure subscription that you want to use:
+
+1. Set the subscription where your cluster is registered. Replace *MyAzureSub* with the name of the Azure subscription that you want to use.
+
     ```azurecli-interactive
     az account set --subscription MyAzureSub
     ```
-1. Run the following command to set the new key:
+
+1. Run the following command to set the new key.
     ```azurecli-interactive
     az kusto cluster update --cluster-name "mytestcluster" --resource-group "mytestrg" --key-vault-properties key-name="<key-name>" key-version="<key-version>" key-vault-uri="<key-vault-uri>"
     ```
-1. Run the following command and check the 'keyVaultProperties' property to verify the cluster updated seccessfuly:
+1. Run the following command and check the 'keyVaultProperties' property to verify the cluster updated successfully.
+
     ```azurecli-interactive
     az kusto cluster show --cluster-name "mytestcluster" --resource-group "mytestrg"
     ```
-
 
