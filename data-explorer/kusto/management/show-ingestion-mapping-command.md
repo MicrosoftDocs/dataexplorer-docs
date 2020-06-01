@@ -1,5 +1,5 @@
 ---
-title: .show ingestion mappings - Azure Data Explorer | Microsoft Docs
+title: .show ingestion mappings - Azure Data Explorer
 description: This article describes .show ingestion mappings in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -17,7 +17,7 @@ Show the ingestion mappings (all or the one specified by name).
 
 * `.show` `table` *TableName* `ingestion` *MappingKind*  `mapping` *MappingName* 
 
-Show all ingestion mappings from all mapping kinds:
+Show all ingestion mappings from all mapping types:
 
 * `.show` `table` *TableName* `ingestion`  `mapping`
  
@@ -31,7 +31,7 @@ Show all ingestion mappings from all mapping kinds:
 .show table MyTable ingestion mappings 
 ```
 
-**Example output**
+**Sample output**
 
 | Name     | Kind | Mapping     |
 |----------|------|-------------|
