@@ -57,7 +57,7 @@ This command sets the update policy of the specified table.
 
 > [!NOTE]
 
-> 1. Use a stored function for the the `Query` property of the update policy object.
+> 1. Use a stored function for the `Query` property of the update policy object.
    You will only need to modify the function definition, instead of the entire policy object.
 > 1. If `IsEnabled` is set to `true`, then the following validations are performed on the update policy as it's being set:
 >    1. `Source` - Checks that the Table exists in the target database.
@@ -69,7 +69,7 @@ This command sets the update policy of the specified table.
         but is generally not recommended due to performance issues. For every ingestion to the source table, 
         *all* records in a different table are considered for the update policy execution.
  >       * Checks that the policy doesn't result in a cycle being created in the chain of Update Policies in the target database.
- > 1. If `IsTransactional` is set to `true`, then checks that the`TableAdmin` permissions are also verified against `Source` (the source table)
+ > 1. If `IsTransactional` is set to `true`, then checks that the `TableAdmin` permissions are also verified against `Source` (the source table)
  > 1. Make sure that you test your update policy or function for performance, before applying it to run on each ingestion to the source table. For more information, see [here](updatepolicy.md#testing-an-update-policys-performance-impact).
 
 **Returns**
