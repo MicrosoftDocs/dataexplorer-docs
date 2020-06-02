@@ -33,7 +33,7 @@ ipv6_compare('fe80::85d:e82c:9446:7994', 'fe80::85d:e82c:9446:7995', 127) == 0
 > [!Note] 
 >**IP-prefix notation**
 > 
->It's a common practice to define IP addresses using `IP-prefix notation` using a slash (`/`) character.
+>It's common practice to define IP addresses with `IP-prefix notation` using a slash (`/`) character.
 >The IP address to the LEFT of the slash (`/`) is the base IP address, and the number (1 to 127) to the RIGHT of the slash (`/`) is the number of contiguous 1 bits in the netmask. 
 >
 > **Example**:
