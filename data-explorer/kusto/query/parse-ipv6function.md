@@ -54,3 +54,11 @@ datatable(ip_string:string, netmask:long)
 |192.168.255.255|32|3232301055|
 |192.168.255.255/24|30|3232300800|
 |255.255.255.255|24|4294967040|
+
+## Next Steps
+
+For other similar functions, see:
+
+* [parse_ipv4()](parse-ipv4function.md)
+* [ipv6_compare()](ipv6-comparefunction.md)
+* [ipv6_is_match()](ipv6-is-matchfunction.md)

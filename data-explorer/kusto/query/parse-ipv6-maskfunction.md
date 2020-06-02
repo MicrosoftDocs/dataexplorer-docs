@@ -66,3 +66,10 @@ datatable(ip_string:string, netmask:long)
 |fe80::85d:e82c:9446:7994/120|124|fe80:0000:0000:0000:085d:e82c:9446:7900|
 |::192.168.255.255|128|0000:0000:0000:0000:0000:ffff:c0a8:ffff|
 |::192.168.255.255/24|128|0000:0000:0000:0000:0000:ffff:c0a8:ff00|
+
+## Next Steps
+
+For other similar functions, see:
+
+* [parse_ipv4_mask()](parse-ipv4-maskfunction.md)
+* [parse_ipv6()](parse-ipv6function.md)

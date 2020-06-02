@@ -84,3 +84,11 @@ datatable(ip1_string:string, ip2_string:string, prefix:long)
 |192.168.1.1|192.168.1.0|31|0|
 |192.168.1.1/24|192.168.1.255|31|0|
 |192.168.1.1|192.168.1.255|24|0|
+
+
+## Next Steps
+
+For other similar functions, see:
+
+* [ipv6_compare()](ipv6-comparefunction.md)
+* [ipv4_is_match()](ipv4-is-matchfunction.md)
