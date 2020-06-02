@@ -82,7 +82,7 @@ Now you connect to Azure Data Explorer in Power BI Desktop.
 
     ![Get data](media/visualize-power-bi/get-data-more.png)
 
-1. Search for *Azure Data Explorer*, select **Azure Data Explorer (Beta)**, then **Connect**.
+1. Search for *Azure Data Explorer*, select **Azure Data Explorer**, then **Connect**.
 
     ![Search and get data](media/visualize-power-bi/search-get-data.png)
 
