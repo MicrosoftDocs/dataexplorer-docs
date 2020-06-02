@@ -33,7 +33,7 @@ ipv6_is_match('fe80::85d:e82c:9446:7994', 'fe80::85d:e82c:9446:7995', 127) == tr
 > [!Note] 
 >**IP-prefix notation**
 > 
->It's a common practice to define IP addresses using `IP-prefix notation` using a slash (`/`) character.
+>It's common practice to define IP addresses with `IP-prefix notation` using a slash (`/`) character.
 >The IP address to the LEFT of the slash (`/`) is the base IP address, and the number (1 to 127) to the RIGHT of the slash (`/`) is the number of contiguous 1 bits in the netmask. 
 >
 > **Example**:
@@ -124,4 +124,3 @@ datatable(ip1_string:string, ip2_string:string, prefix:long)
 |192.168.1.1/24|::ffff:c0a8:01ff|127|1|
 |::ffff:c0a8:0101|192.168.1.255|120|1|
 |::192.168.1.1/30|192.168.1.255/24|127|1|
-
