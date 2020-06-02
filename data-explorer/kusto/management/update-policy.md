@@ -61,7 +61,7 @@ This command sets the update policy of the specified table.
    You will only need to modify the function definition, instead of the entire policy object.
 > 1. If `IsEnabled` is set to `true`, then the following validations are performed on the update policy as it's being set:
 >    1. `Source` - Checks that the Table exists in the target database.
->    1. `Query` - 
+>    1. `Query`
 >        * Checks that the schema defined by the schema matches the one of the target table
 >        * Checks that the query references the `source` table of the update policy. 
         Defining an update policy query which does *not* reference the source is possible by setting 
