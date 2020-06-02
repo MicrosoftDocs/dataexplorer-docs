@@ -16,9 +16,9 @@ ms.date: 08/19/2019
 The metadata operations can result from a control command that a user executed, or internal control commands that the system executed, such as drop extents by retention.
 
 > [!NOTE]
-> - Metadata operations that encompass *adding* new extents, such as `.ingest`, `.append`, `.move` and others, will not have matching events shown in the `Journal`.
-> - The data in the columns of the result-set, as well as the format in which it is presented, is *not* contractual. 
-  Taking a dependency on them is not recommended.
+> * Metadata operations that encompass *adding* new extents, such as `.ingest`, `.append`, `.move` and others, will not have matching events shown in the `Journal`.
+> * The data in the columns of the result-set, as well as the format in which it's presented, isn't contractual. 
+  Taking a dependency on them isn't recommended.
 
 |Event        |EventTimestamp     |Database  |EntityName|UpdatedEntityName|EntityVersion|EntityContainerName|
 |-------------|-------------------|----------|----------|-----------------|-------------|-------------------|
