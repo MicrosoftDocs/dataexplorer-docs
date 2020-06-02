@@ -19,9 +19,11 @@ Data visualization and reporting is a critical step in the data analytics proces
 ## Azure Data Explorer dashboards
 
 Azure Data Explorer dashboards is a web application that enables you to run queries and build dashboards in the stand-alone web application, the [Web UI](web-query-data.md). Azure Data Explorer dashboards provide three main advantages:
+
 * Natively export queries from the Web UI to Azure Data Explorer dashboards. 
 * Explore the data in the Web UI.
 * Optimized dashboard rendering performance.
+
 For more information see, [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
 
 ## Kusto query language visualizations
