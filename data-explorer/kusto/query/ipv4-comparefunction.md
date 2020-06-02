@@ -67,7 +67,7 @@ datatable(ip1_string:string, ip2_string:string)
 |192.168.1.1|192.168.1.255/24|0|
 |192.168.1.1/30|192.168.1.255/24|0|
 
-### Compares IPs using IP-prefix notation specified inside the IPv4 strings and as additional argument of the `ipv4_compare()` function
+### Compare IPs using IP-prefix notation specified inside the IPv4 strings and as additional argument of the `ipv4_compare()` function
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
