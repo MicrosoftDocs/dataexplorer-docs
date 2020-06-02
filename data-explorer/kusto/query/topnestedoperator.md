@@ -20,13 +20,13 @@ T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-ne
 The `top-nested` operator accepts tabular data as input, and one or more aggregation clauses.
 The first aggregation clause (left-most) subdivides the input records into partitions, according
 to the unique values of some expression over those records. The clause then keeps a certain number of records
-that maximize (or minimize) this expression over the records. The next aggregation clause then
+that maximize or minimize this expression over the records. The next aggregation clause then
 applies a similar function, in a nested fashion. Each following clause is applied to the partition produced
 by the previous clause. This process continues for all aggregation clauses.
 
-As an example, the `top-nested` operator can be used to answer the following question: "For a table containing sales
-figures (country, salesperson, and amount sold), what are the top five countries by sales, and what are the top
-three salespersons in each of these countries."
+For example, the `top-nested` operator can be used to answer the following question: "For a table containing sales
+figures, such as country, salesperson, and amount sold, what are the top five countries by sales, and what are the top
+three salespeople in each of these countries."
 
 **Syntax**
 
@@ -52,7 +52,7 @@ For each *TopNestedClause*:
   Typically it's a column reference for the tabular input (*T*), or some
   calculation (such as `bin()`) over such a column.
 
-* *ConstExpr*: If specified, for each hierarchy level it will add one record
+* *ConstExpr*: If specified, for each hierarchy level one record will be added
   with the value that is the aggregation over all records that didn't
   "make it to the top".
 
