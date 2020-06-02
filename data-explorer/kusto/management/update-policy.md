@@ -129,9 +129,9 @@ This command modifies the update policy of the specified table.
 
 > [!NOTE]
 
-> 1. Use stored functions for the bulk implementation of the query property of the update policy object. 
-     You will only need to modify the function definition instead of the entire policy object.
-> 1. The validations are the same as those done on an `alter` command
+> * Use stored functions for the bulk implementation of the query property of the update policy object. 
+     You'll only need to modify the function definition instead of the entire policy object.
+> * The validations are the same as those done on an `alter` command.
 
 **Returns**
 
