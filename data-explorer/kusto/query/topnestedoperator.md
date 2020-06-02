@@ -25,8 +25,7 @@ applies a similar function, in a nested fashion. Each following clause is applie
 by the previous clause. This process continues for all aggregation clauses.
 
 For example, the `top-nested` operator can be used to answer the following question: "For a table containing sales
-figures, such as country, salesperson, and amount sold, what are the top five countries by sales, and what are the top
-three salespeople in each of these countries."
+figures, such as country, salesperson, and amount sold: what are the top five countries by sales? What are the top three salespeople in each of these countries?"
 
 **Syntax**
 
@@ -34,33 +33,33 @@ three salespeople in each of these countries."
 
 Where *TopNestedClause* has the following syntax:
 
-[*N*] `of` [*ExprName* `=`] *Expr* [`with` `others` `=` *ConstExpr*] `by` [*AggName* `=`] *Aggregation* [`asc` | `desc`]
+[*N*] `of` [*`ExprName`* `=`] *`Expr`* [`with` `others` `=` *`ConstExpr`*] `by` [*`AggName`* `=`] *`Aggregation`* [`asc` | `desc`]
 
 **Arguments**
 
 For each *TopNestedClause*:
 
-* *N*: A literal of type `long` indicating how many top values to return
+* *`N`*: A literal of type `long` indicating how many top values to return
   for this hierarchy level.
   If omitted, all distinct values will be returned.
 
-* *ExprName*: If specified, sets the name of the output column corresponding
-  to the values of *Expr*.
+* *`ExprName`*: If specified, sets the name of the output column corresponding
+  to the values of *`Expr`*.
 
-* *Expr*: An expression over the input record indicating which value to return
+* *`Expr`*: An expression over the input record indicating which value to return
   for this hierarchy level.
   Typically it's a column reference for the tabular input (*T*), or some
   calculation (such as `bin()`) over such a column.
 
-* *ConstExpr*: If specified, for each hierarchy level one record will be added
+* *`ConstExpr`*: If specified, for each hierarchy level 1 record will be added
   with the value that is the aggregation over all records that didn't
   "make it to the top".
 
-* *AggName*: If specified, this identifier sets the column name
+* *`AggName`*: If specified, this identifier sets the column name
   in the output for the value of *Aggregation*.
 
-* *Aggregation*: A numeric expression indicating the aggregation to apply
-  to all records sharing the same value of *Expr*. The value of this aggregation
+* *`Aggregation`*: A numeric expression indicating the aggregation to apply
+  to all records sharing the same value of *`Expr`*. The value of this aggregation
   determines which of the resulting records are "top".
   
   The following aggregation functions are supported:
@@ -80,7 +79,7 @@ For each *TopNestedClause*:
 
 This operator returns a table that has two columns for each aggregation clause:
 
-* One column holds the distinct values of the clause's *Expr* calculation (having the
+* One column holds the distinct values of the clause's *`Expr`* calculation (having the
   column name *ExprName* if specified)
 
 * One column holds the result of the *Aggregation*
@@ -88,11 +87,11 @@ This operator returns a table that has two columns for each aggregation clause:
 
 **Comments**
 
-Input columns that aren't specified as *Expr* values aren't outputted.
+Input columns that aren't specified as *`Expr`* values aren't outputted.
 To get all values at a certain level, add an aggregation count that:
 
 * Omits the value of *N*
-* Uses the column name as the value of *Expr*
+* Uses the column name as the value of *`Expr`*
 * Uses `Ignore=max(1)` as the aggregation, and then ignore (or project-away)
    the column `Ignore`.
 
