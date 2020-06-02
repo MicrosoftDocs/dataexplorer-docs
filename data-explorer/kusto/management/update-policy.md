@@ -99,10 +99,10 @@ MyUpdateFunction()
 @'[{"IsEnabled": true, "Source": "MyTableX", "Query": "MyUpdateFunction()", "IsTransactional": false, "PropagateIngestionProperties": false}]'
 ```
 
-- When an ingestion to the source table occurs - in this case, `MyTableX` - one or more extents (data shards) are created in that table
-- The `Query` that is defined in the update policy object - in this case `MyUpdateFunction()` - will only run on those extents, and won't run on the entire table
-  - "scoping" is done internally and automatically, and shouldn't be handled when defining the `Query`
-  - Only newly ingested records - that are different in each ingestion operation - will be taken into consideration when ingesting to the `DerivedTableX` derived table.
+* When an ingestion to the source table occurs, in this case, `MyTableX`, one or more extents (data shards) are created in that table
+* The `Query` that is defined in the update policy object, in this case `MyUpdateFunction(), will only run on those extents, and won't run on the entire table.
+  * "Scoping" is done internally and automatically, and shouldn't be handled when defining the `Query`.
+  * Only newly ingested records, that are different in each ingestion operation, will be taken into consideration when ingesting to the `DerivedTableX` derived table.
 
 ```kusto
 // The following example will throw an error for not referencing the source table in the update policy query
