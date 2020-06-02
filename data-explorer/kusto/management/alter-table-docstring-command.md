@@ -1,6 +1,6 @@
 ---
 title: .alter table docstring - Azure Data Explorer
-description: This article describes ".alter table docstring" command in Azure Data Explorer.
+description: This article describes the ".alter table docstring" command in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
