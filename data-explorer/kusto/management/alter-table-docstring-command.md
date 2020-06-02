@@ -1,5 +1,5 @@
 ---
-title: .alter table docstring - Azure Data Explorer | Microsoft Docs
+title: .alter table docstring - Azure Data Explorer
 description: This article describes .alter table docstring in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -17,8 +17,8 @@ Alters the DocString value of an existing table.
 
 > [!NOTE]
 > * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * Modification of the table is also allowed to the [database user](../management/access-control/role-based-authorization.md) who originally created the table
-> * If the table does not exist, an error is returned. For creating new table, see [.create table](create-table-command.md)
+> * The [database user](../management/access-control/role-based-authorization.md) who originally created the table is permitted to modify it
+> * If the table does not exist, an error is returned. To create a new table, see [.create table](create-table-command.md)
 
 **Example** 
 
