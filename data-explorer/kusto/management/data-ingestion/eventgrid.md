@@ -121,7 +121,7 @@ blob.UploadFromFile(csvCompressedLocalFileName);
 
 ## Blob lifecycle
 
-Azure Data Explorer won't delete the blobs post ingestion, but will keep them for three to five days. Use [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion.
+Azure Data Explorer won't delete the blobs post ingestion, but will keep them for three to five days. Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion.
 
 ## Known issues
 
