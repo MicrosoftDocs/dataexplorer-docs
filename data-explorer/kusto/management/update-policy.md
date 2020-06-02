@@ -56,21 +56,20 @@ This command sets the update policy of the specified table.
 *ArrayOfUpdatePolicyObjects* is a JSON array that has zero or more update policy objects defined.
 
 > [!NOTE]
-
-> 1. Use a stored function for the `Query` property of the update policy object.
+> * Use a stored function for the `Query` property of the update policy object.
    You will only need to modify the function definition, instead of the entire policy object.
-> 1. If `IsEnabled` is set to `true`, then the following validations are performed on the update policy as it's being set:
->    1. `Source` - Checks that the Table exists in the target database.
->    1. `Query`
+> * If `IsEnabled` is set to `true`, then the following validations are performed on the update policy as it's being set:
+>    * `Source` - Checks that the table exists in the target database.
+>    * `Query` 
 >        * Checks that the schema defined by the schema matches the one of the target table
 >        * Checks that the query references the `source` table of the update policy. 
         Defining an update policy query which does *not* reference the source is possible by setting 
         `AllowUnreferencedSourceTable=true` in the *with* properties (see example below),
-        but is generally not recommended due to performance issues. For every ingestion to the source table, 
+        but isn't recommended due to performance issues. For every ingestion to the source table, 
         *all* records in a different table are considered for the update policy execution.
- >       * Checks that the policy doesn't result in a cycle being created in the chain of Update Policies in the target database.
- > 1. If `IsTransactional` is set to `true`, then checks that the `TableAdmin` permissions are also verified against `Source` (the source table)
- > 1. Make sure that you test your update policy or function for performance, before applying it to run on each ingestion to the source table. For more information, see [here](updatepolicy.md#testing-an-update-policys-performance-impact).
+ >       * Checks that the policy doesn't result in a cycle being created in the chain of update policies in the target database.
+ > * If `IsTransactional` is set to `true`, then checks that the `TableAdmin` permissions are also verified against `Source` (the source table).
+ > * Test your update policy or function for performance, before applying it to run on each ingestion to the source table. For more information, see [testing an update policy's performance impact](updatepolicy.md#testing-an-update-policys-performance-impact).
 
 **Returns**
 
