@@ -26,23 +26,22 @@ ipv4_compare('192.168.1.1', '192.168.1.255', 24) == 0
 
 **Arguments**
 
-* *Expr1*, *Expr2*: A string expression representing an IPv4 address. IPv4 strings can be masked using IP-prefix notation (see note).
+* *Expr1*, *Expr2*: A string expression representing an IPv4 address. IPv4 strings can be masked using IP-prefix notation (#ip-prefix-notation).
 * *PrefixMask*: An integer from 0 to 32 representing the number of most-significant bits that are taken into account.
 
-> [!Note] 
-> **IP-prefix notation**
-> 
->It's common practice to define IP addresses with `IP-prefix notation` using a slash (`/`) character.
->The IP address to the LEFT of the slash (`/`) is the base IP address, and the number (1 to 32) to the RIGHT of the slash (`/`) is the number of contiguous 1 bits in the netmask. 
->
->**Example:** 192.168.2.0/24 will have an associated net/subnetmask containing 24 contiguous bits or 255.255.255.0 in dotted decimal format.
+## IP-prefix notation
+ 
+IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character.
+The IP address to the LEFT of the slash (`/`) is the base IP address. The number (1 to 32) to the RIGHT of the slash (`/`) is the number of contiguous 1 bit in the netmask. 
+
+**Example:** 192.168.2.0/24 will have an associated net/subnetmask containing 24 contiguous bits or 255.255.255.0 in dotted decimal format.
 
 **Returns**
 
 * `0`: If the long representation of the first IPv4 string argument is equal to the second IPv4 string argument
 * `1`: If the long representation of the first IPv4 string argument is greater than the second IPv4 string argument
 * `-1`: If the long representation of the first IPv4 string argument is less than the second IPv4 string argument
-* `null`: If conversion for one of the two IPv4 strings was not successful.
+* `null`: If conversion for one of the two IPv4 strings wasn't successful.
 
 ## Examples: IPv4 comparison equality cases
 
