@@ -25,7 +25,7 @@ The **Kusto Engine** service has the following roles:
 |Database viewer            |Can read all data and metadata of a particular database                                                                                                       |
 |Database ingestor          |Can ingest data to all existing tables in the database, but can't query the data.                                                                             |
 |Database unrestrictedviewer|Can query all tables in the database that have the [RestrictedViewAccess policy](../restrictedviewaccess-policy.md) enabled                                |
-|Database monitor           |Can execute `.show` commands in the context of the database and its child entities.                                                                          |
-|Function admin             |Can alter function, delete function or grant admin permissions to another principal.                                                                         |
-|Table admin                |Can do anything in the scope of a particular table.                                                                                                          |
-|Table ingestor             |Can ingest data in the scope of a particular table, but not query the data.                                                                                  |
+|Database monitor           |Can execute `.show` commands in the context of the database and its child entities                                                                           |
+|Function admin             |Can alter function, delete function, or grant admin permissions to another principal                                                                         |
+|Table admin                |Can do anything in the scope of a particular table                                                                                                           |
+|Table ingestor             |Can ingest data in the scope of a particular table, but can't query the data                                                                                 |
