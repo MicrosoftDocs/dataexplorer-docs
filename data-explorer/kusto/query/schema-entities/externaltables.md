@@ -11,7 +11,7 @@ ms.date: 01/22/2020
 ---
 # External tables
 
-An **external table** is a Kusto schema entity that references data stored outside the Kusto database.
+An **external table** is a Kusto schema entity that references data stored outside the Azure Data Explorer database.
 
 Similar to [tables](tables.md), an external table has a well-defined schema (an ordered list of column name and data type pairs). Unlike tables, data is stored and managed outside the cluster. Most commonly the data is stored in some standard format such as CSV, Parquet, Avro, and is not ingested by Azure Data Explorer.
 
