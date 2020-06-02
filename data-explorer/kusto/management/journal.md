@@ -54,9 +54,9 @@ The `.show journal` command returns a list of metadata changes on databases or t
 Everyone (cluster access) can execute the command. 
 
 Results returned will include: 
-1. All journal entries of the user executing the command. 
-2. All journal entries of databases that the user executing the command has admin access to. 
-3. All cluster journal entries if the user executing the command is a cluster admin. 
+- All journal entries of the user executing the command. 
+- All journal entries of databases that the user executing the command has admin access to. 
+- All cluster journal entries if the user executing the command is a cluster admin. 
 
 ## .show database *DatabaseName* journal 
 
@@ -66,5 +66,5 @@ The `.show` `database` *DatabaseName* `journal` command returns journal for the 
 
 Everyone (cluster access) can execute the command. 
 Results returned include: 
-1. All journal entries of database *DatabaseName* if the user executing the command is a database admin in *DatabaseName*. 
-2. Otherwise, all the journal entries of database `DatabaseName` and of the user executing the command. 
+- All journal entries of database *DatabaseName* if the user executing the command is a database admin in *DatabaseName*. 
+- Otherwise, all the journal entries of database `DatabaseName` and of the user executing the command. 
