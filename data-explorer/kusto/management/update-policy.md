@@ -127,7 +127,6 @@ This command modifies the update policy of the specified table.
 *ArrayOfUpdatePolicyObjects* is a JSON array that has zero or more update policy objects defined.
 
 > [!NOTE]
-
 > * Use stored functions for the bulk implementation of the query property of the update policy object. 
      You'll only need to modify the function definition instead of the entire policy object.
 > * The validations are the same as those done on an `alter` command.
