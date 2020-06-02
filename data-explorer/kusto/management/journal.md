@@ -1,5 +1,5 @@
 ---
-title: Journal management - Azure Data Explorer | Microsoft Docs
+title: Journal management - Azure Data Explorer
 description: This article describes Journal management in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,14 +11,14 @@ ms.date: 08/19/2019
 ---
 # Journal management
 
- `Journal` contains information about metadata operations performed on the Kusto database.
+ `Journal` contains information about metadata operations that are done on the Azure Data Explorer database.
 
-The metadata operations could be a result of control command executed by user or internal control commands executed by the system (like drop extents by retention).
+The metadata operations can result from a control command that a user executed, or internal control commands that the system executed, such as drop extents by retention.
 
-**Notes:**
-
-- Metadata operations which encompass *adding* new extents (like `.ingest`, `.append`, `.move` and others) will not have matching events shown in the `Journal`.
-- The data in the columns of the result-set, as well as the format in which it is presented, are *not* contractual, and thus taking a dependency on them is *not* recommended.
+> [!NOTE]
+> * Metadata operations that encompass *adding* new extents, such as `.ingest`, `.append`, `.move` and others, will not have matching events shown in the `Journal`.
+> * The data in the columns of the result-set, as well as the format in which it's presented, isn't contractual. 
+  Taking a dependency on them isn't recommended.
 
 |Event        |EventTimestamp     |Database  |EntityName|UpdatedEntityName|EntityVersion|EntityContainerName|
 |-------------|-------------------|----------|----------|-----------------|-------------|-------------------|
@@ -28,44 +28,35 @@ The metadata operations could be a result of control command executed by user or
 |OriginalEntityState|UpdatedEntityState                                              |ChangeCommand                                                                                                          |Principal            |
 |-------------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------------|
 |.           		|Name: MyTable1, Attributes: Name='[MyTable1].[col1]', Type='I32'|.create table MyTable1 (col1:int)                                                                                      |imike@fabrikam.com
-|.          		|The db properties (too long to be displayed here)               |.create database TestDB persist (@"https://imfbkm.blob.core.windows.net/md", @"https://imfbkm.blob.core.windows.net/data")|AAD app id=76263cdb-abcd-545644e9c404
+|.          		|The database properties (too long to be displayed here)         |.create database TestDB persist (@"https://imfbkm.blob.core.windows.net/md", @"https://imfbkm.blob.core.windows.net/data")|Azure AD app id=76263cdb-abcd-545644e9c404
 |Name: MyTable1, Attributes: Name='[MyTable1].[col1]', Type='I32'|Name: MyTable2, Attributes: Name='[MyTable1].[col1]', Type='I32'|.rename table MyTable1 to MyTable2|rdmik@fabrikam.com
 
-
-Event - the metadata event name.
-
-EventTimestamp - the event timestamp.
-
-Database - metadata of this database was changed following the event.
-
-EntityName - the entity name, the operation was executed on, before the change.
-
-UpdatedEntityName - the new entity name after the change.
-
-EntityVersion - the new metadata version (db/cluster) following the change.
-
-EntityContainerName - the entity container name (i.e.: entity=column, container=table).
-
-OriginalEntityState - the state of the entity (entity properties) before the change.
-
-UpdatedEntityState - the new state after the change.
-
-ChangeCommand - the executed control command which triggered the metadata change.
-
-Principal - the principal (user/app) which executed the control command.
-					
+|Item                 |Description                                                              |                                
+|---------------------|-------------------------------------------------------------------------|
+|Event                |The metadata event name                                                  |
+|EventTimestamp       |The event timestamp                                                      |                        
+|Database             |Metadata of this database was changed following the event                |
+|EntityName           |The entity name that the operation was executed on, before the change    |
+|UpdatedEntityName    |The new entity name after the change                                     |
+|EntityVersion        |The new metadata version (db/cluster) following the change               |
+|EntityContainerName  |The entity container name (entity=column, container=table)               |
+|OriginalEntityState  |The state of the entity (entity properties) before the change            |
+|UpdatedEntityState   |The new state after the change                                           |
+|ChangeCommand        |The executed control command that triggered the metadata change          |
+|Principal            |The principal (user/app) that executed the control command               |
+	
 ## .show journal
 
-The `.show journal` command returns a list of metadata changes, on databases/cluster the user has admin access.
+The `.show journal` command returns a list of metadata changes on databases or the cluster that the user has admin access to.
 
 **Permissions**
 
 Everyone (cluster access) can execute the command. 
 
 Results returned will include: 
-1. All journal entries of the user executing the command. 
-2. All journal entries of databases which the user executing the command has admin access to. 
-3. All cluster journal entries if the user executing the command is a cluster admin. 
+- All journal entries of the user executing the command. 
+- All journal entries of databases that the user executing the command has admin access to. 
+- All cluster journal entries if the user executing the command is a cluster admin. 
 
 ## .show database *DatabaseName* journal 
 
@@ -73,7 +64,7 @@ The `.show` `database` *DatabaseName* `journal` command returns journal for the 
 
 **Permissions**
 
-Everyone (cluster access) can execute the command. Results returned will include: 
-1. All journal entries of database *DatabaseName* if  the user executing the command is a database admin in *DatabaseName*. 
-2. Otherwise, all the journal entries of database *DatabaseName* and of the user executing the command. 
-
+Everyone (cluster access) can execute the command. 
+Results returned include: 
+- All journal entries of database *DatabaseName* if the user executing the command is a database admin in *DatabaseName*. 
+- Otherwise, all the journal entries of database `DatabaseName` and of the user executing the command. 

@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 06/02/2020
 
 #Customer intent: As a data analyst, I want to connect to Azure Data Explorer with Power BI, so that I can explore and visualize my data.
 ---
