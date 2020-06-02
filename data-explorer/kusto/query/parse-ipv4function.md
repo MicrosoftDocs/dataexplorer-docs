@@ -24,7 +24,7 @@ parse_ipv4('192.1.168.1') < parse_ipv4('192.1.168.2') == true
 
 **Arguments**
 
-* *`Expr`*: String expression representing IPv4 that will be converted to long. String may include net-mask using IP-prefix notation (#ip-prefix-notation).
+* *`Expr`*: String expression representing IPv4 that will be converted to long. String may include net-mask using [IP-prefix notation](#ip-prefix-notation).
 
 ## IP-prefix notation
 
