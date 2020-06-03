@@ -33,7 +33,6 @@ StormEvents
 
 :::image type="content" source="images/samples/060.png" alt-text="060":::
 
-<a name="activities"></a>
 ## Get sessions from start and stop events
 
 Let's suppose we have a log of events, in which some events mark the start or end of an extended activity or session. 
@@ -180,7 +179,6 @@ on UnitOfWorkId
 | extend SaveFactor = sum_NormalizedLoad / sum_CurrentLoad 
 ```
 
-<a name="concurrent-activities"><a/>
 ## Chart concurrent sessions over time
 
 Suppose we have a table of activities with their start and end times.  We'd like to see a chart over time that shows how many are running concurrently at any time.
