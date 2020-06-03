@@ -12,7 +12,7 @@ ms.date: 03/30/2020
 # Sandboxes
 
 Kusto's Data Engine service can run sandboxes for specific flows that need secure isolation.
-Examples of these flows are user-defined scripts that run using [Python plugin](../query/pythonplugin.md) or the [R plugin](../query/rplugin.md).
+Examples of these flows are user-defined scripts that run using the [Python plugin](../query/pythonplugin.md) or the [R plugin](../query/rplugin.md).
 
 To run these sandboxes, Kusto uses an evolved version of Microsoft's [Drawbridge](https://www.microsoft.com/research/project/drawbridge/) project. This solution is used by other Microsoft services to run user-defined objects in a multi-tenant environment.
 
