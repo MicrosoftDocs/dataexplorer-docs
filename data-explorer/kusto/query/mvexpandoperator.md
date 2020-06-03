@@ -107,7 +107,7 @@ range x from 1 to 4 step 1
 
 **More examples**
 
-See [Chart count of live activities over time](./samples.md#concurrent-activities).
+See [Chart count of live activities over time](https://docs.microsoft.com/azure/data-explorer/kusto/query/samples#chart-concurrent-sessions-over-time).
 
 **See also**
 
