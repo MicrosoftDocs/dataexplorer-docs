@@ -48,10 +48,12 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 The cluster's total extents merge capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity))
 is calculated by:
 
-`Number of nodes in cluster` x `MaximumConcurrentOperationsPerNode`
+`Number of nodes in cluster` x `Concurrent operations per node`
+
+The effective value for `Concurrent operations per node` gets automatically adjusted by the system in the range [`MinimumConcurrentOperationsPerNode`,`MaximumConcurrentOperationsPerNode`].
+
 
 > [!Note]
-> * The effective capacity gets automatically adjusted by the system in the range [`MinimumConcurrentOperationsPerNode`,`MaximumConcurrentOperationsPerNode`].
 > * In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Extents Purge Rebuild capacity
@@ -91,8 +93,7 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 
 The cluster's total extents partition capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity)).
 
-> [!Note]
-> The effective capacity gets automatically adjusted by the system in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`].
+The effective value for `Concurrent operations` gets automatically adjusted by the system in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`].
 
 ## Defaults
 
