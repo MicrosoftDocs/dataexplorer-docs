@@ -14,6 +14,8 @@ ms.date: 02/13/2020
 When executing cross-cluster query the cluster which is doing the initial query interpretation must have the schema of the entities referenced in remote cluster(s).
 So when the following query sent to *Cluster1*
 
+I am making new changes here and the green bar appears to the left where lines have been edited. Spelling mistarkes will be highlited 
+
 ```kusto
 Table1 | join ( cluster("Cluster2").database("SomeDB").Table2 ) on KeyColumn
 ``` 
