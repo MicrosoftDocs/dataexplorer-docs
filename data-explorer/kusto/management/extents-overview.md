@@ -16,7 +16,7 @@ ms.date: 03/13/2020
 Kusto is built to support tables with a huge number of records (rows)
 and large amounts of data. To handle such large tables, each table's data 
 is divided into smaller "tablets" called **data shards**
-or **extents** (the two terms are synonyms). The union of
+or **extents** (the two terms are synonymous). The union of
 all the table's extents holds the table's data. Individual extents
 are kept smaller than a single node's capacity, and the extents
 are spread over the cluster's nodes, achieving scale-out.
@@ -69,7 +69,7 @@ The common extent lifecycle is:
    are small, Kusto actually carries out an ingestion process on them, called **rebuild**. Once extents reach a certain size, merging is done only for indexes. The extents' data artifacts in storage aren't modified.
 1. The merged extent (possibly one that tracks its lineage to other
    merged extents, and so on) is eventually dropped because of a retention policy. 
-   When extents are dropped based on time (older x hours / days), then the creation date of the newest extent inside the merged one is used in the calculation.
+   When extents are dropped, based on time (older x hours / days), then the creation date of the newest extent inside the merged one is used in the calculation.
 
 ## Extent Creation time
 
@@ -81,8 +81,8 @@ creation time. This time is used for:
 1. **Sampling** - Recent extents are favored, when using query operations such as `take`
 
 In fact, Kusto tracks two `datetime` values per extent: `MinCreatedOn` and `MaxCreatedOn`.
-Initially, the two values are the same, but when the extent is merged with other
-extents, the new values are according to the minimum and maximum values of the merged extents.
+Initially, the two values are the same. When the extent is merged with other extents, 
+the new values are according to the original minimum and maximum values of the merged extents.
 
 Normally, an extent's creation time is set according to the time in which the data in the extent is ingested. Clients can optionally overwrite the extent's creation time, by providing an alternative creation time in the [ingestion properties](../../ingestion-properties.md).
 Overwriting is useful, for example for retention purposes, if the client wants to reingest data and doesn't want it to appear as if it arrived late.
@@ -123,7 +123,7 @@ For example:
 #### Performance notes
 
 * Do not overuse `drop-by` tags. Dropping data in the manner mentioned above is meant for rarely occurring events. It isn't for replacing record-level data, and it relies on the fact that the data tagged in this manner is bulky. Attempting to give a different tag for each record, or small number of records, might result in a severe impact on performance.
-* If such tags aren't required a period of time after data is ingested,
+* If `drop-by` tags aren't needed for a period of time after data is ingested,
 we recommend that you [drop the tags](extents-commands.md#drop-extent-tags).
 
 ### 'ingest-by:' extent tags
