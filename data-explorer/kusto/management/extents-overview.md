@@ -68,7 +68,7 @@ The common extent lifecycle is:
 1. The extent is merged with other extents. When the extents being merged
    are small, Kusto actually carries out an ingestion process on them, called **rebuild**. Once extents reach a certain size, merging is done only for indexes. The extents' data artifacts in storage aren't modified.
 1. The merged extent (possibly one that tracks its lineage to other
-   merged extents, and so on) is eventually dropped becasue of a retention policy. 
+   merged extents, and so on) is eventually dropped because of a retention policy. 
    When extents are dropped based on time (older x hours / days), then the creation date of the newest extent inside the merged one is used in the calculation.
 
 ## Extent Creation time
@@ -85,7 +85,7 @@ Initially, the two values are the same, but when the extent is merged with other
 extents, the new values are according to the minimum and maximum values of the merged extents.
 
 Normally, an extent's creation time is set according to the time in which the data in the extent is ingested. Clients can optionally overwrite the extent's creation time, by providing an alternative creation time in the [ingestion properties](../../ingestion-properties.md).
-Overwriting is useful, for example for retention purposes, if the client wants to reingest data and doesn't want it to appear as if it had arrived late.
+Overwriting is useful, for example for retention purposes, if the client wants to reingest data and doesn't want it to appear as if it arrived late.
 
 ## Extent Tagging
 
@@ -96,7 +96,7 @@ function to see the tags associated with records in an extent.
 Extent tags can be used to efficiently describe properties that are common to 
 all of the data in the extent.
 For example, you could add an extent tag during ingestion, that indicates
-the source of the data being ingested, and use that tag later. Since the extents
+the source of the ingested data, and use that tag later. Since the extents
 describe data, when two or more merge, their associated tags also merge. The resulting extent's tags will be the union of all the tags of those merged extents.
 
 Kusto assigns a special meaning to all extent tags whose value has the
@@ -151,7 +151,7 @@ The following example ingests data only once. The 2nd and 3rd commands do nothin
 #### Performance notes
 
 * Overusing `ingest-by` tags is not recommended.
-If the pipeline feeding Kusto is known to have data duplications, we recommended
+If the pipeline feeding Kusto is known to have data duplications, we recommend
 that you solve these duplications as much as possible, before ingesting the data into Kusto. Also, use `ingest-by` tags in Kusto only when the part that ingests to Kusto
 might introduce duplicates by itself. There's a retry mechanism that can overlap 
 with already-in-progress ingestion calls. Attempting to set a unique `ingest-by` tag
