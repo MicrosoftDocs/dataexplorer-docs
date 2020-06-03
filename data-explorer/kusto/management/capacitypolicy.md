@@ -92,7 +92,7 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 The cluster's total extents partition capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity)).
 
 > [!Note]
-> The effective capacity gets automatically adjusted by the system in the range [1,16], unless it's been set to a higher value.
+> The effective capacity gets automatically adjusted by the system in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`].
 
 ## Defaults
 
