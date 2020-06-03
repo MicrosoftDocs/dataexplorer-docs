@@ -14,7 +14,7 @@ ms.date: 01/20/2019
 Kusto supports two query consistency models: **strong** and **weak**.
 
 Strongly consistent queries (default) have a "read-my-changes" guarantee. 
-If you send a control command and receive acknowledgment that the command has completed successfully, then you will be guaranteed any query immediately following will observe the results of the command.
+If you send a control command and receive acknowledgment that the command has completed successfully, then you'll be guaranteed any query immediately following will observe the results of the command.
 
 Weakly consistent queries that must be explicitly enabled by the client,
 don't have that guarantee. Clients making queries might observe some latency
