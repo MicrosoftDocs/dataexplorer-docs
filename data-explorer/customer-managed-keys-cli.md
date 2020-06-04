@@ -19,8 +19,7 @@ ms.date: 06/01/2020
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](includes/data-explorer-configure-customer-managed-keys.md)]
 
-## Enable encryption with customer-managed keys in the Azure portal
-
+## Enable encryption with customer-managed keys using Azure CLI
 This article shows you how to enable customer-managed keys encryption using Azure CLI client. By default, Azure Data Explorer encryption
 uses Microsoft-managed keys. Configure your Azure Data Explorer cluster to use customer-managed keys and specify the key to associate
 with the cluster.
