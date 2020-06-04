@@ -11,7 +11,7 @@ ms.date: 03/24/2020
 ---
 # Sandbox policy
 
-Azure Data Explorer supports certain plugins within [sandboxes](../concepts/sandboxes.md) whose available resources are limited and controlled for security and for resource governance.
+Azure Data Explorer runs certain plugins within [sandboxes](../concepts/sandboxes.md) whose available resources are limited and controlled for security and for resource governance.
 
 Sandboxes run on the nodes of the Kusto engine service. Some of their limitations are defined in sandbox policies, where each sandbox type can have its own policy.
 
