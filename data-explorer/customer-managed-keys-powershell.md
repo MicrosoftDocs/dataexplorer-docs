@@ -1,9 +1,9 @@
 ---
 title: Configure customer-managed-keys using PowerShell
 description: This article describes how to configure customer-managed keys encryption on your data in Azure Data Explorer using PowerShell.
-author: roshauli
-ms.author: roshauli
-ms.reviewer: orspodek
+author: orspodek
+ms.author: orspodek
+ms.reviewer: roshauli
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/04/2020
