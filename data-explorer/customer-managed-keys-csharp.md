@@ -16,6 +16,7 @@ ms.date: 01/06/2020
 > * [C#](customer-managed-keys-csharp.md)
 > * [Azure Resource Manager template](customer-managed-keys-resource-manager.md)
 > * [CLI](customer-managed-keys-cli.md)
+> * [PowerShell](customer-managed-keys-powershell.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](includes/data-explorer-configure-customer-managed-keys.md)]
 
