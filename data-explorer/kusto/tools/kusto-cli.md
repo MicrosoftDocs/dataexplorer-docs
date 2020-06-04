@@ -174,14 +174,14 @@ Commands                              | Effect                                  
 #querystreamingon|#querystreamingoff  | (enable|disable option `queryStreaming`: Use the queryStreaming endpoint (Kusto team only))                    | FALSE
 #resultson|#resultsoff                | (enable|disable option `outputResultsSet`: Display the result sets)                                            | TRUE
 #tableon|#tableoff                    | (enable|disable option `tableView`: Format results sets as tables)                                              | TRUE
-#timeon|#timeoff                      | (enable|disable option `timing`: Display the amount of time requests took)                                      | TRUE
+#timeon|#timeoff                      | (enable|disable option `timing`: Display the amount of time that the requests took)                               | TRUE
 #typeon|#typeoff                      | (enable|disable option `typeView`: Display the type of each column in table view. Forces Streaming=true)| TRUE
 #v2protocolon|#v2protocoloff          | (enable|disable option `v2protocol`: Use the v2 query protocol, not v1)                                        | TRUE
 
 ## Use Kusto.Cli to export results as CSV
 
 Kusto.Cli has a special client-side command, `#save` that exports the **next**
-query results to a local file in CSV format. For example, the following will 
+query results to a local file in CSV format. For example, the following line will 
 export 10 records out of the `StormEvents` table
 into the `help.kusto.windows.net` cluster, `Samples` database:
 
@@ -192,8 +192,7 @@ Kusto.Cli.exe @help/Samples -execute:"#save c:\temp\test.log" -execute:"StormEve
 ## Use Kusto.Cli to control a running instance of Kusto.Explorer
 
 You can instruct Kusto.Cli to communicate with the "primary" instance
-of Kusto.Explorer running on the machine, and send it queries. This mechanism can be useful for programs that want to run a number of queries, but
-don't want to start the Kusto.Explorer process again and again. In the following
+of Kusto.Explorer running on the machine, and send it queries. This mechanism can be useful for programs that want to run a number of queries, but don't want to start the Kusto.Explorer process repeatedly. In the following
 example, Kusto.Cli is used to run a query against the help cluster:
 
 ```
