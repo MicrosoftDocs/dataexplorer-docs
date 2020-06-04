@@ -56,6 +56,7 @@ The program fails to start and displays one of the following errors:
 * `Value does not fall within the expected range`
 * `The application binding data format is invalid.` 
 * `Exception from HRESULT: 0x800736B2`
+* `The referenced assembly is not installed on your system. (Exception from HRESULT: 0x800736B3)`
 
 You can explore the error details by clicking `Details` in the following error dialog:
 
