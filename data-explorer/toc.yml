@@ -198,6 +198,8 @@
           href: customer-managed-keys-resource-manager.md
         - name: Azure CLI
           href: customer-managed-keys-cli.md
+        - name: PowerShell
+          href: customer-managed-keys-powershell.md
     - name: Create Azure AD app
       href: provision-azure-ad-app.md     
   - name: Manage
