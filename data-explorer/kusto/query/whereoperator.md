@@ -34,7 +34,8 @@ Rows in *T* for which *Predicate* is `true`.
 
 **Notes**
 Null values: all filtering functions return false when compared with null values. 
-You can use special null-aware functions to write queries that take null values into account:
+You can use special null-aware functions to write queries that handle null values.
+
 [isnull()](./isnullfunction.md),
 [isnotnull()](./isnotnullfunction.md),
 [isempty()](./isemptyfunction.md),
