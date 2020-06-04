@@ -1,5 +1,5 @@
 ---
-title: Kusto CLI - Azure Data Explorer | Microsoft Docs
+title: Kusto CLI - Azure Data Explorer
 description: This article describes Kusto CLI in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -27,7 +27,7 @@ Kusto, and display their results. Kusto.Cli can run in one of several modes:
   through a file (called "script").
 
 Kusto.Cli is primarily provided for automating tasks against a Kusto service
-that would have normally required to write code (e.g. a C# program or a
+that would have normally required to write code (for example, a C# program or a
 PowerShell script.)
 
 ## Getting the tool
@@ -35,7 +35,7 @@ PowerShell script.)
 Kusto.Cli is part of the NuGet package `Microsoft.Azure.Kusto.Tools`,
 which can be downloaded [here](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
 Once downloaded, the package's `tools` folder can be extracted to the target
-folder; no additional installation is required (i.e. it is xcopy-installable).
+folder; no additional installation is required (that is, it is xcopy-installable).
 
 
 
@@ -100,7 +100,7 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
 
 `-logToConsole:`*EnableLogToConsole*
 * If specified (as either `true` or `false`), enables or disables
-  writing program output to the the console.
+  writing program output to the console.
 
 `-lineMode:`*EnableLineMode*
 * If specified, switches between line input mode (the default, or when set to `true`)
@@ -113,11 +113,11 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
 Kusto.Cli.exe "https://kustolab.kusto.windows.net/;Fed=true" -script:"c:\mycommands.txt"
 ```
 
-Please, note, there should be no space between the colon and the argument value.
+Note, there should be no space between the colon and the argument value.
 
 ## Directives
 
-Kusto.Cli supports a number of directives that executes in the tool
+Kusto.Cli supports a number of directives that execute in the tool
 rather than being sent to the service for processing:
 
 |Directive                      |Description|
@@ -133,7 +133,7 @@ rather than being sent to the service for processing:
 |`#dbcontext` [*DatabaseName*]  |Changes the "context" database used by queries and commands to *DatabaseName* (if omitted, the current context will be displayed.)|
 |`ke` *Text*                    |Sends the specified text to a running Kusto.Explorer process.|
 |`#loop` *Count* *Text*         |Executes the text a number of times.|
-|`#qp` [*Name* [`=` *Value*]]   |Sets the value of a query paramter (or just displayes it, or displays all values). Single/double quotes from beginning/end will be trimmed.|
+|`#qp` [*Name* [`=` *Value*]]   |Sets the value of a query parameter (or just displays it, or displays all values). Single/double quotes from beginning/end will be trimmed.|
 |`#save` *Filename*             |The results of the next query or command will be saved to the indicated CSV file.|
 |`#script` *Filename*           |Executes the indicated script.|
 |`#scriptml` *Filename*         |Executes the indicated multiline script.|
@@ -206,9 +206,9 @@ Kusto.Cli.exe @help/Samples -execute:"#save c:\temp\test.log" -execute:"StormEve
 
 It is possible to instruct Kusto.Cli to communicate with the "primary" instance
 of Kusto.Explorer running on the machine, and send it queries to execute. This
-can be very useful for programs that want to run a number of Kusto queries, but
+can be useful for programs that want to run a number of Kusto queries, but
 don't want to start the Kusto.Explorer process again and again. In the following
-example, Kusto.Cli is used to run a query agains the help cluster:
+example, Kusto.Cli is used to run a query against the help cluster:
 
 ```
 #connect cluster('help').database('Samples')
@@ -216,6 +216,7 @@ example, Kusto.Cli is used to run a query agains the help cluster:
 #ke StormEvents | count
 ```
 
-The syntax is very simple: `#ke`, followed by whitespace and the query to run.
+The syntax is simple: `#ke`, followed by whitespace and the query to run.
 The query is then sent to the primary instance of Kusto.Explorer (if one exists)
 with the current cluster/database set in Kusto.Cli.
+
