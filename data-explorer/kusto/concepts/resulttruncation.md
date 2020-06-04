@@ -20,7 +20,16 @@ query's result has exceeded one of two limits:
 to  67,108,864 (64MB))
 
 There are several possible courses of action:
-* Change the query to consume fewer resources. For example, you can try to limit the number of records returned by the query (using the [take operator](../query/takeoperator.md) or by adding additional [where clauses](../query/whereoperator.md)),  or reduce the number of columns returned by the query (using either the [project operator](../query/projectoperator.md) or the [project-away operator](../query/projectawayoperator.md)), or use the [summarize operator](../query/summarizeoperator.md) to get aggregated data, etc.
+
+* Change the query to consume fewer resources. 
+  For example, you can:
+  * Try to limit the number of records returned by the query. Use the [take operator](../query/takeoperator.md) or add additional [where clauses](../query/whereoperator.md)
+  * Try to reduce the number of columns returned by the query. Use either the [project operator](../query/projectoperator.md), or the [project-away operator](../query/projectawayoperator.md))
+  * Try use use the [summarize operator](../query/summarizeoperator.md) to get aggregated data
+  * and so on.
+
 * Increase the relevant query limit temporarily for that query. For more information, see **Result truncation** under [query limits](querylimits.md)).  
  > [!NOTE] 
- > We don't recommend that you increase the query limit, since the limits exist to protect the cluster. The limits make sure that a single query doesn't disrupt concurrent queries running on the cluster.
+ > We don't recommend that you increase the query limit, since the limits exist to protect the cluster. The limits make sure that a single query doesn't disrupt 
+  concurrent queries running on the cluster.
+  
