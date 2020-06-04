@@ -204,3 +204,4 @@ example, Kusto.Cli is used to run a query against the help cluster:
 The syntax is simple: `#ke`, followed by whitespace, and the query to run.
 The query is then sent to the primary instance of Kusto.Explorer, if one exists,
 with the current cluster/database set in Kusto.Cli.
+ 
