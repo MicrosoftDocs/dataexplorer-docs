@@ -98,7 +98,7 @@ Then we group by start time and ip to get a group for each session. We must supp
 
 :::image type="content" source="images/samples/040.png" alt-text="040"::: 
 
-Then we can add some code to count the durations in conveniently-sized bins. We've a slight preference for a bar chart, so we divide by `1s` to convert the timespans to numbers. 
+Then we can add some code to count the durations in conveniently sized bins. We've a slight preference for a bar chart, so we divide by `1s` to convert the timespans to numbers. 
 
 
       // Count the frequency of each duration:
@@ -298,7 +298,7 @@ Here's a step-by-step explanation of the query above:
 4. All with a `Count` of `0`.
 5. Last, we use the `summarize` operator to group-together bins from the original
    (left, or outer) argument to `union` and bins from the inner argument to it
-   (namely, the null bin rows). This ensure that the output has one row per bin,
+   (namely, the null bin rows). This ensures that the output has one row per bin,
    whose value is either zero or the original count.  
 
 ## Get more out of your data in Kusto using Machine Learning 
