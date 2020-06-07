@@ -39,7 +39,7 @@ The following table describes differences between `"tukey"` and `"ctukey"`:
 
 **Example**
 
-A time series with some noise creates outliers and you would like to replace those outliers (noise) with the average value. Use series_outliers() to detect the outliers, and then replace them.
+A time series with some noise creates outliers. If you would like to replace those outliers (noise) with the average value, use series_outliers() to detect the outliers, and then replace them.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
