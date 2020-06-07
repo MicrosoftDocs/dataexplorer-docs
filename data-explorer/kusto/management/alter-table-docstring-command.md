@@ -25,3 +25,4 @@ Alters the DocString value of an existing table.
 ```kusto
 .alter table LyricsAsTable docstring "This is the theme to Garry's show"
 ```
+ 
