@@ -50,7 +50,7 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
 ```
 
 > [!NOTE]
-> We use double-quotes around the connection string to prevent
+> Use double-quotes around the connection string to prevent
 > shell applications such as PowerShell from mis-interpreting the semicolon (`;`)
 > and similar characters.
 
