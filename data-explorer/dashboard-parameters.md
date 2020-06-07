@@ -47,7 +47,7 @@ To create a parameter, select the **New parameter** button at the top of the rig
 |**Data type**    |    The data type of the parameter values.     |
 |**Pin as dashboard filter**   |   Pin the parameter-based filter to the dashboard or unpin from the dashboard.       |
 |**Source**     |    The source of the parameter values: <ul><li>**Fixed values**: Manually introduced static filter values. </li><li>**Query**: Dynamically introduced values using a KQL query.  </li></ul>    |
-|**Add a “Select all” value**    |   Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values. This value should be built into the query to provide the functionality. See [Multiple selection query-based parameter](#multiple-selection-static-list-parameter) for more examples on building such queries.     |
+|**Add a “Select all” value**    |   Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values. This value should be built into the query to provide the functionality. See [Use the multiple selection query-based parameter](#use-the-multiple-selection-query-based-parameter) for more examples on building such queries.     |
 
 ## Modify a parameter
 
@@ -176,7 +176,7 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
 
     :::image type="content" source="media/dashboard-parameters/select-companies.png" alt-text="select companies":::
 
-### Single selection query-based parameter
+### Use the single selection query-based parameter
 
 Query-based parameter values are retrieved during dashboard loading by executing the parameter query. The following example shows you how to create and use a single selection query-based parameter.
 
