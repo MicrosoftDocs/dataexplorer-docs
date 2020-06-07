@@ -84,3 +84,4 @@ Example:
 In the example, the last 28 days of data will be on the cluster SSD and the
 additional 28 days of data will be stored in Azure blob storage.
 You can run queries on the full 56 days of data.
+ 
