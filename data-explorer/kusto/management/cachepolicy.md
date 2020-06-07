@@ -30,8 +30,7 @@ Use the [cache policy command](cache-policy.md) to manage the cache policy.
 
 > [!TIP]
 >Azure Data Explorer is designed for ad-hoc queries with intermediate result sets fitting the cluster's total RAM.
->For large jobs, like map-reduce, where you want to store intermediate results in persistent storage such as an SSD, use the continuous export feature.
->This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
+>For large jobs, like map-reduce, where you want to store intermediate results in persistent storage such as an SSD, use the continuous export feature. This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
  
 ## How cache policy is applied
 
