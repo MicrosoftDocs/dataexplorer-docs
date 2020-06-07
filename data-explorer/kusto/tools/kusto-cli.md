@@ -107,7 +107,8 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
 Kusto.Cli.exe "https://kustolab.kusto.windows.net/;Fed=true" -script:"c:\mycommands.txt"
 ```
 
-> [!NOTE] There should be no space between the colon and the argument value.
+> [!NOTE] 
+> There should be no space between the colon and the argument value
 
 ## Directives
 
