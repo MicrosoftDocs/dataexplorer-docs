@@ -41,7 +41,7 @@ folder. No additional installation is required since it's xcopy-installable.
 
 Kusto.Cli requires at least one command-line argument to run. Usually, that argument
 is the connection string to the Kusto service that the tool should connect to.
-For more information, see [Kusto connection strings](../api/connection-strings/kusto.md). If you run the tool without command-line arguments, or with an unknown set of arguments, or with the `/help` switch, a help message will display on the console.
+For more information, see [Kusto connection strings](../api/connection-strings/kusto.md). If you run the tool without command-line arguments, with an unknown set of arguments, or with the `/help` switch, a help message will display on the console.
 
 For example, use the following command to run Kusto.Cli. The command will connect to the `help` Kusto service, and set the database context to the `Samples` database:
 
