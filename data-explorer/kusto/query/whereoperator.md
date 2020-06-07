@@ -74,3 +74,4 @@ Traces | where * has "Kusto"
 ```
 
 All the rows in which the word "Kusto" appears in any column.
+ 
