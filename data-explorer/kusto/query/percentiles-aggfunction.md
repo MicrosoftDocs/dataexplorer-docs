@@ -85,7 +85,7 @@ A customer has a set of latency values in milliseconds:
 `{ 1, 1, 2, 2, 2, 5, 7, 7, 12, 12, 15, 15, 15, 18, 21, 22, 26, 35 }`.
 
 To reduce bandwidth and storage, do pre-aggregation to the
-following buckets: `{ 10, 20, 30, 40, 50, 100 }`. Count the number of events in each bucket to produce the following Kusto table:
+following buckets: `{ 10, 20, 30, 40, 50, 100 }`. Count the number of events in each bucket to produce the following  table:
 
 :::image type="content" source="images/percentiles-aggfunction/percentilesw-table.png" alt-text="Percentilesw table":::
 
