@@ -25,7 +25,7 @@ There are several possible courses of action:
   For example, you can:
   * Try to limit the number of records returned by the query. Use the [take operator](../query/takeoperator.md) or add additional [where clauses](../query/whereoperator.md)
   * Try to reduce the number of columns returned by the query. Use the [project operator](../query/projectoperator.md), or the [project-away operator](../query/projectawayoperator.md))
-  * Try to use the [summarize operator](../query/summarizeoperator.md) to get aggregated data
+  * Use the [summarize operator](../query/summarizeoperator.md) to get aggregated data
   * and so on
 
 * Increase the relevant query limit temporarily for that query. For more information, see **Result truncation** under [query limits](querylimits.md))
