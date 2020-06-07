@@ -134,13 +134,13 @@ The parameters can be seen in the **Parameters** side pane, but aren't currently
 
 1. Select different values to see how the visual is updated based on the selection.
 
-:::image type="content" source="media/dashboard-parameters/top-five-repos.png" alt-text="top five repos result":::
+    :::image type="content" source="media/dashboard-parameters/top-five-repos.png" alt-text="top five repos result":::
 
 ### Use the multiple selection fixed value parameters
 
 Fixed value parameters are based on predefined values specified by the user. The following example shows how to can create and use a multiple selection fixed value parameter.
 
-#### Create the parameter
+#### Create the parameters
 
 1. Select **Parameters** to open the **Parameters** pane and select **New parameter**.
 
@@ -156,7 +156,7 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
 
 :::image type="content" source="media/dashboard-parameters/companies-side-pane.png" alt-text="companies side pane":::
 
-#### Use the parameter 
+#### Use the parameters 
 <!--(Gabi: this query is not working. Need your help to fix)-->
 
 1. Run a sample query using the new *companies* parameter by using the `_companies` variable.
@@ -174,7 +174,7 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
 
 1. Select **multiple values** to view the visual updates based on the selection.
 
-:::image type="content" source="media/dashboard-parameters/select-companies.png" alt-text="select companies":::
+    :::image type="content" source="media/dashboard-parameters/select-companies.png" alt-text="select companies":::
 
 ### Single selection query-based parameter
 
@@ -234,7 +234,7 @@ Query-based parameter values are derived at dashboard load time by executing the
 
 1. Click **Done** to create the parameter.
 
-#### Using parameters in the query
+#### Use parameters in the query
 
 1. The following sample query uses the new *Events* parameter by using the `_events` variable.
 
