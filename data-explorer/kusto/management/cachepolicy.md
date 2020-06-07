@@ -28,15 +28,20 @@ The main implications of setting the hot cache policy are:
 
 Use the [cache policy command](cache-policy.md) to manage the cache policy.
 
+> [!TIP]
+>Azure Data Explorer is designed for ad-hoc queries with intermediate result sets fitting the cluster's total RAM.
+>For large jobs, like map-reduce, where you want to store intermediate results in persistent storage such as an SSD, use the continuous export feature.
+>This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
+ 
 ## How cache policy is applied
 
 When data is ingested into Azure Data Explorer, the system keeps track of the date and time of the ingestion, and of the extent that was created. The extent's ingestion date and time value (or maximum value, if an extent was built from multiple pre-existing extents), is used to evaluate the cache policy.
 
-By default, the effective policy is `null`, which means that all the data is considered **hot**.
-A non-`null` table-level policy overrides a database-level policy.
-
 > [!Note]
 > You can specify a value for the ingestion date and time by using the ingestion property `creationTime`.
+
+By default, the effective policy is `null`, which means that all the data is considered **hot**.
+A non-`null` table-level policy overrides a database-level policy.
 
 ## Scoping queries to hot cache
 
@@ -79,10 +84,3 @@ Example:
 In the example, the last 28 days of data will be on the cluster SSD and the
 additional 28 days of data will be stored in Azure blob storage.
 You can run queries on the full 56 days of data.
-
-## Cache policy doesn't make Kusto a cold storage technology
-
-Azure Data Explorer is designed for ad-hoc queries with intermediate result sets fitting the cluster's total RAM.
-For large jobs, like map-reduce, where you want to store intermediate results in persistent storage such as an SSD, use the continuous export feature.
-This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
- 
