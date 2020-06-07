@@ -11,12 +11,12 @@ ms.date: 03/30/2020
 ---
 # percentile(), percentiles()
 
-Returns an estimate for the specified [nearest-rank percentile](#nearest-rank-percentile) of the population defined by *Expr*.
+Returns an estimate for the specified [nearest-rank percentile](#nearest-rank-percentile) of the population defined by `*Expr*`.
 The accuracy depends on the density of population in the region of the percentile. This function can be used only in context of aggregation inside [summarize](summarizeoperator.md)
 
 * `percentiles()` is like `percentile()`, but calculates a number of percentile values, which is faster than calculating each percentile individually.
 * `percentilesw()` is like `percentilew()`, but calculates a number of weighted percentile values, which is faster than calculating each percentile individually.
-* `percentilew()` and `percentilesw()` lets you calculate weighted percentiles. Weighted percentiles calculate the given percentiles in a "weighted" way, by treating each value as if it was repeated `weight` times, in the input.
+* `percentilew()` and `percentilesw()` let you calculate weighted percentiles. Weighted percentiles calculate the given percentiles in a "weighted" way, by treating each value as if it was repeated `weight` times, in the input.
 
 **Syntax**
 
@@ -38,14 +38,14 @@ summarize `percentilesw_array(`*Expr*`,` *WeightExpr*`,` *Dynamic array*`)`
 
 **Arguments**
 
-* *Expr*: Expression that will be used for aggregation calculation.
-* *WeightExpr*: Expression that will be used as the weight of values for aggregation calculation.
-* *Percentile* is a double constant that specifies the percentile.
-* *Dynamic array*: list of percentiles in a dynamic array of integer or floating point numbers.
+* `*Expr*`: Expression that will be used for aggregation calculation.
+* `*WeightExpr*`: Expression that will be used as the weight of values for aggregation calculation.
+* `*Percentile*`: A double constant that specifies the percentile.
+* `*Dynamic array*`: list of percentiles in a dynamic array of integer or floating point numbers.
 
 **Returns**
 
-Returns an estimate for *Expr* of the specified percentiles in the group. 
+Returns an estimate for `*Expr*` of the specified percentiles in the group. 
 
 **Examples**
 
@@ -90,10 +90,10 @@ following buckets: `{ 10, 20, 30, 40, 50, 100 }`. Count the number of events in 
 :::image type="content" source="images/percentiles-aggfunction/percentilesw-table.png" alt-text="Percentilesw table":::
 
 The table displays:
- * Eight events in the 10ms bucket (corresponding to subset `{ 1, 1, 2, 2, 2, 5, 7, 7 }`)
- * Six   events in the 20ms bucket (corresponding to subset `{ 12, 12, 15, 15, 15, 18 }`)
- * Three events in the 30ms bucket (corresponding to subset `{ 21, 22, 26 }`)
- * One   event  in the 40ms bucket (corresponding to subset `{ 35 }`)
+ * Eight events in the 10-ms bucket (corresponding to subset `{ 1, 1, 2, 2, 2, 5, 7, 7 }`)
+ * Six   events in the 20-ms bucket (corresponding to subset `{ 12, 12, 15, 15, 15, 18 }`)
+ * Three events in the 30-ms bucket (corresponding to subset `{ 21, 22, 26 }`)
+ * One   event  in the 40-ms bucket (corresponding to subset `{ 35 }`)
 
 At this point, the original data is no longer available. Only the number of events in each bucket. To compute percentiles from this data, use the `percentilesw()` function.
 For example, for the 50, 75, and 99.9 percentiles, use the following query.
