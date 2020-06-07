@@ -34,7 +34,7 @@ PowerShell script.
 
 Kusto.Cli is part of the NuGet package `Microsoft.Azure.Kusto.Tools` that
  [you can download](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
-Once downloaded, you can extract the package's `tools` folder to the target
+Once downloaded, extract the package's `tools` folder to the target
 folder. No additional installation is required since it's xcopy-installable.
 
 ## Run the tool
