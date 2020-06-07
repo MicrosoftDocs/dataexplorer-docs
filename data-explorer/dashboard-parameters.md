@@ -68,7 +68,7 @@ Several dashboard parameter types are supported. A parameter must be used in the
 
 ### Use the default Time range parameter
 
-Every dashboard has a *Time range* parameter by default. It shows up on the dashboard as a filter only when used in a query. Use the parameter keywords `_startTime` and `__endTime` to use the default time range parameter in a query as seen in the following query:
+Every dashboard has a *Time range* parameter by default. It shows up on the dashboard as a filter only when used in a query. Use the parameter keywords `_startTime` and `__endTime` to use the default time range parameter in a query as seen in the following example:
 
 ```kusto
 EventsAll
@@ -77,13 +77,13 @@ EventsAll
 | summarize TotalEvents = count() by RepoName=tostring(Repo.name)
 | top 5 by TotalEvents
 ```
-\\TODO Once saved, the time range filter starts to show up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard using a relative time slot (last x minutes/hours/days) or a custom time range.\\
+\\TODO Once saved, the time range filter shows up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard using **Time range** from the drop-down list (last x minutes/hours/days) or a **Custom time range**.\\
 
 :::image type="content" source="media/dashboard-parameters/time-range.png" alt-text="filter using custom time range":::
 
 ### Use the single selection fixed value parameter
 
-Fixed value parameters are based on predefined values specified by the user. The following example shows you how to create a single selection fixed value  parameter.
+Fixed value parameters are based on predefined values specified by the user. The following example shows you how to create a single selection fixed value parameter.
 
 #### Create the parameter
 
@@ -111,10 +111,11 @@ Fixed value parameters are based on predefined values specified by the user. The
     * Add a **Select all** value: Unchecked
     * Default value: Microsoft
 
-1. Click **Done** to create the parameter.
-The parameter can be seen in the **Parameters** side pane, but isn't currently being used in any visuals.
+1. Select **Done** to create the parameter.
 
-:::image type="content" source="media/dashboard-parameters/startend-side-pane.png" alt-text="start time end time parameters in side pane":::
+The parameters can be seen in the **Parameters** side pane, but aren't currently being used in any visuals.
+
+:::image type="content" source="media/dashboard-parameters/start-end-side-pane.png" alt-text="start time end time parameters in side pane":::
 
 #### Use the parameter
 
@@ -129,67 +130,67 @@ The parameter can be seen in the **Parameters** side pane, but isn't currently b
     | top 5 by WatchEvents
     ```
 
-    The new parameter shows up in the parameter list at the top of the dashboard. \\TODO: image
+    The new parameter shows up in the parameter list at the top of the dashboard. \\TODO: image. Image below doesn't fit with text...\\
 
 1. Select different values to see how the visual is updated based on the selection.
 
-:::image type="content" source="media/dashboard-parameters/topfive-repos.png" alt-text="top five repos result":::
+:::image type="content" source="media/dashboard-parameters/top-five-repos.png" alt-text="top five repos result":::
 
 ### Use the multiple selection fixed value parameters
 
-Fixed value parameters are based on predefined values specified by the user. The following example shows how to can create a multiple selection static
-list-based parameter.
+Fixed value parameters are based on predefined values specified by the user. The following example shows how to can create and use a multiple selection fixed value parameter.
 
 #### Create the parameter
 
-Open the **parameters** pane and select **add new parameter option** from the side bar.
+1. Select **Parameters** to open the **Parameters** pane and select **New parameter**.
 
-Fill in the details as mentioned in the [**Single selection static list parameter**](#single-selection-static-list-parameter) above with the below changes:
+1. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
 
-* **Parameter display name**: Companies
-* **Parameter type**: Multiple selection
-* **Variable name**: `_companies`
+    * **Parameter display name**: Companies
+    * **Parameter type**: Multiple selection
+    * **Variable name**: `_companies`
 
-Click **Done** to create the parameter.
+1. Click **Done** to create the parameter.
 
-The new parameter shows up in the parameter side pane but isn't being used in any visuals currently.
+The new parameters can be seen in the **Parameters** side pane, but aren't currently being used in any visuals.
 
 :::image type="content" source="media/dashboard-parameters/companies-side-pane.png" alt-text="companies side pane":::
 
 #### Use the parameter 
 <!--(Gabi: this query is not working. Need your help to fix)-->
 
-Run a sample query using the new Companies parameter by using the `_companies` variable.
+1. Run a sample query using the new *companies* parameter by using the `_companies` variable.
 
-```kusto
-EventsAll
-| where CreatedAt > ago(7d)
-| where Type == "WatchEvent"
-| where Repo.name in (_companies)
-| summarize WatchEvents=count() by RepoName = tolower(tostring(Repo.name))
-| top 5 by WatchEvents
-```
+    ```kusto
+    EventsAll
+    | where CreatedAt > ago(7d)
+    | where Type == "WatchEvent"
+    | where Repo.name in (_companies)
+    | summarize WatchEvents=count() by RepoName = tolower(tostring(Repo.name))
+    | top 5 by WatchEvents
+    ```
 
-The new parameter shows up in the parameter list at the top of the dashboard. Select **multiple values** to view the visual updating based on the selection.
+    The new parameter shows up in the parameter list at the top of the dashboard.  
+
+1. Select **multiple values** to view the visual updates based on the selection.
 
 :::image type="content" source="media/dashboard-parameters/select-companies.png" alt-text="select companies":::
 
 ### Single selection query-based parameter
 
-Query-based parameter values are retrieved at dashboard load time by executing the parameter query. The following example shows how to create a single selection query-based parameter:
+Query-based parameter values are retrieved during dashboard loading by executing the parameter query. The following example shows you how to create and use a single selection query-based parameter.
 
 #### Create the parameter
 
-1. Open the **parameters** pane and select **add new parameter** from the side bar.
+1. Select **Parameters** to open the **Parameters** pane and select **New parameter**.
 
-2. Fill in the details as mentioned in the [**Single selection static list parameter**](#single-selection-static-list-parameter) above with the below changes:
+2. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
 
     * **Parameter display name**: Event
     * **Variable name**: `_event`
     * **Source**: Query
     * **Data source**: GitHub
-
-    * Click **Add query** and enter the below and click **done**
+    * Select **Add query** and enter the following query. Select **Done**.
 
     ```kusto
     EventsAll
@@ -201,45 +202,51 @@ Query-based parameter values are retrieved at dashboard load time by executing t
     * **Display name**: Type
     * **Default value**: WatchEvent
 
-Click **Done** to create the parameter.
+1. Select **Done** to create the parameter.
 
 #### Use a parameter in the query
 
-Sample query using the new Event parameter by using the `_ event` variable:
+1. The following is a sample query using the new Event parameter by using the `_ event` variable:
 
-``` kusto
-EventsAll
-| where Type in (_event)
-| summarize count(Id) by Type, bin(CreatedAt,7d)
-```
+    ``` kusto
+    EventsAll
+    | where Type in (_event)
+    | summarize count(Id) by Type, bin(CreatedAt,7d)
+    ```
 
-The new parameter shows up in the parameter list at the top of the dashboard. Select different values to see the visual updating based on the selection.
+    The new parameter shows up in the parameter list at the top of the dashboard. 
 
-### Multiple selection query-based parameter
+1. Select different values to view the visual updates based on the selection.
+
+### Use the multiple selection query-based parameter
 
 Query-based parameter values are derived at dashboard load time by executing the user specified query. The following example shows how to can create a multiple selection query-based parameter:
 
 #### Create a parameter
 
-1. Open the **parameters** pane and select **add new parameter** from the side bar.
+1. Select **Parameters** to open the **Parameters** pane and select **New parameter**.
 
-Fill in the details as mentioned in the [**Single selection static list parameter**](#single-selection-static-list-parameter) above with the below changes:
+1. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
 
-* **Parameter display name**: Events
-* **Parameter type**: Multiple selection
-* **Variable name**: `_events`
+    * **Parameter display name**: Events
+    * **Parameter type**: Multiple selection
+    * **Variable name**: `_events`
 
-Click **Done** to create the parameter.
+1. Click **Done** to create the parameter.
 
-#### Using parameter in the query
+#### Using parameters in the query
 
-Sample query using the new Events parameter by using the `_events` variable:
-This sample uses the **Select All** option by checking for empty values with the `isempty()` function.
+1. The following sample query uses the new *Events* parameter by using the `_events` variable.
 
-``` kusto
-EventsAll
-| where Type in (_event) or isempty(_events)
-| summarize count(Id) by Type, bin(CreatedAt,7d)
-```
+    ``` kusto
+    EventsAll
+    | where Type in (_event) or isempty(_events)
+    | summarize count(Id) by Type, bin(CreatedAt,7d)
+    ```
 
-The new parameter shows up in the parameter list at the top of the dashboard. Select different values to see the visual updating based on the selection.
+    > [!NOTE]
+    > This sample uses the **Select All** option by checking for empty values with the `isempty()` function.
+
+    The new parameter shows up in the parameter list at the top of the dashboard. 
+
+1. Select different values to see visual updates based on the selection.
