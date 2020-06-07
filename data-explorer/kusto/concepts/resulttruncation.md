@@ -24,7 +24,7 @@ There are several possible courses of action:
 * Change the query to consume fewer resources. 
   For example, you can:
   * Try to limit the number of records returned by the query. Use the [take operator](../query/takeoperator.md) or add additional [where clauses](../query/whereoperator.md)
-  * Try to reduce the number of columns returned by the query. Use either the [project operator](../query/projectoperator.md), or the [project-away operator](../query/projectawayoperator.md))
+  * Try to reduce the number of columns returned by the query. Use the [project operator](../query/projectoperator.md), or the [project-away operator](../query/projectawayoperator.md))
   * Try to use the [summarize operator](../query/summarizeoperator.md) to get aggregated data
   * and so on
 
