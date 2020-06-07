@@ -113,10 +113,11 @@ The result for the above query is:
 
 :::image type="content" source="images/percentiles-aggfunction/percentilesw-result.png" alt-text="Percentilesw result" border="false":::
 
-> [!NOTE]
-> The above query corresponds to the function
+
+The above query corresponds to the function
 `percentiles(LatencyBucket, 50, 75, 99.9)`, if the data was expanded to the following form:
-     :::image type="content" source="images/percentiles-aggfunction/percentilesw-rawtable.png" alt-text="Percentilesw raw table":::
+
+:::image type="content" source="images/percentiles-aggfunction/percentilesw-rawtable.png" alt-text="Percentilesw raw table":::
 
 ## Getting multiple percentiles in an array
 
