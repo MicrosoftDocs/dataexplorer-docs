@@ -26,7 +26,7 @@ The main implications of setting the hot cache policy are:
   than for local SSD. It's currently about 45 times cheaper in Azure.
 * **Performance**: Data is queried faster when it's in local SSD, particularly for range queries that scan large amounts of data.  
 
-[Control commands](cache-policy.md) enable administrators to manage the cache policy.
+Use the [cache policy command](cache-policy.md) to manage the cache policy.
 
 ## How cache policy is applied
 
