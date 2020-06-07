@@ -7,42 +7,42 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/04/2020
+ms.date: 06/07/2020
 ---
 
-# Parameters in Azure Data Explorer dashboards
+# Use parameters in Azure Data Explorer dashboards
 
-Parameters are used as building blocks for dashboard filters. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. This document describes the creation and use of parameters and linked filters in Azure Data Explorer dashboards. A query can contain one or more parameters and one or more dashboard filters.
+Parameters are used as building blocks for dashboard filters in Azure Data Explorer dashboards. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. \\TODO: A query can contain one or more parameters and one or more dashboard filters. This document describes the creation and use of parameters and linked filters in Azure Data Explorer dashboards. 
 
 > [!NOTE]
 > Parameter management is available in edit mode to dashboard editors.
 
 ## Prerequisites
 
-* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
+[Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
 
 ## View parameters list
 
-Click on the **Parameters** button at the top of the dashboard to view the list of all dashboard parameters.
+Select the **Parameters** button at the top of the dashboard to view the list of all dashboard parameters.
 
 :::image type="content" source="media/dashboard-parameters/dashboard-icons.png" alt-text="parameters button top of dashboard":::
 
 ## Create a parameter
 
-Select the **New parameter** button on the top of the right pane.
+To create a parameter, select the **New parameter** button at the top of the right pane.
 
 :::image type="content" source="media/dashboard-parameters/new-parameter-button.png" alt-text="New parameters button":::
 
 ### Properties
 
-1. In the **Add parameter** screen, configure the properties detailed below.
+1. In the **Add parameter** pane, configure the properties detailed below.
 
 :::image type="content" source="media/dashboard-parameters/properties.png" alt-text="add parameter properties":::
 
 |Field  |Description |
 |---------|---------|
 |**Parameter display name**    |   The name of the parameter shown on the dashboard or the edit card.      |
-|**Parameter type**    |One of the following:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time.Every dashboard has a time range picker by default.</li></ul>    |
+|**Parameter type**    |One of the following:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li></ul>    |
 |**Variable name**     |   The name of the parameter to be used in the query.      |
 |**Data type**    |    The data type of the parameter values.     |
 |**Pin as dashboard filter**   |   Pin the parameter-based filter to the dashboard or unpin from the dashboard.       |
@@ -51,8 +51,8 @@ Select the **New parameter** button on the top of the right pane.
 
 ## Modify a parameter
 
-Modify each parameter by selecting the **Edit** option in the parameter card three dots menu. You can also delete, clone, filter pin to or unpin from the dashboard.
-
+Select **Edit** in the parameter card three dots menu to modify each parameter. You can also delete, clone, pin to or unpin from the dashboard.
+\\TODO - unclear where?
 The following values can be viewed in the side pane:
 * Parameter display name
 * Variable names 
@@ -61,15 +61,14 @@ The following values can be viewed in the side pane:
 
 :::image type="content" source="media/dashboard-parameters/modify-parameter.png" alt-text="Modify parameters":::
 
-## Parameter Types
+## Use different parameter types
 
-Several dashboard parameter types are supported. A parameter must be used in the query to make the filter applicable for that query visual. The following examples describe how to use the parameters in a query for various parameter types. Once defined, you can see the parameters in the **Query** page > filter top bar and in the query itself using intellisense.
+Several dashboard parameter types are supported. A parameter must be used in the query to make the filter applicable for that query visual. The following examples describe how to use parameters in a query for various parameter types. Once defined, you can see the parameters in the **Query** page > filter top bar and in the query itself using intellisense.
+\\TODO: need image
 
-### The default Time range parameter
+### Use the default Time range parameter
 
-Every dashboard has a *Time range* parameter by default. It only shows up on the dashboard as a filter when used in a query.
-
-Use the parameter keywords `_startTime` and `__endTime` to use the default time range parameter in a query.
+Every dashboard has a *Time range* parameter by default. It shows up on the dashboard as a filter only when used in a query. Use the parameter keywords `_startTime` and `__endTime` to use the default time range parameter in a query as seen in the following query:
 
 ```kusto
 EventsAll
@@ -78,18 +77,17 @@ EventsAll
 | summarize TotalEvents = count() by RepoName=tostring(Repo.name)
 | top 5 by TotalEvents
 ```
-
-Once saved, the time range filter starts to show up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard using either a relative time slot (last xx) or using a custom time range.
+\\TODO Once saved, the time range filter starts to show up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard using a relative time slot (last x minutes/hours/days) or a custom time range.\\
 
 :::image type="content" source="media/dashboard-parameters/time-range.png" alt-text="filter using custom time range":::
 
-### Single selection static list parameter
+### Use the single selection fixed value parameter
 
-Static list-based parameters are based on predefined values specified by the user. The following example shows how to create a single selection static list-based parameter.
+Fixed value parameters are based on predefined values specified by the user. The following example shows you how to create a single selection fixed value  parameter.
 
 #### Create the parameter
 
-1. Open the **parameters** pane and select **add new parameter** from the side bar
+1. Select **Parameters** to open the **Parameters** pane and select **New parameter**.
 
 1. Fill in the details as follows:
 
@@ -114,7 +112,7 @@ Static list-based parameters are based on predefined values specified by the use
     * Default value: Microsoft
 
 1. Click **Done** to create the parameter.
-The parameter shows up in the parameter side pane, but isn't currently being used in any visuals.
+The parameter can be seen in the **Parameters** side pane, but isn't currently being used in any visuals.
 
 :::image type="content" source="media/dashboard-parameters/startend-side-pane.png" alt-text="start time end time parameters in side pane":::
 
@@ -131,14 +129,15 @@ The parameter shows up in the parameter side pane, but isn't currently being use
     | top 5 by WatchEvents
     ```
 
-The new parameter shows up in the parameter list at the top of the dashboard. Select different values to see the visual
-gets updated based on the selection.
+    The new parameter shows up in the parameter list at the top of the dashboard. \\TODO: image
+
+1. Select different values to see how the visual is updated based on the selection.
 
 :::image type="content" source="media/dashboard-parameters/topfive-repos.png" alt-text="top five repos result":::
 
-### Multiple selection static list parameters
+### Use the multiple selection fixed value parameters
 
-Static list-based parameters are based on predefined values specified by the user. The following example shows how to can create a multiple selection static
+Fixed value parameters are based on predefined values specified by the user. The following example shows how to can create a multiple selection static
 list-based parameter.
 
 #### Create the parameter
