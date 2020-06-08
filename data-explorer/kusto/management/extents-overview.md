@@ -1,5 +1,5 @@
 ---
-title: Extents (data shards) - Azure Data Explorer | Microsoft Docs
+title: Extents (data shards) - Azure Data Explorer
 description: This article describes Extents (data shards) in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -153,8 +153,8 @@ The following example ingests data only once. The 2nd and 3rd commands do nothin
 * Overusing `ingest-by` tags is not recommended.
 If the pipeline feeding Kusto is known to have data duplications, we recommend
 that you solve these duplications as much as possible, before ingesting the data into Kusto. Also, use `ingest-by` tags in Kusto only when the part that ingests to Kusto
-might introduce duplicates by itself. There's a retry mechanism that can overlap 
-with already-in-progress ingestion calls. Attempting to set a unique `ingest-by` tag
+might introduce duplicates by itself (for example, there's a retry mechanism that can overlap 
+with already-in-progress ingestion calls). Attempting to set a unique `ingest-by` tag
 for each ingestion call might result in a severe impact on performance.
 * If such tags aren't required for some period of time after the data is ingested,
 we recommend that you [drop the tags](extents-commands.md#drop-extent-tags).
