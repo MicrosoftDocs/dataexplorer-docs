@@ -91,9 +91,9 @@ following buckets: `{ 10, 20, 30, 40, 50, 100 }`. Count the number of events in 
 
 The table displays:
  * Eight events in the 10-ms bucket (corresponding to subset `{ 1, 1, 2, 2, 2, 5, 7, 7 }`)
- * Six   events in the 20-ms bucket (corresponding to subset `{ 12, 12, 15, 15, 15, 18 }`)
+ * Six events in the 20-ms bucket (corresponding to subset `{ 12, 12, 15, 15, 15, 18 }`)
  * Three events in the 30-ms bucket (corresponding to subset `{ 21, 22, 26 }`)
- * One   event  in the 40-ms bucket (corresponding to subset `{ 35 }`)
+ * One event  in the 40-ms bucket (corresponding to subset `{ 35 }`)
 
 At this point, the original data is no longer available. Only the number of events in each bucket. To compute percentiles from this data, use the `percentilesw()` function.
 For example, for the 50, 75, and 99.9 percentiles, use the following query.
