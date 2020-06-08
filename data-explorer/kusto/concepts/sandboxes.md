@@ -1,5 +1,5 @@
 ---
-title: Sandboxes - Azure Data Explorer | Microsoft Docs
+title: Sandboxes - Azure Data Explorer
 description: This article describes Sandboxes in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -62,5 +62,5 @@ Some of the  limitations can be controlled using a cluster-level [sandbox policy
 
 |Code                      |Message                                                                                        |Potential reason                                                                                                    |
 |--------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-|E_SB_QUERY_THROTTLED_ERROR|The sandboxed query was aborted because of throttling. Retrying after some backoff might succeed   |There are no available sandboxes on the target node. New sandboxes should become available in a few seconds         |
-|E_SB_QUERY_THROTTLED_ERROR|Sandboxes of type '{kind}' haven't yet been initialized                                       |The sandbox policy has recently changed. New sandboxes that obey the new policy will become available in a few seconds|
+|E_SB_QUERY_THROTTLED_ERROR|The sandboxed query was aborted because of throttling. Retrying after some backoff might succeed   |There are no available sandboxes on the target node. New sandboxes should become available in a few seconds     |
+|E_SB_QUERY_THROTTLED_ERROR|Sandboxes of kind '{kind}' haven't yet been initialized                       |The sandbox policy has recently changed. New sandboxes obeying the new policy will become available in a few seconds           |
