@@ -38,7 +38,7 @@ For **Ingestion type**, select the following options:
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container":::
 
- > [!Note] 
+ > [!NOTE] 
  > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
 
   A sample of the data appears. If you want to, you can filter it to show only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
@@ -57,7 +57,7 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 
         In this case, the data format is **CSV**
 
-    > [!Note]
+    > [!NOTE]
     > If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#edit-the-schema).
     
     * You can select the check box **Include column names** to ignore the heading row of the file.
@@ -85,7 +85,7 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 |Sort ascending   |Sort the table by the selected column in ascending order (existing columns only) |
 |Sort descending  |Sort the table by the selected column in descending order (existing columns only) |
 
-> [!Note]
+> [!NOTE]
 > For tabular formats, each column can be ingested into one column in Azure Data Explorer.
 
 :::image type="content" source="media/one-click-ingestion-new-table/edit-view.png" alt-text="Edit view":::
@@ -101,7 +101,7 @@ Select **Start ingestion** to create a table and mapping and to begin data inges
 In the **Data ingestion completed** window, all three steps will be marked with green check marks when data ingestion finishes successfully.
 
 :::image type="content" source="media/one-click-ingestion-new-table/one-click-data-ingestion-complete.png" alt-text="One click ingestion complete"::: 
-
+ in
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
 
 ## Continuous ingestion - container only
