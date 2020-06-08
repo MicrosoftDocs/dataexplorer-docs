@@ -39,7 +39,7 @@ This technique is called **columnar store**. It enables efficient encoding and c
 column often "resemble" each other. It also makes querying large
 spans of data more efficient, because only the columns used by the query
 need to be loaded. Internally, each column of data in the extent is 
-subdivided into segments, and the segments into blocks. This division is not observable to queries, and lets Kusto optimize column compression and indexing.
+subdivided into segments, and the segments into blocks. This division isn't observable to queries, and lets Kusto optimize column compression and indexing.
 
 To maintain query efficiency, smaller extents are merged into larger extents.
 The merge is done automatically, as a background process, according
@@ -51,7 +51,7 @@ Extent merging stops once an extent reaches certain limits, such as size,
 since beyond a certain point, merging reduces rather than increases efficiency.
 
 When a [Data partitioning policy](partitioningpolicy.md) is defined
-on a table, extents go through another background process after they are
+on a table, extents go through another background process after they're
 created (post-ingestion). This process reingests the data from the source extents
 and creates *homogeneous* extents, in which the values of the column that is the
 table's *partition key* all belong to the same partition. If the policy includes a
@@ -59,7 +59,7 @@ table's *partition key* all belong to the same partition. If the policy includes
 the same partition will be assigned to the same data node in the cluster.
 
 > [!NOTE]
-> Extent-level operations, such as merging or altering extent tags, do not modify existing extents.
+> Extent-level operations, such as merging or altering extent tags, don't modify existing extents.
 > Instead, new extents are created in these operations, based on existing source extents. The new extents replace their forefathers in a single transaction.
 
 The common extent lifecycle is:
@@ -122,7 +122,7 @@ For example:
 
 #### Performance notes
 
-* Do not overuse `drop-by` tags. Dropping data in the manner mentioned above is meant for rarely occurring events. It isn't for replacing record-level data, and it relies on the fact that the data tagged in this manner is bulky. Attempting to give a different tag for each record, or small number of records, might result in a severe impact on performance.
+* Don't overuse `drop-by` tags. Dropping data in the manner mentioned above is meant for rarely occurring events. It isn't for replacing record-level data, and it relies on the fact that the data tagged in this manner is bulky. Attempting to give a different tag for each record, or small number of records, might result in a severe impact on performance.
 * If `drop-by` tags aren't needed for a period of time after data is ingested,
 we recommend that you [drop the tags](extents-commands.md#drop-extent-tags).
 
@@ -150,7 +150,7 @@ The following example ingests data only once. The 2nd and 3rd commands do nothin
 
 #### Performance notes
 
-* Overusing `ingest-by` tags is not recommended.
+* Overusing `ingest-by` tags isn't recommended.
 If the pipeline feeding Kusto is known to have data duplications, we recommend
 that you solve these duplications as much as possible, before ingesting the data into Kusto. Also, use `ingest-by` tags in Kusto only when the part that ingests to Kusto
 might introduce duplicates by itself (for example, there's a retry mechanism that can overlap 
