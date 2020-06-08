@@ -140,14 +140,14 @@ By default, Kusto.Cli runs in **line input mode**. Each newline character is int
 In this mode, you can break a long query or command into multiple lines. The `&` character as the last character of a line, before the newline, causes Kusto.Cli to continue reading the next line. The `&&` character as the last character of a line, before the newline, causes Kusto.Cli to ignore the newline and continue reading the next line.
 
 Kusto.Cli also supports running in **block input mode**. By using
-either the command-line switch `-lineMode:false`, or by using the command
+either the command-line switch `-lineMode:false`, or by using the directive
 `#blockmode`, you can instruct Kusto.Cli to assume every line is a continuation
 of the previous line, so that queries and commands are delimited by an empty
 input line only.
 
 ## Comments
 
-Kusto.Cli interprets a `//` string that begins a new line as a comment line. It
+Kusto.Cli interprets a `//` string that begins new line as a comment line. It
 ignores the rest of the line and continues reading the next line.
 
 ## Tool-only options
