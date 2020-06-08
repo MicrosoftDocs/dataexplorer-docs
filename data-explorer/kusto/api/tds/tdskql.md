@@ -43,7 +43,7 @@ can be called like this:
   }
 ```
 
-> [!NOTE:]
+> [!NOTE]
 > Call stored functions with an explicit schema named `kusto`, to distinguish between Kusto stored functions and emulated
 > SQL system stored procedures.
 
