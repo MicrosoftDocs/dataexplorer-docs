@@ -29,7 +29,7 @@ Normalization is a convenient way to make sure that the sum of the coefficients 
 
 **Examples**
 
-* Calculating a moving average of five points can be done by setting *filter*=[1,1,1,1,1] and *normalize*=`true` (default). Note the effect of *center*=`false` (default) vs. `true`:
+* Calculate a moving average of five points by setting *filter*=[1,1,1,1,1] and *normalize*=`true` (default). Note the effect of *center*=`false` (default) vs. `true`:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
