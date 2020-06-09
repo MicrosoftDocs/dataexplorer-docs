@@ -61,14 +61,18 @@ The following indicators can be viewed in the parameter card:
 
 :::image type="content" source="media/dashboard-parameters/modify-parameter.png" alt-text="Modify parameters":::
 
-## Use different parameter types
+## Use parameters in your query
 
-Several dashboard parameter types are supported. A parameter must be used in the query to make the filter applicable for that query visual. The following examples describe how to use parameters in a query for various parameter types. Once defined, you can see the parameters in the **Query** page > filter top bar and in the query intellisense.
+A parameter must be used in the query to make the filter applicable for that query visual. Once defined, you can see the parameters in the **Query** page > filter top bar and in the query intellisense.
 
 :::image type="content" source="media/dashboard-parameters/query-intellisense.png" alt-text="See parameters in top bar and intellisense":::
 
 > [!NOTE]
 > If the parameter isn't used in the query, the filter remains disabled. Once the parameter is added to the query, the filter becomes active.
+
+## Use different parameter types
+
+Several dashboard parameter types are supported. The following examples describe how to use parameters in a query for various parameter types. 
 
 ### Use the default Time range parameter
 
@@ -81,6 +85,7 @@ EventsAll
 | summarize TotalEvents = count() by RepoName=tostring(Repo.name)
 | top 5 by TotalEvents
 ```
+
 Once saved, the time range filter shows up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard by selecting from the drop down: **Time range** (last x minutes/hours/days) or a **Custom time range**.
 
 :::image type="content" source="media/dashboard-parameters/time-range.png" alt-text="filter using custom time range":::
@@ -123,7 +128,7 @@ The parameters can be seen in the **Parameters** side pane, but aren't currently
 
 #### Use the parameter
 
-1. Run a sample query using the *new Company* parameter by using the `_company` variable name:
+1. Run a sample query using the new *Company* parameter by using the `_company` variable name:
 
     ```kusto
     EventsAll
@@ -134,7 +139,7 @@ The parameters can be seen in the **Parameters** side pane, but aren't currently
     | top 5 by WatchEvents
     ```
 
-    The new parameter shows up in the parameter list at the top of the dashboard. \\TODO: image. Image below doesn't fit with text...\\
+    The new parameter shows up in the parameter list at the top of the dashboard.
 
 1. Select different values to update the visuals.
 
@@ -176,7 +181,7 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
 
     The new parameter shows up in the parameter list at the top of the dashboard.  
 
-1. \\To Do: Select **multiple values** to view the visual updates based on the selection.
+1. Select one or more different values to update the visuals.
 
     :::image type="content" source="media/dashboard-parameters/select-companies.png" alt-text="select companies":::
 
@@ -253,4 +258,4 @@ Query-based parameter values are derived at dashboard load time by executing the
 
     The new parameter shows up in the parameter list at the top of the dashboard. 
 
-1. Select different values to update the visuals.
+1. Select one or more different values to update the visuals.
