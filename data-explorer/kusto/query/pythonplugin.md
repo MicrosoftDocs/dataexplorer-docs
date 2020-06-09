@@ -53,7 +53,7 @@ The following variables are reserved for interaction between Kusto query languag
 
 * The plugin is disabled by default.
 * Prerequisites for enabling the plugin are listed [here](../concepts/sandboxes.md#prerequisites).
-* Enable or disable the plugin in the [Azure portal in the **Configuration** tab of your cluster](https://docs.microsoft.com/azure/data-explorer/language-extensions).
+* Enable or disable the plugin in the [Azure portal in the **Configuration** tab of your cluster](../../language-extensions.md).
 
 ## Notes and Limitations
 
@@ -69,7 +69,7 @@ The following variables are reserved for interaction between Kusto query languag
   * In both the above cases, it's recommended to verify that the volume and frequency of the ingestion, as well as the complexity and
     resources utilization of the Python logic are aligned with [sandbox limitations](../concepts/sandboxes.md#limitations), and the cluster's available resources.
     Failure to do so may result with [throttling errors](../concepts/sandboxes.md#errors).
-  * It is *not* possible to use the plugin in a query which is defined as part of an update policy, whose source table is ingested using [streaming ingestion](https://docs.microsoft.com/azure/data-explorer/ingest-data-streaming).
+  * It is *not* possible to use the plugin in a query which is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../../ingest-data-streaming.md).
 
 ## Examples
 
@@ -242,6 +242,6 @@ range Id from 1 to 3 step 1
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end

@@ -1,5 +1,5 @@
 ---
-title: basket plugin - Azure Data Explorer | Microsoft Docs
+title: basket plugin - Azure Data Explorer
 description: This article describes basket plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -23,7 +23,7 @@ Basket finds all frequent patterns of discrete attributes (dimensions) in the da
 
 **Returns**
 
-Basket returns all frequent patterns appearing in above the ratio threshold (default: 0.05) of the rows Each pattern is represented by a row in the results.
+Basket returns all frequent patterns appearing above the ratio threshold (default: 0.05) of the rows. Each pattern is represented by a row in the results.
 
 The first column is the segment Id. The next two columns are the count and percentage of rows out of the original query that are captured by the pattern. The remaining columns are from the original query and their value is either a specific value from the column or a wildcard value (which are by default null) meaning variable values.
 
@@ -63,6 +63,7 @@ Available arguments:
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5
@@ -84,6 +85,7 @@ StormEvents
 
 **Example with custom wildcards**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5

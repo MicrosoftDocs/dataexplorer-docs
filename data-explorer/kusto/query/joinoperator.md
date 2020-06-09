@@ -161,7 +161,7 @@ Events
 | project City, ActivityId, StartTime, StopTime, Duration = StopTime - StartTime
 ```
 
-[More about this example](./samples.md#activities).
+[More about this example](./samples.md#get-sessions-from-start-and-stop-events).
 
 ## Join flavors
 

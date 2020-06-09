@@ -13,33 +13,36 @@ ms.date: 04/01/2020
 
 ## Ad-hoc query tools
 
-
-* [Kusto.Explorer](./kusto-explorer.md) - The primary desktop tool for querying and controlling Kusto
-* [Web UI](https://docs.microsoft.com/azure/data-explorer/web-query-data) - Web UI for querying Kusto
+* Kusto.Explorer
+   * [Kusto.Explorer installation and user interface](./kusto-explorer.md) - The primary desktop tool for querying and controlling Kusto
+   * [Using Kusto.Explorer](./kusto-explorer-using.md)
+   * [Kusto.Explorer troubleshooting](kusto-explorer-troubleshooting.md)
+* [Web UI](../../web-query-data.md) - Web UI for querying Kusto
 
 ## Visualizations, dashboards, and reporting tools
 
 
-* [Azure Notebooks](https://docs.microsoft.com/azure/data-explorer/azure-notebooks) - use Azure Notebooks to analyze data in Azure Data Explorer.
+* [Azure Notebooks](../../azure-notebooks.md) - use Azure Notebooks to analyze data in Azure Data Explorer.
 * Excel
-    * [Excel blank query](https://docs.microsoft.com/azure/data-explorer/excel-blank-query) - Add Kusto query as Excel data source
-    * [Excel connector](https://docs.microsoft.com/azure/data-explorer/excel-connector) - an Excel connector for Azure Data Explorer 
+    * [Excel blank query](../../excel-blank-query.md) - Add Kusto query as Excel data source
+    * [Excel connector](../../excel-connector.md) - an Excel connector for Azure Data Explorer 
 
 * PowerBI
 
-   * [PowerBI best practices](https://docs.microsoft.com/azure/data-explorer/power-bi-best-practices)
-   * [PowerBI Connector](https://docs.microsoft.com/azure/data-explorer/power-bi-connector)
-   * [PowerBI imported query](https://docs.microsoft.com/azure/data-explorer/power-bi-imported-query) 
-   * [PowerBI SQL query](https://docs.microsoft.com/azure/data-explorer/power-bi-sql-query)
+   * [PowerBI best practices](../../power-bi-best-practices.md)
+   * [PowerBI Connector](../../power-bi-connector.md)
+   * [PowerBI imported query](../../power-bi-imported-query.md) 
+   * [PowerBI SQL query](../../power-bi-sql-query.md)
 
-* [Grafana](https://docs.microsoft.com/azure/data-explorer/grafana)
+* [Grafana](../../grafana.md)
+* [K2Bridge open-source connector](../../k2bridge.md) - Visualize data from Azure Data Explorer in Kibana
 
 ## Orchestration tools
 
 
 * Microsoft Flow
-    * [Microsoft Flow connector](https://docs.microsoft.com/azure/data-explorer/flow)
-    * [Microsoft Flow connector usage examples](https://docs.microsoft.com/azure/data-explorer/flow-usage)
+    * [Microsoft Flow connector](../../flow.md)
+    * [Microsoft Flow connector usage examples](../../flow-usage.md)
 * [Microsoft Logic App](./logicapps.md) - Execute Kusto queries automatically as part of [Microsoft Logic App](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)
 
 
@@ -47,12 +50,12 @@ ms.date: 04/01/2020
 ## Data ingestion tools
 
 
-* [LightIngest](https://docs.microsoft.com/azure/data-explorer/lightingest) - Help utility for ad-hoc data ingesting into Azure Data Explorer
- 
-
+* [LightIngest](../../lightingest.md) - Help utility for ad-hoc data ingesting into Azure Data Explorer
+* [One-click ingestion](../../ingest-data-one-click.md) - Tool to quickly ingest data and automatically suggest tables and mapping structures
+* [Azure Data Factory](azure-data-factory.md)
 
 
 ## Source control integration tools
 
-* [Azure Pipelines](https://docs.microsoft.com/azure/data-explorer/devops) - Invokes control commands as part of your pipeline
+* [Azure Pipelines](../../devops.md) - Invokes control commands as part of your pipeline
 * [Sync Kusto](./synckusto.md) - Sync Kusto stored functions to/from Git

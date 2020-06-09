@@ -11,7 +11,7 @@ ms.date: 04/29/2019
 
 # Machine learning capability in Azure Data Explorer
 
-Azure Data Explorer, a Big Data analytics platform, is used to monitor service health, QoS, or malfunctioning devices for anomalous behavior using built-in [anomaly detection and forecasting](/azure/data-explorer/anomaly-detection) functions. Once an anomalous pattern is detected, a Root Cause Analysis (RCA) is performed to mitigate or resolve the anomaly.
+Azure Data Explorer, a Big Data analytics platform, is used to monitor service health, QoS, or malfunctioning devices for anomalous behavior using built-in [anomaly detection and forecasting](anomaly-detection.md) functions. Once an anomalous pattern is detected, a Root Cause Analysis (RCA) is performed to mitigate or resolve the anomaly.
 
 The diagnosis process is complex and lengthy and done by domain experts. The process includes fetching and joining additional data from different sources for the same time frame, looking for changes in the distribution of values on multiple dimensions, charting additional variables, and other techniques based on domain knowledge and intuition. Since these diagnosis scenarios are common in Azure Data Explorer, machine learning plugins are available to make the diagnosis phase easier and shorten the duration of the RCA.
 
@@ -33,7 +33,7 @@ demo_clustering1
 
 ![Service exceptions timechart](media/machine-learning-clustering/service-exceptions-timechart.png)
 
-The service exception count correlates with the overall service traffic. You can clearly see the daily pattern, for business days of Monday to Friday, with a rise in service exception counts mid-day, and drops in counts during the night. Flat low counts are visible over the weekend. Exception spikes can be detected using [time series anomaly detection](/azure/data-explorer/anomaly-detection?#time-series-anomaly-detection) in Azure Data Explorer.
+The service exception count correlates with the overall service traffic. You can clearly see the daily pattern, for business days of Monday to Friday, with a rise in service exception counts mid-day, and drops in counts during the night. Flat low counts are visible over the weekend. Exception spikes can be detected using [time series anomaly detection](anomaly-detection.md#time-series-anomaly-detection) in Azure Data Explorer.
 
 The second spike in the data occurs on Tuesday afternoon. The following query is used to further diagnose this spike. Use the query to redraw the chart around the spike in higher resolution (eight hours in one-minute bins) to verify whether it's a sharp spike, and view its borders.
 

@@ -1,5 +1,5 @@
 ---
-title: binary_all_or() (aggregation function) - Azure Data Explorer | Microsoft Docs
+title: binary_all_or() (aggregation function) - Azure Data Explorer
 description: This article describes binary_all_or() (aggregation function) in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -31,6 +31,7 @@ Returns a value that is aggregated using the binary `OR` operation over records 
 
 Producing 'cafe-food' using binary `OR` operations:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(num:long)
 [

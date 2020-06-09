@@ -1,5 +1,5 @@
 ---
-title: Ingest from query (.set, .append, .set-or-append, .set-or-replace) - Azure Data Explorer | Microsoft Docs
+title: Kusto query ingestion (set, append, replace) - Azure Data Explorer
 description: This article describes Ingest from query (.set, .append, .set-or-append, .set-or-replace) in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -36,7 +36,7 @@ existing or nonexistent tables and data:
 
 * `async`: If specified, the command will return immediately, and continue
   ingestion in the background. The results of the command will include
-  an `OperationId` value that can then be used with the `.show operation`
+  an `OperationId` value that can then be used with the `.show operations`
   command to retrieve the ingestion completion status and results.
 * *TableName*: The name of the table to ingest data to.
   The table name is always relative to the database in context.

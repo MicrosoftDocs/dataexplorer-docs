@@ -1,24 +1,23 @@
 ---
-title: Kusto.Ingest client reference - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto.Ingest client reference in Azure Data Explorer.
+title: Kusto.Ingest client interfaces and factory classes - Azure Data Explorer
+description: This article describes Kusto.Ingest client interfaces and factory classes in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 05/19/2020
 ---
-# Kusto.Ingest client reference
+# Kusto.Ingest client interfaces and classes
 
-The main interfaces and factory classes in the Kusto.Ingest library are:
+The main interfaces and classes in the Kusto.Ingest library are:
 
 * [interface IKustoIngestClient](#interface-ikustoingestclient): The main ingestion interface.
 * [Class ExtendedKustoIngestClient](#class-extendedkustoingestclient): Extensions to the main ingestion interface.
 * [class KustoIngestFactory](#class-kustoingestfactory): The main factory for ingestion clients.
 * [class KustoIngestionProperties](#class-kustoingestionproperties): Class used to provide common ingestion properties.
-* [Class JsonColumnMapping](#class-jsoncolumnmapping): Class used to describe the schema mapping to apply when ingesting from a JSON data source.
-* [Class CsvColumnMapping](#class-csvcolumnmapping): Class used to describe the schema mapping to apply when ingesting from a CSV data source.
+* [class IngestionMapping](#class-ingestionmapping): Class used to describe the data mapping for the ingestion.
 * [Enum DataSourceFormat](#enum-datasourceformat): Supported data source formats (for example, CSV, JSON)
 * [Interface IKustoQueuedIngestClient](#interface-ikustoqueuedingestclient): Interface describing operations that apply for queued ingestion only.
 * [Class KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): Properties that apply to queued ingestion only.
@@ -64,13 +63,13 @@ public interface IKustoIngestClient : IDisposable
 
 ## Class ExtendedKustoIngestClient
 
-* IngestFromSingleBlob - Deprecated. Please use `IKustoIngestClient.IngestFromStorageAsync` instead.
-* IngestFromSingleBlobAsync - Deprecated. Please use `IKustoIngestClient.IngestFromStorageAsync` instead.
-* IngestFromDataReader - Deprecated. Please use `IKustoIngestClient.IngestFromDataReaderAsync` instead.
+* IngestFromSingleBlob - Deprecated. Use `IKustoIngestClient.IngestFromStorageAsync` instead.
+* IngestFromSingleBlobAsync - Deprecated. Use `IKustoIngestClient.IngestFromStorageAsync` instead.
+* IngestFromDataReader - Deprecated. Use `IKustoIngestClient.IngestFromDataReaderAsync` instead.
 * IngestFromDataReaderAsync
-* IngestFromSingleFile - Deprecated. Please use `IKustoIngestClient.IngestFromStorageAsync` instead.
-* IngestFromSingleFileAsync - Deprecated. Please use `IKustoIngestClient.IngestFromStorageAsync` instead.
-* IngestFromStream - Deprecated. Please use `IKustoIngestClient.IngestFromStreamAsync` instead.
+* IngestFromSingleFile - Deprecated. Use `IKustoIngestClient.IngestFromStorageAsync` instead.
+* IngestFromSingleFileAsync - Deprecated. Use `IKustoIngestClient.IngestFromStorageAsync` instead.
+* IngestFromStream - Deprecated. Use `IKustoIngestClient.IngestFromStreamAsync` instead.
 * IngestFromStreamAsync
 
 ```csharp
@@ -338,22 +337,20 @@ public static class KustoIngestFactory
 
 ## Class KustoIngestionProperties
 
-KustoIngestionProperties class encapsulates basic ingestion properties that allow fine control over the ingestion process and its handling by the Kusto engine:
+KustoIngestionProperties class contains basic ingestion properties for fine control over the ingestion process and the way Kusto engine will handle it.
 
 |Property   |Meaning    |
 |-----------|-----------|
 |DatabaseName |Name of the database to ingest into |
 |TableName |Name of the table to ingest into |
 |DropByTags |Tags that each extent will have. DropByTags are permanent and can be used as follows: `.show table T extents where tags has 'some tag'` or `.drop extents <| .show table T extents where tags has 'some tag'` |
-|IngestByTags |Tags that are written per extent. Later on can be used with `IngestIfNotExists` property to avoid ingesting the same data twice |
+|IngestByTags |Tags that are written per extent. Can later be used with the `IngestIfNotExists` property to avoid ingesting the same data twice |
+|IngestionMapping|Holds either a reference to an exiting mapping or a list of column mappings|
 |AdditionalTags |Additional tags as needed |
 |IngestIfNotExists |List of tags that you don't want to ingest again (per table) |
-|CSVMapping |For each column, defines the data type and the ordinal column number. Relevant for CSV ingestion only (optional) |
-|JsonMapping |For each column, defines the JSON path and transformation options. **Mandatory for JSON ingestion** |
-|AvroMapping |For each column, defines the name of the field in Avro record. **Mandatory for AVRO ingestion** |
 |ValidationPolicy |Data validation definitions. See [TODO] for details |
 |Format |Format of the data being ingested |
-|AdditionalProperties | Other properties that will be passed as [Ingestion Properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) to the ingestion command, because not all of the Ingestion Properties are represented in a separate member of this class|
+|AdditionalProperties | Other properties that will be passed as [ingestion properties](../../../ingestion-properties.md) to the ingestion command. The properties will be passed because not all of the ingestion properties are represented in a separate member of this class|
 
 ```csharp
 public class KustoIngestionProperties
@@ -364,9 +361,7 @@ public class KustoIngestionProperties
     public IEnumerable<string> IngestByTags { get; set; }
     public IEnumerable<string> AdditionalTags { get; set; }
     public IEnumerable<string> IngestIfNotExists { get; set; }
-    public IEnumerable<CsvColumnMapping> CSVMapping { get; set; }
-    public IEnumerable<JsonColumnMapping> JsonMapping { get; set; } // Must be set for DataSourceFormat.json format
-    public IEnumerable<AvroColumnMapping> AvroMapping { get; set; } // Must be set for DataSourceFormat.avro format
+    public IngestionMapping IngestionMapping { get; set; }
     public ValidationPolicy ValidationPolicy { get; set; }
     public DataSourceFormat? Format { get; set; }
     public bool IgnoreSizeLimit { get; set; } // Determines whether the limit of 4GB per single ingestion source should be ignored. Defaults to false.
@@ -376,39 +371,25 @@ public class KustoIngestionProperties
 }
 ```
 
-## Class JsonColumnMapping
+## Class IngestionMapping
+
+Holds a reference to an existing mapping or a list of column mappings.
+
+|Property   |Meaning    |
+|-----------|-----------|
+|IngestionMappings | Column mappings, each describing the target column data and its source |
+|IngestionMappingKind | Kind of mapping described in the IngestionMappings property - one of: Csv, Json, Avro, Parquet, SStream, Orc, ApacheAvro or W3CLogFile |
+|IngestionMappingReference | The pre-created mapping name |
 
 ```csharp
-public class JsonColumnMapping
+public class IngestionMapping
 {
-    /// The column name (in the Kusto table)
-    public string ColumnName { get; set; }
+    public IEnumerable<ColumnMapping> IngestionMappings { get; set; }
+    public IngestionMappingKind IngestionMappingKind { get; set; }
+    public string IngestionMappingReference { get; set; }
 
-    /// The JsonPath to the desired property in the JSON document
-    public string JsonPath { get; set; }
-}
-```
-
-## Class CsvColumnMapping
-
-```csharp
-public class CsvColumnMapping
-{
-    /// The column name (in the Kusto table)
-    public string ColumnName { get; set; }
-
-    /// The column's data type in the table (CSL term), if empty, the current column data type will be used.
-    /// If column doesn't exist, a new one will be created (alter table) with this data type, if empty, StorageDataType.StringBuffer will be used.
-    public string CslDataType { get; set; }
-
-    /// The CSV column dataType (not in use for now)
-    public string CsvColumnDataType { get; set; }
-
-    /// CSV ordinal number
-    public int Ordinal { get; set; }
-
-    /// This column has a const value (the Ordinal field is ignored, if this value is not null or empty)
-    public string ConstValue { get; set; }
+    public IngestionMapping()
+    public IngestionMapping(IngestionMapping ingestionMapping)
 }
 ```
 
@@ -422,17 +403,19 @@ public enum DataSourceFormat
     scsv,       // Data is in a SCSV(-semicolon-separated values) format
     sohsv,      // Data is in a SOHSV(-SOH (ASCII 1) separated values) format
     psv,        // Data is in a PSV (pipe-separated values) format
+    tsve,       // Tab-separated value with '\' escaping character.
     txt,        // Each record is a line and has just one field
     raw,        // The entire stream/file/blob is a single record having a single field
     json,       // Data is in a JSON-line format (each line is record with a single JSON value)
     multijson,  // The data stream is a concatenation of JSON documents (property bags all)
     avro,       // Data is in a AVRO format
+    orc,        // Data is in a ORC format
     parquet,    // Data is in a Parquet format
 }
 ```
 
 
-## Example of KustoIngestionProperties Definition
+## Example of KustoIngestionProperties definition
 
 ```csharp
 var guid = new Guid().ToString();
@@ -442,9 +425,14 @@ var kustoIngestionProperties = new KustoIngestionProperties("TargetDatabase", "T
     IngestByTags = new List<string> { guid },
     AdditionalTags = new List<string> { "some tags" },
     IngestIfNotExists = new List<string> { guid },
-    CSVMapping = new List<CsvColumnMapping> { new CsvColumnMapping { ColumnName = "columnA", CslDataType = "Dynamic", Ordinal = 1 } },
-    JsonMapping = new List<JsonColumnMapping> { new JsonColumnMapping { ColumnName = "columnA" , JsonPath = "$.path" } }, // You can only one of CSV/JSON/AVRO mappings
-    AvroMapping = new List<AvroColumnMapping> { new AvroColumnMapping { ColumnName = "columnA" , FieldName = "AvroFieldName" } }, // You can only one of CSV/JSON/AVRO mappings
+    IngestionMapping = new IngestionMapping() {
+        IngestionMappingKind = Data.Ingestion.IngestionMappingKind.Csv,
+        IngestionMappings = new ColumnMapping[] { new ColumnMapping() {
+            ColumnName = "stringColumn",
+            Properties = new Dictionary<string, string>() {
+            { MappingConsts.Ordinal, "1"} }
+        } },
+    },
     ValidationPolicy = new ValidationPolicy { ValidationImplications = ValidationImplications.Fail, ValidationOptions = ValidationOptions.ValidateCsvInputConstantColumns },
     Format = DataSourceFormat.csv
 };
@@ -452,7 +440,7 @@ var kustoIngestionProperties = new KustoIngestionProperties("TargetDatabase", "T
 
 ## Interface IKustoQueuedIngestClient
 
-IKustoQueuedIngestClient interface adds tracking methods to follow the ingestion operation result, and exposes RetryPolicy for the ingest client.
+IKustoQueuedIngestClient interface adds tracking methods that follow the ingestion operation result and exposes RetryPolicy for the ingest client.
 
 * PeekTopIngestionFailures
 * GetAndDiscardTopIngestionFailures
@@ -492,12 +480,12 @@ public interface IKustoQueuedIngestClient : IKustoIngestClient
 
 ## Class KustoQueuedIngestionProperties
 
-KustoQueuedIngestionProperties class extends KustoIngestionProperties with several control knobs that can be used to fine-tune the ingestion behavior:
+KustoQueuedIngestionProperties class extends KustoIngestionProperties with several control knobs that can be used to fine-tune the ingestion behavior.
 
 |Property   |Meaning    |
 |-----------|-----------|
 |FlushImmediately |Defaults to `false`. If set to `true`, will bypass aggregation mechanism of the Data Management service |
-|IngestionReportLevel |Controls the level of ingestion status reporting (defaults to `FailuresOnly`). In terms of performance and storage usage, it's not recommended to set IngestionReportLevel to `FailuresAndSuccesses` |
+|IngestionReportLevel |Controls the level of ingestion status reporting (defaults to `FailuresOnly`). For good performance and storage usage, we recommended you not set IngestionReportLevel to `FailuresAndSuccesses` |
 |IngestionReportMethod |Controls the target of the ingestion status reporting. Available options are: Azure Queue, Azure Table, or both. Defaults to `Queue`.
 
 ```csharp
@@ -515,6 +503,12 @@ public class KustoQueuedIngestionProperties : KustoIngestionProperties
     /// </summary>
     public IngestionReportLevel ReportLevel { get; set; }
 
+    /// <summary>
+    /// Controls the target of the ingestion status reporting. Available options are Azure Queue, Azure Table, or both.
+    /// Defaults to 'Queue'.
+    /// </summary>
+    public IngestionReportMethod ReportMethod { get; set; }
+    
     /// <summary>
     /// Controls the target of the ingestion status reporting. Available options are Azure Queue, Azure Table, or both.
     /// Defaults to 'Queue'.

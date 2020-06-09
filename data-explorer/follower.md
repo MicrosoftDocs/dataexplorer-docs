@@ -24,12 +24,12 @@ Attaching a database to a different cluster using the follower capability is use
 ## Prerequisites
 
 1. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
-1. [Create cluster and DB](/azure/data-explorer/create-cluster-database-portal) for the leader and follower.
-1. [Ingest data](/azure/data-explorer/ingest-sample-data) to leader database using one of various methods discussed in [ingestion overview](/azure/data-explorer/ingest-data-overview).
+1. [Create cluster and DB](create-cluster-database-portal.md) for the leader and follower.
+1. [Ingest data](ingest-sample-data.md) to leader database using one of various methods discussed in [ingestion overview](/azure/data-explorer/ingest-data-overview).
 
 ## Attach a database
 
-There are various methods you can use to attach a database. In this article, we discuss attaching a database using C# or an Azure Resource Manager template. To attach a database, you must have permissions on the leader cluster and the follower cluster. For more information about permissions, see [manage permissions](#manage-permissions).
+There are various methods you can use to attach a database. In this article, we discuss attaching a database using C#, Python or an Azure Resource Manager template. To attach a database, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster and the follower cluster. You can add or remove role assignments using [Azure Portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli) and [ARM template](/azure/role-based-access-control/role-assignments-template). You can learn more about [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) and the [different roles](/azure/role-based-access-control/rbac-and-directory-admin-roles). 
 
 ### Attach a database using C#
 
@@ -247,6 +247,9 @@ var attachedDatabaseConfigurationsName = "uniqueName";
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
 
+To detach a database from the follower side, you must have user, group, service principal, or managed identity with at least contributor role on the follower cluster.
+In the example above we use service principal.
+
 ### Detach the attached follower database from the leader cluster
 
 The leader cluster can detach any attached database as follows:
@@ -276,6 +279,8 @@ var followerDatabaseDefinition = new FollowerDatabaseDefinition()
 
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
+
+To detach a database from the leader side, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster. In the example above we use service principal.
 
 ## Detach the follower database using Python
 
@@ -309,6 +314,8 @@ attached_database_configurationName = "uniqueName"
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
 ```
+To detach a database from the follower side, you must have user, group, service principal, or managed identity with at least contributor role on the follower cluster.
+In the example above we use service principal.
 
 ### Detach the attached follower database from the leader cluster
 
@@ -349,6 +356,9 @@ cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceG
 poller = kusto_management_client.clusters.detach_follower_databases(resource_group_name = leader_resource_group_name, cluster_name = leader_cluster_name, cluster_resource_id = cluster_resource_id, attached_database_configuration_name = attached_database_configuration_name)
 ```
 
+To detach a database from the leader side, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster.
+In the example above we use service principal.
+
 ## Manage principals, permissions, and caching policy
 
 ### Manage principals
@@ -365,7 +375,7 @@ For more information about using control commands to configure the authorized pr
 
 ### Manage permissions
 
-Managing read-only database permission is the same as for all database types. See [manage permissions in the Azure portal](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
+Managing read-only database permission is the same as for all database types. See [manage permissions in the Azure portal](manage-database-permissions.md#manage-permissions-in-the-azure-portal).
 
 ### Configure caching policy
 
@@ -374,8 +384,8 @@ The follower database administrator can modify the [caching policy](kusto/manage
 ## Limitations
 
 * The follower and the leader clusters must be in the same region.
-* [Streaming ingestion](/azure/data-explorer/ingest-data-streaming) can't be used on a database that is being followed.
-* Data encryption using [customer managed keys](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault) is not supported on both leader and follower clusters. 
+* [Streaming ingestion](ingest-data-streaming.md) can't be used on a database that is being followed.
+* Data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) is not supported on both leader and follower clusters. 
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
 * You can't stop a cluster that has attached follower or leader database(s). 

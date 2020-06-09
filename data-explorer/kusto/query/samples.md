@@ -1,5 +1,5 @@
 ---
-title: Samples - Azure Data Explorer | Microsoft Docs
+title: Samples - Azure Data Explorer
 description: This article describes Samples in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -18,6 +18,7 @@ to meet them.
 
 Project two or more columns and use them as the x and y axis of a chart:
 
+<!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto 
 StormEvents
 | where isnotempty(EndLocation) 
@@ -32,7 +33,6 @@ StormEvents
 
 :::image type="content" source="images/samples/060.png" alt-text="060":::
 
-<a name="activities"></a>
 ## Get sessions from start and stop events
 
 Let's suppose we have a log of events, in which some events mark the start or end of an extended activity or session. 
@@ -98,7 +98,7 @@ Then we group by start time and ip to get a group for each session. We must supp
 
 :::image type="content" source="images/samples/040.png" alt-text="040"::: 
 
-Then we can add some code to count the durations in conveniently-sized bins. We've a slight preference for a bar chart, so we divide by `1s` to convert the timespans to numbers. 
+Then we can add some code to count the durations in conveniently sized bins. We've a slight preference for a bar chart, so we divide by `1s` to convert the timespans to numbers. 
 
 
       // Count the frequency of each duration:
@@ -179,7 +179,6 @@ on UnitOfWorkId
 | extend SaveFactor = sum_NormalizedLoad / sum_CurrentLoad 
 ```
 
-<a name="concurrent-activities"><a/>
 ## Chart concurrent sessions over time
 
 Suppose we have a table of activities with their start and end times.  We'd like to see a chart over time that shows how many are running concurrently at any time.
@@ -299,7 +298,7 @@ Here's a step-by-step explanation of the query above:
 4. All with a `Count` of `0`.
 5. Last, we use the `summarize` operator to group-together bins from the original
    (left, or outer) argument to `union` and bins from the inner argument to it
-   (namely, the null bin rows). This ensure that the output has one row per bin,
+   (namely, the null bin rows). This ensures that the output has one row per bin,
    whose value is either zero or the original count.  
 
 ## Get more out of your data in Kusto using Machine Learning 
@@ -407,6 +406,7 @@ The two approaches below demonstrate how this can be achieved. 
 
 The approach below shows how the mapping can be achieved using a dynamic dictionary and dynamic accessors.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Data set definition
 let Source = datatable(DeviceModel:string, Count:long)
@@ -493,6 +493,7 @@ In many cases one wants to join the results of a query with some ad-hoc dimensio
 table that is not stored in the database. It is possible to define an expression
 whose result is a table scoped to a single query by doing something like this:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 // Create a query-time dimension table using datatable
 let DimTable = datatable(EventType:string, Code:string)

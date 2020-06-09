@@ -1,6 +1,6 @@
 ---
-title: Kusto.Ingest Reference - Ingestion Status Reporting - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto.Ingest Reference - Ingestion Status Reporting in Azure Data Explorer.
+title: Kusto.Ingest status reporting - Azure Data Explorer
+description: This article describes Kusto.Ingest ingestion status reporting in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,16 +9,25 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
 ---
-# Kusto.Ingest Reference - Ingestion Status Reporting
-This article explains how to utilize [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) capabilities for tracking the status of an ingestion request.
+# Kusto.Ingest ingestion status reporting
 
-## SourceDescription, DataReaderDescription, StreamDescription, FileDescription, and BlobDescription
-These various description classes encapsulate important details regarding the source data to be ingested, and may and even should be provided to ingestion operation.
-All these classes are derived from the abstract class `SourceDescription` and are used to instantiate a unique identifier for each data source.
-The provided identifier is intended for subsequent operation status tracking and will show up in all reports, traces and exceptions related to the appropriate operation.
+This article explains how to use [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) features to track the status of an ingestion request.
+
+## Description classes
+
+These description classes contain important details about the source data to be ingested, and should be used in the ingestion operation. 
+
+* SourceDescription
+* DataReaderDescription
+* StreamDescription
+* FileDescription
+* BlobDescription
+
+The classes are all derived from the abstract class `SourceDescription`, and they're used to instantiate a unique identifier for each data source. Each identifier will then be used for status tracking and will show up in all reports, traces, and exceptions related to the relevant operation.
 
 ### Class SourceDescription
->When ingesting a large dataset (e.g., a DataReader over 1GB) - the data will be split into 1GB chunks and ingested separately.<BR>In this case, the same SourceId will apply to all ingest operations originated from the same dataset.   
+
+Large datasets will be split into 1GB chunks, and each part will be ingested separately. The same SourceId will then apply to all ingest operations originated from the same dataset.   
 
 ```csharp
 public abstract class SourceDescription
@@ -28,6 +37,7 @@ public abstract class SourceDescription
 ```
 
 ### Class DataReaderDescription
+
 ```csharp
 public class DataReaderDescription : SourceDescription
 {
@@ -36,6 +46,7 @@ public class DataReaderDescription : SourceDescription
 ```
 
 ### Class StreamDescription
+
 ```csharp
 public class StreamDescription : SourceDescription
 {
@@ -44,6 +55,7 @@ public class StreamDescription : SourceDescription
 ```
 
 ### Class FileDescription
+
 ```csharp
 public class FileDescription : SourceDescription
 {
@@ -52,6 +64,7 @@ public class FileDescription : SourceDescription
 ```
 
 ### Class BlobDescription
+
 ```csharp
 public class BlobDescription : SourceDescription
 {
@@ -61,10 +74,12 @@ public class BlobDescription : SourceDescription
 }
 ```
 
-## Ingestion Result Representation
+## Ingestion result representation
 
 ### Interface IKustoIngestionResult
-This interface captures the result of a single queued ingestion operation and allows its retrieval by `SourceId`.
+
+This interface captures the result of a single queued ingestion operation and can be retrieved by `SourceId`.
+
 ```csharp
 public interface IKustoIngestionResult
 {
@@ -77,7 +92,9 @@ public interface IKustoIngestionResult
 ```
 
 ### Class IngestionStatus
-IngestionStatus encapsulates a complete status of a single ingestion operation.
+
+IngestionStatus contains a complete status of a single ingestion operation.
+
 ```csharp
 public class IngestionStatus
 {
@@ -115,25 +132,27 @@ public class IngestionStatus
 ```
 
 ### Status enumeration
-|Value |Meaning |
-|------------|------------|
-|Pending |Temporary. Might change during the course of ingestion based on the outcome of the ingestion operation |
-|Succeeded |Permanent. he data has been successfully ingested |
-|Failed |Permanent. Ingestion failed |
-|Queued |Permanent. The data has been queued for ingestion |
-|Skipped |Permanent. No data was supplied and the ingest operation was skipped |
-|PartiallySucceeded |Permanent. Part of the data has been successfully ingested while some failed |
+
+|Value              |Meaning                                                                                     |Temporary/Permanent
+|-------------------|-----------------------------------------------------------------------------------------------------|---------|
+|Pending            |The value may change during the course of ingestion, based on the outcome of the ingestion operation |Temporary|
+|Succeeded          |The data has been successfully ingested                                                              |Permanent| 
+|Failed             |Ingestion failed                                                                                     |Permanent|
+|Queued             |The data has been queued for ingestion                                                               |Permanent|
+|Skipped            |No data was supplied and the ingest operation was skipped                                            |Permanent|
+|PartiallySucceeded |Part of the data was successfully ingested, while some failed                                        |Permanent|
 
 ## Tracking Ingestion Status (KustoQueuedIngestClient)
-[IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) is a 'fire-and-forget' client - the ingestion operation on the client side ends by posting a message to an Azure Queue, after which the client job is done. For the client user convenience, KustoQueuedIngestClient provides a mechanism for tracking the individual ingestion status. This is not intended for mass usage on high-throughput ingestion pipelines, but rather for 'precision' ingestion when the rate is relatively low and the tracking requirements are very strict.
+
+[IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) is a 'fire-and-forget' client. The ingestion operation on the client side ends by posting a message to an Azure queue. After the posting, the client job is done. For the client user's convenience, KustoQueuedIngestClient provides a mechanism for tracking the individual ingestion status. This mechanism isn't intended for mass usage on high-throughput ingestion pipelines. This mechanism is for precision ingestion when the rate is relatively low and the tracking requirements are strict.
 
 > [!WARNING]
-> Turning on positive notifications for every ingestion request for large volume data streams should be avoided, as this puts extreme load on the underlying xStore resources, > which might lead to increased ingestion latency and even complete cluster non-responsiveness.
+> Turning on positive notifications for every ingestion request for large volume data streams should be avoided, since this places an extreme load on the underlying xStore resources, which might lead to increased ingestion latency and even complete cluster non-responsiveness.
 
-
-The following properties (set on [KustoQueuedIngestionProperties](kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties)) control the level and transport for ingestion success or failure notifications:
+The following properties (set on [KustoQueuedIngestionProperties](kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties)) control the level and transport for ingestion success or failure notifications.
 
 ### IngestionReportLevel enumeration
+
 ```csharp
 public enum IngestionReportLevel
 {
@@ -144,6 +163,7 @@ public enum IngestionReportLevel
 ```
 
 ### IngestionReportMethod enumeration
+
 ```csharp
 public enum IngestionReportMethod
 {
@@ -153,41 +173,45 @@ public enum IngestionReportMethod
 }
 ```
 
-To be able to track the status of your ingestion, make sure you provide the following to the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) you perform the ingest operation with:
-1.	Set `IngestionReportLevel`property to the desired level of report - either FailuresOnly (which is the default value) or FailuresAndSuccesses.
-When set to None, nothing will be reported at the end of the ingestion.
-2.	Specify the desired `IngestionReportMethod` - Queue, Table or both.
+To track the status of your ingestion, provide the following to the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) that you do the ingest operation with:
+1.	Set `IngestionReportLevel`property to the required level of report. Either `FailuresOnly` (which is the default value) or `FailuresAndSuccesses`.
+When set to `None`, nothing will be reported at the end of the ingestion.
+1.	Specify the `IngestionReportMethod` - `Queue`, `Table`, or `both`.
 
 A usage example can be found on the [Kusto.Ingest Examples](kusto-ingest-client-examples.md) page.
 
-### Ingestion Status in Azure Table
+### Ingestion status in the Azure table
+
 The `IKustoIngestionResult` interface that is returned from each ingest operation contains functions that can be used to query the status of the ingestion.
 Pay special attention to the `Status` property of the returned `IngestionStatus` objects:
-* `Pending` indicates that the source has been queued for ingestion and is yet to be updated; use the function again to query the status of the source
-* `Succeeded` indicates the source has been ingested successfully
-* `Failed` indicates the source failed to be ingested
+* `Pending` indicates that the source has been queued for ingestion and is yet to be updated. Use the function again to query the status of the source
+* `Succeeded` indicates that the source has been ingested successfully
+* `Failed` indicates that the source failed to be ingested
 
->Note, that getting a `Queued` status indicates that the `IngestionReportMethod` was left at its default value of 'Queue'. This is a permanent status and re-invoking the GetIngestionStatusBySourceId or GetIngestionStatusCollection functions will always result in the same 'Queued' status.<BR>To be able to check the status of an ingestion in an Azure Table, please verify prior to ingesting that the `IngestionReportMethod` property of the [KustoQueuedIngestionProperties](kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) is set to `Table` (or `QueueAndTable` if you also want the ingestion status to be reported to a queue).
+> [!NOTE]
+> Getting a `Queued` status indicates that the `IngestionReportMethod` was left at its default value of 'Queue'. This is a permanent status and re-invoking the `GetIngestionStatusBySourceId` or `GetIngestionStatusCollection` functions, will always result in the same 'Queued' status.
+> To check the status of an ingestion in an Azure table, prior to ingesting, verify that the `IngestionReportMethod` property of the [KustoQueuedIngestionProperties](kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) is set to `Table`. If you also want the ingestion status to be reported to a queue, set the status to `QueueAndTable`.
 
-### Ingestion Status in Azure Queue
-The `IKustoIngestionResult` methods are only relevant for checking a status in an Azure Table. To query statuses that were reported to an Azure Queue, use the following methods of [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient):
+### Ingestion status in Azure queue
 
-|Method |Purpose |
-|------------|------------|
-|PeekTopIngestionFailures |Async method that returns information regarding the earliest ingestion failures that have not been discarded, according to the requested messages limit |
-|GetAndDiscardTopIngestionFailures |Async method that returns and discards the earliest ingestion failures that have not been discarded, according to the requested messages limit |
-|GetAndDiscardTopIngestionSuccesses |Async method that returns and discards the earliest ingestion successes that have not been discarded, according to the requested messages limit (only relevant if the `IngestionReportLevel` is set to `FailuresAndSuccesses` |
+The `IKustoIngestionResult` methods are only relevant for checking a status in an Azure table. To query statuses that were reported to an Azure queue, use the following [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) methods.
 
+|Method                                  |Purpose     |
+|----------------------------------------|------------|
+|PeekTopIngestionFailures                |Async method that returns information about the earliest ingestion failures that haven't already been discarded because of the limit for requested messages |
+|GetAndDiscardTopIngestionFailures       |Async method that returns and discards the earliest ingestion failures that haven't already been discarded because of the limit for requested messages |
+|GetAndDiscardTopIngestionSuccesses      |Async method that returns and discards the earliest ingestion successes that haven't already been discarded because of the limit for requested messages. This method is only relevant if the `IngestionReportLevel` is set to `FailuresAndSuccesses` |
 
-### Ingestion Failures Retrieved From Azure Queue
-The ingestion failures are represented by `IngestionFailure` object that contains useful information regarding the failure:
+### Ingestion failures retrieved from the Azure queue
 
-|Property |Meaning |
-|------------|------------|
-|Database & Table |The intended database and table names |
-|IngestionSourcePath |The path of the ingested blob. Will contains the original file name in case of file's ingestion. Will be random in case of DataReader's ingestion |
-|FailureStatus |`Permanent` (no retry will be executed), `Transient` (retry will be executed), or `Exhausted` (several retries were also failed) |
-|OperationId & RootActivityId |Operation ID and RootActivity ID of the ingestion (useful for further troubleshooting) |
-|FailedOn |UTC time of the failure. Will be greater than the time when the ingestion method was called, as the data is being aggregated before executing the ingestion |
-|Details |Other details concerning the failure (if any exist) |
-|ErrorCode |`IngestionErrorCode` enumeration, representing the ingestion error code, in case the failure exist|
+The ingestion failures are represented by the `IngestionFailure` object that contains useful information about the failure.
+
+|Property                      |Meaning     |
+|------------------------------|------------|
+|Database & Table              |The intended database and table names |
+|IngestionSourcePath           |The path of the ingested blob. Will contain the original file name if file is ingested. Will be random if DataReader is ingested |
+|FailureStatus                 |`Permanent` (no retry will be executed), `Transient` (retry will be executed), or `Exhausted` (several retries also failed) |
+|OperationId & RootActivityId  |Operation ID and RootActivity ID of the ingestion (useful for further troubleshooting) |
+|FailedOn                      |UTC time of the failure. Will be greater than the time when the ingestion method was called, since the data is aggregated before running the ingestion |
+|Details                       |Other details concerning the failure (if any exist) |
+|ErrorCode                     |`IngestionErrorCode` enumeration, represents the ingestion error code, if there was a failure |

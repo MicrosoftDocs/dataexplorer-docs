@@ -1,5 +1,5 @@
 ---
-title: diffpatterns_text plugin - Azure Data Explorer | Microsoft Docs
+title: diffpatterns_text plugin - Azure Data Explorer
 description: This article describes diffpatterns_text plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -64,12 +64,14 @@ The result of diffpatterns_text returns the following columns:
 
 **Example**
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents     
 | where EventNarrative != "" and monthofyear(StartTime) > 1 and monthofyear(StartTime) < 9
 | where EventType == "Drought" or EventType == "Extreme Cold/Wind Chill"
 | evaluate diffpatterns_text(EpisodeNarrative, EventType == "Extreme Cold/Wind Chill", 2)
 ```
+
 |Count_of_True|Count_of_False|Percent_of_True|Percent_of_False|Pattern|
 |---|---|---|---|---|
 |11|0|6.29|0|Winds shifting northwest in * wake * a surface trough brought heavy lake effect snowfall downwind * Lake Superior from|

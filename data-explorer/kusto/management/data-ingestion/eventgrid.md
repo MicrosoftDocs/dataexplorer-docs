@@ -15,8 +15,8 @@ Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage
 
 ## Data format
 
-* Blobs can be in any of the [supported formats](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats).
-* Blobs can be compressed in any of the [ supported compressions](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats#supported-data-compression-formats)
+* Blobs can be in any of the [supported formats](../../../ingestion-supported-formats.md).
+* Blobs can be compressed in any of the [supported compressions](../../../ingestion-supported-formats.md#supported-data-compression-formats)
 
 > [!NOTE]
 > Ideally the original uncompressed data size should be part of the blob metadata.
@@ -26,7 +26,7 @@ Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage
 
 ## Ingestion properties
 
-You can specify [Ingestion properties](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) of the blob ingestion via the blob metadata.
+You can specify [Ingestion properties](../../../ingestion-properties.md) of the blob ingestion via the blob metadata.
 You can set the following properties:
 
 |Property | Description|
@@ -41,7 +41,7 @@ You can set the following properties:
 
 ## Events routing
 
-When setting up a blob storage connection to Azure Data Explorer cluster, specify target table properties (table name, data format and mapping). This is the default routing for your data, also refered to as `static routig`.
+When setting up a blob storage connection to Azure Data Explorer cluster, specify target table properties (table name, data format and mapping). This is the default routing for your data, also referred to as `static routing`.
 You can also specify target table properties for each blob, using blob metadata. The data will be dynamically routed as specified by [ingestion properties](#ingestion-properties).
 
 Following is an example for setting ingestion properties to the blob metadata before uploading it. 
@@ -73,22 +73,22 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 
 ### Event Grid subscription
 
-* Kusto selected `Event Hub` as the endpoind type, used for transporting blob storage events notifications. `Event Grid schema` is the selected schema for notifications. Note that each Even Hub can serve one connection.
+* Kusto selected `Event Hub` as the endpoint type, used for transporting blob storage events notifications. `Event Grid schema` is the selected schema for notifications. Note that each Even Hub can serve one connection.
 * The blob storage subscription connection handles notifications of type `Microsoft.Storage.BlobCreated`. Make sure to select it when creating the subscription. Note that other types of notifications, if selected, are ignored.
 * One subscription can notify on storage events in one container or more. If you want to track files from a specific container(s), set the filters for the notifications as follows:
-When setting up a connection, take a speciel care of the following values: 
+When setting up a connection, take a special care of the following values: 
    * **Subject Begins With** filter is the *literal* prefix of the blob container. As the pattern applied is *startswith*, it can span multiple containers. No wildcards are allowed.
      It *must* be set as follows: *`/blobServices/default/containers/<prefix>`*. For example: */blobServices/default/containers/StormEvents-2020-*
    * **Subject Ends With** field is the *literal* suffix of the blob. No wildcards are allowed. Useful for filtering file extensions.
 
-A detailed walk-through can be found in the how-to [Create an Event Grid subscription in your storage account](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-grid#create-an-event-grid-subscription-in-your-storage-account) guide.
+A detailed walk-through can be found in the how-to [Create an Event Grid subscription in your storage account](../../../ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account) guide.
 
 ### Data ingestion connection to Azure Data Explorer
 
-* Via Azure Portal: [Create an Event Grid data connection in Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-grid#create-an-event-grid-data-connection-in-azure-data-explorer).
-* Using Kusto management .NET SDK: [Add an Event Grid data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-grid-csharp#add-an-event-grid-data-connection)
-* Using Kusto management Python SDK: [Add an Event Grid data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-grid-python#add-an-event-grid-data-connection)
-* With ARM template: [Azure Resource Manager template for adding an Event Grid data connection](https://docs.microsoft.com/azure/data-explorer/data-connection-event-grid-resource-manager#azure-resource-manager-template-for-adding-an-event-grid-data-connection)
+* Via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](../../../ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
+* Using Kusto management .NET SDK: [Add an Event Grid data connection](../../../data-connection-event-grid-csharp.md#add-an-event-grid-data-connection)
+* Using Kusto management Python SDK: [Add an Event Grid data connection](../../../data-connection-event-grid-python.md#add-an-event-grid-data-connection)
+* With ARM template: [Azure Resource Manager template for adding an Event Grid data connection](../../../data-connection-event-grid-resource-manager.md#azure-resource-manager-template-for-adding-an-event-grid-data-connection)
 
 ### Generating data
 
@@ -122,3 +122,10 @@ blob.UploadFromFile(csvCompressedLocalFileName);
 ## Blob lifecycle
 
 Azure Data Explorer won't delete the blobs post ingestion, but will retain them for three to five days. Use [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion.
+
+## Known issues
+
+When using Azure Data Explorer to [export](../data-export/export-data-to-storage.md) the files used for event grid ingestion, the following should be noted: 
+* Event Grid notifications are *not* triggered if the connection string provided to the export command or the connection string provided to an [external table](../data-export/export-data-to-an-external-table.md) is a connecting string in [ADLS Gen2 format](../../api/connection-strings/storage.md#azure-data-lake-store)(e.g., `abfss://filesystem@accountname.dfs.core.windows.net`) *but the storage account isn't enabled for hierarchical namespace*. 
+ * If the account is not enabled for hierarchical namespace, connection string must use the [Blob Storage](../../api/connection-strings/storage.md#azure-storage-blob) format (e.g., `https://accountname.blob.core.windows.net`). 
+ * Note that the export will work as expected even when using the ADLS Gen2 connection string in this case, but notifications won't be triggered and thus Event Grid ingestion won't work. 

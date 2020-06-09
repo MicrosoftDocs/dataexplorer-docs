@@ -23,7 +23,7 @@ additional latency added for remote calls.
 
 ## Prerequisites
 
-* The data engine must **not** have [disk encryption](https://docs.microsoft.com/azure/data-explorer/security#data-encryption) enabled.
+* The data engine must **not** have [disk encryption](../../security.md#data-encryption) enabled.
   * Support for having both features running side-by-side is expected in the future.
 * The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space in order to run
   * The estimated size is 20GB, which, for example, is roughly 2.5% the SSD capacity of a D14_v2 VM, or 0.7% the SSD capacity of a L16_v1 VM.
@@ -32,7 +32,10 @@ additional latency added for remote calls.
 ## Runtime
 
 * A sandboxed query operator may utilize one or more sandboxes for its execution.
-  * These are only used for a single run, are not shared across multiple runs, and are disposed of once that run completes.
+  * A sandbox is only used for a single run, isn't shared across multiple runs, and is disposed of once that run completes.
+  * Sandboxes are lazily initialized on a node on the first time a query requires a sandbox for its execution.
+    * This means the first execution of a plugin that uses sandboxes on a node will include a short warm-up period.
+  * When a node is restarted (e.g. as part of a service upgrade), all running sandboxes on it are disposed of.
 * Each node maintains a pre-defined amount of sandboxes which are ready for executing incoming requests.
   * Once a sandbox is used, a new one is automatically allocated to replace it.
 * In case there are no pre-allocated sandboxes available to serve a query operator, it will be throttled.

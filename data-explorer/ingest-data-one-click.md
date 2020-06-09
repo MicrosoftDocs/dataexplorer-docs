@@ -21,7 +21,7 @@ One-click ingestion is particularly useful when ingesting data for the first tim
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
-* Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](/azure/data-explorer/web-query-data#add-clusters).
+* Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 ## File formats
 
@@ -49,13 +49,13 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
     ![Select one-click ingestion in the Web UI](media/ingest-data-one-click/one-click-ingestion-in-webui.png)   
 
 1. The wizard guides you through the following options:
-       * Ingest into an [existing table](one-click-ingestion-existing-table.md)
-       * Ingest into [a new table](one-click-ingestion-new-table.md)
-       * Ingest data from:
-              * Blob storage
-              * A local file
-              * A container
-       * Enter the sample size, from 1 to 10,000 rows (from container only)
+    * Ingest into an [existing table](one-click-ingestion-existing-table.md)
+    * Ingest into [a new table](one-click-ingestion-new-table.md)
+    * Ingest data from:
+      * Blob storage
+      * A local file
+      * A container
+    * Enter the sample size, from 1 to 10,000 rows (from container only)
        
 1. When you have successfully selected the data source, a preview of the data is displayed. 
     If you are ingesting data from a container, you can filter the data so that only files with specific prefixes or file extensions are ingested. For example, you might only want to ingest files with filenames beginning with the word *Europe*, or only files with the extension *.json*. 
@@ -70,5 +70,5 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 ## Next steps
 
 * Decide if you will use one-click ingestion to ingest data into [an existing table](one-click-ingestion-existing-table.md) or [a new table](one-click-ingestion-new-table.md)
-* [Query data in Azure Data Explorer Web UI](/azure/data-explorer/web-query-data)
-* [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/write-queries)
+* [Query data in Azure Data Explorer Web UI](web-query-data.md)
+* [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)

@@ -43,7 +43,7 @@ can be called like this:
   }
 ```
 
-> [!NOTE:]
+> [!NOTE]
 > Call stored functions with an explicit schema named `kusto`, to distinguish between Kusto stored functions and emulated
 > SQL system stored procedures.
 
@@ -84,5 +84,5 @@ For example:
   }
 ```
 
-> [!NOTE:]
+> [!NOTE]
 > There is no need to declare parameters when calling via TDS, since parameter types are set via protocol.
