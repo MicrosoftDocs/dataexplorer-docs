@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/08/2020
 ---
-# .alter table command
+# .alter table
 
 The `.alter table` command sets a new column schema, `docstring`, and folder to an existing table, overwriting the existing column schema, `docstring`, and folder.
 Data in columns that are "preserved" by the command is secured.
