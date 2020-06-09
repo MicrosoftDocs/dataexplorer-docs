@@ -68,10 +68,6 @@ Select **Edit schema** to view and edit your table column configuration. The sys
     
     :::image type="content" source="media/one-click-ingestion-new-table/table-mapping.png" alt-text="Table mapping name One Click Ingestion":::
 
-## Copy and paste queries TODO: RENAME THIS SECTION
-
-1. Above the **Editor** pane, select the **v** button to open the editor. In the editor, you can view and copy the automatic commands generated from your inputs. 
-
 1. In the table: 
     * Double-click the new column name to edit.
     * Select new column headers and do any of the following actions:
@@ -87,6 +83,10 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 
 > [!NOTE]
 > For tabular formats, each column can be ingested into one column in Azure Data Explorer.
+
+## Command editor
+
+Above the **Editor** pane, select the **v** button to open the editor. In the editor, you can view and copy the automatic commands generated from your inputs. 
 
 :::image type="content" source="media/one-click-ingestion-new-table/edit-view.png" alt-text="Edit view":::
 

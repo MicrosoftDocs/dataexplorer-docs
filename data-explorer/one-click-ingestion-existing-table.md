@@ -43,7 +43,7 @@ For **Ingestion type**, select the following option:
 
   A sample of the data appears. If you want to, you can filter it to show only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
   
-  For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension.
+  For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension. THIS IMAGE IS NOT CORRECT: IS FROM CONTAINER NOT LOCAL FILE
 
   :::image type="content" source="media/one-click-ingestion-existing-table/from-container-with-filter.png" alt-text="One-click ingestion filter":::
 
@@ -51,7 +51,8 @@ For **Ingestion type**, select the following option:
 
 Select **Edit schema** to view and edit your table column configuration.
 
-1. The **Map columns** dialog opens and you can map source data columns to target table columns. 
+1. The **Map columns** dialog opens and you can attach one or more source columns or attributes to your Azure Data Explorer columns.
+    * New mappings are set automatically, but you can change it to use an existing one. 
     * In the **Source columns** fields, enter column names to map with the **Target columns**.
     * To delete a column from mapping, select the trash can icon.
 
@@ -68,20 +69,16 @@ Select **Edit schema** to view and edit your table column configuration.
     > [!NOTE]
     > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
 
-    * New mappings are set automatically, but you can change it to use an existing one. 
-    * Select the **Map columns** button to open the **Map columns** window. In the **Map columns** window you can attach one or more source columns or attributes to your Azure Data Explorer columns.
-
-## Copy and paste queries - TODO: RENAME THIS SECTION
-
-1. Above the **Editor** pane, select the **v** button to open the editor. In the editor, you can view and copy the automatic commands generated from your inputs. 
 1. In the table: 
     * Select new column headers to add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. On existing columns, only data sorting is available.
 
+TODO: is the table on adding columns, changing data types, etc relevant here? at the very least the sort ascending/descending is
+## Command editor
+
+ Above the **Editor** pane, select the **v** button to open the editor. In the editor, you can view and copy the automatic commands generated from your inputs. 
     > [!NOTE]
     > * You can't update the name and datatype for existing tables.
     > * Drop commands will only revert the changes that were made by this ingestion flow (new extents and columns). Nothing else will be dropped.
-
-TODO: is the table on adding columns, changing data types, etc relevant here? at the very least the sort ascending/descending is
 
 :::image type="content" source="media/one-click-ingestion-existing-table/edit-view.png" alt-text="One click ingestion edit view":::
 
