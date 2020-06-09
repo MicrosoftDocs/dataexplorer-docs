@@ -11,7 +11,7 @@ ms.date: 04/01/2020
 ---
 # Azure Data Explorer tools overview
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It is fully integrated with a variety of tools and connectors to 
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers a variety of tools and connectors to perform data ingestion, control schema entities, perform queries, or integrate with other services.
 
 ## Ad-hoc query tools
 
@@ -61,7 +61,7 @@ Data ingestion is the process used to load data records from one or more sources
 
 ## Source control integration tools
 
-Sync Kusto is a tool that enables users to synchronize various Kusto schema entities (such as table schemas and stored functions) between the local file system, a Kusto database, and Azure Dev Ops repos.
+There are several source control tools available for integration to control schema entities.
 
 * [Azure Pipelines](../../devops.md) - Invokes control commands as part of your pipeline
 * [Sync Kusto](./synckusto.md) - Sync Kusto stored functions to/from Git
