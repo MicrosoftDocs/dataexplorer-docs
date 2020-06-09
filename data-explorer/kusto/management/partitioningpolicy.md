@@ -183,21 +183,21 @@ The following properties can be defined as part of the policy, but are optional 
 
 #### Monitoring
 
-* You can monitor the progress or state of partitioning in a cluster. Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) command.
+1. You can monitor the progress or state of partitioning in a cluster. Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) command.
 
-```kusto
-.show diagnostics
-| project MinPartitioningPercentageInSingleTable,
-          TableWithMinPartitioningPercentage
-```
+    ```kusto
+    .show diagnostics
+    | project MinPartitioningPercentageInSingleTable,
+              TableWithMinPartitioningPercentage
+    ```
 
-The output includes:
+    The output includes:
 
-  * `MinPartitioningPercentageInSingleTable`: The minimal percentage of partitioned data across all tables that have a data partitioning policy in the cluster.
+    * `MinPartitioningPercentageInSingleTable`: The minimal percentage of partitioned data across all tables that have a data partitioning policy in the cluster.
       * If this percentage remains constantly under 90%, then evaluate the cluster's partitioning capacity (see [capacity](partitioningpolicy.md#capacity)).
-  * `TableWithMinPartitioningPercentage`: The fully qualified name of the table whose partitioning percentage is shown above.
+    * `TableWithMinPartitioningPercentage`: The fully qualified name of the table whose partitioning percentage is shown above.
 
-* To monitor the partitioning commands and their resources utilization, you can use [.show commands](commands.md). For example:
+1. To monitor the partitioning commands and their resources utilization, you can use [.show commands](commands.md). For example:
 
 ```kusto
 .show commands 
