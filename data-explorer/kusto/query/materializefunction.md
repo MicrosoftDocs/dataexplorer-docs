@@ -39,7 +39,7 @@ Allows caching a subquery result during the time of query execution in a way tha
 **Examples**
 
 The following example shows how `materialize()` can be used to improve performance of the query.
-The expression `_detailed_data` is defined using `materialize()` function and therefore it is calculated only once.
+The expression `_detailed_data` is defined using `materialize()` function and therefore it's calculated only once.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
