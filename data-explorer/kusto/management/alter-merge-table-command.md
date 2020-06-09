@@ -49,3 +49,4 @@ When you make changes to a table's column schema, ensure that ingestion won't ad
 .alter-merge table MyTable (ColumnX:string, ColumnY:int) 
 .alter-merge table MyTable (ColumnX:string, ColumnY:int) with (docstring = "Some documentation", folder = "Folder1")
 ```
+ 
