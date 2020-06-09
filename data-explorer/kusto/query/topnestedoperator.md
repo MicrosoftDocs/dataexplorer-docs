@@ -51,7 +51,7 @@ For each *TopNestedClause*:
   Typically it's a column reference for the tabular input (*T*), or some
   calculation (such as `bin()`) over such a column.
 
-* *`ConstExpr`*: If specified, for each hierarchy level 1 record will be added
+* *`ConstExpr`*: If specified, for each hierarchy level, 1 record will be added
   with the value that is the aggregation over all records that didn't
   "make it to the top".
 
@@ -72,8 +72,7 @@ For each *TopNestedClause*:
    * [percentile()](percentiles-aggfunction.md), and
    * [percentilew()](percentiles-aggfunction.md). Any algebraic combination of the aggregations is also supported.
 
-* `asc` or `desc` (the default) may appear to control whether selection is actually from the "bottom" or "top" of the range
-  of aggregated values.
+* `asc` or `desc` (the default) may appear to control whether selection is actually from the "bottom" or "top" of the range of aggregated values.
 
 **Returns**
 
@@ -83,7 +82,7 @@ This operator returns a table that has two columns for each aggregation clause:
   column name *ExprName* if specified)
 
 * One column holds the result of the *Aggregation*
-  calculation (having the column name *AggregationName* if specified).
+  calculation (having the column name *AggregationName* if specified)
 
 **Comments**
 
@@ -98,7 +97,7 @@ To get all values at a certain level, add an aggregation count that:
 The number of records may grow exponentially with the number of aggregation clauses
 ((N1+1) \* (N2+1) \* ...). Record growth is even faster if no *N* limit is specified. Take into account that this operator may consume a considerable amount of resources.
 
-For cases in which the distribution of the aggregation is considerably non-uniform,
+If the distribution of the aggregation is considerably non-uniform,
 limit the number of distinct values to return (by using *N*) and use the
 `with others=` *ConstExpr* option to get an indication for the "weight" of all other
 cases.
@@ -152,8 +151,7 @@ StormEvents
 |TEXAS|123400.5101|||All Other End Locations|58523.2932000001|
 |All Other States|1149279.5923|||All Other End Locations|1149279.5923|
 
-
-The following query shows the same results for the first level used in the example above:
+The following query shows the same results for the first level used in the example above.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -167,7 +165,7 @@ The following query shows the same results for the first level used in the examp
 |1149279.5923|
 
 
-Request another column (EventType) to the top-nested result: 
+Request another column (EventType) to the top-nested result.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -201,7 +199,7 @@ StormEvents
 | mv-expand EndLocations, endLocationSums, indicies
 ```
 
-|State|Source|EndLocations|endLocationSums|indicies|
+|State|Source|EndLocations|endLocationSums|indices|
 |---|---|---|---|---|
 |TEXAS|Trained Spotter|CLAUDE|421.44|0|
 |TEXAS|Trained Spotter|AMARILLO|316.8892|1|
