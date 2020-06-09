@@ -12,7 +12,7 @@ ms.date: 06/07/2020
 
 # Use parameters in Azure Data Explorer dashboards
 
-Parameters are used as building blocks for dashboard filters in Azure Data Explorer dashboards. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. \\TODO: A query can contain one or more parameters and one or more dashboard filters. This document describes the creation and use of parameters and linked filters in Azure Data Explorer dashboards. 
+Parameters are used as building blocks for dashboard filters in Azure Data Explorer dashboards. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. A query can use one or more parameters. This document describes the creation and use of parameters and linked filters in Azure Data Explorer dashboards. 
 
 > [!NOTE]
 > Parameter management is available in edit mode to dashboard editors.
@@ -49,22 +49,26 @@ To create a parameter, select the **New parameter** button at the top of the rig
 |**Source**     |    The source of the parameter values: <ul><li>**Fixed values**: Manually introduced static filter values. </li><li>**Query**: Dynamically introduced values using a KQL query.  </li></ul>    |
 |**Add a “Select all” value**    |   Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values. This value should be built into the query to provide the functionality. See [Use the multiple selection query-based parameter](#use-the-multiple-selection-query-based-parameter) for more examples on building such queries.     |
 
-## Modify a parameter
+## Manage parameters in parameter card
 
-Select **Edit** in the parameter card three dots menu to modify each parameter. You can also delete, clone, pin to or unpin from the dashboard.
-\\TODO - unclear where?
-The following values can be viewed in the side pane:
-* Parameter display name
+In the three dots menu in the parameter card, you can select **Edit**, **Duplicate parameter**, **Delete**, and **Unpin from dashboard**/**Pin to dashboard**.
+
+The following indicators can be viewed in the parameter card:
+* Parameter display name 
 * Variable names 
-* Number of queries the parameter was used in 
-* Filter pin/unpin state in the dashboard
+* Number of queries in which the parameter was used
+* Pin/unpin state in the dashboard
 
 :::image type="content" source="media/dashboard-parameters/modify-parameter.png" alt-text="Modify parameters":::
 
 ## Use different parameter types
 
-Several dashboard parameter types are supported. A parameter must be used in the query to make the filter applicable for that query visual. The following examples describe how to use parameters in a query for various parameter types. Once defined, you can see the parameters in the **Query** page > filter top bar and in the query itself using intellisense.
-\\TODO: need image
+Several dashboard parameter types are supported. A parameter must be used in the query to make the filter applicable for that query visual. The following examples describe how to use parameters in a query for various parameter types. Once defined, you can see the parameters in the **Query** page > filter top bar and in the query intellisense.
+
+:::image type="content" source="media/dashboard-parameters/query-intellisense.png" alt-text="See parameters in top bar and intellisense":::
+
+> [!NOTE]
+> If the parameter isn't used in the query, the filter remains disabled. Once the parameter is added to the query, the filter becomes active.
 
 ### Use the default Time range parameter
 
@@ -77,7 +81,7 @@ EventsAll
 | summarize TotalEvents = count() by RepoName=tostring(Repo.name)
 | top 5 by TotalEvents
 ```
-\\TODO Once saved, the time range filter shows up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard using **Time range** from the drop-down list (last x minutes/hours/days) or a **Custom time range**.\\
+Once saved, the time range filter shows up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard by selecting from the drop down: **Time range** (last x minutes/hours/days) or a **Custom time range**.
 
 :::image type="content" source="media/dashboard-parameters/time-range.png" alt-text="filter using custom time range":::
 
@@ -138,7 +142,7 @@ The parameters can be seen in the **Parameters** side pane, but aren't currently
 
 ### Use the multiple selection fixed value parameters
 
-Fixed value parameters are based on predefined values specified by the user. The following example shows how to can create and use a multiple selection fixed value parameter.
+Fixed value parameters are based on predefined values specified by the user. The following example shows you how to create and use a multiple selection fixed value parameter.
 
 #### Create the parameters
 
@@ -157,16 +161,16 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
 :::image type="content" source="media/dashboard-parameters/companies-side-pane.png" alt-text="companies side pane":::
 
 #### Use the parameters 
-<!--(Gabi: this query is not working. Need your help to fix)-->
 
 1. Run a sample query using the new *companies* parameter by using the `_companies` variable.
 
     ```kusto
     EventsAll
     | where CreatedAt > ago(7d)
+    | extend RepoName = tostring(Repo.name)
     | where Type == "WatchEvent"
-    | where Repo.name in (_companies)
-    | summarize WatchEvents=count() by RepoName = tolower(tostring(Repo.name))
+    | where RepoName has_any (_companies)
+    | summarize WatchEvents=count() by RepoName
     | top 5 by WatchEvents
     ```
 
@@ -210,7 +214,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
     ``` kusto
     EventsAll
-    | where Type in (_event)
+    | where Type has (_event)
     | summarize count(Id) by Type, bin(CreatedAt,7d)
     ```
 
