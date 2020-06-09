@@ -51,7 +51,7 @@ Add the required data sources for the dashboards.
 
 ## Use Parameters
 
-Parameters enable using dashboard filters. Parameters significantly improve dashboard rendering performance and enable you to use filter values as early as possible in the query.
+Parameters enable using dashboard filters. Parameters significantly improve dashboard rendering performance and enable you to use filter values as early as possible in the query. For more information about using parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
 
 1. Select **Parameters** on the top bar. Select the **+ New parameter** button in the **Parameters** pane.
 
@@ -97,4 +97,5 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
 ## Next Steps
 
+* [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
 * [Query data in Azure Data Explorer](web-query-data.md)
