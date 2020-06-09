@@ -17,7 +17,7 @@ The command can be used, for example, to reorder the columns of a table.
 
 The command must run in the context of a specific database that scopes the table name.
 
-The command requires [Table Admin permission](../management/access-control/role-based-authorization.md).
+* Requires [Table Admin permission](../management/access-control/role-based-authorization.md).
 
 > [!WARNING]
 > Using the `.alter` command incorrectly may lead to data loss.
