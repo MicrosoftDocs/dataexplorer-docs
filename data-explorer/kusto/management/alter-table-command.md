@@ -14,9 +14,9 @@ ms.date: 06/08/2020
 The `.alter table` command:
 * Secures data in "preserved" columns
 * Reorders table columns
-* Sets a new column schema, `docstring`, and folder to an existing table, overwriting the existing column schema, `docstring`, and folder.
+* Sets a new column schema, `docstring`, and folder to an existing table, overwriting the existing column schema, `docstring`, and folder
 * Must run in the context of a specific database that scopes the table name
-* Requires [Table Admin permission](../management/access-control/role-based-authorization.md).
+* Requires [Table Admin permission](../management/access-control/role-based-authorization.md)
 
 > [!WARNING]
 > Using the `.alter` command incorrectly may lead to data loss.

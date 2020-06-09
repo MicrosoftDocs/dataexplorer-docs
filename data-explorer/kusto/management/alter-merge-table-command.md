@@ -16,7 +16,7 @@ The `.alter-merge table` command:
 * Secures data in existing columns
 * Adds new columns, `docstring`, and folder, to an existing table
 * Must run in the context of a specific database that scopes the table name
-* Requires [Table Admin permission](../management/access-control/role-based-authorization.md).
+* Requires [Table Admin permission](../management/access-control/role-based-authorization.md)
 
 > [!WARNING]
 > Using the `.alter-merge` command incorrectly may lead to data loss.
