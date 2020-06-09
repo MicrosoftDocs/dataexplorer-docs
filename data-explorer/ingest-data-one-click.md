@@ -11,7 +11,7 @@ ms.date: 03/29/2020
 
 # What is one-click ingestion?
 
-Ingesting data can be a complicated process, but one-click ingestion makes the process easy, fast, and intuitive. One-click ingestion provides a quick ramp-up to ingesting data. You will create database tables and mapping structures using intuitive UX. Select data from a variety of sources in different data formats, either as a one-time or continuous ingestion process.
+Ingesting data can be a complicated process, but one-click ingestion makes the process easy, fast, and intuitive. One-click ingestion uses intuitive UX to help you ramp-up quickly to ingest data, create database tables and mapping structures.  Select data from a variety of sources in different data formats, either as a one-time or continuous ingestion process.
 
 The following features make one-click ingestion so useful:
 
