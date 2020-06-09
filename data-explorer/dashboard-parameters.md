@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/07/2020
+ms.date: 06/09/2020
 ---
 
 # Use parameters in Azure Data Explorer dashboards
@@ -51,7 +51,7 @@ To create a parameter, select the **New parameter** button at the top of the rig
 
 ## Manage parameters in parameter card
 
-In the three dots menu in the parameter card, you can select **Edit**, **Duplicate parameter**, **Delete**, and **Unpin from dashboard**/**Pin to dashboard**.
+In the three dots menu in the parameter card, select **Edit**, **Duplicate parameter**, **Delete**, or **Unpin from dashboard**/**Pin to dashboard**.
 
 The following indicators can be viewed in the parameter card:
 * Parameter display name 
@@ -136,7 +136,7 @@ The parameters can be seen in the **Parameters** side pane, but aren't currently
 
     The new parameter shows up in the parameter list at the top of the dashboard. \\TODO: image. Image below doesn't fit with text...\\
 
-1. Select different values to see how the visual is updated based on the selection.
+1. Select different values to update the visuals.
 
     :::image type="content" source="media/dashboard-parameters/top-five-repos.png" alt-text="top five repos result":::
 
@@ -176,7 +176,7 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
 
     The new parameter shows up in the parameter list at the top of the dashboard.  
 
-1. Select **multiple values** to view the visual updates based on the selection.
+1. \\To Do: Select **multiple values** to view the visual updates based on the selection.
 
     :::image type="content" source="media/dashboard-parameters/select-companies.png" alt-text="select companies":::
 
@@ -220,7 +220,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
     The new parameter shows up in the parameter list at the top of the dashboard. 
 
-1. Select different values to view the visual updates based on the selection.
+1. Select different values to update the visuals.
 
 ### Use the multiple selection query-based parameter
 
@@ -253,4 +253,4 @@ Query-based parameter values are derived at dashboard load time by executing the
 
     The new parameter shows up in the parameter list at the top of the dashboard. 
 
-1. Select different values to see visual updates based on the selection.
+1. Select different values to update the visuals.
