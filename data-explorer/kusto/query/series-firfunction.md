@@ -47,7 +47,7 @@ This query returns:
 
 :::image type="content" source="images/series-firfunction/series-fir.png" alt-text="Series fir" border="false":::
 
-* TO calculate the difference between a point and its preceding one, set *filter*=[1,-1].
+* To calculate the difference between a point and its preceding one, set *filter*=[1,-1].
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
