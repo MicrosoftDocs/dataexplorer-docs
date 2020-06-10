@@ -37,7 +37,6 @@ Specify the columns that the table should have after a successful completion.
 > [!TIP]
 > Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.
 
-The command will affect the data.
 
 How will the command affect the data?
 * Existing data isn't physically modified by the command. Data in removed columns is ignored. Data in new columns is assumed to be null.
