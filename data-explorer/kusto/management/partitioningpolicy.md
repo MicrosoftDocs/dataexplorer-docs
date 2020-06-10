@@ -9,12 +9,9 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
 ---
-# Data partitioning policy (Preview)
+# Data partitioning policy
 
 The partitioning policy defines if and how [Extents (data shards)](../management/extents-overview.md) should be partitioned, for a specific table.
-
-> [!NOTE]
-> The data partitioning feature is in *preview*.
 
 The main purpose of the policy is to improve performance of queries that are known to narrow the data set of values in the partitioned columns, or aggregate/join on a high cardinality string column. The policy may also result in better compression of the data.
 
