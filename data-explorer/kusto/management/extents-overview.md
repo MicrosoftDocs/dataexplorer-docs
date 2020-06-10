@@ -107,7 +107,7 @@ format *prefix* *suffix*, where *prefix* is one of:
 
 ### 'drop-by:' extent tags
 
-Tags that start with a **`drop-by:`** prefix can be used to control which other
+Tags that start with a `drop-by:` prefix can be used to control which other
 extents to merge with. Extents that have a given `drop-by:` tag can be merged
 together, but they won't be merged with other extents. 
 You can then issue a command to drop extents according to their `drop-by:` tag.
