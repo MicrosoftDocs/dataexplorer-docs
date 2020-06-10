@@ -28,7 +28,6 @@ The `.alter table` command:
 
 `.alter` `table` *TableName* (*columnName*:*columnType*, ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
-Specify the columns that the table should have after a successful completion.
 
  * The table will have exactly the same columns, in the same order, as specified.
  * If existing columns aren't specified in the command, they'll be dropped and data in them will be lost, like with the `.drop column` command.
