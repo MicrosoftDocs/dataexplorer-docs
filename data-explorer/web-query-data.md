@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 07/04/2019
+ms.date: 06/10/2020
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
 ---
@@ -174,11 +174,35 @@ Many times, you want to share the queries you create. You can provide a deep lin
 
     ![Shared query](media/web-query-data/shared-query.png)
 
+## Export query results
+
+Just next to the **Share** drop down is the **File** drop down.  Clicking **File** exposes a menu with the available export options, as shown here.
+
+![Export results](media/web-query-data/export-results.png)
+
+## Pin cards to dashboards
+
+When you complete adhoc data exploration using KQL queries and find the data you need, you might want to pin it to a dashboard for continous monitoring. 
+
+1. In the query window, select the first query you copied in.
+
+1. At the top of the query window, select **Share**.
+
+1. Select **Pin to dashboard**.
+
+1. Provide a **query name**.
+
+1. Select **Use existing** or **Create new**.
+
+1. If you selected and existing dashboard you will need to provide it's name and if you selected to create a new dashboard you will need to provide it a name.
+
+1. Once you fill all properties you can open the dashboard either by clicking the link in the notification message or by checking the ** View dashboard after creation" checkbox (in case this is a new dashboard).
+
 ## Provide feedback
 
-Data Explorer is currently in preview, and we welcome feedback on your experience. You can do this now or wait until you've spent more time with it.
+In the upper-right of the application, select the feedback icon: 
 
-1. In the upper-right of the application, select the feedback icon: ![Feedback icon](media/web-query-data/icon-feedback.png).
+![Feedback icon](media/web-query-data/icon-feedback.png).
 
 1. Enter your feedback, then select **Submit**.
 
@@ -189,3 +213,5 @@ You didn't create any resources in this quickstart, but if you'd like to remove 
 ## Next steps
 
 [Write queries for Azure Data Explorer](write-queries.md)
+
+
