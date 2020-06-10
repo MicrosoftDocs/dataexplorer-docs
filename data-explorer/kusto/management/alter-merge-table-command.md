@@ -36,11 +36,9 @@ Specify the table columns:
 > [!TIP]
 > Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.
 
-The command will affect the data.
-
-* Existing data isn't physically modified. Data in removed columns is ignored. Data in new columns is assumed to be null.
-* Depending on how the cluster is configured, data ingestion might modify the table's column schema, even without user interaction. 
-When you make changes to a table's column schema, ensure that ingestion won't add needed columns that the command will then remove.
+How will the command affect the data?
+* Existing data isn't physically modified by the command. Data in removed columns is ignored. Data in new columns is assumed to be null.
+* Depending on how the cluster is configured, data ingestion might modify the table's column schema, even without user interaction. When you make changes to a table's column schema, ensure that ingestion won't add needed columns that the command will then remove.
 
 **Examples**
 
