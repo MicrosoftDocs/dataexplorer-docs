@@ -7,14 +7,11 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 06/10/2020
 ---
-# Data partitioning policy (Preview)
+# Data partitioning policy
 
 The partitioning policy defines if and how [Extents (data shards)](../management/extents-overview.md) should be partitioned, for a specific table.
-
-> [!NOTE]
-> The data partitioning feature is in *preview*.
 
 The main purpose of the policy is to improve performance of queries that are known to narrow the data set of values in the partitioned columns, or aggregate/join on a high cardinality string column. The policy may also result in better compression of the data.
 
@@ -183,21 +180,21 @@ The following properties can be defined as part of the policy, but are optional 
 
 #### Monitoring
 
-* You can monitor the progress or state of partitioning in a cluster. Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) command.
+Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) command to monitor the progress or state of partitioning in a cluster.
 
-```kusto
-.show diagnostics
-| project MinPartitioningPercentageInSingleTable,
-          TableWithMinPartitioningPercentage
-```
+    ```kusto
+    .show diagnostics
+    | project MinPartitioningPercentageInSingleTable,
+              TableWithMinPartitioningPercentage
+    ```
 
-The output includes:
+    The output includes:
 
-  * `MinPartitioningPercentageInSingleTable`: The minimal percentage of partitioned data across all tables that have a data partitioning policy in the cluster.
+    * `MinPartitioningPercentageInSingleTable`: The minimal percentage of partitioned data across all tables that have a data partitioning policy in the cluster.
       * If this percentage remains constantly under 90%, then evaluate the cluster's partitioning capacity (see [capacity](partitioningpolicy.md#capacity)).
-  * `TableWithMinPartitioningPercentage`: The fully qualified name of the table whose partitioning percentage is shown above.
+    * `TableWithMinPartitioningPercentage`: The fully qualified name of the table whose partitioning percentage is shown above.
 
-* To monitor the partitioning commands and their resources utilization, you can use [.show commands](commands.md). For example:
+Use [.show commands](commands.md) to monitor the partitioning commands and their resource utilization. For example:
 
 ```kusto
 .show commands 
