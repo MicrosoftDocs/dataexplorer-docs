@@ -28,8 +28,7 @@ The `.alter-merge table` command:
 
 `.alter-merge` `table` *TableName* (*columnName*:*columnType*, ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
-Specify the columns that the table should have after a successful completion.
-
+Specify the table columns:
  * Columns that don't exist and which you specify, are added at the end of the existing schema.
  * If the passed schema doesn't contain some table columns, the columns won't be deleted.
  * If you specify an existing column with a different type, the command will fail.
