@@ -43,10 +43,10 @@
     - name: Quick reference guide
       href: kql-quick-reference.md
     - name: Tools
-    href: ./kusto/tools/index.md
-    items:
-    - name: Ad-hoc query
+      href: ./kusto/tools/index.md
       items:
+      - name: Ad-hoc query
+        items:
       - name: Kusto.Explorer
         items:
         - name: Kusto.Explorer installation and user interface
