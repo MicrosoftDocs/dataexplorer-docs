@@ -1237,7 +1237,7 @@
         - name: Tables overview
           href: ./kusto/management/tables.md
         - name: .alter merge table
-          href: ./kusto/management/alter-table-command.md
+          href: ./kusto/management/alter-merge-table-command.md
         - name: .alter table
           href: ./kusto/management/alter-table-command.md
         - name: .alter table docstring
