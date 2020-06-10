@@ -30,6 +30,7 @@ The `.alter table` command:
 
 
  * The table will have exactly the same columns, in the same order, as specified.
+ Specify the table columns:
  * If existing columns aren't specified in the command, they'll be dropped and data in them will be lost, like with the `.drop column` command.
  * When you alter a table, altering a column type isn't supported. Use the [.alter column](alter-column.md) command instead.
 
