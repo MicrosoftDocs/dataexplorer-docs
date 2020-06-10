@@ -1,5 +1,5 @@
 ---
-title: isnotempty() - Azure Data Explorer | Microsoft Docs
+title: isnotempty() - Azure Data Explorer
 description: This article describes isnotempty() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,7 +11,7 @@ ms.date: 02/13/2020
 ---
 # isnotempty()
 
-Returns `true` if the argument is not an empty string nor it is a null.
+Returns `true` if the argument isn't an empty string, and it isn't null.
 
 ```kusto
 isnotempty("") == false
