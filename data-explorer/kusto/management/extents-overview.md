@@ -77,7 +77,7 @@ One of the more important pieces of information for each extent is its
 creation time. This time is used for:
 
 1. **Retention** - Extents that were created earlier will be dropped earlier.
-1. **Caching* - Extents that were created recently will be kept in [hot cache](cachepolicy.md))
+1. **Caching** - Extents that were created recently will be kept in [hot cache](cachepolicy.md))
 1. **Sampling** - Recent extents are favored, when using query operations such as `take`
 
 In fact, Kusto tracks two `datetime` values per extent: `MinCreatedOn` and `MaxCreatedOn`.
