@@ -39,9 +39,9 @@ Specify the columns that the table should have after a successful completion.
 
 The command will affect the data.
 
+How will the command affect the data?
 * Existing data isn't physically modified by the command. Data in removed columns is ignored. Data in new columns is assumed to be null.
-* Depending on how the cluster is configured, data ingestion might modify the table's column schema, even without user interaction.
-When you make changes to a table's column schema, ensure that ingestion won't add needed columns that the command will then remove.
+* Depending on how the cluster is configured, data ingestion might modify the table's column schema, even without user interaction. When you make changes to a table's column schema, ensure that ingestion won't add needed columns that the command will then remove.
 
 > [!WARNING]
 > Data ingestion processes into the table that modify the table's column schema, and that occur in parallel with the `.alter table` command, might be performed agnostic to the order of table columns. There is also a risk that data will be ingested into the wrong columns. Prevent these issues by stopping ingestion during the command, or by making sure that such ingestion operations always use a mapping object.
