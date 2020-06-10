@@ -90,7 +90,7 @@ Original file path prefix can be constructed using partition elements rendered a
 
 &nbsp;&nbsp;`datetime_pattern` `(` *DateTimeFormat* `,` *PartitionName* `)`  
 
-where *DateTimeFormat* adheres to the .NET format specification, with an extesion allowing to enclose format specifiers into curly brackets. For example, the following two formats are equivalent:
+where *DateTimeFormat* adheres to the .NET format specification, with an extension allowing to enclose format specifiers into curly brackets. For example, the following two formats are equivalent:
 
 &nbsp;&nbsp;`'year='yyyy'/month='MM` and `year={yyyy}/month={MM}`
 
