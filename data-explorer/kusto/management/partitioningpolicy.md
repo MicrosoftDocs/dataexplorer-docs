@@ -184,8 +184,7 @@ Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) comma
 
 ```kusto
 .show diagnostics
-| project MinPartitioningPercentageInSingleTable,
-          TableWithMinPartitioningPercentage
+| project MinPartitioningPercentageInSingleTable, TableWithMinPartitioningPercentage
 ```
 
 The output includes:
