@@ -60,12 +60,6 @@ You can create an external table with json format. For more information see [Ext
     ( 
        h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
     )
-    with 
-    (
-       docstring = "Docs",
-       folder = "ExternalTables",
-       namePrefix="Prefix"
-    ) 
     ```
  
 1. Json format necessitates a second step of creating mapping to columns as shown below. In the following query, create a specific json mapping named *mappingName*:
