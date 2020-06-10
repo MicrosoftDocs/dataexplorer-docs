@@ -188,11 +188,11 @@ Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) comma
               TableWithMinPartitioningPercentage
     ```
 
-    The output includes:
+The output includes:
 
-    * `MinPartitioningPercentageInSingleTable`: The minimal percentage of partitioned data across all tables that have a data partitioning policy in the cluster.
-      * If this percentage remains constantly under 90%, then evaluate the cluster's partitioning capacity (see [capacity](partitioningpolicy.md#capacity)).
-    * `TableWithMinPartitioningPercentage`: The fully qualified name of the table whose partitioning percentage is shown above.
+  * `MinPartitioningPercentageInSingleTable`: The minimal percentage of partitioned data across all tables that have a data partitioning policy in the cluster.
+    * If this percentage remains constantly under 90%, then evaluate the cluster's partitioning capacity (see [capacity](partitioningpolicy.md#capacity)).
+  * `TableWithMinPartitioningPercentage`: The fully qualified name of the table whose partitioning percentage is shown above.
 
 Use [.show commands](commands.md) to monitor the partitioning commands and their resource utilization. For example:
 
