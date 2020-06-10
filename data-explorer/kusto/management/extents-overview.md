@@ -128,7 +128,7 @@ we recommend that you [drop the tags](extents-commands.md#drop-extent-tags).
 
 ### 'ingest-by:' extent tags
 
-Tags that start with an **`ingest-by:`** prefix can be used to ensure that data
+Tags that start with an `ingest-by:` prefix can be used to ensure that data
 is only ingested once. You can issue an **`ingestIfNotExists`** property command that prevents the data from being ingested if there already exists an extent with this specific `ingest-by:` tag.
 The values for both `tags` and `ingestIfNotExists` are arrays of strings,
 serialized as JSON.
