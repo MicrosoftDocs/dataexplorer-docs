@@ -14,7 +14,7 @@ ms.date: 10/23/2018
 Applies linear regression on a series, returning dynamic object.  
 
 Takes an expression containing dynamic numerical array as input, and does [linear regression](https://en.wikipedia.org/wiki/Line_fitting) to find the line that best fits it. This function should be used on time series arrays, fitting the output of make-series operator. It generates a dynamic value with the following content:
-* `rsquare`: [r-square](https://en.wikipedia.org/wiki/Coefficient_of_determination) is a standard measure of the fit quality. It's a number in the range [0-1], where 1 is the best possible fit, and 0 means the data is unordered and does not fit any line
+* `rsquare`: [r-square](https://en.wikipedia.org/wiki/Coefficient_of_determination) is a standard measure of the fit quality. It's a number in the range [0-1], where 1 is the best possible fit, and 0 means the data is unordered and doesn't fit any line
 * `slope`: Slope of the approximated line (the *a*-value from *y=ax+b*)
 * `variance`: Variance of the input data
 * `rvariance`: Residual variance that is the variance between the input data values and the approximated ones.
