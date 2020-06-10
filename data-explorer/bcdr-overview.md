@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: herauch
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 06/09/2020
 ---
 
 # Business continuity and disaster recovery
@@ -29,7 +29,7 @@ Some basic capabilities are built in, but most rely on users to set up their clu
 ### Persistence Layer/Storage layer
 <!-- choose preferred term -->
 
-Azure Storage automatically provides fault tolerance, with the default setting offering Locally Redundant Storage (LRS) within a datacenter. Three replicas are persisted. If a replica is lost while in use, another is deployed without disruption.
+Azure Storage automatically provides fault tolerance, with the default setting offering Locally Redundant Storage (LRS) within a data center. Three replicas are persisted. If a replica is lost while in use, another is deployed without disruption.
 
 If you need further resiliency, Zone Redundant Storage places replicas across availability zones. This feature incurs added costs.
 
@@ -42,7 +42,7 @@ If you need further resiliency, Zone Redundant Storage places replicas across av
 Azure Data Explorer is a distributed computing platform and can have two to many nodes depending on scale, and node role type. At provision time, select availability zones to distribute the node deployment, across zones for maximum intra-region resiliency. An availability zone failure won't result in a complete outage. You'll, however, experience performance degradation until recovery of the zone. 
 
 > [!Note] 
-> Availability zone selection (or not) is only supported at the time of provision.
+> Availability zone selection is only supported at the time of provision.
 
 ### Leader-Follower cluster configuration
 
@@ -85,6 +85,8 @@ Dealing with a datacenter outage is similar to the Azure region failure recovery
 Azure Availability Zones come with a cost and some customers, choose to deploy without zonal redundancy. With such an Azure Data Explorer deployment, a datacenter outage, will result in cluster outage. That's why this disaster recovery scenario is similar to an entire Azure region failure.
 
 ## Outage of an Azure Region
+
+[Paired regions](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions)
 
 Azure Data Explorer does not support **automatic** protection against the outage of an **entire** Azure region. To create an architecture that can overcome such an outage, we provide some options and considerations for disaster recovery. For each option, we take into account recovery time objective (RTO), recovery point objective (RPO), effort, and cost. You can do cost and performance optimizations using Azure Advisor recommendations and [autoscale](manage-cluster-horizontal-scaling.md) configuration.
 

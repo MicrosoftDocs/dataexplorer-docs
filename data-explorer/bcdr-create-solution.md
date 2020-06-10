@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: herauch
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 06/09/2020
 ---
 
 # Create business continuity and disaster recovery solutions with Azure Data Explorer
@@ -15,7 +15,7 @@ This article presents an example how to create several different architectures t
 
 ## Regional outage
 
-Azure Data Explorer does not support **automatic** protection against the outage of an **entire** Azure region. This disruption could happen during a natural disaster, like an earthquake. If you require a solution for this type of situation, you must create two or more independent clusters in two [Azure paired regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Azure Data Explorer doesn't support **automatic** protection against the outage of an **entire** Azure region. This disruption could happen during a natural disaster, like an earthquake. If you require a solution for this type of situation, you must create two or more independent clusters in two [Azure paired regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 Once you have created multiple clusters, do the following steps:
 
