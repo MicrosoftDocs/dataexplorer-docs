@@ -182,11 +182,11 @@ The following properties can be defined as part of the policy, but are optional 
 
 Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) command to monitor the progress or state of partitioning in a cluster.
 
-    ```kusto
-    .show diagnostics
-    | project MinPartitioningPercentageInSingleTable,
-              TableWithMinPartitioningPercentage
-    ```
+```kusto
+.show diagnostics
+| project MinPartitioningPercentageInSingleTable,
+          TableWithMinPartitioningPercentage
+```
 
 The output includes:
 
