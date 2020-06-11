@@ -38,7 +38,7 @@ For **Ingestion type**, select the following options:
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container":::
 
- > [!NOTE] 
+ > [!TIP] 
  > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
 
   A sample of the data appears. If you want to, you can filter it to show only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
@@ -57,7 +57,7 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 
         In this case, the data format is **CSV**
 
-    > [!NOTE]
+    > [!TIP]
     > If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#edit-the-schema).
     
     * You can select the check box **Include column names** to ignore the heading row of the file.
@@ -65,30 +65,19 @@ Select **Edit schema** to view and edit your table column configuration. The sys
         :::image type="content" source="media/one-click-ingestion-new-table/non-json-format.png" alt-text="Select include column names":::
 
 1. In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
-    
+
     :::image type="content" source="media/one-click-ingestion-new-table/table-mapping.png" alt-text="Table mapping name One Click Ingestion":::
 
 1. In the table: 
     * Double-click the new column name to edit.
     * Select new column headers and do any of the following actions:
     
-|Action         |Description                                  |
-|-----------------|-------------------------------------------|
-|Change data type |Change the data type from the one automatically selected by the service to one of the other [supported data types](#edit-the-schema)|
-|Rename column    |Change the column name |
-|New column       |Add a new column. For tabular formats, each column can be ingested into one column on ADX. A new column can be created from a different JSON level.|
-|Delete column    |Delete the selected column|
-|Sort ascending   |Sort the table by the selected column in ascending order (existing columns only) |
-|Sort descending  |Sort the table by the selected column in descending order (existing columns only) |
+[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
 > [!NOTE]
 > For tabular formats, each column can be ingested into one column in Azure Data Explorer.
 
-## Command editor
-
-Above the **Editor** pane, select the **v** button to open the editor. In the editor, you can view and copy the automatic commands generated from your inputs. 
-
-:::image type="content" source="media/one-click-ingestion-new-table/edit-view.png" alt-text="Edit view":::
+[!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
 
 ## Start ingestion
 
