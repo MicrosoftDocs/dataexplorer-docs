@@ -170,10 +170,10 @@ Many times, you want to share the queries you create.
 
 The following options are available in the drop-down:
 * Link to clipboard
-* Link query to clipboard
+* [Link query to clipboard](#provide-a-deep-link)
 * Link, query, results to clipboard
-* Pin to dashboard
-* Query to Power BI
+* [Pin to dashboard](#pin-to-dashboard)
+* [Query to Power BI](power-bi-imported-query.md)
 
 ### Provide a deep link
 
@@ -197,7 +197,7 @@ When you complete data exploration using queries in the Web UI and find the data
     1. Provide a **Query name**.
     1. Select **Use existing** or **Create new**.
     1. Provide **Dashboard name**
-    * Select the **View dashboard after creation** checkbox (if it's a new dashboard).
+    1. Select the **View dashboard after creation** checkbox (if it's a new dashboard).
     1. Select **Pin**
 
     :::image type="content" source="media/web-query-data/pin-to-dashboard.png" alt-text="Pin to dashboard pane":::
