@@ -80,7 +80,7 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
 * In the **Editor** window, you can adjust data table columns as necessary. On new columns you can add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. On existing columns, only data sorting and new columns is available.
 
-* At any time, you can open the command editor above the **Editor** pane. In the command editor, you can view and copy the automatic commands generated from your inputs.
+* At any time, you can open the [command editor](one-click-ingestion-new-table.md#command-editor) above the **Editor** pane. In the command editor, you can view and copy the automatic commands generated from your inputs.
 
 ### Data ingestion
 
@@ -94,7 +94,7 @@ Once you have completed schema mapping and column manipulations, the ingestion w
  
 ### Initial data exploration
    
-After ingestion, the wizard gives you options to use **Quick commands** for initial exploration of your data.
+After ingestion, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#query-data)** for initial exploration of your data.
 
 ## Next steps
 
