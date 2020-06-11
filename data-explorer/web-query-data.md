@@ -206,7 +206,7 @@ When you complete data exploration using queries in the Web UI and find the data
 
 To export the query results to a CSV file, select **File** > **Export to CSV**.
 
-![Export results](media/web-query-data/export-results.png)
+:::image type="content" source="media/web-query-data/export-results.png" alt-text="Export results to CSV file":::
 
 ## Provide feedback
 
