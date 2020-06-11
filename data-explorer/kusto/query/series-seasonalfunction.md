@@ -22,8 +22,8 @@ Calculates the seasonal component of a series, according to the detected or give
 * *series*: Input numeric dynamic array
 * *period* (optional): Integer number of bins in each seasonal period, possible values:
     *  -1 (default): Autodetects the period by using [series_periods_detect()](series-periods-detectfunction.md) with a threshold of *0.7*. Returns zeroes if seasonality isn't detected
-    * positive integer: Used as the period for the seasonal component
-    * any other value: Ignores seasonality and return a series of zeroes
+    * Positive integer: Used as the period for the seasonal component
+    * Any other value: Ignores seasonality and return a series of zeroes
 
 **Returns**
 
@@ -34,12 +34,10 @@ Dynamic array of the same length as the *series* input that contains the calcula
 * [series_periods_detect()](series-periods-detectfunction.md)
 * [series_periods_validate()](series-periods-validatefunction.md)
 
-**Examples**
-
-**1. Auto detect the period**
+### Example 1 - Auto detect the period
 
 In the following example, the series' period is automatically detected. The first series' period is detected to be six bins and the second five bins. The third series' period is too short to be detected and returns a series of zeroes. 
-See the next example on how to force the period.
+See the next example on on [how to force the period](#example-2---force-a-period).
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -55,9 +53,7 @@ print s=dynamic([2,5,3,4,3,2,1,2,3,4,3,2,1,2,3,4,3,2,1,2,3,4,3,2,1])
 |[8,12,14,12,10,10,12,14,12,10,10,12,14,12,10,10,12,14,12,10]|[10.0,12.0,14.0,12.0,10.0,10.0,12.0,14.0,12.0,10.0,10.0,12.0,14.0,12.0,10.0,10.0,12.0,14.0,12.0,10.0]|
 |[1,3,5,2,4,6,1,3,5,2,4,6]|[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]|
 
-
-
-**2. Force a period**
+### Example 2 - Force a period
 
 In this example, the series' period is too short to be detected by [series_periods_detect()](series-periods-detectfunction.md), so we explicitly force the period to get the seasonal pattern.
 
