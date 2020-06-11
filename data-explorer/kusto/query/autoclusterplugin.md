@@ -15,7 +15,7 @@ ms.date: 02/13/2020
 T | evaluate autocluster()
 ```
 
-`autocluster` finds common patterns of discrete attributes (dimensions) in the data. It then reduces the results of the original query, whether it's 100 or 100k rows, to a small number of patterns. the plugin was developed to help analyze failures (such as exceptions or crashes) but can potentially work on any filtered data set.
+`autocluster` finds common patterns of discrete attributes (dimensions) in the data. It then reduces the results of the original query, whether it's 100 or 100k rows, to a small number of patterns. The plugin was developed to help analyze failures (such as exceptions or crashes) but can potentially work on any filtered data set.
 
 **Syntax**
 
