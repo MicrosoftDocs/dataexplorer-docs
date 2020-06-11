@@ -66,7 +66,7 @@ StormEvents
 |1|512|8.7||Thunderstorm Wind|YES
 |2|898|15.3|TEXAS||
 
-**Example 2 - With custom wildcards**
+### Example with custom wildcards
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
