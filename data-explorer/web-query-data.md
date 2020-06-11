@@ -185,7 +185,7 @@ You can provide a deep link so that other users with access to the cluster can r
 
 1. Paste the link into a new browser window. The result should look like the following after the query runs.
 
-    ![Shared query](media/web-query-data/shared-query.png)
+    :::image type="content" source="media/web-query-data/shared-query.png" alt-text="Shared query deep link":::
 
 ### Pin to dashboard
 
@@ -206,7 +206,7 @@ When you complete data exploration using queries in the Web UI and find the data
 
 To export the query results to a CSV file, select **File** > **Export to CSV**.
 
-![Export results](media/web-query-data/export-results.png)
+:::image type="content" source="media/web-query-data/export-results.png" alt-text="Export results to CSV file":::
 
 ## Provide feedback
 
