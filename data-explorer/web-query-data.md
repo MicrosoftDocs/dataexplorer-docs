@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 07/04/2019
+ms.date: 06/10/2020
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
 ---
@@ -160,25 +160,57 @@ Now you've seen how basic queries work, let's look at how you can use the table 
 
 ## Share queries
 
-Many times, you want to share the queries you create. You can provide a deep link so that other users with access to the cluster can run the queries.
+Many times, you want to share the queries you create. 
 
 1. In the query window, select the first query you copied in.
 
-1. At the top of the query window, select **Share**.
+1. At the top of the query window, select **Share**. 
 
-1. Select **Link, query to clipboard**.
+:::image type="content" source="media/web-query-data/share-menu.png" alt-text="Share menu":::
+
+The following options are available in the drop-down:
+* Link to clipboard
+* [Link query to clipboard](#provide-a-deep-link)
+* Link, query, results to clipboard
+* [Pin to dashboard](#pin-to-dashboard)
+* [Query to Power BI](power-bi-imported-query.md)
+
+### Provide a deep link
+
+You can provide a deep link so that other users with access to the cluster can run the queries.
+
+1. In **Share**, select **Link, query to clipboard**.
 
 1. Copy the link and query to a text file.
 
 1. Paste the link into a new browser window. The result should look like the following after the query runs.
 
-    ![Shared query](media/web-query-data/shared-query.png)
+    :::image type="content" source="media/web-query-data/shared-query.png" alt-text="Shared query deep link":::
+
+### Pin to dashboard
+
+When you complete data exploration using queries in the Web UI and find the data you need, you can pin it to a dashboard for continuous monitoring. 
+
+1. In **Share**, select **Pin to dashboard**.
+
+1. In the **Pin to dashboard** pane:
+    1. Provide a **Query name**.
+    1. Select **Use existing** or **Create new**.
+    1. Provide **Dashboard name**
+    1. Select the **View dashboard after creation** checkbox (if it's a new dashboard).
+    1. Select **Pin**
+
+    :::image type="content" source="media/web-query-data/pin-to-dashboard.png" alt-text="Pin to dashboard pane":::
+
+## Export query results
+
+To export the query results to a CSV file, select **File** > **Export to CSV**.
+
+:::image type="content" source="media/web-query-data/export-results.png" alt-text="Export results to CSV file":::
 
 ## Provide feedback
 
-Data Explorer is currently in preview, and we welcome feedback on your experience. You can do this now or wait until you've spent more time with it.
-
-1. In the upper-right of the application, select the feedback icon: ![Feedback icon](media/web-query-data/icon-feedback.png).
+1. In the upper-right of the application, select the feedback icon ![Feedback icon](media/web-query-data/icon-feedback.png).
 
 1. Enter your feedback, then select **Submit**.
 
@@ -189,3 +221,5 @@ You didn't create any resources in this quickstart, but if you'd like to remove 
 ## Next steps
 
 [Write queries for Azure Data Explorer](write-queries.md)
+
+

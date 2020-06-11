@@ -329,6 +329,10 @@
         href: ./kusto/query/schema-entities/index.md
       - name: Entity names
         href: ./kusto/query/schema-entities/entity-names.md
+      - name: Entity references
+        href: ./kusto/query/schema-entities/entity-references.md
+      - name: Databases
+        href: ./kusto/query/schema-entities/databases.md  
       - name: Tables
         href: ./kusto/query/schema-entities/tables.md
       - name: Columns
@@ -363,6 +367,8 @@
         href: ./kusto/query/scalar-data-types/timespan.md
       - name: Null values
         href: ./kusto/query/scalar-data-types/null-values.md
+      - name: Unsupported scalar data types
+        href: /kusto/query/scalar-data-types/unsupported-data-types.md
     - name: Functions
       items:
       - name: Function types
@@ -1256,6 +1262,8 @@
           href: ./kusto/management/create-table-command.md
         - name: .create tables
           href: ./kusto/management/create-tables-command.md
+        - name: .create-merge tables
+          href: ./kusto/management/create-merge-tables-command.md
         - name: .drop table(s)
           href: ./kusto/management/drop-table-command.md
         - name: .rename table
