@@ -23,7 +23,7 @@ T | evaluate autocluster()
 
 **Returns**
 
-`autocluster` returns a (usually small) set of patterns. The patterns capture portions of the data with shared common values across multiple discrete attributes. Each pattern in the results is represented by a row.
+The `autocluster` plugin returns a (usually small) set of patterns. The patterns capture portions of the data with shared common values across multiple discrete attributes. Each pattern in the results is represented by a row.
 
 The first column is the segment ID. The next two columns are the count and percentage of rows out of the original query that are captured by the pattern. The remaining columns are from the original query. Their value is either a specific value from the column, or a wildcard value (which are by default null) meaning variable values.
 
