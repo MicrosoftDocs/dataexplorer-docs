@@ -15,7 +15,7 @@ ms.date: 02/13/2020
 T | evaluate autocluster()
 ```
 
-AutoCluster finds common patterns of discrete attributes (dimensions) in the data. It then reduces the results of the original query, whether it's 100 or 100k rows, to a small number of patterns. AutoCluster was developed to help analyze failures (such as exceptions or crashes) but can potentially work on any filtered data set.
+`autocluster` finds common patterns of discrete attributes (dimensions) in the data. It then reduces the results of the original query, whether it's 100 or 100k rows, to a small number of patterns. the plugin was developed to help analyze failures (such as exceptions or crashes) but can potentially work on any filtered data set.
 
 **Syntax**
 
@@ -23,7 +23,7 @@ AutoCluster finds common patterns of discrete attributes (dimensions) in the dat
 
 **Returns**
 
-AutoCluster returns a (usually small) set of patterns. The patterns capture portions of the data with shared common values across multiple discrete attributes. Each pattern in the results is represented by a row.
+`autocluster` returns a (usually small) set of patterns. The patterns capture portions of the data with shared common values across multiple discrete attributes. Each pattern in the results is represented by a row.
 
 The first column is the segment ID. The next two columns are the count and percentage of rows out of the original query that are captured by the pattern. The remaining columns are from the original query. Their value is either a specific value from the column, or a wildcard value (which are by default null) meaning variable values.
 
@@ -47,7 +47,9 @@ All arguments are optional, but they must be ordered as above. To indicate that 
 | NumSeeds        | *int* [default: 25]              | The number of seeds determines the number of initial local search points of the algorithm. In some cases, depending on the structure of the data and if you increase the number of seeds, then the number (or quality) of the results increases through the expanded search space with a slower query tradeoff. The value has diminishing results in both directions, so if you decrease it to below five, it will achieve negligible performance improvements. If you increase to above 50, it will rarely generate additional patterns.                                         | `T | evaluate autocluster('~', '~', 15)`       |
 | CustomWildcard  | *"any_value_per_type"*           | Sets the wildcard value for a specific type in the results table. It will indicate that the current pattern doesn't have a restriction on this column. The default is null, since the string default is an empty string. If the default is a good value in the data, a different wildcard value should be used (such as `*`).                                                                                                                | `T | evaluate autocluster('~', '~', '~', '*', int(-1), double(-1), long(0), datetime(1900-1-1))` |
 
-**Example**
+## Examples
+
+**Example 1**
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -64,7 +66,7 @@ StormEvents
 |1|512|8.7||Thunderstorm Wind|YES
 |2|898|15.3|TEXAS||
 
-**Example with custom wildcards**
+**Example 2 - With custom wildcards**
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -86,4 +88,4 @@ StormEvents
 * [basket](./basketplugin.md)
 * [reduce](./reduceoperator.md)
 
-* AutoCluster is largely based on the Seed-Expand algorithm from the following paper: [Algorithms for Telemetry Data Mining using Discrete Attributes](https://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=d5kcrO+cpEU=&t=1). 
+* `autocluster` is largely based on the Seed-Expand algorithm from the following paper: [Algorithms for Telemetry Data Mining using Discrete Attributes](https://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=d5kcrO+cpEU=&t=1). 
