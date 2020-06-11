@@ -18,7 +18,7 @@ Parses a file path `string` and returns a [`dynamic`](./scalar-data-types/dynami
 * DirectoryName
 * FileName
 * Extension
-* AlternateDataStreamName.
+* AlternateDataStreamName
 
 In addition to the simple paths with both types of slashes, the function supports paths with:
 * Schemas. For example, "file://..."
