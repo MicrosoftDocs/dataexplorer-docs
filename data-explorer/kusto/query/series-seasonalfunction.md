@@ -37,7 +37,7 @@ Dynamic array of the same length as the *series* input that contains the calcula
 ### Example 1 - Auto detect the period
 
 In the following example, the series' period is automatically detected. The first series' period is detected to be six bins and the second five bins. The third series' period is too short to be detected and returns a series of zeroes. 
-See the next example on on [how to force the period](#example-2---force-a-period).
+See the next example on [how to force the period](#example-2---force-a-period).
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
