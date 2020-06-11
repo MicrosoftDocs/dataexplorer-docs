@@ -49,7 +49,7 @@ All arguments are optional, but they must be ordered as above. To indicate that 
 
 ## Examples
 
-**Example 1**
+### Example
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
