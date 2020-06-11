@@ -38,7 +38,7 @@ For **Ingestion type**, select the following option:
   
       :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file":::
       
- > [!NOTE]
+ > [!TIP]
  > For ingestion **from container**, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#select-an-ingestion-type)
 
   A sample of the data appears. If you want to, you can filter it to show only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
@@ -66,21 +66,16 @@ Select **Edit schema** to view and edit your table column configuration.
 
     :::image type="content" source="media/one-click-ingestion-existing-table/json-levels.png" alt-text="Select JSON levels":::
     
-    > [!NOTE]
+    > [!TIP]
     > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
 
 1. In the table: 
     * Select new column headers to add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. On existing columns, only data sorting is available.
 
-TODO: is the table on adding columns, changing data types, etc relevant here? at the very least the sort ascending/descending is
-## Command editor
 
- Above the **Editor** pane, select the **v** button to open the editor. In the editor, you can view and copy the automatic commands generated from your inputs. 
-    > [!NOTE]
-    > * You can't update the name and datatype for existing tables.
-    > * Drop commands will only revert the changes that were made by this ingestion flow (new extents and columns). Nothing else will be dropped.
+[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
-:::image type="content" source="media/one-click-ingestion-existing-table/edit-view.png" alt-text="One click ingestion edit view":::
+[!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
 
 ## Start ingestion
 
@@ -93,12 +88,12 @@ TODO: get image (below) with correct use case
 ## Data ingestion completed
 
 In the **Data ingestion completed** window, all three steps will be marked with green check marks when data ingestion finishes successfully.
- 
+
 :::image type="content" source="media/one-click-ingestion-existing-table/one-click-data-ingestion-complete.png" alt-text="One click ingestion completed":::
 
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
 
-> [!NOTE]
+> [!TIP]
 > If you want to set up continuous ingestion from a container, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#continuous-ingestion---container-only)
 
 ## Next steps
