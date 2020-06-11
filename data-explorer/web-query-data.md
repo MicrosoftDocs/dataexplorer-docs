@@ -160,13 +160,26 @@ Now you've seen how basic queries work, let's look at how you can use the table 
 
 ## Share queries
 
-Many times, you want to share the queries you create. You can provide a deep link so that other users with access to the cluster can run the queries.
+Many times, you want to share the queries you create. 
 
 1. In the query window, select the first query you copied in.
 
-1. At the top of the query window, select **Share**.
+1. At the top of the query window, select **Share**. 
 
-1. Select **Link, query to clipboard**.
+:::image type="content" source="media/web-query-data/share-menu.png" alt-text="Share menu":::
+
+The following options are available in the drop-down:
+* Link to clipboard
+* Link query to clipboard
+* Link, query, results to clipboard
+* Pin to dashboard
+* Query to Power BI
+
+### Provide a deep link
+
+You can provide a deep link so that other users with access to the cluster can run the queries.
+
+1. In **Share**, select **Link, query to clipboard**.
 
 1. Copy the link and query to a text file.
 
@@ -174,35 +187,30 @@ Many times, you want to share the queries you create. You can provide a deep lin
 
     ![Shared query](media/web-query-data/shared-query.png)
 
+### Pin to dashboard
+
+When you complete data exploration using queries in the Web UI and find the data you need, you can pin it to a dashboard for continuous monitoring. 
+
+1. In **Share**, select **Pin to dashboard**.
+
+1. In the **Pin to dashboard** pane:
+    1. Provide a **Query name**.
+    1. Select **Use existing** or **Create new**.
+    1. Provide **Dashboard name**
+    * Select the **View dashboard after creation** checkbox (if it's a new dashboard).
+    1. Select **Pin**
+
+    :::image type="content" source="media/web-query-data/pin-to-dashboard.png" alt-text="Pin to dashboard pane":::
+
 ## Export query results
 
 Just next to the **Share** drop down is the **File** drop down.  Clicking **File** exposes a menu with the available export options, as shown here.
 
 ![Export results](media/web-query-data/export-results.png)
 
-## Pin cards to dashboards
-
-When you complete adhoc data exploration using KQL queries and find the data you need, you might want to pin it to a dashboard for continous monitoring. 
-
-1. In the query window, select the first query you copied in.
-
-1. At the top of the query window, select **Share**.
-
-1. Select **Pin to dashboard**.
-
-1. Provide a **query name**.
-
-1. Select **Use existing** or **Create new**.
-
-1. If you selected and existing dashboard you will need to provide it's name and if you selected to create a new dashboard you will need to provide it a name.
-
-1. Once you fill all properties you can open the dashboard either by clicking the link in the notification message or by checking the ** View dashboard after creation" checkbox (in case this is a new dashboard).
-
 ## Provide feedback
 
-In the upper-right of the application, select the feedback icon: 
-
-![Feedback icon](media/web-query-data/icon-feedback.png).
+1. In the upper-right of the application, select the feedback icon ![Feedback icon](media/web-query-data/icon-feedback.png).
 
 1. Enter your feedback, then select **Submit**.
 
