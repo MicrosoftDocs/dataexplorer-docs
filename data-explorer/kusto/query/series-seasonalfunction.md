@@ -11,7 +11,7 @@ ms.date: 10/23/2018
 ---
 # series_seasonal()
 
-Calculates the seasonal component of a series according to the detected or given seasonal period.
+Calculates the seasonal component of a series, according to the detected or given seasonal period.
 
 **Syntax**
 
@@ -21,13 +21,13 @@ Calculates the seasonal component of a series according to the detected or given
 
 * *series*: Input numeric dynamic array
 * *period* (optional): Integer number of bins in each seasonal period, possible values:
-    *  -1 (default): auto detect the period using [series_periods_detect()](series-periods-detectfunction.md) with a threshold of *0.7*, returns zeroes if seasonality is not detected
-    * positive integer: will be used as the period for the seasonal component
-    * any other value: ignore seasonality and return a series of zeroes
+    *  -1 (default): Autodetect the period by using [series_periods_detect()](series-periods-detectfunction.md) with a threshold of *0.7*. Returns zeroes if seasonality isn't detected
+    * positive integer: Will be used as the period for the seasonal component
+    * any other value: Ignore seasonality and return a series of zeroes
 
 **Returns**
 
-Dynamic array of the same length as the *series* input containing the calculated seasonal component of the series. The seasonal component is calculated as the *median* of all the values corresponding to the location of the bin across the periods.
+Dynamic array of the same length as the *series* input that contains the calculated seasonal component of the series. The seasonal component is calculated as the *median* of all the values that correspond to the location of the bin, across the periods.
 
 **See also:**
 
@@ -38,7 +38,8 @@ Dynamic array of the same length as the *series* input containing the calculated
 
 **1. Auto detect the period**
 
-In the following example the series' period is automatically detected, the first series' period is detected to be 6 bins and the second 5 bins, the third series' period is too short to be detected and returns a series of zeroes (see next example on how to force the period).
+In the following example, the series' period is automatically detected. The first series' period is detected to be six bins and the second five bins. The third series' period is too short to be detected and returns a series of zeroes. 
+See the next example on how to force the period.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -58,7 +59,7 @@ print s=dynamic([2,5,3,4,3,2,1,2,3,4,3,2,1,2,3,4,3,2,1,2,3,4,3,2,1])
 
 **2. Force a period**
 
-In the following example the series' period is too short to be detected by [series_periods_detect()](series-periods-detectfunction.md) so we force the period explicitly to get the seasonal pattern.
+In this example, the series' period is too short to be detected by [series_periods_detect()](series-periods-detectfunction.md), so we explicitly force the period to get the seasonal pattern.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
