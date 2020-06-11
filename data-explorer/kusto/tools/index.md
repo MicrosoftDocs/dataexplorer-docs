@@ -11,9 +11,9 @@ ms.date: 04/01/2020
 ---
 # Azure Data Explorer tools overview
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers a variety of tools and connectors to perform data ingestion, perform queries, visualize data, automate tasks, control schema entities, or integrate with other services.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers different tools and connectors to do data ingestion, queries, visualize data, automate tasks, control schema entities, or integrate with other services.
 
-## Ad-hoc query tools
+## Ad hoc query tools
 
 A Kusto query is a read-only request to process data on Azure Data Explorer and return results. There are several tools available for running queries in Azure Data Explorer:
 
@@ -32,11 +32,11 @@ The [visualization overview](../../viz-overview.md) covers detailed information 
     * [Excel blank query](../../excel-blank-query.md) - Add Kusto query as Excel data source
     * [Excel connector](../../excel-connector.md) - an Excel connector for Azure Data Explorer 
 
-* PowerBI
-   * [PowerBI best practices](../../power-bi-best-practices.md)
-   * [PowerBI Connector](../../power-bi-connector.md)
-   * [PowerBI imported query](../../power-bi-imported-query.md) 
-   * [PowerBI SQL query](../../power-bi-sql-query.md)
+* Power BI
+   * [Power BI best practices](../../power-bi-best-practices.md)
+   * [Power BI Connector](../../power-bi-connector.md)
+   * [Power BI imported query](../../power-bi-imported-query.md) 
+   * [Power BI SQL query](../../power-bi-sql-query.md)
 
 * [Grafana](../../grafana.md)
 * [K2Bridge open-source connector](../../k2bridge.md) - Visualize data from Azure Data Explorer in Kibana
@@ -52,7 +52,7 @@ Azure Data Explorer can connect with other Microsoft products to automate contro
 
 ## Data ingestion tools
 
-Data ingestion is the process used to load data records from one or more sources to import data into a table in Azure Data Explorer. Once ingested, the data becomes available for query. Azure Data Explorer provides several tools and connectors to facilitate data ingestion. 
+Data ingestion is the process used to load data records from one or more sources to import data into a table in Azure Data Explorer. Once ingested, the data becomes available for query. Azure Data Explorer provides several tools and connectors for data ingestion. 
 
 * [LightIngest](../../lightingest.md) - Help utility for ad-hoc data ingesting into Azure Data Explorer
 * [One-click ingestion](../../ingest-data-one-click.md) - Tool to quickly ingest data and automatically suggest tables and mapping structures
