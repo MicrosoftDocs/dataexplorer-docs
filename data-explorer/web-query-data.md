@@ -185,7 +185,7 @@ You can provide a deep link so that other users with access to the cluster can r
 
 1. Paste the link into a new browser window. The result should look like the following after the query runs.
 
-    ![Shared query](media/web-query-data/shared-query.png)
+    :::image type="content" source="media/web-query-data/shared-query.png" alt-text="Shared query deep link":::
 
 ### Pin to dashboard
 
