@@ -182,8 +182,7 @@ When the input of `summarize` operator has at least one empty group-by key, it's
 When the input of `summarize` operator doesn't have an empty group-by key, the result is the default values of the aggregates used in the `summarize`:
 
 ```kusto
-range x from 1 to 10 step 1
-| where 1 == 2
+datatable(x:long)[]
 | summarize any(x), arg_max(x, x), arg_min(x, x), avg(x), buildschema(todynamic(tostring(x))), max(x), min(x), percentile(x, 55), hll(x) ,stdev(x), sum(x), sumif(x, x > 0), tdigest(x), variance(x)
 ```
 
@@ -192,8 +191,7 @@ range x from 1 to 10 step 1
 |||||||||||||||||
 
 ```kusto
-range x from 1 to 10 step 1
-| where 1 == 2
+datatable(x:long)[]
 | summarize  count(x), countif(x > 0) , dcount(x), dcountif(x, x > 0)
 ```
 
@@ -202,8 +200,7 @@ range x from 1 to 10 step 1
 |0|0|0|0|
 
 ```kusto
-range x from 1 to 10 step 1
-| where 1 == 2
+datatable(x:long)[]
 | summarize  make_set(x), make_list(x)
 ```
 

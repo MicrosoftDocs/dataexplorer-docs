@@ -15,7 +15,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-Returns the current principal name running the query.
+Returns the current principal name that runs the query.
 
 **Syntax**
 
@@ -23,8 +23,8 @@ Returns the current principal name running the query.
 
 **Returns**
 
-The current principal fully-qualified-name (FQN) as a `string`.  
-The string is formed as:  
+The current principal fully qualified name (FQN) as a `string`.  
+The string format is:  
 *PrinciplaType*`=`*PrincipalId*`;`*TenantId*
 
 **Example**
