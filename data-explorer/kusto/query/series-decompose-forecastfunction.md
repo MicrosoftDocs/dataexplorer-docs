@@ -13,7 +13,7 @@ ms.date: 09/26/2019
 
 Forecast based on series decomposition.
 
-Takes an expression containing a series (dynamic numerical array) as input, and predicts the values of the last trailing points. For more information, see  [series_decompose](series-decomposefunction.md).
+Takes an expression containing a series (dynamic numerical array) as input, and predicts the values of the last trailing points. For more information, see [series_decompose](series-decomposefunction.md).
  
 **Syntax**
 
