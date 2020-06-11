@@ -43,7 +43,8 @@ For **Ingestion type**, select the following option:
 
   A sample of the data appears. If you want to, you can filter it to show only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
   
-  For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension. THIS IMAGE IS NOT CORRECT: IS FROM CONTAINER NOT LOCAL FILE
+  For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension. 
+<!-- TODO: THIS IMAGE IS NOT CORRECT: IS FROM CONTAINER NOT LOCAL FILE-->
 
   :::image type="content" source="media/one-click-ingestion-existing-table/from-container-with-filter.png" alt-text="One-click ingestion filter":::
 
@@ -81,7 +82,7 @@ Select **Edit schema** to view and edit your table column configuration.
 
 Select **Start ingestion** to create a table and mapping and to begin data ingestion.
 
-TODO: get image (below) with correct use case
+<!--TODO: get image (below) with correct use case-->
 
 :::image type="content" source="media/one-click-ingestion-existing-table/start-ingestion.png" alt-text="Start ingestion":::
 
@@ -91,10 +92,10 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 
 :::image type="content" source="media/one-click-ingestion-existing-table/one-click-data-ingestion-complete.png" alt-text="One click ingestion completed":::
 
-[!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
-
 > [!TIP]
 > If you want to set up continuous ingestion from a container, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#continuous-ingestion---container-only)
+
+[!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
 
 ## Next steps
 
