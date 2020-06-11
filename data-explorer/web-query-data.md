@@ -204,7 +204,7 @@ When you complete data exploration using queries in the Web UI and find the data
 
 ## Export query results
 
-Just next to the **Share** drop down is the **File** drop down.  Clicking **File** exposes a menu with the available export options, as shown here.
+To export the query results to a CSV file, select **File** > **Export to CSV**.
 
 ![Export results](media/web-query-data/export-results.png)
 
