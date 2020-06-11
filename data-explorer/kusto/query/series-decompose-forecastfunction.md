@@ -37,7 +37,7 @@ Takes an expression containing a series (dynamic numerical array) as input, and 
 
  A dynamic array with the forecasted series.
 
-> [!NOTES]
+> [!NOTE]
 > * The dynamic array of the original input series should include a number of *points* slots to be forecasted. The forecast is typically done by using [make-series](make-seriesoperator.md) and specifying the end time in the range that includes the timeframe to forecast.
 > * Either seasonality or trend should be enabled, otherwise the function is redundant, and just returns a series filled with zeroes.
 
