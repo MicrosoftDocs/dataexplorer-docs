@@ -21,9 +21,9 @@ Calculates the seasonal component of a series, according to the detected or give
 
 * *series*: Input numeric dynamic array
 * *period* (optional): Integer number of bins in each seasonal period, possible values:
-    *  -1 (default): Autodetect the period by using [series_periods_detect()](series-periods-detectfunction.md) with a threshold of *0.7*. Returns zeroes if seasonality isn't detected
-    * positive integer: Will be used as the period for the seasonal component
-    * any other value: Ignore seasonality and return a series of zeroes
+    *  -1 (default): Autodetects the period by using [series_periods_detect()](series-periods-detectfunction.md) with a threshold of *0.7*. Returns zeroes if seasonality isn't detected
+    * positive integer: Used as the period for the seasonal component
+    * any other value: Ignores seasonality and return a series of zeroes
 
 **Returns**
 
