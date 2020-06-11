@@ -47,28 +47,26 @@
       items:
       - name: Ad-hoc query
         items:
-      - name: Kusto.Explorer
-        items:
-        - name: Kusto.Explorer installation and user interface
-          href: ./kusto/tools/kusto-explorer.md
-        - name: Using Kusto.Explorer
-          href: ./kusto/tools/kusto-explorer-using.md
-        - name: Kusto.Explorer options
-          href: ./kusto/tools/kusto-explorer-options.md
-        - name: Keyboard shortcuts
-          href: ./kusto/tools/kusto-explorer-shortcuts.md
-        - name: Code Refactoring
-          href: ./kusto/tools/kusto-explorer-refactor.md
-        - name: Code Navigation
-          href: ./kusto/tools/kusto-explorer-codenav.md
-        - name: Code Analyzer
-          href: ./kusto/tools/kusto-explorer-code-analyzer.md
-        - name: Troubleshooting Kusto.Explorer
-          href: ./kusto/tools/kusto-explorer-troubleshooting.md
+        - name: Kusto.Explorer
+          items:
+          - name: Kusto.Explorer installation and user interface
+            href: ./kusto/tools/kusto-explorer.md
+          - name: Using Kusto.Explorer
+            href: ./kusto/tools/kusto-explorer-using.md
+          - name: Kusto.Explorer options
+            href: ./kusto/tools/kusto-explorer-options.md
+          - name: Keyboard shortcuts
+            href: ./kusto/tools/kusto-explorer-shortcuts.md
+          - name: Code Refactoring
+            href: ./kusto/tools/kusto-explorer-refactor.md
+          - name: Code Navigation
+            href: ./kusto/tools/kusto-explorer-codenav.md
+          - name: Code Analyzer
+            href: ./kusto/tools/kusto-explorer-code-analyzer.md
+          - name: Troubleshooting Kusto.Explorer
+            href: ./kusto/tools/kusto-explorer-troubleshooting.md
       - name: Kusto.Cli
         href: ./kusto/tools/kusto-cli.md
-    - name: Source control integration
-      items:
       - name: Sync Kusto
         href: ./kusto/tools/synckusto.md
   - name: Data visualization overview
