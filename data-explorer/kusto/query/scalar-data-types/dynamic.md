@@ -25,23 +25,19 @@ a `dynamic` value can be:
   indexed by the unique `string` values. The slots are unordered.
 
 > [!NOTE]
-> Values of type `dynamic` are limited to 1MB (2^20).
-
-> [!NOTE]
-> Although the `dynamic` type appears JSON-like, it can hold values that the JSON
-> model does not represent because they don't exist in JSON (e.g.,
-> `long`, `real`, `datetime`, `timespan`, and `guid`).
-> Therefore, in serializing `dynamic` values into a JSON representation, values that JSON can't represent
-> are serialized into `string` values. Conversely, Kusto will parse strings
-> as strongly-typed values if they can be parsed as such.
-> This applies for `datetime`, `real`, `long`, and `guid` types. 
-> For more about the JSON object model, see See [json.org](https://json.org/).
-
-> [!NOTE]
-> Kusto doesn't attempt to preserve the order of name-to-value mappings in
-> a property bag, and so you can't assume the order to be preserved. It's entirely
-> possible for two property bags with the same set of mappings to yield different
-> results when they are represented as `string` values, for example.
+> * Values of type `dynamic` are limited to 1MB (2^20).
+> * Although the `dynamic` type appears JSON-like, it can hold values that the JSON
+>   model does not represent because they don't exist in JSON (e.g.,
+>   `long`, `real`, `datetime`, `timespan`, and `guid`).
+>   Therefore, in serializing `dynamic` values into a JSON representation, values that JSON can't represent
+>   are serialized into `string` values. Conversely, Kusto will parse strings
+>   as strongly-typed values if they can be parsed as such.
+>   This applies for `datetime`, `real`, `long`, and `guid` types. 
+>   For more about the JSON object model, see [json.org](https://json.org/).
+> * Kusto doesn't attempt to preserve the order of name-to-value mappings in
+>   a property bag, and so you can't assume the order to be preserved. It's entirely
+>   possible for two property bags with the same set of mappings to yield different
+>   results when they are represented as `string` values, for example.
 
 ## Dynamic literals
 
