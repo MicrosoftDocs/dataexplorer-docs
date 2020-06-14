@@ -28,7 +28,7 @@ Use the custom ingestion application to handle the schema-related failures by pe
 ## Clearing the schema cache
 
 Reduce the effects of propagation delay by explicitly clearing the schema cache on the cluster nodes.
-Clear the schema cache using one of the [Clear schema cache for streaming ingestion](../clear-schema-cache-command.md) management commands.
+Clear the schema cache using one of the [Clear schema cache for streaming ingestion](clear-schema-cache-command.md) management commands.
 If the streaming ingestion flow and schema changes are coordinated, you can completely eliminate failures and their associated data distortion. 
 
 **Coordinated flow example:**
