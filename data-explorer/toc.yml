@@ -1419,9 +1419,9 @@
       - name: Streaming Ingestion
         items:
         - name: Streaming ingestion and schema changes
-          href: streaming-ingestion-schema-changes.md
+          href: ./kusto/management/data-ingestion/streaming-ingestion-schema-changes.md
         - name: Clear schema cache for streaming ingestion
-          href: clear-schema-cache-command.md
+          href: ./kusto/management/data-ingestion/clear-schema-cache-command.md
     - name: Data Export
       href: ./kusto/management/data-export/index.md
       items:
