@@ -773,7 +773,7 @@
         href: ./kusto/query/isnanfunction.md
       - name: isnotempty(), notempty()
         href: ./kusto/query/isnotemptyfunction.md
-      - name: isnotnull(), notempty()
+      - name: isnotnull(), notnull()
         href: ./kusto/query/isnotnullfunction.md
       - name: isnull()
         href: ./kusto/query/isnullfunction.md
