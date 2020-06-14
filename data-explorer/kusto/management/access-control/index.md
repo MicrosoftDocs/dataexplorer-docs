@@ -13,8 +13,8 @@ ms.date: 11/25/2019
 # Kusto Access Control Overview
 
 Access Control in Kusto is based on two key factors.
-* [Authentication](#authentication): Validating the identity of the security principal making a request
-* [Authorization](#authorization): Validating that the security principal making a request is permitted to make that request on the target resource
+* [Authentication](#authentication): Validates the identity of the security principal making a request
+* [Authorization](#authorization): Validates that the security principal making a request is permitted to make that request on the target resource
 
 A query or a control command on a Kusto cluster, database, or a table, must pass both Authentication and Authorization checks.
 
@@ -61,7 +61,7 @@ When an MSA principal is configured on a Kusto resource, Kusto **won't** attempt
 * When using the REST API, authentication is done with the standard HTTP `Authorization` header
 * When using any of the Kusto .NET libraries, authentication is controlled by specifying the authentication method and parameters in the [Kusto Connection String](../../api/connection-strings/kusto.md). Another method is to set the properties on the [Client Request Properties](https://kusto.azurewebsites.net/docs/api/request-properties.html) object.
 
-### Kusto Client SDK as an Azure AD Client Application
+### Kusto client SDK as an Azure AD client application
 
 When the Kusto client libraries invoke the Microsoft Authentication Library to acquire a token for communicating with Kusto, it provides the following information:
 
