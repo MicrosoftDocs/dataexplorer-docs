@@ -42,7 +42,8 @@ Use the Azure AD application authentication flow when requests aren't associated
 * Application authentication using an X.509v2 certificate given to the client library as a byte stream
 * Application authentication using an Azure AD application ID and an Azure AD application key.
 
-    > [!NOTE] The ID and key are the equivalent of a username and password
+    > [!NOTE] 
+    > The ID and key are the equivalent of a username and password
 
 * Application authentication using a previously obtained valid Azure AD token, issued to Kusto
 * Application authentication using a previously obtained valid Azure AD token, issued to some other resource. This method will work if there's a trust relationship between that resource and Kusto
@@ -50,9 +51,7 @@ Use the Azure AD application authentication flow when requests aren't associated
 ### Microsoft Accounts (MSAs)
 
 Microsoft Account (MSA) is the term used for all the Microsoft-managed non-organizational user accounts, such as `hotmail.com`, `live.com`, `outlook.com`.
-Kusto supports user authentication for MSAs that are identified by their Universal Principal Name (UPN).
-
-> [!NOTE] There's no security groups concept
+Kusto supports user authentication for MSAs (there's no security groups concept) that are identified by their Universal Principal Name (UPN).
 
 When an MSA principal is configured on a Kusto resource, Kusto **won't** attempt to resolve the UPN provided.
 
