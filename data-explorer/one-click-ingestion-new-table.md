@@ -59,7 +59,7 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 
     > [!TIP]
     > If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#edit-the-schema).
-    
+
     * You can select the check box **Include column names** to ignore the heading row of the file.
 
         :::image type="content" source="media/one-click-ingestion-new-table/non-json-format.png" alt-text="Select include column names":::
@@ -71,7 +71,7 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 1. In the table: 
     * Double-click the new column name to edit.
     * Select new column headers and do any of the following actions:
-    
+
 [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
 > [!NOTE]
