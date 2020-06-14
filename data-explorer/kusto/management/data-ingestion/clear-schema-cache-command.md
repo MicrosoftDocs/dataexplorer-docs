@@ -13,7 +13,7 @@ ms.date: 05/20/2020
 
 Cluster nodes cache schema of the databases that receive data via streaming ingestion. This process optimizes performance and utilization of cluster resources, but can cause propagation delays when the schema change.
 Clear the cache to guarantee that subsequent streaming ingestion requests incorporate database or table schema changes.
-For more information, see [Streaming ingestion and schema changes](../../../streaming-ingestion-and-schema-changes.md).
+For more information, see [Streaming ingestion and schema changes](streaming-ingestion-schema-changes.md).
 
 ## Clear schema cache
 
