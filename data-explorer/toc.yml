@@ -1238,6 +1238,8 @@
           href: ./kusto/management/alter-database.md
         - name: .show database schema
           href: ./kusto/management/show-schema-database.md
+        - name: .execute database script
+          href: ./kusto/management/execute-database-script.md
       - name: Tables
         items:
         - name: Tables overview
