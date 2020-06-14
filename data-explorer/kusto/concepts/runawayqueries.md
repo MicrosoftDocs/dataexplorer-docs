@@ -1,5 +1,5 @@
 ---
-title: Runaway queries - Azure Data Explorer | Microsoft Docs
+title: Runaway queries - Azure Data Explorer
 description: This article describes Runaway queries in Azure Data Explorer.
 services: data-explorer
 author: orspod
