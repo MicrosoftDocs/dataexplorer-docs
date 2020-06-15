@@ -128,7 +128,7 @@ Set all tables in the database to have a soft-delete period of seven days and di
 
 ### Soft-delete period of seven days, and `MySpecialTable` keeps its data indefinitely
 
-Set tables `MyTable1` and `MyTable2` to have a soft-delete period of seven days, and have `MySpecialTable` keep its data indefinitely**.
+Set tables `MyTable1` and `MyTable2` to have a soft-delete period of seven days, and have `MySpecialTable` keep its data indefinitely.
 
 * *Option 1*: Set a database-level retention policy, and set a table-level retention policy with a soft-delete period of 100 years, the default retention policy, for `MySpecialTable`.
 
