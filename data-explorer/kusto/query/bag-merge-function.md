@@ -1,5 +1,5 @@
 ---
-title: bag_merge() - Azure Data Explorer | Microsoft Docs
+title: bag_merge() - Azure Data Explorer 
 description: This article describes bag_merge() in Azure Data Explorer.
 services: data-explorer
 author: elgevork
@@ -23,8 +23,8 @@ Merges input dynamic property-bag objects into a dynamic property-bag object.
 
 **Returns**
 
-Returns a `dynamic` property-bag, resulted from merging of all the input property-bag objects.
-If a key appears in more than one input objects, an arbitrary value (out of the possible values for this key) will be chosen.
+Returns a `dynamic` property-bag. Results from merging all of the input property-bag objects.
+If a key appears in more than one input object, an arbitrary value (out of the possible values for this key) will be chosen.
 
 **Example**
 
