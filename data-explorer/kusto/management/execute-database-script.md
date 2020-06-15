@@ -55,7 +55,7 @@ Each command appearing in the script will be reported as a separate record in th
 ```kusto
 .execute database script <|
 
-// Creating tables
+// Create tables
 .create-merge table T(a:string, b:string)
 
 // Apply policies
