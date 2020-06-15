@@ -21,14 +21,14 @@ For example, the following error may be reported:
 There are several possible courses of action.
 * Change the query to consume fewer resources. For example, if the error indicates
   that the query result set is too large, you can:
-  * try to limit the number of records returned by the query. Do one of:
-     * Use the [take operator](../query/takeoperator.md)
-     * Add additional [where clauses](../query/whereoperator.md)
-  * reduce the number of columns returned by the query. Do one of: 
-     * Use the [project operator](../query/projectoperator.md)
-     * Use the [project-away operator](../query/projectawayoperator.md)
-  * use the [summarize operator](../query/summarizeoperator.md) to get aggregated data, and so on.
-* Increase the relevant query limit temporarily for that query. For more information, see **Max memory per result set iterator** under [query limits](querylimits.md) 
+  * Limit the number of records returned by the query by
+     * Using the [take operator](../query/takeoperator.md)
+     * Adding additional [where clauses](../query/whereoperator.md)
+  * Reduce the number of columns returned by the query by 
+     * Using the [project operator](../query/projectoperator.md)
+     * Using the [project-away operator](../query/projectawayoperator.md)
+  * Use the [summarize operator](../query/summarizeoperator.md) to get aggregated data.
+* Increase the relevant query limit temporarily for that query. For more information, see [query limits - limit on memory per iterator](querylimits#limit-on-memory-per-iterator.md). This isn't recommended since since the limits exist to protect the cluster and to make sure that a single query doesn't disrupt concurrent queries running on the cluster. 
   
     > [!NOTE]
     > Increasing the relevant query limit is not recommended in general, since the limits exist to protect the cluster and to make sure that a single query doesn't disrupt concurrent queries running on the cluster
