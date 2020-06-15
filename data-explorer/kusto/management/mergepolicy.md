@@ -57,8 +57,8 @@ The merge policy contains the following properties:
     * Maximum allowed difference, in hours, between any two different extents' creation times, so that they can still be merged.
     * Timestamps are of extent creation, and don't relate to the actual data contained in the extents.
     * Applies to both Merge and Rebuild operations.
-    * A best practice is for this value to be correlated with the database's or table's
-    [Retention policy's](./retentionpolicy.md) *SoftDeletePeriod*, or the [Cache policy's](./cachepolicy.md) *DataHotSpan*, the lower of the two, so that it is between 2-3% of the latter.
+    * This value should be correlated with the database or table
+    [retention policy](./retentionpolicy.md) *SoftDeletePeriod*, or [cache policy](./cachepolicy.md) *DataHotSpan*, the lower of the two, so that it is between 2-3% of the latter.
 
 ## MaxRangeInHours examples
 
