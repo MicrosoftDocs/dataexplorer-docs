@@ -30,8 +30,8 @@ The merge policy contains the following properties:
 
 * **RowCountUpperBoundForMerge**:
     * Defaults:
-      - 0 (unlimited) for policies that were set before June 2020.
-      - 16,000,000 for policies that were set starting June 2020.
+      * 0 (unlimited) for policies that were set before June 2020.
+      * 16,000,000 for policies that were set starting June 2020.
     * Maximum allowed row count of the merged extent.
     * Applies to Merge operations, not Rebuild.  
 * **OriginalSizeMBUpperBoundForMerge**:
