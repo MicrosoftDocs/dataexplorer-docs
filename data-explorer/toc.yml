@@ -75,7 +75,9 @@
       - name: One-click ingestion into an existing table
         href: one-click-ingestion-existing-table.md
     - name: Streaming ingestion
-      href: ingest-data-streaming.md
+      items:
+      - name: Streaming ingestion
+        href: ingest-data-streaming.md
     - name: Using LightIngest
       href: lightingest.md    
     - name: Event Hub
@@ -1422,6 +1424,12 @@
         href: ./kusto/management/data-ingestion/eventhub.md
       - name: Ingest from IoT Hub
         href: ./kusto/management/data-ingestion/iothub.md
+      - name: Streaming Ingestion
+        items:
+        - name: Streaming ingestion and schema changes
+          href: ./kusto/management/data-ingestion/streaming-ingestion-schema-changes.md
+        - name: Clear schema cache for streaming ingestion
+          href: ./kusto/management/data-ingestion/clear-schema-cache-command.md
     - name: Data Export
       href: ./kusto/management/data-export/index.md
       items:
