@@ -11,7 +11,7 @@ ms.date: 03/18/2019
 ---
 # in and !in operators
 
-Filters a recordset based on the provided set of values.
+Filters a record set based on the provided set of values.
 
 ```kusto
 Table1 | where col in ('value1', 'value2')
@@ -19,7 +19,7 @@ Table1 | where col in ('value1', 'value2')
 
 **Syntax**
 
-*Case sensitive syntax:*
+*Case-sensitive syntax:*
 
 *T* `|` `where` *col* `in` `(`*list of scalar expressions*`)`   
 *T* `|` `where` *col* `in` `(`*tabular expression*`)`   
@@ -38,24 +38,24 @@ Table1 | where col in ('value1', 'value2')
 **Arguments**
 
 * *T* - The tabular input whose records are to be filtered.
-* *col* - the column to filter.
-* *list of expressions* - a comma separated list of tabular, scalar or literal expressions  
-* *tabular expression* - a tabular expression that has a set of values (in a case expression has multiple columns, the first column is used)
+* *col* - The column to filter.
+* *list of expressions* - A comma-separated list of tabular, scalar, or literal expressions.
+* *tabular expression* - A tabular expression that has a set of values. If the expression has multiple columns, the first column is used.
 
 **Returns**
 
-Rows in *T* for which the predicate is `true`
+Rows in *T* for which the predicate is `true`.
 
 **Notes**
 
-* The expression list can produce up to `1,000,000` values    
-* Nested arrays are flattened into a single list of values, for example `x in (dynamic([1,[2,3]]))` turns into `x in (1,2,3)` 
-* In case of tabular expressions, the first column of the result set is selected   
-* Adding '~' to operator makes values' search case insensitive: `x in~ (expression)` or `x !in~ (expression)`.
+* The expression list can produce up to `1,000,000` values.
+* Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
+* In tabular expressions, the first column of the result set is selected.
+* Adding '~' to the operator makes values' search case-insensitive: `x in~ (expression)` or `x !in~ (expression)`.
 
 **Examples:**  
 
-**A simple usage of 'in' operator:**  
+**A simple use of 'in' operator:**  
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -69,7 +69,7 @@ StormEvents
 |4775|  
 
 
-**A simple usage of 'in~' operator:**  
+**A simple use of 'in~' operator:**  
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -82,7 +82,7 @@ StormEvents
 |---|
 |4775|  
 
-**A simple usage of '!in' operator:**  
+**A simple use of '!in' operator:**  
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -175,8 +175,7 @@ StormEvents | where State in (InterestingStates()) | count
 |---|
 |4775|  
 
-
-Here is the function definition:  
+The function definition.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
