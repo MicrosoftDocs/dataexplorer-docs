@@ -19,7 +19,7 @@ Creates a `dynamic` object (property bag) from all the columns of the tabular ex
 
 **Notes**
 
-The representation of the returned object is not promissed to be byte-level-compatible between runs. For example, properties appearing in the bag may be appearing in a different order.
+The representation of the returned object isn't guaranteed to be byte-level-compatible between runs. For example, properties that appear in the bag may appear in a different order.
 
 **Examples**
 
@@ -50,4 +50,3 @@ Returns:
 |SmsMessages|555-555-1234 |555-555-1212 | {"SourceNumber":"555-555-1234", "TargetNumber":"555-555-1212", "CharsCount": 46}
 |SmsMessages|555-555-1234 |555-555-1213 | {"SourceNumber":"555-555-1234", "TargetNumber":"555-555-1213", "CharsCount": 50}
 |SmsMessages|555-555-1212 |555-555-1234 | {"SourceNumber":"555-555-1212", "TargetNumber":"555-555-1234", "CharsCount": 32}
-
