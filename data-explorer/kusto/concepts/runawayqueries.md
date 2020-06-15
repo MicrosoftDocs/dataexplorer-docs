@@ -30,6 +30,4 @@ There are several possible courses of action.
   * Use the [summarize operator](../query/summarizeoperator.md) to get aggregated data.
 * Increase the relevant query limit temporarily for that query. For more information, see [query limits - limit on memory per iterator](querylimits#limit-on-memory-per-iterator.md). This isn't recommended since since the limits exist to protect the cluster and to make sure that a single query doesn't disrupt concurrent queries running on the cluster. 
   
-    > [!NOTE]
-    > Increasing the relevant query limit is not recommended in general, since the limits exist to protect the cluster and to make sure that a single query doesn't disrupt concurrent queries running on the cluster
   
