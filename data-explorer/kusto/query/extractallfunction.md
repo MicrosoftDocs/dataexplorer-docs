@@ -67,8 +67,9 @@ print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 
 ### Extract a subset of capture groups
 
-Shows how to select a subset of capturing groups. The regular expression 
-matches into the first letter, last letter, and all the rest. The *captureGroups* parameter is used to select only the first and the last parts.
+Shows how to select a subset of capturing groups. 
+The regular expression matches the first letter, last letter, and all the rest. 
+The *captureGroups* parameter is used to select only the first and the last parts.
 
 ```kusto
 print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
