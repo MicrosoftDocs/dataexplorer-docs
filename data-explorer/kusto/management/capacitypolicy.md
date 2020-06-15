@@ -11,7 +11,7 @@ ms.date: 03/12/2020
 ---
 # Capacity policy
 
-A capacity policy is used for controlling the compute resources used for data management operations on the cluster.
+A capacity policy is used for controlling the compute resources of data management operations on the cluster.
 
 ## The capacity policy object
 
@@ -27,36 +27,33 @@ The capacity policy is made of:
 
 |Property                           |Type    |Description                                                                                                                                                                               |
 |-----------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent ingestion operations in a cluster                                                                                                            |
-|CoreUtilizationCoefficient         |double  |A coefficient for the percentage of cores to use when calculating the ingestion capacity (the calculation's result will always be normalized by `ClusterMaximumConcurrentOperations`) |                                                                                                                             |
+|ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent ingestion operations in a cluster                                          |
+|CoreUtilizationCoefficient         |double  |A coefficient for the percentage of cores to use when calculating the ingestion capacity. The calculation's result will always be normalized by `ClusterMaximumConcurrentOperations`                          |
 
-The cluster's total ingestion capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity))
-is calculated by:
+The cluster's total ingestion capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by:
 
 Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
 
 > [!Note]
-> In clusters with three ore more nodes, the admin node doesn't participate in doing ingestion operations. The `Number of nodes in cluster` is reduced by one.
+> In clusters with three ore more nodes, the admin node doesn't participate in ingestion operations. The `Number of nodes in cluster` is reduced by one.
 
-## Extents Merge capacity
+## Extents merge capacity
 
 |Property                           |Type    |Description                                                                                                |
 |-----------------------------------|--------|-----------------------------------------------------------------------------------------------------------|
-|MinimumConcurrentOperationsPerNode |long    |A minimal value for the number of concurrent extents merge/rebuild operations on a single node. Default: 1 |
-|MaximumConcurrentOperationsPerNode |long    |A maximal value for the number of concurrent extents merge/rebuild operations on a single node. Default: 5 |
+|MinimumConcurrentOperationsPerNode |long    |A minimal value for the number of concurrent extents merge/rebuild operations on a single node. Default is 1 |
+|MaximumConcurrentOperationsPerNode |long    |A maximal value for the number of concurrent extents merge/rebuild operations on a single node. Default is 5 |
 
-The cluster's total extents merge capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity))
-is calculated by:
+The cluster's total extents merge capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by:
 
 `Number of nodes in cluster` x `Concurrent operations per node`
 
 The effective value for `Concurrent operations per node` gets automatically adjusted by the system in the range [`MinimumConcurrentOperationsPerNode`,`MaximumConcurrentOperationsPerNode`].
 
-
 > [!Note]
 > * In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
 
-## Extents Purge Rebuild capacity
+## Extents purge rebuild capacity
 
 |Property                           |Type    |Description                                                                                                                           |
 |-----------------------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------|
@@ -73,16 +70,15 @@ The cluster's total extents purge rebuild capacity (as shown by [.show capacity]
 
 |Property                           |Type    |Description                                                                                                                                                                            |
 |-----------------------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent export operations in a cluster.                                                                                                           |
+|ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent export operations in a cluster.                                           |
 |CoreUtilizationCoefficient         |double  |A coefficient for the percentage of cores to use when calculating the export capacity. The calculation's result will always be normalized by `ClusterMaximumConcurrentOperations`. |
 
-The cluster's total export capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity))
-is calculated by:
+The cluster's total export capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by:
 
 Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
 
 > [!Note]
-> In clusters with three or more nodes, the admin node doesn't participate in doing export operations. The `Number of nodes in cluster` is reduced by one.
+> In clusters with three or more nodes, the admin node doesn't participate in export operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Extents partition capacity
 
@@ -93,7 +89,7 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 
 The cluster's total extents partition capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity)).
 
-The effective value for `Concurrent operations` gets automatically adjusted by the system in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`].
+The effective value for `Concurrent operations` is automatically adjusted by the system in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`].
 
 ## Defaults
 
@@ -135,9 +131,9 @@ Kusto limits the number of concurrent requests for the following user-initiated 
    * Limit is as defined in the [capacity policy](#capacity-policy).
 * Purges
    * Global is currently fixed at one per cluster.
-   * The purge rebuild capacity is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands will not be blocked/throttled due to this process, but will work faster or slower depending on the purge rebuild capacity.
+   * The purge rebuild capacity is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands won't be blocked/throttled because of this process, but will work faster or slower depending on the purge rebuild capacity.
 * Exports
    * Limit is as defined in the [capacity policy](#capacity-policy).
 
-When the cluster detects that an operation has exceeded the allowed concurrent operation, it will respond with a 429 ("Throttled") HTTP code.
+When the cluster detects that an operation has exceeded the permitted concurrent operation, it will respond with a 429, "Throttled", HTTP code.
 Retry the operation after some backoff.

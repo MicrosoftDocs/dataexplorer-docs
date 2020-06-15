@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 06/10/2020
+ms.date: 06/15/2020
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
 ---
@@ -191,6 +191,8 @@ You can provide a deep link so that other users with access to the cluster can r
 
 When you complete data exploration using queries in the Web UI and find the data you need, you can pin it to a dashboard for continuous monitoring. 
 
+To pin a query:
+
 1. In **Share**, select **Pin to dashboard**.
 
 1. In the **Pin to dashboard** pane:
@@ -201,6 +203,9 @@ When you complete data exploration using queries in the Web UI and find the data
     1. Select **Pin**
 
     :::image type="content" source="media/web-query-data/pin-to-dashboard.png" alt-text="Pin to dashboard pane":::
+    
+> [!NOTE]
+> **Pin to dashboard** only pins the selected query. To create the dashboard data source and translate render commands to a visual in the dashboard, the relevant database must be selected in the database list.
 
 ## Export query results
 
@@ -221,5 +226,3 @@ You didn't create any resources in this quickstart, but if you'd like to remove 
 ## Next steps
 
 [Write queries for Azure Data Explorer](write-queries.md)
-
-

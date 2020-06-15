@@ -75,7 +75,9 @@
       - name: One-click ingestion into an existing table
         href: one-click-ingestion-existing-table.md
     - name: Streaming ingestion
-      href: ingest-data-streaming.md
+      items:
+      - name: Streaming ingestion
+        href: ingest-data-streaming.md
     - name: Using LightIngest
       href: lightingest.md    
     - name: Event Hub
@@ -609,6 +611,8 @@
         href: ./kusto/query/atan2function.md
       - name: bag_keys()
         href: ./kusto/query/bagkeysfunction.md
+      - name: bag_merge()
+        href: ./kusto/query/bag-merge-function.md
       - name: base64_decode_toarray()
         href: ./kusto/query/base64_decode_toarrayfunction.md
       - name: base64_decode_tostring()
@@ -773,7 +777,7 @@
         href: ./kusto/query/isnanfunction.md
       - name: isnotempty(), notempty()
         href: ./kusto/query/isnotemptyfunction.md
-      - name: isnotnull(), notempty()
+      - name: isnotnull(), notnull()
         href: ./kusto/query/isnotnullfunction.md
       - name: isnull()
         href: ./kusto/query/isnullfunction.md
@@ -1238,6 +1242,8 @@
           href: ./kusto/management/alter-database.md
         - name: .show database schema
           href: ./kusto/management/show-schema-database.md
+        - name: .execute database script
+          href: ./kusto/management/execute-database-script.md
       - name: Tables
         items:
         - name: Tables overview
@@ -1422,6 +1428,12 @@
         href: ./kusto/management/data-ingestion/eventhub.md
       - name: Ingest from IoT Hub
         href: ./kusto/management/data-ingestion/iothub.md
+      - name: Streaming Ingestion
+        items:
+        - name: Streaming ingestion and schema changes
+          href: ./kusto/management/data-ingestion/streaming-ingestion-schema-changes.md
+        - name: Clear schema cache for streaming ingestion
+          href: ./kusto/management/data-ingestion/clear-schema-cache-command.md
     - name: Data Export
       href: ./kusto/management/data-export/index.md
       items:
