@@ -65,7 +65,7 @@ print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|[["8","2b8be2","d"],["d","fa","7"],["4","bd","1"],["8","f6","3"],["2","4ad26d3144","9"]]|
 
-### Extracting subset of capture groups
+### Extract a subset of capture groups
 
 Shows how to select a subset of capturing groups. The regular expression 
 matches into the first letter, last letter, and all the rest. The *captureGroups* parameter is used to select only the first and the last parts.
