@@ -23,7 +23,7 @@ Merges input dynamic property-bag objects into a dynamic property-bag object.
 
 **Returns**
 
-Returns a `dynamic` property-bag, resulted from merging of all the input property-bag objects.
+Returns a `dynamic` property-bag. Results from merging all of the input property-bag objects.
 If a key appears in more than one input objects, an arbitrary value (out of the possible values for this key) will be chosen.
 
 **Example**
