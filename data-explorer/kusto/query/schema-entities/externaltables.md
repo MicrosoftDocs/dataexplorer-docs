@@ -29,5 +29,5 @@ An **external table** can be referenced by its name using the [external_table()]
    * Can’t overlap with Kusto table names.
    * Follow the rules for [entity names](./entity-names.md).
 * Maximum limit of external tables per database is 1,000.
-* Kusto supports [export](../../management/data-export/export-data-to-an-external-table.md) and [continuous export](../../management/data-export/continuous-data-export.md)to an external table, and [querying external tables](../../../data-lake-query-data.md).
+* Kusto supports [export](../../management/data-export/export-data-to-an-external-table.md) and [continuous export](../../management/data-export/continuous-data-export.md) to an external table, and [querying external tables](../../../data-lake-query-data.md).
 * [Data purge](../../concepts/data-purge.md) isn't applied on external tables. Records are never deleted from external tables.
