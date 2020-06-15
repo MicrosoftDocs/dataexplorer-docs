@@ -23,7 +23,7 @@ Data that is "outside" the retention policy is eligible for removal. Kusto doesn
 guarantee when removal occurs. Data may "linger" even if the retention policy is triggered.
 
 The retention policy is most commonly set to limit the age of the data since ingestion.
-For more information, see [SoftDeletePeriod](#the-policy-object), below.
+For more information, see [SoftDeletePeriod](#the-policy-object).
 
 > [!NOTE]
 > * The deletion time is imprecise. The system guarantees that data won't be
