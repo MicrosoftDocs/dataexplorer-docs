@@ -40,7 +40,7 @@ Table1 | where col in ('value1', 'value2')
 * *T* - The tabular input whose records are to be filtered.
 * *col* - The column to filter.
 * *list of expressions* - A comma-separated list of tabular, scalar, or literal expressions.
-* *tabular expression* - A tabular expression that has a set of values (if the expression has multiple columns, the first column is used).
+* *tabular expression* - A tabular expression that has a set of values. If the expression has multiple columns, the first column is used.
 
 **Returns**
 
