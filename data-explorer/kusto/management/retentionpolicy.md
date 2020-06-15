@@ -85,7 +85,7 @@ For a cluster that has a database named `MyDatabase`, with tables `MyTable1`, `M
 
 ### Soft-delete period of seven days and recoverability disabled
 
-Set all tables in the database to have a soft-delete period of seven days and disabled recoverability**.
+Set all tables in the database to have a soft-delete period of seven days and disabled recoverability.
 
 * *Option 1 (Recommended)*: Set a database-level retention policy, and verify there are no table-level policies set.
 
