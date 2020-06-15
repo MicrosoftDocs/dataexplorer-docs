@@ -30,7 +30,7 @@ union Schema1, Schema2 | evaluate schema_merge()
 
 **Arguments**
 
-* *PreserveOrder*: (Optional) When set to `true`, directs the plugin to validate the column order as defined by the first tabular schema that is kept. In other words, if the same column is in several schemas, the column ordinal must be like in the first schema that it appeared. Default value is `true`.
+* *PreserveOrder*: (Optional) When set to `true`, directs the plugin to validate the column order as defined by the first tabular schema that is kept. If the same column is in several schemas, the column ordinal must be like the column ordinal of the first schema that it appeared in. Default value is `true`.
 
 **Returns**
 
