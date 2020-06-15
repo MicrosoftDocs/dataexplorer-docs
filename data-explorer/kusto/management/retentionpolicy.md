@@ -38,7 +38,7 @@ deleted before the limit is exceeded, but deletion isn't immediate following tha
 A retention policy includes the following properties:
 
 * **SoftDeletePeriod**:
-    * A time span for which it's guaranteed that the data is kept available to query. The period is measured starting from the time it was ingested.
+    * Time span for which it's guaranteed that the data is kept available to query. The period is measured starting from the time the data was ingested.
     * Defaults to `100 years`.
     * When altering the soft-delete period of a table or database, the new value applies to both existing and new data.
 * **Recoverability**:
