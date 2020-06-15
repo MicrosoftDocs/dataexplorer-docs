@@ -148,7 +148,7 @@ Set tables `MyTable1` and `MyTable2` to have a soft-delete period of seven days,
 .alter-merge table MyTable2 policy retention softdelete = 7d
 ```
 
-* *Option 3*: For tables `MyTable1` and `MyTable2`, set a table-level retention policy. For table `MySpecialTable` set a table-level retention policy with a soft-delete period of 100 years, the default retention policy.
+* *Option 3*: For tables `MyTable1` and `MyTable2`, set a table-level retention policy. For table `MySpecialTable`, set a table-level retention policy with a soft-delete period of 100 years, the default retention policy.
 
 ```kusto
 .alter-merge table MyTable1 policy retention softdelete = 7d
