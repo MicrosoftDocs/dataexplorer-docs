@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 06/10/2020
+ms.date: 06/15/2020
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
 ---
@@ -226,5 +226,3 @@ You didn't create any resources in this quickstart, but if you'd like to remove 
 ## Next steps
 
 [Write queries for Azure Data Explorer](write-queries.md)
-
-
