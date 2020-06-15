@@ -31,23 +31,23 @@ You can set the following properties:
 
 |Property | Description|
 |---|---|
-| rawSizeBytes | Size of the raw (uncompressed) data. For Avro/ORC/Parquet, this is the size before format-specific compression is applied.|
+| rawSizeBytes | Size of the raw (uncompressed) data. For Avro/ORC/Parquet, this value is the size before format-specific compression is applied.|
 | kustoTable |  Name of the existing target table. Overrides the `Table` set on the `Data Connection` blade. |
 | kustoDataFormat |  Data format. Overrides the `Data format` set on the `Data Connection` blade. |
 | kustoIngestionMappingReference |  Name of the existing ingestion mapping to be used. Overrides the `Column mapping` set on the `Data Connection` blade.|
 | kustoIgnoreFirstRecord | If set to `true`, Azure Data Explorer ignores the first row of the blob. Use in tabular format data (CSV, TSV, or similar) to ignore headers. |
 | kustoExtentTags | String representing [tags](../extents-overview.md#extent-tagging) that will be attached to resulting extent. |
-| kustoCreationTime |  Overrides [$IngestionTime](../../query/ingestiontimefunction.md?pivots=azuredataexplorer) for the blob, formatted as a ISO 8601 string. Use for backfilling. |
+| kustoCreationTime |  Overrides [$IngestionTime](../../query/ingestiontimefunction.md?pivots=azuredataexplorer) for the blob, formatted as an ISO 8601 string. Use for backfilling. |
 
 ## Events routing
 
-When setting up a blob storage connection to Azure Data Explorer cluster, specify target table properties (table name, data format and mapping). This is the default routing for your data, also referred to as `static routing`.
+When setting up a blob storage connection to Azure Data Explorer cluster, specify target table properties (table name, data format, and mapping). This setup is the default routing for your data, also referred to as `static routing`.
 You can also specify target table properties for each blob, using blob metadata. The data will be dynamically routed as specified by [ingestion properties](#ingestion-properties).
 
 Following is an example for setting ingestion properties to the blob metadata before uploading it. 
 Blobs are routed to different tables.
 
-Please refer to the [sample code](#generating-data) for more details on how to generate data.
+Refer to the [sample code](#generating-data) for more details on how to generate data.
 
  ```csharp
 // Blob is dynamically routed to table `Events`, ingested using `EventsMapping` data mapping
@@ -73,8 +73,8 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 
 ### Event Grid subscription
 
-* Kusto selected `Event Hub` as the endpoint type, used for transporting blob storage events notifications. `Event Grid schema` is the selected schema for notifications. Note that each Even Hub can serve one connection.
-* The blob storage subscription connection handles notifications of type `Microsoft.Storage.BlobCreated`. Make sure to select it when creating the subscription. Note that other types of notifications, if selected, are ignored.
+* Kusto selected `Event Hub` as the endpoint type, used for transporting blob storage events notifications. `Event Grid schema` is the selected schema for notifications. Each Even Hub can serve one connection.
+* The blob storage subscription connection handles notifications of type `Microsoft.Storage.BlobCreated`. Make sure to select it when creating the subscription. Other types of notifications, if selected, are ignored.
 * One subscription can notify on storage events in one container or more. If you want to track files from a specific container(s), set the filters for the notifications as follows:
 When setting up a connection, take a special care of the following values: 
    * **Subject Begins With** filter is the *literal* prefix of the blob container. As the pattern applied is *startswith*, it can span multiple containers. No wildcards are allowed.
@@ -121,11 +121,10 @@ blob.UploadFromFile(csvCompressedLocalFileName);
 
 ## Blob lifecycle
 
-Azure Data Explorer won't delete the blobs post ingestion, but will retain them for three to five days. Use [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion.
+Azure Data Explorer won't delete the blobs post ingestion. Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion. It is recommended to retain the blobs for three to five days.
 
 ## Known issues
 
-When using Azure Data Explorer to [export](../data-export/export-data-to-storage.md) the files used for event grid ingestion, the following should be noted: 
-* Event Grid notifications are *not* triggered if the connection string provided to the export command or the connection string provided to an [external table](../data-export/export-data-to-an-external-table.md) is a connecting string in [ADLS Gen2 format](../../api/connection-strings/storage.md#azure-data-lake-store)(e.g., `abfss://filesystem@accountname.dfs.core.windows.net`) *but the storage account isn't enabled for hierarchical namespace*. 
- * If the account is not enabled for hierarchical namespace, connection string must use the [Blob Storage](../../api/connection-strings/storage.md#azure-storage-blob) format (e.g., `https://accountname.blob.core.windows.net`). 
- * Note that the export will work as expected even when using the ADLS Gen2 connection string in this case, but notifications won't be triggered and thus Event Grid ingestion won't work. 
+When using Azure Data Explorer to [export](../data-export/export-data-to-storage.md) the files used for event grid ingestion, note: 
+* Event Grid notifications aren't triggered if the connection string provided to the export command or the connection string provided to an [external table](../data-export/export-data-to-an-external-table.md) is a connecting string in [ADLS Gen2 format](../../api/connection-strings/storage.md#azure-data-lake-store)(for example, `abfss://filesystem@accountname.dfs.core.windows.net`) but the storage account isn't enabled for hierarchical namespace. 
+* If the account isn't enabled for hierarchical namespace, connection string must use the [Blob Storage](../../api/connection-strings/storage.md#azure-storage-blob) format (for example, `https://accountname.blob.core.windows.net`). The export works as expected even when using the ADLS Gen2 connection string, but notifications won't be triggered and Event Grid ingestion won't work.

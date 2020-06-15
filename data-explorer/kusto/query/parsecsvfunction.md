@@ -11,7 +11,7 @@ ms.date: 02/13/2020
 ---
 # parse_csv()
 
-Splits a given string representing a single record of comma separated values and returns a string array with these values.
+Splits a given string representing a single record of comma-separated values and returns a string array with these values.
 
 ```kusto
 parse_csv("aaa,bbb,ccc") == ["aaa","bbb","ccc"]
@@ -23,7 +23,7 @@ parse_csv("aaa,bbb,ccc") == ["aaa","bbb","ccc"]
 
 **Arguments**
 
-* *source*: The source string representing a single record of comma separated values.
+* *source*: The source string representing a single record of comma-separated values.
 
 **Returns**
 
@@ -31,8 +31,8 @@ A string array that contains the split values.
 
 **Notes**
 
-Embedded line feeds, commas and quotes may be escaped using the double quotation mark ('"'). 
-This function does not support multiple records per row (only the first record is taken).
+Embedded line feeds, commas, and quotes may be escaped using the double quotation mark ('"'). 
+This function doesn't support multiple records per row (only the first record is taken).
 
 **Examples**
 
