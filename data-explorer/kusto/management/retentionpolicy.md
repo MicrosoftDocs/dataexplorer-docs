@@ -57,7 +57,7 @@ retention policy of a database or a table.
 By default, when a database or a table is created, it doesn't have a retention policy defined. Normally, the database is created and then immediately has its retention policy set by its creator according to known requirements.
 When you run a [show command](../management/retention-policy.md) for the retention policy of a database or table that hasn't had its policy set, `Policy` appears as `null`.
 
-The default retention policy, with the default values mentioned above can be applied using the following command.
+The default retention policy, with the default values mentioned above, can be applied using the following command.
 
 ```kusto
 .alter database DatabaseName policy retention "{}"
