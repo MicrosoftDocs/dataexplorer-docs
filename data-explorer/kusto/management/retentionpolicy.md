@@ -20,7 +20,7 @@ Setting up a retention policy is important for clusters that are continuously in
 data, which will limit costs.
 
 Data that is "outside" the retention policy is eligible for removal. Kusto doesn't
-guarantee when removal occurs. Data may "linger" even if the retention policy is  triggered.
+guarantee when removal occurs. Data may "linger" even if the retention policy is triggered.
 
 The retention policy is most commonly set to limit the age of the data since ingestion.
 For more information, see [SoftDeletePeriod](#the-policy-object), below.
