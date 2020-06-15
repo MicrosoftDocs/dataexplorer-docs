@@ -52,7 +52,7 @@ print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|["82","b8","be","2d","df","a7","4b","d1","8f","63","24","ad","26","d3","14","49"]|
 
-### Extracting several capture groups 
+### Extract several capture groups 
 
 Uses a regular expression with three capturing groups to split each GUID part into first letter, last letter, and whatever is in the middle.
 
