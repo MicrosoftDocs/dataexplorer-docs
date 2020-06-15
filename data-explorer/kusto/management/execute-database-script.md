@@ -1,5 +1,5 @@
 ---
-title: .execute script - Azure Data Explorer | Microsoft Docs
+title: .execute database script - Azure Data Explorer
 description: This article describes .execute script functionality in Azure Data Explorer.
 services: data-explorer
 author: orspod
