@@ -21,12 +21,14 @@ See [`indexof()`](indexoffunction.md).
 
 **Arguments**
 
-|Arguments     | Description                                     |Required or Optional||--------------|-------------------------------------------------|--------------------|
+|Arguments     | Description                                     |Required or Optional|
+|--------------|-------------------------------------------------|--------------------|
 |source        | Input string                                    |Required            |
 |lookup        | String to seek                                  |Required            |
 |start_index   | Search start position                           |Optional            |
 |length        | Number of character positions to examine. -1 defines an unlimited length |Optional            |
-|occurrence    | is the of occurrence. Default is 1              |Optional            |
+|occurrence    | Find the index of the N-th appearance of the pattern. 
+                 Default is 1, the index of the first occurrence |Optional            |
 
 **Returns**
 
