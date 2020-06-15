@@ -77,4 +77,4 @@ The merge policy contains the following properties:
 
 When a database is created, it's set with the default merge policy values mentioned above. The policy is by default inherited by all tables created in the database, unless their policies are explicitly overridden at table-level.
 
-Control commands that allow you to manage merge policies for databases or tables can be found in the [merge policy document](../management/merge-policy.md).
+For more information, see [control commands that allow you to manage merge policies for databases or tables] (../management/merge-policy.md).
