@@ -22,7 +22,7 @@ Executes batch of control commands in scope of a single database.
 
 ### Parameters
 
-* *Control-commands-script*: text with one or more control commands.
+* *Control-commands-script*: Text with one or more control commands.
 * *Database scope*: Script is applied on the *database scope* specified as part of the request context.
 
 ### Optional properties
