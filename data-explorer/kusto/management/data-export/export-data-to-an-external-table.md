@@ -37,21 +37,21 @@ You can export data by defining an [external table](../externaltables.md) and ex
 * The following properties are supported as part of the export command. See the [export to storage](export-data-to-storage.md) section for details: 
    * `sizeLimit`, `parquetRowGroupSize`, `distributed`.
 
-* If the external table is partitioned, exported artifacts will be written to their respective directories, according to the partition definitions as seen in the [example](#partitioned-external-table-example). 
-  * If a partition value is null/empty or is an invalid directory value, per the definitions of the target storage, it is replaced with
-   a default value of `__DEFAULT_PARTITION__`. 
+* If the external table is partitioned, exported artifacts will be written to their respective directories according to the partition definitions as seen in the [partitioned external table example](#partitioned-external-table-example). 
+  * If a partition value is null/empty or is an invalid directory value, per the definitions of the target storage, the partition value is replaced with a default value of `__DEFAULT_PARTITION__`. 
 
-* The number of files written per partition depends on the  settings:
-   * If the external table includes datetime partitions only, or no partitions at all - the number of files written (for each partition, if exists) should be around the number of nodes in the cluster (or more, if `sizeLimit` is reached). When the export operation is distributed, all nodes in the cluster export concurrently. To disable distribution, so that only a single node performs the writes, set `distributed` to false. This process will create fewer files, but will decrease the export performance.
+* The number of files written per partition depends on the settings:
+   * If the external table includes datetime partitions only, or no partitions at all, the number of files written (for each partition, if exists) should be similar to the number of nodes in the cluster (or more, if `sizeLimit` is reached). When the export operation is distributed, all nodes in the cluster export concurrently. To disable distribution, so that only a single node does the writes, set `distributed` to false. This process will create fewer files, but will reduce the export performance.
 
    * If the external table includes a partition by a string column, the number of 
-   exported files should be a single file per partition (or more, if `sizeLimit` is reached). All nodes still participate in the export (operation is distributed), but each partition is assigned to a specific node. Setting `distributed` to false in this case, will cause only a single node to perform the export, but behavior will remain the same (a single file written per partition).
+   exported files should be a single file per partition (or more, if `sizeLimit` is reached). All nodes still participate in the export (operation is distributed), but each partition is assigned to a specific node. Setting `distributed` to false, will cause only a single node to do the export, but behavior will remain the same (a single file written per partition).
 
 ## Examples
 
 ### Non-partitioned external table example
 
 ExternalBlob is a non-partitioned external table. 
+
 ```kusto
 .export to table ExternalBlob <| T
 ```

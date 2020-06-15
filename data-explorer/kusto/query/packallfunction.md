@@ -17,6 +17,10 @@ Creates a `dynamic` object (property bag) from all the columns of the tabular ex
 
 `pack_all()`
 
+**Notes**
+
+The representation of the returned object isn't guaranteed to be byte-level-compatible between runs. For example, properties that appear in the bag may appear in a different order.
+
 **Examples**
 
 Given a table SmsMessages 
@@ -28,10 +32,17 @@ Given a table SmsMessages
 |555-555-1212 |555-555-1234 | 32 
 
 The following query:
-```kusto
-SmsMessages | extend Packed=pack_all()
-``` 
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+datatable(SourceNumber:string,TargetNumber:string,CharsCount:long)
+[
+'555-555-1234','555-555-1212',46,
+'555-555-1234','555-555-1213',50,
+'555-555-1212','555-555-1234',32
+]
+| extend Packed=pack_all()
+```
 Returns:
 
 |TableName |SourceNumber |TargetNumber | Packed
