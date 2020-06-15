@@ -39,7 +39,7 @@ print extract_all(@"(\d+)", "a set of numbers: 123, 567 and 789") // results wit
 
 ## Examples
 
-### Extracting single capture group
+### Extract a single capture group
 
 Returns hex-byte representation (two hex-digits) of the GUID.
 
