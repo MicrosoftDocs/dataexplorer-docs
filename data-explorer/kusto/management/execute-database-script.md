@@ -33,7 +33,7 @@ Executes batch of control commands in scope of a single database.
 
 ## Output
 
-Each command appearing in the script will be reported as a separate record in the output table. Each record has next fields:
+Each command appearing in the script will be reported as a separate record in the output table. Each record has the following fields:
 
 |Output parameter |Type |Description
 |---|---|--- 
