@@ -15,7 +15,7 @@ Cluster nodes cache schema of the databases that receive data via streaming inge
 Clear the cache to guarantee that subsequent streaming ingestion requests incorporate database or table schema changes.
 For more information, see [Streaming ingestion and schema changes](streaming-ingestion-schema-changes.md).
 
-## Clear schema cache
+**Clear schema cache**
 
 The `.clear cache streamingingestion schema` command flushes cached schema from all cluster nodes.
 
