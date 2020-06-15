@@ -96,7 +96,7 @@ Set all tables in the database to have a soft-delete period of seven days and di
 .alter-merge database MyDatabase policy retention softdelete = 7d recoverability = disabled
 ```
 
-* *Option 2*: For each table, set a table-level retention policy with a soft-delete period of seven days and recoverability disabled.
+* *Option 2*: For each table, set a table-level retention policy, with a soft-delete period of seven days and recoverability disabled.
 
 ```kusto
 .alter-merge table MyTable1 policy retention softdelete = 7d recoverability = disabled
@@ -118,7 +118,7 @@ Set all tables in the database to have a soft-delete period of seven days and di
 .alter-merge table MySpecialTable policy retention softdelete = 14d recoverability = enabled
 ```
 
-* *Option 2*: For each table, set a table-level retention policy with the relevant soft-delete period and recoverability.
+* *Option 2*: For each table, set a table-level retention policy, with the relevant soft-delete period and recoverability.
 
 ```kusto
 .alter-merge table MyTable1 policy retention softdelete = 7d recoverability = disabled
@@ -130,7 +130,7 @@ Set all tables in the database to have a soft-delete period of seven days and di
 
 Set tables `MyTable1` and `MyTable2` to have a soft-delete period of seven days, and have `MySpecialTable` keep its data indefinitely.
 
-* *Option 1*: Set a database-level retention policy, and set a table-level retention policy with a soft-delete period of 100 years, the default retention policy, for `MySpecialTable`.
+* *Option 1*: Set a database-level retention policy, and set a table-level retention policy, with a soft-delete period of 100 years, the default retention policy, for `MySpecialTable`.
 
 ```kusto
 .delete table MyTable1 policy retention   // optional, only if the table previously had its policy set
