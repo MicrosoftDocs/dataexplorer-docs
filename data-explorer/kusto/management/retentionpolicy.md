@@ -48,7 +48,7 @@ A retention policy includes the following properties:
 
 ## Control commands
 
-* Use [.show policy retention](../management/retention-policy.md) to show current retention policy for a database or a table.
+* Use [.show policy retention](../management/retention-policy.md) to show the current retention policy for a database or table.
 * Use [.alter policy retention](../management/retention-policy.md) to change current 
 retention policy of a database or a table.
 
