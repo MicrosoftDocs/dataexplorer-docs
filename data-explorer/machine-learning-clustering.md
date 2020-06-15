@@ -61,7 +61,7 @@ demo_clustering1
 
 ![Focus on spike timechart](media/machine-learning-clustering/focus-spike-timechart.png)
 
-YOu will see a narrow two-minute spike from 15:00 to 15:02. In the following query, count the exceptions in this two-minute window:
+You'll see a narrow two-minute spike from 15:00 to 15:02. In the following query, count the exceptions in this two-minute window:
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIzcyLL0hNzI4vsU1JLEktycxN1TAyMDTTNbDQNTJWMDS1MjDQtObKASlNrCCk1AioNCU1Nz8+Oae0uCS1KDMv3ZCrRqE8I7UoVSGgKDU5szg1BKgvuCQxt0AhKbWkPDU1TwPhBj09hCWaQI3J+aV5JQACnQoRpwAAAA==)**\]**
 
