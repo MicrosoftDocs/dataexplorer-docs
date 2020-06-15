@@ -30,7 +30,7 @@ A common scenario includes a data set selected by a specific criteria such as:
 * High temperature device readings
 * Long duration commands
 * Top spending users
-Users would like a fast and easy way to find common patterns (segments) in the data. Patterns are a subset of the data set whose records share the same values over multiple dimensions (categorical columns). 
+You want a fast and easy way to find common patterns (segments) in the data. Patterns are a subset of the data set whose records share the same values over multiple dimensions (categorical columns). 
 
 The following query builds and shows a time series of service exceptions over the period of a week, in ten-minute bins:
 
