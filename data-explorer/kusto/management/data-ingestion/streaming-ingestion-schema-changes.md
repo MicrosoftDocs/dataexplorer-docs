@@ -11,7 +11,7 @@ ms.date: 05/20/2020
 ---
 # Streaming ingestion and schema changes
 
-## Challenges in coordinating schema changes with streaming ingestion
+## Background
 
 Cluster nodes cache schema of databases that receive data via streaming ingestion. This process optimizes performance and utilization of cluster resources, but can cause propagation delays when schema changes.
 
@@ -23,12 +23,12 @@ Examples of schema changes are:
 * Adding, removing, or altering policies
 
 If schema changes and streaming ingestion flows are uncoordinated, some of the streaming ingestion requests may fail. The failures could include schema-related errors, or the insertion of incomplete or distorted data into the table.
-Use the custom ingestion application to handle the schema-related failures by performing retries for a limited time, or by rerouting data from the failed requests via queued ingestion methods.
+When implementing custom ingestion application it is highly recommended to handle the schema-related failures by performing retries for a limited time, or by rerouting data from the failed requests via queued ingestion methods.
 
 ## Clearing the schema cache
 
 Reduce the effects of propagation delay by explicitly clearing the schema cache on the cluster nodes.
-Clear the schema cache using one of the [Clear schema cache for streaming ingestion](clear-schema-cache-command.md) management commands.
+Clear the schema cache using one of the [Clear schema cache for streaming ingestion](kusto/management/clear-schema-cache-command.md) management commands.
 If the streaming ingestion flow and schema changes are coordinated, you can completely eliminate failures and their associated data distortion. 
 
 **Coordinated flow example:**
