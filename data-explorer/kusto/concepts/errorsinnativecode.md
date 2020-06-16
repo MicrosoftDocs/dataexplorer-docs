@@ -4,10 +4,10 @@ description: This article describes Errors in native code in Azure Data Explorer
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/12/2019
+ms.date: 06/15/2020
 ---
 # Errors in native code
 
@@ -37,12 +37,16 @@ The following error codes are defined:
 |`E_ENTITY_NOT_FOUND`               | `10` |`0x80DA000A`|The requested entity was not found                                                                             |
 |`E_CLOSING_QUOTE_MISSING`          | `11` |`0x80DA000B`|A csv document submitted for ingestion has a field with a missing quote                                        |
 |`E_OVERFLOW`                       | `12` |`0x80DA000C`|Represents an arithmetic overflow error (the result of a computation is too large for the destination type)    |
-|`E_RS_BLOCKED_ROWSTOREKEY_ERROR`   | `101`|`0x80DA0065`|An attempt was made to access a blocked row store key                                                          |
-|`E_RS_SHUTTINGDOWN_ERROR`          | `102`|`0x80DA0066`|row store is shutting down                                                                                     |
-|`E_RS_LOCAL_STORAGE_FULL_ERROR`    | `103`|`0x80DA0067`|Allocated disk space for row store storage is full                                                             |
-|`E_RS_CANNOT_READ_WRITE_AHEAD_LOG` | `104`|`0x80DA0068`|Reading from row store storage has failed                                                                      |
-|`E_RS_CANNOT_RETRIEVE_VALUES_ERROR`| `105`|`0x80DA0069`|Failure to retrieve values from row store storage                                                              |
-|`E_RS_NOT_READY_ERROR`             | `106`|`0x80DA006A`|row store is initializing                                                                                      |
-|`E_RS_INSERTION_THROTTLED_ERROR`   | `107`|`0x80DA006B`|Value insertion to a row store was throttled                                                                   |
-|`E_RS_READONLY_ERROR`              | `108`|`0x80DA006C`|row store is attached in read-only state                                                                       |
-|`E_RS_UNAVAILABLE_ERROR`           | `109`|`0x80DA006D`|row store is currently unavailable                                                                             |
+|`E_RS_BLOCKED_ROWSTOREKEY_ERROR`   | `101`|`0x80DA0065`|An attempt was made to access a blocked RowStore key                                                          |
+|`E_RS_SHUTTINGDOWN_ERROR`          | `102`|`0x80DA0066`|RowStore is shutting down                                                                                     |
+|`E_RS_LOCAL_STORAGE_FULL_ERROR`    | `103`|`0x80DA0067`|Allocated local disk storage for RowStore is full                                                             |
+|`E_RS_CANNOT_READ_WRITE_AHEAD_LOG` | `104`|`0x80DA0068`|Reading from RowStore storage has failed                                                                      |
+|`E_RS_CANNOT_RETRIEVE_VALUES_ERROR`| `105`|`0x80DA0069`|Failure to retrieve values from RowStore storage                                                              |
+|`E_RS_NOT_READY_ERROR`             | `106`|`0x80DA006A`|RowStore is initializing                                                                                      |
+|`E_RS_INSERTION_THROTTLED_ERROR`   | `107`|`0x80DA006B`|Value insertion to a RowStore was throttled                                                                   |
+|`E_RS_READONLY_ERROR`              | `108`|`0x80DA006C`|RowStore is attached in read-only state                                                                       |
+|`E_RS_UNAVAILABLE_ERROR`           | `109`|`0x80DA006D`|RowStore is currently unavailable                                                                             |
+|`E_RS_DOES_NOT_EXIST_ERROR`           | `110`|`0x80DA006E`| RowStore does not exist.                                                                            |
+|`E_SB_QUERY_THROTTLED_ERROR`           | `200`|`0x80DA00C8`|Sandboxed query was throttled                                                                           |
+|`E_SB_QUERY_CANCELLED`           | `201`|`0x80DA00C9`|Sandboxed query was cancelled                                                                          |
+|`E_UNSUPPORTED_INSTRUCTION_SET`           | `202`|`0x80DA00CA`|Engine's required instruction set is unsupported by this CPU                                                                            |
