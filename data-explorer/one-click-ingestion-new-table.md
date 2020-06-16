@@ -11,9 +11,9 @@ ms.date: 03/29/2020
 
 # Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer
 
-[One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table. Using the Azure Data Explorer Web UI, you can ingest data from storage, from a local file, or from a container. 
+[One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.  
 
-This document describes using the intuitive one-click wizard in a specific use case to ingest CSV data from a container into a new table. You can then edit the table and run queries with the Azure Data Explorer Web UI. You can also set continuous ingestion to automatically ingest data into the table when the source data updates.
+This document describes using the intuitive one-click wizard in a specific use case to ingest **CSV** data from a **container** into a **new table**, either as a one-time or a continuous ingestion process. You can use the same process with slight adaptations to cover a variety of different use cases.
 
 For an overview of one-click ingestion and a list of prerequisites, see [One-click ingestion](ingest-data-one-click.md).
 For information about ingesting data into an existing table in Azure Data Explorer, see [One-click ingestion to an existing table](one-click-ingestion-existing-table.md)
@@ -27,6 +27,9 @@ For information about ingesting data into an existing table in Azure Data Explor
 1. In the **Ingest new data (Preview)** window, the **Source** tab is selected. 
 
 1. Select **Create new table** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
+ 
+    > [!NOTE]
+    > Table names must be between 1 and 1024 characters.
 
 :::image type="content" source="media/one-click-ingestion-new-table/create-new-table.png" alt-text="Create a new table one click ingestion":::
 
@@ -41,7 +44,7 @@ For **Ingestion type**, select the following options:
  > [!TIP] 
  > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
 
-  A sample of the data appears. If you want to, you can filter it to show only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
+  A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
   
   For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension.
 
@@ -95,7 +98,7 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 
 ## Continuous ingestion - container only
 
-Continuous ingestion enables you to create an event grid that listens for changes, updates, or new data in the source container. Any new blob that meets the criteria of the pre-defined parameters (prefix, suffix, and so on) will be automatically ingested into the destination table.
+Continuous ingestion enables you to create an event grid that listens for new files in the source container. Any new file that meets the criteria of the pre-defined parameters (prefix, suffix, and so on) will be automatically ingested into the destination table.
 
 1. Select **Continuous ingestion** to open the Azure portal. The data connection page opens with the event grid data connector opened and with source and target parameters already entered (source container, tables, and mappings).
 

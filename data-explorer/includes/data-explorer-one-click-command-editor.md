@@ -11,6 +11,5 @@ ms.author: orspodek
 
 > [!NOTE]
 > * You can't update the name and datatype for existing tables.
-> * Drop commands will only revert the changes that were made by this ingestion flow (new extents and columns). Nothing else will be dropped.
 
 :::image type="content" source="media/data-explorer-one-click-command-editor/edit-view.png" alt-text="One click ingestion edit view":::

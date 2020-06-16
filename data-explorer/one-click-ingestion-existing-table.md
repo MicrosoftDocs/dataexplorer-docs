@@ -10,10 +10,10 @@ ms.date: 03/29/2020
 ---
 
 # Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
+ 
+[One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.  
 
-[One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table. Using the Azure Data Explorer Web UI, you can ingest data from storage, from a local file, or from a container. 
-
-This document describes using the intuitive one-click wizard in a specific use case to ingest JSON data from a file into an existing table. You can then edit the table and run queries with the Azure Data Explorer Web UI.
+This document describes using the intuitive one-click wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. You can use the same process with slight adaptations to cover a variety of different use cases.
 
 For an overview of one-click ingestion and a list of prerequisites, see [One-click ingestion](ingest-data-one-click.md).
 For different types or sources of data, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md).
@@ -41,7 +41,7 @@ For **Ingestion type**, select the following option:
  > [!TIP]
  > For ingestion **from container**, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#select-an-ingestion-type)
 
-  A sample of the data appears. If you want to, you can filter it to show only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
+  A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
   
   For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension. 
 <!-- TODO: THIS IMAGE IS NOT CORRECT: IS FROM CONTAINER NOT LOCAL FILE-->
@@ -63,7 +63,7 @@ Select **Edit schema** to view and edit your table column configuration.
 1. In the **Schema** tab:
     * **Compression type** will be selected automatically by the source file name. In this case, the compression type is **JSON**
         
-    * When you select  **JSON**, you must also select **JSON levels**, from 1 to 10. The levels determine the table column data depiction.
+    * When you select  **JSON**, you must also select **JSON levels**, from 1 to 10. The levels determine the table column data division.
 
     :::image type="content" source="media/one-click-ingestion-existing-table/json-levels.png" alt-text="Select JSON levels":::
     
@@ -95,6 +95,7 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 > If you want to set up continuous ingestion from a container, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#continuous-ingestion---container-only)
 
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
+
 
 ## Next steps
 
