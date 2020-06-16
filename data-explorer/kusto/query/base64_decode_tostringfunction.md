@@ -25,8 +25,8 @@ Decodes a base64 string to a UTF-8 string.
 
 Returns UTF-8 string decoded from base64 string.
 
-* For decoding base64 strings to an array of long values see [base64_decode_toarray()](base64_decode_toarrayfunction.md)
-* For encoding strings to base64 string see [base64_encode_tostring()](base64_encode_tostringfunction.md)
+* To decode base64 strings to an array of long values, see [base64_decode_toarray()](base64_decode_toarrayfunction.md)
+* To decode strings to base64 string, see [base64_encode_tostring()](base64_encode_tostringfunction.md)
 
 **Example**
 
@@ -39,7 +39,7 @@ print Quine=base64_decode_tostring("S3VzdG8=")
 |-----|
 |Kusto|
 
-Trying to decode a base64 string which was generated from invalid UTF-8 encoding will return null:
+Trying to decode a base64 string that was generated from invalid UTF-8 encoding will return null:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
