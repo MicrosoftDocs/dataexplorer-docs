@@ -68,6 +68,6 @@ counter("StormEvents")
 ```
 
 > [!NOTE]
-> Use the `table()` special function if you want to explicitly specify the
-> table data scope to use (for example, to restrict processing to the data
-> in the table that falls in the hot cache).
+> Use the `table()` special function to explicitly specify the
+> table data scope. For example, use this function to restrict processing to the data
+> in the table that falls in the hot cache.
