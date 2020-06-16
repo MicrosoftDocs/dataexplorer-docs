@@ -11,7 +11,7 @@ ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-# Cross-Cluster Join
+# Cross-cluster join
 
 ::: zone pivot="azuredataexplorer"
 

@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Project operator
+# project operator
 
 Select the columns to include, rename or drop, and insert new computed columns. 
 

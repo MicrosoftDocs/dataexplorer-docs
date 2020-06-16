@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/19/2019
 ---
-# Entities
+# Entity types
 
 Kusto queries execute in the context of some Kusto database that is attached
 to a Kusto cluster. Data in the database is arranged in tables, which the query

@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
 ---
-# evaluate plugin operator
+# evaluate operator plugins
 
 Invokes a service-side query extension (plugin).
 
