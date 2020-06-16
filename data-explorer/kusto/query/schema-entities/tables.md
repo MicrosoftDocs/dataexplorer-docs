@@ -66,3 +66,8 @@ as long as the argument to that function evaluates to a constant. For example:
 let counter=(TableName:string) { table(TableName) | count };
 counter("StormEvents")
 ```
+
+> [!NOTE]
+> Use the `table()` special function to explicitly specify the
+> table data scope. For example, use this function to restrict processing to the data
+> in the table that falls in the hot cache.
