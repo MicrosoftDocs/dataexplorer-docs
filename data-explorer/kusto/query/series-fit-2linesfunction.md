@@ -42,8 +42,10 @@ Takes an expression containing dynamic numerical array as input and applies [two
 
 project `series_fit_2lines(`*x*`)`
 * Will return all mentioned above columns with the following names: series_fit_2lines_x_rsquare, series_fit_2lines_x_split_idx etc.
+
 project (rs, si, v)=`series_fit_2lines(`*x*`)`
 * Will return the following columns: rs (r-square), si (split index), v (variance) and the rest will look like series_fit_2lines_x_rvariance, series_fit_2lines_x_line_fit and etc.
+
 extend (rs, si, v)=`series_fit_2lines(`*x*`)`
 * Will return only: rs (r-square), si (split index) and v (variance).
   

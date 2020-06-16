@@ -75,7 +75,9 @@
       - name: One-click ingestion into an existing table
         href: one-click-ingestion-existing-table.md
     - name: Streaming ingestion
-      href: ingest-data-streaming.md
+      items:
+      - name: Streaming ingestion
+        href: ingest-data-streaming.md
     - name: Using LightIngest
       href: lightingest.md    
     - name: Event Hub
@@ -145,7 +147,11 @@
   - name: Visualize data
     items:
     - name: Azure Data Explorer dashboards
-      href: azure-data-explorer-dashboards.md
+      items:
+      - name: using dashboards
+        href: azure-data-explorer-dashboards.md
+      - name: using dashboard parameters
+        href: dashboard-parameters.md  
     - name: Power BI
       items:
       - name: Best practices
@@ -325,6 +331,10 @@
         href: ./kusto/query/schema-entities/index.md
       - name: Entity names
         href: ./kusto/query/schema-entities/entity-names.md
+      - name: Entity references
+        href: ./kusto/query/schema-entities/entity-references.md
+      - name: Databases
+        href: ./kusto/query/schema-entities/databases.md  
       - name: Tables
         href: ./kusto/query/schema-entities/tables.md
       - name: Columns
@@ -359,6 +369,8 @@
         href: ./kusto/query/scalar-data-types/timespan.md
       - name: Null values
         href: ./kusto/query/scalar-data-types/null-values.md
+      - name: Unsupported scalar data types
+        href: /kusto/query/scalar-data-types/unsupported-data-types.md
     - name: Functions
       items:
       - name: Function types
@@ -599,6 +611,8 @@
         href: ./kusto/query/atan2function.md
       - name: bag_keys()
         href: ./kusto/query/bagkeysfunction.md
+      - name: bag_merge()
+        href: ./kusto/query/bag-merge-function.md
       - name: base64_decode_toarray()
         href: ./kusto/query/base64_decode_toarrayfunction.md
       - name: base64_decode_tostring()
@@ -763,7 +777,7 @@
         href: ./kusto/query/isnanfunction.md
       - name: isnotempty(), notempty()
         href: ./kusto/query/isnotemptyfunction.md
-      - name: isnotnull(), notempty()
+      - name: isnotnull(), notnull()
         href: ./kusto/query/isnotnullfunction.md
       - name: isnull()
         href: ./kusto/query/isnullfunction.md
@@ -1228,12 +1242,14 @@
           href: ./kusto/management/alter-database.md
         - name: .show database schema
           href: ./kusto/management/show-schema-database.md
+        - name: .execute database script
+          href: ./kusto/management/execute-database-script.md
       - name: Tables
         items:
         - name: Tables overview
           href: ./kusto/management/tables.md
         - name: .alter merge table
-          href: ./kusto/management/alter-table-command.md
+          href: ./kusto/management/alter-merge-table-command.md
         - name: .alter table
           href: ./kusto/management/alter-table-command.md
         - name: .alter table docstring
@@ -1252,6 +1268,8 @@
           href: ./kusto/management/create-table-command.md
         - name: .create tables
           href: ./kusto/management/create-tables-command.md
+        - name: .create-merge tables
+          href: ./kusto/management/create-merge-tables-command.md
         - name: .drop table(s)
           href: ./kusto/management/drop-table-command.md
         - name: .rename table
@@ -1410,6 +1428,12 @@
         href: ./kusto/management/data-ingestion/eventhub.md
       - name: Ingest from IoT Hub
         href: ./kusto/management/data-ingestion/iothub.md
+      - name: Streaming Ingestion
+        items:
+        - name: Streaming ingestion and schema changes
+          href: ./kusto/management/data-ingestion/streaming-ingestion-schema-changes.md
+        - name: Clear schema cache for streaming ingestion
+          href: ./kusto/management/data-ingestion/clear-schema-cache-command.md
     - name: Data Export
       href: ./kusto/management/data-export/index.md
       items:
