@@ -13,7 +13,7 @@ ms.date: 02/24/2020
 
 Kusto.WebExplorer is a web application that can be used to send queries
 and control commands to a Kusto service. The application is hosted at
-[https://dataexplorer.azure.com/] and short-linked by [https://aka.ms/kwe].
+https://dataexplorer.azure.com/ and short-linked by https://aka.ms/kwe.
 
 
 
