@@ -11,7 +11,8 @@ ms.date: 06/09/2020
 
 # Business continuity and disaster recovery
 
-Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a disruption. Some disruptive events are not automatically handled by Azure Data Explorer, such as:
+<!-- Need intro sentences on BCDR-->
+Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a disruption. Some disruptive events aren't automatically handled by Azure Data Explorer, such as:
 
  1. High availability/fault tolerance <!-- choose preferred term -->
  1. Recovering from human errors
@@ -42,18 +43,20 @@ If you need further resiliency, Zone Redundant Storage places replicas across av
 Azure Data Explorer is a distributed computing platform and can have two to many nodes depending on scale, and node role type. At provision time, select availability zones to distribute the node deployment, across zones for maximum intra-region resiliency. An availability zone failure won't result in a complete outage. You'll, however, experience performance degradation until recovery of the zone. 
 
 > [!Note] 
-> Availability zone selection is only supported at the time of provision.
+> Availability zone selection is only supported at the time of cluster provision.
 
 ### Leader-Follower cluster configuration
 
-Azure Data Explorer provides an optional [capability](follower.md) for a leader cluster to be followed by other follower clusters for read-only access to the leader's data and metadata. Changes in the leader, such as `create`, `append`, and `drop` are automatically synchronized to the follower. While the leaders could span Azure regions, the follower clusters should be hosted in the same region(s) as the leader. If the leader cluster is down or databases/tables are accidentally dropped, the follower clusters will lose access until recovered in the leader. 
+Azure Data Explorer provides an optional [follower capability](follower.md) for a leader cluster to be followed by other follower clusters for read-only access to the leader's data and metadata. Changes in the leader, such as `create`, `append`, and `drop` are automatically synchronized to the follower. While the leaders could span Azure regions, the follower clusters should be hosted in the same region(s) as the leader. If the leader cluster is down or databases/tables are accidentally dropped, the follower clusters will lose access until access is recovered in the leader. 
 
-## Recovering from human error- user accidentally dropped a cluster, database, or table
+## Recovering from human error 
+
+User can accidentally drop a cluster, database, or table
 
 ### Accidental cluster or database deletion
 
 Accidental cluster or database deletion is an irrecoverable action. 
-The Azure Data Explorer resource owner can prevent data loss by enabling the delete &quot;[lock](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)&quot; capability, available at the Azure resource level.
+The Azure Data Explorer resource owner can prevent data loss by enabling the delete [lock](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) capability, available at the Azure resource level.
 
 ### Accidental table deletion
 
@@ -66,9 +69,7 @@ Deletion of an external table only deletes the table metadata. You can recover i
 
 ## Azure availability zone failure
 
-Availability zones are unique physical locations within the same Azure region.
-
-Azure availability zones can protect an Azure Data Explorer cluster and data from partial region failure.
+Azure availability zones are unique physical locations within the same Azure region. They can protect an Azure Data Explorer cluster and data from partial region failure.
 
 When you deploy new clusters to different availability zones, the underlying compute and storage components are deployed to different zones in the region. Each zone has independent power, cooling, and networking. During zonal downtime, the cluster will continue to work, but may experience performance degradation until the failure is resolved.
 
@@ -77,27 +78,29 @@ You can also use zonal services, which pin an Azure Data Explorer cluster to the
 > [!Note]
 > Deployment to availability zones can be done only during cluster creation and cannot be modified later.
 
-Continue reading for more details on [enabling availability zones](create-cluster-database-portal.md) on Azure Data Explorer.
+For more details, see [enabling availability zones](create-cluster-database-portal.md) on Azure Data Explorer.
 
 ## Outage of an Azure Datacenter
 
 Dealing with a datacenter outage is similar to the Azure region failure recovery process.
-Azure Availability Zones come with a cost and some customers, choose to deploy without zonal redundancy. With such an Azure Data Explorer deployment, a datacenter outage, will result in cluster outage. That's why this disaster recovery scenario is similar to an entire Azure region failure.
+Azure availability zones come with a cost and some customers choose to deploy without zonal redundancy. With such an Azure Data Explorer deployment, a datacenter outage will result in cluster outage. That's why this disaster recovery scenario is similar to an entire Azure region failure.
 
 ## Outage of an Azure Region
 
 [Paired regions](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions)
 
-Azure Data Explorer does not support **automatic** protection against the outage of an **entire** Azure region. To create an architecture that can overcome such an outage, we provide some options and considerations for disaster recovery. For each option, we take into account recovery time objective (RTO), recovery point objective (RPO), effort, and cost. You can do cost and performance optimizations using Azure Advisor recommendations and [autoscale](manage-cluster-horizontal-scaling.md) configuration.
+Azure Data Explorer doesn't support **automatic** protection against the outage of an **entire** Azure region. To create an architecture that can overcome such an outage, we provide some options and considerations for disaster recovery. For each option, we take into account recovery time objective (RTO), recovery point objective (RPO), effort, and cost. You can do cost and performance optimizations using Azure Advisor recommendations and [autoscale](manage-cluster-horizontal-scaling.md) configuration.
 
  You'll need to address ingestion, processing, and curation as they relate to setting up this architecture. Ingestion refers to data integrated into Azure Data Explorer from sources; processing refers to transformations and similar activities; curation refers to materialized views, exports to the data lake, and such.
 
+## Best practices
+
 Regardless of which disaster recovery configuration is chosen, use these best practices:
 
-* All database objects, policies, and configurations should be persisted in source control so they can be released to the cluster from Azure DevOps or your favorite release automation tool. Read more information about [Azure DevOps support for Azure Data Explorer](devops.md). 
+* All database objects, policies, and configurations should be persisted in source control so they can be released to the cluster from Azure DevOps or your favorite release automation tool. For more information, see [Azure DevOps support for Azure Data Explorer](devops.md). 
 * Design, develop, and implement validation routines to ensure all clusters are in-sync from a data perspective. Azure Data Explorer supports [cross cluster joins](https://docs.microsoft.com/azure/data-explorer/kusto/query/cross-cluster-or-database-queries?pivots=azuredataexplorer). A simple count or rows across tables can help validate.
 * Use [continuous export](kusto/management/data-export/continuous-data-export.md) capability, as a best practice, and export data within Azure Data Explorer tables to an Azure Data Lake Store, whatever DR configuration is chosen, and ensure selection of GRS or Geo Redundant Storage for the highest resilience.
-* Release procedures should involve governance checks and balances that ensure mirroring of the clusters
+* Release procedures should involve governance checks and balances that ensure mirroring of the clusters.
 * Be fully cognizant of what it takes to build a cluster from scratch.
 * Create a checklist of deployment units to build a cluster from scratch. Your list will be unique to your needs, but should include: deployment scripts, ingestion connections, BI tools, and other important configurations. 
 
@@ -127,9 +130,9 @@ Recovery point objective (RPO) refers to the interval of time that might pass du
 
 ### Always-on configuration with zero tolerance for application downtime
 
-For critical application deployments with no tolerance for outages, you should use multiple Azure Data Explorer clusters across Azure paired regions. Set up ingestion, processing, and curation done in parallel to all the clusters. The cluster SKU typically is the same across regions in this configuration.
+For critical application deployments with no tolerance for outages, you should use multiple Azure Data Explorer clusters across Azure paired regions. Set up ingestion, processing, and curation done in parallel to all the clusters. The cluster SKU is the same across regions.
 
-Azure will ensure that updates are rolled, staggered across Azure paired regions.
+Azure will ensure that updates are rolled and staggered across Azure paired regions.
 In the deployment below, an Azure region outage will not cause an application outage and may experience latency or performance degradation.
 
 :::image type="content" source="media/bcdr/active-active-active-n.png" alt-text="Active-active-active-n configuration":::
@@ -140,7 +143,7 @@ In the deployment below, an Azure region outage will not cause an application ou
 
 ### Active-Active configuration
 
-This configuration is identical to the **Always-on** configuration described above, but only involves two paired Azure regions. Dual ingestion, processing and curation need to be configured. Users are routed to the nearest region. The cluster SKU typically is the same across regions in this configuration.
+This configuration is identical to the **Always-on** configuration described above, but only involves two paired Azure regions. Dual ingestion, processing and curation need to be configured. Users are routed to the nearest region. The cluster SKU is the same across regions.
 
 :::image type="content" source="media/bcdr/active-active.png" alt-text="Active-active configuration":::
 
@@ -160,9 +163,7 @@ This configuration is similar to the **active-active** configuration in dual ing
 
 ### On-demand DR cluster configuration
 
-This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there is no DR cluster. Continuous export of &quot;curated&quot; data (unless raw and intermediate data is also required) should be configured to a storage account that is configured GRS or geo redundant. A DR cluster is spun up in the event of a DR scenario and DDLs, configuration and policies, processes etc are applied, data is ingested from storage into. The data needs to be ingested with the ingestion property [kustoCreationTime](kusto/management/data-ingestion/eventgrid.md) to over-ride the ingestion time that defaults to system time. 
-
-The diagram below provides a pictorial overview of the configuration.
+This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there is no DR cluster. Continuous export of curated data (unless raw and intermediate data is also required) should be configured to a storage account that is configured GRS or geo redundant. A DR cluster is spun up in the event of a DR scenario and DDLs, configuration and policies, and processes are applied, Data is ingested from storage with the ingestion property [kustoCreationTime](kusto/management/data-ingestion/eventgrid.md) to over-ride the ingestion time that defaults to system time. 
 
 :::image type="content" source="media/bcdr/on-demand-dr-cluster.png" alt-text="On demand DR cluster configuration":::
 
@@ -179,9 +180,6 @@ The diagram below provides a pictorial overview of the configuration.
 | **Active-Hot Standby** | Medium | Low | Low | Medium | Medium |
 | **On-demand DR cluster** | Lowest | Highest | Highest | Highest | Lowest |
 
-
 ## Next steps
 
-Get started with the [business continuity disaster recovery HowTo](bcdr-howto.md).
-
-Read more 
+Get started with the [business continuity disaster recovery solution](bcdr-create-solution.md).
