@@ -11,8 +11,7 @@ ms.date: 06/15/2020
 ---
 # bag_unpack plugin
 
-The `bag_unpack` plugin unpacks a single column of type `dynamic`
-by treating each property bag top-level slot as a column.
+The `bag_unpack` plugin unpacks a single column of type `dynamic`, by treating each property bag top-level slot as a column.
 
     T | evaluate bag_unpack(col1)
 
@@ -26,44 +25,41 @@ by treating each property bag top-level slot as a column.
 * *Column*: The column of *T* to unpack. Must be of type `dynamic`.
 * *OutputColumnPrefix*: A common prefix to add to all columns produced by the plugin. This argument is optional.
 * *columnsConlict*: A direction for column conflict resolution. This argument is optional. When argument is provided, it's expected to be a string literal matching one of the following values:
-    - `error` - query produces an error (default)
-    - `replace_source` - source column is replaced
-    - `keep_source` - source column is kept
+    - `error` - Query produces an error (default)
+    - `replace_source` - Source column is replaced
+    - `keep_source` - Source column is kept
 * *ignoredProperties*: Optional set of bag properties to be ignored. When argument is provided, it's expected to be a constant of `dynamic` array with one or more string literals.
 
 **Returns**
 
-The `bag_unpack` plugin returns a table with as many records as its tabular
-input (*T*). The schema of the table is the same as the schema of its tabular input with
-the following modifications:
+The `bag_unpack` plugin returns a table with as many records as its tabular input (*T*). The schema of the table is the same as the schema of its tabular input with the following modifications:
 
 * The specified input column (*Column*) is removed.
-
 * The schema is extended with as many columns as there are distinct slots in
   the top-level property bag values of *T*. The name of each column corresponds
   to the name of each slot, optionally prefixed by *OutputColumnPrefix*. Its
-  type is either the type of the slot (if all values of the same slot have the
-  same type), or `dynamic` (if the values differ in type).
+  type is either the type of the slot, if all values of the same slot have the
+  same type, or `dynamic`, if the values differ in type.
 
 **Notes**
 
 The plugin's output schema depends on the data values, making it as "unpredictable"
-as the data itself. As such, multiple executions of the plugin using different
-data input may produce different output schema.
+as the data itself. Multiple executions of the plugin, using different
+data inputs, may produce different output schema.
 
-The input data to the plugin must be such, that the output schema follows
-all the rules for a tabular schema. In particular:
+The input data to the plugin must be such that the output schema follows all the rules for a tabular schema. In particular:
 
-1. An output column name cannot be the same as an existing column in the tabular
-   input *T* unless it is the column to be unpacked (*Column*) itself,
-   as that will produce two columns with the same name.
+1. An output column name can't be the same as an existing column in the tabular
+   input *T*, unless it's the column to be unpacked (*Column*), since that will produce two columns with the same name.
 
-2. All slot names, when prefixed by *OutputColumnPrefix*, must be valid
+1. All slot names, when prefixed by *OutputColumnPrefix*, must be valid
    entity names and follow the [identifier naming rules](./schema-entities/entity-names.md#identifier-naming-rules).
 
-**Examples**
+## Examples
 
-Expanding a bag:
+### Expand a bag
+
+Expand a bag.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -82,7 +78,10 @@ datatable(d:dynamic)
 |Dave  |40 |
 |Jasmine|30 |
 
-Expanding a bag and using `OutputColumnPrefix` option to produce column names starting with prefix 'Property_':
+
+### Expand a bag with OutputColumnPrefix
+
+Expand a bag and use the `OutputColumnPrefix` option to produce column names that begin with the prefix 'Property_'.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -101,7 +100,9 @@ datatable(d:dynamic)
 |Dave|40|
 |Jasmine|30|
 
-Expanding a bag and using `columnsConlict` option to resolve conflicts between existing columns and columns produced by the `bag_unpack()` operator.
+### Expand a bag with columnsConlict
+
+Expand a bag and use the `columnsConlict` option to resolve conflicts between existing columns and columns produced by the `bag_unpack()` operator.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -137,7 +138,9 @@ datatable(Name:string, d:dynamic)
 |Old_name|40|
 |Old_name|30|
 
-Expanding a bag and using `ignoredProperties` option to ignore certain properties existing in the property bag.
+### Expand a bag with ignoredProperties
+
+Expand a bag and us `ignoredProperties` option to ignore certain properties existing in the property bag.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
