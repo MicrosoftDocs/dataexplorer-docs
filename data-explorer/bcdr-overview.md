@@ -135,7 +135,7 @@ For critical application deployments with no tolerance for outages, you should u
 Azure will ensure that updates are rolled and staggered across Azure paired regions.
 In the deployment below, an Azure region outage will not cause an application outage and may experience latency or performance degradation.
 
-:::image type="content" source="media/bcdr/active-active-active-n.png" alt-text="Active-active-active-n configuration":::
+:::image type="content" source="media/bcdr-overview/active-active-active-n.png" alt-text="Active-active-active-n configuration":::
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
@@ -145,7 +145,7 @@ In the deployment below, an Azure region outage will not cause an application ou
 
 This configuration is identical to the **Always-on** configuration described above, but only involves two paired Azure regions. Dual ingestion, processing and curation need to be configured. Users are routed to the nearest region. The cluster SKU is the same across regions.
 
-:::image type="content" source="media/bcdr/active-active.png" alt-text="Active-active configuration":::
+:::image type="content" source="media/bcdr-overview/active-active.png" alt-text="Active-active configuration":::
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
@@ -155,7 +155,7 @@ This configuration is identical to the **Always-on** configuration described abo
 
 This configuration is similar to the **active-active** configuration in dual ingest, processing, and curation. However, the standby cluster is offline to end users, and need not be the same SKU as the primary. The hot standby cluster can also be of a smaller SKU and scale, and as such is less performant. In a disaster scenario, the standby cluster is brought online, and scaled up.
 
-:::image type="content" source="media/bcdr/active-hot-standby.png" alt-text="Active-hot standby configuration":::
+:::image type="content" source="media/bcdr-overview/active-hot-standby.png" alt-text="Active-hot standby configuration":::
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
@@ -165,7 +165,7 @@ This configuration is similar to the **active-active** configuration in dual ing
 
 This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there is no DR cluster. Continuous export of curated data (unless raw and intermediate data is also required) should be configured to a storage account that is configured GRS or geo redundant. A DR cluster is spun up in the event of a DR scenario and DDLs, configuration and policies, and processes are applied, Data is ingested from storage with the ingestion property [kustoCreationTime](kusto/management/data-ingestion/eventgrid.md) to over-ride the ingestion time that defaults to system time. 
 
-:::image type="content" source="media/bcdr/on-demand-dr-cluster.png" alt-text="On demand DR cluster configuration":::
+:::image type="content" source="media/bcdr-overview/on-demand-dr-cluster.png" alt-text="On demand DR cluster configuration":::
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
