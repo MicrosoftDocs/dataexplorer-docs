@@ -11,7 +11,7 @@ ms.date: 06/16/2020
 ---
 # .show query results cache
 
-Returns a table showing statistics related to the [query results cache](query-results-cache.md).
+Returns a table showing statistics related to the [query results cache](../query/query-results-cache.md).
 
 **Syntax**
 

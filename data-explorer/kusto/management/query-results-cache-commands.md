@@ -17,7 +17,7 @@ The query results cache is a cache dedicated for storing query results. For more
 
 Kusto provides two commands for cache management and observability:
 
-* [`Show cache`](show-query-results-cache.md):
+* [`Show cache`](show-query-results-cache-command.md):
    Use this command to show statistics exposed by the results cache.
 
 * [`Clear cache(rhs:string)`](clear-query-results-cache-command.md):

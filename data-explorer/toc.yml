@@ -1450,7 +1450,7 @@
     - name: Database Cursors
       href: ./kusto/management/databasecursor.md
     - name: Query results cache
-      href: ./kusto/management/query-results-cache-command.md
+      href: ./kusto/management/query-results-cache-commands.md
       items:
       - name: Show cache
         href: ./kusto/management/show-query-results-cache-command.md
