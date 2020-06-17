@@ -50,6 +50,13 @@ If a cached result satisfying the time constraints couldn't be found, or there i
 
 ## How the service indicates that the query results are being served from the cache
 
+When responding to a query, Kusto sends an additional [ExtendedProperties](../api/rest/response.md) response table that includes a `Key` column and a `Value` column.
+Cached query results will have an additional row appended to that table:
+* The row's `Key` column will contain the string `ServerCache`
+* The row's `Value` column will contain a property bag with two fields:
+   * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/netfx/request-properties.md#the-clientrequestid-x-ms-client-request-id-named-property).
+   * `OriginalStartedOn` - Specifies the original request's execution start time.
+
 ## Distribution
 
 The cache is not shared by cluster nodes. Every node has a dedicated cache in its' own private storage. If two identical queries land on different nodes, the query will be executed and cached on both nodes. This process can happen if [weak consistency](../concepts/queryconsistency.md) is used.
