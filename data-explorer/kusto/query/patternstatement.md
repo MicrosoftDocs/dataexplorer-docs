@@ -101,7 +101,7 @@ The pattern invocation syntax is similar to the scoped table reference syntax.
 * *PatternName* `(` *ArgValue1* [`,` *ArgValue2* ...] `).`*PathValue*
 * *PatternName* `(` *ArgValue1* [`,` *ArgValue2* ...] `).["`*PathValue*`"]`
 
-## Remarks
+## Notes
 
 **Scenario**
 
