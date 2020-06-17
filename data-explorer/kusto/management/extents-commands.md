@@ -312,7 +312,8 @@ Remove all extents in tables `Table1` and `Table2`, whose creation time was over
 
 Emulation mode: Show which extents would be removed by the command:
 
-> [!NOTE] Extent ID parameter isn't applicable for this command.
+> [!NOTE]
+> Extent ID parameter isn't applicable for this command.
 
 ```kusto
 .drop-pretend extents older 10 days from all tables
