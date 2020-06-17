@@ -325,6 +325,8 @@
         href: ./kusto/query/best-practices.md
       - name: Cross-database and cross-cluster queries
         href: ./kusto/query/cross-cluster-or-database-queries.md
+      - name: Query results cache
+        href: ./kusto/query/query-results-cache.md
     - name: Entities
       items:
       - name: Entity types
@@ -1447,6 +1449,13 @@
         href: ./kusto/management/data-export/continuous-data-export.md
     - name: Database Cursors
       href: ./kusto/management/databasecursor.md
+    - name: Query results cache
+      href: ./kusto/management/query-results-cache-commands.md
+      items:
+      - name: Show cache
+        href: ./kusto/management/show-query-results-cache-command.md
+      - name: Clear cache
+        href: ./kusto/management/clear-query-results-cache-command.md      
     - name: System Information
       href: ./kusto/management/systeminfo.md
       items:
