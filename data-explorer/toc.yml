@@ -1450,13 +1450,12 @@
     - name: Database Cursors
       href: ./kusto/management/databasecursor.md
     - name: Query results cache
-      href: ./kusto/management/query-results-cache.md
+      href: ./kusto/management/query-results-cache-command.md
       items:
       - name: Show cache
         href: ./kusto/management/show-query-results-cache-command.md
       - name: Clear cache
         href: ./kusto/management/clear-query-results-cache-command.md      
-    - name:   
     - name: System Information
       href: ./kusto/management/systeminfo.md
       items:

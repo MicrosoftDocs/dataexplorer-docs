@@ -1,5 +1,5 @@
 ---
-title: Show query results cache - Azure Data Explorer | Microsoft Docs
+title: Show query results cache - Azure Data Explorer
 description: This article describes .show query results cache in Azure Data Explorer.
 services: data-explorer
 author: amitof
@@ -27,9 +27,7 @@ Returns a table showing statistics related to the [query results cache](query-re
 |UsedBytes  |long |The cache used space.
 |Count  |String | The number of unique query results stored in the cache.
 
-
 **Limitations**
 
-1. The command's output currently only reflects the cache statistics gathered by the node which the request landed on.
-2. The command only shows "recent" history.
-
+* The command's output currently only reflects the cache statistics gathered by the node that the request landed on.
+* The command only shows "recent" history.
