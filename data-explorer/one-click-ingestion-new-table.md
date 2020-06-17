@@ -11,9 +11,9 @@ ms.date: 03/29/2020
 
 # Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer
 
-[One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.  
+[One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.  
 
-This document describes using the intuitive one-click wizard in a specific use case to ingest **CSV** data from a **container** into a **new table**, either as a one-time or a continuous ingestion process. You can use the same process with slight adaptations to cover a variety of different use cases.
+This document describes using the intuitive one-click wizard in a specific use case to ingest **CSV** data from a **container** into a **new table**. You can use the same process with slight adaptations to cover a variety of different use cases.
 
 For an overview of one-click ingestion and a list of prerequisites, see [One-click ingestion](ingest-data-one-click.md).
 For information about ingesting data into an existing table in Azure Data Explorer, see [One-click ingestion to an existing table](one-click-ingestion-existing-table.md)
@@ -103,6 +103,8 @@ Continuous ingestion enables you to create an event grid that listens for new fi
 1. Select **Continuous ingestion** to open the Azure portal. The data connection page opens with the event grid data connector opened and with source and target parameters already entered (source container, tables, and mappings).
 
 1. Select **Create** to create a data connection which will listen for any changes, updates, or new data in that container. 
+
+    :::image type="content" source="media/one-click-ingestion-new-table/event-hub-create.png" alt-text="Create Event Hub connection":::
 
 ## Next steps
 
