@@ -203,7 +203,7 @@ kind=blob
 partition by bin(pickup_datetime, 1d)
 dataformat=csv
 ( 
-    h@'http://storageaccount.blob.core.windows.net/container1;secretKey''
+    h@'https://storageaccount.blob.core.windows.net/container1;secretKey''
 )
 ```
 
