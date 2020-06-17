@@ -6,22 +6,20 @@ ms.author: orspodek
 ms.reviewer: rkarlin 
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 06/17/2020
 ---
-
 # Query data in Azure Data Lake using Azure Data Explorer
 
-Azure Data Lake Storage is a highly scalable and cost-effective data lake solution for big data analytics. It combines the power of a high-performance file system with massive scale and economy to help you speed your time to insight. Data Lake Storage Gen2 extends Azure Blob Storage capabilities and is optimized for analytics workloads.
+Azure Data Lake Storage is a highly scalable and cost-effective data lake solution for big data analytics. It combines the power of a high-performance file system with massive scale and economy to help you reduce your time to insight. Data Lake Storage Gen2 extends Azure Blob Storage capabilities and is optimized for analytics workloads.
  
 Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Storage (Gen1 and Gen2), providing fast, cached, and indexed access to data stored in external storage. You can analyze and query data without prior ingestion into Azure Data Explorer. You can also query across ingested and uningested external data simultaneously.  
 
 > [!TIP]
-> The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that is rarely queried. [Optimize your external data query performance](#optimize-your-query-performance) for best results.
+> The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried. [Optimize your external data query performance](#optimize-your-query-performance) for best results.
  
+## Create an external table
 
-## Creating an external table
-
-Let's say you have lots of CSV files containing historical info on products stored in a warehouse, and your purpose is to perform a quick analysis, and find 5 most popular products from last year. For the sake of example, let's assume the CSV files look like:
+Let's say you have lots of CSV files containing historical info on products stored in a warehouse, and you want to do a quick analysis to find the five most popular products from last year. In this example, the CSV files look like:
 
 | Timestamp | ProductId   | ProductDescription |
 |-----------|-------------|--------------------|
@@ -29,7 +27,7 @@ Let's say you have lots of CSV files containing historical info on products stor
 | 2019-01-01 11:30:55 | YDX1   | Yamaha DX1 Synthesizer  |
 | ...                 | ...    | ...                     |
 
-The files are stored in Azure Blob storage `mycompanystorage` under container named `archivedproducts`, partitioned by date:
+The files are stored in Azure Blob storage `mycompanystorage` under a container named `archivedproducts`, partitioned by date:
 
 ```
 https://mycompanystorage.blob.core.windows.net/archivedproducts/2019/01/01/part-00000-7e967c99-cf2b-4dbb-8c53-ce388389470d.csv.gz
@@ -40,8 +38,7 @@ https://mycompanystorage.blob.core.windows.net/archivedproducts/2019/01/02/part-
 ...
 ```
 
-In order to be able to run KQL query on these CSV files directly, use the `.create external table` command to define an external table in Azure Data Explorer:
-
+To run a KQL query on these CSV files directly, use the `.create external table` command to define an external table in Azure Data Explorer. For more information on external table create command options, see [external table commands](kusto/management/external-tables-azurestorage-azuredatalake.md).
 
 ```Kusto
 .create external table ArchivedProducts(Timestamp:datetime, ProductId:string, ProductDescription:string)   
@@ -53,12 +50,9 @@ dataformat=csv
 )    
 ```
 
-For more information on external table create command options, please refer to [external table commands](kusto/management/external-tables-azurestorage-azuredatalake.md).
-
-    
 The external table is now visible in the left pane of the Web UI:
 
-![external table in web UI](media/data-lake-query-data/external-tables-web-ui.png)
+:::image type="content" source="media/data-lake-query-data/external-tables-web-ui.png" alt-text="External table in web UI":::
  
 ### External table permissions
  
@@ -68,7 +62,7 @@ The external table is now visible in the left pane of the Web UI:
 
 ## Querying an external table
  
-Once external table is defined, `external_table()` function can be used to refer to it. The rest of the query is standard Kusto query language.
+Once an external table is defined, the `external_table()` function can be used to refer to it. The rest of the query is standard Kusto Query Language.
 
 ```Kusto
 external_table("ArchivedProducts")   
@@ -79,7 +73,7 @@ external_table("ArchivedProducts")
 
 ## Querying external and ingested data together
 
-You can query both external tables and ingested data tables within the same query. You [`join`](kusto/query/joinoperator.md) or [`union`](kusto/query/unionoperator.md) the external table with additional data from Azure Data Explorer, SQL servers, or other sources. Use a [`let( ) statement`](kusto/query/letstatement.md) to assign a shorthand name to an external table reference.
+You can query both external tables and ingested data tables within the same query. You can [`join`](kusto/query/joinoperator.md) or [`union`](kusto/query/unionoperator.md) the external table with additional data from Azure Data Explorer, SQL servers, or other sources. Use a [`let( ) statement`](kusto/query/letstatement.md) to assign a shorthand name to an external table reference.
 
 In the example below, *Products* is an ingested data table and *ArchivedProducts* is an external table that we've defined previously:
 
@@ -91,7 +85,7 @@ T1 | join T on ProductId | take 10
 
 ## Querying hierarchical data formats
 
-Azure Data Explorer allows querying hierarchical formats, such as `JSON`, `Parquet`, `Avro` and `ORC`. In order to map hierarchical data schema to an external table schema (in case it's different), use [external table mappings commands](kusto/management/external-tables-azurestorage-azuredatalake.md#create-external-table-mapping). For instance, let's assume you want to query JSON log files with the following format:
+Azure Data Explorer allows querying hierarchical formats, such as `JSON`, `Parquet`, `Avro`, and `ORC`. To map hierarchical data schema to an external table schema (if it's different), use [external table mappings commands](kusto/management/external-tables-azurestorage-azuredatalake.md#create-external-table-mapping). For instance, if you want to query JSON log files with the following format:
 
 ```JSON
 {
@@ -111,7 +105,7 @@ Azure Data Explorer allows querying hierarchical formats, such as `JSON`, `Parqu
 ...
 ```
 
-The exernal table definition looks like follows:
+The external table definition looks like this:
 
 ```kusto
 .create external table ApiCalls(Timestamp: datetime, TenantId: guid, MethodName: string)
@@ -121,28 +115,28 @@ dataformat=multijson
    h@'https://storageaccount.blob.core.windows.net/container1;StorageSecretKey'
 )
 ```
- 
-Let's define a JSON mapping that maps data fields to external table definition fields:
+
+Define a JSON mapping that maps data fields to external table definition fields:
 
 ```kusto
 .create external table ApiCalls json mapping 'MyMapping' '[{"Column":"Timestamp","Properties":{"Path":"$.time"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]'
 ```
 
-For more info on mapping syntax, please refer to [data mappings](kusto/management/mappings.md).
-
-Now, when you query the external table the mapping will be invoked and relevant data will be mapped to the external table columns:
+When you query the external table, the mapping will be invoked, and relevant data will be mapped to the external table columns:
 
 ```kusto
 external_table('ApiCalls') | take 10
 ```
 
+For more info on mapping syntax, see [data mappings](kusto/management/mappings.md).
+
 ## Query *TaxiRides* external table in the help cluster
 
-There's a test cluster called *help* for quick peek and trying out various Azure Data Explorer capabilities. The *help* cluster contains an external table definition for popular [New York City taxi dataset](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page) containing billions of taxi rides.
+Use the test cluster called *help* to try out different Azure Data Explorer capabilities. The *help* cluster contains an external table definition for a [New York City taxi dataset](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page) containing billions of taxi rides.
 
 ### Create external table *TaxiRides* 
 
-This section depicts the query used to create the *TaxiRides* external table in the *help* cluster. Since this table has already been created you can skip this section and perform [query *TaxiRides* external table data](#query-taxirides-external-table-data).
+This section shows the query used to create the *TaxiRides* external table in the *help* cluster. Since this table has already been created, you can skip this section and go directly to [query *TaxiRides* external table data](#query-taxirides-external-table-data).
 
 ```kusto
 .create external table TaxiRides
@@ -203,21 +197,21 @@ kind=blob
 partition by bin(pickup_datetime, 1d)
 dataformat=csv
 ( 
-    h@'https://storageaccount.blob.core.windows.net/container1;secretKey''
+    h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
 )
 ```
 
-You can find the created *TaxiRides* table by looking at the left pane of the Web UI:
+You can find the created **TaxiRides** table by looking at the left pane of the Web UI:
 
-![TaxiRides external table](media/data-lake-query-data/taxirides-external-table.png) 
+:::image type="content" source="media/data-lake-query-data/taxirides-external-table.png" alt-text="Taxi rides external table":::
 
 ### Query *TaxiRides* external table data 
 
-Sign in to [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples) to query the *TaxiRides* external table. 
+Sign in to [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples). 
 
 #### Query *TaxiRides* external table without partitioning
 
-[Run this query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3LSwqAMAwFwL3gHYKreh1xL7F9YrCtElP84OEV9zM4DZo5DsZjhGt6PqWTgL1p6+qhvaTEKjeI/FqyuZbGiwJf63QAi9vEL2UbAhtMEv6jyAH6+VhS9jOr1dULfUgAm2cAAAA=) on the external table *TaxiRides* to depict rides for each day of the week, across the entire data set. 
+[Run this query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3LSwqAMAwFwL3gHYKreh1xL7F9YrCtElP84OEV9zM4DZo5DsZjhGt6PqWTgL1p6+qhvaTEKjeI/FqyuZbGiwJf63QAi9vEL2UbAhtMEv6jyAH6+VhS9jOr1dULfUgAm2cAAAA=) on the external table *TaxiRides* to show rides for each day of the week, across the entire data set. 
 
 ```kusto
 external_table("TaxiRides")
@@ -225,13 +219,13 @@ external_table("TaxiRides")
 | render columnchart
 ```
 
-This query shows the busiest day of the week. Since the data isn't partitioned, this query may take a long time to return results (up to several minutes).
+This query shows the busiest day of the week. Since the data isn't partitioned, the query may take up to several minutes to return results.
 
-![render non-partitioned query](media/data-lake-query-data/taxirides-no-partition.png)
+:::image type="content" source="media/data-lake-query-data/taxirides-no-partition.png" alt-text="render non-partitioned query":::
 
 #### Query TaxiRides external table with partitioning 
 
-[Run this query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13NQQqDMBQE0L3gHT6ukkVF3fQepXv5SQYMNWmIP6ilh68WuinM6jHMYBPkyPMobGao5s6bv3mHpdF19aZ1QgYlbx8ljY4F4gPIQFYgkvqJGrr+eun6I5ralv58OP27t5QQOPsXiOyzRFGazE6WzSh7wtnIiA75uISdOEtdfQDLWmP+ogAAAA==) on the external table *TaxiRides* showing taxi cab types (yellow or green) used in January of 2017. 
+[Run this query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13NQQqDMBQE0L3gHT6ukkVF3fQepXv5SQYMNWmIP6ilh68WuinM6jHMYBPkyPMobGao5s6bv3mHpdF19aZ1QgYlbx8ljY4F4gPIQFYgkvqJGrr+eun6I5ralv58OP27t5QQOPsXiOyzRFGazE6WzSh7wtnIiA75uISdOEtdfQDLWmP+ogAAAA==) on the external table *TaxiRides*  to show taxi cab types (yellow or green) used in January of 2017. 
 
 ```kusto
 external_table("TaxiRides")
@@ -242,7 +236,7 @@ external_table("TaxiRides")
 
 This query uses partitioning, which optimizes query time and performance. The query filters on a partitioned column (pickup_datetime) and returns results in a few seconds.
 
-![render partitioned query](media/data-lake-query-data/taxirides-with-partition.png)
+:::image type="content" source="media/data-lake-query-data/taxirides-with-partition.png" alt-text="Render partitioned query":::
   
 You can write additional queries to run on the external table *TaxiRides* and learn more about the data. 
 
@@ -252,31 +246,31 @@ Optimize your query performance in the lake by using the following best practice
  
 ### Data format
  
-Use a columnar format for analytical queries since:
-* Only the columns relevant to a query can be read. 
-* Column encoding techniques can reduce data size significantly.  
-Azure Data Explorer supports Parquet and ORC columnar formats. Parquet format is suggested due to optimized implementation. 
+* Use a columnar format for analytical queries, for the following reasons:
+    * Only the columns relevant to a query can be read. 
+    * Column encoding techniques can reduce data size significantly.  
+* Azure Data Explorer supports Parquet and ORC columnar formats. Parquet format is suggested because of optimized implementation. 
  
 ### Azure region 
  
-Ascertain that external data resides in the same Azure region as your Azure Data Explorer cluster. This reduces cost and data fetch time.
+Check that external data is in the same Azure region as your Azure Data Explorer cluster. This setup reduces cost and data fetch time.
  
 ### File size
  
-Optimal file size is hundreds of Mb (up to 1 Gb) per file. Avoid many small files that require unneeded overhead, such as slower file enumeration process and limited use of columnar format. Note that the number of files should be greater than the number of CPU cores in your Azure Data Explorer cluster. 
+The optimal file size is hundreds of Mb (up to 1 GB) per file. Avoid many small files that require unneeded overhead, such as slower file enumeration process and limited use of columnar format. The number of files should be greater than the number of CPU cores in your Azure Data Explorer cluster. 
  
 ### Compression
  
-Use compression to reduce the amount of data being fetched from the remote storage. For Parquet format, use the internal Parquet compression mechanism that compresses column groups separately, thus allowing you to read them separately. To validate use of compression mechanism, check that the files are named as follows: "<filename>.gz.parquet" or "<filename>.snappy.parquet" as opposed to "<filename>.parquet.gz"). 
+Use compression to reduce the amount of data being fetched from the remote storage. For Parquet format, use the internal Parquet compression mechanism that compresses column groups separately, allowing you to read them separately. To validate use of compression mechanism, check that the files are named as follows: *&lt;filename&gt;.gz.parquet* or *&lt;filename&gt;.snappy.parquet* and not *&lt;filename&gt;.parquet.gz*. 
  
 ### Partitioning
  
-Organize your data using "folder" partitions that enables the query to skip irrelevant paths. When planning partitioning consider file size and common filters in your queries such as timestamp or tenant ID.
+Organize your data using "folder" partitions that enable the query to skip irrelevant paths. When planning partitioning, consider file size and common filters in your queries such as timestamp or tenant ID.
  
 ### VM size
  
-Select VM SKUs with more cores and higher network throughput (memory is less important). For more information see [Select the correct VM SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md).
+Select VM SKUs with more cores and higher network throughput (memory is less important). For more information, see [Select the correct VM SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md).
 
 ## Next steps
 
-Query your data in the Azure Data Lake using Azure Data Explorer. Learn to [write queries](write-queries.md) and derive additional insights from your data.
+* Query your data in the Azure Data Lake using Azure Data Explorer. Learn to [write queries](write-queries.md) and derive additional insights from your data.
