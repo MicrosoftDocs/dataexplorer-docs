@@ -25,7 +25,7 @@ Returns a table showing statistics related to the [query results cache](../query
 |Misses  |long |The number of cache misses.
 |CacheCapacityInBytes |long |The cache capacity in bytes.
 |UsedBytes  |long |The cache used space.
-|Count  |String | The number of unique query results stored in the cache.
+|Count  |long | The number of unique query results stored in the cache.
 
 **Limitations**
 
