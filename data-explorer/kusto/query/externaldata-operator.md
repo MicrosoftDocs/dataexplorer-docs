@@ -46,7 +46,7 @@ indicated by the storage connection string.
 
 The following example shows how to find all records in a table whose
 `UserID` column falls into a known set of IDs, held (one per line) in an external blob.
-Because the set is indirectly referenced by the query, it can be very large.
+Because the set is indirectly referenced by the query, it can be large.
 
 ```kusto
 Users
