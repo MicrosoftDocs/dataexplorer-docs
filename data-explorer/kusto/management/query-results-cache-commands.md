@@ -13,7 +13,7 @@ ms.date: 06/16/2020
 
 The query results cache is a cache dedicated for storing query results. For more information, see [Query results cache](../query/query-results-cache.md).
 
-**Query results cache functions**
+**Query results cache commands**
 
 Kusto provides two commands for cache management and observability:
 
