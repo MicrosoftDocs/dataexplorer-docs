@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
 ---
-# !between operator
+# not-between operator (!between)
 
 Matches the input that is outside the inclusive range.
 
