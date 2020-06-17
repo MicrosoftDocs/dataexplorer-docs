@@ -41,7 +41,7 @@ In this article, you learn how to set an [Azure Event Grid](/azure/event-grid/ov
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
-    | Name | *test-grid-connection* | The name of the event grid that you want to create.|
+    | Name | *test-grid-connection* | The name of the event grid subscription that you want to create.|
     | Event Schema | *Event Grid schema* | The schema that should be used for the event grid. |
     | Topic Type | *Storage account* | The type of event grid topic. |
     | Topic Resource | *gridteststorage* | The name of your storage account. |
@@ -178,7 +178,7 @@ These properties can be set:
 
 > [!NOTE]
 > Azure Data Explorer won't delete the blobs post ingestion.
-> Retain the blobs for thrre to five days.
+> Retain the blobs for three to five days.
 > Use [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion. 
 
 ## Review the data flow
