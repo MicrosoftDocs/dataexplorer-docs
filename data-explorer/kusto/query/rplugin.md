@@ -1,5 +1,5 @@
 ---
-title: R plugin (Preview) - Azure Data Explorer | Microsoft Docs
+title: R plugin (Preview) - Azure Data Explorer
 description: This article describes R plugin (Preview) in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,12 +11,13 @@ ms.date: 04/01/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-# R plugin (Preview)
+# R plugin (preview)
 
 ::: zone pivot="azuredataexplorer"
 
-The R plugin runs a user-defined-function (UDF) using an R script. The R script gets tabular data as its input, and is expected to produce tabular output.
-The plugin's runtime is hosted in a [sandbox](../concepts/sandboxes.md), an isolated and secure environment running on the cluster's nodes.
+The R plugin runs a user-defined-function (UDF) using an R script. 
+The script gets tabular data as its input, and produces tabular output.
+The plugin's runtime is hosted in a [sandbox](../concepts/sandboxes.md) on the cluster's nodes. The sandbox provides an isolated and secure environment.
 
 ### Syntax
 
@@ -26,16 +27,14 @@ The plugin's runtime is hosted in a [sandbox](../concepts/sandboxes.md), an isol
 ### Arguments
 
 * *output_schema*: A `type` literal that defines the output schema of the tabular data, returned by the R code.
-    * The format is: `typeof(`*ColumnName*`:` *ColumnType* [, ...]`)`, for example: `typeof(col1:string, col2:long)`.
+    * The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`, for example: `typeof(col1:string, col2:long)`.
     * To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`.
 * *script*: A `string` literal that is the valid R script to be executed.
-* *script_parameters*: An optional `dynamic` literal which is a property bag of name/value pairs to be passed to the
-   R script as the reserved `kargs` dictionary (see [Reserved R variables](#reserved-r-variables)).
+* *script_parameters*: An optional `dynamic` literal that is a property bag of name and value pairs to be passed to the R script as the reserved `kargs` dictionary. For more information, see [Reserved R variables](#reserved-r-variables).
 * *hint.distribution*: An optional hint for the plugin's execution to be distributed across multiple cluster nodes.
    Default: `single`.
     * `single`: A single instance of the script will run over the entire query data.
     * `per_node`: If the query before the R block is distributed, an instance of the script will run on each node over the data that it contains.
-
 
 ### Reserved R variables
 
@@ -43,24 +42,22 @@ The following variables are reserved for interaction between Kusto Query Languag
 
 * `df`: The input tabular data (the values of `T` above), as an R DataFrame.
 * `kargs`: The value of the *script_parameters* argument, as an R dictionary.
-* `result`: An R DataFrame created by the R script, whose value becomes the tabular data that gets sent to
-            any Kusto query operator that follows the plugin.
+* `result`: An R DataFrame created by the R script. The value becomes the tabular data that gets sent to any Kusto query operator that follows the plugin.
 
 ### Onboarding
 
-
 * The plugin is disabled by default.
-    * *Interested in enabling the plugin on your cluster?*
-        
-        * In the Azure portal, within your Azure Data Explorer cluster, select **New support request** in the left-hand menu.
-        * Disabling the plugin requires opening a support ticket as well.
 
-### Notes and Limitations
+> [!TIP]
+>    *Interested in enabling the plugin on your cluster?*
+>    * *In the Azure portal, within your Azure Data Explorer cluster, select **New support request** in the left-hand menu.*
+>
+>  *To disable the plugin you must open a support ticket as well.*
+
+### Notes and limitations
 
 * The R sandbox image is based on *R 3.4.4 for Windows*, and includes packages from [Anaconda's R Essentials bundle](https://docs.anaconda.com/anaconda/packages/r-language-pkg-docs/).
-* The R sandbox limits accessing the network, therefore the R code can't dynamically install additional packages that are
-  not included in the image.Open a **New support request** in the Azure portal  if you need specific packages.
-
+* The R sandbox limits access to the network. The R code can't dynamically install additional packages that aren't included in the image. If you need specific packages, open a **New support request** in the Azure portal.
 
 ### Examples
 
@@ -86,8 +83,8 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 ### Performance tips
 
 * Reduce the plugin's input data set to the minimum amount required (columns/rows).
-    * Use filters on the source data set, when possible, using the Kusto Query Language.
-    * To perform a calculation on a subset of the source columns, project only those column before invoking the plugin.
+    * Use filters on the source data set, when possible. Use the Kusto Query Language.
+    * To make a calculation on a subset of the source columns, project only those columns before invoking the plugin.
 * Use `hint.distribution = per_node` whenever the logic in your script is distributable.
     * You can also use the [partition operator](partitionoperator.md) for partitioning the input data set.
 * Whenever possible, use the Kusto Query Language to implement the logic of your R script.
@@ -108,14 +105,15 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 
 ### Usage tips
 
-* To avoid conflicts between Kusto string delimiters and R's ones, we recommend using single quote characters (`'`) for Kusto string 
-  literals in Kusto queries, and double quote characters (`"`) for R string literals in R scripts.
-* Use the [externaldata operator](externaldata-operator.md) to obtain the content of
-  a script that you've stored in an external location, such as Azure blob storage, a public GitHub repository, etc.
+* To avoid conflicts between Kusto string delimiters and R string delimiters:  
+    * Use single quote characters (`'`) for Kusto string literals in Kusto queries
+    * Use double quote characters (`"`) for R string literals in R scripts
+* Use the [external data operator](externaldata-operator.md) to obtain the content of
+  a script that you've stored in an external location, such as Azure blob storage, a public GitHub repository, and so on.
   
   For example:
 
-    ```kusto    
+    ```kusto
     let script = 
         externaldata(script:string)
         [h'https://kustoscriptsamples.blob.core.windows.net/samples/R/sample_script.r']
