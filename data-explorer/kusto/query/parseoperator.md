@@ -4,14 +4,15 @@ description: This article describes parse operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
 # parse operator
 
-Evaluates a string expression and parses its value into one or more calculated columns. For unsuccessfully parsed strings, calculated columns will have nulls.
+Evaluates a string expression and parses its value into one or more calculated columns. For unsuccessfully parsed strings, calculated columns will have nulls. 
+
 See [parse-where](parsewhereoperator.md) operator which filters out unsuccessfully parsed strings.
 
 ```kusto
