@@ -259,14 +259,15 @@ internal static string PrepareIngestionMessage(string db, string table, string d
     message.Add("DatabaseName", db);
     message.Add("TableName", table);
     message.Add("RetainBlobOnSuccess", true);   // Do not delete the blob on success
-    message.Add("Format", "json");              // Data is in JSON format
     message.Add("FlushImmediately", true);      // Do not aggregate
     message.Add("ReportLevel", 2);              // Report failures and successes (might incur perf overhead)
     message.Add("ReportMethod", 0);             // Failures are reported to an Azure Queue
 
     message.Add("AdditionalProperties", new JObject(
                                             new JProperty("authorizationContext", identityToken),
-                                            new JProperty("jsonMappingReference", mappingRef)));
+                                            new JProperty("jsonMappingReference", mappingRef),
+                                            // Data is in JSON format
+                                            new JProperty("format", "json")));
     return message.ToString();
 }
 ```
