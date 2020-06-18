@@ -21,7 +21,7 @@ ms.date: 06/03/2019
 
 Azure Data Explorer is a fast and scalable data exploration service for log and telemetry data. It offers continuous ingestion (data loading) from blobs written to blob containers.
 
-In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection which set an [Azure Event Grid](/azure/event-grid/overview) subscription that route events from your storage account to Azure Data Explorer via an Azure Event Hub. Then you'll see an example of the data flow throughout the system.
+In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that set an [Azure Event Grid](/azure/event-grid/overview) subscription that route events from your storage account to Azure Data Explorer via an Azure Event Hub. Then you'll see an example of the data flow throughout the system.
 
 ## Prerequisites
 
@@ -84,8 +84,8 @@ Now connect to the storage account to Azure Data Explorer, so that data flowing 
         * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*. 
         * To define a filter on a blob prefix (or folder in Azure Data Lake Gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*. 
     * **Suffix** field is the *literal* suffix of the blob. No wildcards are allowed.
-    * **Case Sensitive** field indicates weather the prefix and suffix filters are case sensitive
-    * See [Blob storage events](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview#filtering-events) for more details about filtering events.
+    * **Case Sensitive** field indicates whether the prefix and suffix filters are case sensitive
+    * For more information about filtering events see [Blob storage events](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview#filtering-events).
 
 1. Select **Next: Ingest properties**.
 
@@ -104,13 +104,13 @@ Now connect to the storage account to Azure Data Explorer, so that data flowing 
 
 1. Review the resources that auto created for you and Select **Create**.
 
- ![Event grid connection](media/ingest-data-event-grid/create-event-grid-data-connection-review-and-create.png)
+   ![Event grid connection](media/ingest-data-event-grid/create-event-grid-data-connection-review-and-create.png)
 
 1. Wait until the deployment is completed.
 
 ## Generate sample data
 
-Now that Azure Data Explorer and the storage account are connected, you can create sample data and upload it to the blob storage.
+Now that Azure Data Explorer and the storage account are connected, you can create sample data and upload it to the storage.
 
 We'll work with a small shell script that issues a few basic Azure CLI commands to interact with Azure Storage resources. This script creates a new container in your storage account, uploads an existing file (as a blob) to that container, and then lists the blobs in the container. You can use [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) to execute the script directly in the portal.
 
@@ -155,7 +155,7 @@ These properties can be set:
 
 |**Property** | **Property description**|
 |---|---|
-| `rawSizeBytes` | Size of the raw (uncompressed) data. For Avro/ORC/Parquet, this is the size before format-specific compression is applied.|
+| `rawSizeBytes` | Size of the raw (uncompressed) data. For Avro/ORC/Parquet, that is the size before format-specific compression is applied.|
 | `kustoTable` |  Name of the existing target table. Overrides the `Table` set on the `Data Connection` blade. |
 | `kustoDataFormat` |  Data format. Overrides the `Data format` set on the `Data Connection` blade. |
 | `kustoIngestionMappingReference` |  Name of the existing ingestion mapping to be used. Overrides the `Column mapping` set on the `Data Connection` blade.|
@@ -200,19 +200,19 @@ You'll be able to alter the policy at a later time if needed. In this article yo
 
 If you don't plan to use your event grid again, clean up the Event Grid Subscription, Event Hub namespace and Event Hub that were auto created for you, to avoid incurring costs.
 
-1. In the Azure portal, go to the left menu and choose **All resources**.
+1. In Azure portal, go to the left menu and choose **All resources**.
 
-1. Search your Event Hub Namespace and choose Delete to delete it.
+1. Search for your Event Hub Namespace and choose **Delete** to delete it.
 
-1. In the Delete Resources form press *yes* and choose **Delete** to delete the Event Hub Namespace and Event Hub resources.
+1. In the Delete Resources form, press *yes* and choose **Delete** to delete the Event Hub Namespace and Event Hub resources.
 
    ![Delete ](media/ingest-data-event-grid/delete-eh-namespace.png)
 
-1. Go to your storage account. In the left menu choose **Events**. Press your Event Grid Subscription and choose **Delete** to delete it:
+1. Go to your storage account. In the left menu, choose **Events**. Press your Event Grid Subscription and choose **Delete** to delete it:
 
    ![Delete ](media/ingest-data-event-grid/delete-event-grid-subscription.png)
 
-1. To delete your event grid data connection go to your Azure Data Explorer cluster. On the left menu choose **Databases** > **TestDatabase** > **Data ingestion**. Choose your data connection *test-grid-connection* and press **Delete** to delete it.
+1. To delete your event grid data connection, go to your Azure Data Explorer cluster. On the left menu, choose **Databases** > **TestDatabase** > **Data ingestion**. Choose your data connection *test-grid-connection* and press **Delete** to delete it.
 
 
 ## Next steps

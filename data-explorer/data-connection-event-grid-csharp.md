@@ -124,7 +124,7 @@ var blobs = container.ListBlobs();
 > [!NOTE]
 > Azure Data Explorer won't delete the blobs post ingestion. Retain the blobs for three to five days by using [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion.
 
-When working with Data Lake Storage Gen2 it is also possible to use [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) package to upload files to the storage. The following script creates a new filesystem in your Data Lake Storage and upload a local file with metadata to the filesystem.
+When working with Data Lake Storage Gen2, it is also possible to use [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) package to upload files to the storage. The following script creates a new filesystem in your Data Lake Storage and uploads a local file with metadata to the filesystem.
 
 ```csharp
 var accountName = <storage_account_name>;
@@ -157,6 +157,6 @@ dataLakeFileClient.Flush(position: fileSize, close: true);
 ```
 
 > [!NOTE]
-> When using [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/), you should call flush with a "close" parameter set to "true" so the service raises a file change notification with a property indicating that this is the final update (the file stream has been closed). For more information see [here](https://docs.microsoft.com/en-us/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush?view=azure-dotnet).
+> When using [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/), you should call flush with a "close" parameter set to "true" so the service raises a file change notification with a property indicating that this is the final update (the file stream has been closed). For more information about flushing see [Azure Data Lake Flush method](https://docs.microsoft.com/en-us/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush?view=azure-dotnet).
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]
