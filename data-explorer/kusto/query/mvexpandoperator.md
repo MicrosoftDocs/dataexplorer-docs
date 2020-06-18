@@ -92,9 +92,9 @@ Expansion of an array with `with_itemindex`:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-range x from 1 to 4 step 1 
-| summarize x = make_list(x) 
-| mv-expand with_itemindex=Index  x 
+range x from 1 to 4 step 1
+| summarize x = make_list(x)
+| mv-expand with_itemindex=Index x
 ```
 
 |x|Index|
