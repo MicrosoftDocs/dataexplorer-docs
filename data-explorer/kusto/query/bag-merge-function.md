@@ -2,42 +2,40 @@
 title: bag_merge() - Azure Data Explorer 
 description: This article describes bag_merge() in Azure Data Explorer.
 services: data-explorer
-author: elgevork
-ms.author: elgevork
-ms.reviewer: 
+author: orspod
+ms.author: orspod
+ms.reviewer: elgevork
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/14/2020
+ms.date: 06/18/2020
 ---
 # bag_merge()
 
-Merges input dynamic property-bag objects into a dynamic property-bag object.
+Merges `dynamic` property-bags into a `dynamic` property-bag with all properties merged.
 
 **Syntax**
 
-`bag_merge(`*dynamic object*`,`*dynamic object*`)`
+`bag_merge(`*bag1*`, `*bag2*`[`,` *bag3*, ...])`
 
 **Arguments**
 
-* Input dynamic objects separated by commas. Function supports 2 to 64 input dynamic objects.
+* *bag1...bagN*: Input `dynami`c property-bags. The function accepts from 2 to 64 arguments.
 
 **Returns**
 
-Returns a `dynamic` property-bag. Results from merging all of the input property-bag objects.
-If a key appears in more than one input object, an arbitrary value (out of the possible values for this key) will be chosen.
+Returns a `dynamic` property-bag. Results from merging all of the input property-bag objects. If a key appears in more than one input object, an arbitrary value (out of the possible values for this key) will be chosen.
 
 **Example**
 
 Expression:
 
-`print result = bag_merge(dynamic({ 'A1':12, 'B1':2, 'C1':3}), dynamic({ 'A2':81, 'B2':82, 'A1':1}))`
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+print result = bag_merge(
+   dynamic({'A1':12, 'B1':2, 'C1':3}),
+   dynamic({'A2':81, 'B2':82, 'A1':1}))
+```
 
-Evaluates to:
-
-`{
-  "A1": 12,
-  "B1": 2,
-  "C1": 3,
-  "A2": 81,
-  "B2": 82
-}`
+|result|
+|---|
+|{<br>  "A1": 12,<br>  "B1": 2,<br>  "C1": 3,<br>  "A2": 81,<br>  "B2": 82<br>}|
