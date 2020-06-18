@@ -324,7 +324,7 @@
       href: ./kusto/query/cross-cluster-or-database-queries.md
     - name: Query results cache
       href: ./kusto/query/query-results-cache.md
-  - name: Entities
+    - name: Entities
       items:
       - name: Entity types
         href: ./kusto/query/schema-entities/index.md
