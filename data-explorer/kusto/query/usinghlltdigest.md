@@ -11,7 +11,7 @@ ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-# Using
+# Using hll() and tdigest()
 
 Suppose you want to calculate the count of distinct users every day over the last seven days. You can run `summarize dcount(user)` once a day with a span filtered to the last seven days. This method is inefficient, because each time the calculation is run, there's a six-day overlap with the previous calculation. You can also calculate an aggregate for each day, and then combine these aggregates. This method requires you to "remember" the last six results, but it's much more efficient.
 
