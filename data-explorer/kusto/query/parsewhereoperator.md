@@ -4,14 +4,15 @@ description: This article describes the parse-where operator in Azure Data Explo
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/12/2020
 ---
 # parse-where operator
 
-Evaluates a string expression, and parses its value into one or more calculated columns. The result is only the successfully parsed strings.
+Evaluates a string expression, and parses its value into one or more calculated columns. The result is only the successfully parsed strings. 
+
 See [parse operator](parseoperator.md), which produces nulls for unsuccessfully parsed strings.
 
 ```kusto
