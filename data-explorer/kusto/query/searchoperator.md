@@ -79,7 +79,7 @@ and views of the database in scope.
   | 5|`search "err*"`                        |`where * hasprefix "err"`              ||
   | 6|`search "*err"`                        |`where * hassuffix "err"`              ||
   | 7|`search "*err*"`                       |`where * contains "err"`               ||
-  | 8|`search "Lab*PC"`                      |`where * matches regex @"\bLab\w*PC\b"`||
+  | 8|`search "Lab*PC"`                      |`where * matches regex @"\bLab.*PC\b"`||
   | 9|`search *`                             |`where 0==0`                           ||
   |10|`search col matches regex "..."`       |`where col matches regex "..."`        ||
   |11|`search kind=case_sensitive`           |                                       |All string comparisons are case-sensitive|
