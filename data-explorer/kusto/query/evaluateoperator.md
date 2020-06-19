@@ -4,7 +4,7 @@ description: This article describes evaluate plugin operator in Azure Data Explo
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/30/2019
@@ -30,18 +30,22 @@ Where:
 * *PluginName* is the mandatory name of the plugin being invoked.
 * *PluginArg1*, ... are the optional arguments to the plugin.
 * *evaluateParameters*: Zero or more (space-separated) parameters in the form of
-  *Name* `=` *Value* that control the behavior of the evaluate operation and execution plan. The following parameters are supported: 
+  *Name* `=` *Value* that control the behavior of the evaluate operation and execution plan. Each plugin may decide differently how to handle each parameter. Please refer each plugin's documentation for specific behavior.  
+
+The following parameters are supported: 
 
   |Name                |Values                           |Description                                |
   |--------------------|---------------------------------|-------------------------------------------|
   |`hint.distribution` |`single`, `per_node`, `per_shard`| [Distribution hints](#distribution-hints) |
+  |`hint.pass_filters` |`true`, `false`| Allow `evaluate` operator to passthrough any matching filters before the plugin. Filter is considered as 'matched' if it refers to a column existing before the `evaluate` operator. Default: `false` |
+  |`hint.pass_filters_column` |*column_name*| Allow plugin operator to passthrough filters referring to *column_name* before the plugin. Parameter can be used multiple times with different column names. |
 
 **Notes**
 
 * Syntactically, `evaluate` behaves similarly
 to the [invoke operator](./invokeoperator.md), which invokes tabular functions.
 * Plugins provided through the evaluate operator aren't bound by the regular rules of query execution or argument evaluation.
-Specific plugins may have specific restrictions. For example, plugins whose output schema depends on the data (for example, [bag_unpack plugin](./bag-unpackplugin.md)) can't be used
+* Specific plugins may have specific restrictions. For example, plugins whose output schema depends on the data (for example, [bag_unpack plugin](./bag-unpackplugin.md) and [pivot plugin](./pivotplugin.md)) can't be used
 when performing cross-cluster queries.
 
 ## Distribution hints
