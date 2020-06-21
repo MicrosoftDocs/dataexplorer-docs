@@ -162,7 +162,7 @@ MyTable | ...
 In various query operations, Kusto needs to "gather" string values and buffer
 them internally before it starts to produce results. These accumulated string
 sets are limited in size and in how many items they can hold. Additionally, each
-individual string mustn't exceed a certain limit.
+individual string shouldn't exceed a certain limit.
 Exceeding one of these limits will result in one of the following errors:
 
 ```
