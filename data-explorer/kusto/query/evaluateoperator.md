@@ -48,7 +48,7 @@ to the [invoke operator](./invokeoperator.md), which invokes tabular functions.
 * Specific plugins may have specific restrictions. For example, plugins whose output schema depends on the data (for example, [bag_unpack plugin](./bag-unpackplugin.md) and [pivot plugin](./pivotplugin.md)) can't be used
 when performing cross-cluster queries.
 
-## Distribution hints
+**Distribution hints**
 
 Distribution hints specify how the plugin execution will be distributed across multiple cluster nodes. Each plugin may implement a different support for the distribution. The plugin's documentation specifies the distribution options supported by the plugin.
 
