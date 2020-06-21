@@ -49,8 +49,7 @@ There are a number of strategies for dealing with this error.
    the initial, failing, query is too "wide". For example, the query doesn't
    project away data columns that aren't needed.
 * Reduce the result set size by shifting post-query processing, such as aggregations, into the query itself. The strategy is useful in scenarios where the output of the query is fed to another processing system, that then does additional aggregations.
-* Switch from queries to using [data export](../management/data-export/index.md).
-  This query is appropriate when you want to export large sets of data from the service.
+* Switch from queries to using [data export](../management/data-export/index.md) when you want to export large sets of data from the service.
 * Instruct the service to suppress this query limit.
 
 Methods for reducing the result set size produced by the query include:
