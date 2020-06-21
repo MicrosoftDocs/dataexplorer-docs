@@ -20,7 +20,6 @@ in the form of default query limits.
 ## Limit on query concurrency
 
 **Query concurrency**  is a limit that a cluster imposes on a number of queries running at the same time.
-The default value of the query concurrency limit depends on the SKU cluster it's running on, and is calculated as: `Cores-Per-Node x 10`. For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default Query Concurrency limit is `16 cores x10 = 160`.
 The default value can be changed by creating a support ticket. In the future, this control will also be exposed via a control command.
 
 ## Limit on result set size (result truncation)
@@ -44,10 +43,7 @@ The Kusto DataEngine has failed to execute a query: 'Query result set has exceed
 
 There are a number of strategies for dealing with this error.
 
-* Reduce the result set size by modifying the query to not
-   return uninteresting data. This strategy is useful when
-   the initial, failing, query is too "wide". For example, the query doesn't
-   project away data columns that aren't needed.
+* Reduce the result set size by modifying the query to only return interesting data. This strategy is useful when the initial failing query is too "wide". For example, the query doesn't project away data columns that aren't needed.
 * Reduce the result set size by shifting post-query processing, such as aggregations, into the query itself. The strategy is useful in scenarios where the output of the query is fed to another processing system, that then does additional aggregations.
 * Switch from queries to using [data export](../management/data-export/index.md) when you want to export large sets of data from the service.
 * Instruct the service to suppress this query limit.
@@ -85,10 +81,15 @@ MyTable | where User=="Ploni"
 The Kusto client libraries currently assume the existence of this
 limit. While you can increase the limit without bounds, eventually
 you'll reach client limits that are currently not configurable.
+
 One possible workaround, is to program directly against the REST API
 contract, and implement a streaming parser for the Kusto query
 results. Let the Kusto team know, if you run into this issue,
 so we can appropriately prioritize a streaming client.
+
+Kusto provides a number of client libraries that can handle "infinitely large" results by streaming them to the caller. 
+Use one of these libraries, and configure it to streaming mode. 
+For example, use the .NET Framework client (Microsoft.Azure.Kusto.Data) and either set the streaming property of the connection string to *true*, or use the *ExecuteQueryV2Async()* call that always streams results.
 
 Result truncation is applied by default, not just to the
 result stream returned to the client. It's also applied by default to
@@ -136,7 +137,7 @@ in which case, consider aggregating using Kusto.
 Let the Kusto team know if you have a business scenario that
 can't be met by either of these suggested solutions.  
 
-In many cases, exceeding this limit can be avoided by sampling the data set to 10%. The two queries below show how to do the sampling. The first, is a statistical sampling, that uses a random number generator). The second, is deterministic sampling, done by hashing some column from the data set, usually some ID.
+In many cases, exceeding this limit can be avoided by sampling the data set. The two queries below show how to do the sampling. The first, is a statistical sampling, that uses a random number generator). The second, is deterministic sampling, done by hashing some column from the data set, usually some ID.
 
 ```kusto
 T | where rand() < 0.1 | ...
@@ -194,12 +195,12 @@ control commands. This value can be increased if needed (capped at one hour).
   **Connections** &gt; **Query Server Timeout**.
 * Programmatically, set the `servertimeout` client request property, a value of type `System.TimeSpan`, up to an hour.
 
-Notes about timeouts:
+**Notes about timeouts**
 
 * On the client side, the timeout is applied from the request being created
    until the time that the response starts arriving to the client. The time it
    takes to read the payload back at the client isn't treated as part of the
-   timeout, because it depends on how quickly the caller pulls the data from
+   timeout. It depends on how quickly the caller pulls the data from
    the stream.
 * Also on the client side, the actual timeout value used is slightly higher
    than the server timeout value requested by the user. This difference, is to allow for network latencies.
@@ -219,16 +220,16 @@ At other times, you may want to limit the CPU resources used for a particular
 query. If you run a "background job", for example, the system might tolerate higher
 latencies to give concurrent ad-hoc queries high priority.
 
-Kusto supports specifying two [client request properties](../api/netfx/request-properties.md) when running a query. The properties are  **query_fanout_threads_percent** and **query_fanout_nodes_percent**.
+Kusto supports specifying two [client request properties](../api/netfx/request-properties.md) when running a query. The properties are  *query_fanout_threads_percent* and *query_fanout_nodes_percent*.
 Both properties are integers that default to the maximum value (100), but may be reduced for a specific query to some other value. 
 
-The first, controls the fanout factor for thread use. When it's 100%, the cluster will assign all CPUs on each node. For example, 16 CPUs on a cluster deployed on Azure D14 nodes. When it's 50%, then half of the CPUs will be used, and so on. The numbers are rounded up to a whole CPU, so it's safe to set it to 0. The second, controls how many of the query nodes in the cluster to use per subquery distribution operation, and it functions in a similar manner.
+The first, *query_fanout_threads_percent*, controls the fanout factor for thread use. When it's 100%, the cluster will assign all CPUs on each node. For example, 16 CPUs on a cluster deployed on Azure D14 nodes. When it's 50%, then half of the CPUs will be used, and so on. The numbers are rounded up to a whole CPU, so it's safe to set it to 0. The second, *query_fanout_nodes_percent*, controls how many of the query nodes in the cluster to use, per subquery distribution operation, and it functions in a similar manner.
 
 ## Limit on query complexity
 
 During query execution, the query text is transformed into a tree of relational operators representing the query.
 If the tree depth exceeds an internal threshold of several thousand levels, the query is considered too complex for processing, and will fail with an error code. The failure indicates that the relational operators tree exceeds its limits.
-In most cases, exceeding the limits is caused by a query that contains a long list of binary operators that are chained together. For example:
+Exceeding the limits is caused by a query that contains a long list of binary operators that are chained together. For example:
 
 ```kusto
 T 
