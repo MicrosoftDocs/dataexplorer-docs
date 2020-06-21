@@ -93,7 +93,7 @@ so we can appropriately prioritize a streaming client.
 
 Result truncation is applied by default, not just to the
 result stream returned to the client. It's also applied by default to
-any subquery that one Kusto cluster issues to another Kusto cluster
+any subquery that one cluster issues to another cluster
 in a cross-cluster query, with similar effects.
 
 ## Limit on memory per iterator
