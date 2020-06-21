@@ -310,23 +310,20 @@
       href: troubleshoot-database-table.md
 - name: Reference
   items:
-  - name: Query Language
-    href: ./kusto/query/index.md
+  - name: Kusto query
     items:
     - name: Overview
-      items:
-      - name: Kusto query
-        href: ./kusto/query/index.md
-      - name: Tutorial
-        href: ./kusto/query/tutorial.md
-      - name: Samples
-        href: ./kusto/query/samples.md
-      - name: Best practices
-        href: ./kusto/query/best-practices.md
-      - name: Cross-database and cross-cluster queries
-        href: ./kusto/query/cross-cluster-or-database-queries.md
-      - name: Query results cache
-        href: ./kusto/query/query-results-cache.md
+      href: ./kusto/query/index.md
+    - name: Tutorial
+      href: ./kusto/query/tutorial.md
+    - name: Samples
+      href: ./kusto/query/samples.md
+    - name: Best practices
+      href: ./kusto/query/best-practices.md
+    - name: Cross-database and cross-cluster queries
+      href: ./kusto/query/cross-cluster-or-database-queries.md
+    - name: Query results cache
+      href: ./kusto/query/query-results-cache.md
     - name: Entities
       items:
       - name: Entity types
@@ -347,7 +344,7 @@
         href: ./kusto/query/schema-entities/externaltables.md
     - name: Data types
       items:
-      - name: Scalar data types overview
+      - name: Scalar data types
         href: ./kusto/query/scalar-data-types/index.md
       - name: bool
         href: ./kusto/query/scalar-data-types/bool.md
@@ -372,7 +369,7 @@
       - name: Null values
         href: ./kusto/query/scalar-data-types/null-values.md
       - name: Unsupported scalar data types
-        href: /kusto/query/scalar-data-types/unsupported-data-types.md
+        href: ./kusto/query/scalar-data-types/unsupported-data-types.md
     - name: Functions
       items:
       - name: Function types
@@ -401,7 +398,7 @@
         href: ./kusto/query/batches.md
     - name: Tabular operators
       items:
-      - name: tabular data
+      - name: Query operators
         href: ./kusto/query/queries.md
       - name: as operator
         href: ./kusto/query/asoperator.md
@@ -415,7 +412,7 @@
         href: ./kusto/query/distinctoperator.md
       - name: evaluate operator
         items:
-        - name: evaluate plugin operator
+        - name: evaluate operator plugins
           href: ./kusto/query/evaluateoperator.md
         - name: autocluster
           href: ./kusto/query/autoclusterplugin.md
@@ -465,9 +462,9 @@
         href: ./kusto/query/invokeoperator.md
       - name: join operator
         items:
-        - name: join operator overview
+        - name: join operator
           href: ./kusto/query/joinoperator.md
-        - name: shuffle
+        - name: Shuffle query
           href: ./kusto/query/shufflequery.md
         - name: Cross-cluster join
           href: ./kusto/query/joincrosscluster.md

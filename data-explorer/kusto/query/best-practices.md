@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/03/2020
 ---
-# Query best practices 
+# Best practices 
 
 ## General
 
