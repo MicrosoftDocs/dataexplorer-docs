@@ -1,5 +1,5 @@
 ---
-title: Row Level Security (Preview) - Azure Data Explorer | Microsoft Docs
+title: Row Level Security (Preview) - Azure Data Explorer
 description: This article describes Row Level Security (Preview) in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -13,19 +13,19 @@ ms.date: 03/25/2020
 
 Use group membership or execution context to control access to rows in a database table.
 
-Row Level Security (RLS) simplifies the design and coding of security in your application by letting you apply restrictions on data row access. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company.
+Row Level Security (RLS) simplifies the design and coding of security. It lets you apply restrictions on data row access in your application. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company.
 
-The access restriction logic is located in the database tier, rather than away from the data in another application tier. The database system applies the access restrictions every time data access is attempted from any tier. This makes your security system more reliable and robust by reducing the surface area of your security system.
+The access restriction logic is located in the database tier, rather than away from the data in another application tier. The database system applies the access restrictions every time data access is attempted from any tier. This logic makes your security system more reliable and robust by reducing the surface area of your security system.
 
-RLS lets you provide access to other applications and/or users only to a certain portion of a table. For example, you might want to:
+RLS lets you provide access to other applications and users, only to a certain portion of a table. For example, you might want to:
 
 * Grant access only to rows that meet some criteria
 * Anonymize data in some of the columns
-* Both of the above
+* All of the above
 
 For more information, see [control commands for managing the Row Level Security policy](../management/row-level-security-policy.md).
 
-> [!Note]
+> [!NOTE]
 > The RLS policy that you configure on the production database will also take effect in the follower databases. You can’t configure different RLS policies on the production and follower databases.
 
 ## Limitations
@@ -33,15 +33,15 @@ For more information, see [control commands for managing the Row Level Security 
 There's no limit on the number of tables on which Row Level Security policy can be configured.
 
 The RLS policy can't be enabled on a table:
-* For which [Continuous Data Export](../management/data-export/continuous-data-export.md) is configured.
-* That is referenced by a query of some [Update Policy](./updatepolicy.md).
-* On which [Restricted View Access Policy](./restrictedviewaccesspolicy.md) is configured.
+* for which [Continuous Data Export](../management/data-export/continuous-data-export.md) is configured.
+* referenced by a query of some [Update Policy](./updatepolicy.md).
+* on which [Restricted View Access Policy](./restrictedviewaccesspolicy.md) is configured.
 
 ## Examples
 
-### Limiting access to Sales table
+### Limit access to Sales table
 
-In a table named `Sales`, each row contains details about a sale. One of the columns contains the name of the sales person. Instead of giving your sales people access to all records in `Sales`, you can enable a Row Level Security policy on this table to only return records where the sales person is the current user:
+In a table named `Sales`, each row contains details about a sale. One of the columns contains the name of the salesperson. Instead of giving your salespeople access to all records in `Sales`, enable a Row Level Security policy on this table to only return records where the salesperson is the current user:
 
 ```kusto
 Sales | where SalesPersonAadUser == current_principal()
@@ -53,7 +53,7 @@ You can also mask the credit card number:
 Sales | where SalesPersonAadUser == current_principal() | extend CreditCardNumber = "****"
 ```
 
-If you want every sales person to see all the sales of a specific country, you can define a query similar to the following:
+If you want every sales person to see all the sales of a specific country, you can define a query similar to:
 
 ```kusto
 let UserToCountryMapping = datatable(User:string, Country:string)
@@ -65,7 +65,7 @@ Sales
 | where Country in (UserToCountryMapping | where User == current_principal_details()["UserPrincipalName"] | project Country)
 ```
 
-If you have an AAD group that contains the managers of the sales people, you might want them to have access to all rows. This can be achieved by the following query in the Row Level Security policy:
+If you have a group that contains the managers, you might want to give them access to all rows. Query the Row Level Security policy.
 
 ```kusto
 let IsManager = current_principal_is_member_of('aadgroup=sales_managers@domain.com');
@@ -75,9 +75,9 @@ union AllData, PartialData
 | extend CreditCardNumber = "****"
 ```
 
-### Exposing different data to members of different AAD Groups
+### Expose different data to members of different Azure AD groups
 
-If you have multiple AAD groups, and you want the members of each group to see a different subset of data, you can follow this structure for an RLS query (assuming a user can only belong to a single AAD group):
+If you have multiple Azure AD groups, and you want the members of each group to see a different subset of data, use this structure for an RLS query. Assume a user can only belong to a single Azure AD group.
 
 ```kusto
 let IsInGroup1 = current_principal_is_member_of('aadgroup=group1@domain.com');
@@ -89,9 +89,11 @@ let DataForGroup3 = Customers | where IsInGroup3 and <filtering specific for gro
 union DataForGroup1, DataForGroup2, DataForGroup3
 ```
 
-### Applying the same RLS function on multiple tables
+### Apply the same RLS function on multiple tables
 
-First, define a function that receives the table name as a string parameter, and references the table using the `table()` operator. For example:
+First, define a function that receives the table name as a string parameter, and references the table using the `table()` operator. 
+
+For example:
 
 ```
 .create-or-alter function RLSForCustomersTables(TableName: string) {
@@ -102,6 +104,7 @@ First, define a function that receives the table name as a string parameter, and
 
 Then configure RLS on multiple tables this way:
 
+
 ```
 .alter table Customers1 policy row_level_security enable "RLSForCustomersTables('Customers1')"
 .alter table Customers2 policy row_level_security enable "RLSForCustomersTables('Customers2')"
@@ -110,16 +113,12 @@ Then configure RLS on multiple tables this way:
 
 ## More use cases
 
-* A call center support person may identify callers by several digits of their social security number
-or credit card number. Those numbers should not be fully exposed to
-the support person. An RLS policy can be applied on the table to mask all but the last four digits
-of any social security or credit card number in the result set of any query.
-* Set an RLS policy that masks personally identifiable information (PII), enabling developers to 
-query production environments for troubleshooting purposes without violating compliance regulations.
+* A call center support person may identify callers by several digits of their social security number or credit card number. Those numbers shouldn't be fully exposed to
+the support person. An RLS policy can be applied on the table to mask all but the last four digits of any social security or credit card number in the result set of any query.
+* Set an RLS policy that masks personally identifiable information (PII), and enables developers to query production environments for troubleshooting purposes without violating compliance regulations.
 * A hospital can set an RLS policy that allows nurses to view data rows for their patients only.
-* A bank can set an RLS policy to restrict access to financial data rows based on an employee's business
-division or role.
-* A multi-tenant application can store data from many tenants in a single tableset (which is very efficient). They would use an RLS policy to enforce a logical separation of each tenant's data rows from every other tenant's rows, so each tenant can see only its data rows.
+* A bank can set an RLS policy to restrict access to financial data rows based on an employee's business division or role.
+* A multi-tenant application can store data from many tenants in a single tableset (which is efficient). They would use an RLS policy to enforce a logical separation of each tenant's data rows from every other tenant's rows, so each tenant can see only its data rows.
 
 ## Performance impact on queries
 
@@ -137,8 +136,7 @@ let PartialData = MyTable | where IsRestrictedUser and (...);
 union AllData, PartialData
 ```
 
-If the user is not part of some_group@domain.com, then `IsRestrictedUser` will be evaluated to `false`,
-so the query that will be evaluated will be similar to this one:
+If the user isn't part of *some_group@domain.com*, then `IsRestrictedUser` will be evaluated to `false`, so the query that will be evaluated will be similar to this one:
 
 ```kusto
 let AllData = MyTable;           // the condition evaluates to `true`, so the filter is dropped
@@ -150,8 +148,8 @@ Similarly, if `IsRestrictedUser` evaluates to `true`, then only the query for `P
 
 ### Improve query performance when RLS is used
 
-* If a filter is applied on a high-cardinality column (e.g. DeviceID) - consider using [Partitioning policy](./partitioningpolicy.md) or [Row Order policy](./roworderpolicy.md)
-* If a filter is applied on a low-medium-cardinality column – consider using [Row Order policy](./roworderpolicy.md)
+* If a filter is applied on a high-cardinality column, for example, DeviceID, consider using [Partitioning policy](./partitioningpolicy.md) or [Row Order policy](./roworderpolicy.md)
+* If a filter is applied on a low-medium-cardinality column, consider using [Row Order policy](./roworderpolicy.md)
 
 ## Performance impact on ingestion
 
