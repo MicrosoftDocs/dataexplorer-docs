@@ -131,11 +131,9 @@ MyTable | ...
 
 When considering removing these limits, first determine if
 you actually gain any value by doing so. In particular, removing the
-result truncation limit means that you intend to move bulk data out of
-Kusto. You can remove the result truncation limit, either for export purposes, in which case you're urged to use the `.export` command, or for doing later aggregation, 
-in which case, consider aggregating using Kusto.
-Let the Kusto team know if you have a business scenario that
-can't be met by either of these suggested solutions.  
+result truncation limit means that you intend to move bulk data out of Kusto.
+You can remove the result truncation limit, either for export purposes, using the `.export` command, or for doing later aggregation, in which case, consider aggregating using Kusto.
+Let the Kusto team know if you have a business scenario that can't be met by either of these suggested solutions.  
 
 In many cases, exceeding this limit can be avoided by sampling the data set. The two queries below show how to do the sampling. The first, is a statistical sampling, that uses a random number generator). The second, is deterministic sampling, done by hashing some column from the data set, usually some ID.
 
@@ -147,9 +145,7 @@ T | where hash(UserId, 10) == 1 | ...
 
 ## Limit on memory per node
 
-**Max memory per query per node** is another limit used by Kusto
-to protect against "runaway" queries. This limit, represented by the
-request option `max_memory_consumption_per_query_per_node`, sets an upper bound
+**Max memory per query per node** is another limit used to protect against "runaway" queries. This limit, represented by the request option `max_memory_consumption_per_query_per_node`, sets an upper bound
 on the amount of memory that can be used on a single node for a specific query.
 
 ```kusto
@@ -182,16 +178,16 @@ they're used by operators such as join and summarize. Or, you can use the [shuff
 
 **Server timeout** is a service-side timeout that is applied to all requests.
 Timeout on running requests (queries and control commands) is enforced at multiple
-points:
+points in the Kusto:
 
-* In the Kusto client library (if used)
-* In the Kusto service endpoint that accepts the request
-* In the Kusto service engine that processes the request
+* client library (if used)
+* service endpoint that accepts the request
+* service engine that processes the request
 
 By default, timeout is set to four minutes for queries, and 10 minutes for
 control commands. This value can be increased if needed (capped at one hour).
 
-* If you're querying using Kusto.Explorer, use **Tools** &gt; **Options*** &gt;
+* If you query using Kusto.Explorer, use **Tools** &gt; **Options*** &gt;
   **Connections** &gt; **Query Server Timeout**.
 * Programmatically, set the `servertimeout` client request property, a value of type `System.TimeSpan`, up to an hour.
 
@@ -206,7 +202,7 @@ control commands. This value can be increased if needed (capped at one hour).
    than the server timeout value requested by the user. This difference, is to allow for network latencies.
 * On the service side, not all query operators honor the timeout value.
    We're gradually adding that support.
-* To have Kusto automatically use the maximum allowed request timeout, set the client request property `norequesttimeout` to `true`.
+* To automatically use the maximum allowed request timeout, set the client request property `norequesttimeout` to `true`.
 
 <!--
   Request timeout can also be set using a set statement, but we don't mention
