@@ -30,7 +30,7 @@ Where:
 * *PluginName* is the mandatory name of the plugin being invoked.
 * *PluginArg1*, ... are the optional arguments to the plugin.
 * *evaluateParameters*: Zero or more (space-separated) parameters in the form of
-  *Name* `=` *Value* that control the behavior of the evaluate operation and execution plan. Each plugin may decide differently how to handle each parameter. Please refer each plugin's documentation for specific behavior.  
+  *Name* `=` *Value* that control the behavior of the evaluate operation and execution plan. Each plugin may decide differently how to handle each parameter. Refer to each plugin's documentation for specific behavior.  
 
 The following parameters are supported: 
 
