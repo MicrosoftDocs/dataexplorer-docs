@@ -15,9 +15,9 @@ Invokes a service-side query extension (plugin).
 
 The `evaluate` operator is a tabular operator that provides the ability to
 invoke query language extensions known as **plugins**. Plugins can be enabled
-or disabled (unlike other language constructs which are always available),
-and are not "bound" by the relational nature of the language (for example, they may
-not have a predefined, statically-determined, output schema).
+or disabled (unlike other language constructs, which are always available),
+and aren't "bound" by the relational nature of the language (for example, they may
+not have a predefined, statically determined, output schema).
 
 **Syntax** 
 
