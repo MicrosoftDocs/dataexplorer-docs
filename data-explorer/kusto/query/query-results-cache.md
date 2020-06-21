@@ -17,7 +17,7 @@ Kusto includes a query results cache. You can indicate willingness to get cached
 
 ## Use the cache
 
-Set the `query_results_cache_max_age` option as part of the query to indicate willingness to use the query results cache. You can set this option either in the query text or as a client request property. For example:
+Set the `query_results_cache_max_age` option as part of the query to use the query results cache. You can set this option in the query text or as a client request property. For example:
 
 ```kusto
 set query_results_cache_max_age = time(5m);
