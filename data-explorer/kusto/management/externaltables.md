@@ -103,7 +103,7 @@ The following commands are relevant to _any_ external table (of any type).
 
 **Syntax:**  
 
-`.drop` `external` `table` *TableName*
+`.drop` `external` `table` *TableName* [`ifexists`]
 
 **Output**
 
