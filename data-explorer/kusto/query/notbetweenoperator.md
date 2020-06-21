@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
 ---
-# !between operator
+# not-between operator (!between)
 
 Matches the input that is outside the inclusive range.
 
@@ -33,7 +33,7 @@ If *expr* expression is datetime - another syntactic sugar syntax is provided:
 * *T* - The tabular input whose records are to be matched.
 * *expr* - the expression to filter.
 * *leftRange* - expression of the left range (inclusive).
-* *rightRange* - expression of the rihgt range (inclusive).
+* *rightRange* - expression of the right range (inclusive).
 
 **Returns**
 

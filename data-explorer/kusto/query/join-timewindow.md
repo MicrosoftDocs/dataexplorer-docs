@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Joining within time window
+# Time window join
 
 It is often useful to join between two large data sets on some high-cardinality key
 (such as an operation ID or a session ID) and further limit the right-hand-side (`$right`)

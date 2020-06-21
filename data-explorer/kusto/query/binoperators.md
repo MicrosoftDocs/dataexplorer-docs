@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
 ---
-# Bitwise (Binary) Operators
+# Bitwise (binary) operators
 
 Kusto supports a number of bitwise (binary) operators between integers:
 

@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
 ---
-# Queries
+# Query operators
 
 A query is a read-only operation against a Kusto Engine cluster's
 ingested data. Queries always run in the context of a particular
