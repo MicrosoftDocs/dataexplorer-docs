@@ -30,7 +30,7 @@ The option value is a `timespan` that indicates the maximum "age" of the results
 
 ## Compatibility between queries
 
-### Compatible queries
+### Identical queries
 
 The query_results_cache returns results only for queries that are considered "identical" to a previous cached query. Two queries are considered identical if all of the following conditions are met:
 
