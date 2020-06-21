@@ -9,9 +9,9 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/27/2020
 ---
-# Scalar Functions
+# Scalar function types
 
-## Binary Functions
+## Binary functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -23,7 +23,7 @@ ms.date: 05/27/2020
 |[binary_xor()](binary-xorfunction.md)|Returns a result of the bitwise xor operation of the two values.|
 |[bitset_count_ones()](bitset-count-onesfunction.md)|Returns the number of set bits in the binary representation of a number.|
 
-## Conversion Functions
+## Conversion functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -33,7 +33,7 @@ ms.date: 05/27/2020
 |[tostring()](tostringfunction.md)|Converts input to a string representation.|
 |[totimespan()](totimespanfunction.md)|Converts input to timespan scalar.|
 
-## DateTime/Timespan Functions
+## DateTime/timespan functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -66,7 +66,7 @@ ms.date: 05/27/2020
 |[weekofyear()](weekofyearfunction.md)|Returns an integer representing the week number.|
 
 
-## Dynamic/Array Functions
+## Dynamic/array functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -89,7 +89,7 @@ ms.date: 05/27/2020
 |[zip()](zipfunction.md)|The zip function accepts any number of dynamic arrays. Returns an array whose elements are each an array with the elements of the input arrays of the same index.|
 
 
-## Window Scalar Functions
+## Window scalar functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -98,13 +98,13 @@ ms.date: 05/27/2020
 |[row_cumsum()](rowcumsumfunction.md)|Calculates the cumulative sum of a column.|
 |[row_number()](rownumberfunction.md)|Returns a row's number in the serialized row set - consecutive numbers starting from a given index or from 1 by default.|
 
-## Flow Control Functions
+## Flow control functions
 
 |Function Name            |Description                                             |
 |-------------------------|--------------------------------------------------------|
 |[toscalar()](toscalarfunction.md)|Returns a scalar constant value of the evaluated expression.|
 
-## Mathematical Functions
+## Mathematical functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -146,8 +146,7 @@ ms.date: 05/27/2020
 |[tan()](tanfunction.md)|Returns the tangent function.|
 |[welch_test()](welch-testfunction.md)|Computes the p-value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s_t-test).|
 
-
-## Metadata Functions
+## Metadata functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -163,8 +162,7 @@ ms.date: 05/27/2020
 |[extent_tags()](extenttagsfunction.md)|Returns a dynamic array with the tags of the data shard ("extent") that the current record resides in.|
 |[ingestion_time()](ingestiontimefunction.md)|Retrieves the record's $IngestionTime hidden datetime column, or null.|
 
-
-## Rounding Functions
+## Rounding functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -173,8 +171,7 @@ ms.date: 05/27/2020
 |[ceiling()](ceilingfunction.md)|Calculates the smallest integer greater than, or equal to, the specified numeric expression.|
 |[floor()](floorfunction.md)|Rounds values down to an integer multiple of a given bin size.|
 
-
-## Conditional Functions
+## Conditional functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -184,7 +181,7 @@ ms.date: 05/27/2020
 |[max_of()](max-offunction.md)|Returns the maximum value of several evaluated numeric expressions.|
 |[min_of()](min-offunction.md)|Returns the minimum value of several evaluated numeric expressions.|
 
-## Series Element-wise Functions
+## Series element-wise functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -199,7 +196,7 @@ ms.date: 05/27/2020
 |[series_not_equals()](series-not-equalsfunction.md)|Calculates the element-wise not equals (`!=`) logic operation of two numeric series inputs.|
 |[series_subtract()](series-subtractfunction.md)|Calculates the element-wise subtraction of two numeric series inputs.|
 
-## Series Processing Functions
+## Series processing functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -224,7 +221,7 @@ ms.date: 05/27/2020
 |[series_stats()](series-statsfunction.md)|Returns statistics for a series in multiple columns.|
 |[series_stats_dynamic()](series-stats-dynamicfunction.md)|Returns statistics for a series in dynamic object.|
 
-## String Functions
+## String functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -279,13 +276,13 @@ ms.date: 05/27/2020
 |[parse_ipv6()](parse-ipv6function.md)|Converts IPv6 or IPv4 string to a canonical IPv6 string representation.|
 |[parse_ipv6_mask()](parse-ipv6-maskfunction.md)|Converts IPv6 or IPv4 string and netmask to a canonical IPv6 string representation.|
 
-## Type Functions
+## Type functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[gettype()](gettypefunction.md)|Returns the runtime type of its single argument.|
 
-## Scalar Aggregation Functions
+## Scalar aggregation functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|

@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# todouble()/toreal()
+# todouble(), toreal()
 
 Converts the input to a value of type `real`. (`todouble()` and `toreal()` are synonyms.)
 
