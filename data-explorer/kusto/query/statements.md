@@ -11,7 +11,7 @@ ms.date: 12/10/2019
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-# Query statements
+# Query statement types
 
 ::: zone pivot="azuredataexplorer"
 

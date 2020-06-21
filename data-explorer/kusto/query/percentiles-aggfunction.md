@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
 ---
-# percentile(), percentiles()
+# percentile(), percentiles() (aggregation function)
 
 Returns an estimate for the specified [nearest-rank percentile](#nearest-rank-percentile) of the population defined by `*Expr*`.
 The accuracy depends on the density of population in the region of the percentile. This function can be used only in context of aggregation inside [summarize](summarizeoperator.md)
