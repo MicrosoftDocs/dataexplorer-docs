@@ -43,10 +43,9 @@ additional aliases you can use to refer to them and a roughly equivalent
 All non-string data types include a special "null" value, which represents the lack of data
 or a mismatch of data. For example, attempting to ingest the string `"abc"`
 into an `int` column results in this value.
-It is not possible to materialize this value explicitly, but you can detect
+It isn't possible to materialize this value explicitly, but you can detect
 whether an expression evaluates to this value by using the `isnull()` function.
 
 > [!WARNING]
 > Support for the `guid` type is incomplete.
 > We strongly recommend that teams use values of type `string` instead.
-
