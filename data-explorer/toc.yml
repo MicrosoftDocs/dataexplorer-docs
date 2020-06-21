@@ -462,7 +462,7 @@
         href: ./kusto/query/invokeoperator.md
       - name: join operator
         items:
-        - name: join operator overview
+        - name: join operator
           href: ./kusto/query/joinoperator.md
         - name: Shuffle query
           href: ./kusto/query/shufflequery.md
