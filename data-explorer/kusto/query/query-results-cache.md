@@ -13,7 +13,7 @@ zone_pivot_groups: kql-flavors
 ---
 # Query results cache
 
-Kusto includes a query results cache. You can indicate willingness to get cached results when issuing a query. You'll experience better query performance and lower resource consumption if your query's results can be returned by the cache. However, this performance comes at the expense of some "staleness" in the results.
+Kusto includes a query results cache. You can choose to get cached results when issuing a query. You'll experience better query performance and lower resource consumption if your query's results can be returned by the cache. However, this performance comes at the expense of some "staleness" in the results.
 
 ## Use the cache
 
