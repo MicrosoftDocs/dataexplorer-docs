@@ -51,7 +51,7 @@ For different types or sources of data, see [Use one-click ingestion to ingest C
 Select **Edit schema** to view and edit your table column configuration.
 
 1. The **Map columns** dialog opens and you can attach one or more source columns or attributes to your Azure Data Explorer columns.
-    * New mappings are set automatically, but you can change it to use an existing one. 
+    * New mappings are set automatically. You can also use an existing mapping. 
     * In the **Source columns** fields, enter column names to map with the **Target columns**.
     * To delete a column from mapping, select the trash can icon.
 
