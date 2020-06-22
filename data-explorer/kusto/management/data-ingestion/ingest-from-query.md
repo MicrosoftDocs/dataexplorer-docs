@@ -58,7 +58,7 @@ existing or nonexistent tables and data.
 
 |Property        |Type    |Description|
 |----------------|--------|-----------------------------------------------------------------------------------------------------------------------------|
-|`distributed`   |`bool`  |Indicates that the command ingests from all nodes executing the query in parallel. Default is "false").  See remarks below.|
+|`distributed`   |`bool`  |Indicates that the command ingests from all nodes executing the query in parallel. Default is "false".  See remarks below.|
 
 * *QueryOrCommand*: The text of a query or a control command whose results will be used as data to ingest.
 
@@ -100,7 +100,7 @@ Create a new table called "OldExtents" in the database that has a single column,
 ```
 
 Append data to an existing table called "OldExtents" in the current database that has a single column, "ExtentId", and holds the extent IDs of all extents in the database that have been created more than 30 days earlier.
-Mark the new extent with tags `tagA` and `tagB`, based on an existing table named "MyExtents"
+Mark the new extent with tags `tagA` and `tagB`, based on an existing table named "MyExtents".
 
 ```kusto
 .append OldExtents with(tags='["TagA","TagB"]') <| 
