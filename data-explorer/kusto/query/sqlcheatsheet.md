@@ -13,7 +13,7 @@ ms.date: 01/22/2020
 
 Kusto supports a subset of the SQL language. See the list of [SQL known issues](../api/tds/sqlknownissues.md) for the full list of unsupported features.
 
-The primary language to interact with Kusto is KQL (Kusto Query Language). To make the transition and learning experience easier, you can use Kusto service to translate SQL queries to KQL. Send an SQL query to Kusto services, prefixing it with the verb 'EXPLAIN'.
+The primary language to interact with Kusto is KQL (Kusto Query Language). To make the transition and learning experience easier, you can use Kusto to translate SQL queries to KQL. Send an SQL query to Kusto, prefixing it with the verb 'EXPLAIN'.
 
 For example:
 
