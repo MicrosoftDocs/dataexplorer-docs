@@ -17,14 +17,14 @@ The `bag_unpack` plugin unpacks a single column of type `dynamic`, by treating e
 
 **Syntax**
 
-*T* `|` `evaluate` `bag_unpack(` *Column* [`,` *OutputColumnPrefix* ] [`,` *columnsConlict* ] [`,` *ignoredProperties* ] `)`
+*T* `|` `evaluate` `bag_unpack(` *Column* [`,` *OutputColumnPrefix* ] [`,` *columnsConflict* ] [`,` *ignoredProperties* ] `)`
 
 **Arguments**
 
 * *T*: The tabular input whose column *Column* is to be unpacked.
 * *Column*: The column of *T* to unpack. Must be of type `dynamic`.
 * *OutputColumnPrefix*: A common prefix to add to all columns produced by the plugin. This argument is optional.
-* *columnsConlict*: A direction for column conflict resolution. This argument is optional. When argument is provided, it's expected to be a string literal matching one of the following values:
+* *columnsConflict*: A direction for column conflict resolution. This argument is optional. When argument is provided, it's expected to be a string literal matching one of the following values:
     - `error` - Query produces an error (default)
     - `replace_source` - Source column is replaced
     - `keep_source` - Source column is kept
@@ -99,9 +99,9 @@ datatable(d:dynamic)
 |Dave|40|
 |Jasmine|30|
 
-### Expand a bag with columnsConlict
+### Expand a bag with columnsConflict
 
-Expand a bag and use the `columnsConlict` option to resolve conflicts between existing columns and columns produced by the `bag_unpack()` operator.
+Expand a bag and use the `columnsConflict` option to resolve conflicts between existing columns and columns produced by the `bag_unpack()` operator.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -111,7 +111,7 @@ datatable(Name:string, d:dynamic)
     'Old_name', dynamic({"Name": "Dave", "Age":40}),
     'Old_name', dynamic({"Name": "Jasmine", "Age":30}),
 ]
-| evaluate bag_unpack(d, columnsConlict='replace_source') // Use new name
+| evaluate bag_unpack(d, columnsConflict='replace_source') // Use new name
 ```
 
 |Name|Age|
@@ -128,7 +128,7 @@ datatable(Name:string, d:dynamic)
     'Old_name', dynamic({"Name": "Dave", "Age":40}),
     'Old_name', dynamic({"Name": "Jasmine", "Age":30}),
 ]
-| evaluate bag_unpack(d, columnsConlict='keep_source') // Keep old name
+| evaluate bag_unpack(d, columnsConflict='keep_source') // Keep old name
 ```
 
 |Name|Age|
