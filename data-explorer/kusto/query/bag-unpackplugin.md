@@ -59,7 +59,6 @@ The input data to the plugin must be such that the output schema follows all the
 
 ### Expand a bag
 
-Expand a bag.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
