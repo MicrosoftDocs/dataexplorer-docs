@@ -26,7 +26,7 @@ in a streaming fashion or in large chunks. The records are kept there until they
 
 Usually, dimension tables aren't regularly ingested with new data. Instead, the entire data content is updated at once, using operations such as [.set-or-replace](../management/data-ingestion/ingest-from-query.md), [.move extents](../management/extents-commands.md#move-extents), or [.rename tables](../management/rename-table-command.md).
 
-Sometimes, dimension tables might be derived from fact tables. This process can be done via an [update policy](../management/updatepolicy.md) on the fact table, with some query over the table that takes the last record for each entity.
+Sometimes, dimension tables might be derived from fact tables. This process can be done via an [update policy](../management/updatepolicy.md) on the fact table, with a query on the table that takes the last record for each entity.
 
 There's no way to "mark" a table in Kusto as being a "fact table" or a "dimension table".
 The way data is ingested into the table, and how the table is used, is what identifies its type.
