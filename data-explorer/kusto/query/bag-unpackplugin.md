@@ -49,10 +49,10 @@ data inputs, may produce different output schema.
 
 The input data to the plugin must be such that the output schema follows all the rules for a tabular schema. In particular:
 
-1. An output column name can't be the same as an existing column in the tabular
+* An output column name can't be the same as an existing column in the tabular
    input *T*, unless it's the column to be unpacked (*Column*), since that will produce two columns with the same name.
 
-1. All slot names, when prefixed by *OutputColumnPrefix*, must be valid
+* All slot names, when prefixed by *OutputColumnPrefix*, must be valid
    entity names and follow the [identifier naming rules](./schema-entities/entity-names.md#identifier-naming-rules).
 
 ## Examples
