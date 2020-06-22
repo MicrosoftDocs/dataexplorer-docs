@@ -113,7 +113,7 @@ RestrictedData | summarize IrsLovesMe=sum(Salary) by Year, Month
 restrict access to (database().Table1);
 Table1 | count
 
-// Restricting acess to Table1 in the current database and Table2 in database 'DB2'
+// Restricting access to Table1 in the current database and Table2 in database 'DB2'
 restrict access to (database().Table1, database('DB2').Table2);
 union 
     (Table1),
