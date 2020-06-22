@@ -109,7 +109,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
     * Use single quote characters (`'`) for Kusto string literals in Kusto queries
     * Use double quote characters (`"`) for R string literals in R scripts
 * Use the [external data operator](externaldata-operator.md) to obtain the content of
-  a script that you've stored in an external location, such as Azure blob storage, a public GitHub repository, and so on.
+  a script that you've stored in an external location, such as Azure blob storage or a public GitHub repository.
   
   For example:
 
