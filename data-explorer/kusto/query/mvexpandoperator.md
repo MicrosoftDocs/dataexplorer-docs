@@ -62,7 +62,7 @@ datatable (a:int, b:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"})]
 |1|{"prop1":"a"}|
 |1|{"prop2":"b"}|
 
-## Zipped two columns
+### Zipped two columns
 
 Expanding two columns will first 'zip' the applicable columns and then expand them:
 
@@ -78,7 +78,7 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 |1|{"prop2":"b"}|4|
 |1||3|
 
-## Cartesian product of two columns
+### Cartesian product of two columns
 
 If you want to get a Cartesian product of expanding two columns, expand one after the other:
 
@@ -94,7 +94,7 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 |1|{"prop1":"a"}|5|
 |1|{"prop2":"b"}|5|
 
-## Convert output
+### Convert output
 
 If you want to force the output of an mv-expand to a certain type (default is dynamic), use `to typeof`:
 
@@ -113,7 +113,7 @@ c|2|System.Int32|int
 
 Notice column `b` is coming out as `dynamic` while `c` is coming out as `int`.
 
-## Using with_itemindex
+### Using with_itemindex
 
 Expansion of an array with `with_itemindex`:
 
