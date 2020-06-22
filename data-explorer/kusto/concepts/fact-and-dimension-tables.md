@@ -42,7 +42,7 @@ The way data is ingested into the table, and how the table is used, is what iden
 >
 > Only the last record for each entity identity is then retrieved.
 
-## Commands that differentiate fact and dimension tables
+### Differentiate fact and dimension tables
 
 There are processes in Kusto that differentiate between fact tables and dimension tables. One of them is [continuous export](../management/data-export/continuous-data-export.md).
 
