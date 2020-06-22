@@ -15,7 +15,7 @@ Returns a scalar constant value of the evaluated expression.
 
 This function is useful for queries that require staged calculations. For example, 
 calculate a total count of events, and then use the result to filter groups
-that exceed s certain percent of all events.
+that exceed a certain percent of all events.
 
 **Syntax**
 
