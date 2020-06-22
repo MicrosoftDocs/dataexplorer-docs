@@ -11,9 +11,9 @@ ms.date: 01/22/2020
 ---
 # SQL to Kusto query translation
 
-Kusto supports subset of SQL language. See the list of [SQL known issues](../api/tds/sqlknownissues.md) for the full list of unsupported features.
+Kusto supports a subset of the SQL language. See the list of [SQL known issues](../api/tds/sqlknownissues.md) for the full list of unsupported features.
 
-Primary language to interact with Kusto is KQL (Kusto Query Language), and in order to make transition and learning experience easier, you can use Kusto service to translate SQL queries to KQL. This can be achieved by sending SQL query to Kusto services prefixing it with 'EXPLAIN' verb.
+The primary language to interact with Kusto is KQL (Kusto Query Language). To make the transition and learning experience easier, you can use Kusto to translate SQL queries to KQL. Send an SQL query to Kusto, prefixing it with the verb 'EXPLAIN'.
 
 For example:
 
@@ -29,7 +29,7 @@ SELECT COUNT_BIG(*) as C FROM StormEvents
 
 ## SQL to Kusto cheat sheet
 
-The table below shows sample queries in SQL and thier KQL equivalients.
+The table below shows sample queries in SQL and their KQL equivalents.
 
 |Category |SQL Query |Kusto Query
 |---|---|---
