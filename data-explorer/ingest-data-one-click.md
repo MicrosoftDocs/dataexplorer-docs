@@ -20,8 +20,7 @@ The following features make one-click ingestion so useful:
 * Ingest data from different kinds of sources: local file, blobs, and containers (up to 10,000 blobs)
 * Ingest data in a variety of [formats](#file-formats)
 * Ingest data into new or existing tables
-* Table mapping is suggested to you and easy to change
-* Table schema is automatically suggested and easy to change
+* Table mapping and schema is suggested to you and easy to change
 * Continue ingestion easily and quickly from a container with Event Grid
 
 One-click ingestion is particularly useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
