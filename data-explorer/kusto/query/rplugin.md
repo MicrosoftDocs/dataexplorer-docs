@@ -83,7 +83,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 ### Performance tips
 
 * Reduce the plugin's input data set to the minimum amount required (columns/rows).
-    * Use filters on the source data set, when possible. Use the Kusto Query Language.
+    * Use filters on the source data set using the Kusto Query Language, when possible.
     * To make a calculation on a subset of the source columns, project only those columns before invoking the plugin.
 * Use `hint.distribution = per_node` whenever the logic in your script is distributable.
     * You can also use the [partition operator](partitionoperator.md) for partitioning the input data set.
@@ -135,4 +135,3 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 This capability isn't supported in Azure Monitor
 
 ::: zone-end
-
