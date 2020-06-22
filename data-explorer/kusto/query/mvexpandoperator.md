@@ -13,7 +13,7 @@ ms.date: 02/24/2019
 
 Expands multi-value array or property bag.
 
-`mv-expand` is applied on a [dynamic](./scalar-data-types/dynamic.md)-typed array column so that each value in the collection gets a separate row. All the other columns in an expanded row are duplicated. 
+`mv-expand` is applied on a [dynamic](./scalar-data-types/dynamic.md)-typed array or property bag column so that each value in the collection gets a separate row. All the other columns in an expanded row are duplicated. 
 
 **Syntax**
 
