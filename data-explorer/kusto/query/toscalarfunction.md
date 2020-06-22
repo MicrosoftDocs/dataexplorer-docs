@@ -36,7 +36,7 @@ If the result is a tabular, then the first column and first row will be taken fo
 **Notes**
 
 `toscalar()` can be calculated a constant number of times during the query execution.
-The `toscalar()` function can't be applied on row-level of (for-each-row scenario).
+The `toscalar()` function can't be applied on row-level (for-each-row scenario).
 
 **Examples**
 
