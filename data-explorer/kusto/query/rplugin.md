@@ -23,7 +23,6 @@ The plugin's runtime is hosted in a [sandbox](../concepts/sandboxes.md) on the c
 
 *T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `r(`*output_schema*`,` *script* [`,` *script_parameters*]`)`
 
-
 ### Arguments
 
 * *output_schema*: A `type` literal that defines the output schema of the tabular data, returned by the R code.
@@ -49,10 +48,11 @@ The following variables are reserved for interaction between Kusto Query Languag
 * The plugin is disabled by default.
 
 > [!TIP]
->    *Interested in enabling the plugin on your cluster?*
->    * *In the Azure portal, within your Azure Data Explorer cluster, select **New support request** in the left-hand menu.*
+> * To enable the plugin on your cluster:
+>    * In the Azure portal, within your Azure Data Explorer cluster, select **New support request** in the left-hand menu.
 >
->  *To disable the plugin you must open a support ticket as well.*
+> * To disable the plugin, you must open a support ticket as well:
+>    * In the Azure portal, within your Azure Data Explorer cluster, select **New support request** in the left-hand menu.
 
 ### Notes and limitations
 
