@@ -139,7 +139,7 @@ datatable(Name:string, d:dynamic)
 
 ### Expand a bag with ignoredProperties
 
-Expand a bag and us `ignoredProperties` option to ignore certain properties existing in the property bag.
+Expand a bag and use the `ignoredProperties` option to ignore certain properties in the property bag.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
