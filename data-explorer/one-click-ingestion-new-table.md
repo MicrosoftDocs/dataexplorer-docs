@@ -55,6 +55,8 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 Select **Edit schema** to view and edit your table column configuration. The system will select one of the blobs at random and the schema will be generated based on that blob. By looking at the name of the source, the service automatically identifies if it is compressed or not.
 
+### Schema tab
+
 1. In the **Schema** tab:
 
     * Select **Data format**:
@@ -71,6 +73,8 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 1. In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
 
     :::image type="content" source="media/one-click-ingestion-new-table/table-mapping.png" alt-text="Table mapping name One Click Ingestion":::
+
+### Table
 
 1. In the table: 
     * Double-click the new column name to edit.
