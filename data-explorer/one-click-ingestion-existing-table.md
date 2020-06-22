@@ -50,6 +50,8 @@ For different types or sources of data, see [Use one-click ingestion to ingest C
 
 Select **Edit schema** to view and edit your table column configuration.
 
+### Map columns 
+
 1. The **Map columns** dialog opens and you can attach one or more source columns or attributes to your Azure Data Explorer columns.
     * New mappings are set automatically. You can also use an existing mapping. 
     * In the **Source columns** fields, enter column names to map with the **Target columns**.
@@ -68,7 +70,9 @@ Select **Edit schema** to view and edit your table column configuration.
     > [!TIP]
     > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
 
-1. In the table: 
+### Table 
+
+In the table: 
     * Select new column headers to add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. On existing columns, only data sorting is available.
 
 [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
