@@ -20,9 +20,9 @@ as broadly belonging to one of two categories:
 and measurement information. Records are progressively appended into the table
 in a streaming fashion or in large chunks. The records are kept there until they have to be removed due to cost or because they've lost their value. Records are otherwise never updated.
 
-**Dimension tables** hold:
-* reference data, such as lookup tables from an entity identifier to its properties
-* snapshot-like data in tables whose entire contents changes in a single transaction
+**Dimension tables**:
+* Hold reference data, such as lookup tables from an entity identifier to its properties
+* Hold snapshot-like data in tables whose entire contents change in a single transaction
 
 Usually, dimension tables aren't regularly ingested with new data. Instead, the entire data content is updated at once, using operations such as [.set-or-replace](../management/data-ingestion/ingest-from-query.md), [.move extents](../management/extents-commands.md#move-extents), or [.rename tables](../management/rename-table-command.md).
 
