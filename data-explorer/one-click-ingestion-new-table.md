@@ -27,7 +27,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 1. In the **Ingest new data (Preview)** window, the **Source** tab is selected. 
 
 1. Select **Create new table** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
- 
+
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
 
@@ -35,16 +35,17 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 ## Select an ingestion type
 
-For **Ingestion type**, select the following options:
+* Under **Ingestion type**, do the following steps:
    
- * **from container** - in the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size.
+  1. Select **from container** 
+  1. In the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size.
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container":::
 
  > [!TIP] 
  > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
 
-  A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
+* A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
   
   For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension.
 

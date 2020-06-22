@@ -10,7 +10,7 @@ ms.date: 03/29/2020
 ---
 
 # Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
- 
+
 [One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.  
 
 This document describes using the intuitive one-click wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. You can use the same process with slight adaptations to cover a variety of different use cases.
@@ -28,22 +28,23 @@ For different types or sources of data, see [Use one-click ingestion to ingest C
 
 1. If the **Table** field isn't automatically filled, select an existing table name from the drop-down menu.
 
-    > [!TIP]
+    > [!NOTE]
     > If you select **Ingest new data (Preview)** on a *table* row, the selected table name will appear in the **Project Details**.
 
 ## Select an ingestion type
 
-For **Ingestion type**, select the following option:
+* Under **Ingestion type**, do the following steps:
 
-  * **from file** - select **Browse** to locate the file, or drag the file into the field.
+  1. Select **from file**  
+  1. Select **Browse** to locate the file, or drag the file into the field.
+* A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. 
+    >[!NOTE] 
+    >When you adjust the filters, the preview automatically updates.
   
       :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file":::
 
  > [!TIP]
  > For ingestion **from container**, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#select-an-ingestion-type)
-
-  A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
-  
 
 ## Edit the schema
 
@@ -78,7 +79,6 @@ Select **Edit schema** to view and edit your table column configuration.
 
 Select **Start ingestion** to create a table and mapping and to begin data ingestion.
 
-
 :::image type="content" source="media/one-click-ingestion-existing-table/start-ingestion.png" alt-text="Start ingestion":::
 
 ## Data ingestion completed
@@ -87,11 +87,10 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 
 :::image type="content" source="media/one-click-ingestion-existing-table/one-click-data-ingestion-complete.png" alt-text="One click ingestion completed":::
 
-> [!TIP]
+> [!IMPORTANT]
 > If you want to set up continuous ingestion from a container, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#continuous-ingestion---container-only)
 
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
-
 
 ## Next steps
 
