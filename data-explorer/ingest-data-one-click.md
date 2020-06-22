@@ -85,7 +85,7 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
 In the **Editor** window, you can adjust data table columns as necessary. 
 
-|Column type  |Available adjustments  |
+|Table type  |Available column adjustments  |
 |---------|---------|
 |New     | New column, Delete column, Sort ascending, Sort descending  |
 |Existing     | New column, Sort ascending, Sort descending  |
