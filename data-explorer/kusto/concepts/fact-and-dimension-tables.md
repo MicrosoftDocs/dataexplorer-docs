@@ -18,7 +18,7 @@ as broadly belonging to one of two categories:
 
 **Fact tables** are tables whose records are immutable "facts", such as service logs
 and measurement information. Records are progressively appended into the table
-in a streaming fashion or in large chunks. The records are kept there until they have to be removed, for example, for cost reasons or because they lose their value. Records are otherwise never updated.
+in a streaming fashion or in large chunks. The records are kept there until they have to be removed due to cost or because they've lost their value. Records are otherwise never updated.
 
 **Dimension tables** hold:
 * reference data, such as lookup tables from an entity identifier to its properties
