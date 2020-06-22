@@ -75,7 +75,8 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 |a|b|c|
 |---|---|---|
 |1|{"prop1":"a"}|5|
-|1|{"prop2":"b"}||
+|1|{"prop2":"b"}|4|
+|1||3|
 
 ## Cartesian product of two columns
 
@@ -95,16 +96,22 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 
 ## Convert output
 
-If you want to force the output of an mv-expand to a certain type (default is dynamic), use *to typeof*:
+If you want to force the output of an mv-expand to a certain type (default is dynamic), use `to typeof`:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-range x from 1 to 4 step 1
-| summarize x = make_list(x)
-| mv-expand with_itemindex=Index x
+datatable (a:string, b:dynamic, c:dynamic)["Constant", dynamic([1,2,3,4]), dynamic([6,7,8,9])]
+| mv-expand b, c to typeof(int)
+| getschema 
 ```
 
-Notice column *b* is coming out as *dynamic* while *c* is coming out as *int*
+ColumnName|ColumnOrdinal|DateType|ColumnType
+-|-|-|-
+a|0|System.String|string
+b|1|System.Object|dynamic
+c|2|System.Int32|int
+
+Notice column `b` is coming out as `dynamic` while `c` is coming out as `int`.
 
 ## Using with_itemindex
 
@@ -123,7 +130,6 @@ range x from 1 to 4 step 1
 |2|1|
 |3|2|
 |4|3|
-
 
 **More examples**
 
