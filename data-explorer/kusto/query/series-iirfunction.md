@@ -33,7 +33,7 @@ The function takes as input the column containing the dynamic array and two stat
 > [!IMPORTANT]
 > The first element of `a` (that is, `a[0]`) mustn't be zero, to avoid division by 0. See the formula below.
 
-**More about the filter's recursive formula**
+## The filter's recursive formula
 
 * Consider an input array X, and coefficients arrays a and b of lengths n_a and n_b respectively. The transfer function of the filter that will generate the output array Y, is defined by:
 
