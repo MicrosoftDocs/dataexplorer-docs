@@ -12,7 +12,7 @@ ms.date: 02/13/2020
 # Entity references
 
 Reference Kusto schema entities in a query by using their names. Valid entity names include *databases*, *tables*, *columns*, and stored functions. *Clusters* can't be referenced by their names.
-If the entity's container is unambiguous in the current context, use the entity name  without additional qualifications. For example, when running a query against a
+If the entity's container is unambiguous in the current context, use the entity name without additional qualifications. For example, when running a query against a
 database called `DB`, you may reference a table called `T` in that database by its name, `T`.
 
 If the entity's container isn't available from the context, or you want to reference an entity from a container different than the container in context, use the entity's **qualified name**.
