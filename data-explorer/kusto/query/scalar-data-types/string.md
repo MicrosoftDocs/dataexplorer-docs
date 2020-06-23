@@ -17,7 +17,7 @@ The `string` data type represents a Unicode string. Kusto strings are encoded in
 
 There are several ways to encode literals of the `string` data type.
 
-* Enclose the string in double-quotes (`"`): `"This is a string literal. Single quote characters (') do not require escaping. Double quote characters (\") are escaped by a backslash (\\)"`
+* Enclose the string in double-quotes (`"`): `"This is a string literal. Single quote characters (') don't require escaping. Double quote characters (\") are escaped by a backslash (\\)"`
 * Enclose the string in single-quotes (`'`): `'Another string literal. Single quote characters (\') require escaping by a backslash (\\). Double quote characters (") do not require escaping.'`
 
 In the two representations above, the backslash (`\`) character indicates escaping.
