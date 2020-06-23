@@ -28,7 +28,8 @@ Since data in Kusto is immutable, the common practice is to have each table hold
 
 Only the last record for each entity identity is then retrieved.
 
-**Dimension tables**:
+## Dimension tables
+Dimension tables:
 * Hold reference data, such as lookup tables from an entity identifier to its properties
 * Hold snapshot-like data in tables whose entire contents change in a single transaction
 
