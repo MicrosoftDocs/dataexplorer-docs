@@ -70,8 +70,8 @@ which does a stochastic estimation of set cardinality. The algorithm provides a 
 > The "entry count" column is the number of 1-byte counters in the HLL implementation.
 
 The algorithm includes some provisions for doing a perfect count (zero error), if the set cardinality is small enough:
-* When the accuracy level is `1`, 1000 values is returned
-* When the accuracy level is `2`, 8000 values is returned
+* When the accuracy level is `1`, 1000 values returned
+* When the accuracy level is `2`, 8000 values returned
 
 The error bound is probabilistic, not a theoretical bound. The value is the standard deviation of error distribution (the sigma), and 99.7% of the estimations will have a relative error of under 3 x sigma.
 
