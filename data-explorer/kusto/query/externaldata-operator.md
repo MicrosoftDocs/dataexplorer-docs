@@ -67,4 +67,4 @@ with(format="csv")
 The above example can be thought of as a quick way to query multiple data files without defining an [external table](schema-entities/externaltables.md).
 
 > [!NOTE]
-> Data partitioning is not recognized by the `externaldata()` operator.
+> Data partitioning isn't recognized by the `externaldata()` operator.
