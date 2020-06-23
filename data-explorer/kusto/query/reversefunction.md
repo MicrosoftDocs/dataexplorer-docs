@@ -11,9 +11,8 @@ ms.date: 02/13/2020
 ---
 # reverse()
 
-Function makes sure the input string returns as type `string`.
-
-If the input value isn't of type `string`, then the function forcibly casts the value to `string`.
+Function reverses the order of the input string.
+If the input value isn't of type `string`, then the function forcibly casts the value to type `string`.
 
 **Syntax**
 
