@@ -24,6 +24,8 @@ For different types or sources of data, see [Use one-click ingestion to ingest C
 
     :::image type="content" source="media/one-click-ingestion-existing-table/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
  
+## Select an ingestion type
+
 1. In the **Ingest new data (Preview)** window, the **Source** tab is selected.
 
 1. If the **Table** field isn't automatically filled, select an existing table name from the drop-down menu.
@@ -31,13 +33,11 @@ For different types or sources of data, see [Use one-click ingestion to ingest C
     > [!NOTE]
     > If you select **Ingest new data (Preview)** on a *table* row, the selected table name will appear in the **Project Details**.
 
-## Select an ingestion type
+1. Under **Ingestion type**, do the following steps:
 
-* Under **Ingestion type**, do the following steps:
-
-  1. Select **from file**  
-  1. Select **Browse** to locate the file, or drag the file into the field.
-* A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. 
+   1. Select **from file**  
+   1. Select **Browse** to locate the file, or drag the file into the field.
+    * A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. 
     >[!NOTE] 
     >When you adjust the filters, the preview automatically updates.
   
