@@ -101,32 +101,31 @@ Output records depend on the join flavor:
 
     A row for every match between the input tables. A match is a row selected from one table that has the same value for all the `on` fields as a row in the other table with these constraints:
 
-   - `kind` unspecified, `kind=innerunique`
+   * `kind` unspecified, `kind=innerunique`
 
     Only one row from the left side is matched for each value of the `on` key. The output contains a row for each match of this row with rows from the right.
-    
-   - `kind=leftsemi`
-   
+
+* `kind=leftsemi`
+
     Returns all the records from the left side that have matches from the right.
-    
-   - `kind=rightsemi`
+
+* `kind=rightsemi`
    
        Returns all the records from the right side that have matches from the left.
 
-   - `kind=inner`
- 
+* `kind=inner`
+
     There's a row in the output for every combination of matching rows from left and right.
 
-   - `kind=leftouter` (or `kind=rightouter` or `kind=fullouter`)
+* `kind=leftouter` (or `kind=rightouter` or `kind=fullouter`)
 
     There's also a row for every row on the left and right, even if it has no match. Then the unmatched output cells contain nulls.
     For several rows with the same values for those fields, you'll get rows for all the combinations.
 
-**Tips**
-
-For best performance:
-
-* If one table is always smaller than the other, use it as the left (piped) side of the join.
+> [!TIP]
+> For best performance:
+>
+> * If one table is always smaller than the other, use it as the left (piped) side of the join.
 
 **Example**
 
@@ -284,12 +283,12 @@ on key
 |---|---|---|---|
 |1|val1.2|1|val1.3|
 |1|val1.2|1|val1.4|
- 
+
 ### Default join flavor
-    
+
     X | join Y on Key
     X | join kind=innerunique Y on Key
-     
+
 Use two sample tables to explain the operation of the join.
 
 Table X
@@ -318,11 +317,11 @@ Given this statement:
 
 the effective left side of the join, table X after deduplication, would be:
 
-|Key |Value1 
+|Key |Value1
 |---|---
-|a |1 
-|b |2 
-|c |4 
+|a |1
+|b |2
+|c |4
 
 and the result of the join would be:
 
@@ -506,7 +505,8 @@ X | join kind=leftanti Y on Key
 |---|---|
 |a|1|
 
-Anti-join models the "NOT IN" query.
+> [!NOTE]
+> Anti-join models the "NOT IN" query.
 
 ### Right anti-join
 
