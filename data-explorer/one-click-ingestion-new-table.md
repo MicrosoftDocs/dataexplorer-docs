@@ -103,9 +103,11 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 
 ## Continuous ingestion - container only
 
-Continuous ingestion enables you to create an event grid that listens for new files in the source container. Any new file that meets the criteria of the pre-defined parameters (prefix, suffix, and so on) will be automatically ingested into the destination table.
+Continuous ingestion enables you to create an event grid that listens for new files in the source container. Any new file that meets the criteria of the pre-defined parameters (prefix, suffix, and so on) will be automatically ingested into the destination table. 
 
-1. Select **Continuous ingestion** to open the Azure portal. The data connection page opens with the event grid data connector opened and with source and target parameters already entered (source container, tables, and mappings).
+1. Select the **Create continuous ingestion** button on the bottom right corner to open the Azure portal. The data connection page opens with the event grid data connector opened and with source and target parameters already entered (source container, tables, and mappings).
+    
+    :::image type="content" source="media/one-click-ingestion-new-table/continuous-button.png" alt-text="continuous ingestion button":::
 
 1. Select **Create** to create a data connection which will listen for any changes, updates, or new data in that container. 
 
