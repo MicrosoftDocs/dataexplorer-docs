@@ -73,7 +73,7 @@ EventLog | where continent contains "nor" | count
 
 By default, Kusto indexes all columns, including columns of type `string`.
 Multiple indexes are built for such columns, depending on the actual data. 
-To the user, these indexes aren't directly exposed (other than their positive effect on query performance), except for the `string` operators that have `has` as part of their name: `has`, `!has`, `hasprefix`, `!hasprefix`, and so on.
+These indexes aren't directly exposed (other than their positive effect on query performance), except for the `string` operators that have `has` as part of their name, such as `has`, `!has`, `hasprefix`, `!hasprefix`.
 Those operators are special, because their semantics are dictated by the way the column is encoded. 
 Instead of doing a "plain" substring match, these operators match **terms**.
 
