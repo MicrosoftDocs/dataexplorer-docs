@@ -115,7 +115,7 @@ series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for 
 
 :::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-linefit-trend.png" alt-text="Weekly seasonality anomalies with linefit trend" border="false":::
 
-**Tweaking the anomaly detection threshold**
+### Tweak the anomaly detection threshold
 
 A few noisy points were detected as anomalies in the previous example. Now increase the anomaly detection threshold from a default of 1.5 to 2.5. Use this interpercentile range, so that only stronger anomalies are detected. Now, only the outliers you inserted in the data, will be detected.
 
