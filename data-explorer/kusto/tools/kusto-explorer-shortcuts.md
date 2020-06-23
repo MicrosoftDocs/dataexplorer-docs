@@ -37,7 +37,7 @@ The following keyboard shortcuts can be used from any context:
 
 ## Query and results view
 
-The following keyboard shortcuts can be used when you use the query editor or when the context is in the results view:
+You can use the following keyboard shortcuts with the query editor or when the context is in the results view:
 
 |Hot Key|Description|
 |-------|-----------|
