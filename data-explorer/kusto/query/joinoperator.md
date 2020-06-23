@@ -178,7 +178,7 @@ The exact flavor of the join operator is specified with the *kind* keyword. Kust
 
 The **inner-join**, outputs a row for every combination of matching rows from the left and the right, without left key deduplications. The output will be a cartesian product of left and right keys.
 
-**Example of inner-join:**
+**Example of inner-join**
 
 ```kusto
 let t1 = datatable(key:long, value:string)  
