@@ -50,9 +50,9 @@ For more information on residual time series, see [series_outliers](series-outli
 ## The algorithm
 
 This function follows these steps:
-1. Calls [series_decompose()](series-decomposefunction.md) with the respective parameters, to create the baseline and residuals series
-1. Calculates ad_score series by applying [series_outliers()](series-outliersfunction.md) with the chosen anomaly detection method on the residuals series
-1. Calculates the ad_flag series by applying the threshold on the ad_score to mark up/down/no anomaly respectively
+1. Calls [series_decompose()](series-decomposefunction.md) with the respective parameters, to create the baseline and residuals series.
+1. Calculates ad_score series by applying [series_outliers()](series-outliersfunction.md) with the chosen anomaly detection method on the residuals series.
+1. Calculates the ad_flag series by applying the threshold on the ad_score to mark up/down/no anomaly respectively.
  
 ## Examples
 
