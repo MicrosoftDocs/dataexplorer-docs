@@ -26,7 +26,7 @@ For more information, see [`indexof_regex()`](indexofregexfunction.md).
 * *source*: Input string.  
 * *lookup*: String to look up.
 * *start_index*: Search start position. Optional.
-* *length*: Number of character positions to examine. Optional. A value of -1 means unlimited length.
+* *length*: Number of character positions to examine. A value of -1 means unlimited length. Optional.
 * *occurrence*: The number of which occurrence. Default 1. Optional.
 
 **Returns**
