@@ -28,7 +28,7 @@ Structured, semi-structured (for example, JSON-like nested types), and unstructu
 The main way for users to interact with Azure Data Explorer (Kusto):
 * Use one of the many available [client tools](../tools/index.md). 
 * [SQL queries](../api/tds/t-sql.md).
-However, the primary means of interaction is to use the [Kusto query language](../query/index.md) to send data queries, and to use [control commands](../management/index.md) to manage entities, discover metadata, and so on.
+*  [Kusto query language](../query/index.md) is primary means of interaction. KQL allows you to send data queries, and use [control commands](../management/index.md) to manage entities, discover metadata, and so on.
 Both queries and control commands are short textual "programs".
 
 ## Kusto queries
