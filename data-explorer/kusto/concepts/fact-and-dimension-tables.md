@@ -47,5 +47,5 @@ They rely on the [database cursor](../management/databasecursor.md) mechanism.
 
 For example, every execution of a continuous export job, exports all records that were ingested since the last update of the database cursor. Continuous export jobs must differentiate between fact tables, that process only newly ingested data, and dimension tables that are used as lookups. As such, the entire table must be taken into account.
 
-There's no way to "mark" a table in Kusto as being a "fact table" or a "dimension table".
+There's no way to "mark" a table as being a "fact table" or a "dimension table".
 The way data is ingested into the table, and how the table is used, is what identifies its type.
