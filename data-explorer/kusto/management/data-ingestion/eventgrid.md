@@ -59,7 +59,7 @@ blob.Metadata.Add("kustoIngestionMappingReference", "EventsMapping");
 blob.UploadFromFile(jsonCompressedLocalFileName);
 ```
 
-## Create Event Grid subscription
+## Create an Event Grid subscription in your storage account
 
 > [!Note]
 > For best performance, create all resources in the same region as the Azure Data Explorer cluster.
@@ -72,16 +72,34 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 * [Create an event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
 ### Event Grid subscription
+ 
+1. In the Azure portal, find your storage account.
+1. On the left menu, select **Events** > **Event Subscription**.
 
-* Kusto selected `Event Hub` as the endpoint type, used for transporting blob storage events notifications. `Event Grid schema` is the selected schema for notifications. Each Even Hub can serve one connection.
-* The blob storage subscription connection handles notifications of type `Microsoft.Storage.BlobCreated`. Make sure to select it when creating the subscription. Other types of notifications, if selected, are ignored.
-* One subscription can notify on storage events in one container or more. If you want to track files from a specific container(s), set the filters for the notifications as follows:
-When setting up a connection, take a special care of the following values: 
-   * **Subject Begins With** filter is the *literal* prefix of the blob container. As the pattern applied is *startswith*, it can span multiple containers. No wildcards are allowed.
-     It *must* be set as follows: *`/blobServices/default/containers/<prefix>`*. For example: */blobServices/default/containers/StormEvents-2020-*
-   * **Subject Ends With** field is the *literal* suffix of the blob. No wildcards are allowed. Useful for filtering file extensions.
+    ![Query application link](../../../media/ingest-data-event-grid/create-event-grid-subscription1.png)
 
-A detailed walk-through can be found in the how-to [Create an Event Grid subscription in your storage account](../../../ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account) guide.
+1. In the **Create Event Subscription** window within the **Basic** tab, provide the following values:
+
+    ![Query application link](../../../media/ingest-data-event-grid/create-event-grid-subscription2.png)
+
+    **Setting** | **Suggested value** | **Field description**
+    |---|---|---|
+    | Name | *test-grid-connection* | The name of the event grid subscription that you want to create.|
+    | Event Schema | *Event Grid schema* | The schema that should be used for the event grid. |
+    | Topic Type | *Storage account* | The type of event grid topic. |
+    | Topic Resource | *gridteststorage* | The name of your storage account. |
+    | Subscribe to all event types | *clear* | Don't get notified on all events. |
+    | Defined Event Types | *Blob created* | Which specific events to get notified for. Currently supported type is Microsoft.Storage.BlobCreated. Make sure to select it when creating the subscription.|
+    | Endpoint Type | *Event hubs* | The type of endpoint to which you send the events. |
+    | Endpoint | *test-hub* | The event hub you created. |
+    | | |
+
+1. Select the **Filters** tab if you want to track files from a specific container. Set the filters for the notifications as follows:
+    * **Subject Begins With** field is the *literal* prefix of the blob container. As the pattern applied is *startswith*, it can span multiple containers. No wildcards are allowed.
+        * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*.
+        * To define a filter on a blob prefix (or folder in ADLS gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*.
+    * **Subject Ends With** field is the *literal* suffix of the blob. No wildcards are allowed.
+    * See [Blob storage events](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview#filtering-events) for more details about filtering events.
 
 ### Data ingestion connection to Azure Data Explorer
 
@@ -94,8 +112,6 @@ A detailed walk-through can be found in the how-to [Create an Event Grid subscri
 
 > [!NOTE]
 > * Use `BlockBlob` to generate data. `AppendBlob` is not supported.
-<!--> * Using ADLSv2 storage requires using `CreateFile` API for uploading blobs and flush at the end. 
-    Kusto will get 2 notificatiopns: when blob is created and when stream is flushed. First notification arrives before the data is ready and ignored. Second notification is processed.-->
 
 Following is an example for creating a blob from local file, setting ingestion properties to the blob metadata and uploading it:
 
@@ -118,6 +134,10 @@ blob.Metadata.Add("rawSizeBytes", "4096‬"); // the uncompressed size is 4096 b
 blob.Metadata.Add("kustoIgnoreFirstRecord", "true"); // First line of this csv file are headers
 blob.UploadFromFile(csvCompressedLocalFileName);
 ```
+
+> [!NOTE]
+> * Using Azure Data Lake Gen2 storage requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to "true". A detailed example of how to use Data Lake Gen2 SDK correctly can be found in the how-to [Upload file using Azure Data Lake SDK](../../../data-connection-event-grid-csharp.md###upload-file-using-azure-data-lake-SDK)
+guide.
 
 ## Blob lifecycle
 
