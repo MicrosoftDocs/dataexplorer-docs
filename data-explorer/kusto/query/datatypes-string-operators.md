@@ -89,4 +89,4 @@ Kusto:  ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;;WilliamGates3rd
 
 By default, Kusto builds a term index consisting of all terms that are
 **four characters or more**, and this index is used by `has`, `!has`, and so on, when looking up terms that are also four characters or more.
-If the query looks for a term that is smaller than four characters, or uses a `contains` operator, for example, Kusto will revert to scanning the values in the column if it can't determine a match, which is far slower than looking up the term in the term index.
+If the query looks for a term that is smaller than four characters, or uses a `contains` operator, Kusto will revert to scanning the values in the column if it can't determine a match. This method is much slower than looking up the term in the term index.
