@@ -20,8 +20,7 @@ Returns an estimate for the number of distinct values that are taken by a scalar
 **Arguments**
 
 * *Expr*: A scalar expression whose distinct values are to be counted.
-* *Accuracy*: An optional `int` literal that defines the requested estimation
-  accuracy. See below for supported values. If unspecified, the default value
+* *Accuracy*: An optional `int` literal that defines the requested estimation accuracy. See below for supported values. If unspecified, the default value
   `1` is used.
 
 **Returns**
@@ -38,8 +37,7 @@ PageViewLog | summarize countries=dcount(country) by continent
 
 **Notes**
 
-The `dcount()` aggregation function is primarily useful for estimating the
-cardinality of huge sets. It trades performance for accuracy, and may return a result that varies between executions. The order of inputs may have an effect on its output.
+The `dcount()` aggregation function is primarily useful for estimating the cardinality of huge sets. It trades performance for accuracy, and may return a result that varies between executions. The order of inputs may have an effect on its output.
 
 Get an exact count of distinct values of `V` grouped by `G`.
 
@@ -57,10 +55,8 @@ T | summarize dcount(B) by G | count
 
 ## Estimation accuracy
 
-The `dcount()` aggregate function uses a variant of the
-[HyperLogLog (HLL) algorithm](https://en.wikipedia.org/wiki/HyperLogLog),
-which does a stochastic estimation of set cardinality. The algorithm provides
-a "knob" that can be used to balance accuracy and execution time per memory size:
+The `dcount()` aggregate function uses a variant of the [HyperLogLog (HLL) algorithm](https://en.wikipedia.org/wiki/HyperLogLog),
+which does a stochastic estimation of set cardinality. The algorithm provides a "knob" that can be used to balance accuracy and execution time per memory size:
 
 |Accuracy|Error (%)|Entry count   |
 |--------|---------|--------------|
@@ -73,7 +69,9 @@ a "knob" that can be used to balance accuracy and execution time per memory size
 > [!NOTE]
 > The "entry count" column is the number of 1-byte counters in the HLL implementation.
 
-The algorithm includes some provisions for doing a perfect count (zero error), if the set cardinality is small enough. 1000 values when the accuracy level is `1`, and 8000 values if the accuracy level is `2`.
+The algorithm includes some provisions for doing a perfect count (zero error), if the set cardinality is small enough:
+* When the accuracy level is `1`, 1000 values is returned
+* When the accuracy level is `2`, 8000 values is returned
 
 The error bound is probabilistic, not a theoretical bound. The value is the standard deviation of error distribution (the sigma), and 99.7% of the estimations will have a relative error of under 3 x sigma.
 
