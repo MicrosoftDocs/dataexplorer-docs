@@ -34,7 +34,7 @@ There's no limit on the number of tables on which Row Level Security policy can 
 
 The RLS policy can't be enabled on a table:
 * for which [continuous data export](../management/data-export/continuous-data-export.md) is configured.
-* referenced by a query of some [Update Policy](./updatepolicy.md).
+* referenced by a query of an [update policy](./updatepolicy.md).
 * on which [Restricted View Access Policy](./restrictedviewaccesspolicy.md) is configured.
 
 ## Examples
