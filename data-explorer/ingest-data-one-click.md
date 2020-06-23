@@ -54,16 +54,16 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
     :::image type="content" source="media/ingest-data-one-click/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
 
+<!-- TODO either change the local file tutorial to blob storage or create another one to show users how to do this-->
+
+## One-click ingestion wizard
+
 > [!NOTE]
 > This section describes the wizard in general. The options you select depend on what data format you are ingesting, what kind of data source you are ingesting from, and whether you are ingesting into a new or existing table.
 >
 > For sample scenarios, see:
 > * Ingest into [a new table from a container in CSV format](one-click-ingestion-new-table.md)
 > * Ingest into an [existing table from a local file in JSON format](one-click-ingestion-existing-table.md) 
-
-<!-- TODO either change the local file tutorial to blob storage or create another one to show users how to do this-->
-
-## One-click ingestion wizard
 
 * The wizard guides you through the following options:
     * Ingest into an [existing table](one-click-ingestion-existing-table.md)
