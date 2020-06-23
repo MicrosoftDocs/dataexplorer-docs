@@ -43,7 +43,7 @@ You can use the following keyboard shortcuts with the query editor or when the c
 |-------|-----------|
 |`Ctrl`+`Shift`+`C`|Copies query, deep-link, and data to the clipboard|
 |`Alt`+`Shift`+`C` |Copies query and deep-link the clipboard in HTML format|
-|`Alt`+`Shift`+`R` |Copies query, deep-link, and data the clipboard in Markdown format|
+|`Alt`+`Shift`+`R` |Copies query, deep-link, and places data in the clipboard in Markdown format|
 |`Alt`+`Shift`+`M` |Copies query and deep-link the clipboard in Markdown format|
 |`Ctrl`+`~` |Copies query and data to the clipboard in markdown format |
 |`Ctrl`+`Shift`+`D`|Toggles mode of hiding duplicate rows in the data view|
