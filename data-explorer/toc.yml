@@ -1060,10 +1060,6 @@
         href: ./kusto/query/rownumberfunction.md
       - name: row_window_session()
         href: ./kusto/query/row-window-session-function.md
-    - name: Rolling window aggregations
-      items:
-      - name: rolling_percentile()
-        href: ./kusto/query/rolling-percentile-plugin.md
     - name: Time series analysis
       items:
       - name: Time series analysis overview
