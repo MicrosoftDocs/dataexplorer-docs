@@ -353,7 +353,7 @@ X | join Y on Key
 > [!NOTE]
 > The keys 'a' and 'd' don't appear in the output, since there were no matching keys on both left and right sides.
 
-Historically, the default join was the first implementation of the join supported by the initial version of Kusto. The implementation is useful in typical log/trace analysis scenarios where you want to correlate two events, each matching some filtering criterion, under the same correlation ID. You want to get back all appearances of the phenomenon, and ignore multiple appearances of the contributing trace records.
+The default join implementation is useful in typical log/trace analysis scenarios where you want to correlate two events, each matching some filtering criterion, under the same correlation ID. You want to get back all appearances of the phenomenon, and ignore multiple appearances of the contributing trace records.
 
 ### Inner-join
 
