@@ -47,7 +47,7 @@ For more information on residual time series, see [series_outliers](series-outli
 * `ad_score`: Anomaly score
 * `baseline`: The predicted value of the series, according to the decomposition
 
-**More about the algorithm**
+## The algorithm
 
 This function follows these steps:
 1. Calls [series_decompose()](series-decomposefunction.md) with the respective parameters, to create the baseline and residuals series
