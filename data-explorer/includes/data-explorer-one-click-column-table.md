@@ -2,7 +2,7 @@
 author: orspod
 ms.service: data-explorer
 ms.topic: include
-ms.date: 11/06/2020
+ms.date: 06/11/2020
 ms.author: orspodek
 ---
 
