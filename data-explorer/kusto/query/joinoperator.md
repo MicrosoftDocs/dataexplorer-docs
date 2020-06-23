@@ -604,7 +604,6 @@ To simulate, use a dummy key.
 The `join` operator supports a number of hints that control the way a query runs.
 These hints don't change the semantic of `join`, but may affect its performance.
 
-## Next steps
 
 Join hints are explained in the following articles:
 
