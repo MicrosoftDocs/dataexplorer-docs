@@ -11,7 +11,7 @@ ms.date: 08/28/2019
 ---
 # series_decompose_anomalies()
 
-Anomaly Detection based on series decomposition.
+Anomaly Detection is based on series decomposition.
 For more information, see [series_decompose()](series-decomposefunction.md).
 
 The function takes an expression containing a series (dynamic numerical array) as input, and extracts anomalous points with scores.
