@@ -66,7 +66,7 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 ::: zone-end
 
 > [!WARNING]
-> If `kind` is not specified, the default join flavor is `innerunique`. This is different than some other analytics products that have `inner` as the default flavor.  Carefully read [about join-flavors](#join-flavors), below, to understand the differences are, and to make sure that the query yields the intended results.
+> If `kind` is not specified, the default join flavor is `innerunique`. This is different than some other analytics products that have `inner` as the default flavor.  See [join-flavors](#join-flavors) to understand the differences and make sure  the query yields the intended results.
 
 **Returns**
 
