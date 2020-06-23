@@ -92,9 +92,14 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 
 ## Generate sample data
 
-Now that Azure Data Explorer and the storage account are connected, you can create sample data and upload it to the storage.
+Now that Azure Data Explorer and the storage account are connected, you can create a sample data and upload it to the storage.
 
-This script creates a new container in your storage account, uploads an existing file (as a blob) to that container, and then lists the blobs in the container.
+> [!NOTE]
+> Azure Data Explorer won't delete the blobs post ingestion. Retain the blobs for three to five days by using [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion.
+
+### Upload file using blob storage SDK
+
+The following code snippet creates a new container in your storage account, uploads an existing file (as a blob) to that container, and then lists the blobs in the container.
 
 ```csharp
 var azureStorageAccountConnectionString=<storage_account_connection_string>;
@@ -103,7 +108,7 @@ var containerName = <container_name>;
 var blobName = <blob_name>;
 var localFileName = <file_to_upload>;
 var uncompressedSizeInBytes = <uncompressed_size_in_bytes>;
-var mapping = <mapping>;
+var mapping = <mappingReference>;
 
 // Creating the container
 var azureStorageAccount = CloudStorageAccount.Parse(azureStorageAccountConnectionString);
@@ -121,25 +126,24 @@ blob.UploadFromFile(localFileName);
 var blobs = container.ListBlobs();
 ```
 
-> [!NOTE]
-> Azure Data Explorer won't delete the blobs post ingestion. Retain the blobs for three to five days by using [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion.
+### Upload file using Azure Data Lake SDK
 
-When working with Data Lake Storage Gen2, it is also possible to use [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) package to upload files to the storage. The following script creates a new filesystem in your Data Lake Storage and uploads a local file with metadata to the filesystem.
+When working with Data Lake Storage Gen2, it is also possible to use [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload files to the storage. The following code snippet creates a new filesystem in your Data Lake Storage and uploads a local file with metadata to that filesystem.
 
 ```csharp
 var accountName = <storage_account_name>;
 var accountKey = <storage_account_key>;
 var fileSystemName = <file_system_name>;
 var fileName = <file_name>;
-var uncompressedSizeInBytes = <uncompressed_size_in_bytes>;
-var mapping = <mapping>;
 var localFileName = <file_to_upload>;
+var uncompressedSizeInBytes = <uncompressed_size_in_bytes>;
+var mapping = <mappingReference>;
 
-StorageSharedKeyCredential sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
-string dfsUri = "https://" + accountName + ".dfs.core.windows.net";
+var sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
+var dfsUri = "https://" + accountName + ".dfs.core.windows.net";
 var dataLakeServiceClient = new DataLakeServiceClient(new Uri(dfsUri), sharedKeyCredential);
 
-//Create the filesystem and an empty file
+// Create the filesystem and an empty file
 var dataLakeFileSystemClient = dataLakeServiceClient.CreateFileSystem(fileSystemName).Value;
 var dataLakeFileClient = dataLakeFileSystemClient.CreateFile(fileName).Value;
 
@@ -150,13 +154,14 @@ metadata.Add("kustoIngestionMappingReference", mapping);
 dataLakeFileClient.SetMetadata(metadata);
 
 // Write to the file and close it
-FileStream fileStream = File.OpenRead(localFileName);
-long fileSize = fileStream.Length;
+var fileStream = File.OpenRead(localFileName);
+var fileSize = fileStream.Length;
 dataLakeFileClient.Append(fileStream, offset: 0);
-dataLakeFileClient.Flush(position: fileSize, close: true);
+dataLakeFileClient.Flush(position: fileSize, close: true); // Note: This line triggers the event being processed by the data connection
 ```
 
 > [!NOTE]
-> When using [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/), you should call flush with a "close" parameter set to "true" so the service raises a file change notification with a property indicating that this is the final update (the file stream has been closed). For more information about flushing see [Azure Data Lake Flush method](https://docs.microsoft.com/en-us/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush?view=azure-dotnet).
+> When using [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload file, the first call to [CreateFile](https://docs.microsoft.com/en-us/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createfile?view=azure-dotnet) triggers an Event Grid event with size 0, and this event is ignored by ADX. Another event is triggered when calling Flush with a "close" parameter set to "true" to indicate that this is the final update (the file stream has been closed). This event is processed by the Event Grid data connection. For more information about flushing see [Azure Data Lake Flush method](https://docs.microsoft.com/en-us/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush?view=azure-dotnet).
+
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]
