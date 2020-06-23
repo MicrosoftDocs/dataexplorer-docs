@@ -132,7 +132,7 @@ Traces
 |PipelineScheduler|16|02/17/2016 08:41:00, |02/17/2016 08:41:00, |2016-02-17 08:40:00.0000000|
 |PipelineScheduler|22|02/17/2016 08:41:01, |02/17/2016 08:41:00, |2016-02-17 08:40:01.0000000|
 
-**For regex mode using regex flags:**
+**For regex mode using regex flags**
 
 If you're interested in getting the resourceName only, use this query:
 
