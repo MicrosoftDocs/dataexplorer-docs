@@ -78,7 +78,7 @@ Those operators are special, because their semantics are dictated by the way the
 Instead of doing a "plain" substring match, these operators match **terms**.
 
 To understand term-based match, you must first understand what a term is. 
-By default, Kusto breaks each `string` value into maximal sequences of ASCII alphanumeric characters, and each of those sequences is made into a term.
+By default, Each `string` value is broken into maximal sequences of ASCII alphanumeric characters, and each of those sequences is made into a term.
 
 For example, in the following `string`, the terms are `Kusto`, `WilliamGates3rd`, and
 the following substrings: `ad67d136`, `c1db`, `4f9f`, `88ef`, `d94f3b6b0b5a`.
