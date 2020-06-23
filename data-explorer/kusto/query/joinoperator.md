@@ -123,9 +123,7 @@ Output records depend on the join flavor:
     For several rows with the same values for those fields, you'll get rows for all the combinations.
 
 > [!TIP]
-> For best performance:
->
-> * If one table is always smaller than the other, use it as the left (piped) side of the join.
+> For best performance, if one table is always smaller than the other, use it as the left (piped) side of the join.
 
 **Example**
 
