@@ -19,7 +19,7 @@ Merges `dynamic` property-bags into a `dynamic` property-bag with all properties
 
 **Arguments**
 
-* *bag1...bagN*: Input `dynami`c property-bags. The function accepts from 2 to 64 arguments.
+* *bag1...bagN*: Input `dynamic` property-bags. The function accepts between 2 to 64 arguments.
 
 **Returns**
 
