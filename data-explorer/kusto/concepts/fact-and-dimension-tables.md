@@ -21,7 +21,7 @@ Fact tables are tables whose records are immutable "facts", such as service logs
 and measurement information. Records are progressively appended into the table
 in a streaming fashion or in large chunks. The records are kept there until they have to be removed due to cost or because they've lost their value. Records are otherwise never updated.
 
-Sometimes, Kusto is used to hold entity data in fact tables, such that the entity data changes slowly. For example, data regarding some physical entity, such as a piece of office equipment that infrequently changes location.
+Sometimes, entity data is held in fact tables, such that the entity data changes slowly. For example, data regarding some physical entity, such as a piece of office equipment that infrequently changes location.
 Since data in Kusto is immutable, the common practice is to have each table hold two columns: 
 * An identity (`string`) column that identifies the entity
 * A last-modified (`datetime`) timestamp column
