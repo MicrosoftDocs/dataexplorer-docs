@@ -414,37 +414,37 @@
         items:
         - name: evaluate operator plugins
           href: ./kusto/query/evaluateoperator.md
-        - name: autocluster
+        - name: autocluster plugin
           href: ./kusto/query/autoclusterplugin.md
-        - name: bag_unpack
+        - name: bag_unpack plugin
           href: ./kusto/query/bag-unpackplugin.md
-        - name: basket
+        - name: basket plugin
           href: ./kusto/query/basketplugin.md
-        - name: dcount_intersect
+        - name: dcount_intersect plugin
           href: ./kusto/query/dcount-intersect-plugin.md
-        - name: diffpatterns
+        - name: diffpatterns plugin
           href: ./kusto/query/diffpatternsplugin.md
-        - name: diffpatterns_text
+        - name: diffpatterns_text plugin
           href: ./kusto/query/diffpatterns-textplugin.md
-        - name: infer_storage_schema
+        - name: infer_storage_schema plugin
           href: ./kusto/query/inferstorageschemaplugin.md
-        - name: narrow
+        - name: narrow plugin
           href: ./kusto/query/narrowplugin.md
-        - name: pivot
+        - name: pivot plugin
           href: ./kusto/query/pivotplugin.md
-        - name: preview
+        - name: preview plugin
           href: ./kusto/query/previewplugin.md
-        - name: python
+        - name: python plugin
           href: ./kusto/query/pythonplugin.md
-        - name: R
+        - name: R plugin
           href: ./kusto/query/rplugin.md
-        - name: rolling_percentile
+        - name: rolling_percentile plugin
           href: ./kusto/query/rolling-percentile-plugin.md
-        - name: schema_merge
+        - name: schema_merge plugin
           href: ./kusto/query/schemamergeplugin.md
-        - name: sql_request
+        - name: sql_request plugin
           href: ./kusto/query/sqlrequestplugin.md
-        - name: sequence_detect
+        - name: sequence_detect plugin
           href: ./kusto/query/sequence-detect-plugin.md
       - name: extend operator
         href: ./kusto/query/extendoperator.md
@@ -1060,10 +1060,6 @@
         href: ./kusto/query/rownumberfunction.md
       - name: row_window_session()
         href: ./kusto/query/row-window-session-function.md
-    - name: Rolling window aggregations
-      items:
-      - name: rolling_percentile()
-        href: ./kusto/query/rolling-percentile-plugin.md
     - name: Time series analysis
       items:
       - name: Time series analysis overview
@@ -1132,13 +1128,13 @@
         href: ./kusto/query/series-subtractfunction.md
     - name: Machine Learning
       items:
-      - name: autocluster
+      - name: autocluster plugin
         href: ./kusto/query/autoclusterplugin.md
-      - name: basket
+      - name: basket plugin
         href: ./kusto/query/basketplugin.md
-      - name: diffpatterns
+      - name: diffpatterns plugin
         href: ./kusto/query/diffpatternsplugin.md
-      - name: diffpatterns_text
+      - name: diffpatterns_text plugin
         href: ./kusto/query/diffpatterns-textplugin.md
     - name: Geospatial
       items:
@@ -1160,27 +1156,27 @@
         href: ./kusto/query/geo-s2cell-to-central-point-function.md
       - name: geo_polygon_to_s2cells()
         href: kusto/query/geo-polygon-to-s2cells-function.md  
-    - name: User Analytics
+    - name: User analytics
       items:
-      - name: User Analytics plugins
+      - name: User analytics plugins
         href: ./kusto/query/useranalytics.md
-      - name: Active Users Count
+      - name: Active users count plugin
         href: ./kusto/query/active-users-count-plugin.md
-      - name: Activity Counts Metrics (total values, distinct values, new values)
+      - name: Activity counts metrics plugin
         href: ./kusto/query/activity-counts-metrics-plugin.md
-      - name: Activity Engagement (DAU, WAU, MAU)
+      - name: Activity engagement plugin
         href: ./kusto/query/activity-engagement-plugin.md
-      - name: Activity Metrics (retention, churn, new values)
+      - name: Activity metrics plugin
         href: ./kusto/query/activity-metrics-plugin.md
-      - name: Activity Metrics - New (retention, churn, new values)
+      - name: Activity Metrics plugin - New
         href: ./kusto/query/new-activity-metrics-plugin.md
-      - name: Funnel Sequence Completion
+      - name: Funnel sequence completion plugin
         href: ./kusto/query/funnel-sequence-completion-plugin.md
-      - name: Funnel Sequence
+      - name: Funnel sequence plugin
         href: ./kusto/query/funnel-sequence-plugin.md
-      - name: Session Count
+      - name: Session count plugin
         href: ./kusto/query/session-count-plugin.md
-      - name: Sliding Window Counts
+      - name: Sliding window counts plugin
         href: ./kusto/query/sliding-window-counts-plugin.md
     - name: Reference material for Kusto Query Language
       items:

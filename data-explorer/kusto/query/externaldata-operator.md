@@ -1,6 +1,6 @@
 ---
-title: externaldata operator - Azure Data Explorer | Microsoft Docs
-description: This article describes externaldata operator in Azure Data Explorer.
+title: externaldata operator - Azure Data Explorer
+description: This article describes the external data operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -11,9 +11,8 @@ ms.date: 03/24/2020
 ---
 # externaldata operator
 
-The `externaldata` operator returns a table whose schema is defined in the query itself,
-and whose data is read from an external storage artifact (such as a blob in
-Azure Blob Storage).
+The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external storage artifact, such as a blob in
+Azure Blob Storage.
 
 **Syntax**
 
@@ -21,31 +20,26 @@ Azure Blob Storage).
 
 **Arguments**
 
-* *ColumnName*, *ColumnType*: Define the schema of the table.
+* *ColumnName*, *ColumnType*: The arguments define the schema of the table.
   The syntax is the same as the syntax used when defining a table in [.create table](../management/create-table-command.md).
 
-* *StorageConnectionString*: The [storage connection string](../api/connection-strings/storage.md)
-  describes the storage artifact holding the data to return.
+* *StorageConnectionString*: The [storage connection string](../api/connection-strings/storage.md) describes the storage artifact holding the data to return.
 
 * *Prop1*, *Value1*, ...: Additional properties that describe how to interpret
   the data retrieved from storage, as listed under [ingestion properties](../../ingestion-properties.md).
     * Currently supported properties: `format` and `ignoreFirstRecord`.
-    * Supported data formats: any of the [ingestion data formats](../../ingestion-supported-formats.md)
-      are supported, including `CSV`, `TSV`, `JSON`, `Parquet`, `Avro`.
+    * Supported data formats: Any of the [ingestion data formats](../../ingestion-supported-formats.md) are supported, including `CSV`, `TSV`, `JSON`, `Parquet`, `Avro`.
 
 > [!NOTE]
 > This operator does not have a pipeline input.
 
 **Returns**
 
-The `externaldata` operator returns a data table of the given schema
-whose data was parsed from the specified storage artifact
-indicated by the storage connection string.
+The `externaldata` operator returns a data table of the given schema whose data was parsed from the specified storage artifact, indicated by the storage connection string.
 
 **Examples**
 
-The following example shows how to find all records in a table whose
-`UserID` column falls into a known set of IDs, held (one per line) in an external blob.
+The following example shows how to find all records in a table whose `UserID` column falls into a known set of IDs, held (one per line) in an external blob.
 Because the set is indirectly referenced by the query, it can be large.
 
 ```kusto
@@ -70,7 +64,7 @@ with(format="csv")
 | summarize count() by ProductId
 ```
 
-The above example can be thought as a quick way to query multiple data files without defining an [external table](schema-entities/externaltables.md). 
+The above example can be thought of as a quick way to query multiple data files without defining an [external table](schema-entities/externaltables.md).
 
->[!NOTE]
->Data partitioning is not recognized by the `externaldata()` operator.
+> [!NOTE]
+> Data partitioning isn't recognized by the `externaldata()` operator.
