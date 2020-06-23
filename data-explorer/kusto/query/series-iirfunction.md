@@ -31,7 +31,7 @@ The function takes as input the column containing the dynamic array and two stat
 * *a*: A constant expression, like *b*. Containing the denominator coefficients of the filter.
 
 > [!IMPORTANT]
-> The first element of `a` (that is, `a[0]`) mustn't be zero, to avoid division by 0. See the [formula below](#the-filter-s-recursive-formula).
+> The first element of `a` (that is, `a[0]`) mustn't be zero, to avoid division by 0. See the [formula below](#the-filters-recursive-formula).
 
 ## The filter's recursive formula
 
