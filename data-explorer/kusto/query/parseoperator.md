@@ -107,7 +107,7 @@ Traces
 |PipelineScheduler|27|16|02/17/2016 08:41:00|2016-02-17 08:41:00.0000000|2016-02-17 08:40:00.0000000|
 |PipelineScheduler|27|22|02/17/2016 08:41:01|2016-02-17 08:41:00.0000000|2016-02-17 08:40:01.0000000|
 
-**For regex mode:**
+**For regex mode**
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
