@@ -160,7 +160,7 @@ For more information and samples, see [about start-and-stop](./samples.md#get-se
 
 ## Join flavors
 
-The exact flavor of the join operator is specified with the *kind* keyword. Kusto supports the following flavors of the join operator:
+The exact flavor of the join operator is specified with the *kind* keyword. The following flavors of the join operator are supported:
 
 |Join kind|Description|
 |--|--|
