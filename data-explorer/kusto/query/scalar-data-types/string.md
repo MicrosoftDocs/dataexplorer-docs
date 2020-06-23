@@ -73,7 +73,7 @@ Such literals in the query text are automatically replaced by a number of
 star (`*`) characters, so that they aren't available for later analysis.
 
 > [!IMPORTANT]
-> We **strongly recommend** that you mark all string literals that contain secret information, as obfuscated string literals.
+> Mark all string literals that contain secret information, as obfuscated string literals.
 
 An obfuscated string literal can be formed by taking a "regular" string literal,
 and prepending an `h` or an `H` character in front of it. 
