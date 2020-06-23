@@ -44,7 +44,7 @@ The Kusto DataEngine has failed to execute a query: 'Query result set has exceed
 There are a number of strategies for dealing with this error.
 
 * Reduce the result set size by modifying the query to only return interesting data. This strategy is useful when the initial failing query is too "wide". For example, the query doesn't project away data columns that aren't needed.
-* Reduce the result set size by shifting post-query processing, such as aggregations, into the query itself. The strategy is useful in scenarios where the output of the query is fed to another processing system, that then does additional aggregations.
+* Reduce the result set size by shifting post-query processing, such as aggregations, into the query itself. The strategy is useful in scenarios where the output of the query is fed to another processing system, and that then does additional aggregations.
 * Switch from queries to using [data export](../management/data-export/index.md) when you want to export large sets of data from the service.
 * Instruct the service to suppress this query limit.
 
@@ -78,14 +78,12 @@ set truncationmaxrecords=1105;
 MyTable | where User=="Ploni"
 ```
 
-The Kusto client libraries currently assume the existence of this
-limit. While you can increase the limit without bounds, eventually
-you'll reach client limits that are currently not configurable.
+The Kusto client libraries currently assume the existence of this limit. While you can increase the limit without bounds, eventually you'll reach client limits that are currently not configurable.
 
-One possible workaround, is to program directly against the REST API
-contract, and implement a streaming parser for the Kusto query
-results. Let the Kusto team know, if you run into this issue,
-so we can appropriately prioritize a streaming client.
+Customers that don’t want to pull all the data in a single bulk can try these workarounds:
+* switch some SDKs to streaming mode (Streaming=true property on the KustoConnectionStringBuilder)
+* switch to the .NET v2 API
+Let the Kusto team know if you run into this issue, so we can raise the streaming client priority.
 
 Kusto provides a number of client libraries that can handle "infinitely large" results by streaming them to the caller. 
 Use one of these libraries, and configure it to streaming mode. 
@@ -174,7 +172,7 @@ As a workaround, rephrase the query to reduce the amount of data that
 has to be buffered. You can project away unneeded columns before
 they're used by operators such as join and summarize. Or, you can use the [shuffle query](../query/shufflequery.md) strategy.
 
-## Limit on request execution time (timeout)
+## Limit execution timeout
 
 **Server timeout** is a service-side timeout that is applied to all requests.
 Timeout on running requests (queries and control commands) is enforced at multiple
@@ -200,8 +198,6 @@ control commands. This value can be increased if needed (capped at one hour).
    the stream.
 * Also on the client side, the actual timeout value used is slightly higher
    than the server timeout value requested by the user. This difference, is to allow for network latencies.
-* On the service side, not all query operators honor the timeout value.
-   We're gradually adding that support.
 * To automatically use the maximum allowed request timeout, set the client request property `norequesttimeout` to `true`.
 
 <!--
@@ -211,7 +207,8 @@ control commands. This value can be increased if needed (capped at one hour).
 
 ## Limit on query CPU resource usage
 
-Kusto lets you run queries and use as much CPU resources as the cluster has, and attempts to do a fair round-robin between queries if more than one is running. This method yields the best performance for ad-hoc queries.
+Kusto lets you run queries and use as much CPU resources as the cluster has. 
+It attempts to do a fair round-robin between queries if more than one is running. This method yields the best performance for ad-hoc queries.
 At other times, you may want to limit the CPU resources used for a particular
 query. If you run a "background job", for example, the system might tolerate higher
 latencies to give concurrent ad-hoc queries high priority.
@@ -219,13 +216,13 @@ latencies to give concurrent ad-hoc queries high priority.
 Kusto supports specifying two [client request properties](../api/netfx/request-properties.md) when running a query. The properties are  *query_fanout_threads_percent* and *query_fanout_nodes_percent*.
 Both properties are integers that default to the maximum value (100), but may be reduced for a specific query to some other value. 
 
-The first, *query_fanout_threads_percent*, controls the fanout factor for thread use. When it's 100%, the cluster will assign all CPUs on each node. For example, 16 CPUs on a cluster deployed on Azure D14 nodes. When it's 50%, then half of the CPUs will be used, and so on. The numbers are rounded up to a whole CPU, so it's safe to set it to 0. The second, *query_fanout_nodes_percent*, controls how many of the query nodes in the cluster to use, per subquery distribution operation, and it functions in a similar manner.
+The first, *query_fanout_threads_percent*, controls the fanout factor for thread use. When it's 100%, the cluster will assign all CPUs on each node. For example, 16 CPUs on a cluster deployed on Azure D14 nodes. When it's 50%, then half of the CPUs will be used, and so on. The numbers are rounded up to a whole CPU, so it's safe to set it to 0. The second, *query_fanout_nodes_percent*, controls how many of the query nodes in the cluster to use per subquery distribution operation. It functions in a similar manner.
 
 ## Limit on query complexity
 
 During query execution, the query text is transformed into a tree of relational operators representing the query.
 If the tree depth exceeds an internal threshold of several thousand levels, the query is considered too complex for processing, and will fail with an error code. The failure indicates that the relational operators tree exceeds its limits.
-Exceeding the limits is caused by a query that contains a long list of binary operators that are chained together. For example:
+Limits are exceeded because of queries with long lists of binary operators that are chained together. For example:
 
 ```kusto
 T 
