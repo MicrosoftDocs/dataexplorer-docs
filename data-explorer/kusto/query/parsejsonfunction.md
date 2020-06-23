@@ -33,7 +33,7 @@ Aliases:
 An object of type `dynamic` that is determined by the value of *json*:
 * If *json* is of type `dynamic`, its value is used as-is.
 * If *json* is of type `string`, and is a [properly formatted JSON string](https://json.org/), then the string is parsed, and the value produced is returned.
-* If *json* is of type `string`, but it **isn't** a [properly formatted JSON string](https://json.org/), then the returned value is an object of type `dynamic` that holds the original `string` value.
+* If *json* is of type `string`, but it isn't a [properly formatted JSON string](https://json.org/), then the returned value is an object of type `dynamic` that holds the original `string` value.
 
 **Example**
 
