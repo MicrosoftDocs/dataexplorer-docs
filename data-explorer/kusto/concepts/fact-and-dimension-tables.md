@@ -11,18 +11,17 @@ ms.date: 03/23/2020
 ---
 # Fact and dimension tables
 
-When designing the schema for an Azure Data Explorer database, it's useful to think of tables
-as broadly belonging to one of two categories:
+When designing the schema for an Azure Data Explorer database, think of tables as broadly belonging to one of two categories.
 * [Fact tables](https://en.wikipedia.org/wiki/Fact_table)
 * [Dimension tables](https://en.wikipedia.org/wiki/Dimension_(data_warehouse)#Dimension_table)
 
 ## Fact tables
 Fact tables are tables whose records are immutable "facts", such as service logs
 and measurement information. Records are progressively appended into the table
-in a streaming fashion or in large chunks. The records are kept there until they have to be removed due to cost or because they've lost their value. Records are otherwise never updated.
+in a streaming fashion or in large chunks. The records stay there until they're removed because of cost or because they've lost their value. Records are otherwise never updated.
 
-Sometimes, entity data is held in fact tables, such that the entity data changes slowly. For example, data regarding some physical entity, such as a piece of office equipment that infrequently changes location.
-Since data in Kusto is immutable, the common practice is to have each table hold two columns: 
+Entity data is sometimes held in fact tables, where the entity data changes slowly. For example, data about some physical entity, such as a piece of office equipment that infrequently changes location.
+Since data in Kusto is immutable, the common practice is to have each table hold two columns:
 * An identity (`string`) column that identifies the entity
 * A last-modified (`datetime`) timestamp column
 
@@ -45,7 +44,7 @@ One of them is [continuous export](../management/data-export/continuous-data-exp
 These mechanisms are guaranteed to process data in fact tables precisely once. 
 They rely on the [database cursor](../management/databasecursor.md) mechanism.
 
-For example, every execution of a continuous export job, exports all records that were ingested since the last update of the database cursor. Continuous export jobs must differentiate between fact tables, that process only newly ingested data, and dimension tables that are used as lookups. As such, the entire table must be taken into account.
+For example, every execution of a continuous export job, exports all records that were ingested since the last update of the database cursor. Continuous export jobs must differentiate between fact tables and dimension tables. Fact tables only process newly ingested data, and dimension tables are used as lookups. As such, the entire table must be taken into account.
 
 There's no way to "mark" a table as being a "fact table" or a "dimension table".
 The way data is ingested into the table, and how the table is used, is what identifies its type.
