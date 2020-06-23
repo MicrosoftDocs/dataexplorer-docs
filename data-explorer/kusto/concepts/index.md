@@ -14,15 +14,15 @@ ms.date: 02/13/2020
 Azure Data Explorer is a service for storing and running interactive analytics on big data.
 
 It's based on relational database management systems, and supports entities such as databases, tables, and columns. Complex analytical queries are made using the Kusto Query Language. Some query operators include:
-
 * calculated columns
 * searching and filtering on rows
 * group by-aggregates
 * join functions
 
-The service offers excellent data ingestion and query performance. It sacrifices the ability to do in-place updates of individual rows and cross-table constraints or transactions. The service supplements, rather than replaces, traditional RDBMS systems for scenarios such as OLTP and data warehousing.
-
-Structured, semi-structured (for example, JSON-like nested types), and unstructured (free text) data are handled equally well.
+The service offers excellent data ingestion and query performance: 
+* It sacrifices the ability to do in-place updates of individual rows and cross-table constraints or transactions. 
+* The service supplements, rather than replaces, traditional RDBMS systems for scenarios such as OLTP and data warehousing.
+* Structured, semi-structured (for example, JSON-like nested types), and unstructured (free text) data are handled equally well.
 
 ## Interacting with Azure Data Explorer
 
