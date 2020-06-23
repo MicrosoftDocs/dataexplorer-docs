@@ -16,7 +16,8 @@ as broadly belonging to one of two categories:
 * [Fact tables](https://en.wikipedia.org/wiki/Fact_table)
 * [Dimension tables](https://en.wikipedia.org/wiki/Dimension_(data_warehouse)#Dimension_table)
 
-**Fact tables** are tables whose records are immutable "facts", such as service logs
+## Fact tables
+Fact tables are tables whose records are immutable "facts", such as service logs
 and measurement information. Records are progressively appended into the table
 in a streaming fashion or in large chunks. The records are kept there until they have to be removed due to cost or because they've lost their value. Records are otherwise never updated.
 
