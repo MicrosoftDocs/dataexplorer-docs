@@ -44,7 +44,7 @@ Y<sub>i</sub> = a<sub>0</sub><sup>-1</sup>(b<sub>0</sub>X<sub>i</sub>
 </div>
 
 
-**Example**
+## Example
 
 Calculate a cumulative sum. 
 Use the iir filter with coefficients *a*=[1,-1] and *b*=[1]:  
