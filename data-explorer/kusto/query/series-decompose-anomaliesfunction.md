@@ -37,7 +37,7 @@ The function takes an expression containing a series (dynamic numerical array) a
     * “ctukey”: [Tukey’s fence test](https://en.wikipedia.org/wiki/Outlier#Tukey's_fences) with custom 10th-90th percentile range [default]
     * “tukey”: [Tukey’s fence test](https://en.wikipedia.org/wiki/Outlier#Tukey's_fences) with standard 25th-75th percentile range
 For more information on residual time series, see [series_outliers](series-outliersfunction.md)
-* *Seasonality_threshold*: The threshold for seasonality score when *Seasonality* is set to autodetect. The default score threshold is `0.6`. For more information, see: [series_periods_detect](series-periods-detectfunction.md)
+* *Seasonality_threshold*: The threshold for seasonality score when *Seasonality* is set to autodetect. The default score threshold is `0.6`. For more information, see [series_periods_detect](series-periods-detectfunction.md)
 
 **Return**
 
