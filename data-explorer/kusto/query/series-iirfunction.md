@@ -13,7 +13,7 @@ ms.date: 02/20/2019
 
 Applies an Infinite Impulse Response filter on a series.  
 
-The function takes an expression containing dynamic numerical array as input, and applies an [Infinite Impulse Response](https://en.wikipedia.org/wiki/Infinite_impulse_response) filter. By specifying the filter coefficients, the function can be used, for example:
+The function takes an expression containing dynamic numerical array as input, and applies an [Infinite Impulse Response](https://en.wikipedia.org/wiki/Infinite_impulse_response) filter. By specifying the filter coefficients, the function can be used:
 * to calculate the cumulative sum of the series
 * to apply smoothing operations
 * to apply various [high-pass](https://en.wikipedia.org/wiki/High-pass_filter), [band-pass](https://en.wikipedia.org/wiki/Band-pass_filter), and [low-pass](https://en.wikipedia.org/wiki/Low-pass_filter) filters
