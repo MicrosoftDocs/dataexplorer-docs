@@ -136,7 +136,7 @@ let PartialData = MyTable | where IsRestrictedUser and (...);
 union AllData, PartialData
 ```
 
-If the user isn't part of *some_group@domain.com*, then `IsRestrictedUser` will be evaluated to `false`, so the query that will be evaluated will be similar to this one:
+If the user isn't part of *some_group@domain.com*, then `IsRestrictedUser` will be evaluated to `false`. The query that will be evaluated is similar to this one:
 
 ```kusto
 let AllData = MyTable;           // the condition evaluates to `true`, so the filter is dropped
