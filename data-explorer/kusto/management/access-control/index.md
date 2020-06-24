@@ -12,7 +12,7 @@ ms.date: 11/25/2019
 ---
 # Kusto Access Control Overview
 
-Access Control in Kusto is based on two key factors.
+Access Control in Azure Data Explorer is based on two key factors.
 * [Authentication](#authentication): Validates the identity of the security principal making a request
 * [Authorization](#authorization): Validates that the security principal making a request is permitted to make that request on the target resource
 
