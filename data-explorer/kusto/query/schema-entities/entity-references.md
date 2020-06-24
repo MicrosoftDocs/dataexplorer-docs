@@ -38,4 +38,4 @@ Such names are system-reserved.
 ## Next steps
 
 * [schema entity types](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/)
-* [schema entity names](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/entity-names)
+* [schema entity names](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/entity-names)
