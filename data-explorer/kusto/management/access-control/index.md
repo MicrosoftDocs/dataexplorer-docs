@@ -71,7 +71,7 @@ When the Kusto client libraries invoke the Microsoft Authentication Library to a
 
 The token returned by the Microsoft Authentication Library to the Azure Data Explorer Client Library has the appropriate Azure Data Explorer cluster URL as the audience, and the "Access Azure Data Explorer" permission as the scope.
 
-**Example: Obtain an Azure AD User token for a Kusto cluster**
+**Example: Obtain an Azure AD User token for a Azure Data Explorer cluster**
 
 ```csharp
 // Create Auth Context for Azure AD (common or tenant-specific endpoint):
