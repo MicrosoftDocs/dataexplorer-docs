@@ -103,7 +103,7 @@ Once you have completed schema mapping and column manipulations, the ingestion w
 * If your data source is a **container**:
     * Azure Data Explorer's [batching policy](kusto/management/batchingpolicy.md) will aggregate your data. 
     * After ingestion, you can download the ingestion report and review the performance of each blob that was addressed. 
-    * You can choose to **Create continuous ingestion** and set up [continuous ingestion using Event Grid](one-click-ingestion-new-table.md##create-continuous-ingestion-for-container).
+    * You can choose to **Create continuous ingestion** and set up [continuous ingestion using Event Grid](one-click-ingestion-new-table.md#create-continuous-ingestion-for-container).
  
 ### Initial data exploration
    
