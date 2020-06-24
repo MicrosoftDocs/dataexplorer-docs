@@ -25,7 +25,7 @@ ms.date: 04/01/2020
 
 ## Ingestion properties
 
-Ingestion properties instruct the ingestion process, where to route the data, and how to process it. You can specify [Ingestion properties](../../../ingestion-properties.md) of the events ingestion using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
+Ingestion properties instruct the ingestion process, where to route the data, and how to process it. You can specify [ingestion properties](../../../ingestion-properties.md) of the events ingestion using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
 
 |Property |Description|
 |---|---|
