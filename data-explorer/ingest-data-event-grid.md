@@ -108,7 +108,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Wait until the deployment is completed. If your deployment is failed, you can select **Operation details** next to the failed stage to get more information for the failing reason. You can also select **Redeploy** to try to deploy the resources again.
 
-    ![Deploy Event Grid Resources](media\ingest-data-event-grid\deploy-event-grid-resources.png)
+    ![Deploy Event Grid Resources](media/ingest-data-event-grid/deploy-event-grid-resources.png)
 
 ## Generate sample data
 
