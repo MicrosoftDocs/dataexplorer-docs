@@ -66,9 +66,9 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 > * Ingest into an [existing table from a local file in JSON format](one-click-ingestion-existing-table.md) 
 
 The wizard guides you through the following options:
-    * Ingest into an [existing table](one-click-ingestion-existing-table.md)
-    * Ingest into [a new table](one-click-ingestion-new-table.md)
-    * Ingest data from:
+   * Ingest into an [existing table](one-click-ingestion-existing-table.md)
+   * Ingest into [a new table](one-click-ingestion-new-table.md)
+   * Ingest data from:
       * Blob storage
       * [A local file](one-click-ingestion-existing-table.md)
       * [A container](one-click-ingestion-new-table.md)
