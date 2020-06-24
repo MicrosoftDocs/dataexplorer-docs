@@ -28,9 +28,9 @@ Azure AD is the preferred method for authenticating to Azure Data Explorer in Mi
 
 ### User authentication
 
-User authentication is done when the user presents credentials to Azure AD or to an identity provider that works with Azure AD, such as ADFS. If successful, the user receives a security token that can be presented to the Kusto service. The Kusto service doesn't care how the security token was obtained. It cares about whether the token is valid and what information is put there by Azure AD (or the federated IdP).
+User authentication is done when the user presents credentials to Azure AD or to an identity provider that works with Azure AD, such as ADFS. If successful, the user receives a security token that can be presented to the Azure Data Explorer service. The Azure Data Explorer service doesn't care how the security token was obtained. It cares about whether the token is valid and what information is put there by Azure AD (or the federated IdP).
 
-On the client side, Kusto supports interactive authentication, where the Microsoft Authentication Library or similar code, requests the user to enter credentials. It also supports token-based authentication, where the application using Kusto obtains a valid user token. There's also a scenario in which the application using Kusto obtains a valid user token for some service other than Kusto, provided a trust relationship between that resource and Kusto exists.
+On the client side, Azure Data Explorer supports interactive authentication, where the Microsoft Authentication Library or similar code, requests the user to enter credentials. It also supports token-based authentication, where the application using Azure Data Explorer obtains a valid user token. There's also a scenario in which the application using  Azure Data Explorer obtains a valid user token for another service, provided a trust relationship between that resource and Azure Data Explorer exists.
 
 For more information, see [Kusto connection strings](../../api/connection-strings/kusto.md) for details on how to use the Kusto client libraries and authenticate by using Azure AD to Kusto.
 
