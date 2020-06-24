@@ -232,6 +232,9 @@ dataformat=parquet
 )
 ```
 
+> [!NOTE]
+> Currently, virtual columns are not supported for the following data formats: `CSV`, `TSV`, `TSVE`, `SCsv`, `SOHsv`, `PSV`, `RAW` and `TXT`.
+
 <a name="file-filtering"></a>
 **File filtering logic**
 
