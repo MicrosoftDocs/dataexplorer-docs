@@ -84,7 +84,7 @@ External data URI file path format, which can be specified in addition to partit
 
 &nbsp;&nbsp;[*StringSeparator*] *Partition* [*StringSeparator*] [*Partition* [*StringSeparator*] ...]  
 
-where *Partition* refers to a partition declared in `partition` `by` clause, and *StringSeparator* is any text enclosed in quotes.
+where *Partition* refers to a partition declared in `partition` `by` clause, and *StringSeparator* is any text enclosed in quotes. Consecutive partition elements must be set apart using *StringSeparator*.
 
 Original file path prefix can be constructed using partition elements rendered as strings and separated with corresponding text separators. To specify format used for rendering a datetime partition value, the following macro can be used:
 
@@ -231,6 +231,9 @@ dataformat=parquet
    h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
 )
 ```
+
+> [!NOTE]
+> Currently, virtual columns aren't supported for the following data formats: `CSV`, `TSV`, `TSVE`, `SCsv`, `SOHsv`, `PSV`, `RAW` and `TXT`.
 
 <a name="file-filtering"></a>
 **File filtering logic**
