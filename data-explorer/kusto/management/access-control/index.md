@@ -16,7 +16,7 @@ Access Control in Azure Data Explorer is based on two key factors.
 * [Authentication](#authentication): Validates the identity of the security principal making a request
 * [Authorization](#authorization): Validates that the security principal making a request is permitted to make that request on the target resource
 
-A query or a control command on a Kusto cluster, database, or a table, must pass both Authentication and Authorization checks.
+A query or a control command on an Azure Data Explorer cluster, database, or table, must pass both authentication and authorization checks.
 
 ## Authentication
 
