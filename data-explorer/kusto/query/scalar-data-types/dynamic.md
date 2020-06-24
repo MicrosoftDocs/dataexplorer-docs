@@ -195,6 +195,7 @@ arrays to hold aggregated values:
 | *value* `!in` *array*| True if there is no element of *array* that == *value*
 |[`array_length(`array`)`](../arraylengthfunction.md)| Null if it isn't an array
 |[`bag_keys(`bag`)`](../bagkeysfunction.md)| Enumerates all the root keys in a dynamic property-bag object.
+|[`bag_merge(`bag1,...,bagN`)`](../bag-merge-function.md)| Merges dynamic property-bags into a dynamic property-bag with all properties merged.
 |[`extractjson(`path,object`)`](../extractjsonfunction.md)|Uses path to navigate into object.
 |[`parse_json(`source`)`](../parsejsonfunction.md)| Turns a JSON string into a dynamic object.
 |[`range(`from,to,step`)`](../rangefunction.md)| An array of values
@@ -206,4 +207,3 @@ arrays to hold aggregated values:
 |[`summarize make_list_if(`column,predicate`)` ](../makelistif-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array (with predicate).
 |[`summarize make_list_with_nulls(`column`)` ](../make-list-with-nulls-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array, including null values.
 |[`summarize make_set(`column`)`](../makeset-aggfunction.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
-|[`summarize make_bag(`column`)`](../make-bag-aggfunction.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.
