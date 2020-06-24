@@ -97,4 +97,4 @@ Azure Data Explorer uses a [role-based authorization model](role-based-authoriza
 For example, the **database user role** grants security principals, users, or services, the right to read the data of a particular database, create tables in the database, and also create functions in it.
 
 The association of security principals to security roles can be defined individually,
-or by using security groups that are defined in Azure AD. The commands are defined in [Setting Role Based Authorization rules](../security-roles.md).
+or by using security groups that are defined in Azure AD. The commands are defined in [Setting role based authorization rules](../security-roles.md).
