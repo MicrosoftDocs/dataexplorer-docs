@@ -121,7 +121,7 @@ If tabular expression, the find operator falls back to a `union` query that can 
 * Add time-based filters to the predicate. Use a datetime column value or [ingestion_time()](./ingestiontimefunction.md).
 * Prefer to search in specific columns over full text search.
 * Prefer not to reference columns that appear in multiple tables and have multiple types. If the predicate is valid when resolving such columns type for more than one type, the query will fall back to union.
-For example, see [examples of cases where find will act as a union](./findoperator.md#examples-of-cases-where-find-will-perform-as-union).
+For example, see [examples of cases where find will act as a union](./findoperator.md#examples-of-cases-where-find-will-act-as-union).
  
 ## Examples
 
