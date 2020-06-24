@@ -143,7 +143,7 @@ If you don't already have one, [Create an event hub](https://docs.microsoft.com/
 A template can be found in the how-to [Create an event hub](../../../ingest-data-event-hub.md#create-an-event-hub) guide.
 
 > [!Note]
-> * The partition count is not changeable, so you should consider long-term scale when setting partition count.
+> * The partition count isn't changeable, so you should consider long-term scale when setting partition count.
 > * Consumer group *must* be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
 
 ### Data ingestion connection to Azure Data Explorer
