@@ -47,9 +47,9 @@ Under **Ingestion type**, do the following steps:
 
 A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
   
-  For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension.
+ * For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension.
 
-  :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
+    :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
   
 ## Edit the schema
 

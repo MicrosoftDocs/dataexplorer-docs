@@ -22,7 +22,7 @@ For different types or sources of data, see [Use one-click ingestion to ingest C
 
 In the left menu of the Web UI, right-click a *database* or *table* and select **Ingest new data (Preview)**.
 
-    :::image type="content" source="media/one-click-ingestion-existing-table/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
+   :::image type="content" source="media/one-click-ingestion-existing-table/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
  
 ## Select an ingestion type
 
@@ -57,7 +57,7 @@ Select **Edit schema** to view and edit your table column configuration.
     * In the **Source columns** fields, enter column names to map with the **Target columns**.
     * To delete a column from mapping, select the trash can icon.
 
-    :::image type="content" source="media/one-click-ingestion-existing-table/map-columns.png" alt-text="Map columns window"::: 
+      :::image type="content" source="media/one-click-ingestion-existing-table/map-columns.png" alt-text="Map columns window"::: 
     
 1. Select **Update**.
 1. In the **Schema** tab:
@@ -67,8 +67,8 @@ Select **Edit schema** to view and edit your table column configuration.
 
         :::image type="content" source="media/one-click-ingestion-existing-table/json-levels.png" alt-text="Select JSON levels":::
     
-    > [!TIP]
-    > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
+       > [!TIP]
+       > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
 
 ### Table 
 
