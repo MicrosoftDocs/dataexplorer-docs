@@ -161,7 +161,7 @@ dataLakeFileClient.Flush(position: fileSize, close: true); // Note: This line tr
 ```
 
 > [!NOTE]
-> When using [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload file, the first call to [CreateFile](https://docs.microsoft.com/en-us/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createfile?view=azure-dotnet) triggers an Event Grid event with size 0, and this event is ignored by ADX. Another event is triggered when calling Flush with a "close" parameter set to "true" to indicate that this is the final update (the file stream has been closed). This event is processed by the Event Grid data connection. For more information about flushing see [Azure Data Lake Flush method](https://docs.microsoft.com/en-us/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush?view=azure-dotnet).
+> When using [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload file, the first call to [CreateFile](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createfile?view=azure-dotnet) triggers an Event Grid event with size 0, and this event is ignored by ADX. Another event is triggered when calling Flush with a "close" parameter set to "true" to indicate that this is the final update (the file stream has been closed). This event is processed by the Event Grid data connection. For more information about flushing see [Azure Data Lake Flush method](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush?view=azure-dotnet).
 
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]
