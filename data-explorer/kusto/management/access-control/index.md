@@ -20,7 +20,7 @@ A query or a control command on an Azure Data Explorer cluster, database, or tab
 
 ## Authentication
 
-**Azure Active Directory (Azure AD)** is Azure's preferred multi-tenant cloud directory service. It can authenticate security principals or federate with other identity providers, such as Microsoft's Active Directory.
+**Azure Active Directory (Azure AD)** is Azure's preferred multi-tenant cloud directory service. It can authenticate security principals or federate with other identity providers.
 
 Azure AD is the preferred method for authenticating to Kusto in Microsoft. It supports a number of authentication scenarios.
 * **User authentication** (interactive sign-in): Used to authenticate human principals.
