@@ -1,5 +1,5 @@
 ---
-title: Data partitioning policy (Preview) - Azure Data Explorer
+title: Data partitioning policy - Azure Data Explorer
 description: This article describes Data partitioning policy (Preview) in Azure Data Explorer.
 services: data-explorer
 author: orspod
