@@ -76,7 +76,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Data connection name | *test-grid-connection* | The name of the connection that you want to create in Azure Data Explorer.|
     | Storage account subscription | Your subscription ID | The subscription ID where your storage account resides.|
     | Storage account | *gridteststorage1* | The name of the storage account that you created previously.|
-    | Resources creation | *Automatic* | Define whether you want ADX to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](..\data-explorer\kusto\management\data-ingestion\eventgrid.md#create-an-event-grid-subscription-in-your-storage-account) section.|
+    | Resources creation | *Automatic* | Define whether you want ADX to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](../data-explorer/kusto/management/data-ingestion/eventgrid.md#create-an-event-grid-subscription-in-your-storage-account) section.|
     | | |
 
 1. Select **Filter settings** if you want to track files from a specific container. Set the filters for the notifications as follows:
