@@ -69,7 +69,7 @@ When the Kusto client libraries invoke the Microsoft Authentication Library to a
 1. The Azure AD Client Application Redirect URI
 1. The Azure AD Tenant, that affects the Azure AD endpoint used for authentication. For example, for Azure AD tenant `microsoft.com`, the Azure AD endpoint is `https://login.microsoftonline.com/microsoft.com`)
 
-The token returned by the Microsoft Authentication Library to the Kusto Client Library has the appropriate Kusto cluster URL as the audience, and the "Access Kusto" permission as the scope.
+The token returned by the Microsoft Authentication Library to the Azure Data Explorer Client Library has the appropriate Azure Data Explorer cluster URL as the audience, and the "Access Azure Data Explorer" permission as the scope.
 
 **Example: Obtain an Azure AD User token for a Kusto cluster**
 
