@@ -64,10 +64,10 @@ When an MSA principal is configured on a Kusto resource, Kusto **won't** attempt
 
 When the Kusto client libraries invoke the Microsoft Authentication Library to acquire a token for communicating with Kusto, it provides the following information:
 
-1. The Resource (Cluster URI, such as, `https://Cluster-and-region.kusto.windows.net`)
-1. The Azure AD Client Application ID
-1. The Azure AD Client Application Redirect URI
-1. The Azure AD Tenant, that affects the Azure AD endpoint used for authentication. For example, for Azure AD tenant `microsoft.com`, the Azure AD endpoint is `https://login.microsoftonline.com/microsoft.com`)
+* The Resource (Cluster URI, such as, `https://Cluster-and-region.kusto.windows.net`)
+* The Azure AD Client Application ID
+* The Azure AD Client Application Redirect URI
+* The Azure AD Tenant, that affects the Azure AD endpoint used for authentication. For example, for Azure AD tenant `microsoft.com`, the Azure AD endpoint is `https://login.microsoftonline.com/microsoft.com`)
 
 The token returned by the Microsoft Authentication Library to the Azure Data Explorer Client Library has the appropriate Azure Data Explorer cluster URL as the audience, and the "Access Azure Data Explorer" permission as the scope.
 
