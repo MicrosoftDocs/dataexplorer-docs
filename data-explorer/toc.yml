@@ -1318,11 +1318,9 @@
           href: ./kusto/management/show-function.md
     - name: Policies
       items:
-      - name: Policies overview
-        href: ./kusto/management/policies.md
       - name: Cache policy
         items:
-        - name: Cache policy
+        - name: Cache policy (hot and cold cache)
           href: ./kusto/management/cachepolicy.md
         - name: cache policy command
           href: ./kusto/management/cache-policy.md
@@ -1342,13 +1340,13 @@
         items:
         - name: Row Level Security policy
           href: ./kusto/management/rowlevelsecuritypolicy.md
-        - name: row_level_securityy policy command
+        - name: row_level_security policy command
           href: ./kusto/management/row-level-security-policy.md
       - name: RowOrder policy
         items:
         - name: Row Order policy
           href: ./kusto/management/roworderpolicy.md
-        - name: roworder command
+        - name: roworder policy command
           href: ./kusto/management/roworder-policy.md
       - name: Update policy
         items:
@@ -1358,7 +1356,7 @@
           href: ./kusto/management/update-policy.md
       - name: Batch policy
         items:
-        - name: Ingestion batching policy
+        - name: IngestionBatching policy
           href: ./kusto/management/batchingpolicy.md
         - name: ingestionbatching policy command
           href: ./kusto/management/batching-policy.md
@@ -1404,7 +1402,7 @@
         items:
         - name: Capacity policy
           href: ./kusto/management/capacitypolicy.md
-        - name: capacity policy command
+        - name: capacity policy commands
           href: ./kusto/management/capacity-policy.md
     - name: Security Roles
       href: ./kusto/management/security-roles.md

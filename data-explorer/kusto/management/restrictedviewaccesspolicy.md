@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 ---
-# RestrictedViewAccess policy
+# Restricted view access policy
 
 *RestrictedViewAccess* is an optional policy that can be enabled on tables in a database.
 

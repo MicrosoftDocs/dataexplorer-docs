@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
 ---
-# Data partitioning policy
+# Partitioning policy
 
 The partitioning policy defines if and how [Extents (data shards)](../management/extents-overview.md) should be partitioned, for a specific table.
 

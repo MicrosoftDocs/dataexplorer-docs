@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
 ---
-# Streaming ingestion policy management
+# Streaming ingestion policy command
 
 Streaming ingestion policy can be set on a table to allow streaming ingestion into this table. The policy can also be set at the database level to apply the same setting to both current and future tables.
 
