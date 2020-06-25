@@ -1319,11 +1319,11 @@
     - name: Policies
       items:
       - name: Batch policy
-       items:
-       - name: IngestionBatching policy
-         href: ./kusto/management/batchingpolicy.md
-       - name: ingestionbatching policy command
-         href: ./kusto/management/batching-policy.md
+        items:
+        - name: IngestionBatching policy
+          href: ./kusto/management/batchingpolicy.md
+        - name: ingestionbatching policy command
+          href: ./kusto/management/batching-policy.md
       - name: Cache policy
         items:
         - name: Cache policy (hot and cold cache)
