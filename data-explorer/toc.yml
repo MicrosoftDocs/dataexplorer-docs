@@ -1318,48 +1318,32 @@
           href: ./kusto/management/show-function.md
     - name: Policies
       items:
+        - name: Batch policy
+        items:
+        - name: IngestionBatching policy
+          href: ./kusto/management/batchingpolicy.md
+        - name: ingestionbatching policy command
+          href: ./kusto/management/batching-policy.md
       - name: Cache policy
         items:
         - name: Cache policy (hot and cold cache)
           href: ./kusto/management/cachepolicy.md
         - name: cache policy command
           href: ./kusto/management/cache-policy.md
+      - name: Callout policy
+        href: ./kusto/management/calloutpolicy.md
+      - name: Capacity policy
+        items:
+        - name: Capacity policy
+          href: ./kusto/management/capacitypolicy.md
+        - name: capacity policy commands
+          href: ./kusto/management/capacity-policy.md
       - name: IngestionTime policy
         items:
         - name: Ingestiontime policy
           href: ./kusto/management/ingestiontimepolicy.md
         - name: ingestiontime policy command
           href: ./kusto/management/ingestiontime-policy.md
-      - name: Retention policy
-        items:
-        - name: Retention policy
-          href: ./kusto/management/retentionpolicy.md
-        - name: retention policy command
-          href: ./kusto/management/retention-policy.md
-      - name: RowLevelSecurity policy
-        items:
-        - name: Row Level Security policy
-          href: ./kusto/management/rowlevelsecuritypolicy.md
-        - name: row_level_security policy command
-          href: ./kusto/management/row-level-security-policy.md
-      - name: RowOrder policy
-        items:
-        - name: Row Order policy
-          href: ./kusto/management/roworderpolicy.md
-        - name: roworder policy command
-          href: ./kusto/management/roworder-policy.md
-      - name: Update policy
-        items:
-        - name: Update policy
-          href: ./kusto/management/updatepolicy.md
-        - name: update policy command
-          href: ./kusto/management/update-policy.md
-      - name: Batch policy
-        items:
-        - name: IngestionBatching policy
-          href: ./kusto/management/batchingpolicy.md
-        - name: ingestionbatching policy command
-          href: ./kusto/management/batching-policy.md
       - name: Merge policy
         items:
         - name: Merge policy
@@ -1372,12 +1356,30 @@
           href: ./kusto/management/partitioningpolicy.md
         - name: partitioning policy command
           href: ./kusto/management/partitioning-policy.md
+      - name: Retention policy
+        items:
+        - name: Retention policy
+          href: ./kusto/management/retentionpolicy.md
+        - name: retention policy command
+          href: ./kusto/management/retention-policy.md
       - name: Restricted View Access policy
         items:
         - name: Restricted View Access policy
           href: ./kusto/management/restrictedviewaccesspolicy.md
         - name: restricted_view_access policy command
           href: ./kusto/management/restrictedviewaccess-policy.md
+      - name: RowLevelSecurity policy
+        items:
+        - name: Row Level Security policy
+          href: ./kusto/management/rowlevelsecuritypolicy.md
+        - name: row_level_security policy command
+          href: ./kusto/management/row-level-security-policy.md
+      - name: RowOrder policy
+        items:
+        - name: Row Order policy
+          href: ./kusto/management/roworderpolicy.md
+        - name: roworder policy command
+          href: ./kusto/management/roworder-policy.md
       - name: Sandbox policy
         items:
         - name: Sandbox policy
@@ -1396,14 +1398,12 @@
           href: ./kusto/management/streamingingestionpolicy.md
         - name: streamingingestion policy command
           href: ./kusto/management/streamingingestion-policy.md
-      - name: Callout policy
-        href: ./kusto/management/calloutpolicy.md
-      - name: Capacity policy
+      - name: Update policy
         items:
-        - name: Capacity policy
-          href: ./kusto/management/capacitypolicy.md
-        - name: capacity policy commands
-          href: ./kusto/management/capacity-policy.md
+        - name: Update policy
+          href: ./kusto/management/updatepolicy.md
+        - name: update policy command
+          href: ./kusto/management/update-policy.md
     - name: Security Roles
       href: ./kusto/management/security-roles.md
     - name: Data Ingestion
