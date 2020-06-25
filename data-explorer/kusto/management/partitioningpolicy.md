@@ -159,7 +159,7 @@ Data partitioning policy object with two partition keys.
 
 ### Additional properties
 
-The following properties can be defined as part of the policy, but are optional and we recommended that you don't change them.
+The following properties can be defined as part of the policy, but are optional and we recommend that you don't change them.
 
 * **MinRowCountPerOperation**:
   * Minimum target for the sum of row count of the source extents of a single data partitioning operation.
@@ -168,6 +168,7 @@ The following properties can be defined as part of the policy, but are optional 
 * **MaxRowCountPerOperation**:
   * Maximum target for the sum of the row count of the source extents of a single data partitioning operation.
   * This property is optional. Its default value is `0`, with a default target of 5,000,000 records.
+    * Reducing the value can be done if you see that partitioning operations consume a large amount of memory / CPU per operation (See #monitoring).
 
 ## Notes
 
