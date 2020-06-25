@@ -1160,29 +1160,29 @@
       items:
       - name: User analytics plugins
         href: ./kusto/query/useranalytics.md
-      - name: Active users count plugin
+      - name: active_users_count plugin
         href: ./kusto/query/active-users-count-plugin.md
-      - name: Activity counts metrics plugin
+      - name: activity_counts_metrics plugin
         href: ./kusto/query/activity-counts-metrics-plugin.md
-      - name: Activity engagement plugin
+      - name: activity_engagement plugin
         href: ./kusto/query/activity-engagement-plugin.md
-      - name: Activity metrics plugin
+      - name: activity_metrics plugin
         href: ./kusto/query/activity-metrics-plugin.md
-      - name: Activity Metrics plugin - New
+      - name: new_activity_metrics plugin
         href: ./kusto/query/new-activity-metrics-plugin.md
-      - name: Funnel sequence completion plugin
+      - name: funnel_sequence_completion plugin
         href: ./kusto/query/funnel-sequence-completion-plugin.md
-      - name: Funnel sequence plugin
+      - name: funnel_sequence plugin
         href: ./kusto/query/funnel-sequence-plugin.md
-      - name: Session count plugin
+      - name: session_count plugin
         href: ./kusto/query/session-count-plugin.md
-      - name: Sliding window counts plugin
+      - name: sliding_window_counts plugin
         href: ./kusto/query/sliding-window-counts-plugin.md
     - name: Reference material for Kusto Query Language
       items:
       - name: RE2 syntax
         href: ./kusto/query/re2.md
-      - name: SQL to Kusto Cheat Sheet
+      - name: SQL to Kusto cheat sheet
         href: ./kusto/query/sqlcheatsheet.md
   - name: Concepts
     href: ./kusto/concepts/index.md
@@ -1216,34 +1216,33 @@
   - name: Management
     href: ./kusto/management/index.md
     items:
-    - name: Overview
+    - name: Management (control commands) overview
       href: ./kusto/management/index.md
       items:
-      - name: Best practices
+      - name: Best practices for schema design
         href: ./kusto/management/best-practices.md
     - name: Schema
-      href: ./kusto/management/schema.md
       items:
-      - name: Databases
+      - name: Databases management
         href: ./kusto/management/databases.md
         items:
         - name: .show databases
           href: ./kusto/management/show-databases.md
         - name: .show database
           href: ./kusto/management/show-database.md
-        - name: .show cluster database
+        - name: .show cluster databases
           href: ./kusto/management/show-cluster-database.md
-        - name: .alter database
+        - name: .alter database prettyname
           href: ./kusto/management/alter-database.md
-        - name: .show database schema
+        - name: .show databases schema
           href: ./kusto/management/show-schema-database.md
         - name: .execute database script
           href: ./kusto/management/execute-database-script.md
       - name: Tables
         items:
-        - name: Tables overview
+        - name: Tables management
           href: ./kusto/management/tables.md
-        - name: .alter merge table
+        - name: .alter-merge table
           href: ./kusto/management/alter-merge-table-command.md
         - name: .alter table
           href: ./kusto/management/alter-table-command.md
@@ -1267,9 +1266,9 @@
           href: ./kusto/management/create-merge-tables-command.md
         - name: .drop table(s)
           href: ./kusto/management/drop-table-command.md
-        - name: .rename table
+        - name: .rename table(s)
           href: ./kusto/management/rename-table-command.md
-        - name: .show table
+        - name: .show tables
           href: ./kusto/management/show-tables-command.md
         - name: .undo drop table
           href: ./kusto/management/undo-drop-table-command.md
@@ -1287,7 +1286,7 @@
           href: ./kusto/management/external-tables-azurestorage-azuredatalake.md  
       - name: Columns
         items:
-        - name: Columns overview
+        - name: Columns management
           href: ./kusto/management/columns.md
         - name: .alter column
           href: ./kusto/management/alter-column.md
@@ -1297,17 +1296,17 @@
           href: ./kusto/management/drop-column.md
         - name: .rename column(s)
           href: ./kusto/management/rename-column.md
-      - name: Mappings
+      - name: Data mappings
         href: ./kusto/management/mappings.md
       - name: Functions
         items:
-        - name: Functions overview
+        - name: Stored functions management overview
           href: ./kusto/management/functions.md
         - name: .alter function
           href: ./kusto/management/alter-function.md
-        - name: .alter docstring function
+        - name: .alter function docstring
           href: ./kusto/management/alter-docstring-function.md
-        - name: .alter folder function
+        - name: .alter function folder
           href: ./kusto/management/alter-folder-function.md
         - name: .create function
           href: ./kusto/management/create-function.md
@@ -1315,7 +1314,7 @@
           href: ./kusto/management/create-alter-function.md
         - name: .drop function
           href: ./kusto/management/drop-function.md
-        - name: .show function
+        - name: .show functions
           href: ./kusto/management/show-function.md
     - name: Policies
       items:
