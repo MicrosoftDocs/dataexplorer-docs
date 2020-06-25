@@ -8,8 +8,6 @@ ms.reviewer: amitof
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2020
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
 ---
 # Query results cache
 
@@ -32,7 +30,7 @@ The option value is a `timespan` that indicates the maximum "age" of the results
 
 ### Identical queries
 
-The query_results_cache returns results only for queries that are considered "identical" to a previous cached query. Two queries are considered identical if all of the following conditions are met:
+The query results cache returns results only for queries that are considered "identical" to a previous cached query. Two queries are considered identical if all of the following conditions are met:
 
 * The two queries have the same representation (as UTF-8 strings).
 * The two queries are made to the same database.
@@ -45,7 +43,7 @@ The query_results_cache returns results only for queries that are considered "id
 
 The query results will not be cached if any of the following conditions is true:
  
-* The query references a table with which has [RestrictedViewAccess](../management/restrictedviewaccesspolicy.md) policy enabled.
+* The query references a table that has the [RestrictedViewAccess](../management/restrictedviewaccesspolicy.md) policy enabled.
 * The query references a table that has the [RowLevelSecurity](../management/rowlevelsecuritypolicy.md) policy enabled.
 * The query uses any of the following functions:
     * [current_principal](current-principalfunction.md)
