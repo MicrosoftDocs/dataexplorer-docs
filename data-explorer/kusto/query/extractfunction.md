@@ -19,7 +19,7 @@ Optionally, convert the extracted substring to the indicated type.
 
 **Syntax**
 
-`extract(`*regex*`,` *captureGroup*`,` *text* [`,` *typeLiteral*]`)`
+`extract(`*regex*`,` *captureGroup*`,` *text* `,` [*typeLiteral*]`)`
 
 **Arguments**
 
