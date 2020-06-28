@@ -916,9 +916,9 @@
         href: ./kusto/query/todatetimefunction.md
       - name: todecimal()
         href: ./kusto/query/todecimalfunction.md
-      - name: todouble()
+      - name: todouble(), toreal()
         href: ./kusto/query/todoublefunction.md
-      - name: todynamic()
+      - name: todynamic(), tooobject()
         href: ./kusto/query/todynamicfunction.md
       - name: toguid()
         href: ./kusto/query/toguidfunction.md
@@ -930,8 +930,6 @@
         href: ./kusto/query/tolongfunction.md
       - name: tolower()
         href: ./kusto/query/tolowerfunction.md
-      - name: toreal()
-        href: ./kusto/query/todoublefunction.md
       - name: tostring()
         href: ./kusto/query/tostringfunction.md
       - name: totimespan()
@@ -1024,7 +1022,7 @@
         href: ./kusto/query/min-aggfunction.md
       - name: minif()
         href: ./kusto/query/minif-aggfunction.md
-      - name: percentiles()
+      - name: percentiles(), percentile()
         href: ./kusto/query/percentiles-aggfunction.md
       - name: stdev()
         href: ./kusto/query/stdev-aggfunction.md
