@@ -816,6 +816,8 @@
         href: ./kusto/query/packarrayfunction.md
       - name: pack_dictionary()
         href: ./kusto/query/packdictionaryfunction.md
+      - name: parse_command_line()
+        href: ./kusto/query/parse-command-line.md
       - name: parse_csv()
         href: ./kusto/query/parsecsvfunction.md
       - name: parse_ipv4()
