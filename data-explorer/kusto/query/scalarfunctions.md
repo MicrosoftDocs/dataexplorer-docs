@@ -88,7 +88,6 @@ ms.date: 05/27/2020
 |[treepath()](treepathfunction.md)|Enumerates all the path expressions that identify leaves in a dynamic object.|
 |[zip()](zipfunction.md)|The zip function accepts any number of dynamic arrays. Returns an array whose elements are each an array with the elements of the input arrays of the same index.|
 
-
 ## Window scalar functions
 
 |Function Name     |Description                                          |
@@ -237,6 +236,7 @@ ms.date: 05/27/2020
 |[isnotempty()](isnotemptyfunction.md)|Returns true if the argument isn't an empty string or a null.|
 |[isnotnull()](isnotnullfunction.md)|Returns true if the argument is not null.|
 |[isnull()](isnullfunction.md)|Evaluates its sole argument and returns a bool value indicating if the argument evaluates to a null value.|
+|[parse_command_line()](parse-command-line.md)|Parses a Unicode command line string and returns an array of the command line arguments.|
 |[parse_csv()](parsecsvfunction.md)|Splits a given string representing comma-separated values and returns a string array with these values.|
 |[parse_ipv4()](parse-ipv4function.md)|Converts input to long (signed 64-bit) number representation.|
 |[parse_ipv4_mask()](parse-ipv4-maskfunction.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
