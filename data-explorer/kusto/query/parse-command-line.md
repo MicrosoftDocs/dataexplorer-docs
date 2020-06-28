@@ -11,7 +11,7 @@ ms.date: 06/28/2020
 ---
 # parse_command_line()
 
-Parses a Unicode command-line string and returns an array of the command-line arguments.
+Parses a Unicode command-line string and returns a dynamic array of the command-line arguments.
 
 **Syntax**
 
@@ -24,7 +24,7 @@ Parses a Unicode command-line string and returns an array of the command-line ar
 
 **Returns**
 
-An array of the command-line arguments.
+A dynamic array of the command-line arguments.
 
 **Example**
 
