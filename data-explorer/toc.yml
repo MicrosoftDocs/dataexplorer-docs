@@ -918,7 +918,7 @@
         href: ./kusto/query/todecimalfunction.md
       - name: todouble(), toreal()
         href: ./kusto/query/todoublefunction.md
-      - name: todynamic(), tooobject()
+      - name: todynamic(), toobject()
         href: ./kusto/query/todynamicfunction.md
       - name: toguid()
         href: ./kusto/query/toguidfunction.md
