@@ -20,7 +20,7 @@ Parses a Unicode command-line string and returns an array of the command-line ar
 **Arguments**
 
 * *command_line*: Command line to parse.
-* *parser_type*: The only value that is currently supported is `"Windows"`, which parses the command line the same way as [CommandLineToArgvW](https://docs.microsoft.com/en-us/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw).
+* *parser_type*: The only value that is currently supported is `"Windows"`, which parses the command line the same way as [CommandLineToArgvW](https://docs.microsoft.com/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw).
 
 **Returns**
 
