@@ -15,7 +15,7 @@ Data export is the process that runs a Kusto query and writes its results. The q
 
 There are several methods for data export:
 
-* **Client-side export**:
+## Client-side export
   In its simplest form, data export can be done on the client side. The client
   runs a query against the service, reads back the results, and then writes them
 . This form of data export depends on the client tool to do the
