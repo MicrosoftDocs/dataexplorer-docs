@@ -45,4 +45,4 @@ To do the export in a secure manner:
 
 * Use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals), such as `h@"..."`, when sending secrets. The secrets will be scrubbed so that they don't appear in any trace emitted internally.
 
-Additionally, passwords and similar secrets should be stored securely and "pulled" by the application, as needed.
+* Passwords and similar secrets should be stored securely and "pulled" by the application, as needed.
