@@ -22,8 +22,8 @@ tobool(123) == true
 
 **Syntax**
 
-`tobool(`*`Expr`*`)`
-`toboolean(`*`Expr`*`)` (alias)
+`tobool(`*Expr*`)`
+`toboolean(`*Expr*`)` (alias)
 
 **Arguments**
 
