@@ -20,7 +20,7 @@ The function is useful in a join, like in the following scenario:
 The above operation differs from the usual Kusto join operation, since for the *`equi-join`* part of matching the high-cardinality key between the left and right data sets, the system can also apply a distance function and use it to considerably speed up the join.
 
 > [!NOTE]
-> A distance function does not behave like equality (that is, when both dist(x,y) and dist(y,z) are true it does not follow that dist(x,z) is also true.) Internally, we sometimes refer to this as "diagonal join".
+> A distance function doesn't behave like equality (that is, when both dist(x,y) and dist(y,z) are true it doesn't follow that dist(x,z) is also true.) Internally, we sometimes refer to this as "diagonal join".
 
 For example, if you want to identify event sequences within a relatively small time window, assume that you have a table `T` with the following schema:
 
