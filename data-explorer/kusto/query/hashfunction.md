@@ -33,8 +33,8 @@ The hash value of the given scalar, modulo the given mod value (if specified).
 > within a single query all invocations of this method use the same algorithm.
 > Consequently, users are advised to not store the results of `hash()` in a
 > table. If persisting hash values is required, consider using
-> [hash_sha256()](./sha256hashfunction.md) instead (but note that
-> it is far more complex to calculate than `hash()`).
+> [hash_sha256()](./sha256hashfunction.md) or [hash_md5()](./md5hashfunction.md) instead
+> (note these are far more complex to calculate than `hash()`).
 
 **Examples**
 
