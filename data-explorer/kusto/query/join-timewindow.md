@@ -14,7 +14,7 @@ ms.date: 02/13/2020
 It's often useful to join between two large data sets on some high-cardinality key, such as an operation ID or a session ID, and further limit the right-hand-side ($right) records that need to match up with each left-hand-side ($left) record by adding a restriction on the "time-distance" between datetime columns on the left and on the right.
 
 The function is useful in a join, like in the following scenario:
-* Join between two large data sets according to some high-cardinality key, such as an operation ID or a session ID,
+* Join between two large data sets according to some high-cardinality key, such as an operation ID or a session ID.
 * Limit the right-hand-side ($right) records that need to match up with each left-hand-side ($left) record, by adding a restriction on the "time-distance" between datetime columns on the left and on the right.
 
 The above operation differs from the usual Kusto join operation, since for the *`equi-join`* part of matching the high-cardinality key between the left and right data sets, the system can also apply a distance function and use it to considerably speed up the join.
