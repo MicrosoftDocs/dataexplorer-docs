@@ -25,7 +25,7 @@ There are several methods for data export:
 
 * **Service-side export (pull)**:
   If the target of the export is a table in the same or different cluster/database
-  as the query, or on another, use the "ingest from query" flow on the target table. In this flow, a query is run and its results are immediately ingested into a Kusto table. For more information, see [data ingestion](../../../ingest-data-overview.md).
+  as the query, use "ingest from query" on the target table. In this flow, a query is run and its results are immediately ingested into a table. For more information, see [data ingestion](../../../ingest-data-overview.md).
 
 * **Service-side export (push)**:
   The above methods are limited. The query results must stream through a single network connection between the producer doing the query, and the consumer who writes its results.
