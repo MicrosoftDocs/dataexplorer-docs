@@ -229,6 +229,7 @@
           - name: Azure Resource Manager template
             href: cluster-principal-resource-manager.md
       - name: Manage cluster language extensions
+        displayName: Python, R
         href: language-extensions.md
     - name: Database
       items:
