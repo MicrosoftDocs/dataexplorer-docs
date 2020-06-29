@@ -1,5 +1,5 @@
 ---
-title: tobool() - Azure Data Explorer | Microsoft Docs
+title: tobool() - Azure Data Explorer
 description: This article describes tobool() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -22,8 +22,8 @@ tobool(123) == true
 
 **Syntax**
 
-`tobool(`*Expr*`)`
-`toboolean(`*Expr*`)` (alias)
+`tobool(`*`Expr`*`)`
+`toboolean(`*`Expr`*`)` (alias)
 
 **Arguments**
 
@@ -32,5 +32,4 @@ tobool(123) == true
 **Returns**
 
 If conversion is successful, result will be a boolean.
-If conversion is not successful, result will be `null`.
- 
+If conversion isn't successful, result will be `null`.
