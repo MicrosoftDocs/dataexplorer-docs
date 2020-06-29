@@ -25,14 +25,14 @@ Data shards are called **extents** in Kusto, and all commands use "extent" or "e
 Shows information about extents (data shards) that are present in the cluster.
 If `hot` is specified - shows only extents that are expected to be in the hot cache.
 
-**Database Level**
+### Database Level
 
 `.show` `database` *DatabaseName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
 
 Shows information about extents (data shards) that are present in the specified database.
 If `hot` is specified - shows only extents that expected to be in the hot cache.
 
-**Table Level**
+### Table Level
 
 `.show` `table` *TableName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
 
@@ -41,7 +41,7 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 Shows information about extents (data shards) that are present in the specified tables. The database is taken from the command's context.
 If `hot` is specified, shows only extents that are expected to be in the hot cache.
 
-**NOTES**
+### Notes
 
 * Using database or table level commands is much faster than filtering (adding `| where DatabaseName == '...' and TableName == '...'`) the results of a cluster-level command.
 * If the optional list of extent IDs is provided, the returned data set is limited to those extents only.
@@ -54,7 +54,8 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
   * `contains` filters are case-insensitive substring filters. Extents that don't have the specified strings as a substring of any of their tags will be filtered out.
   * `!contains` filters are case-insensitive substring negative filters. Extents that have the specified strings as a substring of any of their tags will be filtered out.
   
-  * **Examples**
+    #### Examples
+    
     * Extent `E` in table `T` is tagged with tags `aaa`, `BBB`, and `ccc`.
     * This query will return `E`:
     
@@ -73,6 +74,7 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
     ```kusto
     .show table T extents where tags contains 'aaa' and tags contains 'bb' 
     ```
+### Output parameters
 
 |Output parameter |Type |Description |
 |---|---|---|
@@ -93,7 +95,7 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
 |MinCreatedOn |DateTime |Date-time when the extent was created. For a merged extent, the minimum of creation times among the source extents
 |Tags|String|Tags, if any, defined for the extent
  
-**Examples**
+### Examples
 
 ```kusto 
 // Show volume of extents being created per hour in a specific database
@@ -119,7 +121,7 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
 
 ## .merge extents
 
-**Syntax**
+### Syntax
 
 `.merge` `[async | dryrun]` *TableName* `(` *GUID1* [`,` *GUID2* ...] `)` `[with(rebuild=true)]`
 
@@ -136,7 +138,7 @@ There are three options available:
 * `dryrun`: The operation will only list the extents that should be merged, but won't actually merge them.
 * `with(rebuild=true)`: The extents will be rebuilt and the data reingested instead of merged. The indexes will be rebuilt.
 
-**Return output**
+### Return output
 
 Output parameter |Type |Description
 ---|---|---
@@ -144,7 +146,7 @@ OriginalExtentId |string |A unique identifier (GUID) for the original extent in 
 ResultExtentId |string |A unique identifier (GUID) for the extent that was created from the source extents. Upon failure - "Failed" or "Abandoned".
 Duration |timespan |The time period it took to complete the merge operation.
 
-**Examples**
+### Examples
 
 Rebuild two specific extents in `MyTable`, asynchronously.
 
@@ -158,7 +160,7 @@ Merge two specific extents in `MyTable`, synchronously.
 .merge MyTable (12345050-a1e2-4dad-8552-1f5cf47cab69, 98765b2d-9dd2-4d2c-a45e-b24c65aa6687)
 ```
 
-**Notes**
+### Notes
 
 * In General, `.merge` commands should rarely be manually run. The commands are continuously and automatically run in the background of the Kusto cluster, according to the [Merge Policies](mergepolicy.md) for tables and databases.  
   * For more information on the criteria for merging multiple extents into a single one, see [Merge Policy](mergepolicy.md).
@@ -174,7 +176,7 @@ This command runs in the context of a specific database. It moves the specified 
 
 The command requires [Table admin permission](../management/access-control/role-based-authorization.md) for the source and destination tables.
 
-**Syntax**
+### Syntax
 
 `.move` [`async`] `extents` `all` `from` `table` *SourceTableName* `to` `table` *DestinationTableName*
 
@@ -182,22 +184,22 @@ The command requires [Table admin permission](../management/access-control/role-
 
 `.move` [`async`] `extents` `to` `table` *DestinationTableName* <| *query*
 
-* `async` (optional). Execute the command asynchronously. 
-    * An Operation ID (Guid) is returned.
-    * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command).
-    * The results of a successful execution can be retrieved. Use the [.show operation details](operations.md#show-operation-details) command.
+`async` (optional). Execute the command asynchronously. 
+   * An Operation ID (Guid) is returned.
+   * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command).
+   * The results of a successful execution can be retrieved. Use the [.show operation details](operations.md#show-operation-details) command.
 
 There are three ways to specify which extents to move:
 * All extents of a specific table are to be moved.
 * By explicitly specifying the extent IDs in the source table.
 * By providing a query whose results specify the extent IDs in the source tables.
 
-**Restrictions**
+### Restrictions
 
 * Both source and destination tables must be in the context database.
 * All columns in the source table are expected to exist in the destination table with the same name and data type.
 
-**Specify extents with a Query**
+### Specify extents with a Query
 
 ```kusto
 .move extents to table TableName <| ...query...
@@ -205,7 +207,7 @@ There are three ways to specify which extents to move:
 
 The extents are specified using a Kusto query that returns a recordset with a column called *ExtentId*.
 
-**Return output** (for sync execution)
+### Return output (for sync execution)
 
 Output parameter |Type |Description
 ---|---|---
@@ -213,7 +215,7 @@ OriginalExtentId |string |A unique identifier (GUID) for the original extent in 
 ResultExtentId |string |A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Upon failure - "Failed".
 Details |string |Includes the failure details, in case the operation fails.
 
-**Examples**
+### Examples
 
 Move all extents in table `MyTable` to table `MyOtherTable`.
 
@@ -233,7 +235,7 @@ Move all extents from specific tables (`MyTable1`, `MyTable2`) to table `MyOther
 .move extents to table MyOtherTable <| .show tables (MyTable1,MyTable2) extents
 ```
 
-**Sample output** 
+### Sample output
 
 |OriginalExtentId |ResultExtentId| Details
 |---|---|---
@@ -256,7 +258,7 @@ A recordset with a column called "ExtentId" is returned.
 
 If `whatif` is used, will just report them, without actually dropping.
 
-**Syntax**
+#### Syntax
 
 `.drop` `extents` [`whatif`] <| *query*
 
@@ -266,7 +268,7 @@ Requires [Table admin permission](../management/access-control/role-based-author
 
 Requires [Database admin permission](../management/access-control/role-based-authorization.md) if table name isn't specified.
 
-**Syntax**
+#### Syntax
 
 `.drop` `extent` *ExtentId* [`from` *TableName*]
 
@@ -276,7 +278,7 @@ Requires [Table admin permission](../management/access-control/role-based-author
 
 Requires [Database admin permission](../management/access-control/role-based-authorization.md) in case table name isn't specified.
 
-**Syntax**
+#### Syntax
 
 `.drop` `extents` `(`*ExtentId1*`,`...*ExtentIdN*`)` [`from` *TableName*]
 
@@ -288,7 +290,7 @@ Requires [Table admin permission](../management/access-control/role-based-author
 
 Requires [Database admin permission](../management/access-control/role-based-authorization.md) if table name isn't specified.
 
-**Syntax**
+#### Syntax
 
 `.drop` `extents` [`older` *N* (`days` | `hours`)] `from` (*TableName* | `all` `tables`) [`trim` `by` (`extentsize` | `datasize`) *N* (`MB` | `GB` | `bytes`)] [`limit` *LimitCount*]
 
@@ -296,7 +298,7 @@ Requires [Database admin permission](../management/access-control/role-based-aut
 * `trim`: The operation will trim the data in the database until the sum of extents matches the required size (MaxSize).
 * `limit`: The operation will be applied to first *LimitCount* extents.
 
-**Examples**
+### Examples
 
 Remove all extents created more than 10 days previous, from all tables in database `MyDatabase`.
 
@@ -312,8 +314,8 @@ Remove all extents in tables `Table1` and `Table2`, whose creation time was over
 
 Emulation mode: Show which extents would be removed by the command:
 
-> [!NOTE]
-> Extent ID parameter isn't applicable for this command.
+>[!NOTE]
+>Extent ID parameter isn't applicable for this command.
 
 ```kusto
 .drop-pretend extents older 10 days from all tables
@@ -325,7 +327,7 @@ Remove all extents from 'TestTable'.
 .drop extents from TestTable
 ```
  
-**Return output**
+### Return output
 
 |Output parameter |Type |Description 
 |---|---|---
@@ -333,7 +335,7 @@ Remove all extents from 'TestTable'.
 |TableName |String |Table name, where extent belonged  
 |CreatedOn |DateTime |Timestamp that holds information about when the extent was initially created
  
-**Sample output** 
+### Sample output
 
 |Extent ID |Table Name |Created On 
 |---|---|---
@@ -346,9 +348,9 @@ It moves the specified extents from their source tables to the destination table
 and then drops the specified extents from the destination table.
 All of the drop and move operations are done in a single transaction.
 
-Requires [Table admin permission](../management/access-control/role-based-authorization.md) for the source and destination tables.**Syntax**
+Requires [Table admin permission](../management/access-control/role-based-authorization.md) for the source and destination tables.
 
-**Syntax**
+### Syntax
 
 `.replace` [`async`] `extents` `in` `table` *DestinationTableName* `<| 
 {`*query for extents to be dropped from table*`},{`*query for extents to be moved to table*`}`
@@ -364,13 +366,13 @@ To specify which extents should be dropped or moved, use one of two queries.
 
 Both queries should return a recordset with a column called "ExtentId".
 
-**Restrictions**
+### Restrictions
 
 * Both source and destination tables must be in the context database.
 * All extents specified by the *query for extents to be dropped from table* are expected to belong to the destination table.
 * All columns in the source tables are expected to exist in the destination table with the same name and data type.
 
-**Return output** (for sync execution)
+### Return output (for sync execution)
 
 Output parameter |Type |Description
 ---|---|---
@@ -382,7 +384,7 @@ Details |string |Includes the failure details if the operation fails.
 > The command will fail if extents returned by the *extents to be dropped from table* query don't exist in the destination table. This may happen if the extents were merged before the replace command was executed.
 > To make sure the command fails on missing extents, check that the query returns the expected ExtentIds. Example #1 below will fail if the extent to drop doesn't exist in table *MyOtherTable*. Example #2, however, will succeed even though the extent to drop doesn't exist, since the query to drop didn't return any extent IDs.
 
-**Examples**
+### Examples
 
 Move all extents from two specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`, and drops all extents in `MyOtherTable` tagged with `drop-by:MyTag`.
 
@@ -396,7 +398,7 @@ Move all extents from two specific tables (`MyTable1`, `MyTable2`) to table `MyO
     }
 ```
 
-**Sample output** 
+### Sample output
 
 |OriginalExtentId |ResultExtentId |Details
 |---|---|---
@@ -464,22 +466,22 @@ There are two ways to specify which tags should be removed from which extents:
 * Explicitly specify the tags that should be removed from all extents in the specified table.
 * Provide a query whose results specify the extent IDs in the table, and for each extent - the tags that should be removed.
 
-**Syntax**
+### Syntax
 
 `.drop` [`async`] `extent` `tags` `from` `table` *TableName* `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)`
 
 `.drop` [`async`] `extent` `tags` <| *query*
 
-* `async` (optional): Execute the command asynchronously.
-    * An Operation ID (Guid) is returned.
-    * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command.
-    * You can  retrieve the results of a successful execution. Use the [.show operation details](operations.md#show-operation-details) command.
+`async` (optional): Execute the command asynchronously.
+   * An Operation ID (Guid) is returned.
+   * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command.
+   * You can  retrieve the results of a successful execution. Use the [.show operation details](operations.md#show-operation-details) command.
 
-**Restrictions**
+### Restrictions
 
-* All extents must be in the context database, and must belong to the same table.
+All extents must be in the context database, and must belong to the same table.
 
-**Specify extents with a query**
+### Specify extents with a query
 
 The extents and the tags to drop are specified using a Kusto query. It returns a recordset with a column called "ExtentId" and a column called "Tags".
 
@@ -490,13 +492,13 @@ The extents and the tags to drop are specified using a Kusto query. It returns a
 
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) for all involved source and destination tables.
 
-**Syntax**
+#### Syntax
 
 ```kusto 
 .drop extent tags <| ...query...
 ```
 
-**Return output**
+#### Return output
 
 Output parameter |Type |Description 
 ---|---|---
@@ -505,7 +507,7 @@ ResultExtentId |string |A unique identifier (GUID) for the result extent that ha
 ResultExtentTags |string |The collection of tags that the result extent is tagged with, if any remain, or "null" in case the operation fails.
 Details |string |Includes the failure details if the operation fails.
 
-**Examples**
+#### Examples
 
 Drop the `drop-by:Partition000` tag from any extent in table that is tagged with it.
 
@@ -541,7 +543,7 @@ Drop all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from e
   | where Tags matches regex @"drop-by:StreamCreationTime_20160915(\d{6})"
 ```
 
-**Sample output** 
+#### Sample output
 
 |OriginalExtentId |ResultExtentId | ResultExtentTags | Details
 |---|---|---|---
@@ -558,20 +560,20 @@ The extents and the tags to alter are specified using a Kusto query that returns
 
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) for all involved tables.
 
-**Syntax**
+### Syntax
 
 `.alter` [`async`] `extent` `tags` `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)` <| *query*
 
-* `async` (optional): Execute the command asynchronously.
-    * An Operation ID (Guid) is returned. 
-    * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command.
-    * You can  retrieve the results of a successful execution. Use the [.show operation details](operations.md#show-operation-details) command.
+`async` (optional): Execute the command asynchronously.
+   * An Operation ID (Guid) is returned. 
+   * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command.
+   * You can  retrieve the results of a successful execution. Use the [.show operation details](operations.md#show-operation-details) command.
 
-**Restrictions**
+### Restrictions
 
-* All extents must be in the context database, and must belong to the same table.
+All extents must be in the context database, and must belong to the same table.
 
-**Return output**
+### Return output
 
 Output parameter |Type |Description
 ---|---|---
@@ -580,7 +582,7 @@ ResultExtentId |string |A unique identifier (GUID) for the result extent that ha
 ResultExtentTags |string |The collection of tags that the result extent is tagged with, or "null" in case the operation fails.
 Details |string |Includes the failure details if the operation fails.
 
-**Examples**
+### Examples
 
 Alter tags of all the extents in table `MyTable` to `MyTag`.
 
@@ -594,7 +596,7 @@ Alter tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` to
 .alter extent tags ('drop-by:MyNewTag','MyOtherNewTag') <| .show table MyTable extents where tags has 'drop-by:MyTag'
 ```
 
-**Sample output** 
+### Sample output
 
 |OriginalExtentId |ResultExtentId | ResultExtentTags | Details
 |---|---|---|---
