@@ -16,9 +16,9 @@ Finds the most significant periods that exist in a time series.
 Often, a metric measuring an application’s traffic, is characterized by two significant periods: a weekly and a daily. 
 The function `series_periods_detect()` detects these two dominant periods in a time series.  
 The function takes as input:
-* A column containing a dynamic array of time series. Typically, the column is the resulting output of [make-series](make-seriesoperator.md) operator
-* Two `real` numbers defining the minimal and maximal period size, the number of bins to search for. For example, for a 1h bin, the size of a daily period would be 24 
-* A `long` number defining the total number of periods for the function to search 
+* A column containing a dynamic array of time series. Typically, the column is the resulting output of [make-series](make-seriesoperator.md) operator.
+* Two `real` numbers defining the minimal and maximal period size, the number of bins to search for. For example, for a 1h bin, the size of a daily period would be 24. 
+* A `long` number defining the total number of periods for the function to search. 
 
 The function outputs two columns:
 * *periods*: A dynamic array containing the periods that have been found, in units of the bin size, ordered by their scores
