@@ -11,7 +11,7 @@ ms.date: 02/11/2020
 ---
 # .alter function docstring
 
-Alters the *DocString* value of an existing function.
+Alters the `DocString` value of an existing function.
 
 `.alter` `function` *FunctionName* `docstring` *Documentation*
 
