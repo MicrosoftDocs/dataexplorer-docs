@@ -29,7 +29,7 @@ There are several methods for data export:
 
 ## Service-side export (push)
   The above methods are limited. The query results must stream through a single network connection between the producer doing the query, and the consumer who writes its results.
-  For scalable data export, Kusto provides a "push" export model in which the service running the query also writes its results in an optimized manner. 
+  For scalable data export, use the "push" export model in which the service running the query also writes its results in an optimized manner. 
   This model is exposed through a set of `.export` control commands, that support exporting query results to an [external table](export-data-to-an-external-table.md),
   a [SQL table](export-data-to-sql.md), or an [external Blob storage](export-data-to-storage.md).
   
