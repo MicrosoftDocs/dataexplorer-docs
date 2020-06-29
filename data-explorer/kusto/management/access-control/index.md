@@ -1,5 +1,5 @@
 ---
-title: Kusto Access Control Overview - Azure Data Explorer | Microsoft Docs
+title: Kusto Access Control Overview - Azure Data Explorer
 description: This article describes Kusto Access Control Overview in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -12,80 +12,75 @@ ms.date: 11/25/2019
 ---
 # Kusto Access Control Overview
 
-Access Control in Kusto is based on two dimensions:
-* [Authentication](#authentication): Validating the identity of the security principal making a request
-* [Authorization](#authorization): Validating that the security principal making a request is allowed to make that request on the target resource
+Access Control in Azure Data Explorer is based on two key factors.
+* [Authentication](#authentication): Validates the identity of the security principal making a request
+* [Authorization](#authorization): Validates that the security principal making a request is permitted to make that request on the target resource
 
-In order to successfully execute a query or a control command on a Kusto cluster, database or a table, the actor must successfully pass both Authentication and Authorization.
+A query or a control command on an Azure Data Explorer cluster, database, or table, must pass both authentication and authorization checks.
 
 ## Authentication
 
+**Azure Active Directory (Azure AD)** is Azure's preferred multi-tenant cloud directory service. It can authenticate security principals or federate with other identity providers.
 
-**Azure Active Directory (AAD)** is Azure's preferred multi-tenant cloud directory service,
-capable of authenticating security principals or federating with other identity providers,
-such as Microsoft's Active Directory.
-
-AAD is the preferred method for authenticating to Kusto in Microsoft. It supports a number
-of authentication scenarios:
-* **User authentication** (interactive logon): Used to authenticate human principals.
-* **Application authentication** (non-interactive logon): Used to authenticate services
-  and applications that have to run/authenticate with no human user being present.
+Azure AD is the preferred method for authenticating to Azure Data Explorer in Microsoft. It supports a number of authentication scenarios.
+* **User authentication** (interactive sign-in): Used to authenticate human principals.
+* **Application authentication** (non-interactive sign-in): Used to authenticate services and applications that have to run and authenticate with no human user present.
 
 ### User authentication
-User authentication happens when the user presents credentials to AAD (or to some identity provider
-that works with AAD, such as ADFS), and receives a security token that can be presented to the
-Kusto service. The Kusto service doesn't care how the security token was obtained, it cares about
-whether the token is valid and what information is put there by AAD (or the federated IdP).
 
-On the client side, Kusto supports both interactive authentication, in which the AAD client library
-ADAL or similar code requests the user to enter credentials. It also supports token-based
-authentication, in which the application using Kusto obtains a valid user token and presents
-it. Last, it supports a scenario in which the application using Kusto obtains a valid user token
-for some other service (not Kusto), provided there's a trust relationship between that resource
-and Kusto.
+User authentication is done when the user presents credentials to:
+* Azure AD 
+* an identity provider that works with Azure AD
 
-Please see [Kusto connection strings](../../api/connection-strings/kusto.md) for details on how
-to use the Kusto client libraries and authenticate by using AAD to Kusto.
+If successful, the user receives a security token that can be presented to the Azure Data Explorer service. The Azure Data Explorer service doesn't care how the security token was obtained. It cares about whether the token is valid and what information is put there by Azure AD (or the federated IdP).
+
+On the client side, Azure Data Explorer supports interactive authentication, where the Microsoft Authentication Library or similar code, requests the user to enter credentials. It also supports token-based authentication, where the application using Azure Data Explorer obtains a valid user token. 
+The application that uses Azure Data Explorer can also obtain a valid user token for another service. The user token is obtainable only if a trust relationship between that resource and Azure Data Explorer exists.
+
+For more information, see [Kusto connection strings](../../api/connection-strings/kusto.md) for details on how to use the Kusto client libraries and authenticate by using Azure AD to Kusto.
 
 ### Application authentication
-When requests are not associated with a specific user, or there's no user available to enter
-credentials, the AAD application authentication flow may be used. In this flow, the application
-authenticates to AAD (or the federated IdP) by presenting some secret information. The following
-scenarios are supported by the various Kusto clients:
 
-* Application authentication using an X.509v2 certificate installed locally.
-* Application authentication using an X.509v2 certificate given to the client library as a byte stream.
-* Application authentication using an AAD application ID and an AAD application key
-  (the equivalent of username/password authentication for applications).
-* Application authentication using a previously-obtained valid AAD token (issued to Kusto).
-* Application authentication using a previously-obtained valid AAD token issued to some other resource,
-  provided that there's a trust relationship between that resource and Kusto.
+Use the Azure AD application authentication flow when requests aren't associated with a specific user or there's no user available to enter credentials. In the flow, the application authenticates to Azure AD (or the federated IdP) by presenting some secret information. The following scenarios are supported by the various Kusto clients.
 
+* Application authentication using an X.509v2 certificate installed locally
+* Application authentication using an X.509v2 certificate given to the client library as a byte stream
+* Application authentication using an Azure AD application ID and an Azure AD application key.
+
+    > [!NOTE] 
+    > The ID and key are the equivalent of a username and password
+
+* Application authentication using a previously obtained valid Azure AD token, issued to Kusto
+* Application authentication using a previously obtained valid Azure AD token, issued to some other resource. This method will work if there's a trust relationship between that resource and Kusto
 
 ### Microsoft Accounts (MSAs)
-Microsoft Accounts (MSAs) is the term for all the Microsoft-managed non-organizational user accounts, e.g. `hotmail.com`, `live.com`, `outlook.com`.
-Kusto supports user authentication for MSAs (note, that there is no security groups concept), which are identified by their UPN (Universal Principal Name).
-When an MSA principal is configured on a Kusto resource, Kusto **will not** attempt to resolve the UPN provided.
+
+Microsoft Account (MSA) is the term used for all the Microsoft-managed non-organizational user accounts, such as `hotmail.com`, `live.com`, `outlook.com`.
+Kusto supports user authentication for MSAs (there's no security groups concept) that are identified by their Universal Principal Name (UPN).
+
+When an MSA principal is configured on a Kusto resource, Kusto **won't** attempt to resolve the UPN provided.
 
 ### Authenticated SDK or REST calls
-* When using the REST API, authentication is performed using the standard HTTP `Authorization` header.
-* When using any of the Kusto .NET libraries, authentication is controlled by specifying the authentication method and parameters in the [Kusto Connection String](../../api/connection-strings/kusto.md), or by setting properties on the [Client Request Properties](https://kusto.azurewebsites.net/docs/api/request-properties.html) object.
 
-### Kusto Client SDK as an AAD Client Application
-When the Kusto client libraries invoke ADAL (the AAD client library) to acquire a token for communicating with Kusto, it provides
-the following information:
+* When using the REST API, authentication is done with the standard HTTP `Authorization` header
+* When using any of the Kusto .NET libraries, authentication is controlled by specifying the authentication method and parameters in the [Kusto Connection String](../../api/connection-strings/kusto.md). Another method is to set the properties on the [Client Request Properties](https://kusto.azurewebsites.net/docs/api/request-properties.html) object.
 
-1. The Resource (Cluster URI, e.g., `https://Cluster-and-region.kusto.windows.net`)
-2. The AAD Client Application ID
-3. The AAD Client Application Redirect URI
-4. The AAD Tenant (this affects the AAD endpoint used for authentication, e.g., for AAD tenant `microsoft.com` the AAD endpoint would be `https://login.microsoftonline.com/microsoft.com`)
+### Kusto client SDK as an Azure AD client application
 
-The token returned by ADAL to the Kusto Client Library has the appropriate Kusto cluster URL as the audience, and the "Access Kusto" permission as the scope.
+When the Kusto client libraries invoke the Microsoft Authentication Library to acquire a token for communicating with Kusto, it provides the following information:
 
-**Example: obtain an AAD User token for a Kusto cluster**
+* The Resource (Cluster URI, such as, `https://Cluster-and-region.kusto.windows.net`)
+* The Azure AD Client Application ID
+* The Azure AD Client Application Redirect URI
+* The Azure AD Tenant, that affects the Azure AD endpoint used for authentication. For example, for Azure AD tenant `microsoft.com`, the Azure AD endpoint is `https://login.microsoftonline.com/microsoft.com`)
+
+The token returned by the Microsoft Authentication Library to the Azure Data Explorer Client Library has the appropriate Azure Data Explorer cluster URL as the audience, and the "Access Azure Data Explorer" permission as the scope.
+
+**Example: Obtain an Azure AD User token for an Azure Data Explorer cluster**
+
 ```csharp
-// Create Auth Context for AAD (common or tenant-specific endpoint):
-AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/{AAD TenantID or name}");
+// Create Auth Context for Azure AD (common or tenant-specific endpoint):
+AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/{Azure AD TenantID or name}");
 
 // Provide your Application ID and redirect URI
 var clientAppID = "{your client app id}";
@@ -99,17 +94,15 @@ var acquireTokenTask = authContext.AcquireTokenAsync(
     new PlatformParameters(PromptBehavior.Auto, null)).GetAwaiter().GetResult();
 ```
 
-
 ## Authorization
 
-All authenticated principals, regardless of the method used to authenticate, also undergo
-an authorization check before they are allowed to perform an action on a Kusto resource.
-Kusto uses a [role-based authorization model](role-based-authorization.md): principals are ascribed to one or more
-**security roles**, and authorization succeeds as long as one of the principal's roles is authorized.
+All authenticated principals undergo an authorization check before they may carry out an action on an Azure Data Explorer resource.
+Azure Data Explorer uses a [role-based authorization model](role-based-authorization.md), where principals are ascribed to one or more security roles. Authorization succeeds as long as one of the principal's roles is authorized.
 
-For example, the **database user role** grants security principals (users or services) the right to
-read the data of a particular database, create tables in the database, as well as create functions in it.
+For example, the database user role grants security principals, users, or services, the right to:
+* read the data of a particular database
+* create tables in the database
+* create functions in the database
 
 The association of security principals to security roles can be defined individually,
-or by using security groups (defined in AAD). The individual commands for doing so
-are defined in [Setting Role Based Authorization rules](../security-roles.md).
+or by using security groups that are defined in Azure AD. The commands are defined in [Setting role based authorization rules](../security-roles.md).
