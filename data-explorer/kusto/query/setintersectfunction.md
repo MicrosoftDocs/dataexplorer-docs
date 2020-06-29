@@ -19,7 +19,7 @@ Returns a `dynamic` array of the set of all distinct values that are in all arra
 
 **Arguments**
 
-* *arr1...arrN*: Input arrays to create a intersect set (at least two arrays). All arguments must be dynamic arrays (see [pack_array](packarrayfunction.md)). 
+* *arr1...arrN*: Input arrays to create a intersect set (at least two arrays). All arguments must be dynamic arrays. For more information, see [pack_array](packarrayfunction.md). 
 
 **Returns**
 
