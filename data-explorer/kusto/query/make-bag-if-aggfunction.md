@@ -34,6 +34,7 @@ If a key appears in more than one row, an arbitrary value, out of the possible v
 
 > [!NOTE]
 > The [`make_bag`](./make-bag-aggfunction.md) function, is similar to make_bag_if() without predicate expression.
+
 **Examples**
 
 ```kusto
