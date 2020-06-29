@@ -33,7 +33,7 @@ the source data is sorted.
 when browsing data interactively, but be aware that it doesn't guarantee any consistency
 in its results when executing multiple times, even if the data set hasn't changed.
 
-Even is the number of rows returned by the query is not explicitly limited
+Even if the number of rows returned by the query isn't explicitly limited
 by the query (no `take` operator is used), Kusto limits that number by default.
 Please see [Kusto query limits](../concepts/querylimits.md) for details.
 
