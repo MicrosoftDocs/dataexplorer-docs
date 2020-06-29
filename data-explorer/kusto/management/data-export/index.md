@@ -43,7 +43,6 @@ As a result, Kusto supports introducing the necessary credentials inline, as par
 
 To do the export in a secure manner:
 
-Use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals), such as `h@"..."`, when sending secrets to Kusto.
-Kusto will then scrub these secrets so that they don't appear in any trace it emits internally.
+* Use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals), such as `h@"..."`, when sending secrets. The secrets will be scrubbed so that they don't appear in any trace emitted internally.
 
 Additionally, passwords and similar secrets should be stored securely and "pulled" by the application, as needed.
