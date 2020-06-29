@@ -22,7 +22,7 @@ The `sql_request` plugin sends a SQL query to a SQL Server network endpoint and 
 **Arguments**
 
 * *ConnectionString*: A `string` literal indicating the connection string that
-  points at the SQL Server network endpoint. See below for valid methods of authentication and how to specify the network endpoint.
+  points at the SQL Server network endpoint. See [valid methods of authentication](#authentication) and how to specify the [network endpoint](#specify-the-network-endpoint).
 
 * *SqlQuery*: A `string` literal indicating the query that is to be executed against the SQL endpoint. Must return one or more rowsets, but only the first one is made available for the rest of the Kusto query.
 
@@ -33,13 +33,13 @@ The `sql_request` plugin sends a SQL query to a SQL Server network endpoint and 
   as key-value pairs. Currently, only `token` can be set, to pass a caller-provided
   Azure AD access token that is forwarded to the SQL endpoint for authentication. Optional.
 
-**Examples**
+## Examples
 
-The following example sends a SQL query to an Azure SQL DB database. It retrieves all records from `[dbo].[Table]`, and then processes the results on the Kusto side. Authentication reuses the calling user's Azure AD token.
+The following example sends a SQL query to an Azure SQL DB database. It retrieves all records from `[dbo].[Table]`, and then processes the results on the Kusto side. Authentication reuses the calling user's Azure AD token. 
 
 > [!NOTE]
 > This example should not be taken as a recommendation to filter or project
-data in this manner. SQL queries should be constructed to return the smallest data set possible, Since  the Kusto optimizer doesn't currently attempt to optimize queries between Kusto and SQL.
+data in this manner. SQL queries should be constructed to return the smallest data set possible, Since the Kusto optimizer doesn't currently attempt to optimize queries between Kusto and SQL.
 
 ```kusto
 evaluate sql_request(
@@ -82,31 +82,34 @@ evaluate sql_request(
 | project Name
 ```
 
-**Authentication**
+## Authentication
 
 The sql_request plugin supports three methods of authentication to the
 SQL Server endpoint:
 
-* **Azure AD-integrated authentication** (`Authentication="Active Directory Integrated"`).
+### Azure AD-integrated authentication 
 
-   The method that's preferred, has the user or application authenticate via Azure AD to Kusto. The same token is then used to access the SQL Server network endpoint.
+`Authentication="Active Directory Integrated"`
 
-* **Username/Password authentication** (`User ID=...; Password=...;`).
+   The preferred method has the user or application authenticate via Azure AD to Kusto. The same token is then used to access the SQL Server network endpoint.
 
-   Support for this method is provided when Azure AD-integrated authentication
-   can't be done. Avoid this method, when possible, as secret
-   information is sent through Kusto.
+### Username/Password authentication
 
-* **Azure AD access token** (`dynamic({'token': h"eyJ0..."})`).
+`User ID=...; Password=...;`
 
-   With this authentication method, the caller generates the access token and it's    forwarded by Kusto to the SQL endpoint. The connection string shouldn't include
-   authentication information like `Authentication`, `User ID`, or `Password`. Instead, the access token is passed as `token` property in the `Options` argument of the sql_request plugin.
+   Support for this method is provided when Azure AD-integrated authentication can't be done. Avoid this method, when possible, as secret information is sent through Kusto.
+
+### Azure AD access token
+
+`dynamic({'token': h"eyJ0..."})`
+
+   With this authentication method, the caller generates the access token, which is forwarded by Kusto to the SQL endpoint. The connection string shouldn't include authentication information like `Authentication`, `User ID`, or `Password`. Instead, the access token is passed as `token` property in the `Options` argument of the sql_request plugin.
      
 > [!WARNING]
-> Connection strings and queries that include confidential information or information that should be guarded should be obfuscated so that they'll be omitted from any Kusto tracing.
+> Connection strings and queries that include confidential information or information that should be guarded should be obfuscated to be omitted from any Kusto tracing.
 > For more informations, see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals).
 
-**Encryption and server validation**
+## Encryption and server validation
 
 The following connection properties are forced when connecting to a SQL Server network
 endpoint, for security reasons.
@@ -116,7 +119,7 @@ endpoint, for security reasons.
 
 As a result, the SQL Server must be configured with a valid SSL/TLS server certificate.
 
-**Specify the network endpoint**
+## Specify the network endpoint
 
 Specifying the SQL network endpoint as part of the connection string is mandatory.
 The appropriate syntax is:
@@ -126,7 +129,6 @@ The appropriate syntax is:
 Where:
 
 * *FQDN* is the fully qualified domain name of the endpoint.
-
 * *Port* is the TCP port of the endpoint. By default, `1433` is assumed.
 
 > [!NOTE]
