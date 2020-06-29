@@ -32,6 +32,8 @@ Returns a `dynamic` (JSON) property-bag (dictionary) of all the values of *'Expr
 Non-dictionary values will be skipped.
 If a key appears in more than one row, an arbitrary value, out of the possible values for this key, will be selected.
 
+> [!NOTE]
+> The [`make_bag`](./make-bag-aggfunction.md) function, is similar to make_bag_if() without predicate expression.
 **Examples**
 
 ```kusto
