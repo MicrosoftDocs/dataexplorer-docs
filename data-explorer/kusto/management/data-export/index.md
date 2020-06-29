@@ -24,7 +24,7 @@ There are several methods for data export:
   [Web UI](../../../web-query-data.md).
 
 * **Service-side export (pull)**:
-  If the target of the export is a Kusto table on the same cluster/database
+  If the target of the export is a table in the same or different cluster/database
   as the query, or on another, use the "ingest from query" flow on the target table. In this flow, a query is run and its results are immediately ingested into a Kusto table. For more information, see [data ingestion](../../../ingest-data-overview.md).
 
 * **Service-side export (push)**:
