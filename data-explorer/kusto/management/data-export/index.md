@@ -18,7 +18,7 @@ There are several methods for data export:
 * **Client-side export**:
   In its simplest form, data export can be done on the client side. The client
   runs a query against the service, reads back the results, and then writes them
-  somewhere. This form of data export depends on the client tool to do the
+. This form of data export depends on the client tool to do the
   export, usually to the local filesystem where the tool runs. Among tools
   that support this model are [Kusto.Explorer](../../tools/kusto-explorer.md),
   [Web UI](../../../web-query-data.md), and others.
