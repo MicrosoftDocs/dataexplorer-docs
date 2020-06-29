@@ -30,7 +30,7 @@ Azure AD is the preferred method for authenticating to Azure Data Explorer in Mi
 
 User authentication is done when the user presents credentials to:
 * Azure AD 
-* an identity provider that works with Azure AD, such as ADFS
+* an identity provider that works with Azure AD
 
 If successful, the user receives a security token that can be presented to the Azure Data Explorer service. The Azure Data Explorer service doesn't care how the security token was obtained. It cares about whether the token is valid and what information is put there by Azure AD (or the federated IdP).
 
