@@ -160,8 +160,7 @@ If you need to, you can completely reset Kusto.Explorer. The following procedure
 1. Select every item that starts with `Kusto.Explorer`.
 1. Select **Uninstall**.
 
-   If this procedure fails to uninstall the application (a known issue with
-   ClickOnce applications), see [this stack overflow article that explains how to do it.
+   If this procedure fails to uninstall the application (a known issue with ClickOnce applications), see [this article for instructions](https://stackoverflow.com/questions/10896223/how-do-i-completely-uninstall-a-clickonce-application-from-my-computer).
 
 1. Delete the folder `%LOCALAPPDATA%\Kusto.Explorer`, which removes all connections, history, and so on.
 
