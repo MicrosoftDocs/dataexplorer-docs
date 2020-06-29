@@ -129,7 +129,7 @@ For example, see [examples of cases where find will act as a union](./findoperat
 
 ### Term lookup across all tables in current database
 
-The next query finds all rows from all tables in the current database in which any column includes the word `Kusto`.
+The query finds all rows from all tables in the current database in which any column includes the word `Kusto`.
 The resulting records are transformed according to the [output schema](#output-schema).
 
 ```kusto
