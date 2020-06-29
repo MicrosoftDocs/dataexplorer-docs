@@ -147,7 +147,7 @@ find in (K*) where * has "Kusto"
 
 ### Term lookup across all tables in all databases in the cluster
 
-The next query finds all rows from all tables in all databases in which any column includes the word `Kusto`.
+The query finds all rows from all tables in all databases in which any column includes the word `Kusto`.
 This query is a [cross-database](./cross-cluster-or-database-queries.md) query.
 The resulting records are transformed according to the [output schema](#output-schema).
 
