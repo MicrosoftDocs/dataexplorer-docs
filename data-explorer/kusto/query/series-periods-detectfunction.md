@@ -21,8 +21,8 @@ The function takes as input:
 * A `long` number defining the total number of periods for the function to search. 
 
 The function outputs two columns:
-* *periods*: A dynamic array containing the periods that have been found, in units of the bin size, ordered by their scores
-* *scores*: A dynamic array containing values between 0 and 1. Each array measures the significance of a period in its respective position in the *periods* array
+* *periods*: A dynamic array containing the periods that have been found, in units of the bin size, ordered by their scores.
+* *scores*: A dynamic array containing values between 0 and 1. Each array measures the significance of a period in its respective position in the *periods* array.
  
 **Syntax**
 
