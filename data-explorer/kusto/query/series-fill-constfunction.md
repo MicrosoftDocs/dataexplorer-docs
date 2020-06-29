@@ -30,13 +30,13 @@ Takes an expression containing dynamic numerical array as input, replaces all in
 * You can create a series that fills with a constant value by using `default = ` *DefaultValue* syntax (or just omitting that will assume 0). For more information, see [make-series](make-seriesoperator.md).
 
 ```kusto
-make-series num=count() default=-1 on TimeStamp in range(ago(1d), ago(1h), 1h) by Os, Browser
+make-series num=count() default=-1 on TimeStamp from ago(1d) to ago(1h) step 1h by Os, Browser
 ```
   
 * To apply any interpolation functions after [make-series](make-seriesoperator.md), specify *null* as a default value: 
 
 ```kusto
-make-series num=count() default=long(null) on TimeStamp in range(ago(1d), ago(1h), 1h) by Os, Browser
+make-series num=count() default=long(null) on TimeStamp from ago(1d) to ago(1h) step 1h by Os, Browser
 ```
   
 * The *missing_value_placeholder* can be of any type, which will be converted to actual element types. As such, either `double`(*null*), `long`(*null*) or `int`(*null*) have the same meaning.

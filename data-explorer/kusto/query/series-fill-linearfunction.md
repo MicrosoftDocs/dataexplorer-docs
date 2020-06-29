@@ -34,7 +34,7 @@ Takes an expression containing dynamic numerical array as input, does linear int
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-make-series num=count() default=long(null) on TimeStamp in range(ago(1d), ago(1h), 1h) by Os, Browser
+make-series num=count() default=long(null) on TimeStamp from ago(1d) to ago(1h) step 1h by Os, Browser
 ```
 
 * The *missing_value_placeholder* can be of any type that will be converted to actual element types. As such, either `double`(*null*), `long`(*null*) or `int`(*null*) have the same meaning.
