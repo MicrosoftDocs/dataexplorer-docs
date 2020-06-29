@@ -72,7 +72,3 @@ T
 |prop01|prop03|
 |---|---|
 |val_a|val_c|
-
-## Next steps
-
-* The [`make_bag`](./make-bag-aggfunction.md) function, is like this `make_bag_if` function, only without a predicate expression
