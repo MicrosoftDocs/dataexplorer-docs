@@ -17,8 +17,8 @@ There are several "Dos and Don'ts" you can follow to make your query run faster.
 
 ### Do
 
-*  Use time filters first. Kusto is highly optimized to utilize time filters.
-*  When using string operators:
+*  Use time filters first. Kusto is highly optimized to use time filters.
+*  For string operators:
    *	Use the `has` operator, instead of `contains`, when looking for full tokens. `has` works better, since it doesn't look for substrings.
    *	Use case-sensitive operators when applicable, since they work better. 
    *    For example, use:
@@ -27,7 +27,7 @@ There are several "Dos and Don'ts" you can follow to make your query run faster.
          *  `contains_cs` rather than `contains`. If you can avoid `contains`/`contains_cs`, and use `has`/`has_cs`, that's even better.
 *   Look in a specific column rather than using `*`, that does a full text search across all columns.
 *   If you find that most of your queries deal with extracting fields from [dynamic objects](./scalar-data-types/dynamic.md) across millions of rows, consider
-materializing this column at ingestion time. This way, you will only pay once for column extraction.  
+materializing this column at ingestion time. This way, you'll only pay once for column extraction.  
 *   If you have a `let` statement with a value that you use more than once, use the [materialize() function](./materializefunction.md).
     For more information on how to use `materialize()`, see [best practices](#materialize-function).
 *   If you find that you're applying conversions (JSON, string, and so on) on over 1 billion records, then reshape your query to reduce the amount of data fed into the conversion.
@@ -48,14 +48,14 @@ materializing this column at ingestion time. This way, you will only pay once fo
 
 *   When using [join operator](./joinoperator.md), select the table with the fewer rows, to be the first one (left-most). 
 *   When using [join operator](./joinoperator.md) data across clusters, run the query on the "right" side of the join, where most of the data is located.
-*   When the left side is small, up to 100,000 records, and the right side is big, use [hint.strategy=broadcast](./broadcastjoin.md).
-*   When both sides of the join are too big and the the join key has high cardinality, use [hint.strategy=shuffle](./shufflequery.md).
+*   When the left side is small, up to 100,000 records, and the right side is large, use [hint.strategy=broadcast](./broadcastjoin.md).
+*   When both sides of the join are too large, and the join key has high cardinality, use [hint.strategy=shuffle](./shufflequery.md).
     
 ## parse operator and extract() function
 
 * [parse operator](./parseoperator.md) (simple mode) is useful when the values in the target column contain strings that all share the same format or pattern.
 For example, for a column with values like `"Time = <time>, ResourceId = <resourceId>, Duration = <duration>, ...."`, when extracting the values of each field, use the `parse` operator instead of several `extract()` statements.
-* [extract() function](./extractfunction.md) is useful when the parsed strings do not all follow the same format or pattern.
+* [extract() function](./extractfunction.md) is useful when the parsed strings don't all follow the same format or pattern.
 In such cases, extract the required values by using a REGEX.
 
 ## materialize() function
@@ -87,7 +87,7 @@ In such cases, extract the required values by using a REGEX.
     | summarize dcount(Resource2))
     ```
     
-*	If the filters are not identical like in this query:  
+*	If the filters aren't identical like in this query:  
 
     ```kusto
     let materializedData = materialize(Table
