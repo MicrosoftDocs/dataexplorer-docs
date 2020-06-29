@@ -72,7 +72,7 @@ After wildcard matching, if the query references tables from more than one datab
 
 ## Returns
 
-Transformation of rows in *Table* [`,` *Table*, ...] for which *Predicate* is `true`. The rows are transformed according to the output schema, as described below.
+Transformation of rows in *Table* [`,` *Table*, ...] for which *Predicate* is `true`. The rows are transformed according to the [output schema](#output-schema).
 
 ## Output schema
 
@@ -119,8 +119,8 @@ For a summary of some filtering functions, see [where operator](./whereoperator.
 If tabular expression, the find operator falls back to a `union` query that can result in degraded performance.
 * If a column that appears in multiple tables and has multiple types, is part of the project clause, prefer adding a *ColumnType* to the project clause over modifying the table before passing it to `find`.
 * Add time-based filters to the predicate. Use a datetime column value or [ingestion_time()](./ingestiontimefunction.md).
-* Prefer to search in specific columns over full text search.
-* Prefer not to reference columns that appear in multiple tables and have multiple types. If the predicate is valid when resolving such columns type for more than one type, the query will fall back to union.
+* Search in specific columns rather than a full text search.
+* It's better not to reference columns that appear in multiple tables and have multiple types. If the predicate is valid when resolving such columns type for more than one type, the query will fall back to union.
 For example, see [examples of cases where find will act as a union](./findoperator.md#examples-of-cases-where-find-will-act-as-union).
  
 ## Examples
