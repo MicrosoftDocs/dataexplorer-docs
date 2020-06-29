@@ -35,7 +35,7 @@ and 255).
 
 **Examples**
 
-<!-- csl: https://kuskusdfv3.kusto.windows.net/Kuskus -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print 
 h1=hash_sha256("World"),
