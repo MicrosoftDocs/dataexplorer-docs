@@ -157,7 +157,7 @@ find in (database('*').*) "Kusto"
 
 ### Term lookup across all tables and databases matching a name pattern in the cluster
 
-The next query finds all rows from all tables whose name starts with `K` in all databases whose name start with `B` and in which any column includes the word `Kusto`.
+The query finds all rows from all tables whose name starts with `K` in all databases whose name start with `B` and in which any column includes the word `Kusto`.
 The resulting records are transformed according to the [output schema](#output-schema).
 
 ```kusto
