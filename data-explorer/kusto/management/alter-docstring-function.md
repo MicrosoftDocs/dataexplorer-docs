@@ -1,6 +1,6 @@
 ---
 title: .alter function docstring - Azure Data Explorer
-description: This article describes .alter function *docstring* in Azure Data Explorer.
+description: This article describes `.alter function docstring` in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
