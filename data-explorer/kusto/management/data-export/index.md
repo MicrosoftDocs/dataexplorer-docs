@@ -20,8 +20,8 @@ There are several methods for data export:
   runs a query against the service, reads back the results, and then writes them
 . This form of data export depends on the client tool to do the
   export, usually to the local filesystem where the tool runs. Among tools
-  that support this model are [Kusto.Explorer](../../tools/kusto-explorer.md),
-  [Web UI](../../../web-query-data.md), and others.
+  that support this model are [Kusto.Explorer](../../tools/kusto-explorer.md) and
+  [Web UI](../../../web-query-data.md).
 
 * **Service-side export (pull)**:
   If the target of the export is a Kusto table on the same cluster/database
