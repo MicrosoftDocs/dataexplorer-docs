@@ -23,7 +23,7 @@ There are several methods for data export:
   that support this model are [Kusto.Explorer](../../tools/kusto-explorer.md) and
   [Web UI](../../../web-query-data.md).
 
-* **Service-side export (pull)**:
+## Service-side export (pull)
   If the target of the export is a table in the same or different cluster/database
   as the query, use "ingest from query" on the target table. In this flow, a query is run and its results are immediately ingested into a table. For more information, see [data ingestion](../../../ingest-data-overview.md).
 
