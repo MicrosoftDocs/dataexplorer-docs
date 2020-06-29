@@ -180,7 +180,7 @@ where * has "Kusto"
 
 ### Term lookup across all tables
 
-The next query finds all rows from all tables in which any column includes the word `Kusto`.
+The query finds all rows from all tables in which any column includes the word `Kusto`.
 The resulting records are transformed according to the [output schema](#output-schema).
 
 ```kusto
