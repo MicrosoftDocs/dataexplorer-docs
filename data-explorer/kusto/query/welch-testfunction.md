@@ -42,12 +42,7 @@ print
 
 From [Wikipedia](https://en.wikipedia.org/wiki/Welch%27s_t-test):
 
-In statistics, Welch's t-test, or unequal variances t-test, is a two-sample location test 
-that's used to test the hypothesis that two populations have equal means. Welch's t-test 
-is an adaptation of Student's t-test. It's derived with the help of Student's 
-t-test and is more reliable when the two samples have unequal variances and unequal sample
-sizes. These tests are often referred to as "unpaired" or "independent samples" t-tests, 
-since they're typically applied when the statistical units underlying the two samples
-being compared are non-overlapping. 
-Welch's t-test is less popular than Student's t-test, and may be less familiar to readers.
-A more informative name is "Welch's unequal variances t-test", or "unequal variances t-test", for brevity.
+In statistics, Welch's t-test is a two-sample location test that's used to test the hypothesis that two populations have equal means. 
+Welch's t-test is an adaptation of Student's t-test, and is more reliable when the two samples have unequal variances and unequal sample sizes. These tests are often referred to as "unpaired" or "independent samples" t-tests. 
+The tests are typically applied when the statistical units underlying the two samples being compared are non-overlapping. 
+Welch's t-test is less popular than Student's t-test, and may be less familiar to readers. The test is also called "Welch's unequal variances t-test", or "unequal variances t-test".
