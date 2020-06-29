@@ -39,7 +39,7 @@ There are several methods for data export:
 ## Recommendations for secret management when using data export commands
 
 Ideally, export data to a remote target, such as Azure Blob Storage and Azure SQL Database. Implicitly use the credentials of the security principal that executes the data export command. This method isn't possible in some scenarios. For example, Azure Blob Storage doesn't support the notion of a security principal, only its own tokens.
-As a result, Kusto supports introducing the necessary credentials inline, as part of the data export control command.
+This feature supports introducing the necessary credentials inline, as part of the data export control command.
 
 To do the export in a secure manner:
 
