@@ -131,11 +131,11 @@ range x from 1 to 4 step 1
 |3|2|
 |4|3|
 
-**More examples**
+## More examples
 
 See [Chart count of live activities over time](./samples.md#chart-concurrent-sessions-over-time).
 
-**See also**
+## See also
 
 - [mv-apply](./mv-applyoperator.md) operator.
 - [summarize make_list()](makelist-aggfunction.md), which does the opposite function.
