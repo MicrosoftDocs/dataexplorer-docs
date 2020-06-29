@@ -24,7 +24,7 @@ Alters the `DocString` value of an existing function.
 |---|---|--- 
 |Name  |String |The name of the function
 |Parameters  |String |The parameters required by the function
-|Body  |String |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated when the function invoked
+|Body  |String |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated when the function is invoked
 |Folder|String|A folder used for UI functions categorization. This parameter doesn't change the way the function is invoked
 |DocString|String|A description of the function for UI purposes
 
