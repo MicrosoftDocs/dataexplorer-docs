@@ -1,6 +1,6 @@
 ---
-title: make_bag() (aggregation function) - Azure Data Explorer | Microsoft Docs
-description: This article describes make_bag() (aggregation function) in Azure Data Explorer.
+title: make_bag() (aggregation function) - Azure Data Explorer
+description: This article describes the make_bag() aggregation function in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -21,22 +21,22 @@ Returns a `dynamic` (JSON) property-bag (dictionary) of all the values of *Expr*
 
 **Arguments**
 
-* *Expr*: Expression of type `dynamic` that will be used for aggregation calculation.
-* *MaxSize* is an optional integer limit on the maximum number of elements returned (default is *1048576*). MaxSize value cannot exceed 1048576.
+* *Expr*: Expression of type `dynamic` that is used for aggregation calculations.
+* *MaxSize* is an optional integer limit on the maximum number of elements returned. The default is *1048576*. MaxSize value cannot exceed *1048576*.
 
 **Note**
 
-A legacy and obsolete variant of this function: `make_dictionary()` has a default limit of *MaxSize* = 128.
+A legacy and obsolete variant of function `make_dictionary()`, has a default limit of *MaxSize* = 128.
 
 **Returns**
 
-Returns a `dynamic` (JSON) property-bag (dictionary) of all the values of *Expr* in the group which are property-bags (dictionaries).
+Returns a `dynamic` (JSON) property-bag (dictionary) of all the values of *Expr* in the group, which are property-bags.
 Non-dictionary values will be skipped.
-If a key appears in more than one row, an arbitrary value (out of the possible values for this key) will be chosen.
+If a key appears in more than one row, an arbitrary value, out of the possible values for this key, will be selected.
 
 **See also**
 
-Use the [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys. 
+Use the [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns that use property bag keys. 
 
 **Examples**
 
@@ -57,7 +57,7 @@ T
 |----|
 |{ "prop01": "val_a", "prop02": "val_b", "prop03": "val_c" } |
 
-Use [bag_unpack()](bag-unpackplugin.md) plugin for transforming the bag keys in the make_bag() output into columns. 
+Use the [bag_unpack()](bag-unpackplugin.md) plugin for transforming the bag keys in the make_bag() output into columns. 
 
 ```kusto
 let T = datatable(prop:string, value:string)
