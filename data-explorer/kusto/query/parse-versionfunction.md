@@ -38,7 +38,6 @@ Each part of version may contain up to eight digits, with the max value at 99999
 
 If the number of parts is less than four, all the missing parts are considered as trailing (`1.0` == `1.0.0.0`).
 
- 
 **Example**
 ```kusto
 let dt = datatable(v:string)
