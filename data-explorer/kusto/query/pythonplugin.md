@@ -25,7 +25,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 ## Arguments
 
 * *output_schema*: A `type` literal that defines the output schema of the tabular data, returned by the Python code.
-    * The format is: `typeof(`*ColumnName*`:` *ColumnType* [, ...]`)`. For example, `typeof(col1:string, col2:long)`.
+    * The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`. For example, `typeof(col1:string, col2:long)`.
     * To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`
 * *script*: A `string` literal that is the valid Python script to execute.
 * *script_parameters*: An optional `dynamic` literal. It's a property bag of name/value pairs to be passed to the
@@ -40,7 +40,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
     * Be in a publicly available location, or provide the necessary credentials, as explained in [Storage connection strings](../api/connection-strings/storage.md).
   * The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`.
     The names provided in the property bag are used as the local file names. See the [example](#examples) below.
-  * For more information, see the [appendix](#appendix-installing-packages-for-the-python-plugin) below.
+  * For more information, see the [appendix](#appendix-install-packages-for-the-python-plugin) below.
 
 ## Reserved Python variables
 
@@ -64,16 +64,16 @@ The following variables are reserved for interaction between Kusto query languag
   > [!NOTE]
   > A small percentage of packages might be incompatible with the limitations enforced by the sandbox where the plugin is run.
   
-* The Python image also contains common ML packages: `tensorflow`, `keras`, `torch`, `hdbscan`, `xgboost` and other useful packages.
+* The Python image also contains common ML packages: `tensorflow`, `keras`, `torch`, `hdbscan`, `xgboost`, and other useful packages.
 * The plugin imports *numpy* (as `np`) & *pandas* (as `pd`) by default.  You can import other modules as needed.
 * [Ingestion from query](../management/data-ingestion/ingest-from-query.md) and [Update policies](../management/updatepolicy.md).
   * It's possible to use the plugin in queries that are:
       * Defined as part of an update policy, whose source table is ingested to using *non-streaming* ingestion.
       * Run as part of a command that ingests from a query, such as `.set-or-append`.
-  * In both the above cases, verify that the volume and frequency of the ingestion, as well as the complexity and
-    resources used by the Python logic are aligned with [sandbox limitations](../concepts/sandboxes.md#limitations), and the cluster's available resources.
+  * In both the above cases, verify that the volume and frequency of the ingestion, and the complexity and
+    resources used by the Python logic, align with [sandbox limitations](../concepts/sandboxes.md#limitations), and the cluster's available resources.
     Failure to do som may result in [throttling errors](../concepts/sandboxes.md#errors).
-  * It isn't possible to use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../../ingest-data-streaming.md).
+  * You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../../ingest-data-streaming.md).
 
 ## Examples
 
@@ -125,7 +125,7 @@ print "This is an example for using 'external_artifacts'"
 
 * Reduce the plugin's input data set to the minimum amount required (columns/rows).
     * Use filters on the source data set, when possible, with Kusto's query language.
-    * To perform a calculation on a subset of the source columns, project only those columns before invoking the plugin.
+    * To do a calculation on a subset of the source columns, project only those columns before invoking the plugin.
 * Use `hint.distribution = per_node` whenever the logic in your script is distributable.
     * You can also use the [partition operator](partitionoperator.md) for partitioning the input data set.
 * Use Kusto's query language whenever possible, to implement the logic of your Python script.
@@ -147,8 +147,8 @@ print "This is an example for using 'external_artifacts'"
 ## Tips
 
 * To generate multi-line strings containing the Python script in `Kusto.Explorer`, copy your Python script from your favorite
-  Python editor (*Jupyter*, *Visual Studio Code*, *PyCharm*, etc.). 
-  You should then do one of:
+  Python editor (*Jupyter*, *Visual Studio Code*, *PyCharm*, and so on). 
+  Now do one of:
     * Press **F2** to open the *Edit in Python* window. Paste the script into this window. Select **OK**. The script will be
       decorated with quotes and new lines, so it's valid in Kusto, and automatically pasted into the query tab.
     * Paste the Python code directly into the query tab. Select those lines, and press **Ctrl+K**, **Ctrl+S** hot keys, to decorate them as
@@ -156,7 +156,7 @@ print "This is an example for using 'external_artifacts'"
 * To avoid conflicts between Kusto string delimiters and Python string literals, use:
      * Single quote characters (`'`) for Kusto string literals in Kusto queries
      * Double quote characters (`"`) for Python string literals in Python scripts
-* Use the [externaldata operator](externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage.
+* Use the [`externaldata` operator](externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage.
   
     **Example**
 
@@ -188,7 +188,7 @@ You can install packages by following these steps:
     * For example: `https://artifcatswestus.blob.core.windows.net/python`, assuming your cluster is in West US
   
   1. Alter the cluster's [Callout policy](../management/calloutpolicy.md) to allow access to that location.
-    * This requires [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
+    * This change requires [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
     * For example, to enable access to a blob located in `https://artifcatswestus.blob.core.windows.net/python`, the command to run is:
 
       ```kusto
@@ -197,7 +197,7 @@ You can install packages by following these steps:
 
 1. Public packages (in [PyPi](https://pypi.org/) or other channels).
   1. Download the package and its dependencies.
-  1. If required, compile wheel (`*.whl`) files.
+  1. If necessary, compile wheel (`*.whl`) files.
     * From a cmd window in your local Python environment, run:
     
       ```python
@@ -206,7 +206,7 @@ You can install packages by following these steps:
 
 1. Create a zip file, that contains the required package and its dependencies.
 
-      * For private packages: zip the folder of the package and those of its dependencies.
+      * For private packages: zip the folder of the package and the folders of its dependencies.
       * For public packages, zip the files that were downloaded in the previous step.
     
         > [!NOTE]
