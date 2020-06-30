@@ -15,15 +15,17 @@ Here are several "Dos and Don'ts" that you can follow. They'll help make your ma
 
 ## Do
 
-1. If you need to create multiple tables use a single [`.create tables`](create-tables-command.md) command, instead of issuing many `.create table` commands.
-2. If you need to rename multiple tables, make a single call to [`.rename tables`](rename-table-command.md), instead of issuing a separate call for each pair of tables.
-3. Use the lowest-scoped `.show` command, instead of applying filters after a pipe (`|`). For example:
-    * Use `.show table T extents` instead of `.show cluster extents | where TableName == 'T'`
-    * Use `.show database DB schema` instead of `.show schema | where DatabaseName == 'DB'`.
-4. Use `.show table T` only if you need to get actual statistics on a single table. If you just need to check a table's existence, or to get the table's schema, use `.show table T schema as json`.
-5. When defining the schema for a table that will include datetime values, make sure that the relevant columns are set to the `datetime` type.
-    * Kusto is highly optimized for filtering on `datetime` columns. Don't convert `string` or numeric, such as `long`, columns to `datetime` at query time for filtering, if that can be done before or during ingestion time.
 
+|To do this  |Use this  |Not this | 
+|---------|---------|---------|
+| Create multiple tables    |  Use a single [`.create tables`](create-tables-command.md) command       | Issue many `.create table` commands        |
+| Rename multiple tables    | Make a single call to [`.rename tables`](rename-table-command.md)        |  Issue a separate call for each pair of tables       |
+|Show commands     |   Use the lowest-scoped `.show` command  |   Apply filters after a pipe (`|`)      |
+|**Example** <br>Show extents    | `.show table T extents`   |  `.show cluster extents | where TableName == 'T'`    |
+|**Example** <br>Show database schema     |  `.show database DB schema`        |  `.show schema | where DatabaseName == 'DB'`       |
+| Check a table's existence or get the table's schema| `.show table T schema as json`|  `.show table T` (Only use this command to get actual statistics on a single table)|
+| Define the schema for a table that will include `datetime` values  |Set the relevant columns to the `datetime` type | Convert `string` or numeric, such as `long`, columns to `datetime` at query time for filtering, if that can be done before or during ingestion time|
+ 
 ## Don't
 
 1. Don't run `.show` commands too frequently (such as, `.show schema`, `.show databases`, `.show tables`). When possible, cache the information they return.
