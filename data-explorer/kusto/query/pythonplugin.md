@@ -70,8 +70,8 @@ The following variables are reserved for interaction between Kusto query languag
   * It's possible to use the plugin in queries that are:
       * Defined as part of an update policy, whose source table is ingested to using *non-streaming* ingestion.
       * Run as part of a command that ingests from a query, such as `.set-or-append`.
-  * In both the above cases, verify that the volume and frequency of the ingestion, and the complexity and
-    resources used by the Python logic, align with [sandbox limitations](../concepts/sandboxes.md#limitations), and the cluster's available resources.
+  * In both the above cases, verify that the volume and frequency of the ingestion, and that the complexity and
+    resources used by the Python logic, align with [sandbox limitations](../concepts/sandboxes.md#limitations) and the cluster's available resources.
     Failure to do som may result in [throttling errors](../concepts/sandboxes.md#errors).
   * You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../../ingest-data-streaming.md).
 
@@ -224,7 +224,7 @@ You can install packages by following these steps:
 Install the [Faker](https://pypi.org/project/Faker/) package that generates fake data.
 
 ```kusto
-range Id from 1 to 3 step 1 
+range ID from 1 to 3 step 1 
 | extend Name=''
 | evaluate python(typeof(*),
     'from sandbox_utils import Zipackage\n'
@@ -237,7 +237,7 @@ range Id from 1 to 3 step 1
     external_artifacts=pack('faker.zip', 'https://artifacts.blob.core.windows.net/kusto/Faker.zip?...'))
 ```
 
-| Id | Name         |
+| ID | Name         |
 |----|--------------|
 |   1| Gary Tapia   |
 |   2| Emma Evans   |
