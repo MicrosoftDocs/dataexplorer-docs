@@ -79,13 +79,13 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Resources creation | *Automatic* | Define whether you want ADX to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](../data-explorer/kusto/management/data-ingestion/eventgrid.md#create-an-event-grid-subscription-in-your-storage-account) section.|
     | | |
 
-1. Select **Filter settings** if you want to track files from a specific container. Set the filters for the notifications as follows:
-    * **Prefix** field is the *literal* prefix of the blob container. As the pattern applied is *startswith*, it can span multiple containers. No wildcards are allowed.
-        * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*. 
-        * To define a filter on a blob prefix (or folder in Azure Data Lake Gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*. 
+1. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
+    * **Prefix** field is the *literal* prefix of the subject. As the pattern applied is *startswith*, it can span multiple containers, folders or blobs. No wildcards are allowed.
+        * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*.
+        * To define a filter on a blob prefix (or a folder in Azure Data Lake Gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*.
     * **Suffix** field is the *literal* suffix of the blob. No wildcards are allowed.
     * **Case Sensitive** field indicates whether the prefix and suffix filters are case sensitive
-    * For more information about filtering events see [Blob storage events](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview#filtering-events).
+    * For more information about filtering events see [Blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events).
 
 1. Select **Next: Ingest properties**.
 

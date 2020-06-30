@@ -97,7 +97,7 @@ Now that Azure Data Explorer and the storage account are connected, you can crea
 > [!NOTE]
 > Azure Data Explorer won't delete the blobs post ingestion. Retain the blobs for three to five days by using [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion.
 
-### Upload file using blob storage SDK
+### Upload file using Azure Blob Storage SDK
 
 The following code snippet creates a new container in your storage account, uploads an existing file (as a blob) to that container, and then lists the blobs in the container.
 

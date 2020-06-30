@@ -94,12 +94,12 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
     | Endpoint | *test-hub* | The event hub you created. |
     | | |
 
-1. Select the **Filters** tab if you want to track files from a specific container. Set the filters for the notifications as follows:
-    * **Subject Begins With** field is the *literal* prefix of the blob container. As the pattern applied is *startswith*, it can span multiple containers. No wildcards are allowed.
+1. Select the **Filters** tab if you want to track specific subjects. Set the filters for the notifications as follows:
+    * **Subject Begins With** field is the *literal* prefix of the subject. As the pattern applied is *startswith*, it can span multiple containers, folders or blobs. No wildcards are allowed.
         * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*.
-        * To define a filter on a blob prefix (or folder in ADLS gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*.
+        * To define a filter on a blob prefix (or a folder in Azure Data Lake Gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*.
     * **Subject Ends With** field is the *literal* suffix of the blob. No wildcards are allowed.
-    * See [Blob storage events](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview#filtering-events) for more details about filtering events.
+    * See [Blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events) for more details about filtering events.
 
 ### Data ingestion connection to Azure Data Explorer
 
