@@ -11,7 +11,7 @@ ms.date: 06/29/2020
 ---
 # hash_md5()
 
-Returns a MD5 hash value for the input value.
+Returns an MD5 hash value for the input value.
 
 **Syntax**
 
