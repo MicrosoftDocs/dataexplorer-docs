@@ -743,6 +743,8 @@
         href: ./kusto/query/hash_combinefunction.md
       - name: hash_many()
         href: ./kusto/query/hash_manyfunction.md
+      - name: hash_md5()
+        href: ./kusto/query/md5hashfunction.md
       - name: hash_sha256()
         href: ./kusto/query/sha256hashfunction.md
       - name: hll_merge()
