@@ -25,7 +25,7 @@ summarize `buildschema(`*DynamicExpr*`)`
 
 **Returns**
 
-The maximum value of *Expr* across the group.
+The maximum value of *`Expr`* across the group.
 
 > [!TIP] 
 > If `buildschema(json_column)` gives a syntax error:
