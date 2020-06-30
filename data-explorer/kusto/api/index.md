@@ -32,7 +32,7 @@ Azure Data Explorer provides a number of client libraries that make use of the a
 ## REST API
 
 The primary means of communicating with any Azure Data Explorer service, is by using the service's REST API. 
-With this fully-documented endpoint, callers can:
+With this fully documented endpoint, callers can:
 
 * Query data
 * Query and modify metadata
@@ -40,25 +40,25 @@ With this fully-documented endpoint, callers can:
 * Query the service health status
 * Manage resources
 
-The different Azure Data Explorer services communicate among themselves, via the same publicly-available REST API.
+The different Azure Data Explorer services communicate among themselves, via the same publicly available REST API.
 
 A number of client libraries are also available to use the service, without dealing with the REST API protocol.
 
 ## MS-TDS
 
 Azure Data Explorer also supports the Microsoft SQL Server communication protocol (MS-TDS), and includes a limited support for running T-SQL queries. 
-This protocolenables users to run queries on Azure Data Explorer using a well-known query syntax (T-SQL) and database client tools such as LINQPad, sqlcmd, Tableau, Excel, and Power BI.
+This protocol enables users to run queries on Azure Data Explorer using a well-known query syntax (T-SQL) and database client tools such as LINQPad, sqlcmd, Tableau, Excel, and Power BI.
 
 For more information, see [MS-TDS](tds/index.md).
 
 ## .NET Framework Libraries
 
-.NET Framework Libraries is the recommended way to invoke Azure Data Explorer functionality programmatically.
+.NET Framework Libraries are the recommended way to invoke Azure Data Explorer functionality programmatically.
 A number of different libraries are available.
 
 * [Kusto.Data (Kusto Client Library)](./netfx/about-kusto-data.md): Can be used to query data, query metadata, and alter it. 
-   It is built on top of the Kusto REST API, and sends HTTPS requests to the target Kusto cluster.
-* [Kusto.Ingest (Kusto Ingestion Library)](netfx/about-kusto-ingest.md): Uses Kusto.Data and extends it to facilitate data ingestion.
+   It's built on top of the Kusto REST API, and sends HTTPS requests to the target Kusto cluster.
+* [Kusto.Ingest (Kusto Ingestion Library)](netfx/about-kusto-ingest.md): Uses `Kusto.Data` and extends it to ease data ingestion.
 
 The above libraries use Azure APIs, such as Azure Storage API and Azure Active Directory API.
 
