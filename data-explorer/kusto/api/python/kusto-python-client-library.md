@@ -12,7 +12,7 @@ ms.date: 10/30/2019
 # Azure Data Explorer Python SDK
 
 The *Kusto Python Client* library lets you query Azure Data Explorer clusters using Python. 
-It's Python 2.x/3.x compatible, and supports all data types using the Python DB API interface.
+It's Python 2.x/3.x compatible. It supports all data types using the Python DB API interface.
 
 You can use the library, for example, from [Jupyter Notebooks](https://jupyter.org/) that are attached to Spark clusters,
 including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/services/databricks/) instances.
