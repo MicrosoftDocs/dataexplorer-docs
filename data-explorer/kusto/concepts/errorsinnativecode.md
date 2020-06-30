@@ -12,7 +12,7 @@ ms.date: 06/15/2020
 # Errors in native code
 
 The Kusto engine is written in native code and reports errors by using negative `HRESULT` values. 
-These errors are unusual with a programmatic API. For example, operation failures may show a status of "`Exception from HRESULT:` *HRESULT-CODE*".
+These errors are unusual with a programmatic API, but may occur. For example, operation failures may show a status of "`Exception from HRESULT:` *HRESULT-CODE*".
 
 Kusto native error codes are defined using Windows `MAKE-HRESULT` macro with:
 
