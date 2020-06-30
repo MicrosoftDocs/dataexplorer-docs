@@ -122,9 +122,6 @@ ms.date: 05/27/2020
 |[exp10()](exp10-function.md)|The base-10 exponential function of x, which is 10 raised to the power x: 10^x.|
 |[exp2()](exp2-function.md)|The base-2 exponential function of x, which is 2 raised to the power x: 2^x.|
 |[gamma()](gammafunction.md)|Computes gamma function.|
-|[hash()](hashfunction.md)|Returns a hash value for the input value.|
-|[hash_combine()](hash_combinefunction.md)|Combines two or more hash values.|
-|[hash_many()](hash_manyfunction.md)|Returns a combined hash value of multiple values.|
 |[isfinite()](isfinitefunction.md)|Returns whether input is a finite value (isn't infinite or NaN).|
 |[isinf()](isinffunction.md)|Returns whether input is an infinite (positive or negative) value.|
 |[isnan()](isnanfunction.md)|Returns whether input is Not-a-Number (NaN) value.|
@@ -301,3 +298,13 @@ ms.date: 05/27/2020
 |[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of a Geohash rectangular area.|
 |[geo_point_in_circle()](geo-point-in-circle-function.md)|Calculates whether the geospatial coordinates are inside a circle on Earth.|
 |[geo_point_to_geohash()](geo-point-to-geohash-function.md)|Calculates the Geohash string value for a geographic location.|
+
+## Hash functions
+
+|Function Name|Description|
+|--------------------------------------------------------------------------|--------------------------------------------------------|
+|[hash()](hashfunction.md)|Returns a hash value for the input value.|
+|[hash_combine()](hash_combinefunction.md)|Combines two or more hash values.|
+|[hash_many()](hash_manyfunction.md)|Returns a combined hash value of multiple values.|
+|[hash_md5()](md5hashfunction.md)|Returns a MD5 hash value for the input value.|
+|[hash_sha256()](sha256hashfunction.md)|Returns a SHA256 hash value for the input value.|

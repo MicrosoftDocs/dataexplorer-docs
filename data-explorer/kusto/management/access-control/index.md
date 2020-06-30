@@ -37,11 +37,11 @@ If successful, the user receives a security token that can be presented to the A
 On the client side, Azure Data Explorer supports interactive authentication, where the Microsoft Authentication Library or similar code, requests the user to enter credentials. It also supports token-based authentication, where the application using Azure Data Explorer obtains a valid user token. 
 The application that uses Azure Data Explorer can also obtain a valid user token for another service. The user token is obtainable only if a trust relationship between that resource and Azure Data Explorer exists.
 
-For more information, see [Kusto connection strings](../../api/connection-strings/kusto.md) for details on how to use the Kusto client libraries and authenticate by using Azure AD to Kusto.
+For more information, see [Kusto connection strings](../../api/connection-strings/kusto.md) for details on how to use the Kusto client libraries and authenticate by using Azure AD to Azure Data Explorer.
 
 ### Application authentication
 
-Use the Azure AD application authentication flow when requests aren't associated with a specific user or there's no user available to enter credentials. In the flow, the application authenticates to Azure AD (or the federated IdP) by presenting some secret information. The following scenarios are supported by the various Kusto clients.
+Use the Azure AD application authentication flow when requests aren't associated with a specific user or there's no user available to enter credentials. In the flow, the application authenticates to Azure AD (or the federated IdP) by presenting some secret information. The following scenarios are supported by the various Azure Data Explorer clients.
 
 * Application authentication using an X.509v2 certificate installed locally
 * Application authentication using an X.509v2 certificate given to the client library as a byte stream
@@ -50,22 +50,22 @@ Use the Azure AD application authentication flow when requests aren't associated
     > [!NOTE] 
     > The ID and key are the equivalent of a username and password
 
-* Application authentication using a previously obtained valid Azure AD token, issued to Kusto
-* Application authentication using a previously obtained valid Azure AD token, issued to some other resource. This method will work if there's a trust relationship between that resource and Kusto
+* Application authentication using a previously obtained valid Azure AD token, issued to Azure Data Explorer.
+* Application authentication using a previously obtained valid Azure AD token, issued to some other resource. This method will work if there's a trust relationship between that resource and Azure Data Explorer.
 
 ### Microsoft Accounts (MSAs)
 
 Microsoft Account (MSA) is the term used for all the Microsoft-managed non-organizational user accounts, such as `hotmail.com`, `live.com`, `outlook.com`.
 Kusto supports user authentication for MSAs (there's no security groups concept) that are identified by their Universal Principal Name (UPN).
 
-When an MSA principal is configured on a Kusto resource, Kusto **won't** attempt to resolve the UPN provided.
+When an MSA principal is configured on an Azure Data Explorer resource, Azure Data Explorer **won't** attempt to resolve the UPN provided.
 
 ### Authenticated SDK or REST calls
 
 * When using the REST API, authentication is done with the standard HTTP `Authorization` header
-* When using any of the Kusto .NET libraries, authentication is controlled by specifying the authentication method and parameters in the [Kusto Connection String](../../api/connection-strings/kusto.md). Another method is to set the properties on the [Client Request Properties](https://kusto.azurewebsites.net/docs/api/request-properties.html) object.
+* When using any of the Azure Data Explorer .NET libraries, authentication is controlled by specifying the authentication method and parameters in the [connection string](../../api/connection-strings/kusto.md). Another method is to set the properties on the [client request properties](../../api/netfx/request-properties.md) object.
 
-### Kusto client SDK as an Azure AD client application
+### Azure Data Explorer client SDK as an Azure AD client application
 
 When the Kusto client libraries invoke the Microsoft Authentication Library to acquire a token for communicating with Kusto, it provides the following information:
 
