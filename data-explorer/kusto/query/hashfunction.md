@@ -31,8 +31,8 @@ The hash value of the given scalar, modulo the given mod value (if specified).
 > The algorithm used to calculate the hash is xxhash.
 > This algorithm might change in the future, and the only guarantee is that
 > within a single query all invocations of this method use the same algorithm.
-> Consequently, users are advised to not store the results of `hash()` in a
-> table. If persisting hash values is required, consider using
+> Consequently, you are advised not to store the results of `hash()` in a
+> table. If persisting hash values is required, use
 > [hash_sha256()](./sha256hashfunction.md) or [hash_md5()](./md5hashfunction.md) instead. Note that these functions are more complex to calculate than `hash()`).
 
 **Examples**
