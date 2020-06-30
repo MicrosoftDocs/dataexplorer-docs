@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 ---
-# Update policy
+# Update policy overview
 
 The update policy instructs Kusto to automatically append data to a target table whenever new data is inserted into the source table. The update policy's query runs on the data inserted into the source table. For example, the policy lets the creation of one table be the filtered view of another table. The new table can have a different schema, retention policy, and so on.
 
@@ -18,15 +18,17 @@ By default, failure to run the update policy doesn't affect the ingestion of dat
 > [!Warning]
 > Some user errors can prevent any data from being ingested into the source table. For example, defining an incorrect query in the update policy.
 
-Data ingested in the "boundary" of transactional update policies becomes available for a query in a single transaction.
+## Update policy query 
 
-The update policy's query is run in a special mode, in which it "sees" only the newly ingested data to the source table. It isn't possible to query the source table's already-ingested data as part of this query. Doing so quickly results in quadratic-time ingestions.
+* Data ingested in the "boundary" of transactional update policies becomes available for a query in a single transaction.
 
-The update policy is defined on the destination table. For this reason, ingesting data into one source table may result in multiple queries being run on that data. The order of execution of update policies is undefined.
+* The update policy's query is run in a special mode, in which it "sees" only the newly ingested data to the source table. It isn't possible to query the source table's already-ingested data as part of this query. Doing so quickly results in quadratic-time ingestions.
 
-## Conceptual example
+* The update policy is defined on the destination table. For this reason, ingesting data into one source table may result in multiple queries being run on that data. The order of execution of update policies is undefined.
 
-Assume the following conditions:
+## Update policy as regular ingestion
+
+Given the following conditions:
  * The source table is a high-rate trace table with interesting data formatted as a free-text column. 
  * The target table on which the update policy is defined accepts only specific trace lines.
  * The table has a well-structured schema that is a transformation of the original free-text data created by the [parse operator](../query/parseoperator.md).
@@ -119,7 +121,7 @@ You can test an update policy's additional performance impact on an ingestion op
 
 ### Example
 
-Assume the following conditions:
+Given the following conditions:
 
 * The source table name (the `Source` property of the update policy) is `MySourceTable`.
 * The `Query` property of the update policy calls a function named `MyFunction()`.
