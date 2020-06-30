@@ -29,7 +29,7 @@ attacks.
 
 ## Declaring query parameters
 
-To reference query parameters, the query text, or functions it uses, must first declare which query parameter it uses. For each parameter, the declaration provides the name and scalar type. Optionally, the parameter can also have a default value. THe default is used if the request doesn't provide a concrete value for the parameter. Kusto then parses the query parameter's value, according to its normal parsing rules for that type.
+To reference query parameters, the query text, or functions it uses, must first declare which query parameter it uses. For each parameter, the declaration provides the name and scalar type. Optionally, the parameter can also have a default value. The default is used if the request doesn't provide a concrete value for the parameter. Kusto then parses the query parameter's value, according to its normal parsing rules for that type.
 
 **Syntax**
 
