@@ -12,7 +12,7 @@ ms.date: 02/13/2020
 # Let statement
 
 Let statements bind names to expressions. 
-For the rest of the scope where the let statement appears, in a global scope or in a function body scope, the name can be used to refer to its bound value. 
+For the rest of the scope, where the let statement appears, the name can be used to refer to its bound value. The let statement may be within a global scope or a function body scope.
 If that name was previously bound to another value, the "innermost" let statement binding is used.
 
 Let statements improve modularity and reuse, since they let you break a potentially complex expression into multiple parts.
@@ -54,11 +54,11 @@ Lambda expressions have the following syntax.
   * Table schema definition - A list of attributes with their types (AtrName : AtrType).
   The tabular expression that is used in the lambda invocation must have all these attributes with the matching types, but isn't limited to them. 
   '(*)' can be used as the tabular expression. 
-  Here, any tabular expression can be used in the lambda invocation and none of its columns can be accessed in the lambda expression.
+  Any tabular expression can be used in the lambda invocation and none of its columns can be accessed in the lambda expression.
   All tabular arguments should appear before the scalar arguments.
 * *ScalarArguments*: The list of the formal scalar arguments. 
   Each argument has:
-  * *ArgName* - The name of the formal scalar argument. The name then may appear in the *FunctionBody* and is bound to a particular value when the lambda is invoked.  
+  * *ArgName* - The name of the formal scalar argument. The name may appear in the *FunctionBody* and is bound to a particular value when the lambda is invoked.  
   * *ArgType* - the type of the formal scalar argument. Currently only the following types are supported as a lambda argument type: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).
 
 **Multiple and nested let statements**
