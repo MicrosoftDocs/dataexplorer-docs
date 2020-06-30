@@ -11,42 +11,35 @@ ms.date: 02/19/2020
 ---
 # Update policy
 
-Update policy is set on a **target table** that instructs Kusto to automatically
-append data to it whenever new data is inserted into the **source table**. The update policy's **query** runs on the
-data inserted into the source table. This allows, for example, the creation
-of one table as the filtered view of another table, possibly with a different
-schema, retention policy, and so on.
+The update policy instructs Kusto to automatically append data to  a target table  whenever new data is inserted into the source table. The update policy's query runs on the data inserted into the source table. For example, the policy lets the creation of one table be the filtered view of another table. Possibly, the new table will have a different schema, retention policy, and so on.
 
 By default, failure to run the update policy doesn't affect the ingestion of
-data to the source table. If the update policy is defined as **transactional**, failure to run the update policy forces the ingestion of data
-into the source table to fail as well. (Care must be used when this is done because some user errors, such as defining an incorrect query in the update
-policy, might prevent **any** data from being ingested into the source table.)
-Data ingested in the "boundary"
-of transactional update policies becomes available for a query in a single transaction.
+data to the source table. If the update policy is defined as transactional, failure to run the policy forces the ingestion of data into the source table to fail.
+
+> [!Warning]
+> Some user errors, such as defining an incorrect query in the update policy, might prevent any data from being ingested into the source table.
+
+Data ingested in the "boundary" of transactional update policies becomes available for a query in a single transaction.
 
 The update policy's query is run in a special mode, in which it "sees" only the
 newly ingested data to the source table. It isn't possible to query the source
-table's already-ingested data as part of this query. Doing so quickly results in
+table's already-ingested data as part of this query. Doing so, quickly results in
 quadratic-time ingestions.
 
-Because the update policy is defined on the destination table, ingesting data into one
-source table might result in multiple queries being run on that data. The order
-of execution of update policies is undefined.
+The update policy is defined on the destination table. Ingesting data into one source table may result in multiple queries being run on that data. The order of execution of update policies is undefined.
 
-For example, assume that the source table is a high-rate
-trace table with interesting data formatted as a free-text column. Also suppose that the target
-table (on which the update policy is defined) accepts only specific trace lines, and
-with a well-structured schema that is a transformation of the original free-text data
-by using Kusto's [parse operator](../query/parseoperator.md).
+Assume:
+ * The source table is a high-rate trace table with interesting data formatted as a free-text column. 
+ * The target table on which the update policy is defined, accepts only specific trace lines.
+ * The table has a well-structured schema that is a transformation of the original free-text data created by the [parse operator](../query/parseoperator.md).
 
-Update policy behaves similarly to regular ingestion and is subject to the same
-restrictions and best practices. For example, it scales-out with the size of
-the cluster, and works more efficiently if ingestions are done in large bulks.
+Then the update policy will behave like regular ingestion and is subject to the same restrictions and best practices.
+
+For example, the policy scales-out with the size of the cluster, and works more efficiently if ingestions are done in large bulks.
 
 ## Commands that trigger the update policy
 
-Update policies take effect when data is ingested or moved to (extents are created in) a table using
-any of the following commands:
+Update policies take effect when data is ingested or moved to (extents are created in) a table using any of the following commands:
 
 * [.ingest (pull)](../management/data-ingestion/ingest-from-storage.md)
 * [.ingest (inline)](../management/data-ingestion/ingest-inline.md)
@@ -57,54 +50,49 @@ any of the following commands:
 ## The update policy object
 
 A table may have zero, one, or more update policy objects associated with it.
-Each such object is represented as a JSON property bag, with the following properties defined:
+Each such object is represented as a JSON property bag, with the following properties defined.
 
 |Property |Type |Description  |
 |---------|---------|----------------|
 |IsEnabled                     |`bool`  |States if update policy is enabled (true) or disabled (false)                                                                                                                               |
 |Source                        |`string`|Name of the table that triggers update policy to be invoked                                                                                                                                 |
 |Query                         |`string`|A Kusto CSL query that is used to produce the data for the update                                                                                                                           |
-|IsTransactional               |`bool`  |States if the update policy is transactional or not (defaults to false). Failure to run a transactional update policy result in the source table not being updated with new data as well.   |
-|PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified during the ingestion into the  source table should apply to the ones in the derived table as well.                 |
+|IsTransactional               |`bool`  |States if the update policy is transactional or not (defaults to false). Failure to run a transactional update policy results in the source table not being updated with new data   |
+|PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified during the ingestion into the source table, should also apply to the ones in the derived table.                 |
 
 ## Notes
 
-* The query is automatically scoped to cover only the newly-ingested records.
+* The query is automatically scoped to cover only the newly ingested records.
 * The query can invoke stored functions.
 * Cascading updates are allowed (`TableA` → `TableB` → `TableC` → ...)
-* When the update policy is invoked as part of a `.set-or-replace` command, default behavior is that data in derived table(s) is also replaced, as it is in the source table.
+* When the update policy is invoked as part of a `.set-or-replace` command, the default behavior is that data in derived table(s) is also replaced, like it happens in the source table.
 
 ## Limitations
 
-* The source table and the table for which the update policy is defined **must be in the same database**.
-* The query may **not** include cross-database nor cross-cluster queries.
-* In case update policies are defined over multiple tables in a circular manner, this is detected at runtime and the chain of updates is cut 
-  (meaning, data will be ingested only once to each table in the chain of affected tables).
-* When referencing the `Source` table in the `Query` part of the policy (or in Functions referenced by the latter), make sure you **don't** use the qualified name of the table
-  (meaning, use `TableName` and **not** `database("DatabaseName").TableName` nor `cluster("ClusterName").database("DatabaseName").TableName`).
-* A query which is run as part of an update policy does **not** have read access to tables which have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled.
-* The update policy's query can't reference any table with a [Row Level Security policy](./rowlevelsecuritypolicy.md) which is enabled.
-* `PropagateIngestionProperties` only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this 
-   option has **no** effect.
+* The source table and the table for which the update policy is defined must be in the same database.
+* The query mustn't include cross-database nor cross-cluster queries.
+* If update policies are defined over multiple tables in a circular manner, the chain of updates is cut. This issue is detected at runtime. Data will be ingested only once to each table in the chain of affected tables.
+* When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the latter, make sure you don't use the qualified name of the table. Use `TableName`. Don't use `database("DatabaseName".TableName` or `cluster("ClusterName").database("DatabaseName").TableName`).
+* A query that is run as part of an update policy doesn't have read access to tables that have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled.
+* The update policy's query can't reference any table with a [Row Level Security policy that is enabled.
+* `PropagateIngestionProperties` only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this option has no effect.
 
 ## Retention policy on the source table
 
-So as not to retain the raw data in the source table, you can set a soft-delete period of 0 in the source
-table's [retention policy](retentionpolicy.md), while setting the update policy as transactional.
+So as not to keep the raw data in the source table, you can set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), while setting the update policy as transactional.
 
-This will result with:
-* The source data not being queryable from the source table.
-* The source data not being persisted to durable storage as part of the ingestion operation.
-* Improvement in performance of the operation.
-* Reduction of resources utilized post-ingestion, for background grooming operations done on [extents](../management/extents-overview.md)
-  in the source table.
+Then:
+* The source data isn't queryable from the source table.
+* The source data isn't persisted to durable storage as part of the ingestion operation.
+* Operational performance will Improve.
+* Post-ingestion resources for background grooming operations, done on [extents](../management/extents-overview.md) in the source table, will be reduced.
 
 ## Failures
 
 In some cases, ingestion of data into the source table succeeds, but the update policy fails during ingestion to the target table.
 
-Failures encountered while the policies are being updated can be retrieved using the
-[.show ingestion failures command](../management/ingestionfailures.md), as follows:
+Failures that occur while the policies are being updated can be retrieved using the
+[.show ingestion failures command](../management/ingestionfailures.md).
  
 ```kusto
 .show ingestion failures 
@@ -113,43 +101,32 @@ Failures encountered while the policies are being updated can be retrieved using
 
 Failures are treated as follows:
 
-* **Non-transactional policy**: The failure is ignored by Kusto. Any retry is the responsibility of the data owner.  
-* **Transactional policy**: The original ingestion operation that triggered the update will fail as well. The source table and the database will not be modified with new data.
-  * In case the ingestion method is `pull` (Kusto's Data Management service is involved in the ingestion
-  process), there's an automated retry on the entire ingestion operation, orchestrated by Kusto's Data Management
-  service, according to the following logic:
-    * Retries are done until reaching the earliest between `DataImporterMaximumRetryPeriod` (default = 2 days) and
-    `DataImporterMaximumRetryAttempts` (default = 10).
-    * Both the above settings can be altered in the Data Management service's configuration, by KustoOps.
-    * The backoff period starts from 2 minutes, and grows exponentially (2 -> 4 -> 8 -> 16 ... minutes)
+* Non-transactional policy: The failure is ignored by Kusto. Any retry is the responsibility of the data owner.  
+* Transactional policy: The original ingestion operation that triggered the update will also fail. The source table and the database won't be modified with new data.
+  * If the ingestion method is `pull` (Kusto's Data Management service is involved in the ingestion process), there's an automated retry on the entire ingestion operation, orchestrated by Kusto's Data Management service, according to the following logic:
+    * Retries are done until the earliest between `DataImporterMaximumRetryPeriod` (default = 2 days) and `DataImporterMaximumRetryAttempts` (default = 10) is reached.
+    * Both of the above settings can be altered in the Data Management service's configuration, by KustoOps.
+    * The backoff period starts at 2 minutes, and grows exponentially (2 -> 4 -> 8 -> 16 ... minutes)
   * In any other case, any retry is the responsibility of the data owner.
-
-
 
 ## Control Commands
 
-* Use [.show table TABLE policy update](../management/update-policy.md#show-update-policy)
-  to show the current update policy of a table.
-* Use [.alter table TABLE policy update](../management/update-policy.md#alter-update-policy)
-  to set the current update policy of a table.
-* Use [.alter-merge table TABLE policy update](../management/update-policy.md#alter-merge-table-table-policy-update)
-  to append to the current update policy of a table.
-* Use [.delete table TABLE policy update](../management/update-policy.md#delete-table-table-policy-update)
-  to append to the current update policy of a table.
+* Use [.show table TABLE policy update](../management/update-policy.md#show-update-policy) to show the current update policy of a table.
+* Use [.alter table TABLE policy update](../management/update-policy.md#alter-update-policy) to set the current update policy of a table.
+* Use [.alter-merge table TABLE policy update](../management/update-policy.md#alter-merge-table-table-policy-update) to append to the current update policy of a table.
+* Use [.delete table TABLE policy update](../management/update-policy.md#delete-table-table-policy-update) to append to the current update policy of a table.
 
 ## Testing an update policy's performance impact
 
-Defining an update policy can affect the performance of a Kusto cluster because it affects any ingestion into the source table. It is highly recommended that the `Query` part of the update
-policy is optimized to perform well.
-You can test an update policy's additional performance impact on an ingestion operation by invoking it on specific and already-existing extents, before creating or altering the policy and/or a function it uses in its `Query` part.
+Defining an update policy can affect the performance of a Kusto cluster because it affects any ingestion into the source table. We recommend that the `Query` part of the update policy is optimized to work well.
+You can test an update policy's additional performance impact on an ingestion operation. Invoke the policy on specific and already-existing extents, before creating or altering the policy or function it uses in its `Query` part.
 
 The following example assumes:
 
 * The source table name (the `Source` property of the update policy) is `MySourceTable`.
 * The `Query` property of the update policy calls a function named `MyFunction()`.
 
-Using [.show queries](../management/queries.md), you can evaluate resource usage (CPU, memory, etc.) of
-the following query, and/or multiple executions of it.
+Use [.show queries](../management/queries.md), to evaluate resource usage (CPU, memory, and so on) of the following query, and multiple executions of it.
 
 ```kusto
 .show table MySourceTable extents;
