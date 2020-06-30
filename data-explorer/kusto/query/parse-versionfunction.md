@@ -23,7 +23,7 @@ parse_version("0.0.0.1")
 
 **Arguments**
 
-* *Expr*: A scalar expression of type `string` that specifies the version to be parsed.
+* *`Expr`*: A scalar expression of type `string` that specifies the version to be parsed.
 
 **Returns**
 
