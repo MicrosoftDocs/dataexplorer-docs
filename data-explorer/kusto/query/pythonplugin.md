@@ -39,7 +39,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
     * Included in the cluster's [callout policy](../management/calloutpolicy.md).
     * In a publicly available location, or provide the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage.md).
   * The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Examples](#examples).
-  * For more information, see [Install packages for the Python plugin](#appendix-install-packages-for-the-python-plugin).
+  * For more information, see [Install packages for the Python plugin](#install-packages-for-the-python-plugin). 
 
 ## Reserved Python variables
 
