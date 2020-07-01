@@ -72,7 +72,7 @@ The utility can pull source data from a local folder or from an Azure blob stora
 |-format, -f           |string  |Optional  |Source data format. Must be one of the [supported formats](ingestion-supported-formats.md) |
 |-ingestionMappingPath, -mappingPath |string  |Optional  |Path to ingestion column-mapping file (mandatory for Json and Avro formats). See [data mappings](kusto/management/mappings.md) |
 |-ingestionMappingRef, -mappingRef  |string  |Optional  |Name of a pre-created ingestion column mapping (mandatory for Json and Avro formats). See [data mappings](kusto/management/mappings.md) |
-|-creationTimePattern      |string  |Optional  |When set, is used to extract the CreationTime property from the file or blob path. See [Using CreationTimePattern argument](#using-creationtimepattern-argument) |
+|-creationTimePattern      |string  |Optional  |When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data with time ingested](#how-to-ingest-data-with-time-ingested) |
 |-ignoreFirstRow, -ignoreFirst |bool    |Optional  |If set, the first record of each file/blob is ignored (for example, if the source data has headers) |
 |-tag            |string  |Optional  |[Tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data. Multiple occurrences are permitted |
 |-dontWait           |bool    |Optional  |If set to 'true', doesn't wait for ingestion completion. Useful when ingesting large amounts of files/blobs |
@@ -85,7 +85,7 @@ The utility can pull source data from a local folder or from an Azure blob stora
 |-filesInBatch            |integer |Optional  |Sets the file/blob count limit of each ingest operation |
 |-devTracing, -trace       |string  |Optional  |If set, diagnostic logs are written to a local directory (by default, `RollingLogs` in the current directory, or can be modified by setting the switch value) |
 
-### How to ingest data with timestamp of time ingested
+### How to ingest data with time ingested
 
 The `-creationTimePattern` argument extracts the CreationTime property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
 
