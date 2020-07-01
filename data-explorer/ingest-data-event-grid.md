@@ -35,7 +35,7 @@ Create a table in Azure Data Explorer where Event Hubs will send data. Create th
 
 1. In the Azure portal, under your cluster, select **Query**.
 
-    ![Query application link](media/ingest-data-event-grid/query-explorer-link.png)
+    :::image type="content" source="media/ingest-data-event-grid/query-explorer-link.png" alt-text="Link to Query explorer":::    
 
 1. Copy the following command into the window and select **Run** to create the table (TestTable) that will receive the ingested data.
 
@@ -43,7 +43,7 @@ Create a table in Azure Data Explorer where Event Hubs will send data. Create th
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
     ```
 
-    ![Run create query](media/ingest-data-event-grid/run-create-table.png)
+    :::image type="content" source="media/ingest-data-event-grid/run-create-table.png" alt-text="Run command create table":::
 
 1. Copy the following command into the window and select **Run** to map the incoming JSON data to the column names and data types of the table (TestTable).
 
@@ -57,17 +57,17 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Under the cluster you created, select **Databases** > **TestDatabase**.
 
-    ![Select test database](media/ingest-data-event-grid/select-test-database.png)
+    :::image type="content" source="media/ingest-data-event-grid/select-test-database.png" alt-text="Select test database":::
 
 1. Select **Data ingestion** > **Add data connection**.
 
-    ![Data ingestion](media/ingest-data-event-grid/data-ingestion-create.png)
+    :::image type="content" source="media/ingest-data-event-grid/data-ingestion-create.png" alt-text="Add data connection for data ingestion":::
 
 1. Select the connection type: **Blob Storage**.
 
 1. Fill out the form with the following information:
 
-    ![Event grid connection](media/ingest-data-event-grid/create-event-grid-data-connection-basics.png)
+    :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-basics.png" alt-text="Fill out event grid form with connection basics":::
 
      Data source:
 
@@ -77,7 +77,6 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Storage account subscription | Your subscription ID | The subscription ID where your storage account resides.|
     | Storage account | *gridteststorage1* | The name of the storage account that you created previously.|
     | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](../data-explorer/kusto/management/data-ingestion/eventgrid.md#create-an-event-grid-subscription-in-your-storage-account) section.|
-
 
 1. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
     * **Prefix** field is the *literal* prefix of the subject. As the pattern applied is *startswith*, it can span multiple containers, folders or blobs. No wildcards are allowed.
@@ -91,7 +90,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Fill out the form with the following information and select **Next: Review + create**. Note that table and mapping names are case sensitive:
 
-   ![Event grid connection](media/ingest-data-event-grid/create-event-grid-data-connection-ingest-properties.png)
+   :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-ingest-properties.png" alt-text="Review and create table and mapping ingestion properties":::
 
     Ingest properties:
 
@@ -103,11 +102,11 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Review the resources that auto created for you and select **Create**.
 
-   ![Event grid connection](media/ingest-data-event-grid/create-event-grid-data-connection-review-and-create.png)
+    :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-and-create.png" alt-text="Review and create data connection for event grid":::
 
 1. Wait until the deployment is completed. If your deployment is failed, you can select **Operation details** next to the failed stage to get more information for the failing reason. You can also select **Redeploy** to try to deploy the resources again.
 
-    ![Deploy Event Grid Resources](media/ingest-data-event-grid/deploy-event-grid-resources.png)
+    :::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Deploy event grid resources":::
 
 ## Generate sample data
 
@@ -178,7 +177,7 @@ You'll be able to alter the policy at a later time if needed. In this article yo
 
 1. In the Azure portal, under your event grid, you see the spike in activity while the app is running.
 
-    ![Event grid graph](media/ingest-data-event-grid/event-grid-graph.png)
+    :::image type="content" source="media/ingest-data-event-grid/event-grid-graph.png" alt-text="Activity graph for event grid":::
 
 1. To check how many messages have made it to the database so far, run the following query in your test database.
 
@@ -193,9 +192,9 @@ You'll be able to alter the policy at a later time if needed. In this article yo
     TestTable
     ```
 
-    The result set should look like the following.
+    The result set should look like the following:
 
-    ![Message result set](media/ingest-data-event-grid/table-result.png)
+    :::image type="content" source="media/ingest-data-event-grid/table-result.png" alt-text="Message result set for Event Grid":::
 
 ## Clean up resources
 
@@ -203,31 +202,31 @@ If you don't plan to use your event grid again, clean up the Event Grid Subscrip
 
 1. In Azure portal, go to the left menu and select **All resources**.
 
-    ![Delete ](media/ingest-data-event-grid/clean-up-resources-select-all-resource.png)
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-all-resource.png" alt-text="Select all resources for event grid cleanup":::    
 
 1. Search for your Event Hub Namespace and select **Delete** to delete it:
 
-    ![Delete ](media/ingest-data-event-grid/clean-up-resources-find-eventhub-namespace-and-delete.png)
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-find-eventhub-namespace-and-delete.png" alt-text="Clean up Event Hub namespace":::
 
 1. In the Delete resources form, confirm the deletion to delete the Event Hub Namespace and Event Hub resources.
 
 1. Go to your storage account. In the left menu, select **Events**:
 
-    ![Delete ](media/ingest-data-event-grid/clean-up-resources-select-events.png)
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-events.png" alt-text="Select events to clean up for Event Grid":::
 
 1. Below the graph, Select your Event Grid Subscription and then select **Delete** to delete it:
 
-   ![Delete ](media/ingest-data-event-grid/delete-event-grid-subscription.png)
+    :::image type="content" source="media/ingest-data-event-grid/delete-event-grid-subscription.png" alt-text="Delete event grid subscription":::
 
 1. To delete your Event Grid data connection, go to your Azure Data Explorer cluster. On the left menu, select **Databases**.
 
 1. Select your database **TestDatabase**:
 
-    ![Delete ](media/ingest-data-event-grid/clean-up-resources-select-database.png)
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-database.png" alt-text="Select database to clean up resources":::
 
 1. On the left menu, select **Data ingestion**:
 
-    ![Delete ](media/ingest-data-event-grid/clean-up-resources-select-data-ingestion.png)
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-data-ingestion.png" alt-text="Select data ingestion to clean up resources":::
 
 1. Select your data connection *test-grid-connection* and then select **Delete** to delete it.
 
