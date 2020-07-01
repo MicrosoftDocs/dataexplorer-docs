@@ -14,7 +14,7 @@ ms.date: 02/19/2020
 Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 
 > [!NOTE]
-> For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
+> For more information on extents, see [Extents (Data Shards) overview](extents-overview.md).
 
 ## .show extents
 
