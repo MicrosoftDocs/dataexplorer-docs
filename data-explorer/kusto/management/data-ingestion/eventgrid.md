@@ -56,7 +56,7 @@ Blobs are routed to different tables.
 
 For more information on how to generate data, see [sample code](#generating-data).
 
- ```csharp
+```csharp
 // Blob is dynamically routed to table `Events`, ingested using `EventsMapping` data mapping
 blob = container.GetBlockBlobReference(blobName2);
 blob.Metadata.Add("rawSizeBytes", "4096‬"); // the uncompressed size is 4096 bytes
@@ -83,13 +83,13 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 1. In the Azure portal, find your storage account.
 1. On the left menu, select **Events** > **Event Subscription**.
 
-    ![Query application link](../../../media/ingest-data-event-grid/create-event-grid-subscription1.png)
+     :::image type="content" source="../images/eventgrid/create-event-grid-subscription1.png" alt-text="Create event grid subscription":::
 
 1. In the **Create Event Subscription** window within the **Basic** tab, provide the following values:
 
-    ![Query application link](../../../media/ingest-data-event-grid/create-event-grid-subscription2.png)
+    :::image type="content" source="../images/eventgrid/create-event-grid-subscription2.png" alt-text="Create event subscription values to enter":::
 
-    **Setting** | **Suggested value** | **Field description**
+    |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
     | Name | *test-grid-connection* | The name of the event grid subscription that you want to create.|
     | Event Schema | *Event Grid schema* | The schema that should be used for the event grid. |
@@ -142,8 +142,8 @@ blob.UploadFromFile(csvCompressedLocalFileName);
 ```
 
 > [!NOTE]
-> * Using Azure Data Lake Gen2 storage requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to "true". A detailed example of how to use Data Lake Gen2 SDK correctly can be found in the how-to [Upload file using Azure Data Lake SDK](../../../data-connection-event-grid-csharp.md#upload-file-using-azure-data-lake-sdk)
-guide.
+> Using Azure Data Lake Gen2 storage requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to "true".
+> A detailed example of how to use Data Lake Gen2 SDK correctly can be found in the how-to [Upload file using Azure Data Lake SDK](../../../data-connection-event-grid-csharp.md#upload-file-using-azure-data-lake-sdk) guide.
 
 ## Blob lifecycle
 
