@@ -27,7 +27,7 @@ In this article, you learn how to ingest blobs from your storage account into Az
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * [A cluster and database](create-cluster-database-portal.md).
-* [A storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+* [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
 ## Create a target table in Azure Data Explorer
 
@@ -112,7 +112,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 Now that Azure Data Explorer and the storage account are connected, you can create sample data and upload it to the storage container.
 
-We'll work with a small shell script that issues a few basic Azure CLI commands to interact with Azure Storage resources. This script creates a new container in your storage account, uploads an existing file (as a blob) to that container, and then lists the blobs in the container. You can use [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) to execute the script directly in the portal.
+We'll work with a small shell script that issues a few basic Azure CLI commands to interact with Azure Storage resources. This script creates a new container in your storage account, uploads an existing file (as a blob) to that container, and then lists the blobs in the container. You can use [Azure Cloud Shell](/azure/cloud-shell/overview) to execute the script directly in the portal.
 
 Save the data into a file and upload it with this script:
 
@@ -166,7 +166,7 @@ These properties can be set:
 > [!NOTE]
 > Azure Data Explorer won't delete the blobs post ingestion.
 > Retain the blobs for three to five days.
-> Use [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion. 
+> Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion. 
 
 ## Review the data flow
 

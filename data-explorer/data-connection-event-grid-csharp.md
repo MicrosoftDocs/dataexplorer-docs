@@ -95,7 +95,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 Now that Azure Data Explorer and the storage account are connected, you can create a sample data and upload it to the storage.
 
 > [!NOTE]
-> Azure Data Explorer won't delete the blobs post ingestion. Retain the blobs for three to five days by using [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion.
+> Azure Data Explorer won't delete the blobs post ingestion. Retain the blobs for three to five days by using [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion.
 
 ### Upload file using Azure Blob Storage SDK
 
@@ -161,7 +161,6 @@ dataLakeFileClient.Flush(position: fileSize, close: true); // Note: This line tr
 ```
 
 > [!NOTE]
-> When using [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload file, the first call to [CreateFile](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createfile?view=azure-dotnet) triggers an Event Grid event with size 0, and this event is ignored by ADX. Another event is triggered when calling Flush with a "close" parameter set to "true" to indicate that this is the final update (the file stream has been closed). This event is processed by the Event Grid data connection. For more information about flushing see [Azure Data Lake Flush method](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush?view=azure-dotnet).
-
+> When using [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload file, the first call to [CreateFile](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createfile?view=azure-dotnet) triggers an Event Grid event with size 0, and this event is ignored by ADX. Another event is triggered when calling Flush with a "close" parameter set to "true" to indicate that this is the final update (the file stream has been closed). This event is processed by the Event Grid data connection. For more information about flushing see [Azure Data Lake Flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush?view=azure-dotnet).
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]

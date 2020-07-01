@@ -11,7 +11,7 @@ ms.date: 07/01/2020
 ---
 # Ingest from storage using Event Grid subscription
 
-Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) subscription for blob created notifications and streaming these notifications to Kusto via an Event Hub.
+Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created notifications and streaming these notifications to Kusto via an Event Hub.
 
 ## Data format
 
@@ -73,10 +73,10 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 
 ### Prerequisites
 
-* [Create a storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+* [Create a storage account](/azure/storage/common/storage-quickstart-create-account).
   Event Grid notification subscription can be set on Azure Storage Accounts for kind `BlobStorage` or `StorageV2`.
-  Enabling [Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) is also supported.
-* [Create an event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+  Enabling [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction) is also supported.
+* [Create an event hub](/azure/event-hubs/event-hubs-create).
 
 ### Event Grid subscription
  
