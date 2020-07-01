@@ -283,9 +283,9 @@
         href: data-factory-template.md 
       - name: Run control commands using Azure Data Factory
         href: data-factory-command-activity.md
-    - name: Power Automate connector
+    - name: Power Automate 
       items:
-      - name: Power Automate connector
+      - name: Power Automate flow connector
         href: flow.md
       - name: Power Automate connector usage examples
         href: flow-usage.md
