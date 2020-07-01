@@ -26,10 +26,12 @@ Expands multi-value array or property bag.
 * *ColumnName:* In the result, arrays in the named column are expanded to multiple rows. 
 * *ArrayExpression:* An expression yielding an array. If this form is used, a new column is added and the existing one is preserved.
 * *Name:* A name for the new column.
-* *Typename:* Indicates the underlying type of the array's elements, which becomes the type of the column produced by the operator. Nonconforming values in the array will not be converted. Instead, these values will take on a `null` value.
+* *Typename:* Indicates the underlying type of the array's elements, which becomes the type of the column produced by the operator. Nonconforming values in the array won't be converted. Instead, these values will take on a `null` value.
 * *RowLimit:* The maximum number of rows generated from each original row. The default is 2147483647. 
-  > [!Note] 
+
+  > [!Note]
   > The legacy and obsolete form of the operator `mvexpand` has a default row limit of 128.
+
 * *IndexColumnName:* If `with_itemindex` is specified, the output will include an additional column (named *IndexColumnName*), which contains the index (starting at 0) of the item in the original expanded collection. 
 
 **Returns**
@@ -130,13 +132,10 @@ range x from 1 to 4 step 1
 |2|1|
 |3|2|
 |4|3|
-
-## More examples
-
-See [Chart count of live activities over time](./samples.md#chart-concurrent-sessions-over-time).
-
+ 
 ## See also
 
-- [mv-apply](./mv-applyoperator.md) operator.
-- [summarize make_list()](makelist-aggfunction.md), which does the opposite function.
-- [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys.
+* See [Chart count of live activities over time](./samples.md#chart-concurrent-sessions-over-time) for more examples.
+* [mv-apply](./mv-applyoperator.md) operator.
+* [summarize make_list()](makelist-aggfunction.md), which is the opposite function of mv-expand.
+* [bag_unpack()](bag-unpackplugin.md) plugin for expanding dynamic JSON objects into columns using property bag keys.
