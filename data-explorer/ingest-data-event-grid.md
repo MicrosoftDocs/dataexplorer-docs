@@ -74,7 +74,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
     | Data connection name | *test-grid-connection* | The name of the connection that you want to create in Azure Data Explorer.|
-    | Storage account subscription | Your subscription ID | The subscription ID where your storage account resides.|
+    | Storage account subscription | Your subscription ID | The subscription ID where your storage account is.|
     | Storage account | *gridteststorage1* | The name of the storage account that you created previously.|
     | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](../data-explorer/kusto/management/data-ingestion/eventgrid.md#create-an-event-grid-subscription-in-your-storage-account) section.|
 
@@ -83,12 +83,12 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
         * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*.
         * To define a filter on a blob prefix (or a folder in Azure Data Lake Gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*.
     * **Suffix** field is the *literal* suffix of the blob. No wildcards are allowed.
-    * **Case Sensitive** field indicates whether the prefix and suffix filters are case sensitive
-    * For more information about filtering events see [Blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events).
+    * **Case Sensitive** field indicates whether the prefix and suffix filters are case-sensitive
+    * For more information about filtering events, see [Blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events).
 
 1. Select **Next: Ingest properties**.
 
-1. Fill out the form with the following information and select **Next: Review + create**. Note that table and mapping names are case sensitive:
+1. Fill out the form with the following information and select **Next: Review + create**. Table and mapping names are case-sensitive:
 
    :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-ingest-properties.png" alt-text="Review and create table and mapping ingestion properties":::
 
@@ -112,7 +112,12 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 Now that Azure Data Explorer and the storage account are connected, you can create sample data and upload it to the storage container.
 
-We'll work with a small shell script that issues a few basic Azure CLI commands to interact with Azure Storage resources. This script creates a new container in your storage account, uploads an existing file (as a blob) to that container, and then lists the blobs in the container. You can use [Azure Cloud Shell](/azure/cloud-shell/overview) to execute the script directly in the portal.
+We'll work with a small shell script that issues a few basic Azure CLI commands to interact with Azure Storage resources. This script does the following actions: 
+1. Creates a new container in your storage account.
+1. Uploads an existing file (as a blob) to that container.
+1. Lists the blobs in the container. 
+
+You can use [Azure Cloud Shell](/azure/cloud-shell/overview) to execute the script directly in the portal.
 
 Save the data into a file and upload it with this script:
 
@@ -161,7 +166,7 @@ These properties can be set:
 | `kustoIngestionMappingReference` |  Name of the existing ingestion mapping to be used. Overrides the `Column mapping` set on the `Data Connection` blade.|
 | `kustoIgnoreFirstRecord` | If set to `true`, Kusto ignores the first row of the blob. Use in tabular format data (CSV, TSV, or similar) to ignore headers. |
 | `kustoExtentTags` | String representing [tags](kusto/management/extents-overview.md#extent-tagging) that will be attached to resulting extent. |
-| `kustoCreationTime` |  Overrides [$IngestionTime](kusto/query/ingestiontimefunction.md?pivots=azuredataexplorer) for the blob, formatted as a ISO 8601 string. Use for backfilling. |
+| `kustoCreationTime` |  Overrides [$IngestionTime](kusto/query/ingestiontimefunction.md?pivots=azuredataexplorer) for the blob, formatted as an ISO 8601 string. Use for backfilling. |
 
 > [!NOTE]
 > Azure Data Explorer won't delete the blobs post ingestion.
@@ -192,13 +197,13 @@ You'll be able to alter the policy at a later time if needed. In this article yo
     TestTable
     ```
 
-    The result set should look like the following:
+    The result set should look like the following image:
 
     :::image type="content" source="media/ingest-data-event-grid/table-result.png" alt-text="Message result set for Event Grid":::
 
 ## Clean up resources
 
-If you don't plan to use your event grid again, clean up the Event Grid Subscription, Event Hub namespace and Event Hub that were auto created for you, to avoid incurring costs.
+If you don't plan to use your event grid again, clean up the Event Grid Subscription, Event Hub namespace, and Event Hub that were auto created for you, to avoid incurring costs.
 
 1. In Azure portal, go to the left menu and select **All resources**.
 
