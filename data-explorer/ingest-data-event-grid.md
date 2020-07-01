@@ -71,13 +71,13 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
      Data source:
 
-    **Setting** | **Suggested value** | **Field description**
+    |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
     | Data connection name | *test-grid-connection* | The name of the connection that you want to create in Azure Data Explorer.|
     | Storage account subscription | Your subscription ID | The subscription ID where your storage account resides.|
     | Storage account | *gridteststorage1* | The name of the storage account that you created previously.|
-    | Resources creation | *Automatic* | Define whether you want ADX to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](../data-explorer/kusto/management/data-ingestion/eventgrid.md#create-an-event-grid-subscription-in-your-storage-account) section.|
-    | | |
+    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](../data-explorer/kusto/management/data-ingestion/eventgrid.md#create-an-event-grid-subscription-in-your-storage-account) section.|
+
 
 1. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
     * **Prefix** field is the *literal* prefix of the subject. As the pattern applied is *startswith*, it can span multiple containers, folders or blobs. No wildcards are allowed.
@@ -100,9 +100,8 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Table | *TestTable* | The table you created in **TestDatabase**. |
     | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT and TSVE. Supported compression options: Zip and GZip |
     | Mapping | *TestMapping* | The mapping you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**.|
-    | | |
 
-1. Review the resources that auto created for you and Select **Create**.
+1. Review the resources that auto created for you and select **Create**.
 
    ![Event grid connection](media/ingest-data-event-grid/create-event-grid-data-connection-review-and-create.png)
 
