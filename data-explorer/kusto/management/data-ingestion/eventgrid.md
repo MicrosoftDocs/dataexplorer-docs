@@ -16,7 +16,7 @@ Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage
 ## Data format
 
 * Blobs can be in any of the [supported formats](../../../ingestion-supported-formats.md).
-* Blobs can be compressed in any of the [supported compressions](../../../ingestion-supported-formats.md#supported-data-compression-formats).
+* Blobs can be compressed. For more information, see [supported compressions](../../../ingestion-supported-formats.md#supported-data-compression-formats).
 
 > [!NOTE]
 > Ideally the original uncompressed data size should be part of the blob metadata.
