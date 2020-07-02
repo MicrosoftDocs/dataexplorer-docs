@@ -154,8 +154,8 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
 * Event Grid notifications aren't triggered if the connection string provided to the export command, or the connection string provided to an [external table](../data-export/export-data-to-an-external-table.md), is a connecting string in [ADLS Gen2 format](../../api/connection-strings/storage.md#azure-data-lake-store).
 
     For example, `abfss://filesystem@accountname.dfs.core.windows.net`):
-    * Here the storage account isn't enabled for hierarchical namespace.
-    * If the account isn't enabled for hierarchical namespace, the connection string must use the [Blob Storage](../../api/connection-strings/storage.md#azure-storage-blob) format. 
+    * The storage account isn't enabled for hierarchical namespace.
+    * Therefore, the connection string must use the [Blob Storage](../../api/connection-strings/storage.md#azure-storage-blob) format. 
 
     For example, `https://accountname.blob.core.windows.net`. 
     * The export works as expected. Even when using the ADLS Gen2 connection string. However, notifications won't be triggered and Event Grid ingestion won't work.
