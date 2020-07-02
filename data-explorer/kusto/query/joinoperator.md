@@ -34,13 +34,13 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 
   A rule can be one of:
 
-  |Rule kind        |Syntax                                          |Predicate                                                      |
-  |-----------------|------------------------------------------------|---------------------------------------------------------------|
-  |Equality by name |*ColumnName*                                    |`where` *LeftTable*.*ColumnName* `==` *RightTable*.*ColumnName*|
+  |Rule kind        |Syntax          |Predicate    |
+  |-----------------|--------------|-------------------------|
+  |Equality by name |*ColumnName*    |`where` *LeftTable*.*ColumnName* `==` *RightTable*.*ColumnName*|
   |Equality by value|`$left.`*LeftColumn* `==` `$right.`*RightColumn*|`where` `$left.`*LeftColumn* `==` `$right.`*RightColumn*       |
 
-> [!NOTE]
-> For 'equality by value', the column names *must* be qualified with the applicable owner table denoted by `$left` and `$right` notations.
+    > [!NOTE]
+    > For 'equality by value', the column names *must* be qualified with the applicable owner table denoted by `$left` and `$right` notations.
 
 * *JoinParameters*: Zero or more space-separated parameters in the form of
   *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. The following parameters are supported:
@@ -72,55 +72,24 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 
 The output schema depends on the join flavor:
 
- * `kind=leftanti`, `kind=leftsemi`:
-
-     The result table contains columns from the left side only.
-
-     
- * `kind=rightanti`, `kind=rightsemi`:
-
-     The result table contains columns from the right side only.
-
-     
-*  `kind=innerunique`, `kind=inner`, `kind=leftouter`, `kind=rightouter`, `kind=fullouter`
-
-     A column for every column in each of the two tables, including the matching keys. The columns of the right side will be automatically renamed if there are name clashes.
-
-     
+ * `kind=leftanti`, `kind=leftsemi`: The result table contains columns from the left side only.
+ * `kind=rightanti`, `kind=rightsemi`: The result table contains columns from the right side only.
+*  `kind=innerunique`, `kind=inner`, `kind=leftouter`, `kind=rightouter`, `kind=fullouter`:     A column for every column in each of the two tables, including the matching keys. The columns of the right side will be automatically renamed if there are name clashes. 
+   
 Output records depend on the join flavor:
 
- * `kind=leftanti`, `kind=leftantisemi`
+* `kind=leftanti`, `kind=leftantisemi`: Returns all the records from the left side that don't have matches from the right.
+* `kind=rightanti`, `kind=rightantisemi`: Returns all the records from the right side that don't have matches from the left.  
+*  `kind=innerunique`, `kind=inner`, `kind=leftouter`, `kind=rightouter`, `kind=fullouter`, `kind=leftsemi`, `kind=rightsemi`:A row for every match between the input tables. A match is a row selected from one table that has the same value for all the `on` fields as a row in the other table with the following constraints:
 
-     Returns all the records from the left side that don't have matches from the right.
-     
- * `kind=rightanti`, `kind=rightantisemi`
+    > [!Note]
+    > For several rows with the same values for those fields, you'll get rows for all the combinations.
 
-     Returns all the records from the right side that don't have matches from the left.  
-      
-*  `kind=innerunique`, `kind=inner`, `kind=leftouter`, `kind=rightouter`, `kind=fullouter`, `kind=leftsemi`, `kind=rightsemi`
-
-    A row for every match between the input tables. A match is a row selected from one table that has the same value for all the `on` fields as a row in the other table with these constraints:
-
-   * `kind` unspecified, `kind=innerunique`
-
-    Only one row from the left side is matched for each value of the `on` key. The output contains a row for each match of this row with rows from the right.
-
-* `kind=leftsemi`
-
-    Returns all the records from the left side that have matches from the right.
-
-* `kind=rightsemi`
-   
-       Returns all the records from the right side that have matches from the left.
-
-* `kind=inner`
-
-    There's a row in the output for every combination of matching rows from left and right.
-
-* `kind=leftouter` (or `kind=rightouter` or `kind=fullouter`)
-
-    There's also a row for every row on the left and right, even if it has no match. Then the unmatched output cells contain nulls.
-    For several rows with the same values for those fields, you'll get rows for all the combinations.
+   * `kind` unspecified, `kind=innerunique`: Only one row from the left side is matched for each value of the `on` key. The output contains a row for each match of this row with rows from the right.
+   * `kind=leftsemi`: Returns all the records from the left side that have matches from the right.
+   * `kind=rightsemi`: Returns all the records from the right side that have matches from the left.
+   * `kind=inner`: There's a row in the output for every combination of matching rows from left and right.
+   * `kind=leftouter` (or `kind=rightouter` or `kind=fullouter`): There's also a row for every row on the left and right, even if it has no match. Then the unmatched output cells contain nulls. 
 
 > [!TIP]
 > For best performance, if one table is always smaller than the other, use it as the left (piped) side of the join.
@@ -201,7 +170,7 @@ on key
 |1|val1.2|1|val1.4|
 |1|val1.1|1|val1.4|
 
-* Use **innerunique-join flavor** to deduplicate keys from the left side. The result will be a row in the output from every combination of deduplicated left keys and right keys.
+Use **innerunique-join flavor** to deduplicate keys from the left side. The result will be a row in the output from every combination of deduplicated left keys and right keys.
 
 An example of **innerunique-join** for the same datasets used above:
  
@@ -255,9 +224,10 @@ on key
 |1|val1.2|1|val1.4|
 
 * Kusto is optimized to push filters that come after the `join`, towards the appropriate join side, left or right, when possible.
-    Sometimes, the flavor used is **innerunique** and the filter is propagated to the left side of the join. The flavor will be automatically propagated and the keys that apply to that filter will always appear in the output.
+
+* Sometimes, the flavor used is **innerunique** and the filter is propagated to the left side of the join. The flavor will be automatically propagated and the keys that apply to that filter will always appear in the output.
     
-    Use the example above and add a filter `where value == "val1.2" `. It will always give the second result and will never give the first result for the datasets:
+* Use the example above and add a filter `where value == "val1.2" `. It will always give the second result and will never give the first result for the datasets:
 
 ```kusto
 let t1 = datatable(key:long, value:string)  
@@ -284,12 +254,15 @@ on key
 
 ### Default join flavor
 
-    X | join Y on Key
-    X | join kind=innerunique Y on Key
+``` 
+X | join Y on Key
+ 
+X | join kind=innerunique Y on Key
+```
 
 Use two sample tables to explain the operation of the join.
 
-Table X
+**Table X**
 
 |Key |Value1
 |---|---
@@ -298,7 +271,7 @@ Table X
 |b |3
 |c |4
 
-Table Y
+**Table Y**
 
 |Key |Value2
 |---|---
@@ -309,9 +282,7 @@ Table Y
 
 The default join does an inner join after deduplicating the left side on the join key (deduplication keeps the first record).
 
-Given this statement:
-
-    X | join Y on Key
+Given this statement: `X | join Y on Key`
 
 the effective left side of the join, table X after deduplication, would be:
 
@@ -601,7 +572,6 @@ To simulate, use a dummy key.
 
 The `join` operator supports a number of hints that control the way a query runs.
 These hints don't change the semantic of `join`, but may affect its performance.
-
 
 Join hints are explained in the following articles:
 
