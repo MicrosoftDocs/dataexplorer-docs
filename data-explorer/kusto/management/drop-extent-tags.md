@@ -15,6 +15,7 @@ ms.date: 07/02/2020
 The command runs in the context of a specific database. It drops specific [extent tags](extents-overview.md#extent-tagging) from all or specific extents in the database and table.  
 
 > [!NOTE]
+> Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
 There are two ways to specify which tags should be removed from which extents:
@@ -31,7 +32,7 @@ There are two ways to specify which tags should be removed from which extents:
 `async` (optional): Execute the command asynchronously.
    * An Operation ID (Guid) is returned.
    * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command.
-   * You can  retrieve the results of a successful execution. Use the [.show operation details](operations.md#show-operation-details) command.
+   * Use the [.show operation details](operations.md#show-operation-details) command to retrieve the results of a successful execution.
 
 ## Restrictions
 
@@ -65,19 +66,19 @@ Details |string |Includes the failure details if the operation fails.
 
 ### Examples
 
-Drop the `drop-by:Partition000` tag from any extent in table that is tagged with it.
+#### Drop the `drop-by:Partition000` tag from any extent in table that is tagged with it
 
 ```kusto
 .drop extent tags from table MyOtherTable ('drop-by:Partition000')
 ```
 
-Drop the tags `drop-by:20160810104500`, `a random tag`, and `drop-by:20160810` from any extent in table that is tagged with either of them.
+#### Drop the tags `drop-by:20160810104500`, `a random tag`, and `drop-by:20160810` from any extent in table that is tagged with either of them
 
 ```kusto
 .drop extent tags from table [My Table] ('drop-by:20160810104500','a random tag','drop-by:20160810')
 ```
 
-Drop all `drop-by` tags from extents in table `MyTable`.
+#### Drop all `drop-by` tags from extents in table `MyTable`
 
 ```kusto
 .drop extent tags <| 
@@ -88,7 +89,7 @@ Drop all `drop-by` tags from extents in table `MyTable`.
   | where Tags startswith 'drop-by'
 ```
 
-Drop all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from extents in table `MyTable`.
+#### Drop all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from extents in table `MyTable`
 
 ```kusto
 .drop extent tags <| 

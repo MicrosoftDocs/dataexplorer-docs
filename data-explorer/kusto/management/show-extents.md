@@ -12,12 +12,13 @@ ms.date: 07/02/2020
 
 # .show extents
 
-Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
+Shows extents from a specified database or table.
 
 > [!NOTE]
+> Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
-**Cluster Level**
+## Cluster Level
 
 `.show` `cluster` `extents` [`hot`]
 
@@ -46,34 +47,13 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
 * If the optional list of extent IDs is provided, the returned data set is limited to those extents only.
     * This method is much faster than filtering (adding `| where ExtentId in(...)` to) the results of "bare" commands.
 * If `tags` filters are specified:
-  * The returned list is limited to those extents whose tags collection obeys *all* of the provided tags filters.
+    * The returned list is limited to those extents whose tags collection obeys *all* of the provided tags filters.
     * This method is much faster than filtering (adding `| where Tags has '...' and Tags contains '...'` to) the results of "bare" commands.
-  * `has` filters are equality filters. Extents that aren't tagged with either of the specified tags will be filtered out.
-  * `!has` filters are equality negative filters. Extents that are tagged with either of the specified tags will be filtered out.
-  * `contains` filters are case-insensitive substring filters. Extents that don't have the specified strings as a substring of any of their tags will be filtered out.
-  * `!contains` filters are case-insensitive substring negative filters. Extents that have the specified strings as a substring of any of their tags will be filtered out.
+    * `has` filters are equality filters. Extents that aren't tagged with either of the specified tags will be filtered out.
+    * `!has` filters are equality negative filters. Extents that are tagged with either of the specified tags will be filtered out.
+    * `contains` filters are case-insensitive substring filters. Extents that don't have the specified strings as a substring of any of their tags will be filtered out.
+    * `!contains` filters are case-insensitive substring negative filters. Extents that have the specified strings as a substring of any of their tags will be filtered out.
   
-### Examples
-    
-* Extent `E` in table `T` is tagged with tags `aaa`, `BBB`, and `ccc`.
-* This query will return `E`:
-    
-   ```kusto
-    .show table T extents where tags has 'aaa' and tags contains 'bb'
-   ```
-   
-* This query *won't* return `E` since it isn't tagged with `aa`:
-    
-   ```kusto
-    .show table T extents where tags has 'aa' and tags contains 'bb'
-   ```
-    
-* This query will return `E`:
-    
-   ```kusto
-    .show table T extents where tags contains 'aaa' and tags contains 'bb' 
-   ```
-
 ## Output parameters
 
 |Output parameter |Type |Description |
@@ -97,24 +77,60 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
  
 ## Examples
 
-```kusto 
-// Show volume of extents being created per hour in a specific database
-.show database MyDatabase extents | summarize count(ExtentId) by MaxCreatedOn bin=time(1h) | render timechart  
+### Extent `E` in table `T` is tagged with tags `aaa`, `BBB`, and `ccc`.
 
-// Show volume of data arriving by table per hour
+* This query will return `E`:
+    
+   ```kusto
+    .show table T extents where tags has 'aaa' and tags contains 'bb'
+   ```
+   
+* This query *won't* return `E` since it isn't tagged with `aa`:
+    
+   ```kusto
+    .show table T extents where tags has 'aa' and tags contains 'bb'
+   ```
+    
+* This query will return `E`:
+    
+   ```kusto
+    .show table T extents where tags contains 'aaa' and tags contains 'bb' 
+   ```
+
+### Show volume of extents being created per hour in a specific database
+
+```kusto 
+.show database MyDatabase extents | summarize count(ExtentId) by MaxCreatedOn bin=time(1h) | render timechart  
+```
+
+### Show volume of data arriving by table per hour
+
+```kusto 
 .show database MyDatabase extents  
 | summarize sum(OriginalSize) by TableName, MaxCreatedOn bin=time(1h)  
 | render timechart
+```
 
-// Show data size distribution by table
+### Show data size distribution by table
+
+```kusto 
 .show database MyDatabase extents | summarize sum(OriginalSize) by TableName
+```
 
-// Show all extents in the database named 'GamesDB'
+### Show all extents in the database named 'GamesDB'
+
+```kusto 
 .show database GamesDB extents
+```
 
-// Show all extents in the table named 'Games'
+### Show all extents in the table named 'Games'
+
+```kusto 
 .show table Games extents
+```
 
-// Show all extents in the tables named 'TaggingGames1' and 'TaggingGames2', tagged with both 'tag1' and 'tag2'
+### Show all extents in the tables named 'TaggingGames1' and 'TaggingGames2', tagged with both 'tag1' and 'tag2'
+
+```kusto 
 .show tables (TaggingGames1,TaggingGames2) extents where tags has 'tag1' and tags has 'tag2'
 ```

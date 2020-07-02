@@ -15,6 +15,7 @@ ms.date: 07/02/2020
 This command merges the extents indicated by their IDs in the specified table. 
 
 > [!NOTE]
+> Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
 ## Syntax
@@ -42,13 +43,13 @@ Duration |timespan |The time period it took to complete the merge operation.
 
 ## Examples
 
-Rebuild two specific extents in `MyTable`, asynchronously.
+### Rebuild two specific extents in `MyTable`, asynchronously.
 
 ```kusto
 .merge async MyTable (e133f050-a1e2-4dad-8552-1f5cf47cab69, 0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687) with(rebuild=true)
 ```
 
-Merge two specific extents in `MyTable`, synchronously.
+### Merge two specific extents in `MyTable`, synchronously.
 
 ```kusto
 .merge MyTable (12345050-a1e2-4dad-8552-1f5cf47cab69, 98765b2d-9dd2-4d2c-a45e-b24c65aa6687)
@@ -56,10 +57,10 @@ Merge two specific extents in `MyTable`, synchronously.
 
 ## Notes
 
-* In General, `.merge` commands should rarely be manually run. The commands are continuously and automatically run in the background of the Kusto cluster, according to the [Merge Policies](mergepolicy.md) for tables and databases.  
+* In General, `.merge` commands should rarely be manually run. The commands are continuously and automatically run in the background of the Kusto cluster, according to the [merge policies](mergepolicy.md) for tables and databases.  
   * For more information on the criteria for merging multiple extents into a single one, see [Merge Policy](mergepolicy.md).
-* `.merge` operations have a possible final state of `Abandoned`, which can be seen when running `.show operations` with the operation ID. This state suggests the source extents weren't merged, since some of the source extents no longer exist in the source table.
-   Such a state is expected to occur when:
+* `.merge` operations have a possible final state of `Abandoned`, which can be seen when running `.show operations` with the operation ID. This state suggests the source extents weren't merged, since some of the source extents no longer exist in the source table. 
+The `Abandoned` state happens when:
    * The source extents have been dropped as part of the table's retention.
    * The source extents have been moved to a different table.
    * The source table has been entirely dropped or renamed.

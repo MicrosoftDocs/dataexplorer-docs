@@ -19,6 +19,7 @@ The extents and the tags to alter are specified using a Kusto query that returns
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) for all involved tables.
 
 > [!NOTE]
+> Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
 ## Syntax
@@ -28,7 +29,7 @@ Requires [Table admin permission](../management/access-control/role-based-author
 `async` (optional): Execute the command asynchronously.
    * An Operation ID (Guid) is returned. 
    * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command.
-   * You can  retrieve the results of a successful execution. Use the [.show operation details](operations.md#show-operation-details) command.
+   * You can retrieve the results of a successful execution. Use the [.show operation details](operations.md#show-operation-details) command.
 
 ## Restrictions
 
@@ -45,13 +46,13 @@ Details |string |Includes the failure details if the operation fails.
 
 ## Examples
 
-Alter tags of all the extents in table `MyTable` to `MyTag`.
+### Alter tags of all the extents in table `MyTable` to `MyTag`
 
 ```kusto
 .alter extent tags ('MyTag') <| .show table MyTable extents
 ```
 
-Alter tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`.
+### Alter tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`
 
 ```kusto
 .alter extent tags ('drop-by:MyNewTag','MyOtherNewTag') <| .show table MyTable extents where tags has 'drop-by:MyTag'

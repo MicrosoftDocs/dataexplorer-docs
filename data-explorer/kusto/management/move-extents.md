@@ -17,8 +17,8 @@ This command runs in the context of a specific database. It moves the specified 
 The command requires [Table admin permission](../management/access-control/role-based-authorization.md) for the source and destination tables.
 
 > [!NOTE]
+> Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
-
 
 ## Syntax
 
@@ -30,13 +30,13 @@ The command requires [Table admin permission](../management/access-control/role-
 
 `async` (optional). Execute the command asynchronously. 
    * An Operation ID (Guid) is returned.
-   * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command).
+   * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command.
    * The results of a successful execution can be retrieved. Use the [.show operation details](operations.md#show-operation-details) command.
 
 There are three ways to specify which extents to move:
-* All extents of a specific table are to be moved.
-* By explicitly specifying the extent IDs in the source table.
-* By providing a query whose results specify the extent IDs in the source tables.
+* Move all extents of a specific table.
+* Specify explicitly the extent IDs in the source table.
+* Provide a query whose results specify the extent IDs in the source tables.
 
 ## Restrictions
 
@@ -61,19 +61,19 @@ Details |string |Includes the failure details, in case the operation fails.
 
 ## Examples
 
-Move all extents in table `MyTable` to table `MyOtherTable`.
+### Move all extents in table `MyTable` to table `MyOtherTable`
 
 ```kusto
 .move extents all from table MyTable to table MyOtherTable
 ```
 
-Move two specific extents (by their extent IDs) from table `MyTable` to table `MyOtherTable`.
+### Move two specific extents (by their extent IDs) from table `MyTable` to table `MyOtherTable`
 
 ```kusto
 .move extents (AE6CD250-BE62-4978-90F2-5CB7A10D16D7,399F9254-4751-49E3-8192-C1CA78020706) from table MyTable to table MyOtherTable
 ```
 
-Move all extents from specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`.
+### Move all extents from specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`
 
 ```kusto
 .move extents to table MyOtherTable <| .show tables (MyTable1,MyTable2) extents
