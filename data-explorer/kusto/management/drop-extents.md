@@ -1,6 +1,6 @@
 ---
 title: .drop extents - Azure Data Explorer
-description: This article describes Extents (data shards) management in Azure Data Explorer.
+description: This article describes the drop extents command in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
