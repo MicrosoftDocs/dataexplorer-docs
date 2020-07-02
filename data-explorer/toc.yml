@@ -1314,7 +1314,7 @@
           href: ./kusto/management/create-alter-function.md
         - name: .drop function
           href: ./kusto/management/drop-function.md
-        - name: .show functions
+        - name: .show function(s)
           href: ./kusto/management/show-function.md
     - name: Policies
       items:
