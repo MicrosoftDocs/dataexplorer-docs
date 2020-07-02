@@ -43,7 +43,7 @@ You can set the following properties:
 ## Events routing
 
 When setting up a blob storage connection to Azure Data Explorer cluster, specify: 
-* target table properties,
+* target table properties
 * table name
 * data format
 * mapping
