@@ -20,7 +20,10 @@ in the form of default query limits.
 ## Limit on query concurrency
 
 **Query concurrency**  is a limit that a cluster imposes on a number of queries running at the same time.
-The default value can be changed by creating a support ticket. In the future, this control will also be exposed via a control command.
+
+* The default value of the query concurrency limit depends on the SKU cluster it's running on, and is calculated as: `Cores-Per-Node x 10`.
+  * For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default Query Concurrency limit is `16 cores x10 = 160`.
+* The default value can be changed by creating a support ticket. In the future, this control will also be exposed via a control command.
 
 ## Limit on result set size (result truncation)
 
