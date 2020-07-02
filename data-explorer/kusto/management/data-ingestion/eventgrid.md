@@ -11,7 +11,7 @@ ms.date: 07/01/2020
 ---
 # Ingest from storage using Event Grid subscription
 
-Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created notifications and streaming these notifications to Kusto via an Event Hub.
+Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
 
 ## Data format
 
