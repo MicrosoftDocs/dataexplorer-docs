@@ -328,7 +328,7 @@ aggregates on the ‘Message' column. Try to find the top errors.
 
 The relevant parts of the entire stack trace of the message are trimmed out to better fit onto the page. 
 
-You can see the successfull identification of the top eight errors. However, there follows a long series of errors, since the error message 
+You can see the successful identification of the top eight errors. However, there follows a long series of errors, since the error message 
 was created by a format string that contained changing data. 
 
 ```kusto
