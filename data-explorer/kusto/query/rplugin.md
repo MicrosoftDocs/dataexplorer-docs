@@ -11,7 +11,7 @@ ms.date: 04/01/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-# R plugin (preview)
+# R plugin (Preview)
 
 ::: zone pivot="azuredataexplorer"
 
@@ -19,11 +19,11 @@ The R plugin runs a user-defined-function (UDF) using an R script.
 The script gets tabular data as its input, and produces tabular output.
 The plugin's runtime is hosted in a [sandbox](../concepts/sandboxes.md) on the cluster's nodes. The sandbox provides an isolated and secure environment.
 
-### Syntax
+## Syntax
 
 *T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `r(`*output_schema*`,` *script* [`,` *script_parameters*]`)`
 
-### Arguments
+## Arguments
 
 * *output_schema*: A `type` literal that defines the output schema of the tabular data, returned by the R code.
     * The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`, for example: `typeof(col1:string, col2:long)`.
@@ -35,7 +35,7 @@ The plugin's runtime is hosted in a [sandbox](../concepts/sandboxes.md) on the c
     * `single`: A single instance of the script will run over the entire query data.
     * `per_node`: If the query before the R block is distributed, an instance of the script will run on each node over the data that it contains.
 
-### Reserved R variables
+## Reserved R variables
 
 The following variables are reserved for interaction between Kusto Query Language and the R code:
 
@@ -43,23 +43,17 @@ The following variables are reserved for interaction between Kusto Query Languag
 * `kargs`: The value of the *script_parameters* argument, as an R dictionary.
 * `result`: An R DataFrame created by the R script. The value becomes the tabular data that gets sent to any Kusto query operator that follows the plugin.
 
-### Onboarding
+## Enable the plugin
 
 * The plugin is disabled by default.
+* Enable or disable the plugin in the Azure portal in the **Configuration** tab of your cluster. For more information see [Manage language extensions in your Azure Data Explorer cluster (Preview)](../../language-extensions.md)
 
-> [!TIP]
-> * To enable the plugin on your cluster:
->    * In the Azure portal, within your Azure Data Explorer cluster, select **New support request** in the left-hand menu.
->
-> * To disable the plugin, you must open a support ticket as well:
->    * In the Azure portal, within your Azure Data Explorer cluster, select **New support request** in the left-hand menu.
-
-### Notes and limitations
+## Notes and limitations
 
 * The R sandbox image is based on *R 3.4.4 for Windows*, and includes packages from [Anaconda's R Essentials bundle](https://docs.anaconda.com/anaconda/packages/r-language-pkg-docs/).
 * The R sandbox limits access to the network. The R code can't dynamically install additional packages that aren't included in the image. If you need specific packages, open a **New support request** in the Azure portal.
 
-### Examples
+## Examples
 
 ```kusto
 range x from 1 to 360 step 1
@@ -80,7 +74,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 
 :::image type="content" source="images/plugin/sine-demo.png" alt-text="Sine demo" border="false":::
 
-### Performance tips
+## Performance tips
 
 * Reduce the plugin's input data set to the minimum amount required (columns/rows).
     * Use filters on the source data set using the Kusto Query Language, when possible.
@@ -103,11 +97,11 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
     | summarize avg = avg(d2)
     ```
 
-### Usage tips
+## Usage tips
 
 * To avoid conflicts between Kusto string delimiters and R string delimiters:  
-    * Use single quote characters (`'`) for Kusto string literals in Kusto queries
-    * Use double quote characters (`"`) for R string literals in R scripts
+    * Use single quote characters (`'`) for Kusto string literals in Kusto queries.
+    * Use double quote characters (`"`) for R string literals in R scripts.
 * Use the [external data operator](externaldata-operator.md) to obtain the content of
   a script that you've stored in an external location, such as Azure blob storage or a public GitHub repository.
   
@@ -135,3 +129,4 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 This capability isn't supported in Azure Monitor
 
 ::: zone-end
+
