@@ -353,7 +353,7 @@ X | join kind=inner Y on Key
 |c|4|c|30|
 
 > [!NOTE]
-> * (b,10) from the right side, was joined twice: with both (b,2) and (b,3) on the left
+> * (b,10) from the right side, was joined twice: with both (b,2) and (b,3) on the left.
 > * (c,4) on the left side, was joined twice: with both (c,20) and (c,30) on the right.
 
 ### Left outer-join
