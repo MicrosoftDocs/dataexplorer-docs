@@ -1223,7 +1223,7 @@
         href: ./kusto/management/best-practices.md
     - name: Schema
       items:
-      - name: Databases management
+      - name: Database management
         href: ./kusto/management/databases.md
         items:
         - name: .show databases
