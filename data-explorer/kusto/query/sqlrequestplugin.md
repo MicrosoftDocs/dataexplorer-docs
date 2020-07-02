@@ -97,7 +97,7 @@ SQL Server endpoint:
 
 `User ID=...; Password=...;`
 
-   Support for this method is provided when Azure AD-integrated authentication can't be done. Avoid this method, when possible, as secret information is sent through Kusto.
+  Username and password authentication support is provided when Azure AD-integrated authentication can't be done. Avoid this method, when possible, as secret information is sent through Kusto.
 
 ### Azure AD access token
 
