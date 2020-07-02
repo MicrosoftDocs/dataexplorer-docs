@@ -566,7 +566,7 @@ X | join kind=rightsemi Y on Key
 Kusto doesn't natively provide a cross-join flavor. You can't mark the operator with the `kind=cross`.
 To simulate, use a dummy key.
 
-    X | extend dummy=1 | join kind=inner (Y | extend dummy=1) on dummy
+`X | extend dummy=1 | join kind=inner (Y | extend dummy=1) on dummy`
 
 ## Join hints
 
