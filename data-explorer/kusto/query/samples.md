@@ -14,7 +14,7 @@ ms.date: 02/13/2020
 Below are a few common query needs and how the Kusto query language can be used
 to meet them.
 
-## Display a column chart 
+## Display a column chart
 
 Project two or more columns and use them as the x and y axis of a chart.
 
@@ -75,8 +75,7 @@ Events
 
 ### Get sessions, without session ID
 
-Suppose that the start and stop events don't conveniently have a session ID that we can match with. But we do have an IP address of the client 
-where the session took place. Assuming each client address only conducts one session at a time, we can match each start event to the next stop event from the same IP address.
+Suppose that the start and stop events don't conveniently have a session ID that we can match with. But we do have an IP address of the client where the session took place. Assuming each client address only conducts one session at a time, we can match each start event to the next stop event from the same IP address.
 
 ```kusto
 Events 
