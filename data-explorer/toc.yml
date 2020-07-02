@@ -229,7 +229,6 @@
           - name: Azure Resource Manager template
             href: cluster-principal-resource-manager.md
       - name: Manage cluster language extensions
-        displayName: Python, R
         href: language-extensions.md
     - name: Database
       items:
@@ -1483,7 +1482,21 @@
       - name: Extents (Data Shards) Overview
         href: ./kusto/management/extents-overview.md
       - name: Extents Commands
-        href: ./kusto/management/extents-commands.md
+        items: 
+        - name: .alter extent
+          href: ./kusto/management/alter-extent.md
+        - name: .drop extents
+          href: ./kusto/management/drop-extents.md
+        - name: .drop extent tags
+          href: ./kusto/management/drop-extent-tags.md
+        - name: .merge extents
+          href: ./kusto/management/merge-extents.md
+        - name: .move extents
+          href: ./kusto/management/move-extents.md
+        - name: .replace extents
+          href: ./kusto/management/replace-extents.md
+        - name: .show extents
+          href: ./kusto/management/show-extents.md
       - name: Cluster follower
         href: ./kusto/management/cluster-follower.md
       - name: Data purge
