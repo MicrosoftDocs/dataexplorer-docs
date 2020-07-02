@@ -11,20 +11,16 @@ ms.date: 02/19/2020
 ---
 # RestrictedViewAccess policy
 
-*RestrictedViewAccess* is an optional policy that can be enabled on tables in a database.
+*RestrictedViewAccess* is an optional policy that can be enabled for tables of a database.
 
-When this policy is enabled on a table, data in the table can be queried *only* to principals added 
-to the [UnrestrictedViewer](../management/access-control/role-based-authorization.md) role in the database.
+When this policy is enabled for a table, data in the table can only be queried by principals who have an [UnrestrictedViewer](../management/access-control/role-based-authorization.md) role in the database.
+Any principal,  who isn't registered with an [UnrestrictedViewer](../management/access-control/role-based-authorization.md) database-level role, won't be able to query data in the table. Even an unregistered table/database/cluster admin.
 
-When a policy is enabled on a table, any principal (even a table/database/cluster admin) which isn't included in the 
-[UnrestrictedViewer](../management/access-control/role-based-authorization.md) database-level role, won't be able to query data in the table.
-
-The [UnrestrictedViewer](../management/access-control/role-based-authorization.md) role grants view permission to *all* tables in the database which have the policy enabled,
-assuming the current principal is already authorized to query the database (a database admin/user/viewer). Adding or removing principals
-to or from the role can be done by a [DatabaseAdmin](../management/access-control/role-based-authorization.md).
+The [UnrestrictedViewer](../management/access-control/role-based-authorization.md) role grants view permission to *all* tables in the database that have the policy enabled.
+The current principal, a database admin/user/viewer, is already authorized to query the database. 
+Adding or removing principals can be done by a [DatabaseAdmin](../management/access-control/role-based-authorization.md).
 
 > [!NOTE]
 > RestrictedViewAccess policy can't be configured on a table on which a [Row Level Security policy](./rowlevelsecuritypolicy.md) is enabled.
 
-For more on the control commands for managing the RestrictedViewAccess policy,
-[see here](../management/restrictedviewaccess-policy.md).
+For more information, see the control commands for managing the [RestrictedViewAccess policy](../management/restrictedviewaccess-policy.md).
