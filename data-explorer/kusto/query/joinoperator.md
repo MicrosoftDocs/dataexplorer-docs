@@ -175,7 +175,7 @@ Use **innerunique-join flavor** to deduplicate keys from the left side. The resu
 An example of **innerunique-join** for the same datasets used above:
  
 > [!NOTE]
-> **innerunique flavor** here, may yield two possible outputs and both are correct.
+> **innerunique flavor** may yield two possible outputs and both are correct.
     In the first output, the join operator randomly selected the first key that appears in t1, with the value "val1.1" and matched it with t2 keys.
     In the second output, the join operator randomly selected the second key that appears in t1, with the value "val1.2" and matched it with t2 keys.
 
