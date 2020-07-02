@@ -1234,7 +1234,7 @@
           href: ./kusto/management/show-cluster-database.md
         - name: .alter database prettyname
           href: ./kusto/management/alter-database.md
-        - name: .show databases schema
+        - name: .show database(s) schema
           href: ./kusto/management/show-schema-database.md
         - name: .execute database script
           href: ./kusto/management/execute-database-script.md
