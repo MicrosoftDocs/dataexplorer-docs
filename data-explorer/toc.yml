@@ -1158,7 +1158,7 @@
         href: kusto/query/geo-polygon-to-s2cells-function.md  
     - name: User analytics
       items:
-      - name: User analytics plugins
+      - name: User analytics plugins overview
         href: ./kusto/query/useranalytics.md
       - name: active_users_count plugin
         href: ./kusto/query/active-users-count-plugin.md
