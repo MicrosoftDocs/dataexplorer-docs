@@ -1223,7 +1223,7 @@
         href: ./kusto/management/best-practices.md
     - name: Schema
       items:
-      - name: Database management
+      - name: Databases management
         href: ./kusto/management/databases.md
         items:
         - name: .show databases
@@ -1314,99 +1314,99 @@
           href: ./kusto/management/create-alter-function.md
         - name: .drop function
           href: ./kusto/management/drop-function.md
-        - name: .show function(s)
+        - name: .show functions
           href: ./kusto/management/show-function.md
     - name: Policies
       items:
-      - name: Batch policy
+      - name: Ingestion batching
         items:
-        - name: IngestionBatching policy
+        - name: Ingestionbatching policy
           href: ./kusto/management/batchingpolicy.md
         - name: ingestionbatching policy command
           href: ./kusto/management/batching-policy.md
-      - name: Cache policy
+      - name: Cache
         items:
         - name: Cache policy (hot and cold cache)
           href: ./kusto/management/cachepolicy.md
         - name: cache policy command
           href: ./kusto/management/cache-policy.md
-      - name: Callout policy
+      - name: Callout
         href: ./kusto/management/calloutpolicy.md
-      - name: Capacity policy
+      - name: Capacity
         items:
         - name: Capacity policy
           href: ./kusto/management/capacitypolicy.md
         - name: capacity policy commands
           href: ./kusto/management/capacity-policy.md
-      - name: IngestionTime policy
+      - name: Ingestiontime
         items:
         - name: Ingestiontime policy
           href: ./kusto/management/ingestiontimepolicy.md
         - name: ingestiontime policy command
           href: ./kusto/management/ingestiontime-policy.md
-      - name: Merge policy
+      - name: Merge
         items:
         - name: Merge policy
           href: ./kusto/management/mergepolicy.md
         - name: merge policy command
           href: ./kusto/management/merge-policy.md
-      - name: Partitioning policy
+      - name: Partitioning
         items:
         - name: Partitioning policy
           href: ./kusto/management/partitioningpolicy.md
         - name: partitioning policy command
           href: ./kusto/management/partitioning-policy.md
-      - name: Retention policy
+      - name: Retention
         items:
         - name: Retention policy
           href: ./kusto/management/retentionpolicy.md
         - name: retention policy command
           href: ./kusto/management/retention-policy.md
-      - name: Restricted View Access policy
+      - name: Restricted view access
         items:
-        - name: Restricted View Access policy
+        - name: Restricted view access policy
           href: ./kusto/management/restrictedviewaccesspolicy.md
         - name: restricted_view_access policy command
           href: ./kusto/management/restrictedviewaccess-policy.md
-      - name: RowLevelSecurity policy
+      - name: Row level security
         items:
-        - name: Row Level Security policy
+        - name: Row level security policy
           href: ./kusto/management/rowlevelsecuritypolicy.md
         - name: row_level_security policy command
           href: ./kusto/management/row-level-security-policy.md
-      - name: RowOrder policy
+      - name: Roworder
         items:
-        - name: Row Order policy
+        - name: Roworder policy
           href: ./kusto/management/roworderpolicy.md
         - name: roworder policy command
           href: ./kusto/management/roworder-policy.md
-      - name: Sandbox policy
+      - name: Sandbox
         items:
         - name: Sandbox policy
           href: ./kusto/management/sandboxpolicy.md
         - name: Sandbox policy command
           href: ./kusto/management/sandbox-policy.md
-      - name: Sharding policy
+      - name: Sharding
         items:
         - name: Sharding policy
           href: ./kusto/management/shardingpolicy.md
         - name: sharding policy command
           href: ./kusto/management/sharding-policy.md
-      - name: Streaming Ingestion policy
+      - name: Streaming ingestion
         items:
-        - name: Streaming Ingestion policy
+        - name: Streaming ingestion policy
           href: ./kusto/management/streamingingestionpolicy.md
         - name: streamingingestion policy command
           href: ./kusto/management/streamingingestion-policy.md
-      - name: Update policy
+      - name: Update
         items:
         - name: Update policy
           href: ./kusto/management/updatepolicy.md
         - name: update policy command
           href: ./kusto/management/update-policy.md
-    - name: Security Roles
+    - name: Security roles
       href: ./kusto/management/security-roles.md
-    - name: Data Ingestion
+    - name: Data ingestion
       items:
       - name: Ingest from storage
         href: ./kusto/management/data-ingestion/ingest-from-storage.md
@@ -1420,13 +1420,13 @@
         href: ./kusto/management/data-ingestion/eventhub.md
       - name: Ingest from IoT Hub
         href: ./kusto/management/data-ingestion/iothub.md
-      - name: Streaming Ingestion
+      - name: Streaming ingestion
         items:
         - name: Streaming ingestion and schema changes
           href: ./kusto/management/data-ingestion/streaming-ingestion-schema-changes.md
         - name: Clear schema cache for streaming ingestion
           href: ./kusto/management/data-ingestion/clear-schema-cache-command.md
-    - name: Data Export
+    - name: Data export
       href: ./kusto/management/data-export/index.md
       items:
       - name: To cloud storage
@@ -1437,7 +1437,7 @@
         href: ./kusto/management/data-export/export-data-to-an-external-table.md
       - name: Continuous data export
         href: ./kusto/management/data-export/continuous-data-export.md
-    - name: Database Cursors
+    - name: Database cursors
       href: ./kusto/management/databasecursor.md
     - name: Query results cache
       href: ./kusto/management/query-results-cache-commands.md
@@ -1445,8 +1445,8 @@
       - name: Show cache
         href: ./kusto/management/show-query-results-cache-command.md
       - name: Clear cache
-        href: ./kusto/management/clear-query-results-cache-command.md      
-    - name: System Information
+        href: ./kusto/management/clear-query-results-cache-command.md
+    - name: System information
       href: ./kusto/management/systeminfo.md
       items:
       - name: Diagnostics
@@ -1457,13 +1457,13 @@
         href: ./kusto/management/queries.md
       - name: Commands
         href: ./kusto/management/commands.md
-      - name: Commands and Queries
+      - name: Commands and queries
         href: ./kusto/management/commands-and-queries.md
-      - name: Ingestion Failures
+      - name: Ingestion failures
         href: ./kusto/management/ingestionfailures.md
       - name: Operations
         href: ./kusto/management/operations.md
-    - name: Access Control
+    - name: Access control
       href: ./kusto/management/access-control/index.md
       items:
       - name: Identities
@@ -1472,13 +1472,13 @@
         href: ./kusto/management/access-control/aad.md
       - name: Principal roles
         href: ./kusto/management/access-control/role-based-authorization.md
-      - name: How-To AAD Authentication
+      - name: How-To AAD authentication
         href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
-    - name: Advanced Data Management
+    - name: Advanced data management
       items:
-      - name: Extents (Data Shards) Overview
+      - name: Extents (data shards) overview
         href: ./kusto/management/extents-overview.md
-      - name: Extents Commands
+      - name: Extents commands
         href: ./kusto/management/extents-commands.md
       - name: Cluster follower
         href: ./kusto/management/cluster-follower.md
@@ -1523,7 +1523,7 @@
         href: ./kusto/api/tds/tdskql.md
       - name: Clients
         href: ./kusto/api/tds/clients.md
-      - name: Linked Server
+      - name: Linked server
         href: ./kusto/api/tds/linkedserver.md
       - name: AAD
         href: ./kusto/api/tds/aad.md
@@ -1535,29 +1535,29 @@
         items:
         - name: About the SDK
           href: ./kusto/api/netfx/about-the-sdk.md
-        - name: Controlling Tracing
+        - name: Controlling tracing
           href: ./kusto/api/netfx/controlling-tracing.md
       - name: Kusto.Data
         href: ./kusto/api/netfx/about-kusto-data.md
         items:
-        - name: Request Properties, ClientRequestProperties
+        - name: Request properties, ClientRequestProperties
           href: ./kusto/api/netfx/request-properties.md
       - name: Kusto.Ingest
         href: ./kusto/api/netfx/about-kusto-ingest.md
         items:
         - name: Permissions
           href: ./kusto/api/netfx/kusto-ingest-client-permissions.md
-        - name: Client Reference
+        - name: Client reference
           href: ./kusto/api/netfx/kusto-ingest-client-reference.md
         - name: Exceptions
           href: ./kusto/api/netfx/kusto-ingest-client-errors.md
-        - name: Operation Status
+        - name: Operation status
           href: ./kusto/api/netfx/kusto-ingest-client-status.md
-        - name: Best Practices
+        - name: Best practices
           href: ./kusto/api/netfx/kusto-ingest-best-practices.md
-        - name: Code Samples
+        - name: Code samples
           href: ./kusto/api/netfx/kusto-ingest-client-examples.md
-        - name: HowTo Data Ingestion
+        - name: HowTo data ingestion
           href: ./kusto/api/netfx/kusto-ingest-queued-ingest-sample.md
         - name: HowTo Data Ingestion with REST API
           href: ./kusto/api/netfx/kusto-ingest-client-rest.md
