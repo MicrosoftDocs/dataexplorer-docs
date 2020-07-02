@@ -24,14 +24,14 @@ Data shards are called **extents** in Kusto, and all commands use "extent" or "e
 Shows information about extents (data shards) that are present in the cluster.
 If `hot` is specified - shows only extents that are expected to be in the hot cache.
 
-## Database Level
+## Database level
 
 `.show` `database` *DatabaseName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
 
 Shows information about extents (data shards) that are present in the specified database.
 If `hot` is specified - shows only extents that expected to be in the hot cache.
 
-## Table Level
+## Table level
 
 `.show` `table` *TableName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
 
