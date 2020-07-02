@@ -103,7 +103,7 @@ SQL Server endpoint:
 
 `dynamic({'token': h"eyJ0..."})`
 
-   With the Azure AD access token athentication method, the caller generates the access token, which is forwarded by Kusto to the SQL endpoint. The connection string shouldn't include authentication information like `Authentication`, `User ID`, or `Password`. Instead, the access token is passed as `token` property in the `Options` argument of the sql_request plugin.
+   With the Azure AD access token authentication method, the caller generates the access token, which is forwarded by Kusto to the SQL endpoint. The connection string shouldn't include authentication information like `Authentication`, `User ID`, or `Password`. Instead, the access token is passed as `token` property in the `Options` argument of the sql_request plugin.
      
 > [!WARNING]
 > Connection strings and queries that include confidential information or information that should be guarded should be obfuscated to be omitted from any Kusto tracing.
