@@ -89,7 +89,7 @@ Output records depend on the join flavor:
    * `kind=leftsemi`: Returns all the records from the left side that have matches from the right.
    * `kind=rightsemi`: Returns all the records from the right side that have matches from the left.
    * `kind=inner`: There's a row in the output for every combination of matching rows from left and right.
-   * `kind=leftouter` (or `kind=rightouter` or `kind=fullouter`): There's also a row for every row on the left and right, even if it has no match. Then the unmatched output cells contain nulls. 
+   * `kind=leftouter` (or `kind=rightouter` or `kind=fullouter`): Contains a row for every row on the left and right, even if it has no match. The unmatched output cells contain nulls. 
 
 > [!TIP]
 > For best performance, if one table is always smaller than the other, use it as the left (piped) side of the join.
