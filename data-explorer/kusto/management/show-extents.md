@@ -9,6 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/02/2020
 ---
+
 # .show extents
 
 Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.

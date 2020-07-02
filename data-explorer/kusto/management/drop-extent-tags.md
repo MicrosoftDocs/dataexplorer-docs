@@ -1,5 +1,5 @@
 ---
-title: .drop extents - Azure Data Explorer
+title: .drop extent tags - Azure Data Explorer
 description: This article describes Extents (data shards) management in Azure Data Explorer.
 services: data-explorer
 author: orspod
