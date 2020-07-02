@@ -88,7 +88,7 @@ Output records depend on the join flavor:
    * `kind` unspecified, `kind=innerunique`: Only one row from the left side is matched for each value of the `on` key. The output contains a row for each match of this row with rows from the right.
    * `kind=leftsemi`: Returns all the records from the left side that have matches from the right.
    * `kind=rightsemi`: Returns all the records from the right side that have matches from the left.
-   * `kind=inner`: There's a row in the output for every combination of matching rows from left and right.
+   * `kind=inner`: Contains a row in the output for every combination of matching rows from left and right.
    * `kind=leftouter` (or `kind=rightouter` or `kind=fullouter`): Contains a row for every row on the left and right, even if it has no match. The unmatched output cells contain nulls. 
 
 > [!TIP]
