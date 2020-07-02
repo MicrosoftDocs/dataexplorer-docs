@@ -83,7 +83,7 @@ Output records depend on the join flavor:
 *  `kind=innerunique`, `kind=inner`, `kind=leftouter`, `kind=rightouter`, `kind=fullouter`, `kind=leftsemi`, `kind=rightsemi`:A row for every match between the input tables. A match is a row selected from one table that has the same value for all the `on` fields as a row in the other table with the following constraints:
 
     > [!Note]
-    > For several rows with the same values for those fields, you'll get rows for all the combinations.
+    > If there are several rows with the same values for those fields, you'll get rows for all the combinations.
 
    * `kind` unspecified, `kind=innerunique`: Only one row from the left side is matched for each value of the `on` key. The output contains a row for each match of this row with rows from the right.
    * `kind=leftsemi`: Returns all the records from the left side that have matches from the right.
