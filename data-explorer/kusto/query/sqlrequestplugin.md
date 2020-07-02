@@ -91,7 +91,7 @@ SQL Server endpoint:
 
 `Authentication="Active Directory Integrated"`
 
-   The preferred method has the user or application authenticate via Azure AD to Kusto. The same token is then used to access the SQL Server network endpoint.
+  Azure AD-integrated authentication is the preferred method. This method has the user or application authenticate via Azure AD to Kusto. The same token is then used to access the SQL Server network endpoint.
 
 ### Username/Password authentication
 
