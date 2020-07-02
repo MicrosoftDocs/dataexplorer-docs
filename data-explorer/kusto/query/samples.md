@@ -106,12 +106,14 @@ The argument prefixes "min_" to each column name.
 Add code to count the durations in conveniently sized bins. 
 In this example, because of a preference for a bar chart, divide by `1s` to convert the timespans to numbers. 
 
-      // Count the frequency of each duration:
+```
+    // Count the frequency of each duration:
     | summarize count() by duration=bin(min_duration/1s, 10) 
       // Cut off the long tail:
     | where duration < 300
       // Display in a bar chart:
     | sort by duration asc | render barchart 
+```
 
 :::image type="content" source="images/samples/050.png" alt-text="050":::
 
