@@ -503,7 +503,8 @@ X | join kind=rightanti Y on Key
 |---|---|
 |d|40|
 
-Anti-join models the "NOT IN" query.
+> [!NOTE]
+> Anti-join models the "NOT IN" query.
 
 ### Left semi-join
 
