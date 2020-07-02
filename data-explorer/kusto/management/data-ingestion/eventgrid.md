@@ -92,20 +92,21 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
     | Name | *test-grid-connection* | The name of the event grid subscription that you want to create.|
-    | Event Schema | *Event Grid schema* | The schema that should be used for the event grid. |
+    | Event Schema | *Event Grid Schema* | The schema that should be used for the event grid. |
     | Topic Type | *Storage account* | The type of event grid topic. |
     | Topic Resource | *gridteststorage* | The name of your storage account. |
     | Subscribe to all event types | *clear* | Don't get notified on all events. |
-    | Defined Event Types | *Blob created* | Which specific events to get notified for. Currently supported type is Microsoft.Storage.BlobCreated. Make sure to select it when creating the subscription.|
-    | Endpoint Type | *Event hubs* | The type of endpoint to which you send the events. |
+    | Defined Event Types | *Blob Created* | Which specific events to get notified for. Currently supported type is Microsoft.Storage.BlobCreated. Make sure to select it when creating the subscription.|
+    | Endpoint Type | *Event Hubs* | The type of endpoint to which you send the events. |
     | Endpoint | *test-hub* | The event hub you created. |
 
+    <!-- Lea: can we get an image of this tab? -->
 1. Select the **Filters** tab if you want to track specific subjects. Set the filters for the notifications as follows:
-    * **Subject Begins With** field is the *literal* prefix of the subject. Since the pattern applied is *startswith*, it can span multiple containers, folders or blobs. No wildcards are allowed.
-        * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*.
-        * To define a filter on a blob prefix (or a folder in Azure Data Lake Gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*.
-    * **Subject Ends With** field is the *literal* suffix of the blob. No wildcards are allowed.
-    * See [Blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events) for more details about filtering events.
+   * **Subject Begins With** field is the *literal* prefix of the subject. Since the pattern applied is *startswith*, it can span multiple containers, folders or blobs. No wildcards are allowed.
+       * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*.
+       * To define a filter on a blob prefix (or a folder in Azure Data Lake Gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*.
+   * **Subject Ends With** field is the *literal* suffix of the blob. No wildcards are allowed.
+   * See [Blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events) for more details about filtering events.
 
 ### Data ingestion connection to Azure Data Explorer
 

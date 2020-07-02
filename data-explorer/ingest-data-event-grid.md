@@ -63,7 +63,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
     :::image type="content" source="media/ingest-data-event-grid/data-ingestion-create.png" alt-text="Add data connection for data ingestion":::
 
-1. Select the connection type: **Blob Storage**.
+1. Select the connection type: **Blob storage**.
 
 1. Fill out the form with the following information:
 
@@ -78,6 +78,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Storage account | *gridteststorage1* | The name of the storage account that you created previously.|
     | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](../data-explorer/kusto/management/data-ingestion/eventgrid.md#create-an-event-grid-subscription-in-your-storage-account) section.|
 
+    <!-- Lea: can we get an image of this tab? -->
 1. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
     * **Prefix** field is the *literal* prefix of the subject. As the pattern applied is *startswith*, it can span multiple containers, folders or blobs. No wildcards are allowed.
         * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*.
@@ -88,7 +89,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Select **Next: Ingest properties**.
 
-1. Fill out the form with the following information and select **Next: Review + create**. Table and mapping names are case-sensitive:
+1. Fill out the form with the following information and select **Next: Review + Create**. Table and mapping names are case-sensitive:
 
    :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-ingest-properties.png" alt-text="Review and create table and mapping ingestion properties":::
 
