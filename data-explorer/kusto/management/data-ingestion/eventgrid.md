@@ -143,7 +143,7 @@ blob.UploadFromFile(csvCompressedLocalFileName);
 
 > [!NOTE]
 > Using Azure Data Lake Gen2 storage requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to "true".
-> A detailed example of how to use Data Lake Gen2 SDK correctly can be found in the how-to [Upload file using Azure Data Lake SDK](../../../data-connection-event-grid-csharp.md#upload-file-using-azure-data-lake-sdk) guide.
+>  For a detailed example of how to use Data Lake Gen2 SDK correctly, see [upload file using Azure Data Lake SDK](../../../data-connection-event-grid-csharp.md#upload-file-using-azure-data-lake-sdk).
 
 ## Blob lifecycle
 
