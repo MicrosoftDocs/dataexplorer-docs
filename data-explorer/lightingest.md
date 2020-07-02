@@ -85,20 +85,6 @@ The utility can pull source data from a local folder or from an Azure blob stora
 |-filesInBatch            |integer |Optional  |Sets the file/blob count limit of each ingest operation |
 |-devTracing, -trace       |string  |Optional  |If set, diagnostic logs are written to a local directory (by default, `RollingLogs` in the current directory, or can be modified by setting the switch value) |
 
-### How to ingest data with time ingested
-
-The `-creationTimePattern` argument extracts the CreationTime property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
-
-The argument values must include:
-* Constant test immediately preceding the timestamp, enclosed in single quotes
-* The timestamp format, in standard [.NET DateTime notation](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
-* Constant text immediately following the timestamp. For example, if blob names end with `historicalvalues19840101.parquet` (the timestamp is four digits for the year, two digits for the month, and two digits for the day of month), the corresponding value for the `-creationTimePattern` argument is:
-
-```kusto
-ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
- -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
-```
-
 ## Azure blob-specific capabilities
 
 When used with Azure blobs, LightIngest will use certain blob metadata properties to augment the ingestion process.
@@ -143,6 +129,20 @@ To use the LightIngest command below:
 
     ![Ingestion result in Azure Data Explorer](media/lightingest/lightingest-show-failure-count.png)
 -->
+
+### How to ingest data with time ingested
+
+The `-creationTimePattern` argument extracts the CreationTime property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
+
+The argument values must include:
+* Constant test immediately preceding the timestamp, enclosed in single quotes
+* The timestamp format, in standard [.NET DateTime notation](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
+* Constant text immediately following the timestamp. For example, if blob names end with `historicalvalues19840101.parquet` (the timestamp is four digits for the year, two digits for the month, and two digits for the day of month), the corresponding value for the `-creationTimePattern` argument is:
+
+```kusto
+ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
+ -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+```
 
 ### Ingesting blobs using a storage account key or a SAS token
 
