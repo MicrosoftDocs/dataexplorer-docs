@@ -92,8 +92,7 @@ connection string.
 
 ```kusto
 .ingest into table T (
-  'abfss://myfilesystem@contoso.dfs.core.windows.net/path/to/file1.csv;'
-    h'...'
+  'abfss://myfilesystem@contoso.dfs.core.windows.net/path/to/file1.csv;...'
 )
 ```
 
