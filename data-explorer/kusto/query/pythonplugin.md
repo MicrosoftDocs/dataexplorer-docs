@@ -186,38 +186,40 @@ Install packages as follows:
 
   1. Create a blob container to host the packages, preferably in the same place as your cluster. For example, `https://artifcatswestus.blob.core.windows.net/python`, assuming your cluster is in West US.
   1. Alter the cluster's [callout policy](../management/calloutpolicy.md) to allow access to that location.
-    * This change requires [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
-    * For example, to enable access to a blob located in `https://artifcatswestus.blob.core.windows.net/python`, run the following command:
+        * This change requires [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
 
-      ```kusto
-      .alter-merge cluster policy callout @'[ { "CalloutType": "sandbox_artifacts", "CalloutUriRegex": "artifcatswestus\\.blob\\.core\\.windows\\.net/python/","CanCall": true } ]'
-      ```
+        * For example, to enable access to a blob located in `https://artifcatswestus.blob.core.windows.net/python`, run the following command:
+
+        ```kusto
+        .alter-merge cluster policy callout @'[ { "CalloutType": "sandbox_artifacts", "CalloutUriRegex": "artifcatswestus\\.blob\\.core\\.windows\\.net/python/","CanCall": true } ]'
+        ```
 
 ### Install packages
 
 1. For public packages in [PyPi](https://pypi.org/) or other channels,
 download the package and its dependencies.
-  * Compile wheel (`*.whl`) files, if required.
-  * From a cmd window in your local Python environment, run:
+
+   * Compile wheel (`*.whl`) files, if required.
+   * From a cmd window in your local Python environment, run:
     
-      ```python
-      pip wheel [-w download-dir] package-name.
-      ```
+    ```python
+    pip wheel [-w download-dir] package-name.
+    ```
 
 1. Create a zip file, that contains the required package and its dependencies.
 
-  * For private packages: zip the folder of the package and the folders of its dependencies.
-  * For public packages, zip the files that were downloaded in the previous step.
+    * For private packages: zip the folder of the package and the folders of its dependencies.
+    * For public packages, zip the files that were downloaded in the previous step.
     
-  > [!NOTE]
-  > * Make sure to zip the `.whl` files themselves, and not their parent folder.
-  > * You can skip `.whl` files for packages that already exist with the same version in the base sandbox image.
+    > [!NOTE]
+    > * Make sure to zip the `.whl` files themselves, and not their parent folder.
+    > * You can skip `.whl` files for packages that already exist with the same version in the base sandbox image.
 
 1. Upload the zipped file to a blob in the artifacts location (from step 1).
 
 1. Call the `python` plugin.
-  * Specify the `external_artifacts` parameter with a property bag of name and reference to the zip file (the blob's URL).
-  * In your inline python code, import `Zipackage` from `sandbox_utils` and call its `install()` method with the name of the zip file.
+    * Specify the `external_artifacts` parameter with a property bag of name and reference to the zip file (the blob's URL).
+    * In your inline python code, import `Zipackage` from `sandbox_utils` and call its `install()` method with the name of the zip file.
 
 ### Example
 
