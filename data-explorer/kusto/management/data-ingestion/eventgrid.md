@@ -112,7 +112,7 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 * Via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](../../../ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
 * Using Kusto management .NET SDK: [Add an Event Grid data connection](../../../data-connection-event-grid-csharp.md#add-an-event-grid-data-connection)
 * Using Kusto management Python SDK: [Add an Event Grid data connection](../../../data-connection-event-grid-python.md#add-an-event-grid-data-connection)
-* With Arm template: [Azure Resource Manager template for adding an Event Grid data connection](../../../data-connection-event-grid-resource-manager.md#azure-resource-manager-template-for-adding-an-event-grid-data-connection)
+* With [Azure Resource Manager template for adding an Event Grid data connection](../../../data-connection-event-grid-resource-manager.md#azure-resource-manager-template-for-adding-an-event-grid-data-connection)
 
 ### Generating data
 
