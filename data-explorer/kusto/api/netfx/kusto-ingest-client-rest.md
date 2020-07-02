@@ -324,7 +324,6 @@ The message that the Kusto Data Management service expects to read from the inpu
     "DatabaseName": "<DatabaseName>",
     "TableName" : "<TableName>",
     "RetainBlobOnSuccess" : "<RetainBlobOnSuccess>",
-    "Format" : "<csv|tsv|...>",
     "FlushImmediately": "<true|false>",
     "ReportLevel" : <0-Failures, 1-None, 2-All>,
     "ReportMethod" : <0-Queue, 1-Table>,
@@ -340,11 +339,10 @@ The message that the Kusto Data Management service expects to read from the inpu
 |DatabaseName |Target database name |
 |TableName |Target table name |
 |RetainBlobOnSuccess |If set to `true`, the blob won't be deleted once ingestion is successfully completed. Default is `false` |
-|Format |Uncompressed data format |
 |FlushImmediately |If set to `true`, any aggregation will be skipped. Default is `false` |
 |ReportLevel |Success/Error reporting level: 0-Failures, 1-None, 2-All |
 |ReportMethod |Reporting mechanism: 0-Queue, 1-Table |
-|AdditionalProperties |Additional properties such as tags |
+|AdditionalProperties |Additional properties such as `format`, `tags`, and `creationTime`. For more information, see [data ingestion properties](../../../ingestion-properties.md).|
 
 ### Ingestion failure message structure
 
