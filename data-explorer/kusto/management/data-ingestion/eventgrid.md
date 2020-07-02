@@ -34,7 +34,7 @@ You can set the following properties:
 |---|---|
 | rawSizeBytes | Size of the raw (uncompressed) data. For Avro/ORC/Parquet, this value is the size before format-specific compression is applied.|
 | kustoTable |  Name of the existing target table. Overrides the `Table` set on the `Data Connection` blade. |
-| kustoDataFormat |  Data format. Overwrites the `Data format` set on the `Data Connection` blade. |
+| kustoDataFormat |  Data format. Overwrites the **Data format** set on the **Data Connection** blade. |
 | kustoIngestionMappingReference |  Name of the existing ingestion mapping to be used. Overwrites the `Column mapping` set on the `Data Connection` blade.|
 | kustoIgnoreFirstRecord | If set to `true`, Azure Data Explorer ignores the first row of the blob. Use in tabular format data (CSV, TSV, or similar) to ignore headers. |
 | kustoExtentTags | String representing [tags](../extents-overview.md#extent-tagging) that will be attached to resulting extent. |
