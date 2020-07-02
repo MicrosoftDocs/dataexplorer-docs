@@ -20,8 +20,8 @@ Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage
 
 > [!NOTE]
 > Ideally the original uncompressed data size should be part of the blob metadata.
-> If the uncompressed size is not specified, Azure Data Explorer will estimate it, based on the file size. 
-> You can provide original data size by setting the `rawSizeBytes` [property](#ingestion-properties) on the blob metadata to **uncompressed** data size in bytes.
+> If the uncompressed size isn't specified, Azure Data Explorer will estimate it, based on the file size. 
+> You can provide the original data size by setting the `rawSizeBytes` [property](#ingestion-properties) on the blob metadata to uncompressed data size in bytes.
 > 
 > There is an ingestion uncompressed size limit per file of 4GB.
 
