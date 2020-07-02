@@ -43,7 +43,7 @@ There are three ways to specify which extents to move:
 * Both source and destination tables must be in the context database.
 * All columns in the source table are expected to exist in the destination table with the same name and data type.
 
-## Specify extents with a Query
+## Specify extents with a query
 
 ```kusto
 .move extents to table TableName <| ...query...
