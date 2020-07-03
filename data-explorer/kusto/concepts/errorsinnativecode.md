@@ -21,25 +21,27 @@ Kusto native error codes are defined using Windows `MAKE-HRESULT` macro with:
   
 The following error codes are defined.
 
-|Manifest constant                  |Code |Value        |Meaning                                                                                                        |
-|-----------------------------------|-----|-------------|---------------------------------------------------------------------------------------------------------------|
-|`E_EXTENT_LOAD_FAILED`             | `0`  |`0x80DA0000`|Data shard couldn't be loaded                                                                                  |
+|Manifest constant                  |Code  |Value       |Meaning                                                                                                        |
+|-----------------------------------|------|------------|---------------------------------------------------------------------------------------------------------------|
+|`E_EXTENT_LOAD_FAILED`             | `0`  |`0x80DA0000`|Data extent couldn't be loaded                                                                                 |
 |`E_RUNAWAY_QUERY`                  | `1`  |`0x80DA0001`|Query execution aborted because it exceeded its allowed resources                                              |
 |`E_STREAM_FORMAT`                  | `2`  |`0x80DA0002`|A data stream can't be parsed because it's badly formatted                                                     |
 |`E_QUERY_RESULT_SET_TOO_LARGE`     | `3`  |`0x80DA0003`|The result set for this query exceeds its permitted record/size limits                                         |
 |`E_STREAM_ENCODING_VERSION`        | `4`  |`0x80DA0004`|A result stream can't be parsed because its version is unknown                                                 |
-|`E_KVDB_ERROR`                     | `5`  |`0x80DA0005`|Failure to do a key/value database operation                                                                   |
+|`E_KVDB_ERROR`                     | `5`  |`0x80DA0005`|Failure in the embedded key/value store component                                                              |
 |`E_QUERY_CANCELLED`                | `6`  |`0x80DA0006`|Query was canceled                                                                                             |
-|`E_LOW_MEMORY_CONDITION`           | `7`  |`0x80DA0007`|Operation was aborted because of available process memory was low                                              |
-|`E_WRONG_NUMBER_OF_FIELDS`         | `8`  |`0x80DA0008`|A csv document submitted for ingestion has a record with the wrong number of fields (compared to other records)|
-|`E_INPUT_STREAM_TOO_LARGE`         | `9`  |`0x80DA0009`|The document submitted for ingestion has exceeded the permitted length                                         |
+|`E_LOW_MEMORY_CONDITION`           | `7`  |`0x80DA0007`|Low memory condition occurred                                                                                  |
+|`E_WRONG_NUMBER_OF_FIELDS`         | `8`  |`0x80DA0008`|Wrong number of fields inside the input stream                                                                 |
+|`E_INPUT_STREAM_TOO_LARGE`         | `9`  |`0x80DA0009`|Input size of a field/record/stream has exceeded the permitted length                                          |
 |`E_ENTITY_NOT_FOUND`               | `10` |`0x80DA000A`|The requested entity wasn't found                                                                              |
-|`E_CLOSING_QUOTE_MISSING`          | `11` |`0x80DA000B`|A csv document submitted for ingestion has a field with a missing quote                                        |
+|`E_CLOSING_QUOTE_MISSING`          | `11` |`0x80DA000B`|A csv stream submitted for ingestion has a field with a missing quote                                          |
 |`E_OVERFLOW`                       | `12` |`0x80DA000C`|Represents an arithmetic overflow error. The result of a computation is too large for the destination type     |
+|`E_INCOMPATIBLE_TOKENIZERS`        | `13` |`0x80DA000D`|Extents merge failure due to incompatible tokenizers of the merging indexes                                    |
+|`E_DYNAMIC_PROPERTY_BAG_TOO_LARGE` | `14` |`0x80DA000E`|The combined size of the property bag's distinct keys is too large                                             |
 |`E_RS_BLOCKED_ROWSTOREKEY_ERROR`   | `101`|`0x80DA0065`|An attempt was made to access a blocked RowStore key                                                           |
 |`E_RS_SHUTTINGDOWN_ERROR`          | `102`|`0x80DA0066`|RowStore is shutting down                                                                                      |
 |`E_RS_LOCAL_STORAGE_FULL_ERROR`    | `103`|`0x80DA0067`|Local disk storage for RowStore is full                                                                        |
-|`E_RS_CANNOT_READ_WRITE_AHEAD_LOG` | `104`|`0x80DA0068`|Reading from RowStore storage failed                                                                           |
+|`E_RS_CANNOT_READ_WRITE_AHEAD_LOG` | `104`|`0x80DA0068`|Reading from RowStore write-ahead-log storage failed                                                           |
 |`E_RS_CANNOT_RETRIEVE_VALUES_ERROR`| `105`|`0x80DA0069`|Failure to retrieve values from RowStore storage                                                               |
 |`E_RS_NOT_READY_ERROR`             | `106`|`0x80DA006A`|RowStore is initializing                                                                                       |
 |`E_RS_INSERTION_THROTTLED_ERROR`   | `107`|`0x80DA006B`|Value insertion to a RowStore was throttled                                                                    |
