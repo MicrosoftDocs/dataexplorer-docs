@@ -25,7 +25,7 @@ With Kusto.Explorer, you can:
 
 * Instead, access your Kusto cluster with your browser at:
 
-```C
+```http
 https://<your_cluster>.kusto.windows.net. 
 ```
 Replace <your_cluster> with your Azure Data Explorer cluster name.
