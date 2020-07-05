@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Merge policy management
+# Merge policy command
 
 ## show policy
 

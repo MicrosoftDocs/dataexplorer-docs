@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/22/2020
 ---
-# SQL to Kusto query translation
+# SQL to Kusto cheat sheet
 
 Kusto supports a subset of the SQL language. See the list of [SQL known issues](../api/tds/sqlknownissues.md) for the full list of unsupported features.
 

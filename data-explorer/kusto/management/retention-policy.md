@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 ---
-# Retention policy
+# retention policy command
 
 This article describes control commands used for creating and altering [retention policy](retentionpolicy.md).
 
