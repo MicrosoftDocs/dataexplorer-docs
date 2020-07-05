@@ -21,7 +21,7 @@ Requires [Database user permission](../management/access-control/role-based-auth
 
 `.create` `table` *TableName* ([columnName:columnType], ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
-If the table already exists the command will return success.
+If the table already exists, the command will return success.
 
 **Example** 
 

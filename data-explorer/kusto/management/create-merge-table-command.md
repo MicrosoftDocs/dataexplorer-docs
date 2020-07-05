@@ -26,7 +26,7 @@ If the table doesn't exist, functions exactly as ".create table" command.
 If table T exists, and you send a ".create-merge table T (<columns specification>)" command, then:
 
 * Any column in <columns specification> that didn't previously exist in T will be added to the end of T's schema.
-* Any column in T which is not in <columns specification> won't be removed from T.
+* Any column in T that is not in <columns specification> won't be removed from T.
 * Any column in <columns specification> that exists in T, but with a different data type will cause the command to fail.
 
 **See also**
