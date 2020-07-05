@@ -128,7 +128,7 @@ var blobs = container.ListBlobs();
 
 ### Upload file using Azure Data Lake SDK
 
-When working with Data Lake Storage Gen2, use [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload files to storage. The following code snippet creates a new filesystem in your Azure Data Lake storage and uploads a local file with metadata to that filesystem.
+When working with Data Lake Storage Gen2, you can use [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload files to storage. The following code snippet creates a new filesystem in your Azure Data Lake storage and uploads a local file with metadata to that filesystem.
 
 ```csharp
 var accountName = <storage_account_name>;
@@ -137,7 +137,7 @@ var fileSystemName = <file_system_name>;
 var fileName = <file_name>;
 var localFileName = <file_to_upload>;
 var uncompressedSizeInBytes = <uncompressed_size_in_bytes>;
-var mapping = <mappingReference>;
+var mapping = <mapping_reference>;
 
 var sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
 var dfsUri = "https://" + accountName + ".dfs.core.windows.net";
