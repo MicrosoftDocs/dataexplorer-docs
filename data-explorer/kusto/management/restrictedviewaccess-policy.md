@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
 ---
-# RestrictedViewAccess policy
+# restricted_view_access policy command
 
 The *RestrictedViewAccess* policy is documented [here](../management/restrictedviewaccesspolicy.md).
 
