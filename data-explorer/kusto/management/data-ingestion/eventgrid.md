@@ -42,8 +42,7 @@ You can set the following properties:
 
 ## Events routing
 
-When setting up a blob storage connection to Azure Data Explorer cluster, specify: 
-* target table properties
+When setting up a blob storage connection to Azure Data Explorer cluster, specify target table properties:
 * table name
 * data format
 * mapping
@@ -94,19 +93,22 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
     | Name | *test-grid-connection* | The name of the event grid subscription that you want to create.|
     | Event Schema | *Event Grid Schema* | The schema that should be used for the event grid. |
     | Topic Type | *Storage account* | The type of event grid topic. |
-    | Topic Resource | *gridteststorage* | The name of your storage account. |
-    | Subscribe to all event types | *clear* | Don't get notified on all events. |
-    | Defined Event Types | *Blob Created* | Which specific events to get notified for. Currently supported type is Microsoft.Storage.BlobCreated. Make sure to select it when creating the subscription.|
+    | Source Resource | *gridteststorage1* | The name of your storage account. |
+    | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. |
+    | Filter to Event Types | *Blob Created* | Which specific events to get notified for. Currently supported type is Microsoft.Storage.BlobCreated. Make sure to select it when creating the subscription.|
     | Endpoint Type | *Event Hubs* | The type of endpoint to which you send the events. |
     | Endpoint | *test-hub* | The event hub you created. |
 
-    <!-- Lea: can we get an image of this tab? -->
 1. Select the **Filters** tab if you want to track specific subjects. Set the filters for the notifications as follows:
+   * Select **Enable subject filtering**
    * **Subject Begins With** field is the *literal* prefix of the subject. Since the pattern applied is *startswith*, it can span multiple containers, folders or blobs. No wildcards are allowed.
        * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*.
        * To define a filter on a blob prefix (or a folder in Azure Data Lake Gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*.
    * **Subject Ends With** field is the *literal* suffix of the blob. No wildcards are allowed.
+   * **Case-sensitive subject matching** field indicates whether the prefix and suffix filters are case-sensitive.
    * See [Blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events) for more details about filtering events.
+    
+        :::image type="content" source="../images/eventgrid/filters-tab.png" alt-text="Filters tab event grid":::
 
 ### Data ingestion connection to Azure Data Explorer
 
@@ -143,7 +145,7 @@ blob.UploadFromFile(csvCompressedLocalFileName);
 ```
 
 > [!NOTE]
-> Using Azure Data Lake Gen2 storage requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to "true".
+> Using Azure Data Lake Gen2 storage SDK requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to "true".
 >  For a detailed example of how to use Data Lake Gen2 SDK correctly, see [upload file using Azure Data Lake SDK](../../../data-connection-event-grid-csharp.md#upload-file-using-azure-data-lake-sdk).
 
 ## Blob lifecycle
@@ -152,11 +154,6 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
 
 ## Known issues
 
-* Event Grid notifications aren't triggered if the connection string provided to the export command, or the connection string provided to an [external table](../data-export/export-data-to-an-external-table.md), is a connecting string in [ADLS Gen2 format](../../api/connection-strings/storage.md#azure-data-lake-store).
-
-    For example, `abfss://filesystem@accountname.dfs.core.windows.net`):
-    * The storage account isn't enabled for hierarchical namespace.
-    * Therefore, the connection string must use the [Blob Storage](../../api/connection-strings/storage.md#azure-storage-blob) format. 
-
-    For example, `https://accountname.blob.core.windows.net`. 
-    * The export works as expected. Even when using the ADLS Gen2 connection string. However, notifications won't be triggered and Event Grid ingestion won't work.
+* When using Azure Data Explorer to [export](../data-export/export-data-to-storage.md) the files used for event grid ingestion, note: 
+    * Event Grid notifications aren't triggered if the connection string provided to the export command or the connection string provided to an [external table](../data-export/export-data-to-an-external-table.md) is a connecting string in [ADLS Gen2 format](../../api/connection-strings/storage.md#azure-data-lake-store)(for example, `abfss://filesystem@accountname.dfs.core.windows.net`) but the storage account isn't enabled for hierarchical namespace. 
+    * If the account isn't enabled for hierarchical namespace, connection string must use the [Blob Storage](../../api/connection-strings/storage.md#azure-storage-blob) format (for example, `https://accountname.blob.core.windows.net`). The export works as expected even when using the ADLS Gen2 connection string, but notifications won't be triggered and Event Grid ingestion won't work.
