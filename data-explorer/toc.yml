@@ -295,7 +295,7 @@
       href: spark-connector.md
     - name: Cosmos DB
       href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
-    - name: Connect from Databricks using Python
+    - name: Connect from Azure Databricks
       href: connect-from-databricks.md
     - name: Analyze data in Jupyter Notebooks & Kqlmagic
       href: kqlmagic.md
