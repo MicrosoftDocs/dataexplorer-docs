@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/02/2020
 ---
-# Capacity policy control commands
+# Capacity policy commands
 
 The following control commands can be used for managing a cluster's [capacity policy](../management/capacitypolicy.md).
 

@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/04/2020
 ---
-# .show ingestion mappings
+# .show ingestion mapping
 
 Show the ingestion mappings (all or the one specified by name).
 

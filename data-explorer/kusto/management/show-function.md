@@ -9,10 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# .show functions
+# .show function(s)
 
 Lists all the stored functions in the currently-selected database.
 To return only one specific function, see [.show function](#show-function).
+
+## .show functions
 
 ```kusto
 .show functions
