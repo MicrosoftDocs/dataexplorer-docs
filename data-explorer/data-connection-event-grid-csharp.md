@@ -137,7 +137,7 @@ var fileSystemName = <file_system_name>;
 var fileName = <file_name>;
 var localFileName = <file_to_upload>;
 var uncompressedSizeInBytes = <uncompressed_size_in_bytes>;
-var mapping = <mappingReference>;
+var mapping = <mapping_reference>;
 
 var sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
 var dfsUri = "https://" + accountName + ".dfs.core.windows.net";
