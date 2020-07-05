@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
 ---
-# Sandbox policy
+# sandbox policy command
 
 The following commands allow management of [sandboxes](../concepts/sandboxes.md) and [sandbox policies](sandboxpolicy.md)
 in a Kusto engine service.
