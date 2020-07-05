@@ -4,10 +4,10 @@ description: This article describes .create tables in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 07/05/2020
 ---
 # .create tables
 
@@ -19,7 +19,7 @@ Requires [Database user permission](../management/access-control/role-based-auth
 
 **Syntax**
 
-`.create` `tables` *TableName1* ([columnName:columnType], ...) [`,` *TableName2* ([columnName:columnType], ...) ... ]
+`.create` `tables` *TableName1* ([columnName:columnType], ...) [`,` *TableName2* ([columnName:columnType], ...) ... ] [`with` `(` `folder` `=` *FolderName*] `)`]
 
 If any table already exists, the command will return success.
  
