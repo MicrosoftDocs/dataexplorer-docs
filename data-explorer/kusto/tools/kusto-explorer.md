@@ -21,10 +21,9 @@ With Kusto.Explorer, you can:
 
 ## Installing Kusto.Explorer
 
-* Install the [Kusto.Explorer tool](https://aka.ms/ke)
+* Install the [Kusto.Explorer tool](https://aka.ms/ke).
 
-* Instead, access your Kusto cluster with your browser at:
-[https://<your_cluster>.kusto.windows.net](https://your_cluster.kusto.windows.net). Replace <your_cluster> with your Azure Data Explorer cluster name.
+* You can access your Kusto cluster with your browser at `https://<your_cluster>.kusto.windows.net`. (Replace `<your_cluster>` with your Azure Data Explorer cluster name.)
 
 ### Using Chrome and Kusto.Explorer
 
