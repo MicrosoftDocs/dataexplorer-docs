@@ -21,7 +21,7 @@ With Kusto.Explorer, you can:
 
 ## Installing Kusto.Explorer
 
-* Install the [Kusto.Explorer tool](https://aka.ms/ke)
+* Install the [Kusto.Explorer tool](https://aka.ms/ke).
 
 * Instead, access your Kusto cluster with your browser at:
 
