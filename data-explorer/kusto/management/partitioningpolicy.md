@@ -169,7 +169,7 @@ The following properties can be defined as part of the policy, but are optional 
   * Maximum target for the sum of the row count of the source extents of a single data partitioning operation.
   * This property is optional. Its default value is `0`, with a default target of 5,000,000 records.
     * You can consider setting a value lower than 5M you see that partitioning operations consume a very large amount
-      of memory / CPU, per operation (See #monitoring).
+      of memory / CPU, per operation (See [Monitoring](#monitoring)).
 
 ## Notes
 
