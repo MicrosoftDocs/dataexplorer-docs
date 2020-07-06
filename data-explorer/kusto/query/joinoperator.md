@@ -29,10 +29,10 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 
 * *RightTable*: The **right** table or tabular expression, sometimes called **inner** table, whose rows are to be merged. Denoted as `$right`.
 
-* *Attributes*: One or more comma-separated rules that describe how rows from
+* *Attributes*: One or more comma-separated **rules** that describe how rows from
   *LeftTable* are matched to rows from *RightTable*. Multiple rules are evaluated using the `and` logical operator.
 
-  A rule can be one of:
+  A **rule** can be one of:
 
   |Rule kind        |Syntax          |Predicate    |
   |-----------------|--------------|-------------------------|
@@ -70,26 +70,29 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 
 **Returns**
 
-The output schema depends on the join flavor:
+**The output schema depends on the join flavor:**
 
- * `kind=leftanti`, `kind=leftsemi`: The result table contains columns from the left side only.
- * `kind=rightanti`, `kind=rightsemi`: The result table contains columns from the right side only.
-*  `kind=innerunique`, `kind=inner`, `kind=leftouter`, `kind=rightouter`, `kind=fullouter`:     A column for every column in each of the two tables, including the matching keys. The columns of the right side will be automatically renamed if there are name clashes. 
+| Join flavor | Output schema |
+|---|---|
+|`kind=leftanti`, `kind=leftsemi`| The result table contains columns from the left side only.|
+| `kind=rightanti`, `kind=rightsemi` | The result table contains columns from the right side only.|
+|  `kind=innerunique`, `kind=inner`, `kind=leftouter`, `kind=rightouter`, `kind=fullouter` |  A column for every column in each of the two tables, including the matching keys. The columns of the right side will be automatically renamed if there are name clashes. |
    
-Output records depend on the join flavor:
+**Output records depend on the join flavor:**
 
-* `kind=leftanti`, `kind=leftantisemi`: Returns all the records from the left side that don't have matches from the right.
-* `kind=rightanti`, `kind=rightantisemi`: Returns all the records from the right side that don't have matches from the left.  
-*  `kind=innerunique`, `kind=inner`, `kind=leftouter`, `kind=rightouter`, `kind=fullouter`, `kind=leftsemi`, `kind=rightsemi`:A row for every match between the input tables. A match is a row selected from one table that has the same value for all the `on` fields as a row in the other table with the following constraints:
+   > [!NOTE]
+   > If there are several rows with the same values for those fields, you'll get rows for all the combinations.
+   > A match is a row selected from one table that has the same value for all the `on` fields as a row in the other table.
 
-    > [!Note]
-    > If there are several rows with the same values for those fields, you'll get rows for all the combinations.
-
-   * `kind` unspecified, `kind=innerunique`: Only one row from the left side is matched for each value of the `on` key. The output contains a row for each match of this row with rows from the right.
-   * `kind=leftsemi`: Returns all the records from the left side that have matches from the right.
-   * `kind=rightsemi`: Returns all the records from the right side that have matches from the left.
-   * `kind=inner`: Contains a row in the output for every combination of matching rows from left and right.
-   * `kind=leftouter` (or `kind=rightouter` or `kind=fullouter`): Contains a row for every row on the left and right, even if it has no match. The unmatched output cells contain nulls. 
+| Join flavor | Output records |
+|---|---|
+|`kind=leftanti`, `kind=leftantisemi`| Returns all the records from the left side that don't have matches from the right|
+| `kind=rightanti`, `kind=rightantisemi`| Returns all the records from the right side that don't have matches from the left.|
+| `kind` unspecified, `kind=innerunique`| Only one row from the left side is matched for each value of the `on` key. The output contains a row for each match of this row with rows from the right.|
+| `kind=leftsemi`| Returns all the records from the left side that have matches from the right. |
+| `kind=rightsemi`| Returns all the records from the right side that have matches from the left. |
+|`kind=inner`| Contains a row in the output for every combination of matching rows from left and right. |
+| `kind=leftouter` (or `kind=rightouter` or `kind=fullouter`)| Contains a row for every row on the left and right, even if it has no match. The unmatched output cells contain nulls. |
 
 > [!TIP]
 > For best performance, if one table is always smaller than the other, use it as the left (piped) side of the join.
@@ -122,8 +125,6 @@ Events
 | project City, ActivityId, StartTime, StopTime, Duration = StopTime - StartTime
 ```
 
-For more information and samples, see [about start-and-stop](./samples.md#get-sessions-from-start-and-stop-events).
-
 ## Join flavors
 
 The exact flavor of the join operator is specified with the *kind* keyword. The following flavors of the join operator are supported:
@@ -144,7 +145,7 @@ The exact flavor of the join operator is specified with the *kind* keyword. The 
 
 **Inner-join** outputs a row for every combination of matching rows from the left and the right, without left key deduplications. The output will be a cartesian product of left and right keys.
 
-**Example of inner-join**
+#### Example of inner-join
 
 ```kusto
 let t1 = datatable(key:long, value:string)  
@@ -172,7 +173,7 @@ on key
 
 Use **innerunique-join flavor** to deduplicate keys from the left side. The result will be a row in the output from every combination of deduplicated left keys and right keys.
 
-An example of **innerunique-join** for the same datasets used above:
+#### Example of **innerunique-join** for the same datasets used above:
  
 > [!NOTE]
 > **innerunique flavor** may yield two possible outputs and both are correct.
@@ -386,7 +387,6 @@ X | join kind=leftouter Y on Key
 |c|4|c|30|
 |a|1|||
 
- 
 ### Right outer-join
 
 Resembles the left outer-join, but the treatment of the tables is reversed.
