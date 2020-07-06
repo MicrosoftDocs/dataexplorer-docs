@@ -166,9 +166,7 @@ You can use parametrized queries with deep-linking.
 1. Create a query to be formed as a parametrized query (for example, `KustoLogs | where Timestamp > ago({Period}) | count`) 
 1. Provide a parameter for every query parameter in the URI, such as:
 
-```http
-https://mycluster.kusto.windows.net/MyDatabase?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h
-```
+   `https://mycluster.kusto.windows.net/MyDatabase?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
 ### Getting shorter links
 
