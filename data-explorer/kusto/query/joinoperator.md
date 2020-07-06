@@ -143,13 +143,15 @@ The exact flavor of the join operator is specified with the *kind* keyword. The 
 
 ### Default join flavor
 
+The default join flavor is an inner join with left side deduplication. Default join implementation is useful in typical log/trace analysis scenarios where you want to correlate two events, each matching some filtering criterion, under the same correlation ID. You want to get back all appearances of the phenomenon, and ignore multiple appearances of the contributing trace records.
+
 ``` 
 X | join Y on Key
  
 X | join kind=innerunique Y on Key
 ```
 
-Use two sample tables to explain the operation of the join.
+The following two sample tables are used to explain the operation of the join.
 
 **Table X**
 
@@ -210,9 +212,7 @@ X | join Y on Key
 > [!NOTE]
 > The keys 'a' and 'd' don't appear in the output, since there were no matching keys on both left and right sides.
 
-The default join implementation is useful in typical log/trace analysis scenarios where you want to correlate two events, each matching some filtering criterion, under the same correlation ID. You want to get back all appearances of the phenomenon, and ignore multiple appearances of the contributing trace records.
-
-### Inner-join
+### Inner-join flavor
 
 The inner-join function is like the standard inner-join from the SQL world. An output record is produced whenever a record on the left side has the same join key as the record on the right side.
 
@@ -245,7 +245,7 @@ X | join kind=inner Y on Key
 > * (b,10) from the right side, was joined twice: with both (b,2) and (b,3) on the left.
 > * (c,4) on the left side, was joined twice: with both (c,20) and (c,30) on the right.
 
-#### Innerunique-join flavor
+### Innerunique-join flavor
  
 Use **innerunique-join flavor** to deduplicate keys from the left side. The result will be a row in the output from every combination of deduplicated left keys and right keys.
 
@@ -327,7 +327,7 @@ on key
 |1|val1.2|1|val1.3|
 |1|val1.2|1|val1.4|
 
-### Left outer-join
+### Left outer-join flavor
 
 The result of a left outer-join for tables X and Y always contains all records of the left table (X), even if the join condition doesn't find any matching record in the right table (Y).
 
@@ -357,9 +357,9 @@ X | join kind=leftouter Y on Key
 |c|4|c|30|
 |a|1|||
 
-### Right outer-join
+### Right outer-join flavor
 
-Resembles the left outer-join, but the treatment of the tables is reversed.
+The right outer-join flavor resembles the left outer-join, but the treatment of the tables is reversed.
 
 ```kusto
 let X = datatable(Key:string, Value1:long)
@@ -387,7 +387,7 @@ X | join kind=rightouter Y on Key
 |c|4|c|30|
 |||d|40|
 
-### Full outer-join
+### Full outer-join flavor
 
 A full outer-join combines the effect of applying both left and right outer-joins. Whenever records in the joined tables don't match, the result set will have `null` values for every column of the table that lacks a matching row. For those records that do match, a single row will be produced in the result set, containing fields populated from both tables.
 
@@ -418,7 +418,7 @@ X | join kind=fullouter Y on Key
 |||d|40|
 |a|1|||
 
-### Left anti-join
+### Left anti-join flavor
 
 Left anti-join returns all records from the left side that don't match any record from the right side.
 
@@ -447,7 +447,7 @@ X | join kind=leftanti Y on Key
 > [!NOTE]
 > Anti-join models the "NOT IN" query.
 
-### Right anti-join
+### Right anti-join flavor
 
 Right anti-join returns all records from the right side that don't match any record from the left side.
 
