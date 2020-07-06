@@ -132,14 +132,14 @@ The exact flavor of the join operator is specified with the *kind* keyword. The 
 |Join kind/flavor|Description|
 |--|--|
 |[`innerunique`](#default-join-flavor) (or empty as default)|Inner join with left side deduplication|
-|[`inner`](#inner-join)|Standard inner join|
-|[`leftouter`](#left-outer-join)|Left outer join|
-|[`rightouter`](#right-outer-join)|Right outer join|
-|[`fullouter`](#full-outer-join)|Full outer join|
-|[`leftanti`](#left-anti-join), [`anti`](#left-anti-join), or [`leftantisemi`](#left-anti-join)|Left anti join|
-|[`rightanti`](#right-anti-join) or [`rightantisemi`](#right-anti-join)|Right anti join|
-|[`leftsemi`](#left-semi-join)|Left semi join|
-|[`rightsemi`](#right-semi-join)|Right semi join|
+|[`inner`](#inner-join-flavor)|Standard inner join|
+|[`leftouter`](#left-outer-join-flavor)|Left outer join|
+|[`rightouter`](#right-outer-join-flavor)|Right outer join|
+|[`fullouter`](#full-outer-join-flavor)|Full outer join|
+|[`leftanti`](#left-anti-join-flavor), [`anti`](#left-anti-join-flavor), or [`leftantisemi`](#left-anti-join-flavor)|Left anti join|
+|[`rightanti`](#right-anti-join-flavor) or [`rightantisemi`](#right-anti-join-flavor)|Right anti join|
+|[`leftsemi`](#left-semi-join-flavor)|Left semi join|
+|[`rightsemi`](#right-semi-join-flavor)|Right semi join|
 
 ### Default join flavor
 
@@ -476,7 +476,7 @@ X | join kind=rightanti Y on Key
 > [!NOTE]
 > Anti-join models the "NOT IN" query.
 
-### Left semi-join
+### Left semi-join flavor
 
 Left semi-join returns all records from the left side that match a record from the right side. Only columns from the left side are returned.
 
@@ -504,7 +504,7 @@ X | join kind=leftsemi Y on Key
 |b|2|
 |c|4|
 
-### Right semi-join
+### Right semi-join flavor
 
 Right semi-join returns all records from the right side that match a record from the left side. Only columns from the right side are returned.
 
