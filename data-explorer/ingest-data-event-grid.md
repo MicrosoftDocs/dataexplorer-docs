@@ -104,7 +104,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Review the resources that auto created for you and select **Create**.
 
-    :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-and-create.png" alt-text="Review and create data connection for event grid":::
+    :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Review and create data connection for event grid":::
 
 1. Wait until the deployment is completed. If your deployment is failed, you can select **Operation details** next to the failed stage to get more information for the failing reason. You can also select **Redeploy** to try to deploy the resources again.
 
@@ -213,7 +213,7 @@ If you don't plan to use your event grid again, clean up the Event Grid Subscrip
 
 1. Search for your Event Hub Namespace and select **Delete** to delete it:
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-find-eventhub-namespace-and-delete.png" alt-text="Clean up Event Hub namespace":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-find-eventhub-namespace-delete.png" alt-text="Clean up Event Hub namespace":::
 
 1. In the Delete resources form, confirm the deletion to delete the Event Hub Namespace and Event Hub resources.
 

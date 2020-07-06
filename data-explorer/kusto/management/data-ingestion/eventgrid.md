@@ -82,11 +82,11 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 1. In the Azure portal, find your storage account.
 1. On the left menu, select **Events** > **Event Subscription**.
 
-     :::image type="content" source="../images/eventgrid/create-event-grid-subscription1.png" alt-text="Create event grid subscription":::
+     :::image type="content" source="../images/eventgrid/create-event-grid-subscription-1.png" alt-text="Create event grid subscription":::
 
 1. In the **Create Event Subscription** window within the **Basic** tab, provide the following values:
 
-    :::image type="content" source="../images/eventgrid/create-event-grid-subscription2.png" alt-text="Create event subscription values to enter":::
+    :::image type="content" source="../images/eventgrid/create-event-grid-subscription-2.png" alt-text="Create event subscription values to enter":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
