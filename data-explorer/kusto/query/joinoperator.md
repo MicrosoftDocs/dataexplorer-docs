@@ -47,7 +47,7 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 
     ::: zone pivot="azuredataexplorer"
 
-    |Name           |Values                                        |Description                                  |
+    |Paramaters name           |Values                                        |Description                                  |
     |---------------|----------------------------------------------|---------------------------------------------|
     |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|                                             |
     |`hint.remote`  |`auto`, `left`, `local`, `right`              |See [Cross-Cluster Join](joincrosscluster.md)|
