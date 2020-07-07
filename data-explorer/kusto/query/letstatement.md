@@ -98,6 +98,8 @@ let end_time = start_time + 2h;
 T | where Time > start_time and Time < end_time | ...
 ```
 
+> Tip: In the Kusto client, don't put blank lines between the parts of this. Make sure to execute all of it.
+
 **Examples**
 
 ### Using let to define constants
