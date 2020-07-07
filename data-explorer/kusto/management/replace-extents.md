@@ -83,7 +83,7 @@ Move all extents from two specific tables (`MyTable1`, `MyTable2`) to table `MyO
 
 ### Move all extents from one table to another, drop specific extent
 
-Move all extents from one specfic tavle (`MyTable1`) to table `MyOtherTable`, and drop a specific extent in `MyOtherTable`, by its ID:
+Move all extents from one specific tavle (`MyTable1`) to table `MyOtherTable`, and drop a specific extent in `MyOtherTable`, by its ID:
 
 ```kusto
 .replace extents in table MyOtherTable <|
