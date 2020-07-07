@@ -61,19 +61,25 @@ Details |string |Includes the failure details, in case the operation fails.
 
 ## Examples
 
-### Move all extents in table `MyTable` to table `MyOtherTable`
+### Move all extents 
+
+Move all extents in table `MyTable` to table `MyOtherTable`:
 
 ```kusto
 .move extents all from table MyTable to table MyOtherTable
 ```
 
-### Move two specific extents (by their extent IDs) from table `MyTable` to table `MyOtherTable`
+### Move two specific extents 
+
+Move two specific extents (by their extent IDs) from table `MyTable` to table `MyOtherTable`:
 
 ```kusto
 .move extents (AE6CD250-BE62-4978-90F2-5CB7A10D16D7,399F9254-4751-49E3-8192-C1CA78020706) from table MyTable to table MyOtherTable
 ```
 
-### Move all extents from specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`
+### Move all extents from specific tables 
+
+Move all extents from specific tavles (`MyTable1`, `MyTable2`) to table `MyOtherTable`:
 
 ```kusto
 .move extents to table MyOtherTable <| .show tables (MyTable1,MyTable2) extents

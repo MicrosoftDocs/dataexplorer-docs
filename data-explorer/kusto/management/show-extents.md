@@ -77,7 +77,9 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
  
 ## Examples
 
-### Extent `E` in table `T` is tagged with tags `aaa`, `BBB`, and `ccc`.
+### Tagged extent
+
+Extent `E` in table `T` is tagged with tags `aaa`, `BBB`, and `ccc`.
 
 * This query will return `E`:
     
@@ -97,7 +99,9 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
     .show table T extents where tags contains 'aaa' and tags contains 'bb' 
    ```
 
-### Show volume of extents being created per hour in a specific database
+### Show volume of extents created
+
+Show volume of extents being created per hour in a specific database
 
 ```kusto 
 .show database MyDatabase extents | summarize count(ExtentId) by MaxCreatedOn bin=time(1h) | render timechart  
@@ -129,7 +133,9 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
 .show table Games extents
 ```
 
-### Show all extents in the tables named 'TaggingGames1' and 'TaggingGames2', tagged with both 'tag1' and 'tag2'
+### Show all extents in specific tables
+
+Show all extents in the tables named 'TaggingGames1' and 'TaggingGames2', tagged with both 'tag1' and 'tag2'
 
 ```kusto 
 .show tables (TaggingGames1,TaggingGames2) extents where tags has 'tag1' and tags has 'tag2'

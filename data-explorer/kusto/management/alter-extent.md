@@ -54,7 +54,7 @@ Alter tags of all the extents in table `MyTable` to `MyTag`
 .alter extent tags ('MyTag') <| .show table MyTable extents
 ```
 
-### Alter tags of all the extents
+### Alter tags of all extents
 
 Alter tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`
 

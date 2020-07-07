@@ -70,13 +70,17 @@ Requires [Database admin permission](../management/access-control/role-based-aut
 
 ## Examples
 
-### Remove all extents created more than 10 days ago, from all tables in database `MyDatabase`
+### Remove all extents by time created
+
+Remove all extents created more than 10 days ago, from all tables in database `MyDatabase`
 
 ```kusto
 .drop extents <| .show database MyDatabase extents | where CreatedOn < now() - time(10d)
 ```
 
-### Remove all extents in tables `Table1` and `Table2` whose creation time was over 10 days ago
+### Remove some extents by time created
+
+Remove all extents in tables `Table1` and `Table2` whose creation time was over 10 days ago
 
 ```kusto
 .drop extents older 10 days from tables (Table1, Table2)
@@ -96,7 +100,7 @@ Requires [Database admin permission](../management/access-control/role-based-aut
 ```kusto
 .drop extents from TestTable
 ```
- 
+
 ## Return output
 
 |Output parameter |Type |Description 
