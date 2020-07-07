@@ -37,14 +37,17 @@ In the left menu of the Web UI, right-click a *database* or *table* and select *
 
    1. Select **from file**  
    1. Select **Browse** to locate the file, or drag the file into the field.
-    * A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. 
+    
+      :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file":::
+
+ 1. A sample of the data appears. You can filter it to ingest only files that begin end with specific characters. 
+   
     >[!NOTE] 
     >When you adjust the filters, the preview automatically updates.
   
-      :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file":::
 
-     > [!TIP]
-     > For ingestion **from container**, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#select-an-ingestion-type)
+> [!TIP]
+> For ingestion **from container**, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#select-an-ingestion-type)
 
 ## Edit the schema
 
@@ -73,7 +76,8 @@ Select **Edit schema** to view and edit your table column configuration.
 ### Table 
 
 In the table: 
-    * Select new column headers to add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. On existing columns, only data sorting is available.
+  * Select new column headers to add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. 
+ * On existing columns, only data sorting is available.
 
 [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
