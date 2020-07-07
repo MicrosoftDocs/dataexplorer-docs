@@ -18,7 +18,7 @@ Shows extents from a specified database or table.
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
-## Cluster Level
+## Cluster level
 
 `.show` `cluster` `extents` [`hot`]
 
