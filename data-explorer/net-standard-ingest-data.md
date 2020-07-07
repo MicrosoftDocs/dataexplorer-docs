@@ -1,19 +1,19 @@
 ---
-title: 'Ingest data with Azure Data Explorer .NET Standard SDK (Preview)'
-description: In this article, you learn how to ingest (load) data into Azure Data Explorer using .NET Standard SDK.
+title: 'Ingest data with Azure Data Explorer .NET SDK'
+description: In this article, you learn how to ingest (load) data into Azure Data Explorer using .NET SDK.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: vladikb
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/07/2020
 
-# Customer intent: As a .NET Standard SDK developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
+# Customer intent: As a .NET SDK developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
 
-# Ingest data using the Azure Data Explorer .NET Standard SDK (Preview)
+# Ingest data using the Azure Data Explorer .NET SDK 
 
-Azure Data Explorer (ADX) is a fast and highly scalable data exploration service for log and telemetry data. ADX provides two client libraries for .NET Standard: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) and [a data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). 
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides two client libraries for .NET: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) and [a data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). 
 These libraries enable you to ingest (load) data into a cluster and query data from your code. In this article, you first create a table and data mapping in a test cluster. You then queue an ingestion to the cluster and validate the results.
 
 ## Prerequisites
@@ -25,7 +25,7 @@ These libraries enable you to ingest (load) data into a cluster and query data f
 ## Install the ingest library
 
 ```
-Install-Package Microsoft.Azure.Kusto.Ingest.NETStandard
+Install-Package Microsoft.Azure.Kusto.Ingest
 ```
 
 ## Authentication
