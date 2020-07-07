@@ -85,7 +85,7 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
     .show table T extents where tags has 'aaa' and tags contains 'bb'
    ```
    
-* This query *won't* return `E` since it isn't tagged with `aa`:
+* This query won't return `E` since it isn't tagged with `aa`:
     
    ```kusto
     .show table T extents where tags has 'aa' and tags contains 'bb'
