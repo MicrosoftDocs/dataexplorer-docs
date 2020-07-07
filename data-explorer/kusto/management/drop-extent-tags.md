@@ -49,7 +49,7 @@ The extents and the tags to drop are specified using a Kusto query. It returns a
 
 Requires [Table admin permission](../management/access-control/role-based-authorization.md) for all involved source and destination tables.
 
-### Syntax
+### Syntax for .drop extent tags in query
 
 ```kusto 
 .drop extent tags <| ...query...
@@ -64,21 +64,27 @@ ResultExtentId |string |A unique identifier (GUID) for the result extent that ha
 ResultExtentTags |string |The collection of tags that the result extent is tagged with, if any remain, or "null" in case the operation fails.
 Details |string |Includes the failure details if the operation fails.
 
-### Examples
+## Examples
 
-#### Drop the `drop-by:Partition000` tag from any extent in table that is tagged with it
+### Drop one tag
+
+Drop the `drop-by:Partition000` tag from any extent in table that is tagged with it:
 
 ```kusto
 .drop extent tags from table MyOtherTable ('drop-by:Partition000')
 ```
 
-#### Drop the tags `drop-by:20160810104500`, `a random tag`, and `drop-by:20160810` from any extent in table that is tagged with either of them
+### Drop several tags
+
+Drop the the tags `drop-by:20160810104500`, `a random tag`, and `drop-by:20160810` from any extent in table that is tagged with either of them:
 
 ```kusto
 .drop extent tags from table [My Table] ('drop-by:20160810104500','a random tag','drop-by:20160810')
 ```
 
-#### Drop all `drop-by` tags from extents in table `MyTable`
+### Drop all `drop-by` tags 
+
+Drop all `drop-by` tags from extents in table `MyTable`:
 
 ```kusto
 .drop extent tags <| 
@@ -89,7 +95,9 @@ Details |string |Includes the failure details if the operation fails.
   | where Tags startswith 'drop-by'
 ```
 
-#### Drop all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from extents in table `MyTable`
+### Drop all tags matching specific regex 
+
+Drop all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from extents in table `MyTable`:
 
 ```kusto
 .drop extent tags <| 
@@ -100,7 +108,7 @@ Details |string |Includes the failure details if the operation fails.
   | where Tags matches regex @"drop-by:StreamCreationTime_20160915(\d{6})"
 ```
 
-### Sample output
+## Sample output
 
 |OriginalExtentId |ResultExtentId | ResultExtentTags | Details
 |---|---|---|---

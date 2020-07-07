@@ -37,22 +37,26 @@ All extents must be in the context database, and must belong to the same table.
 
 ## Return output
 
-Output parameter |Type |Description
----|---|---
-OriginalExtentId |string |A unique identifier (GUID) for the original extent whose tags have been modified. The extent is dropped as part of the operation.
-ResultExtentId |string |A unique identifier (GUID) for the result extent that has modified tags. The extent is created and added as part of the operation. Upon failure - "Failed".
-ResultExtentTags |string |The collection of tags that the result extent is tagged with, or "null" in case the operation fails.
-Details |string |Includes the failure details if the operation fails.
+|Output parameter |Type |Description|
+|---|---|---|
+|OriginalExtentId |string |A unique identifier (GUID) for the original extent whose tags have been modified. The extent is dropped as part of the operation.|
+|ResultExtentId |string |A unique identifier (GUID) for the result extent that has modified tags. The extent is created and added as part of the operation. Upon failure - "Failed".|
+|ResultExtentTags |string |The collection of tags that the result extent is tagged with, or "null" in case the operation fails.|
+|Details |string |Includes the failure details if the operation fails.|
 
 ## Examples
 
-### Alter tags of all the extents in table `MyTable` to `MyTag`
+### Alter tags 
+
+Alter tags of all the extents in table `MyTable` to `MyTag`
 
 ```kusto
 .alter extent tags ('MyTag') <| .show table MyTable extents
 ```
 
-### Alter tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`
+### Alter tags of all the extents
+
+Alter tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`
 
 ```kusto
 .alter extent tags ('drop-by:MyNewTag','MyOtherNewTag') <| .show table MyTable extents where tags has 'drop-by:MyTag'

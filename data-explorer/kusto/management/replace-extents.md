@@ -58,7 +58,9 @@ Details |string |Includes the failure details if the operation fails.
 
 ## Examples
 
-### Move all extents from two specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`, and drops all extents in `MyOtherTable` tagged with `drop-by:MyTag`
+### Move all extents from two tables 
+
+Move all extents from two specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`, and drop all extents in `MyOtherTable` tagged with `drop-by:MyTag`:
 
 ```kusto
 .replace extents in table MyOtherTable <|
@@ -79,7 +81,9 @@ Details |string |Includes the failure details if the operation fails.
 |4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f| 
 |2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df| 
 
-### Move all extents from one specific table (`MyTable1`) to table `MyOtherTable`, and drop a specific extent in `MyOtherTable`, by its ID
+### Move all extents from one table to another, drop specific extent
+
+Move all extents from one specfic tavle (`MyTable1`) to table `MyOtherTable`, and drop a specific extent in `MyOtherTable`, by its ID:
 
 ```kusto
 .replace extents in table MyOtherTable <|
@@ -102,7 +106,9 @@ Details |string |Includes the failure details if the operation fails.
     }
 ```
 
-### Implement an idempotent logic, so that Kusto drops extents from table `t_dest` only if there are extents to move from table `t_source` to table `t_dest`
+### Implement an idempotent logic
+
+Implement an idempotent logic so that Kusto drops extents from table `t_dest` only if there are extents to move from table `t_source` to table `t_dest`:
 
 ```kusto
 .replace async extents in table t_dest <|
