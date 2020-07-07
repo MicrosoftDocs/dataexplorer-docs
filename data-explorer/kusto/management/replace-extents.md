@@ -49,7 +49,7 @@ Both queries should return a recordset with a column called "ExtentId".
 Output parameter |Type |Description
 ---|---|---
 OriginalExtentId |string |A unique identifier (GUID) for the original extent in the source table that has been moved to the destination table, or the extent in the destination table that has been dropped.
-ResultExtentId |string |A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table, or empty, if the extent was dropped from the destination table. Upon failure - "Failed".
+ResultExtentId |string |A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Empty, if the extent was dropped from the destination table. Upon failure: "Failed".
 Details |string |Includes the failure details if the operation fails.
 
 > [!NOTE]
