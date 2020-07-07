@@ -38,7 +38,7 @@ There are three options available:
 Output parameter |Type |Description
 ---|---|---
 OriginalExtentId |string |A unique identifier (GUID) for the original extent in the source table, which has been merged into the target extent.
-ResultExtentId |string |A unique identifier (GUID) for the extent that was created from the source extents. Upon failure - "Failed" or "Abandoned".
+ResultExtentId |string |A unique identifier (GUID) for the extent that was created from the source extents. Upon failure: "Failed" or "Abandoned".
 Duration |timespan |The time period it took to complete the merge operation.
 
 ## Examples
