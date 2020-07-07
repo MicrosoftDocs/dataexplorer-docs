@@ -20,7 +20,7 @@ Requires [Table admin permission](../management/access-control/role-based-author
 
 > [!NOTE]
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
-> For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
+> For more information on extents, see [Extents (data shards) overview](extents-overview.md).
 
 ## Syntax
 
