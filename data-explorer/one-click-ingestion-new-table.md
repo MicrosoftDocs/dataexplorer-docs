@@ -31,25 +31,25 @@ For information about ingesting data into an existing table in Azure Data Explor
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
 
-:::image type="content" source="media/one-click-ingestion-new-table/create-new-table.png" alt-text="Create a new table one click ingestion":::
+    :::image type="content" source="media/one-click-ingestion-new-table/create-new-table.png" alt-text="Create a new table one click ingestion":::
 
 ## Select an ingestion type
 
-* Under **Ingestion type**, do the following steps:
+Under **Ingestion type**, do the following steps:
    
   1. Select **from container** 
   1. In the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size.
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container":::
 
- > [!TIP] 
- > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
+     > [!TIP] 
+     > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
 
-* A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
+A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
   
-  For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension.
+ * For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension.
 
-  :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
+    :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
   
 ## Edit the schema
 
@@ -63,8 +63,8 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 
         In this case, the data format is **CSV**
 
-    > [!TIP]
-    > If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#edit-the-schema).
+        > [!TIP]
+        > If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#edit-the-schema).
 
     * You can select the check box **Include column names** to ignore the heading row of the file.
 
@@ -76,14 +76,14 @@ Select **Edit schema** to view and edit your table column configuration. The sys
 
 ### Table
 
-1. In the table: 
-    * Double-click the new column name to edit.
-    * Select new column headers and do any of the following actions:
+In the table: 
+ * Double-click the new column name to edit.
+ * Select new column headers and do any of the following actions:
 
-[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
+    [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
-> [!NOTE]
-> For tabular formats, each column can be ingested into one column in Azure Data Explorer.
+    > [!NOTE]
+    > For tabular formats, each column can be ingested into one column in Azure Data Explorer.
 
 [!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
 
@@ -101,7 +101,7 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
 
-## Continuous ingestion - container only
+## Create continuous ingestion for container
 
 Continuous ingestion enables you to create an event grid that listens for new files in the source container. Any new file that meets the criteria of the pre-defined parameters (prefix, suffix, and so on) will be automatically ingested into the destination table. 
 

@@ -70,9 +70,9 @@
       items:
       - name: One-click ingestion overview 
         href: ingest-data-one-click.md
-      - name: One-click ingestion into a new table
+      - name: CSV data from container to new table
         href: one-click-ingestion-new-table.md
-      - name: One-click ingestion into an existing table
+      - name: JSON data from local file to existing table
         href: one-click-ingestion-existing-table.md
     - name: Streaming ingestion
       items:
