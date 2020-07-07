@@ -57,7 +57,7 @@ Duration |timespan |The time period it took to complete the merge operation.
 
 ## Notes
 
-* In General, `.merge` commands should rarely be manually run. The commands are continuously and automatically run in the background of the Kusto cluster, according to the [merge policies](mergepolicy.md) for tables and databases.  
+* In general, `.merge` commands shouldn't be manually run. The commands are continuously and automatically run in the background of the cluster, according to the [merge policies](mergepolicy.md) for tables and databases.  
   * For more information on the criteria for merging multiple extents into a single one, see [Merge Policy](mergepolicy.md).
 * `.merge` operations have a possible final state of `Abandoned`, which can be seen when running `.show operations` with the operation ID. This state suggests the source extents weren't merged, since some of the source extents no longer exist in the source table. 
 The `Abandoned` state happens when:
