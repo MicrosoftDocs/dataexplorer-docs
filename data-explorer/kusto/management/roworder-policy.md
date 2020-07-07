@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
 ---
-# RowOrder policy
+# roworder policy command
 
 This article describes control commands used for creating and altering [row order policy](../management/roworderpolicy.md).
 

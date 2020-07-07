@@ -168,8 +168,8 @@ The following properties can be defined as part of the policy, but are optional 
 * **MaxRowCountPerOperation**:
   * Maximum target for the sum of the row count of the source extents of a single data partitioning operation.
   * This property is optional. Its default value is `0`, with a default target of 5,000,000 records.
-    * You can consider setting a value lower than 5M you see that partitioning operations consume a very large amount
-      of memory / CPU, per operation (See #monitoring).
+    * You can set a value lower than 5M if you see that the partitioning operations consume a very large amount
+      of memory or CPU, per operation. For more information, see [Monitoring](#monitoring).
 
 ## Notes
 
@@ -192,7 +192,7 @@ Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) comma
 The output includes:
 
   * `MinPartitioningPercentageInSingleTable`: The minimal percentage of partitioned data across all tables that have a data partitioning policy in the cluster.
-    * If this percentage remains constantly under 90%, then evaluate the cluster's partitioning capacity (see [capacity](partitioningpolicy.md#capacity)).
+    * If this percentage remains constantly under 90%, then evaluate the cluster's partitioning [capacity](partitioningpolicy.md#capacity).
   * `TableWithMinPartitioningPercentage`: The fully qualified name of the table whose partitioning percentage is shown above.
 
 Use [.show commands](commands.md) to monitor the partitioning commands and their resource utilization. For example:
@@ -220,7 +220,7 @@ Use [.show commands](commands.md) to monitor the partitioning commands and their
 * If a hash partition key includes values that are much more prevalent than others, for example, an empty string, or a generic value (such as `null` or `N/A`), or they represent an entity (such as `tenant_id`) that is more prevalent in the data set, that could contribute to imbalanced distribution of data across the cluster's nodes, and degrade query performance.
 * If a uniform range datetime partition key has a large enough percentage of values that are "far" from the majority of the values in the column, for example, datetime values from the distant past or future, then that could increase the overhead of the data partitioning process, and lead to many small extents that the cluster will need to keep track of.
 
-In both of these cases, you should either "fix" the data, or filter out any irrelevant records in the data before or at ingestion time, to reduce the overhead of the data partitioning on the cluster. For example, use an [update policy](updatepolicy.md)).
+In both of these cases, you should either "fix" the data, or filter out any irrelevant records in the data before or at ingestion time, to reduce the overhead of the data partitioning on the cluster. For example, use an [update policy](updatepolicy.md).
 
 ## Next steps
 

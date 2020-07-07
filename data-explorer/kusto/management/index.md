@@ -49,6 +49,13 @@ and the request must be sent to the management endpoint of the service.
 Also note that [query statements](../query/statements.md) appear within the query
 part of the text (they can't precede the command itself).
 
+>[!NOTE]
+> Don't run [command-then-query] operations too frequently.
+> *command-then-query* pipes the result set of the control command and applies filters/aggregations on it.
+>  * For example: `.show ... | where ... | summarize ...`
+>   * When running something like: `.show cluster extents | count` (emphasis on the `| count`), Kusto first prepares a data table that holds all details of all extents in the cluster. The system then sends that in-memory-only table to the Kusto engine to do the count. The system actually works hard in an unoptimized path to give you such a trivial answer.
+
+
 **AdminThenQuery** is indicated in one of two ways:
 
 1. By using a pipe (`|`) character, the query therefore treats the results of the
@@ -85,3 +92,5 @@ name `MyTable` in the database in context:
 let text="Hello, World!";
 print str=Text
 ```
+
+
