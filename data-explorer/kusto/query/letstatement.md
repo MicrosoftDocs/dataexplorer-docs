@@ -19,24 +19,27 @@ Let statements improve modularity and reuse, since they let you break a potentia
 Each part is bound to a name through the let statement, and together they compose the whole. 
 They can also be used to create user-defined functions and views. The views are expressions over tables whose results look like a new table.
 
-Names bound by let statements must be valid entity names.
+> [!NOTE]
+> Names bound by let statements must be valid entity names.
 
 Expressions bound by let statements can be:
-* Of scalar type
-* Of tabular type
+* Scalar types
+* Tabular types
 * User-defined functions (lambdas)
 
-**Syntax**
+## Syntax
 
 `let` *Name* `=` *ScalarExpression* | *TabularExpression* | *FunctionDefinitionExpression*
 
-* *Name*: The name to bind. The name must be a valid entity name. Entity name escaping, such as `["Name with spaces"]`, is permitted. 
-* *ScalarExpression*: An expression with a scalar result whose value is bound to the name. For example, `let one=1;`.
-* *TabularExpression*: An expression with a tabular result whose value is bound to the name. For example, `Logs | where Timestamp > ago(1h)`.
-* *FunctionDefinitionExpression*: An expression that yields a lambda, an anonymous function declaration that is to be bound to the name.
-  For example, `let f=(a:int, b:string) { strcat(b, ":", a) }`.
+|Field  |Definition  |Example  |
+|---------|---------|---------|
+|*Name*   | The name to bind. The name must be a valid entity name.    |Entity name escaping, such as `["Name with spaces"]`, is permitted.      |
+|*ScalarExpression*     |  An expression with a scalar result whose value is bound to the name.  | `let one=1;`  |
+|*TabularExpression*    | An expression with a tabular result whose value is bound to the name.   | `Logs | where Timestamp > ago(1h)`    |
+|*FunctionDefinitionExpression*   | An expression that yields a lambda, an anonymous function declaration that is to be bound to the name.   |  `let f=(a:int, b:string) { strcat(b, ":", a) }`  |
 
-Lambda expressions have the following syntax.
+
+### Lambda expressions syntax
 
 [`view`] `(`[*TabularArguments*][`,`][*ScalarArguments*]`)` `{` *FunctionBody* `}`
 
@@ -61,7 +64,7 @@ Lambda expressions have the following syntax.
   * *ArgName* - The name of the formal scalar argument. The name may appear in the *FunctionBody* and is bound to a particular value when the lambda is invoked.  
   * *ArgType* - the type of the formal scalar argument. Currently only the following types are supported as a lambda argument type: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).
 
-**Multiple and nested let statements**
+## Multiple and nested let statements
 
 Multiple let statements can be used with the semicolon, `;`, delimiter between them, like in the following example.
 
@@ -83,7 +86,7 @@ let end_time = start_time + 2h;
 T | where Time > start_time and Time < end_time | ...
 ```
 
-**Examples**
+## Examples
 
 ### Use let function to define constants
 
@@ -101,7 +104,7 @@ let ['x'] = 1;
 range y from x to x step x
 ```
 
-Another example that uses let for scalar values:
+### Use let for scalar values
 
 ```kusto
 let n = 10;  // number
@@ -113,7 +116,7 @@ Events
 | take n
 ```
 
-### Using multiple let statements
+### Use multiple let statements
 
 This example defines two let statements where one statement (`foo2`) uses another (`foo1`).
 
