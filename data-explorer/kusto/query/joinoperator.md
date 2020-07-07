@@ -19,11 +19,11 @@ Merge the rows of two tables to form a new table by matching values of the speci
 Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 ```
 
-**Syntax**
+## Syntax
 
 *LeftTable* `|` `join` [*JoinParameters*] `(` *RightTable* `)` `on` *Attributes*
 
-**Arguments**
+## Arguments
 
 * *LeftTable*: The **left** table or tabular expression, sometimes called **outer** table, whose rows are to be merged. Denoted as `$left`.
 
@@ -45,30 +45,30 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 * *JoinParameters*: Zero or more space-separated parameters in the form of
   *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. The following parameters are supported:
 
-::: zone pivot="azuredataexplorer"
+    ::: zone pivot="azuredataexplorer"
 
-  |Name           |Values                                        |Description                                  |
-  |---------------|----------------------------------------------|---------------------------------------------|
-  |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|                                             |
-  |`hint.remote`  |`auto`, `left`, `local`, `right`              |See [Cross-Cluster Join](joincrosscluster.md)|
-  |`hint.strategy`|Execution hints                               |See [Join hints](#join-hints)                |
+    |Name           |Values                                        |Description                                  |
+    |---------------|----------------------------------------------|---------------------------------------------|
+    |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|                                             |
+    |`hint.remote`  |`auto`, `left`, `local`, `right`              |See [Cross-Cluster Join](joincrosscluster.md)|
+    |`hint.strategy`|Execution hints                               |See [Join hints](#join-hints)                |
 
-::: zone-end
+    ::: zone-end
 
-::: zone pivot="azuremonitor"
+    ::: zone pivot="azuremonitor"
 
-  |Name           |Values                                        |Description                                  |
-  |---------------|----------------------------------------------|---------------------------------------------|
-  |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|                                             |
-  |`hint.remote`  |`auto`, `left`, `local`, `right`              |                                             |
-  |`hint.strategy`|Execution hints                               |See [Join hints](#join-hints)                |
+    |Name           |Values                                        |Description                                  |
+    |---------------|----------------------------------------------|---------------------------------------------|
+    |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|                                             |
+    |`hint.remote`  |`auto`, `left`, `local`, `right`              |                                             |
+    |`hint.strategy`|Execution hints                               |See [Join hints](#join-hints)                |
 
-::: zone-end
+    ::: zone-end
 
 > [!WARNING]
 > If `kind` isn't specified, the default join flavor is `innerunique`. This is different than some other analytics products that have `inner` as the default flavor.  See [join-flavors](#join-flavors) to understand the differences and make sure  the query yields the intended results.
 
-**Returns**
+## Returns
 
 **The output schema depends on the join flavor:**
 
@@ -97,7 +97,7 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 > [!TIP]
 > For best performance, if one table is always smaller than the other, use it as the left (piped) side of the join.
 
-**Example**
+## Example
 
 Get extended activities from a `login` that some entries mark as the start and end of an activity.
 
