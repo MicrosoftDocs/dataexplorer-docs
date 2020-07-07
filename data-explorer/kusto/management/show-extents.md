@@ -18,7 +18,7 @@ Shows extents from a specified database or table.
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
-## Cluster Level
+## Cluster level
 
 `.show` `cluster` `extents` [`hot`]
 
@@ -85,7 +85,7 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
     .show table T extents where tags has 'aaa' and tags contains 'bb'
    ```
    
-* This query *won't* return `E` since it isn't tagged with `aa`:
+* This query won't return `E` since it isn't tagged with `aa`:
     
    ```kusto
     .show table T extents where tags has 'aa' and tags contains 'bb'

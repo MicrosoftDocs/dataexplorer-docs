@@ -20,7 +20,7 @@ Requires [Table admin permission](../management/access-control/role-based-author
 
 > [!NOTE]
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
-> For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
+> For more information on extents, see [Extents (data shards) overview](extents-overview.md).
 
 ## Syntax
 
@@ -49,7 +49,7 @@ Both queries should return a recordset with a column called "ExtentId".
 Output parameter |Type |Description
 ---|---|---
 OriginalExtentId |string |A unique identifier (GUID) for the original extent in the source table that has been moved to the destination table, or the extent in the destination table that has been dropped.
-ResultExtentId |string |A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table, or empty, if the extent was dropped from the destination table. Upon failure - "Failed".
+ResultExtentId |string |A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Empty, if the extent was dropped from the destination table. Upon failure: "Failed".
 Details |string |Includes the failure details if the operation fails.
 
 > [!NOTE]
