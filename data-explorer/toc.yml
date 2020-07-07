@@ -116,8 +116,8 @@
         href: python-ingest-data.md
       - name: Node SDK
         href: node-ingest-data.md
-      - name: .NET Standard SDK
-        href: net-standard-ingest-data.md
+      - name: .NET SDK
+        href: net-sdk-ingest-data.md
     - name: Kafka
       href: ingest-data-kafka.md
     - name: Logstash
