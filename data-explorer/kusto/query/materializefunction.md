@@ -106,7 +106,7 @@ Result set 3:
 
 Try to push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, filters, or project only required columns.
 
-    ```kusto
+```kusto
     let materializedData = materialize(Table
     | where Timestamp > ago(1d));
     union (materializedData
@@ -114,11 +114,12 @@ Try to push all possible operators that will reduce the materialized data set an
     | summarize dcount(Resource1)), (materializedData
     | where Text !has "somestring"
     | summarize dcount(Resource2))
-    ```
+```
+
 The filter on Text is mutual and can be pushed to the materialize expression.
     The query only needs columns `Timestamp`, `Text`, `Resource1`, and `Resource2`. Project these columns inside the materialized expression.
     
-    ```kusto
+```kusto
     let materializedData = materialize(Table
     | where Timestamp > ago(1d)
     | where Text !has "somestring"
@@ -126,11 +127,11 @@ The filter on Text is mutual and can be pushed to the materialize expression.
     union (materializedData
     | summarize dcount(Resource1)), (materializedData
     | summarize dcount(Resource2))
-    ```
+```
     
 If the filters aren't identical like in this query:  
 
-    ```kusto
+```kusto
     let materializedData = materialize(Table
     | where Timestamp > ago(1d));
     union (materializedData
@@ -138,11 +139,11 @@ If the filters aren't identical like in this query:
     | summarize dcount(Resource1)), (materializedData
     | where Text has "String2"
     | summarize dcount(Resource2))
-    ```
+ ```
 
 Consider, when the combined filter reduces the materialized result drastically, combining both filters on the materialized result by a logical `or` expression like in the query below. However, keep the filters in each union leg to preserve the semantics of the query:
      
-    ```kusto
+```kusto
     let materializedData = materialize(Table
     | where Timestamp > ago(1d)
     | where Text has "String1" or Text has "String2"
@@ -152,5 +153,5 @@ Consider, when the combined filter reduces the materialized result drastically, 
     | summarize dcount(Resource1)), (materializedData
     | where Text has "String2"
     | summarize dcount(Resource2))
-    ```
+```
     

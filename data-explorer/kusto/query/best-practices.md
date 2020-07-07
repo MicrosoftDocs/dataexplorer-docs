@@ -24,7 +24,7 @@ Here are several best practices to follow to make your query run faster.
 |  | Use `contains_cs`         | Don't use `contains`        | If you can use `has`/`has_cs` and not use `contains`/`contains_cs`, that's even better |
 | **Searching text**    |    Look in a specific column     |    Don't use  `*`    |   `*` does a full text search across all columns.    |
 | **Extract fields from [dynamic objects](./scalar-data-types/dynamic.md) across millions of rows**    |  Materialize your column at ingestion time if most of your       |         | This way, you'll only pay once for column extraction.    |
-| **`let` statement with a value that you use more than once** | Use the [materialize() function](./materializefunction.md) |  |   For more information on how to use `materialize()`, see [best practices](#materialize-function).|
+| **`let` statement with a value that you use more than once** | Use the [materialize() function](./materializefunction.md) |  |   For more information on how to use `materialize()`, see [materialize()](materializefunction.md).|
 | **Apply conversions on more than 1 billion records**| Reshape your query to reduce the amount of data fed into the conversion| Don't convert large amounts of data if it can be avoided | |
 | **New queries** | Use `limit [small number]` or `count` at the end | |     Running unbound queries over unknown data sets may yield GBs of results to be returned to the client, resulting in a slow response and a busy cluster.|
 | **Case-insensitive comparisons** | Use `Col =~ "lowercasestring"` | Don't use `tolower(Col) == "lowercasestring"` |
