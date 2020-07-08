@@ -74,7 +74,7 @@ It uses the `XxHash64` hash function, with a `MaxPartitionCount` of `256`, and t
 
 ### Uniform range datetime partition key
 
-> ![NOTE] 
+> [!NOTE] 
 > Applying a uniform range datetime partition key on a `datetime`-typed column in a table is appropriate **only** when data ingested into the table is unlikely to be ordered according to this column.
 
 In such cases, it can be helpful to reshuffle the data between extents so that each extent ends up including records from a limited time range. This will result with filters on that `datetime` column being more effective at query time.
