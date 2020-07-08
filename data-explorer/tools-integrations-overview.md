@@ -13,9 +13,9 @@ ms.date: 07/08/2020
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more. Azure Data Explorer collects, stores, and analyzes diverse data to improve products, enhance customer experiences, monitor devices, and boost operations. 
 
-Azure Data Explorer offers different tools and integrations to do data ingestion, queries, visualization, orchestration and more. In addition to its native services, Azure Data Explorer allows users to easily integrate with various products and platforms, enable a variety of customer use cases, optimize the business process by streamlining workflows, and reducing costs. This allows you to make better decisions with richer insights into their integrated business.
+Azure Data Explorer offers different tools and integrations to do data ingestion, queries, visualization, orchestration and more. In addition to its native services, Azure Data Explorer allows users to integrate easily with various products and platforms, enable various customer use cases, optimize the business process by streamlining workflows, and reducing costs. 
 
-The following sections supply you with a list of Azure Data Explorer tools, connectors and integrations with links to relevant documents for additional information.
+This article supplies you with a list of Azure Data Explorer tools, connectors, and integrations with links to relevant documents for additional information.
 
 ## Data ingestion 
 
@@ -32,13 +32,13 @@ Data ingestion is the process used to load data records from one or more sources
 ### Azure Data Explorer ingestion integrations
 
 * Event Hub
-    * [Ingest from Event Hub](../management/data-ingestion/eventhub.md)
+    * [Ingest from Event Hub]([Ingest from Event Hub](kusto/management/data-ingestion/eventhub.md)
     * Ingest from Event Hub using the [Azure portal](ingest-data-event-hub.md), [C#](data-connection-event-hub-csharp.md), [Python](data-connection-event-hub-python.md) or [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 * Event Grid
-    * [Ingest from Event Grid](../management/data-ingestion/eventgrid.md)
+    * [Ingest from Event Grid](kusto/management/data-ingestion/eventgrid.md)
     * Ingest from Event Grid using the [Azure portal](ingest-data-event-grid.md), [C#](data-connection-event-grid-csharp.md), [Python](data-connection-event-grid-python.md) or [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 * IoT Hub
-    * [Ingest from IoT Hub](../management/data-ingestion/iothub.md)
+    * [Ingest from IoT Hub](kusto/management/data-ingestion/iothub.md)
     * Ingest from IoT Hub using the [Azure portal](ingest-data-iot-hub.md), [C#](data-connection-iot-hub-csharp.md), [Python](data-connection-iot-hub-python.md) or [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md)
 * [Logstash](ingest-data-logstash.md)
 * Azure Data Factory
@@ -59,12 +59,12 @@ Data ingestion is the process used to load data records from one or more sources
 There are several tools available for running queries in Azure Data Explorer:
 
 * Kusto.Explorer
-    * [installation and user interface](./kusto-explorer.md)
-    * [Using Kusto.Explorer](./kusto-explorer-using.md)
-    * [options](./kusto/tools/kusto-explorer-options.md)
-    * Additional topics include [troubleshooting](kusto-explorer-troubleshooting.md), [keyboard shortcuts](./kusto/tools/kusto-explorer-shortcuts.md), [code refactoring](./kusto/tools/kusto-explorer-refactor.md), [code navigation](./kusto/tools/kusto-explorer-codenav.md) and [code analyze](./kusto/tools/kusto-explorer-code-analyzer.md)
-* [Web UI](../../web-query-data.md) - Web UI for querying Kusto
-* [Kusto.Cli](kusto-cli.md)
+    * [installation and user interface](kusto/tools/kusto-explorer.md)
+    * [Using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
+    * [options](kusto/tools/kusto-explorer-options.md)
+    * Additional topics include [troubleshooting](kusto/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code refactoring](kusto/tools/kusto-explorer-refactor.md), [code navigation](kusto/tools/kusto-explorer-codenav.md), and [code analyze](kusto/tools/kusto-explorer-code-analyzer.md)
+* [Web UI](web-query-data.md)
+* [Kusto.Cli](kusto/tools/kusto-cli.md)
 
 ### Azure Data Explorer query integrations
 
@@ -76,7 +76,7 @@ There are several tools available for running queries in Azure Data Explorer:
 
 ## Visualizations, dashboards, and reporting
 
-The [visualization overview](viz-overview.md) details data visualization, dashboards  and reporting options. 
+The [visualization overview](viz-overview.md) details data visualization, dashboards, and reporting options. 
 
 ## Notebook connectivity
 
@@ -89,7 +89,7 @@ The [visualization overview](viz-overview.md) details data visualization, dashbo
 * Power Automate
     * [Power Automate Flow connector](flow.md)
     * [Power Automate connector usage examples](flow-usage.md)
-* [Microsoft Logic App](./logicapps.md) 
+* [Microsoft Logic App](kusto/tools/logicapps.md) 
 * [Azure Data Factory](data-factory-integration.md)
 
 ## Share data
@@ -99,6 +99,6 @@ The [visualization overview](viz-overview.md) details data visualization, dashbo
 ## Source control integration
 
 * [Azure Pipelines](devops.md) 
-* [Sync Kusto](synckusto.md) 
+* [Sync Kusto](kusto/tools/synckusto.md) 
 
 <!--Open Source Tools-->
