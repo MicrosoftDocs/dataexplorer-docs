@@ -11,8 +11,6 @@ ms.date: 02/03/2020
 ---
 # Best practices 
 
-## General
-
 Here are several best practices to follow to make your query run faster.
 
 |Action  |Use  |Don't use  |Notes  |
