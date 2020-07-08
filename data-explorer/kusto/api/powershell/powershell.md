@@ -19,6 +19,7 @@ PowerShell's built-in integration with arbitrary (non-PowerShell) .NET libraries
 To start working with the Azure Data Explorer .NET client libraries using PowerShell.
 
 1. Download the [`Microsoft.Azure.Kusto.Tools` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
+    - If you're running with Powershell 7 (or above), download the [`Microsoft.Azure.Kusto.Tools.NETCore` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools.NETCore/).
 1. Extract the contents of the 'tools' directory in the package (use an archiving tool like `7-zip`).
 1. Call `[System.Reflection.Assembly]::LoadFrom("path")` from PowerShell, to load the required library. 
     - The `path` parameter for the command should indicate the location of the extracted files.
@@ -60,6 +61,10 @@ $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder ($clusterUrl, $databa
 #     $applicationKey = "application key goes here"
 #     $authority = "authority goes here"
 #     $kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKey, $authority)
+#
+#   NOTE: if you're running with Powershell 7 (or above) and the .NET Core library,
+#         AAD user authentication with prompt will not work, and you should choose
+#         a different authentication method.
 ```
 
 ### Example: Running an admin command
