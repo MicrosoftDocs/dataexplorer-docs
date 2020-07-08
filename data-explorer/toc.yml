@@ -50,6 +50,8 @@
       href: security.md
     - name: Security baseline
       href: security-baseline.md
+  - name: Tools and integrations overview
+    href: tools-integrations-overview.md
 - name: How-to guides
   items:
   - name: Create cluster and database
@@ -110,6 +112,16 @@
         href: data-connection-iot-hub-python.md
       - name: Azure Resource Manager template
         href: data-connection-iot-hub-resource-manager.md
+      - name: Azure Data Factory
+        items:
+      - name: Integration with Data Factory 
+        href: data-factory-integration.md 
+      - name: Copy data using Azure Data Factory
+        href: data-factory-load-data.md  
+      - name: Bulk copy data using Azure Data Factory template
+        href: data-factory-template.md 
+      - name: Run control commands using Azure Data Factory
+        href: data-factory-command-activity.md
     - name: Using SDKs
       items: 
       - name: Python
@@ -273,16 +285,6 @@
         href: follower.md    
   - name: Integrate with other tools
     items:
-    - name: Azure Data Factory
-      items:
-      - name: Integration with Data Factory 
-        href: data-factory-integration.md 
-      - name: Copy data using Azure Data Factory
-        href: data-factory-load-data.md  
-      - name: Bulk copy data using Azure Data Factory template
-        href: data-factory-template.md 
-      - name: Run control commands using Azure Data Factory
-        href: data-factory-command-activity.md
     - name: Power Automate 
       items:
       - name: Power Automate flow connector
@@ -303,6 +305,8 @@
       href: azure-notebooks.md
     - name: Azure Pipelines
       href: devops.md  
+    - name: Sync Kusto
+      href: ./kusto/tools/synckusto.md
   - name: Troubleshoot
     items:
     - name: Creating a cluster
@@ -1189,6 +1193,28 @@
         href: ./kusto/query/re2.md
       - name: SQL to Kusto cheat sheet
         href: ./kusto/query/sqlcheatsheet.md
+    - name: Query tools
+      items:
+      - name: Kusto.Explorer
+        items:
+        - name: Kusto.Explorer installation and user interface
+          href: ./kusto/tools/kusto-explorer.md
+        - name: Using Kusto.Explorer
+          href: ./kusto/tools/kusto-explorer-using.md
+        - name: Kusto.Explorer options
+          href: ./kusto/tools/kusto-explorer-options.md
+        - name: Keyboard shortcuts
+          href: ./kusto/tools/kusto-explorer-shortcuts.md
+        - name: Code Refactoring
+          href: ./kusto/tools/kusto-explorer-refactor.md
+        - name: Code Navigation
+          href: ./kusto/tools/kusto-explorer-codenav.md
+        - name: Code Analyzer
+          href: ./kusto/tools/kusto-explorer-code-analyzer.md
+        - name: Troubleshooting Kusto.Explorer
+          href: ./kusto/tools/kusto-explorer-troubleshooting.md
+      - name: Kusto.Cli
+        href: ./kusto/tools/kusto-cli.md
   - name: Concepts
     href: ./kusto/concepts/index.md
     items:
@@ -1612,79 +1638,6 @@
         href: ./kusto/api/monaco/monaco-kusto.md
       - name: Embed web UX in an iFrame
         href: ./kusto/api/monaco/host-web-ux-in-iframe.md
-  - name: Tools
-    href: ./kusto/tools/index.md
-    items:
-    - name: Tools overview
-      href: ./kusto/tools/index.md
-    - name: Ad-hoc query
-      items:
-      - name: Kusto.Explorer
-        items:
-        - name: Kusto.Explorer installation and user interface
-          href: ./kusto/tools/kusto-explorer.md
-        - name: Using Kusto.Explorer
-          href: ./kusto/tools/kusto-explorer-using.md
-        - name: Kusto.Explorer options
-          href: ./kusto/tools/kusto-explorer-options.md
-        - name: Keyboard shortcuts
-          href: ./kusto/tools/kusto-explorer-shortcuts.md
-        - name: Code Refactoring
-          href: ./kusto/tools/kusto-explorer-refactor.md
-        - name: Code Navigation
-          href: ./kusto/tools/kusto-explorer-codenav.md
-        - name: Code Analyzer
-          href: ./kusto/tools/kusto-explorer-code-analyzer.md
-        - name: Troubleshooting Kusto.Explorer
-          href: ./kusto/tools/kusto-explorer-troubleshooting.md
-      - name: Web UI
-        href: ./web-query-data.md
-      - name: Kusto.Cli
-        href: ./kusto/tools/kusto-cli.md
-    - name: Visualizations, dashboards, and reporting
-      items:
-      - name: Azure Notebooks
-        href: ./azure-notebooks.md
-      - name: Excel
-        items:
-        - name: Excel blank query
-          href: ./excel-blank-query.md
-        - name: Excel connector
-          href: ./excel-connector.md
-      - name: Grafana
-        href: ./grafana.md
-      - name: Power BI
-        items:
-        - name: Power BI best practices
-          href: ./power-bi-best-practices.md
-        - name: Power BI Connector
-          href: ./power-bi-connector.md
-        - name: Power BI imported query
-          href: ./power-bi-imported-query.md
-        - name: Power BI SQL query
-          href: ./power-bi-sql-query.md
-    - name: Orchestration
-      items:
-      - name: Microsoft Flow (Preview)
-        items:
-        - name: Microsoft Flow connector
-          href: ./flow.md
-        - name: Microsoft Flow connector usage examples
-          href: ./flow-usage.md
-      - name: Microsoft Logic Apps (Preview)
-        href: ./kusto/tools/logicapps.md
-    - name: Data ingestion
-      items:
-      - name: LightIngest
-        href: ./lightingest.md
-      - name: Apache Spark connector
-        href: ./spark-connector.md
-    - name: Source control integration
-      items:
-      - name: Sync Kusto
-        href: ./kusto/tools/synckusto.md
-      - name: Azure Pipelines/DevOps
-        href: ./devops.md
 - name: Resources
   items:
   - name: Blog
