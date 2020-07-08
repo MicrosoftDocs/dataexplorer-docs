@@ -50,8 +50,8 @@
       href: security.md
     - name: Security baseline
       href: security-baseline.md
-  - name: Integrations and tools overview
-    href: ./kusto/tools/index.md
+  - name: Tools and integrations overview
+    href: tools-integrations-overview.md
 - name: How-to guides
   items:
   - name: Create cluster and database
