@@ -113,7 +113,7 @@
       - name: Azure Resource Manager template
         href: data-connection-iot-hub-resource-manager.md
       - name: Azure Data Factory
-      items:
+        items:
       - name: Integration with Data Factory 
         href: data-factory-integration.md 
       - name: Copy data using Azure Data Factory
