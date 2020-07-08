@@ -63,7 +63,7 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 
 ### Network Security Groups configuration
 
-[Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. Azure Data Explorer can be accessed using two endpoints: HTTPs (443) and TDS (1433). The following NSG rules must be configured to allow access to these endpoints for management, monitoring, and proper operation of your cluster. All rules beyond those are up to your security guidelines.
+[Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. Azure Data Explorer can be accessed using two endpoints: HTTPs (443) and TDS (1433). The following NSG rules must be configured to allow access to these endpoints for management, monitoring, and proper operation of your cluster. Additional rules depend on your security guidelines.
 
 #### Inbound NSG configuration
 
