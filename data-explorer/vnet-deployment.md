@@ -224,15 +224,15 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 | West US | 40.78.70.148 |
 | West US 2 | 52.151.20.103 |
 
-## Disable access to ADX from the Public IP
+## Disable access to Azure Data Explorer from the public IP
 
-If you intent to completely disable the access to ADX via the Public IP address you have to create another inbound rule in the NSG. This rule has to have a higher [priority](/azure/virtual-network/security-overview#security-rules) number than the ones from above. 
+If you want to completely disable access to Azure Data Explorer via the public IP address, create another inbound rule in the NSG. This rule has to have a higher [priority](/azure/virtual-network/security-overview#security-rules) number. 
 
 | **Use**   | **Source** | **Source service tag** | **Source port ranges**  | **Destination** | **Destination port ranges** | **Protocol ** | **Action** | **Priority ** |
 | ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
-| Disable access from the internet | Service Tag | Internet | *  | VirtualNetwork | * | Any | Deny | higher number than the rules from above |
+| Disable access from the internet | Service Tag | Internet | *  | VirtualNetwork | * | Any | Deny | higher number than the rules above |
 
-Having this rule in place will allow you to connect to the ADX cluster only via the following DNS records (mapped to the private IP for each service):
+This rule will allow you to connect to the Azure Data Explorer cluster only via the following DNS records (mapped to the private IP for each service):
 * `private-[clustername].[geo-region].kusto.windows.net` (engine)
 * `private-ingest-[clustername].[geo-region].kusto.windows.net` (data management)
 
