@@ -29,7 +29,7 @@ The following kinds of partition keys are supported.
 
 ### Hash partition key
 
-Applying a hash partition key on a `string`-type column in a table is appropriate when the majority of queries use equality filters (`==`, `in()`) or when they aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher), such as an `application_ID`, a `tenant_ID`, or a `user_ID`.
+> [!NOTE] Applying a hash partition key on a `string`-type column in a table is appropriate **only** when the majority of queries use equality filters (`==`, `in()`) or when they aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher), such as an `application_ID`, a `tenant_ID`, or a `user_ID`.
 
 * A hash-modulo function is used to partition the data.
 * All homogeneous (partitioned) extents that belong to the same partition are assigned to the same data node.
@@ -73,7 +73,9 @@ It uses the `XxHash64` hash function, with a `MaxPartitionCount` of `256`, and t
 
 ### Uniform range datetime partition key
 
-Applying a uniform range datetime partition key on a `datetime`-typed column in a table is appropriate when data ingested into the table is unlikely to be ordered according to this column. It can be helpful to reshuffle the data between extents so that each extent ends up including records from a limited time range. Reshuffling results in the filters on the `datetime` column being more efficient at query time.
+> ![NOTE] Applying a uniform range datetime partition key on a `datetime`-typed column in a table is appropriate **only** when data ingested into the table is unlikely to be ordered according to this column.
+
+In such cases, it can be helpful to reshuffle the data between extents so that each extent ends up including records from a limited time range. This will result with filters on that `datetime` column being more effective at query time.
 
 * The partition function used is [bin_at()](../query/binatfunction.md) and isn't customizable.
 
