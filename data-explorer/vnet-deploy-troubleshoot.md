@@ -81,6 +81,10 @@ Make sure cluster's subnet has NSG, UDR, and firewall rules are properly configu
 
 If you're experiencing cluster creation or operation issues and you suspect it's related to virtual network setup, follow these steps to troubleshoot the issue.
 
+### Check the "DNS servers" configuration
+
+Custom DNS server are not supported. Please make sure that you are using the Default (Azure provided) option in the "DNS servers" configuration section of your Virtual Network.
+
 ### Diagnose the virtual network with the REST API
 
 The [ARMClient](https://chocolatey.org/packages/ARMClient) is used to call the REST API using PowerShell. 
