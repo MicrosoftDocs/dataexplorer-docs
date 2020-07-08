@@ -28,9 +28,11 @@ These libraries enable you to ingest (load) data into a cluster and query data f
 Install-Package Microsoft.Azure.Kusto.Ingest
 ```
 
-## Authentication
+## Add authentication and construct connection string
 
-To authenticate an application, Azure Data Explorer uses your AAD tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
+### Authentication
+
+To authenticate an application, Azure Data Explorer SDK uses your AAD tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
@@ -44,30 +46,22 @@ For example, if your domain is *contoso.com*, the URL is: [https://login.windows
 
 The tenant ID in this case is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`.
 
-This example uses an AAD user and password for authentication to access the cluster. You can also use AAD application certificate and AAD application key. Set the your values for `tenantId`, `user`, and `password` before running this code.
+This example uses an interactive AAD user authentication to access the cluster. You can also use AAD application authentication with certificate or application secret. Make sure to set the correct values for `tenantId` and `clusterUri` before running this code. 
+
+Azure Data Explorer SDK provides a convenient way to set up the authentication method as part of the connection string. For complete documentation on Azure Data Explorer connection strings, see [connection strings](kusto/api/connection-strings/kusto.md).
+
+> [!NOTE]
+> The current version of the SDK doesn't support interactive uer authentication on .NET Core. If required, use AAD username/password or application authentication instead.
+
+### Construct the connection string
+
+Now you can construct the Azure Data Explorer connection string. You will create the destination table and mapping in a later step.
 
 ```csharp
 var tenantId = "<TenantId>";
-var user = "<User>";
-var password = "<Password>";
-```
+var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net/";
 
-## Construct the connection string
-Now construct the connection string. You create the destination table and mapping in a later step.
-
-```csharp
-var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
-var database = "<DatabaseName>";
-
-var kustoConnectionStringBuilder =
-    new KustoConnectionStringBuilder(kustoUri)
-    {
-        FederatedSecurity = true,
-        InitialCatalog = database,
-        UserID = user,
-        Password = password,
-        Authority = tenantId
-    };
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri).WithAadUserPromptAuthentication(tenantId);
 ```
 
 ## Set source file information
@@ -79,9 +73,14 @@ var blobPath = "https://kustosamplefiles.blob.core.windows.net/samplefiles/Storm
 ```
 
 ## Create a table on your test cluster
+
 Create a table named `StormEvents` that matches the schema of the data in the `StormEvents.csv` file.
 
+> [!TIP]
+> The following code snippets create an instance of a client for almost every call. This is done to make each snippet individually runnable. In production, the client instances are reentrant, and should be kept as long as needed. A single client instance per URI is sufficient, even when working with multiple databases (database can be specified on a command level).
+
 ```csharp
+var databaseName = "<DatabaseName>";
 var table = "StormEvents";
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
 {
@@ -114,14 +113,14 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
                 Tuple.Create("StormSummary", "System.Object"),
             });
 
-    kustoClient.ExecuteControlCommand(command);
+    kustoClient.ExecuteControlCommand(databaseName, command);
 }
 ```
 
 ## Define ingestion mapping
 
 Map the incoming CSV data to the column names used when creating the table.
-Provision a [CSV column mapping object](kusto/management/create-ingestion-mapping-command.md) on that table
+Provision a [CSV column mapping object](kusto/management/create-ingestion-mapping-command.md) on that table.
 
 ```csharp
 var tableMapping = "StormEvents_CSV_Mapping";
@@ -157,25 +156,17 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
                 new ColumnMapping() { ColumnName = "StormSummary", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "21" } } }
         });
 
-    kustoClient.ExecuteControlCommand(command);
+    kustoClient.ExecuteControlCommand(databaseName, command);
 }
 ```
 
 ## Queue a message for ingestion
 
-Queue a message to pull data from blob storage and ingest that data into ADX.
+Queue a message to pull data from blob storage and ingest that data into Azure Data Explorer. A connection is established to the data ingestion endpoint of the Azure Data Explorer cluster, and another client is created to work with that endpoint. <Unclear which guidelines>: Same guidelines apply as in previous section.
 
 ```csharp
-var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/";
-var ingestConnectionStringBuilder =
-    new KustoConnectionStringBuilder(ingestUri)
-    {
-        FederatedSecurity = true,
-        InitialCatalog = database,
-        UserID = user,
-        Password = password,
-        Authority = tenantId
-    };
+var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net";
+var ingestConnectionStringBuilder = new KustoConnectionStringBuilder(ingestUri).WithAadUserPromptAuthentication(tenantId);
 
 using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConnectionStringBuilder))
 {
@@ -185,25 +176,26 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
             Format = DataSourceFormat.csv,
             IngestionMapping = new IngestionMapping()
             { 
-                IngestionMappingReference = tableMapping
+                IngestionMappingReference = tableMapping,
+                IngestionMappingKind = IngestionMappingKind.Csv
             },
             IgnoreFirstRecord = true
         };
 
-    ingestClient.IngestFromStorageAsync(blobPath ingestionProperties: properties);
+    ingestClient.IngestFromStorageAsync(blobPath, ingestionProperties: properties);
 }
 ```
 
 ## Validate data was ingested into the table
 
-Wait for five to ten minutes for the queued ingestion to schedule the ingest and load the data into ADX. Then run the following code to get the count of records in the `StormEvents` table.
+Wait for five to ten minutes for the queued ingestion to schedule the ingest and load the data into Azure Data Explorer. Then run the following code to get the count of records in the `StormEvents` table.
 
 ```csharp
 using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder))
 {
     var query = $"{table} | count";
 
-    var results = cslQueryProvider.ExecuteQuery<long>(query);
+    var results = cslQueryProvider.ExecuteQuery<long>(databaseName, query);
     Console.WriteLine(results.Single());
 }
 ```
@@ -212,14 +204,14 @@ using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoCon
 
 Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com) and connect to your cluster. Run the following command in your database to see if there were any ingestion failures in the last four hours. Replace the database name before running.
 
-```Kusto
+```kusto
 .show ingestion failures
 | where FailedOn > ago(4h) and Database == "<DatabaseName>"
 ```
 
 Run the following command to view the status of all ingestion operations in the last four hours. Replace the database name before running.
 
-```Kusto
+```kusto
 .show operations
 | where StartedOn > ago(4h) and Database == "<DatabaseName>" and Operation == "DataIngestPull"
 | summarize arg_max(LastUpdatedOn, *) by OperationId
@@ -229,7 +221,7 @@ Run the following command to view the status of all ingestion operations in the 
 
 If you plan to follow our other articles, keep the resources you created. If not, run the following command in your database to clean up the `StormEvents` table.
 
-```Kusto
+```kusto
 .drop table StormEvents
 ```
 
