@@ -33,22 +33,13 @@ Data ingestion is the process used to load data records from one or more sources
 
 * Event Hub
     * [Ingest from Event Hub](../management/data-ingestion/eventhub.md)
-    * [using the Azure portal](ingest-data-event-hub.md)
-    * [using C#](data-connection-event-hub-csharp.md)
-    * [using Python](data-connection-event-hub-python.md)
-    * [using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
+    * Ingest from Event Hub using the [Azure portal](ingest-data-event-hub.md), [C#](data-connection-event-hub-csharp.md), [Python](data-connection-event-hub-python.md) or [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 * Event Grid
     * [Ingest from Event Grid](../management/data-ingestion/eventgrid.md)
-    * [using the Azure portal](ingest-data-event-grid.md)
-    * [using C#](data-connection-event-grid-csharp.md)
-    * [using Python](data-connection-event-grid-python.md)
-    * [using Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
+    * Ingest from Event Grid using the [Azure portal](ingest-data-event-grid.md), [C#](data-connection-event-grid-csharp.md), [Python](data-connection-event-grid-python.md) or [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 * IoT Hub
-    * [Ingest from Event Grid](../management/data-ingestion/iothub.md)
-    * [using the Azure portal](ingest-data-iot-hub.md)
-    * [using C#](data-connection-iot-hub-csharp.md)
-    * [using Python](data-connection-iot-hub-python.md)
-    * [using Azure Resource Manager template](data-connection-iot-hub-resource-manager.md)
+    * [Ingest from IoT Hub](../management/data-ingestion/iothub.md)
+    * Ingest from IoT Hub using the [Azure portal](ingest-data-iot-hub.md), [C#](data-connection-iot-hub-csharp.md), [Python](data-connection-iot-hub-python.md) or [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md)
 * [Logstash](ingest-data-logstash.md)
 * Azure Data Factory
     * [Integrate with Azure Data Factory](data-factory-integration.md)
@@ -68,9 +59,10 @@ Data ingestion is the process used to load data records from one or more sources
 There are several tools available for running queries in Azure Data Explorer:
 
 * Kusto.Explorer
-   * [Kusto.Explorer installation and user interface](./kusto-explorer.md)
-   * [Using Kusto.Explorer](./kusto-explorer-using.md)
-   * [Kusto.Explorer troubleshooting](kusto-explorer-troubleshooting.md)
+    * [installation and user interface](./kusto-explorer.md)
+    * [Using Kusto.Explorer](./kusto-explorer-using.md)
+    * [options](./kusto/tools/kusto-explorer-options.md)
+    * Additional topics include [troubleshooting](kusto-explorer-troubleshooting.md), [keyboard shortcuts](./kusto/tools/kusto-explorer-shortcuts.md), [code refactoring](./kusto/tools/kusto-explorer-refactor.md), [code navigation](./kusto/tools/kusto-explorer-codenav.md) and [code analyze](./kusto/tools/kusto-explorer-code-analyzer.md)
 * [Web UI](../../web-query-data.md) - Web UI for querying Kusto
 * [Kusto.Cli](kusto-cli.md)
 

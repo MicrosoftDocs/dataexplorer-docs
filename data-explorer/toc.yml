@@ -112,6 +112,16 @@
         href: data-connection-iot-hub-python.md
       - name: Azure Resource Manager template
         href: data-connection-iot-hub-resource-manager.md
+      - name: Azure Data Factory
+      items:
+      - name: Integration with Data Factory 
+        href: data-factory-integration.md 
+      - name: Copy data using Azure Data Factory
+        href: data-factory-load-data.md  
+      - name: Bulk copy data using Azure Data Factory template
+        href: data-factory-template.md 
+      - name: Run control commands using Azure Data Factory
+        href: data-factory-command-activity.md
     - name: Using SDKs
       items: 
       - name: Python
@@ -275,16 +285,6 @@
         href: follower.md    
   - name: Integrate with other tools
     items:
-    - name: Azure Data Factory
-      items:
-      - name: Integration with Data Factory 
-        href: data-factory-integration.md 
-      - name: Copy data using Azure Data Factory
-        href: data-factory-load-data.md  
-      - name: Bulk copy data using Azure Data Factory template
-        href: data-factory-template.md 
-      - name: Run control commands using Azure Data Factory
-        href: data-factory-command-activity.md
     - name: Power Automate 
       items:
       - name: Power Automate flow connector
@@ -305,6 +305,8 @@
       href: azure-notebooks.md
     - name: Azure Pipelines
       href: devops.md  
+    - name: Sync Kusto
+      href: ./kusto/tools/synckusto.md
   - name: Troubleshoot
     items:
     - name: Creating a cluster
@@ -1213,8 +1215,6 @@
           href: ./kusto/tools/kusto-explorer-troubleshooting.md
       - name: Kusto.Cli
         href: ./kusto/tools/kusto-cli.md
-      - name: Sync Kusto
-        href: ./kusto/tools/synckusto.md
   - name: Concepts
     href: ./kusto/concepts/index.md
     items:
