@@ -226,7 +226,7 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 
 ## Disable access to Azure Data Explorer from the public IP
 
-If you want to completely disable access to Azure Data Explorer via the public IP address, create another inbound rule in the NSG. This rule has to have a higher [priority](/azure/virtual-network/security-overview#security-rules) number. 
+If you want to completely disable access to Azure Data Explorer via the public IP address, create another inbound rule in the NSG. This rule has to have a lower [priority](/azure/virtual-network/security-overview#security-rules) (a higher number). 
 
 | **Use**   | **Source** | **Source service tag** | **Source port ranges**  | **Destination** | **Destination port ranges** | **Protocol ** | **Action** | **Priority ** |
 | ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
