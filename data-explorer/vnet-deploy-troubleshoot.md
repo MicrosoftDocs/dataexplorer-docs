@@ -83,7 +83,7 @@ If you're experiencing cluster creation or operation issues and you suspect it's
 
 ### Check the "DNS servers" configuration
 
-Custom DNS server are not supported. Please make sure that you are using the Default (Azure provided) option in the "DNS servers" configuration section of your Virtual Network.
+Custom DNS server aren't supported. Use the default option in the **DNS servers** configuration section of your Virtual Network.
 
 ### Diagnose the virtual network with the REST API
 
