@@ -36,7 +36,7 @@ Allows caching a subquery result during the time of query execution in a way tha
   If a query uses `materialize()` and the cache can't hold any more data,
   the query will abort with an error.
 
-**Examples**
+## Examples
 
 The following example shows how `materialize()` can be used to improve performance of the query.
 The expression `_detailed_data` is defined using `materialize()` function and therefore it's calculated only once.
@@ -103,6 +103,8 @@ Result set 3:
 |Sum|
 |---|
 |15002960543563|
+
+## Examples of using [best practices](best-practices.md)
 
 Try to push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, filters, or project only required columns.
 
