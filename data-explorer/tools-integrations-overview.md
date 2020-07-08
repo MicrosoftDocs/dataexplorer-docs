@@ -29,7 +29,7 @@ Data ingestion is the process used to load data records from one or more sources
     * [Ingest data from a container to a new table](one-click-ingestion-new-table.md)
     * [Ingest data from a local file to an existing table](one-click-ingestion-existing-table.md)
 
-### Azure Data Explorer ingestion integrations
+### Ingestion integrations
 
 * Event Hub
     * [Ingest from Event Hub]([Ingest from Event Hub](kusto/management/data-ingestion/eventhub.md)
@@ -56,7 +56,7 @@ Data ingestion is the process used to load data records from one or more sources
 
 ### Azure Data Explorer query tools
 
-There are several tools available for running queries in Azure Data Explorer:
+There are several tools available for running queries in Azure Data Explorer.
 
 * Kusto.Explorer
     * [installation and user interface](kusto/tools/kusto-explorer.md)
@@ -66,7 +66,7 @@ There are several tools available for running queries in Azure Data Explorer:
 * [Web UI](web-query-data.md)
 * [Kusto.Cli](kusto/tools/kusto-cli.md)
 
-### Azure Data Explorer query integrations
+### Query integrations
 
 * [Azure Monitor](query-monitor-data.md)
 * [Azure Data Lake](data-lake-query-data.md)
