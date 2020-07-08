@@ -1,6 +1,16 @@
 {
   "redirections": [
-      {
+    {  
+          "source_path": "data-explorer/kusto/index.md",
+          "redirect_url": "/azure/data-explorer",
+          "redirect_document_id": false
+      },  
+    {  
+        "source_path": "data-explorer/kusto/tools/index.md",
+        "redirect_url": "/azure/data-explorer/tools-integrations-overview",
+        "redirect_document_id": true
+      },  
+    {
           "source_path": "data-explorer/kusto/management/drop-database.md",
           "redirect_url": "databases",
           "redirect_document_id": false
@@ -21,14 +31,14 @@
           "redirect_document_id": false
       },
       {  
-        "source_path": "data-explorer/kusto/management/extents-commands.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/extents-overview",
-        "redirect_document_id": false
+          "source_path": "data-explorer/kusto/management/extents-commands.md",
+          "redirect_url": "/azure/data-explorer/kusto/management/extents-overview",
+          "redirect_document_id": false
       },
       {  
-        "source_path": "data-explorer/kusto/management/schema.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/tables",
-        "redirect_document_id": false
+          "source_path": "data-explorer/kusto/management/schema.md",
+          "redirect_url": "/azure/data-explorer/kusto/management/tables",
+          "redirect_document_id": false
       },
       {  
           "source_path": "data-explorer/kusto/management/access-control/how-to-provision-aad-app.md",
