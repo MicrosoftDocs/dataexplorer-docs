@@ -62,7 +62,7 @@ There are several tools available for running queries in Azure Data Explorer:
     * [installation and user interface](kusto/tools/kusto-explorer.md)
     * [Using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
     * [options](kusto/tools/kusto-explorer-options.md)
-    * Additional topics include [troubleshooting](kusto/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code refactoring](kusto/tools/kusto-explorer-refactor.md), [code navigation](kusto/tools/kusto-explorer-codenav.md), and [code analyze](kusto/tools/kusto-explorer-code-analyzer.md)
+    * Additional topics include [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code refactoring](kusto/tools/kusto-explorer-refactor.md), [code navigation](kusto/tools/kusto-explorer-codenav.md), and [code analyze](kusto/tools/kusto-explorer-code-analyzer.md)
 * [Web UI](web-query-data.md)
 * [Kusto.Cli](kusto/tools/kusto-cli.md)
 
