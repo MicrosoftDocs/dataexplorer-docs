@@ -224,7 +224,7 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 | West US | 40.78.70.148 |
 | West US 2 | 52.151.20.103 |
 
-## Disable access to ADX from via the Public IP
+## Disable access to ADX from the Public IP
 
 If you intent to completely disable the access to ADX via the Public IP address you have to create another inbound rule in the NSG. This rule has to have a higher [priority](/azure/virtual-network/security-overview#security-rules) number than the ones from above. 
 
