@@ -16,7 +16,7 @@ The partitioning policy defines if and how [Extents (data shards)](../management
 The main purpose of the policy is to improve performance of queries that are known to narrow the data set of values in the partitioned columns, or aggregate/join on a high cardinality string column. The policy may also result in better compression of the data.
 
 > [!CAUTION]
-> There are no hard-coded limits set on the number of tables that can have the policy defined on them. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. It may result in more clusters resources being used. For more information, see [Monitoring](#monitoring) and [Capacity](#capacity).
+> There are no hard-coded limits set on the number of tables that can have the policy defined on them. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. It may result in more cluster resources being used. For more information, see [Monitoring](#monitoring) and [Capacity](#capacity).
 
 ## Partition keys
 
