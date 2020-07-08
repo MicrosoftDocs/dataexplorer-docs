@@ -66,7 +66,7 @@ There are two supported streaming ingestion types:
 
 ## Limitations
 
-* [Database cursors](kusto/management/databasecursor.md) aren't supported for database if the database itself or any of its tables have [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) defined and enabled.
+* [Database cursors](kusto/management/databasecursor.md) aren't supported for database if the database itself or any of its tables have [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) defined and enabled. (therefore no support for continuous export, update policy is limited to a query of the source table only)
 * [Data mapping](kusto/management/mappings.md) must be [pre-created](kusto/management/create-ingestion-mapping-command.md) for use in streaming ingestion. Individual streaming ingestion requests don't accommodate inline data mappings.
 * Streaming ingestion performance and capacity scales with increased VM and cluster sizes. The number of concurrent ingestion requests is limited to six per core. For example, for 16 core SKUs, such as D14 and L16, the maximal supported load is 96 concurrent ingestion requests. For two core SKUs, such as D11, the maximal supported load is 12 concurrent ingestion requests.
 * The data size limit for streaming ingestion request is 4 MB.
