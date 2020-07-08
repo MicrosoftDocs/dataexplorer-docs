@@ -232,6 +232,10 @@ If you intent to completely disable the access to ADX via the Public IP address 
 | ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
 | Disable access from the internet | Service Tag | Internet | *  | VirtualNetwork | * | Any | Deny | higher number than the rules from above |
 
+Having this rule in place will allow you to connect to the ADX cluster only via the following DNS records (mapped to the private IP for each service):
+* `private-[clustername].[geo-region].kusto.windows.net` (engine)
+* `private-ingest-[clustername].[geo-region].kusto.windows.net` (data management)
+
 ## ExpressRoute setup
 
 Use ExpressRoute to connect on premises network to the Azure Virtual Network. A common setup is to advertise the default route (0.0.0.0/0) through the Border Gateway Protocol (BGP) session. This forces traffic coming out of the Virtual Network to be forwarded to the customer's premise network that may drop the traffic, causing outbound flows to break. To overcome this default, [User Defined Route (UDR)](/azure/virtual-network/virtual-networks-udr-overview#user-defined) (0.0.0.0/0) can be configured and next hop will be *Internet*. Since the UDR takes precedence over BGP, the traffic will be destined to the Internet.
