@@ -67,7 +67,7 @@ _detailed_data
 
 
 The following example generates a set of random numbers and calculates: 
-* how many distinct values in the set (Dcount)
+* how many distinct values in the set (`Dcount`)
 * the top three values in the set 
 * the sum of all these values in the set 
  
