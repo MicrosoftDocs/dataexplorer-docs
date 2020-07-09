@@ -1,9 +1,9 @@
 {
   "redirections": [
     {  
-          "source_path": "data-explorer/kusto/index.md",
-          "redirect_url": "/azure/data-explorer",
-          "redirect_document_id": false
+        "source_path": "data-explorer/kusto/index.md",
+        "redirect_url": "/azure/data-explorer",
+        "redirect_document_id": false
       },  
     {  
         "source_path": "data-explorer/kusto/tools/index.md",
@@ -11,40 +11,50 @@
         "redirect_document_id": true
       },  
     {
-          "source_path": "data-explorer/kusto/management/drop-database.md",
-          "redirect_url": "databases",
-          "redirect_document_id": false
+        "source_path": "data-explorer/kusto/management/drop-database.md",
+        "redirect_url": "databases",
+        "redirect_document_id": false
       },
       {
-          "source_path": "data-explorer/kusto/tools/flow.md",
-          "redirect_url": "/azure/data-explorer/flow",
-          "redirect_document_id": false
+        "source_path": "data-explorer/kusto/tools/flow.md",
+        "redirect_url": "/azure/data-explorer/flow",
+        "redirect_document_id": false
       },
       {
-          "source_path": "data-explorer/kusto/tools/azure-data-factory.md",
-          "redirect_url": "/azure/data-explorer/data-factory-integration",
-          "redirect_document_id": false 
+        "source_path": "data-explorer/kusto/tools/azure-data-factory.md",
+        "redirect_url": "/azure/data-explorer/data-factory-integration",
+        "redirect_document_id": false 
       },  
       {  
-          "source_path": "data-explorer/kusto/management/data-ingestion/index.md",
-          "redirect_url": "/azure/data-explorer/ingest-data-overview",
-          "redirect_document_id": false
+        "source_path": "data-explorer/kusto/management/data-ingestion/index.md",
+        "redirect_url": "/azure/data-explorer/ingest-data-overview",
+        "redirect_document_id": false
       },
       {  
-          "source_path": "data-explorer/kusto/management/extents-commands.md",
-          "redirect_url": "/azure/data-explorer/kusto/management/extents-overview",
-          "redirect_document_id": false
+        "source_path": "data-explorer/kusto/management/extents-commands.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/extents-overview",
+        "redirect_document_id": true
       },
       {  
-          "source_path": "data-explorer/kusto/management/schema.md",
-          "redirect_url": "/azure/data-explorer/kusto/management/tables",
-          "redirect_document_id": false
+        "source_path": "data-explorer/kusto/management/schema.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/tables",
+        "redirect_document_id": false
       },
       {  
-          "source_path": "data-explorer/kusto/management/access-control/how-to-provision-aad-app.md",
-          "redirect_url": "/azure/data-explorer/provision-azure-ad-app",
-          "redirect_document_id": false
-    }
+        "source_path": "data-explorer/kusto/management/access-control/how-to-provision-aad-app.md",
+        "redirect_url": "/azure/data-explorer/provision-azure-ad-app",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "data-explorer/net-standard-ingest-data.md",
+        "redirect_url": "/azure/data-explorer/net-sdk-ingest-data",
+        "redirect_document_id": true
+      },
+      {
+      "source_path": "data-explorer/kusto/api/netfx/kusto-ingest-queued-ingest-sample.md",
+      "redirect_url": "/azure/data-explorer/net-sdk-ingest-data",
+      "redirect_document_id": false
+      }
     ]
   }
   

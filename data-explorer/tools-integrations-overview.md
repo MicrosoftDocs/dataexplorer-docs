@@ -1,5 +1,5 @@
 ---
-title: Azure Data Explorer tools - Azure Data Explorer
+title: Azure Data Explorer tools and integrations overview - Azure Data Explorer
 description: This article describes tools and integrations in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/08/2020
 ---
-# Azure Data Explorer tools overview
+# Azure Data Explorer tools and integrations overview
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more. Azure Data Explorer collects, stores, and analyzes diverse data to improve products, enhance customer experiences, monitor devices, and boost operations. 
 
@@ -17,7 +17,7 @@ Azure Data Explorer offers different tools and integrations to do data ingestion
 
 This article supplies you with a list of Azure Data Explorer tools, connectors, and integrations with links to relevant documents for additional information.
 
-## Data ingestion 
+## Ingest data 
 
 Data ingestion is the process used to load data records from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for query. Azure Data Explorer provides several tools and connectors for data ingestion. 
 
