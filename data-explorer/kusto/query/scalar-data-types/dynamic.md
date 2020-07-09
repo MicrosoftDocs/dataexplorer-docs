@@ -4,10 +4,10 @@ description: This article describes The dynamic data type in Azure Data Explorer
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2020
+ms.date: 07/09/2020
 ---
 # The dynamic data type
 
@@ -65,8 +65,8 @@ print o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})
 ```
 
 For convenience, `dynamic` literals that appear in the query text itself may
-also include other Kusto literals (such as `datetime` literals, `timespan`
-literals, etc.) This extension over JSON is not available when parsing strings
+also include other Kusto literals with types: `datetime`, `timespan`, `real`, `long`, `guid`, `bool`, and `dynamic`.
+This extension over JSON is not available when parsing strings
 (such as when using the `parse_json` function or when ingesting data), but it
 enables you to do this:
 
