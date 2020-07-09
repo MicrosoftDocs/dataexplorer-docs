@@ -15,9 +15,7 @@ ms.date: 08/30/2019
 > * [Portal](ingest-data-streaming.md)
 > * [C#](streaming-ingestion-setup-csharp.md)
 
-Use streaming ingestion when you require low latency with an ingestion time of less than 10 seconds for varied volume data. It's used to optimize operational processing of many tables, in one or more databases, where the stream of data into each table is relatively small (few records per second) but overall data ingestion volume is high (thousands of records per second). 
-
-Use bulk ingestion instead of streaming ingestion when the amount of data grows to more than 4 GB per hour per table. Read [Data ingestion overview](ingest-data-overview.md) to learn more about the various methods of ingestion.
+[!INCLUDE [ingest-data-streaming-include-intro](includes/ingest-data-streaming-include-intro.md)]
 
 ## Prerequisites
 * If you don't have Visual Studio 2019 installed, you can download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Make sure that you enable **Azure development** during the Visual Studio setup.
@@ -110,12 +108,9 @@ There are two supported streaming ingestion types:
 
 ## Disable streaming ingestion on your cluster
 
-> [!WARNING]
-> Disabling streaming ingestion could take a few hours.
+[!INCLUDE [ingest-data-streaming-include-disabling](includes/ingest-data-streaming-include-disabling.md)]
 
-In order to disable streaming ingestion on your Azure Data Explorer cluster [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) must be dropped from all relevant tables and databases. The streaming ingestion policy removal triggers streaming ingestion data movement from the initial storage to the permanent storage in the column store (extents or shards). The data movement can last between a few seconds to a few hours, depending on the amount of data in the initial storage, and how the CPU and memory is used by the cluster.
-
-In order to drop streaming ingestion policy from the table execute the following code
+1. In order to drop streaming ingestion policy from the table execute the following code
 ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
     var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
@@ -131,16 +126,33 @@ In order to drop streaming ingestion policy from the table execute the following
         client.ExecuteControlCommand(tablePolicyDropCommand);
     }
 ```
+2. Disable streaming ingestion on your cluster using the following code
+```csharp
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+    var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+    var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+    var credential = new ClientCredential(clientId, clientSecret);
+    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+
+    var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+
+    var kustoManagementClient = new KustoManagementClient(credentials)
+    {
+        SubscriptionId = subscriptionId
+    };
+
+    var resourceGroupName = "testrg";
+    var clusterName = "mystreamingcluster";
+    var clusterUpdateParameters = new ClusterUpdate(enableStreamingIngest: false);
+
+    await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdateParameters);
+```
 
 ## Limitations
 
-* [Database cursors](kusto/management/databasecursor.md) aren't supported for database if the database itself or any of its tables have [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) defined and enabled.
-* [Data mapping](kusto/management/mappings.md) must be [pre-created](kusto/management/create-ingestion-mapping-command.md) for use in streaming ingestion. Individual streaming ingestion requests don't accommodate inline data mappings.
-* Streaming ingestion performance and capacity scales with increased VM and cluster sizes. The number of concurrent ingestion requests is limited to six per core. For example, for 16 core SKUs, such as D14 and L16, the maximal supported load is 96 concurrent ingestion requests. For two core SKUs, such as D11, the maximal supported load is 12 concurrent ingestion requests.
-* The data size limit for streaming ingestion request is 4 MB.
-* Schema updates, such as creation and modification of tables and ingestion mappings, may take up to five minutes for the streaming ingestion service. For more information see [Streaming ingestion and schema changes](kusto/management/data-ingestion/streaming-ingestion-schema-changes.md).
-* Enabling streaming ingestion on a cluster, even when data isn't ingested via streaming, uses part of the local SSD disk of the cluster machines for streaming ingestion data and reduces the storage available for hot cache.
-* [Extent tags](kusto/management/extents-overview.md#extent-tagging) can't be set on the streaming ingestion data.
+[!INCLUDE [ingest-data-streaming-include-limitations](includes/ingest-data-streaming-include-limitations.md)]
 
 ## Next steps
 
