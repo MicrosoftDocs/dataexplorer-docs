@@ -22,9 +22,9 @@ ms.date: 08/30/2019
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
 > [!NOTE]
-You can enable streaming ingestion while creating a new Azure Data Explorer cluster
-In the **Configurations** section select **On** to enable **Streaming ingestion**.
-![streaming ingestion enable](media/ingest-data-streaming/cluster-creation-enable-streaming.png)
+>You can enable streaming ingestion while creating a new Azure Data Explorer cluster
+>In the **Configurations** section select **On** to enable **Streaming ingestion**.
+>![streaming ingestion enable](media/ingest-data-streaming/cluster-creation-enable-streaming.png)
 
 ## Enable streaming ingestion on your cluster
 
