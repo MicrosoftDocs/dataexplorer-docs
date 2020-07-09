@@ -13,7 +13,7 @@ ms.date: 07/07/2020
 
 # Ingest data using the Azure Data Explorer .NET SDK 
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides two client libraries for .NET: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) and [a data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). 
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides two client libraries for .NET: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) and [a data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). For more information on .NET SDK, see [about .NET SDK](/azure/data-explorer/kusto/api/netfx/about-the-sdk).
 These libraries enable you to ingest (load) data into a cluster and query data from your code. In this article, you first create a table and data mapping in a test cluster. You then queue an ingestion to the cluster and validate the results.
 
 ## Prerequisites
@@ -160,9 +160,26 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 }
 ```
 
+## Define batching policy for your table
+
+Azure Data Explorer ingestion performs batching of the incoming data to optimize for data shard size. This process is controlled by the [ingestion batching policy](/kusto/management/batchingpolicy) and can be modified by a [control command](/kusto/management/batching-policy). Use this policy to reduce latency of slowly arriving data.
+
+```kusto
+using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
+{
+    var command =
+        CslCommandGenerator.GenerateTableAlterIngestionBatchingPolicyCommand(
+        databaseName,
+        table,
+        new IngestionBatchingPolicy(maximumBatchingTimeSpan: TimeSpan.FromSeconds(10.0), maximumNumberOfItems: 100, maximumRawDataSizeMB: 1024));
+
+    kustoClient.ExecuteControlCommand(command);
+}
+```
+
 ## Queue a message for ingestion
 
-Queue a message to pull data from blob storage and ingest that data into Azure Data Explorer. A connection is established to the data ingestion endpoint of the Azure Data Explorer cluster, and another client is created to work with that endpoint. <Unclear which guidelines>: Same guidelines apply as in previous section.
+Queue a message to pull data from blob storage and ingest that data into Azure Data Explorer. A connection is established to the data ingestion endpoint of the Azure Data Explorer cluster, and another client is created to work with that endpoint. Same guidelines apply as in previous section.
 
 ```csharp
 var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net";
