@@ -110,8 +110,8 @@ The Home tab shows the most recently used functions, divided into sections:
 > [!NOTE]
 > <a id="anomaly-chart">Anomaly Chart</a>: 
 >The algorithm expects timeseries data, which consists of two columns:
->1. Time in fixed interval buckets
->1. Numeric value for anomaly detection
+>* Time in fixed interval buckets
+>* Numeric value for anomaly detection
 >To produce timeseries data in Kusto.Explorer, summarize by the time field and specify the time bucket bin.
 
 ### View section
