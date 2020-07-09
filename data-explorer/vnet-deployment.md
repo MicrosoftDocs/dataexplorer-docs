@@ -63,7 +63,7 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 
 ### Network Security Groups configuration
 
-[Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. Azure Data Explorer can be accessed using two endpoints: HTTPs (443) and TDS (1433). The following NSG rules must be configured to allow access to these endpoints for management, monitoring, and proper operation of your cluster.
+[Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. Azure Data Explorer can be accessed using two endpoints: HTTPs (443) and TDS (1433). The following NSG rules must be configured to allow access to these endpoints for management, monitoring, and proper operation of your cluster. Additional rules depend on your security guidelines.
 
 #### Inbound NSG configuration
 
@@ -223,6 +223,18 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 | West India | 13.71.25.187 |
 | West US | 40.78.70.148 |
 | West US 2 | 52.151.20.103 |
+
+## Disable access to Azure Data Explorer from the public IP
+
+If you want to completely disable access to Azure Data Explorer via the public IP address, create another inbound rule in the NSG. This rule has to have a lower [priority](/azure/virtual-network/security-overview#security-rules) (a higher number). 
+
+| **Use**   | **Source** | **Source service tag** | **Source port ranges**  | **Destination** | **Destination port ranges** | **Protocol ** | **Action** | **Priority ** |
+| ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
+| Disable access from the internet | Service Tag | Internet | *  | VirtualNetwork | * | Any | Deny | higher number than the rules above |
+
+This rule will allow you to connect to the Azure Data Explorer cluster only via the following DNS records (mapped to the private IP for each service):
+* `private-[clustername].[geo-region].kusto.windows.net` (engine)
+* `private-ingest-[clustername].[geo-region].kusto.windows.net` (data management)
 
 ## ExpressRoute setup
 
