@@ -205,7 +205,7 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
 
 ## Validate data was ingested into the table
 
-Wait for five to ten minutes for the queued ingestion to schedule the ingest and load the data into Azure Data Explorer. Then run the following code to get the count of records in the `StormEvents` table.
+Wait five to ten minutes for the queued ingestion to schedule the ingestion and load the data into Azure Data Explorer. Then run the following code to get the count of records in the `StormEvents` table.
 
 ```csharp
 using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder))
