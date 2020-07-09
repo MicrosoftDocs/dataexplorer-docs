@@ -1604,8 +1604,6 @@
           href: ./kusto/api/netfx/kusto-ingest-best-practices.md
         - name: Code samples
           href: ./kusto/api/netfx/kusto-ingest-client-examples.md
-        - name: HowTo data ingestion
-          href: ./kusto/api/netfx/kusto-ingest-queued-ingest-sample.md
         - name: HowTo Data Ingestion with REST API
           href: ./kusto/api/netfx/kusto-ingest-client-rest.md
     - name: Python SDK
