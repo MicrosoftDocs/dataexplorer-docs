@@ -26,26 +26,26 @@ The first step includes checking TCP connectivity using Windows or Linux OS.
 1. Download [TCping](https://www.elifulkerson.com/projects/tcping.php) to the machine connecting to the cluster.
 1. Ping the destination from the source machine by using the following command:
 
-```cmd
-C:\> tcping -t yourcluster.kusto.windows.net 443 
-** Pinging continuously.  Press control-c to stop **
-Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
-```
+   ```cmd
+   C:\> tcping -t yourcluster.kusto.windows.net 443 
+   ** Pinging continuously.  Press control-c to stop **
+   Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
+   ```
 
 # [Linux](#tab/linux)
 
 1. Install *netcat* in the machine connecting to the cluster
 
-```bash
-$ apt-get install netcat
-```
+   ```bash
+   $ apt-get install netcat
+   ```
 
 1. Ping the destination from the source machine by using the following command:
 
-```bash
-$ netcat -z -v yourcluster.kusto.windows.net 443
-Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
-```
+   ```bash
+   $ netcat -z -v yourcluster.kusto.windows.net 443
+   Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
+   ```
 ---
 
 If the test isn't successful, proceed with the following steps. If the test is successful, the issue isn't due to a TCP connectivity issue. Go to [operational issues](#cluster-creation-and-operations-issues) to troubleshoot further.
