@@ -64,11 +64,8 @@ print o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})
 | extend a=o.a, b=o.b, c=o.c, d=o.d
 ```
 
-For convenience, `dynamic` literals that appear in the query text itself may
-also include other Kusto literals with types: `datetime`, `timespan`, `real`, `long`, `guid`, `bool`, and `dynamic`.
-This extension over JSON is not available when parsing strings
-(such as when using the `parse_json` function or when ingesting data), but it
-enables you to do this:
+For convenience, `dynamic` literals that appear in the query text itself may also include other Kusto literals with types: `datetime`, `timespan`, `real`, `long`, `guid`, `bool`, and `dynamic`.
+This extension over JSON is not available when parsing strings (such as when using the `parse_json` function or when ingesting data), but it enables you to do this:
 
 ```kusto
 print d=dynamic({"a": datetime(1970-05-11)})
@@ -189,7 +186,7 @@ arrays to hold aggregated values:
 
 ## Operators and functions over dynamic types
 
-|||
+|Operator or function|Usage with dynamic data types|
 |---|---|
 | *value* `in` *array*| True if there is an element of *array* that == *value*<br/>`where City in ('London', 'Paris', 'Rome')`
 | *value* `!in` *array*| True if there is no element of *array* that == *value*
