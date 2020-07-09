@@ -113,17 +113,17 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 1. [Run your query](#basic-queries) in Kusto.Explorer.
 1. In the Home tab, in the Share section, select **Export to Clipboard** (or press Ctrl+Shift+C).
 
-:::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard":::
+    :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard":::
 
-Kusto.Explorer pastes the following to the clipboard:
-  * Your query
-  * The query results (table or chart)
-  * The connection details for the Kusto cluster and database
-  * A link that will rerun the query automatically
+    Kusto.Explorer pastes the following to the clipboard:
+     * Your query
+     * The query results (table or chart)
+     * The connection details for the Kusto cluster and database
+     * A link that will rerun the query automatically
 
 1. Paste the contents of the clipboard into a new email message.
 
-:::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="Share results in email":::
+    :::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="Share results in email":::
 
 ### Deep-linking queries
 
@@ -164,12 +164,13 @@ https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSs
 You can use parametrized queries with deep-linking.
 
 1. Create a query to be formed as a parametrized query (for example, `KustoLogs | where Timestamp > ago({Period}) | count`) 
-1. Provide a parameter for every query parameter in the URI, such as:
+1. Provide a parameter for every query parameter in the URI, such as: 
+    
+    `https://<your_cluster>.kusto.windows.net/MyDatabase?
+web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
-<code>
-https://mycluster.kusto.windows.net/MyDatabase?
-web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h
-</code>
+    Replace &lt;your_cluster&gt; with your Azure Data Explorer cluster name.
+
 
 ### Getting shorter links
 
