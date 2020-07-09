@@ -137,6 +137,8 @@ See [storage connection strings](../api/connection-strings/storage.md) for detai
 | `namePrefix`     | `string` | If set, indicates the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
 | `fileExtension`  | `string` | If set, indicates file extensions of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
 | `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
+| `sampleUris`     | `bool`   | If set, the command result will provide several examples of external data files URI as they are expected by the external table definition. |
+| `validateNotEmpty` | `bool`   | If set, the connection strings are validated for having content in them. The command will fail in case the specified URI location doesn't exist, or there are insufficient permissions to access it. |
 
 > [!TIP]
 > To learn more about the role `namePrefix` and `fileExtension` properties play in data file filtering during query, see [file filtering logic](#file-filtering) section.
