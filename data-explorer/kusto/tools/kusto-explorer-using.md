@@ -23,11 +23,11 @@ Search++ mode enables you to search for a term using search syntax across one or
 1. In the edit box, enter your search phrase and select **Go**.
 1. A heat-map of the table/time-slot grid shows which terms appear and where they appear.
 
-:::image type="content" source="images/kusto-explorer-using/search-plus-plus.png" alt-text="Search + + Kusto Explorer":::
+    :::image type="content" source="images/kusto-explorer-using/search-plus-plus.png" alt-text="Search + + Kusto Explorer":::
 
 1. Select a cell in the grid and select **View Details** to show the relevant entries in the results pane.
 
-:::image type="content" source="images/kusto-explorer-using/search-plus-plus-results.png" alt-text="Kusto Explorer Search + + results":::
+    :::image type="content" source="images/kusto-explorer-using/search-plus-plus-results.png" alt-text="Kusto Explorer Search + + results":::
 
 ## Query mode
 
