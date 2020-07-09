@@ -108,7 +108,7 @@ The Home tab shows the most recently used functions, divided into sections:
 |Time Pivot   | Interactive navigation over the events time-line (pivoting on time axis)|
 
 > [!NOTE]
-> <a id="anomaly chart">Anomaly Chart</a>: 
+> <a id="anomaly-chart">Anomaly Chart</a>: 
 >The algorithm expects timeseries data, which consists of two columns:
 >1. Time in fixed interval buckets
 >1. Numeric value for anomaly detection
