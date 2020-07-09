@@ -33,7 +33,7 @@
       {  
         "source_path": "data-explorer/kusto/management/extents-commands.md",
         "redirect_url": "/azure/data-explorer/kusto/management/extents-overview",
-        "redirect_document_id": false
+        "redirect_document_id": true
       },
       {  
         "source_path": "data-explorer/kusto/management/schema.md",
