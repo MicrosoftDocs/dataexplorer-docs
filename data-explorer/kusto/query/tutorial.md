@@ -462,7 +462,8 @@ LightningStorms
 | distinct State
 ```
 
-> Tip: In the Kusto client, don't put blank lines between the parts of this. Make sure to execute all of it.
+> [!TIP]
+> In the Kusto Explorer client, don't put blank lines between the parts of this. Make sure to execute all of it.
 
 ## Combining data from several databases in a query
 
