@@ -115,11 +115,11 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 
 :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard":::
 
-    Kusto.Explorer pastes the following to the clipboard:
-    * Your query
-    * The query results (table or chart)
-    * The connection details for the Kusto cluster and database
-    * A link that will rerun the query automatically
+Kusto.Explorer pastes the following to the clipboard:
+  * Your query
+  * The query results (table or chart)
+  * The connection details for the Kusto cluster and database
+  * A link that will rerun the query automatically
 
 1. Paste the contents of the clipboard into a new email message.
 
@@ -166,7 +166,10 @@ You can use parametrized queries with deep-linking.
 1. Create a query to be formed as a parametrized query (for example, `KustoLogs | where Timestamp > ago({Period}) | count`) 
 1. Provide a parameter for every query parameter in the URI, such as:
 
-   `https://mycluster.kusto.windows.net/MyDatabase?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
+<code>
+https://mycluster.kusto.windows.net/MyDatabase?
+web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h
+</code>
 
 ### Getting shorter links
 
