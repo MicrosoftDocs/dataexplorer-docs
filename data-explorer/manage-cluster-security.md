@@ -28,6 +28,10 @@ Your cluster security settings allow you to enable disk encryption on your clust
 > [!NOTE]
 > Select **Off** to disable the encryption after it has been enabled.
 
+## Azure Data Explorer stores data within a region
+
+Every Azure Data Explorer cluster runs on dedicated resources in a single region. All data is stored whithin the region. 
+
 ## Next steps
 
 [Check cluster health](check-cluster-health.md)
