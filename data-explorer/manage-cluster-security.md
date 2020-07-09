@@ -30,7 +30,7 @@ Your cluster security settings allow you to enable disk encryption on your clust
 
 ## Azure Data Explorer stores data within a region
 
-Every Azure Data Explorer cluster runs on dedicated resources in a single region. All data is stored whithin the region. 
+Every Azure Data Explorer cluster runs on dedicated resources in a single region. All data is stored within the region. 
 
 ## Next steps
 
