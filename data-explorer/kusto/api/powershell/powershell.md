@@ -19,10 +19,10 @@ PowerShell's built-in integration with arbitrary (non-PowerShell) .NET libraries
 To start working with the Azure Data Explorer .NET client libraries using PowerShell.
 
 1. Download the [`Microsoft.Azure.Kusto.Tools` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
-    - If you're running with Powershell 7 (or above), download the [`Microsoft.Azure.Kusto.Tools.NETCore` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools.NETCore/).
+    * If you're using Powershell 7 (or above), download the [`Microsoft.Azure.Kusto.Tools.NETCore` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools.NETCore/).
 1. Extract the contents of the 'tools' directory in the package (use an archiving tool like `7-zip`).
 1. Call `[System.Reflection.Assembly]::LoadFrom("path")` from PowerShell, to load the required library. 
-    - The `path` parameter for the command should indicate the location of the extracted files.
+    * The `path` parameter for the command should indicate the location of the extracted files.
 1. Once all dependent .NET assemblies are loaded:
    1. Create a Kusto connection string.
    1. Instantiate a *query provider* or an *admin provider*.
