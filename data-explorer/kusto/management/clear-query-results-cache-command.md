@@ -24,7 +24,7 @@ This command returns a table with the following columns:
 |Column    |Type    |Description
 |---|---|---
 |NodeId|`string`|Identifier of the cluster node.
-|Entries|`long`|The number of entries cleared by the node.
+|EntriesDeleted|`long`|The number of entries deleted by the node.
 
 **Example**
 
