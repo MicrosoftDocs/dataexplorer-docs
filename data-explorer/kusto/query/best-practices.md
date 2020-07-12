@@ -30,7 +30,7 @@ Here are several best practices to follow to make your query run faster.
 | **Filtering on columns** |  Filter on a table column.|Don't filter on a calculated column. | |
 | | Use `T | where predicate(<expression>)` | Don't use `T | extend _value = <expression> | where predicate(_value)` ||
 | **summarize operator** |  Use the [hint.strategy=shuffle](./shufflequery.md) when the `group by keys` of the summarize operator are with high cardinality. | | High cardinality is ideally above 1 million.|
-|**[join operator](./joinoperator.md)** | Select the table with the fewer rows to be the first one (left-most). ||
+|**[join operator](./joinoperator.md)** | Select the table with the fewer rows to be the first one (left-most in query). ||
 | **Join across clusters** |Across clusters, run the query on the "right" side of the join, where most of the data is located. ||
 |**Join when left side is small and right side is large** | Use [hint.strategy=broadcast](./broadcastjoin.md) || Small refers to up to 100,000 records. |
 |**Join when both sides are too large** | Use [hint.strategy=shuffle](./shufflequery.md) || Use when the join key has high cardinality.|
