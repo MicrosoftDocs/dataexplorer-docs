@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/03/2020
 ---
-# Query best practices 
+# Query best practices
 
 Here are several best practices to follow to make your query run faster.
 
@@ -31,9 +31,9 @@ Here are several best practices to follow to make your query run faster.
 | | Use `T | where predicate(<expression>)` | Don't use `T | extend _value = <expression> | where predicate(_value)` ||
 | **summarize operator** |  Use the [hint.strategy=shuffle](./shufflequery.md) when the `group by keys` of the summarize operator are with high cardinality. | | High cardinality is ideally above 1 million.|
 |**[join operator](./joinoperator.md)** | Select the table with the fewer rows to be the first one (left-most in query). ||
-| **Join across clusters** |Across clusters, run the query on the "right" side of the join, where most of the data is located. ||
-|**Join when left side is small and right side is large** | Use [hint.strategy=broadcast](./broadcastjoin.md) || Small refers to up to 100,000 records. |
-|**Join when both sides are too large** | Use [hint.strategy=shuffle](./shufflequery.md) || Use when the join key has high cardinality.|
+| Join across clusters |Across clusters, run the query on the "right" side of the join, where most of the data is located. ||
+|Join when left side is small and right side is large | Use [hint.strategy=broadcast](./broadcastjoin.md) || Small refers to up to 100,000 records. |
+|Join when both sides are too large | Use [hint.strategy=shuffle](./shufflequery.md) || Use when the join key has high cardinality.|
 |**Extract values on column with strings sharing the same format or pattern**|  Use the [parse operator](./parseoperator.md) | Don't use several `extract()` statements.  | For example, values like `"Time = <time>, ResourceId = <resourceId>, Duration = <duration>, ...."`
 |**[extract() function](./extractfunction.md)**| Use when parsed strings don't all follow the same format or pattern.| |Extract the required values by using a REGEX.|
 | **[materialize() function](./materializefunction.md)** | Push all possible operators that will reduce the materialized data set and still keep the semantics of the query. | |For example, filters, or project only required columns.
