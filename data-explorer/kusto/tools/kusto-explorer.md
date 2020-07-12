@@ -212,7 +212,7 @@ The Home tab shows the most recently used functions, divided into sections:
 > [!NOTE]
 > <a id="dvs">Data View Settings:</a> 
 >
->Kusto.Explorer keeps track of the settings used per unique set of columns. When columns are reordered or removed, the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**. 
+> Kusto.Explorer keeps track of the settings used per unique set of columns. When columns are reordered or removed, the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**. 
 
 ## Tools tab
 
