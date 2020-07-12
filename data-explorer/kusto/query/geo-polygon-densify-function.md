@@ -2,9 +2,9 @@
 title: geo_polygon_densify() - Azure Data Explorer
 description: This article describes geo_polygon_densify() in Azure Data Explorer.
 services: data-explorer
-author: michaelbrichko
-ms.author: michaelbrichko
-ms.reviewer: michaelbrichko
+author: orspod
+ms.author: orspodek
+ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/01/2020
@@ -28,7 +28,7 @@ Densified polygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) a
 
 > [!NOTE]
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
-> * Polygon must be correctly defined but the function does not check polygon validity.
+> * The polygon must be correctly defined, but the function does not check polygon validity.
 
 **Polygon definition**
 
@@ -45,18 +45,18 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 
 **Constraints**
 
-* Maximum points in the densified polygon is limited to 10485760.
+* The maximum number of points in the densified polygon is limited to 10485760.
 * Storing polygons in [dynamic](./scalar-data-types/dynamic.md) format has size limits.
-* Densifying valid polygon may invalidate it. The algorithm adds points in a non-uniform manner and therefore this may cause edges to intertwine one with another.
+* Densifying a valid polygon may invalidate it. The algorithm adds points in a non-uniform manner and as such may cause edges to intertwine with each other.
 
 **Motivation**
 
 * [GeoJSON format](https://tools.ietf.org/html/rfc7946) defines an edge between two points as a straight cartesian line.
-* The decision regarding whether to use geodesic or planar edges might depend on the dataset and is especially relevant in long edges.
+* The decision to use geodesic or planar edges might depend on the dataset and is especially relevant in long edges.
 
 **Examples**
 
-The following example densifies Manhattan Central Park polygon. The edges are short and the distance between planar edges and their geodesic counterparts is less than specified by tolerance, therefore the result remains unchanged.
+The following example densifies Manhattan Central Park polygon. The edges are short and the distance between planar edges and their geodesic counterparts is less than the distance specified by tolerance. As such, the result remains unchanged.
 
 ```kusto
 print densified_polygon = tostring(geo_polygon_densify(dynamic({"type":"Polygon","coordinates":[[[-73.958244,40.800719],[-73.949146,40.79695],[-73.973093,40.764226],[-73.982062,40.768159],[-73.958244,40.800719]]]})))
@@ -66,8 +66,7 @@ print densified_polygon = tostring(geo_polygon_densify(dynamic({"type":"Polygon"
 |---|
 |{"type":"Polygon","coordinates":[[[-73.958244,40.800719],[-73.949146,40.79695],[-73.973093,40.764226],[-73.982062,40.768159],[-73.958244,40.800719]]]}|
 
-
-The following example densifies two edges of the polygon. Densified edges length is ~110km
+The following example densifies two edges of the polygon. Densified edges length is ~110 km
 
 ```kusto
 print densified_polygon = tostring(geo_polygon_densify(dynamic({"type":"Polygon","coordinates":[[[10,10],[11,10],[11,11],[10,11],[10,10]]]})))

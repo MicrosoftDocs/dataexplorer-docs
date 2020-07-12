@@ -2,9 +2,9 @@
 title: geo_line_densify() - Azure Data Explorer
 description: This article describes geo_line_densify() in Azure Data Explorer.
 services: data-explorer
-author: michaelbrichko
-ms.author: michaelbrichko
-ms.reviewer: michaelbrichko
+author: orspod
+ms.author: orspodek
+ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/01/2020
@@ -34,22 +34,22 @@ Densified line in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and 
 dynamic({"type": "LineString","coordinates": [ [lng_1,lat_1], [lng_2,lat_2] ,..., [lng_N,lat_N] ]})
 
 * LineString coordinates array must contain at least two entries.
-* Coordinates [longitude,latitude] must be valid where longitude is a real number in the range [-180, +180] and latitude is a real number in the range [-90, +90].
-* Edge length must be less than 180 degrees. The shortest edge between the two vertices will be chosen.
+* The coordinates [longitude,latitude] must be valid. The longitude must be a real number in the range [-180, +180] and the latitude must be a real number in the range [-90, +90].
+* The edge length must be less than 180 degrees. The shortest edge between the two vertices will be chosen.
 
 **Constraints**
 
-* Maximum points in the densified line is limited to 10485760.
+* The maximum number of points in the densified line is limited to 10485760.
 * Storing lines in [dynamic](./scalar-data-types/dynamic.md) format has size limits.
 
 **Motivation**
 
 * [GeoJSON format](https://tools.ietf.org/html/rfc7946) defines an edge between two points as a straight cartesian line.
-* The decision regarding whether to use geodesic or planar edges might depend on the dataset and is especially relevant in long edges.
+* The decision to use geodesic or planar edges might depend on the dataset and is especially relevant in long edges.
 
 **Examples**
 
-The following example densifies a road in Manhattan island. The edge is short and the distance between planar edge and its geodesic counterpart is less than specified by tolerance, therefore the result remains unchanged.
+The following example densifies a road in Manhattan island. The edge is short and the distance between the planar edge and its geodesic counterpart is less than the distance specified by tolerance. As such, the result remains unchanged.
 
 ```kusto
 print densified_line = tostring(geo_line_densify(dynamic({"type":"LineString","coordinates":[[-73.949247, 40.796860],[-73.973017, 40.764323]]})))

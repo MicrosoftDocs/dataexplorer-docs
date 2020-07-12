@@ -11,7 +11,7 @@ ms.date: 05/10/2020
 ---
 # geo_polygon_to_s2cells()
 
-Calculates S2 cell tokens that cover a polygon or multipolygon on Earth. Useful geospatial join tool.
+Calculates S2 cell tokens that cover a polygon or multipolygon on Earth. This function is a useful geospatial join tool.
 
 Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
 
@@ -86,7 +86,7 @@ This match can be achieved by the following process:
    - S2 cell level 5 might prove to be good for covering countries.
    - S2 cell level 16 can cover dense and relatively small Manhattan (New York) neighborhoods.
    - S2 cell level 11 can be used for covering suburbs of Australia.
-* Query run time and memory consumption might differ due to different S2 cell level values.
+* Query run time and memory consumption might differ because of different S2 cell level values.
 
 > [!WARNING]
 > Covering a large-area polygon with small-area cells can lead to a huge amount of covering cells. As a result, the query might return null.
