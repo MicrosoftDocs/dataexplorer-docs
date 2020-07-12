@@ -65,7 +65,7 @@ print o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})
 ```
 
 For convenience, `dynamic` literals that appear in the query text itself may also include other Kusto literals with types: `datetime`, `timespan`, `real`, `long`, `guid`, `bool`, and `dynamic`.
-This extension over JSON is not available when parsing strings (such as when using the `parse_json` function or when ingesting data), but it enables you to do this:
+This extension over JSON isn't available when parsing strings (such as when using the `parse_json` function or when ingesting data), but it enables you to do the following:
 
 ```kusto
 print d=dynamic({"a": datetime(1970-05-11)})
