@@ -17,17 +17,10 @@ zone_pivot_groups: kql-flavors
 
 Returns the approximate time at which the current record was ingested.
 
-In order to retrieve a meaningful non-null value, this function must
-be used in the context of a table of ingested data for which the
-[IngestionTime policy](../management/ingestiontimepolicy.md) has been enabled
-when data got ingested. Otherwise, it produces null values.
+This function must be used in the context of a table of ingested data for which the [IngestionTime policy](../management/ingestiontimepolicy.md) was enabled when the data was ingested. Otherwise, this function produces null values.
 
 > [!NOTE]
-> The value returned by this function is only approximate, as the ingestion
-> process may take several minutes to complete and multiple ingestion
-> activities may take place concurrently. This function therefore should not
-> be used for processing all records of a table with exactly-once guarantees.
-> For that, please use [database cursors](../management/databasecursor.md).
+> The value returned by this function is only approximate, as the ingestion process may take several minutes to complete and multiple ingestion activities may take place concurrently. To process all records of a table with exactly-once guarantees, use [database cursors](../management/databasecursor.md).
 
 **Syntax**
 
