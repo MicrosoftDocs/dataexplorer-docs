@@ -118,8 +118,8 @@ Try to push all possible operators that will reduce the materialized data set an
     | summarize dcount(Resource2))
 ```
 
-The filter on Text is mutual and can be pushed to the materialize expression.
-    The query only needs columns `Timestamp`, `Text`, `Resource1`, and `Resource2`. Project these columns inside the materialized expression.
+The filter on `Text` is mutual and can be pushed to the materialize expression.
+The query only needs columns `Timestamp`, `Text`, `Resource1`, and `Resource2`. Project these columns inside the materialized expression.
     
 ```kusto
     let materializedData = materialize(Table
@@ -143,7 +143,7 @@ If the filters aren't identical like in this query:
     | summarize dcount(Resource2))
  ```
 
-Consider, when the combined filter reduces the materialized result drastically, combining both filters on the materialized result by a logical `or` expression like in the query below. However, keep the filters in each union leg to preserve the semantics of the query:
+When the combined filter reduces the materialized result drastically, combine both filters on the materialized result by a logical `or` expression like in the query below. However, keep the filters in each union leg to preserve the semantics of the query.
      
 ```kusto
     let materializedData = materialize(Table
