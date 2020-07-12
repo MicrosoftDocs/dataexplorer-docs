@@ -143,7 +143,7 @@ If the filters aren't identical like in this query:
     | summarize dcount(Resource2))
  ```
 
-Consider, when the combined filter reduces the materialized result drastically, combining both filters on the materialized result by a logical `or` expression like in the query below. However, keep the filters in each union leg to preserve the semantics of the query:
+When the combined filter reduces the materialized result drastically, combine both filters on the materialized result by a logical `or` expression like in the query below. However, keep the filters in each union leg to preserve the semantics of the query.
      
 ```kusto
     let materializedData = materialize(Table
