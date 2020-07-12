@@ -118,8 +118,8 @@ Try to push all possible operators that will reduce the materialized data set an
     | summarize dcount(Resource2))
 ```
 
-The filter on Text is mutual and can be pushed to the materialize expression.
-    The query only needs columns `Timestamp`, `Text`, `Resource1`, and `Resource2`. Project these columns inside the materialized expression.
+The filter on `Text` is mutual and can be pushed to the materialize expression.
+The query only needs columns `Timestamp`, `Text`, `Resource1`, and `Resource2`. Project these columns inside the materialized expression.
     
 ```kusto
     let materializedData = materialize(Table
