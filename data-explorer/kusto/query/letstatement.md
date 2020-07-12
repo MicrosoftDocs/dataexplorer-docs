@@ -49,20 +49,27 @@ Expressions bound by let statements can be:
 
 `ScalarArguments` - [*ArgName* `:` *ArgType*] [`,` ... ]
 
-* `view`: May appear only in a parameterless lambda, that has no arguments. It indicates that the bound name will be included when "all tables" are
-  queries. For example, when using `union *`.
-* *TabularArguments*: The list of the formal tabular expression arguments.
-  Each argument has:
-  * *TabularArgName* - The name of the formal tabular argument. The name may appear in the *FunctionBody* and is bound to a particular value when the lambda is invoked. 
-  * Table schema definition - A list of attributes with their types (AtrName : AtrType).
-  The tabular expression that is used in the lambda invocation must have all these attributes with the matching types, but isn't limited to them. 
-  '(*)' can be used as the tabular expression. 
-  Any tabular expression can be used in the lambda invocation and none of its columns can be accessed in the lambda expression.
-  All tabular arguments should appear before the scalar arguments.
-* *ScalarArguments*: The list of the formal scalar arguments. 
-  Each argument has:
-  * *ArgName* - The name of the formal scalar argument. The name may appear in the *FunctionBody* and is bound to a particular value when the lambda is invoked.  
-  * *ArgType* - the type of the formal scalar argument. Currently only the following types are supported as a lambda argument type: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).
+[!div class="mx-tableFixed"]
+|Field  |Definition  |Example  |
+|---------|---------|---------|
+| **view** | May appear only in a parameterless lambda, that has no arguments. It indicates that the bound name will be included when "all tables" are queries. | For example, when using `union *`.|
+| ***TabularArguments*** | The list of the formal tabular expression arguments. 
+| Each tabular argument has:||
+|<ul><li> *TabularArgName*</li></ul> | The name of the formal tabular argument. The name may appear in the *FunctionBody* and is bound to a particular value when the lambda is invoked. ||
+|<ul><li>Table schema definition </li></ul> | A list of attributes with their types| AtrName : AtrType|
+| ***ScalarArguments*** | The list of the formal scalar arguments. 
+|Each scalar argument has:||
+|<ul><li>*ArgName*</li></ul> | The name of the formal scalar argument. The name may appear in the *FunctionBody* and is bound to a particular value when the lambda is invoked.  |
+| <ul><li>*ArgType* </li></ul>| The type of the formal scalar argument. | Currently only the following types are supported as a lambda argument type: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).
+
+> [!NOTE]
+>The tabular expression that is used in the lambda invocation must include (but is not limited to) all the attributes with the matching types.
+>
+>`(*)` can be used as the tabular expression. 
+>
+> Any tabular expression can be used in the lambda invocation and none of its columns can be accessed in the lambda expression. 
+>
+> All tabular arguments should appear before the scalar arguments.
 
 ## Multiple and nested let statements
 
