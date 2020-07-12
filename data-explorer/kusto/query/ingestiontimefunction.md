@@ -24,8 +24,6 @@ This function must be used in the context of a table of ingested data for which 
 > [!NOTE]
 > The value returned by this function is only approximate, as the ingestion process may take several minutes to complete and multiple ingestion activities may take place concurrently. To process all records of a table with exactly-once guarantees, use [database cursors](../management/databasecursor.md).
 
-::: zone-end
-
 **Syntax**
 
  `ingestion_time()`
@@ -40,3 +38,5 @@ A `datetime` value specifying the approximate time of ingestion into a table.
 T
 | extend ingestionTime = ingestion_time() | top 10 by ingestionTime
 ```
+
+::: zone-end
