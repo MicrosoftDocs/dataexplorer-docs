@@ -13,13 +13,11 @@ zone_pivot_groups: kql-flavors
 ---
 # ingestion_time()
 
-
+::: zone pivot="azuredataexplorer"
 
 Returns the approximate time at which the current record was ingested.
 
 This function must be used in the context of a table of ingested data for which the [IngestionTime policy](../management/ingestiontimepolicy.md) was enabled when the data was ingested. Otherwise, this function produces null values.
-
-::: zone pivot="azuredataexplorer"
 
 > [!NOTE]
 > The value returned by this function is only approximate, as the ingestion process may take several minutes to complete and multiple ingestion activities may take place concurrently. To process all records of a table with exactly-once guarantees, use [database cursors](../management/databasecursor.md).
