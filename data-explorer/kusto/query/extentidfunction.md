@@ -15,7 +15,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-Returns a unique identifier that identifies the data shard ("extent") that the current record resides in. 
+Returns a unique identifier that identifies the data shard ("extent") that the current record resides in.
 
 Applying this function to calculated data which is not attached to a data shard returns an empty guid (all zeros).
 

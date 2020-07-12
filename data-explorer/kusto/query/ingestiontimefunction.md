@@ -13,26 +13,21 @@ zone_pivot_groups: kql-flavors
 ---
 # ingestion_time()
 
-Retrieves the record's `$IngestionTime` hidden `datetime` column, or null.
-The `$IngestionTime` column is automatically defined when the table's
-
 ::: zone pivot="azuredataexplorer"
 
-[IngestionTime policy](../management/ingestiontimepolicy.md) is set (enabled).
+Returns the approximate time at which the current record was ingested.
 
-::: zone-end
+In order to retrieve a meaningful non-null value, this function must
+be used in the context of a table of ingested data for which the
+[IngestionTime policy](../management/ingestiontimepolicy.md) has been enabled
+when data got ingested. Otherwise, it produces null values.
 
-::: zone pivot="azuremonitor"
-
-IngestionTime policy is set (enabled).
-
-::: zone-end
-
-If the table doesn't have this policy defined, a null value is returned.
-
-This function must be used in the context of an actual table
-to return the relevant data. For example, it will return null for all records
-if it's invoked following a `summarize` operator.
+> [!NOTE]
+> The value returned by this function is only approximate, as the ingestion
+> process may take several minutes to complete and multiple ingestion
+> activities may take place concurrently. This function therefore should not
+> be used for processing all records of a table with exactly-once guarantees.
+> For that, please use [database cursors](../management/databasecursor.md).
 
 **Syntax**
 
@@ -45,6 +40,14 @@ A `datetime` value specifying the approximate time of ingestion into a table.
 **Example**
 
 ```kusto
-T 
+T
 | extend ingestionTime = ingestion_time() | top 10 by ingestionTime
 ```
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This capability isn't supported in Azure Monitor
+
+::: zone-end
