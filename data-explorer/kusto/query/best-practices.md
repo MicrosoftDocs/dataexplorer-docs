@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/03/2020
 ---
-# Best practices 
+# Query best practices 
 
 Here are several best practices to follow to make your query run faster.
 
