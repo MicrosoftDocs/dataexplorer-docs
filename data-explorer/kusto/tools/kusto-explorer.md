@@ -23,7 +23,9 @@ With Kusto.Explorer, you can:
 
 * Install the [Kusto.Explorer tool](https://aka.ms/ke).
 
-* You can access your Kusto cluster with your browser at `https://<your_cluster>.kusto.windows.net`. (Replace `<your_cluster>` with your Azure Data Explorer cluster name.)
+* Instead, access your Kusto cluster with your browser at: 
+`https://<your_cluster>.kusto.windows.net.`
+     Replace &lt;your_cluster&gt; with your Azure Data Explorer cluster name.
 
 ### Using Chrome and Kusto.Explorer
 
@@ -98,18 +100,19 @@ The Home tab shows the most recently used functions, divided into sections:
 |Stacked Area chart      | Displays a stacked area chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis) |
 |Timeline Chart   | Displays a time chart in which the X-axis is the first column (must be datetime). All numeric columns are mapped to different series (Y-axis).|
 |Line Chart   | Displays a line chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
-|Anomaly Chart|    Similar to timechart, but finds anomalies in time series data, using the machine learning anomalies algorithm. For anomaly detection, Kusto.Explorer uses the [series_decompose_anomalies](../query/series-decompose-anomaliesfunction.md) function.(*) 
+|[Anomaly Chart](#anomaly-chart)|    Similar to timechart, but finds anomalies in time series data, using the machine learning anomalies algorithm. For anomaly detection, Kusto.Explorer uses the [series_decompose_anomalies](../query/series-decompose-anomaliesfunction.md) function.
 |Pie Chart    |    Displays a pie chart in which the color-axis is the first column. The theta-axis (must be a measure, converted to percent) is the second column.|
 |Time Ladder |    Displays a ladder chart in which the X-axis is the last two columns (must be datetime). The Y-axis is a composite of the other columns.|
 |Scatter Chart| Displays a point graph in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
 |Pivot Chart  | Displays a pivot table and pivot chart that gives the full flexibility of selecting data, columns, rows, and various chart types.| 
 |Time Pivot   | Interactive navigation over the events time-line (pivoting on time axis)|
 
-(*) Anomaly Chart: 
-The algorithm expects timeseries data, which consists of two columns:
-1. Time in fixed interval buckets
-2. Numeric value for anomaly detection
-To produce timeseries data in Kusto.Explorer, summarize by the time field and specify the time bucket bin.
+> [!NOTE]
+> <a id="anomaly-chart">Anomaly Chart</a>: 
+>The algorithm expects timeseries data, which consists of two columns:
+>* Time in fixed interval buckets
+>* Numeric value for anomaly detection
+>To produce timeseries data in Kusto.Explorer, summarize by the time field and specify the time bucket bin.
 
 ### View section
 
@@ -124,9 +127,10 @@ To produce timeseries data in Kusto.Explorer, summarize by the time field and sp
 |Increase Font  | Increases the font size of the query tab and of the results data grid|  
 |Decrease Font  | Decreases the font size of the query tab and of the results data grid|
 
-(*) Data View Settings:
-Kusto.Explorer keeps track of what settings are used per unique set of columns. So when columns are reordered or removed, the data view is saved and will be reused
-whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**. 
+>[!NOTE]
+> Data View Settings:
+>
+> Kusto.Explorer keeps track of what settings are used per unique set of columns. When columns are reordered or removed, the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**. 
 
 ## File tab
 
@@ -194,7 +198,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 |Reset Layout|Resets the layout of the tool's docking controls and windows|
 |Rename Document Tab |Rename the selected tab |
 ||---------*Data View*---------|
-|Reset View| Resets data view settings to its defaults (*)|
+|Reset View| Resets [data view settings](#dvs) to its defaults |
 |Explore Column Values|Shows column values distribution|
 |Focus on Query Statistics|Changes the focus to query statistics instead of query results upon query completion|
 |Hide Duplicates|Toggles removal of the duplicate rows from the query results|
@@ -205,7 +209,10 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 ||---------*Visualizations*---------|
 |Visualizations|See [Visualizations](#visualizations-section), above. |
 
-(*) Data View Settings: Kusto.Explorer keeps track of the settings used per unique set of columns. When columns are reordered or removed, the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**. 
+> [!NOTE]
+> <a id="dvs">Data View Settings:</a> 
+>
+> Kusto.Explorer keeps track of the settings used per unique set of columns. When columns are reordered or removed, the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**. 
 
 ## Tools tab
 
