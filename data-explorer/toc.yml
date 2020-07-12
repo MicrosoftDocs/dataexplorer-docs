@@ -1164,7 +1164,11 @@
       - name: geo_s2cell_to_central_point()
         href: ./kusto/query/geo-s2cell-to-central-point-function.md
       - name: geo_polygon_to_s2cells()
-        href: kusto/query/geo-polygon-to-s2cells-function.md  
+        href: kusto/query/geo-polygon-to-s2cells-function.md
+      - name: geo_polygon_densify()
+        href: kusto/query/geo-polygon-densify-function.md 
+      - name: geo_line_densify()
+        href: kusto/query/geo-line-densify-function.md         
     - name: User analytics
       items:
       - name: User analytics plugins overview
