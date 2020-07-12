@@ -179,7 +179,10 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## Queue a message for ingestion
 
-Queue a message to pull data from blob storage and ingest that data into Azure Data Explorer. A connection is established to the data ingestion endpoint of the Azure Data Explorer cluster, and another client is created to work with that endpoint. Same guidelines apply as in previous section.
+Queue a message to pull data from blob storage and ingest that data into Azure Data Explorer. A connection is established to the data ingestion endpoint of the Azure Data Explorer cluster, and another client is created to work with that endpoint. 
+
+> [!TIP]
+> The following code snippets create an instance of a client for almost every call. This is done to make each snippet individually runnable. In production, the client instances are reentrant, and should be kept as long as needed. A single client instance per URI is sufficient, even when working with multiple databases (database can be specified on a command level).
 
 ```csharp
 var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net";
