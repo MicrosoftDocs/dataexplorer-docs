@@ -41,6 +41,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 > * Requires [database user permission](../management/access-control/role-based-authorization.md).
 > * Not all data types are supported in `let` statements. Supported types are: boolean, string, long, datetime, timespan, double, and dynamic.
 > * Use 'skipvalidation' to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
+> * There is no `;` at the end of create function statement.
 
 **Examples** 
 
