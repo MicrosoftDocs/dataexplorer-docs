@@ -36,7 +36,7 @@ Allows caching a subquery result during the time of query execution in a way tha
   If a query uses `materialize()` and the cache can't hold any more data,
   the query will abort with an error.
 
-**Examples**
+## Examples of query performance improvement
 
 The following example shows how `materialize()` can be used to improve performance of the query.
 The expression `_detailed_data` is defined using `materialize()` function and therefore it's calculated only once.
@@ -67,7 +67,7 @@ _detailed_data
 
 
 The following example generates a set of random numbers and calculates: 
-* how many distinct values in the set (Dcount)
+* how many distinct values in the set (`Dcount`)
 * the top three values in the set 
 * the sum of all these values in the set 
  
@@ -103,3 +103,63 @@ Result set 3:
 |Sum|
 |---|
 |15002960543563|
+
+## Examples of using materialize()
+
+> [!TIP]
+> Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows.
+> 
+> To use the `let` statement with a value that you use more than once, use the [materialize() function](./materializefunction.md).
+> For more information, see [best practices](best-practices.md)
+
+Try to push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, filters, or project only required columns.
+
+```kusto
+    let materializedData = materialize(Table
+    | where Timestamp > ago(1d));
+    union (materializedData
+    | where Text !has "somestring"
+    | summarize dcount(Resource1)), (materializedData
+    | where Text !has "somestring"
+    | summarize dcount(Resource2))
+```
+
+The filter on `Text` is mutual and can be pushed to the materialize expression.
+The query only needs columns `Timestamp`, `Text`, `Resource1`, and `Resource2`. Project these columns inside the materialized expression.
+    
+```kusto
+    let materializedData = materialize(Table
+    | where Timestamp > ago(1d)
+    | where Text !has "somestring"
+    | project Timestamp, Resource1, Resource2, Text);
+    union (materializedData
+    | summarize dcount(Resource1)), (materializedData
+    | summarize dcount(Resource2))
+```
+    
+If the filters aren't identical like in this query:  
+
+```kusto
+    let materializedData = materialize(Table
+    | where Timestamp > ago(1d));
+    union (materializedData
+    | where Text has "String1"
+    | summarize dcount(Resource1)), (materializedData
+    | where Text has "String2"
+    | summarize dcount(Resource2))
+ ```
+
+When the combined filter reduces the materialized result drastically, combine both filters on the materialized result by a logical `or` expression like in the query below. However, keep the filters in each union leg to preserve the semantics of the query.
+     
+```kusto
+    let materializedData = materialize(Table
+    | where Timestamp > ago(1d)
+    | where Text has "String1" or Text has "String2"
+    | project Timestamp, Resource1, Resource2, Text);
+    union (materializedData
+    | where Text has "String1"
+    | summarize dcount(Resource1)), (materializedData
+    | where Text has "String2"
+    | summarize dcount(Resource2))
+```
+    

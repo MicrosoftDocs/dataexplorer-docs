@@ -1153,6 +1153,8 @@
         href: ./kusto/query/geo-distance-point-to-line-function.md
       - name: geo_geohash_to_central_point()
         href: ./kusto/query/geo-geohash-to-central-point-function.md
+      - name: geo_line_densify()
+        href: kusto/query/geo-line-densify-function.md    
       - name: geo_point_in_circle()
         href: ./kusto/query/geo-point-in-circle-function.md
       - name: geo_point_in_polygon()
@@ -1161,10 +1163,12 @@
         href: ./kusto/query/geo-point-to-geohash-function.md
       - name: geo_point_to_s2cell()
         href: ./kusto/query/geo-point-to-s2cell-function.md
+      - name: geo_polygon_to_s2cells()
+        href: kusto/query/geo-polygon-to-s2cells-function.md
+      - name: geo_polygon_densify()
+        href: kusto/query/geo-polygon-densify-function.md 
       - name: geo_s2cell_to_central_point()
         href: ./kusto/query/geo-s2cell-to-central-point-function.md
-      - name: geo_polygon_to_s2cells()
-        href: kusto/query/geo-polygon-to-s2cells-function.md  
     - name: User analytics
       items:
       - name: User analytics plugins overview
