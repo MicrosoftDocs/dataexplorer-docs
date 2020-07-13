@@ -15,7 +15,7 @@ ms.date: 07/13/2020
 > * [Portal](ingest-data-streaming.md)
 > * [C#](ingest-data-streaming-csharp.md)
 
-[!INCLUDE [ingest-data-streaming-include-intro](includes/ingest-data-streaming-include-intro.md)]
+[!INCLUDE [ingest-data-streaming-intro](includes/ingest-data-streaming-intro.md)]
 
 ## Prerequisites
 
@@ -75,7 +75,7 @@ There are two supported streaming ingestion types:
 
 ## Disable streaming ingestion on your cluster
 
-[!INCLUDE [ingest-data-streaming-include-disabling](includes/ingest-data-streaming-include-disabling.md)]
+[!INCLUDE [ingest-data-streaming-disabling](includes/ingest-data-streaming-disabling.md)]
 1. In the Azure portal, go to your Azure Data Explorer cluster and select **Query**.
 To drop streaming ingestion policy from the table copy the following command into **Query** pane and run
     ```Kusto
@@ -91,7 +91,7 @@ To drop streaming ingestion policy from the table copy the following command int
 
 ## Limitations
 
-[!INCLUDE [ingest-data-streaming-include-limitations](includes/ingest-data-streaming-include-limitations.md)]
+[!INCLUDE [ingest-data-streaming-limitations](includes/ingest-data-streaming-limitations.md)]
 
 ## Next steps
 

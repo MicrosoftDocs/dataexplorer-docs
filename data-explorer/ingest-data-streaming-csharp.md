@@ -15,7 +15,7 @@ ms.date: 07/13/2020
 > * [Portal](ingest-data-streaming.md)
 > * [C#](ingest-data-streaming-csharp.md)
 
-[!INCLUDE [ingest-data-streaming-include-intro](includes/ingest-data-streaming-include-intro.md)]
+[!INCLUDE [ingest-data-streaming-intro](includes/ingest-data-streaming-intro.md)]
 
 ## Prerequisites
 * If you don't have Visual Studio 2019 installed, you can download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Make sure that you enable **Azure development** during the Visual Studio setup.
@@ -108,7 +108,7 @@ There are two supported streaming ingestion types:
 
 ## Disable streaming ingestion on your cluster
 
-[!INCLUDE [ingest-data-streaming-include-disabling](includes/ingest-data-streaming-include-disabling.md)]
+[!INCLUDE [ingest-data-streaming-disabling](includes/ingest-data-streaming-disabling.md)]
 
 1. In order to drop streaming ingestion policy from the table execute the following code
 ```csharp
@@ -152,7 +152,7 @@ There are two supported streaming ingestion types:
 
 ## Limitations
 
-[!INCLUDE [ingest-data-streaming-include-limitations](includes/ingest-data-streaming-include-limitations.md)]
+[!INCLUDE [ingest-data-streaming-limitations](includes/ingest-data-streaming-limitations.md)]
 
 ## Next steps
 
