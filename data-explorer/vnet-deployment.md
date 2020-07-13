@@ -107,8 +107,8 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 | Central India | 40.81.249.251, 104.211.98.159 |
 | Central US | 40.67.188.68 |
 | Central US EUAP | 40.89.56.69 |
-| China East 2 | 139.217.236.210 |
-| China North 2 | 40.73.6.21 |
+| China East 2 | 139.217.184.92 |
+| China North 2 | 139.217.60.6 |
 | East Asia | 20.189.74.103 |
 | East US | 52.224.146.56 |
 | East US2 | 52.232.230.201 |
