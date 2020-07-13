@@ -51,7 +51,6 @@ Expressions bound by let statements can be:
 
 `ScalarArguments` - [*ArgName* `:` *ArgType*] [`,` ... ]
 
-[!div class="mx-tableFixed"]
 
 |Field  |Definition  |Example  |
 |---------|---------|---------|
