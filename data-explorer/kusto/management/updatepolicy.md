@@ -85,7 +85,7 @@ Then:
 * Operational performance will Improve.
 * Post-ingestion resources for background grooming operations will be reduced. These operations are done on [extents](../management/extents-overview.md) in the source table.
 
-## Failures
+## Update policy failures
 
 In some cases, ingestion of data into the source table succeeds, but the update policy fails during ingestion to the target table.
 
@@ -107,12 +107,12 @@ Failures are treated as follows:
     * The backoff period starts at 2 minutes, and grows exponentially (2 -> 4 -> 8 -> 16 ... minutes)
   * In any other case, any retry is the responsibility of the data owner.
 
-## Control Commands
+## Control commands
 
-* Use [.show table TABLE policy update](../management/update-policy.md#show-update-policy) to show the current update policy of a table.
-* Use [.alter table TABLE policy update](../management/update-policy.md#alter-update-policy) to set the current update policy of a table.
-* Use [.alter-merge table TABLE policy update](../management/update-policy.md#alter-merge-table-table-policy-update) to append to the current update policy of a table.
-* Use [.delete table TABLE policy update](../management/update-policy.md#delete-table-table-policy-update) to append to the current update policy of a table.
+* Use [.show table policy update](../management/update-policy.md#show-update-policy) to show the current update policy of a table.
+* Use [.alter table policy update](../management/update-policy.md#alter-update-policy) to set the current update policy of a table.
+* Use [.alter-merge table policy update](../management/update-policy.md#alter-merge-table-table-policy-update) to append to the current update policy of a table.
+* Use [.delete table policy update](../management/update-policy.md#delete-table-table-policy-update) to append to the current update policy of a table.
 
 ## Testing an update policy's performance impact
 
