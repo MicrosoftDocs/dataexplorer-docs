@@ -9,11 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 ---
-<<<<<<< HEAD
-# Update policy commands
-=======
-# update policy command
->>>>>>> 268f2480f5c0833097173d2452238c1b9887a2c3
+# update policy commands
 
 The [update policy](updatepolicy.md) is a table-level policy object that automatically
 runs a query and then ingests the results when data is ingested into another table.
