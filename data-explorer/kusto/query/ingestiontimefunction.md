@@ -32,7 +32,7 @@ Retrieves the `datetime` when the record was ingested and ready for query.
 
 **Syntax**
 
- `ingestion_time()`
+`ingestion_time()`
 
 **Returns**
 
