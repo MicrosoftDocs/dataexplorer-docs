@@ -27,7 +27,7 @@ The service offers excellent data ingestion and query performance:
 ## Interacting with Azure Data Explorer
 
 The main way for users to interact with Azure Data Explorer (Kusto):
-* Use one of the many available [client tools](../tools/index.md). 
+* Use one of the [query tools](../../tools-integrations-overview.md#azure-data-explorer-query-tools). 
 * [SQL queries](../api/tds/t-sql.md).
 *  [Kusto query language](../query/index.md) is primary means of interaction. KQL allows you to send data queries, and use [control commands](../management/index.md) to manage entities, discover metadata, and so on.
 Both queries and control commands are short textual "programs".

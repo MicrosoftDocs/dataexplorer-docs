@@ -29,7 +29,6 @@ Azure Data Explorer pulls data from an external source and reads requests from a
 
 * **Permissions**: To ingest data, the process requires [database ingestor level permissions](kusto/management/access-control/role-based-authorization.md). Other actions, such as query, may require database admin, database user, or table admin permissions.
 
-
 ## Batching vs streaming ingestion
 
 * Batching ingestion does data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. The [ingestion batching](kusto/management/batchingpolicy.md) policy can be set on databases or tables. By default, the maximum batching value is 5 minutes, 1000 items, or a total size of 500 MB.
@@ -49,6 +48,12 @@ For organizations who wish to have management (throttling, retries, monitors, al
 * **[Event Hub](https://azure.microsoft.com/services/event-hubs/)**: A pipeline that transfers events from services to Azure Data Explorer. For more information, see [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md).
 
 * **[IoT Hub](https://azure.microsoft.com/services/iot-hub/)**: A pipeline that is used for the transfer of data from supported IoT devices to Azure Data Explorer. For more information, see [Ingest from IoT Hub](ingest-data-iot-hub.md).
+
+* **Azure Data Factory (ADF)**: A fully managed data integration service for analytic workloads in Azure. Azure Data Factory connects with over 90 supported sources to provide efficient and resilient data transfer. ADF prepares, transforms, and enriches data to give insights that can be monitored in different kinds of ways. This service can be used as a one-time solution, on a periodic timeline, or triggered by specific events. 
+  * [Integrate Azure Data Explorer with Azure Data Factory](data-factory-integration.md).
+  * [Use Azure Data Factory to copy data from supported sources to Azure Data Explorer](/azure/data-explorer/data-factory-load-data).
+  * [Copy in bulk from a database to Azure Data Explorer by using the Azure Data Factory template](data-factory-template.md).
+  * [Use Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md).
 
 ### Ingestion using connectors and plugins
 
@@ -79,12 +84,6 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 * [GO API](kusto/api/golang/kusto-golang-client-library.md)
 
 ### Tools
-
-* **Azure Data Factory (ADF)**: A fully managed data integration service for analytic workloads in Azure. Azure Data Factory connects with over 90 supported sources to provide efficient and resilient data transfer. ADF prepares, transforms, and enriches data to give insights that can be monitored in different kinds of ways. This service can be used as a one-time solution, on a periodic timeline, or triggered by specific events. 
-  * [Integrate Azure Data Explorer with Azure Data Factory](data-factory-integration.md).
-  * [Use Azure Data Factory to copy data from supported sources to Azure Data Explorer](/azure/data-explorer/data-factory-load-data).
-  * [Copy in bulk from a database to Azure Data Explorer by using the Azure Data Factory template](data-factory-template.md).
-  * [Use Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md).
 
 * **[One click ingestion](ingest-data-one-click.md)**: Enables you to quickly ingest data by creating and adjusting tables from a wide range of source types. One click ingestion automatically suggests tables and mapping structures based on the data source in Azure Data Explorer. One click ingestion can be used for one-time ingestion, or to define continuous ingestion via Event Grid on the container to which the data was ingested.
 

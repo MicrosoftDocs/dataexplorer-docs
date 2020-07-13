@@ -20,9 +20,9 @@ For different types or sources of data, see [Use one-click ingestion to ingest C
 
 ## Ingest new data
 
-1. In the left menu of the Web UI, right-click a *database* or *table* and select **Ingest new data (Preview)**.
+In the left menu of the Web UI, right-click a *database* or *table* and select **Ingest new data (Preview)**.
 
-    :::image type="content" source="media/one-click-ingestion-existing-table/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
+   :::image type="content" source="media/one-click-ingestion-existing-table/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
  
 ## Select an ingestion type
 
@@ -37,14 +37,17 @@ For different types or sources of data, see [Use one-click ingestion to ingest C
 
    1. Select **from file**  
    1. Select **Browse** to locate the file, or drag the file into the field.
-    * A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. 
+    
+      :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file":::
+
+ 1. A sample of the data appears. You can filter it to ingest only files that begin end with specific characters. 
+   
     >[!NOTE] 
     >When you adjust the filters, the preview automatically updates.
   
-      :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file":::
 
- > [!TIP]
- > For ingestion **from container**, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#select-an-ingestion-type)
+> [!TIP]
+> For ingestion **from container**, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#select-an-ingestion-type)
 
 ## Edit the schema
 
@@ -57,7 +60,7 @@ Select **Edit schema** to view and edit your table column configuration.
     * In the **Source columns** fields, enter column names to map with the **Target columns**.
     * To delete a column from mapping, select the trash can icon.
 
-    :::image type="content" source="media/one-click-ingestion-existing-table/map-columns.png" alt-text="Map columns window"::: 
+      :::image type="content" source="media/one-click-ingestion-existing-table/map-columns.png" alt-text="Map columns window"::: 
     
 1. Select **Update**.
 1. In the **Schema** tab:
@@ -65,15 +68,16 @@ Select **Edit schema** to view and edit your table column configuration.
         
     * When you select  **JSON**, you must also select **JSON levels**, from 1 to 10. The levels determine the table column data division.
 
-    :::image type="content" source="media/one-click-ingestion-existing-table/json-levels.png" alt-text="Select JSON levels":::
+        :::image type="content" source="media/one-click-ingestion-existing-table/json-levels.png" alt-text="Select JSON levels":::
     
-    > [!TIP]
-    > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
+       > [!TIP]
+       > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
 
 ### Table 
 
 In the table: 
-    * Select new column headers to add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. On existing columns, only data sorting is available.
+  * Select new column headers to add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. 
+ * On existing columns, only data sorting is available.
 
 [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
@@ -92,7 +96,7 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 :::image type="content" source="media/one-click-ingestion-existing-table/one-click-data-ingestion-complete.png" alt-text="One click ingestion completed":::
 
 > [!IMPORTANT]
-> If you want to set up continuous ingestion from a container, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#continuous-ingestion---container-only)
+> To set up continuous ingestion from a container, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#create-continuous-ingestion-for-container)
 
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
 

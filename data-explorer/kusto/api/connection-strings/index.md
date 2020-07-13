@@ -24,3 +24,8 @@ There are a number of connection string formats:
 * SQL connection strings - used by Kusto [sql_request plugin](../../query/sqlrequestplugin.md) to issue requests to
   Azure DB service and by [export to SQL command](../../management/data-export/export-data-to-sql.md).  
   These connection strings adhere to [SqlClient connection strings](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings) specification.
+
+> [!NOTE]
+> Some connection strings may reference security principals. See
+> [principals and identity providers](../../management/access-control/principals-and-identity-providers.md)
+> for how to specify security principals in connection strings.

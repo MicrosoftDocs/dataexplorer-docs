@@ -4,7 +4,7 @@ description: This article describes toint() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -14,7 +14,7 @@ ms.date: 02/13/2020
 Converts input to integer (signed 32-bit) number representation.
 
 ```kusto
-toint("123") == 123s
+toint("123") == int(123)
 ```
 
 **Syntax**

@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 ---
-# Cache policy
+# cache policy command
 
 This article describes commands used for creation and altering [cache policy](cachepolicy.md) 
 

@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Sharding policy management
+# sharding policy command
 
 ## show policy
 

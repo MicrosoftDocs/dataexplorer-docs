@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/25/2020
 ---
-# RowLevelSecurity policy (Preview)
+# row_level_security policy command (Preview)
 
 This article describes commands used for configuring a [row_level_security policy](rowlevelsecuritypolicy.md) for database tables.
 
