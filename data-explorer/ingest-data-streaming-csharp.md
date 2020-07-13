@@ -1,19 +1,19 @@
 ---
 title: Use streaming ingestion to ingest data into Azure Data Explorer
-description: In this article you learn how to configure your Azure Data Explorer cluster using Azure Portal and start loading data with streaming ingestion.
+description: In this article you learn how to configure your Azure Data Explorer cluster using C# and start loading data with streaming ingestion.
 author: orspod
 ms.author: orspodek
-ms.reviewer: tzgitlin
+ms.reviewer: alexefro
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 07/13/2020
 ---
 
 # Streaming ingestion
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-streaming.md)
-> * [C#](streaming-ingestion-setup-csharp.md)
+> * [C#](ingest-data-streaming-csharp.md)
 
 [!INCLUDE [ingest-data-streaming-include-intro](includes/ingest-data-streaming-include-intro.md)]
 

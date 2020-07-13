@@ -81,7 +81,7 @@
       - name: Azure portal
         href: ingest-data-streaming.md
       - name: C#
-        href: streaming-ingestion-setup-csharp.md
+        href: ingest-data-streaming-csharp.md
     - name: Using LightIngest
       href: lightingest.md    
     - name: Event Hub
