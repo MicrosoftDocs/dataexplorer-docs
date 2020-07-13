@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 ---
-# Update policy
+# Update policy commands
 
 The [update policy](updatepolicy.md) is a table-level policy object that automatically
 runs a query and then ingests the results when data is ingested into another table.
@@ -63,10 +63,10 @@ This command sets the update policy of the specified table.
 >    * `Query` 
 >        * Checks that the schema defined by the schema matches the one of the target table
 >        * Checks that the query references the `source` table of the update policy. 
-        Defining an update policy query which does *not* reference the source is possible by setting 
+        Defining an update policy query which does not reference the source is possible by setting 
         `AllowUnreferencedSourceTable=true` in the *with* properties (see example below),
         but isn't recommended due to performance issues. For every ingestion to the source table, 
-        *all* records in a different table are considered for the update policy execution.
+        all records in a different table are considered for the update policy execution.
  >       * Checks that the policy doesn't result in a cycle being created in the chain of update policies in the target database.
  > * If `IsTransactional` is set to `true`, then checks that the `TableAdmin` permissions are also verified against `Source` (the source table).
  > * Test your update policy or function for performance, before applying it to run on each ingestion to the source table. For more information, see [testing an update policy's performance impact](updatepolicy.md#testing-an-update-policys-performance-impact).
@@ -74,7 +74,7 @@ This command sets the update policy of the specified table.
 **Returns**
 
 The command sets the table's update policy object, overriding any current policy,
-and then returns the output of the corresponding [.show table TABLE update policy](#show-update-policy) command.
+and then returns the output of the corresponding [.show table update policy](#show-update-policy) command.
 
 **Example**
 
@@ -99,7 +99,7 @@ MyUpdateFunction()
 ```
 
 * When an ingestion to the source table occurs, in this case, `MyTableX`, one or more extents (data shards) are created in that table
-* The `Query` that is defined in the update policy object, in this case `MyUpdateFunction(), will only run on those extents, and won't run on the entire table.
+* The `Query` that is defined in the update policy object, in this case `MyUpdateFunction()`, will only run on those extents, and won't run on the entire table.
   * "Scoping" is done internally and automatically, and shouldn't be handled when defining the `Query`.
   * Only newly ingested records, that are different in each ingestion operation, will be taken into consideration when ingesting to the `DerivedTableX` derived table.
 
@@ -115,7 +115,7 @@ MyUpdateFunction()
 
 ```
 
-## .alter-merge table TABLE policy update
+## .alter-merge table policy update
 
 This command modifies the update policy of the specified table.
 
@@ -134,7 +134,7 @@ This command modifies the update policy of the specified table.
 **Returns**
 
 The command appends to the table's update policy object, overriding any current policy, 
-and then returns the output of the corresponding [.show table TABLE update policy](#show-update-policy) command.
+and then returns the output of the corresponding [.show table update policy](#show-update-policy) command.
 
 **Example**
 
@@ -143,7 +143,7 @@ and then returns the output of the corresponding [.show table TABLE update polic
 @'[{"IsEnabled": true, "Source": "MyTableY", "Query": "MyUpdateFunction()", "IsTransactional": false}]'  
 ``` 
 
-## .delete table TABLE policy update
+## .delete table policy update
 
 Deletes the update policy of the specified table.
 
@@ -155,7 +155,7 @@ Deletes the update policy of the specified table.
 **Returns**
 
 The command deletes the table's update policy object and then returns 
-the output of the corresponding [.show table TABLE update policy](#show-update-policy) command.
+the output of the corresponding [.show table update policy](#show-update-policy) command.
 
 **Example**
 
