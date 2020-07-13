@@ -69,7 +69,7 @@ This command sets the update policy of the specified table.
         all records in a different table are considered for the update policy execution.
  >       * Checks that the policy doesn't result in a cycle being created in the chain of update policies in the target database.
  > * If `IsTransactional` is set to `true`, then checks that the `TableAdmin` permissions are also verified against `Source` (the source table).
- > * Test your update policy or function for performance, before applying it to run on each ingestion to the source table. For more information, see [testing an update policy's performance impact](updatepolicy.md#testing-an-update-policys-performance-impact).
+ > * Test your update policy or function for performance, before applying it to run on each ingestion to the source table. For more information, see [testing an update policy's performance impact](updatepolicy.md#testing-performance-impact).
 
 **Returns**
 
