@@ -45,11 +45,14 @@ Expressions bound by let statements can be:
 
 `TabularArguments` - [*TabularArgName* `:` `(`[*AtrName* `:` *AtrType*] [`,` ... ]`)`] [`,` ... ][`,`]
 
- or:			   - [*TabularArgName* `:` `(` `*` `)`]
+ or:
+
+ [*TabularArgName* `:` `(` `*` `)`]
 
 `ScalarArguments` - [*ArgName* `:` *ArgType*] [`,` ... ]
 
 [!div class="mx-tableFixed"]
+
 |Field  |Definition  |Example  |
 |---------|---------|---------|
 | **view** | May appear only in a parameterless lambda, that has no arguments. It indicates that the bound name will be included when "all tables" are queries. | For example, when using `union *`.|
