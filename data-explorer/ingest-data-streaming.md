@@ -68,7 +68,7 @@ There are two supported streaming ingestion types:
 
 ### Choose the appropriate streaming ingestion type
 
-|   |Event Hub  |Custom Ingestion  |
+|   |Event Hub  |Custom Ingestion|
 |---------|---------|---------|
 |Data delay between ingestion initiation and the data available for query   |    Longer delay     |   Shorter delay      |
 |Development overhead    |   Fast and easy setup, no development overhead    |   High development overhead for application to handle errors and ensure data consistency     |
