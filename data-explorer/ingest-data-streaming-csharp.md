@@ -1,6 +1,6 @@
 ---
 title:  Set up Azure Data Explorer cluster for streaming ingestion using C#
-description: In this article you learn how to configure your Azure Data Explorer cluster using C# and start loading data with streaming ingestion.
+description: In this article, you learn how to configure your Azure Data Explorer cluster using C# and start loading data with streaming ingestion.
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexefro
@@ -63,7 +63,7 @@ Enable streaming ingestion on your Azure Data Explorer cluster using the followi
 
 ## Create a target table and define streaming ingestion policy
 
-To create a table and define streaming ingestion policy on it execute the following code
+Create a table and define streaming ingestion policy on it. Execute the following code
 
 ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -84,7 +84,7 @@ To create a table and define streaming ingestion policy on it execute the follow
             new ColumnSchema("Source",    "System.String"),
         });
 
-    var tableCreateCommand = CslCommandGenerator.GenerateTableCreateCommand(tableSchema);    
+    var tableCreateCommand = CslCommandGenerator.GenerateTableCreateCommand(tableSchema);
     var tablePolicyAlterCommand = CslCommandGenerator.GenerateTableAlterStreamingIngestionPolicyCommand(tableName, isEnabled: true);
     using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
     {
@@ -102,7 +102,7 @@ To create a table and define streaming ingestion policy on it execute the follow
 
 [!INCLUDE [ingest-data-streaming-disabling](includes/ingest-data-streaming-disabling.md)]
 
-1. In order to drop streaming ingestion policy from the table execute the following code
+1. Drop streaming ingestion policy from the table. Execute the following code
 
 ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -120,7 +120,7 @@ To create a table and define streaming ingestion policy on it execute the follow
     }
 ```
 
-1. Disable streaming ingestion on your cluster using the following code
+1. Disable streaming ingestion on your cluster. Execute the following code
 
 ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
