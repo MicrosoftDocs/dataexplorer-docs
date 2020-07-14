@@ -135,7 +135,7 @@ To use the LightIngest command below:
 The `-creationTimePattern` argument extracts the CreationTime property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
 
 The argument values must include:
-* Constant test immediately preceding the timestamp, enclosed in single quotes
+* Constant text immediately preceding the timestamp format, enclosed in single quotes (prefix)
 * The timestamp format, in standard [.NET DateTime notation](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
 * Constant text immediately following the timestamp. For example, if blob names end with `historicalvalues19840101.parquet` (the timestamp is four digits for the year, two digits for the month, and two digits for the day of month), the corresponding value for the `-creationTimePattern` argument is:
 
