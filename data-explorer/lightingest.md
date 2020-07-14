@@ -137,7 +137,11 @@ The `-creationTimePattern` argument extracts the CreationTime property from the 
 The argument values must include:
 * Constant text immediately preceding the timestamp format, enclosed in single quotes (prefix)
 * The timestamp format, in standard [.NET DateTime notation](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
-* Constant text immediately following the timestamp. For example, if blob names end with `historicalvalues19840101.parquet` (the timestamp is four digits for the year, two digits for the month, and two digits for the day of month), the corresponding value for the `-creationTimePattern` argument is:
+* Constant text immediately following the timestamp (suffix).
+
+** Examples **
+* For blob name that contains the datetime as follows: `historicalvalues19840101.parquet` (the timestamp is four digits for the year, two digits for the month, and two digits for the day of month), the value for `-creationTimePattern` argument is: "'historicalvalues'yyyyMMdd'.parquet'"
+* For blob URI that refers to hierarchical folder structure, like `https://storageaccount/container/folder/2002/12/01/blobname.extension`, the value for `-creationTimePattern` argument is: "'folder/'yyyy/MM/dd'/blob'"
 
 ```kusto
 ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
