@@ -48,6 +48,9 @@ The Azure Data Explorer proxy flow:
 
     ![Log Analytics and Azure Data Explorer clusters](media/adx-proxy/la-adx-clusters.png)
 
+> [!NOTE]
+> The number of Azure Monitor workspaces that can be mapped is limited to 100.
+
 ## Run queries
 
 You can run the queries using client tools that support Kusto queries, such as: Kusto Explorer, ADX Web UI, Jupyter Kqlmagic, Flow, PowerQuery, PowerShell, Jarvis, Lens, REST API.
@@ -87,8 +90,9 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 Using the [`join` operator](kusto/query/joinoperator.md), instead of union, may require a [`hint`](kusto/query/joinoperator.md#join-hints) to run it on an Azure Data Explorer native cluster (and not on the proxy). 
 
 ## Function supportability
+
 The Azure Data Explorer proxy cluster supports functions for both Application Insights and Log Analytics.
-This enables cross-cluster queries to reference an Azure Monitor tabular function directly.
+This capability enables cross-cluster queries to reference an Azure Monitor tabular function directly.
 The following commands are supported by the proxy:
 
 ```kusto
