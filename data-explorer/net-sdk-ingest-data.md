@@ -13,15 +13,13 @@ ms.date: 07/07/2020
 
 # Ingest data using the Azure Data Explorer .NET SDK 
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides two client libraries for .NET: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) and [a data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). For more information on .NET SDK, see [about .NET SDK](/azure/data-explorer/kusto/api/netfx/about-the-sdk).
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides two client libraries for .NET: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) and [a data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). For more information on .NET SDK, see [about .NET SDK](/azure/data-explorer/kusto/api/netfx/about-the-sdk). The supported platforms are .NETCoreApp 2.0, and .NETFramework 4.6.2.
 These libraries enable you to ingest (load) data into a cluster and query data from your code. In this article, you first create a table and data mapping in a test cluster. You then queue an ingestion to the cluster and validate the results.
 
 ## Prerequisites
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-
 * [A test cluster and database](create-cluster-database-portal.md)
-* supported platforms .NETCoreApp 2.0, .NETFramework 4.6.2
 
 ## Install the ingest library
 
