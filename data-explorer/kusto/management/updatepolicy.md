@@ -31,7 +31,7 @@ Each such object is represented as a JSON property bag, with the following prope
 |IsTransactional               |`bool`  |States if the update policy is transactional or not (defaults to false). Failure to run a transactional update policy results in the source table not being updated with new data   |
 |PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified during the ingestion into the source table, should also apply to the ones in the derived table.                 |
 
-## Trigger the policy
+## How to trigger the policy
 
 Update policies take effect when data is ingested or moved to (extents are created in) a table using any of the following commands:
 
@@ -41,16 +41,24 @@ Update policies take effect when data is ingested or moved to (extents are creat
 * [.move extents](../management/extents-commands.md#move-extents)
 * [.replace extents](../management/extents-commands.md#replace-extents)
 
+### Control Commands
+
+* Use [.show table policy update](update-policy.md#show-update-policy) to show the current update policy of a table.
+* Use [.alter table policy update](update-policy.md#alter-update-policy) to set the current update policy of a table.
+* Use [.alter-merge table policy update](update-policy.md#.alter---merge-table-policy-update) to append to the current update policy of a table.
+* Use [.delete table policy update](update-policy.md#.delete-table-policy-update) to append to the current update policy of a table.
+
 ## Considerations and best practices
 
-|Subject  |Recommendation  |
+|Subject  |Notes  |
 |---------|---------|
-|Cascading updates   | Cascading updates are allowed (`TableA` → `TableB` → `TableC` → ...)      |
-| Update policy is invoked as part of a `.set-or-replace` command | The default behavior is that data in derived table(s) is replaced in the same way as in the source table.
-| Source table and update policy table |The source table and the table for which the update policy is defined must be in the same database.
-| Multiple tables| If update policies are defined over multiple tables in a circular manner, the chain of updates is cut. This issue is detected at runtime. Data will be ingested only once to each table in the chain of affected tables.
-| `PropagateIngestionProperties` |This option only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this option has no effect.
-| Retention policy on the source table | So as not to keep the raw data in the source table, set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: <li> The source data isn't queryable from the source table. <li> The source data isn't persisted to durable storage as part of the ingestion operation. <li>  Operational performance will Improve. <li> Post-ingestion resources for background grooming operations will be reduced. These operations are done on [extents](../management/extents-overview.md) in the source table.|
+| **Retention policy on the source table** | So as not to keep the raw data in the source table, set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: <ul> <li> The source data isn't queryable from the source table. <li> The source data isn't persisted to durable storage as part of the ingestion operation. <li>  Operational performance will Improve. <li> Post-ingestion resources for background grooming operations will be reduced. These operations are done on [extents](../management/extents-overview.md) in the source table.</li> </ul>|
+| **Source table and update policy table** |The source table and the table for which the update policy is defined must be in the same database.
+| **Multiple tables**| If update policies are defined over multiple tables in a circular manner, the chain of updates is cut. This issue is detected at runtime. Data will be ingested only once to each table in the chain of affected tables.
+|**Cascading updates** | Cascading updates are allowed (`TableA` → `TableB` → `TableC` → ...)   |
+| Part of `.set-or-replace` command | When the update policy is invoked as part of a  `.set-or-replace` command, the default behavior is that data in derived table(s) is replaced in the same way as in the source table.
+| `PropagateIngestionProperties` |This command only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this option has no effect.
+
     
 ## Query with the update policy
 

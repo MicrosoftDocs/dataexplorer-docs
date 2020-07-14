@@ -19,13 +19,13 @@ runs a query and then ingests the results when data is ingested into another tab
 This command returns the update policy of the specified table,
 or all tables in the default database if `*` is used as a table name.
 
-**Syntax**
+### Syntax
 
 * `.show` `table` *TableName* `policy` `update`
 * `.show` `table` *DatabaseName*`.`*TableName* `policy` `update`
 * `.show` `table` `*` `policy` `update`
 
-**Returns**
+### Returns
 
 This command returns a table that has one record per table.
 
@@ -34,7 +34,7 @@ This command returns a table that has one record per table.
 |EntityName|`string`|The name of the entity the update policy is defined on                                                                                                                |
 |Policies  |`string`|A JSON array indicating all update policies defined for the entity, formatted as [update policy object](updatepolicy.md#the-update-policy-object)|
 
-**Example**
+### Example
 
 ```kusto
 .show table DerivedTableX policy update 
@@ -48,7 +48,7 @@ This command returns a table that has one record per table.
 
 This command sets the update policy of the specified table.
 
-**Syntax**
+### Syntax
 
 * `.alter` `table` *TableName* `policy` `update` *ArrayOfUpdatePolicyObjects*
 * `.alter` `table` *DatabaseName*`.`*TableName* `policy` `update` *ArrayOfUpdatePolicyObjects*
@@ -71,12 +71,12 @@ This command sets the update policy of the specified table.
  > * If `IsTransactional` is set to `true`, then checks that the `TableAdmin` permissions are also verified against `Source` (the source table).
  > * Test your update policy or function for performance, before applying it to run on each ingestion to the source table. For more information, see [testing an update policy's performance impact](updatepolicy.md#testing-performance-impact).
 
-**Returns**
+### Returns
 
 The command sets the table's update policy object, overriding any current policy,
 and then returns the output of the corresponding [.show table update policy](#show-update-policy) command.
 
-**Example**
+### Example
 
 ```kusto
 // Create a function that will be used for update
