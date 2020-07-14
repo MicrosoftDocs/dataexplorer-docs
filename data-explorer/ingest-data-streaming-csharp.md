@@ -1,5 +1,5 @@
 ---
-title: Use streaming ingestion to ingest data into Azure Data Explorer
+title:  Set up Azure Data Explorer cluster for streaming ingestion using C#
 description: In this article you learn how to configure your Azure Data Explorer cluster using C# and start loading data with streaming ingestion.
 author: orspod
 ms.author: orspodek
@@ -18,11 +18,13 @@ ms.date: 07/13/2020
 [!INCLUDE [ingest-data-streaming-intro](includes/ingest-data-streaming-intro.md)]
 
 ## Prerequisites
+
 * If you don't have Visual Studio 2019 installed, you can download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Make sure that you enable **Azure development** during the Visual Studio setup.
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-csharp.md)
     > [!NOTE]
     >You can enable streaming ingestion while creating a new Azure Data Explorer cluster.
+    >
     >```csharp
     >...
     >var cluster = new Cluster(location, sku, enableStreamingIngest:true);
@@ -94,23 +96,14 @@ To create a table and define streaming ingestion policy on it execute the follow
 
 ## Use streaming ingestion to ingest data to your cluster
 
-There are two supported streaming ingestion types:
-
-* [**Event Hub**](ingest-data-event-hub.md) or [**IoT Hub**](ingest-data-iot-hub.md), which is used as a data source.
-* **Custom ingestion** requires you to write an application that uses one of the Azure Data Explorer [client libraries](kusto/api/client-libraries.md). See [streaming ingestion sample](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) for a sample application.
-
-### Choose the appropriate streaming ingestion type
-
-|   |Event Hub  |Custom Ingestion  |
-|---------|---------|---------|
-|Data delay between ingestion initiation and the data available for query   |    Longer delay     |   Shorter delay      |
-|Development overhead    |   Fast and easy setup, no development overhead    |   High development overhead for application to handle errors and ensure data consistency     |
+[!INCLUDE [ingest-data-streaming-disabling](includes/ingest-data-streaming-ingest.md)]
 
 ## Disable streaming ingestion on your cluster
 
 [!INCLUDE [ingest-data-streaming-disabling](includes/ingest-data-streaming-disabling.md)]
 
 1. In order to drop streaming ingestion policy from the table execute the following code
+
 ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
     var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
@@ -126,7 +119,9 @@ There are two supported streaming ingestion types:
         client.ExecuteControlCommand(tablePolicyDropCommand);
     }
 ```
-2. Disable streaming ingestion on your cluster using the following code
+
+1. Disable streaming ingestion on your cluster using the following code
+
 ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
     var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
