@@ -21,6 +21,7 @@ These libraries enable you to ingest (load) data into a cluster and query data f
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 
 * [A test cluster and database](create-cluster-database-portal.md)
+* supported platforms .NETCoreApp 2.0, .NETFramework 4.6.2
 
 ## Install the ingest library
 
