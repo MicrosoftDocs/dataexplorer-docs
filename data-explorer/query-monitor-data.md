@@ -49,7 +49,7 @@ The Azure Data Explorer proxy flow:
     ![Log Analytics and Azure Data Explorer clusters](media/adx-proxy/la-adx-clusters.png)
 
 > [!NOTE]
-> The number of Azure Monitor workspaces that can be mapped is 100.
+> The number of Azure Monitor workspaces that can be mapped is limited to 100.
 
 ## Run queries
 
