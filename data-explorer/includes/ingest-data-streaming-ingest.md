@@ -12,7 +12,7 @@ ms.custom: include file
 
 There are two supported streaming ingestion types:
 
-* [**Event Hub**](i../ingest-data-event-hub.md) or [**IoT Hub**](i../ngest-data-iot-hub.md), which is used as a data source.
+* [**Event Hub**](../ingest-data-event-hub.md) or [**IoT Hub**](../ingest-data-iot-hub.md), which is used as a data source.
 * **Custom ingestion** requires you to write an application that uses one of the Azure Data Explorer [client libraries](../kusto/api/client-libraries.md). See [streaming ingestion sample](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) for a sample application.
 
 ### Choose the appropriate streaming ingestion type
