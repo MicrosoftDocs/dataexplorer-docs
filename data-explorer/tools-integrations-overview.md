@@ -32,7 +32,7 @@ Data ingestion is the process used to load data records from one or more sources
 ### Ingestion integrations
 
 * Event Hub
-    * [Ingest from Event Hub]([Ingest from Event Hub](kusto/management/data-ingestion/eventhub.md)
+    * [Ingest from Event Hub](kusto/management/data-ingestion/eventhub.md)
     * Ingest from Event Hub using the [Azure portal](ingest-data-event-hub.md), [C#](data-connection-event-hub-csharp.md), [Python](data-connection-event-hub-python.md) or [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 * Event Grid
     * [Ingest from Event Grid](kusto/management/data-ingestion/eventgrid.md)
