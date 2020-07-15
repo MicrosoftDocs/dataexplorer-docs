@@ -100,8 +100,6 @@ To create a table and define a streaming ingestion policy on this table, execute
 
 [!INCLUDE [ingest-data-streaming-use](includes/ingest-data-streaming-ingest.md)]
 
-[!INCLUDE [ingest-data-streaming-disabling](includes/ingest-data-streaming-disabling.md)]
-
 1. To drop the streaming ingestion policy from the table, execute the following code:
     
     ```csharp
