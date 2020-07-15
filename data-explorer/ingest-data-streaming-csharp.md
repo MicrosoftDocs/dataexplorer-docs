@@ -35,7 +35,7 @@ ms.date: 07/13/2020
    >...
    >```
 
-To enable streaming ingestion on your Azure Data Explorer cluster, execute the following code:
+To enable streaming ingestion on your Azure Data Explorer cluster, run the following code:
 
 ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
