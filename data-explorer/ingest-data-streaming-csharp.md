@@ -65,7 +65,7 @@ To enable streaming ingestion on your Azure Data Explorer cluster, run the follo
 
 ## Create a target table and define the policy
 
-To create a table and define a streaming ingestion policy on this table, execute the following code:
+To create a table and define a streaming ingestion policy on this table, run the following code:
 
 ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
