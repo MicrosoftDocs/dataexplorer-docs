@@ -1,6 +1,6 @@
 ---
-title: Set up Azure Data Explorer cluster for streaming ingestion using Azure Portal
-description: In this article, you learn how to configure your Azure Data Explorer cluster using Azure Portal and start loading data with streaming ingestion.
+title: Set up Azure Data Explorer cluster for streaming ingestion using Azure portal
+description: Learn how to configure your Azure Data Explorer cluster using Azure portal and start loading data with streaming ingestion.
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexefro
@@ -55,7 +55,7 @@ ms.date: 07/13/2020
 
     :::image type="content" source="media/ingest-data-streaming/create-table.png" alt-text="Create a table for streaming ingestion into Azure Data Explorer":::
 
-1. Define the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) on the table you've just created or on the database that contains this table. A policy that is defined at the database level applies to all existing and future tables in the database. Copy one of the following commands into the **Query pane**, and select **Run**.
+1. Define the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) on the table you've created or on the database that contains this table. A policy that is defined at the database level applies to all existing and future tables in the database. Copy one of the following commands into the **Query pane**, and select **Run**.
 
     ```kusto
     .alter table TestTable policy streamingingestion enable
