@@ -95,13 +95,14 @@ The Azure Data Explorer proxy cluster supports functions for both Application In
 This capability enables cross-cluster queries to reference an Azure Monitor tabular function directly.
 The following commands are supported by the proxy:
 
-```kusto
-.show functions
-.show function {FunctionName}
-.show database {DataBaseName} schema as json
-```
+- .show functions
+- .show function {FunctionName}
+- .show database {DataBaseName} schema as json
 
-  [ ![Querying a Tabular Function form ADX Web Explorer](media/adx-proxy/Function-query-adx-proxy.png)](media/adx-proxy/Function-query-adx-proxy.png#lightbox)
+
+An example of querying a tabular function from Azure Data Explorer Web UI.
+To use the functions, run their name in the query window.
+  [ ![Query a tabular function from Azure Data Explorer Web UI](media/adx-proxy/function-query-adx-proxy.png)](media/adx-proxy/function-query-adx-proxy.png#lightbox)
 
 > [!NOTE]
 > Azure Monitor only supports tabular functions. Tabular functions don't support parameters.
