@@ -91,7 +91,6 @@ Using the [`join` operator](kusto/query/joinoperator.md), instead of union, may 
 
 ## Function supportability
 
-
 The Azure Data Explorer proxy cluster supports functions for both Application Insights and Log Analytics.
 This capability enables cross-cluster queries to reference an Azure Monitor tabular function directly.
 The following commands are supported by the proxy:
