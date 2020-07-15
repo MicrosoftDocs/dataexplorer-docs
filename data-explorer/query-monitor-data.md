@@ -33,7 +33,7 @@ The Azure Data Explorer proxy flow:
 
 1. In the Azure Data Explorer UI (https://dataexplorer.azure.com/clusters), select **Add Cluster**.
 
-1. In the **Add Cluster** window, add the URL to the LA or AI cluster. 
+1. In the **Add Cluster** window, add the URL of the LA or AI cluster. 
     
     * For LA: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
     * For AI: `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
@@ -100,6 +100,8 @@ The following commands are supported by the proxy:
 .show function {FunctionName}
 .show database {DataBaseName} schema as json
 ```
+
+  [ ![Querying a Tabular Function form ADX Web Explorer](media/adx-proxy/Function-query-adx-proxy.png)](media/adx-proxy/Function-query-adx-proxy.png#lightbox)
 
 > [!NOTE]
 > Azure Monitor only supports tabular functions. Tabular functions don't support parameters.
