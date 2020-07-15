@@ -17,7 +17,7 @@ Two streaming ingestion types are supported:
 * **Custom ingestion** requires you to write an application that uses one of the Azure Data Explorer [client libraries](../kusto/api/client-libraries.md). See [streaming ingestion sample](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) for a sample application.
 
 
-|Criterion|Event Hub|Custom Ingestion|
+|Criterion|Event Hub or IoT Hub|Custom Ingestion|
 |---------|---------|---------|
 |Data delay between ingestion initiation and the data available for query | Longer delay | Shorter delay  |
 |Development overhead | Fast and easy setup, no development overhead | High development overhead for application to handle errors and ensure data consistency |
