@@ -116,7 +116,7 @@ To create a table and define a streaming ingestion policy on this table, run the
         }
     ```
 
-1. To disable streaming ingestion on your cluster, execute the following code:
+1. To disable streaming ingestion on your cluster, run the following code:
     
     ```csharp
         var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
