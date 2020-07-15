@@ -37,7 +37,7 @@ ms.date: 07/13/2020
    >...
    >```
 
-Enable streaming ingestion on your Azure Data Explorer cluster using the following code:
+To enable streaming ingestion on your Azure Data Explorer cluster, execute the following code:
 
 ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -65,7 +65,7 @@ Enable streaming ingestion on your Azure Data Explorer cluster using the followi
 > [!WARNING]
 > Review the [limitations](#limitations) prior to enabling steaming ingestion.
 
-## Create a target table and define streaming ingestion policy
+## Create a target table and define the policy
 
 To create a table and define a streaming ingestion policy on this table, execute the following code:
 
