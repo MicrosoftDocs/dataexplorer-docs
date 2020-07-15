@@ -40,7 +40,7 @@ ms.date: 07/13/2020
 > [!WARNING]
 > Review the [limitations](#limitations) prior to enabling steaming ingestion.
 
-## Create a target table and define streaming ingestion policy
+## Create a target table and define the policy
 
 1. In the Azure portal, navigate to your cluster.
 1. Select **Query**.
