@@ -72,7 +72,7 @@ There are several tools available for running queries in Azure Data Explorer.
 * [Azure Data Lake](data-lake-query-data.md)
 * [Apache Spark](spark-connector.md)
 * Microsoft Power Apps
-* [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic?view=sql-server-ver15)
+* [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic)
 
 ## Visualizations, dashboards, and reporting
 
@@ -82,7 +82,7 @@ The [visualization overview](viz-overview.md) details data visualization, dashbo
 
 * [Azure Notebooks](azure-notebooks.md)
 * [Jupyter Notebooks](kqlmagic.md)
-* [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic?view=sql-server-ver15)
+* [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic)
 
 ## Orchestration
 
