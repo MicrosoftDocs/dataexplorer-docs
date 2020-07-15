@@ -64,7 +64,7 @@ You can run the queries using client tools that support Kusto queries, such as: 
 ### Direct query from your LA or AI ADX Proxy cluster
 
 Run queries on your LA or AI cluster. Verify that your cluster is selected in the left pane. 
-
+ 
 ```kusto
 Perf | take 10 // Demonstrate query through the proxy on the LA workspace
 ```
