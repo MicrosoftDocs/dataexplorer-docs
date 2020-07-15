@@ -101,7 +101,7 @@ The following commands are supported by the proxy:
 
 The following image depicts an example of querying a tabular function from the Azure Data Explorer Web UI. 
 To use the function, run the name in the Query window.
- 
+  [ ![Query a tabular function from Azure Data Explorer Web UI](media/adx-proxy/function-query-adx-proxy.png)](media/adx-proxy/function-query-adx-proxy.png#lightbox)
 
 > [!NOTE]
 > Azure Monitor only supports tabular functions. Tabular functions don't support parameters.
