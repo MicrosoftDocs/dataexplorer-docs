@@ -31,7 +31,8 @@ ms.date: 07/13/2020
 
 **In the Azure portal:**
 
-1. Navigate to your Azure Data Explorer cluster. In **Settings**, select **Configurations**. 
+1. In the Azure portal, go to your Azure Data Explorer cluster. 
+1. In **Settings**, select **Configurations**. 
 1. In the **Configurations** pane, select **On** to enable **Streaming ingestion**.
 1. Select **Save**.
 
