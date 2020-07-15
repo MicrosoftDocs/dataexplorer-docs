@@ -71,8 +71,6 @@ ms.date: 07/13/2020
 
 [!INCLUDE [ingest-data-streaming-use](includes/ingest-data-streaming-ingest.md)]
 
-[!INCLUDE [ingest-data-streaming-disabling](includes/ingest-data-streaming-disabling.md)]
-
 1. In the Azure portal, go to your Azure Data Explorer cluster and select **Query**. <br>
 To drop the streaming ingestion policy from the table copy the following command into **Query pane** and select Run.
 
