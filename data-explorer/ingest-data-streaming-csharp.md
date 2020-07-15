@@ -19,9 +19,7 @@ ms.date: 07/13/2020
 
 ## Prerequisites
 
-* If you don't have Visual Studio 2019 installed, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). 
-
-    Enable **Azure development** during the Visual Studio setup.
+* If you don't have Visual Studio 2019 installed, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/).  Enable **Azure development** during the Visual Studio setup.
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-csharp.md)
    
