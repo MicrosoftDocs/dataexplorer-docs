@@ -9,7 +9,7 @@ ms.author: orspodek
 ms.reviewer: alexefro
 ms.custom: include file
 ---
-## Use streaming ingestion to ingest data to your cluster
+## Select the correct streaming ingestion type
 
 Two streaming ingestion types are supported:
 
