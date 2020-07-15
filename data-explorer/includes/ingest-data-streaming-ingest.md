@@ -25,7 +25,7 @@ Two streaming ingestion types are supported:
 ## Disable streaming ingestion on your cluster
 
 > [!WARNING]
-> Disabling streaming ingestion could take a few hours.
+> Disabling streaming ingestion may take a few hours.
 
 Before disabling streaming ingestion on your Azure Data Explorer cluster, drop the [streaming ingestion policy](../kusto/management/streamingingestionpolicy.md) from all relevant tables and databases. 
 
