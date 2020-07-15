@@ -9,8 +9,9 @@ ms.author: orspodek
 ms.reviewer: alexefro
 ms.custom: include file
 ---
+## Use streaming ingestion to ingest data to your cluster
 
-There are two supported streaming ingestion types:
+Two streaming ingestion types are supported:
 
 * [**Event Hub**](../ingest-data-event-hub.md) or [**IoT Hub**](../ingest-data-iot-hub.md), which is used as a data source.
 * **Custom ingestion** requires you to write an application that uses one of the Azure Data Explorer [client libraries](../kusto/api/client-libraries.md). See [streaming ingestion sample](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) for a sample application.
