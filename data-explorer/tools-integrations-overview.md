@@ -32,7 +32,7 @@ Data ingestion is the process used to load data records from one or more sources
 ### Ingestion integrations
 
 * Event Hub
-    * [Ingest from Event Hub]([Ingest from Event Hub](kusto/management/data-ingestion/eventhub.md)
+    * [Ingest from Event Hub](kusto/management/data-ingestion/eventhub.md)
     * Ingest from Event Hub using the [Azure portal](ingest-data-event-hub.md), [C#](data-connection-event-hub-csharp.md), [Python](data-connection-event-hub-python.md) or [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 * Event Grid
     * [Ingest from Event Grid](kusto/management/data-ingestion/eventgrid.md)
@@ -72,7 +72,7 @@ There are several tools available for running queries in Azure Data Explorer.
 * [Azure Data Lake](data-lake-query-data.md)
 * [Apache Spark](spark-connector.md)
 * Microsoft Power Apps
-* Azure Data Studio
+* [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic)
 
 ## Visualizations, dashboards, and reporting
 
@@ -82,7 +82,7 @@ The [visualization overview](viz-overview.md) details data visualization, dashbo
 
 * [Azure Notebooks](azure-notebooks.md)
 * [Jupyter Notebooks](kqlmagic.md)
-* Azure Data Studio
+* [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic)
 
 ## Orchestration
 
