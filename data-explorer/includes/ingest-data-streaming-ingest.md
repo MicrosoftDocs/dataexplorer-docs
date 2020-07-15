@@ -27,6 +27,4 @@ Two streaming ingestion types are supported:
 > [!WARNING]
 > Disabling streaming ingestion may take a few hours.
 
-Before disabling streaming ingestion on your Azure Data Explorer cluster, drop the [streaming ingestion policy](../kusto/management/streamingingestionpolicy.md) from all relevant tables and databases. 
-
-The removal of the streaming ingestion policy triggers rearrangement of the data inside your Azure Data Explorer cluster. Streaming ingestion data is moved from the initial storage to the permanent storage in the column store (extents or shards). This process can take between a few seconds to a few hours, depending on the amount of data in the initial storage.
+Before disabling streaming ingestion on your Azure Data Explorer cluster, drop the [streaming ingestion policy](../kusto/management/streamingingestionpolicy.md) from all relevant tables and databases. The removal of the streaming ingestion policy triggers data rearrangement inside your Azure Data Explorer cluster. The streaming ingestion data is moved from the initial storage to permanent storage in the column store (extents or shards). This process can take between a few seconds to a few hours, depending on the amount of data in the initial storage.
