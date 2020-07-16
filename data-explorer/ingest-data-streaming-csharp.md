@@ -100,7 +100,7 @@ To create a table and define a streaming ingestion policy on this table, run the
 
 [!INCLUDE [ingest-data-streaming-use](includes/ingest-data-streaming-ingest.md)]
 
-## Drop the streaming ingestion policy using C#
+### Drop the streaming ingestion policy using C#
 
 1. To drop the streaming ingestion policy from the table, run the following code:
     
