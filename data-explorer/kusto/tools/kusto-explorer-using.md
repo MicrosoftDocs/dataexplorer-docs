@@ -31,7 +31,7 @@ Search++ mode enables you to search for a term using search syntax across one or
 
 ## Query mode
 
-Kusto.Explorer includes a powerful script mode that enables you to write, edit, and run ad-hoc queries. The script mode comes with syntax highlighting and IntelliSense, so you can quickly ramp-up your knowledge of the Kusto Query Language.
+Kusto.Explorer includes a powerful script mode that enables you to write, edit, and run ad-hoc queries. The script mode comes with syntax highlighting and IntelliSense, so you can quickly ramp-up your knowledge of the Kusto Query Language.
 
 This document describes how to run basic queries in Kusto.Explorer and how to add parameters to your queries.
 
@@ -70,9 +70,15 @@ StormEvents
 
 Learn more about [Kusto Query Language](https://docs.microsoft.com/azure/kusto/query/).
 
+> [!NOTE]
+> Blank lines in the query expression can affect which part of the query is executed.
+>
+> If no text selected, it is assumed that the query or command is separated with empty lines.
+> If text is selected, the selected text is executed.
+
 ## Client-side query parameterization
 
-> [!Note]
+> [!NOTE]
 > There are two types of query parametrization techniques in Kusto:
 > * [Language-integrated query parametrization](../query/queryparametersstatement.md) is implemented as part
 > of the query engine and is meant to be used by applications that query the service programmatically. This method is not described in this document.
@@ -137,12 +143,12 @@ To reduce the chances of reaching the character limit, see [Getting Shorter Link
 The format of the URI is:
     `https://<ClusterCname>.kusto.windows.net/<DatabaseName>web=0?query=<QueryToExecute>`
 
-For example: 
+For example:
     [https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10](https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10)
  
 This URI will open Kusto.Explorer, connect to the `Help` Kusto cluster, and run the specified query on the `Samples` database. If there's an instance of Kusto.Explorer already running, the running instance will open a new tab and run the query in it.
 
-> [!Note] 
+> [!NOTE] 
 > For security reasons, deep-linking is disabled for control commands.
 
 ### Creating a deep-link
@@ -225,7 +231,7 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 
 ## Manage clusters, databases, tables, or function authorized principals
 
-> [!Note]
+> [!NOTE]
 > Only [admins](../management/access-control/role-based-authorization.md) can add or drop authorized principals in their own scope.
 
 Right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Cluster Authorized Principals**. (You can also select this option from the Management Menu.)

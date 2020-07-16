@@ -63,8 +63,6 @@ The following options may be specified:
 * `workspace=empty`: Indicates to create a new empty workspace (no recall of
   previous clusters, tabs, and queries will be done).
 
-
-
 ![alt text](./Images/KustoTools-WebExplorer/DeepLink.gif "DeepLink")
 
 ## Feedback

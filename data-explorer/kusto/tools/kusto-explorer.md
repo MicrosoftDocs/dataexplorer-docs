@@ -314,7 +314,7 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 * `AAD_TENANT_OF_CLUSTER` is a domain name or AAD tenant ID (a GUID) of the AAD tenant in which the cluster is hosted. This is usually the domain name of the organization that owns the cluster, such as `contoso.com`. 
 * USER_DOMAIN is the identity of the user invited into that tenant (for example, `user@example.com`). 
 
->[!Note]
+>[!NOTE]
 > The domain name of the user is not necessarily the same as that of the tenant hosting the cluster.
 
 :::image type="content" source="images/kusto-explorer/advanced-connection-string.png" alt-text="Kusto Explorer advanced connection string":::
