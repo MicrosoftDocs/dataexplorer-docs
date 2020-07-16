@@ -162,7 +162,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## Define batching policy for your table
 
-Azure Data Explorer ingestion performs batching of the incoming data to optimize for data shard size. This process is controlled by the [ingestion batching policy](/kusto/management/batchingpolicy) and can be modified by a [control command](/kusto/management/batching-policy). Use this policy to reduce latency of slowly arriving data.
+Azure Data Explorer ingestion performs batching of the incoming data to optimize for data shard size. This process is controlled by the [ingestion batching policy](kusto/management/batchingpolicy.md) and can be modified by the [ingestion batching policy control command](kusto/management/batching-policy.md). Use this policy to reduce latency of slowly arriving data.
 
 ```kusto
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
