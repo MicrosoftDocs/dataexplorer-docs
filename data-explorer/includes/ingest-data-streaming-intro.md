@@ -10,9 +10,11 @@ ms.reviewer: alexefro
 ms.custom: include file
 ---
 
-Use streaming ingestion when you require optimal performance with the following requirements:
+Streaming ingestion is a data loading method designed to achieve optimal performance under the following requirements:
 
-* Low latency (less than 10 seconds) between successful completion of ingestion operation and availability of the data for query.
-* Ingesting a high volume of data (thousands of records per second) spread over large amount (thousands) of tables. Each table receiving relatively low volume of data (few records per second).
+* Low latency. Streaming ingestion operation completes in under 10 seconds. The data is immediately available for query after completion.
+* Ingesting high volume of data, such as thousands of records per second spread over thousands of tables. However, each table receives a relatively low volume of data, such as a few records per second.
 
-Use bulk ingestion instead of streaming ingestion when the amount of data exceeds 4 GB per hour per table. See [Data ingestion overview](../ingest-data-overview.md) to learn more about the available methods of ingestion.
+Use bulk ingestion instead of streaming ingestion when the amount of data ingested exceeds 4 GB per hour per table.
+
+To learn more about different ingestion methods, see [data ingestion overview](../ingest-data-overview.md).

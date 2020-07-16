@@ -25,17 +25,19 @@ ms.date: 07/13/2020
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-csharp.md)
    
-## Enable streaming ingestion on your cluster
+## Enable streaming ingestion on your cluster using C#
 
+### Enable streaming ingestion while creating a new cluster
 
-   > [!NOTE]
-   >You can enable streaming ingestion while creating a new Azure Data Explorer cluster.
-   >
-   >```csharp
-   >...
-   >var cluster = new Cluster(location, sku, enableStreamingIngest:true);
-   >...
-   >```
+You can enable streaming ingestion while creating a new Azure Data Explorer cluster.
+
+```csharp
+...
+var cluster = new Cluster(location, sku, enableStreamingIngest:true);
+...
+```
+
+### Enable streaming ingestion on an existing cluster
 
 To enable streaming ingestion on your Azure Data Explorer cluster, execute the following code:
 
@@ -100,6 +102,8 @@ To create a table and define a streaming ingestion policy on this table, execute
 
 [!INCLUDE [ingest-data-streaming-use](includes/ingest-data-streaming-ingest.md)]
 
+## Drop the streaming ingestion policy using C#
+
 1. To drop the streaming ingestion policy from the table, execute the following code:
     
     ```csharp
@@ -117,6 +121,8 @@ To create a table and define a streaming ingestion policy on this table, execute
             client.ExecuteControlCommand(tablePolicyDropCommand);
         }
     ```
+
+## Disable streaming ingestion using C#
 
 1. To disable streaming ingestion on your cluster, execute the following code:
     
