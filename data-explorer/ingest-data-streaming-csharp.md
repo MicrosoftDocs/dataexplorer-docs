@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ---
 
-# Streaming ingestion setup using C#
+# Configure streaming ingestion on your Azure Data Explorer cluster using C#
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-streaming.md)
