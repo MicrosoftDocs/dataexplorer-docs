@@ -54,8 +54,8 @@ Commands to control the update policy include:
 
 * [.show table policy update](update-policy.md#show-update-policy) shows the current update policy of a table.
 * [.alter table policy update](update-policy.md#alter-update-policy) sets the current update policy of a table.
-* [.alter-merge table policy update](update-policy.md#.alter---merge-table-policy-update) appends to the current update policy of a table.
-* [.delete table policy update](update-policy.md#.delete-table-policy-update) appends to the current update policy of a table.
+* [.alter-merge table policy update](update-policy.md#alter---merge-table-policy-update) appends to the current update policy of a table.
+* [.delete table policy update](update-policy.md#delete-table-policy-update) appends to the current update policy of a table.
 
 ### Update policy as part of other commands
  
