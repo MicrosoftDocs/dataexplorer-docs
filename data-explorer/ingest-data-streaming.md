@@ -76,7 +76,7 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
     .alter database StreamingTestDb policy streamingingestion enable
     ```
 
-    :::image type="content" source="media/ingest-data-streaming/define-streamingingestion-policy.png" alt-text="Define the streaming ingestion policy in Azure Data Explorer":::
+    :::image type="content" source="media/ingest-data-streaming/define-streaming-ingestion-policy.png" alt-text="Define the streaming ingestion policy in Azure Data Explorer":::
 
 [!INCLUDE [ingest-data-streaming-use](includes/ingest-data-streaming-types.md)]
 
@@ -91,7 +91,7 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
     .delete table TestTable policy streamingingestion 
     ```
 
-    :::image type="content" source="media/ingest-data-streaming/delete-streamingingestion-policy.png" alt-text="Delete streaming ingestion policy in Azure Data Explorer":::
+    :::image type="content" source="media/ingest-data-streaming/delete-streaming-ingestion-policy.png" alt-text="Delete streaming ingestion policy in Azure Data Explorer":::
 
 1. In **Settings**, select **Configurations**.
 1. In the **Configurations** pane, select **Off** to disable **Streaming ingestion**.
