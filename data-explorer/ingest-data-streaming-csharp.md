@@ -106,7 +106,7 @@ To create a table and define a streaming ingestion policy on this table, run the
 
 To drop the streaming ingestion policy from the table, run the following code:
     
-    ```csharp
+```csharp
         var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
         var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
         var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
@@ -120,13 +120,13 @@ To drop the streaming ingestion policy from the table, run the following code:
         {
             client.ExecuteControlCommand(tablePolicyDropCommand);
         }
-    ```
+```
 
 ### Disable streaming ingestion using C#
 
 To disable streaming ingestion on your cluster, run the following code:
     
-    ```csharp
+```csharp
         var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
         var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
         var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
@@ -147,7 +147,7 @@ To disable streaming ingestion on your cluster, run the following code:
         var clusterUpdateParameters = new ClusterUpdate(enableStreamingIngest: false);
     
         await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdateParameters);
-    ```
+```
     
 [!INCLUDE [ingest-data-streaming-limitations](includes/ingest-data-streaming-limitations.md)]
 
