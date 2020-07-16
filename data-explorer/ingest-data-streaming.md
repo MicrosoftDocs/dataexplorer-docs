@@ -46,7 +46,7 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 > [!WARNING]
 > Review the [limitations](#limitations) prior to enabling steaming ingestion.
 
-## Create a target table and define the policy
+## Create a target table and define the policy in the Azure portal
 
 1. In the Azure portal, navigate to your cluster.
 1. Select **Query**.
@@ -61,7 +61,10 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 
     :::image type="content" source="media/ingest-data-streaming/create-table.png" alt-text="Create a table for streaming ingestion into Azure Data Explorer":::
 
-1. Define the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) on the table you've created or on the database that contains this table. A policy that is defined at the database level applies to all existing and future tables in the database. Copy one of the following commands into the **Query pane**, and select **Run**.
+1. Define the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) on the table you've created or on the database that contains this table. 
+ 
+    > [!TIP]
+    > A policy that is defined at the database level applies to all existing and future tables in the database. Copy one of the following commands into the **Query pane**, and select **Run**.
 
     ```kusto
     .alter table TestTable policy streamingingestion enable
@@ -76,6 +79,8 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
     :::image type="content" source="media/ingest-data-streaming/define-streamingingestion-policy.png" alt-text="Define the streaming ingestion policy in Azure Data Explorer":::
 
 [!INCLUDE [ingest-data-streaming-use](includes/ingest-data-streaming-ingest.md)]
+
+## Drop the streaming ingestion policy in the Azure portal
 
 1. In the Azure portal, go to your Azure Data Explorer cluster and select **Query**. 
 1. To drop the streaming ingestion policy from the table, copy the following command into **Query pane** and select **Run**.

@@ -65,7 +65,7 @@ To enable streaming ingestion on your Azure Data Explorer cluster, run the follo
 > [!WARNING]
 > Review the [limitations](#limitations) prior to enabling steaming ingestion.
 
-## Create a target table and define the policy
+## Create a target table and define the policy using C#
 
 To create a table and define a streaming ingestion policy on this table, run the following code:
 
