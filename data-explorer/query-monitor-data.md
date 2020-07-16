@@ -95,6 +95,7 @@ The Azure Data Explorer proxy cluster supports functions for both Application In
 This capability enables cross-cluster queries to reference an Azure Monitor tabular function directly.
 The following commands are supported by the proxy:
 
+
 * `.show functions`
 * `.show function {FunctionName}`
 * `.show database {DatabaseName} schema as json`
