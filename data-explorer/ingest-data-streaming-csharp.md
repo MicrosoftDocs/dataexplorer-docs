@@ -120,7 +120,7 @@ To create a table and define a streaming ingestion policy on this table, run the
         }
     ```
 
-## Disable streaming ingestion using C#
+### Disable streaming ingestion using C#
 
 1. To disable streaming ingestion on your cluster, run the following code:
     
