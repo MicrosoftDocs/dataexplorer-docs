@@ -64,7 +64,9 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 1. Define the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) on the table you've created or on the database that contains this table. 
  
     > [!TIP]
-    > A policy that is defined at the database level applies to all existing and future tables in the database. Copy one of the following commands into the **Query pane**, and select **Run**.
+    > A policy that is defined at the database level applies to all existing and future tables in the database. 
+    
+1. Copy one of the following commands into the **Query pane** and select **Run**.
 
     ```kusto
     .alter table TestTable policy streamingingestion enable
