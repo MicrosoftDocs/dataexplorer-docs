@@ -98,11 +98,13 @@ To create a table and define a streaming ingestion policy on this table, run the
     }
 ```
 
-[!INCLUDE [ingest-data-streaming-use](includes/ingest-data-streaming-ingest.md)]
+[!INCLUDE [ingest-data-streaming-use](includes/ingest-data-streaming-types.md)]
+
+[!INCLUDE [ingest-data-streaming-disable](includes/ingest-data-streaming-disable.md)]
 
 ## Drop the streaming ingestion policy using C#
 
-1. To drop the streaming ingestion policy from the table, run the following code:
+To drop the streaming ingestion policy from the table, run the following code:
     
     ```csharp
         var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -122,7 +124,7 @@ To create a table and define a streaming ingestion policy on this table, run the
 
 ## Disable streaming ingestion using C#
 
-1. To disable streaming ingestion on your cluster, run the following code:
+To disable streaming ingestion on your cluster, run the following code:
     
     ```csharp
         var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID

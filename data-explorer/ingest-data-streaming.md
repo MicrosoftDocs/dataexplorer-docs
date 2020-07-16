@@ -80,7 +80,9 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 
     :::image type="content" source="media/ingest-data-streaming/define-streamingingestion-policy.png" alt-text="Define the streaming ingestion policy in Azure Data Explorer":::
 
-[!INCLUDE [ingest-data-streaming-use](includes/ingest-data-streaming-ingest.md)]
+[!INCLUDE [ingest-data-streaming-use](includes/ingest-data-streaming-types.md)]
+
+[!INCLUDE [ingest-data-streaming-disable](includes/ingest-data-streaming-disable.md)]
 
 ## Drop the streaming ingestion policy in the Azure portal
 
