@@ -11,7 +11,7 @@ ms.date: 07/13/2020
 ---
 # Update policy overview
 
-The [update policy](update-policy.md) instructs Kusto to automatically append data to a target table whenever new data is inserted into the source table. The update policy's query runs on the data inserted into the source table. For example, the policy lets the creation of one table be the filtered view of another table. The new table can have a different schema, retention policy, and so on.
+The [update policy](update-policy.md) instructs Kusto to automatically append data to a target table whenever new data is inserted into the source table. The update policy's query runs on the data inserted into the source table. For example, the policy lets the creation of one table be the filtered view of another table. The new table can have a different schema, retention policy, and so on. Cascading updates are allowed (`TableA` → `TableB` → `TableC` → ...).
 
 By default, failure to run the update policy doesn't affect the ingestion of data to the source table. If the update policy is defined as transactional, failure to run the policy forces the ingestion of data into the source table to fail.
 
@@ -23,6 +23,9 @@ By default, failure to run the update policy doesn't affect the ingestion of dat
 A table may have zero, one, or more update policy objects associated with it.
 Each such object is represented as a JSON property bag, with the following properties defined.
 
+> [!NOTE]
+> The source table and the table for which the update policy is defined must be in the same database.
+
 |Property |Type |Description  |
 |---------|---------|----------------|
 |IsEnabled                     |`bool`  |States if update policy is enabled (true) or disabled (false)                                                                                                                               |
@@ -31,7 +34,11 @@ Each such object is represented as a JSON property bag, with the following prope
 |IsTransactional               |`bool`  |States if the update policy is transactional or not (defaults to false). Failure to run a transactional update policy results in the source table not being updated with new data   |
 |PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified during the ingestion into the source table, should also apply to the ones in the derived table.                 |
 
-## How to trigger the policy
+
+
+## Update policy commands
+
+### How to trigger the policy
 
 Update policies take effect when data is ingested or moved to (extents are created in) a table using any of the following commands:
 
@@ -43,28 +50,32 @@ Update policies take effect when data is ingested or moved to (extents are creat
 
 ### Control Commands
 
-* Use [.show table policy update](update-policy.md#show-update-policy) to show the current update policy of a table.
-* Use [.alter table policy update](update-policy.md#alter-update-policy) to set the current update policy of a table.
-* Use [.alter-merge table policy update](update-policy.md#.alter---merge-table-policy-update) to append to the current update policy of a table.
-* Use [.delete table policy update](update-policy.md#.delete-table-policy-update) to append to the current update policy of a table.
+Commands to control the update policy include:
 
-## Considerations and best practices
+* [.show table policy update](update-policy.md#show-update-policy) shows the current update policy of a table.
+* [.alter table policy update](update-policy.md#alter-update-policy) sets the current update policy of a table.
+* [.alter-merge table policy update](update-policy.md#.alter---merge-table-policy-update) appends to the current update policy of a table.
+* [.delete table policy update](update-policy.md#.delete-table-policy-update) appends to the current update policy of a table.
 
-|Subject  |Notes  |
-|---------|---------|
-| **Retention policy on the source table** | So as not to keep the raw data in the source table, set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: <ul> <li> The source data isn't queryable from the source table. <li> The source data isn't persisted to durable storage as part of the ingestion operation. <li>  Operational performance will Improve. <li> Post-ingestion resources for background grooming operations will be reduced. These operations are done on [extents](../management/extents-overview.md) in the source table.</li> </ul>|
-| **Source table and update policy table** |The source table and the table for which the update policy is defined must be in the same database.
-| **Multiple tables**| If update policies are defined over multiple tables in a circular manner, the chain of updates is cut. This issue is detected at runtime. Data will be ingested only once to each table in the chain of affected tables.
-|**Cascading updates** | Cascading updates are allowed (`TableA` → `TableB` → `TableC` → ...)   |
-| Part of `.set-or-replace` command | When the update policy is invoked as part of a  `.set-or-replace` command, the default behavior is that data in derived table(s) is replaced in the same way as in the source table.
-| `PropagateIngestionProperties` |This command only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this option has no effect.
+### Update policy as part of other commands
+ 
+* When the update policy is invoked as part of a  `.set-or-replace` command, the default behavior is that data in derived table(s) is replaced in the same way as in the source table.
+* The `PropagateIngestionProperties` command only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this option has no effect.
 
-    
+## Retention policy on the source table
+
+So as not to keep the raw data in the source table, set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: 
+* The source data isn't queryable from the source table. 
+* The source data isn't persisted to durable storage as part of the ingestion operation. 
+* Operational performance will Improve. 
+* Post-ingestion resources for background grooming operations will be reduced. These operations are done on [extents](../management/extents-overview.md) in the source table.
+
 ## Query with the update policy
 
-* The query is automatically scoped to cover only the newly ingested records.
-* The query can invoke stored functions.
-* The query can't include cross-database or cross-cluster queries.
+* The query:
+    * Is automatically scoped to cover only the newly ingested records.
+    * Can invoke stored functions.
+    * Can't include cross-database or cross-cluster queries.
 * A query that is run as part of an update policy doesn't have read access to tables that have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled. 
 * The update policy's query can't reference any table with a [Row Level Security policy](rowlevelsecuritypolicy.md) that is enabled. 
 * When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
@@ -120,6 +131,9 @@ Failures that occur while the policies are being updated can be retrieved using 
 | where FailedOn > ago(1hr) and OriginatesFromUpdatePolicy == true
 ```
 
+> [!NOTE]
+> If update policies are defined over multiple tables in a circular manner, the chain of updates is cut. This issue is detected at runtime. Data will be ingested only once to each table in the chain of affected tables.
+
 ### Treatment of failures
 
 * Non-transactional policy: The failure is ignored by Kusto. Any retry is the responsibility of the data owner.  
@@ -129,4 +143,5 @@ Failures that occur while the policies are being updated can be retrieved using 
     * Both of the above settings can be altered in the Data Management service's configuration, by KustoOps.
     * The backoff period starts at 2 minutes, and grows exponentially (2 -> 4 -> 8 -> 16 ... minutes)
   * In any other case, any retry is the responsibility of the data owner.
+
 
