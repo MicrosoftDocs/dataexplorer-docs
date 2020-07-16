@@ -10,7 +10,7 @@ ms.reviewer: alexefro
 ms.custom: include file
 ---
 
-Use streaming ingestion to load data loading when you need low latency between ingestion and query. The streaming ingestion operation completes in under 10 seconds, and your data is immediately available for query after completion. This ingestion method is suitable for ingesting a high volume of data, such as thousands of records per second spread over thousands of tables. Each table receives a relatively low volume of data, such as a few records per second.
+Use streaming ingestion to load data when you need low latency between ingestion and query. The streaming ingestion operation completes in under 10 seconds, and your data is immediately available for query after completion. This ingestion method is suitable for ingesting a high volume of data, such as thousands of records per second, spread over thousands of tables. Each table receives a relatively low volume of data, such as a few records per second.
 
 Use bulk ingestion instead of streaming ingestion when the amount of data ingested exceeds 4 GB per hour per table.
 
