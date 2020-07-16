@@ -114,8 +114,8 @@
         href: data-connection-iot-hub-python.md
       - name: Azure Resource Manager template
         href: data-connection-iot-hub-resource-manager.md
-      - name: Azure Data Factory
-        items:
+    - name: Azure Data Factory
+      items:
       - name: Integration with Data Factory 
         href: data-factory-integration.md 
       - name: Copy data using Azure Data Factory
@@ -319,7 +319,7 @@
       href: troubleshoot-database-table.md
 - name: Reference
   items:
-  - name: Kusto query
+  - name: Kusto Query Language
     items:
     - name: Overview
       href: ./kusto/query/index.md
@@ -1221,45 +1221,14 @@
           href: ./kusto/tools/kusto-explorer-troubleshooting.md
       - name: Kusto.Cli
         href: ./kusto/tools/kusto-cli.md
-  - name: Concepts
-    href: ./kusto/concepts/index.md
-    items:
-    - name: Getting started
-      href: ./kusto/concepts/index.md
-      items:
-      - name: Sandboxes
-        href: ./kusto/concepts/sandboxes.md
-    - name: Misc and Errors
-      items:
-      - name: Query limits
-        href: ./kusto/concepts/querylimits.md
-      - name: Partial query failures
-        href: ./kusto/concepts/partialqueryfailures.md
-        items:
-        - name: Result truncation
-          href: ./kusto/concepts/resulttruncation.md
-        - name: Runaway queries
-          href: ./kusto/concepts/runawayqueries.md
-        - name: Overflows
-          href: ./kusto/concepts/overflow.md
-      - name: Cross-cluster queries and schema changes
-        href: ./kusto/concepts/crossclusterandschemachanges.md
-      - name: Query consistency
-        href: ./kusto/concepts/queryconsistency.md
-      - name: Errors in native code
-        href: ./kusto/concepts/errorsinnativecode.md
-      - name: Fact and dimension tables
-        href: ./kusto/concepts/fact-and-dimension-tables.md
   - name: Management
-    href: ./kusto/management/index.md
     items:
     - name: Management (control commands) overview
       href: ./kusto/management/index.md
+    - name: Schema
       items:
       - name: Best practices for schema design
         href: ./kusto/management/best-practices.md
-    - name: Schema
-      items:
       - name: Databases management
         href: ./kusto/management/databases.md
         items:
@@ -1537,10 +1506,36 @@
         href: ./kusto/management/cluster-follower.md
       - name: Data purge
         href: ./kusto/concepts/data-purge.md
-  - name: API
-    href: ./kusto/api/index.md
+  - name: Concepts
     items:
-    - name: Overview
+    - name: Getting started
+      href: ./kusto/concepts/index.md
+    - name: Misc and Errors
+      items:
+      - name: Sandboxes
+        href: ./kusto/concepts/sandboxes.md
+      - name: Query limits
+        href: ./kusto/concepts/querylimits.md
+      - name: Partial query failures
+        href: ./kusto/concepts/partialqueryfailures.md
+        items:
+        - name: Result truncation
+          href: ./kusto/concepts/resulttruncation.md
+        - name: Runaway queries
+          href: ./kusto/concepts/runawayqueries.md
+        - name: Overflows
+          href: ./kusto/concepts/overflow.md
+      - name: Cross-cluster queries and schema changes
+        href: ./kusto/concepts/crossclusterandschemachanges.md
+      - name: Query consistency
+        href: ./kusto/concepts/queryconsistency.md
+      - name: Errors in native code
+        href: ./kusto/concepts/errorsinnativecode.md
+      - name: Fact and dimension tables
+        href: ./kusto/concepts/fact-and-dimension-tables.md
+  - name: API
+    items:
+    - name: API overview
       href: ./kusto/api/index.md
       items:
       - name: Client libraries
