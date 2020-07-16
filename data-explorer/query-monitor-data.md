@@ -33,7 +33,7 @@ The Azure Data Explorer proxy flow:
 
 1. In the Azure Data Explorer UI (https://dataexplorer.azure.com/clusters), select **Add Cluster**.
 
-1. In the **Add Cluster** window, add the URL to the LA or AI cluster. 
+1. In the **Add Cluster** window, add the URL of the LA or AI cluster. 
     
     * For LA: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
     * For AI: `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
@@ -64,7 +64,7 @@ You can run the queries using client tools that support Kusto queries, such as: 
 ### Direct query from your LA or AI ADX Proxy cluster
 
 Run queries on your LA or AI cluster. Verify that your cluster is selected in the left pane. 
-
+ 
 ```kusto
 Perf | take 10 // Demonstrate query through the proxy on the LA workspace
 ```
@@ -95,11 +95,14 @@ The Azure Data Explorer proxy cluster supports functions for both Application In
 This capability enables cross-cluster queries to reference an Azure Monitor tabular function directly.
 The following commands are supported by the proxy:
 
-```kusto
-.show functions
-.show function {FunctionName}
-.show database {DataBaseName} schema as json
-```
+* `.show functions`
+* `.show function {FunctionName}`
+* `.show database {DatabaseName} schema as json`
+
+The following image depicts an example of querying a tabular function from the Azure Data Explorer Web UI. 
+To use the function, run the name in the Query window.
+
+  [ ![Query a tabular function from Azure Data Explorer Web UI](media/adx-proxy/function-query-adx-proxy.png)](media/adx-proxy/function-query-adx-proxy.png#lightbox)
 
 > [!NOTE]
 > Azure Monitor only supports tabular functions. Tabular functions don't support parameters.
