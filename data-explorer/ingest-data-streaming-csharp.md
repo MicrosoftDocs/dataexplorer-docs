@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ---
 
-# Streaming ingestion setup using C#
+# Configure streaming ingestion on your Azure Data Explorer cluster using C#
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-streaming.md)
@@ -102,7 +102,7 @@ To create a table and define a streaming ingestion policy on this table, run the
 
 [!INCLUDE [ingest-data-streaming-disable](includes/ingest-data-streaming-disable.md)]
 
-## Drop the streaming ingestion policy using C#
+### Drop the streaming ingestion policy using C#
 
 To drop the streaming ingestion policy from the table, run the following code:
     
@@ -122,7 +122,7 @@ To drop the streaming ingestion policy from the table, run the following code:
         }
     ```
 
-## Disable streaming ingestion using C#
+### Disable streaming ingestion using C#
 
 To disable streaming ingestion on your cluster, run the following code:
     

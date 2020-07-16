@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ---
 
-# Streaming ingestion
+# Configure streaming ingestion on your Azure Data Explorer cluster using the Azure portal
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-streaming.md)
@@ -33,8 +33,6 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 :::image type="content" source="media/ingest-data-streaming/cluster-creation-enable-streaming.png" alt-text="Enable streaming ingestion while creating a cluster in Azure Data Explorer":::
 
 ### Enable streaming ingestion on an existing cluster in the Azure portal
-
-**In the Azure portal:**
 
 1. In the Azure portal, go to your Azure Data Explorer cluster. 
 1. In **Settings**, select **Configurations**. 
