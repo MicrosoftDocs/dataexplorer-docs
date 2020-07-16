@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ---
 
-# Streaming ingestion
+# Configure streaming ingestion on your Azure Data Explorer cluster using the Azure portal
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-streaming.md)
