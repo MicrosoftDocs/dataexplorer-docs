@@ -1,6 +1,6 @@
 ---
-title: Set up Azure Data Explorer cluster for streaming ingestion using Azure portal
-description: Learn how to configure your Azure Data Explorer cluster using Azure portal and start loading data with streaming ingestion.
+title: Configure streaming ingestion on your Azure Data Explorer cluster using the Azure portal
+description: Learn how to configure your Azure Data Explorer cluster and start loading data with streaming ingestion  using Azure portal.
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexefro
