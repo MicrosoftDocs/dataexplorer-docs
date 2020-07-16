@@ -19,9 +19,7 @@ ms.date: 07/13/2020
 
 ## Prerequisites
 
-* If you don't have Visual Studio 2019 installed, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). 
-
-    Enable **Azure development** during the Visual Studio setup.
+* If you don't have Visual Studio 2019 installed, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/).  Enable **Azure development** during the Visual Studio setup.
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-csharp.md)
    
@@ -39,7 +37,7 @@ var cluster = new Cluster(location, sku, enableStreamingIngest:true);
 
 ### Enable streaming ingestion on an existing cluster
 
-To enable streaming ingestion on your Azure Data Explorer cluster, execute the following code:
+To enable streaming ingestion on your Azure Data Explorer cluster, run the following code:
 
 ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -69,7 +67,7 @@ To enable streaming ingestion on your Azure Data Explorer cluster, execute the f
 
 ## Create a target table and define the policy
 
-To create a table and define a streaming ingestion policy on this table, execute the following code:
+To create a table and define a streaming ingestion policy on this table, run the following code:
 
 ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -104,7 +102,7 @@ To create a table and define a streaming ingestion policy on this table, execute
 
 ## Drop the streaming ingestion policy using C#
 
-1. To drop the streaming ingestion policy from the table, execute the following code:
+1. To drop the streaming ingestion policy from the table, run the following code:
     
     ```csharp
         var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -124,7 +122,7 @@ To create a table and define a streaming ingestion policy on this table, execute
 
 ## Disable streaming ingestion using C#
 
-1. To disable streaming ingestion on your cluster, execute the following code:
+1. To disable streaming ingestion on your cluster, run the following code:
     
     ```csharp
         var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID

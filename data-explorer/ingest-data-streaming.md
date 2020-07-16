@@ -36,7 +36,8 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 
 **In the Azure portal:**
 
-1. Navigate to your Azure Data Explorer cluster. In **Settings**, select **Configurations**. 
+1. In the Azure portal, go to your Azure Data Explorer cluster. 
+1. In **Settings**, select **Configurations**. 
 1. In the **Configurations** pane, select **On** to enable **Streaming ingestion**.
 1. Select **Save**.
 
@@ -76,8 +77,8 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 
 [!INCLUDE [ingest-data-streaming-use](includes/ingest-data-streaming-ingest.md)]
 
-1. In the Azure portal, go to your Azure Data Explorer cluster and select **Query**. <br>
-To drop the streaming ingestion policy from the table copy the following command into **Query pane** and select Run.
+1. In the Azure portal, go to your Azure Data Explorer cluster and select **Query**. 
+1. To drop the streaming ingestion policy from the table, copy the following command into **Query pane** and select **Run**.
 
     ```Kusto
     .delete table TestTable policy streamingingestion 
