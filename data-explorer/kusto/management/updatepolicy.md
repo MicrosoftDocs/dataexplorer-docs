@@ -11,7 +11,7 @@ ms.date: 07/13/2020
 ---
 # Update policy overview
 
-The [update policy](update-policy.md) instructs Kusto to automatically append data to a target table whenever new data is inserted into the source table. The update policy's query runs on the data inserted into the source table. For example, the policy lets the creation of one table be the filtered view of another table. The new table can have a different schema, retention policy, and so on. Cascading updates are allowed (`TableA` → `TableB` → `TableC` → ...).
+The [update policy](update-policy.md) instructs Kusto to automatically append data to a target table whenever new data is inserted into the source table. The update policy's query runs on the data inserted into the source table. For example, the policy lets the creation of one table be the filtered view of another table. The new table can have a different schema, retention policy, and so on. 
 
 By default, failure to run the update policy doesn't affect the ingestion of data to the source table. If the update policy is defined as transactional, failure to run the policy forces the ingestion of data into the source table to fail.
 
@@ -33,8 +33,6 @@ Each such object is represented as a JSON property bag, with the following prope
 |Query                         |`string`|A Kusto CSL query that is used to produce the data for the update                                                                                                                           |
 |IsTransactional               |`bool`  |States if the update policy is transactional or not (defaults to false). Failure to run a transactional update policy results in the source table not being updated with new data   |
 |PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified during the ingestion into the source table, should also apply to the ones in the derived table.                 |
-
-
 
 ## Update policy commands
 
@@ -132,7 +130,9 @@ Failures that occur while the policies are being updated can be retrieved using 
 ```
 
 > [!NOTE]
-> If update policies are defined over multiple tables in a circular manner, the chain of updates is cut. This issue is detected at runtime. Data will be ingested only once to each table in the chain of affected tables.
+> Cascading updates are allowed (`TableA` → `TableB` → `TableC` → ...).
+>
+> However, if update policies are defined over multiple tables in a circular manner, the chain of updates is cut. This issue is detected at runtime. Data will be ingested only once to each table in the chain of affected tables.
 
 ### Treatment of failures
 
@@ -143,5 +143,3 @@ Failures that occur while the policies are being updated can be retrieved using 
     * Both of the above settings can be altered in the Data Management service's configuration, by KustoOps.
     * The backoff period starts at 2 minutes, and grows exponentially (2 -> 4 -> 8 -> 16 ... minutes)
   * In any other case, any retry is the responsibility of the data owner.
-
-
