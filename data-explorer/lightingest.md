@@ -70,8 +70,8 @@ The utility can pull source data from a local folder or from an Azure blob stora
 |-pattern        |string  |Optional  |Pattern by which source files/blobs are picked. Supports wildcards. For example, `"*.csv"`. Recommended to enclose in double quotes |
 |-zipPattern     |string  |Optional  |Regular expression to use when selecting which files in a ZIP archive to ingest.<br>All other files in the archive will be ignored. For example, `"*.csv"`. It's recommended to surround it in double quotes |
 |-format, -f           |string  |Optional  |Source data format. Must be one of the [supported formats](ingestion-supported-formats.md) |
-|-ingestionMappingPath, -mappingPath |string  |Optional  |Path to ingestion column-mapping file (mandatory for Json and Avro formats). See [data mappings](kusto/management/mappings.md) |
-|-ingestionMappingRef, -mappingRef  |string  |Optional  |Name of a pre-created ingestion column mapping (mandatory for Json and Avro formats). See [data mappings](kusto/management/mappings.md) |
+|-ingestionMappingPath, -mappingPath |string  |Optional  |Path to local file for ingestion column mapping. Mandatory for Json and Avro formats. See [data mappings](kusto/management/mappings.md) |
+|-ingestionMappingRef, -mappingRef  |string  |Optional  |Name of an ingestion column mapping that was previously created on the table. Mandatory for Json and Avro formats. See [data mappings](kusto/management/mappings.md) |
 |-creationTimePattern      |string  |Optional  |When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data with time ingested](#how-to-ingest-data-with-time-ingested) |
 |-ignoreFirstRow, -ignoreFirst |bool    |Optional  |If set, the first record of each file/blob is ignored (for example, if the source data has headers) |
 |-tag            |string  |Optional  |[Tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data. Multiple occurrences are permitted |
