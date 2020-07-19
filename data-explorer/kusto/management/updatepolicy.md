@@ -13,10 +13,7 @@ ms.date: 07/13/2020
 
 The [update policy](update-policy.md) instructs Kusto to automatically append data to a target table whenever new data is inserted into the source table. The update policy's query runs on the data inserted into the source table. For example, the policy lets the creation of one table be the filtered view of another table. The new table can have a different schema, retention policy, and so on. 
 
-By default, failure to run the update policy doesn't affect the ingestion of data to the source table. If the update policy is defined as transactional, failure to run the policy forces the ingestion of data into the source table to fail.
-
-> [!WARNING]
-> Some user errors can prevent any data from being ingested into the source table. For example, defining an incorrect query in the update policy.
+By default, failure to run the update policy doesn't affect the ingestion of data to the source table. If the update policy is defined as `IsTransactional`:true, failure to run the policy forces the ingestion of data into the source table to fail.
 
 ## The update policy object
 
@@ -88,6 +85,9 @@ So as not to keep the raw data in the source table, set a soft-delete period of 
 * The update policy's query is run in a special mode, in which it "sees" only the newly ingested data to the source table. It isn't possible to query the source table's already-ingested data as part of this query. Doing so quickly results in quadratic-time ingestions.
 * The update policy is defined on the destination table. For this reason, ingesting data into one source table may result in multiple queries being run on that data. The order of execution of update policies is undefined.
 
+> [!WARNING]
+> Defining an incorrect query in the update policy can prevent any data from being ingested into the source table.
+
 ### Testing performance impact
 
 * Defining an update policy can affect the performance of a Kusto cluster because it affects any ingestion into the source table. We recommend that the `Query` part of the update policy is optimized to work well.
@@ -136,7 +136,7 @@ Failures that occur while the policies are being updated can be retrieved using 
 
 ### Treatment of failures
 
-* Non-transactional policy: The failure is ignored by Kusto. Any retry is the responsibility of the data owner.  
+* Non-transactional policy: The failure is ignored by Kusto. Any retry is the responsibility of the data ingestion process owner.  
 * Transactional policy: The original ingestion operation that triggered the update will also fail. The source table and the database won't be modified with new data.
   * If the ingestion method is `pull` (Kusto's Data Management service is involved in the ingestion process), there's an automated retry on the entire ingestion operation, orchestrated by Kusto's Data Management service, according to the following logic:
     * Retries are done until the earliest between `DataImporterMaximumRetryPeriod` (default = 2 days) and `DataImporterMaximumRetryAttempts` (default = 10) is reached.
