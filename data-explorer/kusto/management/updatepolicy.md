@@ -46,6 +46,11 @@ Update policies take effect when data is ingested or moved to (extents are creat
 * [.move extents](../management/extents-commands.md#move-extents)
 * [.replace extents](../management/extents-commands.md#replace-extents)
 
+> [!NOTE]
+> Cascading updates are allowed (`TableA` → `TableB` → `TableC` → ...).
+>
+> However, if update policies are defined over multiple tables in a circular manner, the chain of updates is cut. This issue is detected at runtime. Data will be ingested only once to each table in the chain of affected tables.
+
 ### Control Commands
 
 Commands to control the update policy include:
@@ -128,11 +133,6 @@ Failures that occur while the policies are being updated can be retrieved using 
 .show ingestion failures 
 | where FailedOn > ago(1hr) and OriginatesFromUpdatePolicy == true
 ```
-
-> [!NOTE]
-> Cascading updates are allowed (`TableA` → `TableB` → `TableC` → ...).
->
-> However, if update policies are defined over multiple tables in a circular manner, the chain of updates is cut. This issue is detected at runtime. Data will be ingested only once to each table in the chain of affected tables.
 
 ### Treatment of failures
 
