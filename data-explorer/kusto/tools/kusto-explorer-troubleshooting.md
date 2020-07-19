@@ -154,7 +154,7 @@ Data stored by Kusto.Explorer application can be found here: `C:\Users\\[your al
 
 ## Reset Kusto.Explorer
 
-If you need to, you can completely reset Kusto.Explorer. The following procedure describes how to progressively reset Kusto.Explorer, until it's completely removed from your computer and must be installed from scratch.
+If you need to, you can completely reset Kusto.Explorer. The following procedure describes how to progressively reset Kusto.Explorer, until it's removed from your computer and must be installed from scratch.
 
 1. In Windows, open **Change or remove a program** (also known as **Programs and Features**).
 1. Select every item that starts with `Kusto.Explorer`.
