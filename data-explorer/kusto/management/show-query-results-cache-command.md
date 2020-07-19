@@ -9,13 +9,13 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2020
 ---
-# .show query results cache
+# .show database query results cache
 
-Returns a table showing statistics related to the [query results cache](../query/query-results-cache.md).
+Returns a table showing statistics related to the [query results cache](../query/query-results-cache.md) made against the context database.
 
 **Syntax**
 
-`.show` `query` `results` `cache`
+`.show database query results cache`
 
 **Output**
  
@@ -27,7 +27,3 @@ Returns a table showing statistics related to the [query results cache](../query
 |CacheCapacityInBytes |`long` |The cache capacity in bytes.
 |UsedBytes  |`long` |The cache used space.
 |Count  |`long`| The number of unique query results stored in the cache.
-
-**Limitations**
-
-* The command only shows "recent" history.
