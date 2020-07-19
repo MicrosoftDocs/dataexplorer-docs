@@ -15,7 +15,7 @@ Clear all [cached query results](../query/query-results-cache.md) made against t
 
 **Syntax**
 
-`.clear` `database` `cache` `queryresults`
+`.clear` `database` `cache` `query_results`
 
 **Returns**
 

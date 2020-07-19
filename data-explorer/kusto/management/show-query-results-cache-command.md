@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2020
 ---
-# .show database query results cache
+# .show database cache query_results
 
 Returns a table showing statistics related to the [query results cache](../query/query-results-cache.md) made against the context database.
 
