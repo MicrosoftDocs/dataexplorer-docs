@@ -53,15 +53,15 @@ The utility can pull source data from a local folder or from an Azure blob stora
 
     * The recommended method is for LightIngest to work with the ingestion endpoint at `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`. This way, the Azure Data Explorer service can manage the ingestion load, and you can easily recover from transient errors. However, you can also configure LightIngest to work directly with the engine endpoint (`https://{yourClusterNameAndRegion}.kusto.windows.net`).
 
-        > [!Note]
-        > If you ingest directly with the engine endpoint, you don't need to include `ingest-`, but there won't be a DM feature to protect the engine and improve the ingestion success rate.
+        > [!NOTE]
+        > If you ingest directly with the engine endpoint, you don't need to include `ingest-`. However, there won't be a DM feature to protect the engine and improve the ingestion success rate.
 
     * For optimal ingestion performance, it's important for LightIngest to know the raw data size and so LightIngest will estimate the uncompressed size of local files. However, LightIngest might not be able to correctly estimate the raw size of compressed blobs without first downloading them. Therefore, when ingesting compressed blobs, set the `rawSizeBytes` property on the blob metadata to uncompressed data size in bytes.
 
 ## Command-line arguments
 
-|Argument name            |Type    |Mandatory/Optional |Description       | Example |
-|------------------------------|--------|----------|-----------------------------|--------------|
+|Argument name            |Type    |Mandatory/Optional |Description       |
+|------------------------------|--------|----------|-----------------------------|
 |                               |string  |Mandatory |[Azure Data Explorer Connection String](kusto/api/connection-strings/kusto.md) specifying the Kusto endpoint that will handle the ingestion. Should be enclosed in double quotes |
 |-database, -db          |string  |Optional  |Target Azure Data Explorer database name |
 |-table                  |string  |Mandatory |Target Azure Data Explorer table name |
@@ -139,14 +139,20 @@ The argument values must include:
 * The timestamp format, in standard [.NET DateTime notation](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
 * Constant text immediately following the timestamp (suffix).
 
-** Examples **
-* For blob name that contains the datetime as follows: `historicalvalues19840101.parquet` (the timestamp is four digits for the year, two digits for the month, and two digits for the day of month), the value for `-creationTimePattern` argument is: "'historicalvalues'yyyyMMdd'.parquet'"
-* For blob URI that refers to hierarchical folder structure, like `https://storageaccount/container/folder/2002/12/01/blobname.extension`, the value for `-creationTimePattern` argument is: "'folder/'yyyy/MM/dd'/blob'"
+**Examples** 
 
-```kusto
-ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
- -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
-```
+* A blob name that contains the datetime as follows: `historicalvalues19840101.parquet` (the timestamp is four digits for the year, two digits for the month, and two digits for the day of month), 
+    
+    The value for `-creationTimePattern` argument is: *"'historicalvalues'yyyyMMdd'.parquet'"*
+
+    ```kusto
+    ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
+     -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+    ```
+
+* For a blob URI that refers to hierarchical folder structure, like `https://storageaccount/container/folder/2002/12/01/blobname.extension`, 
+
+    The value for `-creationTimePattern` argument is: *"'folder/'yyyy/MM/dd'/blob'"*
 
 ### Ingesting blobs using a storage account key or a SAS token
 
