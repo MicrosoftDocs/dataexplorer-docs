@@ -63,6 +63,10 @@ ms.date: 05/27/2020
 |[startofyear()](startofyearfunction.md)|Returns the start of the year containing the date, shifted by an offset, if provided.|
 |[todatetime()](todatetimefunction.md)|Converts input to datetime scalar.|
 |[totimespan()](totimespanfunction.md)|Converts input to timespan scalar.|
+|[unixtime_microseconds_todatetime()](unixtime-microseconds-todatetimefunction.md)|Converts unix-epoch microseconds to UTC datetime.|
+|[unixtime_milliseconds_todatetime()](unixtime-milliseconds-todatetimefunction.md)|Converts unix-epoch milliseconds to UTC datetime.|
+|[unixtime_nanoseconds_todatetime()](unixtime-nanoseconds-todatetimefunction.md)|Converts unix-epoch nanoseconds to UTC datetime.|
+|[unixtime_seconds_todatetime()](unixtime-seconds-todatetimefunction.md)|Converts unix-epoch seconds to UTC datetime.|
 |[weekofyear()](weekofyearfunction.md)|Returns an integer representing the week number.|
 
 
