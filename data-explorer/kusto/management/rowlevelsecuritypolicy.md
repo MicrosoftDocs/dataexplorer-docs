@@ -28,6 +28,12 @@ For more information, see [control commands for managing the Row Level Security 
 > [!NOTE]
 > The RLS policy that you configure on the production database will also take effect in the follower databases. You can’t configure different RLS policies on the production and follower databases.
 
+> [!TIP]
+> These functions are often useful for row_level_security queries:
+> * [current_principal()](../query/current-principalfunction.md)
+> * [current_principal_details()](../query/current-principal-detailsfunction.md)
+> * [current_principal_is_member_of()](../query/current-principal-ismemberoffunction.md)
+
 ## Limitations
 
 There's no limit on the number of tables on which Row Level Security policy can be configured.
