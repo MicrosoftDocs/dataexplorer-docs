@@ -47,7 +47,7 @@ A non-`null` table-level policy overrides a database-level policy.
 Kusto supports queries that are scoped down to hot cache data only.
 
 > [!NOTE]
-> Data scoping applies only to entities that support caching policies, such as tables. It is ignored for other entities (e.g., external tables).
+> Data scoping applies only to entities that support caching policies, such as tables. It's ignored for other entities, such as external tables.
 
 There are several query possibilities:
 * Add a client request property called `query_datascope` to the query.
