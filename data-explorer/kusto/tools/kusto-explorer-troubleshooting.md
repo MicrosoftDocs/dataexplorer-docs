@@ -147,7 +147,7 @@ This symptom could be because another application is overriding the default Clic
 
 Sometimes, when previous troubleshooting steps didn't help with getting Kusto.Explorer to start, cleaning data stored locally may help.
 
-Data stored by Kusto.Explorer application can be found here: `C:\Users\\[your alias]\AppData\Local\Kusto.Explorer`.
+Data stored by Kusto.Explorer application can be found here: `C:\Users\[your username]\AppData\Local\Kusto.Explorer`.
 
 > [!NOTE]
 > Cleaning the data will lead to a loss of opened tabs (Recovery folder), saved connections (Connections folder), and application settings (UserSettings folder).
