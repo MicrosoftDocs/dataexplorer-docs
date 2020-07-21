@@ -115,8 +115,8 @@ You can now run queries against either cluster that you're connected to (assumin
 > [!NOTE]
 > Blank lines in the query expression can affect which part of the query is executed.
 >
-> If no text selected, it is assumed that the query or command is separated with empty lines.
-> If text is selected, the selected text is executed.
+> If no text selected, it's assumed that the query or command is separated by empty lines.
+> If text is selected, the selected text is run.
 
 ## Work with the table grid
 
