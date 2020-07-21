@@ -239,8 +239,3 @@ LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
   -mappingPath:"MAPPING_FILE_PATH"
   -trace:"LOGS_PATH"
 ```
-
-## Next steps
-
-* stuff here
-* more stuff
