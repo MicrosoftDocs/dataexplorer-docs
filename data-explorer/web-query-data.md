@@ -112,6 +112,12 @@ You can now run queries against either cluster that you're connected to (assumin
 
     ![Column chart](media/web-query-data/column-chart.png)
 
+> [!NOTE]
+> Blank lines in the query expression can affect which part of the query is executed.
+>
+> If no text selected, it's assumed that the query or command is separated by empty lines.
+> If text is selected, the selected text is run.
+
 ## Work with the table grid
 
 Now you've seen how basic queries work, let's look at how you can use the table grid to customize results and do further analysis.
