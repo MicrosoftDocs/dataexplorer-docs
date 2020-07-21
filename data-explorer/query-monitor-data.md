@@ -42,7 +42,8 @@ The Azure Data Explorer proxy flow:
 
     ![Add cluster](media/adx-proxy/add-cluster.png)
 
-    If you add a connection to more than one proxy cluster, give each a different name. Otherwise they'll all have the same name in the left pane.
+    >[!NOTE]
+    >If you add a connection to more than one proxy cluster, give each a different name. Otherwise they'll all have the same name in the left pane.
 
 1. After the connection is established, your LA or AI cluster will appear in the left pane with your native ADX cluster. 
 
@@ -58,8 +59,8 @@ You can run the queries using client tools that support Kusto queries, such as: 
 > [!TIP]
 > * Database name should have the same name as the resource specified in the proxy cluster. Names are case sensitive.
 > * In cross cluster queries, make sure that the naming of Application Insights apps and Log Analytics workspaces is correct.
->     * If names contain special characters, they're replaced by URL encoding in the proxy cluster name. 
->     * If names include characters that don't meet [KQL identifier name rules](kusto/query/schema-entities/entity-names.md), they are replaced by the dash **-** character.
+> * If names contain special characters, they're replaced by URL encoding in the proxy cluster name. 
+> * If names include characters that don't meet [KQL identifier name rules](kusto/query/schema-entities/entity-names.md), they are replaced by the dash **-** character.
 
 ### Direct query from your LA or AI ADX Proxy cluster
 
