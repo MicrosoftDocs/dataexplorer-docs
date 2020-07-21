@@ -143,7 +143,7 @@ The argument values must include:
 
 * A blob name that contains the datetime as follows: `historicalvalues19840101.parquet` (the timestamp is four digits for the year, two digits for the month, and two digits for the day of month), 
     
-    The value for `-creationTimePattern` argument is: *"'historicalvalues'yyyyMMdd'.parquet'"*
+    The value for `-creationTimePattern` argument is part of the filename: *"'historicalvalues'yyyyMMdd'.parquet'"*
 
     ```kusto
     ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
@@ -152,7 +152,12 @@ The argument values must include:
 
 * For a blob URI that refers to hierarchical folder structure, like `https://storageaccount/container/folder/2002/12/01/blobname.extension`, 
 
-    The value for `-creationTimePattern` argument is: *"'folder/'yyyy/MM/dd'/blob'"*
+    The value for `-creationTimePattern` argument is part of the folder structure: *"'folder/'yyyy/MM/dd'/blob'"*
+
+   ```kusto
+    ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'folder/'yyyy/MM/dd'/blob'"
+     -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+    ```
 
 ### Ingesting blobs using a storage account key or a SAS token
 
