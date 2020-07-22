@@ -31,11 +31,11 @@ Carefully design your data schema and investigate relevant policies before stori
 The process of selectively purging data from Azure Data Explorer happens in the following steps:
 
 1. Phase 1:
-   Give an input with an Azure Data Explorer table name and a per-record predicate, indicating which records to delete. Kusto scans the table looking to identify data shards that would participate in the data purge. The shards identified are those having one or more records for which the predicate returns true.
+   Give an input with an Azure Data Explorer table name and a per-record predicate, indicating which records to delete. Kusto scans the table looking to identify data extents that would participate in the data purge. The extents identified are those having one or more records for which the predicate returns true.
 1. Phase 2: (Soft Delete)
-   Replace each data shard in the table (identified in step (1)) with a reingested version. The reingested version shouldn't have the records for which the predicate returns true. If new data is not being ingested into the table, then by the end of this phase, queries will no longer return data for which the predicate returns true. The duration of the purge soft delete phase depends on the following parameters: 
+   Replace each data extent in the table (identified in step (1)) with a reingested version. The reingested version shouldn't have the records for which the predicate returns true. If new data is not being ingested into the table, then by the end of this phase, queries will no longer return data for which the predicate returns true. The duration of the purge soft delete phase depends on the following parameters: 
      * The number of records that must be purged 
-	 * Record distribution across the data shards in the cluster 
+	 * Record distribution across the data extents in the cluster 
 	 * The number of nodes in the cluster  
 	 * The spare capacity it has for purge operations
 	 * Several other factors
