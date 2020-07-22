@@ -81,7 +81,7 @@ let shapes = datatable (name: string, sideCount: int)
     "decagon", 10
 ];
 shapes
-| summarize mylist=make_list(name) by isEvenSideCount = not(tobool(sideCount % 2))
+| summarize mylist = make_list(name) by isEvenSideCount = sideCount % 2 == 0
 ```
 
 |mylist|isEvenSideCount|
