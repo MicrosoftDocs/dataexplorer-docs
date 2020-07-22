@@ -40,7 +40,7 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 ### One Column
 
-Most simple example is to make a list out of a single column:
+The simplest example is to make a list out of a single column:
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
