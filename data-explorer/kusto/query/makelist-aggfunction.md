@@ -91,7 +91,7 @@ shapes
 
 ### Packing a dynamic object
 
-We can [pack](./packfunction.md) a dynamic object in a column before making a list out of it:
+You can [pack](./packfunction.md) a dynamic object in a column before making a list out of it, as seen in the following query:
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
