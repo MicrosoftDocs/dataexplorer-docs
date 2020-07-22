@@ -111,7 +111,7 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
         :::image type="content" source="../images/eventgrid/filters-tab.png" alt-text="Filters tab event grid":::
 
 > [!NOTE]
-> Azure Event Grid provides a retry mechanism in case that the endpoint doesn't acknowledge receipt of an event. When retry delivery fail, Event Grid also supports delivering of undelivered events to a storage account using a process of **dead-lettering**. For more information about Azure Event Grid retry mechanism, see [Event Grid message delivery and retry](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration).
+> When the endpoint doesn't acknowledge receipt of an event, Azure Event Grid activates a retry mechanism. If this retry delivery fails, Event Grid delivers the undelivered events to a storage account using a process of *dead-lettering*. For more information, see [Event Grid message delivery and retry](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration).
 
 ### Data ingestion connection to Azure Data Explorer
 
