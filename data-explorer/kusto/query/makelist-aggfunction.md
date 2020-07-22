@@ -38,7 +38,7 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 ## Examples
 
-### One Column
+### One column
 
 The simplest example is to make a list out of a single column:
 
