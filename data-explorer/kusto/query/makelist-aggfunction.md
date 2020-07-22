@@ -56,7 +56,7 @@ let shapes = datatable (name: string, sideCount: int)
     "decagon", 10
 ];
 shapes
-| summarize mylist=make_list(name)
+| summarize mylist = make_list(name)
 ```
 
 |mylist|
