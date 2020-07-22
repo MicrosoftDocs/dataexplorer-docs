@@ -80,7 +80,7 @@ To reduce purge execution time:
 
 ## Trigger the purge process
 
-> [!Note]
+> [!NOTE]
 > Purge execution is invoked by running [purge table *TableName* records](#purge-table-tablename-records-command) command on the Data Management endpoint https://ingest-[YourClusterName].[Region].kusto.windows.net.
 
 ### Purge table TableName records command
@@ -89,24 +89,24 @@ Purge command may be invoked in two ways for differing usage scenarios:
 
 * Programmatic invocation: A single step that is intended to be invoked by applications. Calling this command directly triggers purge execution sequence.
 
-	**Syntax**
+  **Syntax**
 
-	 ```kusto
-	 // Connect to the Data Management service
-	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
-	 
-	 .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
-	 ```
+  ```kusto
+  // Connect to the Data Management service
+  #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
+ 
+  .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
+   ```
 
-	> [!NOTE]
-	> Generate this command by using the CslCommandGenerator API, available as part of the [Kusto Client Library](../api/netfx/about-kusto-data.md) NuGet package.
+  > [!NOTE]
+  > Generate this command by using the CslCommandGenerator API, available as part of the [Kusto Client Library](../api/netfx/about-kusto-data.md) NuGet package.
 
 * Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data. Using this option may take a long time to complete on large tables with significant cold cache data.
 	<!-- If query times-out on DM endpoint (default timeout is 10 minutes), it is recommended to use the [engine `whatif` command](#purge-whatif-command) directly againt the engine endpoint while increasing the [server timeout limit](../concepts/querylimits.md#limit-on-request-execution-time-timeout). Only after you have verified the expected results using the engine whatif command, issue the purge command via the DM endpoint using the 'noregrets' option. -->
 
-	 **Syntax**
+  **Syntax**
 
-	 ```kusto
+  ```kusto
 	 // Connect to the Data Management service
 	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
 	 
@@ -115,7 +115,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 
 	 // Step #2 - input the verification token to execute purge
 	 .purge table [TableName] records in database [DatabaseName] with (verificationtoken='<verification token from step #1>') <| [Predicate]
-	 ```
+  ```
 	
 	| Parameters  | Description  |
 	|---------|---------|
@@ -136,50 +136,50 @@ Purge command may be invoked in two ways for differing usage scenarios:
 
 To start purge in a two-step activation scenario, run step #1 of the command:
 
-	```kusto
+ ```kusto
 	// Connect to the Data Management service
 	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
 	 
 	.purge table MyTable records in database MyDatabase <| where CustomerId in ('X', 'Y')
-	```
+ ```
 
-	**Output**
+**Output**
 
-	| NumRecordsToPurge | EstimatedPurgeExecutionTime| VerificationToken
-	|--|--|--
-	| 1,596 | 00:00:02 | e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b
+ | NumRecordsToPurge | EstimatedPurgeExecutionTime| VerificationToken
+ |---|---|---
+ | 1,596 | 00:00:02 | e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b
 
-	Then, validate the NumRecordsToPurge before running step #2. 
+Then, validate the NumRecordsToPurge before running step #2. 
 
 To complete a purge in a two-step activation scenario, use the verification token returned from step #1 to run step #2:
 
-	```kusto
-	.purge table MyTable records in database MyDatabase
-	with (verificationtoken='e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b')
-	<| where CustomerId in ('X', 'Y')
-	```
+```kusto
+.purge table MyTable records in database MyDatabase
+ with(verificationtoken='e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b')
+<| where CustomerId in ('X', 'Y')
+```
 
-	**Output**
+**Output**
 
-	| `OperationId` | `DatabaseName` | `TableName`|`ScheduledTime` | `Duration` | `LastUpdatedOn` |`EngineOperationId` | `State` | `StateDetails` |`EngineStartTime` | `EngineDuration` | `Retries` |`ClientRequestId` | `Principal`|
-	|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-	| c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...|
+| `OperationId` | `DatabaseName` | `TableName`|`ScheduledTime` | `Duration` | `LastUpdatedOn` |`EngineOperationId` | `State` | `StateDetails` |`EngineStartTime` | `EngineDuration` | `Retries` |`ClientRequestId` | `Principal`|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...|
 
 #### Example: Single-step purge
 
 To trigger a purge in a single-step activation scenario, run the following command:
 
-	```kusto
-	// Connect to the Data Management service
-	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
-	 
-	.purge table MyTable records in database MyDatabase with (noregrets='true') <| where CustomerId in ('X', 'Y')
-	```
+```kusto
+// Connect to the Data Management service
+ #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
+ 
+.purge table MyTable records in database MyDatabase with (noregrets='true') <| where CustomerId in ('X', 'Y')
+```
 
 **Output**
 
 | `OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`|
-|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...|
 
 ### Cancel purge operation command
@@ -193,13 +193,13 @@ If needed, you can cancel pending purge requests.
 
 ```kusto
  .cancel purge <OperationId>
- ```
+```
 
 **Example**
 
 ```kusto
  .cancel purge aa894210-1c60-4657-9d21-adb2887993e1
- ```
+```
 
 **Output**
 
@@ -207,15 +207,15 @@ The output of this command is the same as the 'show purges *OperationId*' comman
 If the attempt is successful, the operation state is updated to `Abandoned`. Otherwise, the operation state isn't changed. 
 
 |`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
-|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Abandoned | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
 
 ## Track purge operation status 
 
-> [!Note]
+> [!NOTE]
 > Purge operations can be tracked with the [show purges](#show-purges-command) command, executed against the Data Management endpoint https://ingest-[YourClusterName].[region].kusto.windows.net.
 
-Status = 'Completed' indicates successful completion of the first phase of the purge operation, that is records are soft-deleted and are no longer available for querying. Customers **aren't** expected to track and verify the second phase (hard-delete) completion. This phase is monitored internally by Azure Data Explorer.
+Status = 'Completed' indicates successful completion of the first phase of the purge operation, that is records are soft-deleted and are no longer available for querying. Customers aren't expected to track and verify the second phase (hard-delete) completion. This phase is monitored internally by Azure Data Explorer.
 
 ### Show purges command
 
@@ -251,7 +251,7 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 **Output** 
 
 |`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
-|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:33.6782130 |2019-01-20 11:42:34.6169153 |a0825d4d-6b0f-47f3-a499-54ac5681ab78 |Completed |Purge completed successfully (storage artifacts pending deletion) |2019-01-20 11:41:34.6486506 |00:00:04.4687310 |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
 
 * `OperationId` - the DM operation ID returned when executing purge. 
@@ -279,7 +279,7 @@ Purging a table includes dropping the table, and marking it as purged so that th
 Dropping a table without purging it doesn't delete all its storage artifacts. These artifacts are deleted according to the hard retention policy initially set on the table. 
 The `purge table allrecords` command is quick and efficient and is preferable to the purge records process, if applicable for your scenario. 
 
-> [!Note]
+> [!NOTE]
 > The command is invoked by running the [purge table *TableName* allrecords](#purge-table-tablename-allrecords-command) command on the Data Management endpoint https://ingest-[YourClusterName].[region].kusto.windows.net.
 
 ### Purge table *TableName* allrecords command
@@ -335,7 +335,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 	**Output**
 
 	| `VerificationToken`|
-	|--|
+	|---|
 	| e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b|
 
 1.  To complete a purge in a two-step activation scenario, use the verification token returned from step #1 to run step #2:
