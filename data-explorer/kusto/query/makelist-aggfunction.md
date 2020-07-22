@@ -108,7 +108,7 @@ let shapes = datatable (name: string, sideCount: int)
 ];
 shapes
 | extend d=pack("name", name, "sideCount", sideCount)
-| summarize mylist=make_list(d) by isEvenSideCount = not(tobool(sideCount % 2))
+| summarize mylist = make_list(d) by isEvenSideCount = sideCount % 2 == 0
 ```
 
 |mylist|isEvenSideCount|
