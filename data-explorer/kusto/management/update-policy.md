@@ -115,7 +115,7 @@ MyUpdateFunction()
 
 ```
 
-## .alter-merge table policy update
+## .alter-merge table *TableName* policy update
 
 This command modifies the update policy of the specified table.
 
@@ -143,7 +143,7 @@ and then returns the output of the corresponding [.show table update policy](#sh
 @'[{"IsEnabled": true, "Source": "MyTableY", "Query": "MyUpdateFunction()", "IsTransactional": false}]'  
 ``` 
 
-## .delete table policy update
+## .delete table *TableName* policy update
 
 Deletes the update policy of the specified table.
 
