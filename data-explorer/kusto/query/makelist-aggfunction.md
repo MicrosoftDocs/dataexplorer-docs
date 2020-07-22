@@ -65,7 +65,7 @@ shapes
 
 ### Using the 'by' clause
 
-We can group by:
+In the following query, you group using the `by` clause:
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
