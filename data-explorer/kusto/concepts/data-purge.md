@@ -230,7 +230,7 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 
 | Properties  |Description  |Mandatory/Optional|
 |---------|------------|-------|
-|`OperationId `   |      The Data Management operation Id outputted after executing single phase or second phase.   |Mandatory
+|`OperationId `   |      The Data Management operation ID outputted after executing single phase or second phase.   |Mandatory
 |`StartDate`    |   Lower time limit for filtering operations. If omitted, defaults to 24 hours before current time.      |Optional
 |`EndDate`    |  Upper time limit for filtering operations. If omitted, defaults to current time.       |Optional
 |`DatabaseName`    |     Database name to filter results.    |Optional
