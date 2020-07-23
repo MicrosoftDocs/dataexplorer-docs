@@ -109,7 +109,7 @@ Column name labels are added as the first row for each blob.
   <| myLogs | where id == "moshe" | limit 10000
 ```
 
-**Known issues**
+#### Known issues
 
 *Storage errors during export command*
 
