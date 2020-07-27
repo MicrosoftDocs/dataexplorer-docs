@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ---
 
-# Install and use LightIngest
+# Use LightIngest to ingest data to Azure Data Explorer
  
 LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 The utility can pull source data from a local folder or from an Azure blob storage container.
