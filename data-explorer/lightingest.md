@@ -11,8 +11,8 @@ ms.date: 06/28/2020
 
 # Use LightIngest to ingest data to Azure Data Explorer
  
-LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
-The utility can pull source data from a local folder or from an Azure blob storage container.
+LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
+LightIngest is most useful when you want to ingest a large amount of data, because there is no time constraint on ingestion duration. It's also useful when you want to later query records according to the time they were created, and not the time they were ingested.
 
 ## Prerequisites
 
@@ -134,7 +134,7 @@ To use the LightIngest command below:
 
 ### How to ingest data using CreationTime
 
-The `-creationTimePattern` argument extracts the `CreationTime` property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
+When you load historical data from existing system to Azure Data Explorer, all records receive the same the ingestion date. To enable partitioning your data by creation time and not ingestion time, you can use the `-creationTimePattern` argument. The `-creationTimePattern` argument extracts the `CreationTime` property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
 
 The argument values must include:
 * Constant text immediately preceding the timestamp format, enclosed in single quotes (prefix)
