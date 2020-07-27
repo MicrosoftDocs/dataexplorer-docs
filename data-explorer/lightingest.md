@@ -56,7 +56,7 @@ The utility can pull source data from a local folder or from an Azure blob stora
         > [!NOTE]
         > If you ingest directly with the engine endpoint, you don't need to include `ingest-`. However, there won't be a DM feature to protect the engine and improve the ingestion success rate.
 
-    * For optimal ingestion performance, it's important for LightIngest to know the raw data size and so LightIngest will estimate the uncompressed size of local files. However, LightIngest might not be able to correctly estimate the raw size of compressed blobs without first downloading them. Therefore, when ingesting compressed blobs, set the `rawSizeBytes` property on the blob metadata to uncompressed data size in bytes.
+    * For optimal ingestion performance, the raw data size is needed so LightIngest can estimate the uncompressed size of local files. However, LightIngest might not be able to correctly estimate the raw size of compressed blobs without first downloading them. Therefore, when ingesting compressed blobs, set the `rawSizeBytes` property on the blob metadata to uncompressed data size in bytes.
 
 ## Command-line arguments
 
