@@ -9,10 +9,8 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
 ---
+
 # Kusto Java SDK
 
-## Overview
-
-*Kusto Java Client* Library provides the capability to query Kusto clusters using Java.
-
-Kusto Java SDK is available as source files from [GitHub repo](https://github.com/Azure/azure-kusto-java).
+The *Kusto Java client* library provides the capability to query Azure Data Explorer clusters using Java.
+The Kusto Java SDK is available as source files from [GitHub repo](https://github.com/Azure/azure-kusto-java).
