@@ -28,7 +28,7 @@ Here are several best practices to follow to make your query run faster.
 | **Case-insensitive comparisons** | Use `Col =~ "lowercasestring"` | Don't use `tolower(Col) == "lowercasestring"` |
 | **Compare data already in lowercase (or uppercase)** | `Col == "lowercasestring"` (or `Col == "UPPERCASESTRING"`) | Avoid using case insensitive comparisons.||
 | **Filtering on columns** |  Filter on a table column.|Don't filter on a calculated column. | |
-| | Use `T \| where predicate(<expression>)` | Don't use `T | extend _value = <expression> | where predicate(_value)` ||
+| | Use `T | where predicate(<expression>)` | Don't use `T | extend _value = <expression> | where predicate(_value)` ||
 | **summarize operator** |  Use the [hint.strategy=shuffle](./shufflequery.md) when the `group by keys` of the summarize operator are with high cardinality. | | High cardinality is ideally above 1 million.|
 |**[join operator](./joinoperator.md)** | Select the table with the fewer rows to be the first one (left-most in query). ||
 | Join across clusters |Across clusters, run the query on the "right" side of the join, where most of the data is located. ||
