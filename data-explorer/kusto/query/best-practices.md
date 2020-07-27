@@ -36,4 +36,4 @@ Here are several best practices to follow to make your query run faster.
 |Join when both sides are too large | Use [hint.strategy=shuffle](./shufflequery.md) || Use when the join key has high cardinality.|
 |**Extract values on column with strings sharing the same format or pattern**|  Use the [parse operator](./parseoperator.md) | Don't use several `extract()` statements.  | For example, values like `"Time = <time>, ResourceId = <resourceId>, Duration = <duration>, ...."`
 |**[extract() function](./extractfunction.md)**| Use when parsed strings don't all follow the same format or pattern.| |Extract the required values by using a REGEX.|
-| **[materialize() function](./materializefunction.md)** | Push all possible operators that will reduce the materialized data set and still keep the semantics of the query. | |For example, filters, or project only required columns.
+

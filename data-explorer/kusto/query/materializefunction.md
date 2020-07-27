@@ -21,20 +21,16 @@ Allows caching a subquery result during the time of query execution in a way tha
 
 * *expression*: Tabular expression to be evaluated and cached during query execution.
 
-**Tips**
+>[!NOTE]
+> Materialize has a cache size limit of **5 GB**. 
+>  This limit is per cluster node and is mutual for all queries running concurrently. If a query uses `materialize()` and the cache can't hold any more data, the query will abort with an error.
 
-* Use materialize with join or union when their operands have mutual subqueries that can be executed once. See the examples below.
-
-* Useful also in scenarios when we need to join/union fork legs.
-
-* Materialize can only be used in let statements if you give the cached result a name.
-
-**Note**
-
-* Materialize has a cache size limit of **5 GB**. 
-  This limit is per cluster node and is mutual for all queries running concurrently.
-  If a query uses `materialize()` and the cache can't hold any more data,
-  the query will abort with an error.
+>[!TIP]
+>
+>* Push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, filters, or project only required columns.
+>* Use materialize with join or union when their operands have mutual subqueries that can be executed once. See the examples below.
+>* Useful also in scenarios when we need to join/union fork legs.
+>* Materialize can only be used in let statements if you give the cached result a name.
 
 ## Examples of query performance improvement
 
@@ -110,7 +106,6 @@ Result set 3:
 > Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows.
 > 
 > To use the `let` statement with a value that you use more than once, use the [materialize() function](./materializefunction.md).
-> For more information, see [best practices](best-practices.md)
 
 Try to push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, filters, or project only required columns.
 
