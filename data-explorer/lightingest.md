@@ -74,7 +74,7 @@ The utility can pull source data from a local folder or from an Azure blob stora
 |-format, -f           |string  | Source data format. Must be one of the [supported formats](ingestion-supported-formats.md) | Optional  |
 |-ingestionMappingPath, -mappingPath |string  |Path to local file for ingestion column mapping. Mandatory for Json and Avro formats. See [data mappings](kusto/management/mappings.md) | Optional  |
 |-ingestionMappingRef, -mappingRef  |string  |Name of an ingestion column mapping that was previously created on the table. Mandatory for Json and Avro formats. See [data mappings](kusto/management/mappings.md) | Optional  |
-|-creationTimePattern      |string  |When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data using `CreationTime`](#how-to-ingest-data-using-creation-time) |Optional  |
+|-creationTimePattern      |string  |When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data using `CreationTime`](#how-to-ingest-data-using-creationtime) |Optional  |
 |-ignoreFirstRow, -ignoreFirst |bool    |If set, the first record of each file/blob is ignored (for example, if the source data has headers) | Optional  |
 |-tag            |string   |[Tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data. Multiple occurrences are permitted | Optional  |
 |-dontWait           |bool     |If set to 'true', doesn't wait for ingestion completion. Useful when ingesting large amounts of files/blobs |Optional  |
@@ -132,7 +132,7 @@ To use the LightIngest command below:
     ![Ingestion result in Azure Data Explorer](media/lightingest/lightingest-show-failure-count.png)
 -->
 
-### How to ingest data using `CreationTime`
+### How to ingest data using CreationTime
 
 The `-creationTimePattern` argument extracts the `CreationTime` property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
 
