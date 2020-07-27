@@ -27,15 +27,17 @@ Allows caching a subquery result during the time of query execution in a way tha
 
 >[!TIP]
 >
->* Push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, filters, or project only required columns.
+>* Push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, use filters, or project only required columns.
 >* Use materialize with join or union when their operands have mutual subqueries that can be executed once. See the examples below.
->* Useful also in scenarios when we need to join/union fork legs.
+>* This function is useful also in scenarios when we need to join/union fork legs.
 >* Materialize can only be used in let statements if you give the cached result a name.
 
-## Examples of query performance improvement
+## Examples 
+
+### Example 1
 
 The following example shows how `materialize()` can be used to improve performance of the query.
-The expression `_detailed_data` is defined using `materialize()` function and therefore it's calculated only once.
+The expression `_detailed_data` is defined using `materialize()` function and therefore is calculated only once.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -100,14 +102,14 @@ Result set 3:
 |---|
 |15002960543563|
 
-## Examples of using materialize()
+### Example 2
 
 > [!TIP]
 > Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows.
 > 
 > To use the `let` statement with a value that you use more than once, use the [materialize() function](./materializefunction.md).
 
-Try to push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, filters, or project only required columns.
+Try to push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, use filters, or project only required columns.
 
 ```kusto
     let materializedData = materialize(Table
@@ -132,7 +134,7 @@ The query only needs columns `Timestamp`, `Text`, `Resource1`, and `Resource2`. 
     | summarize dcount(Resource2))
 ```
     
-If the filters aren't identical like in this query:  
+If the filters aren't identical, as in the following query:  
 
 ```kusto
     let materializedData = materialize(Table
@@ -144,7 +146,7 @@ If the filters aren't identical like in this query:
     | summarize dcount(Resource2))
  ```
 
-When the combined filter reduces the materialized result drastically, combine both filters on the materialized result by a logical `or` expression like in the query below. However, keep the filters in each union leg to preserve the semantics of the query.
+When the combined filter reduces the materialized result drastically, combine both filters on the materialized result by a logical `or` expression as in the query below. However, keep the filters in each union leg to preserve the semantics of the query.
      
 ```kusto
     let materializedData = materialize(Table
