@@ -21,25 +21,19 @@ Allows caching a subquery result during the time of query execution in a way tha
 
 * *expression*: Tabular expression to be evaluated and cached during query execution.
 
-**Tips**
+> [!NOTE]
+> Materialize has a cache size limit of **5 GB**. This limit is per cluster node and is mutual for all queries running concurrently. If a query uses `materialize()` and the cache can't hold any more data, the query will abort with an error.
 
-* Use materialize with join or union when their operands have mutual subqueries that can be executed once. See the examples below.
-
-* Useful also in scenarios when we need to join/union fork legs.
-
-* Materialize can only be used in let statements if you give the cached result a name.
-
-**Note**
-
-* Materialize has a cache size limit of **5 GB**. 
-  This limit is per cluster node and is mutual for all queries running concurrently.
-  If a query uses `materialize()` and the cache can't hold any more data,
-  the query will abort with an error.
+>[!TIP]
+>
+>* Push all possible operators that reduce the materialized data set and keep the semantics of the query. For example, use filters, or project only required columns.
+>* Use materialize with join or union when their operands have mutual subqueries that can be executed once. For example, join/union fork legs. See [example of using join operator](#examples-of-query-performance-improvement).
+>* Materialize can only be used in let statements if you give the cached result a name. See [example of using let statements](#examples-of-using-materialize)).
 
 ## Examples of query performance improvement
 
 The following example shows how `materialize()` can be used to improve performance of the query.
-The expression `_detailed_data` is defined using `materialize()` function and therefore it's calculated only once.
+The expression `_detailed_data` is defined using `materialize()` function and therefore is calculated only once.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -108,11 +102,8 @@ Result set 3:
 
 > [!TIP]
 > Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows.
-> 
-> To use the `let` statement with a value that you use more than once, use the [materialize() function](./materializefunction.md).
-> For more information, see [best practices](best-practices.md)
 
-Try to push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, filters, or project only required columns.
+To use the `let` statement with a value that you use more than once, use the [materialize() function](./materializefunction.md). Try to push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, use filters, or project only required columns.
 
 ```kusto
     let materializedData = materialize(Table
@@ -137,7 +128,7 @@ The query only needs columns `Timestamp`, `Text`, `Resource1`, and `Resource2`. 
     | summarize dcount(Resource2))
 ```
     
-If the filters aren't identical like in this query:  
+If the filters aren't identical, as in the following query:  
 
 ```kusto
     let materializedData = materialize(Table
@@ -149,7 +140,7 @@ If the filters aren't identical like in this query:
     | summarize dcount(Resource2))
  ```
 
-When the combined filter reduces the materialized result drastically, combine both filters on the materialized result by a logical `or` expression like in the query below. However, keep the filters in each union leg to preserve the semantics of the query.
+When the combined filter reduces the materialized result drastically, combine both filters on the materialized result by a logical `or` expression as in the query below. However, keep the filters in each union leg to preserve the semantics of the query.
      
 ```kusto
     let materializedData = materialize(Table
