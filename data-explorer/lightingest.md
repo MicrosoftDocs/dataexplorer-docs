@@ -132,7 +132,7 @@ To use the LightIngest command below:
 
 ### How to ingest data with time ingested
 
-The `-creationTimePattern` argument extracts the CreationTime property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
+The `-creationTimePattern` argument extracts the `CreationTime` property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
 
 The argument values must include:
 * Constant text immediately preceding the timestamp format, enclosed in single quotes (prefix)
