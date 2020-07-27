@@ -26,14 +26,11 @@ Allows caching a subquery result during the time of query execution in a way tha
 
 >[!TIP]
 >
->* Push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, use filters, or project only required columns.
->* Use materialize with join or union when their operands have mutual subqueries that can be executed once. See the examples below.
->* This function is useful also in scenarios when we need to join/union fork legs.
->* Materialize can only be used in let statements if you give the cached result a name.
+>* Push all possible operators that reduce the materialized data set and keep the semantics of the query. For example, use filters, or project only required columns.
+>* Use materialize with join or union when their operands have mutual subqueries that can be executed once. For example, join/union fork legs. See [example of using join operator](#examples-of-query-performance-improvement).
+>* Materialize can only be used in let statements if you give the cached result a name. See [example of using let statements](#example-of-using-materialize)).
 
-## Examples 
-
-### Example 1
+## Examples of query performance improvement
 
 The following example shows how `materialize()` can be used to improve performance of the query.
 The expression `_detailed_data` is defined using `materialize()` function and therefore is calculated only once.
@@ -101,14 +98,12 @@ Result set 3:
 |---|
 |15002960543563|
 
-### Example 2
+## Example of using materialize()
 
 > [!TIP]
 > Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows.
-> 
-> To use the `let` statement with a value that you use more than once, use the [materialize() function](./materializefunction.md).
 
-Try to push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, use filters, or project only required columns.
+To use the `let` statement with a value that you use more than once, use the [materialize() function](./materializefunction.md). Try to push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, use filters, or project only required columns.
 
 ```kusto
     let materializedData = materialize(Table
