@@ -21,9 +21,8 @@ Allows caching a subquery result during the time of query execution in a way tha
 
 * *expression*: Tabular expression to be evaluated and cached during query execution.
 
->[!NOTE]
-> Materialize has a cache size limit of **5 GB**. 
->  This limit is per cluster node and is mutual for all queries running concurrently. If a query uses `materialize()` and the cache can't hold any more data, the query will abort with an error.
+> [!NOTE]
+> Materialize has a cache size limit of **5 GB**. This limit is per cluster node and is mutual for all queries running concurrently. If a query uses `materialize()` and the cache can't hold any more data, the query will abort with an error.
 
 >[!TIP]
 >
