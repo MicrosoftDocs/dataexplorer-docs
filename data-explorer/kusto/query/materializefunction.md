@@ -98,7 +98,7 @@ Result set 3:
 |---|
 |15002960543563|
 
-## Example of using materialize()
+## Examples of using materialize()
 
 > [!TIP]
 > Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows.
