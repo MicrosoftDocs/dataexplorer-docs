@@ -1,9 +1,9 @@
 ---
 title: Connect to Azure Data Explorer from Azure Databricks
 description: This topic shows you how to use Azure Databricks to access data from Azure Data Explorer.
-author: manojraheja
-ms.author: maraheja
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: maraheja
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/21/2020

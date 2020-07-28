@@ -1,6 +1,6 @@
 ---
-author: robinsh
-ms.author: robinsh
+author: orspod
+ms.author: orspodek
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
