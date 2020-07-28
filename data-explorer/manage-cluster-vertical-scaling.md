@@ -1,9 +1,9 @@
 ---
 title: 'Manage cluster vertical scaling (scale up) to match demand in Azure Data Explorer'
 description: This article describes steps to scale up and scale down an Azure Data Explorer cluster based on changing demand.
-author: radennis
-ms.author: radennis
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: radennis
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
