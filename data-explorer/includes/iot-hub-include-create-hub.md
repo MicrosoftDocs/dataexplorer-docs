@@ -1,12 +1,12 @@
 ---
 title: include file
 description: include file
-author: robinsh
+author: orspod
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
 ms.date: 02/14/2020
-ms.author: robinsh
+ms.author: orspodek
 ms.custom: include file
 ---
 
