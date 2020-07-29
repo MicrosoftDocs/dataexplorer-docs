@@ -13,6 +13,8 @@ ms.date: 07/13/2020
 
 The [update policy](update-policy.md) instructs Kusto to automatically append data to a target table whenever new data is inserted into the source table. The update policy's query runs on the data inserted into the source table. For example, the policy lets the creation of one table be the filtered view of another table. The new table can have a different schema, retention policy, and so on. 
 
+:::image type="content" source="images/updatepolicy/update-policy-overview.png" alt-text="Overview of the update policy in Azure Data Explorer":::
+
 ## Update policy commands
 
 Commands to control the update policy include:
@@ -24,18 +26,13 @@ Commands to control the update policy include:
 
 ## Update policy's query
 
-* The query:
-    * Is automatically scoped to cover only the newly ingested records.
-    * Can invoke stored functions.
-    * Can't include cross-database or cross-cluster queries.
-* The update policy's query is run in a special mode, in which it "sees" only the newly ingested data to the source table. It isn't possible to query the source table's already-ingested data as part of this query. Doing so quickly results in quadratic-time ingestions.
-* The update policy is defined on the destination table. For this reason, ingesting data into one source table may result in multiple queries being run on that data. The order of execution of update policies is undefined.
-* A query that is run as part of an update policy doesn't have read access to tables that have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled. 
-* The update policy's query can't reference any table with a [Row Level Security policy](rowlevelsecuritypolicy.md) that is enabled. 
-* When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
-    * Don't use the qualified name of the table. Instead, use `TableName`. 
-    * Don't use `database("DatabaseName").TableName` or `cluster("ClusterName").database("DatabaseName").TableName`.
-* Data ingested in the "boundary" of transactional update policies becomes available for a query in a single transaction.
+The update policy query is run in a special mode, in which it's automatically scoped to cover only the newly ingested records. That's why it isn't possible to query the source table's already-ingested data as part of this query. Data ingested in the "boundary" of transactional update policies does become available for a query in a single transaction. The query can invoke stored functions, but can't include cross-database or cross-cluster queries. Because the update policy is defined on the destination table, ingesting data into one source table may result in multiple queries being run on that data. The order of execution of multiple update policies is undefined.
+
+A query that is run as part of an update policy doesn't have read access to tables that have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled or with a [Row Level Security policy](rowlevelsecuritypolicy.md) enabled.
+
+When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
+   * Don't use the qualified name of the table. Instead, use `TableName`. 
+   * Don't use `database("DatabaseName").TableName` or `cluster("ClusterName").database("DatabaseName").TableName`.
 
 > [!WARNING]
 > Defining an incorrect query in the update policy can prevent any data from being ingested into the source table.
@@ -47,7 +44,7 @@ Each such object is represented as a JSON property bag, with the following prope
 
 > [!NOTE]
 > The source table and the table for which the update policy is defined must be in the same database.
-> The update policy function schema and the target table schema must match in their column names, types, and order.
+> The update policy function schema and the target table schema must match in their column names, types, and order. //ORNAT IS THIS THE RIGHT LOCATION
 
 |Property |Type |Description  |
 |---------|---------|----------------|
@@ -76,7 +73,7 @@ Update policies take effect when data is ingested or moved to (extents are creat
 
 ## Performance impact
 
-Defining an update policy can affect the performance of a Kusto cluster. The update policy affects any ingestion into the source table. Ingestion of a number of data extents is multiplied by the number of target tables. This is why it's important that the `Query` part of the update policy is optimized to work well. You can test an update policy's additional performance impact on an ingestion operation. Invoke the policy on specific and already-existing extents, before creating or altering the policy or function it uses in its `Query` part.
+Defining an update policy can affect the performance of a Kusto cluster. The update policy affects any ingestion into the source table. Ingestion of a number of data extents is multiplied by the number of target tables. As such, it's important that the `Query` part of the update policy is optimized to work well. You can test an update policy's additional performance impact on an ingestion operation. Invoke the policy on specific and already-existing extents, before creating or altering the policy or function it uses in its `Query` part.
 
 ### Evaluate resource usage on query
 
@@ -97,25 +94,24 @@ MyFunction()
 
 ## Scenarios
 
-### Transient source table
+### Zero retention on source table
 
-So as not to keep the raw data in the source table, set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: 
+In some instances, data is ingested to a source table only as a stepping stone to the target table, and you do not want to keep the raw data in the source table. Set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: 
 
 * The source data isn't queryable from the source table. 
 * The source data isn't persisted to durable storage as part of the ingestion operation. 
-* Operational performance will Improve. 
+* Operational performance will improve. 
 * Post-ingestion resources for background grooming operations will be reduced. These operations are done on [extents](../management/extents-overview.md) in the source table.
 
 ### Update policy behaving like regular ingestion
 
 Given the following conditions:
 
- * The source table is a high-rate trace table with interesting data formatted as a free-text column. 
- * The target table on which the update policy is defined accepts only specific trace lines.
- * The table has a well-structured schema that is a transformation of the original free-text data created by the [parse operator](../query/parseoperator.md).
+* The source table is a high-rate trace table with interesting data formatted as a free-text column. 
+* The target table on which the update policy is defined accepts only specific trace lines.
+* The table has a well-structured schema that is a transformation of the original free-text data created by the [parse operator](../query/parseoperator.md).
 
 The update policy will behave like regular ingestion and is subject to the same restrictions and best practices. The policy scales-out with the size of the cluster, and works more efficiently if ingestions are done in large bulks.
-
 
 ## Failures
 
