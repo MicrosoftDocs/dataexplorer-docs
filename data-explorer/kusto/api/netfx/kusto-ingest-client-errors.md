@@ -86,7 +86,7 @@ To help handle ingestion failures programmatically, failure information is enric
 |BadRequest_InvalidBlob                         | Engine failed to open and read non-zip blob|
 |BadRequest_EmptyBlob                           | Empty blob|
 |BadRequest_EmptyArchive                        | The zip file doesn’t contain any archived elements|
-|BadRequest_EmptyBlobUri                        |The specified blob URI is empty|
+|BadRequest_EmptyBlobUri                        | The specified blob URI is empty|
 |BadRequest_DatabaseNotExist                    | Database doesn't exist|
 |BadRequest_TableNotExist                       | Table doesn't exist|
 |BadRequest_InvalidKustoIdentityToken           | Invalid Kusto identity token|
