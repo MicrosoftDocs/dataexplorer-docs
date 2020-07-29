@@ -47,6 +47,7 @@ Each such object is represented as a JSON property bag, with the following prope
 
 > [!NOTE]
 > The source table and the table for which the update policy is defined must be in the same database.
+> The update policy function schema and the target table schema must match in their column names, types, and order.
 
 |Property |Type |Description  |
 |---------|---------|----------------|
