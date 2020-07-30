@@ -34,7 +34,10 @@ The patterns aren't distinct, may be overlapping, and usually don't cover all th
 >
 > When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
 
-**Arguments (all optional)**
+## Arguments 
+
+>[!NOTE] 
+> All arguments are optional.
 
 `T | evaluate autocluster(`[*SizeWeight*, *WeightColumn*, *NumSeeds*, *CustomWildcard*, *CustomWildcard*, ...]`)`
 

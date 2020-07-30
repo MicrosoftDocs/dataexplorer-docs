@@ -28,9 +28,8 @@ Checks for a condition. If the condition is false, outputs error messages and fa
 * `true` - if the condition is `true`
 * Raises semantic error if the condition is evaluated to `false`.
 
-**Notes**
-
-* `condition` must be evaluated to constant during the query analysis phase. In other words, it can be constructed from other expressions referencing constants, and can't be bound to row-context.
+>[!NOTE]
+ `condition` must be evaluated to constant during the query analysis phase. In other words, it can be constructed from other expressions referencing constants, and can't be bound to row-context.
 
 ## Examples
 

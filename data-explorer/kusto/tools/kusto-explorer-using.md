@@ -135,7 +135,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 
 You can create a URI that, when opened in a browser, opens Kusto.Explorer locally and runs a specific query on a specified Kusto database.
 
-### Limitations
+#### Limitations
 
 The queries are limited to ~2000 characters because of browser limitations, HTTP proxies, and tools that validate links, such as Microsoft Outlook. The limitation is approximate because it's dependent on the cluster and Database name length. For more information, see [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427). 
 To reduce the chances of reaching the character limit, see [Getting Shorter Links](#getting-shorter-links), below.
@@ -151,7 +151,7 @@ This URI will open Kusto.Explorer, connect to the `Help` Kusto cluster, and run 
 > [!NOTE] 
 > For security reasons, deep-linking is disabled for control commands.
 
-### Creating a deep-link
+#### Creating a deep-link
 
 The easiest way to create a deep-link is to author your query in Kusto.Explorer and then use
 `Export to Clipboard` to copy the query (including the deep link and results) to the clipboard. You can then share it by email.
@@ -165,7 +165,7 @@ The second link (`Click to run query`) is the deep link. If you move the link to
 
 https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
 
-### Deep-links and parametrized queries
+#### Deep-links and parametrized queries
 
 You can use parametrized queries with deep-linking.
 
@@ -176,7 +176,6 @@ You can use parametrized queries with deep-linking.
 web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
     Replace &lt;your_cluster&gt; with your Azure Data Explorer cluster name.
-
 
 ### Getting shorter links
 
@@ -198,7 +197,7 @@ Command-line arguments are used to configure the tool to perform additional func
 
 Command-line arguments are passed as part of the URL that's used to open the application, in a similar way to [query deep-linking](#creating-a-deep-link).
 
-## Command-line argument syntax
+### Command-line argument syntax
 
 Kusto.Explorer supports several command-line arguments in the following syntax (the order matters):
 

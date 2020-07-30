@@ -44,9 +44,8 @@ Possible values of `part`:
 
 An integer representing the extracted part.
 
-**Note**
-
-`week_of_year` returns an integer which represents the week number. The week number is calculated from the first week of a year, which is the one that includes the first Thursday.
+> [!NOTE]
+> `week_of_year` returns an integer which represents the week number. The week number is calculated from the first week of a year, which is the one that includes the first Thursday.
 
 ## Examples
 

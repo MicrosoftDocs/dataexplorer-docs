@@ -30,10 +30,10 @@ cluster('help').database('Sample').StormEvents
 
 * *stringConstant*: Name of the database that is referenced. Database identified can be either `DatabaseName` or `PrettyName`. Argument has to be _constant_ prior of query execution, i.e. cannot come from sub-query evaluation.
 
-**Notes**
+## Related cluster and database functions
 
 * For accessing remote cluster and remote database, see [cluster()](clusterfunction.md) scope function.
-* More information about cross-cluster and cross-database queries available [here](cross-cluster-or-database-queries.md)
+* For more information, see [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md).
 
 ## Examples
 

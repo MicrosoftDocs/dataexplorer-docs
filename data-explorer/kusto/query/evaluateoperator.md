@@ -40,7 +40,7 @@ The following parameters are supported:
   |`hint.pass_filters` |`true`, `false`| Allow `evaluate` operator to passthrough any matching filters before the plugin. Filter is considered as 'matched' if it refers to a column existing before the `evaluate` operator. Default: `false` |
   |`hint.pass_filters_column` |*column_name*| Allow plugin operator to passthrough filters referring to *column_name* before the plugin. Parameter can be used multiple times with different column names. |
 
-**Notes**
+## Notes
 
 * Syntactically, `evaluate` behaves similarly
 to the [invoke operator](./invokeoperator.md), which invokes tabular functions.
@@ -48,7 +48,7 @@ to the [invoke operator](./invokeoperator.md), which invokes tabular functions.
 * Specific plugins may have specific restrictions. For example, plugins whose output schema depends on the data (for example, [bag_unpack plugin](./bag-unpackplugin.md) and [pivot plugin](./pivotplugin.md)) can't be used
 when performing cross-cluster queries.
 
-<a id="distributionhints"/> **Distribution hints** </a>
+## Distribution hints
 
 Distribution hints specify how the plugin execution will be distributed across multiple cluster nodes. Each plugin may implement a different support for the distribution. The plugin's documentation specifies the distribution options supported by the plugin.
 

@@ -31,12 +31,8 @@ external_table('StormEvent')
   fields in the actual (external) data shards to the columns output
   by this function.
 
-**Notes**
+## See also
 
-See [external tables](schema-entities/externaltables.md) for more information
-on external tables.
-
-See also [commands for managing external tables](../management/externaltables.md).
-
-The `external_table` function has similar restrictions
-as the [table](tablefunction.md) function.
+* [External tables](schema-entities/externaltables.md)
+* [Commands for managing external tables](../management/externaltables.md)
+* The `external_table` function has similar restrictions as the [table](tablefunction.md) function.
