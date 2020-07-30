@@ -22,7 +22,7 @@ ms.date: 11/04/2019
 
 ## Create Azure Data Explorer Connector in Redash 
 
-1. Sign in to [Redash](https://redash.io/). Select **Get Started** to create an account.
+1. Sign in to [Redash](https://www.redash.io/). Select **Get Started** to create an account.
 1. Under **Let's get started**, Select **Connect a Data Source**.
 
     ![Connect a data source](media/redash/connect-data-source.png)
