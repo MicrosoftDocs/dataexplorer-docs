@@ -31,9 +31,8 @@ T | invoke foo(param1, param2)
 
 Returns the result of the evaluated expression.
 
-**Notes**
-
-See [let statements](./letstatement.md) for more details how to declare lambda expressions that can accept tabular arguments.
+>[!NOTE]
+> See [let statements](./letstatement.md) for more details how to declare lambda expressions that can accept tabular arguments.
 
 ## Example
 

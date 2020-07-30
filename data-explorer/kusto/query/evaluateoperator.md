@@ -36,7 +36,7 @@ The following parameters are supported:
 
   |Name                |Values                           |Description                                |
   |--------------------|---------------------------------|-------------------------------------------|
-  |`hint.distribution` |`single`, `per_node`, `per_shard`| [Distribution hints](#distributionhints) |
+  |`hint.distribution` |`single`, `per_node`, `per_shard`| [Distribution hints](#distribution-hints) |
   |`hint.pass_filters` |`true`, `false`| Allow `evaluate` operator to passthrough any matching filters before the plugin. Filter is considered as 'matched' if it refers to a column existing before the `evaluate` operator. Default: `false` |
   |`hint.pass_filters_column` |*column_name*| Allow plugin operator to passthrough filters referring to *column_name* before the plugin. Parameter can be used multiple times with different column names. |
 

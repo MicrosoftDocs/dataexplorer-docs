@@ -46,14 +46,14 @@ Table1 | where col in ('value1', 'value2')
 
 Rows in *T* for which the predicate is `true`.
 
-**Notes**
+## Notes
 
 * The expression list can produce up to `1,000,000` values.
 * Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
 * In tabular expressions, the first column of the result set is selected.
 * Adding '~' to the operator makes values' search case-insensitive: `x in~ (expression)` or `x !in~ (expression)`.
 
-**Examples:**  
+## Examples  
 
 **A simple use of 'in' operator:**  
 
