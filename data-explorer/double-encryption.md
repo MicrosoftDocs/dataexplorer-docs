@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: toleibov
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 
+ms.date: 07/30/2020
 ---
 
 # Enable infrastructure encryption (double encryption) on cluster creation
