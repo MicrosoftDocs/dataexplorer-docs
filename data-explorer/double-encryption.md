@@ -21,7 +21,7 @@ For more information, see [storage infrastructure encryption](https://docs.micro
 
 •	Enabling double encryption is possible only during cluster creation.
 •	Once infrastructure encryption is enabled on your cluster, **you cannot disable it**.
-•	This capability is available only in regions in which infrastructure encryption is supported in Azure. Please see [storage infrastructure encryption](https://docs.microsoft.com/en-us/azure/storage/common/infrastructure-encryption-enable) for more details.
+•	This capability is available only in regions in which infrastructure encryption is supported in Azure. For more information, see [storage infrastructure encryption](https://docs.microsoft.com/en-us/azure/storage/common/infrastructure-encryption-enable).
 
 # [Azure portal](#tab/portal)
 
