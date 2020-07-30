@@ -205,6 +205,6 @@ Run the following to remove the system-assigned identity:
 ## Next steps
 
 * [Secure Azure Data Explorer clusters in Azure](security.md)
-* [Secure your cluster in Azure Data Explorer - Azure portal](manage-cluster-security.md) by enabling encryption at rest.
+* [Secure your cluster in Azure Data Explorer - Azure portal](manage-cluster-disk-encryption.md) by enabling encryption at rest.
  * [Configure customer-managed-keys using C#](customer-managed-keys-csharp.md)
  * [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)

@@ -59,6 +59,6 @@ Do the following steps to disable language extensions on your cluster:
 
 ## Limitations
 
-* The language extensions feature doesn't support [Disk encryption](manage-cluster-security.md). 
+* The language extensions feature doesn't support [Disk encryption](manage-cluster-disk-encryption.md). 
 * The language extensions runtime sandbox allocates disk space even if no query runs in the scope of the relevant language.
 See [sandboxes](kusto/concepts/sandboxes.md) for more detailed limitations.
