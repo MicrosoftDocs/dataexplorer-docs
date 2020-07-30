@@ -17,9 +17,8 @@ Creates a `dynamic` object (property bag) from all the columns of the tabular ex
 
 `pack_all()`
 
-**Notes**
-
-The representation of the returned object isn't guaranteed to be byte-level-compatible between runs. For example, properties that appear in the bag may appear in a different order.
+> [!NOTE]
+> The representation of the returned object isn't guaranteed to be byte-level-compatible between runs. For example, properties that appear in the bag may appear in a different order.
 
 ## Examples
 
@@ -43,6 +42,7 @@ datatable(SourceNumber:string,TargetNumber:string,CharsCount:long)
 ]
 | extend Packed=pack_all()
 ```
+
 Returns:
 
 |TableName |SourceNumber |TargetNumber | Packed

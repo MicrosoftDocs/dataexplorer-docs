@@ -33,9 +33,8 @@ T | evaluate pivot(PivotColumn)
 
 Pivot returns the rotated table with specified columns (*column1*, *column2*, ...) plus all unique values of the pivot columns. Each cell for the pivoted columns will contain the aggregate function computation.
 
-**Note**
-
-The output schema of the `pivot` plugin is based on the data and therefore query may produce different schema for any two runs. This also means that query that is referencing unpacked columns may become 'broken' at any time. Due to this reason - it is not advised to use this plugin for automation jobs.
+> [!NOTE]
+> The output schema of the `pivot` plugin is based on the data and therefore query may produce different schema for any two runs. This also means that query that is referencing unpacked columns may become 'broken' at any time. Due to this reason - it is not advised to use this plugin for automation jobs.
 
 ## Examples
 

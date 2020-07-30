@@ -52,7 +52,7 @@ All arguments are optional, but they must be ordered as above. To indicate that 
 
 ## Examples
 
-### Example
+### Using autocluster
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

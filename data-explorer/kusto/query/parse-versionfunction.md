@@ -30,15 +30,14 @@ parse_version("0.0.0.1")
 If conversion is successful, the result will be a decimal.
 If conversion is unsuccessful, the result will be `null`.
 
-**Notes**
+## Notes
 
-Input string must contain from one to four version parts, represented as numbers and separated with dots ('.').
-
-Each part of version may contain up to eight digits, with the max value at 99999999.
-
-If the number of parts is less than four, all the missing parts are considered as trailing (`1.0` == `1.0.0.0`).
+* Input string must contain from one to four version parts, represented as numbers and separated with dots ('.').
+* Each part of version may contain up to eight digits, with the max value at 99999999.
+* If the number of parts is less than four, all the missing parts are considered as trailing (`1.0` == `1.0.0.0`).
 
 ## Example
+
 ```kusto
 let dt = datatable(v:string)
 ["0.0.0.5","0.0.7.0","0.0.3","0.2","0.1.2.0","1.2.3.4","1","99999999.0.0.0"];

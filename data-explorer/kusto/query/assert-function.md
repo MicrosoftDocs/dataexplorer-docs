@@ -29,7 +29,7 @@ Checks for a condition. If the condition is false, outputs error messages and fa
 * Raises semantic error if the condition is evaluated to `false`.
 
 >[!NOTE]
- `condition` must be evaluated to constant during the query analysis phase. In other words, it can be constructed from other expressions referencing constants, and can't be bound to row-context.
+> `condition` must be evaluated to constant during the query analysis phase. In other words, it can be constructed from other expressions referencing constants, and can't be bound to row-context.
 
 ## Examples
 

@@ -76,7 +76,8 @@ receives a parameter `dbName` - which is passed into the database() function.
 };
 ```
 
-**Note:** such functions can be used only locally and not in the cross-cluster query.
+> [!NOTE]
+> Such functions can be used only locally and not in the cross-cluster query.
 
 ::: zone-end
 

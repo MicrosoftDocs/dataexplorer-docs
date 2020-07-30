@@ -31,14 +31,12 @@ T | project-reorder Col2, Col1, Col* asc
 
 A table that contains columns in the order specified by the operator arguments. `project-reorder` doesn't rename or remove columns from the table, therefore, all columns that existed in the source table, appear in the result table.
 
-**Notes**
+## Notes
 
-- In ambiguous *ColumnNameOrPattern* matching, the column appears in the first position matching the pattern.
-- Specifying columns for the `project-reorder` is optional. Columns that aren't specified explicitly appear as the last columns of the output table.
-
+* In ambiguous *ColumnNameOrPattern* matching, the column appears in the first position matching the pattern.
+* Specifying columns for the `project-reorder` is optional. Columns that aren't specified explicitly appear as the last columns of the output table.
 * Use [`project-away`](projectawayoperator.md) to remove columns.
 * Use [`project-rename`](projectrenameoperator.md) to rename columns.
-
 
 ## Examples
 

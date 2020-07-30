@@ -19,7 +19,7 @@ Table1 | where col in ('value1', 'value2')
 
 ## Syntax
 
-*Case-sensitive syntax:*
+### Case-sensitive syntax
 
 *T* `|` `where` *col* `in` `(`*list of scalar expressions*`)`   
 *T* `|` `where` *col* `in` `(`*tabular expression*`)`   
@@ -27,7 +27,7 @@ Table1 | where col in ('value1', 'value2')
 *T* `|` `where` *col* `!in` `(`*list of scalar expressions*`)`  
 *T* `|` `where` *col* `!in` `(`*tabular expression*`)`   
 
-*Case insensitive syntax:*
+### Case insensitive syntax
 
 *T* `|` `where` *col* `in~` `(`*list of scalar expressions*`)`   
 *T* `|` `where` *col* `in~` `(`*tabular expression*`)`   
