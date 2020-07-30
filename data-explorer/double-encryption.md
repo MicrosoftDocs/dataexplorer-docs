@@ -1,7 +1,7 @@
 ---
 title: Enable infrastructure encryption on your cluster in Azure Data Explorer
 description: This article describes how to Enable infrastructure encryption on your cluster in Azure Data Explorer.
-author: orspodek
+author: orspod
 ms.author: orspodek
 ms.reviewer: toleibov
 ms.service: data-explorer
