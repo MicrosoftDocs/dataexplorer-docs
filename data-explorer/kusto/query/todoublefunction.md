@@ -31,4 +31,5 @@ toreal("123.4") == 123.4
 If conversion is successful, the result is a value of type `real`.
 If conversion is not successful, the result is the value `real(null)`.
 
-*Note*: Prefer using [double() or real()](./scalar-data-types/real.md) when possible.
+> [!NOTE]
+> Prefer using [double() or real()](./scalar-data-types/real.md) when possible.

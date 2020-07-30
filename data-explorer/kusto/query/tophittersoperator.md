@@ -29,10 +29,9 @@ T | top-hitters 25 of Page by Views
     * *expression*: top-hitters will return *NumberOfRows* rows which have an approximated maximum of sum(*expression*). Expression can be a column, or any other expression that evaluates to a number. 
     *  If *expression* is not mentioned, top-hitters algorithm will count the occurrences of the *sort-key*.  
 
-**Notes**
-
-`top-hitters` is an approximation algorithm and should be used when running with large data. 
-The approximation of the the top-hitters is based on the [Count-Min-Sketch](https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch) algorithm.  
+> [!NOTE]
+> `top-hitters` is an approximation algorithm and should be used when running with large data. 
+> The approximation of the the top-hitters is based on the [Count-Min-Sketch](https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch) algorithm.  
 
 ## Example
 

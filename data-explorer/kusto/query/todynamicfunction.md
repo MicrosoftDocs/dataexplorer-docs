@@ -31,4 +31,5 @@ Aliases to [parse_json()](./parsejsonfunction.md) function.
 
 An object of type `dynamic` specified by *json*.
 
-*Note*: Prefer using [dynamic()](./scalar-data-types/dynamic.md) when possible.
+> [!NOTE]
+> Prefer using [dynamic()](./scalar-data-types/dynamic.md) when possible.

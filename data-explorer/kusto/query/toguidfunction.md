@@ -30,4 +30,5 @@ toguid("70fc66f7-8279-44fc-9092-d364d70fce44") == guid("70fc66f7-8279-44fc-9092-
 If conversion is successful, result will be a [`guid`](./scalar-data-types/guid.md) scalar.
 If conversion is not successful, result will be `null`.
 
-*Note*: Prefer using [guid()](./scalar-data-types/guid.md) when possible.
+> [!NOTE]
+> Prefer using [guid()](./scalar-data-types/guid.md) when possible.
