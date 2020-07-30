@@ -29,7 +29,7 @@ For more information, see [storage infrastructure encryption](https://docs.micro
 2. In the **Security** tab > **System assigned identity**, select **On**. To remove the system assigned identity, select **Off**.
 3. Select **Next:Tags>** or **Review + create** to create the cluster.
 
-    ![Enabke  new cluster](media/managed-identities/double-encryption-portal.png)
+    ![double encryption new cluster](media/double-encryption/double-encryption-portal.png)
 
 
 # [C#](#tab/c-sharp)
