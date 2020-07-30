@@ -35,4 +35,3 @@ T | top 5 by Name desc nulls last
 ## See also 
 
 * Use [top-nested](topnestedoperator.md) operator to produce hierarchical (nested) top results.
-* 

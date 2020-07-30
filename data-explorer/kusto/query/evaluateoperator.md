@@ -23,7 +23,7 @@ not have a predefined, statically determined, output schema).
 
 [*T* `|`] `evaluate` [ *evaluateParameters* ] *PluginName* `(` [*PluginArg1* [`,` *PluginArg2*]... `)`
 
-Where:
+## Arguments
 
 * *T* is an optional tabular input to the plugin. (Some plugins don't take
   any input, and act as a tabular data source.)
@@ -31,6 +31,8 @@ Where:
 * *PluginArg1*, ... are the optional arguments to the plugin.
 * *evaluateParameters*: Zero or more (space-separated) parameters in the form of
   *Name* `=` *Value* that control the behavior of the evaluate operation and execution plan. Each plugin may decide differently how to handle each parameter. Refer to each plugin's documentation for specific behavior.  
+
+## Parameters
 
 The following parameters are supported: 
 
