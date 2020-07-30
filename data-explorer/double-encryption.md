@@ -18,9 +18,9 @@ Double encryption of Azure Storage data protects against a scenario where one of
 For more information, see [storage infrastructure encryption](https://docs.microsoft.com/azure/storage/common/infrastructure-encryption-enable). 
 
 > [!IMPORTANT]
-> •	Enabling double encryption is possible only during cluster creation.
-> •	Once infrastructure encryption is enabled on your cluster, **you cannot disable it**.
-> •	This capability is available only in regions in which infrastructure encryption is supported in Azure. For more information, see [storage infrastructure encryption](https://docs.microsoft.com/azure/storage/common/infrastructure-encryption-enable).
+> * Enabling double encryption is possible only during cluster creation.
+> * Once infrastructure encryption is enabled on your cluster, **you cannot disable it**.
+> * This capability is available only in regions in which infrastructure encryption is supported in Azure. For more information, see [storage infrastructure encryption](https://docs.microsoft.com/azure/storage/common/infrastructure-encryption-enable).
 
 # [C#](#tab/c-sharp)
 
