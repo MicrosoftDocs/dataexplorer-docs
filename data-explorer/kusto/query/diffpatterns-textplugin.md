@@ -25,7 +25,7 @@ The `diffpatterns_text` returns a set of text patterns that capture different po
 
 ## Arguments
 
-### Required Arguments
+### Required arguments
 
 * TextColumn - *column_name*
 
@@ -82,4 +82,3 @@ StormEvents
 |0|42|0|7.71|* * * * * * caused * * * * * * * * across western Colorado. *|
 |0|45|0|8.26|* * below normal *|
 |0|110|0|20.18|Below normal *|
-
