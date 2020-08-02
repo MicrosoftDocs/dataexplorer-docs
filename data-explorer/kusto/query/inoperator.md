@@ -17,6 +17,12 @@ Filters a record set based on the provided set of values.
 Table1 | where col in ('value1', 'value2')
 ```
 
+> [!NOTE]
+> * The expression list can produce up to `1,000,000` values.
+> * Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
+> * In tabular expressions, the first column of the result set is selected.
+> * Adding '~' to the operator makes values' search case-insensitive: `x in~ (expression)` or `x !in~ (expression)`.
+  
 ## Syntax
 
 ### Case-sensitive syntax
@@ -46,16 +52,9 @@ Table1 | where col in ('value1', 'value2')
 
 Rows in *T* for which the predicate is `true`.
 
-## Notes
-
-* The expression list can produce up to `1,000,000` values.
-* Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
-* In tabular expressions, the first column of the result set is selected.
-* Adding '~' to the operator makes values' search case-insensitive: `x in~ (expression)` or `x !in~ (expression)`.
-
 ## Examples  
 
-**A simple use of 'in' operator:**  
+### Using of 'in' operator
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -68,8 +67,7 @@ StormEvents
 |---|
 |4775|  
 
-
-**A simple use of 'in~' operator:**  
+### Using 'in~' operator  
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -82,7 +80,7 @@ StormEvents
 |---|
 |4775|  
 
-**A simple use of '!in' operator:**  
+### Using '!in' operator
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -96,7 +94,7 @@ StormEvents
 |54291|  
 
 
-**Using dynamic array:**
+### Using dynamic array
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -110,8 +108,7 @@ StormEvents
 |---|
 |3218|
 
-
-**A subquery example:**  
+### Subquery
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -143,7 +140,7 @@ StormEvents
 |---|
 |14242|  
 
-**Top with other example:**  
+### Top with other example
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -163,7 +160,7 @@ Lightning_By_State
 | GEORGIA   | 106                  |
 | Other     | 415                  |
 
-**Using a static list returned by a function:**  
+### Using a static list returned by a function
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

@@ -21,6 +21,9 @@ ipv6_compare('fe80::85d:e82c:9446:7994/127', 'fe80::85d:e82c:9446:7995/127') == 
 ipv6_compare('fe80::85d:e82c:9446:7994', 'fe80::85d:e82c:9446:7995', 127) == 0
 ```
 
+> [!Note]
+> The function can accept and compare arguments representing both IPv6 and IPv4 network addresses. However, if the caller knows that arguments are in IPv4 format, use [ipv4_is_compare()](./ipv4-comparefunction.md) function. This function will result in better runtime performance.
+
 ## Syntax
 
 `ipv6_compare(`*Expr1*`, `*Expr2*`[ ,`*PrefixMask*`])`
@@ -43,9 +46,6 @@ For example, fe80::85d:e82c:9446:7994/120 will have an associated net/subnetmask
 * `1`: If the long representation of the first IPv6 string argument is greater than the second IPv6 string argument.
 * `-1`: If the long representation of the first IPv6 string argument is less than the second IPv6 string argument.
 * `null`: If conversion for one of the two IPv6 strings wasn't successful.
-
-> [!Note]
-> The function can accept and compare arguments representing both IPv6 and IPv4 network addresses. However, if the caller knows that arguments are in IPv4 format, use [ipv4_is_compare()](./ipv4-comparefunction.md) function. This function will result in better runtime performance.
 
 ## Examples: IPv6/IPv4 comparison equality cases
 

@@ -17,7 +17,8 @@ Compares two data sets of the same structure and finds patterns of discrete attr
 ```kusto
 T | evaluate diffpatterns(splitColumn)
 ```
-
+> [!NOTE]
+> `diffpatterns` aims to find significant patterns (that capture portions of the data difference between the sets) and isn't meant for row-by-row differences.
 
 ## Syntax
 
@@ -96,14 +97,9 @@ For each pattern, columns that are not set in the pattern (that is, without rest
 
 * Note: the patterns are often not distinct. They may be overlapping, and usually do not cover all the original rows. Some rows may not fall under any pattern.
 
-
-**Tips**
-
-Use [where](./whereoperator.md) and [project](./projectoperator.md) in the input pipe to reduce the data to just what you're interested in.
-
-When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
-
-* Note: `diffpatterns` aims to find significant patterns (that capture portions of the data difference between the sets) and isn't meant for row-by-row differences.
+> [!TIP]
+> * Use [where](./whereoperator.md) and [project](./projectoperator.md) in the input pipe to reduce the data to just what you're interested in.
+> * When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
 
 ## Example
 

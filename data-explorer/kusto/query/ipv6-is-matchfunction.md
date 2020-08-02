@@ -21,6 +21,9 @@ ipv6_is_match('fe80::85d:e82c:9446:7994/127', 'fe80::85d:e82c:9446:7995/127') ==
 ipv6_is_match('fe80::85d:e82c:9446:7994', 'fe80::85d:e82c:9446:7995', 127) == true
 ```
 
+> [!NOTE]
+> The function can accept and compare arguments representing both IPv6 and IPv4 network addresses. If the caller knows that arguments are in IPv4 format, use the [ipv4_is_match()](./ipv4-is-matchfunction.md) function. This function will result in better runtime performance.
+
 ## Syntax
 
 `ipv6_is_match(`*Expr1*`, `*Expr2*`[ ,`*PrefixMask*`])`
@@ -42,9 +45,6 @@ For example, fe80::85d:e82c:9446:7994/120 will have an associated net/subnetmask
 * `true`: If the long representation of the first IPv6/IPv4 string argument is equal to the second IPv6/IPv4 string argument.
 * `false`: Otherwise.
 * `null`: If conversion for one of the two IPv6/IPv4 strings wasn't successful.
-
-> [!NOTE]
-> The function can accept and compare arguments representing both IPv6 and IPv4 network addresses. If the caller knows that arguments are in IPv4 format, use the [ipv4_is_match()](./ipv4-is-matchfunction.md) function. This function will result in better runtime performance.
 
 ## Examples
 

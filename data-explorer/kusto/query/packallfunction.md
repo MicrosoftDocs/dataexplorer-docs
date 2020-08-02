@@ -13,12 +13,12 @@ ms.date: 02/13/2020
 
 Creates a `dynamic` object (property bag) from all the columns of the tabular expression.
 
+> [!NOTE]
+> The representation of the returned object isn't guaranteed to be byte-level-compatible between runs. For example, properties that appear in the bag may appear in a different order.
+
 ## Syntax
 
 `pack_all()`
-
-> [!NOTE]
-> The representation of the returned object isn't guaranteed to be byte-level-compatible between runs. For example, properties that appear in the bag may appear in a different order.
 
 ## Examples
 

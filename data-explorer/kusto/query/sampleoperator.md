@@ -17,19 +17,17 @@ Returns up to the specified number of random rows from the input table.
 T | sample 5
 ```
 
+> [!NOTE]
+> * `sample` is geared for speed rather than even distribution of values. Specifically, it means that it will not produce 'fair' results if used after operators that union 2 data sets of different sizes (such as a `union` or `join` operators). It's recommended to use `sample` right after the table reference and filters.
+> * `sample` is a non-deterministic operator, and will return different result set each time it is evaluated during the query. For example, the following query yields two different rows (even if one would expect to return the same row twice).
+
 ## Syntax
 
-_T_ `| sample` _NumberOfRows_
+*T* `| sample` *NumberOfRows*
 
 ## Arguments
 
-- _NumberOfRows_: The number of rows of _T_ to return. You can specify any numeric expression.
-
-## Notes
-
-* `sample` is geared for speed rather than even distribution of values. Specifically, it means that it will not produce 'fair' results if used after operators that union 2 data sets of different sizes (such as a `union` or `join` operators). It's recommended to use `sample` right after the table reference and filters.
-
-* `sample` is a non-deterministic operator, and will return different result set each time it is evaluated during the query. For example, the following query yields two different rows (even if one would expect to return the same row twice).
+* *NumberOfRows*: The number of rows of *T* to return. You can specify any numeric expression.
 
 ## Examples
 

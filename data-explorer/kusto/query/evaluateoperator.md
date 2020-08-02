@@ -19,6 +19,11 @@ or disabled (unlike other language constructs, which are always available),
 and aren't "bound" by the relational nature of the language (for example, they may
 not have a predefined, statically determined, output schema).
 
+> [!NOTE]
+> * Syntactically, `evaluate` behaves similarly to the [invoke operator](./invokeoperator.md), which invokes tabular functions.
+> * Plugins provided through the evaluate operator aren't bound by the regular rules of query execution or argument evaluation.
+> * Specific plugins may have specific restrictions. For example, plugins whose output schema depends on the data (for example, [bag_unpack plugin](./bag-unpackplugin.md) and [pivot plugin](./pivotplugin.md)) can't be used when performing cross-cluster queries.
+
 ## Syntax 
 
 [*T* `|`] `evaluate` [ *evaluateParameters* ] *PluginName* `(` [*PluginArg1* [`,` *PluginArg2*]... `)`
@@ -41,14 +46,6 @@ The following parameters are supported:
   |`hint.distribution` |`single`, `per_node`, `per_shard`| [Distribution hints](#distribution-hints) |
   |`hint.pass_filters` |`true`, `false`| Allow `evaluate` operator to passthrough any matching filters before the plugin. Filter is considered as 'matched' if it refers to a column existing before the `evaluate` operator. Default: `false` |
   |`hint.pass_filters_column` |*column_name*| Allow plugin operator to passthrough filters referring to *column_name* before the plugin. Parameter can be used multiple times with different column names. |
-
-## Notes
-
-* Syntactically, `evaluate` behaves similarly
-to the [invoke operator](./invokeoperator.md), which invokes tabular functions.
-* Plugins provided through the evaluate operator aren't bound by the regular rules of query execution or argument evaluation.
-* Specific plugins may have specific restrictions. For example, plugins whose output schema depends on the data (for example, [bag_unpack plugin](./bag-unpackplugin.md) and [pivot plugin](./pivotplugin.md)) can't be used
-when performing cross-cluster queries.
 
 ## Distribution hints
 

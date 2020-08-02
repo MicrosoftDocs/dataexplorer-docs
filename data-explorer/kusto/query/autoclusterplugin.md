@@ -17,6 +17,10 @@ T | evaluate autocluster()
 
 `autocluster` finds common patterns of discrete attributes (dimensions) in the data. It then reduces the results of the original query, whether it's 100 or 100k rows, to a small number of patterns. The plugin was developed to help analyze failures (such as exceptions or crashes) but can potentially work on any filtered data set.
 
+> [!NOTE]
+> `autocluster` is largely based on the Seed-Expand algorithm from the following paper: [Algorithms for Telemetry Data Mining using Discrete Attributes](https://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=d5kcrO+cpEU=&t=1). 
+
+
 ## Syntax
 
 `T | evaluate autocluster(` *arguments* `)`
@@ -36,7 +40,7 @@ The patterns aren't distinct, may be overlapping, and usually don't cover all th
 
 ## Arguments 
 
->[!NOTE] 
+> [!NOTE] 
 > All arguments are optional.
 
 `T | evaluate autocluster(`[*SizeWeight*, *WeightColumn*, *NumSeeds*, *CustomWildcard*, *CustomWildcard*, ...]`)`
@@ -69,7 +73,7 @@ StormEvents
 |1|512|8.7||Thunderstorm Wind|YES
 |2|898|15.3|TEXAS||
 
-### Example with custom wildcards
+### Using custom wildcards
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -90,5 +94,3 @@ StormEvents
 
 * [basket](./basketplugin.md)
 * [reduce](./reduceoperator.md)
-
-* `autocluster` is largely based on the Seed-Expand algorithm from the following paper: [Algorithms for Telemetry Data Mining using Discrete Attributes](https://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=d5kcrO+cpEU=&t=1). 

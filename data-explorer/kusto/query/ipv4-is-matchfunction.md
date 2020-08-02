@@ -43,7 +43,7 @@ For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24
 
 ## Examples
 
-### IPv4 comparison equality - IP-prefix notation specified inside the IPv4 strings.
+### IPv4 comparison equality - IP-prefix notation specified inside the IPv4 strings
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

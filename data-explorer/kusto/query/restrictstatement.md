@@ -29,6 +29,9 @@ a set of let statements defining views that restrict the user's access
 to data (for example, `T | where UserId == "..."`). As the last statement
 being added, it restricts the user's access to the logical model only.
 
+> [!NOTE]
+> The restrict statement can be used to restrict access to entities in another database or cluster (wildcards are not supported in cluster names).
+
 ## Syntax
 
 `restrict` `access` `to` `(` [*EntitySpecifier* [`,` ...]] `)`
@@ -40,9 +43,6 @@ Where *EntitySpecifier* is one of:
 
 All tables, tabular views, or patterns that are not specified by the restrict
 statement become "invisible" to the rest of the query. 
-
-> [!NOTE]
-> The restrict statement can be used to restrict access to entities in another database or cluster (wildcards are not supported in cluster names).
 
 ## Arguments
 
