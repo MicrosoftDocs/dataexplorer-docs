@@ -57,7 +57,7 @@
       },
     {
       "source_path": "data-explorer/manage-cluster-security.md",
-      "redirect_url": "/azure/data-explorer/manage-cluster-disk-encryption",
+      "redirect_url": "/azure/data-explorer/cluster-disk-encryption",
       "redirect_document_id": true
     }
     ]
