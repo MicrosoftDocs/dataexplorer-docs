@@ -29,5 +29,21 @@ summarize `countif(`*Predicate*`)`
 
 Returns a count of rows for which *Predicate* evaluates to `true`.
 
-> [!TIP]
-> Use `summarize countif(filter)` instead of `where filter | summarize count()`
+## Example
+
+```kusto
+let T = datatable(name:string, day_of_birth:long)
+[
+   "John", 9,
+   "Paul", 18,
+   "George", 25,
+   "Ringo", 7
+];
+T
+| summarize countif(strlen(name) > 4)
+```
+
+|countif_|
+|----|
+|2|
+
