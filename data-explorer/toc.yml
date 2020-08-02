@@ -204,8 +204,12 @@
           href: vnet-deployment.md  
         - name: Troubleshoot VNet cluster creation, connectivity, and operation 
           href: vnet-deploy-troubleshoot.md
-    - name: Manage cluster security
-      href: manage-cluster-security.md
+    - name: Encryption
+      items:
+      - name: Cluster disk encryption - portal
+        href: cluster-disk-encryption.md
+      - name: Double Encryption
+        href: double-encryption.md
     - name: Configure managed identities
       href: managed-identities.md
     - name: Configure customer-managed-keys
