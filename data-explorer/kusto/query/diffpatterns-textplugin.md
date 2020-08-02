@@ -35,7 +35,7 @@ The `diffpatterns_text` returns a set of text patterns that capture different po
 
     Defines how to generate the two record subsets to compare to the input table. The algorithm splits the query into two data sets, “True” and “False” according to the condition, then analyzes the (text) differences between them. 
 
-### Optional Arguments
+### Optional arguments
 
 All other arguments are optional, but they must be ordered as below. 
 
