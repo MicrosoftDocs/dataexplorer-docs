@@ -41,7 +41,7 @@ T | evaluate diffpatterns(splitColumn)
 
     Example: `T | extend splitColumn=iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure") `
 
-### Optional Arguments
+### Optional arguments
 
 All other arguments are optional, but they must be ordered as below. To indicate that the default value should be used, put the string tilde value - '~' (see examples below).
 
