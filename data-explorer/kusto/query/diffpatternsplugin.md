@@ -25,7 +25,7 @@ T | evaluate diffpatterns(splitColumn)
 
 ## Arguments 
 
-### Required Arguments
+### Required arguments
 
 * SplitColumn - *column_name*
 
