@@ -51,10 +51,15 @@
         "redirect_document_id": true
       },
       {
-      "source_path": "data-explorer/kusto/api/netfx/kusto-ingest-queued-ingest-sample.md",
-      "redirect_url": "/azure/data-explorer/net-sdk-ingest-data",
-      "redirect_document_id": false
-      }
+        "source_path": "data-explorer/kusto/api/netfx/kusto-ingest-queued-ingest-sample.md",
+        "redirect_url": "/azure/data-explorer/net-sdk-ingest-data",
+        "redirect_document_id": false
+      },
+    {
+      "source_path": "data-explorer/manage-cluster-security.md",
+      "redirect_url": "/azure/data-explorer/cluster-disk-encryption",
+      "redirect_document_id": true
+    }
     ]
   }
   
