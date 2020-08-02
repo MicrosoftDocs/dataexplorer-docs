@@ -156,7 +156,7 @@ Use the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) 
 
 1. Open the sample app solution in Visual Studio.
 
-1. In the *program.cs* file, update the `connectionString` constant to the connection string you copied from the event hub namespace.
+1. In the *program.cs* file, update the `eventHubName` constant to the name of your Event Hub and update the `connectionString` constant to the connection string you copied from the Event Hub namespace.
 
     ```csharp
     const string eventHubName = "test-hub";
