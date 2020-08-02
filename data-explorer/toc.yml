@@ -206,10 +206,10 @@
           href: vnet-deploy-troubleshoot.md
     - name: Encryption
       items:
-      - name: Double Encryption
-        href: double-encryption.md
       - name: Cluster disk encryption - portal
         href: cluster-disk-encryption.md
+      - name: Double Encryption
+        href: double-encryption.md
     - name: Configure managed identities
       href: managed-identities.md
     - name: Configure customer-managed-keys

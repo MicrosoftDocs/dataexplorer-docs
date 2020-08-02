@@ -1,38 +1,38 @@
 ---
-title: Enable infrastructure encryption on your cluster in Azure Data Explorer
-description: This article describes how to Enable infrastructure encryption on your cluster in Azure Data Explorer.
+title: Enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer
+description: This article describes how to enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: toleibov
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 08/02/2020
 ---
 
-# Enable infrastructure encryption (double encryption) on cluster creation
+# Enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer
   
-When you create a cluster, its storage is automatically encrypted in service level using 256-bit AES encryption, one of the strongest block ciphers available, and is FIPS 140-2 compliant. Customers who require higher levels of assurance that their data is secure can also enable 256-bit AES encryption at the Azure Storage infrastructure level. 
+When you create a cluster, its storage is [automatically encrypted at the service level](/azure/storage/common/storage-service-encryption). If you require a higher level of assurance that your data is secure, you can also enable [Azure Storage infrastructure level encryption](/azure/storage/common/infrastructure-encryption-enable), also known as double encryption.  
 
-When infrastructure encryption is enabled, data in the storage account is encrypted twice — once at the service level and once at the infrastructure level — with two different encryption algorithms and two different keys. 
-Double encryption of Azure Storage data protects against a scenario where one of the encryption algorithms or keys may be compromised. In this scenario, the additional layer of encryption continues to protect your data.
-For more information, see [storage infrastructure encryption](https://docs.microsoft.com/azure/storage/common/infrastructure-encryption-enable). 
+When infrastructure encryption is enabled, data in the storage account is encrypted twice, once at the service level and once at the infrastructure level, using two different encryption algorithms and two different keys. Double encryption of Azure Storage data protects against a scenario where one of the encryption algorithms or keys may be compromised. In this scenario, the additional layer of encryption continues to protect your data.
 
 > [!IMPORTANT]
-> * Enabling double encryption is possible only during cluster creation.
-> * Once infrastructure encryption is enabled on your cluster, **you cannot disable it**.
-> * This capability is available only in regions in which infrastructure encryption is supported in Azure. For more information, see [storage infrastructure encryption](https://docs.microsoft.com/azure/storage/common/infrastructure-encryption-enable).
+> * Enabling double encryption is only possible during cluster creation.
+> * Once infrastructure encryption is enabled on your cluster, you **can't** disable it.
+> * Double encryption is only available in regions where infrastructure encryption is supported. For more information, see [storage infrastructure encryption](/azure/storage/common/infrastructure-encryption-enable).
 
 # [C#](#tab/c-sharp)
 
-#### Prerequisites
+You can enable infrastructure encryption during cluster creation using C#.
 
-To set up a managed identity using the Azure Data Explorer C# client:
+## Prerequisites
+
+Set up a managed identity using the Azure Data Explorer C# client:
 
 * Install the [Azure Data Explorer (Kusto) NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Install the [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet package](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) for authentication.
 * [Create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
-#### Create your cluster
+## Create your cluster
 
 1. Create your cluster using the `enableDoubleEncryption` property:
 
@@ -72,14 +72,15 @@ To set up a managed identity using the Azure Data Explorer C# client:
 
     If the result contains `ProvisioningState` with the `Succeeded` value, then the cluster was created successfully.
 
-
 # [ARM template](#tab/arm)
 
-### Add a system-assigned identity using an Azure Resource Manager template
+You can enable infrastructure encryption during cluster creation using Azure Resource Manager.
 
 An Azure Resource Manager template can be used to automate deployment of your Azure resources. To learn more about deploying to Azure Data Explorer, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database-resource-manager.md).
 
-Adding the 'EnableDoubleEncryption' type tells Azure to enable infrastructure encryption (double encryption) for your cluster.
+## Add a system-assigned identity using an Azure Resource Manager template
+
+1. Add the 'EnableDoubleEncryption' type to tell Azure to enable infrastructure encryption (double encryption) for your cluster.
 
 ```json
 {
@@ -98,7 +99,7 @@ Adding the 'EnableDoubleEncryption' type tells Azure to enable infrastructure en
 }
 ```
 
-When the cluster is created, it has the following additional properties:
+2. When the cluster is created, it has the following additional properties:
 
 ```json
 "identity": {
@@ -107,7 +108,6 @@ When the cluster is created, it has the following additional properties:
     "principalId": "<PRINCIPALID>"
 }
 ```
-
 ---
 
 ## Next steps

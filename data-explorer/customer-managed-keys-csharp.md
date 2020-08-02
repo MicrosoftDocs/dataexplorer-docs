@@ -90,7 +90,7 @@ When you create a new version of a key, you'll need to update the cluster to use
 
 * [Secure Azure Data Explorer clusters in Azure](security.md)
 * [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md)
-* [Secure your cluster in Azure Data Explorer - Azure portal](cluster-disk-encryption.md) by enabling encryption at rest.
+* [Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal](cluster-disk-encryption.md) by enabling encryption at rest.
 * [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
 
 
