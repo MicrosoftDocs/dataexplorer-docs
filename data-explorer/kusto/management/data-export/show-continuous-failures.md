@@ -1,6 +1,6 @@
 ---
-title: Continuous data export - Azure Data Explorer | Microsoft Docs
-description: This article describes Continuous data export in Azure Data Explorer.
+title: Show continuous data export failures - Azure Data Explorer
+description: This article describes how to show continuous data export failures in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek

@@ -29,4 +29,4 @@ Continuous exports are executed by last run time in ascending order (oldest expo
 
 ## Output
 
-The result of the [show continuous export command](#show-continuous-export) of the altered continuous export. 
+The result of the [show continuous export command](show-continuous-export.md) of the altered continuous export. 

@@ -17,7 +17,7 @@ The exported data is defined by a periodically run query. The results are stored
 The process guarantees that all records are exported "exactly once" (excluding dimension tables, in which all records are evaluated in all executions). 
 
 Continuous data export requires you to [create an external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) 
-and then [create a continuous export definition](#create-or-alter-continuous-export) pointing to the external table. 
+and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table. 
 
 > [!NOTE] 
 > * Kusto doesn't support exporting historical records ingested before continuous export creation (as part of continuous export). Historical records can be exported separately using the (non-continuous) [export command](export-data-to-an-external-table.md). 
@@ -31,11 +31,11 @@ For more information, see [exporting historical data](#exporting-historical-data
 
 ## Notes
 
-* The guarantee for "exactly once" export is only for files reported in the [show exported artifacts command](#show-continuous-export-artifacts). 
+* The guarantee for "exactly once" export is only for files reported in the [show exported artifacts command](show-continuous-artifacts.md). 
 Continuous export doesn't guarantee that each record will be written only once to the external table. If a failure occurs after export has begun and some of
  the artifacts were already written to the external table, the external table _may_ contain duplicates (or even corrupted files, in case a write operation was 
  aborted before completion). In such cases, artifacts are not deleted from the external table but they will *not* be reported in the
-[show exported artifacts command](#show-continuous-export-artifacts). Consuming the exported files using the `show exported artifacts command`. 
+[show exported artifacts command](show-continuous-artifacts.md). Consuming the exported files using the `show exported artifacts command`. 
 guarantees no duplicates (and not corruptions).
 * To guarantee "exactly once" export, continuous export uses [database cursors](../databasecursor.md). 
 [IngestionTime policy](../ingestiontime-policy.md) must  be enabled on all tables referenced in the query that should be processed "exactly once" in the export. The policy is enabled by default on all newly created tables.
@@ -57,7 +57,7 @@ exported files (depending on whether the query uses inner or outer join). The fo
 can be useful for such cases, where the fact and dimensions tables are ingested during the same time (for matching records).
    * Continuous-export of only dimension tables isn't supported. The export query must include at least a single fact table.
    * The syntax explicitly declares which tables are scoped (fact) and which are not scoped (dimension). See the `over` parameter in the 
-    [create command](#create-or-alter-continuous-export) for details.
+    [create command](create-alter-continuous.md) for details.
 * If the exported data volume is large, it is highly recommended to configure multiple storage accounts for the 
 external table, to avoid storage throttling (see the Known issues section in the
  [export data to storage](export-data-to-storage.md#known-issues) document).
