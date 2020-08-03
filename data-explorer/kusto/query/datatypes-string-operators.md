@@ -54,7 +54,7 @@ Operator        |Description                                                    
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 > 
-> * All operators containing `has` search on indexed **terms** of four or more characters, and not on substring matches. A term is created by breaking up the string into sequences of ASCII alphanumeric characters. See [understanding string terms](#understanding-string-terms).
+> * All operators containing `has` search on indexed *terms* of four or more characters, and not on substring matches. A term is created by breaking up the string into sequences of ASCII alphanumeric characters. See [understanding string terms](#understanding-string-terms).
 
 ## Performance tips
 
@@ -77,7 +77,7 @@ EventLog | where continent contains "nor" | count
 
 ## Understanding string terms
 
-Kusto indexes all columns, including columns of type `string`. Multiple indexes are built for such columns, depending on the actual data. These indexes aren't directly exposed, but are used in queries with the `string` operators that have `has` as part of their name, such as `has`, `!has`, `hasprefix`, `!hasprefix`. The semantics of these operators are dictated by the way the column is encoded. Instead of doing a "plain" substring match, these operators match **terms**.
+Kusto indexes all columns, including columns of type `string`. Multiple indexes are built for such columns, depending on the actual data. These indexes aren't directly exposed, but are used in queries with the `string` operators that have `has` as part of their name, such as `has`, `!has`, `hasprefix`, `!hasprefix`. The semantics of these operators are dictated by the way the column is encoded. Instead of doing a "plain" substring match, these operators match *terms*.
 
 ### What is a term? 
 
@@ -89,4 +89,4 @@ For example, in the following `string`, the terms are `Kusto`, `WilliamGates3rd`
 Kusto:  ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;;WilliamGates3rd
 ```
 
-Kusto builds a term index consisting of all terms that are **four characters or more**, and this index is used by `has`, `!has`, and so on. If the query looks for a term that is smaller than four characters, or uses a `contains` operator, Kusto will revert to scanning the values in the column if it can't determine a match. This method is much slower than looking up the term in the term index.
+Kusto builds a term index consisting of all terms that are *four characters or more*, and this index is used by `has`, `!has`, and so on. If the query looks for a term that is smaller than four characters, or uses a `contains` operator, Kusto will revert to scanning the values in the column if it can't determine a match. This method is much slower than looking up the term in the term index.
