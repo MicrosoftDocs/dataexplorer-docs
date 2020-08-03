@@ -30,7 +30,7 @@ Kusto builds a term index consisting of all terms that are *four characters or m
 ## Operators on strings
 
 > [!NOTE]
-> The below abbreviations are used in the table below:
+> The following abbreviations are used in the table below:
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 
