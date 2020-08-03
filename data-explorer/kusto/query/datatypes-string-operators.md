@@ -50,6 +50,12 @@ Operator        |Description                                                    
 `!in~`          |Not equals to any of the elements                                 |No            |`"bca" !in~ ("123", "345", "ABC")`
 `has_any`       |Same as `has` but works on any of the elements                    |No            |`"North America" has_any("south", "north")`
 
+> [!NOTE]
+> * RHS = right hand side of the expression
+> * LHS = left hand side of the expression
+> 
+> * All operators containing `has` search on indexed **terms** of four or more characters, and not on substring matches. A term is created by breaking up the string into sequences of ASCII alphanumeric characters. See [understanding string terms](#understanding-string-terms).
+
 ## Performance tips
 
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
@@ -71,22 +77,16 @@ EventLog | where continent contains "nor" | count
 
 ## Understanding string terms
 
-By default, Kusto indexes all columns, including columns of type `string`.
-Multiple indexes are built for such columns, depending on the actual data. 
-These indexes aren't directly exposed (other than their positive effect on query performance), except for the `string` operators that have `has` as part of their name, such as `has`, `!has`, `hasprefix`, `!hasprefix`.
-Those operators are special, because their semantics are dictated by the way the column is encoded. 
-Instead of doing a "plain" substring match, these operators match **terms**.
+Kusto indexes all columns, including columns of type `string`. Multiple indexes are built for such columns, depending on the actual data. These indexes aren't directly exposed, but are used in queries with the `string` operators that have `has` as part of their name, such as `has`, `!has`, `hasprefix`, `!hasprefix`. The semantics of these operators are dictated by the way the column is encoded. Instead of doing a "plain" substring match, these operators match **terms**.
 
-To understand term-based match, you must first understand what a term is. 
+### What is a term? 
+
 By default, Each `string` value is broken into maximal sequences of ASCII alphanumeric characters, and each of those sequences is made into a term.
 
-For example, in the following `string`, the terms are `Kusto`, `WilliamGates3rd`, and
-the following substrings: `ad67d136`, `c1db`, `4f9f`, `88ef`, `d94f3b6b0b5a`.
+For example, in the following `string`, the terms are `Kusto`, `WilliamGates3rd`, and the following substrings: `ad67d136`, `c1db`, `4f9f`, `88ef`, `d94f3b6b0b5a`.
 
 ```
 Kusto:  ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;;WilliamGates3rd
 ```
 
-By default, Kusto builds a term index consisting of all terms that are
-**four characters or more**, and this index is used by `has`, `!has`, and so on, when looking up terms that are also four characters or more.
-If the query looks for a term that is smaller than four characters, or uses a `contains` operator, Kusto will revert to scanning the values in the column if it can't determine a match. This method is much slower than looking up the term in the term index.
+Kusto builds a term index consisting of all terms that are **four characters or more**, and this index is used by `has`, `!has`, and so on. If the query looks for a term that is smaller than four characters, or uses a `contains` operator, Kusto will revert to scanning the values in the column if it can't determine a match. This method is much slower than looking up the term in the term index.
