@@ -1448,7 +1448,21 @@
       - name: To an external table
         href: ./kusto/management/data-export/export-data-to-an-external-table.md
       - name: Continuous data export
-        href: ./kusto/management/data-export/continuous-data-export.md
+        items:
+        - name: Overview
+          href: ./kusto/management/data-export/continuous-data-export.md
+        - name: Create or alter continuous export
+          href: ./kusto/management/data-export/create-alter-continuous.md
+        - name: Disable or enable continuous export
+          href: ./kusto/management/data-export/disable-enable-continuous.md
+        - name: Drop continuous export
+          href: ./kusto/management/data-export/drop-continuous-export.md
+        - name: Show continuous export
+          href: ./kusto/management/data-export/show-continuous-export.md
+        - name: Show continuous export artifacts
+          href: ./kusto/management/data-export/show-continuous-artifacts.md
+        - name: Show continuous export failures
+          href: ./kusto/management/data-export/show-continuous-failures.md
     - name: Database cursors
       href: ./kusto/management/databasecursor.md
     - name: Query results cache
