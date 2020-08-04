@@ -7,13 +7,17 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ---
-# Update policy 
+# Update policy overview
 
 The [update policy](update-policy.md) instructs Kusto to automatically append data to a target table whenever new data is inserted into the source table. The update policy's query runs on the data inserted into the source table. For example, the policy lets the creation of one table be the filtered view of another table. The new table can have a different schema, retention policy, and so on. 
 
 :::image type="content" source="images/updatepolicy/update-policy-overview.png" alt-text="Overview of the update policy in Azure Data Explorer":::
+
+> [!NOTE]
+> The source table and the table for which the update policy is defined must be in the same database.
+> The update policy function schema and the target table schema must match in their column names, types, and order.
 
 ## Update policy commands
 
@@ -41,10 +45,6 @@ When referencing the `Source` table in the `Query` part of the policy, or in fun
 
 A table may have zero, one, or more update policy objects associated with it.
 Each such object is represented as a JSON property bag, with the following properties defined.
-
-> [!NOTE]
-> The source table and the table for which the update policy is defined must be in the same database.
-> The update policy function schema and the target table schema must match in their column names, types, and order. //ORNAT IS THIS THE RIGHT LOCATION
 
 |Property |Type |Description  |
 |---------|---------|----------------|
@@ -75,6 +75,28 @@ Update policies take effect when data is ingested or moved to (extents are creat
 
 Defining an update policy can affect the performance of a Kusto cluster. The update policy affects any ingestion into the source table. Ingestion of a number of data extents is multiplied by the number of target tables. As such, it's important that the `Query` part of the update policy is optimized to work well. You can test an update policy's additional performance impact on an ingestion operation. Invoke the policy on specific and already-existing extents, before creating or altering the policy or function it uses in its `Query` part.
 
+
+## Scenarios
+
+### Zero retention on source table
+
+In some instances, data is ingested to a source table only as a stepping stone to the target table, and you do not want to keep the raw data in the source table. Set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: 
+
+* The source data isn't queryable from the source table. 
+* The source data isn't persisted to durable storage as part of the ingestion operation. 
+* Operational performance will improve. 
+* Post-ingestion resources for background grooming operations will be reduced. These operations are done on [extents](../management/extents-overview.md) in the source table.
+
+### Regular ingestion with update policy
+
+Given the following conditions:
+
+* The source table is a high-rate trace table with interesting data formatted as a free-text column. 
+* The target table on which the update policy is defined accepts only specific trace lines.
+* The table has a well-structured schema that is a transformation of the original free-text data created by the [parse operator](../query/parseoperator.md).
+
+The update policy will behave like regular ingestion and is subject to the same restrictions and best practices. The policy scales-out with the size of the cluster, and works more efficiently if ingestions are done in large bulks.
+
 ### Evaluate resource usage on query
 
 Given the following conditions:
@@ -92,27 +114,6 @@ let MySourceTable = MySourceTable | where extent_id() == toscalar(extentId);
 MyFunction()
 ```
 
-## Scenarios
-
-## Set zero retention on the source table
-
-In some instances, data is ingested to a source table only as a stepping stone to the target table, and you do not want to keep the raw data in the source table. Set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: 
-
-* The source data isn't queryable from the source table. 
-* The source data isn't persisted to durable storage as part of the ingestion operation. 
-* Operational performance will improve. 
-* Post-ingestion resources for background grooming operations will be reduced. These operations are done on [extents](../management/extents-overview.md) in the source table.
-
-## Update policy behaves like regular ingestion
-
-Given the following conditions:
-
-* The source table is a high-rate trace table with interesting data formatted as a free-text column. 
-* The target table on which the update policy is defined accepts only specific trace lines.
-* The table has a well-structured schema that is a transformation of the original free-text data created by the [parse operator](../query/parseoperator.md).
-
-The update policy will behave like regular ingestion and is subject to the same restrictions and best practices. The policy scales-out with the size of the cluster, and works more efficiently if ingestions are done in large bulks.
-
 ## Failures
 
 By default, failure to run the update policy doesn't affect the ingestion of data to the source table. If the update policy is defined as `IsTransactional`:true, failure to run the policy forces the ingestion of data into the source table to fail.
@@ -129,10 +130,16 @@ Failures that occur while the policies are being updated can be retrieved using 
 
 ### Treatment of failures
 
-* Non-transactional policy: The failure is ignored by Kusto. Any retry is the responsibility of the data ingestion process owner.  
-* Transactional policy: The original ingestion operation that triggered the update will also fail. The source table and the database won't be modified with new data.
-  * If the ingestion method is `pull` (Kusto's Data Management service is involved in the ingestion process), there's an automated retry on the entire ingestion operation, orchestrated by Kusto's Data Management service, according to the following logic:
-    * Retries are done until the earliest between `DataImporterMaximumRetryPeriod` (default = 2 days) and `DataImporterMaximumRetryAttempts` (default = 10) is reached.
-    * Both of the above settings can be altered in the Data Management service's configuration, by KustoOps.
-    * The backoff period starts at 2 minutes, and grows exponentially (2 -> 4 -> 8 -> 16 ... minutes)
-  * In any other case, any retry is the responsibility of the data owner.
+####  Non-transactional policy 
+
+The failure is ignored by Kusto. Any retry is the responsibility of the data ingestion process owner.  
+
+#### Transactional policy
+
+The original ingestion operation that triggered the update will also fail. The source table and the database won't be modified with new data.
+If the ingestion method is `pull` (Kusto's Data Management service is involved in the ingestion process), there's an automated retry on the entire ingestion operation, orchestrated by Kusto's Data Management service, according to the following logic:
+* Retries are done until the earliest between `DataImporterMaximumRetryPeriod` (default = 2 days) and `DataImporterMaximumRetryAttempts` (default = 10) is reached.
+* Both of the above settings can be altered in the Data Management service's configuration.
+* The backoff period starts at 2 minutes, and grows exponentially (2 -> 4 -> 8 -> 16 ... minutes)
+
+In any other case, any retry is the responsibility of the data owner.
