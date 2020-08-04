@@ -103,7 +103,7 @@ In some instances, data is ingested to a source table only as a stepping stone t
 * Operational performance will improve. 
 * Post-ingestion resources for background grooming operations will be reduced. These operations are done on [extents](../management/extents-overview.md) in the source table.
 
-### Update policy behaving like regular ingestion
+## Update policy behaves like regular ingestion
 
 Given the following conditions:
 
