@@ -157,7 +157,7 @@ func main {
 
 You will need to create Service Principal for authentication. For example, you can do it with Azure CLI using the [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest&WT.mc_id=adxgo-docs-abhishgu#az-ad-sp-create-for-rbac) command
 
-Set Service Principal information along with cluster endpoint in the form of environment variables that will be used by the program:
+Set service principal information along with cluster endpoint and the database name in the form of environment variables that will be used by the program:
 
 ```shell
 export AZURE_SP_CLIENT_ID="<replace with appID>"
@@ -186,7 +186,7 @@ Ingested file from - https://kustosamplefiles.blob.core.windows.net/samplefiles/
 
 ## Validate and troubleshoot
 
-Wait for five to ten minutes for the queued ingestion to schedule the ingest and load the data into Azure Data Explorer. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com) and connect to your cluster. Then run the following code to get the count of records in the `StormEvents` table
+Wait for five to ten minutes for the queued ingestion to schedule the ingest and load the data into Azure Data Explorer. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com) and connect to your cluster. Then run the following command to get the count of records in the `StormEvents` table
 
 ```kusto
 StormEvents | count
