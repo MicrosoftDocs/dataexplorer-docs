@@ -16,7 +16,7 @@ SQL server on-premises lets you attach a linked server and lets you create queri
 You can use Kusto as a linked server via ODBC connectivity.
 The SQL Server on-premises service needs to use an active directory account (not the default Service account) that lets it connect to Azure Data Explorer using Azure Active Directory (Azure AD).
 
-1. Install the latest ODBC Driver for SQL Server 2017 (it also comes with SSMS 18): https://www.microsoft.com/download/details.aspx?id=56567
+1. Install the latest ODBC Driver for SQL Server 2017 (it also comes with SSMS 18): https://aka.ms/downloadmsodbcsql
 1. Prepare the DSN-less connection string for the ODBC driver, for a specific Azure Data Explorer cluster and database: `Driver={ODBC Driver 17 for SQL Server};Server=<cluster>.kusto.windows.net;Database=<database>;Authentication=ActiveDirectoryIntegrated;Language=any@MaxStringSize:4000`. The language option is added to tune Azure Data Explorer to encode strings as NVARCHAR(4000). For more information about this workaround, see [ODBC](./clients.md#odbc).
 1. Create the Linked Server with the settings pointed to by the red arrows.
 
