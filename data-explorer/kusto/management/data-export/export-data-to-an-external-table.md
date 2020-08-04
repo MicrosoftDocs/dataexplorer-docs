@@ -15,12 +15,12 @@ You can export data by defining an [external table](../externaltables.md) and ex
  The table properties are specified when [creating the external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table). You don't need to embed the table's properties in the export command. 
  The export command references the external table by name. Export data requires [database admin permission](../access-control/role-based-authorization.md).
 
-**Syntax:**
+## Syntax
 
 `.export` [`async`] `to` `table` *ExternalTableName* <br>
 [`with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <| *Query*
 
-**Output:**
+## Output
 
 |Output parameter |Type |Description
 |---|---|---
@@ -28,7 +28,8 @@ You can export data by defining an [external table](../externaltables.md) and ex
 |Path|String|Output path.
 |NumRecords|String| Number of records exported to path.
 
-**Notes:**
+## Notes
+
 * The export query output schema must match the schema of the external table, including all columns defined by the partitions. For example, if the table is partitioned by *DateTime*, the query output schema must have a Timestamp column matching the *TimestampColumnName*. This column name is defined in the external table partitioning definition.
 
 * It isn't possible to override the external table properties using the export command.
