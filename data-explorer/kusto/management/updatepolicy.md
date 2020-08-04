@@ -94,7 +94,7 @@ MyFunction()
 
 ## Scenarios
 
-### Zero retention on source table
+## Set zero retention on the source table
 
 In some instances, data is ingested to a source table only as a stepping stone to the target table, and you do not want to keep the raw data in the source table. Set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: 
 
