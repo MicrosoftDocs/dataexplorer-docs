@@ -18,11 +18,13 @@ To enable continuous data export, [create an external table](../external-tables-
 > [!NOTE]
 > All continuous export commands require [database admin permissions](../access-control/role-based-authorization.md).
 
+## Parameters
+
 * The output schema of the export query *must* match the schema of the external table to which you export. 
-
 * Continuous export runs according to the time period configured for it. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. 
-
-* If the artifacts used by continuous export are intended to trigger Event Grid notifications, please refer to the [known issues section in the Event Grid documentation](../data-ingestion/eventgrid.md#known-issues).
+* The default distribution in continuous export is `per_node` (all nodes are exporting concurrently). This setting can be overridden in the properties of the continuous export create command. Use `per_shard` distribution to increase concurrency (note that this will increase the load on the storage account(s) and has a chance of hitting throttling limits); 
+* Use `single` (or `distributed`=`false`) to disable distribution altogether (this may significantly slow down the continuous export process). This setting also impacts the number of files created in each continuous export iteration. See [export to external table command](export-data-to-an-external-table.md#notes) for more details.
+* The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see the notes section in [export to external table command](export-data-to-an-external-table.md). Each continuous export iteration always writes to *new* files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs (`intervalBetweenRuns` parameter).
 
 ## Not compatible with continuous export
 
@@ -33,12 +35,7 @@ For more information, see [exporting historical data](#exporting-historical-data
 * Continuous export is not supported for external tables with `impersonate` in their [connection strings](../../api/connection-strings/storage.md).
 * Continuous export doesn't support cross-database/cluster calls.
 * Continuous export *isn't* designed for constantly streaming data out of Kusto. It runs in a distributed mode, where all nodes export concurrently. If the range of data queried by each run is small, the output of the continuous export would be many small artifacts (the number depends on the number of nodes in the cluster).
-
-## Parameters
-
-* The default distribution in continuous export is `per_node` (all nodes are exporting concurrently). This setting can be overridden in the properties of the continuous export create command. Use `per_shard` distribution to increase concurrency (note that this will increase the load on the storage account(s) and has a chance of hitting throttling limits); 
-* Use `single` (or `distributed`=`false`) to disable distribution altogether (this may significantly slow down the continuous export process). This setting also impacts the number of files created in each continuous export iteration. See [export to external table command](export-data-to-an-external-table.md#notes) for more details.
-* The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see the notes section in [export to external table command](export-data-to-an-external-table.md). Each continuous export iteration always writes to *new* files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs (`intervalBetweenRuns` parameter).
+* If the artifacts used by continuous export are intended to trigger Event Grid notifications, please refer to the [known issues section in the Event Grid documentation](../data-ingestion/eventgrid.md#known-issues).
 
 ## Exactly once
 
