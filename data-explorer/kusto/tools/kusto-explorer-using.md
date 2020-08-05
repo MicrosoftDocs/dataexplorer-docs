@@ -135,19 +135,6 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 
 You can create a URI that, when opened in a browser, opens Kusto.Explorer locally and runs a specific query on a specified Kusto database.
 
-#### Limitations
-
-The queries are limited to ~2000 characters because of browser limitations, HTTP proxies, and tools that validate links, such as Microsoft Outlook. The limitation is approximate because it's dependent on the cluster and Database name length. For more information, see [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427). 
-To reduce the chances of reaching the character limit, see [Getting Shorter Links](#getting-shorter-links), below.
-
-The format of the URI is:
-    `https://<ClusterCname>.kusto.windows.net/<DatabaseName>web=0?query=<QueryToExecute>`
-
-For example:
-    [https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10](https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10)
- 
-This URI will open Kusto.Explorer, connect to the `Help` Kusto cluster, and run the specified query on the `Samples` database. If there's an instance of Kusto.Explorer already running, the running instance will open a new tab and run the query in it.
-
 > [!NOTE] 
 > For security reasons, deep-linking is disabled for control commands.
 
@@ -176,6 +163,20 @@ You can use parametrized queries with deep-linking.
 web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
     Replace &lt;your_cluster&gt; with your Azure Data Explorer cluster name.
+
+#### Limitations
+
+The queries are limited to ~2000 characters because of browser limitations, HTTP proxies, and tools that validate links, such as Microsoft Outlook. The limitation is approximate because it's dependent on the cluster and Database name length. For more information, see [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427). 
+
+To reduce the chances of reaching the character limit, see [Getting Shorter Links](#getting-shorter-links).
+
+The format of the URI is:
+    `https://<ClusterCname>.kusto.windows.net/<DatabaseName>web=0?query=<QueryToExecute>`
+
+For example:
+    [https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10](https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10)
+ 
+This URI will open Kusto.Explorer, connect to the `Help` Kusto cluster, and run the specified query on the `Samples` database. If there's an instance of Kusto.Explorer already running, the running instance will open a new tab and run the query in it.
 
 ### Getting shorter links
 
