@@ -1,6 +1,6 @@
 ---
-title: Azure Data Explorer and business continuity disaster recovery - HowTo
-description: This article describes how to recover from disruptive events.
+title: Create business continuity and disaster recovery solutions with Azure Data Explorer
+description: This article describes how to create business continuity and disaster recovery solutions with Azure Data Explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: herauch
@@ -10,8 +10,8 @@ ms.date: 08/05/2020
 ---
 
 # Create business continuity and disaster recovery solutions with Azure Data Explorer
-\\To do: revise H1, title and intro
-This article details how you can create several different architectures that take business continuity into account under heavy disruptions. You'll also choose the specific architecture that best balances your needs. For a more in-depth look at architecture considerations and recovery solutions, see the business continuity [overview](bcdr-overview.md).
+
+This article details how you can prepare for an Azure regional outage by replicating your Azure Data Explorer resources, management and ingestion in different Azure regions. An example of data ingestion with Event Hub is given. Cost optimization is also discussed for different architecture configurations. For a more in-depth look at architecture considerations and recovery solutions, see the [business continuity overview](bcdr-overview.md).
 
 ## Prepare for Azure regional outage to protect your data
 
@@ -105,6 +105,8 @@ az kusto cluster stop --name=<clusterName> --resource-group=<rgName> --subscript
 
 ### Implement a highly available application service
 
+#### Create the Azure App Service BCDR client
+
 This section shows you how to create an [Azure App Service](https://azure.microsoft.com/services/app-service/) that supports a connection to a single primary and multiple secondary Azure Data Explorer clusters. The following image illustrates the Azure App Service setup.
 
 :::image type="content" source="media/bcdr-create-solution/app-service-setup.png" alt-text="Create an Azure App Service":::
@@ -129,7 +131,7 @@ The Azure Data Explorer clusters are distributed across West Europe (2xD14v2 pri
 > [!NOTE]
 > Slower response times are due to different SKUs and cross planet queries.
 
-#### Use Azure Traffic Manager for dynamic or static routing
+#### Perform dynamic or static routing
 
 Use [Azure Traffic Manager routing methods](/azure/traffic-manager/traffic-manager-routing-methods) for dynamic or static routing of the requests.  Azure Traffic Manager is a DNS-based traffic load balancer that enables you to distribute app service traffic. This traffic is optimized to services across global Azure regions, while providing high availability and responsiveness. 
 
