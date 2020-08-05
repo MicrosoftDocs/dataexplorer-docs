@@ -1,5 +1,5 @@
 ---
-title: Getting started with Kusto.Explorer
+title: Kusto.Explorer installation and user interface
 description: Learn about the features of Kusto.Explorer and how it can help you to explore your data
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.topic: overview
 ms.date: 05/19/2020
 ---
 
-# Getting started with Kusto.Explorer
+# Kusto.Explorer installation and user interface
 
 Kusto.Explorer is a rich desktop application that enables you to explore your data using the Kusto Query Language in an easy-to-use user interface. This overview explains how to get started with setting up your Kusto.Explorer and explains the user interface you will use.
 
