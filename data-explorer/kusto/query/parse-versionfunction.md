@@ -1,5 +1,5 @@
 ---
-title: parse_version() - Azure Data Explorer | Microsoft Docs
+title: parse_version() - Azure Data Explorer
 description: This article describes parse_version() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,35 +11,32 @@ ms.date: 02/13/2020
 ---
 # parse_version()
 
-Converts input string representation of version to a comparable decimal number.
+Converts the input string representation of version to a comparable decimal number.
 
 ```kusto
 parse_version("0.0.0.1")
 ```
 
-**Syntax**
+## Syntax
 
 `parse_version` `(` *Expr* `)`
 
-**Arguments**
+## Arguments
 
-* *Expr*: A scalar expression of type `string` that specifies the version to be parsed.
+* *`Expr`*: A scalar expression of type `string` that specifies the version to be parsed.
 
-**Returns**
+> [!NOTE]
+> * Input string must contain from one to four version parts, represented as numbers and separated with dots ('.').
+> * Each part of version may contain up to eight digits, with the max value at 99999999.
+> * If the number of parts is less than four, all the missing parts are considered as trailing (`1.0` == `1.0.0.0`).
 
-If conversion is successful, result will be a decimal.
-If conversion is not successful, result will be `null`.
+## Returns
 
-**Notes**
+If conversion is successful, the result will be a decimal.
+If conversion is unsuccessful, the result will be `null`.
 
-Input string must contain from 1 to 4 version parts, represented as numbers and separated with dots ('.').
+## Example
 
-Each part of version may contain up to 8 digits (max value - 99999999).
-
-In case, if amount of parts is less than 4, all the missing parts are considered as trailing (`1.0` == `1.0.0.0`).
-
- 
-**Example**
 ```kusto
 let dt = datatable(v:string)
 ["0.0.0.5","0.0.7.0","0.0.3","0.2","0.1.2.0","1.2.3.4","1","99999999.0.0.0"];
@@ -80,7 +77,3 @@ dt | project v1=v, _key=1
 |99999999.0.0.0|1.2.3.4|99999999.0.0.0|
 |1.2.3.4|1|1.2.3.4|
 |99999999.0.0.0|1|99999999.0.0.0|
-
-
-
-

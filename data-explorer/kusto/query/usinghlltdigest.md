@@ -11,7 +11,7 @@ ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-# Partitioning and composing intermediate results of aggregations
+# Using hll() and tdigest()
 
 Suppose you want to calculate the count of distinct users every day over the last seven days. You can run `summarize dcount(user)` once a day with a span filtered to the last seven days. This method is inefficient, because each time the calculation is run, there's a six-day overlap with the previous calculation. You can also calculate an aggregate for each day, and then combine these aggregates. This method requires you to "remember" the last six results, but it's much more efficient.
 
@@ -75,7 +75,7 @@ MyTable
 |0|
 
 
-**Example**
+## Example
 
 There is a table, `PageViewsHllTDigest`, containing `hll` values of Pages viewed in each hour. You want these values binned to `12h`. Merge the `hll` values using the `hll_merge()` aggregate function, with the timestamp binned to `12h`. Use the function `dcount_hll` to return the final `dcount` value:
 
@@ -121,7 +121,7 @@ PageViewsHllTDigest
 |2016-05-02 12:00:00.0000000|181315|
 |2016-05-03 00:00:00.0000000|146817|
  
-**Example**
+## Example
 
 Kusto limits are reached with datasets that are too large, where you need to run periodic queries over the dataset, but run the regular queries to calculate [`percentile()`](percentiles-aggfunction.md) or [`dcount()`](dcount-aggfunction.md) over large datasets.
 
@@ -172,7 +172,7 @@ PageViewsHllTDigest
 
 This query should be more performant, as it runs over a smaller table. In this example, the first query runs over ~215M records, while the second one runs over just 32 records:
 
-**Example**
+## Example
 
 The Retention Query.
 Assume you have a table that summarizes when each Wikipedia page was viewed (sample size is 10M), and you want to find for each date1 date2

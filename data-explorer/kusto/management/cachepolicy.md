@@ -36,7 +36,7 @@ Use the [cache policy command](cache-policy.md) to manage the cache policy.
 
 When data is ingested into Azure Data Explorer, the system keeps track of the date and time of the ingestion, and of the extent that was created. The extent's ingestion date and time value (or maximum value, if an extent was built from multiple pre-existing extents), is used to evaluate the cache policy.
 
-> [!Note]
+> [!NOTE]
 > You can specify a value for the ingestion date and time by using the ingestion property `creationTime`.
 
 By default, the effective policy is `null`, which means that all the data is considered **hot**.
@@ -45,13 +45,16 @@ A non-`null` table-level policy overrides a database-level policy.
 ## Scoping queries to hot cache
 
 Kusto supports queries that are scoped down to hot cache data only.
-There are several query possibilities.
 
-- Add a client request property called `query_datascope` to the query.
+> [!NOTE]
+> Data scoping applies only to entities that support caching policies, such as tables. It's ignored for other entities, such as external tables.
+
+There are several query possibilities:
+* Add a client request property called `query_datascope` to the query.
    Possible values: `default`, `all`, and `hotcache`.
-- Use a `set` statement in the query text: `set query_datascope='...'`.
+* Use a `set` statement in the query text: `set query_datascope='...'`.
    Possible values are the same as for the client request property.
-- Add a `datascope=...` text immediately after a table reference in the query body. 
+* Add a `datascope=...` text immediately after a table reference in the query body. 
    Possible values are `all` and `hotcache`.
 
 The `default` value indicates use of the cluster default settings, which determine that the query should cover all data.

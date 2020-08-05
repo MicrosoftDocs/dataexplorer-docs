@@ -15,12 +15,12 @@ Performs a forward fill interpolation of missing values in a series.
 
 An expression containing dynamic numerical array is the input. The function replaces all instances of missing_value_placeholder with the nearest value from its left side other than missing_value_placeholder, and returns the resulting array. The leftmost instances of missing_value_placeholder are preserved.
 
-**Syntax**
+## Syntax
 
 `series_fill_forward(`*x*`[, `*missing_value_placeholder*`])`
 * Will return series *x* with all instances of *missing_value_placeholder* filled forwards.
 
-**Arguments**
+## Arguments
 
 * *x*: dynamic array scalar expression, which is an array of numeric values. 
 * *missing_value_placeholder*: optional parameter, which specifies a placeholder for a missing value to be replaced. Default value is `double`(*null*).
@@ -31,14 +31,14 @@ An expression containing dynamic numerical array is the input. The function repl
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-make-series num=count() default=long(null) on TimeStamp in range(ago(1d), ago(1h), 1h) by Os, Browser
+make-series num=count() default=long(null) on TimeStamp from ago(1d) to ago(1h) step 1h by Os, Browser
 ```
 
 * The *missing_value_placeholder* can be of any type that will be converted to actual element types. Both `double`(*null*) `long`(*null*) and `int`(*null*) have the same meaning.
 * If missing_value_placeholder is (null) (or omitted - which have the same meaning), then a result may contain *null* values. To fill these *null* values, use other interpolation functions. Currently only [series_outliers()](series-outliersfunction.md) support *null* values in input arrays.
 * The functions preserve the original type of array elements.
 
-**Example**
+## Example
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

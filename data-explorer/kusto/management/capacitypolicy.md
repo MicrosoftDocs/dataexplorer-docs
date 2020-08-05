@@ -42,13 +42,14 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 |Property                           |Type    |Description                                                                                                |
 |-----------------------------------|--------|-----------------------------------------------------------------------------------------------------------|
 |MinimumConcurrentOperationsPerNode |long    |A minimal value for the number of concurrent extents merge/rebuild operations on a single node. Default is 1 |
-|MaximumConcurrentOperationsPerNode |long    |A maximal value for the number of concurrent extents merge/rebuild operations on a single node. Default is 5 |
+|MaximumConcurrentOperationsPerNode |long    |A maximal value for the number of concurrent extents merge/rebuild operations on a single node. Default is 3 |
 
 The cluster's total extents merge capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by:
 
 `Number of nodes in cluster` x `Concurrent operations per node`
 
-The effective value for `Concurrent operations per node` gets automatically adjusted by the system in the range [`MinimumConcurrentOperationsPerNode`,`MaximumConcurrentOperationsPerNode`].
+The effective value for `Concurrent operations per node` gets automatically adjusted by the system in the range [`MinimumConcurrentOperationsPerNode`,`MaximumConcurrentOperationsPerNode`], as long as the success rate of the
+merge operations is above 90%.
 
 > [!Note]
 > * In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
@@ -89,20 +90,23 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 
 The cluster's total extents partition capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity)).
 
-The effective value for `Concurrent operations` is automatically adjusted by the system in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`].
+The effective value for `Concurrent operations` is automatically adjusted by the system in the range
+[`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], as long as the success rate of the
+partitioning operations is above 90%.
 
 ## Defaults
 
 The default capacity policy has the following JSON representation:
 
-```kusto 
+```json
 {
   "IngestionCapacity": {
     "ClusterMaximumConcurrentOperations": 512,
     "CoreUtilizationCoefficient": 0.75
   },
   "ExtentsMergeCapacity": {
-    "MaximumConcurrentOperationsPerNode": 1
+    "MinimumConcurrentOperationsPerNode": 1,
+    "MaximumConcurrentOperationsPerNode": 3
   },
   "ExtentsPurgeRebuildCapacity": {
     "MaximumConcurrentOperationsPerNode": 1
@@ -110,6 +114,10 @@ The default capacity policy has the following JSON representation:
   "ExportCapacity": {
     "ClusterMaximumConcurrentOperations": 100,
     "CoreUtilizationCoefficient": 0.25
+  },
+  "ExtentsPartitionCapacity": {
+    "ClusterMinimumConcurrentOperations": 1,
+    "ClusterMaximumConcurrentOperations": 16
   }
 }
 ```

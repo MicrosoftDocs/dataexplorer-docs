@@ -11,21 +11,21 @@ ms.date: 06/02/2019
 ---
 # set_union()
 
-Returns a `dynamic` (JSON) array of the set of all distinct values that are in any of arrays - (arr1 ∪ arr2 ∪ ...).
+Returns a `dynamic` array of the set of all distinct values that are in any of arrays - (arr1 ∪ arr2 ∪ ...).
 
-**Syntax**
+## Syntax
 
 `set_union(`*arr1*`, `*arr2*`[`,` *arr3*, ...]``)`
 
-**Arguments**
+## Arguments
 
 * *arr1...arrN*: Input arrays to create a union set (at least two arrays). All arguments must be dynamic arrays (see [pack_array](packarrayfunction.md)). 
 
-**Returns**
+## Returns
 
 Returns a dynamic array of the set of all distinct values that are in any of arrays. See [`set_intersect()`](setintersectfunction.md)  and [`set_difference()`](setdifferencefunction.md).
 
-**Example**
+## Example
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

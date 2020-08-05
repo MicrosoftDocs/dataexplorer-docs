@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Broadcast Join
+# Broadcast join
 
 Today, regular joins are executed on a single cluster node.
 Broadcast join is an execution strategy of join, which will distribute it over cluster nodes. This strategy is useful when left side of the join is small (up to 100 K records). In this case, broadcast join will be more performant than regular join.

@@ -40,7 +40,7 @@ A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrie
 
 1. The canvas now contains the Lookup activity you created. Use the tabs below the canvas to change any relevant parameters. In **General**, rename the activity. 
 
-    ![edit lookup activity](media/data-factory-command-activity/edit-lookup-activity.PNG)
+    ![edit lookup activity](media/data-factory-command-activity/edit-lookup-activity.png)
 
     > [!TIP]
     > Click on the empty canvas area to view the pipeline properties. Use the **General** tab to rename the pipeline. Our pipeline is named *pipeline-4-docs*.
@@ -110,7 +110,7 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
 
         ![ForEach activity](media/data-factory-command-activity/for-each-activity.png)
 
-1.    Select the ForEach activity in the canvas. In the **Settings** tab below:
+1. Select the ForEach activity in the canvas. In the **Settings** tab below:
     * Check the **Sequential** checkbox for a sequential processing of the Lookup results, or leave it unchecked to create parallel processing.
     * Set **Batch count**.
     * In **Items**, provide the following reference to the output value:
@@ -125,7 +125,7 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
 
     ![Azure Data Explorer command activity](media/data-factory-command-activity/adx-command-activity.png)
 
-1.    In the **Connection** tab, select the same Linked Service previously created.
+1. In the **Connection** tab, select the same Linked Service previously created.
 
     ![azure data explorer command activity connection tab](media/data-factory-command-activity/adx-command-activity-connection-tab.png)
 
@@ -152,7 +152,7 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
     > * Time limit: 20 minutes (default), 1 hour (maximum).
     > * If needed, you can append a query to the result using [AdminThenQuery](kusto/management/index.md#combining-queries-and-control-commands), to reduce resulting size/time.
 
-1.    Now the pipeline is ready. You can go back to the main pipeline view by clicking the pipeline name.
+1. Now the pipeline is ready. You can go back to the main pipeline view by clicking the pipeline name.
 
     ![Azure Data Explorer command pipeline](media/data-factory-command-activity/adx-command-pipeline.png)
 

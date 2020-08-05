@@ -1,9 +1,9 @@
 ---
 title: Troubleshoot access, ingestion, and operation of your Azure Data Explorer cluster in your virtual network
 description: Troubleshoot connectivity, ingestion, cluster creation, and operation of your Azure Data Explorer cluster in your virtual network
-author: basaba
-ms.author: basaba
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/24/2020
@@ -23,43 +23,40 @@ The first step includes checking TCP connectivity using Windows or Linux OS.
 
 # [Windows](#tab/windows)
 
-   1. Download [TCping](https://www.elifulkerson.com/projects/tcping.php) to the machine connecting to the cluster.
-   1. Ping the destination from the source machine by using the following command:
+1. Download [TCping](https://www.elifulkerson.com/projects/tcping.php) to the machine connecting to the cluster.
+1. Ping the destination from the source machine by using the following command:
 
-    ```cmd
-     C:\> tcping -t yourcluster.kusto.windows.net 443 
-    
-     ** Pinging continuously.  Press control-c to stop **
-    
-     Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
-     ```
+   ```cmd
+   C:\> tcping -t yourcluster.kusto.windows.net 443 
+   ** Pinging continuously.  Press control-c to stop **
+   Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
+   ```
 
 # [Linux](#tab/linux)
 
-   1. Install *netcat* in the machine connecting to the cluster
+1. Install *netcat* in the machine connecting to the cluster
 
-    ```bash
-    $ apt-get install netcat
-     ```
+   ```bash
+   $ apt-get install netcat
+   ```
 
-   1. Ping the destination from the source machine by using the following command:
+1. Ping the destination from the source machine by using the following command:
 
-     ```bash
-     $ netcat -z -v yourcluster.kusto.windows.net 443
-    
-     Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
-     ```
+   ```bash
+   $ netcat -z -v yourcluster.kusto.windows.net 443
+   Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
+   ```
 ---
 
 If the test isn't successful, proceed with the following steps. If the test is successful, the issue isn't due to a TCP connectivity issue. Go to [operational issues](#cluster-creation-and-operations-issues) to troubleshoot further.
 
 ### Check the Network Security Group (NSG)
 
-   Check that the [Network Security Group](/azure/virtual-network/security-overview) (NSG) attached to the cluster's subnet, has an inbound rule that allows access from the client machine's IP for port 443.
+Check that the [Network Security Group](/azure/virtual-network/security-overview) (NSG) attached to the cluster's subnet, has an inbound rule that allows access from the client machine's IP for port 443.
 
 ### Check route table
 
-   If the cluster's subnet has force-tunneling setup to firewall (subnet with a [route table](/azure/virtual-network/virtual-networks-udr-overview) that contains the default route '0.0.0.0/0'), make sure that the machine IP address has a route with [next hop type](/azure/virtual-network/virtual-networks-udr-overview) to VirtualNetwork/Internet. This route is required to prevent asymmetric route issues.
+If the cluster's subnet has force-tunneling setup to firewall (subnet with a [route table](/azure/virtual-network/virtual-networks-udr-overview) that contains the default route '0.0.0.0/0'), make sure that the machine IP address has a route with [next hop type](/azure/virtual-network/virtual-networks-udr-overview) to VirtualNetwork/Internet. This route is required to prevent asymmetric route issues.
 
 ## Ingestion issues
 
@@ -80,6 +77,10 @@ Make sure cluster's subnet has NSG, UDR, and firewall rules are properly configu
 ## Cluster creation and operations issues
 
 If you're experiencing cluster creation or operation issues and you suspect it's related to virtual network setup, follow these steps to troubleshoot the issue.
+
+### Check the "DNS servers" configuration
+
+Custom DNS server aren't supported. Use the default option in the **DNS servers** configuration section of your Virtual Network.
 
 ### Diagnose the virtual network with the REST API
 

@@ -13,20 +13,35 @@ ms.date: 10/23/2018
 
 Enumerates all the root keys in a dynamic property-bag object.
 
+## Syntax
+
 `bag_keys(`*dynamic object*`)`
 
-**Returns**
+## Returns
 
 An array of keys, order is undetermined.
 
-**Examples**
+## Examples
 
-|Expression|Evaluates to|
-|---|---|
-|`bag_keys(dynamic({'a':'b', 'c':123}))` | `['a','c']`|
-|`bag_keys(dynamic({'a':'b', 'c':{'d':123}})) `|`['a','c']`|
-|`bag_keys(dynamic({'a':'b', 'c':[{'d':123}]})) `|`['a','c']`|
-|`bag_keys(dynamic(null))`|`null`|
-|`bag_keys(dynamic({}))`|`[]`|
-|`bag_keys(dynamic('a'))`|`null`|
-|`bag_keys(dynamic([]))  `|`null`|
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```
+datatable(index:long, d:dynamic) [
+1, dynamic({'a':'b', 'c':123}), 
+2, dynamic({'a':'b', 'c':{'d':123}}),
+3, dynamic({'a':'b', 'c':[{'d':123}]}),
+4, dynamic(null),
+5, dynamic({}),
+6, dynamic('a'),
+7, dynamic([])]
+| extend keys = bag_keys(d)
+```
+
+|index|d|keys|
+|---|---|---|
+|1|{<br>  "a": "b",<br>  "c": 123<br>}|[<br>  "a",<br>  "c"<br>]|
+|2|{<br>  "a": "b",<br>  "c": {<br>    "d": 123<br>  }<br>}|[<br>  "a",<br>  "c"<br>]|
+|3|{<br>  "a": "b",<br>  "c": [<br>    {<br>      "d": 123<br>    }<br>  ]<br>}|[<br>  "a",<br>  "c"<br>]|
+|4|||
+|5|{}|[]|
+|6|a||
+|7|[]||

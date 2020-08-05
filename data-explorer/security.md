@@ -1,9 +1,9 @@
 ---
 title: Secure Azure Data Explorer clusters in Azure
 description: Learn about how to secure clusters in Azure Data Explorer.
-author: saguiitay
-ms.author: itsagui
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
@@ -55,7 +55,7 @@ Using [role-based access control (RBAC)](/azure/role-based-access-control/overvi
 
 ## Next steps
 
-* [Secure your cluster in Azure Data Explorer - Portal](manage-cluster-security.md) by enabling encryption at rest.
+* [Secure your cluster using Disk Encryption in Azure Data Explorer - Portal](cluster-disk-encryption.md) by enabling encryption at rest.
 * [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md)
 * [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
 * [Configure customer-managed-keys using C#](customer-managed-keys-csharp.md)

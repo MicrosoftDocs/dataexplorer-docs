@@ -72,6 +72,10 @@ Ingestion health and performance metrics track the general health and performanc
 
 **Metric** | **Unit** | **Aggregation** | **Metric description** | **Dimensions** |
 |---|---|---|---|---|
+| Batch blob count | Count | Avg, Max, Min | Number of data sources in a completed batch for ingestion. | Database |
+| Batch duration | Seconds | Avg, Max, Min | The duration of the batching phase in the ingestion flow  | Database |
+| Batch size | Bytes | Avg, Max, Min | Uncompressed expected data size in an aggregated batch for ingestion. | Database |
+| Batches processed | Count | Avg, Max, Min | Number of batches completed for ingestion. `BatchCompletionReason`: Whether the batch reached the batching time, data size or number of files limit, set by [batching policy](/azure/data-explorer/kusto/management/batchingpolicy). | Database, BatchCompletionReason |
 | Events processed (for Event/IoT Hubs) | Count | Max, Min, Sum | Total number of events read from event hubs and processed by the cluster. The events are split into events rejected and events accepted by the cluster engine. | EventStatus |
 | Ingestion latency | Seconds | Avg, Max, Min | Latency of data ingested, from the time the data was received in the cluster until it's ready for query. The ingestion latency period depends on the ingestion scenario. | None |
 | Ingestion result | Count | Count | Total number of ingestion operations that failed and succeeded. Use **apply splitting** to create buckets of success and fail results and analyze the dimensions (**Value** > **Status**).| IngestionResultDetails |

@@ -1,9 +1,9 @@
 ---
 title: 'Create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template'
 description: In this article, you learn how to create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/28/2019
@@ -25,8 +25,8 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [a cluster and database](create-cluster-database-portal.md)
 * Create [a table and column mapping](ingest-data-event-grid.md#create-a-target-table-in-azure-data-explorer)
-* Create [an event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
-* Create [a storage account with an Event Grid subscription](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account).
+* Create [an event hub](/azure/event-hubs/event-hubs-create)
+* Create [a storage account with an Event Grid subscription](../data-explorer/kusto/management/data-ingestion/eventgrid.md#create-an-event-grid-subscription-in-your-storage-account).
 
 ## Azure Resource Manager template for adding an Event Grid data connection
 

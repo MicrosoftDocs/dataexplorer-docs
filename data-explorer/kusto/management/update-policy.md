@@ -7,9 +7,9 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 08/04/2020
 ---
-# Update policy
+# update policy commands
 
 The [update policy](updatepolicy.md) is a table-level policy object that automatically
 runs a query and then ingests the results when data is ingested into another table.
@@ -19,13 +19,13 @@ runs a query and then ingests the results when data is ingested into another tab
 This command returns the update policy of the specified table,
 or all tables in the default database if `*` is used as a table name.
 
-**Syntax**
+### Syntax
 
 * `.show` `table` *TableName* `policy` `update`
 * `.show` `table` *DatabaseName*`.`*TableName* `policy` `update`
 * `.show` `table` `*` `policy` `update`
 
-**Returns**
+### Returns
 
 This command returns a table that has one record per table.
 
@@ -34,7 +34,7 @@ This command returns a table that has one record per table.
 |EntityName|`string`|The name of the entity the update policy is defined on                                                                                                                |
 |Policies  |`string`|A JSON array indicating all update policies defined for the entity, formatted as [update policy object](updatepolicy.md#the-update-policy-object)|
 
-**Example**
+### Example
 
 ```kusto
 .show table DerivedTableX policy update 
@@ -48,7 +48,7 @@ This command returns a table that has one record per table.
 
 This command sets the update policy of the specified table.
 
-**Syntax**
+### Syntax
 
 * `.alter` `table` *TableName* `policy` `update` *ArrayOfUpdatePolicyObjects*
 * `.alter` `table` *DatabaseName*`.`*TableName* `policy` `update` *ArrayOfUpdatePolicyObjects*
@@ -63,20 +63,20 @@ This command sets the update policy of the specified table.
 >    * `Query` 
 >        * Checks that the schema defined by the schema matches the one of the target table
 >        * Checks that the query references the `source` table of the update policy. 
-        Defining an update policy query which does *not* reference the source is possible by setting 
+        Defining an update policy query which does not reference the source is possible by setting 
         `AllowUnreferencedSourceTable=true` in the *with* properties (see example below),
         but isn't recommended due to performance issues. For every ingestion to the source table, 
-        *all* records in a different table are considered for the update policy execution.
+        all records in a different table are considered for the update policy execution.
  >       * Checks that the policy doesn't result in a cycle being created in the chain of update policies in the target database.
  > * If `IsTransactional` is set to `true`, then checks that the `TableAdmin` permissions are also verified against `Source` (the source table).
- > * Test your update policy or function for performance, before applying it to run on each ingestion to the source table. For more information, see [testing an update policy's performance impact](updatepolicy.md#testing-an-update-policys-performance-impact).
+ > * Test your update policy or function for performance, before applying it to run on each ingestion to the source table. For more information, see [testing an update policy's performance impact](updatepolicy.md#performance-impact).
 
-**Returns**
+### Returns
 
 The command sets the table's update policy object, overriding any current policy,
-and then returns the output of the corresponding [.show table TABLE update policy](#show-update-policy) command.
+and then returns the output of the corresponding [.show table update policy](#show-update-policy) command.
 
-**Example**
+### Example
 
 ```kusto
 // Create a function that will be used for update
@@ -99,7 +99,7 @@ MyUpdateFunction()
 ```
 
 * When an ingestion to the source table occurs, in this case, `MyTableX`, one or more extents (data shards) are created in that table
-* The `Query` that is defined in the update policy object, in this case `MyUpdateFunction(), will only run on those extents, and won't run on the entire table.
+* The `Query` that is defined in the update policy object, in this case `MyUpdateFunction()`, will only run on those extents, and won't run on the entire table.
   * "Scoping" is done internally and automatically, and shouldn't be handled when defining the `Query`.
   * Only newly ingested records, that are different in each ingestion operation, will be taken into consideration when ingesting to the `DerivedTableX` derived table.
 
@@ -115,7 +115,7 @@ MyUpdateFunction()
 
 ```
 
-## .alter-merge table TABLE policy update
+## .alter-merge table *TableName* policy update
 
 This command modifies the update policy of the specified table.
 
@@ -133,8 +133,7 @@ This command modifies the update policy of the specified table.
 
 **Returns**
 
-The command appends to the table's update policy object, overriding any current policy, 
-and then returns the output of the corresponding [.show table TABLE update policy](#show-update-policy) command.
+The command appends to the table's update policy object, overriding any current policy, and then returns the output of the corresponding [.show table *TableName* update policy](#show-update-policy) command.
 
 **Example**
 
@@ -143,7 +142,7 @@ and then returns the output of the corresponding [.show table TABLE update polic
 @'[{"IsEnabled": true, "Source": "MyTableY", "Query": "MyUpdateFunction()", "IsTransactional": false}]'  
 ``` 
 
-## .delete table TABLE policy update
+## .delete table *TableName* policy update
 
 Deletes the update policy of the specified table.
 
@@ -154,8 +153,7 @@ Deletes the update policy of the specified table.
 
 **Returns**
 
-The command deletes the table's update policy object and then returns 
-the output of the corresponding [.show table TABLE update policy](#show-update-policy) command.
+The command deletes the table's update policy object and then returns the output of the corresponding [.show table *TableName* update policy](#show-update-policy) command.
 
 **Example**
 

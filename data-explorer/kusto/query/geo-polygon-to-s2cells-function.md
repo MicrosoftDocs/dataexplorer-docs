@@ -3,7 +3,7 @@ title: geo_polygon_to_s2cells() - Azure Data Explorer
 description: This article describes geo_polygon_to_s2cells() in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: orspod
+ms.author: orspodek
 ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
@@ -11,29 +11,30 @@ ms.date: 05/10/2020
 ---
 # geo_polygon_to_s2cells()
 
-Calculates S2 cell tokens that cover a polygon or multipolygon on Earth.
+Calculates S2 cell tokens that cover a polygon or multipolygon on Earth. This function is a useful geospatial join tool.
 
 Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
 
-**Syntax**
+## Syntax
 
 `geo_polygon_to_s2cells(`*polygon*`, `*level*`)`
 
-**Arguments**
+## Arguments
 
 * *polygon*: Polygon or multiPolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. 
 * *level*: An optional `int` that defines the requested cell level. Supported values are in the range [0, 30]. If unspecified, the default value `11` is used.
 
-**Returns**
+## Returns
 
 Array of S2 cell token strings that cover a polygon or multipolygon. If either the polygon or level is invalid, or the cell count exceeds the limit, the query will produce a null result.
 
 > [!NOTE]
 >
-> * Covering the polygon with S2 cell tokens can be useful in matching coordinates to polygons that might include these coordinates.
+> * Covering the polygon with S2 cell tokens can be useful in matching coordinates to polygons that might include these coordinates and matching polygons to polygons.
 > * The polygon covering tokens are of the same S2 cell level.
 > * The maximum count of tokens per polygon is 65536.
-> * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used for measurements on Earth is a sphere. Polygon edges are geodesics on the sphere.
+> * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used for measurements on Earth is a sphere. Polygon edges are [Geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere.
+> * If input polygon edges are straight cartesian lines, consider using [geo_polygon_densify()](geo-polygon-densify-function.md) in order to convert planar edges to geodesics.
 
 **Motivation for covering polygons with S2 cell tokens**
 
@@ -85,12 +86,12 @@ This match can be achieved by the following process:
    - S2 cell level 5 might prove to be good for covering countries.
    - S2 cell level 16 can cover dense and relatively small Manhattan (New York) neighborhoods.
    - S2 cell level 11 can be used for covering suburbs of Australia.
-* Query run time and memory consumption might differ due to different S2 cell level values.
+* Query run time and memory consumption might differ because of different S2 cell level values.
 
 > [!WARNING]
 > Covering a large-area polygon with small-area cells can lead to a huge amount of covering cells. As a result, the query might return null.
 
-**Examples**
+## Examples
 
 The following example classifies coordinates into polygons.
 

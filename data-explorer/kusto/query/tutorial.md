@@ -462,7 +462,8 @@ LightningStorms
 | distinct State
 ```
 
-> Tip: In the Kusto client, don't put blank lines between the parts of this. Make sure to execute all of it.
+> [!TIP]
+> In the Kusto Explorer client, don't put blank lines between the parts of this. Make sure to execute all of it.
 
 ## Combining data from several databases in a query
 
@@ -498,7 +499,8 @@ All of the above assumed that both databases reside in the cluster you are curre
 Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
 ```
 
-> Note: when the cluster is specified the database is mandatory
+> [!NOTE]
+> when the cluster is specified the database is mandatory
 
 ::: zone-end
 

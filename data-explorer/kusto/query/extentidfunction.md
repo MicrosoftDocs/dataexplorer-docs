@@ -15,25 +15,25 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-Returns a unique identifier that identifies the data shard ("extent") that the current record resides in. 
+Returns a unique identifier that identifies the data shard ("extent") that the current record resides in.
 
-Applying this function to calculated data which is not attached to a data shard returns an empty guid (all zeros).
+Applying this function to calculated data that isn't attached to a data shard returns an empty guid (all zeros).
 
-**Syntax**
+## Syntax
 
 `extent_id()`
 
-**Returns**
+## Returns
 
 A value of type `guid` that identifies the current record's data shard,
 or an empty guid (all zeros).
 
-**Example**
+## Example
 
 The following example shows how to get a list of all the data shards
 that have records from an hour ago with a specific value for the
 column `ActivityId`. It demonstrates that some query operators (here,
-the `where` operator, but this is also true for `extend` and `project`)
+the `where` operator, and also `extend` and `project`)
 preserve the information about the data shard hosting the record.
 
 ```kusto

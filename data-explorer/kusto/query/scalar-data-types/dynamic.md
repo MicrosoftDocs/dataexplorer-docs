@@ -4,10 +4,10 @@ description: This article describes The dynamic data type in Azure Data Explorer
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2020
+ms.date: 07/09/2020
 ---
 # The dynamic data type
 
@@ -64,11 +64,8 @@ print o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})
 | extend a=o.a, b=o.b, c=o.c, d=o.d
 ```
 
-For convenience, `dynamic` literals that appear in the query text itself may
-also include other Kusto literals (such as `datetime` literals, `timespan`
-literals, etc.) This extension over JSON is not available when parsing strings
-(such as when using the `parse_json` function or when ingesting data), but it
-enables you to do this:
+For convenience, `dynamic` literals that appear in the query text itself may also include other Kusto literals with types: `datetime`, `timespan`, `real`, `long`, `guid`, `bool`, and `dynamic`.
+This extension over JSON isn't available when parsing strings (such as when using the `parse_json` function or when ingesting data), but it enables you to do the following:
 
 ```kusto
 print d=dynamic({"a": datetime(1970-05-11)})
@@ -189,12 +186,13 @@ arrays to hold aggregated values:
 
 ## Operators and functions over dynamic types
 
-|||
+|Operator or function|Usage with dynamic data types|
 |---|---|
 | *value* `in` *array*| True if there is an element of *array* that == *value*<br/>`where City in ('London', 'Paris', 'Rome')`
 | *value* `!in` *array*| True if there is no element of *array* that == *value*
 |[`array_length(`array`)`](../arraylengthfunction.md)| Null if it isn't an array
 |[`bag_keys(`bag`)`](../bagkeysfunction.md)| Enumerates all the root keys in a dynamic property-bag object.
+|[`bag_merge(`bag1,...,bagN`)`](../bag-merge-function.md)| Merges dynamic property-bags into a dynamic property-bag with all properties merged.
 |[`extractjson(`path,object`)`](../extractjsonfunction.md)|Uses path to navigate into object.
 |[`parse_json(`source`)`](../parsejsonfunction.md)| Turns a JSON string into a dynamic object.
 |[`range(`from,to,step`)`](../rangefunction.md)| An array of values
@@ -206,4 +204,3 @@ arrays to hold aggregated values:
 |[`summarize make_list_if(`column,predicate`)` ](../makelistif-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array (with predicate).
 |[`summarize make_list_with_nulls(`column`)` ](../make-list-with-nulls-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array, including null values.
 |[`summarize make_set(`column`)`](../makeset-aggfunction.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
-|[`summarize make_bag(`column`)`](../make-bag-aggfunction.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.

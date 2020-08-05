@@ -1,6 +1,6 @@
 ---
-title: Data partitioning policy (Preview) - Azure Data Explorer
-description: This article describes Data partitioning policy (Preview) in Azure Data Explorer.
+title: Data partitioning policy - Azure Data Explorer
+description: This article describes Data partitioning policy in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -16,7 +16,7 @@ The partitioning policy defines if and how [Extents (data shards)](../management
 The main purpose of the policy is to improve performance of queries that are known to narrow the data set of values in the partitioned columns, or aggregate/join on a high cardinality string column. The policy may also result in better compression of the data.
 
 > [!CAUTION]
-> There are no hard-coded limits set on the number of tables that can have the policy defined on them. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. It may result in more clusters resources being used. For more information, see [Capacity](#capacity).
+> There are no hard-coded limits set on the number of tables that can have the policy defined on them. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. It may result in more cluster resources being used. For more information, see [Monitoring](#monitoring) and [Capacity](#capacity).
 
 ## Partition keys
 
@@ -29,7 +29,10 @@ The following kinds of partition keys are supported.
 
 ### Hash partition key
 
-Applying a hash partition key on a `string`-type column in a table is appropriate when the majority of queries use equality filters (`==`, `in()`) or when they aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher), such as an `application_ID`, a `tenant_ID`, or a `user_ID`.
+> [!NOTE]
+> Apply a hash partition key on a `string`-type column in a table only in the following instances:
+> * If the majority of queries use equality filters (`==`, `in()`).
+> * The majority of queries aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher) such as an `application_ID`, a `tenant_ID`, or a `user_ID`.
 
 * A hash-modulo function is used to partition the data.
 * All homogeneous (partitioned) extents that belong to the same partition are assigned to the same data node.
@@ -73,9 +76,12 @@ It uses the `XxHash64` hash function, with a `MaxPartitionCount` of `256`, and t
 
 ### Uniform range datetime partition key
 
-Applying a uniform range datetime partition key on a `datetime`-typed column in a table is appropriate when data ingested into the table is unlikely to be ordered according to this column. It can be helpful to reshuffle the data between extents so that each extent ends up including records from a limited time range. Reshuffling results in the filters on the `datetime` column being more efficient at query time.
+> [!NOTE] 
+> Only apply a uniform range datetime partition key on a `datetime`-typed column in a table when data ingested into the table is unlikely to be ordered according to this column.
 
-* The partition function used is [bin_at()](../query/binatfunction.md) and isn't customizable.
+In such cases, it can be helpful to reshuffle the data between extents so that each extent ends up including records from a limited time range. This will result with filters on that `datetime` column being more effective at query time.
+
+The partition function used is [bin_at()](../query/binatfunction.md) and isn't customizable.
 
 #### Partition properties
 
@@ -159,7 +165,7 @@ Data partitioning policy object with two partition keys.
 
 ### Additional properties
 
-The following properties can be defined as part of the policy, but are optional and we recommended that you don't change them.
+The following properties can be defined as part of the policy, but are optional and we recommend that you don't change them.
 
 * **MinRowCountPerOperation**:
   * Minimum target for the sum of row count of the source extents of a single data partitioning operation.
@@ -168,6 +174,8 @@ The following properties can be defined as part of the policy, but are optional 
 * **MaxRowCountPerOperation**:
   * Maximum target for the sum of the row count of the source extents of a single data partitioning operation.
   * This property is optional. Its default value is `0`, with a default target of 5,000,000 records.
+    * You can set a value lower than 5M if you see that the partitioning operations consume a very large amount
+      of memory or CPU, per operation. For more information, see [Monitoring](#monitoring).
 
 ## Notes
 
@@ -190,7 +198,7 @@ Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) comma
 The output includes:
 
   * `MinPartitioningPercentageInSingleTable`: The minimal percentage of partitioned data across all tables that have a data partitioning policy in the cluster.
-    * If this percentage remains constantly under 90%, then evaluate the cluster's partitioning capacity (see [capacity](partitioningpolicy.md#capacity)).
+    * If this percentage remains constantly under 90%, then evaluate the cluster's partitioning [capacity](partitioningpolicy.md#capacity).
   * `TableWithMinPartitioningPercentage`: The fully qualified name of the table whose partitioning percentage is shown above.
 
 Use [.show commands](commands.md) to monitor the partitioning commands and their resource utilization. For example:
@@ -218,7 +226,7 @@ Use [.show commands](commands.md) to monitor the partitioning commands and their
 * If a hash partition key includes values that are much more prevalent than others, for example, an empty string, or a generic value (such as `null` or `N/A`), or they represent an entity (such as `tenant_id`) that is more prevalent in the data set, that could contribute to imbalanced distribution of data across the cluster's nodes, and degrade query performance.
 * If a uniform range datetime partition key has a large enough percentage of values that are "far" from the majority of the values in the column, for example, datetime values from the distant past or future, then that could increase the overhead of the data partitioning process, and lead to many small extents that the cluster will need to keep track of.
 
-In both of these cases, you should either "fix" the data, or filter out any irrelevant records in the data before or at ingestion time, to reduce the overhead of the data partitioning on the cluster. For example, use an [update policy](updatepolicy.md)).
+In both of these cases, you should either "fix" the data, or filter out any irrelevant records in the data before or at ingestion time, to reduce the overhead of the data partitioning on the cluster. For example, use an [update policy](updatepolicy.md).
 
 ## Next steps
 

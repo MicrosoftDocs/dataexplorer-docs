@@ -9,9 +9,9 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/27/2020
 ---
-# Scalar Functions
+# Scalar function types
 
-## Binary Functions
+## Binary functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -23,7 +23,7 @@ ms.date: 05/27/2020
 |[binary_xor()](binary-xorfunction.md)|Returns a result of the bitwise xor operation of the two values.|
 |[bitset_count_ones()](bitset-count-onesfunction.md)|Returns the number of set bits in the binary representation of a number.|
 
-## Conversion Functions
+## Conversion functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -33,7 +33,7 @@ ms.date: 05/27/2020
 |[tostring()](tostringfunction.md)|Converts input to a string representation.|
 |[totimespan()](totimespanfunction.md)|Converts input to timespan scalar.|
 
-## DateTime/Timespan Functions
+## DateTime/timespan functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -63,10 +63,14 @@ ms.date: 05/27/2020
 |[startofyear()](startofyearfunction.md)|Returns the start of the year containing the date, shifted by an offset, if provided.|
 |[todatetime()](todatetimefunction.md)|Converts input to datetime scalar.|
 |[totimespan()](totimespanfunction.md)|Converts input to timespan scalar.|
+|[unixtime_microseconds_todatetime()](unixtime-microseconds-todatetimefunction.md)|Converts unix-epoch microseconds to UTC datetime.|
+|[unixtime_milliseconds_todatetime()](unixtime-milliseconds-todatetimefunction.md)|Converts unix-epoch milliseconds to UTC datetime.|
+|[unixtime_nanoseconds_todatetime()](unixtime-nanoseconds-todatetimefunction.md)|Converts unix-epoch nanoseconds to UTC datetime.|
+|[unixtime_seconds_todatetime()](unixtime-seconds-todatetimefunction.md)|Converts unix-epoch seconds to UTC datetime.|
 |[weekofyear()](weekofyearfunction.md)|Returns an integer representing the week number.|
 
 
-## Dynamic/Array Functions
+## Dynamic/array functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -88,8 +92,7 @@ ms.date: 05/27/2020
 |[treepath()](treepathfunction.md)|Enumerates all the path expressions that identify leaves in a dynamic object.|
 |[zip()](zipfunction.md)|The zip function accepts any number of dynamic arrays. Returns an array whose elements are each an array with the elements of the input arrays of the same index.|
 
-
-## Window Scalar Functions
+## Window scalar functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -98,13 +101,13 @@ ms.date: 05/27/2020
 |[row_cumsum()](rowcumsumfunction.md)|Calculates the cumulative sum of a column.|
 |[row_number()](rownumberfunction.md)|Returns a row's number in the serialized row set - consecutive numbers starting from a given index or from 1 by default.|
 
-## Flow Control Functions
+## Flow control functions
 
 |Function Name            |Description                                             |
 |-------------------------|--------------------------------------------------------|
 |[toscalar()](toscalarfunction.md)|Returns a scalar constant value of the evaluated expression.|
 
-## Mathematical Functions
+## Mathematical functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -123,9 +126,6 @@ ms.date: 05/27/2020
 |[exp10()](exp10-function.md)|The base-10 exponential function of x, which is 10 raised to the power x: 10^x.|
 |[exp2()](exp2-function.md)|The base-2 exponential function of x, which is 2 raised to the power x: 2^x.|
 |[gamma()](gammafunction.md)|Computes gamma function.|
-|[hash()](hashfunction.md)|Returns a hash value for the input value.|
-|[hash_combine()](hash_combinefunction.md)|Combines two or more hash values.|
-|[hash_many()](hash_manyfunction.md)|Returns a combined hash value of multiple values.|
 |[isfinite()](isfinitefunction.md)|Returns whether input is a finite value (isn't infinite or NaN).|
 |[isinf()](isinffunction.md)|Returns whether input is an infinite (positive or negative) value.|
 |[isnan()](isnanfunction.md)|Returns whether input is Not-a-Number (NaN) value.|
@@ -146,8 +146,7 @@ ms.date: 05/27/2020
 |[tan()](tanfunction.md)|Returns the tangent function.|
 |[welch_test()](welch-testfunction.md)|Computes the p-value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s_t-test).|
 
-
-## Metadata Functions
+## Metadata functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -163,8 +162,7 @@ ms.date: 05/27/2020
 |[extent_tags()](extenttagsfunction.md)|Returns a dynamic array with the tags of the data shard ("extent") that the current record resides in.|
 |[ingestion_time()](ingestiontimefunction.md)|Retrieves the record's $IngestionTime hidden datetime column, or null.|
 
-
-## Rounding Functions
+## Rounding functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -173,8 +171,7 @@ ms.date: 05/27/2020
 |[ceiling()](ceilingfunction.md)|Calculates the smallest integer greater than, or equal to, the specified numeric expression.|
 |[floor()](floorfunction.md)|Rounds values down to an integer multiple of a given bin size.|
 
-
-## Conditional Functions
+## Conditional functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -184,7 +181,7 @@ ms.date: 05/27/2020
 |[max_of()](max-offunction.md)|Returns the maximum value of several evaluated numeric expressions.|
 |[min_of()](min-offunction.md)|Returns the minimum value of several evaluated numeric expressions.|
 
-## Series Element-wise Functions
+## Series element-wise functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -199,7 +196,7 @@ ms.date: 05/27/2020
 |[series_not_equals()](series-not-equalsfunction.md)|Calculates the element-wise not equals (`!=`) logic operation of two numeric series inputs.|
 |[series_subtract()](series-subtractfunction.md)|Calculates the element-wise subtraction of two numeric series inputs.|
 
-## Series Processing Functions
+## Series processing functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -224,7 +221,7 @@ ms.date: 05/27/2020
 |[series_stats()](series-statsfunction.md)|Returns statistics for a series in multiple columns.|
 |[series_stats_dynamic()](series-stats-dynamicfunction.md)|Returns statistics for a series in dynamic object.|
 
-## String Functions
+## String functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -240,6 +237,7 @@ ms.date: 05/27/2020
 |[isnotempty()](isnotemptyfunction.md)|Returns true if the argument isn't an empty string or a null.|
 |[isnotnull()](isnotnullfunction.md)|Returns true if the argument is not null.|
 |[isnull()](isnullfunction.md)|Evaluates its sole argument and returns a bool value indicating if the argument evaluates to a null value.|
+|[parse_command_line()](parse-command-line.md)|Parses a Unicode command line string and returns an array of the command line arguments.|
 |[parse_csv()](parsecsvfunction.md)|Splits a given string representing comma-separated values and returns a string array with these values.|
 |[parse_ipv4()](parse-ipv4function.md)|Converts input to long (signed 64-bit) number representation.|
 |[parse_ipv4_mask()](parse-ipv4-maskfunction.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
@@ -279,13 +277,13 @@ ms.date: 05/27/2020
 |[parse_ipv6()](parse-ipv6function.md)|Converts IPv6 or IPv4 string to a canonical IPv6 string representation.|
 |[parse_ipv6_mask()](parse-ipv6-maskfunction.md)|Converts IPv6 or IPv4 string and netmask to a canonical IPv6 string representation.|
 
-## Type Functions
+## Type functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[gettype()](gettypefunction.md)|Returns the runtime type of its single argument.|
 
-## Scalar Aggregation Functions
+## Scalar aggregation functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
@@ -301,6 +299,23 @@ ms.date: 05/27/2020
 |Function Name|Description|
 |--------------------------------------------------------------------------|--------------------------------------------------------|
 |[geo_distance_2points()](geo-distance-2points-function.md)|Calculates the shortest distance between two geospatial coordinates on Earth.|
-|[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of a Geohash rectangular area.|
+|[geo_distance_point_to_line()](geo-distance-point-to-line-function.md)|Calculates the shortest distance between a coordinate and a line on Earth.|
 |[geo_point_in_circle()](geo-point-in-circle-function.md)|Calculates whether the geospatial coordinates are inside a circle on Earth.|
+|[geo_point_in_polygon()](geo-point-in-polygon-function.md)|Calculates whether the geospatial coordinates are inside a polygon or a multipolygon on Earth.|
 |[geo_point_to_geohash()](geo-point-to-geohash-function.md)|Calculates the Geohash string value for a geographic location.|
+|[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of a Geohash rectangular area.|
+|[geo_point_to_s2cell()](geo-point-to-s2cell-function.md)|Calculates the S2 cell token string value for a geographic location.|
+|[geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of an S2 cell.|
+|[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|Calculates S2 cell tokens that cover a polygon or multipolygon on Earth. Useful geospatial join tool.|
+|[geo_line_densify()](geo-line-densify-function.md)|Converts planar line edges to geodesics by adding intermediate points.|
+|[geo_polygon_densify()](geo-polygon-densify-function.md)|Converts polygon or multipolygon planar edges to geodesics by adding intermediate points.|
+
+## Hash functions
+
+|Function Name|Description|
+|--------------------------------------------------------------------------|--------------------------------------------------------|
+|[hash()](hashfunction.md)|Returns a hash value for the input value.|
+|[hash_combine()](hash_combinefunction.md)|Combines two or more hash values.|
+|[hash_many()](hash_manyfunction.md)|Returns a combined hash value of multiple values.|
+|[hash_md5()](md5hashfunction.md)|Returns a MD5 hash value for the input value.|
+|[hash_sha256()](sha256hashfunction.md)|Returns a SHA256 hash value for the input value.|

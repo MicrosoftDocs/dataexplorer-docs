@@ -33,7 +33,7 @@ The Azure Data Explorer proxy flow:
 
 1. In the Azure Data Explorer UI (https://dataexplorer.azure.com/clusters), select **Add Cluster**.
 
-1. In the **Add Cluster** window, add the URL to the LA or AI cluster. 
+1. In the **Add Cluster** window, add the URL of the LA or AI cluster. 
     
     * For LA: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
     * For AI: `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
@@ -42,11 +42,15 @@ The Azure Data Explorer proxy flow:
 
     ![Add cluster](media/adx-proxy/add-cluster.png)
 
-    If you add a connection to more than one proxy cluster, give each a different name. Otherwise they'll all have the same name in the left pane.
+    >[!NOTE]
+    >If you add a connection to more than one proxy cluster, give each a different name. Otherwise they'll all have the same name in the left pane.
 
 1. After the connection is established, your LA or AI cluster will appear in the left pane with your native ADX cluster. 
 
     ![Log Analytics and Azure Data Explorer clusters](media/adx-proxy/la-adx-clusters.png)
+
+> [!NOTE]
+> The number of Azure Monitor workspaces that can be mapped is limited to 100.
 
 ## Run queries
 
@@ -55,13 +59,13 @@ You can run the queries using client tools that support Kusto queries, such as: 
 > [!TIP]
 > * Database name should have the same name as the resource specified in the proxy cluster. Names are case sensitive.
 > * In cross cluster queries, make sure that the naming of Application Insights apps and Log Analytics workspaces is correct.
->     * If names contain special characters, they're replaced by URL encoding in the proxy cluster name. 
->     * If names include characters that don't meet [KQL identifier name rules](kusto/query/schema-entities/entity-names.md), they are replaced by the dash **-** character.
+> * If names contain special characters, they're replaced by URL encoding in the proxy cluster name. 
+> * If names include characters that don't meet [KQL identifier name rules](kusto/query/schema-entities/entity-names.md), they are replaced by the dash **-** character.
 
 ### Direct query from your LA or AI ADX Proxy cluster
 
 Run queries on your LA or AI cluster. Verify that your cluster is selected in the left pane. 
-
+ 
 ```kusto
 Perf | take 10 // Demonstrate query through the proxy on the LA workspace
 ```
@@ -85,6 +89,24 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
    [ ![Cross query from the Azure Data Explorer proxy](media/adx-proxy/cross-query-adx-proxy.png)](media/adx-proxy/cross-query-adx-proxy.png#lightbox)
 
 Using the [`join` operator](kusto/query/joinoperator.md), instead of union, may require a [`hint`](kusto/query/joinoperator.md#join-hints) to run it on an Azure Data Explorer native cluster (and not on the proxy). 
+
+## Function supportability
+
+The Azure Data Explorer proxy cluster supports functions for both Application Insights and Log Analytics.
+This capability enables cross-cluster queries to reference an Azure Monitor tabular function directly.
+The following commands are supported by the proxy:
+
+* `.show functions`
+* `.show function {FunctionName}`
+* `.show database {DatabaseName} schema as json`
+
+The following image depicts an example of querying a tabular function from the Azure Data Explorer Web UI. 
+To use the function, run the name in the Query window.
+
+  [ ![Query a tabular function from Azure Data Explorer Web UI](media/adx-proxy/function-query-adx-proxy.png)](media/adx-proxy/function-query-adx-proxy.png#lightbox)
+
+> [!NOTE]
+> Azure Monitor only supports tabular functions. Tabular functions don't support parameters.
 
 ## Additional syntax examples
 

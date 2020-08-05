@@ -1,9 +1,9 @@
 ---
 title: Deploy Azure Data Explorer into your Virtual Network
 description: Learn how to deploy Azure Data Explorer into your Virtual Network
-author: basaba
-ms.author: basaba
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
@@ -63,7 +63,7 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 
 ### Network Security Groups configuration
 
-[Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. Azure Data Explorer can be accessed using two endpoints: HTTPs (443) and TDS (1433). The following NSG rules must be configured to allow access to these endpoints for management, monitoring, and proper operation of your cluster.
+[Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. Azure Data Explorer can be accessed using two endpoints: HTTPs (443) and TDS (1433). The following NSG rules must be configured to allow access to these endpoints for management, monitoring, and proper operation of your cluster. Additional rules depend on your security guidelines.
 
 #### Inbound NSG configuration
 
@@ -107,8 +107,8 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 | Central India | 40.81.249.251, 104.211.98.159 |
 | Central US | 40.67.188.68 |
 | Central US EUAP | 40.89.56.69 |
-| China East 2 | 139.217.236.210 |
-| China North 2 | 40.73.6.21 |
+| China East 2 | 139.217.184.92 |
+| China North 2 | 139.217.60.6 |
 | East Asia | 20.189.74.103 |
 | East US | 52.224.146.56 |
 | East US2 | 52.232.230.201 |
@@ -218,11 +218,28 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 | Southeast Asia | 52.148.86.165 |
 | UK South | 52.174.4.112 |
 | UK West | 52.169.237.246 |
+| USDoD Central | 13.72.37.111 |
+| USDoD East | 13.72.37.111 |
+| USGov Arizona | 13.72.37.111 |
+| USGov Texas | 13.72.37.111 |
+| USGov Virginia | 13.72.37.111 |
 | West Central US | 52.161.31.69 |
 | West Europe | 52.174.4.112 |
 | West India | 13.71.25.187 |
 | West US | 40.78.70.148 |
 | West US 2 | 52.151.20.103 |
+
+## Disable access to Azure Data Explorer from the public IP
+
+If you want to completely disable access to Azure Data Explorer via the public IP address, create another inbound rule in the NSG. This rule has to have a lower [priority](/azure/virtual-network/security-overview#security-rules) (a higher number). 
+
+| **Use**   | **Source** | **Source service tag** | **Source port ranges**  | **Destination** | **Destination port ranges** | **Protocol ** | **Action** | **Priority ** |
+| ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
+| Disable access from the internet | Service Tag | Internet | *  | VirtualNetwork | * | Any | Deny | higher number than the rules above |
+
+This rule will allow you to connect to the Azure Data Explorer cluster only via the following DNS records (mapped to the private IP for each service):
+* `private-[clustername].[geo-region].kusto.windows.net` (engine)
+* `private-ingest-[clustername].[geo-region].kusto.windows.net` (data management)
 
 ## ExpressRoute setup
 

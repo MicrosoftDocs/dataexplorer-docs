@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# IngestionTime policy
+# ingestiontime policy command
 
 IngestionTime policy is an optional policy set on tables (it is enabled by default).
 it provides the approximate time of ingestion of the records into a table.

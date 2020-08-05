@@ -37,7 +37,7 @@ Every time you open Kusto.Explorer, you're prompted to install a new version. Ku
 
 This symptom could be a result of corruption in your local ClickOnce store. You can clear the local ClickOnce store, by running the following command, in an elevated command prompt.
 
-> [!Important]
+> [!IMPORTANT]
 > 1. If there are any other instances of ClickOnce applications or of `dfsvc.exe`, terminate them before running this command.
 > 1. All ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut. App shortcuts won't be deleted.
 
@@ -147,21 +147,20 @@ This symptom could be because another application is overriding the default Clic
 
 Sometimes, when previous troubleshooting steps didn't help with getting Kusto.Explorer to start, cleaning data stored locally may help.
 
-Data stored by Kusto.Explorer application can be found here: `C:\Users\\[your alias]\AppData\Local\Kusto.Explorer`.
+Data stored by Kusto.Explorer application can be found here: `C:\Users\[your username]\AppData\Local\Kusto.Explorer`.
 
 > [!NOTE]
 > Cleaning the data will lead to a loss of opened tabs (Recovery folder), saved connections (Connections folder), and application settings (UserSettings folder).
 
 ## Reset Kusto.Explorer
 
-If you need to, you can completely reset Kusto.Explorer. The following procedure describes how to progressively reset Kusto.Explorer, until it's completely removed from your computer and must be installed from scratch.
+If you need to, you can completely reset Kusto.Explorer. The following procedure describes how to progressively reset Kusto.Explorer, until it's removed from your computer and must be installed from scratch.
 
 1. In Windows, open **Change or remove a program** (also known as **Programs and Features**).
 1. Select every item that starts with `Kusto.Explorer`.
 1. Select **Uninstall**.
 
-   If this procedure fails to uninstall the application (a known issue with
-   ClickOnce applications), see [this stack overflow article that explains how to do it.
+   If this procedure fails to uninstall the application (a known issue with ClickOnce applications), see [this article for instructions](https://stackoverflow.com/questions/10896223/how-do-i-completely-uninstall-a-clickonce-application-from-my-computer).
 
 1. Delete the folder `%LOCALAPPDATA%\Kusto.Explorer`, which removes all connections, history, and so on.
 

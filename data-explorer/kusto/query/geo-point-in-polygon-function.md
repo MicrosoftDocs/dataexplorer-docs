@@ -13,23 +13,24 @@ ms.date: 05/10/2020
 
 Calculates whether the geospatial coordinates are inside a polygon or a multipolygon on Earth.
 
-**Syntax**
+## Syntax
 
 `geo_point_in_polygon(`*longitude*`, `*latitude*`, `*polygon*`)`
 
-**Arguments**
+## Arguments
 
 * *longitude*: Geospatial coordinate, longitude value in degrees. Valid value is a real number and in the range [-180, +180].
 * *latitude*: Geospatial coordinate, latitude value in degrees. Valid value is a real number and in the range [-90, +90].
 * *polygon*: Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type.
 
-**Returns**
+## Returns
 
 Indicates whether the geospatial coordinates are inside a polygon. If the coordinates or polygon is invalid, the query will produce a null result. 
 
 > [!NOTE]
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
-> * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used for measurements on Earth is a sphere. Polygon edges are geodesics on the sphere.
+> * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used for measurements on Earth is a sphere. Polygon edges are [geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere.
+> * If input polygon edges are straight cartesian lines, consider using [geo_polygon_densify()](geo-polygon-densify-function.md) to convert planar edges to geodesics.
 
 **Polygon definition and constraints**
 
@@ -50,7 +51,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 > * Using literal polygons may result in better performance.
 > * If you want to know if any of the polygons contains a point, try the following steps: Fold the collection of polygons into one multipolygon. Then query this multipolygon. This may improve performance. See the example below. 
 
-**Examples**
+## Examples
 
 Manhattan island without Central Park.
 

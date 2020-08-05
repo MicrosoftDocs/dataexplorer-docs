@@ -1,5 +1,5 @@
 ---
-title: todatetime() - Azure Data Explorer | Microsoft Docs
+title: todatetime() - Azure Data Explorer
 description: This article describes todatetime() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -17,17 +17,18 @@ Converts input to [datetime](./scalar-data-types/datetime.md) scalar.
 todatetime("2015-12-24") == datetime(2015-12-24)
 ```
 
-**Syntax**
+## Syntax
 
 `todatetime(`*Expr*`)`
 
-**Arguments**
+## Arguments
 
-* *Expr*: Expression that will be converted to [datetime](./scalar-data-types/datetime.md). 
+* *Expr*: Expression that will be converted to [datetime](./scalar-data-types/datetime.md).
 
-**Returns**
+## Returns
 
-If conversion is successful, result will be a [datetime](./scalar-data-types/datetime.md) value.
-If conversion is not successful, result will be null.
+If the conversion is successful, the result will be a [datetime](./scalar-data-types/datetime.md) value.
+Else, the result will be null.
  
-*Note*: Prefer using [datetime()](./scalar-data-types/datetime.md) when possible.
+> [!NOTE]
+> Prefer using [datetime()](./scalar-data-types/datetime.md) when possible.

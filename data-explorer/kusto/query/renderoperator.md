@@ -24,7 +24,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 > * The render operator does not modify data. It injects an annotation ("Visualization") into the result's extended properties. The annotation contains the information provided by the operator in the query.
 > * The interpretation of the visualization information is done by the user agent. Different agents (such as Kusto.Explorer,Kusto.WebExplorer) might support different visualizations.
 
-**Syntax**
+## Syntax
 
 *T* `|` `render` *Visualization* [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
 
@@ -36,7 +36,7 @@ Where:
 
 |*Visualization*     |Description|
 |--------------------|-|
-| `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
+| `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
 | `areachart`        | Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |
 | `barchart`         | First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.|
 | `card`             | First result record is treated as set of scalar values and shows as a card. |
@@ -157,7 +157,7 @@ three kinds of columns:
   the result might translate into them guessing wrong. Try projecting-away such
   columns when that happens. 
 
-**Example**
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -172,6 +172,6 @@ range x from -2 to 2 step 0.1
 
 [Rendering examples in the tutorial](./tutorial.md#render-display-a-chart-or-table).
 
-[Anomaly detection](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning)
+[Anomaly detection](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning)
 
 ::: zone-end

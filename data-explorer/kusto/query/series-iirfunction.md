@@ -11,27 +11,31 @@ ms.date: 02/20/2019
 ---
 # series_iir()
 
-Applies a Infinite Impulse Response filter on a series.  
+Applies an Infinite Impulse Response filter on a series.  
 
-Takes an expression containing dynamic numerical array as input and applies an [Infinite Impulse Response](https://en.wikipedia.org/wiki/Infinite_impulse_response) filter. By specifying the filter coefficients, it can be used, for example, to calculate the cumulative sum of the series, to apply smoothing operations, as well as various [high-pass](https://en.wikipedia.org/wiki/High-pass_filter), [band-pass](https://en.wikipedia.org/wiki/Band-pass_filter) and [low-pass](https://en.wikipedia.org/wiki/Low-pass_filter) filters. The function takes as input the column containing the dynamic array and two static dynamic arrays of the filter's *a* and *b* coefficients, and applies the filter on the column. It outputs a new dynamic array column, containing the filtered output.  
- 
+The function takes an expression containing dynamic numerical array as input, and applies an [Infinite Impulse Response](https://en.wikipedia.org/wiki/Infinite_impulse_response) filter. By specifying the filter coefficients, the function can be used:
+* to calculate the cumulative sum of the series
+* to apply smoothing operations
+* to apply various [high-pass](https://en.wikipedia.org/wiki/High-pass_filter), [band-pass](https://en.wikipedia.org/wiki/Band-pass_filter), and [low-pass](https://en.wikipedia.org/wiki/Low-pass_filter) filters
 
-**Syntax**
+The function takes as input the column containing the dynamic array and two static dynamic arrays of the filter's *a* and *b* coefficients, and applies the filter on the column. It outputs a new dynamic array column, containing the filtered output.  
+
+## Syntax
 
 `series_iir(`*x*`,` *b* `,` *a*`)`
 
-**Arguments**
+## Arguments
 
-* *x*: Dynamic array cell which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators.
+* *x*: Dynamic array cell that is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators.
 * *b*: A constant expression containing the numerator coefficients of the filter (stored as a dynamic array of numeric values).
 * *a*: A constant expression, like *b*. Containing the denominator coefficients of the filter.
 
 > [!IMPORTANT]
-> The first element of `a` (i.e. `a[0]`) mustn't be zero (to avoid division by 0; see the formula below).
+> The first element of `a` (that is, `a[0]`) mustn't be zero, to avoid division by 0. See the [formula below](#the-filters-recursive-formula).
 
-**More about the filter's recursive formula**
+## The filter's recursive formula
 
-* Given an input array X and coefficients arrays a, b of lengths n_a and n_b respectively, the transfer function of the filter, generating the output array Y, is defined by (see also in Wikipedia):
+* Consider an input array X, and coefficients arrays a and b of lengths n_a and n_b respectively. The transfer function of the filter that will generate the output array Y, is defined by:
 
 <div align="center">
 Y<sub>i</sub> = a<sub>0</sub><sup>-1</sup>(b<sub>0</sub>X<sub>i</sub>
@@ -39,9 +43,10 @@ Y<sub>i</sub> = a<sub>0</sub><sup>-1</sup>(b<sub>0</sub>X<sub>i</sub>
  - a<sub>1</sub>Y<sub>i-1</sub>-a<sub>2</sub>Y<sub>i-2</sub> - ... - a<sub>n<sub>a</sub>-1</sub>Y<sub>i-n<sub>a</sub>-1</sub>)
 </div>
 
-**Example**
+## Example
 
-Calculating cumulative sum can be performed by iir filter with coefficients *a*=[1,-1] and *b*=[1]:  
+Calculate a cumulative sum. 
+Use the iir filter with coefficients *a*=[1,-1] and *b*=[1]:  
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

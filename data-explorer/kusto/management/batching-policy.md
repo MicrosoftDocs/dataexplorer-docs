@@ -1,6 +1,6 @@
 ---
-title: Kusto IngestionBatching policy management - Azure Data Explorer
-description: This article describes IngestionBatching policy in Azure Data Explorer.
+title: Kusto IngestionBatching policy management command- Azure Data Explorer
+description: This article describes IngestionBatching policy command in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 ---
-# IngestionBatching policy
+# IngestionBatching policy command
 
 The [ingestionBatching policy](batchingpolicy.md) is a policy object that determines
 when data aggregation should stop during data ingestion according to the specified settings.

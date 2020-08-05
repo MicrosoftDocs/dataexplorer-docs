@@ -84,7 +84,7 @@ External data URI file path format, which can be specified in addition to partit
 
 &nbsp;&nbsp;[*StringSeparator*] *Partition* [*StringSeparator*] [*Partition* [*StringSeparator*] ...]  
 
-where *Partition* refers to a partition declared in `partition` `by` clause, and *StringSeparator* is any text enclosed in quotes.
+where *Partition* refers to a partition declared in `partition` `by` clause, and *StringSeparator* is any text enclosed in quotes. Consecutive partition elements must be set apart using *StringSeparator*.
 
 Original file path prefix can be constructed using partition elements rendered as strings and separated with corresponding text separators. To specify format used for rendering a datetime partition value, the following macro can be used:
 
@@ -137,6 +137,8 @@ See [storage connection strings](../api/connection-strings/storage.md) for detai
 | `namePrefix`     | `string` | If set, indicates the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
 | `fileExtension`  | `string` | If set, indicates file extensions of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
 | `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
+| `sampleUris`     | `bool`   | If set, the command result provides several examples of external data files URI as they are expected by the external table definition. |
+| `validateNotEmpty` | `bool`   | If set, the connection strings are validated for having content in them. The command will fail if the specified URI location doesn't exist, or if there are insufficient permissions to access it. |
 
 > [!TIP]
 > To learn more about the role `namePrefix` and `fileExtension` properties play in data file filtering during query, see [file filtering logic](#file-filtering) section.
@@ -231,6 +233,9 @@ dataformat=parquet
    h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
 )
 ```
+
+> [!NOTE]
+> Currently, virtual columns aren't supported for the following data formats: `CSV`, `TSV`, `TSVE`, `SCsv`, `SOHsv`, `PSV`, `RAW` and `TXT`.
 
 <a name="file-filtering"></a>
 **File filtering logic**

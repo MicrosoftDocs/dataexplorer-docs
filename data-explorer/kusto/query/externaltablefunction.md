@@ -17,11 +17,16 @@ References an external table by name.
 external_table('StormEvent')
 ```
 
-**Syntax**
+> [!NOTE]
+> * The `external_table` function has similar restrictions as the [table](tablefunction.md) function.
+> * [External tables](schema-entities/externaltables.md)
+> * [Commands for managing external tables](../management/externaltables.md)
+
+## Syntax
 
 `external_table` `(` *TableName* [`,` *MappingName* ] `)`
 
-**Arguments**
+## Arguments
 
 * *TableName*: The name of the external table being queried.
   Must be a string literal referencing an external table of kind
@@ -30,13 +35,3 @@ external_table('StormEvent')
 * *MappingName*: An optional name of the mapping object that maps the
   fields in the actual (external) data shards to the columns output
   by this function.
-
-**Notes**
-
-See [external tables](schema-entities/externaltables.md) for more information
-on external tables.
-
-See also [commands for managing external tables](../management/externaltables.md).
-
-The `external_table` function has similar restrictions
-as the [table](tablefunction.md) function.
