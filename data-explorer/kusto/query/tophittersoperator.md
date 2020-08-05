@@ -53,7 +53,7 @@ PageViews
 |ru|227003107|
 |fr|207943448|
 
-### Getting top hitters (based on column value)
+### Get top hitters based on column value
 
 The next example shows how to find most viewed English pages of Wikipedia of the year 2016. 
 The query uses 'Views' (integer number) to calculate page popularity (number of views). 
