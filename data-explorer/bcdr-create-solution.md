@@ -54,7 +54,7 @@ Configure data ingestion consistently on every cluster. The following ingestion 
 |[EventHub](/azure/data-explorer/kusto/management/data-ingestion/eventhub) | Metadata disaster recovery using [primary and secondary disaster recovery namespaces](/azure/event-hubs/event-hubs-geo-dr)     |
 |[Ingest from storage using Event Grid subscription](ingest-data-event-grid.md) |  Implement a [geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr) for the blob-created messages that are sent to EventHub and the [disaster recovery and account failover strategy](/azure/storage/common/storage-disaster-recovery-guidance)       |
 
-## Example of performing disaster recovery setup using Event Hub ingestion
+## Example of disaster recovery solution using Event Hub ingestion
 
 Once you've completed [Prepare for Azure regional outage to protect your data](#prepare-for-azure-regional-outage-to-protect-your-data), your data and management are distributed to multiple regions. If there's an outage in one region, Azure Data Explorer will be able to use the other replicas. 
 
@@ -71,7 +71,7 @@ As shown in the diagram below, your data sources produce events to the failover-
 
 :::image type="content" source="media/bcdr-create-solution/data-sources-visualization.png" alt-text="Data sources to data visualization":::
 
-## Optimize costs in disaster recovery
+## Optimize costs
 
 Now you're ready to optimize your replicas using the following examples:
 
