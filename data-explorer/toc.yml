@@ -1414,7 +1414,7 @@
         items:
         - name: Update policy
           href: ./kusto/management/updatepolicy.md
-        - name: update policy command
+        - name: update policy commands
           href: ./kusto/management/update-policy.md
     - name: Security roles
       href: ./kusto/management/security-roles.md
