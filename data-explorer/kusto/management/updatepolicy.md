@@ -23,11 +23,13 @@ The update policy is subject to the same restrictions and best practices as regu
 
 ## Update policy's query
 
-The update policy query is run in a special mode, in which it's automatically scoped to cover only the newly ingested records, and you can't query the source table's already-ingested data as part of this query. However, data ingested in the "boundary" of transactional update policies does become available for a query in a single transaction. Because the update policy is defined on the destination table, ingesting data into one source table may result in multiple queries being run on that data. The order of execution of multiple update policies is undefined. The query can invoke stored functions, but can't include cross-database or cross-cluster queries. 
+The update policy query is run in a special mode, in which it's automatically scoped to cover only the newly ingested records, and you can't query the source table's already-ingested data as part of this query. However, data ingested in the "boundary" of transactional update policies does become available for a query in a single transaction. Because the update policy is defined on the destination table, ingesting data into one source table may result in multiple queries being run on that data. The order of execution of multiple update policies is undefined. 
 
-A query that is run as part of an update policy doesn't have read access to tables that have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled or with a [Row Level Security policy](rowlevelsecuritypolicy.md) enabled.
+### Query limitations 
 
-When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
+* The query can invoke stored functions, but can't include cross-database or cross-cluster queries. 
+* A query that is run as part of an update policy doesn't have read access to tables that have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled or with a [Row Level Security policy](rowlevelsecuritypolicy.md) enabled.
+* When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
    * Don't use the qualified name of the table. Instead, use `TableName`. 
    * Don't use `database("DatabaseName").TableName` or `cluster("ClusterName").database("DatabaseName").TableName`.
 
@@ -61,7 +63,7 @@ Commands to control the update policy include:
 * [.alter-merge table *TableName* policy update](update-policy.md#alter-merge-table-tablename-policy-update) appends to the current update policy of a table.
 * [.delete table *TableName* policy update](update-policy.md#delete-table-tablename-policy-update) appends to the current update policy of a table.
 
-## Update policy is initiated following these ingestion commands
+## Update policy is initiated following ingestion
 
 Update policies take effect when data is ingested or moved to (extents are created in) a defined source table using any of the following commands:
 
@@ -81,6 +83,15 @@ The update policy will behave like regular ingestion when the following conditio
 * The target table on which the update policy is defined accepts only specific trace lines.
 * The table has a well-structured schema that is a transformation of the original free-text data created by the [parse operator](../query/parseoperator.md).
 
+## Zero retention on source table
+
+Sometimes data is ingested to a source table only as a stepping stone to the target table, and you don't want to keep the raw data in the source table. Set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: 
+
+* The source data isn't queryable from the source table. 
+* The source data isn't persisted to durable storage as part of the ingestion operation. 
+* Operational performance will improve. 
+* Post-ingestion resources for background grooming operations will be reduced. These operations are done on [extents](../management/extents-overview.md) in the source table.
+
 ## Performance impact
 
 Update policies can affect the performance of a Kusto cluster. The update policy affects any ingestion into the source table. Ingestion of a number of data extents is multiplied by the number of target tables. As such, it's important that the `Query` part of the update policy is optimized to work well. You can test an update policy's additional performance impact on an ingestion operation. Invoke the policy on specific and already-existing extents, before creating or altering the policy or function it uses in its `Query` part.
@@ -99,15 +110,6 @@ let MySourceTable = MySourceTable | where extent_id() == toscalar(extentId);
 MyFunction()
 ```
 
-## Zero retention on source table
-
-Sometimes data is ingested to a source table only as a stepping stone to the target table, and you don't want to keep the raw data in the source table. Set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: 
-
-* The source data isn't queryable from the source table. 
-* The source data isn't persisted to durable storage as part of the ingestion operation. 
-* Operational performance will improve. 
-* Post-ingestion resources for background grooming operations will be reduced. These operations are done on [extents](../management/extents-overview.md) in the source table.
-
 ## Failures
 
 By default, failure to run the update policy doesn't affect the ingestion of data to the source table. However, if the update policy is defined as `IsTransactional`:true, failure to run the policy forces the ingestion of data into the source table to fail. In some cases, ingestion of data into the source table succeeds, but the update policy fails during ingestion to the target table.
@@ -121,7 +123,7 @@ Failures that occur while the policies are being updated can be retrieved using 
 
 ### Treatment of failures
 
-####  Non-transactional policy 
+#### Non-transactional policy 
 
 The failure is ignored by Kusto. Any retry is the responsibility of the data ingestion process owner.  
 
