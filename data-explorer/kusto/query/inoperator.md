@@ -67,7 +67,7 @@ StormEvents
 |---|
 |4775|  
 
-### Using 'in~' operator  
+### Use 'in~' operator  
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
