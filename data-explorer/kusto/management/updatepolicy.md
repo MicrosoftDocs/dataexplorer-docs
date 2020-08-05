@@ -23,7 +23,7 @@ The update policy is subject to the same restrictions and best practices as regu
 
 ## Update policy's query
 
-The update policy query is run in a special mode, in which it's automatically scoped to cover only the newly ingested records, and it isn't possible to query the source table's already-ingested data as part of this query. However, data ingested in the "boundary" of transactional update policies does become available for a query in a single transaction. Because the update policy is defined on the destination table, ingesting data into one source table may result in multiple queries being run on that data. The order of execution of multiple update policies is undefined. The query can invoke stored functions, but can't include cross-database or cross-cluster queries. 
+The update policy query is run in a special mode, in which it's automatically scoped to cover only the newly ingested records, and you can't query the source table's already-ingested data as part of this query. However, data ingested in the "boundary" of transactional update policies does become available for a query in a single transaction. Because the update policy is defined on the destination table, ingesting data into one source table may result in multiple queries being run on that data. The order of execution of multiple update policies is undefined. The query can invoke stored functions, but can't include cross-database or cross-cluster queries. 
 
 A query that is run as part of an update policy doesn't have read access to tables that have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled or with a [Row Level Security policy](rowlevelsecuritypolicy.md) enabled.
 
@@ -101,7 +101,7 @@ MyFunction()
 
 ## Zero retention on source table
 
-In some instances, data is ingested to a source table only as a stepping stone to the target table, and you do not want to keep the raw data in the source table. Set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: 
+Sometimes data is ingested to a source table only as a stepping stone to the target table, and you don't want to keep the raw data in the source table. Set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: 
 
 * The source data isn't queryable from the source table. 
 * The source data isn't persisted to durable storage as part of the ingestion operation. 
