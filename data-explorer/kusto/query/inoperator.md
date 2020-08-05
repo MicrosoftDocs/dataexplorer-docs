@@ -94,7 +94,7 @@ StormEvents
 |54291|  
 
 
-### Using dynamic array
+### Use dynamic array
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
