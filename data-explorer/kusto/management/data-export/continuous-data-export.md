@@ -11,20 +11,25 @@ ms.date: 08/03/2020
 ---
 # Continuous data export overview
 
-Use these commands to continuously export data from Kusto to an [external table](../externaltables.md) with a periodically run query. The results are stored in the external table, which defines the destination (for example, Azure Blob Storage) and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). 
+This article describes continuous export of data from Kusto to an [external table](../externaltables.md) with a periodically run query. The results are stored in the external table, which defines the destination (for example, Azure Blob Storage) and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). 
 
 To enable continuous data export, [create an external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table. 
 
 > [!NOTE]
 > All continuous export commands require [database admin permissions](../access-control/role-based-authorization.md).
 
-## Parameters
+## Continuous export guidelines
 
-* The output schema of the export query *must* match the schema of the external table to which you export. 
-* Continuous export runs according to the time period configured for it. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. 
-* The default distribution in continuous export is `per_node` (all nodes are exporting concurrently). This setting can be overridden in the properties of the continuous export create command. Use `per_shard` distribution to increase concurrency (note that this will increase the load on the storage account(s) and has a chance of hitting throttling limits); 
-* Use `single` (or `distributed`=`false`) to disable distribution altogether (this may significantly slow down the continuous export process). This setting also impacts the number of files created in each continuous export iteration. See [export to external table command](export-data-to-an-external-table.md#notes) for more details.
-* The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#notes). Each continuous export iteration always writes to *new* files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs (`intervalBetweenRuns` parameter).
+* **Output schema**:
+  * The output schema of the export query *must* match the schema of the external table to which you export. 
+* **Time period**:
+  * Continuous export runs according to the time period configured for it. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. 
+* **Distribution**:
+  * The default distribution in continuous export is `per_node` (all nodes are exporting concurrently). 
+  * This setting can be overridden in the properties of the continuous export create command. Use `per_shard` distribution to increase concurrency (note that this will increase the load on the storage account(s) and has a chance of hitting throttling limits). 
+  * Use `single` (or `distributed`=`false`) to disable distribution altogether (this may significantly slow down the continuous export process). This setting also impacts the number of files created in each continuous export iteration. See [export to external table command](export-data-to-an-external-table.md#notes) for more details.
+* **Number of files**:
+  * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#notes). Each continuous export iteration always writes to *new* files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs (`intervalBetweenRuns` parameter).
 
 ## Exactly once export
 
@@ -38,17 +43,8 @@ By default, all tables referenced in the export query are assumed to be [fact ta
 
 The export query includes only the records that joined since the previous export execution. The export query may contain [dimension tables](../../concepts/fact-and-dimension-tables.md) in which *all* records of the dimension table are included in *all* export queries. When using joins between fact and dimension tables in continuous-export, keep in mind that records in the fact table are only processed once. If the export runs while records in the dimension tables are missing for some keys, records for the respective keys will either be missed or include null values for the dimension columns in the exported files. Returning missed or null records depends on whether the query uses inner or outer join. The `forcedLatency` property in the continuous-export definition can be useful in such cases, where the fact and dimensions tables are ingested during the same time for matching records.
 
-
 > [!NOTE]
 > Continuous-export of only dimension tables isn't supported. The export query must include at least a single fact table.
-
-## Resource management
-
-* For best performance, the ADX cluster and the storage account(s) should be co-located in the same Azure region.
-* The impact of the continuous export on the cluster depends on the query the continuous export is running, as most resources (CPU, memory) are consumed by the query execution. 
-* The number of export operations that can run concurrently is limited by the cluster's data export capacity (see [throttling](../../management/capacitypolicy.md#throttling)). If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind.
-* If the exported data volume is large, it is recommended to configure multiple storage accounts for the external table, to avoid storage throttling. See [export data to storage](export-data-to-storage.md#known-issues).
-* The [show commands-and-queries command](../commands-and-queries.md) can be used to estimate the resources consumption. Filter on `| where ClientActivityId startswith "RunContinuousExports"` to view the commands and queries associated with continuous export.
 
 ## Exporting historical data
 
@@ -72,6 +68,18 @@ Followed by:
 .export async to table ExternalBlob
 <| T | where cursor_before_or_at("636751928823156645")
 ```
+
+## Resource management
+
+* **Location**:
+  * For best performance, the ADX cluster and the storage account(s) should be co-located in the same Azure region.
+* **Impact on cluster**:
+  * The impact of the continuous export on the cluster depends on the query the continuous export is running, as most resources (CPU, memory) are consumed by the query execution. 
+  * The number of export operations that can run concurrently is limited by the cluster's data export capacity (see [throttling](../../management/capacitypolicy.md#throttling)). If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind.
+  * If the exported data volume is large, it is recommended to configure multiple storage accounts for the external table, to avoid storage throttling. See [export data to storage](export-data-to-storage.md#known-issues).
+* **Resource consumption**:
+  * The [show commands-and-queries command](../commands-and-queries.md) can be used to estimate the resources consumption. 
+  * Filter on `| where ClientActivityId startswith "RunContinuousExports"` to view the commands and queries associated with continuous export.
 
 ## Limitations
 
