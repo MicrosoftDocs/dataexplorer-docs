@@ -35,7 +35,7 @@ T | top-hitters 25 of Page by Views
 
 ## Examples
 
-### Getting top hitters (most frequent items) 
+### Get most frequent items 
 
 The next example shows how to find top-5  languages with most pages in Wikipedia (accessed after during April 2016). 
 
