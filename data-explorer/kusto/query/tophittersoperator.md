@@ -37,7 +37,7 @@ T | top-hitters 25 of Page by Views
 
 ### Get most frequent items 
 
-The next example shows how to find top-5  languages with most pages in Wikipedia (accessed after during April 2016). 
+The next example shows how to find top-5 languages with most pages in Wikipedia (accessed after during April 2016). 
 
 ```kusto
 PageViews
