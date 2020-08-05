@@ -50,6 +50,12 @@
       href: security.md
     - name: Security baseline
       href: security-baseline.md
+  - name: Business continuity
+    items:  
+    - name: Business continuity and disaster recovery overview
+      href: bcdr-overview.md
+    - name: Create BCDR solutions
+      href: bcdr-create-solution.md   
 - name: How-to guides
   items:
   - name: Create cluster and database
