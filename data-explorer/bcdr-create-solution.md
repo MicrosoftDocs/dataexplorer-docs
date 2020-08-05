@@ -17,7 +17,7 @@ This article details how you can create several different architectures that tak
 
 Azure Data Explorer doesn't support automatic protection against the outage of an entire Azure region. This disruption can happen during a natural disaster, like an earthquake. If you require a solution for a disaster recovery situation, perform the following steps to ensure business continuity. In these steps, you will replicate your clusters, management, and data ingestion in two Azure paired regions.
 
-1. [Create two or more independent clusters](#create-independent-clusters) in two Azure paired regions.
+1. [Create two or more independent clusters](#create-multiple-independent-clusters) in two Azure paired regions.
 1. [Replicate all management activities](#replicate-management-activities) such as creating new tables or managing user roles on each cluster.
 1. Ingest data to each cluster in parallel.
 
@@ -52,7 +52,7 @@ Configure data ingestion consistently on every cluster. The following ingestion 
 |---------|---------|
 |[IotHub](/azure/iot-hub/iot-hub-ha-dr#cross-region-dr)  |[Microsoft-initiated failover and manual failover](/azure/iot-hub/iot-hub-ha-dr#cross-region-dr) |
 |[EventHub](/azure/data-explorer/kusto/management/data-ingestion/eventhub) | Metadata disaster recovery using [primary and secondary disaster recovery namespaces](/azure/event-hubs/event-hubs-geo-dr)     |
-|[Ingest from storage using Event Grid subscription](kusto/management/data-ingestion/eventgrid.md#create-event-grid-subscription) |  Implement a [geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr) for the blob-created messages that are sent to EventHub and the [disaster recovery and account failover strategy](/azure/storage/common/storage-disaster-recovery-guidance)       |
+|[Ingest from storage using Event Grid subscription](ingest-data-event-grid.md) |  Implement a [geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr) for the blob-created messages that are sent to EventHub and the [disaster recovery and account failover strategy](/azure/storage/common/storage-disaster-recovery-guidance)       |
 
 ## Example of performing disaster recovery setup using Event Hub ingestion
 
@@ -75,10 +75,10 @@ As shown in the diagram below, your data sources produce events to the failover-
 
 Now you're ready to optimize your replicas using the following examples:
 
-* [Create an active-hot standby configuration](#create-an-activehot-standby-configuration)
+* [Create an active-hot standby configuration](#create-an-active-hot-standby-configuration)
 * [Start and stop the replicas](#start-and-stop-the-replicas)
 * [Implement a highly available application service](#implement-a-highly-available-application-service)
-* [Optimize cost in an active-active configuration](#optimize-cost-in-an-activeactive-configuration)
+* [Optimize cost in an active-active configuration](#optimize-cost-in-an-active-active-configuration)
 
 ### Create an active-hot standby configuration
 

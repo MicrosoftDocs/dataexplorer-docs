@@ -16,7 +16,7 @@ Business continuity and disaster recovery in Azure Data Explorer enables your bu
 ## Mitigate disruptive events
 
 * [Human error](#human-error)
-* [High availability of Azure Data Explorer](#high-availability)
+* [High availability of Azure Data Explorer](#high-availability-of-azure-data-explorer)
 * [Outage of an Azure availability zone](#outage-of-an-azure-availability-zone)
 * [Outage of an Azure datacenter](#outage-of-an-azure-datacenter)
 * [Outage of an Azure region](#outage-of-an-azure-region)
