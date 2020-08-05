@@ -52,7 +52,7 @@
       href: security-baseline.md
   - name: Business continuity
     items:  
-    - name: Business continuity and disaster recovery overview
+    - name: BCDR overview
       href: bcdr-overview.md
     - name: Create BCDR solutions
       href: bcdr-create-solution.md   
