@@ -160,7 +160,7 @@ Lightning_By_State
 | GEORGIA   | 106                  |
 | Other     | 415                  |
 
-### Using a static list returned by a function
+### Use a static list returned by a function
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
