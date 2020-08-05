@@ -54,7 +54,7 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-### Using of 'in' operator
+### Use 'in' operator
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
