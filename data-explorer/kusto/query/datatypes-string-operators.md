@@ -11,6 +11,8 @@ ms.date: 02/13/2020
 ---
 # String operators
 
+Kusto offers a variety of query operators for searching string data types. The following article describes the how string terms are indexed, lists the string query operators, and gives tips for optimizing performance.
+
 ## Understanding string terms
 
 Kusto indexes all columns, including columns of type `string`. Multiple indexes are built for such columns, depending on the actual data. These indexes aren't directly exposed, but are used in queries with the `string` operators that have `has` as part of their name, such as `has`, `!has`, `hasprefix`, `!hasprefix`. The semantics of these operators are dictated by the way the column is encoded. Instead of doing a "plain" substring match, these operators match *terms*.
