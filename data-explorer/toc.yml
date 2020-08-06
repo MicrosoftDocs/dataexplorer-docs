@@ -92,6 +92,8 @@
       href: lightingest.md    
     - name: Event Hub
       items:
+      - name: Event Hub ingestion overview
+        href: ingest-data-event-hub-overview.md
       - name: Azure portal
         href: ingest-data-event-hub.md
       - name: C#
@@ -102,6 +104,8 @@
         href: data-connection-event-hub-resource-manager.md
     - name: Event Grid
       items:
+      - name: Event Grid ingestion overview
+        href: ingest-data-event-grid-overview.md
       - name: Azure portal
         href: ingest-data-event-grid.md
       - name: C#
@@ -112,6 +116,8 @@
         href: data-connection-event-grid-resource-manager.md
     - name: IoT Hub
       items:
+      - name: IoT Hub ingestion overview
+        href: ingest-data-iot-hub-overview.md
       - name: Azure portal
         href: ingest-data-iot-hub.md
       - name: C#
@@ -1432,12 +1438,6 @@
         href: ./kusto/management/data-ingestion/ingest-from-query.md
       - name: Inline ingestion
         href: ./kusto/management/data-ingestion/ingest-inline.md
-      - name: Ingest from storage using Event Grid subscription
-        href: ./kusto/management/data-ingestion/eventgrid.md
-      - name: Ingest from Event Hub
-        href: ./kusto/management/data-ingestion/eventhub.md
-      - name: Ingest from IoT Hub
-        href: ./kusto/management/data-ingestion/iothub.md
       - name: Streaming ingestion
         items:
         - name: Streaming ingestion and schema changes
