@@ -37,8 +37,8 @@ You can set the following properties:
 | kustoDataFormat |  Data format. Overwrites the **Data format** set on the **Data Connection** blade. |
 | kustoIngestionMappingReference |  Name of the existing ingestion mapping to be used. Overwrites the **Column mapping** set on the **Data Connection** blade.|
 | kustoIgnoreFirstRecord | If set to `true`, Azure Data Explorer ignores the first row of the blob. Use in tabular format data (CSV, TSV, or similar) to ignore headers. |
-| kustoExtentTags | String representing [tags](extents-overview.md#extent-tagging) that will be attached to resulting extent. |
-| kustoCreationTime |  Overrides [$IngestionTime](query/ingestiontimefunction.md?pivots=azuredataexplorer) for the blob, formatted as an ISO 8601 string. Use for backfilling. |
+| kustoExtentTags | String representing [tags](/kusto/managementextents-overview.md#extent-tagging) that will be attached to resulting extent. |
+| kustoCreationTime |  Overrides [$IngestionTime](kusto/query/ingestiontimefunction.md?pivots=azuredataexplorer) for the blob, formatted as an ISO 8601 string. Use for backfilling. |
 
 ## Events routing
 
@@ -82,11 +82,11 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 1. In the Azure portal, find your storage account.
 1. On the left menu, select **Events** > **Event Subscription**.
 
-     :::image type="content" source="../media/eventgrid/create-event-grid-subscription-1.png" alt-text="Create event grid subscription":::
+     :::image type="content" source="media/eventgrid/create-event-grid-subscription-1.png" alt-text="Create event grid subscription":::
 
 1. In the **Create Event Subscription** window within the **Basic** tab, provide the following values:
 
-    :::image type="content" source="../media/eventgrid/create-event-grid-subscription-2.png" alt-text="Create event subscription values to enter":::
+    :::image type="content" source="media/eventgrid/create-event-grid-subscription-2.png" alt-text="Create event subscription values to enter":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
@@ -99,7 +99,7 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
     | Endpoint Type | *Event Hubs* | The type of endpoint to which you send the events. |
     | Endpoint | *test-hub* | The event hub you created. |
 
-1. Select the **Filters** tab if you want to track specific subjects. Set the filters for the notifications as follows:
+2. Select the **Filters** tab if you want to track specific subjects. Set the filters for the notifications as follows:
    * Select **Enable subject filtering**
    * **Subject Begins With** field is the *literal* prefix of the subject. Since the pattern applied is *startswith*, it can span multiple containers, folders or blobs. No wildcards are allowed.
        * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*.
@@ -108,7 +108,7 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
    * **Case-sensitive subject matching** field indicates whether the prefix and suffix filters are case-sensitive.
    * See [Blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events) for more details about filtering events.
     
-        :::image type="content" source="../media/eventgrid/filters-tab.png" alt-text="Filters tab event grid":::
+        :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab event grid":::
 
 > [!NOTE]
 > When the endpoint doesn't acknowledge receipt of an event, Azure Event Grid activates a retry mechanism. If this retry delivery fails, Event Grid can deliver the undelivered events to a storage account using a process of *dead-lettering*. For more information, see [Event Grid message delivery and retry](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration).
