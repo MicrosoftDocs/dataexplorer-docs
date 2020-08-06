@@ -15,8 +15,8 @@ Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage
 
 ## Data format
 
-* Blobs can be in any of the [supported formats](../../../ingestion-supported-formats.md).
-* Blobs can be compressed. For more information, see [supported compressions](../../../ingestion-supported-formats.md#supported-data-compression-formats).
+* Blobs can be in any of the [supported formats](ingestion-supported-formats.md).
+* Blobs can be compressed. For more information, see [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
 
 > [!NOTE]
 > Ideally the original uncompressed data size should be part of the blob metadata.
@@ -27,7 +27,7 @@ Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage
 
 ## Ingestion properties
 
-You can specify [Ingestion properties](../../../ingestion-properties.md) of the blob ingestion via the blob metadata.
+You can specify [Ingestion properties](ingestion-properties.md) of the blob ingestion via the blob metadata.
 You can set the following properties:
 
 |Property | Description|
@@ -37,8 +37,8 @@ You can set the following properties:
 | kustoDataFormat |  Data format. Overwrites the **Data format** set on the **Data Connection** blade. |
 | kustoIngestionMappingReference |  Name of the existing ingestion mapping to be used. Overwrites the **Column mapping** set on the **Data Connection** blade.|
 | kustoIgnoreFirstRecord | If set to `true`, Azure Data Explorer ignores the first row of the blob. Use in tabular format data (CSV, TSV, or similar) to ignore headers. |
-| kustoExtentTags | String representing [tags](../extents-overview.md#extent-tagging) that will be attached to resulting extent. |
-| kustoCreationTime |  Overrides [$IngestionTime](../../query/ingestiontimefunction.md?pivots=azuredataexplorer) for the blob, formatted as an ISO 8601 string. Use for backfilling. |
+| kustoExtentTags | String representing [tags](extents-overview.md#extent-tagging) that will be attached to resulting extent. |
+| kustoCreationTime |  Overrides [$IngestionTime](query/ingestiontimefunction.md?pivots=azuredataexplorer) for the blob, formatted as an ISO 8601 string. Use for backfilling. |
 
 ## Events routing
 
@@ -82,11 +82,11 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 1. In the Azure portal, find your storage account.
 1. On the left menu, select **Events** > **Event Subscription**.
 
-     :::image type="content" source="../images/eventgrid/create-event-grid-subscription-1.png" alt-text="Create event grid subscription":::
+     :::image type="content" source="../media/eventgrid/create-event-grid-subscription-1.png" alt-text="Create event grid subscription":::
 
 1. In the **Create Event Subscription** window within the **Basic** tab, provide the following values:
 
-    :::image type="content" source="../images/eventgrid/create-event-grid-subscription-2.png" alt-text="Create event subscription values to enter":::
+    :::image type="content" source="../media/eventgrid/create-event-grid-subscription-2.png" alt-text="Create event subscription values to enter":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
@@ -108,17 +108,17 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
    * **Case-sensitive subject matching** field indicates whether the prefix and suffix filters are case-sensitive.
    * See [Blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events) for more details about filtering events.
     
-        :::image type="content" source="../images/eventgrid/filters-tab.png" alt-text="Filters tab event grid":::
+        :::image type="content" source="../media/eventgrid/filters-tab.png" alt-text="Filters tab event grid":::
 
 > [!NOTE]
 > When the endpoint doesn't acknowledge receipt of an event, Azure Event Grid activates a retry mechanism. If this retry delivery fails, Event Grid can deliver the undelivered events to a storage account using a process of *dead-lettering*. For more information, see [Event Grid message delivery and retry](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration).
 
 ### Data ingestion connection to Azure Data Explorer
 
-* Via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](../../../ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
-* Using Kusto management .NET SDK: [Add an Event Grid data connection](../../../data-connection-event-grid-csharp.md#add-an-event-grid-data-connection)
-* Using Kusto management Python SDK: [Add an Event Grid data connection](../../../data-connection-event-grid-python.md#add-an-event-grid-data-connection)
-* With [Azure Resource Manager template for adding an Event Grid data connection](../../../data-connection-event-grid-resource-manager.md#azure-resource-manager-template-for-adding-an-event-grid-data-connection)
+* Via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
+* Using Kusto management .NET SDK: [Add an Event Grid data connection](data-connection-event-grid-csharp.md#add-an-event-grid-data-connection)
+* Using Kusto management Python SDK: [Add an Event Grid data connection](data-connection-event-grid-python.md#add-an-event-grid-data-connection)
+* With [Azure Resource Manager template for adding an Event Grid data connection](data-connection-event-grid-resource-manager.md#azure-resource-manager-template-for-adding-an-event-grid-data-connection)
 
 ### Generating data
 
@@ -149,7 +149,7 @@ blob.UploadFromFile(csvCompressedLocalFileName);
 
 > [!NOTE]
 > Using Azure Data Lake Gen2 storage SDK requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to "true".
->  For a detailed example of how to use Data Lake Gen2 SDK correctly, see [upload file using Azure Data Lake SDK](../../../data-connection-event-grid-csharp.md#upload-file-using-azure-data-lake-sdk).
+>  For a detailed example of how to use Data Lake Gen2 SDK correctly, see [upload file using Azure Data Lake SDK](data-connection-event-grid-csharp.md#upload-file-using-azure-data-lake-sdk).
 
 ## Blob lifecycle
 
@@ -157,6 +157,6 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
 
 ## Known issues
 
-* When using Azure Data Explorer to [export](../data-export/export-data-to-storage.md) the files used for event grid ingestion, note: 
-    * Event Grid notifications aren't triggered if the connection string provided to the export command or the connection string provided to an [external table](../data-export/export-data-to-an-external-table.md) is a connecting string in [ADLS Gen2 format](../../api/connection-strings/storage.md#azure-data-lake-store) (for example, `abfss://filesystem@accountname.dfs.core.windows.net`) but the storage account isn't enabled for hierarchical namespace. 
-    * If the account isn't enabled for hierarchical namespace, connection string must use the [Blob Storage](../../api/connection-strings/storage.md#azure-storage-blob) format (for example, `https://accountname.blob.core.windows.net`). The export works as expected even when using the ADLS Gen2 connection string, but notifications won't be triggered and Event Grid ingestion won't work.
+* When using Azure Data Explorer to [export](kusto/management/data-export/export-data-to-storage.md) the files used for event grid ingestion, note: 
+    * Event Grid notifications aren't triggered if the connection string provided to the export command or the connection string provided to an [external table](kusto/management/data-export/export-data-to-an-external-table.md) is a connecting string in [ADLS Gen2 format](kusto/api/connection-strings/storage.md#azure-data-lake-store) (for example, `abfss://filesystem@accountname.dfs.core.windows.net`) but the storage account isn't enabled for hierarchical namespace. 
+    * If the account isn't enabled for hierarchical namespace, connection string must use the [Blob Storage](kusto/api/connection-strings/storage.md#azure-storage-blob) format (for example, `https://accountname.blob.core.windows.net`). The export works as expected even when using the ADLS Gen2 connection string, but notifications won't be triggered and Event Grid ingestion won't work.

@@ -16,17 +16,17 @@ ms.date: 04/01/2020
 ## Data format
 
 * Data is read from the Event Hub endpoint in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
-* Event payload can be in one of the [formats supported by Azure Data Explorer](../../../ingestion-supported-formats.md).
+* Event payload can be in one of the [formats supported by Azure Data Explorer](ingestion-supported-formats.md).
 
 ## Ingestion properties
 
-Ingestion properties instructs the ingestion process. Where to route the data and how to process it. You can specify [Ingestion properties](../../../ingestion-properties.md) of the events ingestion using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
+Ingestion properties instructs the ingestion process. Where to route the data and how to process it. You can specify [Ingestion properties](ingestion-properties.md) of the events ingestion using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
 
 |Property |Description|
 |---|---|
 | Table | Name (case sensitive) of the existing target table. Overrides the `Table` set on the `Data Connection` blade. |
 | Format | Data format. Overrides the `Data format` set on the `Data Connection` blade. |
-| IngestionMappingReference | Name of the existing [ingestion mapping](../create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` blade.|
+| IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` blade.|
 | Encoding |  Data encoding, the default is UTF8. Can be any of [.NET supported encodings](https://docs.microsoft.com/dotnet/api/system.text.encoding?view=netframework-4.8#remarks). |
 
 ## Events routing
@@ -106,7 +106,7 @@ Data is added by using the system properties names as they appear in the **Data 
 
 ### Create an IoT Hub
 
-If you don't already have one, [Create an Iot Hub](../../../ingest-data-iot-hub.md#create-an-iot-hub).
+If you don't already have one, [Create an Iot Hub](ingest-data-iot-hub.md#create-an-iot-hub).
 
 > [!Note]
 > * The `device-to-cloud partitions` count is not changeable, so you should consider long-term scale when setting partition count.
@@ -114,10 +114,10 @@ If you don't already have one, [Create an Iot Hub](../../../ingest-data-iot-hub.
 
 ### Data ingestion connection to Azure Data Explorer
 
-* Via Azure Portal: [Connect Azure Data Explorer table to IoT hub](../../../ingest-data-iot-hub.md#connect-azure-data-explorer-table-to-iot-hub).
-* Using Azure Data Explorer management .NET SDK: [Add an IoT Hub data connection](../../../data-connection-iot-hub-csharp.md#add-an-iot-hub-data-connection)
-* Using Azure Data Explorer management Python SDK: [Add an IoT Hub data connection](../../../data-connection-iot-hub-python.md#add-an-iot-hub-data-connection)
-* With ARM template: [Azure Resource Manager template for adding an Iot Hub data connection](../../../data-connection-iot-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-iot-hub-data-connection)
+* Via Azure Portal: [Connect Azure Data Explorer table to IoT hub](ingest-data-iot-hub.md#connect-azure-data-explorer-table-to-iot-hub).
+* Using Azure Data Explorer management .NET SDK: [Add an IoT Hub data connection](data-connection-iot-hub-csharp.md#add-an-iot-hub-data-connection)
+* Using Azure Data Explorer management Python SDK: [Add an IoT Hub data connection](data-connection-iot-hub-python.md#add-an-iot-hub-data-connection)
+* With ARM template: [Azure Resource Manager template for adding an Iot Hub data connection](data-connection-iot-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-iot-hub-data-connection)
 
 > [!Note]
 > If **My data includes routing info** selected, you *must* provide the necessary [routing](#events-routing) information as part of the events properties.
