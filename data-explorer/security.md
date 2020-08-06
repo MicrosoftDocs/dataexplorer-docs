@@ -13,13 +13,29 @@ ms.date: 01/06/2020
 
 This article provides an introduction to security in Azure Data Explorer to help you protect your data and resources in the cloud and meet the security needs of your business. It's important to keep your clusters secure. Securing your clusters includes one or more Azure features that include secure access and storage. This article provides information to help you keep your cluster secure.
 
-## Managed identities for Azure resources
+## Network Security
+
+Network perimeter security  is a requirement shared by many of our security-conscious enterprise customers. The intent is to isolate the network traffic and limit the attack surface for Azure Data Explorer and their corresponding communications. This means that the customer can block traffic originating from non-ADX network segments and assure that only traffic from known sources to reach ADX end points. This includes traffic originating on premises or outside of Azure, with an Azure destination and vice versa.
+
+ADX supports [Virtual Network Injection](vnet-deployment.md) in order to directly deploy into your virtual network. The engine / data management endpoints can be privately accessed. This allows ADX to be accessible through the non-internet routable addresses.
+
+## Logging and Monitoring
+
+Azure Data Explorer uses [diagnostic logs](using-diagnostic-logs.md) for insights on ingestion and metrics. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion status. Logs from Azure Storage and Azure Event Hub can be routed to a table in your Azure Data Explorer cluster for further analysis.
+
+## Identity and Access Control
+
+### Role-based access control
+
+Using [role-based access control (RBAC)](/azure/role-based-access-control/overview), you can segregate duties within your team and grant only the required access to cluster users. Instead of giving everybody unrestricted permissions on the cluster, you can allow only certain actions. You can configure [access control for the databases](manage-database-permissions.md) in the [Azure portal](/azure/role-based-access-control/role-assignments-portal), using the [Azure CLI](/azure/role-based-access-control/role-assignments-cli), or [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell).
+
+### Managed identities for Azure resources
 
 A common challenge when building cloud applications is credentials management in your code for authenticating to cloud services. Keeping the credentials secure is an important task. The credentials shouldn't be stored in developer workstations or checked into source control. Azure Key Vault provides a way to securely store credentials, secrets, and other keys, but your code has to authenticate to Key Vault to retrieve them.
 
 The Azure Active Directory (Azure AD) managed identities for Azure resources feature solves this problem. The feature provides Azure services with an automatically managed identity in Azure AD. You can use the identity to authenticate to any service that supports Azure AD authentication, including Key Vault, without any credentials in your code. For more information about this service, see [managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/overview) overview page.
 
-## Data encryption
+## Data Protection
 
 ### Azure Disk Encryption
 
@@ -40,7 +56,7 @@ To enable customer-managed keys on a cluster, use an Azure Key Vault to store yo
 
 #### Rotate customer-managed keys
 
-You can rotate a customer-managed key in Azure Key Vault according to your compliance policies. When the key is rotated, you must update the cluster to use the new key URI. Rotating the key doesn't trigger re-encryption of data in the cluster. 
+You can rotate a customer-managed key in Azure Key Vault according to your compliance policies. When the key is rotated, you must update the cluster to use the new key URI. Rotating the key doesn't trigger re-encryption of data in the cluster.
 
 #### Revoke access to customer-managed keys
 
@@ -48,10 +64,6 @@ To revoke access to customer-managed keys, use PowerShell or Azure CLI. For more
 
 > [!Note]
 > When Azure Data Explorer identifies that access to a customer-managed key is revoked, it will automatically suspend the cluster to delete any cached data. Once access to the key is returned, the cluster needs to be resumed manually.
-
-## Role-based access control
-
-Using [role-based access control (RBAC)](/azure/role-based-access-control/overview), you can segregate duties within your team and grant only the required access to cluster users. Instead of giving everybody unrestricted permissions on the cluster, you can allow only certain actions. You can configure [access control for the databases](manage-database-permissions.md) in the [Azure portal](/azure/role-based-access-control/role-assignments-portal), using the [Azure CLI](/azure/role-based-access-control/role-assignments-cli), or [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell).
 
 ## Next steps
 
