@@ -60,6 +60,11 @@
       "redirect_url": "/azure/data-explorer/cluster-disk-encryption",
       "redirect_document_id": true
     }
+    {
+      "source_path": "data-explorer/kusto/management/externaltables.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/external-table-commands",
+      "redirect_document_id": true
+    }
     ]
   }
   

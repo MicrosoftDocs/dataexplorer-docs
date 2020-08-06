@@ -1291,7 +1291,7 @@
       - name: External tables
         items:
         - name: External tables general control commands
-          href: ./kusto/management/externaltables.md
+          href: ./kusto/management/external-table-commands.md
         - name: Create and alter external SQL tables
           href: ./kusto/management/external-sql-tables.md
         - name: Create and alter external tables in Azure Storage or Azure Data Lake
