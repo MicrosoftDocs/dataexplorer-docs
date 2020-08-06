@@ -104,7 +104,10 @@ You can stop and restart a cluster depending on business needs.
 
 1. To stop the cluster, at the top of the **Overview** tab, select **Stop**.
 
-    When the cluster is stopped, data is not available for queries, and you can't ingest new data.
+    :::image type="content" source="media/create-cluster-database-portal/stop-button.png" alt-text="The stop button":::
+
+    > [!NOTE]
+    > When the cluster is stopped, data is not available for queries, and you can't ingest new data.
 
 1. To restart the cluster, at the top of the **Overview** tab, select **Start**.
 
