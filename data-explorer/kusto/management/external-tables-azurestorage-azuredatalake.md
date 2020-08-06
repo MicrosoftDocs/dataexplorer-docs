@@ -18,7 +18,7 @@ The following command describes how to create an external table located in Azure
 
 **Syntax**
 
-(`.create` | `.alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
 `kind` `=` (`blob` | `adl`)  
 [`partition` `by` `(` *[Partitions](#partitions)* `)` [`pathformat` `=` `(` *[PathFormat](#path-format)* `)`]]  
 `dataformat` `=` *[Format](#format)*  
@@ -28,7 +28,7 @@ The following command describes how to create an external table located in Azure
 Creates or alters a new external table in the database in which the command is executed.
 
 > [!NOTE]
-> * If the table exists, `.create` command will fail with an error. Use `.alter` to modify existing tables. 
+> * If the table exists, `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
 > * Altering the schema, format, or the partition definition of an external blob table isn't supported. 
 > * The operation requires [database user permission](../management/access-control/role-based-authorization.md) for `.create` and [table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
 
