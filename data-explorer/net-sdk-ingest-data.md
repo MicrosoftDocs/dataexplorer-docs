@@ -202,7 +202,7 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
             IgnoreFirstRecord = true
         };
 
-    ingestClient.IngestFromStorageAsync(blobPath, ingestionProperties: properties);
+    ingestClient.IngestFromStorageAsync(blobPath, ingestionProperties: properties).GetAwaiter().GetResult();
 }
 ```
 
