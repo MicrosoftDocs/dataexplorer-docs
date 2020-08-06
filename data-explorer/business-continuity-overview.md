@@ -9,9 +9,9 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ---
 
-# Business Continuity and Disaster Recovery
+# Business continuity and disaster recovery overview
 
-Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a disruption. This article discusses availability (intra-region) and disaster recovery. It details native capabilities available out of the box, and architectural considerations, for a resilient Azure Data Explorer deployment. It details recovering from human errors, high availability out of the box, followed by multiple disaster recovery configurations depending on resiliency requirements (Recovery point objective (RPO) and Recovery time objective (RTO)), needed effort and cost.
+Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a disruption. This article discusses availability (intra-region) and disaster recovery. It details native capabilities and architectural considerations for a resilient Azure Data Explorer deployment. It details recovery from human errors, high availability, followed by multiple disaster recovery configurations. These configurations depend on resiliency requirements such as Recovery Point Objective (RPO) and Recovery Time Objective (RTO), needed effort, and cost.
 
 ## Mitigate disruptive events
 
@@ -27,7 +27,7 @@ Human errors are inevitable. Users can accidentally drop a cluster, database, or
 
 #### Accidental cluster or database deletion
 
-Accidental cluster or database deletion is an irrecoverable action. As the Azure Data Explorer resource owner, you can prevent data loss by enabling the delete [lock](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) capability, available at the Azure resource level.
+Accidental cluster or database deletion is an irrecoverable action. As the Azure Data Explorer resource owner, you can prevent data loss by enabling the delete [lock](/azure/azure-resource-manager/management/lock-resources) capability, available at the Azure resource level.
 
 #### Accidental table deletion
 
@@ -40,7 +40,7 @@ Deletion of an external table only deletes the table metadata. You can recover i
 
 ### High availability of Azure Data Explorer
 
-High availability refers to the fault-tolerance of Azure Data Explorer, its components, and underlying dependencies within an Azure region. This fault tolerance includes avoiding single points of failure (SPOF), out of the box, in the implementation. In Azure Data Explorer, high availability includes the persistence layer, compute layer, and a leader-follower configuration.
+High availability refers to the fault-tolerance of Azure Data Explorer, its components, and underlying dependencies within an Azure region. This fault tolerance avoids single points of failure (SPOF) in the implementation. In Azure Data Explorer, high availability includes the persistence layer, compute layer, and a leader-follower configuration.
 
 #### Persistence layer
 
@@ -50,9 +50,9 @@ Azure Data Explorer leverages Azure Storage as its durable persistence layer. Az
 
 Azure Data Explorer is a distributed computing platform and can have two to many nodes depending on scale and node role type. At provision time, select availability zones to distribute the node deployment, across zones for maximum intra-region resiliency. An availability zone failure won't result in a complete outage but instead, performance degradation until recovery of the zone. 
 
-#### Leader-Follower cluster configuration
+#### Leader-follower cluster configuration
 
-Azure Data Explorer provides an optional [follower capability](follower.md) for a leader cluster to be followed by other follower clusters for read-only access to the leader's data and metadata. Changes in the leader, such as `create`, `append`, and `drop` are automatically synchronized to the follower. While the leaders could span Azure regions, the follower clusters should be hosted in the same region(s) as the leader. If the leader cluster is down or databases/tables are accidentally dropped, the follower clusters will lose access until access is recovered in the leader. 
+Azure Data Explorer provides an optional [follower capability](follower.md) for a leader cluster to be followed by other follower clusters for read-only access to the leader's data and metadata. Changes in the leader, such as `create`, `append`, and `drop` are automatically synchronized to the follower. While the leaders could span Azure regions, the follower clusters should be hosted in the same region(s) as the leader. If the leader cluster is down or databases or tables are accidentally dropped, the follower clusters will lose access until access is recovered in the leader. 
 
 ### Outage of an Azure availability zone
 
@@ -69,29 +69,27 @@ Azure availability zones come with a cost and some customers choose to deploy wi
 
 ### Outage of an Azure region
 
-[Paired regions](/azure/best-practices-availability-paired-regions)
-
-Azure Data Explorer doesn't provide automatic protection against the outage of an entire Azure region. To minimize business impact if there is such an outage, based on your recovery time objective (RTO), recovery point objective (RPO), as well as effort and cost considerations, there are [multiple disaster recovery configurations](#disaster-recovery-configurations). Cost and performance optimizations are possible with Azure Advisor recommendations and [autoscale](manage-cluster-horizontal-scaling.md) configuration.
+Azure Data Explorer doesn't provide automatic protection against the outage of an entire Azure region. To minimize business impact if there is such an outage, multiple Azure Data Explorer clusters across [Azure paired regions](/azure/best-practices-availability-paired-regions). Based on your recovery time objective (RTO), recovery point objective (RPO), as well as effort and cost considerations, there are [multiple disaster recovery configurations](#disaster-recovery-configurations). Cost and performance optimizations are possible with Azure Advisor recommendations and [autoscale](manage-cluster-horizontal-scaling.md) configuration.
 
 ## Disaster recovery configurations
 
- This section details multiple disaster recovery configurations depending on resiliency requirements (RPO and RTO), needed effort and cost.
+ This section details multiple disaster recovery configurations depending on resiliency requirements (RPO and RTO), needed effort, and cost.
 
 Recovery time objective (RTO) refers to the time to recover from a disruption. For example, RTO of 2 hours means the application has to be up and running within two hours of a disruption. Recovery point objective (RPO) refers to the interval of time that might pass during a disruption before the quantity of data lost during that period is greater than the allowable threshold. For example, if the RPO is 24 hours, and an application has data beginning from 15 years ago, they're still within the parameters of the agreed-upon RPO.
 
 Ingestion, processing, and curation processes need diligent design upfront when planning for disaster recovery. Ingestion refers to data integrated into Azure Data Explorer from various sources; processing refers to transformations and similar activities; curation refers to materialized views, exports to the data lake, and so on.
 
 The following are popular disaster recovery configurations, and each is described in detail below.
-* Always-on configuration
-* Active-Active configuration
-* Active-Hot standby configuration
-* On-demand DR cluster configuration
+* [Always-on configuration](#always-on-configuration)
+* [Active-Active configuration](#active-active-configuration)
+* [Active-Hot standby configuration](#active-hot-standby-configuration)
+* [On-demand data recovery cluster configuration](#on-demand-data-recovery-configuration)
 
 ### Always-on configuration
 
 For critical application deployments with no tolerance for outages, you should use multiple Azure Data Explorer clusters across Azure paired regions. Set up ingestion, processing, and curation in parallel to all of the clusters. The cluster SKU must be the same across regions. Azure will ensure that updates are rolled out and staggered across Azure paired regions. An Azure region outage won't cause an application outage. You may experience some latency or performance degradation.
 
-:::image type="content" source="media/bcdr-overview/active-active-active-n.png" alt-text="Active-active-active-n configuration":::
+:::image type="content" source="media/business-continuity-overview/active-active-active-n.png" alt-text="Active-active-active-n configuration":::
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
@@ -99,9 +97,9 @@ For critical application deployments with no tolerance for outages, you should u
 
 ### Active-Active configuration
 
-This configuration is identical to the [Always-on configuration](#always-on-configuration), but only involves two paired Azure regions. Configure dual ingestion, processing, and curation. Users are routed to the nearest region. The cluster SKU must be the same across regions.
+This configuration is identical to the [Always-on configuration](#always-on-configuration), but only involves two Azure paired regions. Configure dual ingestion, processing, and curation. Users are routed to the nearest region. The cluster SKU must be the same across regions.
 
-:::image type="content" source="media/bcdr-overview/active-active.png" alt-text="Active-active configuration":::
+:::image type="content" source="media/business-continuity-overview/active-active.png" alt-text="Active-active configuration":::
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
@@ -109,34 +107,34 @@ This configuration is identical to the [Always-on configuration](#always-on-conf
 
 ### Active-Hot standby configuration
 
-The Active-Hot configuration is similar to the [Active-Active configuration](#active-active-configuration) in dual ingest, processing, and curation. However, the standby cluster is offline to end users, and doesn't need to be in the same SKU as the primary. The hot standby cluster can also be of a smaller SKU and scale, and as such is less performant. In a disaster scenarios, the standby cluster is brought online, and scaled up.
+The Active-Hot configuration is similar to the [Active-Active configuration](#active-active-configuration) in dual ingest, processing, and curation. However, the standby cluster is offline to end users, and doesn't need to be in the same SKU as the primary. The hot standby cluster can also be of a smaller SKU and scale, and as such is less performant. In a disaster scenario, the standby cluster is brought online, and scaled up.
 
-:::image type="content" source="media/bcdr-overview/active-hot-standby.png" alt-text="Active-hot standby configuration":::
+:::image type="content" source="media/business-continuity-overview/active-hot-standby.png" alt-text="Active-hot standby configuration":::
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
 | **Active-Hot Standby** | Low | Low | Medium | Medium |
 
-### On-demand DR configuration
+### On-demand data recovery configuration
 
-This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there's no DR (data recovery) cluster. Configure continuous export of curated data (unless raw and intermediate data is also required) to a storage account that is configured GRS (Geo Redundant Storage). A DR cluster is spun up if there is a DR scenario. At that time, DDLs, configuration, policies, and processes are applied. Data is ingested from storage with the ingestion property [kustoCreationTime](kusto/management/data-ingestion/eventgrid.md) to over-ride the ingestion time that defaults to system time. 
+This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there's no data recovery cluster. Configure continuous export of curated data (unless raw and intermediate data is also required) to a storage account that is configured GRS (Geo Redundant Storage). A data recovery cluster is spun up if there is a disaster recovery scenario. At that time, DDLs, configuration, policies, and processes are applied. Data is ingested from storage with the ingestion property [kustoCreationTime](kusto/management/data-ingestion/eventgrid.md) to over-ride the ingestion time that defaults to system time. 
 
-:::image type="content" source="media/bcdr-overview/on-demand-dr-cluster.png" alt-text="On-demand DR cluster configuration":::
+:::image type="content" source="media/business-continuity-overview/on-demand-data-recovery-cluster.png" alt-text="On-demand data recovery cluster configuration":::
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
-| **On-demand DR cluster** | Highest | Highest | Highest | Lowest |
+| **On-demand data recovery cluster** | Highest | Highest | Highest | Lowest |
 
-### Summary of Disaster Recovery Configuration Options
+### Summary of disaster recovery configuration options
 
 | **Configuration** | **Resiliency** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- | --- |
 | **Active-Active-Active-n** | Highest | 0 hours | 0 hours | Lower | Highest |
 | **Active-Active** | High | None | None | Lower | High |
 | **Active-Hot Standby** | Medium | Low | Low | Medium | Medium |
-| **On-demand DR cluster** | Lowest | Highest | Highest | Highest | Lowest |
+| **On-demand data recovery cluster** | Lowest | Highest | Highest | Highest | Lowest |
 
-## Best Practices
+## Best practices
 
 Regardless of which disaster recovery configuration is chosen, follow these best practices:
 
@@ -149,4 +147,4 @@ Regardless of which disaster recovery configuration is chosen, follow these best
 
 ## Next steps
 
-Learn more with the [business continuity disaster recovery solution](bcdr-create-solution.md).
+Learn more with the [business continuity disaster recovery solution](business-recovery-create-solution.md).
