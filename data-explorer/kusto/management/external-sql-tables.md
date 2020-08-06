@@ -16,7 +16,7 @@ Creates or alters an external SQL table in the database in which the command is 
 
 ## Syntax
 
-(`.create` | `.alter`) `external` `table` *TableName* ([columnName:columnType], ...)  
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* ([columnName:columnType], ...)  
 `kind` `=` `sql`  
 `table` `=` *SqlTableName*  
 `(`*SqlServerConnectionString*`)`  
@@ -45,7 +45,7 @@ The user or application authenticates via AAD to Kusto, and the same token is th
 | `primarykey`        | `string`        | If `createifnotexists` is `true`, the resulting column name will be used as the SQL table's primary key if it is created by this command.                  |
 
 > [!NOTE]
-> * If the table exists, the `.create` command will fail with an error. Use `.alter` to modify existing tables. 
+> * If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables. 
 > * Altering the schema or format of an external SQL table is not supported. 
 
 Requires [database user permission](../management/access-control/role-based-authorization.md) for `.create` and [table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
