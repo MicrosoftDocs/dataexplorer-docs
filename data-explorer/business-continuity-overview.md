@@ -147,4 +147,4 @@ Regardless of which disaster recovery configuration is chosen, follow these best
 
 ## Next steps
 
-Learn more with the [business continuity disaster recovery solution](business-continuity-create-solution.md).
+Learn more with the [Create business continuity and disaster recovery solutions with Azure Data Explorer](business-continuity-create-solution.md).
