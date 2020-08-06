@@ -52,10 +52,10 @@
       href: security-baseline.md
   - name: Business continuity
     items:  
-    - name: BCDR overview
-      href: bcdr-overview.md
-    - name: Create BCDR solutions
-      href: bcdr-create-solution.md   
+    - name: Overview
+      href: business-continuity-overview.md
+    - name: Create solutions
+      href: business-continuity-create-solution.md   
   - name: Tools and integrations overview
     href: tools-integrations-overview.md
 - name: How-to guides

@@ -147,4 +147,4 @@ Regardless of which disaster recovery configuration is chosen, follow these best
 
 ## Next steps
 
-Learn more with the [business continuity disaster recovery solution](business-recovery-create-solution.md).
+Learn more with the [business continuity disaster recovery solution](business-continuity-create-solution.md).
