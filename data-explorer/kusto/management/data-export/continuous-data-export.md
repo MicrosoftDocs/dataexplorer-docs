@@ -27,7 +27,7 @@ For more information, see [exporting historical data](#exporting-historical-data
 > * Continuous export is not supported for external tables with `impersonate` in their 
 [connection strings](../../api/connection-strings/storage.md).
 > * If the artifacts used by continuous export are intended to trigger Event Grid notifications, please refer to the 
-[known issues section in the Event Grid documentation](../data-ingestion/eventgrid.md#known-issues).
+[known issues section in the Event Grid documentation](../../../ingest-data-event-grid-overview.md#known-issues).
 
 ## Notes
 
