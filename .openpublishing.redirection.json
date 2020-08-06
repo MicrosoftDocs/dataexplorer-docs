@@ -71,12 +71,12 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/management/iothub.md",
+        "source_path": "data-explorer/kusto/management/eventgrid.md",
         "redirect_url": "/azure/data-explorer/ingest-data-event-grid-overview",
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/manage-cluster-security.md",
+        "source_path": "data-explorer/kusto/management/iothub.md",
         "redirect_url": "/azure/data-explorer/ingest-data-iot-hub-overview",
         "redirect_document_id": true
       }
