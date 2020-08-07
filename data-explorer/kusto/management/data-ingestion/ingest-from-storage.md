@@ -38,7 +38,7 @@ without affecting existing records, and without modifying the table's schema.
 * *SourceDataLocator*: A literal of type `string`, or a comma-delimited list of such
   literals surrounded by `(` and `)` characters, representing [storage connection strings](../../api/connection-strings/storage.md). Kusto uses a URI format to describe the storage files containing the data to pull. 
   * A single connection string must refer to a single file hosted by a storage account. 
-  * Ingestion of multiple files can be done by specifying multiple connection strings separated with a comma, or by [ingesting from a query](ingest-from-query.md) of an [external table](../external-table-commands.md).
+  * Ingestion of multiple files can be done by specifying multiple connection strings separated with a comma, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/externaltables.md).
 
 > [!NOTE]
 > It is strongly recommended to use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals)
