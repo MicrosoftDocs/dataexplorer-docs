@@ -43,7 +43,8 @@ A health status of **Unavailable** indicates that there's an ongoing problem wit
 
 ![Unavailable](media/monitor-with-resource-health/unavailable.png)
 
-You can use following [commands](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/systeminfo) to understand the source of the problem by yourself.
+> [!TIP]
+> You can use the [system information commands](kusto/management/systeminfo.md) to find the source of the problem.
 
 ### Unknown
 
