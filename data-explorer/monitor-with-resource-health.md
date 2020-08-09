@@ -43,6 +43,8 @@ A health status of **Unavailable** indicates that there's an ongoing problem wit
 
 ![Unavailable](media/monitor-with-resource-health/unavailable.png)
 
+You can use following [commands](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/systeminfo) to understand the source of the problem by yourself.
+
 ### Unknown
 
 A health status of **Unknown** indicates that **Resource Health** hasn't received information about this Azure Data Explorer resource for more than 10 minutes. This status isn't a definitive indication of the Azure Data Explorer resource health, but is an important data point in the troubleshooting process. If your Azure Data Explorer cluster is functioning as expected, the status will change to **Available** within a few minutes. The **Unknown** health status may suggest that an event in the platform is affecting the resource. 
