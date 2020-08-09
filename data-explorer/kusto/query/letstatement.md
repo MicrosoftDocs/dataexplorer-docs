@@ -144,7 +144,7 @@ range x from 1 to 5 step 1
 |4|20|
 |5|25|
 
-Similarly, the following example is removing leading/trailing `1` (ones) from the input.
+The following example removes leading/trailing ones (`1`) from the input.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
