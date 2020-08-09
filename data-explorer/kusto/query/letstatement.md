@@ -177,7 +177,7 @@ foo2(2) | count
 
 ### Use the `view` keyword in a let statement
 
-This example shows how to use let statement with `view` keyword.
+This example shows you how to use let statement with the `view` keyword.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
