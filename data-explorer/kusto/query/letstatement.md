@@ -125,7 +125,7 @@ Events
 | take n
 ```
 
-### Use let with arguments for scalar calculation
+### Use let statement with arguments for scalar calculation
 
 This example uses the let statement with arguments for scalar calculation. The query defines function `MultiplyByN` for multiplying two numbers.
 
