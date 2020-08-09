@@ -175,7 +175,7 @@ foo2(2) | count
 // Result: 50
 ```
 
-### Using `view` keyword in a let statement
+### Use the `view` keyword in a let statement
 
 This example shows how to use let statement with `view` keyword.
 
