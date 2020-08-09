@@ -127,7 +127,7 @@ Events
 
 ### Use let with arguments for scalar calculation
 
-This example defines function `MultiplyByN` for multiplying two numbers.
+This example uses the let statement with arguments for scalar calculation. The query defines function `MultiplyByN` for multiplying two numbers.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
