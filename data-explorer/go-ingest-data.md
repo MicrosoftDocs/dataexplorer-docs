@@ -165,7 +165,7 @@ The [Ingestion](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#I
 
     You'll get a similar output:
 
-    ```shell
+    ```console
     Connected to Azure Data Explorer
     Using database - testkustodb
     Failed to drop StormEvents table. Maybe it does not exist?
