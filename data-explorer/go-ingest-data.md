@@ -60,7 +60,7 @@ An instance of [kusto.Authorization](https://godoc.org/github.com/Azure/azure-ku
 
 ### Table creation
 
-The [Mgmt](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Client.Mgmt) function is meant for executing management queries. It is used for executing the command to create a table.
+The [Mgmt](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Client.Mgmt) function is meant for executing management commands. It is used for executing the command to create a table.
 
 ```go
 func createTable(kc *kusto.Client, kustoDB string) {
@@ -80,9 +80,14 @@ The create table command is as follows:
 .create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)
 ```
 
+> [!TIP]
+> A Kusto Statement is constant by default for better security - notice that [`NewStmt`](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#NewStmt) accepts string constant. Using non-constant statement segments is still possible via the [`UnsafeStmt`](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#UnsafeStmt) API, however it is *not* the recommended approach.
+
 ### Mapping creation
 
-Mapping is also created in the same way as table: using the `Mgmt` function with the database name and the mapping creation command.
+Data mappings are used during ingestion to map incoming data to columns inside Kusto tables. For more information, please refer to [this section in the documentation](kusto/management/mappings.md). It is created in the same way as a table: using the `Mgmt` function with the database name and the appropriate command.
+
+> The complete command can referenced in the [GitHub repo for the sample](https://github.com/Azure-Samples/Azure-Data-Explorer-Go-SDK-example-to-ingest-data/blob/main/main.go#L20)
 
 ```go
 func createMapping(kc *kusto.Client, kustoDB string) {
@@ -92,12 +97,6 @@ func createMapping(kc *kusto.Client, kustoDB string) {
 	}
 	log.Printf("Mapping %s created\n", kustoMappingRefName)
 }
-```
-
-The mapping creation command is as follows:
-
-```kusto
-.create table StormEvents ingestion csv mapping 'StormEvents_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EpisodeId","datatype":"int","Ordinal":2},{"Name":"EventId","datatype":"int","Ordinal":3},{"Name":"State","datatype":"string","Ordinal":4},{"Name":"EventType","datatype":"string","Ordinal":5},{"Name":"InjuriesDirect","datatype":"int","Ordinal":6},{"Name":"InjuriesIndirect","datatype":"int","Ordinal":7},{"Name":"DeathsDirect","datatype":"int","Ordinal":8},{"Name":"DeathsIndirect","datatype":"int","Ordinal":9},{"Name":"DamageProperty","datatype":"int","Ordinal":10},{"Name":"DamageCrops","datatype":"int","Ordinal":11},{"Name":"Source","datatype":"string","Ordinal":12},{"Name":"BeginLocation","datatype":"string","Ordinal":13},{"Name":"EndLocation","datatype":"string","Ordinal":14},{"Name":"BeginLat","datatype":"real","Ordinal":16},{"Name":"BeginLon","datatype":"real","Ordinal":17},{"Name":"EndLat","datatype":"real","Ordinal":18},{"Name":"EndLon","datatype":"real","Ordinal":19},{"Name":"EpisodeNarrative","datatype":"string","Ordinal":20},{"Name":"EventNarrative","datatype":"string","Ordinal":21},{"Name":"StormSummary","datatype":"dynamic","Ordinal":22}]'
 ```
 
 ### Ingestion
