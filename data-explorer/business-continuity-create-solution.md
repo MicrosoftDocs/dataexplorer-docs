@@ -35,7 +35,7 @@ The following image shows replicas, three clusters in three different regions.
 Replicate the management activities to have the same cluster configuration in every replica.
 
 1. Create on each replica the same: 
-    * [Databases]: You can use the [Azure portal to create a new database](create-cluster-database-portal.md#create-a-database) or one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto).
+    * Databases: You can use the [Azure portal](create-cluster-database-portal.md#create-a-database) or one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto) to create a new database.
     * [Tables](kusto/management/create-table-command.md)
     * [Mappings](kusto/management/create-ingestion-mapping-command.md)
     * [Policies](kusto/management/policies.md)
