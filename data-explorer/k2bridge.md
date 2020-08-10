@@ -98,7 +98,8 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
 
         In [Configuration](https://github.com/microsoft/K2Bridge/blob/master/docs/configuration.md), you can find the complete set of configuration options.
 
-    1. The previous command's output suggests the next Helm command to deploy Kibana. Optionally, run this command:
+    1. <a name="install-kibana-service"></a>
+    The previous command's output suggests the next Helm command to deploy Kibana. Optionally, run this command:
 
         ```bash
         helm install kibana elastic/kibana -n k2bridge --set image=docker.elastic.co/kibana/kibana-oss --set imageTag=6.8.5 --set elasticsearchHosts=http://k2bridge:8080
@@ -114,7 +115,7 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
 
     1. Expose Kibana to users. There are multiple methods to do so. The method you use largely depends on your use case.
 
-        For example, you can expose the service as a Load Balancer service. To do so, add the **--set service.type=LoadBalancer** parameter to the [earlier K2Bridge Helm **install** command](#install-k2bridge-chart).
+        For example, you can expose the service as a Load Balancer service. To do so, add the **--set service.type=LoadBalancer** parameter to the [earlier Kibana Helm **install** command](#install-kibana-service).
 
         Then run this command:
 
