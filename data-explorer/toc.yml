@@ -745,6 +745,10 @@
         href: ./kusto/query/format-bytesfunction.md
       - name: format_datetime()
         href: ./kusto/query/format-datetimefunction.md
+      - name: format_ipv4()
+        href: ./kusto/query/format-ipv4function.md
+      - name: format_ipv4_mask()
+        href: ./kusto/query/format-ipv4maskfunction.md
       - name: format_timespan()
         href: ./kusto/query/format-timespanfunction.md
       - name: gamma()
