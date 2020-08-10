@@ -26,18 +26,13 @@ In this article, you first create a table and data mapping in a test cluster. Yo
 ## Prerequisites
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-
 * Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-
 * Install [Go](https://golang.org/) with the following [Go SDK minimum requirements](kusto/api/golang/kusto-golang-client-library.md#minimum-requirements). 
-
 * Create an [Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 
 ## Install the Go SDK
 
-The Azure Data Explorer Go SDK will be automatically installed when you run the [sample application that uses [Go modules](https://golang.org/ref/mod).
-
-If you installed the Go SDK for another application, create a Go module and fetch the Azure Data Explorer package (using `go get`), for example:
+The Azure Data Explorer Go SDK will be automatically installed when you run the [sample application that uses [Go modules](https://golang.org/ref/mod). If you installed the Go SDK for another application, create a Go module and fetch the Azure Data Explorer package (using `go get`), for example:
 
 ```shell
 go mod init foo.com/bar
@@ -48,7 +43,7 @@ The package dependency will be added to the `go.mod` file. Use it in your Go app
 
 ## Review the code
 
-This [Review the code](#review-the-code) section is optional. If you're interested to learn how the code works, you can review the following code snippets. Otherwise, you can skip ahead to [Run the application](#run-the-application)
+This [Review the code](#review-the-code) section is optional. If you're interested to learn how the code works, you can review the following code snippets. Otherwise, you can skip ahead to [Run the application](#run-the-application).
 
 ### Authentication
 
@@ -59,7 +54,7 @@ auth := kusto.Authorization{Config: auth.NewClientCredentialsConfig(clientID, cl
 client, err := kusto.New(kustoEndpoint, auth)
 ```
 
-An instance of [kusto.Authorization](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Authorization) is created using the service principal credentials. It's then used to create a [kusto.Client](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Client) with a [New](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#New]) function that also accepts the cluster endpoint.
+An instance of [kusto.Authorization](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Authorization) is created using the service principal credentials. It's then used to create a [kusto.Client](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Client) with the [New](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#New]) function that also accepts the cluster endpoint.
 
 ### Table creation
 
@@ -75,7 +70,7 @@ func createTable(kc *kusto.Client, kustoDB string) {
 }
 ```
 
-The create table command is represented by a [Kusto statement](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Stmt)
+The create table command is represented by a [Kusto statement](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Stmt).
 
 The create table command is as follows:
 
@@ -124,86 +119,87 @@ The [Ingestion](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#I
 
 ## Run the application
 
-Clone the sample code from GitHub:
+1. Clone the sample code from GitHub:
 
-```shell
-git clone https://github.com/Azure-Samples/Azure-Data-Explorer-Go-SDK-example-to-ingest-data.git
-cd Azure-Data-Explorer-Go-SDK-example-to-ingest-data
-```
+    ```shell
+    git clone https://github.com/Azure-Samples/Azure-Data-Explorer-Go-SDK-example-to-ingest-data.git
+    cd Azure-Data-Explorer-Go-SDK-example-to-ingest-data
+    ```
 
-When you run the sample code, the following sequence of events is performed:
+1. Run the sample code as seen in this snippet from `main.go`: 
 
-1. Drop table: `StormEvents` table is dropped (if it exists).
-1. Table creation: `StormEvents` table is created.
-1. Mapping creation: `StormEvents_CSV_Mapping` mapping is created.
-1. File ingestion: A CSV file (in Azure Blob Storage) is queued for ingestion.
+    ```go
+    func main {
+        ...
+        dropTable(kc, kustoDB)
+        createTable(kc, kustoDB)
+        createMapping(kc, kustoDB)
+        ingestFile(kc, blobStoreAccountName, blobStoreContainer, blobStoreToken, blobStoreFileName, kustoMappingRefName, kustoDB, kustoTable)
+        ...
+    }
+    ```
 
-The snippet from `main.go`:
+    > [!TIP]
+    > To try different combinations of operations, you can uncomment/comment the respective functions in `main.go`.
 
-```go
-func main {
-    ...
-    dropTable(kc, kustoDB)
-    createTable(kc, kustoDB)
-    createMapping(kc, kustoDB)
-    ingestFile(kc, blobStoreAccountName, blobStoreContainer, blobStoreToken, blobStoreFileName, kustoMappingRefName, kustoDB, kustoTable)
-    ...
-}
-```
+    When you run the sample code, the following actions are performed:
+    
+    1. **Drop table**: `StormEvents` table is dropped (if it exists).
+    1. **Table creation**: `StormEvents` table is created.
+    1. **Mapping creation**: `StormEvents_CSV_Mapping` mapping is created.
+    1. **File ingestion**: A CSV file (in Azure Blob Storage) is queued for ingestion.
 
-> [!TIP]
-> To try different combinations of operations, you can uncomment/comment the respective functions in `main.go`.
+1. To create a service principal for authentication, use Azure CLI with the [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command. Set the service principal information with the cluster endpoint and the database name in the form of environment variables that will be used by the program:
 
-To create a service principal for authentication, use Azure CLI with the [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command.
-Set service principal information with the cluster endpoint and the database name in the form of environment variables that will be used by the program:
+    ```shell
+    export AZURE_SP_CLIENT_ID="<replace with appID>"
+    export AZURE_SP_CLIENT_SECRET="<replace with password>"
+    export AZURE_SP_TENANT_ID="<replace with tenant>"
+    export KUSTO_ENDPOINT="https://<cluster name>.<azure region>.kusto.windows.net"
+    export KUSTO_DB="name of the database"
+    ```
 
-```shell
-export AZURE_SP_CLIENT_ID="<replace with appID>"
-export AZURE_SP_CLIENT_SECRET="<replace with password>"
-export AZURE_SP_TENANT_ID="<replace with tenant>"
-export KUSTO_ENDPOINT="https://<cluster name>.<azure region>.kusto.windows.net"
-export KUSTO_DB="name of the database"
-```
+1. Run the program:
 
-Run the program:
+    ```shell
+    go run main.go
+    ```
 
-```shell
-go run main.go
-```
+    You'll get a similar output:
 
-You'll get a similar output:
-
-```shell
-Connected to Azure Data Explorer
-Using database - testkustodb
-Failed to drop StormEvents table. Maybe it does not exist?
-Table StormEvents created in DB testkustodb
-Mapping StormEvents_CSV_Mapping created
-Ingested file from - https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D
-```
+    ```shell
+    Connected to Azure Data Explorer
+    Using database - testkustodb
+    Failed to drop StormEvents table. Maybe it does not exist?
+    Table StormEvents created in DB testkustodb
+    Mapping StormEvents_CSV_Mapping created
+    Ingested file from - https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D
+    ```
 
 ## Validate and troubleshoot
 
-Wait for 5 to 10 minutes for the queued ingestion to schedule the ingestion process and load the data into Azure Data Explorer. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com) and connect to your cluster. Then run the following command to get the count of records in the `StormEvents` table.
+Wait for 5 to 10 minutes for the queued ingestion to schedule the ingestion process and load the data into Azure Data Explorer. 
 
-```kusto
-StormEvents | count
-```
+1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com) and connect to your cluster. Then run the following command to get the count of records in the `StormEvents` table.
 
-Run the following command in your database to see if there were any ingestion failures in the last four hours. Replace the database name before running.
+    ```kusto
+    StormEvents | count
+    ```
 
-```kusto
-.show ingestion failures
-| where FailedOn > ago(4h) and Database == "<DatabaseName>"
-```
+2. Run the following command in your database to see if there were any ingestion failures in the last four hours. Replace the database name before running.
 
-Run the following command to view the status of all ingestion operations in the last four hours. Replace the database name before running.
+    ```kusto
+    .show ingestion failures
+    | where FailedOn > ago(4h) and Database == "<DatabaseName>"
+    ```
 
-```kusto
-.show operations
-| where StartedOn > ago(4h) and Database == "<DatabaseName>" and Operation == "DataIngestPull"
-| summarize arg_max(LastUpdatedOn, *) by OperationId
-```
+1. Run the following command to view the status of all ingestion operations in the last four hours. Replace the database name before running.
+
+    ```kusto
+    .show operations
+    | where StartedOn > ago(4h) and Database == "<DatabaseName>" and Operation == "DataIngestPull"
+    | summarize arg_max(LastUpdatedOn, *) by OperationId
+    ```
 
 ## Clean up resources
 
