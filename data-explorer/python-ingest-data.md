@@ -37,7 +37,7 @@ This article is also available as an [Azure Notebook](https://notebooks.azure.co
 
 Install *azure-kusto-data* and *azure-kusto-ingest*.
 
-```
+```python
 pip install azure-kusto-data
 pip install azure-kusto-ingest
 ```
@@ -54,13 +54,13 @@ from azure.kusto.data.helpers import dataframe_from_result_table
 
 To authenticate an application, Azure Data Explorer uses your AAD tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
 
-```
+```http
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
 For example, if your domain is *contoso.com*, the URL is: [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Click this URL to see the results; the first line is as follows. 
 
-```
+```console
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
