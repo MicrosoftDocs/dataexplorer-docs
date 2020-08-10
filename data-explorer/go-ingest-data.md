@@ -34,7 +34,7 @@ In this article, you first create a table and data mapping in a test cluster. Yo
 
 The Azure Data Explorer Go SDK will be automatically installed when you run the [sample application that uses [Go modules](https://golang.org/ref/mod). If you installed the Go SDK for another application, create a Go module and fetch the Azure Data Explorer package (using `go get`), for example:
 
-```shell
+```console
 go mod init foo.com/bar
 go get github.com/Azure/azure-kusto-go/kusto
 ```
@@ -119,7 +119,7 @@ The [Ingestion](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#I
 
 1. Clone the sample code from GitHub:
 
-    ```shell
+    ```console
     git clone https://github.com/Azure-Samples/Azure-Data-Explorer-Go-SDK-example-to-ingest-data.git
     cd Azure-Data-Explorer-Go-SDK-example-to-ingest-data
     ```
@@ -149,7 +149,7 @@ The [Ingestion](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#I
 
 1. To create a service principal for authentication, use Azure CLI with the [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command. Set the service principal information with the cluster endpoint and the database name in the form of environment variables that will be used by the program:
 
-    ```shell
+    ```console
     export AZURE_SP_CLIENT_ID="<replace with appID>"
     export AZURE_SP_CLIENT_SECRET="<replace with password>"
     export AZURE_SP_TENANT_ID="<replace with tenant>"
@@ -159,7 +159,7 @@ The [Ingestion](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#I
 
 1. Run the program:
 
-    ```shell
+    ```console
     go run main.go
     ```
 
