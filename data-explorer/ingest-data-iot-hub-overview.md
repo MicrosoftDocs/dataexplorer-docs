@@ -12,7 +12,7 @@ ms.date: 04/01/2020
 # Ingest from IoT Hub
 
 [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) is a managed service, hosted in the cloud, that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages. Azure Data Explorer offers continuous ingestion from customer managed IoT Hubs, using its [Event Hub compatible built in endpoint](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#routing-endpoints).
-
+ 
 ## Data format
 
 * Data is read from the Event Hub endpoint in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
@@ -39,7 +39,7 @@ You can also specify target table properties for each event, using event propert
 System properties are a collection used to store properties which are set by the IoT Hubs service, on the time the event is received. The Azure Data Explorer IoT Hub connection will embed the selected properties into the data landing in your table.
 
 > [!Note]
-> * For `csv` mapping, properties are added at the beginning of the record in the order listed in the table below. For `json` mapping, properties are added according to property names in the following table.
+> For `csv` mapping, properties are added at the beginning of the record in the order listed in the table below. For `json` mapping, properties are added according to property names in the following table.
 
 ### IoT Hub exposes the following system properties:
 

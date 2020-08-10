@@ -11,7 +11,7 @@ ms.date: 07/01/2020
 ---
 # Ingest from storage using Event Grid subscription
 
-Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
+Event Grid is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
 
 ## Data format
 
