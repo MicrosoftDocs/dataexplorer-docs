@@ -13,6 +13,12 @@ ms.date: 06/03/2019
 
 # Ingest data using the Azure Data Explorer Python library
 
+> [!div class="op_single_selector"]
+> * [.NET](net-sdk-ingest-data.md)
+> * [Python](python-ingest-data.md)
+> * [Node](node-ingest-data.md)
+> * [Go](go-ingest-data.md)
+
 In this article, you ingest data using the Azure Data Explorer Python library. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides two client libraries for Python: an [ingest library](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) and [a data library](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). These libraries enable you to ingest, or load, data into a cluster and query data from your code.
 
 First, create a table and data mapping in a cluster. You then queue ingestion to the cluster and validate the results.
