@@ -45,7 +45,7 @@ The package dependency will be added to the `go.mod` file. Use it in your Go app
 
 This [Review the code](#review-the-code) section is optional. If you're interested to learn how the code works, you can review the following code snippets. Otherwise, you can skip ahead to [Run the application](#run-the-application).
 
-### Authentication
+### Authenticate
 
 The program needs to authenticate to Azure Data Explorer service before executing any operations.
 
