@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/09/2020
 ---
-# format_ipv4()
+# format_ipv4_mask()
 
 Parses input with a netmask and returns string representing IPv4 address as CIDR notation.
 
