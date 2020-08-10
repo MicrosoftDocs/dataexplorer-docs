@@ -56,9 +56,9 @@ client, err := kusto.New(kustoEndpoint, auth)
 
 An instance of [kusto.Authorization](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Authorization) is created using the service principal credentials. It's then used to create a [kusto.Client](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Client) with the [New](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#New]) function that also accepts the cluster endpoint.
 
-### Table creation
+### Create table
 
-The [Mgmt](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Client.Mgmt) function is used to execute management commands. It's used to execute the command to create a table.
+The create table command is represented by a [Kusto statement](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Stmt).The [Mgmt](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Client.Mgmt) function is used to execute management commands. It's used to execute the command to create a table. 
 
 ```go
 func createTable(kc *kusto.Client, kustoDB string) {
@@ -70,18 +70,16 @@ func createTable(kc *kusto.Client, kustoDB string) {
 }
 ```
 
-The create table command is represented by a [Kusto statement](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Stmt).
+> [!TIP]
+> A Kusto statement is constant, by default, for better security. [`NewStmt`](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#NewStmt) accepts string constants. The [`UnsafeStmt`](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#UnsafeStmt) API allows for use of non-constant statement segments, but isn't recommended.
 
-The create table command is as follows:
+The Kusto create table command is as follows:
 
 ```kusto
 .create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)
 ```
 
-> [!TIP]
-> A Kusto statement is constant, by default, for better security. [`NewStmt`](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#NewStmt) accepts string constants. The [`UnsafeStmt`](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#UnsafeStmt) API allows for use of non-constant statement segments, but isn't recommended.
-
-### Mapping creation
+### Create mapping
 
 Data mappings are used during ingestion to map incoming data to columns inside Azure Data Explorer tables. For more information, see [data mapping](kusto/management/mappings.md). Mapping is created, in the same way as a table, using the `Mgmt` function with the database name and the appropriate command. The complete command is available in the [GitHub repo for the sample](https://github.com/Azure-Samples/Azure-Data-Explorer-Go-SDK-example-to-ingest-data/blob/main/main.go#L20).
 
@@ -95,7 +93,7 @@ func createMapping(kc *kusto.Client, kustoDB string) {
 }
 ```
 
-### Ingestion
+### Ingest data
 
 An ingestion is queued using a file from an existing Azure Blob Storage container. 
 
