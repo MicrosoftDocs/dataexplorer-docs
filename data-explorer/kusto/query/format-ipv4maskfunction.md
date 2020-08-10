@@ -34,7 +34,7 @@ If conversion isn't successful, the result will be an empty string.
 
 ## See also
 
-- [format_ipv4()](format-ipv4function.md): For IPv4 address formatting without CIDR notation
+- [format_ipv4()](format-ipv4function.md): For IPv4 address formatting without CIDR notation.
 - [IPv4 and IPv6 functions](scalarfunctions.md#ipv4ipv6-functions)
 
 ## Examples
