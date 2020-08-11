@@ -22,7 +22,7 @@ When you create a cluster, its storage is [automatically encrypted at the servic
 
 1. [Create an Azure Data Explorer cluster](create-cluster-database-portal.md#create-a-cluster) 
 2. In the **Security** tab > **Enable Double Encryption**, select **On**. To remove the double encryption, select **Off**.
-3. Select **Next:Tags>** or **Review + create** to create the cluster.
+3. Select **Next:Network>** or **Review + create** to create the cluster.
 
     ![double encryption new cluster](media/double-encryption/double-encryption-portal.png)
 
