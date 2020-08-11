@@ -98,10 +98,10 @@ datatable (a:int, b:dynamic, c:dynamic)
 
 |a|b|c|
 |---|---|---|
-|1|{<br>  "prop1": "a"<br>}|5|
-|1|{<br>  "prop1": "a"<br>}|6|
-|1|{<br>  "prop2": "b"<br>}|5|
-|1|{<br>  "prop2": "b"<br>}|6|
+|1|{  "prop1": "a"}|5|
+|1|{  "prop1": "a"}|6|
+|1|{  "prop2": "b"}|5|
+|1|{  "prop2": "b"}|6|
 
 ### Convert output
 
