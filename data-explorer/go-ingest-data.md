@@ -1,9 +1,9 @@
 ---
 title: 'Ingest data with Azure Data Explorer Go SDK'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Go SDK.
-author: abhirockzz
-ms.author: abhishgu
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: abhishgu
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/10/2020

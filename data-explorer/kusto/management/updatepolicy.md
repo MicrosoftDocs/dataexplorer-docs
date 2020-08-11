@@ -11,11 +11,13 @@ ms.date: 08/04/2020
 ---
 # Update policy overview
 
-The [update policy](update-policy.md) instructs Kusto to automatically append data to a target table whenever new data is inserted into the source table. The update policy's query runs on the data inserted into the source table. For example, the policy lets the creation of one table be the filtered view of another table. The new table can have a different schema, retention policy, and so on. 
-
-The update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out with the size of the cluster, and works more efficiently if ingestions are done in large bulks.
+The [update policy](update-policy.md) instructs Kusto to automatically append data to a target table whenever new data is inserted into the source table, based on a transformation query that runs on the data inserted into the source table.
 
 :::image type="content" source="images/updatepolicy/update-policy-overview.png" alt-text="Overview of the update policy in Azure Data Explorer":::
+
+For example, the policy lets the creation of one table be the filtered view of another table. The new table can have a different schema, retention policy, and so on. 
+
+The update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out with the size of the cluster, and works more efficiently if ingestions are done in large bulks.
 
 > [!NOTE]
 > The source table and the table for which the update policy is defined must be in the same database.
