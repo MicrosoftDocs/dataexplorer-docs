@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: toleibov
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 08/02/2020
+ms.date: 08/11/2020
 ---
 
 # Enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer
@@ -17,6 +17,14 @@ When you create a cluster, its storage is [automatically encrypted at the servic
 > * Enabling double encryption is only possible during cluster creation.
 > * Once infrastructure encryption is enabled on your cluster, you **can't** disable it.
 > * Double encryption is only available in regions where infrastructure encryption is supported. For more information, see [storage infrastructure encryption](/azure/storage/common/infrastructure-encryption-enable).
+
+# [Azure portal](#tab/portal)
+
+1. [Create an Azure Data Explorer cluster](create-cluster-database-portal.md#create-a-cluster) 
+2. In the **Security** tab > **Enable Double Encryption**, select **On**. To remove the double encryption, select **Off**.
+3. Select **Next:Tags>** or **Review + create** to create the cluster.
+
+    ![double encryption new cluster](media/double-encryption/double-encryption-portal.png)
 
 # [C#](#tab/c-sharp)
 
