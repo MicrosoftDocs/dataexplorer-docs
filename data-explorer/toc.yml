@@ -746,9 +746,9 @@
       - name: format_datetime()
         href: ./kusto/query/format-datetimefunction.md
       - name: format_ipv4()
-        href: ./kusto/query/format-ipv4function.md
+        href: ./kusto/query/format-ipv4-function.md
       - name: format_ipv4_mask()
-        href: ./kusto/query/format-ipv4maskfunction.md
+        href: ./kusto/query/format-ipv4-mask-function.md
       - name: format_timespan()
         href: ./kusto/query/format-timespanfunction.md
       - name: gamma()
