@@ -4,10 +4,10 @@ description: This article describes API in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: vladikb
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/27/2020
+ms.date: 08/11/2020
 ---
 # Azure Data Explorer API Overview
 
@@ -15,19 +15,9 @@ The Azure Data Explorer service supports the following communication endpoints:
 
 1. A [REST API](#rest-api) endpoint, through which you can query and manage the data in Azure Data Explorer.
    This endpoint supports the [Kusto query language](../query/index.md) for queries and [control commands](../management/index.md).
-2. An [MS-TDS](#ms-tds) endpoint that implements a subset of the Microsoft Tabular Data Stream (TDS) protocol, used by the Microsoft SQL Server products.
+1. An [MS-TDS](#ms-tds) endpoint that implements a subset of the Microsoft Tabular Data Stream (TDS) protocol, used by the Microsoft SQL Server products.
    This endpoint is useful for tools that know how to communicate with a SQL Server endpoint for queries.
-3. An [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftkusto) endpoint that is the standard means for Azure services. The endpoint is used to manage resources, such as Azure Data Explorer clusters.
-
-Azure Data Explorer provides a number of client libraries that make use of the above endpoints, to make programmatic access easy.
-
-* .NET SDK
-* Python SDK
-* Java SDK
-* Node SDK
-* Go SDK
-* PowerShell
-* R
+1. An [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftkusto) endpoint that is the standard means for Azure services. The endpoint is used to manage resources, such as Azure Data Explorer clusters.
 
 ## REST API
 
@@ -51,7 +41,19 @@ This protocol enables users to run queries on Azure Data Explorer using a well-k
 
 For more information, see [MS-TDS](tds/index.md).
 
-## .NET Framework Libraries
+
+## Client libraries Azure Data Explorer provides a number of client libraries that make use of the above endpoints, to make programmatic access easy.
+
+* .NET SDK
+* Python SDK
+* Java SDK
+* Node SDK
+* Go SDK
+* PowerShell
+* R
+
+
+### .NET Framework Libraries
 
 .NET Framework Libraries are the recommended way to invoke Azure Data Explorer functionality programmatically.
 A number of different libraries are available.
@@ -62,18 +64,24 @@ A number of different libraries are available.
 
 The above libraries use Azure APIs, such as Azure Storage API and Azure Active Directory API.
 
-## Python Libraries
+### Python Libraries
 
 Azure Data Explorer provides a Python client library that permits callers to send data queries and control commands.
 
-## R Library
+### Java SDK
 
-Azure Data Explorer provides an R client library that permits callers to send data queries and control commands.
+### Node SDK
 
-## PowerShell
+### Go SDK
+
+### PowerShell
 
 Azure Data Explorer .NET Framework Libraries can be used by PowerShell scripts. 
 For an example, see [Calling Azure Data Explorer from PowerShell](powershell/powershell.md).
+
+### R Library
+
+Azure Data Explorer provides an R client library that permits callers to send data queries and control commands.
 
 ## IDE integration
 
