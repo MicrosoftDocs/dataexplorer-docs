@@ -11,6 +11,8 @@ ms.date: 08/03/2020
 ---
 # Create or alter continuous export
 
+Creates or alters a continuous export job.
+
 ## Syntax
 
 `.create-or-alter` `continuous-export` *ContinuousExportName* <br>
