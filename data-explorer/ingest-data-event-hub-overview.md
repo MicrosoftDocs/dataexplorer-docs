@@ -15,16 +15,18 @@ Event Hub is a pipeline that transfers events from services to Azure Data Explor
 
 [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
 
+The process of 
+
 ## Data format
 
 * Data is read from the Event Hub in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
 * Event payload can contain one or more records that will be ingested in one of the [formats supported by Azure Data Explorer](ingestion-supported-formats.md).
 * Data can be compressed using `GZip` compression algorithm. Must be specified as `Compression` [ingestion property](#ingestion-properties).
 
-> [!Note]
-> * Data compression is not supported for compressed formats (Avro, Parquet, ORC).
-> * Custom encoding and embedded [system properties](#event-system-properties-mapping) are not supported on compressed data.
- 
+    > [!Note]
+    > * Data compression is not supported for compressed formats (Avro, Parquet, ORC).
+    > * Custom encoding and embedded [system properties](#event-system-properties-mapping) are not supported on compressed data.
+    
 ## Ingestion properties
 
 Ingestion properties instruct the ingestion process, where to route the data, and how to process it. You can specify [ingestion properties](ingestion-properties.md) of the events ingestion using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
@@ -91,7 +93,9 @@ System properties store properties that are set by the Event Hubs service, at th
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
 
-**Table schema example**
+## Examples
+
+### Table schema example
 
 Create or alter the table schema by using the table schema command, if your data includes:
 * the columns `Timespan`, `Metric`, and `Value`  
@@ -101,7 +105,7 @@ Create or alter the table schema by using the table schema command, if your data
     .create-merge table TestTable (TimeStamp: datetime, Metric: string, Value: int, EventHubEnqueuedTime:datetime, EventHubOffset:long)
 ```
 
-**CSV mapping example**
+### CSV mapping example
 
 Run the following commands to add data to the beginning of the record.
 Properties are added at the beginning of the record, in the order listed in the table above.
@@ -118,7 +122,7 @@ The ordinal values are important for CSV mapping where the column ordinals will 
     ']'
 ```
  
-**JSON-mapping example**
+### JSON-mapping example
 
 Add data by using the system properties names as they appear in the *Data connection* blade *Event system properties* list. 
 Run:

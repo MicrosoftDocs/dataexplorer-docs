@@ -17,7 +17,8 @@ ms.date: 10/07/2019
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, and blobs written to blob containers. In this article, you create an Event Hub data connection for Azure Data Explorer by using C#.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
+In this article, you create an Event Hub data connection for Azure Data Explorer by using C#.
 
 ## Prerequisites
 

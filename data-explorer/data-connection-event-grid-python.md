@@ -17,7 +17,8 @@ ms.date: 10/07/2019
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 
-In this article, you create an Event Grid data connection for Azure Data Explorer by using Python. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion, or data loading, from Event Hubs, IoT Hubs, and blobs written to blob containers.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
+In this article, you create an Event Grid data connection for Azure Data Explorer by using Python.
 
 ## Prerequisites
 
