@@ -27,7 +27,7 @@ To enable continuous data export, [create an external table](../external-tables-
 * **Distribution**:
   * The default distribution in continuous export is `per_node` (all nodes are exporting concurrently). 
   * This setting can be overridden in the properties of the continuous export create command. Use `per_shard` distribution to increase concurrency (note that this distribution will increase the load on the storage account(s) and has a chance of hitting throttling limits). 
-  * Use `single` (or `distributed`=`false`) to disable distribution altogether. This setting may significantly slow down the continuous export process. This setting also impacts the number of files created in each continuous export iteration. 
+  * Use `single` (or `distributed`=`false`) to disable distribution altogether. This setting may significantly slow down the continuous export process and impact the number of files created in each continuous export iteration. 
 * **Number of files**:
   * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#numfiles). Each continuous export iteration always writes to *new* files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs (`intervalBetweenRuns` parameter).
 * **Location**:
