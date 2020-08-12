@@ -51,7 +51,7 @@ The export query includes only the records that joined since the previous export
 
 ## Exporting historical data
 
-Continuous export starts exporting data only from the point of its creation. Records ingested before that time should be exported separately using the (non-continuous) [export command](export-data-to-an-external-table.md). 
+Continuous export starts exporting data only from the point of its creation. Records ingested before that time should be exported separately using the non-continuous [export command](export-data-to-an-external-table.md). 
 
 Historical data may be too large to be exported in a single export command. If needed, partition the query into several smaller batches. 
 
