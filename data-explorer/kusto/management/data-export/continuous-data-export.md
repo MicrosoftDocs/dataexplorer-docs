@@ -84,6 +84,6 @@ Followed by:
 * Continuous export doesn't work for data ingested using streaming ingestion. 
 * Continuous export can't be configured on a table on which a [Row Level Security policy](../../management/rowlevelsecuritypolicy.md) is enabled.
 * Continuous export isn't supported for external tables with `impersonate` in their [connection strings](../../api/connection-strings/storage.md).
-* Continuous export doesn't support cross-database/cluster calls.
+* Continuous export doesn't support cross-database and cross-cluster calls.
 * Continuous export isn't designed for constantly streaming data out of Kusto. Continuous export runs in a distributed mode, where all nodes export concurrently. If the range of data queried by each run is small, the output of the continuous export would be many small artifacts. The number of artifacts depends on the number of nodes in the cluster.
 * If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](../data-ingestion/eventgrid.md#known-issues).
