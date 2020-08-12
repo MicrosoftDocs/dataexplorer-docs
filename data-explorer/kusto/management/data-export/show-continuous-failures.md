@@ -11,11 +11,11 @@ ms.date: 08/03/2020
 ---
 # Show continuous export failures
 
+Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest. 
+
 ## Syntax
 
 `.show` `continuous-export` *ContinuousExportName* `failures`
-
-Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest. 
 
 ## Properties
 

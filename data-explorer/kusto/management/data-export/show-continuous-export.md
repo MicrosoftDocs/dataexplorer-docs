@@ -11,11 +11,11 @@ ms.date: 08/03/2020
 ---
 # Show continuous export
 
+Returns the continuous export properties of *ContinuousExportName*. 
+
 ## Syntax
 
 `.show` `continuous-export` *ContinuousExportName*
-
-Returns the continuous export properties of *ContinuousExportName*. 
 
 ## Properties
 
@@ -44,3 +44,4 @@ Returns all continuous exports in the database.
 | Name                | String   | Name of the continuous export                                           |
 | Query               | String   | Export query                                                            |
 | StartCursor         | String   | Starting point of the first execution of this continuous export         |
+

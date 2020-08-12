@@ -11,6 +11,8 @@ ms.date: 08/03/2020
 ---
 # Drop continuous export
 
+Drops a continuous-export job.
+
 ## Syntax
 
 `.drop` `continuous-export` *ContinuousExportName*
