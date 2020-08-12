@@ -119,7 +119,7 @@ Then configure RLS on multiple tables this way:
 
 ### Produce an error upon unauthorized access
 
-If you want non-authorized table users to receive an error instead of returning an empty table, use the `[assert()](../query/assert-function.md)` function. The following example shows you how to produce this error in an RLS function:
+If you want non-authorized table users to receive an error instead of returning an empty table, use the [`assert()`](../query/assert-function.md) function. The following example shows you how to produce this error in an RLS function:
 
 ```
 .create-or-alter function RLSForCustomersTables() {
