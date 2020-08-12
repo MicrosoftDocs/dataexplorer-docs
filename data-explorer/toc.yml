@@ -140,12 +140,14 @@
         href: data-factory-command-activity.md
     - name: Using SDKs
       items: 
+      - name: .NET SDK
+        href: net-sdk-ingest-data.md
       - name: Python
         href: python-ingest-data.md
       - name: Node SDK
         href: node-ingest-data.md
-      - name: .NET SDK
-        href: net-sdk-ingest-data.md
+      - name: Go SDK
+        href: go-ingest-data.md
     - name: Kafka
       href: ingest-data-kafka.md
     - name: Logstash
@@ -753,6 +755,10 @@
         href: ./kusto/query/format-bytesfunction.md
       - name: format_datetime()
         href: ./kusto/query/format-datetimefunction.md
+      - name: format_ipv4()
+        href: ./kusto/query/format-ipv4-function.md
+      - name: format_ipv4_mask()
+        href: ./kusto/query/format-ipv4-mask-function.md
       - name: format_timespan()
         href: ./kusto/query/format-timespanfunction.md
       - name: gamma()
@@ -1456,7 +1462,21 @@
       - name: To an external table
         href: ./kusto/management/data-export/export-data-to-an-external-table.md
       - name: Continuous data export
-        href: ./kusto/management/data-export/continuous-data-export.md
+        items:
+        - name: Overview
+          href: ./kusto/management/data-export/continuous-data-export.md
+        - name: Create or alter continuous export
+          href: ./kusto/management/data-export/create-alter-continuous.md
+        - name: Disable or enable continuous export
+          href: ./kusto/management/data-export/disable-enable-continuous.md
+        - name: Drop continuous export
+          href: ./kusto/management/data-export/drop-continuous-export.md
+        - name: Show continuous export
+          href: ./kusto/management/data-export/show-continuous-export.md
+        - name: Show continuous export artifacts
+          href: ./kusto/management/data-export/show-continuous-artifacts.md
+        - name: Show continuous export failures
+          href: ./kusto/management/data-export/show-continuous-failures.md
     - name: Database cursors
       href: ./kusto/management/databasecursor.md
     - name: Query results cache

@@ -82,7 +82,6 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 | Dependency on Azure Data Lake  | ADX subnet  | AzureDataLake:443  | TCP  |
 | EventHub ingestion and service monitoring  | ADX subnet  | EventHub:443,5671  | TCP  |
 | Publish Metrics  | ADX subnet  | AzureMonitor:443 | TCP  |
-| Azure Monitor configuration download  | ADX subnet  | [Azure Monitor configuration endpoint addresses](#azure-monitor-configuration-endpoint-addresses):443 | TCP  |
 | Active Directory (if applicable) | ADX subnet | AzureActiveDirectory:443 | TCP |
 | Certificate authority | ADX subnet | Internet:80 | TCP |
 | Internal communication  | ADX subnet  | ADX Subnet:All Ports  | All  |
@@ -183,51 +182,7 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 | West Europe | 23.97.212.5 |
 | West India | 23.99.5.162 |
 | West US | 23.99.5.162 |
-| West US 2 | 23.99.5.162, 104.210.32.14 |    
-
-#### Azure Monitor configuration endpoint addresses
-
-| Region | Addresses |
-| --- | --- |
-| Australia Central | 52.148.86.165 |
-| Australia Central 2 | 52.148.86.165 |
-| Australia East | 52.148.86.165 |
-| Australia Southeast | 52.148.86.165 |
-| Brazil South | 13.68.89.19 |
-| Canada Central | 13.90.43.231 |
-| Canada East | 13.90.43.231 |
-| Central India | 13.71.25.187 |
-| Central US | 52.173.95.68 |
-| Central US EUAP | 13.90.43.231 |
-| East Asia | 13.75.117.221 |
-| East US | 13.90.43.231 |
-| East US 2 | 13.68.89.19 |    
-| East US 2 EUAP | 13.68.89.19 |
-| France Central | 52.174.4.112 |
-| France South | 52.174.4.112 |
-| Japan East | 13.75.117.221 |
-| Japan West | 13.75.117.221 |
-| Korea Central | 13.75.117.221 |
-| Korea South | 13.75.117.221 |
-| North Central US | 52.162.240.236 |
-| North Europe | 52.169.237.246 |
-| South Africa North | 13.71.25.187 |
-| South Africa West | 13.71.25.187 |
-| South Central US | 13.84.173.99 |
-| South India | 13.71.25.187 |
-| Southeast Asia | 52.148.86.165 |
-| UK South | 52.174.4.112 |
-| UK West | 52.169.237.246 |
-| USDoD Central | 13.72.37.111 |
-| USDoD East | 13.72.37.111 |
-| USGov Arizona | 13.72.37.111 |
-| USGov Texas | 13.72.37.111 |
-| USGov Virginia | 13.72.37.111 |
-| West Central US | 52.161.31.69 |
-| West Europe | 52.174.4.112 |
-| West India | 13.71.25.187 |
-| West US | 40.78.70.148 |
-| West US 2 | 52.151.20.103 |
+| West US 2 | 23.99.5.162, 104.210.32.14 |
 
 ## Disable access to Azure Data Explorer from the public IP
 
