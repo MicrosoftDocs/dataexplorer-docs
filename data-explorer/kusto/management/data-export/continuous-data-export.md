@@ -31,7 +31,7 @@ To enable continuous data export, [create an external table](../external-tables-
     > This distribution will increase the load on the storage account(s) and has a chance of hitting throttling limits. 
   * Use `single` (or `distributed`=`false`) to disable distribution altogether. This setting may significantly slow down the continuous export process and impact the number of files created in each continuous export iteration. 
 * **Number of files**:
-  * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#numfiles). Each continuous export iteration always writes to *new* files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs. The frequency parameter is `intervalBetweenRuns`.
+  * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#numfiles). Each continuous export iteration always writes to new files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs. The frequency parameter is `intervalBetweenRuns`.
 * **Location**:
   * For best performance, the Azure Data Explorer cluster and the storage account(s) should be colocated in the same Azure region.
   * If the exported data volume is large, it's recommended to configure multiple storage accounts for the external table, to avoid storage throttling. See [export data to storage](export-data-to-storage.md#known-issues).
@@ -53,7 +53,7 @@ The export query includes only the records that joined since the previous export
 
 ## Exporting historical data
 
-Continuous export starts exporting data only from the point of its creation. Records ingested before that time should be exported separately using the (non-continuous) [export command](export-data-to-an-external-table.md). 
+Continuous export starts exporting data only from the point of its creation. Records ingested before that time should be exported separately using the non-continuous [export command](export-data-to-an-external-table.md). 
 
 Historical data may be too large to be exported in a single export command. If needed, partition the query into several smaller batches. 
 
@@ -76,7 +76,7 @@ Followed by:
 
 ## Resource consumption
 
-* The impact of the continuous export on the cluster depends on the query the continuous export is running. Most resources (CPU, memory) are consumed by the query execution. 
+* The impact of the continuous export on the cluster depends on the query the continuous export is running. Most resources, such as CPU and memory, are consumed by the query execution. 
 * The number of export operations that can run concurrently is limited by the cluster's data export capacity. For more information, see [throttling](../../management/capacitypolicy.md#throttling). If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind.
 * The [show commands-and-queries command](../commands-and-queries.md) can be used to estimate the resources consumption. 
   * Filter on `| where ClientActivityId startswith "RunContinuousExports"` to view the commands and queries associated with continuous export.
@@ -86,6 +86,6 @@ Followed by:
 * Continuous export doesn't work for data ingested using streaming ingestion. 
 * Continuous export can't be configured on a table on which a [Row Level Security policy](../../management/rowlevelsecuritypolicy.md) is enabled.
 * Continuous export isn't supported for external tables with `impersonate` in their [connection strings](../../api/connection-strings/storage.md).
-* Continuous export doesn't support cross-database/cluster calls.
+* Continuous export doesn't support cross-database and cross-cluster calls.
 * Continuous export isn't designed for constantly streaming data out of Azure Data Explorer. Continuous export runs in a distributed mode, where all nodes export concurrently. If the range of data queried by each run is small, the output of the continuous export would be many small artifacts. The number of artifacts depends on the number of nodes in the cluster.
 * If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](../data-ingestion/eventgrid.md#known-issues).
