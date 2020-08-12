@@ -46,10 +46,10 @@ The guarantee for "exactly once" export is only for files reported in the [show 
 
 By default, all tables referenced in the export query are assumed to be [fact tables](../../concepts/fact-and-dimension-tables.md). As such, they're scoped to the database cursor. The syntax explicitly declares which tables are scoped (fact) and which aren't scoped (dimension). See the `over` parameter in the [create command](create-alter-continuous.md) for details.
 
-The export query includes only the records that joined since the previous export execution. The export query may contain [dimension tables](../../concepts/fact-and-dimension-tables.md) in which *all* records of the dimension table are included in *all* export queries. When using joins between fact and dimension tables in continuous-export, keep in mind that records in the fact table are only processed once. If the export runs while records in the dimension tables are missing for some keys, records for the respective keys will either be missed or include null values for the dimension columns in the exported files. Returning missed or null records depends on whether the query uses inner or outer join. The `forcedLatency` property in the continuous-export definition can be useful in such cases, where the fact and dimensions tables are ingested during the same time for matching records.
+The export query includes only the records that joined since the previous export execution. The export query may contain [dimension tables](../../concepts/fact-and-dimension-tables.md) in which all records of the dimension table are included in all export queries. When using joins between fact and dimension tables in continuous-export, keep in mind that records in the fact table are only processed once. If the export runs while records in the dimension tables are missing for some keys, records for the respective keys will either be missed or include null values for the dimension columns in the exported files. Returning missed or null records depends on whether the query uses inner or outer join. The `forcedLatency` property in the continuous-export definition can be useful in such cases, where the fact and dimensions tables are ingested during the same time for matching records.
 
 > [!NOTE]
-> Continuous-export of only dimension tables isn't supported. The export query must include at least a single fact table.
+> Continuous export of only dimension tables isn't supported. The export query must include at least a single fact table.
 
 ## Exporting historical data
 
@@ -77,7 +77,7 @@ Followed by:
 ## Resource consumption
 
 * The impact of the continuous export on the cluster depends on the query the continuous export is running. Most resources (CPU, memory) are consumed by the query execution. 
-* The number of export operations that can run concurrently is limited by the cluster's data export capacity (see [throttling](../../management/capacitypolicy.md#throttling)). If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind.
+* The number of export operations that can run concurrently is limited by the cluster's data export capacity. For more information, see [throttling](../../management/capacitypolicy.md#throttling). If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind.
 * The [show commands-and-queries command](../commands-and-queries.md) can be used to estimate the resources consumption. 
   * Filter on `| where ClientActivityId startswith "RunContinuousExports"` to view the commands and queries associated with continuous export.
 
@@ -87,5 +87,5 @@ Followed by:
 * Continuous export can't be configured on a table on which a [Row Level Security policy](../../management/rowlevelsecuritypolicy.md) is enabled.
 * Continuous export isn't supported for external tables with `impersonate` in their [connection strings](../../api/connection-strings/storage.md).
 * Continuous export doesn't support cross-database/cluster calls.
-* Continuous export isn't designed for constantly streaming data out of Kusto. Continuous export runs in a distributed mode, where all nodes export concurrently. If the range of data queried by each run is small, the output of the continuous export would be many small artifacts. The number of artifacts depends on the number of nodes in the cluster.
+* Continuous export isn't designed for constantly streaming data out of Azure Data Explorer. Continuous export runs in a distributed mode, where all nodes export concurrently. If the range of data queried by each run is small, the output of the continuous export would be many small artifacts. The number of artifacts depends on the number of nodes in the cluster.
 * If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](../data-ingestion/eventgrid.md#known-issues).
