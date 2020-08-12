@@ -707,6 +707,8 @@
         href: ./kusto/query/dcount-hllfunction.md
       - name: degrees()
         href: ./kusto/query/degreesfunction.md
+      - name: dynamic_to_json()
+        href: ./kusto/query/dynamic-to-json-function.md
       - name: endofday()
         href: ./kusto/query/endofdayfunction.md
       - name: endofmonth()
