@@ -25,13 +25,15 @@ To enable continuous data export, [create an external table](../external-tables-
 * **Frequency**:
   * Continuous export runs according to the time period configured for it in the `intervalBetweenRuns` property. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. The time interval can be as low as one minute, if the ingestion rate is high.
 * **Distribution**:
-  * The default distribution in continuous export is `per_node` (all nodes are exporting concurrently). 
-  * This setting can be overridden in the properties of the continuous export create command. Use `per_shard` distribution to increase concurrency (note that this distribution will increase the load on the storage account(s) and has a chance of hitting throttling limits). 
-  * Use `single` (or `distributed`=`false`) to disable distribution altogether. This setting may significantly slow down the continuous export process. This setting also impacts the number of files created in each continuous export iteration. 
+  * The default distribution in continuous export is `per_node`. This distribution means all nodes export concurrently. 
+  * This setting can be overridden in the properties of the continuous export create command. Use `per_shard` distribution to increase concurrency. 
+    > [!NOTE]
+    > This distribution will increase the load on the storage account(s) and has a chance of hitting throttling limits. 
+  * Use `single` or `distributed`=`false` to disable distribution altogether. This setting may significantly slow down the continuous export process. This setting also impacts the number of files created in each continuous export iteration. 
 * **Number of files**:
-  * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#numfiles). Each continuous export iteration always writes to *new* files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs (`intervalBetweenRuns` parameter).
+  * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#numfiles). Each continuous export iteration always writes to *new* files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs. The frequency parameter is `intervalBetweenRuns`.
 * **Location**:
-  * For best performance, the ADX cluster and the storage account(s) should be colocated in the same Azure region.
+  * For best performance, the Azure Data Explorer cluster and the storage account(s) should be colocated in the same Azure region.
   * If the exported data volume is large, it's recommended to configure multiple storage accounts for the external table, to avoid storage throttling. See [export data to storage](export-data-to-storage.md#known-issues).
 
 ## Exactly once export
