@@ -24,7 +24,7 @@ Event Hub is a pipeline that transfers events from services to Azure Data Explor
 > [!Note]
 > * Data compression is not supported for compressed formats (Avro, Parquet, ORC).
 > * Custom encoding and embedded [system properties](#event-system-properties-mapping) are not supported on compressed data.
-
+ 
 ## Ingestion properties
 
 Ingestion properties instruct the ingestion process, where to route the data, and how to process it. You can specify [ingestion properties](ingestion-properties.md) of the events ingestion using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:

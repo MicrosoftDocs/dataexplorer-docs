@@ -12,7 +12,7 @@ ms.date: 07/01/2020
 # Ingest from storage using Event Grid subscription
 
 Event Grid is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
-
+ 
 ## Data format
 
 * Blobs can be in any of the [supported formats](ingestion-supported-formats.md).
@@ -30,15 +30,7 @@ Event Grid is a pipeline that listens to Azure storage, and updates Azure Data E
 You can specify [Ingestion properties](ingestion-properties.md) of the blob ingestion via the blob metadata.
 You can set the following properties:
 
-|Property | Description|
-|---|---|
-| rawSizeBytes | Size of the raw (uncompressed) data. For Avro/ORC/Parquet, this value is the size before format-specific compression is applied.|
-| kustoTable |  Name of the existing target table. Overrides the `Table` set on the `Data Connection` blade. |
-| kustoDataFormat |  Data format. Overwrites the **Data format** set on the **Data Connection** blade. |
-| kustoIngestionMappingReference |  Name of the existing ingestion mapping to be used. Overwrites the **Column mapping** set on the **Data Connection** blade.|
-| kustoIgnoreFirstRecord | If set to `true`, Azure Data Explorer ignores the first row of the blob. Use in tabular format data (CSV, TSV, or similar) to ignore headers. |
-| kustoExtentTags | String representing [tags](/kusto/managementextents-overview.md#extent-tagging) that will be attached to resulting extent. |
-| kustoCreationTime |  Overrides [$IngestionTime](kusto/query/ingestiontimefunction.md?pivots=azuredataexplorer) for the blob, formatted as an ISO 8601 string. Use for backfilling. |
+[!INCLUDE [ingestion-properties-event-grid](includes/ingestion-properties-event-grid.md)]
 
 ## Events routing
 
