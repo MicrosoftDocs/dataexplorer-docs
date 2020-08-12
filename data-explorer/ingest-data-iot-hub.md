@@ -163,6 +163,8 @@ With the app generating data, you can now see the data flow from the IoT hub to 
 
 ## Clean up resources
 
+\\TODO: Remove test-hub-rg. Need new images??
+
 If you don't plan to use your IoT Hub again, clean up **test-hub-rg**, to avoid incurring costs.
 
 1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.  

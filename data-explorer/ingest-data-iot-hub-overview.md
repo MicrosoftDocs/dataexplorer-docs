@@ -13,11 +13,6 @@ ms.date: 04/01/2020
 
 [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) is a managed service, hosted in the cloud, that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages. Azure Data Explorer offers continuous ingestion from customer managed IoT Hubs, using its [Event Hub compatible built in endpoint](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#routing-endpoints).
 
-## Data format
-
-* Data is read from the Event Hub endpoint in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
-* Event payload can be in one of the [formats supported by Azure Data Explorer](ingestion-supported-formats.md).
-
 ## Ingestion properties
 
 Ingestion properties instructs the ingestion process. Where to route the data and how to process it. You can specify [Ingestion properties](ingestion-properties.md) of the events ingestion using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
@@ -59,7 +54,9 @@ System properties are a collection used to store properties which are set by the
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
 
-**Table schema example**
+### Examples 
+
+#### Table schema example
 
 If your data includes three columns (`Timespan`, `Metric`, and `Value`) and the properties you include are `x-opt-enqueued-time` and `x-opt-offset`, create or alter the table schema by using this command:
 
@@ -67,7 +64,7 @@ If your data includes three columns (`Timespan`, `Metric`, and `Value`) and the 
     .create-merge table TestTable (TimeStamp: datetime, Metric: string, Value: int, EventHubEnqueuedTime:datetime, EventHubOffset:long)
 ```
 
-**CSV mapping example**
+#### CSV mapping example
 
 Run the following commands to add data to the beginning of the record. 
 Note ordinal values: properties are added at the beginning of the record in the order listed in the table above. 
@@ -84,7 +81,7 @@ This is important for CSV mapping where the column ordinals will change based on
     ']'
 ```
  
-**JSON mapping example**
+#### JSON mapping example
 
 Data is added by using the system properties names as they appear in the **Data connection** blade **Event system properties** list. Run these commands:
 

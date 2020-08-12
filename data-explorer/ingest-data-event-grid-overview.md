@@ -12,18 +12,10 @@ ms.date: 07/01/2020
 # Ingest from storage using Event Grid subscription
 
 Event Grid is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
- 
-## Data format
 
-* Blobs can be in any of the [supported formats](ingestion-supported-formats.md).
-* Blobs can be compressed. For more information, see [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
+To set up the Event Grid ingestion pipeline, you will go through several steps. You will create a target table in Azure Data Explorer to which the data will be ingested. Then you will create an Event Grid data connection in Azure Data Explorer. The Event Grid data connection needs to know [events routing](#events-routing) information, such as what table to send the data to and the table mapping. You will also specify [ingestion properties](#ingestion-properties), which describe the data to be ingested.
 
-> [!NOTE]
-> Ideally the original uncompressed data size should be part of the blob metadata.
-> If the uncompressed size isn't specified, Azure Data Explorer will estimate it, based on the file size. 
-> You can provide the original data size by setting the `rawSizeBytes` [property](#ingestion-properties) on the blob metadata to uncompressed data size in bytes.
-> 
-> There is an ingestion uncompressed size limit per file of 4GB.
+For a walkthrough of how to set up an Event Grid subscription in the Azure portal, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md).
 
 ## Ingestion properties
 
@@ -60,7 +52,7 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 ### Generating data
 
 > [!NOTE]
-> * Use `BlockBlob` to generate data. `AppendBlob` is not supported.
+> Use `BlockBlob` to generate data. `AppendBlob` is not supported.
 
 Following is an example to create a blob from local file, set ingestion properties to the blob metadata, and upload it:
 
@@ -86,8 +78,15 @@ blob.UploadFromFile(csvCompressedLocalFileName);
 
 > [!NOTE]
 > Using Azure Data Lake Gen2 storage SDK requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to "true".
->  For a detailed example of how to use Data Lake Gen2 SDK correctly, see [upload file using Azure Data Lake SDK](data-connection-event-grid-csharp.md#upload-file-using-azure-data-lake-sdk).
+> For a detailed example of how to use Data Lake Gen2 SDK correctly, see [upload file using Azure Data Lake SDK](data-connection-event-grid-csharp.md#upload-file-using-azure-data-lake-sdk).
 
+
+## Data format
+
+* Blobs can be in any of the [supported formats](ingestion-supported-formats.md).
+* Blobs can be compressed. For more information, see [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
+  * The original uncompressed data size should be part of the blob metadata. If the uncompressed size isn't specified, Azure Data Explorer will estimate it, based on the file size.  There is an ingestion uncompressed size limit per file of 4GB.
+ 
 ## Blob lifecycle
 
 Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion. It's recommended to retain the blobs for three to five days.

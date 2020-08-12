@@ -11,7 +11,7 @@ ms.custom: include file
 ---
 |**Property** | **Property description**|
 |---|---|
-| `rawSizeBytes` | Size of the raw (uncompressed) data. For Avro/ORC/Parquet, that is the size before format-specific compression is applied.|
+| `rawSizeBytes` | Size of the raw (uncompressed) data. For Avro/ORC/Parquet, that is the size before format-specific compression is applied. Provide the original data size by setting this property to the uncompressed data size in bytes.|
 | `kustoTable` |  Name of the existing target table. Overrides the `Table` set on the `Data Connection` blade. |
 | `kustoDataFormat` |  Data format. Overrides the `Data format` set on the `Data Connection` blade. |
 | `kustoIngestionMappingReference` |  Name of the existing ingestion mapping to be used. Overrides the `Column mapping` set on the `Data Connection` blade.|
