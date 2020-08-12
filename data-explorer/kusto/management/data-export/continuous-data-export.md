@@ -25,11 +25,11 @@ To enable continuous data export, [create an external table](../external-tables-
 * **Frequency**:
   * Continuous export runs according to the time period configured for it in the `intervalBetweenRuns` property. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. The time interval can be as low as one minute, if the ingestion rate is high.
 * **Distribution**:
-  * The default distribution in continuous export is `per_node`. This distribution means all nodes export concurrently. 
-  * This setting can be overridden in the properties of the continuous export create command. Use `per_shard` distribution to increase concurrency. 
+  * The default distribution in continuous export is `per_node`, in which all nodes are exporting concurrently. 
+  * This setting can be overridden in the properties of the continuous export create command. Use `per_shard` distribution to increase concurrency.
     > [!NOTE]
     > This distribution will increase the load on the storage account(s) and has a chance of hitting throttling limits. 
-  * Use `single` or `distributed`=`false` to disable distribution altogether. This setting may significantly slow down the continuous export process. This setting also impacts the number of files created in each continuous export iteration. 
+  * Use `single` (or `distributed`=`false`) to disable distribution altogether. This setting may significantly slow down the continuous export process and impact the number of files created in each continuous export iteration. 
 * **Number of files**:
   * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#numfiles). Each continuous export iteration always writes to *new* files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs. The frequency parameter is `intervalBetweenRuns`.
 * **Location**:
@@ -40,7 +40,7 @@ To enable continuous data export, [create an external table](../external-tables-
 
 To guarantee "exactly once" export, continuous export uses [database cursors](../databasecursor.md). [IngestionTime policy](../ingestiontime-policy.md) must be enabled on all tables referenced in the query that should be processed "exactly once" in the export. The policy is enabled by default on all newly created tables.
 
-The guarantee for "exactly once" export is only for files reported in the [show exported artifacts command](show-continuous-artifacts.md). Continuous export doesn't guarantee that each record will be written only once to the external table. If a failure occurs after export has begun and some of the artifacts were already written to the external table, the external table may contain duplicates. If a write operation was aborted before completion, the external table may contain corrupted files. In such cases, artifacts aren't deleted from the external table, but they won't be reported in the [show exported artifacts command](show-continuous-artifacts.md). Consuming the exported files using the `show exported artifacts command` guarantees no duplicates (and no corruptions).
+The guarantee for "exactly once" export is only for files reported in the [show exported artifacts command](show-continuous-artifacts.md). Continuous export doesn't guarantee that each record will be written only once to the external table. If a failure occurs after export has begun and some of the artifacts were already written to the external table, the external table may contain duplicates. If a write operation was aborted before completion, the external table may contain corrupted files. In such cases, artifacts aren't deleted from the external table, but they won't be reported in the [show exported artifacts command](show-continuous-artifacts.md). Consuming the exported files using the `show exported artifacts command` guarantees no duplications and no corruptions.
 
 ## Export to fact and dimension tables
 
