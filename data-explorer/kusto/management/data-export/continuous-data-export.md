@@ -21,7 +21,7 @@ To enable continuous data export, [create an external table](../external-tables-
 ## Continuous export guidelines
 
 * **Output schema**:
-  * The output schema of the export query *must* match the schema of the external table to which you export. 
+  * The output schema of the export query must match the schema of the external table to which you export. 
 * **Frequency**:
   * Continuous export runs according to the time period configured for it in the `intervalBetweenRuns` property. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. The time interval can be as low as one minute, if the ingestion rate is high.
 * **Distribution**:
