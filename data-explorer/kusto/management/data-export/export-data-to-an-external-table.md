@@ -41,7 +41,7 @@ You can export data by defining an [external table](../externaltables.md) and ex
 * If the external table is partitioned, exported artifacts will be written to their respective directories according to the partition definitions as seen in the [partitioned external table example](#partitioned-external-table-example). 
   * If a partition value is null/empty or is an invalid directory value, per the definitions of the target storage, the partition value is replaced with a default value of `__DEFAULT_PARTITION__`. 
 
-* The number of files written per partition depends on the settings:
+* The <a name="numfiles">number of files</a> written per partition depends on the settings:
    * If the external table includes datetime partitions only, or no partitions at all, the number of files written (for each partition, if exists) should be similar to the number of nodes in the cluster (or more, if `sizeLimit` is reached). When the export operation is distributed, all nodes in the cluster export concurrently. To disable distribution, so that only a single node does the writes, set `distributed` to false. This process will create fewer files, but will reduce the export performance.
 
    * If the external table includes a partition by a string column, the number of 
