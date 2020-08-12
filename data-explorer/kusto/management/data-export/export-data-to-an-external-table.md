@@ -15,12 +15,12 @@ You can export data by defining an [external table](../externaltables.md) and ex
  The table properties are specified when [creating the external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table). You don't need to embed the table's properties in the export command. 
  The export command references the external table by name. Export data requires [database admin permission](../access-control/role-based-authorization.md).
 
-**Syntax:**
+## Syntax
 
 `.export` [`async`] `to` `table` *ExternalTableName* <br>
 [`with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <| *Query*
 
-**Output:**
+## Output
 
 |Output parameter |Type |Description
 |---|---|---
@@ -28,7 +28,8 @@ You can export data by defining an [external table](../externaltables.md) and ex
 |Path|String|Output path.
 |NumRecords|String| Number of records exported to path.
 
-**Notes:**
+## Notes
+
 * The export query output schema must match the schema of the external table, including all columns defined by the partitions. For example, if the table is partitioned by *DateTime*, the query output schema must have a Timestamp column matching the *TimestampColumnName*. This column name is defined in the external table partitioning definition.
 
 * It isn't possible to override the external table properties using the export command.
@@ -40,11 +41,12 @@ You can export data by defining an [external table](../externaltables.md) and ex
 * If the external table is partitioned, exported artifacts will be written to their respective directories according to the partition definitions as seen in the [partitioned external table example](#partitioned-external-table-example). 
   * If a partition value is null/empty or is an invalid directory value, per the definitions of the target storage, the partition value is replaced with a default value of `__DEFAULT_PARTITION__`. 
 
-* The number of files written per partition depends on the settings:
-   * If the external table includes datetime partitions only, or no partitions at all, the number of files written (for each partition, if exists) should be similar to the number of nodes in the cluster (or more, if `sizeLimit` is reached). When the export operation is distributed, all nodes in the cluster export concurrently. To disable distribution, so that only a single node does the writes, set `distributed` to false. This process will create fewer files, but will reduce the export performance.
+### Number of files
 
-   * If the external table includes a partition by a string column, the number of 
-   exported files should be a single file per partition (or more, if `sizeLimit` is reached). All nodes still participate in the export (operation is distributed), but each partition is assigned to a specific node. Setting `distributed` to false, will cause only a single node to do the export, but behavior will remain the same (a single file written per partition).
+The number of files written per partition depends on the settings:
+ * If the external table includes datetime partitions only, or no partitions at all, the number of files written (for each partition, if exists) should be similar to the number of nodes in the cluster (or more, if `sizeLimit` is reached). When the export operation is distributed, all nodes in the cluster export concurrently. To disable distribution, so that only a single node does the writes, set `distributed` to false. This process will create fewer files, but will reduce the export performance.
+
+* If the external table includes a partition by a string column, the number of exported files should be a single file per partition (or more, if `sizeLimit` is reached). All nodes still participate in the export (operation is distributed), but each partition is assigned to a specific node. Setting `distributed` to false, will cause only a single node to do the export, but behavior will remain the same (a single file written per partition).
 
 ## Examples
 
