@@ -72,7 +72,7 @@ var blobClient = azureStorageAccount.CreateCloudBlobClient();
 var container = blobClient.GetContainerReference(containerName);
 container.CreateIfNotExists();
 
-// Set ingestion properties in blob's metadata & uploading the blob
+// Set ingestion properties in blob metadata and upload the blob
 var blob = container.GetBlockBlobReference(blobName);
 blob.Metadata.Add("rawSizeBytes", "4096‬"); // the uncompressed size is 4096 bytes
 blob.Metadata.Add("kustoIgnoreFirstRecord", "true"); // First line of this csv file are headers
