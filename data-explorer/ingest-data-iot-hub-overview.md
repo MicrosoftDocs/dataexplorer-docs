@@ -61,7 +61,7 @@ Ingestion properties instructs the ingestion process. Where to route the data an
 
 ## Set events routing
 
-When setting up an IoT Hub connection to Azure Data Explorer cluster, you specify target table properties (table name, data format and mapping). This is the default routing for your data, also referred to as `static routing`.
+When setting up an IoT Hub connection to Azure Data Explorer cluster, you specify target table properties (table name, data format and mapping). This is the default routing for your data, also referred to as static routing.
 You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
 
 ## Set event system properties mapping
