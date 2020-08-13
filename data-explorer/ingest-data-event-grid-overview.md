@@ -13,7 +13,7 @@ ms.date: 08/13/2020
 
 Event Grid is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
 
-The Event Grid ingestion pipeline goes through several steps. You create a target table and in Azure Data Explorer to which the [data in a particular format](#data-format) will be ingested. Then you create an Event Grid data connection in Azure Data Explorer. The Event Grid data connection needs to know [events routing](#events-routing) information, such as what table to send the data to and the table mapping. You also specify [ingestion properties](#ingestion-properties), which describe the data to be ingested, the target table, and the mapping. This process can be managed through the [Azure portal](ingest-data-event-grid.md), programatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md).
+The Event Grid ingestion pipeline goes through several steps. You create a target table and in Azure Data Explorer to which the [data in a particular format](#data-format) will be ingested. Then you create an Event Grid data connection in Azure Data Explorer. The Event Grid data connection needs to know [events routing](#set-events-routing) information, such as what table to send the data to and the table mapping. You also specify [ingestion properties](#set-ingestion-properties), which describe the data to be ingested, the target table, and the mapping. This process can be managed through the [Azure portal](ingest-data-event-grid.md), programatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md).
 
 ## Data format
 
@@ -36,12 +36,12 @@ When setting up a blob storage connection to Azure Data Explorer cluster, specif
 * mapping
 
 This setup is the default routing for your data, sometimes referred to as `static routing`.
-You can also specify target table properties for each blob, using blob metadata. The data will dynamically route, as specified by [ingestion properties](#ingestion-properties).
+You can also specify target table properties for each blob, using blob metadata. The data will dynamically route, as specified by [ingestion properties](#set-ingestion-properties).
 
 Following is an example for setting ingestion properties to the blob metadata before uploading it. 
 Blobs are routed to different tables.
 
-For more information on how to generate data, see [sample code](#generating-data).
+For more information on how to generate data, see [sample code](#generate-data).
 
 ```csharp
 // Blob is dynamically routed to table `Events`, ingested using `EventsMapping` data mapping

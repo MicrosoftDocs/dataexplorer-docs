@@ -37,7 +37,7 @@ If you don't already have one, [Create an Iot Hub](ingest-data-iot-hub.md#create
 * With ARM template: [Azure Resource Manager template for adding an Iot Hub data connection](data-connection-iot-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-iot-hub-data-connection)
 
 > [!Note]
-> If **My data includes routing info** selected, you *must* provide the necessary [routing](#events-routing) information as part of the events properties.
+> If **My data includes routing info** selected, you *must* provide the necessary [routing](#set-events-routing) information as part of the events properties.
 
 > [!Note]
 > Once the connection is set, it ingest data starting from events enqueued after its creation time.

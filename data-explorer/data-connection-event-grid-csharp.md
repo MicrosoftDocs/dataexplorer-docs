@@ -28,7 +28,7 @@ ms.date: 10/07/2019
 * Create [a cluster and database](create-cluster-database-csharp.md)
 * Create [table and column mapping](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
 * Set [database and table policies](database-table-policies-csharp.md) (optional)
-* Create a [storage account with an Event Grid subscription](ingest-data-event-grid-manual.md).
+* Create a [storage account with an Event Grid subscription](ingest-data-event-grid.md).
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](includes/data-explorer-data-connection-install-nuget-csharp.md)]
 

@@ -27,7 +27,7 @@ In this article, you create an Event Grid data connection for Azure Data Explore
 * [A cluster and database](create-cluster-database-python.md).
 * [Table and column mapping](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
 * [Database and table policies](database-table-policies-csharp.md) (optional).
-* [A storage account with an Event Grid subscription](ingest-data-event-grid-manual.md).
+* [A storage account with an Event Grid subscription](ingest-data-event-grid.md).
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]
 

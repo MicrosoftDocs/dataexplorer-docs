@@ -76,9 +76,9 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Data connection name | *test-grid-connection* | The name of the connection that you want to create in Azure Data Explorer.|
     | Storage account subscription | Your subscription ID | The subscription ID where your storage account is.|
     | Storage account | *gridteststorage1* | The name of the storage account that you created previously.|
-    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](ingest-data-event-grid-manual.md) section.|
+    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](ingest-data-event-grid.md) section.|
 
-1. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
+2. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
     * **Prefix** field is the *literal* prefix of the subject. As the pattern applied is *startswith*, it can span multiple containers, folders or blobs. No wildcards are allowed.
         * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*.
         * To define a filter on a blob prefix (or a folder in Azure Data Lake Gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*.
@@ -88,9 +88,9 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     
     :::image type="content" source="media/ingest-data-event-grid/filter-settings.png" alt-text="Filter settings Event Grid":::    
 
-1. Select **Next: Ingest properties**.
+3. Select **Next: Ingest properties**.
 
-1. Fill out the form with the following information and select **Next: Review + Create**. Table and mapping names are case-sensitive:
+4. Fill out the form with the following information and select **Next: Review + Create**. Table and mapping names are case-sensitive:
 
    :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-ingest-properties.png" alt-text="Review and create table and mapping ingestion properties":::
 
@@ -102,11 +102,11 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, RAW, and W3CLOG. Supported compression options are Zip and GZip. |
     | Mapping | *TestMapping* | The mapping you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**.|
 
-2. Review the resources that auto created for you and select **Create**.
+5. Review the resources that auto created for you and select **Create**.
 
     :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Review and create data connection for event grid":::
 
-3. Wait until the deployment is completed. If your deployment is failed, you can select **Operation details** next to the failed stage to get more information for the failing reason. You can also select **Redeploy** to try to deploy the resources again.
+6. Wait until the deployment is completed. If your deployment is failed, you can select **Operation details** next to the failed stage to get more information for the failing reason. You can also select **Redeploy** to try to deploy the resources again.
 
     :::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Deploy event grid resources":::
 

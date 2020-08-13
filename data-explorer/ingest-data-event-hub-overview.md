@@ -21,11 +21,11 @@ The Event Hub ingestion pipeline goes through several steps. You first create an
 
 * Data is read from the Event Hub in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
 * Event payload can be ingested in one of the [formats supported by Azure Data Explorer](ingestion-supported-formats.md).
-* Data can be compressed using `GZip` compression algorithm. Must be specified as `Compression` [ingestion property](#ingestion-properties).
+* Data can be compressed using `GZip` compression algorithm. Must be specified as `Compression` [ingestion property](#set-ingestion-properties).
 
     > [!Note]
     > * Data compression is not supported for compressed formats (Avro, Parquet, ORC).
-    > * Custom encoding and embedded [system properties](#event-system-properties-mapping) are not supported on compressed data.
+    > * Custom encoding and embedded [system properties](#set-event-system-properties-mapping) are not supported on compressed data.
     
 ## Set ingestion properties
 
@@ -160,7 +160,7 @@ A template can be found in the how-to [Create an event hub](ingest-data-event-hu
 * With ARM template: Use [Azure Resource Manager template for adding an Event Hub data connection](data-connection-event-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-event-hub-data-connection)
 
 > [!Note]
-> If **My data includes routing info** selected, you *must* provide the necessary [routing](#events-routing) information as part of the events properties.
+> If **My data includes routing info** selected, you *must* provide the necessary [routing](#set-events-routing) information as part of the events properties.
 
 > [!Note]
 > Once the connection is set, it ingests data starting from events enqueued after its creation time.
