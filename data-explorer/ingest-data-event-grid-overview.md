@@ -13,7 +13,7 @@ ms.date: 07/01/2020
 
 Event Grid is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
 
-To set up the Event Grid ingestion pipeline, you will go through several steps. You will create a target table in Azure Data Explorer to which the data will be ingested. Then you will create an Event Grid data connection in Azure Data Explorer. The Event Grid data connection needs to know [events routing](#events-routing) information, such as what table to send the data to and the table mapping. You will also specify [ingestion properties](#ingestion-properties), which describe the data to be ingested.
+The Event Grid ingestion pipeline goes through several steps. You create a target table and in Azure Data Explorer to which the data will be ingested. Then you create an Event Grid data connection in Azure Data Explorer. The Event Grid data connection needs to know [events routing](#events-routing) information, such as what table to send the data to and the table mapping. You also specify [ingestion properties](#ingestion-properties), which describe the data to be ingested, the target table, and the mapping.
 
 For a walkthrough of how to set up an Event Grid subscription in the Azure portal, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md).
 
@@ -85,11 +85,11 @@ blob.UploadFromFile(csvCompressedLocalFileName);
 
 * Blobs can be in any of the [supported formats](ingestion-supported-formats.md).
 * Blobs can be compressed. For more information, see [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
-  * The original uncompressed data size should be part of the blob metadata. If the uncompressed size isn't specified, Azure Data Explorer will estimate it, based on the file size.  There is an ingestion uncompressed size limit per file of 4GB.
+  * The original uncompressed data size should be part of the blob metadata. If the uncompressed size isn't specified, Azure Data Explorer will estimate it, based on the file size.  There's an ingestion uncompressed size limit per file of 4 GB.
  
 ## Blob lifecycle
 
-Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion. It's recommended to retain the blobs for three to five days.
+Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion. It's recommended to keep the blobs for three to five days.
 
 ## Known issues
 
