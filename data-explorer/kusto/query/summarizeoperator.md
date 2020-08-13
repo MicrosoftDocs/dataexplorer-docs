@@ -147,7 +147,9 @@ Activities | summarize Min = min(Timestamp), Max = max(Timestamp)
 
 Create a row for each continent, showing a count of the cities in which activities occur. Because there are few values for "continent", no grouping function is needed in the 'by' clause:
 
-    Activities | summarize cities=dcount(city) by continent
+```kusto
+Activities | summarize cities=dcount(city) by continent
+```
 
 |`cities`|`continent`
 |---:|---
