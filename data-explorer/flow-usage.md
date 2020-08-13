@@ -61,12 +61,12 @@ Follow these instructions to create a similar flow:
 1. From the dynamic content window, select the parameter you want to use as a condition for the next actions.
 1. Select the type of *Relationship* and *Value* to set a specific condition on the particular parameter.
 
-    [![](./media/flow-usage/flow-condition.png "Screenshot of flow conditions")](./media/flow-usage/flow-condition.png#lightbox)
+    [![Using flow conditions based on the results of a Kusto query to determine the next flow action, Azure Data Explorer](./media/flow-usage/flow-condition.png)](./media/flow-usage/flow-condition.png#lightbox)
 
     The flow applies this condition on each row of the query result table.
 1. Add actions for when the condition is true and false.
 
-    [![](./media/flow-usage/flow-conditionactions.png "Screenshot of flow condition actions")](./media/flow-usage/flow-conditionactions.png#lightbox)
+    [![Adding actions for when a condition is true or false, flow conditions based on Kusto query results, Azure Data Explorer](./media/flow-usage/flow-conditionactions.png)](./media/flow-usage/flow-conditionactions.png#lightbox)
 
 You can use the result values from the Kusto query as input for the next actions. Select the result values from the dynamic content window.
 In the following example, we add a **Slack - Post Message** action and a **Visual Studio - Create a new work item** action, containing data from the Kusto query.
@@ -111,9 +111,9 @@ Visualize this information as a pie chart, and email it to the team.
 
 Results:
 
-[![](./media/flow-usage/flow-resultsmultipleattachments.png "Screenshot of results of multiple attachments, visualized as a pie chart and bar chart")](./media/flow-usage/flow-resultsmultipleattachments.png#lightbox)
+[![Results of multiple email attachments, visualized as a pie chart and bar chart, Azure Data Explorer](./media/flow-usage/flow-resultsmultipleattachments.png)](./media/flow-usage/flow-resultsmultipleattachments.png#lightbox)
 
-[![](./media/flow-usage/flow-resultsmultipleattachments2.png "Screenshot of results of multiple attachments, visualized as a time chart")](./media/flow-usage/flow-resultsmultipleattachments2.png#lightbox)
+[![Results of multiple email attachments, visualized as a time chart, Azure Data Explorer](./media/flow-usage/flow-resultsmultipleattachments2.png)](./media/flow-usage/flow-resultsmultipleattachments2.png#lightbox)
 
 ## Next steps
 
