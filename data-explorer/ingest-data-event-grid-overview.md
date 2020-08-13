@@ -40,7 +40,7 @@ You can also specify target table properties for each blob, using blob metadata.
 
 The following example shows you how to set ingestion properties on the blob metadata before uploading it. Blobs are routed to different tables.
 
-For more information on how to generate data, see [sample code](#generate-data).
+For more information, see [generate data](#generate-data).
 
 ```csharp
 // Blob is dynamically routed to table `Events`, ingested using `EventsMapping` data mapping
