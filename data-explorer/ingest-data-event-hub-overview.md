@@ -7,15 +7,27 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 08/13/2020
 ---
-# Ingest from Event Hub
+# Connect to Event Hub
 
 Event Hub is a pipeline that transfers events from services to Azure Data Explorer. 
 
 [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
 
-## Ingestion properties
+The Event Hub ingestion pipeline goes through several steps. You first create an Event Hub in the Azure portal. You then create a target table Azure Data Explorer to which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#set-ingestion-properties). The Event Hub connection needs to know [events routing](#set-events-routing). Data is embedded with selected properties according to the [event system properties mapping](#set-event-system-properties-mapping). This process can be managed through the [Azure portal](ingest-data-event-hub.md), programatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
+
+## Data format
+
+* Data is read from the Event Hub in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
+* Event payload can be ingested in one of the [formats supported by Azure Data Explorer](ingestion-supported-formats.md).
+* Data can be compressed using `GZip` compression algorithm. Must be specified as `Compression` [ingestion property](#ingestion-properties).
+
+    > [!Note]
+    > * Data compression is not supported for compressed formats (Avro, Parquet, ORC).
+    > * Custom encoding and embedded [system properties](#event-system-properties-mapping) are not supported on compressed data.
+    
+## Set ingestion properties
 
 Ingestion properties instruct the ingestion process, where to route the data, and how to process it. You can specify [ingestion properties](ingestion-properties.md) of the events ingestion using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
 
@@ -31,7 +43,7 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 <!--| Database | Name of the existing target database.|-->
 <!--| Tags | String representing [tags](https://docs.microsoft.com/azure/kusto/management/extents-overview#extent-tagging) that will be attached to resulting extent. |-->
 
-## Events routing
+## Set events routing
 
 When you set up an Event Hub connection to Azure Data Explorer cluster, you specify target table properties (table name, data format, compression, and mapping). The default routing for your data is also referred to as `static routing`.
 You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
@@ -60,7 +72,7 @@ eventHubClient.Send(eventData);
 eventHubClient.Close();
 ```
 
-## Event system properties mapping
+## Set event system properties mapping
 
 System properties store properties that are set by the Event Hubs service, at the time the event is enqueued. The Azure Data Explorer Event Hub connection will embed the selected properties into the data landing in your table.
 
@@ -81,16 +93,6 @@ System properties store properties that are set by the Event Hubs service, at th
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
 
-## Data format
-
-* Data is read from the Event Hub in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
-* Event payload can contain one or more records that will be ingested in one of the [formats supported by Azure Data Explorer](ingestion-supported-formats.md).
-* Data can be compressed using `GZip` compression algorithm. Must be specified as `Compression` [ingestion property](#ingestion-properties).
-
-    > [!Note]
-    > * Data compression is not supported for compressed formats (Avro, Parquet, ORC).
-    > * Custom encoding and embedded [system properties](#event-system-properties-mapping) are not supported on compressed data.
-    
 ### Examples
 
 #### Table schema example
@@ -136,12 +138,12 @@ Run:
     ']'
 ```
 
-## Create event hub connection
+## Create Event Hub connection
 
 > [!Note]
 > For best performance, create all resources in the same region as the Azure Data Explorer cluster.
 
-### Create an event hub
+### Create an Event Hub
 
 If you don't already have one, [Create an event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create). 
 A template can be found in the how-to [Create an event hub](ingest-data-event-hub.md#create-an-event-hub) guide.
@@ -150,7 +152,7 @@ A template can be found in the how-to [Create an event hub](ingest-data-event-hu
 > * The partition count isn't changeable, so you should consider long-term scale when setting partition count.
 > * Consumer group *must* be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
 
-### Data ingestion connection to Azure Data Explorer
+### Create data ingestion connection to Azure Data Explorer
 
 * Via Azure portal: [Connect to the event hub](ingest-data-event-hub.md#connect-to-the-event-hub).
 * Use Azure Data Explorer management .NET SDK: [Add an Event Hub data connection](data-connection-event-hub-csharp.md#add-an-event-hub-data-connection)
@@ -163,7 +165,7 @@ A template can be found in the how-to [Create an event hub](ingest-data-event-hu
 > [!Note]
 > Once the connection is set, it ingests data starting from events enqueued after its creation time.
 
-#### Generating data
+#### Generate data
 
 * See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.
 
@@ -197,3 +199,10 @@ for (var i = 0; i < 10; i++)
 // Send events
 eventHubClient.SendAsync(events).Wait();
 ```
+
+## Next steps
+
+* [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md)
+* [Create an Event Hub data connection for Azure Data Explorer by using C#](data-connection-event-hub-csharp.md)
+* [Create an Event Hub data connection for Azure Data Explorer by using Python](data-connection-event-hub-python.md)
+* [Create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
