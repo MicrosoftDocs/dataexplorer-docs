@@ -21,7 +21,7 @@ extract("x=([0-9.]+)", 1, "hello x=45.6|wo") == "45.6"
 
 ## Syntax
 
-extract(`*regex*`,` *captureGroup*`,` *text* [`,` *typeLiteral*]`)
+`extract(`*regex*`,` *captureGroup*`,` *text* [`,` *typeLiteral*]`)`
 
 ## Arguments
 
