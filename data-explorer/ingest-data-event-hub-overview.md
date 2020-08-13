@@ -151,19 +151,6 @@ A template can be found in the how-to [Create an event hub](ingest-data-event-hu
 > * The partition count isn't changeable, so you should consider long-term scale when setting partition count.
 > * Consumer group *must* be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
 
-### Create data ingestion connection to Azure Data Explorer
-
-* Via Azure portal: [Connect to the event hub](ingest-data-event-hub.md#connect-to-the-event-hub).
-* Use Azure Data Explorer management .NET SDK: [Add an Event Hub data connection](data-connection-event-hub-csharp.md#add-an-event-hub-data-connection)
-* Use Azure Data Explorer management Python SDK: [Add an Event Hub data connection](data-connection-event-hub-python.md#add-an-event-hub-data-connection)
-* With ARM template: Use [Azure Resource Manager template for adding an Event Hub data connection](data-connection-event-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-event-hub-data-connection)
-
-> [!Note]
-> If **My data includes routing info** selected, you must provide the necessary [routing](#set-events-routing) information as part of the events properties.
-
-> [!Note]
-> Once the connection is set, it ingests data starting from events enqueued after its creation time.
-
 #### Generate data
 
 * See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.

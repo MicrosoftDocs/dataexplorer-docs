@@ -21,33 +21,19 @@ The IoT ingestion pipeline goes through several steps. First, you create an IoT 
 > [!Note]
 > For best performance, create all resources in the same region as the Azure Data Explorer cluster.
 
-### Create an IoT Hub
-
 If you don't already have one, [Create an Iot Hub](ingest-data-iot-hub.md#create-an-iot-hub).
 
 > [!Note]
 > * The `device-to-cloud partitions` count is not changeable, so you should consider long-term scale when setting partition count.
-> * Consumer gruop *must* be uniqe per consumer. Create a consumer group dedicated to Kusto connection. Find your resource in the Azure Portal and go to `Built-in endpoints` to add a new consumer group.
-
-### Data ingestion connection to Azure Data Explorer
-
-* Via Azure Portal: [Connect Azure Data Explorer table to IoT hub](ingest-data-iot-hub.md#connect-azure-data-explorer-table-to-iot-hub).
-* Using Azure Data Explorer management .NET SDK: [Add an IoT Hub data connection](data-connection-iot-hub-csharp.md#add-an-iot-hub-data-connection)
-* Using Azure Data Explorer management Python SDK: [Add an IoT Hub data connection](data-connection-iot-hub-python.md#add-an-iot-hub-data-connection)
-* With ARM template: [Azure Resource Manager template for adding an Iot Hub data connection](data-connection-iot-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-iot-hub-data-connection)
-
-> [!Note]
-> If **My data includes routing info** selected, you *must* provide the necessary [routing](#set-events-routing) information as part of the events properties.
-
-> [!Note]
-> Once the connection is set, it ingest data starting from events enqueued after its creation time.
-
+> * Consumer group must be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection. Find your resource in the Azure portal and go to `Built-in endpoints` to add a new consumer group.
 
 ## Data format
 
 * Data is read from the Event Hub endpoint in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
 * Event payload can be in one of the [formats supported by Azure Data Explorer](ingestion-supported-formats.md).
-  
+* See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
+  The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it. The ingestion uncompressed size limit per file is 4 GB.  
+
 ## Set ingestion properties
 
 Ingestion properties instructs the ingestion process. Where to route the data and how to process it. You can specify [Ingestion properties](ingestion-properties.md) of the events ingestion using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
@@ -63,6 +49,9 @@ Ingestion properties instructs the ingestion process. Where to route the data an
 
 When setting up an IoT Hub connection to Azure Data Explorer cluster, you specify target table properties (table name, data format and mapping). This is the default routing for your data, also referred to as static routing.
 You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
+
+> [!Note]
+> If **My data includes routing info** selected, you must provide the necessary routing information as part of the events properties.
 
 ## Set event system properties mapping
 
@@ -136,6 +125,8 @@ Data is added by using the system properties names as they appear in the **Data 
 * See the [sample project](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Quickstarts/simulated-device) that simulates a device and generates data.
 
 ## Next steps
+
+There are various methods to ingest data to IoT Hub. See the following links for walkthroughs of each method.
 
 * [Ingest data from IoT Hub into Azure Data Explorer](ingest-data-iot-hub.md)
 * [Create an IoT Hub data connection for Azure Data Explorer by using C# (Preview)](data-connection-iot-hub-csharp.md)
