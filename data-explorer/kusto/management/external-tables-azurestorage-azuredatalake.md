@@ -133,11 +133,11 @@ See [storage connection strings](../api/connection-strings/storage.md) for detai
 | `folder`         | `string` | Table's folder                                                                     |
 | `docString`      | `string` | String documenting the table                                                       |
 | `compressed`     | `bool`   | If set, indicates whether the files are compressed as `.gz` files (used in [export scenario](data-export/export-data-to-an-external-table.md) only) |
-| `includeHeaders` | `string` | For CSV or TSV files, indicates whether files contain a header                     |
+| `includeHeaders` | `string` | For delimited text formats (CSV, TSV, ...), indicates whether files contain a header. Possible values are: `All` (all files contain a header), `FirstFile` (first file in a folder contains a header), `None` (no files contain a header). |
 | `namePrefix`     | `string` | If set, indicates the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
 | `fileExtension`  | `string` | If set, indicates file extensions of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
 | `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
-| `sampleUris`     | `bool`   | If set, the command result provides several examples of external data files URI as they are expected by the external table definition. |
+| `sampleUris`     | `bool`   | If set, the command result provides several examples of external data files URI as they are expected by the external table definition (the samples are returned in the second result table). This option helps validate whether *[Partitions](#partitions)* and *[PathFormat](#path-format)* parameters are defined properly. |
 | `validateNotEmpty` | `bool`   | If set, the connection strings are validated for having content in them. The command will fail if the specified URI location doesn't exist, or if there are insufficient permissions to access it. |
 
 > [!TIP]
