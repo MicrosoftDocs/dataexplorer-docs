@@ -17,9 +17,7 @@ Returns the minimal schema that admits all values of *DynamicExpr*.
 
 ## Syntax
 
-```kusto
 summarize `buildschema(`*DynamicExpr*`)`
-```
 
 ## Arguments
 
