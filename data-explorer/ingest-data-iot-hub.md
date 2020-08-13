@@ -19,7 +19,8 @@ ms.date: 01/08/2020
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md)
 
-[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)].
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
+
 This article shows you how to ingest data into Azure Data Explorer from IoT Hub, a big data streaming platform and IoT ingestion service.
 
 ## Prerequisites
