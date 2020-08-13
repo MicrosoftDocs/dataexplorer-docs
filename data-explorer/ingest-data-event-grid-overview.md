@@ -66,7 +66,7 @@ var containerName=<container_name>;
 var blobName=<blob_name>;
 var localFileName=<file_to_upload>;
 
-// Creating the container
+// Create the container
 var azureStorageAccount = CloudStorageAccount.Parse(azureStorageAccountConnectionString);
 var blobClient = azureStorageAccount.CreateCloudBlobClient();
 var container = blobClient.GetContainerReference(containerName);
