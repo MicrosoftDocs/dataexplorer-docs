@@ -102,7 +102,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, RAW, and W3CLOG. Supported compression options are Zip and GZip. |
     | Mapping | *TestMapping* | The mapping you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**.|
 
-5. Review the resources that auto created for you and select **Create**.
+5. Review the resources that were auto created for you and select **Create**.
 
     :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Review and create data connection for event grid":::
 
