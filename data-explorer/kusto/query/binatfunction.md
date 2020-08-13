@@ -22,7 +22,7 @@ Rounds values down to a fixed-size "bin", with control over the bin's starting p
 
 * *Expression*: A scalar expression of a numeric type (including `datetime` and `timespan`)
   indicating the value to round.
-* *BinSize*: A scalar constant of the same type as *Expression* indicating
+* *BinSize*: A scalar constant of a numeric type or `timespan` (for a `datetime` or `timespan` *Expression*) indicating
   the size of each bin. 
 * *FixedPoint*: A scalar constant of the same type as *Expression* indicating
   one value of *Expression* which is a "fixed point" (that is, a value `fixed_point`
