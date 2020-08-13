@@ -117,7 +117,7 @@ The Active-Hot configuration is similar to the [Active-Active configuration](#ac
 
 ### On-demand data recovery configuration
 
-This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there's no data recovery cluster. Configure continuous export of curated data (unless raw and intermediate data is also required) to a storage account that is configured GRS (Geo Redundant Storage). A data recovery cluster is spun up if there is a disaster recovery scenario. At that time, DDLs, configuration, policies, and processes are applied. Data is ingested from storage with the ingestion property [kustoCreationTime](kusto/management/data-ingestion/eventgrid.md) to over-ride the ingestion time that defaults to system time. 
+This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there's no data recovery cluster. Configure continuous export of curated data (unless raw and intermediate data is also required) to a storage account that is configured GRS (Geo Redundant Storage). A data recovery cluster is spun up if there is a disaster recovery scenario. At that time, DDLs, configuration, policies, and processes are applied. Data is ingested from storage with the ingestion property [kustoCreationTime](ingest-data-event-grid-overview.md) to over-ride the ingestion time that defaults to system time. 
 
 :::image type="content" source="media/business-continuity-overview/on-demand-data-recovery-cluster.png" alt-text="On-demand data recovery cluster configuration":::
 
