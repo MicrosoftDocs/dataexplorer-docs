@@ -11,7 +11,6 @@ ms.date: 08/13/2020
 ---
 # Connect to Event Hub
 
-Event Hub is a pipeline that transfers events from services to Azure Data Explorer. 
 
 [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
 
