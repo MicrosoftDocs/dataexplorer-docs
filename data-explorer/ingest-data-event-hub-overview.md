@@ -159,7 +159,7 @@ A template can be found in the how-to [Create an event hub](ingest-data-event-hu
 * With ARM template: Use [Azure Resource Manager template for adding an Event Hub data connection](data-connection-event-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-event-hub-data-connection)
 
 > [!Note]
-> If **My data includes routing info** selected, you *must* provide the necessary [routing](#set-events-routing) information as part of the events properties.
+> If **My data includes routing info** selected, you must provide the necessary [routing](#set-events-routing) information as part of the events properties.
 
 > [!Note]
 > Once the connection is set, it ingests data starting from events enqueued after its creation time.
