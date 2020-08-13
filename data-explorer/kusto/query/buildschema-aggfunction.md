@@ -85,10 +85,10 @@ In Typescript, the example schema would be:
 
 ```typescript
 var someobject: 
-    { 
-      x?: (number | string), 
-      y?: (number | { w?: string}), 
-      z?: { [n:number] : (int | string)},
-      t?: { [n:number]: string } 
-    }
+{
+    x?: (number | string),
+    y?: (number | { w?: string}),
+    z?: { [n:number] : (int | string)},
+    t?: { [n:number]: string }
+}
 ```
