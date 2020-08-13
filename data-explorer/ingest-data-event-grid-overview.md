@@ -57,7 +57,7 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 > [!NOTE]
 > Use `BlockBlob` to generate data. `AppendBlob` is not supported.
 
-Following is an example to create a blob from local file, set ingestion properties to the blob metadata, and upload it:
+You can create a blob from a local file, set ingestion properties to the blob metadata, and upload it as follows:
 
  ```csharp
  var azureStorageAccountConnectionString=<storage_account_connection_string>;
