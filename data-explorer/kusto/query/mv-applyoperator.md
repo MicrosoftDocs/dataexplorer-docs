@@ -127,7 +127,7 @@ _data
 )
 ```
 
-|`xMod2`|l           |element|
+|xMod2|l           |element|
 |-----|------------|-------|
 |1    |[1, 3, 5, 7]|7      |
 |0    |[2, 4, 6, 8]|8      |
@@ -147,7 +147,7 @@ _data
 )
 ```
 
-|`xMod2`|l        |SumOfTop2|
+|xMod2|l        |SumOfTop2|
 |-----|---------|---------|
 |1    |[1,3,5,7]|12       |
 |0    |[2,4,6,8]|14       |
@@ -200,7 +200,7 @@ datatable(command:string, command_time:datetime, user_id:string)
 | project-away commands_details
 ```
 
-|`user_id`|`list_command_details_command`|
+|user_id|list_command_details_command|
 |---|---|
 |user1|[<br>  "ls",<br>  "mkdir",<br>  "chmod",<br>  "dir",<br>  "pwd",<br>  "rm"<br>]|
 |user2|[<br>  "rm",<br>  "pwd"<br>]|

@@ -38,6 +38,8 @@ range x from 1 to 10 step 1
 | project dcount_hll(merged)
 ```
 
-|`dcount_hll_merged`|
-|---|
-|20|
+```output
+dcount_hll_merged
+=================
+20
+```

@@ -124,7 +124,7 @@ Determine what unique combinations of
 Activities | summarize by ActivityType, completionStatus
 ```
 
-|`ActivityType`|`completionStatus`
+|ActivityType|completionStatus
 |---|---
 |`dancing`|`started`
 |`singing`|`started`
@@ -139,7 +139,7 @@ Finds the minimum and maximum timestamp of all records in the Activities table. 
 Activities | summarize Min = min(Timestamp), Max = max(Timestamp)
 ```
 
-|`Min`|`Max`
+|Min|Max
 |---|---
 |`1975-06-09 09:21:45` | `2015-12-24 23:45:00`
 
@@ -149,7 +149,7 @@ Create a row for each continent, showing a count of the cities in which activiti
 
     Activities | summarize cities=dcount(city) by continent
 
-|`cities`|`continent`
+|cities|continent
 |---:|---
 |`4290`|`Asia`|
 |`3267`|`Europe`|
@@ -165,7 +165,7 @@ type. Because `Duration` has many values, use `bin` to group its values into 10-
 Activities | summarize count() by ActivityType, length=bin(Duration, 10m)
 ```
 
-|`count_`|`ActivityType`|`length`
+|count_|ActivityType|length
 |---:|---|---
 |`354`| `dancing` | `0:00:00.000`
 |`23`|`singing` | `0:00:00.000`

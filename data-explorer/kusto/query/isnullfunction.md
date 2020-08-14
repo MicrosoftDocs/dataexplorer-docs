@@ -30,7 +30,7 @@ True or false, depending on whether or not the value is null.
 * `string` values cannot be null. Use [isempty](./isemptyfunction.md)
   to determine if a value of type `string` is empty or not.
 
-|x                |`isnull(x)`|
+|x                |isnull(x)|
 |-----------------|-----------|
 |`""`             |`false`    |
 |`"x"`            |`false`    |

@@ -86,7 +86,7 @@ PageViewsHllTDigest
 | project Timestamp , dcount_hll(merged_hll)
 ```
 
-|Timestamp|`dcount_hll_merged_hll`|
+|Timestamp|dcount_hll_merged_hll|
 |---|---|
 |2016-05-01 12:00:00.0000000|20056275|
 |2016-05-02 00:00:00.0000000|38797623|
@@ -101,7 +101,7 @@ PageViewsHllTDigest
 | project Timestamp , dcount_hll(merged_hll)
 ```
 
-|Timestamp|`dcount_hll_merged_hll`|
+|Timestamp|dcount_hll_merged_hll|
 |---|---|
 |2016-05-01 00:00:00.0000000|20056275|
 |2016-05-02 00:00:00.0000000|64135183|
@@ -115,7 +115,7 @@ PageViewsHllTDigest
 | project Timestamp , percentile_tdigest(merged_tdigests, 95, typeof(long))
 ```
 
-|Timestamp|`percentile_tdigest_merged_tdigests`|
+|Timestamp|percentile_tdigest_merged_tdigests|
 |---|---|
 |2016-05-01 12:00:00.0000000|170200|
 |2016-05-02 00:00:00.0000000|152975|
@@ -165,7 +165,7 @@ PageViewsHllTDigest
 | summarize  percentile_tdigest(merge_tdigests(tdigestBytesDel), 90), dcount_hll(hll_merge(hllPage)) by bin(Timestamp, 1d)
 ```
 
-|Timestamp|`percentile_tdigest_merge_tdigests_tdigestBytesDel`|`dcount_hll_hll_merge_hllPage`|
+|Timestamp|percentile_tdigest_merge_tdigests_tdigestBytesDel|dcount_hll_hll_merge_hllPage|
 |---|---|---|
 |2016-05-01 00:00:00.0000000|84224|20056275|
 |2016-05-02 00:00:00.0000000|83486|64135183|
