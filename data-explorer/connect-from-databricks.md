@@ -41,7 +41,8 @@ To install the [spark-kusto-connector](https://mvnrepository.com/artifact/com.mi
     ```kusto
     .set database <DB Name> users ('aadapp=<AAD App ID>;<AAD Tenant ID>') 'AAD App to connect Spark to ADX
     ```
-    |   |   |
+
+    | Parameter | Description |
     | - | - |
     | ```DB Name``` | your database name |
     | ```AAD App ID``` | your Azure AD app ID |

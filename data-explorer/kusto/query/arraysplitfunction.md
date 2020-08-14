@@ -34,7 +34,7 @@ print arr=dynamic([1,2,3,4,5])
 | extend arr_split=array_split(arr, 2)
 ```
 
-|`arr`|`arr_split`|
+|arr|arr_split|
 |---|---|
 |[1,2,3,4,5]|[[1,2],[3,4,5]]|
 
@@ -44,6 +44,6 @@ print arr=dynamic([1,2,3,4,5])
 | extend arr_split=array_split(arr, dynamic([1,3]))
 ```
 
-|`arr`|`arr_split`|
+|arr|arr_split|
 |---|---|
 |[1,2,3,4,5]|[[1],[2,3],[4,5]]|

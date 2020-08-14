@@ -161,7 +161,7 @@ To complete a purge in a two-step activation scenario, use the verification toke
 
 **Output**
 
-| `OperationId` | `DatabaseName` | `TableName`|`ScheduledTime` | `Duration` | `LastUpdatedOn` |`EngineOperationId` | `State` | `StateDetails` |`EngineStartTime` | `EngineDuration` | `Retries` |`ClientRequestId` | `Principal`|
+| OperationId | DatabaseName | TableName | ScheduledTime | Duration | LastUpdatedOn | EngineOperationId | State | StateDetails | EngineStartTime | EngineDuration | Retries | ClientRequestId | Principal |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...|
 
@@ -178,7 +178,7 @@ To trigger a purge in a single-step activation scenario, run the following comma
 
 **Output**
 
-| `OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`|
+| OperationId | DatabaseName | TableName | ScheduledTime | Duration | LastUpdatedOn | EngineOperationId | State | StateDetails | EngineStartTime | EngineDuration | Retries | ClientRequestId | Principal |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...|
 
@@ -206,7 +206,7 @@ If needed, you can cancel pending purge requests.
 The output of this command is the same as the 'show purges *OperationId*' command output, showing the updated status of the purge operation being canceled. 
 If the attempt is successful, the operation state is updated to `Abandoned`. Otherwise, the operation state isn't changed. 
 
-|`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
+| OperationId | DatabaseName | TableName | ScheduledTime | Duration | LastUpdatedOn | EngineOperationId | State | StateDetails | EngineStartTime | EngineDuration | Retries | ClientRequestId | Principal |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Abandoned | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
 
@@ -250,7 +250,7 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 
 **Output** 
 
-|`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
+| OperationId | DatabaseName | TableName | ScheduledTime | Duration | LastUpdatedOn | EngineOperationId | State | StateDetails | EngineStartTime | EngineDuration | Retries | ClientRequestId | Principal |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:33.6782130 |2019-01-20 11:42:34.6169153 |a0825d4d-6b0f-47f3-a499-54ac5681ab78 |Completed |Purge completed successfully (storage artifacts pending deletion) |2019-01-20 11:41:34.6486506 |00:00:04.4687310 |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
 
