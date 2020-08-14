@@ -1,5 +1,5 @@
 ---
-title: Query results cache - Azure Data Explorer
+title: Query results cache commands - Azure Data Explorer
 description: This article describes Query results cache in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2020
 ---
-# Query results cache
+# Query results cache commands for management and observability
 
 The query results cache is a cache dedicated for storing query results. For more information, see [Query results cache](../query/query-results-cache.md).
 
