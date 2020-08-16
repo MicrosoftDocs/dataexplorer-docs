@@ -19,7 +19,7 @@ This article looks at different governance patterns with Azure Data Explorer clu
 
 ## Clusters vs Databases
 
-Kusto essential constructs, tables & functions, are what users query against.  When should we put those constructs in a single database, in different databases within the same cluster, in different databases in different clusters?
+Kusto essential constructs, [tables](kusto/query/schema-entities/tables.md) & [stored functions](kusto/query/schema-entities/stored-functions.md), are what users query against.  When should we put those constructs in a single database, in different databases within the same cluster, in different databases in different clusters?
 
 Let's look at the different parameters a cluster and a database allows us to set:
 
