@@ -78,7 +78,7 @@ The command modifies the table or database `streamingingestion` policy object, a
 
 .alter database DB1 policy streamingingestion '{"IsEnabled": true, "HintAllocatedRate": 2.1}'
 
-.alter table T1 streamingingestion '{"IsEnabled": true}'
+.alter table T1 policy streamingingestion '{"IsEnabled": true}'
 
 .alter-merge database DB1 policy streamingingestion '{"IsEnabled": false}'
 

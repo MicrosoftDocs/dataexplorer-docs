@@ -18,7 +18,7 @@ The following command describes how to create an external table located in Azure
 
 **Syntax**
 
-(`.create` | `.alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
 `kind` `=` (`blob` | `adl`)  
 [`partition` `by` `(` *[Partitions](#partitions)* `)` [`pathformat` `=` `(` *[PathFormat](#path-format)* `)`]]  
 `dataformat` `=` *[Format](#format)*  
@@ -28,7 +28,7 @@ The following command describes how to create an external table located in Azure
 Creates or alters a new external table in the database in which the command is executed.
 
 > [!NOTE]
-> * If the table exists, `.create` command will fail with an error. Use `.alter` to modify existing tables. 
+> * If the table exists, `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
 > * Altering the schema, format, or the partition definition of an external blob table isn't supported. 
 > * The operation requires [database user permission](../management/access-control/role-based-authorization.md) for `.create` and [table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
 
@@ -133,11 +133,11 @@ See [storage connection strings](../api/connection-strings/storage.md) for detai
 | `folder`         | `string` | Table's folder                                                                     |
 | `docString`      | `string` | String documenting the table                                                       |
 | `compressed`     | `bool`   | If set, indicates whether the files are compressed as `.gz` files (used in [export scenario](data-export/export-data-to-an-external-table.md) only) |
-| `includeHeaders` | `string` | For CSV or TSV files, indicates whether files contain a header                     |
+| `includeHeaders` | `string` | For delimited text formats (CSV, TSV, ...), indicates whether files contain a header. Possible values are: `All` (all files contain a header), `FirstFile` (first file in a folder contains a header), `None` (no files contain a header). |
 | `namePrefix`     | `string` | If set, indicates the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
 | `fileExtension`  | `string` | If set, indicates file extensions of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
 | `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
-| `sampleUris`     | `bool`   | If set, the command result provides several examples of external data files URI as they are expected by the external table definition. |
+| `sampleUris`     | `bool`   | If set, the command result provides several examples of external data files URI as they are expected by the external table definition (the samples are returned in the second result table). This option helps validate whether *[Partitions](#partitions)* and *[PathFormat](#path-format)* parameters are defined properly. |
 | `validateNotEmpty` | `bool`   | If set, the connection strings are validated for having content in them. The command will fail if the specified URI location doesn't exist, or if there are insufficient permissions to access it. |
 
 > [!TIP]

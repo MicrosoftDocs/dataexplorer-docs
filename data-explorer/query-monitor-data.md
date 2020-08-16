@@ -42,8 +42,8 @@ The Azure Data Explorer proxy flow:
 
     ![Add cluster](media/adx-proxy/add-cluster.png)
 
->[!NOTE]
->If you add a connection to more than one proxy cluster, give each a different name. Otherwise they'll all have the same name in the left pane.
+    >[!NOTE]
+    >If you add a connection to more than one proxy cluster, give each a different name. Otherwise they'll all have the same name in the left pane.
 
 1. After the connection is established, your LA or AI cluster will appear in the left pane with your native ADX cluster. 
 

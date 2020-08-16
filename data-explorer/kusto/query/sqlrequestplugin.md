@@ -15,11 +15,13 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-  `evaluate` `sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)`
-
 The `sql_request` plugin sends a SQL query to a SQL Server network endpoint and returns the first rowset in the results.
 
-**Arguments**
+## Syntax
+
+  `evaluate` `sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)`
+
+## Arguments
 
 * *ConnectionString*: A `string` literal indicating the connection string that
   points at the SQL Server network endpoint. See [valid methods of authentication](#authentication) and how to specify the [network endpoint](#specify-the-network-endpoint).

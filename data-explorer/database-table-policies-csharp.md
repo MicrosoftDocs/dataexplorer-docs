@@ -1,9 +1,9 @@
 ---
 title: 'Create policies by using the Azure Data Explorer C# SDK'
 description: In this article, you will learn how to create policies by using C#.
-author: lucygoldbergmicrosoft 
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
