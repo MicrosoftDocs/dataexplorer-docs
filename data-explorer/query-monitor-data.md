@@ -105,8 +105,6 @@ To use the function, run the name in the Query window.
 
   [ ![Query a tabular function from Azure Data Explorer Web UI](media/adx-proxy/function-query-adx-proxy.png)](media/adx-proxy/function-query-adx-proxy.png#lightbox)
 
-> [!NOTE]
-> Azure Monitor only supports tabular functions. Tabular functions don't support parameters.
 
 ## Additional syntax examples
 
