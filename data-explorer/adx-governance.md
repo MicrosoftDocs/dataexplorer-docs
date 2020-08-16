@@ -1,6 +1,6 @@
 ---
 title: Governance with Azure Data Explorer clusters
-description: Learn about different governance pattern with Azure Data Explorer clusters.
+description: Learn about different governance patterns with Azure Data Explorer clusters.
 author: '?'
 ms.author: '?'
 ms.reviewer: '?'
@@ -13,9 +13,18 @@ ms.date: 17/08/2020
 
 # Governance with Azure Data Explorer clusters
 
-This article 
+This article looks at different governance patterns with Azure Data Explorer clusters.
 
-•	Hub/Spoke with follower
-•	When to use multiple databases over multiple cluster or the other way round
-•	How to treat noisy neighbors
-•	Best practices on cafeteria refrigerator policies
+[VP] We should flesh out the intro
+
+## Clusters vs Databases
+
+## Environments
+
+## Hub and Spoke
+
+### Noisy neighbours
+
+## Stricking a balance between exploration and chaos
+
+Best practices on cafeteria refrigerator policies
