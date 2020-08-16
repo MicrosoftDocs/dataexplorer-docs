@@ -81,6 +81,12 @@ set truncationmaxrecords=1105;
 MyTable | where User=="Ploni"
 ```
 
+When considering removing these limits, first determine if
+you actually gain any value by doing so. In particular, removing the
+result truncation limit means that you intend to move bulk data out of Kusto.
+You can remove the result truncation limit, either for export purposes, using the `.export` command, or for doing later aggregation, in which case, consider aggregating using Kusto.
+Let the Kusto team know if you have a business scenario that can't be met by either of these suggested solutions.  
+
 The Kusto client libraries currently assume the existence of this limit. While you can increase the limit without bounds, eventually you'll reach client limits that are currently not configurable.
 
 Customers that don’t want to pull all the data in a single bulk can try these workarounds:
@@ -129,12 +135,6 @@ By default, this value is set to 5 GB. You may increase this value by up to half
 set maxmemoryconsumptionperiterator=68719476736;
 MyTable | ...
 ```
-
-When considering removing these limits, first determine if
-you actually gain any value by doing so. In particular, removing the
-result truncation limit means that you intend to move bulk data out of Kusto.
-You can remove the result truncation limit, either for export purposes, using the `.export` command, or for doing later aggregation, in which case, consider aggregating using Kusto.
-Let the Kusto team know if you have a business scenario that can't be met by either of these suggested solutions.  
 
 In many cases, exceeding this limit can be avoided by sampling the data set. The two queries below show how to do the sampling. The first, is a statistical sampling, that uses a random number generator). The second, is deterministic sampling, done by hashing some column from the data set, usually some ID.
 
