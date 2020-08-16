@@ -15,13 +15,13 @@ Expands multi-value array or property bag.
 
 `mv-expand` is applied on a [dynamic](./scalar-data-types/dynamic.md)-typed array or property bag column so that each value in the collection gets a separate row. All the other columns in an expanded row are duplicated. 
 
-**Syntax**
+## Syntax
 
 *T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] [`with_itemindex=`*IndexColumnName*] *ColumnName* [`,` *ColumnName* ...] [`limit` *Rowlimit*]
 
 *T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] [, [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
 
-**Arguments**
+## Arguments
 
 * *ColumnName:* In the result, arrays in the named column are expanded to multiple rows. 
 * *ArrayExpression:* An expression yielding an array. If this form is used, a new column is added and the existing one is preserved.
@@ -34,7 +34,7 @@ Expands multi-value array or property bag.
 
 * *IndexColumnName:* If `with_itemindex` is specified, the output will include an additional column (named *IndexColumnName*), which contains the index (starting at 0) of the item in the original expanded collection. 
 
-**Returns**
+## Returns
 
 Multiple rows for each of the values in any array that are in the named column or in the array expression.
 If several columns or expressions are specified, they're expanded in parallel. For each input row, there will be as many output rows as there are elements in the longest expanded expression (shorter lists are padded with nulls). If the value in a row is an empty array, the row expands to nothing (won't show in the result set). However, if the value in a row isn't an array, the row is kept as is in the result set. 
@@ -84,17 +84,24 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 
 If you want to get a Cartesian product of expanding two columns, expand one after the other:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://kuskusdfv3.kusto.windows.net/Kuskus -->
 ```kusto
-datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), dynamic([5])]
-| mv-expand b 
+datatable (a:int, b:dynamic, c:dynamic)
+  [
+  1,
+  dynamic({"prop1":"a", "prop2":"b"}),
+  dynamic([5, 6])
+  ]
+| mv-expand b
 | mv-expand c
 ```
 
 |a|b|c|
 |---|---|---|
-|1|{"prop1":"a"}|5|
-|1|{"prop2":"b"}|5|
+|1|{  "prop1": "a"}|5|
+|1|{  "prop1": "a"}|6|
+|1|{  "prop2": "b"}|5|
+|1|{  "prop2": "b"}|6|
 
 ### Convert output
 

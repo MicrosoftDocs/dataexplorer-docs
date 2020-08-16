@@ -117,6 +117,19 @@ Then configure RLS on multiple tables this way:
 .alter table Customers3 policy row_level_security enable "RLSForCustomersTables('Customers3')"
 ```
 
+### Produce an error upon unauthorized access
+
+If you want non-authorized table users to receive an error instead of returning an empty table, use the [`assert()`](../query/assert-function.md) function. The following example shows you how to produce this error in an RLS function:
+
+```
+.create-or-alter function RLSForCustomersTables() {
+    MyTable
+    | where assert(current_principal_is_member_of('aadgroup=mygroup@mycompany.com') == true, "You don't have access")
+}
+```
+
+You can combine this approach with other examples. For example, you can display different results to users in different AAD Groups, and produce an error for everyone else.
+
 ## More use cases
 
 * A call center support person may identify callers by several digits of their social security number or credit card number. Those numbers shouldn't be fully exposed to

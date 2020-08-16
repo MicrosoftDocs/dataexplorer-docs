@@ -17,38 +17,37 @@ Extracts the requested date part as an integer value.
 datetime_part("Day",datetime(2015-12-14))
 ```
 
-**Syntax**
+## Syntax
 
 `datetime_part(`*part*`,`*datetime*`)`
 
-**Arguments**
+## Arguments
 
 * `date`: `datetime`
 * `part`: `string`
 
 Possible values of `part`: 
-- Year
-- Quarter
-- Month
-- week_of_year
-- Day
-- DayOfYear
-- Hour
-- Minute
-- Second
-- Millisecond
-- Microsecond
-- Nanosecond
+* Year
+* Quarter
+* Month
+* week_of_year
+* Day
+* DayOfYear
+* Hour
+* Minute
+* Second
+* Millisecond
+* Microsecond
+* Nanosecond
 
-**Returns**
+## Returns
 
 An integer representing the extracted part.
 
-**Note**
+> [!NOTE]
+> `week_of_year` returns an integer which represents the week number. The week number is calculated from the first week of a year, which is the one that includes the first Thursday.
 
-`week_of_year` returns an integer which represents the week number. The week number is calculated from the first week of a year, which is the one that includes the first Thursday.
-
-**Examples**
+## Examples
 
 ```kusto
 let dt = datetime(2017-10-30 01:02:03.7654321); 
@@ -74,4 +73,4 @@ nanosecond = datetime_part("nanosecond", dt)
 
 > [!NOTE]
 > `weekofyear` is an obsolete variant of `week_of_year` part. `weekofyear` was not ISO 8601 compliant; the first week of a year was defined as the week with the year's first Wednesday in it.
-`week_of_year` is ISO 8601 compliant; the first week of a year is defined as the week with the year's first Thursday in it. [For more information](https://en.wikipedia.org/wiki/ISO_8601#Week_dates).
+> `week_of_year` is ISO 8601 compliant; the first week of a year is defined as the week with the year's first Thursday in it. [For more information](https://en.wikipedia.org/wiki/ISO_8601#Week_dates).

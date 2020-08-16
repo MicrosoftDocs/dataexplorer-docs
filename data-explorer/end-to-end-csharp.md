@@ -1,9 +1,9 @@
 ---
 title: 'End-to-end blob ingestion into Azure Data Explorer through C#'
 description: In this article, you learn how to ingest blobs into Azure Data Explorer with an end-to-end example that uses C#.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020

@@ -17,11 +17,11 @@ Returns a table with up to the specified number of rows from the input record se
 T | evaluate preview(50)
 ```
 
-**Syntax**
+## Syntax
 
 `T` `|` `evaluate` `preview(` *NumberOfRows* `)`
 
-**Returns**
+## Returns
 
 The `preview` plugin returns two result tables:
 * A table with up to the specified number of rows.
@@ -30,9 +30,8 @@ The `preview` plugin returns two result tables:
   input record set.
   For example, the sample query above is equivalent to running `T | count`.
 
-**Tips**
-
-If `evaluate` is preceded by a tabular source that includes a complex filter, or a filter that references most of the source table columns, prefer to use the [`materialize`](materializefunction.md) function. For example:
+> [!TIP]
+> If `evaluate` is preceded by a tabular source that includes a complex filter, or a filter that references most of the source table columns, prefer to use the [`materialize`](materializefunction.md) function. For example:
 
 ```kusto
 let MaterializedT = materialize(T);
