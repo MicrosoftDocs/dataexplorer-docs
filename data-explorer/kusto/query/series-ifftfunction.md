@@ -2,7 +2,7 @@
 title: series_ifft() - Azure Data Explorer
 description: This article describes series_ifft() in Azure Data Explorer.
 services: data-explorer
-author: orspodek
+author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
@@ -30,4 +30,4 @@ The function returns the complex inverse fft in two series, the first one for th
 
 ## Example
 
-See [series_fft](series-fftfunction.md#Example)
+See [series_fft](series-fftfunction.md#example)
