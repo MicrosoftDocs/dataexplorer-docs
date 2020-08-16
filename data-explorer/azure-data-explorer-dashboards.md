@@ -95,6 +95,23 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
     :::image type="content" source="media/adx-dashboards/save-dashboard.png" alt-text="save dashboard":::
 
+## Enable auto refresh 
+\\Needs review with Gabi\\
+
+1. Switch to edit mode \\How?\\
+1. Select **Auto refresh** on top bar. \\May need an image of entire portal?\\
+ 
+:::image type="content" source="auto-refresh.png" alt-text="Select auto refresh":::
+
+1. Toggle the option to enable the feature. Select values for **Minimum time interval** and **Default refresh rate**. 
+
+:::image type="content" source="auto-refresh-toggle.png" alt-text="Enable auto refresh":::
+
+1. Click **Apply** and **Save** the dashboard.
+
+> [!NOTE]
+> Viewers will be able to change the refresh intervals for dashboard but will not be able to save it or select a value which is smaller than the Minimum time interval specified by the editor.
+
 ## Next Steps
 
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
