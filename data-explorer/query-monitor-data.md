@@ -105,6 +105,7 @@ To use the function, run the name in the Query window.
 
   [ ![Query a tabular function from Azure Data Explorer Web UI](media/adx-proxy/function-query-adx-proxy.png)](media/adx-proxy/function-query-adx-proxy.png#lightbox)
 
+
 ## Additional syntax examples
 
 The following syntax options are available when calling the Application Insights (AI) or Log Analytics (LA) clusters:
