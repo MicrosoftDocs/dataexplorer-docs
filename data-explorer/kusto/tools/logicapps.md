@@ -20,7 +20,7 @@ Logic App and Flow are built on the same connector. Therefore, the [limitations]
 1. Open the [Microsoft Azure portal](https://ms.portal.azure.com/). 
 1. Search for `logic app` and select it.
 
-    [![Searching for "logic app" in the Azure portal, Azure Data Explorer](./Images/logicapps/logicapp-search.png)](./Images/logicapps/logicapp-search.png#lightbox)
+    :::image type="content" source="./images/logicapps/logicapp-search.png" alt-text="Searching for 'logic app' in the Azure portal, Azure Data Explorer" lightbox="./images/logicapps/logicapp-search.png#lightbox":::
 
 1. Select **+Add**.
 

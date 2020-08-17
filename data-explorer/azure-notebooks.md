@@ -24,7 +24,7 @@ ms.date: 04/01/2020
 
 1. Select **My Projects** tab in the header. 
 
-    [![Projects page, My Projects tab, Microsoft Azure Notebooks, Azure Data Explorer](media/azurenotebooks/an-myprojects.png)](media/azurenotebooks/an-myprojects.png#lightbox)
+    :::image type="content" source="media/azurenotebooks/an-myprojects.png" alt-text="Projects page, My Projects tab, Microsoft Azure Notebooks, Azure Data Explorer" lightbox="media/azurenotebooks/an-myprojects.png#lightbox":::
 
 1. Select **+ New Projects**.
     
@@ -86,7 +86,7 @@ To create a notebook, select **+ New** and select **Notebook**.
 
 1. Return to your notebook to see the result of the authentication. 
 
-[![Authentication result output, Notebook window, Microsoft Azure Notebooks, Azure Data Explorer](media/azurenotebooks/an-python-commands.png)](media/azurenotebooks/an-python-commands.png#lightbox)
+:::image type="content" source="media/azurenotebooks/an-python-commands.png" alt-text="Authentication result output, Notebook window, Microsoft Azure Notebooks, Azure Data Explorer" lightbox="media/azurenotebooks/an-python-commands.png#lightbox":::
 
 ## Execute a Kusto query
 
@@ -99,7 +99,7 @@ To create a notebook, select **+ New** and select **Notebook**.
         print(", ".join(row))
     ```    
 
-[![Run button, Notebook window, Microsoft Azure Notebooks, Azure Data Explorer](media/azurenotebooks/an-commands.png)](media/azurenotebooks/an-commands.png#lightbox)
+:::image type="content" source="media/azurenotebooks/an-commands.png" alt-text="Run button, Notebook window, Microsoft Azure Notebooks, Azure Data Explorer" lightbox="media/azurenotebooks/an-commands.png#lightbox":::
 
 ## Next steps
 
