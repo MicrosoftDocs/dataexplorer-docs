@@ -22,7 +22,7 @@ The series_fft() function takes a series of complex numbers in the time/spatial 
 ## Arguments
 
 * *x_real*: Dynamic array of numeric values representing the real component of the series to transform.
-* *x_imaginary*: A similar dynamic array representing the imaginary component of the series. This parameter is optional and should be  specified only in case the input series contains complex numbers
+* *x_imaginary*: A similar dynamic array representing the imaginary component of the series. This parameter is optional and should be specified only if the input series contains complex numbers.
 
 ## Returns
 
