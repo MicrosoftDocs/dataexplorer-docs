@@ -24,7 +24,7 @@ If the input is a property bag, the output string prints its content sorted by t
 
 ## Returns
 
-Returns a string representation of the `dynamic` input. If the input is a property bag, the output string will print its content sorted by the keys, recursively.
+Returns a string representation of the `dynamic` input. If the input is a property bag, the output string prints its content sorted by the keys, recursively.
 
 ## Examples
 
