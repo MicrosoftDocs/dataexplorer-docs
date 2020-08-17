@@ -48,7 +48,7 @@ range x from 0 to n-1 step 1 | extend yr=sinewave(x, 8), yi=sinewave(x, 32)
 
 This query returns *fft_y_real* and *fft_y_imag*:  
 
-:::image type="content" source="images/series-fftfunction/series-fft.png" alt-text="Series fft" border="false":::
+:::image type="content" source="images/series-fft-function/series-fft.png" alt-text="Series fft" border="false":::
 
 * Transform a series to the frequency domain, and then apply the inverse transform to get back the original series:
 
