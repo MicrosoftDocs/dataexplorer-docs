@@ -26,7 +26,7 @@ The series_ifft() function takes a series of complex numbers in the frequency do
 
 ## Returns
 
-The function returns the complex inverse fft in two series, the first one for the real component, and the second one for the imaginary one
+The function returns the complex inverse fft in two series. The first series for the real component and the second one for the imaginary component.
 
 ## Example
 
