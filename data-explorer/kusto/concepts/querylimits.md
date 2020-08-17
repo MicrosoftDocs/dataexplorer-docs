@@ -84,8 +84,9 @@ MyTable | where User=="Ploni"
 The Kusto client libraries currently assume the existence of this limit. While you can increase the limit without bounds, eventually you'll reach client limits that are currently not configurable.
 
 Customers that don’t want to pull all the data in a single bulk can try these workarounds:
-* switch some SDKs to streaming mode (Streaming=true property on the KustoConnectionStringBuilder)
-* switch to the .NET v2 API
+* Switch some SDKs to streaming mode (Streaming=true property on the KustoConnectionStringBuilder)
+* Switch to the .NET v2 API
+
 Let the Kusto team know if you run into this issue, so we can raise the streaming client priority.
 
 Kusto provides a number of client libraries that can handle "infinitely large" results by streaming them to the caller. 
