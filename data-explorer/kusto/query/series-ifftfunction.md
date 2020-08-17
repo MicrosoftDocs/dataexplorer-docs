@@ -22,7 +22,7 @@ The series_ifft() function takes a series of complex numbers in the frequency do
 ## Arguments
 
 * *fft_real*: Dynamic array of numeric values representing the real component of the series to transform.
-* *fft_imaginary*: A similar dynamic array representing the imaginary component of the series. This parameter is optional and should be  specified only in case the input series contains complex numbers
+* *fft_imaginary*: A similar dynamic array representing the imaginary component of the series. This parameter is optional and should be specified only if the input series contains complex numbers.
 
 ## Returns
 
