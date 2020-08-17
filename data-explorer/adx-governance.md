@@ -11,6 +11,8 @@ ms.date: 17/08/2020
 
 [VP]  I would see this article under straight under *Concepts*.  Same level than [Data Viz Overview](https://docs.microsoft.com/en-us/azure/data-explorer/viz-overview).
 
+[VP] Could it be an entire section under concept with each h2 being an article?  Unless we drastically trim down the sections, that might be necessary to keep articles under the 3 pages bar.
+
 # Governance with Azure Data Explorer clusters
 
 This article looks at different governance patterns with Azure Data Explorer clusters.
@@ -38,7 +40,7 @@ Policies|Many [policies](kusto/management/policies.md) can be applied at the clu
 On top of that, we can make those general observations:
 
 * Compute drives the cost
-* [Cross-cluster queries](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/cross-cluster-or-database-queries?pivots=azuredataexplorer) are often less performant than if they were done within the same cluster
+* [Cross-cluster queries](kusto/query/cross-cluster-or-database-queries.md) are often less performant than if they were done within the same cluster
 * Cross-database queries (within the same cluster) have the same performance than if they were done on tables in the same database
 
 For those reasons, although clusters provide more isolation, we typically try to consolidate where it makes sense.
@@ -57,14 +59,37 @@ Those are no hard rules but guidance on when to use a given pattern
 
 ### When to use multiple clusters
 
+Multiple clusters are completly isolated by default.  It is possible to share data using [follower database](follower.md) if it is needed.
+
 * When different compute should be used for different workloads
 * When different networking configuration must be used for different workloads, e.g. cluster A should be accessible from VNET X but not from VNET Y
 * When hard boundaries should be implemented between workloads, e.g. it should be impossible for user to join data from data set A & B
+* When different teams want to isolate costs and avoid sharing compute
 * In general, it is a good practice to isolate environments using different clusters, at least production vs non-production, so that configuration changes can be tested in non-production environments without impacting the production.  See more detailed in the [Environments section](#environments)
 
 ## Environments
 
-## Hub and Spoke
+[VP] Do we need the scenarios or should we jump to the patterns right away?
+
+[VP] Maybe not here, the discussion about scenario has its relevance to illustrate how ADX can be used concretely, which isn't always clear for customer.
+
+Azure Data Explorer is used in different scenarios and the way we think [deployment environments](https://en.wikipedia.org/wiki/Deployment_environment) will change depending on the scenario.
+
+Here are some common scenarios for using Azure Data Explorer:
+
+Scenario|Definition|Details|Characteristics
+-|-|-|-
+Internal *Data Exploration*|Azure Data Explorer is used by internal users for exploration, i.e. to find insights.  It is purely ad hoc queries.|The queries, their complexity and rate of execution is ad hoc.  Sometimes different teams have different roles, e.g. ingestion, data quality, exploration, etc.  .|The cluster works in a *best effort* mode.  If a transient failure occur because of resource exhaustion, it is the responsibility of the users to retry.  It is the responsibility of the admins to setup the cluster capacity to match the load.  Configuration changes can be introduced with a relax form of change management.
+APIs|Azure Data Explorer is used to serve APIs.|API calls will be doing predictable queries, happen at a predictable cadence and certain SLOs will be expected (e.g. performance, success rate, etc.).|Configuration changes must be introduced with a controlled change management.
+SaaS|Azure Data Explorer is used as a building block for a customer facing Software as a Service (SaaS).|This is sometimes Azure Data Explorer itself with restricted access for customer users, sometimes there is any number of layers of software in front of it.  Customers expect a certain level of performance, responsiveness and reliability.|Configuration changes must be introduced with a controlled change management.
+
+Let's see a couple of patterns used to address those scenarios.
+
+### Traditional Deployment environments
+
+https://en.wikipedia.org/wiki/Deployment_environment
+
+### Hub and Spoke
 
 ### Noisy neighbours
 
