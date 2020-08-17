@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2020
 ---
-# Query results cache commands for management and observability
+# Query results cache commands
 
 The query results cache is a cache dedicated for storing query results. For more information, see [Query results cache](../query/query-results-cache.md).
 
