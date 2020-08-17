@@ -207,7 +207,7 @@ ms.date: 05/27/2020
 |[series_fill_const()](series-fill-constfunction.md)|Replaces missing values in a series with a specified constant value.|
 |[series_fill_forward()](series-fill-forwardfunction.md)|Performs forward fill interpolation of missing values in a series.|
 |[series_fill_linear()](series-fill-linearfunction.md)|Performs linear interpolation of missing values in a series.|
-|[series_fft()](series-fftfunction.md)|Applies the Fast Fourier Transform (FFT) on a series.|
+|[series_fft()](series-fft-function.md)|Applies the Fast Fourier Transform (FFT) on a series.|
 |[series_fir()](series-firfunction.md)|Applies a Finite Impulse Response filter on a series.|
 |[series_fit_2lines()](series-fit-2linesfunction.md)|Applies two segments linear regression on a series, returning multiple columns.|
 |[series_fit_2lines_dynamic()](series-fit-2lines-dynamicfunction.md)|Applies two segments linear regression on a series, returning dynamic object.|
