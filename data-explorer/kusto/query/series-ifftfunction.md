@@ -30,4 +30,4 @@ The function returns the complex inverse fft in two series, the first one for th
 
 ## Example
 
-See [series_fft](series-fftfunction.md#example)
+See [series_fft](series-fft-function.md#example)
