@@ -24,7 +24,7 @@ When you create a cluster, its storage is [automatically encrypted at the servic
 2. In the **Security** tab > **Enable Double Encryption**, select **On**. To remove the double encryption, select **Off**.
 3. Select **Next:Network>** or **Review + create** to create the cluster.
 
-    ![double encryption new cluster](:::image type="content" source="media/double-encryption/double-encryption-portal.png" alt-text="double encryption new cluster":::)
+    :::image type="content" source="media/double-encryption/double-encryption-portal.png":::
 
 
 # [C#](#tab/c-sharp)
