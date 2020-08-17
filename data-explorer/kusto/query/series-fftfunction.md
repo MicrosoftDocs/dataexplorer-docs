@@ -13,7 +13,7 @@ ms.date: 08/13/2020
 
 Applies the Fast Fourier Transform (FFT) on a series.  
 
-The function takes a series of complex numbers in the time/spatial domain and transform it to the frequency domain using the [Fast Fourier Transform](https://en.wikipedia.org/wiki/Fast_Fourier_transform). The transformed complex series represents the magnitude and phase of the frequencies appearing in the original series. Use the complementary function [series_ifft](series-ifftfunction.md) to transform from the frequency domain back to the time/spatial domain.
+The series_fft() function takes a series of complex numbers in the time/spatial domain and transforms it to the frequency domain using the [Fast Fourier Transform](https://en.wikipedia.org/wiki/Fast_Fourier_transform). The transformed complex series represents the magnitude and phase of the frequencies appearing in the original series. Use the complementary function [series_ifft](series-ifftfunction.md) to transform from the frequency domain back to the time/spatial domain.
 
 ## Syntax
 
