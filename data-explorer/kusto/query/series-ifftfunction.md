@@ -1,6 +1,6 @@
 ---
 title: series_ifft() - Azure Data Explorer
-description: This article describes series_ifft() in Azure Data Explorer.
+description: This article describes series_ifft() function in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
