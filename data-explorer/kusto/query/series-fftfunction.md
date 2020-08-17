@@ -70,4 +70,4 @@ range x from 0 to n-1 step 1 | extend yr=sinewave(x, 8), yi=sinewave(x, 32)
 
 This query returns *y_real2* and *y_imag2, which are the same as *y_real* and *y_imag*:  
 
-:::image type="content" source="images/series-fftfunction/series-ifft.png" alt-text="Series ifft" border="false":::
+:::image type="content" source="images/series-fft-function/series-ifft.png" alt-text="Series ifft" border="false":::
