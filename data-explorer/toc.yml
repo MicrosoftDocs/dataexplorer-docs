@@ -1106,7 +1106,7 @@
       - name: series_equals()
         href: ./kusto/query/series-equalsfunction.md
       - name: series_fft()
-        href: ./kusto/query/series-fftfunction.md
+        href: ./kusto/query/series-fft-function.md
       - name: series_fill_backward()
         href: ./kusto/query/series-fill-backwardfunction.md
       - name: series_fill_const()
