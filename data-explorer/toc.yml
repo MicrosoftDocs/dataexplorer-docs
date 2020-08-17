@@ -1130,7 +1130,7 @@
       - name: series_greater_equals()
         href: ./kusto/query/series-greater-equalsfunction.md
       - name: series_ifft()
-        href: ./kusto/query/series-ifftfunction.md
+        href: ./kusto/query/series-ifft-function.md
       - name: series_iir()
         href: ./kusto/query/series-iirfunction.md
       - name: series_less()
