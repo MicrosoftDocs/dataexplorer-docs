@@ -12,7 +12,7 @@ ms.date: 08/05/2020
 # dynamic_to_json()
 
 Converts `dynamic` input to a string representation.
-If the input is a property bag, the output string will print its content sorted by the keys, recursively. Otherwise the output is similar to 'tostring' function output.
+If the input is a property bag, the output string prints its content sorted by the keys, recursively. Otherwise, the output is similar to the `tostring` function output.
 
 ## Syntax
 
