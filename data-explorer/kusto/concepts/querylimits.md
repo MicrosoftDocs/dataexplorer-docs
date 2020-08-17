@@ -15,7 +15,7 @@ Kusto is an ad-hoc query engine that hosts large data sets and
 attempts to satisfy queries by holding all relevant data in-memory.
 There's an inherent risk that queries will monopolize the service
 resources without bounds. Kusto provides a number of built-in protections
-in the form of default query limits.When considering removing these limits, first determine if you actually gain any value by doing so.
+in the form of default query limits. If you're considering removing these limits, first determine whether you actually gain any value by doing so.
 
 ## Limit on query concurrency
 
@@ -81,9 +81,10 @@ set truncationmaxrecords=1105;
 MyTable | where User=="Ploni"
 ```
 
-Removing the
-result truncation limit means that you intend to move bulk data out of Kusto.
-You can remove the result truncation limit, either for export purposes, using the `.export` command, or for doing later aggregation, in which case, consider aggregating using Kusto.
+Removing the result truncation limit means that you intend to move bulk data out of Kusto.
+
+You can remove the result truncation limit either for export purposes by using the `.export` command or for later aggregation. If you choose later aggregation, consider aggregating by using Kusto.
+
 Let the Kusto team know if you have a business scenario that can't be met by either of these suggested solutions.  
 
 The Kusto client libraries currently assume the existence of this limit. While you can increase the limit without bounds, eventually you'll reach client limits that are currently not configurable.
