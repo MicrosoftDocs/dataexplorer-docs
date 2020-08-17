@@ -1113,6 +1113,8 @@
         href: ./kusto/query/series-dividefunction.md
       - name: series_equals()
         href: ./kusto/query/series-equalsfunction.md
+      - name: series_fft()
+        href: ./kusto/query/series-fft-function.md
       - name: series_fill_backward()
         href: ./kusto/query/series-fill-backwardfunction.md
       - name: series_fill_const()
@@ -1135,6 +1137,8 @@
         href: ./kusto/query/series-greaterfunction.md
       - name: series_greater_equals()
         href: ./kusto/query/series-greater-equalsfunction.md
+      - name: series_ifft()
+        href: ./kusto/query/series-ifft-function.md
       - name: series_iir()
         href: ./kusto/query/series-iirfunction.md
       - name: series_less()
