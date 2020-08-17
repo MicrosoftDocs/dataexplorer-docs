@@ -50,7 +50,7 @@ This query returns *fft_y_real* and *fft_y_imag*:
 
 :::image type="content" source="images/series-fftfunction/series-fft.png" alt-text="Series fft" border="false":::
 
-* Transform a series to the frequency domain, then apply the inverse transform to get back the original series:
+* Transform a series to the frequency domain, and then apply the inverse transform to get back the original series:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
