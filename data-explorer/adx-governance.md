@@ -17,7 +17,7 @@ ms.date: 17/08/2020
 
 This article looks at different governance patterns with Azure Data Explorer clusters.
 
-[VP] We need to flesh out the intro once the content of the article is clearer
+[VP] We need to flesh out the intro once the content of the article is clearer.
 
 ## Clusters vs Databases
 
@@ -27,27 +27,27 @@ Kusto essential constructs, [tables](kusto/query/schema-entities/tables.md) & [s
 
 ![Cluster vs Database](media/adx-governance/cluster-vs-database.png)
 
-Let's look at the different parameters a cluster and a database allows us to set.
+Let's look at the different parameters a cluster and a database allow us to set.
 
 Parameter|Database|Cluster
 -|-|-
 Compute|N/A|Compute is configured at the cluster level.  Each cluster can have a different [compute sku](manage-cluster-choose-sku.md) and [horizontal scaling](manage-cluster-horizontal-scaling.md).  VM disks can also be encrypted at rest using [Disk Encryption](cluster-disk-encryption.md).
 Networking|N/A|Networking is configured at the cluster level.  A cluster can be [deployed inside a Virtual Network](vnet-deployment.md) and from there all [network security features](security-baseline.md#network-security).
 Storage Security|N/A|A storage account is associated with each cluster.  That storage account can be configured to use [customer managed keys](customer-managed-keys-portal.md) for encryption and / or to also encrypt the data at service-level using [double encryption](double-encryption.md).
-Access Control|Database is an ARM resource (child of the cluster) and can have [role assignment](kusto/management/access-control/role-based-authorization.md).  Tables currently can't have role assignment (tables can be secured through [restriced view access policy](kusto/management/restrictedviewaccesspolicy.md) and [row level security policy](kusto/management/rowlevelsecuritypolicy.md), both of which aren't a perfect equivalent to table access control).  Database can hence be seen as the lowest security boundary.|Clusters offer complete isolation both on the control plane (e.g. start / stop cluster) and data plane (e.g. ingestor / viewer)
-Policies|Many [policies](kusto/management/policies.md) can be applied at the cluster, database and table level with an overriding semantic (i.e. if a policy is defined at a lower level, it overrides the policy at a higher level).  A database can hence be seen as a *policy container* in order to apply some policies to many tables.|Policies applied at the cluster level apply to all tables in all databases unless overriden.
+Access Control|Database is an ARM resource (child of the cluster) and can have [role assignment](kusto/management/access-control/role-based-authorization.md).  Tables currently can't have role assignment (tables can be secured through [restricted view access policy](kusto/management/restrictedviewaccesspolicy.md) and [row level security policy](kusto/management/rowlevelsecuritypolicy.md), both of which aren't a perfect equivalent to table access control).  Database can hence be seen as the lowest security boundary.|Clusters offer complete isolation both on the control plane (e.g. start / stop cluster) and data plane (e.g. ingestor / viewer)
+Policies|Many [policies](kusto/management/policies.md) can be applied at the cluster, database and table level with an overriding semantic (i.e. if a policy is defined at a lower level, it overrides the policy at a higher level).  A database can hence be conceptualized as a *policy container* in order to apply some policies to many tables.|Policies applied at the cluster level apply to all tables in all databases unless overridden.
 
 On top of that, we can make those general observations:
 
-* Compute drives the cost
+* Compute drives cost
 * [Cross-cluster queries](kusto/query/cross-cluster-or-database-queries.md) are often less performant than if they were done within the same cluster
 * Cross-database queries (within the same cluster) have the same performance than if they were done on tables in the same database
 
 For those reasons, although clusters provide more isolation, we typically try to consolidate where it makes sense.
 
-Those are no hard rules but guidance on when to use a given pattern
+Those are no hard rules but guidance on when to use a given pattern.
 
-### When to use a single databases
+### When to use a single database
 
 * When all tables should have similar access control rules in querying, ingestion and administration
 * When tables share the same policies or have table-specific policies
@@ -59,7 +59,7 @@ Those are no hard rules but guidance on when to use a given pattern
 
 ### When to use multiple clusters
 
-Multiple clusters are completly isolated by default.  It is possible to share data using [follower database](follower.md) if it is needed.
+Multiple clusters are completely isolated by default.  It is possible to share data using [follower database](follower.md) if it is needed.
 
 * When different compute should be used for different workloads
 * When different networking configuration must be used for different workloads, e.g. cluster A should be accessible from VNET X but not from VNET Y
@@ -69,7 +69,7 @@ Multiple clusters are completly isolated by default.  It is possible to share da
 
 ## Environments
 
-[VP] Do we need the scenarios or should we jump to the patterns right away?
+[VP] Do we need the scenarios, or should we jump to the patterns right away?
 
 [VP] Maybe not here, the discussion about scenario has its relevance to illustrate how ADX can be used concretely, which isn't always clear for customer.
 
@@ -79,7 +79,7 @@ Here are some common scenarios for using Azure Data Explorer:
 
 Scenario|Definition|Details|Characteristics
 -|-|-|-
-Internal *Data Exploration*|Azure Data Explorer is used by internal users for exploration, i.e. to find insights.  It is purely ad hoc queries.|The queries, their complexity and rate of execution is ad hoc.  Sometimes different teams have different roles, e.g. ingestion, data quality, exploration, etc.  .|The cluster works in a *best effort* mode.  If a transient failure occur because of resource exhaustion, it is the responsibility of the users to retry.  It is the responsibility of the admins to setup the cluster capacity to match the load.  Configuration changes can be introduced with a relax form of change management.
+Internal *Data Exploration*|Azure Data Explorer is used by internal users for exploration, i.e. to find insights.  It is purely ad hoc queries.|The queries, their complexity and rate of execution is ad hoc.  Sometimes different teams have different roles, e.g. ingestion, data quality, exploration, etc.  .|The cluster works in a *best effort* mode.  If a transient failure occurs because of resource exhaustion, it is the responsibility of the users to retry.  It is the responsibility of the admins to setup the cluster capacity to match the load.  Configuration changes can be introduced with a relax form of change management.
 APIs|Azure Data Explorer is used to serve APIs.|API calls will be doing predictable queries, happen at a predictable cadence and certain SLOs will be expected (e.g. performance, success rate, etc.).|Configuration changes must be introduced with a controlled change management.
 SaaS|Azure Data Explorer is used as a building block for a customer facing Software as a Service (SaaS).|This is sometimes Azure Data Explorer itself with restricted access for customer users, sometimes there is any number of layers of software in front of it.  Customers expect a certain level of performance, responsiveness and reliability.|Configuration changes must be introduced with a controlled change management.
 
@@ -99,10 +99,66 @@ It has less value in a purely *Internal Data Exploration* scenario where the nat
 
 ### Hub and Spoke
 
-### Noisy neighbours
+The hub and spoke pattern leverages the [follower database](follower.md) feature where some database from a "hub" cluster are followed by "spoke" clusters.
+
+![Hub and Spoke pattern](media/adx-governance/hub-spoke.png)
+
+Typically, that pattern has the "hub" cluster being an "ingestion cluster" and is the responsibility of a specific team.  The followed databases in follower clusters are read-only and can only be queried.
+
+This pattern gives us the flexibility to optimally configure clusters.  For instance, if the ingestion cluster is never queried, it doesn't need to cache data hence it doesn't need much local storage and can be purely compute-optimized while the follower clusters will need more local cache.
+
+The diagram showed the follower clusters can have any subset of the ingestion cluster's databases but can also have databases of their own.
+
+This pattern is useful for the *Internal Data Exploration* scenario where a team takes care of ingestion and other teams perform ad hoc analysis.  This allows separation of duty but also separation of costs.
+
+This pattern could also be useful in an hybrid scenario of *Internal Data Exploration* and *APIs* (or *SaaS*), where Azure Data Explorer serves APIs (or external customers) but also is used for ad hoc analysis internally.  It could then be used in conjunction with the [traditional deployment environments](#traditional-deployment-environments) pattern in this hybrid scenario.
+
+## Noisy neighbours
+
+A common issue in a shared platform is the noisy neighbour problem.  In the case of Azure Data Explorer, this occurs when a subset of users using a cluster uses so much resources they slow down other users' queries or worse deplete resources to the point where queries fail.
+
+This is typically addressed by properly sizing the cluster.
+
+It can also be addressed with the [Hub and Spoke](#hub-and-spoke) pattern.  This allows different team to hit different clusters with their queries so that one team's query doesn't impact the performance of the other team's.
 
 ## Data Exploration organic churn
 
-Stricking a balance between exploration and chaos
+In an *Internal Data Exploration* scenario, most users will only run queries to gain insights in the data.
 
-Best practices on cafeteria refrigerator policies
+Some users will inevitably need to *write*.  For instance:
+
+* They might want to write their own [stored functions](kusto/query/schema-entities/stored-functions.md) to improve their query-writing productivity
+* They might want to transform some data and [ingest it](ingest-data-overview.md) to new tables
+* They might want to try out alternative [update policies](kusto/management/updatepolicy.md) to ingest data differently
+* etc.
+
+A lot of those *writes* are temporary.  They are part of experience ran by users.  This is what we called the Data Exploration *organic churn*.
+
+On one hand those are essential to advanced data exploration process and shouldn't be forbidden.  Some of that churn will become permanent as an evolution of a database.  On the other hand, those *writes* can pollute databases but also consume resources (e.g. [hot cache](kusto/management/cachepolicy.md)).
+
+We therefore want to control the *organic churn* in a way to enable advanced data exploration but also avoid resource depletion and pollution of our cluster.  Here are some patterns to help doing that.
+
+### Just in Time write-access
+
+On large teams (i.e. tens or hundreds of users), not everyone should be able to ingest / create stored functions & tables at all time.
+
+This privilege should be given to users as needed and preferably for a given time period:  just in time.
+
+By reducing the number of users able to write in each database at all time, we make the problem more manageable.
+
+### Cafeteria refrigerator policy
+
+Another simple pattern to control churn is what most companies do with the office refrigerator, i.e. clean it up every Friday.
+
+A simple way to implement that in Azure Data Explorer is to have a list of tables and stored functions and simply delete any object outside of that list periodically (e.g. once a week).
+
+This pattern can also ease a transition to a [DataOps](https://en.wikipedia.org/wiki/DataOps) methodology where databases are at least partially scripted.
+
+Users then need to pro-actively commit the code they want to keep so it doesn't get deleted.  This code can then be reviewed and approve in due process.
+
+## See also
+
+* [Security Overview](security.md)
+* [Security Baseline](security-baseline.md)
+* [Business Continuity](business-continuity-overview.md)
+* [Follower Databases](follower.md)
