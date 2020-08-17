@@ -26,7 +26,7 @@ The series_fft() function takes a series of complex numbers in the time/spatial 
 
 ## Returns
 
-The function returns the complex fft in two series, the first one for the real component, and the second one for the imaginary one
+The function returns the complex inverse fft in two series. The first series for the real component and the second one for the imaginary component.
 
 ## Example
 
