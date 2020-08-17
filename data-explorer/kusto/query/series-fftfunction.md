@@ -1,6 +1,6 @@
 ---
 title: series_fft() - Azure Data Explorer
-description: This article describes series_fft() in Azure Data Explorer.
+description: This article describes series_fft() function in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
