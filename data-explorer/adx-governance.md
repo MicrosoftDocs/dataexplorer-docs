@@ -21,7 +21,9 @@ This article looks at different governance patterns with Azure Data Explorer clu
 
 Kusto essential constructs, [tables](kusto/query/schema-entities/tables.md) & [stored functions](kusto/query/schema-entities/stored-functions.md), are what users query against.  When should we put those constructs in a single database, in different databases within the same cluster, in different databases in different clusters?
 
-Let's look at the different parameters a cluster and a database allows us to set:
+![Cluster vs Database](media/adx-governance/cluster-vs-database.png)
+
+Let's look at the different parameters a cluster and a database allows us to set.
 
 Parameter|Database|Cluster
 -|-|-
@@ -31,9 +33,9 @@ Storage Security|N/A|A storage account is associated with each cluster.  That st
 Access Control|Database is an ARM resource (child of the cluster) and can have [role assignment](kusto/management/access-control/role-based-authorization.md).  Tables currently can't have role assignment (tables can be secured through [restriced view access policy](kusto/management/restrictedviewaccesspolicy.md) and [row level security policy](kusto/management/rowlevelsecuritypolicy.md), both of which aren't a perfect equivalent to table access control).  Database can hence be seen as the lowest security boundary.|Clusters offer complete isolation both on the control plane (e.g. start / stop cluster) and data plane (e.g. ingestor / viewer)
 Policies|Many [policies](kusto/management/policies.md) can be applied at the cluster, database and table level with an overriding semantic (i.e. if a policy is defined at a lower level, it overrides the policy at a higher level).  A database can hence be seen as a *policy container* in order to apply some policies to many tables.|Policies applied at the cluster level apply to all tables in all databases unless overriden.
 
-Here is a diagram highlighting those parameters:
+On top of that, we can make those general observations:
 
-![Cluster vs Database](media/adx-governance/cluster-vs-database.png)
+* Compute drives the cost
 
 ## Environments
 
