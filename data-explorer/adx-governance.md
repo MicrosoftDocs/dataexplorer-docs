@@ -19,6 +19,8 @@ This article looks at different governance patterns with Azure Data Explorer clu
 
 ## Clusters vs Databases
 
+[VP] This is awfully long before getting to recommendations...  Could we get away with a just the diagram?
+
 Kusto essential constructs, [tables](kusto/query/schema-entities/tables.md) & [stored functions](kusto/query/schema-entities/stored-functions.md), are what users query against.  When should we put those constructs in a single database, in different databases within the same cluster, in different databases in different clusters?
 
 ![Cluster vs Database](media/adx-governance/cluster-vs-database.png)
@@ -36,6 +38,29 @@ Policies|Many [policies](kusto/management/policies.md) can be applied at the clu
 On top of that, we can make those general observations:
 
 * Compute drives the cost
+* [Cross-cluster queries](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/cross-cluster-or-database-queries?pivots=azuredataexplorer) are often less performant than if they were done within the same cluster
+* Cross-database queries (within the same cluster) have the same performance than if they were done on tables in the same database
+
+For those reasons, although clusters provide more isolation, we typically try to consolidate where it makes sense.
+
+Those are no hard rules but guidance on when to use a given pattern
+
+### When to use a single databases
+
+* When all tables should have similar access control rules in querying, ingestion and administration
+* When tables share the same policies or have table-specific policies
+
+### When to use multiple databases
+
+* When tables should have different access control rules in querying, ingestion and administration:  we can use a database as a security boundary
+* When groups of tables should share similar policies:  use a database as a policy container
+
+### When to use multiple clusters
+
+* When different compute should be used for different workloads
+* When different networking configuration must be used for different workloads, e.g. cluster A should be accessible from VNET X but not from VNET Y
+* When hard boundaries should be implemented between workloads, e.g. it should be impossible for user to join data from data set A & B
+* In general, it is a good practice to isolate environments using different clusters, at least production vs non-production, so that configuration changes can be tested in non-production environments without impacting the production.  See more detailed in the [Environments section](#environments)
 
 ## Environments
 
