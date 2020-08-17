@@ -87,12 +87,22 @@ Let's see a couple of patterns used to address those scenarios.
 
 ### Traditional Deployment environments
 
-https://en.wikipedia.org/wiki/Deployment_environment
+This is what we think as traditional [deployment environments](https://en.wikipedia.org/wiki/Deployment_environment).  Change goes from a development environment all the way to our production environment, passing through different environments along the way, different quality and approval gates, etc.  .
+
+![Traditional Deployment environments](media/adx-governance/traditional-environments.png)
+
+This pattern typically enforces automation, especially if the number of environments is high.
+
+This pattern is still relevant with Azure Data Explorer, especially with the *APIs* & *SaaS* scenarios where we want controlled changed management.
+
+It has less value in a purely *Internal Data Exploration* scenario where the nature of the scenario is exploration as opposed to repeatability.  We still want to tame the organic churn coming from an exploration environment, but controlling the changes in a formal manner is at odd with an exploration mode.  We will look at how to address this in the [organic churn](#data-exploration-organic-churn) section.
 
 ### Hub and Spoke
 
 ### Noisy neighbours
 
-## Stricking a balance between exploration and chaos
+## Data Exploration organic churn
+
+Stricking a balance between exploration and chaos
 
 Best practices on cafeteria refrigerator policies
