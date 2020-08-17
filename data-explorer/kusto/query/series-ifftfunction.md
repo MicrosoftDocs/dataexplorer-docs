@@ -13,7 +13,7 @@ ms.date: 08/13/2020
 
 Applies the Inverse Fast Fourier Transform (IFFT) on a series.  
 
-The function takes a series of complex numbers in the frequency domain and transform it back to the time/spatial domain using the [Fast Fourier Transform](https://en.wikipedia.org/wiki/Fast_Fourier_transform). This function is the complementary function of [series_fft](series-fftfunction.md). Commonly the original series is transformed to the frequency domain for spectral processing and then back to the time/spatial domain.
+The series_ifft() function takes a series of complex numbers in the frequency domain and transforms it back to the time/spatial domain using the [Fast Fourier Transform](https://en.wikipedia.org/wiki/Fast_Fourier_transform). This function is the complementary function of [series_fft](series-fft-function.md). Commonly the original series is transformed to the frequency domain for spectral processing and then back to the time/spatial domain.
 
 ## Syntax
 
