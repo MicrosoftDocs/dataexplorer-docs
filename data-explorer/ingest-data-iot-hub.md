@@ -19,7 +19,9 @@ ms.date: 01/08/2020
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from IoT Hub, a big data streaming platform and IoT ingestion service.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
+
+This article shows you how to ingest data into Azure Data Explorer from IoT Hub, a big data streaming platform and IoT ingestion service.
 
 ## Prerequisites
 
@@ -93,7 +95,7 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
     | Table | *TestTable* | The table you created in **testdb**. |
-    | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE, and TXT. |
+    | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, and W3CLOG.|
     | Column mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **testdb**, which maps incoming JSON data to the column names and data types of **testdb**. Required for JSON, MULTILINE JSON, and AVRO, and optional for other formats.|
     | | |
 
@@ -162,17 +164,17 @@ With the app generating data, you can now see the data flow from the IoT hub to 
 
 ## Clean up resources
 
-If you don't plan to use your IoT Hub again, clean up **test-hub-rg**, to avoid incurring costs.
+If you don't plan to use your IoT Hub again, clean up your resource group to avoid incurring costs.
 
 1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.  
 
     If the left menu is collapsed, select ![Expand button](media/ingest-data-event-hub/expand.png) to expand it.
 
-   ![Select resource group to delete](media/ingest-data-event-hub/delete-resources-select.png)
+   ![Select resource group to delete](media/ingest-data-iot-hub/delete-resources-select.png)
 
 1. Under **test-resource-group**, select **Delete resource group**.
 
-1. In the new window, type the name of the resource group to delete (*test-hub-rg*), and then select **Delete**.
+2. In the new window, type the name of the resource group to delete it, and then select **Delete**.
 
 ## Next steps
 

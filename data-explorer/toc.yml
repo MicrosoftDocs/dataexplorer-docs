@@ -92,6 +92,8 @@
       href: lightingest.md    
     - name: Event Hub
       items:
+      - name: Connect to Event Hub
+        href: ingest-data-event-hub-overview.md
       - name: Azure portal
         href: ingest-data-event-hub.md
       - name: C#
@@ -102,6 +104,8 @@
         href: data-connection-event-hub-resource-manager.md
     - name: Event Grid
       items:
+      - name: Connect to Event Grid
+        href: ingest-data-event-grid-overview.md
       - name: Azure portal
         href: ingest-data-event-grid.md
       - name: C#
@@ -112,6 +116,8 @@
         href: data-connection-event-grid-resource-manager.md
     - name: IoT Hub
       items:
+      - name: Connect to IoT Hub
+        href: ingest-data-iot-hub-overview.md
       - name: Azure portal
         href: ingest-data-iot-hub.md
       - name: C#
@@ -715,6 +721,8 @@
         href: ./kusto/query/dcount-hllfunction.md
       - name: degrees()
         href: ./kusto/query/degreesfunction.md
+      - name: dynamic_to_json()
+        href: ./kusto/query/dynamic-to-json-function.md
       - name: endofday()
         href: ./kusto/query/endofdayfunction.md
       - name: endofmonth()
@@ -1105,6 +1113,8 @@
         href: ./kusto/query/series-dividefunction.md
       - name: series_equals()
         href: ./kusto/query/series-equalsfunction.md
+      - name: series_fft()
+        href: ./kusto/query/series-fft-function.md
       - name: series_fill_backward()
         href: ./kusto/query/series-fill-backwardfunction.md
       - name: series_fill_const()
@@ -1127,6 +1137,8 @@
         href: ./kusto/query/series-greaterfunction.md
       - name: series_greater_equals()
         href: ./kusto/query/series-greater-equalsfunction.md
+      - name: series_ifft()
+        href: ./kusto/query/series-ifft-function.md
       - name: series_iir()
         href: ./kusto/query/series-iirfunction.md
       - name: series_less()
@@ -1438,12 +1450,6 @@
         href: ./kusto/management/data-ingestion/ingest-from-query.md
       - name: Inline ingestion
         href: ./kusto/management/data-ingestion/ingest-inline.md
-      - name: Ingest from storage using Event Grid subscription
-        href: ./kusto/management/data-ingestion/eventgrid.md
-      - name: Ingest from Event Hub
-        href: ./kusto/management/data-ingestion/eventhub.md
-      - name: Ingest from IoT Hub
-        href: ./kusto/management/data-ingestion/iothub.md
       - name: Streaming ingestion
         items:
         - name: Streaming ingestion and schema changes

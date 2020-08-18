@@ -1,15 +1,15 @@
 ---
-title: Use Azure Data Share to share data with Azure Data Explorer (preview)
+title: Use Azure Data Share to share data with Azure Data Explorer
 description: Learn about how to share your data with Azure Data Explorer and Azure Data Share.
 author: orspod
 ms.author: orspodek
 ms.reviewer: maraheja
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 08/14/2020
 ---
 
-# Use Azure Data Share to share data with Azure Data Explorer (preview)
+# Use Azure Data Share to share data with Azure Data Explorer
 
 There are many traditional ways to share data, such as through file shares, FTP, e-mail, and APIs. These methods require both parties to build and maintain a data pipeline that moves data between teams and organizations. With Azure Data Explorer, you can easily and securely share your data with people in your company or external partners. Sharing occurs in near-real-time, with no need to build or maintain a data pipeline. All database changes, including schema and data, on the provider side are instantly available on the consumer side.
 

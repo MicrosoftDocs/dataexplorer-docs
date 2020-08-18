@@ -64,6 +64,21 @@
       "source_path": "data-explorer/kusto/management/externaltables.md",
       "redirect_url": "/azure/data-explorer/kusto/management/external-table-commands",
       "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/eventhub.md",
+        "redirect_url": "/azure/data-explorer/ingest-data-event-hub-overview",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/eventgrid.md",
+        "redirect_url": "/azure/data-explorer/ingest-data-event-grid-overview",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/iothub.md",
+        "redirect_url": "/azure/data-explorer/ingest-data-iot-hub-overview",
+        "redirect_document_id": true
       }
     ]
   }
