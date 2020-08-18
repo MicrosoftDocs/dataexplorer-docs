@@ -76,7 +76,8 @@ Result includes three tables:
 
 * Table #1: All possible variants of what happened before and after the sequence. For example, the second line means that there were 87 different events that had following sequence: `Hail` -> `Tornado` -> `Hail`
 
-|StartTime|prev|next|dcount|
+
+|`StartTime`|`prev`|`next`|`dcount`|
 |---|---|---|---|
 |2007-01-01 00:00:00.0000000|||293|
 |2007-01-01 00:00:00.0000000|Hail|Hail|87|
@@ -126,7 +127,7 @@ Result includes three tables:
 
 * Table #2: shows all distinct events grouped by the previous event. For example, the second line shows that there were a total of 150 events of `Hail` that happened just before `Tornado`.
 
-|StartTime|prev|dcount|
+|`StartTime`|`prev`|`dcount`|
 |---------|-----|------|
 |2007-01-01 00:00:00.0000000||331|
 |2007-01-01 00:00:00.0000000|Hail|150|
@@ -144,7 +145,7 @@ Result includes three tables:
 
 * Table #3: shows all distinct events grouped by next event. For example, the second line shows that there were a total of 143 events of `Hail` that happened after `Tornado`.
 
-|StartTime|next|dcount|
+|`StartTime`|`next`|`dcount`|
 |---------|-----|------|
 |2007-01-01 00:00:00.0000000||332|
 |2007-01-01 00:00:00.0000000|Hail|145|
@@ -168,7 +169,7 @@ dynamic(['Hail', 'Tornado', 'Thunderstorm Wind']))
 
 Skipping `Table #1` and `Table #2`, and looking at `Table #3`, we can conclude that sequence `Hail` -> `Tornado` -> `Thunderstorm Wind` in 92 events ended with this sequence, continued as `Hail` in 41 events, and turned back to `Tornado` in 14.
 
-|StartTime|next|dcount|
+|`StartTime`|`next`|`dcount`|
 |---------|-----|------|
 |2007-01-01 00:00:00.0000000||92|
 |2007-01-01 00:00:00.0000000|Hail|41|

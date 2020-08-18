@@ -36,7 +36,7 @@ Dynamic array of the values in the range [`start..end`] from `arr`.
 print arr=dynamic([1,2,3]) 
 | extend sliced=array_slice(arr, 1, 2)
 ```
-|arr|sliced|
+|`arr`|`sliced`|
 |---|---|
 |[1,2,3]|[2,3]|
 
@@ -45,7 +45,7 @@ print arr=dynamic([1,2,3])
 print arr=dynamic([1,2,3,4,5]) 
 | extend sliced=array_slice(arr, 2, -1)
 ```
-|arr|sliced|
+|`arr`|sliced|
 |---|---|
 |[1,2,3,4,5]|[3,4,5]|
 
@@ -54,6 +54,6 @@ print arr=dynamic([1,2,3,4,5])
 print arr=dynamic([1,2,3,4,5]) 
 | extend sliced=array_slice(arr, -3, -2)
 ```
-|arr|sliced|
+|`arr`|sliced|
 |---|---|
 |[1,2,3,4,5]|[3,4]|
