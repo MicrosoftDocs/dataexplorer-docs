@@ -41,7 +41,7 @@ Returns a table that has the count and distinct count values of Ids in the lookb
 
 Output table schema is:
 
-|TimelineColumn|dim1|..|dim_n|count|dcount|
+|*TimelineColumn*|`dim1`|..|`dim_n`|`count`|`dcount`|
 |---|---|---|---|---|---|
 |type: as of *TimelineColumn*|..|..|..|long|long|
 
@@ -78,7 +78,7 @@ T | evaluate sliding_window_counts(UserId, Timestamp, start, end, lookbackWindow
 
 ```
 
-|Timestamp|Count|dcount|
+|Timestamp|Count|`dcount`|
 |---|---|---|
 |2017-08-01 00:00:00.0000000|5|3|
 |2017-08-02 00:00:00.0000000|8|5|

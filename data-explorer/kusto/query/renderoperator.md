@@ -106,7 +106,7 @@ Where:
 Some visualizations can be further elaborated by providing the `kind` property.
 These are:
 
-| Visualization |kind               |Description                        |
+|*Visualization*|`kind`             |Description                        |
 |---------------|-------------------|-----------------------------------|
 |`areachart`    |`default`          |Each "area" stands on its own.     |
 |               |`unstacked`        |Same as `default`.                 |
@@ -127,7 +127,7 @@ These are:
 
 Some visualizations support splitting into multiple y-axis values:
 
-|ysplit    |Description                                                       |
+|`ysplit`  |Description                                                       |
 |----------|------------------------------------------------------------------|
 |`none`    |A single y-axis is displayed for all series data. (Default)       |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|

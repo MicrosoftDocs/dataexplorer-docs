@@ -42,11 +42,9 @@ range x from 1 to 1000 step 1
 | project rank_of_685=rank_tdigest(t_x, 685)
 ```
 
-```output
-rank_of_685
-===========
-685
-```
+|`rank_of_685`|
+|-------------|
+|`685`        |
 
 This query calculates the rank of value 4490$ over all damage properties costs:
 
@@ -58,11 +56,9 @@ StormEvents
 
 ```
 
-```output
-rank_of_4490
-============
-50207
-```
+|`rank_of_4490`|
+|--------------|
+|`50207`       |
 
 Getting the estimated percentage of the rank (by dividing by the set size):
 
@@ -74,11 +70,10 @@ StormEvents
 
 ```
 
-```output
-Column1
-================
-85.0015237192293
-```
+|`Column1`         |
+|------------------|
+|`85.0015237192293`|
+
 
 The percentile 85 of the damage properties costs is 4490$:
 
@@ -90,8 +85,8 @@ StormEvents
 
 ```
 
-```output
-percentile_tdigest_tdigestRes
-=============================
-4490
-```
+|`percentile_tdigest_tdigestRes`|
+|-------------------------------|
+|`4490`                         |
+
+
