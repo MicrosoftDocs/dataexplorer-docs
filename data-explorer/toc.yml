@@ -577,7 +577,7 @@
         href: ./kusto/query/materializefunction.md
       - name: resource()
         href: ./kusto/query/resourcefunction.md
-        - name: table()
+      - name: table()
         href: ./kusto/query/tablefunction.md
       - name: toscalar()
         href: ./kusto/query/toscalarfunction.md
