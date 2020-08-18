@@ -6,14 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 
 # app() (scope function)
 
 ::: zone pivot="azuredataexplorer"
 
-This capability isn't supported in Azure Monitor
+This capability isn't supported in Azure Data Explorer.
 
 ::: zone-end
 
