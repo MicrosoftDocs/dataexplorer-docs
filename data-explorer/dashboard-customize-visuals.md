@@ -1,6 +1,6 @@
 ---
-title: Customize Azure Data Explorer Visuals
-description: Easily customize your Azure Data Explorer Visuals
+title: Customize Azure Data Explorer dashboard visuals
+description: Easily customize your Azure Data Explorer dashboard visuals
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -28,8 +28,8 @@ Azure Data Explorer supports several different types of visuals. This section de
 |Type  |Description |
 |---------|---------|
 |**Table**    |    Default - results are shown as a table.   |
-|**Bar chart**    |   Need minimum 2 columns. First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.   |
-|**Column chart**    |   Like **Bar Chart** with vertical strips instead of horizontal strips.   |
+|**Bar chart**    |   Need minimum 2 columns. First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal lines.   |
+|**Column chart**    |   Like **Bar Chart** with vertical lines instead of horizontal lines.   |
 |**Area chart**     |   First column is the x-axis and should be a numeric column. Other numeric columns are y-axes.      |
 |**Line chart**     |     First column is the x-axis. Other numeric columns are y-axes.     |
 |**Stat**     |    Only shows one element. If there are multiple columns and rows in the output this will show the first element of the first column.     |
@@ -38,6 +38,8 @@ Azure Data Explorer supports several different types of visuals. This section de
 |**Time chart**     |    Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There is one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored)     |
 |**Anomaly chart**     |    TBD     |
 |**Map**     |    Map needs 4 columns to render. <ul><li>First column should be string and is used for label which is shown on hover.</li><li>Longitude (real).</li><li>Latitude (real).</li><li>Bubble size (int). This can be constant 1 if different sizes are not required</li>   |
+
+\\Note from Gabi: Description of different visual type requirements are not consistent. Some start with First column, some with something else. In some cases the required data type (numeric) is in brackets in other cases it is not.\\
 
 ## Access the visual customization dialogue
 

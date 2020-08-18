@@ -110,7 +110,8 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 1. Click **Apply** and **Save** the dashboard.
 
 > [!NOTE]
-> Viewers will be able to change the refresh intervals for dashboard but will not be able to save it or select a value which is smaller than the Minimum time interval specified by the editor.
+> * Use the minimum time internal to reduce unnecessary load on the cluster 
+> * As a viewer, you can change the refresh intervals for dashboard but you can't save the changes. Also, you can't select a value which is smaller than the minimum time interval specified by the editor.
 
 ## Next Steps
 
