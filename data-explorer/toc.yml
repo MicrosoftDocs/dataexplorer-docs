@@ -565,6 +565,8 @@
         href: ./kusto/query/whereoperator.md
     - name: Special functions
       items:
+      - name: app()
+        href: ./kusto/query/appfunction.md
       - name: cluster()
         href: ./kusto/query/clusterfunction.md
       - name: database()
@@ -573,10 +575,14 @@
         href: ./kusto/query/externaltablefunction.md
       - name: materialize()
         href: ./kusto/query/materializefunction.md
-      - name: table()
+      - name: resource()
+        href: ./kusto/query/resourcefunction.md
+        - name: table()
         href: ./kusto/query/tablefunction.md
       - name: toscalar()
         href: ./kusto/query/toscalarfunction.md
+      - name: workspace()
+        href: ./kusto/query/workspacefunction.md
     - name: Scalar operators
       items:
       - name: Bitwise (binary) operators
@@ -1227,6 +1233,8 @@
         href: ./kusto/query/re2.md
       - name: SQL to Kusto cheat sheet
         href: ./kusto/query/sqlcheatsheet.md
+      - name: Splunk to Kusto cheat sheet
+        href: ./kusto/query/splunkcheatsheet.md
     - name: Query tools
       items:
       - name: Kusto.Explorer
