@@ -21,7 +21,7 @@ With Kusto.Explorer, you can:
 
 ## Installing Kusto.Explorer
 
-* Install the [Kusto.Explorer tool](https://aka.ms/ke).
+* Download and install the Kusto.Explorer tool from [https://aka.ms/ke](https://aka.ms/ke)
 
 * Instead, access your Kusto cluster with your browser at: 
 `https://<your_cluster>.kusto.windows.net.`
