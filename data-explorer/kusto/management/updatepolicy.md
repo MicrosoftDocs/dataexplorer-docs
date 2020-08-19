@@ -138,3 +138,5 @@ If the ingestion method is `pull` (Kusto's Data Management service is involved i
 * The backoff period starts at 2 minutes, and grows exponentially (2 -> 4 -> 8 -> 16 ... minutes)
 
 In any other case, any retry is the responsibility of the data owner.
+
+Both parameters `DataImporterMaximumRetryPeriod` and `DataImporterMaximumRetryAttempts` can be changed by opening a support ticket.
