@@ -29,12 +29,12 @@ Requires [Database viewer permission](../management/access-control/role-based-au
 | `Folder`                   | String   | The table's folder.                                                                             |
 | `DocString`                | String   | A string documenting the table.                                                                 |
 | `TotalExtents`             | Int64    | The total number of extents in the table.                                                       |
-| `TotalExtentSize`          | Double   | The total size of extents (compressed size + index size) in the table.                          |
-| `TotalOriginalSize`        | Double   | The total original size of data in the table.                                                   |
+| `TotalExtentSize`          | Double   | The total size of extents (compressed size + index size) in the table (in bytes).               |
+| `TotalOriginalSize`        | Double   | The total original size of data in the table (in bytes).                                        |
 | `TotalRowCount`            | Int64    | The total number of rows in the table.                                                          |
 | `HotExtents`               | Int64    | The total number of extents in the table, stored in the hot cache.                              |
-| `HotExtentSize`            | Double   | The total size of extents (compressed size + index size) in the table, stored in the hot cache. |
-| `HotOriginalSize`          | Double   | The total original size of data in the table, stored in the hot cache.                          |
+| `HotExtentSize`            | Double   | The total size of extents (compressed size + index size) in the table, stored in the hot cache (in bytes). |
+| `HotOriginalSize`          | Double   | The total original size of data in the table, stored in the hot cache (in bytes).               |
 | `HotRowCount`              | Int64    | The total number of rows in the table, stored in the hot cache.                                 |
 | `AuthorizedPrincipals`     | String   | The table's authorized principals, serialized as JSON.                                          |
 | `RetentionPolicy`          | String   | The table's effective`*` retention policy, serialized as JSON.                                  |
