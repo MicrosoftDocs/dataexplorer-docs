@@ -4,7 +4,7 @@ description: This article describes Query limits in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
@@ -29,9 +29,9 @@ in the form of default query limits. If you're considering removing these limits
 
 **Result truncation** is a limit set by default on the
 result set returned by the query. Kusto limits the number of records
-returned to the client to **500,000**, and the overall memory for those
+returned to the client to **500,000**, and the overall data size for those
 records to **64 MB**. When either of these limits is exceeded, the
-query fails with a "partial query failure". Exceeding overall memory
+query fails with a "partial query failure". Exceeding overall data size
 will generate an exception with the message:
 
 ```
@@ -49,7 +49,7 @@ There are a number of strategies for dealing with this error.
 * Reduce the result set size by modifying the query to only return interesting data. This strategy is useful when the initial failing query is too "wide". For example, the query doesn't project away data columns that aren't needed.
 * Reduce the result set size by shifting post-query processing, such as aggregations, into the query itself. The strategy is useful in scenarios where the output of the query is fed to another processing system, and that then does additional aggregations.
 * Switch from queries to using [data export](../management/data-export/index.md) when you want to export large sets of data from the service.
-* Instruct the service to suppress this query limit.
+* Instruct the service to suppress this query limit using `set` statements listed below or flags in [client request properties](../api/netfx/request-properties.md).
 
 Methods for reducing the result set size produced by the query include:
 
@@ -78,22 +78,12 @@ to happen at either 1,105 records or 1MB, whichever is exceeded.
 ```kusto
 set truncationmaxsize=1048576;
 set truncationmaxrecords=1105;
-MyTable | where User=="Ploni"
+MyTable | where User=="UserId1"
 ```
 
 Removing the result truncation limit means that you intend to move bulk data out of Kusto.
 
 You can remove the result truncation limit either for export purposes by using the `.export` command or for later aggregation. If you choose later aggregation, consider aggregating by using Kusto.
-
-Let the Kusto team know if you have a business scenario that can't be met by either of these suggested solutions.  
-
-The Kusto client libraries currently assume the existence of this limit. While you can increase the limit without bounds, eventually you'll reach client limits that are currently not configurable.
-
-Customers that don’t want to pull all the data in a single bulk can try these workarounds:
-* Switch some SDKs to streaming mode (Streaming=true property on the KustoConnectionStringBuilder)
-* Switch to the .NET v2 API
-
-Let the Kusto team know if you run into this issue, so we can raise the streaming client priority.
 
 Kusto provides a number of client libraries that can handle "infinitely large" results by streaming them to the caller. 
 Use one of these libraries, and configure it to streaming mode. 
@@ -166,9 +156,7 @@ Exceeding one of these limits will result in one of the following errors:
 ```
 Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the limit of ...GB (see https://aka.ms/kustoquerylimits)')
 
-Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the maximum count of 2G items (see http://aka.ms/kustoquerylimits)')
-
-Runaway query (E_RUNAWAY_QUERY). (message: 'Single string size shouldn't exceed the limit of 2GB (see http://aka.ms/kustoquerylimits)')
+Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the maximum count of ..GB items (see http://aka.ms/kustoquerylimits)')
 ```
 
 There's currently no switch to increase the maximum string set size.
