@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: maraheja
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2020
 
 # Customer intent: I want to use Azure Databricks to access data from Azure Data Explorer.

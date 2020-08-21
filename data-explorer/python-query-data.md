@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/05/2019
 
 # Customer intent: As a Python developer, I want to query data so I can include it in my apps.
