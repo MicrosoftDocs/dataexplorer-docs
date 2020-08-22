@@ -14,7 +14,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-This capability isn't supported in Azure Data Explorer.
+This function isn't used by Azure Data Explorer. Application Insights is a feature of Azure Monitor.  
 
 ::: zone-end
 

@@ -14,7 +14,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-This capability isn't supported in Azure Monitor
+This function isn't used in Azure Data Explorer. Log Analytics workspaces are used by Azure Monitor.  
 
 ::: zone-end
 
