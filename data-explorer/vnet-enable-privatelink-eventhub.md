@@ -25,7 +25,7 @@ Private endpoints enable you to block exfiltration of data from your VNet. Using
 1.	Click on the settings menu called **Firewalls and virtual networks**.
 1.	Check that you've selected to allow access from **Selected networks**.
 
-    ![storage vnet diagram](media/vnet-enable-privatelink-eventhub\Storage-1.png)
+    ![storage vnet diagram](media/vnet-enable-privatelink-eventhub\Eventhub-1.png)
 
 1.	To grant access to a virtual network with a new network rule, under **Virtual networks**, 
 1.	click **Add existing virtual network**, 
@@ -33,8 +33,8 @@ Private endpoints enable you to block exfiltration of data from your VNet. Using
 1.	 And On **Subnets** options, select ADX subnet
 1.	and then lastly click **Add**.
 
-    ![storage add network diagram](media/vnet-enable-privatelink-eventhub\Storage-2.png)
+    ![storage add network diagram](media/vnet-enable-privatelink-eventhub\Eventhub-2.png)
 
 1.	Click **Save** to apply your changes.
 
-    ![storage subnet diagram](media/vnet-enable-privatelink-eventhub\Storage-3.png)
+    ![storage subnet diagram](media/vnet-enable-privatelink-eventhub\Eventhub-3.png)
