@@ -13,7 +13,7 @@ ms.date: 06/15/2020
 
 # Quickstart: Query data in Azure Data Explorer Web UI
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data explorer provides a web application that enables you to run and share queries. The application is available in the Azure portal and as a stand-alone web application. In this article, you work in the stand-alone version, which enables you to connect to multiple clusters and to share deep links to your queries.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides a web application that enables you to run and share queries. The application is available in the Azure portal and as a stand-alone web application. In this article, you work in the stand-alone version, which enables you to connect to multiple clusters and to share deep links to your queries.
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 
@@ -111,6 +111,12 @@ You can now run queries against either cluster that you're connected to (assumin
     The result should look like the following chart.
 
     ![Column chart](media/web-query-data/column-chart.png)
+
+> [!NOTE]
+> Blank lines in the query expression can affect which part of the query is executed.
+>
+> If no text selected, it's assumed that the query or command is separated by empty lines.
+> If text is selected, the selected text is run.
 
 ## Work with the table grid
 

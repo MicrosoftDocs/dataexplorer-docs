@@ -50,6 +50,12 @@
       href: security.md
     - name: Security baseline
       href: security-baseline.md
+  - name: Business continuity
+    items:  
+    - name: Overview
+      href: business-continuity-overview.md
+    - name: Create solutions
+      href: business-continuity-create-solution.md   
   - name: Tools and integrations overview
     href: tools-integrations-overview.md
 - name: How-to guides
@@ -78,12 +84,16 @@
         href: one-click-ingestion-existing-table.md
     - name: Streaming ingestion
       items:
-      - name: Streaming ingestion
+      - name: Azure portal
         href: ingest-data-streaming.md
+      - name: C#
+        href: ingest-data-streaming-csharp.md
     - name: Using LightIngest
       href: lightingest.md    
     - name: Event Hub
       items:
+      - name: Connect to Event Hub
+        href: ingest-data-event-hub-overview.md
       - name: Azure portal
         href: ingest-data-event-hub.md
       - name: C#
@@ -94,6 +104,8 @@
         href: data-connection-event-hub-resource-manager.md
     - name: Event Grid
       items:
+      - name: Connect to Event Grid
+        href: ingest-data-event-grid-overview.md
       - name: Azure portal
         href: ingest-data-event-grid.md
       - name: C#
@@ -104,6 +116,8 @@
         href: data-connection-event-grid-resource-manager.md
     - name: IoT Hub
       items:
+      - name: Connect to IoT Hub
+        href: ingest-data-iot-hub-overview.md
       - name: Azure portal
         href: ingest-data-iot-hub.md
       - name: C#
@@ -112,8 +126,8 @@
         href: data-connection-iot-hub-python.md
       - name: Azure Resource Manager template
         href: data-connection-iot-hub-resource-manager.md
-      - name: Azure Data Factory
-        items:
+    - name: Azure Data Factory
+      items:
       - name: Integration with Data Factory 
         href: data-factory-integration.md 
       - name: Copy data using Azure Data Factory
@@ -124,12 +138,14 @@
         href: data-factory-command-activity.md
     - name: Using SDKs
       items: 
+      - name: .NET SDK
+        href: net-sdk-ingest-data.md
       - name: Python
         href: python-ingest-data.md
       - name: Node SDK
         href: node-ingest-data.md
-      - name: .NET SDK
-        href: net-sdk-ingest-data.md
+      - name: Go SDK
+        href: go-ingest-data.md
     - name: Kafka
       href: ingest-data-kafka.md
     - name: Logstash
@@ -202,8 +218,12 @@
           href: vnet-deployment.md  
         - name: Troubleshoot VNet cluster creation, connectivity, and operation 
           href: vnet-deploy-troubleshoot.md
-    - name: Manage cluster security
-      href: manage-cluster-security.md
+    - name: Encryption
+      items:
+      - name: Cluster disk encryption - portal
+        href: cluster-disk-encryption.md
+      - name: Double Encryption
+        href: double-encryption.md
     - name: Configure managed identities
       href: managed-identities.md
     - name: Configure customer-managed-keys
@@ -317,7 +337,7 @@
       href: troubleshoot-database-table.md
 - name: Reference
   items:
-  - name: Kusto query
+  - name: Kusto Query Language
     items:
     - name: Overview
       href: ./kusto/query/index.md
@@ -701,6 +721,8 @@
         href: ./kusto/query/dcount-hllfunction.md
       - name: degrees()
         href: ./kusto/query/degreesfunction.md
+      - name: dynamic_to_json()
+        href: ./kusto/query/dynamic-to-json-function.md
       - name: endofday()
         href: ./kusto/query/endofdayfunction.md
       - name: endofmonth()
@@ -733,6 +755,10 @@
         href: ./kusto/query/format-bytesfunction.md
       - name: format_datetime()
         href: ./kusto/query/format-datetimefunction.md
+      - name: format_ipv4()
+        href: ./kusto/query/format-ipv4-function.md
+      - name: format_ipv4_mask()
+        href: ./kusto/query/format-ipv4-mask-function.md
       - name: format_timespan()
         href: ./kusto/query/format-timespanfunction.md
       - name: gamma()
@@ -1087,6 +1113,8 @@
         href: ./kusto/query/series-dividefunction.md
       - name: series_equals()
         href: ./kusto/query/series-equalsfunction.md
+      - name: series_fft()
+        href: ./kusto/query/series-fft-function.md
       - name: series_fill_backward()
         href: ./kusto/query/series-fill-backwardfunction.md
       - name: series_fill_const()
@@ -1109,6 +1137,8 @@
         href: ./kusto/query/series-greaterfunction.md
       - name: series_greater_equals()
         href: ./kusto/query/series-greater-equalsfunction.md
+      - name: series_ifft()
+        href: ./kusto/query/series-ifft-function.md
       - name: series_iir()
         href: ./kusto/query/series-iirfunction.md
       - name: series_less()
@@ -1219,45 +1249,14 @@
           href: ./kusto/tools/kusto-explorer-troubleshooting.md
       - name: Kusto.Cli
         href: ./kusto/tools/kusto-cli.md
-  - name: Concepts
-    href: ./kusto/concepts/index.md
-    items:
-    - name: Getting started
-      href: ./kusto/concepts/index.md
-      items:
-      - name: Sandboxes
-        href: ./kusto/concepts/sandboxes.md
-    - name: Misc and Errors
-      items:
-      - name: Query limits
-        href: ./kusto/concepts/querylimits.md
-      - name: Partial query failures
-        href: ./kusto/concepts/partialqueryfailures.md
-        items:
-        - name: Result truncation
-          href: ./kusto/concepts/resulttruncation.md
-        - name: Runaway queries
-          href: ./kusto/concepts/runawayqueries.md
-        - name: Overflows
-          href: ./kusto/concepts/overflow.md
-      - name: Cross-cluster queries and schema changes
-        href: ./kusto/concepts/crossclusterandschemachanges.md
-      - name: Query consistency
-        href: ./kusto/concepts/queryconsistency.md
-      - name: Errors in native code
-        href: ./kusto/concepts/errorsinnativecode.md
-      - name: Fact and dimension tables
-        href: ./kusto/concepts/fact-and-dimension-tables.md
   - name: Management
-    href: ./kusto/management/index.md
     items:
     - name: Management (control commands) overview
       href: ./kusto/management/index.md
+    - name: Schema
       items:
       - name: Best practices for schema design
         href: ./kusto/management/best-practices.md
-    - name: Schema
-      items:
       - name: Databases management
         href: ./kusto/management/databases.md
         items:
@@ -1316,7 +1315,7 @@
       - name: External tables
         items:
         - name: External tables general control commands
-          href: ./kusto/management/externaltables.md
+          href: ./kusto/management/external-table-commands.md
         - name: Create and alter external SQL tables
           href: ./kusto/management/external-sql-tables.md
         - name: Create and alter external tables in Azure Storage or Azure Data Lake
@@ -1439,7 +1438,7 @@
         items:
         - name: Update policy
           href: ./kusto/management/updatepolicy.md
-        - name: update policy command
+        - name: update policy commands
           href: ./kusto/management/update-policy.md
     - name: Security roles
       href: ./kusto/management/security-roles.md
@@ -1451,12 +1450,6 @@
         href: ./kusto/management/data-ingestion/ingest-from-query.md
       - name: Inline ingestion
         href: ./kusto/management/data-ingestion/ingest-inline.md
-      - name: Ingest from storage using Event Grid subscription
-        href: ./kusto/management/data-ingestion/eventgrid.md
-      - name: Ingest from Event Hub
-        href: ./kusto/management/data-ingestion/eventhub.md
-      - name: Ingest from IoT Hub
-        href: ./kusto/management/data-ingestion/iothub.md
       - name: Streaming ingestion
         items:
         - name: Streaming ingestion and schema changes
@@ -1473,7 +1466,21 @@
       - name: To an external table
         href: ./kusto/management/data-export/export-data-to-an-external-table.md
       - name: Continuous data export
-        href: ./kusto/management/data-export/continuous-data-export.md
+        items:
+        - name: Overview
+          href: ./kusto/management/data-export/continuous-data-export.md
+        - name: Create or alter continuous export
+          href: ./kusto/management/data-export/create-alter-continuous.md
+        - name: Disable or enable continuous export
+          href: ./kusto/management/data-export/disable-enable-continuous.md
+        - name: Drop continuous export
+          href: ./kusto/management/data-export/drop-continuous-export.md
+        - name: Show continuous export
+          href: ./kusto/management/data-export/show-continuous-export.md
+        - name: Show continuous export artifacts
+          href: ./kusto/management/data-export/show-continuous-artifacts.md
+        - name: Show continuous export failures
+          href: ./kusto/management/data-export/show-continuous-failures.md
     - name: Database cursors
       href: ./kusto/management/databasecursor.md
     - name: Query results cache
@@ -1535,10 +1542,36 @@
         href: ./kusto/management/cluster-follower.md
       - name: Data purge
         href: ./kusto/concepts/data-purge.md
-  - name: API
-    href: ./kusto/api/index.md
+  - name: Concepts
     items:
-    - name: Overview
+    - name: Getting started
+      href: ./kusto/concepts/index.md
+    - name: Misc and Errors
+      items:
+      - name: Sandboxes
+        href: ./kusto/concepts/sandboxes.md
+      - name: Query limits
+        href: ./kusto/concepts/querylimits.md
+      - name: Partial query failures
+        href: ./kusto/concepts/partialqueryfailures.md
+        items:
+        - name: Result truncation
+          href: ./kusto/concepts/resulttruncation.md
+        - name: Runaway queries
+          href: ./kusto/concepts/runawayqueries.md
+        - name: Overflows
+          href: ./kusto/concepts/overflow.md
+      - name: Cross-cluster queries and schema changes
+        href: ./kusto/concepts/crossclusterandschemachanges.md
+      - name: Query consistency
+        href: ./kusto/concepts/queryconsistency.md
+      - name: Errors in native code
+        href: ./kusto/concepts/errorsinnativecode.md
+      - name: Fact and dimension tables
+        href: ./kusto/concepts/fact-and-dimension-tables.md
+  - name: API
+    items:
+    - name: API overview
       href: ./kusto/api/index.md
       items:
       - name: Client libraries

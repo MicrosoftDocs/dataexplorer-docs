@@ -2,9 +2,9 @@
 title: Clear query results cache - Azure Data Explorer
 description: This article describes management command for clearing cached database schema in Azure Data Explorer.
 services: data-explorer
-author: amitof 
-ms.author: amitof
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: amitof
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2020
@@ -15,7 +15,7 @@ Clear all [cached query results](../query/query-results-cache.md) made against t
 
 **Syntax**
 
-`.clear` `database` `cache` `queryresults`
+`.clear` `database` `cache` `query_results`
 
 **Returns**
 
@@ -24,7 +24,7 @@ This command returns a table with the following columns:
 |Column    |Type    |Description
 |---|---|---
 |NodeId|`string`|Identifier of the cluster node.
-|Entries|`long`|The number of entries cleared by the node.
+|Count|`long`|The number of entries deleted by the node.
 
 **Example**
 

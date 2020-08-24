@@ -1,15 +1,15 @@
 ---
-title: Getting started with Kusto.Explorer
+title: Kusto.Explorer installation and user interface
 description: Learn about the features of Kusto.Explorer and how it can help you to explore your data
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/19/2020
 ---
 
-# Getting started with Kusto.Explorer
+# Kusto.Explorer installation and user interface
 
 Kusto.Explorer is a rich desktop application that enables you to explore your data using the Kusto Query Language in an easy-to-use user interface. This overview explains how to get started with setting up your Kusto.Explorer and explains the user interface you will use.
 
@@ -21,7 +21,7 @@ With Kusto.Explorer, you can:
 
 ## Installing Kusto.Explorer
 
-* Install the [Kusto.Explorer tool](https://aka.ms/ke).
+* Download and install the Kusto.Explorer tool from [https://aka.ms/ke](https://aka.ms/ke)
 
 * Instead, access your Kusto cluster with your browser at: 
 `https://<your_cluster>.kusto.windows.net.`
@@ -314,7 +314,7 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 * `AAD_TENANT_OF_CLUSTER` is a domain name or AAD tenant ID (a GUID) of the AAD tenant in which the cluster is hosted. This is usually the domain name of the organization that owns the cluster, such as `contoso.com`. 
 * USER_DOMAIN is the identity of the user invited into that tenant (for example, `user@example.com`). 
 
->[!Note]
+>[!NOTE]
 > The domain name of the user is not necessarily the same as that of the tenant hosting the cluster.
 
 :::image type="content" source="images/kusto-explorer/advanced-connection-string.png" alt-text="Kusto Explorer advanced connection string":::

@@ -63,6 +63,10 @@ ms.date: 05/27/2020
 |[startofyear()](startofyearfunction.md)|Returns the start of the year containing the date, shifted by an offset, if provided.|
 |[todatetime()](todatetimefunction.md)|Converts input to datetime scalar.|
 |[totimespan()](totimespanfunction.md)|Converts input to timespan scalar.|
+|[unixtime_microseconds_todatetime()](unixtime-microseconds-todatetimefunction.md)|Converts unix-epoch microseconds to UTC datetime.|
+|[unixtime_milliseconds_todatetime()](unixtime-milliseconds-todatetimefunction.md)|Converts unix-epoch milliseconds to UTC datetime.|
+|[unixtime_nanoseconds_todatetime()](unixtime-nanoseconds-todatetimefunction.md)|Converts unix-epoch nanoseconds to UTC datetime.|
+|[unixtime_seconds_todatetime()](unixtime-seconds-todatetimefunction.md)|Converts unix-epoch seconds to UTC datetime.|
 |[weekofyear()](weekofyearfunction.md)|Returns an integer representing the week number.|
 
 
@@ -203,11 +207,13 @@ ms.date: 05/27/2020
 |[series_fill_const()](series-fill-constfunction.md)|Replaces missing values in a series with a specified constant value.|
 |[series_fill_forward()](series-fill-forwardfunction.md)|Performs forward fill interpolation of missing values in a series.|
 |[series_fill_linear()](series-fill-linearfunction.md)|Performs linear interpolation of missing values in a series.|
+|[series_fft()](series-fft-function.md)|Applies the Fast Fourier Transform (FFT) on a series.|
 |[series_fir()](series-firfunction.md)|Applies a Finite Impulse Response filter on a series.|
 |[series_fit_2lines()](series-fit-2linesfunction.md)|Applies two segments linear regression on a series, returning multiple columns.|
 |[series_fit_2lines_dynamic()](series-fit-2lines-dynamicfunction.md)|Applies two segments linear regression on a series, returning dynamic object.|
 |[series_fit_line()](series-fit-linefunction.md)|Applies linear regression on a series, returning multiple columns.|
 |[series_fit_line_dynamic()](series-fit-line-dynamicfunction.md)|Applies linear regression on a series, returning dynamic object.|
+|[series_ifft()](series-ifft-function.md)|Applies the Inverse Fast Fourier Transform (IFFT) on a series.|
 |[series_iir()](series-iirfunction.md)|Applies an Infinite Impulse Response filter on a series.|
 |[series_outliers()](series-outliersfunction.md)|Scores anomaly points in a series.|
 |[series_pearson_correlation()](series-pearson-correlationfunction.md)|Calculates the Pearson correlation coefficient of two series.|
@@ -272,6 +278,8 @@ ms.date: 05/27/2020
 |[ipv6_is_match()](ipv6-is-matchfunction.md)|Matches two IPv4 or IPv6 strings.|
 |[parse_ipv6()](parse-ipv6function.md)|Converts IPv6 or IPv4 string to a canonical IPv6 string representation.|
 |[parse_ipv6_mask()](parse-ipv6-maskfunction.md)|Converts IPv6 or IPv4 string and netmask to a canonical IPv6 string representation.|
+|[format_ipv4()](format-ipv4-function.md)|Parses input with a netmask and returns string representing IPv4 address.|
+|[format_ipv4_mask()](format-ipv4-mask-function.md)|Parses input with a netmask and returns string representing IPv4 address as CIDR notation.|
 
 ## Type functions
 

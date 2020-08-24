@@ -25,7 +25,7 @@ This command returns a result set that includes any ingestion failures that occu
 
 **Syntax**
 
-|||
+|Syntax option|Description|
 |---|---| 
 |`.show` `ingestion` `failures`                                       |Returns all recorded ingestion failures  
 |`.show` `ingestion` `failures` <code>&#124;</code> `where` ...       |Returns a filtered set of ingestion failures

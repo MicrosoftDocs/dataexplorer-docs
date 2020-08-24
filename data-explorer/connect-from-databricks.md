@@ -1,9 +1,9 @@
 ---
 title: Connect to Azure Data Explorer from Azure Databricks
 description: This topic shows you how to use Azure Databricks to access data from Azure Data Explorer.
-author: manojraheja
-ms.author: maraheja
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: maraheja
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/21/2020
@@ -41,11 +41,12 @@ To install the [spark-kusto-connector](https://mvnrepository.com/artifact/com.mi
     ```kusto
     .set database <DB Name> users ('aadapp=<AAD App ID>;<AAD Tenant ID>') 'AAD App to connect Spark to ADX
     ```
-    |   |   |
+
+    | Parameter | Description |
     | - | - |
-    | ```DB Name``` | your database name |
-    | ```AAD App ID``` | your Azure AD app ID |
-    | ```AAD Tenant ID``` | your Azure AD tenant ID |
+    | `DB Name` | your database name |
+    | `AAD App ID` | your Azure AD app ID |
+    | `AAD Tenant ID` | your Azure AD tenant ID |
 
 ### Find your Azure AD tenant ID
 

@@ -177,7 +177,7 @@ In this section, you learn to attach a database to an existing cluser by using a
         {
             "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
-            "apiVersion": "2019-09-07",
+            "apiVersion": "2020-02-15",
             "location": "[parameters('location')]",
             "properties": {
                 "databaseName": "[parameters('databaseName')]",
@@ -388,7 +388,6 @@ The follower database administrator can modify the [caching policy](kusto/manage
 * Data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) is not supported on both leader and follower clusters. 
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
-* You can't stop a cluster that has attached follower or leader database(s). 
 
 ## Next steps
 

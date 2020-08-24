@@ -83,7 +83,10 @@ To help handle ingestion failures programmatically, failure information is enric
 |UpdatePolicy_IngestionError                    | Failed to invoke update policy. Ingestion error occurred|
 |UpdatePolicy_UnknownError                      | Failed to invoke update policy. Unknown error occurred|
 |BadRequest_MissingJsonMappingtFailure          | JSON pattern didn't ingest with the jsonMapping parameter|
-|BadRequest_InvalidOrEmptyBlob                  | Blob is invalid or is an empty zip archive|
+|BadRequest_InvalidBlob                         | Engine failed to open and read non-zip blob|
+|BadRequest_EmptyBlob                           | Empty blob|
+|BadRequest_EmptyArchive                        | The zip file doesn’t contain any archived elements|
+|BadRequest_EmptyBlobUri                        | The specified blob URI is empty|
 |BadRequest_DatabaseNotExist                    | Database doesn't exist|
 |BadRequest_TableNotExist                       | Table doesn't exist|
 |BadRequest_InvalidKustoIdentityToken           | Invalid Kusto identity token|

@@ -1,9 +1,9 @@
 ---
 title: 'Create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template'
 description: In this article, you learn how to create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/28/2019
@@ -17,7 +17,8 @@ ms.date: 11/28/2019
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, and blobs written to blob containers. In this article, you create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)] 
+In this article, you create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template.
 
 ## Prerequisites
 

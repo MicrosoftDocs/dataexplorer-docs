@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 08/13/2020
 
 # Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
 ---
@@ -19,7 +19,7 @@ ms.date: 06/03/2019
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 
-Azure Data Explorer is a fast and scalable data exploration service for log and telemetry data. It offers continuous ingestion (data loading) from blobs written to blob containers.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
 
 In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that set an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub. Then you'll see an example of the data flow throughout the system.
 
@@ -76,7 +76,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Data connection name | *test-grid-connection* | The name of the connection that you want to create in Azure Data Explorer.|
     | Storage account subscription | Your subscription ID | The subscription ID where your storage account is.|
     | Storage account | *gridteststorage1* | The name of the storage account that you created previously.|
-    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](../data-explorer/kusto/management/data-ingestion/eventgrid.md#create-an-event-grid-subscription-in-your-storage-account) section.|
+    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](ingest-data-event-grid.md) section.|
 
 1. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
     * **Prefix** field is the *literal* prefix of the subject. As the pattern applied is *startswith*, it can span multiple containers, folders or blobs. No wildcards are allowed.
@@ -99,14 +99,14 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
     | Table | *TestTable* | The table you created in **TestDatabase**. |
-    | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT and TSVE. Supported compression options: Zip and GZip |
+    | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, RAW, and W3CLOG. Supported compression options are Zip and GZip. |
     | Mapping | *TestMapping* | The mapping you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**.|
 
-1. Review the resources that auto created for you and select **Create**.
+1. Review the resources that were auto created for you and select **Create**.
 
     :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Review and create data connection for event grid":::
 
-1. Wait until the deployment is completed. If your deployment is failed, you can select **Operation details** next to the failed stage to get more information for the failing reason. You can also select **Redeploy** to try to deploy the resources again.
+1. Wait until the deployment is completed. If your deployment failed, select **Operation details** next to the failed stage to get more information for the failure reason. Select **Redeploy** to try to deploy the resources again.
 
     :::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Deploy event grid resources":::
 
@@ -160,15 +160,7 @@ You can specify the [Ingestion properties](ingestion-properties.md) of the blob 
 
 These properties can be set:
 
-|**Property** | **Property description**|
-|---|---|
-| `rawSizeBytes` | Size of the raw (uncompressed) data. For Avro/ORC/Parquet, that is the size before format-specific compression is applied.|
-| `kustoTable` |  Name of the existing target table. Overrides the `Table` set on the `Data Connection` blade. |
-| `kustoDataFormat` |  Data format. Overrides the `Data format` set on the `Data Connection` blade. |
-| `kustoIngestionMappingReference` |  Name of the existing ingestion mapping to be used. Overrides the `Column mapping` set on the `Data Connection` blade.|
-| `kustoIgnoreFirstRecord` | If set to `true`, Kusto ignores the first row of the blob. Use in tabular format data (CSV, TSV, or similar) to ignore headers. |
-| `kustoExtentTags` | String representing [tags](kusto/management/extents-overview.md#extent-tagging) that will be attached to resulting extent. |
-| `kustoCreationTime` |  Overrides [$IngestionTime](kusto/query/ingestiontimefunction.md?pivots=azuredataexplorer) for the blob, formatted as an ISO 8601 string. Use for backfilling. |
+[!INCLUDE [ingestion-properties-event-grid](includes/ingestion-properties-event-grid.md)]
 
 > [!NOTE]
 > Azure Data Explorer won't delete the blobs post ingestion.

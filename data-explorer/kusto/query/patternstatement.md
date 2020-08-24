@@ -49,7 +49,7 @@ This query will generate an error from Kusto, indicating that the next
 pattern invocations can't be resolved: `app("ApplicationX")["StartEvents"]`
 and `app("ApplicationX")["StopEvents"]`.
 
-**Syntax**
+## Syntax
 
 `declare` `pattern` *PatternName*
 
@@ -73,7 +73,7 @@ app("ApplicationX").StartEvents
 
 The expression that is provided for each pattern that is matched, is either a table name or a reference to a [let statement](letstatement.md).
 
-**Syntax**
+## Syntax
 
 `declare` `pattern` *PatternName* = `(`*ArgName* `:` *ArgType* [`,` ... ]`)` [`[` *PathName* `:` *PathArgType* `]`]
 `{`
@@ -176,7 +176,7 @@ union (App('a1').Text), (App('a2').Text)
 
 **Semantic error**:
 
-     SEM0036: One or more pattern references weren't declared. Detected pattern references: ["App('a1').['Text']","App('a2').['Text']"].
+> SEM0036: One or more pattern references weren't declared. Detected pattern references: ["App('a1').['Text']","App('a2').['Text']"].
 
 ```kusto
 declare pattern App;
@@ -192,7 +192,7 @@ union (App('a2').Metrics), (App('a3').Metrics)
 
 **Semantic error returned**:
 
-    SEM0036: One or more pattern references weren't declared. Detected pattern references: ["App('a2').['Metrics']","App('a3').['Metrics']"].
+> SEM0036: One or more pattern references weren't declared. Detected pattern references: ["App('a2').['Metrics']","App('a3').['Metrics']"].
 
 ::: zone-end
 
