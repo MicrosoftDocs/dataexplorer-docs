@@ -91,7 +91,7 @@ demo_make_series1
 
 :::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-1.png" alt-text="Series fit polynomial" border="false":::
 
-# [Persistent usage](#tab/adhoc)
+# [Persistent usage](#tab/persistent)
 
 * **One time installation**
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
