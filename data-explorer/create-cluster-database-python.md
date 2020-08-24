@@ -117,8 +117,8 @@ If the result contains `provisioningState` with the `Succeeded` value, then the 
     poller =database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
     ```
 
-        [!NOTE]
-        If you are using Python version 0.4.0 or below, use Database instead of ReadWriteDatabase.
+    > [!NOTE]
+    > If you are using Python version 0.4.0 or below, use Database instead of ReadWriteDatabase.
 
    |**Setting** | **Suggested value** | **Field description**|
    |---|---|---|
