@@ -47,10 +47,10 @@ The following kinds of partition keys are supported.
 * `MaxPartitionCount` is the maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period.
   * Supported values are in the range `(1,1024]`.
     * The value is expected to be:
-      * Larger than the number of nodes in the cluster
+      * Larger than the number of nodes in the cluster.
       * Smaller than the cardinality of the column.
     * The higher the value is, the greater the overhead of the data partitioning process on the cluster's nodes, and the higher the number of extents for each time period.
-    * We recommend that you start with a value of `256`.
+    * For clusters with less than 30 nodes, we recommend that you start with a value of `256`.
       * Adjust the value as needed, based on the above considerations, or based on the benefit in query performance 
         vs. the overhead of partitioning the data post-ingestion.
 * `Seed` is the value to use for randomizing the hash value.
