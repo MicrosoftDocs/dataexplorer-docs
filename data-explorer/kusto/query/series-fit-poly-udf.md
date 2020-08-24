@@ -15,13 +15,13 @@ Applies polynomial regression on a series
 
 The function series_fit_poly_udf() takes a table containing multiple series (dynamic numerical array) and generates, for each series, the high-order polynomial that best fits it using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). The function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
 
-Notes:
-* This function is a [UDF (User Defined Function)](functions/user-defined-functions.md). See [how to use it](#usage) below.
-* For linear regression of evenly spaced series (as created by [make-series operator](make-seriesoperator.md)), use the native function [series_fit_line()](series-fit-linefunction.md)
+> [!NOTE]
+>* This function is a [UDF (User Defined Function)](functions/user-defined-functions.md). See [how to use it](#usage) below.
+>* For linear regression of evenly spaced series (as created by [make-series operator](make-seriesoperator.md)), use the native function [series_fit_line()](series-fit-linefunction.md)
 
 ## Syntax
 
-invoke `series_fit_poly_udf(`*y_series*, *y_fit_series*, *fit_coeff*, *degree*, *x_series*, *x_istime*`)`
+`T | invoke series_fit_poly_udf(`*y_series*`,` *y_fit_series*`,` *fit_coeff*`,` *degree*`, [`*x_series*`,` *x_istime*]`)`
   
 ## Arguments
 
@@ -38,6 +38,7 @@ invoke `series_fit_poly_udf(`*y_series*, *y_fit_series*, *fit_coeff*, *degree*, 
 * This is a User Defined Function. You can either embed its code in your query, or install it in your database:
     * For ad hoc usage, embed its code using [let statement](letstatement.md). No permission is required.
     * For recurring usage, persist it using [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md)
+    * This is a [tabular function](functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](invokeoperator.md)
 
 # [Ad hoc usage](#tab/adhoc)
 

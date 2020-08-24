@@ -1221,6 +1221,14 @@
         href: ./kusto/query/session-count-plugin.md
       - name: sliding_window_counts plugin
         href: ./kusto/query/sliding-window-counts-plugin.md
+    - name: User Defined Functions
+      items:
+      - name: User defined function types
+        href: ./kusto/query/user-defined-functions.md
+      - name: series_fit_poly_udf()
+        href: ./kusto/query/series-fit-poly-udf.md
+      - name: series_moving_avg_udf()
+        href: ./kusto/query/series-moving-avg-udf.md
     - name: Reference material for Kusto Query Language
       items:
       - name: RE2 syntax

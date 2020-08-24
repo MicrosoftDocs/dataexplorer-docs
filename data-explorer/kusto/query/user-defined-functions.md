@@ -9,10 +9,11 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/24/2020
 ---
-# UDF types
+# User Defined Function types
 
 ## Series processing functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[series_fit_poly_udf()](series-fit-poly-udf.md)|Fit a polynomial to series using regression analysis|
+|[series_moving_avg_udf()](series-moving-avg-udf.md)|Applies a moving average filter on a series|
