@@ -94,8 +94,8 @@ To summarize over ranges of numeric values, use `bin()` to reduce ranges to disc
 |[percentilesw_array()](percentiles-aggfunction.md)|Returns the weighted percentiles approximates of the group|
 |[stdev()](stdev-aggfunction.md)|Returns the standard deviation across the group|
 |[stdevif()](stdevif-aggfunction.md)|Returns the standard deviation across the group (with predicate)|
-|[sum()](sum-aggfunction.md)|Returns the sum of the elements withing the group|
-|[sumif()](sumif-aggfunction.md)|Returns the sum of the elements withing the group (with predicate)|
+|[sum()](sum-aggfunction.md)|Returns the sum of the elements within the group|
+|[sumif()](sumif-aggfunction.md)|Returns the sum of the elements within the group (with predicate)|
 |[variance()](variance-aggfunction.md)|Returns the variance across the group|
 |[varianceif()](varianceif-aggfunction.md)|Returns the variance across the group (with predicate)|
 
