@@ -89,7 +89,7 @@ demo_make_series1
 | render timechart with(ycolumns=num, fnum)
 ```
 
-:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-1.png" alt-text="Series fit polynomial" border="false":::
+:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-1.png" alt-text="Series fit polynomial 1a" border="false":::
 
 # [Persistent usage](#tab/persistent)
 
@@ -148,7 +148,7 @@ demo_make_series1
 | render timechart with(ycolumns=num, fnum)
 ```
 
-:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-1.png" alt-text="Series fit polynomial" border="false":::
+:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-1.png" alt-text="Series fit polynomial 1b" border="false":::
 
 ## Additional Examples
 
@@ -171,7 +171,7 @@ demo_make_series1
 | render timechart with(ycolumns=num, fnum)
 ```
 
-:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-2.png" alt-text="Series fit polynomial" border="false":::
+:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-2.png" alt-text="Series fit polynomial 2" border="false":::
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -190,5 +190,5 @@ range x from 1 to 200 step 1
 | render linechart
 ```
 
-:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-3.png" alt-text="Series fit polynomial" border="false":::
-:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-4.png" alt-text="Series fit polynomial" border="false":::
+:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-3.png" alt-text="Series fit polynomial 3" border="false":::
+:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-4.png" alt-text="Series fit polynomial 4" border="false":::
