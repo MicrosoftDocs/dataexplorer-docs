@@ -26,7 +26,7 @@ Expands multi-value array or property bag.
 * *ColumnName:* In the result, arrays in the named column are expanded to multiple rows. 
 * *ArrayExpression:* An expression yielding an array. If this form is used, a new column is added and the existing one is preserved.
 * *Name:* A name for the new column.
-* *Typename:* Indicates the underlying type of the array's elements, which becomes the type of the column produced by the `mv-apply` operator. The operation of applying type is cast-only and does not include parsing or type-coversion. Array elements that do not conform with declared type will become `null` values.
+* *Typename:* Indicates the underlying type of the array's elements, which becomes the type of the column produced by the `mv-apply` operator. The operation of applying type is cast-only and doesn't include parsing or type-conversion. Array elements that do not conform with the declared type will become `null` values.
 * *RowLimit:* The maximum number of rows generated from each original row. The default is 2147483647. 
 
   > [!Note]
