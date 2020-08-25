@@ -19,6 +19,7 @@ The Event Grid ingestion pipeline goes through several steps. You create a targe
 
 * See [supported formats](ingestion-supported-formats.md).
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
+    * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it.  The ingestion uncompressed size limit per file is 4 GB.
  
 ## Set ingestion properties
 
