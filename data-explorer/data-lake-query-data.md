@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin 
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/17/2020
 ---
 # Query data in Azure Data Lake using Azure Data Explorer

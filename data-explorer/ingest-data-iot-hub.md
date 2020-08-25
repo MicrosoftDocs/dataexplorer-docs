@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/08/2020
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an IoT Hub, so I can analyze streaming data.
