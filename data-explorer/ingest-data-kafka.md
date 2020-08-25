@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
  
 #Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from Kafka, so I can analyze streaming data.

@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/28/2020
 
 #Customer intent: I want to query data in Azure Monitor using Azure Data Explorer by creating an Azure Data Explorer (ADX) proxy for cross product queries with Log Analytics and Application Insights 

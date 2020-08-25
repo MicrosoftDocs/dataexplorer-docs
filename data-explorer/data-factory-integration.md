@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tomersh26
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/20/2020
 
 #Customer intent: I want to use Azure Data Factory to integrate with Azure Data Explorer.
