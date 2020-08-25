@@ -127,7 +127,7 @@ Returns the results of a calculation for an estimated cluster capacity for each 
 
 This command returns a table containing all the administrative operations since the new Admin node was elected.
 
-|||
+|Syntax option |Description|
 |---|---| 
 |`.show` `operations`              |Returns all operations that the cluster is processing or have processed
 |`.show` `operations` *OperationId*|Returns the operation status for a specific ID
