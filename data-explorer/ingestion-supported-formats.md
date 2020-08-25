@@ -23,7 +23,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 |ORC      |`.orc`      |An [Orc file](https://en.wikipedia.org/wiki/Apache_ORC).|
 |Parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet).|
 |PSV      |`.psv`      |A text file with pipe-separated values (<code>&#124;</code>).|
-|RAW      |`.raw`      |A text file whose entire contents is a single string value. This format is only supported in [Event Grid](ingest-data-event-grid-overview.md).|
+|RAW      |`.raw`      |A text file whose entire contents is a single string value. |
 |SCsv     |`.scsv`     |A text file with semicolon-separated values (`;`).|
 |SOHsv    |`.sohsv`    |A text file with SOH-separated values. (SOH is ASCII codepoint 1; this format is used by Hive on HDInsight.)|
 |TSV      |`.tsv`      |A text file with tab-separated values (`\t`).|
@@ -40,11 +40,20 @@ Blobs and files can be compressed through any of the following compression algor
 |GZip       |.gz      |
 |Zip        |.zip     |
 
-* Indicate compression by appending the extension to the name of the blob or file. For example:
-  * `MyData.csv.zip` indicates a blob or a file formatted as CSV, compressed with ZIP (archive or a single file).
-* Data compressed with the `GZip` compression does not need any specific indication, as the data type is taken from the file suffix. 
-* Data compressed with `ZIP` compression must be specified as `Compression` in the ingestion property.
-* The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it.  The ingestion uncompressed size limit per file is 4 GB.
+Indicate compression by appending the extension to the name of the blob or file.
+
+For example:
+* `MyData.csv.zip` indicates a blob or a file formatted as CSV, compressed with ZIP (archive or a single file)
+* `MyData.csv.gz` indicates a blob or a file formatted as CSV, compressed with GZip
+
+Blob or file names that don't include the format extensions but just compression (for example, `MyData.zip`) is also supported. In this case, the file format
+must be specified as an ingestion property because it cannot be inferred.
+
+> [!NOTE]
+> Some compression formats keep track of the original file extension as part
+> of the compressed stream. This extension is generally ignored for
+> determining the file format. If the file format can't be determined from the (compressed)
+> blob or file name, it must be specified through the `format` ingestion property.
 
 ## Next steps
 
