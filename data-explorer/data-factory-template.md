@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/08/2019
 
 #Customer intent: I want to use Azure Data Factory template to copy large amounts of data from a database to Azure Data Explorer.
