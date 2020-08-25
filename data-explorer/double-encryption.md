@@ -21,8 +21,8 @@ When you create a cluster, its storage is [automatically encrypted at the servic
 # [Azure portal](#tab/portal)
 
 1. [Create an Azure Data Explorer cluster](create-cluster-database-portal.md#create-a-cluster) 
-2. In the **Security** tab > **Enable Double Encryption**, select **On**. To remove the double encryption, select **Off**.
-3. Select **Next:Network>** or **Review + create** to create the cluster.
+1. In the **Security** tab > **Enable Double Encryption**, select **On**. To remove the double encryption, select **Off**.
+1. Select **Next:Network>** or **Review + create** to create the cluster.
 
     :::image type="content" source="media/double-encryption/double-encryption-portal.png" alt-text="double encryption new cluster":::
 
@@ -71,7 +71,7 @@ Set up a managed identity using the Azure Data Explorer C# client:
     await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
     ```
     
-2. Run the following command to check if your cluster was successfully created:
+1. Run the following command to check if your cluster was successfully created:
 
     ```csharp
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
@@ -106,7 +106,7 @@ An Azure Resource Manager template can be used to automate deployment of your Az
 }
 ```
 
-2. When the cluster is created, it has the following additional properties:
+1. When the cluster is created, it has the following additional properties:
 
 ```json
 "identity": {
