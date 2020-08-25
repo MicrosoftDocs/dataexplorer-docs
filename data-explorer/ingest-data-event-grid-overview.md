@@ -52,32 +52,12 @@ blob.Metadata.Add("kustoIngestionMappingReference", "EventsMapping");
 blob.UploadFromFile(jsonCompressedLocalFileName);
 ```
 
-## Generate data
+## Upload blobs
 
 > [!NOTE]
 > Use `BlockBlob` to generate data. `AppendBlob` is not supported.
 
-You can create a blob from a local file, set ingestion properties to the blob metadata, and upload it as follows:
-
- ```csharp
- var azureStorageAccountConnectionString=<storage_account_connection_string>;
-
-var containerName=<container_name>;
-var blobName=<blob_name>;
-var localFileName=<file_to_upload>;
-
-// Create the container
-var azureStorageAccount = CloudStorageAccount.Parse(azureStorageAccountConnectionString);
-var blobClient = azureStorageAccount.CreateCloudBlobClient();
-var container = blobClient.GetContainerReference(containerName);
-container.CreateIfNotExists();
-
-// Set ingestion properties in blob metadata and upload the blob
-var blob = container.GetBlockBlobReference(blobName);
-blob.Metadata.Add("rawSizeBytes", "4096‬"); // the uncompressed size is 4096 bytes
-blob.Metadata.Add("kustoIgnoreFirstRecord", "true"); // First line of this csv file are headers
-blob.UploadFromFile(csvCompressedLocalFileName);
-```
+You can create a blob from a local file, set ingestion properties to the blob metadata, and upload it. For example, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md#generate-sample-data)
 
 > [!NOTE]
 > Using Azure Data Lake Gen2 storage SDK requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to "true".

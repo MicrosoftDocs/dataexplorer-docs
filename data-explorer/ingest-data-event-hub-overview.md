@@ -20,6 +20,8 @@ The Event Hub ingestion pipeline transfers events to Azure Data Explorer using s
 
 * Data is read from the Event Hub in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
 * See [supported formats](ingestion-supported-formats.md).
+    > [!NOTE]
+    > Event Hub does not support the .raw format.
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
 
 > [!NOTE]
@@ -150,40 +152,11 @@ A template can be found in the how-to [Create an event hub](ingest-data-event-hu
 > * The partition count isn't changeable, so you should consider long-term scale when setting partition count.
 > * Consumer group *must* be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
 
-#### Generate data
+### Upload blobs
 
-* See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.
+See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.
 
-An event can contain one or more records, up to its size limit. In the following sample we send two events, each has five records appended:
-
-```csharp
-var events = new List<EventData>();
-var data = string.Empty;
-var recordsPerEvent = 5;
-var rand = new Random();
-var counter = 0;
-
-for (var i = 0; i < 10; i++)
-{
-    // Create the data
-    var metric = new Metric { Timestamp = DateTime.UtcNow, MetricName = "Temperature", Value = rand.Next(-30, 50) }; 
-    var data += JsonConvert.SerializeObject(metric) + Environment.NewLine;
-    counter++;
-
-    // Create the event
-    if (counter == recordsPerEvent)
-    {
-        var eventData = new EventData(Encoding.UTF8.GetBytes(data));
-        events.Add(eventData);
-
-        counter = 0;
-        data = string.Empty;
-    }
-}
-
-// Send events
-eventHubClient.SendAsync(events).Wait();
-```
+An event can contain one or more records, up to its size limit.
 
 ## Next steps
 

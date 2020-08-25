@@ -32,6 +32,7 @@ If you don't already have one, [Create an Iot Hub](ingest-data-iot-hub.md#create
 * Data is read from the Event Hub endpoint in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
 * See [supported formats](ingestion-supported-formats.md).
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
+  * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it. The ingestion uncompressed size limit per file is 4 GB.
 
 ## Set ingestion properties
 
