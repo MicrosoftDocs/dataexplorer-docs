@@ -95,17 +95,39 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
     :::image type="content" source="media/adx-dashboards/save-dashboard.png" alt-text="save dashboard":::
 
+## Share dashboards
+
+Open the “Share” menu item on the top bar and select the “Manage Permissions” item in the drop down.
+
+:::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Share dashboard drop-down":::
+
+In the manage permissions pane uses can do 1 of 3:
+1.	grant other users permissions to the dashboard
+2.	Change a user permission level.
+3.	Copy link to the dashboard.
+To grant a user permission you can either paste his email or start typing his email in the “Add new member” box.
+Select the permission level (either “can view” or “can edit”) and then click the add button.
+
+:::image type="content" source="media/adx-dashboards/manage-permissions.png" alt-text="Manage permissions":::
+
+To change a user permissions level, find the use in the list either by scrolling the list or searching his name in the search box. Then change the permission level drop down to the required level (“can view” or “can edit”).
+
+To share the link use the copy link at the bottom of the pane or at the top level menu of the “Share” drop down.
+
+> [!NOTE]
+> To access the dashboard the user should have access to the underlying database in the ADX cluster and also have the link for the first time access.
+
 ## Enable auto refresh 
 \\Needs review with Gabi\\
 
 1. Switch to edit mode \\How?\\
 1. Select **Auto refresh** on top bar. \\May need an image of entire portal?\\
  
-:::image type="content" source="auto-refresh.png" alt-text="Select auto refresh":::
+:::image type="content" source="media/adx-dashboards/auto-refresh.png" alt-text="Select auto refresh":::
 
 1. Toggle the option to enable the feature. Select values for **Minimum time interval** and **Default refresh rate**. 
 
-:::image type="content" source="auto-refresh-toggle.png" alt-text="Enable auto refresh":::
+:::image type="content" source="media/adx-dashboards/auto-refresh-toggle.png" alt-text="Enable auto refresh":::
 
 1. Click **Apply** and **Save** the dashboard.
 
@@ -116,4 +138,5 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 ## Next Steps
 
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
+* [Customize dashboard visuals](dashboard-customize-visuals.md)
 * [Query data in Azure Data Explorer](web-query-data.md)

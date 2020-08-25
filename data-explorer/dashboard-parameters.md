@@ -42,7 +42,8 @@ To create a parameter, select the **New parameter** button at the top of the rig
 |Field  |Description |
 |---------|---------|
 |**Parameter display name**    |   The name of the parameter shown on the dashboard or the edit card.      |
-|**Parameter type**    |One of the following:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li></ul>    |
+|**Parameter type**    |One of the following:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li>
+<li>**Free text**: Does not have any values populated in the filter. The user can type a value or copy/paste a value to the text field. The filter keeps the recent values used.</li></ul>    |
 |**Variable name**     |   The name of the parameter to be used in the query.      |
 |**Data type**    |    The data type of the parameter values.     |
 |**Pin as dashboard filter**   |   Pin the parameter-based filter to the dashboard or unpin from the dashboard.       |
@@ -259,3 +260,45 @@ Query-based parameter values are derived at dashboard load time by executing the
     The new parameter shows up in the parameter list at the top of the dashboard. 
 
 1. Select one or more different values to update the visuals.
+
+### Use the free text parameters
+
+Free text parameters do not contains any values and they provide the user with an option to introduce his own value for free from search.
+
+#### Create the parameter
+
+1. Select Parameters to open the Parameters pane and select New parameter.
+2. Fill in the details as follows:
+    * Parameter display name: Company
+    * Parameter type: Free text
+    * Variable name: _company
+    * Data type: String
+    * Pin as dashboard filter: checked
+    * Default value: No default value
+
+#### Use parameters in the query
+
+1. Run a sample query using the new Company parameter by using the _company variable name:
+
+    ```kusto
+    EventsAll
+    | where CreatedAt > ago(7d)
+    | where Type == "WatchEvent"
+    | where Repo.name has _company
+    | summarize WatchEvents=count() by RepoName = tolower(tostring(Repo.name))
+    | top 5 by WatchEvents
+    ```
+
+The new parameter shows up in the parameter list at the top of the dashboard.
+
+2. Select different values to update the visuals.
+
+## Use filter search for single and multiple selection filters
+
+In single and multiple selection filters, type the value that you want. The filter search will present all the values that match.
+
+## Next Steps
+
+* [Customize dashboard visuals](dashboard-customize-visuals.md)
+* [Query data in Azure Data Explorer](web-query-data.md) 
+
