@@ -81,7 +81,6 @@ A time chart visual is a type of line graph. the first column of the query is th
 
 ### Anomaly chart 
 
-
 :::image type="content" source="media/dashboard-customize-visuals/anomaly-chart.png" alt-text="anomaly chart visual type":::
 
 An anomaly chart visual is similar to [time chart](#time-chart), but highlights anomalies using the `series_decompose_anomalies` function.
@@ -96,27 +95,28 @@ The map visual type needs 4 columns in the query results to render:
 * Latitude (real)
 * Bubble size (int). This can be constant 1 if different sizes aren't required.
 
-Maps are useful to visualize data with geo coordinates. It also has a built-in zoom functionality.
+Maps are useful to visualize data with geo coordinates. The Map visual also has a built-in zoom functionality.
 
-# Access the visual customization selection
+## Customize visuals
 
-To access the visual customization dialogue,select **Edit Card**. Alternatively, select **Edit Card** at the time of creating a new card using **Add Query**.
+\\Gabi
+To access the visual customization dialogue, select **Edit Card**. Alternatively, select **Edit Card** at the time of creating a new card using **Add Query**.
 
 :::image type="content" source="media/dashboard-customize-visuals/edit-card.png" alt-text="edit card for visual customization":::
 
-## Customize visuals using properties
+### Select properties to customize visuals
 
-This section lists the various properties which can be changed to customize visuals.
+Use the following properties to customize visuals.
 
 :::image type="content" source="media/dashboard-customize-visuals/visual-customization-sidebar.png" alt-text="Visual customization sidebar":::
 
 |Section  |Description | Visual types
 |---------|---------|-----|
-|**General**    |    Select the **stacked** or **non stacked** chart format for **Bar**, **Line** and **Area charts**   | Bar, Column, and Area |
-|**Data**    |   Select **Y and X Columns** for your visual. Keep the selection as **Infer** if you want the platform to automatically select a column based on the query result    |Bar, Column, Scatter, and Anomaly |
-|**Legend**    |   Toggle to show or hide the display of legends on your visuals   |Bar, Column, Area, Line, Scatter, Anomaly, and Time |
-|**Y Axis**     |   Allows customization of Y-Axis properties: <ul><li>**Label**: Text for a custom label. </li><li>**Maximum Value**: Change the maximum value of the Y axis.  </li><li>**Minimum Value**: Change the minimum value of the Y axis.  </li></ul>      |Bar, Column, Area, Line, Scatter, Anomaly, and Time |
-|**X Axis**     |    Allows customization of X-Axis properties: <ul><li>**Label**: Text for a custom label. </li>     | Bar, Column, Area, Line, Scatter, Anomaly, and Time|
+|**General**    |    Select the **stacked** or **non stacked** chart format for **Bar**, **Line** and **Area charts**   | Bar, Column, and Area charts |
+|**Data**    |   Select **Y and X Columns** for your visual. Keep the selection as **Infer** if you want the platform to automatically select a column based on the query result    |Bar, Column, Scatter, and Anomaly charts|
+|**Legend**    |   Toggle to show or hide the display of legends on your visuals   |Bar, Column, Area, Line, Scatter, Anomaly, and Time charts |
+|**Y Axis**     |   Allows customization of Y-Axis properties: <ul><li>**Label**: Text for a custom label. </li><li>**Maximum Value**: Change the maximum value of the Y axis.  </li><li>**Minimum Value**: Change the minimum value of the Y axis.  </li></ul>      |Bar, Column, Area, Line, Scatter, Anomaly, and Time charts |
+|**X Axis**     |    Allows customization of X-axis properties: <ul><li>**Label**: Text for a custom label. </li>     | Bar, Column, Area, Line, Scatter, Anomaly, and Time charts|
 
 ## Next steps
 

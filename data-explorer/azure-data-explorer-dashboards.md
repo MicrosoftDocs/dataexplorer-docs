@@ -97,25 +97,35 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
 ## Share dashboards
 
-Open the “Share” menu item on the top bar and select the “Manage Permissions” item in the drop down.
+1. Select **Share** menu item in the top bar of the dashboard and select **Manage permissions** from the drop down.
 
-:::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Share dashboard drop-down":::
+    :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Share dashboard drop-down":::
 
-In the manage permissions pane uses can do 1 of 3:
-1.	grant other users permissions to the dashboard
-2.	Change a user permission level.
-3.	Copy link to the dashboard.
-To grant a user permission you can either paste his email or start typing his email in the “Add new member” box.
-Select the permission level (either “can view” or “can edit”) and then click the add button.
+In the **Dashboard permissions** pane:
+* Grant permissions to the dashboard
+* Change a user permission level
+* Copy and share link to the dashboard
 
-:::image type="content" source="media/adx-dashboards/manage-permissions.png" alt-text="Manage permissions":::
+### Grant permissions
 
-To change a user permissions level, find the use in the list either by scrolling the list or searching his name in the search box. Then change the permission level drop down to the required level (“can view” or “can edit”).
+1. To grant permissions to a user, start typing or paste the user's name or email in **Add new member** box.
+1. Select the **Permission** level as **can view** or **can edit** and then click **Add**.
 
-To share the link use the copy link at the bottom of the pane or at the top level menu of the “Share” drop down.
+:::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Manage dashboard permissions":::
 
+### Change a user permission level
+
+To change a user permission level:
+1. Use the search box or scroll the user list to find the user.
+1. Change the **Permission** level as needed.
+
+### Share the dashboard link
+\\Gabi - can't access from this pane. Its in share dropdown?
+To share the link, use the copy link at the bottom of the pane or at the top level menu of the “Share” drop down
+
+\\Gabi - more general....
 > [!NOTE]
-> To access the dashboard the user should have access to the underlying database in the ADX cluster and also have the link for the first time access.
+> To access the dashboard the user should have access to the underlying database in the Azure Data Explorer cluster and also have the link for the first time access.
 
 ## Enable auto refresh 
 \\Needs review with Gabi\\

@@ -261,24 +261,25 @@ Query-based parameter values are derived at dashboard load time by executing the
 
 1. Select one or more different values to update the visuals.
 
-### Use the free text parameters
+### Use the free text parameter
 
-Free text parameters do not contains any values and they provide the user with an option to introduce his own value for free from search.
+\\review with Gabi\\
+Free text parameters don't contain any values. They allow you to introduce your own value from search.
 
 #### Create the parameter
 
-1. Select Parameters to open the Parameters pane and select New parameter.
-2. Fill in the details as follows:
-    * Parameter display name: Company
-    * Parameter type: Free text
-    * Variable name: _company
-    * Data type: String
-    * Pin as dashboard filter: checked
-    * Default value: No default value
+1. Select **Parameters** to open the **Parameters pane** and select **New parameter**.
+1. Fill in the details as follows:
+    * **Parameter display name**: Company
+    * **Parameter type**: Free text
+    * **Variable name**: _company
+    * **Data type**: String
+    * **Pin as dashboard filter**: checked
+    * **Default value**: No default value
 
 #### Use parameters in the query
 
-1. Run a sample query using the new Company parameter by using the _company variable name:
+1. Run a sample query using the new *Company* parameter by using the `_company` variable name:
 
     ```kusto
     EventsAll
@@ -289,12 +290,12 @@ Free text parameters do not contains any values and they provide the user with a
     | top 5 by WatchEvents
     ```
 
-The new parameter shows up in the parameter list at the top of the dashboard.
+The new parameter is now visible in the parameter list at the top of the dashboard.
 
-2. Select different values to update the visuals.
+1. Select different values to update the visuals. \\Gabi
 
 ## Use filter search for single and multiple selection filters
-
+\\Gabi
 In single and multiple selection filters, type the value that you want. The filter search will present all the values that match.
 
 ## Next Steps
