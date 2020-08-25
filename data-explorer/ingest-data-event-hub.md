@@ -44,7 +44,7 @@ In this article, you generate sample data and send it to an event hub. The first
 
     The **Deploy to Azure** button takes you to the Azure portal to fill out a deployment form.
 
-    ![Deploy to Azure](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Deployment form to create event hub](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. Select the subscription where you want to create the event hub, and create a resource group named *test-hub-rg*.
 
@@ -52,7 +52,7 @@ In this article, you generate sample data and send it to an event hub. The first
 
 1. Fill out the form with the following information.
 
-    ![Deployment form](media/ingest-data-event-hub/deployment-form.png)
+    ![Deployment form with suggested fields filled out](media/ingest-data-event-hub/deployment-form.png)
 
     Use defaults for any settings not listed in the following table.
 
@@ -70,7 +70,7 @@ In this article, you generate sample data and send it to an event hub. The first
 
 1. Select **Notifications** on the toolbar to monitor the provisioning process. It might take several minutes for the deployment to succeed, but you can move on to the next step now.
 
-    ![Notifications](media/ingest-data-event-hub/notifications.png)
+    ![Show notifications on the toolbar](media/ingest-data-event-hub/notifications.png)
 
 ## Create a target table in Azure Data Explorer
 
