@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
-ms.topic: reference
+ms.topic: how-to
 ms.date: 08/13/2020
 ---
 # Connect to Event Hub

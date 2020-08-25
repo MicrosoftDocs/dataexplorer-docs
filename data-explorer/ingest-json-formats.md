@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ---
 

@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2020
 
 # Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
