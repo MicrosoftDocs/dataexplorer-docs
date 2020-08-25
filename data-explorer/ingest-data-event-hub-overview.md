@@ -19,12 +19,11 @@ The Event Hub ingestion pipeline transfers events to Azure Data Explorer using s
 ## Data format
 
 * Data is read from the Event Hub in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
-* Event payload can be ingested in one of the [formats supported by Azure Data Explorer](ingestion-supported-formats.md).
-* Data can be compressed using `GZip` compression algorithm. Must be specified as `Compression` [ingestion property](#set-ingestion-properties).
+* See [supported formats](ingestion-supported-formats.md).
+* See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
 
-    > [!Note]
-    > * Data compression is not supported for compressed formats (Avro, Parquet, ORC).
-    > * Custom encoding and embedded [system properties](#set-event-system-properties-mapping) are not supported on compressed data.
+> [!NOTE]
+> Custom encoding and embedded [system properties](#set-event-system-properties-mapping) are not supported on compressed data.
     
 ## Set ingestion properties
 

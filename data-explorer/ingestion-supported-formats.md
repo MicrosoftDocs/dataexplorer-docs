@@ -41,7 +41,7 @@ Blobs and files can be compressed through any of the following compression algor
 |Zip        |.zip     |
 
 * Indicate compression by appending the extension to the name of the blob or file. For example:
-  * `MyData.csv.zip` indicates a blob or a file formatted as CSV, compressed with ZIP (archive or a single file)
+  * `MyData.csv.zip` indicates a blob or a file formatted as CSV, compressed with ZIP (archive or a single file).
 * Data compressed with the `GZip` compression does not need any specific indication, as the data type is taken from the file suffix. 
 * Data compressed with `ZIP` compression must be specified as `Compression` in the ingestion property.
 * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it.  The ingestion uncompressed size limit per file is 4 GB.
