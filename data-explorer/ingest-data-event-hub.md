@@ -44,7 +44,7 @@ In this article, you generate sample data and send it to an event hub. The first
 
     The **Deploy to Azure** button takes you to the Azure portal to fill out a deployment form.
 
-    ![Deployment form to create event hub](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Deploy to Azure](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. Select the subscription where you want to create the event hub, and create a resource group named *test-hub-rg*.
 
@@ -52,7 +52,7 @@ In this article, you generate sample data and send it to an event hub. The first
 
 1. Fill out the form with the following information.
 
-    ![Deployment form with suggested fields filled out](media/ingest-data-event-hub/deployment-form.png)
+    ![Deployment form](media/ingest-data-event-hub/deployment-form.png)
 
     Use defaults for any settings not listed in the following table.
 
@@ -70,7 +70,7 @@ In this article, you generate sample data and send it to an event hub. The first
 
 1. Select **Notifications** on the toolbar to monitor the provisioning process. It might take several minutes for the deployment to succeed, but you can move on to the next step now.
 
-    ![Show notifications on the toolbar](media/ingest-data-event-hub/notifications.png)
+    ![Notifications](media/ingest-data-event-hub/notifications.png)
 
 ## Create a target table in Azure Data Explorer
 
@@ -159,34 +159,11 @@ Use the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) 
 1. Open the sample app solution in Visual Studio.
 
 1. In the *program.cs* file, update the `eventHubName` constant to the name of your Event Hub and update the `connectionString` constant to the connection string you copied from the Event Hub namespace.
-    
+
     ```csharp
-    var events = new List<EventData>();
-    var data = string.Empty;
-    var recordsPerEvent = 5;
-    var rand = new Random();
-    var counter = 0;
-    
-    for (var i = 0; i < 10; i++)
-    {
-        // Create the data
-        var metric = new Metric { Timestamp = DateTime.UtcNow, MetricName = "Temperature", Value = rand.Next(-30, 50) }; 
-        var data += JsonConvert.SerializeObject(metric) + Environment.NewLine;
-        counter++;
-    
-        // Create the event
-        if (counter == recordsPerEvent)
-        {
-            var eventData = new EventData(Encoding.UTF8.GetBytes(data));
-            events.Add(eventData);
-    
-            counter = 0;
-            data = string.Empty;
-        }
-    }
-    
-    // Send events
-    eventHubClient.SendAsync(events).Wait();
+    const string eventHubName = "test-hub";
+    // Copy the connection string ("Connection string-primary key") from your Event Hub namespace.
+    const string connectionString = @"<YourConnectionString>";
     ```
 
 1. Build and run the app. The app sends messages to the event hub, and it prints out status every ten seconds.

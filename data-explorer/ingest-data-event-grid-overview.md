@@ -13,14 +13,16 @@ ms.date: 08/13/2020
 
 Event Grid is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
 
-The Event Grid ingestion pipeline goes through several steps. You create a target table and in Azure Data Explorer to which the [data in a particular format](#data-format) will be ingested. Then you create an Event Grid data connection in Azure Data Explorer. The Event Grid data connection needs to know [events routing](#set-events-routing) information, such as what table to send the data to and the table mapping. You also specify [ingestion properties](#set-ingestion-properties), which describe the data to be ingested, the target table, and the mapping. This process can be managed through the [Azure portal](ingest-data-event-grid.md), programatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md).
+The Event Grid ingestion pipeline goes through several steps. You create a target table and in Azure Data Explorer to which the [data in a particular format](#data-format) will be ingested. Then you create an Event Grid data connection in Azure Data Explorer. The Event Grid data connection needs to know [events routing](#set-events-routing) information, such as what table to send the data to and the table mapping. You also specify [ingestion properties](#set-ingestion-properties), which describe the data to be ingested, the target table, and the mapping. You can generate sample data and [upload blobs](#upload-blobs) to test your connection. [Delete blobs](#delete-blobs-using-storage-lifecycle) after ingestion. For how-tos, see how this process can be managed through the [Azure portal](ingest-data-event-grid.md), programatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md).
+
+For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
 ## Data format
 
 * See [supported formats](ingestion-supported-formats.md).
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
     * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it.  The ingestion uncompressed size limit per file is 4 GB.
-    * Data compressed with the `GZip` compression does not need any specific indication, as the data type is taken from the file suffix. 
+    * Data compressed with the `GZip` compression doesn't need any specific indication, as the data type is taken from the file suffix. 
 
 ## Set ingestion properties
 

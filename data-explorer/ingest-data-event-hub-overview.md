@@ -14,21 +14,21 @@ ms.date: 08/13/2020
 
 [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
 
-The Event Hub ingestion pipeline transfers events to Azure Data Explorer using several steps. You first create an Event Hub in the Azure portal. You then create a target table Azure Data Explorer to which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#set-ingestion-properties). The Event Hub connection needs to know [events routing](#set-events-routing). Data is embedded with selected properties according to the [event system properties mapping](#set-event-system-properties-mapping). This process can be managed through the [Azure portal](ingest-data-event-hub.md), programatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
+The Event Hub ingestion pipeline transfers events to Azure Data Explorer using several steps. You first create an Event Hub in the Azure portal. You then create a target table Azure Data Explorer to which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#set-ingestion-properties). The Event Hub connection needs to know [events routing](#set-events-routing). Data is embedded with selected properties according to the [event system properties mapping](#set-event-system-properties-mapping). [Create a connection](#create-event-hub-connection) to Event Hub to [create an Event Hub](#create-an-event-hub) and [upload blobs](#upload-blobs). For how-tos, see how this process can be managed through the [Azure portal](ingest-data-event-hub.md), programatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
+
+For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
 ## Data format
 
 * Data is read from the Event Hub in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
 * See [supported formats](ingestion-supported-formats.md).
     > [!NOTE]
-    > Event Hub does not support the .raw format.
+    > Event Hub doesn't support the .raw format.
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
-    * Data compressed with the `GZip` compression does not need any specific indication, as the data type is taken from the file suffix. 
+    * Data compressed with the `GZip` compression doesn't need any specific indication, as the data type is taken from the file suffix. 
     > [!NOTE]
     > Custom encoding and embedded [system properties](#set-event-system-properties-mapping) are not supported on compressed data.
-    
-
-    
+  
 ## Set ingestion properties
 
 Ingestion properties instruct the ingestion process, where to route the data, and how to process it. You can specify [ingestion properties](ingestion-properties.md) of the events ingestion using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
@@ -95,7 +95,7 @@ System properties store properties that are set by the Event Hubs service, at th
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
 
-### Examples
+### Examples of using system mapping
 
 #### Table schema example
 
@@ -154,7 +154,7 @@ A template can be found in the how-to [Create an event hub](ingest-data-event-hu
 > * The partition count isn't changeable, so you should consider long-term scale when setting partition count.
 > * Consumer group *must* be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
 
-### Upload blobs
+## Upload blobs
 
 See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.
 
@@ -162,6 +162,8 @@ For examples, see [Ingest data from Event Hub into Azure Data Explorer](ingest-d
 
 > [!NOTE]
 > An event can contain one or more records, up to its size limit.
+
+> TODO: Keren: Do we want to add a clean up resources general section here??
 
 ## Next steps
 

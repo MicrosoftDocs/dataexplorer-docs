@@ -13,8 +13,9 @@ ms.date: 08/13/2020
 
 [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) is a managed service, hosted in the cloud, that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages. Azure Data Explorer offers continuous ingestion from customer-managed IoT Hubs, using its [Event Hub compatible built in endpoint](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#routing-endpoints).
 
-The IoT ingestion pipeline goes through several steps. First, you create an IoT Hub, and register a device to this IoT Hub. You then create a target table Azure Data Explorer to which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#set-ingestion-properties). The Iot Hub connection needs to know [events routing](#set-events-routing) to connect to the Azure Data Explorer table. Data is embedded with selected properties according to the [event system properties mapping](#set-event-system-properties-mapping). This process can be managed through the [Azure portal](ingest-data-iot-hub.md), programatically with [C#](data-connection-iot-hub-csharp.md) or [Python](data-connection-iot-hub-python.md), or with the [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md).
+The IoT ingestion pipeline goes through several steps. First, you create an IoT Hub, and register a device to this IoT Hub. You then create a target table Azure Data Explorer to which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#set-ingestion-properties). The Iot Hub connection needs to know [events routing](#set-events-routing) to connect to the Azure Data Explorer table. Data is embedded with selected properties according to the [event system properties mapping](#set-event-system-properties-mapping). For how-tos, see how this process can be managed through the [Azure portal](ingest-data-iot-hub.md), programatically with [C#](data-connection-iot-hub-csharp.md) or [Python](data-connection-iot-hub-python.md), or with the [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md).
 
+For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
 ## Create IoT Hub connection
 
@@ -32,10 +33,10 @@ If you don't already have one, [Create an Iot Hub](ingest-data-iot-hub.md#create
 * Data is read from the Event Hub endpoint in form of [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
 * See [supported formats](ingestion-supported-formats.md).
     > [!NOTE]
-    > IoT Hub does not support the .raw format.
+    > IoT Hub doesn't support the .raw format.
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
   * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it. The ingestion uncompressed size limit per file is 4 GB.
-  * Data compressed with the `GZip` compression does not need any specific indication, as the data type is taken from the file suffix. 
+  * Data compressed with the `GZip` compression doesn't need any specific indication, as the data type is taken from the file suffix. 
 
 ## Set ingestion properties
 
@@ -50,7 +51,7 @@ Ingestion properties instruct the ingestion process. Where to route the data and
 
 ## Set events routing
 
-When setting up an IoT Hub connection to Azure Data Explorer cluster, you specify target table properties (table name, data format and mapping). This setting is the default routing for your data, also referred to as static routing.
+When setting up an IoT Hub connection to Azure Data Explorer cluster, you specify target table properties (table name, data format, and mapping). This setting is the default routing for your data, also referred to as static routing.
 You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
 
 > [!Note]
@@ -95,7 +96,7 @@ If your data includes three columns (`Timespan`, `Metric`, and `Value`) and the 
 
 Run the following commands to add data to the beginning of the record. 
 Note ordinal values: properties are added at the beginning of the record in the order listed in the table above. 
-This is important for CSV mapping where the column ordinals will change based on the system properties that are mapped.
+This process is important for CSV mapping where the column ordinals will change based on the system properties that are mapped.
 
 ```kusto
     .create table TestTable ingestion csv mapping "CsvMapping1"
