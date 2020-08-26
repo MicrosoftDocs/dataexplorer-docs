@@ -4,7 +4,7 @@
   "rootDirectory": "data-explorer",
   "docLinkSettings": {
     "linkFormat": "relative",
-    "relativeLinkPrefix": "/azure/data-explorer/kusto/"
+    "relativeLinkPrefix": "/azure/data-explorer/"
   },
   "inclusionCriteria": {
     "additionalMicrosoftOrgs": [
@@ -14,23 +14,23 @@
   },
   "areas": [
     {
-      "name": "api",
+      "name": "kusto/api",
       "heading": "API"
     },
     {
-      "name": "concepts",
+      "name": "kusto/concepts",
       "heading": "Concepts"
     },
     {
-      "name": "management",
+      "name": "kusto/management",
       "heading": "Management"
     },
     {
-      "name": "query",
+      "name": "kusto/query",
       "heading": "Query"
     },
     {
-      "name": "tools",
+      "name": "kusto/tools",
       "heading": "Tools"
     }
   ]
