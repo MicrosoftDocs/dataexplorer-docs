@@ -129,6 +129,6 @@ For example, the name resolution will be:
 |myadx.westus.kusto.windows.net|CNAME|myadx.privatelink.westus.kusto.windows.net|
 |myadx.privatelink.westus.kusto.windows.net|A|10.3.0.9|This is your Private Endpoint IP (that you already connected to the Engine private link service)|
 
-After this DNS configuration, you can reach your ADX Engine privately with the default DNS name. for example: myadx.westus.kusto.windows.net.
+After this DNS configuration, you can reach your ADX Engine inside your Virtual Network privately with the following URL: myadx.region.kusto.windows.net.
 
 To reach your ADX ingestion (Data Management) privately, register the record for your ingestion (Data Management) with a A record and the ingestion Private Endpoint IP.
