@@ -43,7 +43,9 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
     :::image type="content" source="media/ingest-data-one-click/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
 
-<!-- TODO either change the local file tutorial to blob storage or create another one to show users how to do this-->
+* To access the wizard from Ibiza, click on the **Query** in the left menu of ?, select a database, and select **Ingest new data (preview)**.
+
+    :::image type="content" source="media/ingest-data-one-click/access-from-ibiza.png" alt-text="Access the one click ingestion wizard from Ibiza":::
 
 ## One-click ingestion wizard
 
