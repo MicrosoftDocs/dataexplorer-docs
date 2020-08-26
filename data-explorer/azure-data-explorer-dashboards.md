@@ -111,6 +111,7 @@ In the **Dashboard permissions** pane:
 1. To grant permissions to a user, start typing or paste the user's name or email in **Add new member** box.
 1. Select the **Permission** level as **can view** or **can edit** and then click **Add**.
 
+\\New image
 :::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Manage dashboard permissions":::
 
 ### Change a user permission level
@@ -120,30 +121,30 @@ To change a user permission level:
 1. Change the **Permission** level as needed.
 
 ### Share the dashboard link
-\\Gabi - can't access from this pane. Its in share dropdown?
+
 To share the link, use the copy link at the bottom of the pane or at the top level menu of the “Share” drop down
 
-\\Gabi - more general....
+\\ edit text - 3 things
 > [!NOTE]
-> To access the dashboard the user should have access to the underlying database in the Azure Data Explorer cluster and also have the link for the first time access.
+> To access the dashboard the user needs the following - dashboard permissions, should have access to the underlying database in the Azure Data Explorer cluster, and also have the link for the first time access.
 
 ## Enable auto refresh 
-\\Needs review with Gabi\\
 
-1. Switch to edit mode \\How?\\
-1. Select **Auto refresh** on top bar. \\May need an image of entire portal?\\
+1. Select **Edit** in dashboard menu to switch to edit mode.
+1. Select **Auto refresh**. 
  
-:::image type="content" source="media/adx-dashboards/auto-refresh.png" alt-text="Select auto refresh":::
+    :::image type="content" source="media/adx-dashboards/auto-refresh.png" alt-text="Select auto refresh":::
 
-1. Toggle the option to enable the feature. Select values for **Minimum time interval** and **Default refresh rate**. 
+1. Toggle the option so auto refresh is **Enabled**. 
+1. Select values for **Minimum time interval** and **Default refresh rate**. 
 
-:::image type="content" source="media/adx-dashboards/auto-refresh-toggle.png" alt-text="Enable auto refresh":::
+    :::image type="content" source="media/adx-dashboards/auto-refresh-toggle.png" alt-text="Enable auto refresh":::
 
-1. Click **Apply** and **Save** the dashboard.
+1. Select **Apply** and **Save** the dashboard.
 
 > [!NOTE]
-> * Use the minimum time internal to reduce unnecessary load on the cluster 
-> * As a viewer, you can change the refresh intervals for dashboard but you can't save the changes. Also, you can't select a value which is smaller than the minimum time interval specified by the editor.
+> * Select the smallest minimum time interval to reduce unnecessary load on the cluster. 
+> * A dashboard viewer can change the refresh intervals for the dashboard but can't save the changes. A viewer can't select a value which is smaller than the **Minimum time interval** specified by the editor.
 
 ## Next Steps
 

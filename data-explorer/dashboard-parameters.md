@@ -263,8 +263,7 @@ Query-based parameter values are derived at dashboard load time by executing the
 
 ### Use the free text parameter
 
-\\review with Gabi\\
-Free text parameters don't contain any values. They allow you to introduce your own value from search.
+Free text parameters don't contain any values. They allow you to introduce your own value from scratch.
 
 #### Create the parameter
 
@@ -292,11 +291,9 @@ Free text parameters don't contain any values. They allow you to introduce your 
 
 The new parameter is now visible in the parameter list at the top of the dashboard.
 
-1. Select different values to update the visuals. \\Gabi
-
 ## Use filter search for single and multiple selection filters
-\\Gabi
-In single and multiple selection filters, type the value that you want. The filter search will present all the values that match.
+
+In single and multiple selection filters, type the value that you want. The filter search will present all the recently retrieved values that match the search term.
 
 ## Next Steps
 
