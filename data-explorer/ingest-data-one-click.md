@@ -45,7 +45,7 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
 * To access the wizard from the Azure portal, select **Query** from the left menu, right click on the **database** or **table**, and select **Ingest new data (preview)**.
 
-    :::image type="content" source="media/ingest-data-one-click/access-from-ibiza.png" alt-text="Access the one click ingestion wizard from Azure portal" lightbox="media/ingest-data-one-click/access-from-ibiza.png":::
+    :::image type="content" source="media/ingest-data-one-click/access-from-portal.png" alt-text="Access the one click ingestion wizard from Azure portal" lightbox="media/ingest-data-one-click/access-from-portal.png":::
 
 ## One-click ingestion wizard
 
