@@ -23,7 +23,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 |ORC      |`.orc`      |An [Orc file](https://en.wikipedia.org/wiki/Apache_ORC).|
 |Parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet).|
 |PSV      |`.psv`      |A text file with pipe-separated values (<code>&#124;</code>).|
-|RAW      |`.raw`      |A text file whose entire contents is a single string value. |
+|RAW      |`.raw`      |A text file whose entire contents is a single string value.|
 |SCsv     |`.scsv`     |A text file with semicolon-separated values (`;`).|
 |SOHsv    |`.sohsv`    |A text file with SOH-separated values. (SOH is ASCII codepoint 1; this format is used by Hive on HDInsight.)|
 |TSV      |`.tsv`      |A text file with tab-separated values (`\t`).|

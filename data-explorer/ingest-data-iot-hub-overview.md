@@ -123,9 +123,9 @@ Data is added by using the system properties names as they appear in the **Data 
     ']'
 ```
 
-### Generate data
+## Upload blobs
 
-* See the [sample project](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Quickstarts/simulated-device) that simulates a device and generates data.
+See the [sample project](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Quickstarts/simulated-device) that simulates a device and generates data.
 
 ## Next steps
 
