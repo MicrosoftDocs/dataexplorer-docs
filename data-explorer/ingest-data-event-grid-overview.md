@@ -20,7 +20,8 @@ The Event Grid ingestion pipeline goes through several steps. You create a targe
 * See [supported formats](ingestion-supported-formats.md).
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
     * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it.  The ingestion uncompressed size limit per file is 4 GB.
- 
+    * Data compressed with the `GZip` compression does not need any specific indication, as the data type is taken from the file suffix. 
+
 ## Set ingestion properties
 
 You can specify [ingestion properties](ingestion-properties.md) of the blob ingestion via the blob metadata.
@@ -54,10 +55,10 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 
 ## Upload blobs
 
+You can create a sample blob from a local file, set ingestion properties to the blob metadata, and upload it. For examples, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md#generate-sample-data)
+
 > [!NOTE]
 > Use `BlockBlob` to generate data. `AppendBlob` is not supported.
-
-You can create a blob from a local file, set ingestion properties to the blob metadata, and upload it. For example, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md#generate-sample-data)
 
 > [!NOTE]
 > Using Azure Data Lake Gen2 storage SDK requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to "true".

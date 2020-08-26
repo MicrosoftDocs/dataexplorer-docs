@@ -23,9 +23,11 @@ The Event Hub ingestion pipeline transfers events to Azure Data Explorer using s
     > [!NOTE]
     > Event Hub does not support the .raw format.
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
+    * Data compressed with the `GZip` compression does not need any specific indication, as the data type is taken from the file suffix. 
+    > [!NOTE]
+    > Custom encoding and embedded [system properties](#set-event-system-properties-mapping) are not supported on compressed data.
+    
 
-> [!NOTE]
-> Custom encoding and embedded [system properties](#set-event-system-properties-mapping) are not supported on compressed data.
     
 ## Set ingestion properties
 
