@@ -43,9 +43,9 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
     :::image type="content" source="media/ingest-data-one-click/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
 
-* To access the wizard from Ibiza, select **Query** from the lefthand menu, right click on the **database** or **table**, and select **Ingest new data (preview)**.
+* To access the wizard from the Azure portal, select **Query** from the left menu, right click on the **database** or **table**, and select **Ingest new data (preview)**.
 
-    :::image type="content" source="media/ingest-data-one-click/access-from-ibiza.png" alt-text="Access the one click ingestion wizard from Ibiza":::
+    :::image type="content" source="media/ingest-data-one-click/access-from-ibiza.png" alt-text="Access the one click ingestion wizard from Azure portal" lightbox="media/ingest-data-one-click/access-from-ibiza.png":::
 
 ## One-click ingestion wizard
 
