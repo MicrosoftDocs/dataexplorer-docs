@@ -159,35 +159,35 @@ Use the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) 
 1. Open the sample app solution in Visual Studio.
 
 1. In the *program.cs* file, update the `eventHubName` constant to the name of your Event Hub and update the `connectionString` constant to the connection string you copied from the Event Hub namespace.
-
-```csharp
-var events = new List<EventData>();
-var data = string.Empty;
-var recordsPerEvent = 5;
-var rand = new Random();
-var counter = 0;
-
-for (var i = 0; i < 10; i++)
-{
-    // Create the data
-    var metric = new Metric { Timestamp = DateTime.UtcNow, MetricName = "Temperature", Value = rand.Next(-30, 50) }; 
-    var data += JsonConvert.SerializeObject(metric) + Environment.NewLine;
-    counter++;
-
-    // Create the event
-    if (counter == recordsPerEvent)
+    
+    ```csharp
+    var events = new List<EventData>();
+    var data = string.Empty;
+    var recordsPerEvent = 5;
+    var rand = new Random();
+    var counter = 0;
+    
+    for (var i = 0; i < 10; i++)
     {
-        var eventData = new EventData(Encoding.UTF8.GetBytes(data));
-        events.Add(eventData);
-
-        counter = 0;
-        data = string.Empty;
+        // Create the data
+        var metric = new Metric { Timestamp = DateTime.UtcNow, MetricName = "Temperature", Value = rand.Next(-30, 50) }; 
+        var data += JsonConvert.SerializeObject(metric) + Environment.NewLine;
+        counter++;
+    
+        // Create the event
+        if (counter == recordsPerEvent)
+        {
+            var eventData = new EventData(Encoding.UTF8.GetBytes(data));
+            events.Add(eventData);
+    
+            counter = 0;
+            data = string.Empty;
+        }
     }
-}
-
-// Send events
-eventHubClient.SendAsync(events).Wait();
-```
+    
+    // Send events
+    eventHubClient.SendAsync(events).Wait();
+    ```
 
 1. Build and run the app. The app sends messages to the event hub, and it prints out status every ten seconds.
 
