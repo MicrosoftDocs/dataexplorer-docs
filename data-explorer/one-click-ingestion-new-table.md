@@ -23,7 +23,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 1. In the left menu of the Web UI, right-click a *database* and select **Ingest new data (Preview)**.
 
     :::image type="content" source="media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png" alt-text="Ingest new data":::
- 
+
 1. In the **Ingest new data (Preview)** window, the **Source** tab is selected. 
 
 1. Select **Create new table** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
@@ -47,7 +47,7 @@ Under **Ingestion type**, do the following steps:
 
 A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
   
- * For example, you can filter for all files that begin with the word *data* and end with a *.csv.gz* extension.
+ * For example, you can filter for all files that begin with the word *.csv* extension.
 
     :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
   
@@ -82,8 +82,8 @@ In the table:
 
     [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
-    > [!NOTE]
-    > For tabular formats, each column can be ingested into one column in Azure Data Explorer.
+  > [!NOTE]
+  > For tabular formats, each column can be ingested into one column in Azure Data Explorer.
 
 [!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
 
