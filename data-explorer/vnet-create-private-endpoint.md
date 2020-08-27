@@ -43,7 +43,7 @@ To create the Private Link Service for the Engine:
 
 1. In the **Outbound settings** pane, complete the following 
 
-:::image type="content" source="media/vnet-create-private-endpoint/private-link-outbound.png" alt-text="Private link tab 2 - Outbound settings":::
+    :::image type="content" source="media/vnet-create-private-endpoint/private-link-outbound.png" alt-text="Private link tab 2 - Outbound settings":::
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
