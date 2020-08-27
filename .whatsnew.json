@@ -1,7 +1,7 @@
 {
   "$schema": "https://whatsnewapi.azurewebsites.net/schema",
   "docSetProductName": "Azure Data Explorer",
-  "rootDirectory": "data-explorer/kusto",
+  "rootDirectory": "data-explorer/kusto/",
   "docLinkSettings": {
     "linkFormat": "relative",
     "relativeLinkPrefix": "/azure/data-explorer/kusto/"
