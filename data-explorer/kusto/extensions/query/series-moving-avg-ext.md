@@ -1,6 +1,6 @@
 ---
-title: series_moving_avg_udf() - Azure Data Explorer
-description: This article describes series_moving_avg_udf() user-defined function in Azure Data Explorer.
+title: series_moving_avg_ext() - Azure Data Explorer
+description: This article describes series_moving_avg_ext() user-defined function in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,18 +9,18 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/24/2020
 ---
-# series_moving_avg_udf()
+# series_moving_avg_ext()
 
 Applies a moving average filter on a series 
 
-The function series_moving_avg_udf() takes an expression containing a dynamic numerical array as input and applies a [simple moving average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) filter.
+The function series_moving_avg_ext() takes an expression containing a dynamic numerical array as input and applies a [simple moving average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) filter.
 
 > [!NOTE]
->This function is a [UDF (User Defined Function)](functions/user-defined-functions.md). See [how to use it](#usage) below.
+>This function is a [UDF (User Defined Function)](../../query/functions/user-defined-functions.md). See [how to use it](#usage) below.
 
 ## Syntax
 
-`series_moving_avg_udf(`*x*`,` *n*`, [`*center*`])`
+`series_moving_avg_ext(`*x*`,` *n*`, [`*center*`])`
   
 ## Arguments
 
@@ -31,8 +31,8 @@ The function series_moving_avg_udf() takes an expression containing a dynamic nu
 ## Usage
 
 * This is a User Defined Function. You can either embed its code in your query, or install it in your database:
-    * For ad hoc usage, embed its code using [let statement](letstatement.md). No permission is required.
-    * For recurring usage, persist it using [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md)
+    * For ad hoc usage, embed its code using [let statement](../../query/letstatement.md). No permission is required.
+    * For recurring usage, persist it using [.create function](../../management/create-function.md). Creating a function requires [database user permission](../../management/access-control/role-based-authorization.md)
 
 # [Ad hoc usage](#tab/adhoc)
 
@@ -78,4 +78,4 @@ demo_make_series1
 | render timechart 
 ```
 
-:::image type="content" source="images/series-moving-avg-udf/series-moving-avg-udf-1.png" alt-text="Series moving average 1b" border="false":::
+:::image type="content" source="images/series-moving-avg-ext/series-moving-avg-ext-1.png" alt-text="Series moving average 1b" border="false":::

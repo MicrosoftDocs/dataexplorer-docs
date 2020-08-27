@@ -1,6 +1,6 @@
 ---
-title: series_fit_poly_udf() - Azure Data Explorer
-description: This article describes series_fit_poly_udf() user-defined function in Azure Data Explorer.
+title: series_fit_poly_ext() - Azure Data Explorer
+description: This article describes series_fit_poly_ext() user-defined function in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,20 +9,20 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/23/2020
 ---
-# series_fit_poly_udf()
+# series_fit_poly_ext()
 
 Applies polynomial regression on a series 
 
-The function series_fit_poly_udf() takes a table containing multiple series (dynamic numerical array) and generates, for each series, the high-order polynomial that best fits it using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). The function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
+The function series_fit_poly_ext() takes a table containing multiple series (dynamic numerical array) and generates, for each series, the high-order polynomial that best fits it using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). The function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
 
 > [!NOTE]
->* This function contains inline Python and requires [enabling the python() plugin](pythonplugin.md#enable-the-plugin) on the cluster.
->* This function is a [UDF (User Defined Function)](functions/user-defined-functions.md). See [how to use it](#usage) below.
->* For linear regression of evenly spaced series (as created by [make-series operator](make-seriesoperator.md)), use the native function [series_fit_line()](series-fit-linefunction.md)
+>* This function contains inline Python and requires [enabling the python() plugin](../../query/pythonplugin.md#enable-the-plugin) on the cluster.
+>* This function is a [UDF (User Defined Function)](../../query/functions/user-defined-functions.md). See [how to use it](#usage) below.
+>* For linear regression of evenly spaced series (as created by [make-series operator](../../query/make-seriesoperator.md)), use the native function [series_fit_line()](../../query/series-fit-linefunction.md).
 
 ## Syntax
 
-`T | invoke series_fit_poly_udf(`*y_series*`,` *y_fit_series*`,` *fit_coeff*`,` *degree*`, [`*x_series*`,` *x_istime*]`)`
+`T | invoke series_fit_poly_ext(`*y_series*`,` *y_fit_series*`,` *fit_coeff*`,` *degree*`, [`*x_series*`,` *x_istime*]`)`
   
 ## Arguments
 
@@ -36,15 +36,15 @@ The function series_fit_poly_udf() takes a table containing multiple series (dyn
 ## Usage
 
 * This is a User Defined Function. You can either embed its code in your query, or install it in your database:
-    * For ad hoc usage, embed its code using [let statement](letstatement.md). No permission is required.
-    * For recurring usage, persist it using [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md)
-    * This is a [tabular function](functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](invokeoperator.md)
+    * For ad hoc usage, embed its code using [let statement](../../query/letstatement.md). No permission is required.
+    * For recurring usage, persist it using [.create function](../../management/create-function.md). Creating a function requires [database user permission](../../management/access-control/role-based-authorization.md)
+* This is a [tabular function](../../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../../query/invokeoperator.md)
 
 # [Ad hoc usage](#tab/adhoc)
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let series_fit_poly_udf=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
+let series_fit_poly_ext=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
 {
     let kwargs = pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
     let code=
@@ -86,11 +86,11 @@ let max_t = datetime(2016-09-03);
 demo_make_series1
 | make-series num=count() on TimeStamp from max_t-1d to max_t step 5m by OsVer
 | extend fnum = dynamic(null), coeff=dynamic(null), fnum1 = dynamic(null), coeff1=dynamic(null)
-| invoke series_fit_poly_udf('num', 'fnum', 'coeff', 5)
+| invoke series_fit_poly_ext('num', 'fnum', 'coeff', 5)
 | render timechart with(ycolumns=num, fnum)
 ```
 
-:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-1.png" alt-text="Series fit polynomial 1a" border="false":::
+:::image type="content" source="images/series-fit-poly-ext/series-fit-poly-ext-1.png" alt-text="Series fit polynomial 1a" border="false":::
 
 # [Persistent usage](#tab/persistent)
 
@@ -98,7 +98,7 @@ demo_make_series1
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Fit a polynomial of a specified degree to a series")
-series_fit_poly_udf(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=false)
+series_fit_poly_ext(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=false)
 {
     let kwargs = pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
     let code=
@@ -145,11 +145,11 @@ let max_t = datetime(2016-09-03);
 demo_make_series1
 | make-series num=count() on TimeStamp from max_t-1d to max_t step 5m by OsVer
 | extend fnum = dynamic(null), coeff=dynamic(null), fnum1 = dynamic(null), coeff1=dynamic(null)
-| invoke series_fit_poly_udf('num', 'fnum', 'coeff', 5)
+| invoke series_fit_poly_ext('num', 'fnum', 'coeff', 5)
 | render timechart with(ycolumns=num, fnum)
 ```
 
-:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-1.png" alt-text="Series fit polynomial 1b" border="false":::
+:::image type="content" source="images/series-fit-poly-ext/series-fit-poly-ext-1.png" alt-text="Series fit polynomial 1b" border="false":::
 
 ## Additional Examples
 
@@ -168,11 +168,11 @@ demo_make_series1
 | where hourofday(TimeStamp) % 6 != 0   //  delete every 6th hour to create unevenly spaced time series
 | summarize TimeStamp=make_list(TimeStamp), num=make_list(num) by OsVer
 | extend fnum = dynamic(null), coeff=dynamic(null)
-| invoke series_fit_poly_udf('num', 'fnum', 'coeff', 8, 'TimeStamp', True)
+| invoke series_fit_poly_ext('num', 'fnum', 'coeff', 8, 'TimeStamp', True)
 | render timechart with(ycolumns=num, fnum)
 ```
 
-:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-2.png" alt-text="Series fit polynomial 2" border="false":::
+:::image type="content" source="images/series-fit-poly-ext/series-fit-poly-ext-2.png" alt-text="Series fit polynomial 2" border="false":::
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -186,10 +186,10 @@ range x from 1 to 200 step 1
 | order by x asc 
 | summarize x=make_list(x), y=make_list(y)
 | extend y_fit = dynamic(null), coeff=dynamic(null)
-| invoke series_fit_poly_udf('y', 'y_fit', 'coeff', 5, 'x')
+| invoke series_fit_poly_ext('y', 'y_fit', 'coeff', 5, 'x')
 |fork (project-away coeff) (project coeff | mv-expand coeff)
 | render linechart
 ```
 
-:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-3.png" alt-text="Series fit polynomial 3" border="false":::
-:::image type="content" source="images/series-fit-poly-udf/series-fit-poly-udf-4.png" alt-text="Series fit polynomial 4" border="false":::
+:::image type="content" source="images/series-fit-poly-ext/series-fit-poly-ext-3.png" alt-text="Series fit polynomial 3" border="false":::
+:::image type="content" source="images/series-fit-poly-ext/series-fit-poly-ext-4.png" alt-text="Series fit polynomial 4" border="false":::

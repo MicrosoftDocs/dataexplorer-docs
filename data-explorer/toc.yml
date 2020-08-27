@@ -1221,14 +1221,6 @@
         href: ./kusto/query/session-count-plugin.md
       - name: sliding_window_counts plugin
         href: ./kusto/query/sliding-window-counts-plugin.md
-    - name: User Defined Functions
-      items:
-      - name: User defined function types
-        href: ./kusto/query/user-defined-functions.md
-      - name: series_fit_poly_udf()
-        href: ./kusto/query/series-fit-poly-udf.md
-      - name: series_moving_avg_udf()
-        href: ./kusto/query/series-moving-avg-udf.md
     - name: Reference material for Kusto Query Language
       items:
       - name: RE2 syntax
@@ -1681,6 +1673,14 @@
         href: ./kusto/api/monaco/monaco-kusto.md
       - name: Embed web UX in an iFrame
         href: ./kusto/api/monaco/host-web-ux-in-iframe.md
+  - name: Extenions
+    items:
+    - name: Extensions
+      href: kusto/extensions/query/extensions.md
+    - name: series_fit_poly_ext()
+      href: kusto/extensions/query/series-fit-poly-ext.md
+    - name: series_moving_avg_ext()
+      href: kusto/extensions/query/series-moving-avg-ext.md
 - name: Resources
   items:
   - name: Blog
