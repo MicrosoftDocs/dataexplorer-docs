@@ -342,7 +342,6 @@ Some of the data format mappings (Parquet, JSON and Avro) support simple and use
 |Path-dependant transformation|Description|Conditions|
 |--|--|--|
 |`PropertyBagArrayToDictionary`|Transforms JSON array of properties (e.g. {events:[{"n1":"v1"},{"n2":"v2"}]}) to dictionary and serializes it to valid JSON document (for example, {"n1":"v1","n2":"v2"}).|Can be applied only when `path` is used|
-|`GetPathElement(index)`|Extracts an element from the given path according to the given index (for example, Path: $.a.b.c, GetPathElement(0) == "c", GetPathElement(-1) == "b", type string|Can be applied only when `path` is used|
 |`SourceLocation`|Name of the storage artifact that provided the data, type string (for example, the blob's "BaseUri" field).|
 |`SourceLineNumber`|Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).|
 |`DateTimeFromUnixSeconds`|Converts number representing unix-time (seconds since 1970-01-01) to UTC datetime string|
