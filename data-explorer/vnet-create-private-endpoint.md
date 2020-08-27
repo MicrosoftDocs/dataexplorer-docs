@@ -16,7 +16,7 @@ The Private Endpoint uses an IP address from your Azure VNet address space. Netw
 
 For more information, see:
 
-1. [What is Azure Private Endpoint?](/azure/private-link/private-endpoint-overview)
+1. [What is Azure Private Endpoint?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
 1. [What is Azure Private Link service?](https://docs.microsoft.com/azure/private-link/private-link-service-overview)
 1. [Azure Private Endpoint DNS configuration](https://docs.microsoft.com/azure/private-link/private-endpoint-dns) 
 
