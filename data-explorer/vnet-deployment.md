@@ -65,7 +65,7 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 It is possible to create [private endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections (e.g. EventHub/Storage) and external tables (e.g. Storage/Data Lake Gen 2/SQL Database) from your VNet and access the underlying resources privately.
 
  [!NOTE]
- > Setting up Private Endpoint requires [configuring DNS](azure/private-link/private-endpoint-dns), We support [Azure Private DNS zone](azure/dns/private-dns-privatednszone) setup only, custom DNS server is not supported. 
+ > Setting up Private Endpoint requires [configuring DNS](/azure/private-link/private-endpoint-dns), We support [Azure Private DNS zone](/azure/dns/private-dns-privatednszone) setup only, custom DNS server is not supported. 
 
 ## Dependencies for VNet deployment
 
