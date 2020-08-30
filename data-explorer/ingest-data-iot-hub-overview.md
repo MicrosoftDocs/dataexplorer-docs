@@ -59,7 +59,7 @@ You can also specify target table properties for each event, using event propert
 
 ## Set event system properties mapping
 
-System properties are a collection used to store properties that are set by the IoT Hubs service, on the time the event is received. The Azure Data Explorer IoT Hub connection will embed the selected properties into the data landing in your table.
+System properties are a collection used to store properties that are set by the IoT Hub service, on the time the event is received. The Azure Data Explorer IoT Hub connection will embed the selected properties in the data landing in your table.
 
 > [!Note]
 > For `csv` mapping, properties are added at the beginning of the record in the order listed in the table below. For `json` mapping, properties are added according to property names in the following table.
