@@ -35,13 +35,13 @@ For every cluster, the recommendation's details are different and include the re
 
 ### Cost recommendations
 
-The purpose of these recommendations is to save you money. Cost recommendations are published for clusters that can be changed to reduce cost without compromising performance. Cost recommendations include: [ADX Unused cluster](#ADX-Unused-cluster), [Right-size ADX clusters for cost](#Right-size-ADX-clusters-for-cost), [Reduce cache for Azure Data Explorer Tables](#Reduce-cache-for-Azure-Data-Explorer-Tables).
+The purpose of these recommendations is to save you money. Cost recommendations are published for clusters that can be changed to reduce cost without compromising performance. Cost recommendations include: [Azure Data Explorer Unused cluster](#Azure-Data-Explorer-Unused-cluster), [Right-size Azure Data Explorer clusters for cost](#Right-size-Azure-Data-Explorer-clusters-for-cost), [Reduce cache for Azure Data Explorer Tables](#Reduce-cache-for-Azure-Data-Explorer-Tables).
 
-#### ADX Unused cluster
+#### Azure Data Explorer Unused cluster
 
 A cluster that meets the next conditions is considered unused: has a small amount of data, queries, and ingestions in the last 30 days, has low cpu usage in the last two days and has no followers in the last day. The recommended action for an unused cluster is to stop it if the data it contains is important, or delete it otherwise.
 
-#### Right-size ADX clusters for cost
+#### Right-size Azure Data Explorer clusters for cost
 
 This recommendation is published for a cluster that its sku is stronger than necessary, based on its usage telemetry in the last week, and can be cheaper with a weaker sku. A weaker sku can be a lower-level machine and/or a lower number of instances.
 
@@ -51,12 +51,12 @@ If a cluster's caching policy's period is higher than necessary, it might save u
 
 ### Performance recommendations
 
-The purpose of these recommendations is to improve the performance of your Azure Data Explorer clusters. Performance recommendations include: [Right-size ADX cluster](#Right-size-ADX-cluster), [Update Cache Policies for ADX tables](#Update-Cache-Policies-for-ADX-tables)
+The purpose of these recommendations is to improve the performance of your Azure Data Explorer clusters. Performance recommendations include: [Right-size Azure Data Explorer cluster](#Right-size-Azure-Data-Explorer-cluster), [Update Cache Policies for Azure Data Explorer tables](#Update-Cache-Policies-for-Azure-Data-Explorer-tables)
 
-#### Right-size ADX cluster
+#### Right-size Azure Data Explorer cluster
 
 This recommendation is published for a cluster that its sku is weaker than it should be, based on its usage telemetry in the last week, and can be better performing with a stronger sku. A stronger sku can be a higher-level machine and/or a higher number of instances.
 
-#### Update Cache Policies for ADX tables
+#### Update Cache Policies for Azure Data Explorer tables
 
 If a cluster's caching policy's period is lower than necessary (meaning most of the queries it ran in the last 30 days accessed data that was not in cache), its queries will take more time to finish than they should. Thus, this recommendation is published for a cluster that its caching policy does not fit the vast majority of the queries it ran in the last 30 days.
