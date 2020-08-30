@@ -154,7 +154,7 @@ A template can be found in the how-to [Create an event hub](ingest-data-event-hu
 > * The partition count isn't changeable, so you should consider long-term scale when setting partition count.
 > * Consumer group *must* be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
 
-## Upload blobs
+## Sending events
 
 See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.
 
