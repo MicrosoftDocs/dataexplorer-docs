@@ -21,8 +21,7 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 
 * See [supported formats](ingestion-supported-formats.md).
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
-    * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it.  The ingestion uncompressed size limit per file is 4 GB.
-    * Data compressed with the `GZip` compression doesn't need any specific indication, as the data type is taken from the file suffix. 
+    * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it. The ingestion uncompressed size limit per file is 4 GB.
 
 ## Set ingestion properties
 

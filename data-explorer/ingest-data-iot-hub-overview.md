@@ -36,11 +36,10 @@ If you don't already have one, [Create an Iot Hub](ingest-data-iot-hub.md#create
     > IoT Hub doesn't support the .raw format.
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
   * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it. The ingestion uncompressed size limit per file is 4 GB.
-  * Data compressed with the `GZip` compression doesn't need any specific indication, as the data type is taken from the file suffix. 
 
 ## Set ingestion properties
 
-Ingestion properties instruct the ingestion process; where to route the data and how to process it. You can specify [Ingestion properties](ingestion-properties.md) of the events using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
+Ingestion properties instruct the ingestion process where to route the data and how to process it. You can specify [Ingestion properties](ingestion-properties.md) of the events using the [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
 
 |Property |Description|
 |---|---|
@@ -124,7 +123,7 @@ Data is added by using the system properties names as they appear in the **Data 
     ']'
 ```
 
-## Upload blobs
+## Sending events
 
 See the [sample project](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Quickstarts/simulated-device) that simulates a device and generates data.
 

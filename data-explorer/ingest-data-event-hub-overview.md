@@ -25,10 +25,8 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
     > [!NOTE]
     > Event Hub doesn't support the .raw format.
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
-    * Data compressed with the `GZip` compression doesn't need any specific indication, as the data type is taken from the file suffix. 
-    * Data compression is not supported for compressed formats (Avro, Parquet, ORC).
-    > [!NOTE]
-    > Custom encoding and embedded [system properties](#set-event-system-properties-mapping) are not supported on compressed data.
+   * Data compression is not supported for compressed formats (Avro, Parquet, ORC).
+   * Custom encoding and embedded [system properties](#set-event-system-properties-mapping) are not supported on compressed data.
   
 ## Set ingestion properties
 
@@ -160,11 +158,6 @@ A template can be found in the how-to [Create an event hub](ingest-data-event-hu
 See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.
 
 For examples, see [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md#generate-sample-data)
-
-> [!NOTE]
-> An event can contain one or more records, up to its size limit.
-
-> TODO: Keren: Do we want to add a clean up resources general section here??
 
 ## Next steps
 
