@@ -57,7 +57,7 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 
 ## Upload blobs
 
-You can create a sample blob from a local file, set ingestion properties to the blob metadata, and upload it. For examples, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md#generate-sample-data)
+You can create a blob from a local file, set ingestion properties to the blob metadata, and upload it. For examples, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md#generate-sample-data)
 
 > [!NOTE]
 > Use `BlockBlob` to generate data. `AppendBlob` is not supported.
