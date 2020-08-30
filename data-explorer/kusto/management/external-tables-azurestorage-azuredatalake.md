@@ -111,7 +111,7 @@ By default, datetime values are rendered using the following formats:
 
 If *PathFormat* is omitted from the external table definition, it's assumed that all partitions, in exactly the same order as they're defined, are separated using `/` separator. Partitions are rendered using their default string presentation.
 
-To check path format definition correctness, use option `sampleUris` when creating an external table.
+To check path format definition correctness, use the property `sampleUris` when creating an external table.
 
 <a name="format"></a>
 *Format*
