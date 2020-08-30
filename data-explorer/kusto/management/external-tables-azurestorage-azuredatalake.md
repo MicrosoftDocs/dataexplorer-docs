@@ -78,7 +78,7 @@ Partitions list is any combination of partition columns, specified using one of 
   *PartitionName* `:` `datetime` `=` (`startofyear` \| `startofmonth` \| `startofweek` \| `startofday`) `(` *ColumnName* `)`  
   *PartitionName* `:` `datetime` `=` `bin` `(` *ColumnName* `,` *TimeSpan* `)`
 
-To check partitioning definition correctness, use option `sampleUris` when creating an external table.
+To check partitioning definition correctness, use the property `sampleUris` when creating an external table.
 
 <a name="path-format"></a>
 *PathFormat*
