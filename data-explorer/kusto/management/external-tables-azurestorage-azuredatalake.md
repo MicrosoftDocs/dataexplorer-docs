@@ -14,7 +14,7 @@ ms.date: 03/24/2020
 
 The following command describes how to create an external table located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2. 
 
-For an introduction to external Azure Storage tables feature, please see [Query data in Azure Data Lake using Azure Data Explorer](../../data-lake-query-data.md).
+For an introduction to the external Azure Storage tables feature, see [Query data in Azure Data Lake using Azure Data Explorer](../../data-lake-query-data.md).
 
 ## .create or .alter external table
 
