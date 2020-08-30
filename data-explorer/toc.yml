@@ -1316,10 +1316,10 @@
         items:
         - name: External tables general control commands
           href: ./kusto/management/external-table-commands.md
+        - name: Create and alter external tables in Azure Storage or Azure Data Lake
+          href: ./kusto/management/external-tables-azurestorage-azuredatalake.md
         - name: Create and alter external SQL tables
           href: ./kusto/management/external-sql-tables.md
-        - name: Create and alter external tables in Azure Storage or Azure Data Lake
-          href: ./kusto/management/external-tables-azurestorage-azuredatalake.md  
       - name: Columns
         items:
         - name: Columns management
