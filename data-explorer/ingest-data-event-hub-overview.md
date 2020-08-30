@@ -26,7 +26,7 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
     > Event Hub doesn't support the .raw format.
 
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
-   * Data compression is not supported for compressed formats (Avro, Parquet, ORC).
+   * Data compression isn't supported for compressed formats (Avro, Parquet, ORC).
    * Custom encoding and embedded [system properties](#set-event-system-properties-mapping) aren't supported on compressed data.
   
 ## Set ingestion properties
