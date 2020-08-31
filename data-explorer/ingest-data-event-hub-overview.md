@@ -35,9 +35,9 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 
 |Property |Description|
 |---|---|
-| Table | Name (case sensitive) of the existing target table. Overrides the `Table` set on the `Data Connection` blade. |
-| Format | Data format. Overrides the `Data format` set on the `Data Connection` blade. |
-| IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` blade.|
+| Table | Name (case sensitive) of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
+| Format | Data format. Overrides the `Data format` set on the `Data Connection` pane. |
+| IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](https://docs.microsoft.com/dotnet/api/system.text.encoding?view=netframework-4.8#remarks). |
 | Tags (Preview) | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extents-overview.md#performance-notes-1) when using tags. |
@@ -94,51 +94,6 @@ System properties store properties that are set by the Event Hubs service, at th
 | x-opt-partition-key |string |The partition key of the corresponding partition that stored the event |
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
-
-### Examples of using system mapping
-
-#### Table schema example
-
-Create or alter the table schema by using the table schema command, if your data includes:
-* the columns `Timespan`, `Metric`, and `Value`  
-* the properties `x-opt-enqueued-time` and `x-opt-offset`
-
-```kusto
-    .create-merge table TestTable (TimeStamp: datetime, Metric: string, Value: int, EventHubEnqueuedTime:datetime, EventHubOffset:long)
-```
-
-#### CSV mapping example
-
-Run the following commands to add data to the beginning of the record.
-Properties are added at the beginning of the record, in the order listed in the table above.
-The ordinal values are important for CSV mapping where the column ordinals will change, based on the system properties that are mapped.
-
-```kusto
-    .create table TestTable ingestion csv mapping "CsvMapping1"
-    '['
-    '   { "column" : "Timespan", "Properties":{"Ordinal":"2"}},'
-    '   { "column" : "Metric", "Properties":{"Ordinal":"3"}},'
-    '   { "column" : "Value", "Properties":{"Ordinal":"4"}},'
-    '   { "column" : "EventHubEnqueuedTime", "Properties":{"Ordinal":"0"}},'
-    '   { "column" : "EventHubOffset", "Properties":{"Ordinal":"1"}}'
-    ']'
-```
- 
-#### JSON-mapping example
-
-Add data by using the system properties names as they appear in the *Data connection* blade *Event system properties* list. 
-Run:
-
-```kusto
-    .create table TestTable ingestion json mapping "JsonMapping1"
-    '['
-    '    { "column" : "Timespan", "Properties":{"Path":"$.timestamp"}},'
-    '    { "column" : "Metric", "Properties":{"Path":"$.metric"}},'
-    '    { "column" : "Value", "Properties":{"Path":"$.metric_value"}},'
-    '    { "column" : "EventHubEnqueuedTime", "Properties":{"Path":"$.x-opt-enqueued-time"}},'
-    '    { "column" : "EventHubOffset", "Properties":{"Path":"$.x-opt-offset"}}'
-    ']'
-```
 
 ## Create Event Hub connection
 

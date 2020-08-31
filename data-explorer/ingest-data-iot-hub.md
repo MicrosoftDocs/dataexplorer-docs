@@ -105,6 +105,12 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     > * Select **My data includes routing info** to use dynamic routing, where your data includes the necessary routing information as seen in the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) comments. If both static and dynamic properties are set, the dynamic properties override the static ones. 
     > * Only events enqueued after you create the data connection are ingested.
 
+> [!Note]
+> * System properties are supported for single-record events.
+> * For `csv` mapping, properties are added at the beginning of the record. For `json` mapping, properties are added according to the name that appears in the drop-down list.
+
+If you selected **Event system properties** in the **Data Source** section of the table, you must include [properties](ingest-data-iot-hub-overview.md#iot-hub-exposes-the-following-system-properties) in the table schema and mapping.
+
 [!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
 
 ## Generate sample data for testing

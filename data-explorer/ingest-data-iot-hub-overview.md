@@ -43,9 +43,9 @@ Ingestion properties instruct the ingestion process where to route the data and 
 
 |Property |Description|
 |---|---|
-| Table | Name (case sensitive) of the existing target table. Overrides the `Table` set on the `Data Connection` blade. |
-| Format | Data format. Overrides the `Data format` set on the `Data Connection` blade. |
-| IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` blade.|
+| Table | Name (case sensitive) of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
+| Format | Data format. Overrides the `Data format` set on the `Data Connection` pane. |
+| IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Encoding |  Data encoding, the default is UTF8. Can be any of [.NET supported encodings](https://docs.microsoft.com/dotnet/api/system.text.encoding?view=netframework-4.8#remarks). |
 
 ## Set events routing
@@ -110,7 +110,7 @@ This process is important for CSV mapping where the column ordinals will change 
  
 #### JSON-mapping example
 
-Data is added by using the system properties names as they appear in the **Data connection** blade **Event system properties** list. Run these commands:
+Data is added by using the system properties names as they appear in the **Data connection** pane **Event system properties** list. Run these commands:
 
 ```kusto
     .create table TestTable ingestion json mapping "JsonMapping1"

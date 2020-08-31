@@ -6,14 +6,6 @@ ms.date: 02/27/2020
 ms.author: orspodek
 ---
 
-### Event system properties mapping
-
-> [!Note]
-> * System properties are supported for single-record events.
-> * For `csv` mapping, properties are added at the beginning of the record. For `json` mapping, properties are added according to the name that appears in the drop-down list.
-
-If you selected **Event system properties** in the **Data Source** section of the table, you must include the following properties in the table schema and mapping.
-
 **Table schema example**
 
 If your data includes three columns (`Timespan`, `Metric`, and `Value`) and the properties you include are `x-opt-enqueued-time` and `x-opt-offset`, create or alter the table schema by using this command:
@@ -39,7 +31,7 @@ Run the following commands to add data to the beginning of the record. Note ordi
  
 **JSON mapping example**
 
-Data is added by using the system properties names as they appear in the **Data connection** blade **Event system properties** list. Run these commands:
+Data is added by using the system properties names as they appear in the **Data connection** pane **Event system properties** list. Run these commands:
 
 ```kusto
     .create table TestTable ingestion json mapping "JsonMapping1"
