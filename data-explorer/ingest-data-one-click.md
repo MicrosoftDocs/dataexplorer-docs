@@ -109,7 +109,7 @@ Once you have completed schema mapping and column manipulations, the ingestion w
  
 ### Initial data exploration
    
-After ingestion, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#quick-queries-and-tools)** for initial exploration of your data.
+After ingestion, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#explore-quick-queries-and-tools)** for initial exploration of your data.
 
 ## Next steps
 

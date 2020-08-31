@@ -49,7 +49,7 @@ A sample of the data appears. If you want to, filter the data to ingest only fil
 
 For example, filter for all files that begin with the word *.csv* extension.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
+:::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
   
 ## Edit the schema
 
@@ -70,7 +70,7 @@ In the **Schema** tab:
 
 In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/table-mapping.png" alt-text="Table mapping name One Click Ingestion":::
+:::image type="content" source="media/one-click-ingestion-new-table/table-mapping.png" alt-text="Table mapping name One Click Ingestion":::
 
 ### Edit the table
 
