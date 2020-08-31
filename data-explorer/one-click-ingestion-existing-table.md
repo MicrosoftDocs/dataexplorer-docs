@@ -11,6 +11,11 @@ ms.date: 03/29/2020
 
 # Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
 
+
+> [!div class="op_single_selector"]
+> * [Ingest CSV data from a container to a new table](one-click-ingestion-new-table.md)
+> * [Ingest JSON data from a local file to an existing table](one-click-ingestion-existing-table.md)
+
 [One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.  
 
 This document describes using the intuitive one-click wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. Use the same process with slight adaptations to cover a variety of different use cases.
