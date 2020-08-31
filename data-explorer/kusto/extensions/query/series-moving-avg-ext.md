@@ -20,11 +20,11 @@ The function series_moving_avg_ext() takes an expression containing a dynamic nu
 
 ## Syntax
 
-`series_moving_avg_ext(`*x*`,` *n*`, [`*center*`])`
+`series_moving_avg_ext(`*y_series*`,` *n*`, [`*center*`])`
   
 ## Arguments
 
-* *x*: Dynamic array cell of numeric values.
+* *y_series*: Dynamic array cell of numeric values.
 * *n*: The width of the moving average filter.
 * *center*: An optional Boolean value that indicates whether the moving average is applied symmetrically on a window before and after the current point, or on a window from the current point backwards. By default, center is False.
 
@@ -38,9 +38,9 @@ The function series_moving_avg_ext() takes an expression containing a dynamic nu
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let series_moving_avg_sf = (x:dynamic, n:int, center:bool=false)
+let series_moving_avg_sf = (y_series:dynamic, n:int, center:bool=false)
 {
-    series_fir(x, repeat(1, n), true, center)
+    series_fir(y_series, repeat(1, n), true, center)
 }
 ;
 //
@@ -60,9 +60,9 @@ demo_make_series1
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Calculate moving average of specified width")
-series_moving_avg_sf(x:dynamic, n:int, center:bool=false)
+series_moving_avg_sf(y_series:dynamic, n:int, center:bool=false)
 {
-    series_fir(x, repeat(1, n), true, center)
+    series_fir(y_series, repeat(1, n), true, center)
 }
 ```
 
