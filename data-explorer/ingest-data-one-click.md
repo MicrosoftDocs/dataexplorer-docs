@@ -31,7 +31,7 @@ One-click ingestion is particularly useful when ingesting data for the first tim
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 * Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
-## Ingest new data
+## Access the one-click wizard
 
 The one-click ingestion wizard guides you through the one-click ingestion process.
 
@@ -45,7 +45,7 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
 * To access the wizard from the Azure portal, select **Query** from the left menu, right click on the **database** or **table**, and select **Ingest new data (preview)**.
 
-    :::image type="content" source="media/ingest-data-one-click/access-from-portal.png" alt-text="Access the one click ingestion wizard from Azure portal" lightbox="media/ingest-data-one-click/access-from-portal.png":::
+    :::image type="content" source="media/ingest-data-one-click/access-from-portal.png" alt-text="Access the one click ingestion wizard from Azure portal":::
 
 ## One-click ingestion wizard
 
