@@ -45,9 +45,9 @@ Under **Ingestion type**, do the following steps:
      > [!TIP] 
      > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
 
-A sample of the data appears. If you want to, you can filter it to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
-  
- * For example, you can filter for all files that begin with the word *.csv* extension.
+A sample of the data appears. If you want to, filter the data to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
+
+For example, filter for all files that begin with the word *.csv* extension.
 
     :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
   
@@ -55,26 +55,26 @@ A sample of the data appears. If you want to, you can filter it to ingest only f
 
 Select **Edit schema** to view and edit your table column configuration. The system will select one of the blobs at random and the schema will be generated based on that blob. By looking at the name of the source, the service automatically identifies if it is compressed or not.
 
-### Schema tab
+In the **Schema** tab:
 
-1. In the **Schema** tab:
-
-    * Select **Data format**:
+   1. Select **Data format**:
 
         In this case, the data format is **CSV**
 
         > [!TIP]
         > If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#edit-the-schema).
 
-    * You can select the check box **Include column names** to ignore the heading row of the file.
+   1. You can select the check box **Include column names** to ignore the heading row of the file.
 
         :::image type="content" source="media/one-click-ingestion-new-table/non-json-format.png" alt-text="Select include column names":::
 
-1. In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
+In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
 
     :::image type="content" source="media/one-click-ingestion-new-table/table-mapping.png" alt-text="Table mapping name One Click Ingestion":::
 
-### Table
+### Edit the table
+
+When ingesting to a new table, alter various aspects of the table when creating the table.
 
 In the table: 
  * Double-click the new column name to edit.
@@ -93,7 +93,7 @@ Select **Start ingestion** to create a table and mapping and to begin data inges
 
 :::image type="content" source="media/one-click-ingestion-new-table/start-ingestion.png" alt-text="Start ingestion One Click Ingestion":::
 
-## Data ingestion completed
+## Complete data ingestion
 
 In the **Data ingestion completed** window, all three steps will be marked with green check marks when data ingestion finishes successfully.
 

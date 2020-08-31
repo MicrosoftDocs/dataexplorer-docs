@@ -5,7 +5,7 @@ ms.topic: include
 ms.date: 30/03/2020
 ms.author: orspodek
 ---
-## Quick queries and tools
+## Explore quick queries and tools
 
 In the tiles below the ingestion progress, explore **Quick queries** or **Tools**: 
  * **Quick queries** includes links to the Web UI with example queries.
