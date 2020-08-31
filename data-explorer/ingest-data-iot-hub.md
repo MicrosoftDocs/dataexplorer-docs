@@ -105,6 +105,8 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     > * Select **My data includes routing info** to use dynamic routing, where your data includes the necessary routing information as seen in the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) comments. If both static and dynamic properties are set, the dynamic properties override the static ones. 
     > * Only events enqueued after you create the data connection are ingested.
 
+### Event system properties mapping
+
 > [!Note]
 > * System properties are supported for single-record events.
 > * For `csv` mapping, properties are added at the beginning of the record. For `json` mapping, properties are added according to the name that appears in the drop-down list.
@@ -182,7 +184,7 @@ If you don't plan to use your IoT Hub again, clean up your resource group to avo
 
 1. Under **test-resource-group**, select **Delete resource group**.
 
-2. In the new window, type the name of the resource group to delete it, and then select **Delete**.
+1. In the new window, type the name of the resource group to delete it, and then select **Delete**.
 
 ## Next steps
 

@@ -81,48 +81,6 @@ System properties are a collection used to store properties that are set by the 
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
 
-### Examples 
-
-#### Table schema example
-
-If your data includes three columns (`Timespan`, `Metric`, and `Value`) and the properties you include are `x-opt-enqueued-time` and `x-opt-offset`, create or alter the table schema by using this command:
-
-```kusto
-    .create-merge table TestTable (TimeStamp: datetime, Metric: string, Value: int, EventHubEnqueuedTime:datetime, EventHubOffset:long)
-```
-
-#### CSV mapping example
-
-Run the following commands to add data to the beginning of the record. 
-Note ordinal values: properties are added at the beginning of the record in the order listed in the table above. 
-This process is important for CSV mapping where the column ordinals will change based on the system properties that are mapped.
-
-```kusto
-    .create table TestTable ingestion csv mapping "CsvMapping1"
-    '['
-    '   { "column" : "Timespan", "Properties":{"Ordinal":"2"}},'
-    '   { "column" : "Metric", "Properties":{"Ordinal":"3"}},'
-    '   { "column" : "Value", "Properties":{"Ordinal":"4"}},'
-    '   { "column" : "EventHubEnqueuedTime", "Properties":{"Ordinal":"0"}},'
-    '   { "column" : "EventHubOffset", "Properties":{"Ordinal":"1"}}'
-    ']'
-```
- 
-#### JSON-mapping example
-
-Data is added by using the system properties names as they appear in the **Data connection** pane **Event system properties** list. Run these commands:
-
-```kusto
-    .create table TestTable ingestion json mapping "JsonMapping1"
-    '['
-    '    { "column" : "Timespan", "Properties":{"Path":"$.timestamp"}},'
-    '    { "column" : "Metric", "Properties":{"Path":"$.metric"}},'
-    '    { "column" : "Value", "Properties":{"Path":"$.metric_value"}},'
-    '    { "column" : "EventHubEnqueuedTime", "Properties":{"Path":"$.x-opt-enqueued-time"}},'
-    '    { "column" : "EventHubOffset", "Properties":{"Path":"$.x-opt-offset"}}'
-    ']'
-```
-
 ## Sending events
 
 See the [sample project](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Quickstarts/simulated-device) that simulates a device and generates data.

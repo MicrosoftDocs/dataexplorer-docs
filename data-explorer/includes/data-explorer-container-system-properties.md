@@ -6,7 +6,7 @@ ms.date: 02/27/2020
 ms.author: orspodek
 ---
 
-**Table schema example**
+**Table schema mapping example**
 
 If your data includes three columns (`Timespan`, `Metric`, and `Value`) and the properties you include are `x-opt-enqueued-time` and `x-opt-offset`, create or alter the table schema by using this command:
 
