@@ -1681,6 +1681,8 @@
       href: kusto/extensions/query/series-fit-poly-ext.md
     - name: series_moving_avg_ext()
       href: kusto/extensions/query/series-moving-avg-ext.md
+    - name: series_rolling_ext()
+      href: kusto/extensions/query/series-rolling-ext.md
 - name: Resources
   items:
   - name: Blog

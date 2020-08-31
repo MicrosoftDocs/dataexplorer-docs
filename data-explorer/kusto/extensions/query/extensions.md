@@ -19,3 +19,4 @@ List of community extensions by category
 |-------------------------|--------------------------------------------------------|
 |[series_fit_poly_ext()](series-fit-poly-ext.md)|Fit a polynomial to series using regression analysis|
 |[series_moving_avg_ext()](series-moving-avg-ext.md)|Applies a moving average filter on a series|
+|[series_rolling_ext()](series-rolling-ext.md)|Applies a rolling aggregation function on a series|
