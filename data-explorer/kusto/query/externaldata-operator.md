@@ -50,7 +50,7 @@ The `externaldata` operator returns a data table of the given schema whose data 
 
 **Fetch a list of user IDs stored in Azure Blob Storage**
 
-The following example shows how to find all records in a table whose `UserID` column falls into a known set of IDs, held (one per line) in an external storage file. Since the data format is not specified, the detected data format is `TXT`.
+The following example shows how to find all records in a table whose `UserID` column falls into a known set of IDs, held (one per line) in an external storage file. Since the data format isn't specified, the detected data format is `TXT`.
 
 ```kusto
 Users
