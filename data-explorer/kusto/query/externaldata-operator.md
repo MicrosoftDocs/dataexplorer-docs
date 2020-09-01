@@ -35,7 +35,7 @@ Currently supported properties are:
 | Property         | Type     | Description       |
 |------------------|----------|-------------------|
 | `format`         | `string` | Data format. If not specified, an attempt is made to detect the data format from file extension (defaults to `CSV`). Any of the [ingestion data formats](../../ingestion-supported-formats.md) are supported. |
-| `ignoreFirstRecord` | `bool` | If set to true, indicates that first record in every file is ignored. This property is useful when querying CSV files with headers. |
+| `ignoreFirstRecord` | `bool` | If set to true, indicates that the first record in every file is ignored. This property is useful when querying CSV files with headers. |
 | `ingestionMapping` | `string` | A string value that indicates how to map data from the source file to the actual columns in the operator result set. See [data mappings](../management/mappings.md). |
 
 
