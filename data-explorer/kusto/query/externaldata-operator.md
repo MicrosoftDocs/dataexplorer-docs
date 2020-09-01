@@ -11,27 +11,36 @@ ms.date: 03/24/2020
 ---
 # externaldata operator
 
-The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external storage artifact, such as a blob in
-Azure Blob Storage.
+The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external storage artifact, such as a blob in 
+Azure Blob Storage or a file in Azure Data Lake Storage.
 
 ## Syntax
 
-`externaldata` `(` *ColumnName* `:` *ColumnType* [`,` ...] `)` `[` *StorageConnectionString* `]` [`with` `(` *Prop1* `=` *Value1* [`,` ...] `)`]
+`externaldata` `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`   
+`[` *StorageConnectionString* [`,` ...] `]`   
+[`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
 
 ## Arguments
 
 * *ColumnName*, *ColumnType*: The arguments define the schema of the table.
   The syntax is the same as the syntax used when defining a table in [.create table](../management/create-table-command.md).
 
-* *StorageConnectionString*: The [storage connection string](../api/connection-strings/storage.md) describes the storage artifact holding the data to return.
+* *StorageConnectionString*: [Storage connection strings](../api/connection-strings/storage.md) that describe the storage artifacts holding the data to return.
 
-* *Prop1*, *Value1*, ...: Additional properties that describe how to interpret
+* *PropertyName*, *PropertyValue*, ...: Additional properties that describe how to interpret
   the data retrieved from storage, as listed under [ingestion properties](../../ingestion-properties.md).
-    * Currently supported properties: `format` and `ignoreFirstRecord`.
-    * Supported data formats: Any of the [ingestion data formats](../../ingestion-supported-formats.md) are supported, including `CSV`, `TSV`, `JSON`, `Parquet`, `Avro`.
+
+Currently supported properties are:
+
+| Property         | Type     | Description       |
+|------------------|----------|-------------------|
+| `format`         | `string` | Data format. If not specified, an attempt is made to detect the data format from file extension (defaults to `CSV`). Any of the [ingestion data formats](../../ingestion-supported-formats.md) are supported. |
+| `ignoreFirstRecord` | `bool` | If set to true, indicates that first record in every file is ignored. This property is useful when querying CSV files with headers. |
+| `ingestionMapping` | `string` | A string value that indicates how to map data from the source file to the actual columns in the operator result set. See [data mappings](../management/mappings.md). |
+
 
 > [!NOTE]
-> This operator does not have a pipeline input.
+> This operator does not accept any pipeline input.
 
 ## Returns
 
@@ -39,17 +48,20 @@ The `externaldata` operator returns a data table of the given schema whose data 
 
 ## Examples
 
-The following example shows how to find all records in a table whose `UserID` column falls into a known set of IDs, held (one per line) in an external blob.
-Because the set is indirectly referenced by the query, it can be large.
+**Fetching list of user IDs stored in Azure Blob Storage**
+
+The following example shows how to find all records in a table whose `UserID` column falls into a known set of IDs, held (one per line) in an external storage file. Since the data format is not specified, the detected data format is `TXT`.
 
 ```kusto
 Users
 | where UserID in ((externaldata (UserID:string) [
-    @"https://storageaccount.blob.core.windows.net/storagecontainer/users.txt"
+    @"https://storageaccount.blob.core.windows.net/storagecontainer/users.txt" 
       h@"?...SAS..." // Secret token needed to access the blob
     ]))
 | ...
 ```
+
+**Querying Multiple Data Files**
 
 The following example queries multiple data files stored in external storage.
 
@@ -67,4 +79,40 @@ with(format="csv")
 The above example can be thought of as a quick way to query multiple data files without defining an [external table](schema-entities/externaltables.md).
 
 > [!NOTE]
-> Data partitioning isn't recognized by the `externaldata()` operator.
+> Data partitioning isn't recognized by the `externaldata` operator.
+
+**Querying hierarchical data formats**
+
+To query hierarchical data format, such as `JSON`, `Parquet`, `Avro`, or `ORC` an `ingestionMapping` must be specified in the operator properties. Let's say, there's JSON file stored in Azure Blob Storage, and its contents look like:
+
+```JSON
+{
+  "timestamp": "2019-01-01 10:00:00.238521",   
+  "data": {    
+    "tenant": "e1ef54a6-c6f2-4389-836e-d289b37bcfe0",   
+    "method": "RefreshTableMetadata"   
+  }   
+}   
+{
+  "timestamp": "2019-01-01 10:00:01.845423",   
+  "data": {   
+    "tenant": "9b49d0d7-b3e6-4467-bb35-fa420a25d324",   
+    "method": "GetFileList"   
+  }   
+}
+...
+```
+
+To query such a file using `externaldata` operator a data mapping must be specified, which tells how to map JSON fields to the operator result set columns:
+
+```kusto
+externaldata(Timestamp: datetime, TenantId: guid, MethodName: string)
+[ 
+   h@'https://mycompanystorage.blob.core.windows.net/events/2020/09/01/part-0000046c049c1-86e2-4e74-8583-506bda10cca8.json?...SAS...'
+]
+with(format='multijson', ingestionMapping='[{"Column":"Timestamp","Properties":{"Path":"$.time"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]')
+```
+
+We use `MultiJSON` format here because single JSON records  are spanned into multiple lines.
+
+For more info on mapping syntax, see [data mappings](kusto/management/mappings.md).
