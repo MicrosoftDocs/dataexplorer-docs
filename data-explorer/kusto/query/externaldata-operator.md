@@ -104,7 +104,7 @@ In this example, there's a JSON file stored in Azure Blob Storage with the follo
 ...
 ```
 
-To query such a file using `externaldata` operator a data mapping must be specified, which tells how to map JSON fields to the operator result set columns:
+To query this file using the `externaldata` operator, a data mapping must be specified. The mapping dictates how to map JSON fields to the operator result set columns:
 
 ```kusto
 externaldata(Timestamp: datetime, TenantId: guid, MethodName: string)
