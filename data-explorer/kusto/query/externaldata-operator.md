@@ -61,7 +61,7 @@ Users
 | ...
 ```
 
-**Querying Multiple Data Files**
+**Query multiple data files**
 
 The following example queries multiple data files stored in external storage.
 
@@ -81,7 +81,7 @@ The above example can be thought of as a quick way to query multiple data files 
 > [!NOTE]
 > Data partitioning isn't recognized by the `externaldata` operator.
 
-**Querying hierarchical data formats**
+**Query hierarchical data formats**
 
 To query hierarchical data format, such as `JSON`, `Parquet`, `Avro`, or `ORC`, `ingestionMapping` must be specified in the operator properties. 
 In this example, there's a JSON file stored in Azure Blob Storage with the following contents:
