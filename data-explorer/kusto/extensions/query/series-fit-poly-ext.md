@@ -90,8 +90,6 @@ demo_make_series1
 | render timechart with(ycolumns=num, fnum)
 ```
 
-:::image type="content" source="images/series-fit-poly-ext/series-fit-poly-ext-1.png" alt-text="Series fit polynomial 1a" border="false":::
-
 # [Persistent usage](#tab/persistent)
 
 * **One time installation**
@@ -149,9 +147,9 @@ demo_make_series1
 | render timechart with(ycolumns=num, fnum)
 ```
 
-:::image type="content" source="images/series-fit-poly-ext/series-fit-poly-ext-1.png" alt-text="Series fit polynomial 1b" border="false":::
-
 ---
+
+:::image type="content" source="images/series-fit-poly-ext/series-fit-poly-ext-1.png" alt-text="Series fit polynomial 1" border="false":::
 
 ## Additional Examples
 
