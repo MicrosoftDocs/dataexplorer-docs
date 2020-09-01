@@ -151,6 +151,8 @@ demo_make_series1
 
 :::image type="content" source="images/series-fit-poly-ext/series-fit-poly-ext-1.png" alt-text="Series fit polynomial 1b" border="false":::
 
+---
+
 ## Additional Examples
 
 The following examples assume the function is already installed
