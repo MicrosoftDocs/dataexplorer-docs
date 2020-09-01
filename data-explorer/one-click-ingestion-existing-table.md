@@ -11,9 +11,14 @@ ms.date: 03/29/2020
 
 # Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
 
+
+> [!div class="op_single_selector"]
+> * [Ingest CSV data from a container to a new table](one-click-ingestion-new-table.md)
+> * [Ingest JSON data from a local file to an existing table](one-click-ingestion-existing-table.md)
+
 [One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.  
 
-This document describes using the intuitive one-click wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. You can use the same process with slight adaptations to cover a variety of different use cases.
+This document describes using the intuitive one-click wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. Use the same process with slight adaptations to cover a variety of different use cases.
 
 For an overview of one-click ingestion and a list of prerequisites, see [One-click ingestion](ingest-data-one-click.md).
 For different types or sources of data, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md).
@@ -40,12 +45,11 @@ In the left menu of the Web UI, right-click a *database* or *table* and select *
     
       :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file":::
 
- 1. A sample of the data appears. You can filter it to ingest only files that begin end with specific characters. 
+ 1. A sample of the data appears. Filter the data to ingest only files that begin or end with specific characters. 
    
     >[!NOTE] 
     >When you adjust the filters, the preview automatically updates.
   
-
 > [!TIP]
 > For ingestion **from container**, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#select-an-ingestion-type)
 
@@ -55,8 +59,8 @@ Select **Edit schema** to view and edit your table column configuration.
 
 ### Map columns 
 
-1. The **Map columns** dialog opens and you can attach one or more source columns or attributes to your Azure Data Explorer columns.
-    * New mappings are set automatically. You can also use an existing mapping. 
+1. The **Map columns** dialog opens. Attach one or more source columns or attributes to your Azure Data Explorer columns.
+    * New mappings are set automatically, or use an existing mapping. 
     * In the **Source columns** fields, enter column names to map with the **Target columns**.
     * To delete a column from mapping, select the trash can icon.
 
@@ -73,11 +77,13 @@ Select **Edit schema** to view and edit your table column configuration.
        > [!TIP]
        > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
 
-### Table 
+### Edit the table 
+
+When ingesting data to an existing table, you are more limited in the changes you may make to the table.
 
 In the table: 
-  * Select new column headers to add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. 
- * On existing columns, only data sorting is available.
+* Select new column headers to add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. 
+* On existing columns, only data sorting is available.
 
 [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
@@ -89,7 +95,7 @@ Select **Start ingestion** to create a table and mapping and to begin data inges
 
 :::image type="content" source="media/one-click-ingestion-existing-table/start-ingestion.png" alt-text="Start ingestion":::
 
-## Data ingestion completed
+## Complete data ingestion
 
 In the **Data ingestion completed** window, all three steps will be marked with green check marks when data ingestion finishes successfully.
 
