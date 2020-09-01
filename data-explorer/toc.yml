@@ -573,6 +573,8 @@
         href: ./kusto/query/externaltablefunction.md
       - name: materialize()
         href: ./kusto/query/materializefunction.md
+      - name: materialize_view()
+        href: ./kusto/query/materializeviewfunction.md
       - name: table()
         href: ./kusto/query/tablefunction.md
       - name: toscalar()

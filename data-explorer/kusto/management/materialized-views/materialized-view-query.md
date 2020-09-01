@@ -20,7 +20,9 @@ The query _combines_ the _materialized_ part of the view with all records in the
 
 ## materialized_view() function
 
-A special [`materialized_view()' function](../../query/materializefunction.md) supports a way of querying the _materialized_ part only of the view, while specifying the max latency the user is willing
+A special 
+[materialized_view() function](../../query/materializedviewfunction.md)
+supports a way of querying the _materialized_ part only of the view, while specifying the max latency the user is willing
 to tolerate. This option is *not* guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view.
 It is useful for scenarios in which you are willing to sacrifice some _freshness_ in favor of _performance_
  (usually useful for telemetry dashboards).
