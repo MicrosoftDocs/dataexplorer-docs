@@ -114,6 +114,6 @@ externaldata(Timestamp: datetime, TenantId: guid, MethodName: string)
 with(format='multijson', ingestionMapping='[{"Column":"Timestamp","Properties":{"Path":"$.time"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]')
 ```
 
-We use `MultiJSON` format here because single JSON records  are spanned into multiple lines.
+The `MultiJSON` format is used here because single JSON records are spanned into multiple lines.
 
 For more info on mapping syntax, see [data mappings](kusto/management/mappings.md).
