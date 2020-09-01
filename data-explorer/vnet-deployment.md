@@ -64,7 +64,7 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 [Private Endpoints](/azure/private-link/private-endpoint-overview) allow private access to Azure resources (such as Storage/Event Hub/Data Lake Gen 2), and use private IP from your Virtual Network, effectively bringing the resource into your VNet.
 Create a [private endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections, such as Event Hub and Storage, and external tables such as Storage, Data Lake Gen 2, and SQL Database from your VNet to access the underlying resources privately.
 
- [!NOTE]
+ > [!NOTE]
  > Setting up Private Endpoint requires [configuring DNS](/azure/private-link/private-endpoint-dns), We support [Azure Private DNS zone](/azure/dns/private-dns-privatednszone) setup only. Custom DNS server isn't supported. 
 
 ## Dependencies for VNet deployment
@@ -158,14 +158,14 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | Canada Central | 168.61.212.201 |
 | Canada East | 168.61.212.201 |
 | Central India | 23.99.5.162 |
-| Central US | 168.61.212.201 |
-| Central US EUAP | 168.61.212.201 |
+| Central US | 168.61.212.201, 23.101.115.123 |
+| Central US EUAP | 168.61.212.201, 23.101.115.123 |
 | China East 2 | 40.73.96.39 |
 | China North 2 | 40.73.33.105 |
 | East Asia | 168.63.212.33 |
-| East US | 137.116.81.189 |
-| East US 2 | 137.116.81.189 |
-| East US 2 EUAP | 137.116.81.189 |
+| East US | 137.116.81.189, 52.249.253.174 |
+| East US 2 | 137.116.81.189, 104.46.110.170 |
+| East US 2 EUAP | 137.116.81.189, 104.46.110.170 |
 | France Central | 23.97.212.5 |
 | France South | 23.97.212.5 |
 | Japan East | 138.91.19.129 |
@@ -173,10 +173,10 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | Korea Central | 138.91.19.129 |
 | Korea South | 138.91.19.129 |
 | North Central US | 23.96.212.108 |
-| North Europe | 191.235.212.69 
+| North Europe | 191.235.212.69, 40.127.194.147 |
 | South Africa North | 104.211.224.189 |
 | South Africa West | 104.211.224.189 |
-| South Central US | 23.98.145.105 |
+| South Central US | 23.98.145.105, 104.215.116.88 |
 | South India | 23.99.5.162 |
 | Southeast Asia | 168.63.173.234 |
 | UK South | 23.97.212.5 |
@@ -187,10 +187,10 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | USGov Texas | 52.238.116.34 |
 | USGov Virginia | 23.97.0.26 |
 | West Central US | 168.61.212.201 |
-| West Europe | 23.97.212.5 |
+| West Europe | 23.97.212.5, 213.199.136.176 |
 | West India | 23.99.5.162 |
-| West US | 23.99.5.162 |
-| West US 2 | 23.99.5.162, 104.210.32.14 |
+| West US | 23.99.5.162, 13.88.13.50 |
+| West US 2 | 23.99.5.162, 104.210.32.14, 52.183.35.124 |
 
 ## Disable access to Azure Data Explorer from the public IP
 
