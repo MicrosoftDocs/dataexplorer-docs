@@ -210,6 +210,8 @@
       href: k2bridge.md
   - name: Secure
     items:
+    - name: Isolated Compute
+        href: isolated-compute.md
     - name: Network isolation (VNet)
       items:
         - name: Create a cluster in your VNet - Portal
