@@ -40,7 +40,7 @@ Currently supported properties are:
 
 
 > [!NOTE]
-> This operator does not accept any pipeline input.
+> This operator doesn't accept any pipeline input.
 
 ## Returns
 
