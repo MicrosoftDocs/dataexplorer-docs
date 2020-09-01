@@ -52,8 +52,6 @@ demo_make_series1
 | render timechart 
 ```
 
-:::image type="content" source="images/series-moving-avg-ext/series-moving-avg-ext-1.png" alt-text="Series moving average 1a" border="false":::
-
 # [Persistent usage](#tab/persistent)
 
 * **One time installation**
@@ -78,6 +76,6 @@ demo_make_series1
 | render timechart 
 ```
 
-:::image type="content" source="images/series-moving-avg-ext/series-moving-avg-ext-1.png" alt-text="Series moving average 1b" border="false":::
-
 ---
+
+:::image type="content" source="images/series-moving-avg-ext/series-moving-avg-ext-1.png" alt-text="Series moving average 1" border="false":::

@@ -81,8 +81,6 @@ demo_make_series1
 | render timechart
 ```
 
-:::image type="content" source="images/series-rolling-ext/series-rolling-ext-1.png" alt-text="Series rolling 1a" border="false":::
-
 # [Persistent usage](#tab/persistent)
 
 * **One time installation**
@@ -127,9 +125,9 @@ demo_make_series1
 | render timechart
 ```
 
-:::image type="content" source="images/series-rolling-ext/series-rolling-ext-1.png" alt-text="Series rolling 1b" border="false":::
-
 ---
+
+:::image type="content" source="images/series-rolling-ext/series-rolling-ext-1.png" alt-text="Series rolling 1" border="false":::
 
 ## Additional Examples
 
