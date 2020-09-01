@@ -83,7 +83,8 @@ The above example can be thought of as a quick way to query multiple data files 
 
 **Querying hierarchical data formats**
 
-To query hierarchical data format, such as `JSON`, `Parquet`, `Avro`, or `ORC` an `ingestionMapping` must be specified in the operator properties. Let's say, there's JSON file stored in Azure Blob Storage, and its contents look like:
+To query hierarchical data format, such as `JSON`, `Parquet`, `Avro`, or `ORC`, `ingestionMapping` must be specified in the operator properties. 
+In this example, there's a JSON file stored in Azure Blob Storage with the following contents:
 
 ```JSON
 {
