@@ -116,4 +116,4 @@ with(format='multijson', ingestionMapping='[{"Column":"Timestamp","Properties":{
 
 The `MultiJSON` format is used here because single JSON records are spanned into multiple lines.
 
-For more info on mapping syntax, see [data mappings](kusto/management/mappings.md).
+For more info on mapping syntax, see [data mappings](../management/mappings.md).
