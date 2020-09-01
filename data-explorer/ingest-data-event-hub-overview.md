@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
 ---
-# Connect to Event Hub
+# Create a connection to Event Hub
 
 
 [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
@@ -102,8 +102,8 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 ### Create an Event Hub
 
-If you don't already have one, [Create an event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create). 
-A template can be found in the how-to [Create an event hub](ingest-data-event-hub.md#create-an-event-hub) guide.
+If you don't already have one, [Create an event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create). Connecting to Event Hub can be managed through the [Azure portal](ingest-data-event-hub.md), programmatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
+
 
 > [!Note]
 > * The partition count isn't changeable, so you should consider long-term scale when setting partition count.
