@@ -85,12 +85,12 @@ A time chart visual is a type of line graph. the first column of the query is th
 
 An anomaly chart visual is similar to [time chart](#time-chart), but highlights anomalies using the `series_decompose_anomalies` function.
 
-**Map**
+### Map
 
 :::image type="content" source="media/dashboard-customize-visuals/map.png" alt-text="map visual type":::
 
-The map visual type needs 4 columns in the query results to render:
-* First column in the query result is string. It's used for label that can be seen when hovering on the map.
+To render the map visual, 4 columns are needed in the query:
+* String (first column) used for hover label
 * Longitude (real)
 * Latitude (real)
 * Bubble size (int). This can be constant 1 if different sizes aren't required.
@@ -99,8 +99,8 @@ Maps are useful to visualize data with geo coordinates. The Map visual also has 
 
 ## Customize visuals
 
-\\Gabi
-To access the visual customization dialogue, select **Edit Card**. Alternatively, select **Edit Card** at the time of creating a new card using **Add Query**.
+1. Select **Edit** in dashboard menu to switch to edit mode.
+1. To access the visual customization dialogue on a card, click the drop-down menu > **Edit Card**. Alternatively, when you create a new card using **Add Query**, select **Edit Card**.
 
 :::image type="content" source="media/dashboard-customize-visuals/edit-card.png" alt-text="edit card for visual customization":::
 

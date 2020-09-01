@@ -97,21 +97,22 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
 ## Share dashboards
 
-1. Select **Share** menu item in the top bar of the dashboard and select **Manage permissions** from the drop down.
+1. Select the **Share** menu item in the top bar of the dashboard 
 
     :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Share dashboard drop-down":::
 
+1. Select **Manage permissions** from the drop down.
 In the **Dashboard permissions** pane:
-* Grant permissions to the dashboard
-* Change a user permission level
-* Copy and share link to the dashboard
+   * Grant permissions to the dashboard
+   * Change a user permission level
+   * Copy and share link to the dashboard
 
 ### Grant permissions
 
-1. To grant permissions to a user, start typing or paste the user's name or email in **Add new member** box.
-1. Select the **Permission** level as **can view** or **can edit** and then click **Add**.
+To grant permissions to a user:
+1. Write the user's name or email in **Add new members** box.
+1. Select the **Permission** level as **Can view** or **Can edit** and then click **Add**.
 
-\\New image
 :::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Manage dashboard permissions":::
 
 ### Change a user permission level
@@ -122,11 +123,15 @@ To change a user permission level:
 
 ### Share the dashboard link
 
-To share the link, use the copy link at the bottom of the pane or at the top level menu of the “Share” drop down
+To share the dashboard link:
+* Select **Share** drop-down and then select **Copy link**.
+* In the **Dashboard permissions** window, select **Copy link**. 
 
-\\ edit text - 3 things
 > [!NOTE]
-> To access the dashboard the user needs the following - dashboard permissions, should have access to the underlying database in the Azure Data Explorer cluster, and also have the link for the first time access.
+> To access the dashboard, a dashboard viewer needs the following: 
+> * Link for dashboard access
+> * Dashboard permissions
+> * Access to the underlying database in the Azure Data Explorer cluster  
 
 ## Enable auto refresh 
 
@@ -144,7 +149,9 @@ To share the link, use the copy link at the bottom of the pane or at the top lev
 
 > [!NOTE]
 > * Select the smallest minimum time interval to reduce unnecessary load on the cluster. 
-> * A dashboard viewer can change the refresh intervals for the dashboard but can't save the changes. A viewer can't select a value which is smaller than the **Minimum time interval** specified by the editor.
+> * A dashboard viewer: 
+>    * Can change the refresh intervals for the dashboard but can't save the changes. 
+>     * Can't select a value which is smaller than the **Minimum time interval** specified by the editor.
 
 ## Next Steps
 
