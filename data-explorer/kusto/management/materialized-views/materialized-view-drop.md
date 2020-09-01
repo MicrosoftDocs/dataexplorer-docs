@@ -24,6 +24,7 @@ ms.date: 08/30/2020
 |Property|Type|Description
 |----------------|-------|---|
 |MaterializedViewName|String|Name of the Materialized View.|
+
 **Returns:**
 
 The command returns the remaining materialized views in the database (output of [show materialized-view](materialized-view-show-commands.md#show-materialized-view) command).

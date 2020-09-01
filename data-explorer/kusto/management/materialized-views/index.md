@@ -26,7 +26,7 @@ These are some common scenarios that can be addressed by using a materialized vi
 * Query last record per entity - using [arg_max() (aggregation function)](../../query/arg-max-aggfunction.md).
 * De-duplicate records in a table - using [any() (aggregation function)](../../query/any-aggfunction.md).
 * Reduce the 'resolution' of data by calculating periodic statistics over the raw data - using various
-[aggregation functions](#supported-aggregation-functions) by period of time
+[aggregation functions](materialized-view-create-alter.md#supported-aggregation-functions) by period of time
  (for instance, `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain 
 an up-to-date snapshot of distinct users per day).
 
@@ -86,7 +86,7 @@ query pattern for best query performance. See [Performance tips](materialized-vi
 * The source table of a materialized view must be a table which is being ingested to directly,
 either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools),
  or using an [update policy](../updatepolicy.md)
-, or [ingest from query commands](data-ingestion/ingest-from-query.md).
+, or [ingest from query commands](../data-ingestion/ingest-from-query.md).
 Materialized view **does not** work when using [move extents](../move-extents.md) from other tables into the source table of the materialized view.
     * Move extents command, which attempt to move extents from or to the view, may fail with errors like below:
         * `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.

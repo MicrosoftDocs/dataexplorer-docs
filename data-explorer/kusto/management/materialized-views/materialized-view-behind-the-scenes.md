@@ -1,3 +1,15 @@
+---
+title: Materialized views behind the scenes - Azure Data Explorer
+description: This article describes materialized views in Azure Data Explorer.
+services: data-explorer
+author: yifats
+ms.author: yifats
+ms.reviewer: yifats
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 08/30/2020
+---
+
 # Materialized views: behind the scenes
 
 A Materialized View is made of a *materialized* part - a physical Azure Data Explorer table holding aggregated records from the source table, 

@@ -186,7 +186,7 @@ Limiting the period of time covered by the view should be done using the retenti
 * **Backfill:** when using the `backfill` option, command *must* be `async` and view will not be available for queries until the creation completes.
     * Depending on the amount of data to backfill, creation with backfill may take a very long while. 
     It's intentionally "slow" to make sure it doesn't consume too much of the cluster's resources.
-    * You can track the creation process using the [.show operation](operations.md) command.
+    * You can track the creation process using the [.show operations](../operations.md#show-operations) command.
     * Canceling the creation process is possible using the [.cancel operation](#cancel-materialized-view-creation) command.
 
 * **Auto update:** the `autoUpdateSchema` option is valid only for views of type `arg_max(Timestamp, *)` / `arg_min(Timestamp, *)` / 
@@ -200,7 +200,7 @@ this option, please see the [.alter materialized-view command](#alter-materializ
     > * If the view is _not_ set to `autoUpdateSchema` and a change is made to the source table, which results in a
     > schema change to the materialized view, the view will be automatically disabled. If the issue is fixed (e.g.,
     > by restoring the schema of the source table), the materialized view can be enabled using the
-    > [.enable Materialized View](#disable-or-enable-materialized-view) command.
+    > [enable materialized view](materialized-view-enable-disable.md) command.
     > This can be common when using an `arg_max(Timestamp, *)` and adding columns to the source table. Defining the
     > view query as `arg_max(Timestamp, Column1, Column2, ...)` (or using the `autoUpdateSchema` option) will avoid the failure.  
 
@@ -255,7 +255,7 @@ If you know your query pattern will often filter by some column, which can be a 
 </pre>
 </table>
 
-* Don't include transformations, normalizations and other heavy computations that can be moved to an [update policy](update-policy.md)
+* Don't include transformations, normalizations and other heavy computations that can be moved to an [update policy](../updatepolicy.md)
 as part of the materialized view definition. Instead, do all those in an update policy, and perform the aggregation only in the 
 materialized view (same goes for lookup in dimension tables, when applicable).
 
@@ -293,7 +293,7 @@ materialized view (same goes for lookup in dimension tables, when applicable).
 </pre>
 </table>
 
-* If you require the best query time performance, but can sacrifice some data freshness, always use the [`materialized_view()' function](#materializedview-function).
+* If you require the best query time performance, but can sacrifice some data freshness, always use the [materialized_view() function](materialized-view-query.md#materialized_view-function).
 
 ## .alter materialized-view
 
@@ -357,7 +357,7 @@ altering view query to `T | summarize count(), min(Value), avg(Value) by Id`.
 * **Changes to the materialized view group by expressions are not supported.**
 
  > [!WARNING]
-    > Be extra cautious when altering a materialized view. Using it incorrectly may lead to data loss.
+ > Be extra cautious when altering a materialized view. Using it incorrectly may lead to data loss.
 
 ## Cancel materialized-view creation
 
@@ -369,7 +369,7 @@ since creation may take a very long while, and user may want to abort it while r
 checks if cancel was requested. The cancel command waits for a max period of 10m until the materialized view creation process is
  canceled and reports back if cancellation was successful. Even if cancellation did not succeed within 10 minutes, and the cancel 
  command reports failure, the materialized view will most probably abort itself later in the creation process. This can 
- be checked using the [.show operation](operations.md) command.
+ be checked using the [.show operations](../operations.md#show-operations) command.
 * The `cancel operation` command is only supported for materialized views creation cancellation (not for canceling any
 other operations).
 

@@ -48,7 +48,7 @@ ViewName
 ```
 
 1. Query the _materialized_ part of the view only, regardless of when it was last materialized (latest materialization 
-time can be checked using the [show command](#show-materialized-view)).
+time can be checked using the [.show materialized-view](materialized-view-show-commands.md#show-materialized-view) command).
 
 <!-- csl -->
 ```

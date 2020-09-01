@@ -57,7 +57,7 @@ the retention policy of the source table can be dropped to a minimum, and the ma
 store the data, according to the retention policy set on the view.
 As long as the materialized views are in preview mode, the recommendation is to allow a minimum of
 at least seven days and recoverability set to true, to allow fast recovery in case of errors and for
-diagnostic purposes.**Zero retention policy on the source table is currently not supported.**
+diagnostic purposes. **Zero retention policy on the source table is currently not supported.**
 
 * **Retention policy of materialized view:** The retention policy on the materialized view is relative to the last update of a record - for instance, if the view aggregation is
      `T | summarize count() by Day=bin(Timestamp, 1d)`, and soft delete is 30 day, records for `Day=d` will be
@@ -78,7 +78,7 @@ Please consult with the Azure Data Explorer team if you have reservations concer
 
 ## Materialized view capacity policy
 
-Materialized Views capacity policy is part of the cluster's [capacity policy](capacitypolicy.md),
+Materialized Views capacity policy is part of the cluster's [Capacity policy](../capacitypolicy.md),
 and has the following JSON representation:
 
 <!-- csl -->
@@ -124,7 +124,7 @@ estimation of the amount of resources required by the rebuild operation. So, in 
 can be much lower than the value specified in capacity policy.
     * The `MaterializedViewExtentsRebuild` and `MaterializedViewExtentsRebuildConcurrency` metrics (see [Materialized views monitoring](materialized-view-monitoring.md) provide information about how many extents were rebuilt in each materialization cycle, and the concurrency used.
 
-* Changing the capacity policy is done using the [alter capacity policy command](capacitypolicy.md#alter-cluster-policy-capacity) (requires `AllDatabasesAdmin` permissions).
+* Changing the capacity policy is done using the [alter cluster policy capacity](../capacity-policy.md#alter-cluster-policy-capacity) (requires `AllDatabasesAdmin` permissions).
 
 > [!WARNING]
 > Materialized View capacity policy should only be increased if the cluster's resources are well 
