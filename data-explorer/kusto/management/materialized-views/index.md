@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
 ---
-# Materialized views
+# Materialized views (preview)
 
 Materialized views expose an *aggregation* query over a source table.
 Materialized views always return an up-to-date result of the aggregation query (always fresh).
