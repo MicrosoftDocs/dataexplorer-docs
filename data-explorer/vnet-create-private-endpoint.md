@@ -46,7 +46,7 @@ To securely link to all services on your cluster, you need to create the [Privat
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
-    | Load Balancer | Your engine or *data management* Load Balancer | Select the Load Balancer that was created for your cluster engine, Load Balancer that point to your engine public IP.  The Load Balancer engine name will be in the following format: kucompute-{clustername}-elb <br> *The Load balancer data management name will be in the following format: kudatamgmt-{clustername}-elb*|
+    | Load Balancer | Your engine or *data management* Load Balancer | Select the Load Balancer that was created for your cluster engine, Load Balancer that point to your engine public IP.  The Load Balancer engine name will be in the following format: kucompute-{clustername}-elb <br> *The Load Balancer data management name will be in the following format: kudatamgmt-{clustername}-elb*|
     | Load balancer frontend IP address | Your engine or data management public IP. | Select the Load Balancer public IP address. |
     | Source NAT subnet | Cluster's subnet | Your subnet, where the cluster is deployed.
     
@@ -102,8 +102,6 @@ To securely link to all services on your cluster, you need to create the [Privat
 
 When you deploy an Azure Data Explorer cluster in your virtual network, we update the [DNS entry](https://docs.microsoft.com/azure/private-link/private-endpoint-dns) to point to the canonical name with *privatelink* between the record name and the zone host name. This entry is updated both for Engine and ingestion (data management). 
 
-To securely link to all services on your cluster, you need to update the DNS entry twice: once for query (Engine), and once for ingestion (data management).
-
 For example, if your Engine DNS name is myadx.westus.kusto.windows.net the name resolution will be:
 
 |Name |Type |Value |Remark |
@@ -122,7 +120,7 @@ For example, the name resolution will be:
 |myadx.westus.kusto.windows.net|CNAME|myadx.privatelink.westus.kusto.windows.net|
 |myadx.privatelink.westus.kusto.windows.net|A|10.3.0.9|This value is your Private Endpoint IP (that you already connected to the Engine private link service)|
 
-After setting this DNS configuration, you can reach your Engine inside your Virtual Network privately with the following URL: myadx.region.kusto.windows.net.
+After setting this DNS configuration, you can reach the query (Engine) inside your Virtual Network privately with the following URL: myadx.region.kusto.windows.net.
 
 To reach ingestion (data management) privately, register the record for your ingestion (data management) with an A record and the ingestion Private Endpoint IP.
 
