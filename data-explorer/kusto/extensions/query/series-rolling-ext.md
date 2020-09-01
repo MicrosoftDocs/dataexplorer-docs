@@ -129,6 +129,8 @@ demo_make_series1
 
 :::image type="content" source="images/series-rolling-ext/series-rolling-ext-1.png" alt-text="Series rolling 1b" border="false":::
 
+---
+
 ## Additional Examples
 
 The following examples assume the function is already installed
