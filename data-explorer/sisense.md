@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: has-adal-ref
 ms.date: 5/29/2019
 ---

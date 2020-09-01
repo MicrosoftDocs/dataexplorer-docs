@@ -5,8 +5,9 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/19/2020
+ms.custom: contperfq1
 ---
 
 # Monitor Azure Data Explorer performance, health, and usage with metrics

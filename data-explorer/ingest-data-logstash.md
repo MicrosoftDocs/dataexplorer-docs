@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: takamara
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
 
 #Customer intent: As a DevOps engineer, I want to use Logstash to pipeline logs and ingest into Azure Data Explorer so that I can analyze them later.

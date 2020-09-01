@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
 
 # Customer intent: I want to analyze data using Jupyter Notebooks and kqlmagic.

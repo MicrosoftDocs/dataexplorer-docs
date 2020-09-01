@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
-ms.topic: reference
+ms.topic: how-to
 ms.date: 06/09/2020
 ---
 
