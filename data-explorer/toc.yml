@@ -1677,6 +1677,8 @@
     items:
     - name: Extensions
       href: kusto/extensions/query/extensions.md
+    - name: quantize_ext()
+      href: kusto/extensions/query/quantize-ext.md
     - name: series_fit_poly_ext()
       href: kusto/extensions/query/series-fit-poly-ext.md
     - name: series_moving_avg_ext()
