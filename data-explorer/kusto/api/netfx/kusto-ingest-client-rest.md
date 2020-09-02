@@ -277,8 +277,8 @@ internal static string PrepareIngestionMessage(string db, string table, string d
 Finally, post the message that you constructed, to the selected ingestion queue that you obtained from Azure Data Explorer.
 
 > [!NOTE]
-> .Net storage client, when used, encodes the message to base64 by default. For more information, see [storage docs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet-legacy#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage).
-If you are NOT using that client, make sure to properly encode the message content.
+> .Net storage client before v12, when used, encodes the message to base64 by default. For more information, see [storage docs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet-legacy#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage).
+If you are NOT using that client (e.g. using v12 and above of Storage Client), make sure to properly encode the message content.
 
 ```csharp
 internal static void PostMessageToQueue(string queueUriWithSas, string message)
