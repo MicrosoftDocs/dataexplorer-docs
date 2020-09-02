@@ -106,7 +106,7 @@ Use the share menu to [grant permissions](#grant-permissions) to the dashboard, 
 > * Access to the underlying database in the Azure Data Explorer cluster  
 
 1. Select the **Share** menu item in the top bar of the dashboard.
-1. Select **Manage permissions** from the drop down. 
+1. Select **Manage permissions** from the drop-down. 
 
     :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Share dashboard drop-down":::
 

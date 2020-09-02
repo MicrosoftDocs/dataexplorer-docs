@@ -35,19 +35,19 @@ By default, results are shown as a table. The table visual is best for presentin
 
 :::image type="content" source="media/dashboard-customize-visuals/bar-chart.png" alt-text="bar chart visual type":::
 
-The bar chart visual needs a minimum of 2 columns in the query result. By default the first column is used as the y-axis. This column can contain text, datetime, or numeric data types. The other columns are used as the x-axis and contain numeric data types to be displayed as horizontal lines. Bar charts are used mainly for comparing numeric and nominal discrete values, where the length of each lines represents its value.
+The bar chart visual needs a minimum of two columns in the query result. By default, the first column is used as the y-axis. This column can contain text, datetime, or numeric data types. The other columns are used as the x-axis and contain numeric data types to be displayed as horizontal lines. Bar charts are used mainly for comparing numeric and nominal discrete values, where the length of each line represents its value.
 
 ### Column chart
 
 :::image type="content" source="media/dashboard-customize-visuals/column-chart.png" alt-text="column chart visual type":::
 
-The column chart visual needs a minimum 2 columns in the query result. By default, the first column is used as the x-axis. This column can contain text, datetime, or numeric data types. The other columns are used as the y-axis and contain numeric data types to be displayed as vertical lines. Column charts are used for comparing specific sub category items in a main category range, where the length of each line represents its value.
+The column chart visual needs a minimum of two columns in the query result. By default, the first column is used as the x-axis. This column can contain text, datetime, or numeric data types. The other columns are used as the y-axis and contain numeric data types to be displayed as vertical lines. Column charts are used for comparing specific sub category items in a main category range, where the length of each line represents its value.
 
 ### Area chart
 
 :::image type="content" source="media/dashboard-customize-visuals/area-chart.png" alt-text="area chart visual type":::
 
-The area chart visual depicts a time-series relationship. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Unlike line charts, are charts also visually represent volume. Area charts are ideal for indicating the change among different data sets.
+The area chart visual shows a time-series relationship. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Unlike line charts, area charts also visually represent volume. Area charts are ideal for indicating the change among different data sets.
 
 ### Line chart
 
@@ -59,25 +59,25 @@ The line chart visual is the most basic type of chart. The first column of the q
 
 :::image type="content" source="media/dashboard-customize-visuals/stat.png" alt-text="stat visual type":::
 
-The stat visual only shows one element. If there are multiple columns and rows in the output, stat shows the first element of the first column. Stat cards are useful to highlight KPI's on the Dashboard.
+The stat visual only shows one element. If there are multiple columns and rows in the output, stat shows the first element of the first column. Stat cards are useful to highlight KPIs on the Dashboard.
 
 ### Pie chart
 
 :::image type="content" source="media/dashboard-customize-visuals/pie-chart.png" alt-text="pie chart visual type":::
 
-The pie chart visual needs a minimum of 2 columns in the query result. By default, the first column is used as the color axis. This column can contain text, datetime, or numeric data types. Other columns will be used to determined the size of each slice and contain numeric data types. Pie charts are used for presenting a composition of categories and their proportions out of a total.
+The pie chart visual needs a minimum of two columns in the query result. By default, the first column is used as the color axis. This column can contain text, datetime, or numeric data types. Other columns will be used to determine the size of each slice and contain numeric data types. Pie charts are used for presenting a composition of categories and their proportions out of a total.
 
 ### Scatter chart
 
 :::image type="content" source="media/dashboard-customize-visuals/scatter-chart.png" alt-text="scatter chart visual type":::
 
-In a scatter chart visual, the first column is the x-axis and should be a numeric column. Other numeric columns are y-axes. Scatter plots are generally used to observe relationships between variables.
+In a scatter chart visual, the first column is the x-axis and should be a numeric column. Other numeric columns are y-axes. Scatter plots are used to observe relationships between variables.
 
 ### Time chart 
 
 :::image type="content" source="media/dashboard-customize-visuals/time-chart.png" alt-text="time chart visual type":::
 
-A time chart visual is a type of line graph. the first column of the query is the x-axis, and should be datetime. Other numeric columns are y-axes. One string column values are used to group the numeric columns and create different lines in the chart. Further string columns are ignored. The time chart visual is similar to a [line chart](#line-chart) except the x-axis is always time.
+A time chart visual is a type of line graph. the first column of the query is the x-axis, and should be datetime. Other numeric columns are y-axes. One string column values are used to group the numeric columns and create different lines in the chart. Other string columns are ignored. The time chart visual is similar to a [line chart](#line-chart) except the x-axis is always time.
 
 ### Anomaly chart 
 
@@ -89,11 +89,11 @@ An anomaly chart visual is similar to [time chart](#time-chart), but highlights 
 
 :::image type="content" source="media/dashboard-customize-visuals/map.png" alt-text="map visual type":::
 
-To render the map visual, 4 columns are needed in the query:
+To render the map visual, four columns are needed in the query:
 * String (first column) used for hover label
 * Longitude (real)
 * Latitude (real)
-* Bubble size (int). This can be constant 1 if different sizes aren't required.
+* Bubble size (int). This column can be constant one if different sizes aren't required.
 
 Maps are useful to visualize data with geo coordinates. The Map visual also has a built-in zoom functionality.
 

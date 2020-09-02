@@ -42,7 +42,7 @@ To create a parameter, select the **New parameter** button at the top of the rig
 |Field  |Description |
 |---------|---------|
 |**Parameter display name**    |   The name of the parameter shown on the dashboard or the edit card.      |
-|**Parameter type**    |One of the following:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li>
+|**Parameter type**    |One of the following parameters:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li>
 <li>**Free text**: Does not have any values populated in the filter. The user can type a value or copy/paste a value to the text field. The filter keeps the recent values used.</li></ul>    |
 |**Variable name**     |   The name of the parameter to be used in the query.      |
 |**Data type**    |    The data type of the parameter values.     |
@@ -87,7 +87,7 @@ EventsAll
 | top 5 by TotalEvents
 ```
 
-Once saved, the time range filter shows up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard by selecting from the drop down: **Time range** (last x minutes/hours/days) or a **Custom time range**.
+Once saved, the time range filter shows up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard by selecting from the drop-down: **Time range** (last x minutes/hours/days) or a **Custom time range**.
 
 :::image type="content" source="media/dashboard-parameters/time-range.png" alt-text="filter using custom time range":::
 
@@ -148,7 +148,7 @@ The parameters can be seen in the **Parameters** side pane, but aren't currently
 
 ### Use the multiple selection fixed value parameters
 
-Fixed value parameters are based on predefined values specified by the user. The following example shows you how to create and use a multiple selection fixed value parameter.
+Fixed value parameters are based on predefined values specified by the user. The following example shows you how to create and use a multiple-selection fixed-value parameter.
 
 #### Create the parameters
 
@@ -216,7 +216,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 #### Use a parameter in the query
 
-1. The following is a sample query using the new Event parameter by using the `_ event` variable:
+1. The following sample query with the new Event parameter uses the `_ event` variable:
 
     ``` kusto
     EventsAll
@@ -230,7 +230,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 ### Use the multiple selection query-based parameter
 
-Query-based parameter values are derived at dashboard load time by executing the user specified query. The following example shows how to can create a multiple selection query-based parameter:
+Query-based parameter values are derived at dashboard load time by executing the user specified query. The following example shows how to can create a multiple-selection query-based parameter:
 
 #### Create a parameter
 
