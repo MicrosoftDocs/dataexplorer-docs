@@ -106,23 +106,30 @@ For example, if your Engine DNS name is myadx.westus.kusto.windows.net the name 
 
 |Name |Type |Value |Remark |
 |-----|-----|------|-------|
-|myadx.westus.kusto.windows.net|CNAME|myadx.privatelink.westus.kusto.windows.net|
-|myadx.privatelink.westus.kusto.windows.net|A|40.122.110.154|This value is your Engine public IP address, which was provided by you when you created the cluster.|
+* **name**: myadx.westus.kusto.windows.net
+    <br> **type**: CNAME
+    <br> **value**: myadx.privatelink.westus.kusto.windows.net
+* **name**: myadx.privatelink.westus.kusto.windows.net
+    <br> **type**: A
+    <br> **value**: 40.122.110.154
+    > [!NOTE]
+    > This value is your query (Engine) public IP address, which was provided by you when you created the cluster.
 
 Set up a private DNS server or an Azure private DNS zone. For tests, you can modify the host entry of your test machine.
-Create the following DNS zone:**privatelink.region.kusto.windows.net**. The DNS zone in the example is: **privatelink.westus.kusto.windows.net**. 
+
+Create the following DNS zone: **privatelink.region.kusto.windows.net**. The DNS zone in the example is: **privatelink.westus.kusto.windows.net**. 
 Register the record for your Engine with a A record and the Private Endpoint IP.
 
 For example, the name resolution will be:
 
-* *name*: myadx.westus.kusto.windows.net
-    <br>*type*: CNAME 
-    <br>*value*: myadx.privatelink.westus.kusto.windows.net
-* *name*: myadx.privatelink.westus.kusto.windows.net
-    <br>*type*: A
-    <br>*value*: 10.3.0.9
+* **name**: myadx.westus.kusto.windows.net
+    <br>**type** : CNAME 
+    <br>**value**: myadx.privatelink.westus.kusto.windows.net
+* **name**: myadx.privatelink.westus.kusto.windows.net
+    <br>**type**: A
+    <br>**value**: 10.3.0.9
     > [!NOTE]
-    > This value is your Private Endpoint IP. You have already connected the IP to the Engine private link service.
+    > This value is your Private Endpoint IP. You have already connected the IP to the query (Engine) private link service.
 
 After setting this DNS configuration, you can reach the query (Engine) inside your Virtual Network privately with the following URL: myadx.region.kusto.windows.net.
 
