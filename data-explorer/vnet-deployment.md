@@ -240,7 +240,10 @@ crl3.digicert.com:80
 ```
 
 > [!NOTE]
-> If you're using [Azure Firewall](/azure/firewall/overview) you need to add "Network Rule" to allow *AzureMonitor* (Service Tag) for port 443.
+> If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties:
+> | **Protocol**   | **Source Type** | **Source** | **Service Tags**  | **Destination Ports** |
+> | ---   | --- | --- | ---  | --- |
+> | TCP | IP Address | * | AzureMonitor | 443 |
 
 You also need to define the [route table](/azure/virtual-network/virtual-networks-udr-overview) on the subnet with the [management addresses](#azure-data-explorer-management-ip-addresses) and [health monitoring addresses](#health-monitoring-addresses) with next hop *Internet* to prevent asymmetric routes issues.
 
