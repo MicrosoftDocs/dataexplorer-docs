@@ -22,18 +22,20 @@ Use Azure Data Explorer metrics to learn about the performance of your cluster r
 ## Using metrics
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-1. In the lefthand pane of your Azure Data Explorer cluster, search for *metrics*. 
+1. In the lefthand pane of your Azure Data Explorer cluster, search for *metrics*.
 1. Select **Metrics** to open the metrics pane and begin analysis on your cluster.
     :::image type="content" source="media/using-metrics/select-metrics.gif" alt-text="Search and select metrics in the Azure Portal":::
 1. In the Metrics pane:
-    ![Metrics pane](media/using-metrics/metrics-pane.png)
-    1. To create a metric chart, select **Metric** name and relevant **Aggregation** per metric. The **Resource** and **Metric Namespace** pickers are pre-selected for your Azure Data Explorer cluster. For more information about different metrics, see [supported Azure Data Explorer metrics](#supported-azure-data-explorer-metrics).
-    1. Select **Add metric** to see multiple metrics plotted in the same chart.
-    1. Select **+ New chart** to see multiple charts in one view.
-    1. Use the time picker to change the time range (default: past 24 hours).
-    1. Use [**Add filter** and **Apply splitting**](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) for metrics that have dimensions.
-    1. Select **Pin to dashboard** to add your chart configuration to the dashboards so that you can view it again.
-    1. Set **New alert rule** to visualize your metrics using the set criteria. The new alerting rule will include your target resource, metric, splitting, and filter dimensions from your chart. Modify these settings in the [alert rule creation pane](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
+
+![Metrics pane](media/using-metrics/metrics-pane.png)
+
+1. To create a metric chart, select **Metric** name and relevant **Aggregation** per metric. The **Resource** and **Metric Namespace** pickers are pre-selected for your Azure Data Explorer cluster. For more information about different metrics, see [supported Azure Data Explorer metrics](#supported-azure-data-explorer-metrics).
+1. Select **Add metric** to see multiple metrics plotted in the same chart.
+1. Select **+ New chart** to see multiple charts in one view.
+1. Use the time picker to change the time range (default: past 24 hours).
+1. Use [**Add filter** and **Apply splitting**](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) for metrics that have dimensions.
+1. Select **Pin to dashboard** to add your chart configuration to the dashboards so that you can view it again.
+1. Set **New alert rule** to visualize your metrics using the set criteria. The new alerting rule will include your target resource, metric, splitting, and filter dimensions from your chart. Modify these settings in the [alert rule creation pane](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
 
 To get started using Azure Metrics Explorer, see [Metrics Explorer](/azure/azure-monitor/platform/metrics-getting-started).
 
