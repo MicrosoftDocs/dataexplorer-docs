@@ -115,10 +115,14 @@ Register the record for your Engine with a A record and the Private Endpoint IP.
 
 For example, the name resolution will be:
 
-|Name |Type |Value |Remark |
-|-----|-----|------|-------|
-|myadx.westus.kusto.windows.net|CNAME|myadx.privatelink.westus.kusto.windows.net|
-|myadx.privatelink.westus.kusto.windows.net|A|10.3.0.9|This value is your Private Endpoint IP. You have already connected the IP to the Engine private link service.|
+* *name*: myadx.westus.kusto.windows.net
+    <br>*type*: CNAME 
+    <br>*value*: myadx.privatelink.westus.kusto.windows.net
+* *name*: myadx.privatelink.westus.kusto.windows.net
+    <br>*type*: A
+    <br>*value*: 10.3.0.9
+    > [!NOTE]
+    > This value is your Private Endpoint IP. You have already connected the IP to the Engine private link service.
 
 After setting this DNS configuration, you can reach the query (Engine) inside your Virtual Network privately with the following URL: myadx.region.kusto.windows.net.
 
