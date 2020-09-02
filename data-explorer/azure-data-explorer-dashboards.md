@@ -148,8 +148,8 @@ Or
 > [!NOTE]
 > * Select the smallest minimum time interval to reduce unnecessary load on the cluster. 
 > * A dashboard viewer: 
->    * Can change the refresh intervals for the dashboard but can't save the changes. 
->     * Can't select a value which is smaller than the **Minimum time interval** specified by the editor.
+>    * Can change the minimum time intervals for personal use only. 
+>    * Can't select a value which is smaller than the **Minimum time interval** specified by the editor.
 
 ## Next Steps
 
