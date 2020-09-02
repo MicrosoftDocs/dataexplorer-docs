@@ -32,7 +32,7 @@ Run the following commands to add data to the beginning of the record. Note ordi
  
 **JSON mapping example**
 
-Data is added by using the system properties names as they appear in the **Data connection** pane **Event system properties** list. Run these commands:
+Data is added by using the system properties mapping. System properties names appear in the **Data connection** pane **Event system properties** list. Run these commands:
 
 ```kusto
     .create table TestTable ingestion json mapping "JsonMapping1"
