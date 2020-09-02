@@ -104,8 +104,6 @@ When you deploy an Azure Data Explorer cluster in your virtual network, we updat
 
 For example, if your Engine DNS name is myadx.westus.kusto.windows.net the name resolution will be:
 
-|Name |Type |Value |Remark |
-|-----|-----|------|-------|
 * **name**: myadx.westus.kusto.windows.net
     <br> **type**: CNAME
     <br> **value**: myadx.privatelink.westus.kusto.windows.net
