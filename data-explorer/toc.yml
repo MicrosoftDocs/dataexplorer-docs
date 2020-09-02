@@ -176,10 +176,12 @@
     items:
     - name: Azure Data Explorer dashboards
       items:
-      - name: using dashboards
+      - name: use dashboards
         href: azure-data-explorer-dashboards.md
-      - name: using dashboard parameters
+      - name: use dashboard parameters
         href: dashboard-parameters.md  
+      - name: customize dashboard visuals
+        href: dashboard-customize-visuals.md  
     - name: Power BI
       items:
       - name: Best practices
