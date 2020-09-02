@@ -76,7 +76,7 @@ For more information, see [Azure Data Explorer R SDK](r/kusto-r-client-library.m
 
 ### Java SDK
 
-The Kusto Java client library provides the capability to query Azure Data Explorer clusters using Java. 
+The Java client library provides the capability to query Azure Data Explorer clusters using Java. 
 For more information, see [Azure Data Explorer Java SDK](java/kusto-java-client-library.md).
 
 ### Node SDK
