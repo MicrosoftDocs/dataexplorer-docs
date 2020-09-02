@@ -118,7 +118,7 @@ For example, the name resolution will be:
 |Name |Type |Value |Remark |
 |-----|-----|------|-------|
 |myadx.westus.kusto.windows.net|CNAME|myadx.privatelink.westus.kusto.windows.net|
-|myadx.privatelink.westus.kusto.windows.net|A|10.3.0.9|This value is your Private Endpoint IP (that you already connected to the Engine private link service)|
+|myadx.privatelink.westus.kusto.windows.net|A|10.3.0.9|This value is your Private Endpoint IP. You have already connected the IP to the Engine private link service.|
 
 After setting this DNS configuration, you can reach the query (Engine) inside your Virtual Network privately with the following URL: myadx.region.kusto.windows.net.
 
