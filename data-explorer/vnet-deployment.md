@@ -240,7 +240,7 @@ crl3.digicert.com:80
 ```
 
 > [!NOTE]
-> If you're using [Azure Firewall](/azure/firewall/overview) you need to add **Network Rule** with the following properties:
+> If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties:
 > | **Protocol**   | **Source Type** | **Source** | **Service Tags**  | **Destination Ports** |
 > | ---   | --- | --- | ---  | --- |
 > | TCP | IP Address | * | AzureMonitor | 443 |
