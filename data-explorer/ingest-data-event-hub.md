@@ -149,7 +149,6 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include [properties](ingest-data-event-hub-overview.md#event-hub-exposes-the-following-system-properties) in the table schema and mapping.
 
-[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
 
 ## Copy the connection string
 

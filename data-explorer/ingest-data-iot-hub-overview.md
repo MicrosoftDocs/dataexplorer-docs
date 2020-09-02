@@ -70,6 +70,8 @@ System properties are a collection used to store properties that are set by the 
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
 
+[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
+
 ## Create IoT Hub connection
 
 > [!Note]

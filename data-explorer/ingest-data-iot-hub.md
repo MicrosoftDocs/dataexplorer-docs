@@ -113,8 +113,6 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include [properties](ingest-data-iot-hub-overview.md#iot-hub-exposes-the-following-system-properties) in the table schema and mapping.
 
-[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
-
 ## Generate sample data for testing
 
 The simulated device application connects to a device-specific endpoint on your IoT hub and sends simulated temperature and humidity telemetry.

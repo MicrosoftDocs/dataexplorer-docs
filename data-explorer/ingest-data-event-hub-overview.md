@@ -11,7 +11,6 @@ ms.date: 08/13/2020
 ---
 # Create a connection to Event Hub
 
-
 [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
 
 The Event Hub ingestion pipeline transfers events to Azure Data Explorer in several steps. You first create an Event Hub in the Azure portal. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#set-ingestion-properties). The Event Hub connection needs to know [events routing](#set-events-routing). Data is embedded with selected properties according to the [event system properties mapping](#set-event-system-properties-mapping). [Create a connection](#create-event-hub-connection) to Event Hub to [create an Event Hub](#create-an-event-hub) and [send events](#send-events). This process can be managed through the [Azure portal](ingest-data-event-hub.md), programmatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
@@ -94,6 +93,8 @@ System properties store properties that are set by the Event Hubs service, at th
 | x-opt-partition-key |string |The partition key of the corresponding partition that stored the event |
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
+
+[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
 
 ## Create Event Hub connection
 
