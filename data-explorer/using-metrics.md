@@ -10,10 +10,11 @@ ms.date: 01/19/2020
 ms.custom: contperfq1
 ---
 
-# Monitor Azure Data Explorer usage with metrics
+# Monitor Azure Data Explorer performance, health, and usage with metrics
 
-Use Azure Data Explorer metrics to learn about the performance of your cluster resources. You can also use metrics as the basis for operational [Azure Dashboards](/azure/azure-portal/azure-portal-dashboards) and [Azure Alerts](/azure/azure-monitor/platform/alerts-metric-overview).
+Azure Data Explorer metrics provide key indicators as to the health and performance of the cluster resources. Use the metrics that are detailed in this article to monitor Azure Data Explorer cluster health and performance in your specific scenario as standalone metrics. You can also use metrics as the basis for operational [Azure Dashboards](/azure/azure-portal/azure-portal-dashboards) and [Azure Alerts](/azure/azure-monitor/platform/alerts-metric-overview).
 
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it. 
 
 For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure/azure-monitor/platform/metrics-getting-started).
 
@@ -22,7 +23,7 @@ For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure
 * An Azure subscription. If you don't have one, you can create a [free Azure account](https://azure.microsoft.com/free/).
 * A [cluster and database](create-cluster-database-portal.md).
 
-## Use metrics to analyze your service
+## Use metrics to monitor your Azure Data Explorer resources
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. In the left-hand pane of your Azure Data Explorer cluster, search for *metrics*.
@@ -31,9 +32,9 @@ For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure
 
 ## Work in the metrics pane
 
-The **Resource** and **Metric Namespace** pickers are pre-selected for your Azure Data Explorer cluster.
+In the metrics pane, select specific metrics to track, choose how to aggregate your data, and create metrics charts that you can view later on your dashboard.
 
-The numbers in the following image correspond to the numbered list below. They guide you through different options in setting up and viewing your metrics.
+The **Resource** and **Metric Namespace** pickers are pre-selected for your Azure Data Explorer cluster. The numbers in the following image correspond to the numbered list below. They guide you through different options in setting up and viewing your metrics.
 
 ![Metrics pane](media/using-metrics/metrics-pane.png)
 
@@ -47,7 +48,7 @@ The numbers in the following image correspond to the numbered list below. They g
 
 ## Supported Azure Data Explorer metrics
 
-The Azure Data Explorer metrics give insight into both overall performance and use of your resources, as well as information about specific actions, such as ingestion or query. The metrics in this article have been grouped by usage type.
+The Azure Data Explorer metrics give insight into both overall performance and use of your resources, as well as information about specific actions, such as ingestion or query. The metrics in this article have been grouped by usage type. The types of metrics are: [Cluster metrics](#cluster-metrics), [Export metrics](#export-metrics), [Ingestion metrics](#ingestion-metrics), [Query metrics](#query-metrics), and [Streaming ingest metrics](#streaming-ingest-metrics).
 
 For an alphabetical list of Azure Monitor's metrics for Azure Data Explorers, see [supported Azure Data Explorer cluster metrics](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters).
 
@@ -57,12 +58,12 @@ The cluster metrics track the general health of the cluster. For example, resour
 
 |**Metric** | **Unit** | **Aggregation** | **Metric description** | **Dimensions** |
 |---|---|---|---|---|
-| Cache utilization | Percent | Avg, Max, Min | Percentage of allocated cache resources currently in use by the cluster. Cache is the size of SSD allocated for user activity according to the defined cache policy. <br> <br> *An average cache utilization of 80% or less is a sustainable state for a cluster. If the average cache utilization is above 80%, the cluster should be <br> [scaled up](manage-cluster-vertical-scaling.md) to a storage optimized pricing tier or <br> [scaled out](manage-cluster-horizontal-scaling.md) to more instances. Alternatively, adapt the cache policy (fewer days in cache). If cache utilization is over 100%, the size of data to be cached, according to the caching policy, is larger that the total size of cache on the cluster.* | None |
-| CPU | Percent | Avg, Max, Min | Percentage of allocated compute resources currently in use by machines in the cluster. <br> <br> *An average CPU of 80% or less is sustainable for a cluster. The maximum value of CPU is 100%, which means there are no additional compute resources to process data. <br> When a cluster isn't performing well, check the maximum value of the CPU to determine if there are specific CPUs that are blocked.* | None |
-| Ingestion utilization | Percent | Avg, Max, Min | Percentage of actual resources used to ingest data from the total resources allocated, in the capacity policy, to perform ingestion. The default capacity policy is no more than 512 concurrent ingestion operations or 75% of the cluster resources invested in ingestion. <br> <br> *Average ingestion utilization of 80% or less is a sustainable state for a cluster. Maximum value of ingestion utilization is 100%, which means all cluster ingestion ability is used and an ingestion queue may result.* | None |
-| Keep alive | Count | Avg | Tracks the responsiveness of the cluster. <br> <br> *A fully responsive cluster returns value 1 and a blocked or disconnected cluster returns 0.* |
+| Cache utilization | Percent | Avg, Max, Min | Percentage of allocated cache resources currently in use by the cluster. Cache is the size of SSD allocated for user activity according to the defined cache policy. <br> <br> An average cache utilization of 80% or less is a sustainable state for a cluster. If the average cache utilization is above 80%, the cluster should be <br> [scaled up](manage-cluster-vertical-scaling.md) to a storage optimized pricing tier or <br> [scaled out](manage-cluster-horizontal-scaling.md) to more instances. Alternatively, adapt the cache policy (fewer days in cache). If cache utilization is over 100%, the size of data to be cached, according to the caching policy, is larger that the total size of cache on the cluster. | None |
+| CPU | Percent | Avg, Max, Min | Percentage of allocated compute resources currently in use by machines in the cluster. <br> <br> An average CPU of 80% or less is sustainable for a cluster. The maximum value of CPU is 100%, which means there are no additional compute resources to process data. <br> When a cluster isn't performing well, check the maximum value of the CPU to determine if there are specific CPUs that are blocked. | None |
+| Ingestion utilization | Percent | Avg, Max, Min | Percentage of actual resources used to ingest data from the total resources allocated, in the capacity policy, to perform ingestion. The default capacity policy is no more than 512 concurrent ingestion operations or 75% of the cluster resources invested in ingestion. <br> <br> Average ingestion utilization of 80% or less is a sustainable state for a cluster. Maximum value of ingestion utilization is 100%, which means all cluster ingestion ability is used and an ingestion queue may result. | None |
+| Keep alive | Count | Avg | Tracks the responsiveness of the cluster. <br> <br> A fully responsive cluster returns value 1 and a blocked or disconnected cluster returns 0. |
 | Total number of throttled commands | Count | Avg, Max, Min, Sum | The number of throttled (rejected) commands in the cluster, since the maximum allowed number of concurrent (parallel) commands was reached. | None |
-| Total number of extents | Count | Avg, Max, Min, Sum | Total number of data extents in the cluster. <br> <br> *Changes in this metric can imply massive data structure changes and high load on the cluster, since merging data extents is a CPU-heavy activity.* | None |
+| Total number of extents | Count | Avg, Max, Min, Sum | Total number of data extents in the cluster. <br> <br> Changes in this metric can imply massive data structure changes and high load on the cluster, since merging data extents is a CPU-heavy activity. | None |
 
 ## Export metrics
 
