@@ -86,10 +86,12 @@ Ingestion metrics track the general health and performance of ingestion operatio
 | Batch duration | Seconds | Avg, Max, Min | The duration of the batching phase in the ingestion flow  | Database |
 | Batch size | Bytes | Avg, Max, Min | Uncompressed expected data size in an aggregated batch for ingestion. | Database |
 | Batches processed | Count | Avg, Max, Min | Number of batches completed for ingestion. `BatchCompletionReason`: Whether the batch reached the batching time, data size or number of files limit, set by [batching policy](/azure/data-explorer/kusto/management/batchingpolicy). | Database, BatchCompletionReason |
+| Discovery latency | Seconds | Avg, Max, Min | Time from data enqueue until discovery by data connection. This time is not included in the **Kusto total ingestion duration** or the **KustoEventAge (Ingestion Latency)** | Database, Table, Data connection type, Data connection name |
 | Events processed (for Event/IoT Hubs) | Count | Max, Min, Sum | Total number of events read from event hubs and processed by the cluster. The events are split into events rejected and events accepted by the cluster engine. | EventStatus |
 | Ingestion latency | Seconds | Avg, Max, Min | Latency of data ingested, from the time the data was received in the cluster until it's ready for query. The ingestion latency period depends on the ingestion scenario. | None |
 | Ingestion result | Count | Count | Total number of ingestion operations that failed and succeeded. <br> <br> Use **apply splitting** to create buckets of success and fail results and analyze the dimensions (**Value** > **Status**).| IngestionResultDetails |
 | Ingestion volume (in MB) | Count | Max, Sum | The total size of data ingested to the cluster (in MB) before compression. | Database |
+| Stage latency | Seconds | Avg, Max, Min | Duration for a particular component to process this batch of data. The total stage latency for all components of a batch of data is equal to its ingestion latency. | Database, Data connection type, Data connection name|
 
 ## Query metrics
 
