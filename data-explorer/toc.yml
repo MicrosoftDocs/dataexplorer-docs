@@ -293,7 +293,8 @@
     items:
     - name: Use diagnostic logs to monitor ingestion
       href: using-diagnostic-logs.md
-    - name: Use metrics to monitor cluster health
+    - name: Monitor Azure Data Explorer with metrics
+      displayName: health, performance
       href: using-metrics.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
