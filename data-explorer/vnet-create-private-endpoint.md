@@ -18,7 +18,7 @@ To set up your [Private Link service](https://docs.microsoft.com/azure/private-l
 ## Prerequisites
 
 * Create an [Azure Data Explorer cluster in your virtual network](https://docs.microsoft.com/azure/data-explorer/vnet-create-cluster-portal)
-* [Disable network policies]((https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy) like network security groups (NSG). These groups are not supported for private endpoints.
+* [Disable network policies]((https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy) like network security groups (NSG). These groups aren't supported for private endpoints.
 
 ## Create Private Link service
 
