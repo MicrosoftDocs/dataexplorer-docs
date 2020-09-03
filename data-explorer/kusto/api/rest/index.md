@@ -11,7 +11,7 @@ ms.date: 05/29/2019
 ---
 # Azure Data Explorer REST API
 
-This article describes how to interact with Kusto over HTTPS.
+This article describes how to interact with Azure Data Explorer over HTTPS.
 
 ## Supported actions
 
