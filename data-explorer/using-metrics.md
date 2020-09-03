@@ -29,7 +29,7 @@ For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure
 1. Select **Metrics** to open the metrics pane and begin analysis on your cluster.
     :::image type="content" source="media/using-metrics/select-metrics.gif" alt-text="Search and select metrics in the Azure portal":::
 
-## Work in the metrics pane:
+## Work in the metrics pane
 
 The **Resource** and **Metric Namespace** pickers are pre-selected for your Azure Data Explorer cluster.
 
@@ -47,9 +47,9 @@ The numbers in the following image correspond to the numbered list below. They g
 
 ## Supported Azure Data Explorer metrics
 
-ADD INFORMATION ABOUT WHAT THE METRICS DO AND WHAT KINDS THERE ARE
+The Azure Data Explorer metrics give insight into both overall performance and use of your resources, as well as information about specific actions, such as ingestion or query. The metrics in this article have been grouped by usage type.
 
-The following Azure Data Explorer metrics are separated into categories by usage. 
+For an alphabetical list of Azure Monitor's metrics for Azure Data Explorers, see [supported Azure Data Explorer cluster metrics](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters).
 
 ## Cluster metrics
 
@@ -111,8 +111,6 @@ Streaming Ingest Data Rate |	Count	| RateRequestsPerSecond	| Total volume of dat
 Streaming Ingest Duration	| Milliseconds	| Avg, Max, Min	| Total duration of all streaming ingestion requests. | None |
 Streaming Ingest Request Rate	| Count	| Count, Avg, Max, Min, Sum	| Total number of streaming ingestion requests. | None |
 Streaming Ingest Result	| Count	| Avg	| Total number of streaming ingestion requests by result type. | Result |
-
-For an alphabetical list of Azure Monitor's metrics for Azure Data Explorers, see [supported Azure Data Explorer cluster metrics](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters).
 
 ## Next steps
 
