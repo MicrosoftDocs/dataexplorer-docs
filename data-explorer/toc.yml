@@ -220,6 +220,8 @@
           href: vnet-deployment.md  
         - name: Troubleshoot VNet cluster creation, connectivity, and operation 
           href: vnet-deploy-troubleshoot.md
+        - name: Create Private Endpoint for your VNet cluster - Portal
+          href: vnet-create-private-endpoint.md
     - name: Encryption
       items:
       - name: Cluster disk encryption - portal
