@@ -14,7 +14,7 @@ ms.date: 01/02/2019
 
 ## AAD User Authentication
 
-SQL clients that support AAD user authentication can be used with Kusto.
+SQL clients that support AAD user authentication can be used with Azure Data Explorer.
 
 ### .NET SQL Client (user)
 

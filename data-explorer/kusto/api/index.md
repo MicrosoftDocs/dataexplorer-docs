@@ -32,7 +32,7 @@ With this fully documented endpoint, callers can:
 
 The different Azure Data Explorer services communicate among themselves, via the same publicly available REST API.
 
-A number of client libraries are also available to use the service, without dealing with the REST API protocol.
+A number of [client libraries](client-libraries.md) are also available to use the service, without dealing with the REST API protocol.
 
 ## MS-TDS
 
