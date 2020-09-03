@@ -13,12 +13,12 @@ ms.date: 08/09/2020
 
 Use a Private Link with a Private Endpoint to securely access your Azure Data Explorer cluster in your virtual network (VNet). 
 
-To set up your [Private Link service](https://docs.microsoft.com/azure/private-link/private-link-service-overview), you will use a Private Endpoint with an IP address from your Azure VNet address space. [Azure Private Endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) uses a private IP address from your VNet to connect you privately and securely to Azure Data Explorer. You will also need to reconfigure the [DNS configuration](https://docs.microsoft.com/azure/private-link/private-endpoint-dns) on your cluster to connect using your private endpoint. With this setup, network traffic between a client on your private network and the Azure Data Explorer cluster traverses over the VNet and a [Private Link](https://docs.microsoft.com/azure/private-link/) on the Microsoft backbone network, eliminating exposure from the public internet.
+To set up your [Private Link service](https://docs.microsoft.com/azure/private-link/private-link-service-overview), you will use a Private Endpoint with an IP address from your Azure VNet address space. [Azure Private Endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) uses a private IP address from your VNet to connect you privately and securely to Azure Data Explorer. You will also need to reconfigure the [DNS configuration](https://docs.microsoft.com/azure/private-link/private-endpoint-dns) on your cluster to connect using your private endpoint. With this setup, network traffic between a client on your private network and the Azure Data Explorer cluster travels over the VNet and a [Private Link](https://docs.microsoft.com/azure/private-link/) on the Microsoft backbone network, removing exposure from the public internet. This article shows you how to create and configure a Private Endpoint in your cluster for both query (Engine) and ingestion (data management).
 
 ## Prerequisites
 
 * Create an [Azure Data Explorer cluster in your virtual network](https://docs.microsoft.com/azure/data-explorer/vnet-create-cluster-portal)
-* [Disable network policies]((https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy) like network security groups (NSG). These groups aren't supported for private endpoints.
+* [Disable network policies]((https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy) like network security groups (NSG). These groups are not supported for private endpoints.
 
 ## Create Private Link service
 
@@ -47,13 +47,13 @@ To securely link to all services on your cluster, you need to create the [Privat
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
-    | Load Balancer | Your engine or *data management* Load Balancer | Select the Load Balancer that was created for your cluster engine, Load Balancer that point to your engine public IP.  The Load Balancer engine name will be in the following format: kucompute-{clustername}-elb <br> *The Load Balancer data management name will be in the following format: kudatamgmt-{clustername}-elb*|
+    | Load Balancer | Your engine or *data management* Load Balancer | Select the Load balancer that was created for your cluster engine, Load balancer that point to your engine public IP.  The Load balancer engine name will be in the following format: kucompute-{clustername}-elb <br> *The Load Balancer data management name will be in the following format: kudatamgmt-{clustername}-elb*|
     | Load balancer frontend IP address | Your engine or data management public IP. | Select the Load Balancer public IP address. |
     | Source NAT subnet | Cluster's subnet | Your subnet, where the cluster is deployed.
     
 1. In the **Access security** pane, choose the users who can request access to your private link service.
 1. Select **Review + create** to review your private link service configuration. Select **Create** to create the private link service.
-1. After the private link service is created, open the resource and save the private link alias for the next step, **Create Private Endpoint**. The example alias is: **AzureDataExplorerPLS.111-222-333.westus.azure.privatelinkservice**
+1. After the private link service is created, open the resource and save the private link alias for the next step, **Create Private Endpoint**. The example alias is: *AzureDataExplorerPLS.111-222-333.westus.azure.privatelinkservice*
 
 ## Create Private Endpoint
 
@@ -62,7 +62,7 @@ To securely link to all services on your cluster, you need to create the [Privat
 1. Select the **+ Create a resource** button in the upper-left corner of the portal.
 1. Search for *Private Endpoint*.
 1. Under **Private Endpoint**, select **Create**.
-1. In the **Create a Private Endpoint** pane, fill out the following fields:
+1. In the **Create a private endpoint** pane, fill out the following fields:
 
     :::image type="content" source="media/vnet-create-private-endpoint/step-one-basics.png" alt-text="Create private endpoint form step 1 - basics":::
 
@@ -80,7 +80,7 @@ To securely link to all services on your cluster, you need to create the [Privat
     **Setting** | **Value**
     |---|---|
     | Connection method | Your Private Link service Alias |
-    | Resource ID or alias | Your Engine Private Link service Alias. The example alias is: **AzureDataExplorerPLS.111-222-333.westus.azure.privatelinkservice**  |
+    | Resource ID or alias | Your Engine Private Link service Alias. The example alias is: *AzureDataExplorerPLS.111-222-333.westus.azure.privatelinkservice*  |
     
 1. Select **Review + create** to review your private endpoint configuration, and **Create** the private endpoint service.
 1. To create the Private Endpoint for ingestion (data management), follow the same instructions with the following change:
@@ -116,7 +116,7 @@ For example, if your Engine DNS name is myadx.westus.kusto.windows.net the name 
 
 Set up a private DNS server or an Azure private DNS zone. For tests, you can modify the host entry of your test machine.
 
-Create the following DNS zone: **privatelink.region.kusto.windows.net**. The DNS zone in the example is: **privatelink.westus.kusto.windows.net**. 
+Create the following DNS zone: **privatelink.region.kusto.windows.net**. The DNS zone in the example is: *privatelink.westus.kusto.windows.net*. 
 Register the record for your Engine with a A record and the Private Endpoint IP.
 
 For example, the name resolution will be:
