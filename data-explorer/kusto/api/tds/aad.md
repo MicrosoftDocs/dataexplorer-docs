@@ -12,13 +12,13 @@ ms.date: 01/02/2019
 ---
 # MS-TDS with Azure Active Directory
 
-## AAD User Authentication
+## Azure AD User Authentication
 
-SQL clients that support AAD user authentication can be used with Azure Data Explorer.
+SQL clients that support Azure AD user authentication can be used with Azure Data Explorer.
 
 ### .NET SQL Client (user)
 
-For example, for integrated AAD:
+For example, for integrated Azure AD:
 ```csharp
     var csb = new SqlConnectionStringBuilder()
     {
@@ -74,13 +74,13 @@ public class Sample {
 }
 ```
 
-## AAD Application Authentication
+## Azure AD Application Authentication
 
-AAD application provisioned for Kusto can use SQL client libraries that support AAD for connecting to Kusto. See [Creating an AAD Application](../../management/access-control/how-to-provision-aad-app.md) for more information about AAD applications.
+Azure AD application provisioned for Kusto can use SQL client libraries that support Azure AD for connecting to Kusto. For more information about Azure AD applications, see [Creating an Azure AD Application](../../management/access-control/how-to-provision-aad-app.md).
 
 ### .NET SQL Client (application)
 
-Assuming you have provisioned AAD application with *ApplicationClientId* and *ApplicationKey* and granted it permissions to access database *DatabaseName* on cluster *ClusterDnsName*, the following sample demonstrates how to use .NET SQL Client for queries from this AAD application.
+Assuming you have provisioned Azure AD application with *ApplicationClientId* and *ApplicationKey* and granted it permissions to access database *DatabaseName* on cluster *ClusterDnsName*, the following sample demonstrates how to use .NET SQL Client for queries from this Azure AD application.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
