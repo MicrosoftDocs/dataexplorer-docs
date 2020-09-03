@@ -11,7 +11,7 @@ ms.date: 08/09/2020
 
 # Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network
 
-Use a Private Link with a Private Endpoint to securely access your Azure Data Explorer cluster in your virtual network (VNet). This article shows you how to create and configure a Private Endpoint in your cluster for both query (Engine) and ingestion (data management).
+Use a Private Link with a Private Endpoint to securely access your Azure Data Explorer cluster in your virtual network (VNet). 
 
 To set up your [Private Link service](https://docs.microsoft.com/azure/private-link/private-link-service-overview), you will use a Private Endpoint with an IP address from your Azure VNet address space. [Azure Private Endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) uses a private IP address from your VNet to connect you privately and securely to Azure Data Explorer. You will also need to reconfigure the [DNS configuration](https://docs.microsoft.com/azure/private-link/private-endpoint-dns) on your cluster to connect using your private endpoint. With this setup, network traffic between a client on your private network and the Azure Data Explorer cluster traverses over the VNet and a [Private Link](https://docs.microsoft.com/azure/private-link/) on the Microsoft backbone network, eliminating exposure from the public internet.
 
