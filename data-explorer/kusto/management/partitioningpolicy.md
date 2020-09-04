@@ -45,7 +45,7 @@ The following kinds of partition keys are supported.
 * `Function` is the name of a hash-modulo function to use.
   * Supported value: `XxHash64`.
 * `MaxPartitionCount` is the maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period.
-  * Supported values are in the range `(1,1024]`.
+  * Supported values are in the range `(1,2048]`.
     * The value is expected to be:
       * Larger than 5 times the number of nodes in the cluster.
       * Smaller than the cardinality of the column.
