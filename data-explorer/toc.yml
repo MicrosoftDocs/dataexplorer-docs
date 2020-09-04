@@ -574,7 +574,7 @@
       - name: materialize()
         href: ./kusto/query/materializefunction.md
       - name: materialize_view()
-        href: ./kusto/query/materializeviewfunction.md
+        href: ./kusto/query/materializedviewfunction.md
       - name: table()
         href: ./kusto/query/tablefunction.md
       - name: toscalar()
