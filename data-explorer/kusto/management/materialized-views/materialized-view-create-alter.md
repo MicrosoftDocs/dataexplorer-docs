@@ -22,7 +22,7 @@ See [this article](../../concepts/fact-and-dimension-tables.md) for information 
 
 * There are two possible ways to create a materialized view (noted by the *backfill* option in the create command):
     * **Create based on the existing records in the source table:** in this case,
-      creation may take a long time to complete (depending on the number of records in the source table),
+      creation may take a long while to complete (depending on the number of records in the source table),
     and view will not be available for queries until completion.
     When using this option, create command must be `async` and execution can be monitored using the [.show operations](../operations.md#show-operations) command.
     
@@ -35,7 +35,7 @@ See [this article](../../concepts/fact-and-dimension-tables.md) for information 
     
     * **Create the materialized view from now onwards:** in this case, the materialized view is created empty,
     and will only include records ingested after view creation. Creation of this kind returns immediately
- (does not require `async`), and view wil be immediately available for query.
+ (does not require `async`), and view will be immediately available for query.
 
 * Once created, the materialized views can be altered using the [alter materialized-view](#alter-materialized-view)
 command. Not all changes are supported, the [section below](#alter-materialized-view) describes the supported changes.
@@ -59,13 +59,13 @@ command. Not all changes are supported, the [section below](#alter-materialized-
 
 **Properties**:
 
-The following are supported in the *with(propertyName=propertyValue)* clause (all are optional). 
+The following are supported in the `with(propertyName=propertyValue)` clause (all are optional). 
 
 |Property|Type|Description
 |----------------|-------|---|
 |backfill|bool|Whether to create the view based on all records currently in *SourceTable* (true), or to create it "from-now-on" (false). See above for further details. Default is false.|
-|effectiveDateTime|datetime|If specified along with backfill=true, will only backfill with records ingested after this datetime. Backfill must be set to true as well. Expects a datetime literal, for example, `effectiveDateTime=datetime(2019-05-01)`|
-|dimensionTables|Array|A comma separated list of dimension tables in the view (see below).|
+|effectiveDateTime|datetime|If specified along with backfill=true, creation will only backfill with records ingested after this datetime. Backfill must be set to true as well. Expects a datetime literal, for example, `effectiveDateTime=datetime(2019-05-01)`|
+|dimensionTables|Array|A comma-separated list of dimension tables in the view (see below).|
 |autoUpdateSchema|bool|Whether to auto-update the view on source table changes (see below). Default is false.|
 |folder|string|The materialized view's folder.|
 |docString|string|A string documenting the materialized view|
@@ -106,7 +106,7 @@ Materialized view with backfill and effectiveDateTime - view is created based on
 } 
 ```
 
-Definition can include additional operators *before* the summarize statement (as long as the summarize is the last one):
+Definition can include additional operators *before* the `summarize` statement (as long as the `summarize` is the last one):
 
 <!-- csl -->
 ```
@@ -147,8 +147,9 @@ permissions. The principal creating the view automatically becomes the admin of 
 * View name cannot conflict with table / function names in same database.
 * View name must adhere to the [Identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules).
 * See the [table below](#supported-aggregation-functions) for the supported aggregation functions.
-* The query should reference a *single* source *fact* table on which the view is based, and include a *single*
-summarize operator and one or more aggregation functions aggregated by one or more dimensions (in the by-clause).
+* The query should reference a *single* *fact* table which is the
+source of the materialized view, and include a *single*
+summarize operator and one or more aggregation functions aggregated by one or more group by expressions.
 The summarize operator must always be the *last* operator in the query.
     * The source table must be in the same database where the materialized view is defined. 
     Cross-cluster/cross-database queries are not supported.
@@ -156,7 +157,7 @@ The summarize operator must always be the *last* operator in the query.
     (the default is enabled) and *cannot* be enabled for [streaming ingestion](../../../ingest-data-streaming.md).
 * A materialized view with an `arg_max`/`arg_min`/`any` aggregation cannot include
 neither of the other supported aggregation functions.
-A view is either an `arg_max`/`arg_min`/`any` view (those can be used together
+A view is either an `arg_max`/`arg_min`/`any` view (those functions can be used together
  in same view) or any of the other supported functions, but not both in same
 materialized view (for example,
      `SourceTable | summarize arg_max(Timestamp, *), count() by Id` is not supported).
@@ -177,22 +178,22 @@ Limiting the period of time covered by the view should be done using the retenti
     * Records in the view's source table (fact table) are materialized once only - a different ingestion latency between
       the fact table and the dimension table may have an impact on the view results. 
       For instance, given a view definition that includes an *inner* join with a dimension table - if at the time of
-      materialization, the dimension record for a specific entity has not been ingested yet (whereas it
-      has already been ingested to the fact table), that record will be dropped from the view and never reprocessed again. Alternatively, assume the join is an *outer* join - the record from fact table will be processed and added to view with a null value for the dimension table columns.
+      materialization, the dimension record for a specific entity was not ingested yet (whereas it
+      was already ingested to the fact table), that record will be dropped from the view and never reprocessed again. Alternatively, assume the join is an *outer* join - the record from fact table will be processed and added to view with a null value for the dimension table columns.
       Even if the relevant record is later ingested to the dimension table, those records that have already been 
       added (with null values) to the view will not be processed again, and therefore their values
      (in columns from dimension table) will remain null.
 
 * **Backfill:** when using the `backfill` option, command *must* be `async` and view will not be available for queries until the creation completes.
-    * Depending on the amount of data to backfill, creation with backfill may take a very long while. 
+    * Depending on the amount of data to backfill, creation with backfill may take a long time.
     It's intentionally "slow" to make sure it doesn't consume too much of the cluster's resources.
     * You can track the creation process using the [.show operations](../operations.md#show-operations) command.
     * Canceling the creation process is possible using the [.cancel operation](#cancel-materialized-view-creation) command.
 
 * **Auto update:** the `autoUpdateSchema` option is valid only for views of type `arg_max(Timestamp, *)` / `arg_min(Timestamp, *)` / 
-`any(*)` (only when columns argument is `*`). In case this is set to true, changes to source table will be
-automatically reflected in the Materialized View. Not all changes to source table are supported when using
-this option, please see the [.alter materialized-view command](#alter-materialized-view) for details.
+`any(*)` (only when columns argument is `*`). In case this option is set to true, changes to source table will be
+automatically reflected in the materialized view. Not all changes to source table are supported when using
+this option, see the [.alter materialized-view command](#alter-materialized-view) for details.
 
     > [!WARNING] 
     > * Using `autoUpdateSchema` may lead to data loss, when columns in the source table are dropped. There is no 
@@ -255,7 +256,7 @@ If you know your query pattern will often filter by some column, which can be a 
 </pre>
 </table>
 
-* Don't include transformations, normalizations and other heavy computations that can be moved to an [update policy](../updatepolicy.md)
+* Don't include transformations, normalizations, and other heavy computations that can be moved to an [update policy](../updatepolicy.md)
 as part of the materialized view definition. Instead, do all those in an update policy, and perform the aggregation only in the 
 materialized view (same goes for lookup in dimension tables, when applicable).
 
@@ -326,7 +327,7 @@ permissions, or an admin of the materialized view (see
 [Materialized view principals](materialized-view-principals.md)).
 * Altering the materialized view can be used for changing the query of the materialized view,
 while still preserving the existing data in the view. Applicable use cases include:
-    * Adding aggregations to the view - e.g., add `avg` aggregation to `T | summarize count(), min(Value) by Id`, by
+    * Adding aggregations to the view - for example, add `avg` aggregation to `T | summarize count(), min(Value) by Id`, by
 altering view query to `T | summarize count(), min(Value), avg(Value) by Id`.
     * Changing operators other than the summarize operator - e.g., filtering out some records by altering 
 `T | summarize arg_max(Timestamp, *) by User` to `T | where User != 'someone' | summarize arg_max(Timestamp, *) by User`. 
@@ -337,7 +338,7 @@ altering view query to `T | summarize count(), min(Value), avg(Value) by Id`.
     align with new table schema. The view still needs to be explicitly enabled following the change,
     using the [enable materialized view](materialized-view-enable-disable.md) command.
 
-* Altering the materialized view has *no* impact on existing data. This means that:
+* Altering the materialized view has *no* impact on existing data.
     * New columns will receive nulls for all existing records (until records ingested post the alter command modify the null values).
         * For example: if a view of `T | summarize count() by bin(Timestamp, 1d)` is altered to
         `T | summarize count(), sum(Value) by bin(Timestamp, 1d)`, then for a particular `Timestamp=T` for which records
@@ -352,7 +353,7 @@ altering view query to `T | summarize count(), min(Value), avg(Value) by Id`.
 * *Only* adding/removing columns to/from the view is supported as part of materialized view alter. Specifically:
     * Changing column type is *not* supported.
     * Renaming columns is *not* supported (altering a view of `T | summarize count() by Id` to `T | summarize Count=count() by Id`
-    will drop column `count_` and create a new column `Count` which will initially contain nulls only).
+    will drop column `count_` and create a new column `Count`, which will initially contain nulls only).
 
 * **Changes to the materialized view group by expressions are not supported.**
 
@@ -362,14 +363,13 @@ altering view query to `T | summarize count(), min(Value), avg(Value) by Id`.
 ## Cancel materialized-view creation
 
 This command can be used to cancel the process of Materialized View creation, when using  the `backfill` option, 
-since creation may take a very long while, and user may want to abort it while running.  
+since creation may take a long while, and user may want to abort it while running.  
 
 * **The materialized view cannot be restored after running the command.**
 * The creation process cannot be aborted *immediately*. The cancel command signals it to stop, and the creation periodically 
-checks if cancel was requested. The cancel command waits for a max period of 10m until the materialized view creation process is
+checks if cancel was requested. The cancel command waits for a max period of 10 minutes until the materialized view creation process is
  canceled and reports back if cancellation was successful. Even if cancellation did not succeed within 10 minutes, and the cancel 
- command reports failure, the materialized view will most probably abort itself later in the creation process. This can 
- be checked using the [.show operations](../operations.md#show-operations) command.
+ command reports failure, the materialized view will most probably abort itself later in the creation process. The [.show operations](../operations.md#show-operations) command will indicate if operation was canceled.
 * The `cancel operation` command is only supported for materialized views creation cancellation (not for canceling any
 other operations).
 
@@ -387,10 +387,10 @@ other operations).
 
 |Output parameter |Type |Description
 |---|---|---
-|OperationId|Guid|The create Materialized View operation id.
+|OperationId|Guid|The operation id of the create materialized view command.
 |Operation|String|Operation kind.
 |StartedOn|datetime|The start time of the create operation.
-|CancellationState|string|One of - `Cancelled successfully` (creation was canceled), `Cancellation failed` (wait for cancelation timed out), `Unknown` (view creation is no longer running, but wasn't cancelled by this operation).
+|CancellationState|string|One of - `Cancelled successfully` (creation was canceled), `Cancellation failed` (wait for cancelation timed out), `Unknown` (view creation is no longer running, but wasn't canceled by this operation).
 |ReasonPhrase|string|A reason, if cancellation was not successful.
 
 **Example:**

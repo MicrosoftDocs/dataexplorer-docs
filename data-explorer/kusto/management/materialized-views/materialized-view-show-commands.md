@@ -14,7 +14,7 @@ ms.date: 08/30/2020
 
 ## .show materialized-view
 
-Displays information about the materialized view's definition and it's current state.
+Displays information about the materialized view's definition and its current state.
 
 **Syntax:**
 
@@ -33,7 +33,7 @@ Displays information about the materialized view's definition and it's current s
 |Output parameter |Type |Description
 |---|---|---
 |Name  |String |The name of the Materialized View.
-|SourceTable|String|The source table which the Materialized View is defined on.
+|SourceTable|String|The source table of the materialized view.
 |Query|String|The Materialized View query.
 |MaterializedTo|datetime|The max materialized ingestion_time() timestamp in source table (see [behind the scenes](materialized-view-behind-the-scenes.md)).
 |LastRun|datetime |The last time materialization was run.
@@ -73,7 +73,7 @@ the definition of the *materialized* part.
 The command provides the same details as in [show table extents](../show-extents.md#table-level)
 command.
 
-**Sytax:** 
+**Syntax:** 
 
 `.show` `materialized-view` *MaterializedViewName* `extents` [`hot`]
  
@@ -104,11 +104,11 @@ Returns failures that occurred as part of the materialization process of the mat
 
 **Notes:**
 
-* Materialized view failures do not always indicate that the materialized view is unhealthy. Errors can be transient
+* Materialized view failures don't always indicate that the materialized view is unhealthy. Errors can be transient
 and materialization process will continue and can be successful in the next execution.
 * In any case, materialization never skips any data, even in the case of constant failures. View is always
-guaranteed to return the most up to date snapshot of the query, based on *all* records in the source table.
-Constant failures will significantly degrade query performance, but will not cause the view to provide incorrect results.
+guaranteed to return the most up-to-date snapshot of the query, based on *all* records in the source table.
+Constant failures will significantly degrade query performance, but won't cause incorrect results in view queries.
 * Failures can occur due to transient errors (CPU/memory/networking failures) or permanent ones (for example, the source table was changed and the materialized view query is syntactically invalid). The materialized view will be
 automatically disabled in case of schema changes (that are inconsistent with the view definition) or in case
 the materialized view query is no longer semantically valid. For all other failures, the
