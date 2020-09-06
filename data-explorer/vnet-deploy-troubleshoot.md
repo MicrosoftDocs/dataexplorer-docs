@@ -64,7 +64,7 @@ If you're experiencing ingestion issues and you suspect it's related to virtual 
 
 ### Check ingestion health
 
-Check that the [cluster ingestion metrics](using-metrics.md#ingestion-health-and-performance-metrics) indicate a healthy state.
+Check that the [cluster ingestion metrics](using-metrics.md#ingestion-metrics) indicate a healthy state.
 
 ### Check security rules on data source resources
 

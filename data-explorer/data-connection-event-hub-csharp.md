@@ -87,4 +87,39 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | consumerGroup | *$Default* | The consumer group of your Event Hub.|
 | location | *Central US* | The location of the data connection resource.|
 
+## Generate data
+
+See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.
+
+An event can contain one or more records, up to its size limit. In the following sample we send two events, each has five records appended:
+
+```csharp
+var events = new List<EventData>();
+var data = string.Empty;
+var recordsPerEvent = 5;
+var rand = new Random();
+var counter = 0;
+
+for (var i = 0; i < 10; i++)
+{
+    // Create the data
+    var metric = new Metric { Timestamp = DateTime.UtcNow, MetricName = "Temperature", Value = rand.Next(-30, 50) }; 
+    var data += JsonConvert.SerializeObject(metric) + Environment.NewLine;
+    counter++;
+
+    // Create the event
+    if (counter == recordsPerEvent)
+    {
+        var eventData = new EventData(Encoding.UTF8.GetBytes(data));
+        events.Add(eventData);
+
+        counter = 0;
+        data = string.Empty;
+    }
+}
+
+// Send events
+eventHubClient.SendAsync(events).Wait();
+```
+
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]
