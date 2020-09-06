@@ -14,7 +14,6 @@ ms.custom: contperfq1
 
 Azure Data Explorer metrics provide key indicators as to the health and performance of the Azure Data Explorer cluster resources. Use the metrics that are detailed in this article to monitor Azure Data Explorer cluster usage, health, and performance in your specific scenario as standalone metrics. You can also use metrics as the basis for operational [Azure Dashboards](/azure/azure-portal/azure-portal-dashboards) and [Azure Alerts](/azure/azure-monitor/platform/alerts-metric-overview).
 
-
 For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure/azure-monitor/platform/metrics-getting-started).
 
 ## Prerequisites
@@ -47,7 +46,14 @@ The **Resource** and **Metric Namespace** pickers are pre-selected for your Azur
 
 ## Supported Azure Data Explorer metrics
 
-The Azure Data Explorer metrics give insight into both overall performance and use of your resources, as well as information about specific actions, such as ingestion or query. The metrics in this article have been grouped by usage type. The types of metrics are: [Cluster metrics](#cluster-metrics), [Export metrics](#export-metrics), [Ingestion metrics](#ingestion-metrics), [Query metrics](#query-metrics), and [Streaming ingest metrics](#streaming-ingest-metrics).
+The Azure Data Explorer metrics give insight into both overall performance and use of your resources, as well as information about specific actions, such as ingestion or query. The metrics in this article have been grouped by usage type. 
+
+The types of metrics are: 
+* [Cluster metrics](#cluster-metrics) 
+* [Export metrics](#export-metrics) 
+* [Ingestion metrics](#ingestion-metrics) 
+* [Streaming ingest metrics](#streaming-ingest-metrics)
+* [Query metrics](#query-metrics) 
 
 For an alphabetical list of Azure Monitor's metrics for Azure Data Explorers, see [supported Azure Data Explorer cluster metrics](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters).
 
@@ -93,16 +99,6 @@ Ingestion metrics track the general health and performance of ingestion operatio
 | Ingestion volume (in MB) | Count | Max, Sum | The total size of data ingested to the cluster (in MB) before compression. | Database |
 | Stage latency | Seconds | Avg, Max, Min | Duration for a particular component to process this batch of data. The total stage latency for all components of a batch of data is equal to its ingestion latency. | Database, Data connection type, Data connection name|
 
-## Query metrics
-
-Query performance metrics track query duration and total number of concurrent or throttled queries.
-
-|**Metric** | **Unit** | **Aggregation** | **Metric description** | **Dimensions** |
-|---|---|---|---|---|
-| Query duration | Milliseconds | Avg, Min, Max, Sum | Total time until query results are received (doesn't include network latency). | QueryStatus |
-| Total number of concurrent queries | Count | Avg, Max, Min, Sum | The number of queries run in parallel in the cluster. This metric is a good way to estimate the load on the cluster. | None |
-| Total number of throttled queries | Count | Avg, Max, Min, Sum | The number of throttled (rejected) queries in the cluster. The maximum number of concurrent (parallel) queries allowed is defined in the concurrent query policy. | None |
-
 ## Streaming ingest metrics
 
 Streaming ingest metrics track streaming ingestion data and request rate, duration, and results.
@@ -113,6 +109,16 @@ Streaming Ingest Data Rate |	Count	| RateRequestsPerSecond	| Total volume of dat
 Streaming Ingest Duration	| Milliseconds	| Avg, Max, Min	| Total duration of all streaming ingestion requests. | None |
 Streaming Ingest Request Rate	| Count	| Count, Avg, Max, Min, Sum	| Total number of streaming ingestion requests. | None |
 Streaming Ingest Result	| Count	| Avg	| Total number of streaming ingestion requests by result type. | Result |
+
+## Query metrics
+
+Query performance metrics track query duration and total number of concurrent or throttled queries.
+
+|**Metric** | **Unit** | **Aggregation** | **Metric description** | **Dimensions** |
+|---|---|---|---|---|
+| Query duration | Milliseconds | Avg, Min, Max, Sum | Total time until query results are received (doesn't include network latency). | QueryStatus |
+| Total number of concurrent queries | Count | Avg, Max, Min, Sum | The number of queries run in parallel in the cluster. This metric is a good way to estimate the load on the cluster. | None |
+| Total number of throttled queries | Count | Avg, Max, Min, Sum | The number of throttled (rejected) queries in the cluster. The maximum number of concurrent (parallel) queries allowed is defined in the concurrent query policy. | None |
 
 ## Next steps
 
