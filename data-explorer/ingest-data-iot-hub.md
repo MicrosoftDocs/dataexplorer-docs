@@ -23,6 +23,8 @@ ms.date: 01/08/2020
 
 This article shows you how to ingest data into Azure Data Explorer from IoT Hub, a big data streaming platform and IoT ingestion service.
 
+For general information about ingesting into Azure Data Explorer from IoT Hub, see [Connect to IoT Hub](ingest-data-iot-hub-overview.md).
+
 ## Prerequisites
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
@@ -103,7 +105,13 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     > * Select **My data includes routing info** to use dynamic routing, where your data includes the necessary routing information as seen in the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) comments. If both static and dynamic properties are set, the dynamic properties override the static ones. 
     > * Only events enqueued after you create the data connection are ingested.
 
-[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
+### Event system properties mapping
+
+> [!Note]
+> * System properties are supported for single-record events.
+> * For `csv` mapping, properties are added at the beginning of the record. For `json` mapping, properties are added according to the name that appears in the drop-down list.
+
+If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-iot-hub-overview.md#system-properties) in the table schema and mapping.
 
 ## Generate sample data for testing
 
@@ -174,7 +182,7 @@ If you don't plan to use your IoT Hub again, clean up your resource group to avo
 
 1. Under **test-resource-group**, select **Delete resource group**.
 
-2. In the new window, type the name of the resource group to delete it, and then select **Delete**.
+1. In the new window, type the name of the resource group to delete it, and then select **Delete**.
 
 ## Next steps
 

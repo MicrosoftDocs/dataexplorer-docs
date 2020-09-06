@@ -23,6 +23,8 @@ ms.date: 08/13/2020
 
 In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that set an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub. Then you'll see an example of the data flow throughout the system.
 
+For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md).
+
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
@@ -35,7 +37,7 @@ Create a table in Azure Data Explorer where Event Hubs will send data. Create th
 
 1. In the Azure portal, under your cluster, select **Query**.
 
-    :::image type="content" source="media/ingest-data-event-grid/query-explorer-link.png" alt-text="Link to Query explorer":::    
+    :::image type="content" source="media/ingest-data-event-grid/query-explorer-link.png" alt-text="Link to Query explorer"::: 
 
 1. Copy the following command into the window and select **Run** to create the table (TestTable) that will receive the ingested data.
 
@@ -156,11 +158,7 @@ Save the data into a file and upload it with this script:
 
 ### Ingestion properties
 
-You can specify the [Ingestion properties](ingestion-properties.md) of the blob ingestion via the blob metadata.
-
-These properties can be set:
-
-[!INCLUDE [ingestion-properties-event-grid](includes/ingestion-properties-event-grid.md)]
+You can specify the [ingestion properties](ingest-data-event-grid-overview.md#set-ingestion-properties) of the blob ingestion via the blob metadata. 
 
 > [!NOTE]
 > Azure Data Explorer won't delete the blobs post ingestion.
