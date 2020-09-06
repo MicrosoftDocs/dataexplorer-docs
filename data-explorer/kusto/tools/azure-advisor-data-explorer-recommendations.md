@@ -15,9 +15,15 @@ Azure Advisor analyzes the Data Explorer cluster’s configurations and usage te
 
 ## How to access the recommendations
 
-Go to the [Advisor resource](https://ms.portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/overview) in the portal > 'Overview' > choose the subscription(s) for which you want recommendations. Make sure that "Azure Data Explorer Clusters" is selected in the second dropdown list.
+There are two options:
+
+1. In the Azure portal, go to the [Advisor resource](https://ms.portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/overview) in the portal -> 'Overview' -> choose the subscription(s) for which you want recommendations. Make sure that "Azure Data Explorer Clusters" and "Azure Data Explorer Databases" are selected in the second dropdown list.
 
 ![picture](images\azure-advisor-data-explorer-recommendations\advisor-resource.png)
+
+2. In the Azure portal, go to your Azure Resource group page -> under 'Monitoring', select Advisor recommendations.
+
+![picture](images\azure-advisor-data-explorer-recommendations\resource-group-advisor-recommendations.png)
 
 Clicking on one of the recommendation types (for example: cost) will take you to a page that contains a list of the recommendations of that type.
 
@@ -39,15 +45,19 @@ The purpose of these recommendations is to save you money. Cost recommendations 
 
 #### Azure Data Explorer Unused cluster
 
-A cluster that meets the next conditions is considered unused: has a small amount of data, queries, and ingestions in the last 30 days, has low cpu usage in the last two days and has no followers in the last day. The recommended action for an unused cluster is to stop it if the data it contains is important, or delete it otherwise.
+A cluster that meets the next conditions is considered unused: has a small amount of data, queries, and ingestions during the last 30 days, has low CPU usage during the last two days and has no followers during the last day. The recommended action for an unused cluster is to delete it.
 
 #### Right-size Azure Data Explorer clusters for cost
 
-This recommendation is published for a cluster that its sku is stronger than necessary, based on its usage telemetry in the last week, and can be cheaper with a weaker sku. A weaker sku can be a lower-level machine and/or a lower number of instances.
+This recommendation is published for a cluster that its size or VM SKU are not cost-optimized (so you can reduce costs), based on parameters like its data capacity, CPU utilization, and ingestion utilization, during the last week. You can reduce costs by right-sizing (scale down and/or scale in) to the recommended cluster configuration shown.
+
+**Note**: It is always recommended to turn-on optimized autoscale configuration. In case you are already using optimized autoscale and you see the 'right-size' recommendation, it means that your current VM SKU is not optimized or that the optimized autoscale's minimum/maximum instance count boundaries are not optimized so you should consider changing them so that the recommended instance count will be included in your defined boundaries.
+
+**Important**: Your actual yearly savings may vary. The yearly saving that is presented is based on 'pay as you go' prices. The potential saving does not take into consideration Azure Reserved VM Instances (RIs) billing discounts you may have.
 
 #### Reduce cache for Azure Data Explorer Tables
 
-If a cluster's caching policy's period is higher than necessary, it might save unused or rarely used data in cache, resulting unnecessary charge. Thus, this recommendation is published for a cluster that its caching policy does not fit the vast majority of the queries it ran in the last 30 days.
+This recommendation is published for a cluster that its tables' cache policy can be reduced, based on the actual queries' look-back period during the last 30 days. You can see up to 10 recommendations (top 10 tables by potential cache saving). To help you reduce costs - this recommendation will be delivered only if the cluster can scale-in/down following the cache-policy change, by checking whether the cluster is "bounded by data". It means that the cluster has low CPU level and low ingestion utilization, but only due to high data capacity, the cluster hasn't been able to scale in/down yet.
 
 ### Performance recommendations
 
@@ -55,8 +65,12 @@ The purpose of these recommendations is to improve the performance of your Azure
 
 #### Right-size Azure Data Explorer cluster
 
-This recommendation is published for a cluster that its sku is weaker than it should be, based on its usage telemetry in the last week, and can be better performing with a stronger sku. A stronger sku can be a higher-level machine and/or a higher number of instances.
+For a cluster that its size or VM SKU are not optimized, in term of performance (so you can boost the performance), based on parameters like its data capacity, CPU utilization, and ingestion utilization, during the last week. You can improve the performance by right-sizing (scale up and/or scale out) to the recommended cluster configuration shown.
+
+**Note**: It is always recommended to turn-on optimized autoscale configuration. In case you are already using optimized autoscale and you see the 'right-size' recommendation, it means that your current VM SKU is not optimized or that the optimized autoscale's minimum/maximum instance count boundaries are not optimized so you should consider changing them so that the recommended instance count will be included in your defined boundaries.
+
+**Important**: Your actual yearly savings may vary. The yearly saving that is presented is based on 'pay as you go' prices. The potential saving does not take into consideration Azure Reserved VM Instances (RIs) billing discounts you may have.
 
 #### Update Cache Policies for Azure Data Explorer tables
 
-If a cluster's caching policy's period is lower than necessary (meaning most of the queries it ran in the last 30 days accessed data that was not in cache), its queries will take more time to finish than they should. Thus, this recommendation is published for a cluster that its caching policy does not fit the vast majority of the queries it ran in the last 30 days.
+This recommendation is published for a cluster that you should consider altering/limiting your queries look-back period (time-filter) or increasing the cache policy, based on the actual queries' look-back period during the last 30 days. It means that most of the queries that ran in the last 30 days, accessed data that were not in the cache. Querying data that out-side the cache may increase your queries run-time. You can see up to 10 recommendations (top 10 tables by query percentage that accessed out-of-cache data).
