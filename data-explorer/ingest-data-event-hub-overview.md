@@ -82,7 +82,9 @@ System properties store properties that are set by the Event Hubs service, at th
 > * System properties aren't supported on compressed data.
 > * For `csv` mapping, properties are added at the beginning of the record in the order listed in the table below. For `json` mapping, properties are added according to property names in the following table.
 
-### Event Hub exposes the following system properties
+### System properties
+
+Event Hub exposes the following system properties:
 
 |Property |Data Type |Description|
 |---|---|---|

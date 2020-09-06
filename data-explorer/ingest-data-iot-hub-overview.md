@@ -52,7 +52,9 @@ System properties are a collection used to store properties that are set by the 
 > [!Note]
 > For `csv` mapping, properties are added at the beginning of the record in the order listed in the table below. For `json` mapping, properties are added according to property names in the following table.
 
-### IoT Hub exposes the following system properties:
+### System properties
+
+IoT Hub exposes the following system properties:
 
 |Property |Description|
 |---|---|
