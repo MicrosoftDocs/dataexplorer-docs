@@ -147,7 +147,7 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
 > * System properties are supported for single-record events.
 > * For `csv` mapping, properties are added at the beginning of the record. For `json` mapping, properties are added according to the name that appears in the drop-down list.
 
-If you selected **Event system properties** in the **Data Source** section of the table, you must include [properties](ingest-data-event-hub-overview.md#event-hub-exposes-the-following-system-properties) in the table schema and mapping.
+If you selected **Event system properties** in the **Data Source** section of the table, you must include [properties](ingest-data-event-hub-overview.md#system-properties) in the table schema and mapping.
 
 
 ## Copy the connection string
