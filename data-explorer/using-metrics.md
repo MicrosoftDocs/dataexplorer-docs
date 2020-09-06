@@ -31,7 +31,7 @@ For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure
 
 ## Work in the metrics pane
 
-In the metrics pane, select specific metrics to track, choose how to aggregate your data, and create metrics charts that you can view later on your dashboard.
+In the metrics pane, select specific metrics to track, choose how to aggregate your data, and create metric charts to view on your dashboard.
 
 The **Resource** and **Metric Namespace** pickers are pre-selected for your Azure Data Explorer cluster. The numbers in the following image correspond to the numbered list below. They guide you through different options in setting up and viewing your metrics.
 
