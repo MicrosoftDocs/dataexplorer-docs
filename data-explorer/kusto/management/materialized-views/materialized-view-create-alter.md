@@ -40,6 +40,11 @@ See [this article](../../concepts/fact-and-dimension-tables.md) for information 
 * Once created, the materialized views can be altered using the [alter materialized-view](#alter-materialized-view)
 command. Not all changes are supported, the [section below](#alter-materialized-view) describes the supported changes.
 
+* **The materialized view derives the database retention policy,
+ by default. The policy can be changed, using commands documented in
+the [Materialized view policies control commands](materialized-view-policies.md#materialized-view-policies-control-commands) article.**
+
+
 ## .create materialized-view
 
 **Syntax:**
