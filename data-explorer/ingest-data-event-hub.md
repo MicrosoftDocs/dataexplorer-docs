@@ -23,6 +23,8 @@ ms.date: 08/13/2020
 
 Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data streaming platform and event ingestion service. [Event Hubs](/azure/event-hubs/event-hubs-about) can process millions of events per second in near real-time. In this article, you create an event hub, connect to it from Azure Data Explorer and see data flow through the system.
 
+For general information about ingesting into Azure Data Explorer from Event Hub, see [Connect to Event Hub](ingest-data-event-hub-overview.md).
+
 ## Prerequisites
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
@@ -40,11 +42,11 @@ In this article, you generate sample data and send it to an event hub. The first
 
 1. To create an event hub, use the following button to start the deployment. Right-click and select **Open in new window**, so you can follow the rest of the steps in this article.
 
-    [![Deploy to Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Deploy to Azure button](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
     The **Deploy to Azure** button takes you to the Azure portal to fill out a deployment form.
 
-    ![Deploy to Azure](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Create an Event Hub form](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. Select the subscription where you want to create the event hub, and create a resource group named *test-hub-rg*.
 
@@ -70,7 +72,7 @@ In this article, you generate sample data and send it to an event hub. The first
 
 1. Select **Notifications** on the toolbar to monitor the provisioning process. It might take several minutes for the deployment to succeed, but you can move on to the next step now.
 
-    ![Notifications](media/ingest-data-event-hub/notifications.png)
+    ![Notifications icon](media/ingest-data-event-hub/notifications.png)
 
 ## Create a target table in Azure Data Explorer
 
@@ -138,7 +140,15 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
     > * You can also set the compression type via dynamic properties as seen in the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest).
     > * Avro, ORC and PARQUET formats as well as event system properties aren't supported on GZip compression payload.
 
-[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
+
+### Event system properties mapping
+
+> [!Note]
+> * System properties are supported for single-record events.
+> * For `csv` mapping, properties are added at the beginning of the record. For `json` mapping, properties are added according to the name that appears in the drop-down list.
+
+If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-event-hub-overview.md#system-properties) in the table schema and mapping.
+
 
 ## Copy the connection string
 
