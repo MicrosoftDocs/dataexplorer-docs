@@ -11,9 +11,10 @@ ms.date: 08/30/2020
 ---
 # Drop materialized view 
 
-* Drops a materialized view.
-* Requires [Database Admin](../access-control/role-based-authorization.md) or
-[Materialized view admin](materialized-view-principals.md) permissions.
+Drops a materialized view.
+
+> [!NOTE] 
+> To perform this command you must have [Database Admin](../access-control/role-based-authorization.md) or [materialized view admin](materialized-view-principals.md) permissions.
 
 ## Syntax
 
@@ -21,10 +22,10 @@ ms.date: 08/30/2020
 
 ## Properties
 
-|Property|Type|Description
-|----------------|-------|---|
-|MaterializedViewName|String|Name of the Materialized View.|
+| Property | Type| Description |
+|----------------|-------|-----|
+| MaterializedViewName| String| Name of the Materialized View.|
 
 ## Returns
 
-The command returns the remaining materialized views in the database (output of [show materialized-view](materialized-view-show-commands.md#show-materialized-view) command).
+The command returns the remaining materialized views in the database, which is the output of the [show materialized view](materialized-view-show-commands.md#show-materialized-view) command.

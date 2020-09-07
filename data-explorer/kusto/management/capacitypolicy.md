@@ -25,14 +25,10 @@ The capacity policy is made of:
 
 ## Ingestion capacity
 
-|Property                           |Type    |Description                                                                                                                                                                               |
-|-----------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent ingestion operations in a cluster                                          |
-|CoreUtilizationCoefficient         |double  |A coefficient for the percentage of cores to use when calculating the ingestion capacity. The calculation's result will always be normalized by `ClusterMaximumConcurrentOperations`                          |
-
-The cluster's total ingestion capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by:
-
-Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
+|Property       |Type    |Description    |
+|-----------------------------------|--------|-----------------------------------------------------------------------------------------|
+|ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent ingestion operations in a cluster.               |
+|CoreUtilizationCoefficient         |double  |A coefficient for the percentage of cores to use when calculating the ingestion capacity. The calculation's result will always be normalized by `ClusterMaximumConcurrentOperations` <br> The cluster's total ingestion capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by: <br> Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
 
 > [!Note]
 > In clusters with three ore more nodes, the admin node doesn't participate in ingestion operations. The `Number of nodes in cluster` is reduced by one.
@@ -52,7 +48,7 @@ The effective value for `Concurrent operations per node` gets automatically adju
 merge operations is above 90%.
 
 > [!Note]
-> * In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
+> In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Extents purge rebuild capacity
 

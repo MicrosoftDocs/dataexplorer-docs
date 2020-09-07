@@ -12,37 +12,7 @@ ms.date: 08/30/2020
 
 # Create or alter materialized view
 
-* A materialized view definition is an aggregation query over a source table (*single* summarize statement).
-There are several limitations for what can be defined in the query. See remarks in the [create materialized-view section](#create-materialized-view) for details.
-
-* The materialized view is always based on a single `fact table`, and may also reference one or more `dimension tables`.
-See [this article](../../concepts/fact-and-dimension-tables.md) for information about the differences between the two,
- and why it is important in the context of the materialized view.
- If the materialized view includes joins, make sure you understand the related limitations documented in the [create materialized view section](#create-materialized-view).
-
-* There are two possible ways to create a materialized view (noted by the *backfill* option in the create command):
-    * **Create based on the existing records in the source table:** in this case,
-      creation may take a long while to complete (depending on the number of records in the source table),
-    and view will not be available for queries until completion.
-    When using this option, create command must be `async` and execution can be monitored using the [.show operations](../operations.md#show-operations) command.
-    
-    > [!WARNING]
-    > * Using the backfill option is not supported for data in cold cache. Increase the hot cache period,
-        if necessary, for the creation of the view (may require scale-out).
-    > * Using the backfill option may take a very long while to complete, for large source tables. If it
-    >   transiently fails while running, it will **not** be automatically retried (a re-execution of the
-    >   create command is required).
-    
-    * **Create the materialized view from now onwards:** in this case, the materialized view is created empty,
-    and will only include records ingested after view creation. Creation of this kind returns immediately
- (does not require `async`), and view will be immediately available for query.
-
-* Once created, the materialized views can be altered using the [alter materialized-view](#alter-materialized-view)
-command. Not all changes are supported, the [section below](#alter-materialized-view) describes the supported changes.
-
-* **The materialized view derives the database retention policy,
- by default. The policy can be changed, using commands documented in
-the [Materialized view policies control commands](materialized-view-policies.md#materialized-view-policies-control-commands) article.**
+A materialized view definition is an aggregation query over a source table (*single* summarize statement).
 
 ## .create materialized-view
 
@@ -209,25 +179,24 @@ this option, see the [.alter materialized-view command](#alter-materialized-view
 
 ### Supported aggregation functions:
 
-|Function Name
-|----------------|
-|count|
-|countif|
-|dcount|
-|dcountif|
-|min|
-|max|
-|avg|
-|avgif|
-|sum|
-|arg_max|
-|arg_min|
-|any|
-|hll|
-|make_set|
-|make_list|
-|percentile|
-|percentiles|
+The following aggregation functions are supported:
+* `count`
+* `countif`
+* `dcount`
+* `dcountif`
+* `min`
+* `max`
+* `avg`
+* `avgif`
+* `sum`
+* `arg_max`
+* `arg_min`
+* `any`
+* `hll`
+* `make_set`
+* `make_list`
+* `percentile`
+* `percentiles`
 
 ### Performance tips
 
