@@ -1,5 +1,5 @@
 ---
-title: extensions - Azure Data Explorer | Microsoft Docs
+title: Functions library - Azure Data Explorer | Microsoft Docs
 description: This article describes UDFs (User Defined Functions) that extend Azure Data Explorer capabilities.
 services: data-explorer
 author: orspod
@@ -11,7 +11,7 @@ ms.date: 08/24/2020
 ---
 # Extensions
 
-List of community extensions by category
+List of functions by category
 
 ## Series processing functions
 

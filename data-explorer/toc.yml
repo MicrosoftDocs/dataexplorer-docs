@@ -1675,8 +1675,8 @@
         href: ./kusto/api/monaco/host-web-ux-in-iframe.md
   - name: Extenions
     items:
-    - name: Extensions
-      href: kusto/extensions/query/extensions.md
+    - name: Functions library
+      href: kusto/functions-library/query/functions-library.md
     - name: quantize_ext()
       href: kusto/extensions/query/quantize-ext.md
     - name: series_fit_poly_ext()
