@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/24/2020
 ---
-# Extensions
+# Functions library
 
 List of functions by category
 
