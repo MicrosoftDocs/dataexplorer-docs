@@ -21,14 +21,14 @@ Overview- why do you need to create a table, what you are going to do here, what
 
 ## Create a table
 
-1. In the left menu of the Web UI, right-click a *database* or *table* and select **Create table**
+1. In the left menu of the Web UI, right-click a *database* or *table* and select **Create table**.
 
     :::image type="content" source="data-explorer/media/one-click-table/create-table.png" alt-text="Create a table in the Azure Data Explorer Web UI":::
 
 1. In the **Create table** window, the **Source** tab is selected.
 
 1. In **Table name**, enter a name for your table. 
-1. Select **Ingestion type** from the dropdown menu. You can 
+1. Select **Ingestion type** from the dropdown menu. Choose from 
     :::image type="content" source="data-explorer/media/one-click-table/source-tab.png" alt-text="Source of data for create table in one-click in Azure Data Explorer":::
 
     :::image type="content" source="data-explorer/media/one-click-table/data-from-file.png" alt-text="Create a table based on data from a local file ":::
@@ -52,4 +52,4 @@ If yes mapping, shows table created mapping created – options to open command 
 
 * [Data ingestion overview](data-explorer/ingest-data-overview.md)
 * [One-click ingestion](data-explorer/ingest-data-one-click.md)
-* 
+*  
