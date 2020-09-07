@@ -17,13 +17,13 @@ Azure Advisor analyzes the Data Explorer cluster’s configurations and usage te
 
 There are two options:
 
-1. In the Azure portal, go to the [Advisor resource](https://ms.portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/overview) in the portal -> 'Overview' -> choose the subscription(s) for which you want recommendations. Make sure that "Azure Data Explorer Clusters" and "Azure Data Explorer Databases" are selected in the second dropdown list.
-
-![picture](images\azure-advisor-data-explorer-recommendations\advisor-resource.png)
-
-2. In the Azure portal, go to your Azure Resource group page -> under 'Monitoring', select Advisor recommendations.
+1. In the Azure portal, go to your Azure Data Explorer cluster page -> under 'Monitoring', select Advisor recommendations. This opens a list of recommendations for that cluster.
 
 ![picture](images\azure-advisor-data-explorer-recommendations\resource-group-advisor-recommendations.png)
+
+2. In the Azure portal, go to the [Advisor resource](https://ms.portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/overview) in the portal -> 'Overview' -> choose the subscription(s) for which you want recommendations. Make sure that "Azure Data Explorer Clusters" and "Azure Data Explorer Databases" are selected in the second dropdown list.
+
+![picture](images\azure-advisor-data-explorer-recommendations\advisor-resource.png)
 
 Clicking on one of the recommendation types (for example: cost) will take you to a page that contains a list of the recommendations of that type.
 
@@ -51,9 +51,11 @@ A cluster that meets the next conditions is considered unused: has a small amoun
 
 This recommendation is published for a cluster that its size or VM SKU are not cost-optimized (so you can reduce costs), based on parameters like its data capacity, CPU utilization, and ingestion utilization, during the last week. You can reduce costs by right-sizing (scale down and/or scale in) to the recommended cluster configuration shown.
 
-**Note**: It is always recommended to turn-on optimized autoscale configuration. In case you are already using optimized autoscale and you see the 'right-size' recommendation, it means that your current VM SKU is not optimized or that the optimized autoscale's minimum/maximum instance count boundaries are not optimized so you should consider changing them so that the recommended instance count will be included in your defined boundaries.
+>[!Note]
+It is always recommended to turn-on optimized autoscale configuration. In case you are already using optimized autoscale and you see the 'right-size' recommendation, it means that your current VM SKU is not optimized or that the optimized autoscale's minimum/maximum instance count boundaries are not optimized so you should consider changing them so that the recommended instance count will be included in your defined boundaries.
 
-**Important**: Your actual yearly savings may vary. The yearly saving that is presented is based on 'pay as you go' prices. The potential saving does not take into consideration Azure Reserved VM Instances (RIs) billing discounts you may have.
+>[!Warning]
+Your actual yearly savings may vary. The yearly saving that is presented is based on 'pay as you go' prices. The potential saving does not take into consideration Azure Reserved VM Instances (RIs) billing discounts you may have.
 
 #### Reduce cache for Azure Data Explorer Tables
 
@@ -67,9 +69,11 @@ The purpose of these recommendations is to improve the performance of your Azure
 
 For a cluster that its size or VM SKU are not optimized, in term of performance (so you can boost the performance), based on parameters like its data capacity, CPU utilization, and ingestion utilization, during the last week. You can improve the performance by right-sizing (scale up and/or scale out) to the recommended cluster configuration shown.
 
-**Note**: It is always recommended to turn-on optimized autoscale configuration. In case you are already using optimized autoscale and you see the 'right-size' recommendation, it means that your current VM SKU is not optimized or that the optimized autoscale's minimum/maximum instance count boundaries are not optimized so you should consider changing them so that the recommended instance count will be included in your defined boundaries.
+>[!Note]
+It is always recommended to turn-on optimized autoscale configuration. In case you are already using optimized autoscale and you see the 'right-size' recommendation, it means that your current VM SKU is not optimized or that the optimized autoscale's minimum/maximum instance count boundaries are not optimized so you should consider changing them so that the recommended instance count will be included in your defined boundaries.
 
-**Important**: Your actual yearly savings may vary. The yearly saving that is presented is based on 'pay as you go' prices. The potential saving does not take into consideration Azure Reserved VM Instances (RIs) billing discounts you may have.
+>[!Warning]
+Your actual yearly savings may vary. The yearly saving that is presented is based on 'pay as you go' prices. The potential saving does not take into consideration Azure Reserved VM Instances (RIs) billing discounts you may have.
 
 #### Update Cache Policies for Azure Data Explorer tables
 
