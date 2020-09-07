@@ -1500,7 +1500,7 @@
     - name: Materialized views
       items:
       - name: Overview
-        href: ./kusto/management/materialized-views/materialized-views-overview.md
+        href: ./kusto/management/materialized-views/materialized-view-overview.md
       - name: Create or alter materialized view
         href: ./kusto/management/materialized-views/materialized-view-create-alter.md
       - name: Show materialized view commands
