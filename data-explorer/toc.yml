@@ -1498,14 +1498,11 @@
       - name: Clear cache
         href: ./kusto/management/clear-query-results-cache-command.md
     - name: Materialized views
-      href: ./kusto/management/materialized-views/index.md
       items:
       - name: Overview
-        href: ./kusto/management/materialized-views/index.md
+        href: ./kusto/management/materialized-views/materialized-views-overview.md
       - name: Create or alter materialized view
         href: ./kusto/management/materialized-views/materialized-view-create-alter.md
-      - name: Query materialized view
-        href: ./kusto/management/materialized-views/materialized-view-query.md
       - name: Show materialized view commands
         href: ./kusto/management/materialized-views/materialized-view-show-commands.md
       - name: Drop materialized view
@@ -1518,8 +1515,6 @@
         href: ./kusto/management/materialized-views/materialized-view-principals.md
       - name: Monitoring
         href: ./kusto/management/materialized-views/materialized-view-monitoring.md
-      - name: Behind the scenes
-        href: ./kusto/management/materialized-views/materialized-view-behind-the-scenes.md
     - name: System information
       href: ./kusto/management/systeminfo.md
       items:

@@ -35,7 +35,7 @@ Displays information about the materialized view's definition and its current st
 |Name  |String |The name of the materialized view.
 |SourceTable|String|The source table of the materialized view.
 |Query|String|The Materialized View query.
-|MaterializedTo|datetime|The max materialized ingestion_time() timestamp in source table (see [behind the scenes](materialized-view-behind-the-scenes.md)).
+|MaterializedTo|datetime|The max materialized ingestion_time() timestamp in source table. For more information, see [behind the scenes](materialized-view-overview.md#behind-the-scenes).
 |LastRun|datetime |The last time materialization was run.
 |LastRunResult|String|Result of last run. Completed for successful runs, Failed otherwise.
 |IsHealthy|bool|True when view is considered healthy, false otherwise. View is considered healthy if it was successfully materialized up to the last hour (`MaterializedTo` is greater than `ago(1h)`).
@@ -70,10 +70,9 @@ Gets the schema of the materialized view in CSL/JSON.
 ## .show materialized-view extents
 
 Returns the extents in the *materialized* part of the materialized view.
-See [Materialized views: behind the scenes](materialized-view-behind-the-scenes.md) about
-the definition of the *materialized* part.
-The command provides the same details as in [show table extents](../show-extents.md#table-level)
-command.
+
+See [behind the scenes](materialized-view-overview.md#behind-the-scenes) about the definition of the *materialized* part.
+The command provides the same details as in [show table extents](../show-extents.md#table-level) command.
 
 ### Syntax
 

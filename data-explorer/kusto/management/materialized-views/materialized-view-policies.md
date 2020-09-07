@@ -11,22 +11,22 @@ ms.date: 08/30/2020
 ---
 # Materialized views policies
 
-A materialized view can define policies (caching, retention, merge) similarly to a table in Azure 
+A [materialized view](materialized-view-overview.md) can define policies (caching, retention, merge) similarly to a table in Azure 
 Data Explorer.
 
 * By default, the materialized view derives the database effective policy (with an exception in merge policy, explained below).
 * Policies can be altered post creation using control commands below.
-* The policies apply to the *materialized* part of the view (see [Materialized views: behind the scenes](materialized-view-behind-the-scenes.md) for details).
+* The policies apply to the *materialized* part of the view. For more information, see [behind the scenes](materialized-view-overview.md#behind-the-scenes).
 
-The cluster's [Capacity policy](../capacitypolicy.md) includes settings for the concurrency in which materialized views are executed. This is explained in [this section](#materialized-view-capacity-policy). 
+The cluster's [capacity policy](../capacitypolicy.md) includes settings for the concurrency in which materialized views are executed. This is explained in [this section](#materialized-view-capacity-policy). 
 
 ## Materialized view policies control commands
 
 The following policies can be set on materialized-views:
 
-1. [Retention policy](../retentionpolicy.md).
-2. [Cache policy (hot and cold cache)](../cachepolicy.md).
-3. [Merge policy](../mergepolicy.md). 
+* [Retention policy](../retentionpolicy.md).
+* [Cache policy (hot and cold cache)](../cachepolicy.md).
+* [Merge policy](../mergepolicy.md). 
 
 The syntax for `alter | alter-merge | show | delete` is identical to the corresponding table commands, with `materialized-view` instead of `table` (see, for example, [Alter retention policy](../retention-policy.md#alter-retention-policy)). 
 
@@ -80,11 +80,13 @@ The policy can be used to change concurrency settings for materialized views. Th
 * `ExtentsRebuildCapacity` - this property determines the number of concurrent extents rebuild operations, executed *for all materialized views* during the materialization process 
 (if several views are executing concurrently, since `ClusterMaximumConcurrentOperation` is greater than 1, they will all share the quota defined by this property, and the maximum
 number of concurrent extents rebuild operations will not exceed this value).
-Please see the [Materialized views: behind the scenes](materialized-view-behind-the-scenes.md) article about extents rebuild operations.
+Please see the [behind the scenes](materialized-view-overview.md#behind-the-scenes) article about extents rebuild operations.
 
   * The maximum number of extents rebuild is calculated by:
     
-        Maximum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * `MaximumConcurrentOperationsPerNode`)
+  ```kusto
+   Maximum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * `MaximumConcurrentOperationsPerNode`)
+   ```
     
   * Default values are as in the JSON above - 50 total concurrency rebuilds and maximum 5 per node.
   * The `ExtentsRebuildCapacity` policy serves as an *upper limit only*. The actual value used is dynamically determined by the system, based on current cluster's conditions (memory, CPU) and an estimation of the amount of resources required by the rebuild operation. So, in practice, concurrency can be much lower than the value specified in capacity policy.

@@ -12,7 +12,7 @@ ms.date: 08/30/2020
 
 # materialized_view() function
 
-References the materialized part of a [materialized view](../management/materialized-views/index.md). 
+References the materialized part of a [materialized view](../management/materialized-views/materialized-view-overview.md). 
 
 The `materialized_view()` function supports a way of querying the *materialized* part only of the view, while specifying the max latency the user is willing to tolerate. This option is *not* guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you are willing to sacrifice some *freshness* in favor of *performance*, for example in telemetry dashboards.
 

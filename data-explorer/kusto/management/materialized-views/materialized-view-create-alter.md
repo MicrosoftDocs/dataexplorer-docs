@@ -295,7 +295,7 @@ materialized view (same goes for lookup in dimension tables, when applicable).
 </pre>
 </table>
 
-* If you require the best query time performance, but can sacrifice some data freshness, always use the [materialized_view() function](materialized-view-query.md#materialized_view-function).
+* If you require the best query time performance, but can sacrifice some data freshness, use the [materialized_view() function](../../query/materializedviewfunction.md).
 
 ## .alter materialized-view
 
