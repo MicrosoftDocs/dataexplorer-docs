@@ -53,7 +53,7 @@ Requires [database user permission](../management/access-control/role-based-auth
 **Example** 
 
 ```kusto
-.create external table ExternalSql (x:long, s:string) 
+.create external table MySqlExternalTable (x:long, s:string) 
 kind=sql
 table=MySqlTable
 ( 
@@ -73,14 +73,14 @@ with
 
 | TableName   | TableType | Folder         | DocString | Properties                            |
 |-------------|-----------|----------------|-----------|---------------------------------------|
-| ExternalSql | Sql       | ExternalTables | Docs      | {<br>  "TargetEntityKind": "sqltable`",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=mydatabase;",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
+| MySqlExternalTable | Sql       | ExternalTables | Docs      | {<br>  "TargetEntityKind": "sqltable`",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=mydatabase;",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
 
-## Querying an external table of type SQL 
+## Querying an external table of type SQL
 
 Querying an external SQL table is supported. See [querying external tables](../../data-lake-query-data.md). 
 
 > [!Note]
-> SQL external table query implementation will execute a full 'SELECT *' (or select relevant columns) from the SQL table. The rest of the query will execute on the Kusto side. 
+> SQL external table query implementation will execute `SELECT x, s FROM MySqlTable` statement, where `x` and `s` are external table column names. The rest of the query will execute on the Kusto side.
 
 Consider the following external table query: 
 
@@ -88,8 +88,8 @@ Consider the following external table query:
 external_table('MySqlExternalTable') | count
 ```
 
-Kusto will execute a 'SELECT * from TABLE' query to the SQL database, followed by a count on Kusto side. 
-In such cases, performance is expected to be better if written in T-SQL directly ('SELECT COUNT(1) FROM TABLE') 
+Kusto will execute a `SELECT x, s FROM MySqlTable` query to the SQL database, followed by a count on Kusto side. 
+In such cases, performance is expected to be better if written in T-SQL directly (`SELECT COUNT(1) FROM MySqlTable`) 
 and executed using the [sql_request plugin](../query/sqlrequestplugin.md), instead of using the external table function. 
 Similarly, filters are not pushed to the SQL query.  
 
