@@ -1,9 +1,9 @@
 ---
-title: Materialized views enable and disable commands - Azure Data Explorer
-description: This article describes enable/disable materialized view command in Azure Data Explorer.
+title: Enable and disable materialized view commands - Azure Data Explorer
+description: This article describes how to enable or disable materialized view commands in Azure Data Explorer.
 services: data-explorer
-author: yifats
-ms.author: yifats
+author: orspod
+ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
@@ -23,19 +23,15 @@ command for details).
 using the command below, in case the materialized view is negatively impacting the
 cluster's health (for example, consuming too much CPU), for example.
 
-If a materialized view is disabled, it will pause materializing itself and won't consume resources from the cluster.
-Querying the materialized view is possible even when it is disabled, but performance can be
-poor (depending on the number of records that were ingested to the source table since it was disabled).
- When enabled, it will continue materializing from the point it left off, and no records will be skipped.
-If the view was disabled for a long time, it will have much catching up to do when enabled, and may take a long time to recover.
+If a materialized view is disabled, it will pause materializing itself and won't consume resources from the cluster. Querying the materialized view is possible even when it is disabled, but performance can be poor (depending on the number of records that were ingested to the source table since it was disabled). When enabled, it will continue materializing from the point it left off, and no records will be skipped. If the view was disabled for a long time, it will have much catching up to do when enabled, and may take a long time to recover.
 
 Disabling a view is only recommended if you suspect that the view is impacting your clusters' health. 
 
-**Syntax:**
+## Syntax
 
 `.enable` | `disable` `materialized-view` *MaterializedViewName*
 
-**Properties:**
+## Properties
 
 |Property|Type|Description
 |----------------|-------|---|

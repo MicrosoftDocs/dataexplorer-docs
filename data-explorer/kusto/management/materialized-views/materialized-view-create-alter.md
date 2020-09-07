@@ -2,8 +2,8 @@
 title: Create or alter materialized view - Azure Data Explorer
 description: This article describes how to create or alter materialized views in Azure Data Explorer.
 services: data-explorer
-author: yifats
-ms.author: yifats
+author: orspod
+ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
@@ -44,17 +44,16 @@ command. Not all changes are supported, the [section below](#alter-materialized-
  by default. The policy can be changed, using commands documented in
 the [Materialized view policies control commands](materialized-view-policies.md#materialized-view-policies-control-commands) article.**
 
-
 ## .create materialized-view
 
-**Syntax:**
+### Syntax
 
 `.create` [`async`] `materialized-view` <br>
 [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
 *ViewName* `on table` *SourceTableName* <br>
 `{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
 
-**Arguments**:
+### Arguments
 
 |Argument|Type|Description
 |----------------|-------|---|
@@ -62,7 +61,7 @@ the [Materialized view policies control commands](materialized-view-policies.md#
 |SourceTableName|String|Name of source table which the view is defined on.|
 |Query|String|The Materialized View query.|
 
-**Properties**:
+### Properties
 
 The following are supported in the `with(propertyName=propertyValue)` clause (all are optional). 
 
@@ -75,7 +74,7 @@ The following are supported in the `with(propertyName=propertyValue)` clause (al
 |folder|string|The materialized view's folder.|
 |docString|string|A string documenting the materialized view|
 
-**Examples:**
+### Examples
 
 To create an empty view, which will only materialize records ingested from now on: 
 
@@ -144,7 +143,7 @@ Materialized views that join with a dimension table (carefully read limitations 
 }
 ```
 
-**Remarks:**
+## Remarks
 
 * Requires [Database Admin](../access-control/role-based-authorization.md)
 permissions. The principal creating the view automatically becomes the admin of the view (see
@@ -156,18 +155,14 @@ permissions. The principal creating the view automatically becomes the admin of 
 source of the materialized view, and include a *single*
 summarize operator and one or more aggregation functions aggregated by one or more group by expressions.
 The summarize operator must always be the *last* operator in the query.
-    * The source table must be in the same database where the materialized view is defined. 
+   * The source table must be in the same database where the materialized view is defined. 
     Cross-cluster/cross-database queries are not supported.
-    * The source table *must* have [IngestionTime policy](../ingestiontimepolicy.md) enabled
+   * The source table *must* have [IngestionTime policy](../ingestiontimepolicy.md) enabled
     (the default is enabled) and *cannot* be enabled for [streaming ingestion](../../../ingest-data-streaming.md).
 * A materialized view with an `arg_max`/`arg_min`/`any` aggregation cannot include
-neither of the other supported aggregation functions.
-A view is either an `arg_max`/`arg_min`/`any` view (those functions can be used together
- in same view) or any of the other supported functions, but not both in same
-materialized view (for example,
+neither of the other supported aggregation functions. A view is either an `arg_max`/`arg_min`/`any` view (those functions can be used together in same view) or any of the other supported functions, but not both in same materialized view (for example,
      `SourceTable | summarize arg_max(Timestamp, *), count() by Id` is not supported).
-* *Composite* aggregations are currently not supported in the materialized view
- definition. For instance, instead of the following view:
+* *Composite* aggregations are currently not supported in the materialized view definition. For instance, instead of the following view:
 `SourceTable | summarize Result=sum(Column1)/sum(Column2) by Id`, you must define
 the Materialized View as: `SourceTable | summarize a=sum(Column1), b=sum(Column2) by Id`,
  and during view query time, run - `ViewName | project Id, Result=a/b`. 
@@ -200,19 +195,20 @@ Limiting the period of time covered by the view should be done using the retenti
 automatically reflected in the materialized view. Not all changes to source table are supported when using
 this option, see the [.alter materialized-view command](#alter-materialized-view) for details.
 
-    > [!WARNING] 
-    > * Using `autoUpdateSchema` may lead to data loss, when columns in the source table are dropped. There is no 
-    > way to restore the materialized view's dropped columns in case this occurs.
-    > * If the view is _not_ set to `autoUpdateSchema` and a change is made to the source table, which results in a
-    > schema change to the materialized view, the view will be automatically disabled. If the issue is fixed (e.g.,
-    > by restoring the schema of the source table), the materialized view can be enabled using the
-    > [enable materialized view](materialized-view-enable-disable.md) command.
-    > This can be common when using an `arg_max(Timestamp, *)` and adding columns to the source table. Defining the
-    > view query as `arg_max(Timestamp, Column1, Column2, ...)` (or using the `autoUpdateSchema` option) will avoid the failure.  
+ > [!WARNING] 
+ > * Using `autoUpdateSchema` may lead to data loss, when columns in the source table are dropped. There is no 
+ > way to restore the materialized view's dropped columns in case this occurs.
+ > * If the view is _not_ set to `autoUpdateSchema` and a change is made to the source table, which results in a
+ > schema change to the materialized view, the view will be automatically disabled. If the issue is fixed (e.g.,
+ > by restoring the schema of the source table), the materialized view can be enabled using the
+ > [enable materialized view](materialized-view-enable-disable.md) command.
+ > This can be common when using an `arg_max(Timestamp, *)` and adding columns to the source table. Defining the
+ > view query as `arg_max(Timestamp, Column1, Column2, ...)` (or using the `autoUpdateSchema` option) will avoid the failure.  
 
 * Once the view is created, materialization constantly happens in the background, as needed. Use the [Show materialized-view](materialized-view-show-commands.md#show-materialized-view)command to retrieve information about the health of the view.
 
 ### Supported aggregation functions:
+
 |Function Name
 |----------------|
 |count|
@@ -303,7 +299,7 @@ materialized view (same goes for lookup in dimension tables, when applicable).
 
 ## .alter materialized-view
 
-**Syntax:**
+### Syntax
 
 `.alter` `materialized-view`  
 [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]  
@@ -312,7 +308,7 @@ materialized view (same goes for lookup in dimension tables, when applicable).
     &nbsp;&nbsp;&nbsp;&nbsp;*Query*  
 `}`
 
-**Arguments**:
+### Arguments
 
 |Argument|Type|Description
 |----------------|-------|---|
@@ -320,12 +316,12 @@ materialized view (same goes for lookup in dimension tables, when applicable).
 |SourceTableName|String|Name of source table which the view is defined on.|
 |Query|String|The Materialized View query.|
 
-**Properties**:
+### Properties
 
 The `dimensionTables` is the only supported property in materialized-view alter command. Property should
 be used in case query references dimension tables (see definition in the [.create materialized-view](#create-materialized-view) command).
 
-**Notes:**
+### Notes
 
 * Requires [Database Admin](../access-control/role-based-authorization.md)
 permissions, or an admin of the materialized view (see
@@ -378,17 +374,17 @@ checks if cancel was requested. The cancel command waits for a max period of 10 
 * The `cancel operation` command is only supported for materialized views creation cancellation (not for canceling any
 other operations).
 
-**Syntax:**
+### Syntax
 
 `.cancel` `operation` *operationId*
 
-**Properties:**
+### Properties
 
 |Property|Type|Description
 |----------------|-------|---|
 |operationId|Guid|The operation id returned from the create materialized-view command.|
 
-**Output:**
+### Output
 
 |Output parameter |Type |Description
 |---|---|---
@@ -398,7 +394,7 @@ other operations).
 |CancellationState|string|One of - `Cancelled successfully` (creation was canceled), `Cancellation failed` (wait for cancelation timed out), `Unknown` (view creation is no longer running, but wasn't canceled by this operation).
 |ReasonPhrase|string|A reason, if cancellation was not successful.
 
-**Example:**
+### Example
 
 <!-- csl -->
 ```

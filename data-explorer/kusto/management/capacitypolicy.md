@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
 ---
-# Capacity policy
+# Capacity policy 
 
 A capacity policy is used for controlling the compute resources of data management operations on the cluster.
 

@@ -54,6 +54,7 @@ The types of metrics are:
 * [Ingestion metrics](#ingestion-metrics) 
 * [Streaming ingest metrics](#streaming-ingest-metrics)
 * [Query metrics](#query-metrics) 
+* [Materialized view metrics](#materialized-view-metrics)
 
 For an alphabetical list of Azure Monitor's metrics for Azure Data Explorers, see [supported Azure Data Explorer cluster metrics](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters).
 
@@ -119,6 +120,8 @@ Query performance metrics track query duration and total number of concurrent or
 | Query duration | Milliseconds | Avg, Min, Max, Sum | Total time until query results are received (doesn't include network latency). | QueryStatus |
 | Total number of concurrent queries | Count | Avg, Max, Min, Sum | The number of queries run in parallel in the cluster. This metric is a good way to estimate the load on the cluster. | None |
 | Total number of throttled queries | Count | Avg, Max, Min, Sum | The number of throttled (rejected) queries in the cluster. The maximum number of concurrent (parallel) queries allowed is defined in the concurrent query policy. | None |
+
+[!INCLUDE [materialized-view-metrics](includes/materialized-view-metrics.md)]
 
 ## Next steps
 

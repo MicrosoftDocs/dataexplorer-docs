@@ -1,9 +1,9 @@
 ---
-title: materialized view principals commands - Azure Data Explorer
-description: This article describes show materialized views principals commands in Azure Data Explorer.
+title: Materialized view principals commands - Azure Data Explorer
+description: This article describes how to use principals commands on materialized views in Azure Data Explorer.
 services: data-explorer
-author: yifats
-ms.author: yifats
+author: orspod
+ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
@@ -20,13 +20,13 @@ requires database admin permissions, or admin rights on the materialized view.
 * See [Security roles management](../security-roles.md) for further details (materialized
 views behave similarly to tables in this respect).
 
-**Syntax:**
+## Syntax
 
 `.show` `materialized-view` *MaterializedViewName* `principals`
 
 [`.add`|`.drop`|`.set` ] `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
 
-**Properties:**
+## Properties
 
 |Property|Type|Description
 |----------------|-------|---|

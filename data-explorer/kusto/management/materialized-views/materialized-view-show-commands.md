@@ -2,8 +2,8 @@
 title: show materialized view commands - Azure Data Explorer
 description: This article describes show materialized views commands in Azure Data Explorer.
 services: data-explorer
-author: yifats
-ms.author: yifats
+author: orspod
+ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
@@ -16,23 +16,23 @@ ms.date: 08/30/2020
 
 Displays information about the materialized view's definition and its current state.
 
-**Syntax:**
+### Syntax
 
 `.show` `materialized-view` *MaterializedViewName*
 
 `.show` `materialized-views`
 
-**Properties:**
+### Properties
 
 |Property|Type|Description
 |----------------|-------|---|
-|MaterializedViewName|String|Name of the Materialized View.|
+|MaterializedViewName|String|Name of the materialized view.|
 
-**Output:**
+### Output
 
 |Output parameter |Type |Description
 |---|---|---
-|Name  |String |The name of the Materialized View.
+|Name  |String |The name of the materialized view.
 |SourceTable|String|The source table of the materialized view.
 |Query|String|The Materialized View query.
 |MaterializedTo|datetime|The max materialized ingestion_time() timestamp in source table (see [behind the scenes](materialized-view-behind-the-scenes.md)).
@@ -49,13 +49,15 @@ Displays information about the materialized view's definition and its current st
 
 Gets the schema of the materialized view in CSL/JSON.
 
-**Syntax:**
+### Syntax
 
 `.show` `materialized-view` *MaterializedViewName* `cslschema`
 
 `.show` `materialized-view` *MaterializedViewName* `schema` `as` `json`
 
 `.show` `materialized-view` *MaterializedViewName* `schema` `as` `csl`
+
+### Output parameters
 
 | Output parameter | Type   | Description                                               |
 |------------------|--------|-----------------------------------------------------------|
@@ -73,7 +75,7 @@ the definition of the *materialized* part.
 The command provides the same details as in [show table extents](../show-extents.md#table-level)
 command.
 
-**Syntax:** 
+### Syntax
 
 `.show` `materialized-view` *MaterializedViewName* `extents` [`hot`]
  
@@ -81,17 +83,17 @@ command.
 
 Returns failures that occurred as part of the materialization process of the materialized view.
 
-**Syntax:**
+### Syntax
 
 `.show` `materialized-view` *MaterializedViewName* `failures`
 
-**Properties:**
+### Properties
 
 |Property|Type|Description
 |----------------|-------|---|
 |MaterializedViewName|String|Name of the Materialized View.|
 
-**Output:**
+### Output
 
 |Output parameter |Type |Description
 |---|---|---
@@ -102,7 +104,7 @@ Returns failures that occurred as part of the materialization process of the mat
 |FailureKind|String|Type of failure.
 |Details|String|Failure details.
 
-**Notes:**
+## Notes
 
 * Materialized view failures don't always indicate that the materialized view is unhealthy. Errors can be transient
 and materialization process will continue and can be successful in the next execution.
