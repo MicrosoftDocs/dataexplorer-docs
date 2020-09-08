@@ -22,7 +22,7 @@ The function `series_fit_poly_udf()` takes a table that contains multiple series
 
 ## Syntax
 
-`T | invoke series_fit_poly_ext(`*y_series*`,` *y_fit_series*`,` *fit_coeff*`,` *degree*`, [`*x_series*`,` *x_istime*]`)`
+`T | invoke series_fit_poly_udf(`*y_series*`,` *y_fit_series*`,` *fit_coeff*`,` *degree*`, [`*x_series*`,` *x_istime*]`)`
   
 ## Arguments
 
@@ -37,14 +37,16 @@ The function `series_fit_poly_udf()` takes a table that contains multiple series
 
 * `series_fit_poly_udf()` is a User-Defined Function. You can either embed its code in your query, or install it in your database:
     * For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
-    * For recurring usage, persist it using [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+    * For recurring usage, persist it using [.create function](../management/create-function.md).     
+        > [!NOTE]
+        > Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 * `series_fit_poly_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
 
 # [Ad hoc usage](#tab/adhoc)
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let series_fit_poly_ext=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
+let series_fit_poly_udf=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
 {
     let kwargs = pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
     let code=
@@ -86,7 +88,7 @@ let max_t = datetime(2016-09-03);
 demo_make_series1
 | make-series num=count() on TimeStamp from max_t-1d to max_t step 5m by OsVer
 | extend fnum = dynamic(null), coeff=dynamic(null), fnum1 = dynamic(null), coeff1=dynamic(null)
-| invoke series_fit_poly_ext('num', 'fnum', 'coeff', 5)
+| invoke series_fit_poly_udf('num', 'fnum', 'coeff', 5)
 | render timechart with(ycolumns=num, fnum)
 ```
 
@@ -96,7 +98,7 @@ demo_make_series1
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Fit a polynomial of a specified degree to a series")
-series_fit_poly_ext(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=false)
+series_fit_poly_udf(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=false)
 {
     let kwargs = pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
     let code=
@@ -143,7 +145,7 @@ let max_t = datetime(2016-09-03);
 demo_make_series1
 | make-series num=count() on TimeStamp from max_t-1d to max_t step 5m by OsVer
 | extend fnum = dynamic(null), coeff=dynamic(null), fnum1 = dynamic(null), coeff1=dynamic(null)
-| invoke series_fit_poly_ext('num', 'fnum', 'coeff', 5)
+| invoke series_fit_poly_udf('num', 'fnum', 'coeff', 5)
 | render timechart with(ycolumns=num, fnum)
 ```
 
@@ -168,7 +170,7 @@ demo_make_series1
 | where hourofday(TimeStamp) % 6 != 0   //  delete every 6th hour to create unevenly spaced time series
 | summarize TimeStamp=make_list(TimeStamp), num=make_list(num) by OsVer
 | extend fnum = dynamic(null), coeff=dynamic(null)
-| invoke series_fit_poly_ext('num', 'fnum', 'coeff', 8, 'TimeStamp', True)
+| invoke series_fit_poly_udf('num', 'fnum', 'coeff', 8, 'TimeStamp', True)
 | render timechart with(ycolumns=num, fnum)
 ```
 
@@ -186,7 +188,7 @@ range x from 1 to 200 step 1
 | order by x asc 
 | summarize x=make_list(x), y=make_list(y)
 | extend y_fit = dynamic(null), coeff=dynamic(null)
-| invoke series_fit_poly_ext('y', 'y_fit', 'coeff', 5, 'x')
+| invoke series_fit_poly_udf('y', 'y_fit', 'coeff', 5, 'x')
 |fork (project-away coeff) (project coeff | mv-expand coeff)
 | render linechart
 ```

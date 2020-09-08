@@ -21,7 +21,7 @@ The function `series_rolling_udf()` takes a table containing multiple series (dy
 
 ## Syntax
 
-`T | invoke series_rolling_ext(`*y_series*`,` *y_rolling_series*`,` *n*`,` *aggr*`,` *aggr_params*`,` *center*`)`
+`T | invoke series_rolling_udf(`*y_series*`,` *y_rolling_series*`,` *n*`,` *aggr*`,` *aggr_params*`,` *center*`)`
 
 ## Arguments
 
@@ -43,14 +43,16 @@ This function supports any aggregation function from [numpy](https://numpy.org/)
 
 * `series_rolling_udf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
     * For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
-    * For recurring usage, persist the function using [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md)
+    * For recurring usage, persist the function using [.create function](../management/create-function.md). 
+        > [!NOTE]
+        > Creating a function requires [database user permission](../management/access-control/role-based-authorization.md)
 * `series_rolling_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
 
 # [Ad hoc usage](#tab/adhoc)
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let series_rolling_ext = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
+let series_rolling_udf = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
 {
     let kwargs = pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
     let code =
@@ -80,7 +82,7 @@ let series_rolling_ext = (tbl:(*), y_series:string, y_rolling_series:string, n:i
 demo_make_series1
 | make-series num=count() on TimeStamp step 1h by OsVer
 | extend rolling_med = dynamic(null)
-| invoke series_rolling_ext('num', 'rolling_med', 9, 'median')
+| invoke series_rolling_udf('num', 'rolling_med', 9, 'median')
 | render timechart
 ```
 
@@ -90,7 +92,7 @@ demo_make_series1
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Rolling window functions on a series")
-series_rolling_ext(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic, center:bool=true)
+series_rolling_udf(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic, center:bool=true)
 {
     let kwargs = pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
     let code =
@@ -124,7 +126,7 @@ series_rolling_ext(tbl:(*), y_series:string, y_rolling_series:string, n:int, agg
 demo_make_series1
 | make-series num=count() on TimeStamp step 1h by OsVer
 | extend rolling_med = dynamic(null)
-| invoke series_rolling_ext('num', 'rolling_med', 9, 'median', dynamic([null]))
+| invoke series_rolling_udf('num', 'rolling_med', 9, 'median', dynamic([null]))
 | render timechart
 ```
 
@@ -144,9 +146,9 @@ The following examples assume the function is already installed:
 demo_make_series1
 | make-series num=count() on TimeStamp step 1h by OsVer
 | extend rolling_min = dynamic(null), rolling_max = dynamic(null), rolling_pct = dynamic(null)
-| invoke series_rolling_ext('num', 'rolling_min', 15, 'min', dynamic([null]))
-| invoke series_rolling_ext('num', 'rolling_max', 15, 'max', dynamic([null]))
-| invoke series_rolling_ext('num', 'rolling_pct', 15, 'percentile', dynamic([75]))
+| invoke series_rolling_udf('num', 'rolling_min', 15, 'min', dynamic([null]))
+| invoke series_rolling_udf('num', 'rolling_max', 15, 'max', dynamic([null]))
+| invoke series_rolling_udf('num', 'rolling_pct', 15, 'percentile', dynamic([75]))
 | render timechart
 ```
 
@@ -161,7 +163,7 @@ range x from 1 to 100 step 1
 | extend y=iff(x % 13 == 0, 2.0, iff(x % 23 == 0, -2.0, rand()))
 | summarize x=make_list(x), y=make_list(y)
 | extend yr = dynamic(null)
-| invoke series_rolling_ext('y', 'yr', 7, 'tmean', pack_array(pack_array(-2, 2), pack_array(false, false))) //  trimmed mean: ignoring values outside [-2,2] inclusive
+| invoke series_rolling_udf('y', 'yr', 7, 'tmean', pack_array(pack_array(-2, 2), pack_array(false, false))) //  trimmed mean: ignoring values outside [-2,2] inclusive
 | render linechart
 ```
 
