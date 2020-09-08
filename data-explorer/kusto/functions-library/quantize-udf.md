@@ -1,6 +1,6 @@
 ---
 title: quantize_udf() - Azure Data Explorer
-description: This article describes the quantize_udf() user defined function in Azure Data Explorer.
+description: This article describes the quantize_udf() user-defined function in Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
@@ -15,7 +15,7 @@ The function `quantize_udf()` bins metric columns. It quantizes metric columns t
 
 > [!NOTE]
 >* This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
->* This function is a [UDF (user defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+>* This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 
 ## Syntax
 
