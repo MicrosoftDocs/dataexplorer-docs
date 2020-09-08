@@ -1,6 +1,6 @@
 ---
 title: 'Manage an Azure Data Explorer cluster & database using Azure Go SDK'
-description: Learn how to create,list and delete an Azure Data Explorer cluster and database with Azure Go SDK.
+description: Learn how to create,list, and delete an Azure Data Explorer cluster and database with Azure Go SDK.
 author: abhirockzz
 ms.author: abhishgu
 ms.service: data-explorer
@@ -67,7 +67,7 @@ func createCluster(sub, name, location, rgName string) {
 
 ### List Clusters
 
-The [ListByResourceGroup](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient.ListByResourceGroup) function on `kusto.ClustersClient` is used to get a [kusto.ClusterListResult](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClusterListResult) which is then iterated to show the output in a tabular form.
+The [ListByResourceGroup](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient.ListByResourceGroup) function on `kusto.ClustersClient` is used to get a [kusto.ClusterListResult](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClusterListResult) that is then iterated to show the output in a tabular form.
 
 
 ```go
@@ -100,7 +100,7 @@ func createDatabase(sub, rgName, clusterName, location, dbName string) {
 
 ### List databases
 
-The [ListByCluster](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient.ListByCluster) function on `kusto.DatabasesClient` is used to get [kusto.DatabaseListResult](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabaseListResult) which is then iterated to show the output in a tabular form.
+The [ListByCluster](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient.ListByCluster) function on `kusto.DatabasesClient` is used to get [kusto.DatabaseListResult](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabaseListResult) that is then iterated to show the output in a tabular form.
 
 
 ```go
@@ -164,6 +164,18 @@ When you run the sample code as is, the following actions are performed:
 1. The database is deleted.
 1. The cluster is deleted.
 
+
+```go
+func main() {
+    createCluster(subscription, clusterNamePrefix+clusterName, location, rgName)
+    listClusters(subscription, rgName)
+    createDatabase(subscription, rgName, clusterNamePrefix+clusterName, location, dbNamePrefix+databaseName)
+    listDatabases(subscription, rgName, clusterNamePrefix+clusterName)
+    deleteDatabase(subscription, rgName, clusterNamePrefix+clusterName, dbNamePrefix+databaseName)
+    deleteCluster(subscription, clusterNamePrefix+clusterName, rgName)
+}
+```
+
 > [!TIP]
 > To try different combinations of operations, you can uncomment/comment the respective functions in `main.go`.
 
@@ -174,20 +186,9 @@ When you run the sample code as is, the following actions are performed:
     cd azure-data-explorer-go-cluster-management
     ```
 
-1. Run the sample code as seen in this snippet from `main.go`: 
+1. The program authenticates using Client credentials. You can use Azure CLI [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command to create a service principal - save the client ID, client secret, and tenant ID information for use in the next step.
 
-    ```go
-    func main() {
-    	createCluster(subscription, clusterNamePrefix+clusterName, location, rgName)
-    	listClusters(subscription, rgName)
-    	createDatabase(subscription, rgName, clusterNamePrefix+clusterName, location, dbNamePrefix+databaseName)
-    	listDatabases(subscription, rgName, clusterNamePrefix+clusterName)
-    	deleteDatabase(subscription, rgName, clusterNamePrefix+clusterName, dbNamePrefix+databaseName)
-    	deleteCluster(subscription, clusterNamePrefix+clusterName, rgName)
-    }
-    ```
-
-1. Export required environment variables, including service principal information used to authenticate to Azure Data Explorer for executing cluster and operation operations. To create a service principal, use Azure CLI with the [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command. Set the information with the cluster endpoint and the database name in the form of environment variables that will be used by the program:
+1. Export required environment variables, including service principal information. You will also need to enter your subscription ID, resource group, and the region (location) where you want to create the cluster.
 
     ```console
     export AZURE_CLIENT_ID="<enter service principal client ID>"
@@ -198,8 +199,8 @@ When you run the sample code as is, the following actions are performed:
     export RESOURCE_GROUP="<enter resource group name>"
     export LOCATION="<enter azure location e.g. Southeast Asia>"
 
-    export CLUSTER_NAME_PREFIX="<enter prefix. name of cluster [prefix]-ADXTestCluster>"
-    export DATABASE_NAME_PREFIX="<enter prefix. name of database [prefix]-ADXTestDB>"
+    export CLUSTER_NAME_PREFIX="<enter prefix (cluster name will be [prefix]-ADXTestCluster)>"
+    export DATABASE_NAME_PREFIX="<enter prefix (database name will be [prefix]-ADXTestDB)>"
     ```
 
 1. Run the program:
@@ -236,7 +237,6 @@ When you run the sample code as is, the following actions are performed:
     waiting for cluster deletion to complete - fooADXTestCluster
     deleted ADX cluster fooADXTestCluster from resource group <your resource group>
     ```
-
 
 ## Clean up resources
 
