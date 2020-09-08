@@ -15,7 +15,7 @@ Applies a moving average filter on a series.
 The function `series_moving_avg_udf()` takes an expression containing a dynamic numerical array as input and applies a [simple moving average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) filter.
 
 > [!NOTE]
-> This function is a [UDF (User-Defined Function)](../query/functions/user-defined-functions.md).For more information, see [usage](#usage).
+> This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).For more information, see [usage](#usage).
 
 ## Syntax
 
@@ -32,12 +32,10 @@ The function `series_moving_avg_udf()` takes an expression containing a dynamic 
 
 ## Usage
 
-* `series_moving_avg_udf()` is a User-Defined Function. You can either embed its code in your query, or install it in your database:
+* `series_moving_avg_udf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
     * For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
-    * For recurring usage, persist the function using [.create function](../management/create-function.md). 
-
-    > [!NOTE]
-    > Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+    * For recurring usage, persist the function using [.create function](../management/create-function.md). <br>
+        Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 # [Ad hoc usage](#tab/adhoc)
 

@@ -15,7 +15,7 @@ The function `series_fit_poly_udf()` applies a polynomial regression on a series
 
 > [!NOTE]
 >* This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
->* This function is a [UDF (user defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+>* This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 >* For linear regression of an evenly spaced series, as created by [make-series operator](../query/make-seriesoperator.md), use the native function [series_fit_line()](../query/series-fit-linefunction.md).
 
 ## Syntax
@@ -33,12 +33,10 @@ The function `series_fit_poly_udf()` applies a polynomial regression on a series
 
 ## Usage
 
-* `series_fit_poly_udf()` is a User-Defined Function. You can either embed its code in your query, or install it in your database:
+* `series_fit_poly_udf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
     * For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
-    * For recurring usage, persist it using [.create function](../management/create-function.md).     
-        > [!NOTE]
-        > Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
-
+    * For recurring usage, persist it using [.create function](../management/create-function.md). <br>
+        Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 * `series_fit_poly_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
 
 # [Ad hoc usage](#tab/adhoc)
