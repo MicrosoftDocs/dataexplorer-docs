@@ -23,6 +23,9 @@ The following image depicts an Azure Data Explorer dashboard.
 
 :::image type="content" source="media/adx-dashboards/dash.png" alt-text="Final dashboard":::
 
+> [!IMPORTANT]
+> Your data is secure. Dashboards and dashboard-related metadata about users is stored in CosmosDB where all data is encrypted at rest.
+
 ## Create a dashboard
 
 1. In the navigation bar, select **Dashboards** and select **New dashboard**.
