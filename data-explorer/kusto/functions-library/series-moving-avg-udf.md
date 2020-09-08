@@ -44,7 +44,7 @@ The function `series_moving_avg_udf()` takes an expression containing a dynamic 
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let series_moving_avg_sf = (y_series:dynamic, n:int, center:bool=false)
+let series_moving_avg_udf = (y_series:dynamic, n:int, center:bool=false)
 {
     series_fir(y_series, repeat(1, n), true, center)
 }
@@ -54,7 +54,7 @@ let series_moving_avg_sf = (y_series:dynamic, n:int, center:bool=false)
 //
 demo_make_series1
 | make-series num=count() on TimeStamp step 1h by OsVer
-| extend num_ma=series_moving_avg_sf(num, 5, True)
+| extend num_ma=series_moving_avg_udf(num, 5, True)
 | render timechart 
 ```
 
