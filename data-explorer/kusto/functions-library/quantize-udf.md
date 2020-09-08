@@ -15,7 +15,7 @@ The function `quantize_udf()` bins metric columns. It quantizes metric columns t
 
 > [!NOTE]
 >* This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
->* This function is a [UDF (User Defined Function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+>* This function is a [UDF (user defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 
 ## Syntax
 
@@ -36,6 +36,7 @@ The function `quantize_udf()` bins metric columns. It quantizes metric columns t
 
     > [!NOTE]
     > Creating a function requires [database user permission](../management/access-control/role-based-authorization.md)
+
 * `quantize_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md)
 
 # [Ad hoc usage](#tab/adhoc)

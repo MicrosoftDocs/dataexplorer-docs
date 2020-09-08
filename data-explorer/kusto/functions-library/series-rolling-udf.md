@@ -36,15 +36,34 @@ The function `series_rolling_udf()` applies rolling aggregation on a series. It 
 
 ## Aggregation functions
 
-This function supports any aggregation function from [numpy](https://numpy.org/) or [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats) that calculates a scalar out of a series: [`sum`](https://numpy.org/doc/stable/reference/generated/numpy.sum.html#numpy.sum), [`mean`](https://numpy.org/doc/stable/reference/generated/numpy.mean.html?highlight=mean#numpy.mean), [`min`](https://numpy.org/doc/stable/reference/generated/numpy.amin.html#numpy.amin), [`max`](https://numpy.org/doc/stable/reference/generated/numpy.amax.html), [`ptp (max-min)`](https://numpy.org/doc/stable/reference/generated/numpy.ptp.html), [`percentile`](https://numpy.org/doc/stable/reference/generated/numpy.percentile.html), [`median`](https://numpy.org/doc/stable/reference/generated/numpy.median.html), [`std`](https://numpy.org/doc/stable/reference/generated/numpy.std.html), [`var`](https://numpy.org/doc/stable/reference/generated/numpy.var.html), [`gmean` (geometric mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gmean.html), [`hmean` (harmonic mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hmean.html), [`mode` (most common value)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html), [`moment` (n<sup>th</sup> moment)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.moment.html), [`tmean` (trimmed mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmean.html), [`tmin`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmin.html), [`tmax`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmax.html), [tstd](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tstd.html), [`iqr` (inter quantile range)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.iqr.html) and many more.
+This function supports any aggregation function from [numpy](https://numpy.org/) or [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats) that calculates a scalar out of a series. The following list is not exhaustive:
+
+* [`sum`](https://numpy.org/doc/stable/reference/generated/numpy.sum.html#numpy.sum) 
+* [`mean`](https://numpy.org/doc/stable/reference/generated/numpy.mean.html?highlight=mean#numpy.mean), [`min`](https://numpy.org/doc/stable/reference/generated/numpy.amin.html#numpy.amin)
+* [`max`](https://numpy.org/doc/stable/reference/generated/numpy.amax.html)
+* [`ptp (max-min)`](https://numpy.org/doc/stable/reference/generated/numpy.ptp.html)
+* [`percentile`](https://numpy.org/doc/stable/reference/generated/numpy.percentile.html)
+* [`median`](https://numpy.org/doc/stable/reference/generated/numpy.median.html)
+* [`std`](https://numpy.org/doc/stable/reference/generated/numpy.std.html)
+* [`var`](https://numpy.org/doc/stable/reference/generated/numpy.var.html)
+* [`gmean` (geometric mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gmean.html)
+* [`hmean` (harmonic mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hmean.html)
+* [`mode` (most common value)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html)
+* [`moment` (n<sup>th</sup> moment)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.moment.html)
+* [`tmean` (trimmed mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmean.html)
+* [`tmin`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmin.html), [`tmax`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmax.html)
+* [tstd](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tstd.html)
+* [`iqr` (inter quantile range)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.iqr.html) 
 
 ## Usage
 
 * `series_rolling_udf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
     * For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
     * For recurring usage, persist the function using [.create function](../management/create-function.md). 
+
         > [!NOTE]
         > Creating a function requires [database user permission](../management/access-control/role-based-authorization.md)
+
 * `series_rolling_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
 
 # [Ad hoc usage](#tab/adhoc)

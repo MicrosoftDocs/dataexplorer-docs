@@ -1,6 +1,6 @@
 ---
 title: Functions library - Azure Data Explorer
-description: This article describes UDFs (User Defined Functions) that extend Azure Data Explorer capabilities.
+description: This article describes UDFs (user defined functions) that extend Azure Data Explorer capabilities.
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
