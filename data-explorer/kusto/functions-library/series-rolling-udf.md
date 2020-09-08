@@ -59,11 +59,8 @@ This function supports any aggregation function from [numpy](https://numpy.org/)
 
 * `series_rolling_udf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
     * For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
-    * For recurring usage, persist the function using [.create function](../management/create-function.md). 
-
-        > [!NOTE]
-        > Creating a function requires [database user permission](../management/access-control/role-based-authorization.md)
-
+    * For recurring usage, persist the function using [.create function](../management/create-function.md). <br>
+        Creating a function requires [database user permission](../management/access-control/role-based-authorization.md)
 * `series_rolling_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
 
 # [Ad hoc usage](#tab/adhoc)
