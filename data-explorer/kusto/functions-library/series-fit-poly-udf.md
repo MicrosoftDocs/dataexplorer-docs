@@ -149,7 +149,7 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-fit-poly-ext/series-fit-poly-ext-1.png" alt-text="Series fit polynomial 1" border="false":::
+:::image type="content" source="images/series-fit-poly-udf/usage-example.png" alt-text="Graph with fit 5th order polynomial to a regular (evenly spaced) time series, created with make-series" border="false":::
 
 ## Additional Examples
 
@@ -172,7 +172,7 @@ demo_make_series1
 | render timechart with(ycolumns=num, fnum)
 ```
 
-:::image type="content" source="images/series-fit-poly-ext/series-fit-poly-ext-2.png" alt-text="Series fit polynomial 2" border="false":::
+:::image type="content" source="images/series-fit-poly-udf/irregular-time-series.png" alt-text="Graph of test of irregular (unevenly spaced) time series" border="false":::
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -191,5 +191,5 @@ range x from 1 to 200 step 1
 | render linechart
 ```
 
-:::image type="content" source="images/series-fit-poly-ext/series-fit-poly-ext-3.png" alt-text="Series fit polynomial 3" border="false":::
-:::image type="content" source="images/series-fit-poly-ext/series-fit-poly-ext-4.png" alt-text="Series fit polynomial 4" border="false":::
+:::image type="content" source="images/series-fit-poly-udf/fifth-order-noise.png" alt-text="Graph of 5th order polynomial with noise on x & y axes" border="false":::
+:::image type="content" source="images/series-fit-poly-udf/fifth-order-noise-table.png" alt-text="coefficient table from graph of fifth order polynomial with noise" border="false":::

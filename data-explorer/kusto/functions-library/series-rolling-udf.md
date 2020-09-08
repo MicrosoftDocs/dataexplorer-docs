@@ -130,7 +130,7 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-rolling-ext/series-rolling-ext-1.png" alt-text="Series rolling 1" border="false":::
+:::image type="content" source="images/series-rolling-udf/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements" border="false":::
 
 ## Additional examples
 
@@ -150,7 +150,7 @@ demo_make_series1
 | render timechart
 ```
 
-:::image type="content" source="images/series-rolling-ext/series-rolling-ext-2.png" alt-text="Series rolling 2" border="false":::
+:::image type="content" source="images/series-rolling-udf/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements" border="false":::
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -165,4 +165,4 @@ range x from 1 to 100 step 1
 | render linechart
 ```
 
-:::image type="content" source="images/series-rolling-ext/series-rolling-ext-3.png" alt-text="Series rolling 3" border="false":::
+:::image type="content" source="images/series-rolling-udf/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean" border="false":::

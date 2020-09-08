@@ -1681,15 +1681,15 @@
   - name: Functions library
     items:
     - name: Functions library
-      href: kusto/functions-library/query/functions-library.md
+      href: kusto/functions-library/functions-library.md
     - name: quantize_udf()
-      href: kusto/functions-library/query/quantize-udf.md
+      href: kusto/functions-library/quantize-udf.md
     - name: series_fit_poly_udf()
-      href: kusto/functions-library/query/series-fit-poly-udf.md
+      href: kusto/functions-library/series-fit-poly-udf.md
     - name: series_moving_avg_udf()
-      href: kusto/functions-library/query/series-moving-avg-udf.md
+      href: kusto/functions-library/series-moving-avg-udf.md
     - name: series_rolling_udf()
-      href: kusto/functions-library/query/series-rolling-udf.md
+      href: kusto/functions-library/series-rolling-udf.md
 - name: Resources
   items:
   - name: Blog
