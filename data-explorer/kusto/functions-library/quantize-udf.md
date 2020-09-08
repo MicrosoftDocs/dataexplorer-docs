@@ -1,6 +1,6 @@
 ---
-title: quantize_ext() - Azure Data Explorer
-description: This article describes quantize_ext() user-defined function in Azure Data Explorer.
+title: quantize_udf() - Azure Data Explorer
+description: This article describes the quantize_udf() user-defined function in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,33 +9,36 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/01/2020
 ---
-# quantize_ext()
+# quantize_udf()
 
-Binning metric columns 
+Bins metric columns.
 
-The function quantize_ext() quantize metric columns to categorical labels, based on the K-Means algorithm.
+The function `quantize_udf()` quantizes metric columns to categorical labels, based on the K-Means algorithm.
 
 > [!NOTE]
 >* This function contains inline Python and requires [enabling the python() plugin](../../query/pythonplugin.md#enable-the-plugin) on the cluster.
->* This function is a [UDF (User Defined Function)](../../query/functions/user-defined-functions.md). See [how to use it](#usage) below.
+>* This function is a [UDF (User Defined Function)](../../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 
 ## Syntax
 
-`T | invoke quantize_ext(`*num_bins*`,` *in_cols*`,` *out_cols*`,` *labels*`)`
+`T | invoke quantize_udf(`*num_bins*`,` *in_cols*`,` *out_cols*`,` *labels*`)`
 
 ## Arguments
 
 * *num_bins*: Required number of bins.
 * *in_cols*: Dynamic array containing the names of the columns to quantize.
 * *out_cols*: Dynamic array containing the names of the respective output columns for the binned values.
-* *labels*: Dynamic array containing the label names. Optional parameter, if not supply then the bin ranges will be used.
+* *labels*: Dynamic array containing the label names. This parameter is optional. If *Labels* isn't supplied, bin ranges will be used.
 
 ## Usage
 
-* This is a User Defined Function. You can either embed its code in your query, or install it in your database:
-    * For ad hoc usage, embed its code using [let statement](../../query/letstatement.md). No permission is required.
-    * For recurring usage, persist it using [.create function](../../management/create-function.md). Creating a function requires [database user permission](../../management/access-control/role-based-authorization.md)
-* This is a [tabular function](../../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../../query/invokeoperator.md)
+* `quantize_udf()` is a User-Defined Function. You can either embed its code in your query, or install it in your database:
+    * For ad hoc usage, embed its code using the [let statement](../../query/letstatement.md). No permission is required.
+    * For recurring usage, persist it using [.create function](../../management/create-function.md). 
+
+    > [!NOTE]
+    > Creating a function requires [database user permission](../../management/access-control/role-based-authorization.md)
+* `quantize_udf()` is a [tabular function](../../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../../query/invokeoperator.md)
 
 # [Ad hoc usage](#tab/adhoc)
 
@@ -80,7 +83,7 @@ union
 
 # [Persistent usage](#tab/persistent)
 
-* **One time installation**
+* **One-time installation**
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create function with (folder = "Packages\\ML", docstring = "Binning metric columns")

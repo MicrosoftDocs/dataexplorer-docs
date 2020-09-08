@@ -1,6 +1,6 @@
 ---
-title: series_rolling_ext() - Azure Data Explorer
-description: This article describes series_rolling_ext() user-defined function in Azure Data Explorer.
+title: series_rolling_udf() - Azure Data Explorer
+description: This article describes the series_rolling_udf() user-defined function in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,15 +9,15 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/31/2020
 ---
-# series_rolling_ext()
+# series_rolling_udf()
 
-Applies rolling aggregation on a series 
+Applies rolling aggregation on a series.
 
-The function series_rolling_ext() takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
+The function `series_rolling_udf()` takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
 > [!NOTE]
 >* This function contains inline Python and requires [enabling the python() plugin](../../query/pythonplugin.md#enable-the-plugin) on the cluster.
->* This function is a [UDF (User Defined Function)](../../query/functions/user-defined-functions.md). See [how to use it](#usage) below.
+>* This function is a [UDF (User Defined Function)](../../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 
 ## Syntax
 
@@ -28,20 +28,23 @@ The function series_rolling_ext() takes a table containing multiple series (dyna
 * *y_series*: The name of the column (of the input table) containing the series to fit.
 * *y_rolling_series*: The name of the column to store the rolling aggregation series.
 * *n*: The width of the rolling window.
-* *aggr*: The name of the aggregation function to use. See [aggregation functions](#aggregation-functions) below.
+* *aggr*: The name of the aggregation function to use. See [aggregation functions](#aggregation-functions).
 * *aggr_params*: optional parameters for the aggregation function.
-* *center*: An optional Boolean value that indicates whether the rolling window is applied symmetrically before and after the current point, or from the current point backwards. By default, center is False, for calculation on streaming data.
+* *center*: An optional Boolean value that indicates whether the rolling window is one of the following options:
+    * applied symmetrically before and after the current point, or 
+    * applied from the current point backwards. 
+    By default, *center* is False, for calculation on streaming data.
 
 ## Aggregation functions
 
-This function supports any aggregation function from [numpy](https://numpy.org/) or [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats) that calculates a scalar out of a series: [sum](https://numpy.org/doc/stable/reference/generated/numpy.sum.html#numpy.sum), [mean](https://numpy.org/doc/stable/reference/generated/numpy.mean.html?highlight=mean#numpy.mean), [min](https://numpy.org/doc/stable/reference/generated/numpy.amin.html#numpy.amin), [max](https://numpy.org/doc/stable/reference/generated/numpy.amax.html), [ptp (max-min)](https://numpy.org/doc/stable/reference/generated/numpy.ptp.html), [percentile](https://numpy.org/doc/stable/reference/generated/numpy.percentile.html), [median](https://numpy.org/doc/stable/reference/generated/numpy.median.html), [std](https://numpy.org/doc/stable/reference/generated/numpy.std.html), [var](https://numpy.org/doc/stable/reference/generated/numpy.var.html), [gmean (geometric mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gmean.html), [hmean (harmonic mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hmean.html), [mode (most common value)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html), [moment (n<sup>th</sup> moment)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.moment.html), [tmean (trimmed mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmean.html), [tmin](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmin.html), [tmax](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmax.html), [tstd](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tstd.html), [iqr (inter quantile range)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.iqr.html) and many more.
+This function supports any aggregation function from [numpy](https://numpy.org/) or [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats) that calculates a scalar out of a series: [`sum`](https://numpy.org/doc/stable/reference/generated/numpy.sum.html#numpy.sum), [`mean`](https://numpy.org/doc/stable/reference/generated/numpy.mean.html?highlight=mean#numpy.mean), [`min`](https://numpy.org/doc/stable/reference/generated/numpy.amin.html#numpy.amin), [`max`](https://numpy.org/doc/stable/reference/generated/numpy.amax.html), [`ptp (max-min)`](https://numpy.org/doc/stable/reference/generated/numpy.ptp.html), [`percentile`](https://numpy.org/doc/stable/reference/generated/numpy.percentile.html), [`median`](https://numpy.org/doc/stable/reference/generated/numpy.median.html), [`std`](https://numpy.org/doc/stable/reference/generated/numpy.std.html), [`var`](https://numpy.org/doc/stable/reference/generated/numpy.var.html), [`gmean` (geometric mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gmean.html), [`hmean` (harmonic mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hmean.html), [`mode` (most common value)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html), [`moment` (n<sup>th</sup> moment)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.moment.html), [`tmean` (trimmed mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmean.html), [`tmin`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmin.html), [`tmax`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmax.html), [tstd](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tstd.html), [`iqr` (inter quantile range)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.iqr.html) and many more.
 
 ## Usage
 
-* This is a User Defined Function. You can either embed its code in your query, or install it in your database:
+* `series_rolling_udf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
     * For ad hoc usage, embed its code using [let statement](../../query/letstatement.md). No permission is required.
     * For recurring usage, persist it using [.create function](../../management/create-function.md). Creating a function requires [database user permission](../../management/access-control/role-based-authorization.md)
-* This is a [tabular function](../../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../../query/invokeoperator.md)
+* `series_rolling_udf()` is a [tabular function](../../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../../query/invokeoperator.md).
 
 # [Ad hoc usage](#tab/adhoc)
 
@@ -83,7 +86,7 @@ demo_make_series1
 
 # [Persistent usage](#tab/persistent)
 
-* **One time installation**
+* **One-time installation**
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Rolling window functions on a series")
@@ -129,9 +132,9 @@ demo_make_series1
 
 :::image type="content" source="images/series-rolling-ext/series-rolling-ext-1.png" alt-text="Series rolling 1" border="false":::
 
-## Additional Examples
+## Additional examples
 
-The following examples assume the function is already installed
+The following examples assume the function is already installed:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
