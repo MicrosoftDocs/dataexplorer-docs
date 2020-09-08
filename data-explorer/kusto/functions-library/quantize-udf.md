@@ -1,19 +1,17 @@
 ---
 title: quantize_udf() - Azure Data Explorer
 description: This article describes the quantize_udf() user-defined function in Azure Data Explorer.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/01/2020
+ms.date: 09/08/2020
 ---
 # quantize_udf()
 
-Bins metric columns.
 
-The function `quantize_udf()` quantizes metric columns to categorical labels, based on the K-Means algorithm.
+The function `quantize_udf()` bins metric columns. It quantizes metric columns to categorical labels, based on the K-Means algorithm.
 
 > [!NOTE]
 >* This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.

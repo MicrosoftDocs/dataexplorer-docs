@@ -1,23 +1,22 @@
 ---
 title: series_rolling_udf() - Azure Data Explorer
 description: This article describes the series_rolling_udf() user-defined function in Azure Data Explorer.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/31/2020
+ms.date: 09/08/2020
 ---
 # series_rolling_udf()
 
-Applies rolling aggregation on a series.
 
-The function `series_rolling_udf()` takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
+The function `series_rolling_udf()` applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
 > [!NOTE]
->* This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
->* This function is a [UDF (User-Defined Function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+> series_rolling_udf():
+>* Contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
+>* Is a [UDF (User-Defined Function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 
 ## Syntax
 
@@ -29,11 +28,11 @@ The function `series_rolling_udf()` takes a table containing multiple series (dy
 * *y_rolling_series*: The name of the column to store the rolling aggregation series.
 * *n*: The width of the rolling window.
 * *aggr*: The name of the aggregation function to use. See [aggregation functions](#aggregation-functions).
-* *aggr_params*: optional parameters for the aggregation function.
+* *aggr_params*: Optional parameters for the aggregation function.
 * *center*: An optional Boolean value that indicates whether the rolling window is one of the following options:
     * applied symmetrically before and after the current point, or 
     * applied from the current point backwards. <br>
-    By default, *center* is False, for calculation on streaming data.
+    By default, *center* is false, for calculation on streaming data.
 
 ## Aggregation functions
 

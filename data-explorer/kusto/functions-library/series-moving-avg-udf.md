@@ -1,13 +1,12 @@
 ---
 title: series_moving_avg_udf() - Azure Data Explorer
 description: This article describes series_moving_avg_udf() user-defined function in Azure Data Explorer.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/24/2020
+ms.date: 09/08/2020
 ---
 # series_moving_avg_udf()
 
