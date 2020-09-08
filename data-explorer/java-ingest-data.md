@@ -19,7 +19,7 @@ ms.date: 09/07/2020
 > * [Go](go-ingest-data.md)
 > * [Java](java-ingest-data.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides a [Java client library](kusto/api/java/kusto-java-client-library.md) for interacting with the Azure Data Explorer service that can be to ingest, issue control commands and query data in Azure Data Explorer clusters.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides a [Java client library](kusto/api/java/kusto-java-client-library.md) for interacting with the Azure Data Explorer service that can be used to ingest, issue control commands and query data in Azure Data Explorer clusters.
 
 In this article, you first create a table and data mapping in a test cluster. You then queue an ingestion to the cluster using the Java SDK and validate the results.
 
@@ -34,7 +34,7 @@ In this article, you first create a table and data mapping in a test cluster. Yo
 
 ## Review the code
 
-This [Review the code](#review-the-code) section is optional. If you're interested to learn how the code works, you can review the following code snippets. Otherwise, you can skip ahead to [Run the application](#run-the-application).
+This section is optional. If you're interested to learn how the code works, you can review the following code snippets. Otherwise, you can skip ahead to [Run the application](#run-the-application).
 
 ### Authentication
 
@@ -43,8 +43,7 @@ The program uses Azure Active Directory authentication credentials. A `com.micro
 ```java
 static Client getClient() throws Exception {
     ConnectionStringBuilder csb = ConnectionStringBuilder.createWithAadApplicationCredentials(endpoint, clientID, clientSecret);
-    
-return ClientFactory.createClient(csb);
+    return ClientFactory.createClient(csb);
 }
 ```
 
@@ -54,7 +53,6 @@ The same is the case with an `com.microsoft.azure.kusto.ingest.IngestClient` tha
 static IngestClient getIngestionClient() throws Exception {
     String ingestionEndpoint = "https://ingest-" + URI.create(endpoint).getHost();
     ConnectionStringBuilder csb = ConnectionStringBuilder.createWithAadApplicationCredentials(ingestionEndpoint, clientID, clientSecret);
-        
     return IngestClientFactory.createClient(csb);
 }
 ```
@@ -95,7 +93,7 @@ An ingestion is queued using a file from an existing Azure Blob Storage containe
     .....
 ```
 
-The ingestion process is started in a different thread and the `main` thread is blocked waiting for it to complete (using a [CountdownLatch](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CountDownLatch.html)). The ingestion API (`IngestClient#ingestFromBlob`) is not asynchronous, hence a `while` loop is used to poll the current status (every 5 secs) and wait for it to transition from `Pending` status (ideally to `Succeeded`, but it could be `Failed` or `PartiallySucceeded` as well).
+The ingestion process is started in a different thread while the `main` thread is blocked waiting for it to complete (using a [CountdownLatch](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CountDownLatch.html)). The ingestion API (`IngestClient#ingestFromBlob`) is not asynchronous, hence a `while` loop is used to poll the current status (every 5 secs) and wait for it to transition from `Pending` status (ideally to `Succeeded`, but it could be `Failed` or `PartiallySucceeded` as well).
 
 ```java
         ....
