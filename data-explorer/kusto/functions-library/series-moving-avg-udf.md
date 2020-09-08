@@ -20,7 +20,7 @@ The function `series_moving_avg_udf()` takes an expression containing a dynamic 
 
 ## Syntax
 
-`series_moving_avg_ext(`*y_series*`,` *n*`, [`*center*`])`
+`series_moving_avg_udf(`*y_series*`,` *n*`, [`*center*`])`
   
 ## Arguments
 
