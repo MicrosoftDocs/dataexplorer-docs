@@ -33,7 +33,7 @@ The function `series_fit_poly_udf()` applies a polynomial regression on a series
 
 ## Usage
 
-* `series_fit_poly_udf()` is a User-Defined Function. You can either embed its code in your query, or install it in your database:
+* `series_fit_poly_udf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
     * For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
     * For recurring usage, persist it using [.create function](../management/create-function.md). <br>
         Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
