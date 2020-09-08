@@ -84,4 +84,4 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-moving-avg-ext/series-moving-avg-ext-1.png" alt-text="Series moving average 1" border="false":::
+:::image type="content" source="images/series-moving-avg-udf/moving-average-five-bins.png" alt-text="Graph depicting moving average of 5 bins" border="false":::
