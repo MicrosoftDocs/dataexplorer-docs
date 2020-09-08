@@ -16,8 +16,8 @@ Bins metric columns.
 The function `quantize_udf()` quantizes metric columns to categorical labels, based on the K-Means algorithm.
 
 > [!NOTE]
->* This function contains inline Python and requires [enabling the python() plugin](../../query/pythonplugin.md#enable-the-plugin) on the cluster.
->* This function is a [UDF (User Defined Function)](../../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+>* This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
+>* This function is a [UDF (User Defined Function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 
 ## Syntax
 
@@ -33,12 +33,12 @@ The function `quantize_udf()` quantizes metric columns to categorical labels, ba
 ## Usage
 
 * `quantize_udf()` is a User-Defined Function. You can either embed its code in your query, or install it in your database:
-    * For ad hoc usage, embed its code using the [let statement](../../query/letstatement.md). No permission is required.
-    * For recurring usage, persist it using [.create function](../../management/create-function.md). 
+    * For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
+    * For recurring usage, persist it using [.create function](../management/create-function.md). 
 
     > [!NOTE]
-    > Creating a function requires [database user permission](../../management/access-control/role-based-authorization.md)
-* `quantize_udf()` is a [tabular function](../../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../../query/invokeoperator.md)
+    > Creating a function requires [database user permission](../management/access-control/role-based-authorization.md)
+* `quantize_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md)
 
 # [Ad hoc usage](#tab/adhoc)
 

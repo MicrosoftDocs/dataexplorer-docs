@@ -16,8 +16,8 @@ Applies rolling aggregation on a series.
 The function `series_rolling_udf()` takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
 > [!NOTE]
->* This function contains inline Python and requires [enabling the python() plugin](../../query/pythonplugin.md#enable-the-plugin) on the cluster.
->* This function is a [UDF (User Defined Function)](../../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+>* This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
+>* This function is a [UDF (User Defined Function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 
 ## Syntax
 
@@ -42,9 +42,9 @@ This function supports any aggregation function from [numpy](https://numpy.org/)
 ## Usage
 
 * `series_rolling_udf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
-    * For ad hoc usage, embed its code using [let statement](../../query/letstatement.md). No permission is required.
-    * For recurring usage, persist it using [.create function](../../management/create-function.md). Creating a function requires [database user permission](../../management/access-control/role-based-authorization.md)
-* `series_rolling_udf()` is a [tabular function](../../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../../query/invokeoperator.md).
+    * For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
+    * For recurring usage, persist it using [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md)
+* `series_rolling_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
 
 # [Ad hoc usage](#tab/adhoc)
 
