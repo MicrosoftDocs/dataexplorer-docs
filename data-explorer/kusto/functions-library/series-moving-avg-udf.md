@@ -28,14 +28,14 @@ The function `series_moving_avg_udf()` takes an expression containing a dynamic 
 * *n*: The width of the moving average filter.
 * *center*: An optional Boolean value that indicates whether the moving average is one of the following options:
     * applied symmetrically on a window before and after the current point, or 
-    * applied on a window from the current point backwards. 
+    * applied on a window from the current point backwards. <br>
     By default, *center* is False.
 
 ## Usage
 
 * `series_moving_avg_udf()` is a User-Defined Function. You can either embed its code in your query, or install it in your database:
     * For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
-    * For recurring usage, persist it using [.create function](../management/create-function.md). 
+    * For recurring usage, persist the function using [.create function](../management/create-function.md). 
 
     > [!NOTE]
     > Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).

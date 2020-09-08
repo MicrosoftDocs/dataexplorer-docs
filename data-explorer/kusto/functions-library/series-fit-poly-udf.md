@@ -13,12 +13,12 @@ ms.date: 08/23/2020
 
 Applies a polynomial regression on a series.
 
-The function `series_fit_poly_udf()` takes a table that contains multiple series (dynamic numerical array) and generates, for each series, the high-order polynomial that best fits it using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). The function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
+The function `series_fit_poly_udf()` takes a table that contains multiple series (dynamic numerical array) and generates, for each series, the high-order polynomial that best fits it using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). This function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
 
 > [!NOTE]
 >* This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
->* This function is a [UDF (User Defined Function)](../query/functions/user-defined-functions.md). See [how to use it](#usage) below.
->* For linear regression of evenly spaced series (as created by [make-series operator](../query/make-seriesoperator.md)), use the native function [series_fit_line()](../query/series-fit-linefunction.md).
+>* This function is a [UDF (User Defined Function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+>* For linear regression of an evenly spaced series (as created by [make-series operator](../query/make-seriesoperator.md)), use the native function [series_fit_line()](../query/series-fit-linefunction.md).
 
 ## Syntax
 
@@ -30,15 +30,15 @@ The function `series_fit_poly_udf()` takes a table that contains multiple series
 * *y_fit_series*: The name of the column to store the best fit series.
 * *fit_coeff*: The name of the column to store the best fit polynomial coefficients.
 * *degree*: The required order of the polynomial to fit. For example, 1 for linear regression, 2 for quadratic regression, and so on.
-* *x_series*: The name of the column containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables), that is, the x or time axis. This parameter is optional, and is needed only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). Default is empty string, as x is redundant for regression of evenly spaced series.
+* *x_series*: The name of the column containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables), that is, the x or time axis. This parameter is optional, and is needed only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). The default value is an empty string, as x is redundant for the regression of an evenly-spaced series.
 * *x_istime*: This boolean parameter is optional. This parameter is needed only if *x_series* is specified and it's a vector of datetime.
 
 ## Usage
 
 * `series_fit_poly_udf()` is a User-Defined Function. You can either embed its code in your query, or install it in your database:
     * For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
-    * For recurring usage, persist it using [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md)
-* `series_fit_poly_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md)
+    * For recurring usage, persist it using [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+* `series_fit_poly_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
 
 # [Ad hoc usage](#tab/adhoc)
 
@@ -151,9 +151,9 @@ demo_make_series1
 
 :::image type="content" source="images/series-fit-poly-udf/usage-example.png" alt-text="Graph with fit 5th order polynomial to a regular (evenly spaced) time series, created with make-series" border="false":::
 
-## Additional Examples
+## Additional examples
 
-The following examples assume the function is already installed
+The following examples assume the function is already installed:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
