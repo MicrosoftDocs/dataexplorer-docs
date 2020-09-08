@@ -25,8 +25,7 @@ You need the following to complete this article:
 
 * [Grafana version 5.3.0 or later](https://docs.grafana.org/installation/) for your operating system
 
-* The [Azure Data Explorer plugin](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) for Grafana
-For using Grafana query editor, Azure Data Explorer plugin version 3.0.5 or later is required.
+* The [Azure Data Explorer plugin](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) for Grafana. Plugin version 3.0.5 or later is required to use Grafana query editor.
 
 * A cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
 
@@ -66,7 +65,7 @@ With the service principal assigned to the *viewers* role, you now specify prope
 
 ## Visualize data
 
-Now you've finished configuring Azure Data Explorer as a data source for Grafana, it's time to visualize data. We'll show a basic example here using both the query editor mode and the raw mode. We recommend looking at [Write queries for Azure Data Explorer](write-queries.md) for examples of other queries to run against the sample data set.
+Now you've finished configuring Azure Data Explorer as a data source for Grafana, it's time to visualize data. We'll show a basic example using both the query editor mode and the raw mode. We recommend looking at [Write queries for Azure Data Explorer](write-queries.md) for examples of other queries to run against the sample data set.
 
 1. In Grafana, on the left menu, select the plus icon then **Dashboard**.
 
@@ -83,29 +82,39 @@ Now you've finished configuring Azure Data Explorer as a data source for Grafana
 1. At the bottom of the panel, select **Data Source** then select the data source that you configured.
 
     ![Select data source](media/grafana/select-data-source.png)
+
 1. Below the data source select the database for the panel.
 
-Query editor mode
-Select the table in the "From" dropdown.
-Once the table is defined you can use the UI controls to filter the data, select the values to present and define the grouping of those values.
+### Query builder/editor mode
 
-Filter - You can add 1 or more filters by clicking the plus sign to the right of the “Where (filter)” control. When adding a filter, you first need to select the filter column from the auto populated list of columns in the selected table. For each filter you can define the value or values to filter by using the applicable operator. The filter value control is auto populated by sampling the values in the selected filter column.
+\\Use the query builder/editor mode to define your query settings.
 
-Value selection - The value control is used for selecting the value columns that will be displayed in the panel.
-For each value column the aggregation type needs to be set to show the needed data. One or more value columns can be set.
-This is equivalent to using the summarize operator in KQL.
+1. Select the table in the **From** drop-down.
+ 
+image?
 
-Value grouping - The “Group by” control allows the user to select one or more columns that will be used to arrange the values into the respective groups.
-This is equivalent to the group expression in the summarize operator.
+1. Once the table is defined, use the \\UI controls\\ to filter the data, select the values to present, and define the grouping of those values.
 
-To execute the query, select "Run query".
-Please note, that while building the panel with the query editor a KQL query is being constructed on the bottom of the page.
-The purpose of the query is to show the exact representation of the logic the user constructs with the graphical query editor.
-In addition, the user can take the constructed query and further enhance it by clicking the “Edit KQL” button to the left of “Run Query” button.
-By clicking the “Edit KQL” the user will move to the “Raw mode”	and will be able to use the flexibility and power of KQL to finetune his query.
+    **Filter**
+    1. Click \\the plus sign\\ to the right of the **Where (filter)** control to add 1 or more filters. 
+    1. Select the filter column from the auto populated list of columns in your table. For each filter, define the value(s) by using the applicable operator. The filter value control is auto populated by sampling the values in the selected filter column. \\I added\\ This is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto query language.
 
+    **Value selection** 
+    1. Use the **value control** to select the value columns that will be displayed in the panel.
+    1. For each value column, set the aggregation type to show the needed data. One or more value columns can be set. This is equivalent to using the [summarize operator](kusto/query/summarizeoperator.md) in Kusto query language.
 
-Raw mode
+    **Value grouping** 
+    Use the **Group by** control to select one or more columns that will be used to arrange the values into the groups. This is equivalent to the group expression in the summarize operator.
+
+1. To execute the query, select **Run query**.
+
+> [!TIP]
+> While finalizing the settings in the query editor, a Kusto query language query is created at the bottom of the page. This query shows the logic you construct with the graphical query editor. Move to raw mode to edit your query.
+
+### Raw mode
+
+1. Select **Edit KQL** to move to raw mode and edit your query using the flexibility and power of the Kusto query language.
+
 1. In the query pane, copy in the following query then select **Run**. The query buckets the count of events by day for the sample data set.
 
     ```kusto
@@ -126,7 +135,8 @@ Raw mode
     Now the graph shows the data from 2007, bucketed by day.
 
     ![Finished graph](media/grafana/finished-graph.png)
- 1. To switch to Query builder mode, the user can select "Switch to builder" and you'll be prompted a message that Grafana will convert the query to the available logic in the Query editor which is more limited and you might los some of your work as a result.
+
+1. To switch to the query builder mode, select **Switch to builder**. Grafana will convert the query to the available logic in the Query editor. The query editor logic is limited and therefore you may lose some of your work. \\move after save\\
 
 1. On the top menu, select the save icon: ![Save icon](media/grafana/save-icon.png).
 
