@@ -44,7 +44,7 @@ The function `quantize_udf()` quantizes metric columns to categorical labels, ba
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let qunatize_ext=(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic=dynamic(null))
+let qunatize_udf=(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic=dynamic(null))
 {
     let kwargs = pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
     let code =
@@ -77,8 +77,8 @@ union
 (range x from 10 to 15 step 1),
 (range x from 20 to 25 step 1)
 | extend x_label='', x_bin=''
-| invoke qunatize_ext(3, pack_array('x'), pack_array('x_label'), pack_array('Low', 'Med', 'High'))
-| invoke qunatize_ext(3, pack_array('x'), pack_array('x_bin'), dynamic(null))
+| invoke qunatize_udf(3, pack_array('x'), pack_array('x_label'), pack_array('Low', 'Med', 'High'))
+| invoke qunatize_udf(3, pack_array('x'), pack_array('x_bin'), dynamic(null))
 ```
 
 # [Persistent usage](#tab/persistent)
@@ -87,7 +87,7 @@ union
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create function with (folder = "Packages\\ML", docstring = "Binning metric columns")
-qunatize_ext(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic)
+qunatize_udf(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic)
 {
     let kwargs = pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
     let code =
@@ -124,8 +124,8 @@ union
 (range x from 10 to 15 step 1),
 (range x from 20 to 25 step 1)
 | extend x_label='', x_bin=''
-| invoke qunatize_ext(3, pack_array('x'), pack_array('x_label'), pack_array('Low', 'Med', 'High'))
-| invoke qunatize_ext(3, pack_array('x'), pack_array('x_bin'), dynamic(null))
+| invoke qunatize_udf(3, pack_array('x'), pack_array('x_label'), pack_array('Low', 'Med', 'High'))
+| invoke qunatize_udf(3, pack_array('x'), pack_array('x_bin'), dynamic(null))
 ```
 
 ---

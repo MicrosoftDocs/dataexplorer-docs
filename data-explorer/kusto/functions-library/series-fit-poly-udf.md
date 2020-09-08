@@ -151,7 +151,7 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-fit-poly-udf/usage-example.png" alt-text="Graph with fit 5th order polynomial to a regular (evenly spaced) time series, created with make-series" border="false":::
+:::image type="content" source="images/series-fit-poly-udf/usage-example.png" alt-text="Graph showing 5th order polynomial fit to a regular time series" border="false":::
 
 ## Additional examples
 
