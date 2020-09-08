@@ -6,11 +6,11 @@ ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/24/2020
+ms.date: 09/08/2020
 ---
 # Functions library
 
-The following article contains lists of user defined functions by category.
+The following article contains a categorized list of user defined functions.
 
 ## Series processing functions
 
