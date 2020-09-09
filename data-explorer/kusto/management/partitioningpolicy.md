@@ -35,7 +35,6 @@ The following kinds of partition keys are supported.
 > * The majority of queries aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher) such as an `application_ID`, a `tenant_ID`, or a `user_ID`.
 
 * A hash-modulo function is used to partition the data.
-* All homogeneous (partitioned) extents that belong to the same partition are assigned to the same data node.
 * Data in homogeneous (partitioned) extents is ordered by the hash partition key.
   * You don't need to include the hash partition key in the [row order policy](roworderpolicy.md), if one is defined on the table.
 * Queries that use the [shuffle strategy](../query/shufflequery.md), and in which the `shuffle key` used in `join`, `summarize` or `make-series` is the table's hash partition key, are expected to perform better, because the amount of data required to move across cluster nodes is significantly reduced.
@@ -57,7 +56,9 @@ The following kinds of partition keys are supported.
   * The value should be a positive integer.
   * The recommended value is `1`, which is the default, if unspecified.
 * `PartitionAssignmentMode` is the mode used for assigning partitions to nodes in the cluster.
-  * Supported values: `Default`, `Uniform`.
+  * Supported modes:
+    * `Default`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node.
+    * `Uniform`: An extents' partition values are disregarded, and extents are assigned uniformly to the cluster's nodes.
   * If queries don't join or aggregate on the hash partition key - use `Uniform`. Otherwise, use `Default`.
 
 #### Example
