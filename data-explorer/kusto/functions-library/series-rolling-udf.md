@@ -39,7 +39,8 @@ The function `series_rolling_udf()` applies rolling aggregation on a series. It 
 This function supports any aggregation function from [numpy](https://numpy.org/) or [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats) that calculates a scalar out of a series. The following list is not exhaustive:
 
 * [`sum`](https://numpy.org/doc/stable/reference/generated/numpy.sum.html#numpy.sum) 
-* [`mean`](https://numpy.org/doc/stable/reference/generated/numpy.mean.html?highlight=mean#numpy.mean), [`min`](https://numpy.org/doc/stable/reference/generated/numpy.amin.html#numpy.amin)
+* [`mean`](https://numpy.org/doc/stable/reference/generated/numpy.mean.html?highlight=mean#numpy.mean)
+* [`min`](https://numpy.org/doc/stable/reference/generated/numpy.amin.html#numpy.amin)
 * [`max`](https://numpy.org/doc/stable/reference/generated/numpy.amax.html)
 * [`ptp (max-min)`](https://numpy.org/doc/stable/reference/generated/numpy.ptp.html)
 * [`percentile`](https://numpy.org/doc/stable/reference/generated/numpy.percentile.html)
@@ -51,17 +52,21 @@ This function supports any aggregation function from [numpy](https://numpy.org/)
 * [`mode` (most common value)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html)
 * [`moment` (n<sup>th</sup> moment)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.moment.html)
 * [`tmean` (trimmed mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmean.html)
-* [`tmin`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmin.html), [`tmax`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmax.html)
-* [tstd](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tstd.html)
+* [`tmin`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmin.html) 
+* [`tmax`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmax.html)
+* [`tstd`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tstd.html)
 * [`iqr` (inter quantile range)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.iqr.html) 
 
 ## Usage
 
 * `series_rolling_udf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
     * For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
-    * For recurring usage, persist the function using [.create function](../management/create-function.md). <br>
+    * For persistent usage, persist the function using [.create function](../management/create-function.md). <br>
         Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 * `series_rolling_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
+
+> [!NOTE]
+> There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
 # [Ad hoc usage](#tab/adhoc)
 
@@ -103,7 +108,8 @@ demo_make_series1
 
 # [Persistent usage](#tab/persistent)
 
-* **One-time installation**
+### One-time installation
+
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Rolling window functions on a series")
@@ -132,7 +138,8 @@ series_rolling_udf(tbl:(*), y_series:string, y_rolling_series:string, n:int, agg
 }
 ```
 
-* **Usage**
+### Usage
+
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 //
@@ -153,33 +160,38 @@ demo_make_series1
 
 The following examples assume the function is already installed:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
-//
-//  Calculate rolling min, max & 75th percentile of 15 elements
-//
-demo_make_series1
-| make-series num=count() on TimeStamp step 1h by OsVer
-| extend rolling_min = dynamic(null), rolling_max = dynamic(null), rolling_pct = dynamic(null)
-| invoke series_rolling_udf('num', 'rolling_min', 15, 'min', dynamic([null]))
-| invoke series_rolling_udf('num', 'rolling_max', 15, 'max', dynamic([null]))
-| invoke series_rolling_udf('num', 'rolling_pct', 15, 'percentile', dynamic([75]))
-| render timechart
-```
+1. Calculate rolling min, max & 75th percentile of 15 elements
+    
+    <!-- csl: https://help.kusto.windows.net:443/Samples -->
+    ```kusto
+    //
+    //  Calculate rolling min, max & 75th percentile of 15 elements
+    //
+    demo_make_series1
+    | make-series num=count() on TimeStamp step 1h by OsVer
+    | extend rolling_min = dynamic(null), rolling_max = dynamic(null), rolling_pct = dynamic(null)
+    | invoke series_rolling_udf('num', 'rolling_min', 15, 'min', dynamic([null]))
+    | invoke series_rolling_udf('num', 'rolling_max', 15, 'max', dynamic([null]))
+    | invoke series_rolling_udf('num', 'rolling_pct', 15, 'percentile', dynamic([75]))
+    | render timechart
+    ```
+    
+    :::image type="content" source="images/series-rolling-udf/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements" border="false":::
 
-:::image type="content" source="images/series-rolling-udf/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements" border="false":::
-
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
-//
-//  Calculate rolling trimmed mean
-//
-range x from 1 to 100 step 1
-| extend y=iff(x % 13 == 0, 2.0, iff(x % 23 == 0, -2.0, rand()))
-| summarize x=make_list(x), y=make_list(y)
-| extend yr = dynamic(null)
-| invoke series_rolling_udf('y', 'yr', 7, 'tmean', pack_array(pack_array(-2, 2), pack_array(false, false))) //  trimmed mean: ignoring values outside [-2,2] inclusive
-| render linechart
-```
-
-:::image type="content" source="images/series-rolling-udf/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean" border="false":::
+1. Calculate rolling trimmed mean
+        
+    <!-- csl: https://help.kusto.windows.net:443/Samples -->
+    ```kusto
+    //
+    //  Calculate rolling trimmed mean
+    //
+    range x from 1 to 100 step 1
+    | extend y=iff(x % 13 == 0, 2.0, iff(x % 23 == 0, -2.0, rand()))
+    | summarize x=make_list(x), y=make_list(y)
+    | extend yr = dynamic(null)
+    | invoke series_rolling_udf('y', 'yr', 7, 'tmean', pack_array(pack_array(-2, 2), pack_array(false, false))) //  trimmed mean: ignoring values outside [-2,2] inclusive
+    | render linechart
+    ```
+    
+    :::image type="content" source="images/series-rolling-udf/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean" border="false":::
+    
