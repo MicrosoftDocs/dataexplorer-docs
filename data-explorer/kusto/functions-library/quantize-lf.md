@@ -30,14 +30,14 @@ The function `quantize_lf()` bins metric columns. It quantizes metric columns to
 
 ## Usage
 
-> [!NOTE]
-> There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
-
-# [Ad hoc usage](#tab/adhoc)
-
 * `quantize_lf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
-    * For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 * `quantize_lf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
+
+There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+
+# [Ad hoc](#tab/adhoc)
+
+For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -78,12 +78,9 @@ union
 | invoke quantize_lf(3, pack_array('x'), pack_array('x_bin'), dynamic(null))
 ```
 
-# [Persistent usage](#tab/persistent)
+# [Persistent](#tab/persistent)
 
-* `quantize_lf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
-    * For persistent usage, use [.create function](../management/create-function.md). <br>
-        Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
-* `quantize_lf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
+For persistent usage, use [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 

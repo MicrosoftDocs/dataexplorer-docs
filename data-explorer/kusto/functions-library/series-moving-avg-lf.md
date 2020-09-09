@@ -32,14 +32,13 @@ The function `series_moving_avg_lf()` takes an expression containing a dynamic n
 
 ## Usage
 
+* `series_moving_avg_lf()` is a user-defined function. You can either embed its code in your query, or install it in your database.
 
-> [!NOTE]
-> There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
-# [Ad hoc usage](#tab/adhoc)
+# [Ad hoc](#tab/adhoc)
 
-* `series_moving_avg_lf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
-    * For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
+For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -57,11 +56,9 @@ demo_make_series1
 | render timechart 
 ```
 
-# [Persistent usage](#tab/persistent)
+# [Persistent](#tab/persistent)
 
-* `series_moving_avg_lf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
-    * For persistent usage, use [.create function](../management/create-function.md). <br>
-        Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+For persistent usage, use [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
