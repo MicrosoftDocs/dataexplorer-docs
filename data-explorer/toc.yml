@@ -1682,6 +1682,10 @@
     items:
     - name: List of functions
       href: kusto/functions-library/functions-library.md
+    - name: predict_lf()
+      href: kusto/functions-library/predict-lf.md
+    - name: predict_onnx_lf()
+      href: kusto/functions-library/predict-onnx-lf.md
     - name: quantize_udf()
       href: kusto/functions-library/quantize-udf.md
     - name: series_fit_poly_udf()
