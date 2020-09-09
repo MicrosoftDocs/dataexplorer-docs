@@ -30,16 +30,14 @@ The function `quantize_udf()` bins metric columns. It quantizes metric columns t
 
 ## Usage
 
-* `quantize_udf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
-    * For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
-    * For persistent usage, persist it using [.create function](../management/create-function.md). <br>
-        Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
-* `quantize_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
-
 > [!NOTE]
 > There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
 # [Ad hoc usage](#tab/adhoc)
+
+* `quantize_udf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
+    * For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
+* `quantize_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -81,6 +79,11 @@ union
 ```
 
 # [Persistent usage](#tab/persistent)
+
+* `quantize_udf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
+    * For persistent usage, persist it using [.create function](../management/create-function.md). <br>
+        Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+* `quantize_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
 
 ### One-time installation
 
