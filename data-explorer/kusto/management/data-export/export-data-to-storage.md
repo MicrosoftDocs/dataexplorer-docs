@@ -111,12 +111,13 @@ Column name labels are added as the first row for each blob.
 
 #### Known issues
 
-*Storage errors during export command*
+**Failures during export command**
 
-By default, the export command is distributed such that all [extents](../extents-overview.md) that contain data to export 
+* The export command can transiently fail during execution. When the export command fails, artifacts that were already written to storage are not deleted. These artifacts will remain in storage. If the command fails, assume the export is incomplete, even if some artifacts were written. The best way to track both completion of the command and the artifacts exported upon successful completion is by using the [.show operations](../operations.md#show-operations) and [.show operation details](../operations.md#show-operation-details) commands.
+
+* By default, the export command is distributed such that all [extents](../extents-overview.md) that contain data to export 
 write to storage concurrently. On large exports, when the number of such extents is high, this may lead to high load on 
 storage that results in storage throttling, or transient storage errors. In such cases, it is recommended to try increasing
 the number of storage accounts provided to the export command (the load will be distributed between the accounts) and/or to 
 reduce the concurrency by setting the distribution hint to `per_node` (see command properties). Entirely disabling distribution
  is also possible, but this may significantly impact the command performance.
- 
