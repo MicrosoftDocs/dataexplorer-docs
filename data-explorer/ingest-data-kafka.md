@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 06/03/2019
+ms.date: 09/10/2020
  
 #Customer intent: As an integration developer, I want to build integration pipelines from Kafka into Azure Data Explorer, so I can make data available for near real time analytics.
 ---
@@ -17,8 +17,7 @@ Apache Kafka is a distributed streaming platform for building real-time streamin
 
 The following tutorial demonstrates Kafka ingestion into Azure Data Explorer, through a self-contained Dockerized setup, abstracting out complexities of Kafka cluster and Kafka connector cluster setup, and producing to Kafka.  At the end of this tutorial, you can find links to additional resources, and tutorials that detail Kafka ingestion from HDInsight Kafka (with Enterprise Security Package and without), Confluent Cloud, and Confluent Kafka IaaS with Confluent operator.
 
-
-## 1. Prerequisites
+## Prerequisites
 
 - You will need a [Microsoft Azure account](https://docs.microsoft.com/azure/)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) on your machine, if you don't have it already
