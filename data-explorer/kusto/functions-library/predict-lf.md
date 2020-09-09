@@ -28,7 +28,7 @@ The function `predict_lf()` predicts using an existing trained machine learning 
     * *model*: string representation of the serialized model
 * *model_name*: The name of the specific model to use.
 * *features_cols*: Dynamic array containing the names of the features columns that are used by the model for prediction.
-* *pred_col*: The name of the column to store the predictions.
+* *pred_col*: The name of the column that stores the predictions.
 
 ## Usage
 

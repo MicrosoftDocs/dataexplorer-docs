@@ -22,13 +22,13 @@ The function `predict_onnx_lf()` predicts using an existing trained machine lear
 
 ## Arguments
 
-* *models_tbl*: The name of the table containing all serialized models. This table must contain these columns:
+* *models_tbl*: The name of the table containing all serialized models. This table must contain the following columns:
     * *name*: the model name
     * *timestamp*: time of model training
     * *model*: string representation of the serialized model
 * *model_name*: The name of the specific model to use.
 * *features_cols*: Dynamic array containing the names of the features columns that are used by the model for prediction.
-* *pred_col*: The name of the column to store the predictions.
+* *pred_col*: The name of the column that stores the predictions.
 
 ## Usage
 
