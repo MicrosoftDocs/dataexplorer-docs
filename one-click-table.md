@@ -40,7 +40,6 @@ Overview- why do you need to create a table, what you are going to do here, what
 1. 
     :::image type="content" source="data-explorer/media/one-click-table/table-completed.png" alt-text="Table creation completed in create a table in one click experience - Azure Data Explorer":::
 
-
 ## Next steps
 
 * [Data ingestion overview](data-explorer/ingest-data-overview.md)
