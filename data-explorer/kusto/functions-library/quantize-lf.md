@@ -1,6 +1,6 @@
 ---
-title: quantize_udf() - Azure Data Explorer
-description: This article describes the quantize_udf() user-defined function in Azure Data Explorer.
+title: quantize_lf() - Azure Data Explorer
+description: This article describes the quantize_lf() user-defined function in Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
@@ -8,18 +8,17 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/08/2020
 ---
-# quantize_udf()
+# quantize_lf()
 
 
-The function `quantize_udf()` bins metric columns. It quantizes metric columns to categorical labels, based on the K-Means algorithm.
+The function `quantize_lf()` bins metric columns. It quantizes metric columns to categorical labels, based on the K-Means algorithm.
 
 > [!NOTE]
->* This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
->* This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+> `quantize_lf()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
 
 ## Syntax
 
-`T | invoke quantize_udf(`*num_bins*`,` *in_cols*`,` *out_cols*`,` *labels*`)`
+`T | invoke quantize_lf(`*num_bins*`,` *in_cols*`,` *out_cols*`,` *labels*`)`
 
 ## Arguments
 
@@ -30,17 +29,15 @@ The function `quantize_udf()` bins metric columns. It quantizes metric columns t
 
 ## Usage
 
-* `quantize_udf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
-    * For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
-    * For recurring usage, persist it using [.create function](../management/create-function.md). <br>
-        Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
-* `quantize_udf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md)
+`quantize_lf()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
-# [Ad hoc usage](#tab/adhoc)
+# [Ad hoc](#tab/adhoc)
+
+For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let qunatize_udf=(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic=dynamic(null))
+let quantize_udf=(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic=dynamic(null))
 {
     let kwargs = pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
     let code =
@@ -73,17 +70,20 @@ union
 (range x from 10 to 15 step 1),
 (range x from 20 to 25 step 1)
 | extend x_label='', x_bin=''
-| invoke qunatize_udf(3, pack_array('x'), pack_array('x_label'), pack_array('Low', 'Med', 'High'))
-| invoke qunatize_udf(3, pack_array('x'), pack_array('x_bin'), dynamic(null))
+| invoke quantize_lf(3, pack_array('x'), pack_array('x_label'), pack_array('Low', 'Med', 'High'))
+| invoke quantize_lf(3, pack_array('x'), pack_array('x_bin'), dynamic(null))
 ```
 
-# [Persistent usage](#tab/persistent)
+# [Persistent](#tab/persistent)
 
-* **One-time installation**
+For persistent usage, use [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+
+### One-time installation
+
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create function with (folder = "Packages\\ML", docstring = "Binning metric columns")
-qunatize_udf(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic)
+quantize_lf(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic)
 {
     let kwargs = pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
     let code =
@@ -112,7 +112,8 @@ qunatize_udf(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dy
 }
 ```
 
-* **Usage**
+### Usage
+
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 union 
@@ -120,8 +121,8 @@ union
 (range x from 10 to 15 step 1),
 (range x from 20 to 25 step 1)
 | extend x_label='', x_bin=''
-| invoke qunatize_udf(3, pack_array('x'), pack_array('x_label'), pack_array('Low', 'Med', 'High'))
-| invoke qunatize_udf(3, pack_array('x'), pack_array('x_bin'), dynamic(null))
+| invoke quantize_lf(3, pack_array('x'), pack_array('x_label'), pack_array('Low', 'Med', 'High'))
+| invoke quantize_lf(3, pack_array('x'), pack_array('x_bin'), dynamic(null))
 ```
 
 ---
