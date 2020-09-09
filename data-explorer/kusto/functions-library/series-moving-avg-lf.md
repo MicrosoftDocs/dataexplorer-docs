@@ -15,7 +15,7 @@ Applies a moving average filter on a series.
 The function `series_moving_avg_lf()` takes an expression containing a dynamic numerical array as input and applies a [simple moving average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) filter.
 
 > [!NOTE]
-> This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).For more information, see [usage](#usage).
+> This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 
 ## Syntax
 
@@ -32,9 +32,7 @@ The function `series_moving_avg_lf()` takes an expression containing a dynamic n
 
 ## Usage
 
-* `series_moving_avg_lf()` is a user-defined function. You can either embed its code in your query, or install it in your database.
-
-There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`series_moving_avg_lf()` is a user-defined function. You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
 # [Ad hoc](#tab/adhoc)
 

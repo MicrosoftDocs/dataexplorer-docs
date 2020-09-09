@@ -14,9 +14,7 @@ ms.date: 09/08/2020
 The function `series_rolling_lf()` applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
 > [!NOTE]
-> series_rolling_lf():
->* Contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
->* Is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+> `series_rolling_lf()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).  This function ontains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
 
 ## Syntax
 
@@ -59,10 +57,7 @@ This function supports any aggregation function from [numpy](https://numpy.org/)
 
 ## Usage
 
-* `series_rolling_lf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
-* `series_rolling_lf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md).
-
-There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`series_rolling_lf()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
 # [Ad hoc](#tab/adhoc)
 
