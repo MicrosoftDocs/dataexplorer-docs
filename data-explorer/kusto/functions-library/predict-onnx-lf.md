@@ -10,7 +10,7 @@ ms.date: 09/09/2020
 ---
 # predict_onnx_lf()
 
-The function `predict_onnx_lf()` predicts using an existing trained machine learning model. This model was converted to [ONNX](https://onnx.ai/) format, serialized to string, and saved in a standard Azure Data Explorer table.
+The function `predict_onnx_lf()` predicts using an existing trained machine learning model. This model has been converted to [ONNX](https://onnx.ai/) format, serialized to string, and saved in a standard Azure Data Explorer table.
 
 > [!NOTE]
 > * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
