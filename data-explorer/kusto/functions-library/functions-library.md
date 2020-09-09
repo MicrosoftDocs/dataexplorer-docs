@@ -23,7 +23,7 @@ The following article contains a categorized list of user-defined functions.
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[quantize_udf()](quantize-udf.md)|Quantize metric columns. |
-|[series_fit_poly_udf()](series-fit-poly-udf.md)|Fit a polynomial to series using regression analysis. |
-|[series_moving_avg_udf()](series-moving-avg-udf.md)|Apply a moving average filter on a series. |
-|[series_rolling_udf()](series-rolling-udf.md)|Apply a rolling aggregation function on a series. |
+|[quantize_lf()](quantize-lf.md)|Quantize metric columns. |
+|[series_fit_poly_lf()](series-fit-poly-lf.md)|Fit a polynomial to series using regression analysis. |
+|[series_moving_avg_lf()](series-moving-avg-lf.md)|Applies a moving average filter on a series. |
+|[series_rolling_lf()](series-rolling-lf.md)|Applies a rolling aggregation function on a series. |
