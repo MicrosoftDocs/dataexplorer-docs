@@ -113,13 +113,7 @@ Column name labels are added as the first row for each blob.
 
 **Failures during export command**
 
-* The export command can transiently fail during execution.
-When it fails, artifacts that were already written to storage
-are not deleted, and will remain in storage. Therefore, if
-the command fails, you should always assume the export is
-incomplete, even if some artifacts were written. The best way
-to track completion of the command, and the artifacts exported
-upon successful completion is by using the [.show operations](../operations.md#show-operations) and [.show operation details](../operations.md#show-operation-details) commands.
+* The export command can transiently fail during execution. When the export command fails, artifacts that were already written to storage are not deleted. These artifacts will remain in storage. If the command fails, assume the export is incomplete, even if some artifacts were written. The best way to track both completion of the command and the artifacts exported upon successful completion is by using the [.show operations](../operations.md#show-operations) and [.show operation details](../operations.md#show-operation-details) commands.
 
 * By default, the export command is distributed such that all [extents](../extents-overview.md) that contain data to export 
 write to storage concurrently. On large exports, when the number of such extents is high, this may lead to high load on 
