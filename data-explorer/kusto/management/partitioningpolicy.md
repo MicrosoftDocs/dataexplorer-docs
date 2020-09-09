@@ -13,7 +13,7 @@ ms.date: 06/10/2020
 
 The partitioning policy defines if and how [Extents (data shards)](../management/extents-overview.md) should be partitioned, for a specific table.
 
-The main purpose of the policy is to improve performance of queries that are known to narrow the data set of values in the partitioned columns, or aggregate/join on a high cardinality string column. The policy may also result in better compression of the data.
+The main purpose of the policy is to improve performance of queries that are known to narrow the data set by filtering on the partitioned columns, or aggregate/join on a high cardinality string column. The policy may also result in better compression of the data.
 
 > [!CAUTION]
 > There are no hard-coded limits set on the number of tables that can have the policy defined on them. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. It may result in more cluster resources being used. For more information, see [Monitoring](#monitoring) and [Capacity](#capacity).
@@ -35,7 +35,6 @@ The following kinds of partition keys are supported.
 > * The majority of queries aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher) such as an `application_ID`, a `tenant_ID`, or a `user_ID`.
 
 * A hash-modulo function is used to partition the data.
-* All homogeneous (partitioned) extents that belong to the same partition are assigned to the same data node.
 * Data in homogeneous (partitioned) extents is ordered by the hash partition key.
   * You don't need to include the hash partition key in the [row order policy](roworderpolicy.md), if one is defined on the table.
 * Queries that use the [shuffle strategy](../query/shufflequery.md), and in which the `shuffle key` used in `join`, `summarize` or `make-series` is the table's hash partition key, are expected to perform better, because the amount of data required to move across cluster nodes is significantly reduced.
@@ -56,6 +55,11 @@ The following kinds of partition keys are supported.
 * `Seed` is the value to use for randomizing the hash value.
   * The value should be a positive integer.
   * The recommended value is `1`, which is the default, if unspecified.
+* `PartitionAssignmentMode` is the mode used for assigning partitions to nodes in the cluster.
+  * Supported modes:
+    * `Default`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node.
+    * `Uniform`: An extents' partition values are disregarded, and extents are assigned uniformly to the cluster's nodes.
+  * If queries don't join or aggregate on the hash partition key - use `Uniform`. Otherwise, use `Default`.
 
 #### Example
 
@@ -69,7 +73,8 @@ It uses the `XxHash64` hash function, with a `MaxPartitionCount` of `256`, and t
   "Properties": {
     "Function": "XxHash64",
     "MaxPartitionCount": 256,
-    "Seed": 1
+    "Seed": 1,
+    "PartitionAssignmentMode": "Default"
   }
 }
 ```
@@ -148,7 +153,8 @@ Data partitioning policy object with two partition keys.
       "Properties": {
         "Function": "XxHash64",
         "MaxPartitionCount": 256,
-        "Seed": 1
+        "Seed": 1,
+        "PartitionAssignmentMode": "Default"
       }
     },
     {
