@@ -41,13 +41,6 @@ Overview- why do you need to create a table, what you are going to do here, what
     :::image type="content" source="data-explorer/media/one-click-table/table-completed.png" alt-text="Table creation completed in create a table in one click experience - Azure Data Explorer":::
 
 
-If you click on database, you have option to create table
-Looks like before, except table name is input field and not dropdown
-Source type- select
-On next table you have option to create mapping or not
-If not, Next you have quick queries/tools
-If yes mapping, shows table created mapping created – options to open command just like ingestions
-
 ## Next steps
 
 * [Data ingestion overview](data-explorer/ingest-data-overview.md)
