@@ -23,22 +23,22 @@ Overview- why do you need to create a table, what you are going to do here, what
 
 1. In the left menu of the Web UI, right-click a *database* or *table* and select **Create table**.
 
-    :::image type="content" source="/media/one-click-table/create-table.png" alt-text="Create a table in the Azure Data Explorer Web UI":::
+    :::image type="content" source="./media/one-click-table/create-table.png" alt-text="Create a table in the Azure Data Explorer Web UI":::
 
 1. In the **Create table** window, the **Source** tab is selected.
 
 1. In **Table name**, enter a name for your table. 
 1. Select **Ingestion type** from the dropdown menu. Choose from 
-    :::image type="content" source="/media/one-click-table/source-tab.png" alt-text="Source of data for create table in one-click in Azure Data Explorer":::
+    :::image type="content" source="./media/one-click-table/source-tab.png" alt-text="Source of data for create table in one-click in Azure Data Explorer":::
 
-    :::image type="content" source="/media/one-click-table/data-from-file.png" alt-text="Create a table based on data from a local file ":::
+    :::image type="content" source="./media/one-click-table/data-from-file.png" alt-text="Create a table based on data from a local file ":::
 
 1. Select **Edit Schema** to continue to the **Schema** tab.
 
-    :::image type="content" source="/media/one-click-table/schema-tab.png" alt-text="Edit schema tab in create table in one-click experience in Azure Data Explorer":::
+    :::image type="content" source="./media/one-click-table/schema-tab.png" alt-text="Edit schema tab in create table in one-click experience in Azure Data Explorer":::
 
 1. 
-    :::image type="content" source="/media/one-click-table/table-completed.png" alt-text="Table creation completed in create a table in one click experience - Azure Data Explorer":::
+    :::image type="content" source="./media/one-click-table/table-completed.png" alt-text="Table creation completed in create a table in one click experience - Azure Data Explorer":::
 
 ## Next steps
 
