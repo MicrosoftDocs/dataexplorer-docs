@@ -23,7 +23,7 @@ Overview- why do you need to create a table, what you are going to do here, what
 
 1. In the left menu of the Web UI, right-click a *database* or *table* and select **Create table**.
 
-    :::image type="content" source="data-explorer/media/one-click-table/create-table.png" alt-text="Create a table in the Azure Data Explorer Web UI":::
+    :::image type="content" source="/media/one-click-table/create-table.png" alt-text="Create a table in the Azure Data Explorer Web UI":::
 
 1. In the **Create table** window, the **Source** tab is selected.
 
@@ -42,6 +42,6 @@ Overview- why do you need to create a table, what you are going to do here, what
 
 ## Next steps
 
-* [Data ingestion overview](data-explorer/ingest-data-overview.md)
-* [One-click ingestion](data-explorer/ingest-data-one-click.md)
+* [Data ingestion overview](ingest-data-overview.md)
+* [One-click ingestion](ingest-data-one-click.md)
 *  
