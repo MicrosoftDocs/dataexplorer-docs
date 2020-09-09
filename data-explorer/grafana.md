@@ -25,7 +25,7 @@ You need the following to complete this article:
 
 * [Grafana version 5.3.0 or later](https://docs.grafana.org/installation/) for your operating system
 
-* The [Azure Data Explorer plugin](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) for Grafana. Plugin version 3.0.5 or later is required to use Grafana query editor.
+* The [Azure Data Explorer plugin](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) for Grafana. Plugin version 3.0.5 or later is required to use Grafana query builder.
 
 * A cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
 
@@ -65,7 +65,7 @@ With the service principal assigned to the *viewers* role, you now specify prope
 
 ## Visualize data
 
-Now you've finished configuring Azure Data Explorer as a data source for Grafana, it's time to visualize data. We'll show a basic example using both the query editor mode and the raw mode. We recommend looking at [Write queries for Azure Data Explorer](write-queries.md) for examples of other queries to run against the sample data set.
+Now you've finished configuring Azure Data Explorer as a data source for Grafana, it's time to visualize data. We'll show a basic example using both the query builder mode and the raw mode of the query editor. We recommend looking at [Write queries for Azure Data Explorer](write-queries.md) for examples of other queries to run against the sample data set.
 
 1. In Grafana, on the left menu, select the plus icon then **Dashboard**.
 
@@ -83,33 +83,36 @@ Now you've finished configuring Azure Data Explorer as a data source for Grafana
 
     ![Select data source](media/grafana/select-data-source.png)
 
-1. Below the data source select the database for the panel.
+### Query builder mode
 
-### Query builder/editor mode
+The query editor has two modes. The query builder mode and raw mode. Use the query builder mode to define your query.
 
-\\Use the query builder/editor mode to define your query settings.
+1. Below the data source, select **Database** and choose your database from the drop-down. 
+1. Select **From** and choose your table from the drop-down.
 
-1. Select the table in the **From** drop-down.
- 
-image?
+    :::image type="content" source="media/grafana/query-builder-from-table.PNG" alt-text="Select table in query builder":::    
 
-1. Once the table is defined, use the \\UI controls\\ to filter the data, select the values to present, and define the grouping of those values.
+1. Once the table is defined, filter the data, select the values to present, and define the grouping of those values.
 
     **Filter**
-    1. Click \\the plus sign\\ to the right of the **Where (filter)** control to add 1 or more filters. 
-    1. Select the filter column from the auto populated list of columns in your table. For each filter, define the value(s) by using the applicable operator. The filter value control is auto populated by sampling the values in the selected filter column. \\I added\\ This is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto query language.
+    1. Click **+** to right of **Where (filter)** to select from the drop-down 1 or more filters. 
+    1. Select the desired column name from the auto populated list of columns in your table. For each filter, select define the value(s) by using the applicable operator. The filter value control is auto populated by sampling the values in the selected filter column. This is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto query language.
 
     **Value selection** 
-    1. Use the **value control** to select the value columns that will be displayed in the panel.
-    1. For each value column, set the aggregation type to show the needed data. One or more value columns can be set. This is equivalent to using the [summarize operator](kusto/query/summarizeoperator.md) in Kusto query language.
+    1. Click **+** to right of **value columns** to select from the drop-down the value columns that will be displayed in the panel.
+    1. For each value column, set the aggregation type from the drop-down to show the needed data. One or more value columns can be set. This is equivalent to using the [summarize operator](kusto/query/summarizeoperator.md) in Kusto query language.
 
     **Value grouping** 
-    Use the **Group by** control to select one or more columns that will be used to arrange the values into the groups. This is equivalent to the group expression in the summarize operator.
+    1. Click **+** to right of **Group by (summarize)** to select from the drop-down one or more columns that will be used to arrange the values into the groups. This is equivalent to the group expression in the summarize operator.
+    1. 
 
 1. To execute the query, select **Run query**.
 
+ 
+
+
 > [!TIP]
-> While finalizing the settings in the query editor, a Kusto query language query is created at the bottom of the page. This query shows the logic you construct with the graphical query editor. Move to raw mode to edit your query.
+> While finalizing the settings in the query builder, a Kusto query language query is created at the bottom of the page. This query shows the logic you constructed with the graphical query editor. Move to raw mode to edit your query.
 
 ### Raw mode
 
@@ -136,9 +139,10 @@ image?
 
     ![Finished graph](media/grafana/finished-graph.png)
 
-1. To switch to the query builder mode, select **Switch to builder**. Grafana will convert the query to the available logic in the Query editor. The query editor logic is limited and therefore you may lose some of your work. \\move after save\\
-
 1. On the top menu, select the save icon: ![Save icon](media/grafana/save-icon.png).
+
+> [!IMPORTANT]
+> To switch to the query builder mode, select **Switch to builder**. Grafana will convert the query to the available logic in the Query builder. The query builder logic is limited and therefore you may lose manual changes done to the query.
 
 ## Create Alerts
 
