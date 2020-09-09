@@ -12,13 +12,9 @@ ms.date: 08/30/2020
 
 # Materialized view principals
 
-A materialized view can be created by a [Database Admin](../access-control/role-based-authorization.md).
-The creator of the materialized view automatically receives admin rights on the view.
-Additional admins can be added afterwards, using the commands below. Any change to the view post creation,
-requires database admin permissions, or admin rights on the materialized view.
+A materialized view can be created by a [Database Admin](../access-control/role-based-authorization.md). The creator of the materialized view automatically receives admin permissions on the view. Additional admins can be added afterwards, using the commands below. Any change to the view post creation requires database admin permissions, or admin permissions on the materialized view. Permissions for materialized views behave similarly to those of tables.
 
-* See [Security roles management](../security-roles.md) for further details (materialized
-views behave similarly to tables in this respect).
+For more information, see [Security roles management](../security-roles.md).
 
 ## Syntax
 
