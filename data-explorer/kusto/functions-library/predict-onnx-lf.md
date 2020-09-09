@@ -10,12 +10,11 @@ ms.date: 09/09/2020
 ---
 # predict_onnx_lf()
 
-
-The function `predict_onnx_lf()` predicts (a.k.a. scores) using an existing trained ML model that was converted to [ONNX](https://onnx.ai/) format, serialized to string and saved in a standard ADX table.
+The function `predict_onnx_lf()` predicts using an existing trained machine learning model. This model was converted to [ONNX](https://onnx.ai/) format, serialized to string, and saved in a standard Azure Data Explorer table.
 
 > [!NOTE]
->* This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
->* This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
+> * This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 
 ## Syntax
 
@@ -24,22 +23,23 @@ The function `predict_onnx_lf()` predicts (a.k.a. scores) using an existing trai
 ## Arguments
 
 * *models_tbl*: The name of the table containing all serialized models. This table must contain these columns:
-    - *name*: the model name
-    - *timestamp*: time of model training
-    - *model*: string representation of the serialized model
+    * *name*: the model name
+    * *timestamp*: time of model training
+    * *model*: string representation of the serialized model
 * *model_name*: The name of the specific model to use.
 * *features_cols*: Dynamic array containing the names of the features columns that are used by the model for prediction.
 * *pred_col*: The name of the column to store the predictions.
 
 ## Usage
 
-* `predict_onnx_lf()` is a user-defined function. You can either embed its code in your query, or install it in your database:
-    * For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
-    * For persistent usage, use [.create function](../management/create-function.md). <br>
-        Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+* `predict_onnx_lf()` is a user-defined function. You can either embed its code in your query, or install it in your database.    
 * `predict_onnx_lf()` is a [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md)
 
-# [Ad hoc usage](#tab/adhoc)
+There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+
+# [Ad hoc](#tab/adhoc)
+
+For ad hoc usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -87,9 +87,12 @@ OccupancyDetection
 | summarize n=count() by Occupancy, pred_Occupancy
 ```
 
-# [Persistent usage](#tab/persistent)
+# [Persistent](#tab/persistent)
 
-* **One-time installation**
+For persistent usage, use [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+
+### One-time installation
+
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\ML", docstring = "Predict using ONNX model")
@@ -125,7 +128,8 @@ predict_onnx_lf(samples:(*), models_tbl:(name:string, timestamp:datetime, model:
 }
 ```
 
-* **Usage**
+### Usage
+
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 //

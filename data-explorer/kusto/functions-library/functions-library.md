@@ -1,6 +1,6 @@
 ---
 title: Functions library - Azure Data Explorer
-description: This article describes user defined functions that extend Azure Data Explorer capabilities.
+description: This article describes user-defined functions that extend Azure Data Explorer capabilities.
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
@@ -12,12 +12,12 @@ ms.date: 09/08/2020
 
 The following article contains a categorized list of user-defined functions.
 
-## Machine Learning functions
+## Machine learning functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[predict_lf()](predict-lf.md)|Predict (a.k.a. score) using an existing trained ML model. |
-|[predict_onnx_lf()](predict-onnx-lf.md)|Predict (a.k.a. score) using an existing trained ML model in ONNX format. |
+|[predict_lf()](predict-lf.md)|Predict using an existing trained machine learning model. |
+|[predict_onnx_lf()](predict-onnx-lf.md)| Predict using an existing trained machine learning model in ONNX format. |
 
 ## Series processing functions
 
