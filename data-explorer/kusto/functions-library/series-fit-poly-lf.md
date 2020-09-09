@@ -181,23 +181,23 @@ The following examples assume the function is already installed:
 
 1. 5th order polynomial with noise on x & y axes
 
-        <!-- csl: https://help.kusto.windows.net:443/Samples -->
-        ```kusto
-        //
-        // 5th order polynomial with noise on x & y axes
-        //
-        range x from 1 to 200 step 1
-        | project x = rand()*5 - 2.3
-        | extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
-        | extend y = y + (rand() - 0.5)*0.5*y
-        | order by x asc 
-        | summarize x=make_list(x), y=make_list(y)
-        | extend y_fit = dynamic(null), coeff=dynamic(null)
-        | invoke series_fit_poly_lf('y', 'y_fit', 'coeff', 5, 'x')
-        |fork (project-away coeff) (project coeff | mv-expand coeff)
-        | render linechart
-        ```
+    <!-- csl: https://help.kusto.windows.net:443/Samples -->
+    ```kusto
+    //
+    // 5th order polynomial with noise on x & y axes
+    //
+    range x from 1 to 200 step 1
+    | project x = rand()*5 - 2.3
+    | extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
+    | extend y = y + (rand() - 0.5)*0.5*y
+    | order by x asc 
+    | summarize x=make_list(x), y=make_list(y)
+    | extend y_fit = dynamic(null), coeff=dynamic(null)
+    | invoke series_fit_poly_lf('y', 'y_fit', 'coeff', 5, 'x')
+    |fork (project-away coeff) (project coeff | mv-expand coeff)
+    | render linechart
+    ```
         
-        :::image type="content" source="images/series-fit-poly-lf/fifth-order-noise.png" alt-text="Graph of fit of 5th order polynomial with noise on x & y axes":::
-        
-        :::image type="content" source="images/series-fit-poly-lf/fifth-order-noise-table.png" alt-text="Coefficients of fit of 5th order polynomial with noise" border="false":::
+    :::image type="content" source="images/series-fit-poly-lf/fifth-order-noise.png" alt-text="Graph of fit of 5th order polynomial with noise on x & y axes":::
+       
+    :::image type="content" source="images/series-fit-poly-lf/fifth-order-noise-table.png" alt-text="Coefficients of fit of 5th order polynomial with noise" border="false":::
