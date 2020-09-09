@@ -199,4 +199,5 @@ range x from 1 to 200 step 1
 ```
 
 :::image type="content" source="images/series-fit-poly-lf/fifth-order-noise.png" alt-text="Graph of fit of 5th order polynomial with noise on x & y axes" border="false":::
+
 :::image type="content" source="images/series-fit-poly-lf/fifth-order-noise-table.png" alt-text="Coefficients of fit of 5th order polynomial with noise" border="false":::
