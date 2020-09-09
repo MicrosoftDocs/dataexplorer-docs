@@ -4,6 +4,7 @@ description: This article describes Azure Data Explorer Go SDK.
 author: orspod
 ms.author: orspodek
 ms.reviewer: vladikb
+ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/16/2020
 ---
