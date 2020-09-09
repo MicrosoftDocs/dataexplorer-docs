@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/13/2019
+ms.date: 09/09/2020
 ---
 
 # Visualize data from Azure Data Explorer in Grafana
