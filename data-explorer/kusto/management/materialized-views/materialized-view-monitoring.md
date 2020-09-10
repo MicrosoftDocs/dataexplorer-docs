@@ -35,6 +35,9 @@ The `MaterializedViewHealth` metric indicates whether a Materialized View is hea
 * The materialization process is failing. 
 * The cluster doesn't have sufficient capacity to materialize all incoming data on-time.
 If failure is due to cluster capacity, execution will succeed, but the view will be unhealthy, because it be lagging behind and not able to keep up with the ingestion rate. Before a Materialized View becomes unhealthy, its age, noted by the `MaterializedViewAgeMinutes` metric, will start gradually increasing.
+* Materialized view failures don't always indicate that the materialized view is unhealthy. Errors can be transient and the materialization process will continue and can be successful in the next execution.
+* Materialization never skips any data, even if there are constant failures. View is always guaranteed to return the most up-to-date snapshot of the query, based on *all* records in the source table. Constant failures will significantly degrade query performance, but won't cause incorrect results in view queries.
+* Failures can occur because of transient errors (CPU/memory/networking failures) or permanent ones (for example, the source table was changed and the materialized view query is syntactically invalid). The materialized view will be automatically disabled if there are schema changes (that are inconsistent with the view definition) or if the materialized view query is no longer semantically valid. For all other failures, the system will continue materialization attempts until the root cause is fixed.
 
 ### Why is my materialized view unhealthy?
 
