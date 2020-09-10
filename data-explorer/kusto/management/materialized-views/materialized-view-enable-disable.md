@@ -14,7 +14,7 @@ ms.date: 08/30/2020
 
 Disable a materialized view in any of the following ways:
 
-* **Automatic disable by the system:**  Materialized view is automatically disabled if materialization fails with a permanent error. This can occur in the following instances: 
+* **Automatic disable by the system:**  Materialized view is automatically disabled if materialization fails with a permanent error. This process can occur in the following instances: 
     * Schema changes that are inconsistent with the view definition.  
     * Changes to source table that result in the materialized view query being semantically invalid. <br>
     For more information, see [create materialized-view](materialized-view-create-alter. md#create-materialized-view).
