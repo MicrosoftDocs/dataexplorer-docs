@@ -14,10 +14,6 @@ ms.date: 08/30/2020
 
 A [materialized view](materialized-view-overview.md) definition is an aggregation query over a source table (*single* summarize statement).
 
-There are several [limitations](materialized-view-overview.md#known-issues-and-limitations) on what can be defined in the query. The materialized view is always based on a single `fact table`, and may also reference one or more [`dimension tables`](../../concepts/fact-and-dimension-tables.md). 
-
-If the materialized view includes joins, make sure you understand the related limitations documented in the [create materialized view section](#create-materialized-view).
-
 * There are two possible ways to create a materialized view, noted by the *backfill* option in the create command:
     * **Create based on the existing records in the source table:** 
          * creation may take a long while to complete (depending on the number of records in the source table), and view will not be available for queries until completion.
@@ -69,73 +65,73 @@ The following are supported in the `with(propertyName=propertyValue)` clause (al
 
 ### Examples
 
-To create an empty view, which will only materialize records ingested from now on: 
+1. To create an empty view, which will only materialize records ingested from now on: 
 
-<!-- csl -->
-```
-.create materialized-view ArgMax on table T
-{
-    T | summarize arg_max(Timestamp, *) by User
-}
-```
+    <!-- csl -->
+    ```
+    .create materialized-view ArgMax on table T
+    {
+        T | summarize arg_max(Timestamp, *) by User
+    }
+    ```
+    
+1. A Materialized View with backfill option, using `async`:
 
-A Materialized View with backfill option, using `async`:
+    <!-- csl -->
+    ```
+    .create async materialized-view with (backfill=true, docString="Customer telemetry") CustomerUsage on table T
+    {
+        T 
+        | extend Day = bin(Timestamp, 1d)
+        | summarize count(), dcount(User), max(Duration) by Customer, Day 
+    } 
+    ```
+    
+1. Materialized view with backfill and effectiveDateTime - view is created based on records from this datetime only:
 
-<!-- csl -->
-```
-.create async materialized-view with (backfill=true, docString="Customer telemetry") CustomerUsage on table T
-{
-    T 
-    | extend Day = bin(Timestamp, 1d)
-    | summarize count(), dcount(User), max(Duration) by Customer, Day 
-} 
-```
+    <!-- csl -->
+    ```
+    .create async materialized-view with (backfill=true, effectiveDateTime=datetime(2019-01-01)) CustomerUsage on table T 
+    {
+        T 
+        | extend Day = bin(Timestamp, 1d)
+        | summarize count(), dcount(User), max(Duration) by Customer, Day
+    } 
+    ```
+    
+1. Definition can include additional operators *before* the `summarize` statement (as long as the `summarize` is the last one):
 
-Materialized view with backfill and effectiveDateTime - view is created based on records from this datetime only:
+    <!-- csl -->
+    ```
+    .create materialized-view CustomerUsage on table T 
+    {
+        T 
+        | where Customer in ("Customer1", "Customer2", "CustomerN")
+        | parse Url with "https://contoso.com/" Api "/" *
+        | extend Month = startofmonth(Timestamp)
+        | summarize count(), dcount(User), max(Duration) by Customer, Api, Month
+    }
+    ```
+    
+1. Materialized views that join with a dimension table (see [limitations](materialized-view-overview.md#known-issues-and-limitations)):
 
-<!-- csl -->
-```
-.create async materialized-view with (backfill=true, effectiveDateTime=datetime(2019-01-01)) CustomerUsage on table T 
-{
-    T 
-    | extend Day = bin(Timestamp, 1d)
-    | summarize count(), dcount(User), max(Duration) by Customer, Day
-} 
-```
-
-Definition can include additional operators *before* the `summarize` statement (as long as the `summarize` is the last one):
-
-<!-- csl -->
-```
-.create materialized-view CustomerUsage on table T 
-{
-    T 
-    | where Customer in ("Customer1", "Customer2", "CustomerN")
-    | parse Url with "https://contoso.com/" Api "/" *
-    | extend Month = startofmonth(Timestamp)
-    | summarize count(), dcount(User), max(Duration) by Customer, Api, Month
-}
-```
-
-Materialized views that join with a dimension table (carefully read limitations below):
-
-<!-- csl -->
-```
-.create materialized-view EnrichedArgMax on table T with (dimensionTable = ['DimUsers'])
-{
-    T
-    | lookup DimUsers on User  
-    | summarize arg_max(Timestamp, *) by User 
-}
-
-.create materialized-view EnrichedArgMax on table T with (dimensionTable = ['DimUsers'])
-{
-    DimUsers | project User, Age, Address
-    | join kind=rightouter hint.strategy=broadcast T on User
-    | summarize arg_max(Timestamp, *) by User 
-}
-```
-
+    <!-- csl -->
+    ```
+    .create materialized-view EnrichedArgMax on table T with (dimensionTable = ['DimUsers'])
+    {
+        T
+        | lookup DimUsers on User  
+        | summarize arg_max(Timestamp, *) by User 
+    }
+    
+    .create materialized-view EnrichedArgMax on table T with (dimensionTable = ['DimUsers'])
+    {
+        DimUsers | project User, Age, Address
+        | join kind=rightouter hint.strategy=broadcast T on User
+        | summarize arg_max(Timestamp, *) by User 
+    }
+    ```
+    
 ## Remarks
 
 * Requires [Database Admin](../access-control/role-based-authorization.md)
@@ -200,9 +196,13 @@ this option, see the [.alter materialized-view command](#alter-materialized-view
 
 * Once the view is created, materialization constantly happens in the background, as needed. Use the [Show materialized-view](materialized-view-show-commands.md#show-materialized-view)command to retrieve information about the health of the view.
 
-### Supported aggregation functions:
+There are several [limitations](materialized-view-overview.md#known-issues-and-limitations) on what can be defined in the query. The materialized view is always based on a single `fact table`, and may also reference one or more [`dimension tables`](../../concepts/fact-and-dimension-tables.md). 
+
+
+### Supported aggregation functions
 
 The following aggregation functions are supported:
+
 * `count`
 * `countif`
 * `dcount`
@@ -304,16 +304,16 @@ materialized view (same goes for lookup in dimension tables, when applicable).
 
 |Argument|Type|Description
 |----------------|-------|---|
-|ViewName|String|Materialized View name. See restrictions in notes below.|
-|SourceTableName|String|Name of source table which the view is defined on.|
-|Query|String|The Materialized View query.|
+|ViewName|String|Materialized view name. See [restrictions](#restrictions)|
+|SourceTableName|String|Name of source table on which the view is defined.|
+|Query|String|The materialized view query.|
 
 ### Properties
 
 The `dimensionTables` is the only supported property in materialized-view alter command. Property should
 be used in case query references dimension tables (see definition in the [.create materialized-view](#create-materialized-view) command).
 
-### Notes
+### Restrictions
 
 * Requires [Database Admin](../access-control/role-based-authorization.md) permissions, or an admin of the materialized view (see [Materialized view principals](materialized-view-principals.md)).
 * Altering the materialized view can be used for changing the query of the materialized view, while still preserving the existing data in the view. Applicable use cases include:
@@ -340,14 +340,12 @@ be used in case query references dimension tables (see definition in the [.creat
 
 ## Cancel materialized-view creation
 
-This command can be used to cancel the process of Materialized View creation, when using  the `backfill` option, 
-since creation may take a long while, and user may want to abort it while running.  
+This command can be used to cancel the process of Materialized View creation, when using the `backfill` option. This is useful when creation is taking too long and you want to abort it while running.  
 
-* **The materialized view cannot be restored after running the command.**
-* The creation process cannot be aborted *immediately*. The cancel command signals it to stop, and the creation periodically 
-checks if cancel was requested. The cancel command waits for a max period of 10 minutes until the materialized view creation process is
- canceled and reports back if cancellation was successful. Even if cancellation did not succeed within 10 minutes, and the cancel 
- command reports failure, the materialized view will most probably abort itself later in the creation process. The [.show operations](../operations.md#show-operations) command will indicate if operation was canceled.
+> [!WARNING]
+> The materialized view cannot be restored after running this command.
+
+* The creation process cannot be aborted *immediately*. The cancel command signals it to stop, and the creation periodically checks if cancel was requested. The cancel command waits for a max period of 10 minutes until the materialized view creation process is canceled and reports back if cancellation was successful. Even if cancellation did not succeed within 10 minutes, and the cancel command reports failure, the materialized view will most probably abort itself later in the creation process. The [.show operations](../operations.md#show-operations) command will indicate if operation was canceled.
 * The `cancel operation` command is only supported for materialized views creation cancellation (not for canceling any
 other operations).
 
