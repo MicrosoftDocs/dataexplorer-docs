@@ -34,14 +34,14 @@ Displays information about the materialized view's definition and its current st
 |---|---|---
 |Name  |String |The name of the materialized view.
 |SourceTable|String|The source table of the materialized view.
-|Query|String|The Materialized View query.
+|Query|String|The materialized view query.
 |MaterializedTo|datetime|The max materialized ingestion_time() timestamp in source table. For more information, see [behind the scenes](materialized-view-overview.md#behind-the-scenes).
 |LastRun|datetime |The last time materialization was run.
 |LastRunResult|String|Result of last run. Completed for successful runs, Failed otherwise.
 |IsHealthy|bool|True when view is considered healthy, false otherwise. View is considered healthy if it was successfully materialized up to the last hour (`MaterializedTo` is greater than `ago(1h)`).
 |IsEnabled|bool|True when view is enabled (see [Disable or enable materialized view](materialized-view-enable-disable.md)).
-|Folder|string|The Materialized View folder.
-|DocString|string|The Materialized View doc string.
+|Folder|string|The materialized view folder.
+|DocString|string|The materialized view doc string.
 |AutoUpdateSchema|bool|Whether the view is enabled for auto updates.
 |EffectiveDateTime|datetime|The effective date time of the view, determined during creation time (see [.create materialized-view](materialized-view-create-alter.md#create-materialized-view)).
 
@@ -71,8 +71,8 @@ Gets the schema of the materialized view in CSL/JSON.
 
 Returns the extents in the *materialized* part of the materialized view.
 
-See [behind the scenes](materialized-view-overview.md#behind-the-scenes) about the definition of the *materialized* part.
-The command provides the same details as in [show table extents](../show-extents.md#table-level) command.
+For a definition of the *materialized* portion, see [behind the scenes](materialized-view-overview.md#behind-the-scenes).
+This command provides the same details as the [show table extents](../show-extents.md#table-level) command.
 
 ### Syntax
 
@@ -103,14 +103,3 @@ Returns failures that occurred as part of the materialization process of the mat
 |FailureKind|String|Type of failure.
 |Details|String|Failure details.
 
-## Notes
-
-* Materialized view failures don't always indicate that the materialized view is unhealthy. Errors can be transient
-and materialization process will continue and can be successful in the next execution.
-* In any case, materialization never skips any data, even in the case of constant failures. View is always
-guaranteed to return the most up-to-date snapshot of the query, based on *all* records in the source table.
-Constant failures will significantly degrade query performance, but won't cause incorrect results in view queries.
-* Failures can occur due to transient errors (CPU/memory/networking failures) or permanent ones (for example, the source table was changed and the materialized view query is syntactically invalid). The materialized view will be
-automatically disabled in case of schema changes (that are inconsistent with the view definition) or in case
-the materialized view query is no longer semantically valid. For all other failures, the
-system will continue materialization attempts until the root cause is fixed.
