@@ -73,3 +73,10 @@ The main contributors that can impact a materialized view health are:
 of materialized views.
 * Continuous export from a materialized view is not supported.
 * Materialized views cannot be created on [follower databases](../../../follower.md) (since follower databases are read-only and materialized views require write operations).  Materialized views defined on leader databases **can** be queried from their followers (just as any other table in the leader), but the view has to be created on the leader cluster.
+
+## Notes
+
+* Materialized view failures don't always indicate that the materialized view is unhealthy. Errors can be transient and materialization process will continue and can be successful in the next execution.
+* Materialization never skips any data, even in the case of constant failures. View is always guaranteed to return the most up-to-date snapshot of the query, based on *all* records in the source table. Constant failures will significantly degrade query performance, but won't cause incorrect results in view queries.
+* Failures can occur due to transient errors (CPU/memory/networking failures) or permanent ones (for example, the source table was changed and the materialized view query is syntactically invalid). The materialized view will be automatically disabled in case of schema changes (that are inconsistent with the view definition) or in case
+the materialized view query is no longer semantically valid. For all other failures, the system will continue materialization attempts until the root cause is fixed.
