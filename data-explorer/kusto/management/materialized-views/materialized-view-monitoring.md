@@ -19,13 +19,6 @@ The health of materialized views describes the resource usage, rate of failures,
 
 [!INCLUDE [materialized-view-metrics](../../../includes/materialized-view-metrics.md)]
 
-## Troubleshooting
-
-The `MaterializedViewHealth` metric indicates whether a Materialized View is healthy. A materialized view can become unhealthy for any or all of the following reasons:
-* The materialization process is failing. 
-* The cluster doesn't have sufficient capacity to materialize all incoming data on-time.
-If failure is due to cluster capacity, execution will succeed, but the view will be unhealthy, because it be lagging behind and not able to keep up with the ingestion rate. Before a Materialized View becomes unhealthy, its age, noted by the `MaterializedViewAgeMinutes` metric, will start gradually increasing.
-
 ## Track resource consumption
 
 **Materialized views resource consumption:** the resources consumed by the materialized views materialization process can be tracked using the [.show commands-and-queries](../commands-and-queries.md#show-commands-and-queries) command. Filter the records for a specific view using the following (replace `DatabaseName` and `ViewName`):
@@ -36,7 +29,14 @@ If failure is due to cluster capacity, execution will succeed, but the view will
 | where Database  == "DatabaseName" and ClientActivityId startswith "DN.MaterializedViews;ViewName;"
 ```
 
-## Why is my materialized view unhealthy?
+## Troubleshooting
+
+The `MaterializedViewHealth` metric indicates whether a Materialized View is healthy. A materialized view can become unhealthy for any or all of the following reasons:
+* The materialization process is failing. 
+* The cluster doesn't have sufficient capacity to materialize all incoming data on-time.
+If failure is due to cluster capacity, execution will succeed, but the view will be unhealthy, because it be lagging behind and not able to keep up with the ingestion rate. Before a Materialized View becomes unhealthy, its age, noted by the `MaterializedViewAgeMinutes` metric, will start gradually increasing.
+
+### Why is my materialized view unhealthy?
 
 The following examples can help you diagnose unhealthy views:
 
