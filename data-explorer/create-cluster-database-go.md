@@ -50,6 +50,9 @@ func getClustersClient(subscription string) kusto.ClustersClient {
 }
 ```
 
+> [!TIP]
+> Using the [auth.NewAuthorizerFromCLIWithResource](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromCLIWithResource) function can be an excellent choice for local development if you've Azure CLI installed and configured for authentication.
+
 ### Create Cluster
 
 The [CreateOrUpdate](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient.CreateOrUpdate) function on `kusto.ClustersClient` is used to create a new Azure Data Explorer cluster. We wait for the process to complete before inspecting the result.
@@ -186,7 +189,7 @@ func main() {
     cd azure-data-explorer-go-cluster-management
     ```
 
-1. The program authenticates using Client credentials. You can use Azure CLI [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command to create a service principal - save the client ID, client secret, and tenant ID information for use in the next step.
+1. The program authenticates using Client credentials. You can use the Azure portal of CLI ([az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command) to create a service principal - save the client ID, client secret, and tenant ID information for use in the next step.
 
 1. Export required environment variables, including service principal information. You will also need to enter your subscription ID, resource group, and the region (location) where you want to create the cluster.
 
@@ -202,6 +205,10 @@ func main() {
     export CLUSTER_NAME_PREFIX="<enter prefix (cluster name will be [prefix]-ADXTestCluster)>"
     export DATABASE_NAME_PREFIX="<enter prefix (database name will be [prefix]-ADXTestDB)>"
     ```
+    
+    > [!TIP]
+    > You're likely to use environment variables (or other means) in production scenarios to provide credentials to your application. Although not demonstrated in this example, as mentioned in the [Review the code](#review-the-code) section, for local development, you can use [auth.NewAuthorizerFromCLIWithResource](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromCLIWithResource) if you've Azure CLI installed and configured for authentication. In that case, you do not need to create a service principal.
+
 
 1. Run the program:
 
