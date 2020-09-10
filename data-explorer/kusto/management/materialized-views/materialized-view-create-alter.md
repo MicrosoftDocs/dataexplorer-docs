@@ -12,20 +12,16 @@ ms.date: 08/30/2020
 
 # Create or alter materialized view
 
-A materialized view definition is an aggregation query over a source table (*single* summarize statement).
+A [materialized view](materialized-view-overview.md) definition is an aggregation query over a source table (*single* summarize statement).
 
-There are several limitations for what can be defined in the query. See remarks in the [create materialized-view section](#create-materialized-view) for details.
+There are several [limitations](materialized-view-overview.md#known-issues-and-limitations) on what can be defined in the query. The materialized view is always based on a single `fact table`, and may also reference one or more [`dimension tables`](../../concepts/fact-and-dimension-tables.md). 
 
-* The materialized view is always based on a single `fact table`, and may also reference one or more `dimension tables`.
-See [this article](../../concepts/fact-and-dimension-tables.md) for information about the differences between the two,
- and why it is important in the context of the materialized view.
- If the materialized view includes joins, make sure you understand the related limitations documented in the [create materialized view section](#create-materialized-view).
+If the materialized view includes joins, make sure you understand the related limitations documented in the [create materialized view section](#create-materialized-view).
 
-* There are two possible ways to create a materialized view (noted by the *backfill* option in the create command):
-    * **Create based on the existing records in the source table:** in this case,
-      creation may take a long while to complete (depending on the number of records in the source table),
-    and view will not be available for queries until completion.
-    When using this option, create command must be `async` and execution can be monitored using the [.show operations](../operations.md#show-operations) command.
+* There are two possible ways to create a materialized view, noted by the *backfill* option in the create command:
+    * **Create based on the existing records in the source table:** 
+         * creation may take a long while to complete (depending on the number of records in the source table), and view will not be available for queries until completion.
+        * When using this option, create command must be `async` and execution can be monitored using the [.show operations](../operations.md#show-operations) command.
     
     > [!WARNING]
     > * Using the backfill option is not supported for data in cold cache. Increase the hot cache period,
@@ -34,14 +30,12 @@ See [this article](../../concepts/fact-and-dimension-tables.md) for information 
     >   transiently fails while running, it will **not** be automatically retried (a re-execution of the
     >   create command is required).
     
-    * **Create the materialized view from now onwards:** in this case, the materialized view is created empty,
-    and will only include records ingested after view creation. Creation of this kind returns immediately
- (does not require `async`), and view will be immediately available for query.
+    * **Create the materialized view from now onwards:** 
+        * The materialized view is created empty, and will only include records ingested after view creation. Creation of this kind returns immediately, does not require `async`, and view will be immediately available for query.
 
 * Once created, the materialized views can be altered using the [alter materialized-view](#alter-materialized-view)
-command. Not all changes are supported, the [section below](#alter-materialized-view) describes the supported changes.
-
-* The materialized view derives the database retention policy, by default. The policy can be changed, using commands documented in the [Materialized view policies control commands](materialized-view-policies.md#control-commands) article.
+command. Not all changes are supported.
+* The materialized view derives the database retention policy, by default. The policy can be changed, using [control commands](materialized-view-policies.md#control-commands).
 
 ## .create materialized-view
 
@@ -321,38 +315,23 @@ be used in case query references dimension tables (see definition in the [.creat
 
 ### Notes
 
-* Requires [Database Admin](../access-control/role-based-authorization.md)
-permissions, or an admin of the materialized view (see
-[Materialized view principals](materialized-view-principals.md)).
-* Altering the materialized view can be used for changing the query of the materialized view,
-while still preserving the existing data in the view. Applicable use cases include:
-    * Adding aggregations to the view - for example, add `avg` aggregation to `T | summarize count(), min(Value) by Id`, by
-altering view query to `T | summarize count(), min(Value), avg(Value) by Id`.
-    * Changing operators other than the summarize operator - e.g., filtering out some records by altering 
-`T | summarize arg_max(Timestamp, *) by User` to `T | where User != 'someone' | summarize arg_max(Timestamp, *) by User`. 
-    * Altering with no change to the query, due to a change in source table - for example, assume a view of
-`T | summarize arg_max(Timestamp, *) by Id`, which is not set to `autoUpdateSchema` (see[.create materialized-view](#create-materialized-view) command).
-    If a column is added/removed to the source table of the view, view will be automatically disabled.
-    Executing the alter command, with the exact same query, will change the materialized view's schema to 
-    align with new table schema. The view still needs to be explicitly enabled following the change,
-    using the [enable materialized view](materialized-view-enable-disable.md) command.
+* Requires [Database Admin](../access-control/role-based-authorization.md) permissions, or an admin of the materialized view (see [Materialized view principals](materialized-view-principals.md)).
+* Altering the materialized view can be used for changing the query of the materialized view, while still preserving the existing data in the view. Applicable use cases include:
+    * Adding aggregations to the view - for example, add `avg` aggregation to `T | summarize count(), min(Value) by Id`, by altering view query to `T | summarize count(), min(Value), avg(Value) by Id`.
+    * Changing operators other than the summarize operator - e.g., filtering out some records by altering  `T | summarize arg_max(Timestamp, *) by User` to `T | where User != 'someone' | summarize arg_max(Timestamp, *) by User`. 
+    * Altering with no change to the query, due to a change in source table - for example, assume a view of `T | summarize arg_max(Timestamp, *) by Id`, which is not set to `autoUpdateSchema` (see[.create materialized-view](#create-materialized-view) command). If a column is added/removed to the source table of the view, view will be automatically disabled. Executing the alter command, with the exact same query, will change the materialized view's schema to align with new table schema. The view still needs to be explicitly enabled following the change, using the [enable materialized view](materialized-view-enable-disable.md) command.
 
 * Altering the materialized view has *no* impact on existing data.
     * New columns will receive nulls for all existing records (until records ingested post the alter command modify the null values).
-        * For example: if a view of `T | summarize count() by bin(Timestamp, 1d)` is altered to
-        `T | summarize count(), sum(Value) by bin(Timestamp, 1d)`, then for a particular `Timestamp=T` for which records
-        have already been processed prior to altering the view, the `sum` column will contain partial data (including
+        * For example: if a view of `T | summarize count() by bin(Timestamp, 1d)` is altered to `T | summarize count(), sum(Value) by bin(Timestamp, 1d)`, then for a particular `Timestamp=T` for which records have already been processed prior to altering the view, the `sum` column will contain partial data (including
         only records processed after the alter execution).
 
-    * Adding filters to the query (example #2 above) does not change records which have already been materialized.
-    The filter will only apply to newly ingested records.
-        * For example, per example #2 above, `User == 'someone'` will still be part of the view, until
-          dropped by retention policy or other.
+    * Adding filters to the query (example #2 above) does not change records which have already been materialized. The filter will only apply to newly ingested records.
+        * For example, per example #2 above, `User == 'someone'` will still be part of the view, until dropped by retention policy or other.
 
 * *Only* adding/removing columns to/from the view is supported as part of materialized view alter. Specifically:
     * Changing column type is *not* supported.
-    * Renaming columns is *not* supported (altering a view of `T | summarize count() by Id` to `T | summarize Count=count() by Id`
-    will drop column `count_` and create a new column `Count`, which will initially contain nulls only).
+    * Renaming columns is *not* supported (altering a view of `T | summarize count() by Id` to `T | summarize Count=count() by Id` will drop column `count_` and create a new column `Count`, which will initially contain nulls only).
 
 * **Changes to the materialized view group by expressions are not supported.**
 
@@ -403,4 +382,4 @@ other operations).
 |---|---|---|---|---|
 |c4b29441-4873-4e36-8310-c631c35c916e|MaterializedViewCreateOrAlter|2020-05-08 19:45:03.9184142|Cancelled successfully||
 
-If cancellation didn't complete within 10 minutes, CancellationState would indicate failure (and creation may still be aborted afterwards).
+If the cancellation didn't complete within 10 minutes, `CancellationState` indicates failure. Creation may be aborted afterward.
