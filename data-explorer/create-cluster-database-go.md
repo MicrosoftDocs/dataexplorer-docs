@@ -1,6 +1,6 @@
 ---
 title: 'Manage an Azure Data Explorer cluster & database using Azure Go SDK'
-description: Learn how to create,list, and delete an Azure Data Explorer cluster and database with Azure Go SDK.
+description: Learn how to create, list, and delete an Azure Data Explorer cluster and database with Azure Go SDK.
 author: abhirockzz
 ms.author: abhishgu
 ms.service: data-explorer
