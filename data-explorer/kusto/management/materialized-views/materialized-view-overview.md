@@ -44,7 +44,7 @@ Querying the Materialized View *combines* the materialized part with the delta p
 
 The offline materialization process ingests new records from the delta part to the materialized table and replaces existing records. The latter is done by rebuilding extents which hold records to replace. Both processes (ingestion and extents rebuild) require available ingestion capacity. Therefore, clusters in which the available ingestion capacity is low may not be able to materialize the view frequently enough, which will negatively impact the materialized view performance (queries will perform slower, as the delta part becomes bigger). 
 
-If records in the *delta* part constantly intersect with all data shards in the *materialized* part, each materialization cycle will require rebuilding the entire *materialized* part, and may not keep up with the pace (the ingestion rate will be higher than the materialization rate). In that case, the view will become unhealthy and the *delta* part will constantly grow. You can monitor the number of extent rebuilds in each materialization cycle using metrics, described in the [Materialized views monitoring](materialized-view-monitoring.md) article.
+If records in the *delta* part constantly intersect with all data shards in the *materialized* part, each materialization cycle will require rebuilding the entire *materialized* part, and may not keep up with the pace (the ingestion rate will be higher than the materialization rate). In that case, the view will become unhealthy and the *delta* part will constantly grow. Monitor the number of extent rebuilds in each materialization cycle using [metrics](materialized-view-monitoring.md).
 
 ## Performance considerations
 
@@ -62,19 +62,14 @@ Track health and performance using [materialized view monitoring](materialized-v
 
 ## Known issues and limitations
 
-* A materialized view can't be created on top of another materialized View.
-* The source table of a materialized view must be a table that is being ingested to directly, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), or using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md).
-* Materialized view does not work when using [move extents](../move-extents.md) from other tables into the source table of the materialized view.
-  * Move extents command, which attempts to move extents from or to the view, may fail with errors like below:
-  * `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
-* Source table can't be enabled for streaming ingestion.
-* Source table can't be a restricted table or a table with row level security enabled.
-* [Cursor functions](../databasecursor.md#cursor-functions) cannot be used on top of materialized views.
-
+* A materialized view can't be created:
+    * On top of another materialized view.
+    * On [follower databases](../../../follower.md) (since follower databases are read-only and materialized views require write operations).  Materialized views defined on leader databases can be queried from their followers (just as any other table in the leader), but the view has to be created on the leader cluster.
+* The source table of a materialized view:
+    * Must be a table that is being ingested to directly, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), or using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md).
+    * Can't be enabled for streaming ingestion.
+    * Can't be a restricted table or a table with row level security enabled.
+* Materialized view does not work when using:
+    * [move extents](../move-extents.md) from other tables into the source table of the materialized view. Move extents may fail with the following error: `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
+    * [Cursor functions](../databasecursor.md#cursor-functions) cannot be used on top of materialized views.
 * Continuous export from a materialized view isn't supported.
-
-* Materialized views can't be created on [follower databases](../../../follower.md) (since follower databases are read-only and materialized views require write operations).  Materialized views defined on leader databases can be queried from their followers (just as any other table in the leader), but the view has to be created on the leader cluster.
-
-* Materialized view failures don't always indicate that the materialized view is unhealthy. Errors can be transient and the materialization process will continue and can be successful in the next execution.
-* Materialization never skips any data, even if there are constant failures. View is always guaranteed to return the most up-to-date snapshot of the query, based on *all* records in the source table. Constant failures will significantly degrade query performance, but won't cause incorrect results in view queries.
-* Failures can occur because of transient errors (CPU/memory/networking failures) or permanent ones (for example, the source table was changed and the materialized view query is syntactically invalid). The materialized view will be automatically disabled if there are schema changes (that are inconsistent with the view definition) or if the materialized view query is no longer semantically valid. For all other failures, the system will continue materialization attempts until the root cause is fixed.
