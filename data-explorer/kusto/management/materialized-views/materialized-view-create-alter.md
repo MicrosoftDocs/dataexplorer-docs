@@ -135,7 +135,7 @@ The following are supported in the `with(propertyName=propertyValue)` clause (al
     }
     ```
     
-## Create materialized view limitations
+### Create materialized view limitations
 
 * **The view name:**
     * Can't conflict with table or function names in same database.
@@ -173,7 +173,6 @@ The following are supported in the `with(propertyName=propertyValue)` clause (al
  > [enable materialized view](materialized-view-enable-disable.md) command.
  > This can be common when using an `arg_max(Timestamp, *)` and adding columns to the source table. Defining the
  > view query as `arg_max(Timestamp, Column1, Column2, ...)` (or using the `autoUpdateSchema` option) will avoid the failure.  
-
 
 ### Supported aggregation functions
 
@@ -268,6 +267,9 @@ If you know your query pattern will often filter by some column, which can be a 
 > [!NOTE]
 > Altering the materialized view requires [Database Admin](../access-control/role-based-authorization.md) permissions, or an admin of the materialized view. For more information, see [Materialized view principals](materialized-view-principals.md).
 
+> [!WARNING]
+> Be extra cautious when altering a materialized view. Incorrect use may lead to data loss.
+
 ### Syntax
 
 `.alter` `materialized-view`  
@@ -289,40 +291,34 @@ If you know your query pattern will often filter by some column, which can be a 
 
 The `dimensionTables` is the only supported property in materialized-view alter command. Property should be used in case query references dimension tables. For more information, see the [.create materialized-view](#create-materialized-view) command.
 
-### Restrictions
+### Alter materialized view limitations
 
-* Altering the materialized view can be used for changing the query of the materialized view, while still preserving the existing data in the view. Applicable use cases include:
+* **Supported alterations:**
+    * Changing column type isn't supported.
+    * Renaming columns isn't supported (altering a view of `T | summarize count() by Id` to `T | summarize Count=count() by Id` will drop column `count_` and create a new column `Count`, which will initially contain nulls only).
+    * Changes to the materialized view group by expressions aren't supported.
+
+* **Applicable use cases:**
+    * Altering the materialized view can be used for changing the query of the materialized view, while still preserving the existing data in the view.
     * Adding aggregations to the view - for example, add `avg` aggregation to `T | summarize count(), min(Value) by Id`, by altering view query to `T | summarize count(), min(Value), avg(Value) by Id`.
     * Changing operators other than the summarize operator - for example, filtering out some records by altering  `T | summarize arg_max(Timestamp, *) by User` to `T | where User != 'someone' | summarize arg_max(Timestamp, *) by User`. 
-    * Altering with no change to the query, because of a change in source table - for example, assume a view of `T | summarize arg_max(Timestamp, *) by Id`, which isn't set to `autoUpdateSchema` (see[.create materialized-view](#create-materialized-view) command). If a column is added/removed to the source table of the view, view will be automatically disabled. Executing the alter command, with the exact same query, will change the materialized view's schema to align with new table schema. The view still needs to be explicitly enabled following the change, using the [enable materialized view](materialized-view-enable-disable.md) command.
+    * Altering with no change to the query, because of a change in source table - for example, assume a view of `T | summarize arg_max(Timestamp, *) by Id`, which isn't set to `autoUpdateSchema` (see[.create materialized-view](#create-materialized-view) command). If a column is added or removed from the source table of the view, the view will be automatically disabled. Executing the alter command, with the exact same query, will change the materialized view's schema to align with new table schema. The view still must be explicitly enabled following the change, using the [enable materialized view](materialized-view-enable-disable.md) command.
 
-* **Impact on existing data"**
+* **Impact on existing data:**
     * Altering the materialized view has no impact on existing data.
     * New columns will receive nulls for all existing records (until records ingested post the alter command modify the null values).
-        * For example: if a view of `T | summarize count() by bin(Timestamp, 1d)` is altered to `T | summarize count(), sum(Value) by bin(Timestamp, 1d)`, then for a particular `Timestamp=T` for which records have already been processed before altering the view, the `sum` column will contain partial data (including
-        only records processed after the alter execution).
+        * For example: if a view of `T | summarize count() by bin(Timestamp, 1d)` is altered to `T | summarize count(), sum(Value) by bin(Timestamp, 1d)`, then for a particular `Timestamp=T` for which records have already been processed before altering the view, the `sum` column will contain partial data (including only records processed after the alter execution).
     * Adding filters to the query (example #2 above) does not change records that have already been materialized. The filter will only apply to newly ingested records.
         * For example, per example #2 above, `User == 'someone'` will still be part of the view, until dropped by retention policy or other.
 
-* *Only* adding/removing columns to/from the view is supported as part of materialized view alter. Specifically:
-    * Changing column type isn't supported.
-    * Renaming columns isn't supported (altering a view of `T | summarize count() by Id` to `T | summarize Count=count() by Id` will drop column `count_` and create a new column `Count`, which will initially contain nulls only).
-
-* **Changes to the materialized view group by expressions aren't supported.**
-
- > [!WARNING]
- > Be extra cautious when altering a materialized view. Incorrect use may lead to data loss.
-
 ## Cancel materialized-view creation
 
-This command can be used to cancel the process of Materialized View creation when using the `backfill` option. This is useful when creation is taking too long and you want to abort it while running.  
+Cancel the process of Materialized View creation when using the `backfill` option. This is useful when creation is taking too long and you want to abort it while running.  
 
 > [!WARNING]
 > The materialized view can't be restored after running this command.
 
-* The creation process can't be aborted immediately. The cancel command signals materialization to stop, and the creation periodically checks if cancel was requested. The cancel command waits for a max period of 10 minutes until the materialized view creation process is canceled and reports back if cancellation was successful. Even if cancellation didn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will most probably abort itself later in the creation process. The [.show operations](../operations.md#show-operations) command will indicate if operation was canceled.
-* The `cancel operation` command is only supported for materialized views creation cancellation (not for canceling any
-other operations).
+The creation process can't be aborted immediately. The cancel command signals materialization to stop, and the creation periodically checks if cancel was requested. The cancel command waits for a max period of 10 minutes until the materialized view creation process is canceled and reports back if cancellation was successful. Even if cancellation didn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will most probably abort itself later in the creation process. The [.show operations](../operations.md#show-operations) command will indicate if operation was canceled. The `cancel operation` command is only supported for materialized views creation cancellation. and not for canceling any other operations.
 
 ### Syntax
 
@@ -355,4 +351,4 @@ other operations).
 |---|---|---|---|---|
 |c4b29441-4873-4e36-8310-c631c35c916e|MaterializedViewCreateOrAlter|2020-05-08 19:45:03.9184142|Canceled successfully||
 
-If the cancellation didn't complete within 10 minutes, `CancellationState` indicates failure. Creation may be aborted afterward.
+If the cancellation hasn't completed within 10 minutes, `CancellationState` will indicate failure. Creation may be aborted afterward.
