@@ -65,24 +65,24 @@ The following example shows how to define the callout policy for CosmosDB. It's 
 
 The following example uses the *cosmosdb_sql_request* plugin to send a SQL query to fetch data from Cosmos DB using its SQL API.
 
-    ```kusto
-    evaluate cosmosdb_sql_request(
-      'AccountEndpoint=https://cosmosdbacc.documents.azure.com:443/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;',
-      'SELECT * from c')
-    ```
+```kusto
+evaluate cosmosdb_sql_request(
+  'AccountEndpoint=https://cosmosdbacc.documents.azure.com:443/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;',
+  'SELECT * from c')
+```
 
 ### Query from alternate region
 
 The following example uses SQL query parameters and queries the data from an alternate region. For more information, see [`preferredLocations`](/azure/cosmos-db/tutorial-global-distribution-sql-api?tabs=dotnetv2%2Capi-async#preferred-locations).
 
-    ```kusto
-    evaluate cosmosdb_sql_request(
-        'AccountEndpoint=https://cosmosdbacc.documents.azure.com:443/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;',
-        "SELECT c.id, c.lastName, @param0 as Column0 FROM c WHERE c.dob >= '1970-01-01T00:00:00Z'",
-        dynamic({'@param0': datetime(2019-04-16 16:47:26.7423305)}),
-        dynamic({'preferredLocations': ['East US']}))
-    | where lastName == 'Smith'
-    ```
+```kusto
+evaluate cosmosdb_sql_request(
+    'AccountEndpoint=https://cosmosdbacc.documents.azure.com:443/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;',
+    "SELECT c.id, c.lastName, @param0 as Column0 FROM c WHERE c.dob >= '1970-01-01T00:00:00Z'",
+    dynamic({'@param0': datetime(2019-04-16 16:47:26.7423305)}),
+    dynamic({'preferredLocations': ['East US']}))
+| where lastName == 'Smith'
+```
 
 ::: zone-end
 
