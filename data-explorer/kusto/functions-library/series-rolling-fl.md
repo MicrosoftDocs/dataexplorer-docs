@@ -65,7 +65,7 @@ For ad hoc usage, embed its code using [let statement](../query/letstatement.md)
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let series_rolling_udf = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
+let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
 {
     let kwargs = pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
     let code =

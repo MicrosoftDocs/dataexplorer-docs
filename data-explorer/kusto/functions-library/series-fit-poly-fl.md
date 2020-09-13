@@ -38,7 +38,7 @@ For ad hoc usage, embed its code using [let statement](../query/letstatement.md)
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let series_fit_poly_udf=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
+let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
 {
     let kwargs = pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
     let code=

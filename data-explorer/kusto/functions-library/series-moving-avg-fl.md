@@ -40,7 +40,7 @@ For ad hoc usage, embed its code using a [let statement](../query/letstatement.m
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let series_moving_avg_udf = (y_series:dynamic, n:int, center:bool=false)
+let series_moving_avg_fl = (y_series:dynamic, n:int, center:bool=false)
 {
     series_fir(y_series, repeat(1, n), true, center)
 }
