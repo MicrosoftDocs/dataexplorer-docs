@@ -56,7 +56,7 @@ The Azure Data Explorer proxy flow:
 You can run the queries using client tools that support Kusto queries, such as: Kusto Explorer, ADX Web UI, Jupyter Kqlmagic, Flow, PowerQuery, PowerShell, Jarvis, Lens, REST API.
 
 > [!NOTE]
-> The ADX Proxy can be used for data retrieval only. ".show" management commands are supported.  [Function supportability](#Function-supportability)
+> The ADX Proxy can be used for data retrieval only. ".show" management commands are supported.  [Function supportability](#function-supportability)
 
 > [!TIP]
 > * Database name should have the same name as the resource specified in the proxy cluster. Names are case sensitive.
@@ -74,13 +74,13 @@ Perf | take 10 // Demonstrate query through the proxy on the LA workspace
 
 ![Query LA workspace](media/adx-proxy/query-la.png)
 
-### Cross query of your LA or AI ADX Proxy cluster and the ADX native cluster 
+### Cross query of your LA or AI ADX Proxy cluster and the ADX native cluster
 
 When you run cross cluster queries from the proxy, verify your ADX native cluster is selected in the left pane. The following examples demonstrate combining ADX cluster tables (using `union`) with LA workspace.
 
 ```kusto
 union StormEvents, cluster('https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>').Perf
-| take 10 
+| take 10
 ```
 
 ```kusto
