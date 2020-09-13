@@ -84,4 +84,4 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-moving-avg-lf/moving-average-five-bins.png" alt-text="Graph depicting moving average of 5 bins" border="false":::
+:::image type="content" source="images/series-moving-avg-fl/moving-average-five-bins.png" alt-text="Graph depicting moving average of 5 bins" border="false":::

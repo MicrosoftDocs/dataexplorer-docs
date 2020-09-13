@@ -149,7 +149,7 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-rolling-lf/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements" border="false":::
+:::image type="content" source="images/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements" border="false":::
 
 ## Additional examples
 
@@ -171,7 +171,7 @@ The following examples assume the function is already installed:
     | render timechart
     ```
     
-    :::image type="content" source="images/series-rolling-lf/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements" border="false":::
+    :::image type="content" source="images/series-rolling-fl/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements" border="false":::
 
 1. Calculate rolling trimmed mean
         
