@@ -188,5 +188,5 @@ The following examples assume the function is already installed:
     | render linechart
     ```
     
-    :::image type="content" source="images/series-rolling-lf/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean" border="false":::
+    :::image type="content" source="images/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean" border="false":::
     
