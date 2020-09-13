@@ -12,12 +12,12 @@ ms.date: 08/30/2020
 
 # Disable or enable materialized view
 
-Disable a materialized view in any of the following ways:
+A materialized view can be disabled in any of the following ways:
 
 * **Automatic disable by the system:**  Materialized view is automatically disabled if materialization fails with a permanent error. This process can occur in the following instances: 
     * Schema changes that are inconsistent with the view definition.  
     * Changes to source table that result in the materialized view query being semantically invalid. <br>
-    For more information, see [create materialized-view](materialized-view-create-alter. md#create-materialized-view).
+    For more information, see [create materialized-view](materialized-view-create-alter.md#create-materialized-view).
 * **Explicitly disable the materialized view:**  If the materialized view is negatively impacting the cluster's health (for example, consuming too much CPU), disable the view using the [command](#syntax) below.
 
 > [!NOTE]

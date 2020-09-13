@@ -14,7 +14,7 @@ ms.date: 08/30/2020
 [Materialized views](../../query/materializedviewfunction.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](../../query/materializedviewfunction.md) is expected to be more performant than running the aggregation directly over the source table.
 
 > [!NOTE] 
-> Materialized views have some [limitations](#known-issues-and-limitations), and are not guaranteed to work well for all scenarios. Review [performance considerations](#performance-considerations) before working with the feature.
+> Materialized views have some [limitations](#known-issues-and-limitations), and are not guaranteed to work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
 
 ## Key features
 
@@ -48,15 +48,15 @@ If records in the *delta* constantly intersect with all data shards in the *mate
 
 ## Performance considerations
 
-Track health and performance using [materialized view monitoring](materialized-view-monitoring.md). The main contributors that can impact a materialized view health are:
+The main contributors that can impact a materialized view health are:
 
 * **Cluster resources:** Like any other process running on the cluster, materialized views consume resources (CPU, memory) from the cluster. If the cluster is too overloaded (for example, high CPU), adding materialized views to it may cause a degradation in the cluster's performance. You can monitor your cluster's health using the [Cluster health metrics](../../../using-metrics.md#cluster-metrics). [Optimized autoscale](../../../manage-cluster-horizontal-scaling.md#optimized-autoscale) currently doesn't take materialized views health under consideration as part of autoscale rules.
 
-* **Overlap with materialized data:** During materialization time, all new records ingested to source table since last materialization (the `delta`) are processed and materialized into the view. The higher the intersection between new-records and already-materialized-records is, the worse the performance of the materialized view will be. A materialized view will work best if the number of records being updated (for example, in `arg_max` view) is a small subset of the source table. If all or most of the materialized view records need to be updated in every materialization cycle, then the materialized view probably won't perform well. Use [extents rebuild metrics](../../../includes/materialized-view-metrics.md#materialized-view-metrics) to identify this situation.
+* **Overlap with materialized data:** During materialization time, all new records ingested to source table since last materialization (the `delta`) are processed and materialized into the view. The higher the intersection between new-records and already-materialized-records is, the worse the performance of the materialized view will be. A materialized view will work best if the number of records being updated (for example, in `arg_max` view) is a small subset of the source table. If all or most of the materialized view records need to be updated in every materialization cycle, then the materialized view probably won't perform well. Use [extents rebuild metrics](../../../using-metrics.md#materialized-view-metrics) to identify this situation.
 
 * **Ingestion rate:** There are no hard-coded limits on the data volume or ingestion rate in the source table of the materialized view. However, the recommended ingestion rate for materialized views is no more than 1-2GB/sec. Higher ingestion rates may still perform well, depending on cluster size, available resources, and amount of intersection with existing data.
 
-* **Number of materialized views in cluster:** The above considerations apply to each individual materialized view defined in the cluster. Each view consumes its own resources, and many views will compete with each other on available resources. There are no hard-coded limits. However, the general recommendation is to have no more than 10 materialized views on a cluster. The [capacity policy](materialized-view-policies.md#capacity-policy) may be adjusted if more than a single materialized view is defined in the cluster.
+* **Number of materialized views in cluster:** The above considerations apply to each individual materialized view defined in the cluster. Each view consumes its own resources, and many views will compete with each other on available resources. There are no hard-coded limits to the number of materialized views in a cluster. However, the general recommendation is to have no more than 10 materialized views on a cluster. The [capacity policy](materialized-view-policies.md#capacity-policy) may be adjusted if more than a single materialized view is defined in the cluster.
 
 * **Materialized view definition**: The materialized view definition must be defined according to query pattern for best query performance. For more information, see [create command performance tips](materialized-view-create-alter.md#performance-tips).
 
@@ -73,6 +73,51 @@ Track health and performance using [materialized view monitoring](materialized-v
     * [move extents](../move-extents.md) from other tables into the source table of the materialized view. Move extents may fail with the following error: `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
     * [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
 * Continuous export from a materialized view isn't supported.
+
+## Materialized views monitoring 
+
+The health of materialized views describes the resource usage, rate of failures, and latency in execution. Monitor the materialized view's health in the following ways:
+
+* Monitor the `IsHealthy` property returned from [show materialized-view](materialized-view-show-commands.md#show-materialized-view).
+* Check for failures using [show materialized-view failures](materialized-view-show-commands.md#show-materialized-view-failures).
+* Monitor [metrics](#materialized-view-metrics) in the Azure portal.
+
+> [!NOTE]
+> Materialization never skips any data, even if there are constant failures. The view is always guaranteed to return the most up-to-date snapshot of the query, based on all records in the source table. Constant failures will significantly degrade query performance, but won't cause incorrect results in view queries.
+
+### Track resource consumption
+
+**Materialized views resource consumption:** the resources consumed by the materialized views materialization process can be tracked using the [.show commands-and-queries](../commands-and-queries.md#show-commands-and-queries) command. Filter the records for a specific view using the following (replace `DatabaseName` and `ViewName`):
+
+<!-- csl -->
+```
+.show commands-and-queries 
+| where Database  == "DatabaseName" and ClientActivityId startswith "DN.MaterializedViews;ViewName;"
+```
+
+### Why is my materialized view unhealthy?
+
+The `MaterializedViewHealth` metric indicates whether a Materialized View is healthy. A materialized view can become unhealthy for any or all of the following reasons:
+* The materialization process is failing.
+    * Materialized view failures don't always indicate that the materialized view is unhealthy. Errors can be transient. The materialization process will continue and can still be successful in the next execution.
+    * Failures can occur because of transient errors, for example CPU, memory, or networking failures. Failures can occur because of or permanent errors, for example, the source table was changed and the materialized view query is syntactically invalid. The materialized view will be automatically disabled if there are schema changes that are inconsistent with the view definition, or if the materialized view query is no longer semantically valid. For all other failures, the system will continue materialization attempts until the root cause is fixed.
+* The cluster doesn't have sufficient capacity to materialize all incoming data on-time. If failure is because of cluster capacity, the execution will succeed. However, the view will be unhealthy, because it's lagging behind and unable to keep up with the ingestion rate. Before a materialized view becomes unhealthy, its age, noted by the `MaterializedViewAgeMinutes` metric, will gradually increase.
+
+### How to troubleshoot unhealthy views
+
+The following examples can help you diagnose and fix unhealthy views:
+
+|Diagnostic | Reason | Action|
+|---|---|---|
+| `MaterializedViewResult` metric is fired, and the `Result` dimension is set to `SourceTableSchemaChange`/`SourceTableNotFound`| Source table was changed or deleted, and the view isn't set to `autoUpdateSchema` or the change in source table isn't supported for auto-updates. |
+| `MaterializedViewResult` metric `Result` dimension is set to `InsufficientResources`. | Materialization process failure due insufficient cluster resources, for example hitting query limits. | Azure Data Explorer will try to automatically recover from this state, so this error may be transient. However, if view is unhealthy and this error is constantly emitted, then it's possible that the current cluster's configuration isn't able to keep up with ingestion rate. In this case, the cluster needs to be scaled up or out.|
+| `MaterializedViewResult` metric's `Result` is `UnknownError`.| Materialization process is failing because of another unknown reason. | If this failure happens frequently, open a support ticket for the Azure Data Explorer team to investigate further.|
+| No materialization failures, `MaterializedViewResult` metric will be fired on every successful execution with `Result`=`Success`. `Age` is above threshold | One of the following circumstances:
+| | Materialization is 'slow' since there are too many extents to rebuild in each materialization cycle. | See [Materialized views (preview)](materialized-view-overview.md#how-materialized-views-work) about why extents rebuilds impact the view's performance.  The number of extents rebuilt in each cycle is provided in the `MaterializedViewExtentsRebuild` metric, and the `MaterializedViewExtentsRebuildConcurrency` includes the concurrency used in each cycle. <br> Increasing the extents rebuilt concurrency in the [Materialized view capacity policy](materialized-view-policies.md#capacity-policy) might also help in this case. Carefully read the [capacity policy](materialized-view-policies.md#capacity-policy) before changing the default values.
+| | There are additional materialized views in the cluster, and cluster doesn't have sufficient capacity to run all. | See the [Materialized view capacity policy](materialized-view-policies.md#capacity-policy) section about changing the default settings for number of materialized views that were executed concurrently.
+
+`MaterializedViewDataLoss` is fired, with dimension `Kind`=`SourceDataRetentionApproaching`. After two days of extension, the extents are dropped, and the metric is fired with `Kind`=`SourceDataDropped`.
+* When the materialized view is unhealthy, it isn't able to process newly ingested records from the source table on time. The lag may continue to increase until the retention period of the source data approaches. Data in source table is dropped without being processed by the materialized view, leading to data loss in the materialized view. Extents about to be dropped from the source table, before they were processed by the materialization, receive an "extension" of two days to their retention period.
 
 ## Next steps
 

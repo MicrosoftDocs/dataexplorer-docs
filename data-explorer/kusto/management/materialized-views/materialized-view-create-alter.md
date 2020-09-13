@@ -32,8 +32,7 @@ A [materialized view](materialized-view-overview.md) is an aggregation query ove
 
 ## .create materialized-view
 
-> [!NOTE]
-> Creating a materialized view requires [Database Admin](../access-control/role-based-authorization.md) permissions. The principal creating the view automatically becomes the admin of the view. For more information, see [materialized view principals](materialized-view-principals.md).
+Creating a materialized view requires [Database Admin](../access-control/role-based-authorization.md) permissions. The principal creating the view automatically becomes the admin of the view. For more information, see [materialized view principals](materialized-view-principals.md).
 
 Once the view is created, materialization constantly happens in the background, as needed. Use the [Show materialized-view](materialized-view-show-commands.md#show-materialized-view)command to retrieve information about the health of the view.
 
@@ -115,7 +114,7 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
     }
     ```
     
-1. Materialized views that join with a dimension table. See [limitations](materialized-view-overview.md#known-issues-and-limitations) before creating:
+1. Materialized views that join with a dimension table. See [limitations](#create-materialized-view-limitations) before creating:
 
     <!-- csl -->
     ```
@@ -142,12 +141,10 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 
 * **The query:** 
     * Should reference a single fact table that is the source of the materialized view, include a single summarize operator, and one or more aggregation functions aggregated by one or more groups by expressions. The summarize operator must always be the last operator in the query.
-       * The source table must be in the same database where the materialized view is defined. Cross-cluster/cross-database queries aren't supported.
-       * The source table must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (the default is enabled) and can't be enabled for [streaming ingestion](../../../ingest-data-streaming.md).
+    * The source table must be in the same database where the materialized view is defined. Cross-cluster/cross-database queries aren't supported.
+    * The source table must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (the default is enabled) and can't be enabled for [streaming ingestion](../../../ingest-data-streaming.md).
     * Shouldn't include any operators that depend on `now()` or on `ingestion_time()`. For example, the query shouldn't have `where Timestamp > ago(5d)`. Limit the period of time covered by the view using the retention policy on the materialized view.
-    * There are several [limitations](materialized-view-overview.md#known-issues-and-limitations) on what can be defined in the query. The materialized view is always based on a single `fact table`, and may also reference one or more [`dimension tables`](../../concepts/fact-and-dimension-tables.md). 
-
-* **Aggregations:**
+    * There are several [limitations](#create-materialized-view-limitations) on what can be defined in the query. The materialized view is always based on a single `fact table`, and may also reference one or more [`dimension tables`](../../concepts/fact-and-dimension-tables.md). 
     * A materialized view with an `arg_max`/`arg_min`/`any` aggregation can't include any of the other supported aggregation functions. A view is either an `arg_max`/`arg_min`/`any` view (those functions can be used together in same view) or any of the other supported functions, but not both in same materialized view. For example, `SourceTable | summarize arg_max(Timestamp, *), count() by Id` isn't supported.
     * *Composite* aggregations are currently not supported in the materialized view definition. For instance, instead of the following view: `SourceTable | summarize Result=sum(Column1)/sum(Column2) by Id`, you must define the materialized view as: `SourceTable | summarize a=sum(Column1), b=sum(Column2) by Id`. During view query time, run - `ViewName | project Id, Result=a/b`. The required output of the view, including the calculated column (`a/b`), can be encapsulated in a [stored function](../../query/functions/user-defined-functions.md). Users will access the stored function instead of accessing the materialized view directly. 
 
@@ -254,8 +251,7 @@ The following aggregation functions are supported:
 
 ## .alter materialized-view
 
-> [!NOTE]
-> Altering the materialized view requires [Database Admin](../access-control/role-based-authorization.md) permissions, or an admin of the materialized view. For more information, see [Materialized view principals](materialized-view-principals.md).
+Altering the materialized view requires [Database Admin](../access-control/role-based-authorization.md) permissions, or an admin of the materialized view. For more information, see[Materialized view principals](materialized-view-principals.md).
 
 > [!WARNING]
 > Be extra cautious when altering a materialized view. Incorrect use may lead to data loss.
@@ -281,18 +277,20 @@ The following aggregation functions are supported:
 
 The `dimensionTables` is the only supported property in materialized-view alter command. This property should be used in case query references dimension tables. For more information, see the [.create materialized-view](#create-materialized-view) command.
 
+
+### Applicable use cases
+
+* Altering the materialized view can be used for changing the query of the materialized view, while still preserving the existing data in the view.
+* Adding aggregations to the view - for example, add `avg` aggregation to `T | summarize count(), min(Value) by Id`, by altering view query to `T | summarize count(), min(Value), avg(Value) by Id`.
+* Changing operators other than the summarize operator - for example, filtering out some records by altering  `T | summarize arg_max(Timestamp, *) by User` to `T | where User != 'someone' | summarize arg_max(Timestamp, *) by User`. 
+* Altering with no change to the query, because of a change in source table - for example, assume a view of `T | summarize arg_max(Timestamp, *) by Id`, which isn't set to `autoUpdateSchema` (see[.create materialized-view](#create-materialized-view) command). If a column is added or removed from the source table of the view, the view will be automatically disabled. Executing the alter command, with the exact same query, will change the materialized view's schema to align with new table schema. The view still must be explicitly enabled following the change, using the [enable materialized view](materialized-view-enable-disable.md) command.
+
 ### Alter materialized view limitations
 
-* **Supported alterations:**
+* **Supported changes:**
     * Changing column type isn't supported.
     * Renaming columns isn't supported (altering a view of `T | summarize count() by Id` to `T | summarize Count=count() by Id` will drop column `count_` and create a new column `Count`, which will initially contain nulls only).
     * Changes to the materialized view group by expressions aren't supported.
-
-* **Applicable use cases:**
-    * Altering the materialized view can be used for changing the query of the materialized view, while still preserving the existing data in the view.
-    * Adding aggregations to the view - for example, add `avg` aggregation to `T | summarize count(), min(Value) by Id`, by altering view query to `T | summarize count(), min(Value), avg(Value) by Id`.
-    * Changing operators other than the summarize operator - for example, filtering out some records by altering  `T | summarize arg_max(Timestamp, *) by User` to `T | where User != 'someone' | summarize arg_max(Timestamp, *) by User`. 
-    * Altering with no change to the query, because of a change in source table - for example, assume a view of `T | summarize arg_max(Timestamp, *) by Id`, which isn't set to `autoUpdateSchema` (see[.create materialized-view](#create-materialized-view) command). If a column is added or removed from the source table of the view, the view will be automatically disabled. Executing the alter command, with the exact same query, will change the materialized view's schema to align with new table schema. The view still must be explicitly enabled following the change, using the [enable materialized view](materialized-view-enable-disable.md) command.
 
 * **Impact on existing data:**
     * Altering the materialized view has no impact on existing data.
@@ -303,7 +301,7 @@ The `dimensionTables` is the only supported property in materialized-view alter 
 
 ## Cancel materialized-view creation
 
-Cancel the process of Materialized View creation when using the `backfill` option. This action is useful when creation is taking too long and you want to abort it while running.  
+Cancel the process of materialized view creation when using the `backfill` option. This action is useful when creation is taking too long and you want to abort it while running.  
 
 > [!WARNING]
 > The materialized view can't be restored after running this command.
