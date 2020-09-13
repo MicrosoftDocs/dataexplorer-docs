@@ -325,3 +325,4 @@ The following resources supply additional information about the Kafka connector.
 * [Hands on lab for ingestion from Confluent IaaS Kafka on AKS in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/distributed-mode/confluent-kafka/README.md)
 * [Big data architecture](https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer)
 * [Log connector issues, request support](https://github.com/Azure/kafka-sink-azure-kusto/issues)
+ 
