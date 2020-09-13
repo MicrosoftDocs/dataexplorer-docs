@@ -90,26 +90,27 @@ The query editor has two modes. The query builder mode and raw mode. Use the que
 1. Below the data source, select **Database** and choose your database from the drop-down. 
 1. Select **From** and choose your table from the drop-down.
 
-    :::image type="content" source="media/grafana/query-builder-from-table.PNG" alt-text="Select table in query builder":::    
+    :::image type="content" source="media/grafana/query-builder-from-table.png" alt-text="Select table in query builder":::    
 
 1. Once the table is defined, filter the data, select the values to present, and define the grouping of those values.
 
     **Filter**
-    1. Click **+** to right of **Where (filter)** to select from the drop-down 1 or more filters. 
-    1. Select the desired column name from the auto populated list of columns in your table. For each filter, select define the value(s) by using the applicable operator. The filter value control is auto populated by sampling the values in the selected filter column. This is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto query language.
+    1. Click **+** to right of **Where (filter)** to select 1 or more filters from the drop-down. 
+    1. Select the desired column name from the auto populated list of columns in your table. 
+    1. For each filter, select define the value(s) by using the applicable operator. The filter value control is auto populated by sampling the values in the selected filter column. This is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto query language.
 
     **Value selection** 
     1. Click **+** to right of **value columns** to select from the drop-down the value columns that will be displayed in the panel.
-    1. For each value column, set the aggregation type from the drop-down to show the needed data. One or more value columns can be set. This is equivalent to using the [summarize operator](kusto/query/summarizeoperator.md) in Kusto query language.
+    1. For each value column, set the aggregation type from the drop-down. 
+    One or more value columns can be set. This is equivalent to using the [summarize operator](kusto/query/summarizeoperator.md).
 
     **Value grouping** 
-    1. Click **+** to right of **Group by (summarize)** to select from the drop-down one or more columns that will be used to arrange the values into the groups. This is equivalent to the group expression in the summarize operator.
-    1. 
+    1. Click **+** to right of **Group by (summarize)** to select from the drop-down one or more columns that will be used to arrange the values into the groups. 
+    This is equivalent to the group expression in the summarize operator.
 
 1. To execute the query, select **Run query**.
 
- 
-
+    :::image type="content" source="media/grafana/query-builder-all-values.png" alt-text="Query builder with all values complete":::
 
 > [!TIP]
 > While finalizing the settings in the query builder, a Kusto query language query is created at the bottom of the page. This query shows the logic you constructed with the graphical query editor. Move to raw mode to edit your query.
