@@ -29,7 +29,7 @@ The health of materialized views describes the resource usage, rate of failures,
 | where Database  == "DatabaseName" and ClientActivityId startswith "DN.MaterializedViews;ViewName;"
 ```
 
-## Troubleshooting
+## Why is my materialized view unhealthy?
 
 The `MaterializedViewHealth` metric indicates whether a Materialized View is healthy. A materialized view can become unhealthy for any or all of the following reasons:
 * The materialization process is failing. 
@@ -39,9 +39,9 @@ If failure is because of cluster capacity, execution will succeed. However, the 
 * Materialization never skips any data, even if there are constant failures. View is always guaranteed to return the most up-to-date snapshot of the query, based on *all* records in the source table. Constant failures will significantly degrade query performance, but won't cause incorrect results in view queries.
 * Failures can occur because of transient errors (CPU/memory/networking failures) or permanent ones (for example, the source table was changed and the materialized view query is syntactically invalid). The materialized view will be automatically disabled if there are schema changes that are inconsistent with the view definition, or if the materialized view query is no longer semantically valid. For all other failures, the system will continue materialization attempts until the root cause is fixed.
 
-### Why is my materialized view unhealthy?
+### How to fix unhealthy views
 
-The following examples can help you diagnose unhealthy views:
+The following examples can help you diagnose and fix unhealthy views:
 
 |Diagnostic | Reason | Action|
 |---|---|---|

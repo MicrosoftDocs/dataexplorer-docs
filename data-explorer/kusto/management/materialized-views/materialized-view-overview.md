@@ -11,11 +11,11 @@ ms.date: 08/30/2020
 ---
 # Materialized views (preview)
 
-Materialized views expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh).
+[Materialized views](../../query/materializedviewfunction.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh).
 Querying a materialized view is expected to be more performant than running the aggregation directly over the source table.
 
 > [!NOTE] 
-> Materialized views have some limitations, and are not guaranteed to work well for all scenarios. Carefully read through this article and the [Performance considerations](#performance-considerations) section prior to starting to work with the feature.
+> Materialized views have some [limitations](#known-issues-and-limitations), and are not guaranteed to work well for all scenarios. Pay attention to [performance considerations](#performance-considerations) before working with the feature.
 
 ## Key features
 
@@ -73,3 +73,10 @@ Track health and performance using [materialized view monitoring](materialized-v
     * [move extents](../move-extents.md) from other tables into the source table of the materialized view. Move extents may fail with the following error: `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
     * [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
 * Continuous export from a materialized view isn't supported.
+
+## Next steps
+
+* [Create or alter materialized view](materialized-view-create-alter.md)
+* [Materialized views show commands](materialized-view-show-commands.md)
+* [Materialized view principals](materialized-view-principals.md)
+* [Materialized views monitoring](materialized-view-monitoring.md)
