@@ -15,7 +15,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network endpoint and returns the results of the query. This plugin is primarily designed for querying small datasets, for example, enriching data with reference data stored in [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/).
+The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network endpoint and returns the results of the query. This plugin is designed for querying small datasets. For example, use the  `cosmosdb_sql_request` plugin to enrich data with reference data stored in [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/).
 
 ## Syntax
 
