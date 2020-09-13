@@ -273,7 +273,7 @@ The following aggregation functions are supported:
 
 |Argument|Type|Description
 |----------------|-------|---|
-|ViewName|String|Materialized view name. See [restrictions](#restrictions)|
+|ViewName|String|Materialized view name. See [limitations](#alter-materialized-view-limitations).|
 |SourceTableName|String|Name of source table on which the view is defined.|
 |Query|String|The materialized view query.|
 

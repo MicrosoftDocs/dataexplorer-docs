@@ -16,4 +16,4 @@ ms.author: orspodek
 |MaterializedViewRecordsInDelta            | Records count | Avg | The number of records currently in the non-processed part of the source table. For more information, see [behind the scenes](../kusto/management/materialized-views/materialized-view-overview.md#how-materialized-views-work)| Database, MaterializedViewName |
 |MaterializedViewExtentsRebuild            | Extents count | Avg | The number of extents rebuilt in the materialization cycle.| Database, MaterializedViewName|
 |MaterializedViewExtentsRebuildConcurrency | Number of concurrent operations | Avg | The concurrency of extents rebuilt in the materialization cycle.| Database, MaterializedViewName|
-|MaterializedViewDataLoss                  | 1       | Max     | Metric is fired when unprocessed source data is approaching retention. | Database, MaterializedViewName, Kind |
+|MaterializedViewDataLoss                  | 1       | Max    | Metric is fired when unprocessed source data is approaching retention. | Database, MaterializedViewName, Kind |
