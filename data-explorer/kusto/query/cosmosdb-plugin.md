@@ -4,7 +4,7 @@ description: This article describes the cosmosdb_sql_request plugin in Azure Dat
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: miwalia
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/11/2020
@@ -15,7 +15,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network endpoint and returns the results of the query. This plugin is designed for querying small datasets. For example, use the  `cosmosdb_sql_request` plugin to enrich data with reference data stored in [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/).
+The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network endpoint and returns the results of the query. This plugin is primarily designed for querying small datasets, for example, enriching data with reference data stored in [Azure Cosmos DB](/azure/cosmos-db/).
 
 ## Syntax
 
@@ -38,7 +38,7 @@ The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network e
         * `preferredLocations` to control which region the data is queried from. <br>
         **Example:**  `['East US']`
 
-## Prerequisites
+## Set callout policy
 
 The plugin makes callouts to the Cosmos DB. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `cosmosdb` to the target *CosmosDbUri*.
 
@@ -61,15 +61,19 @@ The following example shows how to define the callout policy for CosmosDB. It's 
 
 ## Examples
 
-1. The following example uses the *cosmosdb_sql_request* plugin to send a SQL query to fetch data from Cosmos DB using its SQL API.
+### SQL query from Cosmos DB
+
+The following example uses the *cosmosdb_sql_request* plugin to send a SQL query to fetch data from Cosmos DB using its SQL API.
 
     ```kusto
     evaluate cosmosdb_sql_request(
       'AccountEndpoint=https://cosmosdbacc.documents.azure.com:443/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;',
       'SELECT * from c')
     ```
-    
-1. The following example uses SQL query parameters and queries the data from an alternate region. For more information, see [`preferredLocations`](https://docs.microsoft.com/azure/cosmos-db/tutorial-global-distribution-sql-api?tabs=dotnetv2%2Capi-async#preferred-locations).
+
+### Query from alternate region
+
+The following example uses SQL query parameters and queries the data from an alternate region. For more information, see [`preferredLocations`](/azure/cosmos-db/tutorial-global-distribution-sql-api?tabs=dotnetv2%2Capi-async#preferred-locations).
 
     ```kusto
     evaluate cosmosdb_sql_request(
@@ -79,7 +83,7 @@ The following example shows how to define the callout policy for CosmosDB. It's 
         dynamic({'preferredLocations': ['East US']}))
     | where lastName == 'Smith'
     ```
-    
+
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
