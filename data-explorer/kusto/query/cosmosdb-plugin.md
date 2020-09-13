@@ -40,7 +40,7 @@ The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network e
 
 ## Prerequisites
 
-The plugin makes callouts to the Cosmos DB. Make sure that the cluster's [callout policy](https://docs.microsoft.com/bs-latn-ba/azure/data-explorer/kusto/management/calloutpolicy) enables calls of type `cosmosdb` to the target *CosmosDbUri*.
+The plugin makes callouts to the Cosmos DB. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `cosmosdb` to the target *CosmosDbUri*.
 
 The following example shows how to define the callout policy for CosmosDB. It's recommended to restrict it to specific endpoints (`my_endpoint1`, `my_endpoint2`).
 
@@ -69,7 +69,7 @@ The following example shows how to define the callout policy for CosmosDB. It's 
       'SELECT * from c')
     ```
     
-1. The following example is identical to the previous one, except that its using SQL query parameters and it's querying the data from an alternate region (check Cosmos DB [documentation](https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-global-distribution-sql-api?tabs=dotnetv2%2Capi-async#preferred-locations) for details on `preferredLocations`).
+1. The following example uses SQL query parameters and queries the data from an alternate region. For more information, see [`preferredLocations`](https://docs.microsoft.com/azure/cosmos-db/tutorial-global-distribution-sql-api?tabs=dotnetv2%2Capi-async#preferred-locations).
 
     ```kusto
     evaluate cosmosdb_sql_request(
