@@ -56,7 +56,7 @@ The Azure Data Explorer proxy flow:
 You can run the queries using client tools that support Kusto queries, such as: Kusto Explorer, ADX Web UI, Jupyter Kqlmagic, Flow, PowerQuery, PowerShell, Jarvis, Lens, REST API.
 
 > [!NOTE]
-> The ADX Proxy can be used for data retrieval only. ".show" management commands are supported.  [Function supportability](#function-supportability)
+> The ADX Proxy feature is used for data retrieval only. For more information, see [Function supportability](#function-supportability).
 
 > [!TIP]
 > * Database name should have the same name as the resource specified in the proxy cluster. Names are case sensitive.
