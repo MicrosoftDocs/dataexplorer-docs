@@ -35,11 +35,11 @@ Displays information about the materialized view's definition and its current st
 |Name  |String |The name of the materialized view.
 |SourceTable|String|The source table of the materialized view.
 |Query|String|The materialized view query.
-|MaterializedTo|datetime|The max materialized ingestion_time() timestamp in source table. For more information, see [behind the scenes](materialized-view-overview.md#how-materialized-views-work).
+|MaterializedTo|datetime|The max materialized ingestion_time() timestamp in source table. For more information, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work).
 |LastRun|datetime |The last time materialization was run.
-|LastRunResult|String|Result of last run. Completed for successful runs, Failed otherwise.
-|IsHealthy|bool|True when view is considered healthy, false otherwise. View is considered healthy if it was successfully materialized up to the last hour (`MaterializedTo` is greater than `ago(1h)`).
-|IsEnabled|bool|True when view is enabled (see [Disable or enable materialized view](materialized-view-enable-disable.md)).
+|LastRunResult|String|Result of last run. Returns `Completed` for successful runs, otherwise `Failed`.
+|IsHealthy|bool|`True` when view is considered healthy, `False` otherwise. View is considered healthy if it was successfully materialized up to the last hour (`MaterializedTo` is greater than `ago(1h)`).
+|IsEnabled|bool|`True` when view is enabled (see [Disable or enable materialized view](materialized-view-enable-disable.md)).
 |Folder|string|The materialized view folder.
 |DocString|string|The materialized view doc string.
 |AutoUpdateSchema|bool|Whether the view is enabled for auto updates.
@@ -47,7 +47,7 @@ Displays information about the materialized view's definition and its current st
 
 ## .show materialized-view schema
 
-Gets the schema of the materialized view in CSL/JSON.
+Returns the schema of the materialized view in CSL/JSON.
 
 ### Syntax
 
@@ -69,9 +69,8 @@ Gets the schema of the materialized view in CSL/JSON.
 
 ## .show materialized-view extents
 
-Returns the extents in the *materialized* part of the materialized view.
+Returns the extents in the *materialized* part of the materialized view. For a definition of the *materialized* portion, see [behind the scenes](materialized-view-overview.md#how-materialized-views-work).
 
-For a definition of the *materialized* portion, see [behind the scenes](materialized-view-overview.md#how-materialized-views-work).
 This command provides the same details as the [show table extents](../show-extents.md#table-level) command.
 
 ### Syntax
@@ -98,7 +97,7 @@ Returns failures that occurred as part of the materialization process of the mat
 |---|---|---
 |Name  |Timestamp |Failure timestamp.
 |OperationId  |String |The operation id of the run that failed.
-|Name|String|The Materialized View name.
+|Name|String|The materialized view name.
 |LastSuccessRun|datetime|The timestamp of the last run that completed successfully.
 |FailureKind|String|Type of failure.
 |Details|String|Failure details.
