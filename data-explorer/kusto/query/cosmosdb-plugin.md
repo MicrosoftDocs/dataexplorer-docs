@@ -24,7 +24,7 @@ The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network e
 ## Arguments
 
 * *ConnectionString*: A `string` literal indicating the connection string that points to the Cosmos DB collection to query. It must include *AccountEndpoint*, *Database*, and *Collection*. It may include *AccountKey* if a master key is used for authentication. <br>
-   Example: `'AccountEndpoint=https://cosmosdbacc.documents.azure.com:443/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'`
+   **Example:** `'AccountEndpoint=https://cosmosdbacc.documents.azure.com:443/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'`
 
 * *SqlQuery*: A `string` literal indicating the query to execute. Required.
 
