@@ -58,7 +58,6 @@ You can run the queries using client tools that support Kusto queries, such as: 
 > [!NOTE]
 > The ADX Proxy can be used for data retrieval only. ".show" management commands are supported.  [Function supportability](#Function-supportability)
 
-
 > [!TIP]
 > * Database name should have the same name as the resource specified in the proxy cluster. Names are case sensitive.
 > * In cross cluster queries, make sure that the naming of Application Insights apps and Log Analytics workspaces is correct.
