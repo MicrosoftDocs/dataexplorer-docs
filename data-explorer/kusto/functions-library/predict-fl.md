@@ -1,6 +1,6 @@
 ---
-title: predict_lf() - Azure Data Explorer
-description: This article describes the predict_lf() user-defined function in Azure Data Explorer.
+title: predict_fl() - Azure Data Explorer
+description: This article describes the predict_fl() user-defined function in Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
@@ -8,16 +8,16 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/09/2020
 ---
-# predict_lf()
+# predict_fl()
 
-The function `predict_lf()` predicts using an existing trained machine learning model. This model was built using [Scikit-learn](https://scikit-learn.org/stable/), serialized to string, and saved in a standard Azure Data Explorer table.
+The function `predict_fl()` predicts using an existing trained machine learning model. This model was built using [Scikit-learn](https://scikit-learn.org/stable/), serialized to string, and saved in a standard Azure Data Explorer table.
 
 > [!NOTE]
-> `predict_lf()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
+> `predict_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
 
 ## Syntax
 
-`T | invoke predict_lf(`*models_tbl*`,` *model_name*`,` *features_cols*`,` *pred_col*`)`
+`T | invoke predict_fl(`*models_tbl*`,` *model_name*`,` *features_cols*`,` *pred_col*`)`
 
 ## Arguments
 
@@ -31,7 +31,7 @@ The function `predict_lf()` predicts using an existing trained machine learning 
 
 ## Usage
 
-`predict_lf()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`predict_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
 # [Ad hoc](#tab/adhoc)
 
@@ -39,7 +39,7 @@ For ad hoc usage, embed the code using the [let statement](../query/letstatement
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let predict_lf=(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
+let predict_fl=(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
     let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
@@ -73,7 +73,7 @@ let predict_lf=(samples:(*), models_tbl:(name:string, timestamp:datetime, model:
 OccupancyDetection 
 | where Test == 1
 | extend pred_Occupancy=false
-| invoke predict_lf(ML_Models, 'Occupancy', pack_array('Temperature', 'Humidity', 'Light', 'CO2', 'HumidityRatio'), 'pred_Occupancy')
+| invoke predict_fl(ML_Models, 'Occupancy', pack_array('Temperature', 'Humidity', 'Light', 'CO2', 'HumidityRatio'), 'pred_Occupancy')
 | summarize n=count() by Occupancy, pred_Occupancy
 ```
 
@@ -86,7 +86,7 @@ For persistent usage, use [.create function](../management/create-function.md). 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create function with (folder = "Packages\\ML", docstring = "Predict using ML model, build by Scikit-learn")
-predict_lf(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
+predict_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
     let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
@@ -126,7 +126,7 @@ predict_lf(samples:(*), models_tbl:(name:string, timestamp:datetime, model:strin
 OccupancyDetection 
 | where Test == 1
 | extend pred_Occupancy=false
-| invoke predict_lf(ML_Models, 'Occupancy', pack_array('Temperature', 'Humidity', 'Light', 'CO2', 'HumidityRatio'), 'pred_Occupancy')
+| invoke predict_fl(ML_Models, 'Occupancy', pack_array('Temperature', 'Humidity', 'Light', 'CO2', 'HumidityRatio'), 'pred_Occupancy')
 | summarize n=count() by Occupancy, pred_Occupancy
 ```
 
