@@ -1503,11 +1503,11 @@
         href: ./kusto/management/materialized-views/materialized-view-overview.md
       - name: Create or alter materialized view
         href: ./kusto/management/materialized-views/materialized-view-create-alter.md
-      - name: Show materialized view commands
+      - name: Show materialized view 
         href: ./kusto/management/materialized-views/materialized-view-show-commands.md
       - name: Drop materialized view
         href: ./kusto/management/materialized-views/materialized-view-drop.md
-      - name: Disable / enable materialized view
+      - name: Disable enable materialized view
         href: ./kusto/management/materialized-views/materialized-view-enable-disable.md
     - name: System information
       href: ./kusto/management/systeminfo.md
