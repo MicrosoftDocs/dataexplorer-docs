@@ -21,7 +21,7 @@ There are two ways to access the Azure Advisor recommendations.
 ### View Azure Advisor recommendations for your Azure Data Explorer cluster
 
 1. In the Azure portal, go to your Azure Data Explorer cluster page. 
-1. In the left-hand menu, under **Monitoring**, select **Advisor recommendations**. This opens a list of recommendations for that cluster.
+1. In the left-hand menu, under **Monitoring**, select **Advisor recommendations**. A list of recommendations opens for that cluster.
 
     :::image type="content" source="media/azure-advisor/resource-group-advisor-recommendations.png" alt-text="Azure Advisor recommendations for your Azure Data Explorer cluster"::: 
 
@@ -71,14 +71,14 @@ A cluster is considered unused if it has a small amount of data, queries, and in
 
 #### Correctly size Azure Data Explorer clusters to optimize cost
 
-The recommendation **right-size Azure Data Explorer clusters for optimal cost** is given to a cluster whose size or VM SKU aren't cost-optimized. This recommendation is based on parameters such as its data capacity, CPU and ingestion utilization during the last week. You can reduce costs by re-sizing to the recommended cluster configuration using [scale down](manage-cluster-vertical-scaling.md) and/or [scale in](manage-cluster-horizontal-scaling.md).
+The recommendation **right-size Azure Data Explorer clusters for optimal cost** is given to a cluster whose size or VM SKU aren't cost-optimized. This recommendation is based on parameters such as its data capacity, CPU and ingestion utilization during the last week. You can reduce costs by resizing to the recommended cluster configuration using [scale-down](manage-cluster-vertical-scaling.md) and [scale-in](manage-cluster-horizontal-scaling.md).
 
 It's recommended to use [optimized autoscale configuration](manage-cluster-horizontal-scaling.md#optimized-autoscale). If you're using optimized autoscale and you see the size recommendation on your cluster, either your current VM SKU or the optimized autoscale minimum and maximum instance count boundaries aren't optimized. The recommended instance count should be included in your defined boundaries.
 
 #### Reduce cache for Azure Data Explorer tables
 
-The **Reduce Azure Data Explorer table cache period for cluster cost optimization** recommendation is given for a cluster that can reduce its table's cache policy. This recommendation is based on the queries look-back period during the past 30 days. You see the top 10 tables with potential cache savings. 
-To help you reduce costs, this recommendation will only be offered if the cluster can scale-in or scale-down following the cache policy change. Advisor checks if the cluster is "bounded by data" meaning the cluster has low CPU and low ingestion utilization, but due to high data capacity the cluster hasn't been able to scale-in or scale-down.
+The **reduce Azure Data Explorer table cache period for cluster cost optimization** recommendation is given for a cluster that can reduce its table's cache policy. This recommendation is based on the queries look-back period during the past 30 days. You see the top 10 tables with potential cache savings. 
+This recommendation is only offered if the cluster can scale-in or scale-down following the cache policy change. Advisor checks if the cluster is "bounded by data" meaning the cluster has low CPU and low ingestion utilization, but because of high data capacity the cluster couldn't scale-in or scale-down.
 
 ### Performance recommendations
 
@@ -89,10 +89,10 @@ Performance recommendations include:
 
 #### Correctly size Azure Data Explorer clusters to optimize performance
 
-The recommendation **Right-size Azure Data Explorer clusters for optimal performance** is given to a cluster whose size or VM SKU aren't performance-optimized. This recommendation is based on parameters such as its data capacity as well as CPU and ingestion utilization during the last week. You can improve the performance by correctly sizing to the recommended cluster configuration using [scale up](manage-cluster-vertical-scaling.md) or [scale out](manage-cluster-horizontal-scaling.md) to the recommended cluster configuration.
+The recommendation **right-size Azure Data Explorer clusters for optimal performance** is given to a cluster whose size or VM SKU aren't performance-optimized. This recommendation is based on parameters such as its data capacity, and CPU and ingestion utilization during the last week. You can improve the performance by correctly sizing to the recommended cluster configuration using [scale-up](manage-cluster-vertical-scaling.md) and [scale-out](manage-cluster-horizontal-scaling.md).
 
-It's recommended to use [optimized autoscale configuration](manage-cluster-horizontal-scaling.md#optimized-autoscale). If you're using optimized autoscale and you see the size recommendation on your cluster, either your current VM SKU or the optimized autoscale minimum and maximum instance count boundaries aren't optimized. The recommended instance count should be included in your defined boundaries.
+It's recommended to use [optimized autoscale configuration](manage-cluster-horizontal-scaling.md#optimized-autoscale). If you use optimized autoscale and you see the size recommendation on your cluster, either your current VM SKU or the optimized autoscale minimum and maximum instance count boundaries aren't optimized. The recommended instance count should be included in your defined boundaries.
 
 #### Update cache policy for Azure Data Explorer tables
 
-The **review Azure Data Explorer table cache-period (policy) for better performance** recommendation is given for a cluster that requires a different look-back period (time filter) or a cache policy increase. This recommendation is based on the queries look-back period during the past 30 days. Most of the queries that ran in the last 30 days accessed data that wasn't in the cache, which may increase your query run-time.  You see the top 10 tables that accessed out-of-cache data ordered by query percentage.
+The **review Azure Data Explorer table cache-period (policy) for better performance** recommendation is given for a cluster that requires a different look-back period (time filter) or a greater cache policy. This recommendation is based on the queries look-back period during the past 30 days. Most of the queries that ran in the last 30 days accessed data that wasn't in the cache, which may increase your query run-time.  You see the top 10 tables that accessed out-of-cache data ordered by query percentage.
