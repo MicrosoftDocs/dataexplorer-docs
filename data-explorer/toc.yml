@@ -454,6 +454,8 @@
           href: ./kusto/query/bag-unpackplugin.md
         - name: basket plugin
           href: ./kusto/query/basketplugin.md
+        - name: cosmosdb_sql_request plugin
+          href: ./kusto/query/cosmosdb-plugin.md
         - name: dcount_intersect plugin
           href: ./kusto/query/dcount-intersect-plugin.md
         - name: diffpatterns plugin
