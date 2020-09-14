@@ -3,7 +3,7 @@ title: 'Ingest data from Kafka into Azure Data Explorer'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Kafka.
 author: orspod
 ms.author: orspodek
-ms.reviewer: 
+ms.reviewer: ankhanol
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/10/2020
@@ -74,7 +74,7 @@ You will get a JSON response as shown below. Note down the `appId`, `password` a
 
 ### Create a batch ingestion policy on the table for configurable ingestion latency
 
-The [ingestion policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/batchingpolicy) is a performance optimizer and includes three parameters, the first one met triggers an ingestion into Azure Data Explorer table.
+The [ingestion batching policy](kusto/management/batchingpolicy.md) is a performance optimizer and includes three parameters, the first one met triggers an ingestion into Azure Data Explorer table.
 
 ```kusto
 .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
@@ -297,7 +297,7 @@ Storms
 | render columnchart
 ```
 
-![](adx-query.png)
+![\\anagha - where is image file\\](adx-query.png)
 
 These are just few examples. Dig into the [Kusto Query Language documentation](https://docs.microsoft.com/azure/data-explorer/kusto/query/) or explore tutorials about [how to ingest JSON formatted sample data into Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-json-formats?tabs=kusto-query-language), using [scalar operators](https://docs.microsoft.com/azure/data-explorer/write-queries#scalar-operators), [timecharts](https://docs.microsoft.com/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer#timecharts), and so on.
 
@@ -323,6 +323,6 @@ The following resources supply additional information about the Kafka connector.
 * [Hands on lab for ingestion from Confluent Cloud Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/confluent-cloud/README.md)
 * [Hands on lab for ingestion from HDInsight Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/tree/master/kafka-integration/distributed-mode/hdinsight-kafka)
 * [Hands on lab for ingestion from Confluent IaaS Kafka on AKS in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/distributed-mode/confluent-kafka/README.md)
-* [Big data architecture](https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer)
+* [Big data architecture](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer)
 * [Log connector issues, request support](https://github.com/Azure/kafka-sink-azure-kusto/issues)
  
