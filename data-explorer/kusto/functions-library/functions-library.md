@@ -16,14 +16,14 @@ The following article contains a categorized list of user-defined functions.
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[predict_lf()](predict-lf.md)|Predict using an existing trained machine learning model. |
-|[predict_onnx_lf()](predict-onnx-lf.md)| Predict using an existing trained machine learning model in ONNX format. |
+|[predict_fl()](predict-fl.md)|Predict using an existing trained machine learning model. |
+|[predict_onnx_fl()](predict-onnx-fl.md)| Predict using an existing trained machine learning model in ONNX format. |
 
 ## Series processing functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[quantize_lf()](quantize-lf.md)|Quantize metric columns. |
-|[series_fit_poly_lf()](series-fit-poly-lf.md)|Fit a polynomial to series using regression analysis. |
-|[series_moving_avg_lf()](series-moving-avg-lf.md)|Applies a moving average filter on a series. |
-|[series_rolling_lf()](series-rolling-lf.md)|Applies a rolling aggregation function on a series. |
+|[quantize_fl()](quantize-fl.md)|Quantize metric columns. |
+|[series_fit_poly_fl()](series-fit-poly-fl.md)|Fit a polynomial to series using regression analysis. |
+|[series_moving_avg_fl()](series-moving-avg-fl.md)|Applies a moving average filter on a series. |
+|[series_rolling_fl()](series-rolling-fl.md)|Applies a rolling aggregation function on a series. |

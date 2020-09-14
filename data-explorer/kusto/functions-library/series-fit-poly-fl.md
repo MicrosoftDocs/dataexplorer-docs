@@ -1,6 +1,6 @@
 ---
-title: series_fit_poly_lf() - Azure Data Explorer
-description: This article describes the series_fit_poly_lf() user-defined function in Azure Data Explorer.
+title: series_fit_poly_fl() - Azure Data Explorer
+description: This article describes the series_fit_poly_fl() user-defined function in Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
@@ -8,16 +8,16 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/08/2020
 ---
-# series_fit_poly_lf()
+# series_fit_poly_fl()
 
-The function `series_fit_poly_lf()` applies a polynomial regression on a series. It takes a table that contains multiple series (dynamic numerical array) and generates, for each series, the high-order polynomial that best fits it using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). This function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
+The function `series_fit_poly_fl()` applies a polynomial regression on a series. It takes a table that contains multiple series (dynamic numerical array) and generates, for each series, the high-order polynomial that best fits it using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). This function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
 
 > [!NOTE]
-> `series_fit_poly_lf()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage). For linear regression of an evenly spaced series, as created by [make-series operator](../query/make-seriesoperator.md), use the native function [series_fit_line()](../query/series-fit-linefunction.md).
+> `series_fit_poly_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage). For linear regression of an evenly spaced series, as created by [make-series operator](../query/make-seriesoperator.md), use the native function [series_fit_line()](../query/series-fit-linefunction.md).
 
 ## Syntax
 
-`T | invoke series_fit_poly_lf(`*y_series*`,` *y_fit_series*`,` *fit_coeff*`,` *degree*`, [`*x_series*`,` *x_istime*]`)`
+`T | invoke series_fit_poly_fl(`*y_series*`,` *y_fit_series*`,` *fit_coeff*`,` *degree*`, [`*x_series*`,` *x_istime*]`)`
   
 ## Arguments
 
@@ -30,7 +30,7 @@ The function `series_fit_poly_lf()` applies a polynomial regression on a series.
 
 ## Usage
 
-`series_fit_poly_lf()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`series_fit_poly_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
 # [Ad hoc](#tab/adhoc)
 
@@ -38,7 +38,7 @@ For ad hoc usage, embed its code using [let statement](../query/letstatement.md)
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let series_fit_poly_udf=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
+let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
 {
     let kwargs = pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
     let code=
@@ -80,7 +80,7 @@ let max_t = datetime(2016-09-03);
 demo_make_series1
 | make-series num=count() on TimeStamp from max_t-1d to max_t step 5m by OsVer
 | extend fnum = dynamic(null), coeff=dynamic(null), fnum1 = dynamic(null), coeff1=dynamic(null)
-| invoke series_fit_poly_lf('num', 'fnum', 'coeff', 5)
+| invoke series_fit_poly_fl('num', 'fnum', 'coeff', 5)
 | render timechart with(ycolumns=num, fnum)
 ```
 
@@ -93,7 +93,7 @@ For persistent usage, use [.create function](../management/create-function.md). 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Fit a polynomial of a specified degree to a series")
-series_fit_poly_lf(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=false)
+series_fit_poly_fl(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=false)
 {
     let kwargs = pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
     let code=
@@ -141,13 +141,13 @@ let max_t = datetime(2016-09-03);
 demo_make_series1
 | make-series num=count() on TimeStamp from max_t-1d to max_t step 5m by OsVer
 | extend fnum = dynamic(null), coeff=dynamic(null), fnum1 = dynamic(null), coeff1=dynamic(null)
-| invoke series_fit_poly_lf('num', 'fnum', 'coeff', 5)
+| invoke series_fit_poly_fl('num', 'fnum', 'coeff', 5)
 | render timechart with(ycolumns=num, fnum)
 ```
 
 ---
 
-:::image type="content" source="images/series-fit-poly-lf/usage-example.png" alt-text="Graph showing 5th order polynomial fit to a regular time series" border="false":::
+:::image type="content" source="images/series-fit-poly-fl/usage-example.png" alt-text="Graph showing 5th order polynomial fit to a regular time series" border="false":::
 
 ## Additional examples
 
@@ -168,11 +168,11 @@ The following examples assume the function is already installed:
     | where hourofday(TimeStamp) % 6 != 0   //  delete every 6th hour to create unevenly spaced time series
     | summarize TimeStamp=make_list(TimeStamp), num=make_list(num) by OsVer
     | extend fnum = dynamic(null), coeff=dynamic(null)
-    | invoke series_fit_poly_lf('num', 'fnum', 'coeff', 8, 'TimeStamp', True)
+    | invoke series_fit_poly_fl('num', 'fnum', 'coeff', 8, 'TimeStamp', True)
     | render timechart with(ycolumns=num, fnum)
     ```
     
-    :::image type="content" source="images/series-fit-poly-lf/irregular-time-series.png" alt-text="Graph showing 8th order polynomial fit to an irregular time series" border="false":::
+    :::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="Graph showing 8th order polynomial fit to an irregular time series" border="false":::
 
 1. 5th order polynomial with noise on x & y axes
 
@@ -188,11 +188,11 @@ The following examples assume the function is already installed:
     | order by x asc 
     | summarize x=make_list(x), y=make_list(y)
     | extend y_fit = dynamic(null), coeff=dynamic(null)
-    | invoke series_fit_poly_lf('y', 'y_fit', 'coeff', 5, 'x')
+    | invoke series_fit_poly_fl('y', 'y_fit', 'coeff', 5, 'x')
     |fork (project-away coeff) (project coeff | mv-expand coeff)
     | render linechart
     ```
         
-    :::image type="content" source="images/series-fit-poly-lf/fifth-order-noise.png" alt-text="Graph of fit of 5th order polynomial with noise on x & y axes":::
+    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="Graph of fit of 5th order polynomial with noise on x & y axes":::
        
-    :::image type="content" source="images/series-fit-poly-lf/fifth-order-noise-table.png" alt-text="Coefficients of fit of 5th order polynomial with noise" border="false":::
+    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="Coefficients of fit of 5th order polynomial with noise" border="false":::
