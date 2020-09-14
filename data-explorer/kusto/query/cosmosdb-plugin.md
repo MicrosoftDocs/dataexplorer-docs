@@ -30,8 +30,8 @@ The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network e
 | *SqlParameters* | A constant value of type `dynamic` that holds key-value pairs to pass as parameters along with the query. Parameter names must begin with `@`. | Optional |
 | *Options* | A constant value of type `dynamic` that holds more advanced settings as key-value pairs. | Optional |
 || ----*Supported Options settings include:*-----
-|      `armResourceId` | Retrieve the API key from the Azure Resource Manager (ARM) <br> **Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc`| 
-|  `token` | Provide the Azure AD access token used to authenticate with ARM.
+|      `armResourceId` | Retrieve the API key from the Azure Resource Manager <br> **Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc`| 
+|  `token` | Provide the Azure AD access token used to authenticate with the Azure Resource Manager.
 | `preferredLocations` | Control which region the data is queried from. <br> **Example:** `['East US']` | |  
 
 ## Set callout policy
