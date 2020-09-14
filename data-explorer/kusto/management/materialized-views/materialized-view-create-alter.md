@@ -28,7 +28,7 @@ A [materialized view](materialized-view-overview.md) is an aggregation query ove
         * The materialized view is created empty, and will only include records ingested after view creation. Creation of this kind returns immediately, doesn't require `async`, and view will be immediately available for query.
 
 * Once created, the materialized views can be altered using the [alter materialized-view](#alter-materialized-view) command. Not all changes are supported.
-* The materialized view derives the database retention policy by default. The policy can be changed using [control commands](materialized-view-policies.md#control-commands).
+* The materialized view derives the database retention policy by default. The policy can be changed using [control commands](../retentionpolicy.md#materialized-views).
 
 ## .create materialized-view
 

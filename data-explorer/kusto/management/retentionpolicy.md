@@ -1,6 +1,6 @@
 ---
 title: Kusto retention policy controls how data is removed - Azure Data Explorer
-description: This article describes Retention policy in Azure Data Explorer.
+description: This article describes retention policies in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -185,4 +185,4 @@ The syntax for `alter | alter-merge | show | delete` is identical to the corresp
  and soft delete is 30 days, records for `Day=d` are dropped 30 days after the last update for the record. 
     
   > [!NOTE]
-  > The exact deletion time is imprecise, as with regular tables. For more information, see [retention policy](../retentionpolicy.md).
+  > The exact deletion time is imprecise, as with regular tables.

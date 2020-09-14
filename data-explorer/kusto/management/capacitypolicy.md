@@ -92,13 +92,13 @@ partitioning operations is above 90%.
 
 ## Materialized views capacity policy
 
-Change the capacity policy using the [alter cluster policy capacity](#alter-cluster-policy-capacity). This change requires `AllDatabasesAdmin` permissions.
+Change the capacity policy using the [alter cluster policy capacity](capacity-policy.md#alter-cluster-policy-capacity). This change requires `AllDatabasesAdmin` permissions.
 The policy can be used to change concurrency settings for materialized views. This change may be required when there's more than a single materialized view defined on a cluster, and the cluster can't keep up with the materialization of all views. By default, concurrency settings are relatively low to ensure that materialization doesn't impact cluster's performance.
 
 > [!WARNING]
 > The materialized view capacity policy should only be increased if the cluster's resources are well (low CPU, available memory). Increasing these values when resources are limited may result in resources exhaustion and will badly impact the cluster's performance.
 
-The materialized views capacity policy is part of the cluster's [capacity policy](../capacitypolicy.md), and has the following JSON representation:
+The materialized views capacity policy is part of the cluster's [capacity policy](#capacity-policy), and has the following JSON representation:
 
 <!-- csl -->
 ``` 
@@ -112,6 +112,7 @@ The materialized views capacity policy is part of the cluster's [capacity policy
   }
 }
 ```
+
 ### Properties
 
 Property | Description
@@ -129,7 +130,7 @@ Maximum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * `Ma
 
 * Default values are 50 total concurrency rebuilds and maximum 5 per node.
 * The `ExtentsRebuildCapacity` policy serves as an upper limit only. The actual value used is dynamically determined by the system, based on current cluster's conditions (memory, CPU) and an estimation of the amount of resources required by the rebuild operation. In practice, concurrency can be much lower than the value specified in capacity policy.
-    * The `MaterializedViewExtentsRebuild` and `MaterializedViewExtentsRebuildConcurrency` metrics provide information about how many extents were rebuilt in each materialization cycle, and the concurrency used. For more information, see [materialized views monitoring](materialized-view-monitoring.md).
+    * The `MaterializedViewExtentsRebuild` and `MaterializedViewExtentsRebuildConcurrency` metrics provide information about how many extents were rebuilt in each materialization cycle, and the concurrency used. For more information, see [materialized views monitoring](materialized-views/materialized-view-overview.md#materialized-views-monitoring).
 
 ## Defaults
 
