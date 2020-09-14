@@ -105,7 +105,7 @@ The query editor has two modes. The query builder mode and raw mode. Use the que
     One or more value columns can be set. This is equivalent to using the [summarize operator](kusto/query/summarizeoperator.md).
 
     **Value grouping** 
-    1. Click **+** to right of **Group by (summarize)** to select from the drop-down 1 or more columns that will be used to arrange the values into groups. 
+    Click **+** to right of **Group by (summarize)** to select from the drop-down 1 or more columns that will be used to arrange the values into groups. 
     This is equivalent to the group expression in the summarize operator.
 
 1. To execute the query, select **Run query**.
@@ -117,7 +117,7 @@ The query editor has two modes. The query builder mode and raw mode. Use the que
 
 1. Select **Edit KQL** to move to raw mode and edit your query using the flexibility and power of the Kusto query language.
 
-:::image type="content" source="media/grafana/query-builder-with-raw query.png" alt-text="Query builder with raw query":::
+:::image type="content" source="media/grafana/query-builder-with-raw-query.png" alt-text="Query builder with raw query":::
 
 ### Raw mode
 
