@@ -57,7 +57,7 @@ The following example shows how to define the callout policy for Cosmos DB. It's
 
 ## Examples
 
-### SQL query from Cosmos DB
+### Query Cosmos DB
 
 The following example uses the *cosmosdb_sql_request* plugin to send a SQL query to fetch data from Cosmos DB using its SQL API.
 
@@ -67,7 +67,7 @@ evaluate cosmosdb_sql_request(
   'SELECT * from c')
 ```
 
-### Query from alternate region
+### Query Cosmos DB with parameters
 
 The following example uses SQL query parameters and queries the data from an alternate region. For more information, see [`preferredLocations`](/azure/cosmos-db/tutorial-global-distribution-sql-api?tabs=dotnetv2%2Capi-async#preferred-locations).
 
