@@ -56,6 +56,9 @@ The Azure Data Explorer proxy flow:
 
 You can run the queries using client tools that support Kusto queries, such as: Kusto Explorer, ADX Web UI, Jupyter Kqlmagic, Flow, PowerQuery, PowerShell, Jarvis, Lens, REST API.
 
+> [!NOTE]
+> The ADX Proxy feature is used for data retrieval only. For more information, see [Function supportability](#function-supportability).
+
 > [!TIP]
 > * Database name should have the same name as the resource specified in the proxy cluster. Names are case sensitive.
 > * In cross cluster queries, make sure that the naming of Application Insights apps and Log Analytics workspaces is correct.
@@ -72,13 +75,13 @@ Perf | take 10 // Demonstrate query through the proxy on the LA workspace
 
 ![Query LA workspace](media/adx-proxy/query-la.png)
 
-### Cross query of your LA or AI ADX Proxy cluster and the ADX native cluster 
+### Cross query of your LA or AI ADX Proxy cluster and the ADX native cluster
 
 When you run cross cluster queries from the proxy, verify your ADX native cluster is selected in the left pane. The following examples demonstrate combining ADX cluster tables (using `union`) with LA workspace.
 
 ```kusto
 union StormEvents, cluster('https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>').Perf
-| take 10 
+| take 10
 ```
 
 ```kusto
@@ -100,7 +103,7 @@ The following commands are supported by the proxy:
 * `.show function {FunctionName}`
 * `.show database {DatabaseName} schema as json`
 
-The following image depicts an example of querying a tabular function from the Azure Data Explorer Web UI. 
+The following image depicts an example of querying a tabular function from the Azure Data Explorer Web UI.
 To use the function, run the name in the Query window.
 
   [ ![Query a tabular function from Azure Data Explorer Web UI](media/adx-proxy/function-query-adx-proxy.png)](media/adx-proxy/function-query-adx-proxy.png#lightbox)

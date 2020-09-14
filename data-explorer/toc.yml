@@ -1678,6 +1678,22 @@
         href: ./kusto/api/monaco/monaco-kusto.md
       - name: Embed web UX in an iFrame
         href: ./kusto/api/monaco/host-web-ux-in-iframe.md
+  - name: Functions library
+    items:
+    - name: List of functions
+      href: kusto/functions-library/functions-library.md
+    - name: predict_fl()
+      href: kusto/functions-library/predict-fl.md
+    - name: predict_onnx_fl()
+      href: kusto/functions-library/predict-onnx-fl.md
+    - name: quantize_fl()
+      href: kusto/functions-library/quantize-fl.md
+    - name: series_fit_poly_fl()
+      href: kusto/functions-library/series-fit-poly-fl.md
+    - name: series_moving_avg_fl()
+      href: kusto/functions-library/series-moving-avg-fl.md
+    - name: series_rolling_fl()
+      href: kusto/functions-library/series-rolling-fl.md
 - name: Resources
   items:
   - name: Blog
