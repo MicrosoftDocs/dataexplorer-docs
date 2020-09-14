@@ -33,27 +33,31 @@ The following are common scenarios that can be addressed by using a materialized
 * Reduce the resolution of data by calculating periodic statistics over the raw data using various [aggregation functions](materialized-view-create-alter.md#supported-aggregation-functions) by period of time.
     * For example, use `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain an up-to-date snapshot of distinct users per day).
 
-## How materialized views work
-
-A materialized view is made of two components:
-
-* A *materialized* part - a physical Azure Data Explorer table holding aggregated records from the source table, which have already been processed.  This table always holds the minimal possible number of records - a single record per the dimension's combination (as in the actual aggregation result).
-* A *delta* - the newly ingested records in the source table, which haven't yet been processed.
-
-Querying the Materialized View *combines* the materialized part with the delta part, providing an up-to-date result of the aggregation query. 
-
-The offline materialization process ingests new records from the *delta* to the materialized table, and replaces existing records. The replacement is done by rebuilding extents that hold records to replace. Both processes (ingestion and [extents rebuild](../extents-overview.md)) require available ingestion capacity. Clusters in which the available ingestion capacity is low may not be able to materialize the view frequently enough, which will negatively impact the materialized view performance. The bigger the *delta* is, the slower queries will perform.
-
-If records in the *delta* constantly intersect with all data shards in the *materialized* part, each materialization cycle will require rebuilding the entire *materialized* part, and may not keep up with the pace. The ingestion rate will be higher than the materialization rate. In that case, the view will become unhealthy and the *delta* will constantly grow. Monitor the number of extent rebuilds in each materialization cycle using [metrics](#materialized-views-monitoring).
-
 ## Materialized views queries
 
 * Querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. The query combines the materialized part of the view with all records in the source table which haven't been materialized yet. For more information, see [How materialized views work](#how-materialized-views-work).
-* Once a view is created, it can be queried like any other table in the database. 
-* The view can participate in cross-cluster or cross-database queries.
-* Materialized views are not included in wildcard unions or searches.
+* Once a view is created, it can be queried like any other table in the database.
 * Syntax for querying the view is the view name, like a table reference.
 * The [materialized_view() function](../../query/materializedviewfunction.md) supports a way of querying the materialized part only of the view, while specifying the max latency the user is willing to tolerate. This option is not guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you are willing to sacrifice some freshness in favor of performance, for example for telemetry dashboards.
+* The view can participate in cross-cluster or cross-database queries.
+* Materialized views are not included in wildcard unions or searches.
+
+### Query examples
+
+1. Query the entire view. The most recent records in source table are included:
+    
+    <!-- csl -->
+    ```kusto
+    ViewName
+    ```
+
+1. Query the materialized part of the view only, regardless of when it was last materialized. 
+
+    <!-- csl -->
+    ```kusto
+    materialized_view("ViewName")
+    ```
+    
 
 ## Performance considerations
 
@@ -69,14 +73,6 @@ The main contributors that can impact a materialized view health are:
 
 * **Materialized view definition**: The materialized view definition must be defined according to query pattern for best query performance. For more information, see [create command performance tips](materialized-view-create-alter.md#performance-tips).
 
-## Security roles and permissions
-
-A materialized view can be created by a [Database Admin](../access-control/role-based-authorization.md). The creator of the materialized view automatically receives admin permissions on the view. Additional admins can be added afterwards, using the commands below. Any change to the view post creation requires database admin permissions, or admin permissions on the materialized view. For more information, see [managing materialized view security roles](../security-roles.md#managing-materialized-view-security-roles).
-
-## Policies
-
-A materialized view defines policies similarly to the definition of table policies in Azure Data Explorer. By default, the materialized view derives the database effective policy, except for [merge policy](../mergepolicy.md#materialized-views-merge-policy). The policies apply to the *materialized* part of the view. Policies can be altered post-creation using materialized view policies control commands. The cluster's [capacity policy](../capacitypolicy.md) includes settings for the [concurrency in which materialized views](../capacitypolicy.md#materialized-views-capacity-policy) are executed.
-
 ## Known issues and limitations
 
 * A materialized view can't be created:
@@ -89,6 +85,45 @@ A materialized view defines policies similarly to the definition of table polici
     * Can't be a restricted table or a table with row level security enabled.
 * [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
 * Continuous export from a materialized view isn't supported.
+
+## Security roles and permissions
+
+A materialized view can be created by a [Database Admin](../access-control/role-based-authorization.md). The creator of the materialized view automatically receives admin permissions on the view. Additional admins can be added afterwards, using the commands below. Any change to the view post creation requires database admin permissions, or admin permissions on the materialized view. For more information, see [managing materialized view security roles](../security-roles.md#managing-materialized-view-security-roles).
+
+## Policies
+
+A materialized view defines policies similarly to the definition of table policies in Azure Data Explorer. By default, the materialized view derives the database effective policy, except for [merge policy](../mergepolicy.md#materialized-views-merge-policy). The policies apply to the *materialized* part of the view. Policies can be altered post-creation using materialized view policies control commands. The cluster's [capacity policy](../capacitypolicy.md) includes settings for the [concurrency in which materialized views](../capacitypolicy.md#materialized-views-capacity-policy) are executed.
+
+### Merge policy
+
+The merge policy [for materialized views](materialized-views/materialized-view-overview.md) is automatically set by the system to optimize the view's performance. The value of `MaxRangeInHours` in the merge policy may be increased to avoid small [extents (data shards)](extents-overview.md) in the materialized view. This value is increased only if the effective retention policy of the materialized view has `Recoverability` set to `true`, indicating that the materialized view's retention policy isn't strict. Records may be deleted later than configured to improve the performance of the materialized view. Manually setting the `MaxRangeInHours` in the merge policy, or disabling `Recoverability` in the retention policy disables the automatic intervention in the policy, and may badly impact the view's performance.
+
+### Retention policy
+
+* **Retention policy of source table:** If the source table records aren't required for anything other than the materialized view, the retention policy of the source table can be dropped to a minimum. The materialized view will still store the data according to the retention policy set on the view. While materialized views are in preview mode, the recommendation is to allow a minimum of at least seven days and recoverability set to true. This setting allows for fast recovery for errors and for diagnostic purposes.
+
+    > [!NOTE]
+    > Zero retention policy on the source table is currently not supported.
+
+* **Retention policy of materialized view:** The retention policy on the materialized view is related to the last update of a record. For example, if the view aggregation is: <br>
+      `T | summarize count() by Day=bin(Timestamp, 1d)` <br>
+ and soft delete is 30 days, records for `Day=d` are dropped 30 days after the last update for the record. 
+    
+  > [!NOTE]
+  > The exact deletion time is imprecise, as with regular tables.
+
+## How materialized views work
+
+A materialized view is made of two components:
+
+* A *materialized* part - a physical Azure Data Explorer table holding aggregated records from the source table, which have already been processed.  This table always holds the minimal possible number of records - a single record per the dimension's combination (as in the actual aggregation result).
+* A *delta* - the newly ingested records in the source table, which haven't yet been processed.
+
+Querying the Materialized View *combines* the materialized part with the delta part, providing an up-to-date result of the aggregation query. 
+
+The offline materialization process ingests new records from the *delta* to the materialized table, and replaces existing records. The replacement is done by rebuilding extents that hold records to replace. Both processes (ingestion and [extents rebuild](../extents-overview.md)) require available ingestion capacity. Clusters in which the available ingestion capacity is low may not be able to materialize the view frequently enough, which will negatively impact the materialized view performance. The bigger the *delta* is, the slower queries will perform.
+
+If records in the *delta* constantly intersect with all data shards in the *materialized* part, each materialization cycle will require rebuilding the entire *materialized* part, and may not keep up with the pace. The ingestion rate will be higher than the materialization rate. In that case, the view will become unhealthy and the *delta* will constantly grow. Monitor the number of extent rebuilds in each materialization cycle using [metrics](#materialized-views-monitoring).
 
 ## Materialized views monitoring
 
