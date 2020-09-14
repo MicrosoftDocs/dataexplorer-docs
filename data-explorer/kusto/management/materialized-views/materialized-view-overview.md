@@ -58,7 +58,6 @@ The following are common scenarios that can be addressed by using a materialized
     materialized_view("ViewName")
     ```
     
-
 ## Performance considerations
 
 The main contributors that can impact a materialized view health are:
@@ -86,40 +85,14 @@ The main contributors that can impact a materialized view health are:
 * [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
 * Continuous export from a materialized view isn't supported.
 
-## Security roles and permissions
-
-A materialized view can be created by a [Database Admin](../access-control/role-based-authorization.md). The creator of the materialized view automatically receives admin permissions on the view. Additional admins can be added afterwards, using the commands below. Any change to the view post creation requires database admin permissions, or admin permissions on the materialized view. For more information, see [managing materialized view security roles](../security-roles.md#managing-materialized-view-security-roles).
-
-## Policies
-
-A materialized view defines policies similarly to the definition of table policies in Azure Data Explorer. By default, the materialized view derives the database effective policy, except for [merge policy](../mergepolicy.md#materialized-views-merge-policy). The policies apply to the *materialized* part of the view. Policies can be altered post-creation using materialized view policies control commands. The cluster's [capacity policy](../capacitypolicy.md) includes settings for the [concurrency in which materialized views](../capacitypolicy.md#materialized-views-capacity-policy) are executed.
-
-### Merge policy
-
-The merge policy [for materialized views](materialized-views/materialized-view-overview.md) is automatically set by the system to optimize the view's performance. The value of `MaxRangeInHours` in the merge policy may be increased to avoid small [extents (data shards)](extents-overview.md) in the materialized view. This value is increased only if the effective retention policy of the materialized view has `Recoverability` set to `true`, indicating that the materialized view's retention policy isn't strict. Records may be deleted later than configured to improve the performance of the materialized view. Manually setting the `MaxRangeInHours` in the merge policy, or disabling `Recoverability` in the retention policy disables the automatic intervention in the policy, and may badly impact the view's performance.
-
-### Retention policy
-
-* **Retention policy of source table:** If the source table records aren't required for anything other than the materialized view, the retention policy of the source table can be dropped to a minimum. The materialized view will still store the data according to the retention policy set on the view. While materialized views are in preview mode, the recommendation is to allow a minimum of at least seven days and recoverability set to true. This setting allows for fast recovery for errors and for diagnostic purposes.
-
-    > [!NOTE]
-    > Zero retention policy on the source table is currently not supported.
-
-* **Retention policy of materialized view:** The retention policy on the materialized view is related to the last update of a record. For example, if the view aggregation is: <br>
-      `T | summarize count() by Day=bin(Timestamp, 1d)` <br>
- and soft delete is 30 days, records for `Day=d` are dropped 30 days after the last update for the record. 
-    
-  > [!NOTE]
-  > The exact deletion time is imprecise, as with regular tables.
-
 ## How materialized views work
 
 A materialized view is made of two components:
 
-* A *materialized* part - a physical Azure Data Explorer table holding aggregated records from the source table, which have already been processed.  This table always holds the minimal possible number of records - a single record per the dimension's combination (as in the actual aggregation result).
+* A *materialized* part - an Azure Data Explorer table holding aggregated records from the source table, which have already been processed.  This table always holds the minimal possible number of records - a single record per the dimension's combination (as in the actual aggregation result).
 * A *delta* - the newly ingested records in the source table, which haven't yet been processed.
 
-Querying the Materialized View *combines* the materialized part with the delta part, providing an up-to-date result of the aggregation query. 
+Querying the materialized miew *combines* the materialized part with the delta part, providing an up-to-date result of the aggregation query. 
 
 The offline materialization process ingests new records from the *delta* to the materialized table, and replaces existing records. The replacement is done by rebuilding extents that hold records to replace. Both processes (ingestion and [extents rebuild](../extents-overview.md)) require available ingestion capacity. Clusters in which the available ingestion capacity is low may not be able to materialize the view frequently enough, which will negatively impact the materialized view performance. The bigger the *delta* is, the slower queries will perform.
 
@@ -127,7 +100,7 @@ If records in the *delta* constantly intersect with all data shards in the *mate
 
 ## Materialized views monitoring
 
-The health of materialized views describes the resource usage, rate of failures, and latency in execution. Monitor the materialized view's health in the following ways:
+Monitor the materialized view's health in the following ways:
 
 * Monitor the `IsHealthy` property returned from [show materialized-view](materialized-view-show-commands.md#show-materialized-view).
 * Check for failures using [show materialized-view failures](materialized-view-show-commands.md#show-materialized-view-failures).
@@ -175,5 +148,6 @@ If there are no materialization failures, `MaterializedViewResult` metric will b
 
 ## Next steps
 
-* [Create or alter materialized view](materialized-view-create-alter.md)
+* [.create materialized view](materialized-view-create.md)
+* [.alter materialized-view](materialized-view-alter.md)
 * [Materialized views show commands](materialized-view-show-commands.md)

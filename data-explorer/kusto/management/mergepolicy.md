@@ -54,6 +54,7 @@ The merge policy contains the following properties:
     * Defines whether `Merge` operations are enabled, in which case, they're less preferred than `Rebuild` operations.
 * **MaxRangeInHours**:
     * Defaults to 8.
+        * Defaults to 14 days in [materialized views](materialized-views/materialized-view-overview.md), unless recoverability is disabled in the materialized views' effective[retention policy](retentionpolicy.md).
     * Maximum allowed difference, in hours, between any two different extents' creation times, so that they can still be merged.
     * Timestamps are of extent creation, and don't relate to the actual data contained in the extents.
     * Applies to both Merge and Rebuild operations.
