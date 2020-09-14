@@ -1,6 +1,6 @@
 ---
-title: Deploy Azure Data Explorer into your Virtual Network
-description: Learn how to deploy Azure Data Explorer into your Virtual Network
+title: Enable Private Endpoint between ADX and Event Hub
+description: Enable Private Endpoint between ADX and Event Hub
 author: gunjand
 ms.author: gunjand
 ms.reviewer: orspodek
