@@ -1682,18 +1682,18 @@
     items:
     - name: List of functions
       href: kusto/functions-library/functions-library.md
-    - name: predict_lf()
-      href: kusto/functions-library/predict-lf.md
-    - name: predict_onnx_lf()
-      href: kusto/functions-library/predict-onnx-lf.md
-    - name: quantize_lf()
-      href: kusto/functions-library/quantize-lf.md
-    - name: series_fit_poly_lf()
-      href: kusto/functions-library/series-fit-poly-lf.md
-    - name: series_moving_avg_lf()
-      href: kusto/functions-library/series-moving-avg-lf.md
-    - name: series_rolling_lf()
-      href: kusto/functions-library/series-rolling-lf.md
+    - name: predict_fl()
+      href: kusto/functions-library/predict-fl.md
+    - name: predict_onnx_fl()
+      href: kusto/functions-library/predict-onnx-fl.md
+    - name: quantize_fl()
+      href: kusto/functions-library/quantize-fl.md
+    - name: series_fit_poly_fl()
+      href: kusto/functions-library/series-fit-poly-fl.md
+    - name: series_moving_avg_fl()
+      href: kusto/functions-library/series-moving-avg-fl.md
+    - name: series_rolling_fl()
+      href: kusto/functions-library/series-rolling-fl.md
 - name: Resources
   items:
   - name: Blog

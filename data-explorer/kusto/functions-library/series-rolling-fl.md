@@ -1,6 +1,6 @@
 ---
-title: series_rolling_lf() - Azure Data Explorer
-description: This article describes the series_rolling_lf() user-defined function in Azure Data Explorer.
+title: series_rolling_fl() - Azure Data Explorer
+description: This article describes the series_rolling_fl() user-defined function in Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
@@ -8,17 +8,17 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/08/2020
 ---
-# series_rolling_lf()
+# series_rolling_fl()
 
 
-The function `series_rolling_lf()` applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
+The function `series_rolling_fl()` applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
 > [!NOTE]
-> `series_rolling_lf()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).  This function ontains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
+> `series_rolling_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).  This function ontains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
 
 ## Syntax
 
-`T | invoke series_rolling_lf(`*y_series*`,` *y_rolling_series*`,` *n*`,` *aggr*`,` *aggr_params*`,` *center*`)`
+`T | invoke series_rolling_fl(`*y_series*`,` *y_rolling_series*`,` *n*`,` *aggr*`,` *aggr_params*`,` *center*`)`
 
 ## Arguments
 
@@ -57,7 +57,7 @@ This function supports any aggregation function from [numpy](https://numpy.org/)
 
 ## Usage
 
-`series_rolling_lf()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`series_rolling_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
 # [Ad hoc](#tab/adhoc)
 
@@ -65,7 +65,7 @@ For ad hoc usage, embed its code using [let statement](../query/letstatement.md)
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let series_rolling_udf = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
+let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
 {
     let kwargs = pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
     let code =
@@ -95,7 +95,7 @@ let series_rolling_udf = (tbl:(*), y_series:string, y_rolling_series:string, n:i
 demo_make_series1
 | make-series num=count() on TimeStamp step 1h by OsVer
 | extend rolling_med = dynamic(null)
-| invoke series_rolling_lf('num', 'rolling_med', 9, 'median')
+| invoke series_rolling_fl('num', 'rolling_med', 9, 'median')
 | render timechart
 ```
 
@@ -108,7 +108,7 @@ For persistent usage, use [.create function](../management/create-function.md). 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Rolling window functions on a series")
-series_rolling_lf(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic, center:bool=true)
+series_rolling_fl(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic, center:bool=true)
 {
     let kwargs = pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
     let code =
@@ -143,13 +143,13 @@ series_rolling_lf(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr
 demo_make_series1
 | make-series num=count() on TimeStamp step 1h by OsVer
 | extend rolling_med = dynamic(null)
-| invoke series_rolling_lf('num', 'rolling_med', 9, 'median', dynamic([null]))
+| invoke series_rolling_fl('num', 'rolling_med', 9, 'median', dynamic([null]))
 | render timechart
 ```
 
 ---
 
-:::image type="content" source="images/series-rolling-lf/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements" border="false":::
+:::image type="content" source="images/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements" border="false":::
 
 ## Additional examples
 
@@ -165,13 +165,13 @@ The following examples assume the function is already installed:
     demo_make_series1
     | make-series num=count() on TimeStamp step 1h by OsVer
     | extend rolling_min = dynamic(null), rolling_max = dynamic(null), rolling_pct = dynamic(null)
-    | invoke series_rolling_lf('num', 'rolling_min', 15, 'min', dynamic([null]))
-    | invoke series_rolling_lf('num', 'rolling_max', 15, 'max', dynamic([null]))
-    | invoke series_rolling_lf('num', 'rolling_pct', 15, 'percentile', dynamic([75]))
+    | invoke series_rolling_fl('num', 'rolling_min', 15, 'min', dynamic([null]))
+    | invoke series_rolling_fl('num', 'rolling_max', 15, 'max', dynamic([null]))
+    | invoke series_rolling_fl('num', 'rolling_pct', 15, 'percentile', dynamic([75]))
     | render timechart
     ```
     
-    :::image type="content" source="images/series-rolling-lf/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements" border="false":::
+    :::image type="content" source="images/series-rolling-fl/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements" border="false":::
 
 1. Calculate rolling trimmed mean
         
@@ -184,9 +184,9 @@ The following examples assume the function is already installed:
     | extend y=iff(x % 13 == 0, 2.0, iff(x % 23 == 0, -2.0, rand()))
     | summarize x=make_list(x), y=make_list(y)
     | extend yr = dynamic(null)
-    | invoke series_rolling_lf('y', 'yr', 7, 'tmean', pack_array(pack_array(-2, 2), pack_array(false, false))) //  trimmed mean: ignoring values outside [-2,2] inclusive
+    | invoke series_rolling_fl('y', 'yr', 7, 'tmean', pack_array(pack_array(-2, 2), pack_array(false, false))) //  trimmed mean: ignoring values outside [-2,2] inclusive
     | render linechart
     ```
     
-    :::image type="content" source="images/series-rolling-lf/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean" border="false":::
+    :::image type="content" source="images/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean" border="false":::
     
