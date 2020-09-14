@@ -13,7 +13,7 @@ ms.date: 08/30/2020
 
 Drops a materialized view.
 
-To perform this command you must have [Database Admin](../access-control/role-based-authorization.md) or [materialized view admin permissions](materialized-view-overview.md#security-roles-and-permissions).
+To perform this command you must have [Database Admin](../access-control/role-based-authorization.md) or materialized view admin permissions.
 
 ## Syntax
 

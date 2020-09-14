@@ -8,11 +8,10 @@ ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
----'
-
+---
 # .alter materialized-view
 
-Altering the materialized view requires [Database Admin](../access-control/role-based-authorization.md) permissions, or an admin of the materialized view. For more information, see[materialized view security roles and permissions](materialized-view-overview.md#security-roles-and-permissions).
+Altering the materialized view requires [Database Admin](../access-control/role-based-authorization.md) permissions, or an admin of the materialized view. For more information, see[security roles management](../security-roles.md).
 
 > [!WARNING]
 > Be extra cautious when altering a materialized view. Incorrect use may lead to data loss.
@@ -30,14 +29,13 @@ Altering the materialized view requires [Database Admin](../access-control/role-
 
 |Argument|Type|Description
 |----------------|-------|---|
-|ViewName|String|Materialized view name. See [limitations](#alter-materialized-view-limitations).|
+|ViewName|String|Materialized view name.|
 |SourceTableName|String|Name of source table on which the view is defined.|
 |Query|String|The materialized view query.|
 
 ### Properties
 
-The `dimensionTables` is the only supported property in materialized-view alter command. This property should be used in case query references dimension tables. For more information, see the [.create materialized-view](#create-materialized-view) command.
-
+The `dimensionTables` is the only supported property in materialized-view alter command. This property should be used in case query references dimension tables. For more information, see the [.create materialized-view](materialized-view-create.md) command.
 
 ### Applicable use cases
 

@@ -30,7 +30,7 @@ The following are common scenarios that can be addressed by using a materialized
 
 * Query last record per entity using [arg_max() (aggregation function)](../../query/arg-max-aggfunction.md).
 * De-duplicate records in a table using [any() (aggregation function)](../../query/any-aggfunction.md).
-* Reduce the resolution of data by calculating periodic statistics over the raw data using various [aggregation functions](materialized-view-create-alter.md#supported-aggregation-functions) by period of time.
+* Reduce the resolution of data by calculating periodic statistics over the raw data using various [aggregation functions](materialized-view-create.md#supported-aggregation-functions) by period of time.
     * For example, use `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain an up-to-date snapshot of distinct users per day).
 
 ## Materialized views queries
@@ -70,7 +70,7 @@ The main contributors that can impact a materialized view health are:
 
 * **Number of materialized views in cluster:** The above considerations apply to each individual materialized view defined in the cluster. Each view consumes its own resources, and many views will compete with each other on available resources. There are no hard-coded limits to the number of materialized views in a cluster. However, the general recommendation is to have no more than 10 materialized views on a cluster. The [capacity policy](../capacitypolicy.md#materialized-views-capacity-policy) may be adjusted if more than a single materialized view is defined in the cluster.
 
-* **Materialized view definition**: The materialized view definition must be defined according to query pattern for best query performance. For more information, see [create command performance tips](materialized-view-create-alter.md#performance-tips).
+* **Materialized view definition**: The materialized view definition must be defined according to query pattern for best query performance. For more information, see [create command performance tips](materialized-view-create.md#performance-tips).
 
 ## Known issues and limitations
 
