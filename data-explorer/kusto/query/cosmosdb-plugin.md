@@ -42,7 +42,7 @@ The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network e
 
 The plugin makes callouts to the Cosmos DB. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `cosmosdb` to the target *CosmosDbUri*.
 
-The following example shows how to define the callout policy for CosmosDB. It's recommended to restrict it to specific endpoints (`my_endpoint1`, `my_endpoint2`).
+The following example shows how to define the callout policy for Cosmos DB. It's recommended to restrict it to specific endpoints (`my_endpoint1`, `my_endpoint2`).
 
 ```kusto
 [
