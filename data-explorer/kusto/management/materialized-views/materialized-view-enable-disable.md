@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 08/30/2020
 ---
 
-# Disable or enable materialized view
+# .disable | .enable materialized-view
 
 A materialized view can be disabled in any of the following ways:
 

@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/30/2020
 ---
-# Drop materialized view 
+# .drop materialized-view 
 
 Drops a materialized view.
 

@@ -1,4 +1,3 @@
-
 ---
 title: Alter materialized view - Azure Data Explorer
 description: This article describes how to Alter materialized views in Azure Data Explorer.
