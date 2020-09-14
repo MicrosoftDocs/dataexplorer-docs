@@ -55,6 +55,11 @@ The following example shows how to define the callout policy for Cosmos DB. It's
 ]
 ```
 
+The following example shows an alter callout policy command for cosmosdb CalloutType
+```kusto
+.alter cluster policy callout @'[{"CalloutType": "cosmosdb", "CalloutUriRegex": "\\.documents\\.azure\\.com", "CanCall": true}]'
+```
+
 ## Examples
 
 ### Query Cosmos DB
