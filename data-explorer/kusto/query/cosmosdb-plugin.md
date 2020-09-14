@@ -23,26 +23,22 @@ The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network e
 
 ## Arguments
 
-* *ConnectionString*: A `string` literal indicating the connection string that points to the Cosmos DB collection to query. It must include *AccountEndpoint*, *Database*, and *Collection*. It may include *AccountKey* if a master key is used for authentication. <br>
-   **Example:** `'AccountEndpoint=https://cosmosdbacc.documents.azure.com:443/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'`
-
-* *SqlQuery*: A `string` literal indicating the query to execute. Required.
-
-* *SqlParameters*: A constant value of type `dynamic` that holds key-value pairs to pass as parameters along with the query. Parameter names must begin with `@`. Optional.
-  
-* *Options*: A constant value of type `dynamic` that holds more advanced settings as key-value pairs. Optional.
-    * Supported settings include:
-        * `armResourceId` to retrieve the API key from the Azure Resource Manager (ARM)<br>
-        **Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc`
-        * `token` to provide the Azure AD access token used to authenticate with ARM.
-        * `preferredLocations` to control which region the data is queried from. <br>
-        **Example:**  `['East US']`
+|Argument name | Description | Required/optional | Example 
+|---|---|---|---|
+| *ConnectionString* | A `string` literal indicating the connection string that points to the Cosmos DB collection to query. It must include *AccountEndpoint*, *Database*, and *Collection*. It may include *AccountKey* if a master key is used for authentication. | Required |  `'AccountEndpoint=https://cosmosdbacc.documents.azure.com:443/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'` |
+| *SqlQuery*| A `string` literal indicating the query to execute. | Required |
+| *SqlParameters* | A constant value of type `dynamic` that holds key-value pairs to pass as parameters along with the query. Parameter names must begin with `@`. | Optional |
+| *Options* | A constant value of type `dynamic` that holds more advanced settings as key-value pairs. | Optional. |
+|| ----*Supported Options settings include:*-----
+|      `armResourceId` | Retrieve the API key from the Azure Resource Manager (ARM) | |`/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc`
+|  `token` | Provide the Azure AD access token used to authenticate with ARM.
+| `preferredLocations` | Control which region the data is queried from. | |  `['East US']`
 
 ## Set callout policy
 
 The plugin makes callouts to the Cosmos DB. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `cosmosdb` to the target *CosmosDbUri*.
 
-The following example shows how to define the callout policy for CosmosDB. It's recommended to restrict it to specific endpoints (`my_endpoint1`, `my_endpoint2`).
+The following example shows how to define the callout policy for Cosmos DB. It's recommended to restrict it to specific endpoints (`my_endpoint1`, `my_endpoint2`).
 
 ```kusto
 [
