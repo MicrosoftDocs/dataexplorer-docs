@@ -17,7 +17,7 @@ Use the following video, to learn how to use Grafana's Azure Data Explorer plugi
 
 > [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
 
-Alternatively you can [configure the data source](#configure-the-data-source) and [visualize data](#visualize-data) as detailed in the article below.
+Instead you can [configure the data source](#configure-the-data-source) and [visualize data](#visualize-data) as detailed in the article below.
 
 ## Prerequisites
 
@@ -95,17 +95,17 @@ The query editor has two modes. The query builder mode and raw mode. Use the que
 1. Once the table is defined, filter the data, select the values to present, and define the grouping of those values.
 
     **Filter**
-    1. Click **+** to right of **Where (filter)** to select from the drop-down 1 or more columns in your table. 
+    1. Click **+** to right of **Where (filter)** to select from the drop-down one or more columns in your table. 
     1. For each filter, define the value(s) by using the applicable operator. 
-    This is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto query language.
+    This selection is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto query language.
 
     **Value selection**
     1. Click **+** to right of **value columns** to select from the drop-down the value columns that will be displayed in the panel.
     1. For each value column, set the aggregation type. 
-    One or more value columns can be set. This is equivalent to using the [summarize operator](kusto/query/summarizeoperator.md).
+    One or more value columns can be set. This selection is equivalent to using the [summarize operator](kusto/query/summarizeoperator.md).
 
-    **Value grouping** 
-    Click **+** to right of **Group by (summarize)** to select from the drop-down 1 or more columns that will be used to arrange the values into groups. 
+    **Value grouping** <br> 
+    Click **+** to right of **Group by (summarize)** to select from the drop-down one or more columns that will be used to arrange the values into groups. 
     This is equivalent to the group expression in the summarize operator.
 
 1. To execute the query, select **Run query**.
@@ -115,9 +115,9 @@ The query editor has two modes. The query builder mode and raw mode. Use the que
     > [!TIP]
     > While finalizing the settings in the query builder, a Kusto query language query is created. This query shows the logic you constructed with the graphical query editor. 
 
-    :::image type="content" source="media/grafana/query-builder-with-raw-query.png" alt-text="Query builder with raw query":::
-
 1. Select **Edit KQL** to move to raw mode and edit your query using the flexibility and power of the Kusto query language.
+
+:::image type="content" source="media/grafana/query-builder-with-raw-query.png" alt-text="Query builder with raw query":::
 
 ### Raw mode
 
