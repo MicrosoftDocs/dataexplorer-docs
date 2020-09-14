@@ -1,6 +1,6 @@
 ---
-title: Azure Advisor's Data Explorer Recommendations - Azure Data Explorer | Microsoft Docs
-description: This article describes Azure Advisor's Data Explorer Recommendations
+title: Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster
+description: This article describes Azure Advisor recommendations used to optimize your Azure Data Explorer cluster
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -27,7 +27,7 @@ There are two ways to access the Azure Advisor recommendations.
 
 ### View Azure Advisor recommendations for all clusters in your subscription
 
-1. In the Azure portal, go to the [Advisor resource](https://ms.portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/overview) 
+1. In the Azure portal, go to the [Advisor resource](https://ms.portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/overview). 
 1. In **Overview**, select the subscription(s) for which you want recommendations. 
 1. Select **Azure Data Explorer Clusters** and **Azure Data Explorer Databases** in the second drop-down.
  
@@ -102,3 +102,8 @@ It's recommended to use [optimized autoscale configuration](manage-cluster-horiz
 #### Update cache policy for Azure Data Explorer tables
 
 The **review Azure Data Explorer table cache-period (policy) for better performance** recommendation is given for a cluster that requires a different look-back period (time filter) or a greater cache policy. This recommendation is based on the queries look-back period during the past 30 days. Most of the queries that ran in the past 30 days accessed data that wasn't in the cache, which may increase your query run-time.  You see the top 10 tables that accessed out-of-cache data ordered by query percentage.
+
+## Next steps
+
+* [Manage cluster horizontal scaling (scale out) in Azure Data Explorer to accommodate changing demand](manage-cluster-horizontal-scaling.md)
+* [Manage cluster vertical scaling (scale up) in Azure Data Explorer to accommodate changing demand](manage-cluster-vertical-scaling.md)
