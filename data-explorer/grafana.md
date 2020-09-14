@@ -110,14 +110,14 @@ The query editor has two modes. The query builder mode and raw mode. Use the que
 
 1. To execute the query, select **Run query**.
 
-:::image type="content" source="media/grafana/query-builder-all-values.png" alt-text="Query builder with all values complete":::
+    :::image type="content" source="media/grafana/query-builder-all-values.png" alt-text="Query builder with all values complete":::
 
-> [!TIP]
-> While finalizing the settings in the query builder, a Kusto query language query is created. This query shows the logic you constructed with the graphical query editor. 
+    > [!TIP]
+    > While finalizing the settings in the query builder, a Kusto query language query is created. This query shows the logic you constructed with the graphical query editor. 
+
+    :::image type="content" source="media/grafana/query-builder-with-raw-query.png" alt-text="Query builder with raw query":::
 
 1. Select **Edit KQL** to move to raw mode and edit your query using the flexibility and power of the Kusto query language.
-
-:::image type="content" source="media/grafana/query-builder-with-raw-query.png" alt-text="Query builder with raw query":::
 
 ### Raw mode
 
