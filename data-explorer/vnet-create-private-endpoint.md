@@ -18,7 +18,9 @@ To set up your [Private Link service](https://docs.microsoft.com/azure/private-l
 ## Prerequisites
 
 * Create an [Azure Data Explorer cluster in your virtual network](https://docs.microsoft.com/azure/data-explorer/vnet-create-cluster-portal)
-* Disable network policies like [Private Link Service Policy](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) in your ADX cluster virtual network and [Private Endpoint Policy](https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy).
+* Disable network policies:
+  * In the Azure Data Explorer cluster virtual network, disable the [Private Link Service policy](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy).
+  * In the private endpoint virtual network, which can be the same as the Azure Data Explorer cluster virtual network, disable the [Private Endpoint policy](https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy).
 
 ## Create Private Link service
 
