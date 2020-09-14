@@ -32,7 +32,7 @@ A [materialized view](materialized-view-overview.md) is an aggregation query ove
 
 ## .create materialized-view
 
-Creating a materialized view requires [Database Admin](../access-control/role-based-authorization.md) permissions. The principal creating the view automatically becomes the admin of the view. For more information, see [materialized view principals](materialized-view-principals.md).
+Creating a materialized view requires [Database Admin](../access-control/role-based-authorization.md) permissions. The principal creating the view automatically becomes the admin of the view. For more information, see [materialized view security roles and permissions](materialized-view-overview.md#security-roles-and-permissions).
 
 Once the view is created, materialization constantly happens in the background, as needed. Use the [Show materialized-view](materialized-view-show-commands.md#show-materialized-view)command to retrieve information about the health of the view.
 
@@ -251,7 +251,7 @@ The following aggregation functions are supported:
 
 ## .alter materialized-view
 
-Altering the materialized view requires [Database Admin](../access-control/role-based-authorization.md) permissions, or an admin of the materialized view. For more information, see[Materialized view principals](materialized-view-principals.md).
+Altering the materialized view requires [Database Admin](../access-control/role-based-authorization.md) permissions, or an admin of the materialized view. For more information, see[materialized view security roles and permissions](materialized-view-overview.md#security-roles-and-permissions).
 
 > [!WARNING]
 > Be extra cautious when altering a materialized view. Incorrect use may lead to data loss.

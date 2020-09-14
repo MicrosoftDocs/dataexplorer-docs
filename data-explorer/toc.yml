@@ -1509,10 +1509,6 @@
         href: ./kusto/management/materialized-views/materialized-view-drop.md
       - name: Disable / enable materialized view
         href: ./kusto/management/materialized-views/materialized-view-enable-disable.md
-      - name: Policies
-        href: ./kusto/management/materialized-views/materialized-view-policies.md
-      - name: Access control
-        href: ./kusto/management/materialized-views/materialized-view-principals.md
     - name: System information
       href: ./kusto/management/systeminfo.md
       items:

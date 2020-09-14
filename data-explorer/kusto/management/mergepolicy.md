@@ -77,3 +77,7 @@ The merge policy contains the following properties:
 When a database is created, it's set with the default merge policy values mentioned above. The policy is by default inherited by all tables created in the database, unless their policies are explicitly overridden at table-level.
 
 For more information, see [control commands that allow you to manage merge policies for databases or tables](../management/merge-policy.md).
+
+## Materialized views merge policy
+
+The merge policy [for materialized views](materialized-views/materialized-view-overview.md) is automatically set by the system to optimize the view's performance. The value of `MaxRangeInHours` in the merge policy may be increased to avoid small [extents (data shards)](extents-overview.md) in the materialized view. This value is increased only if the effective retention policy of the materialized view has `Recoverability` set to `true`, indicating that the materialized view's retention policy isn't strict. Records may be deleted later than configured to improve the performance of the materialized view. Manually setting the `MaxRangeInHours` in the merge policy, or disabling `Recoverability` in the retention policy disables the automatic intervention in the policy, and may badly impact the view's performance.

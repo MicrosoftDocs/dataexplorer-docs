@@ -48,9 +48,8 @@ A retention policy includes the following properties:
 
 ## Control commands
 
-* Use [.show policy retention](../management/retention-policy.md) to show the current retention policy for a database or table.
-* Use [.alter policy retention](../management/retention-policy.md) to change current 
-retention policy of a database or a table.
+* Use [.show policy retention](../management/retention-policy.md) to show the current retention policy for a database, table, or [materialized view (preview)](materialized-views/materialized-view-overview.md).
+* Use [.alter policy retention](../management/retention-policy.md) to change current retention policy of a database, table, or [materialized view (preview)](materialized-views/materialized-view-overview.md)..
 
 ## Defaults
 
@@ -155,3 +154,35 @@ Set tables `MyTable1` and `MyTable2` to have a soft-delete period of seven days,
 .alter-merge table MyTable2 policy retention softdelete = 7d
 .alter table MySpecialTable policy retention "{}"
 ```
+
+## Materialized views
+
+The syntax for `alter | alter-merge | show | delete` is identical to the corresponding table commands, using `materialized-view` instead of `table`. 
+
+> [!WARNING]
+> Consult with the Azure Data Explorer team before altering the materialized view's merge policy.
+
+### Example
+
+<!-- csl -->
+```
+.alter-merge materialized-view ViewName policy retention softdelete = 100d recoverability = enabled
+.delete materialized-view ViewName policy retention  
+
+.show materialized-view ViewName policy caching
+.alter materialized-view ViewName policy caching hot = 30d
+```
+
+### Materialized view retention policy
+
+* **Retention policy of source table:** If the source table records aren't required for anything other than the materialized view, the retention policy of the source table can be dropped to a minimum. The materialized view will still store the data according to the retention policy set on the view. While materialized views are in preview mode, the recommendation is to allow a minimum of at least seven days and recoverability set to true. This setting allows for fast recovery for errors and for diagnostic purposes.
+
+    > [!NOTE]
+    > Zero retention policy on the source table is currently not supported.
+
+* **Retention policy of materialized view:** The retention policy on the materialized view is related to the last update of a record. For example, if the view aggregation is: <br>
+      `T | summarize count() by Day=bin(Timestamp, 1d)` <br>
+ and soft delete is 30 days, records for `Day=d` are dropped 30 days after the last update for the record. 
+    
+  > [!NOTE]
+  > The exact deletion time is imprecise, as with regular tables. For more information, see [retention policy](../retentionpolicy.md).

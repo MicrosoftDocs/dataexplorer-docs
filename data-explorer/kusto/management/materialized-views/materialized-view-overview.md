@@ -11,7 +11,7 @@ ms.date: 08/30/2020
 ---
 # Materialized views (preview)
 
-[Materialized views](../../query/materializedviewfunction.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-view-query) is expected to be more performant than running the aggregation directly over the source table.
+[Materialized views](../../query/materializedviewfunction.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries) is expected to be more performant than running the aggregation directly over the source table.
 
 > [!NOTE] 
 > Materialized views have some [limitations](#known-issues-and-limitations), and are not guaranteed to work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
@@ -22,7 +22,7 @@ ms.date: 08/30/2020
 
 * **Freshness:** A materialized view query always returns the most up-to-date results, independent of when materialization last took place. The query combines the *materialized* part of the view with the records in the source table, which haven't yet been materialized (the `delta` part), always providing the most up-to-date results.
 
-* **Cost reduction:** [Querying a materialized view](#materialized-view-query) consumes less resources from the cluster than doing the aggregation over the entire source table. Retention policy of source table can be reduced if only aggregation is required, and not the source data itself. This setup reduces hot cache costs for the source table.
+* **Cost reduction:** [Querying a materialized view](#materialized-views-queries) consumes less resources from the cluster than doing the aggregation over the entire source table. Retention policy of source table can be reduced if only aggregation is required, and not the source data itself. This setup reduces hot cache costs for the source table.
 
 ## Common scenarios
 
@@ -44,7 +44,7 @@ Querying the Materialized View *combines* the materialized part with the delta p
 
 The offline materialization process ingests new records from the *delta* to the materialized table, and replaces existing records. The replacement is done by rebuilding extents that hold records to replace. Both processes (ingestion and [extents rebuild](../extents-overview.md)) require available ingestion capacity. Clusters in which the available ingestion capacity is low may not be able to materialize the view frequently enough, which will negatively impact the materialized view performance. The bigger the *delta* is, the slower queries will perform.
 
-If records in the *delta* constantly intersect with all data shards in the *materialized* part, each materialization cycle will require rebuilding the entire *materialized* part, and may not keep up with the pace. The ingestion rate will be higher than the materialization rate. In that case, the view will become unhealthy and the *delta* will constantly grow. Monitor the number of extent rebuilds in each materialization cycle using [metrics](materialized-view-monitoring.md).
+If records in the *delta* constantly intersect with all data shards in the *materialized* part, each materialization cycle will require rebuilding the entire *materialized* part, and may not keep up with the pace. The ingestion rate will be higher than the materialization rate. In that case, the view will become unhealthy and the *delta* will constantly grow. Monitor the number of extent rebuilds in each materialization cycle using [metrics](#materialized-views-monitoring).
 
 ## Materialized views queries
 
@@ -73,6 +73,10 @@ The main contributors that can impact a materialized view health are:
 
 A materialized view can be created by a [Database Admin](../access-control/role-based-authorization.md). The creator of the materialized view automatically receives admin permissions on the view. Additional admins can be added afterwards, using the commands below. Any change to the view post creation requires database admin permissions, or admin permissions on the materialized view. For more information, see [managing materialized view security roles](../security-roles.md#managing-materialized-view-security-roles).
 
+## Policies
+
+A materialized view defines policies similarly to the definition of table policies in Azure Data Explorer. By default, the materialized view derives the database effective policy, except for [merge policy](../mergepolicy.md#materialized-views-merge-policy). The policies apply to the *materialized* part of the view. Policies can be altered post-creation using [materialized view policies control commands](#control-commands). The cluster's [capacity policy](../capacitypolicy.md) includes settings for the [concurrency in which materialized views](#capacity-policy) are executed.
+
 ## Known issues and limitations
 
 * A materialized view can't be created:
@@ -92,7 +96,7 @@ The health of materialized views describes the resource usage, rate of failures,
 
 * Monitor the `IsHealthy` property returned from [show materialized-view](materialized-view-show-commands.md#show-materialized-view).
 * Check for failures using [show materialized-view failures](materialized-view-show-commands.md#show-materialized-view-failures).
-* Monitor [metrics](#materialized-view-metrics) in the Azure portal.
+* Monitor [materialized view metrics](../../../using-metrics.md#materialized-view-metrics) in the Azure portal.
 
 > [!NOTE]
 > Materialization never skips any data, even if there are constant failures. The view is always guaranteed to return the most up-to-date snapshot of the query, based on all records in the source table. Constant failures will significantly degrade query performance, but won't cause incorrect results in view queries.
