@@ -21,7 +21,7 @@ Before you ingest or query data in Azure Data Explorer, you first must create a 
 
 ## Create a table
 
-1. In the left menu of the Web UI, right-click a *database* and select **Create table**.
+1. In the left menu of the Web UI, right-click a *database* and select **Create table (preview)**.
 
     :::image type="content" source="./media/one-click-table/create-table.png" alt-text="Create a table in the Azure Data Explorer Web UI":::
 
