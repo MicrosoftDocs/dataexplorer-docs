@@ -294,7 +294,6 @@ The new parameter is now visible in the parameter list at the top of the dashboa
 
 In single and multiple selection filters, type the value that you want. The filter search will present only the recently retrieved values that match the search term.
 
-> [!NOTE]
 > Filter search is only available when you have a few applicable recently retrieved values.
 
 ## Next Steps
