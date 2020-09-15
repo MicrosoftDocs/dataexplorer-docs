@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/13/2019
+ms.date: 09/09/2020
 ---
 
 # Visualize data from Azure Data Explorer in Grafana
@@ -17,7 +17,7 @@ Use the following video, to learn how to use Grafana's Azure Data Explorer plugi
 
 > [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
 
-Alternatively you can [configure the data source](#configure-the-data-source) and [visualize data](#visualize-data) as detailed in the article below.
+Instead you can [configure the data source](#configure-the-data-source) and [visualize data](#visualize-data) as detailed in the article below.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ You need the following to complete this article:
 
 * [Grafana version 5.3.0 or later](https://docs.grafana.org/installation/) for your operating system
 
-* The [Azure Data Explorer plugin](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) for Grafana
+* The [Azure Data Explorer plugin](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) for Grafana. Plugin version 3.0.5 or later is required to use Grafana query builder.
 
 * A cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
 
@@ -65,13 +65,13 @@ With the service principal assigned to the *viewers* role, you now specify prope
 
 ## Visualize data
 
-Now you've finished configuring Azure Data Explorer as a data source for Grafana, it's time to visualize data. We'll show a basic example here, but there's a lot more you can do. We recommend looking at [Write queries for Azure Data Explorer](write-queries.md) for examples of other queries to run against the sample data set.
+Now you've finished configuring Azure Data Explorer as a data source for Grafana, it's time to visualize data. We'll show a basic example using both the query builder mode and the raw mode of the query editor. We recommend looking at [Write queries for Azure Data Explorer](write-queries.md) for examples of other queries to run against the sample data set.
 
 1. In Grafana, on the left menu, select the plus icon then **Dashboard**.
 
     ![Create dashboard](media/grafana/create-dashboard.png)
 
-1. Under the **Add** tab, select **Graph**.
+1. Under the **Add** tab, select **Add new panel**.
 
     ![Add graph](media/grafana/add-graph.png)
 
@@ -83,7 +83,47 @@ Now you've finished configuring Azure Data Explorer as a data source for Grafana
 
     ![Select data source](media/grafana/select-data-source.png)
 
-1. In the query pane, copy in the following query then select **Run**. The query buckets the count of events by day for the sample data set.
+### Query builder mode
+
+The query editor has two modes. The query builder mode and raw mode. Use the query builder mode to define your query.
+
+1. Below the data source, select **Database** and choose your database from the drop-down. 
+1. Select **From** and choose your table from the drop-down.
+
+    :::image type="content" source="media/grafana/query-builder-from-table.png" alt-text="Select table in query builder":::    
+
+1. Once the table is defined, filter the data, select the values to present, and define the grouping of those values.
+
+    **Filter**
+    1. Click **+** to right of **Where (filter)** to select from the drop-down one or more columns in your table. 
+    1. For each filter, define the value(s) by using the applicable operator. 
+    This selection is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto query language.
+
+    **Value selection**
+    1. Click **+** to right of **value columns** to select from the drop-down the value columns that will be displayed in the panel.
+    1. For each value column, set the aggregation type. 
+    One or more value columns can be set. This selection is equivalent to using the [summarize operator](kusto/query/summarizeoperator.md).
+
+    **Value grouping** <br> 
+    Click **+** to right of **Group by (summarize)** to select from the drop-down one or more columns that will be used to arrange the values into groups. 
+    This is equivalent to the group expression in the summarize operator.
+
+1. To execute the query, select **Run query**.
+
+    :::image type="content" source="media/grafana/query-builder-all-values.png" alt-text="Query builder with all values complete":::
+
+    > [!TIP]
+    > While finalizing the settings in the query builder, a Kusto query language query is created. This query shows the logic you constructed with the graphical query editor. 
+
+1. Select **Edit KQL** to move to raw mode and edit your query using the flexibility and power of the Kusto query language.
+
+:::image type="content" source="media/grafana/query-builder-with-raw-query.png" alt-text="Query builder with raw query":::
+
+### Raw mode
+
+Use raw mode to edit your query. 
+
+1. In the query pane, copy in the following query then select **Run Query**. The query buckets the count of events by day for the sample data set.
 
     ```kusto
     StormEvents
@@ -105,6 +145,11 @@ Now you've finished configuring Azure Data Explorer as a data source for Grafana
     ![Finished graph](media/grafana/finished-graph.png)
 
 1. On the top menu, select the save icon: ![Save icon](media/grafana/save-icon.png).
+
+> [!IMPORTANT]
+> To switch to the query builder mode, select **Switch to builder**. Grafana will convert the query to the available logic in the Query builder. The query builder logic is limited and therefore you may lose manual changes done to the query.
+
+:::image type="content" source="media/grafana/raw-mode.png" alt-text="Move to builder from raw mode":::
 
 ## Create Alerts
 
