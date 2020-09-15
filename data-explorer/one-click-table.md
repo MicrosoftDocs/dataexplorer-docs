@@ -62,6 +62,17 @@ Before you ingest or query data in Azure Data Explorer, you first must create a 
     
     :::image type="content" source="./media/one-click-table/table-completed.png" alt-text="Table creation completed in create a table in one click experience - Azure Data Explorer":::
  
+## Explore quick queries and tools
+
+In the tiles below the **Create table** progress, explore **Quick queries** or **Tools**:
+
+* **Quick queries** includes links to the Web UI with example queries.
+
+* **Tools** includes links to **Undo** the running the relevant .drop commands.
+
+> [!NOTE]
+> You might lose data when you use .drop commands. Use them carefully. <br>
+> The drop commands in this workflow will only revert the changes that were made by the create table process (new table and schema mapping). Nothing else will be dropped.
 
 ## Next steps
 
