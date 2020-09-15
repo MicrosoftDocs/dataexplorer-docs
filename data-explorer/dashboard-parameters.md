@@ -294,7 +294,6 @@ The new parameter is now visible in the parameter list at the top of the dashboa
 
 In single and multiple selection filters, type the value that you want. The filter search will present only the recently retrieved values that match the search term.
 
-
 ## Next Steps
 
 * [Customize dashboard visuals](dashboard-customize-visuals.md)
