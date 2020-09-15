@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: ankhanol
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 09/15/2020
  
 #Customer intent: As an integration developer, I want to build integration pipelines from Kafka into Azure Data Explorer, so I can make data available for near real time analytics.
 ---
@@ -27,27 +27,25 @@ This article shows Kafka ingestion into Azure Data Explorer, using a self-contai
 
 This service principal will be the identity leveraged by the connector to write to the Azure Data Explorer table.  In the next step, we will grant permissions for this service principal to access Azure Data Explorer.
 
-### Login to your Azure subscription via Azure CLI
+1. Log in to your Azure subscription via Azure CLI.
 
-```
-az login
-```
+   ```
+   az login
+   ```
 
-This launches a browser to authenticate.  Follow the steps to authenticate.
+This launches a browser to authenticate. Follow the steps to authenticate.
 
-### Choose the subscription you want to run the lab in.  This is needed when you have multiple.
+1. Choose the subscription you want to run the lab in.  This is needed when you have multiple.
 
-```
-az account set --subscription YOUR_SUBSCRIPTION_GUID
-```
+   ```
+   az account set --subscription YOUR_SUBSCRIPTION_GUID
+   ```
 
-### Create the service principal
+1. Create the service principal. Lets call our service principal, `kusto-kafka-spn`. Run the command below to create it.
 
-Lets call our service principal, kusto-kafka-spn.  Run the command below to create it.
-
-```
-az ad sp create-for-rbac -n "kusto-kafka-spn"
-```
+   ```
+   az ad sp create-for-rbac -n "kusto-kafka-spn"
+   ```
 
 You will get a JSON response as shown below. Note down the `appId`, `password` and `tenant` as you will need them in subsequent steps
 
@@ -64,7 +62,7 @@ You will get a JSON response as shown below. Note down the `appId`, `password` a
 ## Provision and configure Azure Data Explorer
 
 1. [Create an Azure Data Explorer cluster and database in the Azure portal](create-cluster-database-portal.md). Use the default cache and retention policies.
-1. Create a table called `Storms` and the corresponding table mapping `Storms_CSV_Mapping` for ingested data.
+1. Create a table called `Storms` and the corresponding table mapping `Storms_CSV_Mapping` for ingested data as seen below.
 
 ```kusto
 .create table Storms (StartTime: datetime, EndTime: datetime, EventId: int, State: string, EventType: string, Source: string)
@@ -72,49 +70,54 @@ You will get a JSON response as shown below. Note down the `appId`, `password` a
 .create table Storms ingestion csv mapping 'Storms_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EventId","datatype":"int","Ordinal":2},{"Name":"State","datatype":"string","Ordinal":3},{"Name":"EventType","datatype":"string","Ordinal":4},{"Name":"Source","datatype":"string","Ordinal":5}]'
 ```
 
-### Create a batch ingestion policy on the table for configurable ingestion latency
+1. Create a batch ingestion policy on the table for configurable ingestion latency
 
-The [ingestion batching policy](kusto/management/batchingpolicy.md) is a performance optimizer and includes three parameters, the first one met triggers an ingestion into Azure Data Explorer table.
+    > [!TIP]
+    > The [ingestion batching policy](kusto/management/batchingpolicy.md) is a performance optimizer and includes three parameters, the first one met triggers an ingestion into Azure Data Explorer table.
 
-```kusto
-.alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
-```
+    ```kusto
+    .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
+    ```
 
-### Grant permissions to the service principal
+1. Grant permissions to the service principal
 
-Use the service principal from [Create the service principal](#create-the-service-principal) to grant permission to work with the database.
+    Use the service principal from [Create the service principal](#create-the-service-principal) to grant permission to work with the database.
 
-```kusto
-.add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'AAD App'
-```
+    ```kusto
+    .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'AAD App'
+    ```
 
-## Clone the lab's git repo
+## Clone the git repo
+
+Clone the lab's git repo
 
 1. Create a local directory on your machine
 
-```
-mkdir ~/kafka-kusto-hol
-cd ~/kafka-kusto-hol
-```
+    ```
+    mkdir ~/kafka-kusto-hol
+    cd ~/kafka-kusto-hol
+    ```
 
 1. Clone the repo
 
-```shell
-cd ~/kafka-kusto-hol
-git clone https://github.com/Azure/azure-kusto-labs
-cd azure-kusto-labs/kafka-integration/dockerized-quickstart
-```
+    ```shell
+    cd ~/kafka-kusto-hol
+    git clone https://github.com/Azure/azure-kusto-labs
+    cd azure-kusto-labs/kafka-integration/dockerized-quickstart
+    ```
 
 ## Review contents
 
 ### List the contents
 
-```
-cd ~/kafka-kusto-hol/azure-kusto-labs/kafka-integration/dockerized-quickstart
-tree
-```
+Run the following command to list the contents of \\anagha\\.
 
-This is what it should look like
+    ```
+    cd ~/kafka-kusto-hol/azure-kusto-labs/kafka-integration/dockerized-quickstart
+    tree
+    ```
+
+This is the result:
 
 ```
 ├── README.md
@@ -133,10 +136,11 @@ This is what it should look like
     └── main.go
  ```
 
-### adx-sink-config.json
+### Prepare files
 
-This is the Kusto sink properties file where we need to update our specific configuration details for the lab.<br>
-Here is what it looks like
+#### adx-sink-config.json
+
+This is the Kusto sink properties file where we need to update our specific configuration details for the lab.
 
 ```json
 {
@@ -160,16 +164,15 @@ Here is what it looks like
 
 Replace the values for the following attributes as per your Azure Data Explorer setup - `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name) and `kusto.url`.
 
-
-### Connector/Dockerfile
+#### Connector/Dockerfile
 
 Has the commands for generating the docker image for the connector instance.  It includes download of the connector from the git repo release directory.
 
-### Storm-events-producer directory and its contents
+#### Storm-events-producer directory and its contents
 
 At a high level - this has a Go program that reads a local "StormEvents.csv" file and publishes the same to a Kafka topic.
 
-### docker-compose.yaml
+#### docker-compose.yaml
 
 ```yaml
 version: "2"
