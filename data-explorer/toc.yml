@@ -248,6 +248,8 @@
     items:
     - name: Cluster
       items:
+      - name: Use Advisor recommendations to optimize your cluster
+        href: azure-advisor.md
       - name: Select cluster VM SKU
         href: manage-cluster-choose-sku.md
       - name: Manage cluster horizontal scaling
@@ -452,6 +454,8 @@
           href: ./kusto/query/bag-unpackplugin.md
         - name: basket plugin
           href: ./kusto/query/basketplugin.md
+        - name: cosmosdb_sql_request plugin
+          href: ./kusto/query/cosmosdb-plugin.md
         - name: dcount_intersect plugin
           href: ./kusto/query/dcount-intersect-plugin.md
         - name: diffpatterns plugin
