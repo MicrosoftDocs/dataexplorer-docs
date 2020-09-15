@@ -73,7 +73,7 @@
     - name: Azure Resource Manager template
       href: create-cluster-database-resource-manager.md
   - name: Create a table
-    items: one-click-table.md
+    href: one-click-table.md
   - name: Ingest data
     items: 
     - name: One-click ingestion
