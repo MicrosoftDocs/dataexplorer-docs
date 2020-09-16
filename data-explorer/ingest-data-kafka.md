@@ -304,7 +304,6 @@ Storms
 
 These are just few examples. Dig into the [Kusto Query Language documentation](https://docs.microsoft.com/azure/data-explorer/kusto/query/) or explore tutorials about [how to ingest JSON formatted sample data into Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-json-formats?tabs=kusto-query-language), using [scalar operators](https://docs.microsoft.com/azure/data-explorer/write-queries#scalar-operators), [timecharts](https://docs.microsoft.com/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer#timecharts), and so on.
 
-
 ## Reset and Clean up
 
 If you want to re-start from scratch, simply stop the containers (`docker-compose down -v`), delete (`drop table Storms`) and re-create the `Storms` table (along with the mapping) and re-start containers (`docker-compose up`)
@@ -328,4 +327,3 @@ The following resources supply additional information about the Kafka connector.
 * [Hands on lab for ingestion from Confluent IaaS Kafka on AKS in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/distributed-mode/confluent-kafka/README.md)
 * [Big data architecture](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer)
 * [Log connector issues, request support](https://github.com/Azure/kafka-sink-azure-kusto/issues)
- 
