@@ -54,8 +54,8 @@ Diagnostic logs are disabled by default. To enable diagnostic logs, do the follo
 
 1. Select **Add diagnostic setting**.
 1. In the **Diagnostics settings** window:
- 
-    ![Diagnostics settings configuration](media/using-diagnostic-logs/configure-diagnostics-settings.png) 
+
+    :::image type="content" source="media/using-diagnostic-logs/configure-diagnostics-settings.png" alt-text="Configure diagnostics settings":::
 
     1. Select **Name** for your diagnostic setting.
     1. Select one or more targets: a Storage account, Event Hub, or Log Analytics.
@@ -346,4 +346,4 @@ Log JSON strings include elements listed in the following table:
 ## Next steps
 
 * [Use metrics to monitor cluster health](using-metrics.md)
-* [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md) for ingestion diagnostic logs.
+* [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md) for ingestion diagnostic logs
