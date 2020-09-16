@@ -13,28 +13,16 @@ ms.date: 08/30/2020
 # .create materialized-view
 
 A [materialized view](materialized-view-overview.md) is an aggregation query over a source table, representing a single summarize statement.
+For general information and guidelines about creating a materialized view, see [create a materialized view](materialized-view-overview.md#create-a-materialized-view).
 
-* There are two possible ways to create a materialized view, noted by the *backfill* option in the create command:
-    * **Create based on the existing records in the source table:** 
-         * Creation may take a long while to complete, depending on the number of records in the source table. The view won't be available for queries until completion.
-        * When using this option, the create command must be `async` and execution can be monitored using the [.show operations](../operations.md#show-operations) command.
-    
-    > [!WARNING]
-    > * Using the backfill option is not supported for data in cold cache. Increase the hot cache period, if necessary, for the creation of the view. This may require scale-out.    
-    > * Using the backfill option may take a long time to complete for large source tables. If this process transiently fails while running, it will not be automatically retried, and a re-execution of the create command is required.
-    
-    * **Create the materialized view from now onwards:** 
-        * The materialized view is created empty, and will only include records ingested after view creation. Creation of this kind returns immediately, doesn't require `async`, and the view will be immediately available for query.
+Requires [Database Admin](../access-control/role-based-authorization.md) permissions.
 
-* The materialized view derives the database retention policy by default. The policy can be changed using [control commands](../retentionpolicy.md).
-    * The retention policy of the materialized view is unrelated to the retention policy of the source table.
-    * If the source table records aren't otherwise used, the retention policy of the source table can be dropped to a minimum. The materialized view will still store the data according to the retention policy set on the view. 
-    * While materialized views are in preview mode, the recommendation is to allow a minimum of at least seven days and recoverability set to true. This setting allows for fast recovery for errors and for diagnostic purposes.
-    
-    > [!NOTE]
-    > Zero retention policy on the source table is currently not supported.
-        
-* Requires [Database Admin](../access-control/role-based-authorization.md) permissions.
+## .create materialized-view
+
+The materialized view is always based on a single `fact table`, and may also reference one or more [`dimension tables`](../../concepts/fact-and-dimension-tables.md). The source table for the materialized view must be in the same database where the materialized view is defined. The source table must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (the default is enabled) and can't be enabled for [streaming ingestion](../../../ingest-data-streaming.md).
+
+> [!NOTE]
+> Cross-cluster/cross-database queries aren't supported.
 
 ### Syntax
 
@@ -47,21 +35,21 @@ A [materialized view](materialized-view-overview.md) is an aggregation query ove
 
 |Argument|Type|Description
 |----------------|-------|---|
-|ViewName|String|Materialized View name. |
+|ViewName|String|Materialized View name. The view name can't conflict with table or function names in same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
 |SourceTableName|String|Name of source table that the view is defined on.|
-|Query|String|The materialized view query.|
+|Query|String|The materialized view query. For more information, see [query considerations](#query-considerations)).|
 
-* The view name can't conflict with table or function names in same database. 
-* The view name must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules).  
-* The materialized view query:
-   * Should reference a single fact table that is the source of the materialized view, include a single summarize operator, and one or more aggregation functions aggregated by one or more groups by expressions. The summarize operator must always be the last operator in the query.
-   * The source table must be in the same database where the materialized view is defined. Cross-cluster/cross-database queries aren't supported.
-   * The source table must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (the default is enabled) and can't be enabled for [streaming ingestion](../../../ingest-data-streaming.md).
-   * Shouldn't include any operators that depend on `now()` or on `ingestion_time()`. For example, the query shouldn't have `where Timestamp > ago(5d)`. Limit the period of time covered by the view using the retention policy on the materialized view.
-   * The materialized view is always based on a single `fact table`, and may also reference one or more [`dimension tables`](../../concepts/fact-and-dimension-tables.md). 
-   * A materialized view with an `arg_max`/`arg_min`/`any` aggregation can't include any of the other supported aggregation functions. A view is either an `arg_max`/`arg_min`/`any` view (those functions can be used together in same view) or any of the other supported functions, but not both in same materialized view. For example, `SourceTable | summarize arg_max(Timestamp, *), count() by Id` isn't supported.
-   * *Composite* aggregations are currently not supported in the materialized view definition. For instance, instead of the following view: `SourceTable | summarize Result=sum(Column1)/sum(Column2) by Id`, you must define the materialized view as: `SourceTable | summarize a=sum(Column1), b=sum(Column2) by Id`. During view query time, run - `ViewName | project Id, Result=a/b`. The required output of the view, including the calculated column (`a/b`), can be encapsulated in a [stored function](../../query/functions/user-defined-functions.md). Users will access the stored function instead of accessing the materialized view directly. 
-    
+### Query considerations
+
+The query used in the materialized view argument is limited by the following rules:
+
+The query argument should reference a single fact table that is the source of the materialized view, include a single summarize operator, and one or more aggregation functions aggregated by one or more groups by expressions. The summarize operator must always be the last operator in the query.
+
+The query shouldn't include any operators that depend on `now()` or on `ingestion_time()`. For example, the query shouldn't have `where Timestamp > ago(5d)`. A materialized view with an `arg_max`/`arg_min`/`any` aggregation can't include any of the other supported aggregation functions. A view is either an `arg_max`/`arg_min`/`any` view (those functions can be used together in same view) or any of the other supported functions, but not both in same materialized view. 
+    For example, `SourceTable | summarize arg_max(Timestamp, *), count() by Id` isn't supported. 
+
+Composite aggregations are not supported in the materialized view definition. For instance, instead of the following view: `SourceTable | summarize Result=sum(Column1)/sum(Column2) by Id`, define the materialized view as: `SourceTable | summarize a=sum(Column1), b=sum(Column2) by Id`. During view query time, run - `ViewName | project Id, Result=a/b`. The required output of the view, including the calculated column (`a/b`), can be encapsulated in a [stored function](../../query/functions/user-defined-functions.md). Access the stored function instead of accessing the materialized view directly. 
+
 
 ### Properties
 
@@ -69,28 +57,32 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 
 |Property|Type|Description
 |----------------|-------|---|
-|backfill|bool|Whether to create the view based on all records currently in *SourceTable* (`true`), or to create it "from-now-on" (`false`). Default is `false`.|
+|[backfill](#backfill)|bool|Whether to create the view based on all records currently in *SourceTable* (`true`), or to create it "from-now-on" (`false`). Default is `false`.|
 |effectiveDateTime|datetime| If specified along with `backfill=true`, creation only backfills with records ingested after the datetime. Backfill must be set to true as well. Expects a datetime literal, for example, `effectiveDateTime=datetime(2019-05-01)`|
-|dimensionTables|Array|A comma-separated list of dimension tables in the view.|
-|autoUpdateSchema|bool|Whether to auto-update the view on source table changes. Default is `false`.|
+|[dimensionTables](#dimension-tables|Array|A comma-separated list of dimension tables in the view.|
+|[autoUpdateSchema](auto-update-schema|bool|Whether to auto-update the view on source table changes. Default is `false`.|
 |folder|string|The materialized view's folder.|
 |docString|string|A string documenting the materialized view|
 
-* **Join / lookups with dimension tables:**
-    * Dimension tables must be explicitly called out in the view properties. 
-    * The joins/lookups with dimension tables should be written according to the [query best practices](../../query/best-practices.md). For example, dimension tables should be on the left side of the join (or using lookup).
-    * Records in the view's source table (fact table) are materialized once only. A different ingestion latency between the fact table and the dimension table may have an impact on the view results. 
-        * For example: Given a view definition that includes an inner join with a dimension table, if at the time of materialization the dimension record for a specific entity was not ingested yet, but it was already ingested to the fact table. This record will be dropped from the view and never reprocessed again. To remedy, assume the join is an outer join. The record from fact table will be processed and added to view with a null value for the dimension table columns. Even if the relevant record is later ingested to the dimension table, those records that have already been added (with null values) to the view won't be processed again. As such their values, in columns from the dimension table, will remain null.
+#### Backfill
 
-* **Backfill:** when using the `backfill` option, command must be `async` and view won't be available for queries until the creation completes.
-    * Depending on the amount of data to backfill, creation with backfill may take a long time. It's intentionally "slow" to make sure it doesn't consume too much of the cluster's resources.
-    * Track the creation process with the [.show operations](../operations.md#show-operations) command.
-    * Cancel the creation process with the [.cancel operation](#cancel-materialized-view-creation) command.
+When using the `backfill` option, the command must be `async`, and the view won't be available for queries until the creation completes. Depending on the amount of data to backfill, creation with backfill may take a long time. It's intentionally "slow" to make sure it doesn't consume too much of the cluster's resources.
 
-* **Auto update:**
-    * The `autoUpdateSchema` option is valid only for views of type `arg_max(Timestamp, *)` / `arg_min(Timestamp, *)` / `any(*)` (only when columns argument is `*`). In case this option is set to true, changes to source table will be automatically reflected in the materialized view. Not all changes to source table are supported when using this option. For more information, see [.alter materialized-view](materialized-view-alter.md).
-    * Using `autoUpdateSchema` may lead to data loss when columns in the source table are dropped. There's no way to restore the materialized view's dropped columns.
-    * If the view isn't set to `autoUpdateSchema`, and a change is made to the source table which results in a schema change to the materialized view, the view will be automatically disabled. If the issue is fixed, for example by restoring the schema of the source table, the materialized view can be enabled using the [enable materialized view](materialized-view-enable-disable.md) command. This process is common when using an `arg_max(Timestamp, *)` and adding columns to the source table. Avoid the failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)` or by using the `autoUpdateSchema` option.  
+* Track the creation process with the [.show operations](../operations.md#show-operations) command.
+* Cancel the creation process with the [.cancel operation](#cancel-materialized-view-creation) command.
+
+#### Dimension tables
+
+ Dimension tables must be explicitly called out in the view properties. 
+   * The joins/lookups with dimension tables should be written according to the [query best practices](../../query/best-practices.md). For example, dimension tables should be on the left side of the join (or using lookup).
+   * Records in the view's source table (fact table) are materialized once only. A different ingestion latency between the fact table and the dimension table may have an impact on the view results. 
+      * For example: Given a view definition that includes an inner join with a dimension table, if at the time of materialization the dimension record for a specific entity was not ingested yet, but it was already ingested to the fact table. This record will be dropped from the view and never reprocessed again. To remedy, assume the join is an outer join. The record from fact table will be processed and added to view with a null value for the dimension table columns. Even if the relevant record is later ingested to the dimension table, those records that have already been added (with null values) to the view won't be processed again. As such their values, in columns from the dimension table, will remain null.
+
+#### Auto update schema
+  
+The `autoUpdateSchema` option is valid only for views of type `arg_max(Timestamp, *)` / `arg_min(Timestamp, *)` / `any(*)` (only when columns argument is `*`). If this option is set to true, changes to source table will be automatically reflected in the materialized view. Not all changes to source table are supported when using this option. For more information, see [.alter materialized-view](materialized-view-alter.md).
+
+Using `autoUpdateSchema` may lead to data loss when columns in the source table are dropped. There's no way to restore the materialized view's dropped columns. If the view isn't set to `autoUpdateSchema`, and a change is made to the source table which results in a schema change to the materialized view, the view will be automatically disabled. If the issue is fixed, for example by restoring the schema of the source table, the materialized view can be enabled using the [enable materialized view](materialized-view-enable-disable.md) command. This process is common when using an `arg_max(Timestamp, *)` and adding columns to the source table. Avoid the failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)` or by using the `autoUpdateSchema` option.  
 
 ### Examples
 
