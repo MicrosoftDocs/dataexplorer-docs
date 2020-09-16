@@ -13,7 +13,7 @@ ms.date: 10/31/2019
 
 This article explains the resources that are present when you deploy an Azure Data Explorer cluster into a custom Azure Virtual Network. This information will help you deploy a cluster into a subnet in your Virtual Network (VNet). For more information on Azure Virtual Networks, see [What is Azure Virtual Network?](/azure/virtual-network/virtual-networks-overview)
 
-   ![vnet diagram](media/vnet-deployment/vnet-diagram.png)
+    :::image type="content" source="media/vnet-deployment/vnet-diagram.png" alt-text="diagram showing schematic virtual network architecture"::: 
 
 Azure Data Explorer supports deploying a cluster into a subnet in your Virtual Network (VNet). This capability enables you to:
 
@@ -57,7 +57,7 @@ The total number of IP addresses:
 Deploying Azure Data Explorer cluster into your subnet allows you to setup data connections with [Event Hub](/azure/event-hubs/event-hubs-about) or [Event Grid](/azure/event-grid/overview) while restricting the underlying resources for Azure Data Explorer subnet.
 
 > [!NOTE]
-> When using EventGrid setup with [Storage](/azure/storage/common/storage-introduction) and [Event Hub], the storage account used in the subscription can be locked with service endpoints to Azure Data Explorer's subnet while allowing trusted Azure platform services in the [firewall configuration](/azure/storage/common/storage-network-security), but the Event Hub can't enable Service Endpoint since it doesn't support trusted [Azure platform services](/azure/event-hubs/event-hubs-service-endpoints).
+> When using EventGrid setup with [Storage](/azure/storage/common/storage-introduction) and [Event Hub](/azure/event-hubs/event-hubs-about), the storage account used in the subscription can be locked with service endpoints to Azure Data Explorer's subnet while allowing trusted Azure platform services in the [firewall configuration](/azure/storage/common/storage-network-security), but the Event Hub can't enable Service Endpoint since it doesn't support trusted [Azure platform services](/azure/event-hubs/event-hubs-service-endpoints).
 
 ## Private Endpoints
 
@@ -174,8 +174,8 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | Korea South | 138.91.19.129 |
 | North Central US | 23.96.212.108 |
 | North Europe | 191.235.212.69, 40.127.194.147 |
-| South Africa North | 104.211.224.189 |
-| South Africa West | 104.211.224.189 |
+| South Africa North | 104.211.224.189 |
+| South Africa West | 104.211.224.189 |
 | South Central US | 23.98.145.105, 104.215.116.88 |
 | South India | 23.99.5.162 |
 | Southeast Asia | 168.63.173.234 |
@@ -196,7 +196,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 
 If you want to completely disable access to Azure Data Explorer via the public IP address, create another inbound rule in the NSG. This rule has to have a lower [priority](/azure/virtual-network/security-overview#security-rules) (a higher number). 
 
-| **Use**   | **Source** | **Source service tag** | **Source port ranges**  | **Destination** | **Destination port ranges** | **Protocol ** | **Action** | **Priority ** |
+| **Use**   | **Source** | **Source service tag** | **Source port ranges**  | **Destination** | **Destination port ranges** | **Protocol** | **Action** | **Priority** |
 | ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
 | Disable access from the internet | Service Tag | Internet | *  | VirtualNetwork | * | Any | Deny | higher number than the rules above |
 
@@ -240,10 +240,8 @@ crl3.digicert.com:80
 ```
 
 > [!NOTE]
-> If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties:
-> | **Protocol**   | **Source Type** | **Source** | **Service Tags**  | **Destination Ports** |
-> | ---   | --- | --- | ---  | --- |
-> | TCP | IP Address | * | AzureMonitor | 443 |
+> If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties: <br>
+> **Protocol**: TCP <br> **Source Type**: IP Address <br> **Source**: * <br> **Service Tags**: AzureMonitor <br> **Destination Ports**: 443
 
 You also need to define the [route table](/azure/virtual-network/virtual-networks-udr-overview) on the subnet with the [management addresses](#azure-data-explorer-management-ip-addresses) and [health monitoring addresses](#health-monitoring-addresses) with next hop *Internet* to prevent asymmetric routes issues.
 
