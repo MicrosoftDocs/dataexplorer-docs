@@ -3,7 +3,7 @@ title: Monitor Azure Data Explorer ingestion, commands, and queries using diagno
 description: Learn how to set up diagnostic logs for Azure Data Explorer to monitor ingestion commands, and query operations.
 author: orspod
 ms.author: orspodek
-ms.reviewer: gabil
+ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/16/2020
@@ -28,16 +28,16 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
 # [Ingestion](#tab/ingestion)
 
-* Successful ingestion operations: These logs have information about successfully completed ingestion operations.
-* Failed ingestion operations: These logs have detailed information about failed ingestion operations including error details. 
+* **Successful ingestion operations**: These logs have information about successfully completed ingestion operations.
+* **Failed ingestion operations**: These logs have detailed information about failed ingestion operations including error details. 
 
 # [Commands and Queries](#tab/commands-and-queries)
 
-* Commands: These logs have information about admin commands that have reached a final state.
-* Queries: These logs have detailed information about queries that have reached a final state. 
+* **Commands**: These logs have information about admin commands that have reached a final state.
+* **Queries**: These logs have detailed information about queries that have reached a final state. 
 
-> [!NOTE]
-> The query log data doesn't contain the query text.
+    > [!NOTE]
+    > The query log data doesn't contain the query text.
 
 ---
 
@@ -180,7 +180,7 @@ Log JSON strings include elements listed in the following table:
 |category           |Category of the operation: `Command` or `Query`. Properties differ for commands and query logs.
 |properties         |Detailed information of the operation.
 
-### Command log
+#### Command log
 
 **Example:**
 
@@ -227,7 +227,7 @@ Log JSON strings include elements listed in the following table:
 |User     |The user that invoked the query
 |Principal     |The principal that invoked the query
 
-### Query log
+#### Query log
 
 **Example:**
 
