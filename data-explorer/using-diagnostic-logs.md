@@ -165,11 +165,6 @@ Log JSON strings include elements listed in the following table:
 |originatesFromUpdatePolicy|True if failure originates from an update policy
 |shouldRetry        |True if retry may succeed
 
-## Next steps
-
-* [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md)
-* [Use metrics to monitor cluster health](using-metrics.md)
-
 # [Commands and Queries](#tab/commands-and-queries)
 
 ### Commands and Queries logs schema
@@ -346,8 +341,9 @@ Log JSON strings include elements listed in the following table:
 |RowCount        | Result set table row count
 |TableSize        |Result set table row count
 
+---
+
 ## Next steps
 
 * [Use metrics to monitor cluster health](using-metrics.md)
-
----
+* [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md) for ingestion diagnostic logs.
