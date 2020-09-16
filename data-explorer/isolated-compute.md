@@ -13,7 +13,7 @@ ms.date: 09/16/2020
 
 # Enable isolated compute on your Azure Data Explorer cluster
 
-Isolated compute virtual machines (VM) enable customers to run their workload in a hardware isolated environment dedicated to single customer. Clusters deployed with isolated compete VMs are best suited for workloads that require a high degree of isolation for compliance and regulatory requirements. The compute SKU(s) offers isolation to secure data without sacrificing the flexibility in configuration. For more information, see [compute isolation](/azure/security/fundamentals/isolation-choices#compute-isolation) and [Azure guidance for isolated compute](/azure/azure-government/azure-secure-isolation-guidance#compute-isolation). 
+Isolated compute virtual machines (VMs) enable customers to run their workload in a hardware isolated environment dedicated to single customer. Clusters deployed with isolated compute VMs are best suited for workloads that require a high degree of isolation for compliance and regulatory requirements. The compute SKU(s) offers isolation to secure data without sacrificing the flexibility in configuration. For more information, see [compute isolation](/azure/security/fundamentals/isolation-choices#compute-isolation) and [Azure guidance for isolated compute](/azure/azure-government/azure-secure-isolation-guidance#compute-isolation). 
 
 Azure Data Explorer provides support for isolated compute using SKU **Standard_E64i_v3**. This SKU can scale up and down automatically to meet the needs of your application or enterprise. Isolated compute support is available in the following regions:
 * West US 2
