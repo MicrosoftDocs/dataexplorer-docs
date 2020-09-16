@@ -1,6 +1,6 @@
 ---
-title: Monitor Azure Data Explorer ingestion operations using diagnostic logs
-description: Learn how to set up diagnostic logs for Azure Data Explorer to monitor ingestion operations.
+title: Monitor Azure Data Explorer ingestion, commands, and queries using diagnostic logs
+description: Learn how to set up diagnostic logs for Azure Data Explorer to monitor ingestion commands, and query operations.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -9,9 +9,9 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ---
 
-# Monitor Azure Data Explorer ingestion operations using diagnostic logs
+# Monitor Azure Data Explorer ingestion, commands, and queries using diagnostic logs
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion successes and failures as well as insights on commands and query operations. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion, commands and query status. Logs from Azure Storage and Azure Event Hub can be routed to a table in your Azure Data Explorer cluster for further analysis.
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion successes, ingestion failures, commands, and query operations. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion, commands, and query status. Logs from Azure Storage and Azure Event Hub can be routed to a table in your Azure Data Explorer cluster for further analysis.
 
 > [!IMPORTANT] 
 > Diagnostic log data may contain sensitive data. Restrict permissions of the logs destination according to your monitoring needs. 
@@ -58,11 +58,11 @@ Diagnostic logs are disabled by default. To enable diagnostic logs, do the follo
 1. Select **Add diagnostic setting**.
 1. In the **Diagnostics settings** window:
  
-    ![Diagnostics settings configuration](media/using-diagnostic-logs/configure-diagnostics-settings.png) \\new image
+    ![Diagnostics settings configuration](media/using-diagnostic-logs/configure-diagnostics-settings.png) 
 
     1. Select **Name** for your diagnostic setting.
     1. Select one or more targets: a Storage account, Event Hub, or Log Analytics.
-    1. Select logs to be collected: `SucceededIngestion`, `FailedIngestion`, `Commands` or `Queries`..
+    1. Select logs to be collected: `SucceededIngestion`, `FailedIngestion`, `Commands`, or `Queries`.
     1. Select [metrics](using-metrics.md#supported-azure-data-explorer-metrics) to be collected (optional).  
     1. Select **Save** to save the new diagnostic logs settings and metrics.
 
@@ -178,9 +178,9 @@ Log JSON strings include elements listed in the following table:
 |---                |---
 |time               |Time of the report
 |resourceId         |Azure Resource Manager resource ID
-|operationName      |Name of the operation: 'MICROSOFT.KUSTO/CLUSTERS/COMMAND/ACTION' or "MICROSOFT.KUSTO/CLUSTERS/QUERY/ACTION". Properties differ for commands or query logs.
+|operationName      |Name of the operation: 'MICROSOFT.KUSTO/CLUSTERS/COMMAND/ACTION' or "MICROSOFT.KUSTO/CLUSTERS/QUERY/ACTION". Properties differ for commands and query logs.
 |operationVersion   |Schema version: '1.0' 
-|category           |Category of the operation. `Command` or `Query`. Properties differ for commands or query logs.
+|category           |Category of the operation: `Command` or `Query`. Properties differ for commands and query logs.
 |properties         |Detailed information of the operation.
 
 ### Command log
@@ -216,15 +216,15 @@ Log JSON strings include elements listed in the following table:
 
 |Name               |Description
 |---                |---
-|RootActivityId |The root activity id
+|RootActivityId |The root activity ID
 |StartedOn        |Time (UTC) at which this command started
 |LastUpdatedOn        |Time (UTC) at which this command ended
 |Database          |The name of the database the command ran on
-|State              |The State the command ended with
+|State              |The state the command ended with
 |FailureReason  |The failure reason
-|TotalCpu|Total CPU duration
+|TotalCpu |Total CPU duration
 |CommandType     |Command type
-|Application     |Application name invoked the command
+|Application     |Application name that invoked the command
 |ResourceUtilization     |Command resource utilization
 |Duration     |Command duration
 |User     |The user that invoked the query
@@ -302,23 +302,23 @@ Log JSON strings include elements listed in the following table:
 
 |Name               |Description
 |---                |---
-|RootActivityId |The root activity id
+|RootActivityId |The root activity ID
 |StartedOn        |Time (UTC) at which this command started
-|LastUpdatedOn           |NTime (UTC) at which this command ended
+|LastUpdatedOn           |Time (UTC) at which this command ended
 |Database              |The name of the database the command ran on
-|State  |The State the command ended with
+|State  |The state the command ended with
 |FailureReason|The failure reason
 |TotalCpu     |Total CPU duration
-|ApplicationName            |Application name invoked the query
+|ApplicationName            |Application name that invoked the query
 |MemoryPeak          |Memory peak
 |Duration      |Command duration
 |User|The user that invoked the query
 |Principal        |The principal that invoked the query
-|ScannedExtentsStatistics        | Contains scanned extents statistics
+|ScannedExtentsStatistics        | Contains scanned extent statistics
 |MinDataScannedTime        |Minimum data scan time
 |MaxDataScannedTime        |Maximum data scan time
-|TotalExtentsCount        |Total extents count
-|ScannedExtentsCount        |Scanned extents count
+|TotalExtentsCount        |Total extent count
+|ScannedExtentsCount        |Scanned extent count
 |TotalRowsCount        |Total rows count
 |ScannedRowsCount        |Scanned rows count
 |CacheStatistics        |Contains cache statistics
@@ -328,14 +328,14 @@ Log JSON strings include elements listed in the following table:
 |Disk        |Contains cache disk statistics
 |Hits        |Disk cache hits
 |Misses        |Disk cache misses
-|Shards        |Contains hot and cold Shards cache statistics
+|Shards        |Contains hot and cold shards cache statistics
 |Hot        |Contains hot shards cache statistics
 |HitBytes        |Shards hot cache hits
 |MissBytes        |Shards hot cache misses
 |RetrieveBytes        |	Shards hot cache retrieved bytes
 |Cold        |Contains cold shards cache statistics
 |HitBytes        |Shards cold cache hits
-|MissBytes        |Shards cold cache mises
+|MissBytes        |Shards cold cache misses
 |RetrieveBytes        |Shards cold cache retrieved bytes
 |BypassBytes        |Shards cache bypass bytes
 |ResultSetStatistics        |Contains result set statistics
