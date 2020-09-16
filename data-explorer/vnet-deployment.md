@@ -13,7 +13,7 @@ ms.date: 10/31/2019
 
 This article explains the resources that are present when you deploy an Azure Data Explorer cluster into a custom Azure Virtual Network. This information will help you deploy a cluster into a subnet in your Virtual Network (VNet). For more information on Azure Virtual Networks, see [What is Azure Virtual Network?](/azure/virtual-network/virtual-networks-overview)
 
-    :::image type="content" source="media/vnet-deployment/vnet-diagram.png" alt-text="diagram showing schematic virtual network architecture"::: 
+:::image type="content" source="media/vnet-deployment/vnet-diagram.png" alt-text="diagram showing schematic virtual network architecture"::: 
 
 Azure Data Explorer supports deploying a cluster into a subnet in your Virtual Network (VNet). This capability enables you to:
 
