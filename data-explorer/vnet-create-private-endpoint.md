@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.date: 08/09/2020
 ---
 
-# Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network
+# Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network (preview)
 
 Use a Private Link with a Private Endpoint to securely access your Azure Data Explorer cluster in your virtual network (VNet). 
 
