@@ -67,7 +67,7 @@ Querying the materialized view combines the materialized part with the delta par
 
 ## Materialized views queries
 
-The materialized view query combines the materialized part of the view with the records in the source table that haven't been materialized yet. In this way, querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information, see [How materialized views work](#how-materialized-views-work). 
+The materialized view query combines the materialized part of the view with the records in the source table that haven't been materialized yet. In this way, querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information, see [how materialized views work](#how-materialized-views-work). 
 
 The separate [materialized_view() function](../../query/materializedviewfunction.md) supports querying the materialized part only of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
 
@@ -149,19 +149,19 @@ The `MaterializedViewHealth` metric indicates whether a Materialized View is hea
 
 The following examples can help you diagnose and fix unhealthy views:
 
-1. **Scenario:** The source table was changed or deleted, the view wasn't set to `autoUpdateSchema`, or the change in source table isn't supported for auto-updates. <br>
+* **Scenario:** The source table was changed or deleted, the view wasn't set to `autoUpdateSchema`, or the change in source table isn't supported for auto-updates. <br>
    **Result:**  A `MaterializedViewResult` metric is fired, and the `Result` dimension is set to `SourceTableSchemaChange`/`SourceTableNotFound`.
 
-1. **Scenario:** Materialization process fails due insufficient cluster resources, and query limits are hit. <br>
+* **Scenario:** Materialization process fails due insufficient cluster resources, and query limits are hit. <br>
   **Result:** `MaterializedViewResult` metric `Result` dimension is set to `InsufficientResources`. Azure Data Explorer will try to automatically recover from this state, so this error may be transient. However, if view is unhealthy and this error is constantly emitted, it's possible that the current cluster's configuration isn't able to keep up with ingestion rate, and cluster needs to be scaled up or out.
 
-1. **Scenario:** The materialization process is failing because of any other (unknown) reason. <br> **Result**: `MaterializedViewResult` metric's `Result` will be `UnknownError`. 
+* **Scenario:** The materialization process is failing because of any other (unknown) reason. <br> **Result**: `MaterializedViewResult` metric's `Result` will be `UnknownError`. 
 
     If this failure happens frequently, open a support ticket for the Azure Data Explorer team to investigate further.
 
 If there are no materialization failures, `MaterializedViewResult` metric will be fired on every successful execution, with `Result`=`Success`. A materialized view can be unhealthy, despite successful executions, if it's lagging behind (`Age` is above threshold). This situation can happen in the following circumstances:
    * Materialization is slow since there are too many extents to rebuild in each materialization cycle. To learn more about why extents rebuilds impact the view's performance, see [how materialized views work](#how-materialized-views-work). 
-    * If each materialization cycle needs to rebuild close to 100% of the extents in the view, the view may not keep up, and will become unhealthy. The number of extents rebuilt in each cycle is provided in the `MaterializedViewExtentsRebuild` metric, and the `MaterializedViewExtentsRebuildConcurrency` includes the concurrency used in each cycle. Increasing the extents rebuilt concurrency in the [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy) may also help in this case. 
+   * If each materialization cycle needs to rebuild close to 100% of the extents in the view, the view may not keep up, and will become unhealthy. The number of extents rebuilt in each cycle is provided in the `MaterializedViewExtentsRebuild` metric, and the `MaterializedViewExtentsRebuildConcurrency` includes the concurrency used in each cycle. Increasing the extents rebuilt concurrency in the [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy) may also help in this case. 
    * There are additional materialized views in the cluster, and the cluster doesn't have sufficient capacity to run all views. See [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy) to change the default settings for number of materialized views executed concurrently.
 
 ## Next steps
