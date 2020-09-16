@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/16/2020
 
-#Customer intent: I want to deploy Azure Data Explorer Cluster in Isolated Compute SKUs.
+#Customer intent: I want to deploy Azure Data Explorer cluster in an isolated compute SKU.
 ---
 
 # Enable isolated compute on your Azure Data Explorer cluster
 
-Isolated compute virtual machines (VM) enable customers to run their workload in a hardware isolated environment dedicated to single customer. Clusters deployed with isolated compete VMs are best suited for workloads that require a high degree of isolation for compliance and regulatory requirements. The compute SKUs offer isolation to secure data without sacrificing the flexibility in configuration. For more information, see [compute isolation](/azure/security/fundamentals/isolation-choices#compute-isolation) and [Azure guidance for isolated compute](/azure/azure-government/azure-secure-isolation-guidance#compute-isolation). 
+Isolated compute virtual machines (VM) enable customers to run their workload in a hardware isolated environment dedicated to single customer. Clusters deployed with isolated compete VMs are best suited for workloads that require a high degree of isolation for compliance and regulatory requirements. The compute SKU(s) offers isolation to secure data without sacrificing the flexibility in configuration. For more information, see [compute isolation](/azure/security/fundamentals/isolation-choices#compute-isolation) and [Azure guidance for isolated compute](/azure/azure-government/azure-secure-isolation-guidance#compute-isolation). 
 
 Azure Data Explorer provides support for isolated compute using SKU **Standard_E64i_v3**. This SKU can scale up and down automatically to meet the needs of your application or enterprise. Isolated compute support is available in the following regions:
 * West US 2
@@ -27,13 +27,13 @@ Isolated compute VMs, although highly priced, are the ideal SKU for running work
 
 ## Enable isolated compute on Azure Data Explorer cluster 
 
-To enable isolated compute on an Azure Data Explorer cluster follow one of these processes:
+To enable isolated compute in Azure Data Explorer, follow one of these processes:
 * [Create a cluster with isolated compute SKU](#create-a-cluster-with-isolated-compute-sku)
 * [Select the isolated compute SKU on an existing cluster](#select-the-isolated-compute-sku-on-an-existing-cluster)
 
 ## Create a cluster with isolated compute SKU
 
-1. Follow the instructions to [create an Azure Data Explorer cluster and database in the Azure Portal](create-cluster-database-portal.md)
+1. Follow the instructions to [create an Azure Data Explorer cluster and database in the Azure portal](create-cluster-database-portal.md)
 1. In [create a cluster](create-cluster-database-portal.md#create-a-cluster) within the **Basics** tab, select **Standard_E64i_v3** in **Compute specifications** drop-down.
 
 ## Select the isolated compute SKU on an existing cluster
