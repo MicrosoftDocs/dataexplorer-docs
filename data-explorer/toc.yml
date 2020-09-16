@@ -299,7 +299,7 @@
         href: dealing-with-duplicates.md
   - name: Monitor
     items:
-    - name: Use diagnostic logs to monitor ingestion
+    - name: Use diagnostic logs to monitor ingestion, commands, and queries
       href: using-diagnostic-logs.md
     - name: Monitor Azure Data Explorer with metrics
       displayName: health, performance
