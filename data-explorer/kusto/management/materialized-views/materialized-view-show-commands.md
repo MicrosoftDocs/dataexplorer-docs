@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 08/30/2020
 ---
 
-# .show materialized-views commands TODO: ORNAT THIS CONTAINS SEVERAL SHOW COMMANDS- SHOULD THE TITLE BE A COMMAND NAME OR GENERAL?
+# .show materialized-views commands
 
 ## .show materialized-view
 
