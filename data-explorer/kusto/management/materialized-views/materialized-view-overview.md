@@ -33,6 +33,15 @@ The following are common scenarios that can be addressed by using a materialized
 * Reduce the resolution of data by calculating periodic statistics over the raw data. Use various [aggregation functions](materialized-view-create.md#supported-aggregation-functions) by period of time.
     * For example, use `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain an up-to-date snapshot of distinct users per day.
 
+## How materialized views work
+
+A materialized view is made of two components:
+
+* A *materialized* part - an Azure Data Explorer table holding aggregated records from the source table, which have already been processed.  This table always holds the minimal possible number of records - a single record per the dimension's combination, which is the actual aggregation result.
+* A *delta* - the newly ingested records in the source table that haven't yet been processed.
+
+Querying the materialized view combines the materialized part with the delta part, providing an up-to-date result of the aggregation query. The offline materialization process ingests new records from the *delta* to the materialized table, and replaces existing records. The replacement is done by rebuilding extents that hold records to replace. If records in the *delta* constantly intersect with all data shards in the *materialized* part, each materialization cycle will require rebuilding the entire *materialized* part, and may not keep up with the pace. The ingestion rate will be higher than the materialization rate. In that case, the view will become unhealthy and the *delta* will constantly grow.
+
 ## Create a materialized view
 
 * There are two possible ways to create a materialized view, noted by the *backfill* option in the [create command](materialized-view-create.md):
@@ -58,7 +67,9 @@ The following are common scenarios that can be addressed by using a materialized
 
 ## Materialized views queries
 
-The materialized view query combines the materialized part of the view with the records in the source table that haven't been materialized yet. In this way, querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information, see [How materialized views work](#how-materialized-views-work). The [materialized_view() function](../../query/materializedviewfunction.md) supports querying the materialized part only of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
+The materialized view query combines the materialized part of the view with the records in the source table that haven't been materialized yet. In this way, querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information, see [How materialized views work](#how-materialized-views-work). 
+
+The separate [materialized_view() function](../../query/materializedviewfunction.md) supports querying the materialized part only of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
 
 Once a materialized view is created, it can be queried like any other table in the database, and behaves like a table. The syntax for querying the view is the view name. The view can participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
 
@@ -104,15 +115,6 @@ The main contributors that can impact a materialized view health are:
     * Can't be a restricted table or a table with row level security enabled.
 * [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
 * Continuous export from a materialized view isn't supported.
-
-## How materialized views work
-
-A materialized view is made of two components:
-
-* A *materialized* part - an Azure Data Explorer table holding aggregated records from the source table, which have already been processed.  This table always holds the minimal possible number of records - a single record per the dimension's combination, which is the actual aggregation result.
-* A *delta* - the newly ingested records in the source table that haven't yet been processed.
-
-Querying the materialized view combines the materialized part with the delta part, providing an up-to-date result of the aggregation query. The offline materialization process ingests new records from the *delta* to the materialized table, and replaces existing records. The replacement is done by rebuilding extents that hold records to replace. If records in the *delta* constantly intersect with all data shards in the *materialized* part, each materialization cycle will require rebuilding the entire *materialized* part, and may not keep up with the pace. The ingestion rate will be higher than the materialization rate. In that case, the view will become unhealthy and the *delta* will constantly grow.
 
 ## Materialized views monitoring
 
