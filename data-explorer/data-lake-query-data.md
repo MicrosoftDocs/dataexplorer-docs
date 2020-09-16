@@ -119,7 +119,7 @@ dataformat=multijson
 Define a JSON mapping that maps data fields to external table definition fields:
 
 ```kusto
-.create external table ApiCalls json mapping 'MyMapping' '[{"Column":"Timestamp","Properties":{"Path":"$.time"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]'
+.create external table ApiCalls json mapping 'MyMapping' '[{"Column":"Timestamp","Properties":{"Path":"$.timestamp"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]'
 ```
 
 When you query the external table, the mapping will be invoked, and relevant data will be mapped to the external table columns:
