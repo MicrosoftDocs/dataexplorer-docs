@@ -1,5 +1,5 @@
 ---
-title: How to create a table in Azure Data Explorer
+title: Create a table in Azure Data Explorer
 description: Learn how to easily create a table in Azure Data Explorer with the one-click experience.
 author: orspod
 ms.author: orspodek
@@ -21,17 +21,17 @@ Before you ingest or query data in Azure Data Explorer, you first must create a 
 
 ## Create a table
 
-1. In the left menu of the Web UI, right-click a *database* and select **Create table (preview)**.
+1. In the left menu of the Web UI, right-click **ExampleDB**, your database name, and select **Create table (preview)**.
 
     :::image type="content" source="./media/one-click-table/create-table.png" alt-text="Create a table in the Azure Data Explorer Web UI":::
 
-1. In the **Create table** window, the **Source** tab is selected.
-1. The **Database** field is automatically filled with the database you've selected. You may select a different database from the dropdown menu.
-1. In **Table name**, enter a name for your table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
+The **Create table** window opens with the **Source** tab selected.
+1. The **Database** field is auto-populated with your database. You may select a different database from the drop-down menu.
+1. In **Table name**, enter a name for your table. 
     > [!NOTE]
-    >  Table names must be between 1 and 1024 characters.
+    >  Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
-1. In **Source type**, select the data source you'll use to create your table mapping. Choose from the following options: *From blob*, *From file*, or *From container*.
+1. In **Source type**, select the data source you'll use to create your table mapping. Choose from the following options: **From blob**, **From file**, or **From container**.
    
 
     * If you're using a container, in the Link to storage field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container and optionally enter the sample size. 
