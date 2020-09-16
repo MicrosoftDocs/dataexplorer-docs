@@ -7,6 +7,7 @@ ms.reviewer: dagrawal
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/16/2020
+ms.custom: references_regions
 
 #Customer intent: I want to deploy Azure Data Explorer cluster in an isolated compute SKU.
 ---
