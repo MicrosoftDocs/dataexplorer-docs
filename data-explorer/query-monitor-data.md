@@ -92,6 +92,22 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 
 Using the [`join` operator](kusto/query/joinoperator.md), instead of union, may require a [`hint`](kusto/query/joinoperator.md#join-hints) to run it on an Azure Data Explorer native cluster (and not on the proxy). 
 
+### How can we join data from an ADX cluster in one tenant with an Azure Monitor resource in another
+
+Cross-tenant queries are not supported by the ADX Proxy. The user is signed in once into a single tenant for running the query spanning both resources.
+
+Let's say the ADX resource is in Tenant 'A', LA workspace is in Tenant 'B'. There are two ways to get around the issue:
+
+1. ADX allows adding roles on the data plane for principals in different tenants. Add your user ID in the Tenant 'B' as an authorized user on the ADX cluster and run the cross-query fully in Tenant 'B'. First, validate the *'ExternalTrustedTenant'* property on the ADX cluster contains Tenant 'B'.
+
+2. Use [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) to project the Azure Monitor resource into Tenant 'A'.
+
+ ### Connect to Azure Data Explorer clusters from different tenants
+
+Kusto Explorer automatically signs the user into the tenant the user account originally belongs to. To access resources in other tenants the user has access to with the same user account, the tenantId has to be explicitly specified in the Connection String -
+
+Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=\*\*TenantId**
+
 ## Function supportability
 
 The Azure Data Explorer proxy cluster supports functions for both Application Insights and Log Analytics.
