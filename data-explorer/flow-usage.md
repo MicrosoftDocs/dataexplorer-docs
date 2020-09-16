@@ -11,7 +11,7 @@ ms.date: 03/15/2020
 
 # Usage examples for Azure Data Explorer connector to Power Automate (Preview)
 
-The Azure Data Explorer Power Automate (previously Flow) connector allows Azure Data Explorer to use the flow capabilities of [Microsoft Power Automate](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task. This article includes several common Power Automate connector usage examples.
+The Azure Data Explorer Power Automate (previously Microsoft flow) connector allows Azure Data Explorer to use the flow capabilities of [Microsoft Power Automate](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task. This article includes several common Power Automate connector usage examples.
 
 For more information, see [Azure Data Explorer Power Automate connector (Preview)](flow.md).
 
