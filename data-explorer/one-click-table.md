@@ -11,7 +11,7 @@ ms.date: 09/06/2020
 
 # Create a table in Azure Data Explorer (preview)
 
-After you have [created a cluster and database in Azure Data Explorer](create-cluster-database-portal.md), your next step is to create a table. The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer Web UI. After creating a table, you can then [ingest data](ingest-data-overview.md) using one of the many available ingestion options, and [query your data](write-queries.md) with Kusto Query Language.
+Creating a table is an important step in the process of [data ingestion](ingest-data-overview.md) and [query](write-queries.md) in Azure Data Explorer. After you have [created a cluster and database in Azure Data Explorer](create-cluster-database-portal.md), you can create a table. The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer Web UI. 
 
 ## Prerequisites
 
@@ -28,22 +28,29 @@ After you have [created a cluster and database in Azure Data Explorer](create-cl
 The **Create table** window opens with the **Source** tab selected.
 1. The **Database** field is auto-populated with your database. You may select a different database from the drop-down menu.
 1. In **Table name**, enter a name for your table. 
-    > [!NOTE]
+    > [!TIP]
     >  Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
 ### Select source type
 
 1. In **Source type**, select the data source you'll use to create your table mapping. Choose from the following options: **From blob**, **From file**, or **From container**.
    
-    * If you're using a container, in the Link to storage field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container and optionally enter the sample size. 
-    * If you're using a blob, enter the storage url of your blob, and optionally enter the sample size. Filter your files using the **File Filters**. Select a file that will be used in the next step to define the schema.
+    
+    * If you're using a **blob**:
+        * Enter the storage url of your blob, and optionally enter the sample size. 
+        * Filter your files using the **File Filters**. 
+        * Select a file that will be used in the next step to define the schema.
 
         :::image type="content" source="media/one-click-table/blob.png" alt-text="Create table using blob to create schema mapping":::
     
-    * If you're using a local file, select **Browse** to locate the file, or drag the file into the field.
+    * If you're using a **local file**:
+        * Select **Browse** to locate the file, or drag the file into the field.
 
         :::image type="content" source="./media/one-click-table/data-from-file.png" alt-text="Create a table based on data from a local file ":::
-    
+
+    * If you're using a **container**:
+        * In the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container and optionally enter the sample size. 
+
 1. Select **Edit Schema** to continue to the **Schema** tab.
 
 ### Edit Schema
@@ -55,15 +62,20 @@ In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats)
 
         :::image type="content" source="./media/one-click-table/schema-tab.png" alt-text="Edit schema tab in create table in one-click experience in Azure Data Explorer":::
  
-1. In **Mapping**, enter a name for this table's schema mapping. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
+1. In **Mapping**, enter a name for this table's schema mapping. 
+    > [!TIP]
+    >  Table names can include alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
 1. Select **Create**.
-1. In the **Create table completed** window, both steps will be marked with green check marks when table creation finishes successfully.
-1. Select **View command** to open the editor for each step. In the editor, you can view and copy the automatic commands generated from your inputs.
+
+## Create table completed window
+
+In the **Create table completed** window, both steps will be marked with green check marks when table creation finishes successfully.
+
+* Select **View command** to open the editor for each step. 
+    * In the editor, you can view and copy the automatic commands generated from your inputs.
     
     :::image type="content" source="./media/one-click-table/table-completed.png" alt-text="Table creation completed in create a table in one click experience - Azure Data Explorer":::
  
-## Explore quick queries and tools
-
 In the tiles below the **Create table** progress, explore **Quick queries** or **Tools**:
 
 * **Quick queries** includes links to the Web UI with example queries.
@@ -78,4 +90,4 @@ In the tiles below the **Create table** progress, explore **Quick queries** or *
 
 * [Data ingestion overview](ingest-data-overview.md)
 * [One-click ingestion](ingest-data-one-click.md)
-  
+* [Write queries for Azure Data Explorer](write-queries.md)  
