@@ -16,45 +16,13 @@ ms.date: 08/30/2020
 > [!NOTE] 
 > Materialized views have some [limitations](#known-issues-and-limitations), and are not guaranteed to work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
 
-## Key features
+## Advantages
 
 * **Performance improvement:** Querying a materialized view should perform better than querying the source table for the same aggregation function(s).
 
 * **Freshness:** A materialized view query always returns the most up-to-date results, independent of when materialization last took place. The query combines the materialized part of the view with the records in the source table, which haven't yet been materialized (the `delta` part), always providing the most up-to-date results.
 
 * **Cost reduction:** [Querying a materialized view](#materialized-views-queries) consumes less resources from the cluster than doing the aggregation over the entire source table. Retention policy of source table can be reduced if only aggregation is required. This setup reduces hot cache costs for the source table.
-
-## Common scenarios
-
-The following are common scenarios that can be addressed by using a materialized view:
-
-* Query last record per entity using [arg_max() (aggregation function)](../../query/arg-max-aggfunction.md).
-* De-duplicate records in a table using [any() (aggregation function)](../../query/any-aggfunction.md).
-* Reduce the resolution of data by calculating periodic statistics over the raw data. Use various [aggregation functions](materialized-view-create.md#supported-aggregation-functions) by period of time.
-    * For example, use `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain an up-to-date snapshot of distinct users per day.
-
-## Create a materialized view
-
-* There are two possible ways to create a materialized view, noted by the *backfill* option in the [create command](materialized-view-create.md):
-    * **Create based on the existing records in the source table:** 
-         * Creation may take a long while to complete, depending on the number of records in the source table. The view won't be available for queries until completion.
-        * When using this option, the create command must be `async` and execution can be monitored using the [.show operations](../operations.md#show-operations) command.
-    
-    > [!WARNING]
-    > * Using the backfill option is not supported for data in cold cache. Increase the hot cache period, if necessary, for the creation of the view. This may require scale-out.    
-    > * Using the backfill option may take a long time to complete for large source tables. If this process transiently fails while running, it will not be automatically retried, and a re-execution of the create command is required.
-    
-    * **Create the materialized view from now onwards:** 
-        * The materialized view is created empty, and will only include records ingested after view creation. Creation of this kind returns immediately, doesn't require `async`, and the view will be immediately available for query.
-
-* The materialized view derives the database retention policy by default. The policy can be changed using [control commands](../retentionpolicy.md).
-    * Limit the period of time covered by the view using the retention policy on the materialized view.
-    * The retention policy of the materialized view is unrelated to the retention policy of the source table.
-    * If the source table records aren't otherwise used, the retention policy of the source table can be dropped to a minimum. The materialized view will still store the data according to the retention policy set on the view. 
-    * While materialized views are in preview mode, the recommendation is to allow a minimum of at least seven days and recoverability set to true. This setting allows for fast recovery for errors and for diagnostic purposes.
-    
-    > [!NOTE]
-    > Zero retention policy on the source table is currently not supported.
 
 ## How materialized views work
 
@@ -65,6 +33,31 @@ A materialized view is made of two components:
 
 Querying the materialized view combines the materialized part with the delta part, providing an up-to-date result of the aggregation query. The offline materialization process ingests new records from the *delta* to the materialized table, and replaces existing records. The replacement is done by rebuilding extents that hold records to replace. If records in the *delta* constantly intersect with all data shards in the *materialized* part, each materialization cycle will require rebuilding the entire *materialized* part, and may not keep up with the pace. The ingestion rate will be higher than the materialization rate. In that case, the view will become unhealthy and the *delta* will constantly grow.
 
+## Create a materialized view
+
+* There are two possible ways to create a materialized view, noted by the *backfill* option in the [create command](materialized-view-create.md):
+    * **Create based on the existing records in the source table:** 
+         * Creation may take a long while to complete, depending on the number of records in the source table. The view won't be available for queries until completion.
+        * When using this option, the create command must be `async` and execution can be monitored using the [.show operations](../operations.md#show-operations) command.
+    
+    > [!IMPORTANT]
+    > * Using the backfill option is not supported for data in cold cache. Increase the hot cache period, if necessary, for the creation of the view. This may require scale-out.    
+    > * Using the backfill option may take a long time to complete for large source tables. If this process transiently fails while running, it will not be automatically retried, and a re-execution of the create command is required.
+    
+    * **Create the materialized view from now onwards:** 
+        * The materialized view is created empty, and will only include records ingested after view creation. Creation of this kind returns immediately, doesn't require `async`, and the view will be immediately available for query.
+
+### Materialized view retention policy
+
+The materialized view derives the database retention policy by default. The policy can be changed using [control commands](../retentionpolicy.md).
+   * Limit the period of time covered by the view using the retention policy on the materialized view.
+   * The retention policy of the materialized view is unrelated to the retention policy of the source table.
+   * If the source table records aren't otherwise used, the retention policy of the source table can be dropped to a minimum. The materialized view will still store the data according to the retention policy set on the view. 
+   * While materialized views are in preview mode, the recommendation is to allow a minimum of at least seven days and recoverability set to true. This setting allows for fast recovery for errors and for diagnostic purposes.
+    
+> [!NOTE]
+> Zero retention policy on the source table is currently not supported.
+
 ## Materialized views queries
 
 The materialized view query combines the materialized part of the view with the records in the source table that haven't been materialized yet. //Yifat- does this refer to the query in the .create argument or query of the view like a table?// Querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information about the breakdown of the materialized view parts, see [how materialized views work](#how-materialized-views-work). 
@@ -72,6 +65,15 @@ The materialized view query combines the materialized part of the view with the 
 The [materialized_view() function](../../query/materializedviewfunction.md) is different from querying the materialized view. It supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
 
 Once a materialized view is created, it can be queried like any other table in the database, and behaves like a table. The syntax for querying the view is the view name. The view can participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
+
+### Query use cases
+
+The following are common scenarios that can be addressed by using a materialized view:
+
+* Query last record per entity using [arg_max() (aggregation function)](../../query/arg-max-aggfunction.md).
+* De-duplicate records in a table using [any() (aggregation function)](../../query/any-aggfunction.md).
+* Reduce the resolution of data by calculating periodic statistics over the raw data. Use various [aggregation functions](materialized-view-create.md#supported-aggregation-functions) by period of time.
+    * For example, use `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain an up-to-date snapshot of distinct users per day.
 
 ### Query examples
 

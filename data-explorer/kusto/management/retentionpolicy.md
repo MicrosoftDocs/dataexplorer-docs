@@ -44,8 +44,8 @@ A retention policy includes the following properties:
 
 ## Control commands
 
-* Use [.show policy retention](../management/retention-policy.md) to show the current retention policy for a database, table, or [materialized view (preview)](materialized-views/materialized-view-overview.md).
-* Use [.alter policy retention](../management/retention-policy.md) to change current retention policy of a database, table, or [materialized view (preview)](materialized-views/materialized-view-overview.md).
+* Use [.show policy retention](../management/retention-policy.md) to show the current retention policy for a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
+* Use [.alter policy retention](../management/retention-policy.md) to change current retention policy of a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Defaults
 
