@@ -21,7 +21,7 @@ After you have [created a cluster and database in Azure Data Explorer](create-cl
 
 ## Create a table
 
-1. In the left menu of the Web UI, right-click **ExampleDB**, your database name, and select **Create table (preview)**.
+1. In the left menu of the Web UI, right-click **ExampleDB** which is your database name and select **Create table (preview)**.
 
     :::image type="content" source="./media/one-click-table/create-table.png" alt-text="Create a table in the Azure Data Explorer Web UI":::
 
@@ -48,7 +48,7 @@ The **Create table** window opens with the **Source** tab selected.
 
 ### Edit Schema
 
-Your [data format](ingest-data-one-click.md#file-formats) and compression are automatically identified in the left-hand pane. If incorrectly identified, use the **Data format** dropdown menu to select the correct format.
+In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats) and compression are automatically identified in the left-hand pane. If incorrectly identified, use the **Data format** dropdown menu to select the correct format.
 
    * If your data format is JSON, you must also select JSON levels, from 1 to 10. The levels determine the table column data division.
    * If your data format is CSV, select the check box **Includes column names** to ignore the heading row of the file.
@@ -71,8 +71,8 @@ In the tiles below the **Create table** progress, explore **Quick queries** or *
 * **Tools** includes links to **Undo** the running the relevant .drop commands.
 
 > [!NOTE]
-> You might lose data when you use .drop commands. Use them carefully. <br>
-> The drop commands in this workflow will only revert the changes that were made by the create table process (new table and schema mapping). Nothing else will be dropped.
+> You might lose data when you use .drop commands.<br>
+> The drop commands in this workflow will only revert the changes that were made by the create table process (new table and schema mapping).
 
 ## Next steps
 
