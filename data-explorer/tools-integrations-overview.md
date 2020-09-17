@@ -87,7 +87,7 @@ The [visualization overview](viz-overview.md) details data visualization, dashbo
 ## Orchestration
 
 * Power Automate
-    * [Power Automate Flow connector](flow.md)
+    * [Power Automate connector](flow.md)
     * [Power Automate connector usage examples](flow-usage.md)
 * [Microsoft Logic App](kusto/tools/logicapps.md) 
 * [Azure Data Factory](data-factory-integration.md)

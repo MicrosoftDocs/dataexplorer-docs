@@ -11,25 +11,25 @@ ms.date: 03/15/2020
 
 # Usage examples for Azure Data Explorer connector to Power Automate (Preview)
 
-The Azure Data Explorer flow connector allows Azure Data Explorer to use the flow capabilities of [Microsoft Power Automate](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task. This article includes several common flow connector usage examples.
+The Azure Data Explorer Power Automate (previously Microsoft flow) connector allows Azure Data Explorer to use the flow capabilities of [Microsoft Power Automate](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task. This article includes several common Power Automate connector usage examples.
 
-For more information, see [Azure Data Explorer flow connector (Preview)](flow.md).
+For more information, see [Azure Data Explorer Power Automate connector (Preview)](flow.md).
 
-## Flow connector and your SQL database
+## Power Automate connector and your SQL database
 
-Use the flow connector to query your data and aggregate it in a SQL database.
+Use the Power Automate connector to query your data and aggregate it in a SQL database.
 
 > [!Note]
-> Only use the flow connector for small amounts of output data. The SQL insert operation is done separately for each row. 
+> Only use the Power Automate connector for small amounts of output data. The SQL insert operation is done separately for each row. 
 
-![Screenshot of querying data by using the flow connector](./media/flow-usage/flow-sqlexample.png)
+![Screenshot of querying data by using the Power Automate connector](./media/flow-usage/flow-sqlexample.png)
 
 > [!IMPORTANT]
 > In the **Cluster Name** field, enter the cluster URL.
 
 ## Push data to a Microsoft Power BI dataset
 
-You can use the flow connector with the Power BI connector to push data from Kusto queries to Power BI streaming datasets.
+You can use the Power Automate connector with the Power BI connector to push data from Kusto queries to Power BI streaming datasets.
 
 1. Create a new **Run query and list results** action.
 1. Select **New step**.
@@ -49,7 +49,7 @@ The flow automatically applies the Power BI action for each row of the Kusto que
 
 ## Conditional queries
 
-You can use the results of Kusto queries as input or conditions for the next flow actions.
+You can use the results of Kusto queries as input or conditions for the next Power Automate actions.
 
 In the following example, we query Kusto for incidents that occurred during the last day. For each resolved incident, a Slack message is posted and a push notification is created.
 For each incident that is still active, we query Kusto for more information about similar incidents. It sends that information as an email, and opens a related task in Azure DevOps Server.

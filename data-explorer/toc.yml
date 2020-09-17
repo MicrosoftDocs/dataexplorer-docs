@@ -318,10 +318,12 @@
     items:
     - name: Power Automate 
       items:
-      - name: Power Automate flow connector
+      - name: Power Automate connector
         href: flow.md
+        displayName: Microsoft Flow, flow, flow connector
       - name: Power Automate connector usage examples
         href: flow-usage.md
+        displayName: Microsoft Flow, flow, flow connector
     - name: Logic Apps
       href: kusto/tools/logicapps.md
     - name: Apache Spark Connector
