@@ -72,6 +72,8 @@
       href: create-cluster-database-python.md  
     - name: Azure Resource Manager template
       href: create-cluster-database-resource-manager.md
+  - name: Create a table
+    href: one-click-table.md
   - name: Ingest data
     items: 
     - name: One-click ingestion
