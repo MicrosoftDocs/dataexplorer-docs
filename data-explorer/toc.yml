@@ -318,7 +318,7 @@
       items:
       - name: Power Automate connector
         href: flow.md
-        displayName: flow, flow connector
+        displayName: Microsoft Flow, flow, flow connector
       - name: Power Automate connector usage examples
         href: flow-usage.md
         displayName: Microsoft Flow, flow, flow connector
