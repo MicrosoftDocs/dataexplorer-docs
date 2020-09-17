@@ -16,6 +16,13 @@ ms.date: 08/30/2020
 > [!NOTE] 
 > Materialized views have some [limitations](#known-issues-and-limitations), and are not guaranteed to work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
 
+The following commands are related to materialized views:
+* [.create materialized-view](materialized-view-create.md)
+* [.alter materialized-view](materialized-view-alter.md)
+* [.drop materialized-view](materialized-view-drop.md)
+* [.disable | .enable materialized-view](materialized-view-enable-disable.md)
+* [.show materialized-views commands](materialized-view-show-commands.md)
+
 ## Advantages
 
 * **Performance improvement:** Querying a materialized view should perform better than querying the source table for the same aggregation function(s).
@@ -35,17 +42,30 @@ Querying the materialized view combines the materialized part with the delta par
 
 ## Create a materialized view
 
-* There are two possible ways to create a materialized view, noted by the *backfill* option in the [create command](materialized-view-create.md):
-    * **Create based on the existing records in the source table:** 
-         * Creation may take a long while to complete, depending on the number of records in the source table. The view won't be available for queries until completion.
-        * When using this option, the create command must be `async` and execution can be monitored using the [.show operations](../operations.md#show-operations) command.
+There are two possible ways to create a materialized view, noted by the *backfill* option in the [create command](materialized-view-create.md):
+ * **Create based on the existing records in the source table:** 
+      * Creation may take a long while to complete, depending on the number of records in the source table. The view won't be available for queries until completion.
+      * When using this option, the create command must be `async` and execution can be monitored using the [.show operations](../operations.md#show-operations) command.
     
-    > [!IMPORTANT]
-    > * Using the backfill option is not supported for data in cold cache. Increase the hot cache period, if necessary, for the creation of the view. This may require scale-out.    
-    > * Using the backfill option may take a long time to complete for large source tables. If this process transiently fails while running, it will not be automatically retried, and a re-execution of the create command is required.
+      > [!IMPORTANT]
+      > * Using the backfill option is not supported for data in cold cache. Increase the hot cache period, if necessary, for the creation of the view. This may require scale-out.    
+      > * Using the backfill option may take a long time to complete for large source tables. If this process transiently fails while running, it will not be automatically retried, and a re-execution of the create command is required.
     
-    * **Create the materialized view from now onwards:** 
-        * The materialized view is created empty, and will only include records ingested after view creation. Creation of this kind returns immediately, doesn't require `async`, and the view will be immediately available for query.
+* **Create the materialized view from now onwards:** 
+    * The materialized view is created empty, and will only include records ingested after view creation. Creation of this kind returns immediately, doesn't require `async`, and the view will be immediately available for query.
+
+### Limitations on creating materialized views
+
+* A materialized view can't be created:
+    * On top of another materialized view.
+    * On [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader. 
+* The source table of a materialized view:
+    * Must be a table that is being ingested to directly, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md).
+        * [Move extents](../move-extents.md) from other tables into the source table of the materialized view. Move extents may fail with the following error: `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
+    * Can't be enabled for streaming ingestion.
+    * Can't be a restricted table or a table with row level security enabled.
+* [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
+* Continuous export from a materialized view isn't supported.
 
 ### Materialized view retention policy
 
@@ -65,6 +85,10 @@ The materialized view query combines the materialized part of the view with the 
 The [materialized_view() function](../../query/materializedviewfunction.md) is different from querying the materialized view. It supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
 
 Once a materialized view is created, it can be queried like any other table in the database, and behaves like a table. The syntax for querying the view is the view name. The view can participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
+
+> [!IMPORTANT]
+> * [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
+> * Continuous export from a materialized view isn't supported.
 
 ### Query use cases
 
@@ -105,26 +129,13 @@ The main contributors that can impact a materialized view health are:
 
 * **Materialized view definition**: The materialized view definition must be defined according to query pattern for best query performance. For more information, see [create command performance tips](materialized-view-create.md#performance-tips).
 
-## Known issues and limitations
-
-* A materialized view can't be created:
-    * On top of another materialized view.
-    * On [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader. 
-* The source table of a materialized view:
-    * Must be a table that is being ingested to directly, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md).
-        * [Move extents](../move-extents.md) from other tables into the source table of the materialized view. Move extents may fail with the following error: `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
-    * Can't be enabled for streaming ingestion.
-    * Can't be a restricted table or a table with row level security enabled.
-* [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
-* Continuous export from a materialized view isn't supported.
-
 ## Materialized views monitoring
 
 Monitor the materialized view's health in the following ways:
 
+* Monitor [materialized view metrics](../../../using-metrics.md#materialized-view-metrics) in the Azure portal.
 * Monitor the `IsHealthy` property returned from [show materialized-view](materialized-view-show-commands.md#show-materialized-view).
 * Check for failures using [show materialized-view failures](materialized-view-show-commands.md#show-materialized-view-failures).
-* Monitor [materialized view metrics](../../../using-metrics.md#materialized-view-metrics) in the Azure portal.
 
 > [!NOTE]
 > Materialization never skips any data, even if there are constant failures. The view is always guaranteed to return the most up-to-date snapshot of the query, based on all records in the source table. Constant failures will significantly degrade query performance, but won't cause incorrect results in view queries.
