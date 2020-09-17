@@ -9,7 +9,7 @@ ms.topic: how-to
 ms.date: 09/06/2020
 ---
 
-# Create a table (preview)
+# Create a table in Azure Data Explorer (preview)
 
 After you have [created a cluster and database in Azure Data Explorer](create-cluster-database-portal.md), your next step is to create a table. The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer Web UI. After creating a table, you can then [ingest data](ingest-data-overview.md) using one of the many available ingestion options, and [query your data](write-queries.md) with Kusto Query Language.
 
