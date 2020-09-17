@@ -102,7 +102,7 @@ Use this action to run a [control command](kusto/management/index.md).
    * A time chart.
    * A bar chart.
 
-![Screenshot of Run control command and visualize results](./media/flow/flow-runcontrolcommand.png)
+![Screenshot of Run control command and visualize results in recurrence pane](./media/flow/flow-runcontrolcommand.png)
 
 > [!IMPORTANT]
 > In the **Cluster Name** field, enter the cluster URL.
