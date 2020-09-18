@@ -76,7 +76,7 @@ Export metrics track the general health and performance of export operations lik
 
 |**Metric** | **Unit** | **Aggregation** | **Metric description** | **Dimensions** |
 |---|---|---|---|---|
-Continuous export number of exported records	| Count	| Sum |	The number of exported records in all continuous export jobs. | None |
+Continuous export number of exported records	| Count	| Sum |	The number of exported records in all continuous export jobs. | ContinuousExportName |
 Continuous export max lateness |	Count	| Max	| The lateness (in minutes) reported by the continuous export jobs in the cluster. | None |
 Continuous export pending count	| Count	| Max	| The number of pending continuous export jobs. These jobs are ready to run but waiting in a queue, possibly due to insufficient capacity). 
 Continuous export result	| Count |	Count	| The Failure/Success result of each continuous export run. | ContinuousExportName |
