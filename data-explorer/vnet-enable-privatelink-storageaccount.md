@@ -10,11 +10,11 @@ ms.date: 08/21/2020
 ---
 # Enable Private Endpoint between ADX and Event Hub
 
-Currently thousands of the companies use Azure Data Explorer in their own Virtual Network (VNet), so they  can secure the data  inside their network. There are another options where you can secure your data ingestion  in Azure Data Explorer inside your network without exposing to internet. 
+Customers deploying Azure Data Explore in their virtual network (VNET) can establish security network connection to other Azure services via [Private Endpoint](/azure/private-link/private-endpoint-overview). In this document we will discuss steps for enabling Private Endpoint between Azure Data Explorer and Azure Storage.
 
 Private endpoints enable clients on an Azure virtual network (VNet) to securely access data from a storage account over a private link. This enables network traffic between the Azure Data Explorer and the storage service to traverse over the Microsoft backbone, eliminating exposure from the public internet. A private endpoint uses an IP address from your VNet’s address space for the storage account service.
  
-Private endpoints enable you to block exfiltration of data from your VNet. Using private endpoints also enables you to securely connect between a storage account and Azure Data Explorer. The storage accounts will access private endpoint of the Azure Data Explorer for ingestion.
+Private endpoints enable you to block exfiltration of data from your VNet. Using private endpoints also enables you to securely connect between a Azure Storage and Azure Data Explorer. The storage accounts will access private endpoint of the Azure Data Explorer for ingestion.
  
 
 
