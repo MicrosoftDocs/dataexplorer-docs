@@ -106,15 +106,20 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
 
     ![Select test database](media/ingest-data-event-hub/select-test-database.png)
 
-1. Select **Data ingestion** and **Add data connection**. Then fill out the form with the following information. Select **Create** when you are finished.
+1. Select **Data ingestion** and **Add data connection**. 
 
-    ![Event hub connection](media/ingest-data-event-hub/event-hub-connection.png)
+    :::image type="content" source="media/ingest-data-event-hub/event-hub-connection.png" alt-text="Select data ingestion and Add data connection in Event Hub - Azure Data Explorer":::
+
+1. In the **Data connection** pane, fill out the form with the following information. 
+
+    :::image type="content" source="media/ingest-data-event-hub/data-connection-pane.png" alt-text="Data connection pane Event Hub - Azure Data Explorer":::
 
     **Data Source:**
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
     | Data connection name | *test-hub-connection* | The name of the connection you want to create in Azure Data Explorer.|
+    | Subscription |      |       |
     | Event hub namespace | A unique namespace name | The name you chose earlier that identifies your namespace. |
     | Event hub | *test-hub* | The event hub you created. |
     | Consumer group | *test-group* | The consumer group defined in the event hub you created. |
@@ -125,21 +130,21 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
     **Target table:**
 
     There are two options for routing the ingested data: *static* and *dynamic*. 
-    For this article, you use static routing, where you specify the table name, data format, and mapping. Therefore, leave **My data includes routing info** unselected.
+    For this article, you use static routing, where you specify the table name, data format, and mapping as default values. If the Event Hub message or metadata includes data routing information, this routing information will override the default settings.
 
+    :::image type="content" source="media/ingest-data-event-hub/default-routing-settings.png" alt-text="":::
+    
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
     | Table | *TestTable* | The table you created in **TestDatabase**. |
     | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, and W3CLOG. |
-    | Column mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**. Required for JSON or MULTILINE JSON, and optional for other formats.|
-    | | |
+    | Mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**. Required for JSON or MULTILINE JSON, and optional for other formats.|
 
     > [!NOTE]
-    > * Select **My data includes routing info** to use dynamic routing, where your data includes the necessary routing information as seen in the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) comments. If both static and dynamic properties are set, the dynamic properties override the static ones. 
+    > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
-    > * You can also set the compression type via dynamic properties as seen in the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest).
-    > * Avro, ORC and PARQUET formats as well as event system properties aren't supported on GZip compression payload.
 
+1. Select **Create** when you are finished. 
 
 ### Event system properties mapping
 
