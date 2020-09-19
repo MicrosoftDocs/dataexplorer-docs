@@ -91,7 +91,7 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     | Consumer group |  The consumer group defined in the IoT Hub built-in endpoint |
     | Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. | | | 
 
-        **Target table**:
+    **Target table**:
 
     There are two options for routing the ingested data: *static* and *dynamic*. 
     For this article, you use static routing, where you specify the table name, data format, and mapping. If the Event Hub message or metadata includes data routing information, this routing information will override the default settings.
