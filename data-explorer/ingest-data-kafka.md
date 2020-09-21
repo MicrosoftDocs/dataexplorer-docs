@@ -20,8 +20,8 @@ This article shows Kafka ingestion into Azure Data Explorer, using a self-contai
 ## Prerequisites
 
 * You will need a [Microsoft Azure account](https://docs.microsoft.com/azure/).
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) on your machine, if you don't have it already.
-* [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install) on your machine, if you don't have it already.
+* Install [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
 
 ## Create an Azure Active Directory service principal
 
