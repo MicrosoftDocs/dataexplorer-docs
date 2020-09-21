@@ -1148,6 +1148,8 @@
         href: ./kusto/query/series-fit-linefunction.md
       - name: series_fit_line_dynamic()
         href: ./kusto/query/series-fit-line-dynamicfunction.md
+      - name: series_fit_poly()
+        href: ./kusto/query/series-fit-poly-function.md
       - name: series_greater()
         href: ./kusto/query/series-greaterfunction.md
       - name: series_greater_equals()
