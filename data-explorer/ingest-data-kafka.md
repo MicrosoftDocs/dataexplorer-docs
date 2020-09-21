@@ -81,7 +81,7 @@ You will get a JSON response as shown below. Note down the `appId`, `password` a
 
 1. Grant permissions to the service principal
 
-    Use the service principal from [Create the service principal](#create-the-service-principal) to grant permission to work with the database.
+    Use the service principal from [Create an Azure Active Directory service principal](#create-an-azure-active-directory-service-principal) to grant permission to work with the database.
 
     ```kusto
     .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'AAD App'
@@ -112,10 +112,10 @@ Clone the lab's git repo
 
 Run the following command to list the contents of \\anagha\\.
 
-    ```
-    cd ~/kafka-kusto-hol/azure-kusto-labs/kafka-integration/dockerized-quickstart
-    tree
-    ```
+```
+cd ~/kafka-kusto-hol/azure-kusto-labs/kafka-integration/dockerized-quickstart
+tree
+```
 
 This is the result:
 
@@ -124,7 +124,7 @@ This is the result:
 ├── adx-query.png
 ├── adx-sink-config.json
 ├── connector
-│   └── Dockerfile
+│   └── Dockerfile
 ├── docker-compose.yaml
 └── storm-events-producer
     ├── Dockerfile
@@ -132,7 +132,7 @@ This is the result:
     ├── go.mod
     ├── go.sum
     ├── kafka
-    │   └── kafka.go
+    │   └── kafka.go
     └── main.go
  ```
 
