@@ -191,7 +191,6 @@ The following examples assume the function is already installed:
     | project x = rand()*5 - 2.3
     | extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
     | extend y = y + (rand() - 0.5)*0.5*y
-    | order by x asc 
     | summarize x=make_list(x), y=make_list(y)
     | extend y_fit = dynamic(null), coeff=dynamic(null)
     | invoke series_fit_poly_fl('y', 'y_fit', 'coeff', 5, 'x')
