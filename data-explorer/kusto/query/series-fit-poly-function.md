@@ -61,7 +61,7 @@ The function `series_fit_poly()` applies a polynomial regression from an indepen
     | fork (project x, y, y_line, y_poly) (project-away id, x, y, y_line, y_poly) 
     | render linechart with(xcolumn=x, ycolumns=y, y_line, y_poly)
     ```
-    :::image type="content" source="images/series-fit-poly-function/fit-poly-line.png" alt-text="Coefficients of linear regression" border="false":::
+    :::image type="content" source="images/series-fit-poly-function/fit-poly-line.png" alt-text="Graph showing linear regression" border="false":::
     :::image type="content" source="images/series-fit-poly-function/fit-poly-line-table.png" alt-text="Coefficients of linear regression" border="false":::
     
 1. Irregular (unevenly spaced) time series:
