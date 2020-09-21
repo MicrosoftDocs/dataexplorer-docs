@@ -110,41 +110,42 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
 
     :::image type="content" source="media/ingest-data-event-hub/event-hub-connection.png" alt-text="Select data ingestion and Add data connection in Event Hub - Azure Data Explorer":::
 
-1. In the **Data connection** pane, fill out the form with the following information. 
+### Data connection pane
+
+1. Fill out the form with the following information:
 
     :::image type="content" source="media/ingest-data-event-hub/data-connection-pane.png" alt-text="Data connection pane Event Hub - Azure Data Explorer":::
-
-    **Data Source:**
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
     | Data connection name | *test-hub-connection* | The name of the connection you want to create in Azure Data Explorer.|
     | Subscription |      | The subscription ID where the Event Hub resource is located.  |
-    | Event hub namespace | A unique namespace name | The name you chose earlier that identifies your namespace. |
-    | Event hub | *test-hub* | The event hub you created. |
-    | Consumer group | *test-group* | The consumer group defined in the event hub you created. |
+    | Event Hub namespace | A unique namespace name | The name you chose earlier that identifies your namespace. |
+    | Event Hub | *test-hub* | The event Hub you created. |
+    | Consumer group | *test-group* | The consumer group defined in the Event Hub you created. |
     | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
     | Compression | *None* | The compression type of the Event Hub messages payload. Supported compression types: *None, GZip*.|
-    | | |
-
-    **Target table:**
-
-    There are two options for routing the ingested data: *static* and *dynamic*. 
-    For this article, you use static routing, where you specify the table name, data format, and mapping as default values. If the Event Hub message includes data routing information, this routing information will override the default settings.
-
-    :::image type="content" source="media/ingest-data-event-hub/default-routing-settings.png" alt-text="Default routing settings for ingesting data to Event Hub - Azure Data Explorer":::
     
-     **Setting** | **Suggested value** | **Field description**
-    |---|---|---|
-    | Table name | *TestTable* | The table you created in **TestDatabase**. |
-    | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, and W3CLOG. |
-    | Mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **TestDatabase**, which maps incoming data to the column names and data types of **TestTable**. Required for JSON, MULTILINE JSON and AVRO, and optional for other formats.|
+### Target table
 
-    > [!NOTE]
-    > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
-    > * Only events enqueued after you create the data connection are ingested.
+There are two options for routing the ingested data: *static* and *dynamic*. 
+For this article, you use static routing, where you specify the table name, data format, and mapping as default values. If the Event Hub message includes data routing information, this routing information will override the default settings.
 
-1. Select **Create** when you are finished. 
+1. Fill out the following routing settings:
+  
+   :::image type="content" source="media/ingest-data-event-hub/default-routing-settings.png" alt-text="Default routing settings for ingesting data to Event Hub - Azure Data Explorer":::
+        
+   |**Setting** | **Suggested value** | **Field description**
+   |---|---|---|
+   | Table name | *TestTable* | The table you created in **TestDatabase**. |
+   | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, and W3CLOG. |
+   | Mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **TestDatabase**, which maps incoming data to the column names and data types of **TestTable**. Required for JSON, MULTILINE JSON and AVRO, and optional for other formats.|
+    
+   > [!NOTE]
+   > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
+   > * Only events enqueued after you create the data connection are ingested.
+
+1. Select **Create**. 
 
 ### Event system properties mapping
 

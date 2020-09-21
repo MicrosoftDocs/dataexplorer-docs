@@ -65,13 +65,13 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
     :::image type="content" source="media/ingest-data-event-grid/data-ingestion-create.png" alt-text="Add data connection for data ingestion":::
 
+### Data connection - Basics tab
+
 1. Select the connection type: **Blob storage**.
 
 1. Fill out the form with the following information:
 
     :::image type="content" source="media/ingest-data-event-grid/data-connection-basics.png" alt-text="Fill out event grid form with connection basics":::
-
-     Data source:
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
@@ -93,7 +93,9 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Select **Next: Ingest properties**.
 
-1. Fill out the form with the following information and select **Next: Review + Create**. Table and mapping names are case-sensitive:
+### Data connection - Ingest properties tab
+
+1. Fill out the form with the following information. Table and mapping names are case-sensitive:
 
    :::image type="content" source="media/ingest-data-event-grid/data-connection-ingest-properties.png" alt-text="Review and create table and mapping ingestion properties":::
 
@@ -108,6 +110,9 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
    > [!NOTE]
    > You don't have to specify all **Default routing settings**. Partial settings are also accepted.
+1. Select **Next: Review + Create**
+
+### Data connection - Review + Create tab
 
 1. Review the resources that were auto created for you and select **Create**.
 

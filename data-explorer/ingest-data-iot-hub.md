@@ -76,11 +76,11 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
 
     :::image type="content" source="media/ingest-data-iot-hub/iot-hub-connection.png" alt-text="Create data connection to IoT Hub- Azure Data Explorer":::
 
-1. In the **Data connection** pane, fill out the form with the following information. 
+### Data connection pane
+
+1. Fill out the form with the following information. 
     
     :::image type="content" source="media/ingest-data-iot-hub/data-connection-pane.png" alt-text="Data connection pane in IoT Hub - Azure Data Explorer":::
-
-    **Data Source**:
 
     **Setting** | **Field description**
     |---|---|
@@ -91,10 +91,12 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     | Consumer group |  The consumer group defined in the IoT Hub built-in endpoint |
     | Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. | | | 
 
-    **Target table**:
+### Target table
 
-    There are two options for routing the ingested data: *static* and *dynamic*. 
-    For this article, you use static routing, where you specify the table name, data format, and mapping. If the Event Hub message includes data routing information, this routing information will override the default settings.
+There are two options for routing the ingested data: *static* and *dynamic*. 
+For this article, you use static routing, where you specify the table name, data format, and mapping. If the Event Hub message includes data routing information, this routing information will override the default settings.
+
+1. Fill out the following routing settings:
     
     :::image type="content" source="media/ingest-data-iot-hub/default-routing-settings.png" alt-text="Default routing properties - IoT Hub - Azure Data Explorer":::
 
@@ -112,7 +114,7 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
 
-1. Select **Create** when you're finished.
+1. Select **Create**.
 
 ### Event system properties mapping
 
