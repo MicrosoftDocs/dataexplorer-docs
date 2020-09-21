@@ -106,6 +106,9 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Mapping | *TestMapping* | The mapping you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**.|
     | Advanced settings | *My data has headers* | Ignores headers. Supported for *SV type files.|
 
+   > [!NOTE]
+   > You don't have to specify all **Default routing settings**. Partial settings are also accepted.
+
 1. Review the resources that were auto created for you and select **Create**.
 
     :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Review and create data connection for event grid":::
