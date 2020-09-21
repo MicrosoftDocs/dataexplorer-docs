@@ -12,7 +12,7 @@ ms.date: 09/21/2020
 
 The function `series_fit_poly()` applies a polynomial regression from an independent variable (x_series) to a dependent variable (y_series). It takes a table that contains multiple series (dynamic numerical array) and generates, for each series, the high-order polynomial that best fits it using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). The function generates the following columns:
 * `rsquare`: [r-square](https://en.wikipedia.org/wiki/Coefficient_of_determination) is a standard measure of the fit quality. The value's a number in the range [0-1], where 1 - is the best possible fit, and 0 means the data is unordered and doesn't fit any line.
-* `coefficients`:  Numerical array holding a the coefficients of the best fitted polynomial with the given degree, ordered from the highest power coefficient to the lowest.
+* `coefficients`:  Numerical array holding the coefficients of the best fitted polynomial with the given degree, ordered from the highest power coefficient to the lowest.
 * `variance`: Variance of the dependent variable (y_series).
 * `rvariance`: Residual variance that is the variance between the input data values the approximated ones.
 * `poly_fit`: Numerical array holding a series of values of the best fitted polynom. The series length is equal to the length of the dependent variable (y_series). The value's used for charting.
@@ -35,7 +35,7 @@ The function `series_fit_poly()` applies a polynomial regression from an indepen
 
 ## Examples
 
-1. 5th order polynomial with noise on x & y axes:
+1. 5<sup>th</sup> order polynomial with noise on x & y axes:
     <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
     range x from 1 to 200 step 1
@@ -49,7 +49,7 @@ The function `series_fit_poly()` applies a polynomial regression from an indepen
     | render linechart 
     ```
     :::image type="content" source="images/series-fit-poly-function/fifth-order-noise-1.png" alt-text="Graph showing 5th order polynomial fit to a series with noise" border="false":::
-    :::image type="content" source="images/series-fit-poly-function/fifth-order-noise-table-1.png" alt-text="Coefficients of 5th order polynomial fit to  a series with noise" border="false":::
+    :::image type="content" source="images/series-fit-poly-function/fifth-order-noise-table-1.png" alt-text="Coefficients of fifth order polynomial fit to  a series with noise" border="false":::
     
 1. Verify that series_fit_poly with degree=1 matches series_fit_line
     <!-- csl: https://help.kusto.windows.net:443/Samples -->
@@ -79,4 +79,4 @@ The function `series_fit_poly()` applies a polynomial regression from an indepen
     | project-rename fnum=series_fit_poly_num_poly_fit
     | render timechart with(ycolumns=num, fnum)
     ```
-    :::image type="content" source="images/series-fit-poly-function/irregular-time-series-1.png" alt-text="Graph showing 8th order polynomial fit to an irregular time series" border="false":::
+    :::image type="content" source="images/series-fit-poly-function/irregular-time-series-1.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series" border="false":::
