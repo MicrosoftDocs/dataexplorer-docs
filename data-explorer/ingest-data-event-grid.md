@@ -65,19 +65,20 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
     :::image type="content" source="media/ingest-data-event-grid/data-ingestion-create.png" alt-text="Add data connection for data ingestion":::
 
+### Data connection - Basics tab
+
 1. Select the connection type: **Blob storage**.
 
 1. Fill out the form with the following information:
 
-    :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-basics.png" alt-text="Fill out event grid form with connection basics":::
-
-     Data source:
+    :::image type="content" source="media/ingest-data-event-grid/data-connection-basics.png" alt-text="Fill out event grid form with connection basics":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
     | Data connection name | *test-grid-connection* | The name of the connection that you want to create in Azure Data Explorer.|
     | Storage account subscription | Your subscription ID | The subscription ID where your storage account is.|
     | Storage account | *gridteststorage1* | The name of the storage account that you created previously.|
+    | Event type | *Blob created* or *Blob renamed* | The type of event that triggers ingestion. |
     | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](ingest-data-event-grid.md) section.|
 
 1. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
@@ -92,25 +93,36 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Select **Next: Ingest properties**.
 
-1. Fill out the form with the following information and select **Next: Review + Create**. Table and mapping names are case-sensitive:
+### Data connection - Ingest properties tab
 
-   :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-ingest-properties.png" alt-text="Review and create table and mapping ingestion properties":::
+1. Fill out the form with the following information. Table and mapping names are case-sensitive:
+
+   :::image type="content" source="media/ingest-data-event-grid/data-connection-ingest-properties.png" alt-text="Review and create table and mapping ingestion properties":::
 
     Ingest properties:
 
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
-    | Table | *TestTable* | The table you created in **TestDatabase**. |
+    | Table name | *TestTable* | The table you created in **TestDatabase**. |
     | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, RAW, and W3CLOG. Supported compression options are Zip and GZip. |
     | Mapping | *TestMapping* | The mapping you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**.|
+    | Advanced settings | *My data has headers* | Ignores headers. Supported for *SV type files.|
+
+   > [!NOTE]
+   > You don't have to specify all **Default routing settings**. Partial settings are also accepted.
+1. Select **Next: Review + Create**
+
+### Data connection - Review + Create tab
 
 1. Review the resources that were auto created for you and select **Create**.
 
     :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Review and create data connection for event grid":::
 
-1. Wait until the deployment is completed. If your deployment failed, select **Operation details** next to the failed stage to get more information for the failure reason. Select **Redeploy** to try to deploy the resources again.
+### Deployment
 
-    :::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Deploy event grid resources":::
+Wait until the deployment is completed. If your deployment failed, select **Operation details** next to the failed stage to get more information for the failure reason. Select **Redeploy** to try to deploy the resources again. You can alter the parameters before deployment.
+
+:::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Deploy event grid resources":::
 
 ## Generate sample data
 
