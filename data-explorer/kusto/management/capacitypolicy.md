@@ -130,7 +130,7 @@ Maximum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * `Ma
 
 * Default values are 50 total concurrency rebuilds and maximum 5 per node.
 * The `ExtentsRebuildCapacity` policy serves as an upper limit only. The actual value used is dynamically determined by the system, based on current cluster's conditions (memory, CPU) and an estimation of the amount of resources required by the rebuild operation. In practice, concurrency can be much lower than the value specified in capacity policy.
-    * The `MaterializedViewExtentsRebuild` and `MaterializedViewExtentsRebuildConcurrency` metrics provide information about how many extents were rebuilt in each materialization cycle, and the concurrency used. For more information, see [materialized views monitoring](materialized-views/materialized-view-overview.md#materialized-views-monitoring).
+    * The `MaterializedViewExtentsRebuild` metric provides information about how many extents were rebuilt in each materialization cycle. For more information, see [materialized views monitoring](materialized-views/materialized-view-overview.md#materialized-views-monitoring).
 
 ## Defaults
 
