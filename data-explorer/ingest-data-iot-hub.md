@@ -94,7 +94,7 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     **Target table**:
 
     There are two options for routing the ingested data: *static* and *dynamic*. 
-    For this article, you use static routing, where you specify the table name, data format, and mapping. If the Event Hub message or metadata includes data routing information, this routing information will override the default settings.
+    For this article, you use static routing, where you specify the table name, data format, and mapping. If the Event Hub message includes data routing information, this routing information will override the default settings.
     
     :::image type="content" source="media/ingest-data-iot-hub/default-routing-settings.png" alt-text="Default routing properties - IoT Hub - Azure Data Explorer":::
 
