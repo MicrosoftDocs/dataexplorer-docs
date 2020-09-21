@@ -110,7 +110,7 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
 
     :::image type="content" source="media/ingest-data-event-hub/event-hub-connection.png" alt-text="Select data ingestion and Add data connection in Event Hub - Azure Data Explorer":::
 
-### Data connection pane
+### Create a data connection
 
 1. Fill out the form with the following information:
 
@@ -126,7 +126,7 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
     | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
     | Compression | *None* | The compression type of the Event Hub messages payload. Supported compression types: *None, GZip*.|
     
-### Target table
+#### Target table
 
 There are two options for routing the ingested data: *static* and *dynamic*. 
 For this article, you use static routing, where you specify the table name, data format, and mapping as default values. If the Event Hub message includes data routing information, this routing information will override the default settings.
