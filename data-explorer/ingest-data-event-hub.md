@@ -119,7 +119,7 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
     | Data connection name | *test-hub-connection* | The name of the connection you want to create in Azure Data Explorer.|
-    | Subscription |      |       |
+    | Subscription |      | The subscription ID where the Event Hub resource is located.  |
     | Event hub namespace | A unique namespace name | The name you chose earlier that identifies your namespace. |
     | Event hub | *test-hub* | The event hub you created. |
     | Consumer group | *test-group* | The consumer group defined in the event hub you created. |
