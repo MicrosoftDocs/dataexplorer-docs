@@ -85,7 +85,7 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     **Setting** | **Field description**
     |---|---|
     | Data connection name | The name of the connection you want to create in Azure Data Explorer
-    | Subscription |     | The subscription ID where the Event Hub resource is located.  |
+    | Subscription |  The subscription ID where the Event Hub resource is located.  |
     | IoT Hub | IoT Hub name |
     | Shared access policy | The name of the shared access policy. Must have read permissions |
     | Consumer group |  The consumer group defined in the IoT Hub built-in endpoint |
