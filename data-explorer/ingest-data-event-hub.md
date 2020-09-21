@@ -130,7 +130,7 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
     **Target table:**
 
     There are two options for routing the ingested data: *static* and *dynamic*. 
-    For this article, you use static routing, where you specify the table name, data format, and mapping as default values. If the Event Hub message or metadata includes data routing information, this routing information will override the default settings.
+    For this article, you use static routing, where you specify the table name, data format, and mapping as default values. If the Event Hub message includes data routing information, this routing information will override the default settings.
 
     :::image type="content" source="media/ingest-data-event-hub/default-routing-settings.png" alt-text="Default routing settings for ingesting data to Event Hub - Azure Data Explorer":::
     
