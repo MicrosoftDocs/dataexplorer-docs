@@ -94,7 +94,7 @@ Using the [`join` operator](kusto/query/joinoperator.md), instead of union, may 
 
 ### Join data from an ADX cluster in one tenant with an Azure Monitor resource in another
 
-Cross-tenant queries are not supported by the ADX Proxy. The user is signed in once into a single tenant for running the query spanning both resources.
+Cross-tenant queries aren't supported by ADX Proxy. You are signed in to a single tenant for running the query spanning both resources.
 
 Let's say the ADX resource is in Tenant 'A', LA workspace is in Tenant 'B'. There are two ways to get around the issue:
 
