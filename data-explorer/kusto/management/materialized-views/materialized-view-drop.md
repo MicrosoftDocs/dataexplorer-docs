@@ -13,7 +13,7 @@ ms.date: 08/30/2020
 
 Drops a materialized view.
 
-To perform this command, you must have [Database Admin](../access-control/role-based-authorization.md) or materialized view admin permissions.
+Requires [Database Admin](../access-control/role-based-authorization.md) or materialized view admin permissions.
 
 ## Syntax
 
@@ -28,3 +28,26 @@ To perform this command, you must have [Database Admin](../access-control/role-b
 ## Returns
 
 The command returns the remaining materialized views in the database, which is the output of the [show materialized view](materialized-view-show-commands.md#show-materialized-view) command.
+
+## Example
+
+```kusto
+.drop materialized-view ViewName
+```
+
+## Output
+
+|Output parameter |Type |Description
+|---|---|---|
+|Name  |String |The name of the materialized view.
+|SourceTable|String|The source table of the materialized view.
+|Query|String|The materialized view query.
+|MaterializedTo|datetime|The max materialized ingestion_time() timestamp in source table. For more information, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work).
+|LastRun|datetime |The last time materialization was run.
+|LastRunResult|String|Result of last run. Returns `Completed` for successful runs, otherwise `Failed`.
+|IsHealthy|bool|`True` when view is considered healthy, `False` otherwise. View is considered healthy if it was successfully materialized up to the last hour (`MaterializedTo` is greater than `ago(1h)`).
+|IsEnabled|bool|`True` when view is enabled (see [Disable or enable materialized view](materialized-view-enable-disable.md)).
+|Folder|string|The materialized view folder.
+|DocString|string|The materialized view doc string.
+|AutoUpdateSchema|bool|Whether the view is enabled for auto updates.
+|EffectiveDateTime|datetime|The effective date time of the view, determined during creation time (see [.create materialized-view](materialized-view-create.md#create-materialized-view))

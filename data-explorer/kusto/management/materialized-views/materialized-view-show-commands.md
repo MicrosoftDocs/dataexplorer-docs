@@ -28,6 +28,12 @@ Displays information about the materialized view's definition and its current st
 |----------------|-------|---|
 |MaterializedViewName|String|Name of the materialized view.|
 
+### Example
+
+```kusto
+.show materialized-view ViewName
+```
+
 ### Output
 
 |Output parameter |Type |Description

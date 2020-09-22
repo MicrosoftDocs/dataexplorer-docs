@@ -35,3 +35,11 @@ Disabling a view is only recommended if you suspect that the view is impacting y
 |Property|Type|Description
 |----------------|-------|---|
 |MaterializedViewName|String|Name of the materialized view.|
+
+## Example
+
+```kusto
+.enable materialized-view ViewName
+
+.disable materialized-view ViewName
+```
