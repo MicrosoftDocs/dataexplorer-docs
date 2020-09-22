@@ -27,9 +27,9 @@ For more information, see the connector [Git repo](https://github.com/Azure/kafk
 
 ## Create an Azure Active Directory service principal
 
-The Azure Active Directory service principal can be created through the [Azure Portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
+The Azure Active Directory service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
 
-This service principal will be the identity leveraged by the connector to write to the Azure Data Explorer table. We will later grant permissions for this service principal to access Azure Data Explorer.
+This service principal will be the identity leveraged by the connector to write to the Azure Data Explorer table. We'll later grant permissions for this service principal to access Azure Data Explorer.
 
 1. Log in to your Azure subscription via Azure CLI. Then authenticate in the browser.
 
@@ -50,7 +50,7 @@ This service principal will be the identity leveraged by the connector to write 
    az ad sp create-for-rbac -n "kusto-kafka-spn"
    ```
 
-1. You will get a JSON response as shown below. Copy the `appId`, `password` and `tenant`, as you will need them in subsequent steps.
+1. You'll get a JSON response as shown below. Copy the `appId`, `password`, and `tenant`, as you'll need them in later steps.
 
     ```json
     {
@@ -98,6 +98,8 @@ This service principal will be the identity leveraged by the connector to write 
     ```
 
 ## Run the lab
+
+The following lab is designed to give you the experience of starting to create data, setting up the connector, and streaming this data to Azure Data Explorer with the Kafka connector. Then you can take a look at the sample data that has been ingested using the Kusto Query language in Azure Data Explorer.
 
 ### Clone the git repo
 
@@ -152,7 +154,7 @@ The following sections explain the important parts of the files in the file tree
 
 #### adx-sink-config.json
 
-This file contains the Kusto sink properties file where you will update specific configuration details:
+This file contains the Kusto sink properties file where you'll update specific configuration details:
  
 ```json
 {
@@ -174,7 +176,7 @@ This file contains the Kusto sink properties file where you will update specific
 }
 ```
 
-Replace the values for the following attributes as per your Azure Data Explorer setup: `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name) and `kusto.url`.
+Replace the values for the following attributes as per your Azure Data Explorer setup: `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name), and `kusto.url`.
 
 #### Connector - Dockerfile
 
@@ -182,7 +184,7 @@ This file has the commands to generate the docker image for the connector instan
 
 #### Storm-events-producer directory
 
-This directory has a Go program that reads a local "StormEvents.csv" file and publishes the same to a Kafka topic.
+This directory has a Go program that reads a local "StormEvents.csv" file and publishes the data to a Kafka topic.
 
 #### docker-compose.yaml
 
@@ -280,9 +282,11 @@ Use a Kafka Connect REST call to start the connector.
 The connector will start queueing ingestion processes to Azure Data Explorer.
 
 > [!NOTE]
-> If you have log connector issues, [contact support](https://github.com/Azure/kafka-sink-azure-kusto/issues).
+> If you have log connector issues, [create an issue](https://github.com/Azure/kafka-sink-azure-kusto/issues).
 
 ## Query and review data
+
+### Confirm data ingestion
 
 1. Wait for data to arrive in the `Storms` table. To confirm the transfer of data, check the row count:
     
@@ -297,6 +301,8 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     ```
     
     Once you see data, try out a few queries. 
+
+### Query the data
 
 1. To see all the records, run the following [query](write-queries.md):
     
@@ -326,7 +332,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
 
 For more query examples and guidance, see [Write queries for Azure Data Explorer](write-queries.md) and [Kusto query language documentation](https://docs.microsoft.com/azure/data-explorer/kusto/query/).
 
-## Reset and clean up
+## Reset
 
 To reset, do the following steps:
 
@@ -336,7 +342,9 @@ To reset, do the following steps:
 1. Recreate table mapping
 1. Restart containers (`docker-compose up`)
 
-To delete the Azure Data Explorer resources, use [az cluster delete](https://docs.microsoft.com/cli/azure/kusto/cluster#az-kusto-cluster-delete) or [az kusto database delete](https://docs.microsoft.com/cli/azure/kusto/database#az-kusto-database-delete):
+## Clean up resources
+
+To delete the Azure Data Explorer resources, use [az cluster delete](https://docs.microsoft.com/cli/azure/kusto/cluster#az-kusto-cluster-delete) or [az Kusto database delete](https://docs.microsoft.com/cli/azure/kusto/database#az-kusto-database-delete):
 
 ```azurecli-interactive
 az kusto cluster delete -n <cluster name> -g <resource group name>
