@@ -96,7 +96,7 @@ Using the [`join` operator](kusto/query/joinoperator.md), instead of union, may 
 
 Cross-tenant queries aren't supported by ADX Proxy. You are signed in to a single tenant for running the query spanning both resources.
 
-Let's say the ADX resource is in Tenant 'A', LA workspace is in Tenant 'B'. There are two ways to get around the issue:
+If the Azure Data Explorer resource is in Tenant 'A' and LA workspace is in Tenant 'B' use one of the following two methods:
 
 1. ADX allows adding roles on the data plane for principals in different tenants. Add your user ID in the Tenant 'B' as an authorized user on the ADX cluster and run the cross-query fully in Tenant 'B'. First, validate the *'ExternalTrustedTenant'* property on the ADX cluster contains Tenant 'B'.
 
