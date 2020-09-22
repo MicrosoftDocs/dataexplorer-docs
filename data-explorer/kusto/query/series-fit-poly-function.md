@@ -74,7 +74,8 @@ The function `series_fit_poly()` applies a polynomial regression from an indepen
     //  Normalization: x_norm = (x - min(x))/(max(x) - min(x))
     //
     irregular_ts
-    | extend x = series_divide(series_subtract(TimeStamp, tolong(TimeStamp[0])), tolong(TimeStamp[-1])-tolong(TimeStamp[0])) // normalize time axis to [0-1] range
+    | extend series_stats(series_add(TimeStamp, 0))                                                                 //  extract min/max of time axis as doubles
+    | extend x = series_divide(series_subtract(TimeStamp, series_stats__min), series_stats__max-series_stats__min)  // normalize time axis to [0-1] range
     | extend series_fit_poly(num, x, 8)
     | project-rename fnum=series_fit_poly_num_poly_fit
     | render timechart with(ycolumns=num, fnum)
