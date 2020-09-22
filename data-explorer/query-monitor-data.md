@@ -98,7 +98,7 @@ Cross-tenant queries aren't supported by ADX Proxy. You are signed in to a singl
 
 If the Azure Data Explorer resource is in Tenant 'A' and LA workspace is in Tenant 'B' use one of the following two methods:
 
-1. ADX allows adding roles on the data plane for principals in different tenants. Add your user ID in the Tenant 'B' as an authorized user on the ADX cluster and run the cross-query fully in Tenant 'B'. First, validate the *'ExternalTrustedTenant'* property on the ADX cluster contains Tenant 'B'.
+1. Azure Data Explorer allows you to add roles for principals in different tenants. Add your user ID in Tenant 'B' as an authorized user on the Azure Data Explorer cluster. Validate the *'ExternalTrustedTenant'* property on the Azure Data Explorer cluster contains Tenant 'B'. Run the cross-query fully in Tenant 'B'. 
 
 2. Use [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) to project the Azure Monitor resource into Tenant 'A'.
 
