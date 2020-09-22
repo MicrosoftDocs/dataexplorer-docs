@@ -99,7 +99,7 @@ This service principal will be the identity leveraged by the connector to write 
 
 ## Run the lab
 
-The following lab is designed to give you the experience of starting to create data, setting up the connector, and streaming this data to Azure Data Explorer with the Kafka connector. Then you can take a look at the sample data that has been ingested using the Kusto Query language in Azure Data Explorer.
+The following lab is designed to give you the experience of starting to create data, setting up the connector, and streaming this data to Azure Data Explorer with the Kafka connector. Then you can take a look at the sample data that has been ingested using the Kusto Query Language in Azure Data Explorer.
 
 ### Clone the git repo
 
