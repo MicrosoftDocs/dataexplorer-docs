@@ -14,7 +14,8 @@ ms.date: 09/08/2020
 The function `series_rolling_fl()` applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
 > [!NOTE]
-> `series_rolling_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).  This function ontains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
+> * `series_rolling_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).
+> * This function ontains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
 
 ## Syntax
 
