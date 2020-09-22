@@ -37,7 +37,7 @@ By investing resources (data storage, background CPU cycles) for materialized vi
 
 A materialized view is made of two components:
 
-* A *materialized* part - an Azure Data Explorer table holding aggregated records from the source table, which have already been processed.  This table always holds the minimal possible number of records - a single record per the dimension's combination, which is the actual aggregation result.
+* A *materialized* part - an Azure Data Explorer table holding aggregated records from the source table, which have already been processed.  This table always holds a single record per the aggregation's group-by combination.
 * A *delta* - the newly ingested records in the source table that haven't yet been processed.
 
 Querying the materialized view combines the materialized part with the delta part, providing an up-to-date result of the aggregation query. The offline materialization process ingests new records from the *delta* to the materialized table, and replaces existing records. The replacement is done by rebuilding extents that hold records to replace. If records in the *delta* constantly intersect with all data shards in the *materialized* part, each materialization cycle will require rebuilding the entire *materialized* part, and may not keep up with the pace. The ingestion rate will be higher than the materialization rate. In that case, the view will become unhealthy and the *delta* will constantly grow.
@@ -63,7 +63,7 @@ There are two possible ways to create a materialized view, noted by the *backfil
     * On [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader. 
 * The source table of a materialized view:
     * Must be a table that is being ingested to directly, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md).
-        * [Move extents](../move-extents.md) from other tables into the source table of the materialized view. Move extents may fail with the following error: `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
+        * Specifically, using [move extents](../move-extents.md) from other tables into the source table of the materialized view is not supported. Move extents may fail with the following error: `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`. 
     * Must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (the default is enabled).
     * Can't be enabled for streaming ingestion.
     * Can't be a restricted table or a table with row level security enabled.
@@ -88,10 +88,6 @@ The primary way of querying a materialized view is by its name, like querying a 
 Another way of querying the view is by using the [materialized_view() function](../../query/materializedviewfunction.md). This option supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
 
 The view can participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
-
-> [!IMPORTANT]
-> * [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
-> * Continuous export from a materialized view isn't supported.
 
 ### Query use cases
 
@@ -157,22 +153,21 @@ Monitor the materialized view's health in the following ways:
 
 The `MaterializedViewHealth` metric indicates whether a materialized view is healthy. A materialized view can become unhealthy for any or all of the following reasons:
 * The materialization process is failing.
-    * Materialized view failures don't always indicate that the materialized view is unhealthy. Errors can be transient. The materialization process will continue and can still be successful in the next execution.
-    * Failures can occur because of transient errors, for example CPU, memory, or networking failures. Failures can occur because of permanent errors, for example, the source table was changed and the materialized view query is syntactically invalid. The materialized view will be automatically disabled if there are schema changes that are inconsistent with the view definition, or if the materialized view query is no longer semantically valid. For all other failures, the system will continue materialization attempts until the root cause is fixed.
-* The cluster doesn't have sufficient capacity to materialize all incoming data on-time. If failure is because of cluster capacity, the execution will succeed. However, the view will be unhealthy, because it's lagging behind and unable to keep up with the ingestion rate. 
-* Before a materialized view becomes unhealthy, its age, noted by the `MaterializedViewAgeMinutes` metric, will gradually increase.
+* The cluster doesn't have sufficient capacity to materialize all incoming data on-time. There won't be failures in execution. However, the view will still be unhealthy, since it will be lagging behind and not able to keep up with the ingestion rate.
 
-### Troubleshooting examples
+Before a materialized view becomes unhealthy, its age, noted by the `MaterializedViewAgeMinutes` metric, will gradually increase.
+
+ ### Troubleshooting examples
 
 The following examples can help you diagnose and fix unhealthy views:
 
-* **Scenario:** The source table was changed or deleted, the view wasn't set to `autoUpdateSchema`, or the change in source table isn't supported for auto-updates. <br>
+* **Failure:** The source table was changed or deleted, the view wasn't set to `autoUpdateSchema`, or the change in source table isn't supported for auto-updates. <br>
    **Diagnostic:**  A `MaterializedViewResult` metric is fired, and the `Result` dimension is set to `SourceTableSchemaChange`/`SourceTableNotFound`.
 
-* **Scenario:** Materialization process fails due insufficient cluster resources, and query limits are hit. <br>
+* **Failure:** Materialization process fails due insufficient cluster resources, and query limits are hit. <br>
   **Diagnostic:** `MaterializedViewResult` metric `Result` dimension is set to `InsufficientResources`. Azure Data Explorer will try to automatically recover from this state, so this error may be transient. However, if view is unhealthy and this error is constantly emitted, it's possible that the current cluster's configuration isn't able to keep up with ingestion rate, and cluster needs to be scaled up or out.
 
-* **Scenario:** The materialization process is failing because of any other (unknown) reason. <br> 
+* **Failure:** The materialization process is failing because of any other (unknown) reason. <br> 
    **Diagnostic**: `MaterializedViewResult` metric's `Result` will be `UnknownError`. If this failure happens frequently, open a support ticket for the Azure Data Explorer team to investigate further.
 
 If there are no materialization failures, `MaterializedViewResult` metric will be fired on every successful execution, with `Result`=`Success`. A materialized view can be unhealthy, despite successful executions, if it's lagging behind (`Age` is above threshold). This situation can happen in the following circumstances:
