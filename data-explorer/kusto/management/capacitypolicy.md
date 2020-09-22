@@ -31,7 +31,7 @@ The capacity policy is made of:
 |CoreUtilizationCoefficient         |double  |A coefficient for the percentage of cores to use when calculating the ingestion capacity. The calculation's result will always be normalized by `ClusterMaximumConcurrentOperations` <br> The cluster's total ingestion capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by: <br> Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
 
 > [!Note]
-> In clusters with three ore more nodes, the admin node doesn't participate in ingestion operations. The `Number of nodes in cluster` is reduced by one.
+> In clusters with three or more nodes, the admin node doesn't participate in ingestion operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Extents merge capacity
 

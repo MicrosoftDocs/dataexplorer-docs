@@ -12,6 +12,8 @@ ms.date: 08/30/2020
 
 # .show materialized-views commands
 
+The following show commands display information about [materialized views](materialized-view-overview.md).
+
 ## .show materialized-view
 
 Displays information about the materialized view's definition and its current state.
@@ -102,7 +104,7 @@ Returns failures that occurred as part of the materialization process of the mat
 |Output parameter |Type |Description
 |---|---|---
 |Name  |Timestamp |Failure timestamp.
-|OperationId  |String |The operation id of the run that failed.
+|OperationId  |String |The operation ID of the run that failed.
 |Name|String|The materialized view name.
 |LastSuccessRun|datetime|The timestamp of the last run that completed successfully.
 |FailureKind|String|Type of failure.

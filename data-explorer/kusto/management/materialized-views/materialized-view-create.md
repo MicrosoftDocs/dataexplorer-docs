@@ -177,19 +177,19 @@ The following aggregation functions are supported:
 * Materialized view query filters are optimized when filtered by one of the Materialized View dimensions (aggregation by-clause). If you know your query pattern will often filter by some column, which can be a dimension in the materialized view, include it in the view. For example: For a materialized view exposing an `arg_max` by `ResourceId` that will often be filtered by `SubscriptionId`, the recommendation is as follows:
 
  <table>
-    <th>Do
-    <th>Don't do
-        <tr style="vertical-align: top;">
-            <td>
-                <pre>
+ <th>Do
+ <th>Don't do
+ <tr style="vertical-align: top;">
+ <td>
+ <pre>
 .create materialized-view ArgMaxResourceId on table FactResources
 {
     FactResources | summarize arg_max(Timestamp, *) by SubscriptionId, ResouceId 
 }
 </pre>
-            </td>
-            <td>
-                <pre>
+</td>
+<td>
+<pre>
 .create materialized-view ArgMaxResourceId on table FactResources
 {
     FactResources | summarize arg_max(Timestamp, *) by ResouceId 
@@ -233,7 +233,7 @@ The following aggregation functions are supported:
 </pre>
 </table>
 
-* If you require the best query time performance, but can sacrifice some data freshness, use the [materialized_view() function](../../query/materializedviewfunction.md).
+* If you require the best query time performance, but can sacrifice some data freshness, use the [materialized_view() function](../../query/materialized-view-function.md).
 
 ## Cancel materialized-view creation
 
@@ -252,13 +252,13 @@ The creation process can't be aborted immediately. The cancel command signals ma
 
 |Property|Type|Description
 |----------------|-------|---|
-|operationId|Guid|The operation id returned from the create materialized-view command.|
+|operationId|Guid|The operation ID returned from the create materialized-view command.|
 
 ### Output
 
 |Output parameter |Type |Description
 |---|---|---
-|OperationId|Guid|The operation id of the create materialized view command.
+|OperationId|Guid|The operation ID of the create materialized view command.
 |Operation|String|Operation kind.
 |StartedOn|datetime|The start time of the create operation.
 |CancellationState|string|One of - `Cancelled successfully` (creation was canceled), `Cancellation failed` (wait for cancellation timed out), `Unknown` (view creation is no longer running, but wasn't canceled by this operation).

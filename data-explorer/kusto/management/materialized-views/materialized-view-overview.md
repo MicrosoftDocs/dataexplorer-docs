@@ -11,7 +11,7 @@ ms.date: 08/30/2020
 ---
 # Materialized views (preview)
 
-[Materialized views](../../query/materializedviewfunction.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries), which is a one-time data grooming process, is more performant than running the aggregation directly over the source table, which is work performed each query.
+[Materialized views](../../query/materialized-view-function.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries), which is a one-time data grooming process, is more performant than running the aggregation directly over the source table, which is work performed each query.
 
 > [!NOTE]
 > Materialized views have some [limitations](#limitations-on-creating-materialized-views), and are not guaranteed to work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
@@ -85,7 +85,7 @@ The materialized view derives the database retention policy by default. The poli
 
 The primary way of querying a materialized view is by its name, like querying a table reference. When the materialized view is queried, it combines the materialized part of the view with the records in the source table that haven't been materialized yet. Querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information about the breakdown of the materialized view parts, see [how materialized views work](#how-materialized-views-work). 
 
-Another way of querying the view is by using the [materialized_view() function](../../query/materializedviewfunction.md). This option supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
+Another way of querying the view is by using the [materialized_view() function](../../query/materialized-view-function.md). This option supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
 
 The view can participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
 

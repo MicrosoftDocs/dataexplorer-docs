@@ -86,7 +86,7 @@ Here are potential results from this command:
 
 |Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN 
 |---|---|---|---|---
-|Database Apsty Admin |AAD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
+|Database Apsty Admin |Azure AD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
 
 
 
