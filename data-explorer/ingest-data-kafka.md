@@ -29,7 +29,7 @@ For more information, see the connector [Git repo](https://github.com/Azure/kafk
 
 The Azure Active Directory service principal can be created through the [Azure Portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
 
-This service principal will be the identity leveraged by the connector to write to the Azure Data Explorer table. In the next step, we will grant permissions for this service principal to access Azure Data Explorer.
+This service principal will be the identity leveraged by the connector to write to the Azure Data Explorer table. We will later grant permissions for this service principal to access Azure Data Explorer.
 
 1. Log in to your Azure subscription via Azure CLI. Then authenticate in the browser.
 
@@ -127,7 +127,7 @@ cd ~/kafka-kusto-hol/azure-kusto-labs/kafka-integration/dockerized-quickstart
 tree
 ```
 
-This is the result:
+This result of this search is:
 
 ```
 ├── README.md
@@ -322,7 +322,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     | render columnchart
     ```
     
-    :::image type="content" source="media/ingest-data-kafka/adx-query.png" alt-text="Kafka query column chart results in Azure Data Explorer":::
+    :::image type="content" source="media/ingest-data-kafka/kusto-query.png" alt-text="Kafka query column chart results in Azure Data Explorer":::
 
 For more query examples and guidance, see [Kusto Query Language documentation](https://docs.microsoft.com/azure/data-explorer/kusto/query/).
 
