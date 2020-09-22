@@ -102,7 +102,7 @@ If the Azure Data Explorer resource is in Tenant 'A' and LA workspace is in Tena
 
 2. Use [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) to project the Azure Monitor resource into Tenant 'A'.
 
- ### Connect to Azure Data Explorer clusters from different tenants
+### Connect to Azure Data Explorer clusters from different tenants
 
 Kusto Explorer automatically signs the user into the tenant the user account originally belongs to. To access resources in other tenants the user has access to with the same user account, the tenantId has to be explicitly specified in the Connection String -
 
