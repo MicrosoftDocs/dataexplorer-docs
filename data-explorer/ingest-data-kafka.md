@@ -10,10 +10,9 @@ ms.date: 09/15/2020
  
 #Customer intent: As an integration developer, I want to build integration pipelines from Kafka into Azure Data Explorer, so I can make data available for near real time analytics.
 ---
- 
 # Ingest data from Apache Kafka into Azure Data Explorer
  
-Azure Data Explorer offers [data ingestion](ingest-data-overview.md) from Apache Kafka. Apache Kafka is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. [Kafka Connect](https://docs.confluent.io/3.0.1/connect/intro.html#kafka-connect) is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The The Azure Data Explorer Kafka Sink serves as the connector from Kafka and doesn't require using code. 
+Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Apache Kafka](http://kafka.apache.org/documentation/). Apache Kafka is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. [Kafka Connect](https://docs.confluent.io/3.0.1/connect/intro.html#kafka-connect) is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Azure Data Explorer [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) serves as the connector from Kafka and doesn't require using code. Download the sink connector jar from this [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/releases) or [Confluent Connector Hub](https://www.confluent.io/hub/microsoftcorporation/kafka-sink-azure-kusto).
 
 This article shows how to ingest data with Kafka into Azure Data Explorer, using a self-contained Docker setup to simplify the Kafka cluster and Kafka connector cluster setup. 
 
@@ -24,7 +23,7 @@ For more information, see the connector [Git repo](https://github.com/Azure/kafk
 * Create a [Microsoft Azure account](https://docs.microsoft.com/azure/).
 * Install [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 * Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
-* [Create an Azure Data Explorer cluster and database in the Azure portal](create-cluster-database-portal.md) using the default cache and retention policies.
+* [Create an Azure Data Explorer cluster and database in the Azure portal](create-cluster-database-portal.md) using default cache and retention policies.
 
 ## Create an Azure Active Directory service principal
 
@@ -66,15 +65,19 @@ This service principal will be the identity leveraged by the connector to write 
 
 ## Create a target table in Azure Data Explorer
 
-1. Create a table called `Storms` with the following command:
+1. Sign into the [Azure Portal](https://portal.azure.com)
 
-// make screen shots in portal, split up table and mapping
+1. In the Azure portal, go to your Azure Data Explorer cluster.
+
+1. Create a table called `Storms` with the following command:
 
     ```kusto
     .create table Storms (StartTime: datetime, EndTime: datetime, EventId: int, State: string, EventType: string, Source: string)
     ```
+
+    :::image type="content" source="media/ingest-data-kafka/create-table.png" alt-text="Create a table in Azure Data Explorer portal ":::
     
-1. Create the corresponding table mapping `Storms_CSV_Mapping` for ingested data with the following command.
+1. Create the corresponding table mapping `Storms_CSV_Mapping` for ingested data with the following command:
     
     ```kusto
     .create table Storms ingestion csv mapping 'Storms_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EventId","datatype":"int","Ordinal":2},{"Name":"State","datatype":"string","Ordinal":3},{"Name":"EventType","datatype":"string","Ordinal":4},{"Name":"Source","datatype":"string","Ordinal":5}]'
@@ -83,7 +86,7 @@ This service principal will be the identity leveraged by the connector to write 
 1. Create a batch ingestion policy on the table for configurable ingestion latency.
 
     > [!TIP]
-    > The [ingestion batching policy](kusto/management/batchingpolicy.md) is a performance optimizer and includes three parameters, the first one met triggers an ingestion into Azure Data Explorer table.
+    > The [ingestion batching policy](kusto/management/batchingpolicy.md) is a performance optimizer and includes three parameters. The first parameter met triggers ingestion into Azure Data Explorer table.
 
     ```kusto
     .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
@@ -97,7 +100,9 @@ This service principal will be the identity leveraged by the connector to write 
     .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'AAD App'
     ```
 
-## Clone the git repo
+## Run the lab
+
+### Clone the git repo
 
 Clone the lab's git [repo](https://github.com/Azure/azure-kusto-labs).
 
@@ -116,7 +121,7 @@ Clone the lab's git [repo](https://github.com/Azure/azure-kusto-labs).
     cd azure-kusto-labs/kafka-integration/dockerized-quickstart
     ```
 
-### Contents of the cloned repo
+#### Contents of the cloned repo
 
 Run the following command to list the contents of the cloned repo:
 
@@ -144,15 +149,14 @@ This is the result:
     └── main.go
  ```
 
-### Review these specific files
+### Review these files
+
+The following sections explain the important parts of the files you see above in the file tree.
 
 #### adx-sink-config.json
 
-// name could be different
-config could different, 
-
-This is the Kusto sink properties file where you will update the specific configuration details for the lab.
-
+This file contains the Kusto sink properties file where you will update specific configuration details:
+ 
 ```json
 {
     "name": "storm",
@@ -233,8 +237,6 @@ services:
       - SOURCE_FILE=StormEvents.csv
 ```
 
-## Run the lab setup
-
 ### Start the containers
 
 1. In a terminal, start the containers:
@@ -280,6 +282,9 @@ Use a Kafka Connect REST call to start the connector.
 
 The connector will start queueing ingestion processes to Azure Data Explorer.
 
+> [!NOTE]
+> If you have log connector issues, [contact support](https://github.com/Azure/kafka-sink-azure-kusto/issues).
+
 ## Query and review data
 
 1. Wait for data to end up in the `Storms` table. To confirm the transfer of data, check the row count:
@@ -324,7 +329,6 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
 
 For more query examples and guidance, see [Kusto Query Language documentation](https://docs.microsoft.com/azure/data-explorer/kusto/query/).
 
-
 ## Reset and clean up
 
 To restart from scratch, do the following steps:
@@ -344,15 +348,16 @@ az kusto database delete -n <database name> --cluster-name <cluster name> -g <re
 
 ## Next Steps
 
-The following resources supply additional information about the Kafka connector. This information includes Kafka ingestion from HDInsight Kafka (with and without Enterprise Security Package), Confluent Cloud, and Confluent Kafka IaaS with Confluent operator.
+* Learn more about [Big data architecture](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer)
 
-* [Kafka Connect](https://docs.confluent.io/3.0.1/connect/intro.html#kafka-connect)
-* [Kusto sink connector Git repo with comprehensive documentation](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md)
-* Download the sink connector jar from our [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/releases) or [Confluent Connector Hub](https://www.confluent.io/hub/microsoftcorporation/kafka-sink-azure-kusto)
+**Other labs:**
+
 * [Hands on lab for ingestion from Confluent Cloud Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/confluent-cloud/README.md)
 * [Hands on lab for ingestion from HDInsight Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/tree/master/kafka-integration/distributed-mode/hdinsight-kafka)
 * [Hands on lab for ingestion from Confluent IaaS Kafka on AKS in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/distributed-mode/confluent-kafka/README.md)
-* [Big data architecture](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer)
-* [Log connector issues, request support](https://github.com/Azure/kafka-sink-azure-kusto/issues) - should put this while they're doing it 
 
+**Data ingestion and query:**
+
+* [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
 * [how to ingest JSON formatted sample data into Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-json-formats?tabs=kusto-query-language)
+* [Write queries for Azure Data Explorer](write-queries.md)
