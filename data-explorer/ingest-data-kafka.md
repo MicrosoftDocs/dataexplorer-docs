@@ -110,7 +110,7 @@ Clone the lab's git [repo](https://github.com/Azure/azure-kusto-labs).
     cd ~/kafka-kusto-hol
     ```
 
-1. Clone the repo
+1. Clone the repo.
 
     ```shell
     cd ~/kafka-kusto-hol
@@ -146,9 +146,9 @@ This is the result:
     └── main.go
  ```
 
-### Review these files
+### Review the files in the cloned repo
 
-The following sections explain the important parts of the files you see above in the file tree.
+The following sections explain the important parts of the files in the file tree above.
 
 #### adx-sink-config.json
 
@@ -174,11 +174,11 @@ This file contains the Kusto sink properties file where you will update specific
 }
 ```
 
-Replace the values for the following attributes as per your Azure Data Explorer setup - `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name) and `kusto.url`.
+Replace the values for the following attributes as per your Azure Data Explorer setup: `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name) and `kusto.url`.
 
 #### Connector - Dockerfile
 
-This file has the commands for generating the docker image for the connector instance.  It includes download of the connector from the git repo release directory.
+This file has the commands to generate the docker image for the connector instance.  It includes the connector download from the git repo release directory.
 
 #### Storm-events-producer directory
 
@@ -243,7 +243,7 @@ services:
     ```
 
     The producer application will start sending events to the `storm-events` topic. 
-    You should see logs similar to:
+    You should see logs similar to the following logs:
 
     ```shell
     ....
@@ -271,7 +271,7 @@ Use a Kafka Connect REST call to start the connector.
     curl -X POST -H "Content-Type: application/json" --data @adx-sink-config.json http://localhost:8083/connectors
     ```
     
-1. To check status, run the following command in a separate terminal:
+1. To check the status, run the following command in a separate terminal:
     
     ```shell
     curl http://localhost:8083/connectors/storm/status
@@ -284,7 +284,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
 
 ## Query and review data
 
-1. Wait for data to end up in the `Storms` table. To confirm the transfer of data, check the row count:
+1. Wait for data to arrive in the `Storms` table. To confirm the transfer of data, check the row count:
     
     ```kusto
     Storms | count
@@ -324,16 +324,16 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     
     :::image type="content" source="media/ingest-data-kafka/adx-query.png" alt-text="Kafka query column chart results in Azure Data Explorer":::
 
-For more query examples and guidance, see [Kusto Query Language documentation](https://docs.microsoft.com/azure/data-explorer/kusto/query/).
+For more query examples and guidance, see [Write queries for Azure Data Explorer](write-queries.md) and [Kusto query language documentation](https://docs.microsoft.com/azure/data-explorer/kusto/query/).
 
 ## Reset and clean up
 
-To restart from scratch, do the following steps:
+To reset, do the following steps:
 
 1. Stop the containers (`docker-compose down -v`)
 1. Delete (`drop table Storms`)
 1. Re-create the `Storms` table
-1. Recreate table mapping)
+1. Recreate table mapping
 1. Restart containers (`docker-compose up`)
 
 To delete the Azure Data Explorer resources, use [az cluster delete](https://docs.microsoft.com/cli/azure/kusto/cluster#az-kusto-cluster-delete) or [az kusto database delete](https://docs.microsoft.com/cli/azure/kusto/database#az-kusto-database-delete):
@@ -345,16 +345,10 @@ az kusto database delete -n <database name> --cluster-name <cluster name> -g <re
 
 ## Next Steps
 
-* Learn more about [Big data architecture](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer)
-
-**Other labs:**
-
-* [Hands on lab for ingestion from Confluent Cloud Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/confluent-cloud/README.md)
-* [Hands on lab for ingestion from HDInsight Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/tree/master/kafka-integration/distributed-mode/hdinsight-kafka)
-* [Hands on lab for ingestion from Confluent IaaS Kafka on AKS in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/distributed-mode/confluent-kafka/README.md)
-
-**Data ingestion and query:**
-
-* [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
-* [how to ingest JSON formatted sample data into Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-json-formats?tabs=kusto-query-language)
+* Learn more about [Big data architecture](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer).
+* Learn [how to ingest JSON formatted sample data into Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-json-formats?tabs=kusto-query-language).
+* For additional Kafka labs:
+   * [Hands on lab for ingestion from Confluent Cloud Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/confluent-cloud/README.md)
+   * [Hands on lab for ingestion from HDInsight Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/tree/master/kafka-integration/distributed-mode/hdinsight-kafka)
+   * [Hands on lab for ingestion from Confluent IaaS Kafka on AKS in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/distributed-mode/confluent-kafka/README.md)
 * [Write queries for Azure Data Explorer](write-queries.md)
