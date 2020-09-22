@@ -11,10 +11,10 @@ ms.date: 08/30/2020
 ---
 # Materialized views (preview)
 
-[Materialized views](../../query/materialized-view-function.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries), which is a one-time data grooming process, is more performant than running the aggregation directly over the source table, which is work performed each query.
+[Materialized views](../../query/materialized-view-function.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries), which is a one-time data grooming process, is more performant than running the aggregation directly over the source table, which is performed each query.
 
 > [!NOTE]
-> Materialized views have some [limitations](#limitations-on-creating-materialized-views), and are not guaranteed to work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
+> Materialized views have some [limitations](#limitations-on-creating-materialized-views), and aren't guaranteed to work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
 
 Use the following commands to manage materialized views:
 * [.create materialized-view](materialized-view-create.md)
@@ -157,7 +157,7 @@ The `MaterializedViewHealth` metric indicates whether a materialized view is hea
 
 Before a materialized view becomes unhealthy, its age, noted by the `MaterializedViewAgeMinutes` metric, will gradually increase.
 
- ### Troubleshooting examples
+### Troubleshooting examples
 
 The following examples can help you diagnose and fix unhealthy views:
 

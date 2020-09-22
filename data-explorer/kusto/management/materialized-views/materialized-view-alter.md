@@ -39,7 +39,7 @@ Altering the materialized view requires [Database Admin](../access-control/role-
 
 The `dimensionTables` is the only supported property in materialized-view alter command. This property should be used in case query references dimension tables. For more information, see the [.create materialized-view](materialized-view-create.md) command.
 
-## Applicable use cases
+## Use cases
 
 * Add aggregations to the view - for example, add `avg` aggregation to `T | summarize count(), min(Value) by Id`, by altering view query to `T | summarize count(), min(Value), avg(Value) by Id`.
 * Change operators other than the summarize operator. Tor example, filter out some records by altering  `T | summarize arg_max(Timestamp, *) by User` to `T | where User != 'someone' | summarize arg_max(Timestamp, *) by User`.
