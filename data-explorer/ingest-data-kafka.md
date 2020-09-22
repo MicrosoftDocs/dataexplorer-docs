@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: ankhanol
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 09/22/2020
  
 #Customer intent: As an integration developer, I want to build integration pipelines from Kafka into Azure Data Explorer, so I can make data available for near real time analytics.
 ---
@@ -31,15 +31,14 @@ The Azure Active Directory service principal can be created through the [Azure P
 
 This service principal will be the identity leveraged by the connector to write to the Azure Data Explorer table. In the next step, we will grant permissions for this service principal to access Azure Data Explorer.
 
-1. Log in to your Azure subscription via Azure CLI.
+1. Log in to your Azure subscription via Azure CLI. Then authenticate in the browser.
 
    ```azurecli-interactive
    az login
    ```
 
-    This launches a browser to authenticate.
 
-1. Choose the subscription you want use to run the lab. This is needed when you have multiple subscriptions.
+1. Choose the subscription you want use to run the lab. This step is needed when you have multiple subscriptions.
 
    ```azurecli-interactive
    az account set --subscription YOUR_SUBSCRIPTION_GUID
@@ -65,11 +64,11 @@ This service principal will be the identity leveraged by the connector to write 
 
 ## Create a target table in Azure Data Explorer
 
-1. Sign into the [Azure Portal](https://portal.azure.com)
+1. Sign in to the [Azure portal](https://portal.azure.com)
 
-1. In the Azure portal, go to your Azure Data Explorer cluster.
+1. Go to your Azure Data Explorer cluster.
 
-1. Create a table called `Storms` with the following command:
+1. Create a table called `Storms` using the following command:
 
     ```kusto
     .create table Storms (StartTime: datetime, EndTime: datetime, EventId: int, State: string, EventType: string, Source: string)
@@ -77,7 +76,7 @@ This service principal will be the identity leveraged by the connector to write 
 
     :::image type="content" source="media/ingest-data-kafka/create-table.png" alt-text="Create a table in Azure Data Explorer portal ":::
     
-1. Create the corresponding table mapping `Storms_CSV_Mapping` for ingested data with the following command:
+1. Create the corresponding table mapping `Storms_CSV_Mapping` for ingested data using the following command:
     
     ```kusto
     .create table Storms ingestion csv mapping 'Storms_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EventId","datatype":"int","Ordinal":2},{"Name":"State","datatype":"string","Ordinal":3},{"Name":"EventType","datatype":"string","Ordinal":4},{"Name":"Source","datatype":"string","Ordinal":5}]'
@@ -86,15 +85,13 @@ This service principal will be the identity leveraged by the connector to write 
 1. Create a batch ingestion policy on the table for configurable ingestion latency.
 
     > [!TIP]
-    > The [ingestion batching policy](kusto/management/batchingpolicy.md) is a performance optimizer and includes three parameters. The first parameter met triggers ingestion into Azure Data Explorer table.
+    > The [ingestion batching policy](kusto/management/batchingpolicy.md) is a performance optimizer and includes three parameters. The first parameter met triggers ingestion into the Azure Data Explorer table.
 
     ```kusto
     .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
     ```
 
-1. Grant permissions to the service principal.
-
-    Use the service principal from [Create an Azure Active Directory service principal](#create-an-azure-active-directory-service-principal) to grant permission to work with the database.
+1. Use the service principal from [Create an Azure Active Directory service principal](#create-an-azure-active-directory-service-principal) to grant permission to work with the database.
 
     ```kusto
     .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'AAD App'
@@ -106,7 +103,7 @@ This service principal will be the identity leveraged by the connector to write 
 
 Clone the lab's git [repo](https://github.com/Azure/azure-kusto-labs).
 
-1. Create a local directory on your machine
+1. Create a local directory on your machine.
 
     ```
     mkdir ~/kafka-kusto-hol
