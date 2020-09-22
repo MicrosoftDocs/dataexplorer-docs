@@ -13,24 +13,24 @@ ms.date: 09/15/2020
  
 # Ingest data from Apache Kafka into Azure Data Explorer
  
-Azure Data Explorer offers ingestion (data loading) from Apache Kafka. Apache Kafka is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. [Kafka Connect](https://docs.confluent.io/3.0.1/connect/intro.html#kafka-connect) is an open source, code free, configuration-based ETL (extract, transform, and load) service for bi-directional data movement between Kafka and any storage or database.  Azure Data Explorer offers an open source Kafka Connect sink connector available to use, parse, and ingest data from Kafka into Azure Data Explorer without using code. For more information, see the connector [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md).  
+Azure Data Explorer offers [data ingestion](ingest-data-overview.md) from Apache Kafka. Apache Kafka is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. [Kafka Connect](https://docs.confluent.io/3.0.1/connect/intro.html#kafka-connect) is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The The Azure Data Explorer Kafka Sink serves as the connector from Kafka and doesn't require using code. 
 
-This article shows Kafka ingestion into Azure Data Explorer, using a self-contained Docker setup that removes complexities of Kafka cluster and Kafka connector cluster setup. 
+This article shows how to ingest data with Kafka into Azure Data Explorer, using a self-contained Docker setup to simplify the Kafka cluster and Kafka connector cluster setup. 
 
-
-ADD LINK https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md#13-major-version-specifics
+For more information, see the connector [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) and [version specifics](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md#13-major-version-specifics).
 
 ## Prerequisites
 
-* You will need a [Microsoft Azure account](https://docs.microsoft.com/azure/).
-* Install [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Create a [Microsoft Azure account](https://docs.microsoft.com/azure/).
+* Install [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 * Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
+* [Create an Azure Data Explorer cluster and database in the Azure portal](create-cluster-database-portal.md) using the default cache and retention policies.
 
 ## Create an Azure Active Directory service principal
 
-// this is the only way to do it progamatically, you could also do this at the portal 
+The Azure Active Directory service principal can be created through the [Azure Portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
 
-This service principal will be the identity leveraged by the connector to write to the Azure Data Explorer table.  In the next step, we will grant permissions for this service principal to access Azure Data Explorer.
+This service principal will be the identity leveraged by the connector to write to the Azure Data Explorer table. In the next step, we will grant permissions for this service principal to access Azure Data Explorer.
 
 1. Log in to your Azure subscription via Azure CLI.
 
@@ -38,46 +38,49 @@ This service principal will be the identity leveraged by the connector to write 
    az login
    ```
 
-This launches a browser to authenticate. Follow the steps to authenticate.
+    This launches a browser to authenticate.
 
-1. Choose the subscription you want to run the lab in.  This is needed when you have multiple.
+1. Choose the subscription you want use to run the lab. This is needed when you have multiple subscriptions.
 
    ```azurecli-interactive
    az account set --subscription YOUR_SUBSCRIPTION_GUID
    ```
 
-1. Create the service principal. Lets call our service principal, `kusto-kafka-spn`. Run the command below to create it.
+1. Create the service principal. In this example, the service principal is called `kusto-kafka-spn`.
 
    ```azurecli-interactive
    az ad sp create-for-rbac -n "kusto-kafka-spn"
    ```
 
-You will get a JSON response as shown below. Note down the `appId`, `password` and `tenant` as you will need them in subsequent steps
+1. You will get a JSON response as shown below. Copy the `appId`, `password` and `tenant`, as you will need them in subsequent steps.
 
-```json
-{
-  "appId": "fe7280c7-5705-4789-b17f-71a472340429",
-  "displayName": "kusto-kafka-spn",
-  "name": "http://kusto-kafka-spn",
-  "password": "29c719dd-f2b3-46de-b71c-4004fb6116ee",
-  "tenant": "42f988bf-86f1-42af-91ab-2d7cd011db42"
-}
-```
+    ```json
+    {
+      "appId": "fe7280c7-5705-4789-b17f-71a472340429",
+      "displayName": "kusto-kafka-spn",
+      "name": "http://kusto-kafka-spn",
+      "password": "29c719dd-f2b3-46de-b71c-4004fb6116ee",
+      "tenant": "42f988bf-86f1-42af-91ab-2d7cd011db42"
+    }
+    ```
 
-## Provision and configure Azure Data Explorer
+## Create a target table in Azure Data Explorer
 
-1. [Create an Azure Data Explorer cluster and database in the Azure portal](create-cluster-database-portal.md). Use the default cache and retention policies.
-1. Create a table called `Storms` and the corresponding table mapping `Storms_CSV_Mapping` for ingested data as seen below.
+1. Create a table called `Storms` with the following command:
 
 // make screen shots in portal, split up table and mapping
 
-```kusto
-.create table Storms (StartTime: datetime, EndTime: datetime, EventId: int, State: string, EventType: string, Source: string)
+    ```kusto
+    .create table Storms (StartTime: datetime, EndTime: datetime, EventId: int, State: string, EventType: string, Source: string)
+    ```
+    
+1. Create the corresponding table mapping `Storms_CSV_Mapping` for ingested data with the following command.
+    
+    ```kusto
+    .create table Storms ingestion csv mapping 'Storms_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EventId","datatype":"int","Ordinal":2},{"Name":"State","datatype":"string","Ordinal":3},{"Name":"EventType","datatype":"string","Ordinal":4},{"Name":"Source","datatype":"string","Ordinal":5}]'
+    ```    
 
-.create table Storms ingestion csv mapping 'Storms_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EventId","datatype":"int","Ordinal":2},{"Name":"State","datatype":"string","Ordinal":3},{"Name":"EventType","datatype":"string","Ordinal":4},{"Name":"Source","datatype":"string","Ordinal":5}]'
-```
-
-1. Create a batch ingestion policy on the table for configurable ingestion latency
+1. Create a batch ingestion policy on the table for configurable ingestion latency.
 
     > [!TIP]
     > The [ingestion batching policy](kusto/management/batchingpolicy.md) is a performance optimizer and includes three parameters, the first one met triggers an ingestion into Azure Data Explorer table.
@@ -86,14 +89,13 @@ You will get a JSON response as shown below. Note down the `appId`, `password` a
     .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
     ```
 
-1. Grant permissions to the service principal
+1. Grant permissions to the service principal.
 
     Use the service principal from [Create an Azure Active Directory service principal](#create-an-azure-active-directory-service-principal) to grant permission to work with the database.
 
     ```kusto
     .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'AAD App'
     ```
-
 
 ## Clone the git repo
 
@@ -114,11 +116,9 @@ Clone the lab's git [repo](https://github.com/Azure/azure-kusto-labs).
     cd azure-kusto-labs/kafka-integration/dockerized-quickstart
     ```
 
-## Review contents
+### Contents of the cloned repo
 
-### List the contents
-
-Run the following command to list the contents of \\anagha\\.
+Run the following command to list the contents of the cloned repo:
 
 ```
 cd ~/kafka-kusto-hol/azure-kusto-labs/kafka-integration/dockerized-quickstart
@@ -144,14 +144,14 @@ This is the result:
     └── main.go
  ```
 
-### Prepare files
+### Review these specific files
 
 #### adx-sink-config.json
 
 // name could be different
 config could different, 
 
-This is the Kusto sink properties file where we need to update our specific configuration details for the lab.
+This is the Kusto sink properties file where you will update the specific configuration details for the lab.
 
 ```json
 {
@@ -175,15 +175,13 @@ This is the Kusto sink properties file where we need to update our specific conf
 
 Replace the values for the following attributes as per your Azure Data Explorer setup - `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name) and `kusto.url`.
 
-#### Connector/Dockerfile
+#### Connector - Dockerfile
 
-Has the commands for generating the docker image for the connector instance.  It includes download of the connector from the git repo release directory.
+This file has the commands for generating the docker image for the connector instance.  It includes download of the connector from the git repo release directory.
 
-// this is a listing of the contents - this is in the command file - 
+#### Storm-events-producer directory
 
-#### Storm-events-producer directory and its contents
-
-At a high level - this has a Go program that reads a local "StormEvents.csv" file and publishes the same to a Kafka topic.
+This directory has a Go program that reads a local "StormEvents.csv" file and publishes the same to a Kafka topic.
 
 #### docker-compose.yaml
 
@@ -237,95 +235,109 @@ services:
 
 ## Run the lab setup
 
-### Start the containers - Kafka, connect, producer etc
+### Start the containers
 
-In a terminal, start the containers
+1. In a terminal, start the containers:
+    
+    ```shell
+    docker-compose up
+    ```
 
-```shell
-docker-compose up
-```
+    The producer application will start sending events to the `storm-events` topic. 
+    You should see logs similar to:
 
-The producer application will start sending events to the `storm-events` topic. You should see logs similar to:
+    ```shell
+    ....
+    events-producer_1  | sent message to partition 0 offset 0
+    events-producer_1  | event  2007-01-01 00:00:00.0000000,2007-01-01 00:00:00.0000000,13208,NORTH CAROLINA,Thunderstorm Wind,Public
+    events-producer_1  | 
+    events-producer_1  | sent message to partition 0 offset 1
+    events-producer_1  | event  2007-01-01 00:00:00.0000000,2007-01-01 05:00:00.0000000,23358,WISCONSIN,Winter Storm,COOP Observer
+    ....
+    ```
+    
+1. To check the logs, run the following command in a separate terminal:
 
-```shell
-....
-events-producer_1  | sent message to partition 0 offset 0
-events-producer_1  | event  2007-01-01 00:00:00.0000000,2007-01-01 00:00:00.0000000,13208,NORTH CAROLINA,Thunderstorm Wind,Public
-events-producer_1  | 
-events-producer_1  | sent message to partition 0 offset 1
-events-producer_1  | event  2007-01-01 00:00:00.0000000,2007-01-01 05:00:00.0000000,23358,WISCONSIN,Winter Storm,COOP Observer
-....
-```
+    ```shell
+    docker-compose logs -f | grep kusto-connect
+    ```
+    
+### Start the connector
 
-Should you need to check the logs, in a separate terminal run the following
+Use a Kafka Connect REST call to start the connector.
 
-```shell
-docker-compose logs -f | grep kusto-connect
-```
+1. In a separate terminal, launch the sink task with the following command:
 
-### Start the connector via Kafka Connect REST call
+    ```shell
+    curl -X POST -H "Content-Type: application/json" --data @adx-sink-config.json http://localhost:8083/connectors
+    ```
+    
+1. To check status, run the following command in a separate terminal:
+    
+    ```shell
+    curl http://localhost:8083/connectors/storm/status
+    ```
 
-In a separate terminal, launch sink task
+The connector will start queueing ingestion processes to Azure Data Explorer.
 
-```shell
-curl -X POST -H "Content-Type: application/json" --data @adx-sink-config.json http://localhost:8083/connectors
-```
+## Query and review data
 
-Check status:
+1. Wait for data to end up in the `Storms` table. To confirm the transfer of data, check the row count:
+    
+    ```kusto
+    Storms | count
+    ```
 
-```shell
-curl http://localhost:8083/connectors/storm/status
-```
+1. Confirm that there are no failures in the ingestion process:
 
-The connector should start queueing ingestion processes to Azure Data Explorer.
+    ```kusto
+    .show ingestion failures
+    ```
+    
+    Once you see data, try out a few queries. 
 
-## Check Azure Data Explorer for event delivery by the connector
+1. To see all the records, run the following [query](write-queries.md):
+    
+    ```kusto
+    Storms
+    ```
 
-Wait for sometime before data ends up in the `Storms` table. To confirm, check the row count and confirm that there are no failures in the ingestion process:
+1. Use `where` and `project` to filter specific data:
+    
+    ```kusto
+    Storms
+    | where EventType == 'Drought' and State == 'TEXAS'
+    | project StartTime, EndTime, Source, EventId
+    ```
+    
+1. Use the [`summarize`](https://docs.microsoft.com/azure/data-explorer/write-queries#summarize) operator:
 
-```kusto
-Storms | count
-```
+    ```kusto
+    Storms
+    | summarize event_count=count() by State
+    | where event_count > 10
+    | project State, event_count
+    | render columnchart
+    ```
+    
+    :::image type="content" source="media/ingest-data-kafka/adx-query.png" alt-text="Kafka query column chart results in Azure Data Explorer":::
 
-```kusto
-.show ingestion failures
-```
+For more query examples and guidance, see [Kusto Query Language documentation](https://docs.microsoft.com/azure/data-explorer/kusto/query/).
 
-Once there is some data, try out a few queries. To see all the records:
 
-```kusto
-Storms
-```
+## Reset and clean up
 
-Use `where` and `project` to filter specific data
+To restart from scratch, do the following steps:
 
-```kusto
-Storms
-| where EventType == 'Drought' and State == 'TEXAS'
-| project StartTime, EndTime, Source, EventId
-```
+1. Stop the containers (`docker-compose down -v`)
+1. Delete (`drop table Storms`)
+1. Re-create the `Storms` table
+1. Recreate table mapping)
+1. Restart containers (`docker-compose up`)
 
-Use the [`summarize`](https://docs.microsoft.com/azure/data-explorer/write-queries#summarize) operator
+To delete the Azure Data Explorer resources, use [az cluster delete](https://docs.microsoft.com/cli/azure/kusto/cluster#az-kusto-cluster-delete) or [az kusto database delete](https://docs.microsoft.com/cli/azure/kusto/database#az-kusto-database-delete):
 
-```kusto
-Storms
-| summarize event_count=count() by State
-| where event_count > 10
-| project State, event_count
-| render columnchart
-```
-
-![\\anagha - where is image file\\](adx-query.png) - image is in the git repo
-
-These are just few examples. Dig into the [Kusto Query Language documentation](https://docs.microsoft.com/azure/data-explorer/kusto/query/) or explore tutorials about [how to ingest JSON formatted sample data into Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-json-formats?tabs=kusto-query-language), using [scalar operators](https://docs.microsoft.com/azure/data-explorer/write-queries#scalar-operators), [timecharts](https://docs.microsoft.com/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer#timecharts), and so on.
-
-## Reset and Clean up
-
-If you want to re-start from scratch, simply stop the containers (`docker-compose down -v`), delete (`drop table Storms`) and re-create the `Storms` table (along with the mapping) and re-start containers (`docker-compose up`)
-
-To delete the Azure Data Explorer cluster/database, use [az cluster delete](https://docs.microsoft.com/cli/azure/kusto/cluster?view=azure-cli-latest#az-kusto-cluster-delete) or [az kusto database delete](https://docs.microsoft.com/cli/azure/kusto/database?view=azure-cli-latest#az-kusto-database-delete)
-
-```azurecli
+```azurecli-interactive
 az kusto cluster delete -n <cluster name> -g <resource group name>
 az kusto database delete -n <database name> --cluster-name <cluster name> -g <resource group name>
 ```
@@ -342,3 +354,5 @@ The following resources supply additional information about the Kafka connector.
 * [Hands on lab for ingestion from Confluent IaaS Kafka on AKS in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/distributed-mode/confluent-kafka/README.md)
 * [Big data architecture](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer)
 * [Log connector issues, request support](https://github.com/Azure/kafka-sink-azure-kusto/issues) - should put this while they're doing it 
+
+* [how to ingest JSON formatted sample data into Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-json-formats?tabs=kusto-query-language)
