@@ -79,6 +79,8 @@ ms.date: 05/27/2020
 |[array_index_of()](arrayindexoffunction.md)|Searches the array for the specified item, and returns its position.|
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
 |[array_slice()](arrayslicefunction.md)|Extracts a slice of a dynamic array.|
+|[array_sort_asc()](arraysortascfunction.md)|Sorts a collection of arrays in ascending order.|
+|[array_sort_desc()](arraysortdescfunction.md)|Sorts a collection of arrays in descending order.|
 |[array_split()](arraysplitfunction.md)|Builds an array of arrays split from the input array.|
 |[bag_keys()](bagkeysfunction.md)|Enumerates all the root keys in a dynamic property-bag object.|
 |[pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
