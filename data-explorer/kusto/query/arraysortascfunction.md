@@ -32,9 +32,9 @@ Returns the same number of arrays as in the input, with the first array sorted i
 
 `null` will be returned for every array that differs in length from the first one.
 
-If the array contains elements of different types, then it will be sorted in the following order:
+If an array contains elements of different types, it will be sorted in the following order:
 
-* Numeric, `datetime` and `timespan` elmeents
+* Numeric, `datetime`, and `timespan` elements
 * String elements
 * Guid elements
 * All other elements
