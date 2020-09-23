@@ -34,10 +34,10 @@ Returns the same number of arrays as in the input, with the first array sorted i
 
 If the array contains elements of different types, then it will be sorted in the following order:
 
-* Numeric, `datetime` and `timespan` elmeents
+* Numeric, `datetime`, and `timespan` elements
 * String elements
 * Guid elements
-* All the rest
+* All other elements
 
 ## Example 1
 
