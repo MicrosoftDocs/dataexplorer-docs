@@ -176,64 +176,63 @@ The following aggregation functions are supported:
 
 * Materialized view query filters are optimized when filtered by one of the Materialized View dimensions (aggregation by-clause). If you know your query pattern will often filter by some column, which can be a dimension in the materialized view, include it in the view. For example: For a materialized view exposing an `arg_max` by `ResourceId` that will often be filtered by `SubscriptionId`, the recommendation is as follows:
 
- <table>
- <th>Do
- <th>Don't do
- <tr style="vertical-align: top;">
- <td>
- <pre>
-.create materialized-view ArgMaxResourceId on table FactResources
-{
-    FactResources | summarize arg_max(Timestamp, *) by SubscriptionId, ResouceId 
-}
-</pre>
-</td>
-<td>
-<pre>
-.create materialized-view ArgMaxResourceId on table FactResources
-{
-    FactResources | summarize arg_max(Timestamp, *) by ResouceId 
-}
-</pre>
-</table>
+    **Do**:
+    
+    ```kusto
+    .create materialized-view ArgMaxResourceId on table FactResources
+    {
+        FactResources | summarize arg_max(Timestamp, *) by SubscriptionId, ResouceId 
+    }
+    ``` 
+    
+    **Don't do**:
+    
+    ```kusto
+    .create materialized-view ArgMaxResourceId on table FactResources
+    {
+        FactResources | summarize arg_max(Timestamp, *) by ResouceId 
+    }
+    ```
 
 * Don't include transformations, normalizations, and other heavy computations that can be moved to an [update policy](../updatepolicy.md) as part of the materialized view definition. Instead, do all those processes in an update policy, and perform the aggregation only in the materialized view. Use this process for lookup in dimension tables, when applicable.
 
-<table>
-    <th>Do
-    <th>Don't do
-        <tr style="vertical-align: top;">
-            <td>
-                <pre>
-// Update policy                   
-.alter-merge table Target policy update 
-@'[{"IsEnabled": true, 
-    "Source": "SourceTable", 
-    "Query": 
-        "SourceTable 
-        | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)", 
-    "IsTransactional": false}]'  
+    **Do**:
     
-// Materialized View
-.create materialized-view Usage on table Events
-{
-&nbsp;     Target 
-&nbsp;     | summarize count() by ResourceId 
-}
-            </pre>
-        </td>
-        <td>
-            <pre>
-.create materialized-view Usage on table SourceTable
-{
-&nbsp;     SourceTable 
-&nbsp;     | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)
-&nbsp;     | summarize count() by ResourceId
-}
-</pre>
-</table>
+    * Update policy:
+    
+    ```kusto
+    .alter-merge table Target policy update 
+    @'[{"IsEnabled": true, 
+        "Source": "SourceTable", 
+        "Query": 
+            "SourceTable 
+            | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)", 
+        "IsTransactional": false}]'  
+    ```
+        
+    * Materialized View:
+    
+    ```kusto
+    .create materialized-view Usage on table Events
+    {
+    &nbsp;     Target 
+    &nbsp;     | summarize count() by ResourceId 
+    }
+    ```
+    
+    **Don't Do**:
+    
+    ```kusto
+    .create materialized-view Usage on table SourceTable
+    {
+    &nbsp;     SourceTable 
+    &nbsp;     | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)
+    &nbsp;     | summarize count() by ResourceId
+    }
+    ```
 
-* If you require the best query time performance, but can sacrifice some data freshness, use the [materialized_view() function](../../query/materialized-view-function.md).
+> [!NOTE]
+> If you require the best query time performance, but can sacrifice some data freshness, use the [materialized_view() function](../../query/materialized-view-function.md).
 
 ## Cancel materialized-view creation
 
