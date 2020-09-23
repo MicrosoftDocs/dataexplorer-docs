@@ -42,7 +42,7 @@ PageViewLog
 | summarize countries=make_set(country) by continent
 ```
 
-:::image type="content" source="images/makeset-aggfunction/makeset.png" alt-text="Makeset":::
+:::image type="content" source="images/makeset-aggfunction/makeset.png" alt-text="Table showing Kusto Query summarize countries by continent in Azure Data Explorer":::
 
 ## See also
 
