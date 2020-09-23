@@ -18,6 +18,7 @@ Applies a polynomial regression from an independent variable (x_series) to a dep
 > * If *x_series* is of datetime type, it must be converted to double and normalized. See [Example 3](#example-3).
 > * For reference implementation of polynomial regression using inline Python, see [series_fit_poly_fl()](../functions-library/series-fit-poly-fl.md).
 
+
 ## Syntax
 
 `T | extend  series_fit_poly(`*y_series*`, `*x_series*`, `*degree*`)`

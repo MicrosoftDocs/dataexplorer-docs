@@ -15,6 +15,7 @@ The function `series_fit_poly_fl()` applies a polynomial regression on a series.
 > [!NOTE]
 > Use the native function [series_fit_poly()](../query/series-fit-poly-function.md). The function below is for reference only.
 
+
 > [!NOTE]
 > * `series_fit_poly_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).
 > * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
