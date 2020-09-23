@@ -37,7 +37,7 @@ If the array contains elements of different types, then it will be sorted in the
 * Numeric, `datetime` and `timespan` elmeents
 * String elements
 * Guid elements
-* All the rest
+* All other elements
 
 ## Example 1
 
