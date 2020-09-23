@@ -15,7 +15,7 @@
   "areas": [
     {
       "name": ".",
-      "heading": "Miscellaneous"
+      "heading": "Azure Data Explorer"
     },
     {
       "name": "kusto/api",
@@ -24,6 +24,10 @@
     {
       "name": "kusto/concepts",
       "heading": "Concepts"
+    },
+    {
+      "name": "kusto/functions-library",
+      "heading": "Functions library"
     },
     {
       "name": "kusto/management",
