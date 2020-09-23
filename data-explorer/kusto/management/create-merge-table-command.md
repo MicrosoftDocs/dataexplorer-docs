@@ -17,7 +17,7 @@ The command must run in context of a specific database.
 
 Requires [Database user permission](../management/access-control/role-based-authorization.md).
 
-**Syntax**
+## Syntax
 
 `.create-merge` `table` *TableName* ([columnName:columnType], ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
@@ -29,7 +29,7 @@ If table T exists, and you send a ".create-merge table T (<columns specification
 * Any column in T that is not in <columns specification> won't be removed from T.
 * Any column in <columns specification> that exists in T, but with a different data type will cause the command to fail.
 
-**See also**
+## See also
 
 * [.create-merge tables](create-merge-tables-command.md)
 * [.create table](create-table-command.md)
