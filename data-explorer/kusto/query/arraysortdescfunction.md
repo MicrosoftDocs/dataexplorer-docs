@@ -78,4 +78,4 @@ datatable(command:string, command_time:datetime, user_id:string)
 
 ## See also
 
-If you want the first array to be sorted in ascending order, use [array_sort_asc()](arraysortascfunction.md).
+To sort the first array in ascending order, use [array_sort_asc()](arraysortascfunction.md).
