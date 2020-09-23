@@ -1,4 +1,5 @@
-Azure Data Explorer connector to Power Apps (Preview)
+
+# Azure Data Explorer connector to Power Apps (Preview)
 
 Power Apps is a suite of apps, services, connectors and data platform that provides a rapid application development environment to build custom apps for your business needs. Using Power Apps, you can quickly build custom business apps that connect to your business data.<br/>
 Azure Data Explorer (ADX) is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more.
