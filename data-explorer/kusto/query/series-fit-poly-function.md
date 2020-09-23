@@ -10,18 +10,13 @@ ms.date: 09/21/2020
 ---
 # series_fit_poly()
 
-The function `series_fit_poly()` applies a polynomial regression from an independent variable (x_series) to a dependent variable (y_series). It takes a table that contains multiple series (dynamic numerical array) and generates, for each series, the high-order polynomial that best fits it using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). The function generates the following columns:
-* `rsquare`: [r-square](https://en.wikipedia.org/wiki/Coefficient_of_determination) is a standard measure of the fit quality. The value's a number in the range [0-1], where 1 - is the best possible fit, and 0 means the data is unordered and doesn't fit any line.
-* `coefficients`:  Numerical array holding the coefficients of the best fitted polynomial with the given degree, ordered from the highest power coefficient to the lowest.
-* `variance`: Variance of the dependent variable (y_series).
-* `rvariance`: Residual variance that is the variance between the input data values the approximated ones.
-* `poly_fit`: Numerical array holding a series of values of the best fitted polynom. The series length is equal to the length of the dependent variable (y_series). The value's used for charting.
+Applies a polynomial regression from an independent variable (x_series) to a dependent variable (y_series). This function takes a table containing multiple series (dynamic numerical array) and generates the best fit high-order polynomial for each series using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). 
 
 > [!TIP]
-> * For linear regression of an evenly spaced series, as created by [make-series operator](make-seriesoperator.md), you can use use the simpler function [series_fit_line()](series-fit-linefunction.md). See 2<sup>nd</sup> example below.
-> * If *x_series* is supplied, and regression is done for high degree, consider normalize it to [0-1] range. See 3<sup>rd</sup> example below.
-> * If *x_series* is of datetime type, it must be converted to double and normalized. See same example below.
-> * See [series_fit_poly_fl()](../functions-library/series-fit-poly-fl.md) for reference implementation of polynomial regression using inline Python.
+> * For linear regression of an evenly spaced series, as created by [make-series operator](make-seriesoperator.md), use the simpler function [series_fit_line()](series-fit-linefunction.md). See [Example 2](#example-2).
+> * If *x_series* is supplied, and the regression is done for a high degree, consider normalizing to the [0-1] range. See [Example 3](#example-3).
+> * If *x_series* is of datetime type, it must be converted to double and normalized. See [Example 3](#example-3).
+> * For reference implementation of polynomial regression using inline Python, see [series_fit_poly_fl()](../functions-library/series-fit-poly-fl.md).
 
 ## Syntax
 
@@ -29,13 +24,28 @@ The function `series_fit_poly()` applies a polynomial regression from an indepen
   
 ## Arguments
 
-* *y_series*: Dynamic numerical array containing the [dependent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables).
-* *x_series*: Dynamic numerical array containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). This parameter is optional, and is needed only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). If not given, it is set to default value of [1,2, ..., length(y_series)].
-* *degree*: The required order of the polynomial to fit. For example, 1 for linear regression, 2 for quadratic regression, and so on. This parameter is optional, defaults to 1 (linear regression).
+|Argument| Description| Required/optional| Notes|
+|---|---|---|---|
+| *y_series* | Dynamic numerical array containing the [dependent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). | Required |
+| *x_series* | Dynamic numerical array containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). | Optional. Required only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). | If not given, it's set to a default value of [1,2, ..., length(y_series)].|
+| *degree* | The required order of the polynomial to fit. For example, 1 for linear regression, 2 for quadratic regression, and so on. | Optional | Defaults to 1 (linear regression).|
+
+## Returns
+
+The `series_fit_poly()` function returns the following columns:
+
+* `rsquare`: [r-square](https://en.wikipedia.org/wiki/Coefficient_of_determination) is a standard measure of the fit quality. The value's a number in the range [0-1], where 1 - is the best possible fit, and 0 means the data is unordered and doesn't fit any line.
+* `coefficients`:  Numerical array holding the coefficients of the best fitted polynomial with the given degree, ordered from the highest power coefficient to the lowest.
+* `variance`: Variance of the dependent variable (y_series).
+* `rvariance`: Residual variance that is the variance between the input data values the approximated ones.
+* `poly_fit`: Numerical array holding a series of values of the best fitted polynomial. The series length is equal to the length of the dependent variable (y_series). The value's used for charting.
 
 ## Examples
 
-1. 5<sup>th</sup> order polynomial with noise on x & y axes:
+### Example 1
+
+A fifth order polynomial with noise on x & y axes:
+
     <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
     range x from 1 to 200 step 1
@@ -48,10 +58,15 @@ The function `series_fit_poly()` applies a polynomial regression from an indepen
     |fork (project x, y, fy) (project-away x, y, fy)
     | render linechart 
     ```
-    :::image type="content" source="images/series-fit-poly-function/fifth-order-noise-1.png" alt-text="Graph showing 5th order polynomial fit to a series with noise" border="false":::
+
+    :::image type="content" source="images/series-fit-poly-function/fifth-order-noise-1.png" alt-text="Graph showing fifth order polynomial fit to a series with noise" border="false":::
+
     :::image type="content" source="images/series-fit-poly-function/fifth-order-noise-table-1.png" alt-text="Coefficients of fifth order polynomial fit to  a series with noise" border="false":::
-    
-1. Verify that series_fit_poly with degree=1 matches series_fit_line
+
+### Example 2
+
+Verify that `series_fit_poly` with degree=1 matches `series_fit_line`:
+
     <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
     demo_series1
@@ -61,10 +76,15 @@ The function `series_fit_poly()` applies a polynomial regression from an indepen
     | fork (project x, y, y_line, y_poly) (project-away id, x, y, y_line, y_poly) 
     | render linechart with(xcolumn=x, ycolumns=y, y_line, y_poly)
     ```
+
     :::image type="content" source="images/series-fit-poly-function/fit-poly-line.png" alt-text="Graph showing linear regression" border="false":::
+
     :::image type="content" source="images/series-fit-poly-function/fit-poly-line-table.png" alt-text="Coefficients of linear regression" border="false":::
     
-1. Irregular (unevenly spaced) time series:
+### Example 3
+
+Irregular (unevenly spaced) time series:
+
     <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
     //

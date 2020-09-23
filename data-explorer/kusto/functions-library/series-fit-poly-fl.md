@@ -10,10 +10,10 @@ ms.date: 09/08/2020
 ---
 # series_fit_poly_fl()
 
-The function `series_fit_poly_fl()` applies a polynomial regression on a series. It takes a table that contains multiple series (dynamic numerical array) and generates, for each series, the high-order polynomial that best fits it using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). This function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
+The function `series_fit_poly_fl()` applies a polynomial regression on a series. This function takes a table containing multiple series (dynamic numerical array) and generates the best fit high-order polynomial for each series using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). This function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
 
 > [!NOTE]
-> Please use the native function [series_fit_poly()](../query/series-fit-poly-function.md). The function below is for reference only.
+> Use the native function [series_fit_poly()](../query/series-fit-poly-function.md). The function below is for reference only.
 
 > [!NOTE]
 > * `series_fit_poly_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).
