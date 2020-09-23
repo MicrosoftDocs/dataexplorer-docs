@@ -28,7 +28,7 @@ If *nulls_last* is not provided, a default value of `true` is used.
 
 ## Returns
 
-Returns the same number of arrays as in the input, so that the first one is sorted in descending order, and the others are ordered to match the reordered first array.
+Returns the same number of arrays as in the input, with the first array sorted in ascending order, and the remaining arrays ordered to match the reordered first array.
 
 `null` will be returned for every array that differs in length from the first one.
 
