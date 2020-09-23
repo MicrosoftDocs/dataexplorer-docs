@@ -13,7 +13,12 @@ ms.date: 09/08/2020
 The function `series_fit_poly_fl()` applies a polynomial regression on a series. It takes a table that contains multiple series (dynamic numerical array) and generates, for each series, the high-order polynomial that best fits it using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). This function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
 
 > [!NOTE]
-> `series_fit_poly_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage). For linear regression of an evenly spaced series, as created by [make-series operator](../query/make-seriesoperator.md), use the native function [series_fit_line()](../query/series-fit-linefunction.md).
+> Please use the native function [series_fit_poly()](../query/series-fit-poly-function.md). The function below is for reference only.
+
+> [!NOTE]
+> * `series_fit_poly_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).
+> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
+> * For linear regression of an evenly spaced series, as created by [make-series operator](../query/make-seriesoperator.md), use the native function [series_fit_line()](../query/series-fit-linefunction.md).
 
 ## Syntax
 
@@ -187,7 +192,6 @@ The following examples assume the function is already installed:
     | project x = rand()*5 - 2.3
     | extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
     | extend y = y + (rand() - 0.5)*0.5*y
-    | order by x asc 
     | summarize x=make_list(x), y=make_list(y)
     | extend y_fit = dynamic(null), coeff=dynamic(null)
     | invoke series_fit_poly_fl('y', 'y_fit', 'coeff', 5, 'x')
