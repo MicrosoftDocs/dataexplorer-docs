@@ -60,7 +60,7 @@ range x from 1 to 200 step 1
 | render linechart 
 ```
 
-:::image type="content" source="images/series-fit-poly-function/fifth-order-noise-1.png" alt-text="Graph showing fifth order polynomial fit to a series with noise" border="false":::
+:::image type="content" source="images/series-fit-poly-function/fifth-order-noise-1.png" alt-text="Graph showing fifth order polynomial fit to a series with noise":::
 
 :::image type="content" source="images/series-fit-poly-function/fifth-order-noise-table-1.png" alt-text="Coefficients of fifth order polynomial fit to  a series with noise" border="false":::
 
@@ -78,7 +78,7 @@ demo_series1
 | render linechart with(xcolumn=x, ycolumns=y, y_line, y_poly)
 ```
 
-:::image type="content" source="images/series-fit-poly-function/fit-poly-line.png" alt-text="Graph showing linear regression" border="false":::
+:::image type="content" source="images/series-fit-poly-function/fit-poly-line.png" alt-text="Graph showing linear regression":::
 
 :::image type="content" source="images/series-fit-poly-function/fit-poly-line-table.png" alt-text="Coefficients of linear regression" border="false":::
     
@@ -101,4 +101,4 @@ irregular_ts
 | project-rename fnum=series_fit_poly_num_poly_fit
 | render timechart with(ycolumns=num, fnum)
 ```
-:::image type="content" source="images/series-fit-poly-function/irregular-time-series-1.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series" border="false":::
+:::image type="content" source="images/series-fit-poly-function/irregular-time-series-1.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series":::
