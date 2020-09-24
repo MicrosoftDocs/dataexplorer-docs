@@ -588,6 +588,8 @@
         href: ./kusto/query/externaltablefunction.md
       - name: materialize()
         href: ./kusto/query/materializefunction.md
+      - name: materialize_view()
+        href: ./kusto/query/materialized-view-function.md
       - name: table()
         href: ./kusto/query/tablefunction.md
       - name: toscalar()
@@ -1339,6 +1341,20 @@
           href: ./kusto/management/external-tables-azurestorage-azuredatalake.md
         - name: Create and alter external SQL tables
           href: ./kusto/management/external-sql-tables.md
+      - name: Materialized views
+        items:
+        - name: Overview of materialized views
+          href: ./kusto/management/materialized-views/materialized-view-overview.md
+        - name: .create materialized-view
+          href: ./kusto/management/materialized-views/materialized-view-create.md
+        - name: .alter materialized-view
+          href: ./kusto/management/materialized-views/materialized-view-alter.md
+        - name: .show materialized-view commands
+          href: ./kusto/management/materialized-views/materialized-view-show-commands.md
+        - name: .drop materialized-view
+          href: ./kusto/management/materialized-views/materialized-view-drop.md
+        - name: .disable | .enable materialized-view
+          href: ./kusto/management/materialized-views/materialized-view-enable-disable.md    
       - name: Columns
         items:
         - name: Columns management

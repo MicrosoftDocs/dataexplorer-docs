@@ -152,7 +152,6 @@ _data
 |1    |[1,3,5,7]|12       |
 |0    |[2,4,6,8]|14       |
 
-
 ## Using `with_itemindex` for working with a subset of the array
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
