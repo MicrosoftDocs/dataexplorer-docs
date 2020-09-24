@@ -1,3 +1,14 @@
+---
+title: Azure Data Explorer connector to Power Apps
+description: Learn how to create an application in Power Apps based on ADX data
+author: olgolden
+ms.author: 
+ms.reviewer: 
+ms.service: data-explorer
+ms.topic: how-to
+ms.date: 09/23/2020
+---
+
 
 # Azure Data Explorer connector to Power Apps (Preview)
 
