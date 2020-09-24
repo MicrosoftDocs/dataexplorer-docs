@@ -189,7 +189,7 @@ ms.date: 05/27/2020
 |[series_divide()](series-dividefunction.md)|Calculates the element-wise division of two numeric series inputs.|
 |[series_equals()](series-equalsfunction.md)|Calculates the element-wise equals (`==`) logic operation of two numeric series inputs.|
 |[series_greater()](series-greaterfunction.md)|Calculates the element-wise greater (`>`) logic operation of two numeric series inputs.|
-|[series_greater_equals()](series-greater-equalsfunction.md)|Calculates the element-wise greater or equals (`>=`) logic operation of two numeric series inputs.|
+|[series_greater_equals()](series-greater-equals-function.md)|Calculates the element-wise greater or equals (`>=`) logic operation of two numeric series inputs.|
 |[series_less()](series-lessfunction.md)|Calculates the element-wise less (`<`) logic operation of two numeric series inputs.|
 |[series_less_equals()](series-less-equalsfunction.md)|Calculates the element-wise less or equal (`<=`) logic operation of two numeric series inputs.|
 |[series_multiply()](series-multiplyfunction.md)|Calculates the element-wise multiplication of two numeric series inputs.|

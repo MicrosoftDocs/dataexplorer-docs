@@ -10,10 +10,11 @@ ms.date: 09/08/2020
 ---
 # series_fit_poly_fl()
 
-The function `series_fit_poly_fl()` applies a polynomial regression on a series. It takes a table that contains multiple series (dynamic numerical array) and generates, for each series, the high-order polynomial that best fits it using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). This function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
+The function `series_fit_poly_fl()` applies a polynomial regression on a series. This function takes a table containing multiple series (dynamic numerical array) and generates the best fit high-order polynomial for each series using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). This function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
 
 > [!NOTE]
-> Please use the native function [series_fit_poly()](../query/series-fit-poly-function.md). The function below is for reference only.
+> Use the native function [series_fit_poly()](../query/series-fit-poly-function.md). The function below is for reference only.
+
 
 > [!NOTE]
 > * `series_fit_poly_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).
@@ -30,7 +31,7 @@ The function `series_fit_poly_fl()` applies a polynomial regression on a series.
 * *y_fit_series*: The name of the column to store the best fit series.
 * *fit_coeff*: The name of the column to store the best fit polynomial coefficients.
 * *degree*: The required order of the polynomial to fit. For example, 1 for linear regression, 2 for quadratic regression, and so on.
-* *x_series*: The name of the column containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables), that is, the x or time axis. This parameter is optional, and is needed only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). The default value is an empty string, as x is redundant for the regression of an evenly-spaced series.
+* *x_series*: The name of the column containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables), that is, the x or time axis. This parameter is optional, and is needed only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). The default value is an empty string, as x is redundant for the regression of an evenly spaced series.
 * *x_istime*: This boolean parameter is optional. This parameter is needed only if *x_series* is specified and it's a vector of datetime.
 
 ## Usage
@@ -154,7 +155,7 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-fit-poly-fl/usage-example.png" alt-text="Graph showing 5th order polynomial fit to a regular time series" border="false":::
+:::image type="content" source="images/series-fit-poly-fl/usage-example.png" alt-text="Graph showing fifth order polynomial fit to a regular time series" border="false":::
 
 ## Additional examples
 
@@ -179,9 +180,9 @@ The following examples assume the function is already installed:
     | render timechart with(ycolumns=num, fnum)
     ```
     
-    :::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="Graph showing 8th order polynomial fit to an irregular time series" border="false":::
+    :::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series" border="false":::
 
-1. 5th order polynomial with noise on x & y axes
+1. Fifth order polynomial with noise on x & y axes
 
     <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
@@ -199,6 +200,6 @@ The following examples assume the function is already installed:
     | render linechart
     ```
         
-    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="Graph of fit of 5th order polynomial with noise on x & y axes":::
+    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="Graph of fit of fifth order polynomial with noise on x & y axes":::
        
-    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="Coefficients of fit of 5th order polynomial with noise" border="false":::
+    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="Coefficients of fit of fifth order polynomial with noise" border="false":::
