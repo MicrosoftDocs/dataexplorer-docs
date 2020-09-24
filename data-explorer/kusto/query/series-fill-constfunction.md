@@ -27,7 +27,7 @@ Takes an expression containing dynamic numerical array as input, replaces all in
 * *missing_value_placeholder*: optional parameter that specifies a placeholder for a missing value to be replaced. Default value is `double`(*null*).
 
 **Notes**
-* In case you create the series using [make-series](make-seriesoperator.md) operator, it fills missing values by default 0, or you can specify a constant value to fill by specifying `default = ` *DefaultValue* in the make-series statement.
+* If you create the series using the [make-series](make-seriesoperator.md) operator, it fills in the missing values using default 0. Alternatively, you can specify a constant value to fill in by specifying `default = ` *DefaultValue* in the make-series statement.
 
 ```kusto
 make-series num=count() default=-1 on TimeStamp from ago(1d) to ago(1h) step 1h by Os, Browser
