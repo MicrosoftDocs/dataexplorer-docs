@@ -39,7 +39,7 @@ If an array contains elements of different types, it will be sorted in the follo
 * Guid elements
 * All other elements
 
-## Example 1
+## Example 1 - Sorting two arrays
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -48,24 +48,37 @@ let array2 = dynamic(["a","b","c","d","e"]);
 print array_sort_desc(array1,array2)
 ```
 
-|array1_sorted|array2_sorted|
+|`array1_sorted`|`array2_sorted`|
 |---|---|
 |[5,4,3,2,1]|["d","c","b","e","a"]|
 
-## Example 2
+## Example 2 - Sorting substrings
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+let Names = "John,Paul,George,Ringo";
+let SortedNames = strcat_array(array_sort_desc(split(Names, ",")), ",");
+print result = SortedNames
+```
+
+|`result`|
+|---|
+|Ringo,Paul,John,George|
+
+## Example 3 - Combining summarize and array_sort_desc
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 datatable(command:string, command_time:datetime, user_id:string)
 [
-	'chmod',		datetime(2019-07-15),	"user1",
-	'ls',			datetime(2019-07-02),	"user1",
-	'dir',			datetime(2019-07-22),	"user1",
-	'mkdir',		datetime(2019-07-14),	"user1",
-	'rm',			datetime(2019-07-27),	"user1",
-	'pwd',			datetime(2019-07-25),	"user1",
-	'rm',			datetime(2019-07-23),	"user2",
-	'pwd',			datetime(2019-07-25),	"user2",
+    'chmod',   datetime(2019-07-15),   "user1",
+    'ls',      datetime(2019-07-02),   "user1",
+    'dir',     datetime(2019-07-22),   "user1",
+    'mkdir',   datetime(2019-07-14),   "user1",
+    'rm',      datetime(2019-07-27),   "user1",
+    'pwd',     datetime(2019-07-25),   "user1",
+    'rm',      datetime(2019-07-23),   "user2",
+    'pwd',     datetime(2019-07-25),   "user2",
 ]
 | summarize timestamps = make_list(command_time), commands = make_list(command) by user_id
 | project user_id, commands_in_chronological_order = array_sort_desc(timestamps, commands)[1]
@@ -75,6 +88,35 @@ datatable(command:string, command_time:datetime, user_id:string)
 |---|---|
 |user1|[<br>  "rm",<br>  "pwd",<br>  "dir",<br>  "chmod",<br>  "mkdir",<br>  "ls"<br>]|
 |user2|[<br>  "pwd",<br>  "rm"<br>]|
+
+> [!Note]
+> If your data may contain `null` values, use [make_list_with_nulls](make-list-with-nulls-aggfunction.md) instead of [make_list](makelist-aggfunction).
+
+## Example 4 - Controlling location of `null` values
+
+By default, `null` values are put last in the sorted array. However, you can control it explicitly by adding a `bool` value as the last argument to array_sort_desc().
+
+Example with default behavior:
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+print array_sort_desc(dynamic([null,"blue","yellow","green",null]))
+```
+
+|`print_0`|
+|---|
+|["yellow","green","blue",null,null]|
+
+Example with non-default behavior:
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+print array_sort_desc(dynamic([null,"blue","yellow","green",null]), false)
+```
+
+|`print_0`|
+|---|
+|[null,null,"yellow","green","blue"]|
 
 ## See also
 
