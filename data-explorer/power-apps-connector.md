@@ -25,7 +25,7 @@ The following example provides Step-by-Step Instructions for creating a Power Ap
 
 ## Prerequisites
 
-This article assumes you have a Power Platform license and prerequisite knowledge about the [Power Apps suite](https://docs.microsoft.com/en-us/powerapps/powerapps-overview).<br/>
+This article assumes you have a Power Platform license and prerequisite knowledge about the [Power Apps suite](https://docs.microsoft.com/powerapps/powerapps-overview).<br/>
 If you don’t already have a working instance of the Power Platform with necessary licensing, you can get started at [https://powerapps.microsoft.com](https://powerapps.microsoft.com).
 :::image type="content" source="media/power-apps-connector/Capture (1).png" alt-text="power-appֵֵs-portal":::
 
@@ -93,7 +93,7 @@ Reposition the data table and consider adding a border for visibility.
 :::image type="content" source="media/power-apps-connector/Capture (14).png" alt-text="table":::
 Select the **Properties** tab in the right-hand popout. Select Results from the **“Data Source”** dropdown.
 Select **“Edit fields”** link. Select **“+ Add field”** in the resulting popout. Select desired fields and click **Add** button.
-![](media/cf479ae1aeb8815f658275efcdd9b35b.png)
+:::image type="content" source="media/power-apps-connector/Capture.png" alt-text="table ready":::
 
 ### Validate
 Click the **“Preview the app”** button in the upper right of the screen.
@@ -102,5 +102,5 @@ Try the dropdown, scroll through the data table, and confirm successful data ret
 
 ### Limitations
 - Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and a time of seven minutes to run.
-- The connector doesn't support the [fork](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/forkoperator) and [facet](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/facetoperator) operators.
-- Timeout exceptions - the connector has a timeout limitation of 7 minutes. To avoid potential timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/best-practices).<br/>
+- The connector doesn't support the [fork](https://docs.microsoft.com/azure/data-explorer/kusto/query/forkoperator) and [facet](https://docs.microsoft.com/azure/data-explorer/kusto/query/facetoperator) operators.
+- Timeout exceptions - the connector has a timeout limitation of 7 minutes. To avoid potential timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](https://docs.microsoft.com/azure/data-explorer/kusto/query/best-practices).<br/>
