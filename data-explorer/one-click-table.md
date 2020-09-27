@@ -41,7 +41,7 @@ The **Create table** window opens with the **Source** tab selected.
         * Filter your files using the **File Filters**. 
         * Select a file that will be used in the next step to define the schema.
 
-        :::image type="content" source="media/one-click-table/blob.png" alt-text="Create table using blob to create schema mapping":::
+        :::image type="content" source="media/one-click-table/storage.png" alt-text="Create table using blob to create schema mapping":::
     
     * If you're using a **local file**:
         * Select **Browse** to locate the file, or drag the file into the field.
