@@ -36,7 +36,7 @@ The **Create table** window opens with the **Source** tab selected.
 1. In **Source type**, select the data source you'll use to create your table mapping. Choose from the following options: **From blob**, **From file**, or **From container**.
    
     
-    * If you're using a **blob**:
+    * If you're using a **container**:
         * Enter the storage url of your blob, and optionally enter the sample size. 
         * Filter your files using the **File Filters**. 
         * Select a file that will be used in the next step to define the schema.
@@ -48,7 +48,7 @@ The **Create table** window opens with the **Source** tab selected.
 
         :::image type="content" source="./media/one-click-table/data-from-file.png" alt-text="Create a table based on data from a local file ":::
 
-    * If you're using a **container**:
+    * If you're using a **blob**:
         * In the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container and optionally enter the sample size. 
 
 1. Select **Edit Schema** to continue to the **Schema** tab.
