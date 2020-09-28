@@ -19,11 +19,15 @@ in the form of default query limits. If you're considering removing these limits
 
 ## Limit on query concurrency
 
-**Query concurrency**  is a limit that a cluster imposes on a number of queries running at the same time.
+**Query concurrency** is a limit that a cluster imposes on a number of queries running at the same time. 
 
-* The default value of the query concurrency limit depends on the SKU cluster it's running on, and is calculated as: `Cores-Per-Node x 10`.
-  * For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default Query Concurrency limit is `16 cores x10 = 160`.
-* The default value can be changed by creating a support ticket. In the future, this control will also be exposed via a control command.
+* The default value of the query concurrency limit depends on the Azure Data Explorer cluster SKU and size(number of cores and nodes in a cluster), it is calculated as: `Cores-Per-Node x 10`.
+  * For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default Query Concurrency limit is `16 cores x 10 = 160`. 
+  * `Cores-Per-Node x 10` is just a default value that could vary depending on the cluster SKU/size, complexity of queries, data volumes and the way data is distributed. Majority of the scenarios could achieve way beyond the default value but considering every workload is different, the best way is to test to come up with the accurate number.
+For example, 50 very complex queries may not run well concurrently, whereas 500 simple queries may run easily concurrently.
+  * The default value can be changed by creating a support ticket. In the future, this control will be made as self-served experience so the creation of support ticket will not be required.
+  * Azure Data Explorer allows *All Databases admin* role to limit the amount of concurrent queries the cluster is executing at the same time by defining query throttling policy. Throttling queries is a defense mechanism to protect cluster from too many queries running concurrently leading to inaccessibility or performance degradation. The policy can be changed at run-time and takes place immediately after the alter policy command completes.
+
 
 ## Limit on result set size (result truncation)
 
