@@ -1,20 +1,20 @@
 ---
-title: Enable Private Endpoint between ADX and Event Hub
-description: Enable Private Endpoint between ADX and Event Hub
+title: Enable Private Link between ADX and Azure Storage Accounts
+description: Enable Private Link between ADX and Azure Storage Accounts
 author: gunjand
 ms.author: gunjand
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 09/28/2020
 ---
-# Enable Private Endpoint between ADX and Event Hub
+# Enable Private Endpoint between ADX and Azure Storage Accounts
 
-Customers deploying Azure Data Explore in their virtual network (VNET) can establish security network connection to other Azure services via [Private Endpoint](/azure/private-link/private-endpoint-overview). In this document we will discuss steps for enabling Private Endpoint between Azure Data Explorer and Azure Storage.
+Customers deploying Azure Data Explore in their virtual network (VNET) can establish private / secure network connection to other Azure services via [Private Endpoint](/azure/private-link/private-endpoint-overview). In this document we will discuss steps for enabling Private Endpoint between Azure Data Explorer and Azure Storage.
 
-Private endpoints enable clients on an Azure virtual network (VNet) to securely access data from a storage account over a private link. This enables network traffic between the Azure Data Explorer and the storage service to traverse over the Microsoft backbone, eliminating exposure from the public internet. A private endpoint uses an IP address from your VNet’s address space for the storage account service.
+Private link enable clients on an Azure virtual network (VNet) to securely access data from a storage account. This enables network traffic between the Azure Data Explorer and the storage service to traverse over the Microsoft backbone, eliminating exposure from the public internet. A private endpoint uses an IP address from your VNet’s address space for the storage account service.
  
-Private endpoints enable you to block exfiltration of data from your VNet. Using private endpoints also enables you to securely connect between a Azure Storage and Azure Data Explorer. The storage accounts will access private endpoint of the Azure Data Explorer for ingestion.
+Private Link enable you to block exfiltration of data from your VNet. Using private Link also enables you to securely connect between a Azure Storage and Azure Data Explorer. The storage accounts will access private endpoint of the Azure Data Explorer for ingestion.
  
 
 

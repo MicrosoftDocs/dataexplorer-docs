@@ -1,20 +1,20 @@
 ---
-title: Enable Private Endpoint between ADX and Event Hub
-description: Learn how to Enable Private Endpoint between ADX and Event Hub
+title: Enable Private Link between ADX and Event Hub
+description: Learn how to Enable Private Link between ADX and Event Hub
 author: gunjand
 ms.author: gunjand
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 09/28/2020
 ---
 # Enable Private Endpoint between ADX and Event Hub
 
-Customers deploying Azure Data Explore in their virtual network (VNET) can establish security network connection to other Azure services via [Private Endpoint](/azure/private-link/private-endpoint-overview). In this document we will discuss steps for enabling Private Endpoint between Azure Data Explorer and Event Hub.
+Customers deploying Azure Data Explore in their virtual network (VNET) can establish private /secure network connection to other Azure services via [Private Endpoint](/azure/private-link/private-endpoint-overview). In this document we will discuss steps for enabling priave link between Azure Data Explorer and Event Hub.
 
 The virtual network rule is an association of the Event Hubs namespace with a virtual network subnet. While the rule exists, all workloads bound to the subnet are granted access to the Event Hubs namespace. Event Hubs itself never establishes outbound connections, doesn't need to gain access, and is therefore never granted access to your subnet by enabling this rule.
  
-Private endpoints enable you to block exfiltration of data from your VNet. Using private endpoints also enables you to securely connect between a event hub and Azure Data Explorer. The event hubs will access private endpoint of the Azure Data Explorer for ingestion.
+Private Link enable you to block exfiltration of data from your VNet. Using private link also enables you to securely connect between a event hub and Azure Data Explorer. The event hubs will access private endpoint of the Azure Data Explorer for ingestion.
 
 ## Important
 Virtual networks are supported in **standard** and **dedicated** tiers of Event Hubs. It's not supported in the basic tier. 
