@@ -317,7 +317,7 @@
   - name: Integrate with other tools
     items:
     - name: Orchestrate
-    items:
+      items:
       - name: Power Automate 
         items:
         - name: Power Automate connector
