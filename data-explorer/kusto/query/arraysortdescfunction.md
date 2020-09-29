@@ -97,7 +97,7 @@ datatable(command:string, command_time:datetime, user_id:string)
 
 ## Example 4 - Controlling location of `null` values
 
-By default, `null` values are put last in the sorted array. However, you can control it explicitly by adding a `bool` value as the last argument to array_sort_desc().
+By default, `null` values are put last in the sorted array. However, you can control it explicitly by adding a `bool` value as the last argument to `array_sort_desc()`.
 
 Example with default behavior:
 
