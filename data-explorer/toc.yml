@@ -1021,9 +1021,9 @@
       - name: zip()
         href: ./kusto/query/zipfunction.md
       - name: zlib_compress_to_base64_string()
-        href: ./kusto/query/zlib_base64_compress_decompress.md
+        href: ./kusto/query/zlib_base64_compress.md
       - name: zlib_decompress_from_base64_string()
-        href: ./kusto/query/zlib_base64_compress_decompress.md 
+        href: ./kusto/query/zlib_base64_decompress.md 
     - name: Aggregation functions
       items:
       - name: any()
