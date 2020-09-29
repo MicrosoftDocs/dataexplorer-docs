@@ -24,7 +24,7 @@ landingContent:
             url: data-explorer-overview.md
       - linkListType: whats-new
         links:
-          - text: Azure Data Explorer event on October 14, 2020
+          - text: Azure Data Explorer online event on October 14, 2020
             url: https://azuredataexplorer.events.idloom.com/azure-data-explorer-online-event
       - linkListType: video
         links:
