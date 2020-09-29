@@ -53,7 +53,7 @@ print array_sort_asc(array1,array2)
 |[1,2,3,4,5]|["a","e","b","c","d"]|
 
 > [!Note]
-> The names of the output columns are generated automatically, based on the arguments to the function. To assign your own names to the output columns, use the following syntax: `... | extend (out1, out2) = array_sort_asc(array1,array2)`
+> The output column names are generated automatically, based on the arguments to the function. To assign different names to the output columns, use the following syntax: `... | extend (out1, out2) = array_sort_asc(array1,array2)`
 
 ## Example 2 - Sorting substrings
 
