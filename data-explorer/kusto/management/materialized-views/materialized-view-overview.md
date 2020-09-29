@@ -33,6 +33,15 @@ By investing resources (data storage, background CPU cycles) for materialized vi
 
 * **Cost reduction:** [Querying a materialized view](#materialized-views-queries) consumes less resources from the cluster than doing the aggregation over the source table. Retention policy of source table can be reduced if only aggregation is required. This setup reduces hot cache costs for the source table.
 
+## Materialized views use cases
+
+The following are common scenarios that can be addressed by using a materialized view:
+
+* Query last record per entity using [arg_max() (aggregation function)](../../query/arg-max-aggfunction.md).
+* De-duplicate records in a table using [any() (aggregation function)](../../query/any-aggfunction.md).
+* Reduce the resolution of data by calculating periodic statistics over the raw data. Use various [aggregation functions](materialized-view-create.md#supported-aggregation-functions) by period of time.
+    * For example, use `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain an up-to-date snapshot of distinct users per day.
+
 ## How materialized views work
 
 A materialized view is made of two components:
@@ -51,16 +60,7 @@ Another way of querying the view is by using the [materialized_view() function](
 
 The view can participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
 
-### Query use cases
-
-The following are common scenarios that can be addressed by using a materialized view:
-
-* Query last record per entity using [arg_max() (aggregation function)](../../query/arg-max-aggfunction.md).
-* De-duplicate records in a table using [any() (aggregation function)](../../query/any-aggfunction.md).
-* Reduce the resolution of data by calculating periodic statistics over the raw data. Use various [aggregation functions](materialized-view-create.md#supported-aggregation-functions) by period of time.
-    * For example, use `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain an up-to-date snapshot of distinct users per day.
-
-### Query examples
+### Examples
 
 1. Query the entire view. The most recent records in source table are included:
     
@@ -75,7 +75,7 @@ The following are common scenarios that can be addressed by using a materialized
     ```kusto
     materialized_view("ViewName")
     ```
-    
+  
 ## Performance considerations
 
 The main contributors that can impact a materialized view health are:
