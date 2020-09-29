@@ -1,5 +1,5 @@
 ---
-title: bag_merge() - Azure Data Explorer 
+title: zlib_decompress_from_base64_string() and zlib_compress_to_base64_string - Azure Data Explorer 
 description: This article describes zlib_compress_to_base64_string() and zlib_decompress_from_base64_string() commands in Azure Data Explorer.
 services: data-explorer
 author: orspod
