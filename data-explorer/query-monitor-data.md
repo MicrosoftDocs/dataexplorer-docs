@@ -18,7 +18,7 @@ The Azure Data Explorer proxy cluster (ADX Proxy) is an entity that enables you 
 
 The Azure Data Explorer proxy flow:
 
-:::image type="content" source="media/adx-proxy/adx-proxy-workflow.png" alt-text="ADX proxy flow":::
+![ADX proxy flow](media/adx-proxy/adx-proxy-workflow.png)
 
 ## Prerequisites
 
