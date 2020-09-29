@@ -56,13 +56,13 @@ The commands require [AllDatabasesAdmin](access-control/role-based-authorization
 **Alter callout policies**
 
 ```kusto
-.alter cluster policy callout @'[{"CalloutType": "webapi","CalloutUriRegex": "en\\.wikipedia\\.org","CanCall": true}]' //Yifat- need new example
+.alter cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname.database.azure.com","CanCall": true}]'
 ```
 
 **Add a set of permitted callouts**
 
 ```kusto
-.alter-merge cluster policy callout @'[{"CalloutType": "webapi","CalloutUriRegex": "en\\.wikipedia\\.org","CanCall": true}, {"CalloutType": "webapi","CalloutUriRegex": "bing\\.com","CanCall": true}]' //Yifat- need new example
+.alter-merge cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname.database.azure.com","CanCall": true}]'
 ```
 
 **Delete all non-immutable callout policies**
