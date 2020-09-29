@@ -86,9 +86,9 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 
 > [!WARNING]
 > * Using `autoUpdateSchema` may lead to irreversible data loss when columns in the source table are dropped. 
-> * If a change is made to the source table, which results in a schema change to the materialized view, while `autoUpdateSchema` is false, the view will be automatically disabled. 
+> * If a change is made to the source table resulting in a schema change to the materialized view, and `autoUpdateSchema` is false, the view will be automatically disabled. 
 >    * This error is common when using an `arg_max(Timestamp, *)` and adding columns to the source table. 
->    * You can avoid the failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)` or by using the `autoUpdateSchema` option.
+>    * Avoid this failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)` or by using the `autoUpdateSchema` option.
 > * If view is disabled for these reasons, you can re-enable it after fixing the issue using the [enable materialized view](materialized-view-enable-disable.md) command.
 >
 
