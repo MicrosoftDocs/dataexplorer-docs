@@ -11,7 +11,7 @@ ms.date: 03/11/2020
 ---
 # geo_distance_point_to_line()
 
-Calculates the shortest distance between a coordinate and a line or a multiline on Earth.
+Calculates the shortest distance between a coordinate and a line or multiline on Earth.
 
 ## Syntax
 
