@@ -316,26 +316,38 @@
         href: follower.md    
   - name: Integrate with other tools
     items:
-    - name: Power Automate 
-      items:
-      - name: Power Automate connector
-        href: flow.md
-        displayName: Microsoft Flow, flow, flow connector
-      - name: Power Automate connector usage examples
-        href: flow-usage.md
-        displayName: Microsoft Flow, flow, flow connector
-    - name: Logic Apps
-      href: kusto/tools/logicapps.md
-    - name: Apache Spark Connector
-      href: spark-connector.md
+    - name: Orchestrate
+    items:
+      - name: Power Automate 
+        items:
+        - name: Power Automate connector
+          href: flow.md
+          displayName: Microsoft Flow, flow, flow connector
+        - name: Power Automate connector usage examples
+          href: flow-usage.md
+          displayName: Microsoft Flow, flow, flow connector
+      - name: Logic Apps
+        href: kusto/tools/logicapps.md
     - name: Cosmos DB
       href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
+    - name: Apache Spark Connector
+      href: spark-connector.md
     - name: Connect from Azure Databricks
       href: connect-from-databricks.md
-    - name: Analyze data in Jupyter Notebooks & Kqlmagic
-      href: kqlmagic.md
-    - name: Analyze data in Azure Notebooks
-      href: azure-notebooks.md
+    - name: Notebooks
+      items:
+      - name: Analyze data in Jupyter Notebooks & Kqlmagic
+        href: kqlmagic.md
+      - name: Analyze data in Azure Notebooks
+        href: azure-notebooks.md
+      - name: Azure Data Studio
+        items:
+        - name: Kusto extension for Azure Data Studio
+          href: https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension
+        - name: Use Kusto extension for Azure Data Studio
+          href: https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel
+        - name: Use Kqlmagic in Azure Data Studio
+          href: https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kqlmagic
     - name: Azure Pipelines
       href: devops.md  
     - name: Sync Kusto
