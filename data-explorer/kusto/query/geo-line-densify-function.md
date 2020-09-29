@@ -11,7 +11,7 @@ ms.date: 07/01/2020
 ---
 # geo_line_densify()
 
-Converts planar line or a multiline edges to geodesics by adding intermediate points.
+Converts planar line or multiline edges to geodesics by adding intermediate points.
 
 ## Syntax
 
