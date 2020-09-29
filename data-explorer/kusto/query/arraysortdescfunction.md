@@ -52,6 +52,9 @@ print array_sort_desc(array1,array2)
 |---|---|
 |[5,4,3,2,1]|["d","c","b","e","a"]|
 
+> [!Note]
+> The names of the output columns are generated automatically, based on the arguments to the function. To assign your own names to the output columns, use the following syntax: `... | extend (out1, out2) = array_sort_desc(array1,array2)`
+
 ## Example 2 - Sorting substrings
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
