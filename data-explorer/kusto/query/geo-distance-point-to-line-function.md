@@ -75,7 +75,7 @@ StormEvents
 
 NY taxi pickups. Pickups are filtered by maximum distance of 0.1 meters from the defined multiline.
 
-:::image type="content" source="images/geo-distance-point-to-line-function/madison_ave_road.png" alt-text="NYC taxi pickups on Madison Ave":::
+:::image type="content" source="images/geo-distance-point-to-line-function/madison-ave-road.png" alt-text="NYC taxi pickups on Madison Ave":::
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
