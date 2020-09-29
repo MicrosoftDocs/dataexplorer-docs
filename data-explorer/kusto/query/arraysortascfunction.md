@@ -19,7 +19,7 @@ Receives one or more arrays. Sorts the first array in ascending order. Orders th
 
 `array_sort_asc(`*array1*[, ..., *argumentN*]`,`*nulls_last*`)`
 
-If *nulls_last* is not provided, a default value of `true` is used.
+If *nulls_last* isn't provided, a default value of `true` is used.
 
 ## Arguments
 
@@ -93,11 +93,11 @@ datatable(command:string, command_time:datetime, user_id:string)
 |user2|[<br>  "rm",<br>  "pwd"<br>]|
 
 > [!Note]
-> If your data may contain `null` values, use [make_list_with_nulls](make-list-with-nulls-aggfunction.md) instead of [make_list](makelist-aggfunction).
+> If your data may contain `null` values, use [make_list_with_nulls](make-list-with-nulls-aggfunction.md) instead of [make_list](makelist-aggfunction.md).
 
 ## Example 4 - Controlling location of `null` values
 
-By default, `null` values are put last in the sorted array. However, you can control it explicitly by adding a `bool` value as the last argument to array_sort_asc().
+By default, `null` values are put last in the sorted array. However, you can control it explicitly by adding a `bool` value as the last argument to `array_sort_asc()`.
 
 Example with default behavior:
 
