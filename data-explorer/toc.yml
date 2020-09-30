@@ -1543,11 +1543,13 @@
       items:
       - name: Identities
         href: ./kusto/management/access-control/principals-and-identity-providers.md
-      - name: AAD
+      - name: Azure Active Directory
+        displayName: AAD, Azure AD
         href: ./kusto/management/access-control/aad.md
       - name: Principal roles
         href: ./kusto/management/access-control/role-based-authorization.md
-      - name: How-To AAD authentication
+      - name: How-To Azure Active Directory authentication
+        displayName: AAD, Azure AD
         href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
     - name: Advanced data management
       items:
@@ -1640,7 +1642,8 @@
         href: ./kusto/api/tds/clients.md
       - name: Linked server
         href: ./kusto/api/tds/linkedserver.md
-      - name: AAD
+      - name: Azure Active Directory
+        displayName: AAD, Azure AD
         href: ./kusto/api/tds/aad.md
       - name: Known issues
         href: ./kusto/api/tds/sqlknownissues.md
