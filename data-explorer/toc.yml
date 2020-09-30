@@ -1020,6 +1020,10 @@
         href: ./kusto/query/welch-testfunction.md
       - name: zip()
         href: ./kusto/query/zipfunction.md
+      - name: zlib_compress_to_base64_string()
+        href: ./kusto/query/zlib-base64-compress.md
+      - name: zlib_decompress_from_base64_string()
+        href: ./kusto/query/zlib-base64-decompress.md 
     - name: Aggregation functions
       items:
       - name: any()
