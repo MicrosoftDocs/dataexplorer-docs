@@ -1549,6 +1549,7 @@
       - name: Principal roles
         href: ./kusto/management/access-control/role-based-authorization.md
       - name: How-To Azure Active Directory authentication
+        displayName: AAD, Azure AD
         href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
     - name: Advanced data management
       items:
