@@ -588,7 +588,7 @@
         href: ./kusto/query/externaltablefunction.md
       - name: materialize()
         href: ./kusto/query/materializefunction.md
-      - name: materialize_view()
+      - name: materialized_view()
         href: ./kusto/query/materialized-view-function.md
       - name: table()
         href: ./kusto/query/tablefunction.md
@@ -1020,6 +1020,10 @@
         href: ./kusto/query/welch-testfunction.md
       - name: zip()
         href: ./kusto/query/zipfunction.md
+      - name: zlib_compress_to_base64_string()
+        href: ./kusto/query/zlib-base64-compress.md
+      - name: zlib_decompress_from_base64_string()
+        href: ./kusto/query/zlib-base64-decompress.md 
     - name: Aggregation functions
       items:
       - name: any()
@@ -1543,11 +1547,13 @@
       items:
       - name: Identities
         href: ./kusto/management/access-control/principals-and-identity-providers.md
-      - name: AAD
+      - name: Azure Active Directory
+        displayName: AAD, Azure AD
         href: ./kusto/management/access-control/aad.md
       - name: Principal roles
         href: ./kusto/management/access-control/role-based-authorization.md
-      - name: How-To AAD authentication
+      - name: How-To Azure Active Directory authentication
+        displayName: AAD, Azure AD
         href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
     - name: Advanced data management
       items:
@@ -1640,7 +1646,8 @@
         href: ./kusto/api/tds/clients.md
       - name: Linked server
         href: ./kusto/api/tds/linkedserver.md
-      - name: AAD
+      - name: Azure Active Directory
+        displayName: AAD, Azure AD
         href: ./kusto/api/tds/aad.md
       - name: Known issues
         href: ./kusto/api/tds/sqlknownissues.md
