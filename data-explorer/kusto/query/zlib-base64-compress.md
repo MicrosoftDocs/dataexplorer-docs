@@ -23,28 +23,32 @@ Performs zlib compression and encodes the result to base64.
 
 ## Arguments
 
-* *input_string*: Input `string`, a string to be compressed and base64 encoded. The function accepts one string argument.
+*input_string*: Input `string`, a string to be compressed and base64 encoded. The function accepts one string argument.
 
 ## Returns
 
-Returns a `string` that represents zlib-compressed and base64-encoded original string. 
-
-Returns an empty result if compression or encoding failed.
+* Returns a `string` that represents zlib-compressed and base64-encoded original string. 
+* Returns an empty result if compression or encoding failed.
 
 ## Example
+
+### Using Kusto
 
 ```kusto
 print zcomp = zlib_compress_to_base64_string("1234567890qwertyuiop")
 ```
 
+**Output:** 
 |"eAEBFADr/zEyMzQ1Njc4OTBxd2VydHl1aW9wOAkGdw=="|
 
-> [!NOTE]
-> Compression can be done using other tools, for example Python: 
->```python
->print(base64.b64encode(zlib.compress(b'<original_string>')))
->```
+### Using Python
+
+Compression can be done using other tools, for example Python: 
+
+```python
+print(base64.b64encode(zlib.compress(b'<original_string>')))
+```
 
 ## Next steps
 
-* Use [zlib_decompress_from_base64_string()](zlib-base64-decompress.md) to retrieve the original uncompressed string.
+Use [zlib_decompress_from_base64_string()](zlib-base64-decompress.md) to retrieve the original uncompressed string.
