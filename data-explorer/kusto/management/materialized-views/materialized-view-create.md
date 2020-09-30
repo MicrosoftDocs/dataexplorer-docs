@@ -94,7 +94,7 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 
 ## Examples
 
-1. Create an empty view that will only materialize records ingested from now on: 
+1. Create an empty arg_max view that will only materialize records ingested from now on:
 
     <!-- csl -->
     ```
@@ -104,7 +104,7 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
     }
     ```
     
-1. Create a materialized view with backfill option, using `async`:
+1. Create a materialized view for daily aggregates with backfill option, using `async`:
 
     <!-- csl -->
     ```
@@ -127,7 +127,17 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
         | summarize count(), dcount(User), max(Duration) by Customer, Day
     } 
     ```
-    
+1. A materialized view that de-duplicates the source table, based on EventId column:
+
+    <!-- csl -->
+    ```
+    .create materialized-view DedupedT on table T
+    {
+        T
+        | summarize any(*) by EventId
+    }
+    ```
+
 1. The definition can include additional operators before the `summarize` statement, as long as the `summarize` is the last one:
 
     <!-- csl -->
@@ -141,7 +151,7 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
         | summarize count(), dcount(User), max(Duration) by Customer, Api, Month
     }
     ```
-    
+
 1. Materialized views that join with a dimension table:
 
     <!-- csl -->
