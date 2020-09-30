@@ -94,7 +94,7 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 
 ## Examples
 
-1. Create an empty view arg_max view that will only materialize records ingested from now on:
+1. Create an empty arg_max view that will only materialize records ingested from now on:
 
     <!-- csl -->
     ```
