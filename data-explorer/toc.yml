@@ -588,7 +588,7 @@
         href: ./kusto/query/externaltablefunction.md
       - name: materialize()
         href: ./kusto/query/materializefunction.md
-      - name: materialize_view()
+      - name: materialized_view()
         href: ./kusto/query/materialized-view-function.md
       - name: table()
         href: ./kusto/query/tablefunction.md
