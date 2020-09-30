@@ -42,7 +42,7 @@ The following are common scenarios that can be addressed by using a materialized
 * Reduce the resolution of data by calculating periodic statistics over the raw data. Use various [aggregation functions](materialized-view-create.md#supported-aggregation-functions) by period of time.
     * For example, use `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain an up-to-date snapshot of distinct users per day.
 
-See examples for all use cases in the [materialized view create command](materialized-view-create.md#examples) page.
+For examples of all use cases, see [materialized view create command](materialized-view-create.md#examples).
 
 ## How materialized views work
 
