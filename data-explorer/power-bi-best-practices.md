@@ -106,7 +106,7 @@ These options issue [set statements](kusto/query/setstatement.md) with your quer
 
 ### Case sensitivity
 
-By default, the connector generates queries that use the case sensitive `==` operator when comparing string values. In certain scenarios, this might not be the desired behavior, as the data might be case insensitive by nature. In order to change the generated query, use the `CaseInsensitive` option of the connector:
+By default, the connector generates queries that use the case sensitive `==` operator when comparing string values. If the data is case insensitive, this isn't the desired behavior. To change the generated query, use the `CaseInsensitive` connector option:
 
 ```m
 let
