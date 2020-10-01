@@ -39,26 +39,35 @@ First, you connect to the Azure Data Explorer help cluster, then you bring in a 
 
     ![Cluster, database, table options](media/power-bi-connector/cluster-database-table.png)
 
-    **Setting** | **Value** | **Field description**
-    |---|---|---|
+    | Setting | Value | Field description
+    |---|---|---
     | Cluster | *https://help.kusto.windows.net* | The URL for the help cluster. For other clusters, the URL is in the form *https://\<ClusterName\>.\<Region\>.kusto.windows.net*. |
     | Database | Leave blank | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. |
     | Table name | Leave blank | One of the tables in the database, or a query like <code>StormEvents \| take 1000</code>. We'll select this in a later step. |
-    | Advanced options | Leave blank | Options for your queries, such as result set size. |
+    | Advanced options | Leave blank | Options for your queries, such as result set size.
     | Data connectivity mode | *DirectQuery* | Determines whether Power BI imports the data or connects directly to the data source. You can use either option with this connector. |
-    | | | |
-    
+
     > [!NOTE]
     > In **Import** mode, data is moved to Power BI. In **DirectQuery** mode, data is queried directly from your Azure Data Explorer cluster.
     >
     > Use **Import** mode when:
+    >
     > * Your data set is small.
-    > * You don't need near real-time data. 
-    > * Your data is already aggregated or you perform [aggregation in Kusto](kusto/query/summarizeoperator.md#list-of-aggregation-functions)    
+    > * You don't need near real-time data.
+    > * Your data is already aggregated or you perform [aggregation in Kusto](kusto/query/summarizeoperator.md#list-of-aggregation-functions)
     >
     > Use **DirectQuery** mode when:
-    > * Your data set is very large. 
-    > * You need near real-time data.   
+    > * Your data set is very large.
+    > * You need near real-time data.
+
+    ### Advanced options
+
+    | Setting | Sample value | Field description
+    |---|---|---
+    | Limit query result record number| `300000` | The maximum number of records to return in the result |
+    | Limit query result data size | `4194304` | The maximum data size in bytes to return in the result |
+    | Disable result set truncation | `true` | Enable/disable result truncation by using the notruncation request option |
+    | Additional set statements | `set query_datascope=hotcache` | Sets query options for the duration of the query. Query options control how a query executes and returns results. |
 
 1. If you don't already have a connection to the help cluster, sign in. Sign in with an organizational account, then select **Connect**.
 

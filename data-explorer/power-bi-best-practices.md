@@ -13,9 +13,9 @@ ms.date: 09/26/2019
 
 # Best practices for using Power BI to query and visualize Azure Data Explorer data
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. [Power BI](https://docs.microsoft.com/power-bi/) is a business analytics solution that lets you visualize your data and share the results across your organization. Azure Data Explorer provides three options for connecting to data in Power BI. Use the [built-in connector](power-bi-connector.md), [import a query from Azure Data Explorer into Power BI](power-bi-imported-query.md), or use a [SQL query](power-bi-sql-query.md). This  article supplies you with tips for querying and visualizing your Azure Data Explorer data with Power BI. 
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. [Power BI](https://docs.microsoft.com/power-bi/) is a business analytics solution that lets you visualize your data and share the results across your organization. Azure Data Explorer provides three options for connecting to data in Power BI. Use the [built-in connector](power-bi-connector.md), [import a query from Azure Data Explorer into Power BI](power-bi-imported-query.md), or use a [SQL query](power-bi-sql-query.md). This article supplies you with tips for querying and visualizing your Azure Data Explorer data with Power BI. 
 
-## Best practices for using Power BI 
+## Best practices for using Power BI
 
 When working with terabytes of fresh raw data, follow these guidelines to keep Power BI dashboards and reports snappy and updated:
 
@@ -27,15 +27,16 @@ When working with terabytes of fresh raw data, follow these guidelines to keep P
 
 * **Parallelism** – Azure Data Explorer is a linearly scalable data platform, therefore, you can improve the performance of dashboard rendering by increasing the parallelism of the end-to-end flow as follows:
 
-   * Increase the number of [concurrent connections in DirectQuery in Power BI](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery).
+  * Increase the number of [concurrent connections in DirectQuery in Power BI](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery).
 
-   * Use [weak consistency to improve parallelism](kusto/concepts/queryconsistency.md). This may have an impact on the freshness of the data.
+  * Use [weak consistency to improve parallelism](kusto/concepts/queryconsistency.md). This may have an impact on the freshness of the data.
 
 * **Effective slicers** – Use [sync slicers](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) to prevent reports from loading data before you're ready. After you structure the data set, place all visuals, and mark all the slicers, you can select the sync slicer to load only the data needed.
 
 * **Use filters** - Use as many Power BI filters as possible to focus the Azure Data Explorer search on the relevant data shards.
 
 * **Efficient visuals** – Select the most performant visuals for your data.
+
 
 ## Tips for using the Azure Data Explorer connector for Power BI to query data
 
@@ -59,15 +60,39 @@ Instead of this query using the `ago()` operator:
 
 Use the following equivalent query:
 
-```powerquery-m
+```m
 let
-    Source = Kusto.Contents("help", "Samples", "StormEvents", []),
+    Source = AzureDataExplorer.Contents("help", "Samples", "StormEvents", []),
     #"Filtered Rows" = Table.SelectRows(Source, each [StartTime] > (DateTime.FixedLocalNow()-#duration(5,0,0,0)))
 in
     #"Filtered Rows"
 ```
 
-### Reaching Kusto query limits 
+### Configuring Azure Data Explorer connector options in M Query
+
+You can configure the options of the Azure Data Explorer connector from the Advanced Editor of PBI in the M query language. Using these options, you can control the generated query that's being sent to your Azure Data Explorer cluster.
+
+```m
+let
+    Source = AzureDataExplorer.Contents("help", "Samples", "StormEvents", [<options>])
+in
+    Source
+```
+
+You can use any of the following options in your M query:
+
+| Option | Sample | Description
+|---|---|---
+| MaxRows | `[MaxRows=300000]` | Adds the `truncationmaxrecords` set statement to your query. Overrides the default maximum number of records a query may return to the caller (truncation).
+| MaxSize | `[MaxSize=4194304]` | Adds the `truncationmaxsize` set statement to your query. Overrides the default maximum data size a query is allowed to return to the caller (truncation).
+| NoTruncate | `[NoTruncate=true]` | Adds the `notruncation` set statement to your query. Enables suppressing truncation of the query results returned to the caller.
+| AdditionalSetStatements | `[AdditionalSetStatements="set query_datascope=hotcache"]` | Adds the provided set statements to your query. These statements are used to set query options for the duration of the query. Query options control how a query executes and returns results.
+| CaseInsensitive | `[CaseInsensitive=true]` | Makes the connector generate queries that are case insensitive - queries will use the `=~` operator instead of the `==` operator when comparing values.
+
+    > [!NOTE]
+    > You can combine multiple options together to reach the desired behavior: `[NoTruncate=true, CaseInsensitive=true]`
+
+### Reaching Kusto query limits
 
 Kusto queries return, by default, up to 500,000 rows or 64 MB, as described in [query limits](kusto/concepts/querylimits.md). You can override these defaults by using **Advanced options** in the  **Azure Data Explorer (Kusto)** connection window:
 
@@ -75,9 +100,21 @@ Kusto queries return, by default, up to 500,000 rows or 64 MB, as described in [
 
 These options issue [set statements](kusto/query/setstatement.md) with your query to change the default query limits:
 
-  * **Limit query result record number** generates a `set truncationmaxrecords`
-  * **Limit query result data size in Bytes** generates a `set truncationmaxsize`
-  * **Disable result-set truncation** generates a `set notruncation`
+* **Limit query result record number** generates a `set truncationmaxrecords`
+* **Limit query result data size in Bytes** generates a `set truncationmaxsize`
+* **Disable result-set truncation** generates a `set notruncation`
+
+### Case sensitivity
+
+By default, the connector generates queries that use the case sensitive `==` operator when comparing string values. If the data is case insensitive, this isn't the desired behavior. To change the generated query, use the `CaseInsensitive` connector option:
+
+```m
+let
+    Source = AzureDataExplorer.Contents("help", "Samples", "StormEvents", [CaseInsensitive=true]),
+    #"Filtered Rows" = Table.SelectRows(Source, each [State] == "aLaBama")
+in
+    #"Filtered Rows"
+```
 
 ### Using query parameters
 
@@ -91,28 +128,28 @@ In **Edit Queries** window, **Home** > **Advanced Editor**
 
 1. Find the following section of the query:
 
-    ```powerquery-m
-    Source = Kusto.Contents("<Cluster>", "<Database>", "<Query>", [])
+    ```m
+    Source = AzureDataExplorer.Contents("<Cluster>", "<Database>", "<Query>", [])
     ```
-   
+
    For example:
 
-    ```powerquery-m
-    Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
+    ```m
+    Source = AzureDataExplorer.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
     ```
 
 1. Replace the relevant part of the query with your parameter. Split the query into multiple parts, and concatenate them back using an ampersand (&), along with the parameter.
 
    For example, in the query above, we'll take the `State == 'ALABAMA'` part, and split it to: `State == '` and `'` and we'll place the `State` parameter between them:
-   
+
     ```kusto
     "StormEvents | where State == '" & State & "' | take 100"
     ```
 
-1. If your query contains quotation marks, encode them correctly. For example, the following query: 
+1. If your query contains quotation marks, encode them correctly. For example, the following query:
 
    ```kusto
-   "StormEvents | where State == "ALABAMA" | take 100" 
+   "StormEvents | where State == "ALABAMA" | take 100"
    ```
 
    will appear in the **Advanced Editor** as follows with two quotation marks:
@@ -150,7 +187,3 @@ and have Power BI use that function in the query.
 ## Next steps
 
 [Visualize data using the Azure Data Explorer connector for Power BI](power-bi-connector.md)
-
-
-
-
