@@ -42,7 +42,7 @@ The program uses Azure Active Directory authentication credentials. A `com.micro
 
 ```java
 static Client getClient() throws Exception {
-    ConnectionStringBuilder csb = ConnectionStringBuilder.createWithAadApplicationCredentials(endpoint, clientID, clientSecret);
+    ConnectionStringBuilder csb = ConnectionStringBuilder.createWithAadApplicationCredentials(endpoint, clientID, clientSecret, tenantID);
     return ClientFactory.createClient(csb);
 }
 ```
@@ -81,6 +81,14 @@ static void createTable(String database) {
 An ingestion is queued using a file from an existing Azure Blob Storage container. A `BlobSourceInfo` is used to specify the Blob Storage path and `IngestionProperties` defines the basic information such as table, database, mapping name and data type (`CSV` in this case).
 
 ```java
+    ...
+    static final String blobStorePathFormat = "https://%s.blob.core.windows.net/%s/%s%s";
+    static final String blobStoreAccountName = "kustosamplefiles";
+    static final String blobStoreContainer = "samplefiles";
+    static final String blobStoreFileName = "StormEvents.csv";
+    static final String blobStoreToken = "??st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
+    ....
+
     static void ingestFile(String database) throws InterruptedException {
         String blobPath = String.format(blobStorePathFormat, blobStoreAccountName, blobStoreContainer,
                 blobStoreFileName, blobStoreToken);
@@ -91,7 +99,7 @@ An ingestion is queued using a file from an existing Azure Blob Storage containe
         ingestionProperties.setIngestionMapping(ingestionMappingRefName, IngestionMappingKind.Csv);
         ingestionProperties.setReportLevel(IngestionReportLevel.FailuresAndSuccesses);
         ingestionProperties.setReportMethod(IngestionReportMethod.QueueAndTable);
-    .....
+    ....
 ```
 
 The ingestion process is started in a different thread while the `main` thread is blocked waiting for it to complete (using a [CountdownLatch](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CountDownLatch.html)). The ingestion API (`IngestClient#ingestFromBlob`) is not asynchronous, hence a `while` loop is used to poll the current status (every 5 secs) and wait for it to transition from `Pending` status (ideally to `Succeeded`, but it could be `Failed` or `PartiallySucceeded` as well).
