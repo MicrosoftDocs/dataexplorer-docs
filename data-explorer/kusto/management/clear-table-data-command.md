@@ -11,7 +11,7 @@ ms.date: 10/01/2020
 ---
 # .clear table data
 
-Clears the data of an existing table, inclusing streaming ingestion data.
+Clears the data of an existing table, including streaming ingestion data.
 
 `.clear` `table` *TableName* `data` 
 
