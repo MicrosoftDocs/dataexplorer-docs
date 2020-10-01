@@ -52,7 +52,7 @@ You can combine any of the following options in your M query:
 
 ### MaxRows:
   
-Adds the `truncationmaxrecords` set statement to your query, Overrides the default maximum number of records a query may return to the caller (truncation).
+Adds the `truncationmaxrecords` set statement to your query. Overrides the default maximum number of records a query may return to the caller (truncation).
   
 **Sample**: `[MaxRows=300000]`
 
