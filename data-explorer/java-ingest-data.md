@@ -21,7 +21,7 @@ ms.date: 09/07/2020
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides a [Java client library](kusto/api/java/kusto-java-client-library.md) for interacting with the Azure Data Explorer service that can be used to ingest, issue control commands and query data in Azure Data Explorer clusters.
 
-In this article, you first create a table and data mapping in a test cluster. You then queue an ingestion to the cluster using the Java SDK and validate the results.
+In this article, you first create a table and a data mapping in a test cluster. You then queue an ingestion from blob storage to the cluster using the Java SDK and validate the results. 
 
 ## Prerequisites
 
@@ -67,11 +67,12 @@ static final String createTableCommand = ".create table StormEvents (StartTime: 
 static void createTable(String database) {
     try {
         getClient().execute(database, createTableCommand);
+        System.out.println("Table created");
     } catch (Exception e) {
         System.out.println("Failed to create table: " + e.getMessage());
         return;
     }
-    System.out.println("Table created");
+    
 }
 ```
 
@@ -124,7 +125,7 @@ The ingestion process is started in a different thread while the `main` thread i
 ```
 
 > [!TIP]
-> This was just a simple example and the exact semantics of how to handle ingestion asynchronously may could vary by application. For example, you could use a [`CompletableFuture`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html) to create a pipeline defining what you want to do after the ingestion is complete, such as querying the table, or handle exceptions that may arise.
+> This was just a simple example and the exact semantics of how to handle ingestion asynchronously may vary for the application. For example, you could use a [`CompletableFuture`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html) to create a pipeline defining what you want to do after the ingestion has completed, such as querying the table, or handle exceptions that were reported to the IngestionStatus.
 
 ## Run the application
 
