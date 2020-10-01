@@ -39,7 +39,7 @@ When working with terabytes of fresh raw data, follow these guidelines to keep P
 
 ## Configuring Azure Data Explorer connector options in M Query
 
-You can configure the options of the Azure Data Explorer connector from the Advanced Editor of PBI in the M query language. Using these options, you can control the generated query that's being sent to yur Azure Data Explorer cluster.
+You can configure the options of the Azure Data Explorer connector from the Advanced Editor of PBI in the M query language. Using these options, you can control the generated query that's being sent to your Azure Data Explorer cluster.
 
 ```m
 let
