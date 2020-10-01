@@ -4,7 +4,7 @@ description: This article describes the `.clear table data` command in Azure Dat
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: vrozov
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/01/2020
