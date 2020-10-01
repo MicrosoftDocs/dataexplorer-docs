@@ -37,49 +37,6 @@ When working with terabytes of fresh raw data, follow these guidelines to keep P
 
 * **Efficient visuals** – Select the most performant visuals for your data.
 
-## Configuring Azure Data Explorer connector options in M Query
-
-You can configure the options of the Azure Data Explorer connector from the Advanced Editor of PBI in the M query language. Using these options, you can control the generated query that's being sent to your Azure Data Explorer cluster.
-
-```m
-let
-    Source = AzureDataExplorer.Contents("help", "Samples", "StormEvents", [<options>])
-in
-    Source
-```
-
-You can combine any of the following options in your M query:
-
-### MaxRows:
-  
-Adds the `truncationmaxrecords` set statement to your query. Overrides the default maximum number of records a query may return to the caller (truncation).
-  
-**Sample**: `[MaxRows=300000]`
-
-### MaxSize
-
-Adds the `truncationmaxsize` set statement to your query. Overrides the default maximum data size a query is allowed to return to the caller (truncation).
-  
-**Sample**: `[MaxSize=4194304]`
-
-### NoTruncate
-
-Adds the `notruncation` set statement to your query. Enables suppressing truncation of the query results returned to the caller.
-  
-**Sample**: `[NoTruncate=true]`
-
-### AdditionalSetStatements
-
-Adds the provided set statements to your query. These statements are used to set query options for the duration of the query. Query options control how a query executes and returns results.
-  
-**Sample**: `[AdditionalSetStatements="set query_datascope=hotcache"]`
-
-### CaseInsensitive
-
-Makes the connector generate queries that are case insensitive - queries will use the `=~` operator instead
-of the `==` operator when comparing values.
-  
-**Sample**: `[CaseInsensitive=true]`
 
 ## Tips for using the Azure Data Explorer connector for Power BI to query data
 
@@ -110,6 +67,31 @@ let
 in
     #"Filtered Rows"
 ```
+
+### Configuring Azure Data Explorer connector options in M Query
+
+You can configure the options of the Azure Data Explorer connector from the Advanced Editor of PBI in the M query language. Using these options, you can control the generated query that's being sent to your Azure Data Explorer cluster.
+
+```m
+let
+    Source = AzureDataExplorer.Contents("help", "Samples", "StormEvents", [<options>])
+in
+    Source
+```
+
+You can use any of the following options in your M query:
+
+| Option | Sample | Description
+|---|---|---
+| MaxRows | `[MaxRows=300000]` | Adds the `truncationmaxrecords` set statement to your query. Overrides the default maximum number of records a query may return to the caller (truncation).
+| MaxSize | `[MaxSize=4194304]` | Adds the `truncationmaxsize` set statement to your query. Overrides the default maximum data size a query is allowed to return to the caller (truncation).
+| NoTruncate | `[NoTruncate=true]` | Adds the `notruncation` set statement to your query. Enables suppressing truncation of the query results returned to the caller.
+| AdditionalSetStatements | `[AdditionalSetStatements="set query_datascope=hotcache"]` | Adds the provided set statements to your query. These statements are used to set query options for the duration of the query. Query options control how a query executes and returns results.
+| CaseInsensitive | `[CaseInsensitive=true]` | Makes the connector generate queries that are case insensitive - queries will use the `=~` operator instead
+of the `==` operator when comparing values.
+
+> [!NOTE]
+> You can combine multiple options together to reach the desired behavior: `[NoTruncate=true, CaseInsensitive=true]`
 
 ### Reaching Kusto query limits
 
