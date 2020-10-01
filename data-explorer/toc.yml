@@ -1333,6 +1333,8 @@
           href: ./kusto/management/show-table-details-command.md
         - name: .show table schema
           href: ./kusto/management/show-table-schema-command.md
+        - name: .clear table data
+          href: ./kusto/management/clear-table-data-command.md
       - name: External tables
         items:
         - name: External tables general control commands
