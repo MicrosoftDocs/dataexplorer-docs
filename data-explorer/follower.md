@@ -118,7 +118,54 @@ attached_database_configuration_properties = AttachedDatabaseConfiguration(clust
 
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
+`````
+### Attach a database using Powershell
+
+#### Needed Modules
+
 ```
+Install : Az.Kusto
+```
+
+
+#### Code Example
+
+```Powershell
+$FollowerClustername = 'follower'
+$FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
+$FollowerResourceGroupName = 'followerResouceGroup'
+$DatabaseName = "db"  ## Can be specific database name or * for all databases
+$LeaderClustername = 'leader'
+$LeaderClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
+$LeaderClusterResourceGroup = 'leaderResouceGroup'
+$DefaultPrincipalsModificationKind = 'Union'
+
+##Construct the LeaderClusterResourceId and Location
+$getleadercluster = Get-AzKustoCluster -Name $LeaderClustername -ResourceGroupName $LeaderClusterResourceGroup -SubscriptionId $LeaderClusterSubscriptionID -ErrorAction Stop
+$LeaderClusterResourceid = $getleadercluster.Id
+$Location = $getleadercluster.Location
+
+##Handle the config name if all databases needs to be followed
+if($DatabaseName -eq '*')  {
+        $configname = $FollowerClustername + 'config'
+       } 
+
+else {
+        $configname = $DatabaseName   
+     }
+
+
+New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
+	-Name $configname `
+	-ResourceGroupName $FollowerResourceGroupName `
+	-SubscriptionId $FollowerClusterSubscriptionID `
+	-DatabaseName $DatabaseName `
+	-ClusterResourceId $LeaderClusterResourceid `
+	-DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind `
+	-Location $Location `
+	-ErrorAction Stop 
+````
+
 
 ### Attach a database using an Azure Resource Manager template
 
