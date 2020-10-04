@@ -20,7 +20,7 @@ Removes keys and associated values from a `dynamic` property-bag.
 ## Arguments
 
 * *bag*: `dynamic` property-bag input.
-* *keys*: `dynamic` array including keys to be removed from the input. Keys refer to the first level of the property bag,
+* *keys*: `dynamic` array includes keys to be removed from the input. Keys refer to the first level of the property bag.
 specifying keys on the nested levels is not supported.
 
 ## Returns
