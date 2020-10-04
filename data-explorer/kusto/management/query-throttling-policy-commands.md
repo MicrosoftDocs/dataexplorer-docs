@@ -33,17 +33,6 @@ Returns a table with the following columns:
 |EntityName|`string`|Empty
 |Policy    |`string`|A JSON object that defines the query throttling policy, formatted as [query throttling policy object](#query-throttling-policy-object)
 
-## Query throttling policy object
-
-A cluster may have none or one query throttling policies defined.
-
-When a cluster doesn't have a query throttling policy defined, the default policy applies. For more information on the default policy, see [query limits](../concepts/querylimits.md).
-
-|Property  |Type    |Description                                                       |
-|----------|--------|------------------------------------------------------------------|
-|IsEnabled |`bool`  |States if query throttling policy is enabled (true) or disabled (false)     |
-|MaxQuantity|`int`|Number of the concurrent queries that cluster can run. Number must have positive value. |
-
 ### Example
 
 <!-- csl -->
@@ -54,6 +43,17 @@ When a cluster doesn't have a query throttling policy defined, the default polic
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
 |QueryThrottlingPolicy||{"IsEnabled": true,"MaxQuantity": 25}
+
+## Query throttling policy object
+
+A cluster may have zero or one query throttling policies defined.
+
+When a cluster doesn't have a query throttling policy defined, the default policy applies. For more information on the default policy, see [query limits](../concepts/querylimits.md).
+
+|Property  |Type    |Description                                                       |
+|----------|--------|------------------------------------------------------------------|
+|IsEnabled |`bool`  |States if query throttling policy is enabled (true) or disabled (false)     |
+|MaxQuantity|`int`|Number of the concurrent queries that cluster can run. Number must have positive value. |
 
 ## `.alter cluster policy querythrottling`
 
