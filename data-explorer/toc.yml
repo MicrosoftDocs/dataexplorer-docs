@@ -656,6 +656,8 @@
         href: ./kusto/query/bagkeysfunction.md
       - name: bag_merge()
         href: ./kusto/query/bag-merge-function.md
+      - name: bag_remove_keys()
+        href: ./kusto/query/bag-remove-keys-function.md
       - name: base64_decode_toarray()
         href: ./kusto/query/base64_decode_toarrayfunction.md
       - name: base64_decode_tostring()
