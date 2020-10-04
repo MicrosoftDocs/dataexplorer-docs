@@ -1,6 +1,6 @@
 ---
-title: Query throttling policy command - Azure Data Explorer
-description: This article describes the query throttling policy commands in Azure Data Explorer
+title: Query throttling policy- Azure Data Explorer
+description: This article describes the query throttling policy in Azure Data Explorer
 services: data-explorer
 author: orspod
 ms.author: orspodek
