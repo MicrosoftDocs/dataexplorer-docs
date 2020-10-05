@@ -7,13 +7,11 @@ ms.author: orspodek
 ms.reviewer: miwalia
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/11/2020
+ms.date: 10/05/2020
 ---
 # Query throttling policy commands
 
-The [query throttling policy](query-throttling-policy.md) is a cluster-level policy object to restrict the query concurrency in the cluster.
-
-These commands require [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
+The [query throttling policy](query-throttling-policy.md) is a cluster-level policy to restrict query concurrency in the cluster. These query throttling policy commands require [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
 
 ## `.show cluster policy querythrottling`
 
@@ -89,4 +87,3 @@ Drops the cluster [query throttling policy](query-throttling-policy.md) object.
 ### Syntax
 
 `.delete` `cluster` `policy` `querythrottling`
-
