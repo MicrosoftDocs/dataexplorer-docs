@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/10/2020
 ---
-# Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications and manually create resources
+# Create an Event Grid subscription and manually create resources
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-grid.md)
@@ -18,9 +18,11 @@ ms.date: 05/10/2020
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 
-In this article, you'll create an Event Grid data connection that set an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub. 
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, and blobs written to blob containers.
 
-For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md). 
+In this article, you'll create an Event Grid data connection to manually create resources, such as Event Grid subscription, Event Hub namespace, and Event Hub. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub.  Then you can ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection.
+
+For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md). To automatically create the resources, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md).
 
 ## Prerequisites
 
