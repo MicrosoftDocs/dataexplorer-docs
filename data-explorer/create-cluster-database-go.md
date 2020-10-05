@@ -1,14 +1,15 @@
 ---
-title: 'Manage an Azure Data Explorer cluster & database using Azure Go SDK'
+title: 'Create an Azure Data Explorer cluster & database using Azure Go SDK'
 description: Learn how to create, list, and delete an Azure Data Explorer cluster and database with Azure Go SDK.
-author: abhirockzz
-ms.author: abhishgu
+author: orspod
+ms.author: orspodek
+ms.reviewer: abhishgu
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/08/2020
 ---
 
-# Manage an Azure Data Explorer cluster & database using Go
+# Create an Azure Data Explorer cluster and database using Go
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
@@ -19,13 +20,15 @@ ms.date: 09/08/2020
 > * [Go](create-cluster-database-go.md)
 > * [ARM template](create-cluster-database-resource-manager.md)
 
-In this article, you execute create, list, delete operations on Azure Data Explorer cluster and database using [Go](https://golang.org/). Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, first create a cluster, and create one or more databases in that cluster. Then ingest, or load, data into a database so that you can run queries against it.
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it. 
+
+In this article, you create an Azure Data Explorer cluster and database using [Go](https://golang.org/). You can then list and delete your new cluster and database and execute operations on your resources.
 
 ## Prerequisites
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free) before you begin.
 * Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-* Install an appropriate version of Go. The [Azure Go SDK](https://github.com/Azure/azure-sdk-for-go) officially supports the last two major releases of Go.
+* Install an appropriate version of Go. For more information regarding supported releases, see the [Azure Go SDK](https://github.com/Azure/azure-sdk-for-go).
 
 ## Review the code
 
@@ -251,4 +254,4 @@ If you did not delete the cluster programmatically using the sample code in this
 
 ## Next steps
 
-* [Ingest data using the Azure Data Explorer Python library](python-ingest-data.md)
+* [Ingest data using the Azure Data Explorer Go SDK](go-ingest-data.md)
