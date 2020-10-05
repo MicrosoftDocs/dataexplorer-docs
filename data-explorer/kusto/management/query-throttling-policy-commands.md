@@ -15,6 +15,17 @@ The [query throttling policy](query-throttling-policy.md) is a cluster-level pol
 
 These commands require [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
 
+## Query throttling policy object
+
+A cluster may have zero or one query throttling policies defined.
+
+When a cluster doesn't have a query throttling policy defined, the default policy applies. For more information on the default policy, see [query limits](../concepts/querylimits.md).
+
+|Property  |Type    |Description                                                       |
+|----------|--------|------------------------------------------------------------------|
+|IsEnabled |`bool`  |States if query throttling policy is enabled (true) or disabled (false)     |
+|MaxQuantity|`int`|Number of the concurrent queries that cluster can run. Number must have positive value. |
+
 ## `.show cluster policy querythrottling`
 
 Returns the [query throttling policy](query-throttling-policy.md) of the cluster.
@@ -29,9 +40,9 @@ Returns a table with the following columns:
 
 |Column    |Type    |Description
 |---|---|---
-|PolicyName|`string`|The policy name - QueryThrottlingPolicy
-|EntityName|`string`|Empty
-|Policy    |`string`|A JSON object that defines the query throttling policy, formatted as [query throttling policy object](#query-throttling-policy-object)
+|PolicyName| string |The policy name - QueryThrottlingPolicy
+|EntityName| string |Empty
+|Policy    | string |A JSON object that defines the query throttling policy, formatted as [query throttling policy object](#query-throttling-policy-object)
 
 ### Example
 
@@ -40,20 +51,12 @@ Returns a table with the following columns:
 .show cluster policy querythrottling 
 ```
 
+Returns:
+
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
 |QueryThrottlingPolicy||{"IsEnabled": true,"MaxQuantity": 25}
 
-## Query throttling policy object
-
-A cluster may have zero or one query throttling policies defined.
-
-When a cluster doesn't have a query throttling policy defined, the default policy applies. For more information on the default policy, see [query limits](../concepts/querylimits.md).
-
-|Property  |Type    |Description                                                       |
-|----------|--------|------------------------------------------------------------------|
-|IsEnabled |`bool`  |States if query throttling policy is enabled (true) or disabled (false)     |
-|MaxQuantity|`int`|Number of the concurrent queries that cluster can run. Number must have positive value. |
 
 ## `.alter cluster policy querythrottling`
 
