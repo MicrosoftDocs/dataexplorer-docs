@@ -50,7 +50,7 @@ When a cluster doesn't have a query throttling policy defined, the default polic
 
 |Property  |Type    |Description                                                       |
 |----------|--------|------------------------------------------------------------------|
-|IsEnabled |`bool`  |States if query throttling policy is enabled (true) or disabled (false)     |
+|IsEnabled |`bool`  |States if query throttling policy is enabled (true) or disabled (false).     |
 |MaxQuantity|`int`|Number of the concurrent queries that cluster can run. Number must have positive value. |
 
 ## `.alter cluster policy querythrottling`
