@@ -54,7 +54,7 @@ For general information about ingesting into Azure Data Explorer from Event Grid
     | Topic Type | *Storage account* | The type of Event Grid topic. |
     | Source Resource | *gridteststorage1* | The name of your storage account. |
     | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. |
-    | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select the currently supported type: Microsoft.Storage.BlobCreated.|
+    | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the currently supported types: Microsoft.Storage.BlobCreated. or Microsoft.Storage.BlobRenamed|
     | Endpoint Type | *Event Hubs* | The type of endpoint to which you send the events. |
     | Endpoint | *test-hub* | The event hub you created. |
 
