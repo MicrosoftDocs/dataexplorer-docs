@@ -4,10 +4,10 @@ description: This article describes how to create an Event Grid subscription in 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: kedamari
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/10/2020
+ms.date: 10/05/2020
 ---
 # Create an Event Grid subscription and create resources manually
 
@@ -20,7 +20,7 @@ ms.date: 05/10/2020
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, and blobs written to blob containers.
 
-In this article, you'll create an Event Grid data connection to create resources manually. The resources you create are the Event Grid subscription, Event Hub namespace, and Event Hub. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub.  Then you can ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection.
+In this article, you'll create an Event Grid data connection to create resources manually. The resources you create are the Event Grid subscription, Event Hub namespace, and Event Hub. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub. Then you can ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection.
 
 For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md). To automatically create the resources, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md).
 
@@ -29,8 +29,8 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * [A cluster and database](create-cluster-database-portal.md).
 * [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
-    * Event Grid notification subscription can be set on Azure Storage Accounts for kind `BlobStorage` or `StorageV2`.
-    * Enabling [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction) is also supported.
+    * Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage` or `StorageV2`.
+    * [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction) is also supported.
 * [An event hub](/azure/event-hubs/event-hubs-create).
 
 > [!NOTE]
