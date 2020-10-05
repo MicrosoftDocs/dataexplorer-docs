@@ -1431,6 +1431,12 @@
           href: ./kusto/management/partitioningpolicy.md
         - name: partitioning policy command
           href: ./kusto/management/partitioning-policy.md
+      - name: Query throttling
+        items:
+        - name: Query throttling policy
+          href: ./kusto/management/query-throttling-policy.md
+        - name: Query throttling policy commands
+          href: ./kusto/management/query-throttling-policy-commands.md
       - name: Retention
         items:
         - name: Retention policy
@@ -1472,7 +1478,7 @@
         - name: Streaming ingestion policy
           href: ./kusto/management/streamingingestionpolicy.md
         - name: streamingingestion policy command
-          href: ./kusto/management/streamingingestion-policy.md
+          href: ./kusto/management/streamingingestion-policy.md    
       - name: Update
         items:
         - name: Update policy
