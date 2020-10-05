@@ -15,7 +15,7 @@ ms.date: 08/13/2020
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-grid.md)
-> * [Portal - manually create resources](ingest-data-event-grid-manual.md)
+> * [Portal - create resources manually](ingest-data-event-grid-manual.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
@@ -24,7 +24,7 @@ ms.date: 08/13/2020
 
 In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that sets an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub. Then you'll see an example of the data flow throughout the system. 
 
-For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md). To manually create resources in the Azure portal, see [Portal - manually create resources](ingest-data-event-grid-manual.md).
+For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md). To create resources manually in the Azure portal, see [Portal - create resources manually](ingest-data-event-grid-manual.md).
 
 ## Prerequisites
 
@@ -80,7 +80,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Storage account subscription | Your subscription ID | The subscription ID where your storage account is.|
     | Storage account | *gridteststorage1* | The name of the storage account that you created previously.|
     | Event type | *Blob created* or *Blob renamed* | The type of event that triggers ingestion. |
-    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace, and an Event Hub for you. To create resources manually, see [create an Event Grid subscription and manually create resources](ingest-data-event-grid-manual.md)|
+    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace, and an Event Hub for you. To create resources manually, see [create an Event Grid subscription and create resources manually](ingest-data-event-grid-manual.md)|
 
 1. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
     * **Prefix** field is the *literal* prefix of the subject. As the pattern applied is *startswith*, it can span multiple containers, folders, or blobs. No wildcards are allowed.
