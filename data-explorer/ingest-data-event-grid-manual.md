@@ -59,15 +59,17 @@ For general information about ingesting into Azure Data Explorer from Event Grid
     | Endpoint | *test-hub* | The event hub you created. |
 
 1. Select the **Filters** tab if you want to track specific subjects. Set the filters for the notifications as follows:
-   * Select **Enable subject filtering**
-   * **Subject Begins With** field is the *literal* prefix of the subject. Since the pattern applied is *startswith*, it can span multiple containers, folders, or blobs. No wildcards are allowed.
+   
+    :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab event grid":::
+
+   1. Select **Enable subject filtering**
+   1. **Subject Begins With** field is the *literal* prefix of the subject. Since the pattern applied is *startswith*, it can span multiple containers, folders, or blobs. No wildcards are allowed.
        * To define a filter on the blob container, set the field as follows: *`/blobServices/default/containers/[container prefix]`*.
        * To define a filter on a blob prefix (or a folder in Azure Data Lake Gen2), set the field as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*.
-   * **Subject Ends With** field is the *literal* suffix of the blob. No wildcards are allowed.
-   * **Case-sensitive subject matching** field indicates whether the prefix and suffix filters are case-sensitive.
-   * For more information about filtering events, see [blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events).
-    
-        :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab event grid":::
+   1. **Subject Ends With** field is the *literal* suffix of the blob. No wildcards are allowed.
+   1. **Case-sensitive subject matching** field indicates whether the prefix and suffix filters are case-sensitive.
+
+    For more information about filtering events, see [blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events).
 
 > [!NOTE]
 > When the endpoint doesn't acknowledge receipt of an event, Azure Event Grid activates a retry mechanism. If this retry delivery fails, Event Grid can deliver the undelivered events to a storage account using a process of *dead-lettering*. For more information, see [Event Grid message delivery and retry](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration).

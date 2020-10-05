@@ -110,14 +110,14 @@
         href: ingest-data-event-grid-overview.md
       - name: Azure portal
         href: ingest-data-event-grid.md
-      - name: Azure portal - create resources manually
-        href: ingest-data-event-grid-manual.md  
       - name: C#
         href: data-connection-event-grid-csharp.md
       - name: Python
         href: data-connection-event-grid-python.md
       - name: Azure Resource Manager template
         href: data-connection-event-grid-resource-manager.md
+      - name: Azure portal - create resources manually
+        href: ingest-data-event-grid-manual.md          
     - name: IoT Hub
       items:
       - name: Create a connection to IoT Hub
