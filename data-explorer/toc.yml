@@ -340,6 +340,8 @@
       href: devops.md  
     - name: Sync Kusto
       href: ./kusto/tools/synckusto.md
+    - name: Power Apps
+      href: power-apps-connector.md
   - name: Troubleshoot
     items:
     - name: Creating a cluster

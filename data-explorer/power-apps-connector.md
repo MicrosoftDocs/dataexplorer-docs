@@ -10,17 +10,13 @@ ms.date: 10/05/2020
 ---
 # Azure Data Explorer connector to Power Apps (Preview)
 
-Power Apps is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps for your business needs. Use Power Apps to quickly build custom business apps that connect to your business data.
+Power Apps is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps for your business needs. Use Power Apps to quickly build custom business apps that connect to your business data. The Power Apps connector is particularly useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. In this article, you will create a Power Apps application based on Azure Data Explorer data, and see the steps of data parameterization, retrieval, and presentation.
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more.
 
-For this exercise, imagine a customer with the following characteristics:
-* Large and growing collection of streaming data in Azure Data Explorer
-* A desire to build a **low code**, **highly functional app** to make use of this data
-
 ## Objective
 
-The following example provides Step-by-Step Instructions for creating a Power Apps application that is based on Azure Data Explorer data, demonstrating data parameterization, retrieval, and presentation.
+The following example provides Step-by-Step Instructions for 
 
 ## Prerequisites
 
