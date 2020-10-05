@@ -110,6 +110,8 @@
         href: ingest-data-event-grid-overview.md
       - name: Azure portal
         href: ingest-data-event-grid.md
+      - name: Azure portal - create resources manually
+        href: ingest-data-event-grid-manual.md  
       - name: C#
         href: data-connection-event-grid-csharp.md
       - name: Python
