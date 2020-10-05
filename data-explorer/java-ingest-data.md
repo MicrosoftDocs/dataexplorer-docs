@@ -82,16 +82,16 @@ An ingestion is queued using a file from an existing Azure Blob Storage containe
 
 ```java
     ...
-    static final String blobStorePathFormat = "https://%s.blob.core.windows.net/%s/%s%s";
-    static final String blobStoreAccountName = "kustosamplefiles";
-    static final String blobStoreContainer = "samplefiles";
-    static final String blobStoreFileName = "StormEvents.csv";
-    static final String blobStoreToken = "??st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
+    static final String blobPathFormat = "https://%s.blob.core.windows.net/%s/%s%s";
+    static final String blobStorageAccountName = "kustosamplefiles";
+    static final String blobStorageContainer = "samplefiles";
+    static final String fileName = "StormEvents.csv";
+    static final String blobStorageToken = "??st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
     ....
 
     static void ingestFile(String database) throws InterruptedException {
-        String blobPath = String.format(blobStorePathFormat, blobStoreAccountName, blobStoreContainer,
-                blobStoreFileName, blobStoreToken);
+        String blobPath = String.format(blobPathFormat, blobStorageAccountName, blobStorageContainer,
+                fileName, blobStorageToken);
         BlobSourceInfo blobSourceInfo = new BlobSourceInfo(blobPath);
 
         IngestionProperties ingestionProperties = new IngestionProperties(database, tableName);
