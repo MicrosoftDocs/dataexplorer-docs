@@ -13,6 +13,7 @@ ms.date: 10/07/2019
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-grid.md)
+> * [Portal - manually create resources](ingest-data-event-grid-manual.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
