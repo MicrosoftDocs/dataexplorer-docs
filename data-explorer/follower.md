@@ -41,7 +41,7 @@ To attach a database, you must have user, group, service principal, or managed i
 * Install [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Install [Microsoft.Rest.ClientRuntime.Azure.Authentication for authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
 
-#### Code Example
+#### Example
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -75,20 +75,18 @@ AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new Atta
 var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseConfigurations.CreateOrUpdate(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationName, attachedDatabaseConfigurationProperties);
 ```
 
----
-
 # [Python](#tab/python)
 
 ### Attach a database using Python
 
-#### Needed Modules
+#### Needed modules
 
 ```
 pip install azure-common
 pip install azure-mgmt-kusto
 ```
 
-#### Code Example
+#### Example
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -127,20 +125,17 @@ attached_database_configuration_properties = AttachedDatabaseConfiguration(clust
 poller = kusto_management_client.attached_database_configurations.create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
 ```
 
----
-
 # [Powershell](#tab/azure-powershell)
 
 ### Attach a database using Powershell
 
-#### Needed Modules
+#### Needed modules
 
 ```
 Install : Az.Kusto
 ```
 
-
-#### Code Example
+#### Example
 
 ```Powershell
 $FollowerClustername = 'follower'
@@ -171,11 +166,9 @@ New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
 	-DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind `
 	-Location $Location `
 	-ErrorAction Stop 
-````
+```
 
----
-
-# [ARM template](#tab/arm)
+# [[Resource Manager Template]](#tab/azure-resource-manager)
 
 ### Attach a database using an Azure Resource Manager template
 
@@ -282,11 +275,11 @@ Alternatively:
 
 ## Detach the follower database  
 
-### Detach the attached follower database from the follower cluster 
+### Detach the attached follower database from the follower cluster using C#
 
 # [C#](#tab/c-sharp)
 
-The follower cluster can detach any attached follower database using C# as follows:
+The follower cluster can detach any attached follower database as follows:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -307,8 +300,6 @@ var attachedDatabaseConfigurationsName = "uniqueName";
 
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
-
----
 
 # [Python](#tab/python)
 
@@ -381,8 +372,6 @@ var followerDatabaseDefinition = new FollowerDatabaseDefinition()
 
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
-
----
 
 # [Python](#tab/python)
 
