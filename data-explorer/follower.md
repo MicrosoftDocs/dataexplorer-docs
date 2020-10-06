@@ -276,6 +276,9 @@ Alternatively:
 
 ## Detach the follower database  
 
+> [!NOTE]
+> To detach a database from the follower or leader side, you must have user, group, service principal, or managed identity with at least contributor role on the cluster from which you are detaching the database. In the example below, we use service principal.
+
 # [C#](#tab/csharp)
 
 ### Detach the attached follower database from the follower cluster using C#
@@ -300,6 +303,36 @@ var followerClusterName = "follower";
 var attachedDatabaseConfigurationsName = "uniqueName";
 
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
+```
+
+### Detach the attached follower database from the leader cluster using C#
+
+The leader cluster can detach any attached database as follows:
+
+```csharp
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
+var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+
+var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
+var resourceManagementClient = new KustoManagementClient(serviceCreds){
+    SubscriptionId = leaderSubscriptionId
+};
+
+var leaderResourceGroupName = "testrg";
+var followerResourceGroupName = "followerResouceGroup";
+var leaderClusterName = "leader";
+var followerClusterName = "follower";
+//The cluster and database that are created as part of the Prerequisites
+var followerDatabaseDefinition = new FollowerDatabaseDefinition()
+    {
+        AttachedDatabaseConfigurationName = "uniqueName",
+        ClusterResourceId = $"/subscriptions/{followerSubscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}"
+    };
+
+resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
 
 # [Python](#tab/python)
@@ -335,55 +368,7 @@ attached_database_configurationName = "uniqueName"
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
 ```
 
-# [Powershell](#tab/azure-powershell)
-
-\\Todo: add text
-
-# [Resource Manager Template](#tab/azure-resource-manager)
-
-\\Todo: add text
----
-
-> [!NOTE]
-> To detach a database from the follower side, you must have user, group, service principal, or managed identity with at least contributor role on the follower cluster. In the example above we use service principal.
-
-### Detach the attached follower database from the leader cluster 
-
-# [C#](#tab/csharp)
-
-#### Detach the attached follower database from the leader cluster using C#
-
-The leader cluster can detach any attached database as follows:
-
-```csharp
-var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client secret
-var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-
-var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
-var resourceManagementClient = new KustoManagementClient(serviceCreds){
-    SubscriptionId = leaderSubscriptionId
-};
-
-var leaderResourceGroupName = "testrg";
-var followerResourceGroupName = "followerResouceGroup";
-var leaderClusterName = "leader";
-var followerClusterName = "follower";
-//The cluster and database that are created as part of the Prerequisites
-var followerDatabaseDefinition = new FollowerDatabaseDefinition()
-    {
-        AttachedDatabaseConfigurationName = "uniqueName",
-        ClusterResourceId = $"/subscriptions/{followerSubscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}"
-    };
-
-resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
-```
-
-# [Python](#tab/python)
-
-#### Detach the attached follower database from the leader cluster using Python
+### Detach the attached follower database from the leader cluster using Python
 
 The leader cluster can detach any attached database as follows:
 
@@ -422,9 +407,6 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 ```
 
 ---
-
-> [!NOTE]
-> To detach a database from the leader side, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster. In the example above we use service principal.
 
 ## Manage principals, permissions, and caching policy
 
