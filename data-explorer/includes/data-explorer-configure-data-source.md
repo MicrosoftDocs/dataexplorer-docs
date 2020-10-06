@@ -88,11 +88,11 @@ Now that you have a service principal, you add it to the *viewers* role in the A
 
 1. Search for the service principal you created. Select the principal, then **Select**.
 
-    ![Manage permissions in the Azure portal](media/data-explorer-configure-data-source/new-principals.png)
+    :::image type="content" source="media/data-explorer-configure-data-source/new-principals.png" alt-text="Screenshot of the Azure portal New Principals pane. The Select button and two fields with indecipherable service principal properties are highlighted." border="false":::
 
 1. Select **Save**.
 
-    ![Manage permissions in the Azure portal](media/data-explorer-configure-data-source/save-permission.png)
+    :::image type="content" source="media/data-explorer-configure-data-source/save-permission.png" alt-text="Screenshot of the Add Database Permissions pane in the Azure portal. The Save button is highlighted." border="false":::
 
 #### Management command - Query
 
