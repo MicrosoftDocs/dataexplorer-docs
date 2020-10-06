@@ -32,6 +32,7 @@ Attaching a database to a different cluster using the follower capability is use
 There are various methods you can use to attach a database. In this article, we discuss attaching a database using C#, Python, Powershell, or an Azure Resource Manager template. 
 To attach a database, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster and the follower cluster. You can add or remove role assignments using [Azure Portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli) and [ARM template](/azure/role-based-access-control/role-assignments-template). You can learn more about [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) and the [different roles](/azure/role-based-access-control/rbac-and-directory-admin-roles). 
 
+
 # [C#](#tab/c-sharp)
 
 ### Attach a database using C#
@@ -168,7 +169,7 @@ New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
 	-ErrorAction Stop 
 ```
 
-# [[Resource Manager Template]](#tab/azure-resource-manager)
+# [Resource Manager Template](#tab/azure-resource-manager)
 
 ### Attach a database using an Azure Resource Manager template
 
@@ -275,9 +276,9 @@ Alternatively:
 
 ## Detach the follower database  
 
-### Detach the attached follower database from the follower cluster using C#
-
 # [C#](#tab/c-sharp)
+
+### Detach the attached follower database from the follower cluster using C#
 
 The follower cluster can detach any attached follower database as follows:
 
