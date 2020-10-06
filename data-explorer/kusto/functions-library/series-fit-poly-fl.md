@@ -10,10 +10,16 @@ ms.date: 09/08/2020
 ---
 # series_fit_poly_fl()
 
-The function `series_fit_poly_fl()` applies a polynomial regression on a series. It takes a table that contains multiple series (dynamic numerical array) and generates, for each series, the high-order polynomial that best fits it using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). This function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
+The function `series_fit_poly_fl()` applies a polynomial regression on a series. This function takes a table containing multiple series (dynamic numerical arrays) and generates the best fit high-order polynomial for each series using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). This function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
 
 > [!NOTE]
-> `series_fit_poly_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage). For linear regression of an evenly spaced series, as created by [make-series operator](../query/make-seriesoperator.md), use the native function [series_fit_line()](../query/series-fit-linefunction.md).
+> Use the native function [series_fit_poly()](../query/series-fit-poly-function.md). The function below is for reference only.
+
+
+> [!NOTE]
+> * `series_fit_poly_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).
+> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
+> * For linear regression of an evenly spaced series, as created by [make-series operator](../query/make-seriesoperator.md), use the native function [series_fit_line()](../query/series-fit-linefunction.md).
 
 ## Syntax
 
@@ -25,7 +31,7 @@ The function `series_fit_poly_fl()` applies a polynomial regression on a series.
 * *y_fit_series*: The name of the column to store the best fit series.
 * *fit_coeff*: The name of the column to store the best fit polynomial coefficients.
 * *degree*: The required order of the polynomial to fit. For example, 1 for linear regression, 2 for quadratic regression, and so on.
-* *x_series*: The name of the column containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables), that is, the x or time axis. This parameter is optional, and is needed only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). The default value is an empty string, as x is redundant for the regression of an evenly-spaced series.
+* *x_series*: The name of the column containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables), that is, the x or time axis. This parameter is optional, and is needed only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). The default value is an empty string, as x is redundant for the regression of an evenly spaced series.
 * *x_istime*: This boolean parameter is optional. This parameter is needed only if *x_series* is specified and it's a vector of datetime.
 
 ## Usage
@@ -75,7 +81,7 @@ let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff
      | evaluate python(typeof(*), code, kwargs)
 };
 //
-// Fit 5th order polynomial to a regular (evenly spaced) time series, created with make-series
+// Fit fifth order polynomial to a regular (evenly spaced) time series, created with make-series
 //
 let max_t = datetime(2016-09-03);
 demo_make_series1
@@ -137,7 +143,7 @@ series_fit_poly_fl(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:stri
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 //
-// Fit 5th order polynomial to a regular (evenly spaced) time series, created with make-series
+// Fit fifth order polynomial to a regular (evenly spaced) time series, created with make-series
 //
 let max_t = datetime(2016-09-03);
 demo_make_series1
@@ -149,7 +155,7 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-fit-poly-fl/usage-example.png" alt-text="Graph showing 5th order polynomial fit to a regular time series" border="false":::
+:::image type="content" source="images/series-fit-poly-fl/usage-example.png" alt-text="Graph showing fifth order polynomial fit to a regular time series" border="false":::
 
 ## Additional examples
 
@@ -159,9 +165,6 @@ The following examples assume the function is already installed:
     
     <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
-    //
-    //  Test irregular (unevenly spaced) time series
-    //
     let max_t = datetime(2016-09-03);
     demo_make_series1
     | where TimeStamp between ((max_t-2d)..max_t)
@@ -174,20 +177,16 @@ The following examples assume the function is already installed:
     | render timechart with(ycolumns=num, fnum)
     ```
     
-    :::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="Graph showing 8th order polynomial fit to an irregular time series" border="false":::
+    :::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series" border="false":::
 
-1. 5th order polynomial with noise on x & y axes
+1. Fifth order polynomial with noise on x & y axes
 
     <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
-    //
-    // 5th order polynomial with noise on x & y axes
-    //
     range x from 1 to 200 step 1
     | project x = rand()*5 - 2.3
     | extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
     | extend y = y + (rand() - 0.5)*0.5*y
-    | order by x asc 
     | summarize x=make_list(x), y=make_list(y)
     | extend y_fit = dynamic(null), coeff=dynamic(null)
     | invoke series_fit_poly_fl('y', 'y_fit', 'coeff', 5, 'x')
@@ -195,6 +194,6 @@ The following examples assume the function is already installed:
     | render linechart
     ```
         
-    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="Graph of fit of 5th order polynomial with noise on x & y axes":::
+    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="Graph of fit of fifth order polynomial with noise on x & y axes":::
        
-    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="Coefficients of fit of 5th order polynomial with noise" border="false":::
+    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="Coefficients of fit of fifth order polynomial with noise" border="false":::
