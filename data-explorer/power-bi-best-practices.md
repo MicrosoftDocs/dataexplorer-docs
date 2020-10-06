@@ -89,8 +89,8 @@ You can use any of the following options in your M query:
 | AdditionalSetStatements | `[AdditionalSetStatements="set query_datascope=hotcache"]` | Adds the provided set statements to your query. These statements are used to set query options for the duration of the query. Query options control how a query executes and returns results.
 | CaseInsensitive | `[CaseInsensitive=true]` | Makes the connector generate queries that are case insensitive - queries will use the `=~` operator instead of the `==` operator when comparing values.
 
-    > [!NOTE]
-    > You can combine multiple options together to reach the desired behavior: `[NoTruncate=true, CaseInsensitive=true]`
+> [!NOTE]
+> You can combine multiple options together to reach the desired behavior: `[NoTruncate=true, CaseInsensitive=true]`
 
 ### Reaching Kusto query limits
 
