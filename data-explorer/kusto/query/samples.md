@@ -101,7 +101,7 @@ The join will match every start time with all the stop times from the same clien
 `arg_min` picks out the row with the smallest duration in each group, and the `*` parameter passes through all the other columns. 
 The argument prefixes "min_" to each column name. 
 
-:::image type="content" source="images/samples/040.png" alt-text="A table listing the results, with columns for the start time, client IP, duration, city, and earliest stop for each client-start time combination."::: 
+:::image type="content" source="images/samples/040.png" alt-text="A table listing the results, with columns for the start time, client I P, duration, city, and earliest stop for each client-start time combination."::: 
 
 Add code to count the durations in conveniently sized bins. 
 In this example, because of a preference for a bar chart, divide by `1s` to convert the timespans to numbers. 
