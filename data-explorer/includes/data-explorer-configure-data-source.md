@@ -98,7 +98,7 @@ Now that you have a service principal, you add it to the *viewers* role in the A
 
 1. In the Azure portal, go to your Azure Data Explorer cluster, and select **Query**.
 
-    ![Query](media/data-explorer-configure-data-source/query.png)
+    :::image type="content" source="media/data-explorer-configure-data-source/query.png" alt-text="Screenshot of an Azure Data Explorer cluster in the Azure portal. The Query item is highlighted." border="false":::
 
 1. Run the following command in the query window. Use the application ID and tenant ID from the Azure portal or CLI.
 
