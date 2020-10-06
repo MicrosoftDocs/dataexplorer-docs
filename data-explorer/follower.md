@@ -335,6 +335,13 @@ attached_database_configurationName = "uniqueName"
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
 ```
 
+# [Powershell](#tab/azure-powershell)
+
+\\Todo: add text
+
+# [Resource Manager Template](#tab/azure-resource-manager)
+
+\\Todo: add text
 ---
 
 > [!NOTE]
