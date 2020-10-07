@@ -74,6 +74,8 @@ A cluster is considered unused if it has a small amount of data, queries, and in
 The recommendation **right-size Azure Data Explorer clusters for optimal cost** is given to a cluster whose size or VM SKU aren't cost-optimized. This recommendation is based on parameters such as its data capacity, CPU and ingestion utilization during the past week. You can reduce costs by resizing to the recommended cluster configuration using [scale-down](manage-cluster-vertical-scaling.md) and [scale-in](manage-cluster-horizontal-scaling.md).
 
 It's recommended to use [optimized autoscale configuration](manage-cluster-horizontal-scaling.md#optimized-autoscale). If you're using optimized autoscale and you see the size recommendation on your cluster, either your current VM SKU or the optimized autoscale minimum and maximum instance count boundaries aren't optimized. The recommended instance count should be included in your defined boundaries.
+[Learn more about VM SKUs](manage-cluster-choose-sku.md) and [pricing](https://azure.microsoft.com/pricing/details/data-explorer/)
+
 
 > [!TIP]
 > The optimized autoscale configuration doesn’t change the instance count immediately. For instant changes, use [manual scale](manage-cluster-horizontal-scaling.md#manual-scale) to reset the recommended instance count, and then enable the optimized autoscale for future optimization.
@@ -82,6 +84,7 @@ It's recommended to use [optimized autoscale configuration](manage-cluster-horiz
 
 The **reduce Azure Data Explorer table cache period for cluster cost optimization** recommendation is given for a cluster that can reduce its table's cache policy. This recommendation is based on the queries look-back period during the past 30 days. You see the top 10 tables with potential cache savings. 
 This recommendation is only offered if the cluster can scale-in or scale-down following the cache policy change. Advisor checks if the cluster is "bounded by data" meaning the cluster has low CPU and low ingestion utilization, but because of high data capacity the cluster couldn't scale-in or scale-down.
+[Learn more about cache policy](kusto/query/cachepolicy.md)
 
 ### Performance recommendations
 
@@ -95,6 +98,7 @@ Performance recommendations include:
 The recommendation **right-size Azure Data Explorer clusters for optimal performance** is given to a cluster whose size or VM SKU aren't performance-optimized. This recommendation is based on parameters such as its data capacity, and CPU and ingestion utilization during the past week. You can improve the performance by correctly sizing to the recommended cluster configuration using [scale-up](manage-cluster-vertical-scaling.md) and [scale-out](manage-cluster-horizontal-scaling.md).
 
 It's recommended to use [optimized autoscale configuration](manage-cluster-horizontal-scaling.md#optimized-autoscale). If you use optimized autoscale and you see the size recommendation on your cluster, either your current VM SKU or the optimized autoscale minimum and maximum instance count boundaries aren't optimized. The recommended instance count should be included in your defined boundaries.
+[Learn more about VM SKUs](manage-cluster-choose-sku.md)
 
 > [!TIP]
 > The optimized autoscale configuration doesn’t change the instance count immediately. For instant changes, use [manual scale](manage-cluster-horizontal-scaling.md#manual-scale) to reset the recommended instance count, and then enable the optimized autoscale for future optimization.
@@ -102,6 +106,7 @@ It's recommended to use [optimized autoscale configuration](manage-cluster-horiz
 #### Update cache policy for Azure Data Explorer tables
 
 The **review Azure Data Explorer table cache-period (policy) for better performance** recommendation is given for a cluster that requires a different look-back period (time filter) or a greater cache policy. This recommendation is based on the queries look-back period during the past 30 days. Most of the queries that ran in the past 30 days accessed data that wasn't in the cache, which may increase your query run-time.  You see the top 10 tables that accessed out-of-cache data ordered by query percentage.
+[Learn more about cache policy](kusto/query/cachepolicy.md)
 
 ## Next steps
 
