@@ -255,7 +255,9 @@ You can deploy the Azure Resource Manager template by [using the Azure portal](h
 |Default Principals Modification Kind    |   The default principal modification kind. Can be `Union`, `Replace` or `None`. For more information about default principal modification kind, see [principal modification kind control command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind).      |
 |Location   |   The location of all the resources. The leader and the follower must be in the same location.       |
 
+
 ---
+
 
 ## Verify that the database was successfully attached
 
@@ -277,6 +279,7 @@ Alternatively:
 
 > [!NOTE]
 > To detach a database from the follower or leader side, you must have user, group, service principal, or managed identity with at least contributor role on the cluster from which you are detaching the database. In the example below, we use service principal.
+
 
 # [C#](#tab/c-sharp)
 
