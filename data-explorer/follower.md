@@ -278,7 +278,7 @@ Alternatively:
 > [!NOTE]
 > To detach a database from the follower or leader side, you must have user, group, service principal, or managed identity with at least contributor role on the cluster from which you are detaching the database. In the example below, we use service principal.
 
-# [C#](#tab/csharp/detach)
+# [C#](#tab/csharp)
 
 ### Detach the attached follower database from the follower cluster using C#
 
@@ -334,7 +334,7 @@ var followerDatabaseDefinition = new FollowerDatabaseDefinition()
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
 
-# [Python](#tab/python/detach)
+# [Python](#tab/python)
 
 ### Detach the attached follower database from the follower cluster using Python
 
