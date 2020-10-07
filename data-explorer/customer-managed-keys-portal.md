@@ -1,6 +1,6 @@
 ---
 title: Configure customer-managed-keys using the Azure portal
-description: This article describes how to configure customer-managed keys encryption on your data in Azure Data Explorer.
+description: Learn how to configure customer-managed keys to encrypt Azure Data Explorer data at rest. See how to use the Azure portal for this purpose.
 author: orspod
 ms.author: orspodek
 ms.reviewer: itsagui

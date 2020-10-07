@@ -1,6 +1,6 @@
 ---
 title: Sandbox policy - Azure Data Explorer | Microsoft Docs
-description: This article describes Sandbox policy in Azure Data Explorer.
+description: Learn about sandbox policy commands in Azure Data Explorer. See how to view, adjust, and drop sandbox policies.
 services: data-explorer
 author: orspod
 ms.author: orspodek
