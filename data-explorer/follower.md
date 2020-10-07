@@ -33,7 +33,7 @@ There are various methods you can use to attach a database. In this article, we 
 To attach a database, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster and the follower cluster. You can add or remove role assignments using [Azure Portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli) and [ARM template](/azure/role-based-access-control/role-assignments-template). You can learn more about [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) and the [different roles](/azure/role-based-access-control/rbac-and-directory-admin-roles). 
 
 
-# [C#](#tab/c-sharp)
+# [C#](#tab/csharp)
 
 ### Attach a database using C#
 
@@ -247,6 +247,7 @@ You can deploy the Azure Resource Manager template by [using the Azure portal](h
    ![template deployment](media/follower/template-deployment.png)
 
 |**Setting**  |**Description**  |
+|---------|---------|
 |Follower Cluster Name     |  The name of the follower cluster; where the template will be deployed.  |
 |Attached Database Configurations Name    |    The name of the attached database configurations object. The name can be any string that is unique at the cluster level.     |
 |Database Name     |      The name of the database to be followed. If you want to follow all the leader's databases, use '*'.   |
@@ -277,8 +278,7 @@ Alternatively:
 > [!NOTE]
 > To detach a database from the follower or leader side, you must have user, group, service principal, or managed identity with at least contributor role on the cluster from which you are detaching the database. In the example below, we use service principal.
 
-
-# [C#](#tab/c-sharp)
+# [C#](#tab/csharp)
 
 ### Detach the attached follower database from the follower cluster using C#
 
