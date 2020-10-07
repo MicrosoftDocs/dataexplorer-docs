@@ -58,7 +58,7 @@ Azure Data Explorer handles large amounts of structured, semi-structured (JSON-l
 
 Azure Data Explorer capabilities are extended by other services built on its powerful query language, including [Azure Monitor logs](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/), and [Windows Defender Advanced Threat Protection](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection/).
 
-## Feedback
+## How to provide feedback
 
 We would be thrilled to hear your feedback about Azure Data Explorer and its query language at:
 
