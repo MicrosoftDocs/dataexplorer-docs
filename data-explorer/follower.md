@@ -282,6 +282,8 @@ Alternatively:
 
 ### Detach the attached follower database from the follower cluster using C#
 
+#### Example
+
 The follower cluster can detach any attached follower database as follows:
 
 ```csharp
