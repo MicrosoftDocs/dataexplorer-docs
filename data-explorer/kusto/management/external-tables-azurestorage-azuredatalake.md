@@ -276,7 +276,7 @@ where *MaxResults* is an optional parameter, which can be set to limit the numbe
 |------------------|--------|-----------------------------------|
 | Uri              | string | URI of external storage data file |
 | Size             | long   | File length in bytes              |
-| Partition        | dynamic | Dynamic object describing file partitions (for partitioned external table) |
+| Partition        | dynamic | Dynamic object describing file partitions for partitioned external table |
 
 > [!TIP]
 > Iterating on all files referenced by an external table can be quite costly, depending on the number of files. Make sure to use `limit` parameter if you just want to see some URI examples.
