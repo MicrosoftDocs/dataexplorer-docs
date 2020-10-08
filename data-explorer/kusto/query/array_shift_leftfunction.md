@@ -11,7 +11,7 @@ ms.date: 08/11/2019
 ---
 # array_shift_left()
 
-`array_shift_left()` shifts the values inside an array to the left.
+Shifts the values inside a `dynamic` array to the left.
 
 ## Syntax
 
@@ -27,7 +27,7 @@ ms.date: 08/11/2019
 
 Dynamic array containing the same number of elements as in the original array. Each element has been shifted according to *shift_count*. New elements that are added in place of removed elements will have a value of *fill_value*.
 
-**See also**
+## See also
 
 * For shifting array right, see [array_shift_right()](array_shift_rightfunction.md).
 * For rotating array right, see [array_rotate_right()](array_rotate_rightfunction.md).

@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2018
 
 #Customer intent: I want to learn how to deal with duplicate data.

@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
-ms.topic: reference
+ms.topic: how-to
 ms.date: 06/09/2020
 ---
 
@@ -42,12 +42,12 @@ To create a parameter, select the **New parameter** button at the top of the rig
 |Field  |Description |
 |---------|---------|
 |**Parameter display name**    |   The name of the parameter shown on the dashboard or the edit card.      |
-|**Parameter type**    |One of the following:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li></ul>    |
+|**Parameter type**    |One of the following parameters:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li><li>**Free text**: Doesn't have any values populated in the filter. The user can type a value or copy/paste a value to the text field. The filter keeps the recent values used.</li></ul>    |
 |**Variable name**     |   The name of the parameter to be used in the query.      |
 |**Data type**    |    The data type of the parameter values.     |
 |**Pin as dashboard filter**   |   Pin the parameter-based filter to the dashboard or unpin from the dashboard.       |
 |**Source**     |    The source of the parameter values: <ul><li>**Fixed values**: Manually introduced static filter values. </li><li>**Query**: Dynamically introduced values using a KQL query.  </li></ul>    |
-|**Add a “Select all” value**    |   Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values. This value should be built into the query to provide the functionality. See [Use the multiple selection query-based parameter](#use-the-multiple-selection-query-based-parameter) for more examples on building such queries.     |
+|**Add a “Select all” value**    |   Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values. This value should be built into the query to provide the functionality. See [Use the multiple-selection query-based parameter](#use-the-multiple-selection-query-based-parameter) for more examples on building such queries.     |
 
 ## Manage parameters in parameter card
 
@@ -86,7 +86,7 @@ EventsAll
 | top 5 by TotalEvents
 ```
 
-Once saved, the time range filter shows up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard by selecting from the drop down: **Time range** (last x minutes/hours/days) or a **Custom time range**.
+Once saved, the time range filter shows up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard by selecting from the drop-down: **Time range** (last x minutes/hours/days) or a **Custom time range**.
 
 :::image type="content" source="media/dashboard-parameters/time-range.png" alt-text="filter using custom time range":::
 
@@ -145,9 +145,9 @@ The parameters can be seen in the **Parameters** side pane, but aren't currently
 
     :::image type="content" source="media/dashboard-parameters/top-five-repos.png" alt-text="top five repos result":::
 
-### Use the multiple selection fixed value parameters
+### Use the multiple-selection fixed-value parameters
 
-Fixed value parameters are based on predefined values specified by the user. The following example shows you how to create and use a multiple selection fixed value parameter.
+Fixed value parameters are based on predefined values specified by the user. The following example shows you how to create and use a multiple-selection fixed-value parameter.
 
 #### Create the parameters
 
@@ -215,7 +215,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 #### Use a parameter in the query
 
-1. The following is a sample query using the new Event parameter by using the `_ event` variable:
+1. The following sample query with the new Event parameter uses the `_ event` variable:
 
     ``` kusto
     EventsAll
@@ -227,9 +227,9 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 1. Select different values to update the visuals.
 
-### Use the multiple selection query-based parameter
+### Use the multiple-selection query-based parameter
 
-Query-based parameter values are derived at dashboard load time by executing the user specified query. The following example shows how to can create a multiple selection query-based parameter:
+Query-based parameter values are derived at dashboard load time by executing the user specified query. The following example shows how to can create a multiple-selection query-based parameter:
 
 #### Create a parameter
 
@@ -259,3 +259,42 @@ Query-based parameter values are derived at dashboard load time by executing the
     The new parameter shows up in the parameter list at the top of the dashboard. 
 
 1. Select one or more different values to update the visuals.
+
+### Use the free text parameter
+
+Free text parameters don't contain any values. They allow you to introduce your own value.
+
+#### Create the parameter
+
+1. Select **Parameters** to open the **Parameters pane** and select **New parameter**.
+1. Fill in the details as follows:
+    * **Parameter display name**: Company
+    * **Parameter type**: Free text
+    * **Variable name**: _company
+    * **Data type**: String
+    * **Pin as dashboard filter**: checked
+    * **Default value**: No default value
+
+#### Use parameters in the query
+
+1. Run a sample query using the new *Company* parameter by using the `_company` variable name:
+
+    ```kusto
+    EventsAll
+    | where CreatedAt > ago(7d)
+    | where Type == "WatchEvent"
+    | where Repo.name has _company
+    | summarize WatchEvents=count() by RepoName = tolower(tostring(Repo.name))
+    | top 5 by WatchEvents
+    ```
+
+The new parameter is now visible in the parameter list at the top of the dashboard.
+
+## Use filter search for single and multiple selection filters
+
+In single and multiple selection filters, type the value that you want. The filter search will present only the recently retrieved values that match the search term.
+
+## Next Steps
+
+* [Customize dashboard visuals](dashboard-customize-visuals.md)
+* [Query data in Azure Data Explorer](web-query-data.md) 

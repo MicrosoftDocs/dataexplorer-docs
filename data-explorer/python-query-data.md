@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/05/2019
 
 # Customer intent: As a Python developer, I want to query data so I can include it in my apps.
@@ -38,7 +38,7 @@ pip install azure-kusto-data
 Import classes from the library, as well as *pandas*, a data analysis library.
 
 ```python
-from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
+from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
 from azure.kusto.data.exceptions import KustoServiceError
 from azure.kusto.data.helpers import dataframe_from_result_table
 import pandas as pd

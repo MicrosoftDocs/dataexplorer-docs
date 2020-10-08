@@ -5,13 +5,13 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/26/2020
 ---
 
 # Visualize data with Azure Data Explorer dashboards
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data explorer provides a web application that enables you to run queries and build dashboards. Dashboards are available in the stand-alone web application, the [Web UI](web-query-data.md). Azure Data Explorer is also integrated with other dashboard services like [Power BI](power-bi-connector.md) and [Grafana](grafana.md).
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides a web application that enables you to run queries and build dashboards. Dashboards are available in the stand-alone web application, the [Web UI](web-query-data.md). Azure Data Explorer is also integrated with other dashboard services like [Power BI](power-bi-connector.md) and [Grafana](grafana.md).
 
 Azure Data Explorer dashboards provide three main advantages:
 
@@ -22,6 +22,9 @@ Azure Data Explorer dashboards provide three main advantages:
 The following image depicts an Azure Data Explorer dashboard.
 
 :::image type="content" source="media/adx-dashboards/dash.png" alt-text="Final dashboard":::
+
+> [!IMPORTANT]
+> Your data is secure. Dashboards and dashboard-related metadata about users is encrypted at rest.
 
 ## Create a dashboard
 
@@ -95,7 +98,64 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
     :::image type="content" source="media/adx-dashboards/save-dashboard.png" alt-text="save dashboard":::
 
+## Share dashboards
+
+Use the share menu to [grant permissions](#grant-permissions) to the dashboard, [change a user's permission level](#change-a-user-permission-level), and [share the dashboard link](#share-the-dashboard-link).
+
+> [!IMPORTANT]
+> To access the dashboard, a dashboard viewer needs the following:
+> * Dashboard link for access
+> * Dashboard permissions
+> * Access to the underlying database in the Azure Data Explorer cluster  
+
+1. Select the **Share** menu item in the top bar of the dashboard.
+1. Select **Manage permissions** from the drop-down. 
+
+    :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Share dashboard drop-down":::
+
+### Grant permissions
+
+To grant permissions to a user in the **Dashboard permissions** pane:
+1. Write the user's name or email in **Add new members** box.
+1. Select the **Permission** level as **Can view** or **Can edit** and then click **Add**.
+
+:::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Manage dashboard permissions":::
+
+### Change a user permission level
+
+To change a user permission level in the **Dashboard permissions** pane:
+1. Use the search box or scroll the user list to find the user.
+1. Change the **Permission** level as needed.
+
+### Share the dashboard link
+
+To share the dashboard link:
+* Select **Share** drop-down and then select **Copy link**
+Or
+* In the **Dashboard permissions** window, select **Copy link**. 
+
+## Enable auto refresh 
+
+1. Select **Edit** in dashboard menu to switch to edit mode.
+1. Select **Auto refresh**. 
+ 
+    :::image type="content" source="media/adx-dashboards/auto-refresh.png" alt-text="Select auto refresh":::
+
+1. Toggle the option so auto refresh is **Enabled**. 
+1. Select values for **Minimum time interval** and **Default refresh rate**. 
+
+    :::image type="content" source="media/adx-dashboards/auto-refresh-toggle.png" alt-text="Enable auto refresh":::
+
+1. Select **Apply** and **Save** the dashboard.
+
+> [!NOTE]
+> * Select the smallest minimum time interval to reduce unnecessary load on the cluster. 
+> * A dashboard viewer: 
+>    * Can change the minimum time intervals for personal use only. 
+>    * Can't select a value which is smaller than the **Minimum time interval** specified by the editor.
+
 ## Next Steps
 
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
+* [Customize dashboard visuals](dashboard-customize-visuals.md)
 * [Query data in Azure Data Explorer](web-query-data.md)

@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2019
 
 #Customer intent: I want to use Azure DevOps to create a release pipeline and deploy

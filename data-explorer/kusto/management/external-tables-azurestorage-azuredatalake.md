@@ -14,6 +14,8 @@ ms.date: 03/24/2020
 
 The following command describes how to create an external table located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2. 
 
+For an introduction to the external Azure Storage tables feature, see [Query data in Azure Data Lake using Azure Data Explorer](../../data-lake-query-data.md).
+
 ## .create or .alter external table
 
 **Syntax**
@@ -76,6 +78,7 @@ Partitions list is any combination of partition columns, specified using one of 
   *PartitionName* `:` `datetime` `=` (`startofyear` \| `startofmonth` \| `startofweek` \| `startofday`) `(` *ColumnName* `)`  
   *PartitionName* `:` `datetime` `=` `bin` `(` *ColumnName* `,` *TimeSpan* `)`
 
+To check partitioning definition correctness, use the property `sampleUris` when creating an external table.
 
 <a name="path-format"></a>
 *PathFormat*
@@ -107,6 +110,8 @@ By default, datetime values are rendered using the following formats:
 | `bin(`*Column*`, 1m)` | `yyyy/MM/dd/HH/mm` |
 
 If *PathFormat* is omitted from the external table definition, it's assumed that all partitions, in exactly the same order as they're defined, are separated using `/` separator. Partitions are rendered using their default string presentation.
+
+To check path format definition correctness, use the property `sampleUris` when creating an external table.
 
 <a name="format"></a>
 *Format*
@@ -234,9 +239,6 @@ dataformat=parquet
 )
 ```
 
-> [!NOTE]
-> Currently, virtual columns aren't supported for the following data formats: `CSV`, `TSV`, `TSVE`, `SCsv`, `SOHsv`, `PSV`, `RAW` and `TXT`.
-
 <a name="file-filtering"></a>
 **File filtering logic**
 
@@ -253,7 +255,7 @@ When querying an external table, the query engine improves performance by filter
 Once all the conditions are met, the file is fetched and processed by the query engine.
 
 > [!NOTE]
-> Initial URI pattern is built using query predicate values. This works best for a limited set of string values as well as for a closed time ranges. 
+> Initial URI pattern is built using query predicate values. This works best for a limited set of string values as well as for a closed time ranges.
 
 ## .show external table artifacts
 
@@ -273,6 +275,8 @@ where *MaxResults* is an optional parameter, which can be set to limit the numbe
 | Output parameter | Type   | Description                       |
 |------------------|--------|-----------------------------------|
 | Uri              | string | URI of external storage data file |
+| Size             | long   | File length in bytes              |
+| Partition        | dynamic | Dynamic object describing file partitions for partitioned external table |
 
 > [!TIP]
 > Iterating on all files referenced by an external table can be quite costly, depending on the number of files. Make sure to use `limit` parameter if you just want to see some URI examples.
@@ -285,9 +289,19 @@ where *MaxResults* is an optional parameter, which can be set to limit the numbe
 
 **Output:**
 
-| Uri                                                                     |
-|-------------------------------------------------------------------------|
-| `https://storageaccount.blob.core.windows.net/container1/folder/file.csv` |
+| Uri                                                                     | Size | Partition |
+|-------------------------------------------------------------------------| ---- | --------- |
+| `https://storageaccount.blob.core.windows.net/container1/folder/file.csv` | 10743 | `{}`   |
+
+
+For partitioned table, `Partition` column will contain extracted partition values:
+
+**Output:**
+
+| Uri                                                                     | Size | Partition |
+|-------------------------------------------------------------------------| ---- | --------- |
+| `https://storageaccount.blob.core.windows.net/container1/customer=john.doe/dt=20200101/file.csv` | 10743 | `{"Customer": "john.doe", "Date": "2020-01-01T00:00:00.0000000Z"}` |
+
 
 ## .create external table mapping
 

@@ -51,6 +51,7 @@ Syntax of security roles management commands:
     |---------------------|-----------|
     |`database`|The specified database|
     |`table`|The specified table|
+    |`materialized-view`| The specified [materialized view](materialized-views/materialized-view-overview.md)| 
 
 * *SecurableObjectName* is the name of the object.
 
@@ -85,7 +86,7 @@ Here are potential results from this command:
 
 |Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN 
 |---|---|---|---|---
-|Database Apsty Admin |AAD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
+|Database Apsty Admin |Azure AD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
 
 
 
@@ -157,6 +158,21 @@ Where:
 ```kusto
 .add table Test admins ('aaduser=imike@fabrikam.com ')
 ```
+
+## Managing materialized view security roles
+
+`.show` `materialized-view` *MaterializedViewName* `principals`
+
+`.set` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
+
+`.add` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
+
+`.drop` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
+
+Where:
+
+* *MaterializedViewName* is the name of the materialized view whose security role is being modified
+* *Principal* is one or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md)
 
 ## Managing function security roles
 

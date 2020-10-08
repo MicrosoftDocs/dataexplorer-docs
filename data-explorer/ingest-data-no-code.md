@@ -570,11 +570,9 @@ DiagnosticMetrics
 
 Query results:
 
-|   |   |
-| --- | --- |
-|   |  avg_Average |
-|   | 00:06.156 |
-| | |
+| avg_Average |
+| --- |
+| 00:06.156 |
 
 # [Diagnostic logs](#tab/diagnostic-logs)
 ### Query the diagnostic logs table
@@ -590,11 +588,9 @@ DiagnosticLogs
 
 Query results:
 
-|   |   |
-| --- | --- |
-|   |  count_ | any_Database | any_Table | any_IngestionSourcePath
-|   | 00:06.156 | TestDatabase | DiagnosticRawRecords | `https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip`
-| | |
+| count_ | any_Database | any_Table | any_IngestionSourcePath |
+| --- | --- | --- | --- |
+| 00:06.156 | TestDatabase | DiagnosticRawRecords | `https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip` |
 
 # [Activity logs](#tab/activity-logs)
 ### Query the activity logs table
@@ -610,11 +606,9 @@ ActivityLogs
 
 Query results:
 
-|   |   |
-| --- | --- |
-|   |  avg(DurationMs) |
-|   | 768.333 |
-| | |
+| avg(DurationMs) |
+| --- |
+| 768.333 |
 
 ---
 

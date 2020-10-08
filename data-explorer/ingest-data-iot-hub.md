@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/08/2020
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an IoT Hub, so I can analyze streaming data.
@@ -22,6 +22,8 @@ ms.date: 01/08/2020
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
 
 This article shows you how to ingest data into Azure Data Explorer from IoT Hub, a big data streaming platform and IoT ingestion service.
+
+For general information about ingesting into Azure Data Explorer from IoT Hub, see [Connect to IoT Hub](ingest-data-iot-hub-overview.md).
 
 ## Prerequisites
 
@@ -70,40 +72,57 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     
     ![Select test database](media/ingest-data-iot-hub/select-database.png)
 
-1. Select **Data ingestion** and **Add data connection**. Then fill out the form with the following information. Select **Create** when you're finished.
+1. Select **Data ingestion** and **Add data connection**.
 
-    ![IoT Hub connection](media/ingest-data-iot-hub/iot-hub-connection.png)
+    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-connection.png" alt-text="Create data connection to IoT Hub- Azure Data Explorer":::
 
-    **Data Source**:
+### Create a data connection
+
+1. Fill out the form with the following information. 
+    
+    :::image type="content" source="media/ingest-data-iot-hub/data-connection-pane.png" alt-text="Data connection pane in IoT Hub - Azure Data Explorer":::
 
     **Setting** | **Field description**
     |---|---|
     | Data connection name | The name of the connection you want to create in Azure Data Explorer
+    | Subscription |  The subscription ID where the Event Hub resource is located.  |
     | IoT Hub | IoT Hub name |
     | Shared access policy | The name of the shared access policy. Must have read permissions |
     | Consumer group |  The consumer group defined in the IoT Hub built-in endpoint |
     | Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. | | | 
 
-    > [!NOTE]
-    > In case of a [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover), you must recreate the data connection.
+#### Target table
 
-    **Target table**:
+There are two options for routing the ingested data: *static* and *dynamic*. 
+For this article, you use static routing, where you specify the table name, data format, and mapping. If the Event Hub message includes data routing information, this routing information will override the default settings.
 
-    There are two options for routing the ingested data: *static* and *dynamic*. 
-    For this article, you use static routing, where you specify the table name, data format, and mapping. Therefore, leave **My data includes routing info** unselected.
+1. Fill out the following routing settings:
+    
+    :::image type="content" source="media/ingest-data-iot-hub/default-routing-settings.png" alt-text="Default routing properties - IoT Hub - Azure Data Explorer":::
 
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
-    | Table | *TestTable* | The table you created in **testdb**. |
+    | Table name | *TestTable* | The table you created in **testdb**. |
     | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, and W3CLOG.|
-    | Column mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **testdb**, which maps incoming JSON data to the column names and data types of **testdb**. Required for JSON, MULTILINE JSON, and AVRO, and optional for other formats.|
+    | Mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **testdb**, which maps incoming data to the column names and data types of **testdb**. Required for JSON, MULTILINE JSON, and AVRO, and optional for other formats.|
     | | |
 
+    > [!WARNING]
+    > In case of a [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover), you must recreate the data connection.
+    
     > [!NOTE]
-    > * Select **My data includes routing info** to use dynamic routing, where your data includes the necessary routing information as seen in the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) comments. If both static and dynamic properties are set, the dynamic properties override the static ones. 
+    > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
 
-[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
+1. Select **Create**.
+
+### Event system properties mapping
+
+> [!Note]
+> * System properties are supported for single-record events.
+> * For `csv` mapping, properties are added at the beginning of the record. For `json` mapping, properties are added according to the name that appears in the drop-down list.
+
+If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-iot-hub-overview.md#system-properties) in the table schema and mapping.
 
 ## Generate sample data for testing
 
@@ -174,7 +193,7 @@ If you don't plan to use your IoT Hub again, clean up your resource group to avo
 
 1. Under **test-resource-group**, select **Delete resource group**.
 
-2. In the new window, type the name of the resource group to delete it, and then select **Delete**.
+1. In the new window, type the name of the resource group to delete it, and then select **Delete**.
 
 ## Next steps
 

@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
 ---
 
@@ -94,8 +94,8 @@ If the result contains `ProvisioningState` with the `Succeeded` value, then the 
     await kustoManagementClient.Databases.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, database);
     ```
 
-        [!NOTE]
-        If you are using C# version 2.0.0 or below, use Database instead of ReadWriteDatabase.
+    > [!NOTE]
+    > If you are using C# version 2.0.0 or below, use Database instead of ReadWriteDatabase.
 
    |**Setting** | **Suggested value** | **Field description**|
    |---|---|---|

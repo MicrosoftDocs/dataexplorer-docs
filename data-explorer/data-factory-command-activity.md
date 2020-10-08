@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/15/2019
 
 #Customer intent: I want to use Azure Data Explorer control commands in Azure Data Factory.

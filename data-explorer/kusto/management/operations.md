@@ -17,7 +17,7 @@ ms.date: 02/13/2020
 
 **Syntax**
 
-|||
+|Syntax option|Description|
 |---|---| 
 |`.show` `operations`              |Returns all operations that the cluster is processing or operations the cluster has processed
 |`.show` `operations` *OperationId*|Returns operation status for a specific ID 

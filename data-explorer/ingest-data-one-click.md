@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: overview
+ms.topic: how-to
 ms.date: 03/29/2020
 ---
 
@@ -31,7 +31,7 @@ One-click ingestion is particularly useful when ingesting data for the first tim
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 * Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
-## Ingest new data
+## Access the one-click wizard
 
 The one-click ingestion wizard guides you through the one-click ingestion process.
 
@@ -43,7 +43,9 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
     :::image type="content" source="media/ingest-data-one-click/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
 
-<!-- TODO either change the local file tutorial to blob storage or create another one to show users how to do this-->
+* To access the wizard from the Azure portal, select **Query** from the left menu, right click on the **database** or **table**, and select **Ingest new data (preview)**.
+
+    :::image type="content" source="media/ingest-data-one-click/access-from-portal.png" alt-text="Access the one click ingestion wizard from Azure portal":::
 
 ## One-click ingestion wizard
 
@@ -107,7 +109,7 @@ Once you have completed schema mapping and column manipulations, the ingestion w
  
 ### Initial data exploration
    
-After ingestion, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#quick-queries-and-tools)** for initial exploration of your data.
+After ingestion, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#explore-quick-queries-and-tools)** for initial exploration of your data.
 
 ## Next steps
 

@@ -1,4 +1,4 @@
-- name: Azure Data Explorer Documentation
+- name: Azure Data Explorer documentation
   href: index.yml
 - name: Overview
   items:
@@ -72,6 +72,8 @@
       href: create-cluster-database-python.md  
     - name: Azure Resource Manager template
       href: create-cluster-database-resource-manager.md
+  - name: Create a table
+    href: one-click-table.md
   - name: Ingest data
     items: 
     - name: One-click ingestion
@@ -92,7 +94,7 @@
       href: lightingest.md    
     - name: Event Hub
       items:
-      - name: Connect to Event Hub
+      - name: Create a connection to Event Hub
         href: ingest-data-event-hub-overview.md
       - name: Azure portal
         href: ingest-data-event-hub.md
@@ -104,7 +106,7 @@
         href: data-connection-event-hub-resource-manager.md
     - name: Event Grid
       items:
-      - name: Connect to Event Grid
+      - name: Create a connection to Event Grid
         href: ingest-data-event-grid-overview.md
       - name: Azure portal
         href: ingest-data-event-grid.md
@@ -116,7 +118,7 @@
         href: data-connection-event-grid-resource-manager.md
     - name: IoT Hub
       items:
-      - name: Connect to IoT Hub
+      - name: Create a connection to IoT Hub
         href: ingest-data-iot-hub-overview.md
       - name: Azure portal
         href: ingest-data-iot-hub.md
@@ -176,10 +178,12 @@
     items:
     - name: Azure Data Explorer dashboards
       items:
-      - name: using dashboards
+      - name: use dashboards
         href: azure-data-explorer-dashboards.md
-      - name: using dashboard parameters
+      - name: use dashboard parameters
         href: dashboard-parameters.md  
+      - name: customize dashboard visuals
+        href: dashboard-customize-visuals.md  
     - name: Power BI
       items:
       - name: Best practices
@@ -210,6 +214,8 @@
       href: k2bridge.md
   - name: Secure
     items:
+    - name: Isolated compute
+      href: isolated-compute.md
     - name: Network isolation (VNet)
       items:
         - name: Create a cluster in your VNet - Portal
@@ -218,6 +224,8 @@
           href: vnet-deployment.md  
         - name: Troubleshoot VNet cluster creation, connectivity, and operation 
           href: vnet-deploy-troubleshoot.md
+        - name: Create Private Endpoint for your VNet cluster - Portal
+          href: vnet-create-private-endpoint.md
     - name: Encryption
       items:
       - name: Cluster disk encryption - portal
@@ -244,6 +252,8 @@
     items:
     - name: Cluster
       items:
+      - name: Use Advisor recommendations to optimize your cluster
+        href: azure-advisor.md
       - name: Select cluster VM SKU
         href: manage-cluster-choose-sku.md
       - name: Manage cluster horizontal scaling
@@ -291,9 +301,10 @@
         href: dealing-with-duplicates.md
   - name: Monitor
     items:
-    - name: Use diagnostic logs to monitor ingestion
+    - name: Use diagnostic logs to monitor ingestion, commands, and queries
       href: using-diagnostic-logs.md
-    - name: Use metrics to monitor cluster health
+    - name: Monitor Azure Data Explorer with metrics
+      displayName: health, performance
       href: using-metrics.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
@@ -307,10 +318,12 @@
     items:
     - name: Power Automate 
       items:
-      - name: Power Automate flow connector
+      - name: Power Automate connector
         href: flow.md
+        displayName: Microsoft Flow, flow, flow connector
       - name: Power Automate connector usage examples
         href: flow-usage.md
+        displayName: Microsoft Flow, flow, flow connector
     - name: Logic Apps
       href: kusto/tools/logicapps.md
     - name: Apache Spark Connector
@@ -447,6 +460,8 @@
           href: ./kusto/query/bag-unpackplugin.md
         - name: basket plugin
           href: ./kusto/query/basketplugin.md
+        - name: cosmosdb_sql_request plugin
+          href: ./kusto/query/cosmosdb-plugin.md
         - name: dcount_intersect plugin
           href: ./kusto/query/dcount-intersect-plugin.md
         - name: diffpatterns plugin
@@ -575,8 +590,13 @@
         href: ./kusto/query/externaltablefunction.md
       - name: materialize()
         href: ./kusto/query/materializefunction.md
+<<<<<<< HEAD
       - name: resource()
         href: ./kusto/query/resourcefunction.md
+=======
+      - name: materialized_view()
+        href: ./kusto/query/materialized-view-function.md
+>>>>>>> e100881404bcd5b66547a11c1c5dc889b97d59a0
       - name: table()
         href: ./kusto/query/tablefunction.md
       - name: toscalar()
@@ -645,6 +665,8 @@
         href: ./kusto/query/bagkeysfunction.md
       - name: bag_merge()
         href: ./kusto/query/bag-merge-function.md
+      - name: bag_remove_keys()
+        href: ./kusto/query/bag-remove-keys-function.md
       - name: base64_decode_toarray()
         href: ./kusto/query/base64_decode_toarrayfunction.md
       - name: base64_decode_tostring()
@@ -1009,6 +1031,10 @@
         href: ./kusto/query/welch-testfunction.md
       - name: zip()
         href: ./kusto/query/zipfunction.md
+      - name: zlib_compress_to_base64_string()
+        href: ./kusto/query/zlib-base64-compress.md
+      - name: zlib_decompress_from_base64_string()
+        href: ./kusto/query/zlib-base64-decompress.md 
     - name: Aggregation functions
       items:
       - name: any()
@@ -1139,6 +1165,8 @@
         href: ./kusto/query/series-fit-linefunction.md
       - name: series_fit_line_dynamic()
         href: ./kusto/query/series-fit-line-dynamicfunction.md
+      - name: series_fit_poly()
+        href: ./kusto/query/series-fit-poly-function.md
       - name: series_greater()
         href: ./kusto/query/series-greaterfunction.md
       - name: series_greater_equals()
@@ -1320,14 +1348,30 @@
           href: ./kusto/management/show-table-details-command.md
         - name: .show table schema
           href: ./kusto/management/show-table-schema-command.md
+        - name: .clear table data
+          href: ./kusto/management/clear-table-data-command.md
       - name: External tables
         items:
         - name: External tables general control commands
           href: ./kusto/management/external-table-commands.md
+        - name: Create and alter external tables in Azure Storage or Azure Data Lake
+          href: ./kusto/management/external-tables-azurestorage-azuredatalake.md
         - name: Create and alter external SQL tables
           href: ./kusto/management/external-sql-tables.md
-        - name: Create and alter external tables in Azure Storage or Azure Data Lake
-          href: ./kusto/management/external-tables-azurestorage-azuredatalake.md  
+      - name: Materialized views
+        items:
+        - name: Overview of materialized views
+          href: ./kusto/management/materialized-views/materialized-view-overview.md
+        - name: .create materialized-view
+          href: ./kusto/management/materialized-views/materialized-view-create.md
+        - name: .alter materialized-view
+          href: ./kusto/management/materialized-views/materialized-view-alter.md
+        - name: .show materialized-view commands
+          href: ./kusto/management/materialized-views/materialized-view-show-commands.md
+        - name: .drop materialized-view
+          href: ./kusto/management/materialized-views/materialized-view-drop.md
+        - name: .disable | .enable materialized-view
+          href: ./kusto/management/materialized-views/materialized-view-enable-disable.md    
       - name: Columns
         items:
         - name: Columns management
@@ -1400,6 +1444,12 @@
           href: ./kusto/management/partitioningpolicy.md
         - name: partitioning policy command
           href: ./kusto/management/partitioning-policy.md
+      - name: Query throttling
+        items:
+        - name: Query throttling policy
+          href: ./kusto/management/query-throttling-policy.md
+        - name: Query throttling policy commands
+          href: ./kusto/management/query-throttling-policy-commands.md
       - name: Retention
         items:
         - name: Retention policy
@@ -1441,7 +1491,7 @@
         - name: Streaming ingestion policy
           href: ./kusto/management/streamingingestionpolicy.md
         - name: streamingingestion policy command
-          href: ./kusto/management/streamingingestion-policy.md
+          href: ./kusto/management/streamingingestion-policy.md    
       - name: Update
         items:
         - name: Update policy
@@ -1520,11 +1570,13 @@
       items:
       - name: Identities
         href: ./kusto/management/access-control/principals-and-identity-providers.md
-      - name: AAD
+      - name: Azure Active Directory
+        displayName: AAD, Azure AD
         href: ./kusto/management/access-control/aad.md
       - name: Principal roles
         href: ./kusto/management/access-control/role-based-authorization.md
-      - name: How-To AAD authentication
+      - name: How-To Azure Active Directory authentication
+        displayName: AAD, Azure AD
         href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
     - name: Advanced data management
       items:
@@ -1617,7 +1669,8 @@
         href: ./kusto/api/tds/clients.md
       - name: Linked server
         href: ./kusto/api/tds/linkedserver.md
-      - name: AAD
+      - name: Azure Active Directory
+        displayName: AAD, Azure AD
         href: ./kusto/api/tds/aad.md
       - name: Known issues
         href: ./kusto/api/tds/sqlknownissues.md
@@ -1681,6 +1734,22 @@
         href: ./kusto/api/monaco/monaco-kusto.md
       - name: Embed web UX in an iFrame
         href: ./kusto/api/monaco/host-web-ux-in-iframe.md
+  - name: Functions library
+    items:
+    - name: List of functions
+      href: kusto/functions-library/functions-library.md
+    - name: predict_fl()
+      href: kusto/functions-library/predict-fl.md
+    - name: predict_onnx_fl()
+      href: kusto/functions-library/predict-onnx-fl.md
+    - name: quantize_fl()
+      href: kusto/functions-library/quantize-fl.md
+    - name: series_fit_poly_fl()
+      href: kusto/functions-library/series-fit-poly-fl.md
+    - name: series_moving_avg_fl()
+      href: kusto/functions-library/series-moving-avg-fl.md
+    - name: series_rolling_fl()
+      href: kusto/functions-library/series-rolling-fl.md
 - name: Resources
   items:
   - name: Blog
