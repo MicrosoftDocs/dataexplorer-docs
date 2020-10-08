@@ -405,6 +405,14 @@ cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceG
 poller = kusto_management_client.clusters.detach_follower_databases(resource_group_name = leader_resource_group_name, cluster_name = leader_cluster_name, cluster_resource_id = cluster_resource_id, attached_database_configuration_name = attached_database_configuration_name)
 ```
 
+# [Powershell](#tab/azure-powershell)
+
+test
+
+# [Resource Manager Template](#tab/azure-resource-manager)
+
+test
+
 ---
 
 ## Manage principals, permissions, and caching policy
