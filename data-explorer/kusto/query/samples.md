@@ -35,7 +35,7 @@ StormEvents
 * Use `where`, `summarize`, and `top` to limit the volume of data that you display.
 * Sort the results to define the order of the x-axis.
 
-:::image type="content" source="images/samples/060.png" alt-text="060":::
+:::image type="content" source="images/samples/060.png" alt-text="Column chart":::
 
 ## Get sessions from start and stop events
 
@@ -105,7 +105,7 @@ The join will match every start time with all the stop times from the same clien
 `arg_min` picks out the row with the smallest duration in each group, and the `*` parameter passes through all the other columns. 
 The argument prefixes "min_" to each column name. 
 
-:::image type="content" source="images/samples/040.png" alt-text="040"::: 
+:::image type="content" source="images/samples/040.png" alt-text="join query results"::: 
 
 Add code to count the durations in conveniently sized bins. 
 In this example, because of a preference for a bar chart, divide by `1s` to convert the timespans to numbers. 
@@ -119,7 +119,7 @@ In this example, because of a preference for a bar chart, divide by `1s` to conv
     | sort by duration asc | render barchart 
 ```
 
-:::image type="content" source="images/samples/050.png" alt-text="050":::
+:::image type="content" source="images/samples/050.png" alt-text="join query chart":::
 
 ### Real example
 
