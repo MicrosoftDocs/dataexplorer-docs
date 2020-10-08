@@ -27,7 +27,7 @@ and the Monaco editor it uses.
 You can now connect multiple clusters and switch between databases and clusters.
 The tool is designed to easily identify the cluster and database to which you are connected.
 
-![Animated GIF. When Add Cluster is clicked in Azure Data Explorer, a cluster name is entered in a dialog box, and the cluster appears in the left pane.](./Images/KustoTools-WebExplorer/AddingCluster.gif "AddingCluster")
+![Animated GIF. When Add Cluster is clicked in Azure Data Explorer and a cluster name is entered in a dialog box, the cluster appears in the left pane.](./Images/KustoTools-WebExplorer/AddingCluster.gif "AddingCluster")
 
 ## Recall results
 
