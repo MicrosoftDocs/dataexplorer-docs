@@ -590,13 +590,8 @@
         href: ./kusto/query/externaltablefunction.md
       - name: materialize()
         href: ./kusto/query/materializefunction.md
-<<<<<<< HEAD
-      - name: resource()
-        href: ./kusto/query/resourcefunction.md
-=======
       - name: materialized_view()
         href: ./kusto/query/materialized-view-function.md
->>>>>>> e100881404bcd5b66547a11c1c5dc889b97d59a0
       - name: table()
         href: ./kusto/query/tablefunction.md
       - name: toscalar()
