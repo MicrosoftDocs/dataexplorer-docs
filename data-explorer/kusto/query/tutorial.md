@@ -599,7 +599,7 @@ InsightsMetrics
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/processor-timechart-single.png" alt-text="Column chart of storm event counts by state":::
+:::image type="content" source="images/tutorial/processor-timechart-single.png" alt-text="Processor time chart single series":::
 
 
 ## Multiple series
@@ -614,7 +614,7 @@ InsightsMetrics
 ```
 
 
-:::image type="content" source="images/tutorial/processor-timechart-single.png" alt-text="Column chart of storm event counts by state":::
+:::image type="content" source="images/tutorial/processor-timechart-multiple.png" alt-text="Processor time chart multiple series":::
 
 
 

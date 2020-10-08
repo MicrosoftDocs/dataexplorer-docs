@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 10/08/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -825,422 +825,938 @@ B_events
 
 ::: zone pivot="azuremonitor"
 
-## Events
+## String operations
 
-### Search application-level events described as "Cryptographic"
-This example searches the **Events** table for records in which **EventLog** is _Application_ and **RenderedDescription** contains _cryptographic_. Includes records from the last 24 hours.
+### Strings and escaping them
+String values are wrapped with either with single or double quote characters. Backslash (\\) is used to escape characters to the character following it, such as \t for tab, \n for newline, and \" the quote character itself.
+
+```Kusto
+print "this is a 'string' literal in double \" quotes"
+```
+
+```Kusto
+print 'this is a "string" literal in single \' quotes'
+```
+
+To prevent "\\" from acting as an escape character, add "\@" as a prefix to the string:
+
+```Kusto
+print @"C:\backslash\not\escaped\with @ prefix"
+```
+
+
+### String comparisons
+
+Operator       |Description                         |Case-Sensitive|Example (yields `true`)
+---------------|------------------------------------|--------------|-----------------------
+`==`           |Equals                              |Yes           |`"aBc" == "aBc"`
+`!=`           |Not equals                          |Yes           |`"abc" != "ABC"`
+`=~`           |Equals                              |No            |`"abc" =~ "ABC"`
+`!~`           |Not equals                          |No            |`"aBc" !~ "xyz"`
+`has`          |Right-hand-side is a whole term in left-hand-side |No|`"North America" has "america"`
+`!has`         |Right-hand-side isn't a full term in left-hand-side       |No            |`"North America" !has "amer"` 
+`has_cs`       |Right-hand-side is a whole term in left-hand-side |Yes|`"North America" has_cs "America"`
+`!has_cs`      |Right-hand-side isn't a full term in left-hand-side       |Yes            |`"North America" !has_cs "amer"` 
+`hasprefix`    |Right-hand-side is a term prefix in left-hand-side         |No            |`"North America" hasprefix "ame"`
+`!hasprefix`   |Right-hand-side isn't a term prefix in left-hand-side     |No            |`"North America" !hasprefix "mer"` 
+`hasprefix_cs`    |Right-hand-side is a term prefix in left-hand-side         |Yes            |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs`   |Right-hand-side isn't a term prefix in left-hand-side     |Yes            |`"North America" !hasprefix_cs "CA"` 
+`hassuffix`    |Right-hand-side is a term suffix in left-hand-side         |No            |`"North America" hassuffix "ica"`
+`!hassuffix`   |Right-hand-side isn't a term suffix in left-hand-side     |No            |`"North America" !hassuffix "americ"`
+`hassuffix_cs`    |Right-hand-side is a term suffix in left-hand-side         |Yes            |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs`   |Right-hand-side isn't a term suffix in left-hand-side     |Yes            |`"North America" !hassuffix_cs "icA"`
+`contains`     |Right-hand-side occurs as a subsequence of left-hand-side  |No            |`"FabriKam" contains "BRik"`
+`!contains`    |Right-hand-side doesn't occur in left-hand-side           |No            |`"Fabrikam" !contains "xyz"`
+`contains_cs`   |Right-hand-side occurs as a subsequence of left-hand-side  |Yes           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |Right-hand-side doesn't occur in left-hand-side           |Yes           |`"Fabrikam" !contains_cs "Kam"`
+`startswith`   |Right-hand-side is an initial subsequence of left-hand-side|No            |`"Fabrikam" startswith "fab"`
+`!startswith`  |Right-hand-side isn't an initial subsequence of left-hand-side|No        |`"Fabrikam" !startswith "kam"`
+`startswith_cs`   |Right-hand-side is an initial subsequence of left-hand-side|Yes            |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`  |Right-hand-side isn't an initial subsequence of left-hand-side|Yes        |`"Fabrikam" !startswith_cs "fab"`
+`endswith`     |Right-hand-side is a closing subsequence of left-hand-side|No             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |Right-hand-side isn't a closing subsequence of left-hand-side|No         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |Right-hand-side is a closing subsequence of left-hand-side|Yes             |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`    |Right-hand-side isn't a closing subsequence of left-hand-side|Yes         |`"Fabrikam" !endswith "brik"`
+`matches regex`|left-hand-side contains a match for Right-hand-side        |Yes           |`"Fabrikam" matches regex "b.*k"`
+`in`           |Equals to one of the elements       |Yes           |`"abc" in ("123", "345", "abc")`
+`!in`          |Not equals to any of the elements   |Yes           |`"bca" !in ("123", "345", "abc")`
+
+
+### countof
+
+Counts occurrences of a substring in a string. Can match plain strings or use regex. Plain string matches may overlap while regex matches do not.
+
+```
+countof(text, search [, kind])
+```
+
+- `text` - The input string 
+- `search` - Plain string or regular expression to match inside text.
+- `kind` - _normal_ | _regex_ (default: normal).
+
+Returns the number of times that the search string can be matched in the container. Plain string matches may overlap while regex matches do not.
+
+#### Plain string matches
+
+```Kusto
+print countof("The cat sat on the mat", "at");  //result: 3
+print countof("aaa", "a");  //result: 3
+print countof("aaaa", "aa");  //result: 3 (not 2!)
+print countof("ababa", "ab", "normal");  //result: 2
+print countof("ababa", "aba");  //result: 2
+```
+
+#### Regex matches
+
+```Kusto
+print countof("The cat sat on the mat", @"\b.at\b", "regex");  //result: 3
+print countof("ababa", "aba", "regex");  //result: 1
+print countof("abcabc", "a.c", "regex");  // result: 2
+```
+
+
+### extract
+
+Gets a match for a regular expression from a given string. Optionally also converts the extracted substring to the specified type.
+
+```Kusto
+extract(regex, captureGroup, text [, typeLiteral])
+```
+
+- `regex` - A regular expression.
+- `captureGroup` - A positive integer constant indicating the capture group to extract. 0 for the entire match, 1 for the value matched by the first '('parenthesis')' in the regular expression, 2 or more for subsequent parentheses.
+- `text` - A string to search.
+- `typeLiteral` - An optional type literal (for example, typeof(long)). If provided, the extracted substring is converted to this type.
+
+Returns the substring matched against the indicated capture group captureGroup, optionally converted to typeLiteral.
+If there's no match, or the type conversion fails, return null.
+
+
+The following example extracts the last octet of *ComputerIP* from a heartbeat record:
+```Kusto
+Heartbeat
+| where ComputerIP != "" 
+| take 1
+| project ComputerIP, last_octet=extract("([0-9]*$)", 1, ComputerIP) 
+```
+
+The following example extracts the last octet, casts it to a *real* type (number) and calculates the next IP value
+```Kusto
+Heartbeat
+| where ComputerIP != "" 
+| take 1
+| extend last_octet=extract("([0-9]*$)", 1, ComputerIP, typeof(real)) 
+| extend next_ip=(last_octet+1)%255
+| project ComputerIP, last_octet, next_ip
+```
+
+In the example below, the string *Trace* is searched for a definition of "Duration". The match is cast to *real* and multiplied by a time constant (1 s) *which casts Duration to type timespan*.
+```Kusto
+let Trace="A=12, B=34, Duration=567, ...";
+print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
+print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s);  //result: 00:09:27
+```
+
+
+### isempty, isnotempty, notempty
+
+- *isempty* returns true if the argument is an empty string or null (see also *isnull*).
+- *isnotempty* returns true if the argument isn't an empty string or a null (see also *isnotnull*). alias: *notempty*.
+
+
+```Kusto
+isempty(value)
+isnotempty(value)
+```
+
+### Examples
+
+```Kusto
+print isempty("");  // result: true
+
+print isempty("0");  // result: false
+
+print isempty(0);  // result: false
+
+print isempty(5);  // result: false
+
+Heartbeat | where isnotempty(ComputerIP) | take 1  // return 1 Heartbeat record in which ComputerIP isn't empty
+```
+
+
+### parseurl
+
+Splits a URL into its parts (protocol, host, port, etc.), and returns a dictionary object containing the parts as strings.
+
+```
+parseurl(urlstring)
+```
+
+#### Examples
+
+```Kusto
+print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
+```
+
+The outcome will be:
+```
+{
+	"Scheme" : "http",
+	"Host" : "contoso.com",
+	"Port" : "80",
+	"Path" : "/icecream/buy.aspx",
+	"Username" : "user",
+	"Password" : "pass",
+	"Query Parameters" : {"a":"1","b":"2"},
+	"Fragment" : "tag"
+}
+```
+
+
+### replace
+
+Replaces all regex matches with another string. 
+
+```
+replace(regex, rewrite, input_text)
+```
+
+- `regex` - The regular expression to match by. It can contain capture groups in '('parentheses')'.
+- `rewrite` - The replacement regex for any match made by matching regex. Use \0 to refer to the whole match, \1 for the first capture group, \2, and so on for subsequent capture groups.
+- `input_text` - The input string to search in.
+
+Returns the text after replacing all matches of regex with evaluations of rewrite. Matches don't overlap.
+
+
+```Kusto
+SecurityEvent
+| take 1
+| project Activity 
+| extend replaced = replace(@"(\d+) -", @"Activity ID \1: ", Activity) 
+```
+
+Can have the following results:
+
+Activity                                        |replaced
+------------------------------------------------|----------------------------------------------------------
+4663 - An attempt was made to access an object  |Activity ID 4663: An attempt was made to access an object.
+
+
+### split
+
+Splits a given string according to a specified delimiter, and returns an array of the resulting substrings.
+
+```
+split(source, delimiter [, requestedIndex])
+```
+
+- `source` - The string to be split according to the specified delimiter.
+- `delimiter` - The delimiter that will be used in order to split the source string.
+- `requestedIndex` - An optional zero-based index. If provided, the returned string array will hold only that item (if exists).
+
+
+#### Examples
+
+```Kusto
+print split("aaa_bbb_ccc", "_");    // result: ["aaa","bbb","ccc"]
+print split("aa_bb", "_");          // result: ["aa","bb"]
+print split("aaa_bbb_ccc", "_", 1);	// result: ["bbb"]
+print split("", "_");              	// result: [""]
+print split("a__b", "_");           // result: ["a","","b"]
+print split("aabbcc", "bb");        // result: ["aa","cc"]
+```
+
+### strcat
+
+Concatenates string arguments (supports 1-16 arguments).
+
+```
+strcat("string1", "string2", "string3")
+```
+
+#### Examples
+```Kusto
+print strcat("hello", " ", "world")	// result: "hello world"
+```
+
+
+### strlen
+
+Returns the length of a string.
+
+```
+strlen("text_to_evaluate")
+```
+
+#### Examples
+```Kusto
+print strlen("hello")	// result: 5
+```
+
+
+### substring
+
+Extracts a substring from a given source string, starting at the specified index. Optionally, the length of the requested substring can be specified.
+
+```
+substring(source, startingIndex [, length])
+```
+
+- `source` - The source string that the substring will be taken from.
+- `startingIndex` - The zero-based starting character position of the requested substring.
+- `length` - An optional parameter that can be used to specify the requested length of the returned substring.
+
+#### Examples
+```Kusto
+print substring("abcdefg", 1, 2);	// result: "bc"
+print substring("123456", 1);		// result: "23456"
+print substring("123456", 2, 2);	// result: "34"
+print substring("ABCD", 0, 2);	// result: "AB"
+```
+
+
+### tolower, toupper
+
+Converts a given string to all lower or upper case.
+
+```
+tolower("value")
+toupper("value")
+```
+
+#### Examples
+```Kusto
+print tolower("HELLO");	// result: "hello"
+print toupper("hello");	// result: "HELLO"
+```
+
+## Date and time operations
+
+### Date time basics
+The Kusto query language has two main data types associated with dates and times: datetime and timespan. All dates are expressed in UTC. While multiple datetime formats are supported, the ISO8601 format is preferred. 
+
+Timespans are expressed as a decimal followed by a time unit:
+
+|shorthand   | time unit    |
+|:---|:---|
+|d           | day          |
+|h           | hour         |
+|m           | minute       |
+|s           | second       |
+|ms          | millisecond  |
+|microsecond | microsecond  |
+|tick        | nanosecond   |
+
+Datetimes can be created by casting a string using the `todatetime` operator. For example, to review the VM heartbeats sent in a specific timeframe, use the `between` operator to specify a time range.
+
+```Kusto
+Heartbeat
+| where TimeGenerated between(datetime("2018-06-30 22:46:42") .. datetime("2018-07-01 00:57:27"))
+```
+
+Another common scenario is comparing a datetime to the present. For example, to see all heartbeats over the last two minutes, you can use the `now` operator together with a timespan that represents two minutes:
+
+```Kusto
+Heartbeat
+| where TimeGenerated > now() - 2m
+```
+
+A shortcut is also available for this function:
+```Kusto
+Heartbeat
+| where TimeGenerated > now(-2m)
+```
+
+The shortest and most readable method though is using the `ago` operator:
+```Kusto
+Heartbeat
+| where TimeGenerated > ago(2m)
+```
+
+Suppose that instead of knowing the start and end time, you know the start time and the duration. You can rewrite the query as follows:
+
+```Kusto
+let startDatetime = todatetime("2018-06-30 20:12:42.9");
+let duration = totimespan(25m);
+Heartbeat
+| where TimeGenerated between(startDatetime .. (startDatetime+duration) )
+| extend timeFromStart = TimeGenerated - startDatetime
+```
+
+### Converting time units
+You may want to express a datetime or timespan in a time unit other than the default. For example, if you're reviewing error events from the last 30 minutes and need a calculated column showing how long ago the event happened:
 
 ```Kusto
 Event
-| where EventLog == "Application" 
-| where TimeGenerated > ago(24h) 
-| where RenderedDescription contains "cryptographic"
-```
-
-### Search events related to unmarshaling
-Search tables **Event** and **SecurityEvents** for records that mention _unmarshaling_.
-
-```Kusto
-search in (Event, SecurityEvent) "unmarshaling"
-```
-
-## Heartbeat
-
-### Chart a week-over-week view of the number of computers sending data
-
-The following example charts the number of distinct computers that sent heartbeats, each week.
-
-```Kusto
-Heartbeat
-| where TimeGenerated >= startofweek(ago(21d))
-| summarize dcount(Computer) by endofweek(TimeGenerated) | render barchart kind=default
-```
-
-### Find stale computers
-
-The following example finds computers that were active in the last day but did not send heartbeats in the last hour.
-
-```Kusto
-Heartbeat
-| where TimeGenerated > ago(1d)
-| summarize LastHeartbeat = max(TimeGenerated) by Computer
-| where isnotempty(Computer)
-| where LastHeartbeat < ago(1h)
-```
-
-### Get the latest heartbeat record per computer IP
-
-This example returns the last heartbeat record for each computer IP.
-```Kusto
-Heartbeat
-| summarize arg_max(TimeGenerated, *) by ComputerIP
-```
-
-### Match protected status records with heartbeat records
-
-This example finds related protection status records and heartbeat records, matched on both Computer and time.
-Note the time field is rounded to the nearest minute. We used runtime bin calculation to do that: `round_time=bin(TimeGenerated, 1m)`.
-
-```Kusto
-let protection_data = ProtectionStatus
-    | project Computer, DetectionId, round_time=bin(TimeGenerated, 1m);
-let heartbeat_data = Heartbeat
-    | project Computer, Category, round_time=bin(TimeGenerated, 1m);
-protection_data | join (heartbeat_data) on Computer, round_time
-```
-
-### Server availability rate
-
-Calculate server availability rate based on heartbeat records. Availability is defined as "at least 1 heartbeat per hour".
-So, if a server was available 98 of 100 hours, the availability rate is 98%.
-
-```Kusto
-let start_time=startofday(datetime("2018-03-01"));
-let end_time=now();
-Heartbeat
-| where TimeGenerated > start_time and TimeGenerated < end_time
-| summarize heartbeat_per_hour=count() by bin_at(TimeGenerated, 1h, start_time), Computer
-| extend available_per_hour=iff(heartbeat_per_hour>0, true, false)
-| summarize total_available_hours=countif(available_per_hour==true) by Computer 
-| extend total_number_of_buckets=round((end_time-start_time)/1h)+1
-| extend availability_rate=total_available_hours*100/total_number_of_buckets
-```
-
-
-## Multiple data types
-
-### Chart the record-count per table
-The following example collects all records of all tables from the last five hours and counts how many records were in each table. The results are shown in a timechart.
-
-```Kusto
-union withsource=sourceTable *
-| where TimeGenerated > ago(5h) 
-| summarize count() by bin(TimeGenerated,10m), sourceTable
-| render timechart
-```
-
-### Count all logs collected over the last hour by type
-The following example searches everything reported in the last hour and counts the records of each table by **Type**. The results are displayed in a bar chart.
-
-```Kusto
-search *
-| where TimeGenerated > ago(1h) 
-| summarize CountOfRecords = count() by Type
-| render barchart
-```
-
-## AzureDiagnostics
-
-### Count Azure diagnostics records per category
-This example counts all Azure diagnostics records for each unique category.
-
-```Kusto
-AzureDiagnostics 
-| where TimeGenerated > ago(1d)
-| summarize count() by Category
-```
-
-### Get a random record for each unique category
-This example gets a single random Azure diagnostics record for each unique category.
-
-```Kusto
-AzureDiagnostics
-| where TimeGenerated > ago(1d) 
-| summarize any(*) by Category
-```
-
-### Get the latest record per category
-This example gets the latest Azure diagnostics record in each unique category.
-
-```Kusto
-AzureDiagnostics
-| where TimeGenerated > ago(1d) 
-| summarize arg_max(TimeGenerated, *) by Category
-```
-
-## Network monitoring
-
-### Computers with unhealthy latency
-This example creates a list of distinct computers with unhealthy latency.
-
-```Kusto
-NetworkMonitoring 
-| where LatencyHealthState <> "Healthy" 
-| where Computer != "" 
-| distinct Computer
-```
-
-## Performance
-
-### Join computer perf records to correlate memory and CPU
-This example correlates a particular computer's **perf** records and creates two time charts, the average CPU and maximum memory.
-
-```Kusto
-let StartTime = now()-5d;
-let EndTime = now()-4d;
-Perf
-| where CounterName == "% Processor Time"  
-| where TimeGenerated > StartTime and TimeGenerated < EndTime
-| project TimeGenerated, Computer, cpu=CounterValue 
-| join kind= inner (
-   Perf
-    | where CounterName == "% Used Memory"  
-    | where TimeGenerated > StartTime and TimeGenerated < EndTime
-    | project TimeGenerated , Computer, mem=CounterValue 
-) on TimeGenerated, Computer
-| summarize avgCpu=avg(cpu), maxMem=max(mem) by TimeGenerated bin=30m  
-| render timechart
-```
-
-### Perf CPU Utilization graph per computer
-This example calculates and charts the CPU utilization of computers that start with _Contoso_.
-
-```Kusto
-Perf
-| where TimeGenerated > ago(4h)
-| where Computer startswith "Contoso" 
-| where CounterName == @"% Processor Time"
-| summarize avg(CounterValue) by Computer, bin(TimeGenerated, 15m) 
-| render timechart
-```
-
-## Protection status
-
-### Computers with non-reporting protection status duration
-This example lists computers that had a protection status of _Not Reporting_  and the duration they were in this status.
-
-```Kusto
-ProtectionStatus
-| where ProtectionStatus == "Not Reporting"
-| summarize count(), startNotReporting = min(TimeGenerated), endNotReporting = max(TimeGenerated) by Computer, ProtectionStatusDetails
-| join ProtectionStatus on Computer
-| summarize lastReporting = max(TimeGenerated), startNotReporting = any(startNotReporting), endNotReporting = any(endNotReporting) by Computer
-| extend durationNotReporting = endNotReporting - startNotReporting
-```
-
-### Match protected status records with heartbeat records
-This example finds related protection status records and heartbeat records matched on both Computer and time.
-The time field is rounded to the nearest minute using **bin**.
-
-```Kusto
-let protection_data = ProtectionStatus
-    | project Computer, DetectionId, round_time=bin(TimeGenerated, 1m);
-let heartbeat_data = Heartbeat
-    | project Computer, Category, round_time=bin(TimeGenerated, 1m);
-protection_data | join (heartbeat_data) on Computer, round_time
-```
-
-
-## Security records
-
-### Count security events by activity ID
-
-
-This example relies on the fixed structure of the **Activity** column: \<ID\>-\<Name\>.
-It parses the **Activity** value into two new columns, and counts the occurrence of each **activityID**.
-
-```Kusto
-SecurityEvent
-| where TimeGenerated > ago(30m) 
-| project Activity 
-| parse Activity with activityID " - " activityDesc
-| summarize count() by activityID
-```
-
-### Count security events related to permissions
-This example shows the number of **securityEvent** records, in which the **Activity** column contains the whole term _Permissions_. The query applies to records created over the last 30 minutes.
-
-```Kusto
-SecurityEvent
 | where TimeGenerated > ago(30m)
-| summarize EventCount = countif(Activity has "Permissions")
+| where EventLevelName == "Error"
+| extend timeAgo = now() - TimeGenerated 
 ```
 
-### Find accounts that failed to log in from computers with a security detection
-This example finds and counts accounts that failed to log in from computers on which we identify a security detection.
+The `timeAgo` column holds values such as: "00:09:31.5118992", meaning they're formatted as hh:mm:ss.fffffff. If you want to format these values to the `numver` of minutes since the start time, divide that value by "1 minute":
 
 ```Kusto
-let detections = toscalar(SecurityDetection
-| summarize makeset(Computer));
-SecurityEvent
-| where Computer in (detections) and EventID == 4624
-| summarize count() by Account
+Event
+| where TimeGenerated > ago(30m)
+| where EventLevelName == "Error"
+| extend timeAgo = now() - TimeGenerated
+| extend timeAgoMinutes = timeAgo/1m 
 ```
 
-### Is my security data available?
-Starting data exploration often starts with data availability check. This example shows the number of **SecurityEvent** records in the last 30 minutes.
+
+### Aggregations and bucketing by time intervals
+Another common scenario is the need to obtain statistics over a certain time period in a particular time grain. For this scenario, a `bin` operator can be used as part of a summarize clause.
+
+Use the following query to get the number of events that occurred every 5 minutes during the last half hour:
 
 ```Kusto
-SecurityEvent 
-| where TimeGenerated  > ago(30m) 
-| count
+Event
+| where TimeGenerated > ago(30m)
+| summarize events_count=count() by bin(TimeGenerated, 5m) 
 ```
 
-### Parse activity name and ID
-The two examples below rely on the fixed structure of the **Activity** column: \<ID\>-\<Name\>. The first example uses the **parse** operator to assign values to two new columns: **activityID** and **activityDesc**.
+This query produces the following table:  
+
+|TimeGenerated(UTC)|events_count|
+|--|--|
+|2018-08-01T09:30:00.000|54|
+|2018-08-01T09:35:00.000|41|
+|2018-08-01T09:40:00.000|42|
+|2018-08-01T09:45:00.000|41|
+|2018-08-01T09:50:00.000|41|
+|2018-08-01T09:55:00.000|16|
+
+Another way to create buckets of results is to use functions, such as `startofday`:
 
 ```Kusto
-SecurityEvent
-| take 100
-| project Activity 
-| parse Activity with activityID " - " activityDesc
+Event
+| where TimeGenerated > ago(4d)
+| summarize events_count=count() by startofday(TimeGenerated) 
 ```
 
-This example uses the **split** operator to create an array of separate values
+This query produces the following results:
+
+|timestamp|count_|
+|--|--|
+|2018-07-28T00:00:00.000|7,136|
+|2018-07-29T00:00:00.000|12,315|
+|2018-07-30T00:00:00.000|16,847|
+|2018-07-31T00:00:00.000|12,616|
+|2018-08-01T00:00:00.000|5,416|
+
+
+### Time zones
+Since all datetime values are expressed in UTC, it's often useful to convert these values into the local timezone. For example, use this calculation to convert UTC to PST times:
+
 ```Kusto
-SecurityEvent
-| take 100
-| project Activity 
-| extend activityArr=split(Activity, " - ") 
-| project Activity , activityArr, activityId=activityArr[0]
+Event
+| extend localTimestamp = TimeGenerated - 8h
 ```
 
-### Explicit credentials processes
-The following example shows a pie chart of processes that used explicit credentials in the last week
+## Aggregations
+
+### count
+Count the number of rows in the result set after any filters are applied. The following example returns the total number of rows in the _Perf_ table from the last 30 minutes. The result is returned in a column named *count_* unless you assign it a specific name:
+
 
 ```Kusto
-SecurityEvent
-| where TimeGenerated > ago(7d)
-// filter by id 4648 ("A logon was attempted using explicit credentials")
-| where EventID == 4648
-| summarize count() by Process
-| render piechart 
+Perf
+| where TimeGenerated > ago(30m) 
+| summarize count()
 ```
 
-### Top running processes
+```Kusto
+Perf
+| where TimeGenerated > ago(30m) 
+| summarize num_of_records=count() 
+```
 
-The following example shows a time line of activity for the five most common processes, over the last three days.
+A timechart visualization can be useful to see a trend over time:
 
 ```Kusto
-// Find all processes that started in the last three days. ID 4688: A new process has been created.
-let RunProcesses = 
-    SecurityEvent
-    | where TimeGenerated > ago(3d)
-    | where EventID == "4688";
-// Find the 5 processes that were run the most
-let Top5Processes =
-RunProcesses
-| summarize count() by Process
-| top 5 by count_;
-// Create a time chart of these 5 processes - hour by hour
-RunProcesses 
-| where Process in (Top5Processes) 
-| summarize count() by bin (TimeGenerated, 1h), Process
+Perf 
+| where TimeGenerated > ago(30m) 
+| summarize count() by bin(TimeGenerated, 5m)
 | render timechart
 ```
 
+The output from this example shows the perf record count trendline in 5 minutes' intervals:
 
-### Find repeating failed login attempts by the same account from different IPs
+![Count trend](images/samples/count-trend.png)
 
-The following example finds failed login attempts by the same account from more than five different IPs in the last six hours.
+
+### dcount, dcountif
+Use `dcount` and `dcountif` to count distinct values in a specific column. The following query evaluates how many distinct computers sent heartbeats in the last hour:
+
+```Kusto
+Heartbeat 
+| where TimeGenerated > ago(1h) 
+| summarize dcount(Computer)
+```
+
+To count only the Linux computers that sent heartbeats, use `dcountif`:
+
+```Kusto
+Heartbeat 
+| where TimeGenerated > ago(1h) 
+| summarize dcountif(Computer, OSType=="Linux")
+```
+
+### Evaluating subgroups
+To perform a count or other aggregations on subgroups in your data, use the `by` keyword. For example, to count the number of distinct Linux computers that sent heartbeats in each country/region:
+
+```Kusto
+Heartbeat 
+| where TimeGenerated > ago(1h) 
+| summarize distinct_computers=dcountif(Computer, OSType=="Linux") by RemoteIPCountry
+```
+
+|RemoteIPCountry  | distinct_computers  |
+------------------|---------------------|
+|United States 	  | 19          		|
+|Canada        	  | 3       	  		|
+|Ireland   	      | 0		       		|
+|United Kingdom	  | 0		       		|
+|Netherlands	  | 2  					|
+
+
+To analyze even smaller subgroups of your data, add additional column names to the `by` section. For example, you might want to count the distinct computers from each country/region per OSType:
+
+```Kusto
+Heartbeat 
+| where TimeGenerated > ago(1h) 
+| summarize distinct_computers=dcountif(Computer, OSType=="Linux") by RemoteIPCountry, OSType
+```
+
+
+### Percentile
+To find the median value, use the `percentile` function with a value to specify the percentile:
+
+```Kusto
+Perf
+| where TimeGenerated > ago(30m) 
+| where CounterName == "% Processor Time" and InstanceName == "_Total" 
+| summarize percentiles(CounterValue, 50) by Computer
+```
+
+You can also specify different percentiles to get an aggregated result for each:
+
+```Kusto
+Perf
+| where TimeGenerated > ago(30m) 
+| where CounterName == "% Processor Time" and InstanceName == "_Total" 
+| summarize percentiles(CounterValue, 25, 50, 75, 90) by Computer
+```
+
+This might show that some computer CPUs have similar median values, but while some are steady around the median, other computers have reported much lower and higher CPU values meaning they experienced spikes.
+
+### Variance
+To directly evaluate the variance of a value, use the standard deviation and variance methods:
+
+```Kusto
+Perf
+| where TimeGenerated > ago(30m) 
+| where CounterName == "% Processor Time" and InstanceName == "_Total" 
+| summarize stdev(CounterValue), variance(CounterValue) by Computer
+```
+
+A good way to analyze the stability of the CPU usage is to combine stdev with the median calculation:
+
+```Kusto
+Perf
+| where TimeGenerated > ago(130m) 
+| where CounterName == "% Processor Time" and InstanceName == "_Total" 
+| summarize stdev(CounterValue), percentiles(CounterValue, 50) by Computer
+```
+
+### Generating lists and sets
+You can use `makelist` to pivot data by the order of values in a particular column. For example, you may want to explore the most common order events take place on your machines. You can essentially pivot the data by the order of EventIDs on each machine. 
+
+```Kusto
+Event
+| where TimeGenerated > ago(12h)
+| order by TimeGenerated desc
+| summarize makelist(EventID) by Computer
+```
+
+|Computer|list_EventID|
+|---|---|
+| computer1 | [704,701,1501,1500,1085,704,704,701] |
+| computer2 | [326,105,302,301,300,102] |
+| ... | ... |
+
+`makelist` generates a list in the order that data was passed into it. To sort events from oldest to newest, use `asc` in the order statement instead of `desc`. 
+
+It is also useful to create a list of just distinct values. This is called a _Set_ and can be generated with `makeset`:
+
+```Kusto
+Event
+| where TimeGenerated > ago(12h)
+| order by TimeGenerated desc
+| summarize makeset(EventID) by Computer
+```
+
+|Computer|list_EventID|
+|---|---|
+| computer1 | [704,701,1501,1500,1085] |
+| computer2 | [326,105,302,301,300,102] |
+| ... | ... |
+
+Like `makelist`, `makeset` also works with ordered data and will generate the arrays based on the order of the rows that are passed into it.
+
+### Expanding lists
+The inverse operation of `makelist` or `makeset` is `mvexpand`, which expands a list of values to separate rows. It can expand across any number of dynamic columns, both JSON and array. For example, you could check  the *Heartbeat* table for solutions sending data from computers that sent a heartbeat in the last hour:
+
+```Kusto
+Heartbeat
+| where TimeGenerated > ago(1h)
+| project Computer, Solutions
+```
+
+| Computer | Solutions | 
+|--------------|----------------------|
+| computer1 | "security", "updates", "changeTracking" |
+| computer2 | "security", "updates" |
+| computer3 | "antiMalware", "changeTracking" |
+| ... | ... |
+
+Use `mvexpand` to show each value in a separate row instead of a comma-separated list:
+
+```Kusto
+Heartbeat
+| where TimeGenerated > ago(1h)
+| project Computer, split(Solutions, ",")
+| mvexpand Solutions
+```
+
+| Computer | Solutions | 
+|--------------|----------------------|
+| computer1 | "security" |
+| computer1 | "updates" |
+| computer1 | "changeTracking" |
+| computer2 | "security" |
+| computer2 | "updates" |
+| computer3 | "antiMalware" |
+| computer3 | "changeTracking" |
+| ... | ... |
+
+
+You could then use `makelist` again to group items together, and this time see the list of computers per solution:
+
+```Kusto
+Heartbeat
+| where TimeGenerated > ago(1h)
+| project Computer, split(Solutions, ",")
+| mvexpand Solutions
+| summarize makelist(Computer) by tostring(Solutions) 
+```
+
+|Solutions | list_Computer |
+|--------------|----------------------|
+| "security" | ["computer1", "computer2"] |
+| "updates" | ["computer1", "computer2"] |
+| "changeTracking" | ["computer1", "computer3"] |
+| "antiMalware" | ["computer3"] |
+| ... | ... |
+
+### Handling missing bins
+A useful application of `mvexpand` is the need to fill default values in for missing bins. For example, suppose you're looking for the uptime of a particular machine by exploring its heartbeat. You also want to see the source of the heartbeat  which is in the _category_ column. Normally, we would use a simple summarize statement as follows:
+
+```Kusto
+Heartbeat
+| where TimeGenerated > ago(12h)
+| summarize count() by Category, bin(TimeGenerated, 1h)
+```
+
+| Category | TimeGenerated | count_ |
+|--------------|----------------------|--------|
+| Direct Agent | 2017-06-06T17:00:00Z | 15 |
+| Direct Agent | 2017-06-06T18:00:00Z | 60 |
+| Direct Agent | 2017-06-06T20:00:00Z | 55 |
+| Direct Agent | 2017-06-06T21:00:00Z | 57 |
+| Direct Agent | 2017-06-06T22:00:00Z | 60 |
+| ... | ... | ... |
+
+In these results though the bucket associated with "2017-06-06T19:00:00Z" is missing because there isn't any heartbeat data for that hour. Use the `make-series` function to assign a default value to empty buckets. This will generate a row for each category with two extra array columns, one for values, and one for matching time buckets:
+
+```Kusto
+Heartbeat
+| make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
+```
+
+| Category | count_ | TimeGenerated |
+|---|---|---|
+| Direct Agent | [15,60,0,55,60,57,60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00.0000000Z","2017-06-06T19:00:00.0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:00.0000000Z",...] |
+| ... | ... | ... |
+
+The third element of the *count_* array is a 0 as expected, and there is a matching timestamp of "2017-06-06T19:00:00.0000000Z" in the _TimeGenerated_ array. This array format is difficult to read though. Use `mvexpand` to expand the arrays and produce the same format output as generated by `summarize`:
+
+```Kusto
+Heartbeat
+| make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
+| mvexpand TimeGenerated, count_
+| project Category, TimeGenerated, count_
+```
+
+| Category | TimeGenerated | count_ |
+|--------------|----------------------|--------|
+| Direct Agent | 2017-06-06T17:00:00Z | 15 |
+| Direct Agent | 2017-06-06T18:00:00Z | 60 |
+| Direct Agent | 2017-06-06T19:00:00Z | 0 |
+| Direct Agent | 2017-06-06T20:00:00Z | 55 |
+| Direct Agent | 2017-06-06T21:00:00Z | 57 |
+| Direct Agent | 2017-06-06T22:00:00Z | 60 |
+| ... | ... | ... |
+
+
+
+### Narrowing results to a set of elements: `let`, `makeset`, `toscalar`, `in`
+A common scenario is to select the names of some specific entities based on a set of criteria and then filter a different data set down to that set of entities. For example you might find computers that are known to have missing updates and identify IPs that these computers called out to:
+
+
+```Kusto
+let ComputersNeedingUpdate = toscalar(
+    Update
+    | summarize makeset(Computer)
+    | project set_Computer
+);
+WindowsFirewall
+| where Computer in (ComputersNeedingUpdate)
+```
+
+## Joins
+Joins allow you to analyze data from multiple tables, in the same query. They merge the rows of two data sets by matching values of specified columns.
+
 
 ```Kusto
 SecurityEvent 
-| where AccountType == "User" and EventID == 4625 and TimeGenerated > ago(6h) 
-| summarize IPCount = dcount(IpAddress), makeset(IpAddress)  by Account
-| where IPCount > 5
-| sort by IPCount desc
+| where EventID == 4624		// sign-in events
+| project Computer, Account, TargetLogonId, LogonTime=TimeGenerated
+| join kind= inner (
+    SecurityEvent 
+    | where EventID == 4634		// sign-out events
+    | project TargetLogonId, LogoffTime=TimeGenerated
+) on TargetLogonId
+| extend Duration = LogoffTime-LogonTime
+| project-away TargetLogonId1 
+| top 10 by Duration desc
 ```
 
-### Find user accounts that failed to log in 
-The following example identifies user accounts that failed to log in more than five times in the last day, and when they last attempted to log in.
+In this example, the first dataset filters for all sign-in events. This is joined with a second dataset that filters for all sign-out events. The projected columns are _Computer_, _Account_, _TargetLogonId_, and _TimeGenerated_. The datasets are correlated by a shared column, _TargetLogonId_. The output is a single record per correlation, which 
+has both the sign-in and sign-out time.
 
-```Kusto
-let timeframe = 1d;
-SecurityEvent
-| where TimeGenerated > ago(1d)
-| where AccountType == 'User' and EventID == 4625 // 4625 - failed log in
-| summarize failed_login_attempts=count(), latest_failed_login=arg_max(TimeGenerated, Account) by Account 
-| where failed_login_attempts > 5
-| project-away Account1
-```
-
-Using **join**, and **let** statements we can check if the same suspicious accounts were later able to log in successfully.
-
-```Kusto
-let timeframe = 1d;
-let suspicious_users = 
-    SecurityEvent
-    | where TimeGenerated > ago(timeframe)
-    | where AccountType == 'User' and EventID == 4625 // 4625 - failed login
-    | summarize failed_login_attempts=count(), latest_failed_login=arg_max(TimeGenerated, Account) by Account 
-    | where failed_login_attempts > 5
-    | project-away Account1;
-let suspicious_users_that_later_logged_in = 
-    suspicious_users 
-    | join kind=innerunique (
-        SecurityEvent
-        | where TimeGenerated > ago(timeframe)
-        | where AccountType == 'User' and EventID == 4624 // 4624 - successful login,
-        | summarize latest_successful_login=arg_max(TimeGenerated, Account) by Account
-    ) on Account
-    | extend was_login_after_failures = iif(latest_successful_login>latest_failed_login, 1, 0)
-    | where was_login_after_failures == 1
-;
-suspicious_users_that_later_logged_in
-```
-
-## Usage
-
-The `Usage` data type can be used to track the ingested data volume by solution or data type. There are other techniques to study ingested data volumes by [computer](/azure/azure-monitor/platform/manage-cost-storage.md#data-volume-by-computer) or [Azure subscription, resource group or resource](/azure/azure-monitor/platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription).
-
-#### Data volume by solution
-
-The query used to view the billable data volume by solution over the last month (excluding the last partial day) is:
-
-```kusto
-Usage 
-| where TimeGenerated > ago(32d)
-| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
-| where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
-```
-
-Note that the clause `where IsBillable = true` filters out data types from certain solutions for which there is no ingestion charge.  Also the clause with `TimeGenerated` is only to ensure that the query experience in the Azure portal will look back beyond the default 24 hours. When using the Usage data type, `StartTime` and `EndTime` represent the time buckets for which results are presented. 
-
-#### Data volume by type
-
-You can drill in further to see data trends for by data type:
-
-```kusto
-Usage 
-| where TimeGenerated > ago(32d)
-| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
-| where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
-```
-
-Or to see a table by solution and type for the last month,
-
-```kusto
-Usage 
-| where TimeGenerated > ago(32d)
-| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
-| where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by Solution, DataType
-| sort by Solution asc, DataType asc
-```
+If both datasets have columns with the same names, the columns of the right-side dataset would be given an index number, so in this example the results would show _TargetLogonId_ with values from the left-side table and _TargetLogonId1_  with values from the right-side table. In this case, the second _TargetLogonId1_ column was removed by using the `project-away` operator.
 
 > [!NOTE]
-> Some of the fields of the Usage data type, while still in the schema, have been deprecated and will their values are no longer populated. 
-> These are **Computer** as well as fields related to ingestion (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** and **AverageProcessingTimeMs**.
+> To improve performance, keep only the relevant columns of the joined data-sets, using the `project` operator.
 
-## Updates
 
-### Computers Still Missing Updates
-This example shows a list of computers that were missing one or more critical updates a few days ago and are still missing updates.
+Use the following syntax to join two datasets and the joined key has a different name between the two tables:
+```
+Table1
+| join ( Table2 ) 
+on $left.key1 == $right.key2
+```
+
+### Lookup Tables
+A common use of joins is using static mapping of values using `datatable` that can help in transforming the results into more presentable way. For example, to enrich the security event data with the event name for each event ID.
 
 ```Kusto
-let ComputersMissingUpdates3DaysAgo = Update
-| where TimeGenerated between (ago(30d)..ago(1h))
-| where Classification !has "Critical" and UpdateState =~ "Needed"
-| summarize makeset(Computer);
-Update
-| where TimeGenerated > ago(1d)
-| where Classification has "Critical" and UpdateState =~ "Needed"
-| where Computer in (ComputersMissingUpdates3DaysAgo)
-| summarize UniqueUpdatesCount = dcount(Product) by Computer, OSType
+let DimTable = datatable(EventID:int, eventName:string)
+  [
+    4625, "Account activity",
+    4688, "Process action",
+    4634, "Account activity",
+    4658, "The handle to an object was closed",
+    4656, "A handle to an object was requested",
+    4690, "An attempt was made to duplicate a handle to an object",
+    4663, "An attempt was made to access an object",
+    5061, "Cryptographic operation",
+    5058, "Key file operation"
+  ];
+SecurityEvent
+| join kind = inner
+ DimTable on EventID
+| summarize count() by eventName
 ```
+
+| eventName | count_ |
+|:---|:---|
+| The handle to an object was closed | 290,995 |
+| A handle to an object was requested | 154,157 |
+| An attempt was made to duplicate a handle to an object | 144,305 |
+| An attempt was made to access an object | 123,669 |
+| Cryptographic operation | 153,495 |
+| Key file operation | 153,496 |
+
+## JSON and data Structures
+
+Nested objects are objects that contain other objects in an array or a map of key-value pairs. These objects are represented as JSON strings. This section describes how JSON is used to retrieve data and analyze nested objects.
+
+### Working with JSON strings
+Use `extractjson` to access a specific JSON element in a known path. This function requires a path expression that uses the following conventions.
+
+- _$_ to refer to the root folder
+- Use the bracket or dot notation to refer to indexes and elements as illustrated in the following examples.
+
+
+Use brackets for indexes and dots to separate elements:
+
+```Kusto
+let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
+print hosts_report
+| extend status = extractjson("$.hosts[0].status", hosts_report)
+```
+
+This is the same result using only the brackets notation:
+
+```Kusto
+let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
+print hosts_report 
+| extend status = extractjson("$['hosts'][0]['status']", hosts_report)
+```
+
+If there is only one element, you can use only the dot notation:
+
+```Kusto
+let hosts_report=dynamic({"location":"North_DC", "status":"running", "rate":5});
+print hosts_report 
+| extend status = hosts_report.status
+```
+
+
+### parsejson
+To access multiple elements in your json structure, it's easier to access it as a dynamic object. Use `parsejson` to cast text data to a dynamic object. Once converted to a dynamic type, additional functions can be used to analyze the data.
+
+```Kusto
+let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
+print hosts_object 
+| extend status0=hosts_object.hosts[0].status, rate1=hosts_object.hosts[1].rate
+```
+
+
+
+### arraylength
+Use `arraylength` to count the number of elements in an array:
+
+```Kusto
+let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
+print hosts_object 
+| extend hosts_num=arraylength(hosts_object.hosts)
+```
+
+### mvexpand
+Use `mvexpand` to break the properties of an object into separate rows.
+
+```Kusto
+let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
+print hosts_object 
+| mvexpand hosts_object.hosts[0]
+```
+
+![Screenshot shows hosts_0 with values for location, status, and rate.](images/samples/mvexpand.png)
+
+### buildschema
+Use `buildschema` to get the schema that admits all values of an object:
+
+```Kusto
+let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
+print hosts_object 
+| summarize buildschema(hosts_object)
+```
+
+The output is a schema in JSON format:
+```json
+{
+    "hosts":
+    {
+        "indexer":
+        {
+            "location": "string",
+            "rate": "int",
+            "status": "string"
+        }
+    }
+}
+```
+This output describes the names of the object fields and their matching data types. 
+
+Nested objects may have different schemas such as in the following example:
+
+```Kusto
+let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"status":"stopped", "rate":"3", "range":100}]}');
+print hosts_object 
+| summarize buildschema(hosts_object)
+```
+
+## Charts
+
+### Charting the results
+Start by reviewing how many computers there are per operating system, during the past hour:
+
+```Kusto
+Heartbeat
+| where TimeGenerated > ago(1h)
+| summarize count(Computer) by OSType  
+```
+
+By default, results display as a table:
+
+![Table](images/samples/table-display.png)
+
+To get a better view, select **Chart**, and choose the **Pie** option to visualize the results:
+
+![Pie chart](images/samples/charts-and-diagrams-pie.png)
+
+
+### Timecharts
+Show the average, 50th and 95th percentiles of processor time in bins of 1 hour. The query generates multiple series and you can then select which series to show in the time chart:
+
+```Kusto
+Perf
+| where TimeGenerated > ago(1d) 
+| where CounterName == "% Processor Time" 
+| summarize avg(CounterValue), percentiles(CounterValue, 50, 95)  by bin(TimeGenerated, 1h)
+```
+
+Select the **Line** chart display option:
+
+![Line chart](mimages/samples/charts-and-diagrams-multiSeries.png)
+
+#### Reference line
+
+A reference line can help you easily identifying if the metric exceeded a specific threshold. To add a line to a chart, extend the dataset with a constant column:
+
+```Kusto
+Perf
+| where TimeGenerated > ago(1d) 
+| where CounterName == "% Processor Time" 
+| summarize avg(CounterValue), percentiles(CounterValue, 50, 95)  by bin(TimeGenerated, 1h)
+| extend Threshold = 20
+```
+
+![Reference line](images/samples/charts-and-diagrams-multiSeriesThreshold.png)
+
+### Multiple dimensions
+Multiple expressions in the `by` clause of `summarize` create multiple rows in the results, one for each combination of values.
+
+```Kusto
+SecurityEvent
+| where TimeGenerated > ago(1d)
+| summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)
+```
+
+When you view the results as a chart, it uses the first column from the `by` clause. The following example shows a stacked column chart using the _EventID._ Dimensions must be of `string` type, so in this example the _EventID_ is being cast to string. 
+
+![Bar chart EventID](images/samples/charts-and-diagrams-multiDimension1.png)
+
+You can switch between by selecting the dropdown with the column name. 
+
+![Bar chart AccountType](images/samples/charts-and-diagrams-multiDimension2.png)
+
+
+
+
 
 ::: zone-end
 

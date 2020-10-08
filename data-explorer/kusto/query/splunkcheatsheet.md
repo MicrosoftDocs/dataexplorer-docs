@@ -2,7 +2,6 @@
 title: Splunk to Kusto log query | Microsoft Docs
 description: Help for users who are familiar with Splunk in learning Kusto log queries.
 ms.service: data-explorer
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
