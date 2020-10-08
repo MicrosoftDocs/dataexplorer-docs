@@ -449,3 +449,4 @@ The follower database administrator can modify the [caching policy](kusto/manage
 ## Next steps
 
 * For information about follower cluster configuration, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
+
