@@ -179,6 +179,6 @@ To display data in graphical form, use the [render operator](renderoperator.md).
 
 ::: zone pivot="azuremonitor"
 
-Cross-database and cross-cluster queries aren't supported in Azure Monitor.
+Cross-database and cross-cluster queries aren't supported in Azure Monitor. See [Cross workspace queries in Azure Monitor](/azure/azure-monitor/log-query/cross-workspace-query) for queries across multiple workspaces and apps.
 
 ::: zone-end

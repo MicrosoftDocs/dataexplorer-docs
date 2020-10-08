@@ -580,8 +580,6 @@
         href: ./kusto/query/whereoperator.md
     - name: Special functions
       items:
-      - name: app()
-        href: ./kusto/query/appfunction.md
       - name: cluster()
         href: ./kusto/query/clusterfunction.md
       - name: database()
@@ -596,8 +594,6 @@
         href: ./kusto/query/tablefunction.md
       - name: toscalar()
         href: ./kusto/query/toscalarfunction.md
-      - name: workspace()
-        href: ./kusto/query/workspacefunction.md
     - name: Scalar operators
       items:
       - name: Bitwise (binary) operators
