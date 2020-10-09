@@ -339,82 +339,132 @@ StormEvents
 
 :::image type="content" source="images/tutorial/column-hour-state.png" alt-text="Column chart by hour and state":::
 
-## Join data from two tables
-What if you need to retrieve data from two tables in a single query? The [join](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor) operator allows you to combine rows from multiple tables into a single result set. Each table must have a column with a matching value so that the join understands which rows to match.
+## Join
 
-[VMComputer](/azure/azure-monitor/reference/tables/vmcomputer) is a table used by Azure Monitor for VMs to store details about virtual machines that it monitors. [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) holds performance data collected from those virtual machines. One value collected in *InsightsMetrics* is available memory but not percentage memory available. To calculate the percentage, we need the physical memory for each virtual machine which is in *VMComputer*.
+How to find for two given EventTypes in what state both of them happened?
 
-The following example query uses a join to perform this calculation. The [distinct](/azure/data-explorer/kusto/query/joinoperator) is used with *VMComputer* since details are regularly collected from each computer creating multiple rows for each in that table. The two tables are joined using the *Computer* column. This means that a row is created in the result set that includes columns from both tables for each row in *InsightsMetrics* with a value in *Computer* that matches the same value in the *Computer* column in *VMComputer*.
+You can pull storm events with the first EventType and with the second EventType and then join the two sets on State.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-VMComputer
-| distinct Computer, PhysicalMemoryMB
-| join kind=inner (
-    InsightsMetrics
-    | where Namespace == "Memory" and Name == "AvailableMB"
-    | project TimeGenerated, Computer, AvailableMemoryMB = Val
-) on Computer
-| project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
+StormEvents
+| where EventType == "Lightning"
+| join (
+    StormEvents 
+    | where EventType == "Avalanche"
+) on State  
+| distinct State
 ```
 
 :::image type="content" source="images/tutorial/join-events-la.png" alt-text="Join events lightning and avalanche":::
 
+## User session example of join
 
+This section does not use the `StormEvents` table.
+
+Assume you have data that includes events marking the start and end of each user  session, with a unique ID for each session. 
+
+How long does each user session last?
+
+By using `extend` to provide an alias for the two timestamps, you can then compute the session duration.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+Events
+| where eventName == "session_started"
+| project start_time = timestamp, stop_time, country, session_id
+| join ( Events
+    | where eventName == "session_ended"
+    | project stop_time = timestamp, session_id
+    ) on session_id
+| extend duration = stop_time - start_time
+| project start_time, stop_time, country, duration
+| take 10
+```
+
+:::image type="content" source="images/tutorial/user-session-extend.png" alt-text="User session extend":::
+
+It's good practice to use `project` to select just the columns we need before performing the join.
+In the same clauses, we rename the timestamp column.
+
+## Plot a distribution
+
+How many storms are there of different lengths?
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| extend  duration = EndTime - StartTime
+| where duration > 0s
+| where duration < 3h
+| summarize event_count = count()
+    by bin(duration, 5m)
+| sort by duration asc
+| render timechart
+```
+
+:::image type="content" source="images/tutorial/event-count-duration.png" alt-text="Event count timechart by duration":::
+
+Or use `| render columnchart`:
+
+:::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Column chart event count timechart by duration":::
+
+## Percentiles
+
+What ranges of durations cover different percentages of storms?
+
+Use the above query, but replace `render` with:
+
+```kusto
+| summarize percentiles(duration, 5, 20, 50, 80, 95)
+```
+
+In this case, we provided no `by` clause, so the result is a single row:
+
+:::image type="content" source="images/tutorial/summarize-percentiles-duration.png" alt-text="Table summarize percentiles by duration":::
+
+From which we can see that:
+
+* 5% of storms have a duration of less than 5m;
+* 50% of storms last less than 1h 25m;
+* 5% of storms last at least 2h 50m.
+
+To get a separate breakdown for each state, we just have to bring the state column separately through both summarize operators:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| extend  duration = EndTime - StartTime
+| where duration > 0s
+| where duration < 3h
+| summarize event_count = count()
+    by bin(duration, 5m), State
+| sort by duration asc
+| summarize percentiles(duration, 5, 20, 50, 80, 95) by State
+```
+
+:::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state":::
 
 
 ## Let: Assign a result to a variable
-Use [let](./letstatement.md) to make queries easier to read and manage. This operator allows you to assign the results of a query to a variable that you can use later. The same query in the previous example could be rewritten as the following.
 
- 
+Use [let](./letstatement.md) to separate out the parts of the query expression in the 'join' example above. The results are unchanged:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-let PhysicalComputer = VMComputer
-    | distinct Computer, PhysicalMemoryMB;
-    let AvailableMemory = 
-InsightsMetrics
-    | where Namespace == "Memory" and Name == "AvailableMB"
-    | project TimeGenerated, Computer, AvailableMemoryMB = Val;
-PhysicalComputer
-| join kind=inner (AvailableMemory) on Computer
-| project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
+let LightningStorms = 
+    StormEvents
+    | where EventType == "Lightning";
+let AvalancheStorms = 
+    StormEvents
+    | where EventType == "Avalanche";
+LightningStorms 
+| join (AvalancheStorms) on State
+| distinct State
 ```
 
 
-## Combining data from several databases in a query
 
-See [cross-database queries](./cross-cluster-or-database-queries.md) for detailed discussion
-
-When you write a query of the style:
-
-```kusto
-Logs | where ...
-```
-
-The table named Logs has to be in your default database. If you want to access tables from another database use the following syntax:
-
-```kusto
-database("db").Table
-```
-
-So if you have databases named *Diagnostics* and *Telemetry* and want to correlate some of their data, you might write (assuming *Diagnostics* is your default database)
-
-```kusto
-Logs | join database("Telemetry").Metrics on Request MachineId | ...
-```
-
-or if your default database is *Telemetry*
-
-```kusto
-union Requests, database("Diagnostics").Logs | ...
-```
-    
-All of the above assumed that both databases reside in the cluster you are currently connected to. Suppose that *Telemetry* database belonged to another cluster named *TelemetryCluster.kusto.windows.net* then to access it you'll need
-
-```kusto
-Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
-```
-
-> [!NOTE]
-> when the cluster is specified the database is mandatory
 
 ::: zone-end
 
@@ -616,133 +666,82 @@ InsightsMetrics
 
 :::image type="content" source="images/tutorial/processor-timechart-multiple.png" alt-text="Processor time chart multiple series":::
 
+## Join data from two tables
+What if you need to retrieve data from two tables in a single query? The [join](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor) operator allows you to combine rows from multiple tables into a single result set. Each table must have a column with a matching value so that the join understands which rows to match.
 
+[VMComputer](/azure/azure-monitor/reference/tables/vmcomputer) is a table used by Azure Monitor for VMs to store details about virtual machines that it monitors. [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) holds performance data collected from those virtual machines. One value collected in *InsightsMetrics* is available memory but not percentage memory available. To calculate the percentage, we need the physical memory for each virtual machine which is in *VMComputer*.
 
-## Join
+The following example query uses a join to perform this calculation. The [distinct](/azure/data-explorer/kusto/query/joinoperator) is used with *VMComputer* since details are regularly collected from each computer creating multiple rows for each in that table. The two tables are joined using the *Computer* column. This means that a row is created in the result set that includes columns from both tables for each row in *InsightsMetrics* with a value in *Computer* that matches the same value in the *Computer* column in *VMComputer*.
 
-How to find for two given EventTypes in what state both of them happened?
-
-You can pull storm events with the first EventType and with the second EventType and then join the two sets on State.
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-StormEvents
-| where EventType == "Lightning"
-| join (
-    StormEvents 
-    | where EventType == "Avalanche"
-) on State  
-| distinct State
+VMComputer
+| distinct Computer, PhysicalMemoryMB
+| join kind=inner (
+    InsightsMetrics
+    | where Namespace == "Memory" and Name == "AvailableMB"
+    | project TimeGenerated, Computer, AvailableMemoryMB = Val
+) on Computer
+| project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
 ```
 
 :::image type="content" source="images/tutorial/join-events-la.png" alt-text="Join events lightning and avalanche":::
 
-## User session example of join
-
-This section does not use the `StormEvents` table.
-
-Assume you have data that includes events marking the start and end of each user  session, with a unique ID for each session. 
-
-How long does each user session last?
-
-By using `extend` to provide an alias for the two timestamps, you can then compute the session duration.
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-Events
-| where eventName == "session_started"
-| project start_time = timestamp, stop_time, country, session_id
-| join ( Events
-    | where eventName == "session_ended"
-    | project stop_time = timestamp, session_id
-    ) on session_id
-| extend duration = stop_time - start_time
-| project start_time, stop_time, country, duration
-| take 10
-```
-
-:::image type="content" source="images/tutorial/user-session-extend.png" alt-text="User session extend":::
-
-It's good practice to use `project` to select just the columns we need before performing the join.
-In the same clauses, we rename the timestamp column.
-
-## Plot a distribution
-
-How many storms are there of different lengths?
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| extend  duration = EndTime - StartTime
-| where duration > 0s
-| where duration < 3h
-| summarize event_count = count()
-    by bin(duration, 5m)
-| sort by duration asc
-| render timechart
-```
-
-:::image type="content" source="images/tutorial/event-count-duration.png" alt-text="Event count timechart by duration":::
-
-Or use `| render columnchart`:
-
-:::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Column chart event count timechart by duration":::
-
-## Percentiles
-
-What ranges of durations cover different percentages of storms?
-
-Use the above query, but replace `render` with:
-
-```kusto
-| summarize percentiles(duration, 5, 20, 50, 80, 95)
-```
-
-In this case, we provided no `by` clause, so the result is a single row:
-
-:::image type="content" source="images/tutorial/summarize-percentiles-duration.png" alt-text="Table summarize percentiles by duration":::
-
-From which we can see that:
-
-* 5% of storms have a duration of less than 5m;
-* 50% of storms last less than 1h 25m;
-* 5% of storms last at least 2h 50m.
-
-To get a separate breakdown for each state, we just have to bring the state column separately through both summarize operators:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| extend  duration = EndTime - StartTime
-| where duration > 0s
-| where duration < 3h
-| summarize event_count = count()
-    by bin(duration, 5m), State
-| sort by duration asc
-| summarize percentiles(duration, 5, 20, 50, 80, 95) by State
-```
-
-:::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state":::
 
 ## Let: Assign a result to a variable
+Use [let](./letstatement.md) to make queries easier to read and manage. This operator allows you to assign the results of a query to a variable that you can use later. The same query in the previous example could be rewritten as the following.
 
-Use [let](./letstatement.md) to separate out the parts of the query expression in the 'join' example above. The results are unchanged:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
+ 
 ```kusto
-let LightningStorms = 
-    StormEvents
-    | where EventType == "Lightning";
-let AvalancheStorms = 
-    StormEvents
-    | where EventType == "Avalanche";
-LightningStorms 
-| join (AvalancheStorms) on State
-| distinct State
+let PhysicalComputer = VMComputer
+    | distinct Computer, PhysicalMemoryMB;
+    let AvailableMemory = 
+InsightsMetrics
+    | where Namespace == "Memory" and Name == "AvailableMB"
+    | project TimeGenerated, Computer, AvailableMemoryMB = Val;
+PhysicalComputer
+| join kind=inner (AvailableMemory) on Computer
+| project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
 ```
 
 > [!TIP]
 > In the Kusto Explorer client, don't put blank lines between the parts of this. Make sure to execute all of it.
+
+## Combining data from several databases in a query
+
+See [cross-database queries](./cross-cluster-or-database-queries.md) for detailed discussion
+
+When you write a query of the style:
+
+```kusto
+Logs | where ...
+```
+
+The table named Logs has to be in your default database. If you want to access tables from another database use the following syntax:
+
+```kusto
+database("db").Table
+```
+
+So if you have databases named *Diagnostics* and *Telemetry* and want to correlate some of their data, you might write (assuming *Diagnostics* is your default database)
+
+```kusto
+Logs | join database("Telemetry").Metrics on Request MachineId | ...
+```
+
+or if your default database is *Telemetry*
+
+```kusto
+union Requests, database("Diagnostics").Logs | ...
+```
+    
+All of the above assumed that both databases reside in the cluster you are currently connected to. Suppose that *Telemetry* database belonged to another cluster named *TelemetryCluster.kusto.windows.net* then to access it you'll need
+
+```kusto
+Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
+```
+
+> [!NOTE]
+> when the cluster is specified the database is mandatory
 
 
 

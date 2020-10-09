@@ -1757,8 +1757,6 @@ You can switch between by selecting the dropdown with the column name.
 ## Smart analytics
 This section includes examples that use smart analytics functions in Log Analytics to perform analysis of user activity. You can either use these examples to analyze your own applications monitored by Application Insights or use the concepts in these queries for similar analysis on other data. 
 
-See the [Kusto language reference](/azure/kusto/query/) for details on the different keywords used in these samples. Go through a [lesson on creating queries](get-started-queries.md) if you're new to Log Analytics.
-
 ### Cohorts analytics
 
 Cohort analysis tracks the activity of specific groups of users, known as cohorts. It attempts to measure how appealing a service is by measuring the rate of returning users. The users are grouped by the time they first used the service. When analyzing cohorts, we expect to find a decrease in activity over the first tracked periods. Each cohort is titled by the week its members were observed for the first time.
@@ -1826,7 +1824,7 @@ week
 ```
 This example results in the following output.
 
-![Cohort analysis output](media/smart-analytics/cohorts.png)
+:::image type="content" source="images/samples/cohorts.png" alt-text="Cohort analysis output":::
 
 ### Rolling monthly active users and user stickiness
 The following examples uses time-series analysis with the [series_fir](/azure/kusto/query/series-firfunction) function which allows you to perform sliding window computations. The sample application being monitored is an online store that tracks users' activity through custom events. The query tracks two types of user activities, _AddToCart_ and _Checkout_, and defines _active users_ as those who performed a check-out at least once in a given day.
@@ -1874,7 +1872,7 @@ customEvents
 
 This example results in the following output.
 
-![Rolling monthly users output](media/smart-analytics/rolling-mau.png)
+:::image type="content" source="images/samples/rolling-mau.png" alt-text="Rolling monthly users output":::
 
 THe following example turns the above query into a reusable function and uses it to calculate rolling user stickiness. Active users in this query are defined as only those users that performed check-out at least once in a given day.
 
@@ -1916,7 +1914,7 @@ on Timestamp
 
 This example results in the following output.
 
-![User stickiness output](media/smart-analytics/user-stickiness.png)
+:::image type="content" source="images/samples/user-stickiness.png" alt-text="User stickiness output":::
 
 ### Regression analysis
 This example demonstrates how to create an automated detector for service disruptions based exclusively on an application's trace logs. The detector seeks abnormal  sudden increases in the relative amount of error and warning traces in the application.
