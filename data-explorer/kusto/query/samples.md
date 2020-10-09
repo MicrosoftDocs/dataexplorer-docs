@@ -1721,7 +1721,7 @@ Perf
 
 Select the **Line** chart display option:
 
-![Line chart](mimages/samples/charts-and-diagrams-multiSeries.png)
+![Line chart](images/samples/charts-and-diagrams-multiSeries.png)
 
 #### Reference line
 
