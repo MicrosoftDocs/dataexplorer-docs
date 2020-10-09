@@ -462,6 +462,45 @@ LightningStorms
 | join (AvalancheStorms) on State
 | distinct State
 ```
+> [!TIP]
+> In the Kusto Explorer client, don't put blank lines between the parts of this. Make sure to execute all of it.
+
+## Combining data from several databases in a query
+
+See [cross-database queries](./cross-cluster-or-database-queries.md) for detailed discussion
+
+When you write a query of the style:
+
+```kusto
+Logs | where ...
+```
+
+The table named Logs has to be in your default database. If you want to access tables from another database use the following syntax:
+
+```kusto
+database("db").Table
+```
+
+So if you have databases named *Diagnostics* and *Telemetry* and want to correlate some of their data, you might write (assuming *Diagnostics* is your default database)
+
+```kusto
+Logs | join database("Telemetry").Metrics on Request MachineId | ...
+```
+
+or if your default database is *Telemetry*
+
+```kusto
+union Requests, database("Diagnostics").Logs | ...
+```
+    
+All of the above assumed that both databases reside in the cluster you are currently connected to. Suppose that *Telemetry* database belonged to another cluster named *TelemetryCluster.kusto.windows.net* then to access it you'll need
+
+```kusto
+Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
+```
+
+> [!NOTE]
+> when the cluster is specified the database is mandatory
 
 
 
@@ -684,7 +723,7 @@ VMComputer
 | project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
 ```
 
-:::image type="content" source="images/tutorial/join-events-la.png" alt-text="Join events lightning and avalanche":::
+
 
 
 ## Let: Assign a result to a variable
@@ -702,47 +741,6 @@ PhysicalComputer
 | join kind=inner (AvailableMemory) on Computer
 | project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
 ```
-
-> [!TIP]
-> In the Kusto Explorer client, don't put blank lines between the parts of this. Make sure to execute all of it.
-
-## Combining data from several databases in a query
-
-See [cross-database queries](./cross-cluster-or-database-queries.md) for detailed discussion
-
-When you write a query of the style:
-
-```kusto
-Logs | where ...
-```
-
-The table named Logs has to be in your default database. If you want to access tables from another database use the following syntax:
-
-```kusto
-database("db").Table
-```
-
-So if you have databases named *Diagnostics* and *Telemetry* and want to correlate some of their data, you might write (assuming *Diagnostics* is your default database)
-
-```kusto
-Logs | join database("Telemetry").Metrics on Request MachineId | ...
-```
-
-or if your default database is *Telemetry*
-
-```kusto
-union Requests, database("Diagnostics").Logs | ...
-```
-    
-All of the above assumed that both databases reside in the cluster you are currently connected to. Suppose that *Telemetry* database belonged to another cluster named *TelemetryCluster.kusto.windows.net* then to access it you'll need
-
-```kusto
-Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
-```
-
-> [!NOTE]
-> when the cluster is specified the database is mandatory
-
 
 
 ::: zone-end
