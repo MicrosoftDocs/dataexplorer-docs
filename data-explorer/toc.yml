@@ -343,11 +343,11 @@
       - name: Azure Data Studio
         items:
         - name: Kusto extension for Azure Data Studio
-          href: https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension
+          href: https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension?context=/azure/data-explorer/context/context
         - name: Use Kusto extension for Azure Data Studio
-          href: https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel
+          href: https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context
         - name: Use Kqlmagic in Azure Data Studio
-          href: https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kqlmagic
+          href: https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
     - name: Azure Pipelines
       href: devops.md  
     - name: Sync Kusto

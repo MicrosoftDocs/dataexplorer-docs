@@ -58,7 +58,7 @@ There are several tools available for running queries in Azure Data Explorer.
 * [Azure Data Lake](data-lake-query-data.md)
 * [Apache Spark](spark-connector.md)
 * Microsoft Power Apps
-* Azure Data Studio: [Kusto extension overview](https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension), [use Kusto](https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel), and [use Kqlmagic](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic)
+* Azure Data Studio: [Kusto extension overview](https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension?context=/azure/data-explorer/context/context), [use Kusto](https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context), and [use Kqlmagic](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic?context=/azure/data-explorer/context/context)
 
 ## Visualizations, dashboards, and reporting
 
@@ -68,7 +68,7 @@ The [visualization overview](viz-overview.md) details data visualization, dashbo
 
 * [Azure Notebooks](azure-notebooks.md)
 * [Jupyter Notebooks](kqlmagic.md)
-* Azure Data Studio: [Kusto extension overview](https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension), [use Kusto](https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel), and [use Kqlmagic](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic)
+* Azure Data Studio: [Kusto extension overview](https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension?context=/azure/data-explorer/context/context), [use Kusto](https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context), and [use Kqlmagic](https://docs.microsoft.com/sql/azure-data-studio/notebooks-kqlmagic?context=/azure/data-explorer/context/context)
 
 ## Orchestration
 
