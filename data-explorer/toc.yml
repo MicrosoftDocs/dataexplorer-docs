@@ -29,6 +29,8 @@
     href: visualize-power-bi.md  
 - name: Concepts
   items:
+  - name: EngineV3
+    href: engine-v3.md
   - name: Data ingestion
     items:  
     - name: Data ingestion overview
