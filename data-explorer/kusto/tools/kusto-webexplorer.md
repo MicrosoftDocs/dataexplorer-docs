@@ -67,7 +67,7 @@ The following options may be specified:
 
 ![alt text](./Images/KustoTools-WebExplorer/DeepLink.gif "DeepLink")
 
-## Feedback
+## How to provide feedback
 
 You can submit your feedback via the tool.
 ![alt text](./Images/KustoTools-WebExplorer/Feedback.gif "Feedback")
