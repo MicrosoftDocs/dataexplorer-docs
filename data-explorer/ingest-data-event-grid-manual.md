@@ -20,7 +20,7 @@ ms.date: 10/05/2020
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, and blobs written to blob containers, among many other [ingestion methods](ingest-data-overview.md).
 
-In this article, you'll create resources manually that are needed to create an Event Grid data connection. The resources you create are the Event Grid subscription, Event Hub namespace, and Event Hub. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub. Then you can ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection.
+In this article, you'll create resources manually that are needed to create an Event Grid data connection. The resources you create are the Event Grid subscription, Event Hub namespace, and Event Hub. Event Hub namespace and Event Hub are described in the [Prerequisites](#prerequisites). The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub. Then you can ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection.
 
 For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md). To automatically create the resources, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md).
 
@@ -31,7 +31,7 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 * [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
     * Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage` or `StorageV2`.
     * [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction) is also supported.
-* [An event hub](/azure/event-hubs/event-hubs-create).
+* [An Event Hub](/azure/event-hubs/event-hubs-create).
 
 > [!NOTE]
 > For best performance, create all resources in the same region as the Azure Data Explorer cluster.
@@ -55,9 +55,16 @@ For general information about ingesting into Azure Data Explorer from Event Grid
     | Source Resource | *gridteststorage1* | The name of your storage account. Automatically populated.|
     | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. Automatically populated.|
     | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the currently supported types: Microsoft.Storage.BlobCreated. or Microsoft.Storage.BlobRenamed|
+
+1. Click **Select an endpoint** and fill in the following values for your Event Hub:
+
+    :::image type="content" source="media/eventgrid/endpoint-details.png" alt-text="Pick an event handler to receive your events - Event Hub - Azure Data Explorer":::
+    
+    |**Setting** | **Suggested value** | **Field description**|
+    |---|---|---|
     | Endpoint Type | *Event Hubs* | The type of endpoint to which you send the events. |
     | Endpoint | *test-hub* | The event hub you created. |
-
+    
 1. Select the **Filters** tab if you want to track specific subjects. Set the filters for the notifications as follows:
    
     :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab event grid":::
