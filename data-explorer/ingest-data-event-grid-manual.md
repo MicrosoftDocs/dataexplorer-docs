@@ -18,9 +18,9 @@ ms.date: 10/05/2020
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, and blobs written to blob containers.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, and blobs written to blob containers, among many other [ingestion methods](ingest-data-overview.md).
 
-In this article, you'll create an Event Grid data connection to create resources manually. The resources you create are the Event Grid subscription, Event Hub namespace, and Event Hub. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub. Then you can ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection.
+In this article, you'll create resources manually that are needed to create an Event Grid data connection. The resources you create are the Event Grid subscription, Event Hub namespace, and Event Hub. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub. Then you can ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection.
 
 For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md). To automatically create the resources, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md).
 
@@ -51,9 +51,9 @@ For general information about ingesting into Azure Data Explorer from Event Grid
     |---|---|---|
     | Name | *test-grid-connection* | The name of the event grid subscription that you want to create.|
     | Event Schema | *Event Grid Schema* | The schema that should be used for the Event Grid. |
-    | Topic Type | *Storage account* | The type of Event Grid topic. |
-    | Source Resource | *gridteststorage1* | The name of your storage account. |
-    | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. |
+    | Topic Type | *Storage account* | The type of Event Grid topic. Automatically populated.|
+    | Source Resource | *gridteststorage1* | The name of your storage account. Automatically populated.|
+    | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. Automatically populated.|
     | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the currently supported types: Microsoft.Storage.BlobCreated. or Microsoft.Storage.BlobRenamed|
     | Endpoint Type | *Event Hubs* | The type of endpoint to which you send the events. |
     | Endpoint | *test-hub* | The event hub you created. |
@@ -70,6 +70,8 @@ For general information about ingesting into Azure Data Explorer from Event Grid
    1. **Case-sensitive subject matching** field indicates whether the prefix and suffix filters are case-sensitive.
 
     For more information about filtering events, see [blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events).
+
+1. Select **Create**
 
 > [!NOTE]
 > When the endpoint doesn't acknowledge receipt of an event, Azure Event Grid activates a retry mechanism. If this retry delivery fails, Event Grid can deliver the undelivered events to a storage account using a process of *dead-lettering*. For more information, see [Event Grid message delivery and retry](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration).
