@@ -157,5 +157,5 @@ might introduce duplicates by itself (for example, there's a retry mechanism tha
 with already-in-progress ingestion calls). Attempting to set a unique `ingest-by` tag
 for each ingestion call might result in a severe impact on performance.
 * If such tags aren't required for some period of time after the data is ingested,
-we recommend that you [drop the tags](extents-commands.md#drop-extent-tags).
+we recommend that you [drop extent tags](drop-extent-tags.md).
  

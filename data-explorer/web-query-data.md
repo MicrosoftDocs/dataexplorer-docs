@@ -72,7 +72,7 @@ You can now run queries against either cluster that you're connected to (assumin
     ```
     This query returns the ten newest records in the **StormEvents** table. The left side of the result should look like the following table.
 
-    ![Query result set](media/web-query-data/result-set-01.png)
+    :::image type="content" source="media/web-query-data/result-set-01.png" alt-text="Screenshot of a table that lists the start time, end time, episode, event id, state, and event type for ten storm events." border="false":::
 
     The following image shows the state that the application should now be in, with clusters added, and a query with results.
 
@@ -92,7 +92,7 @@ You can now run queries against either cluster that you're connected to (assumin
 
    This query returns the same records as the first one, but includes only the columns specified in the `project` statement. The result should look like the following table.
 
-    ![Query result set](media/web-query-data/result-set-02.png)
+    :::image type="content" source="media/web-query-data/result-set-02.png" alt-text="Screenshot of a table that lists the start time, end time, state, event type, damage property, and episode narrative for ten storm events." border="false":::
 
 1. At the top of the query window, select **Recall**.
 
@@ -128,7 +128,7 @@ Now you've seen how basic queries work, let's look at how you can use the table 
 
 1. In the grid, expand **California** to see records for that state.
 
-    ![Query result set](media/web-query-data/result-set-03.png)
+    :::image type="content" source="media/web-query-data/result-set-03.png" alt-text="Screenshot of a query results grid. The California group is expanded, and three rows are visible, with data from events in California." border="false":::
 
     This type of grouping can be helpful when doing exploratory analysis.
 

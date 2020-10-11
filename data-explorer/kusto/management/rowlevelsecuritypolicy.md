@@ -1,15 +1,15 @@
 ---
-title: Row Level Security (Preview) - Azure Data Explorer
-description: This article describes Row Level Security (Preview) in Azure Data Explorer.
+title: Row Level Security - Azure Data Explorer
+description: This article describes Row Level Security in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/25/2020
+ms.date: 10/11/2020
 ---
-# Row Level Security (Preview)
+# Row Level Security
 
 Use group membership or execution context to control access to rows in a database table.
 

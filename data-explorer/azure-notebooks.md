@@ -44,13 +44,13 @@ ms.date: 04/01/2020
 1. In your new project, create a notebook. The notebook should use a [supported language](https://github.com/Azure/azure-kusto-python#minimum-requirements).
 To create a notebook, select **+ New** and select **Notebook**.
 
-    ![Create new notebook](media/azurenotebooks/an-create-new-notebook-menu.png) 
+    :::image type="content" source="media/azurenotebooks/an-create-new-notebook-menu.png" alt-text="Screenshot of a new project page in Azure Notebooks. In the New menu, Notebook is highlighted." border="false":::
 
 1. In the **Create New Notebook** dialog box, enter the notebook name.
 
 1. Select **Python 3.6** and select **New**.
     
-    ![Create new notebook](media/azurenotebooks/an-create-new-notebook.png) 
+    :::image type="content" source="media/azurenotebooks/an-create-new-notebook.png" alt-text="Screenshot of the Create New Notebook dialog box, with the notebook name value highlighted, Python 3.6 selected, and the New button highlighted." border="false"::: 
     
 1. In your project, select your new notebook.
 
