@@ -1,15 +1,15 @@
 ---
-title: RowLevelSecurity policy (Preview) - Azure Data Explorer | Microsoft Docs
-description: This article describes RowLevelSecurity policy (Preview) in Azure Data Explorer.
+title: RowLevelSecurity policy - Azure Data Explorer | Microsoft Docs
+description: This article describes RowLevelSecurity policy in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/25/2020
+ms.date: 10/11/2020
 ---
-# row_level_security policy command (Preview)
+# row_level_security policy command
 
 This article describes commands used for configuring a [row_level_security policy](rowlevelsecuritypolicy.md) for database tables.
 
