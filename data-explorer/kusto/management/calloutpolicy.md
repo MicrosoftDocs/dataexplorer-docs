@@ -18,13 +18,12 @@ Callout policies are being managed at cluster-level and are classified into the 
 * `kusto` - Controls Azure Data Explorer cross-cluster queries.
 * `sql` - Controls the [SQL plugin](../query/sqlrequestplugin.md).
 * `cosmosdb` - Controls the [CosmosDB plugin](../query/cosmosdb-plugin.md).
-* `webapi` - Controls other external Web calls.
 * `sandbox_artifacts` - Controls sandboxed plugins ([python](../query/pythonplugin.md) | [R](../query/rplugin.md)).
 * `external_data` - Controls access to external data through [external tables](../query/schema-entities/externaltables.md) or [externaldata](../query/externaldata-operator.md) operator.
 
 Callout policy is composed of the following.
 
-* **CalloutType** - Defines the type of the callout, and can be `kusto`, `sql`, or `webapi`
+* **CalloutType** - Defines the type of the callout, and can be `kusto` or `sql`.
 * **CalloutUriRegex** - Specifies the permitted Regex of the callout's domain
 * **CanCall** - Indicates whether the callout is permitted external calls.
 
@@ -57,13 +56,13 @@ The commands require [AllDatabasesAdmin](access-control/role-based-authorization
 **Alter callout policies**
 
 ```kusto
-.alter cluster policy callout @'[{"CalloutType": "webapi","CalloutUriRegex": "en\\.wikipedia\\.org","CanCall": true}]'
+.alter cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname.database.azure.com","CanCall": true}]'
 ```
 
 **Add a set of permitted callouts**
 
 ```kusto
-.alter-merge cluster policy callout @'[{"CalloutType": "webapi","CalloutUriRegex": "en\\.wikipedia\\.org","CanCall": true}, {"CalloutType": "webapi","CalloutUriRegex": "bing\\.com","CanCall": true}]'
+.alter-merge cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname.database.azure.com","CanCall": true}]'
 ```
 
 **Delete all non-immutable callout policies**

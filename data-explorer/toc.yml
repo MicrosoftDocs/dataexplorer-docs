@@ -600,7 +600,7 @@
         href: ./kusto/query/externaltablefunction.md
       - name: materialize()
         href: ./kusto/query/materializefunction.md
-      - name: materialize_view()
+      - name: materialized_view()
         href: ./kusto/query/materialized-view-function.md
       - name: table()
         href: ./kusto/query/tablefunction.md
@@ -668,6 +668,8 @@
         href: ./kusto/query/bagkeysfunction.md
       - name: bag_merge()
         href: ./kusto/query/bag-merge-function.md
+      - name: bag_remove_keys()
+        href: ./kusto/query/bag-remove-keys-function.md
       - name: base64_decode_toarray()
         href: ./kusto/query/base64_decode_toarrayfunction.md
       - name: base64_decode_tostring()
@@ -1032,6 +1034,10 @@
         href: ./kusto/query/welch-testfunction.md
       - name: zip()
         href: ./kusto/query/zipfunction.md
+      - name: zlib_compress_to_base64_string()
+        href: ./kusto/query/zlib-base64-compress.md
+      - name: zlib_decompress_from_base64_string()
+        href: ./kusto/query/zlib-base64-decompress.md 
     - name: Aggregation functions
       items:
       - name: any()
@@ -1162,6 +1168,8 @@
         href: ./kusto/query/series-fit-linefunction.md
       - name: series_fit_line_dynamic()
         href: ./kusto/query/series-fit-line-dynamicfunction.md
+      - name: series_fit_poly()
+        href: ./kusto/query/series-fit-poly-function.md
       - name: series_greater()
         href: ./kusto/query/series-greaterfunction.md
       - name: series_greater_equals()
@@ -1341,6 +1349,8 @@
           href: ./kusto/management/show-table-details-command.md
         - name: .show table schema
           href: ./kusto/management/show-table-schema-command.md
+        - name: .clear table data
+          href: ./kusto/management/clear-table-data-command.md
       - name: External tables
         items:
         - name: External tables general control commands
@@ -1435,6 +1445,12 @@
           href: ./kusto/management/partitioningpolicy.md
         - name: partitioning policy command
           href: ./kusto/management/partitioning-policy.md
+      - name: Query throttling
+        items:
+        - name: Query throttling policy
+          href: ./kusto/management/query-throttling-policy.md
+        - name: Query throttling policy commands
+          href: ./kusto/management/query-throttling-policy-commands.md
       - name: Retention
         items:
         - name: Retention policy
@@ -1476,7 +1492,7 @@
         - name: Streaming ingestion policy
           href: ./kusto/management/streamingingestionpolicy.md
         - name: streamingingestion policy command
-          href: ./kusto/management/streamingingestion-policy.md
+          href: ./kusto/management/streamingingestion-policy.md    
       - name: Update
         items:
         - name: Update policy
@@ -1555,11 +1571,13 @@
       items:
       - name: Identities
         href: ./kusto/management/access-control/principals-and-identity-providers.md
-      - name: AAD
+      - name: Azure Active Directory
+        displayName: AAD, Azure AD
         href: ./kusto/management/access-control/aad.md
       - name: Principal roles
         href: ./kusto/management/access-control/role-based-authorization.md
-      - name: How-To AAD authentication
+      - name: How-To Azure Active Directory authentication
+        displayName: AAD, Azure AD
         href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
     - name: Advanced data management
       items:
@@ -1652,7 +1670,8 @@
         href: ./kusto/api/tds/clients.md
       - name: Linked server
         href: ./kusto/api/tds/linkedserver.md
-      - name: AAD
+      - name: Azure Active Directory
+        displayName: AAD, Azure AD
         href: ./kusto/api/tds/aad.md
       - name: Known issues
         href: ./kusto/api/tds/sqlknownissues.md

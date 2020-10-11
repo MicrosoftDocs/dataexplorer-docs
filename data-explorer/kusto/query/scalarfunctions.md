@@ -78,9 +78,15 @@ ms.date: 05/27/2020
 |[array_iif()](arrayifffunction.md)|Applies element-wise iif function on arrays.|
 |[array_index_of()](arrayindexoffunction.md)|Searches the array for the specified item, and returns its position.|
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
+|[array_rotate_left()](array_rotate_leftfunction.md)|Rotates values inside a dynamic array to the left.|
+|[array_rotate_right()](array_rotate_rightfunction.md)|Rotates values inside a dynamic array to the right.|
+|[array_shift_left()](array_shift_leftfunction.md)|Shifts values inside a dynamic array to the left.|
+|[array_shift_right()](array_shift_rightfunction.md)|Shifts values inside a dynamic array to the right.|
 |[array_slice()](arrayslicefunction.md)|Extracts a slice of a dynamic array.|
 |[array_split()](arraysplitfunction.md)|Builds an array of arrays split from the input array.|
 |[bag_keys()](bagkeysfunction.md)|Enumerates all the root keys in a dynamic property-bag object.|
+|[bag_merge()](bag-merge-function.md)|Merges dynamic property-bags into a dynamic property-bag with all properties merged.|
+|[bag_remove_keys()](bag-remove-keys-function.md)|Removes keys and associated values from a dynamic property-bag.|
 |[pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[pack_all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
 |[pack_array()](packarrayfunction.md)|Packs all input values into a dynamic array.|
@@ -213,6 +219,7 @@ ms.date: 05/27/2020
 |[series_fit_2lines_dynamic()](series-fit-2lines-dynamicfunction.md)|Applies two segments linear regression on a series, returning dynamic object.|
 |[series_fit_line()](series-fit-linefunction.md)|Applies linear regression on a series, returning multiple columns.|
 |[series_fit_line_dynamic()](series-fit-line-dynamicfunction.md)|Applies linear regression on a series, returning dynamic object.|
+|[series_fit_poly()](series-fit-poly-function.md)|Applies polynomial regression on a series, returning multiple columns.|
 |[series_ifft()](series-ifft-function.md)|Applies the Inverse Fast Fourier Transform (IFFT) on a series.|
 |[series_iir()](series-iirfunction.md)|Applies an Infinite Impulse Response filter on a series.|
 |[series_outliers()](series-outliersfunction.md)|Scores anomaly points in a series.|
@@ -230,7 +237,7 @@ ms.date: 05/27/2020
 |[base64_encode_tostring()](base64_encode_tostringfunction.md)|Encodes a string as base64 string.|
 |[base64_decode_tostring()](base64_decode_tostringfunction.md)|Decodes a base64 string to a UTF-8 string.|
 |[base64_decode_toarray()](base64_decode_toarrayfunction.md)|Decodes a base64 string to an array of long values.|
-|[countof()](cotfunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
+|[countof()](countoffunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
 |[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
 |[extractjson()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
