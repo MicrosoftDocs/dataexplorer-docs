@@ -38,25 +38,9 @@ The maximum value of *`Expr`* across the group.
 
 Assume the input column has three dynamic values.
 
-:::row:::
-    :::column:::
-        `{"x":1, "y":3.5}`
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        `{"x":"somevalue", "z":[1, 2, 3]}`
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        `{"y":{"w":"zzz"}, "t":["aa", "bb"], "z":["foo"]}`
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
+* `{"x":1, "y":3.5}`
+* `{"x":"somevalue", "z":[1, 2, 3]}`
+* `{"y":{"w":"zzz"}, "t":["aa", "bb"], "z":["foo"]}`
 
 The resulting schema would be:
 
