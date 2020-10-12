@@ -18,11 +18,11 @@ ms.date: 10/05/2020
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, and blobs written to blob containers, among other [ingestion methods](ingest-data-overview.md).
+Event Grid is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with Azure Event Grid subscription for blob created or blob renamed notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
 
 In this article, you'll manually create resources that are needed for Event Grid data connection. The resources you'll create are the Event Grid subscription, Event Hub namespace, and Event Hub. Event Hub namespace and Event Hub are described in the [Prerequisites](#prerequisites).
 
-For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md). To automatically create the resources, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md).
+For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md). To automatically create the resources, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
 
 ## Prerequisites
 
@@ -56,14 +56,11 @@ For general information about ingesting into Azure Data Explorer from Event Grid
     | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. Automatically populated.|
     | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the currently supported types: Microsoft.Storage.BlobCreated. or Microsoft.Storage.BlobRenamed|
 
-1. Click **Select an endpoint** and fill in the following values for your Event Hub:
+1. In **Endpoint Type** select **Event Hubs**.
 
     :::image type="content" source="media/eventgrid/endpoint-details.png" alt-text="Pick an event handler to receive your events - Event Hub - Azure Data Explorer":::
-    
-    |**Setting** | **Suggested value** | **Field description**|
-    |---|---|---|
-    | Endpoint Type | *Event Hubs* | The type of endpoint to which you send the events. |
-    | Endpoint | *test-hub* | The event hub you created. |
+
+1. Click **Select an endpoint** and fill in the Event Hub you created, for example *test-hub*.
     
 1. Select the **Filters** tab if you want to track specific subjects. Set the filters for the notifications as follows:
    
@@ -80,9 +77,8 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 
 1. Select **Create**
 
-> [!NOTE]
-> When the endpoint doesn't acknowledge receipt of an event, Azure Event Grid activates a retry mechanism. If this retry delivery fails, Event Grid can deliver the undelivered events to a storage account using a process of *dead-lettering*. For more information, see [Event Grid message delivery and retry](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration).
-
 ## Next steps
 
-Continue the setup and create a data ingestion connection to Azure Data Explorer via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
+* Continue the setup and create a data ingestion connection to Azure Data Explorer via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
+
+* [Clean up resources](ingest-data-event-grid.md#clean-up-resources)
