@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/11/2020
 ---
-# EngineV3 preview
+# EngineV3 - preview
 
 Kusto EngineV3 is the next generation of Azure Data Explorer’s storage and query engine. It's designed to provide unparalleled performance for ingesting and querying telemetry, logs, and time series data.
 
@@ -48,21 +48,21 @@ EngineV3 will be available in the following three stages:
 
 ## Public preview phase
 
-During the public preview period, users will be able to create new ADX clusters in EngineV3 mode. These clusters won't be under SLA and won't be charged for the Azure Data Explorer markup. Infrastructure costs will be charged as usual.
+During the public preview period, users will be able to create new Azure Data Explorer clusters in EngineV3 mode. These clusters won't be under SLA and won't be charged for the Azure Data Explorer markup. Infrastructure costs will be charged as usual.
 
 > [!NOTE]
 > Azure Data Explorer markup charge will be applied two months after GA.
 
 ## Create an EngineV3 cluster
 
-To create a new cluster with EngineV3, select the “Use Engine V3 preview” checkbox in the cluster creation screen:
+To create a new cluster with EngineV3, select the **Use Engine V3 preview** checkbox in the cluster creation screen:
 
 :::image type="content" source="media/engine-v3/create-new-cluster-v3.png" alt-text="Screenshot of checkbox for Use Engine V3 preview while creating a cluster":::
 
 To verify that the cluster is using EngineV3, run the following query:
 
 ```kusto
-.show table [TABLE_NAME] extents  | summarize by Kind
+.show table [TABLE_NAME] extents | summarize by Kind
 ```
 
-The result should be “StorageV3”
+**Output**: StorageV3
