@@ -1,6 +1,6 @@
 ---
 title: Sandbox policy - Azure Data Explorer | Microsoft Docs
-description: Learn about sandbox policy commands in Azure Data Explorer. See how to view, adjust, and drop sandbox policies.
+description: Learn about sandbox policy commands in Azure Data Explorer. See how to show, adjust, and drop sandbox policies.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -56,4 +56,3 @@ For dropping **all** sandbox policies, use the following command:
 ```kusto
 .delete cluster policy sandbox
 ```
-
