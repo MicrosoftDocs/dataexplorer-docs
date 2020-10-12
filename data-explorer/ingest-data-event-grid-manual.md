@@ -18,8 +18,6 @@ ms.date: 10/05/2020
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 
-Event Grid is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with Azure Event Grid subscription for blob created or blob renamed notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
-
 Azure Data Explorer offers continuous ingestion from Azure Storage (Azure Blob storage and Azure Data Lake Storage Gen2) using an [Event Grid Ingestion pipeline](ingest-data-event-grid-overview.md). In the Event Grid ingestion pipeline, an Azure Event Grid service routes blob created or blob renamed events from a storage account to Azure Data Explorer via an Azure Event Hub.
 
 In this article, you learn how to create manually the resources needed for Event Grid Ingestion: Event Grid subscription, Event Hub namespace, and Event Hub. Event Hub namespace and Event Hub creation are described in the [Prerequisites](#prerequisites). To use automatic creation of these resources while defining the Event Grid ingestion, see [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
@@ -29,8 +27,7 @@ In this article, you learn how to create manually the resources needed for Event
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * [A cluster and a database](create-cluster-database-portal.md).
 * [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
-    * Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2` or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
-    * [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction) is also supported.
+    * Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
 * [An Event Hub](/azure/event-hubs/event-hubs-create).
 
 > [!NOTE]
@@ -56,7 +53,7 @@ In this article, you learn how to create manually the resources needed for Event
     | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. Automatically populated.|
     | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the currently supported types: Microsoft.Storage.BlobCreated. or Microsoft.Storage.BlobRenamed|
 
-1. In **Endpoint Type** select **Event Hubs**.
+1. In Endpoint Type,** select **Event Hubs**.
 
     :::image type="content" source="media/eventgrid/endpoint-details.png" alt-text="Pick an event handler to receive your events - Event Hub - Azure Data Explorer":::
 
@@ -81,4 +78,4 @@ In this article, you learn how to create manually the resources needed for Event
 
 * Continue the setup and create a data ingestion connection to Azure Data Explorer via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
 
-* [Clean up resources](ingest-data-event-grid.md#clean-up-resources)
+* If you don't plan to continue Event Grid ingestion using the resources you created and you don't use the resources anymore, [clean up resources](ingest-data-event-grid.md#clean-up-resources) to avoid incurring costs.
