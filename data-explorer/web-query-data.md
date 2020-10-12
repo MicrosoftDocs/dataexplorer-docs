@@ -153,7 +153,7 @@ Now you've seen how basic queries work, let's look at how you can use the table 
     ```
 1. In the results grid select few of the numerical cells. <br/>
     The table grid allows you to select multiple rows, columns, and cells and calculate aggregations on them. The web explorer currently supports the following functions for numeric values: **Average**, **Count**, **Min**, **Max**, and **Sum** as seen on the bottom right in the example below.
-:::image type="content" source="media/web-query-data/selectstats.png" alt-text="select-stats":::
+:::image type="content" source="media/web-query-data/selectstats.png" alt-text="select-stats"::: 
 
 
 1. On the right side of the grid, select **Columns** to see the tool panel.
