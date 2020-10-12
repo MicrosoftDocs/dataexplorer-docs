@@ -1,6 +1,6 @@
 ---
 title: Kusto RestrictedViewAccess policy management - Azure Data Explorer
-description: Learn about RestrictedViewAccess policy commands in Azure Data Explorer. See how to turn this policy on and off and how to view the policy in place on tables.
+description: Learn about RestrictedViewAccess policy commands in Azure Data Explorer. See how to view, enable, disable, alter, and delete this policy.
 services: data-explorer
 author: orspod
 ms.author: orspodek
