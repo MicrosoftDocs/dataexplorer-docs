@@ -104,7 +104,7 @@ with [view keyword](./letstatement.md)
 ::: zone-end
 
 
-## Example: Tables with name or column
+## Example: Tables with string in name or column
 
 ```kusto
 union K* | where * has "Kusto"
