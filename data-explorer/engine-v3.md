@@ -21,8 +21,7 @@ Azure Data Explorer cluster running in EngineV3 mode is fully compatible with th
 >
 > 1. Public Preview (current status): Users can create new clusters in EngineV3 mode. During the public preview period, clusters aren't under SLA and aren't charged for the Azure Data Explorer markup. Infrastructure costs are charged as usual.
 > 1. General Availability (GA): All new clusters are created in EngineV3 mode by default.
-> 1. Post GA: Existing workloads running on EngineV2 are migrated to EngineV3. Azure Data Explorer markup charge will be applied post-GA.
-
+> 1. Post GA: Existing workloads running on EngineV2 are migrated to EngineV3. Azure Data Explorer markup charge will be resumed post-GA.
 
 ## How EngineV3 works
 
@@ -39,7 +38,7 @@ EngineV3 focuses on optimizing this "bottom part" of the distributed query.
 ## Performance
 
 The performance impact of EngineV3 depends on the dataset, query patterns, concurrency, and VM SKUs used. For internal performance testing, we have used a 100-TB dataset, and explored different scenarios that involve analytics over structured, unstructured, and semi-structured data.
-With the same level of concurrency and using the same HW configuration, the performance improvement varied from 2X to 113X.
+With the same level of concurrency and using the same HW configuration, the performance improvement we experienced in our testing was mostly in the range of 2X to 113X.
 
 The increased speed of queries comes from the two major changes in the engine:
 
