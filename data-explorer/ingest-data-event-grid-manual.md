@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/05/2020
 ---
-# Create an Event Grid subscription and create resources manually
+# Manually create resources for Event Grid ingestion
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-grid.md)
@@ -20,9 +20,9 @@ ms.date: 10/05/2020
 
 Event Grid is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with Azure Event Grid subscription for blob created or blob renamed notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
 
-In this article, you'll manually create resources that are needed for Event Grid data connection. The resources you'll create are the Event Grid subscription, Event Hub namespace, and Event Hub. Event Hub namespace and Event Hub are described in the [Prerequisites](#prerequisites).
+Azure Data Explorer offers continuous ingestion from Azure Storage (Azure Blob storage and Azure Data Lake Storage Gen2) using an [Event Grid Ingestion pipeline](ingest-data-event-grid-overview.md). In the Event Grid ingestion pipeline, an Azure Event Grid service routes blob created or blob renamed events from a storage account to Azure Data Explorer via an Azure Event Hub.
 
-For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md). To automatically create the resources, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
+In this article, you learn how to create manually the resources needed for Event Grid Ingestion: Event Grid subscription, Event Hub namespace, and Event Hub. Event Hub namespace and Event Hub creation are described in the [Prerequisites](#prerequisites). To use automatic creation of these resources while defining the Event Grid ingestion, see [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
 
 ## Prerequisites
 
