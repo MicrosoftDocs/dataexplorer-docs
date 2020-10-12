@@ -74,6 +74,7 @@ You can now run queries against either cluster that you're connected to (assumin
     | sort by StartTime desc
     | take 10
     ```
+    
     This query returns the 10 newest records in the **StormEvents** table. The left side of the result should look like the following table.
 
     :::image type="content" source="media/web-query-data/result-set-01.png" alt-text="Screenshot of a table that lists the start time, end time, episode, event ID, state, and event type for 10 storm events." border="false":::
