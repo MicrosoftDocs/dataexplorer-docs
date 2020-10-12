@@ -1,6 +1,6 @@
 ---
 title: Configure customer-managed-keys using C#
-description: 'Learn how to configure customer-managed keys to encrypt Azure Data Explorer data at rest. See how to use the Azure Data Explorer C# client for this purpose.'
+description: 'This article describes how to configure customer-managed keys to encrypt Azure Data Explorer data using C#.'
 author: orspod
 ms.author: orspodek
 ms.reviewer: itsagui
