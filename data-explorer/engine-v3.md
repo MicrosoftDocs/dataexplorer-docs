@@ -16,7 +16,15 @@ EngineV3 includes a new optimized storage format and indexes. EngineV3 uses adva
 
 Azure Data Explorer cluster running in EngineV3 mode is fully compatible with the EngineV2, so data migration isn't required.
 
-## Technical information
+> [!IMPORTANT]
+> EngineV3 will be available in the following three stages:
+>
+> 1. Public Preview (current status): Users can create new clusters in EngineV3 mode. During the public preview period, clusters aren't under SLA and aren't charged for the Azure Data Explorer markup. Infrastructure costs are charged as usual.
+> 1. General Availability (GA): All new clusters are created in EngineV3 mode by default.
+> 1. Post GA: Existing workloads running on EngineV2 are migrated to EngineV3. Azure Data Explorer markup charge will be applied post-GA.
+
+
+## How EngineV3 works
 
 EngineV3 is an additional column store storage engine running in parallel with the existing Column Store (Column Store v2) and Row Store (used for streaming ingestion). Tables can incorporate data from all three stores at once, and this “federation” of data is transparent from the user perspective.
 
@@ -37,21 +45,6 @@ The increased speed of queries comes from the two major changes in the engine:
 
 * New, improved shard storage format.
 * Redesign of the low-level shard query engine.
-
-## Release plan
-
-EngineV3 will be available in the following three stages:
-
-1. Public Preview: Users can create new clusters in EngineV3 mode.
-1. General Availability (GA): All new clusters are created in EngineV3 mode by default.
-1. Post GA: Existing workloads running on EngineV2 are migrated to EngineV3.
-
-## Public preview phase
-
-During the public preview period, users will be able to create new Azure Data Explorer clusters in EngineV3 mode. These clusters won't be under SLA and won't be charged for the Azure Data Explorer markup. Infrastructure costs will be charged as usual.
-
-> [!NOTE]
-> Azure Data Explorer markup charge will be applied two months after GA.
 
 ## Create an EngineV3 cluster
 
