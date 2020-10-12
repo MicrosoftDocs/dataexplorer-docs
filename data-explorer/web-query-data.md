@@ -11,15 +11,20 @@ ms.date: 06/15/2020
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
 ---
 
-# Quickstart: Query data in Azure Data Explorer Web UI
+# Quickstart: Query data in Azure Data Explorer Web Explorer
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides a web application that enables you to run and share queries. The application is available in the Azure portal and as a stand-alone web application. In this article, you work in the stand-alone version, which enables you to connect to multiple clusters and to share deep links to your queries.
+Azure Data Explorer (ADX) is a fast, fully managed data analytics service for real-time analysis of large volumes of data. <br/>
+ADX provides a web experience, that enables users to connect to their ADX clusters and write, run and share KQL commands and queries. <br/>
+The web experience is available in the Azure portal and as a stand-alone web application, the ADX Web Explorer. <br/>
+The **ADX Web Explorer** is hosted at https://dataexplorer.azure.com/ and short-linked by https://aka.ms/kwe.<br/>
+ADX Web Explorer can also be hosted by other web portals in an HTML iframe. See [Monaco IDE integration](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/monaco/monaco-kusto) for details on how to host it and the Monaco editor it uses.<br/>
+In this quickstart guide, you will be working in the stand-alone ADX Web Explorer.
 
-If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 
 ## Prerequisites
+For this quickstart guide you’ll need an Azure subscription, if you don’t have one, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.<br/>
+In addition to an Azure subscription, you’ll need a test cluster and database with data, you can create your own [test cluster](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-portal) or use the ADX Help cluster.
 
-In addition to an Azure subscription, you need [a test cluster and database](create-cluster-database-portal.md) to complete this quickstart.
 
 ## Sign in to the application
 
@@ -27,23 +32,19 @@ Sign in to [the application](https://dataexplorer.azure.com/).
 
 ## Add clusters
 
-When you first open the application, there are no connections.
+When you first open the application, there are no cluster connections.
 
 ![Add cluster](media/web-query-data/add-cluster.png)
 
-You must add a connection to at least one cluster before you can start running queries. In this section, you add connections to the Azure Data Explorer *help cluster* that we have set up to aid learning, and to the test cluster you created in a previous quickstart.
+You must add a connection to at least one cluster before you can start running queries. In this section, you’ll add connections to the ADX **help** cluster that has been set up to aid learning, and to the test cluster you've created in a previous quickstart (optional).
 
-1. In the upper-left of the application, select **Add cluster**.
+1. In the upper left of the application, select **Add cluster**.
 
-1. In the **Add cluster** dialog box, enter the URI, then select **Add**.
+1. In the **Add cluster** dialog box, enter the URI https://help.kusto.windows.net, then select **Add**.
+   
+1. In the left pane, you should now see the **help** cluster. Expand the **Samples** database and open the **Tables** folder to see the sample tables that you have access to.
 
-   You may use the help cluster URI, `https://help.kusto.windows.net`. If you have your own cluster, provide the URI of your cluster. For example, `https://mydataexplorercluster.westus.kusto.windows.net` as in the following image:
-
-    ![Server URI in Portal](media/web-query-data/server-uri.png)
-
-1. In the left pane, you should now see the **help** cluster. Expand the **Samples** database so that you can see the sample tables that you have access to.
-
-    ![Sample databases](media/web-query-data/sample-databases.png)
+    :::image type="content" source="media/web-query-data/connection.png" alt-text="samples-database":::
 
     We use the **StormEvents** table later in this quickstart, and in other Azure Data Explorer articles.
 
@@ -52,14 +53,17 @@ Now add the test cluster you created.
 1. Select **Add cluster**.
 
 1. In the **Add cluster** dialog box, enter your test cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**.
-
-    In the example below, you see the **help** cluster and a new cluster, **docscluster.westus** (full URL is `https://docscluster.westus.kusto.windows.net/`).
+ 
+    For example, https://mydataexplorercluster.westus.kusto.windows.net as in the following image:
+    :::image type="content" source="media/web-query-data/server-uri.png" alt-text="server-uri":::
+    
+1. In the example below, you see the **help** cluster and a new cluster, **docscluster.westus** (full URL is `https://docscluster.westus.kusto.windows.net/`).
 
     ![Test cluster](media/web-query-data/test-cluster.png)
 
 ## Run queries
 
-You can now run queries against either cluster that you're connected to (assuming you have data in your test cluster). We'll focus on the **help** cluster.
+You can now run queries against either cluster that you're connected to (assuming you have data in your test cluster). For the purpose of this tutorial, we'll focus on the **help** cluster.
 
 1. In the left pane, under the **help** cluster, select the **Samples** database.
 
@@ -70,13 +74,13 @@ You can now run queries against either cluster that you're connected to (assumin
     | sort by StartTime desc
     | take 10
     ```
-    This query returns the ten newest records in the **StormEvents** table. The left side of the result should look like the following table.
+    This query returns the 10 newest records in the **StormEvents** table. The left side of the result should look like the following table.
 
-    :::image type="content" source="media/web-query-data/result-set-01.png" alt-text="Screenshot of a table that lists the start time, end time, episode, event id, state, and event type for ten storm events." border="false":::
+    :::image type="content" source="media/web-query-data/result-set-01.png" alt-text="Screenshot of a table that lists the start time, end time, episode, event ID, state, and event type for 10 storm events." border="false":::
 
-    The following image shows the state that the application should now be in, with clusters added, and a query with results.
+    The following image shows the state that the application should now be in, with the cluster added, and a query with results.
 
-    ![Full application](media/web-query-data/full-application.png)
+    :::image type="content" source="media/web-query-data/Capture2.png" alt-text="full screen":::
 
 1. Copy and paste the following query into the query window, below the first query. Notice how it's not formatted on separate lines like the first query.
 
@@ -84,15 +88,15 @@ You can now run queries against either cluster that you're connected to (assumin
     StormEvents | sort by StartTime desc | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative | take 10
     ```
 
-1. Click the new query in the window, which selects the query. Press Shift+Alt+F to format the query, so it looks like the following.
+1. Select the new query in the window, which selects the query. Press **Shift+Alt+F** to format the query, so it looks like the following.
 
     ![Formatted query](media/web-query-data/formatted-query.png)
 
-1. Press Shift+Enter, which is a shortcut to run a query.
+1. Press **Shift+Enter**, which is a shortcut to run a query.
 
    This query returns the same records as the first one, but includes only the columns specified in the `project` statement. The result should look like the following table.
 
-    :::image type="content" source="media/web-query-data/result-set-02.png" alt-text="Screenshot of a table that lists the start time, end time, state, event type, damage property, and episode narrative for ten storm events." border="false":::
+    :::image type="content" source="media/web-query-data/result-set-02.png" alt-text="Screenshot of a table that lists the start time, end time, state, event type, damage property, and episode narrative for 10 storm events." border="false":::
 
 1. At the top of the query window, select **Recall**.
 
@@ -147,6 +151,10 @@ Now you've seen how basic queries work, let's look at how you can use the table 
     | project StartTime, State, EventType, DamageProperty, Source
     | take 10
     ```
+1. In the results grid select few of the numerical cells. <br/>
+    The table grid allows you to select multiple rows, columns, and cells and calculate aggregations on them. The web explorer currently supports the following functions for numeric values: **Average**, **Count**, **Min**, **Max**, and **Sum** as seen on the bottom right in the example below.
+:::image type="content" source="media/web-query-data/selectstats.png" alt-text="select-stats":::
+
 
 1. On the right side of the grid, select **Columns** to see the tool panel.
 
@@ -163,6 +171,25 @@ Now you've seen how basic queries work, let's look at how you can use the table 
     ![Pivot table](media/web-query-data/pivot-table.png)
 
     Notice how Vermont and Alabama each have two events under the same category, while Texas has two events under different categories. Pivot tables enable you to quickly spot things like this; they are a great tool for quick analysis.
+
+
+## Search in grid
+You can look for a specific expression within a result table.
+1.	Run the following query:
+
+    ```Kusto
+    StormEvents
+	| where DamageProperty > 5000
+    | take 1000
+    ```
+
+1. Click on the **Search** button on the right and type in *"Wabash"*
+
+ :::image type="content" source="media/web-query-data/search1.png" alt-text="search1":::
+
+1. All mentions of your searched expression are now highlighted in the table. You can navigate between them by clicking **Enter** to go forward or **Shift+Enter** to go backward, or you can use the **up** and **down** buttons next to the search box.
+
+:::image type="content" source="media/web-query-data/search2.png" alt-text="search2":::
 
 ## Share queries
 
@@ -189,7 +216,7 @@ You can provide a deep link so that other users with access to the cluster can r
 
 1. Copy the link and query to a text file.
 
-1. Paste the link into a new browser window. The result should look like the following after the query runs.
+1. Paste the link into a new browser window. The result should look like the following
 
     :::image type="content" source="media/web-query-data/shared-query.png" alt-text="Shared query deep link":::
 
@@ -219,15 +246,39 @@ To export the query results to a CSV file, select **File** > **Export to CSV**.
 
 :::image type="content" source="media/web-query-data/export-results.png" alt-text="Export results to CSV file":::
 
+
+## Export and import environment settings
+
+The export and import actions have been created to help users protect their work environment and to relocate it into other browsers and devices. <br/>
+The export action will export all your settings, cluster connections, and query tabs to a JSON file, that can be later imported into the same or different browser or device.
+1.	Open **Settings** (cogwheel icon) on the top right
+1.	Click on the **Export** button
+	 :::image type="content" source="media/web-query-data/imexport1.png" alt-text="export":::
+1.	An **adx-export.json** file will be downloaded to your local storage
+1.	Click on **Clear local state**, this will revert your environment to its original state. <br/>
+    This action should delete all your cluster connections and close any open tabs
+1.	Open **Settings** again
+1.	Click **Import** and approve the warning pop-up
+	 :::image type="content" source="media/web-query-data/imexport2.png" alt-text="import":::
+1.	Locate your **adx-export.json** file from your local storage and open it
+1.	Your previous cluster connections and open tabs should be available again
+
+>[!NOTE]
+>The export action only exports query related data, no dashboards data will be exported within the **adx-export.json** file. <br/>
+The import action overrides any existing environment settings and data.
+
 ## Provide feedback
 
-1. In the upper-right of the application, select the feedback icon ![Feedback icon](media/web-query-data/icon-feedback.png).
+1. In the upper right of the application, select the feedback icon ![Feedback icon](media/web-query-data/icon-feedback.png).
 
 1. Enter your feedback, then select **Submit**.
 
 ## Clean up resources
 
 You didn't create any resources in this quickstart, but if you'd like to remove one or both clusters from the application, right-click the cluster and select **Remove connection**.
+Another option is to select **Clear local state** from the settings panel. This action will remove all cluster connections and close all open query tabs.
+
+:::image type="content" source="media/web-query-data/imexport1.png" alt-text="clear":::
 
 ## Next steps
 
