@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: avnera
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 07/14/2019
+ms.date: 10/13/2020
 ---
 
 # Select the correct VM SKU for your Azure Data Explorer cluster 
@@ -32,28 +32,32 @@ Azure Data Explorer offers two types of clusters:
 
 ## SKU types
 
-Azure Data Explorer cluster supports a variety of SKUs that provide a great fit for different type of workloads. Each SKU offer different SSD and CPU ratio to help customers right size their deployment and build cost optimal solutions for their enterprise analytical workload:
+Azure Data Explorer cluster supports a variety of SKUs for different types of workloads. Each SKU offers a distinct SSD and CPU ratio to help customers correctly size their deployment and build cost optimal solutions for their enterprise analytical workload.
 
-### Compute Optimized
+### Compute optimized
 
-* Provides high cores to cache ratio.
-* Suited for high rate of queries over small to moderate data sizes.
+* Provides a high cores to cache ratio.
+* Suited for a high rate of queries over small to moderate data sizes.
 * Local SSD for low latency I/O
 
-### Heavy Compute
+### Heavy compute
 
-* AMD SKUs that offers much higher Cores to Cache ratio
+* AMD SKUs that offer a much higher cores to cache ratio
 * Local SSD for low latency I/O
 
-### Storage Optimized
+### Storage optimized
 
-* Provides option for larger storage ranging from 1TB to 4 TB per Engine node
-* Suited for workloads that requires storing very large volume of data with less compute intensive query requirement.
-* Certain SKUs uses Premium Storage (Managed disk) attached to Engine node instead of Local SSD for hot data storage.
+* Option for larger storage ranging from 1 TB to 4 TB per engine node.
+* Suited for workloads that require storing a large volume of data with less intensive compute query requirements.
+* Certain SKUs uses premium storage (managed disk) attached to the engine node instead of local SSD for hot data storage.
 
-### Isolated Compute
+### Isolated compute
 
 * Ideal SKU for running workloads that require server instance-level isolation.
+
+## Select your cluster VM 
+
+### Select optimal cluster VM during cluster creation
 
 When you create an Azure Data Explorer cluster, select the *optimal* VM SKU for the planned workload.
 
@@ -62,15 +66,15 @@ Following attributes can also help you make SKU selection:
 | Attribute | Details |
 |---|---
 |**Availability**| Not all SKUs are available in all regions |
-|**Cost per&nbsp;GB cache per core**| High with Compute and Heavy Compute Optimized and low with Storage Optimized SKUs |
+|**Cost per GB cache per core**| High cost with compute and heavy compute optimized. Low cost with storage optimized SKUs |
 |**Reserved Instances (RI) pricing**| RI discount varies by region and by SKU |  
 
 > [!NOTE]
-> For Azure Data Explorer cluster, compute cost is the most significant part of cluster cost as compared to Storage and Networking.
+> For Azure Data Explorer cluster, compute cost is the most significant part of cluster cost as compared to storage and networking.
 
-## Select your cluster VM 
+### Optimize your cluster VM
 
-To select your cluster VM, [configure vertical scaling](manage-cluster-vertical-scaling.md#configure-vertical-scaling). 
+To optimize your cluster VM, [configure vertical scaling](manage-cluster-vertical-scaling.md#configure-vertical-scaling). 
 
 With various VM SKU options to choose from, you can optimize costs for the performance and hot-cache requirements for your scenario. 
 * If you need the most optimal performance for a high query volume, the ideal SKU should be compute-optimized. 
