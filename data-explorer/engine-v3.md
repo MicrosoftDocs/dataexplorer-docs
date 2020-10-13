@@ -50,17 +50,6 @@ To [create a new cluster](create-cluster-database-portal.md) with EngineV3, in t
 
 :::image type="content" source="media/engine-v3/create-new-cluster-v3.png" alt-text="Screenshot of checkbox for Use Engine V3 preview while creating a cluster":::
 
-## Verify use of EngineV3
-
-To verify that the cluster is using EngineV3, run the following query on a table containing data:
-
-```kusto
-.show table [TABLE_NAME] extents | summarize by Kind
-```
-
-If your cluster is using EngineV3, the output will be as follows:
-> StorageV3
-
 ## Next steps
 
 [Ingest data with Azure Data Explorer](ingest-data-overview.md)
