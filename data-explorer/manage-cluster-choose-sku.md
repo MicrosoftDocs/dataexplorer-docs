@@ -28,26 +28,45 @@ Azure Data Explorer offers two types of clusters:
 
 * **Production**: Production clusters contain two nodes for engine and data-management clusters and are operated under the Azure Data Explorer [SLA](https://azure.microsoft.com/support/legal/sla/data-explorer/v1_0/).
 
-* **Dev/Test (no SLA)**: Dev/Test clusters have a single D11 v2 node for the engine cluster and a single D1 node for the data-management cluster. This cluster type is the lowest cost configuration because of its low instance count and no engine markup charge. There's no SLA for this cluster configuration, because it lacks redundancy.
+* **Dev/Test (no SLA)**: Dev/Test clusters have a single node for the engine and data-management cluster. This cluster type is the lowest cost configuration because of its low instance count and no engine markup charge. There's no SLA for this cluster configuration, because it lacks redundancy.
 
 ## SKU types
 
-When you create an Azure Data Explorer cluster, select the *optimal* VM SKU for the planned workload. You can choose from the following two Azure Data Explorer SKU families:
+Azure Data Explorer cluster supports a variety of SKUs that provide a great fit for different type of workloads. Each SKU offer different SSD and CPU ratio to help customers right size their deployment and build cost optimal solutions for their enterprise analytical workload:
 
-* **D v2**: The D SKU is compute-optimized and comes in two flavors:
-    * The VM itself
-    * The VM bundled with premium storage disks
+### Compute Optimized
 
-* **LS**: The L SKU is storage-optimized. It has a much greater SSD size than the similarly priced D SKU.
+* Provides high cores to cache ratio.
+* Suited for high rate of queries over small to moderate data sizes.
+* Local SSD for low latency I/O
 
-The key differences between the available SKU types are described in the following table:
+### Heavy Compute
+
+* AMD SKUs that offers much higher Cores to Cache ratio
+* Local SSD for low latency I/O
+
+### Storage Optimized
+
+* Provides option for larger storage ranging from 1TB to 4 TB per Engine node
+* Suited for workloads that requires storing very large volume of data with less compute intensive query requirement.
+* Certain SKUs uses Premium Storage (Managed disk) attached to Engine node instead of Local SSD for hot data storage.
+
+### Isolated Compute
+
+* Ideal SKU for running workloads that require server instance-level isolation.
+
+When you create an Azure Data Explorer cluster, select the *optimal* VM SKU for the planned workload.
+
+Following attributes can also help you make SKU selection:
  
-| Attribute | D SKU | L SKU |
-|---|---|---
-|**Small SKUs**|Minimal size is D11 with two cores|Minimal size is L4 with four cores |
-|**Availability**|Available in all regions (the DS+PS version has more limited availability)|Available in a few regions |
-|**Cost per&nbsp;GB cache per core**|High with the D SKU, low with the DS+PS version|Lowest with the Pay-As-You-Go option |
-|**Reserved Instances (RI) pricing**|High discount (over 55&nbsp;percent for a three-year commitment)|Lower discount (20&nbsp;percent for a three-year commitment) |  
+| Attribute | Details |
+|---|---
+|**Availability**| Not all SKUs are available in all regions |
+|**Cost per&nbsp;GB cache per core**| High with Compute and Heavy Compute Optimized and low with Storage Optimized SKUs |
+|**Reserved Instances (RI) pricing**| RI discount varies by region and by SKU |  
+
+> [!NOTE]
+> For Azure Data Explorer cluster, compute cost is the most significant part of cluster cost as compared to Storage and Networking.
 
 ## Select your cluster VM 
 
@@ -65,18 +84,30 @@ The technical specifications for the Azure Data Explorer cluster VMs are describ
 
 |**Name**| **Category** | **SSD size** | **Cores** | **RAM** | **Premium storage disks (1&nbsp;TB)**| **Minimum instance count per cluster** | **Maximum instance count per cluster**
 |---|---|---|---|---|---|---|---
-|Dev(No SLA)_Standard_D11_v2| compute-optimized | 75&nbsp;GB    | 1 | 14&nbsp;GB | 0 | 1 | 1
+|Dev(No SLA) Standard_D11_v2| compute-optimized | 75&nbsp;GB    | 1 | 14&nbsp;GB | 0 | 1 | 1
+|Dev(No SLA) Standard_E2a_v4| compute-optimized | 18&nbsp;GB    | 1 | 14&nbsp;GB | 0 | 1 | 1
 |Standard_D11_v2| compute-optimized | 75&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 2 | 8 
 |Standard_D12_v2| compute-optimized | 150&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
 |Standard_D13_v2| compute-optimized | 307&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1,000
 |Standard_D14_v2| compute-optimized | 614&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1,000
+|Standard_E2a_v4| heavy compute | 18&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 2 | 8 
+|Standard_E4a_v4| heavy compute | 54&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
+|Standard_E8a_v4| heavy compute | 127&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1,000
+|Standard_E16a_v4| heavy compute | 273&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1,000
 |Standard_DS13_v2 + 1&nbsp;TB&nbsp;PS| storage-optimized | 1&nbsp;TB | 8 | 56&nbsp;GB | 1 | 2 | 1,000
 |Standard_DS13_v2 + 2&nbsp;TB&nbsp;PS| storage-optimized | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1,000
 |Standard_DS14_v2 + 3&nbsp;TB&nbsp;PS| storage-optimized | 3&nbsp;TB | 16 | 112&nbsp;GB | 2 | 2 | 1,000
 |Standard_DS14_v2 + 4&nbsp;TB&nbsp;PS| storage-optimized | 4&nbsp;TB | 16 | 112&nbsp;GB | 4 | 2 | 1,000
+|Standard_E8as_v4 + 1&nbsp;TB&nbsp;PS| storage-optimized | 1&nbsp;TB | 8 | 56&nbsp;GB | 1 | 2 | 1,000
+|Standard_E8as_v4 + 2&nbsp;TB&nbsp;PS| storage-optimized | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1,000
+|Standard_E16as_v4 + 3&nbsp;TB&nbsp;PS| storage-optimized | 3&nbsp;TB | 16 | 112&nbsp;GB | 2 | 2 | 1,000
+|Standard_E16as_v4 + 4&nbsp;TB&nbsp;PS| storage-optimized | 4&nbsp;TB | 16 | 112&nbsp;GB | 4 | 2 | 1,000
 |Standard_L4s| storage-optimized | 650&nbsp;GB | 4 | 32&nbsp;GB | 0 | 2 | 16
 |Standard_L8s| storage-optimized | 1.3&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000
 |Standard_L16s| storage-optimized | 2.6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
+|Standard_L8s_v2| storage-optimized | 1.7&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000
+|Standard_L16s_v2| storage-optimized | 3.5&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
+|Standard_E64i1_v3| isolated compute | 1.1&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
 
 * You can view the updated VM SKU list per region by using the Azure Data Explorer [ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet). 
 * Learn more about the [various SKUs](/azure/virtual-machines/windows/sizes). 
