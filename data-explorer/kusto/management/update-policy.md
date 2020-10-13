@@ -1,6 +1,6 @@
 ---
 title: Kusto update policy management - Azure Data Explorer
-description: This article describes Update policy in Azure Data Explorer.
+description: Learn about update policy commands in Azure Data Explorer. See how to show, set, alter, and delete table update policies.
 services: data-explorer
 author: orspod
 ms.author: orspodek

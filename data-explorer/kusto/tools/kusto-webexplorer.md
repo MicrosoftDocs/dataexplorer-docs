@@ -27,7 +27,7 @@ and the Monaco editor it uses.
 You can now connect multiple clusters and switch between databases and clusters.
 The tool is designed to easily identify the cluster and database to which you are connected.
 
-![alt text](./Images/KustoTools-WebExplorer/AddingCluster.gif "AddingCluster")
+![Animated GIF. When Add Cluster is clicked in Azure Data Explorer and a cluster name is entered in a dialog box, the cluster appears in the left pane.](./Images/KustoTools-WebExplorer/AddingCluster.gif "AddingCluster")
 
 ## Recall results
 
@@ -35,21 +35,21 @@ Often during analysis, we run multiple queries and may have to revisit the
 results of the previous queries. You can use this feature to recall your results
 without having to rerun the query. The data is served from local client-side cache.
 
-![alt text](./Images/KustoTools-WebExplorer/RecallResults.gif "RecallResults")
+![Animated GIF. After two Azure Data Explorer queries run, the mouse moves to the first query and Recall is clicked. The initial results appear again.](./Images/KustoTools-WebExplorer/RecallResults.gif "RecallResults")
 
 ## Enhanced results grid control
 
 The table grid allows you to select multiple rows, columns, and cells. Compute
 aggregates by selecting multiple cells (like Excel) and pivot the data.
 
-![alt text](./Images/KustoTools-WebExplorer/EnhancedGrid.gif "EnhancedGrid")
+![Animated GIF. After Pivot Mode is turned on in Azure Data Explorer and columns are dragged to pivot table target areas, the summarized data appears.](./Images/KustoTools-WebExplorer/EnhancedGrid.gif "EnhancedGrid")
 
 ## Intellisense & Formatting
 
 You can use pretty-print format by using the "Shift + Alt + F" shortcut key, code
 folding (outlining), and IntelliSense.
 
-![alt text](./Images/KustoTools-WebExplorer/Formating.gif "Formating")
+![Animated GIF showing an Azure Data Explorer query. After the query is expanded, it changes format, appearing on one line, with pink column names.](./Images/KustoTools-WebExplorer/Formating.gif "Formating")
 
 ## Deep linking
 
@@ -65,9 +65,9 @@ The following options may be specified:
 
 
 
-![alt text](./Images/KustoTools-WebExplorer/DeepLink.gif "DeepLink")
+![Animated GIF. The Azure Data Explorer Share menu opens. The Query link to clipboard item becomes visible, as does the Text and link to clipboard item.](./Images/KustoTools-WebExplorer/DeepLink.gif "DeepLink")
 
 ## How to provide feedback
 
 You can submit your feedback via the tool.
-![alt text](./Images/KustoTools-WebExplorer/Feedback.gif "Feedback")
+![Animated GIF showing Azure Data Explorer. When the Feedback icon is clicked, the Send us feedback dialog box opens.](./Images/KustoTools-WebExplorer/Feedback.gif "Feedback")
