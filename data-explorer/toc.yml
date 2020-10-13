@@ -333,7 +333,7 @@
     - name: Apache Spark Connector
       href: spark-connector.md
     - name: Connect from Synapse Apache Spark
-      href: https://docs.microsoft.com/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=/azure/data-explorer/context/context
+      href: https://docs.microsoft.com/azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
     - name: Connect from Azure Databricks
       href: connect-from-databricks.md
     - name: Notebooks
@@ -344,11 +344,12 @@
         href: azure-notebooks.md
       - name: Azure Data Studio
         items:
-        - name: Kusto extension for Azure Data Studio
-          href: https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json&preserve-view=true
-        - name: Use Kusto extension for Azure Data Studio
+        - name: Kusto extension overview 
+          href: https://docs.microsoft.com/sql/azure-data-studio/extensions/kusto-extension?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
+        - name: Use Kusto extension 
+          displayName: Azure Data Studio
           href: https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
-        - name: Use Kqlmagic in Azure Data Studio
+        - name: Use Kqlmagic 
           href: https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
     - name: Azure Pipelines
       href: devops.md  
