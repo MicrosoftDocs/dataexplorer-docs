@@ -17,11 +17,11 @@ This document provides common difficulties in running and using Kusto.Explorer, 
 
 ### Kusto.Explorer shows error dialog during or after start-up
 
-**Symptom**
+#### Symptom
 
 At start-up, Kusto.Explorer shows an `InvalidOperationException` error.
 
-**Possible solution**
+#### Possible solution
 
 This error may suggest that the operating system became corrupted or is missing some of the essential modules.
 To check missing or corrupted system files, follow the steps described here:   
@@ -29,11 +29,11 @@ To check missing or corrupted system files, follow the steps described here:
 
 ## Kusto.Explorer always downloads, even when there are no updates
 
-**Symptom**
+#### Symptom
 
 Every time you open Kusto.Explorer, you're prompted to install a new version. Kusto.Explorer downloads the entire package, without updating the already-installed version.
 
-**Possible solution**
+#### Possible solution
 
 This symptom could be a result of corruption in your local ClickOnce store. You can clear the local ClickOnce store, by running the following command, in an elevated command prompt.
 
@@ -49,7 +49,7 @@ Try installing Kusto.Explorer again from one of the [installation mirrors](kusto
 
 ### ClickOnce error: Cannot Start Application
 
-**Symptoms**  
+#### Symptoms
 
 The program fails to start and displays one of the following errors: 
 * `External component has thrown an exception`
@@ -77,7 +77,7 @@ Following errors were detected during this operation.
             at System.Deployment.Application.ApplicationActivator.ActivateDeploymentWorker(Object state)
 ```
 
-**Proposed solution steps**
+#### Proposed solution steps
 
 1. Uninstall Kusto.Explorer using `Programs and Features` (`appwiz.cpl`).
 
@@ -119,8 +119,10 @@ Following errors were detected during this operation.
         copy %LOCALAPPDATA%\Kusto.Explorer.bak\User*.xml %LOCALAPPDATA%\Kusto.Explorer
         ```
 
+#### Enabling ClickOnce verbose logging
+
 1. If the application still doesn't start:
-    1. Enable verbose ClickOnce logging by creating a LogVerbosityLevel string value of 1 under:
+    1. [Enable verbose ClickOnce logging](https://docs.microsoft.com/visualstudio/deployment/how-to-specify-verbose-log-files-for-clickonce-deployments) by creating a LogVerbosityLevel string value of 1 under:
 
         ```kusto
         HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Deployment
@@ -131,12 +133,12 @@ Following errors were detected during this operation.
 
 ### ClickOnce error: Your administrator has blocked this application because it potentially poses a security risk to your computer
 
-**Symptom**  
+#### Symptom 
 The application fails to install with either of the following errors:
 * `Your administrator has blocked this application because it potentially poses a security risk to your computer`.
 * `Your security settings do not allow this application to be installed on your computer.`
 
-**Solution**
+#### Solution
 
 This symptom could be because another application is overriding the default ClickOnce trust prompt behavior. 
 1. View your default configuration settings.
