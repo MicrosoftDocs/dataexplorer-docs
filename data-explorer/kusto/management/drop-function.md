@@ -22,8 +22,7 @@ For dropping multiple functions from the database, see [.drop functions](#drop-f
   not fail for a non-existent function.
 
 > [!NOTE]
-> * Requires [database admin permission](../management/access-control/role-based-authorization.md).
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the function is allowed to modify the function.  
+> * Requires [function admin permission](../management/access-control/role-based-authorization.md).
     
 |Output parameter |Type |Description
 |---|---|--- 
