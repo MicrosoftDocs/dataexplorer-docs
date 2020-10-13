@@ -47,7 +47,7 @@ The increased speed of queries comes from the two major changes in the engine:
 
 ## Create an EngineV3 cluster
 
-To [create a new cluster](create-cluster-database-portal.md) with EngineV3, select the **Use Engine V3 preview** checkbox in the cluster creation screen:
+To [create a new cluster](create-cluster-database-portal.md) with EngineV3, in the **Basics** tab of the cluster creation screen, select the **Use Engine V3 preview** checkbox:
 
 :::image type="content" source="media/engine-v3/create-new-cluster-v3.png" alt-text="Screenshot of checkbox for Use Engine V3 preview while creating a cluster":::
 
