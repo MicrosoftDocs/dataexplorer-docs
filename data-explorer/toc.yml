@@ -334,7 +334,7 @@
       href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
     - name: Apache Spark Connector
       href: spark-connector.md
-    - name: Connect from Synapse Apache Spark
+    - name: Connect from Azure Synapse Apache Spark
       href: https://docs.microsoft.com/azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
     - name: Connect from Azure Databricks
       href: connect-from-databricks.md
