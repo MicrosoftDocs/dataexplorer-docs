@@ -17,15 +17,15 @@ EngineV3 includes a new optimized storage format and indexes. EngineV3 uses adva
 Azure Data Explorer cluster running in EngineV3 mode is fully compatible with the EngineV2, so data migration isn't required.
 
 > [!IMPORTANT]
-> EngineV3 will be available in the following three stages:
+> EngineV3 will be available in the following stages:
 >
 > 1. Public Preview (current status): Users can create new clusters in EngineV3 mode. During the public preview period, clusters aren't under SLA and aren't charged for the Azure Data Explorer markup. Infrastructure costs are charged as usual.
-> 1. General Availability (GA): All new clusters are created in EngineV3 mode by default.
-> 1. Post GA: Existing workloads running on EngineV2 are migrated to EngineV3. Azure Data Explorer markup charge will be resumed post-GA.
+> 1. General Availability (GA): All new clusters are created in EngineV3 mode by default. SLA applies to all production clusters: EngineV3 and EngineV2.
+> 1. Post GA: Existing workloads running on EngineV2 are migrated to EngineV3. Azure Data Explorer markup charge will be resumed.
 
 ## How EngineV3 works
 
-EngineV3 is an additional column store storage engine running in parallel with the existing Column Store (Column Store v2) and Row Store (used for streaming ingestion). Tables can incorporate data from all three stores at once, and this “federation” of data is transparent from the user perspective.
+EngineV3 is an additional column store storage engine running in parallel with the existing Column Store (EngineV2) and Row Store (used for streaming ingestion). Tables can incorporate data from all three stores at once, and this “federation” of data is transparent from the user perspective.
 
 :::image type="content" source="media\engine-v3\engine-v3-architecture.png" alt-text="Schematic representation of Azure Data Explorer/Kusto EngineV3 architecture":::
 
@@ -38,7 +38,7 @@ EngineV3 focuses on optimizing this "bottom part" of the distributed query.
 ## Performance
 
 The performance impact of EngineV3 depends on the dataset, query patterns, concurrency, and VM SKUs used. For internal performance testing, we have used a 100-TB dataset, and explored different scenarios that involve analytics over structured, unstructured, and semi-structured data.
-With the same level of concurrency and using the same HW configuration, the performance improvement we experienced in our testing was mostly in the range of 2X to 113X.
+With the same level of concurrency and using the same hardware configuration, the performance improvement we experienced in our testing was on average ~8X. Actual performance improvement varies based on the query and dataset.
 
 The increased speed of queries comes from the two major changes in the engine:
 
@@ -47,14 +47,21 @@ The increased speed of queries comes from the two major changes in the engine:
 
 ## Create an EngineV3 cluster
 
-To create a new cluster with EngineV3, select the **Use Engine V3 preview** checkbox in the cluster creation screen:
+To [create a new cluster](create-cluster-database-portal.md) with EngineV3, select the **Use Engine V3 preview** checkbox in the cluster creation screen:
 
 :::image type="content" source="media/engine-v3/create-new-cluster-v3.png" alt-text="Screenshot of checkbox for Use Engine V3 preview while creating a cluster":::
 
-To verify that the cluster is using EngineV3, run the following query:
+## Verify use of EngineV3
+
+To verify that the cluster is using EngineV3, run the following query on a table containing data:
 
 ```kusto
 .show table [TABLE_NAME] extents | summarize by Kind
 ```
 
-**Output**: StorageV3
+If your cluster is using EngineV3, the output will be as follows:
+> StorageV3
+
+## Next steps
+
+[Ingest data with Azure Data Explorer data](ingest-data-overview.md)
