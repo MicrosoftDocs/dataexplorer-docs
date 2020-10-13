@@ -29,7 +29,7 @@ EngineV3 is an additional column store storage engine running in parallel with t
 
 :::image type="content" source="media\engine-v3\engine-v3-architecture.png" alt-text="Schematic representation of Azure Data Explorer/Kusto EngineV3 architecture":::
 
-All data ingested into tables is partitioned into shards which are horizontal slices of the table. Each shard usually contains a few million records and is encoded and indexed independently of other shards. This functionality allows the engine to achieve linear scale in ingestion throughput.
+All data ingested into tables is partitioned into shards, which are horizontal slices of the table. Each shard usually contains a few million records and is encoded and indexed independently of other shards. This functionality allows the engine to achieve linear scale in ingestion throughput.
 
 Shards are spread evenly across the cluster nodes, where they're cached both on the local SSD and in memory. The query planner and the query engine prepare and execute a highly distributed and parallel query that benefits from this shard distribution and caching.
 
