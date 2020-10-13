@@ -1,6 +1,6 @@
 ---
-title: 'Azure Data Explorer Kusto EngineV3 Preview'
-description: 'Azure Data Explorer, Kusto EngineV3 Introduction'
+title: 'Azure Data Explorer Kusto EngineV3 (preview)'
+description: 'Learn more about Azure Data Explorer (Kusto) EngineV3'
 author: orspod
 ms.author: orspodek
 ms.reviewer: avnera
