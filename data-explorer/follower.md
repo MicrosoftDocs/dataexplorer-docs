@@ -166,6 +166,34 @@ New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
 	-ErrorAction Stop 
 ````
 
+### Detach a database using Powershell
+
+#### Needed Modules
+
+```
+Install : Az.Kusto
+```
+
+#### Code Example
+
+```Powershell
+
+$FollowerClustername = 'follower'
+$FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
+$FollowerResourceGroupName = 'followerResouceGroup'
+$DatabaseName = "sanjn"  ## Can be specific database name or * for all databases
+
+
+##Construct the Configuration name 
+
+$confignameraw = (Get-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -ResourceGroupName $FollowerResourceGroupName -SubscriptionId $FollowerClusterSubscriptionID) | Where-Object {$_.DatabaseName -eq $DatabaseName }
+$configname =$confignameraw.Name.Split("/")[1]
+
+
+Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -Name $configname -ResourceGroupName $FollowerResourceGroupName
+
+
+
 
 ### Attach a database using an Azure Resource Manager template
 
