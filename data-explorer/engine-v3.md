@@ -63,4 +63,4 @@ If your cluster is using EngineV3, the output will be as follows:
 
 ## Next steps
 
-[Ingest data with Azure Data Explorer data](ingest-data-overview.md)
+[Ingest data with Azure Data Explorer](ingest-data-overview.md)
