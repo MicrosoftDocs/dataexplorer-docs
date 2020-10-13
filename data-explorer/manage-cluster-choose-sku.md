@@ -36,24 +36,24 @@ Azure Data Explorer cluster supports a variety of SKUs for different types of wo
 
 ### Compute optimized
 
-* Provides a high cores to cache ratio.
+* Provides a high core to cache ratio.
 * Suited for a high rate of queries over small to moderate data sizes.
-* Local SSD for low latency I/O
+* Local SSD for low latency I/O.
 
 ### Heavy compute
 
-* AMD SKUs that offer a much higher cores to cache ratio
-* Local SSD for low latency I/O
+* AMD SKUs that offer a much higher core to cache ratio.
+* Local SSD for low latency I/O.
 
 ### Storage optimized
 
 * Option for larger storage ranging from 1 TB to 4 TB per engine node.
 * Suited for workloads that require storing a large volume of data with less intensive compute query requirements.
-* Certain SKUs uses premium storage (managed disk) attached to the engine node instead of local SSD for hot data storage.
+* Certain SKUs use premium storage (managed disk) attached to the engine node instead of local SSD for hot data storage.
 
 ### Isolated compute
 
-* Ideal SKU for running workloads that require server instance-level isolation.
+Ideal SKU for running workloads that require server instance-level isolation.
 
 ## Select and optimize your compute SKU 
 
@@ -80,7 +80,7 @@ With various compute SKU options to choose from, you can optimize costs for the 
 * If you need the most optimal performance for a high query volume, the ideal SKU should be compute-optimized. 
 * If you need to query large volumes of data with relatively lower query load, the storage-optimized SKU can help reduce costs and still provide excellent performance.
 
-Because the number of instances per cluster for the small SKUs is limited, it's preferable to use larger VMs that have greater RAM. More RAM is needed for some query types that put more demand on the RAM resource, such as queries that use `joins`. Therefore, when you're considering scaling options, we recommend that you scale up to a larger SKU rather than scale out by adding more instances.
+Because the number of instances per cluster for the small SKUs is limited, it's preferable to use larger VMs that have greater RAM. More RAM is needed for some query types that put more demand on the RAM resource, such as queries that use `joins`. That's why, when you're considering scaling options, we recommend that you scale-up to a larger SKU rather than scale-out by adding more instances.
 
 ## Compute SKU options
 
