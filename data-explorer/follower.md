@@ -259,14 +259,16 @@ You can deploy the Azure Resource Manager template by [using the Azure portal](h
 
 ## Verify that the database was successfully attached
 
-To verify that the database was successfully attached, find your attached databases in the [Azure portal](https://portal.azure.com). 
+To verify that the database was successfully attached, find your attached databases in the [Azure portal](https://portal.azure.com). You can verify the databases were successfully attached in either the [follower](#check-your-follower-cluster) or [leader](#check-your-leader-cluster) clusters.
+
+### Check your follower cluster  
 
 1. Navigate to the follower cluster and select **Databases**
 1. Search for new Read-only databases in the database list.
 
     ![Read-only follower database](media/follower/read-only-follower-database.png)
 
-Alternatively:
+### Check your leader cluster
 
 1. Navigate to the leader cluster and select **Databases**
 2. Check that the relevant databases are marked as **SHARED WITH OTHERS** > **Yes**
