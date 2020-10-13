@@ -89,7 +89,7 @@ Overwriting is useful, for example for retention purposes, if the client wants t
 
 ## Extent Tagging
 
-Kusto supports attaching multiple optional *extent tags* to the extent, as part of its metadata. An extent tag (or simply *tag*), is a string that is associated with the extent. You can use the [.show extents](extents-commands.md#show-extents)
+Kusto supports attaching multiple optional *extent tags* to the extent, as part of its metadata. An extent tag (or simply *tag*), is a string that is associated with the extent. You can use the [.show extents](#show-extents)
 commands to see the tags associated with an extent, and the
 [extent-tags()](../query/extenttagsfunction.md) 
 function to see the tags associated with records in an extent.
@@ -124,7 +124,7 @@ For example:
 
 * Don't overuse `drop-by` tags. Dropping data in the manner mentioned above is meant for rarely occurring events. It isn't for replacing record-level data, and it relies on the fact that the data tagged in this manner is bulky. Attempting to give a different tag for each record, or small number of records, might result in a severe impact on performance.
 * If `drop-by` tags aren't needed for a period of time after data is ingested,
-we recommend that you [drop the tags](extents-commands.md#drop-extent-tags).
+we recommend that you [drop the tags](#drop-extent-tags).
 
 ### 'ingest-by:' extent tags
 
@@ -158,4 +158,3 @@ with already-in-progress ingestion calls). Attempting to set a unique `ingest-by
 for each ingestion call might result in a severe impact on performance.
 * If such tags aren't required for some period of time after the data is ingested,
 we recommend that you [drop extent tags](drop-extent-tags.md).
- 

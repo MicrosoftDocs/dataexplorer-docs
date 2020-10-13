@@ -29,7 +29,7 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
 ## Authentication
-For running the examples in this article, we need an Azure AD Application and service principal that can access resources. Check [create an Azure AD application](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD Application and add role assignment at the subscription scope. It also shows how to get the `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
+For running the examples in this article, we need an Azure AD Application and service principal that can access resources. Check [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD Application and add role assignment at the subscription scope. It also shows how to get the `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 ## Create the Azure Data Explorer cluster
 
@@ -124,4 +124,4 @@ You now have a cluster and a database.
 
 ## Next steps
 
-* [Ingest data using the Azure Data Explorer .NET Standard SDK (Preview)](net-standard-ingest-data.md)
+* [Ingest data using the Azure Data Explorer .NET Standard SDK (Preview)](./net-sdk-ingest-data.md)

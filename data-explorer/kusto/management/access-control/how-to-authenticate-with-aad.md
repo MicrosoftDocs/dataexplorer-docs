@@ -128,7 +128,7 @@ see [https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet]
 for an example of doing so from a .NET application.
 
 To authenticate users for Azure Data Explorer access, an application must first be granted the
-`Access Kusto` delegated permission. Please see [Kusto guide to AAD applications provisioning](how-to-provision-aad-app.md#set-up-delegated-permissions-for-kusto-service-application)
+`Access Kusto` delegated permission. Please see [Kusto guide to AAD applications provisioning](../../../provision-azure-ad-app.md#set-up-delegated-permissions-for-kusto-service-application)
 for details.
 
 The following brief code snippet demonstrates using ADAL to acquire an AAD user
@@ -240,7 +240,7 @@ var queryResult = client.ExecuteQuery(databaseName, query, null);
 **AAD application configuration**
 
 > [!NOTE]
-> In addition to the standard [steps](./how-to-provision-aad-app.md) you need to
+> In addition to the standard [steps](../../../provision-azure-ad-app.md) you need to
 > follow in order to setup an AAD app, you should also enable oauth implicit flow
 > in your AAD application. You can achieve that by selecting manifest from your
 >application page in the azure portal, and set oauth2AllowImplicitFlow to true.

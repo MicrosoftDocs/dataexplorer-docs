@@ -11,9 +11,9 @@ ms.date: 04/14/2020
 
 # Microsoft Logic App and Azure Data Explorer
 
-The Azure Kusto Logic App connector enables you to run Kusto queries and commands automatically as part of a scheduled or triggered task, using the [Microsoft Logic App](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) connector.
+The Azure Kusto Logic App connector enables you to run Kusto queries and commands automatically as part of a scheduled or triggered task, using the [Microsoft Logic App](/azure/logic-apps/logic-apps-what-are-logic-apps) connector.
 
-Logic App and Flow are built on the same connector. Therefore, the [limitations](flow.md#limitations), [actions](flow.md#azure-kusto-flow-actions), [authentication](flow.md#authentication) and [usage examples](flow.md#azure-kusto-flow-actions) that apply to Flow, also apply to Logic Apps, as mentioned on the [Flow documentation page](flow.md).
+Logic App and Flow are built on the same connector. Therefore, the [limitations](../../flow.md#limitations), [actions](../../flow.md#azure-kusto-flow-actions), [authentication](../../flow.md#authentication) and [usage examples](../../flow.md#azure-kusto-flow-actions) that apply to Flow, also apply to Logic Apps, as mentioned on the [Flow documentation page](../../flow.md).
 
 ## How to create a Logic App with Azure Data Explorer
 
@@ -51,5 +51,5 @@ Logic App and Flow are built on the same connector. Therefore, the [limitations]
 
 ## Next steps
 
-* To learn more about configuring a recurrence action, see the [Flow documentation page](flow.md)
-* Take a look at some [usage examples](flow.md#azure-kusto-flow-actions) for ideas on configuring your logic app actions
+* To learn more about configuring a recurrence action, see the [Flow documentation page](../../flow.md)
+* Take a look at some [usage examples](../../flow.md#azure-kusto-flow-actions) for ideas on configuring your logic app actions

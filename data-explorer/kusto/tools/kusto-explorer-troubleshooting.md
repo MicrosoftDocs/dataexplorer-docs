@@ -143,7 +143,7 @@ The application fails to install with either of the following errors:
 This symptom could be because another application is overriding the default ClickOnce trust prompt behavior. 
 1. View your default configuration settings.
 1. Compare your configuration settings to the actual ones on your machine.
-1. Reset your configuration settings as necessary, as explained [in this how-to article](https://docs.microsoft.com/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior).
+1. Reset your configuration settings as necessary, as explained [in this how-to article](/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior).
 
 ### Cleanup application data
 
@@ -178,4 +178,4 @@ It's also possible to revert to a specific version of Kusto.Explorer:
 
 * Learn about the [Kusto.Explorer user interface](kusto-explorer.md#overview-of-the-user-interface)
 * Learn about [running Kusto.Explorer from the command line](kusto-explorer-using.md#kustoexplorer-command-line-arguments)
-* Learn about [Kusto Query Language (KQL)](https://docs.microsoft.com/azure/kusto/query/)
+* Learn about [Kusto Query Language (KQL)](/azure/kusto/query/)

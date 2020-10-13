@@ -24,7 +24,7 @@ This document describes a simple example on the use of the **Azure Data Explorer
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Azure Data Explorer Cluster setup:
     * An [Azure Data Explorer cluster and database](create-cluster-database-portal.md).
-    * Create Azure Active Directory (Azure AD) app by [provisioning an Azure AD application](kusto/management/access-control/how-to-provision-aad-app.md).
+    * Create Azure Active Directory (Azure AD) app by [provisioning an Azure AD application](./provision-azure-ad-app.md).
     * Grant access to your Azure AD App on your Azure Data Explorer database by [managing Azure Data Explorer database permissions](manage-database-permissions.md).
 * Azure DevOps setup:
     * [Sign up for a free organization](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops)
