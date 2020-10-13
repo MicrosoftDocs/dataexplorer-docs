@@ -37,12 +37,12 @@ EngineV3 focuses on optimizing this "bottom part" of the distributed query.
 
 ## Performance
 
-The performance impact of EngineV3 depends on the dataset, query patterns, concurrency, and VM SKUs used. In performance testing, a 100-TB dataset was used and different scenarios that involve analytics over structured, unstructured, and semi-structured data were explored. With the same level of concurrency and using the same hardware configuration, the performance improvement was, on average, ~8X. Actual performance improvement varies based on the query and dataset.
-
 The improved performance and increased speed of queries comes from the two major changes in the engine:
 
 * New and improved shard storage format.
 * Redesign of the low-level shard query engine.
+
+The performance impact of EngineV3 depends on the dataset, query patterns, concurrency, and VM SKUs used. In performance testing, a 100-TB dataset was used and different scenarios that involve analytics over structured, unstructured, and semi-structured data were explored. With the same level of concurrency and using the same hardware configuration, the performance improvement was, on average, ~8X. Actual performance improvement varies based on the query and dataset.
 
 ## Create an EngineV3 cluster
 
