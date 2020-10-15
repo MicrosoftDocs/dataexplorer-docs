@@ -142,7 +142,7 @@ Select **“+ New app”** in the menu bar and then **Canvas** from the resultin
 
 ### Limitations
 
-* Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and a time of seven minutes to run.
+* Power Apps has a limit of up to 2,000 results records returned to the client. The overall memory for those records can't exceed 64 MB and a time of seven minutes to run.
 * The connector doesn't support the [fork](https://docs.microsoft.com/azure/data-explorer/kusto/query/forkoperator) and [facet](https://docs.microsoft.com/azure/data-explorer/kusto/query/facetoperator) operators.
 * **Timeout exceptions**: the connector has a timeout limitation of 7 minutes. To avoid potential timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](https://docs.microsoft.com/azure/data-explorer/kusto/query/best-practices).
 
