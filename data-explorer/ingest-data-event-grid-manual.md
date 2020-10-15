@@ -25,7 +25,6 @@ In this article, you learn how to create manually the resources needed for Event
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* [A cluster and a database](create-cluster-database-portal.md).
 * [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
     * Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
 * [An Event Hub namespace and Event Hub](/azure/event-hubs/event-hubs-create).
@@ -53,7 +52,7 @@ In this article, you learn how to create manually the resources needed for Event
     | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. Automatically populated.|
     | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the currently supported types: Microsoft.Storage.BlobCreated. or Microsoft.Storage.BlobRenamed|
 
-1. In Endpoint Type,** select **Event Hubs**.
+1. In **ENDPOINT DETAILS**, select **Event Hubs**.
 
     :::image type="content" source="media/eventgrid/endpoint-details.png" alt-text="Pick an event handler to receive your events - Event Hub - Azure Data Explorer":::
 
@@ -76,6 +75,6 @@ In this article, you learn how to create manually the resources needed for Event
 
 ## Next steps
 
-* Continue the setup and create a data ingestion connection to Azure Data Explorer via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer).
+* Continue the setup and create a data ingestion connection to Azure Data Explorer via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md#data-connection--ingest-properties-tab).
 
 * If you don't plan to continue Event Grid ingestion using the resources you created and don't want to use the resources anymore, [clean up resources](ingest-data-event-grid.md#clean-up-resources) to avoid incurring costs.
