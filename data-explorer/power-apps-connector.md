@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/05/2020
 ---
-# Azure Data Explorer connector to Power Apps (Preview)
+# Azure Data Explorer connector to Power Apps (Experimental)
 
 Power Apps is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps for your business needs. Use Power Apps to quickly build custom business apps that connect to your business data. The Power Apps connector is particularly useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. In this article, you will create a Power Apps application based on Azure Data Explorer data, and see the steps of data parameterization, retrieval, and presentation.
 
@@ -79,6 +79,13 @@ Select **“+ New app”** in the menu bar and then **Canvas** from the resultin
 1. Select **“Advanced settings”**, scroll through the resulting options and find **“Dynamic schema”**. Turn on this feature.
 
     :::image type="content" source="media/power-apps-connector/dynamic-schema.png" alt-text="Turn on dynamic schema setting in Power Apps - connection to Azure Data Explorer":::
+
+1. Find "Data row limit for non delegable queries" setting. Set your required returned records limit.
+
+    :::image type="content" source="media/power-apps-connector/set-limit.png" alt-text="Set return results limit in Power Apps - Azure Data Explorer":::
+
+    > [!NOTE]
+    > The default limit is 500, with a maximum of 2,000 returned records.
 
 > [!IMPORTANT]
 > Save your app again and restart as required.
