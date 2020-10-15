@@ -121,7 +121,7 @@ There are a number of methods by which data can be ingested directly to the engi
 | [**Go**](kusto/api/golang/kusto-golang-client-library.md) | All formats supported | 1 GB uncompressed (see note) | Batching, streaming, direct | Write your own code according to organizational needs |
 
 > [!Note] 
-> When referenced in the above table, ingestion supports a maximum file size of 5 GB. The recommendation is to ingest files between 100 MB and 1 GB.
+> When referenced in the above table, ingestion supports a maximum file size of 4 GB. The recommendation is to ingest files between 100 MB and 1 GB.
 
 ## Ingestion process
 
