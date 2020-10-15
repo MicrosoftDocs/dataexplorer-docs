@@ -80,7 +80,7 @@ Select **“+ New app”** in the menu bar and then **Canvas** from the resultin
 
     :::image type="content" source="media/power-apps-connector/dynamic-schema.png" alt-text="Turn on dynamic schema setting in Power Apps - connection to Azure Data Explorer":::
 
-1. Find "Data row limit for non delegable queries" setting. Set your required returned records limit.
+1. Search for the **Data row limit for non-delegable queries** setting. Set your returned records limit.
 
     :::image type="content" source="media/power-apps-connector/set-limit.png" alt-text="Set return results limit in Power Apps - Azure Data Explorer":::
 
