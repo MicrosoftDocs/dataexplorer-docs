@@ -28,12 +28,12 @@ In this article, you learn how to create manually the resources needed for Event
 * [A cluster and a database](create-cluster-database-portal.md).
 * [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
     * Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
-* [An Event Hub](/azure/event-hubs/event-hubs-create).
+* [An Event Hub namespace and Event Hub](/azure/event-hubs/event-hubs-create).
 
 > [!NOTE]
 > For best performance, create all resources in the same region as the Azure Data Explorer cluster.
 
-## Create Event Grid subscription
+## Create an Event Grid subscription
  
 1. In the Azure portal, go to your storage account.
 1. In the left menu, select **Events** > **Event Subscription**.
