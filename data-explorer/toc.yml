@@ -228,6 +228,8 @@
           href: vnet-deploy-troubleshoot.md
         - name: Create Private Endpoint for your VNet cluster - Portal
           href: vnet-create-private-endpoint.md
+        - name: Connect Azure Data Explorer to Azure services over your Virtual Network
+          href: vnet-private-link-storage-event-hub.md
     - name: Encryption
       items:
       - name: Cluster disk encryption - portal
