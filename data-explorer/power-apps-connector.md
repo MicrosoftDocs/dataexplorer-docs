@@ -123,13 +123,13 @@ Select **“+ New app”** in the menu bar and then **Canvas** from the resultin
 
 1. Select **Insert** in the menu bar. Select **“Data table”** in the resulting sub menu bar.
 1. Reposition the data table and consider adding a border for visibility.
-
-    :::image type="content" source="media/power-apps-connector/insert-data-table.png" alt-text="Reposition table and add border":::
-
 1. Select the **Properties** tab in the right-hand popout. Select Results from the **“Data Source”** dropdown.
 1. Select **“Edit fields”** link. 
 1. Select **“+ Add field”** in the resulting popout. 
-1. Select desired fields and click **Add** button.
+    
+    :::image type="content" source="media/power-apps-connector/insert-data-table-small.png" alt-text="Reposition table and add border" lightbox="media/power-apps-connector/insert-data-table.png":::
+
+1. Select desired fields and click **Add** button. A preview of the selected data table appears.
 
     :::image type="content" source="media/power-apps-connector/preview-table.png" alt-text="Preview of the table populated with data":::
 
