@@ -98,11 +98,12 @@ Purge command may be invoked in two ways for differing usage scenarios:
   .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
    ```
 
-  > [!NOTE]
-  > Generate this command by using the CslCommandGenerator API, available as part of the [Kusto Client Library](../api/netfx/about-kusto-data.md) NuGet package.
+* Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data.
 
-* Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data. Using this option may take a long time to complete on large tables with significant cold cache data.
-	<!-- If query times-out on DM endpoint (default timeout is 10 minutes), it is recommended to use the [engine `whatif` command](#purge-whatif-command) directly againt the engine endpoint while increasing the [server timeout limit](../concepts/querylimits.md#limit-on-request-execution-time-timeout). Only after you have verified the expected results using the engine whatif command, issue the purge command via the DM endpoint using the 'noregrets' option. -->
+ > [!NOTE]
+ > The first step in the two-step invocation requires running a query on the entire data set, to identify records to be purged.
+ > This query may time-out or fail on large tables, especially with significant amount of cold cache data. In case of failures,
+ > please validate the predicate yourself and after verifying correctness use the single-step purge with the `noregrets` option.
 
   **Syntax**
 
