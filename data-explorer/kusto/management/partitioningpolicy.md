@@ -13,7 +13,7 @@ ms.date: 06/10/2020
 
 The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table.
 
-The main purpose of the policy is to improve performance of queries that are known to narrow the data set by filtering on the partitioned columns, or aggregate/join on a high cardinality string column. The policy may also result in better compression of the data.
+The main purpose of the policy is to improve performance of queries that narrow the data set. Examples of queries that could be improved by using the partitioning filtering on the partitioned columns, or aggregate/join on a high cardinality string column. The policy may also result in better compression of the data.
 
 > [!CAUTION]
 > There are no hard-coded limits set on the number of tables with the partitioning policy defined. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used. For more information, see [Monitoring](#monitoring) and [Capacity](#capacity).
@@ -41,27 +41,14 @@ The following kinds of partition keys are supported.
 
 #### Partition properties
 
-* `Function` is the name of a hash-modulo function to use.
-  * Supported value: `XxHash64`.
-* `MaxPartitionCount` is the maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period.
-  * Supported values are in the range `(1,2048]`.
-    * The value is expected to be:
-      * Larger than five times the number of nodes in the cluster.
-      * Smaller than the cardinality of the column.
-    * The higher the value is, the greater the overhead of the data partitioning process on the cluster's nodes, and the higher the number of extents for each time period.
-    * For clusters with fewer than 50 nodes, we recommend that you start with a value of `256`.
-      * Adjust the value as needed, based on the above considerations (for example, the number of nodes in the cluster grows), or based on the benefit in query performance 
-        vs. the overhead of partitioning the data post-ingestion.
-* `Seed` is the value to use for randomizing the hash value.
-  * The value should be a positive integer.
-  * The recommended value is `1`, which is the default value.
-* `PartitionAssignmentMode` is the mode used for assigning partitions to nodes in the cluster.
-  * Supported modes:
-    * `Default`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node.
-    * `Uniform`: An extents' partition values are disregarded, and extents are assigned uniformly to the cluster's nodes.
-  * If queries don't join or aggregate on the hash partition key, use `Uniform`. Otherwise, use `Default`.
+|Property | Description | Supported value(s)| Recommended value |
+|---|---|---|---|
+| `Function` | The name of a hash-modulo function to use.| `XxHash64` | |
+| `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. |In the range `(1,2048]`.  Should be larger than five times the number of nodes in the cluster and smaller than the cardinality of the column. |  Higher values lead to greater the overhead of the data partitioning process on the cluster's nodes and a higher number of extents for each time period. For clusters with fewer than 50 nodes, the recommended starting value is `256`. Adjust the value as needed, based on the above considerations (for example, the number of nodes in the cluster grows), or based on the benefit in query performance vs. the overhead of partitioning the data post-ingestion.
+| `Seed` | Use for randomizing the hash value. | A positive integer. | `1`, which is also the default value. |
+| `PartitionAssignmentMode` | The mode used for assigning partitions to nodes in the cluster. | `Default`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node. <br> `Uniform`: An extents' partition values are disregarded, and extents are assigned uniformly to the cluster's nodes. | If queries don't join or aggregate on the hash partition key, use `Uniform`. Otherwise, use `Default`. |
 
-#### Example
+#### Hash partition key example
 
 A hash partition key over a `string`-typed column named `tenant_id`.
 It uses the `XxHash64` hash function, with a `MaxPartitionCount` of `256`, and the default `Seed` of `1`.
@@ -90,15 +77,12 @@ The partition function used is [bin_at()](../query/binatfunction.md) and isn't c
 
 #### Partition properties
 
-* `RangeSize` is a `timespan` scalar constant that indicates the size of each datetime partition.
-  Recommendations:
-  * Start with the value `1.00:00:00` (one day).
-  * Don't set a shorter value, because it may result in the table having a large number of small extents that can't be merged.
-* `Reference` is a `datetime` scalar constant that indicates a fixed point in time, according to which datetime partitions are aligned.
-  * We recommend you start with `1970-01-01 00:00:00`.
-  * If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`.
+|Property | Description | Recommended value |
+|---|---|---|---|
+| `RangeSize` | A `timespan` scalar constant that indicates the size of each datetime partition. | Start with the value `1.00:00:00` (one day). Don't set a shorter value, because it may result in the table having a large number of small extents that can't be merged.
+| `Reference` | A `datetime` scalar constant that indicates a fixed point in time, according to which datetime partitions are aligned. | Start with `1970-01-01 00:00:00`. If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`. |
 
-#### Example
+#### Uniform range datetime partition example
 
 The code snippet shows a uniform datetime range partition key over a `datetime` typed column named `timestamp`.
 It uses `datetime(1970-01-01)` as its reference point, with a size of `1d` for each partition.
@@ -138,7 +122,7 @@ The data partitioning policy has the following main properties:
   * **Note:** It's possible to set a datetime value in the past, and have that result with already ingested data getting partitioned.
     However, doing so may significantly increase use of resources in the partitioning process, and so you should weigh the benefits.
 
-### Example
+### Data partitioning example
 
 Data partitioning policy object with two partition keys.
 1. A hash partition key over a `string`-typed column named `tenant_id`.
