@@ -18,6 +18,7 @@ The user-defined functions code is given in the articles.  It can be used within
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
+|[kmeans_fl()](kmeans-fl.md)|Clusterize using the k-means algorithm. |
 |[predict_fl()](predict-fl.md)|Predict using an existing trained machine learning model. |
 |[predict_onnx_fl()](predict-onnx-fl.md)| Predict using an existing trained machine learning model in ONNX format. |
 

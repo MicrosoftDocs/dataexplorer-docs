@@ -1753,6 +1753,8 @@
     items:
     - name: List of functions
       href: kusto/functions-library/functions-library.md
+    - name: kmeans_fl()
+      href: kusto/functions-library/kmeans-fl.md
     - name: predict_fl()
       href: kusto/functions-library/predict-fl.md
     - name: predict_onnx_fl()
