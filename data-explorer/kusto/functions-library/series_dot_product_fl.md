@@ -57,7 +57,7 @@ For persistent usage, use [.create function](../management/create-function.md). 
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-.create-or-alter function with (folder = "Packages\\Series", docstring = "Calculate dot product of 2 numerical arrays")
+.create-or-alter function with (folder = "Packages\\Series", docstring = "Calculate the dot product of 2 numerical arrays")
 series_dot_product_fl(vec1:dynamic, vec2:dynamic)
 {
     let elem_prod = series_multiply(vec1, vec2);
