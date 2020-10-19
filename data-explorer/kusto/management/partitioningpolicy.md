@@ -1,6 +1,6 @@
 ---
 title: Data partitioning policy - Azure Data Explorer
-description: This article describes Data partitioning policy in Azure Data Explorer.
+description: This article describes the data partitioning policy in Azure Data Explorer, and how it can be used to improve query performance.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/10/2020
 ---
-# Data partitioning policy
+# Partitioning policy
 
 The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table.
 
@@ -44,9 +44,9 @@ The following kinds of partition keys are supported.
 |Property | Description | Supported value(s)| Recommended value |
 |---|---|---|---|
 | `Function` | The name of a hash-modulo function to use.| `XxHash64` | |
-| `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. |In the range `(1,2048]`.  Should be larger than five times the number of nodes in the cluster and smaller than the cardinality of the column. |  Higher values lead to greater the overhead of the data partitioning process on the cluster's nodes and a higher number of extents for each time period. For clusters with fewer than 50 nodes, the recommended starting value is `256`. Adjust the value as needed, based on the above considerations (for example, the number of nodes in the cluster grows), or based on the benefit in query performance vs. the overhead of partitioning the data post-ingestion.
+| `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. | In the range `(1,2048]`. <br>  Larger than five times the number of nodes in the cluster, and smaller than the cardinality of the column. |  Higher values lead to greater overhead of the data partitioning process on the cluster's nodes, and a higher number of extents for each time period. For clusters with fewer than 50 nodes, start with `256`. Adjust the value based on these considerations, or based on the benefit in query performance vs. the overhead of partitioning the data post-ingestion.
 | `Seed` | Use for randomizing the hash value. | A positive integer. | `1`, which is also the default value. |
-| `PartitionAssignmentMode` | The mode used for assigning partitions to nodes in the cluster. | `Default`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node. <br> `Uniform`: An extents' partition values are disregarded, and extents are assigned uniformly to the cluster's nodes. | If queries don't join or aggregate on the hash partition key, use `Uniform`. Otherwise, use `Default`. |
+| `PartitionAssignmentMode` | The mode used for assigning partitions to nodes in the cluster. | `Default`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node. <br> `Uniform`: An extents' partition values are disregarded. Extents are assigned uniformly to the cluster's nodes. | If queries don't join or aggregate on the hash partition key, use `Uniform`. Otherwise, use `Default`. |
 
 #### Hash partition key example
 
@@ -119,8 +119,8 @@ The data partitioning policy has the following main properties:
   * The UTC datetime from which the policy is effective.
   * This property is optional. If it isn't specified, the policy will take effect on data ingested after the policy was applied.
   * Any non-homogeneous (non-partitioned) extents that may be dropped because of retention are ignored by the partitioning process. The extents are ignored because their creation time precedes 90% of the table's effective soft-delete period.
-  * **Note:** It's possible to set a datetime value in the past, and have that result with already ingested data getting partitioned.
-    However, doing so may significantly increase use of resources in the partitioning process, and so you should weigh the benefits.
+    > [!NOTE]
+    > It's possible to set a datetime value in the past, and have that result with already ingested data getting partitioned. However, doing so may significantly increase use of resources in the partitioning process, and so you should weigh the benefits.
 
 ### Data partitioning example
 
@@ -171,7 +171,7 @@ The following properties can be defined as part of the policy. These properties 
 * Data partitioning runs only on hot extents, regardless of the value of the `EffectiveDateTime` property in the policy.
   * If partitioning cold extents is required, you need to temporarily adjust the [caching policy](cachepolicy.md).
 
-### Monitoring the partition process
+### Monitoring
 
 Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) command to monitor the progress or state of partitioning in a cluster.
 
@@ -197,7 +197,7 @@ Use [.show commands](commands.md) to monitor the partitioning commands and their
 | render timechart with(ysplit = panels)
 ```
 
-### Capacity of the partition process
+### Capacity
 
 * The data partitioning process results in the creation of more extents. The cluster may gradually increase its [extents merge capacity](../management/capacitypolicy.md#extents-merge-capacity), so that the process of [merging extents](../management/extents-overview.md) can keep up.
 * If there's a high ingestion throughput, or a large enough number of tables that have a partitioning policy defined, then the cluster may gradually increase its [Extents partition capacity](../management/capacitypolicy.md#extents-partition-capacity), so that [the process of partitioning extents](#the-data-partitioning-process) can keep up.
