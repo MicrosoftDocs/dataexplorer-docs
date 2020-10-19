@@ -13,7 +13,7 @@ ms.date: 06/10/2020
 
 The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table.
 
-The main purpose of the policy is to improve performance of queries that narrow the data set. Examples of queries that could be improved by using the partitioning filtering on the partitioned columns, or aggregate/join on a high cardinality string column. The policy may also result in better compression of the data.
+The main purpose of the policy is to improve performance of queries that narrow the data set. This improvement is achieved by using partitioning filtering on the partitioned columns, or using an aggregate or join on a high cardinality string column. The policy may also result in better compression of the data.
 
 > [!CAUTION]
 > There are no hard-coded limits set on the number of tables with the partitioning policy defined. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used. For more information, see [Monitoring](#monitoring) and [Capacity](#capacity).
@@ -155,30 +155,23 @@ Data partitioning policy object with two partition keys.
 }
 ```
 
-### Additional properties
+## Additional properties
 
 The following properties can be defined as part of the policy. These properties are optional and we recommend not changing them.
 
-* **MinRowCountPerOperation**:
-  * Minimum target for the sum of row count of the source extents of a single data partitioning operation.
-  * This property is optional. Its default value is `0`.
+|Property | Description | Recommended value | Default value |
+|---|---|---|---|
+| **MinRowCountPerOperation** |  Minimum target for the sum of row count of the source extents of a single data partitioning operation. | | `0` |
+| **MaxRowCountPerOperation** |  Maximum target for the sum of the row count of the source extents of a single data partitioning operation. | Set a value lower than 5M if you see that the partitioning operations consume a large amount of memory or CPU per operation. For more information, see [Monitoring](#monitoring). | `0`, with a default target of 5,000,000 records. |
 
-* **MaxRowCountPerOperation**:
-  * Maximum target for the sum of the row count of the source extents of a single data partitioning operation.
-  * This property is optional. Its default value is `0`, with a default target of 5,000,000 records.
-    * You can set a value lower than 5M if you see that the partitioning operations consume a large amount
-      of memory or CPU, per operation. For more information, see [Monitoring](#monitoring).
-
-## Notes
-
-### The data partitioning process
+## The data partitioning process
 
 * Data partitioning runs as a post-ingestion background process in the cluster.
   * A table that is continuously ingested into is expected to always have a "tail" of data that is yet to be partitioned (non-homogeneous extents).
 * Data partitioning runs only on hot extents, regardless of the value of the `EffectiveDateTime` property in the policy.
   * If partitioning cold extents is required, you need to temporarily adjust the [caching policy](cachepolicy.md).
 
-#### Monitoring
+### Monitoring the partition process
 
 Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) command to monitor the progress or state of partitioning in a cluster.
 
@@ -204,19 +197,20 @@ Use [.show commands](commands.md) to monitor the partitioning commands and their
 | render timechart with(ysplit = panels)
 ```
 
-#### Capacity
+### Capacity of the partition process
 
 * The data partitioning process results in the creation of more extents. The cluster may gradually increase its [extents merge capacity](../management/capacitypolicy.md#extents-merge-capacity), so that the process of [merging extents](../management/extents-overview.md) can keep up.
-* If there's a high ingestion throughput, or a large enough number of tables that have a partitioning policy defined, then the cluster may gradually increase its
-  [Extents partition capacity](../management/capacitypolicy.md#extents-partition-capacity), so that [the process of partitioning extents](#the-data-partitioning-process) can keep up.
+* If there's a high ingestion throughput, or a large enough number of tables that have a partitioning policy defined, then the cluster may gradually increase its [Extents partition capacity](../management/capacitypolicy.md#extents-partition-capacity), so that [the process of partitioning extents](#the-data-partitioning-process) can keep up.
 * To avoid consuming too many resources, these dynamic increases are capped. You may be required to gradually and linearly increase them beyond the cap, if they're used up entirely.
   * If increasing the capacities causes a significant increase in the use of the cluster's resources, you can scale the cluster
     [up](../../manage-cluster-vertical-scaling.md)/[out](../../manage-cluster-horizontal-scaling.md), either manually, or by enabling autoscale.
 
-### Outliers in partitioned columns
+## Outliers in partitioned columns
 
-* If a hash partition key includes values that are much more prevalent than others, for example, an empty string, or a generic value (such as `null` or `N/A`), or they represent an entity (such as `tenant_id`) that is more prevalent in the data set, that could contribute to imbalanced distribution of data across the cluster's nodes, and degrade query performance.
-* If a uniform range datetime partition key has a large enough percentage of values that are "far" from the majority of the values in the column, for example, datetime values from the distant past or future, then that could increase the overhead of the data partitioning process, and lead to many small extents that the cluster will need to keep track of.
+* The following situations can contribute to imbalanced distribution of data across the cluster's nodes, and degrade query performance:
+    * If a hash partition key includes values that are much more prevalent than others, for example, an empty string, or a generic value (such as `null` or `N/A`).
+    * The values represent an entity (such as `tenant_id`) that is more prevalent in the data set.
+* If a uniform range datetime partition key has a large enough percentage of values that are "far" from the majority of the values in the column, the overhead of the data partitioning process is increased and may lead to many small extents that the cluster will need to keep track of. An example of such a situation is datetime values from the distant past or future.
 
 In both of these cases, either "fix" the data, or filter out any irrelevant records in the data before or at ingestion time, to reduce the overhead of the data partitioning on the cluster. For example, use an [update policy](updatepolicy.md).
 
