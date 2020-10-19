@@ -1753,12 +1753,16 @@
     items:
     - name: List of functions
       href: kusto/functions-library/functions-library.md
+    - name: kmeans_fl()
+      href: kusto/functions-library/kmeans-fl.md
     - name: predict_fl()
       href: kusto/functions-library/predict-fl.md
     - name: predict_onnx_fl()
       href: kusto/functions-library/predict-onnx-fl.md
     - name: quantize_fl()
       href: kusto/functions-library/quantize-fl.md
+    - name: series_dot_product_fl()
+      href: kusto/functions-library/series-dot-product-fl.md
     - name: series_fit_poly_fl()
       href: kusto/functions-library/series-fit-poly-fl.md
     - name: series_moving_avg_fl()
