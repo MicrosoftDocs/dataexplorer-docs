@@ -461,18 +461,21 @@ Select a resource from which to export metrics. Several resource types support e
 
     :::image type="content" source="media/ingest-data-no-code/add-diagnosting-setting.png" alt-text="Add diagnostic setting in Diagnostic settings window, Azure Data Explorer portal":::
 
-1. A new **Diagnostic setting** window opens. Do the following steps:
+1. A new **Diagnostic setting** window opens. 
+
+    :::image type="content" source="media/ingest-data-no-code/export-activity-log.PNG" alt-text="Diagnostic settings window with fields to fill out - Azure Data Explorer portal":::
+
+    Do the following steps:
     1. Enter a name in the **Diagnostic setting name** field.  
     1. On the left-hand side of check boxes, select the platform log(s) you wish to collect from a subscription.
-    1. Select your subscription.
     1. Select the **Stream to an event hub** check box.
+    1. Select your subscription.
     1. In the **Event hub namespace** list, select *AzureMonitoringData*.
     1. Optionally, select your **Event hub name**.
     1. In the **Event hub policy name** list, select the default event hub policy name.
     1. In the upper-left corner of the window, select **Save**. An event hub with the name *insights-operational-logs* will be created.
       
-    :::image type="content" source="media/ingest-data-no-code/export-activity-log.PNG" alt-text="Diagnostic settings window with fields to fill out - Azure Data Explorer portal":::
-   
+    
 
 ---
 
