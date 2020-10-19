@@ -31,8 +31,9 @@ LightIngest is most useful when you want to ingest a large amount of data, becau
 
 1. Navigate to the extracted *tools* directory on your computer.
 1. Delete the existing location information from the location bar.
-    
-    :::image type="content" source="kusto/tools/images/KustoTools-Lightingest/lightingest-locationbar.png" alt-text="Delete existing location information for LightIngest":::
+
+    :::image type="content" source="media/lightingest/lightingest-locationbar.png" alt-text="Delete existing location information for LightIngest in Azure Data Explorer":::
+
 
 1. Enter `cmd` and press **Enter**.
 1. At the command prompt, enter `LightIngest.exe` followed by the relevant command-line argument.
