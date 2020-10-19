@@ -24,7 +24,7 @@ The function `kmeans_fl()` clusterizes a dataset using the [k-means algorithm](h
 
 * *k*: The required number of clusters.
 * *features_cols*: Dynamic array containing the names of the features columns that are used for clustering.
-* *cluster_col*: The name of the column that stores the output cluster id for each record.
+* *cluster_col*: The name of the column that stores the output cluster ID for each record.
 
 ## Usage
 
@@ -57,10 +57,10 @@ let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
     | evaluate python(typeof(*), code, kwargs)
 };
 //
-// Clusterize room occupancy from sensors measurements
+// Clusterize room occupancy from sensors measurements.
 //
 // Occupancy Detection is an open dataset from UCI Repository at https://archive.ics.uci.edu/ml/datasets/Occupancy+Detection+
-// It contains experimental data for binary classification of room occupancy from Temperature,Humidity,Light and CO2.
+// It contains experimental data for binary classification of room occupancy from Temperature, Humidity, Light, and CO2.
 //
 OccupancyDetection
 | extend cluster_id=double(null)
@@ -104,10 +104,10 @@ kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 //
-// Clusterize room occupancy from sensors measurements
+// Clusterize room occupancy from sensors measurements.
 //
 // Occupancy Detection is an open dataset from UCI Repository at https://archive.ics.uci.edu/ml/datasets/Occupancy+Detection+
-// It contains experimental data for binary classification of room occupancy from Temperature,Humidity,Light and CO2.
+// It contains experimental data for binary classification of room occupancy from Temperature, Humidity, Light, and CO2.
 //
 OccupancyDetection
 | extend cluster_id=double(null)
@@ -132,7 +132,7 @@ Timestamp	                Temperature Humidity	Light  CO2         HumidityRatio 
 2015-02-17 18:17:00.0000000	22.025      34.2225     0      1538.25     0.005614538	 FALSE	   TRUE  2
 ```
 
-Extracting the centroids and the size of each cluster (assuming the function is already installed):
+Extract the centroids and size of each cluster, with the function is already installed:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
