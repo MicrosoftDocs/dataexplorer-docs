@@ -27,7 +27,7 @@ The user-defined functions code is given in the articles.  It can be used within
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[quantize_fl()](quantize-fl.md)|Quantize metric columns. |
-|[series_dot_product_fl()](series_dot_product_fl.md)|Calculates the dot product of two numerical vectors. |
+|[series_dot_product_fl()](series-dot-product-fl.md)|Calculates the dot product of two numerical vectors. |
 |[series_fit_poly_fl()](series-fit-poly-fl.md)|Fits a polynomial to series using regression analysis. |
 |[series_moving_avg_fl()](series-moving-avg-fl.md)|Applies a moving average filter on a series. |
 |[series_rolling_fl()](series-rolling-fl.md)|Applies a rolling aggregation function on a series. |
