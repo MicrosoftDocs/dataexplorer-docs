@@ -132,7 +132,7 @@ Timestamp	                Temperature Humidity	Light  CO2         HumidityRatio 
 2015-02-17 18:17:00.0000000	22.025      34.2225     0      1538.25     0.005614538	 FALSE	   TRUE  2
 ```
 
-Extract the centroids and size of each cluster, with the function is already installed:
+Extract the centroids and size of each cluster, with the function already installed:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
