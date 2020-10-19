@@ -15,4 +15,4 @@ Kusto.Explorer provides code analyzer utility that analyzes the current query an
 
 Use `Ctrl`+`F6` to run the analyzer on the active query.
 
-![alt text](./Images/KustoTools-KustoExplorer/ke-codeanalyze.gif "code-analyzer-reference")
+:::image type="content" source="images/kusto-explorer-code-analyzer/ke-code-analyze.gif" alt-text="Code analyzer GIF in Kusto Explorer":::
