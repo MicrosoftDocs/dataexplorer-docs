@@ -72,7 +72,7 @@ A cluster is considered unused if it has a small amount of data, queries, and in
 
 #### Azure Data Explorer clusters containing data with low activity
 
-Azure Data Explorer clusters that contain data but have low activity. Low activity is a small number of queries and ingestions during the past 30 days, low CPU usage during the past two days, and no followers during the past day. The recommendation is to stop the cluster to reduce cost but still preserve the data. If the data isn't needed, consider deleting the cluster to increase your savings.
+The recommendation **stop Azure Data Explorer clusters to reduce cost and keep its data** is given for a cluster that contains data but has low activity. Low activity is a small number of queries and ingestions during the past 30 days, low CPU usage during the past two days, and no followers during the past day. The recommendation is to stop the cluster to reduce cost but still preserve the data. If the data isn't needed, consider deleting the cluster to increase your savings.
 
 #### Correctly size Azure Data Explorer clusters to optimize cost
 
