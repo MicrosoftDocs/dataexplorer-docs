@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/20/2020
 ---
-# Azure Data Explorer connector to Power Apps (Experimental)
-
-Power Apps is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps for your business needs. Use Power Apps to quickly build custom business apps that connect to your business data. The Power Apps connector is particularly useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. In this article, you will create a Power Apps application based on Azure Data Explorer data, and see the steps of data parameterization, retrieval, and presentation.
+# Azure Data Explorer connector to Power Apps (preview)
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more.
 
+Power Apps is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps for your business needs. Use Power Apps to quickly build custom business apps that connect to your business data. The Power Apps connector is particularly useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. In this article, you will create a Power Apps application based on Azure Data Explorer data, and see the steps of data parameterization, retrieval, and presentation.
+
 ## Prerequisites
 
-* Power Platform license. Get started at [https://powerapps.microsoft.com](https://powerapps.microsoft.com).
+* Power platform license. Get started at [https://powerapps.microsoft.com](https://powerapps.microsoft.com).
 * Familiarity with the [Power Apps suite](https://docs.microsoft.com/powerapps/powerapps-overview).
 
 :::image type="content" source="media/power-apps-connector/power-apps.png" alt-text="Power Apps portal":::
@@ -146,6 +146,7 @@ You will see a new area called **“In your app”** with **“Azure Data Explor
 
 * Power Apps has a limit of up to 2,000 results records returned to the client. The overall memory for those records can't exceed 64 MB and a time of seven minutes to run.
 * The connector doesn't support the [fork](https://docs.microsoft.com/azure/data-explorer/kusto/query/forkoperator) and [facet](https://docs.microsoft.com/azure/data-explorer/kusto/query/facetoperator) operators.
-* **Timeout exceptions**: The connector has a timeout limitation of 7 minutes. To avoid potential timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [query best practices](https://docs.microsoft.com/azure/data-explorer/kusto/query/best-practices).
+* **Timeout exceptions**: The connector has a timeout limitation of 7 minutes. To avoid potential timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](https://docs.microsoft.com/azure/data-explorer/kusto/query/best-practices).
 
 ## Next steps
+
