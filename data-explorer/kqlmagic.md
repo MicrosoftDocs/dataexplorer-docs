@@ -44,9 +44,10 @@ Use the following command to connect to the *Samples* database hosted on the *He
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
 ```
-    > [!Note]
-    > If you are using your own ADX cluster, you must include the region in the connection string as follows:   
-    ```%kql azuredataexplorer://tenant="youecompany.com";code;cluster='mycluster.westus';database='mykustodb'```
+
+> [!Note]
+> If you are using your own ADX cluster, you must include the region in the connection string as follows:   
+   ```%kql azuredataexplorer://tenant="youecompany.com";code;cluster='mycluster.westus';database='mykustodb'```
 
 ## Query and visualize
 
