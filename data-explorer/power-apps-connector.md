@@ -146,7 +146,6 @@ You will see a new area called **“In your app”** with **“Azure Data Explor
 
 * Power Apps has a limit of up to 2,000 results records returned to the client. The overall memory for those records can't exceed 64 MB and a time of seven minutes to run.
 * The connector doesn't support the [fork](https://docs.microsoft.com/azure/data-explorer/kusto/query/forkoperator) and [facet](https://docs.microsoft.com/azure/data-explorer/kusto/query/facetoperator) operators.
-* **Timeout exceptions**: the connector has a timeout limitation of 7 minutes. To avoid potential timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](https://docs.microsoft.com/azure/data-explorer/kusto/query/best-practices).
+* **Timeout exceptions**: The connector has a timeout limitation of 7 minutes. To avoid potential timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [query best practices](https://docs.microsoft.com/azure/data-explorer/kusto/query/best-practices).
 
 ## Next steps
-
