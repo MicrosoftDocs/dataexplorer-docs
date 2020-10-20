@@ -79,6 +79,11 @@
         "source_path": "data-explorer/kusto/management/iothub.md",
         "redirect_url": "/azure/data-explorer/ingest-data-iot-hub-overview",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/azure-notebooks.md",
+        "redirect_url": "/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context",
+        "redirect_document_id": false
       }
     ]
   }
