@@ -18,7 +18,7 @@ Jupyter Notebook is an open-source web application that allows you to create and
 
 ## Prerequisites
 
-- Organizational email account that is a member of Azure Active Directory (AAD).
+- Organizational email account that is a member of Azure Active Directory (Azure AD).
 - Jupyter Notebook installed on your local machine or use [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/notebooks/notebooks-kqlmagic?view=sql-server-ver15)
 
 ## Install kqlmagic library
@@ -39,7 +39,7 @@ Jupyter Notebook is an open-source web application that allows you to create and
     
 ## Connect to the Azure Data Explorer Help cluster
 
-Use the following command to connect to the *Samples* database hosted on the *Help* cluster. For non-Microsoft AAD users, replace the tenant name `Microsoft.com` with your AAD Tenant.
+Use the following command to connect to the *Samples* database hosted on the *Help* cluster. For non-Microsoft Azure AD users, replace the tenant name `Microsoft.com` with your Azure AD Tenant.
 
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
