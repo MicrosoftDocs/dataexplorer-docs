@@ -107,7 +107,6 @@ It's recommended to use [optimized autoscale configuration](manage-cluster-horiz
 #### Update cache policy for Azure Data Explorer tables
 
 The **review Azure Data Explorer table cache-period (policy) for better performance** recommendation is given for a cluster that requires a different look-back period (time filter) or a greater [cache policy](kusto/management/cachepolicy.md). This recommendation is based on the queries look-back period during the past 30 days. Most of the queries that ran in the past 30 days accessed data that wasn't in the cache, which may increase your query run-time.  You see the top 10 tables that accessed out-of-cache data ordered by query percentage.
-[Learn more about cache policy](kusto/query/cachepolicy.md)
 
 ## Next steps
 
