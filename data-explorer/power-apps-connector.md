@@ -6,17 +6,13 @@ ms.author: orspodek
 ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/20/2020
 ---
 # Azure Data Explorer connector to Power Apps (Experimental)
 
 Power Apps is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps for your business needs. Use Power Apps to quickly build custom business apps that connect to your business data. The Power Apps connector is particularly useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. In this article, you will create a Power Apps application based on Azure Data Explorer data, and see the steps of data parameterization, retrieval, and presentation.
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more.
-
-## Objective
-
-The following example provides Step-by-Step Instructions for 
 
 ## Prerequisites
 
@@ -29,11 +25,12 @@ The following example provides Step-by-Step Instructions for
 
 1. Navigate to [https://make.preview.powerapps.com/](https://make.preview.powerapps.com/) and sign-in.
 
-1. Expand **Connections** in the left-hand navigation and select **“+ New connection”**.ֵ
+1. Select **Connections** in the left-hand menu.
+1. Select **“+ New connection”**.ֵ
 
     :::image type="content" source="media/power-apps-connector/new-connection.png" alt-text="Create a new connection in Power Apps":::
 
-1. Search and select **“Azure Data Explorer…”** in the resulting options.
+1. Search for **Azure Data Explorer** in the search bar. Select **Azure Data Explorer** from the resulting options.
 
     :::image type="content" source="media/power-apps-connector/search-adx.png" alt-text="Search and select Azure Data Explorer connection in Power Apps":::
 
@@ -43,8 +40,9 @@ The following example provides Step-by-Step Instructions for
 
 ## Create App
 
-1. Navigate to Power Apps and then **Apps** in the left-hand navigation.
-Select **“+ New app”** in the menu bar and then **Canvas** from the resulting dropdown.
+1. Navigate to Power Apps and select **Apps** in the left-hand menu.
+1. Select **“+ New app”** in the menu bar.
+1. Select **Canvas** from the resulting dropdown.
 
     :::image type="content" source="media/power-apps-connector/create-new-app.png" alt-text="Create a new app and canvas - Power Apps connector to Azure Data Explorer":::
 
@@ -54,17 +52,20 @@ Select **“+ New app”** in the menu bar and then **Canvas** from the resultin
 
 ### Add Connector
 
-1. Click on the **Data** icon on the left-hand navigation. Expand **Connectors** and click on **“Azure Data Explorer”** in the resulting options.
+1. Click on the **Data** icon on the left-hand navigation. 
+1. Expand **Connectors**.
+1. Select **“Azure Data Explorer”** in the resulting options.
 
     :::image type="content" source="media/power-apps-connector/data-connectors-adx.png" alt-text="Add a connector to Azure Data Explorer in Power Apps":::
 
-1. You will see a new area called **“In your app”** with **“Azure Data Explorer”** now included.
+You will see a new area called **“In your app”** with **“Azure Data Explorer”** now included.
 
-    :::image type="content" source="media/power-apps-connector/adx-appears.png" alt-text="Azure Data Explorer now appears in In your app area in Power Apps":::
+   :::image type="content" source="media/power-apps-connector/adx-appears.png" alt-text="Azure Data Explorer now appears in In your app area in Power Apps":::
 
 ### Save Your App
 
-1. Select **File** in the menu bar. Select **Save** in the left-hand navigation.
+1. Select **File** in the menu bar. 
+1. Select **Save** in the left-hand navigation.
 
     :::image type="content" source="media/power-apps-connector/save-app.png" alt-text="Save your app to Power Apps":::
 
@@ -74,9 +75,9 @@ Select **“+ New app”** in the menu bar and then **Canvas** from the resultin
 
 ### Advanced Settings
 
-1. Select **Settings** in the resulting left-hand navigation.
-
-1. Select **“Advanced settings”**, scroll through the resulting options and find **“Dynamic schema”**. Turn on this feature.
+1. Select **Settings** in the left-hand menu.
+1. Select **“Advanced settings”**.
+1. Scroll through the resulting options and find **“Dynamic schema”**. Enable this feature.
 
     :::image type="content" source="media/power-apps-connector/dynamic-schema.png" alt-text="Turn on dynamic schema setting in Power Apps - connection to Azure Data Explorer":::
 
@@ -102,7 +103,7 @@ Select **“+ New app”** in the menu bar and then **Canvas** from the resultin
 
 1. With the **dropdown** still selected, select **OnChange** from the **Property** dropdown in the formula bar.
 
-    Enter the following formula:
+1. Enter the following formula:
 
     ```kusto
     ClearCollect(
@@ -121,7 +122,8 @@ Select **“+ New app”** in the menu bar and then **Canvas** from the resultin
 
 ### Add Data Table
 
-1. Select **Insert** in the menu bar. Select **“Data table”** in the resulting sub menu bar.
+1. Select **Insert** in the menu bar. 
+1. Select **“Data table”** in the resulting sub menu bar.
 1. Reposition the data table and consider adding a border for visibility.
 1. Select the **Properties** tab in the right-hand popout. Select Results from the **“Data Source”** dropdown.
 1. Select **“Edit fields”** link. 
