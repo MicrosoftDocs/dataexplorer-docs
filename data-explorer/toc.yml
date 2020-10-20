@@ -345,8 +345,6 @@
       items:
       - name: Analyze data in Jupyter Notebooks & Kqlmagic
         href: kqlmagic.md
-      - name: Analyze data in Azure Notebooks
-        href: azure-notebooks.md
       - name: Azure Data Studio
         items:
         - name: Kusto extension overview 
