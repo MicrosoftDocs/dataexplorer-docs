@@ -28,10 +28,10 @@ This article shows you how to create a connection between Azure Data Explorer an
 
 # [Event Hub - Private Endpoint](#tab/event-hub-private)
 
+## Allow Access to Azure Event Hub from Azure Data Explorer Subnets using a Private Endpoint
+
 > [!IMPORTANT]
 > Virtual networks are supported in **standard** and **dedicated** tiers of Event Hubs, and aren't supported in the basic tier. 
-
-## Allow Access to Azure Event Hub from Azure Data Explorer Subnets using a Private Endpoint
 
 1. In the Azure portal, navigate to the **Event Hubs namespace** you want to secure.
 1. On the left-hand menu, select **Networking**. This tab appears only in **standard** or **dedicated** namespaces.
@@ -45,17 +45,22 @@ This article shows you how to create a connection between Azure Data Explorer an
 
 :::image type="content" source="media/vnet-private-link-storage-event-hub/create-private-endpoint-basics-tab.png" alt-text="Screenshot of Basics tab in Create a private endpoint screen":::
 
-1. Select the Azure subscription in which you want to create the private endpoint.
-1. Select the resource group for the private endpoint resource.
-1. Enter a name for the private endpoint.
-1. Select a region for the private endpoint. Your private endpoint must be in the same region as your virtual network, but can be in a different region from the private link resource that you are connecting to.
+1. Fill in the following information:
+         
+    | Setting | Field description|
+    |---|---|
+    | **Subscription** |The Azure subscription in which you want to create the private endpoint.
+    | **Resource group** | The resource group for the private endpoint resource.
+    |**Name** | A name for the private endpoint. |
+    | **Region** |A region for the private endpoint. Your private endpoint must be in the same region as your virtual network, but can be in a different region from the private link resource that you are connecting to.|
+
 1. Select **Next: Resource >** button at the bottom of the page.
 
 ### Resource tab
 
 :::image type="content" source="media/vnet-private-link-storage-event-hub/create-private-endpoint-resource-tab.png" alt-text="Screenshot of Create Private Endpoint Resource tab":::
 
-1. Select **Connect to an Azure resource in my directory**
+1. In **Connection method** select **Connect to an Azure resource in my directory**
 1. Fill in the following information: 
 
     | Setting | Field description|
@@ -64,7 +69,7 @@ This article shows you how to create a connection between Azure Data Explorer an
     | **Resource type** | Select Microsoft.EventHub/namespaces for the Resource type. |
     | **Resource** | An Event Hubs namespace from the drop-down list.
 
-1. Confirm that the **Target subresource** is set to namespace.
+1. Confirm that the **Target sub-resource** is set to namespace.
 1. Select **Next: Configuration >** button at the bottom of the page.
 
 ### Configuration tab
@@ -89,9 +94,7 @@ This article shows you how to create a connection between Azure Data Explorer an
 
 Review all the settings, and select **Create** to create the private endpoint.
 
-Confirm that you see the private endpoint connection you created shows up in the list of endpoints. In this example, the private endpoint is auto-approved because you connected to an Azure resource in your directory and you have sufficient permissions.
-
-
+Confirm that you see the private endpoint connection you created shows up in the list of endpoints. 
 
 # [Event Hub - Service Endpoint](#tab/event-hub-service)
 
