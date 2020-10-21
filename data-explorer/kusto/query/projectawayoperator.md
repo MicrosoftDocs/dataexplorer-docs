@@ -11,13 +11,13 @@ ms.date: 02/13/2020
 ---
 # project-away operator
 
-Select what columns in the input to exclude from the output
+Select what columns in the input to exclude from the output.
 
 ```kusto
 T | project-away price, quantity, zz*
 ```
 
-The order of the columns in the result is determined by their original order in the table. Only the columns that were specified as arguments are dropped. The other columns are included in the result.  (See also `project`.)
+The order of the columns in the result is determined by their original order in the table. Only the columns that were specified as arguments are dropped. The other columns are included in the result. (See also `project`.)
 
 ## Syntax
 
@@ -39,7 +39,6 @@ A table with columns that were not named as arguments. Contains same number of r
 
 * You can `project-away` any columns that are present in the original table or that were computed as part of the query.
 
-
 ## Examples
 
 The input table `T` has three columns of type `long`: `A`, `B`, and `C`.
@@ -58,11 +57,14 @@ Removing columns starting with 'a'.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-print  a2='a2', b = 'b', a3='a3', a1='a1'
-|  project-away a* 
+print a2='a2', b = 'b', a3='a3', a1='a1'
+| project-away a*
 ```
 
 |b|
 |---|
 |b|
 
+## See also
+
+To choose what columns in the input to keep in the output, use [project-keep](projectkeepoperator.md).
