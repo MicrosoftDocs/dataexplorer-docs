@@ -11,7 +11,7 @@ ms.date: 02/13/2020
 ---
 # project-away operator
 
-Select what columns in the input to exclude from the output.
+Select what columns from the input to exclude from the output.
 
 ```kusto
 T | project-away price, quantity, zz*
@@ -34,8 +34,8 @@ A table with columns that were not named as arguments. Contains same number of r
 
 **Tips**
 
-* Use [`project-rename`](projectrenameoperator.md) if your intention is to rename columns.
-* Use [`project-reorder`](projectreorderoperator.md) if your intention is to reorder columns.
+* To rename columns, use [`project-rename`](projectrenameoperator.md).
+* To reorder columns, use [`project-reorder`](projectreorderoperator.md).
 
 * You can `project-away` any columns that are present in the original table or that were computed as part of the query.
 
@@ -67,4 +67,4 @@ print a2='a2', b = 'b', a3='a3', a1='a1'
 
 ## See also
 
-To choose what columns in the input to keep in the output, use [project-keep](project-keep-operator.md).
+To choose what columns fromn the input to keep in the output, use [project-keep](project-keep-operator.md).

@@ -55,4 +55,4 @@ datatable(A1:long, A2:long, B:long) [1, 2, 3]
 
 ## See also
 
-To choose what columns in the input to exclude from the output, use [project-away](projectawayoperator.md).
+To choose what columns from the input to exclude from the output, use [project-away](projectawayoperator.md).
