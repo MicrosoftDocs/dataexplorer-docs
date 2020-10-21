@@ -178,4 +178,4 @@ It's also possible to revert to a specific version of Kusto.Explorer:
 
 * Learn about the [Kusto.Explorer user interface](kusto-explorer.md#overview-of-the-user-interface)
 * Learn about [running Kusto.Explorer from the command line](kusto-explorer-using.md#kustoexplorer-command-line-arguments)
-* Learn about [Kusto Query Language (KQL)](/azure/kusto/query/)
+* Learn about [Kusto Query Language (KQL)](../query/index.md)

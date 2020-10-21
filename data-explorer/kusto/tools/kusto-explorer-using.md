@@ -68,7 +68,7 @@ StormEvents
 
 :::image type="content" source="images/kusto-explorer-using/basic-query.png" alt-text="Kusto Explorer basic query":::
 
-Learn more about [Kusto Query Language](/azure/kusto/query/).
+Learn more about [Kusto Query Language](../query/index.md).
 
 > [!NOTE]
 > Blank lines in the query expression can affect which part of the query is executed.
@@ -261,4 +261,4 @@ Learn more about Kusto.Explorer tools and utilities:
 * [Kusto.Explorer code analyzer](kusto-explorer-code-analyzer.md)
 * [Kusto.Explorer code navigation](kusto-explorer-codenav.md)
 * [Kusto.Explorer code refactoring](kusto-explorer-refactor.md)
-* [Kusto Query Language (KQL)](/azure/kusto/query/)
+* [Kusto Query Language (KQL)](../query/index.md)

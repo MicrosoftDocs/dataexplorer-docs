@@ -50,7 +50,7 @@ In this case, the result is:
 |   23|
 | |
 
-For more information see the [Query language reference](./index.yml).
+For more information see the [Query language reference](./kusto/query/index.md).
 
 ## Most common operators
 
@@ -954,4 +954,4 @@ The following example deletes the function that was created in the first step.
 
 ## Next steps
 
-[Kusto Query Language reference](./index.yml)
+[Kusto Query Language reference](./kusto/query/index.md)

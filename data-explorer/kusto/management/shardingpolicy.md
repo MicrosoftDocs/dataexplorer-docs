@@ -16,7 +16,7 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 > [!NOTE]
 > The policy applies to all operations that create new extents,
 > such as commands for [data ingestion](../../ingest-data-overview.md#kusto-query-language-ingest-control-commands), and
-> [.merge and .rebuild commands](./extents-overview.md#merge-extents)
+> [.merge and .rebuild commands](./merge-extents.md)
 
 The data sharding policy contains the following properties:
 

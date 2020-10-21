@@ -27,7 +27,7 @@ Consider a database or table that is set for 90 days of retention. If only 60 da
 
 ## Delete data by dropping extents
 
-[Extent (data shard)](kusto/management/extents-overview.md) is the internal structure where data is stored. Each extent can hold up to millions of records. Extents can be deleted individually or as a group using [drop extent(s) commands](./kusto/management/extents-overview.md#drop-extents). 
+[Extent (data shard)](kusto/management/extents-overview.md) is the internal structure where data is stored. Each extent can hold up to millions of records. Extents can be deleted individually or as a group using [drop extent(s) commands](./kusto/management/drop-extents.md).
 
 ### Examples
 

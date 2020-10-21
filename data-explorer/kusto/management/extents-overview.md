@@ -124,7 +124,7 @@ For example:
 
 * Don't overuse `drop-by` tags. Dropping data in the manner mentioned above is meant for rarely occurring events. It isn't for replacing record-level data, and it relies on the fact that the data tagged in this manner is bulky. Attempting to give a different tag for each record, or small number of records, might result in a severe impact on performance.
 * If `drop-by` tags aren't needed for a period of time after data is ingested,
-we recommend that you [drop the tags](#drop-extent-tags).
+we recommend that you [drop the tags](#drop-by-extent-tags).
 
 ### 'ingest-by:' extent tags
 
