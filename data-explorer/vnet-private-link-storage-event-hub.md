@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/12/2020
 ---
-# Create a private endpoint to resources used by data connections, such as Event Hub and Storage
+# Create a Private Endpoint to resources used by data connections, such as Event Hub and Storage
 
-[Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) enables many types of Azure resources to securely communicate with each other. [Private Link](/azure/private-link/private-link-service-overview) enables clients on an Azure virtual network (VNet) to securely access data from a storage account. This allows network traffic between the Azure Data Explorer and the Azure service to travel over the Microsoft backbone, removing exposure from the public internet. A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet’s address space for the Azure service to securely connect between Azure Data Explorer and Azure services. Azure Data Explorer accesses the Private Endpoint of the storage accounts or Event Hubs.
+[Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) enables many types of Azure resources to securely communicate with each other. [Private Link](/azure/private-link/private-link-service-overview) enables clients on an Azure Virtual Network (VNet) to securely access data from a storage account. This allows network traffic between Azure Data Explorer and the Azure service to travel over the Microsoft backbone, removing exposure from the public internet. A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet’s address space for the Azure service to securely connect between Azure Data Explorer and Azure services. Azure Data Explorer accesses the Private Endpoint of the storage accounts or Event Hubs.
 
-In contrast to a Private Endpoint, a [service endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) remains a publicly routable IP address. Virtual Network (VNet) service endpoint provides secure and direct connectivity to Azure services over an optimized route over the Azure backbone network. Endpoints allow you to secure your critical Azure service resources to only your virtual networks. Service Endpoints enables private IP addresses in the VNet to reach the endpoint of an Azure service without needing a public IP address on the VNet.
+In contrast to a Private Endpoint, a [service endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) remains a publicly routable IP address. A Virtual Network (VNet) service endpoint provides secure and direct connectivity to Azure services over an optimized route over the Azure backbone network. Service Endpoints enable private IP addresses in the VNet to reach the endpoint of an Azure service without needing a public IP address on the VNet.
 
 This article shows you how to create a connection between Azure Data Explorer and [Event Hub](ingest-data-event-hub-overview.md) or [Azure Storage](/azure/storage/).
 
@@ -32,23 +32,23 @@ This article shows you how to create a connection between Azure Data Explorer an
 1. In the Azure portal, navigate to the **Event Hubs namespace** you want to secure.
 1. On the left-hand menu, select **Networking**. This tab appears only in **standard** or **dedicated** namespaces.
 1. Select **Networking** under **Settings** on the left menu.
-1. Select the Private endpoint connections tab at the top of the page.
+1. Select the Private Endpoint connections tab at the top of the page.
 1. Select **+ Private Endpoint** at the top of the page.
     
-    :::image type="content" source="media/vnet-private-link-storage-event-hub/private-link-service.png" alt-text="Screenshot of Private endpoint connections tab for adding Private Endpoint":::
+    :::image type="content" source="media/vnet-private-link-storage-event-hub/private-link-service.png" alt-text="Screenshot of Private Endpoint connections tab for adding Private Endpoint":::
 
 ### Basics tab
 
-:::image type="content" source="media/vnet-private-link-storage-event-hub/create-private-endpoint-basics-tab.png" alt-text="Screenshot of Basics tab in Create a private endpoint screen":::
+:::image type="content" source="media/vnet-private-link-storage-event-hub/create-private-endpoint-basics-tab.png" alt-text="Screenshot of Basics tab in Create a Private Endpoint screen":::
 
 1. Fill in the following information:
          
     | Setting | Field description|
     |---|---|
-    | **Subscription** |The Azure subscription in which you want to create the private endpoint.
-    | **Resource group** | The resource group for the private endpoint resource.
-    |**Name** | A name for the private endpoint. |
-    | **Region** |A region for the private endpoint. Your private endpoint must be in the same region as your virtual network, but can be in a different region from the private link resource that you are connecting to.|
+    | **Subscription** |The Azure subscription in which you want to create the Private Endpoint.
+    | **Resource group** | The resource group for the Private Endpoint resource.
+    |**Name** | A name for the Private Endpoint. |
+    | **Region** |A region for the Private Endpoint. Your Private Endpoint must be in the same region as your virtual network, but can be in a different region from the private link resource that you are connecting to.|
 
 1. Select **Next: Resource >** button at the bottom of the page.
 
@@ -70,7 +70,7 @@ This article shows you how to create a connection between Azure Data Explorer an
 
 ### Configuration tab
 
-:::image type="content" source="media/vnet-private-link-storage-event-hub/create-private-endpoint-configuration-tab.png" alt-text="Screenshot of Create a private endpoint configuration tab":::
+:::image type="content" source="media/vnet-private-link-storage-event-hub/create-private-endpoint-configuration-tab.png" alt-text="Screenshot of Create a Private Endpoint configuration tab":::
 
 1. Fill in the following information:
 
@@ -83,14 +83,14 @@ This article shows you how to create a connection between Azure Data Explorer an
 
 ### Tags tab
 
-1. Create any tags (names and values) that you want to associate with the private endpoint resource. 
+1. Create any tags (names and values) that you want to associate with the Private Endpoint resource. 
 1. Select **Review + create** button at the bottom of the page.
 
 ### Review and create
 
-Review all the settings, and select **Create** to create the private endpoint.
+Review all the settings, and select **Create** to create the Private Endpoint.
 
-Confirm that you see the private endpoint connection you created shows up in the list of endpoints. 
+Confirm that you see the Private Endpoint connection you created shows up in the list of endpoints. 
 
 # [Event Hub - Service Endpoint](#tab/event-hub-service)
 
