@@ -10,13 +10,9 @@ ms.date: 10/12/2020
 ---
 # Create a private endpoint to resources used by data connections, such as Event Hub and Storage
 
-[Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) enables many types of Azure resources to securely communicate with each other. The virtual network rule is an association of an Azure service, such as Event Hub or Azure Storage, with a virtual network subnet. While the rule exists, all workloads bound to the subnet are granted access to the Azure service. The service itself never establishes outbound connections, doesn't need to gain access, and is never granted access to your subnet by enabling this rule.
+[Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) enables many types of Azure resources to securely communicate with each other. [Private Link](/azure/private-link/private-link-service-overview) enables clients on an Azure virtual network (VNet) to securely access data from a storage account. This allows network traffic between the Azure Data Explorer and the Azure service to travel over the Microsoft backbone, removing exposure from the public internet. A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet’s address space for the Azure service to securely connect between Azure Data Explorer and Azure services. Azure Data Explorer accesses the Private Endpoint of the storage accounts or Event Hubs.
 
-[Private Link](/azure/private-link/private-link-service-overview) enables clients on an Azure virtual network (VNet) to securely access data from a storage account. This allows network traffic between the Azure Data Explorer and the Azure service to travel over the Microsoft backbone, removing exposure from the public internet. A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet’s address space for the Azure service. Private Link enables you to block exfiltration of data from your VNet. Using Private Link enables you to securely connect between Azure data explorer and Azure services. Azure Data Explorer accesses the Private Endpoint of the storage accounts or Event Hubs.
-
-**What is the difference between a Service Endpoints and a Private Endpoints?**
-* Private Endpoints grant network access to specific resources behind a given service providing granular segmentation. Traffic can reach the service resource from on premises without using public endpoints.
-* A service endpoint remains a publicly routable IP address. A private endpoint is a private IP in the address space of the virtual network where the private endpoint is configured.
+In contrast to a Private Endpoint, a [service endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) remains a publicly routable IP address. Virtual Network (VNet) service endpoint provides secure and direct connectivity to Azure services over an optimized route over the Azure backbone network. Endpoints allow you to secure your critical Azure service resources to only your virtual networks. Service Endpoints enables private IP addresses in the VNet to reach the endpoint of an Azure service without needing a public IP address on the VNet.
 
 This article shows you how to create a connection between Azure Data Explorer and [Event Hub](ingest-data-event-hub-overview.md) or [Azure Storage](/azure/storage/).
 
@@ -24,7 +20,7 @@ This article shows you how to create a connection between Azure Data Explorer an
 
 * [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview)
 * [Azure Data Explorer subnet](vnet-deployment.md)
-* [Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md) //I don't think this is an actua
+* [Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md)
 
 # [Event Hub - Private Endpoint](#tab/event-hub-private)
 
@@ -180,6 +176,6 @@ This section shows you how to use Azure portal to add a virtual network service 
 
 * [Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview)
 * [Private Endpoint](/azure/private-link/private-endpoint-overview)
-* [Create an Azure Data Explorer cluster in your virtual network](vnet-create-cluster-portal.md)
+* [Create an Azure Data Explorer cluster in your Virtual Network](vnet-create-cluster-portal.md)
 * [Deploy Azure Data Explorer cluster into your Virtual Network](vnet-deployment.md)
 * [Private Link FAQ](/azure/private-link/private-link-faq)
