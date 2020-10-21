@@ -12,7 +12,7 @@ ms.date: 10/20/2020
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more.
 
-Power Apps is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps for your business needs. Use Power Apps to quickly build custom business apps that connect to your business data. The Power Apps connector is particularly useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. In this article, you will create a Power Apps application based on Azure Data Explorer data, and see the steps of data parameterization, retrieval, and presentation.
+Power Apps is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps that connect to your business data. The Power Apps connector is particularly useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. In this article, you will create a Power Apps application based on Azure Data Explorer data. During this process, you will see the steps of data parameterization, retrieval, and presentation.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ Power Apps is a suite of apps, services, connectors, and data platform that prov
 1. Navigate to [https://make.preview.powerapps.com/](https://make.preview.powerapps.com/) and sign-in.
 
 1. Select **Connections** in the left-hand menu.
-1. Select **“+ New connection”**.ֵ
+1. Select **“+ New connection”**.
 
     :::image type="content" source="media/power-apps-connector/new-connection.png" alt-text="Create a new connection in Power Apps":::
 
@@ -34,7 +34,7 @@ Power Apps is a suite of apps, services, connectors, and data platform that prov
 
     :::image type="content" source="media/power-apps-connector/search-adx.png" alt-text="Search and select Azure Data Explorer connection in Power Apps":::
 
-1. Select **Create** on the “Azure Data Explorer” popup. Provide credentials as required.
+1. Select **Create** on the **Azure Data Explorer** popup. Provide credentials as required.
 
     :::image type="content" source="media/power-apps-connector/create-connector.png" alt-text="Create connector to Azure Data Explorer - popup window":::
 
@@ -77,7 +77,7 @@ You will see a new area called **“In your app”** with **“Azure Data Explor
 
 1. Select **Settings** in the left-hand menu.
 1. Select **“Advanced settings”**.
-1. Scroll through the resulting options and find **“Dynamic schema”**. Enable this feature.
+1. Select **“Dynamic schema”** from resulting options. Enable this feature.
 
     :::image type="content" source="media/power-apps-connector/dynamic-schema.png" alt-text="Turn on dynamic schema setting in Power Apps - connection to Azure Data Explorer":::
 
@@ -149,4 +149,3 @@ You will see a new area called **“In your app”** with **“Azure Data Explor
 * **Timeout exceptions**: The connector has a timeout limitation of 7 minutes. To avoid potential timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](https://docs.microsoft.com/azure/data-explorer/kusto/query/best-practices).
 
 ## Next steps
-
