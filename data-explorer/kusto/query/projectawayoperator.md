@@ -32,12 +32,11 @@ The order of the columns in the result is determined by their original order in 
 
 A table with columns that were not named as arguments. Contains same number of rows as the input table.
 
-**Tips**
-
-* To rename columns, use [`project-rename`](projectrenameoperator.md).
-* To reorder columns, use [`project-reorder`](projectreorderoperator.md).
-
-* You can `project-away` any columns that are present in the original table or that were computed as part of the query.
+> [!TIP]
+>
+> * To rename columns, use [`project-rename`](projectrenameoperator.md).
+> * To reorder columns, use [`project-reorder`](projectreorderoperator.md).
+> * You can `project-away` any columns that are present in the original table or that were computed as part of the query.
 
 ## Examples
 
