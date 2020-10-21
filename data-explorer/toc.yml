@@ -550,6 +550,8 @@
         href: ./kusto/query/projectoperator.md
       - name: project-away operator
         href: ./kusto/query/projectawayoperator.md
+      - name: project-keep operator
+        href: ./kusto/query/project-keep-operator.md
       - name: project-rename operator
         href: ./kusto/query/projectrenameoperator.md
       - name: project-reorder operator
