@@ -11,13 +11,13 @@ ms.date: 10/21/2020
 ---
 # project-keep operator
 
-Select what columns in the input to keep in the output.
+Select what columns from the input to keep in the output.
 
 ```kusto
 T | project-keep price, quantity, zz*
 ```
 
-The order of the columns in the result is determined by their original order in the table. Only the columns that were specified as arguments are kept. The other columns are excluded from the result. (See also `project`.)
+The order of the columns in the result is determined by their original order in the table. Only the columns that were specified as arguments are kept. The other columns are excluded from the result. See also [`project`](projectoperator.md).
 
 ## Syntax
 
@@ -34,12 +34,12 @@ A table with columns that were named as arguments. Contains same number of rows 
 
 **Tips**
 
-* Use [`project-rename`](projectrenameoperator.md) if your intention is to rename columns.
-* Use [`project-reorder`](projectreorderoperator.md) if your intention is to reorder columns.
+* To rename columns, use [`project-rename`](projectrenameoperator.md).
+* To reorder columns, use [`project-reorder`](projectreorderoperator.md).
 
 * You can `project-keep` any columns that are present in the original table or that were computed as part of the query.
 
-## Examples
+## Example
 
 The input table `T` has three columns of type `long`: `A`, `B`, and `C`.
 
