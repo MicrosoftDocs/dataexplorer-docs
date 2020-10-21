@@ -52,4 +52,4 @@ Logic App and Flow are built on the same connector. Therefore, the [limitations]
 ## Next steps
 
 * To learn more about configuring a recurrence action, see the [Flow documentation page](../../flow.md)
-* Take a look at some [usage examples](../../flow.md#azure-kusto-flow-actions) for ideas on configuring your logic app actions
+* Take a look at some [usage examples](../../flow-usage.md) for ideas on configuring your logic app actions
