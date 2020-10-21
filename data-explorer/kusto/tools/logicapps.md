@@ -51,5 +51,5 @@ Logic App and Power Automate are built on the same connector. Therefore, the [li
 
 ## Next steps
 
-* To learn more about configuring a recurrence action, see the [Flow documentation page](../../flow.md)
+* To learn more about configuring a recurrence action, see the [Power Automate documentation page](../../flow.md)
 * Take a look at some [usage examples](../../flow-usage.md) for ideas on configuring your logic app actions
