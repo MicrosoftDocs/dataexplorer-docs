@@ -89,7 +89,7 @@ Overwriting is useful, for example for retention purposes, if the client wants t
 
 ## Extent Tagging
 
-Kusto supports attaching multiple optional *extent tags* to the extent, as part of its metadata. An extent tag (or simply *tag*), is a string that is associated with the extent. You can use the [.show extents](#show-extents)
+Kusto supports attaching multiple optional *extent tags* to the extent, as part of its metadata. An extent tag (or simply *tag*), is a string that is associated with the extent. You can use the [.show extents](./show-extents.md)
 commands to see the tags associated with an extent, and the
 [extent-tags()](../query/extenttagsfunction.md) 
 function to see the tags associated with records in an extent.
