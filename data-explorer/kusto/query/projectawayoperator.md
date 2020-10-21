@@ -66,4 +66,4 @@ print a2='a2', b = 'b', a3='a3', a1='a1'
 
 ## See also
 
-To choose what columns fromn the input to keep in the output, use [project-keep](project-keep-operator.md).
+To choose what columns from the input to keep in the output, use [project-keep](project-keep-operator.md).
