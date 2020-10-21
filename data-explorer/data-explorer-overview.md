@@ -61,7 +61,7 @@ We would be thrilled to hear your feedback about Azure Data Explorer and its que
 
 * Ask questions
   * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-explorer)
-  * [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-data-explorer.html)
+  * [Microsoft Q&A](/answers/topics/azure-data-explorer.html)
   * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
 * [Make product suggestions in User Voice](https://aka.ms/AzureDataExplorer.UserVoice)
 

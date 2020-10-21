@@ -11,7 +11,7 @@ ms.date: 08/03/2020
 ---
 # Continuous data export overview
 
-This article describes continuous export of data from Kusto to an [external table](../externaltables.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). 
+This article describes continuous export of data from Kusto to an [external table](../external-table-commands.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). 
 
 To enable continuous data export, [create an external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table. 
 
@@ -89,4 +89,3 @@ Followed by:
 * Continuous export doesn't support cross-database and cross-cluster calls.
 * Continuous export isn't designed for constantly streaming data out of Azure Data Explorer. Continuous export runs in a distributed mode, where all nodes export concurrently. If the range of data queried by each run is small, the output of the continuous export would be many small artifacts. The number of artifacts depends on the number of nodes in the cluster.
 * If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](../../../ingest-data-event-grid-overview.md#known-event-grid-issues).
- 

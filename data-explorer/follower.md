@@ -25,7 +25,7 @@ Attaching a database to a different cluster using the follower capability is use
 
 1. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
 1. [Create cluster and DB](create-cluster-database-portal.md) for the leader and follower.
-1. [Ingest data](ingest-sample-data.md) to leader database using one of various methods discussed in [ingestion overview](/azure/data-explorer/ingest-data-overview).
+1. [Ingest data](ingest-sample-data.md) to leader database using one of various methods discussed in [ingestion overview](./ingest-data-overview.md).
 
 ## Attach a database
 
@@ -472,4 +472,3 @@ The follower database administrator can modify the [caching policy](kusto/manage
 ## Next steps
 
 * For information about follower cluster configuration, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
-

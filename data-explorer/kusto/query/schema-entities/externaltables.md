@@ -16,7 +16,7 @@ An **external table** is a Kusto schema entity that references data stored outsi
 Similar to [tables](tables.md), an external table has a well-defined schema (an ordered list of column name and data type pairs). Unlike tables, data is stored and managed outside the cluster. Most commonly the data is stored in some standard format such as CSV, Parquet, Avro, and isn't ingested by Azure Data Explorer.
 
 An **external table** is created once. See the following commands for external table creation:
-* [External table general control commands](../../management/externaltables.md)
+* [External table general control commands](../../management/external-table-commands.md)
 * [Create and alter external SQL tables](../../management/external-sql-tables.md)
 * [Create and alter tables in Azure Storage or Azure Data Lake](../../management/external-tables-azurestorage-azuredatalake.md)
 

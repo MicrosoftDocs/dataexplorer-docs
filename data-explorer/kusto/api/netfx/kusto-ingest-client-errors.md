@@ -104,7 +104,7 @@ To help handle ingestion failures programmatically, failure information is enric
 
 Raised when no queues were returned from the Data Management cluster
 
-Base Class: [Exception](https://msdn.microsoft.com/library/system.exception(v=vs.110).aspx)
+Base Class: [Exception](/dotnet/api/system.exception)
 
 |Field Name |Type     |Meaning
 |-----------|---------|------------------------------|
@@ -118,7 +118,7 @@ During the ingestion process, several attempts are made to retrieve the Azure Qu
 
 Raised when no blob containers were returned from the Data Management cluster
 
-Base Class: [Exception](https://msdn.microsoft.com/library/system.exception(v=vs.110).aspx)
+Base Class: [Exception](/dotnet/api/system.exception)
 
 |Field Name   |Type     |Meaning       
 |-------------|---------|------------------------------|
@@ -132,7 +132,7 @@ The exception is raised when there are no containers found to upload the data to
 
 Raised when an ingestion property is configured more than once
 
-Base Class: [Exception](https://msdn.microsoft.com/library/system.exception(v=vs.110).aspx)
+Base Class: [Exception](/dotnet/api/system.exception)
 
 |Field Name   |Type     |Meaning       
 |-------------|---------|------------------------------------|
@@ -142,7 +142,7 @@ Base Class: [Exception](https://msdn.microsoft.com/library/system.exception(v=vs
 
 Raised when posting a message to the queue fails
 
-Base Class: [Exception](https://msdn.microsoft.com/library/system.exception(v=vs.110).aspx)
+Base Class: [Exception](/dotnet/api/system.exception)
 
 |Field Name   |Type     |Meaning       
 |-------------|---------|---------------------------------|
@@ -216,7 +216,7 @@ Base Class: IngestClientException
 
 Raised when one or more errors occur during an ingestion
 
-Base Class: [AggregateException](https://msdn.microsoft.com/library/system.aggregateexception(v=vs.110).aspx)
+Base Class: [AggregateException](/dotnet/api/system.aggregateexception)
 
 |Field Name      |Type                             |Meaning       
 |----------------|---------------------------------|-----------------------|

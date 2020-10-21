@@ -18,7 +18,7 @@ The size and VM SKU of the data-management cluster are fully managed by the Azur
 You can change the compute SKU for the engine cluster at any time by [scaling up the cluster](manage-cluster-vertical-scaling.md). It's best to start with the smallest SKU size that fits the initial scenario. Keep in mind that scaling up the cluster results in a downtime of up to 30 minutes while the cluster is re-created with the new SKU. You can also use the [Azure Advisor recommendations](azure-advisor.md) to optimize your compute SKU.
 
 > [!TIP]
-> [Compute Reserved Instances (RI)](https://docs.microsoft.com/azure/virtual-machines/windows/prepay-reserved-vm-instances) is applicable to the Azure Data Explorer cluster.  
+> [Compute Reserved Instances (RI)](/azure/virtual-machines/windows/prepay-reserved-vm-instances) is applicable to the Azure Data Explorer cluster.  
 
 This article describes various compute SKU options and provides the technical details that can help you make the best choice.
 
@@ -123,4 +123,3 @@ The technical specifications for the Azure Data Explorer cluster VMs are describ
 * You can [scale in or scale out](manage-cluster-horizontal-scaling.md) the size of the engine cluster to alter capacity, depending on changing demands.
 
 * Use [Azure Advisor recommendations](azure-advisor.md) to optimize your compute SKU.
-
