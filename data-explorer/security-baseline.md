@@ -14,13 +14,13 @@ ms.custom: security-benchmark
 
 The Azure Security Baseline for Data Explorer contains recommendations that will help you improve the security posture of your deployment.
 
-The baseline for this service is drawn from the [Azure Security Benchmark version 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview), which provides recommendations on how you can secure your cloud solutions on Azure with our best practices guidance.
+The baseline for this service is drawn from the [Azure Security Benchmark version 1.0](/azure/security/benchmarks/overview), which provides recommendations on how you can secure your cloud solutions on Azure with our best practices guidance.
 
-For more information, see [Azure Security Baselines overview](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+For more information, see [Azure Security Baselines overview](/azure/security/benchmarks/security-baselines-overview).
 
 ## Network Security
 
-*For more information, see [Security Control: Network Security](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*For more information, see [Security Control: Network Security](/azure/security/benchmarks/security-control-network-security).*
 
 ### 1.1: Protect resources using Network Security Groups or Azure Firewall on your Virtual Network
 
@@ -148,7 +148,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ## Logging and Monitoring
 
-*For more information, see [Security Control: Logging and Monitoring](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*For more information, see [Security Control: Logging and Monitoring](/azure/security/benchmarks/security-control-logging-monitoring).*
 
 ### 2.1: Use Approved Time Synchronization Sources
 
@@ -260,7 +260,7 @@ How to perform custom queries in Azure Monitor:  https://docs.microsoft.com/azur
 
 ## Identity and Access Control
 
-*For more information, see [Security Control: Identity and Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*For more information, see [Security Control: Identity and Access Control](/azure/security/benchmarks/security-control-identity-access-control).*
 
 ### 3.1: Maintain Inventory of Administrative Accounts
 
@@ -380,9 +380,9 @@ Application authentication (non-interactive logon): Used to authenticate service
 
 [How-To Authenticate with Azure AD for Azure Data Explorer Access](kusto/management/access-control/how-to-authenticate-with-aad.md)
 
-[Azure AD Reporting](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+[Azure AD Reporting](/azure/active-directory/reports-monitoring/)
 
-[How to use Azure Identity Access Reviews](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+[How to use Azure Identity Access Reviews](/azure/active-directory/governance/access-reviews-overview)
 
 
 **Azure Security Center monitoring**: Currently not available
@@ -429,7 +429,7 @@ https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 
 ## Data Protection
 
-*For more information, see [Security Control: Data Protection](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*For more information, see [Security Control: Data Protection](/azure/security/benchmarks/security-control-data-protection).*
 
 ### 4.1: Maintain an Inventory of Sensitive Information
 
@@ -544,7 +544,7 @@ How to create alerts for Azure Activity Log events:  https://docs.microsoft.com/
 
 ## Vulnerability Management
 
-*For more information, see [Security Control: Vulnerability Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*For more information, see [Security Control: Vulnerability Management](/azure/security/benchmarks/security-control-vulnerability-management).*
 
 ### 5.1: Run Automated Vulnerability Scanning Tools
 
@@ -594,7 +594,7 @@ Understand Azure Security Center Secure Score:  https://docs.microsoft.com/azure
 
 ## Inventory and Asset Management
 
-*For more information, see [Security Control: Inventory and Asset Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*For more information, see [Security Control: Inventory and Asset Management](/azure/security/benchmarks/security-control-inventory-asset-management).*
 
 ### 6.1: Utilize Azure Asset Discovery
 
@@ -758,7 +758,7 @@ Manage access to Azure management with Conditional Access: https://docs.microsof
 
 ## Secure Configuration
 
-*For more information, see [Security Control: Secure Configuration](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*For more information, see [Security Control: Secure Configuration](/azure/security/benchmarks/security-control-secure-configuration).*
 
 ### 7.1: Establish Secure Configurations for all Azure Resources
 
@@ -915,7 +915,7 @@ https://secdevtools.azurewebsites.net/helpcredscan.html
 
 ## Malware Defense
 
-*For more information, see [Security Control: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*For more information, see [Security Control: Malware Defense](/azure/security/benchmarks/security-control-malware-defense).*
 
 ### 8.1: Utilize Centrally Managed Anti-malware Software
 
@@ -951,7 +951,7 @@ Microsoft anti-malware is enabled on the underlying host that supports Azure ser
 
 ## Data Recovery
 
-*For more information, see [Security Control: Data Recovery](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*For more information, see [Security Control: Data Recovery](/azure/security/benchmarks/security-control-data-recovery).*
 
 ### 9.1: Ensure Regular Automated Back Ups
 
@@ -1018,7 +1018,7 @@ Configure customer-managed-keys using the Azure Resource Manager template:  http
 
 ## Incident Response
 
-*For more information, see [Security Control: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*For more information, see [Security Control: Incident Response](/azure/security/benchmarks/security-control-incident-response).*
 
 ### 10.1: Create incident response guide
 
@@ -1093,7 +1093,7 @@ How to configure Workflow Automation and Logic Apps: https://docs.microsoft.com/
 
 ## Penetration Tests and Red Team Exercises
 
-*For more information, see [Security Control: Penetration Tests and Red Team Exercises](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*For more information, see [Security Control: Penetration Tests and Red Team Exercises](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
 ### 11.1: Conduct regular Penetration Testing of your Azure resources and ensure to remediate all critical security findings within 60 days
 
@@ -1109,5 +1109,5 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 ## Next steps
 
-- See the [Azure Security Benchmark](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Learn more about [Azure Security Baselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- See the [Azure Security Benchmark](/azure/security/benchmarks/overview)
+- Learn more about [Azure Security Baselines](/azure/security/benchmarks/security-baselines-overview)

@@ -80,7 +80,7 @@ supported:
   the storage account key
 * Append `;impersonate` to the URI. Kusto will use the requestor's principal
   identity and impersonate it to access the resource. Principal needs to have the appropriate RBAC role assignments to be 
-  able to perform the read/write operations, as documented [here](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). (For example, the minimal role for read operations is the `Storage Blob Data Reader` role).
+  able to perform the read/write operations, as documented [here](/azure/storage/blobs/data-lake-storage-access-control). (For example, the minimal role for read operations is the `Storage Blob Data Reader` role).
 * Append `;token=`*AadToken* to the URI, with _AadToken_ being a base-64
   encoded AAD access token (make sure the token is for the resource `https://storage.azure.com/`).
 * Append `;prompt` to the URI. Kusto requests user credentials
@@ -106,6 +106,3 @@ supported:
 * Append `;prompt` to the URI. Kusto will request user credentials
   when it needs to access the resource. (Prompting the user is disabled for
   cloud deployments and is only enabled in test environments.)
-
-
-

@@ -139,7 +139,7 @@ When you load historical data from existing system to Azure Data Explorer, all r
 
 The argument values must include:
 * Constant text immediately preceding the timestamp format, enclosed in single quotes (prefix)
-* The timestamp format, in standard [.NET DateTime notation](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
+* The timestamp format, in standard [.NET DateTime notation](/dotnet/standard/base-types/custom-date-and-time-format-strings)
 * Constant text immediately following the timestamp (suffix).
 
 **Examples** 

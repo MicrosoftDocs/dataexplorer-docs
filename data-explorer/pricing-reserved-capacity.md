@@ -69,7 +69,7 @@ To learn more about Azure Reservations, see the following articles:
 * [Understand Azure Reservations discount](/azure/cost-management-billing/reservations/understand-reservation-charges)
 * [Understand reservation usage for your Pay-As-You-Go subscription](/azure/cost-management-billing/reservations/understand-reserved-instance-usage)
 * [Understand reservation usage for your Enterprise enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)
-* [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program](https://docs.microsoft.com/partner-center/azure-reservations)
+* [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program](/partner-center/azure-reservations)
 
 ## Need help? Contact us
 
