@@ -1781,8 +1781,8 @@
       href: https://stackoverflow.com/questions/tagged/azure-data-explorer
     - name: Microsoft Tech Community
       href: https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto
-    - name: MSDN forum
-      href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto
+    - name: Microsoft Q&A
+      href: /answers/topics/azure-data-explorer.html
   - name: Product feedback
     href: https://aka.ms/adefeedback
   - name: Pricing & billing
