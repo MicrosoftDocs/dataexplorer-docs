@@ -27,10 +27,10 @@ First, create a table and a data mapping in a test cluster. Then queue an ingest
 ## Prerequisites
 
 * A [free Azure account](https://azure.microsoft.com/free/).
-* Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-* Install JDK (version 1.8 or later).
-* Install [Maven](https://maven.apache.org/download.cgi).
-* Create an [Azure Data Explorer cluster and database](create-cluster-database-portal.md).
+* [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+* JDK version 1.8 or later.
+* [Maven](https://maven.apache.org/download.cgi).
+* A [cluster and database](create-cluster-database-portal.md).
 * Create an [App Registration and grant it permissions to the database](provision-azure-ad-app.md). Save the client ID and client secret to be used later in the tutorial.
 
 ## Review the code
@@ -105,7 +105,7 @@ Ingestion is queued using a file from an existing Azure Blob Storage container. 
     ....
 ```
 
-The ingestion process is started in a different thread while the `main` thread is blocked waiting for it to complete (using a [CountdownLatch](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CountDownLatch.html)). The ingestion API (`IngestClient#ingestFromBlob`) isn't asynchronous, so a `while` loop is used to poll the current status every 5 secs and wait for the ingestion status to go from `Pending` to a different status. Ideally, the final status is `Succeeded`, but it could be `Failed`, or `PartiallySucceeded`.
+The ingestion process is started in a different thread while the `main` thread is blocked waiting for it to complete (using a [CountdownLatch](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CountDownLatch.html)). The ingestion API (`IngestClient#ingestFromBlob`) isn't asynchronous. A `while` loop is used to poll the current status every 5 secs and wait for the ingestion status to go from `Pending` to a different status. The final status can be `Succeeded`, `Failed`, or `PartiallySucceeded`.
 
 ```java
         ....
@@ -136,9 +136,11 @@ The ingestion process is started in a different thread while the `main` thread i
 ```
 
 > [!TIP]
-> This simple example and does not represent the exact semantics of how to handle ingestion asynchronously for different applications. For example, you could use a [`CompletableFuture`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html) to create a pipeline defining what you want to do after the ingestion has completed, such as query the table, or handle exceptions that were reported to the `IngestionStatus`.
+> This simple example does not represent the exact semantics of how to handle ingestion asynchronously for all different applications. For example, you could use a [`CompletableFuture`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html) to create a pipeline defining what you want to do after the ingestion has completed, such as query the table, or handle exceptions that were reported to the `IngestionStatus`.
 
 ## Run the application
+
+### General
 
 When you run the sample code, the following actions are performed:
 
@@ -160,6 +162,8 @@ public static void main(final String[] args) throws Exception {
 
 > [!TIP]
 > To try different combinations of operations, uncomment/comment the respective methods in `App.java`.
+
+### How to run the application
 
 1. Clone the sample code from GitHub:
 
