@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/20/2020
 ---
-# Azure Data Explorer connector to Power Apps (preview)
+# Create Power Apps application to query data in Azure Data Explorer (preview)
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more.
 
