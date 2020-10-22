@@ -1,5 +1,5 @@
 ---
-title: Azure Data Explorer connector to Power Apps
+title: Create Power Apps application to query data in Azure Data Explorer 
 description: Learn how to create an application in Power Apps based on data in Azure Data Explorer
 author: orspod
 ms.author: orspodek

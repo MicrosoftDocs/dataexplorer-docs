@@ -308,6 +308,8 @@
       href: using-metrics.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
+    - name: Create Power Apps application to query data in Azure Data Explorer
+      href: power-apps-connector.md        
   - name: Share data
     items:
       - name: Use Azure Data Share
@@ -340,8 +342,6 @@
       href: devops.md  
     - name: Sync Kusto
       href: ./kusto/tools/synckusto.md
-    - name: Power Apps
-      href: power-apps-connector.md
   - name: Troubleshoot
     items:
     - name: Creating a cluster
