@@ -1,6 +1,6 @@
 ---
-title: Enable Private Link between Azure Data Explorer and Event Hub or Azure Storage
-description: Learn how to Enable Private Link between Azure Data Explorer and Event Hub or Azure Storage
+title: Create an endpoint to resources used by data connections, such as Event Hub and Storage
+description: Learn how to enable a private or service endpoint to resources used by data connections, such as Event Hub and Storage
 author: orspod
 ms.author: orspodek
 ms.reviewer: gunjand
@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/12/2020
 ---
-# Create a Private Endpoint to resources used by data connections, such as Event Hub and Storage
+# Create an endpoint to resources used by data connections, such as Event Hub and Storage
 
 [Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) enables many types of Azure resources to securely communicate with each other. A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet’s address space for the Azure service to securely connect between Azure Data Explorer and Azure services. Azure Data Explorer accesses the Private Endpoint of the storage accounts or Event Hubs.
 
@@ -91,7 +91,7 @@ Review all the settings, and select **Create** to create the Private Endpoint.
 
 Confirm that you see the Private Endpoint connection you created shows up in the list of endpoints. 
 
-# [Event Hub - Service Endpoint](#tab/event-hub-service)
+# [Event Hub - service endpoint](#tab/event-hub-service)
 
 ## Allow Access to Azure Event Hub from Azure Data Explorer Subnets using a service endpoint
 
@@ -131,7 +131,7 @@ Confirm that you see the Private Endpoint connection you created shows up in the
     
     :::image type="content" source="media/vnet-private-link-storage-event-hub/event-hub-firewalls-and-vnet.png" alt-text="Add virtual network and subnet in Event Hub to connect to Azure Data Explorer"::: 
 
-# [Azure Storage - Service endpoint](#tab/storage-account)
+# [Azure Storage - service endpoint](#tab/storage-account)
 
 ## Allow Access to Azure Storage Account from Azure Data Explorer Subnets using a service endpoint
 
