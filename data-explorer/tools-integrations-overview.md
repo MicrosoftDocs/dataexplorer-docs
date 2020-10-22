@@ -58,7 +58,7 @@ There are several tools available for running queries in Azure Data Explorer.
 * [Azure Data Lake](data-lake-query-data.md)
 * [Azure Synapse Apache Spark](https://docs.microsoft.com/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=/azure/data-explorer/context/context)
 * [Apache Spark](spark-connector.md)
-* Microsoft Power Apps
+* [Microsoft Power Apps](power-apps-connector.md)
 * Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 
 ## Visualizations, dashboards, and reporting
