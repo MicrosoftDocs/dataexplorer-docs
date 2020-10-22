@@ -20,7 +20,6 @@ This article shows you how to create a connection between Azure Data Explorer an
 
 * [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview)
 * [Azure Data Explorer subnet](vnet-deployment.md)
-* [Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md)
 
 # [Event Hub - Private Endpoint](#tab/event-hub-private)
 
@@ -94,7 +93,7 @@ Confirm that you see the Private Endpoint connection you created shows up in the
 
 # [Event Hub - Service Endpoint](#tab/event-hub-service)
 
-## Allow Access to Azure Event Hub from Azure Data Explorer Subnets using a Service Endpoint
+## Allow Access to Azure Event Hub from Azure Data Explorer Subnets using a service endpoint
 
 > [!IMPORTANT]
 > Virtual networks are supported in **standard** and **dedicated** tiers of Event Hubs, and aren't supported in the basic tier. 
@@ -132,9 +131,9 @@ Confirm that you see the Private Endpoint connection you created shows up in the
     
     :::image type="content" source="media/vnet-private-link-storage-event-hub/event-hub-firewalls-and-vnet.png" alt-text="Add virtual network and subnet in Event Hub to connect to Azure Data Explorer"::: 
 
-# [Azure Storage](#tab/storage-account)
+# [Azure Storage - Service endpoint](#tab/storage-account)
 
-## Allow Access to Azure Storage Account from Azure Data Explorer Subnets
+## Allow Access to Azure Storage Account from Azure Data Explorer Subnets using a service endpoint
 
 This section shows you how to use Azure portal to add a virtual network service endpoint. To limit access, integrate the virtual network service endpoint for this Azure Storage account.
 
