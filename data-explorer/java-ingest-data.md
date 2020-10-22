@@ -22,7 +22,7 @@ ms.date: 10/22/2020
 
 In this article, you ingest data using the Azure Data Explorer Java library. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. The [Java client library](kusto/api/java/kusto-java-client-library.md) can be used to ingest, issue control commands, and query data in Azure Data Explorer clusters.
 
-First, create a table and a data mapping in a test cluster. Then queue an ingestion from blob storage to the cluster using the Java SDK, and validate the results.
+First, you'll create a table and a data mapping in a test cluster. Then you'll queue an ingestion from blob storage to the cluster using the Java SDK, and validate the results.
 
 ## Prerequisites
 
@@ -60,7 +60,7 @@ static IngestClient getIngestionClient() throws Exception {
 
 ### Management commands
 
-[Control commands](kusto/management/commands.md), such as [`.drop`](kusto/management/drop-function.md), [`.create`](kusto/management/create-function.md), are executed by calling `execute` on a `com.microsoft.azure.kusto.data.Client` object.
+[Control commands](kusto/management/commands.md), such as [`.drop`](kusto/management/drop-function.md) and [`.create`](kusto/management/create-function.md), are executed by calling `execute` on a `com.microsoft.azure.kusto.data.Client` object.
 
 For example, the `StormEvents` table is created as follows:
 
@@ -81,7 +81,7 @@ static void createTable(String database) {
 
 ### Data Ingestion
 
-Ingestion is queued using a file from an existing Azure Blob Storage container. A `BlobSourceInfo` is used to specify the Blob Storage path. `IngestionProperties` define information such as table, database, mapping name, and data type. In this example, the data type is `CSV`.
+Ingestion is queued using a file from an existing Azure Blob Storage container. `BlobSourceInfo` is used to specify the Blob Storage path. `IngestionProperties` define information such as table, database, mapping name, and data type. In this example, the data type is `CSV`.
 
 ```java
     ...
@@ -105,7 +105,7 @@ Ingestion is queued using a file from an existing Azure Blob Storage container. 
     ....
 ```
 
-The ingestion process is started in a different thread while the `main` thread is blocked waiting for it to complete (using a [CountdownLatch](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CountDownLatch.html)). The ingestion API (`IngestClient#ingestFromBlob`) isn't asynchronous. A `while` loop is used to poll the current status every 5 secs and wait for the ingestion status to go from `Pending` to a different status. The final status can be `Succeeded`, `Failed`, or `PartiallySucceeded`.
+The ingestion process is started in a separate thread while the `main` thread is blocked waiting for the ingestion thread to complete. This process uses [CountdownLatch](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CountDownLatch.html). The ingestion API (`IngestClient#ingestFromBlob`) isn't asynchronous. A `while` loop is used to poll the current status every 5 secs and wait for the ingestion status to go from `Pending` to a different status. The final status can be `Succeeded`, `Failed`, or `PartiallySucceeded`.
 
 ```java
         ....
@@ -136,7 +136,7 @@ The ingestion process is started in a different thread while the `main` thread i
 ```
 
 > [!TIP]
-> This simple example does not represent the exact semantics of how to handle ingestion asynchronously for all different applications. For example, you could use a [`CompletableFuture`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html) to create a pipeline defining what you want to do after the ingestion has completed, such as query the table, or handle exceptions that were reported to the `IngestionStatus`.
+> This simple example does not represent the exact semantics of how to handle ingestion asynchronously for all different applications. For example, you could use [`CompletableFuture`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html) to create a pipeline defining what you want to do after the ingestion has completed, such as query the table, or handle exceptions that were reported to the `IngestionStatus`.
 
 ## Run the application
 
@@ -197,7 +197,7 @@ public static void main(final String[] args) throws Exception {
     Waiting for ingestion to complete...
     ```
 
-    It might take a few minutes for the ingestion process to complete and you should see a log message `Ingestion completed successfully` once that happens. You can exit the program at this point and move to the next step. It won't impact the ingestion process, since it has already been queued.
+    It might take a few minutes for the ingestion process to complete. You should see a log message `Ingestion completed successfully` once that happens. You can exit the program at this point and move to the next step. Exiting won't impact the ingestion process, which has already been queued.
 
 ## Validate
 
