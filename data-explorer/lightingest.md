@@ -31,8 +31,9 @@ LightIngest is most useful when you want to ingest a large amount of data, becau
 
 1. Navigate to the extracted *tools* directory on your computer.
 1. Delete the existing location information from the location bar.
-    
-    :::image type="content" source="kusto/tools/images/KustoTools-Lightingest/lightingest-locationbar.png" alt-text="Delete existing location information for LightIngest":::
+
+    :::image type="content" source="media/lightingest/lightingest-locationbar.png" alt-text="Delete existing location information for LightIngest in Azure Data Explorer":::
+
 
 1. Enter `cmd` and press **Enter**.
 1. At the command prompt, enter `LightIngest.exe` followed by the relevant command-line argument.
@@ -138,7 +139,7 @@ When you load historical data from existing system to Azure Data Explorer, all r
 
 The argument values must include:
 * Constant text immediately preceding the timestamp format, enclosed in single quotes (prefix)
-* The timestamp format, in standard [.NET DateTime notation](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
+* The timestamp format, in standard [.NET DateTime notation](/dotnet/standard/base-types/custom-date-and-time-format-strings)
 * Constant text immediately following the timestamp (suffix).
 
 **Examples** 
