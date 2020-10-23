@@ -627,6 +627,8 @@ SecurityEvent
 | summarize count() by Computer, Level
 ```
 
+[![Results of summarize count example](images/tutorial/am-results-summarize-count.png)](images/tutorial/am-results-summarize-count.png#lightbox)
+
 
 ## Summarize by scalar values
 You can aggregate by scalar values such as numbers and time values, but you should use the [bin()](./binfunction.md) function to group rows into distinct sets of data. For example, if you aggregate by `TimeGenerated`, you'll get a row for almost every time value. `bin()` to consolidate those values into hour or day.
@@ -641,15 +643,7 @@ InsightsMetrics
 ```
 
 
-|StartTime|event_count|
-|---|---|
-|2007-02-14 00:00:00.0000000|180|
-|2007-02-15 00:00:00.0000000|66|
-|2007-02-16 00:00:00.0000000|164|
-|2007-02-17 00:00:00.0000000|103|
-|2007-02-18 00:00:00.0000000|22|
-|2007-02-19 00:00:00.0000000|52|
-|2007-02-20 00:00:00.0000000|60|
+[![Results of summarize avg example](images/tutorial/am-results-summarize-avg.png)](images/tutorial/am-results-summarize-avg.png#lightbox)
 
 
 
@@ -666,7 +660,8 @@ InsightsMetrics
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/processor-timechart-single.png" alt-text="Processor time chart single series":::
+[![Results of render example](images/tutorial/am-results-render.png)](images/tutorial/am-results-render.png#lightbox)
+
 
 
 ## Multiple series
@@ -681,7 +676,7 @@ InsightsMetrics
 ```
 
 
-:::image type="content" source="images/tutorial/processor-timechart-multiple.png" alt-text="Processor time chart multiple series":::
+[![Results of render with multiple series example](images/tutorial/am-results-render-multiple.png)](images/tutorial/am-results-render-multiple.png#lightbox)
 
 ## Join data from two tables
 What if you need to retrieve data from two tables in a single query? The [join](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor) operator allows you to combine rows from multiple tables into a single result set. Each table must have a column with a matching value so that the join understands which rows to match.
@@ -701,7 +696,7 @@ VMComputer
 | project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
 ```
 
-
+[![Results of join example](images/tutorial/am-results-join.png)](images/tutorial/am-results-join.png#lightbox)
 
 
 ## Let: Assign a result to a variable
@@ -720,5 +715,6 @@ PhysicalComputer
 | project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
 ```
 
+[![Results of let example](images/tutorial/am-results-let.png)](images/tutorial/am-results-let.png#lightbox)
 
 ::: zone-end
