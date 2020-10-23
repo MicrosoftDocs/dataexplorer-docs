@@ -551,7 +551,7 @@ AzureActivity
 | where Level == 'Critical'
 ```
 
-:::image type="content" source="images/tutorial/am-results-where.png" alt-text="Results of where filtering example":::
+[![Results of where filtering example](images/tutorial/am-results-where.png)](images/tutorial/am-results-where.png#lightbox)
 
 
 ## project: select a subset of columns
