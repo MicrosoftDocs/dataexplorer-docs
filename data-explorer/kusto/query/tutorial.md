@@ -565,9 +565,7 @@ AzureActivity
 | project TimeGenerated, Level, OperationNameValue, ResourceGroup, _ResourceId
 ```
 
-|StartTime|EndTime|State|EventType|EpisodeNarrative|
-|---|---|---|---|---|
-|2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to western Kern County in the early morning hours of the 19th. Minor flooding was reported across State Highway 166 near Taft.|
+[![Results of project example](images/tutorial/am-results-project.png)](images/tutorial/am-results-project.png#lightbox)
 
 
 ## take: show me n rows
