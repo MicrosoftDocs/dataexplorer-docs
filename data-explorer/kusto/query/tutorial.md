@@ -597,13 +597,7 @@ NetworkMonitoring
 | project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
 ```
 
-|StartTime|EndTime|EventType|State|EventNarrative|
-|---|---|---|---|---|
-|2007-12-31 22:30:00.0000000|2007-12-31 23:59:00.0000000|Winter Storm|MICHIGAN|This heavy snow event continued into the early morning hours on New Year's Day.|
-|2007-12-31 22:30:00.0000000|2007-12-31 23:59:00.0000000|Winter Storm|MICHIGAN|This heavy snow event continued into the early morning hours on New Year's Day.|
-|2007-12-31 22:30:00.0000000|2007-12-31 23:59:00.0000000|Winter Storm|MICHIGAN|This heavy snow event continued into the early morning hours on New Year's Day.|
-|2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|North to northeast winds gusting to around 58 mph were reported in the mountains of Ventura county.|
-|2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|The Warm Springs RAWS sensor reported northerly winds gusting to 58 mph.|
+[![Results of top example](images/tutorial/am-results-top.png)](images/tutorial/am-results-top.png#lightbox)
 
 
 ## extend: compute derived columns
@@ -618,13 +612,7 @@ Perf
 | extend FreeGigabytes = FreeMegabytes / 1000
 ```
 
-|StartTime|EndTime|Duration|EventType|State|
-|---|---|---|---|---|
-|2007-09-18 20:00:00.0000000|2007-09-19 18:00:00.0000000|22:00:00|Heavy Rain|FLORIDA|
-|2007-09-20 21:57:00.0000000|2007-09-20 22:05:00.0000000|00:08:00|Tornado|FLORIDA|
-|2007-09-29 08:11:00.0000000|2007-09-29 08:11:00.0000000|00:00:00|Waterspout|ATLANTIC SOUTH|
-|2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|00:03:00|Thunderstorm Wind|MISSISSIPPI|
-|2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|00:05:00|Thunderstorm Wind|GEORGIA|
+[![Results of extend example](images/tutorial/am-results-extend.png)](images/tutorial/am-results-extend.png#lightbox)
 
 
 ## summarize: aggregate groups of rows
