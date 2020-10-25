@@ -54,13 +54,13 @@ Each command appearing in the script will be reported as a separate record in th
 
 ```kusto
 .execute database script <|
-
+//
 // Create tables
 .create-merge table T(a:string, b:string)
-
+//
 // Apply policies
 .alter-merge table T policy retention softdelete = 10d 
-
+//
 // Create functions
 .create-or-alter function
   with (skipvalidation = "true") 

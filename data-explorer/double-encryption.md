@@ -16,7 +16,6 @@ When you create a cluster, its storage is [automatically encrypted at the servic
 > [!IMPORTANT]
 > * Enabling double encryption is only possible during cluster creation.
 > * Once infrastructure encryption is enabled on your cluster, you **can't** disable it.
-> * Double encryption is only available in regions where infrastructure encryption is supported. For more information, see [storage infrastructure encryption](/azure/storage/common/infrastructure-encryption-enable).
 
 # [Azure portal](#tab/portal)
 

@@ -4,7 +4,7 @@ description: This article describes make_list() (aggregation function) in Azure 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
@@ -34,7 +34,7 @@ If the input to the `summarize` operator is not sorted, the order of elements in
 If the input to the `summarize` operator is sorted, the order of elements in the resulting array tracks that of the input.
 
 > [!TIP]
-> Use the [`mv-apply`](./mv-applyoperator.md) operator to create an ordered list by some key. See examples [here](./mv-applyoperator.md#using-the-mv-apply-operator-to-sort-the-output-of-make_list-aggregate-by-some-key).
+> Use the [`array_sort_asc()`](./arraysortascfunction.md) or [`array_sort_desc()`](./arraysortdescfunction.md) function to create an ordered list by some key.
 
 ## Examples
 
