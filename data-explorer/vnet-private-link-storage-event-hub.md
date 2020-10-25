@@ -97,12 +97,12 @@ Within this tutorial, select the VNet where the Azure Data Explorer subnet exist
 
 ### Review and create
 
-Review all the settings, and select **Create** to create the Private Endpoint.
-
-Confirm that you see the Private Endpoint connection you created shows up in the list of endpoints. 
+Review all the settings, and select **Create** to create the Private Endpoint. Confirm that you see the Private Endpoint connection you created shows up in the list of endpoints.
 ---
 
 ## Service Endpoint
+
+text bla bla bla
 
 # [Event Hub - service endpoint](#tab/event-hub)
 
