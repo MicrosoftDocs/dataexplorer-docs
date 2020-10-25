@@ -13,15 +13,15 @@ ms.date: 08/09/2020
 
 Use a Private Link with a Private Endpoint to securely access your Azure Data Explorer cluster in your virtual network (VNet). 
 
-To set up your [Private Link service](https://docs.microsoft.com/azure/private-link/private-link-service-overview), use a Private Endpoint with an IP address from your Azure VNet address space. [Azure Private Endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) uses a private IP address from your VNet to connect you privately and securely to Azure Data Explorer. You will also need to reconfigure the [DNS configuration](https://docs.microsoft.com/azure/private-link/private-endpoint-dns) on your cluster to connect using your Private Endpoint. With this setup, network traffic between a client on your private network and the Azure Data Explorer cluster travels over the VNet and a [Private Link](https://docs.microsoft.com/azure/private-link/) on the Microsoft backbone network, removing exposure from the public internet. This article shows you how to create and configure a Private Endpoint in your cluster for both query (Engine) and ingestion (data management).
+To set up your [Private Link service](/azure/private-link/private-link-service-overview), use a Private Endpoint with an IP address from your Azure VNet address space. [Azure Private Endpoint](/azure/private-link/private-endpoint-overview) uses a private IP address from your VNet to connect you privately and securely to Azure Data Explorer. You will also need to reconfigure the [DNS configuration]/azure/private-link/private-endpoint-dns) on your cluster to connect using your Private Endpoint. With this setup, network traffic between a client on your private network and the Azure Data Explorer cluster travels over the VNet and a [Private Link](/azure/private-link/) on the Microsoft backbone network, removing exposure from the public internet. This article shows you how to create and configure a Private Endpoint in your cluster for both query (Engine) and ingestion (data management).
 
 
 ## Prerequisites
 
 * Create an [Azure Data Explorer cluster in your virtual network](./vnet-create-cluster-portal.md)
 * Disable network policies:
-* In the Azure Data Explorer cluster virtual network, disable the [Private Link Service policy](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy).
-* In the Private Endpoint virtual network, which can be the same as the Azure Data Explorer cluster virtual network, disable the [Private Endpoint policy](https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy).
+* In the Azure Data Explorer cluster virtual network, disable the [Private Link Service policy](/azure/private-link/disable-private-link-service-network-policy).
+* In the Private Endpoint virtual network, which can be the same as the Azure Data Explorer cluster virtual network, disable the [Private Endpoint policy](/azure/private-link/disable-private-endpoint-network-policy).
 
 ## Create Private Link service
 
