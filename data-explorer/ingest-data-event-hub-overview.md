@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
 ---
-# Create a connection to Event Hub
+# Event Hub data connection
 
 [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
 
@@ -28,7 +28,7 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
    * Data compression isn't supported for compressed formats (Avro, Parquet, ORC).
    * Custom encoding and embedded [system properties](#set-event-system-properties-mapping) aren't supported on compressed data.
   
-## Set ingestion properties
+## Ingestion properties
 
 Ingestion properties instruct the ingestion process, where to route the data, and how to process it. You can specify [ingestion properties](ingestion-properties.md) of the events ingestion using the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
 
@@ -44,7 +44,10 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 <!--| Database | Name of the existing target database.|-->
 <!--| Tags | String representing [tags](/azure/kusto/management/extents-overview#extent-tagging) that will be attached to resulting extent. |-->
 
-## Set events routing
+> [!NOTE]
+> Only events enqueued after you create the data connection are ingested.
+
+## Events routing
 
 When you set up an Event Hub connection to Azure Data Explorer cluster, you specify target table properties (table name, data format, compression, and mapping). The default routing for your data is also referred to as `static routing`.
 You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
@@ -98,7 +101,7 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 [!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
 
-## Create Event Hub connection
+## Event Hub connection
 
 > [!Note]
 > For best performance, create all resources in the same region as the Azure Data Explorer cluster.

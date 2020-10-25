@@ -181,8 +181,8 @@ You can specify the [ingestion properties](ingest-data-event-grid-overview.md#se
 
 > [!NOTE]
 > Azure Data Explorer has an aggregation (batching) policy for data ingestion designed to optimize the ingestion process.
-By default, the policy is configured to 5 minutes.
-You'll be able to alter the policy at a later time if needed. In this article you can expect a latency of a few minutes.
+> By default, the policy is configured to 5 minutes.
+> You'll be able to alter the policy at a later time if needed. In this article you can expect a latency of a few minutes.
 
 1. In the Azure portal, under your event grid, you see the spike in activity while the app is running.
 
