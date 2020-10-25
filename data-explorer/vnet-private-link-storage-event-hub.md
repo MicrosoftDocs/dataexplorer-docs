@@ -141,8 +141,6 @@ Confirm that you see the Private Endpoint connection you created shows up in the
     
     :::image type="content" source="media/vnet-private-link-storage-event-hub/event-hub-firewalls-and-vnet.png" alt-text="Add virtual network and subnet in Event Hub to connect to Azure Data Explorer"::: 
 
-
-
 # [Azure Storage - service endpoint](#tab/storage-account)
 
 ## Allow Access to Azure Storage Account from Azure Data Explorer Subnets using a service endpoint
@@ -176,7 +174,6 @@ This section shows you how to use Azure portal to add a virtual network service 
 1. Select **Save** on the toolbar to save the settings. Wait for a few minutes for confirmation to appear on the portal notifications.
 
     :::image type="content" source="media/vnet-private-link-storage-event-hub/storage-virtual-network.png" alt-text="Vnet to connect storage account to Azure Data Explorer":::
-
 
 ---
 
