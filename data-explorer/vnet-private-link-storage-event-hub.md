@@ -171,10 +171,11 @@ This section shows you how to use Azure portal to add a virtual network service 
 
 ### Save and verify virtual network settings
 
-1. Select **Save** on the toolbar to save the settings. Wait for a few minutes for confirmation to appear on the portal notifications.
+1. Select **Save** on the toolbar to save the settings. 
 
     :::image type="content" source="media/vnet-private-link-storage-event-hub/storage-virtual-network.png" alt-text="Vnet to connect storage account to Azure Data Explorer":::
 
+Wait for a few minutes for confirmation to appear on the portal notifications.
 ---
 
 ## See also
