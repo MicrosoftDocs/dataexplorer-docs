@@ -38,7 +38,7 @@ When setting up a blob storage connection to Azure Data Explorer cluster, specif
 * mapping
 
 This setup is the default routing for your data, sometimes referred to as `static routing`.
-You can also specify target table properties for each blob, using blob metadata. The data will dynamically route, as specified by [ingestion properties](#set-ingestion-properties).
+You can also specify target table properties for each blob, using blob metadata. The data will dynamically route, as specified by [ingestion properties](#ingestion-properties).
 
 The following example shows you how to set ingestion properties on the blob metadata before uploading it. Blobs are routed to different tables.
 

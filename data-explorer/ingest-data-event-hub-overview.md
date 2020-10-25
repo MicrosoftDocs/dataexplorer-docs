@@ -13,7 +13,7 @@ ms.date: 08/13/2020
 
 [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
 
-The Event Hub ingestion pipeline transfers events to Azure Data Explorer in several steps. You first create an Event Hub in the Azure portal. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Event Hub connection needs to know [events routing](#events-routing). Data is embedded with selected properties according to the [event system properties mapping](#set-event-system-properties-mapping). [Create a connection](#event-hub-connection) to Event Hub to [create an Event Hub](#create-an-event-hub) and [send events](#send-events). This process can be managed through the [Azure portal](ingest-data-event-hub.md), programmatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
+The Event Hub ingestion pipeline transfers events to Azure Data Explorer in several steps. You first create an Event Hub in the Azure portal. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Event Hub connection needs to know [events routing](#events-routing). Data is embedded with selected properties according to the [event system properties mapping](#event-system-properties-mapping). [Create a connection](#event-hub-connection) to Event Hub to [create an Event Hub](#create-an-event-hub) and [send events](#send-events). This process can be managed through the [Azure portal](ingest-data-event-hub.md), programmatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -76,7 +76,7 @@ eventHubClient.Send(eventData);
 eventHubClient.Close();
 ```
 
-## Set event system properties mapping
+## Event system properties mapping
 
 System properties store properties that are set by the Event Hubs service, at the time the event is enqueued. The Azure Data Explorer Event Hub connection will embed the selected properties into the data landing in your table.
 

@@ -170,7 +170,7 @@ Save the data into a file and upload it with this script:
 
 ### Ingestion properties
 
-You can specify the [ingestion properties](ingest-data-event-grid-overview.md#set-ingestion-properties) of the blob ingestion via the blob metadata. 
+You can specify the [ingestion properties](ingest-data-event-grid-overview.md#ingestion-properties) of the blob ingestion via the blob metadata. 
 
 > [!NOTE]
 > Azure Data Explorer won't delete the blobs post ingestion.
