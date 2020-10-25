@@ -23,7 +23,7 @@ This article shows you how to create a connection between Azure Data Explorer an
 
 ## Private Endpoint
 
-## [Azure Storage - Private Endpoint](#tab/storage-account)
+### [Azure Storage - Private Endpoint](#tab/storage-account)
 
 ### Allow Access to Azure Storage Account from Azure Data Explorer Subnets using a Private Endpoint
 
@@ -31,7 +31,7 @@ For a tutorial on how to create a Private Endpoint in your Azure Storage account
 
 Within this tutorial, select the VNet where the Azure Data Explorer subnet exists, and the Azure Data Explorer subnet.
 
-## [Event Hub - Private Endpoint](#tab/event-hub)
+### [Event Hub - Private Endpoint](#tab/event-hub)
 
 ### Allow Access to Azure Event Hub from Azure Data Explorer Subnets using a Private Endpoint
 
@@ -104,7 +104,7 @@ Review all the settings, and select **Create** to create the Private Endpoint. C
 
 text bla bla bla
 
-### [Event Hub - service endpoint](#tab/event-hub-service)
+### [Event Hub - service endpoint](#tab/event-hub)
 
 ### Allow Access to Azure Event Hub from Azure Data Explorer Subnets using a service endpoint
 
@@ -141,7 +141,7 @@ text bla bla bla
     
     :::image type="content" source="media/vnet-private-link-storage-event-hub/event-hub-firewalls-and-vnet.png" alt-text="Add virtual network and subnet in Event Hub to connect to Azure Data Explorer"::: 
 
-## [Azure Storage - service endpoint](#tab/storage-account-service)
+### [Azure Storage - service endpoint](#tab/storage-account)
 
 ### Allow Access to Azure Storage Account from Azure Data Explorer Subnets using a service endpoint
 
