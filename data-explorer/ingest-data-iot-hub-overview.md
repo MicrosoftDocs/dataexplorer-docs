@@ -9,11 +9,11 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
 ---
-# Create a connection to IoT Hub
+# IoT Hub data connection
 
 [Azure IoT Hub](/azure/iot-hub/about-iot-hub) is a managed service, hosted in the cloud, that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages. Azure Data Explorer offers continuous ingestion from customer-managed IoT Hubs, using its [Event Hub compatible built in endpoint](/azure/iot-hub/iot-hub-devguide-messages-d2c#routing-endpoints).
 
-The IoT ingestion pipeline goes through several steps. First, you create an IoT Hub, and register a device to it. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#set-ingestion-properties). The Iot Hub connection needs to know [events routing](#set-events-routing) to connect to the Azure Data Explorer table. Data is embedded with selected properties according to the [event system properties mapping](#set-event-system-properties-mapping). This process can be managed through the [Azure portal](ingest-data-iot-hub.md), programmatically with [C#](data-connection-iot-hub-csharp.md) or [Python](data-connection-iot-hub-python.md), or with the [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md).
+The IoT ingestion pipeline goes through several steps. First, you create an IoT Hub, and register a device to it. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Iot Hub connection needs to know [events routing](#events-routing) to connect to the Azure Data Explorer table. Data is embedded with selected properties according to the [event system properties mapping](#event-system-properties-mapping). This process can be managed through the [Azure portal](ingest-data-iot-hub.md), programmatically with [C#](data-connection-iot-hub-csharp.md) or [Python](data-connection-iot-hub-python.md), or with the [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -26,7 +26,7 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
   * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it. The ingestion uncompressed size limit per file is 4 GB.
 
-## Set ingestion properties
+## Ingestion properties
 
 Ingestion properties instruct the ingestion process where to route the data and how to process it. You can specify [Ingestion properties](ingestion-properties.md) of the events using the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
 
@@ -37,7 +37,10 @@ Ingestion properties instruct the ingestion process where to route the data and 
 | IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Encoding |  Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding?view=netframework-4.8#remarks). |
 
-## Set events routing
+> [!NOTE]
+> Only events enqueued after you create the data connection are ingested.
+
+## Events routing
 
 When setting up an IoT Hub connection to Azure Data Explorer cluster, you specify target table properties (table name, data format, and mapping). This setting is the default routing for your data, also referred to as static routing.
 You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
@@ -45,7 +48,7 @@ You can also specify target table properties for each event, using event propert
 > [!Note]
 > If **My data includes routing info** selected, you must provide the necessary routing information as part of the events properties.
 
-## Set event system properties mapping
+## Event system properties mapping
 
 System properties are a collection used to store properties that are set by the IoT Hub service, on the time the event is received. The Azure Data Explorer IoT Hub connection will embed the selected properties in the data landing in your table.
 
@@ -74,7 +77,7 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 [!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
 
-## Create IoT Hub connection
+## IoT Hub connection
 
 > [!Note]
 > For best performance, create all resources in the same region as the Azure Data Explorer cluster.
