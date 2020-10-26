@@ -10,7 +10,7 @@ ms.date: 10/12/2020
 ---
 # Create an endpoint to resources used by data connections, such as Event Hub and Storage
 
-[Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) enables many types of Azure resources to securely communicate with each other. [Azure Private Link](/azure/private-link/) enables you to access Azure Services and Azure hosted customer-owned/partner services over a Private Endpoint in your virtual network. Once a Private Link is established, all communication, for example, data export, external tables, and data ingestion, takes take place over the private IP address. A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet’s address space for the Azure service to securely connect between Azure Data Explorer and Azure services such as Azure Storage and Event Hub. Azure Data Explorer accesses the Private Endpoint of the storage accounts or Event Hubs over the Microsoft backbone, removing exposure to the public internet.
+[Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) enables many types of Azure resources to securely communicate with each other. [Azure Private Link](/azure/private-link/) enables you to access Azure Services and Azure hosted customer-owned/partner services over a Private Endpoint in your virtual network. A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet’s address space for the Azure service to securely connect between Azure Data Explorer and Azure services such as Azure Storage and Event Hub. Azure Data Explorer accesses the Private Endpoint of the storage accounts or Event Hubs over the Microsoft backbone, and all communication, for example, data export, external tables, and data ingestion, takes take place over the private IP address. 
 
 In contrast to a Private Endpoint, a [service endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) remains a publicly routable IP address. A Virtual Network (VNet) service endpoint provides secure and direct connectivity to Azure services over an optimized route over the Azure backbone network. Service endpoints enable private IP addresses in the VNet to reach the endpoint of an Azure service without needing a public IP address on the VNet.
 
@@ -22,6 +22,8 @@ This article shows you how to create a connection between Azure Data Explorer an
 * [Azure Data Explorer subnet](vnet-deployment.md)
 
 ## Private Endpoint
+
+Azure [Private Endpoint]((/azure/private-link/private-endpoint-overview)) is a network interface that connects you privately and securely to a service powered by Azure [Private Link](/azure/private-link/). Private Endpoint uses a private IP address from your VNet, effectively bringing the service into your VNet. 
  
 # [Azure Storage - Private Endpoint](#tab/storage-account)
 
@@ -43,7 +45,7 @@ Within this tutorial, select the VNet where the Azure Data Explorer subnet exist
 
 ## Service Endpoint
 
-text bla bla bla
+Virtual Network (VNet) [service endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) provides secure and direct connectivity to Azure services over an optimized route over the Azure backbone network. Endpoints allow you to secure your critical Azure service resources to only your virtual networks. Service Endpoints enables private IP addresses in the VNet to reach the endpoint of an Azure service without needing a public IP address on the VNet.
 
 # [Azure Storage - service endpoint](#tab/storage-account)
 
