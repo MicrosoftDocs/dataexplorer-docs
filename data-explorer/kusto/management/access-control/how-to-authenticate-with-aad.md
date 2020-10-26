@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.custom: has-adal-ref
+ms.custom: has-adal-ref, devx-track-js
 ms.date: 09/13/2019
 ---
 # How-To Authenticate with AAD for Azure Data Explorer Access
