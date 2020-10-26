@@ -47,7 +47,7 @@ Cache policy:
 }
 ```
 
-* `entity_type` : table, materialized view, database or cluster
+* `entity_type` : table, materialized view, database, or cluster
 * `database_or_table_or_materialized-view`: if entity is table or database, its name should be specified in the command as follows - 
   - `database_name` or 
   - `database_name.table_name` or 
