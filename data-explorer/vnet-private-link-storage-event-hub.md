@@ -23,7 +23,7 @@ This article shows you how to create a connection between Azure Data Explorer an
 
 ## Private Endpoint
 
-Azure [Private Endpoint]((/azure/private-link/private-endpoint-overview)) is a network interface that connects you privately and securely to a service powered by Azure [Private Link](/azure/private-link/). Private Endpoint uses a private IP address from your VNet, effectively bringing the service into your VNet. 
+Azure [Private Endpoint](/azure/private-link/private-endpoint-overview) is a network interface that connects you privately and securely to a service powered by Azure [Private Link](/azure/private-link/). Private Endpoint uses a private IP address from your VNet, effectively bringing the service into your VNet. 
  
 # [Azure Storage - Private Endpoint](#tab/storage-account)
 
