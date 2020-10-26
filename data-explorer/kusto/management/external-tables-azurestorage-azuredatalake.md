@@ -374,5 +374,6 @@ Drops the mapping from the database.
 ```
 ## Next steps
 
-* [External table general control commands](./external-table-commands.md)
-* [Create and alter external SQL tables](external-sql-tables.md)
+* [Query external tables](../../data-lake-query-data.md).
+* [Export data to an external table](data-export/export-data-to-an-external-table.md).
+* [Continuous data export to an external table](data-export/continuous-data-export.md).
