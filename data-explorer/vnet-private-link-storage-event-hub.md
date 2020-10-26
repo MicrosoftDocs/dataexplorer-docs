@@ -35,7 +35,7 @@ Within this tutorial, select the VNet where the Azure Data Explorer subnet exist
 
 ### Allow Access to Azure Event Hub from Azure Data Explorer Subnets using a Private Endpoint
 
-For a tutorial on how to create a Private Endpoint in your Event Hub, see [Add a Private Endpoint using Azure portal](https://docs.microsoft.com/en-us/azure/event-hubs/private-link-service#add-a-private-endpoint-using-azure-portal).
+For a tutorial on how to create a Private Endpoint in your Event Hub, see [Add a Private Endpoint using Azure portal](/azure/event-hubs/private-link-service#add-a-private-endpoint-using-azure-portal).
 
 Within this tutorial, select the VNet where the Azure Data Explorer subnet exists, and the Azure Data Explorer subnet.
 
