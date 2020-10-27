@@ -231,8 +231,8 @@
           href: vnet-deploy-troubleshoot.md
         - name: Create Private Endpoint for your VNet cluster - Portal
           href: vnet-create-private-endpoint.md
-        - name: Create a Private Endpoint to resources used by data connections
-          href: vnet-private-link-storage-event-hub.md
+        - name: Create a private or service endpoint to resources used by data connections
+          href: vnet-endpoint-storage-event-hub.md
     - name: Encryption
       items:
       - name: Cluster disk encryption - portal
