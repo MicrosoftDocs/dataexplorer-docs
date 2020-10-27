@@ -22,7 +22,7 @@ ms.date: 10/22/2020
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. The [Java client library](kusto/api/java/kusto-java-client-library.md) can be used to ingest data, issue control commands, and query data in Azure Data Explorer clusters.
 
-In this article, you ingest data using the Azure Data Explorer Java library. First, you'll create a table and a data mapping in a test cluster. Then you'll queue an ingestion from blob storage to the cluster using the Java SDK and validate the results.
+In this article, learn how to ingest data using the Azure Data Explorer Java library. First, you'll create a table and a data mapping in a test cluster. Then you'll queue an ingestion from blob storage to the cluster using the Java SDK and validate the results.
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ This section is optional. Review the following code snippets to learn how the co
 
 ### Authentication
 
-The program uses Azure Active Directory authentication credentials. A `com.microsoft.azure.kusto.data.Client`, used for query and management operations, is created using a `ConnectionStringBuilder`:
+The program uses Azure Active Directory authentication credentials. `ConnectionStringBuilder` creates a `com.microsoft.azure.kusto.data.Client` for query and management.
 
 ```java
 static Client getClient() throws Exception {
@@ -48,7 +48,7 @@ static Client getClient() throws Exception {
 }
 ```
 
-A `com.microsoft.azure.kusto.ingest.IngestClient` is created similarly and used to queue data ingestion into Azure Data Explorer:
+Create and use a `com.microsoft.azure.kusto.ingest.IngestClient` to queue data ingestion into Azure Data Explorer:
 
 ```java
 static IngestClient getIngestionClient() throws Exception {
@@ -81,7 +81,7 @@ static void createTable(String database) {
 
 ### Data Ingestion
 
-Ingestion is queued using a file from an existing Azure Blob Storage container. `BlobSourceInfo` is used to specify the Blob Storage path. `IngestionProperties` define information such as table, database, mapping name, and data type. In this example, the data type is `CSV`.
+Queue ingestion by using a file from an existing Azure Blob Storage container. Use `BlobSourceInfo` to specify the Blob Storage path. Use `IngestionProperties` to define table, database, mapping name, and data type. In the following example, the data type is `CSV`.
 
 ```java
     ...
@@ -105,7 +105,7 @@ Ingestion is queued using a file from an existing Azure Blob Storage container. 
     ....
 ```
 
-The ingestion process is started in a separate thread while the `main` thread is blocked waiting for the ingestion thread to complete. This process uses [CountdownLatch](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CountDownLatch.html). The ingestion API (`IngestClient#ingestFromBlob`) isn't asynchronous. A `while` loop is used to poll the current status every 5 secs and wait for the ingestion status to go from `Pending` to a different status. The final status can be `Succeeded`, `Failed`, or `PartiallySucceeded`.
+The ingestion process is started in a separate thread and the `main` thread waits for the ingestion thread to complete. This process uses [CountdownLatch](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CountDownLatch.html). The ingestion API (`IngestClient#ingestFromBlob`) isn't asynchronous. A `while` loop is used to poll the current status every 5 secs and waits for the ingestion status to change from `Pending` to a different status. The final status can be `Succeeded`, `Failed`, or `PartiallySucceeded`.
 
 ```java
         ....
@@ -136,7 +136,7 @@ The ingestion process is started in a separate thread while the `main` thread is
 ```
 
 > [!TIP]
-> This simple example does not represent the exact semantics of how to handle ingestion asynchronously for all different applications. For example, you could use [`CompletableFuture`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html) to create a pipeline defining what you want to do after the ingestion has completed, such as query the table, or handle exceptions that were reported to the `IngestionStatus`.
+> There are other methods to handle ingestion asynchronously for different applications. For example, you could use [`CompletableFuture`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html) to create a pipeline defining what action to do after the ingestion has completed, such as query the table, or handle exceptions that were reported to the `IngestionStatus`.
 
 ## Run the application
 
@@ -149,7 +149,7 @@ When you run the sample code, the following actions are performed:
    1. **Mapping creation**: `StormEvents_CSV_Mapping` mapping is created.
    1. **File ingestion**: A CSV file (in Azure Blob Storage) is queued for ingestion.
 
-Sample code as seen in this snippet from `App.java`:
+The following sample code is from `App.java`:
 
 ```java
 public static void main(final String[] args) throws Exception {
@@ -172,7 +172,9 @@ public static void main(final String[] args) throws Exception {
     cd azure-data-explorer-java-sdk-ingest
     ```
 
-1. Set the service principal information with the cluster endpoint and the database name in the form of environment variables that will be used by the program:
+1. Set the service principal information with the following information as environment variables to will be used by the program:
+    1. Cluster endpoint 
+    1. Database name 
 
     ```console
     export AZURE_SP_CLIENT_ID="<replace with appID>"
@@ -197,14 +199,14 @@ public static void main(final String[] args) throws Exception {
     Waiting for ingestion to complete...
     ```
 
-    It might take a few minutes for the ingestion process to complete. You should see a log message `Ingestion completed successfully` once that happens. You can exit the program at this point and move to the next step. Exiting won't impact the ingestion process, which has already been queued.
+    Wait a few minutes for the ingestion process to complete. After successful completion, you will see the following log message: `Ingestion completed successfully`. You can exit the program at this point and move to the next step without impacting the ingestion process, which has already been queued.
 
 ## Validate
 
-Wait for five to 10 minutes for the queued ingestion to schedule the ingestion process and load the data into Azure Data Explorer. 
+Wait for five to 10 minutes for the queued ingestion to schedule the ingestion process and load data into Azure Data Explorer. 
 
 1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com) and connect to your cluster. 
-1. Run the following command to get the count of records in the `StormEvents` table.
+1. Run the following command to get the count of records in the `StormEvents` table:
     
     ```kusto
     StormEvents | count
@@ -212,14 +214,14 @@ Wait for five to 10 minutes for the queued ingestion to schedule the ingestion p
 
 ## Troubleshoot
 
-1. Run the following command in your database to see if there were any ingestion failures in the last four hours. Replace the database name before running.
+1. To see if there were any ingestion failures in the last four hours, run the following command in your database: 
 
     ```kusto
     .show ingestion failures
     | where FailedOn > ago(4h) and Database == "<DatabaseName>"
     ```
 
-1. Run the following command to view the status of all ingestion operations in the last four hours. Replace the database name before running.
+1. To view the status of all ingestion operations in the last four hours, run the following command:
 
     ```kusto
     .show operations
