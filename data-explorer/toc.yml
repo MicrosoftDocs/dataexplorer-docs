@@ -1324,7 +1324,7 @@
     - name: Schema
       items:
       - name: Best practices for schema design
-        href: ./kusto/management/best-practices.md
+        href: ./kusto/management/management-best-practices.md
       - name: Databases management
         href: ./kusto/management/databases.md
         items:
