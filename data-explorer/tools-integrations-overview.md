@@ -88,4 +88,3 @@ The [visualization overview](viz-overview.md) details data visualization, dashbo
 * [Azure Pipelines](devops.md) 
 * [Sync Kusto](kusto/tools/synckusto.md) 
 
-<!--Open Source Tools-->

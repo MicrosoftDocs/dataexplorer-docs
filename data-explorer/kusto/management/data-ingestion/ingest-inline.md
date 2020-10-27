@@ -66,11 +66,3 @@ Wide Shoes,50
 "Coats, black",20
 "Coats with ""quotes""",5
 ```
-
-<!--
-You can generate inline ingests commands using the Kusto.Data client library. 
-Compression lets you embed new lines in quoted fields.
-
-    Kusto.Data.Common.CslCommandGenerator.GenerateTableIngestPushCommand(tableName, compressed: true, csvData: csvStream);
-
--->

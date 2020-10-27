@@ -99,40 +99,6 @@ When used with Azure blobs, LightIngest will use certain blob metadata propertie
 
 ## Usage examples
 
-<!-- Waiting for Tzvia or Vladik to rewrite the instructions for this example before publishing it
-
-### Ingesting a specific number of blobs in JSON format
-
-* Ingest two blobs under a specified storage account {Account}, in `JSON` format matching the pattern `.json`
-* Destination is the database {Database}, the table `SampleData`
-* Indicate that your data is compressed with the approximate ratio of 10.0
-* LightIngest won't wait for the ingestion to be completed
-
-To use the LightIngest command below:
-1. Create a table command and enter the table name into the LightIngest command, replacing `SampleData`.
-1. Create a mapping command and enter the IngestionMappingRef command, replacing `SampleData_mapping`.
-1. Copy your cluster name and enter it into the LightIngest command, replacing `{ClusterandRegion}`.
-1. Enter the database name into the LightIngest command, replacing `{Database name}`.
-1. Replace `{Account}` with your account name and replace `{ROOT_CONTAINER}?{SAS token}` with the appropriate information.
-
-    ```
-    LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"  
-        -db:{Database name} 
-        -table:SampleData 
-        -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER}?{SAS token}" 
-        -IngestionMappingRef:SampleData_mapping 
-        -pattern:"*.json" 
-        -format:JSON 
-        -limit:2 
-        -cr:10.0 
-        -dontWait:true
-    ```
-     
-1. In Azure Data Explorer, open query count.
-
-    ![Ingestion result in Azure Data Explorer](media/lightingest/lightingest-show-failure-count.png)
--->
-
 ### How to ingest data using CreationTime
 
 When you load historical data from existing system to Azure Data Explorer, all records receive the same the ingestion date. To enable partitioning your data by creation time and not ingestion time, you can use the `-creationTimePattern` argument. The `-creationTimePattern` argument extracts the `CreationTime` property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.

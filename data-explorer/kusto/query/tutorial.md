@@ -20,15 +20,6 @@ queries to get the "feel" for the language using a [database with some sample da
 table in this sample database provides some information about storms that happened
 in the U.S.
 
-<!--
-  TODO: Provide link to reference data we used originally in StormEvents
--->
-
-<!--
-  TODO: A few samples below reference non-existent tables, such as Events and Logs.
-        We need to add these tables.
--->
-
 ## Count rows
 
 Our example database has a table called `StormEvents`.

@@ -193,11 +193,6 @@ control commands. This value can be increased if needed (capped at one hour).
    than the server timeout value requested by the user. This difference, is to allow for network latencies.
 * To automatically use the maximum allowed request timeout, set the client request property `norequesttimeout` to `true`.
 
-<!--
-  Request timeout can also be set using a set statement, but we don't mention
-  it here since it shouldn't be used in production scenarios.
--->
-
 ## Limit on query CPU resource usage
 
 Kusto lets you run queries and use as much CPU resources as the cluster has. 
