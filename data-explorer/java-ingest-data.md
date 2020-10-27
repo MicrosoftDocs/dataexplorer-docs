@@ -20,9 +20,9 @@ ms.date: 10/22/2020
 > * [Go](go-ingest-data.md)
 > * [Java](java-ingest-data.md)
 
-In this article, you ingest data using the Azure Data Explorer Java library. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. The [Java client library](kusto/api/java/kusto-java-client-library.md) can be used to ingest, issue control commands, and query data in Azure Data Explorer clusters.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. The [Java client library](kusto/api/java/kusto-java-client-library.md) can be used to ingest data, issue control commands, and query data in Azure Data Explorer clusters.
 
-First, you'll create a table and a data mapping in a test cluster. Then you'll queue an ingestion from blob storage to the cluster using the Java SDK, and validate the results.
+In this article, you ingest data using the Azure Data Explorer Java library. First, you'll create a table and a data mapping in a test cluster. Then you'll queue an ingestion from blob storage to the cluster using the Java SDK and validate the results.
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ First, you'll create a table and a data mapping in a test cluster. Then you'll q
 * JDK version 1.8 or later.
 * [Maven](https://maven.apache.org/download.cgi).
 * A [cluster and database](create-cluster-database-portal.md).
-* Create an [App Registration and grant it permissions to the database](provision-azure-ad-app.md). Save the client ID and client secret to be used later in the tutorial.
+* Create an [App Registration and grant it permissions to the database](provision-azure-ad-app.md). Save the client ID and client secret for later use.
 
 ## Review the code
 
