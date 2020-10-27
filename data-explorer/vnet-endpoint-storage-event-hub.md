@@ -1,5 +1,5 @@
 ---
-title:Create a private or service endpoint to resources used by data connections, such as Event Hub and Storage
+title: Create a private or service endpoint to resources used by data connections, such as Event Hub and Storage
 description: Learn how to enable a private or service endpoint to resources used by data connections, such as Event Hub and Storage
 author: orspod
 ms.author: orspodek
