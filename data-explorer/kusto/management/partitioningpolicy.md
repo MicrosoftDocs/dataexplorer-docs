@@ -16,7 +16,7 @@ The partitioning policy defines if and how [extents (data shards)](../management
 The main purpose of the policy is to improve performance of queries that narrow the data set; For example, queries that filter on partitioned columns, use an aggregate, or join on a high cardinality string column. The policy may also result in better data compression.
 
 > [!CAUTION]
-> There are no hard-coded limits set on the number of tables with the partitioning policy defined. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used. For more information, see [monitoring](#monitoring) and [capacity](#capacity).
+> There are no hard-coded limits set on the number of tables with the partitioning policy defined. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used. For more information, see [monitoring](#monitoring-partition) and [capacity](#partition-capacity).
 
 ## Partition keys
 
@@ -162,7 +162,7 @@ The following properties can be defined as part of the policy. These properties 
 |Property | Description | Recommended value | Default value |
 |---|---|---|---|
 | **MinRowCountPerOperation** |  Minimum target for the sum of row count of the source extents of a single data partitioning operation. | | `0` |
-| **MaxRowCountPerOperation** |  Maximum target for the sum of the row count of the source extents of a single data partitioning operation. | Set a value lower than 5M if you see that the partitioning operations consume a large amount of memory or CPU per operation. For more information, see [monitoring](#monitoring). | `0`, with a default target of 5,000,000 records. |
+| **MaxRowCountPerOperation** |  Maximum target for the sum of the row count of the source extents of a single data partitioning operation. | Set a value lower than 5M if you see that the partitioning operations consume a large amount of memory or CPU per operation. For more information, see [monitoring](#monitoring-partition). | `0`, with a default target of 5,000,000 records. |
 
 ## The data partitioning process
 
@@ -183,7 +183,7 @@ Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) comma
 The output includes:
 
   * `MinPartitioningPercentageInSingleTable`: The minimal percentage of partitioned data across all tables that have a data partitioning policy in the cluster.
-    * If this percentage remains constantly under 90%, then evaluate the cluster's partitioning [capacity](partitioningpolicy.md#capacity).
+    * If this percentage remains constantly under 90%, then evaluate the cluster's partitioning [capacity](partitioningpolicy.md#partition-capacity).
   * `TableWithMinPartitioningPercentage`: The fully qualified name of the table whose partitioning percentage is shown above.
 
 Use [.show commands](commands.md) to monitor the partitioning commands and their resource use. For example:
