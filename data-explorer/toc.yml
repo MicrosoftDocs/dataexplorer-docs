@@ -206,7 +206,7 @@
         href: dashboard-customize-visuals.md  
     - name: Power BI
       items:
-      - name: Best practices
+      - name: Power BI best practices
         href: power-bi-best-practices.md
       - name: connector
         href: power-bi-connector.md
@@ -395,7 +395,7 @@
       href: ./kusto/query/tutorial.md
     - name: Samples
       href: ./kusto/query/samples.md
-    - name: Best practices
+    - name: Query best practices
       href: ./kusto/query/best-practices.md
     - name: Cross-database and cross-cluster queries
       href: ./kusto/query/cross-cluster-or-database-queries.md
@@ -1323,8 +1323,8 @@
       href: ./kusto/management/index.md
     - name: Schema
       items:
-      - name: Best practices for schema design
-        href: ./kusto/management/best-practices.md
+      - name: Management best practices for schema design
+        href: ./kusto/management/management-best-practices.md
       - name: Databases management
         href: ./kusto/management/databases.md
         items:
@@ -1730,7 +1730,7 @@
           href: ./kusto/api/netfx/kusto-ingest-client-errors.md
         - name: Operation status
           href: ./kusto/api/netfx/kusto-ingest-client-status.md
-        - name: Best practices
+        - name: Kusto.Ingest best practices
           href: ./kusto/api/netfx/kusto-ingest-best-practices.md
         - name: Code samples
           href: ./kusto/api/netfx/kusto-ingest-client-examples.md
