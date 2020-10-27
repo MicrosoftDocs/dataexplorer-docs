@@ -13,7 +13,7 @@ ms.date: 06/10/2020
 
 The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table.
 
-The main purpose of the policy is to improve performance of queries that narrow the data set. This improvement is achieved by using partitioning filtering on the partitioned columns, or using an aggregate or join on a high cardinality string column. The policy may also result in better compression of the data.
+The main purpose of the policy is to improve performance of queries that narrow the data set, for example, queries that filter on partitioned columns, or use an aggregate or join on a high cardinality string column. The policy may also result in better compression of the data.
 
 > [!CAUTION]
 > There are no hard-coded limits set on the number of tables with the partitioning policy defined. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used. For more information, see [Monitoring](#monitoring) and [Capacity](#capacity).
