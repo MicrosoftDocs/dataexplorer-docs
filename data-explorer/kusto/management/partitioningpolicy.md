@@ -120,7 +120,7 @@ The data partitioning policy has the following main properties:
   * This property is optional. If it isn't specified, the policy will take effect on data ingested after the policy was applied.
   * Any non-homogeneous (non-partitioned) extents that may be dropped because of retention are ignored by the partitioning process. The extents are ignored because their creation time precedes 90% of the table's effective soft-delete period.
     > [!NOTE]
-    > It's possible to set a datetime value in the past, and have that result with already ingested data getting partitioned. However, doing so may significantly increase use of resources in the partitioning process, and so you should weigh the benefits.
+    > You can set a datetime value in the past and partition already-ingested data. However, this practice may significantly increase resources used in the partitioning process. 
 
 ### Data partitioning example
 
@@ -197,7 +197,7 @@ Use [.show commands](commands.md) to monitor the partitioning commands and their
 | render timechart with(ysplit = panels)
 ```
 
-## Capacity
+## Partition capacity
 
 * The data partitioning process results in the creation of more extents. The cluster may gradually increase its [extents merge capacity](../management/capacitypolicy.md#extents-merge-capacity), so that the process of [merging extents](../management/extents-overview.md) can keep up.
 * If there's a high ingestion throughput, or a large enough number of tables that have a partitioning policy defined, then the cluster may gradually increase its [Extents partition capacity](../management/capacitypolicy.md#extents-partition-capacity), so that [the process of partitioning extents](#the-data-partitioning-process) can keep up.
