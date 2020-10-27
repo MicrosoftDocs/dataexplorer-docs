@@ -84,6 +84,11 @@
         "source_path": "data-explorer/azure-notebooks.md",
         "redirect_url": "/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context",
         "redirect_document_id": false
+      },
+      {
+        "source_path": "data-explorer/management/best-practices.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/management-best-practices",
+        "redirect_document_id": true
       }
     ]
   }
