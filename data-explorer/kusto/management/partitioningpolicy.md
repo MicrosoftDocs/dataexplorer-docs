@@ -13,10 +13,10 @@ ms.date: 06/10/2020
 
 The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table.
 
-The main purpose of the policy is to improve performance of queries that narrow the data set, for example, queries that filter on partitioned columns, or use an aggregate or join on a high cardinality string column. The policy may also result in better compression of the data.
+The main purpose of the policy is to improve performance of queries that narrow the data set; For example, queries that filter on partitioned columns, use an aggregate, or join on a high cardinality string column. The policy may also result in better data compression.
 
 > [!CAUTION]
-> There are no hard-coded limits set on the number of tables with the partitioning policy defined. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used. For more information, see [Monitoring](#monitoring) and [Capacity](#capacity).
+> There are no hard-coded limits set on the number of tables with the partitioning policy defined. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used. For more information, see [monitoring](#monitoring) and [capacity](#capacity).
 
 ## Partition keys
 
@@ -71,7 +71,7 @@ It uses the `XxHash64` hash function, with a `MaxPartitionCount` of `256`, and t
 > [!NOTE] 
 > Only apply a uniform range datetime partition key on a `datetime`-typed column in a table when data ingested into the table is unlikely to be ordered according to this column.
 
-In such cases, it can be helpful to reshuffle the data between extents so that each extent ends up including records from a limited time range. This process will result with filters on that `datetime` column being more effective at query time.
+In these cases, you can reshuffle the data between extents so that each extent includes records from a limited time range. This process results in filters on the `datetime` column being more effective at query time.
 
 The partition function used is [bin_at()](../query/binatfunction.md) and isn't customizable.
 
@@ -162,7 +162,7 @@ The following properties can be defined as part of the policy. These properties 
 |Property | Description | Recommended value | Default value |
 |---|---|---|---|
 | **MinRowCountPerOperation** |  Minimum target for the sum of row count of the source extents of a single data partitioning operation. | | `0` |
-| **MaxRowCountPerOperation** |  Maximum target for the sum of the row count of the source extents of a single data partitioning operation. | Set a value lower than 5M if you see that the partitioning operations consume a large amount of memory or CPU per operation. For more information, see [Monitoring](#monitoring). | `0`, with a default target of 5,000,000 records. |
+| **MaxRowCountPerOperation** |  Maximum target for the sum of the row count of the source extents of a single data partitioning operation. | Set a value lower than 5M if you see that the partitioning operations consume a large amount of memory or CPU per operation. For more information, see [monitoring](#monitoring). | `0`, with a default target of 5,000,000 records. |
 
 ## The data partitioning process
 
@@ -171,7 +171,7 @@ The following properties can be defined as part of the policy. These properties 
 * Data partitioning runs only on hot extents, regardless of the value of the `EffectiveDateTime` property in the policy.
   * If partitioning cold extents is required, you need to temporarily adjust the [caching policy](cachepolicy.md).
 
-## Monitoring
+## Monitor partitioning
 
 Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) command to monitor the progress or state of partitioning in a cluster.
 
