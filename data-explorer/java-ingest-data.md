@@ -43,22 +43,22 @@ The program uses Azure Active Directory authentication credentials with Connecti
 
 1. Create a `com.microsoft.azure.kusto.data.Client` for query and management.
 
-```java
-static Client getClient() throws Exception {
-    ConnectionStringBuilder csb = ConnectionStringBuilder.createWithAadApplicationCredentials(endpoint, clientID, clientSecret, tenantID);
-    return ClientFactory.createClient(csb);
-}
-```
+    ```java
+    static Client getClient() throws Exception {
+        ConnectionStringBuilder csb = ConnectionStringBuilder.createWithAadApplicationCredentials(endpoint, clientID, clientSecret, tenantID);
+        return ClientFactory.createClient(csb);
+    }
+    ```
 
 1. Create and use a `com.microsoft.azure.kusto.ingest.IngestClient` to queue data ingestion into Azure Data Explorer:
 
-```java
-static IngestClient getIngestionClient() throws Exception {
-    String ingestionEndpoint = "https://ingest-" + URI.create(endpoint).getHost();
-    ConnectionStringBuilder csb = ConnectionStringBuilder.createWithAadApplicationCredentials(ingestionEndpoint, clientID, clientSecret);
-    return IngestClientFactory.createClient(csb);
-}
-```
+    ```java
+    static IngestClient getIngestionClient() throws Exception {
+        String ingestionEndpoint = "https://ingest-" + URI.create(endpoint).getHost();
+        ConnectionStringBuilder csb = ConnectionStringBuilder.createWithAadApplicationCredentials(ingestionEndpoint, clientID, clientSecret);
+        return IngestClientFactory.createClient(csb);
+    }
+    ```
 
 ### Management commands
 
