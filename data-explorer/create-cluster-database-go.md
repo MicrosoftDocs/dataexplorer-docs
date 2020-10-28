@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: abhishgu
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 10/28/2020
 ---
 
 # Create an Azure Data Explorer cluster and database using Go
@@ -36,9 +36,9 @@ This section is optional. If you're interested to learn how the code works, you 
 
 ### Authentication
 
-The program needs to authenticate to Azure Data Explorer before executing any operations. The [Client credentials authentication type](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-environment-based-authentication) is used by [auth.NewAuthorizerFromEnvironment](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromEnvironment) that looks for pre-defined environment variables - `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_TENANT_ID`
+The program needs to authenticate to Azure Data Explorer before executing any operations. The [Client credentials authentication type](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-environment-based-authentication) is used by [auth.NewAuthorizerFromEnvironment](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromEnvironment) that looks for the following pre-defined environment variables: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_TENANT_ID`.
 
-For example, here is how a [kusto.ClustersClient](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient) is created using this technique:
+The following example shows how a [kusto.ClustersClient](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient) is created using this technique:
 
 ```go
 func getClustersClient(subscription string) kusto.ClustersClient {
@@ -54,11 +54,11 @@ func getClustersClient(subscription string) kusto.ClustersClient {
 ```
 
 > [!TIP]
-> Using the [auth.NewAuthorizerFromCLIWithResource](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromCLIWithResource) function can be an excellent choice for local development if you've Azure CLI installed and configured for authentication.
+> Use the [auth.NewAuthorizerFromCLIWithResource](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromCLIWithResource) function for local development if you've Azure CLI installed and configured for authentication.
 
-### Create Cluster
+### Create cluster
 
-The [CreateOrUpdate](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient.CreateOrUpdate) function on `kusto.ClustersClient` is used to create a new Azure Data Explorer cluster. We wait for the process to complete before inspecting the result.
+Use the [CreateOrUpdate](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient.CreateOrUpdate) function on `kusto.ClustersClient` to create a new Azure Data Explorer cluster. Wait for the process to complete before inspecting the results.
 
 ```go
 func createCluster(sub, name, location, rgName string) {
@@ -71,9 +71,9 @@ func createCluster(sub, name, location, rgName string) {
 }
 ```
 
-### List Clusters
+### List clusters
 
-The [ListByResourceGroup](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient.ListByResourceGroup) function on `kusto.ClustersClient` is used to get a [kusto.ClusterListResult](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClusterListResult) that is then iterated to show the output in a tabular form.
+Use the [ListByResourceGroup](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient.ListByResourceGroup) function on `kusto.ClustersClient` to get a [kusto.ClusterListResult](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClusterListResult) that is then iterated to show the output in a tabular format.
 
 
 ```go
@@ -90,7 +90,7 @@ func listClusters(sub, rgName string) {
 
 ### Create database
 
-The [CreateOrUpdate](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient.CreateOrUpdate) function on [kusto.DatabasesClient](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient) is used to create a new Azure Data Explorer database in an existing cluster. We wait for the process to complete before inspecting the result.
+Use [CreateOrUpdate](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient.CreateOrUpdate) function on [kusto.DatabasesClient](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient) to create a new Azure Data Explorer database in an existing cluster. Wait for the process to complete before inspecting the results.
 
 
 ```go
@@ -106,7 +106,7 @@ func createDatabase(sub, rgName, clusterName, location, dbName string) {
 
 ### List databases
 
-The [ListByCluster](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient.ListByCluster) function on `kusto.DatabasesClient` is used to get [kusto.DatabaseListResult](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabaseListResult) that is then iterated to show the output in a tabular form.
+Use [ListByCluster](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient.ListByCluster) function on `kusto.DatabasesClient` to get [kusto.DatabaseListResult](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabaseListResult) that is then iterated to show the output in a tabular format.
 
 
 ```go
@@ -123,7 +123,7 @@ func listDatabases(sub, rgName, clusterName string) {
 
 ### Delete database
 
-The [Delete](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient.Delete) function on a `kusto.DatabasesClient` is used to delete an existing database in a cluster. We wait for the process to complete before inspecting the result.
+Use [Delete](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#DatabasesClient.Delete) function on a `kusto.DatabasesClient` to delete an existing database in a cluster. Wait for the process to complete before inspecting the results.
 
 ```go
 func deleteDatabase(sub, rgName, clusterName, dbName string) {
@@ -141,9 +141,9 @@ func deleteDatabase(sub, rgName, clusterName, dbName string) {
 
 ```
 
-### Delete Cluster
+### Delete cluster
 
-The [Delete](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient.Delete) function on a `kusto.ClustersClient` is used to delete an existing database in a cluster. We wait for the process to complete before inspecting the result.
+Use [Delete](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient.Delete) function on a `kusto.ClustersClient` to delete a cluster. Wait for the process to complete before inspecting the results.
 
 ```go
 func deleteCluster(sub, clusterName, rgName string) {
@@ -165,7 +165,7 @@ When you run the sample code as is, the following actions are performed:
     
 1. An Azure Data Explorer cluster is created.
 1. All the Azure Data Explorer clusters in the specified resource group are listed.
-1. An Azure Data Explorer database is created as a part of the cluster created earlier.
+1. An Azure Data Explorer database is created in the existing cluster.
 1. All the databases in the specified cluster are listed.
 1. The database is deleted.
 1. The cluster is deleted.
@@ -183,7 +183,7 @@ func main() {
 ```
 
 > [!TIP]
-> To try different combinations of operations, you can uncomment/comment the respective functions in `main.go`.
+> To try different combinations of operations, you can uncomment and comment the respective functions in `main.go` as needed.
 
 1. Clone the sample code from GitHub:
 
@@ -192,9 +192,9 @@ func main() {
     cd azure-data-explorer-go-cluster-management
     ```
 
-1. The program authenticates using Client credentials. You can use the Azure portal of CLI ([az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command) to create a service principal - save the client ID, client secret, and tenant ID information for use in the next step.
+1. The program authenticates using client credentials. Use the Azure CLI ([az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command to create a service principal. Save the client ID, client secret, and tenant ID information for use in the next step.
 
-1. Export required environment variables, including service principal information. You will also need to enter your subscription ID, resource group, and the region (location) where you want to create the cluster.
+1. Export required environment variables including service principal information. Enter your subscription ID, resource group, and region where you want to create the cluster.
 
     ```console
     export AZURE_CLIENT_ID="<enter service principal client ID>"
@@ -210,7 +210,7 @@ func main() {
     ```
     
     > [!TIP]
-    > You're likely to use environment variables (or other means) in production scenarios to provide credentials to your application. Although not demonstrated in this example, as mentioned in the [Review the code](#review-the-code) section, for local development, you can use [auth.NewAuthorizerFromCLIWithResource](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromCLIWithResource) if you've Azure CLI installed and configured for authentication. In that case, you do not need to create a service principal.
+    > You're likely to use environment variables in production scenarios to provide credentials to your application. Although not demonstrated in this example, as mentioned in [Review the code](#review-the-code), for local development, use [auth.NewAuthorizerFromCLIWithResource](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromCLIWithResource) if you have Azure CLI installed and configured for authentication. In that situation, you don't need to create a service principal.
 
 
 1. Run the program:
@@ -250,7 +250,7 @@ func main() {
 
 ## Clean up resources
 
-If you did not delete the cluster programmatically using the sample code in this article, you can do so manually using the [Azure CLI](create-cluster-database-cli.md#clean-up-resources).
+If you didn't delete the cluster programmatically using the sample code in this article, delete them manually using [Azure CLI](create-cluster-database-cli.md#clean-up-resources).
 
 ## Next steps
 
