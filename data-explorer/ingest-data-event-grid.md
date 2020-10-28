@@ -21,9 +21,9 @@ ms.date: 08/13/2020
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
 
-In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that set an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub. Then you'll see an example of the data flow throughout the system.
+In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that sets an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub. Then you'll see an example of the data flow throughout the system. 
 
-For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md).
+For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md). To create resources manually in the Azure portal, see [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md).
 
 ## Prerequisites
 
@@ -79,14 +79,14 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Storage account subscription | Your subscription ID | The subscription ID where your storage account is.|
     | Storage account | *gridteststorage1* | The name of the storage account that you created previously.|
     | Event type | *Blob created* or *Blob renamed* | The type of event that triggers ingestion. |
-    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace and an Event Hub for you. A detailed explanation of how to create Event Grid subscription manually, can be found in the references under the [Create an Event Grid subscription in your storage account](ingest-data-event-grid.md) section.|
+    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace, and an Event Hub for you. To create resources manually, see [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)|
 
 1. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
-    * **Prefix** field is the *literal* prefix of the subject. As the pattern applied is *startswith*, it can span multiple containers, folders or blobs. No wildcards are allowed.
+    * **Prefix** field is the *literal* prefix of the subject. As the pattern applied is *startswith*, it can span multiple containers, folders, or blobs. No wildcards are allowed.
         * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*.
         * To define a filter on a blob prefix (or a folder in Azure Data Lake Gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*.
     * **Suffix** field is the *literal* suffix of the blob. No wildcards are allowed.
-    * **Case Sensitive** field indicates whether the prefix and suffix filters are case-sensitive
+    * **Case-Sensitive** field indicates whether the prefix and suffix filters are case-sensitive
     * For more information about filtering events, see [Blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events).
     
     :::image type="content" source="media/ingest-data-event-grid/filter-settings.png" alt-text="Filter settings Event Grid":::    
@@ -170,7 +170,7 @@ Save the data into a file and upload it with this script:
 
 ### Ingestion properties
 
-You can specify the [ingestion properties](ingest-data-event-grid-overview.md#set-ingestion-properties) of the blob ingestion via the blob metadata. 
+You can specify the [ingestion properties](ingest-data-event-grid-overview.md#ingestion-properties) of the blob ingestion via the blob metadata. 
 
 > [!NOTE]
 > Azure Data Explorer won't delete the blobs post ingestion.
@@ -181,8 +181,8 @@ You can specify the [ingestion properties](ingest-data-event-grid-overview.md#se
 
 > [!NOTE]
 > Azure Data Explorer has an aggregation (batching) policy for data ingestion designed to optimize the ingestion process.
-By default, the policy is configured to 5 minutes.
-You'll be able to alter the policy at a later time if needed. In this article you can expect a latency of a few minutes.
+> By default, the policy is configured to 5 minutes.
+> You'll be able to alter the policy at a later time if needed. In this article you can expect a latency of a few minutes.
 
 1. In the Azure portal, under your event grid, you see the spike in activity while the app is running.
 
@@ -207,7 +207,7 @@ You'll be able to alter the policy at a later time if needed. In this article yo
 
 ## Clean up resources
 
-If you don't plan to use your event grid again, clean up the Event Grid Subscription, Event Hub namespace, and Event Hub that were auto created for you, to avoid incurring costs.
+If you don't plan to use your event grid again, clean up the Event Grid Subscription, Event Hub namespace, and Event Hub that were auto-created for you, to avoid incurring costs.
 
 1. In Azure portal, go to the left menu and select **All resources**.
 

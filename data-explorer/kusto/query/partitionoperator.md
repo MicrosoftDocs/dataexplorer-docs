@@ -4,7 +4,7 @@ description: This article describes partition operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -99,7 +99,7 @@ StormEvents
 
 **Example: query non-overlapping data partitions**
 
-Sometimes it is useful (perf-wise) to run a complex subquery over non-overlapping
+Sometimes it is useful (performance-wise) to run a complex subquery over non-overlapping
 data partitions in a map/reduce style. The example below shows how to create a
 manual distribution of aggregation over 10 partitions.
 

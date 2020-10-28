@@ -29,6 +29,8 @@
     href: visualize-power-bi.md  
 - name: Concepts
   items:
+  - name: EngineV3
+    href: engine-v3.md
   - name: Data ingestion
     items:  
     - name: Data ingestion overview
@@ -96,39 +98,57 @@
       href: lightingest.md    
     - name: Event Hub
       items:
-      - name: Create a connection to Event Hub
+      - name: Event Hub data connection
+        displayName: ingest
         href: ingest-data-event-hub-overview.md
       - name: Azure portal
+        displayName: Event Hub, ingest, data connection
         href: ingest-data-event-hub.md
       - name: C#
+        displayName: Event Hub, ingest, data connection
         href: data-connection-event-hub-csharp.md
       - name: Python
+        displayName: Event Hub, ingest
         href: data-connection-event-hub-python.md
       - name: Azure Resource Manager template
+        displayName: Event Hub, ingest, data connection
         href: data-connection-event-hub-resource-manager.md
     - name: Event Grid
       items:
-      - name: Create a connection to Event Grid
+      - name: Event Grid data connection
+        displayName: ingest 
         href: ingest-data-event-grid-overview.md
       - name: Azure portal
+        displayName: Event Grid, ingest, data connection
         href: ingest-data-event-grid.md
       - name: C#
+        displayName: Event Grid, ingest, data connection
         href: data-connection-event-grid-csharp.md
       - name: Python
+        displayName: Event Grid, ingest, data connection
         href: data-connection-event-grid-python.md
       - name: Azure Resource Manager template
+        displayName: Event Grid, ingest, data connection
         href: data-connection-event-grid-resource-manager.md
+      - name: Manually create resources in Azure portal
+        displayName: Manually create resources for Event Grid ingestion, Ingest
+        href: ingest-data-event-grid-manual.md          
     - name: IoT Hub
       items:
-      - name: Create a connection to IoT Hub
+      - name: IoT Hub data connection
+        displayName: ingest
         href: ingest-data-iot-hub-overview.md
       - name: Azure portal
+        displayName: IoT Hub, ingest, data connection
         href: ingest-data-iot-hub.md
       - name: C#
+        displayName: IoT Hub, ingest, data connection
         href: data-connection-iot-hub-csharp.md
       - name: Python
+        displayName: IoT Hub, ingest, data connection 
         href: data-connection-iot-hub-python.md
       - name: Azure Resource Manager template
+        displayName: IoT Hub, ingest, data connection
         href: data-connection-iot-hub-resource-manager.md
     - name: Azure Data Factory
       items:
@@ -188,7 +208,7 @@
         href: dashboard-customize-visuals.md  
     - name: Power BI
       items:
-      - name: Best practices
+      - name: Power BI best practices
         href: power-bi-best-practices.md
       - name: connector
         href: power-bi-connector.md
@@ -310,6 +330,8 @@
       href: using-metrics.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
+    - name: Create Power Apps application to query data in Azure Data Explorer
+      href: power-apps-connector.md        
   - name: Share data
     items:
       - name: Use Azure Data Share
@@ -318,26 +340,41 @@
         href: follower.md    
   - name: Integrate with other tools
     items:
-    - name: Power Automate 
+    - name: Orchestrate
       items:
-      - name: Power Automate connector
-        href: flow.md
-        displayName: Microsoft Flow, flow, flow connector
-      - name: Power Automate connector usage examples
-        href: flow-usage.md
-        displayName: Microsoft Flow, flow, flow connector
-    - name: Logic Apps
-      href: kusto/tools/logicapps.md
-    - name: Apache Spark Connector
-      href: spark-connector.md
+      - name: Power Automate 
+        items:
+        - name: Power Automate connector
+          href: flow.md
+          displayName: Microsoft Flow, flow, flow connector
+        - name: Power Automate connector usage examples
+          href: flow-usage.md
+          displayName: Microsoft Flow, flow, flow connector
+      - name: Logic Apps
+        href: kusto/tools/logicapps.md
     - name: Cosmos DB
       href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
+    - name: Apache Spark Connector
+      href: spark-connector.md
+    - name: Connect from Azure Synapse Apache Spark
+      href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
     - name: Connect from Azure Databricks
       href: connect-from-databricks.md
-    - name: Analyze data in Jupyter Notebooks & Kqlmagic
-      href: kqlmagic.md
-    - name: Analyze data in Azure Notebooks
-      href: azure-notebooks.md
+    - name: Notebooks
+      items:
+      - name: Analyze data in Jupyter Notebooks & Kqlmagic
+        href: kqlmagic.md
+      - name: Azure Data Studio
+        items:
+        - name: Kusto extension overview 
+          displayName: Azure Data Studio
+          href: /sql/azure-data-studio/extensions/kusto-extension?context=/azure/data-explorer/context/context
+        - name: Use Kusto extension 
+          displayName: Azure Data Studio
+          href: /sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context
+        - name: Use Kqlmagic 
+          displayName: Azure Data Studio
+          href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext
     - name: Azure Pipelines
       href: devops.md  
     - name: Sync Kusto
@@ -360,7 +397,7 @@
       href: ./kusto/query/tutorial.md
     - name: Samples
       href: ./kusto/query/samples.md
-    - name: Best practices
+    - name: Query best practices
       href: ./kusto/query/best-practices.md
     - name: Cross-database and cross-cluster queries
       href: ./kusto/query/cross-cluster-or-database-queries.md
@@ -532,6 +569,8 @@
         href: ./kusto/query/projectoperator.md
       - name: project-away operator
         href: ./kusto/query/projectawayoperator.md
+      - name: project-keep operator
+        href: ./kusto/query/project-keep-operator.md
       - name: project-rename operator
         href: ./kusto/query/projectrenameoperator.md
       - name: project-reorder operator
@@ -644,6 +683,10 @@
         href: ./kusto/query/array_shift_rightfunction.md
       - name: array_slice()
         href: ./kusto/query/arrayslicefunction.md
+      - name: array_sort_asc()
+        href: ./kusto/query/arraysortascfunction.md
+      - name: array_sort_desc()
+        href: ./kusto/query/arraysortdescfunction.md
       - name: array_split()
         href: ./kusto/query/arraysplitfunction.md
       - name: asin()
@@ -1158,6 +1201,8 @@
         href: ./kusto/query/series-fit-linefunction.md
       - name: series_fit_line_dynamic()
         href: ./kusto/query/series-fit-line-dynamicfunction.md
+      - name: series_fit_poly()
+        href: ./kusto/query/series-fit-poly-function.md
       - name: series_greater()
         href: ./kusto/query/series-greaterfunction.md
       - name: series_greater_equals()
@@ -1280,8 +1325,8 @@
       href: ./kusto/management/index.md
     - name: Schema
       items:
-      - name: Best practices for schema design
-        href: ./kusto/management/best-practices.md
+      - name: Management best practices for schema design
+        href: ./kusto/management/management-best-practices.md
       - name: Databases management
         href: ./kusto/management/databases.md
         items:
@@ -1687,7 +1732,7 @@
           href: ./kusto/api/netfx/kusto-ingest-client-errors.md
         - name: Operation status
           href: ./kusto/api/netfx/kusto-ingest-client-status.md
-        - name: Best practices
+        - name: Kusto.Ingest best practices
           href: ./kusto/api/netfx/kusto-ingest-best-practices.md
         - name: Code samples
           href: ./kusto/api/netfx/kusto-ingest-client-examples.md
@@ -1727,12 +1772,16 @@
     items:
     - name: List of functions
       href: kusto/functions-library/functions-library.md
+    - name: kmeans_fl()
+      href: kusto/functions-library/kmeans-fl.md
     - name: predict_fl()
       href: kusto/functions-library/predict-fl.md
     - name: predict_onnx_fl()
       href: kusto/functions-library/predict-onnx-fl.md
     - name: quantize_fl()
       href: kusto/functions-library/quantize-fl.md
+    - name: series_dot_product_fl()
+      href: kusto/functions-library/series-dot-product-fl.md
     - name: series_fit_poly_fl()
       href: kusto/functions-library/series-fit-poly-fl.md
     - name: series_moving_avg_fl()
@@ -1749,8 +1798,8 @@
       href: https://stackoverflow.com/questions/tagged/azure-data-explorer
     - name: Microsoft Tech Community
       href: https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto
-    - name: MSDN forum
-      href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto
+    - name: Microsoft Q&A
+      href: /answers/topics/azure-data-explorer.html
   - name: Product feedback
     href: https://aka.ms/adefeedback
   - name: Pricing & billing

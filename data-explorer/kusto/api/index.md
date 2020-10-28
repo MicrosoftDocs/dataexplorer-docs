@@ -17,7 +17,7 @@ The Azure Data Explorer service supports the following communication endpoints:
    This endpoint supports the [Kusto Query Language](../query/index.md) for queries and [control commands](../management/index.md).
 1. An [MS-TDS](#ms-tds) endpoint that implements a subset of the Microsoft Tabular Data Stream (TDS) protocol, used by the Microsoft SQL Server products.
    This endpoint is useful for tools that know how to communicate with a SQL Server endpoint for queries.
-1. An [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftkusto) endpoint that is the standard means for Azure services. The endpoint is used to manage resources, such as Azure Data Explorer clusters.
+1. An [Azure Resource Manager (ARM)](/azure/role-based-access-control/resource-provider-operations#microsoftkusto) endpoint that is the standard means for Azure services. The endpoint is used to manage resources, such as Azure Data Explorer clusters.
 
 ## REST API
 

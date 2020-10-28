@@ -275,6 +275,8 @@ where *MaxResults* is an optional parameter, which can be set to limit the numbe
 | Output parameter | Type   | Description                       |
 |------------------|--------|-----------------------------------|
 | Uri              | string | URI of external storage data file |
+| Size             | long   | File length in bytes              |
+| Partition        | dynamic | Dynamic object describing file partitions for partitioned external table |
 
 > [!TIP]
 > Iterating on all files referenced by an external table can be quite costly, depending on the number of files. Make sure to use `limit` parameter if you just want to see some URI examples.
@@ -287,9 +289,19 @@ where *MaxResults* is an optional parameter, which can be set to limit the numbe
 
 **Output:**
 
-| Uri                                                                     |
-|-------------------------------------------------------------------------|
-| `https://storageaccount.blob.core.windows.net/container1/folder/file.csv` |
+| Uri                                                                     | Size | Partition |
+|-------------------------------------------------------------------------| ---- | --------- |
+| `https://storageaccount.blob.core.windows.net/container1/folder/file.csv` | 10743 | `{}`   |
+
+
+For partitioned table, `Partition` column will contain extracted partition values:
+
+**Output:**
+
+| Uri                                                                     | Size | Partition |
+|-------------------------------------------------------------------------| ---- | --------- |
+| `https://storageaccount.blob.core.windows.net/container1/customer=john.doe/dt=20200101/file.csv` | 10743 | `{"Customer": "john.doe", "Date": "2020-01-01T00:00:00.0000000Z"}` |
+
 
 ## .create external table mapping
 
@@ -362,5 +374,6 @@ Drops the mapping from the database.
 ```
 ## Next steps
 
-* [External table general control commands](externaltables.md)
-* [Create and alter external SQL tables](external-sql-tables.md)
+* [Query external tables](../../data-lake-query-data.md).
+* [Export data to an external table](data-export/export-data-to-an-external-table.md).
+* [Continuous data export to an external table](data-export/continuous-data-export.md).

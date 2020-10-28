@@ -28,7 +28,7 @@ In this article, you create an Azure Data Explorer cluster and database by using
 
 * [Python 3.4+](https://www.python.org/downloads/).
 
-* [An Azure AD Application and service principal that can access resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Get values for `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
+* [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Get values for `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 ## Install Python package
 
@@ -39,7 +39,7 @@ pip install azure-common
 pip install azure-mgmt-kusto
 ```
 ## Authentication
-For running the examples in this article, we need an Azure AD Application and service principal that can access resources. Check [create an Azure AD application](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD Application and add role assignment at the subscription scope. It also shows how to get the `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
+For running the examples in this article, we need an Azure AD Application and service principal that can access resources. Check [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD Application and add role assignment at the subscription scope. It also shows how to get the `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 ## Create the Azure Data Explorer cluster
 
