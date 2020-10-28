@@ -81,7 +81,7 @@ static void createTable(String database) {
 }
 ```
 
-### Data Ingestion
+### Data ingestion
 
 Queue ingestion by using a file from an existing Azure Blob Storage container. 
 * Use `BlobSourceInfo` to specify the Blob Storage path.
