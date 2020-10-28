@@ -122,10 +122,7 @@ This section shows you how to use Azure portal to add a virtual network service 
 
 ---
 
-## See also
+## Next steps
 
-* [Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview)
-* [Private Endpoint](/azure/private-link/private-endpoint-overview)
-* [Create an Azure Data Explorer cluster in your Virtual Network](vnet-create-cluster-portal.md)
-* [Deploy Azure Data Explorer cluster into your Virtual Network](vnet-deployment.md)
-* [Private Link FAQ](/azure/private-link/private-link-faq)
+* [Export data to storage](kusto/management/data-export/export-data-to-storage.md)
+* [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md)
