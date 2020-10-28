@@ -39,7 +39,9 @@ This section is optional. Review the following code snippets to learn how the co
 
 ### Authentication
 
-The program uses Azure Active Directory authentication credentials. `ConnectionStringBuilder` creates a `com.microsoft.azure.kusto.data.Client` for query and management.
+The program uses Azure Active Directory authentication credentials with ConnectionStringBuilder`.
+
+1. Create a `com.microsoft.azure.kusto.data.Client` for query and management.
 
 ```java
 static Client getClient() throws Exception {
