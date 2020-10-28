@@ -27,7 +27,7 @@ Azure [Private Endpoint](/azure/private-link/private-endpoint-overview) is a net
  
 # [Azure Storage - Private Endpoint](#tab/storage-account)
 
-### Allow Access to Azure Storage Account from Azure Data Explorer Subnets using a Private Endpoint
+### Allow access to Azure Storage Account from Azure Data Explorer Subnets using a Private Endpoint
 
 For a tutorial on how to create a Private Endpoint in your Azure Storage account, see [Tutorial: Connect to a storage account using an Azure Private Endpoint](/azure/private-link/tutorial-private-endpoint-storage-portal).
 
@@ -35,7 +35,7 @@ Within this tutorial, select the VNet where the Azure Data Explorer subnet exist
 
 # [Event Hub - Private Endpoint](#tab/event-hub)
 
-### Allow Access to Azure Event Hub from Azure Data Explorer Subnets using a Private Endpoint
+### Allow access to Azure Event Hub from Azure Data Explorer Subnets using a Private Endpoint
 
 For a tutorial on how to create a Private Endpoint in your Event Hub, see [Add a Private Endpoint using Azure portal](/azure/event-hubs/private-link-service#add-a-private-endpoint-using-azure-portal).
 
