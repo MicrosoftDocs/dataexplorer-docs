@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/12/2020
 ---
-# Create a private or service endpoint to resources used by data connections, such as Event Hub and Storage
+# Create a private or service endpoint to Event Hub and Azure Storage
 
 [Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) enables many types of Azure resources to securely communicate with each other. [Azure Private Link](/azure/private-link/) enables you to access Azure Services and Azure hosted customer-owned/partner services over a Private Endpoint in your virtual network. A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet’s address space for the Azure service to securely connect between Azure Data Explorer and Azure services such as Azure Storage and Event Hub. Azure Data Explorer accesses the Private Endpoint of the storage accounts or Event Hubs over the Microsoft backbone, and all communication, for example, data export, external tables, and data ingestion, takes take place over the private IP address. 
 
@@ -49,7 +49,7 @@ Virtual Network (VNet) [service endpoint](/azure/virtual-network/virtual-network
 
 # [Azure Storage - service endpoint](#tab/storage-account)
 
-### Allow Access to Azure Storage Account from Azure Data Explorer Subnets using a service endpoint
+### Allow Access to Azure Storage account from Azure Data Explorer subnets using a service endpoint
 
 This section shows you how to use Azure portal to add a virtual network service endpoint. To limit access, integrate the virtual network service endpoint for this Azure Storage account.
 
@@ -85,7 +85,7 @@ This section shows you how to use Azure portal to add a virtual network service 
 
 # [Event Hub - service endpoint](#tab/event-hub)
 
-### Allow Access to Azure Event Hub from Azure Data Explorer Subnets using a service endpoint
+### Allow Access to Azure Event Hub from Azure Data Explorer subnets using a service endpoint
 
 > [!IMPORTANT]
 > Virtual networks are supported in **standard** and **dedicated** tiers of Event Hubs, and aren't supported in the basic tier. 
