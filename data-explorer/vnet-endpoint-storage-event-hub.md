@@ -49,7 +49,7 @@ Virtual Network (VNet) [service endpoint](/azure/virtual-network/virtual-network
 
 # [Azure Storage - service endpoint](#tab/storage-account)
 
-### Allow Access to Azure Storage account from Azure Data Explorer subnets using a service endpoint
+### Allow access to Azure Storage account from Azure Data Explorer subnets using a service endpoint
 
 This section shows you how to use Azure portal to add a virtual network service endpoint. To limit access, integrate the virtual network service endpoint for this Azure Storage account.
 
