@@ -72,6 +72,8 @@
       href: create-cluster-database-csharp.md
     - name: Python
       href: create-cluster-database-python.md  
+    - name: Go
+      href: create-cluster-database-go.md    
     - name: Azure Resource Manager template
       href: create-cluster-database-resource-manager.md
   - name: Create a table
@@ -168,6 +170,8 @@
         href: node-ingest-data.md
       - name: Go SDK
         href: go-ingest-data.md
+      - name: Java SDK
+        href: java-ingest-data.md
     - name: Kafka
       href: ingest-data-kafka.md
     - name: Logstash
@@ -246,6 +250,8 @@
           href: vnet-deploy-troubleshoot.md
         - name: Create Private Endpoint for your VNet cluster - Portal
           href: vnet-create-private-endpoint.md
+        - name: Create a private or service endpoint to resources used by data connections
+          href: vnet-endpoint-storage-event-hub.md
     - name: Encryption
       items:
       - name: Cluster disk encryption - portal

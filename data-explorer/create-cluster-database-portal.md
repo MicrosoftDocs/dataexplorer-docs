@@ -20,6 +20,7 @@ ms.date: 07/22/2019
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
+> * [Go](create-cluster-database-go.md)
 > * [ARM template](create-cluster-database-resource-manager.md)
 
 

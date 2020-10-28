@@ -18,6 +18,7 @@ ms.date: 08/10/2020
 > * [Python](python-ingest-data.md)
 > * [Node](node-ingest-data.md)
 > * [Go](go-ingest-data.md)
+> * [Java](java-ingest-data.md)
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides a [Go SDK client library](kusto/api/golang/kusto-golang-client-library.md) for interacting with the Azure Data Explorer service. You can use the [Go SDK](https://github.com/Azure/azure-kusto-go) to ingest, control, and query data in Azure Data Explorer clusters. 
 
