@@ -170,6 +170,8 @@
         href: node-ingest-data.md
       - name: Go SDK
         href: go-ingest-data.md
+      - name: Java SDK
+        href: java-ingest-data.md
     - name: Kafka
       href: ingest-data-kafka.md
     - name: Logstash
