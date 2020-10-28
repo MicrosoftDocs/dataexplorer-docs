@@ -54,7 +54,7 @@ func getClustersClient(subscription string) kusto.ClustersClient {
 ```
 
 > [!TIP]
-> Use the [auth.NewAuthorizerFromCLIWithResource](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromCLIWithResource) function for local development if you've Azure CLI installed and configured for authentication.
+> Use the [auth.NewAuthorizerFromCLIWithResource](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromCLIWithResource) function for local development if you have Azure CLI installed and configured for authentication.
 
 ### Create cluster
 
@@ -118,7 +118,6 @@ func listDatabases(sub, rgName, clusterName string) {
     }
     ...
 }
-
 ```
 
 ### Delete database
@@ -138,7 +137,6 @@ func deleteDatabase(sub, rgName, clusterName, dbName string) {
     }
     ...
 }
-
 ```
 
 ### Delete cluster
@@ -171,19 +169,19 @@ When you run the sample code as is, the following actions are performed:
 1. The cluster is deleted.
 
 
-```go
-func main() {
-    createCluster(subscription, clusterNamePrefix+clusterName, location, rgName)
-    listClusters(subscription, rgName)
-    createDatabase(subscription, rgName, clusterNamePrefix+clusterName, location, dbNamePrefix+databaseName)
-    listDatabases(subscription, rgName, clusterNamePrefix+clusterName)
-    deleteDatabase(subscription, rgName, clusterNamePrefix+clusterName, dbNamePrefix+databaseName)
-    deleteCluster(subscription, clusterNamePrefix+clusterName, rgName)
-}
-```
+    ```go
+    func main() {
+        createCluster(subscription, clusterNamePrefix+clusterName, location, rgName)
+        listClusters(subscription, rgName)
+        createDatabase(subscription, rgName, clusterNamePrefix+clusterName, location, dbNamePrefix+databaseName)
+        listDatabases(subscription, rgName, clusterNamePrefix+clusterName)
+        deleteDatabase(subscription, rgName, clusterNamePrefix+clusterName, dbNamePrefix+databaseName)
+        deleteCluster(subscription, clusterNamePrefix+clusterName, rgName)
+    }
+    ```
 
-> [!TIP]
-> To try different combinations of operations, you can uncomment and comment the respective functions in `main.go` as needed.
+    > [!TIP]
+    > To try different combinations of operations, you can uncomment and comment the respective functions in `main.go` as needed.
 
 1. Clone the sample code from GitHub:
 
@@ -192,7 +190,7 @@ func main() {
     cd azure-data-explorer-go-cluster-management
     ```
 
-1. The program authenticates using client credentials. Use the Azure CLI ([az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command to create a service principal. Save the client ID, client secret, and tenant ID information for use in the next step.
+1. The program authenticates using client credentials. Use the Azure CLI [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command to create a service principal. Save the client ID, client secret, and tenant ID information for use in the next step.
 
 1. Export required environment variables including service principal information. Enter your subscription ID, resource group, and region where you want to create the cluster.
 
@@ -210,7 +208,7 @@ func main() {
     ```
     
     > [!TIP]
-    > You're likely to use environment variables in production scenarios to provide credentials to your application. Although not demonstrated in this example, as mentioned in [Review the code](#review-the-code), for local development, use [auth.NewAuthorizerFromCLIWithResource](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromCLIWithResource) if you have Azure CLI installed and configured for authentication. In that situation, you don't need to create a service principal.
+    > You're likely to use environment variables in production scenarios to provide credentials to your application. As mentioned in [Review the code](#review-the-code), for local development, use [auth.NewAuthorizerFromCLIWithResource](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromCLIWithResource) if you have Azure CLI installed and configured for authentication. In that situation, you don't need to create a service principal.
 
 
 1. Run the program:
@@ -219,7 +217,7 @@ func main() {
     go run main.go
     ```
 
-    You'll get a similar output:
+    You'll get an output similar to the following:
 
     ```console
     waiting for cluster creation to complete - fooADXTestCluster
@@ -254,4 +252,4 @@ If you didn't delete the cluster programmatically using the sample code in this 
 
 ## Next steps
 
-* [Ingest data using the Azure Data Explorer Go SDK](go-ingest-data.md)
+[Ingest data using the Azure Data Explorer Go SDK](go-ingest-data.md)
