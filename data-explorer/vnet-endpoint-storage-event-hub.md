@@ -85,7 +85,7 @@ This section shows you how to use Azure portal to add a virtual network service 
 
 # [Event Hub - service endpoint](#tab/event-hub)
 
-### Allow Access to Azure Event Hub from Azure Data Explorer subnets using a service endpoint
+### Allow access to Azure Event Hub from Azure Data Explorer subnets using a service endpoint
 
 > [!IMPORTANT]
 > Virtual networks are supported in **standard** and **dedicated** tiers of Event Hubs, and aren't supported in the basic tier. 
