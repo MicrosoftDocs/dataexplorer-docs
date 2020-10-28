@@ -149,7 +149,7 @@ INGESTION_CLIENT.ingest_from_blob(
 print('Done queuing up ingestion with Azure Data Explorer')
 ```
 
-## Query data that were ingested into the table
+## Query data that was ingested into the table
 
 Wait for five to 10 minutes for the queued ingestion to schedule the ingest and load the data into Azure Data Explorer. Then run the following code to get the count of records in the StormEvents table.
 
