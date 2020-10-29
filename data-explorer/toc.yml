@@ -202,27 +202,32 @@
     items:
     - name: Azure Data Explorer dashboards
       items:
-      - name: use dashboards
+      - name: Use dashboards
         href: azure-data-explorer-dashboards.md
-      - name: use dashboard parameters
+      - name: Use dashboard parameters
         href: dashboard-parameters.md  
-      - name: customize dashboard visuals
+      - name: Customize dashboard visuals
         href: dashboard-customize-visuals.md  
     - name: Power BI
       items:
       - name: Power BI best practices
         href: power-bi-best-practices.md
-      - name: connector
+      - name: Connector
+        displayName: PowerBI
         href: power-bi-connector.md
-      - name: imported query
+      - name: Imported query
+        displayName: PowerBI
         href: power-bi-imported-query.md
       - name: SQL query
+        displayName: PowerBI
         href: power-bi-sql-query.md
     - name: Excel
       items:
-      - name: connector
+      - name: Connector
+        displayName: Excel
         href: excel-connector.md
-      - name: blank query
+      - name: Blank query
+        displayName: Excel
         href: excel-blank-query.md
     - name: Grafana
       href: grafana.md
@@ -251,6 +256,7 @@
         - name: Create Private Endpoint for your VNet cluster - Portal
           href: vnet-create-private-endpoint.md
         - name: Create a private or service endpoint to resources used by data connections
+          displayName: VNet, private endpoint, Azure Storage, Event Hub
           href: vnet-endpoint-storage-event-hub.md
     - name: Encryption
       items:
@@ -263,14 +269,19 @@
     - name: Configure customer-managed-keys
       items:
         - name: Portal
+          displayName: Configure customer-managed-keys
           href: customer-managed-keys-portal.md
         - name: C#
+          displayName: Configure customer-managed-keys
           href: customer-managed-keys-csharp.md
         - name: Azure Resource Manager template
+          displayName: Configure customer-managed-keys
           href: customer-managed-keys-resource-manager.md
         - name: Azure CLI
+          displayName: Configure customer-managed-keys
           href: customer-managed-keys-cli.md
         - name: PowerShell
+          displayName: Configure customer-managed-keys
           href: customer-managed-keys-powershell.md
     - name: Create Azure AD app
       href: provision-azure-ad-app.md     
@@ -291,10 +302,13 @@
       - name: Add cluster principal
         items:
           - name: C#
+            displayName: cluster principal
             href: cluster-principal-csharp.md
           - name: Python
+            displayName: cluster principal
             href: cluster-principal-python.md
           - name: Azure Resource Manager template
+            displayName: cluster principal
             href: cluster-principal-resource-manager.md
       - name: Manage cluster language extensions
         displayName: Python, R
@@ -306,10 +320,13 @@
       - name: Add database principal
         items:
           - name: C#
+            displayName: database principal
             href: database-principal-csharp.md
           - name: Python
+            displayName: database principal
             href: database-principal-python.md
           - name: Azure Resource Manager template
+            displayName: database principal
             href: database-principal-resource-manager.md
       - name: Policies
         items:
@@ -386,10 +403,13 @@
   - name: Troubleshoot
     items:
     - name: Creating a cluster
+      displayName: troubleshoot
       href: troubleshoot-create-cluster.md
     - name: Connecting to a cluster
+      displayName: troubleshoot
       href: troubleshoot-connect-cluster.md
     - name: Working with databases and tables
+      displayName: troubleshoot
       href: troubleshoot-database-table.md
 - name: Reference
   items:
@@ -545,7 +565,7 @@
         href: ./kusto/query/getschemaoperator.md
       - name: invoke operator
         href: ./kusto/query/invokeoperator.md
-      - name: join operator
+      - name: join operators
         items:
         - name: join operator
           href: ./kusto/query/joinoperator.md
@@ -1564,6 +1584,7 @@
       - name: Continuous data export
         items:
         - name: Overview
+          displayName: continuous data export
           href: ./kusto/management/data-export/continuous-data-export.md
         - name: Create or alter continuous export
           href: ./kusto/management/data-export/create-alter-continuous.md
