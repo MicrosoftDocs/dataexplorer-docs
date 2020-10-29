@@ -1583,8 +1583,7 @@
         href: ./kusto/management/data-export/export-data-to-an-external-table.md
       - name: Continuous data export
         items:
-        - name: Overview
-          displayName: continuous data export
+        - name: Continuous data export overview
           href: ./kusto/management/data-export/continuous-data-export.md
         - name: Create or alter continuous export
           href: ./kusto/management/data-export/create-alter-continuous.md
