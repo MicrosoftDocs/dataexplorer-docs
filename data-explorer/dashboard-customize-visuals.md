@@ -61,6 +61,12 @@ The line chart visual is the most basic type of chart. The first column of the q
 
 The stat visual only shows one element. If there are multiple columns and rows in the output, stat shows the first element of the first column. Stat cards are useful to highlight KPIs on the Dashboard.
 
+### Multi Stat
+
+:::image type="content" source="media/dashboard-customize-visuals/multistat.png" alt-text="multi stat visual type":::
+
+The multi stat visual shows multiple stat cards in a group using a single query result. This requires 2 columns, one for label and the other for value. Users can use visual formatting option to customize the the output layout for display in dashboard by selecting the number of rows and columns. In addition to being more convenient, this will reduce cluster load where customers are using similar queries to build multiple stats.
+
 ### Pie chart
 
 :::image type="content" source="media/dashboard-customize-visuals/pie-chart.png" alt-text="pie chart visual type":::
@@ -117,6 +123,8 @@ Use the following properties to customize visuals.
 |**Legend**    |   Toggle to show or hide the display of legends on your visuals   |Bar, Column, Area, Line, Scatter, Anomaly, and Time charts |
 |**Y Axis**     |   Allows customization of Y-Axis properties: <ul><li>**Label**: Text for a custom label. </li><li>**Maximum Value**: Change the maximum value of the Y axis.  </li><li>**Minimum Value**: Change the minimum value of the Y axis.  </li></ul>      |Bar, Column, Area, Line, Scatter, Anomaly, and Time charts |
 |**X Axis**     |    Allows customization of X-axis properties: <ul><li>**Label**: Text for a custom label. </li>     | Bar, Column, Area, Line, Scatter, Anomaly, and Time charts|
+|**Render links**     |    Toggle to make the links starting with "https://" in tables, clickable : <ul><li>**Apply on columns**: Select columns containing URL. </li>     | Table|
+|**Layout**     |    Select the layout configuration for multi stat visual <ul><li>**Apply on columns**: Select columns containing URL. </li>     | Multi stat|
 
 ## Next steps
 

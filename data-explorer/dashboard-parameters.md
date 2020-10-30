@@ -70,6 +70,9 @@ A parameter must be used in the query to make the filter applicable for that que
 > [!NOTE]
 > If the parameter isn't used in the query, the filter remains disabled. Once the parameter is added to the query, the filter becomes active.
 
+> [!NOTE]
+> Parameters can depend upon other parameters to filters and narrow down their results. This can be used to create filters on the dashboard which can depend on other filters.
+
 ## Use different parameter types
 
 Several dashboard parameter types are supported. The following examples describe how to use parameters in a query for various parameter types. 
