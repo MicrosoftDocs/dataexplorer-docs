@@ -870,6 +870,10 @@
         href: ./kusto/query/gettypefunction.md
       - name: getyear()
         href: ./kusto/query/getyearfunction.md
+      - name: gzip_compress_to_base64_string()
+        href: ./kusto/query/gzip-base64-compress.md
+      - name: gzip_decompress_from_base64_string()
+        href: ./kusto/query/gzip-base64-decompress.md 
       - name: hash()
         href: ./kusto/query/hashfunction.md
       - name: hash_combine()
