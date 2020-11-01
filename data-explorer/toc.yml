@@ -1731,7 +1731,8 @@
         href: ./kusto/api/rest/deeplink.md
       - name: Streaming ingest
         href: ./kusto/api/rest/streaming-ingest.md
-    - name: MS-TDS (SQL, ADO.NET, JDBC, ODBC)
+    - name: MS-TDS 
+      displayName: SQL, ADO.NET, JDBC, ODBC
       items:
       - name: MS-TDS overview
         displayName: SQL, ADO.NET, JDBC, ODBC
