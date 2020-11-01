@@ -171,11 +171,11 @@ You can use a query parameter in any query step that supports it. For example, f
 
 ![filter results using a parameter](media/power-bi-best-practices/filter-using-parameter.png)
 
-### Using Value.NativeQuery for unsupported ADX features
+### Use Value.NativeQuery for Azure Data Explorer features
 
-If you need to use a feature that's supported by Azure Data Explorer, but not available in Power BI, or just want to have more control over the executed query, you can use the [Value.NativeQuery()](https://docs.microsoft.com/powerquery-m/value-nativequery) method in M. This allows you to insert a KQL fragment inside the generated query.
+To use an Azure Data Explorer feature that's not supported in Power BI, use the [Value.NativeQuery()](https://docs.microsoft.com/powerquery-m/value-nativequery) method in M. The native query inserts a KQL fragment inside the generated query. This method can also be used to give you more control over the executed query, 
 
-For example, in order to use the `percentiles()` function in Azure Data Explorer, you can use the following:
+The following example shows how to use the `percentiles()` function in Azure Data Explorer:
 
 ```m
 let
@@ -183,8 +183,6 @@ let
     Percentiles = Value.NativeQuery(StormEvents, "| summarize percentiles(DamageProperty, 50, 90, 95) by State")
 in
     Percentiles
-```
-
 ### Don't use Power BI data refresh scheduler to issue control commands to Kusto
 
 Power BI includes a data refresh scheduler that can periodically issue
