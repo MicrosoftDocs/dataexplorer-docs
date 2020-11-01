@@ -44,7 +44,7 @@ print res=gzip_decompress_from_base64_string("x0x0x0")
 ```
 
 **Output:**
-||
+>||
 
 ## Next steps
 
