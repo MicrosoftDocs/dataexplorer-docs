@@ -85,21 +85,26 @@
       - name: One-click ingestion overview 
         href: ingest-data-one-click.md
       - name: CSV data from container to new table
+        displayName: ingest data, ingestion, one click
         href: one-click-ingestion-new-table.md
       - name: JSON data from local file to existing table
+        displayName: ingest data, ingestion, one click
         href: one-click-ingestion-existing-table.md
     - name: Streaming ingestion
       items:
       - name: Azure portal
+        displayName: ingest data, ingestion
         href: ingest-data-streaming.md
       - name: C#
+        displayName: ingest data, ingestion
         href: ingest-data-streaming-csharp.md
     - name: Using LightIngest
+      displayName: ingest data, ingestion
       href: lightingest.md    
     - name: Event Hub
       items:
       - name: Event Hub data connection
-        displayName: ingest
+        displayName: ingest, ingestion
         href: ingest-data-event-hub-overview.md
       - name: Azure portal
         displayName: Event Hub, ingest, data connection
@@ -116,7 +121,7 @@
     - name: Event Grid
       items:
       - name: Event Grid data connection
-        displayName: ingest 
+        displayName: ingest
         href: ingest-data-event-grid-overview.md
       - name: Azure portal
         displayName: Event Grid, ingest, data connection
@@ -136,7 +141,7 @@
     - name: IoT Hub
       items:
       - name: IoT Hub data connection
-        displayName: ingest
+        displayName: ingest data, ingestion
         href: ingest-data-iot-hub-overview.md
       - name: Azure portal
         displayName: IoT Hub, ingest, data connection
@@ -163,20 +168,28 @@
     - name: Using SDKs
       items: 
       - name: .NET SDK
+        displayName: ingest data, ingestion
         href: net-sdk-ingest-data.md
       - name: Python
+        displayName: ingest data, ingestion
         href: python-ingest-data.md
       - name: Node SDK
+        displayName: ingest data, ingestion
         href: node-ingest-data.md
       - name: Go SDK
+        displayName: ingest data, ingestion
         href: go-ingest-data.md
       - name: Java SDK
+        displayName: ingest data, ingestion
         href: java-ingest-data.md
     - name: Kafka
+      displayName: ingest data, ingestion
       href: ingest-data-kafka.md
     - name: Logstash
+      displayName: ingest data, ingestion
       href: ingest-data-logstash.md
     - name: JSON formatted data
+      displayName: ingest data, ingestion
       href: ingest-json-formats.md  
   - name: Query data
     items:
