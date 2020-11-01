@@ -1349,7 +1349,8 @@
       href: ./kusto/management/index.md
     - name: Schema
       items:
-      - name: Management best practices for schema design
+      - name: Best practices for schema design
+        displayName: management
         href: ./kusto/management/management-best-practices.md
       - name: Databases management
         href: ./kusto/management/databases.md
@@ -1691,19 +1692,20 @@
     items:
     - name: API overview
       href: ./kusto/api/index.md
+    - name: Client libraries
+      href: ./kusto/api/client-libraries.md
+    - name: Connection strings
       items:
-      - name: Client libraries
-        href: ./kusto/api/client-libraries.md
-      - name: Connection strings
+      - name: Connection strings overview
         href: ./kusto/api/connection-strings/index.md
-        items:
-        - name: Kusto connection strings
-          href: ./kusto/api/connection-strings/kusto.md
-        - name: Storage connection strings
-          href: ./kusto/api/connection-strings/storage.md
+      - name: Kusto connection strings
+        href: ./kusto/api/connection-strings/kusto.md
+      - name: Storage connection strings
+        href: ./kusto/api/connection-strings/storage.md
     - name: REST API
-      href: ./kusto/api/rest/index.md
       items:
+      - name: REST API overview 
+        href: ./kusto/api/rest/index.md
       - name: Authentication
         href: ./kusto/api/rest/authentication.md
       - name: Query/management HTTP request
@@ -1717,8 +1719,10 @@
       - name: Streaming ingest
         href: ./kusto/api/rest/streaming-ingest.md
     - name: MS-TDS (SQL, ADO.NET, JDBC, ODBC)
-      href: ./kusto/api/tds/index.md
       items:
+      - name: MS-TDS overview
+        displayName: SQL, ADO.NET, JDBC, ODBC
+        href: ./kusto/api/tds/index.md
       - name: T-SQL
         href: ./kusto/api/tds/t-sql.md
       - name: KQL over TDS
@@ -1741,13 +1745,15 @@
         - name: Controlling tracing
           href: ./kusto/api/netfx/controlling-tracing.md
       - name: Kusto.Data
-        href: ./kusto/api/netfx/about-kusto-data.md
         items:
+        - name: Kusto.Data overview
+          href: ./kusto/api/netfx/about-kusto-data.md
         - name: Request properties, ClientRequestProperties
           href: ./kusto/api/netfx/request-properties.md
       - name: Kusto.Ingest
-        href: ./kusto/api/netfx/about-kusto-ingest.md
         items:
+        -name: Kusto.Ingest overview
+          href: ./kusto/api/netfx/about-kusto-ingest.md
         - name: Permissions
           href: ./kusto/api/netfx/kusto-ingest-client-permissions.md
         - name: Client reference
