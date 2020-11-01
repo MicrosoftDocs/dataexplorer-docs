@@ -15,7 +15,7 @@ Decodes the input string from base64 and performs gzip decompression.
 
 ## Syntax
 
-`gzip_decompress_from_base64_string('input_string')`
+`gzip_decompress_from_base64_string("`*input_string*`")`
 
 ## Arguments
 
