@@ -85,21 +85,26 @@
       - name: One-click ingestion overview 
         href: ingest-data-one-click.md
       - name: CSV data from container to new table
+        displayName: ingest data, ingestion, one click
         href: one-click-ingestion-new-table.md
       - name: JSON data from local file to existing table
+        displayName: ingest data, ingestion, one click
         href: one-click-ingestion-existing-table.md
     - name: Streaming ingestion
       items:
       - name: Azure portal
+        displayName: ingest data, ingestion
         href: ingest-data-streaming.md
       - name: C#
+        displayName: ingest data, ingestion
         href: ingest-data-streaming-csharp.md
     - name: Using LightIngest
+      displayName: ingest data, ingestion
       href: lightingest.md    
     - name: Event Hub
       items:
       - name: Event Hub data connection
-        displayName: ingest
+        displayName: ingest, ingestion
         href: ingest-data-event-hub-overview.md
       - name: Azure portal
         displayName: Event Hub, ingest, data connection
@@ -116,7 +121,7 @@
     - name: Event Grid
       items:
       - name: Event Grid data connection
-        displayName: ingest 
+        displayName: ingest
         href: ingest-data-event-grid-overview.md
       - name: Azure portal
         displayName: Event Grid, ingest, data connection
@@ -136,7 +141,7 @@
     - name: IoT Hub
       items:
       - name: IoT Hub data connection
-        displayName: ingest
+        displayName: ingest data, ingestion
         href: ingest-data-iot-hub-overview.md
       - name: Azure portal
         displayName: IoT Hub, ingest, data connection
@@ -163,20 +168,28 @@
     - name: Using SDKs
       items: 
       - name: .NET SDK
+        displayName: ingest data, ingestion
         href: net-sdk-ingest-data.md
       - name: Python
+        displayName: ingest data, ingestion
         href: python-ingest-data.md
       - name: Node SDK
+        displayName: ingest data, ingestion
         href: node-ingest-data.md
       - name: Go SDK
+        displayName: ingest data, ingestion
         href: go-ingest-data.md
       - name: Java SDK
+        displayName: ingest data, ingestion
         href: java-ingest-data.md
     - name: Kafka
+      displayName: ingest data, ingestion
       href: ingest-data-kafka.md
     - name: Logstash
+      displayName: ingest data, ingestion
       href: ingest-data-logstash.md
     - name: JSON formatted data
+      displayName: ingest data, ingestion
       href: ingest-json-formats.md  
   - name: Query data
     items:
@@ -202,27 +215,32 @@
     items:
     - name: Azure Data Explorer dashboards
       items:
-      - name: use dashboards
+      - name: Use dashboards
         href: azure-data-explorer-dashboards.md
-      - name: use dashboard parameters
+      - name: Use dashboard parameters
         href: dashboard-parameters.md  
-      - name: customize dashboard visuals
+      - name: Customize dashboard visuals
         href: dashboard-customize-visuals.md  
     - name: Power BI
       items:
       - name: Power BI best practices
         href: power-bi-best-practices.md
-      - name: connector
+      - name: Connector
+        displayName: PowerBI
         href: power-bi-connector.md
-      - name: imported query
+      - name: Imported query
+        displayName: PowerBI
         href: power-bi-imported-query.md
       - name: SQL query
+        displayName: PowerBI
         href: power-bi-sql-query.md
     - name: Excel
       items:
-      - name: connector
+      - name: Connector
+        displayName: Excel
         href: excel-connector.md
-      - name: blank query
+      - name: Blank query
+        displayName: Excel
         href: excel-blank-query.md
     - name: Grafana
       href: grafana.md
@@ -251,6 +269,7 @@
         - name: Create Private Endpoint for your VNet cluster - Portal
           href: vnet-create-private-endpoint.md
         - name: Create a private or service endpoint to resources used by data connections
+          displayName: VNet, private endpoint, Azure Storage, Event Hub
           href: vnet-endpoint-storage-event-hub.md
     - name: Encryption
       items:
@@ -263,14 +282,19 @@
     - name: Configure customer-managed-keys
       items:
         - name: Portal
+          displayName: Configure customer-managed-keys
           href: customer-managed-keys-portal.md
         - name: C#
+          displayName: Configure customer-managed-keys
           href: customer-managed-keys-csharp.md
         - name: Azure Resource Manager template
+          displayName: Configure customer-managed-keys
           href: customer-managed-keys-resource-manager.md
         - name: Azure CLI
+          displayName: Configure customer-managed-keys
           href: customer-managed-keys-cli.md
         - name: PowerShell
+          displayName: Configure customer-managed-keys
           href: customer-managed-keys-powershell.md
     - name: Create Azure AD app
       href: provision-azure-ad-app.md     
@@ -291,10 +315,13 @@
       - name: Add cluster principal
         items:
           - name: C#
+            displayName: cluster principal
             href: cluster-principal-csharp.md
           - name: Python
+            displayName: cluster principal
             href: cluster-principal-python.md
           - name: Azure Resource Manager template
+            displayName: cluster principal
             href: cluster-principal-resource-manager.md
       - name: Manage cluster language extensions
         displayName: Python, R
@@ -306,10 +333,13 @@
       - name: Add database principal
         items:
           - name: C#
+            displayName: database principal
             href: database-principal-csharp.md
           - name: Python
+            displayName: database principal
             href: database-principal-python.md
           - name: Azure Resource Manager template
+            displayName: database principal
             href: database-principal-resource-manager.md
       - name: Policies
         items:
@@ -386,10 +416,13 @@
   - name: Troubleshoot
     items:
     - name: Creating a cluster
+      displayName: troubleshoot
       href: troubleshoot-create-cluster.md
     - name: Connecting to a cluster
+      displayName: troubleshoot
       href: troubleshoot-connect-cluster.md
     - name: Working with databases and tables
+      displayName: troubleshoot
       href: troubleshoot-database-table.md
 - name: Reference
   items:
@@ -545,7 +578,7 @@
         href: ./kusto/query/getschemaoperator.md
       - name: invoke operator
         href: ./kusto/query/invokeoperator.md
-      - name: join operator
+      - name: join operators
         items:
         - name: join operator
           href: ./kusto/query/joinoperator.md
@@ -1329,7 +1362,8 @@
       href: ./kusto/management/index.md
     - name: Schema
       items:
-      - name: Management best practices for schema design
+      - name: Best practices for schema design
+        displayName: management
         href: ./kusto/management/management-best-practices.md
       - name: Databases management
         href: ./kusto/management/databases.md
@@ -1563,7 +1597,7 @@
         href: ./kusto/management/data-export/export-data-to-an-external-table.md
       - name: Continuous data export
         items:
-        - name: Overview
+        - name: Continuous data export overview
           href: ./kusto/management/data-export/continuous-data-export.md
         - name: Create or alter continuous export
           href: ./kusto/management/data-export/create-alter-continuous.md
@@ -1671,19 +1705,20 @@
     items:
     - name: API overview
       href: ./kusto/api/index.md
+    - name: Client libraries
+      href: ./kusto/api/client-libraries.md
+    - name: Connection strings
       items:
-      - name: Client libraries
-        href: ./kusto/api/client-libraries.md
-      - name: Connection strings
+      - name: Connection strings overview
         href: ./kusto/api/connection-strings/index.md
-        items:
-        - name: Kusto connection strings
-          href: ./kusto/api/connection-strings/kusto.md
-        - name: Storage connection strings
-          href: ./kusto/api/connection-strings/storage.md
+      - name: Kusto connection strings
+        href: ./kusto/api/connection-strings/kusto.md
+      - name: Storage connection strings
+        href: ./kusto/api/connection-strings/storage.md
     - name: REST API
-      href: ./kusto/api/rest/index.md
       items:
+      - name: REST API overview 
+        href: ./kusto/api/rest/index.md
       - name: Authentication
         href: ./kusto/api/rest/authentication.md
       - name: Query/management HTTP request
@@ -1696,9 +1731,12 @@
         href: ./kusto/api/rest/deeplink.md
       - name: Streaming ingest
         href: ./kusto/api/rest/streaming-ingest.md
-    - name: MS-TDS (SQL, ADO.NET, JDBC, ODBC)
-      href: ./kusto/api/tds/index.md
+    - name: MS-TDS 
+      displayName: SQL, ADO.NET, JDBC, ODBC
       items:
+      - name: MS-TDS overview
+        displayName: SQL, ADO.NET, JDBC, ODBC
+        href: ./kusto/api/tds/index.md
       - name: T-SQL
         href: ./kusto/api/tds/t-sql.md
       - name: KQL over TDS
@@ -1721,13 +1759,15 @@
         - name: Controlling tracing
           href: ./kusto/api/netfx/controlling-tracing.md
       - name: Kusto.Data
-        href: ./kusto/api/netfx/about-kusto-data.md
         items:
+        - name: Kusto.Data overview
+          href: ./kusto/api/netfx/about-kusto-data.md
         - name: Request properties, ClientRequestProperties
           href: ./kusto/api/netfx/request-properties.md
       - name: Kusto.Ingest
-        href: ./kusto/api/netfx/about-kusto-ingest.md
         items:
+        - name: Kusto.Ingest overview
+          href: ./kusto/api/netfx/about-kusto-ingest.md
         - name: Permissions
           href: ./kusto/api/netfx/kusto-ingest-client-permissions.md
         - name: Client reference
