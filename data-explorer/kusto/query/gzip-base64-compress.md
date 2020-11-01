@@ -29,9 +29,6 @@ Performs gzip compression and encodes the result to base64.
 * Returns an empty result if compression or encoding failed.
 
 ## Example
-
-### Using Kusto
-
 ```kusto
 print res = gzip_compress_to_base64_string("1234567890qwertyuiop")
 ```
