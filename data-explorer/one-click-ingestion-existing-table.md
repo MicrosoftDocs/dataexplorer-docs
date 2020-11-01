@@ -25,18 +25,18 @@ For different types or sources of data, see [Use one-click ingestion to ingest C
 
 ## Ingest new data
 
-In the left menu of the Web UI, right-click a *database* or *table* and select **Ingest new data (Preview)**.
+In the left menu of the Web UI, right-click a *database* or *table* and select **Ingest new data**.
 
    :::image type="content" source="media/one-click-ingestion-existing-table/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
  
 ## Select an ingestion type
 
-1. In the **Ingest new data (Preview)** window, the **Source** tab is selected.
+1. In the **Ingest new data** window, the **Source** tab is selected.
 
 1. If the **Table** field isn't automatically filled, select an existing table name from the drop-down menu.
 
     > [!NOTE]
-    > If you select **Ingest new data (Preview)** on a *table* row, the selected table name will appear in the **Project Details**.
+    > If you select **Ingest new data** on a *table* row, the selected table name will appear in the **Project Details**.
 
 1. Under **Ingestion type**, do the following steps:
 

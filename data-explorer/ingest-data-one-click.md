@@ -39,11 +39,11 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
     :::image type="content" source="media/ingest-data-one-click/welcome-ingestion.png" alt-text="Ingest new data from welcome to Azure Data Explorer":::
 
-* To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), right-click the **database** or **table** row in the left menu of the Azure Data Explorer web UI and select **Ingest new data (preview)**.
+* To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), right-click the **database** or **table** row in the left menu of the Azure Data Explorer web UI and select **Ingest new data**.
 
     :::image type="content" source="media/ingest-data-one-click/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
 
-* To access the wizard from the Azure portal, select **Query** from the left menu, right click on the **database** or **table**, and select **Ingest new data (preview)**.
+* To access the wizard from the Azure portal, select **Query** from the left menu, right click on the **database** or **table**, and select **Ingest new data**.
 
     :::image type="content" source="media/ingest-data-one-click/access-from-portal.png" alt-text="Access the one click ingestion wizard from Azure portal":::
 
@@ -75,14 +75,7 @@ In the **Schema** tab, do the following actions:
 
 #### File formats
 
-One-click ingestion supports ingesting a new table from source data in any of the following formats:
-* JSON
-* CSV
-* TSV
-* SCSV
-* SOHSV
-* TSVE
-* PSV
+One-click ingestion supports ingesting from source data in all [data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
 
 ### Editor window
 
