@@ -17,7 +17,7 @@ Performs gzip compression and encodes the result to base64.
 
 ## Syntax
 
-`gzip_compress_to_base64_string('input_string')`
+`gzip_compress_to_base64_string("`*input_string*"`)`
 
 ## Arguments
 
