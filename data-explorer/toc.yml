@@ -1752,7 +1752,7 @@
           href: ./kusto/api/netfx/request-properties.md
       - name: Kusto.Ingest
         items:
-        -name: Kusto.Ingest overview
+        - name: Kusto.Ingest overview
           href: ./kusto/api/netfx/about-kusto-ingest.md
         - name: Permissions
           href: ./kusto/api/netfx/kusto-ingest-client-permissions.md
