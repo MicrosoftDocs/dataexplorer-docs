@@ -119,9 +119,10 @@ The mysql_request plugin supports username/password authentication to the MySQL 
 
 ### Username/Password authentication
 
-`User ID=...; Password=...;`
+MySQL supports user/password authentication only, and no integration AAD authentication.
+Username and password are provided as part of the connections string using next parameters:
 
-  Username and password authentication support is provided when Azure AD-integrated authentication can't be done. Avoid this method, when possible, as secret information is sent through Kusto.
+`User ID=...; Password=...;`
     
 > [!WARNING]
 > Connection strings and queries that include confidential information or information that should be guarded should be obfuscated to be omitted from any Kusto tracing.
