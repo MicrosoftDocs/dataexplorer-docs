@@ -90,7 +90,7 @@ To add columns from JSON levels that are different than the main **JSON levels**
 
     :::image type="content" source="media/one-click-ingestion-existing-table/create-new-source.png" alt-text="Screenshot - create new source for adding nested JSON data in one click ingestion process - Azure Data Explorer":::
 
-1. Enter the new source for this column and click **Ok**.
+1. Enter the new source for this column and click **OK**.
 
     :::image type="content" source="media/one-click-ingestion-existing-table/name-new-source.png" alt-text="Screenshot - popout window to name the new data source for the added column - Azure Data Explorer one click ingestion":::
 
