@@ -77,6 +77,27 @@ Select **Edit schema** to view and edit your table column configuration.
        > [!TIP]
        > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
 
+#### Add nested JSON data 
+
+To add columns from JSON levels that are different than the main **JSON levels** selected above, do the following steps:
+
+1. Click on the arrow next to any column name, and select **New column**.
+
+    :::image type="content" source="media/one-click-ingestion-existing-table/new-column.png" alt-text="Screenshot of options to add a new column - schema tab during one click ingestion process - Azure Data Explorer":::
+
+1. Enter the new **Column Name** you wish to add and select the **Column Type** from the dropdown menu.
+1. Under **Source**, select **Create new**.
+
+    :::image type="content" source="media/one-click-ingestion-existing-table/create-new-source.png" alt-text="Screenshot - create new source for adding nested JSON data in one click ingestion process - Azure Data Explorer":::
+
+1. Enter the new source for this column and click **Ok**.
+
+    :::image type="content" source="media/one-click-ingestion-existing-table/name-new-source.png" alt-text="Screenshot - popout window to name the new data source for the added column - Azure Data Explorer one click ingestion":::
+
+1. Select **Create**. Your new column will be added at the end of the table.
+
+    :::image type="content" source="media/one-click-ingestion-existing-table/create-new-column.png" alt-text="Screenshot - create a new column during one click ingestion in Azure Data Explorer":::
+
 ### Edit the table 
 
 When ingesting data to an existing table, you are more limited in the changes you may make to the table.
