@@ -226,13 +226,13 @@
       - name: Power BI best practices
         href: power-bi-best-practices.md
       - name: Connector
-        displayName: PowerBI
+        displayName: Power BI
         href: power-bi-connector.md
       - name: Imported query
-        displayName: PowerBI
+        displayName: Power BI
         href: power-bi-imported-query.md
       - name: SQL query
-        displayName: PowerBI
+        displayName: Power BI
         href: power-bi-sql-query.md
     - name: Excel
       items:
