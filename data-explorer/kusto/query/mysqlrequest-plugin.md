@@ -1,0 +1,157 @@
+---
+title: sql_request plugin - Azure Data Explorer
+description: This article describes sql_request plugin in Azure Data Explorer.
+services: data-explorer
+author: orspod
+ms.author: orspodek
+ms.reviewer: alexans
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 02/24/2020
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
+---
+# mysql_request plugin (Preview)
+
+::: zone pivot="azuredataexplorer"
+
+The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results.
+
+> [!NOTE]
+> The `mysql_request` plugin is in Preview mode, and it is disabled by default.
+> To enable the plugin: run the `.enable plugin mysql_request` command. See documentation for [plugin management commands](../management/plugins.md)
+
+## Syntax
+
+  `evaluate` `mysql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters*] `)`
+
+## Arguments
+
+* *ConnectionString*: A `string` literal indicating the connection string that
+  points at the MySQL Server network endpoint. See [valid methods of authentication](#authentication) and how to specify the [network endpoint](#specify-the-network-endpoint).
+
+* *SqlQuery*: A `string` literal indicating the query that is to be executed against the SQL endpoint. Must return one or more rowsets, but only the first one is made available for the rest of the Kusto query.
+
+* *SqlParameters*: A constant value of type `dynamic` that holds key-value pairs
+  to pass as parameters along with the query. Optional.
+
+## Set callout policy
+
+The plugin makes callouts to the MySql DB. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `mysql` to the target *MySqlDbUri*.
+
+The following example shows how to define the callout policy for MySQL DB. It's recommended to restrict it to specific endpoints (`my_endpoint1`, `my_endpoint2`).
+
+```kusto
+[
+  {
+    "CalloutType": "mysql",
+    "CalloutUriRegex": "my_endpoint1\\.mysql\\.database\\.azure\\.com",
+    "CanCall": true
+  },
+  {
+    "CalloutType": "mysql",
+    "CalloutUriRegex": "my_endpoint2\\.mysql\\.database\\.azure\\.com",
+    "CanCall": true
+  }
+]
+```
+
+The following example shows an alter callout policy command for `mysql` *CalloutType*:
+
+```kusto
+.alter cluster policy callout @'[{"CalloutType": "mysql", "CalloutUriRegex": "\\.mysql\\.database\\.azure\\.com", "CanCall": true}]'
+```
+
+## Examples
+
+The following example sends a SQL query to an Azure MySQL DB database. It retrieves all records from `[dbo].[Table]`, and then processes the results on the Kusto side. 
+
+> [!NOTE]
+> This example should not be taken as a recommendation to filter or project
+data in this manner. SQL queries should be constructed to return the smallest data set possible, Since the Kusto optimizer doesn't currently attempt to optimize queries between Kusto and SQL.
+
+```kusto
+evaluate sql_request(
+    'Server=contoso.mysql.database.azure.com; Port = 3306;'
+    'Database=Fabrikam;'
+    h'UID=USERNAME;'
+    h'Pwd=PASSWORD;', 
+  'select * from [dbo].[Table]')
+| where Id > 0
+| project Name
+```
+
+The following example is identical to the previous one, except that SQL
+authentication is done by username/password. For confidentiality,
+we use obfuscated strings here.
+
+```kusto
+evaluate sql_request(
+   'Server=contoso.mysql.database.azure.com; Port = 3306;'
+    'Database=Fabrikam;'
+    h'UID=USERNAME;'
+    h'Pwd=PASSWORD;', 
+  'select * from [dbo].[Table]')
+| where Id > 0
+| project Name
+```
+
+The following example sends a SQL query to an Azure SQL DB database
+retrieving all records from `[dbo].[Table]`, while appending another `datetime` column,
+and then processes the results on the Kusto side.
+It specifies a SQL parameter (`@param0`) to be used in the SQL query.
+
+```kusto
+evaluate mysql_request(
+  'Server=contoso.mysql.database.azure.com; Port = 3306;'
+    'Database=Fabrikam;'
+    h'UID=USERNAME;'
+    h'Pwd=PASSWORD;', 
+  'select *, @param0 as dt from [dbo].[Table]',
+  dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)}))
+| where Id > 0
+| project Name
+```
+
+## Authentication
+
+The mysql_request plugin supports username/password authentication to the MySQL Server endpoint:
+
+### Username/Password authentication
+
+`User ID=...; Password=...;`
+
+  Username and password authentication support is provided when Azure AD-integrated authentication can't be done. Avoid this method, when possible, as secret information is sent through Kusto.
+    
+> [!WARNING]
+> Connection strings and queries that include confidential information or information that should be guarded should be obfuscated to be omitted from any Kusto tracing.
+> For more informations, see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals).
+
+## Encryption and server validation
+
+The following connection properties are forced when connecting to a MySQL Server network
+endpoint, for security reasons.
+
+* `SslMode` is set to `Required` unconditionally.
+
+As a result, the SQL Server must be configured with a valid SSL/TLS server certificate.
+
+## Specify the network endpoint
+
+Specifying the SQL network endpoint as part of the connection string is mandatory.
+The appropriate syntax is:
+
+`Server` `=` *FQDN* [`Port` `=` *Port*]
+
+Where:
+
+* *FQDN* is the fully qualified domain name of the endpoint.
+* *Port* is the TCP port of the endpoint. By default, `3306` is assumed.
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This capability isn't supported in Azure Monitor
+
+::: zone-end

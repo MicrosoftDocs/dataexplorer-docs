@@ -546,6 +546,8 @@
           href: ./kusto/query/diffpatterns-textplugin.md
         - name: infer_storage_schema plugin
           href: ./kusto/query/inferstorageschemaplugin.md
+        - name: mysql_request plugin
+          href: ./kusto/query/mysqlrequest-plugin.md
         - name: narrow plugin
           href: ./kusto/query/narrowplugin.md
         - name: pivot plugin
