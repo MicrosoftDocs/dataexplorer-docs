@@ -85,7 +85,7 @@ To add columns from JSON levels that are different than the main **JSON levels**
 
     :::image type="content" source="media/one-click-ingestion-existing-table/new-column.png" alt-text="Screenshot of options to add a new column - schema tab during one click ingestion process - Azure Data Explorer":::
 
-1. Enter the new **Column Name** you wish to add and select the **Column Type** from the dropdown menu.
+1. Enter a new **Column Name** and select the **Column Type** from the dropdown menu.
 1. Under **Source**, select **Create new**.
 
     :::image type="content" source="media/one-click-ingestion-existing-table/create-new-source.png" alt-text="Screenshot - create new source for adding nested JSON data in one click ingestion process - Azure Data Explorer":::
