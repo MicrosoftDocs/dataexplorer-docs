@@ -1,6 +1,6 @@
 ---
-title: sql_request plugin - Azure Data Explorer
-description: This article describes sql_request plugin in Azure Data Explorer.
+title: mysql_request plugin - Azure Data Explorer
+description: This article describes mysql_request plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
