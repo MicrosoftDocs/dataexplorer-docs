@@ -65,7 +65,7 @@ The stat visual only shows one element. If there are multiple columns and rows i
 
 :::image type="content" source="media/dashboard-customize-visuals/multistat.png" alt-text="multi stat visual type":::
 
-The multi stat visual shows multiple stat cards in a group using a single query result. This requires 2 columns, one for label and the other for value. Users can use visual formatting option to customize the the output layout for display in dashboard by selecting the number of rows and columns. In addition to being more convenient, this will reduce cluster load where customers are using similar queries to build multiple stats.
+The multi stat visual shows multiple stat cards in a group using a single query result. This requires 2 columns, one for the label and the other for the value. Users can use a visual formatting option to customize the the output layout for display by selecting the number of rows and columns. In addition to being more convenient, this formatting option will reduce cluster load where customers are using similar queries to build multiple stats.
 
 ### Pie chart
 
