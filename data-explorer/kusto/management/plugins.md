@@ -14,66 +14,76 @@ zone_pivot_groups: kql-flavors
 
 # Plugins
 
-Kusto offers command to
-[list the available plugins](#show-plugins),
-[disable a plugin](#disable-plugin), or
-[enable a plugin](#enable-plugin).
+::: zone pivot="azuredataexplorer"
+
+Use these control commands to [list the available plugins](#show-plugins), [disable a plugin](#disable-plugin), or [enable a plugin](#enable-plugin).
 
 ## Show plugins
 
-List all the plugins of this cluster.
+Lists all plugins of the cluster.
 
 **Syntax**
 
 `.show` `plugins`
 
-
 **Output**
 
-|PluginName |IsEnabled
-|---|---
-|autocluster |false 
-|busket |true
+Returns a table containing the following fields:
+* **PluginName**: Name of the plugin
+* **IsEnabled**: A boolean value that indicates if the plugin is enabled
 
-## Disable plugin
+**Example**
 
-Disable a plugin. 
-
-The permission required to run this command is `All Databases admin`.
-
-**Syntax**
-
-`.disable` `plugin` *PluginName*
-
-## Enable plugin
-
-Enable a plugin. 
-
-The permission required to run this command is `All Databases admin`.
-
-**Syntax**
-
-`.enable` `plugin` *PluginName*
-
-**Examples**
-
-Show plugins list
- 
 <!-- csl -->
 ```kusto
 .show plugins
 ``` 
 
-Enable plugin autocluster
- 
-<!-- csl -->
-```kusto
-.enable plugin autocluster
-``` 
+**Output**:
 
-Disable plugin autocluster
+| PluginName | IsEnabled |
+|---|---|
+| autocluster | false |
+| basket      | true  |
+
+## Disable plugin
+
+Disables a plugin.
+
+This command requires `All Databases admin` permission.
+
+**Syntax**
+
+`.disable` `plugin` *PluginName*
+
+**Example**
  
 <!-- csl -->
 ```kusto
 .disable plugin autocluster
 ``` 
+
+## Enable plugin
+
+Enables a plugin.
+
+This command requires `All Databases admin` permission.
+
+**Syntax**
+
+`.enable` `plugin` *PluginName*
+
+**Example**
+
+<!-- csl -->
+```kusto
+.enable plugin autocluster
+``` 
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This capability isn't supported in Azure Monitor.
+
+::: zone-end
