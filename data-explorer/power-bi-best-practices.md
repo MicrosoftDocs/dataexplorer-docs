@@ -173,7 +173,7 @@ You can use a query parameter in any query step that supports it. For example, f
 
 ### Use Value.NativeQuery for Azure Data Explorer features
 
-To use an Azure Data Explorer feature that's not supported in Power BI, use the [Value.NativeQuery()](https://docs.microsoft.com/powerquery-m/value-nativequery) method in M. This method inserts a Kusto Query Language fragment inside the generated query, and can also be used to give you more control over the executed query.
+To use an Azure Data Explorer feature that's not supported in Power BI, use the [Value.NativeQuery()](/powerquery-m/value-nativequery) method in M. This method inserts a Kusto Query Language fragment inside the generated query, and can also be used to give you more control over the executed query.
 
 The following example shows how to use the `percentiles()` function in Azure Data Explorer:
 
