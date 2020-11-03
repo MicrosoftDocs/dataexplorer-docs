@@ -99,7 +99,7 @@ Mapping transformations can be performed on a column of **Type** string or datet
 * DateTimeFromUnixMicroseconds
 * DateTimeFromUnixNanoseconds
 
-For more information, see [Data mappings](kusto/management/mappings.md#mapping-transformations).
+For more information, see [mapping transformations](kusto/management/mappings.md#mapping-transformations).
 
 ### Data ingestion
 
