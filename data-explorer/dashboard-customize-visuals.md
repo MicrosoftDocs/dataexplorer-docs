@@ -122,7 +122,7 @@ Use the following properties to customize visuals.
 |**Data**    |   Select **Y and X Columns** for your visual. Keep the selection as **Infer** if you want the platform to automatically select a column based on the query result    |Bar, Column, Scatter, and Anomaly charts|
 |**Legend**    |   Toggle to show or hide the display of legends on your visuals   |Bar, Column, Area, Line, Scatter, Anomaly, and Time charts |
 |**Y Axis**     |   Allows customization of Y-Axis properties: <ul><li>**Label**: Text for a custom label. </li><li>**Maximum Value**: Change the maximum value of the Y axis.  </li><li>**Minimum Value**: Change the minimum value of the Y axis.  </li></ul>      |Bar, Column, Area, Line, Scatter, Anomaly, and Time charts |
-|**X Axis**     |    Allows customization of X-axis properties: <ul><li>**Label**: Text for a custom label. </li>     | Bar, Column, Area, Line, Scatter, Anomaly, and Time charts|
+|**X Axis**     |    Allows customization of X-axis properties. <li>**Label**: Text for a custom label. </li>     | Bar, Column, Area, Line, Scatter, Anomaly, and Time charts|
 |**Render links**     |    Toggle to make links that start with "https://" in tables, clickable. <li>**Apply on columns**: Select columns containing URL. </li>     | Table|
 |**Layout**     |    Select the layout configuration for multi stat visual. <li>**Apply on columns**: Select columns containing URL. </li>     | Multi stat|
 
