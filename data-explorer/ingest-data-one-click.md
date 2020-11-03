@@ -83,11 +83,23 @@ In the **Editor** window, you can adjust data table columns as necessary.
 
 |Table type  |Available column adjustments  |
 |---------|---------|
-|New     | New column, Delete column, Sort ascending, Sort descending  |
-|Existing     | New column, Sort ascending, Sort descending  |
+|New     | New column, Delete column, Update column, Sort ascending, Sort descending  |
+|Existing     | New column, Update column, Sort ascending, Sort descending  |
 
 >[!NOTE]
 > At any time, you can open the [command editor](one-click-ingestion-new-table.md#command-editor) above the **Editor** pane. In the command editor, you can view and copy the automatic commands generated from your inputs.
+
+#### Mapping transformations
+
+Some data format mappings (Parquet, JSON, and Avro) support simple ingest-time transformations. To apply mapping transformations, create or update a column in the [Editor window](#editor-window).
+
+Mapping transformations can be performed on a column of **Type** string or datatime, with the **Source** having data type int or long. Supported mapping transformations are:
+* DateTimeFromUnixSeconds
+* DateTimeFromUnixMilliseconds
+* DateTimeFromUnixMicroseconds
+* DateTimeFromUnixNanoseconds
+
+For more information, see [Data mappings](kusto/management/mappings.md#mapping-transformations)
 
 ### Data ingestion
 
