@@ -61,7 +61,7 @@ The line chart visual is the most basic type of chart. The first column of the q
 
 The stat visual only shows one element. If there are multiple columns and rows in the output, stat shows the first element of the first column. Stat cards are useful to highlight KPIs on the Dashboard.
 
-### Multi Stat
+### Multi stat
 
 :::image type="content" source="media/dashboard-customize-visuals/multistat.png" alt-text="multi stat visual type":::
 
