@@ -123,7 +123,7 @@ Use the following properties to customize visuals.
 |**Legend**    |   Toggle to show or hide the display of legends on your visuals   |Bar, Column, Area, Line, Scatter, Anomaly, and Time charts |
 |**Y Axis**     |   Allows customization of Y-Axis properties: <ul><li>**Label**: Text for a custom label. </li><li>**Maximum Value**: Change the maximum value of the Y axis.  </li><li>**Minimum Value**: Change the minimum value of the Y axis.  </li></ul>      |Bar, Column, Area, Line, Scatter, Anomaly, and Time charts |
 |**X Axis**     |    Allows customization of X-axis properties: <ul><li>**Label**: Text for a custom label. </li>     | Bar, Column, Area, Line, Scatter, Anomaly, and Time charts|
-|**Render links**     |    Toggle to make the links starting with "https://" in tables, clickable : <ul><li>**Apply on columns**: Select columns containing URL. </li>     | Table|
+|**Render links**     |    Toggle to make links that start with "https://" in tables, clickable. <li>**Apply on columns**: Select columns containing URL. </li>     | Table|
 |**Layout**     |    Select the layout configuration for multi stat visual <ul><li>**Apply on columns**: Select columns containing URL. </li>     | Multi stat|
 
 ## Next steps
