@@ -46,7 +46,7 @@ In the left menu of the Web UI, right-click a *database* or *table* and select *
       :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file":::
 
  1. A sample of the data appears. Filter the data to ingest only files that begin or end with specific characters. 
-   
+
     >[!NOTE] 
     >When you adjust the filters, the preview automatically updates.
   
@@ -90,7 +90,7 @@ To add columns from JSON levels that are different than the main **JSON levels**
 
     :::image type="content" source="media/one-click-ingestion-existing-table/create-new-source.png" alt-text="Screenshot - create new source for adding nested JSON data in one click ingestion process - Azure Data Explorer":::
 
-1. Enter the new source for this column and click **OK**.
+1. Enter the new source for this column and click **OK**. This source can come from any JSON level.
 
     :::image type="content" source="media/one-click-ingestion-existing-table/name-new-source.png" alt-text="Screenshot - popout window to name the new data source for the added column - Azure Data Explorer one click ingestion":::
 
