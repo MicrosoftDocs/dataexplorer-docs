@@ -20,7 +20,7 @@ The following features make one-click ingestion so useful:
 * Ingest data from different kinds of sources: local file, blobs, and containers (up to 10,000 blobs)
 * Ingest data in a variety of [formats](#file-formats)
 * Ingest data into new or existing tables
-* Table mapping and schema is suggested to you and easy to change
+* Table mapping and schema are suggested to you and easy to change
 * Continue ingestion easily and quickly from a container with Event Grid
 
 One-click ingestion is particularly useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
@@ -43,7 +43,7 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
     :::image type="content" source="media/ingest-data-one-click/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
 
-* To access the wizard from the Azure portal, select **Query** from the left menu, right click on the **database** or **table**, and select **Ingest new data**.
+* To access the wizard from the Azure portal, select **Query** from the left menu, right-click on the **database** or **table**, and select **Ingest new data**.
 
     :::image type="content" source="media/ingest-data-one-click/access-from-portal.png" alt-text="Access the one click ingestion wizard from Azure portal":::
 
@@ -93,13 +93,13 @@ In the **Editor** window, you can adjust data table columns as necessary.
 
 Some data format mappings (Parquet, JSON, and Avro) support simple ingest-time transformations. To apply mapping transformations, create or update a column in the [Editor window](#editor-window).
 
-Mapping transformations can be performed on a column of **Type** string or datatime, with the **Source** having data type int or long. Supported mapping transformations are:
+Mapping transformations can be performed on a column of **Type** string or datetime, with the **Source** having data type int or long. Supported mapping transformations are:
 * DateTimeFromUnixSeconds
 * DateTimeFromUnixMilliseconds
 * DateTimeFromUnixMicroseconds
 * DateTimeFromUnixNanoseconds
 
-For more information, see [Data mappings](kusto/management/mappings.md#mapping-transformations)
+For more information, see [Data mappings](kusto/management/mappings.md#mapping-transformations).
 
 ### Data ingestion
 
