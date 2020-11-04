@@ -31,7 +31,7 @@ To enable the plugin, run the `.enable plugin mysql_request` command. See [plugi
 
 Name | Type | Description | Optional/Required|
 ---|---|---|---
-| *ConnectionString* | `string` literal | Indicates the connection string that points at the MySQL Server network endpoint. See [authentication](#authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). | Required |
+| *ConnectionString* | `string` literal | Indicates the connection string that points at the MySQL Server network endpoint. See [authentication](#username-and-password-authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). | Required |
 | *SqlQuery* | `string` literal | Indicates the query that is to be executed against the SQL endpoint. Must return one or more rowsets, but only the first one is made available for the rest of the Kusto query. | Required|
 | *SqlParameters* | Constant value of type `dynamic` | Holds key-value pairs to pass as parameters along with the query. | Optional |
 
