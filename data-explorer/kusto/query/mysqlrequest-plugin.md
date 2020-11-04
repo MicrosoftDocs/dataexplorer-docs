@@ -15,31 +15,31 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results.
+The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results. 
 
 > [!NOTE]
-> The `mysql_request` plugin is in Preview mode, and it is disabled by default.
-> To enable the plugin: run the `.enable plugin mysql_request` command. See documentation for [plugin management commands](../management/plugins.md)
+> The query may return more then one rowset, but only the first rowset is made available for the rest of the Kusto query.
+
+The `mysql_request` plugin is in preview mode, and is disabled by default.
+To enable the plugin, run the `.enable plugin mysql_request` command. See [plugin management commands](../management/plugins.md).
 
 ## Syntax
 
-  `evaluate` `mysql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters*] `)`
+`evaluate` `mysql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters*] `)`
 
 ## Arguments
 
-* *ConnectionString*: A `string` literal indicating the connection string that
-  points at the MySQL Server network endpoint. See [valid methods of authentication](#authentication) and how to specify the [network endpoint](#specify-the-network-endpoint).
+* *ConnectionString*: A `string` literal indicating the connection string that points at the MySQL Server network endpoint. See [valid methods of authentication](#authentication) and how to specify the [network endpoint](#specify-the-network-endpoint).
 
 * *SqlQuery*: A `string` literal indicating the query that is to be executed against the SQL endpoint. Must return one or more rowsets, but only the first one is made available for the rest of the Kusto query.
 
-* *SqlParameters*: A constant value of type `dynamic` that holds key-value pairs
-  to pass as parameters along with the query. Optional.
+* *SqlParameters*: A constant value of type `dynamic` that holds key-value pairs to pass as parameters along with the query. Optional.
 
 ## Set callout policy
 
 The plugin makes callouts to the MySql DB. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `mysql` to the target *MySqlDbUri*.
 
-The following example shows how to define the callout policy for MySQL DB. It's recommended to restrict it to specific endpoints (`my_endpoint1`, `my_endpoint2`).
+The following example shows how to define the callout policy for MySQL DB. It's recommended to restrict the callout policy to specific endpoints (`my_endpoint1`, `my_endpoint2`).
 
 ```kusto
 [
@@ -62,13 +62,48 @@ The following example shows an alter callout policy command for `mysql` *Callout
 .alter cluster policy callout @'[{"CalloutType": "mysql", "CalloutUriRegex": "\\.mysql\\.database\\.azure\\.com", "CanCall": true}]'
 ```
 
+## Authentication
+
+The mysql_request plugin supports username/password authentication to the MySQL Server endpoint.
+
+### Username/Password authentication
+
+MySQL supports user/password authentication only, and doesn't integrate with Azure Active Directory authentication.
+Username and password are provided as part of the connections string using the following parameters:
+
+`User ID=...; Password=...;`
+    
+> [!WARNING]
+> Connection strings and queries that include confidential information or information that should be guarded should be obfuscated to be omitted from any Kusto tracing.
+> For more information, see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals).
+
+## Encryption and server validation
+
+The following connection properties are forced when connecting to a MySQL Server network endpoint, for security reasons.
+
+* `SslMode` is set to `Required` unconditionally.
+
+As a result, the SQL Server must be configured with a valid SSL/TLS server certificate.
+
+## Specify the network endpoint
+
+Specify the SQL network endpoint as part of the connection string.
+
+**Syntax**:
+
+`Server` `=` *FQDN* [`Port` `=` *Port*]
+
+Where:
+
+* *FQDN* is the fully qualified domain name of the endpoint.
+* *Port* is the TCP port of the endpoint. By default, `3306` is assumed.
+
 ## Examples
 
-The following example sends a SQL query to an Azure MySQL DB database. It retrieves all records from `[dbo].[Table]`, and then processes the results on the Kusto side. 
+The following example sends a SQL query to an Azure MySQL DB database. It retrieves all records from `[dbo].[Table]`, and then processes the results.
 
 > [!NOTE]
-> This example should not be taken as a recommendation to filter or project
-data in this manner. SQL queries should be constructed to return the smallest data set possible, Since the Kusto optimizer doesn't currently attempt to optimize queries between Kusto and SQL.
+> This example should not be taken as a recommendation to filter or project data in this manner. SQL queries should be constructed to return the smallest data set possible, since the Kusto optimizer doesn't currently attempt to optimize queries between Kusto and SQL.
 
 ```kusto
 evaluate sql_request(
@@ -81,9 +116,7 @@ evaluate sql_request(
 | project Name
 ```
 
-The following example is identical to the previous one, except that SQL
-authentication is done by username/password. For confidentiality,
-we use obfuscated strings here.
+The following example is identical to the previous one, but SQL authentication is done by username/password. For confidentiality, we use obfuscated strings here.
 
 ```kusto
 evaluate sql_request(
@@ -112,42 +145,6 @@ evaluate mysql_request(
 | where Id > 0
 | project Name
 ```
-
-## Authentication
-
-The mysql_request plugin supports username/password authentication to the MySQL Server endpoint:
-
-### Username/Password authentication
-
-MySQL supports user/password authentication only, and no integration AAD authentication.
-Username and password are provided as part of the connections string using next parameters:
-
-`User ID=...; Password=...;`
-    
-> [!WARNING]
-> Connection strings and queries that include confidential information or information that should be guarded should be obfuscated to be omitted from any Kusto tracing.
-> For more informations, see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals).
-
-## Encryption and server validation
-
-The following connection properties are forced when connecting to a MySQL Server network
-endpoint, for security reasons.
-
-* `SslMode` is set to `Required` unconditionally.
-
-As a result, the SQL Server must be configured with a valid SSL/TLS server certificate.
-
-## Specify the network endpoint
-
-Specifying the SQL network endpoint as part of the connection string is mandatory.
-The appropriate syntax is:
-
-`Server` `=` *FQDN* [`Port` `=` *Port*]
-
-Where:
-
-* *FQDN* is the fully qualified domain name of the endpoint.
-* *Port* is the TCP port of the endpoint. By default, `3306` is assumed.
 
 ::: zone-end
 
