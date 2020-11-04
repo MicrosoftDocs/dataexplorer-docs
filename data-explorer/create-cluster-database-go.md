@@ -36,7 +36,7 @@ This section is optional. If you're interested to learn how the code works, you 
 
 ### Authentication
 
-The program needs to authenticate to Azure Data Explorer before executing any operations. The [Client credentials authentication type](https://docs.microsoft.com/azure/developer/go/azure-sdk-authorization#use-environment-based-authentication) is used by [auth.NewAuthorizerFromEnvironment](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromEnvironment) that looks for the following pre-defined environment variables: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_TENANT_ID`.
+The program needs to authenticate to Azure Data Explorer before executing any operations. The [Client credentials authentication type](/azure/developer/go/azure-sdk-authorization#use-environment-based-authentication) is used by [auth.NewAuthorizerFromEnvironment](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromEnvironment) that looks for the following pre-defined environment variables: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_TENANT_ID`.
 
 The following example shows how a [kusto.ClustersClient](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient) is created using this technique:
 
@@ -190,7 +190,7 @@ When you run the sample code as is, the following actions are performed:
     cd azure-data-explorer-go-cluster-management
     ```
 
-1. The program authenticates using client credentials. Use the Azure CLI [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command to create a service principal. Save the client ID, client secret, and tenant ID information for use in the next step.
+1. The program authenticates using client credentials. Use the Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command to create a service principal. Save the client ID, client secret, and tenant ID information for use in the next step.
 
 1. Export required environment variables including service principal information. Enter your subscription ID, resource group, and region where you want to create the cluster.
 
