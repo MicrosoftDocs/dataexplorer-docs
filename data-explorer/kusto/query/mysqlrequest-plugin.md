@@ -29,11 +29,11 @@ To enable the plugin, run the `.enable plugin mysql_request` command. See [plugi
 
 ## Arguments
 
-* *ConnectionString*: A `string` literal indicating the connection string that points at the MySQL Server network endpoint. See [authentication](#authentication) and how to specify the [network endpoint](#specify-the-network-endpoint).
-
-* *SqlQuery*: A `string` literal indicating the query that is to be executed against the SQL endpoint. Must return one or more rowsets, but only the first one is made available for the rest of the Kusto query.
-
-* *SqlParameters*: A constant value of type `dynamic` that holds key-value pairs to pass as parameters along with the query. Optional.
+Name | Type | Description | Optional/Required|
+---|---|---|---
+| *ConnectionString* | `string` literal | Indicates the connection string that points at the MySQL Server network endpoint. See [authentication](#authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). | Required |
+| *SqlQuery* | `string` literal | Indicates the query that is to be executed against the SQL endpoint. Must return one or more rowsets, but only the first one is made available for the rest of the Kusto query. | Required|
+| *SqlParameters* | Constant value of type `dynamic` | Holds key-value pairs to pass as parameters along with the query. | Optional |
 
 ## Set callout policy
 
@@ -62,11 +62,9 @@ The following example shows an alter callout policy command for `mysql` *Callout
 .alter cluster policy callout @'[{"CalloutType": "mysql", "CalloutUriRegex": "\\.mysql\\.database\\.azure\\.com", "CanCall": true}]'
 ```
 
-## Authentication
+## Username and password authentication
 
-The mysql_request plugin supports username/password authentication to the MySQL Server endpoint.
-
-### Username/Password authentication
+The mysql_request plugin supports username annd password authentication to the MySQL Server endpoint.
 
 MySQL supports user/password authentication only, and doesn't integrate with Azure Active Directory authentication.
 Username and password are provided as part of the connections string using the following parameters:
@@ -74,7 +72,7 @@ Username and password are provided as part of the connections string using the f
 `User ID=...; Password=...;`
     
 > [!WARNING]
-> Connection strings and queries that include confidential information or information that should be guarded should be obfuscated to be omitted from any Kusto tracing.
+> Confidential or guarded information should be obfuscated from connection strings and queries so that they are omitted from any Kusto tracing. 
 > For more information, see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Encryption and server validation
@@ -96,6 +94,8 @@ Where:
 
 ## Examples
 
+
+### SQL query to Azyre MySQL DB
 The following example sends a SQL query to an Azure MySQL DB database. It retrieves all records from `[dbo].[Table]`, and then processes the results.
 
 > [!NOTE]
@@ -112,6 +112,8 @@ evaluate sql_request(
 | project Name
 ```
 
+### SQL authentication with username and password
+
 The following example is identical to the previous one, but SQL authentication is done by username and password. For confidentiality, we use obfuscated strings here.
 
 ```kusto
@@ -124,6 +126,8 @@ evaluate sql_request(
 | where Id > 0
 | project Name
 ```
+
+### SQL query to Azure SQL DB with modifications
 
 The following example sends a SQL query to an Azure SQL DB database
 retrieving all records from `[dbo].[Table]`, while appending another `datetime` column,

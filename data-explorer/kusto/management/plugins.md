@@ -39,8 +39,6 @@ Returns a table containing the following fields:
 .show plugins
 ``` 
 
-**Output**:
-
 | PluginName | IsEnabled |
 |---|---|
 | autocluster | false |
