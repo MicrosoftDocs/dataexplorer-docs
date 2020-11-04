@@ -122,7 +122,7 @@ Following errors were detected during this operation.
 #### Enabling ClickOnce verbose logging
 
 1. If the application still doesn't start:
-    1. [Enable verbose ClickOnce logging](https://docs.microsoft.com/visualstudio/deployment/how-to-specify-verbose-log-files-for-clickonce-deployments) by creating a LogVerbosityLevel string value of 1 under:
+    1. [Enable verbose ClickOnce logging](/visualstudio/deployment/how-to-specify-verbose-log-files-for-clickonce-deployments) by creating a LogVerbosityLevel string value of 1 under:
 
         ```kusto
         HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Deployment
