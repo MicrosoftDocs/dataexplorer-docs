@@ -112,7 +112,7 @@ evaluate sql_request(
 | project Name
 ```
 
-The following example is identical to the previous one, but SQL authentication is done by username/password. For confidentiality, we use obfuscated strings here.
+The following example is identical to the previous one, but SQL authentication is done by username and password. For confidentiality, we use obfuscated strings here.
 
 ```kusto
 evaluate sql_request(
