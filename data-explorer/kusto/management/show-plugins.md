@@ -1,5 +1,5 @@
 ---
-title: Plugins commands - Azure Data Explorer
+title: Plugins command show plugins - Azure Data Explorer
 description: This article describes plugins management commands in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,8 +11,7 @@ ms.date: 11/02/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-
-# Plugins
+# .show plugins
 
 ::: zone pivot="azuredataexplorer"
 
@@ -44,39 +43,10 @@ Returns a table containing the following fields:
 | autocluster | false |
 | basket      | true  |
 
-## Disable plugin
+## Next steps
 
-Disables a plugin.
-
-This command requires `All Databases admin` permission.
-
-**Syntax**
-
-`.disable` `plugin` *PluginName*
-
-**Example**
- 
-<!-- csl -->
-```kusto
-.disable plugin autocluster
-``` 
-
-## Enable plugin
-
-Enables a plugin.
-
-This command requires `All Databases admin` permission.
-
-**Syntax**
-
-`.enable` `plugin` *PluginName*
-
-**Example**
-
-<!-- csl -->
-```kusto
-.enable plugin autocluster
-``` 
+* [.disable plugin](disable-plugin.md)
+* [.enable plugin](enable-plugin.md)
 
 ::: zone-end
 

@@ -1619,6 +1619,14 @@
           href: ./kusto/management/data-export/show-continuous-failures.md
     - name: Database cursors
       href: ./kusto/management/databasecursor.md
+    - name: Plugin commands
+      items:
+      - name: .show plugins
+        href: ./kusto/management/show-plugins.md
+      - name: .enable plugin
+       href: ./kusto/management/enable-plugin.md
+      - name: .disable plugin
+        href: ./kusto/management/enable-plugin.md
     - name: Query results cache
       href: ./kusto/management/query-results-cache-commands.md
       items:
