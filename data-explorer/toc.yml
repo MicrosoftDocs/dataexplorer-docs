@@ -1624,7 +1624,7 @@
       - name: .show plugins
         href: ./kusto/management/show-plugins.md
       - name: .enable plugin
-       href: ./kusto/management/enable-plugin.md
+        href: ./kusto/management/enable-plugin.md
       - name: .disable plugin
         href: ./kusto/management/enable-plugin.md
     - name: Query results cache

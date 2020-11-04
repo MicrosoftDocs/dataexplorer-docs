@@ -15,10 +15,6 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-Use these control commands to [list the available plugins](#show-plugins), [disable a plugin](#disable-plugin), or [enable a plugin](#enable-plugin).
-
-## Show plugins
-
 Lists all plugins of the cluster.
 
 **Syntax**

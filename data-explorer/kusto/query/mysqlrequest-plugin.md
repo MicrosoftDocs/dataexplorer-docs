@@ -21,7 +21,7 @@ The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint 
 > The query may return more then one rowset, but only the first rowset is made available for the rest of the Kusto query.
 
 The `mysql_request` plugin is in preview mode, and is disabled by default.
-To enable the plugin, run the `.enable plugin mysql_request` command. See [plugin management commands](../management/plugins.md).
+To enable the plugin, run the [`.enable plugin mysql_request` command](../management/enable-plugin.md). See [.show plugin management commands](../management/plugin-show.md).
 
 ## Syntax
 
