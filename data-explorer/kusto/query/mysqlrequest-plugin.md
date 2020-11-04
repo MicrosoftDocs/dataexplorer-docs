@@ -29,7 +29,7 @@ To enable the plugin, run the `.enable plugin mysql_request` command. See [plugi
 
 ## Arguments
 
-* *ConnectionString*: A `string` literal indicating the connection string that points at the MySQL Server network endpoint. See [valid methods of authentication](#authentication) and how to specify the [network endpoint](#specify-the-network-endpoint).
+* *ConnectionString*: A `string` literal indicating the connection string that points at the MySQL Server network endpoint. See [authentication](#authentication) and how to specify the [network endpoint](#specify-the-network-endpoint).
 
 * *SqlQuery*: A `string` literal indicating the query that is to be executed against the SQL endpoint. Must return one or more rowsets, but only the first one is made available for the rest of the Kusto query.
 
@@ -79,11 +79,7 @@ Username and password are provided as part of the connections string using the f
 
 ## Encryption and server validation
 
-The following connection properties are forced when connecting to a MySQL Server network endpoint, for security reasons.
-
-* `SslMode` is set to `Required` unconditionally.
-
-As a result, the SQL Server must be configured with a valid SSL/TLS server certificate.
+For security reasons, `SslMode` is unconditionally set to `Required` when connecting to a MySQL Server network endpoint. As a result, the SQL Server must be configured with a valid SSL/TLS server certificate.
 
 ## Specify the network endpoint
 
