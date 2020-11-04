@@ -214,6 +214,14 @@ dataformat=csv
 with (fileExtension = ".txt")
 ```
 
+To filter by partition columns in a query, specify original column name in query predicate:
+
+```kusto
+external_table("ExternalTable")
+ | where Timestamp between (datetime(2020-01-01) .. datetime(2020-02-01))
+ | where CustomerName in ("John.Doe", "Ivan.Ivanov")
+```
+
 **Sample Output**
 
 |TableName|TableType|Folder|DocString|Properties|ConnectionStrings|Partitions|PathFormat|
@@ -237,6 +245,14 @@ dataformat=parquet
 ( 
    h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
 )
+```
+
+To filter by virtual columns in a query, specify partition names in query predicate:
+
+```kusto
+external_table("ExternalTable")
+ | where Date between (datetime(2020-01-01) .. datetime(2020-02-01))
+ | where CustomerName in ("John.Doe", "Ivan.Ivanov")
 ```
 
 <a name="file-filtering"></a>
