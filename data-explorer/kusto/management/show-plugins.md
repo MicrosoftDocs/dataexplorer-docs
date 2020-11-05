@@ -8,12 +8,9 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/02/2020
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
 ---
 # .show plugins
 
-::: zone pivot="azuredataexplorer"
 
 Lists all plugins of the cluster.
 
@@ -43,11 +40,3 @@ Returns a table containing the following fields:
 
 * [.disable plugin](disable-plugin.md)
 * [.enable plugin](enable-plugin.md)
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor.
-
-::: zone-end
