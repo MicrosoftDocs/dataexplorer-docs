@@ -29,7 +29,7 @@ To enable the plugin, run the [`.enable plugin mysql_request` command](../manage
 
 ## Arguments
 
-Name | Type | Description | Optional/Required|
+Name | Type | Description | Required/Optional |
 ---|---|---|---
 | *ConnectionString* | `string` literal | Indicates the connection string that points at the MySQL Server network endpoint. See [authentication](#username-and-password-authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). | Required |
 | *SqlQuery* | `string` literal | Indicates the query that is to be executed against the SQL endpoint. Must return one or more rowsets, but only the first one is made available for the rest of the Kusto query. | Required|
@@ -64,9 +64,8 @@ The following example shows an alter callout policy command for `mysql` *Callout
 
 ## Username and password authentication
 
-The mysql_request plugin supports username and password authentication to the MySQL Server endpoint.
+The mysql_request plugin supports only username and password authentication to the MySQL Server endpoint and doesn't integrate with Azure Active Directory authentication..
 
-MySQL supports user/password authentication only, and doesn't integrate with Azure Active Directory authentication.
 Username and password are provided as part of the connections string using the following parameters:
 
 `User ID=...; Password=...;`
@@ -95,11 +94,11 @@ Where:
 ## Examples
 
 
-### SQL query to Azyre MySQL DB
+### SQL query to Azure MySQL DB
 The following example sends a SQL query to an Azure MySQL DB database. It retrieves all records from `[dbo].[Table]`, and then processes the results.
 
 > [!NOTE]
-> This example should not be taken as a recommendation to filter or project data in this manner. SQL queries should be constructed to return the smallest data set possible, since the Kusto optimizer doesn't currently attempt to optimize queries between Kusto and SQL.
+> This example shouldn't be taken as a recommendation to filter or project data in this manner. SQL queries should be constructed to return the smallest data set possible, since the Kusto optimizer doesn't currently attempt to optimize queries between Kusto and SQL.
 
 ```kusto
 evaluate sql_request(
