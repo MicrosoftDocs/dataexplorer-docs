@@ -15,13 +15,11 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results. 
+The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results. The query may return more then one rowset, but only the first rowset is made available for the rest of the Kusto query.
 
-> [!NOTE]
-> The query may return more then one rowset, but only the first rowset is made available for the rest of the Kusto query.
-
-The `mysql_request` plugin is in preview mode, and is disabled by default.
-To enable the plugin, run the [`.enable plugin mysql_request` command](../management/enable-plugin.md). See [.show plugin management commands](../management/show-plugins.md).
+> [!IMPORTANT]
+> The `mysql_request` plugin is in preview mode, and is disabled by default.
+> To enable the plugin, run the [`.enable plugin mysql_request` command](../management/enable-plugin.md). To see which plugins are enabled, use [.show plugin management commands](../management/show-plugins.md).
 
 ## Syntax
 
@@ -64,8 +62,7 @@ The following example shows an alter callout policy command for `mysql` *Callout
 
 ## Username and password authentication
 
-The mysql_request plugin supports only username and password authentication to the MySQL Server endpoint and doesn't integrate with Azure Active Directory authentication..
-
+The mysql_request plugin supports only username and password authentication to the MySQL Server endpoint and doesn't integrate with Azure Active Directory authentication.
 Username and password are provided as part of the connections string using the following parameters:
 
 `User ID=...; Password=...;`
@@ -95,6 +92,7 @@ Where:
 
 
 ### SQL query to Azure MySQL DB
+
 The following example sends a SQL query to an Azure MySQL DB database. It retrieves all records from `[dbo].[Table]`, and then processes the results.
 
 > [!NOTE]
