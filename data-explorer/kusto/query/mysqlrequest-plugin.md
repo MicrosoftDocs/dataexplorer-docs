@@ -64,7 +64,7 @@ The following example shows an alter callout policy command for `mysql` *Callout
 
 ## Username and password authentication
 
-The mysql_request plugin supports username annd password authentication to the MySQL Server endpoint.
+The mysql_request plugin supports username and password authentication to the MySQL Server endpoint.
 
 MySQL supports user/password authentication only, and doesn't integrate with Azure Active Directory authentication.
 Username and password are provided as part of the connections string using the following parameters:
@@ -114,7 +114,7 @@ evaluate sql_request(
 
 ### SQL authentication with username and password
 
-The following example is identical to the previous one, but SQL authentication is done by username and password. For confidentiality, we use obfuscated strings here.
+The following example is identical to the previous one, but SQL authentication is done by username and password. For confidentiality, we use obfuscated strings.
 
 ```kusto
 evaluate sql_request(
