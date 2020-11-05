@@ -345,8 +345,10 @@
       - name: Policies
         items:
         - name: C#
+          displayName: database policy, database policies
           href: database-table-policies-csharp.md
         - name: Python
+          displayName: database policy, database policies
           href: database-table-policies-python.md
     - name: Data
       items:
@@ -1363,14 +1365,15 @@
         href: ./kusto/tools/kusto-cli.md
   - name: Management
     items:
-    - name: Management (control commands) overview
+    - name: Control commands overview
+      displayName: Management
       href: ./kusto/management/index.md
     - name: Schema
       items:
       - name: Best practices for schema design
         displayName: management
         href: ./kusto/management/management-best-practices.md
-      - name: Databases management
+      - name: Databases
         href: ./kusto/management/databases.md
         items:
         - name: .show databases
