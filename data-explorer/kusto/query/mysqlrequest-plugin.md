@@ -62,7 +62,8 @@ The following example shows an alter callout policy command for `mysql` *Callout
 
 ## Username and password authentication
 
-The mysql_request plugin supports only username and password authentication to the MySQL Server endpoint and doesn't integrate with Azure Active Directory authentication.
+The mysql_request plugin supports only username and password authentication to the MySQL Server endpoint and doesn't integrate with Azure Active Directory authentication. 
+
 Username and password are provided as part of the connections string using the following parameters:
 
 `User ID=...; Password=...;`
