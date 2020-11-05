@@ -1780,7 +1780,7 @@
           href: ./kusto/api/netfx/kusto-ingest-client-permissions.md
         - name: Client reference
           href: ./kusto/api/netfx/kusto-ingest-client-reference.md
-        - name: Exceptions
+        - name: Errors and exceptions
           href: ./kusto/api/netfx/kusto-ingest-client-errors.md
         - name: Operation status
           href: ./kusto/api/netfx/kusto-ingest-client-status.md
