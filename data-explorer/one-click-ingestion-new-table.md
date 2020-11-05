@@ -24,11 +24,11 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 ## Ingest new data
 
-1. In the left menu of the Web UI, right-click a *database* and select **Ingest new data (Preview)**.
+1. In the left menu of the Web UI, right-click a *database* and select **Ingest new data**.
 
     :::image type="content" source="media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png" alt-text="Ingest new data":::
 
-1. In the **Ingest new data (Preview)** window, the **Source** tab is selected. 
+1. In the **Ingest new data** window, the **Source** tab is selected. 
 
 1. Select **Create new table** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
