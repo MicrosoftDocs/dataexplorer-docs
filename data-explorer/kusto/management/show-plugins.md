@@ -14,17 +14,17 @@ ms.date: 11/02/2020
 
 Lists all plugins of the cluster.
 
-**Syntax**
+## Syntax
 
 `.show` `plugins`
 
-**Output**
+## Output
 
 Returns a table containing the following fields:
 * **PluginName**: Name of the plugin
 * **IsEnabled**: A boolean value that indicates if the plugin is enabled
 
-**Example**
+## Example
 
 <!-- csl -->
 ```kusto

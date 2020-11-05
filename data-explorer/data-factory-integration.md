@@ -31,6 +31,7 @@ Azure Data Explorer is supported by Azure IR (Integration Runtime), used when da
 ### Lookup activity
  
 The Lookup activity is used for executing queries on Azure Data Explorer. The result of the query will be returned as the output of the Lookup activity, and can be used in the next activity in the pipeline as described in the [ADF Lookup documentation](/azure/data-factory/control-flow-lookup-activity#use-the-lookup-activity-result-in-a-subsequent-activity).  
+
 In addition to the response size limit of 5,000 rows and 2 MB, the activity also has a query timeout limit of 1 hour.
 
 ### Command activity
