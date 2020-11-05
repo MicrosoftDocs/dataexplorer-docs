@@ -27,7 +27,7 @@ Use these libraries for Azure APIs and to programmatically invoke Azure Data Exp
 |    Go        |    [GitHub](https://github.com/Azure/azure-kusto-go)        |    [GitHub](https://github.com/Azure/azure-kusto-go/tree/master/kusto/ingest)        |        [GitHub](https://github.com/Azure/azure-sdk-for-go/tree/master/services/kusto/mgmt)        |
 |    Ruby        |             |             |    [Gems]( https://rubygems.org/gems/azure_mgmt_kusto)         |
 |    PowerShell        |    [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)        |    [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)        |    [Package](https://www.powershellgallery.com/packages/Az.Kusto/)         |
-|    Azure   CLI        |             |             |    [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)         |
+|    Azure   CLI        |             |             |    [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)         |
 |    REST   API        |    [REST](rest/index.md)        |    [REST](rest/index.md)        |     [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/azure-kusto/resource-manager/Microsoft.Kusto)         |
 |    TypeScript        |             |             |        [Npm](https://www.npmjs.com/package/@azure/arm-kusto/v/2.0.0)        |
 |      |      |      |      |
