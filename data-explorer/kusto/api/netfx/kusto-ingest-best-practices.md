@@ -48,9 +48,9 @@ Multiple factors can affect ingestion throughput. When planning your ingestion p
 | Source data location     | Avoid cross-region reads to speed up the ingestion.                                                       |
 | Load on the cluster      | When a cluster experiences a high query load, ingestions will take longer to complete, reducing throughput.|
 
-## Optimizing for COGS (cost of goods sold)
+## Optimizing for COGS
 
-Using Kusto client libraries to ingest data into Azure Data Explorer remains the cheapest and the most robust option. We urge our customers to review their ingestion methods and to take advantage of the Azure Storage pricing that will make blob transactions significantly cost effective.
+Using Kusto client libraries to ingest data into Azure Data Explorer remains the cheapest and the most robust option. We urge our customers to review their ingestion methods to optimize for COGS (costs of goods sold) and to take advantage of the Azure Storage pricing that will make blob transactions significantly cost effective.
 
 * **Limit the number of ingested data chunks**.
     For better control of your Azure Data Explorer ingestion costs and to reduce your monthly bill, limit the number of ingested data chunks (files/blobs/streams).
@@ -62,5 +62,5 @@ Using Kusto client libraries to ingest data into Azure Data Explorer remains the
 * **Avoid** sending data for ingestion with the `FlushImmediately` flag set to `true`. Also, avoid sending small chunks with `ingest-by`/`drop-by` tags set. If you use these methods, they'll:
      * prevent the service from properly aggregating the data during ingestion
      * cause unnecessary storage transactions following the ingestion
-     * affect COGS (cost of goods sold)
+     * affect COGS 
      * likely result in degraded ingestion or query performance of your cluster, if used excessively
