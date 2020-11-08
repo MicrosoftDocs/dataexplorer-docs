@@ -27,7 +27,7 @@ Use [KustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoq
 
 Ingestion works best if done in large chunks. 
 * It consumes the least resources
-* It produces the most COGS-optimized data shards, and results in the best data transactions
+* It produces the most COGS (cost of goods sold)-optimized data shards, and results in the best data transactions
 
 We recommend customers who ingest data with the Kusto.Ingest library or directly into the engine, to send data in batches of **100 MB** to **1 GB (uncompressed)**
 * The upper limit is important when working directly with the engine, to help reduce the amount of memory used by the ingestion process 
@@ -48,7 +48,7 @@ Multiple factors can affect ingestion throughput. When planning your ingestion p
 | Source data location     | Avoid cross-region reads to speed up the ingestion.                                                       |
 | Load on the cluster      | When a cluster experiences a high query load, ingestions will take longer to complete, reducing throughput.|
 
-## Optimizing for COGS
+## Optimizing for COGS (cost of goods sold)
 
 Using Kusto client libraries to ingest data into Azure Data Explorer remains the cheapest and the most robust option. We urge our customers to review their ingestion methods and to take advantage of the Azure Storage pricing that will make blob transactions significantly cost effective.
 
@@ -62,5 +62,5 @@ Using Kusto client libraries to ingest data into Azure Data Explorer remains the
 * **Avoid** sending data for ingestion with the `FlushImmediately` flag set to `true`. Also, avoid sending small chunks with `ingest-by`/`drop-by` tags set. If you use these methods, they'll:
      * prevent the service from properly aggregating the data during ingestion
      * cause unnecessary storage transactions following the ingestion
-     * affect COGS
+     * affect COGS (cost of goods sold)
      * likely result in degraded ingestion or query performance of your cluster, if used excessively

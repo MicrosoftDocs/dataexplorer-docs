@@ -106,7 +106,7 @@ The following example depicts this method:
     > [!NOTE]
     > Update policy extends the duration of ingestion since the data is filtered during ingestion and then ingested twice (to the `DeviceEventsAll` table and to the `DeviceEventsUnique` table).
 
-1. (Optional) Set a lower data retention on the `DeviceEventsAll` table to avoid storing copies of the data. Choose the number of days depending on the data volume and the length of time you want to retain data for troubleshooting. You can set it to `0d` days retention to save COGS and improve performance, since the data isn't uploaded to storage.
+1. (Optional) Set a lower data retention on the `DeviceEventsAll` table to avoid storing copies of the data. Choose the number of days depending on the data volume and the length of time you want to retain data for troubleshooting. You can set it to `0d` days retention to save COGS (cost of goods sold) and improve performance, since the data isn't uploaded to storage.
 
     ```kusto
     .alter-merge table DeviceEventsAll policy retention softdelete = 1d
