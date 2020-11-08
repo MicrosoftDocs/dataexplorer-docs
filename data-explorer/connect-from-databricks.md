@@ -13,7 +13,7 @@ ms.date: 05/21/2020
 
 # Connect to Azure Data Explorer from Azure Databricks
 
-[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) is an Apache Spark-based analytics platform that's optimized for the Microsoft Azure platform. This article shows you how to use Azure Databricks to access data from Azure Data Explorer. There are several ways to authenticate with Azure Data Explorer, including a device login and an Azure Active Directory (Azure AD) app.
+[Azure Databricks](/azure/azure-databricks/what-is-azure-databricks) is an Apache Spark-based analytics platform that's optimized for the Microsoft Azure platform. This article shows you how to use Azure Databricks to access data from Azure Data Explorer. There are several ways to authenticate with Azure Data Explorer, including a device login and an Azure Active Directory (Azure AD) app.
  
 ## Prerequisites
 
@@ -35,7 +35,7 @@ To install the [spark-kusto-connector](https://mvnrepository.com/artifact/com.mi
 
 ## Connect to Azure Data Explorer by using an Azure AD app
 
-1. Create Azure AD app by [provisioning an Azure AD application](kusto/management/access-control/how-to-provision-aad-app.md).
+1. Create Azure AD app by [provisioning an Azure AD application](./provision-azure-ad-app.md).
 1. Grant access to your Azure AD app in your Azure Data Explorer database as follows:
 
     ```kusto

@@ -32,7 +32,7 @@ Dimension tables:
 * Hold reference data, such as lookup tables from an entity identifier to its properties
 * Hold snapshot-like data in tables whose entire contents change in a single transaction
 
-Dimension tables aren't regularly ingested with new data. Instead, the entire data content is updated at once, using operations such as [.set-or-replace](../management/data-ingestion/ingest-from-query.md), [.move extents](../management/extents-commands.md#move-extents), or [.rename tables](../management/rename-table-command.md).
+Dimension tables aren't regularly ingested with new data. Instead, the entire data content is updated at once, using operations such as [.set-or-replace](../management/data-ingestion/ingest-from-query.md), [.move extents](../management/move-extents.md), or [.rename tables](../management/rename-table-command.md).
 
 Sometimes, dimension tables might be derived from fact tables. This process can be done via an [update policy](../management/updatepolicy.md) on the fact table, with a query on the table that takes the last record for each entity.
 
