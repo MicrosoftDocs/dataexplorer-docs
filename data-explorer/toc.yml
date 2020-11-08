@@ -719,6 +719,8 @@
       href: ./kusto/query/arrayindexoffunction.md
     - name: array_length()
       href: ./kusto/query/arraylengthfunction.md
+    - name: array_reverse()
+      href: ./kusto/query/array-reverse-function.md
     - name: array_rotate_left()
       href: ./kusto/query/array_rotate_leftfunction.md
     - name: array_rotate_right()
