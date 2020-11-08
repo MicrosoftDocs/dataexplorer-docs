@@ -77,8 +77,8 @@ All [Azure Monitor diagnostic logs share a common top-level schema](/azure/azure
 ### Ingestion logs schema
 
 > [!NOTE] 
-> For queued ingestion clients using ingestion SDKs, data connections and various connectors, only queued ingestion to the ingestion endpoint at `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net` can emit ingestion logs. 
-> This limitation does not apply to streaming ingestion, direct ingestion to the engine, ingestion from query, or set-or-append commands.
+> For ingestion using SDKs, data connections, and connectors, only queued ingestion to the ingestion endpoint at `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net` can emit ingestion logs. 
+> This limitation doesn't apply to streaming ingestion, direct ingestion to the engine, ingestion from query, or set-or-append commands.
 
 Log JSON strings include elements listed in the following table:
 
