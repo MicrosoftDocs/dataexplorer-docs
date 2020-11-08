@@ -28,6 +28,11 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
 # [Ingestion](#tab/ingestion)
 
+> [!NOTE]
+> Ingestion logs are supported for queued ingestion to the ingestion endpoint using SDKs, data connections, and connectors.
+>
+> Ingestion logs aren't supported for streaming ingestion, direct ingestion to the engine, ingestion from query, or set-or-append commands.
+
 * **Successful ingestion operations**: These logs have information about successfully completed ingestion operations.
 * **Failed ingestion operations**: These logs have detailed information about failed ingestion operations including error details. 
 
@@ -75,10 +80,6 @@ All [Azure Monitor diagnostic logs share a common top-level schema](/azure/azure
 # [Ingestion](#tab/ingestion)
 
 ### Ingestion logs schema
-
-> [!NOTE] 
-> For ingestion using SDKs, data connections, and connectors, only queued ingestion to the ingestion endpoint at `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net` can emit ingestion logs. 
-> This limitation doesn't apply to streaming ingestion, direct ingestion to the engine, ingestion from query, or set-or-append commands.
 
 Log JSON strings include elements listed in the following table:
 
