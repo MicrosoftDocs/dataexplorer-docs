@@ -19,7 +19,7 @@ Reverses the order of the elements in a dynamic array.
 
 ## Arguments
 
-* *array*: Input array to reverse.
+*array*: Input array to reverse.
 
 ## Returns
 
