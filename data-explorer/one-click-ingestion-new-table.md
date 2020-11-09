@@ -81,7 +81,7 @@ You'll use this string instead of the SAS URL in [select an ingestion type](#sel
 
     :::image type="content" source="media/one-click-ingestion-new-table/blob-containers.png" alt-text="Screenshot access blob containers in Azure Storage account":::
 
-1. Browse to the selected folder, and select **Copy URL**. Add `;` to the end of this string.
+1. Browse to the selected folder, and select **Copy URL**. Paste this value into a temporary file and add `;` to the end of this string.
 
     :::image type="content" source="media/one-click-ingestion-new-table/copy-url.png" alt-text="Screenshot of copy URL in folder in blob container - Azure Storage account":::
 
@@ -89,7 +89,7 @@ You'll use this string instead of the SAS URL in [select an ingestion type](#sel
 
     :::image type="content" source="media/one-click-ingestion-new-table/copy-key-1.png" alt-text="screenshot of Access keys storage account copy Key string":::
 
-1. Under **Key 1**, copy the **Key** string. Paste this value at the end of your string from step 2. 
+1. Under **key 1**, copy the **Key** string. Paste this value at the end of your string from step 2. 
 
 ## Edit the schema
 
