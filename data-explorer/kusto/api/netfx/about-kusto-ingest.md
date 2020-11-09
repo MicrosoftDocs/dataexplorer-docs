@@ -65,7 +65,7 @@ The following diagram outlines the Direct ingestion client interaction with Kust
 
 ## Ingestion best practices
 
-[Ingestion best practices](kusto-ingest-best-practices.md) provides COGs and throughput POV on ingestion.
+[Ingestion best practices](kusto-ingest-best-practices.md) provides COGS (cost of goods sold) and throughput POV on ingestion.
 
 * **Thread safety -**
 Kusto Ingest Client implementations are thread-safe and intended to be reused. There's no need to create an instance of `KustoQueuedIngestClient` class for each or several ingest operations. A single instance of `KustoQueuedIngestClient` is required per target Kusto cluster per user process. Running multiple instances is counter-productive and may cause DoS on the Data Management cluster.
