@@ -43,7 +43,7 @@ The process of selectively purging data from Azure Data Explorer happens in the 
 1. Phase 3: (Hard Delete)
    Work back all storage artifacts that may have the "poison" data, and delete them from storage. This phase is done at least five days after the completion of the previous phase, but no longer than 30 days after the initial command. These timelines are set to follow data privacy requirements.
 
-Issuing a `.purge` command triggers this process, which takes a few days to complete. If the density of records for which the predicate applies is sufficiently large, the process will effectively reingest all the data in the table. This reingestion has a significant impact on performance and COGS.
+Issuing a `.purge` command triggers this process, which takes a few days to complete. If the density of records for which the predicate applies is sufficiently large, the process will effectively reingest all the data in the table. This reingestion has a significant impact on performance and COGS (cost of goods sold).
 
 ## Purge limitations and considerations
 
