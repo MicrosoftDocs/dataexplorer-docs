@@ -16,7 +16,7 @@ ms.date: 01/28/2020
 
 The Azure Data Explorer proxy cluster (ADX Proxy) is an entity that enables you to perform cross product queries between Azure Data Explorer, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview), and [Log Analytics (LA)](/azure/azure-monitor/platform/data-platform-logs) in the [Azure Monitor](/azure/azure-monitor/) service. You can map Azure Monitor Log Analytics workspaces or Application Insights apps as proxy clusters. You can then query the proxy cluster using Azure Data Explorer tools and refer to it in a cross cluster query. The article shows how to connect to a proxy cluster, add a proxy cluster to Azure Data Explorer Web UI, and run queries against your AI apps or LA workspaces from Azure Data Explorer.
 
-The Azure Data Explorer proxy flow:
+The Azure Data Explorer proxy flow: 
 
 ![ADX proxy flow](media/adx-proxy/adx-proxy-workflow.png)
 
