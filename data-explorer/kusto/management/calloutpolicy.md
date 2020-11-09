@@ -16,7 +16,7 @@ Cluster admins can manage the authorized domains for external calls, by updating
 
 Callout policies are being managed at cluster-level and are classified into the following types.
 * `kusto` - Controls Azure Data Explorer cross-cluster queries.
-* `sql` - Controls the [SQL plugin](../query/sqlrequestplugin.md).
+* `sql` - Controls the [SQL plugin](../query/sqlrequestplugin.md) and the [mysql_request plugin](../query/mysqlrequest-plugin.md).
 * `cosmosdb` - Controls the [CosmosDB plugin](../query/cosmosdb-plugin.md).
 * `sandbox_artifacts` - Controls sandboxed plugins ([python](../query/pythonplugin.md) | [R](../query/rplugin.md)).
 * `external_data` - Controls access to external data through [external tables](../query/schema-entities/externaltables.md) or [externaldata](../query/externaldata-operator.md) operator.
