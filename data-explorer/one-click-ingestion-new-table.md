@@ -55,6 +55,18 @@ For example, filter for all files that begin with the word *.csv* extension.
 
 :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
 
+### Storage subscription error
+
+If you get the following error message when ingesting from a storage account:
+
+:::image type="content" source="media/ingest-data-one-click/data-connection-troubleshoot.png" alt-text="Screenshot in Data connection tab: Couldn't find the storage under your selected subscriptions. Please add the storage account subscription to your selected subscriptions.":::
+
+1. Select the :::image type="icon" source="media/ingest-data-one-click/directory-subscription-icon.png" border="false":::  icon from the top left menu tray. A **Directory + subscription** pane opens.
+
+1. In the subscription dropdown, add your storage account's subscription to the selected list. 
+
+    :::image type="content" source="media/ingest-data-one-click/subscription-dropdown.png" alt-text="Screenshot of Directory + subscription pane with subscription dropdown highlighted by a red box.":::
+
 ### Ingest from folder in a container
 
 To ingest from a specific folder within a container, generate a string of the following format:
@@ -63,12 +75,9 @@ To ingest from a specific folder within a container, generate a string of the fo
 
 You'll use this string instead of the SAS URL in [select an ingestion type](#select-an-ingestion-type).
 
-1. Navigate to the storage account, browse to the selected folder, and select **Copy URL**. 
-1. Paste this value to a temporary file and add `;`.
-
+1. Navigate to the storage account, browse to the selected folder, and select **Copy URL**. Add `;` to the end of this string.
 1. On the left menu under **Settings**, select **Access keys**.
-1. Under **Key 1**, copy the **Key** string.
-1. Paste this value at the end of your string.
+1. Under **Key 1**, copy the **Key** string. Paste this value at the end of your string.
 
 ## Edit the schema
 
