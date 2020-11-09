@@ -116,15 +116,11 @@ Once you have completed schema mapping and column manipulations, the ingestion w
    
 After ingestion, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#explore-quick-queries-and-tools)** for initial exploration of your data.
 
-## Troubleshooting
-
-### Storage account
-
 If you get the following error message when ingesting from a storage account:
 
 :::image type="content" source="media/ingest-data-one-click/data-connection-troubleshoot.png" alt-text="Screenshot in Data connection tab: Couldn't find the storage under your selected subscriptions. Please add the storage account subscription to your selected subscriptions.":::
 
-1. Select the :::image type="icon" source="media/ingest-data-one-click/directory-subscription-icon.png" border="false"::: **Directory + Subscription** icon from the top left menu tray. A **Directory + subscription** pane opens.
+1. Select the :::image type="icon" source="media/ingest-data-one-click/directory-subscription-icon.png" border="false":::  icon from the top left menu tray. A **Directory + subscription** pane opens.
 
 1. In the subscription dropdown, add your storage account's subscription to the selected list. 
 

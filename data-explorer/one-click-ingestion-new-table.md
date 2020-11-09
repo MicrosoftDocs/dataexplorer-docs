@@ -61,13 +61,13 @@ To ingest from a specific folder within a container, generate a string of the fo
 
 *container_path*/*folder_path*;*access_key_1*
 
-You will use this string in place of the SAS URL [above](#select-an-ingestion-type).
+You'll use this string instead of the SAS URL in [select an ingestion type](#select-an-ingestion-type).
 
 1. Navigate to the storage account, browse to the selected folder, and select **Copy URL**. 
 1. Paste this value to a temporary file and add `;`.
 
 1. On the left menu under **Settings**, select **Access keys**.
-1. Under **Key 1**, copy they **Key** string.
+1. Under **Key 1**, copy the **Key** string.
 1. Paste this value at the end of your string.
 
 ## Edit the schema
