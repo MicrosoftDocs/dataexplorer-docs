@@ -45,7 +45,7 @@ maximum delay time, **1000** items, total size of **1G** for batching.
 
 > [!WARNING]
 > The impact of setting this policy to a very small value is
-> an increase in the COGS of the cluster and reduced performance. Additionally,
+> an increase in the COGS (cost of goods sold) of the cluster and reduced performance. Additionally,
 > in the limit, reducing this value might actually result in **increased** effective
 > end-to-end ingestion latency, due to the overhead of managing multiple ingestion
 > processes in parallel.
