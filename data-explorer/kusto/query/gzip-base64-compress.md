@@ -34,7 +34,8 @@ print res = gzip_compress_to_base64_string("1234567890qwertyuiop")
 ```
 
 **Output:** 
-> |"eAEBFADr/zEyMzQ1Njc4OTBxd2VydHl1aW9wOAkGd0xvZwAzAG5JZA=="|
+
+|eAEBFADr/zEyMzQ1Njc4OTBxd2VydHl1aW9wOAkGd0xvZwAzAG5JZA==|
 
 ## Next steps
 

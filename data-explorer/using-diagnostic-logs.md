@@ -28,6 +28,11 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
 # [Ingestion](#tab/ingestion)
 
+> [!NOTE]
+> Ingestion logs are supported for queued ingestion to the ingestion endpoint using SDKs, data connections, and connectors.
+>
+> Ingestion logs aren't supported for streaming ingestion, direct ingestion to the engine, ingestion from query, or set-or-append commands.
+
 * **Successful ingestion operations**: These logs have information about successfully completed ingestion operations.
 * **Failed ingestion operations**: These logs have detailed information about failed ingestion operations including error details. 
 

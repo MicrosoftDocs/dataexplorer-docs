@@ -67,7 +67,7 @@ DeviceEventsAll
 
 ### Solution #3: Filter duplicates during the ingestion process
 
-Another solution is to filter duplicates during the ingestion process. The system ignores the duplicate data during ingestion into Kusto tables. Data is ingested into a staging table and copied into another table after removing duplicate rows. The advantage of this solution is that query performance improves dramatically as compared to the previous solution. The disadvantages include increased ingestion time and additional data storage costs. Additionaly, this solution works only if duplications aren't ingested concurrently. If there are multiple concurrent ingestions containing duplicate records, all may be ingested since the deduplication process will not find any existing matching records in the table.    
+Another solution is to filter duplicates during the ingestion process. The system ignores the duplicate data during ingestion into Kusto tables. Data is ingested into a staging table and copied into another table after removing duplicate rows. The advantage of this solution is that query performance improves dramatically as compared to the previous solution. The disadvantages include increased ingestion time and additional data storage costs. Additionally, this solution works only if duplications aren't ingested concurrently. If there are multiple concurrent ingestions containing duplicate records, all may be ingested since the deduplication process will not find any existing matching records in the table.    
 
 The following example depicts this method:
 
@@ -106,7 +106,7 @@ The following example depicts this method:
     > [!NOTE]
     > Update policy extends the duration of ingestion since the data is filtered during ingestion and then ingested twice (to the `DeviceEventsAll` table and to the `DeviceEventsUnique` table).
 
-1. (Optional) Set a lower data retention on the `DeviceEventsAll` table to avoid storing copies of the data. Choose the number of days depending on the data volume and the length of time you want to retain data for troubleshooting. You can set it to `0d` days retention to save COGS and improve performance, since the data isn't uploaded to storage.
+1. (Optional) Set a lower data retention on the `DeviceEventsAll` table to avoid storing copies of the data. Choose the number of days depending on the data volume and the length of time you want to retain data for troubleshooting. You can set it to `0d` days retention to save COGS (cost of goods sold) and improve performance, since the data isn't uploaded to storage.
 
     ```kusto
     .alter-merge table DeviceEventsAll policy retention softdelete = 1d
