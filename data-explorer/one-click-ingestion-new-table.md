@@ -42,7 +42,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 Under **Ingestion type**, do the following steps:
    
   1. Select **from container** 
-  1. In the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size.
+  1. In the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container).
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container":::
 
@@ -54,7 +54,22 @@ A sample of the data appears. If you want to, filter the data to ingest only fil
 For example, filter for all files that begin with the word *.csv* extension.
 
 :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
-  
+
+### Ingest from folder in a container
+
+To ingest from a specific folder within a container, generate a string of the following format:
+
+*container_path*/*folder_path*;*access_key_1*
+
+You will use this string in place of the SAS URL [above](#select-an-ingestion-type).
+
+1. Navigate to the storage account, browse to the selected folder, and select **Copy URL**. 
+1. Paste this value to a temporary file and add `;`.
+
+1. On the left menu under **Settings**, select **Access keys**.
+1. Under **Key 1**, copy they **Key** string.
+1. Paste this value at the end of your string.
+
 ## Edit the schema
 
 Select **Edit schema** to view and edit your table column configuration. The system will select one of the blobs at random and the schema will be generated based on that blob. By looking at the name of the source, the service automatically identifies if it is compressed or not.
