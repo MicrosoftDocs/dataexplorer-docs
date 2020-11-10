@@ -26,19 +26,20 @@ ms.date: 11/10/2020
 
 ## Ingest new data
 
+1. In the left menu of the [Web UI](https://dataexplorer.azure.com/), right-click a *database* or *table* and select **Ingest new data**. 
 
 :::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
 
-1. In the left menu of the [Web UI](https://dataexplorer.azure.com/), right-click a *database* or *table* and select **Ingest new data**. The **Ingest new data** window opens with the **Source** tab selected.
+The **Ingest new data** window opens with the **Source** tab selected.
 
     :::image type="content" source="media/one-click-event-hub/reference-to-event-hub.png" alt-text="Screenshot of source tab in ingest new data to Azure Data Explorer with source = reference to Event Hub":::
 
 1. The **Database** field is auto-populated with your database. You may select a different database from the drop-down menu.
 
-1. Under **Table**, select **Create new** and enter a name for the new table, or use an existing table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
+1. Under **Table**, select **Create new** and enter a name for the new table, or use an existing table. 
 
     > [!NOTE]
-    > Table names must be between 1 and 1024 characters.
+    > Table names must be between 1 and 1024 characters. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
 1. Under **Source type**, select **Reference to Event Hub**.
 
