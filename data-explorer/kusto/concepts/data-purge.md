@@ -43,7 +43,7 @@ The process of selectively purging data from Azure Data Explorer happens in the 
 1. Phase 3: (Hard Delete)
    Work back all storage artifacts that may have the "poison" data, and delete them from storage. This phase is done at least five days after the completion of the previous phase, but no longer than 30 days after the initial command. These timelines are set to follow data privacy requirements.
 
-Issuing a `.purge` command triggers this process, which takes a few days to complete. If the density of records for which the predicate applies is sufficiently large, the process will effectively reingest all the data in the table. This reingestion has a significant impact on performance and COGS.
+Issuing a `.purge` command triggers this process, which takes a few days to complete. If the density of records for which the predicate applies is sufficiently large, the process will effectively reingest all the data in the table. This reingestion has a significant impact on performance and COGS (cost of goods sold).
 
 ## Purge limitations and considerations
 
@@ -83,7 +83,7 @@ To reduce purge execution time:
 > [!NOTE]
 > Purge execution is invoked by running [purge table *TableName* records](#purge-table-tablename-records-command) command on the Data Management endpoint https://ingest-[YourClusterName].[Region].kusto.windows.net.
 
-### Purge table TableName records command
+### Purge table *TableName* records command
 
 Purge command may be invoked in two ways for differing usage scenarios:
 
@@ -105,7 +105,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
  > This query may time-out or fail on large tables, especially with significant amount of cold cache data. In case of failures,
  > please validate the predicate yourself and after verifying correctness use the single-step purge with the `noregrets` option.
 
-  **Syntax**
+**Syntax**
 
   ```kusto
 	 // Connect to the Data Management service
@@ -118,20 +118,20 @@ Purge command may be invoked in two ways for differing usage scenarios:
 	 .purge table [TableName] records in database [DatabaseName] with (verificationtoken='<verification token from step #1>') <| [Predicate]
   ```
 	
-	| Parameters  | Description  |
-	|---------|---------|
-	| `DatabaseName`   |   Name of the database      |
-	| `TableName`     |     Name of the table    |
-	| `Predicate`    |    Identifies the records to purge. See Purge predicate limitations below. | 
-	| `noregrets`    |     If set, triggers a single-step activation.    |
-	| `verificationtoken`     |  In the two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. Information about the purge will be returned with a token that should be passed back to the command to do step #2.   |
+| Parameters  | Description  |
+|---------|---------|
+| `DatabaseName`   |   Name of the database      |
+| `TableName`     |     Name of the table    |
+| `Predicate`    |    Identifies the records to purge. See Purge predicate limitations below. | 
+| `noregrets`    |     If set, triggers a single-step activation.    |
+| `verificationtoken`     |  In the two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. Information about the purge will be returned with a token that should be passed back to the command to do step #2.   |
 
-	**Purge predicate limitations**
+**Purge predicate limitations**
 
-	* The predicate must be a simple selection (for example, *where [ColumnName] == 'X'* / *where [ColumnName] in ('X', 'Y', 'Z') and [OtherColumn] == 'A'*).
-	* Multiple filters must be combined with an 'and', rather than separate `where` clauses (for example, `where [ColumnName] == 'X' and  OtherColumn] == 'Y'` and not `where [ColumnName] == 'X' | where [OtherColumn] == 'Y'`).
-	* The predicate can't reference tables other than the table being purged (*TableName*). The predicate can only include the selection statement (`where`). It can't project specific columns from the table (output schema when running '*`table` | Predicate*' must match table schema).
-	* System functions (such as, `ingestion_time()`, `extent_id()`) aren't supported.
+* The predicate must be a simple selection (for example, *where [ColumnName] == 'X'* / *where [ColumnName] in ('X', 'Y', 'Z') and [OtherColumn] == 'A'*).
+* Multiple filters must be combined with an 'and', rather than separate `where` clauses (for example, `where [ColumnName] == 'X' and  OtherColumn] == 'Y'` and not `where [ColumnName] == 'X' | where [OtherColumn] == 'Y'`).
+* The predicate can't reference tables other than the table being purged (*TableName*). The predicate can only include the selection statement (`where`). It can't project specific columns from the table (output schema when running '*`table` | Predicate*' must match table schema).
+* System functions (such as, `ingestion_time()`, `extent_id()`) aren't supported.
 
 #### Example: Two-step purge
 

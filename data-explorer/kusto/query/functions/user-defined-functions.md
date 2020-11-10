@@ -39,6 +39,9 @@ Valid user-defined function names must follow the same [identifier naming rules]
 
 The name must also be unique in its scope of definition.
 
+> [!NOTE]
+> If a stored function and a table both have the same name, the stored function overrides when querying the table/function name.
+
 ## Input arguments
 
 Valid user-defined functions follow these rules:

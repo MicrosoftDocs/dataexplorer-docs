@@ -61,6 +61,12 @@ The line chart visual is the most basic type of chart. The first column of the q
 
 The stat visual only shows one element. If there are multiple columns and rows in the output, stat shows the first element of the first column. Stat cards are useful to highlight KPIs on the Dashboard.
 
+### Multi stat
+
+:::image type="content" source="media/dashboard-customize-visuals/multistat.png" alt-text="multi stat visual type":::
+
+The multi stat visual shows multiple stat cards in a group using a single query result. This requires 2 columns, one for the label and the other for the value. Users can use a visual formatting option to customize the the output layout for display by selecting the number of rows and columns. In addition to being more convenient, this formatting option will reduce cluster load where customers are using similar queries to build multiple stats.
+
 ### Pie chart
 
 :::image type="content" source="media/dashboard-customize-visuals/pie-chart.png" alt-text="pie chart visual type":::
@@ -116,7 +122,9 @@ Use the following properties to customize visuals.
 |**Data**    |   Select **Y and X Columns** for your visual. Keep the selection as **Infer** if you want the platform to automatically select a column based on the query result    |Bar, Column, Scatter, and Anomaly charts|
 |**Legend**    |   Toggle to show or hide the display of legends on your visuals   |Bar, Column, Area, Line, Scatter, Anomaly, and Time charts |
 |**Y Axis**     |   Allows customization of Y-Axis properties: <ul><li>**Label**: Text for a custom label. </li><li>**Maximum Value**: Change the maximum value of the Y axis.  </li><li>**Minimum Value**: Change the minimum value of the Y axis.  </li></ul>      |Bar, Column, Area, Line, Scatter, Anomaly, and Time charts |
-|**X Axis**     |    Allows customization of X-axis properties: <ul><li>**Label**: Text for a custom label. </li>     | Bar, Column, Area, Line, Scatter, Anomaly, and Time charts|
+|**X Axis**     |    Allows customization of X-axis properties. <li>**Label**: Text for a custom label. </li>     | Bar, Column, Area, Line, Scatter, Anomaly, and Time charts|
+|**Render links**     |    Toggle to make links that start with "https://" in tables, clickable. <li>**Apply on columns**: Select columns containing URL. </li>     | Table|
+|**Layout**     |    Select the layout configuration for multi stat visual. <li>**Apply on columns**: Select columns containing URL. </li>     | Multi stat|
 
 ## Next steps
 
