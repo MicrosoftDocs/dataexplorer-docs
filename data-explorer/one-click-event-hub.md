@@ -17,11 +17,12 @@ ms.date: 11/10/2020
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
+Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data streaming platform and event ingestion service. [Event Hubs](/azure/event-hubs/event-hubs-about) can process millions of events per second in near real-time. In this article, you connect to an Event Hub from Azure Data Explorer using the [one-click ingestion](ingest-data-one-click.md) experience.
+
 ## Prerequisites
 
 * An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* [A cluster and database](create-cluster-database-python.md).
-* [Table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
+* [A cluster and database](create-cluster-database-portal.md).
 * [Event Hub with data for ingestion](ingest-data-event-hub.md#create-an-event-hub).
 
 ## Ingest new data
@@ -41,7 +42,7 @@ The **Ingest new data** window opens with the **Source** tab selected.
     > [!NOTE]
     > Table names must be between 1 and 1024 characters. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
-1. Under **Source type**, select **Reference to Event Hub**.
+1. Under **Source type**, select **Reference to Event Hub**. The data connect selection will appear.
 
 ## Data connection
 
@@ -80,7 +81,7 @@ The **Ingest new data** window opens with the **Source** tab selected.
 
 ## Complete data ingestion
 
-In the **Data ingestion completed** window, all three steps will be marked with green check marks when data ingestion finishes successfully.
+In the **Data ingestion completed** window, all steps will be marked with green check marks when data ingestion finishes successfully.
 
 :::image type="content" source="media/one-click-event-hub/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hub with the one click experience":::    
 
