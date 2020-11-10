@@ -49,26 +49,6 @@ Under **Ingestion type**, do the following steps:
      > [!TIP] 
      > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
 
-A sample of the data appears. If you want to, filter the data to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
-
-For example, filter for all files that begin with the word *.csv* extension.
-
-:::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
-
-### Storage subscription error
-
-If you get the following error message when ingesting from a storage account:
-
-> Couldn't find the storage under your selected subscriptions. Please add the storage account *`storage_account_name`* subscription to your selected subscriptions in the portal.
-
-:::image type="content" source="media/one-click-ingestion-new-table/data-connection-troubleshoot.png" alt-text="Screenshot in Data connection tab: Couldn't find the storage under your selected subscriptions. Please add the storage account subscription to your selected subscriptions.":::
-
-1. Select the :::image type="icon" source="media/ingest-data-one-click/directory-subscription-icon.png" border="false":::  icon from the top right menu tray. A **Directory + subscription** pane opens.
-
-1. In the subscription dropdown, add your storage account's subscription to the selected list. 
-
-    :::image type="content" source="media/ingest-data-one-click/subscription-dropdown.png" alt-text="Screenshot of Directory + subscription pane with subscription dropdown highlighted by a red box.":::
-
 ### Ingest from folder in a container
 
 To ingest from a specific folder within a container, generate a string of the following format:
@@ -77,7 +57,7 @@ To ingest from a specific folder within a container, generate a string of the fo
 
 You'll use this string instead of the SAS URL in [select an ingestion type](#select-an-ingestion-type).
 
-1. Navigate to the storage account, and select **Storage Explorer > Select **Blob Containers**
+1. Navigate to the storage account, and select **Storage Explorer > Select Blob Containers**
 
     :::image type="content" source="media/one-click-ingestion-new-table/blob-containers.png" alt-text="Screenshot access blob containers in Azure Storage account":::
 
@@ -90,6 +70,26 @@ You'll use this string instead of the SAS URL in [select an ingestion type](#sel
     :::image type="content" source="media/one-click-ingestion-new-table/copy-key-1.png" alt-text="screenshot of Access keys storage account copy Key string":::
 
 1. Under **key 1**, copy the **Key** string. Paste this value at the end of your string from step 2. 
+
+### Storage subscription error
+
+If you get the following error message when ingesting from a storage account:
+
+> Couldn't find the storage under your selected subscriptions. Please add the storage account *`storage_account_name`* subscription to your selected subscriptions in the portal.
+
+1. Select the :::image type="icon" source="media/ingest-data-one-click/directory-subscription-icon.png" border="false":::  icon from the top right menu tray. A **Directory + subscription** pane opens.
+
+1. In the **All subscriptions** dropdown, add your storage account's subscription to the selected list. 
+
+    :::image type="content" source="media/ingest-data-one-click/subscription-dropdown.png" alt-text="Screenshot of Directory + subscription pane with subscription dropdown highlighted by a red box.":::
+
+## Sample data
+
+A sample of the data appears. If you want to, filter the data to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
+
+For example, filter for all files that begin with the word *.csv* extension.
+
+:::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
 
 ## Edit the schema
 
