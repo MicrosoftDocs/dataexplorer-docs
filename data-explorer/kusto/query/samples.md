@@ -826,6 +826,7 @@ B_events
 ::: zone pivot="azuremonitor"
 
 ## String operations
+The following sections give examples working with strings in Kusto query language.
 
 ### Strings and escaping them
 String values are wrapped with either with single or double quote characters. Backslash (\\) is used to escape characters to the character following it, such as \t for tab, \n for newline, and \" the quote character itself.
@@ -1131,6 +1132,7 @@ print toupper("hello");	// result: "HELLO"
 ```
 
 ## Date and time operations
+The following sections give examples working with date and time values in Kusto query language.
 
 ### Date time basics
 The Kusto query language has two main data types associated with dates and times: datetime and timespan. All dates are expressed in UTC. While multiple datetime formats are supported, the ISO8601 format is preferred. 
@@ -1254,6 +1256,7 @@ Event
 ```
 
 ## Aggregations
+The following sections give examples of aggregation the results of a query in Kusto query language.
 
 ### count
 Count the number of rows in the result set after any filters are applied. The following example returns the total number of rows in the _Perf_ table from the last 30 minutes. The result is returned in a column named *count_* unless you assign it a specific name:
@@ -1558,7 +1561,7 @@ Table1
 on $left.key1 == $right.key2
 ```
 
-### Lookup Tables
+### Lookup tables
 A common use of joins is using static mapping of values using `datatable` that can help in transforming the results into more presentable way. For example, to enrich the security event data with the event name for each event ID.
 
 ```Kusto
@@ -1589,7 +1592,7 @@ SecurityEvent
 | Cryptographic operation | 153,495 |
 | Key file operation | 153,496 |
 
-## JSON and data Structures
+## JSON and data structures
 
 Nested objects are objects that contain other objects in an array or a map of key-value pairs. These objects are represented as JSON strings. This section describes how JSON is used to retrieve data and analyze nested objects.
 
@@ -1690,8 +1693,9 @@ print hosts_object
 ```
 
 ## Charts
+The following sections give examples working with charts in Kusto query language.
 
-### Charting the results
+### Chart the results
 Start by reviewing how many computers there are per operating system, during the past hour:
 
 ```Kusto
@@ -1721,7 +1725,7 @@ Perf
 
 Select the **Line** chart display option:
 
-![Line chart](images/samples/charts-and-diagrams-multiSeries.png)
+![Line chart](images/samples/charts-and-diagrams-multiple-series.png)
 
 #### Reference line
 
@@ -1735,7 +1739,7 @@ Perf
 | extend Threshold = 20
 ```
 
-![Reference line](images/samples/charts-and-diagrams-multiSeriesThreshold.png)
+![Reference line](images/samples/charts-and-diagrams-multiple-series-threshold.png)
 
 ### Multiple dimensions
 Multiple expressions in the `by` clause of `summarize` create multiple rows in the results, one for each combination of values.
@@ -1748,11 +1752,11 @@ SecurityEvent
 
 When you view the results as a chart, it uses the first column from the `by` clause. The following example shows a stacked column chart using the _EventID._ Dimensions must be of `string` type, so in this example the _EventID_ is being cast to string. 
 
-![Bar chart EventID](images/samples/charts-and-diagrams-multiDimension1.png)
+![Bar chart EventID](images/samples/charts-and-diagrams-multiple-dimension-1.png)
 
 You can switch between by selecting the dropdown with the column name. 
 
-![Bar chart AccountType](images/samples/charts-and-diagrams-multiDimension2.png)
+![Bar chart AccountType](images/samples/charts-and-diagrams-multiple-dimension-2.png)
 
 ## Smart analytics
 This section includes examples that use smart analytics functions in Log Analytics to perform analysis of user activity. You can either use these examples to analyze your own applications monitored by Application Insights or use the concepts in these queries for similar analysis on other data. 
@@ -1874,7 +1878,7 @@ This example results in the following output.
 
 :::image type="content" source="images/samples/rolling-mau.png" alt-text="Rolling monthly users output":::
 
-THe following example turns the above query into a reusable function and uses it to calculate rolling user stickiness. Active users in this query are defined as only those users that performed check-out at least once in a given day.
+The following example turns the above query into a reusable function and uses it to calculate rolling user stickiness. Active users in this query are defined as only those users that performed check-out at least once in a given day.
 
 ``` Kusto
 let rollingDcount = (sliding_window_size: int, event_name:string)
@@ -1952,7 +1956,9 @@ traces
 ```
 
 
+## Next steps
 
+- [Walk through a tutorial on Kusto query language](tutorial.md?pivots=azuremonitor).
 
 
 ::: zone-end

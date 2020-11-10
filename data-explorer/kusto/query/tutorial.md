@@ -620,7 +620,7 @@ The [summarize](./summarizeoperator.md) operator groups together rows that have
 the same values in the `by` clause, and then uses an aggregation function such as `count` to combine each group into a single row. There's a range of [aggregation functions](./summarizeoperator.md#list-of-aggregation-functions),
 and you can use several of them in one summarize operator to produce several computed columns. 
 
-The [SecurityEvent](/azure/azure-monitor/reference/tables/securityevent) holds security events such as logons and processes starting on monitored computers. We can count how many events of each level occured on each computer. In this example, there's a row for each computer and level combination and a column for the count of events.
+The [SecurityEvent](/azure/azure-monitor/reference/tables/securityevent) holds security events such as logons and processes starting on monitored computers. We can count how many events of each level occurred on each computer. In this example, there's a row for each computer and level combination and a column for the count of events.
 
 ```kusto
 SecurityEvent
@@ -716,5 +716,10 @@ PhysicalComputer
 ```
 
 [![Results of let example](images/tutorial/am-results-let.png)](images/tutorial/am-results-let.png#lightbox)
+
+## Next steps
+
+- [View code samples for Kusto query language](samples.md?pivots=azuremonitor).
+
 
 ::: zone-end
