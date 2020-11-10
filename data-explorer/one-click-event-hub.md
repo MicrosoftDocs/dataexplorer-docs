@@ -8,7 +8,14 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/10/2020
 ---
-# Use one-click ingestion to ingest data from Event Hub into Azure Data Explorer
+# Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer
+
+> [!div class="op_single_selector"]
+> * [Portal](ingest-data-event-hub.md)
+> * [One click](one-click-event-hub.md)
+> * [C#](data-connection-event-hub-csharp.md)
+> * [Python](data-connection-event-hub-python.md)
+> * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
 ## Prerequisites
 
