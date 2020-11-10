@@ -20,6 +20,11 @@ Decodes the input string from base64 and performs gzip decompression.
 ## Arguments
 
 *input_string*: Input `string` that was compressed with gzip and then base64-encoded. The function accepts one string argument.
+[!NOTE]
+> Function checks mandatory gzip header fields (ID1, ID2, and CM) and returns an empty output if any of these have incorrect values.
+
+> Optional header fields are not supported, both FLG and XFL are expected to be zeroes.
+
 
 ## Returns
 
@@ -30,7 +35,7 @@ Decodes the input string from base64 and performs gzip decompression.
 ## Examples
 
 ```kusto
-print res=gzip_decompress_from_base64_string("eAEBFADr/zEyMzQ1Njc4OTBxd2VydHl1aW9wOAkGd0xvZwAzAG5JZA==")
+print res=gzip_decompress_from_base64_string("H4sIAAAAAAAA/wEUAOv/MTIzNDU2Nzg5MHF3ZXJ0eXVpb3A6m7f2FAAAAA==")
 ```
 
 **Output:**
@@ -49,3 +54,5 @@ print res=gzip_decompress_from_base64_string("x0x0x0")
 ## Next steps
 
 Create a compressed input string with [gzip_compress_to_base64_string()](gzip-base64-compress.md).
+
+See also [zlib_decompress_from_base64_string](zlib-base64-decompress.md).
