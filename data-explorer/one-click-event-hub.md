@@ -33,7 +33,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
 The **Ingest new data** window opens with the **Source** tab selected.
 
-    :::image type="content" source="media/one-click-event-hub/reference-to-event-hub.png" alt-text="Screenshot of source tab in ingest new data to Azure Data Explorer with source = reference to Event Hub":::
+:::image type="content" source="media/one-click-event-hub/reference-to-event-hub.png" alt-text="Screenshot of source tab in ingest new data to Azure Data Explorer with source = reference to Event Hub":::
 
 1. The **Database** field is auto-populated with your database. You may select a different database from the drop-down menu.
 
@@ -56,7 +56,7 @@ The **Ingest new data** window opens with the **Source** tab selected.
     | Event Hub namespace | A unique namespace name | The name that identifies your namespace. |
     | Event Hub | *test-hub* | The Event Hub you wish to use. |
     | Consumer group | *test-group* | The consumer group defined in your Event Hub. |
-    | Data format | | Data is read from the Event Hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects. See [supported formats](ingestion-supported-formats.md). Event Hub doesn't support the .raw format.|
+    | Data format | | Data is read from the Event Hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects. Supported formats are CSV, JSON, PSV, SCsv, SOHsv TSV, and TSVE. |
     | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
 
 1. Select **Edit schema**.
