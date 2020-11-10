@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/23/2020
+ms.date: 10/08/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -445,6 +445,7 @@ StormEvents
 
 :::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state":::
 
+
 ## Let: Assign a result to a variable
 
 Use [let](./letstatement.md) to separate out the parts of the query expression in the 'join' example above. The results are unchanged:
@@ -461,7 +462,6 @@ LightningStorms
 | join (AvalancheStorms) on State
 | distinct State
 ```
-
 > [!TIP]
 > In the Kusto Explorer client, don't put blank lines between the parts of this. Make sure to execute all of it.
 
@@ -502,10 +502,224 @@ Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request
 > [!NOTE]
 > when the cluster is specified the database is mandatory
 
+
+
+
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
 
-This capability isn't supported in Azure Monitor
+The best way to learn about the Kusto query language is to look at some simple
+queries to get the "feel" for the language. These queries are similar to those used in the Azure Data Explorer tutorial, but they use data from common tables in a Log Analytics workspace. 
+
+Run these queries using Log Analytics, which is a tool in the Azure portal to write log queries using log data in Azure Monitor and evaluate their results. If you aren't familiar with Log Analytics, then you can go through a tutorial at [Log Analytics tutorial](/azure/azure-monitor/log-query/log-analytics-tutorial.md).
+
+All of the queries here use the [Log Analytics demo environment](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade). You can use your own environment, but you may not have some of the tables used here. Since the data in the demo environment isn't static, the results of your queries may vary slightly from the results shown here.
+
+
+## Count rows
+[InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) contains performance data collected by insights such as Azure Monitor for VMs and Azure Monitor for containers. To find out how big it is, we'll pipe its content into an operator that simply counts the rows:
+
+A query is a data source (usually a table name), optionally  followed by one or more pairs of the pipe character and some tabular operator. In this case, all records from the InsightsMetrics table are returned and then sent to the [count operator](./countoperator.md) operator which outputs results since it's the last command in the query.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+InsightsMetrics | count
+```
+
+Here's the result:
+
+|Count|
+|-----|
+|1,263,191|
+    
+
+
+
+## where: filtering by a Boolean expression
+[AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) has entries from the Azure Activity log that provides insight into any subscription-level or management group level events that have occurred in Azure. Let's see only `Critical` entries during a specific week.
+
+
+The [where](/azure/data-explorer/kusto/query/whereoperator) operator is very common in KQL and filters a table to rows matching the specified criteria. This example uses multiple commands. The query first retrieves all records for the table, then filters that data for just the records in the time range, and then filters those results for just records with a `Critical` level.
+
+> [!NOTE]
+> In addition to specifying a filter in your query using the `TimeGenerated` column, you can specify the time range in Log Analytics. See [Log query scope and time range in Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope) for details.
+
+```kusto
+AzureActivity
+| where TimeGenerated > datetime(10-01-2020) and TimeGenerated < datetime(10-07-2020)
+| where Level == 'Critical'
+```
+
+[![Results of where filtering example](images/tutorial/am-results-where.png)](images/tutorial/am-results-where.png#lightbox)
+
+
+## project: select a subset of columns
+
+Use [project](./projectoperator.md) to pick out just the columns you want. Building on the previous example, let's limit the output to certain columns.
+
+```kusto
+AzureActivity
+| where TimeGenerated > datetime(10-01-2020) and TimeGenerated < datetime(10-07-2020)
+| where Level == 'Critical'
+| project TimeGenerated, Level, OperationNameValue, ResourceGroup, _ResourceId
+```
+
+[![Results of project example](images/tutorial/am-results-project.png)](images/tutorial/am-results-project.png#lightbox)
+
+
+## take: show me n rows
+[NetworkMonitoring](/azure/azure-monitor/reference/tables/networkmonitoring) has monitoring data for Azure virtual networks. Let's use the [take](./takeoperator.md) operator to have a look at 5 sample rows in that table. The [take](./takeoperator.md) shows a certain number rows from a table in no particular order.
+
+```kusto
+NetworkMonitoring
+| take 10
+| project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
+```
+
+[![Results of take example](images/tutorial/am-results-take.png)](images/tutorial/am-results-take.png#lightbox)
+
+## sort and top
+Instead of random records, we can return the latest 5 records by first sorting by time.
+
+```kusto
+NetworkMonitoring
+| sort by TimeGenerated desc
+| take 5
+| project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
+```
+
+You can get this exact behavior by instead using the [top](./topoperator.md) operator. 
+
+```kusto
+NetworkMonitoring
+| top 5 by TimeGenerated desc
+| project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
+```
+
+[![Results of top example](images/tutorial/am-results-top.png)](images/tutorial/am-results-top.png#lightbox)
+
+
+## extend: compute derived columns
+The [extend](./projectoperator.md) operator is similar to [project](./projectoperator.md) except that it adds to the set of columns instead of replacing them. You can also use both operators to create a new column based on a computation on each row.
+
+The [Perf](/azure/azure-monitor/reference/tables/perf) table has performance data collected from virtual machines running the Log Analytics agent. 
+
+```kusto
+Perf
+| where ObjectName == "LogicalDisk" and CounterName == "Free Megabytes"
+| project TimeGenerated, Computer, FreeMegabytes = CounterValue
+| extend FreeGigabytes = FreeMegabytes / 1000
+```
+
+[![Results of extend example](images/tutorial/am-results-extend.png)](images/tutorial/am-results-extend.png#lightbox)
+
+
+## summarize: aggregate groups of rows
+The [summarize](./summarizeoperator.md) operator groups together rows that have 
+the same values in the `by` clause, and then uses an aggregation function such as `count` to combine each group into a single row. There's a range of [aggregation functions](./summarizeoperator.md#list-of-aggregation-functions),
+and you can use several of them in one summarize operator to produce several computed columns. 
+
+The [SecurityEvent](/azure/azure-monitor/reference/tables/securityevent) holds security events such as logons and processes starting on monitored computers. We can count how many events of each level occurred on each computer. In this example, there's a row for each computer and level combination and a column for the count of events.
+
+```kusto
+SecurityEvent
+| summarize count() by Computer, Level
+```
+
+[![Results of summarize count example](images/tutorial/am-results-summarize-count.png)](images/tutorial/am-results-summarize-count.png#lightbox)
+
+
+## Summarize by scalar values
+You can aggregate by scalar values such as numbers and time values, but you should use the [bin()](./binfunction.md) function to group rows into distinct sets of data. For example, if you aggregate by `TimeGenerated`, you'll get a row for almost every time value. `bin()` to consolidate those values into hour or day.
+
+[InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) contains performance data collected by insights such as Azure Monitor for VMs and Azure Monitor for containers. The following query shows the hourly average processor utilization for multiple computers.
+
+```kusto
+InsightsMetrics
+| where Computer startswith "DC"
+| where Namespace  == "Processor" and Name == "UtilizationPercentage"
+| summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
+```
+
+
+[![Results of summarize avg example](images/tutorial/am-results-summarize-avg.png)](images/tutorial/am-results-summarize-avg.png#lightbox)
+
+
+
+## Render: display a chart or table
+The [render](./renderoperator.md?pivots=azuremonitor) operator specifies how the output of the query should be rendered. Log Analytics will render output as a table by default, and you can select different chart types after running the query. The `render` operator is useful to include in queries where a particular chart type is usually preferred.
+
+The following example uses shows the hourly average processor utilization for a single computer and renders the output as a time chart.
+
+```kusto
+InsightsMetrics
+| where Computer == "DC00.NA.contosohotels.com"
+| where Namespace  == "Processor" and Name == "UtilizationPercentage"
+| summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
+| render timechart
+```
+
+[![Results of render example](images/tutorial/am-results-render.png)](images/tutorial/am-results-render.png#lightbox)
+
+
+
+## Multiple series
+If there are multiple values in a `summarize by` clause, the chart displays a separate series for each set of values:
+
+```kusto
+InsightsMetrics
+| where Computer startswith "DC"
+| where Namespace  == "Processor" and Name == "UtilizationPercentage"
+| summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
+| render timechart
+```
+
+
+[![Results of render with multiple series example](images/tutorial/am-results-render-multiple.png)](images/tutorial/am-results-render-multiple.png#lightbox)
+
+## Join data from two tables
+What if you need to retrieve data from two tables in a single query? The [join](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor) operator allows you to combine rows from multiple tables into a single result set. Each table must have a column with a matching value so that the join understands which rows to match.
+
+[VMComputer](/azure/azure-monitor/reference/tables/vmcomputer) is a table used by Azure Monitor for VMs to store details about virtual machines that it monitors. [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) holds performance data collected from those virtual machines. One value collected in *InsightsMetrics* is available memory but not percentage memory available. To calculate the percentage, we need the physical memory for each virtual machine which is in *VMComputer*.
+
+The following example query uses a join to perform this calculation. The [distinct](/azure/data-explorer/kusto/query/joinoperator) is used with *VMComputer* since details are regularly collected from each computer creating multiple rows for each in that table. The two tables are joined using the *Computer* column. This means that a row is created in the result set that includes columns from both tables for each row in *InsightsMetrics* with a value in *Computer* that matches the same value in the *Computer* column in *VMComputer*.
+
+```kusto
+VMComputer
+| distinct Computer, PhysicalMemoryMB
+| join kind=inner (
+    InsightsMetrics
+    | where Namespace == "Memory" and Name == "AvailableMB"
+    | project TimeGenerated, Computer, AvailableMemoryMB = Val
+) on Computer
+| project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
+```
+
+[![Results of join example](images/tutorial/am-results-join.png)](images/tutorial/am-results-join.png#lightbox)
+
+
+## Let: Assign a result to a variable
+Use [let](./letstatement.md) to make queries easier to read and manage. This operator allows you to assign the results of a query to a variable that you can use later. The same query in the previous example could be rewritten as the following.
+
+ 
+```kusto
+let PhysicalComputer = VMComputer
+    | distinct Computer, PhysicalMemoryMB;
+    let AvailableMemory = 
+InsightsMetrics
+    | where Namespace == "Memory" and Name == "AvailableMB"
+    | project TimeGenerated, Computer, AvailableMemoryMB = Val;
+PhysicalComputer
+| join kind=inner (AvailableMemory) on Computer
+| project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
+```
+
+[![Results of let example](images/tutorial/am-results-let.png)](images/tutorial/am-results-let.png#lightbox)
+
+## Next steps
+
+- [View code samples for Kusto query language](samples.md?pivots=azuremonitor).
+
 
 ::: zone-end
