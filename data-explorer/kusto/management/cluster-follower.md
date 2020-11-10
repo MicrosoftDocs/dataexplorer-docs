@@ -21,7 +21,6 @@ The follower commands include [database level commands](#database-level-commands
 
 Shows a database (or databases) followed from other leader cluster, which have one or more database-level overrides configured.
 
-
 **Syntax**
 
 `.show` `follower` `database` *DatabaseName*
@@ -46,8 +45,6 @@ Shows a database (or databases) followed from other leader cluster, which have o
 Alters a follower database caching policy, to override the one set on the source database in the leader cluster. 
 It requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md).
 
-
-
 **Notes**
 
 * The default `modification kind` for caching policies is `union`. To change the `modification kind` use the [.alter follower database caching-policies-modification-kind](#alter-follower-database-caching-policies-modification-kind) command.
@@ -61,11 +58,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 `.alter` `follower` `database` *DatabaseName* `policy` `caching` `hot` `=` *HotDataSpan*
 
-
-
 **Example**
-
-
 
 ```kusto
 .alter follower database MyDb policy caching hot = 7d
@@ -99,8 +92,6 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 Adds authorized principal(s) to the follower database collection of override authorized principals. 
 It requires [DatabaseAdmin permission](../management/access-control/role-based-authorization.md).
 
-
-
 **Notes**
 
 * The default `modification kind` for such authorized principals is `none`. To change the `modification kind` use  [alter follower database principals-modification-kind](#alter-follower-database-principals-modification-kind).
@@ -113,17 +104,10 @@ It requires [DatabaseAdmin permission](../management/access-control/role-based-a
 
 `.add` `follower` `database` *DatabaseName* (`admins` | `users` | `viewers` | `monitors`) Role `(`*principal1*`,`...`,`*principalN*`)` [`'`*notes*`'`]
 
-
-
-
 **Example**
 
 ```kusto
 .add follower database MyDB viewers ('aadgroup=mygroup@microsoft.com') 'My Group'
-```
-
-```kusto
-
 ```
 
 ### .drop follower database principals
@@ -166,8 +150,6 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 `.alter` `follower` `database` *DatabaseName*
 `principals-modification-kind` = (`none` | `union` | `replace`)
 
-
-
 **Example**
 
 ```kusto
@@ -190,15 +172,38 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 `.alter` `follower` `database` *DatabaseName* `caching-policies-modification-kind` = (`none` | `union` | `replace`)
 
-
-
 **Example**
 
 ```kusto
 .alter follower database MyDB caching-policies-modification-kind = union
 ```
 
+### .alter follower database prefetch-extents
 
+It is possible for the follower cluster to not make any new data queryable, before it has been fetched from underlying storage to the nodes' SSD (cache).
+
+The following command alters the follower database configuration of pre-fetching new extents upon each schema refresh. 
+It requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md).
+
+> [!WARNING]
+> * Enabling this setting could potentially degrade the freshness of data in the follower database.
+> * The default configuration is `false` and it is recommended to keep that default.
+> * When choosing to alter the setting to `true`, it is recommended to closely evaluate the impact
+> on freshness for some time period after the configuration change.
+
+**Syntax**
+
+`.alter` `follower` `database` *DatabaseName* `prefetch-extents` = (`true` | `false`)
+
+`.alter` `follower` `database` *DatabaseName* [`from` `h@'`*path to leader cluster's metadata container*`'`]
+`prefetch-extents` = (`true` | `false`)
+
+**Example**
+
+<!-- csl -->
+```
+.alter follower database MyDB prefetch-extents = false
+```
 
 ## Table level commands
 
@@ -206,8 +211,6 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 Alters a table-level caching policy on the follower database, to override the policy set on the source database in the leader cluster.
 It requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md). 
-
-
 
 **Notes**
 
@@ -219,17 +222,11 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 **Syntax**
 
-
-
-
-
 `.alter` `follower` `database` *DatabaseName* table *TableName* `policy` `caching` `hot` `=` *HotDataSpan*
 
 `.alter` `follower` `database` *DatabaseName* tables `(`*TableName1*`,`...`,`*TableNameN*`)` `policy` `caching` `hot` `=` *HotDataSpan*
 
 **Example**
-
-
 
 ```kusto
 .alter follower database MyDb tables (Table1, Table2) policy caching hot = 7d
