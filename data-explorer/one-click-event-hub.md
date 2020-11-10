@@ -63,21 +63,15 @@ The **Ingest new data** window opens with the **Source** tab selected.
 
 ## Schema tab
 
-1. If your data type is **JSON**, you must also select **JSON levels**, from 1 to 10. The levels determine the table column data division. To add columns from JSON levels that are different than the main **JSON levels**, see [Add nested JSON data](one-click-ingestion-existing-table.md#add-nested-json-data).
+For information on schema mapping with JSON-formatted data, see [Edit the schema](one-click-ingestion-existing-table.md#edit-the-schema).
+For information on schema mapping with CSV-formatted data, see [Edit the schema](one-click-ingestion-new-table.md#edit-the-schema).
 
-    :::image type="content" source="media/one-click-event-hub/schema-tab.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hub in the one click experience":::
+:::image type="content" source="media/one-click-event-hub/schema-tab.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hub in the one click experience":::
 
-1. The service automatically generates schema and ingestion properties, which you can change. You can use an existing mapping structure or create a new one, depending on if you're ingesting to a new or existing table.
-
-1. In the table:
-
-    * Select the arrow to the right of each column header to add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. 
-    * On existing columns, data sorting and **Update column** are available. 
-
-    > [!NOTE]
-    > To see a preview of your data, your Event Hub must be sending events.
+> [!NOTE]
+> To see a preview of your data, your Event Hub must be sending events.
         
-1. Select **Start ingestion**.
+Select **Start ingestion**.
 
 ## Complete data ingestion
 
