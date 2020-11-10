@@ -29,7 +29,7 @@ ms.date: 11/10/2020
 
 :::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
 
-1. In the left menu of the Web UI, right-click a *database* or *table* and select **Ingest new data**. The **Ingest new data** window opens with the **Source** tab selected.
+1. In the left menu of the [Web UI](https://dataexplorer.azure.com/), right-click a *database* or *table* and select **Ingest new data**. The **Ingest new data** window opens with the **Source** tab selected.
 
     :::image type="content" source="media/one-click-event-hub/reference-to-event-hub.png" alt-text="Screenshot of source tab in ingest new data to Azure Data Explorer with source = reference to Event Hub":::
 
