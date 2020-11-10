@@ -44,9 +44,9 @@ ms.date: 11/10/2020
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
     | Subscription |      | The subscription ID where the Event Hub resource is located.  |
-    | Event Hub namespace | A unique namespace name | The name you chose earlier that identifies your namespace. |
-    | Event Hub | *test-hub* | The event Hub you created. |
-    | Consumer group | *test-group* | The consumer group defined in the Event Hub you created. |
+    | Event Hub namespace | A unique namespace name | The name that identifies your namespace. |
+    | Event Hub | *test-hub* | The Event Hub you wish to use. |
+    | Consumer group | *test-group* | The consumer group defined in your Event Hub. |
     | Data format | | Data is read from the Event Hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects. See [supported formats](ingestion-supported-formats.md). Event Hub doesn't support the .raw format.|
     | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
 
@@ -58,11 +58,11 @@ ms.date: 11/10/2020
 
     :::image type="content" source="media/one-click-event-hub/schema-tab.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hub in the one click experience":::
 
-1. Use an existing Mapping or create new schema mapping.
+1. The service automatically generates schema and ingestion properties, which you can change. You can use an existing mapping structure or create a new one, depending on if you're ingesting to a new or existing table.
 
 1. In the table:
 
-    * Select column headers to add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. 
+    * Select the arrow to the right of each column header to add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. 
     * On existing columns, data sorting and **Update column** are available. 
 
     > [!NOTE]
