@@ -17,7 +17,7 @@ ms.date: 11/10/2020
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
-Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data streaming platform and event ingestion service. [Event Hubs](/azure/event-hubs/event-hubs-about) can process millions of events per second in near real-time. In this article, you connect to an Event Hub from Azure Data Explorer using the [one-click ingestion](ingest-data-one-click.md) experience.
+Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data streaming platform and event ingestion service. [Event Hubs](/azure/event-hubs/event-hubs-about) can process millions of events per second in near real-time. In this article, you connect an Event Hub to a table in Azure Data Explorer using the [one-click ingestion](ingest-data-one-click.md) experience.
 
 ## Prerequisites
 
@@ -68,6 +68,12 @@ For information on schema mapping with CSV-formatted data, see [Edit the schema]
 
 :::image type="content" source="media/one-click-event-hub/schema-tab.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hub in the one click experience":::
 
+If the data you see in the preview window is not complete, you may need more data to have a complete table with all necessary data fields. Use the following commands to fetch new data from your Event Hub:
+
+* **Discard and fetch new data**: discards the data presented and searches for new events.
+
+* **Fetch more**: Searches for more events in addition to the events already found. 
+
 > [!NOTE]
 > To see a preview of your data, your Event Hub must be sending events.
         
@@ -75,9 +81,9 @@ Select **Start ingestion**.
 
 ## Complete data ingestion
 
-In the **Data ingestion completed** window, all steps will be marked with green check marks when data ingestion finishes successfully.
+In the **Data ingestion completed** window, all steps will be marked with green check marks when data ingestion finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, undo changes made using **Tools**, or **Monitor** the Event Hub connections and data.
 
-:::image type="content" source="media/one-click-event-hub/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hub with the one click experience":::    
+:::image type="content" source="media/one-click-event-hub/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hub with the one click experience":::
 
 ## Next steps
 
