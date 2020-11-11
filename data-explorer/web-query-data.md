@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 11/04/2020
+ms.date: 11/09/2020
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
 ---
@@ -14,7 +14,7 @@ ms.date: 11/04/2020
 # Quickstart: Query data in Azure Data Explorer Web UI
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data. Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share Kusto Query Language commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer Web UI](https://dataexplorer.azure.com). 
-The Azure Data Explorer Web UI can also be hosted by other web portals in an HTML iframe. For more information on how to host the Web UI and the Monaco editor used, see [Monaco IDE integration](kusto/api/monaco/monaco-kusto.md)
+The Azure Data Explorer Web UI can also be hosted by other web portals in an HTML iframe. For more information on how to host the Web UI and the Monaco editor used, see [Monaco IDE integration](kusto/api/monaco/monaco-kusto.md).
 In this quickstart, you'll be working in the stand-alone Azure Data Explorer Web UI.
 
 ## Prerequisites
@@ -32,11 +32,11 @@ When you first open the application, there are no cluster connections.
 
 ![Add cluster](media/web-query-data/add-cluster.png)
 
-You must add a connection to at least one cluster before you can start running queries. In this section, you’ll add connections to the Azure Data Explorer **help** cluster that we have set up to aid learning, and to the test cluster you've created in the [Prerequisites](#prerequisites) (optional).
+You must add a connection to a cluster before you can start running queries. In this section, you’ll add connections to the Azure Data Explorer **help** cluster and to the test cluster you've created in the [Prerequisites](#prerequisites) (optional).
 
 ### Add help cluster
 
-1. In the upper left of the application, select **Add cluster**.
+1. In the upper left of the application, select **Add Cluster**.
 
 1. In the **Add cluster** dialog box, enter the URI https://help.kusto.windows.net, then select **Add**.
    
@@ -44,15 +44,15 @@ You must add a connection to at least one cluster before you can start running q
 
     :::image type="content" source="media/web-query-data/connection.png" alt-text="samples-database":::
 
-    We use the **StormEvents** table later in this quickstart, and in other Azure Data Explorer articles.
+We use the **StormEvents** table later in this quickstart, and in other Azure Data Explorer articles. \\(Storm_Events or StormEvents?) - add new image with open folder\\
 
 ### Add your cluster
 
 Now add the test cluster you created.
 
-1. Select **Add cluster**.
+1. Select **Add Cluster**.
 
-1. In the **Add cluster** dialog box, enter your test cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**. For example, https://mydataexplorercluster.westus.kusto.windows.net as in the following image:
+1. In the **Add Cluster** dialog box, enter your test cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**. For example, https://mydataexplorercluster.westus.kusto.windows.net as in the following image:
 
     :::image type="content" source="media/web-query-data/server-uri.png" alt-text="server-uri":::
     
@@ -62,49 +62,47 @@ Now add the test cluster you created.
 
 ## Run queries
 
-You can now run queries against either cluster (assuming you have data in your test cluster). For the purpose of this article, we'll focus on the **help** cluster.
+You can now run queries on both clusters (assuming you have data in your test cluster). For the purpose of this article, we'll focus on the **help** cluster.
 
 1. In the left pane, under the **help** cluster, select the **Samples** database.
 
 1. Copy and paste the following query into the query window. At the top of the window, select **Run**.
 
-    ```Kusto
+    ```kusto
     StormEvents
     | sort by StartTime desc
     | take 10
     ```
     
-    This query returns the 10 newest records in the **StormEvents** table. The left side of the result should look like the following table.
+    This query returns the 10 newest records in the **StormEvents** table. The result should look like the following table.
 
     :::image type="content" source="media/web-query-data/result-set-01.png" alt-text="Screenshot of a table that lists the start time, end time, episode, event ID, state, and event type for 10 storm events." border="false":::
 
-    The following image shows the state that the application should now be in, with the cluster added, and a query with results.
+    The following image shows the state of the application, with the cluster added, and a query with results.
 
     :::image type="content" source="media/web-query-data/Capture2.png" alt-text="full screen":::
 
-1. Copy and paste the following query into the query window, below the first query. Notice how it's not formatted on separate lines like the first query.
+1. Copy and paste the following query into the query window, below the first query. Notice how it isn't formatted on separate lines like the first query.
 
-    ```Kusto
+    ```kusto
     StormEvents | sort by StartTime desc | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative | take 10
     ```
 
-1. Select the new query in the window, which selects the query. Press *Shift+Alt+F* to format the query, so it looks like the following.
+1. Select the new query. Press *Shift+Alt+F* to format the query, so it looks like the following.
 
     ![Formatted query](media/web-query-data/formatted-query.png)
 
-1. Press *Shift+Enter*, which is a shortcut to run a query.
-
-   This query returns the same records as the first one, but includes only the columns specified in the `project` statement. The result should look like the following table.
+1. Select **Run** or press *Shift+Enter* to run a query. This query returns the same records as the first one, but includes only the columns specified in the `project` statement. The result should look like the following table.
 
     :::image type="content" source="media/web-query-data/result-set-02.png" alt-text="Screenshot of a table that lists the start time, end time, state, event type, damage property, and episode narrative for 10 storm events." border="false":::
 
 1. At the top of the query window, select **Recall**.
 
-    The query window now shows the result set from the first query without having to rerun the query. Often during analysis, you run multiple queries, and **Recall** enables you to revisit the results of previous queries.
+    The query window now shows the result set from the first query without having to rerun the query. Often during analysis, you run multiple queries, and **Recall** allows you to retrieve the results of previous queries.
 
 1. Let's run one more query to see a different type of output.
 
-    ```Kusto
+    ```kusto
     StormEvents
     | summarize event_count=count(), mid = avg(BeginLat) by State
     | sort by mid
@@ -112,25 +110,25 @@ You can now run queries against either cluster (assuming you have data in your t
     | project State, event_count
     | render columnchart
     ```
+
     The result should look like the following chart.
 
     ![Column chart](media/web-query-data/column-chart.png)
 
-> [!NOTE]
-> Blank lines in the query expression can affect which part of the query is executed.
->
-> If no text selected, it's assumed that the query or command is separated by empty lines.
-> If text is selected, the selected text is run.
+    > [!NOTE]
+    > Blank lines in the query expression can affect which part of the query is executed.
+    > * If no text selected, it's assumed that the query or command is separated by empty lines.
+    > * If text is selected, the selected text is run.
 
 ## Work with the table grid
 
-Now you've seen how basic queries work, let's look at how you can use the table grid to customize results and do further analysis.
+Now that you've seen how basic queries work, let's look at how you can use the table grid to customize results and do further analysis.
 
 1. Rerun the first query. Mouse-over the **State** column, select the menu, and select **Group by State**.
 
     ![Group by state](media/web-query-data/group-by.png)
 
-1. In the grid, expand **California** to see records for that state.
+1. In the grid, double-click on **California** to expand and see records for that state.
 
     :::image type="content" source="media/web-query-data/result-set-03.png" alt-text="Screenshot of a query results grid. The California group is expanded, and three rows are visible, with data from events in California." border="false":::
 
@@ -144,7 +142,7 @@ Now you've seen how basic queries work, let's look at how you can use the table 
 
 1. Run the following query.
 
-    ```Kusto
+    ```kusto
     StormEvents
     | sort by StartTime desc
     | where DamageProperty > 5000
@@ -156,7 +154,7 @@ Now you've seen how basic queries work, let's look at how you can use the table 
 
     :::image type="content" source="media/web-query-data/selectstats.png" alt-text="select-stats"::: 
 
-1. On the right side of the grid, select **Columns** to see the tool panel.
+1. On the right side of the grid, select **Columns** to see the \\tool panel\\.
 
     ![Tool panel](media/web-query-data/tool-panel.png)
 
@@ -248,11 +246,13 @@ To export the query results to a CSV file, select **File** > **Export to CSV**.
 :::image type="content" source="media/web-query-data/export-results.png" alt-text="Export results to CSV file":::
 
 
-## Export and import environment settings
+## Settings
+
+### Export and import environment settings
 
 The export and import actions have been created to help users protect their work environment and to relocate it to other browsers and devices. The export action will export all your settings, cluster connections, and query tabs to a JSON file, that can be later imported into the same or different browser or device.
 
-### Export environment settings
+#### Export environment settings
 
 1. Open **Settings** (cogwheel icon) on the top right.
 1. Select the **Export** button.
@@ -262,7 +262,7 @@ The export and import actions have been created to help users protect their work
 1. An **adx-export.json** file will be downloaded to your local storage.
 1.Select **Clear local state** which will revert your environment to its original state. This action should delete all your cluster connections and close any open tabs.
 
-### Import environment settings
+#### Import environment settings
 
 1. Open **Settings**
 1. Click **Import** and approve the warning pop-up.
