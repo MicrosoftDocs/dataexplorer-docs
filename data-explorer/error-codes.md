@@ -10,7 +10,7 @@ ms.date: 11/11/2020
 ---
 # Ingestion error codes
 
-The following is a list of error codes you may encounter during [ingestion](ingest-data-overview.md). The **Manifest constant** field can be found in your [ingestion fail log](kusto/management/ingestionfailures.md), and is organized here by **Category**. These categories are shown in the ingestion result [metrics](using-metrics.md). If the field **Is permanent** equals 1, the error is not transient, and will not be resolved by retrying ingestion.
+The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). The **Manifest constant** field can be found in your [ingestion fail log](kusto/management/ingestionfailures.md), and is organized here by **Category**. These categories are shown in the ingestion result [metrics](using-metrics.md). If the field **Is permanent** equals 1, the error isn't transient, and will not be resolved by retrying ingestion.
 
 |Manifest constant                                  |Description                                           |Is permanent|
 |---------------------------------------------------|--------------------------|------------|
@@ -38,14 +38,14 @@ The following is a list of error codes you may encounter during [ingestion](inge
 |Stream\_NoDataToIngest                             |Found no data to ingest.<br>For data in JSON format, this error may indicate that the JSON format was invalid.        |1           |
 |Stream\_DynamicPropertyBagTooLarge                 |The data contains too large values in a dynamic column. HRESULT: 0x80DA000E         |1           |
 |Download\_BadRequest                               |Failed to download source from Azure Storage because of bad request.    |1           |
-|BadRequest\_MissingMappingtFailure                 |Avro and Json formats must be ingested with ingestionMapping or ingestionMappingReference parameter .         |1           |
+|BadRequest\_MissingMappingtFailure                 |Avro and Json formats must be ingested with ingestionMapping or ingestionMappingReference parameter.         |1           |
 |BadRequest\_MessageExhausted                       |Failed to ingest data since ingestion reached the maximum retry attempts or the maximum retry period.<br>Retrying ingestion may succeed.   |0           |
 |General\_BadRequest                                |Bad request.            |1           |
 |BadRequest\_CorruptedMessage                       |Message is corrupted.    |1           |
 |BadRequest\_SyntaxError                            |Request syntax error.     |1           |
-|BadRequest\_ZeroRetentionPolicyWithNoUpdatePolicy  |Table has zero retention policy and isn't the source table for any update policy .    |1           |
+|BadRequest\_ZeroRetentionPolicyWithNoUpdatePolicy  |Table has zero retention policy and isn't the source table for any update policy.    |1           |
 |BadRequest\_CreationTimeEarlierThanSoftDeletePeriod|Creation time that was specified for ingestion, isn't within the SoftDeletePeriod.<br>For more information about SoftDeletePeriod, see [The policy object](./kusto/management/retentionpolicy.md#the-policy-object).  |1   |
-|BadRequest\_NotSupported                           |Request not supported .    |1           |
+|BadRequest\_NotSupported                           |Request not supported.    |1           |
 |Download\_SourceNotFound                           |Failed to download source from Azure Storage. Source not found.       |1       |
 |BadRequest\_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about Azure Data Explorer naming convention, see [entity names](./kusto/query/schema-entities/entity-names.md).    |1           |
 |BadRequest\_MalformedIngestionProperty              |Ingestion property is malformed.    |1           |
@@ -60,7 +60,7 @@ The following is a list of error codes you may encounter during [ingestion](inge
 |
 |---------**Category: DownloadFailed**--------- 
 |
-|Download\_NotTransient                             |Failed to download source from Azure storage. Not transient error .occurred                                                                                                                                                                                                                    |1           |
+|Download\_NotTransient                             |Failed to download source from Azure storage. Not transient error.occurred                                                                                                                                                                                                                    |1           |
 |Download\_UnknownError                             |Failed to download source from Azure storage. Unknown error. occurred                                                                                                                                                                                                                          |0           |
 |
 |---------**Category: EntityNotFound**---------
