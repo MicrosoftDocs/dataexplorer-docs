@@ -150,7 +150,7 @@ The argument values must include:
 
     ```kusto
     ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
-     -pattern:"*.parquet" -format:parquet -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+     -pattern:"*.parquet" -format:parquet -limit:2 -cr:10.0 -dontWait:true
     ```
 
 * For a blob URI that refers to hierarchical folder structure, like `https://storageaccount/container/folder/2002/12/01/blobname.extension`, 
