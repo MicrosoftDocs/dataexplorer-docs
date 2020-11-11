@@ -20,10 +20,10 @@ Decodes the input string from base64 and performs gzip decompression.
 ## Arguments
 
 *input_string*: Input `string` that was compressed with gzip and then base64-encoded. The function accepts one string argument.
-[!NOTE]
-> Function checks mandatory gzip header fields (ID1, ID2, and CM) and returns an empty output if any of these have incorrect values.
 
-> Optional header fields are not supported, both FLG and XFL are expected to be zeroes.
+> [!NOTE]
+> This function checks mandatory gzip header fields (ID1, ID2, and CM) and returns an empty output if any of these fields have incorrect values.
+> Optional header fields are not supported. Both FLG and XFL are expected to be zeroes.
 
 
 ## Returns
