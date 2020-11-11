@@ -39,6 +39,5 @@ print res = gzip_compress_to_base64_string("1234567890qwertyuiop")
 
 ## Next steps
 
-Use [gzip_decompress_from_base64_string()](gzip-base64-decompress.md) to retrieve the original uncompressed string.
-
-See also [zlib_compress_to_base64_string()](zlib-base64-compress.md)
+* Use [gzip_decompress_from_base64_string()](gzip-base64-decompress.md) to retrieve the original uncompressed string.
+* See also [zlib_compress_to_base64_string()](zlib-base64-compress.md)
