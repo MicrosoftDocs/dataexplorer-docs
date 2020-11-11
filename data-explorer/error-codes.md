@@ -14,7 +14,7 @@ The following is a list of error codes you may encounter during [ingestion](inge
 
 |Manifest constant                                  |Description                                           |Is permanent|
 |---------------------------------------------------|--------------------------|------------|
-|**Category: BadFormat**                                          |
+| ---------**Category: BadFormat**---------                                          |
 |
 |Stream\_WrongNumberOfFields                        |Inconsistent number of fields in the input records. HRESULT: 0x80DA0008      |1           |
 |Stream\_ClosingQuoteMissing                        |Invalid CSV format. Closing quote is missing. HRESULT: 0x80DA000b            |1           |
@@ -27,7 +27,7 @@ The following is a list of error codes you may encounter during [ingestion](inge
 |BadRequest\_InconsistentMapping                    |Supported ingestion mapping isn't consistent with the existing table schema. |1           |
 |BadRequest\_UnexpectedCharacterInInputStream       |Unexpected character in the input stream.                                     |1           |
 |
-|**Category: BadRequest** |
+|---------**Category: BadRequest**--------- |
 |                        
 |BadRequest\_EmptyBlob                              |Blob is empty.                                                               |1           |
 |BadRequest\_EmptyBlobUri                           |Blob Uri is empty.                                                           |1           |
@@ -50,7 +50,7 @@ The following is a list of error codes you may encounter during [ingestion](inge
 |BadRequest\_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about Azure Data Explorer naming convention, see [entity names](./kusto/query/schema-entities/entity-names.md).    |1           |
 |BadRequest\_MalformedIngestionProperty              |Ingestion property is malformed.    |1           |
 |
-|**Category: DataAccessNotAuthorized**                            |
+|---------**Category: DataAccessNotAuthorized**---------                            |
 |                                                   
 |Download\_AccessConditionNotSatisfied              |Failed to download source from Azure storage. Access condition not satisfied.     |1           |
 |Download\_Forbidden                                |Failed to download source from Azure storage. Access forbidden.    |1           |
@@ -58,34 +58,34 @@ The following is a list of error codes you may encounter during [ingestion](inge
 |BadRequest\_TableAccessDenied                      |Access to table is denied.<br>For more information, see [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md).     |1           |
 |BadRequest\_DatabaseAccessDenied                   |Access to database is denied.<br>For more information, see [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md).                                                                               |1           |
 |
-|**Category: DownloadFailed** 
+|---------**Category: DownloadFailed**--------- 
 |
 |Download\_NotTransient                             |Failed to download source from Azure storage. Not transient error .occurred                                                                                                                                                                                                                    |1           |
 |Download\_UnknownError                             |Failed to download source from Azure storage. Unknown error. occurred                                                                                                                                                                                                                          |0           |
 |
-|**Category: EntityNotFound**
+|---------**Category: EntityNotFound**---------
 |
 |BadRequest\_MappingReferenceWasNotFound            |Mapping reference wasn't found.   |1           |
 |BadRequest\_DatabaseNotExist                       |Database doesn't exist.          |1           |
 |BadRequest\_TableNotExist                          |Table doesn't exist.          |1           |
 |BadRequest\_EntityNotFound                         |Azure Data Explorer entity (such as mapping, database, or table) wasn't found.           |1           |
 |
-|**Category: FileTooLarge**                                      
+|---------**Category: FileTooLarge**---------                                      
 |
 |Stream\_InputStreamTooLarge                        |The total size of the input data or a single field in the data is too large. HRESULT: 0x80DA0009                 |1           |
 |BadRequest\_FileTooLarge                           |Blob size has exceeded the size limit allowed for ingestion.<br>For more information about the size limit for ingestion, see [Azure Data Explorer data ingestion overview](/ingest-data-overview.md#Comparing-ingestion-methods-and-tools). |1           |
 |
-|**Category: InternalServiceError**
+|---------**Category: InternalServiceError**---------
 |
 |General\_InternalServerError                       |Internal server error occurred.                     |0           |
 |General\_TransientSchemaMismatch                   |Schema of target table at start time doesn't match the schema at commit time.         |0           |
 |Timeout                                            |The operation has been aborted because of timeout.     |0           |
 |
-|**Category: Unknown**
+|---------**Category: Unknown**---------
 |
 |Unknown                                            |Unknown error occurred.                             |0           |
 |
-|**Category: UpdatePolicyFailure**                                |
+|---------**Category: UpdatePolicyFailure**---------                               |
 |
 |UpdatePolicy\_QuerySchemaDoesNotMatchTableSchema   |Failed to invoke update policy. Query schema doesn't match table schema.     |1           |
 |UpdatePolicy\_FailedDescendantTransaction          |Failed to invoke update policy. Failed descendant transactional update policy.    |0           |
@@ -93,12 +93,12 @@ The following is a list of error codes you may encounter during [ingestion](inge
 |UpdatePolicy\_UnknownError                         |Failed to invoke update policy. Unknown error occurred.<br>The error is reported on the target table of update policy.    |0           |
 |UpdatePolicy\_Cyclic\_Update\_Not\_Allowed         |Failed to invoke update policy. Cyclic update isn't allowed.      |1           |
 |
-|**Category: UserAccessNotAuthorized**
+|---------**Category: UserAccessNotAuthorized**---------
 |                                                   
 |BadRequest\_InvalidKustoIdentityToken              |Invalid Kusto identity token.                                                                                 |1           |
 |Forbidden                                          |Insufficient security permissions to execute request.
 |
-| **Category: Other**
+| ---------**Category: Other**---------
 |
 |Skipped_IngestByTagAlreadyExists | Another stream with the same ingest-by tag was already ingested. <br> For more information about ingest-if-not-exists by tag, see [ingest-by tag](./kusto/management/extents-overview.md#ingest-by-extent-tags). |	1 |
 | General_AbandonedIngestion |The operation has been abandoned during execution as the system was transiently not able to complete it. Retry is automatically triggered. | 0|
