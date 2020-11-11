@@ -180,16 +180,15 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 ### .alter follower database prefetch-extents
 
-It is possible for the follower cluster to not make any new data queryable, before it has been fetched from underlying storage to the nodes' SSD (cache).
+The follower cluster can wait for new data to be fetched from the underlying storage to the nodes' SSD (cache) before making this data queryable.
 
 The following command alters the follower database configuration of pre-fetching new extents upon each schema refresh. 
-It requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md).
+This command requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md).
 
 > [!WARNING]
-> * Enabling this setting could potentially degrade the freshness of data in the follower database.
-> * The default configuration is `false` and it is recommended to keep that default.
-> * When choosing to alter the setting to `true`, it is recommended to closely evaluate the impact
-> on freshness for some time period after the configuration change.
+> * This setting can degrade the freshness of data in the follower database.
+> * The default configuration is `false`, and it is recommended to use the default.
+> * When choosing to alter the setting to `true`, closely evaluate the impact on freshness for some time period after the configuration change.
 
 **Syntax**
 
