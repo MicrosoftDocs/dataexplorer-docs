@@ -194,9 +194,6 @@ This command requires [DatabaseAdmin permissions](../management/access-control/r
 
 `.alter` `follower` `database` *DatabaseName* `prefetch-extents` = (`true` | `false`)
 
-`.alter` `follower` `database` *DatabaseName* [`from` `h@'`*path to leader cluster's metadata container*`'`]
-`prefetch-extents` = (`true` | `false`)
-
 **Example**
 
 <!-- csl -->
