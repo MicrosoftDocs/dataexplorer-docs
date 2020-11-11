@@ -53,6 +53,5 @@ print res=gzip_decompress_from_base64_string("x0x0x0")
 
 ## Next steps
 
-Create a compressed input string with [gzip_compress_to_base64_string()](gzip-base64-compress.md).
-
-See also [zlib_decompress_from_base64_string](zlib-base64-decompress.md).
+* Create a compressed input string with [gzip_compress_to_base64_string()](gzip-base64-compress.md).
+* See also [zlib_decompress_from_base64_string](zlib-base64-decompress.md).
