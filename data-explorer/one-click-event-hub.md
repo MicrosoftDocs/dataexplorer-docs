@@ -52,6 +52,7 @@ The **Ingest new data** window opens with the **Source** tab selected.
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
+    | Data connection name |   | The name that identifies your data connection.
     | Subscription |      | The subscription ID where the Event Hub resource is located.  |
     | Event Hub namespace | A unique namespace name | The name that identifies your namespace. |
     | Event Hub | *test-hub* | The Event Hub you wish to use. |
