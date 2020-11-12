@@ -52,11 +52,11 @@ The **Ingest new data** window opens with the **Source** tab selected.
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
-    | Data connection name |   | The name that identifies your data connection.
+    | Data connection name | *TestDataConnection*  | The name that identifies your data connection.
     | Subscription |      | The subscription ID where the Event Hub resource is located.  |
     | Event Hub namespace | A unique namespace name | The name that identifies your namespace. |
-    | Event Hub | *test-hub* | The Event Hub you wish to use. |
-    | Consumer group | *test-group* | The consumer group defined in your Event Hub. |
+    | Event Hub |  | The Event Hub you wish to use. |
+    | Consumer group |  | The consumer group defined in your Event Hub. |
     | Data format | | Data is read from the Event Hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects. Supported formats are CSV, JSON, PSV, SCsv, SOHsv TSV, and TSVE. |
     | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
 
