@@ -54,7 +54,7 @@ The **Ingest new data** window opens with the **Source** tab selected.
     |---|---|---|
     | Data connection name | *TestDataConnection*  | The name that identifies your data connection.
     | Subscription |      | The subscription ID where the Event Hub resource is located.  |
-    | Event Hub namespace | A unique namespace name | The name that identifies your namespace. |
+    | Event Hub namespace |  | The name that identifies your namespace. |
     | Event Hub |  | The Event Hub you wish to use. |
     | Consumer group |  | The consumer group defined in your Event Hub. |
     | Data format | | Data is read from the Event Hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects. Supported formats are CSV, JSON, PSV, SCsv, SOHsv TSV, and TSVE. |
