@@ -122,7 +122,7 @@ By default, export commands are distributed such that there may be many concurre
 * The default distribution for regular `.export` command is `per_shard`, which means all [extents](../extents-overview.md) that contain data to export write to storage concurrently. 
 * The default distribution for [export to external table](export-data-to-an-external-table.md) commands is `per_node`, which means the concurrency is the number of nodes in the cluster.
 
-When the number of extents/nodes is large, this may lead to high load on storage that results in storage throttling, or transient storage errors. These are possible suggestions to overcome these errors (by order of priority):
+When the number of extents/nodes is large, this may lead to high load on storage that results in storage throttling, or transient storage errors. The following suggestions may overcome these errors (by order of priority):
 
 1. Increase the number of storage accounts provided to the export command or to the [external table definition](../external-tables-azurestorage-azuredatalake.md) (the load will be evenly distributed between the accounts).
 2. Reduce the concurrency by setting the distribution hint to `per_node` (see command properties).
