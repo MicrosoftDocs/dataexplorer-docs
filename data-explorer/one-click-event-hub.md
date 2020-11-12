@@ -29,7 +29,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
 1. In the left menu of the [Web UI](https://dataexplorer.azure.com/), right-click a *database* or *table* and select **Ingest new data**. 
 
-:::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
+:::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select one-click ingestion in the web UI":::
 
 The **Ingest new data** window opens with the **Source** tab selected.
 
