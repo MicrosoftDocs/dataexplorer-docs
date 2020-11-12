@@ -11,7 +11,7 @@ ms.date: 10/05/2020
 ---
 # Query throttling policy
 
-Define the query throttling policy to limit the amount of concurrent queries the cluster is executing at the same time. This policy is a defense mechanism for the cluster to protect it from being overloaded with the higher number of concurrent queries than it can sustain. The policy can be changed at run-time and takes place immediately after the alter policy command completes.
+Define the query throttling policy to limit the number of concurrent queries the cluster can execute at the same time. This policy protects the cluster from being overloaded with more concurrent queries than it can sustain. The policy can be changed at run-time, and takes place immediately after the alter policy command completes.
 
 * Use [`.show cluster policy querythrottling`](query-throttling-policy-commands.md#show-cluster-policy-querythrottling) to show the current query throttling policy of a cluster.
 * Use [`.alter cluster policy querythrottling`](query-throttling-policy-commands.md#alter-cluster-policy-querythrottling) to set the current query throttling policy of a cluster.
