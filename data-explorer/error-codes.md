@@ -104,7 +104,7 @@ The following list contains error codes you may come across during [ingestion](i
 |Skipped_IngestByTagAlreadyExists | Another stream with the same ingest-by tag was already ingested. <br> For more information about ingest-if-not-exists by tag, see [ingest-by tag](./kusto/management/extents-overview.md#ingest-by-extent-tags). |	Permanent |
 | General_AbandonedIngestion |The operation has been abandoned during execution as the system was transiently not able to complete it. Retry is automatically triggered. |Transient|
 
-## Engine (query) error codes
+## Engine error codes
 
 The Kusto engine is written in native code and reports errors by using negative `HRESULT` values. 
 These errors are unusual with a programmatic API, but may occur. For example, operation failures may show a status of "`Exception from HRESULT:` *HRESULT-CODE*".
