@@ -68,16 +68,14 @@ For information on schema mapping with CSV-formatted data, see [Edit the schema]
 
 :::image type="content" source="media/one-click-event-hub/schema-tab.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hub in the one click experience":::
 
-If the data you see in the preview window is not complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your Event Hub:
-
-* **Discard and fetch new data**: discards the data presented and searches for new events.
-
-* **Fetch more**: Searches for more events in addition to the events already found. 
-
-> [!NOTE]
-> To see a preview of your data, your Event Hub must be sending events.
+1. If the data you see in the preview window is not complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your Event Hub:
+    * **Discard and fetch new data**: discards the data presented and searches for new events.
+    * **Fetch more**: Searches for more events in addition to the events already found. 
+    
+    > [!NOTE]
+    > To see a preview of your data, your Event Hub must be sending events.
         
-Select **Start ingestion**.
+1. Select **Start ingestion**.
 
 ## Complete data ingestion
 
