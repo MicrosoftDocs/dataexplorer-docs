@@ -109,15 +109,36 @@ Column name labels are added as the first row for each blob.
   <| myLogs | where id == "moshe" | limit 10000
 ```
 
-#### Known issues
+#### Failures during export commands
 
-**Failures during export command**
+Export commands can transiently fail during execution. [Continuous export](continuous-data-export.md) will automatically retry the command. Regular export commands ([export to storage](export-data-to-storage.md), [export to external table](export-data-to-an-external-table.md)) do not perform any retries.
 
-* The export command can transiently fail during execution. When the export command fails, artifacts that were already written to storage are not deleted. These artifacts will remain in storage. If the command fails, assume the export is incomplete, even if some artifacts were written. The best way to track both completion of the command and the artifacts exported upon successful completion is by using the [.show operations](../operations.md#show-operations) and [.show operation details](../operations.md#show-operation-details) commands.
+*  When the export command fails, artifacts that were already written to storage are not deleted. These artifacts will remain in storage. If the command fails, assume the export is incomplete, even if some artifacts were written. 
+* The best way to track both completion of the command and the artifacts exported upon successful completion is by using the [.show operations](../operations.md#show-operations) and [.show operation details](../operations.md#show-operation-details) commands.
 
-* By default, the export command is distributed such that all [extents](../extents-overview.md) that contain data to export 
-write to storage concurrently. On large exports, when the number of such extents is high, this may lead to high load on 
-storage that results in storage throttling, or transient storage errors. In such cases, it is recommended to try increasing
-the number of storage accounts provided to the export command (the load will be distributed between the accounts) and/or to 
-reduce the concurrency by setting the distribution hint to `per_node` (see command properties). Entirely disabling distribution
- is also possible, but this may significantly impact the command performance.
+**Storage failures**
+
+By default, export commands are distributed such that there may be many concurrent writes to storage. The level of distribution depends on the type of export command:
+* The default distribution for regular `.export` command is `per_shard`, which means all [extents](../extents-overview.md) that contain data to export write to storage concurrently. 
+* The default distribution for [export to external table](export-data-to-an-external-table.md) commands is `per_node`, which means the concurrency is the number of nodes in the cluster.
+
+When the number of extents/nodes is large, this may lead to high load on storage that results in storage throttling, or transient storage errors. These are possible suggestions to overcome these errors (by order of priority):
+
+1. Increase the number of storage accounts provided to the export command or to the [external table definition](../external-tables-azurestorage-azuredatalake.md) (the load will be evenly distributed between the accounts).
+2. Reduce the concurrency by setting the distribution hint to `per_node` (see command properties).
+3. Reduce concurrency of number of nodes exporting by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_nodes_percent` to the desired concurrency (percent of nodes). The property can be set as part of the export query. For example, the following command will limit the number of nodes writing to storage concurrently to 50% of the cluster nodes:
+
+```kusto
+.export async  to csv
+    ( h@"https://storage1.blob.core.windows.net/containerName;secretKey" ) 
+    with
+    (
+        distribuion="per_node"
+    ) 
+    <| 
+    set query_fanout_nodes_percent = 50;
+    ExportQuery
+```
+
+4. If exporting to a partitioned external table, setting the `spread`/`concurrency` properties can reduce concurrency (see details in the [command properties](export-data-to-an-external-table.md#syntax).
+5. If neither of the above work, is also possible to completely disable distribution by setting the `distributed` property to false, but this is not recommended, as it may significantly impact the command performance.

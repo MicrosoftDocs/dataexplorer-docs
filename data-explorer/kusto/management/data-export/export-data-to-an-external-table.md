@@ -12,13 +12,24 @@ ms.date: 03/30/2020
 # Export data to an external table
 
 You can export data by defining an [external table](../external-table-commands.md) and exporting data to it.
- The table properties are specified when [creating the external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table). You don't need to embed the table's properties in the export command. 
- The export command references the external table by name. Export data requires [database admin permission](../access-control/role-based-authorization.md).
+ The table properties are specified when [creating the external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table).
+ The export command references the external table by name.
+
+The command requires [table admin or database admin permission](../access-control/role-based-authorization.md).
 
 ## Syntax
 
 `.export` [`async`] `to` `table` *ExternalTableName* <br>
 [`with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <| *Query*
+
+**Arguments**
+
+* *ExternalTableName*: the name of the external table to export to.
+* *Query*: export query.
+* *Properties*: the following properties are supported as part of the export to external table command: 
+    * `sizeLimit`, `parquetRowGroupSize`, `distributed` - see the [export to storage](export-data-to-storage.md) section for details about these properties.
+    * `spread`, `concurrency` - properties to decrease/increase the concurrency of write operations. See [partition operator](../../query/partitionoperator.md) for details. These properties are only relevant when exporting to an external table which is partitioned by a _string_ partition. By default, the number of nodes exporting concurrently will be the minimum between 64 and number of cluster nodes.
+
 
 ## Output
 
@@ -35,15 +46,15 @@ You can export data by defining an [external table](../external-table-commands.m
 * It isn't possible to override the external table properties using the export command.
  For example, you can't export data in Parquet format to an external table whose data format is CSV.
 
-* The following properties are supported as part of the export command. See the [export to storage](export-data-to-storage.md) section for details: 
-   * `sizeLimit`, `parquetRowGroupSize`, `distributed`.
+* If the external table is partitioned, exported artifacts will be written to their respective directories according to the partition definitions as seen in the [partitioned external table example](#partitioned-external-table-example).
+  * If a partition value is null/empty or is an invalid directory value, per the definitions of the target storage, the partition value is replaced with a default value of `__DEFAULT_PARTITION__`.
 
-* If the external table is partitioned, exported artifacts will be written to their respective directories according to the partition definitions as seen in the [partitioned external table example](#partitioned-external-table-example). 
-  * If a partition value is null/empty or is an invalid directory value, per the definitions of the target storage, the partition value is replaced with a default value of `__DEFAULT_PARTITION__`. 
+* Please see section [failures during export commands](export-data-to-storage.md#failures-during-export-commands) about suggestions to overcome storage errors during export commands.
 
 ### Number of files
 
 The number of files written per partition depends on the settings:
+
  * If the external table includes datetime partitions only, or no partitions at all, the number of files written (for each partition, if exists) should be similar to the number of nodes in the cluster (or more, if `sizeLimit` is reached). When the export operation is distributed, all nodes in the cluster export concurrently. To disable distribution, so that only a single node does the writes, set `distributed` to false. This process will create fewer files, but will reduce the export performance.
 
 * If the external table includes a partition by a string column, the number of exported files should be a single file per partition (or more, if `sizeLimit` is reached). All nodes still participate in the export (operation is distributed), but each partition is assigned to a specific node. Setting `distributed` to false, will cause only a single node to do the export, but behavior will remain the same (a single file written per partition).
