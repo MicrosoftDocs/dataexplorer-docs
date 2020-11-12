@@ -18,4 +18,4 @@ Define the query throttling policy to limit the number of concurrent queries the
 * Use [`.delete cluster policy querythrottling`](query-throttling-policy-commands.md#delete-cluster-policy-querythrottling) to delete current query throttling policy of a cluster.
 
 > [!NOTE]
-> Do not change query throttling policy without thorough testing, it can lead to performance degradation if the cluster resources are not scaled as per the load and as a result, queries might start failing. 
+> Do not change query throttling policy without thorough testing. Changes can lead to performance degradation if the cluster resources are not scaled as per the load, and as a result, queries might start failing. 
