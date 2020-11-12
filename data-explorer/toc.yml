@@ -1356,8 +1356,6 @@
         href: ./kusto/concepts/runawayqueries.md
       - name: Overflows
         href: ./kusto/concepts/overflow.md
-      - name: Errors in native code
-        href: ./kusto/concepts/errorsinnativecode.md
   - name: Reference material for Kusto Query Language
     items:
     - name: RE2 syntax
@@ -1848,6 +1846,8 @@
       href: kusto/functions-library/series-moving-avg-fl.md
     - name: series_rolling_fl()
       href: kusto/functions-library/series-rolling-fl.md
+  - name: Error codes 
+    href: error-codes.md
 - name: Resources
   items:
   - name: Blog
