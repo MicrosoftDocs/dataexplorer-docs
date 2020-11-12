@@ -49,7 +49,7 @@ The command requires [table admin or database admin permission](../access-contro
 * If the external table is partitioned, exported artifacts will be written to their respective directories according to the partition definitions as seen in the [partitioned external table example](#partitioned-external-table-example).
   * If a partition value is null/empty or is an invalid directory value, per the definitions of the target storage, the partition value is replaced with a default value of `__DEFAULT_PARTITION__`.
 
-* Please see section [failures during export commands](export-data-to-storage.md#failures-during-export-commands) about suggestions to overcome storage errors during export commands.
+* For suggestions to overcome storage errors during export commands, see [failures during export commands](export-data-to-storage.md#failures-during-export-commands).
 
 ### Number of files
 
