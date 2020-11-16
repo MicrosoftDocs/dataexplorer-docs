@@ -116,6 +116,7 @@ Once you have completed schema mapping and column manipulations, the ingestion w
    
 After ingestion, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#explore-quick-queries-and-tools)** for initial exploration of your data.
 
+
 ## Next steps
 
 * [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md)
