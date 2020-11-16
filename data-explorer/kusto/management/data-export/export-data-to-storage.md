@@ -125,20 +125,20 @@ By default, export commands are distributed such that there may be many concurre
 When the number of extents/nodes is large, this may lead to high load on storage that results in storage throttling, or transient storage errors. These are possible suggestions to overcome these errors (by order of priority):
 
 1. Increase the number of storage accounts provided to the export command or to the [external table definition](../external-tables-azurestorage-azuredatalake.md) (the load will be evenly distributed between the accounts).
-2. Reduce the concurrency by setting the distribution hint to `per_node` (see command properties).
-3. Reduce concurrency of number of nodes exporting by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_nodes_percent` to the desired concurrency (percent of nodes). The property can be set as part of the export query. For example, the following command will limit the number of nodes writing to storage concurrently to 50% of the cluster nodes:
+1. Reduce the concurrency by setting the distribution hint to `per_node` (see command properties).
+1. Reduce concurrency of number of nodes exporting by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_nodes_percent` to the desired concurrency (percent of nodes). The property can be set as part of the export query. For example, the following command will limit the number of nodes writing to storage concurrently to 50% of the cluster nodes:
 
-```kusto
-.export async  to csv
-    ( h@"https://storage1.blob.core.windows.net/containerName;secretKey" ) 
-    with
-    (
-        distribuion="per_node"
-    ) 
-    <| 
-    set query_fanout_nodes_percent = 50;
-    ExportQuery
-```
+    ```kusto
+    .export async  to csv
+        ( h@"https://storage1.blob.core.windows.net/containerName;secretKey" ) 
+        with
+        (
+            distribuion="per_node"
+        ) 
+        <| 
+        set query_fanout_nodes_percent = 50;
+        ExportQuery
+    ```
 
-4. If exporting to a partitioned external table, setting the `spread`/`concurrency` properties can reduce concurrency (see details in the [command properties](export-data-to-an-external-table.md#syntax).
-5. If neither of the above work, is also possible to completely disable distribution by setting the `distributed` property to false, but this is not recommended, as it may significantly impact the command performance.
+1. If exporting to a partitioned external table, setting the `spread`/`concurrency` properties can reduce concurrency (see details in the [command properties](export-data-to-an-external-table.md#syntax).
+1. If neither of the above work, is also possible to completely disable distribution by setting the `distributed` property to false, but this is not recommended, as it may significantly impact the command performance.
