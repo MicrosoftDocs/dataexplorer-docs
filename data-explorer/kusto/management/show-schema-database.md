@@ -76,11 +76,11 @@ Because a version lower than the current database version was provided, the 'Tes
 "{""Databases"":{""TestDB"":{""Name"":""TestDB"",""Tables"":{""Events"":{""Name"":""Events"",""DefaultColumn"":null,""OrderedColumns"":[{""Name"":""Name"",""Type"":""System.String""},{""Name"":""StartTime"",""Type"":""System.DateTime""},{""Name"":""EndTime"",""Type"":""System.DateTime""},{""Name"":""City"",""Type"":""System.String""},{""Name"":""SessionId"",""Type"":""System.Int32""}]}},""PrettyName"":null,""MajorVersion"":1,""MinorVersion"":1,""Functions"":{}}}}"
 ```
 
-# .show database schema as csl script
+## .show database schema as csl script
 
 Generates a CSL script with all the required commands to create a copy of the given (or current) database schema.
 
-`.show` `database` *DatabaseName* schema `as` `csl` `script` [`with(`*options*`)`]
+`.show` `database` *DatabaseName* schema `as` `csl` `script` [`with(`*Options*`)`]
 
 The script, returned as a string, will contain:
 
