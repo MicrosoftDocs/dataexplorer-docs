@@ -52,6 +52,13 @@ There are several tools available for running queries in Azure Data Explorer.
 * [Web UI](web-query-data.md)
 * [Kusto.Cli](kusto/tools/kusto-cli.md)
 
+### Query open source repositories
+
+The following open source repositories contain the source code for the Kusto Query Lanuguage (KQL) parser and editor:
+
+* [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
+* [Kusto Query Language plugin for the Monaco editor](https://github.com/Azure/monaco-kusto) - A Kusto Query Language editor that can be embedded in web and electron based applications. 
+
 ### Query integrations
 
 * [Azure Monitor](query-monitor-data.md)
