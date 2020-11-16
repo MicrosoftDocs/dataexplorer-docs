@@ -52,7 +52,7 @@ There are several tools available for running queries in Azure Data Explorer.
 * [Web UI](web-query-data.md)
 * [Kusto.Cli](kusto/tools/kusto-cli.md)
 
-### Open Source
+### Query open source repositories
 
 The following open source repositories contain the source code for the Kusto Query Lanuguage (KQL) parser and editor:
 
