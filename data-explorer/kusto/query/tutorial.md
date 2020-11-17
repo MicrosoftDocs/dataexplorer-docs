@@ -298,7 +298,7 @@ StormEvents
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/time-count-hour.png" alt-text="Screenshot that shows a time chart count by hour.":::
+:::image type="content" source="images/tutorial/time-count-hour.png" alt-text="Screenshot that shows a timechart count by hour.":::
 
 Currently, `render` doesn't label durations properly, but we could use `| render columnchart` instead:
 
@@ -317,7 +317,7 @@ StormEvents
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/time-hour-state.png" alt-text="Screenshot of a time chart by hour and state.":::
+:::image type="content" source="images/tutorial/time-hour-state.png" alt-text="Screenshot of a timechart by hour and state.":::
 
 Divide by `1h` to turn the x-axis into an hour number instead of a duration:
 
@@ -632,7 +632,7 @@ InsightsMetrics
 
 The [render](./renderoperator.md?pivots=azuremonitor) operator specifies how the output of the query is rendered. Log Analytics renders output as a table by default. You can select different chart types after you run the query. The `render` operator is useful to include in queries in which a specific chart type usually is preferred.
 
-The following example shows the hourly average processor utilization for a single computer. It renders the output as a time chart.
+The following example shows the hourly average processor utilization for a single computer. It renders the output as a timechart.
 
 ```kusto
 InsightsMetrics

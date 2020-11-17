@@ -155,12 +155,12 @@ In Splunk, to sort in ascending order, you must use the `reverse` operator. Kust
 
 ### Multivalue expand
 
-`mvexpand` is a similar operator in both Splunk and Kusto.
+The multivalue expand operator is similar in both Splunk and Kusto.
 
 | Product | Operator | Example |
 |:---|:---|:---|
 | Splunk | `mvexpand` |  `mvexpand solutions` |
-| Kusto | `mvexpand` | `mvexpand solutions` |
+| Kusto | `mv-expand` | `mv-expand solutions` |
 
 ### Results facets, interesting fields
 
