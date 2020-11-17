@@ -12,7 +12,7 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 
-# Samples queries for Data Explorer and Azure Monitor
+# Samples for queries for Data Explorer and Azure Monitor
 
 ::: zone pivot="azuredataexplorer"
 
