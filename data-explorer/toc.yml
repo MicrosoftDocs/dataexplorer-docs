@@ -1715,6 +1715,10 @@
         href: ./kusto/management/cluster-follower.md
       - name: Data purge
         href: ./kusto/concepts/data-purge.md
+    - name: Errors and failures
+      items: 
+      - name: Error codes 
+        href: error-codes.md    
   - name: API
     items:
     - name: API overview
@@ -1846,8 +1850,6 @@
       href: kusto/functions-library/series-moving-avg-fl.md
     - name: series_rolling_fl()
       href: kusto/functions-library/series-rolling-fl.md
-  - name: Error codes 
-    href: error-codes.md
 - name: Resources
   items:
   - name: Blog
