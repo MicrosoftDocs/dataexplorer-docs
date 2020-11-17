@@ -36,7 +36,7 @@ Where:
 
 |*Visualization*     |Description|
 |--------------------|-|
-| `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
+| `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
 | `areachart`        | Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |
 | `barchart`         | First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.|
 | `card`             | First result record is treated as set of scalar values and shows as a card. |
@@ -172,6 +172,6 @@ range x from -2 to 2 step 0.1
 
 [Rendering examples in the tutorial](./tutorial.md#render-display-a-chart-or-table).
 
-[Anomaly detection](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning)
+[Anomaly detection](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
 
 ::: zone-end

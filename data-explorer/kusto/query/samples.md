@@ -307,7 +307,7 @@ Here's a step-by-step explanation of the preceding query:
 1. Use a `Count` of `0`.
 1. The `summarize` operator groups together bins from the original (left, or outer) argument to `union`. The operator also bins from the inner argument to it (the null bin rows). This process ensures that the output has one row per bin whose value is either zero or the original count.  
 
-## Get more from your data by using Kusto and machine learning 
+## Get more from your data by using Kusto with machine learning 
 
 Many interesting use cases use machine learning algorithms and derive interesting insights from telemetry data. Often, these algorithms require a structured dataset as their input. The raw log data usually doesn't match the required structure and size. 
 
@@ -1924,7 +1924,7 @@ customEvents
 
 This example has the following results:
 
-:::image type="content" source="images/samples/rolling-active-users.png" alt-text="Screenshot of a chart that shows rolling active users by day over a month.":::
+:::image type="content" source="images/samples/rolling-monthly-active-users-chart.png" alt-text="Screenshot of a chart that shows rolling active users by day over a month.":::
 
 The following example turns the preceding query into a reusable function. The example then uses the query to calculate rolling user stickiness. An active user in this query is defined as a user who completed a checkout at least once on a specific day.
 
@@ -1966,7 +1966,7 @@ on Timestamp
 
 This example has the following results:
 
-:::image type="content" source="images/samples/user-stickiness.png" alt-text="Screenshot of a chart that shows user stickiness over time.":::
+:::image type="content" source="images/samples/user-stickiness-chart.png" alt-text="Screenshot of a chart that shows user stickiness over time.":::
 
 ### Regression analysis
 
