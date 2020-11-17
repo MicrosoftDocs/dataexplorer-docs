@@ -1,5 +1,5 @@
 ---
-title: Samples - Azure Data Explorer
+title: Samples for queries in the Kusto query language - Azure Data Explorer
 description: This article describes common queries and examples that use the Kusto query language for Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,11 +11,12 @@ ms.date: 10/08/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-# Samples in Azure Data Explorer
+
+# Samples for Azure Data Explorer queries in the Kusto query language
 
 ::: zone pivot="azuredataexplorer"
 
-This article identifies a few common query needs in Azure Data Explorer and how you can use the Kusto query language to meet them.
+This article identifies common query needs in Azure Data Explorer and how you can use the Kusto query language to meet them.
 
 ## Display a column chart
 
@@ -872,7 +873,7 @@ Operator       |Description                         |Case-sensitive|Example (yie
 `!in`          |Not equals to any of the elements   |Yes           |`"bca" !in ("123", "345", "abc")`
 
 
-### `countof`
+### *countof*
 
 Counts occurrences of a substring in a string. Can match plain strings or use regex. Plain string matches might overlap, but regex matches don't overlap.
 
@@ -905,7 +906,7 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 ```
 
 
-### extract
+### *extract*
 
 Gets a match for a regular expression from a specific string. Optionally, can convert the extracted substring to the specified type.
 
@@ -949,7 +950,7 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 ```
 
 
-### `isempty`, `isnotempty`, `notempty`
+### *isempty*, *isnotempty*, *notempty*
 
 - `isempty` returns `true` if the argument is an empty string or null (see also, `isnull`).
 - `isnotempty` returns `true` if the argument isn't an empty string or null (see also, `isnotnull`). Alias: `notempty`.
@@ -975,7 +976,7 @@ Heartbeat | where isnotempty(ComputerIP) | take 1  // return 1 Heartbeat record 
 ```
 
 
-### `parseurl`
+### *parseurl*
 
 Splits a URL into its parts, like protocol, host, and port, and then returns a dictionary object that contains the parts as strings.
 
@@ -1004,7 +1005,7 @@ The outcome is:
 ```
 
 
-### replace
+### *replace*
 
 Replaces all regex matches with another string. 
 
@@ -1034,7 +1035,7 @@ Activity                                        |Replaced
 4663 - An attempt was made to access an object  |Activity ID 4663: An attempt was made to access an object.
 
 
-### split
+### *split*
 
 Splits a specific string according to a specified delimiter, and then returns an array of the resulting substrings.
 
@@ -1058,7 +1059,7 @@ print split("a__b", "_");           // result: ["a","","b"]
 print split("aabbcc", "bb");        // result: ["aa","cc"]
 ```
 
-### strcat
+### *strcat*
 
 Concatenates string arguments (supports 1-16 arguments).
 
@@ -1073,7 +1074,7 @@ print strcat("hello", " ", "world")	// result: "hello world"
 ```
 
 
-### strlen
+### *strlen*
 
 Returns the length of a string.
 
@@ -1088,7 +1089,7 @@ print strlen("hello")	// result: 5
 ```
 
 
-### substring
+### *substring*
 
 Extracts a substring from a specific source string, starting at the specified index. Optionally, you can specify the length of the requested substring.
 
@@ -1110,7 +1111,7 @@ print substring("ABCD", 0, 2);	// result: "AB"
 ```
 
 
-### tolower, toupper
+### *tolower*, *toupper*
 
 Converts a specific string to all lowercase or all uppercase.
 
@@ -1205,7 +1206,6 @@ Event
 | extend timeAgoMinutes = timeAgo/1m 
 ```
 
-
 ### Aggregations and bucketing by time intervals
 
 Another common scenario is the need to obtain statistics over a specific time period in a particular time unit. For this scenario, you can use a `bin` operator as part of a `summarize` clause.
@@ -1261,7 +1261,7 @@ Event
 
 The following sections give examples of aggregating the results of a query in Kusto query language.
 
-### count
+### *count*
 
 Count the number of rows in the result set after any filters are applied. The following example returns the total number of rows in the **Perf** table from the last 30 minutes. The result is returned in a column named *count_* unless you assign a specific name to the column:
 
@@ -1292,7 +1292,7 @@ The output from this example shows the `perf` record count trend line in five-mi
 
 :::image type="content" source="images/samples/perf-count-line-chart.png" alt-text="Line chart that shows the perf record count trend line in five-minute intervals.":::
 
-### `dcount`, `dcountif`
+### *dcount*, *dcountif*
 
 Use `dcount` and `dcountif` to count distinct values in a specific column. The following query evaluates how many distinct computers sent heartbeats in the past hour:
 
@@ -1540,7 +1540,7 @@ Here's the result:
 
 
 
-### Narrow results to a set of elements: `let`, `makeset`, `toscalar`, `in`
+### Narrow results to a set of elements: *let*, *makeset*, *toscalar*, *in*
 
 A common scenario is to select the names of specific entities based on a set of criteria, and then filter a different dataset down to that set of entities. For example, you might find computers that are known to have missing updates and identify IP addresses that these computers called out to.
 
@@ -1663,7 +1663,7 @@ print hosts_report
 ```
 
 
-### `parsejson`
+### *parsejson*
 
 It's easiest to access multiple elements in your JSON structure as a dynamic object. Use `parsejson` to cast text data to a dynamic object. After you convert the JSON to a dynamic type, you can use additional functions to analyze the data.
 
@@ -1673,7 +1673,7 @@ print hosts_object
 | extend status0=hosts_object.hosts[0].status, rate1=hosts_object.hosts[1].rate
 ```
 
-### `arraylength`
+### *arraylength*
 
 Use `arraylength` to count the number of elements in an array:
 
@@ -1683,7 +1683,7 @@ print hosts_object
 | extend hosts_num=arraylength(hosts_object.hosts)
 ```
 
-### `mvexpand`
+### *mvexpand*
 
 Use `mvexpand` to break the properties of an object into separate rows:
 
@@ -1695,7 +1695,7 @@ print hosts_object
 
 :::image type="content" source="images/samples/mvexpand-rows.png" alt-text="Screenshot shows hosts_0 with values for location, status, and rate.":::
 
-### `buildschema`
+### *buildschema*
 
 Use `buildschema` to get the schema that admits all values of an object:
 

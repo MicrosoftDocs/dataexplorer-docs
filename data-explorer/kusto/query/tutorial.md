@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Azure Data Explorer
-description: This tutorial describes how to use queries in Azure Data Explorer.
+title: 'Tutorial: How to use Kusto queries in Azure Data Explorer and Azure Monitor - Azure Data Explorer'
+description: This tutorial describes how to use queries to meet common query needs in Azure Data Explorer and Azure Monitor.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -12,11 +12,11 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 
-# Tutorial: How to use queries in Azure Data Explorer
+# Tutorial: How to use Kusto queries in Azure Data Explorer and Azure Monitor
 
 ::: zone pivot="azuredataexplorer"
 
-The best way to learn about the Kusto query language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the U.S.
+The best way to learn about the Kusto query language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
 
 <!--
   TODO: Provide link to reference data we used originally in StormEvents
@@ -29,7 +29,7 @@ The best way to learn about the Kusto query language is to look at some basic qu
 
 ## Count rows
 
-Our example database has a table called `StormEvents`. To find out how large the table is, we'll pipe its content into an operator that simply counts the rows in the table. 
+Our example database has a table called **StormEvents**. To find out how large the table is, we'll pipe its content into an operator that simply counts the rows in the table. 
 
 *Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
 
@@ -46,14 +46,14 @@ Here's the result:
     
 For more information, see [count operator](./countoperator.md).
 
-## `project`: select a subset of columns
+## Select a subset of columns: *project*
 
 Use [project](./projectoperator.md) to pick out only the columns you want. See the following example, which uses both the [project](./projectoperator.md)
 and the [take](./takeoperator.md) operators.
 
-## `where`: filter by a Boolean expression
+## Filter by Boolean expression: *where*
 
-Let's see only `flood` in `California` during Feb-2007:
+Let's see only `flood` events in `California` in Feb-2007:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -69,7 +69,7 @@ Here's the result:
 |---|---|---|---|---|
 |2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to western Kern County in the early morning hours of the 19th. Minor flooding was reported across State Highway 166 near Taft.|
 
-## `take`: shows *n* rows
+## Show *n* rows: *take*
 
 Let's see some data. What's in a random sample of five rows?
 
@@ -92,10 +92,10 @@ Here's the result:
 
 But [take](./takeoperator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.)
 
-## `sort` and `top`
+## Order results: *sort*, *top*
 
 * *Syntax note*: Some operators have parameters that are introduced by keywords like `by`.
-* In the following example, `desc` = descending order and `asc` = ascending order.
+* In the following example, `desc` orders results in descending order and `asc` orders results in ascending order.
 
 Show me the first *n* rows, ordered by a specific column:
 
@@ -126,7 +126,7 @@ StormEvents
 | project  StartTime, EndTime, EventType, EventNarrative
 ```
 
-## `extend`: compute derived columns
+## Compute derived columns: *extend*
 
 Create a new column by computing a value in every row:
 
@@ -167,7 +167,7 @@ Here's the result:
 
 [Scalar expressions](./scalar-data-types/index.md) can include all the usual operators (`+`, `-`, `*`, `/`, `%`), and a range of useful functions are available.
 
-## `summarize`: aggregate groups of rows
+## Aggregate groups of rows: *summarize*
 
 Count the number of events occur in each country:
 
@@ -177,9 +177,9 @@ StormEvents
 | summarize event_count = count() by State
 ```
 
-[summarize](./summarizeoperator.md) groups together rows that have the same values in the `by` clause, and then uses the `aggregation` function (for example, `count`) to combine each group into a single row. In this case, there's a row for each state and a column for the count of rows in that state.
+[summarize](./summarizeoperator.md) groups together rows that have the same values in the `by` clause, and then uses an aggregation function (for example, `count`) to combine each group in a single row. In this case, there's a row for each state and a column for the count of rows in that state.
 
-A range of [aggregation functions](./summarizeoperator.md#list-of-aggregation-functions) are available, and you can use several of them in one `summarize` operator to produce several computed columns. For example, we could get the count of storms in each state and also a sum of the unique type of storms per state. Then, we could use [top](./topoperator.md) to get the most storm-affected states:
+A range of [aggregation functions](./summarizeoperator.md#list-of-aggregation-functions) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. For example, we could get the count of storms in each state and also a sum of a unique type of storms per state. Then, we could use [top](./topoperator.md) to get the most storm-affected states:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -229,7 +229,7 @@ The query reduces all the timestamps to intervals of one day:
 
 The [bin()](./binfunction.md) is the same as the [floor()](./floorfunction.md) function in many languages. It simply reduces every value to the nearest multiple of the modulus that you supply, so that [summarize](./summarizeoperator.md) can assign the rows to groups.
 
-## `render`: display a chart or table
+## Display a chart or table: *render*
 
 You can project two columns and use them as the x-axis and the y-axis of a chart:
 
@@ -332,7 +332,7 @@ StormEvents
 
 :::image type="content" source="images/tutorial/column-hour-state.png" alt-text="Screenshot that shows a column chart by hour and state.":::
 
-## `join`
+## Join data types
 
 How would you find two specific event types and in which state each of them happened?
 
@@ -349,9 +349,9 @@ StormEvents
 | distinct State
 ```
 
-:::image type="content" source="images/tutorial/join-events-la.png" alt-text="Screenshot that shows joining the events lightning and avalanche.":::
+:::image type="content" source="images/tutorial/join-events-lightning-avalanche.png" alt-text="Screenshot that shows joining the events lightning and avalanche.":::
 
-## User session example of `join`
+## User session example of *join*
 
 This section doesn't use the `StormEvents` table.
 
@@ -375,7 +375,7 @@ Events
 | take 10
 ```
 
-:::image type="content" source="images/tutorial/user-session-extend.png" alt-text="User session extend.":::
+:::image type="content" source="images/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
 
 It's a good practice to use `project` to select only the columns you need before you perform the join. In the same clauses, rename the **timestamp** column.
 
@@ -395,11 +395,11 @@ StormEvents
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/event-count-duration.png" alt-text="Event count timechart by duration":::
+:::image type="content" source="images/tutorial/event-count-duration.png" alt-text="Screenshot of timechart results for event count by duration.":::
 
 Or, you can use `| render columnchart`:
 
-:::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Column chart event count timechart by duration.":::
+:::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Screenshot of a column chart for event count timechart by duration.":::
 
 ## Percentiles
 
@@ -413,7 +413,7 @@ To get this information, use the preceding query, but replace `render` with:
 
 In this case, we didn't use a `by` clause, so the result is a single row:
 
-:::image type="content" source="images/tutorial/summarize-percentiles-duration.png" alt-text="Table summarize percentiles by duration.":::
+:::image type="content" source="images/tutorial/summarize-percentiles-duration.png" lightbox="images/tutorial/summarize-percentiles-duration.png" alt-text="Screenshot of a table of results for summarize percentiles by duration.":::
 
 We can see from the results that:
 
@@ -437,8 +437,7 @@ StormEvents
 
 :::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state.":::
 
-
-## `let`: Assign a result to a variable
+## Assign a result to a variable: *let*
 
 Use [let](./letstatement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
 
@@ -523,7 +522,7 @@ Here's the result:
 |1,263,191|
     
 
-## `where`: Filter by Boolean expression
+## Filter by Boolean expression: *where*
 
 The [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) table has entries from the Azure activity log, which provides insight into any subscription-level or management group-level events that occurred in Azure. Let's see only `Critical` entries during a specific week.
 
@@ -538,10 +537,9 @@ AzureActivity
 | where Level == 'Critical'
 ```
 
-[![Results of where filtering example](images/tutorial/am-results-where.png)](images/tutorial/am-results-where.png#lightbox)
+:::image type="content" source="images/tutorial/azure-monitor-where-results.png" lightbox="images/tutorial/azure-monitor-where-results.png" alt-text="Screenshot that shows the results of the where operator example.":::
 
-
-## `project`: Select a subset of columns
+## Select a subset of columns: *project*
 
 Use [project](./projectoperator.md) to include only the columns you want. Building on the preceding example, let's limit the output to certain columns:
 
@@ -552,10 +550,9 @@ AzureActivity
 | project TimeGenerated, Level, OperationNameValue, ResourceGroup, _ResourceId
 ```
 
-[![Results of project example](images/tutorial/am-results-project.png)](images/tutorial/am-results-project.png#lightbox)
+:::image type="content" source="images/tutorial/azure-monitor-project-results.png" lightbox="images/tutorial/azure-monitor-project-results.png" alt-text="Screenshot that shows the results of the project operator example.":::
 
-
-## *take*: Show me *n* rows
+## Show *n* rows: *take*
 
 [NetworkMonitoring](/azure/azure-monitor/reference/tables/networkmonitoring) contains monitoring data for Azure virtual networks. Let's use the [take](./takeoperator.md) operator to look at five random sample rows in that table. The [take](./takeoperator.md) shows a certain number of rows from a table in no particular order:
 
@@ -565,9 +562,9 @@ NetworkMonitoring
 | project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
 ```
 
-[![Results of take example](images/tutorial/am-results-take.png)](images/tutorial/am-results-take.png#lightbox)
+:::image type="content" source="images/tutorial/azure-monitor-take-results.png" lightbox="images/tutorial/azure-monitor-take-results.png" alt-text="Screenshot that shows the results of the take operator example.":::
 
-## *sort* and *top*
+## Order results: *sort*, *top*
 
 Instead of random records, we can return the latest five records by first sorting by time:
 
@@ -586,9 +583,9 @@ NetworkMonitoring
 | project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
 ```
 
-:::image type="content" source="images/tutorial/am-results-top.png" lightbox="images/tutorial/am-results-top.png" alt-text="Screenshot that shows the results of the <code>top</code> example.":::
+:::image type="content" source="images/tutorial/azure-monitor-top-results.png" lightbox="images/tutorial/azure-monitor-top-results.png" alt-text="Screenshot that shows the results of the top operator example.":::
 
-## *extend*: Compute derived columns
+## Compute derived columns: *extend*
 
 The [extend](./projectoperator.md) operator is similar to [project](./projectoperator.md), but it adds to the set of columns instead of replacing them. You can use both operators to create a new column based on a computation on each row.
 
@@ -601,9 +598,9 @@ Perf
 | extend FreeGigabytes = FreeMegabytes / 1000
 ```
 
-:::image type="content" source="images/tutorial/am-results-extend.png" lightbox="images/tutorial/am-results-extend.png" alt-text="Screenshot that shows the results of the <code>extend</code> example.":::
+:::image type="content" source="images/tutorial/azure-monitor-extend-results.png" lightbox="images/tutorial/azure-monitor-extend-results.png" alt-text="Screenshot that shows the results of the extend operator example.":::
 
-## *summarize*: Aggregate groups of rows
+## Aggregate groups of rows: *summarize*
 
 The [summarize](./summarizeoperator.md) operator groups together rows that have the same values in the `by` clause. Then, it uses an aggregation function like `count` to combine each group in a single row. A range of [aggregation functions](./summarizeoperator.md#list-of-aggregation-functions) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. 
 
@@ -614,7 +611,7 @@ SecurityEvent
 | summarize count() by Computer, Level
 ```
 
-:::image type="content" source="images/tutorial/am-results-summarize-count.png" lightbox="images/tutorial/am-results-summarize-count.png" alt-text="Screenshot that shows the results of the <code>summarize count</code> example.":::
+:::image type="content" source="images/tutorial/azure-monitor-summarize-count-results.png" lightbox="images/tutorial/azure-monitor-summarize-count-results.png" alt-text="Screenshot that shows the results of the summarize count operator example.":::
 
 ## Summarize by scalar values
 
@@ -629,9 +626,9 @@ InsightsMetrics
 | summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
 ```
 
-:::image type="content" source="images/tutorial/am-results-summarize-avg.png" lightbox="images/tutorial/am-results-summarize-avg.png" alt-text="Screenshot that shows the results of the <code>avg</code> example.":::
+:::image type="content" source="images/tutorial/azure-monitor-summarize-avg-results.png" lightbox="images/tutorial/azure-monitor-summarize-avg-results.png" alt-text="Screenshot that shows the results of the avg operator example.":::
 
-## `render`: Display a chart or table
+## Display a chart or table: *render*
 
 The [render](./renderoperator.md?pivots=azuremonitor) operator specifies how the output of the query is rendered. Log Analytics renders output as a table by default. You can select different chart types after you run the query. The `render` operator is useful to include in queries in which a specific chart type usually is preferred.
 
@@ -645,7 +642,7 @@ InsightsMetrics
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/am-results-render.png" lightbox="images/tutorial/am-results-render.png" alt-text="Screenshot that shows the results of the <code>render</code> example.":::
+:::image type="content" source="images/tutorial/azure-monitor-render-results.png" lightbox="images/tutorial/azure-monitor-render-results.png" alt-text="Screenshot that shows the results of the render operator example.":::
 
 ## Multiple series
 
@@ -659,7 +656,7 @@ InsightsMetrics
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/am-results-render-multiple.png" lightbox="images/tutorial/am-results-render-multiple.png" alt-text="Screenshot that shows the results of the <code>render</code> with multiple series example.":::
+:::image type="content" source="images/tutorial/azure-monitor-render-multiple-results.png" lightbox="images/tutorial/azure-monitor-render-multiple-results.png" alt-text="Screenshot that shows the results of the render operator with multiple series example.":::
 
 ## Join data from two tables
 
@@ -680,10 +677,9 @@ VMComputer
 | project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
 ```
 
-:::image type="content" source="images/tutorial/am-results-join.png" lightbox="images/tutorial/am-results-join.png" alt-text="Screenshot that shows the results of the <code>join</code> example.":::
+:::image type="content" source="images/tutorial/azure-monitor-join-results.png" lightbox="images/tutorial/azure-monitor-join-results.png" alt-text="Screenshot that shows the results of the join operator example.":::
 
-
-## `let`: Assign a result to a variable
+## Assign a result to a variable: *let*
 
 Use [let](./letstatement.md) to make queries easier to read and manage. You can use this operator to assign the results of a query to a variable that you can use later. By using the `let` operator, the query in the preceding example can be rewritten as:
 
@@ -700,7 +696,7 @@ PhysicalComputer
 | project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
 ```
 
-:::image type="content" source="images/tutorial/am-results-let.png" lightbox="images/tutorial/am-results-let.png" alt-text="Screenshot that shows the results of the <code>let</code> example.":::
+:::image type="content" source="images/tutorial/azure-monitor-let-results.png" lightbox="images/tutorial/azure-monitor-let-results.png" alt-text="Screenshot that shows the results of the let operator example.":::
 
 ## Next steps
 
