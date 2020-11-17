@@ -1,6 +1,6 @@
 ---
-title: Samples for queries in the Kusto query language - Azure Data Explorer
-description: This article describes common queries and examples that use the Kusto query language for Azure Data Explorer.
+title: Samples for common queries in Data Explorer and Azure Monitor - Azure Data Explorer
+description: This article describes common queries and examples that use the Kusto query language for Azure Data Explorer and Azure Monitor.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -12,7 +12,7 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 
-# Samples for Azure Data Explorer queries in the Kusto query language
+# Samples for common queries in Data Explorer and Azure Monitor
 
 ::: zone pivot="azuredataexplorer"
 
@@ -32,10 +32,10 @@ StormEvents
 ```
 
 * The first column forms the x-axis. It can be numeric, date-time, or string. 
-* Use `where`, `summarize`, and `top` to limit the volume of data that you display.
+* Use `where`, `summarize`, and `top` to limit the volume of data you display.
 * Sort the results to define the order of the x-axis.
 
-:::image type="content" source="images/samples/color-bar-chart.png" alt-text="Screenshot of a column chart. The y-axis ranges from 0 to around 50. Ten colored columns depict the respective values of 10 locations.":::
+:::image type="content" source="images/samples/color-bar-chart.png" alt-text="Screenshot of a column chart, with ten colored columns that depict the respective values of 10 locations.":::
 
 ## Get sessions from start and stop events
 
@@ -69,7 +69,7 @@ Events
 
 To match start and stop events with a session ID:
 
-1. Use [let](./letstatement.md) to name a projection of the table that's pared down as far as possible before going into the join.
+1. Use [let](./letstatement.md) to name a projection of the table that's pared down as far as possible before starting the join.
 1. Use [project](./projectoperator.md) to change the names of the timestamps so that both the start time and the stop time appear in the result. `project` also selects the other columns to view in the result. 
 1. Use [join](./joinoperator.md) to match the start and stop entries for the same activity. A row for each activity is created. 
 1. Use `project` again to add a column to show the duration of the activity.
