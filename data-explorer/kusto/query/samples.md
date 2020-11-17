@@ -1,5 +1,5 @@
 ---
-title: Samples for common queries in Data Explorer and Azure Monitor - Azure Data Explorer
+title: Samples for queries in Azure Data Explorer and Azure Monitor
 description: This article describes common queries and examples that use the Kusto query language for Azure Data Explorer and Azure Monitor.
 services: data-explorer
 author: orspod
@@ -322,7 +322,7 @@ Logs
 | render anomalychart 
 ```
 
-The service identified few time buckets that had suspicious error rates. Use Kusto to zoom into this timeframe. Then, run a query that aggregates on the **Message** column. Try to find the top errors. 
+The service identified few time buckets that had suspicious error rates. Use Kusto to zoom into this timeframe. Then, run a query that aggregates on the `Message` column. Try to find the top errors. 
 
 The relevant parts of the entire stack trace of the message are trimmed out, so the results fit better on the page. 
 
@@ -375,7 +375,7 @@ Logs
 Now, you have a good view into the top errors that contributed to the detected anomalies.
 
 To understand the effect of these errors across the sample system, consider that: 
-* The **Logs** table contains additional dimensional data, like **Component** and **Cluster**.
+* The `Logs` table contains additional dimensional data, like `Component` and `Cluster`.
 * The new autocluster plugin can help derive component and cluster insight with a simple query. 
 
 In the following example, you can clearly see that each of the top four errors is specific to a component. Also, although the top three errors are specific to the DB4 cluster, the fourth error happens across all clusters.
@@ -398,7 +398,7 @@ Logs
 
 A common query use case is static mapping of values. Static mapping can help make results more presentable.
 
-For example, in the next table, **DeviceModel** specifies a device model. Using the device model isn't a convenient form of referencing the device name.  
+For example, in the next table, `DeviceModel` specifies a device model. Using the device model isn't a convenient form of referencing the device name.  
 
 |DeviceModel |Count 
 |---|---
@@ -543,11 +543,11 @@ JobHistory
 ## Retrieve the latest records (by timestamp) per identity
 
 Suppose you have a table that includes:
-* An **ID** column that identifies the entity with which each row is associated, such as a user ID or a node ID
-* A **timestamp** column that provides the time reference for the row
+* An `ID` column that identifies the entity with which each row is associated, such as a user ID or a node ID
+* A `timestamp` column that provides the time reference for the row
 * Other columns
 
-You can use the [top-nested operator](topnestedoperator.md) to make a query that returns the latest two records for each value of the **ID** column, where _latest_ is defined as _having the highest value of **timestamp**_:
+You can use the [top-nested operator](topnestedoperator.md) to make a query that returns the latest two records for each value of the `ID` column, where _latest_ is defined as _having the highest value of `timestamp`_:
 
 ```kusto
 datatable(id:string, timestamp:datetime, bla:string)           // #1
@@ -572,9 +572,9 @@ _Step-by-step explanation of the query_
 1. The `datatable` is a way to produce some test data for demonstration purposes. Normally, you'd use real data here.
 1. This line essentially means _return all distinct values of `id`_. 
 1. This line then returns, for the top two records that maximize:
-     * The **timestamp** column
-     * The columns of the preceding level (here, just **id**)
-     * The column specified at this level (here, **timestamp**)
+     * The `timestamp` column
+     * The columns of the preceding level (here, just `id`)
+     * The column specified at this level (here, `timestamp`)
 1. This line adds the values of the `bla` column for each of the records returned by the preceding level. If the table has other columns you're interested in, you can repeat this line for each of those columns.
 1. The final line uses the [project-away operator](projectawayoperator.md) to remove the "extra" columns that are introduced by `top-nested`.
 
@@ -596,7 +596,7 @@ You want to show the table like this:
 |Apple       |    100|33.3|
 |Banana       |    200|66.6|
 
-To change the way the table appears, calculate the total (sum) of the **SomeInt** column, and then divide each value of this column by the total. For arbitrary results, use the [as operator](asoperator.md).
+To change the way the table appears, calculate the total (sum) of the `SomeInt` column, and then divide each value of this column by the total. For arbitrary results, use the [as operator](asoperator.md).
 
 For example:
 
@@ -810,7 +810,7 @@ B_events
 
 ## Next steps
 
-- [Walk through a tutorial on the Kusto query language](tutorial.md?pivots=azuredataexplorer).
+- Walk through a [a tutorial on the Kusto query language](tutorial.md?pivots=azuredataexplorer).
 
 ::: zone-end
 
@@ -1201,7 +1201,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-The **timeAgo** column holds values like `00:09:31.5118992`, which are formatted as hh:mm:ss.fffffff. If you want to format these values to the `numver` of minutes since the start time, divide that value by `1m`:
+The `timeAgo` column holds values like `00:09:31.5118992`, which are formatted as hh:mm:ss.fffffff. If you want to format these values to the `numver` of minutes since the start time, divide that value by `1m`:
 
 ```kusto
 Event
@@ -1268,7 +1268,7 @@ The following sections give examples of how to aggregate the results of a query 
 
 ### *count*
 
-Count the number of rows in the result set after any filters are applied. The following example returns the total number of rows in the **Perf** table from the last 30 minutes. The result is returned in a column named **count_** unless you assign a specific name to the column:
+Count the number of rows in the result set after any filters are applied. The following example returns the total number of rows in the `Perf` table from the last 30 minutes. The result is returned in a column named `count_` unless you assign a specific name to the column:
 
 
 ```kusto
@@ -1292,7 +1292,7 @@ Perf
 | render timechart
 ```
 
-The output from this example shows the **Perf** record count trend line in five-minute intervals:
+The output from this example shows the `Perf` record count trend line in five-minute intervals:
 
 
 :::image type="content" source="images/samples/perf-count-line-chart.png" alt-text="Screenshot of a line chart that shows the Perf record count trend line in five-minute intervals.":::
@@ -1427,7 +1427,7 @@ Like `makelist`, `makeset` also works with ordered data. The `makeset` command g
 
 ### Expand lists
 
-The inverse operation of `makelist` or `makeset` is `mv-expand`. The `mv-expand` command expands a list of values to separate rows. It can expand across any number of dynamic columns, including JSON and array columns. For example, you can check the **Heartbeat** table for solutions that sent data from computers that sent a heartbeat in the past hour:
+The inverse operation of `makelist` or `makeset` is `mv-expand`. The `mv-expand` command expands a list of values to separate rows. It can expand across any number of dynamic columns, including JSON and array columns. For example, you can check the `Heartbeat` table for solutions that sent data from computers that sent a heartbeat in the past hour:
 
 ```kusto
 Heartbeat
@@ -1489,7 +1489,7 @@ Here's the result:
 
 ### Missing bins
 
-A useful application of `mv-expand` is filling in default values for missing bins. For example, suppose you're looking for the uptime of a specific computer by exploring its heartbeat. You also want to see the source of the heartbeat, which is in the **Category** column. Normally, we would use a basic `summarize` statement:
+A useful application of `mv-expand` is filling in default values for missing bins. For example, suppose you're looking for the uptime of a specific computer by exploring its heartbeat. You also want to see the source of the heartbeat, which is in the `Category` column. Normally, we would use a basic `summarize` statement:
 
 ```kusto
 Heartbeat
@@ -1581,9 +1581,9 @@ SecurityEvent
 | top 10 by Duration desc
 ```
 
-In the example, the first dataset filters for all sign-in events. That dataset is joined with a second dataset that filters for all sign-out events. The projected columns are **Computer**, **Account**, **TargetLogonId**, and **TimeGenerated**. The datasets are correlated by a shared column, **TargetLogonId**. The output is a single record per correlation that has both the sign-in and sign-out time.
+In the example, the first dataset filters for all sign-in events. That dataset is joined with a second dataset that filters for all sign-out events. The projected columns are `Computer`, `Account`, `TargetLogonId`, and `TimeGenerated`. The datasets are correlated by a shared column, `TargetLogonId`. The output is a single record per correlation that has both the sign-in and sign-out time.
 
-If both datasets have columns that have the same name, the columns of the right-side dataset are given an index number. In this example, the result would show **TargetLogonId** with values from the left-side table and **TargetLogonId1** with values from the right-side table. In this case, the second **TargetLogonId1** column was removed by using the `project-away` operator.
+If both datasets have columns that have the same name, the columns of the right-side dataset are given an index number. In this example, the result would show `TargetLogonId` with values from the left-side table and `TargetLogonId1` with values from the right-side table. In this case, the second `TargetLogonId1` column was removed by using the `project-away` operator.
 
 > [!NOTE]
 > To improve performance, keep only the relevant columns of the joined datasets by using the `project` operator.
@@ -2009,7 +2009,7 @@ traces
 
 ## Next steps
 
-- [Walk through a tutorial on the Kusto query language](tutorial.md?pivots=azuremonitor).
+- Walk through a [tutorial on the Kusto query language](tutorial.md?pivots=azuremonitor).
 
 
 ::: zone-end

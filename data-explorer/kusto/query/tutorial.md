@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Use Kusto queries in Data Explorer and Azure Monitor - Azure Data Explorer'
+title: 'Tutorial: Kusto queries in Azure Data Explorer & Azure Monitor'
 description: This tutorial describes how to use queries in the Kusto query language to meet common query needs in Azure Data Explorer and Azure Monitor.
 services: data-explorer
 author: orspod
@@ -29,7 +29,7 @@ The best way to learn about the Kusto query language is to look at some basic qu
 
 ## Count rows
 
-Our example database has a table called **StormEvents**. To find out how large the table is, we'll pipe its content into an operator that simply counts the rows in the table. 
+Our example database has a table called `StormEvents`. To find out how large the table is, we'll pipe its content into an operator that simply counts the rows in the table. 
 
 *Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
 
@@ -229,6 +229,7 @@ The query reduces all the timestamps to intervals of one day:
 
 The [bin()](./binfunction.md) is the same as the [floor()](./floorfunction.md) function in many languages. It simply reduces every value to the nearest multiple of the modulus that you supply, so that [summarize](./summarizeoperator.md) can assign the rows to groups.
 
+<a name="displaychartortable"></a>
 ## Display a chart or table: *render*
 
 You can project two columns and use them as the x-axis and the y-axis of a chart:
@@ -377,7 +378,7 @@ Events
 
 :::image type="content" source="images/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
 
-It's a good practice to use `project` to select only the columns you need before you perform the join. In the same clauses, rename the **timestamp** column.
+It's a good practice to use `project` to select only the columns you need before you perform the join. In the same clauses, rename the `timestamp` column.
 
 ## Plot a distribution
 
@@ -421,7 +422,7 @@ We can see from the results that:
 * 50% of storms lasted less than one hour and 25 minutes.
 * 5% of storms lasted at least two hours and 50 minutes.
 
-To get a separate breakdown for each state, use the **state** column separately with both `summarize` operators:
+To get a separate breakdown for each state, use the `state` column separately with both `summarize` operators:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -458,7 +459,7 @@ LightningStorms
 
 ## Combine data from several databases in a query
 
-In the following query, the **Logs** table must be in your default database:
+In the following query, the `Logs` table must be in your default database:
 
 ```kusto
 Logs | where ...
@@ -470,19 +471,19 @@ To access a table in a different database, use the following syntax:
 database("db").Table
 ```
 
-For example, if you have databases named **Diagnostics** and **Telemetry** and you want to correlate some of the data in the two tables, you might use the following query (assuming **Diagnostics** is your default database):
+For example, if you have databases named `Diagnostics` and `Telemetry` and you want to correlate some of the data in the two tables, you might use the following query (assuming `Diagnostics` is your default database):
 
 ```kusto
 Logs | join database("Telemetry").Metrics on Request MachineId | ...
 ```
 
-Use this query if your default database is **Telemetry**:
+Use this query if your default database is `Telemetry`:
 
 ```kusto
 union Requests, database("Diagnostics").Logs | ...
 ```
     
-The preceding two queries assume that both databases are in the cluster you're currently connected to. If the **Telemetry** database was in a cluster named *TelemetryCluster.kusto.windows.net*, to access it, use this query:
+The preceding two queries assume that both databases are in the cluster you're currently connected to. If the `Telemetry` database was in a cluster named *TelemetryCluster.kusto.windows.net*, to access it, use this query:
 
 ```kusto
 Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
@@ -499,7 +500,7 @@ For more information about combining data from several databases in a query, see
 
 The best way to learn about the Kusto query language is to look at some basic queries to get a "feel" for the language. These queries are similar to queries that are used in the Azure Data Explorer tutorial, but they instead use data from common tables in an Azure Log Analytics workspace. 
 
-Run these queries by using Log Analytics in the Azure portal. Log Analytics is a tool you can use to write log queries. Use log data in Azure Monitor, and then evaluate log query results. If you aren't familiar with Log Analytics, complete the [Log Analytics tutorial](/azure/azure-monitor/log-query/log-analytics-tutorial.md).
+Run these queries by using Log Analytics in the Azure portal. Log Analytics is a tool you can use to write log queries. Use log data in Azure Monitor, and then evaluate log query results. If you aren't familiar with Log Analytics, complete the [Log Analytics tutorial](/azure/azure-monitor/log-query/log-analytics-tutorial).
 
 All queries in this tutorial use the [Log Analytics demo environment](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade). You can use your own environment, but you might not have some of the tables that are used here. Because the data in the demo environment isn't static, the results of your queries might vary slightly from the results shown here.
 
@@ -508,7 +509,7 @@ All queries in this tutorial use the [Log Analytics demo environment](https://ms
 
 The [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) table contains performance data that's collected by insights such as Azure Monitor for VMs and Azure Monitor for containers. To find out how large the table is, we'll pipe its content into an operator that simply counts the rows.
 
-A query is a data source (usually a table name), optionally  followed by one or more pairs of the pipe character and some tabular operator. In this case, all records from the **InsightsMetrics** table are returned and then sent to the [count operator](./countoperator.md). The `count` operator displays the results because the operator is the last command in the query.
+A query is a data source (usually a table name), optionally  followed by one or more pairs of the pipe character and some tabular operator. In this case, all records from the `InsightsMetrics` table are returned and then sent to the [count operator](./countoperator.md). The `count` operator displays the results because the operator is the last command in the query.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -526,7 +527,7 @@ Here's the result:
 
 The [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) table has entries from the Azure activity log, which provides insight into any subscription-level or management group-level events that occurred in Azure. Let's see only `Critical` entries during a specific week.
 
-The [where](/azure/data-explorer/kusto/query/whereoperator) operator is common in the Kusto query language. `where` filters a table to rows that match specific criteria. The following example uses multiple commands. First, the query retrieves all records for the table. Then, it filters the data for records that are in the time range. Finally, it filters those results for records that have a `Critical` level.
+The [where](/azure/data-explorer/kusto/query/whereoperator) operator is common in the Kusto query language. `where` filters a table to rows that match specific criteria. The following example uses multiple commands. First, the query retrieves all records for the table. Then, it filters the data for only records that are in the time range. Finally, it filters those results for only records that have a `Critical` level.
 
 > [!NOTE]
 > In addition to specifying a filter in your query by using the `TimeGenerated` column, you can specify the time range in Log Analytics. For more information, see [Log query scope and time range in Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope).
@@ -644,7 +645,7 @@ InsightsMetrics
 
 :::image type="content" source="images/tutorial/azure-monitor-render-results.png" lightbox="images/tutorial/azure-monitor-render-results.png" alt-text="Screenshot that shows the results of the render operator example.":::
 
-## Multiple series
+## Work with multiple series
 
 If you use multiple values in a `summarize by` clause, the chart displays a separate series for each set of values:
 
@@ -662,9 +663,9 @@ InsightsMetrics
 
 What if you need to retrieve data from two tables in a single query? You can use the [join](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor) operator to combine rows from multiple tables in a single result set. Each table must have a column that has a matching value so that the join understands which rows to match.
 
-[VMComputer](/azure/azure-monitor/reference/tables/vmcomputer) is a table that Azure Monitor uses for VMs to store details about virtual machines that it monitors. [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) contains performance data that's collected from those virtual machines. One value collected in **InsightsMetrics** is available memory, but not the percentage memory that's available. To calculate the percentage, we need the physical memory for each virtual machine. That value is in **VMComputer**.
+[VMComputer](/azure/azure-monitor/reference/tables/vmcomputer) is a table that Azure Monitor uses for VMs to store details about virtual machines that it monitors. [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) contains performance data that's collected from those virtual machines. One value collected in *InsightsMetrics* is available memory, but not the percentage memory that's available. To calculate the percentage, we need the physical memory for each virtual machine. That value is in `VMComputer`.
 
-The following example query uses a join to perform this calculation. The [distinct](/azure/data-explorer/kusto/query/joinoperator) operator is used with **VMComputer** because details are regularly collected from each computer. As result, multiple rows are created for each computer in the table. The two tables are joined by using the **Computer** column. A row is created in the result set that includes columns from both tables for each row in **InsightsMetrics**, with a value in **Computer** that matches the same value in the **Computer** column in **VMComputer**.
+The following example query uses a join to perform this calculation. The [distinct](/azure/data-explorer/kusto/query/distinctoperator) operator is used with `VMComputer` because details are regularly collected from each computer. As result, multiple rows are created for each computer in the table. The two tables are joined by using the `Computer` column. A row is created in the result set that includes columns from both tables for each row in `InsightsMetrics`, with a value in `Computer` that matches the same value in the `Computer` column in `VMComputer`.
 
 ```kusto
 VMComputer
@@ -681,7 +682,7 @@ VMComputer
 
 ## Assign a result to a variable: *let*
 
-Use [let](./letstatement.md) to make queries easier to read and manage. You can use this operator to assign the results of a query to a variable that you can use later. By using the `let` operator, the query in the preceding example can be rewritten as:
+Use [let](./letstatement.md) to make queries easier to read and manage. You can use this operator to assign the results of a query to a variable that you can use later. By using the `let` statement, the query in the preceding example can be rewritten as:
 
  
 ```kusto

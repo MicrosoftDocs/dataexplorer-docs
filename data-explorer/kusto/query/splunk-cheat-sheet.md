@@ -26,7 +26,7 @@ The following table compares concepts and data structures between Splunk and Kus
  | Data record | event | row |  Terminology change only. |
  | Data record attribute | field |  column |  In Kusto, this setting is predefined as part of the table structure. In Splunk, each event has its own set of fields. |
  | Types | datatype |  datatype |  Kusto data types are more explicit because they are set on the columns. Both have the ability to work dynamically with data types and roughly equivalent set of datatypes, including JSON support. |
- | Query and search  | search | query |  Concepts are essentially the same between both Kusto and Splunk. |
+ | Query and search  | search | query |  Concepts are essentially the same between Kusto and Splunk. |
  | Event ingestion time | System Time | ingestion_time() |  In Splunk, each event gets a system timestamp of the time the event was indexed. In Kusto, you can define a policy called `ingestion_time` that exposes a system column that can be referenced through the `ingestion_time()` function. |
 
 ## Functions
@@ -47,7 +47,7 @@ The following table specifies functions in Kusto that are equivalent to Splunk f
 | `match` | `matches regex` |  (2)  |
 | `regex` | `matches regex` | In Splunk, `regex` is an operator. In Kusto, it's a relational operator. |
 | `searchmatch` | == | In Splunk, `searchmatch` allows searching for the exact string.
-| `random` | rand()<br>rand(n) | Splunk's function returns a number between zero to 2<sup>31</sup>-1. Kusto' returns a number between 0.0 and 1.0, or if a parameter is provided, between 0 and n-1.
+| `random` | rand()<br>rand(n) | Splunk's function returns a number between zero to 2<sup>31</sup>-1. Kusto's returns a number between 0.0 and 1.0, or if a parameter is provided, between 0 and n-1.
 | `now` | `now()` | (1)
 | `relative_time` | `totimespan()` | (1)<br>In Kusto, Splunk's equivalent of `relative_time(datetimeVal, offsetVal)` is `datetimeVal + totimespan(offsetVal)`.<br>For example, `search &#124; eval n=relative_time(now(), "-1d@d")` becomes `...  &#124; extend myTime = now() - totimespan("1d")`.
 
@@ -59,7 +59,7 @@ The following table specifies functions in Kusto that are equivalent to Splunk f
 The following sections give examples of how to use different operators in Splunk and Kusto.
 
 > [!NOTE]
-> For the purpose of the following example, the Splunk field _rule_ maps to a table in Kusto, and Splunk's default timestamp maps to the Logs Analytics _ingestion_time()_ column.
+> In the following examples, the Splunk field _rule_ maps to a table in Kusto, and Splunk's default timestamp maps to the Logs Analytics _ingestion_time()_ column.
 
 ### Search
 
@@ -89,7 +89,7 @@ Kusto log queries also support `take` as an alias to `limit`. In Splunk, if the 
 | Splunk | `head` | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
 | Kusto | `limit` | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
 
-### Get the first *n* events/rows ordered by a field/column
+### Get the first *n* events/rows ordered by a field or column
 
 For the bottom results, in Splunk, you use `tail`. In Kusto, you can specify ordering direction by using `asc`.
 
@@ -98,9 +98,9 @@ For the bottom results, in Splunk, you use `tail`. In Kusto, you can specify ord
 | Splunk | `head` |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
 | Kusto | `top` | <code>Office_Hub_OHubBGTaskError<br>&#124; top 20 by Event_Sequence</code> |
 
-### Extend the result set with new fields/columns
+### Extend the result set with new fields or columns
 
-Splunk has an `eval` function, but it's not comparable with the `eval` operator. Both the `eval` operator in Splunk and the `extend` operator in Kusto support only scalar functions and arithmetic operators.
+Splunk has an `eval` function, but it's not comparable with the `eval` operator in Kusto. Both the `eval` operator in Splunk and the `extend` operator in Kusto support only scalar functions and arithmetic operators.
 
 | Product | Operator | Example |
 |:---|:---|:---|
@@ -109,14 +109,14 @@ Splunk has an `eval` function, but it's not comparable with the `eval` operator.
 
 ### Rename
 
-Kusto uses the `project-rename` operator to rename a field. By using `project-rename`, a query can take advantage of any indexes that are pre-built for a field. Splunk has a `rename` operator that does the same.
+Kusto uses the `project-rename` operator to rename a field. In the `project-rename` operator, a query can take advantage of any indexes that are prebuilt for a field. Splunk has a `rename` operator that does the same.
 
 | Product | Operator | Example |
 |:---|:---|:---|
 | Splunk | `rename` |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
 | Kusto | `project-rename` | <code>Office_Hub_OHubBGTaskError<br>&#124; project-rename exception = Date_Exception</code> |
 
-### Format results/Projection
+### Format results and projection
 
 Splunk doesn't appear to have an operator that's similar to `project-away`. You can use the UI to filter away fields.
 
@@ -137,7 +137,7 @@ See the [list of aggregations functions](summarizeoperator.md#list-of-aggregatio
 
 ### Join
 
-Join in Splunk has significant limitations. The subquery has a limit of 10,000 results (set in the deployment configuration file), and a limited number of join flavors are available.
+`join` in Splunk has substantial limitations. The subquery has a limit of 10,000 results (set in the deployment configuration file), and a limited number of join flavors are available.
 
 | Product | Operator | Example |
 |:---|:---|:---|
@@ -173,7 +173,7 @@ In Log Analytics in the Azure portal, only the first column is exposed. All colu
 
 ### De-duplicate
 
-In Kusto, you can use `summarize arg_min()` instead to reverse the order of which record is chosen.
+In Kusto, you can use `summarize arg_min()` to reverse the order of which record is chosen.
 
 | Product | Operator | Example |
 |:---|:---|:---|

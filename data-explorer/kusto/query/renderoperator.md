@@ -170,7 +170,7 @@ range x from -2 to 2 step 0.1
 
 ::: zone pivot="azuredataexplorer"
 
-[Rendering examples in the tutorial](./tutorial.md#display-a-chart-or-table--render)
+[Rendering examples in the tutorial](./tutorial.md#displaychartortable)
 
 [Anomaly detection](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
 
