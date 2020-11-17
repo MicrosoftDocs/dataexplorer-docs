@@ -20,7 +20,7 @@ The following features make one-click ingestion so useful:
 * Ingest data from different kinds of sources: local file, blobs, and containers (up to 10,000 blobs)
 * Ingest data in a variety of [formats](#file-formats)
 * Ingest data into new or existing tables
-* Table mapping and schema is suggested to you and easy to change
+* Table mapping and schema are suggested to you and easy to change
 * Continue ingestion easily and quickly from a container with Event Grid
 
 One-click ingestion is particularly useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
@@ -39,11 +39,11 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
     :::image type="content" source="media/ingest-data-one-click/welcome-ingestion.png" alt-text="Ingest new data from welcome to Azure Data Explorer":::
 
-* To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), right-click the **database** or **table** row in the left menu of the Azure Data Explorer web UI and select **Ingest new data (preview)**.
+* To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), right-click the **database** or **table** row in the left menu of the Azure Data Explorer web UI and select **Ingest new data**.
 
     :::image type="content" source="media/ingest-data-one-click/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
 
-* To access the wizard from the Azure portal, select **Query** from the left menu, right click on the **database** or **table**, and select **Ingest new data (preview)**.
+* To access the wizard from the Azure portal, select **Query** from the left menu, right-click on the **database** or **table**, and select **Ingest new data**.
 
     :::image type="content" source="media/ingest-data-one-click/access-from-portal.png" alt-text="Access the one click ingestion wizard from Azure portal":::
 
@@ -75,14 +75,7 @@ In the **Schema** tab, do the following actions:
 
 #### File formats
 
-One-click ingestion supports ingesting a new table from source data in any of the following formats:
-* JSON
-* CSV
-* TSV
-* SCSV
-* SOHSV
-* TSVE
-* PSV
+One-click ingestion supports ingesting from source data in all [data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
 
 ### Editor window
 
@@ -90,11 +83,23 @@ In the **Editor** window, you can adjust data table columns as necessary.
 
 |Table type  |Available column adjustments  |
 |---------|---------|
-|New     | New column, Delete column, Sort ascending, Sort descending  |
-|Existing     | New column, Sort ascending, Sort descending  |
+|New     | New column, Delete column, Update column, Sort ascending, Sort descending  |
+|Existing     | New column, Update column, Sort ascending, Sort descending  |
 
 >[!NOTE]
 > At any time, you can open the [command editor](one-click-ingestion-new-table.md#command-editor) above the **Editor** pane. In the command editor, you can view and copy the automatic commands generated from your inputs.
+
+#### Mapping transformations
+
+Some data format mappings (Parquet, JSON, and Avro) support simple ingest-time transformations. To apply mapping transformations, create or update a column in the [Editor window](#editor-window).
+
+Mapping transformations can be performed on a column of **Type** string or datetime, with the **Source** having data type int or long. Supported mapping transformations are:
+* DateTimeFromUnixSeconds
+* DateTimeFromUnixMilliseconds
+* DateTimeFromUnixMicroseconds
+* DateTimeFromUnixNanoseconds
+
+For more information, see [mapping transformations](kusto/management/mappings.md#mapping-transformations).
 
 ### Data ingestion
 
@@ -110,6 +115,7 @@ Once you have completed schema mapping and column manipulations, the ingestion w
 ### Initial data exploration
    
 After ingestion, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#explore-quick-queries-and-tools)** for initial exploration of your data.
+
 
 ## Next steps
 

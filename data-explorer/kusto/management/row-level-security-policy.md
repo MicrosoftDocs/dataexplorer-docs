@@ -45,7 +45,7 @@ This is useful if you want to try various queries for row_level_security, but do
 > The following restrictions apply to the `query`:
 >
 > * The query should produce exactly the same schema as the table on which the policy is defined. That is, the query's result should return exactly the same columns as the original table, in the same order, with the same names and types.
-> * The query can only use the following operators: `extend`, `where`, `project`, `project-away`, `project-rename`, `project-reorder`, `join` and `union`.
+> * The query can only use the following operators: `extend`, `where`, `project`, `project-away`, `project-keep`, `project-rename`, `project-reorder`, `join` and `union`.
 > * The query can't reference other tables on which RLS is enabled.
 > * The query can be any of the following, or a combination of them:
 >    * Query (for example, `<table_name> | extend CreditCardNumber = "****"`)
