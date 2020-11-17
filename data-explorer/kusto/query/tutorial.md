@@ -490,9 +490,13 @@ Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request
 ```
 
 > [!NOTE]
-> when the cluster is specified, the database is mandatory.
+> When the cluster is specified, the database is mandatory.
 
 For more information about combining data from several databases in a query, see [cross-database queries](cross-cluster-or-database-queries.md).
+
+## Next steps
+
+- View code samples for the [Kusto query language](samples.md?pivots=azuredataexplorer).
 
 ::: zone-end
 
@@ -701,7 +705,7 @@ PhysicalComputer
 
 ## Next steps
 
-- [View code samples for the Kusto query language](samples.md?pivots=azuremonitor).
+- View code samples for the [Kusto query language](samples.md?pivots=azuremonitor).
 
 
 ::: zone-end
