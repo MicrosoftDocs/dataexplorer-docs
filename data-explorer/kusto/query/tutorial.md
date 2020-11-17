@@ -523,7 +523,7 @@ Here's the result:
 |1,263,191|
     
 
-## `where`: Filter by a Boolean expression
+## `where`: Filter by Boolean expression
 
 The [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) table has entries from the Azure activity log, which provides insight into any subscription-level or management group-level events that occurred in Azure. Let's see only `Critical` entries during a specific week.
 
@@ -555,7 +555,7 @@ AzureActivity
 [![Results of project example](images/tutorial/am-results-project.png)](images/tutorial/am-results-project.png#lightbox)
 
 
-## `take`: show me *n* rows
+## *take*: Show me *n* rows
 
 [NetworkMonitoring](/azure/azure-monitor/reference/tables/networkmonitoring) contains monitoring data for Azure virtual networks. Let's use the [take](./takeoperator.md) operator to look at five random sample rows in that table. The [take](./takeoperator.md) shows a certain number of rows from a table in no particular order:
 
@@ -567,7 +567,7 @@ NetworkMonitoring
 
 [![Results of take example](images/tutorial/am-results-take.png)](images/tutorial/am-results-take.png#lightbox)
 
-## `sort` and `top`
+## *sort* and *top*
 
 Instead of random records, we can return the latest five records by first sorting by time:
 
@@ -586,10 +586,9 @@ NetworkMonitoring
 | project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
 ```
 
-[![Results of top example](images/tutorial/am-results-top.png)](images/tutorial/am-results-top.png#lightbox)
+:::image type="content" source="images/tutorial/am-results-top.png" lightbox="images/tutorial/am-results-top.png" alt-text="Screenshot that shows the results of the <code>top</code> example.":::
 
-
-## `extend`: Compute derived columns
+## *extend*: Compute derived columns
 
 The [extend](./projectoperator.md) operator is similar to [project](./projectoperator.md), but it adds to the set of columns instead of replacing them. You can use both operators to create a new column based on a computation on each row.
 
@@ -602,10 +601,9 @@ Perf
 | extend FreeGigabytes = FreeMegabytes / 1000
 ```
 
-[![Results of extend example](images/tutorial/am-results-extend.png)](images/tutorial/am-results-extend.png#lightbox)
+:::image type="content" source="images/tutorial/am-results-extend.png" lightbox="images/tutorial/am-results-extend.png" alt-text="Screenshot that shows the results of the <code>extend</code> example.":::
 
-
-## `summarize`: Aggregate groups of rows
+## *summarize*: Aggregate groups of rows
 
 The [summarize](./summarizeoperator.md) operator groups together rows that have the same values in the `by` clause. Then, it uses an aggregation function like `count` to combine each group in a single row. A range of [aggregation functions](./summarizeoperator.md#list-of-aggregation-functions) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. 
 
@@ -616,8 +614,7 @@ SecurityEvent
 | summarize count() by Computer, Level
 ```
 
-[![Results of summarize count example](images/tutorial/am-results-summarize-count.png)](images/tutorial/am-results-summarize-count.png#lightbox)
-
+:::image type="content" source="images/tutorial/am-results-summarize-count.png" lightbox="images/tutorial/am-results-summarize-count.png" alt-text="Screenshot that shows the results of the <code>summarize count</code> example.":::
 
 ## Summarize by scalar values
 
@@ -632,11 +629,8 @@ InsightsMetrics
 | summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
 ```
 
+:::image type="content" source="images/tutorial/am-results-summarize-avg.png" lightbox="images/tutorial/am-results-summarize-avg.png" alt-text="Screenshot that shows the results of the <code>avg</code> example.":::
 
-[![Results of summarize avg example](images/tutorial/am-results-summarize-avg.png)](images/tutorial/am-results-summarize-avg.png#lightbox)
-
-
-`
 ## `render`: Display a chart or table
 
 The [render](./renderoperator.md?pivots=azuremonitor) operator specifies how the output of the query is rendered. Log Analytics renders output as a table by default. You can select different chart types after you run the query. The `render` operator is useful to include in queries in which a specific chart type usually is preferred.
@@ -651,9 +645,7 @@ InsightsMetrics
 | render timechart
 ```
 
-[![Results of render example](images/tutorial/am-results-render.png)](images/tutorial/am-results-render.png#lightbox)
-
-
+:::image type="content" source="images/tutorial/am-results-render.png" lightbox="images/tutorial/am-results-render.png" alt-text="Screenshot that shows the results of the <code>render</code> example.":::
 
 ## Multiple series
 
@@ -667,10 +659,7 @@ InsightsMetrics
 | render timechart
 ```
 
-[![Results of render with multiple series example](images/tutorial/am-results-render-multiple.png)](images/tutorial/am-results-render-multiple.png#lightbox)
-
-
-:::image type="content" source="images/tutorial/column-hour-state.png" alt-text="Screenshot that shows a column chart by hour and state.":::
+:::image type="content" source="images/tutorial/am-results-render-multiple.png" lightbox="images/tutorial/am-results-render-multiple.png" alt-text="Screenshot that shows the results of the <code>render</code> with multiple series example.":::
 
 ## Join data from two tables
 
@@ -691,10 +680,7 @@ VMComputer
 | project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
 ```
 
-[![Results of join example](images/tutorial/am-results-join.png)](images/tutorial/am-results-join.png#lightbox)
-
-
-:::image type="content" source="images/tutorial/column-hour-state.png" alt-text="Screenshot that shows a column chart by hour and state.":::
+:::image type="content" source="images/tutorial/am-results-join.png" lightbox="images/tutorial/am-results-join.png" alt-text="Screenshot that shows the results of the <code>join</code> example.":::
 
 
 ## `let`: Assign a result to a variable
@@ -714,7 +700,7 @@ PhysicalComputer
 | project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
 ```
 
-:::image type="content" source="images/tutorial/am-results-let.png" lightbox="images/tutorial/am-results-let.png" alt-text="Screenshot that shows results of the let example.":::
+:::image type="content" source="images/tutorial/am-results-let.png" lightbox="images/tutorial/am-results-let.png" alt-text="Screenshot that shows the results of the <code>let</code> example.":::
 
 ## Next steps
 
