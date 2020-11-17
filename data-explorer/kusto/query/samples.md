@@ -1242,7 +1242,7 @@ Event
 | summarize events_count=count() by startofday(TimeGenerated) 
 ```
 
-This query produces the following result:
+Here's the result:
 
 |timestamp|count_|
 |--|--|
@@ -1467,7 +1467,7 @@ Here's the result:
 | ... | ... |
 
 
-You can use `makelist` to group items together. In these results, you can see the list of computers per solution:
+You can use `makelist` to group items together. In the result, you can see the list of computers per solution:
 
 ```kusto
 Heartbeat
@@ -1508,7 +1508,7 @@ Here's the result:
 | Direct Agent | 2017-06-06T22:00:00Z | 60 |
 | ... | ... | ... |
 
-In these results, the bucket that's associated with "2017-06-06T19:00:00Z" is missing because there isn't any heartbeat data for that hour. Use the `make-series` function to assign a default value to empty buckets. A row is generated for each category. The result includes two extra array columns, one for values and one for matching time buckets:
+In the result, the bucket that's associated with "2017-06-06T19:00:00Z" is missing because there isn't any heartbeat data for that hour. Use the `make-series` function to assign a default value to empty buckets. A row is generated for each category. The result includes two extra array columns, one for values and one for matching time buckets:
 
 ```kusto
 Heartbeat
@@ -1710,7 +1710,7 @@ print hosts_object
 | summarize buildschema(hosts_object)
 ```
 
-The results are a schema in JSON format:
+The result is a schema in JSON format:
 
 ```json
 {
