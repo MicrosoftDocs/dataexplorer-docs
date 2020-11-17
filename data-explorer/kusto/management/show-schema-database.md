@@ -80,7 +80,22 @@ Because a version lower than the current database version was provided, the 'Tes
 
 Generates a CSL script with all the required commands to create a copy of the given (or current) database schema.
 
+**Syntax**
+
 `.show` `database` *DatabaseName* schema `as` `csl` `script` [`with(`*Options*`)`]
+
+**Arguments**
+
+The following *Options* are all optional:
+
+* `IncludeEncodingPolicies`: (`true` | `false`) - If `true`, encoding policies at the database/table/column level will be included. Defaults to `false`. 
+* `IncludeSecuritySettings`: (`true` | `false`) - If `true`, the following options would be included:
+  * Authorized principal at the database/table level.
+  * Row level security policies at the table level.
+  * Restricted view access policies at the table level.
+* `IncludeIngestionMappings`: (`true` | `false`) - If `true`, ingestion mappings at the table level will be included. Defaults to `false`. 
+
+**Returns**
 
 The script, returned as a string, will contain:
 
@@ -88,16 +103,7 @@ The script, returned as a string, will contain:
   * The generated command will create a volatile database, and will be commented-out when added to the script.
 * Commands to create all the tables in the database.
 * Commands to set all database/tables/columns policies to match the original policies.
-* Commands to create or alter all user defined functions in the database.
-
-Optional *Options* to include:
-
-* `IncludeEncodingPolicies`: (`true` | `false`) - If `true`, encoding policies at the database/table/column level will be included. Defaults to `false. 
-* `IncludeSecuritySettings`: (`true` | `false`) - If `true`, the following would be included:
-  * Authorized principal at the database/table level.
-  * Row leve security policies at the table level.
-  * Restricted view access policies at the table level.
-* `IncludeIngestionMappings`: (`true` | `false`) - If `true`, ingestion mappings at the table level will be included. Defaults to `false. 
+* Commands to create or alter all user-defined functions in the database.
 
 **Examples** 
  
