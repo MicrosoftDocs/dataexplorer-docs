@@ -105,15 +105,15 @@ Generates a CSL script with all the required commands to create a copy of the gi
 
 **Syntax**
 
-`.show` `database` *DatabaseName* schema `as` `csl` `script` [`with(`*Options*`)`]
+`.show` `database` *DatabaseName* `schema` `as` `csl` `script` [`with(`*Options*`)`]
 
 **Arguments**
 
 The following *Options* are all optional:
 
 * `IncludeEncodingPolicies`: (`true` | `false`) - If `true`, encoding policies at the database/table/column level will be included. Defaults to `false`. 
-* `IncludeSecuritySettings`: (`true` | `false`) - If `true`, the following options would be included:
-  * Authorized principal at the database/table level.
+* `IncludeSecuritySettings`: (`true` | `false`) - Defaults to `false`. If `true`, the following options would be included:
+  * Authorized principals at the database/table level.
   * Row level security policies at the table level.
   * Restricted view access policies at the table level.
 * `IncludeIngestionMappings`: (`true` | `false`) - If `true`, ingestion mappings at the table level will be included. Defaults to `false`. 
