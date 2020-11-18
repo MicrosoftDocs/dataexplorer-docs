@@ -124,9 +124,9 @@ For an example of how to generate sample data, see [Ingest data from Event Hub i
 ## Geo-redundancy
 
 Event Hub offers a [Geo-disaster recovery](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr) solution. 
-ADX doen't support `Alias` Event Hub namespaces. In order to implement recovery in your solution, 
-create 2 Event Hub data connections for each of the namespaces (primary and secondary). ADX will listen to both of them.
-Note it is your responsibility to implement a failover in case of a disaster, from primary namespace to the secondary namespace.
+ADX doesn't support `Alias` Event Hub namespaces. In order to implement recovery in your solution, 
+create 2 Event Hub data connections, one for each of the namespaces (primary and secondary). ADX will listen to both of them.
+Note that it is your responsibility to implement a failover in case of a disaster, from primary namespace to the secondary namespace.
 
 ## Next steps
 
