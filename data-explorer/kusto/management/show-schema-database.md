@@ -31,7 +31,6 @@ When used with a version, the database is only returned if it's a later version 
 > [!NOTE]
 > The version should only be provided in "vMM.mm" format. MM represents the major version and mm represent the minor version.
 
-
 **Example** 
  
 The database 'TestDB' has one table called 'Events'.
@@ -100,6 +99,7 @@ When used with a version, the database is only returned if it's a later version 
 ```json
 "{""Databases"":{""TestDB"":{""Name"":""TestDB"",""Tables"":{""Events"":{""Name"":""Events"",""DefaultColumn"":null,""OrderedColumns"":[{""Name"":""Name"",""Type"":""System.String""},{""Name"":""StartTime"",""Type"":""System.DateTime""},{""Name"":""EndTime"",""Type"":""System.DateTime""},{""Name"":""City"",""Type"":""System.String""},{""Name"":""SessionId"",""Type"":""System.Int32""}]}},""PrettyName"":null,""MajorVersion"":1,""MinorVersion"":1,""Functions"":{}}}}"
 ```
+
 ## .show database schema as csl script
 
 Generates a CSL script with all the required commands to create a copy of the given (or current) database schema.
