@@ -12,6 +12,7 @@ ms.date: 02/13/2020
 # .show database schema commands
 
 The following commands show database schema as a table, JSON object, or CSL script.
+
 ## .show databases schema
 
 **Syntax**
