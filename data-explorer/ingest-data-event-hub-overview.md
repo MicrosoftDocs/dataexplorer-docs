@@ -121,6 +121,13 @@ See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) 
 
 For an example of how to generate sample data, see [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md#generate-sample-data)
 
+## Geo-redundancy
+
+Event Hub offers a [Geo-disaster recovery](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr) solution. 
+ADX doen't support `Alias` Event Hub namespaces. In order to implement recovery in your solution, 
+create 2 Event Hub data connections for each of the namespaces (primary and secondary). ADX will listen to both of them.
+Note it is your responsibility to implement a failover in case of a disaster, from primary namespace to the secondary namespace.
+
 ## Next steps
 
 * [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md)
