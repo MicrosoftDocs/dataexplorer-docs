@@ -370,7 +370,7 @@
       href: using-metrics.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
-    - name: Create Power Apps application to query data in Azure Data Explorer
+    - name: Query data in Power Apps application
       href: power-apps-connector.md        
   - name: Share data
     items:
