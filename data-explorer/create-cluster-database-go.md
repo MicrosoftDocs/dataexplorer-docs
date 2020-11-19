@@ -38,7 +38,7 @@ This section is optional. If you're interested to learn how the code works, you 
 
 The program needs to authenticate to Azure Data Explorer before executing any operations. The [Client credentials authentication type](/azure/developer/go/azure-sdk-authorization#use-environment-based-authentication) is used by [auth.NewAuthorizerFromEnvironment](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromEnvironment) that looks for the following pre-defined environment variables: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_TENANT_ID`.
 
-The following example shows how a [kusto.ClustersClient](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient) is created using this technique:
+The following example shows how a [kusto.ClustersClient](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v48.2.0+incompatible/services/kusto/mgmt/2020-02-15/kusto) is created using this technique:
 
 ```go
 func getClustersClient(subscription string) kusto.ClustersClient {
