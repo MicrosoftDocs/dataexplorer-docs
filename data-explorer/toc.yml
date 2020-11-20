@@ -912,6 +912,8 @@
       href: ./kusto/query/ipv4-comparefunction.md
     - name: ipv4_is_match()
       href: ./kusto/query/ipv4-is-matchfunction.md
+    - name: ipv4_is_private()
+      href: ./kusto/query/ipv4-is-privatefunction.md
     - name: ipv6_compare()
       href: ./kusto/query/ipv6-comparefunction.md
     - name: ipv6_is_match()
