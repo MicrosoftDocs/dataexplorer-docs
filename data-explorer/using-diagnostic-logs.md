@@ -206,7 +206,7 @@ Log JSON strings include elements listed in the following table:
 | TimeGenerated        | The time (UTC) at which this event was generated |
 | Database             | Name of the database holding the target table |
 | Table                | Name of the target table into which the data is ingested |
-| BatchingType         | Type of batching: whether the batch reached batching time, data size or number of files limit set by batching policy |
+| BatchingType         | Type of batching: whether the batch reached batching time, data size, or number of files limit set by batching policy |
 | SourceCreationTime   | Minimal time (UTC) at which blobs in this batch were created |
 | BatchTimeSeconds     | Total batching time of this batch (seconds) |
 | BatchSizeBytes       | Total uncompressed size of data in this batch (bytes) |
