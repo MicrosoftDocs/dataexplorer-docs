@@ -1,6 +1,6 @@
 ---
 title: ipv4_is_private() - Azure Data Explorer
-description: This article describes ipv4_is_private() in Azure Data Explorer.
+description: This article describes the ipv4_is_private() function in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
