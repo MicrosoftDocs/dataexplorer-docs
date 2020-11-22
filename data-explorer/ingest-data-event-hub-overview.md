@@ -39,10 +39,7 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding?view=netframework-4.8#remarks). |
-| Tags (Preview) | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extents-overview.md#performance-notes-1) when using tags. |
-
-<!--| Database | Name of the existing target database.|-->
-<!--| Tags | String representing [tags](/azure/kusto/management/extents-overview#extent-tagging) that will be attached to resulting extent. |-->
+| Tags | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extents-overview.md#performance-notes-1) when using tags. |
 
 > [!NOTE]
 > Only events enqueued after you create the data connection are ingested.
