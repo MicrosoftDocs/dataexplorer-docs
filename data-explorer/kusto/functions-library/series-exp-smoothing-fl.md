@@ -24,7 +24,7 @@ The function `series_exp_smoothing_fl()` takes an expression containing a dynami
 ## Arguments
 
 * *y_series*: Dynamic array cell of numeric values.
-* *alpha*: An optional real value in the range [0-1], specifying the weight of the last point vs. the weight of the previous points (which is 1-alpha). Default is 0.5.
+* *alpha*: An optional real value in the range [0-1], specifying the weight of the last point vs. the weight of the previous points (which is `1-alpha`). Default is 0.5.
 
 ## Usage
 
