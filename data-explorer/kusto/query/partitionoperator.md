@@ -47,7 +47,7 @@ T | partition by Col1 { U | where Col2=toscalar(Col1) }
   |-------------------|---------------|-----------|
   |`hint.materialized`|`true`,`false` |If set to `true` will materialize the source of the `partition` operator (default: `false`)|
   |`hint.concurrency`|*Number*|Hints the system how many partitions to run in parallel. *Default*: 16.|
-  |`hint.spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes (e.g: if there are N partitions and the spread hint is set to P then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint). *Default*: 1.|
+  |`hint.spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes (for example: if there are N partitions and the spread hint is set to P then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint). *Default*: 1.|
 
 ## Returns
 
