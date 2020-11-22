@@ -50,7 +50,7 @@ range x from 1 to 50 step 1
 
 # [Persistent](#tab/persistent)
 
-For persistent usage, use.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+For persistent usage, use [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
