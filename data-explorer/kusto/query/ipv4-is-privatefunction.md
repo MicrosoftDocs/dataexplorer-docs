@@ -41,7 +41,7 @@ ipv4_is_private("127.0.0.1") == false
 
 *Expr*: A string expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).
 
-## IP-prefix notation
+### IP-prefix notation
 
 IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character. The IP address to the LEFT of the slash (`/`) is the base IP address. The number (1 to 32) to the RIGHT of the slash (`/`) is the number of contiguous 1 bit in the netmask. 
 
