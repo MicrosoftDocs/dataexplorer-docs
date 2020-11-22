@@ -39,7 +39,7 @@ ipv4_is_private("127.0.0.1") == false
 
 ## Arguments
 
-* *Expr*: A string expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).
+*Expr*: A string expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).
 
 ## IP-prefix notation
 
