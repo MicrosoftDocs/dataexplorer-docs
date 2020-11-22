@@ -211,7 +211,7 @@ Log JSON strings include elements listed in the following table:
 | BatchTimeSeconds     | Total batching time of this batch (seconds) |
 | BatchSizeBytes       | Total uncompressed size of data in this batch (bytes) |
 | DataSourcesInBatch   | Number of data sources in this batch |
-| RootActivityId       | The operation's activity Id |
+| RootActivityId       | The operation's activity ID |
 
 
 # [Commands and Queries](#tab/commands-and-queries)
