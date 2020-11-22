@@ -35,6 +35,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
 * **Successful ingestion operations**: These logs have information about successfully completed ingestion operations.
 * **Failed ingestion operations**: These logs have detailed information about failed ingestion operations including error details. 
+* **Ingestion batching operations**: These logs have detailed statistics of batches ready for ingestion (duration, batch size and blobs count).
 
 # [Commands and Queries](#tab/commands-and-queries)
 
@@ -71,7 +72,7 @@ Diagnostic logs are disabled by default. To enable diagnostic logs, do the follo
 New settings will be set in a few minutes. Logs then appear in the configured archival target (Storage account, Event Hub, or Log Analytics). 
 
 > [!NOTE]
-> If you send logs to Log Analytics, the `SucceededIngestion`, `FailedIngestion`, `Command`, and `Query` logs will be stored in Log Analytics tables named: `SucceededIngestion`, `FailedIngestion`, `ADXCommand`, `ADXQuery`, respectively.
+> If you send logs to Log Analytics, the `SucceededIngestion`, `FailedIngestion`, `Command`, and `Query` logs will be stored in Log Analytics tables named: `SucceededIngestion`, `FailedIngestion`, `ADXIngestionBatching`, `ADXCommand`, `ADXQuery`, respectively.
 
 ## Diagnostic logs schema
 
@@ -89,7 +90,7 @@ Log JSON strings include elements listed in the following table:
 |resourceId         |Azure Resource Manager resource ID
 |operationName      |Name of the operation: 'MICROSOFT.KUSTO/CLUSTERS/INGEST/ACTION'
 |operationVersion   |Schema version: '1.0' 
-|category           |Category of the operation. `SucceededIngestion` or `FailedIngestion`. Properties differ for [successful operation](#successful-ingestion-operation-log) or [failed operation](#failed-ingestion-operation-log).
+|category           |Category of the operation. `SucceededIngestion`, `FailedIngestion` or `IngestionBatching`. Properties differ for [successful operation](#successful-ingestion-operation-log), [failed operation](#failed-ingestion-operation-log) or [batching operation](#ingestion-batching-operation-log).
 |properties         |Detailed information of the operation.
 
 #### Successful ingestion operation log
@@ -105,13 +106,13 @@ Log JSON strings include elements listed in the following table:
     "category": "SucceededIngestion",
     "properties":
     {
-        "succeededOn": "2019-05-27 07:55:05.3693628",
-        "operationId": "b446c48f-6e2f-4884-b723-92eb6dc99cc9",
-        "database": "Samples",
-        "table": "StormEvents",
-        "ingestionSourceId": "66a2959e-80de-4952-975d-b65072fc571d",
-        "ingestionSourcePath": "https://kustoingestionlogs.blob.core.windows.net/sampledata/events8347293.json",
-        "rootActivityId": "d0bd5dd3-c564-4647-953e-05670e22a81d"
+        "SucceededOn": "2019-05-27 07:55:05.3693628",
+        "OperationId": "b446c48f-6e2f-4884-b723-92eb6dc99cc9",
+        "Database": "Samples",
+        "Table": "StormEvents",
+        "IngestionSourceId": "66a2959e-80de-4952-975d-b65072fc571d",
+        "IngestionSourcePath": "https://kustoingestionlogs.blob.core.windows.net/sampledata/events8347293.json",
+        "RootActivityId": "d0bd5dd3-c564-4647-953e-05670e22a81d"
     }
 }
 ```
@@ -119,13 +120,13 @@ Log JSON strings include elements listed in the following table:
 
 |Name               |Description
 |---                |---
-|succeededOn        |Time of ingestion completion
-|operationId        |Azure Data Explorer ingestion operation ID
-|database           |Name of the target database
-|table              |Name of the target table
-|ingestionSourceId  |ID of the ingestion data source
-|ingestionSourcePath|Path of the ingestion data source or blob URI
-|rootActivityId     |Activity ID
+|SucceededOn        |Time of ingestion completion
+|OperationId        |Azure Data Explorer ingestion operation ID
+|Database           |Name of the target database
+|Table              |Name of the target table
+|IngestionSourceId  |ID of the ingestion data source
+|IngestionSourcePath|Path of the ingestion data source or blob URI
+|RootActivityId     |Activity ID
 
 #### Failed ingestion operation log
 
@@ -160,18 +161,58 @@ Log JSON strings include elements listed in the following table:
 
 |Name               |Description
 |---                |---
-|failedOn           |Time of ingestion completion
-|operationId        |Azure Data Explorer ingestion operation ID
-|database           |Name of the target database
-|table              |Name of the target table
-|ingestionSourceId  |ID of the ingestion data source
-|ingestionSourcePath|Path of the ingestion data source or blob URI
-|rootActivityId     |Activity ID
-|details            |Detailed description of the failure and error message
-|errorCode          |Error code 
-|failureStatus      |`Permanent` or `Transient`. Retry of a transient failure may succeed.
-|originatesFromUpdatePolicy|True if failure originates from an update policy
-|shouldRetry        |True if retry may succeed
+|FailedOn           |Time of ingestion completion
+|OperationId        |Azure Data Explorer ingestion operation ID
+|Database           |Name of the target database
+|Table              |Name of the target table
+|IngestionSourceId  |ID of the ingestion data source
+|IngestionSourcePath|Path of the ingestion data source or blob URI
+|RootActivityId     |Activity ID
+|Details            |Detailed description of the failure and error message
+|ErrorCode          |Error code 
+|FailureStatus      |`Permanent` or `Transient`. Retry of a transient failure may succeed.
+|OriginatesFromUpdatePolicy|True if failure originates from an update policy
+|ShouldRetry        |True if retry may succeed
+
+#### Ingestion batching operation log
+
+**Example:**
+
+```json
+{
+  "resourceId": "/SUBSCRIPTIONS/12534EB3-8109-4D84-83AD-576C0D5E1D06/RESOURCEGROUPS/KEREN/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KERENEUS",
+  "time": "2020-05-27T07:55:05.3693628Z",
+  "operationVersion": "1.0",
+  "operationName": "MICROSOFT.KUSTO/CLUSTERS/INGESTIONBATCHING/ACTION",
+  "category": "IngestionBatching",
+  "correlationId": "2bb51038-c7dc-4ebd-9d7f-b34ece4cb735",
+  "properties": {
+    "Database": "Samples",
+    "Table": "StormEvents",
+    "BatchingType": "Size",
+    "SourceCreationTime": "2020-05-27 07:52:04.9623640",
+    "BatchTimeSeconds": 215.5,
+    "BatchSizeBytes": 2356425,
+    "DataSourcesInBatch": 4,
+    "RootActivityId": "2bb51038-c7dc-4ebd-9d7f-b34ece4cb735"
+  }
+}
+
+```
+**Properties of an ingestion batching operation diagnostic log**
+
+|Name               |Description
+|---                   |---
+| TimeGenerated        | The time (UTC) at which this event was generated |
+| Database             | Name of the database holding the target table |
+| Table                | Name of the target table into which the data is ingested |
+| BatchingType         | Type of batching: whether the batch reached batching time, data size or number of files limit set by batching policy |
+| SourceCreationTime   | Minimal time (UTC) at which blobs in this batch were created |
+| BatchTimeSeconds     | Total batching time of this batch (seconds) |
+| BatchSizeBytes       | Total uncompressed size of data in this batch (bytes) |
+| DataSourcesInBatch   | Number of data sources in this batch |
+| RootActivityId       | The operation's activity Id |
+
 
 # [Commands and Queries](#tab/commands-and-queries)
 
