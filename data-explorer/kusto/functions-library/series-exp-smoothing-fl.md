@@ -76,4 +76,4 @@ range x from 1 to 50 step 1
 
 ---
 
-:::image type="content" source="images/series-exp-smoothing-fl/exp-smoothing-demo.png" alt-text="Graph depicting exponential smoothing of artificial series" border="false":::
+:::image type="content" source="images/series-exp-smoothing-fl/exp-smoothing-demo.png" alt-text="Graph showing exponential smoothing of artificial series" border="false":::
