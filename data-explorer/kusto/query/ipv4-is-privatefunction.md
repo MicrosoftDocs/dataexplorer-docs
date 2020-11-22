@@ -15,7 +15,7 @@ Checks if IPv4 string address belongs to a set of private network IPs.
 
 [Private network addresses](https://en.wikipedia.org/wiki/Private_network) were originally defined to assist in delaying IPv4 address exhaustion. IP packets originating from or addressed to a private IP address cannot be routed through the public internet.
 
-# Private IPv4 addresses
+## Private IPv4 addresses
 
 The Internet Engineering Task Force (IETF) has directed the Internet Assigned Numbers Authority (IANA) to reserve the following IPv4 address ranges for private networks:
 
