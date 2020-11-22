@@ -558,6 +558,8 @@
         href: ./kusto/query/diffpatterns-textplugin.md
       - name: infer_storage_schema plugin
         href: ./kusto/query/inferstorageschemaplugin.md
+      - name: ipv4_lookup plugin
+        href: ./kusto/query/ipv4-lookup-plugin.md
       - name: mysql_request plugin
         href: ./kusto/query/mysqlrequest-plugin.md
       - name: narrow plugin
