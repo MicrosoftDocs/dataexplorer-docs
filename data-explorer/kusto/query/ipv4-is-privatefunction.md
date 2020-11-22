@@ -13,7 +13,7 @@ ms.date: 11/20/2020
 
 Checks if IPv4 string address belongs to a set of private network IPs.
 
-[Private network addresses](https://en.wikipedia.org/wiki/Private_network) were originally defined to assist in delaying IPv4 address exhaustion. IP packets originating from or addressed to a private IP address cannot be routed through the public Internet.
+[Private network addresses](https://en.wikipedia.org/wiki/Private_network) were originally defined to assist in delaying IPv4 address exhaustion. IP packets originating from or addressed to a private IP address cannot be routed through the public internet.
 
 # Private IPv4 addresses
 
