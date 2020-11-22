@@ -110,6 +110,9 @@
       - name: Azure portal
         displayName: Event Hub, ingest, data connection
         href: ingest-data-event-hub.md
+      - name: One-click
+        displayName: Event Hub, ingest, data connection
+        href: one-click-event-hub.md
       - name: C#
         displayName: Event Hub, ingest, data connection
         href: data-connection-event-hub-csharp.md
@@ -198,6 +201,8 @@
       href: data-lake-query-data.md  
     - name: Query data in Azure Monitor
       href: query-monitor-data.md
+    - name: Query data in Power Apps application
+      href: power-apps-connector.md     
     - name: Debug KQL inline Python
       href: debug-inline-python.md
     - name: using SDKs
@@ -367,8 +372,6 @@
       href: using-metrics.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
-    - name: Create Power Apps application to query data in Azure Data Explorer
-      href: power-apps-connector.md        
   - name: Share data
     items:
       - name: Use Azure Data Share
@@ -1848,6 +1851,9 @@
       href: kusto/functions-library/series-moving-avg-fl.md
     - name: series_rolling_fl()
       href: kusto/functions-library/series-rolling-fl.md
+  - name: Azure Policy built-ins
+    displayName: samples, policies, definitions
+    href: ./policy-reference.md
 - name: Resources
   items:
   - name: Blog
