@@ -7,6 +7,7 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
+ms.localizationpriority: high
 ---
 
 # Kusto.Explorer installation and user interface
