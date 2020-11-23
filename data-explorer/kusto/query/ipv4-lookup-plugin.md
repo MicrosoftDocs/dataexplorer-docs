@@ -31,7 +31,7 @@ T | evaluate ipv4_lookup(LookupTable, SourceIPv4Key, LookupKey, return_unmatched
 * *LookupKey*: The column of *LookupTable* with IPv4 string that is matched against each *SourceIPv4Key* value.
 * *return_unmatched*: A boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).
 
-## IP-prefix notation
+### IP-prefix notation
  
 IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character.
 The IP address to the left of the slash (`/`) is the base IP address. The number (1 to 32) to the right of the slash (`/`) is the number of contiguous 1 bit in the netmask. 
