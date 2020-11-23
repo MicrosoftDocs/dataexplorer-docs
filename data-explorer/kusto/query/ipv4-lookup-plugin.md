@@ -11,7 +11,7 @@ ms.date: 11/22/2020
 ---
 # ipv4_lookup plugin
 
-The `ipv4_lookup` looks up IPv4 value in a lookup table and returns rows with matched values.
+The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values.
 
 ```kusto
 T | evaluate ipv4_lookup(LookupTable, SourceIPv4Key, LookupKey)
