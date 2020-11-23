@@ -90,7 +90,7 @@ The following list contains error codes you may come across during [ingestion](i
 |---|---|---|
 |Stream_InputStreamTooLarge                        |The total size of the input data or a single field in the data is too large. HRESULT: 0x80DA0009                 |Permanent          |
 |BadRequest_FileTooLarge                           |Blob size has exceeded the size limit allowed for ingestion.<br>For more information about the size limit for ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md#comparing-ingestion-methods-and-tools). |Permanent           |
-|
+
 ### Category: InternalServiceError
 
 |Error message                                 |Description                                           |Permanent/Transient|
@@ -98,12 +98,6 @@ The following list contains error codes you may come across during [ingestion](i
 |General_InternalServerError                       |Internal server error occurred.                     |Transient          |
 |General_TransientSchemaMismatch                   |Schema of target table when starting the ingestion doesn't match the schema when committing the ingestion.         |Transient           |
 |Timeout                                            |The operation has been aborted because of timeout.     |Transient           |
-
-### Category: Unknown
-
-|Error message                                 |Description                                           |Permanent/Transient|
-|---|---|---|
-|Unknown                                            |Unknown error occurred.                             |Transient          |
 
 ### Category: UpdatePolicyFailure
 
@@ -122,14 +116,11 @@ The following list contains error codes you may come across during [ingestion](i
 |BadRequest_InvalidKustoIdentityToken              |Invalid Kusto identity token.                           |Permanent           |
 |Forbidden                                          |Insufficient security permissions to execute request. | Permanent|
 
-## Additional ingestion codes
-
-//ask Keren where these show up for user
+### Category: Unknown
 
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
-|Skipped_IngestByTagAlreadyExists | Another stream with the same ingest-by tag was already ingested. <br> For more information about ingest-if-not-exists by tag, see [ingest-by tag](./kusto/management/extents-overview.md#ingest-by-extent-tags). |	Permanent |
-| General_AbandonedIngestion |The operation has been abandoned during execution as the system was transiently not able to complete it. Retry is automatically triggered. |Transient|
+|Unknown                                            |Unknown error occurred.                             |Transient          |
 
 ## Engine error codes
 
