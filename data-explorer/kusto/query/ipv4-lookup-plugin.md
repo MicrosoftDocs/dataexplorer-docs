@@ -46,10 +46,9 @@ If the *return_unmatched* argument is set to `true`, the resulting table will in
 
 If the *return_unmatched* argument is set to `false`, or omitted (the default value of `false` is used), the resulting table will have as many records as matching results. This variant of lookup has better performance compared to `return_unmatched=true` execution.
 
-**Notes**
-
-The plugin covers the scenario of IPv4-based join, and assumes that the lookup table size is small (100K-200K rows), while the input table can have larger size.
-The performance of the plugin will depend on sizes of both lookup and data source tables, amount of columns and amount of the matching records.
+> [!NOTE]
+> * This plugin covers the scenario of IPv4-based join, assuming a small lookup table size (100K-200K rows), with the input table optionally having a larger size.
+> * The performance of the plugin will depend on the sizes of the lookup and data source tables, the number of columns, and number of matching records.
 
 ## Examples
 
