@@ -12,7 +12,7 @@ ms.date: 11/11/2020
 
 ## Ingestion error codes
 
-The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). The error messages can be seen when enabling [diagnostic logs](using-diagnostic-logs.md) on your cluster. The error codes may appear in the **Failed ingestion** operation log, and are organized here by **Category**. These categories are shown in the ingestion result [metric](using-metrics.md#ingestion-metrics). If the error is transient, retrying ingestion may succeed.
+The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). The error messages can be seen when enabling failed ingestion [diagnostic logs](using-diagnostic-logs.md#) on your cluster. The error codes may appear in the **Failed ingestion** operation log, and are organized here by **Category**. These categories are shown in the ingestion result [metric](using-metrics.md#ingestion-metrics). If the error is transient, retrying ingestion may succeed.
 
 
 ### Category: BadFormat
@@ -54,7 +54,7 @@ The following list contains error codes you may come across during [ingestion](i
 |BadRequest_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about Azure Data Explorer naming convention, see [entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent           |
 |BadRequest_MalformedIngestionProperty              |Ingestion property is malformed.    |Permanent           |
 
-### Category: DataAccessNotAuthorized**
+### Category: DataAccessNotAuthorized
                                       
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
@@ -88,7 +88,7 @@ The following list contains error codes you may come across during [ingestion](i
 |Stream_InputStreamTooLarge                        |The total size of the input data or a single field in the data is too large. HRESULT: 0x80DA0009                 |Permanent          |
 |BadRequest_FileTooLarge                           |Blob size has exceeded the size limit allowed for ingestion.<br>For more information about the size limit for ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md#comparing-ingestion-methods-and-tools). |Permanent           |
 |
-## Category: InternalServiceError
+### Category: InternalServiceError
 
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
@@ -119,7 +119,9 @@ The following list contains error codes you may come across during [ingestion](i
 |BadRequest_InvalidKustoIdentityToken              |Invalid Kusto identity token.                           |Permanent           |
 |Forbidden                                          |Insufficient security permissions to execute request. | Permanent|
 
-### Additional ingestion codes
+## Additional ingestion codes
+
+//ask Keren where these show up for user
 
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
