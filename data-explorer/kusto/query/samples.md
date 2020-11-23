@@ -565,9 +565,8 @@ datatable(id:string, timestamp:datetime, bla:string)           // #1
 | project-away dummy0, dummy1, dummy2                          // #5
 ```
 
-_Step-by-step explanation of the query_
 
-(The numbering in the following notes refers to the numbers in the code comments.)
+Here's a step-by-step explanation of the preceding query (the numbering refers to the numbers in the code comments):
 
 1. The `datatable` is a way to produce some test data for demonstration purposes. Normally, you'd use real data here.
 1. This line essentially means _return all distinct values of `id`_. 
@@ -682,9 +681,8 @@ Here's the result:
 
 The query "stretches" (duplicates) each record in the input table throughout the seven days after its actual appearance. Each record actually appears seven times. As a result, the daily aggregation includes all records of the preceding seven days.
 
-_Step-by-step explanation of the query_
 
-(The numbering in the following notes refers to the numbers in the code comments.)
+Here's a step-by-step explanation of the preceding query: 
 
 1. Bin each record to one day (relative to `_start`). 
 1. Determine the end of the range per record: `_bin + 7d`, unless the value is out of the range of `_start` and `_end`, in which case, it's adjusted. 
@@ -820,7 +818,7 @@ This article identifies common query needs in Azure Monitor and how you can use 
 
 ## String operations
 
-The following sections give examples of how to work with strings by using the Kusto Query Language.
+The following sections give examples of how to work with strings when using the Kusto Query Language.
 
 ### Strings and how to escape them
 
@@ -1134,7 +1132,7 @@ print toupper("hello");	// result: "HELLO"
 
 ## Date and time operations
 
-The following sections give examples of how to work with date and time values by using the Kusto Query Language.
+The following sections give examples of how to work with date and time values when using the Kusto Query Language.
 
 ### Date-time basics
 
@@ -1201,7 +1199,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-The `timeAgo` column holds values like `00:09:31.5118992`, which are formatted as hh:mm:ss.fffffff. If you want to format these values to the number of minutes since the start time, divide that value by `1m`:
+The `timeAgo` column holds values like `00:09:31.5118992`, which are formatted as hh:mm:ss.fffffff. If you want to format these values to the `number` of minutes since the start time, divide that value by `1m`:
 
 ```kusto
 Event
@@ -1264,7 +1262,7 @@ Event
 
 ## Aggregations
 
-The following sections give examples of how to aggregate the results of a query by using the Kusto Query Language.
+The following sections give examples of how to aggregate the results of a query when using the Kusto Query Language.
 
 ### *count*
 
@@ -1738,7 +1736,7 @@ print hosts_object
 
 ## Charts
 
-The following sections give examples of how to work with charts by using the Kusto Query Language.
+The following sections give examples of how to work with charts when using the Kusto Query Language.
 
 ### Chart the results
 
