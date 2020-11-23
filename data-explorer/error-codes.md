@@ -12,10 +12,13 @@ ms.date: 11/11/2020
 
 ## Ingestion error codes
 
-The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). The error messages can be seen when enabling failed ingestion [diagnostic logs](using-diagnostic-logs.md#) on your cluster. The error codes may appear in the **Failed ingestion** operation log, and are organized here by **Category**. These categories are shown in the ingestion result [metric](using-metrics.md#ingestion-metrics). If the error is transient, retrying ingestion may succeed.
+The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). When you enable failed ingestion [diagnostic logs](using-diagnostic-logs.md#ingestion-logs-schema) on your cluster, you can see error codes in the **Failed ingestion** operation log. The ingestion result [metric](using-metrics.md#ingestion-metrics) shows the **Category** of ingestion errors, but not the specific error message itself. Errors below are organized by such categories. 
 
+> [!NOTE
+> If the error is transient, retrying ingestion may succeed.
 
 ### Category: BadFormat
+
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
 |Stream_WrongNumberOfFields                        |Inconsistent number of fields in the input records. HRESULT: 0x80DA0008      |Permanent           |
@@ -55,7 +58,7 @@ The following list contains error codes you may come across during [ingestion](i
 |BadRequest_MalformedIngestionProperty              |Ingestion property is malformed.    |Permanent           |
 
 ### Category: DataAccessNotAuthorized
-                                      
+
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
 |Download_AccessConditionNotSatisfied              |Failed to download source from Azure storage. Access condition not satisfied.     |Permanent           |
