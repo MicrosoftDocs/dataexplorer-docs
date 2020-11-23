@@ -14,7 +14,7 @@ ms.date: 11/11/2020
 
 The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). When you enable failed ingestion [diagnostic logs](using-diagnostic-logs.md#ingestion-logs-schema) on your cluster, you can see error codes in the **Failed ingestion** operation log. The ingestion result [metric](using-metrics.md#ingestion-metrics) shows the **Category** of ingestion errors, but not the specific error message itself. Errors below are organized by such categories. 
 
-> [!NOTE
+> [!NOTE]
 > If the error is transient, retrying ingestion may succeed.
 
 ### Category: BadFormat
