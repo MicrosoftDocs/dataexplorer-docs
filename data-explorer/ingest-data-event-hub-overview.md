@@ -123,7 +123,7 @@ For an example of how to generate sample data, see [Ingest data from Event Hub i
 
 ## Set up Geo-disaster recovery solution
 
-Event Hub offers a [Geo-disaster recovery](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr) solution. 
+Event Hub offers a [Geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr) solution. 
 Azure Data Explorer doesn't support `Alias` Event Hub namespaces. To implement the Geo-disaster recovery in your solution, create two Event Hub data connections: one for the primary namespace and one for the secondary namespace. Azure Data Explorer will listen to both Event Hub connections.
 
 > [!NOTE]
