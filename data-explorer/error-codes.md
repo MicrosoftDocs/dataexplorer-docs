@@ -12,12 +12,12 @@ ms.date: 11/11/2020
 
 ## Ingestion error codes
 
-The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). The **Manifest constant** field can be found in your [ingestion fail log](kusto/management/ingestionfailures.md), and is organized here by **Category**. These categories are shown in the ingestion result [metrics](using-metrics.md). If the error is permanent, it will not be resolved by retrying ingestion.
+The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). The error messages can be seen when enabling [diagnostic logs](using-diagnostic-logs.md) on your cluster. The error codes may appear in the **Failed ingestion** operation log, and are organized here by **Category**. These categories are shown in the ingestion result [metric](using-metrics.md#ingestion-metrics). If the error is transient, retrying ingestion may succeed.
 
-|Manifest constant                                  |Description                                           |Permanent/Transient|
-|---------------------------------------------------|--------------------------|------------|
-| ---------**Category: BadFormat**---------                                          |
-|
+
+### Category: BadFormat
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
 |Stream_WrongNumberOfFields                        |Inconsistent number of fields in the input records. HRESULT: 0x80DA0008      |Permanent           |
 |Stream_ClosingQuoteMissing                        |Invalid CSV format. Closing quote is missing. HRESULT: 0x80DA000b            |Permanent           |
 |BadRequest_InvalidBlob                            |Blob is invalid.                                                              |Permanent           |
@@ -28,9 +28,11 @@ The following list contains error codes you may come across during [ingestion](i
 |BadRequest_FormatNotSupported                     |Format isn't supported. Some data connections don't support all formats.<br>For more information about data formats supported by Azure Data Explorer for ingestion, see [Supported data formats](ingestion-supported-formats.md). |Permanent          |
 |BadRequest_InconsistentMapping                    |Supported ingestion mapping isn't consistent with the existing table schema. |Permanent           |
 |BadRequest_UnexpectedCharacterInInputStream       |Unexpected character in the input stream.                                     |Permanent           |
-|
-|---------**Category: BadRequest**--------- |
-|                        
+
+### Category: BadRequest
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
 |BadRequest_EmptyBlob                              |Blob is empty.                                                               |Permanent           |
 |BadRequest_EmptyBlobUri                           |Blob Uri is empty.                                                           |Permanent           |
 |BadRequest_DuplicateMapping                       |Ingestion properties include both ingestionMapping and ingestionMappingReference, which isn't valid.              |Permanent          |
@@ -46,61 +48,81 @@ The following list contains error codes you may come across during [ingestion](i
 |BadRequest_CorruptedMessage                       |Message is corrupted.    |Permanent           |
 |BadRequest_SyntaxError                            |Request syntax error.     |Permanent           |
 |BadRequest_ZeroRetentionPolicyWithNoUpdatePolicy  |Table has zero retention policy and isn't the source table for any update policy.    |Permanent           |
-|BadRequest_CreationTimeEarlierThanSoftDeletePeriod|Creation time that was specified for ingestion, isn't within the SoftDeletePeriod.<br>For more information about SoftDeletePeriod, see [The policy object](./kusto/management/retentionpolicy.md#the-policy-object).  |Permanent   |
+|BadRequest_CreationTimeEarlierThanSoftDeletePeriod|Creation time that was specified for ingestion, isn't within the `SoftDeletePeriod`.<br>For more information about `SoftDeletePeriod`, see [The policy object](./kusto/management/retentionpolicy.md#the-policy-object).  |Permanent   |
 |BadRequest_NotSupported                           |Request not supported.    |Permanent           |
 |Download_SourceNotFound                           |Failed to download source from Azure Storage. Source not found.       |Permanent       |
 |BadRequest_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about Azure Data Explorer naming convention, see [entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent           |
 |BadRequest_MalformedIngestionProperty              |Ingestion property is malformed.    |Permanent           |
-|
-|---------**Category: DataAccessNotAuthorized**---------                            |
-|                                                   
+
+### Category: DataAccessNotAuthorized**
+                                      
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
 |Download_AccessConditionNotSatisfied              |Failed to download source from Azure storage. Access condition not satisfied.     |Permanent           |
 |Download_Forbidden                                |Failed to download source from Azure storage. Access forbidden.    |Permanent           |
 |Download_AccountNotFound                          |Failed to download source from Azure storage. Account not found.    |Permanent           |
 |BadRequest_TableAccessDenied                      |Access to table is denied.<br>For more information, see [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md).     |Permanent           |
 |BadRequest_DatabaseAccessDenied                   |Access to database is denied.<br>For more information, see [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md).                        |Permanent           |
-|
-|---------**Category: DownloadFailed**--------- 
-|
+
+### Category: DownloadFailed
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
 |Download_NotTransient                             |Failed to download source from Azure storage. Not transient error occurred                   |Permanent           |
 |Download_UnknownError                             |Failed to download source from Azure storage. Unknown error occurred              |Transient           |
 |
-|---------**Category: EntityNotFound**---------
-|
+
+### Category: EntityNotFound
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
 |BadRequest_MappingReferenceWasNotFound            |Mapping reference wasn't found.   |Permanent           |
 |BadRequest_DatabaseNotExist                       |Database doesn't exist.          |Permanent           |
 |BadRequest_TableNotExist                          |Table doesn't exist.          |Permanent           |
 |BadRequest_EntityNotFound                         |Azure Data Explorer entity (such as mapping, database, or table) wasn't found.           |Permanent           |
-|
-|---------**Category: FileTooLarge**---------
-|
+
+### Category: FileTooLarge
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
 |Stream_InputStreamTooLarge                        |The total size of the input data or a single field in the data is too large. HRESULT: 0x80DA0009                 |Permanent          |
-|BadRequest_FileTooLarge                           |Blob size has exceeded the size limit allowed for ingestion.<br>For more information about the size limit for ingestion, see [Azure Data Explorer data ingestion overview](/ingest-data-overview.md#Comparing-ingestion-methods-and-tools). |Permanent           |
+|BadRequest_FileTooLarge                           |Blob size has exceeded the size limit allowed for ingestion.<br>For more information about the size limit for ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md#comparing-ingestion-methods-and-tools). |Permanent           |
 |
-|---------**Category: InternalServiceError**---------
-|
+## Category: InternalServiceError
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
 |General_InternalServerError                       |Internal server error occurred.                     |Transient          |
-|General_TransientSchemaMismatch                   |Schema of target table at start time doesn't match the schema at commit time.         |Transient           |
+|General_TransientSchemaMismatch                   |Schema of target table when starting the ingestion doesn't match the schema when committing the ingestion.         |Transient           |
 |Timeout                                            |The operation has been aborted because of timeout.     |Transient           |
-|
-|---------**Category: Unknown**---------
-|
+
+### Category: Unknown
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
 |Unknown                                            |Unknown error occurred.                             |Transient          |
-|
-|---------**Category: UpdatePolicyFailure**---------                               |
-|
+
+### Category: UpdatePolicyFailure
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
 |UpdatePolicy_QuerySchemaDoesNotMatchTableSchema   |Failed to invoke update policy. Query schema doesn't match table schema.     |Permanent           |
 |UpdatePolicy_FailedDescendantTransaction          |Failed to invoke update policy. Failed descendant transactional update policy.    |Transient           |
 |UpdatePolicy_IngestionError                       |Failed to invoke update policy. Ingestion Error occurred.<br>The error is reported on the source table of the update policy.     |Transient          |
 |UpdatePolicy_UnknownError                         |Failed to invoke update policy. Unknown error occurred.<br>The error is reported on the target table of update policy.    |Transient           |
 |UpdatePolicy_Cyclic_Update_Not_Allowed         |Failed to invoke update policy. Cyclic update isn't allowed.      |Permanent           |
-|
-|---------**Category: UserAccessNotAuthorized**---------
-|                                                   
+
+### Category: UserAccessNotAuthorized
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
 |BadRequest_InvalidKustoIdentityToken              |Invalid Kusto identity token.                           |Permanent           |
-|Forbidden                                          |Insufficient security permissions to execute request. |
-| ---------**Category: Non-error messages**---------
-|
+|Forbidden                                          |Insufficient security permissions to execute request. | Permanent|
+
+### Additional ingestion codes
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
 |Skipped_IngestByTagAlreadyExists | Another stream with the same ingest-by tag was already ingested. <br> For more information about ingest-if-not-exists by tag, see [ingest-by tag](./kusto/management/extents-overview.md#ingest-by-extent-tags). |	Permanent |
 | General_AbandonedIngestion |The operation has been abandoned during execution as the system was transiently not able to complete it. Retry is automatically triggered. |Transient|
 
@@ -116,7 +138,7 @@ Kusto native error codes are defined using Windows `MAKE-HRESULT` macro with:
   
 The following error codes are defined:
 
-|Manifest constant                  |Code  |Value       |Meaning                                                                                                        |
+|Error message                  |Code  |Value       |Meaning                                                                                                        |
 |-----------------------------------|------|------------|---------------------------------------------------------------------------------------------------------------|
 |E_EXTENT_LOAD_FAILED             | 0  |0x80DA0000|Data extent couldn't be loaded                                                                                 |
 |E_RUNAWAY_QUERY                  | 1  |0x80DA0001|Query execution aborted because it exceeded its allowed resources                                              |
