@@ -7,6 +7,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 08/12/2019
+ms.localizationpriority: high
 ---
 
 # Quickstart: Ingest sample data into Azure Data Explorer
