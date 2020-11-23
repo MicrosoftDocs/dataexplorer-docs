@@ -8,6 +8,7 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/09/2020
+ms.localizationpriority: high 
 ---
 # The dynamic data type
 
