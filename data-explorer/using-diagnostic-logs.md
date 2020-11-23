@@ -58,13 +58,13 @@ Diagnostic logs are disabled by default. To enable diagnostic logs, do the follo
     ![Add diagnostics logs](media/using-diagnostic-logs/add-diagnostic-logs.png)
 
 1. Select **Add diagnostic setting**.
-1. In the **Diagnostics settings** window:
+1. In the **Diagnostic settings** window:
 
     :::image type="content" source="media/using-diagnostic-logs/configure-diagnostics-settings.png" alt-text="Configure diagnostics settings":::
 
-    1. Select **Name** for your diagnostic setting.
-    1. Select one or more targets: a Storage account, Event Hub, or Log Analytics.
-    1. Select logs to be collected: `SucceededIngestion`, `FailedIngestion`, `Command`, or `Query`.
+    1. Enter a **Diagnostic setting name**.
+    1. Select one or more targets: a Log Analytics workspace, a storage account, or an Event Hub.
+    1. Select logs to be collected: `SucceededIngestion`, `FailedIngestion`, `Command`, or `Query`, `TableUsageStatistics`, or `TableDetails`.
     1. Select [metrics](using-metrics.md#supported-azure-data-explorer-metrics) to be collected (optional).  
     1. Select **Save** to save the new diagnostic logs settings and metrics.
 
