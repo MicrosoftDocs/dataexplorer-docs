@@ -121,9 +121,6 @@ Where:
 * *Description*, if provided, is text that will be associated with the change
   and retrieved by the corresponding `.show` command.
 
-<!-- TODO: Need more examples for the public syntax. Until then we're keeping this internal -->
-
-
 ## Managing table security roles
 
 `.set` `table` *TableName* *Role* `none` [`skip-results`]
