@@ -27,7 +27,7 @@ The following table compares concepts and data structures between Splunk and Kus
  | Data record attribute | field |  column |  In Kusto, this setting is predefined as part of the table structure. In Splunk, each event has its own set of fields. |
  | Types | datatype |  datatype |  Kusto data types are more explicit because they are set on the columns. Both have the ability to work dynamically with data types and roughly equivalent set of datatypes, including JSON support. |
  | Query and search  | search | query |  Concepts are essentially the same between Kusto and Splunk. |
- | Event ingestion time | System Time | ingestion_time() |  In Splunk, each event gets a system timestamp of the time the event was indexed. In Kusto, you can define a policy called `ingestion_time` that exposes a system column that can be referenced through the `ingestion_time()` function. |
+ | Event ingestion time | System Time | ingestion_time() |  In Splunk, each event gets a system timestamp of the time the event was indexed. In Kusto, you can define a policy called [ingestion_time](../management/ingestiontimepolicy.md) that exposes a system column that can be referenced through the [ingestion_time()](ingestiontimefunction.md) function. |
 
 ## Functions
 
@@ -67,8 +67,8 @@ In Splunk, you can omit the `search` keyword and specify an unquoted string. In 
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `search` | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
-| Kusto | `find` | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
+| Splunk | `search` | `search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h` |
+| Kusto | `find` | `find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)` |
 
 
 ### Filter
@@ -77,8 +77,8 @@ Kusto log queries start from a tabular result set where `filter` is applied. In 
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `search` | <code>Event.Rule="330009.2" Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" _indextime>-24h</code> |
-| Kusto | `where` | <code>Office_Hub_OHubBGTaskError<br>&#124; where Session_Id == "c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time() > ago(24h)</code> |
+| Splunk | `search` | `Event.Rule="330009.2" Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" _indextime>-24h` |
+| Kusto | `where` | `Office_Hub_OHubBGTaskError<br>&#124; where Session_Id == "c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time() > ago(24h)` |
 
 ### Get *n* events/rows for inspection
 
@@ -86,8 +86,8 @@ Kusto log queries also support `take` as an alias to `limit`. In Splunk, if the 
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `head` | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
-| Kusto | `limit` | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
+| Splunk | `head` | `Event.Rule=330009.2`<br>&#124; `head 100` |
+| Kusto | `limit` | `Office_Hub_OHubBGTaskError`<br>&#124; `limit 100` |
 
 ### Get the first *n* events/rows ordered by a field or column
 
@@ -95,8 +95,8 @@ For the bottom results, in Splunk, you use `tail`. In Kusto, you can specify ord
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `head` |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
-| Kusto | `top` | <code>Office_Hub_OHubBGTaskError<br>&#124; top 20 by Event_Sequence</code> |
+| Splunk | `head` |  `Event.Rule="330009.2"`<br>&#124; `sort Event.Sequence`<br>&#124; `head 20` |
+| Kusto | `top` | `Office_Hub_OHubBGTaskError`<br>&#124; `top 20 by Event_Sequence` |
 
 ### Extend the result set with new fields or columns
 
@@ -104,8 +104,8 @@ Splunk has an `eval` function, but it's not comparable with the `eval` operator 
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `eval` |  <code>Event.Rule=330009.2<br>&#124; eval state= if(Data.Exception = "0", "success", "error")</code> |
-| Kusto | `extend` | <code>Office_Hub_OHubBGTaskError<br>&#124; extend state = iif(Data_Exception == 0,"success" ,"error")</code> |
+| Splunk | `eval` |  `Event.Rule=330009.2`<br>&#124; `eval state= if(Data.Exception = "0", "success", "error")` |
+| Kusto | `extend` | `Office_Hub_OHubBGTaskError`<br>&#124; `extend state = iif(Data_Exception == 0,"success" ,"error")` |
 
 ### Rename
 
@@ -113,8 +113,8 @@ Kusto uses the `project-rename` operator to rename a field. In the `project-rena
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `rename` |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
-| Kusto | `project-rename` | <code>Office_Hub_OHubBGTaskError<br>&#124; project-rename exception = Date_Exception</code> |
+| Splunk | `rename` |  `Event.Rule=330009.2`<br>&#124; `rename Date.Exception as execption` |
+| Kusto | `project-rename` | `Office_Hub_OHubBGTaskError`<br>&#124; `project-rename exception = Date_Exception` |
 
 ### Format results and projection
 
@@ -122,8 +122,8 @@ Splunk doesn't appear to have an operator that's similar to `project-away`. You 
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `table` |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
-| Kusto | `project`<br>`project-away` | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
+| Splunk | `table` |  `Event.Rule=330009.2`<br>&#124; `table rule, state` |
+| Kusto | `project`<br>`project-away` | `Office_Hub_OHubBGTaskError<`br>&#124; `project exception, state` |
 
 ### Aggregation
 
@@ -131,8 +131,8 @@ See the [list of aggregations functions](summarizeoperator.md#list-of-aggregatio
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `stats` |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
-| Kusto | `summarize` | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
+| Splunk | `stats` |  `search (Rule=120502.*)`<br>&#124; `stats count by OSEnv, Audience` |
+| Kusto | `summarize` | `Office_Hub_OHubBGTaskError`<br>&#124; `summarize count() by App_Platform, Release_Audience` |
 
 
 ### Join
@@ -141,8 +141,8 @@ See the [list of aggregations functions](summarizeoperator.md#list-of-aggregatio
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `join` |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
-| Kusto | `join` | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
+| Splunk | `join` |  `Event.Rule=120103* &#124; stats by Client.Id, Data.Alias` <br>&#124; `join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]` |
+| Kusto | `join` | `cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions`<br>&#124; `where  Data_Hresult== -2147221040`<br>&#124; `join kind = inner (Office_System_SystemHealthMetadata`<br>&#124; `summarize by Client_Id, Data_Alias)on Client_Id`   |
 
 ### Sort
 
@@ -150,8 +150,8 @@ In Splunk, to sort in ascending order, you must use the `reverse` operator. Kust
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `sort` |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
-| Kusto | `order by` | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
+| Splunk | `sort` |  `Event.Rule=120103`<br>&#124; `sort Data.Hresult` <br>&#124; `reverse` |
+| Kusto | `order by` | `Office_Hub_OHubBGTaskError`<br>&#124; `order by Data_Hresult,  desc` |
 
 ### Multivalue expand
 
@@ -168,8 +168,8 @@ In Log Analytics in the Azure portal, only the first column is exposed. All colu
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `fields` |  <code>Event.Rule=330009.2<br>&#124; fields App.Version, App.Platform</code> |
-| Kusto | `facets` | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
+| Splunk | `fields` |  `Event.Rule=330009.2`<br>&#124; `fields App.Version, App.Platform` |
+| Kusto | `facets` | `Office_Excel_BI_PivotTableCreate`<br>&#124; `facet by App_Branch, App_Version` |
 
 ### De-duplicate
 
@@ -177,8 +177,8 @@ In Kusto, you can use `summarize arg_min()` to reverse the order of which record
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `dedup` |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
-| Kusto | `summarize arg_max()` | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
+| Splunk | `dedup` |  `Event.Rule=330009.2`<br>&#124; `dedup device_id sortby -batterylife` |
+| Kusto | `summarize arg_max()` | `Office_Excel_BI_PivotTableCreate`<br>&#124; `summarize arg_max(batterylife, *) by device_id` |
 
 ## Next steps
 

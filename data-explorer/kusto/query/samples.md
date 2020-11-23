@@ -1,6 +1,6 @@
 ---
 title: Samples for queries in Azure Data Explorer and Azure Monitor
-description: This article describes common queries and examples that use the Kusto query language for Azure Data Explorer and Azure Monitor.
+description: This article describes common queries and examples that use the Kusto Query Language for Azure Data Explorer and Azure Monitor.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -12,11 +12,11 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 
-# Samples for queries for Data Explorer and Azure Monitor
+# Samples for queries for Azure Data Explorer and Azure Monitor
 
 ::: zone pivot="azuredataexplorer"
 
-This article identifies common query needs in Azure Data Explorer and how you can use the Kusto query language to meet them.
+This article identifies common query needs in Azure Data Explorer and how you can use the Kusto Query Language to meet them.
 
 ## Display a column chart
 
@@ -105,9 +105,9 @@ Events
 
 The `join` matches every start time with all the stop times from the same client IP address. The sample code:
 
-1. Removes matches with earlier stop times.
-1. Groups by start time and IP address to get a group for each session. 
-1. Supplies a `bin` function for the `StartTime` parameter. If you don't do this step, Kusto automatically uses one-hour bins that match some start times with the wrong stop times.
+- Removes matches with earlier stop times.
+- Groups by start time and IP address to get a group for each session. 
+- Supplies a `bin` function for the `StartTime` parameter. If you don't do this step, Kusto automatically uses one-hour bins that match some start times with the wrong stop times.
 
 `arg_min` finds the row with the smallest duration in each group, and the `*` parameter passes through all the other columns. 
 
@@ -810,17 +810,17 @@ B_events
 
 ## Next steps
 
-- Walk through a [a tutorial on the Kusto query language](tutorial.md?pivots=azuredataexplorer).
+- Walk through a [a tutorial on the Kusto Query Language](tutorial.md?pivots=azuredataexplorer).
 
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
 
-This article identifies common query needs in Azure Monitor and how you can use the Kusto query language to meet them.
+This article identifies common query needs in Azure Monitor and how you can use the Kusto Query Language to meet them.
 
 ## String operations
 
-The following sections give examples of how to work with strings by using the Kusto query language.
+The following sections give examples of how to work with strings by using the Kusto Query Language.
 
 ### Strings and how to escape them
 
@@ -1134,11 +1134,11 @@ print toupper("hello");	// result: "HELLO"
 
 ## Date and time operations
 
-The following sections give examples of how to work with date and time values by using the Kusto query language.
+The following sections give examples of how to work with date and time values by using the Kusto Query Language.
 
 ### Date-time basics
 
-The Kusto query language has two main data types associated with dates and times: `datetime` and `timespan`. All dates are expressed in UTC. Although multiple date-time formats are supported, the ISO-8601 format is preferred. 
+The Kusto Query Language has two main data types associated with dates and times: `datetime` and `timespan`. All dates are expressed in UTC. Although multiple date-time formats are supported, the ISO-8601 format is preferred. 
 
 Timespans are expressed as a decimal followed by a time unit:
 
@@ -1201,7 +1201,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-The `timeAgo` column holds values like `00:09:31.5118992`, which are formatted as hh:mm:ss.fffffff. If you want to format these values to the `numver` of minutes since the start time, divide that value by `1m`:
+The `timeAgo` column holds values like `00:09:31.5118992`, which are formatted as hh:mm:ss.fffffff. If you want to format these values to the number of minutes since the start time, divide that value by `1m`:
 
 ```kusto
 Event
@@ -1264,7 +1264,7 @@ Event
 
 ## Aggregations
 
-The following sections give examples of how to aggregate the results of a query by using the Kusto query language.
+The following sections give examples of how to aggregate the results of a query by using the Kusto Query Language.
 
 ### *count*
 
@@ -1738,7 +1738,7 @@ print hosts_object
 
 ## Charts
 
-The following sections give examples of how to work with charts by using the Kusto query language.
+The following sections give examples of how to work with charts by using the Kusto Query Language.
 
 ### Chart the results
 
@@ -2009,7 +2009,7 @@ traces
 
 ## Next steps
 
-- Walk through a [tutorial on the Kusto query language](tutorial.md?pivots=azuremonitor).
+- Walk through a [tutorial on the Kusto Query Language](tutorial.md?pivots=azuremonitor).
 
 
 ::: zone-end

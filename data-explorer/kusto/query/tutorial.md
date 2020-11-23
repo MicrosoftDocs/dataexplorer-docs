@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Kusto queries in Azure Data Explorer & Azure Monitor'
-description: This tutorial describes how to use queries in the Kusto query language to meet common query needs in Azure Data Explorer and Azure Monitor.
+description: This tutorial describes how to use queries in the Kusto Query Language to meet common query needs in Azure Data Explorer and Azure Monitor.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -12,11 +12,11 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 
-# Tutorial: Use Kusto queries in Data Explorer and Azure Monitor
+# Tutorial: Use Kusto queries in Azure Data Explorer and Azure Monitor
 
 ::: zone pivot="azuredataexplorer"
 
-The best way to learn about the Kusto query language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
+The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
 
 ## Count rows
 
@@ -487,13 +487,13 @@ For more information about combining data from several databases in a query, see
 
 ## Next steps
 
-- View code samples for the [Kusto query language](samples.md?pivots=azuredataexplorer).
+- View code samples for the [Kusto Query Language](samples.md?pivots=azuredataexplorer).
 
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
 
-The best way to learn about the Kusto query language is to look at some basic queries to get a "feel" for the language. These queries are similar to queries that are used in the Azure Data Explorer tutorial, but they instead use data from common tables in an Azure Log Analytics workspace. 
+The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. These queries are similar to queries that are used in the Azure Data Explorer tutorial, but they instead use data from common tables in an Azure Log Analytics workspace. 
 
 Run these queries by using Log Analytics in the Azure portal. Log Analytics is a tool you can use to write log queries. Use log data in Azure Monitor, and then evaluate log query results. If you aren't familiar with Log Analytics, complete the [Log Analytics tutorial](/azure/azure-monitor/log-query/log-analytics-tutorial).
 
@@ -522,7 +522,7 @@ Here's the result:
 
 The [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) table has entries from the Azure activity log, which provides insight into any subscription-level or management group-level events that occurred in Azure. Let's see only `Critical` entries during a specific week.
 
-The [where](/azure/data-explorer/kusto/query/whereoperator) operator is common in the Kusto query language. `where` filters a table to rows that match specific criteria. The following example uses multiple commands. First, the query retrieves all records for the table. Then, it filters the data for only records that are in the time range. Finally, it filters those results for only records that have a `Critical` level.
+The [where](/azure/data-explorer/kusto/query/whereoperator) operator is common in the Kusto Query Language. `where` filters a table to rows that match specific criteria. The following example uses multiple commands. First, the query retrieves all records for the table. Then, it filters the data for only records that are in the time range. Finally, it filters those results for only records that have a `Critical` level.
 
 > [!NOTE]
 > In addition to specifying a filter in your query by using the `TimeGenerated` column, you can specify the time range in Log Analytics. For more information, see [Log query scope and time range in Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope).
@@ -696,7 +696,7 @@ PhysicalComputer
 
 ## Next steps
 
-- View code samples for the [Kusto query language](samples.md?pivots=azuremonitor).
+- View code samples for the [Kusto Query Language](samples.md?pivots=azuremonitor).
 
 
 ::: zone-end
