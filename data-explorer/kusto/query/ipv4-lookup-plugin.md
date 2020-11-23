@@ -42,9 +42,9 @@ For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24
 
 The `ipv4_lookup` plugin returns a result of join (lookup) based on IPv4 key. The schema of the table is the union of the source table and the lookup table, similar to the result of the [`lookup` operator](lookupoperator.md).
 
-In case when *return_unmatched* argument is set to `true`, the resulting table will include both matched and unmatched rows (filled with nulls).
+If the *return_unmatched* argument is set to `true`, the resulting table will include both matched and unmatched rows (filled with nulls).
 
-In case when *return_unmatched* argument is set to `false` or omitted (default value of `false` is used), the resulting table will have as many records as matching results. This variant of lookup has better performance comparing to `return_unmatched=true` execution.
+If the *return_unmatched* argument is set to `false`, or omitted (the default value of `false` is used), the resulting table will have as many records as matching results. This variant of lookup has better performance compared to `return_unmatched=true` execution.
 
 **Notes**
 
