@@ -18,15 +18,6 @@ zone_pivot_groups: kql-flavors
 
 The best way to learn about the Kusto query language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
 
-<!--
-  TODO: Provide link to reference data we used originally in StormEvents
--->
-
-<!--
-  TODO: A few samples below reference non-existent tables, such as Events and Logs.
-        We need to add these tables.
--->
-
 ## Count rows
 
 Our example database has a table called `StormEvents`. To find out how large the table is, we'll pipe its content into an operator that simply counts the rows in the table. 
