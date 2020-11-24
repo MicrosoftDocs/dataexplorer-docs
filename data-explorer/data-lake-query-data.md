@@ -7,6 +7,7 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/17/2020
+ms.localizationpriority: high
 ---
 # Query data in Azure Data Lake using Azure Data Explorer
 

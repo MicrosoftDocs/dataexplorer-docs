@@ -282,6 +282,7 @@ ms.date: 05/27/2020
 |-------------------------|--------------------------------------------------------|
 |[ipv4_compare()](ipv4-comparefunction.md)|Compares two IPv4 strings.|
 |[ipv4_is_match()](ipv4-is-matchfunction.md)|Matches two IPv4 strings.|
+|[ipv4_is_private()](ipv4-is-privatefunction.md)|Checks if IPv4 string address belongs to a set of private network IPs.|
 |[parse_ipv4()](parse-ipv4function.md)|Converts input string to long (signed 64-bit) number representation.|
 |[parse_ipv4_mask()](parse-ipv4-maskfunction.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
 |[ipv6_compare()](ipv6-comparefunction.md)|Compares two IPv4 or IPv6 strings.|

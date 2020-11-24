@@ -7,8 +7,8 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 04/07/2019
+ms.localizationpriority: high
 ---
-
 # Time series analysis in Azure Data Explorer
 
 Azure Data Explorer (ADX) performs on-going collection of telemetry data from cloud services or IoT devices. This data can be analyzed for various insights such as monitoring service health, physical production processes, and usage trends. Analysis is done on time series of selected metrics to find a deviation in the pattern compared to its typical baseline pattern.

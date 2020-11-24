@@ -8,6 +8,7 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/08/2020
+ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -19,15 +20,6 @@ The best way to learn about the Kusto query language is to look at some simple
 queries to get the "feel" for the language using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries demonstrated in this article should run on that database. The `StormEvents`
 table in this sample database provides some information about storms that happened
 in the U.S.
-
-<!--
-  TODO: Provide link to reference data we used originally in StormEvents
--->
-
-<!--
-  TODO: A few samples below reference non-existent tables, such as Events and Logs.
-        We need to add these tables.
--->
 
 ## Count rows
 
@@ -512,7 +504,7 @@ Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request
 The best way to learn about the Kusto query language is to look at some simple
 queries to get the "feel" for the language. These queries are similar to those used in the Azure Data Explorer tutorial, but they use data from common tables in a Log Analytics workspace. 
 
-Run these queries using Log Analytics, which is a tool in the Azure portal to write log queries using log data in Azure Monitor and evaluate their results. If you aren't familiar with Log Analytics, then you can go through a tutorial at [Log Analytics tutorial](/azure/azure-monitor/log-query/log-analytics-tutorial.md).
+Run these queries using Log Analytics, which is a tool in the Azure portal to write log queries using log data in Azure Monitor and evaluate their results. If you aren't familiar with Log Analytics, then you can go through a tutorial at [Log Analytics tutorial](/azure/azure-monitor/log-query/log-analytics-tutorial).
 
 All of the queries here use the [Log Analytics demo environment](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade). You can use your own environment, but you may not have some of the tables used here. Since the data in the demo environment isn't static, the results of your queries may vary slightly from the results shown here.
 

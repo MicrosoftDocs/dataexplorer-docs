@@ -7,6 +7,7 @@ ms.reviewer:
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
+ms.localizationpriority: high
 ---
 
 # KQL quick reference
