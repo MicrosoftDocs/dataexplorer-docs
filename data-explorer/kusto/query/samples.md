@@ -70,11 +70,11 @@ Events
 To match start and stop events with a session ID:
 
 1. Use [let](./letstatement.md) to name a projection of the table that's pared down as far as possible before starting the join.
-1. Use [project](./projectoperator.md) to change the names of the timestamps so that both the start time and the stop time appear in the result. `project` also selects the other columns to view in the result. 
+1. Use [project](./projectoperator.md) to change the names of the timestamps so that both the start time and the stop time appear in the results. `project` also selects the other columns to view in the results. 
 1. Use [join](./joinoperator.md) to match the start and stop entries for the same activity. A row is created for each activity. 
 1. Use `project` again to add a column to show the duration of the activity.
 
-Here's the result:
+Here's the output:
 
 |City|SessionId|StartTime|StopTime|Duration|
 |---|---|---|---|---|
@@ -255,7 +255,7 @@ X
 * Use `todatetime()` because [mv-expand](./mvexpandoperator.md) results in a column of dynamic type.
 * Use `bin()` because, for numeric values and dates, if you don't supply an interval, `summarize` always applies a `bin()` function by using a default interval. 
 
-Here's the result:
+Here's the output:
 
 | count_SessionId | samples|
 |---|---|
@@ -266,7 +266,7 @@ Here's the result:
 | 1 | 10:05:00|
 | 1 | 10:06:00|
 
-The results can be rendered as a bar chart or timechart.
+You can use a bar chart or timechart to render the results.
 
 ## Introduce null bins into *summarize*
 
@@ -489,7 +489,7 @@ You also can achieve mapping by using a persistent table and a `join` operator.
    | project FriendlyName, Count
    ```
 
-Here's the result:
+Here's the output:
 
 |FriendlyName |Count 
 |---|---
@@ -617,7 +617,7 @@ datatable (SomeInt:int, SomeSeries:string) [
 
 The following example shows how to summarize columns by using a sliding window. For the query, use the following table, which contains prices of fruits by timestamps.
 
-Calculate the minimum, maximum, and sum costs of each fruit per day by using a sliding window of seven days. Each record in the result set aggregates the preceding seven days, and the result contains a record per day in the analysis period.
+Calculate the minimum, maximum, and sum costs of each fruit per day by using a sliding window of seven days. Each record in the result set aggregates the preceding seven days, and the results contain a record per day in the analysis period.
 
 Fruit table:
 
@@ -655,7 +655,7 @@ Fruits
 
 ```
 
-Here's the result:
+Here's the output:
 
 |Timestamp|Fruit|min_Price|max_Price|sum_Price|
 |---|---|---|---|---|
@@ -993,7 +993,7 @@ parseurl(urlstring)
 print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
 ```
 
-Here's the result:
+Here's the output:
 
 ```
 {
@@ -1031,7 +1031,7 @@ SecurityEvent
 | extend replaced = replace(@"(\d+) -", @"Activity ID \1: ", Activity) 
 ```
 
-Here's the result:
+Here's the output:
 
 Activity                                        |Replaced
 ------------------------------------------------|----------------------------------------------------------
@@ -1240,7 +1240,7 @@ Event
 | summarize events_count=count() by startofday(TimeGenerated) 
 ```
 
-Here's the result:
+Here's the output:
 
 |timestamp|count_|
 |--|--|
@@ -1266,7 +1266,7 @@ The following sections give examples of how to aggregate the results of a query 
 
 ### *count*
 
-Count the number of rows in the result set after any filters are applied. The following example returns the total number of rows in the `Perf` table from the last 30 minutes. The result is returned in a column named `count_` unless you assign a specific name to the column:
+Count the number of rows in the result set after any filters are applied. The following example returns the total number of rows in the `Perf` table from the last 30 minutes. The results are returned in a column named `count_` unless you assign a specific name to the column:
 
 
 ```kusto
@@ -1394,7 +1394,7 @@ Event
 | summarize makelist(EventID) by Computer
 ```
 
-Here's the result:
+Here's the output:
 
 |Computer|list_EventID|
 |---|---|
@@ -1413,7 +1413,7 @@ Event
 | summarize makeset(EventID) by Computer
 ```
 
-Here's the result:
+Here's the output:
 
 |Computer|list_EventID|
 |---|---|
@@ -1433,7 +1433,7 @@ Heartbeat
 | project Computer, Solutions
 ```
 
-Here's the result:
+Here's the output:
 
 | Computer | Solutions | 
 |--------------|----------------------|
@@ -1451,7 +1451,7 @@ Heartbeat
 | mv-expand Solutions
 ```
 
-Here's the result:
+Here's the output:
 
 | Computer | Solutions | 
 |--------------|----------------------|
@@ -1465,7 +1465,7 @@ Here's the result:
 | ... | ... |
 
 
-You can use `makelist` to group items together. In the result, you can see the list of computers per solution:
+You can use `makelist` to group items together. In the output, you can see the list of computers per solution:
 
 ```kusto
 Heartbeat
@@ -1475,7 +1475,7 @@ Heartbeat
 | summarize makelist(Computer) by tostring(Solutions) 
 ```
 
-Here's the result:
+Here's the output:
 
 |Solutions | list_Computer |
 |--------------|----------------------|
@@ -1495,7 +1495,7 @@ Heartbeat
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
 
-Here's the result:
+Here's the output:
 
 | Category | TimeGenerated | count_ |
 |--------------|----------------------|--------|
@@ -1506,14 +1506,14 @@ Here's the result:
 | Direct Agent | 2017-06-06T22:00:00Z | 60 |
 | ... | ... | ... |
 
-In the result, the bucket that's associated with "2017-06-06T19:00:00Z" is missing because there isn't any heartbeat data for that hour. Use the `make-series` function to assign a default value to empty buckets. A row is generated for each category. The result includes two extra array columns, one for values and one for matching time buckets:
+In the output, the bucket that's associated with "2017-06-06T19:00:00Z" is missing because there isn't any heartbeat data for that hour. Use the `make-series` function to assign a default value to empty buckets. A row is generated for each category. The output includes two extra array columns, one for values and one for matching time buckets:
 
 ```kusto
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
 
-Here's the result:
+Here's the output:
 
 | Category | count_ | TimeGenerated |
 |---|---|---|
@@ -1529,7 +1529,7 @@ Heartbeat
 | project Category, TimeGenerated, count_
 ```
 
-Here's the result:
+Here's the output:
 
 | Category | TimeGenerated | count_ |
 |--------------|----------------------|--------|
@@ -1581,7 +1581,7 @@ SecurityEvent
 
 In the example, the first dataset filters for all sign-in events. That dataset is joined with a second dataset that filters for all sign-out events. The projected columns are `Computer`, `Account`, `TargetLogonId`, and `TimeGenerated`. The datasets are correlated by a shared column, `TargetLogonId`. The output is a single record per correlation that has both the sign-in and sign-out time.
 
-If both datasets have columns that have the same name, the columns of the right-side dataset are given an index number. In this example, the result would show `TargetLogonId` with values from the left-side table and `TargetLogonId1` with values from the right-side table. In this case, the second `TargetLogonId1` column was removed by using the `project-away` operator.
+If both datasets have columns that have the same name, the columns of the right-side dataset are given an index number. In this example, the results would show `TargetLogonId` with values from the left-side table and `TargetLogonId1` with values from the right-side table. In this case, the second `TargetLogonId1` column was removed by using the `project-away` operator.
 
 > [!NOTE]
 > To improve performance, keep only the relevant columns of the joined datasets by using the `project` operator.
@@ -1618,7 +1618,7 @@ SecurityEvent
 | summarize count() by eventName
 ```
 
-Here's the result:
+Here's the output:
 
 | eventName | count_ |
 |:---|:---|
@@ -1876,7 +1876,7 @@ week
 | sort by Cohort asc
 ```
 
-Here's the result:
+Here's the output:
 
 :::image type="content" source="images/samples/cohorts-table.png" alt-text="Screenshot that shows a table of cohorts based on activity.":::
 
@@ -1923,7 +1923,7 @@ customEvents
 | render timechart
 ```
 
-Here's the result:
+Here's the output:
 
 :::image type="content" source="images/samples/rolling-monthly-active-users-chart.png" alt-text="Screenshot of a chart that shows rolling active users by day over a month.":::
 
@@ -1965,7 +1965,7 @@ on Timestamp
 | render timechart
 ```
 
-Here's the result:
+Here's the output:
 
 :::image type="content" source="images/samples/user-stickiness-chart.png" alt-text="Screenshot of a chart that shows user stickiness over time.":::
 
