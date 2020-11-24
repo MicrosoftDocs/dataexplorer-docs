@@ -393,7 +393,10 @@ Run the following to remove the user-assigned identity:
 ```
 
 > [!NOTE]
-> If the cluster had both system-assigned and user-assigned identities at the same time, the `type` property would be `SystemAssigned,UserAssigned`
+> To remove identities set their values to null, all other existing identities will not be affected,
+> To remove all user-assigned identities the `type` property would be `None`,
+> If the cluster had both system-assigned and user-assigned identities at the same time,
+> the `type` property would be `SystemAssigned,UserAssigned` with the identities to remove or `SystemAssigned` to remove all user-assigned identities
 
 ---
 
