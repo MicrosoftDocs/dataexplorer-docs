@@ -77,7 +77,7 @@ You can now run queries on both clusters (assuming you have data in your test cl
     
     This query returns the 10 newest records in the **StormEvents** table. The result should look like the following table.
 
-    :::image type="content" source="media/web-query-data/result-set-take-10.png" alt-text="Screenshot of a table that lists the start time, end time, episode, event ID, state, and event type for 10 storm events." border="false":::
+    :::image type="content" source="media/web-query-data/result-set-take-10.png" alt-text="Screenshot of a table that lists data for 10 storm events." border="false":::
 
     The following image shows the state of the application, with the cluster added, and a query with results.
 
@@ -97,9 +97,8 @@ You can now run queries on both clusters (assuming you have data in your test cl
 
     :::image type="content" source="media/web-query-data/result-set-project.png" alt-text="Screenshot of a table that lists the start time, end time, state, event type, damage property, and episode narrative for 10 storm events." border="false":::
 
-1. At the top of the query window, select **Recall**.
-
-    The query window now shows the result set from the first query without having to rerun the query. Often during analysis, you run multiple queries, and **Recall** allows you to retrieve the results of previous queries.
+    > [!TIP]
+    > Select **Recall** at the top of the query window to show the result set from the first query without having to rerun the query. Often during analysis, you run multiple queries, and **Recall** allows you to retrieve the results of previous queries.
 
 1. Let's run one more query to see a different type of output.
 
@@ -131,9 +130,9 @@ Now that you've seen how basic queries work, let's look at how you can use the t
 
 1. In the grid, double-click on **California** to expand and see records for that state. This type of grouping can be helpful when doing exploratory analysis.
 
-    :::image type="content" source="media/web-query-data/result-set-03.png" alt-text="Screenshot of a query results grid. The California group is expanded, and three rows are visible, with data from events in California." border="false":::
+    :::image type="content" source="media/web-query-data/group-expanded.png" alt-text="Screenshot of a query results grid with California group expanded" border="false":::
 
-1. Mouse-over the **Group** column, then select **Reset columns**. This returns the grid to its original state.
+1. Mouse-over the **Group** column, then select **Reset columns**. This setting returns the grid to its original state.
 
     ![Reset columns](media/web-query-data/reset-columns.png)
 
@@ -230,7 +229,7 @@ To pin a query:
     1. Select **Pin**
 
     :::image type="content" source="media/web-query-data/pin-to-dashboard.png" alt-text="Pin to dashboard pane":::
-    
+
 > [!NOTE]
 > **Pin to dashboard** only pins the selected query. To create the dashboard data source and translate render commands to a visual in the dashboard, the relevant database must be selected in the database list.
 
@@ -260,7 +259,7 @@ The export and import actions help you protect your work environment and relocat
 
 1. In the **Settings** > **General** window, select **Export**.
 1. The **adx-export.json** file will be downloaded to your local storage.
-1. Select **Clear local state** to revert your environment to its original state. This deletes all your cluster connections and closes open tabs.
+1. Select **Clear local state** to revert your environment to its original state. This setting deletes all your cluster connections and closes open tabs.
 
 > [!NOTE]
 > **Export** only exports query related data. No dashboard data will be exported within the **adx-export.json** file.
@@ -269,7 +268,7 @@ The export and import actions help you protect your work environment and relocat
 
 1. In the **Settings** > **General** window, select **Import**. Then in **Warning** pop-up, select **Import**.
 
-    :::image type="content" source="media/web-query-data/import.png" alt-text="import":::
+    :::image type="content" source="media/web-query-data/import.png" alt-text="import warning":::
 
 1. Locate your **adx-export.json** file from your local storage and open it.
 1. Your previous cluster connections and open tabs are now available.
