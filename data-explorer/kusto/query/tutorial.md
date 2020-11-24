@@ -8,6 +8,7 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/08/2020
+ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -19,15 +20,6 @@ The best way to learn about the Kusto query language is to look at some simple
 queries to get the "feel" for the language using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries demonstrated in this article should run on that database. The `StormEvents`
 table in this sample database provides some information about storms that happened
 in the U.S.
-
-<!--
-  TODO: Provide link to reference data we used originally in StormEvents
--->
-
-<!--
-  TODO: A few samples below reference non-existent tables, such as Events and Logs.
-        We need to add these tables.
--->
 
 ## Count rows
 

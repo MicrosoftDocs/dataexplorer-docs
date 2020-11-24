@@ -8,6 +8,7 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/22/2020
+ms.localizationpriority: high 
 ---
 # SQL to Kusto cheat sheet
 

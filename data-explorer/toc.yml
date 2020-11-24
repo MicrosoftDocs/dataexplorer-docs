@@ -558,6 +558,8 @@
         href: ./kusto/query/diffpatterns-textplugin.md
       - name: infer_storage_schema plugin
         href: ./kusto/query/inferstorageschemaplugin.md
+      - name: ipv4_lookup plugin
+        href: ./kusto/query/ipv4-lookup-plugin.md
       - name: mysql_request plugin
         href: ./kusto/query/mysqlrequest-plugin.md
       - name: narrow plugin
@@ -912,6 +914,8 @@
       href: ./kusto/query/ipv4-comparefunction.md
     - name: ipv4_is_match()
       href: ./kusto/query/ipv4-is-matchfunction.md
+    - name: ipv4_is_private()
+      href: ./kusto/query/ipv4-is-privatefunction.md
     - name: ipv6_compare()
       href: ./kusto/query/ipv6-comparefunction.md
     - name: ipv6_is_match()
@@ -1845,6 +1849,8 @@
       href: kusto/functions-library/quantize-fl.md
     - name: series_dot_product_fl()
       href: kusto/functions-library/series-dot-product-fl.md
+    - name: series_exp_smoothing_fl()
+      href: kusto/functions-library/series-exp-smoothing-fl.md
     - name: series_fit_poly_fl()
       href: kusto/functions-library/series-fit-poly-fl.md
     - name: series_moving_avg_fl()

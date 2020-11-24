@@ -7,6 +7,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 04/07/2019
+ms.localizationpriority: high 
 ---
 
 # Write queries for Azure Data Explorer
