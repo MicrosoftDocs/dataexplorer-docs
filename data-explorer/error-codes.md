@@ -54,7 +54,7 @@ The following list contains error codes you may come across during [ingestion](i
 |BadRequest_CreationTimeEarlierThanSoftDeletePeriod|Creation time that was specified for ingestion, isn't within the `SoftDeletePeriod`.<br>For more information about `SoftDeletePeriod`, see [The policy object](./kusto/management/retentionpolicy.md#the-policy-object).  |Permanent   |
 |BadRequest_NotSupported                           |Request not supported.    |Permanent           |
 |Download_SourceNotFound                           |Failed to download source from Azure Storage. Source not found.       |Permanent       |
-|BadRequest_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about Azure Data Explorer naming convention, see [entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent           |
+|BadRequest_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about Azure Data Explorer naming convention, see [Entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent           |
 |BadRequest_MalformedIngestionProperty              |Ingestion property is malformed.    |Permanent           |
 
 ### Category: DataAccessNotAuthorized
@@ -134,7 +134,7 @@ Kusto native error codes are defined using Windows `MAKE-HRESULT` macro with:
   
 The following error codes are defined:
 
-|Error message                  |Code  |Value       |Meaning                                                                                                        |
+|Error message                  |Code  |Value       |Description                                                                                                        |
 |-----------------------------------|------|------------|---------------------------------------------------------------------------------------------------------------|
 |E_EXTENT_LOAD_FAILED             | 0  |0x80DA0000|Data extent couldn't be loaded                                                                                 |
 |E_RUNAWAY_QUERY                  | 1  |0x80DA0001|Query execution aborted because it exceeded its allowed resources                                              |
@@ -164,4 +164,3 @@ The following error codes are defined:
 |E_SB_QUERY_THROTTLED_ERROR       | 200|0x80DA00C8|Sandboxed query was throttled                                                                                  |
 |E_SB_QUERY_CANCELLED             | 201|0x80DA00C9|Sandboxed query was canceled                                                                                   |
 |E_UNSUPPORTED_INSTRUCTION_SET    | 202|0x80DA00CA|Engine's required instruction set is unsupported by this CPU                                                   |
-
