@@ -1,15 +1,16 @@
 ---
-title: where operator (has, contains, startswith, endswith, matches regex) - Azure Data Explorer | Microsoft Docs
-description: This article describes where operator (has, contains, startswith, endswith, matches regex) in Azure Data Explorer.
+title: where operator in Kusto query language - Azure Data Explorer
+description: This article describes the where operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
+ms.localizationpriority: high
 ---
-# where operator (has, contains, startswith, endswith, matches regex)
+# where operator
 
 Filters a table to the subset of rows that satisfy a predicate.
 
@@ -19,22 +20,23 @@ T | where fruit=="apple"
 
 **Alias** `filter`
 
-**Syntax**
+## Syntax
 
 *T* `| where` *Predicate*
 
-**Arguments**
+## Arguments
 
 * *T*: The tabular input whose records are to be filtered.
-* *Predicate*: A `boolean` [expression](./scalar-data-types/bool.md) over the columns of *T*. It is evaluated for each row in *T*.
+* *Predicate*: A `boolean` [expression](./scalar-data-types/bool.md) over the columns of *T*. It's evaluated for each row in *T*.
 
-**Returns**
+## Returns
 
 Rows in *T* for which *Predicate* is `true`.
 
 **Notes**
 Null values: all filtering functions return false when compared with null values. 
-You can use special null-aware functions to write queries that take null values into account:
+You can use special null-aware functions to write queries that handle null values.
+
 [isnull()](./isnullfunction.md),
 [isnotnull()](./isnotnullfunction.md),
 [isempty()](./isemptyfunction.md),
@@ -50,9 +52,9 @@ To get the fastest performance:
 
 * **Simplest terms first**: If you have multiple clauses conjoined with `and`, put first the clauses that involve just one column. So `Timestamp > ago(1d) and OpId == EventId` is better than the other way around.
 
-For more information, refer to the summary of [available String operators](./datatypes-string-operators.md) and the summary of [available Numerical operators](./numoperators.md).
+For more information, see the summary of [available String operators](./datatypes-string-operators.md) and the summary of [available Numerical operators](./numoperators.md).
 
-**Example**
+## Example: Simple comparisons first
 
 ```kusto
 Traces
@@ -61,15 +63,16 @@ Traces
     and ActivityId == SubActivityId 
 ```
 
-Records that are no older than 1 hour,
-and come from the Source called "MyCluster", and have two columns of the same value. 
+This example retrieves records that are no older than 1 hour,
+come from a source called `MyCluster`, and have two columns of the same value. 
 
-Notice that we put the comparison between two columns last, as it can't utilize the index and forces a scan.
+Notice that we put the comparison between two columns last, as it can't use the index and forces a scan.
 
-**Example**
+## Example: Columns contain string
 
 ```kusto
 Traces | where * has "Kusto"
 ```
 
 All the rows in which the word "Kusto" appears in any column.
+ 

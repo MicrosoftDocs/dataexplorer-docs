@@ -11,11 +11,11 @@ ms.date: 03/09/2019
 ---
 # KQL over TDS
 
-Kusto allows to utilize TDS endpoint for executing queries authored in the native [KQL](../../query/index.md) query language. This functionality offers smoother migiration towards Kusto. For example, it is possible to create SSIS job to query Kusto with KQL query.
+Kusto enables TDS endpoints to execute queries authored in the native [KQL](../../query/index.md) query language. This ability enables smoother migration towards Kusto. For example, you can create SSIS jobs to query Kusto with a KQL query.
 
 ## Executing Kusto stored functions
 
-Kusto allows to execute [stored functions](../../query/schema-entities/stored-functions.md) similarly to calling SQL stored procedures.
+Kusto permits [stored functions](../../query/schema-entities/stored-functions.md) to run, like calling SQL stored procedures.
 
 For example, the stored function MyFunction:
 
@@ -43,22 +43,23 @@ can be called like this:
   }
 ```
 
-Please notice that stored functions should be called with explicit schema named `kusto`, to distinguish between Kusto stored functions and emulated
-SQL system stored procedures.
+> [!NOTE]
+> Call stored functions with an explicit schema named `kusto`, to distinguish between Kusto stored functions and emulated
+> SQL system stored procedures.
 
-Kusto stored functions can be also called from T-SQL, just like SQL tabular functions:
+You can also call Kusto stored functions from T-SQL, like SQL tabular functions:
 
 ```sql
 SELECT * FROM kusto.MyFunction(10)
 ```
 
-It is recommend to create optimized KQL queries and to encapsulate them in stored functions, making the T-SQL query code minimal.
+Create optimized KQL queries and encapsulate them in stored functions, making the T-SQL query code minimal.
 
 ## Executing KQL query
 
-Similarly to SQL server `sp_executesql`, Kusto introduced stored procedure `sp_execute_kql` for executing [KQL](../../query/index.md) queries, including parameterized queries.
+The stored procedure `sp_execute_kql` executes [KQL](../../query/index.md) queries (including parameterized queries). This procedure is similar to SQL server `sp_executesql`.
 
-The 1st parameter of `sp_execute_kql` is the KQL query. Additional parameters can be introduced and they will act like [query parameters](../../query/queryparametersstatement.md).
+The first parameter of `sp_execute_kql` is the KQL query. You can introduce additional parameters, and they'll act like [query parameters](../../query/queryparametersstatement.md).
 
 For example:
 
@@ -83,4 +84,5 @@ For example:
   }
 ```
 
-Please notice that there is no need to declare parameters when calling via TDS, as parameter types are set via protocol.
+> [!NOTE]
+> There is no need to declare parameters when calling via TDS, since parameter types are set via protocol.

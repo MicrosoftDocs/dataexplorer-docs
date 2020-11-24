@@ -1,10 +1,10 @@
 ---
-title: hash_combine() - Azure Data Explorer | Microsoft Docs
+title: hash_combine() - Azure Data Explorer
 description: This article describes hash_combine() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/19/2019
@@ -13,22 +13,23 @@ ms.date: 11/19/2019
 
 Combines hash values of two or more hashes.
 
-**Syntax**
+## Syntax
 
 `hash_combine(`*h1* `,` *h2* [`,` *h3* ...]`)`
 
-**Arguments**
+## Arguments
 
 * *h1*: Long value representing the first hash value.
 * *h2*: Long value representing the second hash value.
 * *hN*: Long value representing Nth hash value.
 
-**Returns**
+## Returns
 
 The combined hash value of the given scalars.
 
-**Examples**
+## Examples
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print value1 = "Hello", value2 = "World"
 | extend h1 = hash(value1), h2=hash(value2)

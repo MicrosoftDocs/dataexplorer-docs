@@ -1,10 +1,10 @@
 ---
-title: series_stats_dynamic() - Azure Data Explorer | Microsoft Docs
+title: series_stats_dynamic() - Azure Data Explorer
 description: This article describes series_stats_dynamic() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/10/2020
@@ -22,17 +22,18 @@ The `series_stats_dynamic()` function takes a column containing dynamic numerica
 * `variance`: sample variance of input array
 * `stdev`: sample standard deviation of the input array
 
-**Syntax**
+## Syntax
 
 `series_stats_dynamic(`*x* `[,`*ignore_nonfinite*`])`
 
-**Arguments**
+## Arguments
 
 * *x*: Dynamic array cell which is an array of numeric values. 
 * *ignore_nonfinite*: Boolean (optional, default: `false`) flag that specifies whether to calculate the statistics while ignoring non-finite values (*null*, *NaN*, *inf*, etc.). If set to `false` the returned result is `null` if non-finite values are present in the array.
 
-**Example**
+## Example
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 print x=dynamic([23,46,23,87,4,8,3,75,2,56,13,75,32,16,29]) 
 | project stats=series_stats_dynamic(x)

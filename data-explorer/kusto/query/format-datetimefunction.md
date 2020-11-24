@@ -1,13 +1,14 @@
 ---
-title: format_datetime() - Azure Data Explorer | Microsoft Docs
+title: format_datetime() - Azure Data Explorer
 description: This article describes format_datetime() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
+ms.localizationpriority: high
 ---
 # format_datetime()
 
@@ -17,16 +18,16 @@ Formats a datetime according to the provided format.
 format_datetime(datetime(2015-12-14 02:03:04.12345), 'y-M-d h:m:s.fffffff') == "15-12-14 2:3:4.1234500"
 ```
 
-**Syntax**
+## Syntax
 
 `format_datetime(`*datetime* `,` *format*`)`
 
-**Arguments**
+## Arguments
 
 * `datetime`: value of a type `datetime`.
 * `format`: format specifier string, consisting of one or more [format elements](#supported-formats).
 
-**Returns**
+## Returns
 
 The string with the format result.
 
@@ -81,8 +82,9 @@ Format specifier can include following delimeters characters:
 |`'['`||
 |`']'`||
 
-**Examples**
+## Examples
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let dt = datetime(2017-01-29 09:00:05);
 print 

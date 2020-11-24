@@ -4,39 +4,44 @@ description: This article describes summarize operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/20/2020
+ms.localizationpriority: high 
 ---
 # summarize operator
 
 Produces a table that aggregates the content of the input table.
 
-```
-T | summarize count(), avg(price) by fruit, supplier
+```kusto
+Sales | summarize NumTransactions=count(), Total=sum(UnitPrice * NumUnits) by Fruit, StartOfMonth=startofmonth(SellDateTime)
 ```
 
-A table that shows the number and average price of each fruit from each supplier. There's a row in the output for each distinct combination of fruit and supplier. The output columns show the count, average price, fruit and supplier. All other input columns are ignored.
+Returns a table with how many sell transactions and the total amount per fruit and sell month.
+The output columns show the count of transactions, transaction worth, fruit, and the datetime of the beginning of the month
+in which the transaction was recorded.
 
-```
+```kusto
 T | summarize count() by price_range=bin(price, 10.0)
 ```
 
 A table that shows how many items have prices in each interval  [0,10.0], [10.0,20.0], and so on. This example has a column for the count and one for the price range. All other input columns are ignored.
 
-**Syntax**
+## Syntax
 
 *T* `| summarize`
       [[*Column* `=`] *Aggregation* [`,` ...]]
     [`by`
       [*Column* `=`] *GroupExpression* [`,` ...]]
 
-**Arguments**
+## Arguments
 
 * *Column:* Optional name for a result column. Defaults to a name derived from the expression.
 * *Aggregation:* A call to an [aggregation function](summarizeoperator.md#list-of-aggregation-functions) such as `count()` or `avg()`, with column names as arguments. See the [list of aggregation functions](summarizeoperator.md#list-of-aggregation-functions).
-* *GroupExpression:* An expression over the columns, that provides a set of distinct values. Typically it's either a column name that already provides a restricted set of values, or `bin()` with a numeric or time column as argument. 
+* *GroupExpression:* A scalar expression that can reference the input data.
+  The output will have as many records as there are distinct values of all the
+  group expressions.
 
 > [!NOTE]
 > When the input table is empty, the output depends on whether *GroupExpression*
@@ -45,7 +50,7 @@ A table that shows how many items have prices in each interval  [0,10.0], [10.0,
 > * If *GroupExpression* is not provided, the output will be a single (empty) row.
 > * If *GroupExpression* is provided, the output will have no rows.
 
-**Returns**
+## Returns
 
 The input rows are arranged into groups having the same values of the `by` expressions. Then the specified aggregation functions are computed over each group, producing a row for each group. The result contains the `by` columns and also at least one column for each computed aggregate. (Some aggregation functions return multiple columns.)
 
@@ -94,8 +99,8 @@ To summarize over ranges of numeric values, use `bin()` to reduce ranges to disc
 |[percentilesw_array()](percentiles-aggfunction.md)|Returns the weighted percentiles approximates of the group|
 |[stdev()](stdev-aggfunction.md)|Returns the standard deviation across the group|
 |[stdevif()](stdevif-aggfunction.md)|Returns the standard deviation across the group (with predicate)|
-|[sum()](sum-aggfunction.md)|Returns the sum of the elements withing the group|
-|[sumif()](sumif-aggfunction.md)|Returns the sum of the elements withing the group (with predicate)|
+|[sum()](sum-aggfunction.md)|Returns the sum of the elements within the group|
+|[sumif()](sumif-aggfunction.md)|Returns the sum of the elements within the group (with predicate)|
 |[variance()](variance-aggfunction.md)|Returns the variance across the group|
 |[varianceif()](varianceif-aggfunction.md)|Returns the variance across the group (with predicate)|
 
@@ -113,14 +118,14 @@ Operator       |Default value
 
 ## Examples
 
-![alt text](./Images/aggregations/01.png "01")
+:::image type="content" source="images/summarizeoperator/summarize-price-by-supplier.png" alt-text="Summarize price by fruit and supplier":::
 
-**Example**
+## Example: Unique combination
 
 Determine what unique combinations of
 `ActivityType` and `CompletionStatus` there are in a table. There are no aggregation functions, just group-by keys. The output will just show the columns for those results:
 
-```
+```kusto
 Activities | summarize by ActivityType, completionStatus
 ```
 
@@ -131,11 +136,11 @@ Activities | summarize by ActivityType, completionStatus
 |`dancing`|`abandoned`
 |`singing`|`completed`
 
-**Example**
+## Example: Minimum and maximum timestamp
 
 Finds the minimum and maximum timestamp of all records in the Activities table. There is no group-by clause, so there is just one row in the output:
 
-```
+```kusto
 Activities | summarize Min = min(Timestamp), Max = max(Timestamp)
 ```
 
@@ -143,11 +148,13 @@ Activities | summarize Min = min(Timestamp), Max = max(Timestamp)
 |---|---
 |`1975-06-09 09:21:45` | `2015-12-24 23:45:00`
 
-**Example**
+## Example: Distinct count
 
 Create a row for each continent, showing a count of the cities in which activities occur. Because there are few values for "continent", no grouping function is needed in the 'by' clause:
 
-    Activities | summarize cities=dcount(city) by continent
+```kusto
+Activities | summarize cities=dcount(city) by continent
+```
 
 |`cities`|`continent`
 |---:|---
@@ -156,12 +163,12 @@ Create a row for each continent, showing a count of the cities in which activiti
 |`2673`|`North America`|
 
 
-**Example**
+## Example: Histogram
 
 The following example calculates a histogram for each activity
 type. Because `Duration` has many values, use `bin` to group its values into 10-minute intervals:
 
-```
+```kusto
 Activities | summarize count() by ActivityType, length=bin(Duration, 10m)
 ```
 
@@ -181,9 +188,8 @@ When the input of `summarize` operator has at least one empty group-by key, it's
 
 When the input of `summarize` operator doesn't have an empty group-by key, the result is the default values of the aggregates used in the `summarize`:
 
-```
-range x from 1 to 10 step 1
-| where 1 == 2
+```kusto
+datatable(x:long)[]
 | summarize any(x), arg_max(x, x), arg_min(x, x), avg(x), buildschema(todynamic(tostring(x))), max(x), min(x), percentile(x, 55), hll(x) ,stdev(x), sum(x), sumif(x, x > 0), tdigest(x), variance(x)
 ```
 
@@ -191,9 +197,8 @@ range x from 1 to 10 step 1
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |||||||||||||||||
 
-```
-range x from 1 to 10 step 1
-| where 1 == 2
+```kusto
+datatable(x:long)[]
 | summarize  count(x), countif(x > 0) , dcount(x), dcountif(x, x > 0)
 ```
 
@@ -201,9 +206,8 @@ range x from 1 to 10 step 1
 |---|---|---|---|
 |0|0|0|0|
 
-```
-range x from 1 to 10 step 1
-| where 1 == 2
+```kusto
+datatable(x:long)[]
 | summarize  make_set(x), make_list(x)
 ```
 
@@ -213,7 +217,7 @@ range x from 1 to 10 step 1
 
 The aggregate avg sums all the non-nulls and counts only those which participated in the calculation (will not take nulls into account).
 
-```
+```kusto
 range x from 1 to 2 step 1
 | extend y = iff(x == 1, real(null), real(5))
 | summarize sum(y), avg(y)
@@ -225,7 +229,7 @@ range x from 1 to 2 step 1
 
 The regular count will count nulls: 
 
-```
+```kusto
 range x from 1 to 2 step 1
 | extend y = iff(x == 1, real(null), real(5))
 | summarize count(y)
@@ -235,7 +239,7 @@ range x from 1 to 2 step 1
 |---|
 |2|
 
-```
+```kusto
 range x from 1 to 2 step 1
 | extend y = iff(x == 1, real(null), real(5))
 | summarize make_set(y), make_set(y)

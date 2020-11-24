@@ -1,10 +1,10 @@
 ---
-title: beta_cdf() - Azure Data Explorer | Microsoft Docs
+title: beta_cdf() - Azure Data Explorer
 description: This article describes beta_cdf() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -21,17 +21,17 @@ If *probability* = `beta_cdf(`*x*,...`)`, then `beta_inv(`*probability*,...`)` =
 
 The beta distribution is commonly used to study variation in the percentage of something across samples, such as the fraction of the day people spend watching television.
 
-**Syntax**
+## Syntax
 
 `beta_cdf(`*x*`, `*alpha*`, `*beta*`)`
 
-**Arguments**
+## Arguments
 
 * *x*: A value at which to evaluate the function.
 * *alpha*: A parameter of the distribution.
 * *beta*: A parameter of the distribution.
 
-**Returns**
+## Returns
 
 * The [cumulative beta distribution function](https://en.wikipedia.org/wiki/Beta_distribution#Cumulative_distribution_function).
 
@@ -41,10 +41,13 @@ If any argument is nonnumeric, beta_cdf() returns null value.
 
 If x < 0 or x > 1, beta_cdf() returns NaN value.
 
-If alpha ≤ 0 or beta ≤ 0, beta_cdf() returns the NaN value.
+If alpha ≤ 0 or alpha > 10000, beta_cdf() returns the NaN value.
 
-**Examples**
+If beta ≤ 0 or beta > 10000, beta_cdf() returns the NaN value.
 
+## Examples
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(x:double, alpha:double, beta:double, comment:string)
 [
@@ -64,7 +67,7 @@ datatable(x:double, alpha:double, beta:double, comment:string)
 |0.1|-1|20|alpha is < 0, yields NaN|NaN|
 
 
-**See also**
+## See also
 
 
 * For computing the inverse of the beta cumulative probability density function, see [beta-inv()](./beta-invfunction.md).

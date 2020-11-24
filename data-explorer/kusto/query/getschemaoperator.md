@@ -1,10 +1,10 @@
 ---
-title: getschema operator  - Azure Data Explorer | Microsoft Docs
+title: getschema operator  - Azure Data Explorer
 description: This article describes getschema operator  in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,12 +17,13 @@ Produce a table that represents a tabular schema of the input.
 T | summarize MyCount=count() by Country | getschema 
 ```
 
-**Syntax**
+## Syntax
 
 *T* `| ` `getschema`
 
-**Example**
+## Example
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | top 10 by Timestamp

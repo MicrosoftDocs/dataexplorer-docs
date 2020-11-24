@@ -1,10 +1,10 @@
 ---
-title: series_multiply() - Azure Data Explorer | Microsoft Docs
+title: series_multiply() - Azure Data Explorer
 description: This article describes series_multiply() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -13,20 +13,21 @@ ms.date: 10/23/2018
 
 Calculates the element-wise multiplication of two numeric series inputs.
 
-**Syntax**
+## Syntax
 
 `series_multiply(`*series1*`,` *series2*`)`
 
-**Arguments**
+## Arguments
 
 * *series1, series2*: Input numeric arrays, to be element-wise multiplied into a dynamic array result. All arguments must be dynamic arrays. 
 
-**Returns**
+## Returns
 
 Dynamic array of calculated element-wise multiplication operation between the two inputs. Any non-numeric element or non-existing element (arrays of different sizes) yields a `null` element value.
 
-**Example**
+## Example
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2

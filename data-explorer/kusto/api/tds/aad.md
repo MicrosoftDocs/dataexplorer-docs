@@ -7,17 +7,18 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
+ms.custom: has-adal-ref
 ms.date: 01/02/2019
 ---
 # MS-TDS with Azure Active Directory
 
-## AAD User Authentication
+## Azure AD User Authentication
 
-SQL clients that support AAD user authentication can be used with Kusto.
+SQL clients that support Azure AD user authentication can be used with Azure Data Explorer.
 
 ### .NET SQL Client (user)
 
-For example, for integrated AAD:
+For example, for integrated Azure AD:
 ```csharp
     var csb = new SqlConnectionStringBuilder()
     {
@@ -59,11 +60,11 @@ public class Sample {
     ds.setDatabaseName("<your database name>");
     ds.setHostNameInCertificate("*.kusto.windows.net"); // Or appropriate regional domain.
     ds.setAuthentication("ActiveDirectoryIntegrated");
-    try (Connection connection = ds.getConnection(); 
+    try (Connection connection = ds.getConnection();
          Statement stmt = connection.createStatement();) {
       ResultSet rs = stmt.executeQuery("<your T-SQL query>");
-      /* 
-      Read query result. 
+      /*
+      Read query result.
       */
     } catch (Exception e) {
       System.out.println();
@@ -73,13 +74,13 @@ public class Sample {
 }
 ```
 
-## AAD Application Authentication
+## Azure AD Application Authentication
 
-AAD application provisioned for Kusto can use SQL client libraries that support AAD for connecting to Kusto. See [Creating an AAD Application](../../management/access-control/how-to-provision-aad-app.md) for more information about AAD applications.
+Azure AD application provisioned for Kusto can use SQL client libraries that support Azure AD for connecting to Kusto. For more information about Azure AD applications, see [Creating an Azure AD Application](../../../provision-azure-ad-app.md).
 
 ### .NET SQL Client (application)
 
-Assuming you have provisioned AAD application with *ApplicationClientId* and *ApplicationKey* and granted it permissions to access database *DatabaseName* on cluster *ClusterDnsName*, the following sample demonstrates how to use .NET SQL Client for queries from this AAD application.
+Assuming you have provisioned Azure AD application with *ApplicationClientId* and *ApplicationKey* and granted it permissions to access database *DatabaseName* on cluster *ClusterDnsName*, the following sample demonstrates how to use .NET SQL Client for queries from this Azure AD application.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -97,10 +98,10 @@ namespace Sample
         // Can also use tenant ID.
         "https://login.microsoftonline.com/<your AAD tenant name>");
       var applicationCredentials = new ClientCredential(
-        "<your application client ID>", 
+        "<your application client ID>",
         "<your application key>");
       var result = await authContext.AcquireTokenAsync(
-        "https://<your cluster DNS name>", 
+        "https://<your cluster DNS name>",
         applicationCredentials);
       return result.AccessToken;
     }
@@ -117,7 +118,7 @@ namespace Sample
         connection.AccessToken = await ObtainToken();
         await connection.OpenAsync();
         using (var command = new SqlCommand(
-          "<your T-SQL query>", 
+          "<your T-SQL query>",
           connection))
         {
           var reader = await command.ExecuteReaderAsync();
@@ -142,16 +143,16 @@ public class Sample {
   public static void main(String[] args) throws Throwable {
     ExecutorService service = Executors.newFixedThreadPool(1);
     // Can also use tenant name.
-    String url = "https://login.microsoftonline.com/<your AAD tenant ID>"; 
-    AuthenticationContext authenticationContext = 
+    String url = "https://login.microsoftonline.com/<your AAD tenant ID>";
+    AuthenticationContext authenticationContext =
       new AuthenticationContext(url, false, service);
     ClientCredential  clientCredential = new ClientCredential(
-      "<your application client ID>", 
+      "<your application client ID>",
       "<your application key>");
-    Future<AuthenticationResult> futureAuthenticationResult = 
+    Future<AuthenticationResult> futureAuthenticationResult =
       authenticationContext.acquireToken(
-        "https://<your cluster DNS name>", 
-        clientCredential, 
+        "https://<your cluster DNS name>",
+        clientCredential,
         null);
     AuthenticationResult authenticationResult = futureAuthenticationResult.get();
     SQLServerDataSource ds = new SQLServerDataSource();

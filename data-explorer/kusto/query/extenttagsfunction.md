@@ -4,11 +4,11 @@ description: This article describes extent_tags() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # extent_tags()
@@ -19,16 +19,16 @@ Returns a dynamic array with the [tags](../management/extents-overview.md#extent
 
 Applying this function to calculated data which is not attached to a data shard returns an empty value.
 
-**Syntax**
+## Syntax
 
 `extent_tags()`
 
-**Returns**
+## Returns
 
 A value of type `dynamic` that is an array holding the current record's extent tags,
 or an empty value.
 
-**Examples**
+## Examples
 
 The following example shows how to get a list the tags of all the data shards
 that have records from an hour ago with a specific value for the
@@ -60,6 +60,6 @@ T
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end

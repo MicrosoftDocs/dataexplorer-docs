@@ -30,7 +30,7 @@ Alters the Folder value of an existing function.
 
 **Example** 
 
-```
+```kusto
 .alter function MyFunction1 folder "Updated Folder"
 ```
     
@@ -38,7 +38,7 @@ Alters the Folder value of an existing function.
 |---|---|---|---|---
 |MyFunction2 |(myLimit: long)| {StormEvents &#124; limit myLimit}|Updated Folder|Some DocString|
 
-```
+```kusto
 .alter function MyFunction1 folder @"First Level\Second Level"
 ```
     

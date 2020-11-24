@@ -9,12 +9,14 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# .show functions
+# .show function(s)
 
 Lists all the stored functions in the currently-selected database.
 To return only one specific function, see [.show function](#show-function).
 
-```
+## .show functions
+
+```kusto
 .show functions
 ```
 
@@ -38,7 +40,7 @@ Requires [database user permission](../management/access-control/role-based-auth
 
 ## .show function
 
-```
+```kusto
 .show function MyFunc1
 ```
 
@@ -65,7 +67,7 @@ For a list of **all** functions, see [.show functions](#show-functions).
  
 **Example** 
 
-```
+```kusto
 .show function MyFunction1 
 ```
     

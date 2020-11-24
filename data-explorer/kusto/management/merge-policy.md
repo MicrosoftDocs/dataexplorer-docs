@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Merge policy management
+# Merge policy command
 
 ## show policy
 
@@ -43,11 +43,12 @@ Shows all policies of the given entity type (database or table) if the given nam
 @'{'
     '"ExtentSizeTargetInMb": 1024,'
     '"OriginalSizeInMbUpperBoundForRebuild": 2048,'
-    '"RowCountUpperBoundForRebuild": 750000, '
-    '"RowCountUpperBoundForMerge": 0, '
-    '"MaxExtentsToMerge": 100, '
-    '"LoopPeriod": "01:00:00", '
-    '"MaxRangeInHours": 8, '
+    '"OriginalSizeInMbUpperBoundForMerge": 4096,'
+    '"RowCountUpperBoundForRebuild": 750000,'
+    '"RowCountUpperBoundForMerge": 0,'
+    '"MaxExtentsToMerge": 100,'
+    '"LoopPeriod": "01:00:00",'
+    '"MaxRangeInHours": 8,'
     '"AllowRebuild": true,'
     '"AllowMerge": true '
 '}'
@@ -60,6 +61,7 @@ Shows all policies of the given entity type (database or table) if the given nam
 @'{'
     '"ExtentSizeTargetInMb": 1024,'
     '"OriginalSizeInMbUpperBoundForRebuild": 2048,'
+    '"OriginalSizeInMbUpperBoundForMerge": 4096,'
     '"RowCountUpperBoundForRebuild": 750000,'
     '"RowCountUpperBoundForMerge": 0,'
     '"MaxExtentsToMerge": 100,'
@@ -95,6 +97,8 @@ Shows all policies of the given entity type (database or table) if the given nam
 ```
 
 All of the above returns the updated extents merge policy for the entity (database or table specified as a qualified name) as their output.
+
+Changes to the policy could take up to 1 hour to take effect.
 
 ## delete policy of merge
 

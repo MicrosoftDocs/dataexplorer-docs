@@ -1,61 +1,60 @@
 ---
-title: activity_counts_metrics plugin - Azure Data Explorer | Microsoft Docs
+title: activity_counts_metrics plugin - Azure Data Explorer 
 description: This article describes activity_counts_metrics plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
 # activity_counts_metrics plugin
 
-Calculates useful activity metrics (total count values, distinct count values, distinct count of new values, aggregated distinct count) for each time window compared/aggregated to/with *all* previous time windows 
-(unlike [activity_metrics plugin](activity-metrics-plugin.md) in which every time window is compared to its previous time window only).
+Calculates useful activity metrics for each time window compared/aggregated to *all* previous time windows. Metrics include: total count values, distinct count values, distinct count of new values, and aggregated distinct count. Compare this plugin to [activity_metrics plugin](activity-metrics-plugin.md), in which every time window is compared to its previous time window only.
 
 ```kusto
 T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
 ```
 
-**Syntax**
+## Syntax
 
 *T* `| evaluate` `activity_counts_metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Window* [`,` *Cohort*] [`,` *dim1*`,` *dim2*`,` ...] [`,` *Lookback*] `)`
 
-**Arguments**
+## Arguments
 
 * *T*: The input tabular expression.
 * *IdColumn*: The name of the column with ID values that represent user activity. 
-* *TimelineColumn*: The name of the column that represent timeline.
+* *TimelineColumn*: The name of the column that represents the timeline.
 * *Start*: Scalar with value of the analysis start period.
 * *End*: Scalar with value of the analysis end period.
-* *Window*: Scalar with value of the analysis window period. Can be either a numeric/datetime/timestamp value, or a string which is one of `week`/`month`/`year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) accordingly. 
+* *Window*: Scalar with value of the analysis window period. Can be either a numeric/datetime/timestamp value, or a string that is one of `week`/`month`/`year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md) or [startofyear](startofyearfunction.md). 
 * *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
 
-**Returns**
+## Returns
 
-Returns a table that has the total count values, distinct count values, distinct count of new values, aggregated distinct count for each 
-time window.
+Returns a table that has: total count values, distinct count values, distinct count of new values, and aggregated distinct count for each time window.
 
 Output table schema is:
 
-|TimelineColumn|dim1|...|dim_n|count|dcount|new_dcount|aggregated_dcount
+|`TimelineColumn`|`dim1`|...|`dim_n`|`count`|`dcount`|`new_dcount`|`aggregated_dcount`
 |---|---|---|---|---|---|---|---|---|
-|type: as of *TimelineColumn*|..|..|..|long|long|long|long|long
+|type: as of *`TimelineColumn`*|..|..|..|long|long|long|long|long
 
 
-* *TimelineColumn*: The time window start time.
-* *count*: The total records count in the time window and *dim(s)*
-* *dcount*: The distinct ID values count in the time window and *dim(s)*
-* *new_dcount*: The distinct ID values in the time window and *dim(s)* compared to all previous time windows. 
-* *aggregated_dcount*: The total aggregated distinct ID values of *dim(s)* from 1st time window to current (inclusive).
+* *`TimelineColumn`*: The time window start time.
+* *`count`*: The total records count in the time window and *dim(s)*
+* *`dcount`*: The distinct ID values count in the time window and *dim(s)*
+* *`new_dcount`*: The distinct ID values in the time window and *dim(s)* compared to all previous time windows. 
+* *`aggregated_dcount`*: The total aggregated distinct ID values of *dim(s)* from first-time window to current (inclusive).
 
-**Examples**
+## Examples
 
 ### Daily activity counts 
 
 The next query calculates daily activity counts for the provided input table
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let start=datetime(2017-08-01);
 let end=datetime(2017-08-04);
@@ -81,7 +80,7 @@ let T = datatable(UserId:string, Timestamp:datetime)
  | evaluate activity_counts_metrics(UserId, Timestamp, start, end, window)
 ```
 
-|Timestamp|count|dcount|new_dcount|aggregated_dcount|
+|`Timestamp`|`count`|`dcount`|`new_dcount`|`aggregated_dcount`|
 |---|---|---|---|---|
 |2017-08-01 00:00:00.0000000|4|4|4|4|
 |2017-08-02 00:00:00.0000000|3|3|2|6|

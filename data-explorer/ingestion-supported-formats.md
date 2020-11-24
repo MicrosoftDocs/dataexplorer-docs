@@ -15,7 +15,8 @@ Data ingestion is the process by which data is added to a table and is made avai
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
-|Avro     |`.avro`     |An [Avro container file](https://avro.apache.org/docs/current/). The following codes are supported: `null`, `deflate` (`snappy` is currently not supported).|
+|ApacheAvro|`.avro`    |An [Avro](https://avro.apache.org/docs/current/) format with support for [logical types](https://avro.apache.org/docs/current/spec.html#Logical+Types) and for `snappy` compression codec.|
+|Avro     |`.avro`     |A legacy implementation for [Avro container file](https://avro.apache.org/docs/current/). The following codes are supported: `null`, `deflate` (for `snappy` - use `apacheavro` file format).|
 |CSV      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
 |JSON     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
 |MultiJSON|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace, `\n` or `\r\n`. Each property bag can be spread on multiple lines. This format is preferred over `JSON`, unless the data is non-property bags.|
@@ -28,6 +29,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 |TSV      |`.tsv`      |A text file with tab-separated values (`\t`).|
 |TSVE     |`.tsv`      |A text file with tab-separated values (`\t`). A backslash character (`\`) is used for escaping.|
 |TXT      |`.txt`      |A text file with lines delimited by `\n`. Empty lines are skipped.|
+|W3CLOGFILE |`.log`    |[Web log file](https://www.w3.org/TR/WD-logfile.html) format standardised by the W3C.|
 
 ## Supported data compression formats
 
@@ -42,9 +44,9 @@ Indicate compression by appending the extension to the name of the blob or file.
 
 For example:
 * `MyData.csv.zip` indicates a blob or a file formatted as CSV, compressed with ZIP (archive or a single file)
-* `MyData.csv.gz` indicates a blob or a file formatted as CSV, compressed with GZip
+* `MyData.json.gz` indicates a blob or a file formatted as JSON, compressed with GZip.
 
-Blob or file names that don't include the format extensions but just compression (for example, ) is also supported. In this case, the file format
+Blob or file names that don't include the format extensions but just compression (for example, `MyData.zip`) is also supported. In this case, the file format
 must be specified as an ingestion property because it cannot be inferred.
 
 > [!NOTE]
@@ -55,5 +57,5 @@ must be specified as an ingestion property because it cannot be inferred.
 
 ## Next steps
 
-* Learn more about [data ingestion](/azure/data-explorer/ingest-data-overview)
+* Learn more about [data ingestion](ingest-data-overview.md)
 * Learn more about [Azure Data Explorer data ingestion properties](ingestion-properties.md)

@@ -13,8 +13,6 @@ ms.date: 04/01/2020
 
 The following tables describe the options for customizing the behavior of Kusto.Explorer from the **Tools** > **Options** dialog box.
 
-![**Tools** > **Options**](\images\Kusto-Tools-Explorer-Options\tools-options.png)
-
 ## General Settings
 
 | Option | Description |

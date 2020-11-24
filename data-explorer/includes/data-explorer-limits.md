@@ -1,9 +1,9 @@
 ---
-author: ilayrn
+author: orspod
 ms.service: data-explorer
 ms.topic: include
 ms.date: 01/20/2020
-ms.author: ilayr
+ms.author: orspodek
 ---
 
 The following table describes the maximum limits for Azure Data Explorer clusters.

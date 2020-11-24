@@ -22,10 +22,10 @@ Alters the Folder value of an existing table.
 
 **Examples** 
 
-```
+```kusto
 .alter table MyTable folder "Updated folder"
 ```
 
-```
+```kusto
 .alter table MyTable folder @"First Level\Second Level"
 ```

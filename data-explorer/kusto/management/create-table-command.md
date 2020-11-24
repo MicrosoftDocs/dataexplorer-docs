@@ -1,5 +1,5 @@
 ---
-title: .create table - Azure Data Explorer | Microsoft Docs
+title: .create table - Azure Data Explorer
 description: This article describes .create table in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -21,11 +21,11 @@ Requires [Database user permission](../management/access-control/role-based-auth
 
 `.create` `table` *TableName* ([columnName:columnType], ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
-If the table already exists the command will return success.
+If the table already exists, the command will return success.
 
 **Example** 
 
-```
+```kusto
 .create table MyLogs ( Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32 ) 
 ```
  
@@ -33,29 +33,9 @@ If the table already exists the command will return success.
 
 Returns the table's schema in JSON format, same as:
 
-```
+```kusto
 .show table MyLogs schema as json
 ```
 
 > [!NOTE]
-> For creating multiple tables, use the [.create tables](/create-tables.md) command for better performance and lower load on the cluster.
-
-## .create-merge table
-
-Creates a new table or extends an existing table. 
-
-The command must run in context of a specific database. 
-
-Requires [Database user permission](../management/access-control/role-based-authorization.md).
-
-**Syntax**
-
-`.create-merge` `table` *TableName* ([columnName:columnType], ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
-
-If the table doesn't exist, functions exactly as ".create table" command.
-
-If table T exists, and you send a ".create-merge table T (<columns specification>)" command, then:
-
-* Any column in <columns specification> that didn't previously exist in T will be added to the end of T's schema.
-* Any column in T which is not in <columns specification> won't be removed from T.
-* Any column in <columns specification> that exists in T, but with a different data type will cause the command to fail.
+> For creating multiple tables, use the [.create tables](create-tables-command.md) command for better performance and lower load on the cluster.

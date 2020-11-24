@@ -1,14 +1,14 @@
 ---
-title: table() (scope function) - Azure Data Explorer | Microsoft Docs
+title: table() (scope function) - Azure Data Explorer
 description: This article describes table() (scope function) in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # table() (scope function)
@@ -20,11 +20,11 @@ of type `string`.
 table('StormEvent')
 ```
 
-**Syntax**
+## Syntax
 
 `table` `(` *TableName* [`,` *DataScope*] `)`
 
-**Arguments**
+## Arguments
 
 ::: zone pivot="azuredataexplorer"
 
@@ -65,6 +65,7 @@ table('StormEvent')
 
 ### Use table() to access table of the current database
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 table('StormEvent') | count
 ```
@@ -78,6 +79,7 @@ table('StormEvent') | count
 The same query as above can be rewritten to use inline function (let statement) that 
 receives a parameter `tableName` - which is passed into the table() function.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let foo = (tableName:string)
 {

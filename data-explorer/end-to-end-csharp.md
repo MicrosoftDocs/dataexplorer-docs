@@ -1,12 +1,12 @@
 ---
 title: 'End-to-end blob ingestion into Azure Data Explorer through C#'
 description: In this article, you learn how to ingest blobs into Azure Data Explorer with an end-to-end example that uses C#.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
-ms.date: 02/03/2020
+ms.topic: tutorial
+ms.date: 05/19/2020
 ---
 
 # End-to-end blob ingestion into Azure Data Explorer through C#
@@ -148,14 +148,14 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
     kustoClient.ExecuteControlCommand(command);
 
-    command = CslCommandGenerator.GenerateTableCsvMappingCreateCommand(
+    command = CslCommandGenerator.GenerateTableMappingCreateCommand(
+        Data.Ingestion.IngestionMappingKind.Csv,
         kustoTableName,
         kustoColumnMappingName,
-        new[]
-        {
-            new CsvColumnMapping { ColumnName = "EventTime", CslDataType="dateTime", Ordinal = 0 },
-            new CsvColumnMapping { ColumnName = "EventId", CslDataType="int", Ordinal = 1 },
-            new CsvColumnMapping { ColumnName = "EventSummary", CslDataType="string", Ordinal = 2 },
+        new ColumnMapping[] {
+            new ColumnMapping() { ColumnName = "EventTime", ColumnType = "dateTime", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "0" } } },
+            new ColumnMapping() { ColumnName = "EventId", ColumnType = "int", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "1" } } },
+            new ColumnMapping() { ColumnName = "EventSummary", ColumnType = "string", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "2" } } },
         });
     kustoClient.ExecuteControlCommand(command);
 }

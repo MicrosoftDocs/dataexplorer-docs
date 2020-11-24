@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2019
 
 #Customer intent: I want to use Azure DevOps to create a release pipeline and deploy
@@ -23,9 +23,9 @@ This document describes a simple example on the use of the **Azure Data Explorer
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Azure Data Explorer Cluster setup:
-    * An [Azure Data Explorer cluster and database](/azure/data-explorer/create-cluster-database-portal)
-    * Create Azure Active Directory (Azure AD) app by [provisioning an Azure AD application](kusto/management/access-control/how-to-provision-aad-app.md).
-    * Grant access to your Azure AD App on your Azure Data Explorer database by [managing Azure Data Explorer database permissions](/azure/data-explorer/manage-database-permissions).
+    * An [Azure Data Explorer cluster and database](create-cluster-database-portal.md).
+    * Create Azure Active Directory (Azure AD) app by [provisioning an Azure AD application](./provision-azure-ad-app.md).
+    * Grant access to your Azure AD App on your Azure Data Explorer database by [managing Azure Data Explorer database permissions](manage-database-permissions.md).
 * Azure DevOps setup:
     * [Sign up for a free organization](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops)
     * [Create an organization](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
@@ -39,7 +39,7 @@ Create the following sample folders (*Functions*, *Policies*, *Tables*) in your 
 ![Create folders](media/devops/create-folders.png)
 
 > [!TIP]
-> When creating your own workflow, we recommend making your code idempotent. For example, use [.create-merge table](kusto/management/create-table-command.md#create-merge-table) instead of [.create table](kusto/management/create-table-command.md), and use [.create-or-alter](kusto/management/create-alter-function.md) function instead of [.create](kusto/management/create-function.md) function.
+> When creating your own workflow, we recommend making your code idempotent. For example, use [.create-merge table](kusto/management/create-merge-table-command.md) instead of [.create table](kusto/management/create-table-command.md), and use [.create-or-alter](kusto/management/create-alter-function.md) function instead of [.create](kusto/management/create-function.md) function.
 
 ## Create a release pipeline
 

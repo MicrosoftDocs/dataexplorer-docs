@@ -9,7 +9,7 @@ ms.author: orspodek
 ## Select an ingestion type
 
 For **Ingestion type**, select one of the following options:
-   * **from storage** - in the **Link to storage** field, add the URL of the storage account. Use [Blob SAS URL](/azurevs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) for private storage accounts.
+   * **from storage** - in the **Link to storage** field, add the URL of the storage account. Use [Blob SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) for private storage accounts.
    
       ![One-click ingestion from storage](media/data-explorer-one-click-ingestion-types/from-storage-blob.png)
 

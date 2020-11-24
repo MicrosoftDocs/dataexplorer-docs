@@ -1,11 +1,11 @@
 ---
 title: 'Create an IoT Hub data connection for Azure Data Explorer by using C#'
 description: In this article, you learn how to create an IoT Hub data connection for Azure Data Explorer by using C#.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/07/2019
 ---
 
@@ -17,14 +17,15 @@ ms.date: 10/07/2019
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, and blobs written to blob containers. In this article, you create an IoT Hub data connection for Azure Data Explorer by using C#.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
+In this article, you create an IoT Hub data connection for Azure Data Explorer by using C#.
 
 ## Prerequisites
 
 * If you don't have Visual Studio 2019 installed, you can download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Make sure that you enable **Azure development** during the Visual Studio setup.
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [a cluster and database](create-cluster-database-csharp.md)
-* Create [table and column mapping](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
+* Create [table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster)
 * Set [database and table policies](database-table-policies-csharp.md) (optional)
 * Create an [IoT Hub with a shared access policy configured](ingest-data-iot-hub.md#create-an-iot-hub).
 

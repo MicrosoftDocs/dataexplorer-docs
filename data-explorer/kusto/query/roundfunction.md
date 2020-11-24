@@ -4,7 +4,7 @@ description: This article describes round() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,16 +13,16 @@ ms.date: 02/13/2020
 
 Returns the rounded source to the specified precision.
 
-**Syntax**
+## Syntax
 
 `round(`*source* [`,` *Precision*]`)`
 
-**Arguments**
+## Arguments
 
 * *source*: The source scalar the round is calculated on.
 * *Precision*: Number of digits the source will be rounded to.(default value is 0)
 
-**Returns**
+## Returns
 
 The rounded source to the specified precision.
 
@@ -31,7 +31,7 @@ that the first rounds a number to a specific number of digits while the last rou
 of a given bin size (round(2.15, 1) returns 2.2 while bin(2.15, 1) returns 2).
  
 
-**Examples**
+## Examples
 
 ```kusto
 round(2.15, 1)                   // 2.2

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://whatsnewapi.azurewebsites.net/schema",
+  "docSetProductName": "Azure Data Explorer",
+  "rootDirectory": "data-explorer/",
+  "docLinkSettings": {
+    "linkFormat": "relative",
+    "relativeLinkPrefix": "/azure/data-explorer/"
+  },
+  "inclusionCriteria": {
+    "labels": [
+      "-label:do-not-merge"
+    ],
+    "minAdditionsToFile": 1
+  },
+  "areas": [
+    {
+      "name": ".",
+      "heading": "Azure Data Explorer"
+    },
+    {
+      "name": "kusto/api",
+      "heading": "API"
+    },
+    {
+      "name": "kusto/concepts",
+      "heading": "Concepts"
+    },
+    {
+      "name": "kusto/functions-library",
+      "heading": "Functions library"
+    },
+    {
+      "name": "kusto/management",
+      "heading": "Management"
+    },
+    {
+      "name": "kusto/query",
+      "heading": "Query"
+    },
+    {
+      "name": "kusto/tools",
+      "heading": "Tools"
+    }
+  ]
+}

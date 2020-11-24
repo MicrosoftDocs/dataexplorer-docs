@@ -1,33 +1,44 @@
 ---
-title: parse_path() - Azure Data Explorer | Microsoft Docs
+title: parse_path() - Azure Data Explorer
 description: This article describes parse_path() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
 ---
 # parse_path()
 
-Parses a file path `string` and returns a [`dynamic`](./scalar-data-types/dynamic.md) object that contains the following parts of the path: 
-Scheme, RootPath, DirectoryPath, DirectoryName, FileName, Extension, AlternateDataStreamName.
-In addition to the simple paths with both types of slashes, supports paths with schemas (e.g. "file://..."), shared paths (e.g. "\\shareddrive\users..."), long paths (e.g "\\?\C:...""), alternate data streams (e.g. "file1.exe:file2.exe")
+Parses a file path `string` and returns a [`dynamic`](./scalar-data-types/dynamic.md) object that contains the following parts of the path:
+* Scheme
+* RootPath
+* DirectoryPath
+* DirectoryName
+* FileName
+* Extension
+* AlternateDataStreamName
 
-**Syntax**
+In addition to the simple paths with both types of slashes, the function supports paths with:
+* Schemas. For example, "file://..."
+* Shared paths. For example, "\\shareddrive\users..."
+* Long paths. For example, "\\?\C:...""
+* Alternate data streams. For example, "file1.exe:file2.exe"
+
+## Syntax
 
 `parse_path(`*path*`)`
 
-**Arguments**
+## Arguments
 
 * *path*: A string that represents a file path.
 
-**Returns**
+## Returns
 
-An object of type `dynamic` that inculded the path components as listed above.
+An object of type `dynamic` that included the path components as listed above.
 
-**Example**
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

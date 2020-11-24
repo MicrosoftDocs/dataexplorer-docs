@@ -1,10 +1,10 @@
 ---
-title: geo_point_in_circle() - Azure Data Explorer | Microsoft Docs
+title: geo_point_in_circle() - Azure Data Explorer
 description: This article describes geo_point_in_circle() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/03/2020
@@ -13,11 +13,11 @@ ms.date: 02/03/2020
 
 Calculates whether the geospatial coordinates are inside a circle on Earth.
 
-**Syntax**
+## Syntax
 
 `geo_point_in_circle(`*p_longitude*`, `*p_latitude*`, `*pc_longitude*`, `*pc_latitude*`, `*c_radius*`)`
 
-**Arguments**
+## Arguments
 
 * *p_longitude*: Geospatial coordinate longitude value in degrees. Valid value is a real number and in the range [-180, +180].
 * *p_latitude*: Geospatial coordinate latitude value in degrees. Valid value is a real number and in the range [-90, +90].
@@ -25,20 +25,22 @@ Calculates whether the geospatial coordinates are inside a circle on Earth.
 * *pc_latitude*: circle center geospatial coordinate latitude value in degrees. Valid value is a real number and in the range [-90, +90].
 * *c_radius*: Circle radius in meters. Valid value must be positive.
 
-**Returns**
+## Returns
 
-Indicates whether the geospatial coordinates are inside a circle. If the coordinates or circle are invalid, the query will produce a null result.
+Indicates whether the geospatial coordinates are inside a circle. If the coordinates or circle is invalid, the query will produce a null result.
 
 > [!NOTE]
 >* The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
 >* The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used to measure distance on Earth is a sphere.
->* Circle is a spherical cap on Earth. The radius of the cap is measured along the surface of the sphere.
+>* A circle is a spherical cap on Earth. The radius of the cap is measured along the surface of the sphere.
 
-**Examples**
+## Examples
 
-The following query finds all the places in the area defined by a circle with a radius of 18 km whose center is at [-122.317404, 47.609119] coordinates.
-![Places near Seattle](./images/queries/geo/circle_seattle.png)
+The following query finds all the places in the area defined by the following circle: Radius of 18 km, center at [-122.317404, 47.609119] coordinates.
 
+:::image type="content" source="images/geo-point-in-circle-function/circle-seattle.png" alt-text="Places near Seattle":::
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(longitude:real, latitude:real, place:string)
 [
@@ -58,8 +60,11 @@ datatable(longitude:real, latitude:real, place:string)
 |Kirkland|
 |Redmond|
 
-Storm events in Orlando. The events are filtered by Orlando coordinates, within 100km and aggregated by event type and hash.
-![Storm events in Orlando](./images/queries/geo/orlando_storm_events.png)
+Storm events in Orlando. The events are filtered by 100 km within Orlando coordinates, and aggregated by event type and hash.
+
+:::image type="content" source="images/geo-point-in-circle-function/orlando-storm-events.png" alt-text="Storm events in Orlando":::
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | project BeginLon, BeginLat, EventType
@@ -69,9 +74,12 @@ StormEvents
 | render piechart with (kind=map) // map rendering available in Kusto Explorer desktop
 ```
 
-The following example shows NY Taxi pickups nearby some location and within 10 meters. Relevant pickups are aggregated by hash.
-![NY Taxi nearby Pickups](./images/queries/geo/circle_junction.png)
-```
+The following example shows NY Taxi pickups within 10 meters of a particular location. Relevant pickups are aggregated by hash.
+
+:::image type="content" source="images/geo-point-in-circle-function/circle-junction.png" alt-text="NY Taxi nearby Pickups":::
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
 nyc_taxi
 | project pickup_longitude, pickup_latitude
 | where geo_point_in_circle( pickup_longitude, pickup_latitude, real(-73.9928), 40.7429, 10)
@@ -81,6 +89,8 @@ nyc_taxi
 ```
 
 The following example will return true.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print in_circle = geo_point_in_circle(-122.143564, 47.535677, -122.100896, 47.527351, 3500)
 ```
@@ -90,6 +100,8 @@ print in_circle = geo_point_in_circle(-122.143564, 47.535677, -122.100896, 47.52
 |1|
 
 The following example will return false.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print in_circle = geo_point_in_circle(-122.137575, 47.630683, -122.100896, 47.527351, 3500)
 ```
@@ -99,6 +111,8 @@ print in_circle = geo_point_in_circle(-122.137575, 47.630683, -122.100896, 47.52
 |0|
 
 The following example will return a null result because of the invalid coordinate input.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print in_circle = geo_point_in_circle(200, 1, 1, 1, 1)
 ```
@@ -108,6 +122,7 @@ print in_circle = geo_point_in_circle(200, 1, 1, 1, 1)
 ||
 
 The following example will return a  null result because of the invalid circle radius input.
+
 ```kusto
 print in_circle = geo_point_in_circle(1, 1, 1, 1, -1)
 ```

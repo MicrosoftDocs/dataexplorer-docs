@@ -4,7 +4,7 @@ description: This article describes array_length() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,19 +13,19 @@ ms.date: 02/13/2020
 
 Calculates the number of elements in a dynamic array.
 
-**Syntax**
+## Syntax
 
 `array_length(`*array*`)`
 
-**Arguments**
+## Arguments
 
 * *array*: A `dynamic` value.
 
-**Returns**
+## Returns
 
 The number of elements in *array*, or `null` if *array* is not an array.
 
-**Examples**
+## Examples
 
 ```kusto
 print array_length(parse_json('[1, 2, 3, "four"]')) == 4

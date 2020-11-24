@@ -4,11 +4,11 @@ description: This article describes cluster() (scope function) in Azure Data Exp
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # cluster() (scope function)
@@ -21,11 +21,11 @@ Changes the reference of the query to a remote cluster.
 cluster('help').database('Sample').SomeTable
 ```
 
-**Syntax**
+## Syntax
 
 `cluster(`*stringConstant*`)`
 
-**Arguments**
+## Arguments
 
 * *stringConstant*: Name of the cluster that is referenced. Cluster name can be either 
 a fully qualified DNS name, or a string that will be suffixed with `.kusto.windows.net`. Argument has to be _constant_ prior to the query's execution,
@@ -87,6 +87,6 @@ receives a parameter `clusterName` - which is passed into the cluster() function
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end

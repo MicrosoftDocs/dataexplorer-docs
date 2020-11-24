@@ -22,7 +22,8 @@ AAD is the preferred method for authenticating to Kusto. It supports a number of
 * **User authentication** (interactive logon): Used to authenticate human principals.
 * **Application authentication** (non-interactive logon): Used to authenticate services and applications that have to run/authenticate with no human user being present.
 
->NOTE: Azure Active Directory does not allow authentication of service accounts (that are by definition on-prem AD entities).
+> [!NOTE]
+> Azure Active Directory does not allow authentication of service accounts (that are by definition on-prem AD entities).
   The AAD equivalent of AD service account is the AAD application.
 
 #### AAD Group principals
@@ -30,9 +31,7 @@ Kusto only supports Security Group principals (and not Distribution Group ones).
 
 #### AAD Tenants
 
-
->If AAD tenant is not explicitly specified, Kusto will attempt to resolve it from the UPN (UniversalPrincipalName, e.g., `johndoe@fabrikam.com`), if provided.
-  If your principal does not include the tenant information (not in UPN form), you must explicitly mention it by appending the tenant ID or name to the principal descriptor.
+If AAD tenant is not explicitly specified, Kusto will attempt to resolve it from the UPN (UniversalPrincipalName, e.g., `johndoe@fabrikam.com`), if provided. If your principal doesn't include the tenant information (not in UPN form), you must explicitly mention it by appending the tenant ID or name to the principal descriptor.
 
 **Examples for AAD principals**
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory (AAD) Authentication - Azure Data Explorer | Microsoft Docs
+title: Kusto Azure Active Directory (AAD) authentication - Azure Data Explorer
 description: This article describes Azure Active Directory (AAD) Authentication in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -7,6 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
+ms.custom: has-adal-ref
 ms.date: 09/13/2019
 ---
 # Azure Active Directory (AAD) Authentication
@@ -104,6 +105,5 @@ as the audience, and the "Access Kusto" permission as the scope.
 
 The following articles explain how to programmatically authenticate to Kusto with AAD:
 
-* [How to provision an AAD Application](./how-to-provision-aad-app.md)
+* [How to provision an AAD Application](../../../provision-azure-ad-app.md)
 * [How to perform AAD Authentication](./how-to-authenticate-with-aad.md)
-

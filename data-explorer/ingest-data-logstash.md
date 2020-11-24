@@ -1,11 +1,11 @@
 ---
 title: 'Ingest data from Logstash to Azure Data Explorer'
 description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from Logstash'
-author: tamirkamara
-ms.author: takamara
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: takamara
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
 
 #Customer intent: As a DevOps engineer, I want to use Logstash to pipeline logs and ingest into Azure Data Explorer so that I can analyze them later.
@@ -86,7 +86,7 @@ This configuration also includes the `stdin` input plugin that will enable you t
 
 ## Configure Logstash to send data to Azure Data Explorer
 
-Paste the following settings into the same config file used in the previous step. Replace all the placeholders with the relevant values for your setup. For more information, see [Creating an AAD Application](kusto/management/access-control/how-to-provision-aad-app.md). 
+Paste the following settings into the same config file used in the previous step. Replace all the placeholders with the relevant values for your setup. For more information, see [Creating an AAD Application](./provision-azure-ad-app.md). 
 
 ```ruby
 output {

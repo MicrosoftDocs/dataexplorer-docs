@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/08/2019
 
 #Customer intent: I want to use Azure Data Factory template to copy large amounts of data from a database to Azure Data Explorer.
@@ -110,7 +110,7 @@ You can now use the template to efficiently copy large amounts of data from your
 
 * Learn how to [copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md).
 * Learn about the [Azure Data Explorer connector](/azure/data-factory/connector-azure-data-explorer) in Azure Data Factory.
-* Learn about [Azure Data Explorer queries](/azure/data-explorer/web-query-data) for data querying.
+* Learn about [Azure Data Explorer queries](web-query-data.md) for data querying.
 
 
 

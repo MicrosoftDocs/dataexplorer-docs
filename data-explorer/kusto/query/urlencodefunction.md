@@ -4,7 +4,7 @@ description: This article describes url_encode() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/17/2020
@@ -16,19 +16,19 @@ The function converts characters of the input URL into a format that can be tran
 Detailed information about URL encoding and decoding can be found [here](https://en.wikipedia.org/wiki/Percent-encoding).
 Differs from [url_encode_component](./urlencodecomponentfunction.md) by encoding spaces as '+' and not as '20%' (see application/x-www-form-urlencoded [here](https://en.wikipedia.org/wiki/Percent-encoding)).
 
-**Syntax**
+## Syntax
 
 `url_encode(`*url*`)`
 
-**Arguments**
+## Arguments
 
 * *url*: input URL (string).  
 
-**Returns**
+## Returns
 
 URL (string) converted into a format that can be transmitted over the Internet.
 
-**Examples**
+## Examples
 
 ```kusto
 let url = @'https://www.bing.com/hello word';

@@ -1,10 +1,10 @@
 ---
-title: min_of() - Azure Data Explorer | Microsoft Docs
+title: min_of() - Azure Data Explorer
 description: This article describes min_of() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,23 +17,24 @@ Returns the minimum value of several evaluated numeric expressions.
 min_of(10, 1, -3, 17) == -3
 ```
 
-**Syntax**
+## Syntax
 
 `min_of` `(`*expr_1*`,` *expr_2* ...`)`
 
-**Arguments**
+## Arguments
 
 * *expr_i*: A scalar expression, to be evaluated.
 
 - All arguments must be of the same type.
 - Maximum of 64 arguments is supported.
 
-**Returns**
+## Returns
 
 The minimum value of all argument expressions.
 
-**Example**
+## Example
 
+<!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto
 print result=min_of(10, 1, -3, 17) 
 ```

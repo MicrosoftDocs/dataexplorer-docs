@@ -4,7 +4,7 @@ description: This article describes trim_start() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,20 +13,20 @@ ms.date: 02/13/2020
 
 Removes leading match of the specified regular expression.
 
-**Syntax**
+## Syntax
 
 `trim_start(`*regex*`,` *text*`)`
 
-**Arguments**
+## Arguments
 
 * *regex*: String or [regular expression](re2.md) to be trimmed from the beginning of *text*.  
 * *text*: A string.
 
-**Returns**
+## Returns
 
 *text* after trimming match of *regex* found in the beginning of *text*.
 
-**Example**
+## Example
 
 Statement bellow trims *substring*  from the start of *string_to_trim*:
 

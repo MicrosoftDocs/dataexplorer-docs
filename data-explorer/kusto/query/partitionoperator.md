@@ -1,10 +1,10 @@
 ---
-title: partition operator - Azure Data Explorer | Microsoft Docs
+title: partition operator - Azure Data Explorer
 description: This article describes partition operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -22,13 +22,13 @@ T | partition by Col1 ( top 10 by MaxValue )
 T | partition by Col1 { U | where Col2=toscalar(Col1) }
 ```
 
-**Syntax**
+## Syntax
 
 *T* `|` `partition` [*PartitionParameters*] `by` *Column* `(` *ContextualSubquery* `)`
 
 *T* `|` `partition` [*PartitionParameters*] `by` *Column* `{` *Subquery* `}`
 
-**Arguments**
+## Arguments
 
 * *T*: The tabular source whose data is to be processed by the operator.
 
@@ -46,10 +46,10 @@ T | partition by Col1 { U | where Col2=toscalar(Col1) }
   |Name               |Values         |Description|
   |-------------------|---------------|-----------|
   |`hint.materialized`|`true`,`false` |If set to `true` will materialize the source of the `partition` operator (default: `false`)|
-  |`hint.concurrency`|*Number*|Hints the system how many concurrent subqueries of the `partition` operator should be executed in parallel. *Default*: Amount of CPU cores on the single node of the cluster (2 to 16).|
-  |`hint.spread`|*Number*|Hints the system how many nodes should be used by the concurrent`partition` subqueries execution. *Default*: 1.|
+  |`hint.concurrency`|*Number*|Hints the system how many partitions to run in parallel. *Default*: 16.|
+  |`hint.spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes (for example: if there are N partitions and the spread hint is set to P then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint). *Default*: 1.|
 
-**Returns**
+## Returns
 
 The operator returns a union of the results of applying the subquery to each
 partition of the input data.
@@ -71,6 +71,7 @@ partition of the input data.
 At some cases - it is more performant and easier to write query using `partition` operator rather using [`top-nested` operator](topnestedoperator.md)
 The next example runs a sub-query calculating `summarize` and `top` for-each of States starting with `W`: (WYOMING, WASHINGTON, WEST VIRGINIA, WISCONSIN)
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | where State startswith 'W'
@@ -98,10 +99,11 @@ StormEvents
 
 **Example: query non-overlapping data partitions**
 
-Sometimes it is useful (perf-wise) to run a complex subquery over non-overlapping
+Sometimes it is useful (performance-wise) to run a complex subquery over non-overlapping
 data partitions in a map/reduce style. The example below shows how to create a
 manual distribution of aggregation over 10 partitions.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents
 | extend p = hash(EventId, 10)
@@ -126,6 +128,7 @@ StormEvents
 The following example shows how query can be partitioned into N=10 partitions,
 where each partition calculates its own Count, and all later summarized into TotalCount.
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let N = 10;                 // Number of query-partitions
 range p from 0 to N-1 step 1  // 
@@ -162,6 +165,7 @@ T
 The same technique can be applied with much more complex subqueries. To simplify
 the syntax, one can wrap the subquery in a function call:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let partition_function = (T:(Source:string)) 
 {

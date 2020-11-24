@@ -4,11 +4,11 @@ description: This article describes cursor_current(), current_cursor() in Azure 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/10/2019
-zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # cursor_current(), current_cursor()
@@ -18,11 +18,11 @@ zone_pivot_groups: kql-flavors
 Retrieves the current value of the cursor of the database in scope. (The names `cursor_current`
 and `current_cursor` are synonyms.)
 
-**Syntax**
+## Syntax
 
 `cursor_current()`
 
-**Returns**
+## Returns
 
 Returns a single value of type `string` which encodes the current value of the
 cursor of the database in scope.
@@ -36,6 +36,6 @@ details on database cursors.
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end

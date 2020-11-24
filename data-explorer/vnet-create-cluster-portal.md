@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: basaba
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/24/2020
 
 #Customer intent: As a database administrator, I want to create an Azure Data Explorer cluster and database in my virtual network.
@@ -13,7 +13,7 @@ ms.date: 03/24/2020
 
 # Create an Azure Data Explorer cluster in your virtual network
 
-Azure Data Explorer supports deploying a cluster into a subnet in your virtual network (VNet). This capability enables you to access the cluster privately from your Azure virtual network or on-premise, access resource such as Event Hub and Storage inside your virtual network, and restrict inbound and outbound traffic.
+Azure Data Explorer supports deploying a cluster into a subnet in your virtual network (VNet). This capability enables you to access the cluster privately from your Azure virtual network or on-premises, access resource such as Event Hub and Storage inside your virtual network, and restrict inbound and outbound traffic.
 
 ## Prerequisites
 
@@ -65,7 +65,7 @@ To create the network security group:
     | Name | AllowAzureDataExplorerManagement
     | | |
     
-1. Repeat the previous two steps for all inbound and outbound dependencies according to [dependencies for VNet deployment](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment). Alternatively, outbound rules can be replaced with single rule to allow *Internet* for ports 443 and 80.
+1. Repeat the previous two steps for all inbound and outbound dependencies according to [dependencies for VNet deployment](vnet-deployment.md#dependencies-for-vnet-deployment). Alternatively, outbound rules can be replaced with single rule to allow *Internet* for ports 443 and 80.
     
     The NSG rules for inbound and outbound dependencies should look like this:
 
@@ -76,8 +76,8 @@ To create the network security group:
 To create the query (Engine) public IP addresses:
 
 1. Select the **+ Create a resource** button in the upper-left corner of the portal.
-1. Search for *Network Security Group*.
-1. Under **Public IP address**, at the bottom of the screen, select **Create**.
+1. Search for *Public IP address*.
+1. Under **Public IP address**, select **Create**.
 1. In the **Create public IP address** pane, complete the following information.
    
    ![Create public IP form](media/vnet-create-cluster-portal/public-ip-blade.png)
@@ -94,9 +94,7 @@ To create the query (Engine) public IP addresses:
 
 1. Select **Create** to create the public IP address.
 
-1. To create the ingestion (Data Management) public IP address follow the same instructions and select 
-    * **Sku**: Basic
-    * **IP address assignment**: Static
+1. To create the ingestion (Data Management) public IP address, follow the same instructions.
 
 ## Create Virtual Network and subnet
 
@@ -118,7 +116,7 @@ To create the virtual network and subnet:
     | | | |
 
     > [!NOTE]
-    > For production workloads, plan your subnet size according to [plan subnet size in your VNet](/azure/data-explorer/vnet-deployment#plan-subnet-size-in-your-vnet)
+    > For production workloads, plan your subnet size according to [plan subnet size in your VNet](vnet-deployment.md#plan-subnet-size-in-your-vnet)
 
 1. Select **Review + create** to review your cluster details, and **Create** to provision the cluster.
 
@@ -159,4 +157,4 @@ To deploy your Azure Data Explorer cluster into your virtual network, use the [D
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Deploy Azure Data Explorer into your Virtual Network](vnet-create-cluster-portal.md)
+> [Deploy Azure Data Explorer into your Virtual Network](vnet-deployment.md)

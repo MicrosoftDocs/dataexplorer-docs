@@ -16,7 +16,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 
 **Syntax**
 
-```
+```kusto
 .alter function [with (docstring = '<description>', folder='<name>', skipvalidation='true')] [FunctionName] ([paramName:paramType], ...) { CSL-statement }
 ```
     
@@ -37,7 +37,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
  
 **Example** 
 
-```
+```kusto
 .alter function
 with (docstring = 'Demo function with parameter', folder='MyFolder')
  MyFunction2(myLimit: long)  {StormEvents | limit myLimit}

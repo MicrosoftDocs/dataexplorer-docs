@@ -1,11 +1,11 @@
 ---
 title: Configure customer-managed-keys using the Azure portal
-description: This article describes how to configure customer-managed keys encryption on your data in Azure Data Explorer.
+description: Learn how to configure customer-managed keys to encrypt Azure Data Explorer data using the Azure portal.
 author: orspod
 ms.author: orspodek
 ms.reviewer: itsagui
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
 ---
 
@@ -15,6 +15,8 @@ ms.date: 03/26/2020
 > * [Portal](customer-managed-keys-portal.md)
 > * [C#](customer-managed-keys-csharp.md)
 > * [Azure Resource Manager template](customer-managed-keys-resource-manager.md)
+> * [CLI](customer-managed-keys-cli.md)
+> * [PowerShell](customer-managed-keys-powershell.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](includes/data-explorer-configure-customer-managed-keys.md)]
 
@@ -49,9 +51,8 @@ By enabling customer-managed keys for your Azure Data Explorer cluster, you'll b
 ## Next steps
 
 * [Secure Azure Data Explorer clusters in Azure](security.md)
-* [Secure your cluster in Azure Data Explorer - Azure portal](manage-cluster-security.md) by enabling encryption at rest.
+* [Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal](cluster-disk-encryption.md) by enabling encryption at rest.
 * [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
 * [Configure customer-managed-keys using C#](customer-managed-keys-csharp.md)
-
 
 

@@ -4,11 +4,11 @@ description: This article describes cursor_before_or_at() in Azure Data Explorer
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
-zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # cursor_before_or_at()
@@ -18,15 +18,15 @@ zone_pivot_groups: kql-flavors
 A predicate over the records of a table to compare their ingestion time
 against a database cursor.
 
-**Syntax**
+## Syntax
 
 `cursor_before_or_at` `(` *RHS* `)`
 
-**Arguments**
+## Arguments
 
 * *RHS*: Either an empty string literal, or a valid database cursor value.
 
-**Returns**
+## Returns
 
 A scalar value of type `bool` that indicates whether the record was ingested
 before or at the database cursor *RHS* (`true`) or not (`false`).
@@ -43,6 +43,6 @@ This function can only be invoked on records of a table which has the
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end

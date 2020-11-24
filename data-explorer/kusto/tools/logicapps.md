@@ -1,36 +1,55 @@
 ---
-title: Microsoft Logic App and Kusto - Azure Data Explorer | Microsoft Docs
-description: This article describes Microsoft Logic App and Kusto in Azure Data Explorer.
-services: data-explorer
+title: Use Logic Apps to run Kusto queries automatically in Azure Data Explorer
+description: Learn how to use Logic Apps to run Kusto queries and commands automatically and schedule them.
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: docohe
 ms.service: data-explorer
-ms.topic: reference
-ms.date: 10/30/2019
+ms.topic: how-to
+ms.date: 04/14/2020
 ---
-# Microsoft Logic App and Kusto
 
-The Azure Kusto Logic App connector allows users to run Kusto queries and commands automatically as part of a scheduled or triggered task, using [Microsoft Logic App](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
+# Microsoft Logic App and Azure Data Explorer (Preview)
 
-The Logic App and Flow connectors are built on top of the same connector therefore the same [limitations](flow.md#limitations), [actions](flow.md#azure-kusto-flow-actions), [authentication](flow.md#authentication) and [usage examples](flow.md#usage-examples) apply for both as mentioned in the [Flow documentation page](flow.md).
+The Azure Kusto Logic App connector enables you to run Kusto queries and commands automatically as part of a scheduled or triggered task, using the [Microsoft Logic App](/azure/logic-apps/logic-apps-what-are-logic-apps) connector.
 
+Logic App and Power Automate are built on the same connector. Therefore, the [limitations](../../flow.md#limitations), [actions](../../flow.md#flow-actions), [authentication](../../flow.md#authentication) and [usage examples](../../flow-usage.md) that apply to Power Automate, also apply to Logic Apps, as mentioned on the [Power Automate documentation page](../../flow.md).
 
-## How to create a Logic App with Azure Kusto
+## How to create a Logic App with Azure Data Explorer
 
-Open the Azure portal and click create a new Logic App resource.
-Add the desired name, subscription, resoure group and location and click create.
+1. Open the [Microsoft Azure portal](https://ms.portal.azure.com/). 
+1. Search for `logic app` and select it.
 
-![Create logic app](./Images/KustoTools-LogicApp/logicapp-createlogicapp.png "logicapp-createlogicapp")
+    :::image type="content" source="./images/logicapps/logicapp-search.png" alt-text="Searching for 'logic app' in the Azure portal, Azure Data Explorer" lightbox="./images/logicapps/logicapp-search.png#lightbox":::
 
-After the Logic App is created, click the edit button
+1. Select **+Add**.
 
-![Edit logic app designer](./Images/KustoTools-LogicApp/logicapp-editdesigner.png "logicapp-editdesigner")
+    ![Add logic app](./Images/logicapps/logicapp-add.png)
 
-Create a blank Logic App
+1. Enter the required details of the form:
+    * Subscription
+    * Resource group
+    * Logic App name
+    * Region or Integration Service Environment
+    * Location
+    * Log analysis on or off
+1. Select **Review + create**.
 
-![Logic app blank template](./Images/KustoTools-LogicApp/logicapp-blanktemplate.png "logicapp-blanktemplate")
+    ![Create logic app](./Images/logicapps/logicapp-create-new.png)
 
-Add recurrence action and then choose 'Azure Kusto'
+1. When the Logic App is created, select **Edit**.
 
-![Logic app Kusto Flow connector](./Images/KustoTools-LogicApp/logicapp-kustoconnector.png "logicapp-kustoconnector")
+    ![Edit logic app designer](./Images/logicapps/logicapp-editdesigner.png "logicapp-editdesigner")
+
+1. Create a blank Logic App.
+
+    ![Logic app blank template](./Images/logicapps/logicapp-blanktemplate.png "logicapp-blanktemplate")
+
+1. Add recurrence action and select **Azure Kusto**.
+
+    ![Logic app Kusto Flow connector](./Images/logicapps/logicapp-kustoconnector.png "logicapp-kustoconnector")
+
+## Next steps
+
+* To learn more about configuring a recurrence action, see the [Power Automate documentation page](../../flow.md)
+* Take a look at some [usage examples](../../flow-usage.md) for ideas on configuring your logic app actions

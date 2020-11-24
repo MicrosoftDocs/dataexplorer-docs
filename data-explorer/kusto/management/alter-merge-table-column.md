@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# alter-merge table column-docstrings
+# .alter-merge table column-docstrings
 
 Sets the `docstring` property of one or more columns of the specified table. 
 Columns not explicitly set **retain** their existing value for this property, if they have one.
@@ -22,7 +22,7 @@ For alter table column-docstring, see [below](#alter-table-column-docstrings).
 
 **Example** 
 
-```
+```kusto
 .alter-merge table Table1 column-docstrings (Column1:"DocString1", Column2:"DocString2")
 ```
 
@@ -37,6 +37,6 @@ Columns not explicitly set will have this property **removed**.
 
 **Example** 
 
-```
+```kusto
 .alter table Table1 column-docstrings (Column1:"DocString1", Column2:"DocString2")
 ```

@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/11/2020
 ---
-# drop column
+# .drop column
 
 Removes a column from a table.
 To drop multiple columns from a table, see [below](#drop-table-columns).

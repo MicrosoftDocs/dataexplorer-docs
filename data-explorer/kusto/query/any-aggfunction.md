@@ -4,7 +4,7 @@ description: This article describes any() (aggregation function) in Azure Data E
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -14,16 +14,16 @@ ms.date: 02/13/2020
 Arbitrarily chooses one record for each group in a [summarize operator](summarizeoperator.md),
 and returns the value of one or more expressions over each such record.
 
-**Syntax**
+## Syntax
 
 `summarize` `any` `(` (*Expr* [`,` *Expr2* ...]) | `*` `)`
 
-**Arguments**
+## Arguments
 
 * *Expr*: An expression over each record selected from the input to return.
 * *Expr2* .. *ExprN*: Additional expressions.
 
-**Returns**
+## Returns
 
 The `any` aggregation function returns the values of the expressions calculated
 for each of the records, selected randomly from each group of the summarize operator.
@@ -45,7 +45,7 @@ it a single time with multiple expressions. The former may have each application
 select a different record, while the latter guarantees that all values are calculated
 over a single record (per distinct group).
 
-**Examples**
+## Examples
 
 Show Random Continent:
 
@@ -53,7 +53,7 @@ Show Random Continent:
 Continents | summarize any(Continent)
 ```
 
-![alt text](./images/aggregations/any1.png "any1")
+:::image type="content" source="images/aggfunction/any1.png" alt-text="Any 1":::
 
 Show all the details for a random record:
 
@@ -61,7 +61,7 @@ Show all the details for a random record:
 Continents | summarize any(*)
 ```
 
-![alt text](./images/aggregations/any2.png "any2")
+:::image type="content" source="images/aggfunction/any2.png" alt-text="Any 2":::
 
 Show all the details for each random continent:
 
@@ -69,4 +69,4 @@ Show all the details for each random continent:
 Continents | summarize any(*) by Continent
 ```
 
-![alt text](./images/aggregations/any3.png "any3")
+:::image type="content" source="images/aggfunction/any3.png" alt-text="Any 3":::

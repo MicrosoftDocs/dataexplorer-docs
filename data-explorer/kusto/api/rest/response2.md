@@ -11,22 +11,22 @@ ms.date: 02/11/2020
 ---
 # Query V2 HTTP response
 
-If the status code is 200, the response body is a JSON array.
+If the status code is 200, then the response body is a JSON array.
 Each JSON object in the array is called a _frame_.
 
-There are 7 types of frames:
+There are several types of frames:
 
-1. DataSetHeader
-2. TableHeader
-3. TableFragment
-4. TableProgress
-5. TableCompletion
-6. DataTable
-7. DataSetCompletion
+* [DataSetHeader](#datasetheader)
+* [TableHeader](#tableheader)
+* [TableFragment](#tablefragment)
+* [TableProgress](#tableprogress)
+* [TableCompletion](#tablecompletion)
+* [DataTable](#datatable)
+* [DataSetCompletion](#datasetcompletion)
 
 ## DataSetHeader 
 
-This is always the first frame in the data set and appears exactly once.
+The `DataSetHeader` frame is always the first in the data set and appears exactly once.
 
 ```json
 {
@@ -37,21 +37,24 @@ This is always the first frame in the data set and appears exactly once.
 
 Where:
 
-1. `Version` holds the protocol version. The current version is `v2.0`.
-2. `IsProgressive` is a boolean flag which indicates whether this data set contains progressive frames. A progressive frame is one of the following:
-    1. `TableHeader` : Contains general information about the table
-    2. `TableFragment` : Contains a rectangluar data shard of the table
-    3. `TableProgress` : Contains the progress in percent (0-100)
-    4. `TableCompletion` : Marks that this is the last frame of the table.
+* `Version` is the protocol version. The current version is `v2.0`.
+* `IsProgressive` is a boolean flag that indicates whether this data set contains progressive frames. 
+   A progressive frame is one of:
+   
+     | Frame             | Description                                    |
+     |-------------------| -----------------------------------------------|
+     | `TableHeader`     | Contains general information about the table   |
+     | `TableFragment`   | Contains a rectangular data shard of the table |
+     | `TableProgress`   | Contains the progress in percent (0-100)       |
+     | `TableCompletion` | Indicates that this frame is the last one      |
         
-    The four frames above are used together to describe a table.
-    If this flag is not set, then every table in the set will be serialized using a single frame:
-      1. `DataTable`: Contains all the information the client needs about a single table in the data set.
-
+    The frames above describe a table.
+    If the `IsProgressive` flag isn't set to true, then every table in the set will be serialized using a single frame:
+* `DataTable`: Contains all the information that the client needs about a single table in the data set.
 
 ## TableHeader
 
-Queries which are issued with the `results_progressive_enabled` option set to true may include this frame. Following this table, clients should expect an interleaving  sequence of `TableFragment` and `TableProgress` frames, followed by a `TableCompletion` frame. After which, no more frames related to that table will be sent.
+Queries that are made with the `results_progressive_enabled` option set to true may include this frame. Following this table, clients can expect an interleaving sequence of `TableFragment` and `TableProgress` frames. The final frame of the table is `TableCompletion`.
 
 ```json
 {
@@ -64,19 +67,20 @@ Queries which are issued with the `results_progressive_enabled` option set to tr
 
 Where:
 
-1. `TableId` is the table's unique id.
-2. `TableKind` is the table's kind, which can be one of the following:
+* `TableId` is the table's unique ID.
+* `TableKind` is one of:
 
-      * PrimaryResult
-      * QueryCompletionInformation
-      * QueryTraceLog
-      * QueryPerfLog
-      * TableOfContents
-      * QueryProperties
-      * QueryPlan
-      * Unknown
-3. `TableName` is the table's name.
-4. `Columns` is an array describing the table's schema:
+    * PrimaryResult
+    * QueryCompletionInformation
+    * QueryTraceLog
+    * QueryPerfLog
+    * TableOfContents
+    * QueryProperties
+    * QueryPlan
+    * Unknown
+      
+* `TableName` is the table's name.
+* `Columns` is an array describing the table's schema.
 
 ```json
 {
@@ -84,11 +88,12 @@ Where:
     "ColumnType": string,
 }
 ```
+
 Supported column types are described [here](../../query/scalar-data-types/index.md).
 
 ## TableFragment
 
-This frame contains a rectangular data fragment of the table. In addition to the actual data, this frame contains a `TableFragmentType` property, which tells the client what to do with the fragment (it can either be appended to existing fragments, or replace them all together).
+The `TableFragment` frame contains a rectangular data fragment of the table. In addition to the actual data, this frame  also contains a `TableFragmentType` property that tells the client what to do with the fragment. The fragment appended to existing fragments, or replace them.
 
 ```json
 {
@@ -101,17 +106,20 @@ This frame contains a rectangular data fragment of the table. In addition to the
 
 Where:
 
-1. `TableId` is the table's unique id.
-2. `FieldCount` is the number of columns in the table
-3. `TableFragmentType` describes what the client should do with this fragment. Can be one of the following:
-      * DataAppend
-      * DataReplace
-4. `Rows` is a two dimensional array which contains the fragment data.
+* `TableId` is the table's unique ID.
+* `FieldCount` is the number of columns in the table.
+* `TableFragmentType` describes what the client should do with this fragment. 
+    `TableFragmentType` is one of:
+    
+    * DataAppend
+    * DataReplace
+      
+* `Rows` is a two-dimensional array that contains the fragment data.
 
 ## TableProgress
 
-This frame can interleaved with the `TableFragment` frame described above.
-It's sole purpose is to notify the client about the query progress.
+The `TableProgress` frame can interleave with the `TableFragment` frame described above.
+Its sole purpose is to notify the client of the query's progress.
 
 ```json
 {
@@ -122,12 +130,12 @@ It's sole purpose is to notify the client about the query progress.
 
 Where:
 
-1. `TableId` is the table's unique id.
-2. `TableProgress` is the progress in percent (0--100).
+* `TableId` is the table's unique ID.
+* `TableProgress` is the progress in percent (0--100).
 
 ## TableCompletion
 
-The `TableCompletion` frames marks the end of the table transmission. No more frames related to that table will be sent.
+The `TableCompletion` frame marks the end of the table transmission. No more frames related to that table will be sent.
 
 ```json
 {
@@ -138,41 +146,38 @@ The `TableCompletion` frames marks the end of the table transmission. No more fr
 
 Where:
 
-1. `TableId` is the table's unique id.
-2. `RowCount` is the final number of rows in the table.
+* `TableId` is the table's unique ID.
+* `RowCount` is the total number of rows in the table.
 
 ## DataTable
 
-Queries which are issued with the `EnableProgressiveQuery` flag set to false will not include any of the previous 4 frames (`TableHeader`, `TableFragment`, `TableProgress` and `TableCompletion`). Instead, each table in the data set will be transmitted using a single frame, the `DataTable` frame, which contains all the information the client needs in order to read the table.
+Queries that are issued with the `EnableProgressiveQuery` flag set to false won't include any of the frames (`TableHeader`, `TableFragment`, `TableProgress`, and `TableCompletion`). Instead, each table in the data set will be transmitted using the `DataTable` frame that contains all the information that the client needs, to read the table.
 
 ```json
 {
     "TableId": Number,
-
     "TableKind": string,
-
     "TableName": string,
-
     "Columns": Array,
-
     "Rows": Array,
 }
 ```    
 
 Where:
 
-1. `TableId` is the table's unique id.
-2. `TableKind` is the table's kind, which can be one of the following:
+* `TableId` is the table's unique ID.
+* `TableKind` is one of:
 
-      * PrimaryResult
-      * QueryCompletionInformation
-      * QueryTraceLog
-      * QueryPerfLog
-      * QueryProperties
-      * QueryPlan
-      * Unknown
-3. `TableName` is the table's name.
-4. `Columns` is an array describing the table's schema:
+    * PrimaryResult
+    * QueryCompletionInformation
+    * QueryTraceLog
+    * QueryPerfLog
+    * QueryProperties
+    * QueryPlan
+    * Unknown
+      
+* `TableName` is the table's name.
+* `Columns` is an array describing the table's schema, and includes:
 
 ```json
 {
@@ -180,23 +185,23 @@ Where:
     "ColumnType": string,
 }
 ```
-4. `Rows` is a two dimensional array which contains the table's data.
+
+* `Rows` is a two-dimensional array that contains the table's data.
 
 ### The meaning of tables in the response
 
-* `PrimaryResult` - The main tabular result of the query. For each [tabular expression statement](../../query/tabularexpressionstatements.md),
-one or more tables are emitted in-order, representing the results produced by the statement (there can be multiple 
-such tables due to [batches](../../query/batches.md) and [fork operators](../../query/forkoperator.md)).
-* `QueryCompletionInformation` - provides additional information regarding the execution of the query itself, such as
+* `PrimaryResult` - The main tabular result of the query. For each [tabular expression statement](../../query/tabularexpressionstatements.md), one or more tables are generated in-order, representing the results produced by the statement. There can be multiple such tables because of [batches](../../query/batches.md) and [fork operators](../../query/forkoperator.md).
+* `QueryCompletionInformation` - Provides additional information about the execution of the query itself, such as
  whether it completed successfully or not, and what were the resources consumed by the query (similar to the QueryStatus table 
  in the v1 response). 
-* `QueryProperties` - provides additional values such as client visualization instructions (emitted, for example, to reflect the
+* `QueryProperties` - Provides additional values such as client visualization instructions (emitted, for example, to reflect the
  information in the [render operator](../../query/renderoperator.md)) and [database cursor](../../management/databasecursor.md) information).
-* `QueryTraceLog` - performance trace log information (returned when setting perftrace in [client request properties](../netfx/request-properties.md)).
+* `QueryTraceLog` - The performance trace log information (returned when `perftrace` in [client request properties](../netfx/request-properties.md) is set to true).
 
 ## DataSetCompletion
 
-This is the final frame in the data set.
+The `DataSetCompletion` frame is the final one in the data set.
+
 ```json
 {
     "HasErrors": Boolean,
@@ -207,6 +212,6 @@ This is the final frame in the data set.
 
 Where:
 
-1. `HasErrors` is true if the there were any errors generating the data set.
-2. `Cancelled` is true if the request that lead to the generation of the data set was cancelled midway. 
-3. `OneApiErrors` is only transmitted if `HasErrors` is true. For a description of the `OneApiErrors` format, see section 7.10.2 [here](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md).
+* `HasErrors` is true if there were errors while generating the data set.
+* `Cancelled` is true if the request that led to the generation of the data set was canceled before completion. 
+* `OneApiErrors` is only returned if `HasErrors` is true. For a description of the `OneApiErrors` format, see section 7.10.2 [here](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md).

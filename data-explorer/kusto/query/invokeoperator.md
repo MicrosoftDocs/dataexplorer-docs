@@ -1,10 +1,10 @@
 ---
-title: invoke operator - Azure Data Explorer | Microsoft Docs
+title: invoke operator - Azure Data Explorer
 description: This article describes invoke operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,28 +17,28 @@ Invokes lambda that receives the source of `invoke` as tabular parameter argumen
 T | invoke foo(param1, param2)
 ```
 
-**Syntax**
+> [!NOTE]
+> See [let statements](./letstatement.md) for more details on how to declare lambda expressions that can accept tabular arguments.
+ 
+## Syntax
 
 `T | invoke` *function*`(`[*param1*`,` *param2*]`)`
 
-**Arguments**
+## Arguments
 
 * *T*: The tabular source.
 * *function*: The name of the lambda expression or function name to be evaluated.
 * *param1*, *param2* ... : additional lambda arguments.
 
-**Returns**
+## Returns
 
 Returns the result of the evaluated expression.
 
-**Notes**
-
-See [let statements](./letstatement.md) for more details how to declare lambda expressions that can accept tabular arguments.
-
-**Example**
+## Example
 
 The following example shows how to use `invoke` operator to call lambda expression:
 
+<!-- csl: https://help.kusto.windows.net:443/KustoMonitoringPersistentDatabase -->
 ```kusto
 // clipped_average(): calculates percentiles limits, and then makes another 
 //                    pass over the data to calculate average with values inside the percentiles

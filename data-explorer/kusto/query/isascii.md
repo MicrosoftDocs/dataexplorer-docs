@@ -4,7 +4,7 @@ description: This article describes isascii() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,15 +17,15 @@ Returns `true` if the argument is a valid ascii string.
 isascii("some string") == true
 ```
 
-**Syntax**
+## Syntax
 
 `isascii(`[*value*]`)`
 
-**Returns**
+## Returns
 
 Indicates whether the argument is a valid ascii string.
 
-**Example**
+## Example
 
 ```kusto
 T

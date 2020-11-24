@@ -1,5 +1,5 @@
 ---
-title: How-To Authenticate with AAD for Azure Data Explorer Access - Azure Data Explorer | Microsoft Docs
+title: Kusto authenticate with AAD for access - Azure Data Explorer
 description: This article describes How-To Authenticate with AAD for Azure Data Explorer Access in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -7,6 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
+ms.custom: has-adal-ref, devx-track-js
 ms.date: 09/13/2019
 ---
 # How-To Authenticate with AAD for Azure Data Explorer Access
@@ -127,7 +128,7 @@ see [https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet]
 for an example of doing so from a .NET application.
 
 To authenticate users for Azure Data Explorer access, an application must first be granted the
-`Access Kusto` delegated permission. Please see [Kusto guide to AAD applications provisioning](how-to-provision-aad-app.md#set-up-delegated-permissions-for-kusto-service-application)
+`Access Kusto` delegated permission. Please see [Kusto guide to AAD applications provisioning](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration)
 for details.
 
 The following brief code snippet demonstrates using ADAL to acquire an AAD user
@@ -141,7 +142,7 @@ WebRequest request = WebRequest.Create(new Uri("https://{serviceNameAndRegion}.k
 AuthenticationContext authContext = new AuthenticationContext("AAD Authority URL");
 
 // Acquire user token for the interactive user for Kusto:
-AuthenticationResult result = authContext.AcquireTokenAsync("https://{serviceNameAndRegion}.kusto.windows.net", "your client app id", 
+AuthenticationResult result = authContext.AcquireTokenAsync("https://{serviceNameAndRegion}.kusto.windows.net", "your client app id",
     new Uri("your client app resource id"), new PlatformParameters(PromptBehavior.Auto)).GetAwaiter().GetResult();
 
 // Extract Bearer access token and set the Authorization header on your request:
@@ -213,8 +214,8 @@ the administrator of the AAD tenant.
 // Create Auth Context for AAD (common or tenant-specific endpoint):
 AuthenticationContext authContext = new AuthenticationContext("AAD Authority URL");
 
-// Exchange your token for for Kusto token.
-// You will need to provide your application's client ID and secret to authenticate your application 
+// Exchange your token for a Kusto token.
+// You will need to provide your application's client ID and secret to authenticate your application
 var tokenForKusto = authContext.AcquireTokenAsync(
     "https://{serviceNameAndRegion}.kusto.windows.net",
     new ClientCredential(customerAadWebApplicationClientId, customerAAdWebApplicationSecret),
@@ -225,8 +226,8 @@ var tokenForKusto = authContext.AcquireTokenAsync(
 
 ```csharp
 var kcsb = new KustoConnectionStringBuilder(string.Format(
-    "https://{0}.kusto.windows.net;fed=true;UserToken={1}", 
-    clusterName, 
+    "https://{0}.kusto.windows.net;fed=true;UserToken={1}",
+    clusterName,
     tokenForKusto.AccessToken));
 var client = KustoClientFactory.CreateCslQueryProvider(kcsb);
 var queryResult = client.ExecuteQuery(databaseName, query, null);
@@ -239,7 +240,7 @@ var queryResult = client.ExecuteQuery(databaseName, query, null);
 **AAD application configuration**
 
 > [!NOTE]
-> In addition to the standard [steps](./how-to-provision-aad-app.md) you need to
+> In addition to the standard [steps](../../../provision-azure-ad-app.md) you need to
 > follow in order to setup an AAD app, you should also enable oauth implicit flow
 > in your AAD application. You can achieve that by selecting manifest from your
 >application page in the azure portal, and set oauth2AllowImplicitFlow to true.
@@ -250,7 +251,7 @@ When the client is a JavaScript code running in the user's browser, the implicit
 access to the Azure Data Explorer service is provided immediately following a successful authentication as part of the redirect URI (in a URI
 fragment); no refresh token is given in this flow, so the client can't cache the token for prolonged periods of time and reuse it.
 
-Like in the native client flow, there should be  two AAD applications (Server and Client) with a configured relationship between them. 
+Like in the native client flow, there should be  two AAD applications (Server and Client) with a configured relationship between them.
 
 AdalJs requires getting an id_token before any access_token calls are made.
 
@@ -271,7 +272,7 @@ var authContext = new AuthenticationContext(config);
 
 * Call `authContext.login()` before trying to `acquireToken()` if you are not logged in. a good way ot know if you're logged in or not is to call `authContext.getCachedUser()` and see if it returns `false`)
 * Call `authContext.handleWindowCallback()` whenever your page loads. This is the piece of code that intercepts the redirect back from AAD and pulls the token out of the fragment URL and caches it.
-* Call `authContext.acquireToken()` to get the actual access token, now that you have a valid ID token. The first parameter to acquireToken will be the Kusto server AAD application resource URL.  
+* Call `authContext.acquireToken()` to get the actual access token, now that you have a valid ID token. The first parameter to acquireToken will be the Kusto server AAD application resource URL.
 
 ```javascript
  authContext.acquireToken("<Kusto cluster URL>", callbackThatUsesTheToken);
@@ -307,9 +308,9 @@ var settings = {
 };
 
 $.ajax(settings).then(function(data) {/* do something wil the data */});
-``` 
+```
 
-> Warning - if you get the following or similar exception when authenticating: 
-`ReferenceError: AuthenticationContext is not defined` 
-it's probably because you don't have AuthenticationContext in the global namespace. 
+> Warning - if you get the following or similar exception when authenticating:
+`ReferenceError: AuthenticationContext is not defined`
+it's probably because you don't have AuthenticationContext in the global namespace.
 Unfortunately AdalJS currently has an undocumented requirement that the authentication context will be defined in the global namespace.

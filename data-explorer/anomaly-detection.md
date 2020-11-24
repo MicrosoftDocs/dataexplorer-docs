@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2019
 ---
 
@@ -17,7 +17,7 @@ This article details the Azure Data Explorer time series anomaly detection and f
 
 ## Prerequisites
 
-Read [Time series analysis in Azure Data Explorer](/azure/data-explorer/time-series-analysis) for an overview of time series capabilities.
+Read [Time series analysis in Azure Data Explorer](time-series-analysis.md) for an overview of time series capabilities.
 
 ## Time series decomposition model
 
@@ -126,4 +126,4 @@ This document details native Azure Data Explorer functions for time series anoma
 
 ## Next steps
 
-Learn about [Machine learning capabilities](/azure/data-explorer/machine-learning-clustering) in Azure Data Explorer.
+Learn about [Machine learning capabilities](machine-learning-clustering.md) in Azure Data Explorer.

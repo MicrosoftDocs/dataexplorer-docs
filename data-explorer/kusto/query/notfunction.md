@@ -4,7 +4,7 @@ description: This article describes not() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,14 +17,14 @@ Reverses the value of its `bool` argument.
 not(false) == true
 ```
 
-**Syntax**
+## Syntax
 
 `not(`*expr*`)`
 
-**Arguments**
+## Arguments
 
 * *expr*: A `bool` expression to be reversed.
 
-**Returns**
+## Returns
 
 Returns the reversed logical value of its `bool` argument.

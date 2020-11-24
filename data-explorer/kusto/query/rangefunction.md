@@ -4,7 +4,7 @@ description: This article describes range() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,11 +13,11 @@ ms.date: 02/13/2020
 
 Generates a dynamic array holding a series of equally-spaced values.
 
-**Syntax**
+## Syntax
 
 `range(`*start*`,` *stop*[`,` *step*]`)` 
 
-**Arguments**
+## Arguments
 
 * *start*: The value of the first element in the resulting array. 
 * *stop*: The value of the last element in the resulting array,
@@ -27,7 +27,7 @@ array and within an integer multiple of *step* from *start*.
 the array. 
 The default value for *step* is `1` for numeric and `1h` for `timespan` or `datetime`
 
-**Examples**
+## Examples
 
 The following example returns `[1, 4, 7]`:
 
@@ -44,11 +44,12 @@ T | extend r = range(datetime(2015-01-01), datetime(2015-12-31), 1d)
 
 The following example returns `[1,2,3]`:
 
-```
+```kusto
 range(1, 3)
 ```
 
 The following example returns `["01:00:00","02:00:00","03:00:00","04:00:00","05:00:00"]`:
-```
+
+```kusto
 range(1h, 5h)
 ```

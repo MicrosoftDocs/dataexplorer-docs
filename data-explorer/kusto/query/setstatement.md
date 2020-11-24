@@ -4,11 +4,11 @@ description: This article describes Set statement in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # Set statement
@@ -27,11 +27,11 @@ statements that trail them in the program order.
 * Query options are not formally a part of the Kusto language, and may be
   modified without being considered as a breaking language change.
 
-**Syntax**
+## Syntax
 
 `set` *OptionName* [`=` *OptionValue*]
 
-**Example**
+## Example
 
 ```kusto
 set querytrace;
@@ -42,6 +42,6 @@ Events | take 100
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end

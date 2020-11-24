@@ -4,7 +4,7 @@ description: This article describes parse_xml() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,19 +13,17 @@ ms.date: 02/13/2020
 
 Interprets a `string` as a XML value, converts the value to a JSON and returns the value as `dynamic`.
 
-**Syntax**
+## Syntax
 
 `parse_xml(`*xml*`)`
 
-**Arguments**
+## Arguments
 
 * *xml*: An expression of type `string`, representing a XML-formatted value.
 
-**Returns**
+## Returns
 
 An object of type [dynamic](./scalar-data-types/dynamic.md) that is determined by the value of *xml*, or null, if the XML format is invalid.
-
-Converting the XML to JSON is done using [xml2json](https://github.com/Cheedoong/xml2json) library.
 
 The conversion is done as following:
 
@@ -41,15 +39,15 @@ XML                                |JSON                                        
 
 **Notes**
 
-* Maximal input `string` length for `parse_xml` is 128 KB. Longer strings interpretation will result in a null object 
+* Maximal input `string` length for `parse_xml` is 1MB (1,048,576 bytes). Longer strings interpretation will result in a null object
 * Only element nodes, attributes and text nodes will be translated. Everything else will be skipped
  
-**Example**
+## Example
 
 In the following example, when `context_custom_metrics` is a `string`
 that looks like this: 
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <duration>
     <value>118.0</value>
@@ -63,7 +61,8 @@ that looks like this:
 ```
 
 then the following CSL Fragment translates the XML to the following JSON:
-```
+
+```json
 {
     "duration": {
         "value": 118.0,
@@ -79,7 +78,7 @@ then the following CSL Fragment translates the XML to the following JSON:
 
 and retrieves the value of the `duration` slot
 in the object, and from that it retrieves two slots, `duration.value` and
- `duration.min` (`118.0` and `110.0`, respectively).
+ `duration.min` (`118.0` and `100.0`, respectively).
 
 ```kusto
 T

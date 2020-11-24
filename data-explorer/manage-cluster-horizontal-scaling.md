@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/09/2019
 ---
 
@@ -32,7 +32,7 @@ Manual scale is the default setting during cluster creation. The cluster has a s
 
    ![Manual scale method](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
-### Optimized autoscale (preview)
+### Optimized autoscale
 
 Optimized autoscale is the recommended autoscale method. This method optimizes cluster performance and costs. If the cluster approaches a state of under-utilization, it will be scaled in. This action lowers costs but keeps performance level. If the cluster approaches a state of over-utilization, it will be scaled out to maintain optimal performance. To configure Optimized autoscale:
 
@@ -56,8 +56,6 @@ When your cluster approaches a state of over-utilization, scale out to maintain 
 * The CPU is high for over an hour.
 * The ingestion utilization is high for over an hour.
 
-> [!NOTE]
-> The scale out logic doesn't currently consider the ingestion utilization metric. If this metric is important for your use case, use [custom autoscale](#custom-autoscale).
 
 **Scale in**
 
@@ -73,7 +71,7 @@ When your cluster approaches a state of under-utilization, scale in to lower cos
     * Number of failed queries are below a defined minimum.
 
 > [!NOTE]
-> The scale in logic currently requires a 7-day evaluation before implementation of optimized scale in. This evaluation takes place once every 24 hours. If a quick change is needed, use [manual scale](#manual-scale).
+> The scale in logic currently requires a 1-day evaluation before implementation of optimized scale in. This evaluation takes place once every 6 hours. If an immediate change is needed, use [manual scale](#manual-scale).
 
 ### Custom autoscale
 

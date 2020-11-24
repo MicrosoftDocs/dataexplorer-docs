@@ -1,5 +1,5 @@
 ---
-title: T-SQL - Azure Data Explorer | Microsoft Docs
+title: T-SQL - Azure Data Explorer
 description: This article describes T-SQL in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -9,25 +9,24 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# T-SQL
+# T-SQL support
 
-The Kusto service can interpret and run T-SQL queries with some language limitations.
-While the [Kusto query language](../../query/index.md) is the preferred language
-for Kusto, such support is useful for existing tool that can't be easily converted
-to use the preferred query language, and for casual use of Kusto by people familiar
-with SQL.
+[Kusto query language (KQL)](../../query/index.md) is the preferred query language.
+T-SQL support, however, is useful for tools that can't be easily converted to use KQL.  
+T-SQL support is also useful for casual use by people familiar with SQL.
+
+Kusto can interpret and run T-SQL queries with some language limitations.
 
 > [!NOTE]
-> Kusto doesn't support a DDL command in this manner, only T-SQL
-> `SELECT` statements are supported. See [SQL known issues](./sqlknownissues.md) for
-> details on the main differences between SQL Server and Kusto with regards to
-> T-SQL.
+> Kusto doesn't support DDL commands. Only T-SQL `select` statements are supported. 
+> For more information about the main differences with regards to T-SQL, 
+> see [SQL known issues](./sqlknownissues.md).
 
-## Querying Kusto from Kusto.Explorer with T-SQL
+## Querying from Kusto.Explorer with T-SQL
 
-The Kusto.Explorer tool supports sending T-SQL queries to Kusto.
-To instruct Kusto.Explorer to execute a query in this mode,
-prepend the query an empty T-SQL comment line. For example:
+The Kusto.Explorer tool supports T-SQL queries to Kusto.
+To instruct Kusto.Explorer to execute a query, begin the query with an empty T-SQL comment line (`--`). 
+For example:
 
 ```sql
 --
@@ -36,10 +35,9 @@ select * from StormEvents
 
 ## From T-SQL to Kusto query language
 
-Kusto supports translating T-SQL queries to Kusto query language. This can be
-used, for example, by people familiar with SQL who want to understand the
-Kusto query language better. To get back the equivalent Kusto query language
-to some T-SQL `SELECT` statement, simply add `EXPLAIN` before the query.
+Kusto supports translating T-SQL queries to Kusto query language (KQL). 
+This translation can help people familiar with SQL to better understand KQL.
+To get back the equivalent KQL from some T-SQL `select` statement, add `explain` before the query.
 
 For example, the following T-SQL query:
 
@@ -51,7 +49,7 @@ from StormEvents
 order by DamageProperty desc
 ```
 
-Produces this output:
+produces this output:
 
 ```kusto
 StormEvents

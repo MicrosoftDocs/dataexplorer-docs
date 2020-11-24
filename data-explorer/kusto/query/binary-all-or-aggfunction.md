@@ -1,10 +1,10 @@
 ---
-title: binary_all_or() (aggregation function) - Azure Data Explorer | Microsoft Docs
+title: binary_all_or() (aggregation function) - Azure Data Explorer
 description: This article describes binary_all_or() (aggregation function) in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
@@ -15,22 +15,23 @@ Accumulates values using the binary `OR` operation per summarization group (or i
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
 
-**Syntax**
+## Syntax
 
 summarize `binary_all_or(`*Expr*`)`
 
-**Arguments**
+## Arguments
 
 * *Expr*: long number.
 
-**Returns**
+## Returns
 
 Returns a value that is aggregated using the binary `OR` operation over records per summarization group (or in total, if summarization is done without grouping).
 
-**Example**
+## Example
 
 Producing 'cafe-food' using binary `OR` operations:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(num:long)
 [

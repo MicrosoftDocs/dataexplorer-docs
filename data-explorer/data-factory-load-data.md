@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/15/2019
 
 #Customer intent: I want to use Azure Data Factory to load data into Azure Data Explorer so that I can analyze it later.
@@ -242,4 +242,4 @@ After you've created the linked service connection, the **Destination data store
 
 * Learn about the [Azure Data Explorer connector](/azure/data-factory/connector-azure-data-explorer) in Azure Data Factory.
 * Learn more about editing linked services, datasets, and pipelines in the [Data Factory UI](/azure/data-factory/quickstart-create-data-factory-portal).
-* Learn about [Azure Data Explorer queries](/azure/data-explorer/web-query-data) for data querying.
+* Learn about [Azure Data Explorer queries](web-query-data.md) for data querying.

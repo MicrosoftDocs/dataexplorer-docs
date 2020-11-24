@@ -1,25 +1,32 @@
 ---
-title: in and notin operators - Azure Data Explorer | Microsoft Docs
+title: in and notin operators - Azure Data Explorer
 description: This article describes in and notin operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2019
+ms.localizationpriority: high
 ---
 # in and !in operators
 
-Filters a recordset based on the provided set of values.
+Filters a record set based on the provided set of values.
 
 ```kusto
 Table1 | where col in ('value1', 'value2')
 ```
 
-**Syntax**
+> [!NOTE]
+> * Adding '~' to the operator makes values' search case-insensitive: `x in~ (expression)` or `x !in~ (expression)`.
+> * In tabular expressions, the first column of the result set is selected.
+> * The expression list can produce up to `1,000,000` values.
+> * Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
+ 
+## Syntax
 
-*Case sensitive syntax:*
+### Case-sensitive syntax
 
 *T* `|` `where` *col* `in` `(`*list of scalar expressions*`)`   
 *T* `|` `where` *col* `in` `(`*tabular expression*`)`   
@@ -27,7 +34,7 @@ Table1 | where col in ('value1', 'value2')
 *T* `|` `where` *col* `!in` `(`*list of scalar expressions*`)`  
 *T* `|` `where` *col* `!in` `(`*tabular expression*`)`   
 
-*Case insensitive syntax:*
+### Case insensitive syntax
 
 *T* `|` `where` *col* `in~` `(`*list of scalar expressions*`)`   
 *T* `|` `where` *col* `in~` `(`*tabular expression*`)`   
@@ -35,28 +42,22 @@ Table1 | where col in ('value1', 'value2')
 *T* `|` `where` *col* `!in~` `(`*list of scalar expressions*`)`  
 *T* `|` `where` *col* `!in~` `(`*tabular expression*`)`   
 
-**Arguments**
+## Arguments
 
 * *T* - The tabular input whose records are to be filtered.
-* *col* - the column to filter.
-* *list of expressions* - a comma separated list of tabular, scalar or literal expressions  
-* *tabular expression* - a tabular expression that has a set of values (in a case expression has multiple columns, the first column is used)
+* *col* - The column to filter.
+* *list of expressions* - A comma-separated list of tabular, scalar, or literal expressions.
+* *tabular expression* - A tabular expression that has a set of values. If the expression has multiple columns, the first column is used.
 
-**Returns**
+## Returns
 
-Rows in *T* for which the predicate is `true`
+Rows in *T* for which the predicate is `true`.
 
-**Notes**
+## Examples  
 
-* The expression list can produce up to `1,000,000` values    
-* Nested arrays are flattened into a single list of values, for example `x in (dynamic([1,[2,3]]))` turns into `x in (1,2,3)` 
-* In case of tabular expressions, the first column of the result set is selected   
-* Adding '~' to operator makes values' search case insensitive: `x in~ (expression)` or `x !in~ (expression)`.
+### Use 'in' operator
 
-**Examples:**  
-
-**A simple usage of 'in' operator:**  
-
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where State in ("FLORIDA", "GEORGIA", "NEW YORK") 
@@ -67,9 +68,9 @@ StormEvents
 |---|
 |4775|  
 
+### Use 'in~' operator  
 
-**A simple usage of 'in~' operator:**  
-
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where State in~ ("Florida", "Georgia", "New York") 
@@ -80,8 +81,9 @@ StormEvents
 |---|
 |4775|  
 
-**A simple usage of '!in' operator:**  
+### Use '!in' operator
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where State !in ("FLORIDA", "GEORGIA", "NEW YORK") 
@@ -93,7 +95,9 @@ StormEvents
 |54291|  
 
 
-**Using dynamic array:**
+### Use dynamic array
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let states = dynamic(['FLORIDA', 'ATLANTIC SOUTH', 'GEORGIA']);
 StormEvents 
@@ -105,9 +109,9 @@ StormEvents
 |---|
 |3218|
 
+### Subquery
 
-**A subquery example:**  
-
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Using subquery
 let Top_5_States = 
@@ -121,6 +125,7 @@ StormEvents
 
 The same query can be written as:
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Inline subquery 
 StormEvents 
@@ -136,8 +141,9 @@ StormEvents
 |---|
 |14242|  
 
-**Top with other example:**  
+### Top with other example
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let Lightning_By_State = materialize(StormEvents | summarize lightning_events = countif(EventType == 'Lightning') by State);
 let Top_5_States = Lightning_By_State | top 5 by lightning_events | project State; 
@@ -155,8 +161,9 @@ Lightning_By_State
 | GEORGIA   | 106                  |
 | Other     | 415                  |
 
-**Using a static list returned by a function:**  
+### Use a static list returned by a function
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents | where State in (InterestingStates()) | count
 
@@ -166,9 +173,9 @@ StormEvents | where State in (InterestingStates()) | count
 |---|
 |4775|  
 
+The function definition.
 
-Here is the function definition:  
-
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .show function InterestingStates
 ```

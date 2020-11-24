@@ -35,12 +35,12 @@ This command:
 
 **Examples**
 
-```
+```kusto
 // Recover TestTable table to database version 24.3
 .undo drop table TestTable version="v24.3"
 ```
 
-```
+```kusto
 // Recover TestTable table to database version 10.3 with new table name, NewTestTable (can be used if a table with the same name was already created since the drop)  
 .undo drop table TestTable as NewTestTable version="v10.3"
 ```
@@ -49,7 +49,7 @@ This command:
 
 You can find the database version before the drop operation was executed by using the `.show` `journal` command :
 
-```
+```kusto
 .show database TestDB journal | where Event == "DROP-TABLE" and EntityName == "TestTable" | project OriginalEntityVersion 
 ```
 

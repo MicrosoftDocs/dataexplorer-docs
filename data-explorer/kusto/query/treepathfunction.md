@@ -4,7 +4,7 @@ description: This article describes treepath() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -15,11 +15,11 @@ Enumerates all the path expressions that identify leaves in a dynamic object.
 
 `treepath(`*dynamic object*`)`
 
-**Returns**
+## Returns
 
 An array of path expressions.
 
-**Examples**
+## Examples
 
 |Expression|Evaluates to|
 |---|---|

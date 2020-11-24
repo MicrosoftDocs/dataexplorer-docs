@@ -4,7 +4,7 @@ description: This article describes row_cumsum() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,7 +13,7 @@ ms.date: 02/13/2020
 
 Calculates the cumulative sum of a column in a [serialized row set](./windowsfunctions.md#serialized-row-set).
 
-**Syntax**
+## Syntax
 
 `row_cumsum` `(` *Term* [`,` *Restart*] `)`
 
@@ -25,11 +25,11 @@ Calculates the cumulative sum of a column in a [serialized row set](./windowsfun
   accumulation operation should be restarted (set back to 0). It can be
   used to indicate partitions of the data; see the second example below.
 
-**Returns**
+## Returns
 
 The function returns the cumulative sum of its argument.
 
-**Examples**
+## Examples
 
 The following example shows how to calculate the cumulative sum of the first
 few even integers.

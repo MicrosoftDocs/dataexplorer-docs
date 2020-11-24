@@ -57,9 +57,11 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
+      "searchScope": ["Azure", "Data Explorer", "Azure Data Explorer", "Kusto", "kusto"],
       "breadcrumb_path": "/azure/data-explorer/breadcrumb/toc.json",
       "extendBreadcrumb": true,
       "brand": "azure",
+      "uhfHeaderId": "azure",
       "feedback_system": "GitHub",
       "feedback_github_repo": "MicrosoftDocs/dataexplorer-docs",
       "feedback_product_url": "https://feedback.azure.com/forums/915733-azure-data-explorer",

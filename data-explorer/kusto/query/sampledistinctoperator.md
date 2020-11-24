@@ -1,10 +1,10 @@
 ---
-title: sample-distinct operator - Azure Data Explorer | Microsoft Docs
+title: sample-distinct operator - Azure Data Explorer
 description: This article describes sample-distinct operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -19,11 +19,11 @@ the default (and currently only) flavor of the operator tries to return an answe
 T | sample-distinct 5 of DeviceId
 ```
 
-**Syntax**
+## Syntax
 
 *T* `| sample-distinct` *NumberOfValues* `of` *ColumnName*
 
-**Arguments**
+## Arguments
 * *NumberOfValues*: The number distinct values of *T* to return. You can specify any numeric expression.
 
 **Tips**
@@ -34,8 +34,11 @@ T | sample-distinct 5 of DeviceId
 
  if you want to sample data rows (rather than values of a specific column), refer to the [sample operator](sampleoperator.md)
 
-**Examples**  
+## Examples  
+
 Get 10 distinct values from a population
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents | sample-distinct 10 of EpisodeId
 
@@ -43,6 +46,7 @@ StormEvents | sample-distinct 10 of EpisodeId
 
 Sample a population and do further computation knowing the summarize won't exceed query limits. 
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let sampleEpisodes = StormEvents | sample-distinct 10 of EpisodeId;
 StormEvents 

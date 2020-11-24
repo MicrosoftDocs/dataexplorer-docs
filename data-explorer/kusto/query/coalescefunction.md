@@ -1,10 +1,10 @@
 ---
-title: coalesce() - Azure Data Explorer | Microsoft Docs
+title: coalesce() - Azure Data Explorer
 description: This article describes coalesce() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,23 +17,24 @@ Evaluates a list of expressions and returns the first non-null (or non-empty for
 coalesce(tolong("not a number"), tolong("42"), 33) == 42
 ```
 
-**Syntax**
+## Syntax
 
 `coalesce(`*expr_1*`, `*expr_2*`,` ...)
 
-**Arguments**
+## Arguments
 
 * *expr_i*: A scalar expression, to be evaluated.
 - All arguments must be of the same type.
 - Maximum of 64 arguments is supported.
 
 
-**Returns**
+## Returns
 
 The value of the first *expr_i* whose value is not null (or not-empty for string expressions).
 
-**Example**
+## Example
 
+<!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto
 print result=coalesce(tolong("not a number"), tolong("42"), 33)
 ```

@@ -1,10 +1,10 @@
 ---
-title: new_activity_metrics plugin - Azure Data Explorer | Microsoft Docs
+title: new_activity_metrics plugin - Azure Data Explorer
 description: This article describes new_activity_metrics plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
@@ -19,11 +19,11 @@ the distinct count of users will be all users in T3 who were not seen in both T1
 T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
 ```
 
-**Syntax**
+## Syntax
 
 *T* `| evaluate` `new_activity_metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Window* [`,` *Cohort*] [`,` *dim1*`,` *dim2*`,` ...] [`,` *Lookback*] `)`
 
-**Arguments**
+## Arguments
 
 * *T*: The input tabular expression.
 * *IdColumn*: The name of the column with ID values that represent user activity. 
@@ -35,7 +35,7 @@ T | evaluate new_activity_metrics(id, datetime_column, startofday(ago(30d)), sta
 * *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
 * *Lookback*: (optional) a tabular expression with a set of IDs that belong to the 'look back' period
 
-**Returns**
+## Returns
 
 Returns a table that has the distinct count values, distinct count of new values, retention rate, and churn rate for each 
 combination of 'from' and 'to' timeline periods and for each existing dimensions combination.
@@ -61,7 +61,7 @@ For definitions of `Retention Rate` and `Churn Rate` - refer to **Notes** sectio
 [activity_metrics plugin](./activity-metrics-plugin.md) documentation.
 
 
-**Examples**
+## Examples
 
 The following sample data set shows which users seen on which days. The table was generated based on a source `Users` 
 table, as follows: 
@@ -125,6 +125,7 @@ The following is an analysis of a few records from the output:
 The next query calculates a retention and churn rate for week-over-week window for `New Users` cohort
 (users that arrived on the first week).
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Generate random data of user activities
 let _start = datetime(2017-05-01);
@@ -153,6 +154,7 @@ range Day from _start to _end  step 1d
 The next query calculates retention and churn rate for week-over-week window for `New Users` cohort. If the previous
 example calculated the statistics for a single week - the below produces NxN table for each from/to combination.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Generate random data of user activities
 let _start = datetime(2017-05-01);
@@ -193,6 +195,7 @@ consideration `lookback` period: a tabular query with set of Ids that are used t
 the `New Users` cohort (all IDs that do not appear in this set are `New Users`). The 
 query examines the retention behavior of the `New Users` during the analysis period.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 // Generate random data of user activities
 let _lookback = datetime(2017-02-01);

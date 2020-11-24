@@ -1,10 +1,10 @@
 ---
-title: has_any operator - Azure Data Explorer | Microsoft Docs
+title: has_any operator - Azure Data Explorer
 description: This article describes has_any operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
@@ -17,19 +17,19 @@ ms.date: 08/11/2019
 Table1 | where col has_any ('value1', 'value2')
 ```
 
-**Syntax**
+## Syntax
 
 *T* `|` `where` *col* `has_any` `(`*list of scalar expressions*`)`   
 *T* `|` `where` *col* `has_any` `(`*tabular expression*`)`   
  
-**Arguments**
+## Arguments
 
 * *T* - Tabular input whose records are to be filtered.
 * *col* - Column to filter.
 * *list of expressions* - Comma separated list of tabular, scalar, or literal expressions  
 * *tabular expression* - Tabular expression that has a set of values (if expression has multiple columns, the first column is used)
 
-**Returns**
+## Returns
 
 Rows in *T* for which the predicate is `true`
 
@@ -42,6 +42,7 @@ Rows in *T* for which the predicate is `true`
 
 **A simple usage of `has_any` operator:**  
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where State has_any ("CAROLINA", "DAKOTA", "NEW") 
@@ -62,6 +63,7 @@ StormEvents
 
 **Using dynamic array:**
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let states = dynamic(['south', 'north']);
 StormEvents 

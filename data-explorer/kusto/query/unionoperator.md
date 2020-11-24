@@ -4,11 +4,12 @@ description: This article describes union operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-zone_pivot_group_filename: kusto/zone-pivot-groups.json
+ms.localizationpriority: high
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # union operator
@@ -19,7 +20,7 @@ Takes two or more tables and returns the rows of all of them.
 Table1 | union Table2, Table3
 ```
 
-**Syntax**
+## Syntax
 
 *T* `| union` [*UnionParameters*] [`kind=` `inner`|`outer`] [`withsource=`*ColumnName*] [`isfuzzy=` `true`|`false`] *Table* [`,` *Table*]...  
 
@@ -27,7 +28,7 @@ Alternative form with no piped input:
 
 `union` [*UnionParameters*] [`kind=` `inner`|`outer`] [`withsource=`*ColumnName*] [`isfuzzy=` `true`|`false`] *Table* [`,` *Table*]...  
 
-**Arguments**
+## Arguments
 
 ::: zone pivot="azuredataexplorer"
 
@@ -73,7 +74,7 @@ The default is `isfuzzy=false`.
 
 ::: zone-end
 
-**Returns**
+## Returns
 
 A table with as many rows as there are in all the input tables.
 
@@ -104,7 +105,7 @@ with [view keyword](./letstatement.md)
 ::: zone-end
 
 
-**Example**
+## Example: Tables with string in name or column
 
 ```kusto
 union K* | where * has "Kusto"
@@ -112,7 +113,7 @@ union K* | where * has "Kusto"
 
 Rows from all tables in the database whose name starts with `K`, and in which any column includes the word `Kusto`.
 
-**Example**
+## Example: Distinct count
 
 ```kusto
 union withsource=SourceTable kind=outer Query, Command

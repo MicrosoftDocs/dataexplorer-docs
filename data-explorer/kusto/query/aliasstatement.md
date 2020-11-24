@@ -1,35 +1,35 @@
 ---
-title: Alias statement - Azure Data Explorer | Microsoft Docs
+title: Alias statement - Azure Data Explorer
 description: This article describes Alias statement in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-zone_pivot_group_filename: kusto/zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # Alias statement
 
 ::: zone pivot="azuredataexplorer"
 
-Alias statements allow to define alias for databases which can be used later in the same query.
+Alias statements allow you to define an alias for databases, which can be used later in the same query.
 
-This is useful when working with several clusters while trying to appear as working on less clusters or only on one cluster.
-The alias must be defined according to the following syntax where *clustername* and *databasename* must be an existing and valid entities.
+This is useful when you're working with several clusters but want to appear as if you're working on fewer clusters.
+The alias must be defined according to the following syntax, where *clustername* and *databasename* are existing and valid entities.
 
-**Syntax**
+## Syntax
 
 `alias` database[*'DatabaseAliasName'*] `=` cluster("https://*clustername*.kusto.windows.net:443").database("*databasename*")
 
 `alias` database *DatabaseAliasName* `=` cluster("https://*clustername*.kusto.windows.net:443").database("*databasename*")
 
-* *'DatabaseAliasName'* can be either en axisting name or a new name.
+* *'DatabaseAliasName'* can be either an existing name or a new name.
 * The mapped cluster-uri and the mapped database-name must appear inside double-quotes(") or single-quotes(')
 
-**Examples**
+## Examples
 
 ```kusto
 alias database["wiki"] = cluster("https://somecluster.kusto.windows.net:443").database("somedatabase");
@@ -45,6 +45,6 @@ database("Logs").Traces | count
 
 ::: zone pivot="azuremonitor"
 
-This isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor
 
 ::: zone-end

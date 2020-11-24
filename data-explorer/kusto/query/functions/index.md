@@ -8,8 +8,9 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
+ms.localizationpriority: high
 ---
-# Functions
+# Function types
 
 **Functions** are reusable queries or query parts. Kusto supports several
 kinds of functions:

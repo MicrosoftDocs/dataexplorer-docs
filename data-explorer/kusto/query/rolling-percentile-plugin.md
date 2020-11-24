@@ -1,15 +1,15 @@
 ---
-title: rolling_percentile plugin - Azure Data Explorer | Microsoft Docs
+title: rolling_percentile plugin - Azure Data Explorer
 description: This article describes rolling_percentile plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# rolling_percentile plugin
+# rolling_percentile() plugin
 
 Returns an estimate for the specified percentile of the *ValueColumn* population in a rolling (sliding) *BinsPerWindow* size window per *BinSize*.
 
@@ -17,11 +17,11 @@ Returns an estimate for the specified percentile of the *ValueColumn* population
 T | evaluate rolling_percentile(ValueColumn, Percentile, IndexColumn, BinSize, BinsPerWindow)
 ```
 
-**Syntax**
+## Syntax
 
 *T* `| evaluate` `rolling_percentile(`*ValueColumn*`,` *Percentile*`,` *IndexColumn*`,` *BinSize*`,` *BinsPerWindow*  [`,` *dim1*`,` *dim2*`,` ...] `)`
 
-**Arguments**
+## Arguments
 
 * *T*: The input tabular expression.
 * *ValueColumn*: The name of the column with values to calculate the percentile of. 
@@ -31,7 +31,7 @@ T | evaluate rolling_percentile(ValueColumn, Percentile, IndexColumn, BinSize, B
 * *BinsPerWindow*: Scalar with number of bins included in each window.
 * *dim1*, *dim2*, ... : (optional) list of the dimensions columns to slice by.
 
-**Returns**
+## Returns
 
 Returns a table with a row per each bin (and combination of dimensions if specified) that has the rolling percentile of values in the window ending at the bin (inclusive). distinct count values, distinct count of new values, aggregated distinct count for each 
 time window.
@@ -43,12 +43,13 @@ Output table schema is:
 |---|---|---|---|---|
 
 
-**Examples**
+## Examples
 
 ### Rolling 3-day median value per day 
 
 The next query calculates a 3-day median value in daily granularity. Each row in the output represents the median value for the last 3 bins (days), including the bin itself.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let T = 
 range idx from 0 to 24*10-1 step 1
@@ -75,6 +76,7 @@ range idx from 0 to 24*10-1 step 1
 
 Same example from above, but now also calculates the rolling window partitioned for each value of the dimension.
 
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let T = 
 range idx from 0 to 24*10-1 step 1

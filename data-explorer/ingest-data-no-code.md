@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 01/29/2020
+ms.date: 05/19/2020
 
 # Customer intent: I want to ingest monitoring data to Azure Data Explorer without one line of code, so that I can explore and analyze my data by using queries.
 ---
@@ -193,7 +193,7 @@ Azure activity logs are subscription-level logs that provide insight into the op
 
 ## Set up an ingestion pipeline in Azure Data Explorer
 
-Setting up an Azure Data Explorer pipeline involves several steps, such as [table creation and data ingestion](/azure/data-explorer/ingest-sample-data#ingest-data). You can also manipulate, map, and update the data.
+Setting up an Azure Data Explorer pipeline involves several steps, such as [table creation and data ingestion](ingest-sample-data.md#ingest-data). You can also manipulate, map, and update the data.
 
 ### Connect to the Azure Data Explorer Web UI
 
@@ -287,7 +287,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
 To map the diagnostic metric and log data to the table, use the following query:
 
 ```kusto
-.create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
+.create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","Properties":{"path":"$.records"}}]'
 ```
 
 # [Activity logs](#tab/activity-logs)
@@ -296,7 +296,7 @@ To map the diagnostic metric and log data to the table, use the following query:
 To map the activity log data to the table, use the following query:
 
 ```kusto
-.create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
+.create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","Properties":{"path":"$.records"}}]'
 ```
 ---
 
@@ -333,7 +333,7 @@ To map the activity log data to the table, use the following query:
 # [Diagnostic logs](#tab/diagnostic-logs)
 #### Create data update policy for diagnostics logs
 
-1. Create a [function](kusto/management/functions.md) that expands the collection of diagnostic logs records so that each value in the collection receives a separate row. You'll enable ingestion logs on an Azure Data Explorer cluster, and use [ingestion logs schema](/azure/data-explorer/using-diagnostic-logs#diagnostic-logs-schema). You'll create one table for succeeded and for failed ingestion, while some of the fields will be empty for succeeded ingestion (ErrorCode for example). Use the [`mv-expand`](kusto/query/mvexpandoperator.md) operator:
+1. Create a [function](kusto/management/functions.md) that expands the collection of diagnostic logs records so that each value in the collection receives a separate row. You'll enable ingestion logs on an Azure Data Explorer cluster, and use [ingestion logs schema](using-diagnostic-logs.md#diagnostic-logs-schema). You'll create one table for succeeded and for failed ingestion, while some of the fields will be empty for succeeded ingestion (ErrorCode for example). Use the [`mv-expand`](kusto/query/mvexpandoperator.md) operator:
 
     ```kusto
     .create function DiagnosticLogsExpand() {
@@ -453,25 +453,30 @@ Select a resource from which to export metrics. Several resource types support e
 ### Connect activity logs to your event hub
 
 1. In the left menu of the Azure portal, select **Activity log**.
-1. The **Activity log** window opens. Select **Export to Event Hub**.
+1. The **Activity log** window opens. Select **Diagnostics settings**.
 
     ![Activity log window](media/ingest-data-no-code/activity-log.png)
 
-1. The **Export activity log** window opens:
- 
-    ![Export activity log window](media/ingest-data-no-code/export-activity-log.png)
+1. The **Diagnostics settings** window opens. Select **+ Add diagnostic setting**.
 
-1. In the **Export activity log** window, take the following steps:
-      1. Select your subscription.
-      1. In the **Regions** list, choose **Select all**.
-      1. Select the **Export to an event hub** check box.
-      1. Choose **Select a service bus namespace** to open the **Select event hub** pane.
-      1. In the **Select event hub** pane, select your subscription.
-      1. In the **Select event hub namespace** list, select *AzureMonitoringData*.
-      1. In the **Select event hub policy name** list, select the default event hub policy name.
-      1. Select **OK**.
-      1. In the upper-left corner of the window, select **Save**.
-   An event hub with the name *insights-operational-logs* will be created.
+    :::image type="content" source="media/ingest-data-no-code/add-diagnosting-setting.png" alt-text="Add diagnostic setting in Diagnostic settings window, Azure Data Explorer portal":::
+
+1. A new **Diagnostic setting** window opens. 
+
+    :::image type="content" source="media/ingest-data-no-code/export-activity-log.PNG" alt-text="Diagnostic settings window with fields to fill out - Azure Data Explorer portal":::
+
+    Do the following steps:
+    1. Enter a name in the **Diagnostic setting name** field.  
+    1. On the left-hand side of check boxes, select the platform log(s) you wish to collect from a subscription.
+    1. Select the **Stream to an event hub** check box.
+    1. Select your subscription.
+    1. In the **Event hub namespace** list, select *AzureMonitoringData*.
+    1. Optionally, select your **Event hub name**.
+    1. In the **Event hub policy name** list, select the default event hub policy name.
+    1. In the upper-left corner of the window, select **Save**. An event hub with the name *insights-operational-logs* will be created (unless you have selected an Event hub name above).
+      
+    
+
 ---
 
 ### See data flowing to your event hubs
@@ -570,11 +575,9 @@ DiagnosticMetrics
 
 Query results:
 
-|   |   |
-| --- | --- |
-|   |  avg_Average |
-|   | 00:06.156 |
-| | |
+| avg_Average |
+| --- |
+| 00:06.156 |
 
 # [Diagnostic logs](#tab/diagnostic-logs)
 ### Query the diagnostic logs table
@@ -590,11 +593,9 @@ DiagnosticLogs
 
 Query results:
 
-|   |   |
-| --- | --- |
-|   |  count_ | any_Database | any_Table | any_IngestionSourcePath
-|   | 00:06.156 | TestDatabase | DiagnosticRawRecords | https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip
-| | |
+| count_ | any_Database | any_Table | any_IngestionSourcePath |
+| --- | --- | --- | --- |
+| 00:06.156 | TestDatabase | DiagnosticRawRecords | `https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip` |
 
 # [Activity logs](#tab/activity-logs)
 ### Query the activity logs table
@@ -610,11 +611,9 @@ ActivityLogs
 
 Query results:
 
-|   |   |
-| --- | --- |
-|   |  avg(DurationMs) |
-|   | 768.333 |
-| | |
+| avg(DurationMs) |
+| --- |
+| 768.333 |
 
 ---
 

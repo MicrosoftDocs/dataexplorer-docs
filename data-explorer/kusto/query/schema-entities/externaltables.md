@@ -11,17 +11,23 @@ ms.date: 01/22/2020
 ---
 # External tables
 
-An **external table** is a Kusto schema entity that references data stored outside Kusto database.
+An **external table** is a Kusto schema entity that references data stored outside the Azure Data Explorer database.
 
-Similar to [tables](tables.md), an external table has a well-defined schema (an ordered list of column name and data type pairs). Unlike tables, data is stored and managed outside Kusto Cluster. Most commonly the data is stored in some standard format such as CSV, Parquet, Avro, and is not ingested by Kusto.
+Similar to [tables](tables.md), an external table has a well-defined schema (an ordered list of column name and data type pairs). Unlike tables, data is stored and managed outside the cluster. Most commonly the data is stored in some standard format such as CSV, Parquet, Avro, and isn't ingested by Azure Data Explorer.
 
-An **external table** is created once (see [External Table control commands](../../management/externaltables.md))
-and can be referenced by its name using [external_table()](../../query/externaltablefunction.md) function. 
+An **external table** is created once. See the following commands for external table creation:
+* [External table general control commands](../../management/external-table-commands.md)
+* [Create and alter external SQL tables](../../management/external-sql-tables.md)
+* [Create and alter tables in Azure Storage or Azure Data Lake](../../management/external-tables-azurestorage-azuredatalake.md)
+
+An **external table** can be referenced by its name using the [external_table()](../../query/externaltablefunction.md) function. 
 
 **Notes**
 
-* External table names are case-sensitive.
-* External table names can’t overlap with Kusto table names.
-* External table names follow the rules for [entity names](./entity-names.md).
+* External table names:
+   * Case-sensitive.
+   * Can’t overlap with Kusto table names.
+   * Follow the rules for [entity names](./entity-names.md).
 * Maximum limit of external tables per database is 1,000.
-* Kusto supports [exporting data to an external table](../../management/data-export/export-data-to-an-external-table.md) as well as [querying external tables](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data).
+* Kusto supports [export](../../management/data-export/export-data-to-an-external-table.md) and [continuous export](../../management/data-export/continuous-data-export.md) to an external table, and [querying external tables](../../../data-lake-query-data.md).
+* [Data purge](../../concepts/data-purge.md) isn't applied on external tables. Records are never deleted from external tables.

@@ -5,8 +5,8 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: gabilehner
 ms.service: data-explorer
-ms.topic: conceptual
-ms.date: 11/07/2019
+ms.topic: how-to
+ms.date: 10/06/2020
 ---
 
 # Use follower database to attach databases in Azure Data Explorer
@@ -24,12 +24,16 @@ Attaching a database to a different cluster using the follower capability is use
 ## Prerequisites
 
 1. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
-1. [Create cluster and DB](/azure/data-explorer/create-cluster-database-portal) for the leader and follower.
-1. [Ingest data](/azure/data-explorer/ingest-sample-data) to leader database using one of various methods discussed in [ingestion overview](/azure/data-explorer/ingest-data-overview).
+1. [Create cluster and DB](create-cluster-database-portal.md) for the leader and follower.
+1. [Ingest data](ingest-sample-data.md) to leader database using one of various methods discussed in [ingestion overview](./ingest-data-overview.md).
 
 ## Attach a database
 
-There are various methods you can use to attach a database. In this article, we discuss attaching a database using C# or an Azure Resource Manager template. To attach a database, you must have permissions on the leader cluster and the follower cluster. For more information about permissions, see [manage permissions](#manage-permissions).
+There are various methods you can use to attach a database. In this article, we discuss attaching a database using C#, Python, Powershell, or an Azure Resource Manager template. 
+To attach a database, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster and the follower cluster. You can add or remove role assignments using [Azure Portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli) and [ARM template](/azure/role-based-access-control/role-assignments-template). You can learn more about [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) and the [different roles](/azure/role-based-access-control/rbac-and-directory-admin-roles). 
+
+
+# [C#](#tab/csharp)
 
 ### Attach a database using C#
 
@@ -38,9 +42,9 @@ There are various methods you can use to attach a database. In this article, we 
 * Install [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Install [Microsoft.Rest.ClientRuntime.Azure.Authentication for authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
 
-#### Code Example
+#### Example
 
-```Csharp
+```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
 var clientSecret = "xxxxxxxxxxxxxx";//Client secret
@@ -72,16 +76,18 @@ AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new Atta
 var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseConfigurations.CreateOrUpdate(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationName, attachedDatabaseConfigurationProperties);
 ```
 
+# [Python](#tab/python)
+
 ### Attach a database using Python
 
-#### Needed Modules
+#### Needed modules
 
 ```
 pip install azure-common
 pip install azure-mgmt-kusto
 ```
 
-#### Code Example
+#### Example
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -119,6 +125,51 @@ attached_database_configuration_properties = AttachedDatabaseConfiguration(clust
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
 ```
+
+# [Powershell](#tab/azure-powershell)
+
+### Attach a database using Powershell
+
+#### Needed modules
+
+```
+Install : Az.Kusto
+```
+
+#### Example
+
+```Powershell
+$FollowerClustername = 'follower'
+$FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
+$FollowerResourceGroupName = 'followerResouceGroup'
+$DatabaseName = "db"  ## Can be specific database name or * for all databases
+$LeaderClustername = 'leader'
+$LeaderClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
+$LeaderClusterResourceGroup = 'leaderResouceGroup'
+$DefaultPrincipalsModificationKind = 'Union'
+##Construct the LeaderClusterResourceId and Location
+$getleadercluster = Get-AzKustoCluster -Name $LeaderClustername -ResourceGroupName $LeaderClusterResourceGroup -SubscriptionId $LeaderClusterSubscriptionID -ErrorAction Stop
+$LeaderClusterResourceid = $getleadercluster.Id
+$Location = $getleadercluster.Location
+##Handle the config name if all databases needs to be followed
+if($DatabaseName -eq '*')  {
+        $configname = $FollowerClustername + 'config'
+       } 
+else {
+        $configname = $DatabaseName   
+     }
+New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
+	-Name $configname `
+	-ResourceGroupName $FollowerResourceGroupName `
+	-SubscriptionId $FollowerClusterSubscriptionID `
+	-DatabaseName $DatabaseName `
+	-ClusterResourceId $LeaderClusterResourceid `
+	-DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind `
+	-Location $Location `
+	-ErrorAction Stop 
+```
+
+# [Resource Manager Template](#tab/azure-resource-manager)
 
 ### Attach a database using an Azure Resource Manager template
 
@@ -177,7 +228,7 @@ In this section, you learn to attach a database to an existing cluser by using a
         {
             "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
-            "apiVersion": "2019-09-07",
+            "apiVersion": "2020-02-15",
             "location": "[parameters('location')]",
             "properties": {
                 "databaseName": "[parameters('databaseName')]",
@@ -195,7 +246,6 @@ You can deploy the Azure Resource Manager template by [using the Azure portal](h
 
    ![template deployment](media/follower/template-deployment.png)
 
-
 |**Setting**  |**Description**  |
 |---------|---------|
 |Follower Cluster Name     |  The name of the follower cluster; where the template will be deployed.  |
@@ -204,28 +254,38 @@ You can deploy the Azure Resource Manager template by [using the Azure portal](h
 |Leader Cluster Resource ID    |   The resource ID of the leader cluster.      |
 |Default Principals Modification Kind    |   The default principal modification kind. Can be `Union`, `Replace` or `None`. For more information about default principal modification kind, see [principal modification kind control command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind).      |
 |Location   |   The location of all the resources. The leader and the follower must be in the same location.       |
- 
-### Verify that the database was successfully attached
 
-To verify that the database was successfully attached, find your attached databases in the [Azure portal](https://portal.azure.com). 
+---
+
+## Verify that the database was successfully attached
+
+To verify that the database was successfully attached, find your attached databases in the [Azure portal](https://portal.azure.com). You can verify the databases were successfully attached in either the [follower](#check-your-follower-cluster) or [leader](#check-your-leader-cluster) clusters.
+
+### Check your follower cluster  
 
 1. Navigate to the follower cluster and select **Databases**
 1. Search for new Read-only databases in the database list.
 
     ![Read-only follower database](media/follower/read-only-follower-database.png)
 
-Alternatively:
+### Check your leader cluster
 
 1. Navigate to the leader cluster and select **Databases**
 2. Check that the relevant databases are marked as **SHARED WITH OTHERS** > **Yes**
 
     ![Read and write attached databases](media/follower/read-write-databases-shared.png)
 
-## Detach the follower database using C# 
+## Detach the follower database  
 
-### Detach the attached follower database from the follower cluster
+> [!NOTE]
+> To detach a database from the follower or leader side, you must have user, group, service principal, or managed identity with at least contributor role on the cluster from which you are detaching the database. In the example below, we use service principal.
 
-The follower cluster can detach any attached database as follows:
+# [C#](#tab/csharp)
+
+### Detach the attached follower database from the follower cluster using C#
+
+
+The follower cluster can detach any attached follower database as follows:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -247,7 +307,7 @@ var attachedDatabaseConfigurationsName = "uniqueName";
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
 
-### Detach the attached follower database from the leader cluster
+### Detach the attached follower database from the leader cluster using C#
 
 The leader cluster can detach any attached database as follows:
 
@@ -277,9 +337,9 @@ var followerDatabaseDefinition = new FollowerDatabaseDefinition()
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
 
-## Detach the follower database using Python
+# [Python](#tab/python)
 
-### Detach the attached follower database from the follower cluster
+### Detach the attached follower database from the follower cluster using Python
 
 The follower cluster can detach any attached database as follows:
 
@@ -310,7 +370,7 @@ attached_database_configurationName = "uniqueName"
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
 ```
 
-### Detach the attached follower database from the leader cluster
+### Detach the attached follower database from the leader cluster using Python
 
 The leader cluster can detach any attached database as follows:
 
@@ -344,10 +404,40 @@ attached_database_configuration_name = "uniqueName"
 location = "North Central US"
 cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceGroups/" + follower_resource_group_name + "/providers/Microsoft.Kusto/Clusters/" + follower_cluster_name
 
-
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.clusters.detach_follower_databases(resource_group_name = leader_resource_group_name, cluster_name = leader_cluster_name, cluster_resource_id = cluster_resource_id, attached_database_configuration_name = attached_database_configuration_name)
 ```
+
+# [Powershell](#tab/azure-powershell)
+
+### Detach a database using Powershell
+
+#### Needed Modules
+
+```
+Install : Az.Kusto
+```
+
+#### Example
+
+```Powershell
+$FollowerClustername = 'follower'
+$FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
+$FollowerResourceGroupName = 'followerResouceGroup'
+$DatabaseName = "sanjn"  ## Can be specific database name or * for all databases
+
+##Construct the Configuration name 
+$confignameraw = (Get-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -ResourceGroupName $FollowerResourceGroupName -SubscriptionId $FollowerClusterSubscriptionID) | Where-Object {$_.DatabaseName -eq $DatabaseName }
+$configname =$confignameraw.Name.Split("/")[1]
+
+Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -Name $configname -ResourceGroupName $FollowerResourceGroupName
+```
+
+# [Resource Manager Template](#tab/azure-resource-manager)
+
+[Detach the follower database](#detach-the-follower-database) using C#, Python or PowerShell.
+
+---
 
 ## Manage principals, permissions, and caching policy
 
@@ -365,7 +455,7 @@ For more information about using control commands to configure the authorized pr
 
 ### Manage permissions
 
-Managing read-only database permission is the same as for all database types. See [manage permissions in the Azure portal](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
+Managing read-only database permission is the same as for all database types. See [manage permissions in the Azure portal](manage-database-permissions.md#manage-permissions-in-the-azure-portal).
 
 ### Configure caching policy
 
@@ -374,11 +464,10 @@ The follower database administrator can modify the [caching policy](kusto/manage
 ## Limitations
 
 * The follower and the leader clusters must be in the same region.
-* [Streaming ingestion](/azure/data-explorer/ingest-data-streaming) can't be used on a database that is being followed.
-* Data encryption using [customer managed keys](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault) is not supported on both leader and follower clusters. 
+* [Streaming ingestion](ingest-data-streaming.md) can't be used on a database that is being followed.
+* Data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) is not supported on both leader and follower clusters. 
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
-* You can't stop a cluster that has attached follower or leader database(s). 
 
 ## Next steps
 

@@ -1,26 +1,32 @@
 ---
-title: diffpatterns plugin - Azure Data Explorer | Microsoft Docs
+title: diffpatterns plugin - Azure Data Explorer
 description: This article describes diffpatterns plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# diffpatterns plugin
+# diff patterns plugin
+
+Compares two data sets of the same structure and finds patterns of discrete attributes (dimensions) that characterize differences between the two data sets.
+ `Diffpatterns` was developed to help analyze failures (for example, by comparing failures to non-failures in a given time frame), but can potentially find differences between any two data sets of the same structure. 
 
 ```kusto
 T | evaluate diffpatterns(splitColumn)
 ```
-Compares two data sets of the same structure and finds patterns of discrete attributes (dimensions) that characterize differences between the two data sets. Diffpatterns was developed to help analyze failures (e.g. by comparing failures to non-failures in a given time frame) but can potentially find differences between any two data sets of the same structure. 
+> [!NOTE]
+> `diffpatterns` aims to find significant patterns (that capture portions of the data difference between the sets) and isn't meant for row-by-row differences.
 
-**Syntax**
+## Syntax
 
-`T | evaluate diffpatterns(`SplitColumn, SplitValueA, SplitValueB [, WeightColumn, Threshold, MaxDimensions, CustomWildcard, ...]`)` 
+`T | evaluate diffpatterns(SplitColumn, SplitValueA, SplitValueB [, WeightColumn, Threshold, MaxDimensions, CustomWildcard, ...])` 
 
-**Required Arguments**
+## Arguments 
+
+### Required arguments
 
 * SplitColumn - *column_name*
 
@@ -28,21 +34,21 @@ Compares two data sets of the same structure and finds patterns of discrete attr
 
 * SplitValueA - *string*
 
-    A string representation of one of the values in the SplitColumn that was specified. All the rows which have this value in their SplitColumn considered as data set “A”.
+    A string representation of one of the values in the SplitColumn that was specified. All the rows that have this value in their SplitColumn considered as data set “A”.
 
 * SplitValueB - *string*
 
-    A string representation of one of the values in the SplitColumn that was specified. All the rows which have this value in their SplitColumn considered as data set  “B”.
+    A string representation of one of the values in the SplitColumn that was specified. All the rows that have this value in their SplitColumn considered as data set  “B”.
 
     Example: `T | extend splitColumn=iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure") `
 
-**Optional Arguments**
+### Optional arguments
 
 All other arguments are optional, but they must be ordered as below. To indicate that the default value should be used, put the string tilde value - '~' (see examples below).
 
 * WeightColumn - *column_name*
 
-    Considers each row in the input according to the specified weight (by default each row has a weight of '1'). The argument must be a name of a numeric column (e.g. int, long, real).
+    Considers each row in the input according to the specified weight (by default each row has a weight of '1'). The argument must be a name of a numeric column (for example, `int`, `long`, `real`).
     A common usage of a weight column is to take into account sampling or bucketing/aggregation of the data that is already embedded into each row.
     
     Example: `T | extend splitColumn=iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", sample_Count) `
@@ -55,53 +61,49 @@ All other arguments are optional, but they must be ordered as below. To indicate
 
 * MaxDimensions  - 0 < *int* [default: unlimited]
 
-    Sets the maximal number of uncorrelated dimensions per result pattern, specifying a limit decreases the query runtime.
+    Sets the maximum number of uncorrelated dimensions per result pattern. By specifying a limit, you decrease the query runtime.
 
     Example:  `T | extend splitColumn = iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", "~", "~", 3)`
 
 * CustomWildcard - *"any-value-per-type"*
 
     Sets the wildcard value for a specific type in the result table that will indicate that the current pattern doesn't have a restriction on this column.
-    Default is null, for string default is an empty string. If the default is a viable value in the data, a different wildcard value should be used (e.g. `*`).
+    Default is null, for string default is an empty string. If the default is a viable value in the data, a different wildcard value should be used (for example, `*`).
     See an example below.
 
     Example: `T | extend splitColumn = iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", "~", "~", "~", int(-1), double(-1), long(0), datetime(1900-1-1))`
 
-**Returns**
+## Returns
 
-Diffpatterns returns a (usually small) set of patterns that capture different portions of the data in the two sets (i.e. a pattern capturing a large percentage of the rows in the first data set and low percentage of the rows in the second set). Each pattern is represented by a row in the results.
+`Diffpatterns` returns a small set of patterns that capture different portions of the data in the two sets (that is, a pattern capturing a large percentage of the rows in the first data set and low percentage of the rows in the second set). Each pattern is represented by a row in the results.
 
-The result of diffpatterns returns the following columns:
+The result of `diffpatterns` returns the following columns:
 
-* SegmentId: the id assigned to the pattern in the current query (note: IDs are not guaranteed to be the same in repeating queries).
+* SegmentId: the identity assigned to the pattern in the current query (note: IDs are not guaranteed to be the same in repeating queries).
 
 * CountA: the number of rows captured by the pattern in Set A (Set A is the equivalent of `where tostring(splitColumn) == SplitValueA`).
 
 * CountB: the number of rows captured by the pattern in Set B (Set B is the equivalent of `where tostring(splitColumn) == SplitValueB`).
 
-* PercentA: the percentage of rows in Set A captured by the pattern ( 100.0 * CountA / count(SetA) ).
+* PercentA: the percentage of rows in Set A captured by the pattern (100.0 * CountA / count(SetA)).
 
-* PercentB: the percentage of rows in Set B captured by the pattern ( 100.0 * CountB / count(SetB) ).
+* PercentB: the percentage of rows in Set B captured by the pattern (100.0 * CountB / count(SetB)).
 
-* PercentDiffAB: the absolute percentage point difference between A and B ( |PercentA - PercentB| ) is the main measure of significance of patterns in describing the difference between the two sets.
+* PercentDiffAB: the absolute percentage point difference between A and B (|PercentA - PercentB|) is the main measure of significance of patterns in describing the difference between the two sets.
 
 * Rest of the columns: are the original schema of the input and describe the pattern, each row (pattern) reresents the intersection of the non-wildcard values of the columns (equivalent of `where col1==val1 and col2==val2 and ... colN=valN` for each non-wildcard value in the row).
 
-For each pattern, columns that are not set in the pattern (i.e. without restriction on a specific value) will contain a wildcard value which is null by default (see in the Arguments section below how wildcards can be manually changed).
+For each pattern, columns that are not set in the pattern (that is, without restriction on a specific value) will contain a wildcard value, which is null by default. See in the Arguments section below how wildcards can be manually changed.
 
-* Note: the patterns are usually not distinct, they may be overlapping and usually do not cover all the original rows. Some rows may not fall under any pattern.
+* Note: the patterns are often not distinct. They may be overlapping, and usually do not cover all the original rows. Some rows may not fall under any pattern.
 
+> [!TIP]
+> * Use [where](./whereoperator.md) and [project](./projectoperator.md) in the input pipe to reduce the data to just what you're interested in.
+> * When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
 
-**Tips**
+## Example
 
-Use [where](./whereoperator.md) and [project](./projectoperator.md) in the input pipe to reduce the data to just what you're interested in.
-
-When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
-
-* Note: diffpatterns aims to find significant patterns (that capture portions of the data difference between the sets) and is not meant for row-by-row differences.
-
-**Example**
-
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5
@@ -109,6 +111,7 @@ StormEvents
 | project State , EventType , Source , Damage, DamageCrops
 | evaluate diffpatterns(Damage, "0", "1" )
 ```
+
 |SegmentId|CountA|CountB|PercentA|PercentB|PercentDiffAB|State|EventType|Source|DamageCrops|
 |---|---|---|---|---|---|---|---|---|---|
 |0|2278|93|49.8|7.1|42.7||Hail||0|
@@ -120,4 +123,3 @@ StormEvents
 |6|655|279|14.32|21.3|6.98|||Law Enforcement||
 |7|150|117|3.28|8.93|5.65||Flood|||
 |8|362|176|7.91|13.44|5.52|||Emergency Manager||
-
