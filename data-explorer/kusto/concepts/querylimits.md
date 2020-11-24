@@ -8,6 +8,7 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
+ms.localizationpriority: high 
 ---
 # Query limits
 
@@ -192,11 +193,6 @@ control commands. This value can be increased if needed (capped at one hour).
 * Also on the client side, the actual timeout value used is slightly higher
    than the server timeout value requested by the user. This difference, is to allow for network latencies.
 * To automatically use the maximum allowed request timeout, set the client request property `norequesttimeout` to `true`.
-
-<!--
-  Request timeout can also be set using a set statement, but we don't mention
-  it here since it shouldn't be used in production scenarios.
--->
 
 ## Limit on query CPU resource usage
 

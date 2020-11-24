@@ -39,6 +39,7 @@ The process of selectively purging data from Azure Data Explorer happens in the 
 	 * The number of nodes in the cluster  
 	 * The spare capacity it has for purge operations
 	 * Several other factors
+	 
 	The duration of phase 2 can vary between a few seconds to many hours.
 1. Phase 3: (Hard Delete)
    Work back all storage artifacts that may have the "poison" data, and delete them from storage. This phase is done at least five days after the completion of the previous phase, but no longer than 30 days after the initial command. These timelines are set to follow data privacy requirements.

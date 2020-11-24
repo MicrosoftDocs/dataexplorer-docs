@@ -201,6 +201,8 @@
       href: data-lake-query-data.md  
     - name: Query data in Azure Monitor
       href: query-monitor-data.md
+    - name: Query data in Power Apps application
+      href: power-apps-connector.md     
     - name: Debug KQL inline Python
       href: debug-inline-python.md
     - name: using SDKs
@@ -370,8 +372,6 @@
       href: using-metrics.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
-    - name: Create Power Apps application to query data in Azure Data Explorer
-      href: power-apps-connector.md        
   - name: Share data
     items:
       - name: Use Azure Data Share
@@ -558,6 +558,8 @@
         href: ./kusto/query/diffpatterns-textplugin.md
       - name: infer_storage_schema plugin
         href: ./kusto/query/inferstorageschemaplugin.md
+      - name: ipv4_lookup plugin
+        href: ./kusto/query/ipv4-lookup-plugin.md
       - name: mysql_request plugin
         href: ./kusto/query/mysqlrequest-plugin.md
       - name: narrow plugin
@@ -912,6 +914,8 @@
       href: ./kusto/query/ipv4-comparefunction.md
     - name: ipv4_is_match()
       href: ./kusto/query/ipv4-is-matchfunction.md
+    - name: ipv4_is_private()
+      href: ./kusto/query/ipv4-is-privatefunction.md
     - name: ipv6_compare()
       href: ./kusto/query/ipv6-comparefunction.md
     - name: ipv6_is_match()
@@ -1367,6 +1371,8 @@
       href: ./kusto/query/re2.md
     - name: SQL to Kusto cheat sheet
       href: ./kusto/query/sqlcheatsheet.md
+    - name: Splunk to Kusto cheat sheet
+      href: ./kusto/query/splunk-cheat-sheet.md
   - name: Query tools
     items:
     - name: Kusto.Explorer
@@ -1845,12 +1851,17 @@
       href: kusto/functions-library/quantize-fl.md
     - name: series_dot_product_fl()
       href: kusto/functions-library/series-dot-product-fl.md
+    - name: series_exp_smoothing_fl()
+      href: kusto/functions-library/series-exp-smoothing-fl.md
     - name: series_fit_poly_fl()
       href: kusto/functions-library/series-fit-poly-fl.md
     - name: series_moving_avg_fl()
       href: kusto/functions-library/series-moving-avg-fl.md
     - name: series_rolling_fl()
       href: kusto/functions-library/series-rolling-fl.md
+  - name: Azure Policy built-ins
+    displayName: samples, policies, definitions
+    href: ./policy-reference.md
 - name: Resources
   items:
   - name: Blog
