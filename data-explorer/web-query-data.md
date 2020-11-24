@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 11/09/2020
+ms.date: 11/22/2020
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
 ---
@@ -42,9 +42,9 @@ You must add a connection to a cluster before you can start running queries. In 
    
 1. In the left pane, you should now see the **help** cluster. Expand the **Samples** database and open the **Tables** folder to see the sample tables that you have access to.
 
-    :::image type="content" source="media/web-query-data/connection.png" alt-text="samples-database":::
+    :::image type="content" source="media/web-query-data/help-cluster.png" alt-text="Find table in the help cluster":::
 
-We use the **StormEvents** table later in this quickstart, and in other Azure Data Explorer articles. \\(Storm_Events or StormEvents?) - add new image with open folder\\
+We use the **StormEvents** table later in this quickstart, and in other Azure Data Explorer articles. 
 
 ### Add your cluster
 
@@ -76,11 +76,11 @@ You can now run queries on both clusters (assuming you have data in your test cl
     
     This query returns the 10 newest records in the **StormEvents** table. The result should look like the following table.
 
-    :::image type="content" source="media/web-query-data/result-set-01.png" alt-text="Screenshot of a table that lists the start time, end time, episode, event ID, state, and event type for 10 storm events." border="false":::
+    :::image type="content" source="media/web-query-data/result-set-take-10.png" alt-text="Screenshot of a table that lists the start time, end time, episode, event ID, state, and event type for 10 storm events." border="false":::
 
     The following image shows the state of the application, with the cluster added, and a query with results.
 
-    :::image type="content" source="media/web-query-data/Capture2.png" alt-text="full screen":::
+    :::image type="content" source="media/web-query-data/webui-take10.png" alt-text="full screen":::
 
 1. Copy and paste the following query into the query window, below the first query. Notice how it isn't formatted on separate lines like the first query.
 
@@ -94,7 +94,7 @@ You can now run queries on both clusters (assuming you have data in your test cl
 
 1. Select **Run** or press *Shift+Enter* to run a query. This query returns the same records as the first one, but includes only the columns specified in the `project` statement. The result should look like the following table.
 
-    :::image type="content" source="media/web-query-data/result-set-02.png" alt-text="Screenshot of a table that lists the start time, end time, state, event type, damage property, and episode narrative for 10 storm events." border="false":::
+    :::image type="content" source="media/web-query-data/result-set-project.png" alt-text="Screenshot of a table that lists the start time, end time, state, event type, damage property, and episode narrative for 10 storm events." border="false":::
 
 1. At the top of the query window, select **Recall**.
 
@@ -152,7 +152,7 @@ Now that you've seen how basic queries work, let's look at how you can use the t
 
 1. In the results grid, select a few of the numerical cells. The table grid allows you to select multiple rows, columns, and cells and calculate aggregations on them. The Web UI currently supports the following functions for numeric values: **Average**, **Count**, **Min**, **Max**, and **Sum** as seen on the bottom right in the example below.
 
-    :::image type="content" source="media/web-query-data/selectstats.png" alt-text="select-stats"::: 
+    :::image type="content" source="media/web-query-data/select-stats.png" alt-text="select-stats"::: 
 
 1. On the right side of the grid, select **Columns** to see the \\tool panel\\.
 
