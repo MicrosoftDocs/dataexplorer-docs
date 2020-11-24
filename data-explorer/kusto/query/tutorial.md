@@ -29,7 +29,7 @@ Our example database has a table called `StormEvents`. To find out how large the
 StormEvents | count
 ```
 
-Here's the result:
+Here's the output:
 
 |Count|
 |-----|
@@ -54,7 +54,7 @@ StormEvents
 | project StartTime, EndTime , State , EventType , EpisodeNarrative
 ```
 
-Here's the result:
+Here's the output:
 
 |StartTime|EndTime|State|EventType|EpisodeNarrative|
 |---|---|---|---|---|
@@ -71,7 +71,7 @@ StormEvents
 | project  StartTime, EndTime, EventType, State, EventNarrative  
 ```
 
-Here's the result:
+Here's the output:
 
 |StartTime|EndTime|EventType|State|EventNarrative|
 |---|---|---|---|---|
@@ -97,7 +97,7 @@ StormEvents
 | project  StartTime, EndTime, EventType, State, EventNarrative  
 ```
 
-Here's the result:
+Here's the output:
 
 |StartTime|EndTime|EventType|State|EventNarrative|
 |---|---|---|---|---|
@@ -129,7 +129,7 @@ StormEvents
 | project StartTime, EndTime, Duration, EventType, State
 ```
 
-Here's the result:
+Here's the output:
 
 |StartTime|EndTime|Duration|EventType|State|
 |---|---|---|---|---|
@@ -150,7 +150,7 @@ print x=1
 | extend x = x + 1
 ```
 
-Here's the result:
+Here's the output:
 
 |x|y|
 |---|---|
@@ -179,7 +179,7 @@ StormEvents
 | top 5 by StormCount desc
 ```
 
-Here's the result:
+Here's the output:
 
 |State|StormCount|TypeOfStorms|
 |---|---|---|
@@ -189,7 +189,7 @@ Here's the result:
 |ILLINOIS|2022|23|
 |MISSOURI|2016|20|
 
-In the result of a `summarize` operator:
+In the results of a `summarize` operator:
 
 * Each column is named in `by`.
 * Each computed expression has a column.
@@ -403,11 +403,11 @@ To get this information, use the preceding query, but replace `render` with:
 | summarize percentiles(duration, 5, 20, 50, 80, 95)
 ```
 
-In this case, we didn't use a `by` clause, so the result is a single row:
+In this case, we didn't use a `by` clause, so the output is a single row:
 
 :::image type="content" source="images/tutorial/summarize-percentiles-duration.png" lightbox="images/tutorial/summarize-percentiles-duration.png" alt-text="Screenshot of a table of results for summarize percentiles by duration.":::
 
-We can see from the results that:
+We can see from the output that:
 
 * 5% of storms have a duration of less than 5 minutes.
 * 50% of storms lasted less than one hour and 25 minutes.
@@ -511,7 +511,7 @@ A query is a data source (usually a table name), optionally  followed by one or 
 InsightsMetrics | count
 ```
 
-Here's the result:
+Here's the output:
 
 |Count|
 |-----|
