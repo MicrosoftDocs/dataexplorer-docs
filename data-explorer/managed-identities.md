@@ -138,13 +138,6 @@ For example:
     "location": "[resourceGroup().location]",
     "identity": {
         "type": "SystemAssigned"
-    },
-    "properties": {
-        "trustedExternalTenants": [],
-        "virtualNetworkConfiguration": null,
-        "optimizedAutoscale": null,
-        "enableDiskEncryption": false,
-        "enableStreamingIngest": false,
     }
 }
 ```
@@ -211,7 +204,7 @@ Run the following to remove the system-assigned identity:
 
 ## Add a user-assigned identity
 
-Assign a user-assigned identity that is in an existing identity in Azure AD. A cluster can have more than one user-assigned identity. Creating a cluster with a user-assigned identity requires an additional property to be set on the cluster. The user-assigned identity is added using C#, Resource Manager template, or the Azure portal as detailed below.
+Assign a user-assigned identity that is in an existing identity in Azure AD. A cluster can have more than one user-assigned identity. Creating a cluster with a user-assigned identity requires an additional property to be set on the cluster. The user-assigned identity can be added using C#, Resource Manager template, or the Azure portal as detailed below.
 
 # [Azure portal](#tab/portal)
 
@@ -324,13 +317,6 @@ For example:
         "userAssignedIdentities": {
             "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
         }
-    },
-    "properties": {
-        "trustedExternalTenants": [],
-        "virtualNetworkConfiguration": null,
-        "optimizedAutoscale": null,
-        "enableDiskEncryption": false,
-        "enableStreamingIngest": false,
     },
     "dependsOn": [
         "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
