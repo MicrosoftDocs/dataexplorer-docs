@@ -58,7 +58,7 @@ func getClustersClient(subscription string) kusto.ClustersClient {
 
 ### Create cluster
 
-Use the [CreateOrUpdate](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v0.0.0-20200513030755-ac906323d9fe/services/kusto/mgmt/2020-02-15/kusto?tab=doc#ClustersClient.CreateOrUpdate) function on `kusto.ClustersClient` to create a new Azure Data Explorer cluster. Wait for the process to complete before inspecting the results.
+Use the [CreateOrUpdate](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto) function on `kusto.ClustersClient` to create a new Azure Data Explorer cluster. Wait for the process to complete before inspecting the results.
 
 ```go
 func createCluster(sub, name, location, rgName string) {
