@@ -1371,6 +1371,8 @@
       href: ./kusto/query/re2.md
     - name: SQL to Kusto cheat sheet
       href: ./kusto/query/sqlcheatsheet.md
+    - name: Splunk to Kusto cheat sheet
+      href: ./kusto/query/splunk-cheat-sheet.md
   - name: Query tools
     items:
     - name: Kusto.Explorer

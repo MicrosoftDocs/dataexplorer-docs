@@ -65,6 +65,11 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
     ![Go to resource](media/create-cluster-database-portal/notification-resource.png)
 
+> [!NOTE]
+> If the deployment fails with the error "SubscriptionNotRegistered", retry the operation. 
+> 
+> Deployment fails when the Kusto resource provider isn't registered on the subscription described in [Azure resource providers and types](/azure/azure-resource-manager/management/resource-providers-and-types). When the deployment fails, the Kusto resource provider registers itself on the subscription, and the retry can then succeed.
+
 ## Create a database
 
 You're now ready for the second step in the process: database creation.
