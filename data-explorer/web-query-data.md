@@ -55,7 +55,7 @@ Now add the test cluster you created.
 
 1. In the **Add Cluster** dialog box, enter your test cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**. For example, https://mydataexplorercluster.westus.kusto.windows.net as in the following image:
 
-    :::image type="content" source="media/web-query-data/server-uri.png" alt-text="server-uri":::
+    :::image type="content" source="media/web-query-data/server-uri.png" alt-text="Enter test cluster URL":::
     
 1. In the example below, you see the **help** cluster and a new cluster, **docscluster.westus** (full URL is `https://docscluster.westus.kusto.windows.net/`).
 
@@ -89,7 +89,7 @@ You can now run queries on both clusters (assuming you have data in your test cl
     StormEvents | sort by StartTime desc | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative | take 10
     ```
 
-1. Select the new query. Press *Shift+Alt+F* to format the query, so it looks like the following.
+1. Select the new query. Press *Shift+Alt+F* to format the query, so it looks like the following query.
 
     ![Formatted query](media/web-query-data/formatted-query.png)
 
@@ -129,17 +129,13 @@ Now that you've seen how basic queries work, let's look at how you can use the t
 
     ![Group by state](media/web-query-data/group-by.png)
 
-1. In the grid, double-click on **California** to expand and see records for that state.
+1. In the grid, double-click on **California** to expand and see records for that state. This type of grouping can be helpful when doing exploratory analysis.
 
     :::image type="content" source="media/web-query-data/result-set-03.png" alt-text="Screenshot of a query results grid. The California group is expanded, and three rows are visible, with data from events in California." border="false":::
 
-    This type of grouping can be helpful when doing exploratory analysis.
-
-1. Mouse-over the **Group** column, then select **Reset columns**.
+1. Mouse-over the **Group** column, then select **Reset columns**. This returns the grid to its original state.
 
     ![Reset columns](media/web-query-data/reset-columns.png)
-
-    This returns the grid to its original state.
 
 1. Run the following query.
 
@@ -151,15 +147,13 @@ Now that you've seen how basic queries work, let's look at how you can use the t
     | take 10
     ```
 
-1. In the results grid, select a few of the numerical cells. The table grid allows you to select multiple rows, columns, and cells and calculate aggregations on them. The Web UI currently supports the following functions for numeric values: **Average**, **Count**, **Min**, **Max**, and **Sum** as seen on the bottom right in the example below.
+1. In the results grid, select a few of the numerical cells. The table grid allows you to select multiple rows, columns, and cells and calculate aggregations on them. The Web UI currently supports the following functions for numeric values: **Average**, **Count**, **Min**, **Max**, and **Sum**.
 
-    :::image type="content" source="media/web-query-data/select-stats.png" alt-text="select-stats"::: 
+    :::image type="content" source="media/web-query-data/select-stats.png" alt-text="select functions"::: 
 
-1. On the right side of the grid, select **Columns** to see the \\tool panel\\.
+1. On the right side of the grid, select **Columns** to see the table tool panel. This panel functions similarly to the pivot table field list in Excel, enabling you to do more analysis in the grid itself.
 
-    ![Tool panel](media/web-query-data/tool-panel.png)
-
-    This panel functions similarly to the pivot table field list in Excel, enabling you to do more analysis in the grid itself.
+    ![Table tool panel](media/web-query-data/tool-panel.png)
 
 1. Select **Pivot Mode**, then drag columns as follows: **State** to **Row groups**; **DamageProperty** to **Values**; and **EventType** to **Column labels**.  
 
@@ -169,7 +163,7 @@ Now that you've seen how basic queries work, let's look at how you can use the t
 
     ![Pivot table](media/web-query-data/pivot-table.png)
 
-    Notice how Vermont and Alabama each have two events under the same category, while Texas has two events under different categories. Pivot tables enable you to quickly spot things like this; they are a great tool for quick analysis.
+    Notice how Vermont and Alabama each have two events under the same category, while Texas has two events under different categories. Pivot tables are a great tool for quick analysis since they enable you to quickly spot these differences.
 
 ## Search in the results table
 
@@ -185,11 +179,11 @@ You can look for a specific expression within a result table.
 
 1. Click on the **Search** button on the right and type in *"Wabash"*
 
-    :::image type="content" source="media/web-query-data/search1.png" alt-text="search1":::
+    :::image type="content" source="media/web-query-data/search.png" alt-text="Search in the table":::
 
 1. All mentions of your searched expression are now highlighted in the table. You can navigate between them by clicking *Enter* to go forward or *Shift+Enter* to go backward, or you can use the *up* and *down* buttons next to the search box.
 
-    :::image type="content" source="media/web-query-data/search2.png" alt-text="search2":::
+    :::image type="content" source="media/web-query-data/search-results.png" alt-text="Navigate the Search results":::
 
 ## Share queries
 
@@ -246,48 +240,53 @@ To export the query results to a CSV file, select **File** > **Export to CSV**.
 
 :::image type="content" source="media/web-query-data/export-results.png" alt-text="Export results to CSV file":::
 
-
 ## Settings
+
+In the **Settings** tab you can:
+
+* [Export environment settings](#export-environment-settings)
+* [Import environment settings](#import-environment-settings)
+* [Clear local state](#clean-up-resources)
+
+Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
+
+:::image type="content" source="media/web-query-data/settings.png" alt-text="Settings window":::
 
 ### Export and import environment settings
 
-The export and import actions have been created to help users protect their work environment and to relocate it to other browsers and devices. The export action will export all your settings, cluster connections, and query tabs to a JSON file, that can be later imported into the same or different browser or device.
+The export and import actions help you protect your work environment and relocate it to other browsers and devices. The export action will export all your settings, cluster connections, and query tabs to a JSON file that can be imported into a different browser or device.
 
 #### Export environment settings
 
-1. Open **Settings** (cogwheel icon) on the top right.
-1. Select the **Export** button.
+1. In the **Settings** > **General** window, select **Export**.
+1. The **adx-export.json** file will be downloaded to your local storage.
+1. Select **Clear local state** to revert your environment to its original state. This deletes all your cluster connections and closes open tabs.
 
-    :::image type="content" source="media/web-query-data/imexport1.png" alt-text="export":::
-
-1. An **adx-export.json** file will be downloaded to your local storage.
-1.Select **Clear local state** which will revert your environment to its original state. This action should delete all your cluster connections and close any open tabs.
+> [!NOTE]
+> **Export** only exports query related data. No dashboard data will be exported within the **adx-export.json** file.
 
 #### Import environment settings
 
-1. Open **Settings**
-1. Click **Import** and approve the warning pop-up.
+1. In the **Settings** > **General** window, select **Import**. Then in **Warning** pop-up, select **Import**.
 
-    :::image type="content" source="media/web-query-data/imexport2.png" alt-text="import":::
+    :::image type="content" source="media/web-query-data/import.png" alt-text="import":::
 
 1. Locate your **adx-export.json** file from your local storage and open it.
-1. Your previous cluster connections and open tabs should be available again.
+1. Your previous cluster connections and open tabs are now available.
 
->[!NOTE]
->The export action only exports query related data. No dashboard data will be exported within the **adx-export.json** file. The import action overrides any existing environment settings and data.
+> [!NOTE]
+> **Import** overrides any existing environment settings and data.
 
 ## Provide feedback
 
-1. In the upper right of the application, select the feedback icon ![Feedback icon](media/web-query-data/icon-feedback.png).
+1. In the upper right of the application, select the feedback icon :::image type="icon" source="media/web-query-data/icon-feedback.png" border="false":::.
 
 1. Enter your feedback, then select **Submit**.
 
 ## Clean up resources
 
 You didn't create any resources in this quickstart, but if you'd like to remove one or both clusters from the application, right-click the cluster and select **Remove connection**.
-Another option is to select **Clear local state** from the settings panel. This action will remove all cluster connections and close all open query tabs.
-
-:::image type="content" source="media/web-query-data/imexport1.png" alt-text="clear":::
+Another option is to select **Clear local state** from the **Settings** > **General** tab. This action will remove all cluster connections and close all open query tabs.
 
 ## Next steps
 
