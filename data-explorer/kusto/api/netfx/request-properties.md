@@ -162,31 +162,31 @@ public static System.Data.IDataReader QueryKusto(
 | Property <br>(*Option*) | Description | Type |
 |---|---|---|
 `deferpartialqueryfailures` <br>(*OptionDeferPartialQueryFailures*)| If true, disables reporting partial query failures as part of the result set. |Boolean
-| `materialized_view_shuffle` <br>(*OptionMaterializedViewShuffleQuery*)| A hint to use shuffle strategy for materialized views that are referenced in the query. <br> The property is an array of materialized views names and the shuffle keys to use. <br> **Example shuffle view V1 by K1, K2** <br>`dynamic([ { "Name": "V1", "Keys" : [ "K1", "K2" ] } ])` <br> **Example: shuffle view V1 by all keys**<br> `dynamic([ { "Name": "V1" } ])`  | dynamic
+| `materialized_view_shuffle` <br>(*OptionMaterializedViewShuffleQuery*)| A hint to use [shuffle](../../query/shufflequery.md) strategy for materialized views that are referenced in the query. <br> The property is an array of materialized views names and the shuffle keys to use. <br> **Example shuffle view V1 by K1, K2** <br>`dynamic([ { "Name": "V1", "Keys" : [ "K1", "K2" ] } ])` <br> **Example: shuffle view V1 by all keys**<br> `dynamic([ { "Name": "V1" } ])`  | dynamic
 |`max_memory_consumption_per_query_per_node` <br>(*OptionMaxMemoryConsumptionPerQueryPerNode*) | Overrides the default maximum amount of memory a whole query may allocate per node. | UInt64
 | `maxmemoryconsumptionperiterator` <br>(*OptionMaxMemoryConsumptionPerIterator*)| Overrides the default maximum amount of memory a query operator may allocate. | UInt64
 | `maxoutputcolumns` <br>(*OptionMaxOutputColumns*)|Overrides the default maximum number of columns a query is allowed to produce. | Long
 | `norequesttimeout` <br>(*OptionNoRequestTimeout*)|Enables setting the request timeout to its maximum value. | Boolean
 | `notruncation` <br>(*OptionNoTruncation*)|Enables suppressing truncation of the query results returned to the caller. | Boolean
 | `push_selection_through_aggregation` <br>(*OptionPushSelectionThroughAggregation*)|If true, push simple selection through aggregation | Boolean
-| `query_bin_auto_at` <br>(*QueryBinAutoAt*)|When evaluating the bin_auto() function, the start value to use. | LiteralExpression
-| `query_bin_auto_size` <br>(*QueryBinAutoSize*)|hen evaluating the bin_auto() function, the bin size value to use. | LiteralExpression
-| `query_cursor_after_default` <br>(*OptionQueryCursorAfterDefault*)|The default parameter value of the cursor_after() function when called without parameters. | string
-| `query_cursor_before_or_at_default` <br>(*OptionQueryCursorBeforeOrAtDefault*)|The default parameter value of the cursor_before_or_at() function when called without parameters. | string
-| `query_cursor_current` <br>(*OptionQueryCursorCurrent*)|Overrides the cursor value returned by the cursor_current() or current_cursor() functions. | string
+| `query_bin_auto_at` <br>(*QueryBinAutoAt*)|When evaluating the `bin_auto() function`, the start value to use. | LiteralExpression
+| `query_bin_auto_size` <br>(*QueryBinAutoSize*)|When evaluating the `bin_auto() function`, the bin size value to use. | LiteralExpression
+| `query_cursor_after_default` <br>(*OptionQueryCursorAfterDefault*)|The default parameter value of the `cursor_after()` function when called without parameters. | string
+| `query_cursor_before_or_at_default` <br>(*OptionQueryCursorBeforeOrAtDefault*)|The default parameter value of the `cursor_before_or_at()` function when called without parameters. | string
+| `query_cursor_current` <br>(*OptionQueryCursorCurrent*)|Overrides the cursor value returned by the `cursor_current()` or `current_cursor()` functions. | string
 | `query_cursor_disabled`<br> (*OptionQueryCursorDisabled*)|Disables usage of cursor functions in the context of the query. | Boolean
 | `query_cursor_scoped_tables` <br>(*OptionQueryCursorScopedTables*)|List of table names that should be scoped to cursor_after_default .. cursor_before_or_at_default (upper bound is optional). | dynamic
 | `query_datascope` <br>(*OptionQueryDataScope*)|Controls the query's data scope--whether the query applies to all data or just part of it. |`default`, `all`, or `hotcache`
 | `query_datetimescope_column`<br>(*OptionQueryDateTimeScopeColumn*)|Controls the column name for the query's datetime scope (query_datetimescope_to / query_datetimescope_from). | string
-| `query_datetimescope_from` <br>(*OptionQueryDateTimeScopeFrom*)|Controls the query's datetime scope (earliest)--used as auto-applied filter on query_datetimescope_column only (if defined). | DateTime
-| `query_datetimescope_to`<br> (*OptionQueryDateTimeScopeTo*)|Controls the query's datetime scope (latest)--used as auto-applied filter on query_datetimescope_column only (if defined). | DateTime
-| `query_distribution_nodes_span`<br>(*OptionQueryDistributionNodesSpanSize*)|f set, controls the way subquery merge behaves: the executing node will introduce an additional level in the query hierarchy for each subgroup of nodes; the size of the subgroup is set by this option. | Int
+| `query_datetimescope_from` <br>(*OptionQueryDateTimeScopeFrom*)|Controls the query's datetime scope (earliest)--used as auto-applied filter on `query_datetimescope_column only` (if defined). | DateTime
+| `query_datetimescope_to`<br> (*OptionQueryDateTimeScopeTo*)|Controls the query's datetime scope (latest)--used as auto-applied filter on `query_datetimescope_column` only (if defined). | DateTime
+| `query_distribution_nodes_span`<br>(*OptionQueryDistributionNodesSpanSize*)| If set, controls the way subquery merge behaves. The executing node will introduce an additional level in the query hierarchy for each subgroup of nodes. The size of the subgroup is set by this option. | Int
 | `query_fanout_nodes_percent` <br>(*OptionQueryFanoutNodesPercent*)|The percentage of nodes to fan out execution to. | Int
 | `query_fanout_threads_percent` <br>(*OptionQueryFanoutThreadsPercent*)|The percentage of threads to fan out execution to. | Int
-| `query_force_row_level_security` <br>(*OptionQueryForceRowLevelSecurity*)|If specified, forces Row Level Security rules, even if row_level_security policy is disabled | Boolean
+| `query_force_row_level_security` <br>(*OptionQueryForceRowLevelSecurity*)|If specified, forces [row level security](../../management/rowlevelsecuritypolicy.md) rules, even if `row_level_security` policy is disabled | Boolean
 | `query_language` <br>(*OptionQueryLanguage*)|Controls how the query text is to be interpreted. |`csl`,`kql`, or `sql`
 | `query_max_entities_in_union` <br>(*OptionMaxEntitiesToUnion*)|Overrides the default maximum number of columns a query is allowed to produce. | Long
-| `query_now`<br> (*OptionQueryNow*)|Overrides the datetime value returned by the now(0s) function. | DateTime
+| `query_now`<br> (*OptionQueryNow*)|Overrides the datetime value returned by the `now(0s)` [function](../../query/nowfunction.md). | DateTime
 | `query_parquet_in_shard_engine` <br>(*QueryParquetInShardEngine*)|Force a Parquet external_table/externaldata query to run in EngineV3 (true) or EngineV2 (false) | Boolean
 | `query_python_debug` <br>(*OptionDebugPython*)|If set, generate python debug query for the enumerated python node (default first). |Boolean or Int
 | `query_results_apply_getschema` <br>(*OptionQueryResultsApplyGetSchema*)|If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. | Boolean
@@ -195,7 +195,7 @@ public static System.Data.IDataReader QueryKusto(
 | `query_results_progressive_update_period` <br>(*OptionProgressiveProgressReportPeriod*)|Hint for Kusto as to how often to send progress frames. Only takes effect if *OptionResultsProgressiveEnabled* is set.
 | `query_take_max_records` <br>(*OptionTakeMaxRecords*)|Enables limiting query results to this number of records. | Long
 | `queryconsistency` <br>(*OptionQueryConsistency*)|Controls query consistency. | `strongconsistency`, `normalconsistency`, or `weakconsistency`
-| `request_block_row_level_security`<br> (*OptionRequestBlockRowLevelSecurity*)|If specified, blocks access to tables for which row_level_security policy is enabled | Boolean
+| `request_block_row_level_security`<br> (*OptionRequestBlockRowLevelSecurity*)|If specified, blocks access to tables for which [`row_level_security`](../../management/rowlevelsecuritypolicy.md) policy is enabled | Boolean
 | `request_callout_disabled` (*OptionRequestCalloutDisabled*)|If specified, indicates that the request can't call-out to a user-provided service. | Boolean
 | `request_description` <br>(*OptionRequestDescription*)|Arbitrary text that the author of the request wants to include as the request description. | string
 | `request_external_table_disabled` <br>(*OptionRequestExternalTableDisabled*)| If specified, indicates that the request can't invoke code in the ExternalTable. | Boolean
