@@ -24,7 +24,7 @@ The function `series_downsample_fl()` [downsamples a time series by an integer f
 
 * *t_col*: The name of the column (of the input table) containing the time axis of the series to downsample.
 * *y_col*: The name of the column (of the input table) containing the series to downsample.
-* *ds_t_col*: The name of the column to store the down sampled time axis of each series.
+* *ds_t_col*: The name of the column to store the downsampled time axis of each series.
 * *ds_y_col*: The name of the column to store the down sampled series.
 * *sampling_factor*: an integer specifying the required down sampling.
 
