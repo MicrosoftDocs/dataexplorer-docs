@@ -11,7 +11,7 @@ ms.date: 11/25/2020
 # series_downsample_fl()
 
 
-The function `series_downsample_fl()` [downsample a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)#Downsampling_by_an_integer_factor). It takes a table containing multiple time series (dynamic numerical array), and downsamples each series, output both the coarser series and its respective times array. To avoid [aliasing](https://en.wikipedia.org/wiki/Aliasing), the function applies a simple [low pass filter](https://en.wikipedia.org/wiki/Low-pass_filter) on each series prior to subsampling.
+The function `series_downsample_fl()` [downsamples a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)#Downsampling_by_an_integer_factor). This function takes a table containing multiple time series (dynamic numerical array), and downsamples each series. The output contains both the coarser series and its respective times array. To avoid [aliasing](https://en.wikipedia.org/wiki/Aliasing), the function applies a simple [low pass filter](https://en.wikipedia.org/wiki/Low-pass_filter) on each series before subsampling.
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
