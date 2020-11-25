@@ -26,7 +26,7 @@ When a request is made from Kusto through the .NET SDK, provide:
 The client request properties have many uses. 
 * Makes debugging easier. For example, the properties may provide correlation strings that are used to track client/service interactions. 
 * Affects what limits and policies get applied to the request. 
-* [query parameters](../../query/queryparametersstatement.md) let client applications parameterize Kusto queries based on user input. FOr more information, see [list of supported properties](#list-of-clientrequestproperties).
+* [query parameters](../../query/queryparametersstatement.md) let client applications parameterize Kusto queries based on user input. For more information, see [list of supported properties](#list-of-clientrequestproperties).
 
 The `Kusto.Data.Common.ClientRequestProperties` class holds three kinds of data.
 
@@ -93,12 +93,9 @@ in the HTTP header, and can also be set if HTTP GET is used.
 
 ## Providing values for query parameterization as request properties
 
-Kusto queries can refer to query parameters by using a specialized [declare query-parameters](../../query/queryparametersstatement.md)
-statement in the query text. This statement lets client applications parameterize Kusto queries based on user input, 
-in a secure manner, and without fear of injection attacks.
+Kusto queries can refer to query parameters by using a specialized [declare query-parameters](../../query/queryparametersstatement.md) statement in the query text. This statement lets client applications parameterize Kusto queries based on user input, in a secure manner, and without fear of injection attacks.
 
-Programmatically, set properties values by using the `ClearParameter`, `SetParameter`, and `HasParameter`
-methods.
+Programmatically, set properties values by using the `ClearParameter`, `SetParameter`, and `HasParameter` methods.
 
 In the REST API, query parameters appear in the same JSON-encoded string as the other request properties.
 
@@ -165,7 +162,7 @@ public static System.Data.IDataReader QueryKusto(
 | Property <br>(*Option*) | Description | Type |
 |---|---|---|
 `deferpartialqueryfailures` <br>(*OptionDeferPartialQueryFailures*)| If true, disables reporting partial query failures as part of the result set. |Boolean
-| `materialized_view_shuffle` <br>(*OptionMaterializedViewShuffleQuery*)| An hint to use shuffle strategy for materialized views that are referenced in the query. <br> The property is an array of materialized views names and the shuffle keys to use. <br> **Example shuffle view V1 by K1, K2** <br>`dynamic([ { "Name": "V1", "Keys" : [ "K1", "K2" ] } ])` <br> **Example: shuffle view V1 by all keys**<br> `dynamic([ { "Name": "V1" } ])`  | dynamic
+| `materialized_view_shuffle` <br>(*OptionMaterializedViewShuffleQuery*)| A hint to use shuffle strategy for materialized views that are referenced in the query. <br> The property is an array of materialized views names and the shuffle keys to use. <br> **Example shuffle view V1 by K1, K2** <br>`dynamic([ { "Name": "V1", "Keys" : [ "K1", "K2" ] } ])` <br> **Example: shuffle view V1 by all keys**<br> `dynamic([ { "Name": "V1" } ])`  | dynamic
 |`max_memory_consumption_per_query_per_node` <br>(*OptionMaxMemoryConsumptionPerQueryPerNode*) | Overrides the default maximum amount of memory a whole query may allocate per node. | UInt64
 | `maxmemoryconsumptionperiterator` <br>(*OptionMaxMemoryConsumptionPerIterator*)| Overrides the default maximum amount of memory a query operator may allocate. | UInt64
 | `maxoutputcolumns` <br>(*OptionMaxOutputColumns*)|Overrides the default maximum number of columns a query is allowed to produce. | Long
@@ -174,18 +171,18 @@ public static System.Data.IDataReader QueryKusto(
 | `push_selection_through_aggregation` <br>(*OptionPushSelectionThroughAggregation*)|If true, push simple selection through aggregation | Boolean
 | `query_bin_auto_at` <br>(*QueryBinAutoAt*)|When evaluating the bin_auto() function, the start value to use. | LiteralExpression
 | `query_bin_auto_size` <br>(*QueryBinAutoSize*)|hen evaluating the bin_auto() function, the bin size value to use. | LiteralExpression
-| `query_cursor_after_default` <br>(*OptionQueryCursorAfterDefault*)|he default parameter value of the cursor_after() function when called without parameters. | string
+| `query_cursor_after_default` <br>(*OptionQueryCursorAfterDefault*)|The default parameter value of the cursor_after() function when called without parameters. | string
 | `query_cursor_before_or_at_default` <br>(*OptionQueryCursorBeforeOrAtDefault*)|The default parameter value of the cursor_before_or_at() function when called without parameters. | string
 | `query_cursor_current` <br>(*OptionQueryCursorCurrent*)|Overrides the cursor value returned by the cursor_current() or current_cursor() functions. | string
 | `query_cursor_disabled`<br> (*OptionQueryCursorDisabled*)|Disables usage of cursor functions in the context of the query. | Boolean
 | `query_cursor_scoped_tables` <br>(*OptionQueryCursorScopedTables*)|List of table names that should be scoped to cursor_after_default .. cursor_before_or_at_default (upper bound is optional). | dynamic
-| `query_datascope` <br>(*OptionQueryDataScope*)|Controls the query's datascope -- whether the query applies to all data or just part of it. |`default`, `all`, or `hotcache`
+| `query_datascope` <br>(*OptionQueryDataScope*)|Controls the query's data scope--whether the query applies to all data or just part of it. |`default`, `all`, or `hotcache`
 | `query_datetimescope_column`<br>(*OptionQueryDateTimeScopeColumn*)|Controls the column name for the query's datetime scope (query_datetimescope_to / query_datetimescope_from). | string
-| `query_datetimescope_from` <br>(*OptionQueryDateTimeScopeFrom*)|Controls the query's datetime scope (earliest) -- used as auto-applied filter on query_datetimescope_column only (if defined). | DateTime
-| `query_datetimescope_to`<br> (*OptionQueryDateTimeScopeTo*)|Controls the query's datetime scope (latest) -- used as auto-applied filter on query_datetimescope_column only (if defined). | DateTime
-| `query_distribution_nodes_span`<br>(*OptionQueryDistributionNodesSpanSize*)|f set, controls the way sub-query merge behaves|the executing node will introduce an additional level in the query hierarchy for each sub-group of nodes; the size of the sub-group is set by this option. | Int
-| `query_fanout_nodes_percent` <br>(*OptionQueryFanoutNodesPercent*)|The percentage of nodes to fanout execution to. | Int
-| `query_fanout_threads_percent` <br>(*OptionQueryFanoutThreadsPercent*)|The percentage of threads to fanout execution to. | Int
+| `query_datetimescope_from` <br>(*OptionQueryDateTimeScopeFrom*)|Controls the query's datetime scope (earliest)--used as auto-applied filter on query_datetimescope_column only (if defined). | DateTime
+| `query_datetimescope_to`<br> (*OptionQueryDateTimeScopeTo*)|Controls the query's datetime scope (latest)--used as auto-applied filter on query_datetimescope_column only (if defined). | DateTime
+| `query_distribution_nodes_span`<br>(*OptionQueryDistributionNodesSpanSize*)|f set, controls the way subquery merge behaves: the executing node will introduce an additional level in the query hierarchy for each subgroup of nodes; the size of the subgroup is set by this option. | Int
+| `query_fanout_nodes_percent` <br>(*OptionQueryFanoutNodesPercent*)|The percentage of nodes to fan out execution to. | Int
+| `query_fanout_threads_percent` <br>(*OptionQueryFanoutThreadsPercent*)|The percentage of threads to fan out execution to. | Int
 | `query_force_row_level_security` <br>(*OptionQueryForceRowLevelSecurity*)|If specified, forces Row Level Security rules, even if row_level_security policy is disabled | Boolean
 | `query_language` <br>(*OptionQueryLanguage*)|Controls how the query text is to be interpreted. |`csl`,`kql`, or `sql`
 | `query_max_entities_in_union` <br>(*OptionMaxEntitiesToUnion*)|Overrides the default maximum number of columns a query is allowed to produce. | Long
@@ -193,21 +190,21 @@ public static System.Data.IDataReader QueryKusto(
 | `query_parquet_in_shard_engine` <br>(*QueryParquetInShardEngine*)|Force a Parquet external_table/externaldata query to run in EngineV3 (true) or EngineV2 (false) | Boolean
 | `query_python_debug` <br>(*OptionDebugPython*)|If set, generate python debug query for the enumerated python node (default first). |Boolean or Int
 | `query_results_apply_getschema` <br>(*OptionQueryResultsApplyGetSchema*)|If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. | Boolean
-| `query_results_cache_max_age` <br>(*OptionQueryResultsCacheMaxAge*)|If positive, controls the maximum age of the cached query results which Kusto is allowed to return | TimeSpan
+| `query_results_cache_max_age` <br>(*OptionQueryResultsCacheMaxAge*)|If positive, controls the maximum age of the cached query results that Kusto is allowed to return | TimeSpan
 | `query_results_progressive_row_count` <br>(*OptionProgressiveQueryMinRowCountPerUpdate*)|Hint for Kusto as to how many records to send in each update. Only takes effect if *OptionResultsProgressiveEnabled* is set.
 | `query_results_progressive_update_period` <br>(*OptionProgressiveProgressReportPeriod*)|Hint for Kusto as to how often to send progress frames. Only takes effect if *OptionResultsProgressiveEnabled* is set.
 | `query_take_max_records` <br>(*OptionTakeMaxRecords*)|Enables limiting query results to this number of records. | Long
 | `queryconsistency` <br>(*OptionQueryConsistency*)|Controls query consistency. | `strongconsistency`, `normalconsistency`, or `weakconsistency`
 | `request_block_row_level_security`<br> (*OptionRequestBlockRowLevelSecurity*)|If specified, blocks access to tables for which row_level_security policy is enabled | Boolean
-| `request_callout_disabled` (*OptionRequestCalloutDisabled*)|If specified, indicates that the request cannot call-out to a user-provided service. | Boolean
+| `request_callout_disabled` (*OptionRequestCalloutDisabled*)|If specified, indicates that the request can't call-out to a user-provided service. | Boolean
 | `request_description` <br>(*OptionRequestDescription*)|Arbitrary text that the author of the request wants to include as the request description. | string
-| `request_external_table_disabled` <br>(*OptionRequestExternalTableDisabled*)| If specified, indicates that the request cannot invoke code in the ExternalTable. | Boolean
-| `request_impersonation_disabled` <br>(*OptionDoNotImpersonate*)|If specified, indicates that the service should not impersonate the caller's identity. | Boolean
-| `request_readonly` <br>(*OptionRequestReadOnly*)|If specified, indicates that the request must not be able to write anything. | Boolean
-| `request_remote_entities_disabled` <br>(*OptionRequestRemoteEntitiesDisabled*)|If specified, indicates that the request cannot access remote databases and clusters. | Boolean
-| `request_sandboxed_execution_disabled`<br> (*OptionRequestSandboxedExecutionDisabled*)|If specified, indicates that the request cannot invoke code in the sandbox. | Boolean
+| `request_external_table_disabled` <br>(*OptionRequestExternalTableDisabled*)| If specified, indicates that the request can't invoke code in the ExternalTable. | Boolean
+| `request_impersonation_disabled` <br>(*OptionDoNotImpersonate*)|If specified, indicates that the service shouldn't impersonate the caller's identity. | Boolean
+| `request_readonly` <br>(*OptionRequestReadOnly*)| If specified, indicates that the request can't write anything. | Boolean
+| `request_remote_entities_disabled` <br>(*OptionRequestRemoteEntitiesDisabled*)|If specified, indicates that the request can't access remote databases and clusters. | Boolean
+| `request_sandboxed_execution_disabled`<br> (*OptionRequestSandboxedExecutionDisabled*)|If specified, indicates that the request can't invoke code in the sandbox. | Boolean
 | `results_progressive_enabled` <br>(*OptionResultsProgressiveEnabled*)|If set, enables the progressive query stream
 | `servertimeout` <br>(*OptionServerTimeout*)|Overrides the default request timeout. | TimeSpan
 | `truncationmaxrecords` <br>(*OptionTruncationMaxRecords*)|Overrides the default maximum number of records a query is allowed to return to the caller (truncation). | Long
 | `truncationmaxsize`<br> (*OptionTruncationMaxSize*)|Overrides the default maximum data size a query is allowed to return to the caller (truncation). | Long
-| `validate_permissions` <br>(*OptionValidatePermissions*)|Validates user's permissions to perform the query and doesn't run the query itself. | Boolean
+| `validate_permissions` <br>(*OptionValidatePermissions*)|Validates user's permissions to run the query and doesn't run the query itself. | Boolean
