@@ -1,0 +1,108 @@
+---
+title: series_downsample_fl() - Azure Data Explorer
+description: This article describes the series_downsample_fl() user-defined function in Azure Data Explorer.
+author: orspod
+ms.author: orspodek
+ms.reviewer: adieldar
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 11/25/2020
+---
+# series_downsample_fl()
+
+
+The function `series_downsample_fl()` [downsample a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)#Downsampling_by_an_integer_factor). It takes a table containing multiple time series (dynamic numerical array), and downsamples each series, output both the coarser series and its respective times array. To avoid [aliasing](https://en.wikipedia.org/wiki/Aliasing), the function applies a simple [low pass filter](https://en.wikipedia.org/wiki/Low-pass_filter) on each series prior to subsampling.
+
+> [!NOTE]
+> This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+
+## Syntax
+
+`T | invoke series_downsample_fl(`*t_col*`,` *y_col*`,` *ds_t_col*`,` *ds_y_col*`,` *sampling_factor*`)`
+
+## Arguments
+
+* *t_col*: The name of the column (of the input table) containing the time axis of the series to downsample.
+* *y_col*: The name of the column (of the input table) containing the series to downsample.
+* *ds_t_col*: The name of the column to store the down sampled time axis of each series.
+* *ds_y_col*: The name of the column to store the down sampled series.
+* *sampling_factor*: an integer specifying the required down sampling.
+
+## Usage
+
+`series_downsample_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+demo_make_series1
+| make-series num=count() on TimeStamp step 1h by OsVer
+| render timechart with(xcolumn=TimeStamp, ycolumns=num)
+```
+
+The original time series (before downsampling):
+:::image type="content" source="images/series-downsample-fl/original-time-series.png" alt-text="Graph showing the original time series, before downsampling" border="false":::
+
+# [Ad hoc](#tab/adhoc)
+
+For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+let series_downsample_fl=(tbl:(*), t_col:string, y_col:string, ds_t_col:string, ds_y_col:string, sampling_factor:int)
+{
+    tbl
+    | extend _t_ = column_ifexists(t_col, dynamic(0)), _y_ = column_ifexists(y_col, dynamic(0))
+    | extend _y_ = series_fir(_y_, repeat(1, sampling_factor), true, true)    //  apply a simple low pass filter before sub-sampling
+    | mv-apply _t_ to typeof(DateTime), _y_ to typeof(double) on
+    (extend rid=row_number()
+    | where rid % sampling_factor == (sampling_factor/2+1)                    //  sub-sampling
+    | summarize _t_ = make_list(_t_), _y_ = make_list(_y_))
+    | extend cols = pack(ds_t_col, _t_, ds_y_col, _y_)
+    | project-away _t_, _y_
+    | evaluate bag_unpack(cols)
+}
+;
+demo_make_series1
+| make-series num=count() on TimeStamp step 1h by OsVer
+| invoke series_downsample_fl('TimeStamp', 'num', 'coarse_TimeStamp', 'coarse_num', 4)
+| render timechart with(xcolumn=coarse_TimeStamp, ycolumns=coarse_num)
+```
+
+# [Persistent](#tab/persistent)
+
+For persistent usage, use [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+
+### One-time installation
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+.create-or-alter function with (folder = "Packages\\Series", docstring = "Downsampling a series by an integer factor")
+series_downsample_fl(tbl:(*), t_col:string, y_col:string, ds_t_col:string, ds_y_col:string, sampling_factor:int)
+{
+    tbl
+    | extend _t_ = column_ifexists(t_col, dynamic(0)), _y_ = column_ifexists(y_col, dynamic(0))
+    | extend _y_ = series_fir(_y_, repeat(1, sampling_factor), true, true)    //  apply a simple low pass filter before sub-sampling
+    | mv-apply _t_ to typeof(DateTime), _y_ to typeof(double) on
+    (extend rid=row_number()
+    | where rid % sampling_factor == (sampling_factor/2+1)                    //  sub-sampling
+    | summarize _t_ = make_list(_t_), _y_ = make_list(_y_))
+    | extend cols = pack(ds_t_col, _t_, ds_y_col, _y_)
+    | project-away _t_, _y_
+    | evaluate bag_unpack(cols)
+}
+```
+
+### Usage
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+demo_make_series1
+| make-series num=count() on TimeStamp step 1h by OsVer
+| invoke series_downsample_fl('TimeStamp', 'num', 'coarse_TimeStamp', 'coarse_num', 4)
+| render timechart with(xcolumn=coarse_TimeStamp, ycolumns=coarse_num)
+```
+
+---
+
+The time series downsampled by 4:
+:::image type="content" source="images/series-downsample-fl/downampling-demo.png" alt-text="Graph showing downsampling of a time series" border="false":::
