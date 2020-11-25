@@ -32,16 +32,6 @@ The function `series_downsample_fl()` [downsamples a time series by an integer f
 
 `series_downsample_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
-demo_make_series1
-| make-series num=count() on TimeStamp step 1h by OsVer
-| render timechart with(xcolumn=TimeStamp, ycolumns=num)
-```
-
-The original time series (before downsampling):
-:::image type="content" source="images/series-downsample-fl/original-time-series.png" alt-text="Graph showing the original time series, before downsampling" border="false":::
-
 # [Ad hoc](#tab/adhoc)
 
 For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
@@ -106,3 +96,14 @@ demo_make_series1
 
 The time series downsampled by 4:
 :::image type="content" source="images/series-downsample-fl/downsampling-demo.png" alt-text="Graph showing downsampling of a time series" border="false":::
+
+For reference, here is the original time series (before downsampling):
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+demo_make_series1
+| make-series num=count() on TimeStamp step 1h by OsVer
+| render timechart with(xcolumn=TimeStamp, ycolumns=num)
+```
+
+:::image type="content" source="images/series-downsample-fl/original-time-series.png" alt-text="Graph showing the original time series, before downsampling" border="false":::
+
