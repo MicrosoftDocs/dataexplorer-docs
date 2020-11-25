@@ -19,7 +19,7 @@ The Azure Data Explorer supports cross service queries between Azure Data Explor
 
 The Azure Data Explorer cross service queries flow:
 
-![Azure Data Explorer proxy flow](media/adx-proxy/adx-proxy-workflow.png)
+![Azure Data Explorer proxy flow](media/query-monitor-data/query-monitor-workflow.png)
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ The Azure Data Explorer cross service queries flow:
 
 1. Verify your Azure Data Explorer native cluster (such as *help* cluster) appears on the left menu before you connect to your Log Analytics or Application Insights cluster.
 
-    ![Azure Data Explorer native cluster](media/adx-proxy/web-ui-help-cluster.png)
+    ![Azure Data Explorer native cluster](media/query-monitor-data/web-ui-help-cluster.png)
 
 1. In the Azure Data Explorer UI (https://dataexplorer.azure.com/clusters), select **Add Cluster**.
 
@@ -43,14 +43,14 @@ The Azure Data Explorer cross service queries flow:
 
     * Select **Add**.
 
-    ![Add cluster](media/adx-proxy/add-cluster.png)
+    ![Add cluster](media/query-monitor-data/add-cluster.png)
 
     >[!NOTE]
     >If you add a connection to more than one Log Analytics/Application insights workspace, give each a different name. Otherwise they'll all have the same name in the left pane.
 
 1. After the connection is established, your Log Analytics or Application Insights workspace will appear in the left pane with your native Azure Data Explorer cluster.
 
-    ![Log Analytics and Azure Data Explorer clusters](media/adx-proxy/la-adx-clusters.png)
+    ![Log Analytics and Azure Data Explorer clusters](media/query-monitor-data/la-adx-clusters.png)
 
 > [!NOTE]
 > The number of Azure Monitor workspaces that can be mapped is limited to 100.
@@ -76,7 +76,7 @@ Run queries on your Log Analytics or Application Insights workspaces. Verify tha
 Perf | take 10 // Demonstrate cross service query on the Log Analytics workspace
 ```
 
-![Query Log Analytics workspace](media/adx-proxy/query-la.png)
+![Query Log Analytics workspace](media/query-monitor-data/query-la.png)
 
 ### Cross query of your Log Analytics or Application Insights and the Azure Data Explorer native cluster
 
@@ -92,7 +92,7 @@ let CL1 = 'https://ade.loganalytics.io/subscriptions/<subscription-id>/resourceg
 union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 ```
 
-   [ ![Cross service query from the Azure Data Explorer](media/adx-proxy/cross-query-adx-proxy.png)](media/adx-proxy/cross-query-adx-proxy.png#lightbox)
+   [ ![Cross service query from the Azure Data Explorer](media/query-monitor-data/cross-query.png)](media/query-monitor-data/cross-query.png#lightbox)
 
 Using the [`join` operator](kusto/query/joinoperator.md), instead of union, may require a [`hint`](kusto/query/joinoperator.md#join-hints) to run it on an Azure Data Explorer native cluster.
 
@@ -124,7 +124,7 @@ The following commands are supported with the cross service query:
 The following image depicts an example of querying a tabular function from the Azure Data Explorer Web UI.
 To use the function, run the name in the Query window.
 
-  [ ![Query a tabular function from Azure Data Explorer Web UI](media/adx-proxy/function-query-adx-proxy.png)](media/adx-proxy/function-query-adx-proxy.png#lightbox)
+  [ ![Query a tabular function from Azure Data Explorer Web UI](media/query-monitor-data/function-query.png)](media/query-monitor-data/function-query.png#lightbox)
 
 ## Additional syntax examples
 
