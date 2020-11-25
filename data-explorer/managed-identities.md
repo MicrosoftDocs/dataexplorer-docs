@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 11/25/2020
 ---
 
 # Configure managed identities for your Azure Data Explorer cluster
@@ -18,7 +18,7 @@ A [managed identity from Azure Active Directory](/azure/active-directory/managed
 
 ## Add a system-assigned identity
 
-Assign a system-assigned identity that is tied to your cluster, and is deleted if your cluster is deleted. A cluster can only have one system-assigned identity. Creating a cluster with a system-assigned identity requires an additional property to be set on the cluster. The system-assigned identity is added using C#, Resource Manager template, or the Azure portal as detailed below.
+Assign a system-assigned identity that is tied to your cluster, and is deleted if your cluster is deleted. A cluster can only have one system-assigned identity. Creating a cluster with a system-assigned identity requires an additional property to be set on the cluster. Add the system-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
 
 # [Azure portal](#tab/portal)
 
@@ -30,7 +30,7 @@ Assign a system-assigned identity that is tied to your cluster, and is deleted i
 
 1. [Create an Azure Data Explorer cluster](create-cluster-database-portal.md#create-a-cluster) 
 1. In the **Security** tab > **System assigned identity**, select **On**. To remove the system assigned identity, select **Off**.
-1. Select **Next : Tags>** or **Review + create** to create the cluster.
+1. Select **Next : Tags >** or **Review + create** to create the cluster.
 
     ![Add system assigned identity to new cluster](media/managed-identities/system-assigned-identity-new-cluster.png)
 
@@ -46,9 +46,8 @@ Assign a system-assigned identity that is tied to your cluster, and is deleted i
     ![Add system assigned identity](media/managed-identities/turn-system-assigned-identity-on.png)
 
 1. After a few minutes, the screen shows:
-
-* **Object ID** - used for customer-managed keys
-* **Role assignments** - click link to assign relevant roles
+    * **Object ID** - Used for customer-managed keys
+    * **Permissions** - Select relevant role assignments
 
     ![System assigned identity on](media/managed-identities/system-assigned-identity-on.png)
 
@@ -125,9 +124,6 @@ Adding the system-assigned type tells Azure to create and manage the identity fo
 }
 ```
 
-> [!NOTE]
-> A cluster can have both system-assigned and user-assigned identities at the same time. In this case, the `type` property would be `SystemAssigned,UserAssigned`
-
 For example:
 
 ```json
@@ -141,6 +137,9 @@ For example:
     }
 }
 ```
+
+> [!NOTE]
+> A cluster can have both system-assigned and user-assigned identities at the same time. The `type` property would be `SystemAssigned,UserAssigned`
 
 When the cluster is created, it has the following additional properties:
 
@@ -156,13 +155,13 @@ When the cluster is created, it has the following additional properties:
 
 ---
 
-## Disable a system-assigned identity
+## Remove a system-assigned identity
 
-Removing a system-assigned identity will also delete it from Azure AD. System-assigned identities are also automatically removed from Azure AD when the cluster resource is deleted. A system-assigned identity can be removed by disabling the feature.  The system-assigned identity is removed using C#, Resource Manager template, or the Azure portal as detailed below.
+Removing a system-assigned identity will also delete it from Azure AD. System-assigned identities are also automatically removed from Azure AD when the cluster resource is deleted. A system-assigned identity can be removed by disabling the feature. Remove the system-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
 
 # [Azure portal](#tab/portal)
 
-### Disable a system-assigned identity using the Azure portal
+### Remove a system-assigned identity using the Azure portal
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. Select **Settings** > **Identity** in left pane of portal.
@@ -198,29 +197,24 @@ Run the following to remove the system-assigned identity:
 ```
 
 > [!NOTE]
-> If the cluster had both system-assigned and user-assigned identities at the same time, the `type` property would be `UserAssigned`
+> If the cluster had both system-assigned and user-assigned identities at the same time, the `type` property would be `SystemAssigned,UserAssigned`
 
 ---
 
 ## Add a user-assigned identity
 
-Assign a user-assigned managed identity to your cluster. A cluster can have more than one user-assigned identity. Creating a cluster with a user-assigned identity requires an additional property to be set on the cluster. The user-assigned identity can be added using C#, Resource Manager template, or the Azure portal as detailed below.
+Assign a user-assigned managed identity to your cluster. A cluster can have more than one user-assigned identity. Creating a cluster with a user-assigned identity requires an additional property to be set on the cluster. Add the user-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
 
 # [Azure portal](#tab/portal)
 
 ### Add a user-assigned identity using the Azure portal
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-
-#### Existing Azure Data Explorer cluster
-
-First, you'll need to create a user-assigned identity resource.
-
-1. Create a user-assigned managed identity resource according to [these instructions](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity).
+1. [Create a user-assigned managed identity resource](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity).
 1. Open an existing Azure Data Explorer cluster.
 1. Select **Settings** > **Identity** in left pane of portal.
-1. Within the **User assigned** tab. Click **Add**.
-1. Search for the identity you created earlier and select it. Click **Add**.
+1. In the **User assigned** tab, select **Add**.
+1. Search for the identity you created earlier and select it. Select **Add**.
 
     ![Add user assigned identity](media/managed-identities/user-assigned-identity-select.png)
 
@@ -347,20 +341,20 @@ The `PrincipalId` is a unique identifier for the identity that's used for Azure 
 
 ## Remove a user-assigned managed identity from a cluster
 
-The user-assigned identity is removed using C#, Resource Manager template, or the Azure portal as detailed below.
+Remove the user-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
 
 # [Azure portal](#tab/portal)
 
-### Remove a user-assigned managed identity from a cluster using the Azure portal
+### Remove a user-assigned managed identity using the Azure portal
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. Select **Settings** > **Identity** in left pane of portal.
 1. Select the **User assigned** tab.
-1. Search for the identity you created earlier and select it. Click **Remove**.
-
-    1. In the pop-up window, select **Yes** to remove the user-assigned identity. The **Identity** pane reverts to same condition as before the addition of the user-assigned identity.
+1. Search for the identity you created earlier and select it. Select **Remove**.
 
     ![Remove user assigned identity](media/managed-identities/user-assigned-identity-remove.png)
+
+1. In the pop-up window, select **Yes** to remove the user-assigned identity. The **Identity** pane reverts to same condition as before the addition of the user-assigned identity.
 
 # [C#](#tab/c-sharp)
 
@@ -393,10 +387,9 @@ Run the following to remove the user-assigned identity:
 ```
 
 > [!NOTE]
-> To remove identities set their values to null, all other existing identities will not be affected,
-> To remove all user-assigned identities the `type` property would be `None`,
-> If the cluster had both system-assigned and user-assigned identities at the same time,
-> the `type` property would be `SystemAssigned,UserAssigned` with the identities to remove or `SystemAssigned` to remove all user-assigned identities
+> * To remove identities, set their values to null. All other existing identities won't be affected.
+> * To remove all user-assigned identities the `type` property would be `None`,
+> * If the cluster had both system-assigned and user-assigned identities at the same time, the `type` property would be `SystemAssigned,UserAssigned` with the identities to remove, or `SystemAssigned` to remove all user-assigned identities.
 
 ---
 
