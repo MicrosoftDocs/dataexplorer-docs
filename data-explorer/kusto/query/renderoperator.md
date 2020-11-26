@@ -43,7 +43,6 @@ Where:
 | `card`             | First result record is treated as set of scalar values and shows as a card. |
 | `columnchart`      | Like `barchart` with vertical strips instead of horizontal strips.|
 | `ladderchart`      | Last two columns are the x-axis, other columns are y-axis.|
-| `linechart`        | Line graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |
 | `piechart`         | First column is color-axis, second column is numeric. |
 | `pivotchart`       | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types. |
 | `scatterchart`     | Points graph. First column is x-axis and should be a numeric column. Other numeric columns are y-axes. |
