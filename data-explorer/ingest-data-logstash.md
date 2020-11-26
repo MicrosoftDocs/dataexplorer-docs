@@ -16,7 +16,7 @@ ms.date: 11/26/2020
 [Logstash](https://www.elastic.co/products/logstash) is an open source, server-side data processing pipeline that ingests data from many sources simultaneously, transforms the data, and then sends the data to your favorite "stash". In this article, you'll send that data to Azure Data Explorer, which is a fast and highly scalable data exploration service for log and telemetry data. You'll initially create a table and data mapping in a test cluster, and then direct Logstash to send data into the table and validate the results.
 
 > [!NOTE]
-> This connector currently supports only json data mapping.
+> This connector currently supports only json data format.
 
 ## Prerequisites
 
