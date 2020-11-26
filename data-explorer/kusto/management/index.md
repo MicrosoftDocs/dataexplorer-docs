@@ -90,7 +90,7 @@ name `MyTable` in the database in context:
 ```kusto
 .set MyTable <|
 let text="Hello, World!";
-print str=Text
+print str=text
 ```
 
 
