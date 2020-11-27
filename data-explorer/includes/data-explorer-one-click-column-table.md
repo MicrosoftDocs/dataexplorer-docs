@@ -12,5 +12,6 @@ ms.author: orspodek
 |Rename column    |Change the column name |
 |New column       |Add a new column. For tabular formats, each column can be ingested into one column on ADX. A new column can be created from a different JSON level.|
 |Delete column    |Delete the selected column|
+| Update column   | Update the column mapping |
 |Sort ascending   |Sort the table by the selected column in ascending order (existing columns only) |
 |Sort descending  |Sort the table by the selected column in descending order (existing columns only) |
