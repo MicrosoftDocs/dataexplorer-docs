@@ -1787,18 +1787,24 @@
         - name: Kusto.Ingest overview
           href: ./kusto/api/netfx/about-kusto-ingest.md
         - name: Permissions
+          displayName: Kusto.Ingest 
           href: ./kusto/api/netfx/kusto-ingest-client-permissions.md
         - name: Client reference
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-reference.md
         - name: Errors and exceptions
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-errors.md
         - name: Operation status
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-status.md
         - name: Kusto.Ingest best practices
           href: ./kusto/api/netfx/kusto-ingest-best-practices.md
         - name: Code samples
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-examples.md
         - name: HowTo Data Ingestion with REST API
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-rest.md
     - name: Python SDK
       items:

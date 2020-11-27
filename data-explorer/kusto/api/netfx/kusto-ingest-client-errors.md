@@ -63,40 +63,7 @@ In the `IngestFromDataReader` and `IngestFromDataReaderAsync` methods, the `reta
 
 To help handle ingestion failures programmatically, failure information is enriched with a numeric error code (`IngestionErrorCode enumeration`).
 
-|ErrorCode                                      |Reason                                                        |
-|-----------------------------------------------|--------------------------------------------------------------|
-|Unknown                                        | Unknown error occurred|
-|Stream_LowMemoryCondition                      | Operation ran out of memory|
-|Stream_WrongNumberOfFields                     | CSV document has inconsistent number of fields|
-|Stream_InputStreamTooLarge                     | The document submitted for ingestion has exceeded the allowed size|
-|Stream_NoDataToIngest                          | Found no data streams to ingest|
-|Stream_DynamicPropertyBagTooLarge              | One of the dynamic columns in the ingested data contains too many unique properties|
-|Download_SourceNotFound                        | Failed to download source from Azure storage - source not found|
-|Download_AccessConditionNotSatisfied           | Failed to download source from Azure storage - Access denied|
-|Download_Forbidden                             | Failed to download source from Azure storage - Access not permitted|
-|Download_AccountNotFound                       | Failed to download source from Azure storage - Account not found|
-|Download_BadRequest                            | Failed to download source from Azure storage - Bad request|
-|Download_NotTransient                          | Failed to download source from Azure storage - Not transient error|
-|Download_UnknownError                          | Failed to download source from Azure storage - Unknown error|
-|UpdatePolicy_QuerySchemaDoesNotMatchTableSchema| Failed to invoke update policy. Query schema doesn't match table schema|
-|UpdatePolicy_FailedDescendantTransaction       | Failed to invoke update policy. Failed descendant transactional update policy|
-|UpdatePolicy_IngestionError                    | Failed to invoke update policy. Ingestion error occurred|
-|UpdatePolicy_UnknownError                      | Failed to invoke update policy. Unknown error occurred|
-|BadRequest_MissingJsonMappingtFailure          | JSON pattern didn't ingest with the jsonMapping parameter|
-|BadRequest_InvalidBlob                         | Engine failed to open and read non-zip blob|
-|BadRequest_EmptyBlob                           | Empty blob|
-|BadRequest_EmptyArchive                        | The zip file doesn’t contain any archived elements|
-|BadRequest_EmptyBlobUri                        | The specified blob URI is empty|
-|BadRequest_DatabaseNotExist                    | Database doesn't exist|
-|BadRequest_TableNotExist                       | Table doesn't exist|
-|BadRequest_InvalidKustoIdentityToken           | Invalid Kusto identity token|
-|BadRequest_UriMissingSas                       | Blob path without SAS from unknown blob storage|
-|BadRequest_FileTooLarge                        | Trying to ingest too large file|
-|BadRequest_NoValidResponseFromEngine           | No valid reply from ingest command|
-|BadRequest_TableAccessDenied                   | Access to table is denied|
-|BadRequest_MessageExhausted                    | Message is exhausted|
-|General_BadRequest                             | General bad request. May hint at ingestion to non-existent Database/Table|
-|General_InternalServerError                    | Internal server error occurred|
+For a list of ingestion error codes, see [Error codes in Azure Data Explorer](../../../error-codes.md#ingestion-error-codes).
 
 ## Detailed exceptions reference
 
