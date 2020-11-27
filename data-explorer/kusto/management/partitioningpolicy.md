@@ -77,11 +77,11 @@ The partition function used is [bin_at()](../query/binatfunction.md) and isn't c
 
 #### Partition properties
 
-|Property | Description | Recommended value |
-|---|---|---|---|
-| `RangeSize` | A `timespan` scalar constant that indicates the size of each datetime partition. | Start with the value `1.00:00:00` (one day). Don't set a shorter value, because it may result in the table having a large number of small extents that can't be merged.
-| `Reference` | A `datetime` scalar constant that indicates a fixed point in time, according to which datetime partitions are aligned. | Start with `1970-01-01 00:00:00`. If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`. |
-| `OverrideCreationTime` | A `bool` indicating whether or not the result extent's minimum and maximum creation times should be overridden by the range of the values in the partition key. | Defaults to `false`. Set to `true` if data isn't ingested in-order of time of arrival (e.g. a single source file may include datetime values that are very distant).
+|Property                | Description                                                                                                                                                     | Recommended value                                                                                                                                                       |
+|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `RangeSize`            | A `timespan` scalar constant that indicates the size of each datetime partition.                                                                                | Start with the value `1.00:00:00` (one day). Don't set a shorter value, because it may result in the table having a large number of small extents that can't be merged. |
+| `Reference`            | A `datetime` scalar constant that indicates a fixed point in time, according to which datetime partitions are aligned.                                          | Start with `1970-01-01 00:00:00`. If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`. |
+| `OverrideCreationTime` | A `bool` indicating whether or not the result extent's minimum and maximum creation times should be overridden by the range of the values in the partition key. | Defaults to `false`. Set to `true` if data isn't ingested in-order of time of arrival (e.g. a single source file may include datetime values that are very distant).    |
 
 #### Uniform range datetime partition example
 
