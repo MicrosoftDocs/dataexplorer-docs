@@ -46,7 +46,7 @@ Kusto provides three functions to help implement the two above scenarios:
    This special function can be used on the table records that have the
    [IngestionTime policy](ingestiontime-policy.md) enabled. It returns
    a scalar value of type `bool` indicating whether the record's `ingestion_time()`
-   database cursor value comes after the `rhs` database cursor value.
+   database cursor value comes before or at the `rhs` database cursor value.
 
 The two special functions (`cursor_after` and `cursor_before_or_at`) also have
 a side-effect: When they're used, Kusto will emit the **current value of the database cursor** to the `@ExtendedProperties` result set of the query. The property name for the cursor is `Cursor`, and its value is a single `string`. 
