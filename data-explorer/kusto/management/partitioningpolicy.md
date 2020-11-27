@@ -96,7 +96,7 @@ override the extents' creation times.
   "Properties": {
     "Reference": "1970-01-01T00:00:00",
     "RangeSize": "1.00:00:00",
-	"OverrideCreationTime": false
+    "OverrideCreationTime": false
   }
 }
 ```
@@ -152,7 +152,7 @@ Data partitioning policy object with two partition keys.
       "Properties": {
         "Reference": "1970-01-01T00:00:00",
         "RangeSize": "1.00:00:00",
-		"OverrideCreationTime": false
+        "OverrideCreationTime": false
       }
     }
   ]
