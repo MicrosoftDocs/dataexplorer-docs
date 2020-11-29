@@ -34,7 +34,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 > Ingestion logs aren't supported for streaming ingestion, direct ingestion to the engine, ingestion from query, or set-or-append commands.
 
 > [!NOTE]
-> Failed ingestion logs are reported only for final state of an ingest operation, unlike (Ingestion result)[using-metrics#ingestion-metrics] metric, which is emitted for every transient failure retired internally by the ADX.
+> Failed ingestion logs are reported only for final state of an ingest operation, unlike (Ingestion result)[using-metrics#ingestion-metrics] metric, which is also emitted for transient failures retired internally by ADX.
 
 * **Successful ingestion operations**: These logs have information about successfully completed ingestion operations.
 * **Failed ingestion operations**: These logs have detailed information about failed ingestion operations including error details. 
