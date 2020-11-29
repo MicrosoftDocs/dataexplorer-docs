@@ -12,7 +12,7 @@ ms.date: 09/08/2020
 
 The following article contains a categorized list of [UDF (user-defined functions)](../query/functions/user-defined-functions.md).
 
-The user-defined functions code is given in the articles.  It can be used within a let statement embedded in a query or can be persisted in a database using [.create function](../management/create-function.md).
+The user-defined functions code is given in the articles.  It can be used within a let statement embedded in a query or can be persisted in a database using [`.create function`](../management/create-function.md).
 
 ## Machine learning functions
 
