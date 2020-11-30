@@ -46,6 +46,7 @@ Operator        |Description                                                    
 `!~`            |Not equals                                                        |No            |`"aBc" !~ "xyz"`
 `has`           |Right-hand-side (RHS) is a whole term in left-hand-side (LHS)     |No            |`"North America" has "america"`
 `!has`          |RHS isn't a full term in LHS                                     |No            |`"North America" !has "amer"` 
+[`has_any`](has-anyoperator.md)       |Same as `has` but works on any of the elements                    |No            |`"North America" has_any("south", "north")`
 `has_cs`        |RHS is a whole term in LHS                                        |Yes           |`"North America" has_cs "America"`
 `!has_cs`       |RHS isn't a full term in LHS                                     |Yes           |`"North America" !has_cs "amer"` 
 `hasprefix`     |RHS is a term prefix in LHS                                       |No            |`"North America" hasprefix "ame"`
@@ -69,11 +70,11 @@ Operator        |Description                                                    
 `endswith_cs`   |RHS is a closing subsequence of LHS                               |Yes           |`"Fabrikam" endswith_cs "kam"`
 `!endswith_cs`  |RHS isn't a closing subsequence of LHS                           |Yes           |`"Fabrikam" !endswith_cs "brik"`
 `matches regex` |LHS contains a match for RHS                                      |Yes           |`"Fabrikam" matches regex "b.*k"`
-`in`            |Equals to one of the elements                                     |Yes           |`"abc" in ("123", "345", "abc")`
-`!in`           |Not equals to any of the elements                                 |Yes           |`"bca" !in ("123", "345", "abc")`
+[`in`](inoperator.md)            |Equals to one of the elements                                     |Yes           |`"abc" in ("123", "345", "abc")`
+[`!in`](inoperator.md)           |Not equals to any of the elements                                 |Yes           |`"bca" !in ("123", "345", "abc")`
 `in~`           |Equals to one of the elements                                     |No            |`"abc" in~ ("123", "345", "ABC")`
 `!in~`          |Not equals to any of the elements                                 |No            |`"bca" !in~ ("123", "345", "ABC")`
-`has_any`       |Same as `has` but works on any of the elements                    |No            |`"North America" has_any("south", "north")`
+
 
 > [!TIP]
 > All operators containing `has` search on indexed *terms* of four or more characters, and not on substring matches. A term is created by breaking up the string into sequences of ASCII alphanumeric characters. See [understanding string terms](#understanding-string-terms).
