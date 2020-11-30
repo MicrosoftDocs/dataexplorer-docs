@@ -1866,6 +1866,9 @@
     - name: series_exp_smoothing_fl()
       displayName: functions library
       href: kusto/functions-library/series-exp-smoothing-fl.md
+    - name: series_fit_lowess_fl()
+      displayName: functions library
+      href: kusto/functions-library/series-fit-lowess-fl.md
     - name: series_fit_poly_fl()
       displayName: functions library
       href: kusto/functions-library/series-fit-poly-fl.md
