@@ -122,8 +122,8 @@ In the table:
 
     [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
-  > [!NOTE]
-  > For tabular formats, each column can be ingested into one column in Azure Data Explorer.
+> [!NOTE]
+> For tabular formats, you can’t map a column twice. To map to an existing column, first delete the new column.
 
 [!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
 
