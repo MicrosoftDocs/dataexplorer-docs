@@ -59,16 +59,16 @@ Select **Edit schema** to view and edit your table column configuration. In the 
 
    * **Compression type** will be selected automatically by the source file name. In this case, the compression type is **JSON**
         
-   * When you select  **JSON**, you must also select **JSON levels**, from 1 to 10. The levels determine the table column data division.
+   * When you select  **JSON**, you must also select **Nested levels**, from 1 to 10. The levels determine the table column data division.
 
-        :::image type="content" source="media/one-click-ingestion-existing-table/json-levels.png" alt-text="Select JSON levels":::
+        :::image type="content" source="media/one-click-ingestion-existing-table/json-levels.png" alt-text="Select Nested levels":::
     
        > [!TIP]
        > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
 
 ### Add nested JSON data 
 
-To add columns from JSON levels that are different than the main **JSON levels** selected above, do the following steps:
+To add columns from JSON levels that are different than the main **Nested levels** selected above, do the following steps:
 
 1. Click on the arrow next to any column name, and select **New column**.
 

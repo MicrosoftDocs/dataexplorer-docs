@@ -118,7 +118,7 @@ When ingesting to a new table, alter various aspects of the table when creating 
 
 In the table: 
  * Double-click the new column name to edit.
- * Select new column headers and do any of the following actions:
+ * Select new column headers and do any of the following actions.
 
     [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
