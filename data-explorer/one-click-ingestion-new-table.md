@@ -125,6 +125,7 @@ In the table:
 > [!NOTE]
 > For tabular formats, you can’t map a column twice. To map to an existing column, first delete the new column.
 
+
 [!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
 
 ## Start ingestion
