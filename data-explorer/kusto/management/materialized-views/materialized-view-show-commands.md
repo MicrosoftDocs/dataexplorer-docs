@@ -51,7 +51,7 @@ Displays information about the materialized view's definition and its current st
 |Folder|string|The materialized view folder.
 |DocString|string|The materialized view doc string.
 |AutoUpdateSchema|bool|Whether the view is enabled for auto updates.
-|EffectiveDateTime|datetime|The effective date time of the view, determined during creation time (see [.create materialized-view](materialized-view-create.md#create-materialized-view)).
+|EffectiveDateTime|datetime|The effective date time of the view, determined during creation time (see [`.create materialized-view`](materialized-view-create.md#create-materialized-view)).
 
 ## .show materialized-view schema
 

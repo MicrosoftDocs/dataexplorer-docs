@@ -13,7 +13,7 @@ ms.date: 02/13/2020
 
 Returns a table showing the properties of the context database.
 
-To return a table in which every record corresponds to a database in the cluster that the user has access to, see [.show databases](show-databases.md).
+To return a table in which every record corresponds to a database in the cluster that the user has access to, see [`.show databases`](show-databases.md).
 
 **Syntax**
 

@@ -699,15 +699,18 @@
     - name: Numerical operators
       href: ./kusto/query/numoperators.md
     - name: String operators
-      href: ./kusto/query/datatypes-string-operators.md
+      items:
+      - name: String operators overview
+        displayName: has, contains
+        href: ./kusto/query/datatypes-string-operators.md
+      - name: in and !in operators
+        href: ./kusto/query/inoperator.md
+      - name: has_any operator
+        href: ./kusto/query/has-anyoperator.md
     - name: between operator
       href: ./kusto/query/betweenoperator.md
     - name: not-between operator (!between)
       href: ./kusto/query/notbetweenoperator.md
-    - name: in and !in operators
-      href: ./kusto/query/inoperator.md
-    - name: has_any operator
-      href: ./kusto/query/has-anyoperator.md
   - name: Scalar functions
     items:
     - name: Scalar function types

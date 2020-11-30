@@ -18,7 +18,7 @@ There are two possible ways to create a materialized view, noted by the *backfil
 
  * **Create based on the existing records in the source table:** 
       * Creation may take a long while to complete, depending on the number of records in the source table. The view won't be available for queries until completion.
-      * When using this option, the create command must be `async` and execution can be monitored using the [.show operations](../operations.md#show-operations) command.
+      * When using this option, the create command must be `async` and execution can be monitored using the [`.show operations`](../operations.md#show-operations) command.
 
     * Canceling the backfill process is possible using the [.cancel operation](#cancel-materialized-view-creation) command.
 
@@ -276,7 +276,7 @@ Cancel the process of materialized view creation when using the `backfill` optio
 > [!WARNING]
 > The materialized view can't be restored after running this command.
 
-The creation process can't be aborted immediately. The cancel command signals materialization to stop, and the creation periodically checks if cancel was requested. The cancel command waits for a max period of 10 minutes until the materialized view creation process is canceled and reports back if cancellation was successful. Even if the cancellation didn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will most probably abort itself later in the creation process. The [.show operations](../operations.md#show-operations) command will indicate if operation was canceled. The `cancel operation` command is only supported for materialized views creation cancellation, and not for canceling any other operations.
+The creation process can't be aborted immediately. The cancel command signals materialization to stop, and the creation periodically checks if cancel was requested. The cancel command waits for a max period of 10 minutes until the materialized view creation process is canceled and reports back if cancellation was successful. Even if the cancellation didn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will most probably abort itself later in the creation process. The [`.show operations`](../operations.md#show-operations) command will indicate if operation was canceled. The `cancel operation` command is only supported for materialized views creation cancellation, and not for canceling any other operations.
 
 ### Syntax
 
