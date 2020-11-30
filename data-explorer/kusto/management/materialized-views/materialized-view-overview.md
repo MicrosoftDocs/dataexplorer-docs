@@ -17,11 +17,11 @@ ms.date: 08/30/2020
 > Materialized views have some [limitations](materialized-view-create.md#limitations-on-creating-materialized-views), and aren't guaranteed to work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
 
 Use the following commands to manage materialized views:
-* [.create materialized-view](materialized-view-create.md)
-* [.alter materialized-view](materialized-view-alter.md)
-* [.drop materialized-view](materialized-view-drop.md)
-* [.disable | .enable materialized-view](materialized-view-enable-disable.md)
-* [.show materialized-views commands](materialized-view-show-commands.md)
+* [`.create materialized-view`](materialized-view-create.md)
+* [`.alter materialized-view`](materialized-view-alter.md)
+* [`.drop materialized-view`](materialized-view-drop.md)
+* [`.disable | .enable materialized-view`](materialized-view-enable-disable.md)
+* [`.show materialized-views commands`](materialized-view-show-commands.md)
 
 ## Why use materialized views?
 
@@ -37,8 +37,8 @@ By investing resources (data storage, background CPU cycles) for materialized vi
 
 The following are common scenarios that can be addressed by using a materialized view:
 
-* Query last record per entity using [arg_max() (aggregation function)](../../query/arg-max-aggfunction.md).
-* De-duplicate records in a table using [any() (aggregation function)](../../query/any-aggfunction.md).
+* Query last record per entity using [`arg_max()` (aggregation function)](../../query/arg-max-aggfunction.md).
+* De-duplicate records in a table using [`any()` (aggregation function)](../../query/any-aggfunction.md).
 * Reduce the resolution of data by calculating periodic statistics over the raw data. Use various [aggregation functions](materialized-view-create.md#supported-aggregation-functions) by period of time.
     * For example, use `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain an up-to-date snapshot of distinct users per day.
 
@@ -58,7 +58,7 @@ The [monitoring](#materialized-views-monitoring) section explains how to trouble
 
 The primary way of querying a materialized view is by its name, like querying a table reference. When the materialized view is queried, it combines the materialized part of the view with the records in the source table that haven't been materialized yet. Querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information about the breakdown of the materialized view parts, see [how materialized views work](#how-materialized-views-work). 
 
-Another way of querying the view is by using the [materialized_view() function](../../query/materialized-view-function.md). This option supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
+Another way of querying the view is by using the [`materialized_view()` function](../../query/materialized-view-function.md). This option supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
 
 The view can participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
 
@@ -110,15 +110,15 @@ The materialized view derives the database retention and caching policies by def
 Monitor the materialized view's health in the following ways:
 
 * Monitor [materialized view metrics](../../../using-metrics.md#materialized-view-metrics) in the Azure portal.
-* Monitor the `IsHealthy` property returned from [show materialized-view](materialized-view-show-commands.md#show-materialized-view).
-* Check for failures using [show materialized-view failures](materialized-view-show-commands.md#show-materialized-view-failures).
+* Monitor the `IsHealthy` property returned from [`.show materialized-view`](materialized-view-show-commands.md#show-materialized-view).
+* Check for failures using [`.show materialized-view failures`](materialized-view-show-commands.md#show-materialized-view-failures).
 
 > [!NOTE]
 > Materialization never skips any data, even if there are constant failures. The view is always guaranteed to return the most up-to-date snapshot of the query, based on all records in the source table. Constant failures will significantly degrade query performance, but won't cause incorrect results in view queries.
 
 ### Track resource consumption
 
-**Materialized views resource consumption:** the resources consumed by the materialized views materialization process can be tracked using the [.show commands-and-queries](../commands-and-queries.md#show-commands-and-queries) command. Filter the records for a specific view using the following (replace `DatabaseName` and `ViewName`):
+**Materialized views resource consumption:** the resources consumed by the materialized views materialization process can be tracked using the [`.show commands-and-queries`](../commands-and-queries.md#show-commands-and-queries) command. Filter the records for a specific view using the following (replace `DatabaseName` and `ViewName`):
 
 <!-- csl -->
 ```
@@ -154,6 +154,6 @@ If there are no materialization failures, `MaterializedViewResult` metric will b
 
 ## Next steps
 
-* [.create materialized view](materialized-view-create.md)
-* [.alter materialized-view](materialized-view-alter.md)
+* [`.create materialized view`](materialized-view-create.md)
+* [`.alter materialized-view`](materialized-view-alter.md)
 * [Materialized views show commands](materialized-view-show-commands.md)

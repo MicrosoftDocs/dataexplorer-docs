@@ -1,5 +1,5 @@
 ---
-title: .create tables - Azure Data Explorer | Microsoft Docs
+title: .create tables - Azure Data Explorer
 description: This article describes .create tables in Azure Data Explorer.
 services: data-explorer
 author: orspod

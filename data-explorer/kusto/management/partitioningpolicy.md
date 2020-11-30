@@ -177,7 +177,7 @@ The following properties can be defined as part of the policy. These properties 
 
 ## Monitor partitioning
 
-Use the [.show diagnostics](../management/diagnostics.md#show-diagnostics) command to monitor the progress or state of partitioning in a cluster.
+Use the [`.show diagnostics`](../management/diagnostics.md#show-diagnostics) command to monitor the progress or state of partitioning in a cluster.
 
 ```kusto
 .show diagnostics
@@ -190,7 +190,7 @@ The output includes:
     * If this percentage remains constantly under 90%, then evaluate the cluster's partitioning [capacity](partitioningpolicy.md#partition-capacity).
   * `TableWithMinPartitioningPercentage`: The fully qualified name of the table whose partitioning percentage is shown above.
 
-Use [.show commands](commands.md) to monitor the partitioning commands and their resource use. For example:
+Use [`.show commands`](commands.md) to monitor the partitioning commands and their resource use. For example:
 
 ```kusto
 .show commands 
