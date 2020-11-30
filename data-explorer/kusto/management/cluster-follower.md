@@ -47,12 +47,12 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 **Notes**
 
-* The default `modification kind` for caching policies is `union`. To change the `modification kind` use the [.alter follower database caching-policies-modification-kind](#alter-follower-database-caching-policies-modification-kind) command.
+* The default `modification kind` for caching policies is `union`. To change the `modification kind` use the [`.alter follower database caching-policies-modification-kind`](#alter-follower-database-caching-policies-modification-kind) command.
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
-    * [.show database policy retention](../management/retention-policy.md#show-retention-policy)
-    * [.show database details](../management/show-databases.md)
-    * [.show table details](show-tables-command.md)
-* Viewing the override settings on the follower database after the change is made can be done using [.show follower database](#show-follower-database)
+    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+    * [`.show database details`](../management/show-databases.md)
+    * [`.show table details`](show-tables-command.md)
+* Viewing the override settings on the follower database after the change is made can be done using [`.show follower database`](#show-follower-database)
 
 **Syntax**
 
@@ -72,10 +72,10 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 **Notes**
 
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
-    * [.show database policy retention](../management/retention-policy.md#show-retention-policy)
-    * [.show database details](../management/show-databases.md)
-    * [.show table details](show-tables-command.md)
-* Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
+    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+    * [`.show database details`](../management/show-databases.md)
+    * [`.show table details`](show-tables-command.md)
+* Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
 **Syntax**
 
@@ -96,8 +96,8 @@ It requires [DatabaseAdmin permission](../management/access-control/role-based-a
 
 * The default `modification kind` for such authorized principals is `none`. To change the `modification kind` use  [alter follower database principals-modification-kind](#alter-follower-database-principals-modification-kind).
 * Viewing the effective collection of principals after the change can be done using the `.show` commands:
-    * [.show database principals](../management/security-roles.md#managing-database-security-roles)
-    * [.show database details](../management/show-databases.md)
+    * [`.show database principals`](../management/security-roles.md#managing-database-security-roles)
+    * [`.show database details`](../management/show-databases.md)
 * Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
 
 **Syntax**
@@ -118,9 +118,9 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 **Notes**
 
 * Viewing the effective collection of principals after the change can be done using the `.show` commands:
-    * [.show database principals](../management/security-roles.md#managing-database-security-roles)
-    * [.show database details](../management/show-databases.md)
-* Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
+    * [`.show database principals`](../management/security-roles.md#managing-database-security-roles)
+    * [`.show database details`](../management/show-databases.md)
+* Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
 **Syntax**
 
@@ -141,8 +141,8 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 **Notes**
 
 * Viewing the effective collection of principals after the change can be done using the `.show` commands:
-    * [.show database principals](../management/security-roles.md#managing-database-security-roles)
-    * [.show database details](../management/show-databases.md)
+    * [`.show database principals`](../management/security-roles.md#managing-database-security-roles)
+    * [`.show database details`](../management/show-databases.md)
 * Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
 
 **Syntax**
@@ -164,9 +164,9 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 **Notes**
 
 * Viewing the effective collection of database/table-level caching policies after the change can be done using the standard `.show` commands:
-    * [.show tables details](show-tables-command.md)
-    * [.show database details](../management/show-databases.md)
-* Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
+    * [`.show tables details`](show-tables-command.md)
+    * [`.show database details`](../management/show-databases.md)
+* Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
 **Syntax**
 
@@ -211,10 +211,10 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 **Notes**
 
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
-    * [.show database policy retention](../management/retention-policy.md#show-retention-policy)
-    * [.show database details](../management/show-databases.md)
-    * [.show table details](show-tables-command.md)
-* Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
+    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+    * [`.show database details`](../management/show-databases.md)
+    * [`.show table details`](show-tables-command.md)
+* Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
 **Syntax**
 
@@ -236,10 +236,10 @@ Requires [DatabaseAdmin permissions](../management/access-control/role-based-aut
 **Notes**
 
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
-    * [.show database policy retention](../management/retention-policy.md#show-retention-policy)
-    * [.show database details](../management/show-databases.md)
-    * [.show table details](show-tables-command.md)
-* Viewing the override settings on the follower database after the change can be done using [.show follower database](#show-follower-database)
+    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+    * [`.show database details`](../management/show-databases.md)
+    * [`.show table details`](show-tables-command.md)
+* Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
 **Syntax**
 

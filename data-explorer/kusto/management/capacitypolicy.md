@@ -40,7 +40,7 @@ The capacity policy is made of:
 |MinimumConcurrentOperationsPerNode |long    |A minimal value for the number of concurrent extents merge/rebuild operations on a single node. Default is 1 |
 |MaximumConcurrentOperationsPerNode |long    |A maximal value for the number of concurrent extents merge/rebuild operations on a single node. Default is 3 |
 
-The cluster's total extents merge capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by:
+The cluster's total extents merge capacity, as shown by [`.show capacity`](../management/diagnostics.md#show-capacity), is calculated by:
 
 `Number of nodes in cluster` x `Concurrent operations per node`
 
@@ -56,7 +56,7 @@ merge operations is above 90%.
 |-----------------------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------|
 |MaximumConcurrentOperationsPerNode |long    |A maximal value for the number of concurrent rebuild extents for purge operations on a single node |
 
-The cluster's total extents purge rebuild capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity)) is calculated by:
+The cluster's total extents purge rebuild capacity (as shown by [`.show capacity`](../management/diagnostics.md#show-capacity)) is calculated by:
 
 `Number of nodes in cluster` x `MaximumConcurrentOperationsPerNode`
 
@@ -70,7 +70,7 @@ The cluster's total extents purge rebuild capacity (as shown by [.show capacity]
 |ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent export operations in a cluster.                                           |
 |CoreUtilizationCoefficient         |double  |A coefficient for the percentage of cores to use when calculating the export capacity. The calculation's result will always be normalized by `ClusterMaximumConcurrentOperations`. |
 
-The cluster's total export capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by:
+The cluster's total export capacity, as shown by [`.show capacity`](../management/diagnostics.md#show-capacity), is calculated by:
 
 Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
 
@@ -84,7 +84,7 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 |ClusterMinimumConcurrentOperations |long    |A minimal value for the number of concurrent extents partition operations in a cluster. Default: 1  |
 |ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent extents partition operations in a cluster. Default: 16 |
 
-The cluster's total extents partition capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity)).
+The cluster's total extents partition capacity (as shown by [`.show capacity`](../management/diagnostics.md#show-capacity)).
 
 The effective value for `Concurrent operations` is automatically adjusted by the system in the range
 [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], as long as the success rate of the
@@ -165,9 +165,9 @@ The default capacity policy has the following JSON representation:
 > [!WARNING]
 > Consult with the Azure Data Explorer team before altering a capacity policy.
 
-* Use [.show cluster policy capacity](capacity-policy.md#show-cluster-policy-capacity) to show the current capacity policy of the cluster.
+* Use [`.show cluster policy capacity`](capacity-policy.md#show-cluster-policy-capacity) to show the current capacity policy of the cluster.
 
-* Use [.alter cluster policy capacity](capacity-policy.md#alter-cluster-policy-capacity) to alter the capacity policy of the cluster.
+* Use [`.alter cluster policy capacity`](capacity-policy.md#alter-cluster-policy-capacity) to alter the capacity policy of the cluster.
 
 ## Throttling
 
