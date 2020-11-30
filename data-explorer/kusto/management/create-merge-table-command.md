@@ -1,6 +1,6 @@
 ---
-title: `.create-merge table` - Azure Data Explorer
-description: This article describes `.create-merge table` in Azure Data Explorer.
+title: .create-merge table - Azure Data Explorer
+description: This article describes .create-merge table in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
