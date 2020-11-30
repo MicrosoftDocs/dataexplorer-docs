@@ -80,10 +80,7 @@ One-click ingestion supports ingesting from source data in all [data formats sup
 
 In the **Editor** window, you can adjust data table columns as necessary. 
 
-|Table type  |Available column adjustments  |
-|---------|---------|
-|New     | Change data type, Rename column, New column, Delete column, Update column, Sort ascending, Sort descending  |
-|Existing     | New column, Update column, Sort ascending, Sort descending  |
+[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
 >[!NOTE]
 > At any time, you can open the [command editor](one-click-ingestion-new-table.md#command-editor) above the **Editor** pane. In the command editor, you can view and copy the automatic commands generated from your inputs.
