@@ -174,7 +174,9 @@ The following example tests irregular (unevenly spaced) time series
     
     :::image type="content" source="images/series-fit-lowess-fl/lowess-irregular-time-series.png" alt-text="Graph showing nine points LOWESS fit to an irregular time series" border="false":::
 
-1. Fifth order polynomial with noise on x & y axes - compare LOWESS vs polynomial fit
+Compare LOWESS versus polynomial fit
+
+The following example contains fifth order polynomial with noise on x and y axes. See comparison of LOWESS versus polynomial fit. 
 
     <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
