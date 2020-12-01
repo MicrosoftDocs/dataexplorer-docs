@@ -10,7 +10,7 @@ ms.date: 11/29/2020
 ---
 # series_fit_lowess_fl()
 
-The function `series_fit_lowess_fl()` applies a [LOWESS regression](https://en.wikipedia.org/wiki/Local_regression) on a series. This function takes a table containing multiple series (dynamic numerical arrays) and generates the *LOWESS Curve*, which is a smoothed version of the original series.
+The function `series_fit_lowess_fl()` applies a [LOWESS regression](https://www.wikipedia.org/wiki/Local_regression) on a series. This function takes a table with multiple series (dynamic numerical arrays) and generates a *LOWESS Curve*, which is a smoothed version of the original series.
 
 > [!NOTE]
 > * `series_fit_lowess_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).
