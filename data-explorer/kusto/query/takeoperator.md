@@ -31,16 +31,11 @@ the source data is sorted.
 
 (`take` and `limit` are synonyms.)
 
-## Does Kusto support paging of query results?
+## Paging of query results
 
-Kusto doesn't provide a built-in paging mechanism.
+For paging support, please refer to [Stored Query Results](../management/storedqueryresults.md) (the feature is currently in preview).
 
-Kusto is a complex service that continuously optimizes the data it stores to provide excellent query performance over huge data sets. While paging is a useful mechanism for stateless clients with limited
-resources, it shifts the burden to the backend service which
-has to track client state information. Subsequently, the performance
-and scalability of the backend service is severely limited.
-
-For paging support implement one of the following features:
+Other methods for implementing paging may include:
 
 * Exporting the result of a query to an external storage and paging through the
    generated data.
