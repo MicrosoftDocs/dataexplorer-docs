@@ -154,7 +154,9 @@ demo_make_series1
 
 The following examples assume the function is already installed:
 
-1. Test irregular (unevenly spaced) time series
+### Test irregular time series
+
+The following example tests irregular (unevenly spaced) time series
     
     <!-- csl: https://help.kusto.windows.net:443/Samples -->
     ```kusto
