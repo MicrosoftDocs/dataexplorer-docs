@@ -7,6 +7,7 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/29/2020
+no-loc: LOWESS
 ---
 # series_fit_lowess_fl()
 
