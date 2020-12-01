@@ -17,16 +17,15 @@ A [materialized view](materialized-view-overview.md) is an aggregation query ove
 There are two possible ways to create a materialized view, noted by the *backfill* option in the command:
 
  * **Create based on the existing records in the source table:** 
-      * Creation may take a long while to complete, depending on the number of records in the source table. The view won't be available for queries until completion.
-      * When using this option, the create command must be `async` and execution can be monitored using the [`.show operations`](../operations.md#show-operations) command.
+      * Creation may take a long while to complete, depending on the number of records in the source table. The view won't be available for queries until backfill is complete.
+      * When using this option, the create command must be `async` and execution can be monitored using the [.show operations](../operations.md#show-operations) command.
 
     * Canceling the backfill process is possible using the [.cancel operation](#cancel-materialized-view-creation) command.
 
       > [!IMPORTANT]
-      > * Using the backfill option is not supported for data in cold cache. Increase the hot cache period, if necessary, for the creation of the view. This may require scale-out.    
-      > * Using the backfill option may take a long time to complete for large source tables. If this process transiently fails while running, it will not be automatically retried, and a re-execution of the create command is required.
+      > Using the backfill option may take a long time to complete for large source tables. If this process transiently fails while running, it will not be automatically retried, and a re-execution of the create command is required. See the [Backfill a materialized view](#backfill-a-materialized-view) section for more details.
     
-* **Create the materialized view from now onwards:** 
+* **Create the materialized view from now onwards:**
     * The materialized view is created empty, and will only include records ingested after view creation. Creation of this kind returns immediately, doesn't require `async`, and the view will be immediately available for query.
 
 The create operation requires [Database Admin](../access-control/role-based-authorization.md) permissions. The creator of the materialized view becomes the Admin of it.
@@ -127,6 +126,7 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
         | summarize count(), dcount(User), max(Duration) by Customer, Day
     } 
     ```
+
 1. A materialized view that de-duplicates the source table, based on EventId column:
 
     <!-- csl -->
@@ -215,7 +215,7 @@ The following aggregation functions are supported:
     }
     ```
 
-* Don't include transformations, normalizations, and other heavy computations that can be moved to an [update policy](../updatepolicy.md) as part of the materialized view definition. Instead, do all those processes in an update policy, and perform the aggregation only in the materialized view. Use this process for lookup in dimension tables, when applicable.
+* Don't include transformations, normalizations, lookups in dimension tables, and other heavy computations that can be moved to an [update policy](../updatepolicy.md) as part of the materialized view definition. Instead, do all those processes in an update policy, and perform the aggregation only in the materialized view.
 
     **Do**:
     
@@ -228,6 +228,7 @@ The following aggregation functions are supported:
         "Query": 
             "SourceTable 
             | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)", 
+            | lookup DimResources on ResourceId
         "IsTransactional": false}]'  
     ```
         
@@ -246,14 +247,46 @@ The following aggregation functions are supported:
     ```kusto
     .create materialized-view Usage on table SourceTable
     {
-        SourceTable 
+        SourceTable
         | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)
+        | lookup DimResources on ResourceId
         | summarize count() by ResourceId
     }
     ```
 
-> [!NOTE]
-> If you require the best query time performance, but can sacrifice some data freshness, use the [materialized_view() function](../../query/materialized-view-function.md).
+> [!TIP]
+> If you require the best query time performance, but can tolerate some data latency, use the [materialized_view() function](../../query/materialized-view-function.md).
+
+## Backfill a materialized view
+
+When creating a materialized view with the `backfill` property, the materialized view will be created based on the records available in the source table (or a subset of those records, if `effectiveDateTime` is used). Backfill may take a long time to complete for large source tables.
+
+* Using the backfill option is not supported for data in cold cache. Increase the hot cache period, if necessary, for the duration of the view creation. This may require scale-out.
+
+* Behind the scenes, the backfill process splits the data to backfill into multiple batches and uses executes several ingest operations to backfill the view. Transient failures that occur as part of the backfill process are retried, but if all retries are exhausted, a manual re-execution of the create command may be required.
+
+* There are a few properties that you can try changing, if you experience failures in view creation:
+
+    * `MaxSourceRecordsForSingleIngest` - by default, the number of source records in each ingest operation, during backfill, is 2 million records per node. You can change this default by setting this property to the desired number of records (the value is the _total_ number of records in each ingest operation). Decreasing this value can be helpful when creation fails on memory limits / query timeouts. Increasing this value can speed up view creation, assuming the cluster is able to execute the aggregation function on more records than the default.
+
+    * `Concurrency` - the ingest operations, running as part of backfill process, run concurrently. By default, concurrency is `min(number_of_nodes * 2, 5)`. You can set this property to increase/decrease concurrency. Increasing this value is advisable only if cluster's CPU is low, as this can have significant impact on cluster's CPU consumption.
+
+  For example, the following command will backfill the materialized view from `2020-01-01`, with max number of records in each ingest operation of `3 million` records, and will execute the ingest operations with concurrency of `2`: 
+    
+    <!-- csl -->
+    ```
+    .create async materialized-view with (
+            backfill=true,
+            effectiveDateTime=datetime(2019-01-01),
+            MaxSourceRecordsForSingleIngest=3000000,
+            Concurrency=2
+        )
+        CustomerUsage on table T
+    {
+        T
+        | summarize count(), dcount(User), max(Duration) by Customer, bin(Timestamp, 1d)
+    } 
+    ```
 
 ## Limitations on creating materialized views
 
