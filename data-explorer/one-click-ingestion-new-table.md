@@ -91,6 +91,8 @@ For example, filter for all files that begin with the word *.csv* extension.
 
 :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
 
+The **Schema defining file** selected will be used to automatically create schema mapping in the next step.
+
 ## Edit the schema
 
 Select **Edit schema** to view and edit your table column configuration. The system will select one of the blobs at random and the schema will be generated based on that blob. By looking at the name of the source, the service automatically identifies if it is compressed or not.
@@ -116,15 +118,10 @@ In the **Mapping name** field, enter a mapping name. You can use alphanumeric ch
 
 When ingesting to a new table, alter various aspects of the table when creating the table.
 
-In the table: 
- * Double-click the new column name to edit.
- * Select new column headers and do any of the following actions.
-
-    [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
+[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
 > [!NOTE]
 > For tabular formats, you can’t map a column twice. To map to an existing column, first delete the new column.
-
 
 [!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
 
