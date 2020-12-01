@@ -89,10 +89,6 @@ To add columns from JSON levels that are different than the main **Nested levels
 
 ### Edit the table 
 
-When ingesting data to an existing table, you are more limited in the changes you may make to the table.
-
-In the table: 
-
 [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
 > [!NOTE]

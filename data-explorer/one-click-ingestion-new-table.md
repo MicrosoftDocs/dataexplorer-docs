@@ -91,11 +91,11 @@ For example, filter for all files that begin with the word *.csv* extension.
 
 :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
 
-The **Schema defining file** selected will be used to automatically create schema mapping in the next step.
+The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
 
 ## Edit the schema
 
-Select **Edit schema** to view and edit your table column configuration. The system will select one of the blobs at random and the schema will be generated based on that blob. By looking at the name of the source, the service automatically identifies if it is compressed or not.
+Select **Edit schema** to view and edit your table column configuration.  By looking at the name of the source, the service automatically identifies if it is compressed or not.
 
 In the **Schema** tab:
 
