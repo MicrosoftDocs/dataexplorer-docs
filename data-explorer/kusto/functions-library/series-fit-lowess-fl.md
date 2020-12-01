@@ -26,7 +26,7 @@ The function `series_fit_lowess_fl()` applies a [LOWESS regression](https://www.
 * *y_series*: The name of the input table column containing the [dependent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). That is, the series to fit.
 * *y_fit_series*: The name of the column to store the fitted series.
 * *fit_size*: For each point, the local regression is applied on its respective *fit_size* closest points. This parameter is optional, default to *5*.
-* *x_series*: The name of the column containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables), that is, the x or time axis. This parameter is optional, and is needed only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). The default value is an empty string, as x is redundant for the regression of an evenly spaced series.
+* *x_series*: The name of the column containing the [independent variable](https://www.wikipedia.org/wiki/Dependent_and_independent_variables), that is, the x or time axis. This parameter is optional, and is needed only for [unevenly spaced series](https://www.wikipedia.org/wiki/Unevenly_spaced_time_series). The default value is an empty string, as x is redundant for the regression of an evenly spaced series.
 * *x_istime*: This boolean parameter is needed only if *x_series* is specified and it's a vector of datetime. This parameter is optional, default to *False*.
 
 ## Usage
