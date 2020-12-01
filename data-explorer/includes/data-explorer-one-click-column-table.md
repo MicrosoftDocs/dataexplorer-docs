@@ -5,12 +5,15 @@ ms.topic: include
 ms.date: 06/11/2020
 ms.author: orspodek
 ---
+The changes you can make in a table depend on the following parameters:
+* **Table** type is new or existing
+* **Mapping** type is new or existing
 
-|Action         |Description                                  |
-|-----------------|-------------------------------------------|
-|Change data type |Change the data type from the one automatically selected by the service to one of the other [supported data types](#edit-the-schema)|
-|Rename column    |Change the column name |
-|New column       |Add a new column. For tabular formats, each column can be ingested into one column on ADX. A new column can be created from a different JSON level.|
-|Delete column    |Delete the selected column|
-|Sort ascending   |Sort the table by the selected column in ascending order (existing columns only) |
-|Sort descending  |Sort the table by the selected column in descending order (existing columns only) |
+Table type | Mapping type | Available adjustments|
+|---|---|---|
+|New table   | New mapping |Change data type, Rename column, New column, Delete column, Update column, Sort ascending, Sort descending  |
+|Existing table  | New mapping | New column (on which you can then change data type, rename, and update), <br> Update column, Sort ascending, Sort descending  |
+| | Existing mapping | Sort ascending, Sort descending
+
+> [!NOTE]
+> When adding a new column or updating a column, you can change mapping transformations. For more information, see [Mapping transformations](../ingest-data-one-click.md#mapping-transformations)
