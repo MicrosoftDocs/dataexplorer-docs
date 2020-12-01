@@ -150,7 +150,7 @@ demo_make_series1
 
 :::image type="content" source="images/series-fit-lowess-fl/lowess-regular-time-series.png" alt-text="Graph showing nine points LOWESS fit to a regular time series" border="false":::
 
-## Additional examples
+## Examples
 
 The following examples assume the function is already installed:
 
