@@ -71,7 +71,14 @@ Then:
   values will be displayed as `1`, and all `false` values
   will be displayed as `0`.
 
+* Kusto does not offer a way to constrain a table's column from having null
+  values (in other words, there's no equivalent to SQL's `NOT NULL` constraint).
+
 ::: zone-end
+
+::: zone pivot="azuremonitor"
 
 * Kusto does not offer a way to constrain a table's column from having null
   values (in other words, there's no equivalent to SQL's `NOT NULL` constraint).
+
+::: zone-end

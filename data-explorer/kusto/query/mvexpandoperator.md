@@ -8,6 +8,7 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2019
+ms.localizationpriority: high
 ---
 # mv-expand operator
 
@@ -29,8 +30,8 @@ Expands multi-value array or property bag.
 * *Typename:* Indicates the underlying type of the array's elements, which becomes the type of the column produced by the `mv-apply` operator. The operation of applying type is cast-only and doesn't include parsing or type-conversion. Array elements that do not conform with the declared type will become `null` values.
 * *RowLimit:* The maximum number of rows generated from each original row. The default is 2147483647. 
 
-  > [!Note]
-  > The legacy and obsolete form of the operator `mvexpand` has a default row limit of 128.
+  > [!NOTE]
+  > `mvexpand` is a legacy and obsolete form of the operator `mv-expand`. The legacy version has a default row limit of 128.
 
 * *IndexColumnName:* If `with_itemindex` is specified, the output will include an additional column (named *IndexColumnName*), which contains the index (starting at 0) of the item in the original expanded collection. 
 

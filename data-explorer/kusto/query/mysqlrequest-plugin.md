@@ -19,7 +19,7 @@ The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint 
 
 > [!IMPORTANT]
 > The `mysql_request` plugin is in preview mode, and is disabled by default.
-> To enable the plugin, run the [`.enable plugin mysql_request` command](../management/enable-plugin.md). To see which plugins are enabled, use [.show plugin management commands](../management/show-plugins.md).
+> To enable the plugin, run the [`.enable plugin mysql_request` command](../management/enable-plugin.md). To see which plugins are enabled, use [`.show plugin` management commands](../management/show-plugins.md).
 
 ## Syntax
 

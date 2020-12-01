@@ -7,6 +7,7 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/26/2020
+ms.localizationpriority: high 
 ---
 
 # Visualize data with Azure Data Explorer dashboards(Preview)

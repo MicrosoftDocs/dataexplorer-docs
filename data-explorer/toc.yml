@@ -201,6 +201,8 @@
       href: data-lake-query-data.md  
     - name: Query data in Azure Monitor
       href: query-monitor-data.md
+    - name: Query data in Power Apps application
+      href: power-apps-connector.md     
     - name: Debug KQL inline Python
       href: debug-inline-python.md
     - name: using SDKs
@@ -370,8 +372,6 @@
       href: using-metrics.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
-    - name: Create Power Apps application to query data in Azure Data Explorer
-      href: power-apps-connector.md        
   - name: Share data
     items:
       - name: Use Azure Data Share
@@ -558,6 +558,8 @@
         href: ./kusto/query/diffpatterns-textplugin.md
       - name: infer_storage_schema plugin
         href: ./kusto/query/inferstorageschemaplugin.md
+      - name: ipv4_lookup plugin
+        href: ./kusto/query/ipv4-lookup-plugin.md
       - name: mysql_request plugin
         href: ./kusto/query/mysqlrequest-plugin.md
       - name: narrow plugin
@@ -697,15 +699,18 @@
     - name: Numerical operators
       href: ./kusto/query/numoperators.md
     - name: String operators
-      href: ./kusto/query/datatypes-string-operators.md
+      items:
+      - name: String operators overview
+        displayName: has, contains
+        href: ./kusto/query/datatypes-string-operators.md
+      - name: in and !in operators
+        href: ./kusto/query/inoperator.md
+      - name: has_any operator
+        href: ./kusto/query/has-anyoperator.md
     - name: between operator
       href: ./kusto/query/betweenoperator.md
     - name: not-between operator (!between)
       href: ./kusto/query/notbetweenoperator.md
-    - name: in and !in operators
-      href: ./kusto/query/inoperator.md
-    - name: has_any operator
-      href: ./kusto/query/has-anyoperator.md
   - name: Scalar functions
     items:
     - name: Scalar function types
@@ -912,6 +917,8 @@
       href: ./kusto/query/ipv4-comparefunction.md
     - name: ipv4_is_match()
       href: ./kusto/query/ipv4-is-matchfunction.md
+    - name: ipv4_is_private()
+      href: ./kusto/query/ipv4-is-privatefunction.md
     - name: ipv6_compare()
       href: ./kusto/query/ipv6-comparefunction.md
     - name: ipv6_is_match()
@@ -1367,6 +1374,8 @@
       href: ./kusto/query/re2.md
     - name: SQL to Kusto cheat sheet
       href: ./kusto/query/sqlcheatsheet.md
+    - name: Splunk to Kusto cheat sheet
+      href: ./kusto/query/splunk-cheat-sheet.md
   - name: Query tools
     items:
     - name: Kusto.Explorer
@@ -1834,22 +1843,40 @@
   - name: Functions library
     items:
     - name: List of functions
+      displayName: functions library
       href: kusto/functions-library/functions-library.md
     - name: kmeans_fl()
+      displayName: functions library
       href: kusto/functions-library/kmeans-fl.md
     - name: predict_fl()
+      displayName: functions library
       href: kusto/functions-library/predict-fl.md
     - name: predict_onnx_fl()
+      displayName: functions library
       href: kusto/functions-library/predict-onnx-fl.md
     - name: quantize_fl()
+      displayName: functions library
       href: kusto/functions-library/quantize-fl.md
     - name: series_dot_product_fl()
+      displayName: functions library
       href: kusto/functions-library/series-dot-product-fl.md
+    - name: series_downsample_fl()
+      displayName: functions library
+      href: kusto/functions-library/series-downsample-fl.md
+    - name: series_exp_smoothing_fl()
+      displayName: functions library
+      href: kusto/functions-library/series-exp-smoothing-fl.md
+    - name: series_fit_lowess_fl()
+      displayName: functions library
+      href: kusto/functions-library/series-fit-lowess-fl.md
     - name: series_fit_poly_fl()
+      displayName: functions library
       href: kusto/functions-library/series-fit-poly-fl.md
     - name: series_moving_avg_fl()
+      displayName: functions library
       href: kusto/functions-library/series-moving-avg-fl.md
     - name: series_rolling_fl()
+      displayName: functions library
       href: kusto/functions-library/series-rolling-fl.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions

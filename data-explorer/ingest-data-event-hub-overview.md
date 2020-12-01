@@ -39,10 +39,7 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding?view=netframework-4.8#remarks). |
-| Tags (Preview) | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extents-overview.md#performance-notes-1) when using tags. |
-
-<!--| Database | Name of the existing target database.|-->
-<!--| Tags | String representing [tags](/azure/kusto/management/extents-overview#extent-tagging) that will be attached to resulting extent. |-->
+| Tags | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extents-overview.md#performance-notes-1) when using tags. |
 
 > [!NOTE]
 > Only events enqueued after you create the data connection are ingested.
@@ -120,6 +117,14 @@ If you don't already have one, [Create an event hub](/azure/event-hubs/event-hub
 See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.
 
 For an example of how to generate sample data, see [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md#generate-sample-data)
+
+## Set up Geo-disaster recovery solution
+
+Event Hub offers a [Geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr) solution. 
+Azure Data Explorer doesn't support `Alias` Event Hub namespaces. To implement the Geo-disaster recovery in your solution, create two Event Hub data connections: one for the primary namespace and one for the secondary namespace. Azure Data Explorer will listen to both Event Hub connections.
+
+> [!NOTE]
+> It's the user's responsibility to implement a failover from the primary namespace to the secondary namespace.
 
 ## Next steps
 
