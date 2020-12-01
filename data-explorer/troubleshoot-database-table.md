@@ -6,12 +6,12 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/24/2018
+ms.date: 12/01/2020
 ---
 
 # Troubleshoot: Failure to create or delete a database or table in Azure Data Explorer
 
-In Azure Data Explorer, you regularly work with databases and tables. This article provides troubleshooting steps for issues that can come up.
+In Azure Data Explorer, you regularly work with databases and tables. This article provides troubleshooting steps for issues that can come up. 
 
 ## Creating a database
 
@@ -23,7 +23,7 @@ In Azure Data Explorer, you regularly work with databases and tables. This artic
 
 ## Deleting or renaming a database
 
-Ensure you have adequate permissions. To delete or rename a database, you must be a member of the *Contributor* or *Owner* role for the Azure subscription. If necessary, work with your subscription administrator so they can add you to the appropriate role.
+Ensure you have adequate permissions. To delete or rename a database, you must be a member of the *Contributor* or *Owner* role for the Azure subscription. If necessary, work with your subscription administrator so they can add you to the appropriate role. You can also delete or rename a database if you have the *database admin* role.
 
 ## Creating a table
 
@@ -55,4 +55,5 @@ For more information about permissions, see [Manage database permissions](manage
 
 ## Next steps
 
-[Check cluster health](check-cluster-health.md)
+* [Check cluster health](check-cluster-health.md)
+* [Manage database permissions](manage-database-permissions.md)

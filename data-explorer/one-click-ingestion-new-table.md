@@ -41,7 +41,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 Under **Ingestion type**, do the following steps:
    
-  1. Select **from container** 
+  1. Select **from container** (blob container, ADLS Gen1 container, ADLS Gen2 container).
   1. In the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container).
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container":::
@@ -91,9 +91,11 @@ For example, filter for all files that begin with the word *.csv* extension.
 
 :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
 
+The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
+
 ## Edit the schema
 
-Select **Edit schema** to view and edit your table column configuration. The system will select one of the blobs at random and the schema will be generated based on that blob. By looking at the name of the source, the service automatically identifies if it is compressed or not.
+Select **Edit schema** to view and edit your table column configuration.  By looking at the name of the source, the service automatically identifies if it is compressed or not.
 
 In the **Schema** tab:
 
@@ -116,14 +118,10 @@ In the **Mapping name** field, enter a mapping name. You can use alphanumeric ch
 
 When ingesting to a new table, alter various aspects of the table when creating the table.
 
-In the table: 
- * Double-click the new column name to edit.
- * Select new column headers and do any of the following actions:
+[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
-    [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
-
-  > [!NOTE]
-  > For tabular formats, each column can be ingested into one column in Azure Data Explorer.
+> [!NOTE]
+> For tabular formats, you can’t map a column twice. To map to an existing column, first delete the new column.
 
 [!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
 
