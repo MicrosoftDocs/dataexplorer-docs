@@ -19,18 +19,18 @@ When a request is made from Kusto through the .NET SDK, provide:
 
 * The text of the request (query or command) itself.
 
-* Additional properties that the client provides to the service, and that are applied to the request. Programmatically, these properties are held by a class called `ClientRequestProperties`.
+* Additional properties that the client provides to the service, and that are applied to the request. Programmatically, these properties are held by a class called [`ClientRequestProperties`](#clientrequestproperties).
 
-##  ClientRequestProperties
+## ClientRequestProperties
 
-The client request properties have many uses. 
+Client request properties can be useful in the following ways: 
 * Makes debugging easier. For example, the properties may provide correlation strings that are used to track client/service interactions. 
 * Affects what limits and policies get applied to the request. 
-* [query parameters](../../query/queryparametersstatement.md) let client applications parameterize Kusto queries based on user input. For more information, see [list of supported properties](#list-of-clientrequestproperties).
+* [Query parameters](../../query/queryparametersstatement.md) let client applications parameterize Kusto queries based on user input. For more information, see [list of supported properties](#list-of-clientrequestproperties).
 
-The `Kusto.Data.Common.ClientRequestProperties` class holds three kinds of data.
+The `Kusto.Data.Common.ClientRequestProperties` class holds three kinds of data:
 
-* Named properties.
+* [Named properties](#named-properties).
 * Options - A mapping of an option name to an option value.
 * Parameters  - A mapping of a query parameter name to a query parameter value.
 
@@ -38,7 +38,9 @@ The `Kusto.Data.Common.ClientRequestProperties` class holds three kinds of data.
 > Some named properties are marked "do not use". Such properties shouldn't
 > be specified by clients, and have no effect on the service.
 
-## The ClientRequestId (x-ms-client-request-id) named property
+## Named properties
+
+### ClientRequestId (x-ms-client-request-id)
 
 This named property has the client-specified identity of the request. Clients should specify 
 a unique per-request value with each request they send. 
@@ -59,7 +61,7 @@ However, we recommend that clients use:
 * *ActivityName* identifies the kind of activity for which the client application issues the client request.
 * *UniqueId* identifies the specific request.
 
-## The application (x-ms-app) named property
+### Application (x-ms-app)
 
 The Application (x-ms-app) named property has the name of the client application that makes the request, and is used
 for tracing.
@@ -71,7 +73,7 @@ Kusto connection string as `Application Name for Tracing`.
 This property will be set to the name of the process hosting the SDK if the client doesn't
 specify its own value.
 
-## The User (x-ms-user) named property
+### User (x-ms-user)
 
 The User (x-ms-user) named property has the identity of the user that makes the request, and is used
 for tracing.
@@ -80,7 +82,9 @@ The programmatic name of this property is `User`, and it translates
 into the HTTP header `x-ms-user`. It can be specified in the
 Kusto connection string as `User Name for Tracing`.
 
-## Controlling request properties using the REST API
+## Use request properties
+
+### Control request properties using the REST API
 
 When issuing an HTTP request to the Kusto service, use the `properties` slot in the
 JSON document that is the POST request body, to provide request properties. 
@@ -91,7 +95,7 @@ that the client provides to the service for identifying the request) can be prov
 in the HTTP header, and can also be set if HTTP GET is used.
 > For more information, see [the Kusto REST API request object](../rest/request.md).
 
-## Providing values for query parameterization as request properties
+### Provide values for query parameterization as request properties
 
 Kusto queries can refer to query parameters by using a specialized [declare query-parameters](../../query/queryparametersstatement.md) statement in the query text. This statement lets client applications parameterize Kusto queries based on user input, in a secure manner, and without fear of injection attacks.
 
@@ -99,7 +103,9 @@ Programmatically, set properties values by using the `ClearParameter`, `SetParam
 
 In the REST API, query parameters appear in the same JSON-encoded string as the other request properties.
 
-## Sample client code for using request properties
+## Example
+
+The following example shows sample client code for using request properties:
 
 ```csharp
 public static System.Data.IDataReader QueryKusto(
