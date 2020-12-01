@@ -166,7 +166,7 @@ Shows information on active stored query results.
 
 ### drop stored\_query\_result
 
-Deletes an active stored query result created in current database.
+Deletes an active stored query result created in current database by current principal.
 
 #### Syntax
 
