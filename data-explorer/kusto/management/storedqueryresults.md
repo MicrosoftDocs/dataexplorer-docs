@@ -208,13 +208,3 @@ Example:
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
 | c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
 | 571f1a76-f5a9-49d4-b339-ba7caac19b46 | Traces | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 5212 | 100000 | 2020-10-07 14:31:01.8271231| 2020-10-08 14:31:01.8271231 |
-
-
-## Monitoring
-
-Stored query result creation operation emits MDM metrics in the MdmEngineMetrics namespace under the KustoProd account (see [Monitoring](../ops/monitoring.md)). The following is a list of all available metrics. Each metric contains the default Account and Cluster dimensions, as in all other Kusto metric. Additional dimensions are listed below. 
-
-| Metric Name                 | Dimensions | Description                                                                  |
-|-----------------------------|------------|------------------------------------------------------------------------------|
-| StoredQueryResultSizeBytes  | Database   | Space on storage account occupied by created Stored Query Result (in bytes). |
-| StoredQueryResultRowsCount  | Database   | Number of records saved in created Stored Query Result.                      |
