@@ -34,11 +34,11 @@ The `Kusto.Data.Common.ClientRequestProperties` class holds three kinds of data:
 * Options - A mapping of an option name to an option value.
 * Parameters  - A mapping of a query parameter name to a query parameter value.
 
+## Named properties
+
 > [!NOTE]
 > Some named properties are marked "do not use". Such properties shouldn't
 > be specified by clients, and have no effect on the service.
-
-## Named properties
 
 ### ClientRequestId (x-ms-client-request-id)
 
@@ -83,6 +83,8 @@ into the HTTP header `x-ms-user`. It can be specified in the
 Kusto connection string as `User Name for Tracing`.
 
 ## Use request properties
+
+Use the following instructions to control request properties and provide values for query parameterization. 
 
 ### Control request properties using the REST API
 
