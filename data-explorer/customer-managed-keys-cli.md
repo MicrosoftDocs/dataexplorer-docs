@@ -43,7 +43,7 @@ with the cluster.
     az kusto cluster update --cluster-name "mytestcluster" --resource-group "mytestrg" --key-vault-properties key-name="<key-name>" key-version="<key-version>" key-vault-uri="<key-vault-uri>"
     ```
 
-    or set the new key with the a user assigned assigned identity
+    or set the new key with a user assigned identity
 
     ```azurecli-interactive
     az kusto cluster update --cluster-name "mytestcluster" --resource-group "mytestrg" --key-vault-properties key-name="<key-name>" key-version="<key-version>" key-vault-uri="<key-vault-uri>" key-user-identity="<user-identity-resource-id>"

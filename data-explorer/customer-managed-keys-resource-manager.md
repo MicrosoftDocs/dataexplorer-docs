@@ -26,7 +26,7 @@ ms.date: 01/06/2020
 
 In this section, you configure customer-managed keys using Azure Resource Manager templates. By default, Azure Data Explorer encryption uses Microsoft-managed keys. In this step, configure your Azure Data Explorer cluster to use customer-managed keys and specify the key to associate with the cluster.
 
-If you are using a system assigned identity to access the key vault, leave `userIdentity` empty, otherwise set the identity's resource id.
+If you are using a system assigned identity to access the key vault, leave `userIdentity` empty, otherwise set the identity's resource ID.
 
 You can deploy the Azure Resource Manager template by using the Azure portal or using PowerShell.
 
