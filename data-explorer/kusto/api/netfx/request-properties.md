@@ -26,7 +26,7 @@ When a request is made from Kusto through the .NET SDK, provide:
 Client request properties can be useful in the following ways: 
 * Makes debugging easier. For example, the properties may provide correlation strings that are used to track client/service interactions. 
 * Affects what limits and policies get applied to the request. 
-* [Query parameters](../../query/queryparametersstatement.md) let client applications parameterize Kusto queries based on user input. For more information, see [list of supported properties](#list-of-clientrequestproperties).
+* [Query parameters](../../query/queryparametersstatement.md) let client applications parameterize Kusto queries based on user input. For more information, see [list of supported properties](#options).
 
 The `Kusto.Data.Common.ClientRequestProperties` class holds three kinds of data:
 
