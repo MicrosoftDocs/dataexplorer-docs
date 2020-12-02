@@ -22,7 +22,7 @@ The `.alter table` command:
 > Using the `.alter` command incorrectly may lead to data loss.
 
 > [!TIP]
-> The `.alter` has a counterpart, the `.alter-merge` table command that has similar functionality. For more information, see [.alter-merge table](../management/alter-merge-table-command.md)
+> The `.alter` has a counterpart, the `.alter-merge` table command that has similar functionality. For more information, see [`.alter-merge table`](../management/alter-merge-table-command.md)
 
 **Syntax**
 
@@ -32,7 +32,7 @@ The `.alter table` command:
  * The table will have exactly the same columns, in the same order, as specified.
  Specify the table columns:
  * If existing columns aren't specified in the command, they'll be dropped and data in them will be lost, like with the `.drop column` command.
- * When you alter a table, altering a column type isn't supported. Use the [.alter column](alter-column.md) command instead.
+ * When you alter a table, altering a column type isn't supported. Use the [`.alter column`](alter-column.md) command instead.
 
 > [!TIP]
 > Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.

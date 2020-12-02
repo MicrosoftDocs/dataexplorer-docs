@@ -13,10 +13,10 @@ ms.date: 02/13/2020
 
 These commands can be used to display system diagnostic information.
 
-* [.show cluster](#show-cluster)
-* [.show diagnostics](#show-diagnostics)
-* [.show capacity](#show-capacity)
-* [.show operations](#show-operations)
+* [`.show cluster`](#show-cluster)
+* [`.show diagnostics`](#show-diagnostics)
+* [`.show capacity`](#show-capacity)
+* [`.show operations`](#show-operations)
 
 ## .show cluster
 
@@ -77,8 +77,8 @@ Returns information about the Kusto cluster state of health.
 |Reserved|Int64|
 |Reserved|Int64|
 |InstancesTargetBasedOnDataCapacity|Int64|The number of instances needed to bring the ClusterDataCapacityFactor below 80. THis value is only valid when all machines are sized the same
-|TotalOriginalDataSize|Int64|Total size of the originally ingested data
-|TotalExtentSize|Int64|Total size of the stored data, after compression and indexing
+|TotalOriginalDataSize|Int64|Total size of the originally ingested data in bytes
+|TotalExtentSize|Int64|Total size of the stored data, after compression and indexing in bytes
 |IngestionsLoadFactor|Double|The percentage of the cluster ingestion capacity that was used. The maximum capacity can be seen using the `.show capacity` command
 |IngestionsInProgress|Int64|The number of ingestion operations currently being done
 |IngestionsSuccessRate|Double|The percentage of ingestion operations that completed successfully in the previous 10 minutes
@@ -97,7 +97,7 @@ Returns information about the Kusto cluster state of health.
 |FailedMergeOperations|Int64|Number of failed merge operations in the previous 1 hour
 |MaxExtentsInSingleTable|Int64|Maximum number of extents in the table (TableWithMaxExtents)
 |TableWithMaxExtents|String|Table with the maximum number of extents (MaxExtentsInSingleTable)
-|WarmExtentSize|Double|Total size of extents in the hot cache
+|WarmExtentSize|Double|Total size of extents in the hot cache in bytes
 |NumberOfDatabases|Int32|Number of databases in the cluster
 
 ## .show capacity
@@ -127,7 +127,7 @@ Returns the results of a calculation for an estimated cluster capacity for each 
 
 This command returns a table containing all the administrative operations since the new Admin node was elected.
 
-|||
+|Syntax option |Description|
 |---|---| 
 |`.show` `operations`              |Returns all operations that the cluster is processing or have processed
 |`.show` `operations` *OperationId*|Returns the operation status for a specific ID

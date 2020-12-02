@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/07/2019
 ---
 
@@ -17,21 +17,17 @@ ms.date: 10/07/2019
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 
-In this article, you create an Event Grid data connection for Azure Data Explorer by using Python. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion, or data loading, from Event Hubs, IoT Hubs, and blobs written to blob containers.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
+In this article, you create an Event Grid data connection for Azure Data Explorer by using Python.
 
 ## Prerequisites
 
 * An Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
 * [Python 3.4+](https://www.python.org/downloads/).
-
 * [A cluster and database](create-cluster-database-python.md).
-
-* [Table and column mapping](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
-
+* [Table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 * [Database and table policies](database-table-policies-csharp.md) (optional).
-
-* [A storage account with an Event Grid subscription](../data-explorer/kusto/management/data-ingestion/eventgrid.md#create-an-event-grid-subscription-in-your-storage-account).
+* [A storage account with an Event Grid subscription](ingest-data-event-grid.md).
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]
 

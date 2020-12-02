@@ -4,10 +4,11 @@ description: This article describes in and notin operators in Azure Data Explore
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2019
+ms.localizationpriority: high
 ---
 # in and !in operators
 
@@ -17,9 +18,15 @@ Filters a record set based on the provided set of values.
 Table1 | where col in ('value1', 'value2')
 ```
 
+> [!NOTE]
+> * Adding '~' to the operator makes values' search case-insensitive: `x in~ (expression)` or `x !in~ (expression)`.
+> * In tabular expressions, the first column of the result set is selected.
+> * The expression list can produce up to `1,000,000` values.
+> * Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
+ 
 ## Syntax
 
-*Case-sensitive syntax:*
+### Case-sensitive syntax
 
 *T* `|` `where` *col* `in` `(`*list of scalar expressions*`)`   
 *T* `|` `where` *col* `in` `(`*tabular expression*`)`   
@@ -27,7 +34,7 @@ Table1 | where col in ('value1', 'value2')
 *T* `|` `where` *col* `!in` `(`*list of scalar expressions*`)`  
 *T* `|` `where` *col* `!in` `(`*tabular expression*`)`   
 
-*Case insensitive syntax:*
+### Case insensitive syntax
 
 *T* `|` `where` *col* `in~` `(`*list of scalar expressions*`)`   
 *T* `|` `where` *col* `in~` `(`*tabular expression*`)`   
@@ -46,16 +53,9 @@ Table1 | where col in ('value1', 'value2')
 
 Rows in *T* for which the predicate is `true`.
 
-**Notes**
+## Examples  
 
-* The expression list can produce up to `1,000,000` values.
-* Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
-* In tabular expressions, the first column of the result set is selected.
-* Adding '~' to the operator makes values' search case-insensitive: `x in~ (expression)` or `x !in~ (expression)`.
-
-**Examples:**  
-
-**A simple use of 'in' operator:**  
+### Use 'in' operator
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -68,8 +68,7 @@ StormEvents
 |---|
 |4775|  
 
-
-**A simple use of 'in~' operator:**  
+### Use 'in~' operator  
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -82,7 +81,7 @@ StormEvents
 |---|
 |4775|  
 
-**A simple use of '!in' operator:**  
+### Use '!in' operator
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -96,7 +95,7 @@ StormEvents
 |54291|  
 
 
-**Using dynamic array:**
+### Use dynamic array
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -110,8 +109,7 @@ StormEvents
 |---|
 |3218|
 
-
-**A subquery example:**  
+### Subquery
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -143,7 +141,7 @@ StormEvents
 |---|
 |14242|  
 
-**Top with other example:**  
+### Top with other example
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -163,7 +161,7 @@ Lightning_By_State
 | GEORGIA   | 106                  |
 | Other     | 415                  |
 
-**Using a static list returned by a function:**  
+### Use a static list returned by a function
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

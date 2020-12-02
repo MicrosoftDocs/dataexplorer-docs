@@ -4,14 +4,18 @@ description: This article describes dcount() (aggregation function) in Azure Dat
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
+ms.localizationpriority: high
 ---
 # dcount() (aggregation function)
 
 Returns an estimate for the number of distinct values that are taken by a scalar expression in the summary group.
+
+> [!NOTE]
+> The `dcount()` aggregation function is primarily useful for estimating the cardinality of huge sets. It trades performance for accuracy, and may return a result that varies between executions. The order of inputs may have an effect on its output.
 
 ## Syntax
 
@@ -34,10 +38,6 @@ PageViewLog | summarize countries=dcount(country) by continent
 ```
 
 :::image type="content" source="images/dcount-aggfunction/dcount.png" alt-text="D count":::
-
-**Notes**
-
-The `dcount()` aggregation function is primarily useful for estimating the cardinality of huge sets. It trades performance for accuracy, and may return a result that varies between executions. The order of inputs may have an effect on its output.
 
 Get an exact count of distinct values of `V` grouped by `G`.
 

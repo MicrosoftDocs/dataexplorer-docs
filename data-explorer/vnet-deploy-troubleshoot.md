@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: basaba
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/24/2020
 ---
 
@@ -64,7 +64,7 @@ If you're experiencing ingestion issues and you suspect it's related to virtual 
 
 ### Check ingestion health
 
-Check that the [cluster ingestion metrics](using-metrics.md#ingestion-health-and-performance-metrics) indicate a healthy state.
+Check that the [cluster ingestion metrics](using-metrics.md#ingestion-metrics) indicate a healthy state.
 
 ### Check security rules on data source resources
 

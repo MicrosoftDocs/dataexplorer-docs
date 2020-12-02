@@ -16,7 +16,7 @@ The Kusto.Ingest library is preferred for ingesting data to Azure Data Explorer.
 This article shows you how, by using *Queued Ingestion* to Azure Data Explorer for production-grade pipelines.
 
 > [!NOTE]
-> The code below is written in C#, and makes use of the Azure Storage SDK, the ADAL Authentication library, and the NewtonSoft.JSON package, to simplify the sample code. If needed, the corresponding code can be replaced with appropriate [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) calls, [non-.NET ADAL package](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries), and any available JSON handling package.
+> The code below is written in C#, and makes use of the Azure Storage SDK, the ADAL Authentication library, and the NewtonSoft.JSON package, to simplify the sample code. If needed, the corresponding code can be replaced with appropriate [Azure Storage REST API](/rest/api/storageservices/blob-service-rest-api) calls, [non-.NET ADAL package](/azure/active-directory/develop/active-directory-authentication-libraries), and any available JSON handling package.
 
 This article deals with the recommended mode of ingestion. For the Kusto.Ingest library, its corresponding entity is the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) interface. Here, the client code interacts with the Azure Data Explorer service by posting ingestion notification messages to an Azure queue. References to the messages are obtained from the Kusto Data Management (also known as the Ingestion) service. Interaction with the service must be authenticated with Azure Active Directory (Azure AD).
 
@@ -98,7 +98,7 @@ public static void IngestSingleFile(string file, string db, string table, string
 ### Obtain authentication evidence from Azure AD
 
 Here we use ADAL to obtain an Azure AD token to access the Kusto Data Management service and ask for its input queues.
-ADAL is available on [non-Windows platforms](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) if needed.
+ADAL is available on [non-Windows platforms](/azure/active-directory/develop/active-directory-authentication-libraries) if needed.
 
 ```csharp
 // Authenticates the interactive user and retrieves Azure AD Access token for specified resource
@@ -212,7 +212,7 @@ internal static string RetrieveKustoIdentityToken(string ingestClusterBaseUri, s
 
 ### Upload data to the Azure Blob container
 
-This step is about uploading a local file to an Azure Blob that will be handed off for ingestion. This code uses the Azure Storage SDK. If dependency isn't possible, it can be achieved with [Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-rest-api).
+This step is about uploading a local file to an Azure Blob that will be handed off for ingestion. This code uses the Azure Storage SDK. If dependency isn't possible, it can be achieved with [Azure Blob Service REST API](/rest/api/storageservices/fileservices/blob-service-rest-api).
 
 ```csharp
 // Uploads a single local file to an Azure Blob container, returns blob URI and original data size
@@ -277,8 +277,8 @@ internal static string PrepareIngestionMessage(string db, string table, string d
 Finally, post the message that you constructed, to the selected ingestion queue that you obtained from Azure Data Explorer.
 
 > [!NOTE]
-> .Net storage client, when used, encodes the message to base64 by default. For more information, see [storage docs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet-legacy#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage).
-If you are NOT using that client, make sure to properly encode the message content.
+> .Net storage client versions below v12, by default, encode the message to base64 For more information, see [storage docs](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.encodemessage?view=azure-dotnet-legacy#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_EncodeMessage).
+If you are using .Net storage client versions above v12, you must properly encode the message content.
 
 ```csharp
 internal static void PostMessageToQueue(string queueUriWithSas, string message)

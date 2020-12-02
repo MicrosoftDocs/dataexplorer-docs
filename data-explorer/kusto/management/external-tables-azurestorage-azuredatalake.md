@@ -14,11 +14,13 @@ ms.date: 03/24/2020
 
 The following command describes how to create an external table located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2. 
 
+For an introduction to the external Azure Storage tables feature, see [Query data in Azure Data Lake using Azure Data Explorer](../../data-lake-query-data.md).
+
 ## .create or .alter external table
 
 **Syntax**
 
-(`.create` | `.alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
 `kind` `=` (`blob` | `adl`)  
 [`partition` `by` `(` *[Partitions](#partitions)* `)` [`pathformat` `=` `(` *[PathFormat](#path-format)* `)`]]  
 `dataformat` `=` *[Format](#format)*  
@@ -28,7 +30,7 @@ The following command describes how to create an external table located in Azure
 Creates or alters a new external table in the database in which the command is executed.
 
 > [!NOTE]
-> * If the table exists, `.create` command will fail with an error. Use `.alter` to modify existing tables. 
+> * If the table exists, `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
 > * Altering the schema, format, or the partition definition of an external blob table isn't supported. 
 > * The operation requires [database user permission](../management/access-control/role-based-authorization.md) for `.create` and [table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
 
@@ -76,6 +78,7 @@ Partitions list is any combination of partition columns, specified using one of 
   *PartitionName* `:` `datetime` `=` (`startofyear` \| `startofmonth` \| `startofweek` \| `startofday`) `(` *ColumnName* `)`  
   *PartitionName* `:` `datetime` `=` `bin` `(` *ColumnName* `,` *TimeSpan* `)`
 
+To check partitioning definition correctness, use the property `sampleUris` when creating an external table.
 
 <a name="path-format"></a>
 *PathFormat*
@@ -108,6 +111,8 @@ By default, datetime values are rendered using the following formats:
 
 If *PathFormat* is omitted from the external table definition, it's assumed that all partitions, in exactly the same order as they're defined, are separated using `/` separator. Partitions are rendered using their default string presentation.
 
+To check path format definition correctness, use the property `sampleUris` when creating an external table.
+
 <a name="format"></a>
 *Format*
 
@@ -133,11 +138,11 @@ See [storage connection strings](../api/connection-strings/storage.md) for detai
 | `folder`         | `string` | Table's folder                                                                     |
 | `docString`      | `string` | String documenting the table                                                       |
 | `compressed`     | `bool`   | If set, indicates whether the files are compressed as `.gz` files (used in [export scenario](data-export/export-data-to-an-external-table.md) only) |
-| `includeHeaders` | `string` | For CSV or TSV files, indicates whether files contain a header                     |
+| `includeHeaders` | `string` | For delimited text formats (CSV, TSV, ...), indicates whether files contain a header. Possible values are: `All` (all files contain a header), `FirstFile` (first file in a folder contains a header), `None` (no files contain a header). |
 | `namePrefix`     | `string` | If set, indicates the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
 | `fileExtension`  | `string` | If set, indicates file extensions of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
 | `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
-| `sampleUris`     | `bool`   | If set, the command result provides several examples of external data files URI as they are expected by the external table definition. |
+| `sampleUris`     | `bool`   | If set, the command result provides several examples of external data files URI as they are expected by the external table definition (the samples are returned in the second result table). This option helps validate whether *[Partitions](#partitions)* and *[PathFormat](#path-format)* parameters are defined properly. |
 | `validateNotEmpty` | `bool`   | If set, the connection strings are validated for having content in them. The command will fail if the specified URI location doesn't exist, or if there are insufficient permissions to access it. |
 
 > [!TIP]
@@ -209,6 +214,14 @@ dataformat=csv
 with (fileExtension = ".txt")
 ```
 
+To filter by partition columns in a query, specify original column name in query predicate:
+
+```kusto
+external_table("ExternalTable")
+ | where Timestamp between (datetime(2020-01-01) .. datetime(2020-02-01))
+ | where CustomerName in ("John.Doe", "Ivan.Ivanov")
+```
+
 **Sample Output**
 
 |TableName|TableType|Folder|DocString|Properties|ConnectionStrings|Partitions|PathFormat|
@@ -234,8 +247,13 @@ dataformat=parquet
 )
 ```
 
-> [!NOTE]
-> Currently, virtual columns aren't supported for the following data formats: `CSV`, `TSV`, `TSVE`, `SCsv`, `SOHsv`, `PSV`, `RAW` and `TXT`.
+To filter by virtual columns in a query, specify partition names in query predicate:
+
+```kusto
+external_table("ExternalTable")
+ | where Date between (datetime(2020-01-01) .. datetime(2020-02-01))
+ | where CustomerName in ("John.Doe", "Ivan.Ivanov")
+```
 
 <a name="file-filtering"></a>
 **File filtering logic**
@@ -253,7 +271,7 @@ When querying an external table, the query engine improves performance by filter
 Once all the conditions are met, the file is fetched and processed by the query engine.
 
 > [!NOTE]
-> Initial URI pattern is built using query predicate values. This works best for a limited set of string values as well as for a closed time ranges. 
+> Initial URI pattern is built using query predicate values. This works best for a limited set of string values as well as for a closed time ranges.
 
 ## .show external table artifacts
 
@@ -273,6 +291,8 @@ where *MaxResults* is an optional parameter, which can be set to limit the numbe
 | Output parameter | Type   | Description                       |
 |------------------|--------|-----------------------------------|
 | Uri              | string | URI of external storage data file |
+| Size             | long   | File length in bytes              |
+| Partition        | dynamic | Dynamic object describing file partitions for partitioned external table |
 
 > [!TIP]
 > Iterating on all files referenced by an external table can be quite costly, depending on the number of files. Make sure to use `limit` parameter if you just want to see some URI examples.
@@ -285,9 +305,19 @@ where *MaxResults* is an optional parameter, which can be set to limit the numbe
 
 **Output:**
 
-| Uri                                                                     |
-|-------------------------------------------------------------------------|
-| `https://storageaccount.blob.core.windows.net/container1/folder/file.csv` |
+| Uri                                                                     | Size | Partition |
+|-------------------------------------------------------------------------| ---- | --------- |
+| `https://storageaccount.blob.core.windows.net/container1/folder/file.csv` | 10743 | `{}`   |
+
+
+For partitioned table, `Partition` column will contain extracted partition values:
+
+**Output:**
+
+| Uri                                                                     | Size | Partition |
+|-------------------------------------------------------------------------| ---- | --------- |
+| `https://storageaccount.blob.core.windows.net/container1/customer=john.doe/dt=20200101/file.csv` | 10743 | `{"Customer": "john.doe", "Date": "2020-01-01T00:00:00.0000000Z"}` |
+
 
 ## .create external table mapping
 
@@ -360,5 +390,6 @@ Drops the mapping from the database.
 ```
 ## Next steps
 
-* [External table general control commands](externaltables.md)
-* [Create and alter external SQL tables](external-sql-tables.md)
+* [Query external tables](../../data-lake-query-data.md).
+* [Export data to an external table](data-export/export-data-to-an-external-table.md).
+* [Continuous data export to an external table](data-export/continuous-data-export.md).

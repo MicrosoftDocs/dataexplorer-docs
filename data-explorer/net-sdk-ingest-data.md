@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: vladikb
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/07/2020
 
 # Customer intent: As a .NET SDK developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
@@ -13,7 +13,14 @@ ms.date: 07/07/2020
 
 # Ingest data using the Azure Data Explorer .NET SDK 
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides two client libraries for .NET: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) and [a data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). For more information on .NET SDK, see [about .NET SDK](/azure/data-explorer/kusto/api/netfx/about-the-sdk).
+> [!div class="op_single_selector"]
+> * [.NET](net-sdk-ingest-data.md)
+> * [Python](python-ingest-data.md)
+> * [Node](node-ingest-data.md)
+> * [Go](go-ingest-data.md)
+> * [Java](java-ingest-data.md)
+
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides two client libraries for .NET: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) and [a data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). For more information on .NET SDK, see [about .NET SDK](./kusto/api/netfx/about-the-sdk.md).
 These libraries enable you to ingest (load) data into a cluster and query data from your code. In this article, you first create a table and data mapping in a test cluster. You then queue an ingestion to the cluster and validate the results.
 
 ## Prerequisites
@@ -24,7 +31,7 @@ These libraries enable you to ingest (load) data into a cluster and query data f
 
 ## Install the ingest library
 
-```
+```azurecli
 Install-Package Microsoft.Azure.Kusto.Ingest
 ```
 
@@ -34,13 +41,13 @@ Install-Package Microsoft.Azure.Kusto.Ingest
 
 To authenticate an application, Azure Data Explorer SDK uses your AAD tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
 
-```
+```http
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
 For example, if your domain is *contoso.com*, the URL is: [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Click this URL to see the results; the first line is as follows. 
 
-```
+```console
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
@@ -202,7 +209,7 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
             IgnoreFirstRecord = true
         };
 
-    ingestClient.IngestFromStorageAsync(blobPath, ingestionProperties: properties);
+    ingestClient.IngestFromStorageAsync(blobPath, ingestionProperties: properties).GetAwaiter().GetResult();
 }
 ```
 

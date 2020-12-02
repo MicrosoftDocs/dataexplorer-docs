@@ -4,7 +4,7 @@ description: This article describes sql_request plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
@@ -15,9 +15,12 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-  `evaluate` `sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)`
-
 The `sql_request` plugin sends a SQL query to a SQL Server network endpoint and returns the first rowset in the results.
+The query may return more then one rowset, but only the first rowset is made available for the rest of the Kusto query.
+
+## Syntax
+
+  `evaluate` `sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)`
 
 ## Arguments
 

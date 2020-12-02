@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/15/2019
 
 #Customer intent: I want to use Azure Data Factory to load data into Azure Data Explorer so that I can analyze it later.

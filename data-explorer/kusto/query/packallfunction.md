@@ -4,7 +4,7 @@ description: This article describes pack_all() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,13 +13,12 @@ ms.date: 02/13/2020
 
 Creates a `dynamic` object (property bag) from all the columns of the tabular expression.
 
+> [!NOTE]
+> The representation of the returned object isn't guaranteed to be byte-level-compatible between runs. For example, properties that appear in the bag may appear in a different order.
+
 ## Syntax
 
 `pack_all()`
-
-**Notes**
-
-The representation of the returned object isn't guaranteed to be byte-level-compatible between runs. For example, properties that appear in the bag may appear in a different order.
 
 ## Examples
 
@@ -43,6 +42,7 @@ datatable(SourceNumber:string,TargetNumber:string,CharsCount:long)
 ]
 | extend Packed=pack_all()
 ```
+
 Returns:
 
 |TableName |SourceNumber |TargetNumber | Packed

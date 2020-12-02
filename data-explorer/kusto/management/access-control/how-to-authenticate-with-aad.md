@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.custom: has-adal-ref
+ms.custom: has-adal-ref, devx-track-js
 ms.date: 09/13/2019
 ---
 # How-To Authenticate with AAD for Azure Data Explorer Access
@@ -128,7 +128,7 @@ see [https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet]
 for an example of doing so from a .NET application.
 
 To authenticate users for Azure Data Explorer access, an application must first be granted the
-`Access Kusto` delegated permission. Please see [Kusto guide to AAD applications provisioning](how-to-provision-aad-app.md#set-up-delegated-permissions-for-kusto-service-application)
+`Access Kusto` delegated permission. Please see [Kusto guide to AAD applications provisioning](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration)
 for details.
 
 The following brief code snippet demonstrates using ADAL to acquire an AAD user
@@ -214,7 +214,7 @@ the administrator of the AAD tenant.
 // Create Auth Context for AAD (common or tenant-specific endpoint):
 AuthenticationContext authContext = new AuthenticationContext("AAD Authority URL");
 
-// Exchange your token for for Kusto token.
+// Exchange your token for a Kusto token.
 // You will need to provide your application's client ID and secret to authenticate your application
 var tokenForKusto = authContext.AcquireTokenAsync(
     "https://{serviceNameAndRegion}.kusto.windows.net",
@@ -240,7 +240,7 @@ var queryResult = client.ExecuteQuery(databaseName, query, null);
 **AAD application configuration**
 
 > [!NOTE]
-> In addition to the standard [steps](./how-to-provision-aad-app.md) you need to
+> In addition to the standard [steps](../../../provision-azure-ad-app.md) you need to
 > follow in order to setup an AAD app, you should also enable oauth implicit flow
 > in your AAD application. You can achieve that by selecting manifest from your
 >application page in the azure portal, and set oauth2AllowImplicitFlow to true.

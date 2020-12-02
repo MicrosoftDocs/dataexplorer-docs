@@ -4,7 +4,7 @@ description: This article describes top-nested operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -84,7 +84,7 @@ This operator returns a table that has two columns for each aggregation clause:
 * One column holds the result of the *Aggregation*
   calculation (having the column name *AggregationName* if specified)
 
-**Comments**
+## Notes
 
 Input columns that aren't specified as *`Expr`* values aren't outputted.
 To get all values at a certain level, add an aggregation count that:

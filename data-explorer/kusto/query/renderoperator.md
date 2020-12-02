@@ -4,10 +4,11 @@ description: This article describes render operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/29/2020
+ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -36,7 +37,7 @@ Where:
 
 |*Visualization*     |Description|
 |--------------------|-|
-| `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
+| `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
 | `areachart`        | Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |
 | `barchart`         | First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.|
 | `card`             | First result record is treated as set of scalar values and shows as a card. |
@@ -120,8 +121,8 @@ These are:
 |               |`unstacked`        |Same as `default`.                 |
 |               |`stacked`          |Stack "columns" one atop the other.|
 |               |`stacked100`       |Stack "columns" and stretch each one to the same height as the others.|
+|`scatterchart` |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point. Series column is optional.|
 |`piechart`     |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point, color-axis and numeric. Supported in Kusto Explorer desktop.|
-|`scatterchart` |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point. Series column is optional. Supported in Kusto Explorer desktop.|
 
 ::: zone pivot="azuredataexplorer"
 
@@ -170,8 +171,8 @@ range x from -2 to 2 step 0.1
 
 ::: zone pivot="azuredataexplorer"
 
-[Rendering examples in the tutorial](./tutorial.md#render-display-a-chart-or-table).
+[Rendering examples in the tutorial](./tutorial.md#displaychartortable)
 
-[Anomaly detection](./samples.md#get-more-out-of-your-data-in-kusto-with-machine-learning)
+[Anomaly detection](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
 
 ::: zone-end

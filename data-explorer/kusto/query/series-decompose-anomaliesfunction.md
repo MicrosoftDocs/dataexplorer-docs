@@ -4,7 +4,7 @@ description: This article describes series_decompose_anomalies() in Azure Data E
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/28/2019
@@ -39,7 +39,7 @@ The function takes an expression containing a series (dynamic numerical array) a
 For more information on residual time series, see [series_outliers](series-outliersfunction.md)
 * *Seasonality_threshold*: The threshold for seasonality score when *Seasonality* is set to autodetect. The default score threshold is `0.6`. For more information, see [series_periods_detect](series-periods-detectfunction.md)
 
-**Return**
+## Returns
 
  The function returns the following respective series:
 

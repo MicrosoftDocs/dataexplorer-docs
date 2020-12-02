@@ -4,7 +4,7 @@ description: This article describes bin_at() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -22,8 +22,8 @@ Rounds values down to a fixed-size "bin", with control over the bin's starting p
 
 * *Expression*: A scalar expression of a numeric type (including `datetime` and `timespan`)
   indicating the value to round.
-* *BinSize*: A scalar constant of the same type as *Expression* indicating
-  the size of each bin. 
+* *BinSize*: A scalar constant of a numeric type or `timespan` (for a `datetime` or `timespan` *Expression*) indicating
+  the size of each bin.
 * *FixedPoint*: A scalar constant of the same type as *Expression* indicating
   one value of *Expression* which is a "fixed point" (that is, a value `fixed_point`
   for which `bin_at(fixed_point, bin_size, fixed_point) == fixed_point`.)

@@ -4,7 +4,7 @@ description: This article describes todouble()/toreal() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -16,6 +16,9 @@ Converts the input to a value of type `real`. (`todouble()` and `toreal()` are s
 ```kusto
 toreal("123.4") == 123.4
 ```
+
+> [!NOTE]
+> Prefer using [double() or real()](./scalar-data-types/real.md) when possible.
 
 ## Syntax
 
@@ -30,5 +33,3 @@ toreal("123.4") == 123.4
 
 If conversion is successful, the result is a value of type `real`.
 If conversion is not successful, the result is the value `real(null)`.
-
-*Note*: Prefer using [double() or real()](./scalar-data-types/real.md) when possible.

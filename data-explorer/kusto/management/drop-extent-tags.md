@@ -31,8 +31,8 @@ There are two ways to specify which tags should be removed from which extents:
 
 `async` (optional): Execute the command asynchronously.
    * An Operation ID (Guid) is returned.
-   * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command.
-   * Use the [.show operation details](operations.md#show-operation-details) command to retrieve the results of a successful execution.
+   * The operation's status can be monitored. Use the [`.show operations`](operations.md#show-operations) command.
+   * Use the [`.show operation details`](operations.md#show-operation-details) command to retrieve the results of a successful execution.
 
 ## Restrictions
 

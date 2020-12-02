@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tomersh26
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/20/2020
 
 #Customer intent: I want to use Azure Data Factory to integrate with Azure Data Explorer.
@@ -31,6 +31,7 @@ Azure Data Explorer is supported by Azure IR (Integration Runtime), used when da
 ### Lookup activity
  
 The Lookup activity is used for executing queries on Azure Data Explorer. The result of the query will be returned as the output of the Lookup activity, and can be used in the next activity in the pipeline as described in the [ADF Lookup documentation](/azure/data-factory/control-flow-lookup-activity#use-the-lookup-activity-result-in-a-subsequent-activity).  
+
 In addition to the response size limit of 5,000 rows and 2 MB, the activity also has a query timeout limit of 1 hour.
 
 ### Command activity
@@ -68,7 +69,7 @@ See the following table for a comparison of the Copy activity and `.export` comm
 |---|---|---|
 | **Flow description** | ADF executes a query on Kusto, processes the result, and sends it to the target data store. <br>(**ADX > ADF > sink data store**) | ADF sends an `.export` control command to Azure Data Explorer, which executes the command, and sends the data directly to the target data store. <br>(**ADX > sink data store**) |
 | **Supported target data stores** | A wide variety of [supported data stores](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLSv2, Azure Blob, SQL Database |
-| **Performance** | Centralized | <ul><li>Distributed (default), exporting data from multiple nodes concurrently</li><li>Faster and COGS efficient.</li></ul> |
+| **Performance** | Centralized | <ul><li>Distributed (default), exporting data from multiple nodes concurrently</li><li>Faster and COGS (cost of goods sold) efficient.</li></ul> |
 | **Server limits** | [Query limits](kusto/concepts/querylimits.md) can be extended/disabled. By default, ADF queries contain: <ul><li>Size limit of 500,000 records or 64 MB.</li><li>Time limit of 10 minutes.</li><li>`noTruncation` set to false.</li></ul> | By default, extends or disables the query limits: <ul><li>Size limits are disabled.</li><li>Server timeout is extended to 1 hour.</li><li>`MaxMemoryConsumptionPerIterator` and `MaxMemoryConsumptionPerQueryPerNode` are extended to max (5 GB, TotalPhysicalMemory/2).</li></ul>
 
 > [!TIP]
@@ -83,7 +84,7 @@ See the following table for a comparison of the Copy activity, and ingestion com
 | | Copy activity | Ingest from query<br> `.set-or-append` / `.set-or-replace` / `.set` / `.replace` | Ingest from storage <br> `.ingest` |
 |---|---|---|---|
 | **Flow description** | ADF gets the data from the source data store, converts it into a tabular format, and does the required schema-mapping changes. ADF then uploads the data to Azure blobs, splits it into chunks, then downloads the blobs to ingest them into the ADX table. <br> (**Source data store > ADF > Azure blobs > ADX**) | These commands can execute a query or a `.show` command, and ingest the results of the query into a table (**ADX > ADX**). | This command ingests data into a table by "pulling" the data from one or more cloud storage artifacts. |
-| **Supported source data stores** |  [variety of options](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2, Azure Blob, SQL (using the sql_request plugin), Cosmos (using the cosmosdb_sql_request plugin), and any other data store that provides HTTP or Python APIs. | Filesystem, Azure Blob Storage, ADLS Gen 1, ADLS Gen 2 |
+| **Supported source data stores** |  [variety of options](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2, Azure Blob, SQL (using the [sql_request() plugin](kusto/query/sqlrequestplugin.md)), Cosmos (using the [cosmosdb_sql_request plugin](kusto\query\mysqlrequest-plugin.md)), and any other data store that provides HTTP or Python APIs. | Filesystem, Azure Blob Storage, ADLS Gen 1, ADLS Gen 2 |
 | **Performance** | Ingestions are queued and managed, which ensures small-size ingestions and assures high availability by providing load balancing, retries and error handling. | <ul><li>Those commands weren't designed for high volume data importing.</li><li>Works as expected and cheaper. But for production scenarios and when traffic rates and data sizes are large, use the Copy activity.</li></ul> |
 | **Server Limits** | <ul><li>No size limit.</li><li>Max timeout limit: 1 hour per ingested blob. |<ul><li>There's only a size limit on the query part, which can be skipped by specifying `noTruncation=true`.</li><li>Max timeout limit: 1 hour.</li></ul> | <ul><li>No size limit.</li><li>Max timeout limit: 1 hour.</li></ul>|
 

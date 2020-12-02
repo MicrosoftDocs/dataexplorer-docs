@@ -4,7 +4,7 @@ description: This article describes make_set_if() (aggregation function) in Azur
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -33,7 +33,7 @@ The array's sort order is undefined.
 > [!TIP]
 > To only count the distinct values, use [dcountif()](dcountif-aggfunction.md)
 
-**See also**
+## See also
 
 [`make_set`](./makeset-aggfunction.md) function, which does the same, without predicate expression.
 

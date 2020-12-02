@@ -4,10 +4,11 @@ description: This article describes mv-expand operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2019
+ms.localizationpriority: high
 ---
 # mv-expand operator
 
@@ -26,11 +27,11 @@ Expands multi-value array or property bag.
 * *ColumnName:* In the result, arrays in the named column are expanded to multiple rows. 
 * *ArrayExpression:* An expression yielding an array. If this form is used, a new column is added and the existing one is preserved.
 * *Name:* A name for the new column.
-* *Typename:* Indicates the underlying type of the array's elements, which becomes the type of the column produced by the operator. Nonconforming values in the array won't be converted. Instead, these values will take on a `null` value.
+* *Typename:* Indicates the underlying type of the array's elements, which becomes the type of the column produced by the `mv-apply` operator. The operation of applying type is cast-only and doesn't include parsing or type-conversion. Array elements that do not conform with the declared type will become `null` values.
 * *RowLimit:* The maximum number of rows generated from each original row. The default is 2147483647. 
 
-  > [!Note]
-  > The legacy and obsolete form of the operator `mvexpand` has a default row limit of 128.
+  > [!NOTE]
+  > `mvexpand` is a legacy and obsolete form of the operator `mv-expand`. The legacy version has a default row limit of 128.
 
 * *IndexColumnName:* If `with_itemindex` is specified, the output will include an additional column (named *IndexColumnName*), which contains the index (starting at 0) of the item in the original expanded collection. 
 
@@ -84,17 +85,24 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 
 If you want to get a Cartesian product of expanding two columns, expand one after the other:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://kuskusdfv3.kusto.windows.net/Kuskus -->
 ```kusto
-datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), dynamic([5])]
-| mv-expand b 
+datatable (a:int, b:dynamic, c:dynamic)
+  [
+  1,
+  dynamic({"prop1":"a", "prop2":"b"}),
+  dynamic([5, 6])
+  ]
+| mv-expand b
 | mv-expand c
 ```
 
 |a|b|c|
 |---|---|---|
-|1|{"prop1":"a"}|5|
-|1|{"prop2":"b"}|5|
+|1|{  "prop1": "a"}|5|
+|1|{  "prop1": "a"}|6|
+|1|{  "prop2": "b"}|5|
+|1|{  "prop2": "b"}|6|
 
 ### Convert output
 

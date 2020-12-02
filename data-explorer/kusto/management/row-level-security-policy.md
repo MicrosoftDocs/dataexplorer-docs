@@ -1,15 +1,15 @@
 ---
-title: RowLevelSecurity policy (Preview) - Azure Data Explorer | Microsoft Docs
-description: This article describes RowLevelSecurity policy (Preview) in Azure Data Explorer.
+title: RowLevelSecurity policy - Azure Data Explorer | Microsoft Docs
+description: This article describes RowLevelSecurity policy in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/25/2020
+ms.date: 10/11/2020
 ---
-# row_level_security policy command (Preview)
+# row_level_security policy command
 
 This article describes commands used for configuring a [row_level_security policy](rowlevelsecuritypolicy.md) for database tables.
 
@@ -45,7 +45,7 @@ This is useful if you want to try various queries for row_level_security, but do
 > The following restrictions apply to the `query`:
 >
 > * The query should produce exactly the same schema as the table on which the policy is defined. That is, the query's result should return exactly the same columns as the original table, in the same order, with the same names and types.
-> * The query can only use the following operators: `extend`, `where`, `project`, `project-away`, `project-rename`, `project-reorder`, `join` and `union`.
+> * The query can only use the following operators: `extend`, `where`, `project`, `project-away`, `project-keep`, `project-rename`, `project-reorder`, `join` and `union`.
 > * The query can't reference other tables on which RLS is enabled.
 > * The query can be any of the following, or a combination of them:
 >    * Query (for example, `<table_name> | extend CreditCardNumber = "****"`)

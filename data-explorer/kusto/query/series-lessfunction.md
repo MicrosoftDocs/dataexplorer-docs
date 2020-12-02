@@ -4,7 +4,7 @@ description: This article describes series_less() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
@@ -37,7 +37,7 @@ print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 |---|---|---|
 |[1,2,4]|[4,2,1]|[true,false,false]|
 
-**See also**
+## See also
 
 For entire series statistics comparisons, see:
 * [series_stats()](series-statsfunction.md)

@@ -4,10 +4,11 @@ description: This article describes union operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
+ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -104,7 +105,7 @@ with [view keyword](./letstatement.md)
 ::: zone-end
 
 
-## Example
+## Example: Tables with string in name or column
 
 ```kusto
 union K* | where * has "Kusto"
@@ -112,7 +113,7 @@ union K* | where * has "Kusto"
 
 Rows from all tables in the database whose name starts with `K`, and in which any column includes the word `Kusto`.
 
-## Example
+## Example: Distinct count
 
 ```kusto
 union withsource=SourceTable kind=outer Query, Command

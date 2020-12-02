@@ -4,7 +4,7 @@ description: This article describes bag_keys() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -12,6 +12,8 @@ ms.date: 10/23/2018
 # bag_keys()
 
 Enumerates all the root keys in a dynamic property-bag object.
+
+## Syntax
 
 `bag_keys(`*dynamic object*`)`
 

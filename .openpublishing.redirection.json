@@ -51,9 +51,44 @@
         "redirect_document_id": true
       },
       {
-      "source_path": "data-explorer/kusto/api/netfx/kusto-ingest-queued-ingest-sample.md",
-      "redirect_url": "/azure/data-explorer/net-sdk-ingest-data",
-      "redirect_document_id": false
+        "source_path": "data-explorer/kusto/api/netfx/kusto-ingest-queued-ingest-sample.md",
+        "redirect_url": "/azure/data-explorer/net-sdk-ingest-data",
+        "redirect_document_id": false
+      },
+      {
+      "source_path": "data-explorer/manage-cluster-security.md",
+      "redirect_url": "/azure/data-explorer/cluster-disk-encryption",
+      "redirect_document_id": true
+      },
+      {
+      "source_path": "data-explorer/kusto/management/externaltables.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/external-table-commands",
+      "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/eventhub.md",
+        "redirect_url": "/azure/data-explorer/ingest-data-event-hub-overview",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/eventgrid.md",
+        "redirect_url": "/azure/data-explorer/ingest-data-event-grid-overview",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/iothub.md",
+        "redirect_url": "/azure/data-explorer/ingest-data-iot-hub-overview",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/azure-notebooks.md",
+        "redirect_url": "/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "data-explorer/management/best-practices.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/management-best-practices",
+        "redirect_document_id": true
       }
     ]
   }

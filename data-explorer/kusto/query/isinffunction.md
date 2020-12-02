@@ -4,7 +4,7 @@ description: This article describes isinf() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -25,7 +25,7 @@ Returns whether input is an infinite (positive or negative) value.
 
 A non-zero value (true) if x is a positive or negative infinite; and zero (false) otherwise.
 
-**See also**
+## See also
 
 * For checking if value is null, see [isnull()](isnullfunction.md).
 * For checking if value is finite, see [isfinite()](isfinitefunction.md).

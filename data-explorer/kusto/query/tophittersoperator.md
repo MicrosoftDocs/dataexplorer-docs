@@ -4,7 +4,7 @@ description: This article describes top-hitters operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -16,6 +16,10 @@ Returns an approximation of the first *N* results (assuming skewed distribution 
 ```kusto
 T | top-hitters 25 of Page by Views 
 ```
+
+> [!NOTE]
+> `top-hitters` is an approximation algorithm and should be used when running with large data. 
+> The approximation of the the top-hitters is based on the [Count-Min-Sketch](https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch) algorithm.  
 
 ## Syntax
 
@@ -29,16 +33,11 @@ T | top-hitters 25 of Page by Views
     * *expression*: top-hitters will return *NumberOfRows* rows which have an approximated maximum of sum(*expression*). Expression can be a column, or any other expression that evaluates to a number. 
     *  If *expression* is not mentioned, top-hitters algorithm will count the occurrences of the *sort-key*.  
 
-**Notes**
+## Examples
 
-`top-hitters` is an approximation algorithm and should be used when running with large data. 
-The approximation of the the top-hitters is based on the [Count-Min-Sketch](https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch) algorithm.  
+### Get most frequent items 
 
-## Example
-
-## Getting top hitters (most frequent items) 
-
-The next example shows how to find top-5  languages with most pages in Wikipedia (accessed after during April 2016). 
+The next example shows how to find top-5 languages with most pages in Wikipedia (accessed after during April 2016). 
 
 ```kusto
 PageViews
@@ -54,7 +53,7 @@ PageViews
 |ru|227003107|
 |fr|207943448|
 
-## Getting top hitters (based on column value) ***
+### Get top hitters based on column value
 
 The next example shows how to find most viewed English pages of Wikipedia of the year 2016. 
 The query uses 'Views' (integer number) to calculate page popularity (number of views). 
