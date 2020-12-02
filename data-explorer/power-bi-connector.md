@@ -73,7 +73,7 @@ First, you connect to the Azure Data Explorer help cluster, then you bring in a 
 
     ![Sign in](media/power-bi-connector/sign-in.png)
 
-1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents** then **Edit**.
+1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents** then **Edit**. Note: the center button may say "Transform Data" instead of "Edit". If so, click Transform Data.
 
     ![Select table](media/power-bi-connector/select-table.png)
 
