@@ -53,7 +53,7 @@ Now add the test cluster you created.
 
 1. Select **Add Cluster**.
 
-1. In the **Add Cluster** dialog box, enter your test cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**. For example, https://mydataexplorercluster.westus.kusto.windows.net as in the following image:
+1. In the **Add Cluster** dialog box, enter your test cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**. For example, `https://mydataexplorercluster.westus.kusto.windows.net` as in the following image:
 
     :::image type="content" source="media/web-query-data/server-uri.png" alt-text="Enter test cluster URL":::
     
