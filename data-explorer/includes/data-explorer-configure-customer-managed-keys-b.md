@@ -20,12 +20,22 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
 
 ## Configure the key vault access policy
 
-Next, configure the access policy for the key vault so that the cluster has permissions to access it. In this step, you'll use the system-assigned managed identity that you previously assigned to the cluster. To set the access policy for the key vault, call [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy). Replace the placeholder values in brackets with your own values and use the variables defined in the previous examples.
+Next, configure the access policy for the key vault so that the cluster has permissions to access it. In this step, you'll use either the system-assigned or user-assigned managed identity that you previously assigned to the cluster. To set the access policy for the key vault, call [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy). Replace the placeholder values in brackets with your own values and use the variables defined in the previous examples.
+For system assigned identity use the cluster's principalId:
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy `
     -VaultName $keyVault.VaultName `
     -ObjectId $cluster.Identity.PrincipalId `
+    -PermissionsToKeys wrapkey,unwrapkey,get,recover
+```
+
+For user assigned identity use the user's identity principalId:
+
+```azurepowershell-interactive
+Set-AzKeyVaultAccessPolicy `
+    -VaultName $keyVault.VaultName `
+    -ObjectId $userIdentity.Properties.PrincipalId `
     -PermissionsToKeys wrapkey,unwrapkey,get,recover
 ```
 

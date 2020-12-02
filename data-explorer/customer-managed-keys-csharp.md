@@ -67,9 +67,10 @@ By default, Azure Data Explorer encryption uses Microsoft-managed keys. Configur
     var resourceGroupName = "testrg";
     var clusterName = "mykustocluster";
     var keyName = "myKey";
-    var keyVersion = "5b52b20e8d8a42e6bd7527211ae32654";
+    var keyVersion = "5b52b20e8d8a42e6bd7527211ae32654"; // Optional, leave as NULL for the latest version of the ley
     var keyVaultUri = "https://mykeyvault.vault.azure.net/";
-    var keyVaultProperties = new KeyVaultProperties (keyName, keyVersion, keyVaultUri);
+    var keyVaultIdentity = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/identityResourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"; // use NULL if you want to use system assigned identity
+    var keyVaultProperties = new KeyVaultProperties (keyName, keyVersion, keyVaultUri, keyVaultIdentity);
     var clusterUpdate = new ClusterUpdate(keyVaultProperties: keyVaultProperties);
     await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdate);
     ```

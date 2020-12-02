@@ -26,6 +26,8 @@ ms.date: 01/06/2020
 
 In this section, you configure customer-managed keys using Azure Resource Manager templates. By default, Azure Data Explorer encryption uses Microsoft-managed keys. In this step, configure your Azure Data Explorer cluster to use customer-managed keys and specify the key to associate with the cluster.
 
+If you are using a system assigned identity to access the key vault, leave `userIdentity` empty, otherwise set the identity's resource id.
+
 You can deploy the Azure Resource Manager template by using the Azure portal or using PowerShell.
 
 ```json
@@ -64,7 +66,8 @@ You can deploy the Azure Resource Manager template by using the Azure portal or 
         "keyVaultProperties": {
           "keyVaultUri": "<keyVaultUri>",
           "keyName": "<keyName>",
-          "keyVersion": "<keyVersion"
+          "keyVersion": "<keyVersion>",
+          "userIdentity": "<userIdentity>"
         }
       }
     }
@@ -82,4 +85,3 @@ When you create a new version of a key, you'll need to update the cluster to use
 * [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md)
 * [Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal](cluster-disk-encryption.md) by enabling encryption at rest.
 * [Configure customer-managed-keys using C#](customer-managed-keys-csharp.md)
-
