@@ -1715,7 +1715,7 @@
         href: ./kusto/concepts/data-purge.md
     - name: Errors and failures
       items: 
-      - name: Error codes 
+      - name: Ingestion error codes 
         href: error-codes.md    
       - name: Ingestion failures
         href: ./kusto/management/ingestionfailures.md
