@@ -162,7 +162,7 @@ Shows information on active stored query results.
 
 ### .drop stored_query_result
 
-Deletes an active stored query result created in current database by current principal.
+Deletes an active stored query result created in the current database by the current principal.
 
 #### Syntax
 
@@ -172,7 +172,7 @@ Deletes an active stored query result created in current database by current pri
 
 #### Returns
 
-The command returns information about deleted stored query results, for example:
+Returns information about deleted stored query results, for example:
 
 | StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
@@ -190,7 +190,7 @@ Deletes active stored query results created in the current database by the speci
 
 #### Returns
 
-This command returns info on deleted stored query results.
+Returns information on deleted stored query results.
 
 Example:
 
