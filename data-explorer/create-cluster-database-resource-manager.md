@@ -83,17 +83,17 @@ In this article, you use an [existing quickstart template](https://raw.githubuse
               "enableDiskEncryption": false,
               "enableStreamingIngest": false,
               "virtualNetworkConfiguration":{
-                  "subnetId": <subnet resource id>,
-                  "enginePublicIpId": <Engine service's public IP address resource id>,
-                  "dataManagementPublicIpId": <Data management's service public IP address resource id>
+                  "subnetId": "<subnet resource id>",
+                  "enginePublicIpId": "<Engine service's public IP address resource id>",
+                  "dataManagementPublicIpId": "<Data management's service public IP address resource id>"
               },
               "keyVaultProperties":{
-                  "keyName": <Key name>,
-                  "keyVaultUri": <Key vault uri>
+                  "keyName": "<Key name>",
+                  "keyVaultUri": "<Key vault uri>"
               },
               "enablePurge": false,
               "enableDoubleEncryption": false,
-              "engineType": V3,
+              "engineType": "V3",
           }
       },
       {
