@@ -551,7 +551,7 @@ AzureActivity
 
 ## Show *n* rows: *take*
 
-[NetworkMonitoring](/azure/azure-monitor/reference/tables/networkmonitoring) contains monitoring data for Azure virtual networks. Let's use the [take](./takeoperator.md) operator to look at five random sample rows in that table. The [take](./takeoperator.md) shows a certain number of rows from a table in no particular order:
+[NetworkMonitoring](/azure/azure-monitor/reference/tables/networkmonitoring) contains monitoring data for Azure virtual networks. Let's use the [take](./takeoperator.md) operator to look at ten random sample rows in that table. The [take](./takeoperator.md) shows a certain number of rows from a table in no particular order:
 
 ```kusto
 NetworkMonitoring
