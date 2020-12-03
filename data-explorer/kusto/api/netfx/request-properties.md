@@ -14,25 +14,20 @@ ms.date: 09/23/2019
 When a request is made from Kusto through the .NET SDK, provide:
 
 * A connection string indicating the service endpoint to connect to, authentication parameters, and similar connection-related information. Programmatically, the connection string is represented via the `KustoConnectionStringBuilder`class.
-
 * The name of the database that is used to describe the "scope" of the request.
-
 * The text of the request (query or command) itself.
-
 * Additional properties that the client provides to the service, and that are applied to the request. Programmatically, these properties are held by a class called [`ClientRequestProperties`](#clientrequestproperties).
 
 ## ClientRequestProperties
 
-Client request properties can be useful in the following ways: 
-* Makes debugging easier. For example, the properties may provide correlation strings that are used to track client/service interactions. 
-* Affects what limits and policies get applied to the request. 
-* [Query parameters](../../query/queryparametersstatement.md) let client applications parameterize Kusto queries based on user input. For more information, see [list of supported properties](#options).
+Client request properties can affect what limits and policies get applied to the request.
 
 The `Kusto.Data.Common.ClientRequestProperties` class holds three kinds of data:
 
 * [Named properties](#named-properties)
+    * These properties make debugging easier. For example, the properties may provide correlation strings that are used to track client/service interactions. 
 * [ClientRequestProperties options](#clientrequestproperties-options) - A mapping of an option name to an option value.
-* [Query parameters](../../query/queryparametersstatement.md)  - A mapping of a query parameter name to a query parameter value.
+* [Query parameters](../../query/queryparametersstatement.md)  - A mapping of a query parameter name to a query parameter value. These parameters let client applications parameterize Kusto queries based on user input.
 
 ## Named properties
 
