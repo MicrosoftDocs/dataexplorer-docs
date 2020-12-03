@@ -14,17 +14,16 @@ ms.date: 12/3/2020
 
 Saves the results of a heavyweight query and retrieves it quickly.
 
-Use cases of stored query results:
-* Implement results pagination. A stored query result is created based on a query, and a preview is shown on the first page. Every subsequent page shows the next portion of the pre-calculated result without the need to run the initial query again.
+The stored query results are in preview phase, and shouldn't be used for production scenarios. `Database User` or a higher access role is required for creating and using stored query results.
+
+Several use cases are:
+* Implement results pagination. 
+    * A stored query result is created based on a query, and a preview is shown on the first page. Every subsequent page shows the next portion of the pre-calculated result without the need to run the initial query again.
 * Temporarily save query results during data exploration.
-
-`Database User` or a higher access role is required for creating and using stored query results.
-
-The stored query results are in preview phase. We recommend that you don't use this feature for production scenarios.
 
 > [!NOTE] 
 > * Stored query results can be accessed for up to 24 hours from the moment of creation.
-> * Updates to security policies (for example, database access, row level security, etc.) are not propagated to stored query results. Database administrators can use [command](#drop-stored\_query\_results) for deleting stored query results created by a specific principal.
+> * Updates to security policies (for example, database access, row level security, etc.) are not propagated to stored query results.
 > * A stored query result can only be accessed by the same principal identity that created it.
 > * Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, it's recommended that the query includes unique ID columns. For more information, see [examples](#examples).
 > * If there are multiple result sets returned by a query, only the first result set will be stored.
