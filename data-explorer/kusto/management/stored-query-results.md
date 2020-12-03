@@ -14,9 +14,9 @@ ms.date: 12/3/2020
 
 Saves the results of a heavyweight query and retrieves it quickly.
 
-The stored query results are in preview phase, and shouldn't be used for production scenarios. `Database User` or a higher access role is required for creating and using stored query results.
+The stored query results are in preview phase, and shouldn't be used for production scenarios. Using stored query results requires `Database User` or a higher access role.
 
-Several use cases are:
+Stored query results can be useful in the following scenarios:
 * Implement results pagination. 
     * A stored query result is created based on a query, and a preview is shown on the first page. Every subsequent page shows the next portion of the pre-calculated result without the need to run the initial query again.
 * Temporarily save query results during data exploration.
@@ -32,30 +32,21 @@ Several use cases are:
 
 **Syntax**
 
-`.set` `stored_query_result` *[StoredQueryResultName](#name)* 
-[`with` `(`*[PropertyName](#properties)* `=` *[PropertyValue](#properties)* `,` ... `)`]
-<| *[Query](#query)*
+`.set` `stored_query_result` *StoredQueryResultName* 
+[`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`]
+<| *Query*
 
-**Parameters**
+**Arguments**
 
-<a name="name"></a>
-*StoredQueryResultName*
-
-Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.
-
-<a name="query"></a>
-*Query*
-
-A potentially heavyweight KQL query whose results will be stored.
-
-<a name="properties"></a>
-*Optional Properties*
-
-| Property       | Type       | Description       |
-|----------------|------------|-------------------------------------------------------------------------------------|
-| `expiresAfter` | `timespan` | A timespan literal indicating when the stored query result should be expired (can't be more than 24 hours). |
-| `previewCount` | `int`      | The number of rows to return in a preview. Setting this property to `0` (default) makes the command return all the query result rows. |
-| `distributed`  | `bool`     | Indicates that the command stores query results from all nodes executing the query in parallel. Default is "true". Setting `distributed` flag to "false" is useful when the amount of data produced by a query is small, or a number of cluster nodes is large, to prevent creating many small data shards. |
+* *StoredQueryResultName*: Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.
+* *Query*: A potentially heavyweight KQL query whose results will be stored.
+* *PropertyName*: (all properties are optional)
+    
+    | Property       | Type       | Description       |
+    |----------------|------------|-------------------------------------------------------------------------------------|
+    | `expiresAfter` | `timespan` | A timespan literal indicating when the stored query result should be expired (can't be more than 24 hours). |
+    | `previewCount` | `int`      | The number of rows to return in a preview. Setting this property to `0` (default) makes the command return all the query result rows. |
+    | `distributed`  | `bool`     | Indicates that the command stores query results from all nodes executing the query in parallel. Default is "true". Setting `distributed` flag to "false" is useful when the amount of data produced by a query is small, or a number of cluster nodes is large, to prevent creating many small data shards. |
 
 ## Retrieve a stored query result
 
@@ -67,7 +58,7 @@ To retrieve a stored query result, use `stored_query_result()` function in your 
 
 ### Simple query
 
-An example of storing a simple query result:
+Storing a simple query result:
 
 <!-- csl -->
 ```kusto
@@ -166,7 +157,7 @@ Deletes an active stored query result created in the current database by the cur
 
 #### Syntax
 
-`.drop` `stored_query_result` *[StoredQueryResultName](#name)*
+`.drop` `stored_query_result` *StoredQueryResultName*
 
 `Database User` permission is required for invoking this command.
 
