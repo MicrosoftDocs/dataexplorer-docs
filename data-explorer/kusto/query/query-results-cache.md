@@ -35,9 +35,9 @@ The query results cache returns results only for queries that are considered "id
 * The two queries have the same representation (as UTF-8 strings).
 * The two queries are made to the same database.
 * The two queries share the same [client request properties](../api/netfx/request-properties.md). The following properties are ignored for caching purposes:
-   * [ClientRequestId](../api/netfx/request-properties.md#the-clientrequestid-x-ms-client-request-id-named-property)
-   * [Application](../api/netfx/request-properties.md#the-application-x-ms-app-named-property)
-   * [User](../api/netfx/request-properties.md#the-user-x-ms-user-named-property)
+   * [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id)
+   * [Application](../api/netfx/request-properties.md#application-x-ms-app)
+   * [User](../api/netfx/request-properties.md#user-x-ms-user)
 
 ### Incompatible queries
 
@@ -66,7 +66,7 @@ When responding to a query, Kusto sends an additional [ExtendedProperties](../ap
 Cached query results will have an additional row appended to that table:
 * The row's `Key` column will contain the string `ServerCache`
 * The row's `Value` column will contain a property bag with two fields:
-   * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/netfx/request-properties.md#the-clientrequestid-x-ms-client-request-id-named-property).
+   * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id).
    * `OriginalStartedOn` - Specifies the original request's execution start time.
 
 ## Distribution
