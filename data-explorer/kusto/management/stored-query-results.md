@@ -1,18 +1,18 @@
 ---
-title: Stored Query Results (Preview) - Azure Data Explorer | Microsoft Docs
+title: Stored query results (Preview) - Azure Data Explorer
 description: This article describes how to create and use stored query results in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: mispecto
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/12/2020
+ms.date: 12/3/2020
 ---
 
 # Stored query results (Preview)
 
-Save results of a heavyweight query and retrieve it quickly, when needed.
+Saves the results of a heavyweight query and retrieves it quickly.
 
 Use cases of stored query results:
 * Implement results pagination. A stored query result is created based on a query, and a preview is shown on the first page. Every subsequent page shows the next portion of the pre-calculated result without the need to run the initial query again.
@@ -20,15 +20,14 @@ Use cases of stored query results:
 
 `Database User` or a higher access role is required for creating and using stored query results.
 
-The stored query results are in preview phase. We recommend that you don't create a production dependency on this feature, at this time.
+The stored query results are in preview phase. We recommend that you don't use this feature for production scenarios.
 
 > [!NOTE] 
 > * Stored query results can be accessed for up to 24 hours from the moment of creation.
-> * Updates to security policies (e.g. database access, row level security, etc.) are not propagated to stored query results. Database administrators can use [command](#drop-stored\_query\_results) for deleting stored query results created by a specific principal.
+> * Updates to security policies (for example, database access, row level security, etc.) are not propagated to stored query results. Database administrators can use [command](#drop-stored\_query\_results) for deleting stored query results created by a specific principal.
 > * A stored query result can only be accessed by the same principal identity that created it.
 > * Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, it's recommended that the query includes unique ID columns. For more information, see [examples](#examples).
 > * If there are multiple result sets returned by a query, only the first result set will be stored.
-
 
 ## Store the results of a query
 
@@ -57,7 +56,7 @@ A potentially heavyweight KQL query whose results will be stored.
 |----------------|------------|-------------------------------------------------------------------------------------|
 | `expiresAfter` | `timespan` | A timespan literal indicating when the stored query result should be expired (can't be more than 24 hours). |
 | `previewCount` | `int`      | The number of rows to return in a preview. Setting this property to `0` (default) makes the command return all the query result rows. |
-| `distributed`  | `bool`     | Indicates that the command stores query results from all nodes executing the query in parallel. Default is "true". Setting `distributed` flag to "false" is useful when the amount of data produced by a query is small, or a number of cluster nodes is big, to prevent creating many small data shards. |
+| `distributed`  | `bool`     | Indicates that the command stores query results from all nodes executing the query in parallel. Default is "true". Setting `distributed` flag to "false" is useful when the amount of data produced by a query is small, or a number of cluster nodes is large, to prevent creating many small data shards. |
 
 ## Retrieve a stored query result
 
@@ -65,10 +64,9 @@ To retrieve a stored query result, use `stored_query_result()` function in your 
 
 `stored_query_result` `(` 'StoredQueryResultName' `)` `|` ...
 
-
 ## Examples
 
-### Simple example
+### Simple query
 
 An example of storing a simple query result:
 
@@ -77,7 +75,7 @@ An example of storing a simple query result:
 .set stored_query_result Numbers <| range X from 1 to 1000000 step 1
 ```
 
-Output:
+**Output:**
 
 | X |
 |---|
@@ -93,7 +91,7 @@ Retrieve stored query result:
 stored_query_result("Numbers")
 ```
 
-Output:
+**Output:**
 
 | X |
 |---|
@@ -102,9 +100,9 @@ Output:
 | 3 |
 | ... |
 
-### Pagination example
+### Pagination
 
-Retrieve clicks by Ad network and day for the last 7 days:
+Retrieve clicks by Ad network and day, for the last seven days:
 
 <!-- csl -->
 ```kusto
@@ -117,7 +115,7 @@ Events
 | project Num=row_number(), Day, AdNetwork, Count
 ```
 
-Example output:
+**Output:**
 
 | Num | Day | AdNetwork | Count |
 |-----|-----|-----------|-------|
@@ -126,7 +124,7 @@ Example output:
 | 3 | 2020-01-01 00:00:00.0000000 | PieAds | 379 |
 | ... | ... | ... | ... |
 
-Retrieve next page:
+Retrieve the next page:
 
 <!-- csl -->
 ```kusto
@@ -134,7 +132,7 @@ stored_query_result("DailyClicksByAdNetwork7Days")
 | where Num between(100 .. 200)
 ```
 
-Example output:
+**Output:**
 
 | Num | Day | AdNetwork | Count |
 |-----|-----|-----------|-------|
@@ -143,28 +141,27 @@ Example output:
 | 102 | 2020-01-02 00:00:00.0000000 | SuperAds | 123 |
 | ... | ... | ... | ... |
 
-
 ## Control commands
 
-### show stored\_query\_results
+### .show stored_query_results
 
 Shows information on active stored query results.
 
- * Users with `DatabaseAdmin` or `DatabaseMonitor` permissions can inspect presence of active stored query results in context of the database.
- * Users with `DatabaseUser` or `DatabaseViewer` permissions can inspect presence of active stored query results created by their principal.
+>[!NOTE]
+> * Users with `DatabaseAdmin` or `DatabaseMonitor` permissions can inspect the presence of active stored query results in the context of the database.
+> * Users with `DatabaseUser` or `DatabaseViewer` permissions can inspect the presence of active stored query results created by their principal.
 
 #### Syntax
 
 `.show` `stored_query_results`
 
-#### Result
+#### Returns
 
 | StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
 | c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
 
-
-### drop stored\_query\_result
+### .drop stored_query_result
 
 Deletes an active stored query result created in current database by current principal.
 
@@ -174,7 +171,7 @@ Deletes an active stored query result created in current database by current pri
 
 `Database User` permission is required for invoking this command.
 
-#### Result
+#### Returns
 
 The command returns info on deleted stored query result, for example:
 
@@ -182,8 +179,7 @@ The command returns info on deleted stored query result, for example:
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
 | c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
 
-
-### drop stored\_query\_results
+### .drop stored_query_results
 
 Deletes active stored query results created in current database by the specified principal.
 
@@ -193,9 +189,9 @@ Deletes active stored query results created in current database by the specified
 
 `.drop` `stored_query_results` `created-by` *PrincipalName*
 
-#### Result
+#### Returns
 
-The command returns info on deleted stored query results.
+This command returns info on deleted stored query results.
 
 Example:
 
