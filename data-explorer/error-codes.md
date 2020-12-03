@@ -10,7 +10,6 @@ ms.date: 11/11/2020
 ---
 # Ingestion error codes in Azure Data Explorer
 
-
 The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). When you enable failed ingestion [diagnostic logs](using-diagnostic-logs.md#ingestion-logs-schema) on your cluster, you can see error codes in the **Failed ingestion** operation log. Monitor the **ingestion result** [metric](using-metrics.md#ingestion-metrics) to see the **Category** of ingestion errors, but not the specific error message itself. Errors below are organized by such categories. 
 
 > [!NOTE]
