@@ -33,7 +33,7 @@ the source data is sorted.
 
 ## Paging of query results
 
-For paging support, please refer to [Stored Query Results](../management/storedqueryresults.md) (the feature is currently in preview).
+For paging support, please refer to [Stored Query Results](../management/stored-query-results.md) (the feature is currently in preview).
 
 Other methods for implementing paging may include:
 
