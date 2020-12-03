@@ -1,5 +1,5 @@
 ---
-title: Ingestion rror codes in Azure Data Explorer
+title: Ingestion error codes in Azure Data Explorer
 description: This topic lists ingestion error codes in Azure Data Explorer 
 author: orspod
 ms.author: orspodek
