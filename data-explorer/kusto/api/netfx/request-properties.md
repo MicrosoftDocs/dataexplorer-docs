@@ -24,8 +24,7 @@ Client request properties can affect what limits and policies get applied to the
 
 The `Kusto.Data.Common.ClientRequestProperties` class holds three kinds of data:
 
-* [Named properties](#named-properties)
-    * These properties make debugging easier. For example, the properties may provide correlation strings that are used to track client/service interactions. 
+* [Named properties](#named-properties) - These properties make debugging easier. For example, the properties may provide correlation strings that are used to track client/service interactions. 
 * [ClientRequestProperties options](#clientrequestproperties-options) - A mapping of an option name to an option value.
 * [Query parameters](../../query/queryparametersstatement.md)  - A mapping of a query parameter name to a query parameter value. These parameters let client applications parameterize Kusto queries based on user input.
 
