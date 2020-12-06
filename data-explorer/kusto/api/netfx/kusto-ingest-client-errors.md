@@ -190,6 +190,4 @@ Base Class: [AggregateException](/dotnet/api/system.aggregateexception)
 |IngestionErrors | IList<IngestClientException>    | The errors that occur while attempting to ingest, and the sources related to them
 |IsGlobalError   | bool                            | Indicates whether the exception occurred for all sources
 
-## Next Steps
 
-For more information about errors in native code, see [Errors in native code](../../concepts/errorsinnativecode.md).
