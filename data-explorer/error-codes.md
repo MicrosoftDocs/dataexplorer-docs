@@ -53,7 +53,7 @@ The following list contains error codes you may come across during [ingestion](i
 |Download_SourceNotFound                           |Failed to download source from Azure Storage. Source not found.       |Permanent       |
 |BadRequest_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about Azure Data Explorer naming convention, see [Entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent           |
 |BadRequest_MalformedIngestionProperty              |Ingestion property is malformed.    |Permanent           |
-| BadRequest_IngestionPropertyNotSupportedInThisContext | BadRequest | Permanent
+| BadRequest_IngestionPropertyNotSupportedInThisContext | Ingestion property is not supported in this context| Permanent
 
 ## Category: DataAccessNotAuthorized
 
