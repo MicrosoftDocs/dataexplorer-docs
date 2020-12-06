@@ -71,7 +71,7 @@ The following list contains error codes you may come across during [ingestion](i
 |---|---|---|
 |Download_NotTransient                             |Failed to download source from Azure storage. Not transient error occurred                   |Permanent           |
 |Download_UnknownError                             |Failed to download source from Azure storage. Unknown error occurred              |Transient           |
-|
+
 
 ## Category: EntityNotFound
 
