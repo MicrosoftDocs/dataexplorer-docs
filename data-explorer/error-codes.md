@@ -10,7 +10,7 @@ ms.date: 11/11/2020
 ---
 # Ingestion error codes in Azure Data Explorer
 
-The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). When you enable failed ingestion [diagnostic logs](using-diagnostic-logs.md#ingestion-logs-schema) on your cluster, you can see error codes in the **Failed ingestion** operation log. You can also monitor the **ingestion result** [metric](using-metrics.md#ingestion-metrics) to see the **Category** of ingestion errors, but not the specific error code. Errors below are organized by such categories. 
+The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). When you enable failed ingestion [diagnostic logs](using-diagnostic-logs.md#ingestion-logs-schema) on your cluster, you can see error codes in the **Failed ingestion** operation log. You can alternatively monitor the **ingestion result** [metric](using-metrics.md#ingestion-metrics) to see the **Category** of ingestion errors, but not the specific error code. Errors below are organized by such categories. 
 
 > [!NOTE]
 > If the error is transient, retrying ingestion may succeed.
@@ -40,7 +40,10 @@ The following list contains error codes you may come across during [ingestion](i
 |BadRequest_InvalidOrEmptyTableName                |Table name is empty or invalid.<br>For more information about Azure Data Explorer naming convention, see [Entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent          |
 |BadRequest_EmptyDatabaseName                      |Database name is empty.             |Permanent          |
 |BadRequest_EmptyMappingReference                  |Some formats should get ingestion mapping to be ingested and the mapping reference is empty.<br>For more information about mapping, see [Data Mapping](./kusto/management/mappings.md).        |Permanent           |
+|Download_BadRequest                               |Failed to download source from Azure Storage because of bad request.    |Permanent           |
+|BadRequest_MissingMappingtFailure                 |Avro and Json formats must be ingested with ingestionMapping or ingestionMappingReference parameter.         |Permanent           |
 |Stream_NoDataToIngest                             |Found no data to ingest.<br>For data in JSON format, this error may indicate that the JSON format was invalid.        |Permanent          |
+|Stream_DynamicPropertyBagTooLarge                 |The data contains too large values in a dynamic column. HRESULT: 0x80DA000E         |Permanent          |
 |General_BadRequest                                |Bad request.            |Permanent           |
 |BadRequest_CorruptedMessage                       |Message is corrupted.    |Permanent           |
 |BadRequest_SyntaxError                            |Request syntax error.     |Permanent           |
@@ -94,9 +97,6 @@ The following list contains error codes you may come across during [ingestion](i
 |General_TransientSchemaMismatch                   |Schema of target table when starting the ingestion doesn't match the schema when committing the ingestion.         |Transient           |
 |Timeout                                            |The operation has been aborted because of timeout.     |Transient           |
 |BadRequest_MessageExhausted                       |Failed to ingest data since ingestion reached the maximum retry attempts or the maximum retry period.<br>Retrying ingestion may succeed.   |Transient          |
-|Stream_DynamicPropertyBagTooLarge                 |The data contains too large values in a dynamic column. HRESULT: 0x80DA000E         |Permanent          |
-|Download_BadRequest                               |Failed to download source from Azure Storage because of bad request.    |Permanent           |
-|BadRequest_MissingMappingtFailure                 |Avro and Json formats must be ingested with ingestionMapping or ingestionMappingReference parameter.         |Permanent           |
 
 ## Category: UpdatePolicyFailure
 
