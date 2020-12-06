@@ -33,15 +33,14 @@ the source data is sorted.
 
 ## Paging of query results
 
-For paging support, please refer to [Stored Query Results](../management/stored-query-results.md) .
+Methods for implementing paging include:
 
-Other methods for implementing paging may include:
-
-* Exporting the result of a query to an external storage and paging through the
+* Export the result of a query to an external storage and paging through the
    generated data.
-
-* Writing a middle-tier application that provides a stateful paging API by caching
+* Write a middle-tier application that provides a stateful paging API by caching
    the results of a Kusto query.
+* Use pagination in [Stored query results](../management/stored-query-results.md#pagination) .
+
 
 ## See also
 
