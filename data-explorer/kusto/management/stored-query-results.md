@@ -23,7 +23,7 @@ Stored query results can be useful in the following scenarios:
 
 > [!NOTE] 
 > * Stored query results can be accessed for up to 24 hours from the moment of creation.
-> * Updates to security policies (for example, database access, row level security, etc.) are not propagated to stored query results.
+> * Updates to security policies (for example, database access, row level security, etc.) are not propagated to stored query results. Use [.drop stored_query_results](#drop-stored_query_results) in case of user permission revocation.
 > * A stored query result can only be accessed by the same principal identity that created it.
 > * Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, it's recommended that the query includes unique ID columns. For more information, see [examples](#examples).
 > * If there are multiple result sets returned by a query, only the first result set will be stored.
@@ -44,9 +44,9 @@ Stored query results can be useful in the following scenarios:
     
     | Property       | Type       | Description       |
     |----------------|------------|-------------------------------------------------------------------------------------|
-    | `expiresAfter` | `timespan` | A timespan literal indicating when the stored query result should be expired (can't be more than 24 hours). |
+    | `expiresAfter` | `timespan` | A timespan literal indicating when the stored query result will expire (maximum of 24 hours). |
     | `previewCount` | `int`      | The number of rows to return in a preview. Setting this property to `0` (default) makes the command return all the query result rows. |
-    | `distributed`  | `bool`     | Indicates that the command stores query results from all nodes executing the query in parallel. Default is "true". Setting `distributed` flag to "false" is useful when the amount of data produced by a query is small, or a number of cluster nodes is large, to prevent creating many small data shards. |
+    | `distributed`  | `bool`     | Indicates that the command stores query results from all nodes executing the query in parallel. Default is *true*. Setting `distributed` flag to *false* is useful when the amount of data produced by a query is small, or a number of cluster nodes is large, to prevent creating many small data shards. |
 
 ## Retrieve a stored query result
 
