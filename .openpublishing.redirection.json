@@ -89,6 +89,11 @@
         "source_path": "data-explorer/management/best-practices.md",
         "redirect_url": "/azure/data-explorer/kusto/management/management-best-practices",
         "redirect_document_id": true
+      },
+      {
+      "source_path": "data-explorer/kusto/concepts/errorsinnativecode.md",
+      "redirect_url": "/azure/data-explorer/error-codes",
+      "redirect_document_id": true
       }
     ]
   }
