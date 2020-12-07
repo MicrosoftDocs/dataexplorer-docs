@@ -1405,8 +1405,7 @@
       href: ./kusto/management/index.md
     - name: Schema
       items:
-      - name: Best practices for schema design
-        displayName: management
+      - name: Best practices for schema management
         href: ./kusto/management/management-best-practices.md
       - name: Databases
         href: ./kusto/management/databases.md
