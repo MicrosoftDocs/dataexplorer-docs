@@ -1366,8 +1366,6 @@
         href: ./kusto/concepts/runawayqueries.md
       - name: Overflows
         href: ./kusto/concepts/overflow.md
-      - name: Errors in native code
-        href: ./kusto/concepts/errorsinnativecode.md
   - name: Reference material for Kusto Query Language
     items:
     - name: RE2 syntax
@@ -1691,8 +1689,6 @@
         href: ./kusto/management/commands.md
       - name: Commands and queries
         href: ./kusto/management/commands-and-queries.md
-      - name: Ingestion failures
-        href: ./kusto/management/ingestionfailures.md
       - name: Operations
         href: ./kusto/management/operations.md
     - name: Access control
@@ -1732,6 +1728,12 @@
         href: ./kusto/management/cluster-follower.md
       - name: Data purge
         href: ./kusto/concepts/data-purge.md
+    - name: Errors and failures
+      items: 
+      - name: Ingestion error codes 
+        href: error-codes.md    
+      - name: Ingestion failures
+        href: ./kusto/management/ingestionfailures.md
   - name: API
     items:
     - name: API overview
@@ -1800,18 +1802,24 @@
         - name: Kusto.Ingest overview
           href: ./kusto/api/netfx/about-kusto-ingest.md
         - name: Permissions
+          displayName: Kusto.Ingest 
           href: ./kusto/api/netfx/kusto-ingest-client-permissions.md
         - name: Client reference
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-reference.md
         - name: Errors and exceptions
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-errors.md
         - name: Operation status
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-status.md
         - name: Kusto.Ingest best practices
           href: ./kusto/api/netfx/kusto-ingest-best-practices.md
         - name: Code samples
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-examples.md
         - name: HowTo Data Ingestion with REST API
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-rest.md
     - name: Python SDK
       items:
