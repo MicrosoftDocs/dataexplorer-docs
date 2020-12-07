@@ -43,8 +43,8 @@ If several columns or expressions are specified, they're expanded in parallel. F
 The expanded column always has dynamic type. Use a cast such as `todatetime()` or `tolong()` if you want to compute or aggregate values.
 
 Two modes of property-bag expansions are supported:
-* `bagexpansion=bag`: Property bags are expanded into single-entry property bags. This mode is the default expansion.
-* `bagexpansion=array`: Property bags are expanded into two-element `[`*key*`,`*value*`]` array structures,
+* `bagexpansion=bag` or `kind=bag`: Property bags are expanded into single-entry property bags. This mode is the default expansion.
+* `bagexpansion=array` or `kind=array`: Property bags are expanded into two-element `[`*key*`,`*value*`]` array structures,
   allowing uniform access to keys and values (also, for example, running a distinct-count aggregation
   over property names). 
 
