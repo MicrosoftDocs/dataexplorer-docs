@@ -44,7 +44,7 @@ with the cluster.
     Update-AzKustoCluster -ResourceGroupName "mytestrg" -Name "mytestcluster" -KeyVaultPropertyKeyName "<key-name>" -KeyVaultPropertyKeyVaultUri "<key-vault-uri>" -KeyVaultPropertyKeyVersion "<key-version>"
     ```
 
-    Or set the new key using a user assigned identity.
+    Alternatively, set the new key using a user assigned identity.
 
     ```azurepowershell-interactive
     Update-AzKustoCluster -ResourceGroupName "mytestrg" -Name "mytestcluster" -KeyVaultPropertyKeyName "<key-name>" -KeyVaultPropertyKeyVaultUri "<key-vault-uri>" -KeyVaultPropertyKeyVersion "<key-version>" -KeyVaultPropertyUserIdentity "user-assigned-identity-resource-id"
