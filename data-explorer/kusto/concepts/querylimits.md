@@ -96,6 +96,13 @@ result stream returned to the client. It's also applied by default to
 any subquery that one cluster issues to another cluster
 in a cross-cluster query, with similar effects.
 
+### Setting multiple result truncation properties
+
+The following apply when using `set` statements, and/or when specifying flags in [client request properties](../api/netfx/request-properties.md).
+
+* If `notruncation` is set, and any of `truncationmaxsize`, `truncationmaxrecords` or `query_take_max_records` are also set - `notruncation` is ignored.
+* If `truncationmaxsize`, `truncationmaxrecords` and/or `query_take_max_records` are set multiple times - the *lower* value for each property applies.
+
 ## Limit on memory per iterator
 
 **Max memory per result set iterator** is another limit used by Kusto
