@@ -24,7 +24,7 @@ ms.date: 03/26/2020
 
 This article shows you how to enable customer-managed keys encryption using the Azure portal. By default, Azure Data Explorer encryption uses Microsoft-managed keys. Configure your Azure Data Explorer cluster to use customer-managed keys and specify the key to associate with the cluster.
 
-1. In the [Azure portal](https://portal.azure.com/), go to your [Azure Data Explorer cluster](create-cluster-database-portal.md#create-a-cluster) resource. 
+1. In the [Azure portal](https://portal.azure.com/), go to your [Azure Data Explorer cluster](create-cluster-database-portal.md#create-a-cluster) resource.
 1. Select **Settings** > **Encryption** in left pane of portal.
 1. In the **Encryption** pane, select **On** for the **Customer-managed key** setting.
 1. Click **Select Key**.
@@ -39,11 +39,16 @@ This article shows you how to enable customer-managed keys encryption using the 
 
     ![Select key from Azure Key Vault](media/customer-managed-keys-portal/cmk-key-vault.png)
 
+1. Under **Identity type**, select **System Assigned** or **User Assigned**. 
+1. If you select **User Assigned**, pick a user assigned identity from the dropdown.
+
+    ![Select managed identity type](media/customer-managed-keys-portal/cmk-select-user-type.png)
+
 1. In the **Encryption** pane that now contains your key, select **Save**. When CMK creation succeeds, you'll see a success message in **Notifications**.
 
-    ![Save customer-managed key](media/customer-managed-keys-portal/cmk-encryption-setting.png)
+    ![Save customer-managed key](media/customer-managed-keys-portal/cmk-before-save.png)
 
-By enabling customer-managed keys for your Azure Data Explorer cluster, you'll be creating a system assigned identity for the cluster if one doesn't exist. In addition, you'll be providing the required get, wrapKey, and unwarpKey permissions to your Azure Data Explorer cluster on the selected Key Vault and get the Key Vault properties. 
+If you select system assigned identity when enabling customer-managed keys for your Azure Data Explorer cluster, you'll create a system assigned identity for the cluster if one doesn't exist. In addition, you'll be providing the required get, wrapKey, and unwarpKey permissions to your Azure Data Explorer cluster on the selected Key Vault and get the Key Vault properties.
 
 > [!NOTE]
 > Select **Off** to remove the customer-managed key after it has been created.
@@ -54,5 +59,3 @@ By enabling customer-managed keys for your Azure Data Explorer cluster, you'll b
 * [Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal](cluster-disk-encryption.md) by enabling encryption at rest.
 * [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
 * [Configure customer-managed-keys using C#](customer-managed-keys-csharp.md)
-
-
