@@ -39,7 +39,8 @@ This article shows you how to enable customer-managed keys encryption using the 
 
     ![Select key from Azure Key Vault](media/customer-managed-keys-portal/cmk-key-vault.png)
 
-1. Select whether to use a system assigned identity or chose a user assigned identity from the dropdown
+1. Under **Identity type**, select **System Assigned** or **User Assigned**. 
+1. If you select **User Assigned**, pick a user assigned identity from the dropdown.
 
     ![Select managed identity type](media/customer-managed-keys-portal/cmk-select-user-type.png)
 
