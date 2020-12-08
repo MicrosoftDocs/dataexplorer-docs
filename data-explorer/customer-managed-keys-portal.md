@@ -48,7 +48,7 @@ This article shows you how to enable customer-managed keys encryption using the 
 
     ![Save customer-managed key](media/customer-managed-keys-portal/cmk-before-save.png)
 
-If you have selected the option of system assigned identity, then by enabling customer-managed keys for your Azure Data Explorer cluster, you'll be creating a system assigned identity for the cluster if one doesn't exist. In addition, you'll be providing the required get, wrapKey, and unwarpKey permissions to your Azure Data Explorer cluster on the selected Key Vault and get the Key Vault properties.
+If you select system assigned identity when enabling customer-managed keys for your Azure Data Explorer cluster, you'll create a system assigned identity for the cluster if one doesn't exist. In addition, you'll be providing the required get, wrapKey, and unwarpKey permissions to your Azure Data Explorer cluster on the selected Key Vault and get the Key Vault properties.
 
 > [!NOTE]
 > Select **Off** to remove the customer-managed key after it has been created.
