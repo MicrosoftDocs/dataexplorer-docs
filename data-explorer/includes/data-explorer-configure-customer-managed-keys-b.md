@@ -31,7 +31,7 @@ Set-AzKeyVaultAccessPolicy `
     -PermissionsToKeys wrapkey,unwrapkey,get
 ```
 
-For user assigned identity use the identity's principalId:
+For user assigned identity, use the identity's principalId:
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy `
