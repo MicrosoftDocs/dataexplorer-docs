@@ -190,7 +190,7 @@ When you run the sample code as is, the following actions are performed:
     cd azure-data-explorer-go-cluster-management
     ```
 
-1. The program authenticates using client credentials. Use the Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command to create a service principal. Save the client ID, client secret, and tenant ID information for use in the next step.
+1. The program authenticates using client credentials. Use the Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) command to create a service principal. Save the client ID, client secret, and tenant ID information for use in the next step.
 
 1. Export required environment variables including service principal information. Enter your subscription ID, resource group, and region where you want to create the cluster.
 
