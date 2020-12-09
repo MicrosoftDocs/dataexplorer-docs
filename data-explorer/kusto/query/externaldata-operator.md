@@ -4,7 +4,7 @@ description: This article describes the external data operator in Azure Data Exp
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
@@ -23,7 +23,7 @@ Azure Blob Storage or a file in Azure Data Lake Storage.
 ## Arguments
 
 * *ColumnName*, *ColumnType*: The arguments define the schema of the table.
-  The syntax is the same as the syntax used when defining a table in [.create table](../management/create-table-command.md).
+  The syntax is the same as the syntax used when defining a table in [`.create table`](../management/create-table-command.md).
 
 * *StorageConnectionString*: [Storage connection strings](../api/connection-strings/storage.md) that describe the storage artifacts holding the data to return.
 

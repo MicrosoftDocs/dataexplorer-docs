@@ -7,6 +7,7 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
+ms.localizationpriority: high
 ---
 
 # Kusto.Explorer installation and user interface
@@ -21,11 +22,13 @@ With Kusto.Explorer, you can:
 
 ## Installing Kusto.Explorer
 
-* Download and install the Kusto.Explorer tool from [https://aka.ms/ke](https://aka.ms/ke)
+* Download and install the Kusto.Explorer tool from:
+     * [https://aka.ms/ke](https://aka.ms/ke) (CDN location)
+     * [https://aka.ms/ke-mirror](https://aka.ms/ke-mirror) (Non-CDN location)
 
 * Instead, access your Kusto cluster with your browser at: 
-`https://<your_cluster>.kusto.windows.net.`
-     Replace &lt;your_cluster&gt; with your Azure Data Explorer cluster name.
+`https://<your_cluster>.<region>.kusto.windows.net.`
+     Replace &lt;your_cluster&gt; and &lt;region&gt; with your Azure Data Explorer cluster name and deployment region.
 
 ### Using Chrome and Kusto.Explorer
 
@@ -344,4 +347,4 @@ Learn more about Kusto.Explorer tools and utilities:
 * [Kusto.Explorer code analyzer](kusto-explorer-code-analyzer.md)
 * [Kusto.Explorer code navigation](kusto-explorer-codenav.md)
 * [Kusto.Explorer code refactoring](kusto-explorer-refactor.md)
-* [Kusto Query Language (KQL)](https://docs.microsoft.com/azure/kusto/query/)
+* [Kusto Query Language (KQL)](/azure/kusto/query/)

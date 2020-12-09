@@ -63,6 +63,6 @@ In **Resource Health** pane > **Health history**, access up to four weeks of res
 
 ## Next steps
 
-* [Configuring Resource Health alerts](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)
+* [Configuring Resource Health alerts](/azure/service-health/resource-health-alert-arm-template-guide)
 * [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md)
 * [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)

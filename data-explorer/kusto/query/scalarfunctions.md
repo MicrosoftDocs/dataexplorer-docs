@@ -78,11 +78,14 @@ ms.date: 05/27/2020
 |[array_iif()](arrayifffunction.md)|Applies element-wise iif function on arrays.|
 |[array_index_of()](arrayindexoffunction.md)|Searches the array for the specified item, and returns its position.|
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
+|[array_reverse()](array-reverse-function.md)|Reverses the order of the elements in a dynamic array.|
 |[array_rotate_left()](array_rotate_leftfunction.md)|Rotates values inside a dynamic array to the left.|
 |[array_rotate_right()](array_rotate_rightfunction.md)|Rotates values inside a dynamic array to the right.|
 |[array_shift_left()](array_shift_leftfunction.md)|Shifts values inside a dynamic array to the left.|
 |[array_shift_right()](array_shift_rightfunction.md)|Shifts values inside a dynamic array to the right.|
 |[array_slice()](arrayslicefunction.md)|Extracts a slice of a dynamic array.|
+|[array_sort_asc()](arraysortascfunction.md)|Sorts a collection of arrays in ascending order.|
+|[array_sort_desc()](arraysortdescfunction.md)|Sorts a collection of arrays in descending order.|
 |[array_split()](arraysplitfunction.md)|Builds an array of arrays split from the input array.|
 |[bag_keys()](bagkeysfunction.md)|Enumerates all the root keys in a dynamic property-bag object.|
 |[bag_merge()](bag-merge-function.md)|Merges dynamic property-bags into a dynamic property-bag with all properties merged.|
@@ -279,6 +282,7 @@ ms.date: 05/27/2020
 |-------------------------|--------------------------------------------------------|
 |[ipv4_compare()](ipv4-comparefunction.md)|Compares two IPv4 strings.|
 |[ipv4_is_match()](ipv4-is-matchfunction.md)|Matches two IPv4 strings.|
+|[ipv4_is_private()](ipv4-is-privatefunction.md)|Checks if IPv4 string address belongs to a set of private network IPs.|
 |[parse_ipv4()](parse-ipv4function.md)|Converts input string to long (signed 64-bit) number representation.|
 |[parse_ipv4_mask()](parse-ipv4-maskfunction.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
 |[ipv6_compare()](ipv6-comparefunction.md)|Compares two IPv4 or IPv6 strings.|

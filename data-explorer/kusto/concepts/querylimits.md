@@ -8,6 +8,7 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
+ms.localizationpriority: high 
 ---
 # Query limits
 
@@ -23,7 +24,8 @@ in the form of default query limits. If you're considering removing these limits
 
 * The default value of the query concurrency limit depends on the SKU cluster it's running on, and is calculated as: `Cores-Per-Node x 10`.
   * For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default Query Concurrency limit is `16 cores x10 = 160`.
-* The default value can be changed by creating a support ticket. In the future, this control will also be exposed via a control command.
+* The default value can be changed by configuring the [query throttling policy](../management/query-throttling-policy.md). 
+  * The actual number of queries that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and query patterns. Query throttling policy can be configured based on load tests performed on production-like query patterns.
 
 ## Limit on result set size (result truncation)
 
@@ -93,6 +95,13 @@ Result truncation is applied by default, not just to the
 result stream returned to the client. It's also applied by default to
 any subquery that one cluster issues to another cluster
 in a cross-cluster query, with similar effects.
+
+### Setting multiple result truncation properties
+
+The following apply when using `set` statements, and/or when specifying flags in [client request properties](../api/netfx/request-properties.md).
+
+* If `notruncation` is set, and any of `truncationmaxsize`, `truncationmaxrecords` or `query_take_max_records` are also set - `notruncation` is ignored.
+* If `truncationmaxsize`, `truncationmaxrecords` and/or `query_take_max_records` are set multiple times - the *lower* value for each property applies.
 
 ## Limit on memory per iterator
 
@@ -191,11 +200,6 @@ control commands. This value can be increased if needed (capped at one hour).
 * Also on the client side, the actual timeout value used is slightly higher
    than the server timeout value requested by the user. This difference, is to allow for network latencies.
 * To automatically use the maximum allowed request timeout, set the client request property `norequesttimeout` to `true`.
-
-<!--
-  Request timeout can also be set using a set statement, but we don't mention
-  it here since it shouldn't be used in production scenarios.
--->
 
 ## Limit on query CPU resource usage
 

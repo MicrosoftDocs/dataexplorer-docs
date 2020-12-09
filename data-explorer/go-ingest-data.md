@@ -18,6 +18,7 @@ ms.date: 08/10/2020
 > * [Python](python-ingest-data.md)
 > * [Node](node-ingest-data.md)
 > * [Go](go-ingest-data.md)
+> * [Java](java-ingest-data.md)
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides a [Go SDK client library](kusto/api/golang/kusto-golang-client-library.md) for interacting with the Azure Data Explorer service. You can use the [Go SDK](https://github.com/Azure/azure-kusto-go) to ingest, control, and query data in Azure Data Explorer clusters. 
 
@@ -148,7 +149,7 @@ The [Ingestion](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#I
     1. **Mapping creation**: `StormEvents_CSV_Mapping` mapping is created.
     1. **File ingestion**: A CSV file (in Azure Blob Storage) is queued for ingestion.
 
-1. To create a service principal for authentication, use Azure CLI with the [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command. Set the service principal information with the cluster endpoint and the database name in the form of environment variables that will be used by the program:
+1. To create a service principal for authentication, use Azure CLI with the [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) command. Set the service principal information with the cluster endpoint and the database name in the form of environment variables that will be used by the program:
 
     ```console
     export AZURE_SP_CLIENT_ID="<replace with appID>"

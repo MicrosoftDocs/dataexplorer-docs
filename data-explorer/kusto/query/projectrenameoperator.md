@@ -4,7 +4,7 @@ description: This article describes project-rename operator in Azure Data Explor
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -30,7 +30,6 @@ T | project-rename new_column_name = column_name
 ## Returns
 
 A table that has the columns in the same order as in an existing table, with columns renamed.
-
 
 ## Examples
 

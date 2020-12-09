@@ -1,6 +1,6 @@
 ---
 title: Kusto update policy management - Azure Data Explorer
-description: This article describes Update policy in Azure Data Explorer.
+description: Learn about update policy commands in Azure Data Explorer. See how to show, set, alter, and delete table update policies.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -74,7 +74,7 @@ This command sets the update policy of the specified table.
 ### Returns
 
 The command sets the table's update policy object, overriding any current policy,
-and then returns the output of the corresponding [.show table update policy](#show-update-policy) command.
+and then returns the output of the corresponding [`.show table update policy`](#show-update-policy) command.
 
 ### Example
 
@@ -133,7 +133,7 @@ This command modifies the update policy of the specified table.
 
 **Returns**
 
-The command appends to the table's update policy object, overriding any current policy, and then returns the output of the corresponding [.show table *TableName* update policy](#show-update-policy) command.
+The command appends to the table's update policy object, overriding any current policy, and then returns the output of the corresponding [`.show table *TableName* update policy`](#show-update-policy) command.
 
 **Example**
 
@@ -153,7 +153,7 @@ Deletes the update policy of the specified table.
 
 **Returns**
 
-The command deletes the table's update policy object and then returns the output of the corresponding [.show table *TableName* update policy](#show-update-policy) command.
+The command deletes the table's update policy object and then returns the output of the corresponding [`.show table *TableName* update policy`](#show-update-policy) command.
 
 **Example**
 

@@ -107,7 +107,7 @@ The following commands are relevant to _any_ external table (of any type).
 
 **Output**
 
-Returns the properties of the dropped table. For more information, see [.show external tables](#show-external-tables).
+Returns the properties of the dropped table. For more information, see [`.show external tables`](#show-external-tables).
 
 **Examples:**
 

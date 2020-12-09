@@ -60,10 +60,10 @@ Each such object is represented as a JSON property bag, with the following prope
 
 Commands to control the update policy include:
 
-* [.show table *TableName* policy update](update-policy.md#show-update-policy) shows the current update policy of a table.
-* [.alter table *TableName* policy update](update-policy.md#alter-update-policy) sets the current update policy of a table.
-* [.alter-merge table *TableName* policy update](update-policy.md#alter-merge-table-tablename-policy-update) appends to the current update policy of a table.
-* [.delete table *TableName* policy update](update-policy.md#delete-table-tablename-policy-update) appends to the current update policy of a table.
+* [`.show table *TableName* policy update`](update-policy.md#show-update-policy) shows the current update policy of a table.
+* [`.alter table *TableName* policy update`](update-policy.md#alter-update-policy) sets the current update policy of a table.
+* [`.alter-merge table *TableName* policy update`](update-policy.md#alter-merge-table-tablename-policy-update) appends to the current update policy of a table.
+* [`.delete table *TableName* policy update`](update-policy.md#delete-table-tablename-policy-update) appends to the current update policy of a table.
 
 ## Update policy is initiated following ingestion
 
@@ -73,8 +73,8 @@ Update policies take effect when data is ingested or moved to (extents are creat
 * [.ingest (inline)](../management/data-ingestion/ingest-inline.md)
 * [.set | .append | .set-or-append | .set-or-replace](../management/data-ingestion/ingest-from-query.md)
   * When the update policy is invoked as part of a  `.set-or-replace` command, the default behavior is that data in derived table(s) is replaced in the same way as in the source table.
-* [.move extents](../management/extents-commands.md#move-extents)
-* [.replace extents](../management/extents-commands.md#replace-extents)
+* [.move extents](./move-extents.md)
+* [.replace extents](./replace-extents.md)
   * The `PropagateIngestionProperties` command only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this option has no effect.
 
 ## Regular ingestion using update policy
@@ -100,7 +100,7 @@ Update policies can affect the performance of a Kusto cluster. The update policy
 
 ### Evaluate resource usage
 
-Use [.show queries](../management/queries.md), to evaluate resource usage (CPU, memory, and so on) in the following scenario:
+Use [`.show queries`](../management/queries.md), to evaluate resource usage (CPU, memory, and so on) in the following scenario:
 * The source table name (the `Source` property of the update policy) is `MySourceTable`.
 * The `Query` property of the update policy calls a function named `MyFunction()`.
 
@@ -116,7 +116,7 @@ MyFunction()
 
 By default, failure to run the update policy doesn't affect the ingestion of data to the source table. However, if the update policy is defined as `IsTransactional`:true, failure to run the policy forces the ingestion of data into the source table to fail. In some cases, ingestion of data into the source table succeeds, but the update policy fails during ingestion to the target table.
 
-Failures that occur while the policies are being updated can be retrieved using the [.show ingestion failures command](../management/ingestionfailures.md).
+Failures that occur while the policies are being updated can be retrieved using the [`.show ingestion failures` command](../management/ingestionfailures.md).
  
 ```kusto
 .show ingestion failures 

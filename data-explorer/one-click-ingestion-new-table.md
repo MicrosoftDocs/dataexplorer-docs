@@ -24,11 +24,11 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 ## Ingest new data
 
-1. In the left menu of the Web UI, right-click a *database* and select **Ingest new data (Preview)**.
+1. In the left menu of the Web UI, right-click a *database* and select **Ingest new data**.
 
     :::image type="content" source="media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png" alt-text="Ingest new data":::
 
-1. In the **Ingest new data (Preview)** window, the **Source** tab is selected. 
+1. In the **Ingest new data** window, the **Source** tab is selected. 
 
 1. Select **Create new table** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
@@ -41,23 +41,61 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 Under **Ingestion type**, do the following steps:
    
-  1. Select **from container** 
-  1. In the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size.
+  1. Select **from container** (blob container, ADLS Gen1 container, ADLS Gen2 container).
+  1. In the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container).
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container":::
 
      > [!TIP] 
      > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
 
+### Ingest from folder in a container
+
+To ingest from a specific folder within a container, generate a string of the following format:
+
+*container_path*`/`*folder_path*`;`*access_key_1*
+
+You'll use this string instead of the SAS URL in [select an ingestion type](#select-an-ingestion-type).
+
+1. Navigate to the storage account, and select **Storage Explorer > Select Blob Containers**
+
+    :::image type="content" source="media/one-click-ingestion-new-table/blob-containers.png" alt-text="Screenshot access blob containers in Azure Storage account":::
+
+1. Browse to the selected folder, and select **Copy URL**. Paste this value into a temporary file and add `;` to the end of this string.
+
+    :::image type="content" source="media/one-click-ingestion-new-table/copy-url.png" alt-text="Screenshot of copy URL in folder in blob container - Azure Storage account":::
+
+1. On the left menu under **Settings**, select **Access keys**.
+
+    :::image type="content" source="media/one-click-ingestion-new-table/copy-key-1.png" alt-text="screenshot of Access keys storage account copy Key string":::
+
+1. Under **key 1**, copy the **Key** string. Paste this value at the end of your string from step 2. 
+
+### Storage subscription error
+
+If you get the following error message when ingesting from a storage account:
+
+> Couldn't find the storage under your selected subscriptions. Please add the storage account *`storage_account_name`* subscription to your selected subscriptions in the portal.
+
+1. Select the :::image type="icon" source="media/ingest-data-one-click/directory-subscription-icon.png" border="false":::  icon from the top right menu tray. A **Directory + subscription** pane opens.
+
+1. In the **All subscriptions** dropdown, add your storage account's subscription to the selected list. 
+
+    :::image type="content" source="media/ingest-data-one-click/subscription-dropdown.png" alt-text="Screenshot of Directory + subscription pane with subscription dropdown highlighted by a red box.":::
+
+## Sample data
+
 A sample of the data appears. If you want to, filter the data to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
 
 For example, filter for all files that begin with the word *.csv* extension.
 
 :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter":::
-  
+
+The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
+
 ## Edit the schema
 
-Select **Edit schema** to view and edit your table column configuration. The system will select one of the blobs at random and the schema will be generated based on that blob. By looking at the name of the source, the service automatically identifies if it is compressed or not.
+Select **Edit schema** to view and edit your table column configuration.  By looking at the name of the source, the service automatically identifies if it is compressed or not.
 
 In the **Schema** tab:
 
@@ -80,14 +118,10 @@ In the **Mapping name** field, enter a mapping name. You can use alphanumeric ch
 
 When ingesting to a new table, alter various aspects of the table when creating the table.
 
-In the table: 
- * Double-click the new column name to edit.
- * Select new column headers and do any of the following actions:
+[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
-    [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
-
-  > [!NOTE]
-  > For tabular formats, each column can be ingested into one column in Azure Data Explorer.
+> [!NOTE]
+> For tabular formats, you can’t map a column twice. To map to an existing column, first delete the new column.
 
 [!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
 
