@@ -124,17 +124,20 @@ attached_database_configuration_properties = AttachedDatabaseConfiguration(clust
 
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
-`````
+```
+
+# [Powershell](#tab/azure-powershell)
+
 ### Attach a database using Powershell
 
-#### Needed Modules
+#### Needed modules
 
 ```
 Install : Az.Kusto
 ```
 
 
-#### Code Example
+#### Example
 
 ```Powershell
 $FollowerClustername = 'follower'
@@ -172,34 +175,7 @@ New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
 	-ErrorAction Stop 
 ````
 
-### Detach a database using Powershell
-
-#### Needed Modules
-
-```
-Install : Az.Kusto
-```
-
-#### Code Example
-
-```Powershell
-
-$FollowerClustername = 'follower'
-$FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
-$FollowerResourceGroupName = 'followerResouceGroup'
-$DatabaseName = "db"  ## Can be specific database name or * for all databases
-
-
-##Construct the Configuration name 
-
-$confignameraw = (Get-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -ResourceGroupName $FollowerResourceGroupName -SubscriptionId $FollowerClusterSubscriptionID) | Where-Object {$_.DatabaseName -eq $DatabaseName }
-$configname =$confignameraw.Name.Split("/")[1]
-
-
-Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -Name $configname -ResourceGroupName $FollowerResourceGroupName
-
-
-
+# [Resource Manager Template](#tab/azure-resource-manager)
 
 ### Attach a database using an Azure Resource Manager template
 
