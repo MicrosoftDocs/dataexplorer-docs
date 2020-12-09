@@ -136,7 +136,6 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 Install : Az.Kusto
 ```
 
-
 #### Example
 
 ```Powershell
@@ -148,22 +147,17 @@ $LeaderClustername = 'leader'
 $LeaderClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
 $LeaderClusterResourceGroup = 'leaderResouceGroup'
 $DefaultPrincipalsModificationKind = 'Union'
-
 ##Construct the LeaderClusterResourceId and Location
 $getleadercluster = Get-AzKustoCluster -Name $LeaderClustername -ResourceGroupName $LeaderClusterResourceGroup -SubscriptionId $LeaderClusterSubscriptionID -ErrorAction Stop
 $LeaderClusterResourceid = $getleadercluster.Id
 $Location = $getleadercluster.Location
-
 ##Handle the config name if all databases needs to be followed
 if($DatabaseName -eq '*')  {
         $configname = $FollowerClustername + 'config'
        } 
-
 else {
         $configname = $DatabaseName   
      }
-
-
 New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
 	-Name $configname `
 	-ResourceGroupName $FollowerResourceGroupName `
@@ -173,7 +167,7 @@ New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
 	-DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind `
 	-Location $Location `
 	-ErrorAction Stop 
-````
+```
 
 # [Resource Manager Template](#tab/azure-resource-manager)
 
