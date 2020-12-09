@@ -24,7 +24,7 @@ Stored query results can be accessed for up to 24 hours from the moment of creat
 
 Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, it's recommended that the query includes unique ID columns. For more information, see [examples](#examples). If there are multiple result sets returned by a query, only the first result set will be stored. 
 
-Using stored query results requires `Database User` or higher access role.
+Using stored query results requires `Database Viewer` or higher access role.
 
 ## Store the results of a query
 
@@ -157,7 +157,7 @@ Deletes an active stored query result created in the current database by the cur
 
 `.drop` `stored_query_result` *StoredQueryResultName*
 
-`Database User` permission is required for invoking this command.
+`Database Viewer` permission is required for invoking this command.
 
 #### Returns
 
