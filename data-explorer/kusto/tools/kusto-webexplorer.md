@@ -15,8 +15,6 @@ Kusto.WebExplorer is a web application that can be used to send queries
 and control commands to a Kusto service. The application is hosted at
 https://dataexplorer.azure.com/ and short-linked by https://aka.ms/kwe.
 
-
-
 Kusto.WebExplorer can also be hosted by other web portals in an HTML IFRAME.
 (For example, this is done by the [Azure portal](https://portal.azure.com).)
 See [Monaco IDE](../api/monaco/monaco-kusto.md) for details on how to host it
@@ -50,6 +48,25 @@ You can use pretty-print format by using the "Shift + Alt + F" shortcut key, cod
 folding (outlining), and IntelliSense.
 
 ![Animated GIF showing an Azure Data Explorer query. After the query is expanded, it changes format, appearing on one line, with pink column names.](./Images/KustoTools-WebExplorer/Formating.gif "Formating")
+
+### Error level highlighting
+
+Kusto.WebExplorer tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on). 
+
+To enable the error level highlighting:
+
+1. Click on the **Settings** wheel next to your user name.
+1. Under the **Appearance** tab, toggle the **Enable error level highlighting** option to the right. 
+
+:::image type="content" source="images/KustoTools-WebExplorer/enable-error-highlighting.gif" alt-text="Animated GIF showing how to enable error-level highlighting in the settings":::
+
+Error level color scheme in the **Light** mode:
+
+:::image type="content" source="images/KustoTools-WebExplorer/light-mode.png" alt-text="Screen shot of color legend in light mode":::
+
+Error level color scheme in the **Dark** mode:
+
+:::image type="content" source="images/KustoTools-WebExplorer/dark-mode.png" alt-text="Screen shot of color legend in dark mode":::
 
 ## Deep linking
 
