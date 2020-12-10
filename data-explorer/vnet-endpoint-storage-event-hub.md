@@ -94,7 +94,7 @@ This section shows you how to use Azure portal to add a virtual network service 
 
 1. In the Azure portal, navigate to the **Event Hubs namespace** you want to secure.
 1. On the left-hand menu, select **Networking**. This tab appears only in **standard** or **dedicated** namespaces.
-1. Select the **Firewalls and virtual networks** tab.
+1. Select the **Firewalls and virtual networks** tab. 
 
     :::image type="content" source="media/vnet-private-link-storage-event-hub/networking.png" alt-text="Networking in Event Hub":::
 
