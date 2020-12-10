@@ -161,7 +161,7 @@ var uploadOptions = new DataLakeFileUploadOptions
 
 // Write to the file
 var dataLakeFileClient = dataLakeFileSystemClient.GetFileClient(fileName);
-dataLakeFileClient.Upload(path: localFileName, uploadOptions);
+dataLakeFileClient.Upload(localFileName, uploadOptions);
 ```
 
 > [!NOTE]
