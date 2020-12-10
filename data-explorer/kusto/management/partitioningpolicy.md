@@ -122,8 +122,9 @@ The data partitioning policy has the following main properties:
   * The UTC datetime from which the policy is effective.
   * This property is optional. If it isn't specified, the policy will take effect on data ingested after the policy was applied.
   * Any non-homogeneous (non-partitioned) extents that may be dropped because of retention are ignored by the partitioning process. The extents are ignored because their creation time precedes 90% of the table's effective soft-delete period.
-    > [!NOTE]
-    > You can set a datetime value in the past and partition already-ingested data. However, this practice may significantly increase resources used in the partitioning process. 
+	> [!NOTE]
+	> You can set a datetime value in the past and partition already-ingested data. However, this practice may significantly increase resources used in the partitioning process.
+	> Consider doing so gradually, by setting the *EffectiveDateTime* to a previous `datetime` in steps of up to a few days each time you alter the policy.
 
 ### Data partitioning example
 
