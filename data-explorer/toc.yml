@@ -1890,6 +1890,9 @@
     - name: series_moving_avg_fl()
       displayName: functions library
       href: kusto/functions-library/series-moving-avg-fl.md
+    - name: series_rate_fl()
+      displayName: functions library
+      href: kusto/functions-library/series-rate-fl.md
     - name: series_rolling_fl()
       displayName: functions library
       href: kusto/functions-library/series-rolling-fl.md

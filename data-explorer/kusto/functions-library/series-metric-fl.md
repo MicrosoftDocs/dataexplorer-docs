@@ -27,7 +27,7 @@ The function `series_metric_fl()` selects and retrieves time series of metrics i
 * *labels_col*: The name of the column containing the labels dictionary.
 * *value_col*: The name of the column containing the metric value.
 * *metric_name*: The metric time series to retrieve.
-* *labels_selector*: Time series selector string, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors). It's a string containing a list of `key:value` pairs, for example `'key1:val1,key2:val2'`. Note that regular expressions are not supported.
+* *labels_selector*: Time series selector string, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors). It's a string containing a list of `key:value` pairs, for example `'key1:val1,key2:val2'`. This parameter is optional, default to empty string, that means no filtering. Note that regular expressions are not supported. 
 * *lookback*: Range vector to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#range-vector-selectors). This parameter is optional, default to 10 minutes.
 * *offset*: Offset back from current time to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#offset-modifier). Data is retrieved from *ago(offset)-lookback* to *ago(offset)*. This parameter is optional, default is 0, which means that data is retrieved up to now().
 
