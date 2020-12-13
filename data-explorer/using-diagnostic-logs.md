@@ -33,6 +33,9 @@ Diagnostic logs can be used to configure the collection of the following log dat
 >
 > Ingestion logs aren't supported for streaming ingestion, direct ingestion to the engine, ingestion from query, or set-or-append commands.
 
+> [!NOTE]
+> Failed ingestion logs are only reported for the final state of an ingest operation, unlike the (Ingestion result)[using-metrics#ingestion-metrics] metric, which is emitted for transient failures that are retried internally.
+
 * **Successful ingestion operations**: These logs have information about successfully completed ingestion operations.
 * **Failed ingestion operations**: These logs have detailed information about failed ingestion operations including error details. 
 * **Ingestion batching operations**: These logs have detailed statistics of batches ready for ingestion (duration, batch size and blobs count).
