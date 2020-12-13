@@ -22,6 +22,14 @@ The user-defined functions code is given in the articles.  It can be used within
 |[predict_fl()](predict-fl.md)|Predict using an existing trained machine learning model. |
 |[predict_onnx_fl()](predict-onnx-fl.md)| Predict using an existing trained machine learning model in ONNX format. |
 
+## PromQL functions
+
+The following section contains common [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) functions, to be used for analysis of metrics ingested to ADX by [Prometheus](https://prometheus.io/) monitoring system. All functions assume that ADX stores the metrics keeping Prometheus [data model](https://prometheus.io/docs/concepts/data_model/).
+
+|Function Name     |Description                                          |
+|-------------------------|--------------------------------------------------------|
+|[series_metric_fl()](series-metric-fl.md)|Selects and retrieves time series stored Prometheus data model. |
+
 ## Series processing functions
 
 |Function Name     |Description                                          |

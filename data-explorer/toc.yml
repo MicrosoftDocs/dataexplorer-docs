@@ -1884,6 +1884,9 @@
     - name: series_fit_poly_fl()
       displayName: functions library
       href: kusto/functions-library/series-fit-poly-fl.md
+    - name: series_metric_fl()
+      displayName: functions library
+      href: kusto/functions-library/series-metric-fl.md
     - name: series_moving_avg_fl()
       displayName: functions library
       href: kusto/functions-library/series-moving-avg-fl.md

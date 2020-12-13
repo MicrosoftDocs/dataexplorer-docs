@@ -1,0 +1,124 @@
+---
+title: series_metric_fl() - Azure Data Explorer
+description: This article describes the series_metric_fl() user-defined function in Azure Data Explorer.
+author: orspod
+ms.author: orspodek
+ms.reviewer: adieldar
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 12/13/2020
+---
+# series_metric_fl()
+
+
+The function `series_metric_fl()` selects and retrieves time series of metrics ingested to ADX by [Prometheus](https://prometheus.io/) monitoring system. The function assumes the data is stored in ADX table that is structured following [Prometheus data model](https://prometheus.io/docs/concepts/data_model/). Specifically, each record contains timestamp, metric name, metric value, and variable set of labels (`key:value` pairs). Prometheus defines a time series by its metric name and distinct set of labels. Retrieval of sets of time series is done using [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/), Prometheus query language, by specifying metric name and time series selector, which is a set of labels.
+
+> [!NOTE]
+> * `series_metric_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+
+## Syntax
+
+`T | invoke series_metric_fl(`*timestamp_col*`,` *name_col*`,` *labels_col*`,` *value_col*`,` *metric_name*`,` *labels_selector*`,` *lookback*`,` *offset*`)`
+
+## Arguments
+
+* *timestamp_col*: The name of the column containing the timestamp.
+* *name_col*: The name of the column containing the metric name.
+* *labels_col*: The name of the column containing the labels dictionary.
+* *value_col*: The name of the column containing the metric value.
+* *metric_name*: The metric time series to retrieve.
+* *labels_selector*: Time series selector string, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors). It's a string containing a list of `key:value` pairs, for example `'key1:val1,key2:val2'`. Note that regular expressions are not supported.
+* *lookback*: Range vector to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#range-vector-selectors). This parameter is optional, default to 10 minutes.
+* *offset*: Offset back from current time to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#offset-modifier). Data is retrieved from *ago(offset)-lookback* to *ago(offset)*. This parameter is optional, default is 0, which means that data is retrieved up to now().
+
+## Usage
+
+`series_metric_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+
+# [Ad hoc](#tab/adhoc)
+
+For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+let series_metric_fl=(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_col:string, value_col:string, metric_name:string, labels_selector:string='', lookback:timespan=timespan(10m), offset:timespan=timespan(0))
+{
+    let selector_d=iff(labels_selector == '', dynamic(['']), split(strcat('"', replace('([:,])','"\\1"', labels_selector), '"'), ','));
+    let etime = ago(offset);
+    let stime = etime - lookback;
+    metrics_tbl
+    | extend timestamp = column_ifexists(timestamp_col, datetime(null)), name = column_ifexists(name_col, ''), labels = column_ifexists(labels_col, dynamic(null)), value = column_ifexists(value_col, 0)
+    | extend labels = dynamic_to_json(labels)       //  convert to string and sort by key
+    | where name == metric_name and timestamp between(stime..etime)
+    | project timestamp, value, name, labels
+    | order by timestamp asc
+    | summarize timestamp = make_list(timestamp), value=make_list(value) by name, labels
+    //  KQL has native has_any(), but no native has_all(), the lines below implement has_all()
+    | mv-apply x = selector_d to typeof(string) on (
+      summarize countif(labels has x)
+      | where countif_ == array_length(selector_d)
+    )
+    | project-away countif_
+}
+;
+//
+demo_prometheus
+| invoke series_metric_fl('TimeStamp', 'Name', 'Labels', 'Val', 'writes', 'disk:sda1,host:aks-agentpool-88086459-vmss000001', offset=now()-datetime(2020-12-08 00:00))
+| render timechart with(series=labels)
+```
+
+# [Persistent](#tab/persistent)
+
+For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+
+### One-time installation
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+.create function with (folder = "Packages\\Series", docstring = "Selecting & retrieving metrics like PromQL")
+series_metric_fl(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_col:string, value_col:string, metric_name:string, labels_selector:string='', lookback:timespan=timespan(10m), offset:timespan=timespan(0))
+{
+    let selector_d=iff(labels_selector == '', dynamic(['']), split(strcat('"', replace('([:,])','"\\1"', labels_selector), '"'), ','));
+    let etime = ago(offset);
+    let stime = etime - lookback;
+    metrics_tbl
+    | extend timestamp = column_ifexists(timestamp_col, datetime(null)), name = column_ifexists(name_col, ''), labels = column_ifexists(labels_col, dynamic(null)), value = column_ifexists(value_col, 0)
+    | extend labels = dynamic_to_json(labels)       //  convert to string and sort by key
+    | where name == metric_name and timestamp between(stime..etime)
+    | project timestamp, value, name, labels
+    | order by timestamp asc
+    | summarize timestamp = make_list(timestamp), value=make_list(value) by name, labels
+    //  KQL has native has_any(), but no native has_all(), the lines below implement has_all()
+    | mv-apply x = selector_d to typeof(string) on (
+      summarize countif(labels has x)
+      | where countif_ == array_length(selector_d)
+    )
+    | project-away countif_
+}
+```
+
+### Usage
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+demo_prometheus
+| invoke series_metric_fl('TimeStamp', 'Name', 'Labels', 'Val', 'writes', 'disk:sda1,host:aks-agentpool-88086459-vmss000001', offset=now()-datetime(2020-12-08 00:00))
+| render timechart with(series=labels)
+```
+
+---
+
+:::image type="content" source="images/series-metric-fl/disk-write-metric-10m.png" alt-text="Graph showing disk write metric over 10 minutes" border="false":::
+
+## Example
+
+The following example doesn't specify selector so all 'writes' metrics are selected. It assumes that the function is already installed. It uses alternative direct calling syntax, specifying the input table as the first parameter:
+    
+    <!-- csl: https://help.kusto.windows.net:443/Samples -->
+    ```kusto
+    series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 'Val', 'writes', offset=now()-datetime(2020-12-08 00:00))
+    | render timechart with(series=labels, ysplit=axes)
+    ```
+    
+:::image type="content" source="images/series-metric-fl/all-disks-write-metric-10m.png" alt-text="Graph showing disk write metric for all disks over 10 minutes" border="false":::
+
