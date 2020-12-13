@@ -98,9 +98,10 @@ let CL1 = 'https://ade.loganalytics.io/subscriptions/<subscription-id>/resourceg
 union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 ```
 
-   ![Cross service query from the Azure Data Explorer](media/query-monitor-data/cross-query.png)](media/query-monitor-data/cross-query.png#lightbox)
+   [ ![Cross service query from the Azure Data Explorer](media/query-monitor-data/cross-query.png)](media/query-monitor-data/cross-query.png#lightbox)
 
-Using the [`join` operator](kusto/query/joinoperator.md), instead of union, may require a [`hint`](kusto/query/joinoperator.md#join-hints) to run it on an Azure Data Explorer native cluster.
+> [!TIP]
+> Using the [`join` operator](kusto/query/joinoperator.md), instead of union, may require a [`hint`](kusto/query/joinoperator.md#join-hints) to run it on an Azure Data Explorer native cluster.
 
 ### Join data from an Azure Data Explorer cluster in one tenant with an Azure Monitor resource in another
 
