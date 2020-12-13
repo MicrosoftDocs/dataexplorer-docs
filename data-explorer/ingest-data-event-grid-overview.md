@@ -23,6 +23,9 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
     * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it. The ingestion uncompressed size limit per file is 4 GB.
 
+> [!NOTE]
+> Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
+
 ## Ingestion properties
 
 You can specify [ingestion properties](ingestion-properties.md) of the blob ingestion via the blob metadata.

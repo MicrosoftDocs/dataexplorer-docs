@@ -699,15 +699,18 @@
     - name: Numerical operators
       href: ./kusto/query/numoperators.md
     - name: String operators
-      href: ./kusto/query/datatypes-string-operators.md
+      items:
+      - name: String operators overview
+        displayName: has, contains
+        href: ./kusto/query/datatypes-string-operators.md
+      - name: in and !in operators
+        href: ./kusto/query/inoperator.md
+      - name: has_any operator
+        href: ./kusto/query/has-anyoperator.md
     - name: between operator
       href: ./kusto/query/betweenoperator.md
     - name: not-between operator (!between)
       href: ./kusto/query/notbetweenoperator.md
-    - name: in and !in operators
-      href: ./kusto/query/inoperator.md
-    - name: has_any operator
-      href: ./kusto/query/has-anyoperator.md
   - name: Scalar functions
     items:
     - name: Scalar function types
@@ -1363,8 +1366,6 @@
         href: ./kusto/concepts/runawayqueries.md
       - name: Overflows
         href: ./kusto/concepts/overflow.md
-      - name: Errors in native code
-        href: ./kusto/concepts/errorsinnativecode.md
   - name: Reference material for Kusto Query Language
     items:
     - name: RE2 syntax
@@ -1404,8 +1405,7 @@
       href: ./kusto/management/index.md
     - name: Schema
       items:
-      - name: Best practices for schema design
-        displayName: management
+      - name: Best practices for schema management
         href: ./kusto/management/management-best-practices.md
       - name: Databases
         href: ./kusto/management/databases.md
@@ -1485,7 +1485,10 @@
         - name: .drop materialized-view
           href: ./kusto/management/materialized-views/materialized-view-drop.md
         - name: .disable | .enable materialized-view
-          href: ./kusto/management/materialized-views/materialized-view-enable-disable.md    
+          href: ./kusto/management/materialized-views/materialized-view-enable-disable.md
+      - name: Stored query results
+        displayName: .set stored query, .show stored query, .drop stored query
+        href: ./kusto/management/stored-query-results.md
       - name: Columns
         items:
         - name: Columns management
@@ -1669,8 +1672,10 @@
       href: ./kusto/management/query-results-cache-commands.md
       items:
       - name: Show cache
+        displayName: show database cache query results
         href: ./kusto/management/show-query-results-cache-command.md
       - name: Clear cache
+        displayName: clear query results cache
         href: ./kusto/management/clear-query-results-cache-command.md
     - name: System information
       href: ./kusto/management/systeminfo.md
@@ -1685,8 +1690,6 @@
         href: ./kusto/management/commands.md
       - name: Commands and queries
         href: ./kusto/management/commands-and-queries.md
-      - name: Ingestion failures
-        href: ./kusto/management/ingestionfailures.md
       - name: Operations
         href: ./kusto/management/operations.md
     - name: Access control
@@ -1726,6 +1729,12 @@
         href: ./kusto/management/cluster-follower.md
       - name: Data purge
         href: ./kusto/concepts/data-purge.md
+    - name: Errors and failures
+      items: 
+      - name: Ingestion error codes 
+        href: error-codes.md    
+      - name: Ingestion failures
+        href: ./kusto/management/ingestionfailures.md
   - name: API
     items:
     - name: API overview
@@ -1794,18 +1803,24 @@
         - name: Kusto.Ingest overview
           href: ./kusto/api/netfx/about-kusto-ingest.md
         - name: Permissions
+          displayName: Kusto.Ingest 
           href: ./kusto/api/netfx/kusto-ingest-client-permissions.md
         - name: Client reference
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-reference.md
         - name: Errors and exceptions
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-errors.md
         - name: Operation status
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-status.md
         - name: Kusto.Ingest best practices
           href: ./kusto/api/netfx/kusto-ingest-best-practices.md
         - name: Code samples
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-examples.md
         - name: HowTo Data Ingestion with REST API
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-rest.md
     - name: Python SDK
       items:
@@ -1840,24 +1855,40 @@
   - name: Functions library
     items:
     - name: List of functions
+      displayName: functions library
       href: kusto/functions-library/functions-library.md
     - name: kmeans_fl()
+      displayName: functions library
       href: kusto/functions-library/kmeans-fl.md
     - name: predict_fl()
+      displayName: functions library
       href: kusto/functions-library/predict-fl.md
     - name: predict_onnx_fl()
+      displayName: functions library
       href: kusto/functions-library/predict-onnx-fl.md
     - name: quantize_fl()
+      displayName: functions library
       href: kusto/functions-library/quantize-fl.md
     - name: series_dot_product_fl()
+      displayName: functions library
       href: kusto/functions-library/series-dot-product-fl.md
+    - name: series_downsample_fl()
+      displayName: functions library
+      href: kusto/functions-library/series-downsample-fl.md
     - name: series_exp_smoothing_fl()
+      displayName: functions library
       href: kusto/functions-library/series-exp-smoothing-fl.md
+    - name: series_fit_lowess_fl()
+      displayName: functions library
+      href: kusto/functions-library/series-fit-lowess-fl.md
     - name: series_fit_poly_fl()
+      displayName: functions library
       href: kusto/functions-library/series-fit-poly-fl.md
     - name: series_moving_avg_fl()
+      displayName: functions library
       href: kusto/functions-library/series-moving-avg-fl.md
     - name: series_rolling_fl()
+      displayName: functions library
       href: kusto/functions-library/series-rolling-fl.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions

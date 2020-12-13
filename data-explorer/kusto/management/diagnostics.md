@@ -13,10 +13,10 @@ ms.date: 02/13/2020
 
 These commands can be used to display system diagnostic information.
 
-* [.show cluster](#show-cluster)
-* [.show diagnostics](#show-diagnostics)
-* [.show capacity](#show-capacity)
-* [.show operations](#show-operations)
+* [`.show cluster`](#show-cluster)
+* [`.show diagnostics`](#show-diagnostics)
+* [`.show capacity`](#show-capacity)
+* [`.show operations`](#show-operations)
 
 ## .show cluster
 
