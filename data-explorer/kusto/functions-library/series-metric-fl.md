@@ -114,11 +114,11 @@ demo_prometheus
 
 The following example doesn't specify selector so all 'writes' metrics are selected. It assumes that the function is already installed. It uses alternative direct calling syntax, specifying the input table as the first parameter:
     
-    <!-- csl: https://help.kusto.windows.net:443/Samples -->
-    ```kusto
-    series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 'Val', 'writes', offset=now()-datetime(2020-12-08 00:00))
-    | render timechart with(series=labels, ysplit=axes)
-    ```
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 'Val', 'writes', offset=now()-datetime(2020-12-08 00:00))
+| render timechart with(series=labels, ysplit=axes)
+```
     
 :::image type="content" source="images/series-metric-fl/all-disks-write-metric-10m.png" alt-text="Graph showing disk write metric for all disks over 10 minutes" border="false":::
 

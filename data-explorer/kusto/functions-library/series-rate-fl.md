@@ -97,10 +97,10 @@ demo_prometheus
 
 The following example selects the main disk of two hosts. It assumes that the function is already installed. It uses alternative direct calling syntax, specifying the input table as the first parameter:
     
-    <!-- csl: https://help.kusto.windows.net:443/Samples -->
-    ```kusto
-    series_rate_fl(series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 'Val', 'writes', 'disk:sda1', lookback=2h, offset=now()-datetime(2020-12-08 00:00)), n_bins=10)
-    | render timechart with(series=labels)
-    ```
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+```kusto
+series_rate_fl(series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 'Val', 'writes', 'disk:sda1', lookback=2h, offset=now()-datetime(2020-12-08 00:00)), n_bins=10)
+| render timechart with(series=labels)
+```
     
 :::image type="content" source="images/series-rate-fl/main-disks-write-rate-10bins.png" alt-text="Graph showing rate per second of main disk write metric in the last two hours with 10 bins gap" border="false":::
