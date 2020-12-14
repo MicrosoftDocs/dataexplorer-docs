@@ -30,7 +30,8 @@ The function `series_rate_fl()` calculates the average rate of metric increase p
 
 `series_rate_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
-Note that we use [series_metric_fl()](series-metric-fl.md) that should be installed (or embedded too).
+> [!NOTE]
+> [series_metric_fl()](series-metric-fl.md) is used as a part of the function and must be installed or embedded.
 
 # [Ad hoc](#tab/adhoc)
 
