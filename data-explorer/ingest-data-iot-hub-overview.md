@@ -92,7 +92,7 @@ If you don't already have one, [Create an Iot Hub](ingest-data-iot-hub.md#create
 
 ## Sending events
 
-See the [sample project](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Quickstarts/simulated-device) that simulates a device and generates data.
+See the [sample project](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Quickstarts/SimulatedDevice) that simulates a device and generates data.
 
 ## Next steps
 
