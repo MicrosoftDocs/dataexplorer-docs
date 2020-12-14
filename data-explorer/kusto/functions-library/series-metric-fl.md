@@ -118,7 +118,7 @@ demo_prometheus
 
 ## Example
 
-The following example doesn't specify selector so all 'writes' metrics are selected. It assumes that the function is already installed. It uses alternative direct calling syntax, specifying the input table as the first parameter:
+The following example doesn't specify selector, so all 'writes' metrics are selected. This example assumes that the function is already installed, and uses alternative direct calling syntax, specifying the input table as the first parameter:
     
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
