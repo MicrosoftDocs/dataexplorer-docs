@@ -321,14 +321,14 @@ For partitioned table, `Partition` column will contain extracted partition value
 
 ## .create external table mapping
 
-`.create` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* *MappingInJsonFormat*
+`.create` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
 
 Creates a new mapping. For more information, see [Data Mappings](./mappings.md#json-mapping).
 
 **Example** 
  
 ```kusto
-.create external table MyExternalTable json mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
+.create external table MyExternalTable mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
 ```
 
 **Example output**
@@ -339,14 +339,14 @@ Creates a new mapping. For more information, see [Data Mappings](./mappings.md#j
 
 ## .alter external table mapping
 
-`.alter` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* *MappingInJsonFormat*
+`.alter` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
 
 Alters an existing mapping. 
  
 **Example** 
  
 ```kusto
-.alter external table MyExternalTable json mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
+.alter external table MyExternalTable mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
 ```
 
 **Example output**
@@ -357,18 +357,18 @@ Alters an existing mapping.
 
 ## .show external table mappings
 
-`.show` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* 
+`.show` `external` `table` *ExternalTableName* `mapping` *MappingName* 
 
-`.show` `external` `table` *ExternalTableName* `json` `mappings`
+`.show` `external` `table` *ExternalTableName* `mappings`
 
 Show the mappings (all or the one specified by name).
  
 **Example** 
  
 ```kusto
-.show external table MyExternalTable json mapping "Mapping1" 
+.show external table MyExternalTable mapping "Mapping1" 
 
-.show external table MyExternalTable json mappings 
+.show external table MyExternalTable mappings 
 ```
 
 **Example output**
@@ -379,14 +379,14 @@ Show the mappings (all or the one specified by name).
 
 ## .drop external table mapping
 
-`.drop` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* 
+`.drop` `external` `table` *ExternalTableName* `mapping` *MappingName* 
 
 Drops the mapping from the database.
  
 **Example** 
  
 ```kusto
-.drop external table MyExternalTable json mapping "Mapping1" 
+.drop external table MyExternalTable mapping "Mapping1" 
 ```
 ## Next steps
 
