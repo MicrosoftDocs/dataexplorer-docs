@@ -157,39 +157,41 @@ The following examples assume the function is already installed:
 ### Test irregular time series
 
 The following example tests irregular (unevenly spaced) time series
-    
-    <!-- csl: https://help.kusto.windows.net:443/Samples -->
-    ```kusto
-    let max_t = datetime(2016-09-03);
-    demo_make_series1
-    | where TimeStamp between ((max_t-1d)..max_t)
-    | summarize num=count() by bin(TimeStamp, 5m), OsVer
-    | order by TimeStamp asc
-    | where hourofday(TimeStamp) % 6 != 0   //  delete every 6th hour to create irregular time series
-    | summarize TimeStamp=make_list(TimeStamp), num=make_list(num) by OsVer
-    | extend fnum = dynamic(null)
-    | invoke series_fit_lowess_fl('num', 'fnum', 9, 'TimeStamp', True)
-    | render timechart 
-    ```
-    
-    :::image type="content" source="images/series-fit-lowess-fl/lowess-irregular-time-series.png" alt-text="Graph showing nine points LOWESS fit to an irregular time series" border="false":::
+
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+
+```kusto
+let max_t = datetime(2016-09-03);
+demo_make_series1
+| where TimeStamp between ((max_t-1d)..max_t)
+| summarize num=count() by bin(TimeStamp, 5m), OsVer
+| order by TimeStamp asc
+| where hourofday(TimeStamp) % 6 != 0   //  delete every 6th hour to create irregular time series
+| summarize TimeStamp=make_list(TimeStamp), num=make_list(num) by OsVer
+| extend fnum = dynamic(null)
+| invoke series_fit_lowess_fl('num', 'fnum', 9, 'TimeStamp', True)
+| render timechart 
+```
+
+:::image type="content" source="images/series-fit-lowess-fl/lowess-irregular-time-series.png" alt-text="Graph showing nine points LOWESS fit to an irregular time series" border="false":::
 
 Compare LOWESS versus polynomial fit
 
 The following example contains fifth order polynomial with noise on x and y axes. See comparison of LOWESS versus polynomial fit. 
 
-    <!-- csl: https://help.kusto.windows.net:443/Samples -->
-    ```kusto
-    range x from 1 to 200 step 1
-    | project x = rand()*5 - 2.3
-    | extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
-    | extend y = y + (rand() - 0.5)*0.5*y
-    | summarize x=make_list(x), y=make_list(y)
-    | extend y_lowess = dynamic(null)
-    | invoke series_fit_lowess_fl('y', 'y_lowess', 15, 'x')
-    | extend series_fit_poly(y, x, 5)
-    | project x, y, y_lowess, y_polynomial=series_fit_poly_y_poly_fit
-    | render linechart
-    ```
-        
-    :::image type="content" source="images/series-fit-lowess-fl/lowess-vs-poly-fifth-order-noise.png" alt-text="Graphs of LOWESS vs polynomial fit for a fifth order polynomial with noise on x & y axes":::
+<!-- csl: https://help.kusto.windows.net:443/Samples -->
+
+```kusto
+range x from 1 to 200 step 1
+| project x = rand()*5 - 2.3
+| extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
+| extend y = y + (rand() - 0.5)*0.5*y
+| summarize x=make_list(x), y=make_list(y)
+| extend y_lowess = dynamic(null)
+| invoke series_fit_lowess_fl('y', 'y_lowess', 15, 'x')
+| extend series_fit_poly(y, x, 5)
+| project x, y, y_lowess, y_polynomial=series_fit_poly_y_poly_fit
+| render linechart
+```
+
+:::image type="content" source="images/series-fit-lowess-fl/lowess-vs-poly-fifth-order-noise.png" alt-text="Graphs of LOWESS vs polynomial fit for a fifth order polynomial with noise on x & y axes":::
