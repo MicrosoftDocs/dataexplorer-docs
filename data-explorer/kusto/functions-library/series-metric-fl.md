@@ -11,7 +11,7 @@ ms.date: 12/13/2020
 # series_metric_fl()
 
 
-The `series_metric_fl()` funtion selects and retrieves time series of metrics ingested to Azure Data Explorer using the [Prometheus](https://prometheus.io/) monitoring system. This function assumes the data stored in Azure Data Explorer is structured following the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/). Specifically, each record contains:
+The `series_metric_fl()` function selects and retrieves time series of metrics ingested to Azure Data Explorer using the [Prometheus](https://prometheus.io/) monitoring system. This function assumes the data stored in Azure Data Explorer is structured following the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/). Specifically, each record contains:
  * timestamp 
  * metric name 
  * metric value 
