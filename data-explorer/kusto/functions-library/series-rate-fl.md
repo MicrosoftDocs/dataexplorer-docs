@@ -20,7 +20,7 @@ The function `series_rate_fl()` calculates the average rate of metric increase p
 
 `T | invoke series_rate_fl(`*n_bins*`)`
 
-`T` is a table returned from [series_metric_fl()](series-metric-fl.md). Consequently, its schema includes `(timestamp:dynamic, name:string, labels:string, value:dynamic)`
+`T` is a table returned from [series_metric_fl()](series-metric-fl.md). Its schema includes `(timestamp:dynamic, name:string, labels:string, value:dynamic)`.
 
 ## Arguments
 
