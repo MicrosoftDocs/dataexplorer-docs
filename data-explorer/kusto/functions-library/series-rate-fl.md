@@ -24,7 +24,7 @@ The function `series_rate_fl()` calculates the average rate of metric increase p
 
 ## Arguments
 
-* *n_bins*: The number of bins to specify the gap between the extracted metric values for calculation of the rate. The function calculates the difference between the current sample and the one *n_bins* before, and divide it by the difference of their respective timestamps in seconds. This parameter is optional, default to one bin, which calculates [irate()](https://prometheus.io/docs/prometheus/latest/querying/functions/#irate), PromQL instantaneous rate function.
+* *n_bins*: The number of bins to specify the gap between the extracted metric values for calculation of the rate. The function calculates the difference between the current sample and the one *n_bins* before, and divide it by the difference of their respective timestamps in seconds. This parameter is optional, with a default of one bin. The default settings calculate [irate()](https://prometheus.io/docs/prometheus/latest/querying/functions/#irate), the PromQL instantaneous rate function.
 
 ## Usage
 

@@ -24,7 +24,8 @@ The user-defined functions code is given in the articles.  It can be used within
 
 ## PromQL functions
 
-The following section contains common [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) functions, to be used for analysis of metrics ingested to ADX by [Prometheus](https://prometheus.io/) monitoring system. All functions assume that ADX stores the metrics keeping Prometheus [data model](https://prometheus.io/docs/concepts/data_model/).
+The following section contains common [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) functions. These functions can be used for analysis of metrics ingested to Azure Data Explorer by the [Prometheus](https://prometheus.io/) monitoring system. All functions assume that metrics in Azure Data Explorer are structured using the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/).
+
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|

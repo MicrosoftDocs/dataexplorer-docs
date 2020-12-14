@@ -20,7 +20,7 @@ The `series_metric_fl()` funtion selects and retrieves time series of metrics in
  Prometheus defines a time series by its metric name and a distinct set of labels. Retrieval of sets of time series is done using [Prometheus Query Language (PromQL)](https://prometheus.io/docs/prometheus/latest/querying/basics/). PromQL specifies metric name and time series selector, which is a set of labels.
 
 > [!NOTE]
-> * `series_metric_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+> `series_metric_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 
 ## Syntax
 
