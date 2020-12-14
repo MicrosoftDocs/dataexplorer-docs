@@ -11,7 +11,13 @@ ms.date: 12/13/2020
 # series_metric_fl()
 
 
-The function `series_metric_fl()` selects and retrieves time series of metrics ingested to ADX by [Prometheus](https://prometheus.io/) monitoring system. The function assumes the data is stored in ADX table that is structured following [Prometheus data model](https://prometheus.io/docs/concepts/data_model/). Specifically, each record contains timestamp, metric name, metric value, and variable set of labels (`key:value` pairs). Prometheus defines a time series by its metric name and distinct set of labels. Retrieval of sets of time series is done using [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/), Prometheus query language, by specifying metric name and time series selector, which is a set of labels.
+The `series_metric_fl()` funtion selects and retrieves time series of metrics ingested to Azure Data Explorer using the [Prometheus](https://prometheus.io/) monitoring system. This function assumes the data stored in Azure Data Explorer is structured following the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/). Specifically, each record contains:
+ * timestamp 
+ * metric name 
+ *metric value 
+ * a variable set of labels (`key:value` pairs)
+ 
+ Prometheus defines a time series by its metric name and a distinct set of labels. Retrieval of sets of time series is done using [Prometheus Query Language (PromQL)](https://prometheus.io/docs/prometheus/latest/querying/basics/). PromQL specifies metric name and time series selector, which is a set of labels.
 
 > [!NOTE]
 > * `series_metric_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
@@ -121,4 +127,3 @@ series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 'Val', 'writes'
 ```
     
 :::image type="content" source="images/series-metric-fl/all-disks-write-metric-10m.png" alt-text="Graph showing disk write metric for all disks over 10 minutes" border="false":::
-
