@@ -80,9 +80,8 @@ PartitionedExternalBlob is an external table, defined as follows:
 ```kusto
 .create external table PartitionedExternalBlob (Timestamp:datetime, CustomerName:string) 
 kind=blob
-partition by 
-   "CustomerName="CustomerName,
-   bin(Timestamp, 1d)
+partition by (CustomerName:string=CustomerName, Date:datetime=startofday(Timestamp))   
+pathformat = ("CustomerName=" CustomerName "/" datetime_pattern("yyyy/MM/dd", Date))   
 dataformat=csv
 ( 
    h@'http://storageaccount.blob.core.windows.net/container1;secretKey'

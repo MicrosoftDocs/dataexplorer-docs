@@ -22,6 +22,16 @@ The user-defined functions code is given in the articles.  It can be used within
 |[predict_fl()](predict-fl.md)|Predict using an existing trained machine learning model. |
 |[predict_onnx_fl()](predict-onnx-fl.md)| Predict using an existing trained machine learning model in ONNX format. |
 
+## PromQL functions
+
+The following section contains common [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) functions. These functions can be used for analysis of metrics ingested to Azure Data Explorer by the [Prometheus](https://prometheus.io/) monitoring system. All functions assume that metrics in Azure Data Explorer are structured using the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/).
+
+
+|Function Name     |Description                                          |
+|-------------------------|--------------------------------------------------------|
+|[series_metric_fl()](series-metric-fl.md)|Selects and retrieves time series stored with the Prometheus data model. |
+|[series_rate_fl()](series-rate-fl.md)|Calculates the average rate of counter metric increase per second. |
+
 ## Series processing functions
 
 |Function Name     |Description                                          |
