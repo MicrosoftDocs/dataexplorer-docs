@@ -96,7 +96,7 @@ demo_prometheus
 
 ## Example
 
-The following example selects the main disk of two hosts. It assumes that the function is already installed. It uses alternative direct calling syntax, specifying the input table as the first parameter:
+The following example selects the main disk of two hosts, and assumes that the function is already installed. This example uses alternative direct calling syntax, specifying the input table as the first parameter:
     
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
