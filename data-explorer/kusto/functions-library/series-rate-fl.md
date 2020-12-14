@@ -14,7 +14,7 @@ ms.date: 12/13/2020
 The function `series_rate_fl()` calculates the average rate of metric increase per second. Its logic follows PromQL [rate()](https://prometheus.io/docs/prometheus/latest/querying/functions/#rate) function. It should be used for time series of counter metrics ingested to ADX by [Prometheus](https://prometheus.io/) monitoring system, and retrieved by [series_metric_fl()](series-metric-fl.md).
 
 > [!NOTE]
-> * `series_rate_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+>`series_rate_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 
 ## Syntax
 
