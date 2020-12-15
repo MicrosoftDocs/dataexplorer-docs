@@ -7,7 +7,7 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/19/2020
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ---
 
 # Monitor Azure Data Explorer performance, health, and usage with metrics
