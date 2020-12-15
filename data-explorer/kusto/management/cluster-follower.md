@@ -15,6 +15,44 @@ Control commands for managing the follower cluster configuration are listed belo
 
 The follower commands include [database level commands](#database-level-commands) and [table level commands](#table-level-commands).
 
+## Database policy overrides
+
+A database being followed by a follower cluster can have the database-level
+policies of [Caching policy](#caching-policy) and [Authorized principals](#authorized-principals) overridden in the follower cluster.
+
+### Caching policy
+
+The default [caching policy](cachepolicy.md) for the follower cluster is keeping the leader cluster database and table-level caching policies.
+
+|Option             |Description                                                                                                                                                                                                           |
+|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|**None** (default) |The caching policies used are those defined in the source database (in the leader cluster).                                                                                                                           |
+|**replace**        |The source database in the leader cluster database and table-level caching policies are removed (set to `null`). They are replaced by the ones defined in the  database and table-level override policies, if defined.|
+|**union**          |The source database in the leader cluster database and table-level caching policies are unioned with the ones defined in the database and table-level override policies.                                              |
+
+> [!NOTE]
+>  * If the collection of override database and table-level caching policies is *empty*, then *everything* is cached by default.
+>  * You can set the database-level caching policy override to `0d`, to have *nothing* cached by default.
+
+### Authorized principals
+
+The default [authorized principals](access-control/index.md#authorization) is keeping the source database of the leader cluster authorized principals.
+
+|Option             |Description                                                                                                                              |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+|**None** (default) |The authorized principals used are those defined in the source database (in the leader cluster).                                         |
+|**replace**        |The source database in the leader cluster authorized principals are replaced by the ones defined in the override authorized principals.  |
+|**union**          |The source database in the leader cluster authorized principals are unioned with the ones defined in the override authorized principals. |
+
+> [!NOTE]
+> If the collection of override authorized principals is *empty*, there will be no database-level principals.
+
+## Table policy overrides
+
+A table in a database that is being followed by a follower cluster can have the table-level [caching policy](cachepolicy.md) overridden in the follower cluster.
+The default is keeping the source table's caching policy. If this policy exists in the source database, it will remain effective on the follower cluster.
+The `replace`option is supported - when using it, the source table's caching policy is replaced by the one defined as an override.
+
 ## Database level commands
 
 ### .show follower database
