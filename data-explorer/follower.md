@@ -461,6 +461,14 @@ Managing read-only database permission is the same as for all database types. Se
 
 The follower database administrator can modify the [caching policy](kusto/management/cache-policy.md) of the attached database or any of its tables on the hosting cluster. The default is keeping the leader database collection of database and table-level caching policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using control commands to configure the caching policy on the follower database or table, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
 
+## Notes
+
+* If there are conflicts between databases of leader/follower clusters, when all databases are followed by the follower cluster, they are resolved as follows:
+  * A database named *DB* created on the follower cluster takes precedence over a database with the same name created on the leader cluster. Therefore, database *DB* in the follower cluster needs to be removed (or renamed) for the follower cluster to have the leader's database *DB*.
+  * A database named *DB* followed from two or more leader clusters will be arbitrarily chosen from *one* of the leader clusters, and will not be followed more than once.
+* Commands for showing [cluster activity log and history](kusto/management/systeminfo.md) run on a follower cluster will show the activity and history on the follower cluster, and their result sets won't include those of the leader cluster(s).
+  * For example: a `.show queries` command run on the follower cluster will only show queries run on databases followed by follower cluster, and not queries run against the same database in the leader cluster.
+  
 ## Limitations
 
 * The follower and the leader clusters must be in the same region.
