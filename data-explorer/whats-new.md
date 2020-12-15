@@ -32,20 +32,26 @@ Name | Notes
 
 #### Functions library
 
-- [series_downsample_fl()](./kusto/functions-library/series-downsample-fl.md)
-- [series_exp_smoothing_fl()](./kusto/functions-library/series-exp-smoothing-fl.md)
+Name | Notes
+---|---
+[series_downsample_fl()](./kusto/functions-library/series-downsample-fl.md) | The function `series_downsample_fl()` [downsamples a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)#Downsampling_by_an_integer_factor). 
+[series_exp_smoothing_fl()](./kusto/functions-library/series-exp-smoothing-fl.md) | Applies a basic exponential smoothing filter on a series.
 
 #### Management
 
-- [.disable plugin](./kusto/management/disable-plugin.md)
-- [.enable plugin](./kusto/management/enable-plugin.md)
-- [.show plugins](./kusto/management/show-plugins.md)
-- [Plugins](./kusto/management/plugins.md)
+Name | Notes
+---|---
+[.disable plugin](./kusto/management/disable-plugin.md) | Disables a plugin.
+[.enable plugin](./kusto/management/enable-plugin.md) | Enables a plugin.
+[.show plugins](./kusto/management/show-plugins.md) | Lists all plugins of the cluster.
 
 #### General
 
-- [Azure Policy built-in definitions for Azure Data Explorer](policy-reference.md)
-- [Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md)
+Name | Notes
+---|---
+[Azure Policy built-in definitions for Azure Data Explorer](policy-reference.md) | This page is an index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions for Azure Data Explorer. 
+[Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md) | In this article, you connect an Event Hub to a table in Azure Data Explorer using the [one-click ingestion](ingest-data-one-click.md) experience.
+
 
 ### Updated articles
 
