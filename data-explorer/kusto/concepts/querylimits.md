@@ -144,6 +144,9 @@ T | where rand() < 0.1 | ...
 T | where hash(UserId, 10) == 1 | ...
 ```
 
+If `maxmemoryconsumptionperiterator` is set multiple times, e.g. in both client request properties and using a `set` statement - the *lower* value applies.
+
+
 ## Limit on memory per node
 
 **Max memory per query per node** is another limit used to protect against "runaway" queries. This limit, represented by the request option `max_memory_consumption_per_query_per_node`, sets an upper bound
@@ -153,6 +156,8 @@ on the amount of memory that can be used on a single node for a specific query.
 set max_memory_consumption_per_query_per_node=68719476736;
 MyTable | ...
 ```
+
+If `max_memory_consumption_per_query_per_node` is set multiple times, e.g. in both client request properties and using a `set` statement - the *lower* value applies.
 
 ## Limit on accumulated string sets
 
@@ -209,10 +214,19 @@ At other times, you may want to limit the CPU resources used for a particular
 query. If you run a "background job", for example, the system might tolerate higher
 latencies to give concurrent ad-hoc queries high priority.
 
-Kusto supports specifying two [client request properties](../api/netfx/request-properties.md) when running a query. The properties are  *query_fanout_threads_percent* and *query_fanout_nodes_percent*.
-Both properties are integers that default to the maximum value (100), but may be reduced for a specific query to some other value. 
+Kusto supports specifying two [client request properties](../api/netfx/request-properties.md) when running a query.
+The properties are *query_fanout_threads_percent* and *query_fanout_nodes_percent*.
+Both properties are integers that default to the maximum value (100), but may be reduced for a specific query to some other value.
 
-The first, *query_fanout_threads_percent*, controls the fanout factor for thread use. When it's 100%, the cluster will assign all CPUs on each node. For example, 16 CPUs on a cluster deployed on Azure D14 nodes. When it's 50%, then half of the CPUs will be used, and so on. The numbers are rounded up to a whole CPU, so it's safe to set it to 0. The second, *query_fanout_nodes_percent*, controls how many of the query nodes in the cluster to use per subquery distribution operation. It functions in a similar manner.
+The first, *query_fanout_threads_percent*, controls the fanout factor for thread use.
+When it's 100%, the cluster will assign all CPUs on each node. For example, 16 CPUs on a cluster deployed on Azure D14 nodes.
+When it's 50%, then half of the CPUs will be used, and so on.
+The numbers are rounded up to a whole CPU, so it's safe to set it to 0.
+
+The second, *query_fanout_nodes_percent*, controls how many of the query nodes in the cluster to use per subquery distribution operation.
+It functions in a similar manner.
+
+If `query_fanout_nodes_percent` or `query_fanout_threads_percent` are set multiple times, e.g. in both client request properties and using a `set` statement - the *lower* value for each property applies.
 
 ## Limit on query complexity
 
