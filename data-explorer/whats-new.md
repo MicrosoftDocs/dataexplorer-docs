@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: 
-ms.date: 12-15-2020
+ms.date: 12/15/2020
 ---
 # What's new in Azure Data Explorer
 
@@ -199,21 +199,12 @@ Welcome to what's new in the Azure Data Explorer docs from September 2020. This 
 
 - [zlib_compress_to_base64_string()](./kusto/query/zlib-base64-compress.md)
 - [zlib_decompress_from_base64_string()](./kusto/query/zlib-base64-decompress.md)
-- [zlib_compress_to_base64_string()](./kusto/query/zlib_base64_compress.md) - Introduced zlib compress and decompress functions
-- [zlib_decompress_from_base64_string()](./kusto/query/zlib_base64_decompress.md) - Introduced zlib compress and decompress functions
 - [cosmosdb_sql_request plugin](./kusto/query/cosmosdb-plugin.md)
 - [materialized_view() function](./kusto/query/materialized-view-function.md)
 
 #### Functions library
 
 - [Functions library](./kusto/functions-library/functions-library.md)
-- [predict_lf()](./kusto/functions-library/predict-lf.md)
-- [predict_onnx_lf()](./kusto/functions-library/predict-onnx-lf.md)
-- [series_moving_avg_lf()](./kusto/functions-library/series-moving-avg-lf.md)
-- [quantize_udf()](./kusto/functions-library/quantize-udf.md)
-- [series_fit_poly_udf()](./kusto/functions-library/series-fit-poly-udf.md)
-- [series_moving_avg_udf()](./kusto/functions-library/series-moving-avg-udf.md)
-- [series_rolling_udf()](./kusto/functions-library/series-rolling-udf.md)
 
 #### Management
 
