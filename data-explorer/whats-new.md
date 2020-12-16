@@ -532,8 +532,7 @@ Name | Notes
 ---|---
 [series_fft()](./kusto/query/series-fft-function.md) | Applies the Fast Fourier Transform (FFT) on a series.  
 [series_ifft()](./kusto/query/series-ifft-function.md) | Applies the Inverse Fast Fourier Transform (IFFT) on a series. 
-[dynamic_to_json()](./kusto/query/dynamic-to-json-function.md) | Converts `dynamic` input to a string representation.
-If the input is a property bag, the output string prints its content sorted by the keys, recursively. Otherwise, the output is similar to the `tostring` function output.
+[dynamic_to_json()](./kusto/query/dynamic-to-json-function.md) | Converts `dynamic` input to a string representation. If the input is a property bag, the output string prints its content sorted by the keys, recursively. Otherwise, the output is similar to the `tostring` function output.
 [format_ipv4()](./kusto/query/format-ipv4-function.md) | Parses input with a netmask and returns string representing IPv4 address.
 [format_ipv4_mask()](./kusto/query/format-ipv4-mask-function.md) | Parses input with a netmask and returns string representing IPv4 address as CIDR notation.
 
