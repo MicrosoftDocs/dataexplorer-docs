@@ -528,28 +528,35 @@ Welcome to what's new in the Azure Data Explorer docs from August 2020. This art
 
 #### Query
 
-- [series_fft()](./kusto/query/series-fft-function.md)
-- [series_ifft()](./kusto/query/series-ifft-function.md)
-- [dynamic_to_json()](./kusto/query/dynamic-to-json-function.md)
-- [format_ipv4()](./kusto/query/format-ipv4-function.md)
-- [format_ipv4_mask()](./kusto/query/format-ipv4-mask-function.md)
+Name | Notes
+---|---
+[series_fft()](./kusto/query/series-fft-function.md) | Applies the Fast Fourier Transform (FFT) on a series.  
+[series_ifft()](./kusto/query/series-ifft-function.md) | Applies the Inverse Fast Fourier Transform (IFFT) on a series. 
+[dynamic_to_json()](./kusto/query/dynamic-to-json-function.md) | Converts `dynamic` input to a string representation.
+If the input is a property bag, the output string prints its content sorted by the keys, recursively. Otherwise, the output is similar to the `tostring` function output.
+[format_ipv4()](./kusto/query/format-ipv4-function.md) | Parses input with a netmask and returns string representing IPv4 address.
+[format_ipv4_mask()](./kusto/query/format-ipv4-mask-function.md) | Parses input with a netmask and returns string representing IPv4 address as CIDR notation.
 
 ### Management
 
-- [Create or alter continuous export](./kusto/management/data-export/create-alter-continuous.md)
-- [Disable or enable continuous export](./kusto/management/data-export/disable-enable-continuous.md)
-- [Drop continuous export](./kusto/management/data-export/drop-continuous-export.md)
-- [Show continuous export artifacts](./kusto/management/data-export/show-continuous-artifacts.md)
-- [Show continuous export](./kusto/management/data-export/show-continuous-export.md)
-- [Show continuous export failures](./kusto/management/data-export/show-continuous-failures.md)
-
+Name | Notes
+---|---- 
+[Create or alter continuous export](./kusto/management/data-export/create-alter-continuous.md) | Creates or alters a continuous export job.
+[Disable or enable continuous export](./kusto/management/data-export/disable-enable-continuous.md) | Disables or enables the continuous-export job. A disabled continuous export won't be executed, but its current state is persisted and can be resumed when the continuous export is enabled. 
+[Drop continuous export](./kusto/management/data-export/drop-continuous-export.md) | Drops a continuous-export job.
+[Show continuous export artifacts](./kusto/management/data-export/show-continuous-artifacts.md) | Returns all artifacts exported by the continuous-export in all runs. Filter the results by the Timestamp column in the command to view only records of interest. The history of exported artifacts is retained for 14 days. 
+[Show continuous export](./kusto/management/data-export/show-continuous-export.md) | Returns the continuous export properties of *ContinuousExportName*. 
+[Show continuous export failures](./kusto/management/data-export/show-continuous-failures.md) | Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest. 
+ 
 ### General
 
-- [Enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer](double-encryption.md)
-- [Ingest data using the Azure Data Explorer Go SDK](go-ingest-data.md)
-- [Business continuity and disaster recovery overview](business-continuity-overview.md)
-- [Connect to Event Grid](ingest-data-event-grid-overview.md)
-- [Create business continuity and disaster recovery solutions with Azure Data Explorer](business-continuity-create-solution.md)
+Name | Notes
+---|---
+[Enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer](double-encryption.md) |
+[Ingest data using the Azure Data Explorer Go SDK](go-ingest-data.md) |
+[Business continuity and disaster recovery overview](business-continuity-overview.md) |
+[Connect to Event Grid](ingest-data-event-grid-overview.md) |
+[Create business continuity and disaster recovery solutions with Azure Data Explorer](business-continuity-create-solution.md) |
 
 ### Updated articles
 
