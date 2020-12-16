@@ -25,6 +25,7 @@ The function `series_rate_fl()` calculates the average rate of metric increase p
 ## Arguments
 
 * *n_bins*: The number of bins to specify the gap between the extracted metric values for calculation of the rate. The function calculates the difference between the current sample and the one *n_bins* before, and divide it by the difference of their respective timestamps in seconds. This parameter is optional, with a default of one bin. The default settings calculate [irate()](https://prometheus.io/docs/prometheus/latest/querying/functions/#irate), the PromQL instantaneous rate function.
+* *fix_reset*: A boolean flag controlling whether to check for counter resets and correct it like PromQL [rate()](https://prometheus.io/docs/prometheus/latest/querying/functions/#rate) function. This parameter is optional, with a default of `true`. Set it to `false` to save redundant analysis in case no need to check for resets.
 
 ## Usage
 
@@ -39,16 +40,22 @@ For ad hoc usage, embed its code using the [let statement](../query/letstatement
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-let series_rate_fl=(tbl:(timestamp:dynamic, name:string, labels:string, value:dynamic), n_bins:int=1)
+let series_rate_fl=(tbl:(timestamp:dynamic, value:dynamic), n_bins:int=1, fix_reset:bool=true)
 {
     tbl
+    | where fix_reset                                                   //  Prometheus counters can only go up
+    | mv-apply value to typeof(double) on   
+    ( extend correction = iff(value < prev(value), prev(value), 0.0)    // if the value decreases we assume it was reset to 0, so add last value
+    | extend cum_correction = row_cumsum(correction)
+    | extend corrected_value = value + cum_correction
+    | summarize value = make_list(corrected_value))
+    | union (tbl | where not(fix_reset))
     | extend timestampS = array_shift_right(timestamp, n_bins), valueS = array_shift_right(value, n_bins)
     | extend dt = series_subtract(timestamp, timestampS)
     | extend dt = series_divide(dt, 1e7)                              //  converts from ticks to seconds
     | extend dv = series_subtract(value, valueS)
-    | extend dv = array_iff(series_greater_equals(dv, 0), dv, value)  //  handles negative difference like PromQL
     | extend rate = series_divide(dv, dt)
-    | project timestamp, name, rate, labels
+    | project-away dt, dv, timestampS, value, valueS
 }
 ;
 //
@@ -67,16 +74,22 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Simulate PromQL rate()")
-series_rate_fl(tbl:(timestamp:dynamic, name:string, labels:string, value:dynamic), n_bins:int=1)
+series_rate_fl(tbl:(timestamp:dynamic, value:dynamic), n_bins:int=1, fix_reset:bool=true)
 {
     tbl
+    | where fix_reset                                                   //  Prometheus counters can only go up
+    | mv-apply value to typeof(double) on   
+    ( extend correction = iff(value < prev(value), prev(value), 0.0)    // if the value decreases we assume it was reset to 0, so add last value
+    | extend cum_correction = row_cumsum(correction)
+    | extend corrected_value = value + cum_correction
+    | summarize value = make_list(corrected_value))
+    | union (tbl | where not(fix_reset))
     | extend timestampS = array_shift_right(timestamp, n_bins), valueS = array_shift_right(value, n_bins)
     | extend dt = series_subtract(timestamp, timestampS)
     | extend dt = series_divide(dt, 1e7)                              //  converts from ticks to seconds
     | extend dv = series_subtract(value, valueS)
-    | extend dv = array_iff(series_greater_equals(dv, 0), dv, value)  //  handles negative difference like PromQL
     | extend rate = series_divide(dv, dt)
-    | project timestamp, name, rate, labels
+    | project-away dt, dv, timestampS, value, valueS
 }
 ```
 
