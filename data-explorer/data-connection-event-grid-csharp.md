@@ -152,7 +152,7 @@ IDictionary<String, String> metadata = new Dictionary<string, string>();
 metadata.Add("rawSizeBytes", uncompressedSizeInBytes);
 metadata.Add("kustoIngestionMappingReference", mapping);
 
-// Define uploading options
+// Set uploading options
 var uploadOptions = new DataLakeFileUploadOptions
 {
     Metadata = metadata,
