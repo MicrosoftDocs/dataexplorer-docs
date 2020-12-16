@@ -55,6 +55,29 @@ Name | Notes
 
 ### Updated articles
 
+Ignoring PR 1273: Update partitioningpolicy.md
+Ignoring PR 1266: Update ingest-data-logstash.md
+Ignoring PR 1263: Update make-bag-aggfunction.md
+Ignoring PR 1250: Update create-cluster-database-portal.md
+Ignoring PR 1243: Update data-purge.md
+Ignoring PR 1239: Update ClientRequestProperties
+Ignoring PR 1224: Update numoperators.md
+Ignoring PR 1220: Update gettypefunction.md
+Ignoring PR 1219: Update countoperator.md
+Ignoring PR 1216: Update tools-integrations-overview.md
+Ignoring PR 1212: Update indexofregexfunction.md
+Ignoring PR 1211: Update query-throttling-policy.md
+Ignoring PR 1204: Update cluster-follower.md
+Ignoring PR 1200: Update lightingest.md
+Ignoring PR 1195: Update cluster-follower.md
+Ignoring PR 1183: Update gzip-base64-compress.md
+Ignoring PR 1180: Update hll-merge-aggfunction.md
+Ignoring PR 1177: Update sandboxes.md
+Ignoring PR 1171: Update materialized-view-create.md
+Ignoring PR 1166: Update isnotnullfunction.md
+Ignoring PR 1158: Update row-level-security-policy.md
+Ignoring PR 448: Update datatypes-string-operators.md
+
 #### Query
 
 - [externaldata operator](./kusto/query/externaldata-operator.md)
@@ -189,6 +212,174 @@ Name | Notes
 - [Ingest data from Logstash to Azure Data Explorer (preview)](ingest-data-logstash.md) - Repo sync for protected CLA branch
 - [Use LightIngest to ingest data to Azure Data Explorer](lightingest.md) - Repo sync for protected CLA branch
 
+## October 2020
+
+Welcome to what's new in the Azure Data Explorer docs from October 1, 2020 through October 31, 2020. This article lists some of the major changes to docs during this period.
+
+### New articles
+
+#### Query
+
+- [project-keep operator](/azure/data-explorer/kusto/query/project-keep-operator.md)
+- [bag_remove_keys()](/azure/data-explorer/kusto/query/bag-remove-keys-function.md)
+- [series_fit_poly()](/azure/data-explorer/kusto/query/series-fit-poly-function.md)
+- [array_sort_asc()](/azure/data-explorer/kusto/query/arraysortascfunction.md)
+- [array_sort_desc()](/azure/data-explorer/kusto/query/arraysortdescfunction.md)
+
+#### Functions library
+
+- [kmeans_fl()](/azure/data-explorer/kusto/functions-library/kmeans-fl.md)
+- [series_dot_product_fl()](/azure/data-explorer/kusto/functions-library/series-dot-product-fl.md) - Kmeans-fl
+- [series_dot_product_fl()](/azure/data-explorer/kusto/functions-library/series_dot_product_fl.md) - Add kmeans_fl
+
+#### Management
+
+- [Query throttling policy commands](/azure/data-explorer/kusto/management/query-throttling-policy-commands.md)
+- [Query throttling policy](/azure/data-explorer/kusto/management/query-throttling-policy.md)
+- [.clear table data](/azure/data-explorer/kusto/management/clear-table-data-command.md)
+
+#### General
+
+- [Ingest data using the Azure Data Explorer Java SDK](java-ingest-data.md)
+- [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)
+- [Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md)
+- [EngineV3 - preview](engine-v3.md)
+- [Create an Azure Data Explorer cluster and database using Go](create-cluster-database-go.md)
+- [Create Power Apps application to query data in Azure Data Explorer (preview)](power-apps-connector.md)
+
+### Updated articles
+
+
+Ignoring PR 380: Update parse-xmlfunction.md
+Ignoring PR 1155: Update cross-cluster-or-database-queries.md
+Ignoring PR 1147: Update partitionoperator.md
+Ignoring PR 1144: Update logicapps.md
+Ignoring PR 1142: Update dcount-intersect-plugin.md
+Ignoring PR 1124: Update querylimits.md
+Ignoring PR 1109: Update request-properties.md
+Ignoring PR 1105: Update ingest-data-event-hub-overview.md
+Ignoring PR 1104: Replaced reviewer from Rachel to Alexans
+Ignoring PR 1099: Update sandboxes.md
+Ignoring PR 1092: Update partitioningpolicy.md
+Ignoring PR 1089: Update batchingpolicy.md
+Ignoring PR 1085: Update kusto-explorer-troubleshooting.md
+Ignoring PR 1079: Update engine-v3.md
+Ignoring PR 1077: Update query-results-cache.md
+Ignoring PR 1074: Update drop-function.md
+Ignoring PR 1068: Update row-level-security-policy.md
+Ignoring PR 1064: Update rowlevelsecuritypolicy.md
+Ignoring PR 1051: Update data-explorer-overview.md
+Ignoring PR 1031: Update dcount-intersect-plugin.md
+Ignoring PR 1029: Update countif-aggfunction.md
+Ignoring PR 1025: Update ingest-data-overview.md
+
+#### Query
+
+- [tdigest_merge() (aggregation function)](/azure/data-explorer/kusto/query/tdigest-merge-aggfunction.md)
+  - Tdigest_merge Original PR 1151
+  - Fix tdigest_merge doc
+- [fork operator](/azure/data-explorer/kusto/query/forkoperator.md)
+  - Added project-keep
+- [project-away operator](/azure/data-explorer/kusto/query/projectawayoperator.md)
+  - Added project-keep
+- [project-reorder operator](/azure/data-explorer/kusto/query/projectreorderoperator.md)
+  - Added project-keep
+- [array_rotate_left()](/azure/data-explorer/kusto/query/array_rotate_leftfunction.md)
+  - Add bag_remove_keys() function to the docs
+- [array_rotate_right()](/azure/data-explorer/kusto/query/array_rotate_rightfunction.md)
+  - Add bag_remove_keys() function to the docs
+- [array_shift_left()](/azure/data-explorer/kusto/query/array_shift_leftfunction.md)
+  - Add bag_remove_keys() function to the docs
+- [Scalar function types](/azure/data-explorer/kusto/query/scalarfunctions.md)
+  - Add bag_remove_keys() function to the docs
+  - Added array_sort functions
+- [make_list_with_nulls() (aggregation function)](/azure/data-explorer/kusto/query/make-list-with-nulls-aggfunction.md)
+  - Added array_sort functions
+- [make_list() (aggregation function)](/azure/data-explorer/kusto/query/makelist-aggfunction.md)
+  - Added array_sort functions
+
+#### Functions library
+
+- [Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md)
+  - Kmeans-fl
+  - Add kmeans_fl
+- [series_fit_poly_fl()](/azure/data-explorer/kusto/functions-library/series-fit-poly-fl.md)
+  - Adieldar/series fit poly Original PR #977
+
+#### Management
+
+- [Create and alter external tables in Azure Storage or Azure Data Lake](/azure/data-explorer/kusto/management/external-tables-azurestorage-azuredatalake.md)
+  - Fixed external table next steps
+  - Document new columns in external table artifacts result
+- [Partitioning policy](/azure/data-explorer/kusto/management/partitioningpolicy.md)
+  - Update partitioning policy
+- [Data mappings](/azure/data-explorer/kusto/management/mappings.md)
+  - Update documentation of ingestion mappings
+- [Tables management](/azure/data-explorer/kusto/management/tables.md)
+  - User/vrozov/cleartable
+  
+#### Concepts
+
+- [Data purge](/azure/data-explorer/kusto/concepts/data-purge.md)
+  - Data purge formatting
+  - Purge docs clarification
+- [Query result set has exceeded the internal ... limit](/azure/data-explorer/kusto/concepts/resulttruncation.md)
+  - Added project-keep
+- [Runaway queries](/azure/data-explorer/kusto/concepts/runawayqueries.md)
+  - Added project-keep
+- [Query limits](/azure/data-explorer/kusto/concepts/querylimits.md)
+  - Update query limits
+
+#### General
+
+- [Create an Event Hub data connection for Azure Data Explorer by using C#](data-connection-event-hub-csharp.md)
+  - Event Hub C# compression
+  - Links: Dataexplorer - Pass1
+- [Azure Data Explorer tools and integrations overview](tools-integrations-overview.md)
+  - Add link to power apps in tools and integrations
+  - Add synapse to tools and integrations
+  - Links: Dataexplorer - Pass1
+  - add azure data studio topics
+- [KQL quick reference](kql-quick-reference.md)
+  - Added project-keep
+- [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
+  - Fix typo
+  - Update ingest-data-overview.md ingestion limit
+- [Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster (Preview)](azure-advisor.md) - Azure advisor new recommendation and links
+- [Use a Jupyter Notebook and kqlmagic extension to analyze data in Azure Data Explorer](kqlmagic.md) - change kqlmagic and remove azure notebooks
+- [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md)
+  - Updated UI for ingest-data-no-code
+  - Repo sync for protected CLA branch
+- [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)
+  - Update Event Grid Manual doc
+  - Event Grid - manually create resources in portal
+  - Repo sync for protected CLA branch
+- [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network (preview)](vnet-create-private-endpoint.md)
+  - ADX VNet
+- [Deploy Azure Data Explorer cluster into your Virtual Network](vnet-deployment.md)
+  - ADX VNet
+- [Best practices for using Power BI to query and visualize Azure Data Explorer data](power-bi-best-practices.md)
+  - Add documenation on PBI Timeout option
+  - Improve PBI-related docs
+- [Select the correct compute SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md)
+  - fix "Standard_E16as_v4 + 3 TB PS" ps value
+- [Create an Azure Data Explorer cluster and database by using C#](create-cluster-database-csharp.md)
+  - 2020 10 create clusterdb go
+- [Create an Azure Data Explorer cluster and database by using PowerShell](create-cluster-database-powershell.md)
+  - 2020 10 create clusterdb go
+- [Create an Azure Data Explorer cluster and database by using Python](create-cluster-database-python.md)
+  - 2020 10 create clusterdb go
+- [Use follower database to attach databases in Azure Data Explorer](follower.md)
+  - add powershell and conceptual tabs to follower doc
+- [Visualize data using the Azure Data Explorer connector for Power BI](power-bi-connector.md)
+  - Improve PBI-related docs
+- [Create an Azure Data Explorer cluster and database by using Azure CLI](create-cluster-database-cli.md)
+  - 2020 10 create clusterdb go
+- [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
+  - 2020 10 create clusterdb go
+- [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md)
+  - Remove note of 'experimental' for apache-avro format
+
 ## September 2020
 
 Welcome to what's new in the Azure Data Explorer docs from September 2020. This article lists some of the major changes to docs during this period.
@@ -229,6 +420,27 @@ Welcome to what's new in the Azure Data Explorer docs from September 2020. This 
 - [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
 
 ### Updated articles
+
+
+Ignoring PR 1011: Update index.yml
+Ignoring PR 1008: Update query-monitor-data.md
+Ignoring PR 1006: Update renderoperator.md    
+Ignoring PR 1003: Update show-query-results-cache-command.md
+Ignoring PR 996: Update series-fill-constfunction.md
+Ignoring PR 955: Update vnet-create-private-endpoint.md
+Ignoring PR 952: Update make-seriesoperator.md
+Ignoring PR 951: Update parse-xmlfunction.md
+Ignoring PR 949: Update data-lake-query-data.md
+Ignoring PR 944: Update calloutpolicy.md
+Ignoring PR 938: Update beta-cdffunction.md
+Ignoring PR 931: Update partitioningpolicy.md
+Ignoring PR 930: Update partitioningpolicy.md
+Ignoring PR 906: Update dashboard-parameters.md
+Ignoring PR 902: Update ingest-sample-data.md
+Ignoring PR 901: Update ingest-sample-data.md
+Ignoring PR 898: Update partitioningpolicy.md
+Ignoring PR 877: Update mv-applyoperator.md
+Ignoring PR 362: Update one-click-table.md
 
 #### Query
 
@@ -337,6 +549,34 @@ Welcome to what's new in the Azure Data Explorer docs from August 2020. This art
 - [Create business continuity and disaster recovery solutions with Azure Data Explorer](business-continuity-create-solution.md)
 
 ### Updated articles
+
+Ignoring PR 872: Update columns.md
+Ignoring PR 864: Update vnet-deployment.md
+Ignoring PR 860: Update partitioningpolicy.md
+Ignoring PR 848: Update partitioningpolicy.md
+Ignoring PR 845: Update dynamic-to-json-function.md
+Ignoring PR 838: Update show-table-details-command.md
+Ignoring PR 833: Update user-defined-functions.md
+Ignoring PR 832: Update mvexpandoperator.md      
+Ignoring PR 831: Update rowlevelsecuritypolicy.md
+Ignoring PR 823: Update kusto-explorer.md
+Ignoring PR 821: Update querylimits.md   
+Ignoring PR 808: Update shufflequery.md
+Ignoring PR 805: Update binatfunction.md
+Ignoring PR 804: Update binfunction.md
+Ignoring PR 800: Update rowlevelsecuritypolicy.md
+Ignoring PR 795: Update updatepolicy.md
+Ignoring PR 792: Update go-ingest-data.md
+Ignoring PR 789: Update mvexpandoperator.md
+Ignoring PR 788: Update usinghlltdigest.md
+Ignoring PR 784: Update business-continuity-create-solution.md
+Ignoring PR 774: Update mv-applyoperator.md
+Ignoring PR 771: Update net-sdk-ingest-data.md
+Ignoring PR 753: Update countif-aggfunction.md
+Ignoring PR 298: Update about-kusto-ingest.md
+Ignoring PR 289: Update python-query-data.md
+Ignoring PR 278: Update data-share.md
+Ignoring PR 268: Update monitor-with-resource-health.md
 
 #### Query
 
