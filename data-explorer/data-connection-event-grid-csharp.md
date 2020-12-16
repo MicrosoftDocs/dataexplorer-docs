@@ -129,7 +129,7 @@ var blobs = container.ListBlobs();
 
 ### Upload file using Azure Data Lake SDK
 
-When working with Data Lake Storage Gen2, you can use [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload files to storage. The following code snippet creates a new filesystem in your Azure Data Lake storage and uploads a local file with metadata to that filesystem.
+When working with Data Lake Storage Gen2, you can use [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload files to storage. The following code snippet uses Azure.Storage.Files.DataLake v12.5.0 to create a new filesystem in Azure Data Lake storage and to upload a local file with metadata to that filesystem.
 
 ```csharp
 var accountName = <storage_account_name>;
@@ -165,6 +165,6 @@ dataLakeFileClient.Upload(localFileName, uploadOptions);
 ```
 
 > [!NOTE]
-> When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0, and this event is ignored by Azure Data Explorer. File flushing triggered another event if the "close" parameter set to "true". This event indicates that this is the final update and the file stream has been closed. This event is processed by the Event Grid data connection. For more information about flushing see [Azure Data Lake flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush?view=azure-dotnet).
+> When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0, and this event is ignored by Azure Data Explorer. File flushing triggers another event if the "Close" parameter set to "true". This event indicates that this is the final update and the file stream has been closed. This event is processed by the Event Grid data connection. In the code snippet above, the "Upload" method trigers flushing when the file upload is finished. Therefore, a "Close" parameter set to "true" need to be defined. For more information about flushing see [Azure Data Lake flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush?view=azure-dotnet).
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]
