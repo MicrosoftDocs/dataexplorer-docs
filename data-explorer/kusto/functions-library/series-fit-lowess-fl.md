@@ -159,7 +159,6 @@ The following examples assume the function is already installed:
 The following example tests irregular (unevenly spaced) time series
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
-
 ```kusto
 let max_t = datetime(2016-09-03);
 demo_make_series1
@@ -180,7 +179,6 @@ Compare LOWESS versus polynomial fit
 The following example contains fifth order polynomial with noise on x and y axes. See comparison of LOWESS versus polynomial fit. 
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
-
 ```kusto
 range x from 1 to 200 step 1
 | project x = rand()*5 - 2.3
