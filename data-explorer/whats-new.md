@@ -239,7 +239,7 @@ Name | Notes
 
 Name | Notes
 ---|---
-[Query throttling policy commands](./kusto/management/query-throttling-policy-commands.md) | The [query throttling policy](query-throttling-policy.md) is a cluster-level policy to restrict query concurrency in the cluster. 
+[Query throttling policy commands](./kusto/management/query-throttling-policy-commands.md) | The [query throttling policy](kusto/management/query-throttling-policy.md) is a cluster-level policy to restrict query concurrency in the cluster. 
 [Query throttling policy](./kusto/management/query-throttling-policy.md) | Define the query throttling policy to limit the number of concurrent queries the cluster can execute at the same time. This policy protects the cluster from being overloaded with more concurrent queries than it can sustain. The policy can be changed at run-time, and takes place immediately after the alter policy command completes.
 [.clear table data](./kusto/management/clear-table-data-command.md) | Clears the data of an existing table, including streaming ingestion data.
 
@@ -388,24 +388,24 @@ Name | Notes
 [zlib_compress_to_base64_string()](./kusto/query/zlib-base64-compress.md) | Performs zlib compression and encodes the result to base64.
 [zlib_decompress_from_base64_string()](./kusto/query/zlib-base64-decompress.md) | Decodes the input string from base64 and performs zlib decompression.
 [cosmosdb_sql_request plugin](./kusto/query/cosmosdb-plugin.md) | The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network endpoint and returns the results of the query. This plugin is primarily designed for querying small datasets, for example, enriching data with reference data stored in [Azure Cosmos DB](/azure/cosmos-db/).
-[materialized_view() function](./kusto/query/materialized-view-function.md) | References the materialized part of a [materialized view](../management/materialized-views/materialized-view-overview.md). 
+[materialized_view() function](./kusto/query/materialized-view-function.md) | References the materialized part of a [materialized view](kusto/management/materialized-views/materialized-view-overview.md). 
 
 #### Functions library
 
 Name | Notes
 ---|---
-[Functions library](./kusto/functions-library/functions-library.md) | The following article contains a categorized list of [UDF (user-defined functions)](../query/functions/user-defined-functions.md). The user-defined functions code is given in the articles.  It can be used within a let statement embedded in a query or can be persisted in a database using [`.create function`](../management/create-function.md).
+[Functions library](./kusto/functions-library/functions-library.md) | The following article contains a categorized list of [UDF (user-defined functions)](kusto/query/functions/user-defined-functions.md). The user-defined functions code is given in the articles.  It can be used within a let statement embedded in a query or can be persisted in a database using [`.create function`](kusto/management/create-function.md).
 
 #### Management
 
 Name | Notes
 ---|---
-[.create materialized-view](./kusto/management/materialized-views/materialized-view-create.md) | A [materialized view](materialized-view-overview.md) is an aggregation query over a source table, representing a single summarize statement.
-[Materialized views (preview)](./kusto/management/materialized-views/materialized-view-overview.md) | [Materialized views](../../query/materialized-view-function.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries) is more performant than running the aggregation directly over the source table, which is performed each query.
-[.alter materialized-view](./kusto/management/materialized-views/materialized-view-alter.md) | Altering the [materialized view](materialized-view-overview.md) can be used for changing the query of a materialized view, while preserving the existing data in the view.
+[.create materialized-view](./kusto/management/materialized-views/materialized-view-create.md) | A [materialized view](kusto/management/materialized-views/materialized-view-overview.md) is an aggregation query over a source table, representing a single summarize statement.
+[Materialized views (preview)](./kusto/management/materialized-views/materialized-view-overview.md) | [Materialized views](kusto/query/materialized-view-function.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](./kusto/management/materialized-views/materialized-view-overview.md#materialized-views-queries) is more performant than running the aggregation directly over the source table, which is performed each query.
+[.alter materialized-view](./kusto/management/materialized-views/materialized-view-alter.md) | Altering the [materialized view](kusto/management/materialized-viewsmaterialized-view-overview.md) can be used for changing the query of a materialized view, while preserving the existing data in the view.
 [`.disable | .enable materialized-view`](./kusto/management/materialized-views/materialized-view-enable-disable.md) | Describes how to disable a materialized view.
 [.drop materialized-view](./kusto/management/materialized-views/materialized-view-drop.md) | Drops a materialized view.
-[.show materialized-views commands](./kusto/management/materialized-views/materialized-view-show-commands.md) | The following show commands display information about [materialized views](materialized-view-overview.md).
+[.show materialized-views commands](./kusto/management/materialized-views/materialized-view-show-commands.md) | The following show commands display information about [materialized views](kusto/management/materialized-views/materialized-view-overview.md).
 
 #### API
 
