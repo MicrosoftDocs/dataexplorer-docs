@@ -213,7 +213,7 @@ With the app generating data, you can now see the flow of that data from the eve
     ![Message result set](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of 1G, or 100 blobs. Therefore, you may experience a latency. For more information see [batching policy](kusto/management/batchingpolicy.md). 
+    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of 1G, or 1000 blobs. Therefore, you may experience a latency. For more information see [batching policy](kusto/management/batchingpolicy.md). 
     > * Event Hub ingestion includes Event Hub response time of 10 seconds or 1 MB. 
     > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](kusto/management/streamingingestionpolicy.md). 
 
