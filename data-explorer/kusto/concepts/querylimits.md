@@ -226,7 +226,7 @@ The numbers are rounded up to a whole CPU, so it's safe to set the property valu
 The second, *query_fanout_nodes_percent*, controls how many of the query nodes in the cluster to use per subquery distribution operation.
 It functions in a similar manner.
 
-If `query_fanout_nodes_percent` or `query_fanout_threads_percent` are set multiple times, for example, in both client request properties and using a `set` statement - the *lower* value for each property applies.
+If `query_fanout_nodes_percent` or `query_fanout_threads_percent` are set multiple times, for example, in both client request properties and using a `set` statement - the lower value for each property applies.
 
 ## Limit on query complexity
 
