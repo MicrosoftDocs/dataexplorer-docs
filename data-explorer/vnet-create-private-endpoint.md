@@ -50,8 +50,8 @@ To securely link to all services on your cluster, you need to create the [Privat
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
-    | Load Balancer | Your engine or *data management* Load Balancer | Select the Load balancer that was created for your cluster engine, You can use either the external or internal Load balancer.  The Load balancers engine names will be in the following format: <br> *kucompute-{clustername}-elb* for the external Load balancer <br> *kucompute-{clustername}-ilb* for the internal Load balancer<br> *The Load Balancers data management names will be in the following format: <br> kudatamgmt-{clustername}-elb <br> kudatamgmt-{clustername}-ilb*|
-    | Load balancer frontend IP address | Your engine or data management public IP. | Select the Load Balancer public IP address. |
+    | Load balancer | Your engine or *data management* Load balancer | Select the Load balancer that was created for your cluster engine. You can use either the external or internal Load balancer.  <br> **The Load balancer's engine name will be in the following format:** <br> External Load balancer: *kucompute-{clustername}-elb* <br> Internal Load balancer: *kucompute-{clustername}-ilb* <br> **The Load balancer's data management name will be in the following format:** <br> kudatamgmt-{clustername}-elb <br> kudatamgmt-{clustername}-ilb*|
+    | Load balancer frontend IP address | Your engine or data management IP. | Select the Load balancer IP address. |
     | Source NAT subnet | Cluster's subnet | Your subnet, where the cluster is deployed.
     
 1. In the **Access security** pane, choose the users who can request access to your private link service.
