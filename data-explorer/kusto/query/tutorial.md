@@ -161,7 +161,7 @@ Here's the output:
 
 ## Aggregate groups of rows: *summarize*
 
-Count the number of events occur in each country:
+Count the number of events occur in each state:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -238,7 +238,7 @@ StormEvents
 
 :::image type="content" source="images/tutorial/event-counts-state.png" alt-text="Screenshot that shows a column chart of storm event counts by state.":::
 
-Although we removed `mid` in the `project` operation, we still need it if we want the chart to display the countries in that order.
+Although we removed `mid` in the `project` operation, we still need it if we want the chart to display the states in that order.
 
 Strictly speaking, `render` is a feature of the client rather than part of the query language. Still, it's integrated into the language, and it's useful for envisioning your results.
 
