@@ -182,7 +182,7 @@ To see why a run failed, select the run start time. The flow appears, and the st
 
 ## Timeout exceptions
 
-Your flow can fail and return a "RequestTimeout" exception if it runs for more than seven minutes.
+Your flow can fail and return a "RequestTimeout" exception if it runs for more than 90 seconds.
     
 ![Screenshot of the flow request timeout exception error](./media/flow/flow-requesttimeout.png)
 
@@ -192,7 +192,7 @@ The same query might run successfully in Azure Data Explorer, where the time isn
 
 ## Limitations
 
-* Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and a time of seven minutes to run.
+* Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and a time of 90 seconds to run.
 * The connector doesn't support the [fork](kusto/query/forkoperator.md) and [facet](kusto/query/facetoperator.md) operators.
 * Flow works best on Microsoft Edge and Google Chrome.
 
