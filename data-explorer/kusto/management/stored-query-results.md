@@ -17,6 +17,8 @@ Stored query results can be useful in the following scenarios:
 * Implement results pagination. A stored query result is created based on a query, and a preview is shown on the first page. Every subsequent page shows the next portion of the pre-calculated result without the need to run the initial query again.
 * Temporarily save query results during data exploration.
 
+The feature is only available when [EngineV3](../../engine-v3.md) is enabled.
+
 > [!NOTE]
 > The stored query results are in preview phase, and shouldn't be used for production scenarios. 
 
