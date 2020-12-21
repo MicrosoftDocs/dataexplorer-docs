@@ -55,162 +55,50 @@ Name | Notes
 
 ### Updated articles
 
-- Ignoring PR 1273: Update partitioningpolicy.md
-- Ignoring PR 1266: Update ingest-data-logstash.md
-- Ignoring PR 1263: Update make-bag-aggfunction.md
-- Ignoring PR 1250: Update create-cluster-database-portal.md
-- Ignoring PR 1243: Update data-purge.md
-- Ignoring PR 1239: Update ClientRequestProperties
-- Ignoring PR 1224: Update numoperators.md
-- Ignoring PR 1220: Update gettypefunction.md
-- Ignoring PR 1219: Update countoperator.md
-- Ignoring PR 1216: Update tools-integrations-overview.md
-- Ignoring PR 1212: Update indexofregexfunction.md
-- Ignoring PR 1211: Update query-throttling-policy.md
-- Ignoring PR 1204: Update cluster-follower.md
-- Ignoring PR 1200: Update lightingest.md
-- Ignoring PR 1195: Update cluster-follower.md
-- Ignoring PR 1183: Update gzip-base64-compress.md
-- Ignoring PR 1180: Update hll-merge-aggfunction.md
-- Ignoring PR 1177: Update sandboxes.md
-- Ignoring PR 1171: Update materialized-view-create.md
-- Ignoring PR 1166: Update isnotnullfunction.md
-- Ignoring PR 1158: Update row-level-security-policy.md
-- Ignoring PR 448: Update datatypes-string-operators.md
-
-#### Query
-
-- [externaldata operator](./kusto/query/externaldata-operator.md)
-  - Management commands in-line-code
-- [mysql_request plugin (Preview)](./kusto/query/mysqlrequest-plugin.md)
-  - Management commands in-line-code
-  - Add mysql_request() preview plugin - Original PR Alex S #1164
-  - Add mysql_request() preview plugin into the docs
-- [render operator](./kusto/query/renderoperator.md)
-  - Localization metadata
-  - edit pass: Kusto samples, tutorial, Splunk cheat sheet
-- [Samples](./kusto/query/samples.md)
-  - Localization metadata
-  - edit pass: Kusto samples, tutorial, Splunk cheat sheet
-  - Azure Monitor log query restructure
-- [Tutorial](./kusto/query/tutorial.md)
-  - Localization metadata
-  - Broken link fixes
-  - edit pass: Kusto samples, tutorial, Splunk cheat sheet
-  - Azure Monitor log query restructure
-- [partition operator](./kusto/query/partitionoperator.md)
-  - partition operator fix docs
-- [Null Values](./kusto/query/scalar-data-types/null-values.md)
-  - Pivot warning null values
-- [Scalar function types](./kusto/query/scalarfunctions.md)
-  - Document ipv4_is_private() function
-  - Added array_reverse()
-- [Splunk to Kusto Query Language map](./kusto/query/splunk-cheat-sheet.md)
-  - edit pass: Kusto samples, tutorial, Splunk cheat sheet
-  - Azure Monitor log query restructure
-- [parse_command_line()](./kusto/query/parse-command-line.md)
-  - parsertype parameter is case-sensitive
-- [gzip_compress_to_base64_string()](./kusto/query/gzip-base64-compress.md)
-  - gzip compress and decompress functions documentation fixes
-  - documentation for gzip compress/ decompress commands
-- [gzip_decompress_from_base64_string()](./kusto/query/gzip-base64-decompress.md)
-  - gzip compress and decompress functions documentation fixes
-  - documentation for gzip compress/ decompress commands
-- [infer_storage_schema plugin](./kusto/query/inferstorageschemaplugin.md)
-  - infer_storage_schema: add example of using inferred schema
-- [Cross-database and cross-cluster queries](./kusto/query/cross-cluster-or-database-queries.md)
-  - Azure Monitor log query restructure
-
-#### Functions library
-
-- [series_downsample_fl()](./kusto/functions-library/series-downsample-fl.md)
-  - Adding series_downsample_fl()
-- [series_exp_smoothing_fl()](./kusto/functions-library/series-exp-smoothing-fl.md)
-  - Add series_exp_smoothing_fl()
+- Ignoring PR 1273: Update partitioningpolicy.md = remove
+- Ignoring PR 1266: Update ingest-data-logstash.md = only supports JSON - ORNAT
+- Ignoring PR 1263: Update make-bag-aggfunction.md = remove
+- Ignoring PR 1250: Update create-cluster-database-portal.md = remove
+- Ignoring PR 1243: Update data-purge.md = remove
+- Ignoring PR 1224: Update numoperators.md = remove
+- Ignoring PR 1220: Update gettypefunction.md = remove
+- Ignoring PR 1219: Update countoperator.md =remove
+- Ignoring PR 1216: Update tools-integrations-overview.md = remove
+- Ignoring PR 1212: Update indexofregexfunction.md = remove
+- Ignoring PR 1211: Update query-throttling-policy.md = remove
+- Ignoring PR 1204: Update cluster-follower.md = syntax changed, ORNAT
+- Ignoring PR 1200: Update lightingest.md = remove
+- Ignoring PR 1195: Update cluster-follower.md = syntax changed, ORNAT
+- Ignoring PR 1183: Update gzip-base64-compress.md = remove
+- Ignoring PR 1180: Update hll-merge-aggfunction.md = remove
+- Ignoring PR 1177: Update sandboxes.md = remove
+- Ignoring PR 1171: Update materialized-view-create.md = remove
+- Ignoring PR 1166: Update isnotnullfunction.md = remove
+- Ignoring PR 1158: Update row-level-security-policy.md = remove
+- Ignoring PR 448: Update datatypes-string-operators.md = remove
 
 #### Management
 
-- [Export data to storage](./kusto/management/data-export/export-data-to-storage.md)
-  - Export: storage failures during export commands
-- [.disable plugin](./kusto/management/disable-plugin.md)
-  - Add mysql_request() preview plugin - Original PR Alex S #1164
-- [.enable plugin](./kusto/management/enable-plugin.md)
-  - Add mysql_request() preview plugin - Original PR Alex S #1164
-- [.show database schema commands](./kusto/management/show-schema-database.md)
-  - Update show-schema-database.md #1222
-- [Continuous data export overview](./kusto/management/data-export/continuous-data-export.md)
-  - Export: storage failures during export commands
-- [Export data to an external table](./kusto/management/data-export/export-data-to-an-external-table.md)
-  - Export: storage failures during export commands
-- [Callout policy](./kusto/management/calloutpolicy.md)
-  - Add mysql_request() preview plugin - Original PR Alex S #1164
-- [Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md)
-  - Added some samples on filtering by partition columns
-
-#### Tools
-
-- [Troubleshooting](./kusto/tools/kusto-explorer-troubleshooting.md)
-  - Links: Data Explorer (2020-11)
-
-#### API
-
-- [Client libraries](./kusto/api/client-libraries.md)
-  - Links: Data Explorer (2020-11)
-  - Update client-libraries links
+- [Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md) - ORNAT 
+  - Added some samples on filtering by partition columns 
 
 #### General
 
-- [Azure DevOps Task for Azure Data Explorer](devops.md)
-  - Management commands in-line-code
-- [Business continuity and disaster recovery overview](business-continuity-overview.md)
-  - BCDR Always on update
-- [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md)
+- [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md) - ORNAT
   - 2020 11 assigned identities
   - Support user assigned identities
-- [Azure security baseline for Azure Data Explorer](security-baseline.md)
+- [Azure security baseline for Azure Data Explorer](security-baseline.md) - ORNAT
   - ASB: Data Explorer
-- [Create a table in Azure Data Explorer](one-click-table.md)
+- [Create a table in Azure Data Explorer](one-click-table.md) - KEEP
   - One click table GA
-- [Visualize data with Azure Data Explorer dashboards(Preview)](azure-data-explorer-dashboards.md)
-  - Added documentation for new dashboard visuals and parameter changes
-- [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md)
-  - Event Hub one click
-- [Quickstart: Query data in Azure Data Explorer Web UI](web-query-data.md)
+- [Quickstart: Query data in Azure Data Explorer Web UI](web-query-data.md) - KEEP
   - 2020 10 webui
   - Olgawebui
-- [Monitor Azure Data Explorer ingestion, commands, and queries using diagnostic logs](using-diagnostic-logs.md)
-  - Update using-diagnostic-logs screenshot
-  - Adding ingestion batching log
-  - Ingestion log note
-- [Event Hub data connection](ingest-data-event-hub-overview.md)
-  - Geo redundancy in event hub connection
-- [Ingest JSON formatted sample data into Azure Data Explorer](ingest-json-formats.md)
-  - 2020 11 ingest json 2
-- [Best practices for using Power BI to query and visualize Azure Data Explorer data](power-bi-best-practices.md)
-  - Added documentation for ForceUseContains option
-  - Links: Data Explorer (2020-11)
-  - Add PBI Value.NativeQuery docs
-- [What is one-click ingestion?](ingest-data-one-click.md)
+- [What is one-click ingestion?](ingest-data-one-click.md) - KEEP
   - Update one click ingestion
   - OCI = GA + JSON nested levels + file types
-- [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md)
-  - Update one click ingestion
-  - OCI = GA + JSON nested levels + file types
-- [Integrate Azure Data Explorer with Azure Data Factory](data-factory-integration.md)
-  - Add mysql_request() preview plugin - Original PR Alex S #1164
-  - Add mysql_request() preview plugin into the docs
-- [Use a Jupyter Notebook and kqlmagic extension to analyze data in Azure Data Explorer](kqlmagic.md)
-  - Links: Data Explorer (2020-11)
-- [Create Power Apps application to query data in Azure Data Explorer (preview)](power-apps-connector.md)
-  - Links: Data Explorer (2020-11)
-- [Azure Data Explorer tools and integrations overview](tools-integrations-overview.md)
-  - Links: Data Explorer (2020-11)
-- [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md)
-  - OCI = GA + JSON nested levels + file types
-- [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
+- [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md) - ORNAT
   - Added documentation for new dashboard visuals and parameter changes
-- [Ingest data from Logstash to Azure Data Explorer (preview)](ingest-data-logstash.md) - Repo sync for protected CLA branch
-- [Use LightIngest to ingest data to Azure Data Explorer](lightingest.md) - Repo sync for protected CLA branch
 
 ## October 2020
 
