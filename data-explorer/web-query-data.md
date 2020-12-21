@@ -283,8 +283,8 @@ Kusto tries to interpret the severity or verbosity level of each row in the resu
 
 To enable the error level highlighting:
 
-1. Click on the **Settings** wheel next to your user name.
-1. Under the **Appearance** tab, toggle the **Enable error level highlighting** option to the right. 
+1. Select the **Settings** icon next to your user name.
+1. Select the **Appearance** tab and toggle the **Enable error level highlighting** option to the right. 
 
 :::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="Animated GIF showing how to enable error-level highlighting in the settings":::
 
