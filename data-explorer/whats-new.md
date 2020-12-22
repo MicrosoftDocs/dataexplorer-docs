@@ -135,36 +135,36 @@ Name | Notes
 
 Name | Notes
 ---|---
-[Ingest data using the Azure Data Explorer Java SDK](java-ingest-data.md) |
-[Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md) |
-[Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md) |
-[EngineV3 - preview](engine-v3.md) |
-[Create an Azure Data Explorer cluster and database using Go](create-cluster-database-go.md) |
-[Create Power Apps application to query data in Azure Data Explorer (preview)](power-apps-connector.md) |
+[Ingest data using the Azure Data Explorer Java SDK](java-ingest-data.md) | In this article, learn how to ingest data using the Azure Data Explorer Java library. First, you'll create a table and a data mapping in a test cluster. Then you'll queue an ingestion from blob storage to the cluster using the Java SDK and validate the results.
+[Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md) | In this article, you learn how to create manually the resources needed for Event Grid Ingestion: Event Grid subscription, Event Hub namespace, and Event Hub. 
+[Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md) | A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet’s address space for the Azure service to securely connect between Azure Data Explorer and Azure services such as Azure Storage and Event Hub. Azure Data Explorer accesses the Private Endpoint of the storage accounts or Event Hubs over the Microsoft backbone, and all communication, for example, data export, external tables, and data ingestion, takes take place over the private IP address. 
+[EngineV3 - preview](engine-v3.md) | Kusto EngineV3 is Azure Data Explorer’s next generation storage and query engine. It's designed to provide unparalleled performance for ingesting and querying telemetry, logs, and time series data.
+[Create an Azure Data Explorer cluster and database using Go](create-cluster-database-go.md) |  In this article, you create an Azure Data Explorer cluster and database using [Go](https://golang.org/). You can then list and delete your new cluster and database and execute operations on your resources.
+[Create Power Apps application to query data in Azure Data Explorer (preview)](power-apps-connector.md) | In this article, you will create a Power Apps application to query Azure Data Explorer data. During this process, you will see the steps of data parameterization, retrieval, and presentation.
 
 ### Updated articles
 
-- Ignoring PR 380: Update parse-xmlfunction.md
-- Ignoring PR 1155: Update cross-cluster-or-database-queries.md
-- Ignoring PR 1147: Update partitionoperator.md
-- Ignoring PR 1144: Update logicapps.md
-- Ignoring PR 1142: Update dcount-intersect-plugin.md
-- Ignoring PR 1124: Update querylimits.md
-- Ignoring PR 1109: Update request-properties.md
-- Ignoring PR 1105: Update ingest-data-event-hub-overview.md
-- Ignoring PR 1099: Update sandboxes.md
-- Ignoring PR 1092: Update partitioningpolicy.md
-- Ignoring PR 1089: Update batchingpolicy.md
-- Ignoring PR 1085: Update kusto-explorer-troubleshooting.md
-- Ignoring PR 1079: Update engine-v3.md
-- Ignoring PR 1077: Update query-results-cache.md
-- Ignoring PR 1074: Update drop-function.md
-- Ignoring PR 1068: Update row-level-security-policy.md
-- Ignoring PR 1064: Update rowlevelsecuritypolicy.md
-- Ignoring PR 1051: Update data-explorer-overview.md
-- Ignoring PR 1031: Update dcount-intersect-plugin.md
-- Ignoring PR 1029: Update countif-aggfunction.md
-- Ignoring PR 1025: Update ingest-data-overview.md
+- Ignoring PR 380: Update parse-xmlfunction.md = remove
+- Ignoring PR 1155: Update cross-cluster-or-database-queries.md = remove
+- Ignoring PR 1147: Update partitionoperator.md = remove
+- Ignoring PR 1144: Update logicapps.md - GA - KEEP
+- Ignoring PR 1142: Update dcount-intersect-plugin.md = remove
+- Ignoring PR 1124: Update querylimits.md = remove
+- Ignoring PR 1109: Update request-properties.md = remove
+- Ignoring PR 1105: Update ingest-data-event-hub-overview.md = remove
+- Ignoring PR 1099: Update sandboxes.md - error codes updated - ORNAT
+- Ignoring PR 1092: Update partitioningpolicy.md - REMOVE
+- Ignoring PR 1089: Update batchingpolicy.md - remove
+- Ignoring PR 1085: Update kusto-explorer-troubleshooting.md = remove
+- Ignoring PR 1079: Update engine-v3.md = remove
+- Ignoring PR 1077: Update query-results-cache.md = remove
+- Ignoring PR 1074: Update drop-function.md = remove
+- Ignoring PR 1068: Update row-level-security-policy.md - GA - KEEP
+- Ignoring PR 1064: Update rowlevelsecuritypolicy.md - GA - KEEP (? ORNAT)
+- Ignoring PR 1051: Update data-explorer-overview.md - remove
+- Ignoring PR 1031: Update dcount-intersect-plugin.md - remove
+- Ignoring PR 1029: Update countif-aggfunction.md - remove
+- Ignoring PR 1025: Update ingest-data-overview.md -remove
 
 #### Query
 
