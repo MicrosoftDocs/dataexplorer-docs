@@ -125,7 +125,7 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
     | Event Hub namespace | A unique namespace name | The name you chose earlier that identifies your namespace. |
     | Event Hub | *test-hub* | The event Hub you created. |
     | Consumer group | *test-group* | The consumer group defined in the Event Hub you created. |
-    | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
+    | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). For more information, see [Event system properties mapping](#event-system-properties-mapping). |
     | Compression | *None* | The compression type of the Event Hub messages payload. Supported compression types: *None, GZip*.|
     
 #### Target table
@@ -151,9 +151,7 @@ For this article, you use static routing, where you specify the table name, data
 
 ### Event system properties mapping
 
-> [!Note]
-> * System properties are supported for single-record events.
-> * For `csv` mapping, properties are added at the beginning of the record. For `json` mapping, properties are added according to the name that appears in the drop-down list.
+[!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-event-hub-overview.md#system-properties) in the table schema and mapping.
 
