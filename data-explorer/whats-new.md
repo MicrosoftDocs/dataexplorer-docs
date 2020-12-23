@@ -168,100 +168,31 @@ Name | Notes
 
 #### Query
 
-- [tdigest_merge() (aggregation function)](./kusto/query/tdigest-merge-aggfunction.md)
-  - Tdigest_merge Original PR 1151
-  - Fix tdigest_merge doc
-- [fork operator](./kusto/query/forkoperator.md)
-  - Added project-keep
-- [project-away operator](./kusto/query/projectawayoperator.md)
-  - Added project-keep
-- [project-reorder operator](./kusto/query/projectreorderoperator.md)
-  - Added project-keep
-- [array_rotate_left()](./kusto/query/array_rotate_leftfunction.md)
-  - Add bag_remove_keys() function to the docs
-- [array_rotate_right()](./kusto/query/array_rotate_rightfunction.md)
-  - Add bag_remove_keys() function to the docs
-- [array_shift_left()](./kusto/query/array_shift_leftfunction.md)
-  - Add bag_remove_keys() function to the docs
-- [Scalar function types](./kusto/query/scalarfunctions.md)
-  - Add bag_remove_keys() function to the docs
-  - Added array_sort functions
-- [make_list_with_nulls() (aggregation function)](./kusto/query/make-list-with-nulls-aggfunction.md)
-  - Added array_sort functions
-- [make_list() (aggregation function)](./kusto/query/makelist-aggfunction.md)
-  - Added array_sort functions
+- [tdigest_merge() (aggregation function)](./kusto/query/tdigest-merge-aggfunction.md) - examples added ORNAT
+
 
 #### Management
 
-- [Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md)
+- [Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md) - samples added ORNAT
   - Fixed external table next steps
   - Document new columns in external table artifacts result
-- [Partitioning policy](./kusto/management/partitioningpolicy.md)
-  - Update partitioning policy
-- [Data mappings](./kusto/management/mappings.md)
+- [Data mappings](./kusto/management/mappings.md) - most of the examples changed/added ORNAT
   - Update documentation of ingestion mappings
-- [Tables management](./kusto/management/tables.md)
+- [Tables management](./kusto/management/tables.md)- .clear tables command added ORNAT
   - User/vrozov/cleartable
   
-#### Concepts
-
-- [Data purge](./kusto/concepts/data-purge.md)
-  - Data purge formatting
-  - Purge docs clarification
-- [Query result set has exceeded the internal ... limit](./kusto/concepts/resulttruncation.md)
-  - Added project-keep
-- [Runaway queries](./kusto/concepts/runawayqueries.md)
-  - Added project-keep
-- [Query limits](./kusto/concepts/querylimits.md)
-  - Update query limits
-
 #### General
 
-- [Create an Event Hub data connection for Azure Data Explorer by using C#](data-connection-event-hub-csharp.md)
-  - Event Hub C# compression
-  - Links: Dataexplorer - Pass1
-- [Azure Data Explorer tools and integrations overview](tools-integrations-overview.md)
+- [Azure Data Explorer tools and integrations overview](tools-integrations-overview.md) - ORNAT
   - Add link to power apps in tools and integrations
   - Add synapse to tools and integrations
-  - Links: Dataexplorer - Pass1
   - add azure data studio topics
-- [KQL quick reference](kql-quick-reference.md)
-  - Added project-keep
-- [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
-  - Fix typo
-  - Update ingest-data-overview.md ingestion limit
-- [Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster (Preview)](azure-advisor.md) - Azure advisor new recommendation and links
-- [Use a Jupyter Notebook and kqlmagic extension to analyze data in Azure Data Explorer](kqlmagic.md) - change kqlmagic and remove azure notebooks
-- [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md)
-  - Updated UI for ingest-data-no-code
-- [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)
-  - Update Event Grid Manual doc
-  - Event Grid - manually create resources in portal
-- [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network (preview)](vnet-create-private-endpoint.md)
-  - ADX VNet
-- [Deploy Azure Data Explorer cluster into your Virtual Network](vnet-deployment.md)
-  - ADX VNet
-- [Best practices for using Power BI to query and visualize Azure Data Explorer data](power-bi-best-practices.md)
-  - Add documenation on PBI Timeout option
-  - Improve PBI-related docs
-- [Select the correct compute SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md)
-  - fix "Standard_E16as_v4 + 3 TB PS" ps value
-- [Create an Azure Data Explorer cluster and database by using C#](create-cluster-database-csharp.md)
-  - 2020 10 create clusterdb go
-- [Create an Azure Data Explorer cluster and database by using PowerShell](create-cluster-database-powershell.md)
-  - 2020 10 create clusterdb go
-- [Create an Azure Data Explorer cluster and database by using Python](create-cluster-database-python.md)
-  - 2020 10 create clusterdb go
-- [Use follower database to attach databases in Azure Data Explorer](follower.md)
+- [Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster (Preview)](azure-advisor.md) -ORNAT
+  - Azure advisor new recommendation and links
+- [Use follower database to attach databases in Azure Data Explorer](follower.md) - ORNAT
   - add powershell and conceptual tabs to follower doc
-- [Visualize data using the Azure Data Explorer connector for Power BI](power-bi-connector.md)
+- [Visualize data using the Azure Data Explorer connector for Power BI](power-bi-connector.md) - advanced options added ORNAT
   - Improve PBI-related docs
-- [Create an Azure Data Explorer cluster and database by using Azure CLI](create-cluster-database-cli.md)
-  - 2020 10 create clusterdb go
-- [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
-  - 2020 10 create clusterdb go
-- [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md)
-  - Remove note of 'experimental' for apache-avro format
 
 ## September 2020
 
