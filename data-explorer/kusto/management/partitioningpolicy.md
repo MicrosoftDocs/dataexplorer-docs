@@ -13,11 +13,11 @@ ms.date: 06/10/2020
 
 The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table.
 
-By default, extents are partitioned by their ingestion time. In the majority of cases there's no need to apply a partitioning policy on top of that.
+By default, extents are partitioned by their ingestion time. In the majority of cases there's no need to apply an additional partitioning policy.
 
-The main purpose of the policy is to improve performance of queries in very specific scenarios, in which the data set is significantly narrowed to a small subset of values in the partitioned column;
-For example, queries that filter on partitioned columns, use an aggregate, or join on a *high cardinality* (10M or higher) string column.
-In such cases, the policy may also result in better data compression.
+The main purpose of the partitioning policy is to improve performance of queries in specific scenarios, in which the data set is significantly narrowed to a small subset of values in the partitioned column.
+Example scenarios: queries that filter on partitioned columns, or queries that use an aggregate or join on a high cardinality string column. High cardinality is defined as 10M or higher.
+In such cases, use of the partitioning policy may also result in better data compression.
 
 > [!CAUTION]
 > There are no hard-coded limits set on the number of tables with the partitioning policy defined. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used. For more information, see [monitoring](#monitor-partitioning) and [capacity](#partition-capacity).
