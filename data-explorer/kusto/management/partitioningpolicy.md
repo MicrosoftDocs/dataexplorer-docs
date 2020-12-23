@@ -15,12 +15,23 @@ The partitioning policy defines if and how [extents (data shards)](../management
 
 By default, extents are partitioned by their ingestion time. In the majority of cases there's no need to apply an additional partitioning policy.
 
-The main purpose of the partitioning policy is to improve performance of queries in specific scenarios, in which the data set is significantly narrowed to a small subset of values in the partitioned column.
-Example scenarios: queries that filter on partitioned columns, or queries that use an aggregate or join on a high cardinality string column. High cardinality is defined as 10M or higher.
-In such cases, use of the partitioning policy may also result in better data compression.
+The main purpose of the partitioning policy is to improve performance of queries in [specific scenarios](#common-scenarios).
 
 > [!CAUTION]
 > There are no hard-coded limits set on the number of tables with the partitioning policy defined. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used. For more information, see [monitoring](#monitor-partitioning) and [capacity](#partition-capacity).
+
+## Common scenarios
+
+The following are common scenarios that can be addressed by setting a data partitioning policy:
+
+* Multi-tenant solutions, where most or all queries filter on a high cardinality ID column of type `string` (e.g. `TenantId`).
+  * High cardinality is defined as 10M or higher.
+  * In this case, set the [hash partition key](#hash-partition-key) to be the ID column, and set the `PartitionAssigmentMode` property to `uniform`.
+* Frequent aggregations and/or `join`s over a high-cardinality group by key of type `string`, where the distribution of values in the column is even.
+  * In this case, set the [hash partition key](#hash-partition-key) to be the column grouped-by or joined-on, and set the `PartitionAssigmentMode` property to `default`.
+* Data ingested into a table is unlikely to be ordered according to a specific `datetime` column, e.g. due to a backfill from heterogeneous source files, that include datetime values over a large time span.
+  * In this case, set the [Uniform range datetime partition key](#uniform-range-datetime-partition-key) to be the `datetime` column.
+    * If you need retention and caching policies to align with the datetime values in the column, instead of with the time of ingestion, set the `OverrideCreationTime` property to `true`.
 
 ## Partition keys
 
