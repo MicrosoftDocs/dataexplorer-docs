@@ -86,7 +86,8 @@ You can now run queries on both clusters (assuming you have data in your test cl
 1. Copy and paste the following query into the query window, below the first query. Notice how it isn't formatted on separate lines like the first query.
 
     ```kusto
-    StormEvents | sort by StartTime desc | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative | take 10
+    StormEvents | sort by StartTime desc 
+    | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative | take 10
     ```
 
 1. Select the new query. Press *Shift+Alt+F* to format the query, so it looks like the following query.
