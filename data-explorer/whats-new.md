@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
-ms.topic: 
+ms.topic: reference
 ms.date: 12/15/2020
 ---
 # What's new in Azure Data Explorer
@@ -328,146 +328,49 @@ Name | Notes
 
 ### Updated articles
 
-- Ignoring PR 872: Update columns.md
-- Ignoring PR 864: Update vnet-deployment.md
-- Ignoring PR 860: Update partitioningpolicy.md
-- Ignoring PR 848: Update partitioningpolicy.md
-- Ignoring PR 845: Update dynamic-to-json-function.md
-- Ignoring PR 838: Update show-table-details-command.md
-- Ignoring PR 833: Update user-defined-functions.md
-- Ignoring PR 832: Update mvexpandoperator.md      
-- Ignoring PR 831: Update rowlevelsecuritypolicy.md
-- Ignoring PR 823: Update kusto-explorer.md
-- Ignoring PR 821: Update querylimits.md   
-- Ignoring PR 808: Update shufflequery.md
-- Ignoring PR 805: Update binatfunction.md
-- Ignoring PR 804: Update binfunction.md
-- Ignoring PR 800: Update rowlevelsecuritypolicy.md
-- Ignoring PR 795: Update updatepolicy.md
-- Ignoring PR 792: Update go-ingest-data.md
-- Ignoring PR 789: Update mvexpandoperator.md
-- Ignoring PR 788: Update usinghlltdigest.md
-- Ignoring PR 784: Update business-continuity-create-solution.md
-- Ignoring PR 774: Update mv-applyoperator.md
-- Ignoring PR 771: Update net-sdk-ingest-data.md
-- Ignoring PR 753: Update countif-aggfunction.md
-- Ignoring PR 298: Update about-kusto-ingest.md
-- Ignoring PR 289: Update python-query-data.md
-- Ignoring PR 278: Update data-share.md
-- Ignoring PR 268: Update monitor-with-resource-health.md
+- Ignoring PR 872: Update columns.md - remove
+- Ignoring PR 864: Update vnet-deployment.md - remove
+- Ignoring PR 860: Update partitioningpolicy.md - remove
+- Ignoring PR 848: Update partitioningpolicy.md -remove
+- Ignoring PR 845: Update dynamic-to-json-function.md - remove
+- Ignoring PR 838: Update show-table-details-command.md - remove
+- Ignoring PR 833: Update user-defined-functions.md - remove
+- Ignoring PR 832: Update mvexpandoperator.md     - remove  
+- Ignoring PR 831: Update rowlevelsecuritypolicy.md - remove
+- Ignoring PR 823: Update kusto-explorer.md - remove
+- Ignoring PR 821: Update querylimits.md   remove
+- Ignoring PR 808: Update shufflequery.md -remove 
+- Ignoring PR 805: Update binatfunction.md - remove
+- Ignoring PR 804: Update binfunction.md - remove
+- Ignoring PR 800: Update rowlevelsecuritypolicy.md - how to produce error for unauthorized access - KEEP
+- Ignoring PR 795: Update updatepolicy.md - remove
+- Ignoring PR 792: Update go-ingest-data.md - remove
+- Ignoring PR 789: Update mvexpandoperator.md - remove
+- Ignoring PR 788: Update usinghlltdigest.md- remove
+- Ignoring PR 784: Update business-continuity-create-solution.md - remove
+- Ignoring PR 774: Update mv-applyoperator.md - remove
+- Ignoring PR 771: Update net-sdk-ingest-data.md - remove
+- Ignoring PR 753: Update countif-aggfunction.md - remove
+- Ignoring PR 298: Update about-kusto-ingest.md - remove
+- Ignoring PR 289: Update python-query-data.md - remove
+- Ignoring PR 278: Update data-share.md -remove
+- Ignoring PR 268: Update monitor-with-resource-health.md - remove
 
 #### Query
 
-- [isnotempty()](./kusto/query/isnotemptyfunction.md)
-  - Kusto isnotempty needed an example
-- [String operators](./kusto/query/datatypes-string-operators.md)
-  - String operators
-- [Scalar function types](./kusto/query/scalarfunctions.md)
-  - Add series_fft() and series_ifft() functions
-  - Add documentation for format_ipv4() and format_ipv4_mask() functions
-- [summarize operator](./kusto/query/summarizeoperator.md)
-  - summarizeoperator: Improved initial example. Fixed ancient definition of *GroupExpression*
-- [dynamic_to_json()](./kusto/query/dynamic-to-json-function.md)
+- [dynamic_to_json()](./kusto/query/dynamic-to-json-function.md) - should be new
   - introduced dynamic-to-json command
-- [Using hll() and tdigest()](./kusto/query/usinghlltdigest.md)
-  - hll digest - update PR 788
-- [mv-expand operator](./kusto/query/mvexpandoperator.md)
-  - MV-expand
-- [Let statement](./kusto/query/letstatement.md)
-  - Add examples to let statement
 
 #### Management
 
-- [Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md)
+- [Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md) - keep
   - Added notes to external table management article
   - External tables: specify new command option .create-or-alter
-- [Continuous data export overview](./kusto/management/data-export/continuous-data-export.md)
-  - Data connectors reorg
-  - Continuous export
-- [Create and alter external SQL tables](./kusto/management/external-sql-tables.md)
+- [Create and alter external SQL tables](./kusto/management/external-sql-tables.md) - keep
   - External tables: specify new command option .create-or-alter
-- [The .ingest into command (pull data from storage)](./kusto/management/data-ingestion/ingest-from-storage.md)
-  - Ingest from storage: improve explanation on connection strings
-- [Export data to an external table](./kusto/management/data-export/export-data-to-an-external-table.md)
-  - Continuous export
-- [update policy commands](./kusto/management/update-policy.md)
-  - Update policy - Original PR539
-- [Update policy overview](./kusto/management/updatepolicy.md)
-  - Update policy - Original PR539
-- [Columns management](./kusto/management/columns.md) - Repo sync for protected CLA branch
-
-#### Concepts
-
-- [Query limits](./kusto/concepts/querylimits.md)
-  - Clarifications in query limits section
 
 #### General
 
-- [Ingest data using the Azure Data Explorer Node library](node-ingest-data.md)
-  - Microsoft 365 branding.
-  - 2020 8 go sdk ingest
-- [Deploy Azure Data Explorer cluster into your Virtual Network](vnet-deployment.md)
-  - vnet; Private endpoints section
-  - vnet: remove "Azure Monitor configuration" dependency
-- [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)
+- [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md) - ORNAT?
   - Updating batching metrics
-- [Enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer](double-encryption.md)
-  - Double encryption- fix merge conflict in 793
-  - added portal section to double encryption
-  - 2020 8 double encryption
-- [Business continuity and disaster recovery overview](business-continuity-overview.md)
-  - Data connectors reorg
-  - 2020 4 bcdr doc
-- [Create an Event Grid data connection for Azure Data Explorer by using C#](data-connection-event-grid-csharp.md)
-  - Data connectors reorg
-- [Create an Event Grid data connection for Azure Data Explorer by using Python](data-connection-event-grid-python.md)
-  - Data connectors reorg
-- [Create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
-  - Data connectors reorg
-- [Create an Event Hub data connection for Azure Data Explorer by using C#](data-connection-event-hub-csharp.md)
-  - Data connectors reorg
-- [Create an Event Hub data connection for Azure Data Explorer by using Python](data-connection-event-hub-python.md)
-  - Data connectors reorg
-- [Create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
-  - Data connectors reorg
-- [Create an IoT Hub data connection for Azure Data Explorer by using C# (Preview)](data-connection-iot-hub-csharp.md)
-  - Data connectors reorg
-- [Create an IoT Hub data connection for Azure Data Explorer by using Python (Preview)](data-connection-iot-hub-python.md)
-  - Data connectors reorg
-- [Create an IoT Hub data connection for Azure Data Explorer by using Azure Resource Manager template](data-connection-iot-hub-resource-manager.md)
-  - Data connectors reorg
-- [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md)
-  - Data connectors reorg
-- [Connect to Event Hub](ingest-data-event-hub-overview.md)
-  - Data connectors reorg
-- [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md)
-  - Data connectors reorg
-  - Update instructions for the sample app
-- [Connect to IoT Hub](ingest-data-iot-hub-overview.md)
-  - Data connectors reorg
-- [Ingest data from IoT Hub into Azure Data Explorer](ingest-data-iot-hub.md)
-  - Data connectors reorg
-- [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
-  - Data connectors reorg
-- [Azure Data Explorer tools and integrations overview](tools-integrations-overview.md)
-  - Data connectors reorg
-- [Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal](cluster-disk-encryption.md)
-  - 2020 8 double encryption
-  - Fix git push error for protected CLA branch
-- [Configure customer-managed-keys using C#](customer-managed-keys-csharp.md)
-  - 2020 8 double encryption
-- [Configure customer-managed keys using the Azure portal](customer-managed-keys-portal.md)
-  - 2020 8 double encryption
-- [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
-  - 2020 8 double encryption
-- [Manage language extensions in your Azure Data Explorer cluster (Preview)](language-extensions.md)
-  - 2020 8 double encryption
-  - Fix git push error for protected CLA branch
-- [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md)
-  - 2020 8 double encryption
-  - Fix git push error for protected CLA branch
-- [Secure Azure Data Explorer clusters in Azure](security.md)
-  - 2020 8 double encryption
-- [Create business continuity and disaster recovery solutions with Azure Data Explorer](business-continuity-create-solution.md)
-  - 2020 4 bcdr doc
 
