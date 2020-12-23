@@ -244,99 +244,49 @@ Name | Notes
 
 ### Updated articles
 
-- Ignoring PR 1011: Update index.yml
-- Ignoring PR 1008: Update query-monitor-data.md
-- Ignoring PR 1006: Update renderoperator.md    
-- Ignoring PR 1003: Update show-query-results-cache-command.md
-- Ignoring PR 996: Update series-fill-constfunction.md
-- Ignoring PR 955: Update vnet-create-private-endpoint.md
-- Ignoring PR 952: Update make-seriesoperator.md
-- Ignoring PR 951: Update parse-xmlfunction.md
-- Ignoring PR 949: Update data-lake-query-data.md
-- Ignoring PR 944: Update calloutpolicy.md
-- Ignoring PR 938: Update beta-cdffunction.md
-- Ignoring PR 931: Update partitioningpolicy.md
-- Ignoring PR 930: Update partitioningpolicy.md
-- Ignoring PR 906: Update dashboard-parameters.md
-- Ignoring PR 902: Update ingest-sample-data.md
-- Ignoring PR 901: Update ingest-sample-data.md
-- Ignoring PR 898: Update partitioningpolicy.md
-- Ignoring PR 877: Update mv-applyoperator.md
-- Ignoring PR 362: Update one-click-table.md
+- Ignoring PR 1008: Update query-monitor-data.md - remove
+- Ignoring PR 1006: Update renderoperator.md    - remove
+- Ignoring PR 1003: Update show-query-results-cache-command.md - syntax changed, ORNAT
+- Ignoring PR 996: Update series-fill-constfunction.md - remove
+- Ignoring PR 955: Update vnet-create-private-endpoint.md - GA - Keep
+- Ignoring PR 952: Update make-seriesoperator.md - aggregation functions updated/added a lot - ORNAT
+- Ignoring PR 951: Update parse-xmlfunction.md - remove
+- Ignoring PR 949: Update data-lake-query-data.md - remove
+- Ignoring PR 944: Update calloutpolicy.md- remove
+- Ignoring PR 938: Update beta-cdffunction.md - remove
+- Ignoring PR 931: Update partitioningpolicy.md -remove
+- Ignoring PR 930: Update partitioningpolicy.md- remove
+- Ignoring PR 906: Update dashboard-parameters.md - remove
+- Ignoring PR 902: Update ingest-sample-data.md - remove
+- Ignoring PR 901: Update ingest-sample-data.md - remove
+- Ignoring PR 898: Update partitioningpolicy.md - remove
+- Ignoring PR 877: Update mv-applyoperator.md - remove
+- Ignoring PR 362: Update one-click-table.md - remove
 
 #### Query
 
-- [geo_distance_point_to_line()](./kusto/query/geo-distance-point-to-line-function.md)
+- [geo_distance_point_to_line()](./kusto/query/geo-distance-point-to-line-function.md) -keep
   - Add multiline support docs
-- [geo_line_densify()](./kusto/query/geo-line-densify-function.md)
+- [geo_line_densify()](./kusto/query/geo-line-densify-function.md) - keep
   - Add multiline support docs
-- [Query operators](./kusto/query/queries.md)
-  - Queries
-- [externaldata operator](./kusto/query/externaldata-operator.md)
-  - Added note on limits to externaldata() and external_table() functions
-  - Added missing documentation to externaldata() operator
-- [external_table()](./kusto/query/externaltablefunction.md)
-  - Added note on limits to externaldata() and external_table() functions
 
 #### Management 
 
-- [.create-merge table](./kusto/management/create-merge-table-command.md)
-  - See also changed from bold to h2
-- [Diagnostic information](./kusto/management/diagnostics.md)
-  - Adding indication that sizes returned in bytes
-- [Export data to storage](./kusto/management/data-export/export-data-to-storage.md)
+- [Export data to storage](./kusto/management/data-export/export-data-to-storage.md) - failures added - ORNAT
   - Exportdocs
-- [Create and alter external SQL tables](./kusto/management/external-sql-tables.md)
-  - Correct SQL external table documentation
-- [.show database cache query_results](./kusto/management/show-query-results-cache-command.md) - Repo sync for protected CLA branch
-- [Kusto Access Control Overview](./kusto/management/access-control/index.md) - Repo sync for protected CLA branch
-- [Data partitioning policy](./kusto/management/partitioningpolicy.md)
+
 
 #### General
 
-- [Deploy Azure Data Explorer cluster into your Virtual Network](vnet-deployment.md)
-  - vnet: add additional DM private endpoint
-  - Vnet depolyment
-  - vnet: formatting fix
-  - vnet: add new monitoring IPs
-- [Query data in Azure Monitor using Azure Data Explorer (Preview)](query-monitor-data.md)
-  - removed borders as requested
-  - TrustedExternalTenants
-- [Create a table in Azure Data Explorer (preview)](one-click-table.md)
-  - One click table
-- [Monitor Azure Data Explorer ingestion, commands, and queries using diagnostic logs](using-diagnostic-logs.md)
-  - Add the table names in Log Analytics + fix the names of the logs
-  - update diagnostic logs with query and command info
-- [Ingest data from Apache Kafka into Azure Data Explorer](ingest-data-kafka.md)
-  - Kafka
-- [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md)
-  - IoT Hub, Event Hub, Event Grid updates
-  - Data connector ingestion updates
-- [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md)
-  - IoT Hub, Event Hub, Event Grid updates
-  - Data connector ingestion updates
-- [Ingest data from IoT Hub into Azure Data Explorer](ingest-data-iot-hub.md)
-  - IoT Hub, Event Hub, Event Grid updates
-- [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)
-  - Content performance tracking
-  - continuous export metrics fix
-  - Materialized views original PR 890
-  - Metrics
-- [Ingest data using the Azure Data Explorer Python library](python-ingest-data.md)
-  - Fix python ingest data
-- [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md)
+- [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md) - keep (see above in ignored as well)
   - change Disable network policies in Prerequisites section
   - Vnet private endpoint - Original PR 822
-- [Visualize data from Azure Data Explorer in Grafana](grafana.md)
+- [Visualize data from Azure Data Explorer in Grafana](grafana.md) - overhauled - ORNAT
   - 2020 9 grafana query editor
-- [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
+- [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md) - major changes - ORNAT
   - Update azure-data-explorer-dashboards with security information
   - 2020 8 adx dashboards
-- [Ingest data using the Azure Data Explorer Go SDK](go-ingest-data.md)
-  - Updated pre-requisites section for Go SDK ingestion how-to
-- [Troubleshoot access, ingestion, and operation of your Azure Data Explorer cluster in your virtual network](vnet-deploy-troubleshoot.md)
-  - Metrics
-- [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
+- [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) - ORNAT
   - 2020 8 adx dashboards
 
 ## August 2020
@@ -370,11 +320,11 @@ Name | Notes
 
 Name | Notes
 ---|---
-[Enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer](double-encryption.md) |
-[Ingest data using the Azure Data Explorer Go SDK](go-ingest-data.md) |
-[Business continuity and disaster recovery overview](business-continuity-overview.md) |
-[Connect to Event Grid](ingest-data-event-grid-overview.md) |
-[Create business continuity and disaster recovery solutions with Azure Data Explorer](business-continuity-create-solution.md) |
+[Enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer](double-encryption.md) | When you create a cluster, its storage is [automatically encrypted at the service level](/azure/storage/common/storage-service-encryption). If you require a higher level of assurance that your data is secure, you can also enable [Azure Storage infrastructure level encryption](/azure/storage/common/infrastructure-encryption-enable), also known as double encryption.
+[Ingest data using the Azure Data Explorer Go SDK](go-ingest-data.md) | You can use the [Go SDK](https://github.com/Azure/azure-kusto-go) to ingest, control, and query data in Azure Data Explorer clusters. 
+[Business continuity and disaster recovery overview](business-continuity-overview.md) | Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a disruption. 
+[Connect to Event Grid](ingest-data-event-grid-overview.md) | Event Grid ingestion is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created or blob renamed notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
+[Create business continuity and disaster recovery solutions with Azure Data Explorer](business-continuity-create-solution.md) | This article details how you can prepare for an Azure regional outage by replicating your Azure Data Explorer resources, management, and ingestion in different Azure regions.
 
 ### Updated articles
 
