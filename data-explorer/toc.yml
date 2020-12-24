@@ -1444,6 +1444,8 @@
           href: ./kusto/management/show-ingestion-mapping-command.md
         - name: .create table
           href: ./kusto/management/create-table-command.md
+        - name: .create table based-on
+          href: ./kusto/management/create-table-based-on-command.md
         - name: .create tables
           href: ./kusto/management/create-tables-command.md
         - name: .create-merge table
