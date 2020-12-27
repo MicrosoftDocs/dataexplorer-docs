@@ -107,7 +107,7 @@ Ingestion metrics track the general health and performance of ingestion operatio
 | Ingestion volume (in MB) | Count | Max, Sum | The total size of data ingested to the cluster (in MB) before compression. | Database |
 | Queue length | Count | Avg | Number of pending messages in a component's queue. Reported by data connections, batching manager and ingestion manager. | Component Type |
 | Queue Oldest Message | Seconds | Avg | Time in seconds from when the oldest message was inserted to a component input queue. Reported by data connections, batching manager and ingestion manager. | Component Type | 
-| Received Data Size Bytes| Bytes | Size of data received from input stream to Azure Data Explorer. Reported by data connections. | Component Name, Component Type |
+| Received Data Size Bytes| Bytes | Avg, Sum | Size of data received from input stream to Azure Data Explorer. Reported by data connections. | Component Name, Component Type |
 
 ## Streaming ingest metrics
 
