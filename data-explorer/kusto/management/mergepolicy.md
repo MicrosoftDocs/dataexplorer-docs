@@ -29,9 +29,7 @@ By default, Rebuild operations are preferred. If there are extents that don't fi
 The merge policy contains the following properties:
 
 * **RowCountUpperBoundForMerge**:
-    * Defaults:
-      * 0 (unlimited) for policies that were set before June 2020.
-      * 16,000,000 for policies that were set starting June 2020.
+    * Defaults to 16,000,000.
     * Maximum allowed row count of the merged extent.
     * Applies to Merge operations, not Rebuild.  
 * **OriginalSizeMBUpperBoundForMerge**:
@@ -59,6 +57,33 @@ The merge policy contains the following properties:
     * Timestamps are of extent creation, and don't relate to the actual data contained in the extents.
     * Applies to both Merge and Rebuild operations.
     * This value should be set according to the effective [retention policy](./retentionpolicy.md) *SoftDeletePeriod*, or [cache policy](./cachepolicy.md) *DataHotSpan* values. Take the lower value of *SoftDeletePeriod* and *DataHotSpan*. Set the *MaxRangeInHours* value to between 2-3% of it. See the [examples](#maxrangeinhours-examples) .
+* **Lookback**:
+    * Defines the timespan during which extents are considered for rebuild/merge.
+	* Supported values: 
+	  * `Default` - The system-managed default. This is the recommended and default value.
+	  * `All` - All extents, hot and cold, are included.
+	  * `HotCache` - only hot extents are included.
+      * `Custom` - only extents whose age is under the provided `CustomPeriod` (timespan value) are included.
+
+## Example
+
+This is the default policy:
+
+```json
+{
+  "RowCountUpperBoundForMerge": 16000000,
+  "OriginalSizeMBUpperBoundForMerge": 0,
+  "MaxExtentsToMerge": 100,
+  "LoopPeriod": "01:00:00",
+  "MaxRangeInHours": 8,
+  "AllowRebuild": true,
+  "AllowMerge": true,
+  "Lookback": {
+    "Kind": "Default",
+    "CustomPeriod": null
+  }
+}
+```
 
 ## MaxRangeInHours examples
 
