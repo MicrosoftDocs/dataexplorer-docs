@@ -1,6 +1,6 @@
 ---
 title: .create table based-on - Azure Data Explorer
-description: This article describes .create table based-on command in Azure Data Explorer.
+description: This article describes the `.create table based-on` command in Azure Data Explorer
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -11,31 +11,37 @@ ms.date: 02/06/2020
 ---
 # .create table based-on
 
-Creates a new empty table based on existing table.
-
-The command must run in context of a specific database.
+Creates a new empty table based on existing table. This command must run in the context of a specific database.
 
 Requires [Database admin permission](access-control/role-based-authorization.md).
 
-**Syntax**
+## Syntax
 
 `.create` `table` *TableName* `based-on` *OtherTable*  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
-All properties of the source table are copied to the new table, except for the following:
+> [!NOTE]
+> All properties of the source table are copied to the new table, with the following exceptions:
+> * [Update policy](updatepolicy.md)
+> * [Authorized principals](security-roles.md#managing-table-security-roles) When using the `.create table based-on` command, the current principal is added to the table admins.
 
- * [Update policy](updatepolicy.md)
- * [Authorized principals](security-roles.md#managing-table-security-roles) (current principal is added to the table admins).
+## Arguments
 
-**Example** 
+* *TableName*: 
+* *OtherTable*:
+* *Documentation*:
+* *FolderName*:
 
-```kusto
-.create table MyLogs_Temp based-on MyLogs with (folder="TempTables")
-```
- 
-**Return output**
+## Returns
 
-Returns the table's schema in JSON format, same as:
+This command returns the new table's schema in JSON format, similar to running the following command:
 
 ```kusto
 .show table MyLogs schema as json
 ```
+
+## Example
+
+```kusto
+.create table MyLogs_Temp based-on MyLogs with (folder="TempTables")
+```
+
