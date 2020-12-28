@@ -16,16 +16,16 @@ zone_pivot_groups: kql-flavors
 The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external storage artifact, such as a blob in 
 Azure Blob Storage or a file in Azure Data Lake Storage.
 
-    ::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer"
 
-    ::: zone-end
+::: zone-end
 
-    ::: zone pivot="azuremonitor"
+::: zone pivot="azuremonitor"
 
     > [!NOTE]
     > `externaldata` operator usage in Azure Monitor should be limited to small reference tables. It is not designed for large data volumes. If large volumes are needed, it is better to ingest them as custom logs.
 
-    ::: zone-end
+::: zone-end
 
 
 ## Syntax
