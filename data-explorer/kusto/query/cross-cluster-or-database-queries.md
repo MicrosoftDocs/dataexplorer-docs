@@ -57,6 +57,9 @@ union Table1, cluster("OtherCluster").database("OtherDb").Table2 | project ...
 database("OtherDb1").Table1 | join cluster("OtherCluster").database("OtherDb2").Table2 on Key | join Table3 on Key | extend ...
 ```
 
+> [!IMPORTANT]
+> In case the clusters are in different tenants, and the queries failes with Unauthorized error (401), you probably should edit the trustedExternalTenants property (for more information, see [How to allow principals from another tenant to access your cluster](../../cross-tenant-query-and-commands.md)).
+
 When *qualified name* appears as an operand of the [union operator](./unionoperator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
 
 ```kusto
