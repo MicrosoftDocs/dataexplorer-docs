@@ -15,14 +15,14 @@ Creates a new empty table based on existing table. This command must run in the 
 
 Requires [Database admin permission](access-control/role-based-authorization.md).
 
-## Syntax
-
-`.create` `table` *TableName* `based-on` *OtherTable*  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
-
 > [!NOTE]
 > All properties of the source table are copied to the new table, with the following exceptions:
 > * [Update policy](updatepolicy.md)
 > * [Authorized principals](security-roles.md#managing-table-security-roles): When using the `.create table based-on` command, the current principal is added to the table admins.
+
+## Syntax
+
+`.create` `table` *TableName* `based-on` *OtherTable*  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
 ## Arguments
 
