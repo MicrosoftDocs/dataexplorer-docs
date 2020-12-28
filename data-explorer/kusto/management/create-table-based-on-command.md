@@ -22,14 +22,14 @@ Requires [Database admin permission](access-control/role-based-authorization.md)
 > [!NOTE]
 > All properties of the source table are copied to the new table, with the following exceptions:
 > * [Update policy](updatepolicy.md)
-> * [Authorized principals](security-roles.md#managing-table-security-roles) When using the `.create table based-on` command, the current principal is added to the table admins.
+> * [Authorized principals](security-roles.md#managing-table-security-roles): When using the `.create table based-on` command, the current principal is added to the table admins.
 
 ## Arguments
 
-* *TableName*: 
-* *OtherTable*:
-* *Documentation*:
-* *FolderName*:
+* *TableName*: New table name
+* *OtherTable*: Source table name
+* *Documentation*: Override default table documentation string
+* *FolderName*: Override target folder name
 
 ## Returns
 
