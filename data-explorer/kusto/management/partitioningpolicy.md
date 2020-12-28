@@ -31,7 +31,7 @@ The following are common scenarios that can be addressed by setting a data parti
   * In this case, set the [hash partition key](#hash-partition-key) to be the column grouped-by or joined-on, and set the `PartitionAssigmentMode` property to `default`.
 * Data ingested into a table is unlikely to be ordered according to a specific `datetime` column, e.g. due to a backfill from heterogeneous source files, that include datetime values over a large time span.
   * In this case, set the [Uniform range datetime partition key](#uniform-range-datetime-partition-key) to be the `datetime` column.
-    * If you need retention and caching policies to align with the datetime values in the column, instead of with the time of ingestion, set the `OverrideCreationTime` property to `true`.
+  * If you need retention and caching policies to align with the datetime values in the column, instead of aligning with the time of ingestion, set the `OverrideCreationTime` property to `true`.
 
 ## Partition keys
 
