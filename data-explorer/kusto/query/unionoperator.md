@@ -36,6 +36,10 @@ Alternative form with no piped input:
     *  The name of a table, such as `Events`; or
     *  A query expression that must be enclosed with parenthesis, such as `(Events | where id==42)` or `(cluster("https://help.kusto.windows.net:443").database("Samples").table("*"))`; or
     *  A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.
+
+> [!NOTE]
+> Whenever the list of tables is known, refine from using wildcards. Some workspaces contains very large number of tables that would lead to inefficient execution. Tables may also be added over time leading to unpredicted results.
+    
 * `kind`: 
     * `inner` - The result has the subset of columns that are common to all of the input tables.
     * `outer` - (default). The result has all the columns that occur in any of the inputs. Cells that weren't defined by an input row are set to `null`.
