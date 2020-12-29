@@ -41,7 +41,8 @@ dynamic({"type": "LineString","coordinates": [ [lng_1,lat_1], [lng_2,lat_2] ,...
 * Edge length must be less than 180 degrees. The shortest edge between the two vertices will be chosen.
 
 > [!TIP]
-> For better performance, use literal lines.
+> * For better performance, use literal lines.
+> * If you want to know distance of points from many lines, consider folding many lines into one. See the example below.
 
 ## Examples
 
@@ -82,6 +83,32 @@ nyc_taxi
 | where geo_distance_point_to_line(pickup_longitude, pickup_latitude, dynamic({"type":"LineString","coordinates":[[-73.97583961486816,40.75486445336327],[-73.95215034484863,40.78743027428638]]})) <= 0.1
 | take 50
 | render scatterchart with (kind=map) // map rendering available in Kusto Explorer desktop
+```
+
+Folding many lines into one multiline and querying it. Find all taxi pickups that happened 10km away from all roads in Manhattan.
+
+:::image type="content" source="images/geo-distance-point-to-line-function/lines-folding.png" alt-text="Lines folding":::
+
+```kusto
+let ManhattanRoads =
+    datatable(features:dynamic)
+    [
+        dynamic({"type":"Feature","properties":{"Label":"145thStreetBrg"},"geometry":{"type":"MultiLineString","coordinates":[[[-73.9322259,40.8194635],[-73.9323259,40.8194743],[-73.9323973,40.8194779]]]}}),
+        dynamic({"type":"Feature","properties":{"Label":"W120thSt"},"geometry":{"type":"MultiLineString","coordinates":[[[-73.9619541,40.8104844],[-73.9621542,40.8105725],[-73.9630542,40.8109455],[-73.9635902,40.8111714],[-73.9639492,40.8113174],[-73.9640502,40.8113705]]]}}),
+        dynamic({"type":"Feature","properties":{"Label":"1stAve"},"geometry":{"type":"MultiLineString","coordinates":[[[-73.9704124,40.748033],[-73.9702043,40.7480906],[-73.9696892,40.7487346],[-73.9695012,40.7491976],[-73.9694522,40.7493196]],[[-73.9699932,40.7488636],[-73.9694522,40.7493196]],[[-73.9694522,40.7493196],[-73.9693113,40.7494946],[-73.9688832,40.7501056],[-73.9686562,40.7504196],[-73.9684231,40.7507476],[-73.9679832,40.7513586],[-73.9678702,40.7514986]],[[-73.9676833,40.7520426],[-73.9675462,40.7522286],[-73.9673532,40.7524976],[-73.9672892,40.7525906],[-73.9672122,40.7526806]]]}})
+        // ... more roads ...
+    ];
+let allRoads=toscalar(
+    ManhattanRoads
+    | project road_coordinates=features.geometry.coordinates
+    | summarize make_list(road_coordinates)
+    | project multipolygon = pack("type","MultiLineString", "coordinates", list_road_coordinates));
+nyc_taxi
+| project pickup_longitude, pickup_latitude
+| where pickup_longitude != 0 and pickup_latitude != 0
+| where geo_distance_point_to_line(pickup_longitude, pickup_latitude, todynamic(allRoads)) > 10000
+| take 10
+| render scatterchart with (kind=map)
 ```
 
 The following example will return a null result because of the invalid LineString input.
