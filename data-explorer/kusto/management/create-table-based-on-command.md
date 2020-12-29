@@ -4,10 +4,10 @@ description: This article describes the `.create table based-on` command in Azur
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: mispecto
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/06/2020
+ms.date: 12/29/2020
 ---
 # .create table based-on
 
