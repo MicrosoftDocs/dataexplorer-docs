@@ -288,13 +288,9 @@ To enable the error level highlighting:
 
 :::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="Animated GIF showing how to enable error-level highlighting in the settings":::
 
-Error level color scheme in the **Light** mode:
-
-:::image type="content" source="media/web-query-data/light-mode.png" alt-text="Screen shot of color legend in light mode":::
-
-Error level color scheme in the **Dark** mode:
-
-:::image type="content" source="media/web-query-data/dark-mode.png" alt-text="Screen shot of color legend in dark mode":::
+Error level color scheme in **Light** mode | Error level color scheme in **Dark** mode
+|---|---|
+:::image type="content" source="media/web-query-data/light-mode.png" alt-text="Screen shot of color legend in light mode"::: | :::image type="content" source="media/web-query-data/dark-mode.png" alt-text="Screen shot of color legend in dark mode":::
 
 ## Provide feedback
 
