@@ -22,8 +22,8 @@ Azure Blob Storage or a file in Azure Data Lake Storage.
 
 ::: zone pivot="azuremonitor"
 
-    > [!NOTE]
-    > `externaldata` operator usage in Azure Monitor should be limited to small reference tables. It is not designed for large data volumes. If large volumes are needed, it is better to ingest them as custom logs.
+> [!NOTE]
+> `externaldata` operator usage in Azure Monitor should be limited to small reference tables. It is not designed for large data volumes. If large volumes are needed, it is better to ingest them as custom logs.
 
 ::: zone-end
 
