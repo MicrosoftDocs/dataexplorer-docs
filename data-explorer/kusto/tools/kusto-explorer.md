@@ -334,13 +334,10 @@ To modify the output color scheme, or turn this behavior off, from the **Tools**
 
 :::image type="content" source="images/kusto-explorer/ke-color-scheme.png" alt-text="Kusto Explorer color scheme modification":::
 
-**Excel** color scheme legend:
 
-:::image type="content" source="images/kusto-explorer/excel-color-scheme.png" alt-text="Screen shot of the Excel color scheme legend in Kusto Explorer" border="false":::
-
-**Vivid** color scheme legend:
-
-:::image type="content" source="images/kusto-explorer/vivid-color-scheme.png" alt-text="Screen shot vivid color scheme legend in Kusto Explorer" border="false":::
+**Excel** color scheme legend| **Vivid** color scheme legend
+|---|---
+| :::image type="content" source="images/kusto-explorer/excel-color-scheme.png" alt-text="Screen shot of the Excel color scheme legend in Kusto Explorer" border="false"::: |:::image type="content" source="images/kusto-explorer/vivid-color-scheme.png" alt-text="Screen shot vivid color scheme legend in Kusto Explorer" border="false":::
 
 ## Next steps
 
