@@ -27,7 +27,7 @@ The following are common scenarios that can be addressed by setting a data parti
 * **Low cardinality partition key**: For example, multi-tenant solutions, or a metrics table where most or all queries filter on the partition key column of type `string` such as the `TenantId` or the `MetricId`.
   * Low cardinality is defined as less than 10M distinct values. In the examples above, the cardinality is likely to be much lower than that. 
   * Set the [hash partition key](#hash-partition-key) to be the ID column, and set the `PartitionAssigmentMode` [property](#partition-properties) to `uniform`.
-* **High cardinality partition key**: For example, IoT information from many different sensors, or academic records of many different students. The usage pattern is frequent aggregations and/or `join`s over a high-cardinality group by key of type `string`
+* **High cardinality partition key**: For example, IoT information from many different sensors, or academic records of many different students. 
   * High cardinality is defined as more than 10M distinct values where the distribution of values in the column is approximately even.
   * In this case, set the [hash partition key](#hash-partition-key) to be the column grouped-by or joined-on, and set the `PartitionAssigmentMode` [property](#partition-properties) to `default`.
 * **Unordered Data ingestion**: Data ingested into a table might not be ordered and parititoned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span. 
@@ -46,9 +46,10 @@ The following kinds of partition keys are supported.
 ### Hash partition key
 
 > [!NOTE]
-> Apply a hash partition key on a `string`-type column in a table only in the following instances:
+> The data partitioning operation adds significant processing load, thus apply a hash partition key on a `string`-type column in a table only in the following conditions:
 > * If the majority of queries use equality filters (`==`, `in()`).
-> * The majority of queries aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher) such as an `application_ID`, a `tenant_ID`, or a `user_ID`.
+> * The majority of queries aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher) such as an `device_ID`, or `user_ID`.
+> * The usage pattern of the partitioned tables is in high concurrency query load, such as in monitoring or dashboarding applications. 
 
 * A hash-modulo function is used to partition the data.
 * Data in homogeneous (partitioned) extents is ordered by the hash partition key.
