@@ -62,8 +62,8 @@ The merge policy contains the following properties:
 	* Supported values: 
 	  * `Default` - The system-managed default. This is the recommended and default value.
 	  * `All` - All extents, hot and cold, are included.
-	  * `HotCache` - only hot extents are included.
-      * `Custom` - only extents whose age is under the provided `CustomPeriod` (timespan value) are included.
+	  * `HotCache` - Only hot extents are included.
+      * `Custom` - Only extents whose age is under the provided `CustomPeriod` are included. `CustomPeriod` is a timespan value.
 
 ## Example
 
