@@ -24,13 +24,13 @@ The main purpose of the partitioning policy is to improve performance of queries
 
 The following are common scenarios that can be addressed by setting a data partitioning policy:
 
-* **Low cardinality partition key**: For example, multi-tenant solutions, or a metrics table where most or all queries filter on the partition key column of type `string`. Filters can be done on columns such as `TenantId` or `MetricId`.
+* **Low cardinality partition key**: For example, multi-tenant solutions, or a metrics table where most or all queries filter on the partition key column of type `string` such as the `TenantId` or the `MetricId`.
   * Low cardinality is defined as less than 10M distinct values. In the examples above, the cardinality is likely to be much lower than that. 
   * Set the [hash partition key](#hash-partition-key) to be the ID column, and set the `PartitionAssigmentMode` [property](#partition-properties) to `uniform`.
 * **High cardinality partition key**: For example, IoT information from many different sensors, or academic records of many different students. The usage pattern is frequent aggregations and/or `join`s over a high-cardinality group by key of type `string`
   * High cardinality is defined as more than 10M distinct values where the distribution of values in the column is approximately even.
   * In this case, set the [hash partition key](#hash-partition-key) to be the column grouped-by or joined-on, and set the `PartitionAssigmentMode` [property](#partition-properties) to `default`.
-* **Unordered Data ingestion**: Data ingested into a table is unlikely to be ordered according to a specific `datetime` column. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span.
+* **Unordered Data ingestion**: Data ingested into a table might not be ordered and parititoned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span. 
   * In this case, set the [Uniform range datetime partition key](#uniform-range-datetime-partition-key) to be the `datetime` column.
   * If you need retention and caching policies to align with the datetime values in the column, instead of aligning with the time of ingestion, set the `OverrideCreationTime` property to `true`.
 
