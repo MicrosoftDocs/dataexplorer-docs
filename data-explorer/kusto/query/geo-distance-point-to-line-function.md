@@ -85,7 +85,7 @@ nyc_taxi
 | render scatterchart with (kind=map) // map rendering available in Kusto Explorer desktop
 ```
 
-Folding many lines into one multiline and querying it. Find all taxi pickups that happened 10km away from all roads in Manhattan.
+The following example folds many lines into one multiline and queries this multiline. The query finds all taxi pickups that happened 10km away from all roads in Manhattan.
 
 :::image type="content" source="images/geo-distance-point-to-line-function/lines-folding.png" alt-text="Lines folding":::
 
