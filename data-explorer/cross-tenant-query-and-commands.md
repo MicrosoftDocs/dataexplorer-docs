@@ -15,7 +15,7 @@ Azure Data Explorer is capable to run queries and commands from multiple tanants
 
 In order for a principal would be able to run queries or commands on a cluster it should have a relevant database role on the the database (for more information, see [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md)).
 
-Azure Data Explorer cluster allow the cluster owners to protect their cluster from getting queries and commands from other tenants. Those requests are blocked in earlier, before the principal authorization validation check. This is done by managing TrustedExternalTenants cluster property (for more information regarding creating or updating clusters, and in particular trustedExternalTenants property, see [Azure Data Explorer cluster request body](https://docs.microsoft.com/en-us/rest/api/azurerekusto/clusters/createorupdate#request-body)).
+Azure Data Explorer cluster allow the cluster owners to protect their cluster from getting queries and commands from other tenants. Those requests are blocked in earlier, before the principal authorization validation check. This is done by managing TrustedExternalTenants cluster property (for more information regarding creating or updating clusters, and in particular trustedExternalTenants property, see [Azure Data Explorer cluster request body](https://docs.microsoft.com/rest/api/azurerekusto/clusters/createorupdate#request-body)).
 
 This property is an array that defines explicitly which tenants are allowed to run queries and commands on the cluster. Its structure is as follows:
 
