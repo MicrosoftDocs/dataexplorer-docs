@@ -42,7 +42,7 @@ dynamic({"type": "LineString","coordinates": [ [lng_1,lat_1], [lng_2,lat_2] ,...
 
 > [!TIP]
 > * For better performance, use literal lines.
-> * If you want to know the closest distance between one or more points to many lines, consider folding these lines into one multiline. See the [example](#Examples) below.
+> * If you want to know the shortest distance between one or more points to many lines, consider folding these lines into one multiline. See the [example](#examples) below.
 
 ## Examples
 
