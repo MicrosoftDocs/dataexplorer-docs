@@ -129,7 +129,7 @@ Polygons
 |-73.995|40.734|Greenwich Village|
 |-73.9584|40.7688|Upper East Side|
 
-The following example filters out polygons that doesn't intersect with area of interest polygon. Maximum error is diagonal of s2cell length. The example is based on earth at night raster file that was polygonized.
+The following example filters out polygons that don't intersect with the area of the polygon of interest. The maximum error is diagonal of s2cell length. This example is based on a polygonized earth at night raster file.
 
 ```kusto
 let intersection_level_hint = 7;
