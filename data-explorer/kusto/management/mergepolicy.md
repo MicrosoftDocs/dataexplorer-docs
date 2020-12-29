@@ -65,9 +65,9 @@ The merge policy contains the following properties:
 	  * `HotCache` - Only hot extents are included.
       * `Custom` - Only extents whose age is under the provided `CustomPeriod` are included. `CustomPeriod` is a timespan value.
 
-## Example
+## Default policy example
 
-This is the default policy:
+The following example shows the default policy:
 
 ```json
 {
