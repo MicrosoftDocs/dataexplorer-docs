@@ -1403,6 +1403,30 @@
     - name: Control commands overview
       displayName: Management
       href: ./kusto/management/index.md
+    - name: Workload groups (preview)
+      items:
+      - name: Workload groups overview
+        href: ./kusto/management/workload-groups.md
+      - name: Workload groups management
+        href: ./kusto/management/workload-groups-commands.md
+      - name: Request classification policy
+        items:
+        - name: Request classification policy
+          href: ./kusto/management/request-classification-policy.md
+        - name: Request classification policy commands
+          href: ./kusto/management/request-classification-policy-commands.md
+      - name: Request limits policy
+        items:
+        - name: Request limits policy
+          href: ./kusto/management/request-limits-policy.md
+        - name: Request limits policy commands
+          href: ./kusto/management/request-limits-policy-commands.md
+      - name: Request rate limit policy
+        items:
+        - name: Request rate limit policy
+          href: ./kusto/management/request-rate-limit-policy.md
+        - name: Request rate limit policy commands
+          href: ./kusto/management/request-rate-limit-policy-commands.md
     - name: Schema
       items:
       - name: Best practices for schema management
@@ -1563,12 +1587,6 @@
           href: ./kusto/management/partitioningpolicy.md
         - name: partitioning policy command
           href: ./kusto/management/partitioning-policy.md
-      - name: Query throttling
-        items:
-        - name: Query throttling policy
-          href: ./kusto/management/query-throttling-policy.md
-        - name: Query throttling policy commands
-          href: ./kusto/management/query-throttling-policy-commands.md
       - name: Retention
         items:
         - name: Retention policy
