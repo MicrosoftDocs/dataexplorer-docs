@@ -62,15 +62,13 @@ A classification function:
 
 ### Examples
 
-<!-- csl -->
-```
+```kusto
 iff(request_properties.current_application == "Kusto.Explorer" and request_properties.request_type == "Query",
     "Ad-hoc queries",
     "default")
 ```
 
-<!-- csl -->
-```
+```kusto
 case(current_principal_is_member_of('aadgroup=somesecuritygroup@contoso.com'), "First workload group",
      request_properties.current_database == "MyDatabase" and request_properties.current_principal has 'aadapp=', "Second workload group",
      request_properties.current_application == "Kusto.Explorer" and request_properties.request_type == "Query", "Third workload group",
