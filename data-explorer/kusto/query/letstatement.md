@@ -55,7 +55,7 @@ Expressions bound by let statements can be:
 
 |Field  |Definition  |Example  |
 |---------|---------|---------|
-| **view** | May appear only in a parameterless let statement, that has no arguments. When 'view' keyword is used - let statement will be included in queries that use `union` operator with wildcard selection of the tables/views. |  |
+| **view** | May appear only in a parameterless let statement that has no arguments. When the 'view' keyword is used, the let statement will be included in queries that use a `union` operator with wildcard selection of the tables/views. |  |
 | ***TabularArguments*** | The list of the formal tabular expression arguments. 
 | Each tabular argument has:||
 |<ul><li> *TabularArgName*</li></ul> | The name of the formal tabular argument. The name may appear in the *FunctionBody* and is bound to a particular value when the lambda is invoked. ||
