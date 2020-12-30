@@ -26,8 +26,7 @@ Changes the cluster's request classification policy.
 
 ### Examples
 
-<!-- csl -->
-```
+```kusto
 .alter cluster policy request_classification '{"IsEnabled":true}' <|
     case(current_principal_is_member_of('aadgroup=somesecuritygroup@contoso.com'), "First workload group",
          request_properties.current_database == "MyDatabase" and request_properties.current_principal has 'aadapp=', "Second workload group",
@@ -38,8 +37,7 @@ Changes the cluster's request classification policy.
          "default")
 ```
 
-<!-- csl -->
-```
+```kusto
 .alter cluster policy request_classification '{"IsEnabled":false}' <|
     iff(request_properties.current_application == "Kusto.Explorer" and request_properties.request_type == "Query",
         "Ad-hoc queries",
@@ -56,13 +54,11 @@ Enables or disables the cluster's request classification policy.
 
 ### Examples
 
-<!-- csl -->
-```
+```kusto
 .alter-merge cluster policy request_classification '{"IsEnabled":true}'
 ```
 
-<!-- csl -->
-```
+```kusto
 .alter-merge cluster policy request_classification '{"IsEnabled":false}'
 ```
 
