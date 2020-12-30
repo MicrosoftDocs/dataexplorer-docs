@@ -94,7 +94,12 @@
       "source_path": "data-explorer/kusto/concepts/errorsinnativecode.md",
       "redirect_url": "/azure/data-explorer/error-codes",
       "redirect_document_id": true
-      }
+      },
+      {
+        "source_path": "data-explorer/kusto/tools/kusto-webexplorer.md",
+        "redirect_url": "/azure/data-explorer/web-query-data",
+        "redirect_document_id": true
+        }
     ]
   }
   
