@@ -246,6 +246,7 @@ In the **Settings** tab you can:
 
 * [Export environment settings](#export-environment-settings)
 * [Import environment settings](#import-environment-settings)
+* [Highlight error levels](#highlight-error-levels)
 * [Clear local state](#clean-up-resources)
 
 Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
@@ -276,6 +277,21 @@ The export and import actions help you protect your work environment and relocat
 
 > [!NOTE]
 > **Import** overrides any existing environment settings and data.
+
+### Highlight error levels
+
+Kusto tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on). 
+
+To enable the error level highlighting:
+
+1. Select the **Settings** icon next to your user name.
+1. Select the **Appearance** tab and toggle the **Enable error level highlighting** option to the right. 
+
+:::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="Animated GIF showing how to enable error-level highlighting in the settings":::
+
+Error level color scheme in **Light** mode | Error level color scheme in **Dark** mode
+|---|---|
+:::image type="content" source="media/web-query-data/light-mode.png" alt-text="Screen shot of color legend in light mode"::: | :::image type="content" source="media/web-query-data/dark-mode.png" alt-text="Screen shot of color legend in dark mode":::
 
 ## Provide feedback
 
