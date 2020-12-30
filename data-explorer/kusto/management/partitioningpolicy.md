@@ -46,7 +46,7 @@ The following kinds of partition keys are supported.
 ### Hash partition key
 
 > [!NOTE]
-> The data partitioning operation adds significant processing load, thus apply a hash partition key on a `string`-type column in a table only in the following conditions:
+> The data partitioning operation adds significant processing load. We recommend applying a hash partition key on a `string`-type column in a table only under the following conditions:
 > * If the majority of queries use equality filters (`==`, `in()`).
 > * The majority of queries aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher) such as an `device_ID`, or `user_ID`.
 > * The usage pattern of the partitioned tables is in high concurrency query load, such as in monitoring or dashboarding applications. 
