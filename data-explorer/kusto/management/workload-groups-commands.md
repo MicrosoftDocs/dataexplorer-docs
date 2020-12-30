@@ -28,8 +28,7 @@ Creates a new workload group, or alters an existing workload group.
 
 Create a workload group with a full definition of its Request limits policy:
 
-<!-- csl -->
-```
+```kusto
 .create-or-alter workload_group MyWorkloadGroup '{'
 '  "RequestLimitsPolicy": {'
 '    "DataScope": {'
@@ -70,8 +69,7 @@ Create a workload group with a full definition of its Request limits policy:
 
 Create a workload group with a full definition of its Request limits policy and Request rate limits policies:
 
-<!-- csl -->
-```
+```kusto
 .create-or-alter workload_group ['My Workload Group'] '{'
 '  "RequestLimitsPolicy": {'
 '    "DataScope": {'
@@ -139,8 +137,7 @@ Create a workload group with a full definition of its Request limits policy and 
 Alter specific limits in the Request limits policy of the `default` workload group,
 while keeping previously defined limits as-is:
 
-<!-- csl -->
-```
+```kusto
 .alter-merge workload_group default '{'
 '  "RequestLimitsPolicy": {'
 '    "DataScope": {'
@@ -167,13 +164,11 @@ The `internal` and `default` workload groups may not be dropped.
 
 ### Examples
 
-<!-- csl -->
-```
+```kusto
 .drop workload_group MyWorkloadGroup
 ```
 
-<!-- csl -->
-```
+```kusto
 .drop workload_group ['MyWorkloadGroup']
 ```
 
@@ -196,8 +191,7 @@ Shows a specific or all workload group definitions.
 
 ### Example
 
-<!-- csl -->
-```
+```kusto
 .show workload_group MyWorkloadGroup
 ```
 
@@ -232,8 +226,7 @@ For example, when there are no concurrent requests in the workload group.
 
 ### Example
 
-<!-- csl -->
-```
+```kusto
 .show workload_group MyWorkloadGroup resources utilization
 ```
 
@@ -270,8 +263,7 @@ The following set of commands:
 Any other request is classified to the `default` workload group.
 Request limits that aren't defined in `My Workload Group`'s policy are taken from the `default` workload group's policy.
 
-<!-- csl -->
-```
+```kusto
 .alter cluster policy request_classification '{"IsEnabled":true}' <|
     case(current_principal_is_member_of("aadgroup=MyGroup@microsoft.com") and
          request_properties.current_database == "My Database" and
@@ -281,8 +273,7 @@ Request limits that aren't defined in `My Workload Group`'s policy are taken fro
          "default")
 ```
 
-<!-- csl -->
-```
+```kusto
 .create-or-alter workload_group ['My Workload Group'] '{'
 '  "RequestLimitsPolicy": {'
 '    "DataScope": {'
