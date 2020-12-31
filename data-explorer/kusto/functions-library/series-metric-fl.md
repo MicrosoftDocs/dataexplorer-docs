@@ -56,6 +56,7 @@ let series_metric_fl=(metrics_tbl:(*), timestamp_col:string, name_col:string, la
     | extend timestamp = column_ifexists(timestamp_col, datetime(null)), name = column_ifexists(name_col, ''), labels = column_ifexists(labels_col, dynamic(null)), value = column_ifexists(value_col, 0)
     | extend labels = dynamic_to_json(labels)       //  convert to string and sort by key
     | where name == metric_name and timestamp between(stime..etime)
+    | order by timestamp asc
     | summarize timestamp = make_list(timestamp), value=make_list(value) by name, labels
     //  KQL has native has_any(), but no native has_all(), the lines below implement has_all()
     | mv-apply x = selector_d to typeof(string) on (
@@ -89,6 +90,7 @@ series_metric_fl(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_
     | extend timestamp = column_ifexists(timestamp_col, datetime(null)), name = column_ifexists(name_col, ''), labels = column_ifexists(labels_col, dynamic(null)), value = column_ifexists(value_col, 0)
     | extend labels = dynamic_to_json(labels)       //  convert to string and sort by key
     | where name == metric_name and timestamp between(stime..etime)
+    | order by timestamp asc
     | summarize timestamp = make_list(timestamp), value=make_list(value) by name, labels
     //  KQL has native has_any(), but no native has_all(), the lines below implement has_all()
     | mv-apply x = selector_d to typeof(string) on (
