@@ -15,7 +15,7 @@ The `series_metric_fl()` function selects and retrieves time series of metrics i
  * timestamp 
  * metric name 
  * metric value 
- * a variable set of labels (`key:value` pairs)
+ * a variable set of labels (`"key":"value"` pairs)
  
  Prometheus defines a time series by its metric name and a distinct set of labels. You can retrieve sets of time series using [Prometheus Query Language (PromQL)](https://prometheus.io/docs/prometheus/latest/querying/basics/) by specifying the metric name and time series selector (a set of labels).
 
@@ -33,7 +33,7 @@ The `series_metric_fl()` function selects and retrieves time series of metrics i
 * *labels_col*: The name of the column containing the labels dictionary.
 * *value_col*: The name of the column containing the metric value.
 * *metric_name*: The metric time series to retrieve.
-* *labels_selector*: Time series selector string, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors). It's a string containing a list of `key:value` pairs, for example `'key1:val1,key2:val2'`. This parameter is optional, default to empty string, that means no filtering. Note that regular expressions are not supported. 
+* *labels_selector*: Time series selector string, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors). It's a string containing a list of `"key":"value"` pairs, for example `'"key1":"val1","key2":"val2"'`. This parameter is optional, default to empty string, that means no filtering. Note that regular expressions are not supported. 
 * *lookback*: Range vector to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#range-vector-selectors). This parameter is optional, default to 10 minutes.
 * *offset*: Offset back from current time to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#offset-modifier). Data is retrieved from *ago(offset)-lookback* to *ago(offset)*. This parameter is optional, default is 0, which means that data is retrieved up to now().
 
@@ -49,15 +49,13 @@ For ad hoc usage, embed its code using the [let statement](../query/letstatement
 ```kusto
 let series_metric_fl=(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_col:string, value_col:string, metric_name:string, labels_selector:string='', lookback:timespan=timespan(10m), offset:timespan=timespan(0))
 {
-    let selector_d=iff(labels_selector == '', dynamic(['']), split(strcat('"', replace('([:,])','"\\1"', labels_selector), '"'), ','));
+    let selector_d=iff(labels_selector == '', dynamic(['']), split(labels_selector, ','));
     let etime = ago(offset);
     let stime = etime - lookback;
     metrics_tbl
     | extend timestamp = column_ifexists(timestamp_col, datetime(null)), name = column_ifexists(name_col, ''), labels = column_ifexists(labels_col, dynamic(null)), value = column_ifexists(value_col, 0)
     | extend labels = dynamic_to_json(labels)       //  convert to string and sort by key
     | where name == metric_name and timestamp between(stime..etime)
-    | project timestamp, value, name, labels
-    | order by timestamp asc
     | summarize timestamp = make_list(timestamp), value=make_list(value) by name, labels
     //  KQL has native has_any(), but no native has_all(), the lines below implement has_all()
     | mv-apply x = selector_d to typeof(string) on (
@@ -69,7 +67,7 @@ let series_metric_fl=(metrics_tbl:(*), timestamp_col:string, name_col:string, la
 ;
 //
 demo_prometheus
-| invoke series_metric_fl('TimeStamp', 'Name', 'Labels', 'Val', 'writes', 'disk:sda1,host:aks-agentpool-88086459-vmss000001', offset=now()-datetime(2020-12-08 00:00))
+| invoke series_metric_fl('TimeStamp', 'Name', 'Labels', 'Val', 'writes', '"disk":"sda1","host":"aks-agentpool-88086459-vmss000001"', offset=now()-datetime(2020-12-08 00:00))
 | render timechart with(series=labels)
 ```
 
@@ -84,15 +82,13 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create function with (folder = "Packages\\Series", docstring = "Selecting & retrieving metrics like PromQL")
 series_metric_fl(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_col:string, value_col:string, metric_name:string, labels_selector:string='', lookback:timespan=timespan(10m), offset:timespan=timespan(0))
 {
-    let selector_d=iff(labels_selector == '', dynamic(['']), split(strcat('"', replace('([:,])','"\\1"', labels_selector), '"'), ','));
+    let selector_d=iff(labels_selector == '', dynamic(['']), split(labels_selector, ','));
     let etime = ago(offset);
     let stime = etime - lookback;
     metrics_tbl
     | extend timestamp = column_ifexists(timestamp_col, datetime(null)), name = column_ifexists(name_col, ''), labels = column_ifexists(labels_col, dynamic(null)), value = column_ifexists(value_col, 0)
     | extend labels = dynamic_to_json(labels)       //  convert to string and sort by key
     | where name == metric_name and timestamp between(stime..etime)
-    | project timestamp, value, name, labels
-    | order by timestamp asc
     | summarize timestamp = make_list(timestamp), value=make_list(value) by name, labels
     //  KQL has native has_any(), but no native has_all(), the lines below implement has_all()
     | mv-apply x = selector_d to typeof(string) on (
@@ -108,7 +104,7 @@ series_metric_fl(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 demo_prometheus
-| invoke series_metric_fl('TimeStamp', 'Name', 'Labels', 'Val', 'writes', 'disk:sda1,host:aks-agentpool-88086459-vmss000001', offset=now()-datetime(2020-12-08 00:00))
+| invoke series_metric_fl('TimeStamp', 'Name', 'Labels', 'Val', 'writes', '"disk":"sda1","host":"aks-agentpool-88086459-vmss000001"', offset=now()-datetime(2020-12-08 00:00))
 | render timechart with(series=labels)
 ```
 
