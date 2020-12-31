@@ -12,11 +12,16 @@ ms.date: 12/3/2020
 
 # Stored query results (Preview)
 
-Saves the results of a heavyweight query and retrieves it quickly.
-Stored query results can be useful in the following scenarios:
-* Implement results pagination. A stored query result is created based on a query, and a preview is shown on the first page. Every subsequent page shows the next portion of the pre-calculated result without the need to run the initial query again.
-* Temporarily save query results during data exploration.
+Stored query results is a mechanism that temporarily stores the result of a query
+on the service, allowing one to reference this data in subsequent queries. The command
+to create such an object takes the name of the entity to create and the query to execute.
+It returns a subset of the records produced by the query (reffered-to as "preview"), but stores all records.
 
+Stored query results can be useful in the following scenarios:
+* Paging through query results. The initial command runs the query and returns the first "page" of records.
+  Subsequent queries reference other "pages" without the need to re-run the query.
+* Drill-down scenarios, in which the results of an initial query are then
+  explored using additional queries.
 
 > [!NOTE]
 > * The stored query results are in preview phase, and shouldn't be used for production scenarios. 
