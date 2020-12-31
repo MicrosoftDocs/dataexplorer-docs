@@ -73,7 +73,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-.create-or-alter function with (folder = "Packages\\Series", docstring = "Simulate PromQL rate()")
+.create function with (folder = "Packages\\Series", docstring = "Simulate PromQL rate()")
 series_rate_fl(tbl:(timestamp:dynamic, value:dynamic), n_bins:int=1, fix_reset:bool=true)
 {
     tbl
