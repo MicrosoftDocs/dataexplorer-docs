@@ -12,22 +12,21 @@ ms.date: 12/3/2020
 
 # Stored query results (Preview)
 
-Stored query results is a mechanism that temporarily stores the result of a query
-on the service, allowing one to reference this data in subsequent queries. The command
-to create such an object takes the name of the entity to create and the query to execute.
-It returns a subset of the records produced by the query (reffered-to as "preview"), but stores all records.
+Stored query results is a mechanism that temporarily stores the result of a query on the service. You can reference this data in later queries.
+Create the stored query object with a command that uses the name of the created entity and the executed query.
+This command returns a subset of the records produced by the query, referred to as the "preview", but stores all records.
 
 Stored query results can be useful in the following scenarios:
 * Paging through query results. The initial command runs the query and returns the first "page" of records.
-  Subsequent queries reference other "pages" without the need to re-run the query.
+  Later queries reference other "pages" without the need to rerun the query.
 * Drill-down scenarios, in which the results of an initial query are then
-  explored using additional queries.
+  explored using other queries.
 
 > [!NOTE]
 > * The stored query results are in preview phase, and shouldn't be used for production scenarios. 
 > * This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
 
-Stored query results can be accessed for up to 24 hours from the moment of creation. Updates to security policies (for example, database access, row level security, etc.) are not propagated to stored query results. Use [.drop stored_query_results](#drop-stored_query_results) in case of user permission revocation. A stored query result can only be accessed by the same principal identity that created it. 
+Stored query results can be accessed for up to 24 hours from the moment of creation. Updates to security policies (for example, database access, row level security, and so on) aren't propagated to stored query results. Use [`.drop stored_query_results`](#drop-stored_query_results) if there is user permission revocation. A stored query result can only be accessed by the same principal identity that created the stored query. 
 
 Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, it's recommended that the query includes unique ID columns. For more information, see [examples](#examples). If there are multiple result sets returned by a query, only the first result set will be stored. 
 
@@ -51,7 +50,7 @@ Using stored query results requires `Database Viewer` or higher access role.
     |----------------|------------|-------------------------------------------------------------------------------------|
     | `expiresAfter` | `timespan` | A timespan literal indicating when the stored query result will expire (maximum of 24 hours). |
     | `previewCount` | `int`      | The number of rows to return in a preview. Setting this property to `0` (default) makes the command return all the query result rows. |
-    | `distributed`  | `bool`     | Indicates that the command stores query results from all nodes executing the query in parallel. Default is *true*. Setting `distributed` flag to *false* is useful when the amount of data produced by a query is small, or a number of cluster nodes is large, to prevent creating many small data shards. |
+    | `distributed`  | `bool`     | Indicates that the command stores query results from all nodes executing the query in parallel. Default is *true*. Setting `distributed` flag to *false* is useful when the amount of data produced by a query is small, or the number of cluster nodes is large, to prevent creating many small data shards. |
 
 ## Retrieve a stored query result
 
