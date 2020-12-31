@@ -113,7 +113,7 @@ The following example selects the main disk of two hosts, and assumes that the f
     
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-series_rate_fl(series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 'Val', 'writes', 'disk:sda1', lookback=2h, offset=now()-datetime(2020-12-08 00:00)), n_bins=10)
+series_rate_fl(series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 'Val', 'writes', '"disk":"sda1"', lookback=2h, offset=now()-datetime(2020-12-08 00:00)), n_bins=10)
 | render timechart with(series=labels)
 ```
     
