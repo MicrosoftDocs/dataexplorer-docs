@@ -111,7 +111,7 @@ Ingestion metrics track the general health and performance of ingestion operatio
 | Queue length | Count | Avg | Number of pending messages in a component's queue. | Component Type |
 | Queue Oldest Message | Seconds | Avg | Time in seconds from when the oldest message was inserted to a component input queue. | Component type | 
 | Received Data Size Bytes | Bytes | Avg, Sum | Size of data received from input stream to Azure Data Explorer. | Component type, Component name |
-| Stage latency | Seconds | Avg | Time from when a message is discovered by Azure Data Explorer, until its content is received by an ingestion component for processing. | Database, Component type | 
+| Stage latency | Seconds | Avg | Time from when a message is discovered by Azure Data Explorer, until its content is received by an ingestion component for processing. <br> <br> Use **apply filters** and select `Component type` > `EngineStorage` to filter the total ingestion latency.| Database, Component type | 
 
 ## Streaming ingest metrics
 
