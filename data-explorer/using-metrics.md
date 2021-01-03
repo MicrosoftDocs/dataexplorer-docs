@@ -99,7 +99,7 @@ Ingestion metrics track the general health and performance of ingestion operatio
 | Batches processed | Count | Avg, Max, Min | Number of batches completed for ingestion. `Batching Type`: whether the batch reached the batching time, data size or number of files limit, set by [batching policy](./kusto/management/batchingpolicy.md). | Database, Batching Type |
 | Blobs received    | Count | Avg, Max, Min | Number of blobs received from input stream by a component. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
 | Blobs processed   | Count | Avg, Max, Min | Number of blobs processed by a component. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
-| Blobs dropped     | Count | Avg, Max, Min | Number of blobs permanently dropped by a component. An `Ingestion result` metric with a failure reason will be sent. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
+| Blobs dropped     | Count | Avg, Max, Min | Number of blobs permanently dropped by a component. For each such blob, an `Ingestion result` metric with a failure reason is sent. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
 | Discovery latency | Seconds | Avg | Time from data enqueue until discovery by data connections. This time isn't included in the **Stage latency** or in the **Ingestion latency** metrics | Component Type, Component Name |
 | Events received   | Count | Avg, Max, Min, Sum | Number of events received by data connections from input stream. | Component Type, Component Name |
 | Events processed  | Count | Avg, Max, Min, Sum | Number of events processed by data connections. | Component Type, Component Name | 
@@ -109,9 +109,9 @@ Ingestion metrics track the general health and performance of ingestion operatio
 | Ingestion result  | Count | Count | Total number of ingest operations that either failed or succeeded. <br> <br> Use **apply splitting** to create buckets of success and failure results and analyze the dimensions (**Value** > **Status**). <br>For more information about possible fail results, see [Ingestion error codes in Azure Data Explorer](error-codes.md)| Status |
 | Ingestion volume (in MB) | Count | Max, Sum | The total size of data ingested to the cluster (in MB) before compression. | Database |
 | Queue length | Count | Avg | Number of pending messages in a component's input queue. | Component Type |
-| Queue Oldest Message | Seconds | Avg | Time in seconds from when the oldest message was inserted to a component's input queue. | Component Type | 
-| Received Data Size Bytes | Bytes | Avg, Sum | Size of data received by data connections from input stream. | Component Type, Component Name |
-| Stage latency | Seconds | Avg | Time from when a message is discovered by Azure Data Explorer, until its content is received by an ingestion component for processing. <br> <br> Use **apply filters** and select `Component Type` > `EngineStorage` to filter the total ingestion latency.| Database, Component Type | 
+| Queue oldest message | Seconds | Avg | Time in seconds from when the oldest message in a component's input queue has been inserted. | Component Type | 
+| Received data size bytes | Bytes | Avg, Sum | Size of data received by data connections from input stream. | Component Type, Component Name |
+| Stage latency | Seconds | Avg | Time from when a message is discovered by Azure Data Explorer, until its content is received by an ingestion component for processing. <br> <br> Use **apply filters** and select `Component Type` > `EngineStorage` to show the total ingestion latency.| Database, Component Type | 
 
 ## Streaming ingest metrics
 
