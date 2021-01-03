@@ -101,7 +101,7 @@ Ingestion metrics track the general health and performance of ingestion operatio
 | Blobs processed   | Count | Avg, Max, Min | Number of blobs processed by a component. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
 | Blobs dropped     | Count | Avg, Max, Min | Number of blobs permanently dropped by a component. An `Ingestion result` metric with a failure reason will be sent. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
 | Discovery latency | Seconds | Avg | Time from data enqueue until discovery by data connections. This time isn't included in the **Stage latency** or in the **Ingestion latency** metrics | Component Type, Component Name |
-| Events received   | Count | Avg, Max, Min, Sum | Number of events received from input stream to Azure Data Explorer. | Component Type, Component Name |
+| Events received   | Count | Avg, Max, Min, Sum | Number of events received by data connections from input stream. | Component Type, Component Name |
 | Events processed  | Count | Avg, Max, Min, Sum | Number of events processed by data connections. | Component Type, Component Name | 
 | Events dropped    | Count | Avg, Max, Min, Sum | Number of events permanently dropped by data connections. | Component Type, Component Name | 
 | Events processed (for Event/IoT Hubs) | Count | Max, Min, Sum | Total number of events read from Event Hubs and processed by the cluster. These events are split into two groups: events rejected, and events accepted by the cluster engine. | Status |
@@ -110,7 +110,7 @@ Ingestion metrics track the general health and performance of ingestion operatio
 | Ingestion volume (in MB) | Count | Max, Sum | The total size of data ingested to the cluster (in MB) before compression. | Database |
 | Queue length | Count | Avg | Number of pending messages in a component's queue. | Component Type |
 | Queue Oldest Message | Seconds | Avg | Time in seconds from when the oldest message was inserted to a component input queue. | Component Type | 
-| Received Data Size Bytes | Bytes | Avg, Sum | Size of data received from input stream to Azure Data Explorer. | Component Type, Component Name |
+| Received Data Size Bytes | Bytes | Avg, Sum | Size of data received by data connections from input stream. | Component Type, Component Name |
 | Stage latency | Seconds | Avg | Time from when a message is discovered by Azure Data Explorer, until its content is received by an ingestion component for processing. <br> <br> Use **apply filters** and select `Component Type` > `EngineStorage` to filter the total ingestion latency.| Database, Component Type | 
 
 ## Streaming ingest metrics
