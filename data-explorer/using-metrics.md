@@ -108,8 +108,8 @@ Ingestion metrics track the general health and performance of ingestion operatio
 | Ingestion latency | Seconds | Avg, Max, Min | Latency of data ingested, from the time the data was received in the cluster until it's ready for query. The ingestion latency period depends on the ingestion scenario. | None |
 | Ingestion result  | Count | Count | Total number of ingestion operations that failed and succeeded. <br> <br> Use **apply splitting** to create buckets of success and fail results and analyze the dimensions (**Value** > **Status**). <br>For more information about possible fail results, see [Ingestion error codes in Azure Data Explorer](error-codes.md)| Status |
 | Ingestion volume (in MB) | Count | Max, Sum | The total size of data ingested to the cluster (in MB) before compression. | Database |
-| Queue length | Count | Avg | Number of pending messages in a component's queue. | Component Type |
-| Queue Oldest Message | Seconds | Avg | Time in seconds from when the oldest message was inserted to a component input queue. | Component Type | 
+| Queue length | Count | Avg | Number of pending messages in a component's input queue. | Component Type |
+| Queue Oldest Message | Seconds | Avg | Time in seconds from when the oldest message was inserted to a component's input queue. | Component Type | 
 | Received Data Size Bytes | Bytes | Avg, Sum | Size of data received by data connections from input stream. | Component Type, Component Name |
 | Stage latency | Seconds | Avg | Time from when a message is discovered by Azure Data Explorer, until its content is received by an ingestion component for processing. <br> <br> Use **apply filters** and select `Component Type` > `EngineStorage` to filter the total ingestion latency.| Database, Component Type | 
 
