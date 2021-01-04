@@ -20,23 +20,35 @@ Shows extents from a specified database or table.
 
 ## Cluster level
 
+### Syntax
+
 `.show` `cluster` `extents` [`hot`] [`details`]
 
-Shows information about extents (data shards) that are present in the cluster.
+### Output
 
-If `hot` is specified - shows only extents that are expected to be in the hot cache.
+Shows information about extents (data shards) that are present in the cluster. For more information, see [Output parameters](#output-parameters).
 
-If `details` is specified, the output will include partition details (for homogeneous extents) and the assigned data nodes. By default, when unspecified  both fields are unpopulated. It's recommended to use `details` only when necessary.
+* If `hot` is specified: shows only extents that are expected to be in the hot cache.
+* If `details` is specified: the output will include partition details (for homogeneous extents) and the assigned data nodes. 
+
+> [!NOTE]
+> By default, both fields are unpopulated, unless otherwise specified. We recommend using `details` only when necessary.
 
 ## Database level
 
+### Syntax
+
 `.show` `database` *DatabaseName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`details`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
 
-Shows information about extents (data shards) that are present in the specified database.
+### Output
 
-If `hot` is specified - shows only extents that are expected to be in the hot cache.
+Shows information about extents (data shards) that are present in the specified database. For more information, see [Output parameters](#output-parameters).
 
-If `details` is specified, the output will include partition details (for homogeneous extents) and the assigned data nodes. By default, when unspecified  both fields are unpopulated. It's recommended to use `details` only when necessary.
+* If `hot` is specified: shows only extents that are expected to be in the hot cache.
+* If `details` is specified: the output will include partition details (for homogeneous extents) and the assigned data nodes. 
+
+> [!NOTE]
+> By default, both fields are unpopulated, unless otherwise specified. We recommend using `details` only when necessary.
 
 ## Table level
 
@@ -85,7 +97,7 @@ If `details` is specified, the output will include partition details (for homoge
 |Tags|String|Tags, if any, defined for the extent
 |Kind|String|The kind of the data engine that created the extent: `V2` or `V3`.
 |Partition|String|If `details` is specified and the extent is homogeneous - An encoding of the extent's partition details. Otherwise - an empty string
-|DeletedRowCount|Long|The amount of rows that have been soft-deleted in the extent
+|DeletedRowCount|Long|The number of rows that have been soft-deleted in the extent
  
 ## Examples
 
