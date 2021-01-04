@@ -70,3 +70,7 @@ Use these commands to aggregate resources utilization by workload group for requ
 
 Use the [`.show workload groups resources utilization` command](workload-groups-commands.md#show-workload-groups-resources-utilization)
 to see the *current* resources utilization.
+
+## Notes
+
+1. Requests that aren't queries or control commands aren't included in the scope of workload groups. For example: streaming ingestion requests.
