@@ -82,7 +82,7 @@ To enable results cache rendering, do the following in the **Query Optimizations
 1. Disable **Use dynamic caching**. 
 1. In **Cache Max Age**, enter the number of minutes during which you want to use cached results.
 
-### Enable weak consistency
+#### Enable weak consistency
 
 Clusters are configured with strong consistency. This guarantees that query results are up to date with all changes in the cluster.
 When enabling weak consistency, query results can have a 1-2 minutes lag following cluster alterations. On the other hand, weak consistency may boost visual rendering time. Therefore if immediate consistency isn't critical and performance is marginal, enable weak consistency to improve performance. For more information on query consistency, see [Query consistency](kusto/concepts/queryconsistency.md).
