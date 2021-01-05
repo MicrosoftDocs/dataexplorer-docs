@@ -59,6 +59,19 @@ With the service principal assigned to the *viewers* role, you now specify prope
     | Client secret | Password | password |
     | | | |
 
+### Dashboard rendering performance optimization
+Query results cache can be used to improve dashboard rendering performance and reduce load on the Azure Data Explorer cluster.
+When rendering a dasdhboard or visuals more than once by one or more users, by default per each visual Grafana sends at least one query to ADX. When enabling this capability, during a specific time range Grafana will not send queries per rendered visuals dynamically, rather it will use the cached results.
+This capability is very effective in reducing load on resources and improving performance when multiple users are hitting the same dashboard.
+Results cache rendering can be set in the data source configuration page, by disabling the "Use dynamic caching" and entering a time range, during which we want to use cached results (value is set in minutes).
+For more details about query results cache - https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/query-results-cache#:~:text=Kusto%20includes%20a%20query%20results,%22staleness%22%20in%20the%20results.
+
+### Weak consistency
+Clusters are configured with strong consistency by default. This guarantees that query results are up to date with all changes already made on the clsuter.
+When enabling weak consistecy, query results might have a 1-2 minutes until reflecting changes on the cluster, but on the otherhand it might bring a boost in visual rendering time. Therefore in cases where innediate consistency is not critical and performance is marginal it would be good to move to weak consistency and improve performance.
+Weak consistency can be set in the data source configuration page, by selecting "Weak" in the consistency drop down.
+For more details about - https://docs.microsoft.com/en-us/azure/data-explorer/kusto/concepts/queryconsistency
+
 1. Select **Save & Test**.
 
     If the test is successful, go to the next section. If you come across any issues, check the values you specified in Grafana, and review previous steps.
