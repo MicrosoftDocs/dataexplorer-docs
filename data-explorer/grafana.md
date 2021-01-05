@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 01/05/2021
 ---
 
 # Visualize data from Azure Data Explorer in Grafana
@@ -59,22 +59,35 @@ With the service principal assigned to the *viewers* role, you now specify prope
     | Client secret | Password | password |
     | | | |
 
-### Dashboard rendering performance optimization
-Query results cache can be used to improve dashboard rendering performance and reduce load on the Azure Data Explorer cluster.
-When rendering a dasdhboard or visuals more than once by one or more users, by default per each visual Grafana sends at least one query to ADX. When enabling this capability, during a specific time range Grafana will not send queries per rendered visuals dynamically, rather it will use the cached results.
-This capability is very effective in reducing load on resources and improving performance when multiple users are hitting the same dashboard.
-Results cache rendering can be set in the data source configuration page, by disabling the "Use dynamic caching" and entering a time range, during which we want to use cached results (value is set in minutes).
-For more details about query results cache - https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/query-results-cache#:~:text=Kusto%20includes%20a%20query%20results,%22staleness%22%20in%20the%20results.
-
-### Weak consistency
-Clusters are configured with strong consistency by default. This guarantees that query results are up to date with all changes already made on the clsuter.
-When enabling weak consistecy, query results might have a 1-2 minutes until reflecting changes on the cluster, but on the otherhand it might bring a boost in visual rendering time. Therefore in cases where innediate consistency is not critical and performance is marginal it would be good to move to weak consistency and improve performance.
-Weak consistency can be set in the data source configuration page, by selecting "Weak" in the consistency drop down.
-For more details about - https://docs.microsoft.com/en-us/azure/data-explorer/kusto/concepts/queryconsistency
-
 1. Select **Save & Test**.
 
     If the test is successful, go to the next section. If you come across any issues, check the values you specified in Grafana, and review previous steps.
+
+### Optimize queries
+
+There are two features that can be used for query optimization:
+* [Optimize dashboard query rendering performance](#optimize-dashboard-query-rendering-performance-using-query-results-caching)
+* [Enable weak consistency](#enable-weak-consistency)
+
+To perform the optimization, in **Datasource configuration** > **Query Optimizations** pane, make the needed changes.
+
+:::image type="content" source="media/grafana/query-optimization.PNG" alt-text="Query optimization pane":::
+
+#### Optimize dashboard query rendering performance using query results caching 
+
+When a dashboard or visual is rendered more than once by one or more users, Grafana, by default, sends at least one query to Azure Data Explorer. Enable [Query results caching](kusto/query/query-results-cache.md) to improve dashboard rendering performance and reduce load on the Azure Data Explorer cluster. During the specified time range Grafana won't send queries for the rendered visuals but will use the cached results. 
+This capability is especially effective in reducing load on resources and improving performance when multiple users are using the same dashboard.
+
+To enable results cache rendering, do the following in the **Query Optimizations** pane:
+1. Disable **Use dynamic caching**. 
+1. In **Cache Max Age**, enter the number of minutes during which you want to use cached results.
+
+### Enable weak consistency
+
+Clusters are configured with strong consistency. This guarantees that query results are up to date with all changes in the cluster.
+When enabling weak consistency, query results can have a 1-2 minutes lag following cluster alterations. On the other hand, weak consistency may boost visual rendering time. Therefore if immediate consistency isn't critical and performance is marginal, enable weak consistency to improve performance. For more information on query consistency, see [Query consistency](kusto/concepts/queryconsistency.md).
+
+To enable weak consistency, in the **Query Optimizations** pane > **Data consistency**, select **Weak**.
 
 ## Visualize data
 
