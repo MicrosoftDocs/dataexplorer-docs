@@ -89,14 +89,14 @@ If `details` is specified, the output will include partition details (for homoge
 |IndexSize |Double |Index size of the extent data
 |Blocks |Long |Number of data blocks in the extent
 |Segments |Long |Number of data segments in the extent
-|AssignedDataNodes |String |If `details` is specified - the nodes the extent is assigned to. Otherwise - an empty string
+|AssignedDataNodes |String | Returns the nodes the extent is assigned to when `details` is specified. Otherwise, returns an empty string.
 |LoadedDataNodes |String |Deprecated (an empty string)
 |ExtentContainerId |String | ID of the extent container the extent is in
 |RowCount |Long |Number of rows in the extent
 |MinCreatedOn |DateTime |Date-time when the extent was created. For a merged extent, the minimum of creation times among the source extents
 |Tags|String|Tags, if any, defined for the extent
 |Kind|String|The kind of the data engine that created the extent: `V2` or `V3`.
-|Partition|String|If `details` is specified and the extent is homogeneous - An encoding of the extent's partition details. Otherwise - an empty string
+|Partition|String| Returns an encoding of the extent's partition details under the following conditions: `details` is specified and the extent is homogeneous. Otherwise, returns an empty string
 |DeletedRowCount|Long|The number of rows that have been soft-deleted in the extent
  
 ## Examples
