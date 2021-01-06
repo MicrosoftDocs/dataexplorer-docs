@@ -11,7 +11,7 @@ ms.date: 09/16/2020
 
 # Monitor Azure Data Explorer ingestion, commands, and queries using diagnostic logs
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion successes, ingestion failures, commands, and query operations. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion, commands, and query status. Logs from Azure Storage and Azure Event Hub can be routed to a table in your Azure Data Explorer cluster for further analysis.
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion successes, ingestion failures, commands, query, TableUsageStatistics and TableDetails operations. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion, commands, and query status. Logs from Azure Storage and Azure Event Hub can be routed to a table in your Azure Data Explorer cluster for further analysis.
 
 > [!IMPORTANT] 
 > Diagnostic log data may contain sensitive data. Restrict permissions of the logs destination according to your monitoring needs. 
@@ -51,7 +51,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 # [TableUsageStatistics and TableDetails](#tab/tableUsageStatistics-and-tableDetails)
 
 * **TableUsageStatistics**: These logs have detailed information about usage of command queries that have reached a final state.
-* **tableDetails**: These logs have detailed information about table. 
+* **TableDetails**: These logs have detailed information about cluster table. 
 
     > [!NOTE]
     > The TableUsageStatistics log data doesn't contain the command or query text.
