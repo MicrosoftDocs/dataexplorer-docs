@@ -7,7 +7,6 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 12/25/2020
-ms.localizationpriority: high
 ---
 # Cross-tenant queries and commands (How to allow principals from another tenant to access your cluster)
 
