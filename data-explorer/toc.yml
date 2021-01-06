@@ -372,6 +372,8 @@
       href: using-diagnostic-logs.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
+    - name: Use Azure Monitor insights
+      href: /azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
   - name: Share data
     items:
       - name: Use Azure Data Share
