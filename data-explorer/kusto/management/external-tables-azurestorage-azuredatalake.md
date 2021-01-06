@@ -114,7 +114,7 @@ If *PathFormat* is omitted from the external table definition, it's assumed that
 To check path format definition correctness, use the property `sampleUris` or `filesPreview` when creating an external table.
 
 > [!NOTE]
-> *PathFormat* can only describe storage "folder" URI path. To filter by file name, please use `NamePrefix` and/or `FileExtension` external table properties.
+> *PathFormat* can only describe the storage "folder" URI path. To filter by file name, use `NamePrefix` and/or `FileExtension` external table properties.
 
 <a name="format"></a>
 *Format*
