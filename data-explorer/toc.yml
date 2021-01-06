@@ -205,6 +205,8 @@
       href: power-apps-connector.md     
     - name: Debug KQL inline Python
       href: debug-inline-python.md
+    - name: Run cross tenant queries and commands
+      href: cross-tenant-query-and-commands.md
     - name: using SDKs
       items:  
       - name: Python
