@@ -416,7 +416,7 @@
           href: /sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context
         - name: Use Kqlmagic 
           displayName: Azure Data Studio
-          href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext
+          href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
     - name: Azure Pipelines
       href: devops.md  
     - name: Sync Kusto
