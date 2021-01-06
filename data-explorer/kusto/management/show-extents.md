@@ -20,47 +20,26 @@ Shows extents from a specified database or table.
 
 ## Cluster level
 
-### Syntax
+`.show` `cluster` `extents` [`hot`]
 
-`.show` `cluster` `extents` [`hot`] [`details`]
-
-### Output
-
-Shows information about extents (data shards) that are present in the cluster. For more information, see [Output parameters](#output-parameters).
-
-* If `hot` is specified: shows only extents that are expected to be in the hot cache.
-* If `details` is specified: the output will include partition details (for homogeneous extents) and the assigned data nodes. 
-
-> [!NOTE]
-> By default, both fields are unpopulated, unless otherwise specified. We recommend using `details` only when necessary.
+Shows information about extents (data shards) that are present in the cluster.
+If `hot` is specified - shows only extents that are expected to be in the hot cache.
 
 ## Database level
 
-### Syntax
+`.show` `database` *DatabaseName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
 
-`.show` `database` *DatabaseName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`details`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
-
-### Output
-
-Shows information about extents (data shards) that are present in the specified database. For more information, see [Output parameters](#output-parameters).
-
-* If `hot` is specified: shows only extents that are expected to be in the hot cache.
-* If `details` is specified: the output will include partition details (for homogeneous extents) and the assigned data nodes. 
-
-> [!NOTE]
-> By default, both fields are unpopulated, unless otherwise specified. We recommend using `details` only when necessary.
+Shows information about extents (data shards) that are present in the specified database.
+If `hot` is specified - shows only extents that expected to be in the hot cache.
 
 ## Table level
 
-`.show` `table` *TableName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`details`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
+`.show` `table` *TableName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
 
 `.show` `tables` `(`*TableName1*`,`...`,`*TableNameN*`)` `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
 
 Shows information about extents (data shards) that are present in the specified tables. The database is taken from the command's context.
-
 If `hot` is specified, shows only extents that are expected to be in the hot cache.
-
-If `details` is specified, the output will include partition details (for homogeneous extents) and the assigned data nodes. By default, when unspecified  both fields are unpopulated. It's recommended to use `details` only when necessary.
 
 ## Notes
 
@@ -89,15 +68,12 @@ If `details` is specified, the output will include partition details (for homoge
 |IndexSize |Double |Index size of the extent data
 |Blocks |Long |Number of data blocks in the extent
 |Segments |Long |Number of data segments in the extent
-|AssignedDataNodes |String | Returns the nodes the extent is assigned to when `details` is specified. Otherwise, returns an empty string.
+|AssignedDataNodes |String | Deprecated (an empty string)
 |LoadedDataNodes |String |Deprecated (an empty string)
 |ExtentContainerId |String | ID of the extent container the extent is in
 |RowCount |Long |Number of rows in the extent
 |MinCreatedOn |DateTime |Date-time when the extent was created. For a merged extent, the minimum of creation times among the source extents
 |Tags|String|Tags, if any, defined for the extent
-|Kind|String|The kind of the data engine that created the extent: `V2` or `V3`.
-|Partition|String| Returns an encoding of the extent's partition details under the following conditions: `details` is specified and the extent is homogeneous. Otherwise, returns an empty string
-|DeletedRowCount|Long|The number of rows that have been soft-deleted in the extent
  
 ## Examples
 
