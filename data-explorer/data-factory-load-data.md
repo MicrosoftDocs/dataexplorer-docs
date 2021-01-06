@@ -166,7 +166,7 @@ To create the Azure Data Explorer linked service, do the following steps:
 
         > [!NOTE]
         > * The **Cluster** drop-down control lists only clusters that are associated with your subscription.
-        > * Your cluster must have the appropriate [SKU](manage-cluster-choose-sku.md) for best performance.
+        > * Your cluster must have the appropriate [SKU](manage-cluster-choose-sku.md) for [best performance](data-factory-integration.md#performance).
 
     * Select **Enter manually**, and then enter your **Endpoint**.
 
