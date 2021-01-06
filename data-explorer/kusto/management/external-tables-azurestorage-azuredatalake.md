@@ -83,7 +83,7 @@ To check partitioning definition correctness, use the property `sampleUris` or `
 <a name="path-format"></a>
 *PathFormat*
 
-External data URI file path format, which can be specified in addition to partitions. Path format is a sequence of partition elements and text separators:
+External data folder URI path format, which can be specified in addition to partitions. Path format is a sequence of partition elements and text separators:
 
 &nbsp;&nbsp;[*StringSeparator*] *Partition* [*StringSeparator*] [*Partition* [*StringSeparator*] ...]  
 
@@ -111,7 +111,10 @@ By default, datetime values are rendered using the following formats:
 
 If *PathFormat* is omitted from the external table definition, it's assumed that all partitions, in exactly the same order as they're defined, are separated using `/` separator. Partitions are rendered using their default string presentation.
 
-To check path format definition correctness, use the property `sampleUris` when creating an external table.
+To check path format definition correctness, use the property `sampleUris` or `filesPreview` when creating an external table.
+
+> [!NOTE]
+> *PathFormat* can only describe storage "folder" URI path. To filter by file name, please use `NamePrefix` and/or `FileExtension` external table properties.
 
 <a name="format"></a>
 *Format*
