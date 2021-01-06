@@ -372,6 +372,8 @@
       href: using-diagnostic-logs.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
+    - name: Use Azure Monitor insights
+      href: /azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
   - name: Share data
     items:
       - name: Use Azure Data Share
@@ -414,7 +416,7 @@
           href: /sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context
         - name: Use Kqlmagic 
           displayName: Azure Data Studio
-          href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext
+          href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
     - name: Azure Pipelines
       href: devops.md  
     - name: Sync Kusto
