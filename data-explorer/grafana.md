@@ -47,7 +47,7 @@ With the service principal assigned to the *viewers* role, you now specify prope
 
     ![Connection name and type](media/grafana/connection-name-type.png)
 
-1. Enter the name of your cluster in the form https://{ClusterName}.{Region}.kusto.windows.net. Enter the other values from the Azure portal or CLI. See the table below the following image for a mapping.
+1. In **Settings** > **Connection details**, enter the name of your cluster in the form https://{ClusterName}.{Region}.kusto.windows.net. Enter the other values from the Azure portal or CLI. See the table below the following image for a mapping.
 
     ![Connection properties](media/grafana/connection-properties.png)
 
@@ -69,14 +69,13 @@ There are two features that can be used for query optimization:
 * [Optimize dashboard query rendering performance](#optimize-dashboard-query-rendering-performance-using-query-results-caching)
 * [Enable weak consistency](#enable-weak-consistency)
 
-To perform the optimization, in **Datasource configuration** > **Query Optimizations** pane, make the needed changes.
+To perform the optimization, in **Data Sources** > **Settings** > **Query Optimizations**, make the needed changes.
 
 :::image type="content" source="media/grafana/query-optimization.PNG" alt-text="Query optimization pane":::
 
 #### Optimize dashboard query rendering performance using query results caching 
 
-When a dashboard or visual is rendered more than once by one or more users, Grafana, by default, sends at least one query to Azure Data Explorer. Enable [Query results caching](kusto/query/query-results-cache.md) to improve dashboard rendering performance and reduce load on the Azure Data Explorer cluster. During the specified time range Grafana won't send queries for the rendered visuals but will use the cached results. 
-This capability is especially effective in reducing load on resources and improving performance when multiple users are using the same dashboard.
+When a dashboard or visual is rendered more than once by one or more users, Grafana, by default, sends at least one query to Azure Data Explorer. Enable [Query results caching](kusto/query/query-results-cache.md) to improve dashboard rendering performance and reduce load on the Azure Data Explorer cluster. During the specified time range, Azure Data Explorer will use the results cache to retrieve the previous results and won't run an unnecessary query. This capability is especially effective in reducing load on resources and improving performance when multiple users are using the same dashboard.
 
 To enable results cache rendering, do the following in the **Query Optimizations** pane:
 1. Disable **Use dynamic caching**. 
