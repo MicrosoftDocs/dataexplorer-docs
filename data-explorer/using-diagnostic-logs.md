@@ -6,12 +6,12 @@ ms.author: orspodek
 ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 01/07/2021
 ---
 
-# Monitor Azure Data Explorer ingestion, commands, and queries using diagnostic logs
+# Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion successes, ingestion failures, commands, query, TableUsageStatistics and TableDetails operations. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion, commands, and query status. Logs from Azure Storage and Azure Event Hub can be routed to a table in your Azure Data Explorer cluster for further analysis.
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion, commands, query, and tables. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion, commands, and query status. Logs from Azure Storage and Azure Event Hub can be routed to a table in your Azure Data Explorer cluster for further analysis.
 
 > [!IMPORTANT] 
 > Diagnostic log data may contain sensitive data. Restrict permissions of the logs destination according to your monitoring needs. 
@@ -48,13 +48,17 @@ Diagnostic logs can be used to configure the collection of the following log dat
     > [!NOTE]
     > The query log data doesn't contain the query text.
     
-# [TableUsageStatistics and TableDetails](#tab/tableUsageStatistics-and-tableDetails)
+# [Tables](#tab/tables)
 
-* **TableUsageStatistics**: These logs have detailed information about usage of command queries that have reached a final state.
-* **TableDetails**: These logs have detailed information about cluster table. 
+* **TableUsageStatistics**: These logs have detailed information about usage of commands and queries that have reached a final state.
 
     > [!NOTE]
-    > The TableUsageStatistics log data doesn't contain the command or query text.
+    > The `TableUsageStatistics` log data doesn't contain the command or query text.
+
+* **TableDetails**: These logs have detailed information about the cluster's tables. 
+
+    > [!NOTE]
+    > The `TableUsageStatistics` log data doesn't contain the command or query text.
 
 ---
 
@@ -402,7 +406,7 @@ Log JSON strings include elements listed in the following table:
 |TableSize        |Result set table row count
 
 
-# [TableUsageStatistics and TableDetails](#tab/tableUsageStatistics-and-tableDetails)
+# [Tables](#tab/tables)
 
 ### TableUsageStatistics and TableDetails logs schema
 
@@ -414,7 +418,7 @@ Log JSON strings include elements listed in the following table:
 |resourceId         |Azure Resource Manager resource ID
 |operationName      |Name of the operation: 'MICROSOFT.KUSTO/CLUSTERS/DATABASE/SCHEMA/READ'. Properties are the same for TableUsageStatistics and TableDetails.
 |operationVersion   |Schema version: '1.0' 
-|properties         |Detailed information of the operation.
+|properties         |Detailed information of the operation
 
 #### TableUsageStatistics log
 
@@ -439,6 +443,7 @@ Log JSON strings include elements listed in the following table:
     }
 }
 ```
+
 **Properties of a TableUsageStatistics diagnostic log**
 
 |Name               |Description
@@ -448,8 +453,8 @@ Log JSON strings include elements listed in the following table:
 |Database          |The name of the database
 |TableName              |The name of the table
 |MinCreatedOn  |Oldest extent time of the table
-|MaxCreatedOn |Lastest extent time of the table
-|ApplicationName     |application name invoked the command
+|MaxCreatedOn |Latest extent time of the table
+|ApplicationName     |application name that invoked the command
 |User     |The user that invoked the query
 |Principal     |The principal that invoked the query
 
@@ -493,10 +498,10 @@ Log JSON strings include elements listed in the following table:
 |TableName        |The name of the table
 |DatabaseName           |he name of the database
 |TotalExtentSize              |The total original size of data in the table (in bytes)
-|HotExtentSize  |The total size of extents (compressed size + index size) in the table, stored in the hot cache (in bytes)
-|RetentionPolicyOrigin |Retention policy origin entity (Table/Database/Cluster)
-|RetentionPolicy     |he table's effective entity retention policy, serialized as JSON
-|CachingPolicyOrigin            |Caching policy origin entity (Table/Database/Cluster)
+|HotExtentSize  |The total size in bytes of extents (compressed size and index size) in the table, stored in the hot cache.
+|RetentionPolicyOrigin |Retention policy origin entity (table/database/cluster)
+|RetentionPolicy     |The table's effective entity retention policy, serialized as JSON
+|CachingPolicyOrigin            |Caching policy origin entity (table/database/cluster)
 |CachingPolicy          |The table's effective entity caching policy, serialized as JSON
 |MaxExtentsCreationTime      |The maximum creation time of an extent in the table (or null, if there are no extents)
 |MinExtentsCreationTime |The minimum creation time of an extent in the table (or null, if there are no extents)
@@ -508,7 +513,7 @@ Log JSON strings include elements listed in the following table:
 |ScannedExtentsCount        |Scanned extent count
 |TotalRowsCount        |Total rows count
 |HotExtentCount        |The total number of extents in the table, stored in the hot cache
-|HotOriginalSize        |The total original size of data in the table, stored in the hot cache (in bytes)
+|HotOriginalSize        |The total original size in bytes of data in the table, stored in the hot cache
 |HotRowCount        |The total number of rows in the table, stored in the hot cache
 
 ---
