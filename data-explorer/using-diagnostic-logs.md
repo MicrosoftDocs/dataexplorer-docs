@@ -55,10 +55,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
     > [!NOTE]
     > The `TableUsageStatistics` log data doesn't contain the command or query text.
 
-* **TableDetails**: These logs have detailed information about the cluster's tables. 
-
-    > [!NOTE]
-    > The `TableUsageStatistics` log data doesn't contain the command or query text.
+* **TableDetails**: These logs have detailed information about the cluster's tables.
 
 ---
 
