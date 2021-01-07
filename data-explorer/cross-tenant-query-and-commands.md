@@ -1,31 +1,67 @@
 ---
 title: Cross-tenant queries and commands
 description: Learn how to query / run commands on Azure Data Explorer from multiple tenants.
-author: orhasban
+author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin 
+ms.reviewer: orhasban
 ms.service: data-explorer
-ms.topic: how-to
-ms.date: 12/25/2020
+ms.topic: reference
+ms.date: 01/06/2021
 ---
-# Cross-tenant queries and commands (How to allow principals from another tenant to access your cluster)
+# Cross-tenant queries and commands 
 
-Azure Data Explorer is capable to run queries and commands from multiple tanants. 
+Multiple tenants can run queries and commands in a single Azure Data Explorer cluster. In this article, you will learn how to give cluster access to principals from another tenant.
 
-In order for a principal would be able to run queries or commands on a cluster it should have a relevant database role on the the database (for more information, see [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md)).
+Cluster owners can protect their cluster from queries and commands from other tenants. This is done by managing TrustedExternalTenants cluster property. For more information, see [Azure Data Explorer cluster request body](rest/api/azurerekusto/clusters/createorupdate#request-body).
 
-Azure Data Explorer cluster allow the cluster owners to protect their cluster from getting queries and commands from other tenants. Those requests are blocked in earlier, before the principal authorization validation check. This is done by managing TrustedExternalTenants cluster property (for more information regarding creating or updating clusters, and in particular trustedExternalTenants property, see [Azure Data Explorer cluster request body](https://docs.microsoft.com/rest/api/azurerekusto/clusters/createorupdate#request-body)).
+> [!NOTE]
+> The principal that will be running queries or commands must also have a relevant database role. For more information, see [role-based authorization](./kusto/management/access-control/role-based-authorization.md). Validation of correct roles takes place after validation of trusted external tenants.
 
-This property is an array that defines explicitly which tenants are allowed to run queries and commands on the cluster. Its structure is as follows:
+The `trustedExternalTenants` property explicitly defines which tenants are allowed to run queries and commands on the cluster. This property can be
+
+## Syntax
+
+**Define specific tenants**
+
+`trustedExternalTenants``: [ {"`*value*`": "`*tenantId1*`" }, { "`*value*`": "`*tenantId2*`" }, ... ]`
+
+**Allow all tenants**
+
+The trustedExternalTenants array supports also all-tenants star ('*') notion, which allows queries and commands from all tenants. 
+
+`trustedExternalTenants``: [ { "`*value*`": "`*`" }]`
+
+> [!NOTE]
+> The default value for `trustedExternalTenants` is `[ { "value": "*" }]`. If the external tenants array was not defined on cluster creation, it can be overridden with a cluster update operation. An empty array isn't accepted.
+
+## Example 
+
+```http
+PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorgtest/providers/Microsoft.Kusto/clusters/kustoclustertest?api-version=2020-09-18
 
 ```
-trustedExternalTenants: [ { "value": "tenantId1" }, { "value": "tenantId2" }, ... ]
+
+**Request body- specific tenants**
+
+```json
+{
+              "properties": { 
+                           "trustedExternalTenants": [
+                                         { "value": "tenantId1" }, 
+                                         { "value": "tenantId2" }, 
+                                         ...
+                           ]
+              }
+}
 ```
 
-The trustedExternalTenants array supports also _all-tenants_ star ('*') notion (allows queries and commands from all tenants). 
+**Request body- all tenants**
+
+```json
+{
+              "properties": { 
+                           "trustedExternalTenants": [  { "value": "*" }  ]
+              }
+}
 
 ```
-trustedExternalTenants: [ { "value": "*" }]
-```
-
-When an Azure Data Explorer cluster is created, if this array isn't mentioned (property is not required), the default value is `[ { "value": "*" }]`. In case cluster owner didn't define that array on creation, it can be overridden with cluster update operation. Notice that an empty array isn't accepted.
