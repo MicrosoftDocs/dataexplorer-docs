@@ -6,12 +6,12 @@ ms.author: orspodek
 ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 01/07/2021
 ---
 
-# Monitor Azure Data Explorer ingestion, commands, and queries using diagnostic logs
+# Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion successes, ingestion failures, commands, and query operations. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion, commands, and query status. Logs from Azure Storage and Azure Event Hub can be routed to a table in your Azure Data Explorer cluster for further analysis.
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion, commands, query, and tables. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion, commands, and query status. Logs from Azure Storage and Azure Event Hub can be routed to a table in your Azure Data Explorer cluster for further analysis.
 
 > [!IMPORTANT] 
 > Diagnostic log data may contain sensitive data. Restrict permissions of the logs destination according to your monitoring needs. 
@@ -47,6 +47,15 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
     > [!NOTE]
     > The query log data doesn't contain the query text.
+    
+# [Tables](#tab/tables)
+
+* **TableUsageStatistics**: These logs have detailed information about usage of commands and queries that have reached a final state.
+
+    > [!NOTE]
+    > The `TableUsageStatistics` log data doesn't contain the command or query text.
+
+* **TableDetails**: These logs have detailed information about the cluster's tables.
 
 ---
 
@@ -75,7 +84,7 @@ Diagnostic logs are disabled by default. To enable diagnostic logs, do the follo
 New settings will be set in a few minutes. Logs then appear in the configured archival target (Storage account, Event Hub, or Log Analytics). 
 
 > [!NOTE]
-> If you send logs to Log Analytics, the `SucceededIngestion`, `FailedIngestion`, `Command`, and `Query` logs will be stored in Log Analytics tables named: `SucceededIngestion`, `FailedIngestion`, `ADXIngestionBatching`, `ADXCommand`, `ADXQuery`, respectively.
+> If you send logs to Log Analytics, the `SucceededIngestion`, `FailedIngestion`, `Command`, `Query`, `TableUsageStatistics` and `TableDetails` logs will be stored in Log Analytics tables named: `SucceededIngestion`, `FailedIngestion`, `ADXIngestionBatching`, `ADXCommand`, `ADXQuery`, `ADXTableUsageStatistics` and `ADXTableDetails` respectively.
 
 ## Diagnostic logs schema
 
@@ -392,6 +401,117 @@ Log JSON strings include elements listed in the following table:
 |TablesStatistics        |Contains result set table statistics
 |RowCount        | Result set table row count
 |TableSize        |Result set table row count
+
+
+# [Tables](#tab/tables)
+
+### TableUsageStatistics and TableDetails logs schema
+
+Log JSON strings include elements listed in the following table:
+
+|Name               |Description
+|---                |---
+|time               |Time of the report
+|resourceId         |Azure Resource Manager resource ID
+|operationName      |Name of the operation: 'MICROSOFT.KUSTO/CLUSTERS/DATABASE/SCHEMA/READ'. Properties are the same for TableUsageStatistics and TableDetails.
+|operationVersion   |Schema version: '1.0' 
+|properties         |Detailed information of the operation
+
+#### TableUsageStatistics log
+
+**Example:**
+
+```json
+{
+    "resourceId": "/SUBSCRIPTIONS/0571b364-eeeb-4f28-ba74-90a8b4132b53/RESOURCEGROUPS/MYRG/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/MYKUSTOCLUSTER",
+    "time": "08-04-2020 16:42:29",
+    "operationName": "MICROSOFT.KUSTO/CLUSTERS/DATABASE/SCHEMA/READ",
+    "correlationId": "MyApp.Kusto.DM.MYKUSTOCLUSTER.ShowTableUsageStatistics.e10fe80b-6f4d-4b7e-9756-b87720f88901",
+    "properties": {
+        "RootActivityId": "3e6e8814-e64f-455a-926d-bf16229f6d2d",
+        "StartedOn": "2020-08-19T11:51:41.1258308Z",
+        "Database": "MyDB",
+        "Table": "MyTable",
+        "MinCreatedOn": "2020-07-20T09:16:00.9906347Z",
+        "MaxCreatedOn": "2020-08-19T11:50:37.1233374Z",
+        "Application": "MyApp",
+        "User": "AAD app id=0571b364-eeeb-4f28-ba74-90a8b4132b53",
+        "Principal": "aadapp=0571b364-eeeb-4f28-ba74-90a8b4132b53;5c823e4d-c927-4010-a2d8-6dda2449b6cf"
+    }
+}
+```
+
+**Properties of a TableUsageStatistics diagnostic log**
+
+|Name               |Description
+|---                |---
+|RootActivityId |The root activity ID
+|StartedOn        |Time (UTC) at which this command started
+|Database          |The name of the database
+|TableName              |The name of the table
+|MinCreatedOn  |Oldest extent time of the table
+|MaxCreatedOn |Latest extent time of the table
+|ApplicationName     |application name that invoked the command
+|User     |The user that invoked the query
+|Principal     |The principal that invoked the query
+
+#### TableDetails log
+
+**Example:**
+
+```json
+{
+    "resourceId": "/SUBSCRIPTIONS/0571b364-eeeb-4f28-ba74-90a8b4132b53/RESOURCEGROUPS/MYRG/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/MYKUSTOCLUSTER",
+    "time": "08-04-2020 16:42:29",
+    "operationName": "MICROSOFT.KUSTO/CLUSTERS/DATABASE/SCHEMA/READ",
+    "correlationId": "MyApp.Kusto.DM.MYKUSTOCLUSTER.ShowTableUsageStatistics.e10fe80b-6f4d-4b7e-9756-b87720f88901",
+    "properties": {
+        "RootActivityId": "3e6e8814-e64f-455a-926d-bf16229f6d2d",
+        "TableName": "MyTable",
+        "DatabaseName": "MyDB",
+        "TotalExtentSize": 9632.0,
+        "TotalOriginalSize": 4143.0,
+        "HotExtentSize": 0.0,
+        "RetentionPolicyOrigin": "table",
+        "RetentionPolicy": "{\"SoftDeletePeriod\":\"90.00:00:00\",\"Recoverability\":\"Disabled\"}",
+        "CachingPolicyOrigin": "database",
+        "CachingPolicy": "{\"DataHotSpan\":\"7.00:00:00\",\"IndexHotSpan\":\"7.00:00:00\",\"ColumnOverrides\":[]}",
+        "MaxExtentsCreationTime": "2020-08-30T02:44:43.9824696Z",
+        "MinExtentsCreationTime": "2020-08-30T02:38:42.3031288Z",
+        "TotalExtentCount": 1164,
+        "TotalRowCount": 223325,
+        "HotExtentCount": 29,
+        "HotOriginalSize": 1388213,
+        "HotRowCount": 5117
+  }
+}
+```
+
+**Properties of a TableDetails diagnostic log**
+
+|Name               |Description
+|---                |---
+|RootActivityId |The root activity ID
+|TableName        |The name of the table
+|DatabaseName           |he name of the database
+|TotalExtentSize              |The total original size of data in the table (in bytes)
+|HotExtentSize  |The total size in bytes of extents (compressed size and index size) in the table, stored in the hot cache.
+|RetentionPolicyOrigin |Retention policy origin entity (table/database/cluster)
+|RetentionPolicy     |The table's effective entity retention policy, serialized as JSON
+|CachingPolicyOrigin            |Caching policy origin entity (table/database/cluster)
+|CachingPolicy          |The table's effective entity caching policy, serialized as JSON
+|MaxExtentsCreationTime      |The maximum creation time of an extent in the table (or null, if there are no extents)
+|MinExtentsCreationTime |The minimum creation time of an extent in the table (or null, if there are no extents)
+|TotalExtentCount        |The total number of extents in the table
+|TotalRowCount        |The total number of rows in the table
+|MinDataScannedTime        |Minimum data scan time
+|MaxDataScannedTime        |Maximum data scan time
+|TotalExtentsCount        |Total extent count
+|ScannedExtentsCount        |Scanned extent count
+|TotalRowsCount        |Total rows count
+|HotExtentCount        |The total number of extents in the table, stored in the hot cache
+|HotOriginalSize        |The total original size in bytes of data in the table, stored in the hot cache
+|HotRowCount        |The total number of rows in the table, stored in the hot cache
 
 ---
 
