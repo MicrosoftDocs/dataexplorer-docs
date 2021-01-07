@@ -6,28 +6,32 @@ ms.author: orspodek
 ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/06/2020
+ms.date: 01/07/2021
 ---
 
-# Secure Azure Data Explorer clusters in Azure
+# Security in Azure Data Explorer
 
 This article provides an introduction to security in Azure Data Explorer to help you protect your data and resources in the cloud and meet the security needs of your business. It's important to keep your clusters secure. Securing your clusters includes one or more Azure features that include secure access and storage. This article provides information to help you keep your cluster secure.
 
-## Network Security
+## Network security
 
-Network perimeter security  is a requirement shared by many of our security-conscious enterprise customers. The intent is to isolate the network traffic and limit the attack surface for Azure Data Explorer and their corresponding communications. This means that the customer can block traffic originating from non-ADX network segments and assure that only traffic from known sources to reach ADX end points. This includes traffic originating on premises or outside of Azure, with an Azure destination and vice versa.
+Network security is a requirement shared by many of our security-conscious enterprise customers. The intent is to isolate the network traffic and limit the attack surface for Azure Data Explorer and corresponding communications. You can therefore block traffic originating from non Azure Data Explorer network segments and assure that only traffic from known sources reach Azure Data Explorer end points. This includes traffic originating on premises or outside of Azure, with an Azure destination and vice versa.
 
-ADX supports [Virtual Network Injection](vnet-deployment.md) in order to directly deploy into your virtual network. The engine / data management endpoints can be privately accessed. This allows ADX to be accessible through the non-internet routable addresses.
+Azure Data Explorer supports [virtual network injection](vnet-deployment.md) to directly deploy into your virtual network. Both the engine and data management endpoints can be privately accessed. This allows Azure Data Explorer to be accessible through non-internet routed addresses.
 
-## Logging and Monitoring
+For more information, see the following topics.
 
-Azure Data Explorer uses [diagnostic logs](using-diagnostic-logs.md) for insights on ingestion and metrics. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion status. Logs from Azure Storage and Azure Event Hub can be routed to a table in your Azure Data Explorer cluster for further analysis.
+* [Create an Azure Data Explorer cluster in your virtual network](vnet-create-cluster-portal.md)
+* [Deploy Azure Data Explorer cluster into your Virtual Network](vnet-deployment.md)
+* [Troubleshoot access, ingestion, and operation of your Azure Data Explorer cluster in your virtual network](vnet-deploy-troubleshoot.md)
+* [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network (preview)](vnet-create-private-endpoint.md)
+* [Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md) 
 
-## Identity and Access Control
+## Identity and access control
 
 ### Role-based access control
 
-Using [role-based access control (RBAC)](/azure/role-based-access-control/overview), you can segregate duties within your team and grant only the required access to cluster users. Instead of giving everybody unrestricted permissions on the cluster, you can allow only certain actions. You can configure [access control for the databases](manage-database-permissions.md) in the [Azure portal](/azure/role-based-access-control/role-assignments-portal), using the [Azure CLI](/azure/role-based-access-control/role-assignments-cli), or [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell).
+Use [role-based access control (RBAC)](/azure/role-based-access-control/overview), to segregate duties and grant only the required access to cluster users. Instead of giving everybody unrestricted permissions on the cluster, you can allow only certain actions. You can configure [access control for the databases](manage-database-permissions.md) in the [Azure portal](/azure/role-based-access-control/role-assignments-portal), using the [Azure CLI](/azure/role-based-access-control/role-assignments-cli), or [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell).
 
 ### Managed identities for Azure resources
 
@@ -35,9 +39,9 @@ A common challenge when building cloud applications is credentials management in
 
 The Azure Active Directory (Azure AD) managed identities for Azure resources feature solves this problem. The feature provides Azure services with an automatically managed identity in Azure AD. You can use the identity to authenticate to any service that supports Azure AD authentication, including Key Vault, without any credentials in your code. For more information about this service, see [managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/overview) overview page.
 
-## Data Protection
+## Data protection
 
-### Azure Disk Encryption
+### Azure disk encryption
 
 [Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) helps protect and safeguard your data to meet your organizational security and compliance commitments. It provides volume encryption for the OS and data disks of your cluster's virtual machines. Azure Disk Encryption also integrates with [Azure Key Vault](/azure/key-vault/), which allows us to control and manage the disk encryption keys and secrets, and ensure all data on the VM disks is encrypted. 
 
