@@ -1,5 +1,5 @@
 ---
-title: What's new in Azure Data Explorer
+New article title: What's new in Azure Data Explorer
 description: What's new in the Azure Data Explorer docs
 author: orspod
 ms.author: orspodek
@@ -10,7 +10,7 @@ ms.date: 12/15/2020
 ---
 # What's new in Azure Data Explorer
 
-Find new and updated content in Azure Data Explorer.
+Find new and significantly updated content in Azure Data Explorer. 
 
 ## November 2020
 
@@ -20,7 +20,7 @@ Welcome to what's new in the Azure Data Explorer docs from November 2020. This a
 
 #### Query
 
-Name | Notes
+New article title | Description
 ---|---
 [mysql_request plugin (Preview)](./kusto/query/mysqlrequest-plugin.md) | The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query. 
 [ipv4_lookup plugin](./kusto/query/ipv4-lookup-plugin.md) | The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values.
@@ -32,14 +32,14 @@ Name | Notes
 
 #### Functions library
 
-Name | Notes
+New article title | Description
 ---|---
 [series_downsample_fl()](./kusto/functions-library/series-downsample-fl.md) | The function `series_downsample_fl()` [downsamples a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)#Downsampling_by_an_integer_factor). 
 [series_exp_smoothing_fl()](./kusto/functions-library/series-exp-smoothing-fl.md) | Applies a basic exponential smoothing filter on a series.
 
 #### Management
 
-Name | Notes
+New article title | Description
 ---|---
 [.disable plugin](./kusto/management/disable-plugin.md) | Disables a plugin.
 [.enable plugin](./kusto/management/enable-plugin.md) | Enables a plugin.
@@ -47,7 +47,7 @@ Name | Notes
 
 #### General
 
-Name | Notes
+New article title | Description
 ---|---
 [Azure Policy built-in definitions for Azure Data Explorer](policy-reference.md) | This page is an index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions for Azure Data Explorer. 
 [Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md) | In this article, you connect an Event Hub to a table in Azure Data Explorer using the [one-click ingestion](ingest-data-one-click.md) experience.
@@ -108,7 +108,7 @@ Welcome to what's new in the Azure Data Explorer docs from October 2020. This ar
 
 #### Query
 
-Name | Notes
+New article title | Description
 ---|---
 [project-keep operator](./kusto/query/project-keep-operator.md) | Select what columns from the input to keep in the output.
 [bag_remove_keys()](./kusto/query/bag-remove-keys-function.md) | Removes keys and associated values from a `dynamic` property-bag.
@@ -118,14 +118,14 @@ Name | Notes
 
 #### Functions library
 
-Name | Notes
+New article title | Description
 ---|---
 [kmeans_fl()](./kusto/functions-library/kmeans-fl.md) | The function `kmeans_fl()` clusterizes a dataset using the [k-means algorithm](https://en.wikipedia.org/wiki/K-means_clustering).
 [series_dot_product_fl()](./kusto/functions-library/series-dot-product-fl.md) | Calculates the dot product of two numerical vectors.
 
 #### Management
 
-Name | Notes
+New article title | Description
 ---|---
 [Query throttling policy commands](./kusto/management/query-throttling-policy-commands.md) | The [query throttling policy](kusto/management/query-throttling-policy.md) is a cluster-level policy to restrict query concurrency in the cluster. 
 [Query throttling policy](./kusto/management/query-throttling-policy.md) | Define the query throttling policy to limit the number of concurrent queries the cluster can execute at the same time. This policy protects the cluster from being overloaded with more concurrent queries than it can sustain. The policy can be changed at run-time, and takes place immediately after the alter policy command completes.
@@ -133,10 +133,10 @@ Name | Notes
 
 #### General
 
-Name | Notes
+New article title | Description
 ---|---
 [Ingest data using the Azure Data Explorer Java SDK](java-ingest-data.md) | In this article, learn how to ingest data using the Azure Data Explorer Java library. First, you'll create a table and a data mapping in a test cluster. Then you'll queue an ingestion from blob storage to the cluster using the Java SDK and validate the results.
-[Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md) | In this article, you learn how to create manually the resources needed for Event Grid Ingestion: Event Grid subscription, Event Hub namespace, and Event Hub. 
+[Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md) | In this article, you learn how to create manually the resources needed for Event Grid Ingestion: Event Grid subscription, Event Hub New article titlespace, and Event Hub. 
 [Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md) | A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet’s address space for the Azure service to securely connect between Azure Data Explorer and Azure services such as Azure Storage and Event Hub. Azure Data Explorer accesses the Private Endpoint of the storage accounts or Event Hubs over the Microsoft backbone, and all communication, for example, data export, external tables, and data ingestion, takes take place over the private IP address. 
 [EngineV3 - preview](engine-v3.md) | Kusto EngineV3 is Azure Data Explorer’s next generation storage and query engine. It's designed to provide unparalleled performance for ingesting and querying telemetry, logs, and time series data.
 [Create an Azure Data Explorer cluster and database using Go](create-cluster-database-go.md) |  In this article, you create an Azure Data Explorer cluster and database using [Go](https://golang.org/). You can then list and delete your new cluster and database and execute operations on your resources.
@@ -202,7 +202,7 @@ Welcome to what's new in the Azure Data Explorer docs from September 2020. This 
 
 #### Query
 
-Name | Notes
+New article title | Description
 ---|---
 [zlib_compress_to_base64_string()](./kusto/query/zlib-base64-compress.md) | Performs zlib compression and encodes the result to base64.
 [zlib_decompress_from_base64_string()](./kusto/query/zlib-base64-decompress.md) | Decodes the input string from base64 and performs zlib decompression.
@@ -211,13 +211,13 @@ Name | Notes
 
 #### Functions library
 
-Name | Notes
+New article title | Description
 ---|---
 [Functions library](./kusto/functions-library/functions-library.md) | The following article contains a categorized list of [UDF (user-defined functions)](kusto/query/functions/user-defined-functions.md). The user-defined functions code is given in the articles.  It can be used within a let statement embedded in a query or can be persisted in a database using [`.create function`](kusto/management/create-function.md).
 
 #### Management
 
-Name | Notes
+New article title | Description
 ---|---
 [.create materialized-view](./kusto/management/materialized-views/materialized-view-create.md) | A [materialized view](kusto/management/materialized-views/materialized-view-overview.md) is an aggregation query over a source table, representing a single summarize statement.
 [Materialized views (preview)](./kusto/management/materialized-views/materialized-view-overview.md) | [Materialized views](kusto/query/materialized-view-function.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](./kusto/management/materialized-views/materialized-view-overview.md#materialized-views-queries) is more performant than running the aggregation directly over the source table, which is performed each query.
@@ -228,14 +228,14 @@ Name | Notes
 
 #### API
 
-Name | Notes
+New article title | Description
 ---|---
 [Azure Data Explorer Golang SDK](./kusto/api/golang/kusto-golang-client-library.md) | Azure Data Explorer Go Client library provides the capability to query, control, and ingest into Azure Data Explorer clusters using Go. 
 [Ingestion without Kusto.Ingest Library](./kusto/api/netfx/kusto-ingest-client-rest.md) | The Kusto.Ingest library is preferred for ingesting data to Azure Data Explorer. However, you can still achieve almost the same functionality, without being dependent on the Kusto.Ingest package. This article shows you how, by using *Queued Ingestion* to Azure Data Explorer for production-grade pipelines.
 
 #### General
 
-Name | Notes
+New article title | Description
 ---|---
 [Create a table in Azure Data Explorer (preview)](one-click-table.md) | The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer Web UI. 
 [Enable isolated compute on your Azure Data Explorer cluster](isolated-compute.md) | Isolated compute virtual machines (VMs) enable customers to run their workload in a hardware isolated environment dedicated to single customer. Clusters deployed with isolated compute VMs are best suited for workloads that require a high degree of isolation for compliance and regulatory requirements.
@@ -297,7 +297,7 @@ Welcome to what's new in the Azure Data Explorer docs from August 2020. This art
 
 #### Query
 
-Name | Notes
+New article title | Description
 ---|---
 [series_fft()](./kusto/query/series-fft-function.md) | Applies the Fast Fourier Transform (FFT) on a series.  
 [series_ifft()](./kusto/query/series-ifft-function.md) | Applies the Inverse Fast Fourier Transform (IFFT) on a series. 
@@ -307,23 +307,23 @@ Name | Notes
 
 ### Management
 
-Name | Notes
+New article title | Description
 ---|---- 
 [Create or alter continuous export](./kusto/management/data-export/create-alter-continuous.md) | Creates or alters a continuous export job.
 [Disable or enable continuous export](./kusto/management/data-export/disable-enable-continuous.md) | Disables or enables the continuous-export job. A disabled continuous export won't be executed, but its current state is persisted and can be resumed when the continuous export is enabled. 
 [Drop continuous export](./kusto/management/data-export/drop-continuous-export.md) | Drops a continuous-export job.
 [Show continuous export artifacts](./kusto/management/data-export/show-continuous-artifacts.md) | Returns all artifacts exported by the continuous-export in all runs. Filter the results by the Timestamp column in the command to view only records of interest. The history of exported artifacts is retained for 14 days. 
-[Show continuous export](./kusto/management/data-export/show-continuous-export.md) | Returns the continuous export properties of *ContinuousExportName*. 
+[Show continuous export](./kusto/management/data-export/show-continuous-export.md) | Returns the continuous export properties of *ContinuousExportNew article title*. 
 [Show continuous export failures](./kusto/management/data-export/show-continuous-failures.md) | Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest. 
  
 ### General
 
-Name | Notes
+New article title | Description
 ---|---
 [Enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer](double-encryption.md) | When you create a cluster, its storage is [automatically encrypted at the service level](/azure/storage/common/storage-service-encryption). If you require a higher level of assurance that your data is secure, you can also enable [Azure Storage infrastructure level encryption](/azure/storage/common/infrastructure-encryption-enable), also known as double encryption.
 [Ingest data using the Azure Data Explorer Go SDK](go-ingest-data.md) | You can use the [Go SDK](https://github.com/Azure/azure-kusto-go) to ingest, control, and query data in Azure Data Explorer clusters. 
 [Business continuity and disaster recovery overview](business-continuity-overview.md) | Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a disruption. 
-[Connect to Event Grid](ingest-data-event-grid-overview.md) | Event Grid ingestion is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created or blob renamed notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
+[Connect to Event Grid](ingest-data-event-grid-overview.md) | Event Grid ingestion is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created or blob reNew article titled notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
 [Create business continuity and disaster recovery solutions with Azure Data Explorer](business-continuity-create-solution.md) | This article details how you can prepare for an Azure regional outage by replicating your Azure Data Explorer resources, management, and ingestion in different Azure regions.
 
 ### Updated articles
@@ -364,7 +364,7 @@ Name | Notes
 #### Management
 
 - [Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md) - keep
-  - Added notes to external table management article
+  - Added Description to external table management article
   - External tables: specify new command option .create-or-alter
 - [Create and alter external SQL tables](./kusto/management/external-sql-tables.md) - keep
   - External tables: specify new command option .create-or-alter
