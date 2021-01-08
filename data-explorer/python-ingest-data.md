@@ -24,7 +24,6 @@ In this article, you ingest data using the Azure Data Explorer Python library. A
 
 First, create a table and data mapping in a cluster. You then queue ingestion to the cluster and validate the results.
 
-This article is also available as an [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
 
 ## Prerequisites
 
