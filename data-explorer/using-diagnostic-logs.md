@@ -34,7 +34,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 > Ingestion logs aren't supported for streaming ingestion, direct ingestion to the engine, ingestion from query, or set-or-append commands.
 
 > [!NOTE]
-> Failed ingestion logs are only reported for the final state of an ingest operation, unlike the (Ingestion result)[using-metrics#ingestion-metrics] metric, which is emitted for transient failures that are retried internally.
+> Failed ingestion logs are only reported for the final state of an ingest operation, unlike the (Ingestion result)[using-metrics.md#ingestion-metrics] metric, which is emitted for transient failures that are retried internally.
 
 * **Successful ingestion operations**: These logs have information about successfully completed ingestion operations.
 * **Failed ingestion operations**: These logs have detailed information about failed ingestion operations including error details. 
@@ -77,7 +77,7 @@ Diagnostic logs are disabled by default. To enable diagnostic logs, do the follo
 
     1. Enter a **Diagnostic setting name**.
     1. Select one or more targets: a Log Analytics workspace, a storage account, or an Event Hub.
-    1. Select logs to be collected: `SucceededIngestion`, `FailedIngestion`, `Command`, or `Query`, `TableUsageStatistics`, or `TableDetails`.
+    1. Select logs to be collected: `SucceededIngestion`, `FailedIngestion`, `IngestionBatching`, `Command`, or `Query`, `TableUsageStatistics`, or `TableDetails`.
     1. Select [metrics](using-metrics.md#supported-azure-data-explorer-metrics) to be collected (optional).  
     1. Select **Save** to save the new diagnostic logs settings and metrics.
 
