@@ -14,7 +14,7 @@ ms.date: 10/30/2019
 
 Azure Data Explorer implements TDS-compliant endpoints for MS-SQL clients. Compatibility is on the protocol level. Any library or application that can connect to the SQL Azure database with Azure Active Directory (Azure AD) authentication, will work with the Azure Data Explorer server. Therefore, you can use the server domain name like it was the SQL Azure server.
 
-Azure Data Explorer doesn't support basic authentication. The only authentication methods supported is Azure Active Directory. For all clients listed below don't try to specify user name and password. This option will not work with Azure Data Explorer.
+Azure Data Explorer doesn't support basic authentication with username and password. You must use Azure Active Directory with all clients listed below. 
 
 Azure Data Explorer implements a subset of the T-SQL and a subset of the SQL server emulation. For more information, see [known issues](./sqlknownissues.md) for differences between the SQL Server's implementation of T-SQL and Azure Data Explorer's.
 
