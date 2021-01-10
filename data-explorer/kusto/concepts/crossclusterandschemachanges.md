@@ -26,4 +26,4 @@ Changes in the schema of the remote entity may result in unwanted effects. For e
 To solve this problem, cached schemas expire one hour after retrieval, so that any query executed more than one hour after the change, will work with the up-to-date schema.
 
 > [!IMPORTANT]
-> In case the clusters are in different tenants, and the queries fails with Unauthorized error (401), you probably should edit the trustedExternalTenants property (for more information, see [How to allow principals from another tenant to access your cluster](../../cross-tenant-query-and-commands.md)).
+> If the clusters are in different tenants, you may need to edit the `trustedExternalTenants` property. Non-trusted external tenants may get an **Unauthorized error (401)** failure. For more information, see [How to allow principals from another tenant to access your cluster](../../cross-tenant-query-and-commands.md).
