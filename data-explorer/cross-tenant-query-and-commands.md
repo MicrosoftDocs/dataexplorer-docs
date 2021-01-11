@@ -38,7 +38,6 @@ Update the cluster using the following operation:
 
 ```http
 PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorgtest/providers/Microsoft.Kusto/clusters/kustoclustertest?api-version=2020-09-18
-
 ```
 
 ### Request body specific tenants
