@@ -18,4 +18,5 @@ ms.custom: include file
 * Schema updates, such as creation and modification of tables and ingestion mappings, may take up to five minutes for the streaming ingestion service. For more information see [Streaming ingestion and schema changes](../kusto/management/data-ingestion/streaming-ingestion-schema-changes.md).
 * Enabling streaming ingestion on a cluster, even when data isn't ingested via streaming, uses part of the local SSD disk of the cluster machines for streaming ingestion data and reduces the storage available for hot cache.
 * [Extent tags](../kusto/management/extents-overview.md#extent-tagging) can't be set on the streaming ingestion data.
+* [Update policy](../kusto/management/updatepolicy.md). The update policy can reference only the newly-ingested data in the source table and not any other data or tables in the database.
 * If streaming ingestion is used on any of the tables of the database, this database cannot be used as leader for [follower databases](../follower.md) or as a [data provider](../data-share.md#data-provider---share-data) for Azure Data Share.

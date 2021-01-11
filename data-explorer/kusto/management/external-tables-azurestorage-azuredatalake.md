@@ -78,12 +78,12 @@ Partitions list is any combination of partition columns, specified using one of 
   *PartitionName* `:` `datetime` `=` (`startofyear` \| `startofmonth` \| `startofweek` \| `startofday`) `(` *ColumnName* `)`  
   *PartitionName* `:` `datetime` `=` `bin` `(` *ColumnName* `,` *TimeSpan* `)`
 
-To check partitioning definition correctness, use the property `sampleUris` when creating an external table.
+To check partitioning definition correctness, use the property `sampleUris` or `filesPreview` when creating an external table.
 
 <a name="path-format"></a>
 *PathFormat*
 
-External data URI file path format, which can be specified in addition to partitions. Path format is a sequence of partition elements and text separators:
+External data folder URI path format, which can be specified in addition to partitions. Path format is a sequence of partition elements and text separators:
 
 &nbsp;&nbsp;[*StringSeparator*] *Partition* [*StringSeparator*] [*Partition* [*StringSeparator*] ...]  
 
@@ -111,7 +111,10 @@ By default, datetime values are rendered using the following formats:
 
 If *PathFormat* is omitted from the external table definition, it's assumed that all partitions, in exactly the same order as they're defined, are separated using `/` separator. Partitions are rendered using their default string presentation.
 
-To check path format definition correctness, use the property `sampleUris` when creating an external table.
+To check path format definition correctness, use the property `sampleUris` or `filesPreview` when creating an external table.
+
+> [!NOTE]
+> *PathFormat* can only describe the storage "folder" URI path. To filter by file name, use `NamePrefix` and/or `FileExtension` external table properties.
 
 <a name="format"></a>
 *Format*
@@ -142,8 +145,10 @@ See [storage connection strings](../api/connection-strings/storage.md) for detai
 | `namePrefix`     | `string` | If set, indicates the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
 | `fileExtension`  | `string` | If set, indicates file extensions of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
 | `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
-| `sampleUris`     | `bool`   | If set, the command result provides several examples of external data files URI as they are expected by the external table definition (the samples are returned in the second result table). This option helps validate whether *[Partitions](#partitions)* and *[PathFormat](#path-format)* parameters are defined properly. |
+| `sampleUris`     | `bool`   | If set, the command result provides several examples of simulated external data files URI as they are expected by the external table definition. This option helps validate whether the *[Partitions](#partitions)* and *[PathFormat](#path-format)* parameters are defined properly. |
+| `filesPreview`   | `bool`   | If set, one of the command result tables contains a preview of [.show external table artifacts](#show-external-table-artifacts) command. Like `sampleUri`, the option helps validate the *[Partitions](#partitions)* and *[PathFormat](#path-format)* parameters of external table definition. |
 | `validateNotEmpty` | `bool`   | If set, the connection strings are validated for having content in them. The command will fail if the specified URI location doesn't exist, or if there are insufficient permissions to access it. |
+| `dryRun` | `bool` | If set, the external table definition is not persisted. This option is useful for validating the external table definition, especially in conjunction with the `filesPreview` or `sampleUris` parameter. |
 
 > [!TIP]
 > To learn more about the role `namePrefix` and `fileExtension` properties play in data file filtering during query, see [file filtering logic](#file-filtering) section.
@@ -321,14 +326,14 @@ For partitioned table, `Partition` column will contain extracted partition value
 
 ## .create external table mapping
 
-`.create` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* *MappingInJsonFormat*
+`.create` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
 
 Creates a new mapping. For more information, see [Data Mappings](./mappings.md#json-mapping).
 
 **Example** 
  
 ```kusto
-.create external table MyExternalTable json mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
+.create external table MyExternalTable mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
 ```
 
 **Example output**
@@ -339,14 +344,14 @@ Creates a new mapping. For more information, see [Data Mappings](./mappings.md#j
 
 ## .alter external table mapping
 
-`.alter` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* *MappingInJsonFormat*
+`.alter` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
 
 Alters an existing mapping. 
  
 **Example** 
  
 ```kusto
-.alter external table MyExternalTable json mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
+.alter external table MyExternalTable mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
 ```
 
 **Example output**
@@ -357,18 +362,18 @@ Alters an existing mapping.
 
 ## .show external table mappings
 
-`.show` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* 
+`.show` `external` `table` *ExternalTableName* `mapping` *MappingName* 
 
-`.show` `external` `table` *ExternalTableName* `json` `mappings`
+`.show` `external` `table` *ExternalTableName* `mappings`
 
 Show the mappings (all or the one specified by name).
  
 **Example** 
  
 ```kusto
-.show external table MyExternalTable json mapping "Mapping1" 
+.show external table MyExternalTable mapping "Mapping1" 
 
-.show external table MyExternalTable json mappings 
+.show external table MyExternalTable mappings 
 ```
 
 **Example output**
@@ -379,14 +384,14 @@ Show the mappings (all or the one specified by name).
 
 ## .drop external table mapping
 
-`.drop` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* 
+`.drop` `external` `table` *ExternalTableName* `mapping` *MappingName* 
 
 Drops the mapping from the database.
  
 **Example** 
  
 ```kusto
-.drop external table MyExternalTable json mapping "Mapping1" 
+.drop external table MyExternalTable mapping "Mapping1" 
 ```
 ## Next steps
 

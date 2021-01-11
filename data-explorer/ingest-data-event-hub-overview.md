@@ -77,10 +77,7 @@ eventHubClient.Close();
 
 System properties store properties that are set by the Event Hubs service, at the time the event is enqueued. The Azure Data Explorer Event Hub connection will embed the selected properties into the data landing in your table.
 
-> [!Note]
-> * System properties are supported for single-record events.
-> * System properties aren't supported on compressed data.
-> * For `csv` mapping, properties are added at the beginning of the record in the order listed in the table below. For `json` mapping, properties are added according to property names in the following table.
+[!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
 ### System properties
 

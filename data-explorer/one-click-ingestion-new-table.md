@@ -17,7 +17,7 @@ ms.date: 03/29/2020
 
 [One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.  
 
-This document describes using the intuitive one-click wizard in a specific use case to ingest **CSV** data from a **container** into a **new table**. You can use the same process with slight adaptations to cover a variety of different use cases.
+This document describes using the intuitive one-click wizard in a specific use case to ingest **CSV** data from a **container** into a **new table**. After ingestion, you can [set up an Event Grid ingestion pipeline](#create-continuous-ingestion-for-container) that that listens for new files in the source container and ingests qualifying data into your new table. You can use the same process with slight adaptations to cover a variety of different use cases.
 
 For an overview of one-click ingestion and a list of prerequisites, see [One-click ingestion](ingest-data-one-click.md).
 For information about ingesting data into an existing table in Azure Data Explorer, see [One-click ingestion to an existing table](one-click-ingestion-existing-table.md)
@@ -141,7 +141,7 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 
 ## Create continuous ingestion for container
 
-Continuous ingestion enables you to create an event grid that listens for new files in the source container. Any new file that meets the criteria of the pre-defined parameters (prefix, suffix, and so on) will be automatically ingested into the destination table. 
+Continuous ingestion enables you to create an Event Grid that listens for new files in the source container. Any new file that meets the criteria of the pre-defined parameters (prefix, suffix, and so on) will be automatically ingested into the destination table. 
 
 1. Select **Event Grid** in the **Continuous ingestion** tile to open the Azure portal. The data connection page opens with the event grid data connector opened and with source and target parameters already entered (source container, tables, and mappings).
     

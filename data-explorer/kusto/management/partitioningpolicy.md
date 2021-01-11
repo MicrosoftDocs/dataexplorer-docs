@@ -1,22 +1,38 @@
 ---
-title: Data partitioning policy - Azure Data Explorer
-description: This article describes the data partitioning policy in Azure Data Explorer, and how it can be used to improve query performance.
+title: Partitioning policy - Azure Data Explorer
+description: This article describes the partitioning policy in Azure Data Explorer, and how it can be used to improve query performance.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/10/2020
+ms.date: 12/28/2020
 ---
 # Partitioning policy
 
 The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table.
 
-The main purpose of the policy is to improve performance of queries that narrow the data set; For example, queries that filter on partitioned columns, use an aggregate, or join on a high cardinality string column. The policy may also result in better data compression.
+By default, extents are partitioned by their ingestion time. In the majority of cases there's no need to apply an additional partitioning policy.
+
+The main purpose of the partitioning policy is to improve performance of queries in [specific scenarios](#common-scenarios).
 
 > [!CAUTION]
 > There are no hard-coded limits set on the number of tables with the partitioning policy defined. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used. For more information, see [monitoring](#monitor-partitioning) and [capacity](#partition-capacity).
+
+## Common scenarios
+
+The following are common scenarios that can be addressed by setting a data partitioning policy:
+
+* **Low cardinality partition key**: For example, multi-tenant solutions, or a metrics table where most or all queries filter on the partition key column of type `string` such as the `TenantId` or the `MetricId`.
+  * Low cardinality is defined as less than 10M distinct values. In the examples above, the cardinality is likely to be much lower than that. 
+  * Set the [hash partition key](#hash-partition-key) to be the ID column, and set the `PartitionAssigmentMode` [property](#partition-properties) to `uniform`.
+* **High cardinality partition key**: For example, IoT information from many different sensors, or academic records of many different students. 
+  * High cardinality is defined as more than 10M distinct values where the distribution of values in the column is approximately even.
+  * In this case, set the [hash partition key](#hash-partition-key) to be the column grouped-by or joined-on, and set the `PartitionAssigmentMode` [property](#partition-properties) to `default`.
+* **Unordered Data ingestion**: Data ingested into a table might not be ordered and parititoned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span. 
+  * In this case, set the [Uniform range datetime partition key](#uniform-range-datetime-partition-key) to be the `datetime` column.
+  * If you need retention and caching policies to align with the datetime values in the column, instead of aligning with the time of ingestion, set the `OverrideCreationTime` property to `true`.
 
 ## Partition keys
 
@@ -30,9 +46,10 @@ The following kinds of partition keys are supported.
 ### Hash partition key
 
 > [!NOTE]
-> Apply a hash partition key on a `string`-type column in a table only in the following instances:
+> The data partitioning operation adds significant processing load. We recommend applying a hash partition key on a `string`-type column in a table only under the following conditions:
 > * If the majority of queries use equality filters (`==`, `in()`).
-> * The majority of queries aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher) such as an `application_ID`, a `tenant_ID`, or a `user_ID`.
+> * The majority of queries aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher) such as an `device_ID`, or `user_ID`.
+> * The usage pattern of the partitioned tables is in high concurrency query load, such as in monitoring or dashboarding applications. 
 
 * A hash-modulo function is used to partition the data.
 * Data in homogeneous (partitioned) extents is ordered by the hash partition key.
@@ -83,6 +100,9 @@ The partition function used is [bin_at()](../query/binatfunction.md) and isn't c
 | `Reference`            | A `datetime` scalar constant that indicates a fixed point in time, according to which datetime partitions are aligned.                                          | Start with `1970-01-01 00:00:00`. If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`.                                                                                                      |
 | `OverrideCreationTime` | A `bool` indicating whether or not the result extent's minimum and maximum creation times should be overridden by the range of the values in the partition key. | Defaults to `false`. Set to `true` if data isn't ingested in-order of time of arrival (e.g. a single source file may include datetime values that are very distant), and/or you want to force retention/caching based on the datetime values, and not the time of ingestion. |
 
+> [!IMPORTANT]
+> When `OverrideCreationTime` is set to `true`, make sure the `Lookback` property in the table's effective [Extents merge policy](mergepolicy.md) is aligned with the datetime values in your data.
+
 #### Uniform range datetime partition example
 
 The snippet shows a uniform datetime range partition key over a `datetime` typed column named `timestamp`.
@@ -122,8 +142,9 @@ The data partitioning policy has the following main properties:
   * The UTC datetime from which the policy is effective.
   * This property is optional. If it isn't specified, the policy will take effect on data ingested after the policy was applied.
   * Any non-homogeneous (non-partitioned) extents that may be dropped because of retention are ignored by the partitioning process. The extents are ignored because their creation time precedes 90% of the table's effective soft-delete period.
-    > [!NOTE]
-    > You can set a datetime value in the past and partition already-ingested data. However, this practice may significantly increase resources used in the partitioning process. 
+	> [!NOTE]
+	> You can set a datetime value in the past and partition already-ingested data. However, this practice may significantly increase resources used in the partitioning process.
+	> Consider doing so gradually, by setting the *EffectiveDateTime* to a previous `datetime` in steps of up to a few days each time you alter the policy.
 
 ### Data partitioning example
 

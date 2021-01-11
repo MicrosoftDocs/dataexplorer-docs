@@ -365,13 +365,15 @@
         href: dealing-with-duplicates.md
   - name: Monitor
     items:
-    - name: Use diagnostic logs to monitor ingestion, commands, and queries
-      href: using-diagnostic-logs.md
     - name: Monitor Azure Data Explorer with metrics
       displayName: health, performance
       href: using-metrics.md
+    - name: Use diagnostic logs to monitor ingestion, commands, queries, and tables
+      href: using-diagnostic-logs.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
+    - name: Use Azure Monitor insights
+      href: /azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
   - name: Share data
     items:
       - name: Use Azure Data Share
@@ -414,7 +416,7 @@
           href: /sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context
         - name: Use Kqlmagic 
           displayName: Azure Data Studio
-          href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext
+          href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
     - name: Azure Pipelines
       href: devops.md  
     - name: Sync Kusto
@@ -1366,8 +1368,6 @@
         href: ./kusto/concepts/runawayqueries.md
       - name: Overflows
         href: ./kusto/concepts/overflow.md
-      - name: Errors in native code
-        href: ./kusto/concepts/errorsinnativecode.md
   - name: Reference material for Kusto Query Language
     items:
     - name: RE2 syntax
@@ -1407,8 +1407,7 @@
       href: ./kusto/management/index.md
     - name: Schema
       items:
-      - name: Best practices for schema design
-        displayName: management
+      - name: Best practices for schema management
         href: ./kusto/management/management-best-practices.md
       - name: Databases
         href: ./kusto/management/databases.md
@@ -1447,6 +1446,8 @@
           href: ./kusto/management/show-ingestion-mapping-command.md
         - name: .create table
           href: ./kusto/management/create-table-command.md
+        - name: .create table based-on
+          href: ./kusto/management/create-table-based-on-command.md
         - name: .create tables
           href: ./kusto/management/create-tables-command.md
         - name: .create-merge table
@@ -1488,7 +1489,10 @@
         - name: .drop materialized-view
           href: ./kusto/management/materialized-views/materialized-view-drop.md
         - name: .disable | .enable materialized-view
-          href: ./kusto/management/materialized-views/materialized-view-enable-disable.md    
+          href: ./kusto/management/materialized-views/materialized-view-enable-disable.md
+      - name: Stored query results
+        displayName: .set stored query, .show stored query, .drop stored query
+        href: ./kusto/management/stored-query-results.md
       - name: Columns
         items:
         - name: Columns management
@@ -1672,8 +1676,10 @@
       href: ./kusto/management/query-results-cache-commands.md
       items:
       - name: Show cache
+        displayName: show database cache query results
         href: ./kusto/management/show-query-results-cache-command.md
       - name: Clear cache
+        displayName: clear query results cache
         href: ./kusto/management/clear-query-results-cache-command.md
     - name: System information
       href: ./kusto/management/systeminfo.md
@@ -1688,8 +1694,6 @@
         href: ./kusto/management/commands.md
       - name: Commands and queries
         href: ./kusto/management/commands-and-queries.md
-      - name: Ingestion failures
-        href: ./kusto/management/ingestionfailures.md
       - name: Operations
         href: ./kusto/management/operations.md
     - name: Access control
@@ -1729,6 +1733,12 @@
         href: ./kusto/management/cluster-follower.md
       - name: Data purge
         href: ./kusto/concepts/data-purge.md
+    - name: Errors and failures
+      items: 
+      - name: Ingestion error codes 
+        href: error-codes.md    
+      - name: Ingestion failures
+        href: ./kusto/management/ingestionfailures.md
   - name: API
     items:
     - name: API overview
@@ -1797,18 +1807,24 @@
         - name: Kusto.Ingest overview
           href: ./kusto/api/netfx/about-kusto-ingest.md
         - name: Permissions
+          displayName: Kusto.Ingest 
           href: ./kusto/api/netfx/kusto-ingest-client-permissions.md
         - name: Client reference
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-reference.md
         - name: Errors and exceptions
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-errors.md
         - name: Operation status
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-status.md
         - name: Kusto.Ingest best practices
           href: ./kusto/api/netfx/kusto-ingest-best-practices.md
         - name: Code samples
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-examples.md
         - name: HowTo Data Ingestion with REST API
+          displayName: Kusto.Ingest
           href: ./kusto/api/netfx/kusto-ingest-client-rest.md
     - name: Python SDK
       items:
@@ -1872,9 +1888,15 @@
     - name: series_fit_poly_fl()
       displayName: functions library
       href: kusto/functions-library/series-fit-poly-fl.md
+    - name: series_metric_fl()
+      displayName: functions library
+      href: kusto/functions-library/series-metric-fl.md
     - name: series_moving_avg_fl()
       displayName: functions library
       href: kusto/functions-library/series-moving-avg-fl.md
+    - name: series_rate_fl()
+      displayName: functions library
+      href: kusto/functions-library/series-rate-fl.md
     - name: series_rolling_fl()
       displayName: functions library
       href: kusto/functions-library/series-rolling-fl.md
