@@ -236,7 +236,7 @@ Customers can also enable a Just-In-Time / Just-Enough-Access by using Azure Act
 
 **Guidance**: Use PAWs (privileged access workstations) with multi-factor authentication (MFA) configured to log into and configure Azure resources.
 
-- [Learn about Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Learn about Privileged Access Workstations](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [How to enable MFA in Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
