@@ -16,7 +16,7 @@ ms.custom: subject-security-benchmark
 
 This security
 baseline applies guidance from the [Azure Security Benchmark version
-1.0](https://docs.microsoft.com/azure/security/benchmarks/overview-v1) to Azure Data Explorer. The Azure Security Benchmark
+1.0](/azure/security/benchmarks/overview-v1) to Azure Data Explorer. The Azure Security Benchmark
 provides recommendations on how you can secure your cloud solutions on Azure.
 The content is grouped by the **security controls** defined by the Azure
 Security Benchmark and the related guidance applicable to Azure Data Explorer. **Controls** not applicable to Azure Data Explorer have been excluded.
@@ -28,17 +28,17 @@ file](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Of
 
 ## Network Security
 
-*For more information, see the [Azure Security Benchmark: Network Security](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*For more information, see the [Azure Security Benchmark: Network Security](/azure/security/benchmarks/security-control-network-security).*
 
 ### 1.1: Protect Azure resources within virtual networks
 
 **Guidance**: Azure Data Explorer supports deploying a cluster into a subnet in your virtual network. This capability enables you to enforce network security group (NSG) rules on your Azure Data Explorer cluster traffic, connect your on-premises network to Azure Data Explorer cluster's subnet, and Secure your data connection sources (Event Hub and Event Grid) with service endpoints.
 
-- [How to create a cluster in your Virtual Network](https://docs.microsoft.com/azure/data-explorer/vnet-create-cluster-portal)
+- [How to create a cluster in your Virtual Network](./vnet-create-cluster-portal.md)
 
-- [How to deploy your Azure Data Explorer cluster into a Virtual Network](https://docs.microsoft.com/azure/data-explorer/vnet-deployment)
+- [How to deploy your Azure Data Explorer cluster into a Virtual Network](./vnet-deployment.md)
 
-- [How to troubleshoot your Virtual Network cluster creation, connectivity, and operation](https://docs.microsoft.com/azure/data-explorer/vnet-deploy-troubleshoot?tabs=windows)
+- [How to troubleshoot your Virtual Network cluster creation, connectivity, and operation](./vnet-deploy-troubleshoot.md?tabs=windows)
 
 **Azure Security Center monitoring**: Yes
 
@@ -48,9 +48,9 @@ file](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Of
 
 **Guidance**: Enable network security group (NSG) flow logs and send logs into a Storage Account for traffic audit.
 
-- [How to Enable NSG Flow Logs](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [How to Enable NSG Flow Logs](/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
-- [Understanding Network Security provided by Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Understanding Network Security provided by Azure Security Center](/azure/security-center/security-center-network-recommendations)
 
 **Azure Security Center monitoring**: Yes
 
@@ -60,9 +60,9 @@ file](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Of
 
 **Guidance**: Enable Azure DDoS Protection Standard on the virtual network protecting your Azure Data Explorer clusters for protection against DDoS attacks. Use Azure Security Center Integrated Threat Intelligence to deny communications with known malicious or unused Internet IP addresses.
 
-- [How to configure DDoS protection](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+- [How to configure DDoS protection](/azure/virtual-network/manage-ddos-protection)
 
-- [Understand Azure Security Center Integrated Threat Intelligence](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [Understand Azure Security Center Integrated Threat Intelligence](/azure/security-center/security-center-alerts-service-layer)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -72,7 +72,7 @@ file](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Of
 
 **Guidance**: Enable Flow Logs on the network security groups (NSG) being used to protect your Azure Data Explorer cluster, and send logs into a Storage Account for traffic audit.
 
-- [How to Enable NSG Flow Logs](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [How to Enable NSG Flow Logs](/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -82,9 +82,9 @@ file](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Of
 
 **Guidance**: Use Virtual Network Service Tags to define network access controls on Network Security Groups or Azure Firewalls associated with your Azure Data Explorer clusters. You can use service tags in place of specific IP addresses when creating security rules. By specifying the service tag name (e.g., ApiManagement) in the appropriate source or destination field of a rule, you can allow or deny the traffic for the corresponding service. Microsoft manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change.
 
-- [Understanding and using Service Tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [Understanding and using Service Tags](/azure/virtual-network/service-tags-overview)
 
-- [Service Tags configuration requirements for Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment)
+- [Service Tags configuration requirements for Azure Data Explorer](./vnet-deployment.md#dependencies-for-vnet-deployment)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -96,9 +96,9 @@ file](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Of
 
 Customer may also use Azure Blueprints to simplify large scale Azure deployments by packaging key environment artifacts, such as Azure Resource Manager templates, Azure RBAC controls, and Azure Policy assignments, in a single blueprint definition. Easily apply the blueprint to new subscriptions and environments, and fine-tune control and management through versioning.
 
-- [How to configure and manage Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [How to configure and manage Azure Policy](/azure/governance/policy/tutorials/create-and-manage)
 
-- [How to create an Azure Blueprint](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [How to create an Azure Blueprint](/azure/governance/blueprints/create-blueprint-portal)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -108,7 +108,7 @@ Customer may also use Azure Blueprints to simplify large scale Azure deployments
 
 **Guidance**: Use tags for network security groups (NSG) and other resources related to network security and traffic flow for your Azure Data Explorer clusters. For individual NSG rules, use the "Description" field to specify business need and/or duration (etc.) for any rules that allow traffic to/from a network.
 
-- [How to create and use tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [How to create and use tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -118,7 +118,7 @@ Customer may also use Azure Blueprints to simplify large scale Azure deployments
 
 **Guidance**: Use Azure Policy to validate (and/or remediate) configuration for network resources.
 
-- [How to configure and manage Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [How to configure and manage Azure Policy](/azure/governance/policy/tutorials/create-and-manage)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -126,15 +126,15 @@ Customer may also use Azure Blueprints to simplify large scale Azure deployments
 
 ## Logging and Monitoring
 
-*For more information, see the [Azure Security Benchmark: Logging and Monitoring](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*For more information, see the [Azure Security Benchmark: Logging and Monitoring](/azure/security/benchmarks/security-control-logging-monitoring).*
 
 ### 2.2: Configure central security log management
 
 **Guidance**: Azure Data Explorer uses diagnostic logs for insights on ingestion successes and failures. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion status.
 
-- [How to monitor Azure Data Explorer ingestion operations](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs)
+- [How to monitor Azure Data Explorer ingestion operations](./using-diagnostic-logs.md)
 
-- [How to ingest and query monitoring data in Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-no-code)
+- [How to ingest and query monitoring data in Azure Data Explorer](./ingest-data-no-code.md)
 
 **Azure Security Center monitoring**: Yes
 
@@ -144,11 +144,11 @@ Customer may also use Azure Blueprints to simplify large scale Azure deployments
 
 **Guidance**: Enable Diagnostic Settings for Azure Data Explorer for access and logging to service specific operations and logging. Azure Activity logs within Azure Monitor, which includes high-level logging about the resource are enabled by default.
 
-- [How to monitor Azure Data Explorer ingestion operations](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs)
+- [How to monitor Azure Data Explorer ingestion operations](./using-diagnostic-logs.md)
 
-- [How to collect platform logs and metrics with Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [How to collect platform logs and metrics with Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
 
-- [Overview of Azure platform logs](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview)
+- [Overview of Azure platform logs](/azure/azure-monitor/platform/platform-logs-overview)
 
 **Azure Security Center monitoring**: Yes
 
@@ -158,7 +158,7 @@ Customer may also use Azure Blueprints to simplify large scale Azure deployments
 
 **Guidance**: Within Azure Monitor, set your Log Analytics Workspace retention period according to your organization's compliance regulations. Use Azure Storage Accounts for long-term/archival storage.
 
-- [How to set log retention parameters for Log Analytics Workspaces](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [How to set log retention parameters for Log Analytics Workspaces](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -168,9 +168,9 @@ Customer may also use Azure Blueprints to simplify large scale Azure deployments
 
 **Guidance**: Analyze and monitor logs for anomalous behaviors and regularly review results. After enabling Diagnostic Settings for Azure Data Explorer, use Azure Monitor's Log Analytics Workspace to review logs and perform queries on log data.
 
-- [Understanding Log Analytics Workspace](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+- [Understanding Log Analytics Workspace](/azure/azure-monitor/log-query/get-started-portal)
 
-- [How to perform custom queries in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [How to perform custom queries in Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -178,13 +178,13 @@ Customer may also use Azure Blueprints to simplify large scale Azure deployments
 
 ## Identity and Access Control
 
-*For more information, see the [Azure Security Benchmark: Identity and Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*For more information, see the [Azure Security Benchmark: Identity and Access Control](/azure/security/benchmarks/security-control-identity-access-control).*
 
 ### 3.1: Maintain an inventory of administrative accounts
 
 **Guidance**: In Azure Data Explorer, security roles define which security principals (users and applications) have permissions to operate on a secured resource such as a database or a table, and what operations are permitted. You can leverage Kusto query to list principles in the admin role for the Azure Data Explorer clusters and databases.
 
-- [Security roles management in Azure Data Explorer using Kusto query](https://docs.microsoft.com/azure/kusto/management/security-roles)
+- [Security roles management in Azure Data Explorer using Kusto query](/azure/kusto/management/security-roles)
 
 **Azure Security Center monitoring**: Yes
 
@@ -204,7 +204,7 @@ Customer may also use Azure Blueprints to simplify large scale Azure deployments
 
 Customers can also enable a Just-In-Time / Just-Enough-Access by using Azure Active Directory (Azure AD) Privileged Identity Management Privileged Roles for Microsoft Services, and Azure ARM. 
 
-- [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)
+- [Privileged Identity Management](/azure/active-directory/privileged-identity-management/pim-configure)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -214,7 +214,7 @@ Customers can also enable a Just-In-Time / Just-Enough-Access by using Azure Act
 
 **Guidance**: Wherever possible, customer to use SSO with Azure Active Directory (Azure AD) rather than configuring individual stand-alone credentials per-service. Use Azure Security Center Identity and Access Management recommendations.
 
-- [Understanding SSO with Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Understanding SSO with Azure AD](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -224,9 +224,9 @@ Customers can also enable a Just-In-Time / Just-Enough-Access by using Azure Act
 
 **Guidance**: Enable Azure Active Directory (Azure AD) multi-factor authentication (MFA) and follow Azure Security Center Identity and Access Management recommendations.
 
-- [How to enable MFA in Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [How to enable MFA in Azure](/azure/active-directory/authentication/howto-mfa-getstarted)
 
-- [How to monitor identity and access within Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [How to monitor identity and access within Azure Security Center](/azure/security-center/security-center-identity-access)
 
 **Azure Security Center monitoring**: Yes
 
@@ -238,7 +238,7 @@ Customers can also enable a Just-In-Time / Just-Enough-Access by using Azure Act
 
 - [Learn about Privileged Access Workstations](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [How to enable MFA in Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [How to enable MFA in Azure](/azure/active-directory/authentication/howto-mfa-getstarted)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -248,9 +248,9 @@ Customers can also enable a Just-In-Time / Just-Enough-Access by using Azure Act
 
 **Guidance**: Use Azure Active Directory (Azure AD) security reports for generation of logs and alerts when suspicious or unsafe activity occurs in the environment. Use Azure Security Center to monitor identity and access activity
 
-- [How to identify Azure AD users flagged for risky activity](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [How to identify Azure AD users flagged for risky activity](/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
-- [How to monitor users identity and access activity in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [How to monitor users identity and access activity in Azure Security Center](/azure/security-center/security-center-identity-access)
 
 **Azure Security Center monitoring**: Yes
 
@@ -260,7 +260,7 @@ Customers can also enable a Just-In-Time / Just-Enough-Access by using Azure Act
 
 **Guidance**: Customer to use Conditional Access named locations to allow access from only specific logical groupings of IP address ranges or countries/regions.
 
-- [How to configure named locations in Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [How to configure named locations in Azure](/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -276,9 +276,9 @@ Customers can also enable a Just-In-Time / Just-Enough-Access by using Azure Act
 
 For more information, see the following references:
 
-- [Azure Data Explorer Access Control Overview](https://docs.microsoft.com/azure/kusto/management/access-control)
+- [Azure Data Explorer Access Control Overview](/azure/kusto/management/access-control)
 
-- [Authenticating with Azure Active Directory](https://docs.microsoft.com/azure/kusto/management/access-control/aad)
+- [Authenticating with Azure Active Directory](/azure/kusto/management/access-control/aad)
 
 **Azure Security Center monitoring**: Yes
 
@@ -288,11 +288,11 @@ For more information, see the following references:
 
 **Guidance**: Azure Active Directory (Azure AD) provides logs to help discover stale accounts. In addition, use Azure Identity Access Reviews to efficiently manage group memberships, access to enterprise applications, and role assignments. User's access can be reviewed on a regular basis to make sure only the right Users have continued access. 
 
-- [How-To Authenticate with Azure AD for Azure Data Explorer Access](https://docs.microsoft.com/azure/kusto/management/access-control/how-to-authenticate-with-aad)
+- [How-To Authenticate with Azure AD for Azure Data Explorer Access](/azure/kusto/management/access-control/how-to-authenticate-with-aad)
 
-- [Azure AD Reporting](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Azure AD Reporting](/azure/active-directory/reports-monitoring/)
 
-- [How to use Azure Identity Access Reviews](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [How to use Azure Identity Access Reviews](/azure/active-directory/governance/access-reviews-overview)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -304,7 +304,7 @@ For more information, see the following references:
 
  You can streamline this process by creating Diagnostic Settings for Azure Active Directory user accounts, sending the audit logs and sign-in logs to a Log Analytics Workspace. Customer to configure desired Alerts within Log Analytics Workspace.
 
-- [How to integrate Azure Activity Logs into Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [How to integrate Azure Activity Logs into Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -314,9 +314,9 @@ For more information, see the following references:
 
 **Guidance**: Use Azure Active Directory (Azure AD) Risk Detections and Identity Protection feature to configure automated responses to detected suspicious actions related to user identities. Additionally, you can ingest data into Azure Sentinel for further investigation.
 
-- [How to view Azure AD risky sign-ins](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [How to view Azure AD risky sign-ins](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
-- [How to configure and enable Identity Protection risk policies](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+- [How to configure and enable Identity Protection risk policies](/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -326,7 +326,7 @@ For more information, see the following references:
 
 **Guidance**: In support scenarios where Microsoft needs to access customer data, Customer Lockbox provides an interface for customers to review and approve or reject customer data access requests.
 
-- [Understanding Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+- [Understanding Customer Lockbox](/azure/security/fundamentals/customer-lockbox-overview)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -334,13 +334,13 @@ For more information, see the following references:
 
 ## Data Protection
 
-*For more information, see the [Azure Security Benchmark: Data Protection](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*For more information, see the [Azure Security Benchmark: Data Protection](/azure/security/benchmarks/security-control-data-protection).*
 
 ### 4.1: Maintain an inventory of sensitive Information
 
 **Guidance**: Use tags to assist in tracking Azure resources that store or process sensitive information.
 
-- [How to create and use tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [How to create and use tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -350,15 +350,15 @@ For more information, see the following references:
 
 **Guidance**: Implement separate subscriptions and/or management groups for development, test, and production. Azure Data Explorer clusters should be separated from other resources by virtual network/subnet, tagged appropriately, and secured within an network security group (NSG) or Azure Firewall. Azure Data Explorer clusters storing or processing sensitive data should be sufficiently isolated.
 
-- [How to create additional Azure subscriptions](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [How to create additional Azure subscriptions](/azure/billing/billing-create-subscription)
 
-- [How to create Management Groups](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [How to create Management Groups](/azure/governance/management-groups/create)
 
-- [How to create and use tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [How to create and use tags](/azure/azure-resource-manager/resource-group-using-tags)
 
-- [How to deploy your Azure Data Explorer cluster into a virtual network](https://docs.microsoft.com/azure/data-explorer/vnet-deployment)
+- [How to deploy your Azure Data Explorer cluster into a virtual network](./vnet-deployment.md)
 
-- [How to create an NSG with a Security Config](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [How to create an NSG with a Security Config](/azure/virtual-network/tutorial-filter-network-traffic)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -378,7 +378,7 @@ For more information, see the following references:
 
 For the underlying platform which is managed by Microsoft, Microsoft treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Microsoft has implemented and maintains a suite of robust data protection controls and capabilities.
 
-- [Understand customer data protection in Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Understand customer data protection in Azure](/azure/security/fundamentals/protection-customer-data)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -388,7 +388,7 @@ For the underlying platform which is managed by Microsoft, Microsoft treats all 
 
 **Guidance**: Azure Data Explorer enables you to control access to databases and tables, using an Azure role-based access control (RBAC) model. Under this model, principals (users, groups, and apps) are mapped to roles. Principals can access resources according to the roles they're assigned.
 
-- [List of roles and permissions and instructions on how to configure RBAC for Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)
+- [List of roles and permissions and instructions on how to configure RBAC for Azure Data Explorer](./manage-database-permissions.md)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -398,7 +398,7 @@ For the underlying platform which is managed by Microsoft, Microsoft treats all 
 
 **Guidance**: Azure Disk Encryption helps protect and safeguard your data to meet your organizational security and compliance commitments. It provides volume encryption for the OS and data disks of your cluster virtual machines. It also integrates with Azure Key Vault which allows us to control and manage the disk encryption keys and secrets, and ensure all data on the VM disks is encrypted at rest while in Azure Storage.
 
-- [How to enable encryption at rest for Azure Data Explorer clusters](https://docs.microsoft.com/azure/data-explorer/manage-cluster-security)
+- [How to enable encryption at rest for Azure Data Explorer clusters](./cluster-disk-encryption.md)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -408,9 +408,9 @@ For the underlying platform which is managed by Microsoft, Microsoft treats all 
 
 **Guidance**: Use Azure Monitor with the Azure Activity Log to create alerts for when resource-level changes take place on your Azure Data Explorer clusters.
 
-- [How to create alerts for Azure Activity Log events](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [How to create alerts for Azure Activity Log events](/azure/azure-monitor/platform/alerts-activity-log)
 
-- [How to create alerts for Azure Activity Log events](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [How to create alerts for Azure Activity Log events](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Azure Security Center monitoring**: Yes
 
@@ -418,13 +418,13 @@ For the underlying platform which is managed by Microsoft, Microsoft treats all 
 
 ## Vulnerability Management
 
-*For more information, see the [Azure Security Benchmark: Vulnerability Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*For more information, see the [Azure Security Benchmark: Vulnerability Management](/azure/security/benchmarks/security-control-vulnerability-management).*
 
 ### 5.5: Use a risk-rating process to prioritize the remediation of discovered vulnerabilities
 
 **Guidance**: Use the default risk ratings (Secure Score) provided by Azure Security Center.
 
-- [Understand Azure Security Center Secure Score](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
+- [Understand Azure Security Center Secure Score](/azure/security-center/security-center-secure-score)
 
 **Azure Security Center monitoring**: Yes
 
@@ -432,7 +432,7 @@ For the underlying platform which is managed by Microsoft, Microsoft treats all 
 
 ## Inventory and Asset Management
 
-*For more information, see the [Azure Security Benchmark: Inventory and Asset Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*For more information, see the [Azure Security Benchmark: Inventory and Asset Management](/azure/security/benchmarks/security-control-inventory-asset-management).*
 
 ### 6.1: Use automated asset discovery solution
 
@@ -440,11 +440,11 @@ For the underlying platform which is managed by Microsoft, Microsoft treats all 
 
 Although classic Azure resources may be discovered via Resource Graph, it is highly recommended to create and use Azure Resource Manager resources going forward.
 
-- [How to create queries with Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [How to create queries with Azure Resource Graph](/azure/governance/resource-graph/first-query-portal)
 
-- [How to view your Azure Subscriptions](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [How to view your Azure Subscriptions](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
 
-- [Understand Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Understand Azure RBAC](/azure/role-based-access-control/overview)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -454,7 +454,7 @@ Although classic Azure resources may be discovered via Resource Graph, it is hig
 
 **Guidance**: Apply tags to Azure resources giving metadata to logically organize them into a taxonomy.
 
-- [How to create and use tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [How to create and use tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -464,13 +464,13 @@ Although classic Azure resources may be discovered via Resource Graph, it is hig
 
 **Guidance**: You may use appropriate naming conventions, tagging, management groups, or separate subscriptions, where appropriate, to organize and track assets. You may use Azure Resource Graph to reconcile inventory on a regular basis and ensure unauthorized resources are deleted from the subscription in a timely manner. 
 
-- [How to create additional Azure subscriptions](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [How to create additional Azure subscriptions](/azure/billing/billing-create-subscription)
 
-- [How to create Management Groups](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [How to create Management Groups](/azure/governance/management-groups/create)
 
-- [How to create and use Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [How to create and use Tags](/azure/azure-resource-manager/resource-group-using-tags)
 
-- [How to create queries with Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [How to create queries with Azure Resource Graph](/azure/governance/resource-graph/first-query-portal)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -496,11 +496,11 @@ You will be able to monitor the policy generated events using the Activity logs 
 
 In addition, you may use the Azure Resource Graph to query/discover resources within the subscriptions.
 
-- [Create and manage policies to enforce compliance](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Create and manage policies to enforce compliance](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Quickstart: Run your first Resource Graph query using Azure Resource Graph Explorer](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Quickstart: Run your first Resource Graph query using Azure Resource Graph Explorer](/azure/governance/resource-graph/first-query-portal)
 
-- [Create, view, and manage activity log alerts by using Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Create, view, and manage activity log alerts by using Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -516,9 +516,9 @@ In addition, you may use the Azure Resource Graph to query/discover resources wi
 
 For more information, see the following references:
 
-- [Create and manage policies to enforce compliance](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Create and manage policies to enforce compliance](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Azure Policy Samples](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Policy Samples](/azure/governance/policy/samples/built-in-policies#general)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -528,7 +528,7 @@ For more information, see the following references:
 
 **Guidance**: Use the Azure Conditional Access to limit users' ability to interact with Azure Resource Manager by configuring "Block access" for the "Microsoft Azure Management" App. This will prevent the creation and changes to resources within your Azure subscriptions. 
 
-- [Manage access to Azure management with Conditional Access](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [Manage access to Azure management with Conditional Access](/azure/role-based-access-control/conditional-access-azure-management)
 
 **Azure Security Center monitoring**: Yes
 
@@ -536,7 +536,7 @@ For more information, see the following references:
 
 ## Secure Configuration
 
-*For more information, see the [Azure Security Benchmark: Secure Configuration](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*For more information, see the [Azure Security Benchmark: Secure Configuration](/azure/security/benchmarks/security-control-secure-configuration).*
 
 ### 7.1: Establish secure configurations for all Azure resources
 
@@ -546,13 +546,13 @@ Also, Azure Resource Manager has the ability to export the template in JavaScrip
 
 You can also use recommendations from Azure Security Center as a secure configuration baseline for your Azure resources.
 
-- [How to view available Azure Policy Aliases](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [How to view available Azure Policy Aliases](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
-- [Tutorial: Create and manage policies to enforce compliance](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Tutorial: Create and manage policies to enforce compliance](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Single and multi-resource export to a template in Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+- [Single and multi-resource export to a template in Azure portal](/azure/azure-resource-manager/templates/export-template-portal)
 
-- [Security recommendations - a reference guide](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [Security recommendations - a reference guide](/azure/security-center/recommendations-reference)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -562,13 +562,13 @@ You can also use recommendations from Azure Security Center as a secure configur
 
 **Guidance**: Use Azure policy [deny] and [deploy if not exist] to enforce secure settings across your Azure resources.  You may use solutions such as Change Tracking, Policy compliance dashboard or a custom solution to easily identify security changes in your environment.
 
-- [Understand Azure Policy effects](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Understand Azure Policy effects](/azure/governance/policy/concepts/effects)
 
-- [Create and manage policies to enforce compliance](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Create and manage policies to enforce compliance](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Track changes in your environment with the Change Tracking solution](https://docs.microsoft.com/azure/automation/change-tracking)
+- [Track changes in your environment with the Change Tracking solution](/azure/automation/change-tracking)
 
-- [Get compliance data of Azure resources](https://docs.microsoft.com/azure/governance/policy/how-to/get-compliance-data)
+- [Get compliance data of Azure resources](/azure/governance/policy/how-to/get-compliance-data)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -578,9 +578,9 @@ You can also use recommendations from Azure Security Center as a secure configur
 
 **Guidance**: Use Azure Repos to securely store and manage your code like custom Azure policies, Azure Resource Manager templates, Desired State Configuration scripts etc. To access the resources you manage in Azure DevOps, you can grant or deny permissions to specific users, built-in security groups, or groups defined in Azure Active Directory (Azure AD) if integrated with Azure DevOps, or Active Directory if integrated with TFS.
 
-- [How to store code in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [How to store code in Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
-- [About permissions and groups in Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+- [About permissions and groups in Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -590,9 +590,9 @@ You can also use recommendations from Azure Security Center as a secure configur
 
 **Guidance**: Define and implement standard security configurations for Azure resources using Azure Policy. Use Azure Policy aliases to create custom policies to audit or enforce the network configuration of your Azure resources. You may also make use of built-in policy definitions related to your specific resources.  Additionally, you may use Azure Automation to deploy configuration changes.
 
-- [How to configure and manage Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [How to configure and manage Azure Policy](/azure/governance/policy/tutorials/create-and-manage)
 
-- [How to use Aliases](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [How to use Aliases](/azure/governance/policy/concepts/definition-structure#aliases)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -602,7 +602,7 @@ You can also use recommendations from Azure Security Center as a secure configur
 
 **Guidance**: Use Azure Policy aliases to create custom policies to alert, audit, and enforce system configurations. Use Azure policy [audit], [deny], and [deploy if not exist] to automatically enforce configurations for your Azure resources.
 
-- [How to configure and manage Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [How to configure and manage Azure Policy](/azure/governance/policy/tutorials/create-and-manage)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -612,9 +612,9 @@ You can also use recommendations from Azure Security Center as a secure configur
 
 **Guidance**: Use Managed Identities to provide Azure services with an automatically managed identity in Azure Active Directory (Azure AD). Managed Identities allows you to authenticate to any service that supports Azure AD authentication, including Key Vault, without any credentials in your code.
 
-- [How to configure Managed Identities](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+- [How to configure Managed Identities](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
 
-- [Configure managed identities for your Azure Data Explorer cluster](https://docs.microsoft.com/azure/data-explorer/managed-identities)
+- [Configure managed identities for your Azure Data Explorer cluster](./managed-identities.md)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -632,7 +632,7 @@ You can also use recommendations from Azure Security Center as a secure configur
 
 ## Malware Defense
 
-*For more information, see the [Azure Security Benchmark: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*For more information, see the [Azure Security Benchmark: Malware Defense](/azure/security/benchmarks/security-control-malware-defense).*
 
 ### 8.2: Pre-scan files to be uploaded to non-compute Azure resources
 
@@ -646,15 +646,15 @@ Pre-scan any content being uploaded to non-compute Azure resources, such as Azur
 
 ## Data Recovery
 
-*For more information, see the [Azure Security Benchmark: Data Recovery](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*For more information, see the [Azure Security Benchmark: Data Recovery](/azure/security/benchmarks/security-control-data-recovery).*
 
 ### 9.1: Ensure regular automated back-ups
 
 **Guidance**: The data in your Microsoft Azure storage account used by your Azure Data Explorer cluster is always replicated to ensure durability and high availability. Azure Storage copies your data so that it is protected from planned and unplanned events, including transient hardware failures, network or power outages, and massive natural disasters. You can choose to replicate your data within the same data center, across zonal data centers within the same region, or across geographically separated regions.
 
-- [Understanding Azure Storage redundancy and Service-Level Agreements](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Understanding Azure Storage redundancy and Service-Level Agreements](/azure/storage/common/storage-redundancy)
 
-- [Export data to storage](https://docs.microsoft.com/azure/kusto/management/data-export/export-data-to-storage)
+- [Export data to storage](/azure/kusto/management/data-export/export-data-to-storage)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -664,13 +664,13 @@ Pre-scan any content being uploaded to non-compute Azure resources, such as Azur
 
 **Guidance**: Azure Data Explorer encrypts all data in a storage account at rest. By default, data is encrypted with Microsoft-managed keys. For additional control over encryption keys, you can supply customer-managed keys to use for data encryption. Customer-managed keys must be stored in an Azure Key Vault.
 
-- [Configure customer-managed-keys using the Azure portal ](https://docs.microsoft.com/azure/data-explorer/customer-managed-keys-portal)
+- [Configure customer-managed-keys using the Azure portal ](./customer-managed-keys-portal.md)
 
-- [Configure customer-managed-keys using C# ](https://docs.microsoft.com/azure/data-explorer/customer-managed-keys-csharp)
+- [Configure customer-managed-keys using C# ](./customer-managed-keys-csharp.md)
 
-- [Configure customer-managed-keys using the Azure Resource Manager template](https://docs.microsoft.com/azure/data-explorer/customer-managed-keys-resource-manager)
+- [Configure customer-managed-keys using the Azure Resource Manager template](./customer-managed-keys-resource-manager.md)
 
-- [How to backup Azure Key Vault certificates](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultcertificate?view=azps-4.8.0&amp;preserve-view=true)
+- [How to backup Azure Key Vault certificates](/powershell/module/az.keyvault/backup-azkeyvaultcertificate?amp;preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -680,11 +680,11 @@ Pre-scan any content being uploaded to non-compute Azure resources, such as Azur
 
 **Guidance**: Periodically test data restoration of your Azure Key Vault secrets.
 
-- [How to restore Azure Key Vault certificates](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultcertificate?view=azps-4.8.0&amp;preserve-view=true)
+- [How to restore Azure Key Vault certificates](/powershell/module/az.keyvault/restore-azkeyvaultcertificate?amp;preserve-view=true&view=azps-4.8.0)
 
-- [Configure customer-managed-keys using C# ](https://docs.microsoft.com/azure/data-explorer/customer-managed-keys-csharp)
+- [Configure customer-managed-keys using C# ](./customer-managed-keys-csharp.md)
 
-- [Configure customer-managed-keys using the Azure Resource Manager template](https://docs.microsoft.com/azure/data-explorer/customer-managed-keys-resource-manager)
+- [Configure customer-managed-keys using the Azure Resource Manager template](./customer-managed-keys-resource-manager.md)
 
 **Azure Security Center monitoring**: Not Applicable
 
@@ -694,11 +694,11 @@ Pre-scan any content being uploaded to non-compute Azure resources, such as Azur
 
 **Guidance**: Customer to enable Soft-Delete in Key Vault to protect keys against accidental or malicious deletion.  You can also enable purge protection so that if a vault or an object in the deleted state, it cannot be purged until the retention period has passed.  
 
-- [How to enable Soft-Delete and Purge protection in Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
+- [How to enable Soft-Delete and Purge protection in Key Vault](/azure/key-vault/key-vault-ovw-soft-delete)
 
-- [Configure customer-managed-keys using C# ](https://docs.microsoft.com/azure/data-explorer/customer-managed-keys-csharp)
+- [Configure customer-managed-keys using C# ](./customer-managed-keys-csharp.md)
 
-- [Configure customer-managed-keys using the Azure Resource Manager template](https://docs.microsoft.com/azure/data-explorer/customer-managed-keys-resource-manager)
+- [Configure customer-managed-keys using the Azure Resource Manager template](./customer-managed-keys-resource-manager.md)
 
 **Azure Security Center monitoring**: Yes
 
@@ -706,7 +706,7 @@ Pre-scan any content being uploaded to non-compute Azure resources, such as Azur
 
 ## Incident Response
 
-*For more information, see the [Azure Security Benchmark: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*For more information, see the [Azure Security Benchmark: Incident Response](/azure/security/benchmarks/security-control-incident-response).*
 
 ### 10.1: Create an incident response guide
 
@@ -733,9 +733,9 @@ Pre-scan any content being uploaded to non-compute Azure resources, such as Azur
 
 Additionally, clearly mark subscriptions (for ex. production, non-prod) using tags and create a naming system to clearly identify and categorize Azure resources, especially those processing sensitive data.  It is your responsibility to prioritize the remediation of alerts based on the criticality of the Azure resources and environment where the incident occurred.
 
-- [Security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+- [Security alerts in Azure Security Center](/azure/security-center/security-center-alerts-overview)
 
-- [Use tags to organize your Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Use tags to organize your Azure resources](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center monitoring**: Yes
 
@@ -757,7 +757,7 @@ Additionally, clearly mark subscriptions (for ex. production, non-prod) using ta
 **Guidance**: Security incident contact information will be used by Microsoft to contact you if the Microsoft Security Response Center (MSRC) discovers that your data has been accessed by an unlawful or unauthorized party. Review incidents after the fact to ensure that issues are resolved.
 	
 
-- [How to set the Azure Security Center Security Contact](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [How to set the Azure Security Center Security Contact](/azure/security-center/security-center-provide-security-contact-details)
 
 **Azure Security Center monitoring**: Yes
 
@@ -768,11 +768,11 @@ Additionally, clearly mark subscriptions (for ex. production, non-prod) using ta
 **Guidance**: Export your Azure Security Center alerts and recommendations using the Continuous Export feature to help identify risks to Azure resources. Continuous Export allows you to export alerts and recommendations either manually or in an ongoing, continuous fashion. You may use the Azure Security Center data connector to stream the alerts to Azure Sentinel.
 	
 
-- [	How to configure continuous export](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [	How to configure continuous export](/azure/security-center/continuous-export)
 
 	
 
-- [	How to stream alerts into Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [	How to stream alerts into Azure Sentinel](/azure/sentinel/connect-azure-security-center)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -783,7 +783,7 @@ Additionally, clearly mark subscriptions (for ex. production, non-prod) using ta
 **Guidance**: Use the Workflow Automation feature in Azure Security Center to automatically trigger responses via "Logic Apps" on security alerts and recommendations to protect your Azure resources.
 	
 
-- [	How to configure Workflow Automation and Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [	How to configure Workflow Automation and Logic Apps](/azure/security-center/workflow-automation)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -791,7 +791,7 @@ Additionally, clearly mark subscriptions (for ex. production, non-prod) using ta
 
 ## Penetration Tests and Red Team Exercises
 
-*For more information, see the [Azure Security Benchmark: Penetration Tests and Red Team Exercises](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*For more information, see the [Azure Security Benchmark: Penetration Tests and Red Team Exercises](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
 ### 11.1: Conduct regular penetration testing of your Azure resources and ensure remediation of all critical security findings
 
