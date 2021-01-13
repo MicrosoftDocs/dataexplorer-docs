@@ -39,7 +39,7 @@ Kusto builds a term index consisting of all terms that are *four characters or m
 > Operators with an `_cs` suffix are case sensitive.
 
 > [!NOTE]
-> Case-insensitive operators are supported at this point only for ASCII-text. For non-ASCII comparison - use [tolower()](tolowerfunction.md) function.
+> Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
 Operator        |Description                                                       |Case-Sensitive|Example (yields `true`)
 ----------------|------------------------------------------------------------------|--------------|-----------------------
