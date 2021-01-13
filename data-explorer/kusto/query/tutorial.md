@@ -412,7 +412,7 @@ We can see from the output that:
 
 * 5% of storms have a duration of less than 5 minutes.
 * 50% of storms lasted less than one hour and 25 minutes.
-* 5% of storms lasted at least two hours and 50 minutes.
+* 95% of storms lasted at least two hours and 50 minutes.
 
 To get a separate breakdown for each state, use the `state` column separately with both `summarize` operators:
 
