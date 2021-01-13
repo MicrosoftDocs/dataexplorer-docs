@@ -53,8 +53,8 @@ running query.
   as a `string` literal.
 
 * *ReasonPhrase*: If specified, a `string` literal that describes the reason for
-  cancelling the running query. This information is included in the query results
-  if it's successfully cancelled.
+  canceling the running query. This information is included in the query results
+  if it's successfully canceled.
 
 **Example**
 
