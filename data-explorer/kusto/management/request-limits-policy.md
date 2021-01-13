@@ -38,7 +38,7 @@ The following limits are configurable:
 
 * A limit that isn't defined, or is defined as `null`, is taken from the `default` workload group's request limits policy.
 * When altering the policy for the `default` workload group, a limit must be defined and have a non-`null` value.
-* For backwards compatibility: For export commands or ingest-from-query commands (such as `.set-or-append`, .`set-or-replace`, etc.) that are classified to
+* For backwards compatibility: For export commands or ingest-from-query commands (such as `.set-or-append` and `.set-or-replace`) that are classified to
   the `default` workload group, requests limits are disabled, and limits set in the policy don't apply.
   * When such commands are classified to a non-default workload group, the limits in the policy do apply.
 
