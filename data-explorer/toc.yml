@@ -86,7 +86,7 @@
       - name: One-click ingestion overview 
         href: ingest-data-one-click.md
       - name: CSV data from container to new table
-        displayName: ingest data, ingestion, one click
+        displayName: Event Grid, ingest data, ingestion, one click
         href: one-click-ingestion-new-table.md
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
