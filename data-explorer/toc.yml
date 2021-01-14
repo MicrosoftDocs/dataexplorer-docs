@@ -1579,6 +1579,8 @@
         href: ./kusto/management/cluster-follower.md
       - name: Data purge
         href: ./kusto/concepts/data-purge.md
+      - name: Clean Extent Containers
+        href: ./kusto/management/clean-extent-containers.md
   - name: Concepts
     items:
     - name: Getting started
