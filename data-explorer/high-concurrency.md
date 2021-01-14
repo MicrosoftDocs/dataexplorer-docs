@@ -11,11 +11,11 @@ ms.date: 01/11/2021
 
 # High query concurrency with Azure Data Explorer
 
-Highly concurrent applications are needed for scenarios that have a large user base, and the application handles many requests simultaneously with low latency and high throughput. 
+Highly concurrent applications are needed in scenarios with a large user base, where the application simultaneously handles many requests with low latency and high throughput. 
 
 Use cases include large-scale monitoring and alerting dashboards, for example other Microsoft products and services such as [Azure Monitor](https://azure.microsoft.com/en-au/services/monitor/), [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/), and [Playfab](https://playfab.com/). These services all use Azure Data Explorer for serving high concurrency workloads.
 
-Azure Data Explorer is a big data analytics platform that enables building applications with high query concurrency requirements over huge streams of telemetry and logs data. These applications require careful design of the backend architecture of compute resources and database schema, using advanced data partitioning, pre-aggregation and caching features, and optimizing platform configuration. This article discusses how to implement these considerations and features to achieve high concurrency in an optimal, cost-effective way. These features can be used alone, or in combination.
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. High concurrency applications in Azure Data Explorer require careful design of the backend architecture of compute resources and database schema, using advanced data partitioning, pre-aggregation and caching features, and optimizing platform configuration. This article discusses how to implement these considerations and features to achieve high concurrency in an optimal, cost-effective way. These features can be used alone, or in combination.
 
 > [!NOTE]
 > The actual number of queries that can run concurrently on a cluster depends on factors such as cluster resources, data volumes, query complexity, and use patterns.
