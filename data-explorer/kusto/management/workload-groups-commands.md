@@ -152,6 +152,24 @@ while keeping previously defined limits as-is:
 '}'
 ```
 
+Alter the request rate limit policies of the `default` workload group,
+while keeping its request limits policy as-is:
+
+```kusto
+.alter-merge workload_group default '{'
+'  "RequestRateLimitPolicies": ['
+'    {\n'
+'      "IsEnabled": true,'
+'      "Scope": "WorkloadGroup",'
+'      "LimitKind": "ConcurrentRequests",'
+'      "Properties": {'
+'        "MaxConcurrentRequests": 100'
+'      }'
+'    }'
+'  ]'
+'}'
+```
+
 ## drop workload_group
 
 Drops a workload group.
