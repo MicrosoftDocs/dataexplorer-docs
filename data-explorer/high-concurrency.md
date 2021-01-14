@@ -1,5 +1,5 @@
 ---
-title: Achieve high query concurrency with Azure Data Explorer
+title: High query concurrency with Azure Data Explorer
 description: In this article, you learn to optimize your Azure Data Explorer setup for high query concurrency.
 author: orspod
 ms.author: orspodek
@@ -9,9 +9,9 @@ ms.topic: conceptual
 ms.date: 01/11/2021
 ---
 
-# Achieve high query concurrency with Azure Data Explorer
+# High query concurrency with Azure Data Explorer
 
-Highly concurrent applications are typically required for scenarios dealing with a large user base, in which applications handle many requests simultaneously with low latency and high throughput. Some use cases include large-scale monitoring and alerting dashboards. These applications require careful design of the backend architecture of compute resources and database schema, using advanced data partitioning, pre-aggregation and caching features, and optimizing platform configuration.
+Highly concurrent applications are needed for scenarios dealing with a large user base, where applications handle many requests simultaneously with low latency and high throughput. Some use cases include large-scale monitoring and alerting dashboards. These applications require careful design of the backend architecture of compute resources and database schema, using advanced data partitioning, pre-aggregation and caching features, and optimizing platform configuration.
 
 Azure Data Explorer is a big data analytics platform that enables building applications with high query concurrency requirements over huge streams of telemetry and logs data. Azure Data Explorer provides advanced capabilities and performance to achieve high concurrency. Several other Microsoft products and services use Azure Data Explorer for serving high concurrency workloads, such as [Azure Monitor](https://azure.microsoft.com/en-au/services/monitor/), [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/), and [Playfab](https://playfab.com/).
 
