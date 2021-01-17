@@ -25,7 +25,7 @@ You must have cluster admin or database admin permissions to execute this comman
 ### Syntax
 
 `.clean` `databases` `extentcontainers`
-
+<br>
 
 `.clean` `databases`  `(`*DatabaseName1*`,`...`,`*DatabaseNameN*`)`  `extentcontainers`
 
@@ -51,7 +51,7 @@ You must have cluster admin or database admin permissions to execute this comman
 
 ## .show database extentcontainers clean operations
 
-This command monitors the [`.clean databases extentcontainers`](#clean-databases-extentcontainers) command on the database level.
+This command monitors the [`.clean databases extentcontainers`](#clean-databases-extentcontainers) operations on the database level.
 
 You must have cluster admin, cluster monitor, or database admin permissions to execute this command. For more information, see [Role-based Authorization in Kusto](access-control/role-based-authorization.md).
 
