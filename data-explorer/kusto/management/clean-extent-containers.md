@@ -11,12 +11,14 @@ ms.date: 01/17/2021
 ---
 # Clean extent containers commands
 
+This article describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands in Azure Data Explorer.
+
 ## `.clean databases extentcontainers`
 
-The `.clean databases extentcontainers` command deletes unused storage artifacts that are left from the maintenance and background operations on shards (extents). The command runs in the background on the underlying storage accounts of a cluster. This command can be called on a specific list of databases or on all the databases in the cluster. A separate operation is initialized for each database, and these operations can be monitored with the [`.show database extentcontainers clean operations`](#show-database-extentcontainers-clean-operations) command.
+The `.clean databases extentcontainers` command deletes unused storage artifacts that are left from the maintenance and background operations on [data shards (extents)](extents-overview.md). The command runs in the background on the underlying storage accounts of a cluster. This command can be called on a specific list of databases or on all the databases in the cluster. A separate operation is initialized for each database, and these operations can be monitored with the [`.show database extentcontainers clean operations`](#show-database-extentcontainers-clean-operations) command.
 
 > [!WARNING]
-> Once this command is run, the recoverability defined in the [retention policy](../management/retentionpolicy.md) is reset to the time when the command started. You can't change the database state to an earlier point in time. We advise only running this command based on Azure Advisor recommendations.
+> Once the `.clean databases extentcontainers` command is run, the recoverability defined in the [retention policy](../management/retentionpolicy.md) is reset to the time when the command started. You can't change the database state to an earlier point in time. We advise only running this command based on Azure Advisor recommendations.
 
 ### Syntax
 
@@ -29,7 +31,7 @@ The `.clean databases extentcontainers` command deletes unused storage artifacts
 ```kusto
 .clean databases extentcontainers
 
-.clean databases (DB1, Db2) extentcontainers
+.clean databases (DB1, DB2) extentcontainers
 ```
 
 ### Output
