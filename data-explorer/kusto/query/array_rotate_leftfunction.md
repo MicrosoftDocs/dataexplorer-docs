@@ -4,14 +4,14 @@ description: This article describes array_rotate_left() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
 ---
 # array_rotate_left()
 
-`array_rotate_left()` rotates values inside an array to the left.
+Rotates values inside a `dynamic` array to the left.
 
 ## Syntax
 

@@ -39,7 +39,7 @@ The Queued ingestion mode, defined by [IKustoQueuedIngestClient](kusto-ingest-cl
 
 The following diagram outlines the Queued ingestion client interaction with Kusto:
 
-:::image type="content" source="../images/about-kusto-ingest/queued-ingest.png" alt-text="queued-ingest":::
+:::image type="content" source="../images/about-kusto-ingest/queued-ingest.png" alt-text="Diagram showing how the Kusto.Ingest library sends queries to the Kusto service in queried ingestion mode.":::
  
 ### Direct ingestion
 
@@ -47,7 +47,7 @@ The Direct ingestion mode, defined by IKustoDirectIngestClient, forces direct in
 
 The following diagram outlines the Direct ingestion client interaction with Kusto:
 
-:::image type="content" source="../images/about-kusto-ingest/direct-ingest.png" alt-text="direct-ingest":::
+:::image type="content" source="../images/about-kusto-ingest/direct-ingest.png" alt-text="Diagram showing how the Kusto.Ingest library sends queries to the Kusto service in direct ingestion mode.":::
 
 > [!NOTE]
 > The Direct mode isn't recommended for production grade ingestion solutions.
@@ -65,7 +65,7 @@ The following diagram outlines the Direct ingestion client interaction with Kust
 
 ## Ingestion best practices
 
-[Ingestion best practices](kusto-ingest-best-practices.md) provides COGs and throughput POV on ingestion.
+[Ingestion best practices](kusto-ingest-best-practices.md) provides COGS (cost of goods sold) and throughput POV on ingestion.
 
 * **Thread safety -**
 Kusto Ingest Client implementations are thread-safe and intended to be reused. There's no need to create an instance of `KustoQueuedIngestClient` class for each or several ingest operations. A single instance of `KustoQueuedIngestClient` is required per target Kusto cluster per user process. Running multiple instances is counter-productive and may cause DoS on the Data Management cluster.

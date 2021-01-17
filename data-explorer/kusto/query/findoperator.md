@@ -4,7 +4,7 @@ description: This article describes find operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -34,6 +34,9 @@ find in (cluster('cluster_name').database('MyDB*'.*)) where Fruit == "apple"
 ```kusto
 find in (Table1, Table2, Table3) where Fruit=="apple"
 ```
+
+> [!NOTE]
+> `find` operator is substentially less efficient than column-specific text filtering. Whenever the columns are known, it is recommended to use the [where operator](whereoperator.md). Find will not function well when the workspace contains large number of tables and columns and the data volume that is being scanned is high and the time range of the query is high.
 
 ::: zone-end
 

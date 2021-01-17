@@ -26,7 +26,7 @@ ms.date: 10/07/2019
 * If you don't have Visual Studio 2019 installed, you can download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Make sure that you enable **Azure development** during the Visual Studio setup.
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [a cluster and database](create-cluster-database-csharp.md)
-* Create [table and column mapping](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
+* Create [table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster)
 * Set [database and table policies](database-table-policies-csharp.md) (optional)
 * Create a [storage account with an Event Grid subscription](ingest-data-event-grid.md).
 
@@ -129,7 +129,7 @@ var blobs = container.ListBlobs();
 
 ### Upload file using Azure Data Lake SDK
 
-When working with Data Lake Storage Gen2, you can use [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload files to storage. The following code snippet creates a new filesystem in your Azure Data Lake storage and uploads a local file with metadata to that filesystem.
+When working with Data Lake Storage Gen2, you can use [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload files to storage. The following code snippet uses Azure.Storage.Files.DataLake v12.5.0 to create a new filesystem in Azure Data Lake storage and to upload a local file with metadata to that filesystem.
 
 ```csharp
 var accountName = <storage_account_name>;
@@ -144,24 +144,27 @@ var sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey
 var dfsUri = "https://" + accountName + ".dfs.core.windows.net";
 var dataLakeServiceClient = new DataLakeServiceClient(new Uri(dfsUri), sharedKeyCredential);
 
-// Create the filesystem and an empty file
+// Create the filesystem
 var dataLakeFileSystemClient = dataLakeServiceClient.CreateFileSystem(fileSystemName).Value;
-var dataLakeFileClient = dataLakeFileSystemClient.CreateFile(fileName).Value;
 
-// Set metadata
+// Define metadata
 IDictionary<String, String> metadata = new Dictionary<string, string>();
 metadata.Add("rawSizeBytes", uncompressedSizeInBytes);
 metadata.Add("kustoIngestionMappingReference", mapping);
-dataLakeFileClient.SetMetadata(metadata);
 
-// Write to the file and close it
-var fileStream = File.OpenRead(localFileName);
-var fileSize = fileStream.Length;
-dataLakeFileClient.Append(fileStream, offset: 0);
-dataLakeFileClient.Flush(position: fileSize, close: true); // Note: This line triggers the event being processed by the data connection
+// Set uploading options
+var uploadOptions = new DataLakeFileUploadOptions
+{
+    Metadata = metadata,
+    Close = true // Note: The close option triggers the event being processed by the data connection
+};
+
+// Write to the file
+var dataLakeFileClient = dataLakeFileSystemClient.GetFileClient(fileName);
+dataLakeFileClient.Upload(localFileName, uploadOptions);
 ```
 
 > [!NOTE]
-> When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, the first call to [CreateFile](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createfile?view=azure-dotnet) triggers an Event Grid event with size 0, and this event is ignored by Azure Data Explorer. Another event is triggered when calling flush with a "close" parameter set to "true". This event indicates that this is the final update and the file stream has been closed. This event is processed by the Event Grid data connection. For more information about flushing see [Azure Data Lake flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush?view=azure-dotnet).
+> When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0, and this event is ignored by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed. This event is processed by the Event Grid data connection. In the code snippet above, the Upload method triggers flushing when the file upload is finished. Therefore, a *Close* parameter set to *true* must be defined. For more information about flushing, see [Azure Data Lake flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush?view=azure-dotnet).
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]

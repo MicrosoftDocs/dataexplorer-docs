@@ -70,7 +70,5 @@ Wide Shoes,50
 <!--
 You can generate inline ingests commands using the Kusto.Data client library. 
 Compression lets you embed new lines in quoted fields.
-
     Kusto.Data.Common.CslCommandGenerator.GenerateTableIngestPushCommand(tableName, compressed: true, csvData: csvStream);
-
 -->

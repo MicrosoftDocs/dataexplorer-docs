@@ -20,8 +20,8 @@ For more information, see the connector [Git repo](https://github.com/Azure/kafk
 
 ## Prerequisites
 
-* Create a [Microsoft Azure account](https://docs.microsoft.com/azure/).
-* Install [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Create a [Microsoft Azure account](/azure/).
+* Install [Azure CLI](/cli/azure/install-azure-cli).
 * Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
 * [Create an Azure Data Explorer cluster and database in the Azure portal](create-cluster-database-portal.md) using default cache and retention policies.
 
@@ -85,7 +85,7 @@ This service principal will be the identity leveraged by the connector to write 
 1. Create a batch ingestion policy on the table for configurable ingestion latency.
 
     > [!TIP]
-    > The [ingestion batching policy](kusto/management/batchingpolicy.md) is a performance optimizer and includes three parameters. The first parameter met triggers ingestion into the Azure Data Explorer table.
+    > The [ingestion batching policy](kusto/management/batchingpolicy.md) is a performance optimizer and includes three parameters. The first condition satisfied triggers ingestion into the Azure Data Explorer table.
 
     ```kusto
     .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
@@ -318,7 +318,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     | project StartTime, EndTime, Source, EventId
     ```
     
-1. Use the [`summarize`](https://docs.microsoft.com/azure/data-explorer/write-queries#summarize) operator:
+1. Use the [`summarize`](./write-queries.md#summarize) operator:
 
     ```kusto
     Storms
@@ -330,7 +330,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     
     :::image type="content" source="media/ingest-data-kafka/kusto-query.png" alt-text="Kafka query column chart results in Azure Data Explorer":::
 
-For more query examples and guidance, see [Write queries for Azure Data Explorer](write-queries.md) and [Kusto query language documentation](https://docs.microsoft.com/azure/data-explorer/kusto/query/).
+For more query examples and guidance, see [Write queries for Azure Data Explorer](write-queries.md) and [Kusto query language documentation](./kusto/query/index.md).
 
 ## Reset
 
@@ -344,7 +344,7 @@ To reset, do the following steps:
 
 ## Clean up resources
 
-To delete the Azure Data Explorer resources, use [az cluster delete](https://docs.microsoft.com/cli/azure/kusto/cluster#az-kusto-cluster-delete) or [az Kusto database delete](https://docs.microsoft.com/cli/azure/kusto/database#az-kusto-database-delete):
+To delete the Azure Data Explorer resources, use [az cluster delete](/cli/azure/kusto/cluster#az-kusto-cluster-delete) or [az Kusto database delete](/cli/azure/kusto/database#az-kusto-database-delete):
 
 ```azurecli-interactive
 az kusto cluster delete -n <cluster name> -g <resource group name>
@@ -354,7 +354,7 @@ az kusto database delete -n <database name> --cluster-name <cluster name> -g <re
 ## Next Steps
 
 * Learn more about [Big data architecture](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer).
-* Learn [how to ingest JSON formatted sample data into Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-json-formats?tabs=kusto-query-language).
+* Learn [how to ingest JSON formatted sample data into Azure Data Explorer](./ingest-json-formats.md?tabs=kusto-query-language).
 * For additional Kafka labs:
    * [Hands on lab for ingestion from Confluent Cloud Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/confluent-cloud/README.md)
    * [Hands on lab for ingestion from HDInsight Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/tree/master/kafka-integration/distributed-mode/hdinsight-kafka)

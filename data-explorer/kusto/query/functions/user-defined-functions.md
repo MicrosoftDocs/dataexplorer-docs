@@ -8,6 +8,7 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
+ms.localizationpriority: high
 ---
 # User-defined functions
 
@@ -38,6 +39,9 @@ The function's input arguments and output determine whether it is scalar or tabu
 Valid user-defined function names must follow the same [identifier naming rules](../schema-entities/entity-names.md#identifier-naming-rules) as other entities.
 
 The name must also be unique in its scope of definition.
+
+> [!NOTE]
+> If a stored function and a table both have the same name, the stored function overrides when querying the table/function name.
 
 ## Input arguments
 
@@ -277,7 +281,7 @@ union T*
 The following restrictions apply:
 
 * User-defined functions can't pass into [toscalar()](../toscalarfunction.md) invocation information that depends on the row-context in which the function is called.
-* User-defined functions that return a tabular expression can'tbe invoked with an argument that varies with the row context.
+* User-defined functions that return a tabular expression can't be invoked with an argument that varies with the row context.
 * A function taking at least one tabular input can't be invoked on a remote cluster.
 * A scalar function can't be invoked on a remote cluster.
 

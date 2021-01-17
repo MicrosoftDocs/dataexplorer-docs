@@ -6,14 +6,14 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 07/10/2019
+ms.date: 12/03/2020
 
 # Customer intent: As a data analyst, I want to understand connection options in Power BI so I can choose the option most appropriate to my scenario. I also want to visualize my data for additional insights
 ---
 
 # Visualize data using the Azure Data Explorer connector for Power BI
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Power BI is a business analytics solution that lets you visualize your data and share the results across your organization. Azure Data Explorer provides three options for connecting to data in Power BI: use the built-in connector, import a query from Azure Data Explorer, or use a SQL query. This article shows you how to use the built-in connector to get data and visualize it in a Power BI report. Using the Azure Data Explorer native connector for creating Power BI dashboards is straightforward. The Power BI connector supports [Import and Direct Query connectivity modes](https://docs.microsoft.com/power-bi/desktop-directquery-about). You can build dashboards using **Import** or **DirectQuery** mode depending on the scenario, scale, and performance requirements. 
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Power BI is a business analytics solution that lets you visualize your data and share the results across your organization. Azure Data Explorer provides three options for connecting to data in Power BI: use the built-in connector, import a query from Azure Data Explorer, or use a SQL query. This article shows you how to use the built-in connector to get data and visualize it in a Power BI report. Using the Azure Data Explorer native connector for creating Power BI dashboards is straightforward. The Power BI connector supports [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about). You can build dashboards using **Import** or **DirectQuery** mode depending on the scenario, scale, and performance requirements. 
 
 ## Prerequisites
 
@@ -39,32 +39,41 @@ First, you connect to the Azure Data Explorer help cluster, then you bring in a 
 
     ![Cluster, database, table options](media/power-bi-connector/cluster-database-table.png)
 
-    **Setting** | **Value** | **Field description**
-    |---|---|---|
+    | Setting | Value | Field description
+    |---|---|---
     | Cluster | *https://help.kusto.windows.net* | The URL for the help cluster. For other clusters, the URL is in the form *https://\<ClusterName\>.\<Region\>.kusto.windows.net*. |
     | Database | Leave blank | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. |
     | Table name | Leave blank | One of the tables in the database, or a query like <code>StormEvents \| take 1000</code>. We'll select this in a later step. |
-    | Advanced options | Leave blank | Options for your queries, such as result set size. |
+    | Advanced options | Leave blank | Options for your queries, such as result set size.
     | Data connectivity mode | *DirectQuery* | Determines whether Power BI imports the data or connects directly to the data source. You can use either option with this connector. |
-    | | | |
-    
+
     > [!NOTE]
     > In **Import** mode, data is moved to Power BI. In **DirectQuery** mode, data is queried directly from your Azure Data Explorer cluster.
     >
     > Use **Import** mode when:
+    >
     > * Your data set is small.
-    > * You don't need near real-time data. 
-    > * Your data is already aggregated or you perform [aggregation in Kusto](kusto/query/summarizeoperator.md#list-of-aggregation-functions)    
+    > * You don't need near real-time data.
+    > * Your data is already aggregated or you perform [aggregation in Kusto](kusto/query/summarizeoperator.md#list-of-aggregation-functions)
     >
     > Use **DirectQuery** mode when:
-    > * Your data set is very large. 
-    > * You need near real-time data.   
+    > * Your data set is very large.
+    > * You need near real-time data.
+
+    ### Advanced options
+
+    | Setting | Sample value | Field description
+    |---|---|---
+    | Limit query result record number| `300000` | The maximum number of records to return in the result |
+    | Limit query result data size | `4194304` | The maximum data size in bytes to return in the result |
+    | Disable result set truncation | `true` | Enable/disable result truncation by using the notruncation request option |
+    | Additional set statements | `set query_datascope=hotcache` | Sets query options for the duration of the query. Query options control how a query executes and returns results. |
 
 1. If you don't already have a connection to the help cluster, sign in. Sign in with an organizational account, then select **Connect**.
 
     ![Sign in](media/power-bi-connector/sign-in.png)
 
-1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents** then **Edit**.
+1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents** then **Transform Data**.
 
     ![Select table](media/power-bi-connector/select-table.png)
 

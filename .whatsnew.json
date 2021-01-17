@@ -7,9 +7,6 @@
     "relativeLinkPrefix": "/azure/data-explorer/"
   },
   "inclusionCriteria": {
-    "labels": [
-      "-label:do-not-merge"
-    ],
     "minAdditionsToFile": 1
   },
   "areas": [

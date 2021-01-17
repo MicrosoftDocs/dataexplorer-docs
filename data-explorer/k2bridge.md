@@ -35,7 +35,7 @@ Before you can visualize data from Azure Data Explorer in Kibana, have the follo
 
 * [Helm v3](https://github.com/helm/helm#install), which is the Kubernetes package manager.
 
-* Azure Kubernetes Service (AKS) cluster or any other Kubernetes cluster. Versions 1.14 to 1.16 have been tested and verified. If you need an AKS cluster, see how to deploy an AKS cluster [using the Azure CLI](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough) or [using the Azure portal](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal).
+* Azure Kubernetes Service (AKS) cluster or any other Kubernetes cluster. Versions 1.14 to 1.16 have been tested and verified. If you need an AKS cluster, see how to deploy an AKS cluster [using the Azure CLI](/azure/aks/kubernetes-walkthrough) or [using the Azure portal](/azure/aks/kubernetes-walkthrough-portal).
 
 * An [Azure Data Explorer cluster](create-cluster-database-portal.md), including the cluster's URL and the database name.
 
@@ -43,7 +43,7 @@ Before you can visualize data from Azure Data Explorer in Kibana, have the follo
 
     We recommend a service principal with viewer permission and discourage you from using higher-level permissions. [Set the cluster's view permissions for the Azure AD service principal](manage-database-permissions.md#manage-permissions-in-the-azure-portal).
 
-    For more information about the Azure AD service principal, see [Create an Azure AD service principal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
+    For more information about the Azure AD service principal, see [Create an Azure AD service principal](/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
 
 ## Run K2Bridge on Azure Kubernetes Service (AKS)
 
@@ -82,7 +82,7 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         ADX_TENANT_ID=[SERVICE_PRINCIPAL_TENANT_ID]
         ```
 
-    1. Optionally, enable Application Insights telemetry. If you're using Application Insights for the first time, [create an Application Insights resource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource). [Copy the instrumentation key](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) to a variable.
+    1. Optionally, enable Application Insights telemetry. If you're using Application Insights for the first time, [create an Application Insights resource](/azure/azure-monitor/app/create-new-resource). [Copy the instrumentation key](/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) to a variable.
 
         ```bash
         APPLICATION_INSIGHTS_KEY=[INSTRUMENTATION_KEY]

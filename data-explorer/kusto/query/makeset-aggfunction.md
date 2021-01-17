@@ -4,7 +4,7 @@ description: This article describes make_set() (aggregation function) in Azure D
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
@@ -25,7 +25,7 @@ Returns a `dynamic` (JSON) array of the set of distinct values that *Expr* takes
 * *MaxSize* is an optional integer limit on the maximum number of elements returned (default is *1048576*). MaxSize value cannot exceed 1048576.
 
 > [!NOTE]
-> A legacy and obsolete variant of this function: `makeset()` has a default limit of *MaxSize* = 128.
+> `makeset()` is a legacy and obsolete version of the function `make_set`. The legacy version has a default limit of *MaxSize* = 128.
 
 ## Returns
 

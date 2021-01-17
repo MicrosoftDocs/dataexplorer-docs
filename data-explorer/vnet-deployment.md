@@ -62,7 +62,7 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 ## Private Endpoints
 
 [Private Endpoints](/azure/private-link/private-endpoint-overview) allow private access to Azure resources (such as Storage/Event Hub/Data Lake Gen 2), and use private IP from your Virtual Network, effectively bringing the resource into your VNet.
-Create a [private endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections, such as Event Hub and Storage, and external tables such as Storage, Data Lake Gen 2, and SQL Database from your VNet to access the underlying resources privately.
+Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections, such as Event Hub and Storage, and external tables such as Storage, Data Lake Gen 2, and SQL Database from your VNet to access the underlying resources privately.
 
  > [!NOTE]
  > Setting up Private Endpoint requires [configuring DNS](/azure/private-link/private-endpoint-dns), We support [Azure Private DNS zone](/azure/dns/private-dns-privatednszone) setup only. Custom DNS server isn't supported. 
@@ -156,7 +156,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | Australia Southeast | 191.239.160.47 |
 | Brazil South | 23.98.145.105 |
 | Canada Central | 168.61.212.201 |
-| Canada East | 168.61.212.201 |
+| Canada East | 168.61.212.201, 23.101.115.123 |
 | Central India | 23.99.5.162 |
 | Central US | 168.61.212.201, 23.101.115.123 |
 | Central US EUAP | 168.61.212.201, 23.101.115.123 |
@@ -186,7 +186,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | USGov Arizona | 52.244.48.35 |
 | USGov Texas | 52.238.116.34 |
 | USGov Virginia | 23.97.0.26 |
-| West Central US | 168.61.212.201 |
+| West Central US | 168.61.212.201, 23.101.115.123 |
 | West Europe | 23.97.212.5, 213.199.136.176 |
 | West India | 23.99.5.162 |
 | West US | 23.99.5.162, 13.88.13.50 |

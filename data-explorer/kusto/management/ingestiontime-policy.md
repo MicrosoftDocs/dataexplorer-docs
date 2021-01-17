@@ -1,6 +1,6 @@
 ---
 title: Kusto IngestionTime policy management - Azure Data Explorer
-description: This article describes IngestionTime policy in Azure Data Explorer.
+description: Become familiar with IngestionTime policy commands in Azure Data Explorer. Learn how to access ingestion times, and see how to turn this policy on and off.
 services: data-explorer
 author: orspod
 ms.author: orspodek

@@ -4,14 +4,14 @@ description: This article describes array_rotate_right() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
 ---
 # array_rotate_right()
 
-`array_rotate_right()` rotates values inside an array to the right.
+Rotates values inside a `dynamic` array to the right.
 
 ## Syntax
 

@@ -4,10 +4,11 @@ description: This article describes the where operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
+ms.localizationpriority: high
 ---
 # where operator
 
@@ -53,7 +54,7 @@ To get the fastest performance:
 
 For more information, see the summary of [available String operators](./datatypes-string-operators.md) and the summary of [available Numerical operators](./numoperators.md).
 
-## Example
+## Example: Simple comparisons first
 
 ```kusto
 Traces
@@ -67,7 +68,7 @@ come from a source called `MyCluster`, and have two columns of the same value.
 
 Notice that we put the comparison between two columns last, as it can't use the index and forces a scan.
 
-## Example
+## Example: Columns contain string
 
 ```kusto
 Traces | where * has "Kusto"

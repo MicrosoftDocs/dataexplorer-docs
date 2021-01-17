@@ -35,7 +35,7 @@ For more information, see [Azure Data Explorer Power Automate connector usage ex
 You can authenticate with user credentials, or with an Azure Active Directory (Azure AD) application.
 
 > [!Note]
-> Make sure your application is an [Azure AD application](kusto/management/access-control/how-to-provision-aad-app.md), and is authorized to run queries on your cluster.
+> Make sure your application is an [Azure AD application](./provision-azure-ad-app.md), and is authorized to run queries on your cluster.
 
 1. In **Run control command and visualize results**, select the three dots at the top right of the flow connector.
 
@@ -182,7 +182,7 @@ To see why a run failed, select the run start time. The flow appears, and the st
 
 ## Timeout exceptions
 
-Your flow can fail and return a "RequestTimeout" exception if it runs for more than seven minutes.
+Your flow can fail and return a "RequestTimeout" exception if it runs for more than 90 seconds.
     
 ![Screenshot of the flow request timeout exception error](./media/flow/flow-requesttimeout.png)
 
@@ -192,7 +192,7 @@ The same query might run successfully in Azure Data Explorer, where the time isn
 
 ## Limitations
 
-* Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and a time of seven minutes to run.
+* Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and a time of 90 seconds to run.
 * The connector doesn't support the [fork](kusto/query/forkoperator.md) and [facet](kusto/query/facetoperator.md) operators.
 * Flow works best on Microsoft Edge and Google Chrome.
 

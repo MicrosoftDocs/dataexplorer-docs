@@ -18,12 +18,12 @@ ms.date: 06/03/2019
 > * [Python](python-ingest-data.md)
 > * [Node](node-ingest-data.md)
 > * [Go](go-ingest-data.md)
+> * [Java](java-ingest-data.md)
 
 In this article, you ingest data using the Azure Data Explorer Python library. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides two client libraries for Python: an [ingest library](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) and [a data library](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). These libraries enable you to ingest, or load, data into a cluster and query data from your code.
 
 First, create a table and data mapping in a cluster. You then queue ingestion to the cluster and validate the results.
 
-This article is also available as an [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
 
 ## Prerequisites
 
@@ -52,7 +52,7 @@ from azure.kusto.data.exceptions import KustoServiceError
 from azure.kusto.data.helpers import dataframe_from_result_table
 ```
 
-To authenticate an application, Azure Data Explorer uses your AAD tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
+To authenticate an application, Azure Data Explorer uses your Azure Active Directory tenant ID. To find your tenant ID, use the following URL, replacing your domain for *YourDomain*.
 
 ```http
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
@@ -73,7 +73,7 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 
-Now construct the connection string. This example uses device authentication to access the cluster. You can also use [AAD application certificate](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [AAD application key](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), and [AAD user and password](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
+Now construct the connection string. This example uses device authentication to access the cluster. You can also use [Azure Active Directory application certificate](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [Azure Active Directory application key](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), and [Azure Active Directory  user and password](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
 
 You create the destination table and mapping in a later step.
 
@@ -107,7 +107,7 @@ BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + \
 
 ## Create a table on your cluster
 
-Create a table that matches the schema of the data in the StormEvents.csv file. When this code runs, it returns a message like the following: *To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code F3W4VWZDM to authenticate*. Follow the steps to sign in, then return to run the next code block. Subsequent code blocks that make a connection require you to sign in again.
+Create a table that matches the schema of the data in the StormEvents.csv file. When this code runs, it returns a message like the following message: *To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code F3W4VWZDM to authenticate*. Follow the steps to sign in, then return to run the next code block. Subsequent code blocks that make a connection require you to sign in again.
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB_DATA)
@@ -150,7 +150,7 @@ print('Done queuing up ingestion with Azure Data Explorer')
 
 ## Query data that was ingested into the table
 
-Wait for five to ten minutes for the queued ingestion to schedule the ingest and load the data into Azure Data Explorer. Then run the following code to get the count of records in the StormEvents table.
+Wait for five to 10 minutes for the queued ingestion to schedule the ingest and load the data into Azure Data Explorer. Then run the following code to get the count of records in the StormEvents table.
 
 ```python
 QUERY = "StormEvents | count"

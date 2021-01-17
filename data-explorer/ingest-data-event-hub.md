@@ -7,6 +7,7 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/13/2020
+ms.localizationpriority: high
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an event hub, so I can analyze streaming data.
 ---
@@ -15,6 +16,7 @@ ms.date: 08/13/2020
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
+> * [One-click](one-click-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
@@ -123,7 +125,7 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
     | Event Hub namespace | A unique namespace name | The name you chose earlier that identifies your namespace. |
     | Event Hub | *test-hub* | The event Hub you created. |
     | Consumer group | *test-group* | The consumer group defined in the Event Hub you created. |
-    | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
+    | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. For more information about system properties limitations, see [Event system properties mapping](#event-system-properties-mapping). |
     | Compression | *None* | The compression type of the Event Hub messages payload. Supported compression types: *None, GZip*.|
     
 #### Target table
@@ -149,12 +151,9 @@ For this article, you use static routing, where you specify the table name, data
 
 ### Event system properties mapping
 
-> [!Note]
-> * System properties are supported for single-record events.
-> * For `csv` mapping, properties are added at the beginning of the record. For `json` mapping, properties are added according to the name that appears in the drop-down list.
+[!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-event-hub-overview.md#system-properties) in the table schema and mapping.
-
 
 ## Copy the connection string
 
@@ -212,7 +211,7 @@ With the app generating data, you can now see the flow of that data from the eve
     ![Message result set](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes or 500 MB of data, by default, so you may experience a latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options. 
+    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of 1G, or 1000 blobs. Therefore, you may experience a latency. For more information see [batching policy](kusto/management/batchingpolicy.md). 
     > * Event Hub ingestion includes Event Hub response time of 10 seconds or 1 MB. 
     > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](kusto/management/streamingingestionpolicy.md). 
 

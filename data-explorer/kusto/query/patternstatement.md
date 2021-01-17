@@ -4,7 +4,7 @@ description: This article describes pattern statement in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -49,7 +49,7 @@ This query will generate an error from Kusto, indicating that the next
 pattern invocations can't be resolved: `app("ApplicationX")["StartEvents"]`
 and `app("ApplicationX")["StopEvents"]`.
 
-## Syntax
+## Syntax of pattern declaration
 
 `declare` `pattern` *PatternName*
 
@@ -73,7 +73,7 @@ app("ApplicationX").StartEvents
 
 The expression that is provided for each pattern that is matched, is either a table name or a reference to a [let statement](letstatement.md).
 
-## Syntax
+## Syntax of pattern definition
 
 `declare` `pattern` *PatternName* = `(`*ArgName* `:` *ArgType* [`,` ... ]`)` [`[` *PathName* `:` *PathArgType* `]`]
 `{`
