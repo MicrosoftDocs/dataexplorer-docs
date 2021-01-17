@@ -1735,7 +1735,7 @@
         href: ./kusto/management/cluster-follower.md
       - name: Data purge
         href: ./kusto/concepts/data-purge.md
-      - name: Clean Extent Containers
+      - name: Clean extent containers commands
         href: ./kusto/management/clean-extent-containers.md
     - name: Errors and failures
       items: 
