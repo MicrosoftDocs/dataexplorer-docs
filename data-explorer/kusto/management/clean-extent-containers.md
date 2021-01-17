@@ -57,7 +57,9 @@ You must have cluster admin, cluster monitor, or database admin permissions to e
 
 ### Syntax
 
-`.show` `database` *DatabaseName1* `extentcontainers` `clean` `operations` 
+`.show` `database` *DatabaseName1* `extentcontainers` `clean` `operations`
+<br>
+ 
 `.show` `database` *DatabaseName1* `extentcontainers` `clean` `operations` *operation_id*
 
 ### Example
