@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ---
 
@@ -49,11 +49,11 @@ Azure Data Explorer has the following roles:
 
 1. Look up the principal, select it, then **Select**.
 
-    ![Manage permissions in the Azure portal](media/manage-database-permissions/new-principals.png)
+    :::image type="content" source="media/manage-database-permissions/new-principals.png" alt-text="Screenshot of the Azure portal New Principals page. A principal name and image are selected and highlighted. The Select button is also highlighted." border="false":::
 
 1. Select **Save**.
 
-    ![Manage permissions in the Azure portal](media/manage-database-permissions/save-permission.png)
+    :::image type="content" source="media/manage-database-permissions/save-permission.png" alt-text="Screenshot of the Azure portal Add Database Permissions page. The Save button is highlighted." border="false":::
 
 ## Manage permissions with management commands
 

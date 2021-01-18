@@ -4,7 +4,7 @@ description: This article describes avgif() (aggregation function) in Azure Data
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -15,20 +15,20 @@ Calculates the [average](avg-aggfunction.md) of *Expr* across the group for whic
 
 * Can only be used in context of aggregation inside [summarize](summarizeoperator.md)
 
-**Syntax**
+## Syntax
 
 summarize `avgif(`*Expr*`, `*Predicate*`)`
 
-**Arguments**
+## Arguments
 
 * *Expr*: Expression that will be used for aggregation calculation. Records with `null` values are ignored and not included in the calculation.
 * *Predicate*:  predicate that if true, the *Expr* calculated value will be added to the average.
 
-**Returns**
+## Returns
 
 The average value of *Expr* across the group where *Predicate* evaluates to `true`.
  
-**Examples**
+## Examples
 
 ```kusto
 range x from 1 to 100 step 1

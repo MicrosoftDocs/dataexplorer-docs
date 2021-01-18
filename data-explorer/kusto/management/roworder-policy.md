@@ -1,5 +1,5 @@
 ---
-title: RowOrder policy - Azure Data Explorer | Microsoft Docs
+title: RowOrder policy - Azure Data Explorer
 description: This article describes RowOrder policy in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
 ---
-# RowOrder policy
+# roworder policy command
 
 This article describes control commands used for creating and altering [row order policy](../management/roworderpolicy.md).
 
@@ -37,10 +37,10 @@ This article describes control commands used for creating and altering [row orde
 .alter-merge table <table_name> policy roworder (<row_order_policy>)
 ```
 
-**Examples**
+**Examples** 
 
-The following example sets the row order policy to be on the `TenantId` column (ascending) as
-a primary key, and on the `Timestamp` column (ascending) as the secondary key; it then queries the policy:
+The following example sets the row order policy on the `TenantId` column (ascending) as a primary key, 
+and on the `Timestamp` column (ascending) as the secondary key. The policy is then queried.
 
 ```kusto
 .alter table events policy roworder (TenantId asc, Timestamp desc)
@@ -52,4 +52,4 @@ a primary key, and on the `Timestamp` column (ascending) as the secondary key; i
 
 |TableName|RowOrderPolicy| 
 |---|---|
-|events|(TenantId asc, Timestamp desc)| 
+|events|(TenantId asc, Timestamp desc)|

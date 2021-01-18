@@ -1,11 +1,11 @@
 ---
 title: Connect to Azure Data Explorer from Azure Databricks
 description: This topic shows you how to use Azure Databricks to access data from Azure Data Explorer.
-author: manojraheja
-ms.author: maraheja
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: maraheja
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2020
 
 # Customer intent: I want to use Azure Databricks to access data from Azure Data Explorer.
@@ -13,7 +13,7 @@ ms.date: 05/21/2020
 
 # Connect to Azure Data Explorer from Azure Databricks
 
-[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) is an Apache Spark-based analytics platform that's optimized for the Microsoft Azure platform. This article shows you how to use Azure Databricks to access data from Azure Data Explorer. There are several ways to authenticate with Azure Data Explorer, including a device login and an Azure Active Directory (Azure AD) app.
+[Azure Databricks](/azure/azure-databricks/what-is-azure-databricks) is an Apache Spark-based analytics platform that's optimized for the Microsoft Azure platform. This article shows you how to use Azure Databricks to access data from Azure Data Explorer. There are several ways to authenticate with Azure Data Explorer, including a device login and an Azure Active Directory (Azure AD) app.
  
 ## Prerequisites
 
@@ -35,17 +35,18 @@ To install the [spark-kusto-connector](https://mvnrepository.com/artifact/com.mi
 
 ## Connect to Azure Data Explorer by using an Azure AD app
 
-1. Create Azure AD app by [provisioning an Azure AD application](kusto/management/access-control/how-to-provision-aad-app.md).
+1. Create Azure AD app by [provisioning an Azure AD application](./provision-azure-ad-app.md).
 1. Grant access to your Azure AD app in your Azure Data Explorer database as follows:
 
     ```kusto
     .set database <DB Name> users ('aadapp=<AAD App ID>;<AAD Tenant ID>') 'AAD App to connect Spark to ADX
     ```
-    |   |   |
+
+    | Parameter | Description |
     | - | - |
-    | ```DB Name``` | your database name |
-    | ```AAD App ID``` | your Azure AD app ID |
-    | ```AAD Tenant ID``` | your Azure AD tenant ID |
+    | `DB Name` | your database name |
+    | `AAD App ID` | your Azure AD app ID |
+    | `AAD Tenant ID` | your Azure AD tenant ID |
 
 ### Find your Azure AD tenant ID
 

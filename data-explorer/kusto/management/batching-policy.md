@@ -1,6 +1,6 @@
 ---
-title: Kusto IngestionBatching policy management - Azure Data Explorer
-description: This article describes IngestionBatching policy in Azure Data Explorer.
+title: Kusto IngestionBatching policy management command- Azure Data Explorer
+description: This article describes IngestionBatching policy command in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 ---
-# IngestionBatching policy
+# IngestionBatching policy command
 
 The [ingestionBatching policy](batchingpolicy.md) is a policy object that determines
 when data aggregation should stop during data ingestion according to the specified settings.
@@ -21,7 +21,13 @@ or the default cluster value set by Kusto.
 If the policy is not set for a certain entity, it will look for a higher hierarchy level policy,
 if all are set to null the default value will be used. 
 
-The policy has a lower limit of 10 seconds and it is not recommended to use values larger than 15 minutes.
+**IngestionBatching limits:**
+
+| Type | Default | Minimum | Maximum
+|---|---|---|---|
+| Number of items | 1000 | 1 | 2000 |
+| Data size (MB) | 1000 | 100 | 1000 |
+| Time | 5 minutes | 10 seconds | 15 minutes |
 
 ## Displaying the IngestionBatching policy
 

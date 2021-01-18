@@ -4,7 +4,7 @@ description: This article describes new_guid() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,6 +17,6 @@ Returns a random GUID (Globally Unique Identifier).
 new_guid()
 ```
 
-**Syntax**
+## Syntax
 
 * `new_guid()` - generates a new value of type `guid`.

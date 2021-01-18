@@ -4,7 +4,7 @@ description: This article describes project-reorder operator in Azure Data Explo
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,30 +17,28 @@ Reorders columns in the result output.
 T | project-reorder Col2, Col1, Col* asc
 ```
 
-**Syntax**
+## Syntax
 
 *T* `| project-reorder` *ColumnNameOrPattern* [`asc`|`desc`] [`,` ...]
 
-**Arguments**
+## Arguments
 
 * *T*: The input table.
 * *ColumnNameOrPattern:* The name of the column or column wildcard pattern added to the output.
 * For wildcard patterns: specifying `asc` or `desc` orders columns using their names in ascending or descending order. If `asc` or `desc` aren't specified, the order is determined by the matching columns as they appear in the source table.
 
-**Returns**
+> [!NOTE]
+> * In ambiguous *ColumnNameOrPattern* matching, the column appears in the first position matching the pattern.
+> * Specifying columns for the `project-reorder` is optional. Columns that aren't specified explicitly appear as the last columns of the output table.
+> * To remove columns, use [`project-away`](projectawayoperator.md).
+> * To choose which columns to keep, use [`project-keep`](project-keep-operator.md).
+> * To rename columns, use [`project-rename`](projectrenameoperator.md).
+
+## Returns
 
 A table that contains columns in the order specified by the operator arguments. `project-reorder` doesn't rename or remove columns from the table, therefore, all columns that existed in the source table, appear in the result table.
 
-**Notes**
-
-- In ambiguous *ColumnNameOrPattern* matching, the column appears in the first position matching the pattern.
-- Specifying columns for the `project-reorder` is optional. Columns that aren't specified explicitly appear as the last columns of the output table.
-
-* Use [`project-away`](projectawayoperator.md) to remove columns.
-* Use [`project-rename`](projectrenameoperator.md) to rename columns.
-
-
-**Examples**
+## Examples
 
 Reorder a table with three columns (a, b, c) so the second column (b) will appear first.
 

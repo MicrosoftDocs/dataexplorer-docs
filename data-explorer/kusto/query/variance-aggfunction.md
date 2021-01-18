@@ -4,7 +4,7 @@ description: This article describes variance() (aggregation function) in Azure D
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -19,19 +19,19 @@ Calculates the variance of *Expr* across the group, considering the group as a [
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
 
-**Syntax**
+## Syntax
 
 summarize `variance(`*Expr*`)`
 
-**Arguments**
+## Arguments
 
 * *Expr*: Expression that will be used for aggregation calculation. 
 
-**Returns**
+## Returns
 
 The variance value of *Expr* across the group.
  
-**Examples**
+## Examples
 
 ```kusto
 range x from 1 to 5 step 1

@@ -4,7 +4,7 @@ description: This article describes zip() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -15,15 +15,15 @@ The `zip` function accepts any number of `dynamic` arrays, and returns an
 array whose elements are each an array holding the elements of the input
 arrays of the same index.
 
-**Syntax**
+## Syntax
 
 `zip(`*array1*`,` *array2*`, ... )`
 
-**Arguments**
+## Arguments
 
 Between 2 and 16 dynamic arrays.
 
-**Examples**
+## Examples
 
 The following example returns `[[1,2],[3,4],[5,6]]`:
 

@@ -4,14 +4,14 @@ description: This article describes Cross-Cluster Join in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-# Cross-Cluster Join
+# Cross-cluster join
 
 ::: zone pivot="azuredataexplorer"
 

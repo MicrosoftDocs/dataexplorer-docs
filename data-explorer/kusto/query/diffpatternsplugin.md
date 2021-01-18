@@ -4,7 +4,7 @@ description: This article describes diffpatterns plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,13 +17,16 @@ Compares two data sets of the same structure and finds patterns of discrete attr
 ```kusto
 T | evaluate diffpatterns(splitColumn)
 ```
+> [!NOTE]
+> `diffpatterns` aims to find significant patterns (that capture portions of the data difference between the sets) and isn't meant for row-by-row differences.
 
-
-**Syntax**
+## Syntax
 
 `T | evaluate diffpatterns(SplitColumn, SplitValueA, SplitValueB [, WeightColumn, Threshold, MaxDimensions, CustomWildcard, ...])` 
 
-**Required Arguments**
+## Arguments 
+
+### Required arguments
 
 * SplitColumn - *column_name*
 
@@ -39,7 +42,7 @@ T | evaluate diffpatterns(splitColumn)
 
     Example: `T | extend splitColumn=iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure") `
 
-**Optional Arguments**
+### Optional arguments
 
 All other arguments are optional, but they must be ordered as below. To indicate that the default value should be used, put the string tilde value - '~' (see examples below).
 
@@ -70,7 +73,7 @@ All other arguments are optional, but they must be ordered as below. To indicate
 
     Example: `T | extend splitColumn = iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", "~", "~", "~", int(-1), double(-1), long(0), datetime(1900-1-1))`
 
-**Returns**
+## Returns
 
 `Diffpatterns` returns a small set of patterns that capture different portions of the data in the two sets (that is, a pattern capturing a large percentage of the rows in the first data set and low percentage of the rows in the second set). Each pattern is represented by a row in the results.
 
@@ -94,16 +97,11 @@ For each pattern, columns that are not set in the pattern (that is, without rest
 
 * Note: the patterns are often not distinct. They may be overlapping, and usually do not cover all the original rows. Some rows may not fall under any pattern.
 
+> [!TIP]
+> * Use [where](./whereoperator.md) and [project](./projectoperator.md) in the input pipe to reduce the data to just what you're interested in.
+> * When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
 
-**Tips**
-
-Use [where](./whereoperator.md) and [project](./projectoperator.md) in the input pipe to reduce the data to just what you're interested in.
-
-When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
-
-* Note: `diffpatterns` aims to find significant patterns (that capture portions of the data difference between the sets) and isn't meant for row-by-row differences.
-
-**Example**
+## Example
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

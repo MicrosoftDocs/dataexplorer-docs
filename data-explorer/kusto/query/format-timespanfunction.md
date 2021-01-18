@@ -4,7 +4,7 @@ description: This article describes format_timespan() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,16 +17,16 @@ Formats a timespan according to the provided format.
 format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
 ```
 
-**Syntax**
+## Syntax
 
 `format_timespan(`*timespan* `,` *format*`)`
 
-**Arguments**
+## Arguments
 
 * `timespan`: value of a type `timespan`.
 * `format`: format specifier string, consisting of one or more [format elements](#supported-formats).
 
-**Returns**
+## Returns
 
 The string with the format result.
 
@@ -74,7 +74,7 @@ Format specifier can include following delimeters characters:
 |`'['`||
 |`']'`||
 
-**Examples**
+## Examples
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

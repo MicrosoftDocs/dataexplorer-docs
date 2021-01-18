@@ -1,11 +1,11 @@
 ---
 title: 'Create an Azure Data Explorer cluster & DB using Powershell'
 description: Learn how to create an Azure Data Explorer cluster and database by using PowerShell
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
 ---
 
@@ -18,6 +18,7 @@ ms.date: 06/03/2019
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
+> * [Go](create-cluster-database-go.md)
 > * [ARM template](create-cluster-database-resource-manager.md)  
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it. In this article, you create a cluster and a database by using Powershell. You can run PowerShell cmdlets and scripts on Windows, Linux, or in [Azure Cloud Shell](/azure/cloud-shell/overview) with [Az.Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) to create and configure Azure Data Explorer clusters and databases.
@@ -30,7 +31,7 @@ If you don't have an Azure subscription, [create a free account](https://azure.m
 
 [!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)]
 
-If you choose to install and use the Azure CLI locally, this article requires the Azure CLI version 2.0.4 or later. Run `az --version` to check your version. If you need to install or upgrade, see [Install the Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+If you choose to install and use the Azure CLI locally, this article requires the Azure CLI version 2.0.4 or later. Run `az --version` to check your version. If you need to install or upgrade, see [Install the Azure CLI](/cli/azure/install-azure-cli).
 
 ## Configure parameters
 
@@ -113,4 +114,4 @@ You now have a cluster and a database.
 ## Next steps
 
 * [Additional Az.Kusto commands](/powershell/module/az.kusto/?view=azps-1.7.0#kusto)
-* [Ingest data using the Azure Data Explorer .NET Standard SDK (Preview)](net-standard-ingest-data.md)
+* [Ingest data using the Azure Data Explorer .NET Standard SDK (Preview)](./net-sdk-ingest-data.md)

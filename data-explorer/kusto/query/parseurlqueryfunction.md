@@ -4,7 +4,7 @@ description: This article describes parse_urlquery() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,19 +13,19 @@ ms.date: 02/13/2020
 
 Returns a `dynamic` object contains the Query parameters.
 
-**Syntax**
+## Syntax
 
 `parse_urlquery(`*query*`)`
 
-**Arguments**
+## Arguments
 
 * *query*: A string represents a url query.
 
-**Returns**
+## Returns
 
 An object of type [dynamic](./scalar-data-types/dynamic.md) that includes the query parameters.
 
-**Example**
+## Example
 
 ```kusto
 parse_urlquery("k1=v1&k2=v2&k3=v3")

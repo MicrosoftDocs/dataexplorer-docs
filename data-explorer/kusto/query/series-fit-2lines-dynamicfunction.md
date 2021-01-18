@@ -4,7 +4,7 @@ description: This article describes series_fit_2lines_dynamic() in Azure Data Ex
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -33,18 +33,18 @@ Takes an expression containing dynamic numerical array as input and applies [two
 
 This operator is similar to [series_fit_2lines](series-fit-2linesfunction.md). Unlike `series-fit-2lines`, it returns a dynamic bag.
 
-**Syntax**
+## Syntax
 
 `series_fit_2lines_dynamic(`*x*`)`
 
-**Arguments**
+## Arguments
 
 * *x*: Dynamic array of numeric values.  
 
 > [!TIP]
 > The most convenient way of using this function is applying it to the results of the [make-series](make-seriesoperator.md) operator.
 
-**Example**
+## Example
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

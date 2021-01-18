@@ -4,7 +4,7 @@ description: This article describes pi() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/25/2019
@@ -13,10 +13,10 @@ ms.date: 04/25/2019
 
 Returns the constant value of Pi.
 
-**Syntax**
+## Syntax
 
 `pi()`
 
-**Returns**
+## Returns
 
 * The double value of Pi (3.1415926...)

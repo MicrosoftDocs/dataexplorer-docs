@@ -4,7 +4,7 @@ description: This article describes trim() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,20 +13,20 @@ ms.date: 02/13/2020
 
 Removes all leading and trailing matches of the specified regular expression.
 
-**Syntax**
+## Syntax
 
 `trim(`*regex*`,` *text*`)`
 
-**Arguments**
+## Arguments
 
 * *regex*: String or [regular expression](re2.md) to be trimmed from the beginning and/or the end of *text*.  
 * *text*: A string.
 
-**Returns**
+## Returns
 
 *text* after trimming matches of *regex* found in the beginning and/or the end of *text*.
 
-**Example**
+## Example
 
 Statement bellow trims *substring*  from the start and the end of the *string_to_trim*:
 

@@ -4,7 +4,7 @@ description: This article describes assert() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/26/2019
@@ -13,26 +13,24 @@ ms.date: 09/26/2019
 
 Checks for a condition. If the condition is false, outputs error messages and fails the query.
 
-**Syntax**
+## Syntax
 
 `assert(`*condition*`, `*message*`)`
 
-**Arguments**
+## Arguments
 
 * *condition*: The conditional expression to evaluate. If the condition is `false`, the specified message is used to report an error. If the condition is `true`, it returns `true` as an evaluation result. Condition must be evaluated to constant during the query analysis phase.
 * *message*: The message used if assertion is evaluated to `false`. The *message* must be a string literal.
 
+> [!NOTE]
+> `condition` must be evaluated to constant during the query analysis phase. In other words, it can be constructed from other expressions referencing constants, and can't be bound to row-context.
 
-**Returns**
+## Returns
 
 * `true` - if the condition is `true`
 * Raises semantic error if the condition is evaluated to `false`.
 
-**Notes**
-
-* `condition` must be evaluated to constant during the query analysis phase. In other words, it can be constructed from other expressions referencing constants, and can't be bound to row-context.
-
-**Examples**
+## Examples
 
 The following query defines a function `checkLength()` that checks input string length, and uses `assert` to validate input length parameter (checks that it is greater than zero).
 

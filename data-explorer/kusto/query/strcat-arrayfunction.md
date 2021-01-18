@@ -4,7 +4,7 @@ description: This article describes strcat_array() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,20 +13,20 @@ ms.date: 02/13/2020
 
 Creates a concatenated string of array values using specified delimiter.
     
-**Syntax**
+## Syntax
 
 `strcat_array(`*array*, *delimiter*`)`
 
-**Arguments**
+## Arguments
 
 * *array*: A `dynamic` value representing an array of values to be concatenated.
 * *delimeter*: A `string` value that will be used to concatenate the values in *array*
 
-**Returns**
+## Returns
 
 Array values, concatenated to a single string.
 
-**Examples**
+## Examples
   
 ```kusto
 print str = strcat_array(dynamic([1, 2, 3]), "->")

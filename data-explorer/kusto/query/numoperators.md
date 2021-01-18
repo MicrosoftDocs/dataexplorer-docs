@@ -4,7 +4,7 @@ description: This article describes Numerical operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -29,6 +29,9 @@ Operator       |Description                         |Example
 `>=`           |Greater or Equal                    |`5 >= 4`
 `in`           |Equals to one of the elements       |[see here](inoperator.md)
 `!in`          |Not equals to any of the elements   |[see here](inoperator.md)
+
+> [!NOTE]
+> To convert from one numerical type to another, use `to*()` functions. For example, see [`tolong()`](tolongfunction.md) and [`toint()`](tointfunction.md).
 
 **Comment regarding the modulo operator**
 

@@ -4,7 +4,7 @@ description: This article describes rand() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -18,7 +18,7 @@ rand()
 rand(1000)
 ```
 
-**Syntax**
+## Syntax
 
 * `rand()` - returns a value of type `real`
   with a uniform distribution in the range [0.0, 1.0).

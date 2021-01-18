@@ -4,7 +4,7 @@ description: This article describes series_fit_2lines() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -38,23 +38,25 @@ Takes an expression containing dynamic numerical array as input and applies [two
 > [!Note]
 > This function returns multiple columns an so cannot be used as an argument for another function.
 
-**Syntax**
+## Syntax
 
 project `series_fit_2lines(`*x*`)`
 * Will return all mentioned above columns with the following names: series_fit_2lines_x_rsquare, series_fit_2lines_x_split_idx etc.
+
 project (rs, si, v)=`series_fit_2lines(`*x*`)`
 * Will return the following columns: rs (r-square), si (split index), v (variance) and the rest will look like series_fit_2lines_x_rvariance, series_fit_2lines_x_line_fit and etc.
+
 extend (rs, si, v)=`series_fit_2lines(`*x*`)`
 * Will return only: rs (r-square), si (split index) and v (variance).
   
-**Arguments**
+## Arguments
 
 * *x*: Dynamic array of numeric values.  
 
 > [!TIP]
 > The most convenient way of using this function is applying it to the results of [make-series](make-seriesoperator.md) operator.
 
-**Examples**
+## Examples
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

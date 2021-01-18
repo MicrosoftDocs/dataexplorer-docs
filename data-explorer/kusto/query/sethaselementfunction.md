@@ -4,7 +4,7 @@ description: This article describes set_has_element() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
@@ -13,20 +13,20 @@ ms.date: 01/23/2020
 
 Determines whether the specified set contains the specified element.
 
-**Syntax**
+## Syntax
 
 `set_has_element(`*array*,*value*`)`
 
-**Arguments**
+## Arguments
 
 * *array*: Input array to search.
 * *value*: Value to search for. The value should be of type `long`, `integer`, `double`, `datetime`, `timespan`, `decimal`, `string`, or `guid`.
 
-**Returns**
+## Returns
 
 True or false depending on if the value exists in the array.
 
-**Example**
+## Example
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -38,6 +38,6 @@ print arr=dynamic(["this", "is", "an", "example"])
 |---|
 |1|
 
-**See also**
+## See also
 
 Use [`array_index_of(arr, value)`](arrayindexoffunction.md) to find the position at which the value exists in the array. Both functions are equally performant.

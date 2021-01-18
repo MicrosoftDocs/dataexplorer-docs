@@ -9,18 +9,21 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Cross-cluster queries and schema changes 
+# Cross-cluster queries and schema changes
 
-When executing cross-cluster query the cluster which is doing the initial query interpretation must have the schema of the entities referenced in remote cluster(s).
-So when the following query sent to *Cluster1*
+When executing cross-cluster query, the cluster that is doing the initial query interpretation must have the schema of the entities referenced in the remote clusters.
+When the following query is sent to *Cluster1*
 
 ```kusto
 Table1 | join ( cluster("Cluster2").database("SomeDB").Table2 ) on KeyColumn
 ``` 
 
-*Cluster1* must know what columns *Table2* on *Cluster2* has and what are the data types of those columns. In order accomplish that the special command is sent from *Cluster1* to *Cluster2*.
-This sending of this command can be quite expensive, so once retrieved, the schemas for remote entities are cached and the next query referencing the same entities will have to execute less network operations.
+*Cluster1* must know what columns *Table2* on *Cluster2* has, and the data types of those columns. To get that information, the special command is sent from *Cluster1* to *Cluster2*.
+Sending the command can be expensive. Once retrieved, the schemas for remote entities are cached, and the next query referencing the same entities will run fewer network operations.
 
-This can cause unwanted effects when schema of the remote entity changes (added columns not being recognized or deleted columns causing 'Partial Query Error' instead of semantic error).
+Changes in the schema of the remote entity may result in unwanted effects. For example, added columns aren't recognized, or deleted columns cause a 'Partial Query Error' instead of a semantic error.
 
-In order to alleviate this problem cached schemas expire in 1 hour after retrieval, so any query executed in more than 1 hour after the change will work with the up-to-date schema.
+To solve this problem, cached schemas expire one hour after retrieval, so that any query executed more than one hour after the change, will work with the up-to-date schema.
+
+> [!IMPORTANT]
+> If the clusters are in different tenants, you may need to edit the `trustedExternalTenants` property. Non-trusted external tenants may get an **Unauthorized error (401)** failure. For more information, see [How to allow principals from another tenant to access your cluster](../../cross-tenant-query-and-commands.md).

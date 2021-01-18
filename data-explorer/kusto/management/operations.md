@@ -1,5 +1,5 @@
 ---
-title: Operations management - Azure Data Explorer | Microsoft Docs
+title: Operations management - Azure Data Explorer
 description: This article describes Operations management in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,13 +11,13 @@ ms.date: 02/13/2020
 ---
 # Operations management
 
-## .show operations
+## .show operations 
 
 `.show` `operations` command returns a table with all administrative operations, both running and completed, which were executed in the last two weeks (which is currently the retention period configuration).
 
 **Syntax**
 
-|||
+|Syntax option|Description|
 |---|---| 
 |`.show` `operations`              |Returns all operations that the cluster is processing or operations the cluster has processed
 |`.show` `operations` *OperationId*|Returns operation status for a specific ID 
@@ -51,7 +51,7 @@ ms.date: 02/13/2020
 Operations can (optionally) persist their results, and the results can be retrieved when the operation is complete, using `.show` `operation` `details`.
 
 > [!NOTE]
-> Not all control commands persist their results. Those commands that do, usually do so by default on asynchronous executions only, using the `async` keyword. See the command-specific documentation for more information. For example, see [data export](data-export/index.md)).
+> Not all control commands persist their results. Those commands that do, usually do so by default on asynchronous executions only, using the `async` keyword. See the documentation for the specific command and check if it does. For example, see [data export](data-export/index.md)).
 > The output schema of the `.show` `operations` `details` command is the same schema returned from the synchronous execution of the command.
 > The `.show` `operation` `details` command can only be invoked after the operation completed successfully. Use the [show operations command](#show-operations)) to check the state of the operation, before running this command.
 
@@ -76,7 +76,6 @@ of the [data export](../management/data-export/index.md) commands.
     h@"https://storage1.blob.core.windows.net/containerName2;secretKey" 
   ) 
   <| myLogs 
-
 ```
 
 The async export command returned the following operation ID:
@@ -91,9 +90,7 @@ This operation ID can be used when the command has completed to query the export
 .show operation 56e51622-eb49-4d1a-b896-06a03178efcd details 
 ```
 
-**Results**
-
-|Path|NumRecords|
+|Path|NumRecords |
 |---|---|
 |http://storage1.blob.core.windows.net/containerName/1_d08afcae2f044c1092b279412dcb571b.csv|10|
 |http://storage1.blob.core.windows.net/containerName/2_454c0f1359e24795b6529da8a0101330.csv|15|

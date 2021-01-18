@@ -4,7 +4,7 @@ description: This article describes diffpatterns_text plugin in Azure Data Explo
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -19,11 +19,13 @@ T | evaluate diffpatterns_text(TextColumn, BooleanCondition)
 
 The `diffpatterns_text` returns a set of text patterns that capture different portions of the data in the two sets (i.e. a pattern capturing a large percentage of the rows when the condition is `true` and low percentage of the rows when the condition is `false`). The patterns are built from consecutive tokens (separated by white space), with a token from the text column or a `*` representing a wildcard. Each pattern is represented by a row in the results.
 
-**Syntax**
+## Syntax
 
 `T | evaluate diffpatterns_text(`TextColumn, BooleanCondition [, MinTokens, Threshold , MaxTokens]`)` 
 
-**Required Arguments**
+## Arguments
+
+### Required arguments
 
 * TextColumn - *column_name*
 
@@ -33,7 +35,7 @@ The `diffpatterns_text` returns a set of text patterns that capture different po
 
     Defines how to generate the two record subsets to compare to the input table. The algorithm splits the query into two data sets, “True” and “False” according to the condition, then analyzes the (text) differences between them. 
 
-**Optional Arguments**
+### Optional arguments
 
 All other arguments are optional, but they must be ordered as below. 
 
@@ -49,7 +51,7 @@ All other arguments are optional, but they must be ordered as below.
 
     Sets the maximal number of tokens (from the beginning) per result pattern, specifying a lower limit decreases the query runtime.
 
-**Returns**
+## Returns
 
 The result of diffpatterns_text returns the following columns:
 
@@ -62,7 +64,7 @@ The result of diffpatterns_text returns the following columns:
 > [!NOTE]
 > The patterns aren't necessarily distinct and may not provide full coverage of the data set. The patterns may be overlapping and some rows may not match any pattern.
 
-**Example**
+## Example
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -80,4 +82,3 @@ StormEvents
 |0|42|0|7.71|* * * * * * caused * * * * * * * * across western Colorado. *|
 |0|45|0|8.26|* * below normal *|
 |0|110|0|20.18|Below normal *|
-

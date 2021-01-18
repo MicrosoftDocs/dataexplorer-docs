@@ -1,5 +1,5 @@
 ---
-title: Commands and queries management - Azure Data Explorer | Microsoft Docs
+title: Commands and queries management - Azure Data Explorer
 description: This article describes Commands and queries management in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -13,10 +13,10 @@ ms.date: 08/19/2019
 
 ## .show commands-and-queries 
 
-`.show` `commands-and-queries` returns a table with admin commands and queries which have reached a final state. These commands and queries are available to query for 30 days.
+`.show` `commands-and-queries` returns a table with admin commands and queries that have reached a final state. These commands and queries are available for 30 days.
 
-The information presented in the output of the command is similar to that presented by [.show commands](commands.md) 
-and [.show queries](queries.md), however it essentially allows to union both result sets in a simple manner.
+The information presented in the output of the command is similar to [`.show` commands](commands.md) 
+and [`.show` queries](queries.md), however it essentially lets you join both result sets in a simple manner.
 
 **Syntax**
 
@@ -48,4 +48,5 @@ The output schema is as follows:
 | ScannedExtentsStatistics | dynamic    |
 | ResultSetStatistics      | dynamic    |
 
-Note that for queries, the value of `CommandType` is `Query`.
+> [!NOTE]
+> For queries, the value of `CommandType` is `Query`.

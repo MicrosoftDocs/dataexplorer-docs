@@ -39,22 +39,25 @@ by the user, or by another user, or by all users.
 ## .cancel query
 
 The `.cancel` `query` command starts a best-effort attempt to cancel a specific
-query previously started by the same user.
+running query.
 
 * Cluster admins can cancel any running query.
 * Database admins can cancel any running query that was invoked on a database they have admin access on.
-* Other users may only cancel queries that they started. 
+* All principals can cancel running queries that they started.
 
 **Syntax**
 
-`.cancel` `query` *ClientRequestId*
+`.cancel` `query` *ClientRequestId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
 
-* *ClientRequestId* is the value of the original queries ClientRequestId field,
+* *ClientRequestId* is the value of the running query's `ClientRequestId` property,
   as a `string` literal.
+
+* *ReasonPhrase*: If specified, a `string` literal that describes the reason for
+  canceling the running query. This information is included in the query results
+  if it's successfully canceled.
 
 **Example**
 
 ```kusto
 .cancel query "KE.RunQuery;8f70e9ab-958f-4955-99df-d2a288b32b2c"
 ```
-

@@ -1,5 +1,5 @@
 ---
-title: Extents merge policy - Azure Data Explorer | Microsoft Docs
+title: Extents merge policy - Azure Data Explorer
 description: This article describes Extents merge policy in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -9,62 +9,85 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 ---
-# Extents merge policy
+# Merge policy
+
 The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the Kusto cluster should get merged.
 
-There are two flavors for merge operations: `Merge` (which rebuilds indexes), and `Rebuild` (which completely reingests the data).
+There are two types of merge operations: `Merge`, which rebuilds indexes, and `Rebuild`, which completely reingests the data.
 
-Both operation kinds result with a single extent, which replaces the source extents.
+Both operation types result in a single extent that replaces the source extents.
 
-By default, Rebuild operations are preferred, and only if there are any remaining extents which didn't fit the criteria for
-being rebuilt, they are attempted to be Merged.  
+By default, Rebuild operations are preferred. If there are extents that don't fit the criteria for being rebuilt, an attempt will be made to merge them.  
 
-*Notes:*
-- Tagging extents using *different* `drop-by` tags will cause such extents to not be merged together, even if a Merge Policy has been set 
-(see [Extent Tagging](../management/extents-overview.md#extent-tagging)).
-- Extents whose union of tags exceeds the length of 1M characters will not be merged together.
-- The database's / table's [Sharding policy](./shardingpolicy.md) also has some effect on how extents get merged together.
+> [!NOTE]
+> * Tagging extents using *different* `drop-by` tags will cause such extents to not be merged, even if a merge policy has been set. For more information, see [Extent Tagging](../management/extents-overview.md#extent-tagging).
+> * Extents whose union of tags exceeds the length of 1M characters will not be merged.
+> * The database's or table's [Sharding policy](./shardingpolicy.md) also has some effect on how extents get merged.
+
+## Merge policy properties
 
 The merge policy contains the following properties:
 
-- **RowCountUpperBoundForMerge**:
-    - Defaults:
-      - 0 (unlimited) for policies that were set prior to June 2020.
-      - 16,000,000 for policies that were set starting June 2020.
-    - Maximum allowed row count of the merged extent.
-    - Applies to Merge operations, not Rebuild.  
-- **OriginalSizeMBUpperBoundForMerge**:
-    - Defaults to 0 (unlimited).
-    - Maximum allowed original size (in MBs) of the merged extent.
-    - Applies to Merge operations, not Rebuild.  
-- **MaxExtentsToMerge**:
-    - Defaults to 100.
-    - Maximum allowed number of extents to be merged in a single operation.
-    - Applies to Merge operations.
-- **LoopPeriod**:
-    - Defaults to 01:00:00 (1 hour).
-    - The maximum time to wait between starting two consecutive iterations of merge/rebuild operations 
-    (performed by the Data Management service).
-    - Applies to both Merge and Rebuild operations.
-- **AllowRebuild**:
-    - Defaults to 'true'.
-    - Defines whether `Rebuild` operations are enabled (in which case, they are preferred over `Merge` operations).
-- **AllowMerge**:
-    - Defaults to 'true'.
-    - Defines whether `Merge` operations are enabled (in which case, they are less preferred than `Rebuild` operations).
-- **MaxRangeInHours**:
-    - Defaults to 8.
-    - Maximum allowed difference (in hours) between any two different extents' creation times, so that they can still be merged.
-    - Timestamps are those of extent creation, and do not relate to the actual data contained in the extents.
-    - Applies to both Merge and Rebuild operations.
-    - A best practice is for this value to be correlated with the database's / table's
-    [Retention policy](./retentionpolicy.md)'s 
-    *SoftDeletePeriod*, or the [Cache policy](./cachepolicy.md)'s
-    *DataHotSpan* (the lower of the two), so that it is between 2-3% of the latter.
+* **RowCountUpperBoundForMerge**:
+    * Defaults to 16,000,000.
+    * Maximum allowed row count of the merged extent.
+    * Applies to Merge operations, not Rebuild.  
+* **OriginalSizeMBUpperBoundForMerge**:
+    * Defaults to 0 (unlimited).
+    * Maximum allowed original size (in MBs) of the merged extent.
+    * Applies to Merge operations, not Rebuild.  
+* **MaxExtentsToMerge**:
+    * Defaults to 100.
+    * Maximum allowed number of extents to be merged in a single operation.
+    * Applies to Merge operations.
+* **LoopPeriod**:
+    * Defaults to 01:00:00 (1 hour).
+    * The maximum time to wait between starting two consecutive iterations of merge or rebuild operations by the Data Management service.
+    * Applies to both Merge and Rebuild operations.
+* **AllowRebuild**:
+    * Defaults to 'true'.
+    * Defines whether `Rebuild` operations are enabled (in which case, they're preferred over `Merge` operations).
+* **AllowMerge**:
+    * Defaults to 'true'.
+    * Defines whether `Merge` operations are enabled, in which case, they're less preferred than `Rebuild` operations.
+* **MaxRangeInHours**:
+    * Defaults to 24.
+    * The maximum allowed difference, in hours, between any two different extents' creation times, so that they can still be merged.
+    * Timestamps are of extent creation, and don't relate to the actual data contained in the extents.
+    * Applies to both Merge and Rebuild operations.
+    * In [materialized views](materialized-views/materialized-view-overview.md): defaults to to 336 (14 days), *unless* recoverability is disabled in the materialized view's effective [retention policy](retentionpolicy.md).
+    * This value should be set according to the effective [retention policy](./retentionpolicy.md) *SoftDeletePeriod*, or [cache policy](./cachepolicy.md) *DataHotSpan* values. Take the lower value of *SoftDeletePeriod* and *DataHotSpan*. Set the *MaxRangeInHours* value to between 2-3% of it. See the [examples](#maxrangeinhours-examples) .
+* **Lookback**:
+    * Defines the timespan during which extents are considered for rebuild/merge.
+	* Supported values: 
+	  * `Default` - The system-managed default. This is the recommended and default value.
+	  * `All` - All extents, hot and cold, are included.
+	  * `HotCache` - Only hot extents are included.
+      * `Custom` - Only extents whose age is under the provided `CustomPeriod` are included. `CustomPeriod` is a timespan value.
 
-**`MaxRangeInHours` examples:**
+## Default policy example
 
-|min(SoftDeletePeriod (Retention Policy), DataHotSpan (Cache Policy))|Max Range In Hours (Merge Policy)|
+The following example shows the default policy:
+
+```json
+{
+  "RowCountUpperBoundForMerge": 16000000,
+  "OriginalSizeMBUpperBoundForMerge": 0,
+  "MaxExtentsToMerge": 100,
+  "LoopPeriod": "01:00:00",
+  "MaxRangeInHours": 8,
+  "AllowRebuild": true,
+  "AllowMerge": true,
+  "Lookback": {
+    "Kind": "Default",
+    "CustomPeriod": null
+  }
+}
+```
+
+## MaxRangeInHours examples
+
+|min(SoftDeletePeriod (Retention Policy), DataHotSpan (Cache Policy))|Max Range in hours (Merge Policy)|
 |--------------------------------------------------------------------|---------------------------------|
 |7 days (168 hours)                                                  | 4                               |
 |14 days (336 hours)                                                 | 8                               |
@@ -77,7 +100,6 @@ The merge policy contains the following properties:
 > [!WARNING]
 > Consult with the Azure Data Explorer team before altering an extents merge policy.
 
-When a database is created, it is set with the default Merge policy (a policy with the default values mentioned above), which is, by default, inherited by
-all tables created in the database (unless their policies are explicitly overridden at table-level).
+When a database is created, it's set with the default merge policy values mentioned above. The policy is by default inherited by all tables created in the database, unless their policies are explicitly overridden at table-level.
 
-Control commands which allow to manage Merge policies for databases / tables can be found [here](../management/merge-policy.md).
+For more information, see [control commands that allow you to manage merge policies for databases or tables](../management/merge-policy.md).

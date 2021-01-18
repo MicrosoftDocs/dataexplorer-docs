@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: basaba
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/24/2020
 
 #Customer intent: As a database administrator, I want to create an Azure Data Explorer cluster and database in my virtual network.
@@ -94,9 +94,7 @@ To create the query (Engine) public IP addresses:
 
 1. Select **Create** to create the public IP address.
 
-1. To create the ingestion (Data Management) public IP address follow the same instructions and select 
-    * **Sku**: Basic
-    * **IP address assignment**: Static
+1. To create the ingestion (Data Management) public IP address, follow the same instructions.
 
 ## Create Virtual Network and subnet
 

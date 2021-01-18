@@ -1,5 +1,5 @@
 ---
-title: .alter ingestion mapping - Azure Data Explorer | Microsoft Docs
+title: .alter ingestion mapping - Azure Data Explorer
 description: This article describes .alter ingestion mapping in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -37,8 +37,8 @@ Alters an existing ingestion mapping that is associated with a specific table an
 ']'
 ```
 
-**Example output**
+**Sample output**
 
 | Name     | Kind | Mapping                                                                                                                                                                          |
 |----------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| mapping1 | CSV  | [{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}] |
+| mapping1 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` |

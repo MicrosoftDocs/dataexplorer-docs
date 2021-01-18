@@ -39,7 +39,7 @@ To suppress tracing from the Kusto client libraries through a config file,
 modify the file `Kusto.Cloud.Platform.dll.tweaks` (which is included with the `Kusto.Data` library).
 
 ```xml
-    <!-- Overrides the default trace verbosity level -->
+    //Overrides the default trace verbosity level
     <add key="Kusto.Cloud.Platform.Utils.Tracing.OverrideTraceVerbosityLevel" value="0" />
 ```
 

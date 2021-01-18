@@ -4,7 +4,7 @@ description: This article describes consume operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
@@ -20,11 +20,11 @@ the results back to the caller.
 T | consume
 ```
 
-**Syntax**
+## Syntax
 
 `consume` [`decodeblocks` `=` *DecodeBlocks*]
 
-**Arguments**
+## Arguments
 
 * *DecodeBlocks*: A constant Boolean value. If set to `true`, or if the request
   property `perftrace` is set to `true`, the `consume` operator will not just
@@ -36,10 +36,3 @@ cost of a query without actually delivering the results back to the client.
 (The estimation is not exact for a variety of reasons; for example, `consume`
 is calculated distributively, so `T | consume` will not transmit the table's
 data between the nodes of the cluster.)
-
-<!--
-* *WithStats*: A constant Boolean value. If set to `true` (or if the global
-  property `perftrace` is set), the operator will return a single
-  row with a single column called `Stats` of type `dynamic` holding the statistics
-  of the data source fed to the `consume` operator.
--->

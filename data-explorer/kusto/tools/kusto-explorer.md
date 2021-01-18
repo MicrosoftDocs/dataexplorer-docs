@@ -1,15 +1,16 @@
 ---
-title: Getting started with Kusto.Explorer
+title: Kusto.Explorer installation and user interface
 description: Learn about the features of Kusto.Explorer and how it can help you to explore your data
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/19/2020
+ms.localizationpriority: high
 ---
 
-# Getting started with Kusto.Explorer
+# Kusto.Explorer installation and user interface
 
 Kusto.Explorer is a rich desktop application that enables you to explore your data using the Kusto Query Language in an easy-to-use user interface. This overview explains how to get started with setting up your Kusto.Explorer and explains the user interface you will use.
 
@@ -21,10 +22,13 @@ With Kusto.Explorer, you can:
 
 ## Installing Kusto.Explorer
 
-* Install the [Kusto.Explorer tool](https://aka.ms/ke)
+* Download and install the Kusto.Explorer tool from:
+     * [https://aka.ms/ke](https://aka.ms/ke) (CDN location)
+     * [https://aka.ms/ke-mirror](https://aka.ms/ke-mirror) (Non-CDN location)
 
-* Instead, access your Kusto cluster with your browser at:
-[https://<your_cluster>.kusto.windows.net](https://your_cluster.kusto.windows.net). Replace <your_cluster> with your Azure Data Explorer cluster name.
+* Instead, access your Kusto cluster with your browser at: 
+`https://<your_cluster>.<region>.kusto.windows.net.`
+     Replace &lt;your_cluster&gt; and &lt;region&gt; with your Azure Data Explorer cluster name and deployment region.
 
 ### Using Chrome and Kusto.Explorer
 
@@ -99,18 +103,19 @@ The Home tab shows the most recently used functions, divided into sections:
 |Stacked Area chart      | Displays a stacked area chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis) |
 |Timeline Chart   | Displays a time chart in which the X-axis is the first column (must be datetime). All numeric columns are mapped to different series (Y-axis).|
 |Line Chart   | Displays a line chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
-|Anomaly Chart|    Similar to timechart, but finds anomalies in time series data, using the machine learning anomalies algorithm. For anomaly detection, Kusto.Explorer uses the [series_decompose_anomalies](../query/series-decompose-anomaliesfunction.md) function.(*) 
+|[Anomaly Chart](#anomaly-chart)|    Similar to timechart, but finds anomalies in time series data, using the machine learning anomalies algorithm. For anomaly detection, Kusto.Explorer uses the [series_decompose_anomalies](../query/series-decompose-anomaliesfunction.md) function.
 |Pie Chart    |    Displays a pie chart in which the color-axis is the first column. The theta-axis (must be a measure, converted to percent) is the second column.|
 |Time Ladder |    Displays a ladder chart in which the X-axis is the last two columns (must be datetime). The Y-axis is a composite of the other columns.|
 |Scatter Chart| Displays a point graph in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
 |Pivot Chart  | Displays a pivot table and pivot chart that gives the full flexibility of selecting data, columns, rows, and various chart types.| 
 |Time Pivot   | Interactive navigation over the events time-line (pivoting on time axis)|
 
-(*) Anomaly Chart: 
-The algorithm expects timeseries data, which consists of two columns:
-1. Time in fixed interval buckets
-2. Numeric value for anomaly detection
-To produce timeseries data in Kusto.Explorer, summarize by the time field and specify the time bucket bin.
+> [!NOTE]
+> <a id="anomaly-chart">Anomaly Chart</a>: 
+>The algorithm expects timeseries data, which consists of two columns:
+>* Time in fixed interval buckets
+>* Numeric value for anomaly detection
+>To produce timeseries data in Kusto.Explorer, summarize by the time field and specify the time bucket bin.
 
 ### View section
 
@@ -125,9 +130,10 @@ To produce timeseries data in Kusto.Explorer, summarize by the time field and sp
 |Increase Font  | Increases the font size of the query tab and of the results data grid|  
 |Decrease Font  | Decreases the font size of the query tab and of the results data grid|
 
-(*) Data View Settings:
-Kusto.Explorer keeps track of what settings are used per unique set of columns. So when columns are reordered or removed, the data view is saved and will be reused
-whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**. 
+>[!NOTE]
+> Data View Settings:
+>
+> Kusto.Explorer keeps track of what settings are used per unique set of columns. When columns are reordered or removed, the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**. 
 
 ## File tab
 
@@ -195,7 +201,7 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 |Reset Layout|Resets the layout of the tool's docking controls and windows|
 |Rename Document Tab |Rename the selected tab |
 ||---------*Data View*---------|
-|Reset View| Resets data view settings to its defaults (*)|
+|Reset View| Resets [data view settings](#dvs) to its defaults |
 |Explore Column Values|Shows column values distribution|
 |Focus on Query Statistics|Changes the focus to query statistics instead of query results upon query completion|
 |Hide Duplicates|Toggles removal of the duplicate rows from the query results|
@@ -206,7 +212,10 @@ whenever the data with the same columns is retrieved. To reset the view to its d
 ||---------*Visualizations*---------|
 |Visualizations|See [Visualizations](#visualizations-section), above. |
 
-(*) Data View Settings: Kusto.Explorer keeps track of the settings used per unique set of columns. When columns are reordered or removed, the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**. 
+> [!NOTE]
+> <a id="dvs">Data View Settings:</a> 
+>
+> Kusto.Explorer keeps track of the settings used per unique set of columns. When columns are reordered or removed, the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**. 
 
 ## Tools tab
 
@@ -308,7 +317,7 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 * `AAD_TENANT_OF_CLUSTER` is a domain name or AAD tenant ID (a GUID) of the AAD tenant in which the cluster is hosted. This is usually the domain name of the organization that owns the cluster, such as `contoso.com`. 
 * USER_DOMAIN is the identity of the user invited into that tenant (for example, `user@example.com`). 
 
->[!Note]
+>[!NOTE]
 > The domain name of the user is not necessarily the same as that of the tenant hosting the cluster.
 
 :::image type="content" source="images/kusto-explorer/advanced-connection-string.png" alt-text="Kusto Explorer advanced connection string":::
@@ -325,6 +334,11 @@ To modify the output color scheme, or turn this behavior off, from the **Tools**
 
 :::image type="content" source="images/kusto-explorer/ke-color-scheme.png" alt-text="Kusto Explorer color scheme modification":::
 
+
+**Excel** color scheme legend| **Vivid** color scheme legend
+|---|---
+| :::image type="content" source="images/kusto-explorer/excel-color-scheme.png" alt-text="Screen shot of the Excel color scheme legend in Kusto Explorer" border="false"::: |:::image type="content" source="images/kusto-explorer/vivid-color-scheme.png" alt-text="Screen shot vivid color scheme legend in Kusto Explorer" border="false":::
+
 ## Next steps
 
 Learn more about working with Kusto.Explorer:
@@ -338,4 +352,4 @@ Learn more about Kusto.Explorer tools and utilities:
 * [Kusto.Explorer code analyzer](kusto-explorer-code-analyzer.md)
 * [Kusto.Explorer code navigation](kusto-explorer-codenav.md)
 * [Kusto.Explorer code refactoring](kusto-explorer-refactor.md)
-* [Kusto Query Language (KQL)](https://docs.microsoft.com/azure/kusto/query/)
+* [Kusto Query Language (KQL)](/azure/kusto/query/)

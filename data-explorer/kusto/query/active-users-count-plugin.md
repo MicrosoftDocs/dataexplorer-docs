@@ -4,7 +4,7 @@ description: This article describes active_users_count plugin in Azure Data Expl
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -21,11 +21,11 @@ The aggregation itself doesn't include users from the lookback window. In compar
 T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, 2, 7d, dim1, dim2, dim3)
 ```
 
-**Syntax**
+## Syntax
 
 *T* `| evaluate` `active_users_count(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *LookbackWindow*`,` *Period*`,` *ActivePeriodsCount*`,` *Bin* `,` [*dim1*`,` *dim2*`,` ...]`)`
 
-**Arguments**
+## Arguments
 
 * *T*: The input tabular expression.
 * *IdColumn*: The name of the column with ID values that represent user activity. 
@@ -38,7 +38,7 @@ T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), start
 * *Bin*: Scalar constant value of the analysis step period. Can be a numeric/datetime/timestamp value, or a string that is `week`/`month`/`year`. All periods will be the corresponding [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) functions.
 * *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
 
-**Returns**
+## Returns
 
 Returns a table that has distinct count values for IDs that have appeared in ActivePeriodCounts in the following periods: the lookback period, each timeline period, and each existing dimensions combination.
 
@@ -49,7 +49,7 @@ Output table schema is:
 |type: as of *TimelineColumn*|..|..|..|long|
 
 
-**Examples**
+## Examples
 
 Calculate weekly number of distinct users that appeared in at least three different days over a period of prior eight days. Period of analysis: July 2018.
 
@@ -84,7 +84,7 @@ T | evaluate active_users_count(User, Timestamp, Start, End, LookbackWindow, Per
 |2018-07-01 00:00:00.0000000|1|
 |2018-07-15 00:00:00.0000000|1|
 
-A user is considered active if it fulfills one of the following criteria: 
+A user is considered active if it fulfills both of the following criteria: 
 * The user was seen in at least three distinct days (Period = 1d, ActivePeriods=3).
 * The user was seen in a lookback window of 8d before and including their current appearance.
 

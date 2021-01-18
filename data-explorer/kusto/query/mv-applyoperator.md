@@ -4,15 +4,14 @@ description: This article describes mv-apply operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
 # mv-apply operator
 
-The `mv-apply` operator expands each record in its input table into a subtable,
-applies a subquery to each subtable, and returns the union of the results of
+Applies a subquery to each record, and returns the union of the results of
 all subqueries.
 
 For example, assume a table `T` has a column `Metric` of type `dynamic`
@@ -21,7 +20,10 @@ two biggest values in each `Metric` value, and return the records corresponding
 to these values.
 
 ```kusto
-T | mv-apply Metric to typeof(real) on (top 2 by Metric desc)
+T | mv-apply Metric to typeof(real) on 
+(
+   top 2 by Metric desc
+)
 ```
 
 The `mv-apply` operator has the following
@@ -33,7 +35,7 @@ processing steps:
 1. Adds zero or more columns to the resulting subtable. These columns contain the values of the source columns that aren't expanded, and are repeated where needed.
 1. Returns the union of the results.
 
-The `mv-expand` operator gets the following inputs:
+The `mv-apply` operator gets the following inputs:
 
 1. One or more expressions that evaluate into dynamic arrays to expand.
    The number of records in each expanded subtable is the maximum length of
@@ -59,7 +61,7 @@ The `mv-apply` operator can be thought of as a generalization of the
 [`mv-expand`](./mvexpandoperator.md) operator (in fact, the latter can be implemented
 by the former, if the subquery includes only projections.)
 
-**Syntax**
+## Syntax
 
 *T* `|` `mv-apply` [*ItemIndex*] *ColumnsToExpand* [*RowLimit*] `on` `(` *SubQuery* `)`
 
@@ -77,7 +79,7 @@ Where *ItemIndex* has the syntax:
 
 and *SubQuery* has the same syntax of any query statement.
 
-**Arguments**
+## Arguments
 
 * *ItemIndex*: If used, indicates the name of a column of type `long` that is appended to the input as part of the array-expansion phase and indicates the 0-based array index of the
   expanded value.
@@ -109,7 +111,7 @@ and *SubQuery* has the same syntax of any query statement.
 * Unlike the [`mv-expand`](./mvexpandoperator.md) operator, the `mv-apply` operator
   supports array expansion only. There's no support for expanding property bags.
 
-**Examples**
+## Examples
 
 ## Getting the largest element from the array
 
@@ -150,7 +152,6 @@ _data
 |1    |[1,3,5,7]|12       |
 |0    |[2,4,6,8]|14       |
 
-
 ## Using `with_itemindex` for working with a subset of the array
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -174,36 +175,6 @@ _data
 |3|8|
 |4|10|
 
-## Using the `mv-apply` operator to sort the output of `makelist` aggregate by some key
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-datatable(command:string, command_time:datetime, user_id:string)
-[
-	'chmod',		datetime(2019-07-15),	"user1",
-	'ls',			datetime(2019-07-02),	"user1",
-	'dir',			datetime(2019-07-22),	"user1",
-	'mkdir',		datetime(2019-07-14),	"user1",
-	'rm',			datetime(2019-07-27),	"user1",
-	'pwd',			datetime(2019-07-25),	"user1",
-	'rm',			datetime(2019-07-23),	"user2",
-	'pwd',			datetime(2019-07-25),	"user2",
-]
-| summarize commands_details = make_list(pack('command', command, 'command_time', command_time)) by user_id
-| mv-apply command_details = commands_details on
-(
-    order by todatetime(command_details['command_time']) asc
-    | summarize make_list(tostring(command_details['command']))
-)
-| project-away commands_details
-```
-
-|`user_id`|`list_command_details_command`|
-|---|---|
-|user1|[<br>  "ls",<br>  "mkdir",<br>  "chmod",<br>  "dir",<br>  "pwd",<br>  "rm"<br>]|
-|user2|[<br>  "rm",<br>  "pwd"<br>]|
-
-
-**See also**
+## See also
 
 * [mv-expand](./mvexpandoperator.md) operator.

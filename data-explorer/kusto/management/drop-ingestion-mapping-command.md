@@ -18,7 +18,7 @@ Drops the ingestion mapping from the database.
 **Example** 
 
 ```kusto
-.drop table MyTable ingestion CSV mapping "Mapping1" 
+.drop table MyTable ingestion csv mapping "Mapping1" 
 
-.drop table MyTable ingestion JSON mappings "Mapping1" 
+.drop table MyTable ingestion json mapping "Mapping1" 
 ```

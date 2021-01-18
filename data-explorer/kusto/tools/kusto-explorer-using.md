@@ -23,17 +23,17 @@ Search++ mode enables you to search for a term using search syntax across one or
 1. In the edit box, enter your search phrase and select **Go**.
 1. A heat-map of the table/time-slot grid shows which terms appear and where they appear.
 
-:::image type="content" source="images/kusto-explorer-using/search-plus-plus.png" alt-text="Search + + Kusto Explorer":::
+    :::image type="content" source="images/kusto-explorer-using/search-plus-plus.png" alt-text="Search + + Kusto Explorer":::
 
 1. Select a cell in the grid and select **View Details** to show the relevant entries in the results pane.
 
-:::image type="content" source="images/kusto-explorer-using/search-plus-plus-results.png" alt-text="Kusto Explorer Search + + results":::
+    :::image type="content" source="images/kusto-explorer-using/search-plus-plus-results.png" alt-text="Kusto Explorer Search + + results":::
 
 ## Query mode
 
-Kusto.Explorer includes a powerful script mode that enables you to write, edit, and run ad-hoc queries. The script mode comes with syntax highlighting and IntelliSense, so you can quickly ramp-up your knowledge of the Kusto Query Language.
+Kusto.Explorer includes a powerful script mode that enables you to write, edit, and run ad-hoc queries. The script mode comes with syntax highlighting and IntelliSense, so you can quickly ramp-up your knowledge of the Kusto Query Language.
 
-This document describes how to run basic queries in Kusto.Explorer and how to add parameters to your queries.
+This section describes how to run basic queries in Kusto.Explorer and how to add parameters to your queries.
 
 ## Basic queries
 
@@ -68,11 +68,17 @@ StormEvents
 
 :::image type="content" source="images/kusto-explorer-using/basic-query.png" alt-text="Kusto Explorer basic query":::
 
-Learn more about [Kusto Query Language](https://docs.microsoft.com/azure/kusto/query/).
+Learn more about [Kusto Query Language](../query/index.md).
+
+> [!NOTE]
+> Blank lines in the query expression can affect which part of the query is executed.
+>
+> If no text selected, it's assumed that the query or command is separated by empty lines.
+> If text is selected, the selected text is run.
 
 ## Client-side query parameterization
 
-> [!Note]
+> [!NOTE]
 > There are two types of query parametrization techniques in Kusto:
 > * [Language-integrated query parametrization](../query/queryparametersstatement.md) is implemented as part
 > of the query engine and is meant to be used by applications that query the service programmatically. This method is not described in this document.
@@ -113,39 +119,26 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 1. [Run your query](#basic-queries) in Kusto.Explorer.
 1. In the Home tab, in the Share section, select **Export to Clipboard** (or press Ctrl+Shift+C).
 
-:::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard":::
+    :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard":::
 
     Kusto.Explorer pastes the following to the clipboard:
-    * Your query
-    * The query results (table or chart)
-    * The connection details for the Kusto cluster and database
-    * A link that will rerun the query automatically
+     * Your query
+     * The query results (table or chart)
+     * The connection details for the Kusto cluster and database
+     * A link that will rerun the query automatically
 
 1. Paste the contents of the clipboard into a new email message.
 
-:::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="Share results in email":::
+    :::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="Share results in email":::
 
 ### Deep-linking queries
 
 You can create a URI that, when opened in a browser, opens Kusto.Explorer locally and runs a specific query on a specified Kusto database.
 
-### Limitations
-
-The queries are limited to ~2000 characters because of browser limitations, HTTP proxies, and tools that validate links, such as Microsoft Outlook. The limitation is approximate because it's dependent on the cluster and Database name length. For more information, see [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427). 
-To reduce the chances of reaching the character limit, see [Getting Shorter Links](#getting-shorter-links), below.
-
-The format of the URI is:
-    `https://<ClusterCname>.kusto.windows.net/<DatabaseName>web=0?query=<QueryToExecute>`
-
-For example: 
-    [https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10](https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10)
- 
-This URI will open Kusto.Explorer, connect to the `Help` Kusto cluster, and run the specified query on the `Samples` database. If there's an instance of Kusto.Explorer already running, the running instance will open a new tab and run the query in it.
-
-> [!Note] 
+> [!NOTE] 
 > For security reasons, deep-linking is disabled for control commands.
 
-### Creating a deep-link
+#### Creating a deep-link
 
 The easiest way to create a deep-link is to author your query in Kusto.Explorer and then use
 `Export to Clipboard` to copy the query (including the deep link and results) to the clipboard. You can then share it by email.
@@ -159,15 +152,31 @@ The second link (`Click to run query`) is the deep link. If you move the link to
 
 https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
 
-### Deep-links and parametrized queries
+#### Deep-links and parametrized queries
 
 You can use parametrized queries with deep-linking.
 
 1. Create a query to be formed as a parametrized query (for example, `KustoLogs | where Timestamp > ago({Period}) | count`) 
-1. Provide a parameter for every query parameter in the URI
-In this case:
+1. Provide a parameter for every query parameter in the URI, such as: 
+    
+    `https://<your_cluster>.kusto.windows.net/MyDatabase?
+web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
-https://mycluster.kusto.windows.net/MyDatabase?web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h
+    Replace &lt;your_cluster&gt; with your Azure Data Explorer cluster name.
+
+#### Limitations
+
+The queries are limited to ~2000 characters because of browser limitations, HTTP proxies, and tools that validate links, such as Microsoft Outlook. The limitation is approximate because it's dependent on the cluster and Database name length. For more information, see [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427). 
+
+To reduce the chances of reaching the character limit, see [Getting Shorter Links](#getting-shorter-links).
+
+The format of the URI is:
+    `https://<ClusterCname>.kusto.windows.net/<DatabaseName>web=0?query=<QueryToExecute>`
+
+For example:
+    [https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10](https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10)
+ 
+This URI will open Kusto.Explorer, connect to the `Help` Kusto cluster, and run the specified query on the `Samples` database. If there's an instance of Kusto.Explorer already running, the running instance will open a new tab and run the query in it.
 
 ### Getting shorter links
 
@@ -189,7 +198,7 @@ Command-line arguments are used to configure the tool to perform additional func
 
 Command-line arguments are passed as part of the URL that's used to open the application, in a similar way to [query deep-linking](#creating-a-deep-link).
 
-## Command-line argument syntax
+### Command-line argument syntax
 
 Kusto.Explorer supports several command-line arguments in the following syntax (the order matters):
 
@@ -222,7 +231,7 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 
 ## Manage clusters, databases, tables, or function authorized principals
 
-> [!Note]
+> [!NOTE]
 > Only [admins](../management/access-control/role-based-authorization.md) can add or drop authorized principals in their own scope.
 
 Right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Cluster Authorized Principals**. (You can also select this option from the Management Menu.)
@@ -252,4 +261,4 @@ Learn more about Kusto.Explorer tools and utilities:
 * [Kusto.Explorer code analyzer](kusto-explorer-code-analyzer.md)
 * [Kusto.Explorer code navigation](kusto-explorer-codenav.md)
 * [Kusto.Explorer code refactoring](kusto-explorer-refactor.md)
-* [Kusto Query Language (KQL)](https://docs.microsoft.com/azure/kusto/query/)
+* [Kusto Query Language (KQL)](../query/index.md)
