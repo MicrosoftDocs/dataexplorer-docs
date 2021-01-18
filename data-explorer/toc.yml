@@ -1717,7 +1717,7 @@
         items: 
         - name: Extents overview
           href: ./kusto/management/extents-overview.md
-        - name: Extent container clean commands
+        - name: Extent containers clean commands
           href: ./kusto/management/clean-extent-containers.md
         - name: Extents Commands
           items: 
