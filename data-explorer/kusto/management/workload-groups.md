@@ -20,7 +20,7 @@ You can define up to 10 custom workload groups, excluding the two built-in workl
 
 ## Built-in workload groups
 
-There are two pre-defined workload groups: [the `internal` workload group](#the-internal-workload-group) and [the `default` workload group](#the-default-workload-group).
+There are two pre-defined workload groups: [the `internal` workload group](#internal-workload-group) and [the `default` workload group](#default-workload-group).
 
 ### Default workload group
 
