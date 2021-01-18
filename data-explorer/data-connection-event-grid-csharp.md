@@ -194,6 +194,6 @@ dataLakeFileClient.Rename(destinationFilePath);
 
 > [!NOTE]
 > * Directory renaming is also possible in ADLSv2, but it not triggers *blob renamed* events and ingestion of blobs inside the directory. To ingest blobs following renaming, a direct renaming of the desired blob is needed.
-> * If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid#create-an-event-grid-data-connection-in-azure-data-explorer) or while creating [Event Grid resources manually](ingest-data-event-grid-manual#create-an-event-grid-subscription), the filters are applied on the destination file path.
+> * If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), the filters are applied on the destination file path.
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]
