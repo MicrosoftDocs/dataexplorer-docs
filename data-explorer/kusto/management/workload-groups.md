@@ -2,33 +2,33 @@
 title: Workload groups - Azure Data Explorer
 description: This article describes workload groups in Azure Data Explorer.
 services: data-explorer
-author: yonileibowitz
-ms.author: yonil
-ms.reviewer: orspod
+author: orspod
+ms.author: orspodek
+ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/31/2020
+ms.date: 01/18/2021
 ---
 # Workload groups (Preview)
 
-A workload group serves as a container for requests (queries, commands) that have similar classification criteria.
-A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
-When a request's execution begins, the request is classified and assigned to a specific workload group.
-Then, the request runs using the policies assigned to the workload group.
+A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests. When a request's execution begins, the request is classified and assigned to a specific workload group. Then, the request runs using the policies assigned to the workload group.
 
 You can define up to 10 custom workload groups, excluding the two built-in workload groups.
+
+> [!NOTE]
+> Requests that aren't queries or control commands aren't included in the scope of workload groups. For example: streaming ingestion requests.
 
 ## Built-in workload groups
 
 There are two pre-defined workload groups: [the `internal` workload group](#the-internal-workload-group) and [the `default` workload group](#the-default-workload-group).
 
-### The `default` workload group
+### Default workload group
 
 Requests are classified into the `default` group when any of the following conditions is met:
 
 * There are no criteria to classify a request.
-* An attempt to classify the request into a non-existent group.
-* A general classification failure.
+* An attempt was made to classify the request into a non-existent group.
+* A general classification failure has occurred.
 
 You can:
 
@@ -36,9 +36,9 @@ You can:
 * Change the policies that apply to the `default` workload group.
 * Classify requests into the `default` workload group.
 
-You can [monitor](#monitoring) what gets classified to the internal workload group, and statistics of those requests.
+Monitor what gets classified to the internal workload group and the statistics of those requests using the [Monitoring recommendations](#monitoring).
 
-### The `internal` workload group
+### Internal workload group
 
 The `internal` workload group is populated with requests that are for internal use only.
 
@@ -68,9 +68,6 @@ The following policies can be defined per workload group:
 [System commands](systeminfo.md) indicate which workload group requests were classified into.
 Use these commands to aggregate resources utilization by workload group for requests that have completed.
 
-Use the [`.show workload groups resources utilization` command](workload-groups-commands.md#show-workload-groups-resources-utilization)
-to see the *current* resources utilization.
+Use the [`.show workload groups resources utilization` command](workload-groups-commands.md#show-workload-groups-resources-utilization) to see the *current* resources utilization.
 
-## Notes
 
-1. Requests that aren't queries or control commands aren't included in the scope of workload groups. For example: streaming ingestion requests.
