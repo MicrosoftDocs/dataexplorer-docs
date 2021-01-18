@@ -2,21 +2,18 @@
 title: Workload groups management - Azure Data Explorer
 description: This article describes management commands for workload groups in Azure Data Explorer.
 services: data-explorer
-author: yonileibowitz
-ms.author: yonil
-ms.reviewer: orspod
+author: orspod
+ms.author: orspodek
+ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/31/2020
+ms.date: 01/18/2021
 ---
 # Workload groups (Preview) - Control commands
 
-## Permissions
+These commands require [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
 
-Managing workload groups can be done by an [AllDatabasesAdmin](access-control/role-based-authorization.md),
-using the following control commands.
-
-## create-or-alter workload_group
+## .create-or-alter workload_group
 
 Creates a new workload group, or alters an existing workload group.
 
@@ -26,7 +23,9 @@ Creates a new workload group, or alters an existing workload group.
 
 ### Examples
 
-Create a workload group with a full definition of its Request limits policy:
+#### Full definition of request limits policy
+
+Create a workload group with a full definition of its request limits policy:
 
 ```kusto
 .create-or-alter workload_group MyWorkloadGroup '{'
@@ -67,7 +66,9 @@ Create a workload group with a full definition of its Request limits policy:
 '}'
 ```
 
-Create a workload group with a full definition of its Request limits policy and Request rate limits policies:
+#### Full definition of request limits policy and request rate limits policies
+
+Create a workload group with a full definition of its request limits policy and request rate limits policies:
 
 ```kusto
 .create-or-alter workload_group ['My Workload Group'] '{'
@@ -126,13 +127,15 @@ Create a workload group with a full definition of its Request limits policy and 
 '}'
 ```
 
-## alter-merge workload_group
+## .alter-merge workload_group
 
 ### Syntax
 
 `.alter-merge` `workload_group` *WorkloadGroupName* `"`*Serialized partial workload group and policies*`"`
 
 ### Examples
+
+#### Add title for this example
 
 Alter specific limits in the Request limits policy of the `default` workload group,
 while keeping previously defined limits as-is:
@@ -151,6 +154,7 @@ while keeping previously defined limits as-is:
 '  }'
 '}'
 ```
+#### Add title for this example
 
 Alter the request rate limit policies of the `default` workload group,
 while keeping its request limits policy as-is:
@@ -170,7 +174,7 @@ while keeping its request limits policy as-is:
 '}'
 ```
 
-## drop workload_group
+## .drop workload_group
 
 Drops a workload group.
 
@@ -190,7 +194,7 @@ The `internal` and `default` workload groups may not be dropped.
 .drop workload_group ['MyWorkloadGroup']
 ```
 
-## show workload_group
+## .show workload_group
 
 Shows a specific or all workload group definitions.
 
@@ -217,7 +221,7 @@ Shows a specific or all workload group definitions.
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | MyWorkloadGroup    | {"RequestRateLimitPolicies": [{"IsEnabled": true, "Scope": "WorkloadGroup", "LimitKind": "ConcurrentRequests", "Properties": {"MaxConcurrentRequests": 30}}]} |
 
-## show workload groups resources utilization
+## .show workload groups resources utilization
 
 Shows the *current* resources utilization per workload group and/or per principal, if request rate limits have been defined.
 
@@ -258,25 +262,25 @@ For example, when there are no concurrent requests in the workload group.
 | MyWorkloadGroup   | aaduser=e2056bdc-5448-4999-8b9b-1ebf9dd1e62b;94918272-e999-45a6-81f1-85f0428dad53 | RequestCount       | 120      | 15       | 00:01:00   | 2020-11-04 22:38:54.0000000 |
 | MyWorkloadGroup   | aaduser=e2056bdc-5448-4999-8b9b-1ebf9dd1e62b;94918272-e999-45a6-81f1-85f0428dad53 | TotalCpuSeconds    | 32500    | 22584    | 01:00:00   | 2020-11-04 22:38:54.0000000 |
 
-## Example
+## Example -- GIVE EXPLANATION
 
-The following set of commands:
+This example does the following steps:
 
 1. Creates a workload group named `My Workload Group`.
 1. Creates a `request_classification` policy that classifies requests with the following characteristics to `My Workload Group`:
-    1. The request is a query.
-    1. The current principal is an AAD user, and is a member of the AAD group `MyGroup@contoso.com`.
-    1. The current application is named `Kusto.Explorer`.
-    1. The current database is named `My Database`.
+    * The request is a query.
+    * The current principal is an AAD user, and is a member of the AAD group `MyGroup@contoso.com`.
+    * The current application is named `Kusto.Explorer`.
+    * The current database is named `My Database`.
 1. Applies the following **request limits** to requests classified to `My Workload Group`:
-    1. Default data scope: hot cache (caller *can't* relax the limit in client request properties).
-    1. Maximum records in result set: 100,000 (caller *can* relax the limit in client request properties).
-    1. Maximum size of result set: 50 MB (caller *can* relax the limit in client request properties).
-    1. Maximum execution time: 1 minute (caller *can't* relax the limit in client request properties).
+    * Default data scope: hot cache (caller *can't* relax the limit in client request properties).
+    * Maximum records in result set: 100,000 (caller *can* relax the limit in client request properties).
+    * Maximum size of result set: 50 MB (caller *can* relax the limit in client request properties).
+    * Maximum execution time: 1 minute (caller *can't* relax the limit in client request properties).
 1. Applies the following **request rate limits** to requests classified to `My Workload Group`:
-    1. Maximum number of concurrent requests: 10.
-    1. Maximum number of concurrent requests per principal: 3.
-    1. Total number of requests per minute per principal: 12.
+    * Maximum number of concurrent requests: 10.
+    * Maximum number of concurrent requests per principal: 3.
+    * Total number of requests per minute per principal: 12.
 
 Any other request is classified to the `default` workload group.
 Request limits that aren't defined in `My Workload Group`'s policy are taken from the `default` workload group's policy.
