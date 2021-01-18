@@ -107,7 +107,7 @@
       },
       {
         "source_path": "data-explorer/management/query-throttling-policy-commands.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/request-rate-limit-policy-commands.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/request-rate-limit-policy-commands",
         "redirect_document_id": false
       }
     ]
