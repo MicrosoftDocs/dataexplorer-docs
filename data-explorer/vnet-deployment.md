@@ -189,7 +189,7 @@ Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to re
 | West Central US | 168.61.212.201, 23.101.115.123 |
 | West Europe | 23.97.212.5, 213.199.136.176 |
 | West India | 23.99.5.162 |
-| West US | 23.99.5.162, 13.88.13.50 |
+| West US | 23.99.5.162, 13.88.13.50, 104.210.32.14 |
 | West US 2 | 23.99.5.162, 104.210.32.14, 52.183.35.124 |
 
 ## Disable access to Azure Data Explorer from the public IP
