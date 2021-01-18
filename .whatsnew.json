@@ -7,35 +7,39 @@
     "relativeLinkPrefix": "/azure/data-explorer/"
   },
   "inclusionCriteria": {
-    "minAdditionsToFile": 1
+    "minAdditionsToFile": 1,
+    "pullRequestTitlesToIgnore": [
+      "^Confirm merge from repo_sync_working_branch",
+      "^Repo sync for protected CLA branch"
+    ]
   },
   "areas": [
     {
-      "name": ".",
+      "names": ["."],
       "heading": "Azure Data Explorer"
     },
     {
-      "name": "kusto/api",
+      "names": ["kusto/api"],
       "heading": "API"
     },
     {
-      "name": "kusto/concepts",
+      "names": ["kusto/concepts"],
       "heading": "Concepts"
     },
     {
-      "name": "kusto/functions-library",
+      "names": ["kusto/functions-library"],
       "heading": "Functions library"
     },
     {
-      "name": "kusto/management",
+      "names": ["kusto/management"],
       "heading": "Management"
     },
     {
-      "name": "kusto/query",
+      "names": ["kusto/query"],
       "heading": "Query"
     },
     {
-      "name": "kusto/tools",
+      "names": ["kusto/tools"],
       "heading": "Tools"
     }
   ]

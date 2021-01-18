@@ -24,7 +24,7 @@ By default, each `string` value is broken into maximal sequences of ASCII alphan
 For example, in the following `string`, the terms are `Kusto`, `WilliamGates3rd`, and the following substrings: `ad67d136`, `c1db`, `4f9f`, `88ef`, `d94f3b6b0b5a`.
 
 ```
-Kusto:  ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;;WilliamGates3rd
+Kusto: ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;;WilliamGates3rd
 ```
 
 Kusto builds a term index consisting of all terms that are *four characters or more*, and this index is used by `has`, `!has`, and so on. If the query looks for a term that is smaller than four characters, or uses a `contains` operator, Kusto will revert to scanning the values in the column if it can't determine a match. This method is much slower than looking up the term in the term index.
@@ -37,6 +37,9 @@ Kusto builds a term index consisting of all terms that are *four characters or m
 > * LHS = left hand side of the expression
 > 
 > Operators with an `_cs` suffix are case sensitive.
+
+> [!NOTE]
+> Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
 Operator        |Description                                                       |Case-Sensitive|Example (yields `true`)
 ----------------|------------------------------------------------------------------|--------------|-----------------------
