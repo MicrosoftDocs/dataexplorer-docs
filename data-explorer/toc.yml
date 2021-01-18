@@ -1717,8 +1717,6 @@
         items: 
         - name: Extents overview
           href: ./kusto/management/extents-overview.md
-        - name: Extent containers clean commands
-          href: ./kusto/management/clean-extent-containers.md
         - name: Extents Commands
           items: 
           - name: .alter extent
@@ -1735,6 +1733,8 @@
             href: ./kusto/management/replace-extents.md
           - name: .show extents
             href: ./kusto/management/show-extents.md
+        - name: Extent containers clean commands
+          href: ./kusto/management/clean-extent-containers.md
       - name: Cluster follower
         href: ./kusto/management/cluster-follower.md
       - name: Data purge
