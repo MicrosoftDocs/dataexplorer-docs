@@ -2,21 +2,18 @@
 title: Request classification policy management - Azure Data Explorer
 description: This article describes management commands for the request classification policy in Azure Data Explorer.
 services: data-explorer
-author: yonileibowitz
-ms.author: yonil
-ms.reviewer: orspod
+author: orspod
+ms.author: orspodek
+ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/31/2020
+ms.date: 01/18/2021
 ---
 # Request classification policy (Preview) - Control commands
 
-## Permissions
+These commands require [AllDatabasesAdmin](access-control/role-based-authorization.md) permissions.
 
-Managing a cluster's request classification policy can be done by an [AllDatabasesAdmin](access-control/role-based-authorization.md),
-using the following control commands.
-
-## alter cluster policy request_classification
+## .alter cluster policy request_classification
 
 Changes the cluster's request classification policy.
 
@@ -25,6 +22,8 @@ Changes the cluster's request classification policy.
 `.alter` `cluster` `policy` `request_classification` `"`*Serialized partial policy*`"` `<|` *Classification function body*
 
 ### Examples
+
+#### Set a policy with multiple workload groups
 
 ```kusto
 .alter cluster policy request_classification '{"IsEnabled":true}' <|
@@ -37,6 +36,8 @@ Changes the cluster's request classification policy.
          "default")
 ```
 
+#### Set a policy with a single workload group
+
 ```kusto
 .alter cluster policy request_classification '{"IsEnabled":false}' <|
     iff(request_properties.current_application == "Kusto.Explorer" and request_properties.request_type == "Query",
@@ -44,7 +45,7 @@ Changes the cluster's request classification policy.
         "default")
 ```
 
-## alter-merge cluster policy request_classification
+## .alter-merge cluster policy request_classification
 
 Enables or disables the cluster's request classification policy.
 
@@ -54,15 +55,19 @@ Enables or disables the cluster's request classification policy.
 
 ### Examples
 
+#### Enable the policy
+
 ```kusto
 .alter-merge cluster policy request_classification '{"IsEnabled":true}'
 ```
+
+#### Disable the policy
 
 ```kusto
 .alter-merge cluster policy request_classification '{"IsEnabled":false}'
 ```
 
-## delete cluster policy request_classification
+## .delete cluster policy request_classification
 
 Deletes the cluster's request classification policy.
 
@@ -70,7 +75,7 @@ Deletes the cluster's request classification policy.
 
 `.delete` `cluster` `policy` `request_classification`
 
-## show cluster policy request_classification
+## .show cluster policy request_classification
 
 Shows the cluster's request classification policy.
 
