@@ -86,7 +86,7 @@
       - name: One-click ingestion overview 
         href: ingest-data-one-click.md
       - name: CSV data from container to new table
-        displayName: ingest data, ingestion, one click
+        displayName: Event Grid, ingest data, ingestion, one click
         href: one-click-ingestion-new-table.md
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
@@ -365,13 +365,15 @@
         href: dealing-with-duplicates.md
   - name: Monitor
     items:
-    - name: Use diagnostic logs to monitor ingestion, commands, and queries
-      href: using-diagnostic-logs.md
     - name: Monitor Azure Data Explorer with metrics
       displayName: health, performance
       href: using-metrics.md
+    - name: Use diagnostic logs to monitor ingestion, commands, queries, and tables
+      href: using-diagnostic-logs.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
+    - name: Use Azure Monitor insights
+      href: /azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
   - name: Share data
     items:
       - name: Use Azure Data Share
@@ -414,7 +416,7 @@
           href: /sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context
         - name: Use Kqlmagic 
           displayName: Azure Data Studio
-          href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext
+          href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
     - name: Azure Pipelines
       href: devops.md  
     - name: Sync Kusto
@@ -1722,29 +1724,35 @@
         href: ./kusto/management/access-control/aad.md
       - name: Principal roles
         href: ./kusto/management/access-control/role-based-authorization.md
+      - name: Allow cross-tenant queries and commands
+        href: cross-tenant-query-and-commands.md
       - name: How-To Azure Active Directory authentication
         displayName: AAD, Azure AD
         href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
     - name: Advanced data management
       items:
-      - name: Extents (data shards) overview
-        href: ./kusto/management/extents-overview.md
-      - name: Extents Commands
+      - name: Extents (data shards) 
         items: 
-        - name: .alter extent
-          href: ./kusto/management/alter-extent.md
-        - name: .drop extents
-          href: ./kusto/management/drop-extents.md
-        - name: .drop extent tags
-          href: ./kusto/management/drop-extent-tags.md
-        - name: .merge extents
-          href: ./kusto/management/merge-extents.md
-        - name: .move extents
-          href: ./kusto/management/move-extents.md
-        - name: .replace extents
-          href: ./kusto/management/replace-extents.md
-        - name: .show extents
-          href: ./kusto/management/show-extents.md
+        - name: Extents overview
+          href: ./kusto/management/extents-overview.md
+        - name: Extents commands
+          items: 
+          - name: .alter extent
+            href: ./kusto/management/alter-extent.md
+          - name: .drop extents
+            href: ./kusto/management/drop-extents.md
+          - name: .drop extent tags
+            href: ./kusto/management/drop-extent-tags.md
+          - name: .merge extents
+            href: ./kusto/management/merge-extents.md
+          - name: .move extents
+            href: ./kusto/management/move-extents.md
+          - name: .replace extents
+            href: ./kusto/management/replace-extents.md
+          - name: .show extents
+            href: ./kusto/management/show-extents.md
+        - name: Extent containers clean commands
+          href: ./kusto/management/clean-extent-containers.md
       - name: Cluster follower
         href: ./kusto/management/cluster-follower.md
       - name: Data purge

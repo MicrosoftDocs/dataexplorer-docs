@@ -38,6 +38,7 @@ When data is ingested into Azure Data Explorer, the system keeps track of the da
 
 > [!NOTE]
 > You can specify a value for the ingestion date and time by using the ingestion property `creationTime`.
+> When doing so, make sure the `Lookback` property in the table's effective [Extents merge policy](mergepolicy.md) is aligned with the values you set for `creationTime`.
 
 By default, the effective policy is `null`, which means that all the data is considered **hot**.
 A non-`null` table-level policy overrides a database-level policy.
