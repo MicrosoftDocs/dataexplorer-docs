@@ -293,6 +293,20 @@ Error level color scheme in **Light** mode | Error level color scheme in **Dark*
 |---|---|
 :::image type="content" source="media/web-query-data/light-mode.png" alt-text="Screen shot of color legend in light mode"::: | :::image type="content" source="media/web-query-data/dark-mode.png" alt-text="Screen shot of color legend in dark mode":::
 
+Follow these rules to use highlighted error levels: 
+1. Column must be of type int, long or string.
+2. If Column is of type long or int:
+   - Column name must be `Level`
+   - Values must only include numbers between 1 and 5.
+3. If Column is of type string, 
+   - Column name can be `Level` to improve performance. 
+   - it must only include these values
+	   - critical (or crit, fatal, assert, high)
+	   - error (or e)
+	   - warning (or w, monitor)
+	   - information 
+	   - verbose (or verb, d).
+   
 ## Provide feedback
 
 1. In the upper right of the application, select the feedback icon :::image type="icon" source="media/web-query-data/icon-feedback.png" border="false":::.
