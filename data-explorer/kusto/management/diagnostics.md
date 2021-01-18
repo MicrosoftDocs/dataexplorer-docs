@@ -110,7 +110,7 @@ Returns information about the Kusto cluster state of health.
 
 Returns the results of a calculation for an estimated cluster capacity for each resource.
 
-`scope` controls if the capacities shown are based on the [workload group](workload-groups.md) the command was classified to, or the cluster's total capacity. If unspecified, the default scope is `workloadgroup`.
+`scope` controls the basis on which the capacities are shown. The capacity can be based on the [workload group](workload-groups.md) the command was classified to, or the cluster's total capacity. If unspecified, the default scope is `workloadgroup`.
  
 **Results**
 
