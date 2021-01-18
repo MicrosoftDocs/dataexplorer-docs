@@ -2,18 +2,16 @@
 title: Request rate limit policy - Azure Data Explorer
 description: This article describes the request rate limit policy in Azure Data Explorer.
 services: data-explorer
-author: yonileibowitz
-ms.author: yonil
-ms.reviewer: orspod
+author: orspod
+ms.author: orspodek
+ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/31/2020
+ms.date: 01/18/2021
 ---
 # Request rate limit policy (Preview)
 
-A workload group's request rate limit policy allows limiting:
-
-* The number of concurrent requests classified into the workload group:
+The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group:
   * Per workload group
   * Per principal
 
@@ -36,21 +34,21 @@ A request rate limit of kind `ConcurrentRequests` includes the following propert
 |-----------------------|------|--------------------------------------------|------------------|
 | MaxConcurrentRequests | int  | The maximum number of concurrent requests. | [`1`, `10000`]   |
 
-Commands that will be denied because of this policy will result with a `ControlCommandThrottledException` (error code = 429).
+Commands that are denied because of this policy will give a `ControlCommandThrottledException` (error code = 429).
 
-Queries that will be denied because of this policy will result with a `QueryThrottledException` (error code = 429).
+Queries that are denied because of this policy will give a `QueryThrottledException` (error code = 429).
 
 ### Resource utilization rate limit
 
 A request rate limit of kind `ResourceUtilization` includes the following properties:
 
-| Name           | Type           | Description                                                                                                                                                                                                                                                                                                                                        | Supported Values                  |
-|----------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|
+| Name           | Type           | Description     | Supported Values      |
+|----------------|----------------|----------------|--------------|
 | ResourceKind   | `ResourceKind` | The resource to limit. **Note:** when `ResourceKind` is `TotalCpuSeconds`, the limit is enforced based on **post-facto** reports of CPU utilization of *completed* requests: Requests whose execution will *begin after* `MaxUtilization` has been reached within the defined `TimeWindow` (based on reporting of *completed* requests) will fail. | `RequestCount`, `TotalCpuSeconds` |
-| MaxUtilization | `long`         | The maximum of the resource that can be utilized.                                                                                                                                                                                                                                                                                                  | [`1`, `9223372036854775807`]      |
-| TimeWindow     | `timespan`     | The sliding time window during which the limit is applied.                                                                                                                                                                                                                                                                                         | [`00:01:00`, `1.00:00:00`]        |
+| MaxUtilization | `long`         | The maximum of the resource that can be utilized.    | [`1`, `9223372036854775807`]      |
+| TimeWindow     | `timespan`     | The sliding time window during which the limit is applied.     | [`00:01:00`, `1.00:00:00`]        |
 
-Requests that will be denied because of this policy will result with a `QuotaExceededException` (error code = 429).
+Requests denied because of this policy will give a `QuotaExceededException` (error code = 429).
 
 ### Example
 
@@ -93,7 +91,7 @@ The following policies allow up to:
 
 ### The `default` workload group
 
-The `default` workload group has the following policy defined by default. It can be altered.
+The `default` workload group has the following policy defined by default. This policy can be altered.
 
 ```json
 [
@@ -117,11 +115,10 @@ The `default` workload group has the following policy defined by default. It can
 * The cluster's [capacity policy](capacitypolicy.md) may also limit the request rate of requests that fall under a specific category, for example: *ingestions*.
   * If either of the limits defined by [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a control command will be throttled.
 * When request rate limits of kind `ConcurrentRequests` are applied, the output of [`.show capacity`](diagnostics.md#show-capacity) may change based on those limits.
-  * [`.show capacity`](diagnostics.md#show-capacity) will show the capacities for the principal that ran the request, according to the context of the request,
-    the workload group it was classified into, and its effective policies.
+  * [`.show capacity`](diagnostics.md#show-capacity) will show the capacities for the principal that ran the request, according to the context of the request, the workload group it was classified into, and its effective policies.
   * Different principals may see different outputs when running the command, if their requests are classified into different workload groups.
   * When running `.show capacity with(scope=cluster)`, the request context is ignored, and the output is only affected by the cluster's [capacity policy](capacitypolicy.md).
 
 ## Control commands
 
-A workload group's request concurrency policy is managed using [Workload groups control commands](workload-groups-commands.md).
+Manage the workload group's request concurrency policy with [Workload groups control commands](workload-groups-commands.md).
