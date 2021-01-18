@@ -51,7 +51,7 @@ In this article, you learn how to create manually the resources needed for Event
     | Topic Type | *Storage account* | The type of Event Grid topic. Automatically populated.|
     | Source Resource | *gridteststorage1* | The name of your storage account. Automatically populated.|
     | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. Automatically populated.|
-    | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the currently supported types: Microsoft.Storage.BlobCreated. or Microsoft.Storage.BlobRenamed|
+    | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the currently supported types: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Note that blob renaming is supported only for ADLSv2 storage. |
 
 1. In **ENDPOINT DETAILS**, select **Event Hubs**.
 
