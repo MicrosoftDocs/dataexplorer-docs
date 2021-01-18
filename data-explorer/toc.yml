@@ -1421,14 +1421,10 @@
         items:
         - name: Request limits policy
           href: ./kusto/management/request-limits-policy.md
-        - name: Request limits policy commands
-          href: ./kusto/management/request-limits-policy-commands.md
       - name: Request rate limit policy
         items:
         - name: Request rate limit policy
           href: ./kusto/management/request-rate-limit-policy.md
-        - name: Request rate limit policy commands
-          href: ./kusto/management/request-rate-limit-policy-commands.md
     - name: Schema
       items:
       - name: Best practices for schema management
