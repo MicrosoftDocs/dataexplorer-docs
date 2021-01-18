@@ -71,11 +71,13 @@ location = "Central US"
 table_name = "StormEvents"
 mapping_rule_name = "StormEvents_CSV_Mapping"
 data_format = "csv"
+blob_storage_event_type = "Microsoft.Storage.BlobCreated"
 
 #Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.data_connections.create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, data_connection_name=data_connection_name,
                                             parameters=EventGridDataConnection(storage_account_resource_id=storage_account_resource_id, event_hub_resource_id=event_hub_resource_id, 
-                                                                                consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format))
+                                                                                consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format,
+                                                                                blob_storage_event_type=blob_storage_event_type))
 ```
 |**Setting** | **Suggested value** | **Field description**|
 |---|---|---|
@@ -94,5 +96,6 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | storage_account_resource_id | *Resource ID* | The resource ID of your storage account that holds the data for ingestion. |
 | consumer_group | *$Default* | The consumer group of your Event Hub.|
 | location | *Central US* | The location of the data connection resource.|
+| blob_storage_event_type | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Currently supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Note that blob renaming is supported only for ADLSv2 storage.|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-python](includes/data-explorer-data-connection-clean-resources-python.md)]
