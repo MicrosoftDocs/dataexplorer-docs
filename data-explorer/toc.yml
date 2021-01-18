@@ -1717,7 +1717,7 @@
         items: 
         - name: Extents overview
           href: ./kusto/management/extents-overview.md
-        - name: Extents Commands
+        - name: Extents commands
           items: 
           - name: .alter extent
             href: ./kusto/management/alter-extent.md
