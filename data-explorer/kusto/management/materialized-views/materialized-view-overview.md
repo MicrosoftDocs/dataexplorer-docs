@@ -56,9 +56,11 @@ The [monitoring](#materialized-views-monitoring) section explains how to trouble
 
 ## Materialized views queries
 
-The primary way of querying a materialized view is by its name, like querying a table reference. When the materialized view is queried, it combines the materialized part of the view with the records in the source table that haven't been materialized yet. Querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information about the breakdown of the materialized view parts, see [how materialized views work](#how-materialized-views-work). 
+* The primary way of querying a materialized view is by its name, like querying a table reference. When the materialized view is queried, it combines the materialized part of the view with the records in the source table that haven't been materialized yet (the `delta`). Querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information about the _materialized_ vs. _non-materialized_ parts in materialized view, see [how materialized views work](#how-materialized-views-work).
 
-Another way of querying the view is by using the [`materialized_view()` function](../../query/materialized-view-function.md). This option supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
+    * Combining the materialized part with the `delta` executes a join behind the scenes. By default, this join isn't [shuffled](../../query/shufflequery.md). You can force shuffling of the query by adding a [client request property](../../api/netfx/request-properties.md) named `materialized_view_shuffle`. See examples below. Adding this property can sometimes significantly improve the performance of the materialized view query. In the future, the need for shuffling will be automatically deduced based on the materialized view's current state, but for now this requires an explicit "hint".
+
+* Another way of querying the view is by using the [`materialized_view()` function](../../query/materialized-view-function.md). This option supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
 
 The view can participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
 
@@ -68,6 +70,24 @@ The view can participate in cross-cluster or cross-database queries, but aren't 
     
     <!-- csl -->
     ```kusto
+    ViewName
+    ```
+
+1. Query the entire view, and provide a "hint" to use `shuffle` strategy. The most recent records in source table are included:
+
+    * **Example #1**: shuffle based on the `Id` column (similarly to using `hint.shufflekey=Id`):
+    
+    <!-- csl -->
+    ```kusto
+    set materialized_view_shuffle = dynamic([{"Name" : "ViewName", "Keys" : [ "Id" ] }]);
+    ViewName
+    ```
+
+    * **Example #2**: shuffle based on all keys (similarly to using `hint.strategy=shuffle`):
+    
+    <!-- csl -->
+    ```kusto
+    set materialized_view_shuffle = dynamic([{"Name" : "ViewName" }]);
     ViewName
     ```
 
