@@ -35,8 +35,8 @@ This article shows you how to enable customer-managed keys encryption using the 
 
 1. Select **Key**.
 1. Version:
-    1. If you'd like to ensure that this key always uses the latest key version, check the **Always use current key version** checkbox.
-    1. Otherwise select **Version**.
+    * To ensure that this key always uses the latest key version, select the **Always use current key version** checkbox.
+    * Otherwise, select **Version**.
 1. Click **Select**.
 
     :::image type="content" source="media/customer-managed-keys-portal/customer-managed-key-key-vault.png" alt-text="Select key from Azure Key Vault":::
