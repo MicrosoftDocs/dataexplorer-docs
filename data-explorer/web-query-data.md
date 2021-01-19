@@ -282,6 +282,8 @@ The export and import actions help you protect your work environment and relocat
 
 Kusto tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on). 
 
+#### Enable error level highlighting
+
 To enable the error level highlighting:
 
 1. Select the **Settings** icon next to your user name.
@@ -293,6 +295,22 @@ Error level color scheme in **Light** mode | Error level color scheme in **Dark*
 |---|---|
 :::image type="content" source="media/web-query-data/light-mode.png" alt-text="Screen shot of color legend in light mode"::: | :::image type="content" source="media/web-query-data/dark-mode.png" alt-text="Screen shot of color legend in dark mode":::
 
+#### Column requirements for highlighting
+
+For highlighted error levels, the column must be of type int, long or string.
+
+* If the column is of type `long` or `int`:
+   * The column name must be *Level*
+   * Values may only include numbers between 1 and 5.
+* If the column is of type `string`: 
+   * Column name can optionally be *Level* to improve performance. 
+   * The column can only include the following values:
+	   * critical, crit, fatal, assert, high
+	   * error, e
+	   * warning, w, monitor
+	   * information
+	   * verbose, verb, d
+   
 ## Provide feedback
 
 1. In the upper right of the application, select the feedback icon :::image type="icon" source="media/web-query-data/icon-feedback.png" border="false":::.
