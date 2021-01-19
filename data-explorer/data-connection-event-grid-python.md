@@ -96,6 +96,6 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | storage_account_resource_id | *Resource ID* | The resource ID of your storage account that holds the data for ingestion. |
 | consumer_group | *$Default* | The consumer group of your Event Hub.|
 | location | *Central US* | The location of the data connection resource.|
-| blob_storage_event_type | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Currently supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Note that blob renaming is supported only for ADLSv2 storage.|
+| blob_storage_event_type | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Currently supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage.|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-python](includes/data-explorer-data-connection-clean-resources-python.md)]
