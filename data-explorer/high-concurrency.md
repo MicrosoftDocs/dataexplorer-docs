@@ -15,7 +15,15 @@ Highly concurrent applications are needed in scenarios with a large user base, w
 
 Use cases include large-scale monitoring and alerting dashboards, for example Microsoft products and services such as [Azure Monitor](https://azure.microsoft.com/en-au/services/monitor/), [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/), and [Playfab](https://playfab.com/). All these services use Azure Data Explorer for serving high concurrency workloads.
 
-Azure Data Explorer is a fast, fully managed big data analytics service for real-time analytics on extremely large volumes of data streaming from applications, websites, IoT devices, and more. High concurrency applications require careful design of the backend architecture using advanced data partitioning, pre-aggregation and caching features, and optimizing platform configuration. This article discusses how to implement these considerations and features to achieve high concurrency in an optimal, cost-effective way. These features can be used alone, or in combination.
+Azure Data Explorer is a fast, fully managed big data analytics service for real-time analytics on extremely large volumes of data streaming from applications, websites, IoT devices, and more. High concurrency applications require careful design of the backend architecture using the following tools:
+
+* [Optimize data](#optimize-data)
+* [Set leader-follower architecture pattern](#set-leader-follower-architecture-pattern)
+* [Optimize queries](#optimize-queries)
+* [Set cluster policies](#set-cluster-policies)
+* [Monitor Azure Data Explorer clusters](#monitor-azure-data-explorer-clusters)
+
+This article presents a variety of recommendations for each of the above subjects that you can implement to achieve high concurrency in an optimal, cost-effective way. These features can be used alone, or in combination.
 
 > [!NOTE]
 > The actual number of queries that can run concurrently on a cluster depends on various factors such as cluster resources, data volumes, query complexity, and usage patterns.
@@ -51,7 +59,7 @@ Pre-aggregation can significantly reduce CPU resources during query time. Exampl
 
 Configure the caching policy so that most of the queries run on data that is stored in the disk cache, also known as hot storage. Only run limited, carefully designed scenarios on the cold storage or external tables.
 
-## Leader-Follower architecture pattern
+## Set leader-follower architecture pattern
 
 The follower database is a feature that follows a database or a set of tables in a database from another cluster, which is located in the same region. This feature is exposed through [Azure Data Share](/azure/data-explorer/data-share), [Azure Resource Manager APIs](follower.md), and a set of [cluster commands](/kusto/management/cluster-follower.md). 
 
@@ -66,20 +74,20 @@ To improve the performance of queries on the follower cluster, you can enable [p
 
 The following methods will help you optimize your queries for high concurrency.
 
-### Query results cache
+### Use query results cache
 
 When more than one user loads the same dashboard at similar time, the dashboard to the second and following users can be served from the cache. This setup provides high performance with almost no CPU usage. Use the [query results cache](/kusto/query/query-results-cache.md) feature and send query results cache configuration with the query using the `set` statement.
 
 [Grafana](/azure/data-explorer/grafana) contains a configuration setting for the query results cache at the data source level, so all dashboards use this setting by default and don't need to modify the query.
 
-### Query consistency
+### Configure query consistency
 
 Azure Data Explorer supports two query consistency models: *strong* (the default) and *weak*. Strong consistency ensures that only up-to-date consistent state of data is seen, no matter which compute node receives the query. Weak consistency nodes periodically refresh their copy of the metadata, leading to a latency of 1-2 minutes in the synchronization of metadata changes. This model allows reducing the load on the node that manages the metadata changes, providing higher concurrency than the default strong consistency. This configuration can be set in client request properties and in the Grafana data source configurations.
 
 > [!NOTE]
 > If you need to reduce the lag time for the refresh of metadata even further, open a support ticket.
 
-### Query optimization
+### Optimize queries
 
 Follow [query best practices](/kusto/query/best-practices.md) so that your queries are as efficient as possible.
 
