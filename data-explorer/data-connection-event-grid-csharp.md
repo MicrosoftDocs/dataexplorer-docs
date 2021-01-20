@@ -91,7 +91,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | storageAccountResourceId | *Resource ID* | The resource ID of your storage account that holds the data for ingestion. |
 | consumerGroup | *$Default* | The consumer group of your Event Hub.|
 | location | *Central US* | The location of the data connection resource.|
-| blobStorageEventType | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Currently supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage.|
+| blobStorageEventType | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage.|
 
 ## Generate sample data
 
