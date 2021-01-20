@@ -91,7 +91,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | storageAccountResourceId | *Resource ID* | The resource ID of your storage account that holds the data for ingestion. |
 | consumerGroup | *$Default* | The consumer group of your Event Hub.|
 | location | *Central US* | The location of the data connection resource.|
-| blobStorageEventType | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Currently supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Note that blob renaming is supported only for ADLSv2 storage.|
+| blobStorageEventType | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Currently supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage.|
 
 ## Generate sample data
 
@@ -171,7 +171,7 @@ dataLakeFileClient.Upload(localFileName, uploadOptions);
 
 ### Rename file using Azure Data Lake SDK
 
-The following code snippet uses [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to rename blob in an ADLSv2 storage account.
+The following code snippet uses [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to rename a blob in an ADLSv2 storage account.
 
 ```csharp
 var accountName = <storage_account_name>;
@@ -193,7 +193,7 @@ dataLakeFileClient.Rename(destinationFilePath);
 ```
 
 > [!NOTE]
-> * Directory renaming is also possible in ADLSv2, but it not triggers *blob renamed* events and ingestion of blobs inside the directory. To ingest blobs following renaming, a direct renaming of the desired blob is needed.
-> * If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), the filters are applied on the destination file path.
+> * Directory renaming is possible in ADLSv2, but it doesn't trigger *blob renamed* events and ingestion of blobs inside the directory. To ingest blobs following renaming, directly rename the desired blobs.
+> * If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]

@@ -80,7 +80,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Data connection name | *test-grid-connection* | The name of the connection that you want to create in Azure Data Explorer.|
     | Storage account subscription | Your subscription ID | The subscription ID where your storage account is.|
     | Storage account | *gridteststorage1* | The name of the storage account that you created previously.|
-    | Event type | *Blob created* or *Blob renamed* | The type of event that triggers ingestion. Note that *Blob renamed* is supported only for ADLSv2 storage. Supported types are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. |
+    | Event type | *Blob created* or *Blob renamed* | The type of event that triggers ingestion. *Blob renamed* is supported only for ADLSv2 storage. Supported types are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. |
     | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace, and an Event Hub for you. To create resources manually, see [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)|
 
 1. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
@@ -128,7 +128,7 @@ Wait until the deployment is completed. If your deployment failed, select **Oper
 
 ## Generate sample data
 
-Now that Azure Data Explorer and the storage account are connected, you can create a sample data.
+Now that Azure Data Explorer and the storage account are connected, you can create sample data.
 
 ### Upload blob to the storage container
 
@@ -174,7 +174,7 @@ Save the data into a file and upload it with this script:
 
 ### Rename blob
 
-When ingesting data from ADLSv2 storage and define *Blob renamed* as the event type for the data connection, the trigger for blob ingestion is blob renaming. To rename blob, navigate to the blob in Azure Portal, right click on the blob and select **Rename**:
+If you are ingesting data from ADLSv2 storage and have defined *Blob renamed* as the event type for the data connection, the trigger for blob ingestion is blob renaming. To rename a blob, navigate to the blob in Azure Portal, right click on the blob and select **Rename**:
 
    :::image type="content" source="media/ingest-data-event-grid/rename-blob-in-the-portal.png" alt-text="Rename blob in Azure Portal":::
 

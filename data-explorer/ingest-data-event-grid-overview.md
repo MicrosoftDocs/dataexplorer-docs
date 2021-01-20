@@ -69,11 +69,11 @@ You can create a blob from a local file, set ingestion properties to the blob me
 
 ## Rename blobs
 
-When using ADLSv2, you can rename blob to trigger blob ingestion to Azure Data Explorer. For example see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md#generate-sample-data).
+When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data Explorer. For example, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md#generate-sample-data).
 
 > [!NOTE]
-> * Directory renaming is also possible in ADLSv2, but it not triggers *blob renamed* events and ingestion of blobs inside the directory. To ingest blobs following renaming, a direct renaming of the desired blob is needed.
-> * If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), the filters are applied on the destination file path.
+> * Directory renaming is possible in ADLSv2, but it doesn't trigger *blob renamed* events and ingestion of blobs inside the directory. To ingest blobs following renaming, directly rename the desired blobs.
+> * If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
 
 ## Delete blobs using storage lifecycle
 
