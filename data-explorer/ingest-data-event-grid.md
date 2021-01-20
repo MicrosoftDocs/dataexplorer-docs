@@ -80,7 +80,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Data connection name | *test-grid-connection* | The name of the connection that you want to create in Azure Data Explorer.|
     | Storage account subscription | Your subscription ID | The subscription ID where your storage account is.|
     | Storage account | *gridteststorage1* | The name of the storage account that you created previously.|
-    | Event type | *Blob created* or *Blob renamed* | The type of event that triggers ingestion. Note that *Blob renamed* is supported only for ADLSv2 storage. The currently supported types are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. |
+    | Event type | *Blob created* or *Blob renamed* | The type of event that triggers ingestion. Note that *Blob renamed* is supported only for ADLSv2 storage. Supported types are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. |
     | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace, and an Event Hub for you. To create resources manually, see [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)|
 
 1. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
