@@ -20,8 +20,8 @@ For an introduction to the external Azure Storage tables feature, see [Query dat
 
 **Syntax**
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
-`kind` `=` (`blob` | `adl`)  
+(`.create` `|` `.alter` `|` `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
+`kind` `=` (`blob` `|` `adl`)  
 [`partition` `by` `(` *[Partitions](#partitions)* `)` [`pathformat` `=` `(` *[PathFormat](#path-format)* `)`]]  
 `dataformat` `=` *[Format](#format)*  
 `(` *[StorageConnectionString](#connection-string)* [`,` ...] `)`   
