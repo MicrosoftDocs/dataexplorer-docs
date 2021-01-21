@@ -3,7 +3,7 @@ title: 'Ingest data using the Azure Data Explorer Python library'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Python.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: vladikbr
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/03/2019
@@ -93,7 +93,7 @@ DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
 Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
 
 ```python
-from azure.kusto.ingest import KustoIngestClient, IngestionProperties, FileDescriptor, BlobDescriptor, DataFormat, ReportLevel, ReportMethod
+from azure.kusto.ingest import QueuedIngestClient, IngestionProperties, FileDescriptor, BlobDescriptor, DataFormat, ReportLevel, ReportMethod
 
 CONTAINER = "samplefiles"
 ACCOUNT_NAME = "kustosamplefiles"
@@ -135,11 +135,11 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 Queue a message to pull data from blob storage and ingest that data into Azure Data Explorer.
 
 ```python
-INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
+INGESTION_CLIENT = QueuedIngestClient(KCSB_INGEST)
 
 # All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
-INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.CSV,
-                                           mappingReference=DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
+INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, data_format=DataFormat.CSV,
+                                           ingestion_mapping_reference=DESTINATION_TABLE_COLUMN_MAPPING, additional_properties={'ignoreFirstRecord': 'true'})
 # FILE_SIZE is the raw size of the data in bytes
 BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
 INGESTION_CLIENT.ingest_from_blob(

@@ -48,10 +48,10 @@ In this article, you learn how to create manually the resources needed for Event
     |---|---|---|
     | Name | *test-grid-connection* | The name of the event grid subscription that you want to create.|
     | Event Schema | *Event Grid Schema* | The schema that should be used for the Event Grid. |
-    | Topic Type | *Storage account* | The type of Event Grid topic. Automatically populated.|
+    | Topic Type | *Storage account* | The type of event grid topic. Automatically populated.|
     | Source Resource | *gridteststorage1* | The name of your storage account. Automatically populated.|
     | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. Automatically populated.|
-    | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the currently supported types: Microsoft.Storage.BlobCreated. or Microsoft.Storage.BlobRenamed|
+    | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the supported types: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage. |
 
 1. In **ENDPOINT DETAILS**, select **Event Hubs**.
 
