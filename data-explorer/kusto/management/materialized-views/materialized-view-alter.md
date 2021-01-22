@@ -37,7 +37,7 @@ Requires [Database Admin](../access-control/role-based-authorization.md) permiss
 
 ## Properties
 
-The `dimensionTables` and `lookback` properties are the only supported property in materialized-view alter command. For more information about these, see the [`.create materialized-view`](materialized-view-create.md) command.
+The `dimensionTables` and `lookback` properties are the only supported properties in the materialized-view alter command. For more information about these, see the [`.create materialized-view`](materialized-view-create.md) command.
 
 ## Use cases
 
