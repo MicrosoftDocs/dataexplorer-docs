@@ -289,7 +289,7 @@ When creating a materialized view with the `backfill` property, the materialized
     } 
     ```
 
-## Materialized views limitation and known issues
+## Materialized views limitations and known issues
 
 * A materialized view can't be created:
     * On top of another materialized view.
