@@ -262,7 +262,7 @@ For example, when there are no concurrent requests in the workload group.
 | MyWorkloadGroup   | aaduser=e2056bdc-5448-4999-8b9b-1ebf9dd1e62b;94918272-e999-45a6-81f1-85f0428dad53 | RequestCount       | 120      | 15       | 00:01:00   | 2020-11-04 22:38:54.0000000 |
 | MyWorkloadGroup   | aaduser=e2056bdc-5448-4999-8b9b-1ebf9dd1e62b;94918272-e999-45a6-81f1-85f0428dad53 | TotalCpuSeconds    | 32500    | 22584    | 01:00:00   | 2020-11-04 22:38:54.0000000 |
 
-## Example -- GIVE EXPLANATION
+## Example
 
 This example does the following steps:
 
