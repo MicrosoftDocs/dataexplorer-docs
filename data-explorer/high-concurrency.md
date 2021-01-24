@@ -1,5 +1,5 @@
 ---
-title: High query concurrency with Azure Data Explorer
+title: Optimize for high query concurrency with Azure Data Explorer
 description: In this article, you learn to optimize your Azure Data Explorer setup for high query concurrency.
 author: orspod
 ms.author: orspodek
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 01/11/2021
 ---
 
-# High query concurrency with Azure Data Explorer
+# Optimize for high query concurrency with Azure Data Explorer
 
 Highly concurrent applications are needed in scenarios with a large user base, where the application simultaneously handles many requests with low latency and high throughput. 
 
-Use cases include large-scale monitoring and alerting dashboards, for example Microsoft products and services such as [Azure Monitor](https://azure.microsoft.com/en-au/services/monitor/), [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/), and [Playfab](https://playfab.com/). All these services use Azure Data Explorer for serving high concurrency workloads.
+Use cases include large-scale monitoring and alerting dashboards, for example Microsoft products and services such as [Azure Monitor](https://azure.microsoft.com/en-au/services/monitor/), [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/), and [Playfab](https://playfab.com/). All these services use Azure Data Explorer for serving high concurrency workloads. Azure Data Explorer is a fast, fully managed big data analytics service for real-time analytics on extremely large volumes of data streaming from applications, websites, IoT devices, and more. 
 
-Azure Data Explorer is a fast, fully managed big data analytics service for real-time analytics on extremely large volumes of data streaming from applications, websites, IoT devices, and more. High concurrency applications require careful design of the backend architecture using the following tools:
+To set up for high concurrency applications, design the backend architecture with the following tools:
 
 * [Optimize data](#optimize-data)
 * [Set leader-follower architecture pattern](#set-leader-follower-architecture-pattern)
@@ -50,7 +50,7 @@ Data is stored in the form of extents (data shards) and is partitioned by ingest
 
 ### Pre-aggregate your data with materialized views
 
-Pre-aggregation can significantly reduce CPU resources during query time. Example scenarios include summarization of data points over reduced number of time bins, keeping the latest record of a given record, or deduplicating the dataset. Use the [materialized view](/kusto/management/materialized-views/materialized-view-overview.md) feature for an easy-to-configure aggregated view over source table. This feature simplifies the effort of creating and maintaining these aggregated views.
+Pre-aggregate your data to significantly reduce CPU resources during query time. Example scenarios include summarization of data points over reduced number of time bins, keeping the latest record of a given record, or deduplicating the dataset. Use the [materialized view](/kusto/management/materialized-views/materialized-view-overview.md) feature for an easy-to-configure aggregated view over source table. This feature simplifies the effort of creating and maintaining these aggregated views.
 
 > [!NOTE]
 > The background materialization process uses CPU resources. However, the CPU reduction during query time should outweigh the CPU consumption for materialization.
@@ -72,7 +72,7 @@ To improve the performance of queries on the follower cluster, you can enable [p
 
 ## Optimize queries
 
-The following methods will help you optimize your queries for high concurrency.
+Use the following methods to optimize your queries for high concurrency.
 
 ### Use query results cache
 
@@ -82,7 +82,7 @@ When more than one user loads the same dashboard at similar time, the dashboard 
 
 ### Configure query consistency
 
-Azure Data Explorer supports two query consistency models: *strong* (the default) and *weak*. Strong consistency ensures that only up-to-date consistent state of data is seen, no matter which compute node receives the query. Weak consistency nodes periodically refresh their copy of the metadata, leading to a latency of 1-2 minutes in the synchronization of metadata changes. This model allows reducing the load on the node that manages the metadata changes, providing higher concurrency than the default strong consistency. This configuration can be set in client request properties and in the Grafana data source configurations.
+Azure Data Explorer supports two query consistency models: *strong* (the default) and *weak*. Strong consistency ensures that only up-to-date consistent state of data is seen, no matter which compute node receives the query. Weak consistency nodes periodically refresh their copy of the metadata, leading to a latency of 1-2 minutes in the synchronization of metadata changes. The weak model allows reducing the load on the node that manages the metadata changes, providing higher concurrency than the default strong consistency. Set this configuration in [client request properties](kusto/api/netfx/request-properties.md) and in the Grafana data source configurations.
 
 > [!NOTE]
 > If you need to reduce the lag time for the refresh of metadata even further, open a support ticket.

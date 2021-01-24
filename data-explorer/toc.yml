@@ -209,6 +209,8 @@
       items:  
       - name: Python
         href: python-query-data.md
+    - name: Optimize for high concurrency
+      href: high-concurrency.md
     - name: Time Series Analysis and Machine Learning
       items:
       - name: Time series analysis
@@ -446,8 +448,7 @@
       href: ./kusto/query/index.md
     - name: Query best practices
       href: ./kusto/query/best-practices.md
-    - name: High query concurrency
-      href: high-concurrency.md
+
   - name: Cross-cluster queries
     items:
     - name: Cross-cluster queries and schema changes
