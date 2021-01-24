@@ -24,8 +24,7 @@ when you need to extract more than one element of a JSON compound object.
 Alias:
 - `todynamic()`
 
-> [!NOTE]
-> the `toobject()` alias has been deprecated.
+<!-- deprecated aliases: `toobject()` and parsejson() -->
 
 ## Arguments
 
