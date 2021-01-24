@@ -101,8 +101,8 @@
         "redirect_document_id": true
         },
       {
-        "source_path": "data-explorer/kusto/tools/todynamicfunction.md",
-        "redirect_url": "/azure/data-explorer/parsejsonfunction",
+        "source_path": "data-explorer/kusto/query/todynamicfunction.md",
+        "redirect_url": "/azure/data-explorer/query/parsejsonfunction",
         "redirect_document_id": true
         }  
     ]
