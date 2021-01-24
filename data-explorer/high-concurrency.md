@@ -13,7 +13,7 @@ ms.date: 01/11/2021
 
 Highly concurrent applications are needed in scenarios with a large user base, where the application simultaneously handles many requests with low latency and high throughput. 
 
-Use cases include large-scale monitoring and alerting dashboards, for example Microsoft products and services such as [Azure Monitor](https://azure.microsoft.com/en-au/services/monitor/), [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/), and [Playfab](https://playfab.com/). All these services use Azure Data Explorer for serving high concurrency workloads. Azure Data Explorer is a fast, fully managed big data analytics service for real-time analytics on extremely large volumes of data streaming from applications, websites, IoT devices, and more. 
+Use cases include large-scale monitoring and alerting dashboards, for example Microsoft products and services such as [Azure Monitor](https://azure.microsoft.com/en-au/services/monitor/), [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/), and [Playfab](https://playfab.com/). All these services use Azure Data Explorer for serving high concurrency workloads. Azure Data Explorer is a fast, fully managed big data analytics service for real-time analytics on large volumes of data streaming from applications, websites, IoT devices, and more. 
 
 To set up for high concurrency applications, design the backend architecture with the following tools:
 
@@ -23,14 +23,14 @@ To set up for high concurrency applications, design the backend architecture wit
 * [Set cluster policies](#set-cluster-policies)
 * [Monitor Azure Data Explorer clusters](#monitor-azure-data-explorer-clusters)
 
-This article presents a variety of recommendations for each of the above subjects that you can implement to achieve high concurrency in an optimal, cost-effective way. These features can be used alone, or in combination.
+This article presents various recommendations for each of the above subjects that you can implement to achieve high concurrency in an optimal, cost-effective way. These features can be used alone, or in combination.
 
 > [!NOTE]
 > The actual number of queries that can run concurrently on a cluster depends on various factors such as cluster resources, data volumes, query complexity, and usage patterns.
 
 ## Optimize data
 
-For high concurrency, queries should consume the least possible amount of CPU resources. Use optimized table schema design, data partitioning, pre-aggregation, and/or caching to achieve this.
+For high concurrency, queries should consume the least possible amount of CPU resources. Use optimized table schema design, data partitioning, pre-aggregation, and or caching to achieve high concurrency.
 
 ### Use table schema design best practices
 
@@ -43,7 +43,7 @@ Use the following table schema design best practices to minimize the CPU resourc
 
 ### Partition data
 
-Data is stored in the form of extents (data shards) and is partitioned by ingestion time by default. The [partitioning policy](/kusto/management/partitioningpolicy.md) allows you to repartition the extents based on a single string column and/or a single datetime column in a background process. Partitioning can provide significant performance improvements when most of the queries use partition keys to filter and/or aggregate.
+Data is stored in the form of extents (data shards) and is partitioned by ingestion time by default. The [partitioning policy](/kusto/management/partitioningpolicy.md) allows you to repartition the extents based on a single string column and or a single datetime column in a background process. Partitioning can provide significant performance improvements when most of the queries use partition keys to filter and or aggregate.
 
 > [!NOTE]
 > The partitioning process itself uses CPU resources. However, the CPU reduction during query time should outweigh the CPU used for partitioning.
@@ -57,13 +57,13 @@ Pre-aggregate your data to significantly reduce CPU resources during query time.
 
 ### Configure caching policy
 
-Configure the caching policy so that most of the queries run on data that is stored in the disk cache, also known as hot storage. Only run limited, carefully designed scenarios on the cold storage or external tables.
+Configure the caching policy so that most of the queries run on data that is stored in the disk cache, also known as hot storage. Only run limited, carefully designed scenarios on the cold storage, or external tables.
 
 ## Set leader-follower architecture pattern
 
 The follower database is a feature that follows a database or a set of tables in a database from another cluster, which is located in the same region. This feature is exposed through [Azure Data Share](/azure/data-explorer/data-share), [Azure Resource Manager APIs](follower.md), and a set of [cluster commands](/kusto/management/cluster-follower.md). 
 
-Use the leader-follower pattern to dedicate compute resources for different workloads. For example, set up a cluster for ingestions, a cluster for querying or serving dashboards/applications, and a cluster that serves the data science workloads. Each workload in this case will have dedicated compute resources that can be scaled independently, and different caching and security configuration. All clusters use the same data, with the leader writing the data, and the followers using it in a read-only mode.
+Use the leader-follower pattern to dedicate compute resources for different workloads. For example, set up a cluster for ingestions, a cluster for querying or serving dashboards or applications, and a cluster that serves the data science workloads. Each workload in this case will have dedicated compute resources that can be scaled independently, and different caching and security configuration. All clusters use the same data, with the leader writing the data, and the followers using it in a read-only mode.
 
 > [!NOTE]
 > Follower databases have a lag from the leader, usually a couple of minutes. If the dashboarding solution requires the latest data with no latency, the following solution may be useful: Use a view on the follower cluster that unions the data from the leader and the follower, querying the latest data from the leader and the rest of the data from the follower.
@@ -82,7 +82,7 @@ When more than one user loads the same dashboard at similar time, the dashboard 
 
 ### Configure query consistency
 
-Azure Data Explorer supports two query consistency models: *strong* (the default) and *weak*. Strong consistency ensures that only up-to-date consistent state of data is seen, no matter which compute node receives the query. Weak consistency nodes periodically refresh their copy of the metadata, leading to a latency of 1-2 minutes in the synchronization of metadata changes. The weak model allows reducing the load on the node that manages the metadata changes, providing higher concurrency than the default strong consistency. Set this configuration in [client request properties](kusto/api/netfx/request-properties.md) and in the Grafana data source configurations.
+Azure Data Explorer supports two query consistency models: *strong* (the default) and *weak*. Strong consistency ensures that only up-to-date consistent state of data is seen, whatever compute node receives the query. Weak consistency nodes periodically refresh their copy of the metadata, leading to a latency of 1-2 minutes in the synchronization of metadata changes. The weak model allows reducing the load on the node that manages the metadata changes, providing higher concurrency than the default strong consistency. Set this configuration in [client request properties](kusto/api/netfx/request-properties.md) and in the Grafana data source configurations.
 
 > [!NOTE]
 > If you need to reduce the lag time for the refresh of metadata even further, open a support ticket.
