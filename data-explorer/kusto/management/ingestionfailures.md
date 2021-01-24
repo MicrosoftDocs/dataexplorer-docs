@@ -24,6 +24,8 @@ This command returns a result set that includes any ingestion failures that occu
 > Ingestion failures should be monitored by [metrics](../../using-metrics.md), and optionally using ingestion logs. To set up ingestion logs, see [Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](../../using-diagnostic-logs.md).
 > 
 > For more information on monitoring failures that occur in flows that involve [queued ingestion](../api/netfx/about-kusto-ingest.md#queued-ingestion), see [this guide](../api/netfx/kusto-ingest-client-status.md).
+>
+> The retention period for ingestion failures is 14 days.
 
 **Syntax**
 
