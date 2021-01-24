@@ -1,6 +1,6 @@
 ---
-title: todynamic(), parse_json() function - Azure Data Explorer
-description: This article describes the todynamic(), parse_json() function in Azure Data Explorer.
+title: todynamic(), parse_json() functions - Azure Data Explorer
+description: This article describes the todynamic(), parse_json() functions in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
