@@ -53,7 +53,7 @@ Each such object is represented as a JSON property bag, with the following prope
 |PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified during the ingestion into the source table, should also apply to the ones in the derived table.                 |
 
 > [!NOTE]
-> In production system it is recommended to set the *IsTransactional* property to *true* to ensure that the target table does not lose data in case of transient failures.  
+> In production systems, set the *IsTransactional* property to *true* to ensure that the target table doesn't lose data in transient failures.  
 
 > [!NOTE]
 > Cascading updates are allowed (`TableA` → `TableB` → `TableC` → ...).
