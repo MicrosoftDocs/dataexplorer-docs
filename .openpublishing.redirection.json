@@ -91,15 +91,25 @@
         "redirect_document_id": true
       },
       {
-      "source_path": "data-explorer/kusto/concepts/errorsinnativecode.md",
-      "redirect_url": "/azure/data-explorer/error-codes",
-      "redirect_document_id": true
+        "source_path": "data-explorer/kusto/concepts/errorsinnativecode.md",
+        "redirect_url": "/azure/data-explorer/error-codes",
+        "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/tools/kusto-webexplorer.md",
         "redirect_url": "/azure/data-explorer/web-query-data",
         "redirect_document_id": true
-        }
+      },
+      {
+        "source_path": "data-explorer/management/query-throttling-policy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/request-rate-limit-policy",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "data-explorer/management/query-throttling-policy-commands.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/workload-groups-commands",
+        "redirect_document_id": false
+      }
     ]
   }
   
