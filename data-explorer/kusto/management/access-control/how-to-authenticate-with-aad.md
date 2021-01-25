@@ -4,7 +4,7 @@ description: This article describes How-To Authenticate with AAD for Azure Data 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: vladikb
 ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref, devx-track-js
@@ -127,9 +127,8 @@ Applications that do not use the Azure Data Explorer SDK can still use the AAD c
 see [https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet]
 for an example of doing so from a .NET application.
 
-To authenticate users for Azure Data Explorer access, an application must first be granted the
-`Access Kusto` delegated permission. Please see [Kusto guide to AAD applications provisioning](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration)
-for details.
+If your application is intended to serve as front-end and authenticate users for Azure Data Explorer cluster, it has to be granted delegated permissions on Azure Data Explorer.
+The full step by step process is described in [Configure delegated permissions for the application registration](provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
 
 The following brief code snippet demonstrates using ADAL to acquire an AAD user
 token to access Azure Data Explorer (launches logon UI):
