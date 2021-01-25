@@ -17,21 +17,19 @@ The recommended way to access Azure Data Explorer is by authenticating to the
 **AAD**). Doing so guarantees that Azure Data Explorer never sees the accessing principal's
 directory credentials, by using a two-stage process:
 
-1. In the first step, the client communicates with the AAD service, authenticates
-   to it, and requests an access token issued specifically for the particular Azure Data Explorer
-   endpoint the client intends to access.
-2. In the second step the client issues requests to Azure Data Explorer, providing the access
-   token acquired in the first step as a proof of identity to Azure Data Explorer.
+1. In the first step, the client:
+    1. Communicates with the AAD service.
+    1. Authenticates to the AAD service. 
+    1. Requests an access token issued specifically for the particular Azure Data Explorer endpoint the client intends to access.
+1. In the second step, the client issues requests to Azure Data Explorer, providing the access token acquired in the first step as a proof of identity to Azure Data Explorer.
 
-Azure Data Explorer then executes the request on behalf of the security principal for which AAD
-issued the access token, and all authorization checks are performed using
-this identity.
+Azure Data Explorer then executes the request on behalf of the security principal for which AAD issued the access token. All authorization checks are performed using this identity.
 
 In most cases, the recommendation is to use one of Azure Data Explorer SDKs to access the
 service programmatically, as they remove much of the hassle of implementing the
 flow above (and much else). See, for example, the [.NET SDK](../../api/netfx/about-the-sdk.md).
 The authentication properties are then set by the [Kusto connection string](../../api/connection-strings/kusto.md).
-If that is not possible, please read on for detailed information on how to
+If that is not possible, continue reading for detailed information on how to
 implement this flow yourself.
 
 The main authenticating scenarios are:
@@ -42,7 +40,7 @@ The main authenticating scenarios are:
   See [user authentication](#user-authentication),
 
 * **A "headless" application**.
-  In this scenario an application is running with no user present to provide
+  In this scenario, an application is running with no user present to provide
   credentials, and instead the application authenticates as "itself" to AAD
   using some credentials it has been configured with.
   See [application authentication](#application-authentication).
@@ -50,7 +48,7 @@ The main authenticating scenarios are:
 * **On-behalf-of authentication**.
   In this scenario, sometimes called the "web service" or "web app" scenario,
   the application gets an AAD access token from another application, and then
-  "converts" it to an another AAD access token that can be used with Azure Data Explorer.
+  "converts" it to another AAD access token that can be used with Azure Data Explorer.
   In other words, the application acts as a mediator between the user or application
   that provided credentials and the Azure Data Explorer service.
   See [on-behalf-of authentication](#on-behalf-of-authentication).
@@ -58,21 +56,19 @@ The main authenticating scenarios are:
 ## Specifying the AAD resource for Azure Data Explorer
 
 When acquiring an access token from AAD, the client must tell AAD which **AAD resource**
-the token should be issued to. The AAD resource of a Azure Data Explorer endpoint is the
+the token should be issued to. The AAD resource of an Azure Data Explorer endpoint is the
 URI of the endpoint, barring the port information and the path. For example:
 
 ```txt
 https://help.kusto.windows.net
 ```
 
-
-
 ## Specifying the AAD tenant ID
 
 AAD is a multi-tenant service, and every organization can create an object called
 **directory** in AAD. The directory object holds security-related objects such
 as user accounts, applications, and groups. AAD often refers to the directory
-as a **tenant**. AAD tenants are identifies by a GUID (**tenant ID**). In many
+as a **tenant**. AAD tenants are identified by a GUID (**tenant ID**). In many
 cases, AAD tenants can also be identified by the domain name of the organization.
 
 For example, an organization called "Contoso" might have the tenant ID
@@ -80,13 +76,13 @@ For example, an organization called "Contoso" might have the tenant ID
 
 ## Specifying the AAD authority
 
-AAD has a number of endpoints for authentication:
+AAD has many endpoints for authentication:
 
 * When the tenant hosting the principal being authenticated is known
   (in other words, when one knows which AAD directory the user or application
   are in), the AAD endpoint is `https://login.microsoftonline.com/{tenantId}`.
   Here, `{tenantId}` is either the organization's tenant ID in AAD, or its
-  domain name (e.g. `contoso.com`).
+  domain name (for example, `contoso.com`).
 
 * When the tenant hosting the principal being authenticated is not known,
   the "common" endpoint can be used by replacing the `{tenantId}` above
@@ -113,7 +109,6 @@ number of times a user has to enter credentials.
 > for example), because when the time comes for prompting the logged on user for
 > credentials that prompt will fail if running under non-interactive logon.
 
-
 ## User authentication
 
 The easiest way to access Azure Data Explorer with user authentication is to use the Azure Data Explorer SDK
@@ -123,12 +118,11 @@ will be presented with a sign-in form to enter the AAD credentials, and on
 successful authentication the request will be sent.
 
 Applications that do not use the Azure Data Explorer SDK can still use the AAD client library
-(ADAL) instead of implementing the AAD service security protocol client. Please
-see [https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet]
+(ADAL) instead of implementing the AAD service security protocol client. See [https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet]
 for an example of doing so from a .NET application.
 
 If your application is intended to serve as front-end and authenticate users for an Azure Data Explorer cluster, the application must be granted delegated permissions on Azure Data Explorer.
-The full step-by-step process is described in [Configure delegated permissions for the application registration](provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
+The full step-by-step process is described in [Configure delegated permissions for the application registration](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
 
 The following brief code snippet demonstrates using ADAL to acquire an AAD user
 token to access Azure Data Explorer (launches logon UI):
@@ -176,7 +170,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 ## On-behalf-of authentication
 
-In this scenario an application was sent an AAD access token for some arbitrary
+In this scenario, an application was sent an AAD access token for some arbitrary
 resource managed by the application, and it uses that token to acquire a new AAD
 access token for the Azure Data Explorer resource so that the application could access Kusto
 on behalf of the principal indicated by the original AAD access token.
@@ -193,7 +187,7 @@ the administrator of the AAD tenant.
 
 1. Open the [Azure portal](https://portal.azure.com/) and make sure that you are
    signed-in to the correct tenant (see top/right corner for the identity
-   used to sign-in to the portal).
+   used to sign in to the portal).
 
 2. On the resources pane, click **Azure Active Directory**, then **App registrations**.
 
