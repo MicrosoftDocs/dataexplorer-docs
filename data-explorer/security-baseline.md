@@ -410,8 +410,6 @@ For the underlying platform which is managed by Microsoft, Microsoft treats all 
 
 - [How to create alerts for Azure Activity Log events](/azure/azure-monitor/platform/alerts-activity-log)
 
-- [How to create alerts for Azure Activity Log events](/azure/azure-monitor/platform/alerts-activity-log)
-
 **Azure Security Center monitoring**: Yes
 
 **Responsibility**: Customer
