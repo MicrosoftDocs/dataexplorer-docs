@@ -523,7 +523,7 @@ Here's the output:
 
 The [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) table has entries from the Azure activity log, which provides insight into any subscription-level or management group-level events that occurred in Azure. Let's see only `Critical` entries during a specific week.
 
-The [where](/azure/data-explorer/kusto/query/whereoperator) operator is common in the Kusto Query Language. `where` filters a table to rows that match specific criteria. The following example uses multiple commands. First, the query retrieves all records for the table. Then, it filters the data for only records that are in the time range. Finally, it filters those results for only records that have a `Critical` level.
+The [where](./whereoperator.md) operator is common in the Kusto Query Language. `where` filters a table to rows that match specific criteria. The following example uses multiple commands. First, the query retrieves all records for the table. Then, it filters the data for only records that are in the time range. Finally, it filters those results for only records that have a `Critical` level.
 
 > [!NOTE]
 > In addition to specifying a filter in your query by using the `TimeGenerated` column, you can specify the time range in Log Analytics. For more information, see [Log query scope and time range in Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope).
@@ -657,11 +657,11 @@ InsightsMetrics
 
 ## Join data from two tables
 
-What if you need to retrieve data from two tables in a single query? You can use the [join](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor) operator to combine rows from multiple tables in a single result set. Each table must have a column that has a matching value so that the join understands which rows to match.
+What if you need to retrieve data from two tables in a single query? You can use the [join](./joinoperator.md?pivots=azuremonitor) operator to combine rows from multiple tables in a single result set. Each table must have a column that has a matching value so that the join understands which rows to match.
 
 [VMComputer](/azure/azure-monitor/reference/tables/vmcomputer) is a table that Azure Monitor uses for VMs to store details about virtual machines that it monitors. [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) contains performance data that's collected from those virtual machines. One value collected in *InsightsMetrics* is available memory, but not the percentage memory that's available. To calculate the percentage, we need the physical memory for each virtual machine. That value is in `VMComputer`.
 
-The following example query uses a join to perform this calculation. The [distinct](/azure/data-explorer/kusto/query/distinctoperator) operator is used with `VMComputer` because details are regularly collected from each computer. As result, multiple rows are created for each computer in the table. The two tables are joined by using the `Computer` column. A row is created in the result set that includes columns from both tables for each row in `InsightsMetrics`, with a value in `Computer` that matches the same value in the `Computer` column in `VMComputer`.
+The following example query uses a join to perform this calculation. The [distinct](./distinctoperator.md) operator is used with `VMComputer` because details are regularly collected from each computer. As result, multiple rows are created for each computer in the table. The two tables are joined by using the `Computer` column. A row is created in the result set that includes columns from both tables for each row in `InsightsMetrics`, with a value in `Computer` that matches the same value in the `Computer` column in `VMComputer`.
 
 ```kusto
 VMComputer
