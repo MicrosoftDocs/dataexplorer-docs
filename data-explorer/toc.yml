@@ -1418,13 +1418,9 @@
         - name: Request classification policy commands
           href: ./kusto/management/request-classification-policy-commands.md
       - name: Request limits policy
-        items:
-        - name: Request limits policy
-          href: ./kusto/management/request-limits-policy.md
+        href: ./kusto/management/request-limits-policy.md
       - name: Request rate limit policy
-        items:
-        - name: Request rate limit policy
-          href: ./kusto/management/request-rate-limit-policy.md
+        href: ./kusto/management/request-rate-limit-policy.md
     - name: Schema
       items:
       - name: Best practices for schema management
