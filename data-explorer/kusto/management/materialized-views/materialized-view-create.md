@@ -76,10 +76,11 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 
 |Property|Type|Description |
 |----------------|-------|---|
-|backfill|bool|Whether to create the view based on all records currently in *SourceTable* (`true`), or to create it "from-now-on" (`false`). Default is `false`.| 
+|backfill|bool|Whether to create the view based on all records currently in *SourceTable* (`true`), or to create it "from-now-on" (`false`). Default is `false`. For more information, see [backfill a materialized view](#backfill-a-materialized-view) section.| 
 |effectiveDateTime|datetime| If specified along with `backfill=true`, creation only backfills with records ingested after the datetime. Backfill must also be set to true. Expects a datetime literal, for example, `effectiveDateTime=datetime(2019-05-01)`|
-|dimensionTables|Array|A comma-separated list of dimension tables in the view. See [Query argument](#query-argument)
+|lookback|timespan| Valid only for `arg_max`/`arg_min`/`any` materialized views, and only if the engine is [EngineV3](../../../engine-v3.md). Limits the period of time in which duplicates are expected. For example, if a look-back of 6 hours is specified on an `arg_max` view, the de-duplication between newly ingested records and existing ones will only take into consideration records that were ingested up to 6 hours ago. Look-back is relative to `ingestion_time`. Defining the look-back period incorrectly may lead to duplicates in the materialized view. For example, if a record for a specific key is ingested 10 hours after a record for the same key was ingested, and the look-back is set to 6h, that key will be a duplicate in the view. The look-back period is applied both during [materialization time](materialized-view-overview.md#how-materialized-views-work) as well as during [query time](materialized-view-overview.md#materialized-views-queries).|
 |autoUpdateSchema|bool|Whether to auto-update the view on source table changes. Default is `false`. This option is valid only for views of type `arg_max(Timestamp, *)` / `arg_min(Timestamp, *)` / `any(*)` (only when columns argument is `*`). If this option is set to true, changes to source table will be automatically reflected in the materialized view.
+|dimensionTables|Array|A comma-separated list of dimension tables in the view. See [Query argument](#query-argument)
 |folder|string|The materialized view's folder.|
 |docString|string|A string documenting the materialized view|
 
@@ -127,11 +128,11 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
     } 
     ```
 
-1. A materialized view that de-duplicates the source table, based on EventId column:
+1. A materialized view that de-duplicates the source table, based on EventId column, using a look-back of 6h. Records will only be de-duped against records ingested 6 hours prior to current records:
 
     <!-- csl -->
     ```
-    .create materialized-view DedupedT on table T
+    .create materialized-view with(lookback=6h) DedupedT on table T
     {
         T
         | summarize any(*) by EventId
@@ -288,11 +289,12 @@ When creating a materialized view with the `backfill` property, the materialized
     } 
     ```
 
-## Limitations on creating materialized views
+## Materialized views limitations and known issues
 
 * A materialized view can't be created:
     * On top of another materialized view.
-    * On [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader. 
+    * On [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
+* A materialized view only processes new records ingested into the source table. Records which are removed from the source table, either by running [data purge](../../concepts/data-purge.md)/[drop extents](../drop-extents.md), or due to [Retention policy](../retentionpolicy.md) or any other reason, have no impact on the materialized view. The materialized view has its own [retention policy](materialized-view-overview.md#materialized-views-policies), which is independent of the retention policy of the source table. The materialized view might include records which are not present in the source table.
 * The source table of a materialized view:
     * Must be a table that is being ingested to directly, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md).
         * Specifically, using [move extents](../move-extents.md) from other tables into the source table of the materialized view is not supported. Move extents may fail with the following error: `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`. 
