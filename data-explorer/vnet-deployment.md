@@ -126,7 +126,7 @@ Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to re
 | Japan West | 40.81.184.86 |
 | Korea Central | 40.82.156.149 |
 | Korea South | 40.80.234.9 |
-| North Central US | 40.81.45.254 |
+| North Central US | 40.81.43.47 |
 | North Europe | 52.142.91.221 |
 | South Africa North | 102.133.129.138 |
 | South Africa West | 102.133.0.97 |
