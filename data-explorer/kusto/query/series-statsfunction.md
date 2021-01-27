@@ -11,9 +11,10 @@ ms.date: 02/10/2020
 ---
 # series_stats()
 
-`series_stats()` returns statistics for a series in multiple columns.  
+`series_stats()` returns statistics for a numerical series using multiple columns.  
 
-The `series_stats()` function takes a column containing dynamic numerical array as input and calculates the following columns:
+The `series_stats()` function takes an expression returning a dynamical numerical array as input and calculates the following statistics:
+
 * `min`: minimum value in the input array
 * `min_idx`: first position of the minimum value in the input array
 * `max`: maximum value in the input array
@@ -23,20 +24,35 @@ The `series_stats()` function takes a column containing dynamic numerical array 
 * `stdev`: sample standard deviation of the input array
 
 > [!NOTE] 
-> This function returns multiple columns so it can't be used as an argument for another function.
+> This function returns multiple values, so it can't be used as the input for another function.
+> Consider using [series_stats_dynamic](./series-stats-dynamicfunction.md) if you need just a single
+> value, such as "average".
 
 ## Syntax
 
-project `series_stats(`*x* `[,`*ignore_nonfinite*`])` or extend `series_stats(`*x*`)` 
-Returns all above-mentioned columns with the following names: series_stats_x_min, series_stats_x_min_idx and etc.
- 
-project (m, mi)=`series_stats(`*x*`)` or extend (m, mi)=`series_stats(`*x*`)`
-Returns the following columns: m (min) and mi (min_idx).
+`...` `|` `extend` `series_stats` `(` *Expr* [`,` *IgnoreNonFinite*] `)`
+
+`...` `|` `extend` `(` *Name1* [`,` *Name2*...] `)` `=` `series_stats` `(` *Expr* [`,` *IgnoreNonFinite*] `)`
 
 ## Arguments
 
-* *x*: Dynamic array cell, which is an array of numeric values. 
-* *ignore_nonfinite*: Boolean (optional, default: `false`) flag that specifies whether to calculate the statistics while ignoring non-finite values (*null*, *NaN*, *inf*, etc.). If set to `false`, the returned values would be `null` if non-finite values are present in the array.
+* *Expr*: An expression that returns a value of type `dynamic`, holding
+  an array of numeric values (that is, values of type for which arithmetic
+  operators are defined.)
+  
+* *IgnoreNonFinite*: A Boolean expression that specifies whether to calculate the
+  statistics while ignore non-finite values of *Expr* (`null`, `NaN`, `inf`, etc.)
+  If `false` (the default), a single item in *Expr* with this value will result in
+  a value of `null` generated for all statistics values.
+
+## Returns
+
+The first form results in the following new columns being added:
+`series_stats_x_min` (if *Expr* is the column reference `x`),
+`series_stats_x_idx`, etc.
+
+The second form results in columnd named `Name1`, `Name2`, etc. holding
+these values, in-order.
 
 ## Example
 
