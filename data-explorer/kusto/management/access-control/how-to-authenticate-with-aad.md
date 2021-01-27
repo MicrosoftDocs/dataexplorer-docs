@@ -19,7 +19,7 @@ directory credentials, by using a two-stage process:
 
 1. In the first step, the client:
     1. Communicates with the AAD service.
-    1. Authenticates to the AAD service. 
+    1. Authenticates to the AAD. 
     1. Requests an access token issued specifically for the particular Azure Data Explorer endpoint the client intends to access.
 1. In the second step, the client issues requests to Azure Data Explorer, providing the access token acquired in the first step as a proof of identity to Azure Data Explorer.
 
