@@ -135,9 +135,9 @@ Create a workload group with a full definition of its request limits policy and 
 
 ### Examples
 
-#### Add title for this example
+#### Alter specific limits in the request limits policy
 
-Alter specific limits in the Request limits policy of the `default` workload group,
+Alter specific limits in the request limits policy of the `default` workload group,
 while keeping previously defined limits as-is:
 
 ```kusto
@@ -154,7 +154,7 @@ while keeping previously defined limits as-is:
 '  }'
 '}'
 ```
-#### Add title for this example
+#### Alter the request rate limit policies
 
 Alter the request rate limit policies of the `default` workload group,
 while keeping its request limits policy as-is:

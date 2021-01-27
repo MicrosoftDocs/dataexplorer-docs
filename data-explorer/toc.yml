@@ -989,8 +989,6 @@
       href: ./kusto/query/parse-ipv6function.md
     - name: parse_ipv6_mask()
       href: ./kusto/query/parse-ipv6-maskfunction.md
-    - name: parse_json()
-      href: ./kusto/query/parsejsonfunction.md
     - name: parse_path()
       href: ./kusto/query/parsepathfunction.md
     - name: parse_url()
@@ -1081,8 +1079,9 @@
       href: ./kusto/query/todecimalfunction.md
     - name: todouble(), toreal()
       href: ./kusto/query/todoublefunction.md
-    - name: todynamic(), toobject()
-      href: ./kusto/query/todynamicfunction.md
+    - name: todynamic(), parse_json()
+      displayName: toobject(), parsejson()
+      href: ./kusto/query/parsejsonfunction.md
     - name: toguid()
       href: ./kusto/query/toguidfunction.md
     - name: tohex()
