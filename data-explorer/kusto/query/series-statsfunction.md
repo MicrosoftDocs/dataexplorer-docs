@@ -7,26 +7,27 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 01/27/2021
 ---
 # series_stats()
 
 `series_stats()` returns statistics for a numerical series using multiple columns.  
 
-The `series_stats()` function takes an expression returning a dynamical numerical array as input and calculates the following statistics:
+The `series_stats()` function takes an expression returning a dynamical numerical array as input, and calculates the following statistics:
 
-* `min`: minimum value in the input array
-* `min_idx`: first position of the minimum value in the input array
-* `max`: maximum value in the input array
-* `max_idx`: first position of the maximum value in the input array
-* `avg`: average value of the input array
-* `variance`: sample variance of input array
-* `stdev`: sample standard deviation of the input array
+Statistic | Description
+---|---
+ `min` | Minimum value in the input array.
+ `min_idx`| The first position of the minimum value in the input array.
+`max` | Maximum value in the input array.
+`max_idx`| First position of the maximum value in the input array.
+`avg`| Average value of the input array.
+ `variance` | Sample variance of input array.
+ `stdev`| Sample standard deviation of the input array.
 
 > [!NOTE] 
 > This function returns multiple values, so it can't be used as the input for another function.
-> Consider using [series_stats_dynamic](./series-stats-dynamicfunction.md) if you need just a single
-> value, such as "average".
+> Consider using [series_stats_dynamic](./series-stats-dynamicfunction.md) if you only need a single value, such as "average".
 
 ## Syntax
 
@@ -37,22 +38,27 @@ The `series_stats()` function takes an expression returning a dynamical numerica
 ## Arguments
 
 * *Expr*: An expression that returns a value of type `dynamic`, holding
-  an array of numeric values (that is, values of type for which arithmetic
-  operators are defined.)
+  an array of numeric values. Numeric values are values for which arithmetic
+  operators are defined.
   
 * *IgnoreNonFinite*: A Boolean expression that specifies whether to calculate the
-  statistics while ignore non-finite values of *Expr* (`null`, `NaN`, `inf`, etc.)
-  If `false` (the default), a single item in *Expr* with this value will result in
-  a value of `null` generated for all statistics values.
+  statistics while ignoring non-finite values of *Expr* (`null`, `NaN`, `inf`, and so on).
+  If `false`, a single item in *Expr* with this value will result in
+  a value of `null` generated for all statistics values. The default value is `false`.
 
 ## Returns
 
-The first form results in the following new columns being added:
-`series_stats_x_min` (if *Expr* is the column reference `x`),
-`series_stats_x_idx`, etc.
+### Syntax 1
 
-The second form results in columnd named `Name1`, `Name2`, etc. holding
-these values, in-order.
+The following syntax results in the following new columns being added where *Expr* is the column reference `x`: `series_stats_x_min`, `series_stats_x_idx`, and so on.
+
+`...` `|` `extend` `series_stats` `(` *Expr* [`,` *IgnoreNonFinite*] `)`
+
+### Syntax 2
+
+The following syntax results in columns named `Name1`, `Name2`, and so on, containing these values in order.
+
+`...` `|` `extend` `(` *Name1* [`,` *Name2*...] `)` `=` `series_stats` `(` *Expr* [`,` *IgnoreNonFinite*] `)`
 
 ## Example
 
