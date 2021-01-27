@@ -99,6 +99,11 @@
         "source_path": "data-explorer/kusto/tools/kusto-webexplorer.md",
         "redirect_url": "/azure/data-explorer/web-query-data",
         "redirect_document_id": true
+        },
+      {
+        "source_path": "data-explorer/kusto/query/todynamicfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parsejsonfunction",
+        "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/management/query-throttling-policy.md",
