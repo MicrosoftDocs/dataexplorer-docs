@@ -128,6 +128,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | Korea South | 40.80.234.9 |
 | North Central US | 40.81.43.47 |
 | North Europe | 52.142.91.221 |
+| Norway East | 51.120.49.100 |
 | South Africa North | 102.133.129.138 |
 | South Africa West | 102.133.0.97 |
 | South Central US | 20.45.3.60 |
@@ -174,6 +175,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | Korea South | 138.91.19.129 |
 | North Central US | 23.96.212.108 |
 | North Europe | 191.235.212.69, 40.127.194.147 |
+| Norway East | 51.120.49.100 |
 | South Africa North | 104.211.224.189 |
 | South Africa West | 104.211.224.189 |
 | South Central US | 23.98.145.105, 104.215.116.88 |
