@@ -15,7 +15,7 @@ zone_pivot_groups: kql-flavors
 ::: zone pivot="azuredataexplorer"
 
 Runs multiple consumer operators in parallel.
-
+ 
 ## Syntax
 
 *T* `|` `fork` [*name*`=`]`(`*subquery*`)` [*name*`=`]`(`*subquery*`)` ...
