@@ -2,7 +2,7 @@
 title: row_rank() - Azure Data Explorer | Microsoft Docs
 description: This article describes row_rank() in Azure Data Explorer.
 services: data-explorer
-author: royo
+author: royoMS
 ms.author: royo
 ms.reviewer: alexans
 ms.service: data-explorer
