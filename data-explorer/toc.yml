@@ -1222,6 +1222,8 @@
       href: ./kusto/query/rowcumsumfunction.md
     - name: row_number()
       href: ./kusto/query/rownumberfunction.md
+    - name: row_rank()
+      href: ./kusto/query/rowrankfunction.md      
     - name: row_window_session()
       href: ./kusto/query/row-window-session-function.md
   - name: Time series analysis
