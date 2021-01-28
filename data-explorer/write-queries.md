@@ -5,8 +5,9 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 04/07/2019
+ms.localizationpriority: high 
 ---
 
 # Write queries for Azure Data Explorer
@@ -50,7 +51,7 @@ In this case, the result is:
 |   23|
 | |
 
-For more information see the [Query language reference](https://aka.ms/kustolangref).
+For more information see the [Query language reference](./kusto/query/index.md).
 
 ## Most common operators
 
@@ -954,4 +955,4 @@ The following example deletes the function that was created in the first step.
 
 ## Next steps
 
-[Kusto Query Language reference](https://aka.ms/kustolangref)
+[Kusto Query Language reference](./kusto/query/index.md)

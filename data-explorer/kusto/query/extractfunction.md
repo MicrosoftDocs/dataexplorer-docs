@@ -4,10 +4,11 @@ description: This article describes extract() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
+ms.localizationpriority: high
 ---
 # extract()
 
@@ -15,7 +16,9 @@ Get a match for a [regular expression](./re2.md) from a text string.
 
 Optionally, convert the extracted substring to the indicated type.
 
-    extract("x=([0-9.]+)", 1, "hello x=45.6|wo") == "45.6"
+```kusto
+extract("x=([0-9.]+)", 1, "hello x=45.6|wo") == "45.6"
+```
 
 ## Syntax
 

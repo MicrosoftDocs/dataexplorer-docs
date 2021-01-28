@@ -4,10 +4,11 @@ description: This article describes union operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
+ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -61,6 +62,10 @@ The default is `isfuzzy=` `false`.
     *  The name of a table, such as `Events`
     *  A query expression that must be enclosed with parenthesis, such as `(Events | where id==42)`
     *  A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.
+
+> [!NOTE]
+> Whenever the list of tables is known, refrain from using wildcards. Some workspaces contains very large number of tables that would lead to inefficient execution. Tables may also be added over time leading to unpredicted results.
+    
 * `kind`: 
     * `inner` - The result has the subset of columns that are common to all of the input tables.
     * `outer` - (default). The result has all the columns that occur in any of the inputs. Cells that weren't defined by an input row are set to `null`.
@@ -104,7 +109,7 @@ with [view keyword](./letstatement.md)
 ::: zone-end
 
 
-## Example
+## Example: Tables with string in name or column
 
 ```kusto
 union K* | where * has "Kusto"
@@ -112,7 +117,7 @@ union K* | where * has "Kusto"
 
 Rows from all tables in the database whose name starts with `K`, and in which any column includes the word `Kusto`.
 
-## Example
+## Example: Distinct count
 
 ```kusto
 union withsource=SourceTable kind=outer Query, Command

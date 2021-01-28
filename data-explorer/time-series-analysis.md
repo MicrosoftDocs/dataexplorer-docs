@@ -5,10 +5,10 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2019
+ms.localizationpriority: high
 ---
-
 # Time series analysis in Azure Data Explorer
 
 Azure Data Explorer (ADX) performs on-going collection of telemetry data from cloud services or IoT devices. This data can be analyzed for various insights such as monitoring service health, physical production processes, and usage trends. Analysis is done on time series of selected metrics to find a deviation in the pattern compared to its typical baseline pattern.
@@ -30,19 +30,18 @@ demo_make_series1 | take 10
 
 The resulting table contains a timestamp column, three contextual dimensions columns, and no metrics:
 
-|   |   |   |   |   |
-| --- | --- | --- | --- | --- |
-|   | TimeStamp | BrowserVer | OsVer | Country/Region |
-|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | United Kingdom |
-|   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
-|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | United Kingdom |
-|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | United Kingdom |
-|   | 2016-08-25 09:12:46.5570000 | Chrome 52.0 | Windows 10 | Republic of Lithuania |
-|   | 2016-08-25 09:12:47.0470000 | Chrome 52.0 | Windows 8.1 | India |
-|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | United Kingdom |
-|   | 2016-08-25 09:12:51.6930000 | Chrome 52.0 | Windows 7 | Netherlands |
-|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | United Kingdom |
-|   | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | India |
+| TimeStamp | BrowserVer | OsVer | Country/Region |
+| --- | --- | --- | --- |
+| 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | United Kingdom |
+| 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
+| 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | United Kingdom |
+| 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | United Kingdom |
+| 2016-08-25 09:12:46.5570000 | Chrome 52.0 | Windows 10 | Republic of Lithuania |
+| 2016-08-25 09:12:47.0470000 | Chrome 52.0 | Windows 8.1 | India |
+| 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | United Kingdom |
+| 2016-08-25 09:12:51.6930000 | Chrome 52.0 | Windows 7 | Netherlands |
+| 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | United Kingdom |
+| 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | India |
 
 Since there are no metrics, we can only build a set of time series representing the traffic count itself, partitioned by OS using the following query:
 
@@ -148,11 +147,10 @@ demo_series3
 | extend days=2h*todouble(periods)/1d
 ```
 
-|   |   |   |   |
-| --- | --- | --- | --- |
-|   | periods | scores | days |
-|   | 84 | 0.820622786055595 | 7 |
-|   | 12 | 0.764601405803502 | 1 |
+| periods | scores | days |
+| --- | --- | --- |
+| 84 | 0.820622786055595 | 7 |
+| 12 | 0.764601405803502 | 1 |
 
 The function detects daily and weekly seasonality. The daily scores less than the weekly because weekend days are different from weekdays.
 
@@ -190,13 +188,12 @@ demo_many_series1
 | take 4 
 ```
 
-|   |   |   |   |   |   |
-| --- | --- | --- | --- | --- | --- |
-|   | TIMESTAMP | Loc | anonOp | DB | DataRead |
-|   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 262 | 0 |
-|   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 241 | 0 |
-|   | 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862 |
-|   | 2016-09-11 21:00:00.0000000 | Loc 9 | 371921734563783410 | 255 | 0 |
+| TIMESTAMP | Loc | anonOp | DB | DataRead |
+| --- | --- | --- | --- | --- |
+| 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 262 | 0 |
+| 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 241 | 0 |
+| 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862 |
+| 2016-09-11 21:00:00.0000000 | Loc 9 | 371921734563783410 | 255 | 0 |
 
 And simple statistics:
 
@@ -207,10 +204,9 @@ demo_many_series1
 | summarize num=count(), min_t=min(TIMESTAMP), max_t=max(TIMESTAMP) 
 ```
 
-|   |   |   |   |
-| --- | --- | --- | --- |
-|   | num | min\_t | max\_t |
-|   | 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
+| num | min\_t | max\_t |
+| --- | --- | --- |
+| 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
 
 Building a time series in 1-hour bins of the read metric (total four days * 24 hours = 96 points), results in normal pattern fluctuation:
 
@@ -238,10 +234,9 @@ demo_many_series1
 | count
 ```
 
-|   |   |
-| --- | --- |
-|   | Count |
-|   | 18339 |
+| Count |
+| --- |
+| 18339 |
 
 Now, we're going to create a set of 18339 time series of the read count metric. We add the `by` clause to the make-series statement, apply linear regression, and select the top two time series that had the most significant decreasing trend:
 
@@ -273,11 +268,10 @@ demo_many_series1
 | project Loc, Op, DB, slope 
 ```
 
-|   |   |   |   |   |
-| --- | --- | --- | --- | --- |
-|   | Loc | Op | DB | slope |
-|   | Loc 15 | 37 | 1151 | -102743.910227889 |
-|   | Loc 13 | 37 | 1249 | -86303.2334644601 |
+| Loc | Op | DB | slope |
+| --- | --- | --- | --- |
+| Loc 15 | 37 | 1151 | -102743.910227889 |
+| Loc 13 | 37 | 1249 | -86303.2334644601 |
 
 In less than two minutes, ADX analyzed close to 20,000 time series and detected two abnormal time series in which the read count suddenly dropped.
 

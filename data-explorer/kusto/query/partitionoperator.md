@@ -4,7 +4,7 @@ description: This article describes partition operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -46,8 +46,8 @@ T | partition by Col1 { U | where Col2=toscalar(Col1) }
   |Name               |Values         |Description|
   |-------------------|---------------|-----------|
   |`hint.materialized`|`true`,`false` |If set to `true` will materialize the source of the `partition` operator (default: `false`)|
-  |`hint.concurrency`|*Number*|Hints the system how many concurrent subqueries of the `partition` operator should be executed in parallel. *Default*: Amount of CPU cores on the single node of the cluster (2 to 16).|
-  |`hint.spread`|*Number*|Hints the system how many nodes should be used by the concurrent`partition` subqueries execution. *Default*: 1.|
+  |`hint.concurrency`|*Number*|Hints the system how many partitions to run in parallel. *Default*: 16.|
+  |`hint.spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes (for example: if there are N partitions and the spread hint is set to P then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint). *Default*: 1.|
 
 ## Returns
 
@@ -99,7 +99,7 @@ StormEvents
 
 **Example: query non-overlapping data partitions**
 
-Sometimes it is useful (perf-wise) to run a complex subquery over non-overlapping
+Sometimes it is useful (performance-wise) to run a complex subquery over non-overlapping
 data partitions in a map/reduce style. The example below shows how to create a
 manual distribution of aggregation over 10 partitions.
 

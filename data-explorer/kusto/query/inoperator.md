@@ -4,10 +4,11 @@ description: This article describes in and notin operators in Azure Data Explore
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2019
+ms.localizationpriority: high
 ---
 # in and !in operators
 

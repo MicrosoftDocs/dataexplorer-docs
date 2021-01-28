@@ -4,7 +4,7 @@ description: This article describes isnotempty() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -22,3 +22,11 @@ isnotempty("") == false
 `isnotempty(`[*value*]`)`
 
 `notempty(`[*value*]`)` -- alias of `isnotempty`
+
+## Example
+
+```kusto
+T
+| where isnotempty(fieldName)
+| count
+```

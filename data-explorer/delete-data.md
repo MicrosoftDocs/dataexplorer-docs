@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: avneraa
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2020
 ---
 
@@ -27,7 +27,7 @@ Consider a database or table that is set for 90 days of retention. If only 60 da
 
 ## Delete data by dropping extents
 
-[Extent (data shard)](kusto/management/extents-overview.md) is the internal structure where data is stored. Each extent can hold up to millions of records. Extents can be deleted individually or as a group using [drop extent(s) commands](kusto/management/extents-commands.md#drop-extents). 
+[Extent (data shard)](kusto/management/extents-overview.md) is the internal structure where data is stored. Each extent can hold up to millions of records. Extents can be deleted individually or as a group using [drop extent(s) commands](./kusto/management/drop-extents.md).
 
 ### Examples
 
@@ -47,5 +47,4 @@ You can delete all rows in a table or just a specific extent.
 
 ## Delete individual rows using purge
 
-[Data purge](kusto/concepts/data-purge.md) can be used for deleting individuals rows. Deletion isn't immediate and requires significant system resources. As such, it's only advised for compliance scenarios.  
-
+[Data purge](kusto/concepts/data-purge.md) can be used for deleting individuals rows. Deletion isn't immediate and requires significant system resources. As such, it's only advised for compliance scenarios.

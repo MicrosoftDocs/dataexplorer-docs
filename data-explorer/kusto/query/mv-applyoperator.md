@@ -4,7 +4,7 @@ description: This article describes mv-apply operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -152,7 +152,6 @@ _data
 |1    |[1,3,5,7]|12       |
 |0    |[2,4,6,8]|14       |
 
-
 ## Using `with_itemindex` for working with a subset of the array
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -176,36 +175,6 @@ _data
 |3|8|
 |4|10|
 
-## Using the `mv-apply` operator to sort the output of `makelist` aggregate by some key
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-datatable(command:string, command_time:datetime, user_id:string)
-[
-	'chmod',		datetime(2019-07-15),	"user1",
-	'ls',			datetime(2019-07-02),	"user1",
-	'dir',			datetime(2019-07-22),	"user1",
-	'mkdir',		datetime(2019-07-14),	"user1",
-	'rm',			datetime(2019-07-27),	"user1",
-	'pwd',			datetime(2019-07-25),	"user1",
-	'rm',			datetime(2019-07-23),	"user2",
-	'pwd',			datetime(2019-07-25),	"user2",
-]
-| summarize commands_details = make_list(pack('command', command, 'command_time', command_time)) by user_id
-| mv-apply command_details = commands_details on
-(
-    order by todatetime(command_details['command_time']) asc
-    | summarize make_list(tostring(command_details['command']))
-)
-| project-away commands_details
-```
-
-|`user_id`|`list_command_details_command`|
-|---|---|
-|user1|[<br>  "ls",<br>  "mkdir",<br>  "chmod",<br>  "dir",<br>  "pwd",<br>  "rm"<br>]|
-|user2|[<br>  "rm",<br>  "pwd"<br>]|
-
-
-**See also**
+## See also
 
 * [mv-expand](./mvexpandoperator.md) operator.

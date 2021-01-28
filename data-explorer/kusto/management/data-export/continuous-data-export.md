@@ -11,7 +11,7 @@ ms.date: 08/03/2020
 ---
 # Continuous data export overview
 
-This article describes continuous export of data from Kusto to an [external table](../externaltables.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). 
+This article describes continuous export of data from Kusto to an [external table](../external-table-commands.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). 
 
 To enable continuous data export, [create an external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table. 
 
@@ -32,9 +32,9 @@ To enable continuous data export, [create an external table](../external-tables-
   * Use `single` (or `distributed`=`false`) to disable distribution altogether. This setting may significantly slow down the continuous export process and impact the number of files created in each continuous export iteration. 
 * **Number of files**:
   * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#number-of-files). Each continuous export iteration always writes to new files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs. The frequency parameter is `intervalBetweenRuns`.
-* **Location**:
+* **External table storage accounts**:
   * For best performance, the Azure Data Explorer cluster and the storage account(s) should be colocated in the same Azure region.
-  * If the exported data volume is large, it's recommended to configure multiple storage accounts for the external table, to avoid storage throttling. See [export data to storage](export-data-to-storage.md#known-issues).
+  * If the exported data volume is large, it's recommended to configure multiple storage accounts for the external table, to avoid storage throttling. See [storage failures during export commands](export-data-to-storage.md#failures-during-export-commands) for more details.
 
 ## Exactly once export
 
@@ -42,7 +42,7 @@ To guarantee "exactly once" export, continuous export uses [database cursors](..
 
 The guarantee for "exactly once" export is only for files reported in the [show exported artifacts command](show-continuous-artifacts.md). Continuous export doesn't guarantee that each record will be written only once to the external table. If a failure occurs after export has begun and some of the artifacts were already written to the external table, the external table may contain duplicates. If a write operation was aborted before completion, the external table may contain corrupted files. In such cases, artifacts aren't deleted from the external table, but they won't be reported in the [show exported artifacts command](show-continuous-artifacts.md). Consuming the exported files using the `show exported artifacts command` guarantees no duplications and no corruptions.
 
-## Export to fact and dimension tables
+## Export from fact and dimension tables
 
 By default, all tables referenced in the export query are assumed to be [fact tables](../../concepts/fact-and-dimension-tables.md). As such, they're scoped to the database cursor. The syntax explicitly declares which tables are scoped (fact) and which aren't scoped (dimension). See the `over` parameter in the [create command](create-alter-continuous.md) for details.
 
@@ -83,9 +83,10 @@ Followed by:
 
 ## Limitations
 
-* Continuous export doesn't work for data ingested using streaming ingestion. 
+* Continuous export doesn't work for data ingested using streaming ingestion.
 * Continuous export can't be configured on a table on which a [Row Level Security policy](../../management/rowlevelsecuritypolicy.md) is enabled.
+* Continuous export will only work if records in source table are ingested to the table directly (either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export may not process these records. See the limitations described in the [Database Cursors](../databasecursor.md#restrictions) page.
 * Continuous export isn't supported for external tables with `impersonate` in their [connection strings](../../api/connection-strings/storage.md).
 * Continuous export doesn't support cross-database and cross-cluster calls.
 * Continuous export isn't designed for constantly streaming data out of Azure Data Explorer. Continuous export runs in a distributed mode, where all nodes export concurrently. If the range of data queried by each run is small, the output of the continuous export would be many small artifacts. The number of artifacts depends on the number of nodes in the cluster.
-* If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](../data-ingestion/eventgrid.md#known-issues).
+* If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](../../../ingest-data-event-grid-overview.md#known-event-grid-issues).

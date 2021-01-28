@@ -80,14 +80,14 @@ Recovery time objective (RTO) refers to the time to recover from a disruption. F
 Ingestion, processing, and curation processes need diligent design upfront when planning for disaster recovery. Ingestion refers to data integrated into Azure Data Explorer from various sources; processing refers to transformations and similar activities; curation refers to materialized views, exports to the data lake, and so on.
 
 The following are popular disaster recovery configurations, and each is described in detail below.
-* [Always-on configuration](#always-on-configuration)
+* [Active-Active-Active (always-on) configuration](#active-active-active-configuration)
 * [Active-Active configuration](#active-active-configuration)
 * [Active-Hot standby configuration](#active-hot-standby-configuration)
 * [On-demand data recovery cluster configuration](#on-demand-data-recovery-configuration)
 
-### Always-on configuration
+### Active-active-active configuration
 
-For critical application deployments with no tolerance for outages, you should use multiple Azure Data Explorer clusters across Azure paired regions. Set up ingestion, processing, and curation in parallel to all of the clusters. The cluster SKU must be the same across regions. Azure will ensure that updates are rolled out and staggered across Azure paired regions. An Azure region outage won't cause an application outage. You may experience some latency or performance degradation.
+This configuration is also called "always-on". For critical application deployments with no tolerance for outages, you should use multiple Azure Data Explorer clusters across Azure paired regions. Set up ingestion, processing, and curation in parallel to all of the clusters. The cluster SKU must be the same across regions. Azure will ensure that updates are rolled out and staggered across Azure paired regions. An Azure region outage won't cause an application outage. You may experience some latency or performance degradation.
 
 :::image type="content" source="media/business-continuity-overview/active-active-active-n.png" alt-text="Active-active-active-n configuration":::
 
@@ -97,7 +97,7 @@ For critical application deployments with no tolerance for outages, you should u
 
 ### Active-Active configuration
 
-This configuration is identical to the [Always-on configuration](#always-on-configuration), but only involves two Azure paired regions. Configure dual ingestion, processing, and curation. Users are routed to the nearest region. The cluster SKU must be the same across regions.
+This configuration is identical to the [active-active-active configuration](#active-active-active-configuration), but only involves two Azure paired regions. Configure dual ingestion, processing, and curation. Users are routed to the nearest region. The cluster SKU must be the same across regions.
 
 :::image type="content" source="media/business-continuity-overview/active-active.png" alt-text="Active-active configuration":::
 
@@ -117,7 +117,7 @@ The Active-Hot configuration is similar to the [Active-Active configuration](#ac
 
 ### On-demand data recovery configuration
 
-This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there's no data recovery cluster. Configure continuous export of curated data (unless raw and intermediate data is also required) to a storage account that is configured GRS (Geo Redundant Storage). A data recovery cluster is spun up if there is a disaster recovery scenario. At that time, DDLs, configuration, policies, and processes are applied. Data is ingested from storage with the ingestion property [kustoCreationTime](kusto/management/data-ingestion/eventgrid.md) to over-ride the ingestion time that defaults to system time. 
+This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there's no data recovery cluster. Configure continuous export of curated data (unless raw and intermediate data is also required) to a storage account that is configured GRS (Geo Redundant Storage). A data recovery cluster is spun up if there is a disaster recovery scenario. At that time, DDLs, configuration, policies, and processes are applied. Data is ingested from storage with the ingestion property [kustoCreationTime](ingest-data-event-grid-overview.md) to over-ride the ingestion time that defaults to system time. 
 
 :::image type="content" source="media/business-continuity-overview/on-demand-data-recovery-cluster.png" alt-text="On-demand data recovery cluster configuration":::
 
