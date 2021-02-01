@@ -196,7 +196,7 @@ The following properties can be defined as part of the policy. These properties 
 * Data partitioning runs only on hot extents, regardless of the value of the `EffectiveDateTime` property in the policy.
   * If partitioning cold extents is required, you need to temporarily adjust the [caching policy](cachepolicy.md).
 
-## Monitor partitioning
+### Monitor partitioning
 
 Use the [`.show diagnostics`](../management/diagnostics.md#show-diagnostics) command to monitor the progress or state of partitioning in a cluster.
 
@@ -222,13 +222,19 @@ Use [`.show commands`](commands.md) to monitor the partitioning commands and the
 | render timechart with(ysplit = panels)
 ```
 
-## Partition capacity
+### Partitioning capacity
 
 * The data partitioning process results in the creation of more extents. The cluster may gradually increase its [extents merge capacity](../management/capacitypolicy.md#extents-merge-capacity), so that the process of [merging extents](../management/extents-overview.md) can keep up.
 * If there's a high ingestion throughput, or a large enough number of tables that have a partitioning policy defined, then the cluster may gradually increase its [Extents partition capacity](../management/capacitypolicy.md#extents-partition-capacity), so that [the process of partitioning extents](#the-data-partitioning-process) can keep up.
 * To avoid consuming too many resources, these dynamic increases are capped. You may be required to gradually and linearly increase them beyond the cap, if they're used up entirely.
   * If increasing the capacities causes a significant increase in the use of the cluster's resources, you can scale the cluster
     [up](../../manage-cluster-vertical-scaling.md)/[out](../../manage-cluster-horizontal-scaling.md), either manually, or by enabling autoscale.
+
+### Limitations
+
+* Attempts to partition data in a database that already has more than 5,000,000 extents will be throttled.
+  * In such cases, it is recommended that you temporarily disable partitioning and re-evaluate your configuration and policies.
+    * For example, you can set the `EffectiveDateTime` to a future date, until the extent count stabilizes on a lower value.
 
 ## Outliers in partitioned columns
 
