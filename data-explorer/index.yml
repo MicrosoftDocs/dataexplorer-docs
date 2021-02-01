@@ -24,15 +24,16 @@ landingContent:
             url: data-explorer-overview.md
       - linkListType: video
         links:
-          - text: Azure Data Explorer at a glance (2:23)
+          - text: What is Azure Data Explorer? (19:47)
             url: https://youtu.be/D_AJk2lAepw
-          - text: "Pluralsight: How to Start with Microsoft Azure Data Explorer"
-            url: https://www.pluralsight.com/courses/microsoft-azure-data-explorer-starting                       
-          - text: "Pluralsight: Kusto Query Language (KQL) from Scratch"
-            url: https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch
-          - text: "Pluralsight: Microsoft Azure Data Explorer - Advanced Kusto Query Language (KQL)" 
-            url: https://www.pluralsight.com/courses/microsoft-azure-data-explorer-advanced-query-capabilities
 
+  # Card
+  - title: Training
+    linkLists: 
+      - linkListType: learn
+        links:
+          - text: "Free Pluralsight training: Azure Data Explorer"
+            url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer          
 
   # Card
   - title: Create cluster and database
