@@ -17,10 +17,10 @@ This article describes the `.clean databases extentcontainers` and `.show databa
 
 The `.clean databases extentcontainers` command deletes unused storage artifacts that are left from the maintenance and background operations on [data shards (extents)](extents-overview.md). The command runs in the background on the underlying storage accounts of a cluster. This command can be called on a specific list of databases or on all the databases in the cluster. A separate operation is initialized for each database, and these operations can be monitored with the [`.show database extentcontainers clean operations`](#show-database-extentcontainers-clean-operations) command.
 
-You must have cluster admin or database admin permissions to execute this command. For more information, see [Role-based Authorization in Kusto](access-control/role-based-authorization.md).
+You must have an AllDatabasesAdmin or specific database admin permission to execute this command. For more information, see [Role-based Authorization in Kusto](access-control/role-based-authorization.md).
 
 > [!WARNING]
-> Once the `.clean databases extentcontainers` command is run, the recoverability defined in the [retention policy](../management/retentionpolicy.md) is reset to the time when the command started. You can't change the database state to an earlier point in time. We advise only running this command based on Azure Advisor recommendations.
+> Once the `.clean databases extentcontainers` command is run, the recoverability defined in the [retention policy](../management/retentionpolicy.md) is reset to the time when the command started. You can't change the database state to an earlier point in time. We advise only running this command based on Azure Advisor recommendation.
 
 ### Syntax
 
@@ -53,7 +53,7 @@ You must have cluster admin or database admin permissions to execute this comman
 
 This command monitors the [`.clean databases extentcontainers`](#clean-databases-extentcontainers) operations on the database level.
 
-You must have cluster admin, cluster monitor, or database admin permissions to execute this command. For more information, see [Role-based Authorization in Kusto](access-control/role-based-authorization.md).
+You must have an AllDatabasesAdmin, AllDatabasesMonitor or specific database admin or monitor permission to execute this command. For more information, see [Role-based Authorization in Kusto](access-control/role-based-authorization.md).
 
 ### Syntax
 
