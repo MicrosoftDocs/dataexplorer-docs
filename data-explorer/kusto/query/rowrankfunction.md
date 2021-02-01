@@ -26,7 +26,8 @@ The function returns the row rank of the current row as a value of type `long`.
 
 ## Example
 
-This example shows how one can rank the `Airline` by the number of departure from the *SEA* `Airport`:
+This example shows how to rank the `Airline` by the number of departures from the SEA `Airport`:
+
 
 ```kusto
 datatable (Airport:string, Airline:string, Departures:long)
