@@ -22,7 +22,8 @@ The row index starts by default at `1` for the first row, and is incremented by 
   
 ## Returns
 
-The function returns the row rank of the current row as a value of type `long`.
+Returns the row rank of the current row as a value of type `long`.
+
 
 ## Example
 
