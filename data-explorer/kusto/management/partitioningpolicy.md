@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/28/2020
+ms.date: 2/2/2021
 ---
 # Partitioning policy
 
@@ -233,8 +233,7 @@ Use [`.show commands`](commands.md) to monitor the partitioning commands and the
 ### Limitations
 
 * Attempts to partition data in a database that already has more than 5,000,000 extents will be throttled.
-  * In such cases, it is recommended that you temporarily disable partitioning and re-evaluate your configuration and policies.
-    * For example, you can set the `EffectiveDateTime` to a future date, until the extent count stabilizes on a lower value.
+  * In such cases, we recommend that you temporarily disable partitioning and re-evaluate your configuration and policies. For example, you can set the `EffectiveDateTime` to a future date until the extent count stabilizes on a lower value.
 
 ## Outliers in partitioned columns
 
