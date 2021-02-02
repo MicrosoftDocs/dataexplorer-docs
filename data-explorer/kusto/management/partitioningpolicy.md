@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/28/2020
+ms.date: 2/2/2021
 ---
 # Partitioning policy
 
 The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table.
 
-By default, extents are partitioned by their ingestion time. In the majority of cases there's no need to apply an additional partitioning policy.
+By default, extents are partitioned by their ingestion time. In most cases, there's no need to apply another partitioning policy.
 
 The main purpose of the partitioning policy is to improve performance of queries in [specific scenarios](#common-scenarios).
 
@@ -98,7 +98,7 @@ The partition function used is [bin_at()](../query/binatfunction.md) and isn't c
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `RangeSize`            | A `timespan` scalar constant that indicates the size of each datetime partition.                                                                                | Start with the value `1.00:00:00` (one day). Don't set a shorter value, because it may result in the table having a large number of small extents that can't be merged.                                                                                                      |
 | `Reference`            | A `datetime` scalar constant that indicates a fixed point in time, according to which datetime partitions are aligned.                                          | Start with `1970-01-01 00:00:00`. If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`.                                                                                                      |
-| `OverrideCreationTime` | A `bool` indicating whether or not the result extent's minimum and maximum creation times should be overridden by the range of the values in the partition key. | Defaults to `false`. Set to `true` if data isn't ingested in-order of time of arrival (e.g. a single source file may include datetime values that are very distant), and/or you want to force retention/caching based on the datetime values, and not the time of ingestion. |
+| `OverrideCreationTime` | A `bool` indicating whether or not the result extent's minimum and maximum creation times should be overridden by the range of the values in the partition key. | Defaults to `false`. Set to `true` if data isn't ingested in-order of time of arrival (for example, a single source file may include datetime values that are distant), and/or you want to force retention/caching based on the datetime values, and not the time of ingestion. |
 
 > [!IMPORTANT]
 > When `OverrideCreationTime` is set to `true`, make sure the `Lookback` property in the table's effective [Extents merge policy](mergepolicy.md) is aligned with the datetime values in your data.
@@ -233,8 +233,7 @@ Use [`.show commands`](commands.md) to monitor the partitioning commands and the
 ### Limitations
 
 * Attempts to partition data in a database that already has more than 5,000,000 extents will be throttled.
-  * In such cases, it is recommended that you temporarily disable partitioning and re-evaluate your configuration and policies.
-    * For example, you can set the `EffectiveDateTime` to a future date, until the extent count stabilizes on a lower value.
+  * In such cases, we recommend that you temporarily disable partitioning and re-evaluate your configuration and policies. For example, you can set the `EffectiveDateTime` to a future date until the extent count stabilizes on a lower value.
 
 ## Outliers in partitioned columns
 
