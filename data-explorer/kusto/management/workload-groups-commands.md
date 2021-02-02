@@ -162,7 +162,7 @@ while keeping its request limits policy as-is:
 ```kusto
 .alter-merge workload_group default '{'
 '  "RequestRateLimitPolicies": ['
-'    {\n'
+'    {'
 '      "IsEnabled": true,'
 '      "Scope": "WorkloadGroup",'
 '      "LimitKind": "ConcurrentRequests",'
@@ -171,6 +171,19 @@ while keeping its request limits policy as-is:
 '      }'
 '    }'
 '  ]'
+'}'
+```
+
+#### Alter the request queuing policy
+
+Enable request queuing for the `default` workload group, while keeping its request limits policy
+and request rate limit policies as-is:
+
+```kusto
+.alter-merge workload_group default '{'
+'  "RequestQueuingPolicy": {'
+'      "IsEnabled": true'
+'  }'
 '}'
 ```
 
