@@ -111,7 +111,8 @@ The technical specifications for the Azure Data Explorer cluster VMs are describ
 |Standard_L16s| storage-optimized | 2.6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
 |Standard_L8s_v2| storage-optimized | 1.7&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000
 |Standard_L16s_v2| storage-optimized | 3.5&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
-|Standard_E64i1_v3| isolated compute | 1.1&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
+|Standard_E64i_v3| isolated compute | 1.1&nbsp;TB | 64 | 512&nbsp;GB | 0 | 2 | 1,000
+|Standard_E80ids_v4| isolated compute | 3.7&nbsp;TB | 80 | 630&nbsp;TB | 0 | 2 | 1,000
 
 * You can view the updated compute SKU list per region by using the Azure Data Explorer [ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus). 
 * Learn more about the [various SKUs](/azure/virtual-machines/windows/sizes). 
