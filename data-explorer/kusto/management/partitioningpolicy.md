@@ -13,7 +13,7 @@ ms.date: 2/2/2021
 
 The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table.
 
-By default, extents are partitioned by their ingestion time. In the majority of cases there's no need to apply an additional partitioning policy.
+By default, extents are partitioned by their ingestion time. In most cases, there's no need to apply another partitioning policy.
 
 The main purpose of the partitioning policy is to improve performance of queries in [specific scenarios](#common-scenarios).
 
@@ -30,7 +30,6 @@ The following are common scenarios that can be addressed by setting a data parti
 * **High cardinality partition key**: For example, IoT information from many different sensors, or academic records of many different students. 
   * High cardinality is defined as more than 10M distinct values where the distribution of values in the column is approximately even.
   * In this case, set the [hash partition key](#hash-partition-key) to be the column grouped-by or joined-on, and set the `PartitionAssigmentMode` [property](#partition-properties) to `default`.
-* **Unordered Data ingestion**: Data ingested into a table might not be ordered and parititoned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span. 
   * In this case, set the [Uniform range datetime partition key](#uniform-range-datetime-partition-key) to be the `datetime` column.
   * If you need retention and caching policies to align with the datetime values in the column, instead of aligning with the time of ingestion, set the `OverrideCreationTime` property to `true`.
 
@@ -98,7 +97,7 @@ The partition function used is [bin_at()](../query/binatfunction.md) and isn't c
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `RangeSize`            | A `timespan` scalar constant that indicates the size of each datetime partition.                                                                                | Start with the value `1.00:00:00` (one day). Don't set a shorter value, because it may result in the table having a large number of small extents that can't be merged.                                                                                                      |
 | `Reference`            | A `datetime` scalar constant that indicates a fixed point in time, according to which datetime partitions are aligned.                                          | Start with `1970-01-01 00:00:00`. If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`.                                                                                                      |
-| `OverrideCreationTime` | A `bool` indicating whether or not the result extent's minimum and maximum creation times should be overridden by the range of the values in the partition key. | Defaults to `false`. Set to `true` if data isn't ingested in-order of time of arrival (e.g. a single source file may include datetime values that are very distant), and/or you want to force retention/caching based on the datetime values, and not the time of ingestion. |
+| `OverrideCreationTime` | A `bool` indicating whether or not the result extent's minimum and maximum creation times should be overridden by the range of the values in the partition key. | Defaults to `false`. Set to `true` if data isn't ingested in-order of time of arrival (for example, a single source file may include datetime values that are distant), and/or you want to force retention/caching based on the datetime values, and not the time of ingestion. |
 
 > [!IMPORTANT]
 > When `OverrideCreationTime` is set to `true`, make sure the `Lookback` property in the table's effective [Extents merge policy](mergepolicy.md) is aligned with the datetime values in your data.
