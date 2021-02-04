@@ -60,8 +60,8 @@ The wizard guides you through the following options:
    * Ingest into an [existing table](one-click-ingestion-existing-table.md)
    * Ingest into [a new table](one-click-ingestion-new-table.md)
    * Ingest data from:
-      * Blob storage
-      * [A local file](one-click-ingestion-existing-table.md)
+      * Blob storage: up to 10 blobs
+      * [A local file](one-click-ingestion-existing-table.md): up to 10 files
       * [A container](one-click-ingestion-new-table.md) (blob container, ADLS Gen1 container, ADLS Gen2 container)
 
 ### Schema mapping
