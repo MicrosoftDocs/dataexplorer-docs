@@ -80,7 +80,7 @@ If the ODBC application can accept a connection string instead of, or in additio
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
 ```
 
-Some ODBC applications don't work well with the `NVARCHAR(MAX)` type. For more information, see https://docs.microsoft.com/sql/relational-databases/native-client/features/using-large-value-types?view=sql-server-2017#sql-server-native-client-odbc-driver.
+Some ODBC applications don't work well with the `NVARCHAR(MAX)` type. For more information, see https://docs.microsoft.com/sql/relational-databases/native-client/features/using-large-value-types#sql-server-native-client-odbc-driver.
 
 The common workaround, is to cast the returned data to *NVARCHAR(n)*, with some value for n. For example, *NVARCHAR(4000)*. Such a workaround, however, won't work for Azure Data Explorer, since Azure Data Explorer has only one string type and for SQL clients it's encoded as *NVARCHAR(MAX)*.
 
