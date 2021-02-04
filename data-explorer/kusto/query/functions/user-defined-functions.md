@@ -12,12 +12,12 @@ ms.localizationpriority: high
 ---
 # User-defined functions
 
-**User-defined functions** are reusable subqueries that can be defined as part of the query itself (**ad-hoc functions**), or persisted as part of the database metadata (**stored functions**). User-defined functions can be tabular functions, also known as views, or scalar functions. User-defined functions are invoked through a **name**, are provided with zero or more **input arguments** (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function **body**.
+**User-defined functions** are reusable subqueries that can be defined as part of the query itself (**ad-hoc functions**), or persisted as part of the database metadata (**stored functions**). User-defined functions are invoked through a **name**, are provided with zero or more **input arguments** (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function **body**.
 
 A user-defined function belongs to one of two categories:
 
 * Scalar functions 
-* Tabular (view) functions 
+* Tabular functions, also known as views
 
 The function's input arguments and output determine whether it is scalar or tabular, which then establishes how it might be used. 
 
