@@ -4,7 +4,7 @@ description: The Azure Data Explorer security baseline provides procedural guida
 author: msmbaldwin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 02/03/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 
@@ -440,7 +440,7 @@ Although classic Azure resources may be discovered via Resource Graph, it is hig
 
 - [How to create queries with Azure Resource Graph](/azure/governance/resource-graph/first-query-portal)
 
-- [How to view your Azure Subscriptions](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [How to view your Azure Subscriptions](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Understand Azure RBAC](/azure/role-based-access-control/overview)
 
@@ -544,7 +544,7 @@ Also, Azure Resource Manager has the ability to export the template in JavaScrip
 
 You can also use recommendations from Azure Security Center as a secure configuration baseline for your Azure resources.
 
-- [How to view available Azure Policy Aliases](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [How to view available Azure Policy Aliases](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Tutorial: Create and manage policies to enforce compliance](/azure/governance/policy/tutorials/create-and-manage)
 
@@ -576,7 +576,7 @@ You can also use recommendations from Azure Security Center as a secure configur
 
 **Guidance**: Use Azure Repos to securely store and manage your code like custom Azure policies, Azure Resource Manager templates, Desired State Configuration scripts etc. To access the resources you manage in Azure DevOps, you can grant or deny permissions to specific users, built-in security groups, or groups defined in Azure Active Directory (Azure AD) if integrated with Azure DevOps, or Active Directory if integrated with TFS.
 
-- [How to store code in Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [How to store code in Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
 - [About permissions and groups in Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -668,7 +668,7 @@ Pre-scan any content being uploaded to non-compute Azure resources, such as Azur
 
 - [Configure customer-managed-keys using the Azure Resource Manager template](./customer-managed-keys-resource-manager.md)
 
-- [How to backup Azure Key Vault certificates](/powershell/module/az.keyvault/backup-azkeyvaultcertificate?amp;preserve-view=true&view=azps-4.8.0)
+- [How to backup Azure Key Vault certificates](/powershell/module/az.keyvault/backup-azkeyvaultcertificate?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -678,7 +678,7 @@ Pre-scan any content being uploaded to non-compute Azure resources, such as Azur
 
 **Guidance**: Periodically test data restoration of your Azure Key Vault secrets.
 
-- [How to restore Azure Key Vault certificates](/powershell/module/az.keyvault/restore-azkeyvaultcertificate?amp;preserve-view=true&view=azps-4.8.0)
+- [How to restore Azure Key Vault certificates](/powershell/module/az.keyvault/restore-azkeyvaultcertificate?preserve-view=true&view=azps-4.8.0)
 
 - [Configure customer-managed-keys using C# ](./customer-managed-keys-csharp.md)
 
