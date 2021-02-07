@@ -12,7 +12,7 @@ ms.date: 02/06/2021
 
 Applies a double exponential smoothing filter on a series.
 
-The function `series_dbl_exp_smoothing_fl()` takes an expression containing a dynamic numerical array as input and applies a [double exponential smoothing](https://en.wikipedia.org/wiki/Exponential_smoothing#Double_exponential_smoothing) filter.
+The function `series_dbl_exp_smoothing_fl()` takes an expression containing a dynamic numerical array as input and applies a [double exponential smoothing](https://en.wikipedia.org/wiki/Exponential_smoothing#Double_exponential_smoothing) filter. In case there is trend in the series, this function is superior to [series_exp_smoothing_fl()](series-exp-smoothing-fl.md) that implements [basic exponential smoothing](https://en.wikipedia.org/wiki/Exponential_smoothing#Basic_(simple)_exponential_smoothing_(Holt_linear)) filter.
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
