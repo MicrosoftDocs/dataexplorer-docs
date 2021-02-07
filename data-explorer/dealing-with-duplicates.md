@@ -64,7 +64,8 @@ DeviceEventsAll
 | summarize arg_max(EventDateTime, *) by DeviceId, EventId, StationId
 }
 ```
-### Solution #3: Use maerialized view to deduplicate 
+
+### Solution #3: Use materialized views to deduplicate
 
 [Materialized views](kusto/management/materialized-views/materialized-view-overview.md) can be used for deduplication, by using the [any()](kusto/query/any-aggfunction.md)/[arg_min()](kusto/query/arg-min-aggfunction.md)/[arg_max()](kusto/query/arg-max-aggfunction.md) aggregation functions (see example #4 on [this page](kusto/management/materialized-views/materialized-view-create.md#examples)). It's important to note, however, that materialized views come with a cost of consuming cluster's resources, which may not be neglectable (see materialized views [performance considerations](kusto/management/materialized-views/materialized-view-overview.md#performance-considerations)). It is therefore always better to eliminate duplicates in the ingestion pipeline so that they don't enter the system in the 1st place, as much as possible.
 
