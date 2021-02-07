@@ -64,7 +64,7 @@ The default is `isfuzzy=` `false`.
     *  A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.
 
 > [!NOTE]
-> Whenever the list of tables is known, refine from using wildcards. Some workspaces contains very large number of tables that would lead to inefficient execution. Tables may also be added over time leading to unpredicted results.
+> Whenever the list of tables is known, refrain from using wildcards. Some workspaces contains very large number of tables that would lead to inefficient execution. Tables may also be added over time leading to unpredicted results.
     
 * `kind`: 
     * `inner` - The result has the subset of columns that are common to all of the input tables.

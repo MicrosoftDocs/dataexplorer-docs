@@ -53,6 +53,8 @@
       href: security.md
     - name: Security baseline
       href: security-baseline.md
+    - name: Security controls by Azure Policy
+      href: ./security-controls-policy.md
   - name: Business continuity
     items:  
     - name: Overview
@@ -86,7 +88,7 @@
       - name: One-click ingestion overview 
         href: ingest-data-one-click.md
       - name: CSV data from container to new table
-        displayName: ingest data, ingestion, one click
+        displayName: Event Grid, ingest data, ingestion, one click
         href: one-click-ingestion-new-table.md
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
@@ -508,6 +510,7 @@
     - name: Function types
       href: ./kusto/query/functions/index.md
     - name: User-defined functions
+      displayName: Kusto view, views, Kusto function
       href: ./kusto/query/functions/user-defined-functions.md
   - name: Query statements
     items:
@@ -992,8 +995,6 @@
       href: ./kusto/query/parse-ipv6function.md
     - name: parse_ipv6_mask()
       href: ./kusto/query/parse-ipv6-maskfunction.md
-    - name: parse_json()
-      href: ./kusto/query/parsejsonfunction.md
     - name: parse_path()
       href: ./kusto/query/parsepathfunction.md
     - name: parse_url()
@@ -1084,8 +1085,9 @@
       href: ./kusto/query/todecimalfunction.md
     - name: todouble(), toreal()
       href: ./kusto/query/todoublefunction.md
-    - name: todynamic(), toobject()
-      href: ./kusto/query/todynamicfunction.md
+    - name: todynamic(), parse_json()
+      displayName: toobject(), parsejson()
+      href: ./kusto/query/parsejsonfunction.md
     - name: toguid()
       href: ./kusto/query/toguidfunction.md
     - name: tohex()
@@ -1226,6 +1228,8 @@
       href: ./kusto/query/rowcumsumfunction.md
     - name: row_number()
       href: ./kusto/query/rownumberfunction.md
+    - name: row_rank()
+      href: ./kusto/query/rowrankfunction.md      
     - name: row_window_session()
       href: ./kusto/query/row-window-session-function.md
   - name: Time series analysis
@@ -1408,6 +1412,22 @@
     - name: Control commands overview
       displayName: Management
       href: ./kusto/management/index.md
+    - name: Workload groups (preview)
+      items:
+      - name: Workload groups overview
+        href: ./kusto/management/workload-groups.md
+      - name: Workload groups management
+        href: ./kusto/management/workload-groups-commands.md
+      - name: Request classification policy
+        items:
+        - name: Request classification policy
+          href: ./kusto/management/request-classification-policy.md
+        - name: Request classification policy commands
+          href: ./kusto/management/request-classification-policy-commands.md
+      - name: Request limits policy
+        href: ./kusto/management/request-limits-policy.md
+      - name: Request rate limit policy
+        href: ./kusto/management/request-rate-limit-policy.md
     - name: Schema
       items:
       - name: Best practices for schema management
@@ -1568,12 +1588,6 @@
           href: ./kusto/management/partitioningpolicy.md
         - name: partitioning policy command
           href: ./kusto/management/partitioning-policy.md
-      - name: Query throttling
-        items:
-        - name: Query throttling policy
-          href: ./kusto/management/query-throttling-policy.md
-        - name: Query throttling policy commands
-          href: ./kusto/management/query-throttling-policy-commands.md
       - name: Retention
         items:
         - name: Retention policy
@@ -1709,29 +1723,35 @@
         href: ./kusto/management/access-control/aad.md
       - name: Principal roles
         href: ./kusto/management/access-control/role-based-authorization.md
+      - name: Allow cross-tenant queries and commands
+        href: cross-tenant-query-and-commands.md
       - name: How-To Azure Active Directory authentication
         displayName: AAD, Azure AD
         href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
     - name: Advanced data management
       items:
-      - name: Extents (data shards) overview
-        href: ./kusto/management/extents-overview.md
-      - name: Extents Commands
+      - name: Extents (data shards) 
         items: 
-        - name: .alter extent
-          href: ./kusto/management/alter-extent.md
-        - name: .drop extents
-          href: ./kusto/management/drop-extents.md
-        - name: .drop extent tags
-          href: ./kusto/management/drop-extent-tags.md
-        - name: .merge extents
-          href: ./kusto/management/merge-extents.md
-        - name: .move extents
-          href: ./kusto/management/move-extents.md
-        - name: .replace extents
-          href: ./kusto/management/replace-extents.md
-        - name: .show extents
-          href: ./kusto/management/show-extents.md
+        - name: Extents overview
+          href: ./kusto/management/extents-overview.md
+        - name: Extents commands
+          items: 
+          - name: .alter extent
+            href: ./kusto/management/alter-extent.md
+          - name: .drop extents
+            href: ./kusto/management/drop-extents.md
+          - name: .drop extent tags
+            href: ./kusto/management/drop-extent-tags.md
+          - name: .merge extents
+            href: ./kusto/management/merge-extents.md
+          - name: .move extents
+            href: ./kusto/management/move-extents.md
+          - name: .replace extents
+            href: ./kusto/management/replace-extents.md
+          - name: .show extents
+            href: ./kusto/management/show-extents.md
+        - name: Extent containers clean commands
+          href: ./kusto/management/clean-extent-containers.md
       - name: Cluster follower
         href: ./kusto/management/cluster-follower.md
       - name: Data purge

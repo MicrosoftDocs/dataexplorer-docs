@@ -18,14 +18,14 @@ There's an inherent risk that queries will monopolize the service
 resources without bounds. Kusto provides several built-in protections
 in the form of default query limits. If you're considering removing these limits, first determine whether you actually gain any value by doing so.
 
-## Limit on query concurrency
+## Limit on request concurrency
 
-**Query concurrency**  is a limit that a cluster imposes on several queries running at the same time.
+**Request concurrency** is a limit that a cluster imposes on several requests running at the same time.
 
-* The default value of the query concurrency limit depends on the SKU cluster it's running on, and is calculated as: `Cores-Per-Node x 10`.
-  * For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default Query Concurrency limit is `16 cores x10 = 160`.
-* The default value can be changed by configuring the [query throttling policy](../management/query-throttling-policy.md). 
-  * The actual number of queries that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and query patterns. Query throttling policy can be configured based on load tests performed on production-like query patterns.
+* The default value of the limit depends on the SKU the cluster is running on, and is calculated as: `Cores-Per-Node x 10`.
+  * For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
+* The default value can be changed by configuring the [request rate limit policy](../management/request-rate-limit-policy.md) of the `default` workload group.
+  * The actual number of requests that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
 
 ## Limit on result set size (result truncation)
 

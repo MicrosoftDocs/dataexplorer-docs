@@ -46,7 +46,6 @@ let predict_onnx_fl=(samples:(*), models_tbl:(name:string, timestamp:datetime, m
     let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
     let code =
     '\n'
-    'import pickle\n'
     'import binascii\n'
     '\n'
     'smodel = kargs["smodel"]\n'
@@ -99,7 +98,6 @@ predict_onnx_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:
     let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
     let code =
     '\n'
-    'import pickle\n'
     'import binascii\n'
     '\n'
     'smodel = kargs["smodel"]\n'
