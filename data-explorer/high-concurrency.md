@@ -94,7 +94,7 @@ Follow [query best practices](kusto/query/best-practices.md) so that your querie
 
 ## Set cluster policies
 
-The number of concurrent queries is capped by default and controlled by the [Query throttling policy](kusto/management/query-throttling-policy.md) so that the cluster doesn't get overloaded. You can adjust this policy for high concurrency situations, however this policy should be adjusted only after rigorous testing, preferably on production-like query patterns and datasets. Testing ensures the cluster can sustain the modified value. This limit can be configured based on application needs.
+The number of concurrent queries is capped by default and controlled by the [Request rate limit policy](kusto/management/request-rate-limit-policy.md) so that the cluster doesn't get overloaded. You can adjust this policy for high concurrency situations, however this policy should be adjusted only after rigorous testing, preferably on production-like query patterns and datasets. Testing ensures the cluster can sustain the modified value. This limit can be configured based on application needs.
 
 ## Monitor Azure Data Explorer clusters
 
