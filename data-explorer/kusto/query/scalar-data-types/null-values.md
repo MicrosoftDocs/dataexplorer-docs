@@ -44,11 +44,13 @@ datatable(val:int)[5, int(null)]
 | extend IsBiggerThan3 = val > 3
 | extend IsBiggerThan3OrNull = val > 3 or isnull(val)
 ```
+
 Results:
-|val|IsBiggerThan3|IsBiggerThan3OrNull|
+
+|val | IsBiggerThan3 | IsBiggerThan3OrNull |
 |---|---|--------|
-|5|	true|	true|
-|&nbsp;|&nbsp;|true| 	
+| 5 | true | true |
+| &nbsp; | &nbsp; | true| 	
 
 > [!NOTE]
 > In EngineV2, the null comparison expression returns boolean results. In EngineV3, the comparison expression returns "null". 
