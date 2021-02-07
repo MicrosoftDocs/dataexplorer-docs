@@ -26,7 +26,7 @@ print bool(null), datetime(null), dynamic(null), guid(null), int(null), long(nul
 ```
 
 > [!WARNING]
-> Please note that currently the `string` type doesn't support null values. For string type use the [isempty()](../isemptyfunction.md) and the [isnotempty()](../isnotemptyfunction.md) functions
+> Please note that currently the `string` type doesn't support null values. For string type, use the [isempty()](../isemptyfunction.md) and the [isnotempty()](../isnotemptyfunction.md) functions.
 
 ## Comparing null to something
 
