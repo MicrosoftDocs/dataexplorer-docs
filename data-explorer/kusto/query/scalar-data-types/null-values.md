@@ -50,7 +50,7 @@ Results:
 |5|	true|	true|
 |&nbsp;|&nbsp;|true| 	
 
-> [!Note]
+> [!NOTE]
 > In EngineV2, the null comparison expression returns boolean results. In EngineV3, the comparison expression returns "null". 
 
 ## Binary operations on null
