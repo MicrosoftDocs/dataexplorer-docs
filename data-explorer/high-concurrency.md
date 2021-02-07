@@ -13,7 +13,7 @@ ms.date: 01/11/2021
 
 Highly concurrent applications are needed in scenarios with a large user base, where the application simultaneously handles many requests with low latency and high throughput. 
 
-Use cases include large-scale monitoring and alerting dashboards, for example Microsoft products and services such as [Azure Monitor](https://azure.microsoft.com/en-au/services/monitor/), [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/), and [Playfab](https://playfab.com/). All these services use Azure Data Explorer for serving high concurrency workloads. Azure Data Explorer is a fast, fully managed big data analytics service for real-time analytics on large volumes of data streaming from applications, websites, IoT devices, and more. 
+Use cases include large-scale monitoring and alerting dashboards, for example Microsoft products and services such as [Azure Monitor](https://azure.microsoft.com/services/monitor/), [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/), and [Playfab](https://playfab.com/). All these services use Azure Data Explorer for serving high concurrency workloads. Azure Data Explorer is a fast, fully managed big data analytics service for real-time analytics on large volumes of data streaming from applications, websites, IoT devices, and more. 
 
 > [!NOTE]
 > The actual number of queries that can run concurrently on a cluster depends on various factors such as cluster resources, data volumes, query complexity, and usage patterns.
@@ -44,14 +44,14 @@ Use the following table schema design suggestions to minimize the CPU resources 
 
 ### Partition data
 
-Data is stored in the form of extents (data shards) and is partitioned by ingestion time by default. The [partitioning policy](/kusto/management/partitioningpolicy.md) allows you to repartition the extents based on a single string column or a single datetime column in a background process. Partitioning can provide significant performance improvements when most of the queries use partition keys to filter, aggregate, or both.
+Data is stored in the form of extents (data shards) and is partitioned by ingestion time by default. The [partitioning policy](kusto/management/partitioningpolicy.md) allows you to repartition the extents based on a single string column or a single datetime column in a background process. Partitioning can provide significant performance improvements when most of the queries use partition keys to filter, aggregate, or both.
 
 > [!NOTE]
 > The partitioning process itself uses CPU resources. However, the CPU reduction during query time should outweigh the CPU used for partitioning.
 
 ### Pre-aggregate your data with materialized views
 
-Pre-aggregate your data to significantly reduce CPU resources during query time. Example scenarios include summarizing data points over a reduced number of time bins, keeping the latest record of a given record, or deduplicating the dataset. Use [materialized views](/kusto/management/materialized-views/materialized-view-overview.md) for an easy-to-configure aggregated view over source tables. This feature simplifies the effort of creating and maintaining these aggregated views.
+Pre-aggregate your data to significantly reduce CPU resources during query time. Example scenarios include summarizing data points over a reduced number of time bins, keeping the latest record of a given record, or deduplicating the dataset. Use [materialized views](kusto/management/materialized-views/materialized-view-overview.md) for an easy-to-configure aggregated view over source tables. This feature simplifies the effort of creating and maintaining these aggregated views.
 
 > [!NOTE]
 > The background aggregation process uses CPU resources. However, the CPU reduction during query time should outweigh the CPU consumption for aggregation.
@@ -62,14 +62,14 @@ Configure the caching policy so that queries run on data that is stored in the h
 
 ## Set leader-follower architecture pattern
 
-The follower database is a feature that follows a database or a set of tables in a database from another cluster located in the same region. This feature is exposed through [Azure Data Share](/azure/data-explorer/data-share), [Azure Resource Manager APIs](follower.md), and a set of [cluster commands](/kusto/management/cluster-follower.md). 
+The follower database is a feature that follows a database or a set of tables in a database from another cluster located in the same region. This feature is exposed through [Azure Data Share](/azure/data-explorer/data-share), [Azure Resource Manager APIs](follower.md), and a set of [cluster commands](kusto/management/cluster-follower.md). 
 
 Use the leader-follower pattern to set compute resources for different workloads. For example, set up a cluster for ingestions, a cluster for querying or serving dashboards or applications, and a cluster that serves the data science workloads. Each workload in this case will have dedicated compute resources that can be scaled independently, and different caching and security configurations. All clusters use the same data, with the leader writing the data, and the followers using it in a read-only mode.
 
 > [!NOTE]
 > Follower databases have a lag from the leader, usually a couple of minutes. If your solution requires the latest data with no latency, the following solution may be useful: Use a view on the follower cluster that unions the data from the leader and the follower, querying the latest data from the leader and the rest of the data from the follower.
 
-To improve the performance of queries on the follower cluster, you can enable [prefetch extents configuration](/kusto/management/cluster-follower.md#alter-follower-database-prefetch-extents). However, use this configuration carefully, as it could impact the freshness of data in the follower database.
+To improve the performance of queries on the follower cluster, you can enable [prefetch extents configuration](kusto/management/cluster-follower.md#alter-follower-database-prefetch-extents). However, use this configuration carefully, as it could impact the freshness of data in the follower database.
 
 ## Optimize queries
 
@@ -77,7 +77,7 @@ Use the following methods to optimize your queries for high concurrency.
 
 ### Use query results cache
 
-When more than one user loads the same dashboard at similar time, the dashboard to the second and following users can be served from the cache. This setup provides high performance with almost no CPU usage. Use the [query results cache](/kusto/query/query-results-cache.md) feature and send query results cache configuration with the query using the `set` statement.
+When more than one user loads the same dashboard at similar time, the dashboard to the second and following users can be served from the cache. This setup provides high performance with almost no CPU usage. Use the [query results cache](kusto/query/query-results-cache.md) feature and send query results cache configuration with the query using the `set` statement.
 
 [Grafana](/azure/data-explorer/grafana) contains a configuration setting for the query results cache at the data source level, so all dashboards use this setting by default and don't need to modify the query.
 
@@ -90,11 +90,11 @@ There are two query consistency models: *strong* (the default) and *weak*. With 
 
 ### Optimize queries
 
-Follow [query best practices](/kusto/query/best-practices.md) so that your queries are as efficient as possible.
+Follow [query best practices](kusto/query/best-practices.md) so that your queries are as efficient as possible.
 
 ## Set cluster policies
 
-The number of concurrent queries is capped by default and controlled by the [query throttling policy](/kusto/management/query-throttling-policy.md) so that the cluster doesn't get overloaded. You can adjust this policy for high concurrency situations, however this policy should be adjusted only after rigorous testing, preferably on production-like query patterns and datasets. Testing ensures the cluster can sustain the modified value. This limit can be configured based on application needs.
+The number of concurrent queries is capped by default and controlled by the [query throttling policy](kusto/management/query-throttling-policy.md) so that the cluster doesn't get overloaded. You can adjust this policy for high concurrency situations, however this policy should be adjusted only after rigorous testing, preferably on production-like query patterns and datasets. Testing ensures the cluster can sustain the modified value. This limit can be configured based on application needs.
 
 ## Monitor Azure Data Explorer clusters
 
