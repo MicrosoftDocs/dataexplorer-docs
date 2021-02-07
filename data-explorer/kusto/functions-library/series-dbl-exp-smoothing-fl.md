@@ -24,7 +24,7 @@ The function `series_dbl_exp_smoothing_fl()` takes an expression containing a dy
 
 * *y_series*: Dynamic array cell of numeric values.
 * *alpha*: An optional real value in the range [0-1], specifying the weight of the last point vs. the weight of the previous points (which is `1-alpha`). Default is 0.5.
-  * A smaller value will cause the result to be smoother, whereas a larger value will make the result closer to the original series.
+  * A smaller value will cause the result to be smoother, while a larger value will make the result closer to the original series.
 * *beta*: An optional real value in the range [0-1], specifying the weight of the last slope vs. the weight of the previous slopes (which is `1-beta`). Default is 0.5.
   * A smaller value will cause the result to have more "momentum", and a larger value will cause less "momentum".
 
