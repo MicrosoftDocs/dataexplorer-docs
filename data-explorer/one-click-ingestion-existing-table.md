@@ -33,25 +33,16 @@ In the left menu of the Web UI, right-click a *database* or *table* and select *
 
 1. In the **Ingest new data** window, the **Source** tab is selected.
 
+1. If the **Cluster** and **Database** fields aren't automatically filled, select an existing cluster and database name from the drop-down menu.
+
 1. If the **Table** field isn't automatically filled, select an existing table name from the drop-down menu.
 
-    > [!NOTE]
-    > If you select **Ingest new data** on a *table* row, the selected table name will appear in the **Project Details**.
-
-1. Under **Ingestion type**, do the following steps:
+1. Under **Source type**, do the following steps:
 
    1. Select **from file**  
-   1. Select **Browse** to locate the file, or drag the file into the field.
+   1. Select **Browse** to locate up to 10 files, or drag the files into the field. The schema-defining file is noted with a blue star.
     
       :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file":::
-
- 1. A sample of the data appears. Filter the data to ingest only files that begin or end with specific characters. 
-
-    >[!NOTE] 
-    >When you adjust the filters, the preview automatically updates.
-  
-> [!TIP]
-> For ingestion **from container**, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#select-an-ingestion-type)
 
 ## Edit the schema
 
