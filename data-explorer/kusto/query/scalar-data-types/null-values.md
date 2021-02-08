@@ -26,20 +26,53 @@ print bool(null), datetime(null), dynamic(null), guid(null), int(null), long(nul
 ```
 
 > [!WARNING]
-> Please note that currently the `string` type doesn't support null values.
+> Please note that currently the `string` type doesn't support null values. For string type, use the [isempty()](../isemptyfunction.md) and the [isnotempty()](../isnotemptyfunction.md) functions.
 
 ## Comparing null to something
 
 The null value does not compare equal to any other value of the data type,
-including itself. (That is, `null == null` is false.) To determine if some
+including itself. To determine if some
 value is the null value, use the [isnull()](../isnullfunction.md) function
-and the [isnotnull()](../isnotnullfunction.md) function.
+, the [isnotnull()](../isnotnullfunction.md) function for numeric types, 
+and the [isempty()](../isemptyfunction.md) and the [isnotempty()](../isnotemptyfunction.md) 
+functions for the string type. 
+
+For example:
+
+```kusto
+datatable(val:int)[5, int(null)]
+| extend IsBiggerThan3 = val > 3
+| extend IsBiggerThan3OrNull = val > 3 or isnull(val)
+```
+
+Results:
+
+|val | IsBiggerThan3 | IsBiggerThan3OrNull |
+|---|---|--------|
+| 5 | true | true |
+| &nbsp; | &nbsp; | true| 	
+
+> [!NOTE]
+> In EngineV2, the null comparison expression returns boolean results. In EngineV3, the comparison expression returns "null". 
 
 ## Binary operations on null
 
 In general, null behaves in a "sticky" way around binary operators; a binary
 operation between a null value and any other value (including another null value)
-produces a null value.
+produces a null value. For example:
+
+```kusto
+datatable(val:int)[5, int(null)]
+| extend Add = val + 10
+| extend Multiply = val * 10
+```
+Results:
+
+|val|Add|Multiply|
+|---|---|--------|
+|5|	15|	50|
+|&nbsp;|&nbsp;|&nbsp;| 		
+
 
 ## Data ingestion and null values
 
