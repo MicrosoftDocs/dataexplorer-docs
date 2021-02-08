@@ -197,21 +197,36 @@ Expanding cells is useful to view long strings or dynamic fields such a JSON.
 
     :::image type="content" source="media/web-query-data/select-stats.png" alt-text="select functions"::: 
 
-### Pivot the table
+### Filter to query from grid
 
-1. On the right side of the grid, select **Columns** to see the table tool panel. This panel functions similarly to the pivot table field list in Excel, enabling you to do more analysis in the grid itself.
+Another easy way to filter the grid is to add a filter operator to the query directly from the grid.
+
+1. Select a cell with content you wish to create a query filter for.
+1. Right click to open the cell actions menu. Select **Add selection as filter**.
+    
+    :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="Add selection as filter to filter to query from the grid results in Azure Data Explorer WebUI":::
+
+1. A query clause will be added to your query in the query editor:
+
+    :::image type="content" source="media/web-query-data/add-query-from-filter.png" alt-text="Add query clause from filtering on the grid in Azure Data Explorer WebUI":::
+
+### Pivot
+
+Pivot mode feature is somewhat similar to Excel’s pivot table, enabling you to do advanced analysis in the grid itself.
+
+Pivoting allows you to take a columns values and turn them into columns. For example you can pivot on State to make columns for Florida, Missouri, Alabama, etc.
+
+1. On the right side of the grid, select **Columns** to see the table tool panel. 
 
     ![Table tool panel](media/web-query-data/tool-panel.png)
 
-1. Select **Pivot Mode**, then drag columns as follows: **State** to **Row groups**; **DamageProperty** to **Values**; and **EventType** to **Column labels**.  
+1. Select **Pivot Mode**, then drag columns as follows: **EventType** to **Row groups**; **DamageProperty** to **Values**; and **State** to **Column labels**.  
 
     ![Pivot mode](media/web-query-data/pivot-mode.png)
 
-    The result should look like the following pivot table.
+    The result should look like the following pivot table:
 
     ![Pivot table](media/web-query-data/pivot-table.png)
-
-    Notice how Vermont and Alabama each have two events under the same category, while Texas has two events under different categories. Pivot tables are a great tool for quick analysis since they enable you to quickly spot these differences.
 
 ## Search in the results table
 
