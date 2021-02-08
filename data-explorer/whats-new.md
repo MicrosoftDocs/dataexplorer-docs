@@ -41,54 +41,26 @@ New article title | Description
 
 New article title | Description
 ---|---
-[.disable plugin](./kusto/management/disable-plugin.md) | Disables a plugin.
-[.enable plugin](./kusto/management/enable-plugin.md) | Enables a plugin.
-[.show plugins](./kusto/management/show-plugins.md) | Lists all plugins of the cluster.
+[.disable plugin](./kusto/management/disable-plugin.md) | New article. Disables a plugin.
+[.enable plugin](./kusto/management/enable-plugin.md) | New article. Enables a plugin.
+[.show plugins](./kusto/management/show-plugins.md) | New article. Lists all plugins of the cluster.
 
 #### General
 
 New article title | Description
 ---|---
-[Azure Policy built-in definitions for Azure Data Explorer](policy-reference.md) | This page is an index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions for Azure Data Explorer. 
-[Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md) | In this article, you connect an Event Hub to a table in Azure Data Explorer using the [one-click ingestion](ingest-data-one-click.md) experience.
+[Azure Policy built-in definitions for Azure Data Explorer](policy-reference.md) | New article. Index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions for Azure Data Explorer. 
+[Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md) | New article. Connect an Event Hub to a table in Azure Data Explorer using the [one-click ingestion](ingest-data-one-click.md) experience.
 
 
 ### Updated articles
 
-- Ignoring PR 1273: Update partitioningpolicy.md = remove
-- Ignoring PR 1266: Update ingest-data-logstash.md = only supports JSON - ORNAT
-- Ignoring PR 1263: Update make-bag-aggfunction.md = remove
-- Ignoring PR 1250: Update create-cluster-database-portal.md = remove
-- Ignoring PR 1243: Update data-purge.md = remove
-- Ignoring PR 1224: Update numoperators.md = remove
-- Ignoring PR 1220: Update gettypefunction.md = remove
-- Ignoring PR 1219: Update countoperator.md =remove
-- Ignoring PR 1216: Update tools-integrations-overview.md = remove
-- Ignoring PR 1212: Update indexofregexfunction.md = remove
-- Ignoring PR 1211: Update query-throttling-policy.md = remove
-- Ignoring PR 1204: Update cluster-follower.md = syntax changed, ORNAT
-- Ignoring PR 1200: Update lightingest.md = remove
-- Ignoring PR 1195: Update cluster-follower.md = syntax changed, ORNAT
-- Ignoring PR 1183: Update gzip-base64-compress.md = remove
-- Ignoring PR 1180: Update hll-merge-aggfunction.md = remove
-- Ignoring PR 1177: Update sandboxes.md = remove
-- Ignoring PR 1171: Update materialized-view-create.md = remove
-- Ignoring PR 1166: Update isnotnullfunction.md = remove
-- Ignoring PR 1158: Update row-level-security-policy.md = remove
-- Ignoring PR 448: Update datatypes-string-operators.md = remove
-
-#### Management
-
-- [Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md) - ORNAT 
-  - Added some samples on filtering by partition columns 
+- Ignoring PR 1204: Update cluster-follower.md = syntax changed, added `.alter follower database prefetch-extents`
 
 #### General
 
-- [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md) - ORNAT
-  - 2020 11 assigned identities
-  - Support user assigned identities
-- [Azure security baseline for Azure Data Explorer](security-baseline.md) - ORNAT
-  - ASB: Data Explorer
+- [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md) - KEEP
+   - Supports both user-assigned managed identities and system-assigned managed identities
 - [Create a table in Azure Data Explorer](one-click-table.md) - KEEP
   - One click table GA
 - [Quickstart: Query data in Azure Data Explorer Web UI](web-query-data.md) - KEEP
@@ -97,8 +69,8 @@ New article title | Description
 - [What is one-click ingestion?](ingest-data-one-click.md) - KEEP
   - Update one click ingestion
   - OCI = GA + JSON nested levels + file types
-- [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md) - ORNAT
-  - Added documentation for new dashboard visuals and parameter changes
+- [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md) - KEEP
+  - New dashboard visuals and parameter changes
 
 ## October 2020
 
@@ -144,55 +116,17 @@ New article title | Description
 
 ### Updated articles
 
-- Ignoring PR 380: Update parse-xmlfunction.md = remove
-- Ignoring PR 1155: Update cross-cluster-or-database-queries.md = remove
-- Ignoring PR 1147: Update partitionoperator.md = remove
 - Ignoring PR 1144: Update logicapps.md - GA - KEEP
-- Ignoring PR 1142: Update dcount-intersect-plugin.md = remove
-- Ignoring PR 1124: Update querylimits.md = remove
-- Ignoring PR 1109: Update request-properties.md = remove
-- Ignoring PR 1105: Update ingest-data-event-hub-overview.md = remove
-- Ignoring PR 1099: Update sandboxes.md - error codes updated - ORNAT
-- Ignoring PR 1092: Update partitioningpolicy.md - REMOVE
-- Ignoring PR 1089: Update batchingpolicy.md - remove
-- Ignoring PR 1085: Update kusto-explorer-troubleshooting.md = remove
-- Ignoring PR 1079: Update engine-v3.md = remove
-- Ignoring PR 1077: Update query-results-cache.md = remove
-- Ignoring PR 1074: Update drop-function.md = remove
-- Ignoring PR 1068: Update row-level-security-policy.md - GA - KEEP
-- Ignoring PR 1064: Update rowlevelsecuritypolicy.md - GA - KEEP (? ORNAT)
-- Ignoring PR 1051: Update data-explorer-overview.md - remove
-- Ignoring PR 1031: Update dcount-intersect-plugin.md - remove
-- Ignoring PR 1029: Update countif-aggfunction.md - remove
-- Ignoring PR 1025: Update ingest-data-overview.md -remove
-
-#### Query
-
-- [tdigest_merge() (aggregation function)](./kusto/query/tdigest-merge-aggfunction.md) - examples added ORNAT
-
+- Ignoring PR 1068: Update row-level-security-policy.md and rowlevelsecuritypolicy.md - GA - KEEP 
 
 #### Management
 
-- [Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md) - samples added ORNAT
-  - Fixed external table next steps
-  - Document new columns in external table artifacts result
-- [Data mappings](./kusto/management/mappings.md) - most of the examples changed/added ORNAT
-  - Update documentation of ingestion mappings
-- [Tables management](./kusto/management/tables.md)- .clear tables command added ORNAT
-  - User/vrozov/cleartable
-  
 #### General
 
-- [Azure Data Explorer tools and integrations overview](tools-integrations-overview.md) - ORNAT
-  - Add link to power apps in tools and integrations
-  - Add synapse to tools and integrations
-  - add azure data studio topics
-- [Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster (Preview)](azure-advisor.md) -ORNAT
+- [Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster (Preview)](azure-advisor.md) -KEEP
   - Azure advisor new recommendation and links
-- [Use follower database to attach databases in Azure Data Explorer](follower.md) - ORNAT
-  - add powershell and conceptual tabs to follower doc
-- [Visualize data using the Azure Data Explorer connector for Power BI](power-bi-connector.md) - advanced options added ORNAT
-  - Improve PBI-related docs
+- [Use follower database to attach databases in Azure Data Explorer](follower.md) - KEEP
+  - Use powershell to attach and detach follower databases 
 
 ## September 2020
 
@@ -244,24 +178,7 @@ New article title | Description
 
 ### Updated articles
 
-- Ignoring PR 1008: Update query-monitor-data.md - remove
-- Ignoring PR 1006: Update renderoperator.md    - remove
-- Ignoring PR 1003: Update show-query-results-cache-command.md - syntax changed, ORNAT
-- Ignoring PR 996: Update series-fill-constfunction.md - remove
 - Ignoring PR 955: Update vnet-create-private-endpoint.md - GA - Keep
-- Ignoring PR 952: Update make-seriesoperator.md - aggregation functions updated/added a lot - ORNAT
-- Ignoring PR 951: Update parse-xmlfunction.md - remove
-- Ignoring PR 949: Update data-lake-query-data.md - remove
-- Ignoring PR 944: Update calloutpolicy.md- remove
-- Ignoring PR 938: Update beta-cdffunction.md - remove
-- Ignoring PR 931: Update partitioningpolicy.md -remove
-- Ignoring PR 930: Update partitioningpolicy.md- remove
-- Ignoring PR 906: Update dashboard-parameters.md - remove
-- Ignoring PR 902: Update ingest-sample-data.md - remove
-- Ignoring PR 901: Update ingest-sample-data.md - remove
-- Ignoring PR 898: Update partitioningpolicy.md - remove
-- Ignoring PR 877: Update mv-applyoperator.md - remove
-- Ignoring PR 362: Update one-click-table.md - remove
 
 #### Query
 
@@ -270,24 +187,15 @@ New article title | Description
 - [geo_line_densify()](./kusto/query/geo-line-densify-function.md) - keep
   - Add multiline support docs
 
-#### Management 
-
-- [Export data to storage](./kusto/management/data-export/export-data-to-storage.md) - failures added - ORNAT
-  - Exportdocs
-
-
 #### General
 
 - [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md) - keep (see above in ignored as well)
   - change Disable network policies in Prerequisites section
   - Vnet private endpoint - Original PR 822
-- [Visualize data from Azure Data Explorer in Grafana](grafana.md) - overhauled - ORNAT
-  - 2020 9 grafana query editor
-- [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md) - major changes - ORNAT
-  - Update azure-data-explorer-dashboards with security information
-  - 2020 8 adx dashboards
-- [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) - ORNAT
-  - 2020 8 adx dashboards
+- [Visualize data from Azure Data Explorer in Grafana](grafana.md) - KEEP
+  - Updated with new capabilities
+- [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md), [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) - KEEP
+  - Update with new capabilities
 
 ## August 2020
 
@@ -328,33 +236,7 @@ New article title | Description
 
 ### Updated articles
 
-- Ignoring PR 872: Update columns.md - remove
-- Ignoring PR 864: Update vnet-deployment.md - remove
-- Ignoring PR 860: Update partitioningpolicy.md - remove
-- Ignoring PR 848: Update partitioningpolicy.md -remove
-- Ignoring PR 845: Update dynamic-to-json-function.md - remove
-- Ignoring PR 838: Update show-table-details-command.md - remove
-- Ignoring PR 833: Update user-defined-functions.md - remove
-- Ignoring PR 832: Update mvexpandoperator.md     - remove  
-- Ignoring PR 831: Update rowlevelsecuritypolicy.md - remove
-- Ignoring PR 823: Update kusto-explorer.md - remove
-- Ignoring PR 821: Update querylimits.md   remove
-- Ignoring PR 808: Update shufflequery.md -remove 
-- Ignoring PR 805: Update binatfunction.md - remove
-- Ignoring PR 804: Update binfunction.md - remove
 - Ignoring PR 800: Update rowlevelsecuritypolicy.md - how to produce error for unauthorized access - KEEP
-- Ignoring PR 795: Update updatepolicy.md - remove
-- Ignoring PR 792: Update go-ingest-data.md - remove
-- Ignoring PR 789: Update mvexpandoperator.md - remove
-- Ignoring PR 788: Update usinghlltdigest.md- remove
-- Ignoring PR 784: Update business-continuity-create-solution.md - remove
-- Ignoring PR 774: Update mv-applyoperator.md - remove
-- Ignoring PR 771: Update net-sdk-ingest-data.md - remove
-- Ignoring PR 753: Update countif-aggfunction.md - remove
-- Ignoring PR 298: Update about-kusto-ingest.md - remove
-- Ignoring PR 289: Update python-query-data.md - remove
-- Ignoring PR 278: Update data-share.md -remove
-- Ignoring PR 268: Update monitor-with-resource-health.md - remove
 
 #### Query
 
@@ -368,9 +250,4 @@ New article title | Description
   - External tables: specify new command option .create-or-alter
 - [Create and alter external SQL tables](./kusto/management/external-sql-tables.md) - keep
   - External tables: specify new command option .create-or-alter
-
-#### General
-
-- [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md) - ORNAT?
-  - Updating batching metrics
 
