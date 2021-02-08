@@ -13,11 +13,9 @@ ms.date: 02/02/2021
 
 A workload group's request queuing policy controls if requests may be queued for delayed execution, once a certain threshold of concurrent requests is exceeded.
 
-Its goal is to reduce the amount of throttling errors during times of peak activity. The service does so by queueing incoming requests up to a predefined short time period,
-while polling for available capacity during that time period.
+The request queuing policy reduces the amount of throttling errors during times of peak activity by queueing incoming requests up to a predefined short time period, while polling for available capacity during that time period.
 
-The policy may be defined only for workload group's that have a [request rate limit policy](request-rate-limit-policy.md),
-that limits the max concurrent requests at the scope of the workload group.
+The policy may be defined only for workload groups with a [request rate limit policy](request-rate-limit-policy.md) that limits the max concurrent requests at the scope of the workload group.
 
 ## Queuing logic
 
