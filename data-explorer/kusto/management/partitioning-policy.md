@@ -17,6 +17,8 @@ The data partitioning policy is detailed [here](../management/partitioningpolicy
 
 ```kusto
 .show table [table_name] policy partitioning
+
+.show materialized-view [table_name] policy partitioning
 ```
 
 The `.show` command displays the partitioning policy that is applied on the table.
@@ -33,9 +35,13 @@ The `.show` command displays the partitioning policy that is applied on the tabl
 .alter table [table_name] policy partitioning @'policy object, serialized as JSON'
 
 .alter-merge table [table_name] policy partitioning @'partial policy object, serialized as JSON'
+
+.alter materialized-view [materialized_view_name] policy partitioning @'policy object, serialized as JSON'
+
+.alter-merge materialized-view [materialized_view_name] policy partitioning @'partial policy object, serialized as JSON'
 ```
 
-The `.alter` command allows changing the partitioning policy that is applied on the table.
+The `.alter` command allows changing the partitioning policy that is applied on the table / materialized view.
 
 The command requires [DatabaseAdmin](access-control/role-based-authorization.md) permissions.
 
@@ -116,6 +122,7 @@ To set the `EffectiveDateTime` of the policy to a different value, use the follo
 
 ```kusto
 .delete table [table_name] policy partitioning
+.delete materialized-view [materialized_view_name] policy partitioning
 ```
 
 The `.delete` command deletes the partitioning policy of the given table.
