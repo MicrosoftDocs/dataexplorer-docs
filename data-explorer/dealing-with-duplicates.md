@@ -74,7 +74,7 @@ DeviceEventsAll
 
 ### Solution #4: Filter duplicates during the ingestion process
 
-Another solution is to filter duplicates during the ingestion process. The system ignores the duplicate data during ingestion into Kusto tables. Data is ingested into a staging table and copied into another table after removing duplicate rows. The advantage of this solution is that query performance improves dramatically as compared to the previous solution. The disadvantages include increased ingestion time and additional data storage costs. Additionally, this solution works only if duplications aren't ingested concurrently. If there are multiple concurrent ingestions containing duplicate records, all may be ingested since the deduplication process will not find any existing matching records in the table.
+When you filter duplicates during the ingestion process, the system ignores the duplicate data during ingestion into Kusto tables. Data is ingested into a staging table and copied into another table after removing duplicate rows. This solution can improve query performance since records are already deduplicated during query time. On the other hand, this option increases ingestion time and incurs additional data storage costs. Additionally, this solution works only if duplications aren't ingested concurrently. If there are multiple concurrent ingestions containing duplicate records, all may be ingested since the deduplication process will not find any existing matching records in the table.
 
 The following example depicts this method:
 
