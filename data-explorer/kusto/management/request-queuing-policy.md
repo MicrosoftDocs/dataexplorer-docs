@@ -33,9 +33,8 @@ When the policy is enabled, queuing of requests is done according to the followi
     * Control commands will be queued for up to 60 seconds.
     * The queue time is not configurable.
 
-### Notes
-
-* Requests classified into different workload groups are queued in different queues.
+> [!NOTE]
+> Requests classified into different workload groups are queued in different queues.
 
 ## The policy object
 
