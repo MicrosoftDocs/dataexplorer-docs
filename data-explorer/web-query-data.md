@@ -123,9 +123,39 @@ You can now run queries on both clusters (assuming you have data in your test cl
 
 ## Work with the table grid
 
-Now that you've seen how basic queries work, let's look at how you can use the table grid to customize results and do further analysis.
+Now that you've seen how basic queries work, you can use the table grid to customize results and do further analysis. 
 
-1. Rerun the first query. Mouse-over the **State** column, select the menu, and select **Group by State**.
+### Expand a cell
+
+Expanding cells is useful to view long strings or dynamic fields such a JSON. 
+
+1. Double click a cell to open an expanded view. This view allows you to read long strings, and provides a JSON formatting for dynamic data.
+
+    :::image type="content" source="media/web-query-data/expand-cell.png" alt-text="Azure Data Explorer WebUI expand cell to show long strings":::
+
+1. Choose between the following reading pane modes for expanded view: inline, right pane, and bottom pane. Click on the icon on the top right of the result grid to switch reading pane modes.
+    
+    :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="Icon to change reading pane for expanded view mode - Azure Data Explorer WebUI query results":::
+
+### Expand a row
+
+1. Click on the arrow **>** to the left of the row you want to expand.
+
+    :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Expand a row in the Azure Data Explorer WebUI":::
+
+1. Within the expanded row, some columns are expanded (arrow pointing down), and some columns are collapsed (arrow pointing right). Click on these arrows to toggle between these two modes.
+
+### Group column by results
+
+1. Run the following query:
+     
+    ```kusto
+    StormEvents
+    | sort by StartTime desc
+    | take 10
+    ```
+
+1. Mouse-over the **State** column, select the menu, and select **Group by State**.
 
     ![Group by state](media/web-query-data/group-by.png)
 
@@ -136,6 +166,22 @@ Now that you've seen how basic queries work, let's look at how you can use the t
 1. Mouse-over the **Group** column, then select **Reset columns**. This setting returns the grid to its original state.
 
     ![Reset columns](media/web-query-data/reset-columns.png)
+
+### Filter columns
+
+1. To filter a specific column, select the menu for that column.
+1. Select the filter icon.
+1. In the filter builder select the desired operator.
+1. Type in the expression you wish to filter the column on. Results are filtered as you type.
+    > [!NOTE] 
+    > The filter is not case sensitive.
+
+1. To create a multi-condition filter select a boolean operator to add additional condition
+1. To remove the filter, delete the text from your first filter condition.
+
+:::image type="content" source="media/web-query-data/filter-column.gif" alt-text="GIF showing how to filter on a column in the Azure Data Explorer WebUI":::
+
+### Run cell statistics
 
 1. Run the following query.
 
@@ -150,6 +196,8 @@ Now that you've seen how basic queries work, let's look at how you can use the t
 1. In the results grid, select a few of the numerical cells. The table grid allows you to select multiple rows, columns, and cells and calculate aggregations on them. The Web UI currently supports the following functions for numeric values: **Average**, **Count**, **Min**, **Max**, and **Sum**.
 
     :::image type="content" source="media/web-query-data/select-stats.png" alt-text="select functions"::: 
+
+### Pivot the table
 
 1. On the right side of the grid, select **Columns** to see the table tool panel. This panel functions similarly to the pivot table field list in Excel, enabling you to do more analysis in the grid itself.
 
