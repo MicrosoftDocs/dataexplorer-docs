@@ -63,7 +63,7 @@ Now add the test cluster you created.
 
 ## Run queries
 
-You can now run queries on both clusters (assuming you have data in your test cluster). For the purpose of this article, we'll focus on the **help** cluster.
+You can now run queries on both clusters (assuming you have data in your test cluster). For this article, we'll focus on the **help** cluster.
 
 1. In the left pane, under the **help** cluster, select the **Samples** database.
 
@@ -129,7 +129,7 @@ Now that you've seen how basic queries work, you can use the table grid to custo
 
 Expanding cells is useful to view long strings or dynamic fields such a JSON. 
 
-1. Double click a cell to open an expanded view. This view allows you to read long strings, and provides a JSON formatting for dynamic data.
+1. Double-click a cell to open an expanded view. This view allows you to read long strings, and provides a JSON formatting for dynamic data.
 
     :::image type="content" source="media/web-query-data/expand-cell.png" alt-text="Azure Data Explorer WebUI expand cell to show long strings":::
 
@@ -171,12 +171,12 @@ Expanding cells is useful to view long strings or dynamic fields such a JSON.
 
 1. To filter a specific column, select the menu for that column.
 1. Select the filter icon.
-1. In the filter builder select the desired operator.
+1. In the filter builder, select the desired operator.
 1. Type in the expression you wish to filter the column on. Results are filtered as you type.
     > [!NOTE] 
     > The filter is not case sensitive.
 
-1. To create a multi-condition filter select a boolean operator to add additional condition
+1. To create a multi-condition filter, select a boolean operator to add another condition
 1. To remove the filter, delete the text from your first filter condition.
 
 :::image type="content" source="media/web-query-data/filter-column.gif" alt-text="GIF showing how to filter on a column in the Azure Data Explorer WebUI":::
@@ -202,9 +202,9 @@ Expanding cells is useful to view long strings or dynamic fields such a JSON.
 Another easy way to filter the grid is to add a filter operator to the query directly from the grid.
 
 1. Select a cell with content you wish to create a query filter for.
-1. Right click to open the cell actions menu. Select **Add selection as filter**.
+1. Right-click to open the cell actions menu. Select **Add selection as filter**.
     
-    :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="Add selection as filter to filter to query from the grid results in Azure Data Explorer WebUI":::
+    :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="Add selection as filter to query from the grid results in Azure Data Explorer WebUI":::
 
 1. A query clause will be added to your query in the query editor:
 
@@ -212,9 +212,9 @@ Another easy way to filter the grid is to add a filter operator to the query dir
 
 ### Pivot
 
-Pivot mode feature is somewhat similar to Excel’s pivot table, enabling you to do advanced analysis in the grid itself.
+Pivot mode feature is similar to Excel’s pivot table, enabling you to do advanced analysis in the grid itself.
 
-Pivoting allows you to take a columns values and turn them into columns. For example you can pivot on State to make columns for Florida, Missouri, Alabama, etc.
+Pivoting allows you to take a columns value and turn them into columns. For example you can pivot on State to make columns for Florida, Missouri, Alabama, and so on.
 
 1. On the right side of the grid, select **Columns** to see the table tool panel. 
 
@@ -360,7 +360,7 @@ Error level color scheme in **Light** mode | Error level color scheme in **Dark*
 
 #### Column requirements for highlighting
 
-For highlighted error levels, the column must be of type int, long or string.
+For highlighted error levels, the column must be of type int, long, or string. 
 
 * If the column is of type `long` or `int`:
    * The column name must be *Level*
