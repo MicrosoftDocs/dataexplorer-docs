@@ -133,8 +133,8 @@ Expanding cells is useful to view long strings or dynamic fields such a JSON.
 
     :::image type="content" source="media/web-query-data/expand-cell.png" alt-text="Azure Data Explorer WebUI expand cell to show long strings":::
 
-1. Choose between the following reading pane modes for expanded view: inline, right pane, and bottom pane. Click on the icon on the top right of the result grid to switch reading pane modes.
-    
+1. Click on the icon on the top right of the result grid to switch reading pane modes. Choose between the following reading pane modes for expanded view: inline, below pane, and right pane.
+
     :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="Icon to change reading pane for expanded view mode - Azure Data Explorer WebUI query results":::
 
 ### Expand a row
@@ -146,6 +146,8 @@ Expanding cells is useful to view long strings or dynamic fields such a JSON.
 1. Within the expanded row, some columns are expanded (arrow pointing down), and some columns are collapsed (arrow pointing right). Click on these arrows to toggle between these two modes.
 
 ### Group column by results
+
+Within the results, you can group results by any column.
 
 1. Run the following query:
      
@@ -169,10 +171,13 @@ Expanding cells is useful to view long strings or dynamic fields such a JSON.
 
 ### Filter columns
 
+You can use one or more operators to filter the results of a column.
+
 1. To filter a specific column, select the menu for that column.
 1. Select the filter icon.
 1. In the filter builder, select the desired operator.
 1. Type in the expression you wish to filter the column on. Results are filtered as you type.
+    
     > [!NOTE] 
     > The filter is not case sensitive.
 
@@ -212,11 +217,11 @@ Another easy way to filter the grid is to add a filter operator to the query dir
 
 ### Pivot
 
-Pivot mode feature is similar to Excel’s pivot table, enabling you to do advanced analysis in the grid itself.
+The pivot mode feature is similar to Excel’s pivot table, enabling you to do advanced analysis in the grid itself.
 
-Pivoting allows you to take a columns value and turn them into columns. For example you can pivot on State to make columns for Florida, Missouri, Alabama, and so on.
+Pivoting allows you to take a columns value and turn them into columns. For example, you can pivot on *State* to make columns for Florida, Missouri, Alabama, and so on.
 
-1. On the right side of the grid, select **Columns** to see the table tool panel. 
+1. On the right side of the grid, select **Columns** to see the table tool panel.
 
     ![Table tool panel](media/web-query-data/tool-panel.png)
 
@@ -232,7 +237,7 @@ Pivoting allows you to take a columns value and turn them into columns. For exam
 
 You can look for a specific expression within a result table.
 
-1.	Run the following query:
+1. Run the following query:
 
     ```Kusto
     StormEvents
