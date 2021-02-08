@@ -11,7 +11,7 @@ ms.date: 02/02/2021
 ---
 # Request queuing policy (Preview)
 
-A workload group's request queuing policy controls if requests may be queued for delayed execution, once a certain threshold of concurrent requests is exceeded.
+A workload group's request queuing policy controls queueing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.
 
 The request queuing policy reduces the amount of throttling errors during times of peak activity by queueing incoming requests up to a predefined short time period, while polling for available capacity during that time period.
 
