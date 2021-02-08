@@ -14,7 +14,7 @@ ms.date: 02/08/2021
 
 ## Retention and caching policy
 
-A materialized view has a [retention policy](../retentionpolicy.md) and [caching policy](../cachepolicy.md), similarly to  any Azure Data Explorer table.
+A materialized view has a [retention policy](../retentionpolicy.md) and [caching policy](../cachepolicy.md), similarly to any Azure Data Explorer table.
 
 The materialized view derives the database retention and caching policies by default. The policies can be changed using [retention policy control commands](../retention-policy.md) or [caching policy control commands](../cache-policy.md).
 

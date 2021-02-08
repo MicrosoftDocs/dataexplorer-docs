@@ -99,7 +99,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
   // To purge table records
   .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
 
-   // To purge materialized view records:
+   // To purge materialized view records
   .purge materialized-view [MaterializedViewName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
    ```
 
@@ -146,9 +146,9 @@ To start purge in a two-step activation scenario, run step #1 of the command:
 
  ```kusto
 	// Connect to the Data Management service
-	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
-	 
-	.purge table MyTable records in database MyDatabase <| where CustomerId in ('X', 'Y')
+    #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
+ 
+    .purge table MyTable records in database MyDatabase <| where CustomerId in ('X', 'Y')
 
     .purge materialized-view MyView records in database MyDatabase <| where CustomerId in ('X', 'Y')
  ```
