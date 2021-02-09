@@ -80,6 +80,7 @@ Alter table row level security policy:
 ```
 
 Alter same policy for a materialized view over the table:
+
 ```kusto
 .create-or-alter function with () TrimCreditCardNumbersMV() {
     let UserCanSeeFullNumbers = current_principal_is_member_of('aadgroup=super_group@domain.com');

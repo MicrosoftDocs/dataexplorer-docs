@@ -41,7 +41,7 @@ The `.show` command displays the partitioning policy that is applied on the tabl
 .alter-merge materialized-view [materialized_view_name] policy partitioning @'partial policy object, serialized as JSON'
 ```
 
-The `.alter` command allows changing the partitioning policy that is applied on the table / materialized view.
+The `.alter` command allows changing the partitioning policy that is applied on the table or materialized view.
 
 The command requires [DatabaseAdmin](access-control/role-based-authorization.md) permissions.
 
