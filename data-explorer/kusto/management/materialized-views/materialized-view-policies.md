@@ -38,11 +38,12 @@ Adding a partitioning policy on a materialized views will naturally increase the
 
 A [row level security](../rowlevelsecuritypolicy.md) can be applied on a materialized view, with several limitations:
 
-* The policy can be applied only to materialized views with [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min() ](../../query/arg-min-aggfunction.md)/[any()](../../query/any-aggfunction.md) aggregation functions.
+* The policy can be applied only to materialized views with [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min()](../../query/arg-min-aggfunction.md)/[any()](../../query/any-aggfunction.md) aggregation functions.
 * The policy is applied to the [materialized part](materialized-view-overview.md#how-materialized-views-work) of the view only.
   * If the same RLS policy is **not** defined on the source table of the materialized view, then querying the materialized view may return records that should be hidden by the policy (since [querying the materialized view](materialized-view-overview.md#materialized-views-queries) queries the source table as well).
-  * Typically, it is recommended to define the same RLS policy both on the source table and the materialized view.
-* When defining a RLS policy on a *source* table of a materialized view, the command will fail if there is no RLS policy defined on the materialized view itself. The purpose of the failure is to alert the user of a potential data leak, since the materialized view may expose similar information as the source table, but an RLS is defined only on the source table. To mitigate this error you can:
+  * Typically, it is recommended to define the same RLS policy both on the source table and the materialized view (if it is an [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min()](../../query/arg-min-aggfunction.md)/[any()](../../query/any-aggfunction.md) view).
+
+* When defining a RLS policy on a *source* table of an [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min()](../../query/arg-min-aggfunction.md)/[any()](../../query/any-aggfunction.md) materialized view, the command will fail if there is no RLS policy defined on the materialized view itself. The purpose of the failure is to alert the user of a potential data leak, since the materialized view may expose similar information as the source table, but an RLS is defined only on the source table. To mitigate this error you can:
   * Define the RLS over the materialized view.
   * Choose to ignore the error by adding `allowMaterializedViewsWithoutRowLevelSecurity` property to the alter policy command. For example:
 
