@@ -12,22 +12,34 @@ ms.localizationpriority: high
 ---
 # mv-expand operator
 
-Expands multi-value array or property bag.
+Expands multi-value dynamic arrays or property bags into multiple records.
 
-`mv-expand` is applied on a [dynamic](./scalar-data-types/dynamic.md)-typed array or property bag column so that each value in the collection gets a separate row. All the other columns in an expanded row are duplicated. 
+`mv-expand` can be described as the opposite operator to aggregation operators
+that pack multiple values into a single [dynamic](./scalar-data-types/dynamic.md)-typed
+array or property bag, such as `summarize` ... `make-list()` and `make-series`.
+Each element in the (scalar) array or property bag generates a new record in the
+output of the operator. All other columns of the input that are not being
+expanded are duplicated to all the records in the output.
 
 ## Syntax
 
-*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] [`with_itemindex=`*IndexColumnName*] *ColumnName* [`,` *ColumnName* ...] [`limit` *Rowlimit*]
+*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] [`with_itemindex=`*IndexColumnName*] *ColumnName* [`to typeof(` *Typename*`)`] [`,` *ColumnName* ...] [`limit` *Rowlimit*]
 
-*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] [, [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
+*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] *Name* `=` *ArrayExpression* [`to typeof(`*Typename*`)`] [, [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
 
 ## Arguments
 
-* *ColumnName:* In the result, arrays in the named column are expanded to multiple rows. 
-* *ArrayExpression:* An expression yielding an array. If this form is used, a new column is added and the existing one is preserved.
+* *ColumnName*, *ArrayExpression*: A column reference, or a scalar expression, with a value
+  of type `dynamic`, that holds an array or a property bag. The individual top-level elements
+  of the array or property bag get expanded into multiple records.<br>
+  When *ArrayExpression* is used and *Name* doesn't equal any input column name,
+  the expanded value is extended into a new column in the output.
+  Otherwise, the existing *ColumnName* is replaced.
+
 * *Name:* A name for the new column.
+
 * *Typename:* Indicates the underlying type of the array's elements, which becomes the type of the column produced by the `mv-expand` operator. The operation of applying type is cast-only and doesn't include parsing or type-conversion. Array elements that do not conform with the declared type will become `null` values.
+
 * *RowLimit:* The maximum number of rows generated from each original row. The default is 2147483647. 
 
   > [!NOTE]
@@ -37,13 +49,29 @@ Expands multi-value array or property bag.
 
 ## Returns
 
-Multiple rows for each of the values in any array that are in the named column or in the array expression.
-If several columns or expressions are specified, they're expanded in parallel. For each input row, there will be as many output rows as there are elements in the longest expanded expression (shorter lists are padded with nulls). If the value in a row is an empty array, the row expands to nothing (won't show in the result set). However, if the value in a row isn't an array, the row is kept as is in the result set. 
+For each record in the input, the operator returns zero, one, or many records in the output,
+as determined in the following way:
 
-The expanded column always has dynamic type. Use a cast such as `todatetime()` or `tolong()` if you want to compute or aggregate values.
+1. Input columns that are not being expanded appear in the output with their original value.
+   If a single input record is expanded into multiple output records, the value is duplicated
+   to all records.
 
-Two modes of property-bag expansions are supported:
-* `bagexpansion=bag` or `kind=bag`: Property bags are expanded into single-entry property bags. This mode is the default expansion.
+1. For each *ColumnName* or *ArrayExpression* that is expanded, the number of output records
+   is determined for each value (as explained below). For each input record the maximum number of
+   output records is calculated, and all arrays or property bags are expaneded "in parallel"
+   so that missing values (if any) are replaced by null values.
+
+1. If the dynamic value is null, then a single record is produced for that value (null).
+   If the dynamic value is an empty array or property bag, no record is produced for that value.
+   Otherwise, as many records are produced as there are elements in the dynamic value.
+
+The expanded columns are of type `dynamic`, unless they are explicitly typed
+by using the `to typeof()` clause.
+
+Two modes of property bag expansions are supported:
+
+* `bagexpansion=bag` or `kind=bag`: Property bags are expanded into single-entry property bags. This is the default mode.
+
 * `bagexpansion=array` or `kind=array`: Property bags are expanded into two-element `[`*key*`,`*value*`]` array structures,
   allowing uniform access to keys and values (also, for example, running a distinct-count aggregation
   over property names). 
