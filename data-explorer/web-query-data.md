@@ -139,6 +139,8 @@ Expanding cells is useful to view long strings or dynamic fields such a JSON.
 
 ### Expand a row
 
+When working with a table with dozens of columns, expand the entire row to be able to easily see an overview of the different columns and their content. 
+
 1. Click on the arrow **>** to the left of the row you want to expand.
 
     :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Expand a row in the Azure Data Explorer WebUI":::
@@ -168,6 +170,12 @@ Within the results, you can group results by any column.
 1. Mouse-over the **Group** column, then select **Reset columns**. This setting returns the grid to its original state.
 
     ![Reset columns](media/web-query-data/reset-columns.png)
+
+#### Value aggregation
+
+You can also use the value aggregation function when grouping by column. 
+
+:::image type="content" source="media/web-query-data/aggregate.png" alt-text="Aggregate results when grouping column by results. ":::
 
 ### Filter columns
 
@@ -241,7 +249,7 @@ You can look for a specific expression within a result table.
 
     ```Kusto
     StormEvents
-	| where DamageProperty > 5000
+    | where DamageProperty > 5000
     | take 1000
     ```
 
