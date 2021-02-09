@@ -16,6 +16,7 @@ The function `series_dbl_exp_smoothing_fl()` takes an expression containing a dy
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+
 ## Syntax
 
 `series_dbl_exp_smoothing_fl(`*y_series*`, [`*alpha*`, `*beta*`])`
