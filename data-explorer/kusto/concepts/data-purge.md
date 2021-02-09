@@ -129,7 +129,7 @@ To purge a materialized view, replace the `table` keyword with `materialized-vie
 |---------|---------|
 | `DatabaseName`   |   Name of the database      |
 | `TableName` / `MaterializedViewName`    |     Name of the table / materialized view to purge.  |
-| `Predicate`    |    Identifies the records to purge. See Purge predicate limitations below. |
+| `Predicate`    |    Identifies the records to purge. See [purge predicate limitations](#purge-predicate-limitations). |
 | `noregrets`    |     If set, triggers a single-step activation.    |
 | `verificationtoken`     |  In the two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. Information about the purge will be returned with a token that should be passed back to the command to do step #2.   |
 
