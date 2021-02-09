@@ -18,6 +18,8 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 The Azure Data Explorer Web UI can also be hosted by other web portals in an HTML iframe. For more information on how to host the Web UI and the Monaco editor used, see [Monaco IDE integration](kusto/api/monaco/monaco-kusto.md).
 In this quickstart, you'll be working in the stand-alone Azure Data Explorer Web UI.
 
+:::image type="content" source="media/web-query-data/walkthrough.gif" alt-text="Walkthrough of the Kusto Web Explorer experience":::
+
 ## Prerequisites
 
 * An Azure subscription. If you don’t have one, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
@@ -173,7 +175,10 @@ Within the results, you can group results by any column.
 
 #### Value aggregation
 
-You can also use the value aggregation function when grouping by column. 
+After you have grouped by a column, you can then use the value aggregation function to calculate simple statistics per group.
+
+1. Select the menu for the column you want to evaluate.
+1. Select **Value Aggregation**, and then select the type of function you want to do on this column.
 
 :::image type="content" source="media/web-query-data/aggregate.png" alt-text="Aggregate results when grouping column by results. ":::
 
