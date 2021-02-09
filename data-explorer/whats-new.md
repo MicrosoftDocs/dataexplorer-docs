@@ -1,5 +1,5 @@
 ---
- Article title: What's new in Azure Data Explorer
+Article title: What's new in Azure Data Explorer
 description: What's new in the Azure Data Explorer docs
 author: orspod
 ms.author: orspodek
@@ -42,7 +42,7 @@ Article title | Description
 [.disable plugin](./kusto/management/disable-plugin.md) | New article. Disables a plugin.
 [.enable plugin](./kusto/management/enable-plugin.md) | New article. Enables a plugin.
 [.show plugins](./kusto/management/show-plugins.md) | New article. Lists all plugins of the cluster.
-| [Cluster follower commands](kust/management/cluster-follower.md) | Updated article. Syntax changed, added `.alter follower database prefetch-extents` |
+| [Cluster follower commands](kusto/management/cluster-follower.md) | Updated article. Syntax changed, added `.alter follower database prefetch-extents` |
 
 ### General
 
