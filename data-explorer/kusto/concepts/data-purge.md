@@ -133,7 +133,7 @@ To purge a materialized view, replace the `table` keyword with `materialized-vie
 | `noregrets`    |     If set, triggers a single-step activation.    |
 | `verificationtoken`     |  In the two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. Information about the purge will be returned with a token that should be passed back to the command to do step #2.   |
 
-**Purge predicate limitations**
+#### Purge predicate limitations
 
 * The predicate must be a simple selection (for example, *where [ColumnName] == 'X'* / *where [ColumnName] in ('X', 'Y', 'Z') and [OtherColumn] == 'A'*).
 * Multiple filters must be combined with an 'and', rather than separate `where` clauses (for example, `where [ColumnName] == 'X' and  OtherColumn] == 'Y'` and not `where [ColumnName] == 'X' | where [OtherColumn] == 'Y'`).
