@@ -1,5 +1,5 @@
 ---
-Article title: What's new in Azure Data Explorer
+title: What's new in Azure Data Explorer
 description: What's new in the Azure Data Explorer docs
 author: orspod
 ms.author: orspodek
