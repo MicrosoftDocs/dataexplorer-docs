@@ -173,7 +173,7 @@ Within the results, you can group results by any column.
 
     ![Reset columns](media/web-query-data/reset-columns.png)
 
-#### Value aggregation
+#### Use value aggregation
 
 After you have grouped by a column, you can then use the value aggregation function to calculate simple statistics per group.
 
