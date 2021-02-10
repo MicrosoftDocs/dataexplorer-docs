@@ -17,7 +17,7 @@ Alters the DocString value of an existing materialized view.
 
 > [!NOTE]
 > * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the materialized view is permitted to modify it
+> * The [database user](../management/access-control/role-based-authorization.md) who originally created the materialized view is permitted to modify it.
 
 **Example** 
 
