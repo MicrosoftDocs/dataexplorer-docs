@@ -23,6 +23,7 @@ The materialized view derives the database retention and caching policies by def
 * The retention policy of the materialized view is unrelated to the retention policy of the source table.
 * If the source table records aren't otherwise used, the retention policy of the source table can be dropped to a minimum. The materialized view will still store the data according to the retention policy set on the view.
 * While materialized views are in preview mode, the recommendation is to allow a minimum of at least seven days and recoverability set to true. This setting allows for fast recovery for errors and for diagnostic purposes.
+
 > [!NOTE]
 > Zero retention policy on the source table is currently not supported.
 
