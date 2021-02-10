@@ -12,7 +12,7 @@ ms.date: 02/08/2021
 
 # Materialized views data purge
 
-The [data purge](../../concepts/data-purge.md) commands can be used to purge records from materialized views. The same guidelines for purging records from a table apply to materialized views purge as well.
+[Data purge](../../concepts/data-purge.md) commands can be used to purge records from materialized views. The same guidelines for purging records from a table apply to materialized views purge.
 
 In addition, when purging records from a materialized view, you should note:
 
@@ -40,4 +40,3 @@ MV | where avg_Duration > 1h
 
 ## See Also
 * [Materialized views overview](materialized-view-overview.md)
-
