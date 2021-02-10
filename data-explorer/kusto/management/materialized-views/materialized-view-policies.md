@@ -12,6 +12,8 @@ ms.date: 02/08/2021
 
 # Materialized views policies
 
+This article includes information about policies that can be set on materialized views.
+
 ## Retention and caching policy
 
 A materialized view has a [retention policy](../retentionpolicy.md) and [caching policy](../cachepolicy.md), like any Azure Data Explorer table.
