@@ -29,7 +29,7 @@ The materialized view derives the database retention and caching policies by def
 
 ## Partitioning policy
 
-[Partitioning policy](../partitioningpolicy.md) can be applied on a materialized view. Configuring a partitioning policy on a materialized view is recommended when most or all of the view queries filter by one of the materialized view's group-by keys. This is typically common in multi-tenant solutions, where one of the materialized view's group-by keys is the tenant's identifer (e.g., `tenantId`, `customerId`). See the 1st use case described in the [partitioning policy common scenarios](../partitioningpolicy.md#common-scenarios) page.
+A [partitioning policy](../partitioningpolicy.md) can be applied on a materialized view. We recommend configuring a partitioning policy on a materialized view when most or all of the view queries filter by one of the materialized view's group-by keys. This is common in multi-tenant solutions, where one of the materialized view's group-by keys is the tenant's identifer (for example, `tenantId`, `customerId`). For more information, see the first use case described in the [partitioning policy common scenarios](../partitioningpolicy.md#common-scenarios) page.
 
 The commands to alter a materialized view's partitioning policy are documented in the [partitioning policy commands](../partitioning-policy.md#alter-and-alter-merge-policy) page.
 
