@@ -1896,6 +1896,9 @@
     - name: quantize_fl()
       displayName: functions library
       href: kusto/functions-library/quantize-fl.md
+    - name: series_dbl_exp_smoothing_fl()
+      displayName: functions library
+      href: kusto/functions-library/series-dbl-exp-smoothing-fl.md
     - name: series_dot_product_fl()
       displayName: functions library
       href: kusto/functions-library/series-dot-product-fl.md

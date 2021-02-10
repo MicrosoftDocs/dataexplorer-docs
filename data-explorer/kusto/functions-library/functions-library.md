@@ -37,6 +37,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[quantize_fl()](quantize-fl.md)|Quantize metric columns. |
+|[series_dbl_exp_smoothing_fl()](series-dbl-exp-smoothing-fl.md)|Applies a double exponential smoothing filter on a series. |
 |[series_dot_product_fl()](series-dot-product-fl.md)|Calculates the dot product of two numerical vectors. |
 |[series_downsample_fl()](series-downsample-fl.md)|Downsample a time series by an integer factor. |
 |[series_exp_smoothing_fl()](series-exp-smoothing-fl.md)|Applies a basic exponential smoothing filter on a series. |
