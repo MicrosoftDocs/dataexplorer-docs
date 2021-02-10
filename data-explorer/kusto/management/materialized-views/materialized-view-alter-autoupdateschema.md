@@ -18,7 +18,7 @@ Sets the `autoUpdateSchema` value of an existing materialized view to `true` or 
 
 > [!NOTE]
 > * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the materialized view is also allowed to edit it
+> * The [database user](../management/access-control/role-based-authorization.md) who originally created the materialized view is also allowed to edit it.
 
 **Examples** 
 
