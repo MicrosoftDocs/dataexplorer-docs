@@ -30,7 +30,7 @@ Creating a materialized view requires [database admin permission](../management/
 
 See the [.create materialized-view](materialized-view-create.md) command for the documentation of all arguments and properties.
 
-**Example**
+## Example
 
 ```kusto
 .create-or-alter materialized-view ArgMax on table T
