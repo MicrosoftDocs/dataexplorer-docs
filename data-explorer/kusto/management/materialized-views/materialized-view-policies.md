@@ -52,4 +52,4 @@ A [row level security](../rowlevelsecuritypolicy.md) can be applied on a materia
     .alter table SourceTable policy row_level_security enable with (allowMaterializedViewsWithoutRowLevelSecurity=true) "RLS_function"
 ```
 
-Commands for configuring a row level security policy on a materialized view are documented in the [row_level_security policy commands](../row-level-security-policy.md) page.
+For commands for configuring a row level security policy on a materialized view, see [row_level_security policy commands](../row-level-security-policy.md).
