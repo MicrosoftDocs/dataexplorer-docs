@@ -28,7 +28,7 @@ Creating a materialized view requires [database admin permission](../management/
 *ViewName* `on table` *SourceTableName* <br>
 `{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
 
-See the [.create materialized-view](materialized-view-create.md) command for the documentation of all arguments and properties.
+For more information on arguments and properties, see the [.create materialized-view](materialized-view-create.md) command.
 
 ## Example
 
