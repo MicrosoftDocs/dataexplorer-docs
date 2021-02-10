@@ -2,9 +2,9 @@
 title: .alter materialized view autoUpdateSchema - Azure Data Explorer | Microsoft Docs
 description: This article describes .alter materialized view autoUpdateSchema in Azure Data Explorer.
 services: data-explorer
-author: yifats
+author: orspod
 ms.author: orspodek
-ms.reviewer: orspodek
+ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/08/2021
