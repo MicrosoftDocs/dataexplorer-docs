@@ -28,42 +28,45 @@ Creates a new workload group, or alters an existing workload group.
 Create a workload group with a full definition of its request limits policy:
 
 ```kusto
-.create-or-alter workload_group MyWorkloadGroup '{'
-'  "RequestLimitsPolicy": {'
-'    "DataScope": {'
-'      "IsRelaxable": true,'
-'      "Value": "HotCache"'
-'    },'
-'    "MaxMemoryPerQueryPerNode": {'
-'      "IsRelaxable": false,'
-'      "Value": 6442450944'
-'    },'
-'    "MaxMemoryPerIterator": {'
-'      "IsRelaxable": false,'
-'      "Value": 5368709120'
-'    },'
-'    "MaxFanoutThreadsPercentage": {'
-'      "IsRelaxable": true,'
-'      "Value": 100'
-'    },'
-'    "MaxFanoutNodesPercentage": {'
-'      "IsRelaxable": true,'
-'      "Value": 100'
-'    },'
-'    "MaxResultRecords": {'
-'      "IsRelaxable": true,'
-'      "Value": 500000'
-'    },'
-'    "MaxResultBytes": {'
-'      "IsRelaxable": true,'
-'      "Value": 67108864'
-'    },'
-'    "MaxExecutionTime": {'
-'      "IsRelaxable": true,'
-'      "Value": "00:04:00"'
-'    }'
-'  }'
-'}'
+.create-or-alter workload_group MyWorkloadGroup 
+~~~
+{
+  "RequestLimitsPolicy": {
+    "DataScope": {
+      "IsRelaxable": true,
+      "Value": "HotCache"
+    },
+    "MaxMemoryPerQueryPerNode": {
+      "IsRelaxable": false,
+      "Value": 6442450944
+    },
+    "MaxMemoryPerIterator": {
+      "IsRelaxable": false,
+      "Value": 5368709120
+    },
+    "MaxFanoutThreadsPercentage": {
+      "IsRelaxable": true,
+      "Value": 100
+    },
+    "MaxFanoutNodesPercentage": {
+      "IsRelaxable": true,
+      "Value": 100
+    },
+    "MaxResultRecords": {
+      "IsRelaxable": true,
+      "Value": 500000
+    },
+    "MaxResultBytes": {
+      "IsRelaxable": true,
+      "Value": 67108864
+    },
+    "MaxExecutionTime": {
+      "IsRelaxable": true,
+      "Value": "00:04:00"
+    }
+  }
+}
+~~~
 ```
 
 #### Full definition of request limits policy and request rate limits policies
@@ -71,60 +74,63 @@ Create a workload group with a full definition of its request limits policy:
 Create a workload group with a full definition of its request limits policy and request rate limits policies:
 
 ```kusto
-.create-or-alter workload_group ['My Workload Group'] '{'
-'  "RequestLimitsPolicy": {'
-'    "DataScope": {'
-'      "IsRelaxable": true,'
-'      "Value": "All"'
-'    },'
-'    "MaxMemoryPerQueryPerNode": {'
-'      "IsRelaxable": true,'
-'      "Value": 6442450944'
-'    },'
-'    "MaxMemoryPerIterator": {'
-'      "IsRelaxable": true,'
-'      "Value": 5368709120'
-'    },'
-'    "MaxFanoutThreadsPercentage": {'
-'      "IsRelaxable": true,'
-'      "Value": 100'
-'    },'
-'    "MaxFanoutNodesPercentage": {'
-'      "IsRelaxable": true,'
-'      "Value": 100'
-'    },'
-'    "MaxResultRecords": {'
-'      "IsRelaxable": true,'
-'      "Value": 500000'
-'    },'
-'    "MaxResultBytes": {'
-'      "IsRelaxable": true,'
-'      "Value": 67108864'
-'    },'
-'    "MaxExecutionTime": {'
-'      "IsRelaxable": true,'
-'      "Value": "00:04:00"'
-'    }'
-'  },'
-'  "RequestRateLimitPolicies": ['
-'  {'
-'      "IsEnabled": true,'
-'      "Scope": "WorkloadGroup",'
-'      "LimitKind": "ConcurrentRequests",'
-'      "Properties": {'
-'        "MaxConcurrentRequests": 100'
-'      }'
-'    },'
-'    {'
-'      "IsEnabled": true,'
-'      "Scope": "Principal",'
-'      "LimitKind": "ConcurrentRequests",'
-'      "Properties": {'
-'        "MaxConcurrentRequests": 25'
-'      }'
-'    }'
-'  ]'
-'}'
+.create-or-alter workload_group ['My Workload Group'] 
+~~~
+{
+  "RequestLimitsPolicy": {
+    "DataScope": {
+      "IsRelaxable": true,
+      "Value": "All"
+    },
+    "MaxMemoryPerQueryPerNode": {
+      "IsRelaxable": true,
+      "Value": 6442450944
+    },
+    "MaxMemoryPerIterator": {
+      "IsRelaxable": true,
+      "Value": 5368709120
+    },
+    "MaxFanoutThreadsPercentage": {
+      "IsRelaxable": true,
+      "Value": 100
+    },
+    "MaxFanoutNodesPercentage": {
+      "IsRelaxable": true,
+      "Value": 100
+    },
+    "MaxResultRecords": {
+      "IsRelaxable": true,
+      "Value": 500000
+    },
+    "MaxResultBytes": {
+      "IsRelaxable": true,
+      "Value": 67108864
+    },
+    "MaxExecutionTime": {
+      "IsRelaxable": true,
+      "Value": "00:04:00"
+    }
+  },
+  "RequestRateLimitPolicies": [
+  {
+      "IsEnabled": true,
+      "Scope": "WorkloadGroup",
+      "LimitKind": "ConcurrentRequests",
+      "Properties": {
+        "MaxConcurrentRequests": 100
+      }
+    },
+    {
+      "IsEnabled": true,
+      "Scope": "Principal",
+      "LimitKind": "ConcurrentRequests",
+      "Properties": {
+        "MaxConcurrentRequests": 25
+      }
+    }
+  ]
+}
+~~~
 ```
 
 ## .alter-merge workload_group
@@ -141,37 +147,44 @@ Alter specific limits in the request limits policy of the `default` workload gro
 while keeping previously defined limits as-is:
 
 ```kusto
-.alter-merge workload_group default '{'
-'  "RequestLimitsPolicy": {'
-'    "DataScope": {'
-'      "IsRelaxable": false,'
-'      "Value": "HotCache"'
-'    },'
-'    "MaxExecutionTime": {'
-'      "IsRelaxable": false,'
-'      "Value": "00:01:00"'
-'    }'
-'  }'
-'}'
+.alter-merge workload_group default 
+~~~
+{
+  "RequestLimitsPolicy": {
+    "DataScope": {
+      "IsRelaxable": false,
+      "Value": "HotCache"
+    },
+    "MaxExecutionTime": {
+      "IsRelaxable": false,
+      "Value": "00:01:00"
+    }
+  }
+}
+~~~
 ```
+
 #### Alter the request rate limit policies
 
 Alter the request rate limit policies of the `default` workload group,
 while keeping its request limits policy as-is:
 
 ```kusto
-.alter-merge workload_group default '{'
-'  "RequestRateLimitPolicies": ['
-'    {\n'
-'      "IsEnabled": true,'
-'      "Scope": "WorkloadGroup",'
-'      "LimitKind": "ConcurrentRequests",'
-'      "Properties": {'
-'        "MaxConcurrentRequests": 100'
-'      }'
-'    }'
-'  ]'
-'}'
+.alter-merge workload_group default 
+~~~
+{
+  "RequestRateLimitPolicies": [
+    {
+      "IsEnabled": true,
+      "Scope": "WorkloadGroup",
+      "LimitKind": "ConcurrentRequests",
+      "Properties": {
+        "MaxConcurrentRequests": 100
+      }
+    }
+  ]
+}
+~~~
 ```
 
 ## .drop workload_group
@@ -296,52 +309,55 @@ Request limits that aren't defined in `My Workload Group`'s policy are taken fro
 ```
 
 ```kusto
-.create-or-alter workload_group ['My Workload Group'] '{'
-'  "RequestLimitsPolicy": {'
-'    "DataScope": {'
-'      "IsRelaxable": false,'
-'      "Value": "HotCache"'
-'    },'
-'    "MaxResultRecords": {'
-'      "IsRelaxable": true,'
-'      "Value": 100000'
-'    },'
-'    "MaxResultBytes": {'
-'      "IsRelaxable": true,'
-'      "Value": 52428800'
-'    },'
-'    "MaxExecutionTime": {'
-'      "IsRelaxable": false,'
-'      "Value": "00:01:00"'
-'    }'
-'  },'
-'  "RequestRateLimitPolicies": ['
-'    {'
-'      "IsEnabled": true,'
-'      "Scope": "WorkloadGroup",'
-'      "LimitKind": "ConcurrentRequests",'
-'      "Properties": {'
-'        "MaxConcurrentRequests": 10'
-'      }'
-'    },'
-'    {'
-'      "IsEnabled": true,'
-'      "Scope": "Principal",'
-'      "LimitKind": "ConcurrentRequests",'
-'      "Properties": {'
-'        "MaxConcurrentRequests": 3'
-'      }'
-'    },'
-'    {'
-'      "IsEnabled": true,'
-'      "Scope": "Principal",'
-'      "LimitKind": "ResourceUtilization",'
-'      "Properties": {'
-'        "ResourceKind": "RequestCount",'
-'        "MaxUtilization": 12,'
-'        "TimeWindow": "00:01:00"'
-'      }'
-'    }'
-'  ]'
-'}'
+.create-or-alter workload_group ['My Workload Group'] 
+~~~
+{
+  "RequestLimitsPolicy": {
+    "DataScope": {
+      "IsRelaxable": false,
+      "Value": "HotCache"
+    },
+    "MaxResultRecords": {
+      "IsRelaxable": true,
+      "Value": 100000
+    },
+    "MaxResultBytes": {
+      "IsRelaxable": true,
+      "Value": 52428800
+    },
+    "MaxExecutionTime": {
+      "IsRelaxable": false,
+      "Value": "00:01:00"
+    }
+  },
+  "RequestRateLimitPolicies": [
+    {
+      "IsEnabled": true,
+      "Scope": "WorkloadGroup",
+      "LimitKind": "ConcurrentRequests",
+      "Properties": {
+        "MaxConcurrentRequests": 10
+      }
+    },
+    {
+      "IsEnabled": true,
+      "Scope": "Principal",
+      "LimitKind": "ConcurrentRequests",
+      "Properties": {
+        "MaxConcurrentRequests": 3
+      }
+    },
+    {
+      "IsEnabled": true,
+      "Scope": "Principal",
+      "LimitKind": "ResourceUtilization",
+      "Properties": {
+        "ResourceKind": "RequestCount",
+        "MaxUtilization": 12,
+        "TimeWindow": "00:01:00"
+      }
+    }
+  ]
+}
+~~~
 ```
