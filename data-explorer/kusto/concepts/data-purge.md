@@ -123,7 +123,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 	 .purge table [TableName] records in database [DatabaseName] with (verificationtoken='<verification token from step #1>') <| [Predicate]
   ```
 
-To purge a materialized view, replace the `table` keyword with `materialized-view`, and *TableName* with the *MaterializedViewName*.
+To purge a materialized view, replace the `table` keyword with `materialized-view`, and replace *TableName* with the *MaterializedViewName*.
 
 | Parameters  | Description  |
 |---------|---------|
