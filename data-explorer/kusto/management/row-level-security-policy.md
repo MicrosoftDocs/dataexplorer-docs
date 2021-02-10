@@ -57,7 +57,7 @@ This is useful if you want to try various queries for row_level_security, but do
 >    * Query (for example, `<table_name> | extend CreditCardNumber = "****"`)
 >    * Function (for example, `AnonymizeSensitiveData`)
 >    * Datatable (for example, `datatable(Col1:datetime, Col2:string) [...]`)
-> * Setting a row level security policy on a source table of a [materialized view](materialized-views/materialized-view-overview.md) may fail, if the materialized view does not have a RLS policy defined as well. Please refer to the documentation of [materialized view row level security policy](materialized-views/materialized-view-policies.md#row-level-security-policy) about this failure.
+> * Setting a row level security policy on a source table of a [materialized view](materialized-views/materialized-view-overview.md) may fail, if the materialized view does not have a row level security policy defined as well. For more information about this failure, see [materialized view row level security policy](materialized-views/materialized-view-policies.md#row-level-security-policy).
 
 > [!TIP]
 > These functions are often useful for row_level_security queries:
