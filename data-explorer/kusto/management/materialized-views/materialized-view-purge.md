@@ -21,8 +21,8 @@ In addition, when purging records from a materialized view, you should note:
 * Therefore, if the source table of the materialized view includes records to purge, these *may* be returned from the materialized view query, even after purge completed successfully.
 
 * The recommended process for purging records from a materialized view is:
-  * Purge the source table of the materialized view.
-  * Only after source table purge is completed successfully, purge the materialized view.
+1. Purge the source table of the materialized view.
+1. After the source table purge is completed successfully, purge the materialized view.
 
 * The purge predicate of a materialized view purge can only reference the group by keys of the aggregation, or any column in a [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min() ](../../query/arg-min-aggfunction.md)/[any()](../../query/any-aggfunction.md) view. It **cannot** reference other aggregation functions result columns.
 
