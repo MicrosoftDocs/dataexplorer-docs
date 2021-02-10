@@ -16,8 +16,8 @@ Alters the Folder value of an existing materialized view.
 `.alter` `materialized-view` *MaterializedViewName* `folder` *Folder*
 
 > [!NOTE]
-> * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the materialized view is also allowed to edit it
+> * Requires [database admin permission](../access-control/role-based-authorization.md).
+> * The [database user](../access-control/role-based-authorization.md) who originally created the materialized view is also allowed to edit it.
 
 **Examples** 
 

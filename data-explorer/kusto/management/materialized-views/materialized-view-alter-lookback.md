@@ -17,8 +17,8 @@ Alters the `lookback` value of an existing materialized view. Please see the doc
 
 > [!NOTE]
 > * A `lookback` for a materialized view is only supported for [EngineV3](../../../engine-v3.md) clusters.
-> * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the materialized view is also allowed to edit it
+> * Requires [database admin permission](../access-control/role-based-authorization.md).
+> * The [database user](../access-control/role-based-authorization.md) who originally created the materialized view is also allowed to edit it.
 
 **Examples** 
 
