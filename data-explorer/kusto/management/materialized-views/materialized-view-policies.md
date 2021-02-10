@@ -33,7 +33,7 @@ A [partitioning policy](../partitioningpolicy.md) can be applied on a materializ
 
 For the commands to alter a materialized view's partitioning policy, see [partitioning policy commands](../partitioning-policy.md#alter-and-alter-merge-policy).
 
-Adding a partitioning policy on a materialized views will increase the number of extents in the materialized view, and will create more "work" for the materialization process. For more information on why this happens, see the extents rebuild process mentioned in [how materialized views work](materialized-view-overview.md#how-materialized-views-work)). In [EngineV3](../../../engine-v3.md) clusters, this process is much more efficient than in V2. Therefore, we recommend to only add a partitioning policy on a materialized view only if the cluster is a V3 cluster (preview).
+Adding a partitioning policy on a materialized views will increase the number of extents in the materialized view, and will create more "work" for the materialization process. For more information on why this happens, see the extents rebuild process mentioned in [how materialized views work](materialized-view-overview.md#how-materialized-views-work)). In [EngineV3](../../../engine-v3.md) clusters, this process is much more efficient than in V2. **Therefore, we recommend to only add a partitioning policy on a materialized view only if the cluster is a V3 cluster (preview)**.
 
 ## Row level security policy
 
