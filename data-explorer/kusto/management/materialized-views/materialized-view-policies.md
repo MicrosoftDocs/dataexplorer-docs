@@ -18,7 +18,7 @@ A materialized view has a [retention policy](../retentionpolicy.md) and [caching
 
 The materialized view derives the database retention and caching policies by default. These policies can be changed using [retention policy control commands](../retention-policy.md) or [caching policy control commands](../cache-policy.md).
 
-* Both policies are applied on the *materialized part* of the materialized view only. See [how materialized views work](materialized-view-overview.md#how-materialized-views-work) about the differences between the *materialized part* and *delta* part.
+* Both policies are applied on the *materialized part* of the materialized view only.  For an explanation of the differences between the *materialized part* and *delta* part, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work).
   * This implies, for example, that if the caching policy of a materialized view is set to 7d, but the caching policy of its source table is set to 0d, there may still be disk misses when querying the materialized view, since the source table (*delta part*) participates in the query as well.
 * The retention policy of the materialized view is unrelated to the retention policy of the source table.
 * If the source table records aren't otherwise used, the retention policy of the source table can be dropped to a minimum. The materialized view will still store the data according to the retention policy set on the view.
