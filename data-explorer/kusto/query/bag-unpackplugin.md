@@ -43,11 +43,13 @@ The `bag_unpack` plugin returns a table with as many records as its tabular inpu
   type is either the type of the slot, if all values of the same slot have the
   same type, or `dynamic`, if the values differ in type.
 
-> [!NOTE] The plugin's output schema depends on the data values, making it as "unpredictable"
+> [!NOTE]
+> The plugin's output schema depends on the data values, making it as "unpredictable"
 > as the data itself. Multiple executions of the plugin, using different
 > data inputs, may produce different output schema.
 
-> [!NOTE] The input data to the plugin must be such that the output schema follows all the rules for a tabular schema. In particular:
+> [!NOTE]
+> The input data to the plugin must be such that the output schema follows all the rules for a tabular schema. In particular:
 >
 > * An output column name can't be the same as an existing column in the tabular
     input *T*, unless it's the column to be unpacked (*Column*), since that will produce two columns with the same name.
