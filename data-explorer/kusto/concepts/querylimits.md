@@ -136,7 +136,9 @@ set maxmemoryconsumptionperiterator=68719476736;
 MyTable | ...
 ```
 
-In many cases, exceeding this limit can be avoided by sampling the data set. The two queries below show how to do the sampling. The first, is a statistical sampling, that uses a random number generator). The second, is deterministic sampling, done by hashing some column from the data set, usually some ID.
+If the query uses `summarize`, `join`, or `make-series` operators, you can use the [shuffle query](../query/shufflequery.md) strategy to reduce memory pressure on a single machine.
+
+In other cases, you can sample the data set to avoid exceeding this limit. The two queries below show how to do the sampling. The first query is a statistical sampling, using a random number generator. The second query is deterministic sampling, done by hashing some column from the data set, usually some ID.
 
 ```kusto
 T | where rand() < 0.1 | ...
@@ -159,24 +161,7 @@ MyTable | ...
 
 If `max_memory_consumption_per_query_per_node` is set multiple times, for example in both client request properties and using a `set` statement, the lower value applies.
 
-## Limit on accumulated string sets
-
-In various query operations, Kusto needs to "gather" string values and buffer
-them internally before it starts to produce results. These accumulated string
-sets are limited in size and in how many items they can hold. Additionally, each
-individual string shouldn't exceed a certain limit.
-Exceeding one of these limits will result in one of the following errors:
-
-```
-Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the limit of ...GB (see https://aka.ms/kustoquerylimits)')
-
-Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the maximum count of ..GB items (see http://aka.ms/kustoquerylimits)')
-```
-
-There's currently no switch to increase the maximum string set size.
-As a workaround, rephrase the query to reduce the amount of data that
-has to be buffered. You can project away unneeded columns before
-they're used by operators such as join and summarize. Or, you can use the [shuffle query](../query/shufflequery.md) strategy.
+If the query uses `summarize`, `join`, or `make-series` operators, you can use the [shuffle query](../query/shufflequery.md) strategy to reduce memory pressure on a single machine.
 
 ## Limit execution timeout
 
