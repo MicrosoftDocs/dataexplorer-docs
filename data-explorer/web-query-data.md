@@ -192,7 +192,7 @@ You can use one or more operators to filter the results of a column.
 1. Type in the expression you wish to filter the column on. Results are filtered as you type.
     
     > [!NOTE] 
-    > The filter is not case sensitive.
+    > The filter isn't case sensitive.
 
 1. To create a multi-condition filter, select a boolean operator to add another condition
 1. To remove the filter, delete the text from your first filter condition.
