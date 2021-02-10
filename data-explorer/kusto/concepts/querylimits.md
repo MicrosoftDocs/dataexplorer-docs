@@ -161,7 +161,7 @@ MyTable | ...
 
 If `max_memory_consumption_per_query_per_node` is set multiple times, for example in both client request properties and using a `set` statement, the lower value applies.
 
-If the query is using `summarize`, `join`, or `make-series` operators: you can use the [shuffle query](../query/shufflequery.md) strategy to reduce memory pressure on a single machine.
+If the query uses `summarize`, `join`, or `make-series` operators, you can use the [shuffle query](../query/shufflequery.md) strategy to reduce memory pressure on a single machine.
 
 ## Limit execution timeout
 
