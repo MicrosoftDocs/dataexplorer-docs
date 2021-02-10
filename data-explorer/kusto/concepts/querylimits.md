@@ -138,7 +138,7 @@ MyTable | ...
 
 If the query uses `summarize`, `join`, or `make-series` operators, you can use the [shuffle query](../query/shufflequery.md) strategy to reduce memory pressure on a single machine.
 
-In other cases, exceeding this limit can be avoided by sampling the data set. The two queries below show how to do the sampling. The first, is a statistical sampling, that uses a random number generator). The second, is deterministic sampling, done by hashing some column from the data set, usually some ID.
+In other cases, you can sample the data set to avoid exceeding this limit. The two queries below show how to do the sampling. The first query is a statistical sampling, using a random number generator. The second query is deterministic sampling, done by hashing some column from the data set, usually some ID.
 
 ```kusto
 T | where rand() < 0.1 | ...
