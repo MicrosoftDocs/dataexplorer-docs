@@ -11,7 +11,7 @@ ms.date: 02/08/2021
 ---
 # .alter materialized-view folder
 
-Alters the Folder value of an existing materialized view. 
+Alters the folder value of an existing materialized view. 
 
 `.alter` `materialized-view` *MaterializedViewName* `folder` *Folder*
 
