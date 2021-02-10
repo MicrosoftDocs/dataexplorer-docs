@@ -17,7 +17,7 @@ Creates a materialized view or alters an existing materialized view.
 
 The command has the following limitations:
 
-* Limitations mentioned in [alter materialized view limitations](materialized-view-alter.md#alter-materialized-view-limitations).
+* See limitations in [alter materialized view limitations](materialized-view-alter.md#alter-materialized-view-limitations).
 
 * The `backfill` property is not supported, in case the materialized view already exists (because if the materialized view already exists, it cannot be backfilled).
 
