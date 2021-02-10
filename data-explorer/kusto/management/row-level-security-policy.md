@@ -65,7 +65,8 @@ This is useful if you want to try various queries for row_level_security, but do
 > * [current_principal_details()](../query/current-principal-detailsfunction.md)
 > * [current_principal_is_member_of()](../query/current-principal-ismemberoffunction.md)
 
-**Examples**
+### Examples
+
 Alter table row level security policy:
 
 ```kusto
