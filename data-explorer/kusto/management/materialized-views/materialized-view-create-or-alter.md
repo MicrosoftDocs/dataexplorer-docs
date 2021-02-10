@@ -13,6 +13,8 @@ ms.date: 02/08/2020
 
 Creates a materialized view or alters an existing materialized view.
 
+## Limitations
+
 The command has the following limitations:
 
 * Limitations mentioned in [alter materialized view limitations](materialized-view-alter.md#alter-materialized-view-limitations).
