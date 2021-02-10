@@ -16,7 +16,7 @@ The [data purge](../../concepts/data-purge.md) commands can be used to purge rec
 
 In addition, when purging records from a materialized view, you should note:
 
-* The purge command only deletes records from the *materialized part* of the view ([what is the materialized part](materialized-view-overview.md#how-materialized-views-work)?). 
+* The purge command only deletes records from the *materialized part* of the view ([what is the materialized part](materialized-view-overview.md#how-materialized-views-work)?).
 
 * Therefore, if the source table of the materialized view includes records to purge, these *may* be returned from the materialized view query, even after purge completed successfully.
 
@@ -37,3 +37,7 @@ The following purge predicate is not valid, since it references the result of th
 ```kusto
 MV | where avg_Duration > 1h
 ```
+
+## See Also
+* [Materialized views overview](materialized-view-overview.md)
+
