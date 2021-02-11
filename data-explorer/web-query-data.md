@@ -319,7 +319,7 @@ To pin a query:
 
 To export the query results to a CSV file, select **File** > **Export to CSV**.
 
-    :::image type="content" source="media/web-query-data/export-results.png" alt-text="Export results to CSV file":::
+:::image type="content" source="media/web-query-data/export-results.png" alt-text="Export results to CSV file":::
 
 ## Settings
 
@@ -332,7 +332,7 @@ In the **Settings** tab you can:
 
 Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
 
-    :::image type="content" source="media/web-query-data/settings.png" alt-text="Settings window":::
+:::image type="content" source="media/web-query-data/settings.png" alt-text="Settings window":::
 
 ### Export and import environment settings
 
