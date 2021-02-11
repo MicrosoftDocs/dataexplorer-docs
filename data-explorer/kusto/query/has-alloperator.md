@@ -1,6 +1,6 @@
 ---
 title: has_all operator - Azure Data Explorer
-description: This article describes has_all operator in Azure Data Explorer.
+description: This article describes the has_all operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -24,23 +24,22 @@ Table1 | where col has_all ('property1', 'value2')
  
 ## Arguments
 
-* *T* - Tabular input whose records are to be filtered.
-* *col* - Column to filter.
-* *list of expressions* - Comma separated list of tabular, scalar, or literal expressions  
-* *tabular expression* - Tabular expression that has a set of values (if expression has multiple columns, the first column is used)
+* *T*: Tabular input whose records are to be filtered.
+* *col*: Column to filter.
+* *list of expressions*: Comma separated list of tabular, scalar, or literal expressions.  
+* *tabular expression*: Tabular expression that has a set of values (if expression has multiple columns, the first column is used).
 
 ## Returns
 
 Rows in *T* for which the predicate is `true`
 
-**Notes**
+> [!NOTE]
+>* The expression list can produce up to `256` values.    
+> * For tabular expressions, the first column of the result set is selected.   
 
-* The expression list can produce up to `256` values.    
-* For tabular expressions, the first column of the result set is selected.   
+## Examples
 
-**Examples:**  
-
-**A simple usage of `has_all` operator:**  
+### Simple usage of the `has_all` operator
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -56,11 +55,9 @@ StormEvents
 |Hail|392|
 |Flash Flood|24|
 
+### Using a dynamic array
 
-
-**Using dynamic array:**
-
-Same result can be achieved using a dynamic array notation:
+The same result can be achieved using a dynamic array notation:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
