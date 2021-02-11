@@ -180,7 +180,7 @@ After you have grouped by a column, you can then use the value aggregation funct
 1. Select the menu for the column you want to evaluate.
 1. Select **Value Aggregation**, and then select the type of function you want to do on this column.
 
-:::image type="content" source="media/web-query-data/aggregate.png" alt-text="Aggregate results when grouping column by results. ":::
+    :::image type="content" source="media/web-query-data/aggregate.png" alt-text="Aggregate results when grouping column by results. ":::
 
 ### Filter columns
 
@@ -197,7 +197,7 @@ You can use one or more operators to filter the results of a column.
 1. To create a multi-condition filter, select a boolean operator to add another condition
 1. To remove the filter, delete the text from your first filter condition.
 
-:::image type="content" source="media/web-query-data/filter-column.gif" alt-text="GIF showing how to filter on a column in the Azure Data Explorer WebUI":::
+    :::image type="content" source="media/web-query-data/filter-column.gif" alt-text="GIF showing how to filter on a column in the Azure Data Explorer WebUI":::
 
 ### Run cell statistics
 
@@ -274,7 +274,7 @@ Many times, you want to share the queries you create.
 
 1. At the top of the query window, select **Share**. 
 
-:::image type="content" source="media/web-query-data/share-menu.png" alt-text="Share menu":::
+    :::image type="content" source="media/web-query-data/share-menu.png" alt-text="Share menu":::
 
 The following options are available in the drop-down:
 * Link to clipboard
@@ -319,7 +319,7 @@ To pin a query:
 
 To export the query results to a CSV file, select **File** > **Export to CSV**.
 
-:::image type="content" source="media/web-query-data/export-results.png" alt-text="Export results to CSV file":::
+    :::image type="content" source="media/web-query-data/export-results.png" alt-text="Export results to CSV file":::
 
 ## Settings
 
@@ -332,7 +332,7 @@ In the **Settings** tab you can:
 
 Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
 
-:::image type="content" source="media/web-query-data/settings.png" alt-text="Settings window":::
+    :::image type="content" source="media/web-query-data/settings.png" alt-text="Settings window":::
 
 ### Export and import environment settings
 
@@ -370,7 +370,7 @@ To enable the error level highlighting:
 1. Select the **Settings** icon next to your user name.
 1. Select the **Appearance** tab and toggle the **Enable error level highlighting** option to the right. 
 
-:::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="Animated GIF showing how to enable error-level highlighting in the settings":::
+    :::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="Animated GIF showing how to enable error-level highlighting in the settings":::
 
 Error level color scheme in **Light** mode | Error level color scheme in **Dark** mode
 |---|---|
