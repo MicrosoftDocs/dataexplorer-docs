@@ -19,7 +19,7 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 
 ## Data format
 
-* Data is read from the Event Hub endpoint in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) objects.
+* Data is read from the Event Hub endpoint in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects.
 * See [supported formats](ingestion-supported-formats.md).
     > [!NOTE]
     > IoT Hub doesn't support the .raw format.
@@ -28,14 +28,14 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 
 ## Ingestion properties
 
-Ingestion properties instruct the ingestion process where to route the data and how to process it. You can specify [Ingestion properties](ingestion-properties.md) of the events using the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
+Ingestion properties instruct the ingestion process where to route the data and how to process it. You can specify [Ingestion properties](ingestion-properties.md) of the events using the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
 
 |Property |Description|
 |---|---|
 | Table | Name (case sensitive) of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
 | Format | Data format. Overrides the `Data format` set on the `Data Connection` pane. |
 | IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
-| Encoding |  Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding?view=netframework-4.8#remarks). |
+| Encoding |  Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
 
 > [!NOTE]
 > Only events enqueued after you create the data connection are ingested.
@@ -43,7 +43,7 @@ Ingestion properties instruct the ingestion process where to route the data and 
 ## Events routing
 
 When setting up an IoT Hub connection to Azure Data Explorer cluster, you specify target table properties (table name, data format, and mapping). This setting is the default routing for your data, also referred to as static routing.
-You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-dotnet#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
+You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
 
 > [!Note]
 > If **My data includes routing info** selected, you must provide the necessary routing information as part of the events properties.

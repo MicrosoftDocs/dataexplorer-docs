@@ -684,8 +684,7 @@ Use [let](./letstatement.md) to make queries easier to read and manage. You can 
 ```kusto
 let PhysicalComputer = VMComputer
     | distinct Computer, PhysicalMemoryMB;
-    let AvailableMemory = 
-InsightsMetrics
+let AvailableMemory = InsightsMetrics
     | where Namespace == "Memory" and Name == "AvailableMB"
     | project TimeGenerated, Computer, AvailableMemoryMB = Val;
 PhysicalComputer

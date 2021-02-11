@@ -30,9 +30,9 @@ The `.show` command displays the partitioning policy that is applied on the tabl
 ## alter and alter-merge policy
 
 ```kusto
-.alter table [table_name] policy partitioning @'policy object, serialized as JSON'
+.alter table [table_name] policy partitioning 'policy object, serialized as JSON'
 
-.alter-merge table [table_name] policy partitioning @'partial policy object, serialized as JSON'
+.alter-merge table [table_name] policy partitioning 'partial policy object, serialized as JSON'
 ```
 
 The `.alter` command allows changing the partitioning policy that is applied on the table.
@@ -46,62 +46,71 @@ Changes to the policy could take up to 1 hour to take effect.
 #### Setting a policy with a hash partition key
 
 ```kusto
-.alter table [table_name] policy partitioning @'{'
-  '"PartitionKeys": ['
-    '{'
-      '"ColumnName": "my_string_column",'
-      '"Kind": "Hash",'
-      '"Properties": {'
-        '"Function": "XxHash64",'
-        '"MaxPartitionCount": 256,'
-      '}'
-    '}'
-  ']'
-'}'
+.alter table [table_name] policy partitioning 
+~~~
+{
+  "PartitionKeys": [
+    {
+      "ColumnName": "my_string_column",
+      "Kind": "Hash",
+      "Properties": {
+        "Function": "XxHash64",
+        "MaxPartitionCount": 256,
+      }
+    }
+  ]
+}
+~~~
 ```
 
 #### Setting a policy with a uniform range datetime partition key
 
 ```kusto
-.alter table [table_name] policy partitioning @'{'
-  '"PartitionKeys": ['
-    '{'
-      '"ColumnName": "my_datetime_column",'
-      '"Kind": "UniformRange",'
-      '"Properties": {'
-        '"Reference": "1970-01-01T00:00:00",'
-        '"RangeSize": "1.00:00:00"'
-        '"OverrideCreationTime": false'
-      '}'
-    '}'
-  ']'
-'}'
+.alter table [table_name] policy partitioning 
+~~~
+{
+  "PartitionKeys": [
+    {
+      "ColumnName": "my_datetime_column",
+      "Kind": "UniformRange",
+      "Properties": {
+        "Reference": "1970-01-01T00:00:00",
+        "RangeSize": "1.00:00:00"
+        "OverrideCreationTime": false
+      }
+    }
+  ]
+}
+~~~
 ```
 
 #### Setting a policy with both kinds of partition keys
 
 ```kusto
-.alter table [table_name] policy partitioning @'{'
-  '"PartitionKeys": ['
-    '{'
-      '"ColumnName": "my_string_column",'
-      '"Kind": "Hash",'
-      '"Properties": {'
-        '"Function": "XxHash64",'
-        '"MaxPartitionCount": 256,'
-      '}'
-    '},'
-    '{'
-      '"ColumnName": "my_datetime_column",'
-      '"Kind": "UniformRange",'
-      '"Properties": {'
-        '"Reference": "1970-01-01T00:00:00",'
-        '"RangeSize": "1.00:00:00"'
-        '"OverrideCreationTime": false'
-      '}'
-    '}'
-  ']'
-'}'
+.alter table [table_name] policy partitioning 
+~~~
+{
+  "PartitionKeys": [
+    {
+      "ColumnName": "my_string_column",
+      "Kind": "Hash",
+      "Properties": {
+        "Function": "XxHash64",
+        "MaxPartitionCount": 256,
+      }
+    },
+    {
+      "ColumnName": "my_datetime_column",
+      "Kind": "UniformRange",
+      "Properties": {
+        "Reference": "1970-01-01T00:00:00",
+        "RangeSize": "1.00:00:00"
+        "OverrideCreationTime": false
+      }
+    }
+  ]
+}
+~~~
 ```
 
 #### Setting a specific property of the policy explicitly at table level
@@ -109,7 +118,7 @@ Changes to the policy could take up to 1 hour to take effect.
 To set the `EffectiveDateTime` of the policy to a different value, use the following command:
 
 ```kusto
-.alter-merge table [table_name] policy partitioning @'{"EffectiveDateTime":"2020-01-01"}'
+.alter-merge table [table_name] policy partitioning '{"EffectiveDateTime":"2020-01-01"}'
 ```
 
 ## delete policy

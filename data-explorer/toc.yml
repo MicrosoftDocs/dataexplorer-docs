@@ -211,6 +211,8 @@
       items:  
       - name: Python
         href: python-query-data.md
+    - name: Optimize for high concurrency
+      href: high-concurrency.md
     - name: Time Series Analysis and Machine Learning
       items:
       - name: Time series analysis
@@ -448,6 +450,7 @@
       href: ./kusto/query/index.md
     - name: Query best practices
       href: ./kusto/query/best-practices.md
+
   - name: Cross-cluster queries
     items:
     - name: Cross-cluster queries and schema changes
@@ -507,6 +510,7 @@
     - name: Function types
       href: ./kusto/query/functions/index.md
     - name: User-defined functions
+      displayName: Kusto view, views, Kusto function
       href: ./kusto/query/functions/user-defined-functions.md
   - name: Query statements
     items:
@@ -1894,6 +1898,9 @@
     - name: quantize_fl()
       displayName: functions library
       href: kusto/functions-library/quantize-fl.md
+    - name: series_dbl_exp_smoothing_fl()
+      displayName: functions library
+      href: kusto/functions-library/series-dbl-exp-smoothing-fl.md
     - name: series_dot_product_fl()
       displayName: functions library
       href: kusto/functions-library/series-dot-product-fl.md

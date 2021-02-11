@@ -100,7 +100,7 @@ The partition function used is [bin_at()](../query/binatfunction.md) and isn't c
 | `Reference`            | A `datetime` scalar constant that indicates a fixed point in time, according to which datetime partitions are aligned.                                          | Start with `1970-01-01 00:00:00`. If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`.                                                                                                      |
 | `OverrideCreationTime` | A `bool` indicating whether or not the result extent's minimum and maximum creation times should be overridden by the range of the values in the partition key. | Defaults to `false`. Set to `true` if data isn't ingested in-order of time of arrival (for example, a single source file may include datetime values that are distant), and/or you want to force retention/caching based on the datetime values, and not the time of ingestion. |
 
-> [!IMPORTANT]
+> [!CAUTION]
 > When `OverrideCreationTime` is set to `true`, make sure the `Lookback` property in the table's effective [Extents merge policy](mergepolicy.md) is aligned with the datetime values in your data.
 
 #### Uniform range datetime partition example
@@ -142,7 +142,7 @@ The data partitioning policy has the following main properties:
   * The UTC datetime from which the policy is effective.
   * This property is optional. If it isn't specified, the policy will take effect on data ingested after the policy was applied.
   * Any non-homogeneous (non-partitioned) extents that may be dropped because of retention are ignored by the partitioning process. The extents are ignored because their creation time precedes 90% of the table's effective soft-delete period.
-	> [!NOTE]
+	> [!CAUTION]
 	> You can set a datetime value in the past and partition already-ingested data. However, this practice may significantly increase resources used in the partitioning process.
 	> Consider doing so gradually, by setting the *EffectiveDateTime* to a previous `datetime` in steps of up to a few days each time you alter the policy.
 
