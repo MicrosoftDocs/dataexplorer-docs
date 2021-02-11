@@ -19,6 +19,9 @@ ms.date: 02/08/2021
  The recommended process for purging records from a materialized view is:
     1. Purge the source table of the materialized view.
     1. After the source table purge is completed successfully, purge the materialized view.
+
+> [!WARNING]
+> Data deletion through the `.purge` command is designed to be used to protect personal data and should not be used in other scenarios. It is not designed to support frequent delete requests, or deletion of massive quantities of data, and may have a significant performance impact on the service.
     
 > [!NOTE] 
 > The purge predicate of a materialized view purge can only reference the group by keys of the aggregation, or any column in a [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min() ](../../query/arg-min-aggfunction.md)/[any()](../../query/any-aggfunction.md) view. It **cannot** reference other aggregation functions result columns.
