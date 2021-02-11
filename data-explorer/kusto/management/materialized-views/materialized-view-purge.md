@@ -12,7 +12,7 @@ ms.date: 02/08/2021
 
 # Materialized views data purge
 
-[!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
+[!INCLUDE [gdpr-intro-sentence](../../../includes/gdpr-intro-sentence.md)]
 
 [Data purge](../../concepts/data-purge.md) commands can be used to purge records from materialized views. The same guidelines for purging records from a table apply to materialized views purge. The purge command only deletes records from the *materialized part* of the view ([what is the materialized part](materialized-view-overview.md#how-materialized-views-work)?). Therefore, if the source table of the materialized view includes records to purge, these *may* be returned from the materialized view query, even after purge completed successfully.
 
