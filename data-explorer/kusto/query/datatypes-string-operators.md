@@ -77,7 +77,8 @@ Operator        |Description                                                    
 [`!in`](inoperator.md)           |Not equals to any of the elements                                 |Yes           |`"bca" !in ("123", "345", "abc")`
 `in~`           |Equals to one of the elements                                     |No            |`"abc" in~ ("123", "345", "ABC")`
 `!in~`          |Not equals to any of the elements                                 |No            |`"bca" !in~ ("123", "345", "ABC")`
-
+`has_all`       |Same as `has` but works on all of the elements                    |No            |`"North and South America" has_all("south", "north")`
+`has_any`       |Same as `has` but works on any of the elements                    |No            |`"North America" has_any("south", "north")`
 
 > [!TIP]
 > All operators containing `has` search on indexed *terms* of four or more characters, and not on substring matches. A term is created by breaking up the string into sequences of ASCII alphanumeric characters. See [understanding string terms](#understanding-string-terms).
