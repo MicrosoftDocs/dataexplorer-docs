@@ -16,18 +16,18 @@ ms.date: 07/02/2020
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
-Kusto provides a number of `.show extents` commands:
+The types of `.show extents` commands are as follows:
 
 * Show some or all extents for a specific [table scope](#table-scope)
 * Show some or all extents for a specific [database scope](#database-scope)
 * Show some or all extents for the entire [cluster](#cluster-scope)
 
-> [!WARNING]
-> The `.show extents` command may consume a lot of resources if the scope it runs on
-> (such as a database or a cluster) has many extents. It is **highly recommended**
-> that one uses the command variant at the minimal scope one can (prefer table-scope
-> over database-scope, and database-scope over cluster-scope). Furthermore, prefer
-> using the command variant that includes filtering extents to filtering the results
+> [!NOTE]
+> The `.show extents` command may consume a lot of resources if it runs on a scope
+> (such as a database or a cluster) with many extents. We recommended
+> using the command variant at the lowest possible scope. Table-scope
+> is preferable over database-scope, and database-scope over cluster-scope. The
+> command variant that includes filtering extents is preferable to filtering the results
 > of the command using another query.
 
 ## Table scope
@@ -39,16 +39,12 @@ Kusto provides a number of `.show extents` commands:
 Shows information about extents (data shards) that are present in the specified tables. The database is taken from the command's context.
 If `hot` is specified, shows only extents that are expected to be in the hot cache.
 
-## Notes
-
-* Using table scope command is preferred over database scope command.
+## Recommendations
 
 * Using built-in filtering capabilities in the command is preferred over adding
   a query-based filter (such as adding `| where DatabaseName == '...'` and `TableName == '...'`).
-
 * If the optional list of extent IDs is provided, the returned data set is limited to those extents only.
     * This method is much faster than filtering (adding `| where ExtentId in(...)`) to the results of "bare" commands.
-
 * If `tags` filters are specified:
     * The returned list is limited to those extents whose tags collection obeys *all* of the provided tags filters.
     * This method is much faster than filtering (adding `| where Tags has '...' and Tags contains '...'` to) the results of "bare" commands.
