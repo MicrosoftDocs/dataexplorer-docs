@@ -714,7 +714,7 @@
       - name: in and !in operators
         href: ./kusto/query/inoperator.md
       - name: has_all operator
-        href: ./kusto/query/has-alloperator.md
+        href: ./kusto/query/has-all-operator.md
       - name: has_any operator
         href: ./kusto/query/has-anyoperator.md
     - name: between operator
