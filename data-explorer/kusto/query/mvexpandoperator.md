@@ -14,12 +14,11 @@ ms.localizationpriority: high
 
 Expands multi-value dynamic arrays or property bags into multiple records.
 
-`mv-expand` can be described as the opposite operator to aggregation operators
+`mv-expand` can be described as the opposite of the aggregation operators
 that pack multiple values into a single [dynamic](./scalar-data-types/dynamic.md)-typed
 array or property bag, such as `summarize` ... `make-list()` and `make-series`.
 Each element in the (scalar) array or property bag generates a new record in the
-output of the operator. All other columns of the input that are not being
-expanded are duplicated to all the records in the output.
+output of the operator. All columns of the input that aren't expanded are duplicated to all the records in the output.
 
 ## Syntax
 
@@ -38,43 +37,41 @@ expanded are duplicated to all the records in the output.
 
 * *Name:* A name for the new column.
 
-* *Typename:* Indicates the underlying type of the array's elements, which becomes the type of the column produced by the `mv-expand` operator. The operation of applying type is cast-only and doesn't include parsing or type-conversion. Array elements that do not conform with the declared type will become `null` values.
+* *Typename:* Indicates the underlying type of the array's elements, which becomes the type of the column produced by the `mv-expand` operator. The operation of applying type is cast-only and doesn't include parsing or type-conversion. Array elements that don't conform with the declared type will become `null` values.
 
 * *RowLimit:* The maximum number of rows generated from each original row. The default is 2147483647. 
 
   > [!NOTE]
   > `mvexpand` is a legacy and obsolete form of the operator `mv-expand`. The legacy version has a default row limit of 128.
 
-* *IndexColumnName:* If `with_itemindex` is specified, the output will include an additional column (named *IndexColumnName*), which contains the index (starting at 0) of the item in the original expanded collection. 
+* *IndexColumnName:* If `with_itemindex` is specified, the output will include another column (named *IndexColumnName*), which contains the index (starting at 0) of the item in the original expanded collection. 
 
 ## Returns
 
 For each record in the input, the operator returns zero, one, or many records in the output,
 as determined in the following way:
 
-1. Input columns that are not being expanded appear in the output with their original value.
+1. Input columns that aren't expanded appear in the output with their original value.
    If a single input record is expanded into multiple output records, the value is duplicated
    to all records.
 
 1. For each *ColumnName* or *ArrayExpression* that is expanded, the number of output records
-   is determined for each value (as explained below). For each input record the maximum number of
-   output records is calculated, and all arrays or property bags are expaneded "in parallel"
+   is determined for each value as explained [below](#modes-of-expansion). For each input record, the maximum number of output records is calculated. All arrays or property bags are expanded "in parallel"
    so that missing values (if any) are replaced by null values.
 
 1. If the dynamic value is null, then a single record is produced for that value (null).
    If the dynamic value is an empty array or property bag, no record is produced for that value.
    Otherwise, as many records are produced as there are elements in the dynamic value.
 
-The expanded columns are of type `dynamic`, unless they are explicitly typed
+The expanded columns are of type `dynamic`, unless they're explicitly typed
 by using the `to typeof()` clause.
+
+### Modes of expansion
 
 Two modes of property bag expansions are supported:
 
-* `bagexpansion=bag` or `kind=bag`: Property bags are expanded into single-entry property bags. This is the default mode.
-
-* `bagexpansion=array` or `kind=array`: Property bags are expanded into two-element `[`*key*`,`*value*`]` array structures,
-  allowing uniform access to keys and values (also, for example, running a distinct-count aggregation
-  over property names). 
+* `bagexpansion=bag` or `kind=bag`: Property bags are expanded into single-entry property bags. This mode is the default mode.
+* `bagexpansion=array` or `kind=array`: Property bags are expanded into two-element `[`*key*`,`*value*`]` array structures, allowing uniform access to keys and values. This mode also allows, for example, running a distinct-count aggregation over property names. 
 
 ## Examples
 
@@ -134,7 +131,7 @@ datatable (a:int, b:dynamic, c:dynamic)
 
 ### Convert output
 
-If you want to force the output of an mv-expand to a certain type (default is dynamic), use `to typeof`:
+To force the output of an mv-expand to a certain type (default is dynamic), use `to typeof`:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -149,7 +146,7 @@ a|0|System.String|string
 b|1|System.Object|dynamic
 c|2|System.Int32|int
 
-Notice column `b` is coming out as `dynamic` while `c` is coming out as `int`.
+Notice column `b` is returned as `dynamic` while `c` is returned as `int`.
 
 ### Using with_itemindex
 
@@ -168,7 +165,7 @@ range x from 1 to 4 step 1
 |2|1|
 |3|2|
 |4|3|
- 
+
 ## See also
 
 * See [Chart count of live activities over time](./samples.md#chart-concurrent-sessions-over-time) for more examples.
