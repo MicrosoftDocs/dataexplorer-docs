@@ -41,7 +41,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 Under **Source type**, do the following steps:
    
-  1. Select **From blob container** (blob container, ADLS Gen1 container, ADLS Gen2 container). You can ingest data from up to 10 blobs.
+  1. Select **From blob container** (blob container, ADLS Gen1 container, ADLS Gen2 container). You can ingest up to 1000 blobs from a single container.
   1. In the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container).
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container":::

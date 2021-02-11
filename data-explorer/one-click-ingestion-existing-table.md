@@ -40,7 +40,7 @@ In the left menu of the Web UI, right-click a *database* or *table* and select *
 1. Under **Source type**, do the following steps:
 
    1. Select **from file**  
-   1. Select **Browse** to locate up to 10 files, or drag the files into the field. The schema-defining file is noted with a blue star.
+   1. Select **Browse** to locate up to 10 files, or drag the files into the field. The schema-defining file can be chosen using the blue star.
     
       :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file":::
 
