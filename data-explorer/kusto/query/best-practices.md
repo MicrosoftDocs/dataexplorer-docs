@@ -9,6 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/03/2020
 ms.localizationpriority: high
+adobe-target: true
 ---
 # Query best practices
 

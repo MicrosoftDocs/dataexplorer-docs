@@ -67,7 +67,7 @@ The follower database is a feature that follows a database or a set of tables in
 Use the leader-follower pattern to set compute resources for different workloads. For example, set up a cluster for ingestions, a cluster for querying or serving dashboards or applications, and a cluster that serves the data science workloads. Each workload in this case will have dedicated compute resources that can be scaled independently, and different caching and security configurations. All clusters use the same data, with the leader writing the data, and the followers using it in a read-only mode.
 
 > [!NOTE]
-> Follower databases have a lag from the leader, usually a couple of minutes. If your solution requires the latest data with no latency, the following solution may be useful: Use a view on the follower cluster that unions the data from the leader and the follower, querying the latest data from the leader and the rest of the data from the follower.
+> Follower databases have a lag from the leader, usually a few seconds. If your solution requires the latest data with no latency, the following solution may be useful: Use a view on the follower cluster that unions the data from the leader and the follower, querying the latest data from the leader and the rest of the data from the follower.
 
 To improve the performance of queries on the follower cluster, you can enable [prefetch extents configuration](kusto/management/cluster-follower.md#alter-follower-database-prefetch-extents). However, use this configuration carefully, as it could impact the freshness of data in the follower database.
 
@@ -94,7 +94,7 @@ Follow [query best practices](kusto/query/best-practices.md) so that your querie
 
 ## Set cluster policies
 
-The number of concurrent queries is capped by default and controlled by the [Request rate limit policy](kusto/management/request-rate-limit-policy.md) so that the cluster doesn't get overloaded. You can adjust this policy for high concurrency situations, however this policy should be adjusted only after rigorous testing, preferably on production-like query patterns and datasets. Testing ensures the cluster can sustain the modified value. This limit can be configured based on application needs.
+The number of concurrent requests is capped by default and controlled by the [Request rate limit policy](kusto/management/request-rate-limit-policy.md) so that the cluster doesn't get overloaded. You can adjust this policy for high concurrency situations, however this policy should be adjusted only after rigorous testing, preferably on production-like usage patterns and datasets. Testing ensures the cluster can sustain the modified value. This limit can be configured based on application needs.
 
 ## Monitor Azure Data Explorer clusters
 
