@@ -1428,6 +1428,8 @@
         href: ./kusto/management/request-limits-policy.md
       - name: Request rate limit policy
         href: ./kusto/management/request-rate-limit-policy.md
+      - name: Request queuing policy
+        href: ./kusto/management/request-queuing-policy.md
     - name: Schema
       items:
       - name: Best practices for schema management
