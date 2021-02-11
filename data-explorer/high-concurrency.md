@@ -38,7 +38,7 @@ For high concurrency, queries should consume the least possible amount of CPU re
 Use the following table schema design suggestions to minimize the CPU resources used:
 
 * Match the column data type optimally to the actual data stored in these columns. For example, don't store datetime values in a string column.
-* Avoid large sparse table with many columns and use of dynamic columns to store sparse properties.
+* Avoid large sparse table with many columns and use dynamic columns to store sparse properties.
 * Store frequently used properties in their own column with a non-dynamic datatype.
 * Denormalize data to avoid joins that demand relatively large CPU resources.
 
@@ -84,9 +84,6 @@ When more than one user loads the same dashboard at similar time, the dashboard 
 ### Configure query consistency
 
 There are two query consistency models: *strong* (the default) and *weak*. With strong consistency, only up-to-date consistent state of data is seen, whatever compute node receives the query. With weak consistency, nodes periodically refresh their copy of the metadata, leading to a latency of 1-2 minutes in the synchronization of metadata changes. The weak model allows you to reduce the load on the node that manages the metadata changes, providing higher concurrency than the default strong consistency. Set this configuration in [client request properties](kusto/api/netfx/request-properties.md) and in the Grafana data source configurations.
-
-> [!NOTE]
-> If you need to reduce the lag time for the refresh of metadata even further, open a support ticket.
 
 ### Optimize queries
 
