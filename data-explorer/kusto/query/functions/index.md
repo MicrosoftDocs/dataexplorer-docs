@@ -9,6 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
 ms.localizationpriority: high
+adobe-target: true
 ---
 # Function types
 
