@@ -1,6 +1,6 @@
 ---
 title: .create-or-alter materialized view - Azure Data Explorer
-description: This article describes .create-or-alter materialized view in Azure Data Explorer.
+description: This article describes `.create-or-alter materialized view` in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -18,7 +18,7 @@ Creates a materialized view or alters an existing materialized view.
 The command has the following limitations:
 
 * See limitations in [alter materialized view limitations](materialized-view-alter.md#alter-materialized-view-limitations).
-* The `backfill` property is not supported if the materialized view already exists. This is because if the materialized view already exists, it cannot be backfilled.
+* The `backfill` property isn't supported if the materialized view already exists. If the materialized view already exists, it cannot be backfilled.
 * You must either be the [database user](../access-control/role-based-authorization.md) who created the materialized view or have [database admin permission](../access-control/role-based-authorization.md) to run this command.
 
 ## Syntax
@@ -28,7 +28,7 @@ The command has the following limitations:
 *ViewName* `on table` *SourceTableName* <br>
 `{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
 
-For more information on arguments and properties, see the [.create materialized-view](materialized-view-create.md) command.
+For more information on arguments and properties, see the [`.create materialized-view`](materialized-view-create.md) command.
 
 ## Example
 
