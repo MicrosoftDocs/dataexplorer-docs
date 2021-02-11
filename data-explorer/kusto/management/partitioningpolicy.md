@@ -11,7 +11,7 @@ ms.date: 2/2/2021
 ---
 # Partitioning policy
 
-The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table.
+The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 By default, extents are partitioned by their ingestion time. In most cases, there's no need to apply another partitioning policy.
 
@@ -19,6 +19,7 @@ The main purpose of the partitioning policy is to improve performance of queries
 
 > [!CAUTION]
 > There are no hard-coded limits set on the number of tables with the partitioning policy defined. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used. For more information, see [monitoring](#monitor-partitioning) and [capacity](#partitioning-capacity).
+Before applying a partitioning policy on a materialized view, review the recommendations for [materialized views partitioning policy](materialized-views/materialized-view-policies.md#partitioning-policy).
 
 ## Common scenarios
 
@@ -30,7 +31,7 @@ The following are common scenarios that can be addressed by setting a data parti
 * **High cardinality partition key**: For example, IoT information from many different sensors, or academic records of many different students. 
   * High cardinality is defined as more than 10M distinct values where the distribution of values in the column is approximately even.
   * In this case, set the [hash partition key](#hash-partition-key) to be the column grouped-by or joined-on, and set the `PartitionAssigmentMode` [property](#partition-properties) to `default`.
-* **Unordered Data ingestion**: Data ingested into a table might not be ordered and parititoned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span. 
+* **Unordered Data ingestion**: Data ingested into a table might not be ordered and partitioned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span. 
   * In this case, set the [Uniform range datetime partition key](#uniform-range-datetime-partition-key) to be the `datetime` column.
   * If you need retention and caching policies to align with the datetime values in the column, instead of aligning with the time of ingestion, set the `OverrideCreationTime` property to `true`.
 

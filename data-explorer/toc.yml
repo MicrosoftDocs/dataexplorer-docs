@@ -1517,6 +1517,10 @@
           href: ./kusto/management/materialized-views/materialized-view-drop.md
         - name: .disable | .enable materialized-view
           href: ./kusto/management/materialized-views/materialized-view-enable-disable.md
+        - name: Materialized views policies
+          href: ./kusto/management/materialized-views/materialized-view-policies.md
+        - name: Materialized views data purge
+          href: ./kusto/management/materialized-views/materialized-view-purge.md
       - name: Stored query results
         displayName: .set stored query, .show stored query, .drop stored query
         href: ./kusto/management/stored-query-results.md
