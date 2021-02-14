@@ -30,6 +30,8 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 1. In the **Ingest new data** window, the **Source** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
+    [!INCLUDE [one-click-cluster](includes/one-click-cluster.md)]
+
 1. Select **Table** > **Create new** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
     > [!NOTE]

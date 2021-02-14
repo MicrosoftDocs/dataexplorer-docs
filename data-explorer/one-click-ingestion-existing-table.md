@@ -34,6 +34,8 @@ In the left menu of the Web UI, right-click a *database* or *table* and select *
 1. In the **Ingest new data** window, the **Source** tab is selected.
 
 1. If the **Cluster** and **Database** fields aren't automatically filled, select an existing cluster and database name from the drop-down menu.
+    
+    [!INCLUDE [one-click-cluster](includes/one-click-cluster.md)]
 
 1. If the **Table** field isn't automatically filled, select an existing table name from the drop-down menu.
 
