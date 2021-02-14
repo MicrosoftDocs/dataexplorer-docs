@@ -37,7 +37,7 @@ For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24
 ## Returns
 
 * `true`: If the long representation of the first IPv4 string argument is in range of the second IPv4 string argument.
-*  `false`: Otherwise.
+* `false`: Otherwise.
 * `null`: If conversion for one of the two IPv4 strings wasn't successful.
 
 ## Examples
