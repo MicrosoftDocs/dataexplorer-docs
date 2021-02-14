@@ -32,7 +32,7 @@ The default [caching policy](cachepolicy.md) for the follower cluster uses the l
 > [!NOTE]
 >  * If the collection of override database and table-level caching policies is *empty*, then everything is cached by default.
 >  * You can set the database-level caching policy override to `0d`, and nothing will be cached by default.
->  * EngineV3 clusters can only follow EngineV3 clusters, similarly EngineV2 clusters can only follow V2 clusters
+>  * EngineV3 clusters can only follow EngineV3 clusters. EngineV2 clusters can only follow V2 clusters
 
 ### Authorized principals
 
