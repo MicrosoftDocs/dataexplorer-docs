@@ -124,6 +124,30 @@ Monitor the materialized view's health in the following ways:
 > [!NOTE]
 > Materialization never skips any data, even if there are constant failures. The view is always guaranteed to return the most up-to-date snapshot of the query, based on all records in the source table. Constant failures will significantly degrade query performance, but won't cause incorrect results in view queries.
 
+### Troubleshooting unhealthy materialized views
+
+The `MaterializedViewHealth` metric indicates whether a materialized view is healthy. Before a materialized view becomes unhealthy, its age, noted by the `MaterializedViewAgeMinutes` metric, will gradually increase.
+
+A materialized view can become unhealthy for any or all of the following reasons:
+
+* The materialization process is failing. The [MaterializedViewResult metric](#materializedviewresult-metric) and the [.show materialized-view failures](materialized-view-show-commands.md#show-materialized-view-failures) command can help identify the root cause of the failure.
+
+* The cluster doesn't have sufficient capacity to materialize all incoming data on-time. In this case, there may not be failures in execution. However, the view's age will gradually increase, since it is not able to keep up with the ingestion rate. There could be several root causes for this situation:
+  * Materialization is slow since there are too many extents to rebuild in each materialization cycle. To learn more about why extents rebuilds impact the view's performance, see [how materialized views work](#how-materialized-views-work). The number of extents rebuilt in each cycle is provided in the `MaterializedViewExtentsRebuild` metric. Consider the following solutions for this case:
+      * Increasing the extents rebuilt concurrency in the [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy).
+      * Moving the cluster to [Engine V3](../../../engine-v3.md) should significantly improve performance of rebuild extents.
+   * There are additional materialized views in the cluster, and the cluster doesn't have sufficient capacity to run all views. See [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy) to change the default settings for number of materialized views executed concurrently.
+
+#### MaterializedViewResult metric
+
+The `MaterializedViewResult` metric provides information about the result of a materialization cycle, and can be used to identify issues in the materialized view health status. The metric includes the `Database` and `MaterializedViewName` as well as a `Result` dimension, which can have one of the following values:
+  
+1. **Success:** materialization completed successfully.
+1. **SourceTableNotFound:** source table of the materialization view was dropped. **The materialized view is automatically disabled as a result**.
+1. **SourceTableSchemaChange:** the schema of the source table has changed in a way that is not compatible with the materialized view definition (materialized view query does not match the materialized view schema). **The materialized view is automatically disabled as a result**.
+1. **InsufficientCapacity:** the cluster does not have sufficient capacity to materialized the materialized view. This can either indicate missing [ingestion capacity](../capacitypolicy.md#ingestion-capacity) or missing [materialized views capacity](../capacitypolicy.md#materialized-views-capacity-policy). Insufficient capacity failures can be transient, but if they reoccur often it is recommended to scale out the cluster and/or increase relevant capacity in policy.
+1. **InsufficientResources:** the cluster doesn't have sufficient resources (CPU/memory) to materialized the materialized view. This failure may also be a transient one, but if it reoccurs often a scale out/up is required.
+
 ### Track resource consumption
 
 **Materialized views resource consumption:** the resources consumed by the materialized views materialization process can be tracked using the [`.show commands-and-queries`](../commands-and-queries.md#show-commands-and-queries) command. Filter the records for a specific view using the following (replace `DatabaseName` and `ViewName`):
@@ -133,34 +157,6 @@ Monitor the materialized view's health in the following ways:
 .show commands-and-queries 
 | where Database  == "DatabaseName" and ClientActivityId startswith "DN.MaterializedViews;ViewName;"
 ```
-
-### Troubleshooting unhealthy materialized views
-
-The `MaterializedViewHealth` metric indicates whether a materialized view is healthy. A materialized view can become unhealthy for any or all of the following reasons:
-* The materialization process is failing.
-* The cluster doesn't have sufficient capacity to materialize all incoming data on-time. There won't be failures in execution. However, the view will still be unhealthy, since it will be lagging behind and not able to keep up with the ingestion rate.
-
-Before a materialized view becomes unhealthy, its age, noted by the `MaterializedViewAgeMinutes` metric, will gradually increase.
-
-### Troubleshooting examples
-
-The following examples can help you diagnose and fix unhealthy views:
-
-* **Failure:** The source table was changed or deleted, the view wasn't set to `autoUpdateSchema`, or the change in source table isn't supported for auto-updates. <br>
-   **Diagnostic:**  A `MaterializedViewResult` metric is fired, and the `Result` dimension is set to `SourceTableSchemaChange`/`SourceTableNotFound`.
-
-* **Failure:** Materialization process fails due insufficient cluster resources, and query limits are hit. <br>
-  **Diagnostic:** `MaterializedViewResult` metric `Result` dimension is set to `InsufficientResources`. Azure Data Explorer will try to automatically recover from this state, so this error may be transient. However, if view is unhealthy and this error is constantly emitted, it's possible that the current cluster's configuration isn't able to keep up with ingestion rate, and cluster needs to be scaled up or out.
-
-* **Failure:** The materialization process is failing because of any other (unknown) reason. <br> 
-   **Diagnostic**: `MaterializedViewResult` metric's `Result` will be `UnknownError`. If this failure happens frequently, open a support ticket for the Azure Data Explorer team to investigate further.
-
-If there are no materialization failures, `MaterializedViewResult` metric will be fired on every successful execution, with `Result`=`Success`. A materialized view can be unhealthy, despite successful executions, if it's lagging behind (`Age` is above threshold). This situation can happen in the following circumstances:
-   * Materialization is slow since there are too many extents to rebuild in each materialization cycle. To learn more about why extents rebuilds impact the view's performance, see [how materialized views work](#how-materialized-views-work).
-   * If each materialization cycle needs to rebuild close to 100% of the extents in the view, the view may not keep up, and will become unhealthy. The number of extents rebuilt in each cycle is provided in the `MaterializedViewExtentsRebuild` metric. Consider the following solutions for this case: 
-        * Increasing the extents rebuilt concurrency in the [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy).
-        * Moving the cluster to [Engine V3](../../../engine-v3.md) should improve performance of rebuild extents significantly.
-   * There are additional materialized views in the cluster, and the cluster doesn't have sufficient capacity to run all views. See [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy) to change the default settings for number of materialized views executed concurrently.
 
 ## Next steps
 
