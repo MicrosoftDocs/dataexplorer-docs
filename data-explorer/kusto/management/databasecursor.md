@@ -71,6 +71,11 @@ This value is guaranteed to update, as-needed by the ingestion history, into suc
 
 The ingestion process first commits the data, so that it's available for querying, and only then assigns an actual cursor value to each record. If you attempt to query for data immediately following the ingestion completion using a database cursor, the results might not yet incorporate the last records added, because they haven't yet been assigned the cursor value. Also, retrieving the current database cursor value repeatedly might return the same value, even if ingestion was done in between, because only a cursor commit can update its value.
 
+Querying a table based on database cursors is only guaranteed to "work" (providing exactly-once guarantees) 
+if the records are ingested directly into that table. If you are using extents commands, such as [move extents](move-extents.md)/[.replace extents](replace-extents.md) to move data into the table, or if you are using [.rename table](rename-table-command.md), then querying this table using database cursors is not guaranteed to not miss any data. This is because the ingestion time 
+of the records is assigned when initially ingested, and does not change during the move extents operation. 
+Therefore, when the extents are moved into the target table, it's possible that the cursor value assigned to the records in these extents was already processed (and next query by database cursor will miss the new records).
+
 ## Example: Processing records exactly once
 
 For a table `Employees` with schema `[Name, Salary]`, to continuously process new records as they're ingested into the table, use the following process:

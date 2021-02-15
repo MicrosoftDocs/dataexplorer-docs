@@ -133,7 +133,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
         ( h@"https://storage1.blob.core.windows.net/containerName;secretKey" ) 
         with
         (
-            distribuion="per_node"
+            distribution="per_node"
         ) 
         <| 
         set query_fanout_nodes_percent = 50;

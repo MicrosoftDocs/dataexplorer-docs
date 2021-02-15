@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 11/22/2020
+ms.date: 02/09/2021
 ms.localizationpriority: high
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
@@ -17,6 +17,8 @@ ms.localizationpriority: high
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data. Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share Kusto Query Language commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer Web UI](https://dataexplorer.azure.com). 
 The Azure Data Explorer Web UI can also be hosted by other web portals in an HTML iframe. For more information on how to host the Web UI and the Monaco editor used, see [Monaco IDE integration](kusto/api/monaco/monaco-kusto.md).
 In this quickstart, you'll be working in the stand-alone Azure Data Explorer Web UI.
+
+:::image type="content" source="media/web-query-data/walkthrough.gif" alt-text="Walkthrough of the Kusto Web Explorer experience":::
 
 ## Prerequisites
 
@@ -63,7 +65,7 @@ Now add the test cluster you created.
 
 ## Run queries
 
-You can now run queries on both clusters (assuming you have data in your test cluster). For the purpose of this article, we'll focus on the **help** cluster.
+You can now run queries on both clusters (assuming you have data in your test cluster). For this article, we'll focus on the **help** cluster.
 
 1. In the left pane, under the **help** cluster, select the **Samples** database.
 
@@ -86,7 +88,8 @@ You can now run queries on both clusters (assuming you have data in your test cl
 1. Copy and paste the following query into the query window, below the first query. Notice how it isn't formatted on separate lines like the first query.
 
     ```kusto
-    StormEvents | sort by StartTime desc | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative | take 10
+    StormEvents | sort by StartTime desc 
+    | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative | take 10
     ```
 
 1. Select the new query. Press *Shift+Alt+F* to format the query, so it looks like the following query.
@@ -122,9 +125,43 @@ You can now run queries on both clusters (assuming you have data in your test cl
 
 ## Work with the table grid
 
-Now that you've seen how basic queries work, let's look at how you can use the table grid to customize results and do further analysis.
+Now that you've seen how basic queries work, you can use the table grid to customize results and do further analysis. 
 
-1. Rerun the first query. Mouse-over the **State** column, select the menu, and select **Group by State**.
+### Expand a cell
+
+Expanding cells is useful to view long strings or dynamic fields such a JSON. 
+
+1. Double-click a cell to open an expanded view. This view allows you to read long strings, and provides a JSON formatting for dynamic data.
+
+    :::image type="content" source="media/web-query-data/expand-cell.png" alt-text="Azure Data Explorer WebUI expand cell to show long strings":::
+
+1. Click on the icon on the top right of the result grid to switch reading pane modes. Choose between the following reading pane modes for expanded view: inline, below pane, and right pane.
+
+    :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="Icon to change reading pane for expanded view mode - Azure Data Explorer WebUI query results":::
+
+### Expand a row
+
+When working with a table with dozens of columns, expand the entire row to be able to easily see an overview of the different columns and their content. 
+
+1. Click on the arrow **>** to the left of the row you want to expand.
+
+    :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Expand a row in the Azure Data Explorer WebUI":::
+
+1. Within the expanded row, some columns are expanded (arrow pointing down), and some columns are collapsed (arrow pointing right). Click on these arrows to toggle between these two modes.
+
+### Group column by results
+
+Within the results, you can group results by any column.
+
+1. Run the following query:
+     
+    ```kusto
+    StormEvents
+    | sort by StartTime desc
+    | take 10
+    ```
+
+1. Mouse-over the **State** column, select the menu, and select **Group by State**.
 
     ![Group by state](media/web-query-data/group-by.png)
 
@@ -135,6 +172,34 @@ Now that you've seen how basic queries work, let's look at how you can use the t
 1. Mouse-over the **Group** column, then select **Reset columns**. This setting returns the grid to its original state.
 
     ![Reset columns](media/web-query-data/reset-columns.png)
+
+#### Use value aggregation
+
+After you have grouped by a column, you can then use the value aggregation function to calculate simple statistics per group.
+
+1. Select the menu for the column you want to evaluate.
+1. Select **Value Aggregation**, and then select the type of function you want to do on this column.
+
+    :::image type="content" source="media/web-query-data/aggregate.png" alt-text="Aggregate results when grouping column by results. ":::
+
+### Filter columns
+
+You can use one or more operators to filter the results of a column.
+
+1. To filter a specific column, select the menu for that column.
+1. Select the filter icon.
+1. In the filter builder, select the desired operator.
+1. Type in the expression you wish to filter the column on. Results are filtered as you type.
+    
+    > [!NOTE] 
+    > The filter isn't case sensitive.
+
+1. To create a multi-condition filter, select a boolean operator to add another condition
+1. To remove the filter, delete the text from your first filter condition.
+
+    :::image type="content" source="media/web-query-data/filter-column.gif" alt-text="GIF showing how to filter on a column in the Azure Data Explorer WebUI":::
+
+### Run cell statistics
 
 1. Run the following query.
 
@@ -150,29 +215,46 @@ Now that you've seen how basic queries work, let's look at how you can use the t
 
     :::image type="content" source="media/web-query-data/select-stats.png" alt-text="select functions"::: 
 
-1. On the right side of the grid, select **Columns** to see the table tool panel. This panel functions similarly to the pivot table field list in Excel, enabling you to do more analysis in the grid itself.
+### Filter to query from grid
+
+Another easy way to filter the grid is to add a filter operator to the query directly from the grid.
+
+1. Select a cell with content you wish to create a query filter for.
+1. Right-click to open the cell actions menu. Select **Add selection as filter**.
+    
+    :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="Add selection as filter to query from the grid results in Azure Data Explorer WebUI":::
+
+1. A query clause will be added to your query in the query editor:
+
+    :::image type="content" source="media/web-query-data/add-query-from-filter.png" alt-text="Add query clause from filtering on the grid in Azure Data Explorer WebUI":::
+
+### Pivot
+
+The pivot mode feature is similar to Excel’s pivot table, enabling you to do advanced analysis in the grid itself.
+
+Pivoting allows you to take a columns value and turn them into columns. For example, you can pivot on *State* to make columns for Florida, Missouri, Alabama, and so on.
+
+1. On the right side of the grid, select **Columns** to see the table tool panel.
 
     ![Table tool panel](media/web-query-data/tool-panel.png)
 
-1. Select **Pivot Mode**, then drag columns as follows: **State** to **Row groups**; **DamageProperty** to **Values**; and **EventType** to **Column labels**.  
+1. Select **Pivot Mode**, then drag columns as follows: **EventType** to **Row groups**; **DamageProperty** to **Values**; and **State** to **Column labels**.  
 
     ![Pivot mode](media/web-query-data/pivot-mode.png)
 
-    The result should look like the following pivot table.
+    The result should look like the following pivot table:
 
     ![Pivot table](media/web-query-data/pivot-table.png)
-
-    Notice how Vermont and Alabama each have two events under the same category, while Texas has two events under different categories. Pivot tables are a great tool for quick analysis since they enable you to quickly spot these differences.
 
 ## Search in the results table
 
 You can look for a specific expression within a result table.
 
-1.	Run the following query:
+1. Run the following query:
 
     ```Kusto
     StormEvents
-	| where DamageProperty > 5000
+    | where DamageProperty > 5000
     | take 1000
     ```
 
@@ -192,7 +274,7 @@ Many times, you want to share the queries you create.
 
 1. At the top of the query window, select **Share**. 
 
-:::image type="content" source="media/web-query-data/share-menu.png" alt-text="Share menu":::
+    :::image type="content" source="media/web-query-data/share-menu.png" alt-text="Share menu":::
 
 The following options are available in the drop-down:
 * Link to clipboard
@@ -245,6 +327,7 @@ In the **Settings** tab you can:
 
 * [Export environment settings](#export-environment-settings)
 * [Import environment settings](#import-environment-settings)
+* [Highlight error levels](#highlight-error-levels)
 * [Clear local state](#clean-up-resources)
 
 Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
@@ -276,6 +359,39 @@ The export and import actions help you protect your work environment and relocat
 > [!NOTE]
 > **Import** overrides any existing environment settings and data.
 
+### Highlight error levels
+
+Kusto tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on). 
+
+#### Enable error level highlighting
+
+To enable the error level highlighting:
+
+1. Select the **Settings** icon next to your user name.
+1. Select the **Appearance** tab and toggle the **Enable error level highlighting** option to the right. 
+
+    :::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="Animated GIF showing how to enable error-level highlighting in the settings":::
+
+Error level color scheme in **Light** mode | Error level color scheme in **Dark** mode
+|---|---|
+:::image type="content" source="media/web-query-data/light-mode.png" alt-text="Screen shot of color legend in light mode"::: | :::image type="content" source="media/web-query-data/dark-mode.png" alt-text="Screen shot of color legend in dark mode":::
+
+#### Column requirements for highlighting
+
+For highlighted error levels, the column must be of type int, long, or string. 
+
+* If the column is of type `long` or `int`:
+   * The column name must be *Level*
+   * Values may only include numbers between 1 and 5.
+* If the column is of type `string`: 
+   * Column name can optionally be *Level* to improve performance. 
+   * The column can only include the following values:
+	   * critical, crit, fatal, assert, high
+	   * error, e
+	   * warning, w, monitor
+	   * information
+	   * verbose, verb, d
+   
 ## Provide feedback
 
 1. In the upper right of the application, select the feedback icon :::image type="icon" source="media/web-query-data/icon-feedback.png" border="false":::.

@@ -34,6 +34,7 @@ The update policy query is run in a special mode, in which it's automatically sc
 * When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
    * Don't use the qualified name of the table. Instead, use `TableName`. 
    * Don't use `database("DatabaseName").TableName` or `cluster("ClusterName").database("DatabaseName").TableName`.
+* For update policy limitations in streaming ingestion, see [streaming ingestion limitations](../../ingest-data-streaming.md#limitations). 
 
 > [!WARNING]
 > Defining an incorrect query in the update policy can prevent any data from being ingested into the source table.
@@ -50,6 +51,9 @@ Each such object is represented as a JSON property bag, with the following prope
 |Query                         |`string`|A Kusto CSL query that is used to produce the data for the update                                                                                                                           |
 |IsTransactional               |`bool`  |States if the update policy is transactional or not (defaults to false). Failure to run a transactional update policy results in the source table not being updated with new data   |
 |PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified during the ingestion into the source table, should also apply to the ones in the derived table.                 |
+
+> [!NOTE]
+> In production systems, set the *IsTransactional* property to *true* to ensure that the target table doesn't lose data in transient failures.  
 
 > [!NOTE]
 > Cascading updates are allowed (`TableA` → `TableB` → `TableC` → ...).
