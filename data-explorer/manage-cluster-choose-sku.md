@@ -88,15 +88,15 @@ The technical specifications for the Azure Data Explorer cluster VMs are describ
 
 |**Name**| **Category** | **SSD size** | **Cores** | **RAM** | **Premium storage disks (1&nbsp;TB)**| **Minimum instance count per cluster** | **Maximum instance count per cluster**
 |---|---|---|---|---|---|---|---
-|Dev(No SLA) Standard_D11_v2| compute-optimized | 75&nbsp;GB    | 1 | 14&nbsp;GB | 0 | 1 | 1
-|Dev(No SLA) Standard_E2a_v4| compute-optimized | 18&nbsp;GB    | 1 | 16&nbsp;GB | 0 | 1 | 1
-|Standard_D11_v2| compute-optimized | 75&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 2 | 8 
-|Standard_D12_v2| compute-optimized | 150&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
-|Standard_D13_v2| compute-optimized | 307&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1,000
-|Standard_D14_v2| compute-optimized | 614&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1,000
-|Standard_E2a_v4| heavy compute | 18&nbsp;GB    | 2 | 16&nbsp;GB | 0 | 2 | 8 
-|Standard_E4a_v4| heavy compute | 54&nbsp;GB   | 4 | 32&nbsp;GB | 0 | 2 | 16
-|Standard_E8a_v4| heavy compute | 127&nbsp;GB   | 8 | 64&nbsp;GB | 0 | 2 | 1,000
+|Dev(No SLA) Standard_D11_v2| compute-optimized | 80&nbsp;GB    | 1 | 14&nbsp;GB | 0 | 1 | 1
+|Dev(No SLA) Standard_E2a_v4| compute-optimized | 24&nbsp;GB    | 1 | 16&nbsp;GB | 0 | 1 | 1
+|Standard_D11_v2| compute-optimized | 80&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 2 | 8 
+|Standard_D12_v2| compute-optimized | 160&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
+|Standard_D13_v2| compute-optimized | 317&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1,000
+|Standard_D14_v2| compute-optimized | 628&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1,000
+|Standard_E2a_v4| heavy compute | 24&nbsp;GB    | 2 | 16&nbsp;GB | 0 | 2 | 8 
+|Standard_E4a_v4| heavy compute | 60&nbsp;GB   | 4 | 32&nbsp;GB | 0 | 2 | 16
+|Standard_E8a_v4| heavy compute | 137&nbsp;GB   | 8 | 64&nbsp;GB | 0 | 2 | 1,000
 |Standard_E16a_v4| heavy compute | 273&nbsp;GB   | 16| 128&nbsp;GB | 0 | 2 | 1,000
 |Standard_DS13_v2 + 1&nbsp;TB&nbsp;PS| storage-optimized | 1&nbsp;TB | 8 | 56&nbsp;GB | 1 | 2 | 1,000
 |Standard_DS13_v2 + 2&nbsp;TB&nbsp;PS| storage-optimized | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1,000
