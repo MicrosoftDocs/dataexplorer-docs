@@ -53,7 +53,7 @@ Results:
 | &nbsp; | &nbsp; | true| 	
 
 > [!NOTE]
-> In EngineV2, the null comparison expression returns boolean results. In EngineV3, the comparison expression returns "null". 
+> In EngineV2, a null comparison expression returns boolean result. In EngineV3, any comparison expression returns `null`. 
 
 ## Binary operations on null
 
@@ -73,6 +73,25 @@ Results:
 |5|	15|	50|
 |&nbsp;|&nbsp;|&nbsp;| 		
 
+## Null expression in filter
+If an expression in the context of the filter operation such as in the [where operator](../whereoperator.md) returns null, the expression will be coalesced to `false` (see the note above regarding the change in the result of null comparison expressions between EngineV2 and EngineV3). 
+
+Example:
+
+```kusto
+datatable(ival:int, sval:string)[5, "a", int(null), "b"]
+| where ival != 5
+```
+Results in EngineV3:
+
+|ival|sval|
+|---|---|
+	
+Results in EngineV2:
+
+|ival|sval|
+|---|---|
+|&nbsp;|b|
 
 ## Data ingestion and null values
 
@@ -82,7 +101,7 @@ in the corresponding table cell. An exception to that are columns of type
 So, for example, if we have: 
 
 ```kusto
-.create table T [a:string, b:int]
+.create table T(a:string, b:int)
 
 .ingest inline into table T
 [,]
