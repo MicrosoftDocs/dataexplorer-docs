@@ -19,9 +19,8 @@ This section lists the major changes to docs during January 2021.
 ### General
 
 Article title | Description
----|---
-[Azure Policy Regulatory Compliance controls for Azure Data Explorer](security-controls-policy.md) | New article. This
-page lists the **compliance domains** and **security controls** for Azure Data Explorer.
+---|--- 
+[Azure Policy Regulatory Compliance controls for Azure Data Explorer](security-controls-policy.md) | New article. This page lists the **compliance domains** and **security controls** for Azure Data Explorer.
 [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | New article. In this article, you will learn how to give cluster access to principals from another tenant.
 
 ### Management
