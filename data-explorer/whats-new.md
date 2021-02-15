@@ -10,39 +10,90 @@ ms.date: 12/15/2020
 ---
 # What's new in Azure Data Explorer
 
-Find new and significantly updated content in Azure Data Explorer. 
+Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
-## November 2020
+> [!NOTE]
+> Get notified about when to revisit this page for updates by copying and pasting this URL into your RSS feed reader:
+>
+>
+## December 2020
 
-Welcome to what's new in the Azure Data Explorer docs from November 2020. This article lists some of the major changes to docs during this period.
-
-### Query
+### General
 
 Article title | Description
 ---|---
-[mysql_request plugin (Preview)](./kusto/query/mysqlrequest-plugin.md) | New article. The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query. 
-[ipv4_lookup plugin](./kusto/query/ipv4-lookup-plugin.md) | New article. The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values.
-[ipv4_is_private()](./kusto/query/ipv4-is-privatefunction.md) | New article. Checks if IPv4 string address belongs to a set of private network IPs.
-[Splunk to Kusto Query Language map](./kusto/query/splunk-cheat-sheet.md) | New article. This article is intended to assist users who are familiar with Splunk learn the Kusto Query Language to write log queries with Kusto. Direct comparisons are made between the two to highlight key differences and similarities, so you can build on your existing knowledge.
-[gzip_compress_to_base64_string()](./kusto/query/gzip-base64-compress.md) | New article. Performs gzip compression and encodes the result to base64.
-[gzip_decompress_from_base64_string()](./kusto/query/gzip-base64-decompress.md) | New article. Decodes the input string from base64 and performs gzip decompression.
-[array_reverse()](./kusto/query/array-reverse-function.md) | New article. Reverses the order of the elements in a dynamic array.
+[Ingestion error codes in Azure Data Explorer](error-codes.md) | New article. This list contains error codes you may come across during [ingestion](ingest-data-overview.md).
+
+
+[Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)
+  - Update using-metrics.md
+  - Update custom metadata
+  - Update using-metrics.md
+  - Error codes
+- [Best practices for using Power BI to query and visualize Azure Data Explorer data](power-bi-best-practices.md) - Update power-bi-best-practices.md
 
 ### Functions library
 
 Article title | Description
 ---|---
-[series_downsample_fl()](./kusto/functions-library/series-downsample-fl.md) | The function `series_downsample_fl()` [downsamples a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)#Downsampling_by_an_integer_factor). 
-[series_exp_smoothing_fl()](./kusto/functions-library/series-exp-smoothing-fl.md) | Applies a basic exponential smoothing filter on a series.
+[series_metric_fl()](kusto/functions-library/series-metric-fl.md) | New article. The `series_metric_fl()` function selects and retrieves time series of metrics ingested to Azure Data Explorer using the Prometheus monitoring system.
+[series_rate_fl()](kusto/functions-library/series-rate-fl.md) | New article. The function `series_rate_fl()` calculates the average rate of metric increase per second.
+[series_fit_lowess_fl()](kusto/functions-library/series-fit-lowess-fl.md) | New article. The function `series_fit_lowess_fl()` applies a LOWESS regression on a series.
 
 ### Management
 
-Article title | Description
----|---
-[.disable plugin](./kusto/management/disable-plugin.md) | New article. Disables a plugin.
-[.enable plugin](./kusto/management/enable-plugin.md) | New article. Enables a plugin.
-[.show plugins](./kusto/management/show-plugins.md) | New article. Lists all plugins of the cluster.
-| [Cluster follower commands](kusto/management/cluster-follower.md) | Updated article. Syntax changed, added `.alter follower database prefetch-extents` |
+[.create table based-on](/azure/data-explorer/kusto/management/create-table-based-on-command.md)  | New article.
+[Stored query results (Preview)](/azure/data-explorer/kusto/management/stored-query-results.md) | New article.
+  
+### Updated articles
+
+- [Update policy overview](/azure/data-explorer/kusto/management/updatepolicy.md) - update policy limitations for streaming ingestion
+- [Create and alter external tables in Azure Storage or Azure Data Lake](/azure/data-explorer/kusto/management/external-tables-azurestorage-azuredatalake.md)
+  - Document `filesPreview` and `dryRun` external table definition options
+  - Update external table mapping commands
+- [Export data to an external table](/azure/data-explorer/kusto/management/data-export/export-data-to-an-external-table.md) - Use new external table syntax in export docs
+- [IngestionBatching policy command](/azure/data-explorer/kusto/management/batching-policy.md) - Update batching-policy.md
+- [Best practices for schema management](/azure/data-explorer/kusto/management/management-best-practices.md) - updated according to customer feedback
+- [.create materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-create.md) - Materializedview create
+
+## Query
+
+### Updated articles
+
+
+- [Let statement](/azure/data-explorer/kusto/query/letstatement.md) - Update letstatement.md
+- [parse operator](/azure/data-explorer/kusto/query/parseoperator.md) - Make it clearer when to use parse-where
+- [externaldata operator](/azure/data-explorer/kusto/query/externaldata-operator.md)
+  - Adding AzMon performance warnings for 4 operators
+  - Fix zone issues
+  - Add a warning on usage in AzMon
+- [find operator](/azure/data-explorer/kusto/query/findoperator.md) - Adding AzMon performance warnings for 4 operators
+- [search operator](/azure/data-explorer/kusto/query/searchoperator.md) - Adding AzMon performance warnings for 4 operators
+- [geo_distance_point_to_line()](/azure/data-explorer/kusto/query/geo-distance-point-to-line-function.md) - adding geospatial examples
+- [geo_polygon_to_s2cells()](/azure/data-explorer/kusto/query/geo-polygon-to-s2cells-function.md) - adding geospatial examples
+- [top-nested operator](/azure/data-explorer/kusto/query/topnestedoperator.md) - top-nested: Added an example for partition/top
+- [The dynamic data type](/azure/data-explorer/kusto/query/scalar-data-types/dynamic.md) - Update dynamic.md
+- [Tutorial: Use Kusto queries in Azure Data Explorer and Azure Monitor](/azure/data-explorer/kusto/query/tutorial.md)
+  - 350885
+  - Update tutorial.md
+- [pattern statement](/azure/data-explorer/kusto/query/patternstatement.md) - 1800773, fixed validation issues.
+- [Python plugin](/azure/data-explorer/kusto/query/pythonplugin.md) - 1800773, fixed validation issues.
+- [bin()](/azure/data-explorer/kusto/query/binfunction.md) - Update binfunction.md
+- [render operator](/azure/data-explorer/kusto/query/renderoperator.md) - Fix to render operator for Azure Monitor
+- [mv-expand operator](/azure/data-explorer/kusto/query/mvexpandoperator.md) - Update mvexpandoperator.md
+- [take operator](/azure/data-explorer/kusto/query/takeoperator.md) - Stored query (Original PR 1283)
+- [Databases](/azure/data-explorer/kusto/query/schema-entities/databases.md) - Update databases.md
+- [Query results cache](/azure/data-explorer/kusto/query/query-results-cache.md) - Request properties
+
+## Tools
+
+### Updated articles
+
+- [Kusto.Explorer installation and user interface](/azure/data-explorer/kusto/tools/kusto-explorer.md) - Kusto.Explorer row colors legends
+
+## November 2020
+
+This section lists the major changes to docs during November 2020.
 
 ### General
 
@@ -56,35 +107,37 @@ Article title | Description
 |  [What is one-click ingestion?](ingest-data-one-click.md) | Updated article. Added ingestion from JSON nested levels. General availability (GA).
 | [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md) | Updated article. New dashboard visuals and parameter changes
 
-## October 2020
-
-Welcome to what's new in the Azure Data Explorer docs from October 2020. This article lists some of the major changes to docs during this period.
-
 ### Query
 
 Article title | Description
 ---|---
-[project-keep operator](./kusto/query/project-keep-operator.md) | New article. Select what columns from the input to keep in the output.
-[bag_remove_keys()](./kusto/query/bag-remove-keys-function.md) | New article. Removes keys and associated values from a `dynamic` property-bag.
-[series_fit_poly()](./kusto/query/series-fit-poly-function.md) | New article. Applies a polynomial regression from an independent variable (x_series) to a dependent variable (y_series). This function takes a table containing multiple series (dynamic numerical arrays) and generates the best fit high-order polynomial for each series using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). 
-[array_sort_asc()](./kusto/query/arraysortascfunction.md) | New article. Receives one or more arrays. Sorts the first array in ascending order. Orders the remaining arrays to match the reordered first array.
-[array_sort_desc()](./kusto/query/arraysortdescfunction.md) | New article. Receives one or more arrays. Sorts the first array in descending order. Orders the remaining arrays to match the reordered first array.
-
-### Functions library
-
- Article title | Description
----|---
-[kmeans_fl()](./kusto/functions-library/kmeans-fl.md) | New article.  The function `kmeans_fl()` clusterizes a dataset using the [k-means algorithm](https://en.wikipedia.org/wiki/K-means_clustering).
-[series_dot_product_fl()](./kusto/functions-library/series-dot-product-fl.md) | New article. Calculates the dot product of two numerical vectors.
+[mysql_request plugin (Preview)](./kusto/query/mysqlrequest-plugin.md) | New article. The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query. 
+[ipv4_lookup plugin](./kusto/query/ipv4-lookup-plugin.md) | New article. The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values.
+[ipv4_is_private()](./kusto/query/ipv4-is-privatefunction.md) | New article. Checks if IPv4 string address belongs to a set of private network IPs.
+[Splunk to Kusto Query Language map](./kusto/query/splunk-cheat-sheet.md) | New article. This article is intended to assist users who are familiar with Splunk learn the Kusto Query Language to write log queries with Kusto. Direct comparisons are made between the two to highlight key differences and similarities, so you can build on your existing knowledge.
+[gzip_compress_to_base64_string()](./kusto/query/gzip-base64-compress.md) | New article. Performs gzip compression and encodes the result to base64.
+[gzip_decompress_from_base64_string()](./kusto/query/gzip-base64-decompress.md) | New article. Decodes the input string from base64 and performs gzip decompression.
+[array_reverse()](./kusto/query/array-reverse-function.md) | New article. Reverses the order of the elements in a dynamic array.
 
 ### Management
 
- Article title | Description
+Article title | Description
 ---|---
-[Query throttling policy commands](./kusto/management/query-throttling-policy-commands.md) | New article. The [query throttling policy](kusto/management/query-throttling-policy.md) is a cluster-level policy to restrict query concurrency in the cluster. 
-[Query throttling policy](./kusto/management/query-throttling-policy.md) | New article. Define the query throttling policy to limit the number of concurrent queries the cluster can execute at the same time. This policy protects the cluster from being overloaded with more concurrent queries than it can sustain. The policy can be changed at run-time, and takes place immediately after the alter policy command completes.
-[.clear table data](./kusto/management/clear-table-data-command.md) | New article. Clears the data of an existing table, including streaming ingestion data.
-|  [row_level_security policy command](kusto/management/row-level-security-policy.md) [Row Level Security](kusto/management/rowlevelsecuritypolicy.md) |Updated articles. General availability (GA).
+[.disable plugin](./kusto/management/disable-plugin.md) | New article. Disables a plugin.
+[.enable plugin](./kusto/management/enable-plugin.md) | New article. Enables a plugin.
+[.show plugins](./kusto/management/show-plugins.md) | New article. Lists all plugins of the cluster.
+| [Cluster follower commands](kusto/management/cluster-follower.md) | Updated article. Syntax changed, added `.alter follower database prefetch-extents` |
+
+### Functions library
+
+Article title | Description
+---|---
+[series_downsample_fl()](./kusto/functions-library/series-downsample-fl.md) | The function `series_downsample_fl()` [downsamples a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)#Downsampling_by_an_integer_factor). 
+[series_exp_smoothing_fl()](./kusto/functions-library/series-exp-smoothing-fl.md) | Applies a basic exponential smoothing filter on a series.
+
+## October 2020
+
+This section lists the major changes to docs during October 2020.
 
 ### General
 
@@ -100,46 +153,36 @@ Article title | Description
 | [Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster](azure-advisor.md) | Updated article. Azure advisor new recommendation.
 | [Use follower database to attach databases in Azure Data Explorer](follower.md) | Updated article. Use powershell to attach and detach follower databases. 
 
+### Query
+
+Article title | Description
+---|---
+[project-keep operator](./kusto/query/project-keep-operator.md) | New article. Select what columns from the input to keep in the output.
+[bag_remove_keys()](./kusto/query/bag-remove-keys-function.md) | New article. Removes keys and associated values from a `dynamic` property-bag.
+[series_fit_poly()](./kusto/query/series-fit-poly-function.md) | New article. Applies a polynomial regression from an independent variable (x_series) to a dependent variable (y_series). This function takes a table containing multiple series (dynamic numerical arrays) and generates the best fit high-order polynomial for each series using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). 
+[array_sort_asc()](./kusto/query/arraysortascfunction.md) | New article. Receives one or more arrays. Sorts the first array in ascending order. Orders the remaining arrays to match the reordered first array.
+[array_sort_desc()](./kusto/query/arraysortdescfunction.md) | New article. Receives one or more arrays. Sorts the first array in descending order. Orders the remaining arrays to match the reordered first array.
+
+### Management
+
+ Article title | Description
+---|---
+[Query throttling policy commands](./kusto/management/query-throttling-policy-commands.md) | New article. The [query throttling policy](kusto/management/query-throttling-policy.md) is a cluster-level policy to restrict query concurrency in the cluster. 
+[Query throttling policy](./kusto/management/query-throttling-policy.md) | New article. Define the query throttling policy to limit the number of concurrent queries the cluster can execute at the same time. This policy protects the cluster from being overloaded with more concurrent queries than it can sustain. The policy can be changed at run-time, and takes place immediately after the alter policy command completes.
+[.clear table data](./kusto/management/clear-table-data-command.md) | New article. Clears the data of an existing table, including streaming ingestion data.
+|  [row_level_security policy command](kusto/management/row-level-security-policy.md) [Row Level Security](kusto/management/rowlevelsecuritypolicy.md) |Updated articles. General availability (GA).
+
+### Functions library
+
+ Article title | Description
+---|---
+[kmeans_fl()](./kusto/functions-library/kmeans-fl.md) | New article.  The function `kmeans_fl()` clusterizes a dataset using the [k-means algorithm](https://en.wikipedia.org/wiki/K-means_clustering).
+[series_dot_product_fl()](./kusto/functions-library/series-dot-product-fl.md) | New article. Calculates the dot product of two numerical vectors.
+
 ## September 2020
 
-Welcome to what's new in the Azure Data Explorer docs from September 2020. This article lists some of the major changes to docs during this period.
+This section lists the major changes to docs during September 2020.
 
-### New articles
-
-#### Query
-
- Article title | Description
----|---
-[zlib_compress_to_base64_string()](./kusto/query/zlib-base64-compress.md) | New article.  Performs zlib compression and encodes the result to base64.
-[zlib_decompress_from_base64_string()](./kusto/query/zlib-base64-decompress.md) |New article.  Decodes the input string from base64 and performs zlib decompression.
-[cosmosdb_sql_request plugin](./kusto/query/cosmosdb-plugin.md) | New article. The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network endpoint and returns the results of the query. This plugin is primarily designed for querying small datasets, for example, enriching data with reference data stored in [Azure Cosmos DB](/azure/cosmos-db/).
-[materialized_view() function](./kusto/query/materialized-view-function.md) |New article.  References the materialized part of a [materialized view](kusto/management/materialized-views/materialized-view-overview.md). 
-| [geo_distance_point_to_line()](./kusto/query/geo-distance-point-to-line-function.md) | Updated article. Add multiline support docs.
-|[geo_line_densify()](./kusto/query/geo-line-densify-function.md)| Updated article. Add multiline support docs |
-
-#### Functions library
-
- Article title | Description
----|---
-[Functions library](./kusto/functions-library/functions-library.md) | New article. The following article contains a categorized list of [UDF (user-defined functions)](kusto/query/functions/user-defined-functions.md). The user-defined functions code is given in the articles.  It can be used within a let statement embedded in a query or can be persisted in a database using [`.create function`](kusto/management/create-function.md).
-
-#### Management
-
- Article title | Description
----|---
-[.create materialized-view](./kusto/management/materialized-views/materialized-view-create.md) | New article.  A [materialized view](kusto/management/materialized-views/materialized-view-overview.md) is an aggregation query over a source table, representing a single summarize statement.
-[Materialized views (preview)](./kusto/management/materialized-views/materialized-view-overview.md) | New article.  [Materialized views](kusto/query/materialized-view-function.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](./kusto/management/materialized-views/materialized-view-overview.md#materialized-views-queries) is more performant than running the aggregation directly over the source table, which is performed each query.
-[.alter materialized-view](./kusto/management/materialized-views/materialized-view-alter.md) | New article. Altering the [materialized view](kusto/management/materialized-views/materialized-view-overview.md) can be used for changing the query of a materialized view, while preserving the existing data in the view.
-[.disable .enable materialized-view](./kusto/management/materialized-views/materialized-view-enable-disable.md) | New article. Describes how to disable a materialized view.
-[.drop materialized-view](./kusto/management/materialized-views/materialized-view-drop.md) | New article. Drops a materialized view.
-[.show materialized-views commands](./kusto/management/materialized-views/materialized-view-show-commands.md) | New article. The following show commands display information about [materialized views](kusto/management/materialized-views/materialized-view-overview.md).
-
-#### API
-
- Article title | Description
----|---
-[Azure Data Explorer Golang SDK](./kusto/api/golang/kusto-golang-client-library.md) | New article. Azure Data Explorer Go Client library provides the capability to query, control, and ingest into Azure Data Explorer clusters using Go. 
-[Ingestion without Kusto.Ingest Library](./kusto/api/netfx/kusto-ingest-client-rest.md) | New article. The Kusto.Ingest library is preferred for ingesting data to Azure Data Explorer. However, you can still achieve almost the same functionality, without being dependent on the Kusto.Ingest package. This article shows you how, by using *Queued Ingestion* to Azure Data Explorer for production-grade pipelines.
 
 #### General
 
@@ -153,9 +196,55 @@ Welcome to what's new in the Azure Data Explorer docs from September 2020. This 
 | [Visualize data from Azure Data Explorer in Grafana](grafana.md) | Updated article. Updated with new capabilities
 | [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md), [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated articles. Updated with new capabilities.
 
+#### Query
+
+ Article title | Description
+---|---
+[zlib_compress_to_base64_string()](./kusto/query/zlib-base64-compress.md) | New article.  Performs zlib compression and encodes the result to base64.
+[zlib_decompress_from_base64_string()](./kusto/query/zlib-base64-decompress.md) |New article.  Decodes the input string from base64 and performs zlib decompression.
+[cosmosdb_sql_request plugin](./kusto/query/cosmosdb-plugin.md) | New article. The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network endpoint and returns the results of the query. This plugin is primarily designed for querying small datasets, for example, enriching data with reference data stored in [Azure Cosmos DB](/azure/cosmos-db/).
+[materialized_view() function](./kusto/query/materialized-view-function.md) |New article.  References the materialized part of a [materialized view](kusto/management/materialized-views/materialized-view-overview.md). 
+| [geo_distance_point_to_line()](./kusto/query/geo-distance-point-to-line-function.md) | Updated article. Add multiline support docs.
+|[geo_line_densify()](./kusto/query/geo-line-densify-function.md)| Updated article. Add multiline support docs |
+
+#### Management
+
+ Article title | Description
+---|---
+[.create materialized-view](./kusto/management/materialized-views/materialized-view-create.md) | New article.  A [materialized view](kusto/management/materialized-views/materialized-view-overview.md) is an aggregation query over a source table, representing a single summarize statement.
+[Materialized views (preview)](./kusto/management/materialized-views/materialized-view-overview.md) | New article.  [Materialized views](kusto/query/materialized-view-function.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](./kusto/management/materialized-views/materialized-view-overview.md#materialized-views-queries) is more performant than running the aggregation directly over the source table, which is performed each query.
+[.alter materialized-view](./kusto/management/materialized-views/materialized-view-alter.md) | New article. Altering the [materialized view](kusto/management/materialized-views/materialized-view-overview.md) can be used for changing the query of a materialized view, while preserving the existing data in the view.
+[.disable .enable materialized-view](./kusto/management/materialized-views/materialized-view-enable-disable.md) | New article. Describes how to disable a materialized view.
+[.drop materialized-view](./kusto/management/materialized-views/materialized-view-drop.md) | New article. Drops a materialized view.
+[.show materialized-views commands](./kusto/management/materialized-views/materialized-view-show-commands.md) | New article. The following show commands display information about [materialized views](kusto/management/materialized-views/materialized-view-overview.md).
+
+#### Functions library
+
+ Article title | Description
+---|---
+[Functions library](./kusto/functions-library/functions-library.md) | New article. The following article contains a categorized list of [UDF (user-defined functions)](kusto/query/functions/user-defined-functions.md). The user-defined functions code is given in the articles.  It can be used within a let statement embedded in a query or can be persisted in a database using [`.create function`](kusto/management/create-function.md).
+
+#### API
+
+ Article title | Description
+---|---
+[Azure Data Explorer Golang SDK](./kusto/api/golang/kusto-golang-client-library.md) | New article. Azure Data Explorer Go Client library provides the capability to query, control, and ingest into Azure Data Explorer clusters using Go. 
+[Ingestion without Kusto.Ingest Library](./kusto/api/netfx/kusto-ingest-client-rest.md) | New article. The Kusto.Ingest library is preferred for ingesting data to Azure Data Explorer. However, you can still achieve almost the same functionality, without being dependent on the Kusto.Ingest package. This article shows you how, by using *Queued Ingestion* to Azure Data Explorer for production-grade pipelines.
+
+
 ## August 2020
 
-Welcome to what's new in the Azure Data Explorer docs from August 2020. This article lists some of the major changes to docs during this period.
+This section lists the major changes to docs during August 2020.
+
+### General
+
+ Article title | Description
+---|---
+[Enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer](double-encryption.md) | New article. When you create a cluster, its storage is [automatically encrypted at the service level](/azure/storage/common/storage-service-encryption). If you require a higher level of assurance that your data is secure, you can also enable [Azure Storage infrastructure level encryption](/azure/storage/common/infrastructure-encryption-enable), also known as double encryption.
+[Ingest data using the Azure Data Explorer Go SDK](go-ingest-data.md) | New article. You can use the [Go SDK](https://github.com/Azure/azure-kusto-go) to ingest, control, and query data in Azure Data Explorer clusters. 
+[Business continuity and disaster recovery overview](business-continuity-overview.md) | New article. Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a disruption. 
+[Connect to Event Grid](ingest-data-event-grid-overview.md) | New article. Event Grid ingestion is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created or blob re Article titled notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
+[Create business continuity and disaster recovery solutions with Azure Data Explorer](business-continuity-create-solution.md) | New article. This article details how you can prepare for an Azure regional outage by replicating your Azure Data Explorer resources, management, and ingestion in different Azure regions.
 
 ### Query
 
@@ -179,17 +268,6 @@ Welcome to what's new in the Azure Data Explorer docs from August 2020. This art
 [Show continuous export failures](./kusto/management/data-export/show-continuous-failures.md) | New article. Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest. 
 | [Row Level Security](kusto/management/rowlevelsecuritypolicy.md) | Updated article. How to produce error for unauthorized access.
 |[Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md) [Create and alter external SQL tables](./kusto/management/external-sql-tables.md) | Updated articles. New command option `.create-or-alter`.
-
-
-### General
-
- Article title | Description
----|---
-[Enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer](double-encryption.md) | New article. When you create a cluster, its storage is [automatically encrypted at the service level](/azure/storage/common/storage-service-encryption). If you require a higher level of assurance that your data is secure, you can also enable [Azure Storage infrastructure level encryption](/azure/storage/common/infrastructure-encryption-enable), also known as double encryption.
-[Ingest data using the Azure Data Explorer Go SDK](go-ingest-data.md) | New article. You can use the [Go SDK](https://github.com/Azure/azure-kusto-go) to ingest, control, and query data in Azure Data Explorer clusters. 
-[Business continuity and disaster recovery overview](business-continuity-overview.md) | New article. Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a disruption. 
-[Connect to Event Grid](ingest-data-event-grid-overview.md) | New article. Event Grid ingestion is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created or blob re Article titled notifications and streaming these notifications to Azure Data Explorer via an Event Hub.
-[Create business continuity and disaster recovery solutions with Azure Data Explorer](business-continuity-create-solution.md) | New article. This article details how you can prepare for an Azure regional outage by replicating your Azure Data Explorer resources, management, and ingestion in different Azure regions.
 
 ## Next steps
 
